@@ -108,3 +108,48 @@ function getWhiteBalanceRange(session: camera.PhotoSession | camera.VideoSession
   return range;
 }
 ```
+
+## getColorTintRange
+
+getColorTintRange(): Array\<number\>
+
+Obtains the supported white balance hue adjustment range.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| Array\<number\>   | Hue adjustment range. If the API call fails, **undefined** is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.                                  |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getColorTintRange(session: camera.PhotoSession | camera.VideoSession): Array<number> {
+  let range: Array<number> = [];
+  try {
+    range = session.getColorTintRange();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getColorTintRange call failed. error code: ${err.code}`);
+  }
+  return range;
+}
+```

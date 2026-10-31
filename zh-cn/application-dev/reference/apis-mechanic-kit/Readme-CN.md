@@ -1,9 +1,9 @@
 # Mechanic Kit（机械体设备控制器）<!--mechanic-api-->
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @peter__1024-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
 
 - ArkTS API<!--mechanic-arkts-->

@@ -1,8 +1,8 @@
 # 使用动画开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -60,7 +60,7 @@
 
 4. 设置[ArkUI_AnimateOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-animateoption.md)参数，通过提供的C方法设置对应的参数。
 
-   <!-- @[set_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+   <!-- @[set_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
    
    ``` C
    // 设置动画参数
@@ -83,7 +83,7 @@
 
 5. 设置回调参数。
 
-   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
    
    ``` C
    // 设置完成的回调
@@ -101,12 +101,12 @@
            ArkUI_CurveHandle curve = data->curve;
            if (option) {
                OH_ArkUI_AnimateOption_Dispose(option);
-               OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                    "Init", "CXX OH_ArkUI_AnimateOption_Dispose  success!");
            }
            if (curve) {
                OH_ArkUI_Curve_DisposeCurve(curve);
-               OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                    "Init", "CXX OH_ArkUI_Curve_DisposeCurve  success!");
            }
            delete data; // 释放结构体
@@ -225,7 +225,7 @@
        nodeAPI->setAttribute(image, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(image, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue transformCenterValue[] = {0.0f, 0.0f, 0.0f, 0.5f, 0.5f};
        ArkUI_AttributeItem transformCenterItem = {.value = transformCenterValue,
@@ -279,7 +279,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001903284256](figures/zh-cn_image_0000001903284256.gif)
+   ![zh-cn_image_0000001903284256](figures/Appearance-Disappearance-Transitions.gif)
 
 
 ## 一镜到底转场
@@ -315,7 +315,7 @@
        nodeAPI->setAttribute(firstImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(firstImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 25}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
@@ -359,7 +359,7 @@
        nodeAPI->setAttribute(secondImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 200}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(secondImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
@@ -436,13 +436,13 @@
    }
    ```
 
-   ![zh-cn_image_one_shot_transition](figures/zh-cn_image_one_shot_transition.gif)
+   ![zh-cn_image_one_shot_transition](figures/one-shot-transition.gif)
 
 ## 使用关键帧动画
 
 该示例主要演示如何通过[keyframeAnimateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#keyframeanimateto)来设置关键帧动画，NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
-   <!-- @[get_keyframeAnimateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+   <!-- @[get_keyframeAnimateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
    
    ``` C
    // ArkUIColumnNode为工程内封装的node类型
@@ -517,12 +517,12 @@
                    ArkUI_CurveHandle curve = data->curve;
                    if (option) {
                        OH_ArkUI_KeyframeAnimateOption_Dispose(option);
-                       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                            "Init", "CXX OH_ArkUI_KeyframeAnimateOption_Dispose  success!");
                    }
                    if (curve) {
                        OH_ArkUI_Curve_DisposeCurve(curve);
-                       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                            "Init", "CXX OH_ArkUI_Curve_DisposeCurve  success!");
                    }
                    delete data; // 释放结构体
@@ -553,13 +553,13 @@
    column->AddChild(button);
    ```
 
-   ![zh-cn_image_0000001903284256](figures/zh-cn_image_keyframeAnimateTo.gif)
+   ![zh-cn_image_0000001903284256](figures/image-keyframeAnimateTo.gif)
 
 ## 使用帧动画
 
 该示例主要演示如何通过[createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator)来设置帧动画。
 
-   <!-- @[get_createAnimator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+   <!-- @[get_createAnimator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
    
    ``` C
    std::shared_ptr<ArkUIBaseNode> CreateAnimator()
@@ -619,7 +619,7 @@
                {
                    OH_ArkUI_AnimatorOnFrameEvent_GetUserData(event); // 获取动画事件对象中的用户自定义对象
                    auto value = OH_ArkUI_AnimatorOnFrameEvent_GetValue(event); // 获取动画事件对象中的当前进度
-                   OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init",
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Init",
                        "CXX OH_ArkUI_AnimatorOption_RegisterOnFrameCallback  %{public}f", value);
                    g_animator_button->SetWidth(value);
                });
@@ -773,4 +773,4 @@
    }
    ```
 
-   ![zh-cn_image_animator](figures/zh-cn_image_animator.gif)
+   ![zh-cn_image_animator](figures/Frame-Animations.gif)

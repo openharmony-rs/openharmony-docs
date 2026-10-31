@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-通过页签进行内容视图切换的容器组件，每个页签对应一个内容视图。
+通过页签进行内容视图切换的容器组件，每个页签对应一个内容视图。适用于应用底部导航栏、顶部页签切换、侧边栏导航等需要在不同内容视图间快速切换的场景。使用Tabs组件可以简化多视图导航的实现，提升用户切换效率。
 
 >  **说明：**
 >
@@ -42,21 +42,23 @@ Tabs(options?: TabsOptions)
 
 | 参数名 | 类型         | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [TabsOptions](#tabsoptions15) | 否 | Tabs组件参数。 |
+| options | [TabsOptions](#tabsoptions15) | 否 | Tabs组件参数。默认值：undefined，不设置参数时使用默认配置。 |
 
 ## TabsOptions<sup>15+</sup>
 
-Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tabs控制器和TabBar的[通用属性](ts-component-general-attributes.md)。
+Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tabs控制器和页签栏（TabBar）的[通用属性](ts-component-general-attributes.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 15%; 15%; 8%; 8%; 54%-->
 | 名称         | 类型                              | 只读 | 可选   | 说明                                     |
 | ----------- | --------------------------------- | ---- | --------- | ------------------------------- |
-| barPosition<sup>7+</sup> | [BarPosition](#barposition枚举说明)| 否 | 是    | 设置Tabs的页签位置。<br/>默认值：BarPosition.Start。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| index<sup>7+</sup>       | number                            | 否 | 是   | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabController的[changeIndex](#changeindex)时，默认生效切换动效，可以设置[animationDuration](#animationduration)为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| barPosition<sup>7+</sup> | [BarPosition](#barposition枚举说明)| 否 | 是    | 设置Tabs的页签位置。页签的具体位置受vertical属性影响：vertical为true时Start位于左侧、End位于右侧；vertical为false时Start位于顶部、End位于底部。<br/>默认值：BarPosition.Start。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| index<sup>7+</sup>       | number                            | 否 | 是   | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabsController的[changeIndex](#changeindex)时，默认生效切换动效，可以设置[animationDuration](#animationduration)为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | controller<sup>7+</sup>  | [TabsController](#tabscontroller) | 否 | 是    | 设置Tabs控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| barModifier<sup>15+</sup>  | [CommonModifier](#commonmodifier15) | 否 | 是    | 设置TabBar的[通用属性](ts-component-general-attributes.md)。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| barModifier  | [CommonModifier](#commonmodifier15) | 否 | 是    | 设置TabBar的[通用属性](ts-component-general-attributes.md)，用于通过CommonModifier统一管理TabBar的样式、布局等通用属性。当需要动态修改TabBar的通用属性或实现属性的状态管理时传入此参数，不传入时TabBar使用默认样式和布局，无额外通用属性设置。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>从API版本26.0.1开始，Tabs的[sidebarWidth](#sidebarwidth)、[sidebarBackgroundColor](#sidebarbackgroundcolor)、[sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 ## BarPosition枚举说明
 
@@ -68,9 +70,27 @@ Tabs页签位置枚举。
 
 | 名称  | 值 | 说明                                                         |
 | ----- | ----- | ------------------------------------------------------------ |
-| Start | 0 | vertical属性方法设置为true时，页签位于容器左侧；vertical属性方法设置为false时，页签位于容器顶部。 |
-| End   | 1 | vertical属性方法设置为true时，页签位于容器右侧；vertical属性方法设置为false时，页签位于容器底部。 |
+| Start | 0 | vertical属性设置为true时，页签位于容器左侧；vertical属性设置为false时，页签位于容器顶部。 |
+| End   | 1 | vertical属性设置为true时，页签位于容器右侧；vertical属性设置为false时，页签位于容器底部。 |
 
+## TabBarStyle
+
+TabBar显示样式枚举。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值 | 说明                                                         |
+| ----- | ----- | ------------------------------------------------------------ |
+| BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。 |
+| SIDEBAR | 1 | 侧边页签栏样式。页签栏显示为侧边栏。 |
+| SIDEBAR_ADAPTABLE | 2 | 自适应侧边页签栏样式。页签栏可根据Tabs容器大小在底部页签栏样式和侧边栏样式之间切换。 |
+| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.1.0 |
 
 ## 属性
 
@@ -80,7 +100,7 @@ Tabs页签位置枚举。
 
 vertical(value: boolean)
 
-设置是否为纵向Tabs。
+设置是否为纵向Tabs。横向Tabs（默认）适用于底部导航栏、顶部页签切换等场景；纵向Tabs适用于侧边栏导航、设置页面分类等场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -91,13 +111,13 @@ vertical(value: boolean)
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否为纵向Tabs。<br/>默认值：false，横向Tabs，为true时纵向Tabs。<br/>当横向Tabs设置height为auto时，Tabs组件高度自适应子组件高度，即为[tabBar](ts-container-tabcontent.md#tabbar)高度+divider线宽+TabContent高度+上下padding值+上下border宽度。<br/>当纵向Tabs设置width为auto时，Tabs组件宽度自适应子组件宽度，即为tabBar宽度+divider线宽+TabContent宽度+左右padding值+左右border宽度。<br/>尽量保持每一个页面中的子组件尺寸大小一致，避免滑动页面时出现页面切换动画跳动现象。 |
+| value  | boolean | 是   | 是否为纵向Tabs。<br/>默认值：false，横向Tabs，为true时纵向Tabs。<br/>当横向Tabs设置height为auto时，Tabs组件高度自适应子组件高度，即为[tabBar](ts-container-tabcontent.md#tabbar)高度+divider分割线宽度+TabContent高度+Tabs组件的上下padding值+Tabs组件的上下border宽度。<br/>当纵向Tabs设置width为auto时，Tabs组件宽度自适应子组件宽度，即为tabBar宽度+divider线宽+TabContent宽度+左右padding值+左右border宽度。<br/>尽量保持每一个页面中的子组件尺寸大小一致，避免滑动页面时出现页面切换动画跳动现象。 |
 
 ### scrollable
 
 scrollable(value: boolean)
 
-设置是否可以通过滑动页面进行页面切换。
+设置是否可以通过滑动页面进行页面切换。配合自定义导航按钮或TabBar页签控制切换时，建议设置为false，避免手势滑动与自定义导航逻辑冲突。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -113,7 +133,7 @@ scrollable(value: boolean)
 
 barMode(value: BarMode, options?: ScrollableBarModeOptions)
 
-设置TabBar布局模式。
+设置TabBar布局模式。Fixed模式适用于页签数量固定且较少的场景；Scrollable模式适用于页签数量较多或文本长度不固定的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -124,7 +144,7 @@ barMode(value: BarMode, options?: ScrollableBarModeOptions)
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                 | [BarMode](#barmode枚举说明)                                  | 是   | 布局模式。<br/>默认值：BarMode.Fixed                                                 |
-| options<sup>10+</sup> | [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) | 否   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅Scrollable且水平模式下有效。 |
+| options<sup>10+</sup> | [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) | 否   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅在value为Scrollable且水平模式下有效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### barMode<sup>10+</sup>
 
@@ -133,6 +153,8 @@ barMode(value: BarMode.Fixed)
 设置TabBar布局模式为BarMode.Fixed。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,6 +172,8 @@ barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -157,13 +181,13 @@ barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions)
 | 参数名    | 类型                              | 必填 | 说明                                    |
 | -------- | --------------------------------- | ---- | ------------------------------------- |
 | value    | [BarMode.Scrollable](#barmode枚举说明) | 是   | 所有TabBar都使用实际布局宽度，超过总宽度（横向Tabs的barWidth，纵向Tabs的barHeight）后可滑动。        |
-| options | [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) | 是   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅水平模式下有效。  |
+| options | [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) | 是   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅Scrollable且水平模式下有效。  |
 
 ### barWidth
 
 barWidth(value: Length)
 
-设置TabBar的宽度值。设置为小于0或大于Tabs宽度值时，按默认值显示。
+设置TabBar的宽度值。设置为小于0或大于Tabs宽度值时，按默认值显示。该接口也可以设置Tabs侧边页签栏的宽度，具体情况请参考[sidebarWidth](#sidebarwidth)接口的说明。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -203,6 +227,8 @@ barHeight(height: Length, noMinHeightLimit: boolean)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -220,6 +246,8 @@ animationCurve(curve: Curve | ICurve)
 设置Tabs翻页动画曲线。常用曲线参考[Curve](ts-appendix-enums.md#curve)枚举说明，也可以通过[插值计算](../js-apis-curve.md)模块提供的接口创建自定义的插值曲线对象。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -263,6 +291,8 @@ animationMode(mode: Optional\<AnimationMode\>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -286,15 +316,17 @@ barPosition(value: BarPosition)
 
 | 参数名 | 类型                               | 必填 | 说明                  |
 | ----- | ---------------------------------- | ---- | -------------------- |
-| value | [BarPosition](#barposition枚举说明)| 是  | 设置Tabs的页签位置。<br/>默认值：BarPosition.Start   |
+| value | [BarPosition](#barposition枚举说明)| 是  | 设置Tabs的页签位置。页签的具体位置受vertical属性影响：vertical为true时Start位于左侧、End位于右侧；vertical为false时Start位于顶部、End位于底部。<br/>默认值：BarPosition.Start   |
 
 ### divider<sup>10+</sup>
 
 divider(value: DividerStyle | null)
 
-设置区分TabBar和TabContent的分割线样式。
+设置区分TabBar和TabContent的分割线样式。如TabBar与TabContent之间需要视觉分隔，可通过divider添加分割线。该接口也可以设置Tabs侧边页签栏的分割线样式，具体情况请参考[sidebarDivider](#sidebardivider)接口的说明。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -308,9 +340,11 @@ divider(value: DividerStyle | null)
 
 fadingEdge(value: boolean)
 
-设置页签超过容器宽度时是否渐隐消失。建议配合[barBackgroundColor](#barbackgroundcolor10)属性一起使用，如果barBackgroundColor属性没有定义，会默认显示页签末端为白色的渐隐效果。
+设置页签超过容器宽度时是否渐隐消失。建议配合[barBackgroundColor](#barbackgroundcolor10)属性一起使用，未定义barBackgroundColor属性时，默认显示页签末端为白色的渐隐效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,15 +352,17 @@ fadingEdge(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                               |
 | ------ | ------- | ---- | -------------------------------------------------- |
-| value  | boolean | 是   | 页签超过容器宽度时是否渐隐消失。<br />默认值：true，页签超过容器宽度时会渐隐消失。设置为false时，页签超过容器宽度直接截断显示，不产生任何渐变效果‌。 |
+| value  | boolean | 是   | 页签超过容器宽度时是否渐隐消失。<br />默认值：true，页签超过容器宽度时会渐隐消失。设置为false时，页签超过容器宽度直接截断显示。若未设置[barBackgroundColor](#barbackgroundcolor10)属性，页签末端仍会显示默认的白色渐隐效果。 |
 
 ### barOverlap<sup>10+</sup>
 
 barOverlap(value: boolean)
 
-设置TabBar是否背后变模糊并叠加在TabContent之上。
+设置TabBar是否背后变模糊并叠加在TabContent之上。适用于需要沉浸式UI效果的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -340,9 +376,11 @@ barOverlap(value: boolean)
 
 barBackgroundColor(value: ResourceColor)
 
-设置TabBar的背景颜色。
+设置TabBar的背景颜色。该接口也可以设置Tabs侧边页签栏的背景颜色，具体情况请参考[sidebarBackgroundColor](#sidebarbackgroundcolor)接口的说明。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -350,19 +388,21 @@ barBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                 |
 | ------ | ------------------------------------------ | ---- | ------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | TabBar的背景颜色。<br />默认值：Color.Transparent，透明 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | TabBar的背景颜色。<br/>**说明：**<br/>建议配合[fadingEdge](#fadingedge10)属性一起使用，以避免页签末端显示白色渐隐效果。<br/>默认值：Color.Transparent，透明 |
 
 ### barBackgroundBlurStyle<sup>11+</sup>
 
 barBackgroundBlurStyle(value: BlurStyle)
 
-设置TabBar的背景模糊材质。
+设置TabBar的背景模糊材质。适用于需要为TabBar添加模糊背景效果的场景。该接口也可以设置Tabs侧边页签栏的背景模糊样式，具体情况请参考[sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle)接口的说明。
 
 >**说明：**
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,9 +416,11 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
 
-为TabBar提供一种在背景和内容之间的模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。
+设置TabBar背景模糊能力，通过枚举值封装不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。该接口也可以设置Tabs侧边页签栏的背景模糊样式，具体情况请参考[sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle)接口的说明。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -387,7 +429,7 @@ barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style                 | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。 |
-| options | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 是   | 背景模糊选项。   |
+| options | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 是   | 背景模糊选项，用于自定义模糊效果。|
 
 ### barGridAlign<sup>10+</sup>
 
@@ -396,6 +438,8 @@ barGridAlign(value: BarGridColumnOptions)
 以栅格化方式设置TabBar的可见区域。具体参见BarGridColumnOptions对象。仅水平模式下有效，[不适用于XS、XL和XXL设备](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -409,13 +453,15 @@ barGridAlign(value: BarGridColumnOptions)
 
 edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
-设置边缘滑动效果。
+设置边缘滑动效果。当滑动到边缘时，根据设置的边缘效果类型执行相应的回弹动作：Spring模式使用弹簧曲线实现弹性回弹效果，Fade模式使用渐变透明度实现视觉反馈，None模式不执行任何边缘效果。边缘效果的触发条件为滑动内容超出容器边界。
 
 >**说明：**
 >
 > 从API version 17开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -429,9 +475,11 @@ edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
 barBackgroundEffect(options: BackgroundEffectOptions)
 
-设置TabBar背景属性，包含背景模糊半径，亮度，饱和度，颜色等参数。
+设置TabBar背景属性，包含背景模糊半径，亮度，饱和度，颜色等参数。适用于需要精细化控制TabBar背景视觉效果的场景。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -449,6 +497,8 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -461,9 +511,11 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 cachedMaxCount(count: number, mode: TabsCacheMode)
 
-设置子组件的最大缓存个数及缓存模式。未设置该属性时默认缓存所有子组件且缓存后不会释放。
+设置子组件的最大缓存个数及缓存模式。未设置该属性时默认缓存所有子组件且缓存后不会释放。建议根据页签数量和子组件内容复杂度设置count值。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -471,14 +523,14 @@ cachedMaxCount(count: number, mode: TabsCacheMode)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count  | number                                                      | 是   | 子组件的最大缓存个数。超出范围时自动释放不再需要的子组件。<br/>取值范围：[0, +∞)。|
+| count  | number                                                      | 是   | 子组件的最大缓存个数。<br/>取值范围：[0, +∞)。设置为小于0的值时，子组件不受缓存管理。超出缓存个数时自动释放不再需要的子组件。|
 | mode   | [TabsCacheMode](#tabscachemode19枚举说明)                   | 是   | 子组件的缓存模式。<br/>默认值：TabsCacheMode.CACHE_BOTH_SIDE   |
 
 ### nestedScroll<sup>24+</sup>
 
 nestedScroll(value: TabsNestedScrollMode | undefined)
 
-设置Tabs组件与其父组件的嵌套滚动模式。未通过该接口设置时，默认嵌套滚动模式为[SELF_ONLY](#tabsnestedscrollmode24枚举说明)。
+设置Tabs组件与其父组件的嵌套滚动模式。未设置时默认嵌套滚动模式为[SELF_ONLY](#tabsnestedscrollmode24枚举说明)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -492,20 +544,543 @@ nestedScroll(value: TabsNestedScrollMode | undefined)
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value   | [TabsNestedScrollMode](#tabsnestedscrollmode24枚举说明) \| undefined                | 是   | Tabs组件和父组件的嵌套滚动模式。<br/>设置undefined时，Tabs自身滚动，不与父组件联动。   |
 
+### barFloatingStyle
+
+barFloatingStyle(style: Optional\<FloatingTabBarStyle>)
+
+设置TabBar悬浮样式。
+
+>**说明：**
+>
+> 悬浮样式可以让TabBar以悬浮的方式显示在Tabs的底部。仅当同时满足属性[barOverlap](#baroverlap10)为true，[vertical](#vertical)为false，[barPosition](#barposition9)为BarPosition.End时，该接口设置才有效。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| style   | Optional<[FloatingTabBarStyle](#floatingtabbarstyle)>           | 是   | TabBar的悬浮样式配置。<br/>设置undefined时，取消悬浮样式，恢复默认样式。   |
+
+### topBarFloatingStyle
+
+topBarFloatingStyle(style: Optional\<TopFloatingTabBarStyle\>)
+
+设置TabBar的顶部悬浮样式。仅当[barStyle](#barstyle)设置为TabBarStyle.TOP时生效。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| style   | Optional<[TopFloatingTabBarStyle](#topfloatingtabbarstyle)>           | 是   | TabBar的顶部悬浮样式配置。<br/>设置undefined时，取消顶部悬浮样式，恢复默认样式。默认样式见[TopFloatingTabBarStyle](#topfloatingtabbarstyle)各个属性的详细说明。   |
+
+### barStyle
+
+barStyle(style: Optional\<TabBarStyle\>)
+
+设置TabBar的显示样式，未通过该接口设置时，TabBar的显示样式默认为TabBarStyle.BOTTOM。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | --------- | ---- | ------------ |
+| style   | Optional<[TabBarStyle](#tabbarstyle)> | 是 | TabBar的显示样式。<br/>设置undefined时，恢复默认显示样式。 |
+
+### sidebarPosition
+
+sidebarPosition(position: Optional\<BarPosition\>)
+
+设置侧边页签栏的位置，未通过该接口设置时，侧边页签栏的位置默认为BarPosition.Start。
+
+> **说明：**
+>
+> 侧边页签栏的位置不受[vertical](#vertical)和[barPosition](#barposition9)属性影响。BarPosition.Start表示侧边页签栏位于Tabs容器的起始侧，当语言方向为LTR时显示在左侧，RTL时显示在右侧；BarPosition.End表示侧边页签栏位于Tabs容器的结束侧，当语言方向为LTR时显示在右侧，RTL时显示在左侧。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| position   | Optional<[BarPosition](#barposition枚举说明)> | 是 | 侧边页签栏的显示位置。<br/>设置undefined时，恢复默认显示位置。 |
+
+### sidebarHeader
+
+sidebarHeader(header: Optional\<ComponentContent>)
+
+设置侧边页签栏的头部内容，未通过该接口设置时，侧边页签栏不显示自定义头部区域。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| header   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | 是 | 侧边页签栏的头部内容，<br/>设置undefined时，侧边页签栏不显示自定义头部区域。 |
+
+### sidebarFooter
+
+sidebarFooter(footer: Optional\<ComponentContent>)
+
+设置侧边页签栏的尾部内容，该区域随页签列表滚动，未通过该接口设置时，侧边页签栏不显示自定义尾部区域。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| footer   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | 是 | 侧边页签栏的尾部内容，该区域随页签列表滚动。<br/>设置undefined时，侧边页签栏不显示自定义尾部区域。 |
+
+### sidebarBottomBar
+
+sidebarBottomBar(bottomBar: Optional\<ComponentContent>)
+
+设置侧边页签栏的固定底部内容，未通过该接口设置时，侧边页签栏不显示自定义固定底部区域。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| bottomBar   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | 是 | 侧边页签栏的固定底部内容。<br/>设置undefined时，侧边页签栏不显示自定义固定底部区域。 |
+
+### sidebarSearchable
+
+sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions)
+
+设置侧边页签栏的搜索选项。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明 |
+| ------ | -------- | ---- | ------------- |
+| searchOptions   | [TabsSidebarSearchableOptions](#tabssidebarsearchableoptions) | 否 | 侧边页签栏的搜索选项。不设置时不显示搜索框。 |
+
+### barDisplayModeBreakpoint
+
+barDisplayModeBreakpoint(style: Optional\<TabsBreakpointType\<TabBarDisplayMode>>)
+
+设置不同Tabs容器断点下页签栏的显示模式，仅当barStyle属性设置为TabBarStyle.SIDEBAR_ADAPTABLE时生效。未通过该接口设置时，显示模式默认值为：{ sm: TabBarDisplayMode.BOTTOM_TABBAR, md: TabBarDisplayMode.BOTTOM_TABBAR, lg: TabBarDisplayMode.SIDEBAR }。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明  |
+| ------ | --------- | ---- | ------- |
+| style   | Optional<[TabsBreakpointType](#tabsbreakpointtypet)<[TabBarDisplayMode](#tabbardisplaymode)>> | 是 | 不同Tabs容器断点下页签栏的显示模式。<br/>设置undefined时，恢复默认显示模式。 |
+
+### sidebarSelectedIconColor
+
+sidebarSelectedIconColor(value: Optional\<ResourceColor\>)
+
+设置Tabs侧边页签栏中页签图标的选中态颜色。
+
+> **说明：**
+>
+> 当页签样式为[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时，其[iconStyle](./ts-container-tabcontent.md#iconstyle12)属性中[TabBarIconStyle](./ts-container-tabcontent.md#tabbariconstyle12对象说明)的selectedColor优先级高于sidebarSelectedIconColor。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | 是 | Tabs侧边页签栏中页签图标的选中态颜色，只适用于Symbol、SVG类型图片。<br/>设置undefined时，恢复系统默认颜色。 |
+
+### sidebarSelectedTextColor
+
+sidebarSelectedTextColor(value: Optional\<ResourceColor\>)
+
+设置Tabs侧边页签栏中页签文本的选中态颜色。
+
+> **说明：**
+>
+> 当页签样式为[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)或[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时（二者作为[tabBar](./ts-container-tabcontent.md#tabbar18)参数互斥使用），其[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性中[LabelStyle](./ts-container-tabcontent.md#labelstyle10对象说明)的selectedColor优先级高于sidebarSelectedTextColor。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | 是 | Tabs侧边页签栏中页签文本的选中态颜色。<br/>设置undefined时，恢复系统默认颜色。 |
+
+### sidebarUnselectedIconColor
+
+sidebarUnselectedIconColor(value: Optional\<ResourceColor\>)
+
+设置Tabs侧边页签栏中页签图标的非选中态颜色。
+
+> **说明：**
+>
+> 当页签样式为[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时，其[iconStyle](./ts-container-tabcontent.md#iconstyle12)属性中[TabBarIconStyle](./ts-container-tabcontent.md#tabbariconstyle12对象说明)的unselectedColor优先级高于sidebarUnselectedIconColor。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | 是 | Tabs侧边页签栏中页签图标的非选中态颜色，只适用于Symbol、SVG类型图片。<br/>设置undefined时，恢复系统默认颜色。 |
+
+### sidebarUnselectedTextColor
+
+sidebarUnselectedTextColor(value: Optional\<ResourceColor\>)
+
+设置Tabs侧边页签栏中页签文本的非选中态颜色。
+
+> **说明：**
+>
+> 当页签样式为[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)或[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时（二者作为[tabBar](./ts-container-tabcontent.md#tabbar18)参数互斥使用），其[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性中[LabelStyle](./ts-container-tabcontent.md#labelstyle10对象说明)的unselectedColor优先级高于sidebarUnselectedTextColor。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | 是 | Tabs侧边页签栏中页签文本的非选中态颜色。<br/>设置undefined时，恢复系统默认颜色。 |
+
+### sidebarSelectedBoardColor
+
+sidebarSelectedBoardColor(value: Optional\<ResourceColor\>)
+
+设置Tabs侧边页签栏中页签的背板颜色。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | 是 | Tabs侧边页签栏中页签的背板颜色。<br/>设置undefined时，恢复系统默认颜色。 |
+
+### sidebarWidth
+
+sidebarWidth(value: Optional\<Length\>)
+
+设置Tabs侧边页签栏的宽度。
+
+> **说明：**
+>
+> - sidebarWidth设置异常值或者undefined时，采用默认240vp的宽度。
+> - 优先级生效规则：sidebarWidth属性 > [barWidth](#barwidth)属性 > [barModifier](#tabsoptions15)的width属性。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[Length](ts-types.md#length)> | 是 | Tabs侧边页签栏的宽度。 |
+
+### minSidebarWidth
+
+minSidebarWidth(value: Optional\<Length\>)
+
+设置Tabs侧边页签栏在分割线拖拽场景中的最小宽度，不使用该接口设置时不限制最小宽度，此时最小宽度默认为0。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[Length](ts-types.md#length)> | 是 | Tabs侧边页签栏的最小宽度。<br/>设置undefined或者异常值时，不限制最小宽度，最小宽度为0。 |
+
+### maxSidebarWidth
+
+maxSidebarWidth(value: Optional\<Length\>)
+
+设置Tabs侧边页签栏在分割线拖拽场景中的最大宽度，不使用该接口设置时不限制最大宽度，此时最大可达到Tabs容器的宽度。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[Length](ts-types.md#length)> | 是 | Tabs侧边页签栏的最大宽度。<br/>设置undefined或者异常值时，不限制最大宽度，最大可达到Tabs容器的宽度。 |
+
+### minContentWidth
+
+minContentWidth(value: Optional\<Length\>)
+
+设置Tabs显示侧边页签栏模式时，在分割线拖拽场景中内容区的最小宽度。不使用该接口设置属性时不限制最小宽度，此时最小宽度默认为0。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[Length](ts-types.md#length)> | 是 | 设置Tabs显示侧边页签栏模式时，内容区的最小宽度。<br/>设置undefined或者异常值时，不限制最小宽度，最小宽度为0。 |
+
+### sidebarBackgroundColor
+
+sidebarBackgroundColor(value: Optional\<ResourceColor\>)
+
+设置Tabs侧边页签栏背景颜色。
+
+> **说明：**
+>
+> - sidebarBackgroundColor设置undefined时，恢复侧边页签栏默认背景颜色。
+> - 优先级生效规则：sidebarBackgroundColor属性 > [barBackgroundColor](#barbackgroundcolor10)属性 > [barModifier](#tabsoptions15)的backgroundColor属性。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | 是 | Tabs侧边页签栏背景颜色。 |
+
+### sidebarBackgroundBlurStyle
+
+sidebarBackgroundBlurStyle(value: Optional\<BlurStyle\>)
+
+设置Tabs侧边页签栏背景模糊样式。
+
+> **说明：**
+>
+> - 不使用sidebarBackgroundBlurStyle接口或者sidebarBackgroundBlurStyle设置undefined时，没有模糊效果，相当于设置BlurStyle.NONE。
+> - 优先级生效规则：sidebarBackgroundBlurStyle属性 > [barBackgroundBlurStyle](#barbackgroundblurstyle11)属性 > [barModifier](#tabsoptions15)的backgroundBlurStyle属性。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是 | Tabs侧边页签栏背景模糊样式。 |
+
+### sidebarDivider
+
+sidebarDivider(value: Optional\<DividerStyle\>)
+
+设置Tabs侧边页签栏与内容区之间的分割线样式。
+
+> **说明：**
+>
+> - sidebarDivider属性的优先级高于Tabs的[divider](#divider10)属性。
+> - 侧边页签栏不显示分割线时，不支持拖拽。
+> - [minSidebarWidth](#minsidebarwidth)，[maxSidebarWidth](#maxsidebarwidth)，[minContentWidth](#mincontentwidth)属性都不设置时，不支持拖拽。
+> - 当minSidebarWidth >= maxSidebarWidth时属于异常场景，分割线无法拖拽。
+> - 当[barStyle](#barstyle)属性设置为TabBarStyle.SIDEBAR_ADAPTABLE，并且minSidebarWidth + minContentWidth > Tabs容器宽度时，因为宽度约束无法满足，会显示成TabBarDisplayMode.BOTTOM_TABBAR样式。
+
+可以拖拽的场景下，分割线的拖拽范围见下表。最大值均需再减去dividerWidth（[DividerStyle](#dividerstyle10对象说明)的strokeWidth，即分割线线宽）。
+
+| 条件（设置有效值） | 分割线的拖拽最小值（分割线与容器起始边界的距离）|
+| ---- | ----------- |
+| 设置minSidebarWidth属性 | minSidebarWidth |
+| 不设置minSidebarWidth属性 | 0 |
+
+| 条件（设置有效值） | 分割线的拖拽最大值（分割线与容器起始边界的距离）|
+| ---- | ----------- |
+| 同时设置maxSidebarWidth和minContentWidth属性 | （Tabs容器宽度 - minContentWidth）和maxSidebarWidth的较小值 |
+| 仅设置maxSidebarWidth属性 | maxSidebarWidth和Tabs容器宽度的较小值 |
+| 仅设置minContentWidth属性 | Tabs容器宽度 - minContentWidth |
+| 未设置maxSidebarWidth和minContentWidth属性 | Tabs容器宽度 |
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[DividerStyle](#dividerstyle10对象说明)> | 是 | Tabs侧边页签栏与内容区之间的分割线样式。<br/>设置undefined时，不显示分割线。 |
+
+### sidebarDisplayStyle
+
+sidebarDisplayStyle(style: Optional\<TabsSidebarDisplayStyle\>)
+
+设置Tabs的侧边栏展示模式。未通过该接口设置时，展示模式默认为TabsSidebarDisplayStyle.EMBED。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| style | Optional<[TabsSidebarDisplayStyle](#tabssidebardisplaystyle)> | 是 | 侧边栏展示模式。<br/>设置undefined时，恢复默认展示模式。 |
+
+### showSidebarControlButton
+
+showSidebarControlButton(value: Optional\<boolean>)
+
+设置是否显示控制侧边页签栏展开或收起的按钮。点击该按钮可以控制侧边页签栏展开或收起。未通过该接口设置时，默认不显示按钮。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<boolean> | 是 | 侧边页签栏是否显示控制按钮。<br/>true表示显示按钮；false表示不显示按钮。<br/>设置undefined时，取默认值false。 |
+
 ## DividerStyle<sup>10+</sup>对象说明
 
 分割线样式对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
 | ----------- | ---------------------------------------- | ---- | ------ | ---------------------------------- |
-| strokeWidth | [Length](ts-types.md#length)             | 否 | 否    | 分割线的线宽（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。           |
+| strokeWidth | [Length](ts-types.md#length)             | 否 | 否    | 分割线的线宽（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。           |
 | color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是    | 分割线的颜色。<br/>默认值：#33182431                |
-| startMargin | [Length](ts-types.md#length)             | 否 | 是    | 分割线与侧边栏顶端的距离（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
-| endMargin   | [Length](ts-types.md#length)             | 否 | 是    | 分割线与侧边栏底端的距离（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+| startMargin | [Length](ts-types.md#length)             | 否 | 是    | 分割线与侧边栏顶端的距离（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。 |
+| endMargin   | [Length](ts-types.md#length)             | 否 | 是    | 分割线与侧边栏底端的距离（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。 |
 
 ## BarGridColumnOptions<sup>10+</sup>对象说明
 
@@ -513,15 +1088,17 @@ TabBar栅格化方式设置的对象，包括栅格模式下的column边距和�
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
 | ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
-| margin | [Dimension](ts-types.md#dimension10)             | 否 | 是    | 栅格模式下的column边距（不支持百分比设置）。<br/>默认值：24.0<br/>单位：vp                        |
-| gutter      | [Dimension](ts-types.md#dimension10) | 否 | 是    | 栅格模式下的column间隔（不支持百分比设置）。<br/>默认值：24.0<br/>单位：vp                     |
-| sm | number            | 否 | 是    | 小屏下，页签占用的columns数量，必须是非负偶数。小屏为大于等于320vp但小于600vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
-| md   | number          | 否 | 是    | 中屏下，页签占用的columns数量，必须是非负偶数。中屏为大于等于600vp但小于800vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
-| lg   | number           | 否 | 是    | 大屏下，页签占用的columns数量，必须是非负偶数。大屏为大于等于840vp但小于1024vp。<br/>默认值为-1，代表页签占用TabBar全部宽度。 |
+| margin | [Dimension](ts-types.md#dimension10)             | 否 | 是    | 栅格模式下的column边距。不支持百分比设置，取值范围：[0, +∞)。默认值：24.0<br/>单位：vp<br/>                        |
+| gutter      | [Dimension](ts-types.md#dimension10) | 否 | 是    | 栅格模式下的column间隔。不支持百分比设置，取值范围：[0, +∞)。默认值：24.0<br/>单位：vp<br/>                     |
+| sm | number            | 否 | 是    | 小屏下，页签占用的columns数量。非负偶数或-1（-1表示页签占用TabBar全部宽度）。小屏为大于等于320vp但小于600vp<br/>默认值：-1<br/> |
+| md   | number          | 否 | 是    | 中屏下，页签占用的columns数量，非负偶数或-1（-1表示页签占用TabBar全部宽度）。中屏为大于等于600vp但小于800vp<br/>默认值：-1<br/> |
+| lg   | number           | 否 | 是    | 大屏下，页签占用的columns数量，非负偶数或-1（-1表示页签占用TabBar全部宽度）。大屏为大于等于840vp但小于1024vp<br/>默认值：-1<br/> |
 
 ## ScrollableBarModeOptions<sup>10+</sup>对象说明
 
@@ -529,12 +1106,179 @@ Scrollable模式下的TabBar的布局样式对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
 | ----------- | ---------------------------------------- | ---- | ------- | --------------------------------- |
-| margin | [Dimension](ts-types.md#dimension10)          | 否 | 是    | Scrollable模式下的TabBar的左右边距（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。|
-| nonScrollableLayoutStyle      | [LayoutStyle](#layoutstyle10枚举说明) | 否 | 是   | Scrollable模式下不滚动时的页签排布方式。<br/>默认值：LayoutStyle.ALWAYS_CENTER           |
+| margin | [Dimension](ts-types.md#dimension10)          | 否 | 是    | Scrollable模式下的TabBar的左右边距（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。|
+| nonScrollableLayoutStyle      | [LayoutStyle](#layoutstyle10枚举说明) | 否 | 是   | Scrollable模式下不滚动时的页签排布方式，仅水平模式下有效。<br/>默认值：LayoutStyle.ALWAYS_CENTER           |
+
+## FloatingTabBarWidth
+
+不同Tabs宽度下TabBar的宽度。
+
+> **说明：**
+>
+> - [barWidth](#barwidth)生效优先级高于该接口，barWidth和该接口都没有生效时，TabBar宽度使用默认计算规则。
+>
+> - TabBar宽度默认计算规则如下表。子节点数量等于4个时，TabBar最大宽度为328vp。子节点数量大于等于5个时，TabBar最大宽度为360vp。Tabs宽度大于等于1140vp时，TabBar的宽高会放大到1.15倍。
+
+| 子节点数量 | Tabs宽度 | 计算规则        |
+| --------- | -------- | -------------- |
+| 小于等于2个 | 小于600vp | 固定值168vp。   |
+| 小于等于2个 | 大于等于600vp | 固定值184vp。   |
+| 3个 | 小于600vp | 固定值248vp。   |
+| 3个 | 大于等于600vp | 固定值272vp。   |
+| 大于等于4个 | 小于600vp | Tabs宽度 - 2 * [barSideMargin](#floatingtabbarstyle)。   |
+| 大于等于4个 | 大于等于600vp，小于840vp | Tabs宽度 - 2 * (barSideMargin + 12vp + TabBar高度)。   |
+| 大于等于4个 | 大于840vp | (Tabs宽度 / 2 - 2 * barSideMargin) * 2。   |
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| smallBarWidth | [Length](ts-types.md#length) | 否 | 是    | Tabs宽度小于440vp时，TabBar的宽度。|
+| mediumBarWidth | [Length](ts-types.md#length) | 否 | 是   | Tabs宽度处于440vp到600vp之间，或宽度在600-840vp之间且高宽比小于0.8时，TabBar的宽度。 |
+| largeBarWidth | [Length](ts-types.md#length) | 否 | 是    | Tabs宽度大于840vp，或宽度在600vp到840vp之间且高宽比大于0.8时，TabBar的宽度。 |
+
+
+## UIMaterial
+
+type UIMaterial = import('../api/@ohos.arkui.uiMaterial').uiMaterial
+
+系统材质模块。在设置tabBar悬浮样式系统材质属性时使用其中的ImmersiveMaterial类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型     | 说明               |
+| -------- | ------------------ |
+| import('../api/@ohos.arkui.uiMaterial').uiMaterial   | 系统材质模块。|
+
+## FloatingTabBarStyle
+
+TabBar悬浮样式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| barWidth | [FloatingTabBarWidth](#floatingtabbarwidth)             | 否 | 是    | 不同Tabs宽度下TabBar的宽度。宽度默认计算规则见[FloatingTabBarWidth](#floatingtabbarwidth)说明。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| barSideMargin      | [Length](ts-types.md#length) | 否 | 是   | TabBar宽度默认计算规则中的左右边距。<br/>取值范围：[0, +∞)<br/>Tabs宽度小于600vp时，默认值为16vp。Tabs宽度处于600vp到840vp时，默认值为24vp。Tabs宽度大于840vp时，默认值为32vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| barBottomMargin   | [Length](ts-types.md#length)           | 否 | 是    | TabBar距离Tabs底部的距离。<br/>取值范围：[0, +∞)<br/>默认值为28vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | 否 | 是    | 蒙层的颜色。蒙层显示区域会基于蒙层的颜色进行透明度渐变显示，从下到上不透明度变小。浅色模式下默认值为#CCF1F3F5，显示为白色。深色模式下默认值为#99000000，显示为黑色。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。仅当Tabs为横向布局且barPosition为BarPosition.End时，底部TabBar的沉浸光感效果生效。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞)<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+
+## TopFloatingTabBarStyle
+
+TabBar顶部悬浮样式的配置选项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| barWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时根据内容大小计算，最大值由barSideMargin控制。 |
+| barSideMargin | [Length](ts-types.md#length) | 否 | 是 | TabBar左右边距。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>Tabs宽度小于600vp时，默认值为16vp。Tabs宽度处于600vp到840vp时，默认值为24vp。Tabs宽度大于840vp时，默认值为32vp。<br/>barWidth最大值计算规则：Tabs宽度大于840vp时，barWidth最大值为（组件宽度-barSideMargin×2-176）/12×10+144；Tabs宽度小于840vp时，barWidth最大值为（组件宽度-barSideMargin×2）。 |
+| barTopMargin | [Length](ts-types.md#length) | 否 | 是 | TabBar距离Tabs顶部的距离。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>默认值为32vp。 |
+| maskColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 蒙层的颜色。浅色模式下默认值为#CCF1F3F5（白色），深色模式下默认值为#99000000（黑色）。 |
+| maskHeight | [Length](ts-types.md#length) | 否 | 是 | 蒙层的高度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，不显示蒙层。 |
+| maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，TabBar最大宽度由barSideMargin计算得到。 |
+| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞) |
+
+## TabsSidebarSearchFilterCallback
+
+type TabsSidebarSearchFilterCallback = (tabIndex: number, text: string) => boolean
+
+Tabs侧边页签栏搜索框的搜索过滤函数。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明              |
+| ------ | ------ | ---- | ---------------- |
+| tabIndex | number | 是 | 待判断是否进行过滤的页签索引。<br/>取值范围：[0, 页签总数-1]，页签包含被搜索过滤隐藏的页签和通过[tabBarVisibility](./ts-container-tabcontent.md#tabbarvisibility)属性隐藏的页签。 |
+| text | string | 是 | 当前搜索文本。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ---- |
+| boolean | 对应页签是否匹配搜索条件。true表示匹配，页签会显示；false表示不匹配，页签不显示。 |
+
+## TabsSidebarSearchableOptions
+
+Tabs侧边页签栏的搜索选项。
+
+> **说明：**
+>
+> 页签默认搜索规则：在页签对应的文本信息中查找搜索输入框的内容（忽略大小写），如果能够找到，则认为页签匹配搜索条件，页签会显示；如果找不到则认为不匹配，页签不显示。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型   | 只读 | 可选   | 说明    |
+| ---- | ----- | ---- | ------ | -------- |
+| searchText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 设置搜索文本框中的初始输入文本。 |
+| placeholder | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 搜索输入框为空时的占位文本。 |
+| searchCallback | (text: string) => void | 否 | 是 | 搜索文本变化时触发的回调。<br/>参数：<br/>text：当前搜索文本。 |
+| searchFilter | [TabsSidebarSearchFilterCallback](#tabssidebarsearchfiltercallback) | 否 | 是 | 过滤函数，用于判断某个页签是否匹配搜索条件。不设置时采用默认的搜索规则。|
+
+## TabsBreakpointType\<T>
+
+不同Tabs容器断点下的值。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型  | 只读 | 可选   | 说明      |
+| ----  | ---------  | ---- | ------ | -------  |
+| sm | T | 否 | 是 | 小尺寸Tabs容器下的值，小尺寸是指Tabs宽度属于范围：[0, 600vp)。 |
+| md | T | 否 | 是 | 中尺寸Tabs容器下的值，中尺寸是指Tabs宽度属于范围：[600vp, 840vp)。 |
+| lg | T | 否 | 是 | 大尺寸Tabs容器下的值，大尺寸是指Tabs宽度属于范围：[840vp, +∞)。 |
 
 ## BarMode枚举说明
 
@@ -553,21 +1297,25 @@ TabBar布局模式枚举。
 
 点击[TabBar](./ts-container-tabcontent.md#tabbar)页签时切换TabContent的动画形式枚举。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 值   | 说明                                                         |
 | ------------- | ---- | ------------------------------------------------------------ |
-| CONTENT_FIRST | 0    | 先加载目标页内容，再开始切换动画。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ACTION_FIRST  | 1    | 先开始切换动画，再加载目标页内容；生效需要同时需要满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CONTENT_FIRST | 0    | 先加载目标页内容，再开始切换动画。适用于需要先确保内容加载完成再展示动画的场景，可避免动画过程中出现空白内容，推荐用于内容加载较快、需要平滑过渡的场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ACTION_FIRST  | 1    | 先开始切换动画，再加载目标页内容；生效需要同时满足：Tabs的height、width没有设置成auto。适用于需要立即响应用户操作、快速开始动画的场景，推荐用于内容加载较慢但希望提供快速视觉反馈的场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | NO_ANIMATION  | 2    | 关闭默认动画。调用TabsController的[changeIndex](#changeindex)接口切换TabContent时该枚举值不生效。<br>可以通过设置[animationDuration](#animationduration)为0实现调用TabsController的changeIndex接口时不带动画。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | CONTENT_FIRST_WITH_JUMP<sup>15+</sup> | 3    | 先加载目标页内容，再无动画跳转到目标页附近，最后有动画跳转到目标页。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
-| ACTION_FIRST_WITH_JUMP<sup>15+</sup>  | 4    | 先无动画跳转到目标页附近，再有动画跳转到目标页，最后加载目标页内容。此项生效需要同时需要满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ACTION_FIRST_WITH_JUMP<sup>15+</sup>  | 4    | 先无动画跳转到目标页附近，再有动画跳转到目标页，最后加载目标页内容。此项生效需要同时满足：Tabs的height、width没有设置成auto。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 ## LayoutStyle<sup>10+</sup>枚举说明
 
 [Scrollable](#barmode枚举说明)模式下不滚动时的页签排布方式枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -576,27 +1324,31 @@ TabBar布局模式枚举。
 | ---------- | -- | ---------------------------------------- |
 | ALWAYS_CENTER | 0 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度时，TabBar不可滚动，页签紧凑居中。|
 | ALWAYS_AVERAGE_SPLIT | 1 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度时，TabBar不可滚动，且所有页签平均分配TabBar宽度。|
-| SPACE_BETWEEN_OR_CENTER      | 2 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度但超过TabBar宽度一半时，TabBar不可滚动，页签紧凑居中。<br/>当页签内容不超过TabBar宽度一半时，TabBar不可滚动，保证页签居中排列在TabBar宽度一半，且间距相同。|
+| SPACE_BETWEEN_OR_CENTER      | 2 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度但超过TabBar宽度一半时，TabBar不可滚动，页签紧凑居中。<br/>当页签内容不超过TabBar宽度一半时，TabBar不可滚动，页签居中排列，页签之间的间距相等，所有页签的总宽度占用TabBar宽度的一半。|
 
 ## CommonModifier<sup>15+</sup>
 
-type CommonModifier = CommonModifier
+type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier
 
-作为Tabs组件的参数对象。
+CommonModifier类型用于设置Tabs组件参数。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型         | 说明                                     |
 | ---------- | ---------------------------------------- |
-| [CommonModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) | 设置TabBar的通用属性。 |
+| import('../api/arkui/CommonModifier').[CommonModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 设置TabBar的通用属性。<br/>默认值：undefined |
 
 ## TabsCacheMode<sup>19+</sup>枚举说明
 
 子组件的缓存模式。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -617,8 +1369,43 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 
 | 名称                  | 值 | 说明                                     |
 | --------------------- | -- | ---------------------------------------- |
-| SELF_ONLY       | 0  | Tabs自身滚动，不与父组件联动。 |
-| SELF_FIRST | 1  | Tabs自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Tabs触发边缘效果。 |
+| SELF_ONLY       | 0  | Tabs自身滚动，不与父组件联动。适用于Tabs组件内部有完整滚动功能、需要独立控制滚动行为的场景。 |
+| SELF_FIRST | 1  | Tabs自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Tabs触发边缘效果。适用于Tabs作为主要滚动区域、滚动到边缘后需要与父组件联动的嵌套滚动场景。 |
+
+## TabBarDisplayMode
+
+不同Tabs容器断点下页签栏的实际显示模式枚举。该枚举用于[barDisplayModeBreakpoint](#bardisplaymodebreakpoint)接口指定不同断点下的显示模式。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值 | 说明  |
+| ------ | -- | ------  |
+| BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。 |
+| SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。 |
+| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.1.0 |
+
+## TabsSidebarDisplayStyle
+
+侧边栏展示模式枚举。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| EMBED | 0 | 嵌入模式。侧边栏嵌入到容器内，与内容区并列显示。显示侧边栏时内容区宽度相应减少，侧边栏与内容区共同占满容器宽度。适用于需要同时展示侧边栏和内容区的场景。 |
+| DISPLACE | 1 | 推挤模式。内容区宽度保持不变，显示侧边栏时将内容区部分区域挤出容器外。适用于需要保持内容区宽度不变的场景。 |
 
 ## 事件
 
@@ -632,13 +1419,13 @@ Tab页签切换后触发的事件。
 
 满足以下任一条件，即可触发该事件：
 
-1、滑动页面进行页面切换时，组件滑动动画结束后触发。
+1. 滑动页面进行页面切换时，组件滑动动画结束后触发。
 
-2、通过[控制器](#tabscontroller)调用[changeIndex](#changeindex)接口，Tab页签切换后触发。
+2. 通过[控制器](#tabscontroller)调用[changeIndex](#changeindex)接口，Tab页签切换后触发。
 
-3、动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值，Tab页签切换后触发。
+3. 动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值，Tab页签切换后触发。
 
-4、点击TabBar页签，Tab页签切换后触发。
+4. 点击TabBar页签，Tab页签切换后触发。
 
 >  **说明：**
 >
@@ -652,7 +1439,7 @@ Tab页签切换后触发的事件。
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示的index索引，索引从0开始计算。 |
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示页签的索引值，从0开始计算。 |
 
 ### onTabBarClick<sup>10+</sup>
 
@@ -662,13 +1449,15 @@ Tab页签点击后触发的事件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 被点击的index索引，索引从0开始计算。 |
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 被点击页签的索引值，从0开始计算。 |
 
 ### onAnimationStart<sup>11+</sup>
 
@@ -677,6 +1466,8 @@ onAnimationStart(handler: OnTabsAnimationStartCallback)
 切换动画开始时触发该回调。当[animationDuration](#animationduration)为0时动画关闭且[scrollable](#scrollable)为false时，不触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -690,9 +1481,11 @@ onAnimationStart(handler: OnTabsAnimationStartCallback)
 
 onAnimationEnd(handler: OnTabsAnimationEndCallback)
 
-切换动画结束时触发该回调，包括动画过程中手势中断。当animationDuration为0时动画关闭，不触发该回调。
+切换动画结束时触发该回调，包括动画过程中手势中断。当[animationDuration](#animationduration)为0（关闭动画）时，不触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -706,9 +1499,15 @@ onAnimationEnd(handler: OnTabsAnimationEndCallback)
 
 onGestureSwipe(handler: OnTabsGestureSwipeCallback)
 
-在页面跟手滑动过程中，逐帧触发该回调。
+在页面跟手滑动过程中，逐帧触发，用于监听当前显示页面的实时滑动状态。
+
+> **说明：**
+>
+> 当使用[customContentTransition](#customcontenttransition11)自定义切换动画时，此事件不触发。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -722,7 +1521,7 @@ onGestureSwipe(handler: OnTabsGestureSwipeCallback)
 
 customContentTransition(delegate: TabsCustomContentTransitionCallback)
 
-自定义Tabs页面切换动画。
+自定义Tabs页面切换动画。适用场景：需要个性化页签切换动效时使用，如翻转、淡入淡出、缩放等。
 
 使用说明：
 
@@ -741,6 +1540,8 @@ customContentTransition(delegate: TabsCustomContentTransitionCallback)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -758,21 +1559,23 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 
 满足以下任一条件，即可触发该事件：
 
-1、滑动TabContent切换新页面时触发。
+1. 滑动TabContent切换新页面时触发。
 
-2、通过TabsController.[changeIndex](#changeindex)接口切换新页面时触发。
+2. 通过TabsController.[changeIndex](#changeindex)接口切换新页面时触发。
 
-3、通过动态修改index属性值切换新页面时触发。
+3. 通过动态修改index属性值切换新页面时触发。
 
-4、通过点击TabBar页签切换新页面时触发。
+4. 通过点击TabBar页签切换新页面时触发。
 
-5、TabBar页签获焦后，通过键盘左右方向键等切换新页面时触发。
+5. TabBar页签获焦后，通过键盘左右方向键等切换新页面时触发。
 
 >**说明：**
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -804,13 +1607,15 @@ onSelected(event: Callback\<number>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前选中元素的索引。 |
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前选中元素的索引，从0开始计算。 |
 
 ### onUnselected<sup>18+</sup>
 
@@ -834,13 +1639,15 @@ onUnselected(event: Callback\<number>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 将要隐藏元素的索引。 |
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 将要隐藏元素的索引，从0开始计算。 |
 
 ### onContentDidScroll<sup>23+</sup>
 
@@ -852,6 +1659,8 @@ onContentDidScroll(handler: OnTabsContentDidScrollCallback | undefined)
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -860,6 +1669,26 @@ onContentDidScroll(handler: OnTabsContentDidScrollCallback | undefined)
 | ------ | ---- | ---- | ---- |
 | handler | [OnTabsContentDidScrollCallback](#ontabscontentdidscrollcallback23) \| undefined | 是 | Tabs滑动时触发的回调，undefined会解绑原有回调。 |
 
+### onBarDisplayModeChange
+
+onBarDisplayModeChange(callback: Optional\<Callback\<TabBarDisplayMode>>)
+
+页签栏显示模式切换事件。使用callback异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Optional\<[Callback](./ts-types.md#callback12)\<[TabBarDisplayMode](#tabbardisplaymode)>> | 是 | 当Tabs的显示模式发生切换时，触发该回调。 |
+
 ## OnTabsAnimationStartCallback<sup>18+</sup>
 
 type OnTabsAnimationStartCallback = (index: number, targetIndex: number, extraInfo: TabsAnimationEvent) => void
@@ -867,6 +1696,8 @@ type OnTabsAnimationStartCallback = (index: number, targetIndex: number, extraIn
 切换动画开始时触发的回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -886,6 +1717,8 @@ type OnTabsAnimationEndCallback = (index: number, extraInfo: TabsAnimationEvent)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -903,13 +1736,15 @@ type OnTabsGestureSwipeCallback = (index: number, extraInfo: TabsAnimationEvent)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                                   | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| index  | number                                                 | 是   | 当前显示元素的索引，索引从0开始。 <br/>取值范围：[0, 索引值-1]                                   |
+| index  | number                                                 | 是   | 当前显示元素的索引，索引从0开始。 <br/>取值范围：[0, 页签总数-1]                                   |
 | extraInfo  | [TabsAnimationEvent](#tabsanimationevent11对象说明) | 是   | 动画相关信息，只返回主轴方向上当前显示元素相对于Tabs起始位置的位移。 |
 
 ## TabsCustomContentTransitionCallback<sup>18+</sup>
@@ -920,14 +1755,16 @@ type TabsCustomContentTransitionCallback = (from: number, to: number) => TabCont
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| from   | number | 是   | 动画开始时，当前页面的index值，索引从0开始。<br/>取值范围：[0, 索引值-1]，当设置的值超过索引值或小于0时无转场动画。 |
-| to     | number | 是   | 动画开始时，目标页面的index值，索引从0开始。<br/>取值范围：[0, 索引值-1]，当设置的值超过索引值或小于0时无转场动画。 |
+| from   | number | 是   | 动画开始时，当前页面的index值，索引从0开始。<br/>取值范围：[0, 页签总数-1]，当设置的值超过最大索引值或小于0时无转场动画。 |
+| to     | number | 是   | 动画开始时，目标页面的index值，索引从0开始。<br/>取值范围：[0, 页签总数-1]，当设置的值超过最大索引值或小于0时无转场动画。 |
 
 **返回值：** 
 
@@ -943,6 +1780,8 @@ type OnTabsContentWillChangeCallback = (currentIndex: number, comingIndex: numbe
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -950,7 +1789,7 @@ type OnTabsContentWillChangeCallback = (currentIndex: number, comingIndex: numbe
 | 参数名       | 类型   | 必填 | 说明                                       |
 | ------------ | ------ | ---- | ------------------------------------------ |
 | currentIndex | number | 是   | 当前显示页面的index索引，索引从0开始计算。 |
-| comingIndex  | number | 是   | 将要显示的新页面的index索引。              |
+| comingIndex  | number | 是   | 将要显示的新页面的index索引，索引从0开始计算。              |
 
 **返回值：** 
 
@@ -964,13 +1803,15 @@ Tabs组件动画相关信息集合。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称            | 类型      | 只读 | 可选 | 说明                                       |
 | ------------- | ---------- | ---- | ---- | ------------------------ |
-| currentOffset | number | 否 | 否 | Tabs当前显示元素在主轴方向上，相对于Tabs起始位置的位移。单位vp，默认值为0。|
-| targetOffset | number | 否 | 否 | Tabs动画目标元素在主轴方向上，相对于Tabs起始位置的位移。单位vp，默认值为0。|
-| velocity | number | 否 | 否 | Tabs离手动画开始时的离手速度。单位vp/s，默认值为0。|
+| currentOffset | number | 否 | 否 | Tabs当前显示元素在主轴方向上，相对于Tabs起始位置的位移。单位：vp，默认值为0。正值表示向右（横向）或向下（纵向）偏移，负值表示向左（横向）或向上（纵向）偏移。|
+| targetOffset | number | 否 | 否 | Tabs动画目标元素在主轴方向上，相对于Tabs起始位置的位移。单位：vp，默认值为0。正值表示向右（横向）或向下（纵向）偏移，负值表示向左（横向）或向上（纵向）偏移。|
+| velocity | number | 否 | 否 | Tabs离手动画开始时的离手速度。单位：vp/s，默认值为0。正值表示向右（横向）或向下（纵向）滑动，负值表示向左（横向）或向上（纵向）滑动，速度值越大表示滑动越快，该参数可用于实现惯性滚动效果。|
 
 ## TabContentAnimatedTransition<sup>11+</sup>
 
@@ -980,11 +1821,13 @@ Tabs自定义切换动画相关信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称            | 类型         | 只读 | 可选   | 说明                                       |
 | ------------- | ---------------- | ------ | ---- |---------------------- |
-| timeout | number | 否 | 是 | Tabs自定义切换动画超时时间。从自定义动画开始切换计时，如果到达该时间后，开发者仍未调用[TabContentTransitionProxy](#tabcontenttransitionproxy11)的finishTransition接口通知Tabs组件自定义动画结束，那么组件就会认为此次自定义动画已结束，直接执行后续操作。<br/>默认值：1000<br/>单位：ms<br/>取值范围：[0, +∞)。|
+| timeout | number | 否 | 是 | 自定义切换动画超时时间。如果到达该时间后，开发者仍未调用[TabContentTransitionProxy](#tabcontenttransitionproxy11)的finishTransition接口通知Tabs组件自定义动画结束，那么组件就会认为此次自定义动画已结束，直接执行后续操作。<br/>默认值：1000<br/>单位：ms<br/>取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。|
 | transition | [Callback](./ts-types.md#callback12)\<[TabContentTransitionProxy](#tabcontenttransitionproxy11)> | 否 | 否 | 自定义切换动画具体内容。|
 
 ## TabContentTransitionProxy<sup>11+</sup>
@@ -995,6 +1838,8 @@ Tabs自定义切换动画执行过程中，返回给开发者的proxy对象。�
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### 属性
@@ -1004,7 +1849,7 @@ Tabs自定义切换动画执行过程中，返回给开发者的proxy对象。�
 | from | number | 否 | 否 | 自定义动画起始页面对应的index值，索引从0开始。|
 | to | number | 否 | 否 | 自定义动画目标页面对应的index值，索引从0开始。|
 
-### finishTransition
+### finishTransition<sup>11+</sup>
 
 finishTransition(): void
 
@@ -1013,6 +1858,8 @@ finishTransition(): void
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1030,6 +1877,8 @@ Tabs滑动时触发的回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1039,7 +1888,7 @@ Tabs滑动时触发的回调。
 | selectedIndex | number | 是 | 当前选中页面的索引。例如，当前选中的页签索引为0，从第0页切换到第1页的动画过程中，每一次回调的selectedIndex都为0。 |
 | index | number | 是 | 视窗内页面的索引。例如，页面滑动过程中，视窗内有第0页和第1页两页时，每帧会触发两次回调。其中，第一次回调的index为0，第二次回调的index为1。 |
 | position | number | 是 | index页面相对于Tabs主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。例如，一个横向Tabs中，当前选中的页签索引为0，从第0页往左切换到第1页的动画过程中，若刚好有一帧第0页和第1页分别占用视窗的30%和70%时，当前帧会触发两次回调。其中，第一次回调的position为-0.7，表示当前帧第0页在Tabs主轴起始位置的左侧，且第0页左侧位置距离Tabs主轴起始位置为视窗的70%，即第0页往左移动了视窗70%的距离。第二次回调的position为0.3，表示当前帧第1页在Tabs主轴起始位置的右侧，且第1页左侧位置距离Tabs主轴起始位置为视窗的30%，实际上第1页也是往左移动了视窗70%的距离。 |
-| mainAxisLength | number | 是 | index对应页面在主轴方向上的长度，单位vp。例如，某一次回调的index为0，这一次回调的mainAxisLength为360，则表示当前帧第0页在主轴方向上的长度为360vp。横向Tabs代表的是页面宽度，竖向Tabs代表的是页面高度。 |
+| mainAxisLength | number | 是 | index对应页面在主轴方向上的长度，单位：vp。例如，某一次回调的index为0，这一次回调的mainAxisLength为360，则表示当前帧第0页在主轴方向上的长度为360vp。横向Tabs代表的是页面宽度，竖向Tabs代表的是页面高度。 |
 
 ## TabsController
 
@@ -1063,7 +1912,11 @@ TabsController的构造函数。
 
 changeIndex(value: number): void
 
-控制Tabs切换到指定页签。
+控制Tabs切换到指定页签。在需要通过按钮、下拉菜单或其他控件实现页签跳转功能时使用，例如点击“上一页”/“下一页”按钮切换页签。
+
+> **说明：**
+>
+> 当animationMode设置为[AnimationMode.NO_ANIMATION](#animationmode12枚举说明)时，调用此接口切换TabContent时默认动画不生效，可通过设置[animationDuration](#animationduration)为0实现不带动画切换。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1073,13 +1926,13 @@ changeIndex(value: number): void
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| value | number | 是    | 页签在Tabs里的索引值，索引值从0开始。<br/>**说明：** <br/>设置小于0或大于最大数量的值时，取默认值0。 |
+| value | number | 是    | 页签的索引，从0开始计算。取值范围：[0, 页签总数-1]。设置范围外的值时按0处理。 |
 
 ### preloadItems<sup>12+</sup>
 
 preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
-控制Tabs预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。
+控制Tabs预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。适用于需要提前加载某些页签以提高切换性能的场景，如某些页签内容较复杂或资源较多时，可预加载以优化用户体验。
 
 > **说明：**
 >
@@ -1087,9 +1940,11 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 > 
 > - 如果TabsController对象未绑定任何Tabs组件，直接调用该接口，会抛出JS异常。因此使用该接口时，建议通过try-catch捕获异常。
 >
-> - 使用preloadItems预加载标签页时，若需自定义TabBar上的显示内容，推荐使用ComponentContent实现，使用示例请参考[示例9](./ts-container-tabcontent.md#示例9通过componentcontent设置tabbar)。
+> - 使用preloadItems预加载标签页时，若需自定义TabBar上的显示内容，推荐使用ComponentContent实现，使用示例请参考[示例10](./ts-container-tabcontent.md#示例10通过componentcontent预加载子节点)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1103,7 +1958,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 类型                                                         | 说明                     |
 | ------------------------------------------------------------ | ------------------------ |
-| Promise\<void> | 预加载完成后触发的回调。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1117,7 +1972,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 setTabBarTranslate(translate: TranslateOptions): void
 
-设置TabBar的平移距离。
+设置TabBar的平移距离。适用于需要实现TabBar动态位置调整的场景，如TabBar滑动隐藏显示效果、配合页面滚动实现沉浸式体验等。
 
 > **说明：**
 >
@@ -1125,6 +1980,8 @@ setTabBarTranslate(translate: TranslateOptions): void
 >
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1138,7 +1995,7 @@ setTabBarTranslate(translate: TranslateOptions): void
 
 setTabBarOpacity(opacity: number): void
 
-设置TabBar的不透明度。
+设置TabBar的不透明度。适用于需要调整TabBar显示透明度的场景，如TabBar渐隐渐显效果、降低TabBar视觉干扰突出内容等。
 
 > **说明：**
 >
@@ -1147,13 +2004,35 @@ setTabBarOpacity(opacity: number): void
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| opacity | number | 是 | 设置TabBar的不透明度，取值范围为[0.0, 1.0]，设置的值小于0.0时，按0.0处理，设置的值大于1.0时，按1.0处理。<br> 默认值：1.0。 |
+| opacity | number | 是 | 设置TabBar的不透明度，值为1.0表示完全不透明，值为0.0表示完全透明。取值范围为[0.0, 1.0]，设置的值小于0.0时，按0.0处理，设置的值大于1.0时，按1.0处理。<br> 默认值：1.0。 |
+
+### getBarDisplayMode
+
+getBarDisplayMode(): TabBarDisplayMode
+
+获取当前Tabs组件的显示模式。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型 | 说明 |
+| ---- | ----- |
+| [TabBarDisplayMode](#tabbardisplaymode) | 当前Tabs组件的显示模式。 |
 
 ## 示例
 
@@ -1222,7 +2101,7 @@ struct TabsExample {
       }
       .height('60%')
       .backgroundColor(0xf1f3f5)
-      .barMode(this.barMode)
+      .barMode(this.barMode) // 设置TabBar的布局模式
     }
     .width('100%')
     .height(500)
@@ -1338,7 +2217,7 @@ struct TabsExample6 {
       .animationDuration(300)
       .height('60%')
       .backgroundColor(0xf1f3f5)
-      .barMode(BarMode.Scrollable, { margin: this.scrollMargin, nonScrollableLayoutStyle: this.layoutStyle })
+      .barMode(BarMode.Scrollable, { margin: this.scrollMargin, nonScrollableLayoutStyle: this.layoutStyle }) // 设置Scrollable模式下TabBar的布局样式
     }
     .width('100%')
     .height(500)
@@ -1403,7 +2282,7 @@ struct TabsExample {
       .barMode(BarMode.Fixed)
       .barWidth(360)
       .barHeight(56)
-      .animationDuration(400)
+      .animationDuration(400) // 设置Tabs翻页动画时长为400ms
       .onChange((index: number) => {
         // currentIndex控制TabContent显示页签
         this.currentIndex = index;
@@ -1413,7 +2292,7 @@ struct TabsExample {
         if (index === targetIndex) {
           return;
         }
-        // selectedIndex控制自定义TabBar内Image和Text颜色切换
+        // selectedIndex控制自定义TabBar内Text颜色切换
         this.selectedIndex = targetIndex;
       })
       .width(360)
@@ -1482,7 +2361,7 @@ struct TabsDivider1 {
         color: this.dividerColor,
         startMargin: this.startMargin,
         endMargin: this.endMargin
-      })
+      }) // 设置分割线样式
 
       Button('常规Divider').width('100%').margin({ bottom: '12vp' })
         .onClick(() => {
@@ -1601,7 +2480,7 @@ struct TabsOpaque {
       .onChange((index: number) => {
         console.info(index.toString());
       })
-      .fadingEdge(this.selfFadingFade)
+      .fadingEdge(this.selfFadingFade) // 设置页签超过容器宽度时是否渐隐消失
       .height('30%')
       .width('100%')
 
@@ -1692,7 +2571,7 @@ struct barHeightTest {
       }
       .scrollable(false)
       .height('60%')
-      .barOverlap(this.barOverlap)
+      .barOverlap(this.barOverlap) // 设置TabBar是否背后变模糊并叠加在TabContent之上
     }
     .height(500)
     .padding({ top: '24vp', left: '24vp', right: '24vp' })
@@ -1791,7 +2670,7 @@ struct TabsExample5 {
       .width('350vp')
       .animationDuration(300)
       .height('60%')
-      .barGridAlign({ sm: this.sm, margin: this.gridMargin, gutter: this.gridGutter })
+      .barGridAlign({ sm: this.sm, margin: this.gridMargin, gutter: this.gridGutter }) // 以栅格化方式设置TabBar的可见区域
       .backgroundColor(0xf1f3f5)
       .onTabBarClick((index: number) => {
         this.clickedContent += 'now index ' + index + ' is clicked\n';
@@ -1889,7 +2768,7 @@ struct TabsCustomAnimationExample {
       .backgroundColor(0xf1f3f5)
       .width('100%')
       .height(500)
-      .customContentTransition(this.customContentTransition)
+      .customContentTransition(this.customContentTransition) // 设置自定义Tabs页面切换动画
     }
   }
 }
@@ -1966,6 +2845,7 @@ struct TabsExample {
       .backgroundColor('#F1F3F5')
       .scrollable(true)
       .onContentWillChange((currentIndex, comingIndex) => {
+        // 拦截页面切换：当目标页面索引为2时返回false阻止切换，否则返回true允许切换
         if (comingIndex == 2) {
           return false;
         }
@@ -2093,10 +2973,11 @@ struct TabsExample {
       .backgroundColor('#F1F3F5')
       .animationDuration(this.animationDuration)
       .onChange((index: number) => {
-        this.currentIndex = index; // 监听索引index的变化，实现页签内容的切换。
+        // currentIndex控制TabContent显示页签内容
+        this.currentIndex = index;
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
-        // 切换动画开始时触发该回调。下划线跟着页面一起滑动，同时宽度渐变。
+        // 切换动画开始时触发：更新currentIndex为目标索引，启动下划线动画跟随页面滑动
         this.currentIndex = targetIndex;
         this.startAnimateTo(this.animationDuration, this.textInfos[targetIndex][0], this.textInfos[targetIndex][1]);
       })
@@ -2258,12 +3139,12 @@ struct TabsExample {
     Column() {
       Button('设置TabBar的平移距离').margin({ top: 20 })
         .onClick(() => {
-          this.controller.setTabBarTranslate({ x: -20, y: -20 });
+          this.controller.setTabBarTranslate({ x: -20, y: -20 }); // 设置TabBar向左和向上平移20vp
         })
 
       Button('设置TabBar的透明度').margin({ top: 20 })
         .onClick(() => {
-          this.controller.setTabBarOpacity(0.5);
+          this.controller.setTabBarOpacity(0.5); // 设置TabBar的不透明度为0.5（半透明）
         })
 
       Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
@@ -2316,9 +3197,11 @@ class MyDataSource implements IDataSource {
     return this.list[index];
   }
 
+  // 实现IDataSource接口须实现此接口
   registerDataChangeListener(listener: DataChangeListener): void {
   }
 
+  // 实现IDataSource接口须实现此接口
   unregisterDataChangeListener() {
   }
 }
@@ -2424,8 +3307,8 @@ struct TabsExample {
   }
 
   @Builder
-  tabBuilder(title: string,targetIndex: number) {
-    Column(){
+  tabBuilder(title: string, targetIndex: number) {
+    Column() {
       Text(title).fontColor(this.currentIndex === targetIndex ? '#FF0000' : '#6B6B6B')
     }.width('100%')
     .height(50)
@@ -2435,13 +3318,13 @@ struct TabsExample {
   build() {
     Column() {
       Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.currentIndex }) {
-        ForEach(this.data, (item: string) => {
+        ForEach(this.data, (item: number) => {
           TabContent() {
-            Column(){
+            Column() {
               Text('' + item)
             }.width('100%').height('100%').backgroundColor('#00CB87').justifyContent(FlexAlign.Center)
-          }.tabBar(this.tabBuilder('P' + item, parseInt(item)))
-        }, (item: string) => item)
+          }.tabBar(this.tabBuilder('P' + item, item))
+        }, (item: number) => item.toString())
       }
       .barWidth(360)
       .barHeight(60)
@@ -2457,7 +3340,7 @@ struct TabsExample {
       Text('AnimationMode:' + AnimationMode[this.currentAnimationMode])
 
       Button('AnimationMode').width('50%').margin({ top: 1 }).height(25)
-        .onClick(()=>{
+        .onClick(() => {
           if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
             this.currentAnimationMode = AnimationMode.ACTION_FIRST;
           } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
@@ -2782,7 +3665,7 @@ struct TabsExample {
     .width(360)
     .height(296)
     .backgroundColor('#F1F3F5')
-    .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+    .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE) // 设置最多缓存3个子组件（当前页及两侧各1个）
   }
 }
 
@@ -2809,7 +3692,7 @@ struct MyComponent {
 
 ### 示例19（设置TabBar背景模糊效果）
 
-该示例分别通过[barBackgroundBlurStyle](#barbackgroundblurstyle18)和[barBackgroundEffect](#barbackgroundeffect18)设置TabsBar页签栏的背景模糊样式和效果。
+该示例分别通过[barBackgroundBlurStyle](#barbackgroundblurstyle18)和[barBackgroundEffect](#barbackgroundeffect18)设置TabBar页签栏的背景模糊样式和效果。
 
 从API version 18开始，新增了barBackgroundBlurStyle和barBackgroundEffect接口。
 
@@ -2841,7 +3724,7 @@ struct TabsExample {
           }.tabBar('pink')
         }
         .barBackgroundBlurStyle(BlurStyle.COMPONENT_THICK,
-          { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT, scale: 1.0 })
+          { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT, scale: 1.0 }) // 设置组件厚模糊样式，浅色主题，默认自适应颜色，缩放比例1.0
       }
       .width(300)
       .height(300)
@@ -2867,7 +3750,7 @@ struct TabsExample {
             Column().width('100%').height('100%').backgroundColor('#E67C92')
           }.tabBar('pink')
         }
-        .barBackgroundEffect({ radius: 20, brightness: 0.6, saturation: 15 })
+        .barBackgroundEffect({ radius: 20, brightness: 0.6, saturation: 15 }) // 设置模糊半径20，亮度0.6，饱和度15
       }
       .width(300)
       .height(300)
@@ -2912,21 +3795,21 @@ struct TabsExample {
       .height(296)
       .margin({ top: 52 })
       .backgroundColor('#F1F3F5')
-      .edgeEffect(this.edgeEffect)
+      .edgeEffect(this.edgeEffect) // 设置边缘滑动效果
 
       Button('EdgeEffect.Spring').width('50%').margin({ top: 20 })
         .onClick(() => {
-          this.edgeEffect = EdgeEffect.Spring;
+          this.edgeEffect = EdgeEffect.Spring; // 设置为弹簧回弹效果
         })
 
       Button('EdgeEffect.Fade').width('50%').margin({ top: 20 })
         .onClick(() => {
-          this.edgeEffect = EdgeEffect.Fade;
+          this.edgeEffect = EdgeEffect.Fade; // 设置为渐隐效果
         })
 
       Button('EdgeEffect.None').width('50%').margin({ top: 20 })
         .onClick(() => {
-          this.edgeEffect = EdgeEffect.None;
+          this.edgeEffect = EdgeEffect.None; // 设置为无边缘效果
         })
     }.width('100%')
   }
@@ -2985,8 +3868,8 @@ struct TabsExample {
       .backgroundColor(0xf1f3f5)
       .width('100%')
       .height(500)
-      .animationCurve(this.curves[this.curveIndex])
-      .animationDuration(this.duration)
+      .animationCurve(this.curves[this.curveIndex]) // 设置翻页动画曲线
+      .animationDuration(this.duration) // 设置翻页动画时长
 
       Column({ space: 2 }) {
         Text('Curve:' + this.curveNames[this.curveIndex])
@@ -3104,7 +3987,7 @@ struct TabsDidScrollExample {
         if (index === targetIndex) {
           return;
         }
-        // selectedIndex控制自定义TabBar内Image和Text颜色切换
+        // selectedIndex控制自定义TabBar内Text颜色切换
         this.selectedIndex = targetIndex;
       })
       .width(360)
@@ -3158,8 +4041,8 @@ struct TabsExample {
                 Column().width('100%').height('100%').backgroundColor(Color.Pink)
               }.tabBar(SubTabBarStyle.of('子页c'))
             }
-            .nestedScroll(TabsNestedScrollMode.SELF_FIRST)
-          }.tabBar(SubTabBarStyle.of("首页1"))
+            .nestedScroll(TabsNestedScrollMode.SELF_FIRST) // 设置Tabs自身先滚动，滚动到边缘后父组件滚动
+          }.tabBar(SubTabBarStyle.of('首页1'))
 
 
           TabContent() {
@@ -3192,3 +4075,534 @@ struct TabsExample {
 }
 ```
 ![tabs_nestedScroll](figures/tabs_nestedscroll.gif)
+
+### 示例24（TabBar悬浮样式）
+
+本示例展示了如何通过[barFloatingStyle](#barfloatingstyle)接口设置TabBar的悬浮样式和背板沉浸式材质，以及通过maxWidth和offset属性设置TabBar的最大宽度和偏移量。
+
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
+从API版本26.0.0开始，新增barFloatingStyle接口。从API版本26.1.0开始，[FloatingTabBarStyle](#floatingtabbarstyle)新增maxWidth、offset属性。
+
+```ts
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+@Entry
+@Component
+struct TabsFloatingStyleExample {
+  build() {
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Blue)
+        }.tabBar('Blue')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar('Green')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Orange)
+        }.tabBar('Orange')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar('Pink')
+      }
+      .barFloatingStyle({
+        adaptToHandedness: true, systemMaterial: new uiMaterial.ImmersiveMaterial(
+          {
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            applyShadow: true,
+            interactive: true,
+            lightEffect: { color: Color.White }
+          }
+        )
+      })
+      .barOverlap(true)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+该示例配图为高算力设备强档效果：
+
+![tabs_floating_style](figures/tabsFloatingBar.gif)
+
+### 示例25（设置侧边页签栏样式）
+
+本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数，通过[showSidebarControlButton](#showsidebarcontrolbutton)接口设置是否在侧边页签栏头部显示用于控制展开或收起的按钮。
+
+从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar、showSidebarControlButton接口。
+
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+@Builder
+function TestHeaderBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(32)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(64)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Builder
+function TestFooterBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(16)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(24)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Builder
+function TestBottomBarBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(32)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(64)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Entry
+@Component
+struct TabsSidebarExample {
+  @State myBarStyle: TabBarStyle = TabBarStyle.BOTTOM;
+  @State tabsWidth: number = 550;
+  @State searchText: string = '';
+  @State currentIndex: number = 0;
+
+  build() {
+    Column() {
+      Column() {
+        Row() {
+          Text('barStyle: ').fontSize(25)
+          Button('BOTTOM').onClick(() => {
+            this.myBarStyle = TabBarStyle.BOTTOM;
+          }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+          Button('SIDEBAR').onClick(() => {
+            this.myBarStyle = TabBarStyle.SIDEBAR;
+          }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+          Button('SIDEBAR_ADAPTABLE').onClick(() => {
+            this.myBarStyle = TabBarStyle.SIDEBAR_ADAPTABLE;
+          }).fontSize(15).backgroundColor('#ff2787d9')
+        }.width('100%')
+        .justifyContent(FlexAlign.Center)
+        Row() {
+          Text('Tabs width: ').fontSize(25)
+          Button('550').onClick(() => {
+            this.tabsWidth = 550;
+          }).margin({right: 20}).backgroundColor('#ff2787d9')
+          Button('700').onClick(() => {
+            this.tabsWidth = 700;
+          }).margin({right: 20}).backgroundColor('#ff2787d9')
+          Button('850').onClick(() => {
+            this.tabsWidth = 850;
+          }).backgroundColor('#ff2787d9')
+        }.width('100%').margin({top: 5})
+        .justifyContent(FlexAlign.Center)
+      }.width('100%')
+      .height('18%')
+      Tabs() {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent1').fontSize(25)
+          }.width('100%').height('100%')
+        }.tabBar({icon: $r('app.media.startIcon'), text: 'tab1'})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent2').fontSize(25)
+          }.width('100%').height('100%')
+        }.tabBar({icon: $r('app.media.startIcon'), text: 'tab2'})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent3').fontSize(25)
+          }.width('100%').height('100%')
+        }
+        .tabBar({icon: $r('app.media.startIcon'), text: 'tab3'})
+      }
+      .height('65%')
+      .width(this.tabsWidth)
+      .vertical(false)
+      .barPosition(BarPosition.End)
+      .barBackgroundColor('#fff7f7f7')
+      .border({width: 1, color: '#ffd9d9d9'})
+      // 设置Tabs显示样式
+      .barStyle(this.myBarStyle)
+      // 设置侧边页签栏显示在起始侧
+      .sidebarPosition(BarPosition.Start)
+      // 设置侧边页签栏头部内容
+      .sidebarHeader(new ComponentContent(this.getUIContext(), wrapBuilder(TestHeaderBuilder)))
+      // 设置侧边页签栏页签列表尾部内容
+      .sidebarFooter(new ComponentContent(this.getUIContext(), wrapBuilder(TestFooterBuilder)))
+      // 设置侧边页签栏固定底部内容
+      .sidebarBottomBar(new ComponentContent(this.getUIContext(), wrapBuilder(TestBottomBarBuilder)))
+      // 设置侧边页签栏搜索选项
+      .sidebarSearchable({
+        placeholder: 'Search tabs',
+        searchCallback: (text: string) => {
+          this.searchText = text;
+          console.info(`search text: ${text}`);
+        }
+      })
+      // 可以通过onBarDisplayModeChange接口监听显示模式切换的事件
+      .onBarDisplayModeChange((mode: TabBarDisplayMode) => {
+        console.info(`testTag TabBarDisplayMode change to ${mode}`)
+      })
+      .showSidebarControlButton(true)
+    }
+    .width('100%')
+    .height(700)
+  }
+}
+```
+
+![tabsTabBarStyle](figures/tabsTabBarStyle.gif)
+
+### 示例26（设置侧边栏展示模式）
+
+本示例展示了如何通过[sidebarDisplayStyle](#sidebardisplaystyle)接口设置Tabs的侧边栏展示模式，切换嵌入模式（EMBED）和推挤模式（DISPLACE）。
+
+从API版本26.0.1开始，新增sidebarDisplayStyle接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSideBarDemo {
+  @State isDisplace: boolean = false;
+
+  build() {
+    Column() {
+      // sidebarDisplayStyle切换
+      Row({ space: 12 }) {
+        Text('EMBED')
+          .fontSize(14)
+          .fontColor('#FFFFFF')
+          .backgroundColor(!this.isDisplace ? '#409EFF' : '#C0C4CC')
+          .padding({ top: 6, bottom: 6, left: 16, right: 16 })
+          .borderRadius(20)
+          .onClick(() => {
+            this.isDisplace = false;
+          })
+
+        Text('DISPLACE')
+          .fontSize(14)
+          .fontColor('#FFFFFF')
+          .backgroundColor(this.isDisplace ? '#67C23A' : '#C0C4CC')
+          .padding({ top: 6, bottom: 6, left: 16, right: 16 })
+          .borderRadius(20)
+          .onClick(() => {
+            this.isDisplace = true;
+          })
+      }
+      .padding({ top: 8, bottom: 8 })
+
+      Tabs() {
+        TabContent() {
+          Column() {
+            Text('首页内容')
+              .fontSize(24)
+              .fontColor('#409EFF')
+          }
+          .width('100%')
+          .height('100%')
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#EBF5FF')
+        }
+        .tabBar('首页')
+      }
+      .barStyle(TabBarStyle.SIDEBAR)
+      .sidebarDisplayStyle(this.isDisplace ? TabsSidebarDisplayStyle.DISPLACE : TabsSidebarDisplayStyle.EMBED)
+      .scrollable(true)
+      .animationDuration(300)
+      .width('100%')
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![tabsSidebarDisplayStyle](figures/tabsSidebarDisplayStyle.gif)
+
+### 示例27（设置侧边页签栏内容的显示效果）
+
+本示例展示了通过以下接口控制侧边页签栏内容的显示效果。
+1. 通过[sidebarWidth](#sidebarwidth)接口设置侧边页签栏的宽度。
+2. 通过[sidebarBackgroundColor](#sidebarbackgroundcolor)接口设置侧边页签栏的背景颜色。
+3. 通过[sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle)接口设置侧边页签栏的背景模糊样式。
+4. 通过[sidebarSelectedIconColor](#sidebarselectediconcolor)接口设置侧边页签栏中选中态页签的图标颜色。
+5. 通过[sidebarSelectedTextColor](#sidebarselectedtextcolor)接口设置侧边页签栏中选中态页签的文本颜色。
+6. 通过[sidebarUnselectedIconColor](#sidebarunselectediconcolor)接口设置侧边页签栏中非选中态页签的图标颜色。
+7. 通过[sidebarUnselectedTextColor](#sidebarunselectedtextcolor)接口设置侧边页签栏中非选中态页签的文本颜色。
+8. 通过[sidebarSelectedBoardColor](#sidebarselectedboardcolor)接口设置侧边页签栏中选中页签的背板颜色。
+
+从API版本26.0.1开始，新增sidebarWidth、sidebarBackgroundColor、sidebarBackgroundBlurStyle、sidebarSelectedTextColor、sidebarSelectedIconColor、sidebarUnselectedTextColor、sidebarUnselectedIconColor、sidebarSelectedBoardColor接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSidebarContentStyleExample {
+  private testArr: Array<number> = new Array();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 6; i++) {
+      this.testArr.push(i);
+    }
+  }
+
+  build() {
+    Tabs() {
+      ForEach(this.testArr, (data: number) => {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`TabContent${data}`)
+          }
+          .width('100%')
+          .height('100%')
+        }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        .tabBar({icon: $r('app.media.arrow'), text: `TabContent${data}`})
+      }, (data: number) => data.toString())
+    }
+    .height('400')
+    .width('400')
+    .backgroundColor('#fffffbf0')
+    // 设置Tabs为侧边页签栏样式
+    .barStyle(TabBarStyle.SIDEBAR)
+    // 设置侧边页签栏的宽度
+    .sidebarWidth('190')
+    // 设置侧边页签栏的背景颜色
+    .sidebarBackgroundColor('#80f6fcf5')
+    // 设置侧边页签栏的背景模糊样式
+    .sidebarBackgroundBlurStyle(BlurStyle.Thin)
+    // 设置侧边页签栏的选中页签的图标颜色
+    .sidebarSelectedIconColor('#ffa10a21')
+    // 设置侧边页签栏的选中页签的文本颜色
+    .sidebarSelectedTextColor('#ffa10a21')
+    // 设置侧边页签栏的非选中页签的图标颜色
+    .sidebarUnselectedIconColor('#ffffc000')
+    // 设置侧边页签栏的非选中页签的文本颜色
+    .sidebarUnselectedTextColor('#ffffc000')
+    // 设置侧边页签栏的选中页签的背板颜色
+    .sidebarSelectedBoardColor('#ffe3fff9')
+  }
+}
+```
+
+![tabsSidebarStyle](figures/tabsSidebarStyle.gif)
+
+### 示例28（设置侧边页签栏模式下分割线支持拖拽效果）
+
+本示例展示了通过以下接口实现侧边页签栏模式下分割线支持拖拽并指定拖拽范围的效果。
+1. 通过[sidebarDivider](#sidebardivider)接口设置侧边页签栏的分割线样式。
+2. 通过[minSidebarWidth](#minsidebarwidth)接口设置侧边页签栏的最小宽度。
+3. 通过[maxSidebarWidth](#maxsidebarwidth)接口设置侧边页签栏的最大宽度。
+4. 通过[minContentWidth](#mincontentwidth)接口设置内容区的最小宽度。
+
+从API版本26.0.1开始，新增sidebarDivider、minSidebarWidth、maxSidebarWidth、minContentWidth接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSidebarDraggableExample {
+  private testArr: Array<number> = new Array();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 3; i++) {
+      this.testArr.push(i);
+    }
+  }
+
+  build() {
+    Tabs() {
+      ForEach(this.testArr, (data: number) => {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`TabContent${data}`)
+          }
+          .width('100%')
+          .height('100%')
+        }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        .tabBar({icon: $r('app.media.arrow'), text: `TabContent${data}`})
+      }, (data: number) => data.toString())
+    }
+    .height('400')
+    .width('800')
+    .backgroundColor('#fffffbf0')
+    // 设置Tabs为侧边页签栏样式
+    .barStyle(TabBarStyle.SIDEBAR)
+    // 设置侧边页签栏对应的分割线样式
+    .sidebarDivider({
+      strokeWidth: 1,
+      color: '#ff707070',
+      startMargin: 5,
+      endMargin: 5
+    })
+    // 设置侧边页签栏的最小宽度
+    .minSidebarWidth('190')
+    // 设置侧边页签栏的最大宽度
+    .maxSidebarWidth('40%')
+    // 设置内容区的最小宽度
+    .minContentWidth('360')
+  }
+}
+```
+
+![tabsSidebarDraggable](figures/tabsSidebarDraggable.gif)
+
+### 示例29（自定义显示模式断点）
+
+本示例展示了通过[barDisplayModeBreakpoint](#bardisplaymodebreakpoint)接口实现自定义显示模式断点的功能。
+
+从API版本26.0.1开始，新增barDisplayModeBreakpoint接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSidebarBreakpointExample {
+  private testArr: Array<number> = new Array();
+  @State tabsWidth: number = 590;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 6; i++) {
+      this.testArr.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text('Tabs width: ').fontSize(25)
+        Button('590').onClick(() => {
+          this.tabsWidth = 590;
+        }).fontSize(15).backgroundColor('#ff2787d9')
+        Button('650').onClick(() => {
+          this.tabsWidth = 650;
+        }).fontSize(15).backgroundColor('#ff2787d9')
+        Button('850').onClick(() => {
+          this.tabsWidth = 850;
+        }).fontSize(15).backgroundColor('#ff2787d9')
+      }
+      .width(400)
+      .height(100)
+      .justifyContent(FlexAlign.SpaceAround)
+      Tabs() {
+        ForEach(this.testArr, (data: number) => {
+          TabContent() {
+            Stack({alignContent: Alignment.Center}) {
+              Text(`TabContent${data}`)
+            }
+            .width('100%')
+            .height('100%')
+          }
+          // 请开发者将$r('app.media.arrow')替换为实际的资源
+          .tabBar({icon: $r('app.media.arrow'), text: `TabContent${data}`})
+        }, (data: number) => data.toString())
+      }
+      .height('400')
+      .width(this.tabsWidth)
+      .border({width: 1, color: '#ffd9d9d9'})
+      .backgroundColor("#fffffbf0")
+      // 设置Tabs为自适应样式
+      .barStyle(TabBarStyle.SIDEBAR_ADAPTABLE)
+      // 设置自定义显示断点
+      .barDisplayModeBreakpoint({
+        // 设定[0, 600vp)宽度范围时显示为TabBarDisplayMode.BOTTOM_TABBAR模式
+        sm: TabBarDisplayMode.BOTTOM_TABBAR,
+        // 设定[600vp, 840vp)宽度范围时显示为TabBarDisplayMode.BOTTOM_TABBAR模式
+        md: TabBarDisplayMode.BOTTOM_TABBAR,
+        // 设定[840vp, +∞)宽度范围时显示为TabBarDisplayMode.SIDEBAR模式
+        lg: TabBarDisplayMode.SIDEBAR
+      })
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+![tabsSidebarBreakpoint](figures/tabsSidebarBreakpoint.gif)
+
+### 示例30（TabBar顶部悬浮样式）
+
+本示例展示了如何通过[barStyle](#barstyle)接口设置TabBar为顶部悬浮页签栏样式（TabBarStyle.TOP），并通过[topBarFloatingStyle](#topbarfloatingstyle)接口设置TabBar的顶部悬浮样式，包括以下属性：页签栏宽度、左右边距、顶部边距、蒙层颜色、蒙层高度、最大宽度、偏移量。
+
+从API版本26.1.0开始，新增topBarFloatingStyle接口、[TabBarStyle](#tabbarstyle).TOP枚举值。
+
+```ts
+@Entry
+@Component
+struct TabsTopFloatingStyleExample {
+  @State barWidth: number = 320;
+  @State barTopMargin: number = 16;
+  @State useOffset: boolean = false;
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor("#E5E5E5")
+        }.tabBar('Gray')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar('Green')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Orange)
+        }.tabBar('Orange')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar('Pink')
+      }
+      // 设置TabBar为顶部悬浮页签栏样式
+      .barStyle(TabBarStyle.TOP)
+      // 设置TabBar的顶部悬浮样式
+      .topBarFloatingStyle({
+        barWidth: this.barWidth,
+        barSideMargin: 24,
+        barTopMargin: this.barTopMargin,
+        maskColor: '#80F1F3F5',
+        maskHeight: 80,
+        maxWidth: 360,
+        offset: this.useOffset ? { x: 0, y: 10 } : undefined
+      })
+      .barOverlap(true)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![tabsTopFloatingStyle](figures/tabsTopBar.PNG)

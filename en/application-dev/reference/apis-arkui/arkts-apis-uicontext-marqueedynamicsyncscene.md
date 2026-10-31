@@ -1,12 +1,14 @@
 # Class (MarqueeDynamicSyncScene)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-08-05T03:08:38.468Z pushedAt=2026-08-05T07:48:40.035Z -->
 
-Provides frame rate configuration APIs for the **Marquee** component.
+Provides the dynamic frame rate configuration capability for the Marquee component, supporting dynamic frame rate adjustment during Marquee animation to optimize performance and power consumption. It is applicable to scenarios where animation smoothness and system resource consumption need to be balanced in marquee contexts.
 
 > **NOTE**
 >
@@ -20,11 +22,13 @@ Provides frame rate configuration APIs for the **Marquee** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Name      | Type                                                     | Read-Only| Optional| Description                               |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
-| type      | [MarqueeDynamicSyncSceneType](./arkts-apis-uicontext-e.md#marqueedynamicsyncscenetype14) | Yes  | No  | Dynamic sync scene of the **Marquee** component.            |
+| type      | [MarqueeDynamicSyncSceneType](./arkts-apis-uicontext-e.md#marqueedynamicsyncscenetype14) | Yes   | No   | Dynamic sync scene type of the Marquee component. It is used to specify the dynamic sync scene type mode of the Marquee component. Different scene types correspond to different frame rate adjustment strategies. For details, see MarqueeDynamicSyncSceneType.             |
 
 **Example**
 
@@ -41,14 +45,14 @@ struct MarqueeExample {
   private step: number = 10;
   private loop: number = Number.POSITIVE_INFINITY;
   controller: TextClockController = new TextClockController();
-  convert2time(value: number): string {
-    let date = new Date(Number(value+'000'));
+  convertToTime(value: number): string {
+    let date = new Date(Number(value + '000'));
     let hours = date.getHours().toString().padStart(2, '0');
     let minutes = date.getMinutes().toString().padStart(2, '0');
     let seconds = date.getSeconds().toString().padStart(2, '0');
-    return hours+ ":" + minutes + ":" + seconds;
+    return hours + ':' + minutes + ':' + seconds;
   }
-  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
+  @State frameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
   private scenes: MarqueeDynamicSyncScene[] = [];
 
   build() {
@@ -76,9 +80,9 @@ struct MarqueeExample {
         .onClick(() => {
           this.start = true;
           this.controller.start();
-          this.scenes.forEach((scenes: MarqueeDynamicSyncScene) => {
-            if (scenes.type == MarqueeDynamicSyncSceneType.ANIMATION) {
-              scenes.setFrameRateRange(this.ANIMATION);
+          this.scenes.forEach((scene: MarqueeDynamicSyncScene) => {
+            if (scene.type == MarqueeDynamicSyncSceneType.ANIMATION) {
+              scene.setFrameRateRange(this.frameRateRange);
             }
           });
         })
@@ -90,7 +94,7 @@ struct MarqueeExample {
       TextClock({ timeZoneOffset: -8, controller: this.controller })
         .format('hms')
         .onDateChange((value: number) => {
-          this.src = this.convert2time(value);
+          this.src = this.convertToTime(value);
         })
         .margin(20)
         .fontSize(30)

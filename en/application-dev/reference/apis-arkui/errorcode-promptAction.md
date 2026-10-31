@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=c48e99653addcebc1ddb3fe176c39e9f27289a83 translatedAt=2026-08-29T09:23:17.804Z pushedAt=2026-08-31T03:57:42.425Z -->
 
 > **NOTE**
 >
@@ -94,7 +95,7 @@ The provided **targetId** is invalid, or the node corresponding to the **targetI
 
 Check whether the node corresponding to the provided **targetId** exists. You can query the node using the [getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12) API.
 
-## 103305 Node Not Mounted
+## 103305 Node Specified by targetId Not Mounted on the Component Tree
 
 **Error Message**
 
@@ -102,17 +103,37 @@ The node of targetId is not in the component tree.
 
 **Description**
 
-This error code is reported when the node corresponding to the provided **targetId** is not mounted in the component tree.
+This error code is reported when the node specified by **targetId** is not mounted on the component tree.
 
 **Possible Causes**
 
-The node with the specified **targetId** is not mounted in the component tree.
+The node specified by **targetId** is not mounted on the component tree.
 
 **Solution**
 
-1. Check whether the node corresponding to the provided **targetId** exists. You can query the node using the [getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12) API.
+1. Check whether the node specified by **targetId** exists. You can query the node using the [getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12) API.
 
-2. Check whether the node corresponding to the provided **targetId** has been mounted to the main node tree. You can do so using the [isAttached()](./js-apis-arkui-frameNode.md#isattached12) API of the content node.
+2. Confirm that the node specified by **targetId** is mounted on the main component tree. You can call the [isAttached()](./js-apis-arkui-frameNode.md#isattached12) API of the content node to check whether it is mounted on the main component tree.
+
+## 103306 Node Mount Failure Causes Dialog Box to Fail to Open
+
+**Error Message**
+
+The dialog cannot be opened due to node mount failure.
+
+**Description**
+
+This error code is reported when the dialog box cannot be opened because the node fails to be mounted.
+
+**Possible Causes**
+
+The content node of the dialog box fails to be mounted, so it cannot be mounted to the node tree for normal rendering and display.
+
+**Solution**
+
+1. Check whether the dialog box content can be rendered and displayed normally.
+
+2. When **levelMode** in [DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions) is set to **LevelMode.EMBEDDED**, verify that the page node corresponding to **levelUniqueId** has been mounted to the node tree before calling the [present](arkts-apis-uicontext-dialogpresenter.md#present) API.
 
 ## 103307 Failed to Open the Overlay Due to a System Pop-up Window
 
@@ -132,6 +153,28 @@ A system pop-up window exists on the current page, blocking the display of the o
 
 Wait until the user closes the system pop-up window and try to open the overlay again.
 
+## 103308 Dialog Box Cannot Be Opened Due to Subwindow Creation Failure
+
+**Error Message**
+
+The dialog cannot be opened due to subwindow create failure.
+
+**Description**
+
+This error code is reported when the dialog box cannot be opened because subwindow creation failed.
+
+**Possible Causes**
+
+1. A system popup window exists on the current page, blocking the display of the overlay and causing the subwindow creation of the dialog box to fail.
+
+2. When the dialog box needs to be displayed in a subwindow (**showInSubWindow** in [DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions) is set to **true**), the subwindow creation fails.
+
+**Solution**
+
+1. Wait for the user to close the system popup window, and then try to open the overlay again.
+
+2. Confirm that the current environment supports subwindow creation, and then try to call the [present](arkts-apis-uicontext-dialogpresenter.md#present) API again.
+
 ## 103401 Toast Not Found
 
 **Error Message**
@@ -149,3 +192,5 @@ The toast has not been displayed or has already been closed.
 **Solution**
 
 Ensure that the toast is being displayed.
+
+<!--no_check-->

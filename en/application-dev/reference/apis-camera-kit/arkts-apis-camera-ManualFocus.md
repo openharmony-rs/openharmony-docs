@@ -1,4 +1,4 @@
-# Interface (ManualFocus)
+# APIs (ManualFocus)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
@@ -25,23 +25,23 @@ import { camera } from '@kit.CameraKit';
 
 getFocusDistance(): number
 
-Obtains the focus distance, in the range [0.0, 1.0], where **0.0** indicates the shortest achievable focus distance and **1.0** indicates the longest focus distance. The default value is **1.0**.
+Obtains the focus distance in use. The value range is [0.0, 1.0], where **0.0** indicates the shortest achievable focus distance and **1.0** indicates the longest focus distance. The default value is **1.0**.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
-**Returns**
+**Return value**
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| number    | Current focus distance, in the range [0.0, 1.0].|
+| number    | Focus distance. The value range is [0.0, 1.0].|
 
 **Error Codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |
@@ -68,23 +68,23 @@ function getFocusDistance(photoSession: camera.PhotoSession): number {
 
 setFocusDistance(distance: number): void
 
-Sets the focus distance, in the range [0.0, 1.0], where **0.0** indicates the shortest achievable focus distance and **1.0** indicates the longest focus distance. The default value is **1.0**.
+Sets the focus distance. The value range is [0.0, 1.0], where **0.0** indicates the shortest achievable focus distance and **1.0** indicates the longest focus distance. The default value is **1.0**. If the value of the input parameter exceeds the range, the nearest boundary value is used.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
 | Parameter     | Type                          | Mandatory | Description                          |
 | -------- | -------------------------------| ---- | ----------------------------- |
-| distance   | number  | Yes  | Focus distance, in the range [0.0, 1.0].                |
+| distance   | number  | Yes  | Focus distance The value range is [0.0, 1.0].                |
 
 **Error Codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config.                                   |

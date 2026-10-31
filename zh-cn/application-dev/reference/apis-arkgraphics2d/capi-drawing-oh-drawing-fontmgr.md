@@ -1,9 +1,9 @@
 # OH_Drawing_FontMgr
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 ```c
 typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr
@@ -11,7 +11,7 @@ typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr
 
 ## 概述
 
-定义字体管理类, 用于字体管理。
+定义字体管理类，用于字体管理。
 
 **起始版本：** 12
 

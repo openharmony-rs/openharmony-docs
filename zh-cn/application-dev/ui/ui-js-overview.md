@@ -1,7 +1,7 @@
 # UI开发 (兼容JS的类Web开发范式)概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -17,7 +17,7 @@
 
 
 
-![zh-cn_image_0000001117452952](figures/zh-cn_image_0000001117452952.png)
+![Overall-Architecture](figures/Overall-Architecture.png)
 
 - **Application**
 

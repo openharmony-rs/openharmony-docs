@@ -51,7 +51,7 @@ The following describes how to collect the execution duration and CPU usage of a
 
     Define the **metrics** whose type is **Array\<PerfMetric>**. <!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP2End--> indicates the performance metrics supported by the framework.
 
-    <!-- @[metricsDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+    <!-- @[metricsDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE]; // Define the metrics to be tested.
@@ -61,7 +61,7 @@ The following describes how to collect the execution duration and CPU usage of a
 
     The code segment to be tested **actionCode** is a callback of the **Callback\<Callback\<boolean>>** type. The framework automatically calls this callback during the test and collects performance data. You need to call the input parameter **Callback\<boolean>** function to notify the framework that the execution is complete. Otherwise, the code segment execution times out. For example, when testing the performance of the **Utils.CalculateTest** method, you can call **finish(true)** to notify the framework that the code segment execution is complete.
 
-    <!-- @[callbackDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+    <!-- @[callbackDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => { // Define the code segment to be tested.
@@ -72,7 +72,7 @@ The following describes how to collect the execution duration and CPU usage of a
 
     In addition, the framework supports the definition of the environment reset code segment **resetCode**, which is used to reset the environment after a single test. The type and usage of the code segment are the same as those of **actionCode**. **resetCode** is executed after **actionCode**, but application performance data is not collected during the execution.
 
-    <!-- @[resetCodeDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+    <!-- @[resetCodeDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => { // Define the code segment for environment reset.
@@ -85,7 +85,7 @@ The following describes how to collect the execution duration and CPU usage of a
 
     In addition to the properties defined in the preceding steps, PerfTest can also define other test strategies to help you perform more accurate automated performance tests. All test strategies are defined and saved through the <!--RP3-->[PerfTestStrategy](../reference/apis-test-kit/js-apis-perftest.md#perfteststrategy)<!--RP3End--> object. During the performance test, data is collected based on the strategy.
     
-    <!-- @[strategyDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+    <!-- @[strategyDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     let perfTestStrategy: PerfTestStrategy = {
@@ -103,7 +103,7 @@ The following describes how to collect the execution duration and CPU usage of a
 
   To create a test task, pass the **PerfTestStrategy** object defined above in <!--RP4-->[PerfTest.create()](../reference/apis-test-kit/js-apis-perftest.md#create)<!--RP4End-->. Then, call the <!--RP5-->[PerfTest.run()](../reference/apis-test-kit/js-apis-perftest.md#run)<!--RP5End--> asynchronous API to start the test. The test automatically iteratively executes the code segment and collects performance data. Use the **await** syntax sugar to synchronously wait for the execution to complete and then perform subsequent operations.
 
-<!-- @[startTest_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+<!-- @[startTest_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
 
 ``` TypeScript
 let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // Create a test task object PerfTest.
@@ -114,7 +114,7 @@ await perfTest.run(); // Execute the test. Use await to wait for the completion 
 
   After the performance test is complete, call <!--RP6-->[PerfTest.getMeasureResult()](../reference/apis-test-kit/js-apis-perftest.md#getmeasureresult)<!--RP6End--> to obtain the metrics. The test result is stored in the <!--RP7-->[PerfMeasureResult](../reference/apis-test-kit/js-apis-perftest.md#perfmeasureresult)<!--RP7End--> object. If the test is not complete or the metric is not defined, an error code is thrown.
 
-<!-- @[getResult_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+<!-- @[getResult_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
 
 ``` TypeScript
 let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION); // Obtain the test result of the duration.
@@ -125,7 +125,7 @@ let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE); /
 
   After the test, if the **PerfTest** object is no longer needed, you can call <!--RP8-->[PerfTest.destroy()](../reference/apis-test-kit/js-apis-perftest.md#destroy)<!--RP8End--> to destroy the object to release memory.
 
-<!-- @[exit_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+<!-- @[exit_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
 
 ``` TypeScript
 perfTest.destroy(); // Destroy the PerfTest object.
@@ -139,7 +139,7 @@ The following example describes how to collect basic performance data during the
 
 1. Add the **Utils.ets** file to the **main** > **ets** > **utils** folder and compile the custom function in the file.
 
-    <!-- @[utils_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/main/ets/utils/Utils.ets) -->
+    <!-- @[utils_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/main/ets/utils/Utils.ets) --> 
     
     ``` TypeScript
     export class Utils {
@@ -160,7 +160,7 @@ The following example describes how to collect basic performance data during the
 
 2. Compile the test code in the **CPUMetric.test.ets** file in the **ohosTest** > **ets** > **test** folder.
 
-    <!-- @[CPUMetric_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+    <!-- @[CPUMetric_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     import { describe, expect, it, Level } from '@ohos/hypium';
@@ -211,7 +211,7 @@ The following example describes how to test the frame rate of list scrolling in 
 
 1. Write the **PageListPage.ets** page code in the **main** > **ets** > **pages** folder as the test demo.
 
-    <!-- @[scroll_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/main/ets/pages/PageListPage.ets) -->
+    <!-- @[scroll_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/main/ets/pages/PageListPage.ets) --> 
     
     ``` TypeScript
     @Entry
@@ -250,7 +250,7 @@ The following example describes how to test the frame rate of list scrolling in 
 
 2. Compile the test code in the **slideFps.test.ets** file in the **ohosTest** > **ets** > **test** folder.
 
-    <!-- @[slideFps_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/SlideFps.test.ets) -->
+    <!-- @[slideFps_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/SlideFps.test.ets) --> 
     
     ``` TypeScript
     import { describe, expect, it, Level } from '@ohos/hypium';
@@ -323,5 +323,5 @@ The following example describes how to test the frame rate of list scrolling in 
     ```
 
 <!--Del-->
-For details about the PerfTest project example, see [White-Box Performance Test Example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest).
+For details about the PerfTest project example, see [White-Box Performance Test Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/perftest).
 <!--DelEnd-->

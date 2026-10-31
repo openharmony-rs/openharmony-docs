@@ -1,13 +1,13 @@
 # stateStyles：多态样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Styles仅应用于静态页面的样式复用，stateStyles可以依据组件的内部状态的不同，快速设置不同样式。这就是我们本章要介绍的内容stateStyles（又称为：多态样式）。
+\@Styles仅应用于静态页面的样式复用，stateStyles可以依据组件的内部状态的不同，快速设置不同样式。这就是本章要介绍的内容stateStyles（又称为：多态样式）。
 
 > **说明**：
 >
@@ -15,7 +15,7 @@
 
 ## 概述
 
-stateStyles是属性方法，可以根据UI内部状态来设置样式，类似于css伪类，但语法不同。ArkUI提供以下六种状态：
+stateStyles是属性方法，可以根据UI内部状态来设置样式，类似于css伪类，但语法不同。ArkUI提供以下七种状态：
 
 - focused：获焦态。
 
@@ -29,6 +29,8 @@ stateStyles是属性方法，可以根据UI内部状态来设置样式，类似�
 
 - selected<sup>10+</sup>：选中态。
 
+- hovered：悬浮态。**起始版本：** 26.0.0
+
 > **说明**：
 >
 > 获焦态目前仅支持通过外接键盘的Tab键或方向键触发，不支持在嵌套滚动组件场景下通过按键触发。
@@ -39,7 +41,7 @@ stateStyles是属性方法，可以根据UI内部状态来设置样式，类似�
 
 ### 基础场景
 
-下面的示例展示了stateStyles最基本的使用场景。Button1处于第一个组件，Button2处于第二个组件。按压时显示为pressed态指定的黑色。使用Tab键走焦，Button1获焦并显示为focused态指定的粉色。当Button2获焦的时候，Button2显示为focused态指定的粉色，Button1失焦显示normal态指定的蓝色。
+下面的示例展示了stateStyles最基本的使用场景。Button1处于第一个组件，Button2处于第二个组件。按压时显示为pressed态指定的灰色。使用Tab键走焦，Button1获焦并显示为focused态指定的粉色。当Button2获焦的时候，Button2显示为focused态指定的粉色，Button1失焦显示normal态指定的蓝色。
 
 <!-- @[state_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets) -->
 
@@ -158,7 +160,7 @@ struct CompWithInlineStateStyles {
 }
 ```
 
-Button默认normal态显示蓝色，第一次按下Tab键让Button获焦显示为focus态的浅灰色，点击事件触发后，再次按下Tab键让Button获焦，focus态变为深灰色。
+Button默认normal态显示蓝色，第一次按下Tab键让Button获焦显示为focused态的浅灰色，点击事件触发后，再次按下Tab键让Button获焦，focused态变为深灰色。
 
   **图3** 点击改变获焦态样式  
 

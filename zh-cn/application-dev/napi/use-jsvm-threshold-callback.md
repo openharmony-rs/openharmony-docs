@@ -1,17 +1,25 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何获取VM原始堆快照用于内存分析与泄漏定位，并注册堆内存阈值回调在堆使用量达到阈值时触发监控逻辑。"
+keywords: [OH_JSVM_TakeRawHeapSnapshot, OH_JSVM_SetHeapThresholdCallback, OH_JSVM_ClearHeapThresholdCallback, 堆快照, 堆内存阈值, 阈值回调, 内存泄漏定位, 堆内存监控]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API获取堆快照及监控堆内存阈值
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @pennyatmosphere; @sunzibo-->
 <!--Designer: @pennyatmosphere-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
-从API Version 26开始，JSVM-API提供了堆内存管理相关的核心能力，包含**获取原始堆快照**和**监控堆内存阈值**两类关键接口：
+从API版本26.0.0开始，JSVM-API提供了堆内存管理相关的核心能力，包含**获取原始堆快照**和**监控堆内存阈值**两类关键接口：
 
-- `OH_JSVM_TakeRawHeapSnapshot`：获取当前JS虚拟机（VM）的原始堆快照（二进制格式）并输出到指定流，可用于堆内存分析、内存泄漏定位、调试等场景；
-- `OH_JSVM_SetHeapThresholdCallback`：为VM注册堆内存阈值回调函数，当堆内存使用量达到指定阈值时自动触发回调；
+- `OH_JSVM_TakeRawHeapSnapshot`：获取当前JS虚拟机（VM）的原始堆快照（二进制格式）并输出到指定流，可用于堆内存分析、内存泄漏定位、调试等场景。
+- `OH_JSVM_SetHeapThresholdCallback`：为VM注册堆内存阈值回调函数，当堆内存使用量达到指定阈值时自动触发回调。
 - `OH_JSVM_ClearHeapThresholdCallback`：移除已注册的堆内存阈值回调函数，释放相关资源。
 
 开发者可通过这些接口实现堆内存的全生命周期监控、快照采集与分析，辅助优化内存使用效率、排查内存相关问题。
@@ -130,13 +138,13 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
      JSVM_Status addRepeatStatus = OH_JSVM_SetHeapThresholdCallback(
          vm, threshold, OnHeapThresholdReached, testData);
      if (addRepeatStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Set repeated callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Set repeated callback failed (expected)");
      }
  
      JSVM_Status addInvalidStatus = OH_JSVM_SetHeapThresholdCallback(
          vm, 0, OnHeapThresholdReached, testData);
      if (addInvalidStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Set callback with 0 threshold failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Set callback with 0 threshold failed (expected)");
      }
  }
  
@@ -151,13 +159,13 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
      JSVM_Status removeRepeatStatus = OH_JSVM_ClearHeapThresholdCallback(
          vm, threshold, OnHeapThresholdReached, testData);
      if (removeRepeatStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Clear repeated callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Clear repeated callback failed (expected)");
      }
  
      JSVM_Status removeMismatchStatus = OH_JSVM_ClearHeapThresholdCallback(
          vm, 999999, OnHeapThresholdReached, testData);
      if (removeMismatchStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Clear mismatch threshold callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Clear mismatch threshold callback failed (expected)");
      }
  }
  

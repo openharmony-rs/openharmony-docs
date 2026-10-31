@@ -1,11 +1,11 @@
 # Adding a WantAgent Object to a Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-29T11:13:02.570Z pushedAt=2026-09-30T09:42:19.238Z -->
 
 An application requests [WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) from Ability Kit and encapsulates it into the notification. When a notification is published, the user may tap a message or a button in the notification panel to start the target application or publish a common event.
 
@@ -44,7 +44,7 @@ The following figure shows a notification carrying action buttons.
 
    Scenario 1: Create a [WantAgentInfo](../reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md) object for starting a UIAbility.
 
-   <!-- @[create_launch_uiability_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   <!-- @[create_launch_uiAbility_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
    let wantAgentObj: WantAgent | null = null; // Store the created WantAgent object for subsequent trigger actions.
@@ -112,9 +112,9 @@ The following figure shows a notification carrying action buttons.
 
    > **NOTE**
    >
-   > - If **WantAgent** is encapsulated in a notification, **WantAgent** is triggered when the notification is tapped. If a notification contains action buttons, the buttons are displayed when the notification is tapped and **WantAgent** is triggered when the notification is tapped again.
+   > - If **WantAgent** is encapsulated in a notification message, you can tap the notification to trigger **WantAgent**. When the notification message contains **actionButtons**, tapping the notification first displays the **actionButtons**, and tapping the notification again triggers **WantAgent**.
    >
-   > - If **WantAgent** is encapsulated in the action buttons, the buttons are displayed under the notification when the notification is tapped and **WantAgent** is triggered when a button is tapped.
+   > - If **WantAgent** is encapsulated in a [notification button](notification-glossary.md#notification-button), after you tap the notification, a notification button appears below the notification, and you can tap the button to trigger **WantAgent**.
 
    <!-- @[pub_want_agent_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    

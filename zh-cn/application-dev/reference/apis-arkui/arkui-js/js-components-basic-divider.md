@@ -1,8 +1,8 @@
 # divider
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -98,4 +98,4 @@
 }
 ```
 
-![zh-cn_image_0000001173164799](figures/zh-cn_image_0000001173164799.jpg)
+![divider](figures/divider.jpg)

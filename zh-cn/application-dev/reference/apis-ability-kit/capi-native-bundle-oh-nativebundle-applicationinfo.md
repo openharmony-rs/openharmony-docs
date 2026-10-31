@@ -3,11 +3,12 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 ```c
-typedef struct {...} OH_NativeBundle_ApplicationInfo
+struct OH_NativeBundle_ApplicationInfo {...}
+typedef struct OH_NativeBundle_ApplicationInfo OH_NativeBundle_ApplicationInfo
 ```
 
 ## 概述

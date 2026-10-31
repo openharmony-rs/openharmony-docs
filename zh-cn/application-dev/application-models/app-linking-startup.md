@@ -105,7 +105,7 @@
 
 1. 创建域名配置文件applinking.json。
 
-   内容为如下：
+   内容如下：
 
    ```json
    {
@@ -140,6 +140,10 @@
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG  = '[AppLinkEntryAbility]';
 
 export default class AppLinkEntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -199,10 +203,10 @@ struct Index {
         // 仅以App Linking的方式打开应用
         context.openLink(link, { appLinkingOnly: true })
           .then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
           })
           .catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. error:${JSON.stringify(error)}`);
           });
       })
   }
@@ -210,12 +214,12 @@ struct Index {
 ```
 
 
-在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
+在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应用的App Linking配置正确。
 
 ## FAQ
 
 
-1. 应用的Modules.json5文件skills设置不正确。
+1. 应用的module.json5文件skills设置不正确。
 
    检查"host"字段中是否是应用所对应的域名。
 

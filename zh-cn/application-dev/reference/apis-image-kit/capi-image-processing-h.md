@@ -2,9 +2,9 @@
 
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xjtu_liushang-->
-<!--Designer: @yangwang01-->
-<!--Tester: @xchaosioda-->
+<!--Owner: @zy_194-->
+<!--Designer: @gongzheng92-->
+<!--Tester: @gongzheng92-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 概述
@@ -103,7 +103,7 @@ bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_Co
 | 参数项 | 描述 |
 | -- | -- |
 | const [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)* sourceImageInfo | 指向输入图片色彩空间信息的指针。 |
-| const [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)* destinationImageInfo | 指向输出图片色彩空间信息的指针， |
+| const [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)* destinationImageInfo | 指向输出图片色彩空间信息的指针。 |
 
 **返回：**
 

@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fde44dfb2c14026abfac39f6721d4d161fcad545 translatedAt=2026-09-02T12:32:01.984Z -->
 
 A focus event is triggered when the page focus moves between components. It can be used to process related logic within the component.
 
@@ -15,9 +16,9 @@ A focus event is triggered when the page focus moves between components. It can 
 > - Sequential keyboard navigation is not supported for nested scrollable components.
 >
 > - Components that have default interaction logic, such as [Button](ts-basic-components-button.md) and [TextInput](ts-basic-components-textinput.md), are focusable by default. Other components, such as [Text](ts-basic-components-text.md) and [Image](ts-basic-components-image.md), are not focusable by default. Only focusable components can trigger a focus event. To enable a component to be focusable, set its [focusable](ts-universal-attributes-focus.md#focusable) attribute to **true**.
->  
+>
 > - Container components that can gain focus, such as [Stack](ts-container-stack.md) and [Row](ts-container-row.md), are not focusable if they do not have any focusable child components. When configured with an **onClick** event or a single-finger tap gesture, the component implicitly becomes focusable if the **focusable** attribute is not explicitly set.
-> 
+>
 > - For details about focus development and component focusability, see [Implementing Focus Support](../../../ui/arkts-common-events-focus-event.md).
 
 ## onFocus
@@ -40,7 +41,7 @@ Triggered when the current component obtains focus.
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## onBlur
 
@@ -62,7 +63,7 @@ Triggered when the current component loses focus.
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## Example
 
@@ -79,46 +80,43 @@ struct FocusEventExample {
 
   build() {
     Column({ space: 20 }) {
-      // Activate the focus by pressing **Tab** on an external keyboard and navigate it among the three buttons using the up/down arrow keys. The focused button receives a color highlight, which disappears when focus moves away.
+      // When the focus moves among the three buttons, the button changes color when it gains focus and restores its original background color when it loses focus.
       Button('First Button')
         .backgroundColor(this.oneButtonColor)
         .width(260)
         .height(70)
         .fontColor(Color.Black)
-        .focusable(true)
         .onFocus(() => {
-          this.oneButtonColor = '#FFFFFF'
+          this.oneButtonColor = '#FFFFFF';
         })
         .onBlur(() => {
-          this.oneButtonColor = '#0066FF'
+          this.oneButtonColor = '#0066FF';
         })
       Button('Second Button')
         .backgroundColor(this.twoButtonColor)
         .width(260)
         .height(70)
         .fontColor(Color.Black)
-        .focusable(true)
         .onFocus(() => {
-          this.twoButtonColor = '#FFFFFF'
+          this.twoButtonColor = '#FFFFFF';
         })
         .onBlur(() => {
-          this.twoButtonColor = '#87CEFA'
+          this.twoButtonColor = '#87CEFA';
         })
       Button('Third Button')
         .backgroundColor(this.threeButtonColor)
         .width(260)
         .height(70)
         .fontColor(Color.Black)
-        .focusable(true)
         .onFocus(() => {
-          this.threeButtonColor = '#FFFFFF'
+          this.threeButtonColor = '#FFFFFF';
         })
         .onBlur(() => {
-          this.threeButtonColor = '#90EE90'
+          this.threeButtonColor = '#90EE90';
         })
     }.width('100%').margin({ top: 20 })
   }
 }
 ```
 
- ![focus](figures/focus.png) 
+ ![focus](figures/focus.png)

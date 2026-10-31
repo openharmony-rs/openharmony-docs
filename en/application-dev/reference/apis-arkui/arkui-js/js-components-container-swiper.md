@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -164,4 +164,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001167823326](figures/en-us_image_0000001167823326.gif)
+![swiper](figures/swiper.gif)

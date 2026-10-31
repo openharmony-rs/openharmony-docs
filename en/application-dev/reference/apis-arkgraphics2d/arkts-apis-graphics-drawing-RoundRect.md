@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d66ce495242bdf35b08a89dbf23cdf3929953623 translatedAt=2026-08-24T08:12:12.739Z pushedAt=2026-08-29T06:52:36.777Z -->
 
-Rounded rectangle.
+Represents a rounded rectangle object. It supports setting and obtaining the corner radius at a specified corner position, as well as translating the rounded rectangle.
 
 > **NOTE**
 >
@@ -44,7 +45,7 @@ Copies a rounded rectangle.
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let rect: common2D.Rect = {left : 100, top : 100, right : 500, bottom : 300};
+let rect: common2D.Rect = {left: 100, top: 100, right: 500, bottom: 300};
 let roundRect = new drawing.RoundRect(rect, 50, 50);
 let roundRect2 = new drawing.RoundRect(roundRect);
 ```
@@ -53,7 +54,7 @@ let roundRect2 = new drawing.RoundRect(roundRect);
 
 constructor(rect: common2D.Rect, xRadii: number, yRadii: number)
 
-A constructor used to create a **RoundRect** object. A rounded rectangle is created when both **xRadii** and **yRadii** are greater than 0. Otherwise, only a rectangle is created.
+Constructs a rounded rectangle object. The rounded corners take effect only when both xRadii and yRadii are greater than 0; otherwise, only a rectangle is constructed.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -62,8 +63,8 @@ A constructor used to create a **RoundRect** object. A rounded rectangle is crea
 | Name        | Type                                      | Mandatory  | Description                 |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle that encloses the rounded rectangle to create.     |
-| xRadii        | number                  | Yes   | Radius of the rounded corner on the X axis. The value is a floating point number. A negative number is invalid.    |
-| yRadii        | number                  | Yes   | Radius of the rounded corner on the Y axis. The value is a floating point number. A negative number is invalid.    |
+| xRadii        | number                  | Yes    | Corner radius in the x-axis direction. This parameter is a floating-point number. The corner takes effect when the value is greater than 0, and does not take effect when the value is less than or equal to 0. The unit is physical pixel (px).     |
+| yRadii        | number                  | Yes    | Corner radius in the y-axis direction. This parameter is a floating-point number. The corner takes effect when the value is greater than 0, and does not take effect when the value is less than or equal to 0. The unit is physical pixel (px).     |
 
 **Error codes**
 
@@ -71,16 +72,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let rect: common2D.Rect = {left : 100, top : 100, right : 500, bottom : 300};
+let rect: common2D.Rect = {left: 100, top: 100, right: 500, bottom: 300};
 let roundRect = new drawing.RoundRect(rect, 50, 50);
 ```
+
 ## setCorner<sup>12+</sup>
 
 setCorner(pos: CornerPos, x: number, y: number): void
@@ -94,8 +96,8 @@ Sets the radii of the specified rounded corner in this rounded rectangle.
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | pos | [CornerPos](arkts-apis-graphics-drawing-e.md#cornerpos12) | Yes  | Position of the rounded corner.                |
-| x     | number                 | Yes  | Radius of the rounded corner on the X axis. The value is a floating point number. A negative number is invalid.|
-| y     | number      | Yes  | Radius of the rounded corner on the Y axis. The value is a floating point number. A negative number is invalid.|
+| x     | number                 | Yes   | Corner radius in the x-axis direction. This parameter is a floating-point number. When the value is greater than 0, the corner radius setting takes effect; when the value is less than or equal to 0, the corner radius setting does not take effect. The unit is physical pixel (px). |
+| y     | number      | Yes   | Corner radius in the y-axis direction. This parameter is a floating-point number. When the value is greater than 0, the corner radius setting takes effect; when the value is less than or equal to 0, the corner radius setting does not take effect. The unit is physical pixel (px). |
 
 **Error codes**
 
@@ -103,14 +105,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
-let roundRect : drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
 roundRect.setCorner(drawing.CornerPos.TOP_LEFT_POS, 150, 150);
 ```
 
@@ -147,17 +149,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
-let roundRect : drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
 let cornerRadius = roundRect.getCorner(drawing.CornerPos.BOTTOM_LEFT_POS);
-console.info("getCorner---"+cornerRadius.x)
-console.info("getCorner---"+cornerRadius.y)
+console.info("getCorner---" + cornerRadius.x);
+console.info("getCorner---" + cornerRadius.y);
 ```
 
 ## offset<sup>12+</sup>
 
 offset(dx: number, dy: number): void
 
-Translates this rounded rectangle by an offset along the X axis and Y axis.
+Translates the rounded rectangle by dx along the x-axis direction and by dy along the y-axis direction.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -165,8 +167,8 @@ Translates this rounded rectangle by an offset along the X axis and Y axis.
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| dx | number | Yes  | Horizontal distance to translate. A positive number indicates a translation towards the positive direction of the X axis, and a negative number indicates a translation towards the negative direction of the X axis. The value is a floating point number.                |
-| dy | number | Yes  | Vertical distance to translate. A positive number indicates a translation towards the positive direction of the Y axis, and a negative number indicates a translation towards the negative direction of the Y axis. The value is a floating point number.                |
+| dx | number | Yes | Offset in the x-axis direction. A positive value indicates translation in the positive direction of the x-axis, and a negative value indicates translation in the negative direction of the x-axis. This parameter is a floating-point number. The unit is physical pixel px. |
+| dy | number | Yes | Offset in the y-axis direction. A positive value indicates translation in the positive direction of the y-axis, and a negative value indicates translation in the negative direction of the y-axis. This parameter is a floating-point number. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -181,6 +183,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
-let roundRect : drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
 roundRect.offset(100, 100);
 ```

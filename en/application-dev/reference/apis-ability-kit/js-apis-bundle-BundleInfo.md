@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:02:24.862Z pushedAt=2026-09-05T10:47:30.514Z -->
 
 The module defines the bundle information, which can be obtained through [bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated).
 
@@ -12,9 +13,9 @@ The module defines the bundle information, which can be obtained through [bundle
 > 
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md) instead.
+> This module is deprecated since API version 9. You are advised to use [bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md) instead.
 
-## BundleInfo<sup>(deprecated)<sup>
+## BundleInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -28,8 +29,8 @@ The module defines the bundle information, which can be obtained through [bundle
 | type                             | string                                                       | Yes  | No  | Bundle type.                                                |
 | appId                            | string                                                       | Yes  | No  | ID of the application to which the bundle belongs.                                      |
 | uid                              | number                                                       | Yes  | No  | UID of the application to which the bundle belongs.                                     |
-| installTime                      | number                                                       | Yes  | No  | Time when the HAP file was installed.                                               |
-| updateTime                       | number                                                       | Yes  | No  | Time when the HAP file was updated.                                               |
+| installTime                      | number                                                       | Yes   | No   | HAP installation time, in milliseconds.                                                |
+| updateTime                       | number                                                       | Yes   | No   | HAP update time, in milliseconds.                                                |
 | appInfo                          | [ApplicationInfo](js-apis-bundle-ApplicationInfo.md)         | Yes  | No  | Application configuration information.                                        |
 | abilityInfos                     | Array\<[AbilityInfo](js-apis-bundle-AbilityInfo.md)>         | Yes  | No  | Ability configuration information.<br>The value is obtained by passing in GET_BUNDLE_WITH_ABILITIES to [bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated).|
 | reqPermissions                   | Array\<string>                                               | Yes  | No  | Permissions to request from the system for running the application.<br>The value is obtained by passing in GET_BUNDLE_WITH_REQUESTED_PERMISSION to [bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated).|
@@ -50,11 +51,11 @@ The module defines the bundle information, which can be obtained through [bundle
 
 
 
-## ReqPermissionDetail<sup>(deprecated)<sup>
+## ReqPermissionDetail<sup>(deprecated)</sup>
 
 > **NOTE**
 >
-> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md#reqpermissiondetail) instead.
 
 Provides the detailed information of the permissions to request from the system.
 
@@ -68,7 +69,7 @@ Provides the detailed information of the permissions to request from the system.
 
 
 
-## UsedScene<sup>(deprecated)<sup>
+## UsedScene<sup>(deprecated)</sup>
 
 > **NOTE**
 >

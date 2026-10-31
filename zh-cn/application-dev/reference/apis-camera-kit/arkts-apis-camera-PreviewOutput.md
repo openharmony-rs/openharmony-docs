@@ -359,7 +359,7 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | number  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。<br> 从API version 23开始，入参displayRotation为可选参数，当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。 |
+| displayRotation | number  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。<br> 从API version 23开始，入参displayRotation为可选参数，当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。<br> 单位为度数（degree），取值范围为[0, 360]。 |
 
 **返回值：**
 
@@ -373,6 +373,7 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：12-22  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -380,10 +381,10 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotation : camera.ImageRotation): camera.ImageRotation {
+function testGetPreviewRotation(previewOutput: camera.PreviewOutput, displayRotation: number): camera.ImageRotation {
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
-    previewRotation = previewOutput.getPreviewRotation(imageRotation);
+    previewRotation = previewOutput.getPreviewRotation(displayRotation);
     console.info(`Preview rotation is: ${previewRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
@@ -401,7 +402,7 @@ function testGetPreviewRotationWithOutParam(previewOutput: camera.PreviewOutput)
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The previewOutput.testGetPreviewRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The previewOutput.getPreviewRotation call failed. error code: ${err.code}`);
   }
   return previewRotation;
 }
@@ -675,7 +676,7 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
   }
 }
 ```
-### addDeferredSurface<sup>24+</sup>
+## addDeferredSurface<sup>24+</sup>
 
 addDeferredSurface(surfaceId: string): void
 
@@ -722,5 +723,98 @@ async function preview(cameraManager: camera.CameraManager, cameraInfo: camera.C
     console.error(`start session failed. error code: ${err.code}`);
   }
   previewOutput.addDeferredSurface(previewSurfaceId);
+}
+```
+
+## isLogViewAssistSupported
+
+isLogViewAssistSupported(): boolean
+
+LOG视频下，查询是否支持辅助监看功能。辅助监看开启后，预览画面还原至原色域，录制出的视频仍然是LOG视频格式。
+
+> **说明：**
+>
+> 辅助监看效果仅支持1080P及以下分辨率。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| boolean | 是否支持辅助监看功能。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isLogViewAssistSupported(previewOutput: camera.PreviewOutput): boolean {
+  let supported: boolean = false;
+  try {
+      supported = previewOutput.isLogViewAssistSupported();
+  } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The previewOutput.isLogViewAssistSupported call failed. error code: ${err.code}`);
+  }
+  return supported;
+}
+```
+
+## setLogViewAssistEnable
+
+setLogViewAssistEnable(enable: boolean): void
+
+LOG视频下，使能辅助监看之前，可先使用方法[isLogViewAssistSupported](#islogviewassistsupported)查询设备是否支持预览辅助监看。
+
+> **说明：**
+> 
+> - 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之后调用。
+> - 预览辅助监看效果仅支持1080P及以下分辨率。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| enable  | boolean | 是  | 是否使能辅助监看。true表示使能，false表示不使能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID    | 错误信息                                           |
+| -------- |----------------------------------------------- |
+| 801  | Capability not supported. |
+| 7400103  | Session not config. |
+| 7400201  | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setLogViewAssistEnable(previewOutput: camera.PreviewOutput, enable: boolean): void {
+  try {
+      previewOutput.setLogViewAssistEnable(enable);
+  } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The previewOutput.setLogViewAssistEnable call failed. error code: ${err.code}`);
+  }
 }
 ```

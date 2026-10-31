@@ -26,5 +26,3 @@ For details about client and server development steps, see [Client Application D
 5. Register [server OE object](content-embed-kit-terminology.md#server-oe-object) callbacks: After the OE Extension component of the OE server application starts, the client OE object is bound to the server OE object. At this point, callback functions must be registered for the server OE object to respond to OE client requests.
 6. Obtain the OE document snapshot: When the OE client embeds an OE document, the document can be displayed as a document snapshot in the OE client UI. After the OE Extension starts, the OE client obtains the document snapshot from the server.
 7. Edit the OE document: After the OE Extension starts, the OE client notifies the OE server to edit the OE document. The OE server application must then start the corresponding UIAbility to edit the document.
-
-<!--no_check-->

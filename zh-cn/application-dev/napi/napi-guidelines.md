@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API开发规范，涵盖参数获取、作用域管理、引用管理等编码规则，帮助开发者编写安全可靠的Node-API代码，避免内存越界和泄漏等问题。"
+keywords: [Node-API, 开发规范, 编码规则, napi_get_cb_info, 作用域管理, 引用管理, 参数校验, 内存安全]
+doctype: guide
+status: active
+---
+
 # Node-API开发规范
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 获取JS传入参数及其数量
 
@@ -101,13 +109,13 @@ napi_create_string_utf8(env1, "bar", NAPI_AUTO_LENGTH, &string);
 // 线程2执行，在env2创建object对象，并将上述的string对象设置到object对象中
 napi_status status = napi_create_object(env2, &object);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 
 status = napi_set_named_property(env2, object, "foo", string);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 ```
@@ -296,7 +304,7 @@ napi_create_arraybuffer等同于JS代码中的`new ArrayBuffer(size)`，其生�
 
 ## 数据转换
 
-**【建议】** 尽可能的减少数据转换次数，避免不必要的复制。
+**【建议】** 尽可能地减少数据转换次数，避免不必要的复制。
 
 - **减少数据转换次数：** 频繁的数据转换可能会导致性能下降，可以通过批量处理数据或者使用更高效的数据结构来优化性能。
 - **避免不必要的数据复制：** 在进行数据转换时，可以使用Node-API提供的接口来直接访问原始数据，而不是创建新的副本。
@@ -311,12 +319,20 @@ nm_register_func对应的函数需要加上修饰符static，防止与其他二�
 
 模块实现中.nm_modname字段需要与二进制so文件的名字完全匹配，区分大小写。
 
+一个so文件只能注册一个模块，即通过napi_module_register注册的模块。禁止在同一个so文件中注册多个不同模块，否则框架加载这个so时可能匹配到错误的模块，引发非预期行为。
+
 **错误示例**
 以下代码为二进制so文件的名为nativerender时的错误示例
 
 ```cpp
 EXTERN_C_START
 napi_value Init(napi_env env, napi_value exports)
+{
+    // ...
+    return exports;
+}
+
+static napi_value InitOther(napi_env env, napi_value exports)
 {
     // ...
     return exports;
@@ -335,10 +351,25 @@ static napi_module nativeModule = {
     .reserved = { 0 },
 };
 
+// 同一个so中定义了第二个不同的napi_module
+static napi_module otherModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = InitOther,
+    .nm_modname = "other",
+    .nm_priv = nullptr,
+    .reserved = { 0 },
+};
+
 // 模块注册的入口函数名为RegisterModule，容易与其他模块重复
 extern "C" __attribute__((constructor)) void RegisterModule()
 {
     napi_module_register(&nativeModule);
+    // 同一个so中注册了两个不同的模块，框架加载时可能匹配到错误的模块，
+    // 无论通过何种方式（如多个构造函数、全局对象构造等）多次调用napi_module_register，
+    // 框架加载so时都可能匹配到错误的模块，导致非预期行为
+    napi_module_register(&otherModule);
 }
 ```
 图一
@@ -411,7 +442,7 @@ extern "C" void napi_onLoad()
 }
 ```
 
-## 正确的使用napi_create_external系列接口创建的JS Object
+## 正确地使用napi_create_external系列接口创建的JS Object
 
 **【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。具体API说明详见[API参考](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-object#napi_create_external)。
 
@@ -496,7 +527,7 @@ napi_object_freeze等同于Object.freeze语义，freeze后对象的所有属性�
 
 ## 参考文档
 
-[Native侧子线程与UI主线程通信开发](https://developer.huawei.com/consumer/cn/doc/best-practices-V5/bpta-native-sub-main-comm-V5);
+[Native侧子线程与UI主线程通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/native_subthread-to-uimain);
 
 [如何在Native侧C++子线程直接调用ArkTS接口，不用通过ArkTS侧触发回调](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-8-V5);
 

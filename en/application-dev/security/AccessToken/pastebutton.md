@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-30T08:56:36.285Z pushedAt=2026-10-30T11:54:50.468Z nl=1 -->
 
 The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to silently read data from the pasteboard.
 
@@ -15,7 +16,7 @@ For example, if a user needs to copy a verification code (received from the Mess
 
 The following figure shows the effect of **PasteButton** component.
 
-![](figures/PasteButton_effect.gif)
+![paste-control-effect](figures/paste-control-effect.gif)
 
 ## Constraints
 
@@ -39,7 +40,7 @@ The following procedure shows how to make entering a verification code easier: A
    
    **PasteButton** is a button-like component consisting of an icon, text, and background. The background is mandatory, and at least one of the icon and text must be selected. The icon and text cannot be customized. You can only select from the existing options.
 
-   When declaring the API for creating a security component, you can determine whether to pass in parameters. If no parameter is passed in, a component with default icon, text, and background is created. If parameters are passed in, the component is created based on the specified parameters and elements that are not configured are not contained.
+   When using the API for creating a security component, you can determine whether to pass in parameters. If no parameter is passed in, a component with default icon, text, and background is created. If parameters are passed in, the component is created based on the specified parameters and elements that are not configured are not contained.
 
    The following example uses the default parameters. For details, see [PasteButton](../../reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md). In addition, all security components inherit the [Security Component Universal Attributes](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md), which can be used to customize styles.
    
@@ -80,3 +81,4 @@ The following procedure shows how to make entering a verification code easier: A
      }
    }
    ```
+

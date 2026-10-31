@@ -3,10 +3,11 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e6364d607d18f1c61b2cfd4dc8932804ec0f18aa translatedAt=2026-09-03T12:31:42.247Z pushedAt=2026-09-05T10:47:30.936Z -->
 
-The module provides APIs to manage [shortcuts](../../quick-start/typical-scenario-configuration.md), including whether to display shortcuts.
+This module provides the application's management capabilities for [shortcuts](../../quick-start/typical-scenario-configuration.md), including setting whether a shortcut is displayed. Through shortcuts, users can quickly launch specific features of an app from the home screen, improving the app's ease of use and user retention. Typical usage scenarios include: providing users with quick access to frequently used features, dynamically adjusting the display of shortcuts based on user habits, etc.
 
 > **NOTE**
 >
@@ -37,7 +38,7 @@ Sets whether to display the specified shortcut for the current application. This
 
 | Type            | Description             |
 | -------------- | --------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -45,7 +46,7 @@ For details about the error codes, see [Bundle Error Codes](errorcode-bundle.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17700070 | The specified shortcut id is illegal. |
+| 17700070 | The specified shortcut id is not exist. |
 
 **Example**
 
@@ -89,6 +90,40 @@ shortcutManager.getAllShortcutInfoForSelf()
   console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
 });
 ```
+
+## shortcutManager.isShortcutSupported
+
+isShortcutSupported(): boolean
+
+Checks whether the current device supports shortcuts.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                                                         | Description                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| boolean | Indicates whether the current device supports shortcuts.<br/>The return value **true** indicates that the current device supports shortcuts; the return value **false** indicates that the current device does not support shortcuts. |
+
+**Example**
+
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = shortcutManager.isShortcutSupported();
+  console.info('isShortcutSupported data is' + JSON.stringify(data));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  console.error(`isShortcutSupported errData is errCode:${err.code}  message:${err.message}`);
+}
+```
+
 ## ShortcutInfo
 
 type ShortcutInfo = _ShortcutInfo

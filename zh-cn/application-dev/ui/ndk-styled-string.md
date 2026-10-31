@@ -21,12 +21,12 @@
 
 ## 创建StyledString对象
 
-使用[OH_ArkUI_StyledString_Create](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_create)接口创建StyledString对象，需要传入[段落样式](#设置段落样式)。
+使用[OH_ArkUI_StyledString_Create](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_create)接口创建StyledString对象，需要传入[段落样式](#设置段落样式)和字体集合。
 
 <!-- @[styledstring_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
 
 ``` C++
-// 创建StyledString并设置文本内容
+// 创建StyledString对象
 ArkUI_StyledString *styledString = OH_ArkUI_StyledString_Create(typographyStyle, fontCollection);
 ```
 
@@ -56,7 +56,7 @@ StyledString支持为文本中的不同部分设置不同的样式，包括段�
 <!-- @[styledstring_paragraph_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
 
 ``` C++
-// 创建字体集合与段落样式
+// 创建字体集合与段落样式，并设置对齐方式和最大行数
 OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateFontCollection();
 OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
 OH_Drawing_SetTypographyTextAlign(typographyStyle, OH_Drawing_TextAlign::TEXT_ALIGN_CENTER);
@@ -138,7 +138,7 @@ nodeApi->setAttribute(text, NODE_TEXT_CONTENT_WITH_STYLED_STRING, &styledStringI
 
 ## 序列化与反序列化
 
-从API version 14开始，StyledString提供了序列化和反序列化功能，支持将格式化字符串转换为字节数组或HTML格式，便于数据的存储、传输和跨平台使用。
+从API version 14开始，StyledString提供了序列化和反序列化功能，支持将字节数据反序列化为描述符，或将描述符转换为HTML格式，便于数据的存储、传输和跨平台使用。
 
 **表3** 序列化与反序列化接口
 
@@ -146,6 +146,7 @@ nodeApi->setAttribute(text, NODE_TEXT_CONTENT_WITH_STYLED_STRING, &styledStringI
 | ---- | ---- |
 | [OH_ArkUI_StyledString_Descriptor_Create](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_descriptor_create) | 创建StyledString描述符。 |
 | [OH_ArkUI_UnmarshallStyledStringDescriptor](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_unmarshallstyledstringdescriptor) | 反序列化字节数据到描述符。 |
+| [OH_ArkUI_MarshallStyledStringDescriptor](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_marshallstyledstringdescriptor) | 将描述符序列化为字节数据。 |
 | [OH_ArkUI_ConvertToHtml](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_converttohtml) | 将描述符转换为HTML格式。 |
 | [OH_ArkUI_StyledString_Descriptor_Destroy](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_descriptor_destroy) | 销毁StyledString描述符。 |
 
@@ -174,38 +175,32 @@ static void SerializeAndDeserializeStyledString()
     // 转换为HTML格式
     const char* html = OH_ArkUI_ConvertToHtml(desc);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString", "html: [%{public}s]", html);
-    size_t resultSize = dataSize + 2;
-    uint8_t *buf1 = (uint8_t *)malloc(10 * sizeof(uint8_t));
-    if (buf1 == nullptr) {
-        OH_ArkUI_StyledString_Descriptor_Destroy(desc);
-        return;
-    }
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString", "resultSize: %{public}zu", resultSize);
-    uint8_t *buf2 = (uint8_t *)malloc(resultSize * sizeof(uint8_t));
-
-    // 序列化字节数组
-    if (buf2 != nullptr) {
-        if (resultSize >= dataSize) {
-            for (size_t i = 0; i < dataSize; i++) {
-                buf2[i] = data_bytes[i];
-            }
-        } else {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "styledString",
-                         "Buf too small: %{public}zu < %{public}zu", resultSize, dataSize);
-            free(buf2);
-            free(buf1);
-            OH_ArkUI_StyledString_Descriptor_Destroy(desc);
-            return;
-        }
-        bool equal = true;
+    // 验证反序列化后的数据：将描述符重新序列化，与原始数据对比
+    uint8_t buf2[1024] = {0};
+    size_t resultSize = 0;
+    auto marshallStatus = OH_ArkUI_MarshallStyledStringDescriptor(buf2, sizeof(buf2), desc, &resultSize);
+    bool equal = false;
+    if (marshallStatus == ARKUI_ERROR_CODE_NO_ERROR && resultSize == dataSize) {
+        equal = true;
         for (size_t i = 0; i < dataSize && equal; i++) equal = (data_bytes[i] == buf2[i]);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString",
-            "Before: %{public}zu, After: %{public}zu, Equal: %{public}d", dataSize, resultSize, equal);
-        free(buf2);
     }
-    free(buf1);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString",
+        "Before: %{public}zu, After: %{public}zu, Equal: %{public}d", dataSize, resultSize, equal);
 
     // 释放描述符
     OH_ArkUI_StyledString_Descriptor_Destroy(desc);
 }
 ```
+## 销毁对象
+
+Text组件不对本文涉及的任何对象的生命周期进行管理，需由开发者自行负责。字体引擎接口均配有相应的销毁方法。
+
+`OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle *style)`：销毁文本样式对象。
+
+`OH_Drawing_DestroyTypographyStyle(OH_Drawing_TypographyStyle *style)`：销毁段落样式对象。
+
+当Text组件仍在界面上显示时，此时释放会导致文字无法绘制。在实际业务场景下需确保Text组件不再使用时才释放。
+
+相关字体引擎销毁的接口请参考[OH_Drawing_DestroyTextStyle](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_destroytextstyle) 和 [OH_Drawing_DestroyTypographyStyle](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_destroytypographystyle)。
+
+Text组件提供[OH_ArkUI_StyledString_Destroy](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_destroy)，用于销毁属性字符串对象。

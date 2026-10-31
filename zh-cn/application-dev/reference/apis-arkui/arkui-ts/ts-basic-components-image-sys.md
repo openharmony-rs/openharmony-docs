@@ -20,9 +20,11 @@ Image为图片组件，常用于在应用中显示图片。
 
 analyzerConfig(config: ImageAnalyzerConfig)
 
-设置AI分析类型，包括主体识别和文字识别功能，默认全部开启。分析类型不支持动态修改。
+设置AI分析类型，包括主体识别和文字识别功能，默认全部开启。分析类型不支持动态修改。典型应用包括相册主体识别、文档/文字提取、内容审核辅助等。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,11 +38,13 @@ analyzerConfig(config: ImageAnalyzerConfig)
 
 edgeAntialiasing(value: number)
 
-设置SVG图源抗锯齿效果，仅对SVG图源生效。取值范围为$(0.333, 1.333]$，有效数字保留小数点后3位。
+设置SVG图源边缘抗锯齿效果，仅对SVG图源生效。有效取值范围大于0.333且小于等于1.333，有效数字保留小数点后3位，值越大抗锯齿效果越强。
 
 适用于超低分辨率设备（PPI低于200的设备）的SVG图源的锯齿优化，存在一定的性能影响，请谨慎使用。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,15 +52,17 @@ edgeAntialiasing(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                |
 | ------ | ------ | ---- | ----------------------------------- |
-| value  | number | 是   | SVG图源抗锯齿效果。<br/>默认值：0.0 |
+| value  | number | 是   | SVG图源边缘抗锯齿效果。有效取值范围大于0.333且小于等于1.333，值越大抗锯齿效果越强。<br/>默认值：0.0，表示关闭抗锯齿效果（0.0为禁用状态的保留值，不在上述有效取值范围内）。 |
 
 ### pointLight<sup>11+</sup>
 
 pointLight(value: PointLightStyle)
 
-设置点光源样式。
+设置点光源样式，用于为Image添加立体光照与高光效果，常见于3D风格卡片、图标悬浮态等场景。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,11 +76,13 @@ pointLight(value: PointLightStyle)
 
 enhancedImageQuality(imageQuality: ResolutionQuality)
 
-设置图像解码时的图像解码分辨率选项。
+设置增强的图像解码分辨率选项。画质等级越高，解码耗时与内存占用越大，请按显示需求选择：Low 解码速度快、内存占用低，适合列表缩略图等低内存场景；Medium 平衡画质与性能；High 画质最佳但解码耗时与内存占用更高，适合全屏高清展示。
 
-该属性不支持 svg、[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)和[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor) 等非解码图片类型。
+该属性不支持 SVG、[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)和[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor) 等非解码图片类型。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,18 +90,20 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| imageQuality | [ResolutionQuality](#resolutionquality12) | 是   | 图像解码分辨率质量。<br/>默认值：ResolutionQuality.Low |
+| imageQuality | [ResolutionQuality](#resolutionquality12) | 是   | 图像解码分辨率质量。<br/>默认值：ResolutionQuality.Low，即默认采用低分辨率解码以降低内存占用并提升解码性能。 |
 
 ## ResolutionQuality<sup>12+</sup>
 
-图像解码时的图像解码分辨率选项。
+type ResolutionQuality = import('../api/@ohos.multimedia.image').default.ResolutionQuality
+
+分辨率质量等级类型。
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 值                     | 说明                    |
-| ------ | --------------------------  | --------------------------  |
-| Low   | 1  | 低图像分辨率，解码时间适中。   |
-| Medium | 2 | 中等图像分辨率，解码时间适中。  |
-| High   | 3   | 高图像分辨率，解码时间长。    |
+| 类型     | 说明       |
+| ------ | ---------- |
+| import('../api/@ohos.multimedia.image').default.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 分辨率质量等级类型。 |

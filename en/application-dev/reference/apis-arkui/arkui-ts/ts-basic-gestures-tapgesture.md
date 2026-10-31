@@ -126,7 +126,7 @@ struct TapGestureExample {
 }
 ```
 
-![en-us_image_0000001174422900](figures/en-us_image_0000001174422900.gif)
+![tapGesture1](figures/tapGesture1.gif)
 
 ### Example 2: Obtaining Coordinates of a Single-Tap Gesture
 

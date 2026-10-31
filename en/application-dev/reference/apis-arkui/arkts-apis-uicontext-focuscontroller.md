@@ -6,13 +6,15 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Provides capabilities to control focus, including features such as clearing, moving, and activating focus.
+Provides the capability to control focus, including clearing, moving, and activating focus. This is suitable for scenarios where you need to manage the focus state of a page or component and control focus navigation. It helps you optimize focus interaction experiences with input methods such as keyboards.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
+>
+> - The APIs of this module can be used only in the stage model.
 >
 > - In the following API examples, you must first use [getFocusController()](arkts-apis-uicontext-uicontext.md#getfocuscontroller12) in **UIContext** to obtain a **FocusController** instance, and then call the APIs using the obtained instance.
 
@@ -34,8 +36,7 @@ In this example, **button2** receives initial focus by default. After **clearFoc
 @Entry
 @Component
 struct ClearFocusExample {
-  @State inputValue: string = '';
-  @State btColor: Color = Color.Blue;
+  @State buttonColor: Color = Color.Blue;
 
   build() {
     Column({ space: 20 }) {
@@ -51,13 +52,13 @@ struct ClearFocusExample {
           .height(70)
           .fontColor(Color.White)
           .focusOnTouch(true)
-          .backgroundColor(this.btColor)
+          .backgroundColor(this.buttonColor)
           .defaultFocus(true)
           .onFocus(() => {
-            this.btColor = Color.Red;
+            this.buttonColor = Color.Red;
           })
           .onBlur(() => {
-            this.btColor = Color.Blue;
+            this.buttonColor = Color.Blue;
           })
         Button('clearFocus')
           .width(200)
@@ -81,7 +82,7 @@ struct ClearFocusExample {
 
 requestFocus(key: string): void
 
-Transfers focus to a component node by the component ID, which is effective immediately.
+Transfers focus to the corresponding entity node in the component tree by the component ID, taking effect in the current frame. This is suitable for scenarios where you need to actively focus on a specified component during form validation, page initialization, or keyboard operation flows.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -126,11 +127,11 @@ struct RequestExample {
           .onBlur(() => {
             this.btColor = Color.Blue;
           })
-          .id("testButton")
+          .id('testButton')
 
         Divider()
           .vertical(false)
-          .width("80%")
+          .width('80%')
           .backgroundColor(Color.Black)
           .height(10)
 
@@ -138,7 +139,7 @@ struct RequestExample {
           .width(200)
           .height(70)
           .onClick(() => {
-            this.getUIContext().getFocusController().requestFocus("testButton");
+            this.getUIContext().getFocusController().requestFocus('testButton');
           })
 
         Button('requestFocus fail')
@@ -146,9 +147,9 @@ struct RequestExample {
           .height(70)
           .onClick(() => {
             try {
-              this.getUIContext().getFocusController().requestFocus("eee");
+              this.getUIContext().getFocusController().requestFocus('eee');
             } catch (error) {
-              console.error(`requestFocus failed code is ${error.code} message is ${error.message}`);
+              console.error(`Failed to request focus. Code: ${error.code}, message: ${error.message}`);
             }
           })
       }
@@ -217,7 +218,7 @@ struct ActivateExample {
 
 isActive(): boolean
 
-Obtains the focus activation state of the UI instance.
+Obtains the focus activation state of the UI instance. This is suitable for scenarios where you need to decide whether to enable direction-based focus navigation or update focus prompts based on the current focus activation state.
 
 For details about the focus activation state, see [Basic Concepts](../../ui/arkts-common-events-focus-event.md#basic-concepts).
 
@@ -238,8 +239,7 @@ The following example verifies that **isActive()** returns the focus activation 
 ```ts
 @Entry
 @Component
-struct ClearFocusExample {
-  @State inputValue: string = '';
+struct IsActiveExample {
   @State btColor: Color = Color.Blue;
 
   build() {
@@ -252,7 +252,7 @@ struct ClearFocusExample {
           .focusOnTouch(true)
           .backgroundColor(Color.Blue)
           .onClick(() => {
-            console.info("button1 onClick");
+            console.info('button1 onClick');
             this.getUIContext().getFocusController().activate(true);
             console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
@@ -264,7 +264,7 @@ struct ClearFocusExample {
           .backgroundColor(this.btColor)
           .defaultFocus(true)
           .onClick(() => {
-            console.info("button2 onClick");
+            console.info('button2 onClick');
             this.getUIContext().getFocusController().activate(false);
             console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
@@ -354,7 +354,7 @@ struct CustomDialogUser {
 
 setKeyProcessingMode(mode: KeyProcessingMode): void
 
-Sets the mode for processing key events.
+Sets the priority of key event handling. This is suitable for scenarios where both parent and child components need to handle key events, and you need to control the key event dispatch strategy.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -370,7 +370,7 @@ Sets the mode for processing key events.
 
 ```ts
 
-// This example demonstrates how to set the focus behavior after the page is loaded.
+// This example demonstrates how to set the key event processing priority after page loading is complete.
 @Entry
 @Component
 struct Index {
@@ -382,11 +382,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.info("Button1");
+          console.info('Button1');
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.info("Button2");
+          console.info('Button2');
           return true;
         })
       }

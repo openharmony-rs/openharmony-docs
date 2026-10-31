@@ -1,14 +1,15 @@
 # Adding Interactions
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-10-29T09:02:53.666Z pushedAt=2026-10-30T02:58:19.225Z nl=1 -->
 
 You can make the UI interactive by binding events to components. This topic describes how to associate a click event with **\<div>**, **\<text>**, and **\<image>** components to build a like button, as shown below.
 
-![en-us_image_0000001064068638](figures/en-us_image_0000001064068638.gif)
+![Adding-Interactions](figures/Adding-Interactions.gif)
 
 
 The like button is implemented by binding a click event to a **\<div>** component, which contains an **\<image>** component and a **\<text>** component.
@@ -19,7 +20,7 @@ The like button is implemented by binding a click event to a **\<div>** componen
 - The **\<text>** component displays the number of likes, which is updated synchronously in the click event handler.
 
 
-The click event calls the **likeClick()** function defined in the .js file. This function toggles the value of **isPressed**, which controls the image display. If the value of **isPressed** is **true**, the like count is incremented by 1. The function updates the corresponding **\<div>** component in the .hml file. The styles for the like button and its child components are defined in the .css file. Below is a complete example:
+The click event is defined as a function in the JS file, which changes the state of `isPressed` to update the displayed `image` component. If `isPressed` is `false`, the number of likes increases by 1. This function takes effect on the corresponding `div` component in the HML file, and the styles of the child components of the like button are set in the CSS file. The following is an implementation example:
 
 
 ```html

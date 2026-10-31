@@ -53,7 +53,7 @@ export default {
 >
 > - hml文件中的js表达式不支持ES6语法。
 
-![zh-cn_image_0000001118642003](figures/zh-cn_image_0000001118642003.png)
+![zh-cn_image_0000001118642003](figures/Data-Binding.png)
 
 ## 普通事件绑定
 
@@ -132,7 +132,7 @@ export default {
   }
   ```
 
-![zh-cn_image_0000001118642002](figures/zh-cn_image_0000001118642002.gif)
+![zh-cn_image_0000001118642002](figures/Common-Event-Binding.gif)
 
 ## 冒泡事件绑定<sup>5+</sup>
 
@@ -150,7 +150,7 @@ export default {
   ```html
   <!-- xxx.hml -->
   <div>
-     <!-- 使用事件冒泡模式绑定事件回调函数。5+ -->;
+     <!-- 使用事件冒泡模式绑定事件回调函数。5+ -->
       <div on:touchstart.bubble="touchstartfunc" style="background-color: red; width: 10%; height: 100%"></div>
       <div on:touchstart="touchstartfunc" style="background-color: orange; width: 10%; height: 100%"></div>
       <!-- 绑定事件回调函数，但阻止事件向上传递。5+ -->
@@ -178,7 +178,7 @@ export default {
   ```
 
 > **说明：**
-> 采用旧写法(onclick)的事件绑定在最小API版本6以下时采用不冒泡处理，在最小API版本为6及6以上时采用冒泡处理。
+> 采用旧写法（onclick）的事件绑定在最小API版本6以下时采用不冒泡处理，在最小API版本为6及6以上时采用冒泡处理。
 
 ## 捕获事件绑定<sup>5+</sup>
 
@@ -267,7 +267,7 @@ tid属性主要用来加速for循环的重渲染，旨在列表中的数据有�
 >
 > - tid不支持表达式。
 
-![zh-cn_image_0000001118642001](figures/zh-cn_image_0000001118642001.gif)
+![zh-cn_image_0000001118642001](figures/Loop-Rendering.gif)
 
 ## 条件渲染
 
@@ -313,7 +313,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001118642004](figures/zh-cn_image_0000001118642004.gif)
+![zh-cn_image_0000001118642004](figures/Conditional-Rendering.gif)
 
 优化渲染：show方法。当show为true时，节点正常渲染；当为false时，仅仅设置display样式为none。
 
@@ -353,7 +353,7 @@ export default {
 > **说明：**
 > 禁止在同一个元素上同时设置for和if属性。
 
-![zh-cn_image_0000001118642005](figures/zh-cn_image_0000001118642005.gif)
+![zh-cn_image_0000001118642005](figures/Conditional-Rendering01.gif)
 
 ## 逻辑控制块
 
@@ -387,7 +387,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001118642006](figures/zh-cn_image_0000001118642006.png)
+![zh-cn_image_0000001118642006](figures/Logic-Control-Block.png)
 
 ## 模板引用
 

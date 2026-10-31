@@ -7,7 +7,7 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-输入事件注入模块，提供键盘、鼠标和触控输入事件模拟能力。
+输入事件注入模块，提供输入按键、鼠标/触控板、触屏输入事件注入能力。
 
 **起始版本：** 26.0.0
 
@@ -25,11 +25,11 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
 
@@ -45,8 +45,8 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 801  | Capability not supported.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**
@@ -83,11 +83,11 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
 
@@ -103,8 +103,8 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 801  | Capability not supported.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**
@@ -141,11 +141,13 @@ createTouchController(): Promise&lt;TouchController&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
 
 **返回值：**
 
@@ -159,8 +161,8 @@ createTouchController(): Promise&lt;TouchController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 801  | Capability not supported.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**
@@ -205,11 +207,11 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
@@ -231,9 +233,9 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The key has been pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.  |
+| 4300001  | The key is already pressed and is not the most recently pressed key.  |
 
 **示例：**
 
@@ -276,11 +278,11 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
@@ -302,9 +304,9 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The key has not been pressed.  |
+| 4300001  | The key is not pressed.  |
 
 **示例：**
 
@@ -327,11 +329,11 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
@@ -340,8 +342,8 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
 | displayId | number | 是   | 目标显示器ID。|
-| displayX | number | 是   | 目标位置相对于显示器左边缘的X坐标，单位:px。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器宽度-1]。|
-| displayY | number | 是   | 目标位置相对于显示器上边缘的Y坐标，单位:px。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器高度-1]。|
+| displayX | number | 是   | 目标位置相对于显示器左边缘的X坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器宽度-1]。|
+| displayY | number | 是   | 目标位置相对于显示器上边缘的Y坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器高度-1]。|
 
 **返回值：**
 
@@ -355,7 +357,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
 | 4300002  | The display does not exist.  |
 
@@ -396,11 +398,11 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
@@ -422,9 +424,9 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The mouse button has been pressed.  |
+| 4300001  | The mouse button is already pressed.  |
 
 **示例：**
 
@@ -467,11 +469,11 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
@@ -493,9 +495,9 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The mouse button has not been pressed.  |
+| 4300001  | The mouse button is not pressed.  |
 
 **示例：**
 
@@ -509,11 +511,11 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
@@ -536,9 +538,9 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | An axis event is in progress.  |
+| 4300001  | The axis event is in progress.  |
 
 **示例：**
 
@@ -585,11 +587,11 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
@@ -612,9 +614,9 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | No axis event is in progress.  |
+| 4300001  | The axis event is not in progress.  |
 
 **示例：**
 
@@ -628,11 +630,11 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
 
 **设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
@@ -654,9 +656,9 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | No axis event is in progress.  |
+| 4300001  | The axis event is not in progress.  |
 
 **示例：**
 
@@ -668,16 +670,16 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | id | number | 否 | 否 | 触点唯一标识。取值范围为[0, 9]，且必须为整数。 |
 | displayId | number | 否 | 否 | 触点所在屏幕的唯一标识，必须为整数。 |
-| displayX | number | 否 | 否 | 触点相对于屏幕左边缘的X坐标，单位为px，必须为整数。 |
-| displayY | number | 否 | 否 | 触点相对于屏幕上边缘的Y坐标，单位为px，必须为整数。 |
+| displayX | number | 否 | 否 | 触点相对于屏幕左边缘的X坐标，单位为像素（px），必须为整数。 |
+| displayY | number | 否 | 否 | 触点相对于屏幕上边缘的Y坐标，单位为像素（px），必须为整数。 |
 
 ## TouchController
 
@@ -694,11 +696,13 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -718,7 +722,7 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 4300002 | The display does not exist. |
 | 3800001 | Input service exception. |
@@ -784,11 +788,13 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -808,7 +814,7 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 3800001 | Input service exception. |
 
@@ -824,11 +830,13 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -848,7 +856,7 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 3800001 | Input service exception. |
 

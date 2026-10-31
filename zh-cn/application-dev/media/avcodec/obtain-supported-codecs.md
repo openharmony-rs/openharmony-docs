@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍通过AVCapability接口查询系统支持的编解码器及能力规格的方法，涵盖指定名称创建、软硬件差异化配置、多路编解码器创建、档位级别查询与DRM安全解码器筛选等场景。"
+keywords: [编码能力查询, 解码能力查询, 编解码器参数查询, 编解码器属性查询, DRM安全解码器查询, OH_AVCapability]
+doctype: guide
+status: active
+---
+
 # 获取支持的编解码能力
 
 <!--Kit: AVCodec Kit-->
@@ -38,30 +46,30 @@
 
 3. 获得音视频编解码能力实例。
 
-   支持以下方式获取音视频编解码能力实例。若获取能力实例成功，继续向下执行。实例无显式释放接口，使用完毕后系统会自动回收。
-   
-   方式一：通过`OH_AVCodec_GetCapability`获取系统推荐的音视频编解码器能力实例。推荐策略与`OH_XXX_CreateByMime`系列接口一致。
+   可通过以下方式获取音视频编解码能力实例。获取成功后，可继续执行后续操作。实例无显式释放接口，使用完毕后系统会自动释放资源并回收。
 
+   方式一：通过[OH_AVCodec_GetCapability](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapability)获取系统推荐的音视频编解码器能力实例。
+   
    ```c++
    // 获取系统推荐的音频AAC解码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
    ```
-   
-   方式二：通过`OH_AVCodec_GetCapabilityByCategory`获取指定软硬件的编解码能力实例。
+
+   方式二：通过[OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory)获取指定软硬件的编解码能力实例。
 
    ```c++
    // 获取指定硬件的视频AVC编码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
 
-   方式三：从API version 24开始，通过OH_AVCodec_GetCapabilityList获取指定编解码器类型的全量能力实例列表。此方式适用于需要遍历系统支持的所有特定类型（如视频解码器）并根据多个条件进行组合筛选的场景。
+   方式三：从API version 24开始，开发者可调用[OH_AVCodec_GetCapabilityList](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitylist)接口，获取指定编解码器类型（如视频解码器）的全量能力实例列表。
 
    ```c++
    // 获取系统中所有视频解码器的能力实例列表。
    uint32_t count = 0;
    OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
    ```
-   
+
 4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
 
 ## 场景化开发
@@ -74,7 +82,7 @@
 
 | 接口     | 功能描述                         |
 | -------- | -------------------------------- |
-| OH_AVCapability_GetName     | 获取能力实例对应编解码器的名称。 |
+| OH_AVCapability_GetName     | 获取对应的编解码器名称。 |
 
 当H.264软件解码器和H.264硬件解码器同时存在时，创建H.264软件解码器的示例代码如下。
 
@@ -314,7 +322,7 @@ if (format == nullptr) {
 }
 if (!OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, bitrateMode) ||
    !OH_AVFormat_SetIntValue(format, OH_MD_KEY_SQR_FACTOR, sqrFactor) ||
-   !OH_AVFormat_SetIntValue(format, OH_MD_KEY_MAX_BITRATE, maxBitrate)) {
+   !OH_AVFormat_SetLongValue(format, OH_MD_KEY_MAX_BITRATE, maxBitrate)) {
    // 异常处理。
 }
 if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
@@ -392,7 +400,7 @@ OH_AVFormat_Destroy(format);
 
 ### 查询编码器支持复杂度范围
 
-复杂度等级决定了编码器使用的工具数量，但并非所有编码器都支持这一功能。
+复杂度等级决定了编码器使用的工具数量，但并非所有编码器都支持这一功能。若变量complexityRange返回值为{0, 0}，则表示当前编码器不支持复杂度等级配置。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -485,7 +493,7 @@ OH_AVFormat_Destroy(format);
 
 ### 查询编解码档次和级别支持情况
 
-编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、主档次和高档次）。详情参见 [OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。
+编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、高档次和主档次）。详情参见 [OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。
 
 级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考[OH_AVCLevel](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel)。
 
@@ -581,7 +589,7 @@ bool isSupported = OH_AVCapability_AreProfileAndLevelSupported(capability, AVC_P
 
 ![](figures/formula-maxmbsperframe.png)
 
-*MaxMBsPerFrameLevelLimits*表示协议限定的编解码器最大每帧宏块数，*MaxMBsPerFrameSubmit*表示编解码器上报的最大每帧宏块数，实际能力取这两者的最小值。
+*MaxMBsPerFrameLevelLimits*表示协议限定的编解码器最大每帧宏块数，*MaxMBsPerFrameSubmit*表示编解码器上报的最大每帧宏块数，实际生效的每帧最大宏块数（*MaxMBsPerFrame*）取这两者的最小值。在此基础上，结合给定的视频高度（*height*）以及单个宏块的宽和高（*MBWidth*和*MBHeight*，通常为16），即可推算得出该高度下所支持的最大视频宽度（*maxWidth*）。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -762,6 +770,7 @@ OH_AVFormat_Destroy(format);
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCapability_GetVideoSupportedPixelFormats             | 获取当前视频编解码器支持的像素格式。 |
+| OH_AVCapability_GetVideoSupportedNativeBufferFormats      | 获取视频编解码器支持的OH_NativeBuffer格式。 |
 
 ```c++
 constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
@@ -773,6 +782,9 @@ if (capability == nullptr) {
 const int32_t *pixFormats = nullptr;
 uint32_t pixFormatNum = 0;
 int32_t ret = OH_AVCapability_GetVideoSupportedPixelFormats(capability, &pixFormats, &pixFormatNum);
+// 获取当前视频编解码器支持的OH_NativeBuffer格式，使用方式同OH_AVCapability_GetVideoSupportedPixelFormats接口。
+// const OH_NativeBuffer_Format *nativeBufferFormats = nullptr;
+// int32_t ret = OH_AVCapability_GetVideoSupportedNativeBufferFormats(capability, &nativeBufferFormats, &pixFormatNum);
 if (ret != AV_ERR_OK || pixFormats == nullptr || pixFormatNum == 0) {
    // 异常处理。
 }
@@ -822,6 +834,7 @@ if (isSupported) {
          // 异常处理。
       }
    }
+   OH_AVFormat_Destroy(properties);
 }
 // 3. 编码器创建和配置。
 OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
@@ -843,7 +856,7 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 | OH_AVCapability_CheckMimeType             | 校验该能力实例的MIME类型是否与目标类型一致。 |
 | OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理DRM资源的安全解码器。 |
 
-查找并创建H.264安全硬件解码器的示例代码如下：
+开发者可通过以下代码实现H.264安全解码器的查询与初始化：
 
 ```c++
 // 1. 定义期望的MIME类型。
@@ -859,12 +872,12 @@ if (capabilityList != nullptr && count > 0) {
         
         // 3. 检查是否为目标的MIME类型，且必须是安全解码器。
         if (OH_AVCapability_CheckMimeType(cap, targetMime) && OH_AVCapability_IsSecure(cap)) {
-            // 4. 找到符合条件的编解码器，获取其名称用于创建实例。
+            // 4. 找到符合条件的解码器，获取其名称用于创建实例。
             const char *codecName = OH_AVCapability_GetName(cap);
             OH_AVCodec *secureVideoDec = OH_VideoDecoder_CreateByName(codecName);
             
             if (secureVideoDec != nullptr) {
-                // 成功创建安全解码器，跳出循环执行后续业务。
+                // 5. 成功创建安全解码器，跳出循环执行后续业务。
                 break;
             }
         }

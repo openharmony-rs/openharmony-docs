@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "汇总基础类库使用中的常见问题与解决方案：包括解析大文件XML内存溢出、定时器被误删除、Base64编码规则、HashSet和TreeSet添加已存在元素返回true、解析大量数字键JSON字符串等问题的原因与处理方法。"
+keywords: [基础库常见问题, XML内存溢出, 定时器误删除, Base64编码, HashSet, TreeSet, 数字键JSON解析]
+doctype: faq
+status: active
+---
+
 # 基础库常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 ## 解析大文件xml发生内存溢出（Out of Memory）
@@ -151,4 +159,113 @@ struct Index {
       .height('100%')
     }
 }
+```
+
+## Base64编码规则
+
+Base64编码使用一组特定的64个字符来表示二进制数据。这64个字符包括大写字母A-Z、小写字母a-z、数字0-9，以及符号"+"和"/"。在某些情况下，还会使用"="作为填充字符。Base64编码将原始数据按每3个字节分组，每组3个字节转换为4个Base64字符。
+
+Base64编码表如下：
+| 索引 | 字符 | 索引 | 字符 | 索引 | 字符 | 索引 | 字符 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 0 | A | 16 | Q | 32 | g | 48 | w |
+| 1 | B | 17 | R | 33 | h | 49 | x |
+| 2 | C | 18 | S | 34 | i | 50 | y |
+| 3 | D | 19 | T | 35 | j | 51 | z |
+| 4 | E | 20 | U | 36 | k | 52 | 0 |
+| 5 | F | 21 | V | 37 | l | 53 | 1 |
+| 6 | G | 22 | W | 38 | m | 54 | 2 |
+| 7 | H | 23 | X | 39 | n | 55 | 3 |
+| 8 | I | 24 | Y | 40 | o | 56 | 4 |
+| 9 | J | 25 | Z | 41 | p | 57 | 5 |
+| 10 | K | 26 | a | 42 | q | 58 | 6 |
+| 11 | L | 27 | b | 43 | r | 59 | 7 |
+| 12 | M | 28 | c | 44 | s | 60 | 8 |
+| 13 | N | 29 | d | 45 | t | 61 | 9 |
+| 14 | O | 30 | e | 46 | u | 62 | + |
+| 15 | P | 31 | f | 47 | v | 63 | / |
+
+由此可见Base64是基于64个可打印字符来表示二进制数据的编解码方式。将二进制数据转为字符串（ASCII码），方便数据传输和加解密保护。
+
+它的编码实现原理为：
+
+将需要编码的字符串转换成二进制序列，然后按每6个二进制位为一组，分成若干组，如果不足6位，则低位补0。每6位组成一个新的字节，高位补00，构成一个新的二进制序列，最后根据Base64索引表中的值找到对应的字符。
+
+例如字符串“ABC”，我们进行Base64编码，最后结果会是QUJD：
+| 原始字符 | A |  B  |  C  | － |
+| :--- | :--- | :--- | :--- | :--- |
+| ASCII编码 | 65 | 66 | 67 |   －   |
+| 二进制位 | 01000001 | 01000010 | 01000011 | －  |
+| 编码转换 | 010000 | 010100 | 001001 | 000011 |
+| base64索引值 | 16 | 20 | 9 | 3 |
+| base64字符 | Q | U | J | D |
+
+若原始字符串长度不是3的倍数，编码后末尾用“=”填充，使编码后的Base64字符串最终长度为4的倍数，以满足转换后Base64长度要求。
+
+例如字符串“AB”转换后为“QUI”为了凑齐4字节，需要在末尾补充“=”：
+| 原始字符 | A |  B  | －  | － |
+| :--- | :--- | :--- | :--- | :--- |
+| ASCII编码 | 65 | 66 | － |   －   |
+| 二进制位 | 01000001 | 01000010 | － | －  |
+| 编码转换（不足6位补0） | 010000 | 010100 | 001000 | － |
+| base64索引值 | 16 | 20 | 8 | － |
+| base64字符 | Q | U | I | = |
+
+## 为什么HashSet和TreeSet的add方法添加已存在元素时返回true
+
+[HashSet](../reference/apis-arkts/js-apis-hashset.md)和[TreeSet](../reference/apis-arkts/js-apis-treeset.md)的add方法在API参考中的返回值描述为：成功添加新元素至容器返回true，当元素已存在时返回false。当前代码实现中，添加已存在的元素时返回值同样为true，与API参考中的返回值描述存在差异。
+
+> **说明：**
+>
+> 该差异仅体现在返回值上，不影响集合功能。已存在的元素不会重复添加，容器的length保持不变，集合元素的唯一性不受影响。
+
+规避方案：不要通过add方法的返回值判断元素是否已存在，可在调用add方法前先使用has方法判断，或对比调用add方法前后容器的length是否发生变化。
+
+**示例代码**
+
+```ts
+import { HashSet, TreeSet } from '@kit.ArkTS';
+
+// 创建HashSet实例并添加元素
+let hashSet = new HashSet<string>();
+hashSet.add('squirrel');
+// 添加已存在的元素
+let result = hashSet.add('squirrel');
+console.info('result:', result);
+// 期望输出: result: false
+// 实际输出: result: true
+console.info('length:', hashSet.length); // length: 1，元素未重复添加
+
+// 创建TreeSet实例并添加元素
+let treeSet = new TreeSet<string>();
+treeSet.add('squirrel');
+// 添加已存在的元素
+let treeResult = treeSet.add('squirrel');
+console.info('treeResult:', treeResult);
+// 期望输出: treeResult: false
+// 实际输出: treeResult: true
+console.info('length:', treeSet.length); // length: 1，元素未重复添加
+
+// 推荐做法：先通过has方法判断，避免依赖add方法的返回值
+let value = 'sparrow';
+if (!hashSet.has(value)) {
+  hashSet.add(value);
+}
+```
+
+## 解析包含大量数字键的JSON字符串
+
+当需要将包含大量数字键的JSON字符串转换为Sendable对象时，可以使用[JSON.parseSendable](../reference/apis-arkts/js-apis-json.md#jsonparsesendable)接口进行处理。
+
+```ts
+import { JSON, lang } from '@kit.ArkTS';
+
+// 1021个数字键
+let parts1021: string[] = [];
+for (let i = 0; i < 1021; i++) {
+  parts1021.push('"' + i + '": ' + i);
+}
+let numericObj1021: lang.ISendable | null = JSON.parseSendable('{' + parts1021.join(',') + '}');
+console.info(`result: ${(numericObj1021 as object)?.[0]}`); // result: 0
+console.info(`result: ${(numericObj1021 as object)?.[1020]}`); // result: 1020
 ```

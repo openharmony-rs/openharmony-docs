@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d72018541c8c2dd5dad395009d1fba92751f60f3 translatedAt=2026-10-30T03:42:36.536Z pushedAt=2026-10-30T07:22:27.429Z nl=1 -->
 
-From API version 21, you can generate secure random number with hardware entropy sources.
+Starting from API version 21, a hardware entropy source can be used to generate secure random numbers.
 
 Random numbers are used to generate temporary session keys and asymmetric encryption algorithm keys. In encryption and decryption, a secure random number generator must feature randomness, unrepeatability, and unpredictability.
 
@@ -22,7 +23,7 @@ You can call APIs to:
 
 - Enable the hardware entropy source.
 
-- Generate a series of random sequences based on a seed.
+- Specify a random seed to generate a series of random sequences.
 
 It will be helpful if you have basic knowledge of encryption and decryption and understand the following basic concepts:
 
@@ -100,3 +101,4 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
     }
   }
   ```
+

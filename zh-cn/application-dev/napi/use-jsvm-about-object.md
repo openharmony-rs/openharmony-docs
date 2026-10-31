@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍JSVM-API的JavaScript对象操作能力，涵盖创建对象、获取原型、冻结与密封、类型判断及外部指针封装等常见场景。"
+keywords: [OH_JSVM_CreateObject, OH_JSVM_GetPrototype, OH_JSVM_ObjectFreeze, OH_JSVM_ObjectSeal, OH_JSVM_Typeof, OH_JSVM_Instanceof, OH_JSVM_CreateSymbol, OH_JSVM_CreateExternal, 对象类型判断]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行object相关开发
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -12,7 +20,7 @@
 
 ## 基本概念
 
-在JSVM接口开发中，经常需要定义和操作对象。例如，创建一个接口，该接口接受一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
+在JSVM接口开发中，经常需要定义和操作对象。例如，创建一个接口，该接口接收一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
 
 - **接口（API）**：接口定义了组件之间的交互协议，包括输入参数、输出结果以及可能的错误处理。通过接口，组件可以相互调用和交换数据，而无需了解对方的内部实现细节。
 - **对象（Object）**：在JavaScript中，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
@@ -44,14 +52,14 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getprototype/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-#include <fstream>
-#include <string>
-// GetPrototype注册回调
+// ...
+
 // OH_JSVM_GetPrototype的样例方法
 static JSVM_Value GetPrototype(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -67,6 +75,7 @@ static JSVM_Value GetPrototype(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return result;
 }
+// GetPrototype注册回调
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetPrototype},
 };
@@ -76,11 +85,10 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getPrototype", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(const myObject = {};
+const char* SRC_CALL_NATIVE = R"JS(const myObject = {};
     const proto = getPrototype(myObject);
     console.info(proto === Object.prototype);)JS";
 ```
-<!-- @[oh_jsvm_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getprototype/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -93,12 +101,14 @@ JSVM GetPrototype success
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createobject/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-#include <fstream>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_CreateObject的样例方法
 static JSVM_Value CreateObject(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -115,7 +125,7 @@ static JSVM_Value CreateObject(JSVM_Env env, JSVM_CallbackInfo info)
     // 设置属性名为 "name"
     OH_JSVM_CreateStringUtf8(env, "name", JSVM_AUTO_LENGTH, &name);
     JSVM_Value value = nullptr;
-    // 设置属性值为 "Hello from N-API!"
+    // 设置属性值为 "Hello OH_JSVM_CreateObject!"
     OH_JSVM_CreateStringUtf8(env, "Hello OH_JSVM_CreateObject!", JSVM_AUTO_LENGTH, &value);
     // 将属性设置到对象上
     OH_JSVM_SetProperty(env, object, name, value);
@@ -131,9 +141,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createObject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(createObject())JS";
+const char* SRC_CALL_NATIVE = R"JS(createObject())JS";
 ```
-<!-- @[oh_jsvm_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createobject/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -146,15 +155,19 @@ JSVM CreateObject success
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_object_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/objectfreeze/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_ObjectFreeze的样例方法
+const int FREEZE_TEST_VALUE = 111111;
 static JSVM_Value ObjectFreeze(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的object
+    // 接收一个JavaScript侧传入的object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
@@ -165,7 +178,7 @@ static JSVM_Value ObjectFreeze(JSVM_Env env, JSVM_CallbackInfo info)
     }
     // 测试冻结后的对象中属性能否修改
     JSVM_Value value = nullptr;
-    OH_JSVM_CreateInt32(env, 111111, &value);
+    OH_JSVM_CreateInt32(env, FREEZE_TEST_VALUE, &value);
     OH_JSVM_SetNamedProperty(env, argv[0], "data", value);
     // 将冻结后修改过的属性返回JavaScript侧
     return argv[0];
@@ -180,10 +193,9 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"objectFreeze", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(let obj = { data: 55, message: "hello world"};
+const char* SRC_CALL_NATIVE = R"JS(let obj = { data: 55, message: "hello world"};
   objectFreeze(obj))JS";
 ```
-<!-- @[oh_jsvm_object_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/objectfreeze/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -196,41 +208,45 @@ Test JSVM OH_JSVM_ObjectFreeze success
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_object_seal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/objectseal/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_ObjectSeal的样例方法
+const int TEST_VALUE = 111111;
 static JSVM_Value ObjectSeal(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的object
+    // 接收一个JavaScript侧传入的object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-    // 调用接口OH_JSVM_ObjectSeal将传入的object封闭，使其无法添加新的属性
+    // 调用接口OH_JSVM_ObjectSeal将传入的object密封，使其无法添加新的属性
     JSVM_Status status = OH_JSVM_ObjectSeal(env, argv[0]);
     if (status == JSVM_OK) {
         OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal success");
     }
-    // 检查封闭后的对象中属性能否修改、删除、新增
-    // 封闭后对象修改
+    // 检查密封后的对象中属性能否修改、删除、新增
+    // 密封后对象修改
     JSVM_Value changeValue = nullptr;
-    OH_JSVM_CreateInt32(env, 111111, &changeValue);
+    OH_JSVM_CreateInt32(env, TEST_VALUE, &changeValue);
     OH_JSVM_SetNamedProperty(env, argv[0], "data", changeValue);
-    // 封闭后对象删除
+    // 密封后对象删除
     JSVM_Value deleteProperty = nullptr;
     OH_JSVM_CreateStringUtf8(env, "message", JSVM_AUTO_LENGTH, &deleteProperty);
     bool result = false;
     OH_JSVM_DeleteProperty(env, argv[0], deleteProperty, &result);
     if (result) {
-        OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
+        OH_LOG_ERROR(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
     }
-    // 封闭后对象新增
+    // 密封后对象新增
     JSVM_Value addValue = nullptr;
     OH_JSVM_CreateStringUtf8(env, "addValue", JSVM_AUTO_LENGTH, &addValue);
     OH_JSVM_SetNamedProperty(env, argv[0], "newProperty", addValue);
-    // 将封闭后改动过的对象返回JavaScript侧
+    // 将密封后改动过的对象返回JavaScript侧
     return argv[0];
 }
 // ObjectSeal注册回调
@@ -243,10 +259,9 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"objectSeal", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS( let obj = { data: 55, message: "hello world"};
+const char* SRC_CALL_NATIVE = R"JS( let obj = { data: 55, message: "hello world"};
   objectSeal(obj))JS";
 ```
-<!-- @[oh_jsvm_object_seal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/objectseal/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -259,11 +274,14 @@ Test JSVM OH_JSVM_ObjectSeal success
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_typeof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/typeof/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_Typeof的样例方法
 static JSVM_Value GetTypeof(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -331,9 +349,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getTypeof", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(getTypeof(true);)JS";
+const char* SRC_CALL_NATIVE = R"JS(getTypeof(true);)JS";
 ```
-<!-- @[oh_jsvm_typeof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/typeof/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -346,11 +363,14 @@ JSVM Input type is boolean
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/instanceof/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_Instanceof的样例方法
 static JSVM_Value InstanceOf(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -379,7 +399,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"instanceOf", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(class Person {
+const char* SRC_CALL_NATIVE = R"JS(class Person {
         name;
         age;
         constructor(name, age) {
@@ -390,7 +410,6 @@ const char* srcCallNative = R"JS(class Person {
      instanceOf(new Person('Alice', 30), Person);
      ;)JS";
 ```
-<!-- @[oh_jsvm_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/instanceof/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -407,12 +426,15 @@ JSVM InstanceOf：1
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_check_object_type_tag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/checkobjecttypetag/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
 #define NUMBERINT_FOUR 4
+// ...
+
 // 定义一个静态常量JSVM_TypeTag数组存储类型标签
 static const JSVM_TypeTag TagsData[NUMBERINT_FOUR] = {
     {0x9e4b2449547061b3, 0x33999f8a6516c499},
@@ -474,20 +496,19 @@ static JSVM_CallbackStruct param[] = {
 static JSVM_CallbackStruct *method = param;
 // SetTypeTagToObject，CheckObjectTypeTag方法别名，TS侧调用
 static JSVM_PropertyDescriptor descriptor[] = {
-    {"setTypeTagToObject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"checkObjectTypeTag", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"setTypeTagToObject", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"checkObjectTypeTag", nullptr, method+1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(
+const char* SRC_CALL_NATIVE = R"JS(
          class Obj {
            data;
            message;
          }
          let obj= { data: 0, message: "hello world"};
          setTypeTagToObject(obj, 0);
-         checkObjectTypeTag(obj,0);)JS";
+         checkObjectTypeTag(obj, 0);)JS";
 ```
-<!-- @[oh_jsvm_check_object_type_tag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/checkobjecttypetag/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -504,12 +525,16 @@ JSVM CheckObjectTypeTag:1
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createexternal/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-#include <fstream>
+#include <cstdlib>
+#include <cstring>
+// ...
+
 // OH_JSVM_CreateExternal的样例方法
 static JSVM_Value CreateExternal(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -544,9 +569,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createExternal", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(createExternal())JS";
+const char* SRC_CALL_NATIVE = R"JS(createExternal())JS";
 ```
-<!-- @[oh_jsvm_create_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createexternal/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -559,11 +583,14 @@ OH_JSVM_CreateExternal可以创建并包装自定义的C/C++对象，并将其�
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getvalueexternal/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetValueExternal的样例方法
 static JSVM_Value GetValueExternal(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -575,8 +602,8 @@ static JSVM_Value GetValueExternal(JSVM_Env env, JSVM_CallbackInfo info)
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_CreateExternal success");
     }
-    void *data_value;
-    status = OH_JSVM_GetValueExternal(env, externalValue, &data_value);
+    void *dataValue;
+    status = OH_JSVM_GetValueExternal(env, externalValue, &dataValue);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM GetValueExternal fail");
     } else {
@@ -584,7 +611,7 @@ static JSVM_Value GetValueExternal(JSVM_Env env, JSVM_CallbackInfo info)
     }
     // 将符号位转化为int类型传出去
     JSVM_Value returnValue = nullptr;
-    int retData = *static_cast<int *>(data_value);
+    int retData = *static_cast<int *>(dataValue);
     OH_JSVM_CreateInt32(env, retData, &returnValue);
     return returnValue;
 }
@@ -598,9 +625,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueExternal", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(getValueExternal())JS";
+const char* SRC_CALL_NATIVE = R"JS(getValueExternal())JS";
 ```
-<!-- @[oh_jsvm_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getvalueexternal/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -614,11 +640,14 @@ JSVM GetValueExternal success
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createsymbol/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+// ...
+
 // OH_JSVM_CreateSymbol的样例方法
 static JSVM_Value CreateSymbol(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -632,7 +661,7 @@ static JSVM_Value CreateSymbol(JSVM_Env env, JSVM_CallbackInfo info)
     if (valuetypeSymbol == JSVM_SYMBOL) {
         OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol Success");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol fail");
+        OH_LOG_ERROR(LOG_APP, "JSVM CreateSymbol fail");
     }
     return returnSymbol;
 }
@@ -646,9 +675,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createSymbol", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(createSymbol())JS";
+const char* SRC_CALL_NATIVE = R"JS(createSymbol())JS";
 ```
-<!-- @[oh_jsvm_create_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createsymbol/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts
@@ -661,18 +689,22 @@ JSVM CreateSymbol Success
 
 cpp部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_symbol_for](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/symbolfor/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+static const size_t TESTMO_LENGTH = 9;
 // 定义一个常量，用于存储最大字符串长度
 static const int MAX_BUFFER_SIZE = 128;
 // OH_JSVM_SymbolFor的样例方法
 static JSVM_Value SymbolFor(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Value description = nullptr;
-    OH_JSVM_CreateStringUtf8(env, "test_demo", 9, &description);
+    OH_JSVM_CreateStringUtf8(env, "test_demo", TESTMO_LENGTH, &description);
     char buffer[MAX_BUFFER_SIZE];
     size_t bufferSize = MAX_BUFFER_SIZE;
     size_t copied = 0;
@@ -699,9 +731,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"symbolFor", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(symbolFor())JS";
+const char* SRC_CALL_NATIVE = R"JS(symbolFor())JS";
 ```
-<!-- @[oh_jsvm_symbol_for](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/symbolfor/src/main/cpp/hello.cpp) -->
 
 预期的输出结果：
 ```ts

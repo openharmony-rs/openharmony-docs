@@ -41,7 +41,7 @@ Obtains the exposure duration.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, session or inputdevice maybe abnormal.                                   |
 | 7400103                |  Session not config.                                   |
@@ -86,7 +86,7 @@ The setting takes effect only when [ExposureMode](arkts-apis-camera-e.md#exposur
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 

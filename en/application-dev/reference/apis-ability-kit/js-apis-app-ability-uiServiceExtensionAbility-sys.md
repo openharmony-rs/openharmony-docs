@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c; @xuzhihao666-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=8e4ee7947dfeb3a89be0dfff4e576f69a510a94f translatedAt=2026-09-03T10:37:24.108Z pushedAt=2026-09-05T10:47:30.451Z -->
 
 UIServiceExtensionAbility provides extended capabilities related to the floating window component. It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md). It is mainly used to provide services with UIs for third-party applications.
 
@@ -42,7 +43,7 @@ import { UIServiceExtensionAbility } from '@kit.AbilityKit';
 
 onCreate(want: Want): void
 
-Called to initialize the service logic.
+Called when the [UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md) is created. This callback is used to execute the initialization logic.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -83,7 +84,7 @@ Called to request to start a [UIServiceExtensionAbility](js-apis-app-ability-uiS
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want |  [Want](js-apis-app-ability-want.md) | Yes|  [Want](js-apis-app-ability-want.md) information about the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md), including the ability name and bundle name.|
-| startId | number | Yes| Number of times the instance has been started. The initial value is **1** for the first start, and it increments automatically for subsequent starts.|
+| startId | number | Yes | Number of times the floating window is started. The initial value is 1 for the first start, and it increments automatically for subsequent starts. |
 
 **Example**
 
@@ -92,7 +93,7 @@ import { UIServiceExtensionAbility, Want} from '@kit.AbilityKit';
 
 class UIServiceExt extends UIServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
-    console.info('onRequest, want:' + want.abilityName + ', startId:' + startId);
+    console.info(`onRequest, want: ${want.abilityName}, startId: ${startId}`);
   }
 }
 ```
@@ -123,7 +124,7 @@ import { UIServiceExtensionAbility, Want, common} from '@kit.AbilityKit';
 
 class UIServiceExt extends UIServiceExtensionAbility {
   onConnect(want: Want, proxy: common.UIServiceHostProxy){
-    console.info('onConnect, want:' + want.abilityName + '');
+    console.info(`onConnect, want: ${want.abilityName}`);
   }
 }
 ```
@@ -153,7 +154,7 @@ import { UIServiceExtensionAbility, Want, common } from '@kit.AbilityKit';
 
 class UIServiceExt extends UIServiceExtensionAbility {
   onDisconnect(want: Want, proxy: common.UIServiceHostProxy) {
-    console.info('onDisconnect, want: ${want.abilityName}');
+    console.info(`onDisconnect, want: ${want.abilityName}`);
   }
 }
 ```
@@ -163,7 +164,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 onWindowWillCreate(config: window.ExtensionWindowConfig): void
 
-Called when a window will be created for the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). Through **window.ExtensionWindowConfig** in the callback, the foreground application sends the parameters for creating the window to the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md).
+Called before the window of the [UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md) is created. The foreground application passes the window creation parameters back to the [UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md) service through window.ExtensionWindowConfig.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -192,7 +193,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 onWindowDidCreate(window: window.Window): void
 
-Called when a window is created for the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). Through this callback, the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md) passes the created window object to the foreground application.
+Called after the [UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md) is created. After the [UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md) service successfully creates the window, it passes the created window object to the foreground application through the [onWindowDidCreate](#onwindowdidcreate) callback.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -267,3 +268,4 @@ class ServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+

@@ -9,7 +9,7 @@
 
 ## 概述
 
-为应用提供对称密钥加密和解密算法接口。
+描述OpenHarmony为应用提供的对称密钥加解密接口。
 
 **起始版本：** 12
 
@@ -17,4 +17,4 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [crypto_sym_cipher.h](capi-crypto-sym-cipher-h.md) | 定义对称密钥加密API。 |
+| [crypto_sym_cipher.h](capi-crypto-sym-cipher-h.md) | 定义对称密钥加解密接口。 |

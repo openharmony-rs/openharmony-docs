@@ -1,10 +1,11 @@
 # ContextMenu
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=86be1cec9251f60c95a43a01528b94e8f3ec0068 translatedAt=2026-08-28T01:40:49.405Z pushedAt=2026-09-01T07:23:05.215Z -->
 
 The menu bound to a component through [bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu12) on a page can be closed as needed.
 
@@ -16,13 +17,13 @@ The menu bound to a component through [bindContextMenu](./ts-universal-attribute
 
 static close()
 
-Closes the menu bound to this component through [bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu12) on a page.
+Closes the menu bound through [bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu12) on a page. It is commonly used in interaction scenarios where the displayed menu needs to be actively closed, such as page navigation and drag start.
 
 >  **NOTE**
 >
-> This API is deprecated since API version 18. You are advised to use [getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12) in [UIContext](../arkts-apis-uicontext-uicontext.md) to obtain the [ContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md) instance and then use this instance to call the [close](../arkts-apis-uicontext-contextmenucontroller.md#close12) API.
+> This API is supported since API version 8 and deprecated since API version 18. You are advised to use [getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12) in [UIContext](../arkts-apis-uicontext-uicontext.md) to obtain a [ContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md) instance, and then call the alternative method [close](../arkts-apis-uicontext-contextmenucontroller.md#close12) through this instance.
 >
-> Since API version 12, you can use the [getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12) API in [UIContext](../arkts-apis-uicontext-uicontext.md) to specify the UI execution context.
+> The two methods provide the same functionality. The difference is that **ContextMenu.close()** is a static method, which may not explicitly specify the menu of which window to close in multi-window scenarios. In contrast, calling **close()** through the **ContextMenuController** instance obtained from **UIContext** can be associated with a specific **UIContext**, thereby explicitly specifying the UI context of the operation. You are advised to use the **UIContext** approach in API version 12 and later.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -30,7 +31,7 @@ Closes the menu bound to this component through [bindContextMenu](./ts-universal
 
 ## Example
 
-This example demonstrates how to call the **ContextMenu.close** API to close a context menu that is bound to a component using **bindContextMenu**.
+This example demonstrates how to use **ContextMenu.close** to close the menu bound through **bindContextMenu** when dragging starts.
 
 >  **NOTE**
 >
@@ -66,7 +67,7 @@ struct Index {
           .textAlign(TextAlign.Center)
       }
       .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
-      .onDragStart(()=>{
+      .onDragStart(() => {
         // Close the menu when the component is dragged.
         ContextMenu.close() // You are advised to use this.getUIContext().getContextMenuController().close() to obtain the UI context.
       })

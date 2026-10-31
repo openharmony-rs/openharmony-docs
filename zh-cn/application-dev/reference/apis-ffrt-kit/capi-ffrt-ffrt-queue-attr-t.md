@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ```c
@@ -13,7 +13,7 @@ typedef struct {...} ffrt_queue_attr_t
 
 ## 概述
 
-串行队列属性结构。
+队列属性结构体，用于存储队列的属性信息。
 
 **起始版本：** 10
 
@@ -23,10 +23,8 @@ typedef struct {...} ffrt_queue_attr_t
 
 ## 汇总
 
-### 成员变量  
+### 成员变量
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | 串行队列属性占用空间 |
-
-
+| uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | 队列属性的内部存储。请勿直接访问，通过[ffrt_queue_attr_init](capi-queue-h.md#ffrt_queue_attr_init)和`ffrt_queue_attr_set_*`等接口管理内容。 |

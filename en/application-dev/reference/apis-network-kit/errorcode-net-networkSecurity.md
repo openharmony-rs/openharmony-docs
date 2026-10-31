@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ef59b794245e4dee1c228af3dafb3f14cfd4d863 translatedAt=2026-09-23T01:47:49.698Z pushedAt=2026-09-24T06:00:14.172Z -->
 
 > **NOTE**
 >
@@ -55,7 +56,7 @@ Unable to get certificate revocation list (CRL).
 
 **Description**
 
-This error code is reported if the attempt to obtain the CRL fails.
+Failed to obtain the certificate revocation list (CRL).
 
 **Possible Cause**
 
@@ -63,7 +64,7 @@ The network is faulty, the CRL server is incorrectly configured, or the CA servi
 
 **Solution**
 
-Check the network, ensure that the CRL server URI is correct, update the CRL file, or use the Online Certificate Status Protocol (OCSP) to check the certificate status.
+Check the network, verify that the CRL URI is correct, update the CRL file, or use the Online Certificate Status Protocol (OCSP) to check the certificate status.
 
 ## 2305004 Failed to Decrypt the Certificate Signature
 
@@ -99,7 +100,7 @@ The CRL encryption algorithm is not supported by the client, or the key used to 
 
 **Solution**
 
-Check that the client has a correct private key, the private key matches the public key of the CRL, and the private key format is correct.
+Check and ensure that the client has the correct public key of the certificate authority (CA), that the public key matches the CA that issued the CRL, and that the public key is in the correct format.
 
 ## 2305006 Failed to Decode the Issuer Public Key
 
@@ -109,7 +110,7 @@ Unable to decode issuer public key.
 
 **Description**
 
-This error code is reported if the attempt to decode the public key fails.
+Failed to decode the issuer public key.
 
 **Possible Cause**
 
@@ -131,11 +132,11 @@ This error code is reported if the attempt to sign the certificate fails.
 
 **Possible Cause**
 
-The certificate signature is incorrectly calculated, or the digital signature algorithm used by the certificate is not supported by the client.
+The certificate signature is incorrectly calculated, or the digital signing algorithm used by the certificate is not supported by the client.
 
 **Solution**
 
-1. Check that the signature algorithm used by the certificate is supported by the client, the signature key of the certificate matches the public key, and the signature data is correct.
+1. Check that the signing algorithm used by the certificate is supported by the client, the signature key of the certificate matches the public key, and the signature data is correct.
 2. Regenerate or update the certificate.
 
 ## 2305008 Failed to Sign the CRL
@@ -150,11 +151,11 @@ This error code is reported if the attempt to sign the CRL fails.
 
 **Possible Cause**
 
-The CRL signature is incorrectly calculated, or the digital signature algorithm used by the CRL is not supported by the client.
+The CRL signature is incorrectly calculated, or the digital signing algorithm used by the CRL is not supported by the client.
 
 **Solution**
 
-Check that the signature algorithm and signature key of the CRL are correct. Alternatively, regenerate or update the CRL.
+Check the signing algorithm of the CRL, check whether the signature key of the CRL matches the public key, regenerate the CRL, and update the CRL.
 
 ## 2305009 Invalid Certificate
 
@@ -209,7 +210,7 @@ The start date of the CRL is later than the current date.
 **Solution**
 
 1. Check that the validity period of the CRL is between the specified start date and end date.
-2. Alternatively, regenerate or update the CRL.
+2. Regenerate or update the CRL, or use the Online Certificate Status Protocol (OCSP) to check the certificate status.
 
 ## 2305012 CRL Expired
 
@@ -323,6 +324,26 @@ The certificate is issued by an untrusted CA or the certificate has been revoked
 1. Ensure that the certificate is issued by a trusted CA. If the certificate is issued by an untrusted CA, replace it with one issued by a trusted CA.
 2. Ensure that the signature key of the certificate matches the expected key of the client.
 3. If the certificate has been revoked, apply for a new certificate issued by a trusted CA.
+
+## 2305062 Hostname Verification Failed
+
+**Error Message**
+
+Invalid hostname.
+
+**Description**
+
+The hostname in the certificate does not match the incoming hostname.
+
+**Possible Causes**
+
+The Subject Alternative Name (SAN) or Common Name (CN) field of the certificate does not match the incoming hostname.
+
+**Solution**
+
+1. Check whether the SAN or CN field of the certificate contains the correct hostname.
+2. Ensure that the incoming hostname parameter is consistent with the hostname of the server.
+3. If the certificate is issued by a third party, contact the certificate authority to correct the hostname information in the certificate.
 
 ## 2305069 Invalid Certificate Verification Context
 

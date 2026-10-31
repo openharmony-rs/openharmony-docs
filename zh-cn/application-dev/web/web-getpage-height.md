@@ -1,8 +1,8 @@
 # 获取网页内容高度
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc-->
-<!--Designer: @LongLie-->
+<!--Owner: @sinat_22543221-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -12,33 +12,47 @@
 
 在网页加载过程中，获取的高度可能不够精确，特别是在网页还未渲染完成时。因为动态内容加载后会更新这个值。网页内容可能需要长时间加载。目前网站为优化首次加载速度，会使用动态网页加载技术，用户在看到网页首帧时，页面资源还在动态加载页面，特别是包含图片、动态内容的页面。
 
-非静态网页不建议在[onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend)、[onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9)、[onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10)、[onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12)事件等Web组件生命周期回调和Web性能指标回调中获取。需要根据当前网页的特点，通过JSBridge或延迟等方案，在前端特定的回调通知里获取当前网页内容的实际高度。
+非静态网页不建议在[onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend)、[onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9)、[onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10)、[onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12)事件等Web组件生命周期回调和Web性能指标回调中获取网页内容高度。需要根据当前网页的特点，通过JSBridge或延迟等方案，在前端特定的回调通知里获取当前网页内容的实际高度。
 
 ## 普通静态展示页面
 
 普通静态网页，可以在onPageEnd等Web组件生命周期回调和Web性能指标回调中通过getPageHeight获取网页内容的高度。
 
 应用侧代码
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[ordinary_static_display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
 
-@Entry
+``` TypeScript
 @Component
-struct Index {
+struct Scene1Static {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
 
   build() {
-    Row() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-          .onPageEnd(() => {
-            console.info("page height: onPageEnd: " + this.controller.getPageHeight());
-          })
-      }
-      .width('100%')
-      .height('100%')
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene1_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .onPageEnd(() => {
+          this.heightText = $r('app.string.scene1_on_page_end');
+          setTimeout(() => {
+            try {
+              const h: number = this.controller.getPageHeight();
+              console.info(`page height: onPageEnd: ${h}`);
+              this.heightText = String(h) + ' px';
+            } catch (err) {
+              console.error(`page height: onPageEnd error: ${JSON.stringify(err)}`);
+              this.heightText = $r('app.string.get_height_failed');
+            }
+          }, 300)
+        })
     }
+    .width('100%')
     .height('100%')
   }
 }
@@ -49,43 +63,41 @@ struct Index {
 动态网页可以通过JSBridge传递特定回调，通知到应用侧调用。
 
 应用侧代码
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[complex_dynamic_web_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
 
-class TestClass {
-  testController: webview.WebviewController;
-
-  constructor(controller: webview.WebviewController) {
-    this.testController = controller;
-  }
-
-  notifyToGet(): void {
-    console.info("page height: " + this.testController.getPageHeight());
-  }
-}
-
-@Entry
+``` TypeScript
 @Component
-struct Index {
+struct Scene2JsBridge {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
   @State jsbObj: TestClass = new TestClass(this.controller);
 
+  aboutToAppear(): void {
+    this.jsbObj.onGetHeight = (h: string) => {
+      this.heightText = h + ' px';
+    };
+  }
+
   build() {
-    Row() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-          .javaScriptAccess(true)
-          .javaScriptProxy({
-            object: this.jsbObj,
-            name: "jsbObj",
-            methodList: ["notifyToGet"],
-            controller: this.controller
-          })
-      }
-      .width('100%')
-      .height('100%')
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene2_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .javaScriptAccess(true)
+        .javaScriptProxy({
+          object: this.jsbObj,
+          name: "jsbObj",
+          methodList: ["notifyToGet"],
+          controller: this.controller
+        })
     }
+    .width('100%')
     .height('100%')
   }
 }
@@ -193,28 +205,40 @@ struct Index {
 在无法使用JSBridge的场景下，可以通过添加setTimeout等函数来延迟获取当前页面的高度。具体的延迟时间可以根据网页的复杂度来确定。
 
 应用侧代码
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[jsb_cannot_be_used](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
 
-@Entry
+``` TypeScript
 @Component
-struct Index {
+struct Scene3SetTimeout {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
 
   build() {
-    Row() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-          .onPageEnd(() => {
-            setTimeout(()=>{
-                console.info("page height: onPageEnd: setTimeout: " + this.controller.getPageHeight());
-            },2000)
-          })
-      }
-      .width('100%')
-      .height('100%')
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene3_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .onPageEnd(() => {
+          this.heightText = $r('app.string.scene3_on_page_end');
+          setTimeout(() => {
+            try {
+              const h: number = this.controller.getPageHeight();
+              console.info(`page height: onPageEnd: setTimeout: ${h}`);
+              this.heightText = String(h) + ' px';
+            } catch (err) {
+              console.error(`page height: onPageEnd setTimeout error: ${JSON.stringify(err)}`);
+              this.heightText = $r('app.string.get_height_failed');
+            }
+          }, 2000)
+        })
     }
+    .width('100%')
     .height('100%')
   }
 }

@@ -2,11 +2,12 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-10-28T04:01:15.398Z pushedAt=2026-10-28T07:56:37.210Z nl=1 -->
 
-You can use \@Event, a variable decorator in state management V2, to enable a child component to require the parent component to update the \@Param decorated variables. Using \@Event to decorate the callback method is a standard, indicating that the child component needs to pass in the callback for updating the data source.
+To enable a child component to request the parent component to update \@Param decorated variables, developers can use the [\@Event](../../reference/apis-arkui/arkui-ts/ts-state-management-event.md#event) decorator. Using \@Event to decorate a callback method is a convention that indicates the child component needs a callback to update the data source.
 
 
 \@Event works with \@Param to implement two-way data synchronization. Before reading this topic, you are advised to read [\@Param](./arkts-new-param.md).
@@ -21,7 +22,7 @@ You can use \@Event, a variable decorator in state management V2, to enable a ch
 
 ## Overview
 
-Since the variables decorated with \@Param cannot be changed locally, you can use the \@Event decorator todefine a callback for updating the data source. Combined with the synchronization mechanism of [\@Local](arkts-new-local.md), it allows changes to propagate back to \@Param decorated variables, achieving active updates to @Param decorated variables.
+Since the variables decorated with \@Param cannot be changed locally, you can use the \@Event decorator to define a callback for updating the data source. Combined with the synchronization mechanism of [\@Local](arkts-new-local.md), it allows changes to propagate back to \@Param decorated variables, achieving active updates to @Param decorated variables.
 
 \@Event is used to decorate a component's output methods. When using this decorator, note the following:
 
@@ -46,12 +47,12 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
 
   ```ts
   @ComponentV2
-  struct Index {
+  struct ComponentV2Example {
     @Event changeFactory: () => void = () => {}; // Correct usage.
     @Event message: string = 'abcd'; // Incorrect usage: Decorating a non-function variable, @Event has no effect.
   }
   @Component
-  struct Index {
+  struct ComponentExample {
     @Event changeFactory: () => void = () => {}; // Incorrect usage. An error is reported during compilation.
   }
   ```
@@ -63,7 +64,7 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
 
 You can use \@Event to change a variable in the parent component. When the variable is used as the data source of the \@Param variable in the child component, this change will be synchronized accordingly.
 
-<!-- @[EventDecoratorTest1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets) -->
+<!-- @[EventDecoratorTest1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -88,6 +89,7 @@ struct Index {
         }
       })
     }
+    .width('100%')
   }
 }
 
@@ -101,28 +103,37 @@ struct Child {
     Column() {
       Text(`${this.title}`)
         .fontColor(this.fontColor)
+        .fontSize(20)
+        .margin(10)
+      // Use changeFactory to change the variable in the parent component.
       Button('change to Title Two')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.changeFactory(2);
         })
       Button('change to Title One')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.changeFactory(1);
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![event-sync-0](./figures/event-sync-0.gif)
+
 Note that using \@Event to change the value of the parent component takes effect immediately. However, the process of synchronizing the change from the parent component to the child component is asynchronous. That is, after the method of \@Event is called, the value of the child component does not change immediately. This is because \@Event passes the actual change capability of the child component value to the parent component for processing. After the parent component determines how to process the value, the final value is synchronized back to the child component before rendering.
 
-<!-- @[EventDecoratorTest2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets) -->
+<!-- @[EventDecoratorTest2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = '[Sample_EventDecorator]';
 const DOMAIN = 0xF811;
-const BUNDLE = 'EventDecorator_';
 @ComponentV2
 struct Child2 {
   @Param index: number = 0;
@@ -131,11 +142,15 @@ struct Child2 {
   build() {
     Column() {
       Text(`Child index: ${this.index}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.changeIndex(20);
-          hilog.info(DOMAIN, TAG, BUNDLE, `after changeIndex ${this.index}`);
+          // Output the child component this.index and verify that the value is not immediately synchronized back to the child component after @Event is called.
+          hilog.info(DOMAIN, TAG, `after changeIndex ${this.index}`);
         })
     }
+    .width('100%')
   }
 }
 @Entry
@@ -149,13 +164,17 @@ struct Index2 {
         index: this.index,
         changeIndex: (val: number) => {
           this.index = val;
-          hilog.info(DOMAIN, TAG, BUNDLE, `in changeIndex ${this.index}`);
+          // Output the index of the parent component for comparison with the logs on the child component side.
+          hilog.info(DOMAIN, TAG, `in changeIndex ${this.index}`);
         }
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![event-sync-1](./figures/event-sync-1.gif)
 
 In the preceding example, clicking the text triggers the \@Event function event to change the value of the child component. The printed log is as follows:
 

@@ -6,37 +6,42 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=55f1bbc1a6b3c7bc78365f242dd1518e99104c0d translatedAt=2026-09-23T02:38:26.087Z pushedAt=2026-09-24T06:00:14.220Z -->
+
+This module provides network data request capabilities. It can initiate HTTP/HTTPS requests through a URL and obtain the data returned by the server. It supports custom request headers, request methods, and response types. It is applicable to scenarios where an application needs to access network resources or interact with backend services, and can meet the network communication requirements within an application.
 
 > **NOTE**
-> - The APIs of this module are no longer maintained since API version 6. You are advised to use [`@ohos.net.http`](js-apis-http.md).
+> - The APIs of this module are no longer maintained since API version 6. You are advised to use the new API [@ohos.net.http (Data Request)](js-apis-http.md).
 > 
-> - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with the superscript to indicate their earliest API version.
 
 
 ## Modules to Import
 
 
-```
+```ts
 import fetch from '@system.fetch';
 ```
 
 
 ## fetch.fetch<sup>3+</sup>
 
-fetch(options:{ <br>
-&nbsp;&nbsp;url: string;<br>
-&nbsp;&nbsp;data?: string | object;<br>
-&nbsp;&nbsp;header?: Object;<br>
-&nbsp;&nbsp;method?: string;<br>
-&nbsp;&nbsp;responseType?: string;<br>
-&nbsp;&nbsp;success?: (data: FetchResponse) => void;<br>
-&nbsp;&nbsp;fail?: (data: any, code: number) => void;<br>
-&nbsp;&nbsp;complete?: () => void;<br>
-  } ): void
+```ts
+fetch(options:{
+  url: string;
+  data?: string | object;
+  header?: Object;
+  method?: string;
+  responseType?: string;
+  success?: (data: FetchResponse) => void;
+  fail?: (data: any, code: number) => void;
+  complete?: () => void;
+}): void
+```
 
 Obtains data through a network.
 
-**System capability**: SystemCapability.Communication.NetStack
+**System capability**: SystemCapability.Communication.NetStack 
 
 **Parameters**
 | Name| Type| Mandatory| Description|
@@ -44,10 +49,10 @@ Obtains data through a network.
 | url | string | Yes| Resource URL.|
 | data | string \| Object | No| Request parameter, which can be a string or a JSON object. For details, see the mapping between **data** and **Content-Type**.|
 | header | Object | No| Request header.|
-| method | string | No| Request method. The default value is **GET**. The value can be **OPTIONS**, **GET**, **HEAD**, **POST**, **PUT**, **DELETE **or **TRACE**.|
+| method | string | No| Request method. The default value is **GET**. The value can be **OPTIONS**, **GET**, **HEAD**, **POST**, **PUT**, **DELETE** or **TRACE**.|
 | responseType | string | No| Response type. The return type can be text or JSON. By default, the return type is determined based on **Content-Type** in the header returned by the server. For details, see return values in the **success** callback.|
 | success | Function | No| Called when the API call is successful. The return value is defined by [FetchResponse](#fetchresponse3).|
-| fail | Function | No| Called when an API call fails.|
+| fail | Function | No | Callback invoked when the API call fails. The return values are data and code. data is fixed to undefined, and code is the error code. For details, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html). |
 | complete | Function | No| Called when an API call is complete.|
 
 **Table 1** Mapping between data and Content-Type
@@ -61,7 +66,7 @@ Obtains data through a network.
 
 ## FetchResponse<sup>3+</sup>
 
-**System capability**: SystemCapability.Communication.NetStack
+**System capability**: SystemCapability.Communication.NetStack 
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -81,15 +86,15 @@ Obtains data through a network.
 
 ArkTS example:
 
-```
+```ts
 fetch.fetch({
   url: 'test_url',
   success: (response) => {
     console.info('fetch success');
     console.info(JSON.stringify(response));
   },
-  fail: () => {
-    console.error('fetch failed');
+  fail: (data: Object, code) => {
+    console.error('fetch failed, data: ' + JSON.stringify(data) + ', code: ' + code);
   }
 });
 ```
@@ -149,9 +154,9 @@ export default {
                 console.info('fetch success');
                 console.info(JSON.stringify(response));
             },
-            fail: function() {
+            fail: function(data, code) {
                 that.fontColor = '#FF0000';
-                that.result = 'FAILED';
+                that.result = 'FAILED code ' + code;
                 console.error('fetch failed');
             }
         });
@@ -163,7 +168,7 @@ export default {
 > **NOTE**
 >   HTTPS is supported by default. To support HTTP, you need to add **"network"** to the **config.json** file, and set the attribute **"cleartextTraffic"** to **true**.
 >   
-```
+```json5
 {
   "deviceConfig": {
     "default": {

@@ -16,7 +16,7 @@ The **ComposeListItem** component is a container that presents a series of items
 >
 > - This component can be used only in the stage model.
 >
-> - If the **ComposeListItem** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ComposeListItem** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ComposeListItem** component.
+> - If the **ComposeListItem** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **ComposeListItem** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ComposeListItem** component.
 
 
 ## Modules to Import
@@ -199,7 +199,7 @@ struct ComposeListItemExample {
   }
 }
 ```
-![ComposeListItem with left and right elements+text](figures/en-us_image_composelistitem_demo_01.jpg)
+![ComposeListItem with left and right elements+text](figures/image-composelistitem-demo-01.jpg)
 
 ### Example 2: Implementing Screen Reader Announcement for Right-Side Elements
 This example shows how to use the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties to customize the screen reader announcements for different right-side elements such as icons, buttons, and radio buttons in a list item. This functionality is supported since API version 18.
@@ -279,7 +279,7 @@ struct ComposeListItemExample {
   }
 }
 ```
-![Implementing screen reader announcement for right-side elements](figures/en-us_image_composelistitem_demo_02.png)
+![Implementing screen reader announcement for right-side elements](figures/image-composelistitem-demo-02.png)
 
 ### Example 3: Setting the Symbol Icon
 
@@ -354,4 +354,4 @@ struct ComposeListItemExample {
 }
 ```
 
-![Setting the symbol icon](figures/en-us_image_composelistitem_demo_03.png)
+![Setting the symbol icon](figures/image-composelistitem-demo-03.png)

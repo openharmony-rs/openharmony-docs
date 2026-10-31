@@ -1,8 +1,15 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用Worker线程异步执行AVTranscoder视频转码任务，适用于节省存储空间和提高设备兼容性的后台转码场景。"
+keywords: [AVTranscoder, 异步线程, Worker, 视频转码, ArkTS, 视频压缩, 设备兼容性, 线程通信, SendableObject]
+doctype: guide
+status: active
+---
 # 创建异步线程执行AVTranscoder视频转码(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -20,9 +27,9 @@
 
 ## 使用异步线程的方式进行转码
 
-本示例使用的是worker线程的方式来实现异步线程进行转码，worker线程的详细使用方式，可以参见文档:
+本示例使用的是worker线程的方式来实现异步线程进行转码，worker线程的详细使用方式，可以参见文档：
 
-- [Worker线程使用说明](../../reference/apis-arkts/js-apis-worker.md)
+- [@ohos.worker (启动一个Worker)](../../reference/apis-arkts/js-apis-worker.md)
 - [Worker简介](../../arkts-utils/worker-introduction.md)
 
 ### 开发步骤
@@ -58,12 +65,12 @@
 
    // 注册onErrors回调，可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常，在宿主线程执行。
    this.workerInstance.onerror = (err: ErrorEvent) => {
-       console.info("workerInstance onerror message is: " + err.message);
+       console.error("workerInstance onerror message is: " + err.message);
    }
 
    // 注册onmessageerror回调，当Worker对象接收到一条无法被序列化的消息时被调用，在宿主线程执行。
    this.workerInstance.onmessageerror = () => {
-       console.info('workerInstance onmessageerror');
+       console.error('workerInstance onmessageerror');
    }
 
    // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
@@ -143,14 +150,24 @@
        // 转码完成回调函数。
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
-         fileIo.closeSync(transcoder.fdDst); // 关闭fdDst。
          await transcoder?.release()
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
          workerPort.postMessage('complete');
        })
        // 转码错误回调函数。
        transcoder.on('error', async (err: BusinessError) => {
-         fileIo.closeSync(transcoder.fdDst);
          await transcoder?.release();
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
        })
        // 转码进度更新回调函数。
        transcoder.on('progressUpdate', (progress: number) => {
@@ -186,7 +203,7 @@
    }
    ```
 
-4. 监听转码的Complete回调，在转码结束的时候向主线程发送消息。
+4. 监听转码的complete回调，在转码结束的时候向主线程发送消息。
 
    ```ts
    // 转码完成回调函数。

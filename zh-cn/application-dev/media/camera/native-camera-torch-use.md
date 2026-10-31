@@ -1,4 +1,4 @@
-# 手电筒使用(C++)
+# 手电筒使用(C/C++)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
@@ -72,12 +72,12 @@
        bool torchModeSupported = false;
        Camera_ErrorCode ret = OH_CameraManager_IsTorchSupportedByTorchMode(cameraManager, torchMode, &torchModeSupported);
        if (ret != CAMERA_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_IsTorchSupported failed.");
+            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_IsTorchSupportedByTorchMode failed.");
        }
        if (torchModeSupported) {
-            OH_LOG_INFO(LOG_APP, "isTorchModeSupported success.");
+            OH_LOG_INFO(LOG_APP, "IsTorchSupportedByTorchMode success.");
        } else {
-            OH_LOG_ERROR(LOG_APP, "isTorchModeSupported failed. %{public}d ", ret);
+            OH_LOG_ERROR(LOG_APP, "IsTorchSupportedByTorchMode failed. %{public}d ", ret);
        }
        return torchModeSupported;
    }

@@ -1,9 +1,9 @@
 # ColorSpacePrimaries
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @xubo233-->
-<!--Designer: @dizuo1-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @njuptkid-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct {...} ColorSpacePrimaries
 
 ## 概述
 
-提供色彩原色结构体声明。
+提供色彩原色结构体声明，用于存储色彩空间的红绿蓝三原色和白点的坐标信息。
 
 **起始版本：** 13
 

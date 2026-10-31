@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b9b22540a5827a2e8cd777a1781974456d92844f translatedAt=2026-10-28T04:11:54.462Z pushedAt=2026-10-28T08:19:02.615Z nl=1 -->
 
 This guide provides migration instructions for in-application state variables.
 
@@ -13,7 +14,7 @@ This guide provides migration instructions for in-application state variables.
 | -------- | -------- |
 | [LocalStorage](./arkts-localstorage.md) | [@ObservedV2](./arkts-new-observedV2-and-trace.md) [@Trace](./arkts-new-observedV2-and-trace.md) |
 | [AppStorage](./arkts-appstorage.md) | [AppStorageV2](./arkts-new-appstoragev2.md) |
-| [Environment](./arkts-environment.md) | Obtain system environment variables using the **config** property of [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1).|
+| [Environment](./arkts-environment.md) | Obtain system environment variables using the **config** property of [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). |
 | [PersistentStorage](./arkts-persiststorage.md) | [PersistenceV2](./arkts-new-persistencev2.md) |
 | Legacy migration scenarios| \@ObservedV2, \@Trace, [\@Monitor](./arkts-new-monitor.md)|
 
@@ -142,9 +143,10 @@ V2:
 - Declare the \@ObservedV2 decorated **MyStorage** class and import it to the page to use.
 - Declare the \@Trace decorated properties as observable data shared between pages.
 
-<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) -->
+<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) --> 
 
 ``` TypeScript
+// Declare the MyStorage class decorated with @ObservedV2.
 @ObservedV2
 export class MyStorage {
   public static singleton_: MyStorage;
@@ -242,7 +244,7 @@ When using **Navigation**, create a **src/main/resources/base/profile/route_map.
 The following example demonstrates \@LocalStorageProp behavior, where local modifications do not synchronize back to LocalStorage:
 
 - In **Page1**, changes to the **count** variable decorated with \@LocalStorageProp remain local to the component and do not synchronize back to LocalStorage.
-- Clicking **push to Page2** navigates to **Page2**, where the **Text** component displays the original value **47** from LocalStorage.
+- Clicking **push to Page2** navigates to **Page2**, where the **Text** component displays the original value **47** from LocalStorage. This is because **count** modified on **Page1** is not synced to LocalStorage.
 - Clicking **change Storage Count** updates the value of **count** via **setOrCreate** of LocalStorage and triggers notifications to all bound variables.
 
 <!-- @[Internal_@Trace_setOrCreate_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page1.ets) -->
@@ -577,9 +579,10 @@ V2:
 
 Declare the \@ObservedV2 decorated class to replace LocalStorage functionality. LocalStorage keys can be replaced with \@Trace decorated properties.
 
-<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) -->
+<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) --> 
 
 ``` TypeScript
+// @ObservedV2 decorated class replaces LocalStorage.
 @ObservedV2
 export class MyStorageA {
   @Trace public propA: string = 'Hello';
@@ -766,9 +769,7 @@ struct NavigationContentMsgStack {
 
 ### LocalStorage Migration in Multi-instance Scenarios
 
-To share data between different abilities, LocalStorage supports data access across abilities.
-
-For this scenario, V2 can combine \@ObservedV2 and \@Trace to create an observable global singleton object, which defines a Map type to store data from different ability pages, achieving data sharing between different abilities. For details about how to start an ability, see [Specified](../../application-models/uiability-launch-type.md#specified).
+LocalStorage supports state sharing across pages within a single UIAbility. For this scenario, V2 can combine @ObservedV2 and @Trace to create an observable global singleton object, define a Map type to store data from different ability pages, and access the corresponding data through different key values, thereby achieving data sharing within the UIAbility. To start an ability, see [specified launch mode](../../application-models/uiability-launch-type.md#specified).
 
 **Home screen**
 
@@ -788,10 +789,6 @@ struct Index {
       Text ('Use the file manager to open multiple PDF files in this application')
         .fontSize($r('app.float.page_text_font_size'))
         .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
       Button('Jump to PDF_A').onClick(() => {
         let wantInfo: Want = {
           bundleName: 'com.samples.paradigmstatemanagement',
@@ -856,7 +853,7 @@ export default class PDFData {
     return this.data;
   }
 
-  setFlage(value: string) {
+  setFlag(value: string) {
     this.flag = value;
   }
 
@@ -870,7 +867,7 @@ export default class PDFData {
 <!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
 
 ``` TypeScript
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import PDFData from './model/PDFData';
 
@@ -879,7 +876,7 @@ export default class PDFAbility extends UIAbility {
     // Use the singleton to store data.
     const data = this.launchWant.parameters as Record<string, string>;
     PDFData.getInstance().setData(data.key, data.value);
-    PDFData.getInstance().setFlage(this.launchWant.uri || '');
+    PDFData.getInstance().setFlag(this.launchWant.uri || '');
     windowStage.loadContent('pages/internalmigrate/LocalStorageMultiInstance/PDF').catch();
   }
 }
@@ -920,7 +917,7 @@ struct PDF {
 
 ## AppStorage->AppStorageV2
 
-The approach of creating global \@ObservedV2-and-\@Trace-decorated instances described in the previous section is not suitable for cross-ability data sharing. For this scenario, you can use AppStorageV2 instead.
+In the previous section, although you can create global @ObservedV2 and @Trace decorated singleton objects to achieve cross-ability data sharing, AppStorageV2 provides a more standard and convenient cross-ability sharing solution. It is recommended to use AppStorageV2 instead.
 
 V1:
 
@@ -1015,7 +1012,7 @@ struct Index {
 
   build() {
     Column() {
-      Text(`EntryAbility1 count: ${this.storage.count}`)
+      Text(`EntryAbility count: ${this.storage.count}`)
         .fontSize(50)
         .onClick(() => {
           this.storage.count++;
@@ -1169,13 +1166,13 @@ struct Index {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
   build() {
     Column() {
-      Text(`EntryAbility1 count: ${this.count}`)
+      Text(`EntryAbility count: ${this.count}`)
         .fontSize(25)
         .onClick(() => {
           this.count++;
@@ -1303,7 +1300,7 @@ export let env: Env = new Env();
 
 Obtain the required system environment variables from **onCreate**.
 
-<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) -->
+<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) --> 
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1311,6 +1308,7 @@ import { window } from '@kit.ArkUI';
 import { env } from '../pages/Env';
 
 export default class EntryAbility extends UIAbility {
+  // Obtain the required system environment variables in onCreate.
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     env.language = this.context.config.language;
     env.colorMode = this.context.config.colorMode;
@@ -1358,7 +1356,7 @@ In V1, **PersistentStorage** provides UI data persistence. In V2, this functiona
 
 - **PersistentStorage** uses serialization and deserialization without explicit type information, resulting in type loss after persistence, and object methods cannot be persisted.
 
-**PersistenceV2** advantages:
+For **PersistenceV2**:
 
 - When an \@ObservedV2 object is associated with **PersistenceV2**, changes to its \@Trace properties automatically trigger persistence of the entire object.
 
@@ -1444,9 +1442,9 @@ class V2Data {
 
 @ObservedV2
 export class Sample {
+  @Trace public num: number = 1;
   // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(V2Data)
-  @Trace public num: number = 1;
   @Trace public V2: V2Data = new V2Data();
 }
 

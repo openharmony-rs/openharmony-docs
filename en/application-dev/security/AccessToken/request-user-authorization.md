@@ -6,12 +6,13 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-30T08:58:20.883Z pushedAt=2026-10-31T00:47:56.066Z nl=1 -->
 
 User authorization is required when an application needs to access user privacy information (such as Location or Calendar information) or using system abilities (such as the camera ability to take photos or record videos). The permissions that must be authorized by users are user_grant permissions.
 
 The procedure for requesting user_grant permissions is as follows:
 
-1. Declare the permissions required by your application in the configuration file. 
+1. Declare the permissions required by your application in the configuration file.
 
 2. Associate each object that requires a user_grant permission with the related permission. This lets the user know what operations need user authorization.
 
@@ -39,21 +40,21 @@ This topic elaborates steps 3 and 4.
   
   You can use [checkAccessToken()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9) to check whether the user has granted specific permissions to your application. This API returns [PERMISSION_GRANTED](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus) or [PERMISSION_DENIED](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus). For details, see the example given below.
 
-- Each time before an API that requires a user_grant permission is called, use [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to check whether the user has already granted the permission.
+- Before each access to an API protected by the target permission, use [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to request the corresponding permission.
 
-  After a permission is granted, the user may revoke the permission in **Settings**. Therefore, the previous authorization status cannot be persistent.
+  After a permission is granted, the user may revoke the permission in **Settings**. Therefore, the previous authorization status cannot persist.
 
 - When requesting permissions using **onWindowStageCreate()**, the application needs to wait until the **loadContent()** or **setUIContent()** API is complete or call [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) in **loadContent()** or **setUIContent()**.
   <!--RP1--><!--RP1End-->
 
 ## How to Develop
 
-The following example steps you through on how to request the location permissions.
+The following example steps walk you through on how to request the location permissions.
 
 **Figure 1** Requesting the location permissions
 
 <!--RP4-->
-![en_image_location](figures/en_image_location.png)
+![image-location](figures/image-location.png)
 <!--RP4End-->
 
 1. Request the ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION permissions. For details, see [Declaring Permissions](declare-permissions.md).

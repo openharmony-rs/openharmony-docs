@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei; @buzhenwang-->
-<!--Designer: @shenchenkai-->
-<!--Tester: @liyang2235-->
+<!--Owner: @suxunquan-->
+<!--Designer: @milkbread123-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=a3486e174ac4404720985f34561b6c8154b42a09 translatedAt=2026-09-16T10:59:07.547Z pushedAt=2026-09-20T09:01:52.261Z -->
 
 ## Overview
 
@@ -27,8 +28,8 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [LogType](#logtype) | LogType | Enumerates the log types. You can use this function to specify the type of output logs. Currently, only **LOG_APP** is available.<br>|
-| [LogLevel](#loglevel) | LogLevel | Enumerates the log levels. You are advised to select log levels based on their respective use cases. Log levels:<br> **DEBUG**: provides more detailed process information than INFO logs to help developers analyze service processes and locate faults. DEBUG logs are not recorded in official versions by default. They are available in debug versions or in official versions with the debug function enabled.<br> **INFO**: indicates the key service process nodes and exceptions (for example, no network signal or login failure) that occur during service running. These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions.<br> **WARN**: indicates a severe, unexpected fault that has little impact on users and can be rectified by the programs themselves or through simple operations.<br> **ERROR**: indicates a program or functional error that affects the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data.<br> **FATAL**: indicates that a program or functionality is about to crash and the fault cannot be rectified.<br>|
+| [LogType](#logtype) | LogType | Enumerates the log types. You can use this enum to specify the type of output logs. Currently, only **LOG_APP** is available.<br>|
+| [LogLevel](#loglevel) | LogLevel | Enumerates the log levels. This enum is used to define log levels. Recommended usage of each level: <br> DEBUG: Used to record process details more detailed than the INFO level. Logs at this level help analyze business processes and locate problems in more detail. DEBUG logs are not printed by default in official release versions; they are printed only in debug versions or when the debug switch is enabled. <br> INFO: Used to record key business process nodes to reproduce the main running process of a business; records abnormal information that is expected (such as no network signal, login failure, etc.). These logs should be recorded by the dominant module in the business to avoid duplicate recording in multiple called modules or low-level functions. <br> WARN: A relatively serious unexpected situation occurs, but it has little impact on users, and the program can recover automatically or through simple operations. <br> ERROR: An error occurs in the program or function, which affects the normal running of the function or normal use by users. It can be recovered but at a high cost, such as resetting data. <br> FATAL: A major fatal exception, indicating that the program or function is about to crash and the fault cannot be recovered. <br> |
 | [PreferStrategy](#preferstrategy) | PreferStrategy | Enumerates the preference strategies. This enum is used in [OH_LOG_SetLogLevel](#oh_log_setloglevel). The minimum log level that takes effect varies according to the strategy.|
 
 ### Macros
@@ -89,7 +90,7 @@ enum LogLevel
 
 **Description**
 
-Enumerates the log levels. You are advised to select log levels based on their respective use cases. Log levels:<br> **DEBUG**: provides more detailed process information than INFO logs to help developers analyze service processes and locate faults. DEBUG logs are not recorded in official versions by default. They are available in debug versions or in official versions with the debug function enabled.<br> **INFO**: indicates the key service process nodes and exceptions (for example, no network signal or login failure) that occur during service running. These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions.<br> **WARN**: indicates a severe, unexpected fault that has little impact on users and can be rectified by the programs themselves or through simple operations.<br> **ERROR**: indicates a program or functional error that affects the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data.<br> **FATAL**: indicates that a program or functionality is about to crash and the fault cannot be rectified.<br>
+Enumerates the log levels. This enum is used to define log levels. Recommended usage of each level: <br> **DEBUG**: Used to record more detailed process information than the INFO level. Logs at this level allow more detailed analysis of the business process and help locate and analyze problems. DEBUG-level logs are not printed by default in official release versions; they are printed only in debug versions or when the debug switch is enabled. <br> **INFO**: Used to record key business process nodes, which can restore the main running process of a service; used to record abnormal situations that are expected (such as no network signal, login failure, and so on). These logs should be recorded by the dominant module within the service to avoid duplicate recording in multiple called modules or low-level functions. <br> **WARN**: A relatively serious unexpected situation has occurred, but it has little impact on users, and the program can recover automatically or through simple operations. <br> **ERROR**: An error has occurred in the program or function, which affects the normal running of the function or normal use by users. It can be recovered, but at a high cost, such as resetting data. <br> **FATAL**: A major fatal exception, indicating that the program or function is about to crash and the fault cannot be recovered. <br>
 
 **Since**: 8
 
@@ -115,11 +116,13 @@ Enumerates the preference strategies. This enum is used in [OH_LOG_SetLogLevel](
 
 | Enum Item| Description|
 | -- | -- |
-| UNSET_LOGLEVEL = 0 | The setting is cleared. The minimum log level that actually takes effect is the system-controlled minimum log level.|
+| UNSET_LOGLEVEL = 0 | Unset operation. The actually effective minimum log level is the system-controlled minimum log level. |
 | PREFER_CLOSE_LOG = 1 | The minimum log level that actually takes effect is the larger value of the new log level and the system-controlled minimum log level.|
 | PREFER_OPEN_LOG = 2 | The minimum log level that actually takes effect is the smaller value of the new log level and the system-controlled minimum log level.|
 
 ## Function Description
+
+For detailed usage of each interface, see [Using HiLog (C/C++)](../../dfx/hilog-guidelines-ndk.md).
 
 ### OH_LOG_Print()
 
@@ -129,7 +132,7 @@ int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *
 
 **Description**
 
- Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format.
+Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format.
 
 **Since**: 8
 
@@ -158,7 +161,7 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 
 **Description**
 
- Outputs constant log strings of the specified **type**, **level**, **domain**, and **tag**.
+Outputs constant log strings of the specified **type**, **level**, **domain**, and **tag**.
 
 **Since**: 18
 
@@ -186,7 +189,7 @@ int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, cons
 
 **Description**
 
- Outputs log constant strings of the specified **domain**, **tag**, and **level**. The tag and string length must be specified. Unlike **OH_LOG_PrintMsg**, this API allows strings without terminators.
+Outputs log constant strings of the specified **domain**, **tag**, and **level**. The tag and string length must be specified. Unlike **OH_LOG_PrintMsg**, this API allows strings without terminators.
 
 **Since**: 18
 

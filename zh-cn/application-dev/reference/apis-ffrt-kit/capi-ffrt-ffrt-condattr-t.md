@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ```c
@@ -13,7 +13,7 @@ typedef struct {...} ffrt_condattr_t
 
 ## 概述
 
-FFRT条件变量属性结构。
+条件变量属性结构体，用于存储条件变量的属性信息。
 
 **起始版本：** 10
 
@@ -27,6 +27,6 @@ FFRT条件变量属性结构。
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | FFRT条件变量属性占用空间 |
+| long storage | 条件变量属性的内部存储。请勿直接访问。 |
 
 

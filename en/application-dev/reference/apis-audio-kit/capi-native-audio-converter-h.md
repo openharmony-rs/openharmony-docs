@@ -1,10 +1,11 @@
 # native_audio_converter.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=cdddcffca39623c2760d7e89d3d36783b0266157 translatedAt=2026-10-29T12:20:36.723Z pushedAt=2026-10-30T02:50:49.544Z nl=1 -->
 
 ## Overview
 
@@ -18,7 +19,7 @@ This file declares the underlying data structures for input and output audio for
 
 **Since**: 26.0.0
 
-**Related module**: AudioConverter](capi-audioconverter.md)
+**Related module**:  [OHAudioSuite](capi-ohaudiosuite.md)
 
 ## Summary
 
@@ -26,8 +27,8 @@ This file declares the underlying data structures for input and output audio for
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md) | OH_AudioConverter_Format | Describes the audio converter format data structure, which is used to describe the basic audio format.|
-| [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md) | OH_AudioConverter | Describes the audio converter.<br> The handle to the audio converter is used to perform functions related to the audio converter.|
+| [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md) | OH_AudioConverter_Format | Defines the data structure of the audio converter, which is used to describe the audio format.|
+| [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md) | OH_AudioConverter | Declares an audio format converter.<br> The handle of the audio format converter is used to perform functions related to it. |
 
 ### Enums
 
@@ -42,7 +43,7 @@ This file declares the underlying data structures for input and output audio for
 | -- | -- | -- |
 | [OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format* inputFormat, const OH_AudioConverter_Format* outputFormat, OH_AudioConverter** converter)](#oh_audioconverter_create) | - | Creates an audio converter.|
 | [void OH_AudioConverter_Destroy(OH_AudioConverter* converter)](#oh_audioconverter_destroy) | - | Destroys an audio converter.|
-| [typedef int32_t (\*OH_AudioConverter_RequestDataCallback)(void* userData, const void** outInputData, OH_AudioConverter_InputStatus* outStatus)](#oh_audioconverter_requestdatacallback) | OH_AudioConverter_RequestDataCallback | Data request callback function. An audio converter calls this callback function to proactively request input audio data during the [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) call.<br> The caller must fill in the output parameters (**outInputData** and **outStatus**) and return the size of the data read through the callback function.<br> The maximum size of data returned by a single callback is 400 KB.<br> The memory to which **outInputData** points must remain valid until **OH_AudioConverter_Process** returns a message indicating that the processing is complete.|
+| [typedef int32_t (\*OH_AudioConverter_RequestDataCallback)(void* userData, const void** outInputData, OH_AudioConverter_InputStatus* outStatus)](#oh_audioconverter_requestdatacallback) | OH_AudioConverter_RequestDataCallback | Defines a data request callback function. An audio converter calls this callback function to proactively request input audio data during the [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) call.<br> The caller must fill in the output parameters (**outInputData** and **outStatus**) and return the size of the data read through the callback function.<br> The maximum data size returned by a single callback is 400 KB.<br> The memory to which **outInputData** points must remain valid until **OH_AudioConverter_Process** returns a message indicating that the processing is complete. |
 | [OH_AudioConverter_Result OH_AudioConverter_SetInputCallback(OH_AudioConverter* converter, OH_AudioConverter_RequestDataCallback callback, void* userData)](#oh_audioconverter_setinputcallback) | - | Sets the data request callback function for a converter. This function binds the audio converter's input data callback function. The callback function is called by [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) to obtain the input audio data for processing.|
 | [OH_AudioConverter_Result OH_AudioConverter_Process(OH_AudioConverter* converter, void* outputData, int32_t outputCapacity, int32_t* outputSize)](#oh_audioconverter_process) | - | Executes audio format conversion. This function converts the input audio to the target format. Note that this function must be called after [OH_AudioConverter_SetInputCallback](capi-native-audio-converter-h.md#oh_audioconverter_setinputcallback), and the output buffer to which the final conversion result is written must be allocated and managed by the caller.|
 
@@ -62,15 +63,15 @@ Enumerates the return results of function execution.
 
 | Enum Item| Description|
 | -- | -- |
-| AUDIOCONVERTER_SUCCESS = 0 |  The function is called successfully.<br>**Since**: 26.0.0|
-| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 |  The function input parameter is invalid.<br>**Since**: 26.0.0|
+| AUDIOCONVERTER_SUCCESS = 0 |  The function is successfully called.<br>**Since**: 26.0.0|
+| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 |  The function input parameter is invalid. For example, the input format converter pointer is nullptr.<br>**Since**: 26.0.0|
 | AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2 |  Unsupported audio format, for example, unsupported encoding type or sampling format.<br>**Since**: 26.0.0|
-| AUDIOCONVERTER_ERROR_SYSTEM = 3 |  Common system error.<br>**Since**: 26.0.0|
-| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 |  Memory allocation failed.<br>**Since**: 26.0.0|
-| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 |  Insufficient buffer capacity.<br>**Since**: 26.0.0|
-| AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 |  The audio converter instance is not initialized.<br>**Since**: 26.0.0|
-| AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 |  Invalid callback function.<br>**Since**: 26.0.0|
-| AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 |  The callback function is not set.<br>**Since**: 26.0.0|
+| AUDIOCONVERTER_ERROR_SYSTEM = 3 |  A system error occurs. For example, a destroyed format converter is used to perform format conversion.<br>**Since**: 26.0.0|
+| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 |  Memory allocation failed. For example, the memory of the internal output data buffer fails to be allocated.<br>**Since**: 26.0.0|
+| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 |  Insufficient output buffer capacity. For example, the configured capacity for storing output data is insufficient to store one frame of output data.<br>**Since**: 26.0.0|
+| AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 |  The audio converter instance is not initialized. For example, the format conversion function is directly executed without creating a format converter.<br>**Since**: 26.0.0|
+| AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 |  Invalid input callback function. For example, the amount of data returned by the input callback function is less than 0 or greater than the maximum value of 400 KB.<br>**Since**: 26.0.0|
+| AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 |  The callback function is not set. For example, the input callback function pointer is nullptr.<br>**Since**: 26.0.0|
 
 ### OH_AudioConverter_InputStatus
 
@@ -103,14 +104,14 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 
 Creates an audio converter.
 
-> **NOTE**
+> **NOTE** 
 >
 > - The converter instance created by this function must be explicitly destroyed using [OH_AudioConverter_Destroy](capi-native-audio-converter-h.md#oh_audioconverter_destroy).
 > - Supported audio formats (applicable to input/output):
 > Pulse code modulation (PCM) audio format
 > - Supported sampling rates: 8,000 Hz, 11,025 Hz, 12,000 Hz, 16,000 Hz, 22,050 Hz, 24,000 Hz, 32,000 Hz, 44,100 Hz, 48,000 Hz,
 > 64,000 Hz, 88,200 Hz, 96,000 Hz, 176,400 Hz, and 192,000 Hz.
-> - Supported channel layouts: CH_LAYOUT_MONO, CH_LAYOUT_STEREO, CH_LAYOUT_STEREO_DOWNMIX
+> - Supported channel layouts: CH_LAYOUT_MONO, CH_LAYOUT_STEREO, CH_LAYOUT_STEREO_DOWNMIX,
 > CH_LAYOUT_2POINT1, CH_LAYOUT_3POINT0, CH_LAYOUT_SURROUND, CH_LAYOUT_3POINT1, CH_LAYOUT_4POINT0, CH_LAYOUT_QUAD_SIDE,
 > CH_LAYOUT_QUAD, CH_LAYOUT_2POINT0POINT2, CH_LAYOUT_4POINT1, CH_LAYOUT_5POINT0, CH_LAYOUT_5POINT0_BACK,
 > CH_LAYOUT_2POINT1POINT2, CH_LAYOUT_3POINT0POINT2, CH_LAYOUT_5POINT1, CH_LAYOUT_5POINT1_BACK, CH_LAYOUT_6POINT0,
@@ -127,16 +128,15 @@ Creates an audio converter.
 
 | Name| Description|
 | --- | --- |
-| [const OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* inputFormat | Pointer to the input audio format.|
-| inputFormat | Pointer to the input audio format.|
-| [const OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* outputFormat | Pointer to the output audio format.|
+| const [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* inputFormat | Pointer to the input audio format.|
+| const [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* outputFormat | Pointer to the output audio format.|
 | [OH_AudioConverter](capi-audioconverter-oh-audioconverterstruct.md)** converter | Pointer to an available audio converter.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | **AUDIOCONVERTER_SUCCESS**: The function is executed successfully.<br>         **AUDIOCONVERTER_ERROR_INVALID_PARAM**: Invalid input parameter.<br>         **AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT**: The combination of audio input and output formats is not supported.<br>         **AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED**: Memory allocation fails.<br>         **AUDIOCONVERTER_ERROR_SYSTEM**: An exception occurs. For example, the system fails to allocate memory.|
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | **AUDIOCONVERTER_SUCCESS**: The format converter is successfully created, and the subsequent process can be performed normally.<br>         **AUDIO_CONVERTER_ERROR_INVALID_PARAM**: The input parameter is invalid. Check whether the passed format converter pointer is not nullptr. <br>         **AUDIO_CONVERTER_ERROR_UNSUPPORTED_FORMAT**: The audio input/output format combination is not supported. The input/output format is out of the allowed range. Verify the configured audio formats. <br>          **AUDIO_CONVERTER_ERROR_SYSTEM**: A system error occurred. Check whether you are performing format conversion using a destroyed converter.|
 
 ### OH_AudioConverter_Destroy()
 
@@ -165,7 +165,7 @@ typedef int32_t (*OH_AudioConverter_RequestDataCallback)(void* userData, const v
 
 **Description**
 
-Data request callback function. An audio converter calls this callback function to proactively request input audio data during the [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) call.<br> The caller must fill in the output parameters (**outInputData** and **outStatus**) and return the size of the data read through the callback function.<br> The maximum size of data returned by a single callback is 400 KB.<br> The memory to which **outInputData** points must remain valid until **OH_AudioConverter_Process** returns a message indicating that the processing is complete.
+Defines a data request callback function. An audio converter calls this callback function to proactively request input audio data during the [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) call.<br> The caller must fill in the output parameters (**outInputData** and **outStatus**) and return the size of the data read through the callback function.<br> The maximum data size returned by a single callback is 400 KB.<br> The memory to which **outInputData** points must remain valid until **OH_AudioConverter_Process** returns a message indicating that the processing is complete.
 
 **Since**: 26.0.0
 
@@ -174,8 +174,8 @@ Data request callback function. An audio converter calls this callback function 
 | Name| Description|
 | -- | -- |
 | void\* userData | Pointer to the user-defined data passed to the callback function.|
-| const void\*\* outInputData | Pointer to the input audio data buffer set by the callback function.|
-| [OH_AudioConverter_InputStatus](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus)\* outStatus | Pointer to the status used to inform the converter whether the data stream is available, which is set by the callback function.|
+| const void\*\* outInputData | Pointer to the input audio data buffer set by the callback function. |
+| [OH_AudioConverter_InputStatus](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus)\* outStatus | Pointer to the input data status to be sent to the converter, which is set by the callback function.|
 
 **Returns**
 
@@ -201,14 +201,14 @@ Sets the data request callback function for a converter. This function binds the
 | Name| Description|
 | -- | -- |
 | [OH_AudioConverter](capi-audioconverter-oh-audioconverterstruct.md)* converter | Audio converter created by the [OH_AudioConverter_Create](capi-native-audio-converter-h.md#oh_audioconverter_create) function.|
-| [OH_AudioConverter_RequestDataCallback](capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback) callback | Callback function used to write audio data.|
-| userData | Pointer to the application data structure to be passed to the callback function.|
+| [OH_AudioConverter_RequestDataCallback](capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback) callback | Callback function used to write audio data. |
+| void* userData | Pointer to the application data structure that will be passed to the callback function. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | **AUDIOCONVERTER_SUCCESS**: The operation is successful.<br>         **AUDIOCONVERTER_ERROR_INVALID_PARAM**: Invalid parameter. For example, the converter pointer is **nullptr**.<br>         **AUDIOCONVERTER_ERROR_NOT_INITIALIZED**: The converter instance is not initialized.<br>         **AUDIOCONVERTER_ERROR_CALLBACK_INVALID**: Invalid callback function. For example, the callback function returns an invalid value.<br>         **AUDIOCONVERTER_ERROR_SYSTEM**: The system fails to allocate memory.|
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | **AUDIOCONVERTER_SUCCESS**: The input callback function is set successfully, and the subsequent process can be performed normally.<br>         **AUDIO_CONVERTER_ERROR_INVALID_PARAM**: The input parameter is invalid. Check whether the passed format converter pointer is not nullptr. <br>         **AUDIOCONVERTER_ERROR_NOT_INITIALIZED**: The format converter is not initialized. Check whether the current format converter is valid.<br>         **AUDIO_CONVERTER_ERROR_CALLBACK_INVALID**: The callback function is invalid. Check whether the amount of data returned by the input callback function is within the allowed range.<br>         **AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET**: The callback function is not set. Check whether the callback function pointer is not null.<br>         **AUDIO_CONVERTER_ERROR_SYSTEM**: A system error occurred. Check whether you are performing format conversion using a destroyed converter.|
 
 ### OH_AudioConverter_Process()
 
@@ -229,11 +229,11 @@ Executes audio format conversion. This function converts the input audio to the 
 | -- | -- |
 | [OH_AudioConverter](capi-audioconverter-oh-audioconverterstruct.md)* converter | Audio converter created by the [OH_AudioConverter_Create](capi-native-audio-converter-h.md#oh_audioconverter_create) function.|
 | void* outputData | Pointer to the output buffer allocated by the caller.|
-| int32_t outputCapacity | Size of the output buffer specified by the caller.|
-| outputSize | Size of the data actually written to the output buffer.|
+| int32_t outputCapacity | Size of the output buffer specified by the caller. |
+| int32_t* outputSize | Size of the data actually written to the output buffer.  |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | **AUDIOCONVERTER_SUCCESS**: The operation is successful.<br>         **AUDIOCONVERTER_ERROR_INVALID_PARAM**: Invalid parameter. For example, the converter pointer is **nullptr**.<br>         **AUDIOCONVERTER_ERROR_NOT_INITIALIZED**: The converter instance is not initialized.<br>         **AUDIOCONVERTER_ERROR_CALLBACK_INVALID**: Invalid callback function. For example, the callback function returns an invalid value.<br>         **AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET**: No input callback function is bound to the converter.<br>         **AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL**: The output buffer capacity is insufficient.<br>         **AUDIOCONVERTER_ERROR_SYSTEM**: The system fails to call the underlying conversion function or allocate memory.|
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | **AUDIOCONVERTER_SUCCESS**: The PCM audio data is successfully converted, and the subsequent process can be performed normally.<br>         **AUDIO_CONVERTER_ERROR_INVALID_PARAM**: The input parameter is invalid. Check whether the passed format converter pointer is not nullptr. <br>         **AUDIOCONVERTER_ERROR_NOT_INITIALIZED**: The format converter is not initialized. Check whether the current format converter is valid.<br>         **AUDIO_CONVERTER_ERROR_CALLBACK_INVALID**: The input callback function is invalid. Check whether the amount of data returned by the input callback function is within the allowed range.<br>         **AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET**: The callback function is not set. Check whether the callback function is successfully set and whether the function pointer is not null.<br>         **AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL**: The output buffer capacity is insufficient. Check whether the capacity of the buffer for storing the output data is sufficient to store one frame of output data.<br>          **AUDIO_CONVERTER_ERROR_SYSTEM**: A system error occurred. Check whether you are performing format conversion using a destroyed converter.|

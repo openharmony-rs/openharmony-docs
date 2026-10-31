@@ -1,12 +1,16 @@
 # Class (AdsBlockManager)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:44:33.927Z pushedAt=2026-08-07T07:07:40.474Z -->
 
-Implements an **AdsBlockManager** instance to set custom ad blocking configurations in the **Web** components and disable the ad blocking feature for specific websites. Each application's **Web** components share an **AdsBlockManager** instance.
+AdsBlockManager is a class in the ArkWeb framework used to manage the ad filtering feature of Web components. It provides capabilities such as setting ad filtering rules, managing domain AllowedList/DisallowedList, and controlling filtering policies. All Web components in each app share a single AdsBlockManager static class. Developers can use this class to inject ad filtering configuration files that conform to the universal EasyList syntax into Web components and flexibly control the ad filtering status for specific websites.
+
+The core mechanism of AdsBlockManager is based on a two-tier AllowedList/DisallowedList strategy using domain suffix matching: the DisallowedList is used to disable ad filtering for specific websites, while the AllowedList has a higher priority and can re-enable ad filtering for certain subdomains within the scope of the DisallowedList. After successful internal parsing, ad filtering rules are persistently stored and do not need to be set again after an app restart. However, they are not persistent and must be reconfigured after an app restart.
 
 > **NOTE**
 >
@@ -28,11 +32,13 @@ import { webview } from '@kit.ArkWeb';
 
 static setAdsBlockRules(rulesFile: string, replace: boolean): void
 
-Sets a custom ad blocking rule file that conforms to the universal EasyList syntax in the **Web** components.
+Sets a custom ad filtering configuration file that conforms to the universal EasyList syntax in the Web components.
 
 > **NOTE**
 >
-> The ad blocking rules set by this API will be persistently stored after successful internal parsing; you do not need to set them again after the application is restarted.
+> - The ad filtering rules set by this API will be persistently stored after successful internal parsing; you do not need to set them again after the app is restarted.
+>
+> - Starting from API version 18, calling this API on a device that does not support the ad filtering feature will throw an 801 exception.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -40,21 +46,17 @@ Sets a custom ad blocking rule file that conforms to the universal EasyList synt
 
 | Name    | Type  | Mandatory| Description                              |
 | ---------- | ------ | ---- | -------------------------------- |
-| rulesFile | string | Yes  | Path to the rule file that conforms to the universal EasyList syntax. The application needs to have read permission for this file.|
+| rulesFile | string | Yes | Path to the rule file that complies with EasyList syntax. The app must have read permission on this file. |
 | replace   | boolean | Yes  | Whether to replace the built-in default rules. The value **true** indicates that the built-in default rules will be forcibly replaced; **false** indicates that the custom rules will work alongside the built-in default rules.|
 
 **Error codes**
-
-> **NOTE**
->
-> Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>Applicable Version: 18+ |
 
 **Example**
 
@@ -63,7 +65,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { webview } from '@kit.ArkWeb';
 import { picker, fileUri } from '@kit.CoreFileKit';
 
-// This example demonstrates how to click a button to open an EasyList-compliant rule file through filepicker and set the file in the Web component.
+// Demonstrate clicking a button to open an EasyList rule file through filepicker and set it to the Web component.
 @Entry
 @Component
 struct WebComponent {
@@ -87,7 +89,7 @@ struct WebComponent {
               }
             })
           } catch (err) {
-            console.error('DocumentViewPicker.select failed with err:' + err);
+            console.error(`DocumentViewPicker.select failed, Error code: ${err.code}, message: ${err.message}`);
           }
         })
       }
@@ -104,9 +106,11 @@ Adds an array of domain names to the disallowed list of this **AdsBlockManager**
 
 > **NOTE**
 >
-> The domain name set by this API is not persistent; they need to be set again after the application is restarted.
+> - The domain names set by this API are not persistent; they need to be set again after the app is restarted.
 >
-> The ad blocking feature matches website URLs based on the suffix. For example, if the disallowed list contains **'example.com'** or **'www.example.com'**, then ad blocking will be disabled for sites **https://www.example.com** and **https://m.example.com**.
+> - The ad filtering feature uses suffix matching to determine whether the domainSuffix matches the URL of the current site. For example, if the website opened in the current Web component is https://www.example.com and the DisallowedList contains 'example.com' or 'www.example.com', the suffix match succeeds, ad filtering will be disabled for this website, and ad filtering will also be disabled when accessing 'https://m.example.com'.
+>
+> - Starting from API version 18, calling this API on a device that does not support the ad filtering feature will throw an 801 exception.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -118,16 +122,12 @@ Adds an array of domain names to the disallowed list of this **AdsBlockManager**
 
 **Error codes**
 
-> **NOTE**
->
-> Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
-
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>Applicable version: 18+ |
 
 **Example**
 
@@ -188,7 +188,9 @@ Removes an array of domain names from the disallowed list of this **AdsBlockMana
 
 > **NOTE**
 >
-> The domain name set by this API is not persistent; they need to be set again after the application is restarted. Removing an entry that does not exist does not trigger an exception.
+> - The DisallowedList of AdsBlockManager is not persistent; it needs to be set again after the app is restarted. Removing an entry that does not exist does not trigger an exception.
+>
+> - Starting from API version 18, calling this API on a device that does not support the ad filtering feature will throw an 801 exception.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -200,16 +202,12 @@ Removes an array of domain names from the disallowed list of this **AdsBlockMana
 
 **Error codes**
 
-> **NOTE**
->
-> Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
-
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+| 801 | Capability not supported. <br/>Applicable Version: 18+ |
 
 **Example**
 
@@ -268,19 +266,21 @@ static clearAdsBlockDisallowedList(): void
 
 Clears the disallowed list of this **AdsBlockManager** object.
 
+> **NOTE**
+>
+> - The DisallowedList of AdsBlockManager is not persistent; it needs to be set again after the app is restarted.
+>
+> - Starting from API version 18, calling this API on a device that does not support the ad filtering feature will throw an 801 exception.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Error codes**
-
-> **NOTE**
->
-> Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+| 801 | Capability not supported. <br/>Applicable Version: 18+ |
 
 **Example**
 
@@ -333,13 +333,15 @@ struct WebComponent {
 
 static addAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 
-Adds an array of domain names to the allowed list of this **AdsBlockManager** object. This API is typically used to re-enable ad blocking for certain websites that were previously added to the disallowed list.
+Adds an array of domain names to the AllowedList of this AdsBlockManager object. This API is typically used to re-enable ad filtering for certain websites in the DisallowedList.
 
 > **NOTE**
 >
-> The domain name set by this API is not persistent; they need to be set again after the application is restarted.
+> - The domain names set by this API are not persistent; they need to be set again after the app is restarted.
 >
-> The priority of the allowed list is higher than that of the disallowed list. For example, if the disallowed list includes **['example.com']**, all pages under the **example.com** domain will have their ad blocking disabled; to re-enable ad blocking for the subdomain **news.example.com**, you can use the **addAdsBlockAllowedList(['news.example.com'])** API.
+> - The AllowedList has a higher priority than the DisallowedList. For example, if ['example.com'] is configured in the DisallowedList, ad filtering is disabled for all web pages under the example.com domain. To enable ad filtering for 'news.example.com', you can use addAdsBlockAllowedList(['news.example.com']).
+>
+> - Starting from API version 18, calling this API on a device that does not support the ad filtering feature will throw an 801 exception.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -351,16 +353,12 @@ Adds an array of domain names to the allowed list of this **AdsBlockManager** ob
 
 **Error codes**
 
-> **NOTE**
->
-> Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
-
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>Applicable Version: 18+ |
 
 **Example**
 
@@ -397,6 +395,7 @@ struct WebComponent {
 
           Button({type: ButtonType.Capsule}) { Text("addAdsBlockAllowedList") }
           .onClick(() => {
+            // Demonstrate the AllowedList priority: first disable all subdomains of example.com, then re-enable news.example.com.
             let arrDisallowDomainSuffixes = new Array<string>();
             arrDisallowDomainSuffixes.push('example.com');
             webview.AdsBlockManager.addAdsBlockDisallowedList(arrDisallowDomainSuffixes);
@@ -409,7 +408,7 @@ struct WebComponent {
       }
       Web({ src: this.main_url, controller: this.controller })
         .onControllerAttached(()=>{
-          this.controller.enableAdsBlock(true)
+          this.controller.enableAdsBlock(true);
         })
     }
   }
@@ -424,7 +423,9 @@ Removes an array of domain names from the allowed list of this **AdsBlockManager
 
 > **NOTE**
 >
-> The domain name set by this API is not persistent; they need to be set again after the application is restarted. Removing an entry that does not exist does not trigger an exception.
+> - The AllowedList of AdsBlockManager is not persistent; it needs to be set again after the app is restarted. Removing an entry that does not exist does not trigger an exception.
+>
+> - Starting from API version 18, calling this API on a device that does not support the ad filtering feature will throw an 801 exception.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -436,16 +437,12 @@ Removes an array of domain names from the allowed list of this **AdsBlockManager
 
 **Error codes**
 
-> **NOTE**
->
-> Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
-
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>Applicable Version: 18+ |
 
 **Example**
 
@@ -453,7 +450,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
-// This example demonstrates how to click a button to remove an array of domain names from the disallowed list.
+// Demonstrate deleting a domain element from the AllowedList of AdsBlockManager via a button click.
 @Entry
 @Component
 struct WebComponent {
@@ -504,19 +501,21 @@ static clearAdsBlockAllowedList(): void
 
 Clears the allowed list of this **AdsBlockManager** object.
 
+> **NOTE**
+>
+> - The AllowedList of AdsBlockManager is not persistent; it needs to be set again after the app is restarted.
+>
+> - Starting from API version 18, calling this API on a device that does not support the ad filtering feature will throw an 801 exception.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Error codes**
-
-> **NOTE**
->
-> Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>Applicable Version: 18+ |
 
 **Example**
 

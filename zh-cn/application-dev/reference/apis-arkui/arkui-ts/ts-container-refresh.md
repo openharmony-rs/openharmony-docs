@@ -2,12 +2,12 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
- 可以进行页面下拉操作并显示刷新动效的容器组件。 
+Refresh是提供下拉刷新交互的容器组件，适用于列表数据刷新、页面内容更新等需要用户触发数据更新的场景。它支持自定义刷新区域显示内容和文本、设置下拉偏移量和跟手系数、控制最大下拉距离等，可灵活适配不同应用的下拉刷新需求，提供一致且流畅的刷新体验。
 
 >  **说明：**
 >
@@ -15,7 +15,7 @@
 >
 >  - 该组件从API version 12开始支持与垂直滚动的[Swiper](ts-container-swiper.md)和[Web](../arkui-js/js-components-basic-web.md)的联动。当[Swiper](ts-container-swiper.md)设置[loop](ts-container-swiper.md#loop)属性为true时，Refresh无法和[Swiper](ts-container-swiper.md)产生联动。
 >
->  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果，可以将[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，此时[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果，具体可以参考[示例9（不满一屏场景实现下拉刷新）](#示例9不满一屏场景实现下拉刷新)。
+>  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果。此时可以将[alwaysEnabled](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果。具体可以参考[示例9（不满一屏场景实现下拉刷新）](#示例9不满一屏场景实现下拉刷新)。
 >
 >  - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
 >
@@ -52,21 +52,23 @@ Refresh(value: RefreshOptions)
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型                                      | 只读   | 可选 | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
-| refreshing | boolean                                  | 否    | 否 | 组件当前是否处于刷新中状态。true表示处于刷新中状态，false表示未处于刷新中状态。<br/>默认值：false<br/>该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| offset<sup>(deprecated)</sup>    | number&nbsp;\|&nbsp;string   | 否    | 是 | 下拉起点距离组件顶部的距离。<br/>默认值：16，单位vp。类型为string时，需要显式指定像素单位，如'10px'；未指定像素单位时，如'10'，单位为vp。 <br/>**说明：** 从API version 8开始支持，从API version 11开始废弃，无替代接口。<br/>**说明：**<br/>offset取值范围[0vp,64vp]。大于64vp按照64vp处理。不支持百分比，不支持负数。|
-| friction<sup>(deprecated)</sup>   | number&nbsp;\|&nbsp;string               | 否    | 是 | 下拉摩擦系数，取值范围为0到100。<br/>默认值：62<br/>-&nbsp;0表示下拉刷新容器不跟随手势下拉而下拉。<br/>-&nbsp;100表示下拉刷新容器紧紧跟随手势下拉而下拉。<br/>-&nbsp;数值越大，下拉刷新容器跟随手势下拉的反应越灵敏。<br/>**说明：** 从API version 8开始支持，从API version 11开始废弃，建议使用[pullDownRatio](#pulldownratio12)替代。 |
-| builder<sup>10+</sup>    | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 是 | 自定义刷新区域显示内容。<br/>**说明：**<br/>API version 10及之前版本，自定义组件的高度限制在64vp之内。API version 11及以后版本没有此限制。 <br/>自定义组件设置了固定高度时，自定义组件会以固定高度显示在刷新区域下方；自定义组件未设置高度时，自定义组件高度会自适应刷新区域高度，会发生自定义组件高度跟随刷新区域变化至0的现象。建议对自定义组件设置最小高度约束来避免自定义组件高度小于预期的情况发生，具体可参照[示例3](#示例3自定义刷新区域显示内容-builder)。 <br/>从API version 12开始，建议使用refreshingContent参数替代builder参数自定义刷新区域显示内容，以避免刷新过程中因自定义组件销毁重建造成的动画中断问题。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| promptText<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 设置刷新区域底部显示的自定义文本。<br/>**说明：**<br/>输入文本的限制参考Text组件，使用builder或refreshingContent参数自定义刷新区域显示内容时，promptText不显示。<br/>promptText设置有效时，[refreshOffset](#refreshoffset12)属性默认值为96vp。<br/>自定义文本最大的字体缩放倍数[maxFontScale](ts-basic-components-text.md#maxfontscale12)为2。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| refreshingContent<sup>12+</sup>    | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否    | 是 | 自定义刷新区域显示内容。<br/>**说明：**<br/>与builder参数同时设置时builder参数不生效。<br/>自定义组件设置了固定高度时，自定义组件会以固定高度显示在刷新区域下方；自定义组件未设置高度时，自定义组件高度会自适应刷新区域高度，会发生自定义组件高度跟随刷新区域变化至0的现象。建议对自定义组件设置最小高度约束来避免自定义组件高度小于预期的情况发生，具体可参照[示例4](#示例4自定义刷新区域显示内容-refreshingcontent)。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| refreshing | boolean                                  | 否    | 否 | 组件当前是否处于刷新状态。true表示正在刷新，false表示未在刷新。<br/>默认值：false<br/>该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| offset<sup>(deprecated)</sup>    | number&nbsp;\|&nbsp;string   | 否    | 是 | 下拉起点距离组件顶部的距离。<br/>默认值：16，单位vp。类型为string时，需要显式指定像素单位，如'10px'；未指定像素单位时，如'10'，单位为vp。 <br/>**说明：** 从API version 8开始支持，从API version 11开始废弃，无替代接口。<br/>offset取值范围[0vp,64vp]。大于64vp按照64vp处理。不支持百分比，不支持负数。|
+| friction<sup>(deprecated)</sup>   | number&nbsp;\|&nbsp;string               | 否    | 是 | 下拉摩擦系数。<br/>取值范围：[0, 100]，值小于0或大于100时，使用默认值。<br/>默认值：62<br/>-&nbsp;0表示下拉刷新容器不跟随手势下拉。<br/>-&nbsp;100表示下拉刷新容器紧紧跟随手势下拉。<br/>-&nbsp;数值越大，下拉刷新容器跟随手势下拉的反应越灵敏。<br/>**说明：** 从API version 8开始支持，从API version 11开始废弃。建议使用[pullDownRatio](#pulldownratio12)替代。 |
+| builder<sup>10+</sup>    | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 是 | 自定义刷新区域显示内容。<br/>**说明：**<br/>与refreshingContent参数同时设置时，该参数不生效。使用本参数自定义刷新区域显示内容时，promptText不显示。<br/>API version 10及之前版本，自定义组件的高度限制在64vp之内。API version 11及以后版本没有此限制。 <br/>自定义组件设置了固定高度时，自定义组件会以固定高度显示在刷新区域下方；自定义组件未设置高度时，自定义组件高度会自适应刷新区域高度，并随刷新区域高度变化至0。建议对自定义组件设置最小高度约束来避免自定义组件高度小于预期的情况发生，具体可参照[示例3](#示例3自定义刷新区域显示内容-builder)。 <br/>从API version 12开始，建议使用refreshingContent参数替代builder参数自定义刷新区域显示内容，以避免刷新过程中因自定义组件销毁重建造成的动画中断问题。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| promptText<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 设置刷新区域底部显示的自定义文本。不设置时，不显示该文本。<br/>**说明：**<br/>输入文本的限制参考Text组件，使用builder或refreshingContent参数自定义刷新区域显示内容时，promptText不显示。<br/>promptText设置有效时，[refreshOffset](#refreshoffset12)属性默认值为96vp。<br/>自定义文本最大的字体缩放倍数[maxFontScale](ts-basic-components-text.md#maxfontscale12)为2。<br/>自定义文本最大行数为1，超出部分以省略号（...）截断。若需多行提示，请通过builder或refreshingContent参数自定义刷新区域显示内容实现。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| refreshingContent<sup>12+</sup>    | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否    | 是 | 自定义刷新区域显示内容。<br/>**说明：**<br/>与builder参数同时设置时builder参数不生效。使用本参数自定义刷新区域显示内容时，promptText不显示。<br/>自定义组件设置了固定高度时，自定义组件会以固定高度显示在刷新区域下方；自定义组件未设置高度时，自定义组件高度会自适应刷新区域高度，并随刷新区域高度变化至0。建议对自定义组件设置最小高度约束来避免自定义组件高度小于预期的情况发生，具体可参照[示例4](#示例4自定义刷新区域显示内容-refreshingcontent)。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 >  **补充说明：**
->  - 当未设置builder或refreshingContent时，是通过更新子组件的[translate](ts-universal-attributes-transformation.md#translate)属性实现的下拉位移效果，下拉位移过程中不会触发子组件的[onAreaChange](ts-universal-component-area-change-event.md#onareachange)事件，子组件设置[translate](ts-universal-attributes-transformation.md#translate)属性时不会生效。
->  - 当设置了builder或refreshingContent时，是通过更新子组件相对于Refresh组件的位置实现的下拉位移效果，下拉位移过程中可以触发子组件的[onAreaChange](ts-universal-component-area-change-event.md#onareachange)事件，子组件设置[position](ts-universal-attributes-location.md#position)属性时会固定子组件相对于Refresh组件的位置导致子组件不会跟手进行下拉位移。
->  - 通过builder参数设置的自定义组件在未指定宽度和高度时，其尺寸将自适应子组件，在指定宽度而未指定高度时，其高度将自适应下拉距离。通过refreshingContent参数设置的自定义组件若未指定高度，其高度同样会自适应下拉距离。当自定义组件高度自适应下拉距离时，随着下拉距离的增加，该组件的高度亦随之增加；当自定义组件的高度设定为固定值或达到最大高度限制时，随着下拉距离的增加，自定义组件与Refresh组件上边界之间的间距亦会随之增加。
+>  - 当未设置builder或refreshingContent时，是通过更新子组件的[translate](ts-universal-attributes-transformation.md#translate)属性实现的下拉位移效果。下拉位移过程中不会触发子组件的[onAreaChange](ts-universal-component-area-change-event.md#onareachange)事件。子组件设置[translate](ts-universal-attributes-transformation.md#translate)属性时不会生效。
+>  - 当设置了builder或refreshingContent时，是通过更新子组件相对于Refresh组件的位置实现的下拉位移效果。下拉位移过程中可以触发子组件的[onAreaChange](ts-universal-component-area-change-event.md#onareachange)事件。子组件设置[position](ts-universal-attributes-location.md#position)属性时会固定子组件相对于Refresh组件的位置，导致子组件不会跟手进行下拉位移。
+>  - 通过builder参数设置的自定义组件在未指定宽度和高度时，其尺寸将自适应子组件，在指定宽度而未指定高度时，其高度将自适应下拉距离。通过refreshingContent参数设置的自定义组件若未指定高度，其高度同样会自适应下拉距离。当自定义组件高度自适应下拉距离时，随着下拉距离的增加，该组件的高度亦随之增加；当自定义组件的高度设定为固定值或自适应至最大高度时，随着下拉距离的增加，自定义组件与Refresh组件上边界之间的间距亦会随之增加。
+>  - 通过builder或refreshingContent设置自定义刷新内容后，用户快速滑动List等子组件并松手，列表可能继续滑动并超过顶部边界，带动Refresh下拉。如果刷新已经结束，之前的完成提示可能因此再次显示。此时，Refresh可能仍处于Done状态。状态未发生变化时，不会触发[onStateChange](#onstatechange)回调。
+>  - 不需要继续显示完成提示时，可将自定义刷新区域组件的[visibility](ts-universal-attributes-visibility.md#visibility)设置为[Visibility.Hidden](ts-appendix-enums.md#visibility)，隐藏内容并保留原有布局空间。再次下拉刷新时，将其恢复为Visibility.Visible。具体可参照[示例11](#示例11通过builder控制自定义刷新区域内容的显隐)和[示例12](#示例12通过refreshingcontent控制自定义刷新区域内容的显隐)。
 
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
 ### refreshOffset<sup>12+</sup>
 
@@ -76,13 +78,15 @@ refreshOffset(value: number)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | number |  是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。|
+| value  | number |  是 | 下拉偏移量，单位vp。<br/>取值范围：(0, +∞)。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。|
 
 ### refreshOffset
 
@@ -104,7 +108,7 @@ refreshOffset(value: number | Resource)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | number \| [Resource](ts-types.md#resource) |  是 | 下拉偏移量。<br/>单位：vp<br/>取值范围：(0, +∞)。值为0或负数时，按默认值处理。|
+| value  | number \| [Resource](ts-types.md#resource) |  是 | 下拉偏移量。<br/>单位：vp<br/>取值范围：(0, +∞)。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。<br/>值为0或负数时，按默认值处理。|
 
 ### pullToRefresh<sup>12+</sup>
 
@@ -113,6 +117,8 @@ pullToRefresh(value: boolean)
 设置当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,9 +132,11 @@ pullToRefresh(value: boolean)
 
 pullUpToCancelRefresh(enabled: boolean | undefined)
 
-设置上划是否取消刷新。
+设置上滑是否取消刷新。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,7 +144,7 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 
 | 参数名  | 类型                 | 必填 | 说明                                                         |
 | ------- | -------------------- | ---- | ------------------------------------------------------------ |
-| enabled | boolean \| undefined | 是   | 设置上划是否取消刷新。<br/>true表示取消刷新；false表示不取消刷新。<br/>值为undefined时，上划取消刷新。 |
+| enabled | boolean \| undefined | 是   | 设置上滑是否取消刷新。<br/>true表示取消刷新；false表示不取消刷新。<br/>默认值：true。值为undefined时，按默认值处理。 |
 
 ### pullDownRatio<sup>12+</sup>
 
@@ -146,13 +154,15 @@ pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| ratio  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br/>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br/>有效值为0-1之间的值，小于0的值会被视为0，大于1的值会被视为1。 |
+| ratio  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br/>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br/>取值范围：[0, 1]。小于0的值会被视为0，大于1的值会被视为1。 |
 
 ### maxPullDownDistance<sup>20+</sup>
 
@@ -162,13 +172,15 @@ maxPullDownDistance(distance: Optional\<number>)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined<br/>单位：vp |
+| distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  是 | 最大下拉距离。<br/>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined<br/>单位：vp |
 
 ### maxPullDownDistance
 
@@ -216,7 +228,7 @@ onStateChange(callback: (state: RefreshStatus) => void)
 
 onRefreshing(callback: () => void)
 
-进入刷新状态时触发回调。
+进入刷新状态时触发回调，等同于onStateChange回调中state为Refresh的情况。若仅需监听刷新启动，使用onRefreshing更简洁；若需跟踪全部刷新状态变化（Inactive、Drag、OverDrag、Refresh、Done），请使用onStateChange。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -239,6 +251,8 @@ onOffsetChange(callback: Callback\<number>)
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -278,7 +292,7 @@ RefreshStatus刷新状态枚举。
 @Component
 struct RefreshExample {
   @State isRefreshing: boolean = false;
-  @State arr: String[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
   build() {
     Column() {
@@ -334,7 +348,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_default](figures/zh-cn_image_refresh_default.gif)
+![zh-cn_image_refresh_default](figures/image-refresh-default.gif)
 
 ### 示例2（设置刷新区域显示文本）
 
@@ -346,7 +360,7 @@ struct RefreshExample {
 @Component
 struct RefreshExample {
   @State isRefreshing: boolean = false;
-  @State promptText: string = "Refreshing...";
+  @State promptText: string = 'Refreshing...';
   @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
   build() {
@@ -394,7 +408,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_prompttext](figures/zh-cn_image_refresh_prompttext.gif)
+![zh-cn_image_refresh_prompttext](figures/image-refresh-prompttext.gif)
 
 ### 示例3（自定义刷新区域显示内容-builder）
 
@@ -406,14 +420,14 @@ struct RefreshExample {
 @Component
 struct RefreshExample {
   @State isRefreshing: boolean = false;
-  @State arr: String[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
   @Builder
   customRefreshComponent() {
     Stack() {
       Row() {
         LoadingProgress().height(32)
-        Text("Refreshing...").fontSize(16).margin({ left: 20 })
+        Text('Refreshing...').fontSize(16).margin({ left: 20 })
       }
       .alignItems(VerticalAlign.Center)
     }
@@ -466,7 +480,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_builder](figures/zh-cn_image_refresh_builder.gif)
+![zh-cn_image_refresh_builder](figures/image-refresh-builder.gif)
 
 ### 示例4（自定义刷新区域显示内容-refreshingContent）
 
@@ -489,7 +503,7 @@ function customRefreshingContent(params: Params) {
   Stack() {
     Row() {
       LoadingProgress().height(32)
-      Text("refreshStatus: " + params.refreshStatus).fontSize(16).margin({ left: 20 })
+      Text('refreshStatus: ' + params.refreshStatus).fontSize(16).margin({ left: 20 })
     }
     .alignItems(VerticalAlign.Center)
   }
@@ -504,7 +518,7 @@ function customRefreshingContent(params: Params) {
 @Component
 struct RefreshExample {
   @State isRefreshing: boolean = false;
-  @State arr: String[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
   @State refreshStatus: RefreshStatus = RefreshStatus.Inactive;
   private contentNode?: ComponentContent<Object> = undefined;
   private params: Params = new Params(RefreshStatus.Inactive);
@@ -559,7 +573,7 @@ struct RefreshExample {
   }
 }
 ```
-![zh-cn_image_refresh_refreshingcontent](figures/zh-cn_image_refresh_refreshingcontent.gif)
+![zh-cn_image_refresh_refreshingcontent](figures/image-refresh-refreshingcontent.gif)
 
 ### 示例5（实现最大下拉距离）
 
@@ -588,7 +602,7 @@ function customRefreshingContent() {
 @Component
 struct RefreshExample {
   @State isRefreshing: boolean = false;
-  @State arr: String[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
   @State maxRefreshingHeight: number = 100.0;
   @State ratio: number = 1;
   private contentNode?: ComponentContent<Object> = undefined;
@@ -645,7 +659,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_maxrefreshingheight](figures/zh-cn_image_refresh_maxrefreshingheight.gif)
+![zh-cn_image_refresh_maxrefreshingheight](figures/image-refresh-maxrefreshingheight.gif)
 
 ### 示例6（实现下拉刷新上拉加载更多）
 
@@ -683,7 +697,7 @@ struct ListRefreshLoad {
   footer() {
     Row() {
       LoadingProgress().height(32).width(48)
-      Text("加载中")
+      Text('加载中')
     }.width('100%')
     .height(64)
     .justifyContent(FlexAlign.Center)
@@ -703,7 +717,7 @@ struct ListRefreshLoad {
               .textAlign(TextAlign.Center)
               .backgroundColor(0xFFFFFF)
           }.borderWidth(1)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
 
         ListItem() {
           this.footer();
@@ -756,8 +770,8 @@ struct ListRefreshLoad {
 @Entry
 @Component
 struct RefreshExample {
-  @State isRefreshing: boolean = false
-  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+  @State isRefreshing: boolean = false;
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
   build() {
     Column() {
@@ -777,7 +791,7 @@ struct RefreshExample {
           }, (item: string) => item)
         }
         .onScrollIndex((first: number) => {
-          console.info(first.toString())
+          console.info(first.toString());
         })
         .width('100%')
         .height('100%')
@@ -786,16 +800,16 @@ struct RefreshExample {
       }
       .maxPullDownDistance(150)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStateChange state is ' + refreshStatus)
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
-        console.info('Refresh onOffsetChange offset:' + value)
+        console.info('Refresh onOffsetChange offset:' + value);
       })
       .onRefreshing(() => {
         setTimeout(() => {
-          this.isRefreshing = false
+          this.isRefreshing = false;
         }, 2000)
-        console.info('onRefreshing test')
+        console.info('onRefreshing test');
       })
       .backgroundColor(0x89CFF0)
       .refreshOffset(64)
@@ -825,10 +839,10 @@ struct RefreshExample {
     Column() {
       Row() {
         Button('禁止下拉刷新').onClick(() => {
-          this.ratio = 0
+          this.ratio = 0;
         })
         Button('允许下拉刷新').onClick(() => {
-          this.ratio = undefined
+          this.ratio = undefined;
         })
       }
       Refresh({ refreshing: $$this.isRefreshing }) {
@@ -879,7 +893,7 @@ struct RefreshExample {
 
 ### 示例9（不满一屏场景实现下拉刷新）
 
-调用[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)时，将options参数的[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)设置为true，可以在不满一屏的情况下实现Refresh组件的下拉刷新效果。
+调用[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)时，将options参数的[alwaysEnabled](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)设置为true，可以在不满一屏的情况下实现Refresh组件的下拉刷新效果。
 
 ```ts
 // xxx.ets
@@ -941,9 +955,9 @@ struct RefreshExample {
 
 ![refresh_list_edgeEffect](figures/refresh_alwaysEnabled.gif)
 
-### 示例10（上划不取消刷新）
+### 示例10（上滑不取消刷新）
 
-该示例通过[pullUpToCancelRefresh](#pulluptocancelrefresh23)接口设置上划不取消刷新。
+该示例通过[pullUpToCancelRefresh](#pulluptocancelrefresh23)接口设置上滑不取消刷新。
 
 从API version 23开始，新增pullUpToCancelRefresh接口。
 
@@ -978,7 +992,7 @@ function customRefreshingContent(params: Params) {
 @Component
 struct RefreshExample {
   @State isRefreshing: boolean = false;
-  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']; // 改为原始类型string[]
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
   @State refreshStatus: RefreshStatus = RefreshStatus.Inactive;
   private contentNode?: ComponentContent<Object> = undefined;
   private params: Params = new Params(RefreshStatus.Inactive);
@@ -1024,6 +1038,7 @@ struct RefreshExample {
         console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
+        // 模拟刷新数据，生成新的连续数据项。
         setTimeout(() => {
           const newArr: string[] = [];
           const lastNum = parseInt(this.arr[this.arr.length - 1]);
@@ -1042,3 +1057,298 @@ struct RefreshExample {
 ```
 
 ![refresh_pullUpToCancelRefresh](figures/refresh_pullUpToCancelRefresh.gif)
+
+### 示例11（通过builder控制自定义刷新区域内容的显隐）
+
+本示例通过[builder](#refreshoptions对象说明)自定义刷新区域，在[onStateChange](#onstatechange)回调中更新提示文字，在[onRefreshing](#onrefreshing)回调中模拟获取数据并追加到List。
+
+刷新结束时显示“已经刷新完成”，并启动一个2秒的定时器。定时器触发后，将自定义刷新内容的visibility设置为Visibility.Hidden，隐藏完成提示。用户再次下拉刷新时，会取消上次的隐藏定时器并恢复显示。
+
+示例中的2秒可以根据实际需求调整。在这2秒内，完成提示还没有隐藏。如果列表在用户松手后继续滑动并超过顶部边界，仍可能带动Refresh下拉，使完成提示再次出现。
+
+从API version 12开始，新增[refreshOffset](#refreshoffset12)接口，用于设置触发刷新的下拉距离。
+
+```ts
+// xxx.ets
+@Component
+struct RefreshHeader {
+  @Prop status: RefreshStatus = RefreshStatus.Inactive;
+  @Prop headerVisibility: Visibility = Visibility.Hidden;
+
+  build() {
+    Stack() {
+      Row() {
+        if (this.status !== RefreshStatus.Inactive && this.status !== RefreshStatus.Done) {
+          LoadingProgress().height(32)
+          Text('刷新中').fontSize(16).margin({ left: 20 })
+        } else if (this.status === RefreshStatus.Done) {
+          Text('已经刷新完成').fontSize(16)
+        }
+      }
+      .alignItems(VerticalAlign.Center)
+    }
+    .align(Alignment.Center)
+    .clip(true)
+    .constraintSize({ minHeight: 32 })
+    .width('100%')
+    .visibility(this.headerVisibility)
+  }
+}
+
+@Entry
+@Component
+struct RefreshBuilderDemo {
+  @State private refreshing: boolean = false;
+  @State private items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  @State private refreshState: RefreshStatus = RefreshStatus.Inactive;
+  @State private headerVisibility: Visibility = Visibility.Hidden;
+  private refreshTimer: number = -1;
+  private hideHeaderTimer: number = -1;
+
+  @Builder
+  refreshHeader() {
+    RefreshHeader({ status: this.refreshState, headerVisibility: this.headerVisibility })
+  }
+
+  aboutToDisappear(): void {
+    this.clearHideHeaderTimer();
+    if (this.refreshTimer !== -1) {
+      clearTimeout(this.refreshTimer);
+      this.refreshTimer = -1;
+    }
+  }
+
+  private clearHideHeaderTimer(): void {
+    if (this.hideHeaderTimer !== -1) {
+      clearTimeout(this.hideHeaderTimer);
+      this.hideHeaderTimer = -1;
+    }
+  }
+
+  private handleStateChange(state: RefreshStatus): void {
+    // 新一轮下拉开始时，取消上一次完成态的隐藏定时器。
+    this.clearHideHeaderTimer();
+    this.refreshState = state;
+    this.headerVisibility = state === RefreshStatus.Inactive ? Visibility.Hidden : Visibility.Visible;
+    if (state === RefreshStatus.Done) {
+      // 刷新完成2秒后隐藏自定义刷新区域内容。
+      this.hideHeaderTimer = setTimeout(() => {
+        this.hideHeaderTimer = -1;
+        if (this.refreshState === RefreshStatus.Done) {
+          this.headerVisibility = Visibility.Hidden;
+        }
+      }, 2000);
+    }
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: $$this.refreshing, builder: this.refreshHeader() }) {
+        List() {
+          ForEach(this.items, (item: number) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .refreshOffset(64)
+      .onStateChange((state: RefreshStatus) => {
+        this.handleStateChange(state);
+        console.info(`[builder] state=${state}`);
+      })
+      .onRefreshing(() => {
+        this.refreshTimer = setTimeout(() => {
+          this.refreshTimer = -1;
+          const start: number = this.items.length + 1;
+          const added: number[] = [];
+          for (let i: number = 0; i < 5; i++) {
+            added.push(start + i);
+          }
+          this.items = this.items.concat(added);
+          this.refreshing = false;
+        }, 1500);
+      })
+    }
+  }
+}
+```
+
+下图展示了刷新过程。完成提示隐藏后，再将List快速滑回顶部，即使列表超过顶部边界并带动Refresh下拉，也不会再次显示完成提示。
+
+![refresh_custom_builder_visibility](figures/refresh-custom-builder-visibility.gif)
+
+### 示例12（通过refreshingContent控制自定义刷新区域内容的显隐）
+
+本示例通过[refreshingContent](#refreshoptions对象说明)参数设置[ComponentContent](../js-apis-arkui-ComponentContent.md)，构建自定义刷新区域。在[onStateChange](#onstatechange)回调中更新提示文字，在[onRefreshing](#onrefreshing)回调中模拟获取数据并追加到List。
+
+刷新结束时显示“已经刷新完成”，并启动一个2秒的定时器。定时器触发后，将自定义刷新内容的visibility设置为Visibility.Hidden，隐藏完成提示。用户再次下拉刷新时，会取消上次的隐藏定时器并恢复显示。状态或可见度变化后，都需要调用ComponentContent的[update](../js-apis-arkui-ComponentContent.md#update)方法更新显示内容。
+
+示例中的2秒可以根据实际需求调整。在这2秒内，完成提示还没有隐藏。如果列表在用户松手后继续滑动并超过顶部边界，仍可能带动Refresh下拉，使完成提示再次出现。
+
+从API version 12开始，新增[refreshingContent](#refreshoptions对象说明)参数，支持通过ComponentContent自定义刷新区域内容。
+
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+@Component
+struct RefreshHeader {
+  @Prop status: RefreshStatus = RefreshStatus.Inactive;
+  @Prop headerVisibility: Visibility = Visibility.Hidden;
+
+  build() {
+    Stack() {
+      Row() {
+        if (this.status !== RefreshStatus.Inactive && this.status !== RefreshStatus.Done) {
+          LoadingProgress().height(32)
+          Text('刷新中').fontSize(16).margin({ left: 20 })
+        } else if (this.status === RefreshStatus.Done) {
+          Text('已经刷新完成').fontSize(16)
+        }
+      }
+      .alignItems(VerticalAlign.Center)
+    }
+    .align(Alignment.Center)
+    .clip(true)
+    .constraintSize({ minHeight: 32 })
+    .width('100%')
+    .visibility(this.headerVisibility)
+  }
+}
+
+class RefreshHeaderParams {
+  status: RefreshStatus;
+  headerVisibility: Visibility;
+
+  constructor(status: RefreshStatus, headerVisibility: Visibility) {
+    this.status = status;
+    this.headerVisibility = headerVisibility;
+  }
+}
+
+@Builder
+function buildRefreshHeader(params: RefreshHeaderParams) {
+  RefreshHeader({ status: params.status, headerVisibility: params.headerVisibility })
+}
+
+@Entry
+@Component
+struct RefreshContentDemo {
+  @State private refreshing: boolean = false;
+  @State private items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  private refreshState: RefreshStatus = RefreshStatus.Inactive;
+  private headerVisibility: Visibility = Visibility.Hidden;
+  private customContent?: ComponentContent<RefreshHeaderParams> = undefined;
+  private refreshTimer: number = -1;
+  private hideHeaderTimer: number = -1;
+
+  aboutToAppear(): void {
+    this.customContent = new ComponentContent<RefreshHeaderParams>(
+      this.getUIContext(), wrapBuilder(buildRefreshHeader),
+      new RefreshHeaderParams(this.refreshState, this.headerVisibility)
+    );
+  }
+
+  aboutToDisappear(): void {
+    this.clearHideHeaderTimer();
+    if (this.refreshTimer !== -1) {
+      clearTimeout(this.refreshTimer);
+      this.refreshTimer = -1;
+    }
+    this.customContent?.dispose();
+    this.customContent = undefined;
+  }
+
+  private clearHideHeaderTimer(): void {
+    if (this.hideHeaderTimer !== -1) {
+      clearTimeout(this.hideHeaderTimer);
+      this.hideHeaderTimer = -1;
+    }
+  }
+
+  private handleStateChange(state: RefreshStatus): void {
+    // 新一轮下拉开始时，取消上一次完成态的隐藏定时器。
+    this.clearHideHeaderTimer();
+    this.refreshState = state;
+    this.headerVisibility = state === RefreshStatus.Inactive ? Visibility.Hidden : Visibility.Visible;
+    this.updateHeaderContent();
+    if (state === RefreshStatus.Done) {
+      // 刷新完成2秒后隐藏自定义刷新区域内容。
+      this.hideHeaderTimer = setTimeout(() => {
+        this.hideHeaderTimer = -1;
+        if (this.refreshState === RefreshStatus.Done) {
+          this.headerVisibility = Visibility.Hidden;
+          // 将可见度的变化同步到ComponentContent。
+          this.updateHeaderContent();
+        }
+      }, 2000);
+    }
+  }
+
+  private updateHeaderContent(): void {
+    this.customContent?.update(new RefreshHeaderParams(this.refreshState, this.headerVisibility));
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: $$this.refreshing, refreshingContent: this.customContent }) {
+        List() {
+          ForEach(this.items, (item: number) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .refreshOffset(64)
+      .onStateChange((state: RefreshStatus) => {
+        this.handleStateChange(state);
+        console.info(`[ComponentContent] state=${state}`);
+      })
+      .onRefreshing(() => {
+        this.refreshTimer = setTimeout(() => {
+          this.refreshTimer = -1;
+          const start: number = this.items.length + 1;
+          const added: number[] = [];
+          for (let i: number = 0; i < 5; i++) {
+            added.push(start + i);
+          }
+          this.items = this.items.concat(added);
+          this.refreshing = false;
+        }, 1500);
+      })
+    }
+  }
+}
+```
+
+下图展示了刷新过程。完成提示隐藏后，再将List快速滑回顶部，即使列表超过顶部边界并带动Refresh下拉，也不会再次显示完成提示。
+
+![refresh_custom_content_visibility](figures/refresh-custom-content-visibility.gif)

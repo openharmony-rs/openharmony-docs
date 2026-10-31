@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2fe06c91e0a27d15dbfdba21fc4a3873ff6d81b0 translatedAt=2026-10-29T08:56:47.435Z pushedAt=2026-10-30T03:01:51.703Z nl=1 -->
 
 
 The **&lt;image-animator&gt;** component applies an animation to images. For details, see [image-animator](../reference/apis-arkui/arkui-js/js-components-basic-image-animator.md).
@@ -46,17 +47,17 @@ export default {
   data: {
     frames: [
       {
-        src: "/common/landscape1.jpg",
+        src: 'common/landscape1.jpg',
       },
       {
-        src: "/common/landscape2.jpg",
+        src: 'common/landscape2.jpg',
       }
     ],
   },
 };
 ```
 
-![en-us_image_0000001275922969](figures/en-us_image_0000001275922969.gif)
+![image-animator-Component](figures/image-animator-Component.gif)
 
 
 ## Setting the &lt;image-animator&gt; Attributes
@@ -139,14 +140,14 @@ export default {
 };
 ```
 
-![en-us_image_0000001276003481](figures/en-us_image_0000001276003481.gif)
+![image-animator-Component-1](figures/image-animator-Component-1.gif)
 
 > **NOTE**
-> - If the **duration** attribute is set in the **images** attribute, the **duration** attribute set in the **&lt;image-animator&gt;** component is invalid.
+> - If a separate duration attribute is set in the images attribute, the duration attribute set in the image-animator component does not take effect.
 >
-> - If **fixedsize** is set to **true**, the **width**, **height**, **top**, and **left** settings in **images** will not take effect.
+> - If the fixedsize attribute is set to true, the width, height, top, and left attributes of the image do not take effect.
 >
-> - Setting **reverse** to **false** indicates that images are played from the first one to the last one. Setting **reverse** to **true** indicates that images are played from the last one to the first one.
+> - If the reverse attribute is set to false, the images are played from the first image to the last image. If the reverse attribute is set to true, the images are played from the last image to the first image.
 
 
 ## Binding Events
@@ -229,7 +230,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001231843076](figures/en-us_image_0000001231843076.gif)
+![Binding-Events-1](figures/Binding-Events-1.gif)
 
 
 ## Example Scenario
@@ -338,4 +339,11 @@ export default {
 }
 ```
 
-![en-us_image_0000001276162717](figures/en-us_image_0000001276162717.gif)
+![Example-Scenario-8](figures/Example-Scenario-8.gif)
+
+
+## Samples
+
+The following sample is provided to help you better understand how to develop **image-animator**:
+
+- [Using the image and image-animator Components (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/ClickableJs)

@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。
 
 当需要在ArkTS上并发实例间传递Array时，可以通过传递Array引用提升传递性能。
@@ -50,7 +50,7 @@ constructor()
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------- | --------------------------------------------------- |
@@ -81,11 +81,10 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------- | --------------------------------------------------- |
-| 401      | Parameter error.                                    |
 | 10200012 | The Array's constructor cannot be directly invoked. |
 
 **示例：**
@@ -107,21 +106,20 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 | 参数名 | 类型 | 必填 | 说明                            |
 | ------ | ---- | ---- | ------------------------------- |
-| items  | T[]  | 否   | 初始化ArkTS Array的元素。       |
+| items  | T[]  | 否   | 初始化ArkTS Array的元素，默认值为空数组。       |
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------- | --------------------------------------------------- |
-| 401      | Parameter error.                                    |
 | 10200012 | The Array's constructor cannot be directly invoked. |
 
 **示例：**
 
 ```ts
-let arrayPara  = [1,2,3];
+let arrayPara = [1,2,3];
 let array = new collections.Array<number>(...arrayPara);
 ```
 
@@ -150,11 +148,10 @@ static create\<T>(arrayLength: number, initialValue: T): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The create method cannot be bound. <br/> 适用版本：12-17 |
 
 **示例：**
@@ -187,25 +184,24 @@ static from\<T>(arrayLike: ArrayLike\<T>): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The from method cannot be bound. <br/> 适用版本：12-17 |
 
 **示例：**
 
 ```ts
 // 正例
-let array : Array<string> = ['str1', 'str2', 'str3']; // 原生Array<T>，T是Sendable数据类型。
+let array: Array<string> = ['str1', 'str2', 'str3']; // 原生Array<T>，T是Sendable数据类型。
 let sendableArray = collections.Array.from<string>(array); // 返回Sendable Array<T>
 ```
 
 <!--code_no_check-->
 ```ts
 // 反例
-let array : Array<Array<string>> = [['str1', 'str2', 'str3'], ['str4', 'str5', 'str6'], ['str7', 'str8', 'str9']]; // 原生Array<T>，T是非Sendable数据类型。
+let array: Array<Array<string>> = [['str1', 'str2', 'str3'], ['str4', 'str5', 'str6'], ['str7', 'str8', 'str9']]; // 原生Array<T>，T是非Sendable数据类型。
 let sendableArray = collections.Array.from<Array<string>>(array); // 打印异常信息：Parameter error.Only accept sendable value
 ```
 
@@ -233,11 +229,10 @@ static from\<T>(iterable: Iterable\<T>): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The from method cannot be bound. <br/> 适用版本：12-17 |
 
 **示例：**
@@ -248,16 +243,16 @@ const mapper = new Map([
   ['2', 'b'],
 ]);
 let newArray: collections.Array<string> = collections.Array.from(mapper.values());
-console.info(newArray.toString()); // 预期输出： a,b
+console.info(newArray.toString()); // 预期输出： a, b
 ```
 
 ## from<sup>18+</sup>
 
 static from\<T>(arrayLike: ArrayLike\<T> | Iterable\<T>, mapFn: ArrayFromMapFn\<T, T>): Array\<T>
 
-从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素。
+从一个实现了ArrayLike接口或Iterable接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -274,14 +269,6 @@ static from\<T>(arrayLike: ArrayLike\<T> | Iterable\<T>, mapFn: ArrayFromMapFn\<
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -294,9 +281,9 @@ console.info(newArray.toString()); // 预期输出： 1, 3, 5
 
 static from\<U, T>(arrayLike: ArrayLike\<U> | Iterable\<U>, mapFn: ArrayFromMapFn\<U, T>): Array\<T>
 
-从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素，ArrayLike接口对象的元素类型可以和数组元素的类型不一样。
+从一个实现了ArrayLike接口或Iterable接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素，接口对象的元素类型可以和数组元素的类型不一样。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -313,18 +300,10 @@ static from\<U, T>(arrayLike: ArrayLike\<U> | Iterable\<U>, mapFn: ArrayFromMapF
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
-let array : Array<number> = [1, 2, 3]; // 原生Array<T>
+let array: Array<number> = [1, 2, 3]; // 原生Array<T>
 let newArray = collections.Array.from<number, string>(array, (value, index) => value + "." + index); // 返回新的 Array<T>
 console.info(newArray.toString()); // 预期输出： 1.0, 2.1, 3.2
 ```
@@ -335,7 +314,7 @@ static isArray(value: Object | undefined | null): boolean
 
 检查传入的参数是否是一个ArkTS Array。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -351,20 +330,12 @@ static isArray(value: Object | undefined | null): boolean
 | --------- | ----------------------- |
 | boolean | 假如给定对象是ArkTS Array数组，返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
 let arr: collections.Array<string> = new collections.Array('a', 'b', 'c', 'd');
 let result: boolean = collections.Array.isArray(arr);
-console.info(result + ''); // 预期输出： true
+console.info(String(result)); // 预期输出： true
 ```
 
 ## of<sup>18+</sup>
@@ -373,7 +344,7 @@ static of\<T>(...items: T\[]): Array\<T>
 
 通过可变数量的参数创建一个新的ArkTS Array。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -389,14 +360,6 @@ static of\<T>(...items: T\[]): Array\<T>
 | --------- | ----------------------- |
 | Array\<T> | 新的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -409,7 +372,7 @@ copyWithin(target: number, start: number, end?: number): Array\<T>
 
 从ArkTS Array指定范围内的元素依次拷贝到目标位置。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -429,11 +392,10 @@ copyWithin(target: number, start: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------ |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
@@ -451,7 +413,7 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 
 返回ArkTS Array实例中最后一次出现searchElement的索引，如果对象不包含，则为-1。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -460,7 +422,7 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 | 参数名           | 类型     | 必填  | 说明                                                                                |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | T | 是   | 待索引的值。                                                                            |
-| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Array的长度，则返回-1。如果fromIndex < 0，则会从fromIndex + array.length位置开始搜索。 |
+| fromIndex     | number | 否   | 搜索的起始下标。默认值为ArkTS Array长度减1（即从末尾开始）。如果下标大于等于ArkTS Array的长度，则返回-1。如果fromIndex < 0，则会从fromIndex + array.length位置开始搜索。 |
 
 **返回值：**
 
@@ -470,7 +432,7 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
@@ -481,10 +443,10 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 
 ```ts
 let array: collections.Array<number> = collections.Array.from([3, 5, 9]);
-console.info(array.lastIndexOf(3) + ''); // 预期输出： 0
-console.info(array.lastIndexOf(7) + ''); // 预期输出： -1
-console.info(array.lastIndexOf(9, 2) + ''); // 预期输出： 2
-console.info(array.lastIndexOf(9, -2) + ''); // 预期输出： -1
+console.info(String(array.lastIndexOf(3))); // 预期输出： 0
+console.info(String(array.lastIndexOf(7))); // 预期输出： -1
+console.info(String(array.lastIndexOf(9, 2))); // 预期输出： 2
+console.info(String(array.lastIndexOf(9, -2))); // 预期输出： -1
 ```
 
 ## some<sup>18+</sup>
@@ -492,7 +454,7 @@ some(predicate: ArrayPredicateFn\<T, Array\<T>>): boolean
 
 测试ArkTS Array是否存在满足指定条件的元素。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -510,7 +472,7 @@ some(predicate: ArrayPredicateFn\<T, Array\<T>>): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
@@ -521,7 +483,7 @@ some(predicate: ArrayPredicateFn\<T, Array\<T>>): boolean
 
 ```ts
 let newArray: collections.Array<number> = collections.Array.from([-10, 20, -30, 40, -50]);
-console.info(newArray.some((element: number) => element < 0) + ''); // 预期输出： true
+console.info(String(newArray.some((element: number) => element < 0))); // 预期输出： true
 ```
 
 ## reduceRight<sup>18+</sup>
@@ -530,7 +492,7 @@ reduceRight(callbackFn: ArrayReduceCallback\<T, T, Array\<T>>): T
 
 对Array中的每个元素按照从右到左顺序执行回调函数，将其结果作为累加值，并返回最终的结果。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -548,11 +510,10 @@ reduceRight(callbackFn: ArrayReduceCallback\<T, T, Array\<T>>): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.          |
 
@@ -561,7 +522,7 @@ reduceRight(callbackFn: ArrayReduceCallback\<T, T, Array\<T>>): T
 ```ts
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let reducedValue = array.reduceRight((accumulator, value) => accumulator + value); // 累加所有元素
-console.info(reducedValue + ''); // 预期输出： 15
+console.info(String(reducedValue)); // 预期输出： 15
 ```
 
 ## reduceRight<sup>18+</sup>
@@ -570,7 +531,7 @@ reduceRight\<U = T>(callbackFn: ArrayReduceCallback\<U, T, Array\<T>>, initialVa
 
 与 [reduceRight](#reduceright18)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -589,11 +550,10 @@ reduceRight\<U = T>(callbackFn: ArrayReduceCallback\<U, T, Array\<T>>, initialVa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.          |
 
@@ -603,7 +563,7 @@ reduceRight\<U = T>(callbackFn: ArrayReduceCallback\<U, T, Array\<T>>, initialVa
 // 此处使用一个初始值为0的累加器，并将其与Array中的每个元素相加，最终返回累加后的总和
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let reducedValue = array.reduceRight<number>((accumulator: number, value: number) => accumulator + value, 0); // 累加所有元素，初始值为0
-console.info(reducedValue + ''); // 预期输出： 15
+console.info(String(reducedValue)); // 预期输出： 15
 ```
 
 ## pop
@@ -612,7 +572,7 @@ pop(): T | undefined
 
 从ArkTS Array中移除并返回最后一个元素。如果Array为空，则返回undefined，且Array不发生变化。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -624,7 +584,7 @@ pop(): T | undefined
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -652,7 +612,7 @@ push(...items: T[]): number
 
 | 参数名 | 类型 | 必填 | 说明                               |
 | ------ | ---- | ---- | ---------------------------------- |
-| items  | T[]  | 否   | 要添加到Array末尾的元素。 |
+| items  | T[]  | 否   | 要添加到Array末尾的元素，默认值为空数组。 |
 
 **返回值：**
 
@@ -662,11 +622,10 @@ push(...items: T[]): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The push method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -701,11 +660,10 @@ join(separator?: string): string
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -734,7 +692,7 @@ shift(): T | undefined
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -754,7 +712,7 @@ reverse(): Array\<T>
 
 反转ArkTS Array数组中的元素，并返回同一数组的引用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -766,7 +724,7 @@ reverse(): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                |
 | -------- | ----------------------------------- |
@@ -795,7 +753,7 @@ unshift(...items: T[]): number
 
 | 参数名 | 类型 | 必填 | 说明                     |
 | ------ | ---- | ---- | ------------------------ |
-| items  | T[]  | 否   | 要插入到Array首端的元素。 |
+| items  | T[]  | 否   | 要插入到Array首端的元素，默认值为空数组。 |
 
 **返回值：**
 
@@ -805,11 +763,10 @@ unshift(...items: T[]): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The unshift method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -826,7 +783,7 @@ toString(): string
 
 ArkTS数组转换为字符串。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -850,7 +807,7 @@ ArkTS数组转换为字符串。
 ```ts
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let stringArray = array.toString();
-console.info(stringArray); // 预期输出：1,2,3,4,5
+console.info(stringArray); // 预期输出： 1, 2, 3, 4, 5
 ```
 
 ## slice
@@ -877,11 +834,10 @@ slice(start?: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error.    |
 
@@ -916,11 +872,10 @@ sort(compareFn?: (a: T, b: T) => number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -957,11 +912,10 @@ indexOf(searchElement: T, fromIndex?: number): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -990,11 +944,10 @@ forEach(callbackFn: (value: T, index: number, array: Array\<T>) => void): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -1031,11 +984,10 @@ map\<U>(callbackFn: (value: T, index: number, array: Array\<T>) => U): Array\<U>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1047,7 +999,7 @@ let array = new collections.Array<string>('a', 'b', 'c');
 let mappedArray = array.map((value, index, array) => {
   return value.toUpperCase(); // 将每个字符串元素转换为大写
 });
-console.info("" + mappedArray); // 输出: A, B, C
+console.info(String(mappedArray)); // 输出: A, B, C
 ```
 
 ## filter
@@ -1074,11 +1026,10 @@ filter(predicate: (value: T, index: number, array: Array\<T>) => boolean): Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1113,11 +1064,10 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1153,11 +1103,10 @@ reduce\<U>(callbackFn: (previousValue: U, currentValue: T, currentIndex: number,
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1175,7 +1124,7 @@ at(index: number): T | undefined
 
 返回Array中指定索引位置的元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1194,11 +1143,10 @@ at(index: number): T | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error.               |
 | 10200011 | The at method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1227,7 +1175,7 @@ entries(): IterableIterator<[number, T]>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1260,7 +1208,7 @@ keys(): IterableIterator\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1273,7 +1221,7 @@ keys(): IterableIterator\<number>
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let iterator = array.keys();
 for (const key of iterator) {
-  console.info("" + key); // 依次输出 0,1,2,3,4
+  console.info(String(key)); // 依次输出 0,1,2,3,4
 }
 ```
 
@@ -1295,7 +1243,7 @@ values(): IterableIterator\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
@@ -1308,7 +1256,7 @@ values(): IterableIterator\<T>
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let iterator = array.values();
 for(const value of iterator) {
-  console.info("" + value); // 依次输出 1,2,3,4,5
+  console.info(String(value)); // 依次输出 1,2,3,4,5
 }
 ```
 
@@ -1336,11 +1284,10 @@ find(predicate: (value: T, index: number, obj: Array\<T>) => boolean): T | undef
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1376,11 +1323,10 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------ |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error.       |
 
@@ -1415,11 +1361,10 @@ findIndex(predicate: (value: T, index: number, obj: Array\<T>) => boolean): numb
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.        |
 
@@ -1445,8 +1390,8 @@ fill(value: T, start?: number, end?: number): Array\<T>
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
 | value  | T      | 是   | 要填充的值。                                           |
-| start  | number | 否   | 开始填充的索引。默认值为0。如果start < 0，则从下标为0的元素开始。如果start > 数组长度或start > end，则不做填充。填充过程中包含start位置下标所在的元素。|
-| end    | number | 否   | 结束填充的索引（不包括该元素）。如果省略或end > 数组长度，则填充到Array的最后一个元素。如果end < 0或start > end，则不做填充。填充过程中不包含end位置下标所在的元素。|
+| start  | number | 否   | 开始填充的索引。默认值为0。如果start < 0，则取max(start + len, 0)。如果start > 数组长度或start > end，则不做填充。填充过程中包含start位置下标所在的元素。|
+| end    | number | 否   | 结束填充的索引（不包括该元素）。如果end < 0，则取max(end + len, 0)。如果省略或end > 数组长度，则填充到Array的最后一个元素。如果start > end，则不做填充。填充过程中不包含end位置下标所在的元素。|
 
 **返回值：**
 
@@ -1456,11 +1401,10 @@ fill(value: T, start?: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1485,15 +1429,14 @@ shrinkTo(arrayLength: number): void
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| arrayLength  | number  | 是   | Array的新长度。如果arrayLength >= array.length，则Array不变。 |
+| arrayLength  | number  | 是   | Array的新长度。取值应为非负整数，否则会抛出异常。如果arrayLength >= array.length，则Array不变。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The shrinkTo method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1521,16 +1464,15 @@ extendTo(arrayLength: number, initialValue: T): void
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| arrayLength  | number  | 是   | Array的新长度。如果arrayLength <= array.length，则Array不变。 |
+| arrayLength  | number  | 是   | Array的新长度。取值应为非负整数，否则会抛出异常。如果arrayLength <= array.length，则Array不变。 |
 | initialValue  | T  | 是   | 扩展的部分的填充值。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The extendTo method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1550,7 +1492,7 @@ concat(...items: ConcatArray\<T>[]): Array\<T>
 
 拼接两个或多个数组。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1558,7 +1500,7 @@ concat(...items: ConcatArray\<T>[]): Array\<T>
 
 | 参数名 | 类型 | 必填 | 说明                               |
 | ------ | ---- | ---- | ---------------------------------- |
-| items  | ConcatArray\<T>[]  | 否   | 拼接两个或多个数组。 |
+| items  | ConcatArray\<T>[]  | 否   | 拼接两个或多个数组，省略时返回原数组的浅拷贝。 |
 
 **返回值：**
 
@@ -1568,11 +1510,10 @@ concat(...items: ConcatArray\<T>[]): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | ------- | -------- |
-| 401 |  Parameter error. Not a valid array. |
 | 10200011 | The concat method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1600,7 +1541,7 @@ splice(start: number): Array\<T>
 
 | 参数名 | 类型  | 必填 | 说明                                                                |
 | ----- | ------ | -- | ------------------------------------------------------------------- |
-| start | number | 是 | 开始索引。如果`-array.length =< start < 0`，从`start + array.length`开始，如果`start < -array.length`，则从0开始。 |
+| start | number | 是 | 开始索引。如果`-array.length <= start < 0`，从`start + array.length`开始，如果`start < -array.length`，则从0开始。 |
 
 **返回值：**
 
@@ -1610,11 +1551,10 @@ splice(start: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The splice method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1631,7 +1571,7 @@ every(predicate: ArrayPredicateFn\<T, Array\<T>>): boolean
 
 测试ArkTS Array中的所有元素是否满足指定条件。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1648,7 +1588,7 @@ every(predicate: ArrayPredicateFn\<T, Array\<T>>): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -1668,7 +1608,7 @@ toLocaleString(): string
 
 根据当前应用的系统地区获取符合当前文化习惯的字符串表示形式，让每个元素调用自己的toLocaleString方法转换为字符串，然后使用逗号将每个元素的结果字符串按照顺序拼接成字符串。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1710,7 +1650,7 @@ splice(start: number, deleteCount: number, ...items: T[]): Array\<T>
 
 | 参数名       | 类型   | 必填 | 说明                                                                |
 | ----------- | ------ | --  | ------------------------------------------------------------------- |
-| start       | number | 是  | 开始索引。如果`-array.length =< start < 0`，从`start + array.length`开始，如果`start < -array.length`，则从0开始。 |
+| start       | number | 是  | 开始索引。如果`-array.length <= start < 0`，从`start + array.length`开始，如果`start < -array.length`，则从0开始。 |
 | deleteCount | number | 是  | 删除元素的个数， 如果`deleteCount <= 0`，则不删除任何元素。 |
 | items       | T[]    | 否  | 从`start`位置开始插入的新元素。如果省略，仅删除Array内的指定元素。        |
 
@@ -1722,11 +1662,10 @@ splice(start: number, deleteCount: number, ...items: T[]): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The splice method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1744,6 +1683,236 @@ let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let removeArray = array.splice(2, 2, 6, 7, 8); // array内容变为[1, 2, 6, 7, 8, 5]，返回[3, 4]
 ```
 
+## containsAll
+
+containsAll(elements: Array\<T>): boolean
+
+检查指定ArkTS Array中的所有元素是否均包含在此ArkTS Array中。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | Array\<T>  | 是   | 要检查的ArkTS Array。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果指定ArkTS Array中的所有元素都包含在此ArkTS Array中，则返回true；否则返回false。当elements为空集合时，返回true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The containsAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let arr = new collections.Array<number>(1, 2, 3);
+let sElements = new collections.Array<number>(1, 2, 3, 4);
+console.info("arr.containsAll(sElements) = " + arr.containsAll(sElements)); // false
+
+arr.push(4);
+console.info("arr.containsAll(sElements) = " + arr.containsAll(sElements)); // true
+```
+
+## containsAll
+
+containsAll(elements: readonly T[]): boolean
+
+检查指定JavaScript原生容器Array中的所有元素是否均包含在此ArkTS Array中。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | readonly T[]  | 是   | 要检查的JavaScript原生容器Array。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果指定JavaScript原生容器Array中的所有元素都包含在此ArkTS Array中，则返回true；否则返回false。当elements为空集合时，返回true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The containsAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let arr = new collections.Array<number>(1, 2, 3);
+let nElements: Array<number> = [1, 2, 3, 4];
+console.info("arr.containsAll(nElements) = " + arr.containsAll(nElements)); // false
+
+arr.push(4);
+console.info("arr.containsAll(nElements) = " + arr.containsAll(nElements)); // true
+```
+
+## retainAll
+
+retainAll(elements: Array\<T>): boolean
+
+仅保留此ArkTS Array中同时存在于指定ArkTS Array中的元素。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | Array\<T>  | 是   | 允许保留元素的ArkTS Array。如果集合为空，则会清空当前ArkTS Array。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果从ArkTS Array中移除了任何元素，则返回true；如果ArkTS Array未被修改，则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let arr: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+
+let c1: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+console.info("arr.retainAll(c1) = " + arr.retainAll(c1)); // false，未移除任何元素
+console.info("arr = " + arr.toString()); // a, b, c
+
+let c2: collections.Array<string> = new collections.Array<string>('a', 'd', 'e', 'f');
+console.info("arr.retainAll(c2) = " + arr.retainAll(c2)); // true，移除了b和c
+console.info("arr = " + arr.toString()); // a
+```
+
+## retainAll
+
+retainAll(elements: readonly T[]): boolean
+
+仅保留此ArkTS Array中同时存在于指定JavaScript原生容器Array中的元素。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | readonly T[]  | 是   | 允许保留元素的JavaScript原生容器Array。如果集合为空，则会清空当前ArkTS Array。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果从ArkTS Array中移除了任何元素，则返回true；如果ArkTS Array未被修改，则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let arr: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+
+let nElements: Array<string> = ['a', 'd', 'e', 'f'];
+console.info("arr.retainAll(nElements) = " + arr.retainAll(nElements)); // true，移除了b和c
+console.info("arr = " + arr.toString()); // a
+```
+
+## retainAll
+
+retainAll(predicate: [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md#arrayelementpredicatefn)\<T>): boolean
+
+仅保留此ArkTS Array中使指定断言函数返回true的元素。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                            |
+| ------ | ---- | ---- | ------------------------------- |
+| predicate  | [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md#arrayelementpredicatefn)\<T>  | 是   | 断言函数。返回true表示保留当前元素，返回false表示移除当前元素。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| boolean | 如果从ArkTS Array中移除了任何元素，则返回true；如果ArkTS Array未被修改，则返回false。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**示例：**
+
+```ts
+let predicateArr: collections.Array<string> = new collections.Array<string>("foo", "bar", "bar");
+let changed = predicateArr.retainAll((e: string) => { return e === "bar" });
+console.info("changed = " + changed); // true
+console.info("predicateArr = " + predicateArr.toString()); // bar,bar
+```
+
 ## [Symbol.iterator]
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
@@ -1754,7 +1923,7 @@ let removeArray = array.splice(2, 2, 6, 7, 8); // array内容变为[1, 2, 6, 7, 
 >
 > 本接口不支持在.ets文件中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1766,7 +1935,7 @@ let removeArray = array.splice(2, 2, 6, 7, 8); // array内容变为[1, 2, 6, 7, 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1775,7 +1944,7 @@ let removeArray = array.splice(2, 2, 6, 7, 8); // array内容变为[1, 2, 6, 7, 
 **示例：**
 
 ```ts
-let array= new collections.Array<number>(1, 2, 3, 4);
+let array = new collections.Array<number>(1, 2, 3, 4);
 
 for (let item of array) {
   console.info(`value : ${item}`);
@@ -1788,7 +1957,7 @@ for (let item of array) {
 
 返回Array指定索引位置的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1796,7 +1965,7 @@ for (let item of array) {
 
 | 参数名    | 类型   | 必填 | 说明                                                            |
 | ----- | ------ | ---- | ------------------------------------------------------------------ |
-| index | number | 是   | 所需代码单元的从零开始的索引。当index<0 或者index>=length，则会抛出错误。 |
+| index | number | 是   | 所需代码元素的从零开始的索引。当index<0 或者index>=length，则会抛出错误。 |
 
 **返回值：**
 
@@ -1806,16 +1975,15 @@ for (let item of array) {
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                             |
 | ------- | ------------------------------------ |
-| 401 |        Parameter error.                  |
 | 10200001 | The value of index is out of range. |
 
 **示例：**
 
 ```ts
 let array = new collections.Array<number>(1, 2, 4);
-console.info("Element at index 1: ", array[1]);
+console.info(`Element at index 1: ${array[1]}`);
 ```

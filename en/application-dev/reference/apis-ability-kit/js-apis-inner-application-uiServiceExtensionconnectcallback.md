@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b0bde6583328c2ecbf95a4b39ab81d082ad88bca translatedAt=2026-09-03T12:09:46.582Z pushedAt=2026-09-05T10:47:30.876Z -->
 
 UIServiceExtensionConnectCallback provides callbacks for the connection to a UIServiceExtensionAbility.
 
@@ -30,7 +31,7 @@ Called to receive data when a connection to the UIServiceExtensionAbility is est
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md).
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
@@ -137,7 +138,7 @@ Called when the connection to the UIServiceExtensionAbility is interrupted.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Component Startup Rules Within a Device](../../application-models/component-startup-rules-inner-device.md).
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
@@ -183,7 +184,7 @@ struct UIServiceExtensionAbility {
             middle: { anchor: '__container__', align: HorizontalAlign.Center }
           })
           .onClick(() => {
-            this.myConnectUIServiceExtensionAbility()
+            this.myDisconnectUIServiceExtensionAbility()
           });
       }
       .width('100%')
@@ -191,7 +192,7 @@ struct UIServiceExtensionAbility {
     .height('100%')
   }
 
-  myConnectUIServiceExtensionAbility() {
+  myDisconnectUIServiceExtensionAbility() {
     // Obtain the context.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Disconnect from the UIServiceExtensionAbility.
@@ -212,3 +213,4 @@ struct UIServiceExtensionAbility {
   }
 }
 ```
+<!--no_check-->

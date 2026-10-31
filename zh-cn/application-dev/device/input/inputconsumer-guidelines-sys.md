@@ -23,12 +23,12 @@ import { inputConsumer } from '@kit.InputKit';
 
 全局快捷键管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputConsumer (全局快捷键)(系统接口)](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md)和[@ohos.multimodalInput.inputConsumer (全局快捷键)](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
 
-| 接口名称  | 描述 |
+| 接口名称 | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
 | on(type: 'key', keyOptions: KeyOptions, callback: Callback\<KeyOptions>): void | 订阅系统快捷键。 |
 | off(type: 'key', keyOptions: KeyOptions, callback?: Callback\<KeyOptions>): void | 取消订阅系统快捷键。 |
-| setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | 设置屏蔽按键拦截状态。 |
-| getShieldStatus(shieldMode: ShieldMode): boolean | 获取屏蔽按键拦截是否生效。 |
+| setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | 设置系统快捷键屏蔽类型。 |
+| getShieldStatus(shieldMode: ShieldMode): boolean | 获取系统快捷键屏蔽类型。 |
 | getAllSystemHotkeys(): Promise\<Array\<HotkeyOptions>> | 获取所有系统快捷键。 |
 | on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback\<HotkeyOptions>): void | 订阅应用快捷键。 |
 | off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback\<HotkeyOptions>): void | 取消订阅应用快捷键。 |

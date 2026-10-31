@@ -41,7 +41,7 @@ getSupportedExposureDurationRange(): Array\<number\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102 | peration not allowed, session or inputdevice maybe abnormal. |
+| 7400102 | Operation not allowed, session or inputdevice maybe abnormal. |
 | 7400103 | Session not config, only throw in session usage. |
 
 **示例：**

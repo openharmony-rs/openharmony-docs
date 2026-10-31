@@ -36,4 +36,3 @@ Cross-application collaboration: Breaks down barriers between applications and e
 [Ability Kit](../application-models/abilitykit-overview.md): Content Embed Kit internally depends on the Extension base capabilities provided by Ability Kit and interacts with Ability Kit for lifecycle scheduling.
 
 <!--RP1--><!--RP1End-->
-

@@ -1,8 +1,8 @@
 # ArkUI_AnimatorOption
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_AnimatorOption ArkUI_AnimatorOption
 
 ## Overview
 
-Defines the animator parameter object.
+Defines an animator animation option object, which is used to set animation attributes when creating an animator animation.
 
 **Since**: 12
 

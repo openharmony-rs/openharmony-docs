@@ -6,10 +6,16 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:35:49.206Z pushedAt=2026-10-30T06:58:59.450Z nl=1 -->
 
-You can convert compressed or uncompressed point data into a **Point** object for generating a key object, or convert a **Point** object into compressed or uncompressed point data.<br>
-For details about the ECC algorithm specifications, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc).<br>
-You can pass in the string parameter **format** to specify the format of the point data to obtain. To obtain compressed point data, set **format** to **COMPRESSED**. To obtain uncompressed point data, set **format** to **UNCOMPRESSED**.
+Compressed or uncompressed point data can be converted into a `Point` object for key object generation. A `Point` object can also be converted into compressed or uncompressed point data.<br>
+For ECC algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).<br>
+The format of the point data to obtain can be specified by passing the string parameter `format`. To obtain the compressed format, set `format` to `"COMPRESSED"`; to obtain the uncompressed format, set `format` to `"UNCOMPRESSED"`.
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## Converting Uncompressed Point Data into Compressed Point Data
 

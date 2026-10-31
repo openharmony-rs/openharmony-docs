@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS异步锁（AsyncLock）能力，用于解决多线程并发实例间的数据竞争问题，避免阻塞锁在异步场景下产生死锁，支持跨线程引用传递并保护Sendable共享对象的数据安全。"
+keywords: [异步锁, AsyncLock, 数据竞争, 多线程并发, 非阻塞锁, 跨线程引用传递, Sendable, lockAsync, 死锁]
+doctype: guide
+status: active
+---
+
 # 异步锁
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @dwhuawei-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 为了解决多线程并发实例间的数据竞争问题，ArkTS引入了异步锁能力。异步锁可能会被类对象持有，因此为了更方便地在并发实例间获取同一个异步锁对象，[AsyncLock对象](../reference/apis-arkts/arkts-apis-arkts-utils-locks.md#asynclock)支持跨线程引用传递。
 
@@ -19,17 +27,17 @@
 ## 使用示例
 
 为了防止[@Sendable共享对象](arkts-sendable.md)在不同线程中修改共享变量导致的竞争问题，可以使用异步锁保护数据。示例如下：
-<!-- @[example_protect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsAsyncLockIntroduction.ets) -->
+<!-- @[example_protect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsAsyncLockIntroduction.ets) -->  
 
-```ts
+``` TypeScript
 import { ArkTSUtils, taskpool } from '@kit.ArkTS';
 
 @Sendable
 export class A {
   private count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  public lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
-  public getCount(): Promise<number> {
+  public async getCount(): Promise<number> {
     // 对需要保护的数据加异步锁
     return this.lock_.lockAsync(() => {
       return this.count_;
@@ -46,8 +54,8 @@ export class A {
 
 @Concurrent
 async function printCount(a: A) {
-  a.increaseCount();
-  console.info("InputModule: count is:" + await a.getCount());
+  await a.increaseCount();
+  console.info(`InputModule: count is: ${await a.getCount()}`);
 }
 
 @Entry
@@ -70,6 +78,7 @@ struct Index {
           let a: A = new A();
           // 将实例a传递给子线程
           await taskpool.execute(printCount, a);
+          this.message = 'success';
         })
     }
     .height('100%')

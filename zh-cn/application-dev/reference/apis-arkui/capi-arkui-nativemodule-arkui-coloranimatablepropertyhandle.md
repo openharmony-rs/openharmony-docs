@@ -1,4 +1,4 @@
-# ArkUI_ColorAnimatablePropertyHandle
+# ArkUI_ColorAnimatableProperty*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

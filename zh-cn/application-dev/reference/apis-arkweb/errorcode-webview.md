@@ -1,7 +1,7 @@
 # Webview错误码
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -18,7 +18,7 @@ Init error. The WebviewController must be associated with a Web component.
 
 **错误描述**
 
-WebviewController还没有和具体的Web组件关联，无法进行相应的操作。
+WebviewController尚未与具体Web组件关联，无法进行相应操作。
 
 **可能原因**
 
@@ -51,7 +51,9 @@ URL错误，可能原因：
 
 **处理步骤**
 
-请检查输入的URL是否正确且URL长度不超过2\*1024\*1024。
+1. 请检查输入的URL是否正确且URL长度不超过2\*1024\*1024。
+
+2. 如报'No valid cookie found'错误，请检查指定URL对应的Cookie配置是否有效，必要时检查Cookie权限或重新设置Cookie。
 
 
 ## 17100003 resource路径错误
@@ -92,10 +94,10 @@ Function not enabled.
 
 **处理步骤**
 
-请检查相关功能开关是否已配置打开，如该功能对应的XXXAccess是否配置为true，或检测当前接口是否支持并发。
+请检查相关功能开关是否已配置为true，或检测当前接口是否支持并发。
 
 
-## 17100005 cookie value格式错误
+## 17100005 Cookie value格式错误
 
 **错误信息**
 
@@ -103,15 +105,15 @@ The provided cookie value is invalid. It must follow the format specified in RFC
 
 **错误描述**
 
-cookie value格式错误。
+Cookie value格式错误。
 
 **可能原因**
 
-不支持的cookie value类型。
+不支持的Cookie value类型。
 
 **处理步骤**
 
-请检查输入的value是否正确。
+请检查输入的Cookie value是否符合RFC 6265规范，确保不包含控制字符、分隔符等非法内容。
 
 
 ## 17100006 无法注册message port回调
@@ -338,11 +340,9 @@ WebResourceHandler已经失效。
 
 **可能原因**
 
-1.对应的请求在WebSchemeHandler中没有拦截；
-
-2.该请求拦截在构造返回体之前，因为某些原因已经请求结束；
-
-3.该WebResourceHandler已经调用过didFinish和didFail。
+1. 对应的请求在WebSchemeHandler中没有拦截。
+2. 该请求拦截在构造返回体之前，因为某些原因已经请求结束。
+3. 该WebResourceHandler已经调用过didFinish和didFail。
 
 
 **处理步骤**
@@ -384,6 +384,24 @@ The port number is not within the allowed range.
 **处理步骤**
 
 检查使用的端口号是否在允许的取值范围内。
+
+## 17100024 AIPageCommand格式错误
+
+**错误信息**
+
+Command format error. The command parameter does not conform to the JSON format requirements.
+
+**错误描述**
+
+AIPageCommand参数格式错误。
+
+**可能原因**
+
+调用[WebviewController.executeAIPageCommand](arkts-apis-webview-WebviewController.md#executeaipagecommand)时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
+
+**处理步骤**
+
+检查command参数是否为合法的JSON对象字符串，并确认JSON对象中包含字符串类型的method字段。
 
 ## 17100101 使用了错误的网络错误码
 

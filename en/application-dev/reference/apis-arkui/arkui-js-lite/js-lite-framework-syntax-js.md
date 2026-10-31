@@ -6,8 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-
-You can use a **.js** file in the ECMAScript compliant JavaScript language to define the service logic of an HML page. With dynamic typing, JavaScript can make your application more expressive with a flexible design. The following describes the JavaScript compilation and running.
+You can use a .js file in the ECMAScript compliant JavaScript language to define the service logic of an HML page. With dynamic typing, JavaScript can make your application more expressive with a flexible design. The following describes the JavaScript compilation and running.
 
 
 ## Syntax
@@ -35,20 +34,20 @@ The ECMAScript 6.0 syntax is supported. Lite wearables only support the followin
 10. template strings
 
 - Module declaration
-  
+
   Import functionality modules.
 
 
-  ```
+  ``` ts
   import router from '@ohos.router';
   ```
 
 - Code reference
-  
+
   Import JavaScript code.
 
 
-  ```
+  ``` ts
   import utils from '../../common/utils.js';
   ```
 
@@ -64,7 +63,7 @@ The ECMAScript 6.0 syntax is supported. Lite wearables only support the followin
 
 ## Obtaining a DOM Element
 
-Use **$refs** to obtain a DOM element.
+1. Use **$refs** to obtain a DOM element.
 
    ```html
    <!-- index.hml -->

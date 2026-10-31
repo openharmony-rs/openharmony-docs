@@ -36,7 +36,7 @@ typedef struct Http_Response {...} Http_Response
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*destroyResponse)(struct Http_Response **response)](#destroyresponse) | 销毁HTTP响应的回调函数 |
+| [void (\*destroyResponse)(struct Http_Response **response)](#destroyresponse) | 销毁HTTP响应的回调函数。 |
 
 ## 成员函数说明
 
@@ -48,7 +48,7 @@ void (*destroyResponse)(struct Http_Response **response)
 
 **描述**
 
-销毁HTTP响应的回调函数
+销毁HTTP响应的回调函数。
 
 **起始版本：** 20
 

@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍HashMap、HashSet、TreeMap、TreeSet、LightWeightMap、LightWeightSet、PlainArray等非线性容器的特征对比与使用方法，涵盖哈希、树与轻量结构的差异，帮助开发者选择合适的键值型容器。"
+keywords: [非线性容器, HashMap, HashSet, TreeMap, TreeSet, LightWeightMap, LightWeightSet, PlainArray, 键值型容器]
+doctype: guide
+status: active
+---
+
 # 非线性容器
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 非线性容器实现能快速查找的数据结构，其底层通过hash或者红黑树实现，包括HashMap、HashSet、TreeMap、TreeSet、LightWeightMap、LightWeightSet、PlainArray七种。非线性容器中的key及value的类型均满足ECMA标准。
@@ -45,7 +53,6 @@ HashMap支持增、删、改、查操作，常用API如下：
 | 访问元素 | forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) | 遍历访问整个map的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | 创建迭代器以访问数据。 |
 | 修改元素 | replace(key: K, newValue: V) | 修改指定key对应的value值。 |
-| 修改元素 | forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) | 遍历并修改整个map的元素。 |
 | 删除元素 | remove(key: K) | 删除map中匹配到的键值对。 |
 | 删除元素 | clear() | 清空整个map。 |
 
@@ -68,7 +75,6 @@ HashSet支持增、删、改、查操作，常用API如下：
 | 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: HashSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
-| 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: HashSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(value: T) | 删除指定的元素。 |
 | 删除元素 | clear() | 清空整个set。 |
 
@@ -96,7 +102,6 @@ TreeMap支持增、删、改、查操作，常用 API 如下：
 | 访问元素 | forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object) | 遍历访问整个map的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | replace(key: K, newValue: V) | 修改指定key对应的value值。 |
-| 修改元素 | forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object) | 通过遍历对map中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(key: K) | 删除map中匹配到的键值对。 |
 | 删除元素 | clear() | 清空整个map。 |
 
@@ -118,12 +123,11 @@ TreeSet支持增、删、改、查操作，常用API如下：
 | --------- | ------- | ------- |
 | 增加元素 | add(value: T) | 增加一个值。 |
 | 访问元素 | values() | 返回一个迭代器对象，包含set中的所有value值。 |
-| 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
+| 访问元素 | entries() | 返回一个迭代器对象，包含值的数组，值都是value。 |
 | 访问元素 | getFirstValue() | 获取set中排在首位的value值。 |
 | 访问元素 | getLastValue() | 获取set中排在末位的value值。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: TreeSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
-| 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: TreeSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(value: T) | 删除指定的元素。 |
 | 删除元素 | clear() | 清空整个set。 |
 
@@ -153,7 +157,6 @@ LightWeightMap支持增、删、改、查操作，常用API如下：
 | 访问元素 | forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object) | 遍历访问整个map的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | setValueAt(index: number, newValue: V) | 修改指定index对应的value值。 |
-| 修改元素 | forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object) | 通过遍历对map中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(key: K) | 删除map中指定key匹配到的键值对。 |
 | 删除元素 | removeAt(index: number) | 删除map中指定index对应的键值对。 |
 | 删除元素 | clear() | 清空整个map。 |
@@ -166,7 +169,7 @@ LightWeightSet依据泛型定义，采用更加轻量级的结构，初始默认
 
 LightWeightSet底层通过hash表结构实现value的唯一性，冲突策略采用线性探测法，查找策略基于二分查找法。
 
-LightWeightSet和[HashSet](../reference/apis-arkts/js-apis-hashset.md)都是用来存储键值的集合，但LightWeightSet的占用内存更小。
+LightWeightSet和[HashSet](../reference/apis-arkts/js-apis-hashset.md)都是用来存储值的集合，但LightWeightSet的占用内存更小。
 
 当需要存取某个集合或是对某个集合去重时，推荐使用占用内存更小的LightWeightSet。
 
@@ -178,11 +181,10 @@ LightWeightSet支持增、删、改、查操作。常用API如下：
 | 访问元素 | getIndexOf(key: T) | 获取对应的index值。 |
 | 访问元素 | getValueAt(index: number) | 获取指定index对应的value值。 |
 | 访问元素 | values() | 返回一个迭代器对象，包含set中的所有value值。 |
-| 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
+| 访问元素 | entries() | 返回一个迭代器对象，包含值的数组，值都是value。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
-| 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
-| 删除元素 | remove(key: K) | 删除指定的元素。 |
+| 删除元素 | remove(key: T) | 删除指定的元素。 |
 | 删除元素 | removeAt(index: number) | 删除set中指定index对应的值。 |
 | 删除元素 | clear() | 清空整个set。 |
 
@@ -209,7 +211,6 @@ PlainArray支持增、删、改、查操作。常用API如下：
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray\<T>) => void, thisArg?: Object) | 遍历访问整个PlainArray的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;[number, T]&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | setValueAt(index:number, value: T) | 修改指定index对应的value值。 |
-| 修改元素 | forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray\<T>) => void, thisArg?: Object) | 通过遍历对PlainArray中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(key: number) | 删除PlainArray中指定key匹配到的键值对。 |
 | 删除元素 | removeAt(index: number) | 删除PlainArray中指定index对应的键值对。 |
 | 删除元素 | removeRangeFrom(index: number, size: number) | 删除PlainArray中指定范围内的元素。 |

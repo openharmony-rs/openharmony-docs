@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用XmlPullParser解析XML的方法：包括解析XML标签和标签值、解析XML属性和属性值、解析XML事件类型和元素信息，并提供调用所有解析选项的完整场景示例，适用于从XML中提取业务数据。"
+keywords: [XML解析, XmlPullParser, 标签解析, 属性解析, 事件类型, 元素信息, 解析选项]
+doctype: guide
+status: active
+---
+
 # XML解析
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 对于以XML作为载体传递的数据，实际使用中需要对相关的元素进行解析，一般包括[解析XML标签和标签值](#解析xml标签和标签值)、[解析XML属性和属性值](#解析xml属性和属性值)、[解析XML事件类型和元素信息](#解析xml事件类型和元素信息)三类操作。如在Web服务中，XML是SOAP（Simple Object Access Protocol）协议的基础，SOAP消息通常以XML格式封装，包含请求和响应参数，通过解析这些XML消息，Web服务可以处理来自客户端的请求并生成相应的响应。
@@ -19,9 +27,9 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 | -------- | -------- | -------- | -------- |
 | supportDoctype | boolean | 否 | 是否解析文档类型，false表示不解析文档类型，true表示解析文档类型，默认false。 |
 | ignoreNameSpace | boolean | 否 | 是否忽略命名空间，忽略命名空间后，将不会对其进行解析。true表示忽略命名空间，false表示不忽略命名空间，默认false。|
-| tagValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 获取tagValue回调函数，打印XML标签及标签值。默认为undefined，表示不解析XML标签和标签值。 |
-| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 获取attributeValue回调函数，打印XML属性及属性值。默认为undefined，表示不解析XML属性和属性值。 |
-| tokenValueCallbackFunction | (eventType: EventType, value: ParseInfo) =&gt; boolean | 否 | 获取tokenValue回调函数，打印XML事件类型及parseInfo对应属性。默认为undefined，表示不解析XML事件类型。 |
+| tagValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 获取tagValue()回调函数，打印XML标签及标签值。默认为undefined，表示不解析XML标签和标签值。 |
+| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 获取attributeValue()回调函数，打印XML属性及属性值。默认为undefined，表示不解析XML属性和属性值。 |
+| tokenValueCallbackFunction | (eventType: EventType, value: ParseInfo) =&gt; boolean | 否 | 获取tokenValue()回调函数，打印XML事件类型及parseInfo对应属性。默认为undefined，表示不解析XML事件类型。 |
 
 
 ## 注意事项
@@ -70,7 +78,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 3. 自定义回调函数，本例直接打印出标签及标签值。
 
-   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) --> 
    
    ``` TypeScript
    function func(name: string, value: string): boolean {
@@ -84,7 +92,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
      if (name == 'title' || name == 'lens') {
        console.info('  ' + name);
      }
-     return true; //true:继续解析 false:停止解析
+     return true; // true:继续解析 false:停止解析
    }
    ```
 
@@ -224,7 +232,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
    2 2 // 2：<title>对应事件类型START_TAG值为2  2：深度为2
    4 2 // 4：Play对应事件类型TEXT值为4  2：深度为2
    3 2 // 3：</title>对应事件类型END_TAG值为3  2：深度为2
-   3 1 // 3：</note>对应事件类型END_TAG值为3  1：深度为1（与<note对应>）
+   3 1 // 3：</note>对应事件类型END_TAG值为3  1：深度为1（与<note>对应）
    1 0 // 1：对应事件类型END_DOCUMENT值为1  0：深度为0
    ```
 

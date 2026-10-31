@@ -14,6 +14,7 @@
 - 单段式拍照是在拍照过程中通过多帧融合以及多个底层算法仅会返回一张高质量图片，这样导致Shot2See（Shot2See指的是从用户点击拍照控件到在缩略图显示区域显示缩略图）完成时延比较长。
 
 分段式拍照和单段式拍照返回的图片在全质量图的情况下图片质量是一致的，但是在低质量的情况下单段式拍照的图片质量要优于分段式拍照。如果开发者考虑Shot2See的完成时延以及获取全质量图，建议使用分段式拍照，否则的话，建议使用单段式拍照。
+
 本篇文章主要以相机Shot2See场景为例，来展示分段式拍照Shot2See的完成时延要低于单段式拍照。
 
 **分段式拍照流程示意图**
@@ -200,7 +201,7 @@
    }
    ```
 
-5. 设置拍照[photoAvailable](../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调来获取Photo对象，点击拍照按钮，触发此回调函数，调用getComponent方法根据图像的组件类型从图像中获取组件缓存ArrayBuffer，使用createImageSource方法来创建图片源实例，最后通过createPixelMap获取PixelMap对象。注意:如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
+5. 设置拍照[photoAvailable](../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调来获取Photo对象，点击拍照按钮，触发此回调函数，调用getComponent方法根据图像的组件类型从图像中获取组件缓存ArrayBuffer，使用createImageSource方法来创建图片源实例，最后通过createPixelMap获取PixelMap对象。注意：如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
 
    ```typescript
    photoOutput.on('photoAvailable', (err: BusinessError, photo: camera.Photo) => {
@@ -261,7 +262,7 @@
 
 由于分段式拍照和单段式拍照[步骤1](#场景示例)-步骤4相同，就不再进行赘述。
 
-1. 设置拍照[photoAssetAvailable](../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12)的回调来获取photoAsset，点击拍照按钮，触发此回调函数，然后执行handlePhotoAssetCb函数来完成photoAsset全局的存储并跳转到预览页面。注意:如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
+1. 设置拍照[photoAssetAvailable](../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12)的回调来获取photoAsset，点击拍照按钮，触发此回调函数，然后执行handlePhotoAssetCb函数来完成photoAsset全局的存储并跳转到预览页面。注意：如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
 
    ```typescript
    photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
@@ -291,7 +292,8 @@
    ```
 
 2. 进入预览界面通过GlobalContext.get().getT<image.PixelMap>('imageInfo')方法获取PhotoAsset信息，执行requestImage函数中的photoAccessHelper.MediaAssetManager.requestImageData方法根据不同的策略模式，请求图片资源数据，这里的请求策略为均衡模式BALANCE_MODE，
-最后分段式子服务会根据系统压力以及定制化场景进行调度，将后处理好的原图回传给媒体库来替换低质量图。具体代码如下所示：
+
+   最后分段式子服务会根据系统压力以及定制化场景进行调度，将后处理好的原图回传给媒体库来替换低质量图。具体代码如下所示：
 
    ```typescript
    photoBufferCallback: (arrayBuffer: ArrayBuffer) => void = (arrayBuffer: ArrayBuffer) => {

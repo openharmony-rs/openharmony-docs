@@ -4,7 +4,8 @@
 <!--Owner: @wanghuan2025-->
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=fad6cf2e5523a7e81ead731b6a0b2996d8cfacc1 translatedAt=2026-10-30T03:21:54.356Z pushedAt=2026-08-21T09:49:41.715Z nl=1 -->
 
 ## Overview
 
@@ -15,18 +16,18 @@ Crash detection is an important monitoring capability in ArkTS applications, whi
 
 ArkCompiler runtime captures process exceptions. The fault log generation process is as follows:
 
-1. During code execution, if the application crashes due to uncaptured exceptions or errors, ArkCompiler runtime will capture these exceptions.
+1. During code execution, if the application crashes due to uncaught exceptions or errors, ArkCompiler runtime will capture these exceptions.
 
 2. ArkCompiler runtime collects fault information and reports it to HiView.
 
-3. HiView supplements only the information (such as the device memory status and application page switching history) that it has permission to obtain, generates the corresponding crash log file, and stores the file in the **/data/log/faultlog/faultlogger** directory.
+3. The HiView DFX process supplements information that only it has permission to obtain (such as the overall memory status of the device and the app page switching trace), generates the corresponding crash log file, and stores it in the `/data/log/faultlog/faultlogger` directory.
 
 4. To report a crash event, you can use HiAppEvent to subscribe to the [crash event](hiappevent-watcher-crash-events.md).  
 
 
 ## Constraints
 
-If an exception is thrown in an asynchronous function, no JS crash will occur. You can observe the exception through [ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For details about the sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions).
+Actively throwing an exception in an async function does not cause a JS crash. You can observe the exception through [errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions).
 
 
 ## Obtaining Logs
@@ -45,9 +46,9 @@ HiAppEvent provides APIs for subscribing to faults. For details, see [Introducti
 
 When **Developer options** is enabled, you can run the following command to obtain logs to the local host:
 ```text
-hdc file recv /data/log/faultlog/faultlogger Local path.
+hdc file recv /data/log/faultlog/faultlogger <local_path>
 ```
-The fault log file name format is **jscrash-Process name-Process UID-Millisecond-level time .log**.
+The fault log file name format is **jscrash-Process name-Process UID-Millisecond-level time.log**.
 
 
 ## Log Specifications
@@ -60,7 +61,7 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 | DeviceDebuggable | Whether the system version of the device can be debugged, which is irrelevant to **Developer options**.| 23 | Yes| - |
 | Fingerprint | Fault feature, which is a hash value for faults of the same type.| 8 | Yes| - |
 | Timestamp | Timestamp.| 8 | Yes| - |
-| Module name | Bundle name or Process name.| 8 | Yes| - |
+| Module name | Bundle name. | 8 | Yes | - |
 | ReleaseType | Application version type. The value **release** indicates that the application is a [release-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the application is a [debug-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).| 23 | Yes| - |
 | CpuAbi | ABI type.| 23 | Yes| - |
 | Version | HAP version.| 8 | Yes| - |
@@ -68,6 +69,8 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 | IsSystemApp | Whether the application is a system application.| 23 | Yes| - |
 | Pid | ID of the faulty process.| 8 | Yes| - |
 | Uid | User ID.| 8 | Yes| - |
+| Process name | Name of the faulty process. | 26 | Yes | - |
+| App running unique id | Unique ID associated with the app at runtime. | 26.0.0 | Yes | - |
 | Process life time | Lifetime of the faulty process.| 22 | Yes| - |
 | Process Memory(kB) | Process memory usage.| 20 | Yes| - |
 | Device Memory(kB) | Device memory information.| 20 | No| This field depends on the maintenance and debugging service process. If the maintenance and debugging service process stops or the device restarts when a fault occurs, this field does not exist. For details, see [Detection Principles](#detection-principles).|
@@ -80,40 +83,44 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 | SubmitterStacktrace | Submitter thread stack.| 20 | No| By default, the asynchronous thread stack tracing functionality is enabled only in the ARM 64-bit system.<br>For versions earlier than API version 22, the functionality of submitting asynchronous tasks by third-party and system applications through [libuv](../reference/native-lib/libuv.md) and [ffrt](../reference/apis-ffrt-kit/capi-ffrt.md) is enabled only in the debug version by default.<br>Since API version 22, the functionality of submitting asynchronous tasks by third-party applications through **libuv** is enabled by default in both debug and release versions. The functionality of submitting asynchronous tasks by third-party and system applications through **ffrt** is enabled by default only in the debug version.|
 | HiLog | HiLog logs printed before the fault occurs. A maximum of 1000 lines can be printed.| 20 | Yes| - |
 | AsyncStack | Promise stack.| 23 | No| In ARM64, if the promise stack is enabled, this field is contained.|
+| ModuleImportStack | Module loading chain. | 26.0.0 | No | On ARM 64-bit systems, this field is included if the [module loading chain debug switch](../arkts-utils/arkts-module-debug.md) is enabled. |
+| NativeModuleErrorInfo | .so load failure information, up to 20 load failure records. | 26.0.0 | Yes | - |
 
 Example of the JS crash log specifications:
 ```text
-Device info:XXX <- Device information
-Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- Build information
-DeviceDebuggable:No <- Whether the system version of the device can be debugged.
-Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- Fault features
-Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- Timestamp
-Module name:com.example.myapplication <- Bundle name/Process name
-ReleaseType:release <- Application version type.
-CpuAbi:arm64-v8a <- ABI type.
-Version:1.0.0 <- HAP version
-VersionCode:1000000 <- Version code
+Device info:XXX <- Device information.
+Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- Build information.
+DeviceDebuggable:No <- Whether the device's system build is debuggable.
+Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- Fault fingerprint.
+Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- Timestamp.
+Module name:com.example.myapplication <- Bundle name.
+ReleaseType:release <- Application build type.
+CpuAbi:arm64-v8a <- Application binary interface (ABI) type.
+Version:1.0.0 <- HAP version.
+VersionCode:1000000 <- Version code.
 IsSystemApp:No <- Whether the application is a system application.
-Pid:579 <- Faulty process ID
-Uid:0 <- User ID
-Process life time:1s  <- Process life time
-Process Memory(kB): 1897(Rss) <- Process memory usage
-Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- Device memory information
-Page switch history: <- Page switch history
+Pid:579 <- ID of the faulty process.
+Uid:0 <- User ID.
+Process name:com.example.myapplication <- Process name.
+App running unique id:124500628566978194 <- Unique ID associated with this application run.
+Process life time:1s  <- Process lifetime.
+Process Memory(kB): 1897(Rss) <- Memory usage of the process.
+Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- System-wide memory information (optional).
+Page switch history: <- Page switching history.
   14:08:30:327 /ets/pages/Index:JsError
   14:08:28:986 /ets/pages/Index
   14:08:07:606 :leaves foreground
   14:08:06:246 /ets/pages/Index:AppFreeze
   14:08:01:955 :enters foreground
-Reason:TypeError <- Fault cause
-Error name:TypeError <- Fault type
-Error message:Cannot read property c of undefined <- Error message
-Cannot get SourceMap info, dump raw stack: <- The release package does not contain the SourceMap file, and the JS stack fails to parse it.
+Reason:TypeError <- Cause of the fault.
+Error name:TypeError <- Error type.
+Error message:Cannot read property c of undefined <- Error message.
+Cannot get SourceMap info, dump raw stack: <- Release packages do not include source map files when installed, so JS stack line and column numbers cannot be resolved using source maps.
 Stacktrace:
-    at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)  <- Call stack of the exception code
+    at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)  <-Call stack of the code that triggers the exception.
            ^        ^                              ^
-         Function name Module package name The row and column numbers in the file
-HybridStack: <- Cross-language call stack between C++ and JS
+       Function  Module                     File:line:column
+HybridStack: <- Cross-language call stack between C++ and JS code.
 #00 pc 00000000004a814c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
 #01 pc 00000000004a6460 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
 #02 pc 00000000006a94e0 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
@@ -122,7 +129,7 @@ HybridStack: <- Cross-language call stack between C++ and JS
 #05 pc 00000000005c25d4 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
 #06 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
 #07 pc 000000000044843c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallarg1Imm8V8StwCopy+340)
-#08 at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13) <- JS code executed when an exception occurs
+#08 at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13) <- JS code executing when the exception occurs.
 #09 pc 00000000001e620c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
 #10 pc 00000000009ad560 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+456)(173710293c3751dc676d24264bfac393)
 #11 pc 0000000000a63f14 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
@@ -132,7 +139,7 @@ HybridStack: <- Cross-language call stack between C++ and JS
 
 HiLog:
  ^
- HiLog logs generated before the fault occurs are added to the generated crash log file. A maximum of 1000 lines are supported.
+ Up to 1000 lines of runtime logs preceding the fault are appended to the generated crash log file.
 
 ```
 ### Log Specifications for Asynchronous Thread Stack Tracing Faults
@@ -156,9 +163,9 @@ Stacktrace:
 #04 pc 00000000001b5d90 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::ObjectFactory::NewJSError(panda::ecmascript::JSHandle<panda::ecmascript::GlobalEnv> const&, panda::ecmascript::base::ErrorType const&, panda::ecmascript::JSHandle<panda::ecmascript::EcmaString> const&, panda::ecmascript::StackCheck)+984)(723d1618fe2567539bed3038ccfe92d8)
 #05 pc 000000000093274c /system/lib64/platformsdk/libark_jsruntime.so(panda::Exception::Error(panda::ecmascript::EcmaVM const*, panda::Local<panda::StringRef>)+244)(723d1618fe2567539bed3038ccfe92d8)
 #06 pc 0000000000066398 /system/lib64/platformsdk/libace_napi.z.so(napi_throw_error+152)(c91850afe3629242ed12712b76be08f1)
-#07 pc 00000000000020fc /data/storage/el1/bundle/libs/arm64/libentry.so(02cecfd8fd280aeaa1af7b9d1227afeac0ec4356)   <- Exception is thrown
+#07 pc 00000000000020fc /data/storage/el1/bundle/libs/arm64/libentry.so(02cecfd8fd280aeaa1af7b9d1227afeac0ec4356)   <- Location where the exception is thrown.
 #08 pc 00000000000890c0 /system/lib64/platformsdk/libruntime.z.so(std::__h::__function::__func<OHOS::AbilityRuntime::OHOSJsEnvironmentImpl::PostTaskToHandler(char const*, void (*)(void*, int), void*, int, int)::$_0, std::__h::allocator<OHOS::AbilityRuntime::OHOSJsEnvironmentImpl::PostTaskToHandler(char const*, void (*)(void*, int), void*, int, int)::$_0>, void ()>::operator()() (.3ec3b6b3a88f13b2aa6c613a7afa022b)+128)(50df26f49d9c067da9cf79b804f136ec)
-========SubmitterStacktrace========    <- After an asynchronous thread crashes, the stack of the thread that submits the asynchronous task is also printed.
+========SubmitterStacktrace========    <- When an asynchronous thread crashes, the call stack of the thread that submitted the asynchronous task is also printed.
 #00 pc 0000000000012cd0 /system/lib64/platformsdk/libuv.so(uv_queue_work+456)(e077582fac1bf7463ca5539c0a2b678a)
 #01 pc 0000000000001fd0 /data/storage/el1/bundle/libs/arm64/libentry.so(02cecfd8fd280aeaa1af7b9d1227afeac0ec4356)
 #02 pc 000000000004d69c /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+220)(c91850afe3629242ed12712b76be08f1)
@@ -179,16 +186,16 @@ Stacktrace:
 
 ### Page switch history
 
-Since API version 20, the **Page switch history** field is used to record the page switch history. A maximum of 10 latest history records can be recorded in the fault log. The format of a record is as follows:
+Starting from API version 20, the Page switch history section records page switching history. A fault log retains up to the 10 most recent entries. Each entry has the following format:
 ```text
   14:08:30:327 /ets/pages/Index:JsError
        ^             ^            ^
-    Switching time   Page URL   Page name
+  Switch time    Page URL     Page name
 ```
 
 > **NOTE**
 >
-> The child page's name is available only when it is navigated to through **Navigation**.
+> The child page's name is available only when it is navigated to through **Navigation**. The page name is defined in the [system routing table](../ui/arkts-navigation-cross-package.md#system-routing-table).
 >
 > When the application switches between the foreground and background, the corresponding page URL is empty, but **enters foreground** and **leaves foreground** are displayed as special page names.
 >
@@ -302,7 +309,7 @@ Format description:
 
 ### HybridStack Format
 
-Since API version 22, the cross-language call stack between C++ and JS can be printed in the **HybridStack** of the ARM 64-bit system.
+Starting from API version 22, on ARM 64-bit systems, HybridStack supports outputting cross-language call stacks between C++ and JS code.
 
 For details about the C++ code stack, see [C++ Exception Code Stack Formats](cppcrash-guidelines.md#common-faults).
 
@@ -322,19 +329,20 @@ hdc shell param set persist.ark.properties 0x105c
 hdc shell reboot
 ```
 
-By default, an exception thrown in a promise task does not cause a JS crash. However, you can capture a rejected promise using [ErrorManager unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12) and then throw the exception to trigger a JS crash.
+Exceptions thrown in promise asynchronous tasks do not cause a JS crash by default. However, after capturing a rejected promise through [on('unhandledRejection')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12), you can actively throw the exception to trigger a JS crash.
 
 When the promise stack is enabled, if an exception is thrown in a promise task and a JS crash occurs, the JS crash log displays the stack information about the promise task creation.
 
 The format of the promise stack in the JS crash log is as follows:
 
 ```text
-Stacktrace:
 ...
+Stacktrace:
+    at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)
 HybridStack:
 ...
-AsyncStack: <- After the promise stack is enabled, the stack information when the promise task is created is displayed.
-    submitter#00: <- Each promise task corresponds to a submitter. The stack of a submitter supports a maximum of 48 backtracing layers.
+AsyncStack: <- When the feature is enabled, this field shows the call stack captured when the Promise asynchronous task was created.
+    submitter#00: <- Each asynchronous task creation has a corresponding submitter; each submitter's stack contains at most 48 frames.
     #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
     #01 pc 000000000020ba3c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
     #02 pc 0000000000dfd330 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
@@ -347,7 +355,7 @@ AsyncStack: <- After the promise stack is enabled, the stack information when th
     #09 pc 0000000000dfcebc /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+484)
     #10 pc 0000000000dfcd18 /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+64)
     ...
-    submitter#01: <- Multiple submitters indicate that asynchronous nesting exists. A maximum of eight submitters are supported.
+    submitter#01: <- Multiple submitters indicate nested asynchronous tasks; up to 8 submitters are supported.
     #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
     #01 pc 0000000000ad9e4c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
     #02 pc 0000000000dfaa8c /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+44)
@@ -364,3 +372,51 @@ AsyncStack: <- After the promise stack is enabled, the stack information when th
 HiLog:
 ...
 ```
+
+### NativeModuleErrorInfo
+The NativeModuleErrorInfo in the JS crash log can record up to 20 earliest .so loading failure entries. If the total exceeds 20, search for the keyword `Load native module failed` in hilog to check whether any .so loading failures occurred. The format of NativeModuleErrorInfo is as follows:
+
+```text
+...
+Stacktrace:
+...
+HybridStack:
+...
+NativeModuleErrorInfo:
+There are a total of 2 SO loading failure messages, and 2 of them are displayed here.
+#1 ModuleName:module1 Reason:dlopen failed: load module default/module1 failed.
+#2 ModuleName:module2 Reason:dlopen failed: load module default/module2 failed.
+...
+HiLog:
+...
+```
+## JsCrash Clustering
+
+JsCrash clustering information starts with the `Stacktrace:` field and includes the call stack of `HybridStack:` on ARM 64-bit systems.
+
+```text
+...
+Stacktrace:
+    at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)
+HybridStack:
+#00 pc 00000000004a814c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#01 pc 00000000004a6460 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#02 pc 00000000006a94e0 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#03 pc 0000000000334d38 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#04 pc 0000000000253da8 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::ObjectFactory::GetJSError(panda::ecmascript::base::ErrorType const&, char const*, panda::ecmascript::StackCheck)+292)(173710293c3751dc676d24264bfac393)
+#05 pc 00000000005c25d4 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#06 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#07 pc 000000000044843c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallarg1Imm8V8StwCopy+340)
+#08 at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)
+#09 pc 00000000001e620c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#10 pc 00000000009ad560 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+456)(173710293c3751dc676d24264bfac393)
+#11 pc 0000000000a63f14 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+#12 pc 0000000000d836bc /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+#13 pc 000000000111f338 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+...
+```
+
+The clustering method is the same as that for Cpp Crash. For details, see [CppCrash Clustering](cppcrash-guidelines.md#cppcrash-clustering).
+
+
+<!--no_check-->

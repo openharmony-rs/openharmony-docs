@@ -53,12 +53,11 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11102002 | Invalid filtering event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11102003 | Invalid row value. Possible caused by the row value is less than zero. |
-| 11102004 | Invalid size value. Possible caused by the size value is less than zero. |
-| 11102005 | Invalid timeout value. Possible caused by the timeout value is less than zero. |
+| 11102003 | Invalid row value. Possibly caused by the row value is less than zero. |
+| 11102004 | Invalid size value. Possibly caused by the size value is less than zero. |
+| 11102005 | Invalid timeout value. Possibly caused by the timeout value is less than zero. |
 
 > **注意：**
 >
@@ -196,7 +195,6 @@ removeWatcher(watcher: Watcher): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 
 **示例：**
@@ -245,8 +243,7 @@ setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: st
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101004 | Invalid string length of the event parameter. |
@@ -278,9 +275,13 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。<br />不同的事件有不同的配置项，目前仅支持以下事件：
-- MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
+- MAIN_THREAD_JANK（参数配置详见[setEventConfig接口参数设置说明](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
 - APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#自定义规格设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
+
+ > **说明：**
+ >
+ > 从API版本26.0.0开始，configEventPolicy已支持本接口所有设置，推荐使用[configEventPolicy](#hiappeventconfigeventpolicy22)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -305,7 +306,7 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -352,7 +353,15 @@ configEventPolicy(policy: EventPolicy): Promise&lt;void&gt;
 
 | 类型                | 说明          |
 | ------------------- | ------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果。<br>各个事件的事件配置策略，详细规格见[EventPolicy](#eventpolicy22)类型说明。若配置策略设置有误，会导致接口返回失败。<br>- 参数类型设置有误，则返回401通用错误信息；<br>- 参数规格设置有误，则在hilog日志输出相关错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。<br>各个事件的事件配置策略，详细规格见[EventPolicy](#eventpolicy22)类型说明。若配置策略设置有误，会导致接口返回失败。<br>- 参数规格设置有误，则在hilog日志输出相关错误信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                      |
+| -------- | --------------------------------------------- |
+| 401 | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -492,8 +501,7 @@ setSize(size: number): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例：**
 
@@ -526,8 +534,7 @@ setRow(size: number): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例：**
 
@@ -617,7 +624,7 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 
 write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#hiappeventevent)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行订阅。
+应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#event)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行订阅。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -627,7 +634,7 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明           |
 | -------- | ------------------------------ | ---- | -------------- |
-| info     | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其内部定义的事件名称建议避免与[Event](#hiappeventevent)中定义的系统事件名称常量产生冲突。 |
+| info     | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其内部定义的事件名称建议避免与[Event](#event)中定义的系统事件名称常量产生冲突。 |
 | callback | AsyncCallback&lt;void&gt;      | 是   | 打点回调函数。 |
 
 **错误码：**
@@ -636,11 +643,11 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -682,7 +689,7 @@ hiAppEvent.write({
 
 write(info: AppEventInfo): Promise&lt;void&gt;
 
-应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#hiappeventevent)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行处理。
+应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#event)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -692,7 +699,7 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 
 | 参数名 | 类型                           | 必填 | 说明           |
 | ------ | ------------------------------ | ---- | -------------- |
-| info   | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其中的事件名称建议避免与[Event](#hiappeventevent)中定义的系统事件名称常量冲突混淆。 |
+| info   | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其中的事件名称建议避免与[Event](#event)中定义的系统事件名称常量冲突混淆。 |
 
 **返回值：**
 
@@ -706,11 +713,11 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -769,14 +776,6 @@ addProcessor(processor: Processor): number
 | 类型    | 说明                   |
 | ------ | ---------------------- |
 | number | 所添加上报事件数据处理者的ID，标识唯一数据处理者，可用于移除数据处理者。 添加失败返回-1，添加成功返回大于0的值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -859,14 +858,6 @@ removeProcessor(id: number): void
 | ------| ------- | ---- | --------------------------- |
 | id    | number  | 是   | 上报事件数据处理者ID。值大于0。由调用[addProcessor](#hiappeventaddprocessor11)或[addProcessorFromConfig](#hiappeventaddprocessorfromconfig20)接口返回值所得。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -900,7 +891,7 @@ setUserId(name: string, value: string): void
 | 参数名     | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------  |
 | name      | string                    | 是   | 用户ID的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。   |
-| value     | string                    | 是   | 用户ID的值。长度不超过256，当值为null或空字符串时，则清除用户ID。 |
+| value     | string                    | 是   | 用户ID的值。长度不超过256个字符，当值为null或空字符串时，则清除用户ID。 |
 
 **错误码：**
 
@@ -908,7 +899,7 @@ setUserId(name: string, value: string): void
 
 | 错误码ID | 错误信息          |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -951,7 +942,7 @@ getUserId(name: string): string
 
 | 错误码ID | 错误信息          |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -983,7 +974,7 @@ setUserProperty(name: string, value: string): void
 | 参数名     | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------- |
 | name      | string                    | 是   | 用户属性的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。  |
-| value     | string                    | 是   | 用户属性的值。长度不超过1024，当值为null或空字符串时，则清除用户属性。  |
+| value     | string                    | 是   | 用户属性的值。长度不超过1024个字符，当值为null或空字符串时，则清除用户属性。  |
 
 **错误码：**
 
@@ -991,7 +982,7 @@ setUserProperty(name: string, value: string): void
 
 | 错误码ID | 错误信息          |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -1034,7 +1025,7 @@ getUserProperty(name: string): string
 
 | 错误码ID | 错误信息          |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -1090,8 +1081,7 @@ configure(config: ConfigOption): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11103001 | Invalid max storage quota value. Possible caused by incorrectly formatted. |
+| 11103001 | Invalid max storage quota value. Possibly caused by incorrectly formatted. |
 
 **示例：**
 
@@ -1104,7 +1094,7 @@ hiAppEvent.configure(config1);
 
 // 配置文件目录存储配额为100M
 let config2: hiAppEvent.ConfigOption = {
-  maxStorage: '100M',
+  maxStorage: '100MB',
 };
 hiAppEvent.configure(config2);
 ```
@@ -1121,7 +1111,7 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | 否 | 是   | 打点功能开关，默认值为false。true：关闭打点功能，false：开启打点功能。 |
-| maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10M”。建议配额大小不超过10M，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
+| maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10MB”。建议配额大小不超过10MB，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
 
 
 ## EventPolicy<sup>22+</sup>
@@ -1190,6 +1180,8 @@ hiAppEvent.configure(config2);
 | extendPcLrPrinting    | boolean | 否 | 是   | 设置崩溃日志中是否打印pc和lr寄存器前后的内存值。<br/>true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| collectMinidump    | boolean | 否 | 是   | 是否使能[minidump](../../dfx/performance-analysis-kit-terminology.md#minidump)，默认值为false。<!--RP5--><br/>true：[params字段说明](../../dfx/hiappevent-watcher-crash-events.md#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限调整为35MB。<br/>false：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。<!--RP5End--><br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| publishOnNextLaunch    | boolean | 否 | 是   | 用于配置应用收到崩溃事件回调的时机，是否固定在应用重启之后收到事件回调。<br>true：使能固定在应用重启之后收到事件回调。<br>false：不使能固定在应用重启之后收到事件回调。<br>默认值：false，不使能固定在应用重启之后收到事件回调。<br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>**起始版本**：26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## AppFreezePolicy<sup>24+</sup>
 
@@ -1212,7 +1204,8 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
 | pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br/>"event"：应用发生oom时，不传递堆快照。<br/>"event_rawheap"：应用发生oom时，系统生成并传递堆快照。<br/>**说明**：<br/>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br/>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br/>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br/>"event"：应用发生OOM时，不传递堆快照。<br/>"event_rawheap"：应用发生OOM时，系统生成并传递堆快照。<br/>**说明**：<br/>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br/>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br/>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| useRefinedLogFileName    | boolean | 否 | 是   | 是否使能事件日志文件名精细化开关。<br/>true：使能事件日志文件名精细化开关。<br/>false：不使能事件日志文件名精细化开关。<br/>默认值：false。<br>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AddressSanitizerPolicy<sup>24+</sup>
 
@@ -1299,7 +1292,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | BEHAVIOR  | 4    | 行为类型事件。 |
 
 
-## hiAppEvent.domain<sup>11+</sup>
+## domain<sup>11+</sup>
 
 ### 常量
 
@@ -1314,7 +1307,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | OS   | string | 是 | 系统领域。 |
 
 
-## hiAppEvent.event
+## event
 
 ### 常量
 
@@ -1342,7 +1335,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 23开始，该参数支持在原子化服务中使用。 |
 | appFreezeWarning | string | 是 | 应用冻屏告警事件。系统事件名称常量。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
-## hiAppEvent.param
+## param
 
 ### 常量
 
@@ -1357,3 +1350,586 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | USER_ID                         | string | 是 | 用户自定义ID。     |
 | DISTRIBUTED_SERVICE_NAME        | string | 是 | 分布式服务名称。   |
 | DISTRIBUTED_SERVICE_INSTANCE_ID | string | 是 | 分布式服务实例ID。 |
+
+## ExternalLogManager
+
+external_log日志管理者类，用于对当前应用的external_log进行管理。
+
+external_log由[addWatcher](#hiappeventaddwatcher)接口订阅到的系统事件信息获取，表示系统事件的故障日志文件路径。
+
+**起始版本**：26.0.1
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+### onCapacityReached
+
+onCapacityReached(container: ExternalLogContainer): void
+
+当应用沙箱内某一个external_log目录容量达到阈值时回调此函数，用于管理给定的external_log容器中包含的external_log。
+
+external_log目录当前规格可参考[规格](../../dfx/external-log.md#日志规格)，各目录的阈值可参考[阈值](../../dfx/external-log.md#约束与限制)。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| container   | [ExternalLogContainer](#externallogcontainer) | 是   | external_log容器类，包含当前应用所有的external_log信息。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    hilog.info(0x0000, 'testTag', `[MyLogManager] 容量达到阈值`);
+  }
+};
+```
+
+## ExternalLogContainer
+
+external_log容器，包含当前应用所有的external_log信息，支持获取应用内特定规格的external_log。
+
+**起始版本**：26.0.1
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+### getAllLogs
+
+getAllLogs(): Set&lt;ExternalLogWrapper&gt;
+
+获取当前应用内所有external_log的文件信息。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| [Set&lt;ExternalLogWrapper&gt;](#externallogwrapper) | external_log日志信息包装类的集合。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+  }
+};
+```
+
+### getAllLogFiles
+
+getAllLogFiles(): Set&lt;string&gt;
+
+获取当前应用内所有external_log的日志文件路径。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | 当前应用内所有的external_log日志文件路径字符串集合。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有external_log日志文件路径
+    let allFiles: Set<string> = container.getAllLogFiles();
+  }
+};
+```
+
+### getLogFilesOfSysEvent
+
+getLogFilesOfSysEvent(event: string): Set&lt;string&gt;
+
+获取当前应用内指定事件类型的external_log日志文件路径。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| event  | string | 是   | 事件类型，如"APP_CRASH"。 |
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | 当前应用内指定类型的external_log日志文件路径字符串集合。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取指定事件类型external_log日志文件路径
+    let crashFiles: Set<string> = container.getLogFilesOfSysEvent('APP_CRASH');
+  }
+};
+```
+
+### getLogFilesGeneratedAfter
+
+getLogFilesGeneratedAfter(timePoint: number): Set&lt;string&gt;
+
+获取当前应用内指定时间后生成的external_log日志文件路径。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| timePoint | number | 是   | 精确到毫秒的时间戳。 |
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | 当前应用内指定时间后生成的external_log日志文件路径字符串集合。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取指定时间后生成的external_log日志文件路径
+    let timePoint = Date.now() - 60 * 60 * 1000; // 当前时间戳减1小时
+    let files: Set<string> = container.getLogFilesGeneratedAfter(timePoint);
+  }
+};
+```
+
+### getLogFilesGeneratedBefore
+
+getLogFilesGeneratedBefore(timePoint: number): Set&lt;string&gt;
+
+获取当前应用内指定时间前生成的external_log日志文件路径。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| timePoint | number | 是   | 精确到毫秒的时间戳。 |
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | 当前应用内指定时间前生成的external_log日志文件路径字符串集合。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取指定时间前生成的external_log日志文件路径
+    let timePoint = Date.now() - 60 * 60 * 1000; // 当前时间戳减1小时
+    let files: Set<string> = container.getLogFilesGeneratedBefore(timePoint);
+  }
+};
+```
+
+### getLogFilesLargerThan
+
+getLogFilesLargerThan(sizeKb: number): Set&lt;string&gt;
+
+获取当前应用内大于指定大小的external_log日志文件路径。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| sizeKb | number | 是   | 文件大小，单位KB。 |
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | 当前应用内大于指定大小的external_log日志文件路径字符串集合。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取大于指定大小的external_log日志文件路径
+    let files: Set<string> = container.getLogFilesLargerThan(100);
+  }
+};
+```
+
+### getLogFilesSmallerThan
+
+getLogFilesSmallerThan(sizeKb: number): Set&lt;string&gt;
+
+获取当前应用内小于指定大小的external_log日志文件路径。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| sizeKb | number | 是   | 文件大小，单位KB。 |
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | 当前应用内小于指定大小的external_log日志文件路径字符串集合。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取小于指定大小的external_log日志文件路径
+    let files: Set<string> = container.getLogFilesSmallerThan(100);
+  }
+};
+```
+
+### getLogNumber
+
+getLogNumber(): number
+
+获取当前应用内external_log目录日志文件数量。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| number | 当前应用内external_log目录日志文件数量。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取external_log目录日志文件数量
+    let num: number = container.getLogNumber();
+  }
+};
+```
+
+### getFirstGeneratedLogFiles
+
+getFirstGeneratedLogFiles(num: number): Set&lt;string&gt;
+
+获取当前应用内给定数量最早生成的external_log日志文件路径。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| num | number | 是   | 给定最早生成的文件数量。 |
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | 当前应用内给定数量最早生成的external_log日志文件路径字符串集合。 |
+
+**示例：**
+
+```ts
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取最早生成的6个external_log日志文件路径
+    let files: Set<string> = container.getFirstGeneratedLogFiles(6);
+  }
+};
+```
+
+## ExternalLogWrapper
+
+external_log包装类，记录当前应用内external_log日志文件的路径、生成时间、事件类型、文件大小信息。
+
+**起始版本**：26.0.1
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+### getFilePath
+
+getFilePath(): string
+
+获取external_log日志文件路径。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| string | 当前应用内external_log日志文件路径。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义 ExternalLogManager 实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] 文件: ${log.getFilePath()}`);
+    }
+  }
+};
+```
+
+### getGenerationTime
+
+getGenerationTime(): number
+
+获取当前应用内external_log日志文件生成时间。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| number | external_log日志文件生成时间。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义 ExternalLogManager 实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] 时间: ${log.getGenerationTime()}`);
+    }
+  }
+};
+```
+
+### getSizeInKb
+
+getSizeInKb(): number
+
+获取当前应用内external_log日志文件大小，单位KB。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| number | external_log日志文件大小，单位KB。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义 ExternalLogManager 实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] 大小: ${log.getSizeInKb()}KB,`);
+    }
+  }
+};
+```
+
+### getSysEvent
+
+getSysEvent(): string
+
+获取当前应用内external_log日志文件事件类型。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| string | external_log日志文件事件类型。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义 ExternalLogManager 实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] 事件: ${log.getSysEvent()}`);
+    }
+  }
+};
+```
+
+## hiAppEvent.registerExternalLogManager
+
+registerExternalLogManager(logMngr: ExternalLogManager): void
+
+注册external_log日志文件管理者，只允许注册一次，已注册成功重复注册返回失败。
+
+注册不会持久化，应用启动不会继承上一次的注册状态，需要重新注册。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型                          | 必填 | 说明           |
+| ------ | ---------------------------- | ---- | -------------- |
+| logMngr | [ExternalLogManager](#externallogmanager)  | 是   | external_log日志管理者类。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[应用事件打点错误码](errorcode-hiappevent.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 11106001 | State error. Possible causes: 1. Log manager already registered. |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+  }
+};
+
+// 注册管理者，当external_log目录达到阈值时，回调onCapacityReached
+try {
+  hiAppEvent.registerExternalLogManager(myLogManager);
+  hilog.info(0x0000, 'hiAppEvent', '[App] ExternalLogManager 注册成功');
+} catch (e) {
+  hilog.info(0x0000, 'hiAppEvent', `[App] 注册失败: ${e.code}, ${e.message}`);
+}
+```
+
+## hiAppEvent.isExternalLogManagerRegistered
+
+isExternalLogManagerRegistered(): boolean
+
+查询external_log日志文件管理者是否注册。
+
+**起始版本**：26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**返回值：**
+
+| 类型                                | 说明                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| boolean | 已注册返回true，未注册返回false。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 检查是否已注册
+let registered: boolean = hiAppEvent.isExternalLogManagerRegistered();
+hilog.info(0x0000, 'hiAppEvent', `[App] 已注册: ${registered}`);
+```

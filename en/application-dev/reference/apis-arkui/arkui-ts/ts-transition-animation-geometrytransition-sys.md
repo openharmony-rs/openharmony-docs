@@ -1,10 +1,11 @@
 # Implicit Shared Element Transition (geometryTransition) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d09068c013deef462b1019892f5d3232cec8f4e1 translatedAt=2026-09-01T11:54:27.319Z -->
 
 **geometryTransition** is used to create a smooth, seamless transition between views. By specifying the frame and position of the **in** and **out** components through **geometryTransition**, you can create a spatial linkage between the transition effects (such as opacity and scale) defined through the **transition** mechanism. In this way, you can guide the visual focus from the previous view (**out** component) to the new view (**in** component).
 
@@ -24,10 +25,13 @@
 
 | Name| Type| Read-Only| Optional| Description|
 | ------ | -------- | ---- | ---- | --------------------------------------------------------------------- |
-| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | No  | Yes| <br>Strategy for the hierarchical position movement of **in**/**out** components in the component tree during the shared element transition process. Default value: **TransitionHierarchyStrategy.ADAPTIVE**.<br>The setting significantly affects the front-to-back overlap relationship of the **in**/**out** components in comparison to other components. Exercise caution with it under normal conditions.<br>You are advised to adjust this setting only when there is an error in the component overlap relationship observed during the shared element transition process.<br>**System API**: This is a system API.|
+| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | No   | Yes | <br>Determines the strategy for moving the in/out components in the component hierarchy during the shared element transition. Default value: TransitionHierarchyStrategy.ADAPTIVE.<br>This parameter actually affects the front-to-back overlapping relationship between the bound in/out components and other components. Modify it with caution in normal cases.<br>It is recommended to set this parameter only when the front-to-back overlapping relationship between components is incorrect during the shared element transition and needs to be adjusted.<br>**System interface:** This is a system interface.<br/>**Model constraint:** This API can be used only in the Stage model.|
 
 ## TransitionHierarchyStrategy<sup>12+</sup>
+
 Enumerates the strategies for the hierarchical position movement of **in**/**out** components in the component tree during the shared element transition process.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +84,7 @@ struct Index {
     }
     .onClick(() => {
       this.getUIContext()?.animateTo({ duration: 1000 }, () => {
-        this.isShow = !this.isShow
+        this.isShow = !this.isShow;
       })
     })
   }

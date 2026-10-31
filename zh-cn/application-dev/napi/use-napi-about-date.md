@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行Date相关开发，包括创建和获取ArkTS Date对象，实现Node-API模块与ArkTS之间的日期数据转换和处理。"
+keywords: [Node-API, Date, 日期, 时间, napi_create_date, napi_get_date_value, 日期转换, 毫秒数]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行Date相关开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 

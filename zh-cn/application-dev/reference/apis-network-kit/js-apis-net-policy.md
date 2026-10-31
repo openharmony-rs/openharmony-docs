@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -42,7 +42,7 @@ showAppNetPolicySettings(context: Context): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异**：该接口在Phone、2in1、Tablet设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone和Tablet设备中可正常调用，在其他设备调用不生效。
 
 
 **参数：**
@@ -55,7 +55,7 @@ showAppNetPolicySettings(context: Context): Promise\<void>
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<void>  |Promise对象。无返回结果的Promise对象。|
+| Promise\<void>  |Promise对象，无返回结果。|
 
 **示例：**
 
@@ -93,11 +93,11 @@ getNetAccessPolicy(): Promise\<NetAccessPolicy>
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetAccessPolicy](#netaccesspolicy)>  |Promise对象。返回应用自身联网策略。|
+| Promise\<[NetAccessPolicy](#netaccesspolicy)>  |Promise对象，返回应用自身联网策略。|
 
 **错误码：**
 
-以下错误码的详细介绍参见[应用联网错误码](errorcode-net-policy.md)。
+以下错误码的详细介绍请参见[策略管理错误码](errorcode-net-policy.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |

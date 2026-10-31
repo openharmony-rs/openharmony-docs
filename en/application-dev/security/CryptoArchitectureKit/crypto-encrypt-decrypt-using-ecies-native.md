@@ -6,17 +6,22 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=56bb123f81b3c1c6ce89c67e24c5686a564c7577 translatedAt=2026-08-07T03:27:34.415Z pushedAt=2026-08-10T08:24:36.357Z -->
 
 The ECIES algorithm is supported since API version 26.0.0. It is an encryption algorithm based on elliptic curve cryptography.
 
 **Constraints**
 
 - Key agreement algorithms ECC256, ECC384, and ECC521 are supported.
+
 - Among key derivation algorithms, only X963KDF is supported. Digest algorithms SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
+
 - Symmetric encryption algorithms AES-128, AES-192, and AES-256 are supported.
+
 - Among block cipher modes, only GCM is supported.
 
 ## Linking the Dynamic Library in the CMake Script
+
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
@@ -27,9 +32,9 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) and [OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate) to generate a key pair using the ECC algorithm.
 
-2. Call [OH_CryptoKeyAgreement_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_create) and [OH_CryptoKeyAgreement_GenerateSecret](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_generatesecret) to perform key agreement based on the local private key (KeyPair.priKey) and peer public key (KeyPair.pubKey) and return the shared key.
+2. Call [OH_CryptoKeyAgreement_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_create) and [OH_CryptoKeyAgreement_GenerateSecret](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_generatesecret) to perform key agreement based on the local private key (**KeyPair.priKey**) and peer public key (**KeyPair.pubKey**) and return the shared key.
 
-3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) and [OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive) to derive a key based on the shared key (Secret) using the X963KDF algorithm and return the derived key.
+3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) and [OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive) to derive a key based on the shared key (**Secret**) using the X963KDF algorithm and return the derived key.
 
 4. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'AES128|GCM'** to create a **Cipher** instance for encryption. The key type is AES128, and the block cipher mode is GCM.
 
@@ -41,9 +46,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
    > **NOTE**
    >
-   > If the GCM mode is used, **authTag** returned by **OH_CryptoSymCipher_Final()** will be used to initialize the authentication information during decryption and needs to be manually saved.
-   >
-   > In GCM mode, the algorithm library currently supports only 16‑byte values for **authTag**, which serve as authentication information for initialization during decryption..
+   > In GCM mode, in a single encryption process, concatenating the results of each `update` and the final `final` call yields "ciphertext + `authTag`", where `authTag` is the last 16 bytes. The remaining part is the ciphertext. If `null` is passed to the `data` parameter of `final`, the result of `final` is `authTag`.
 
 ### Decryption
 

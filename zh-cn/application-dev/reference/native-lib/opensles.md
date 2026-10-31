@@ -1,8 +1,8 @@
 # OpenSL ES
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,13 +12,13 @@
 
 ## 简介
 
-OpenSL ES（Open Sound Library for Embedded System）即嵌入式音频加速标准。为开发者提供了标准化、高性能以及低响应时间的音频功能开发的对象和接口。相对于开源免费的OpenSL ES，OpenHarmony基于[OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API规范实现了部分Native API，相关接口开放情况如表[支持的API](#支持的api)所示。
+OpenSL ES（Open Sound Library for Embedded Systems）即嵌入式音频加速标准。为开发者提供了标准化、高性能以及低响应时间的音频功能开发的对象和接口。相对于开源免费的OpenSL ES，OpenHarmony基于[OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API规范实现了部分Native API，相关接口开放情况如表[支持的API](#支持的api)所示。
 
 ## 引入OpenSL ES能力
 
 如果开发者需要使用OpenSL ES相关功能，首先请添加头文件：
 
-```
+```c++
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_OpenHarmony.h>
 #include <SLES/OpenSLES_Platform.h>
@@ -26,7 +26,7 @@ OpenSL ES（Open Sound Library for Embedded System）即嵌入式音频加速标
 
 其次在CMakeLists.txt中添加以下链接动态库：
 
-```
+```c++
 libOpenSLES.so
 ```
 
@@ -36,7 +36,7 @@ libOpenSLES.so
 | ------------------ | -------------------- | -------------------------------------------------------------------------------------|----------| -------------------- |
 |SLEngineItf         |CreateAudioPlayer     |CreateAudioPlayer(SLEngineItf self, SLObjectItf *pPlayer, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired) |是        |创建音频播放机。        |
 |SLEngineItf         |CreateAudioRecorder   |CreateAudioRecorder(SLEngineItf self, SLObjectItf *pRecorder, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建音频录制器。        |
-|SLEngineItf         |CreateAudioOutputMix  |CreateOutputMix(SLEngineItf self, SLObjectItf *pMix, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建混音器。            |
+|SLEngineItf         |CreateOutputMix  |CreateOutputMix(SLEngineItf self, SLObjectItf *pMix, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建混音器。            |
 |SLObjectItf         |Realize               |Realize(SLObjectItf self, SLboolean async)                                            |是        |创建音频播放机。        |
 |SLObjectItf         |getState              |GetState(SLObjectItf self, SLuint32 *pState)                                           |是        |获取状态。             |
 |SLObjectItf         |getInterface          |GetInterface(SLObjectItf self, const SLInterfaceID iid, void *pInterface)              |是        |获取接口。             |

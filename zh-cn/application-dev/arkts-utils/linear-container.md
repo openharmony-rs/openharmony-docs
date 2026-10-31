@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArrayList、List、LinkedList、Deque、Queue、Stack、Vector七种线性容器的特征对比与使用方法，涵盖插入删除效率与适用场景差异，帮助开发者按数据访问特点选择合适的线性容器。"
+keywords: [线性容器, ArrayList, List, LinkedList, Deque, Queue, Stack, Vector, 容器对比]
+doctype: guide
+status: active
+---
+
 # 线性容器
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @wang_zhaoyong-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 线性容器实现能按顺序访问的数据结构，其底层主要通过数组实现，包括ArrayList、Vector、List、LinkedList、Deque、Queue和Stack。
@@ -37,7 +45,7 @@ ArrayList支持增、删、改、查操作，常用API如下：
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
 | 增加元素 | insert(element: T, index: number) | 在指定位置插入一个元素。 |
 | 访问元素 | arr[index: number] | 获取指定index对应的value值。 |
-| 访问元素 | forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) | 访问整个ArrayList容器的元素，其中`callbackFn`是`forEach`方法中用于处理每个元素的回调函数，它接收当前元素、索引和原列表作为参数。 |
+| 访问元素 | forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) | 访问整个ArrayList容器的元素，其中`callbackFn`是`forEach()`方法中用于处理每个元素的回调函数，它接收当前元素、索引和原列表作为参数。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | arr[index] = xxx | 修改指定index位置对应的value值。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
@@ -63,7 +71,7 @@ List和[LinkedList](../reference/apis-arkts/js-apis-linkedlist.md)相比，Linke
 | 访问元素 | getLast() | 获取最后一个元素。 |
 | 访问元素 | getIndexOf(element: T) | 获取第一个匹配指定元素的位置。 |
 | 访问元素 | getLastIndexOf(element: T) | 获取最后一个匹配指定元素的位置。 |
-| 访问元素 | forEach(callbackfn: (value:T, index?: number, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) | 遍历访问整个List容器中的每个元素，并执行指定的回调函数。 |
+| 访问元素 | forEach(callbackFn: (value:T, index?: number, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) | 遍历访问整个List容器中的每个元素，并执行指定的回调函数。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | set(index:number, element: T) | 修改指定index位置的元素值为element。 |
 | 修改元素 | list[index] = element | 修改指定index位置的元素值为element时，不会对链表中的实际节点进行任何更改，仅会在对象上添加一个属性，可能导致程序状态与链表内部数据不符，引发难以预测的行为。 |
@@ -86,7 +94,7 @@ LinkedList和[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)相比，L
 | 操作 | 方法 | 描述 |
 | --------- | ------- | ------- |
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
-| 增加元素 | insert(element: T, index: number) | 在指定位置插入一个元素。 |
+| 增加元素 | insert(index: number, element: T) | 在指定位置插入一个元素。 |
 | 访问元素 | get(index: number) | 获取指定index位置对应的元素。 |
 | 访问元素 | list[index: number] | 获取指定index位置对应的元素，若索引超出数组范围（index < 0 或 index >= list.length），或者数组是稀疏数组（存在未赋值的索引），则返回undefined。 |
 | 访问元素 | getFirst() | 获取第一个元素。 |
@@ -162,7 +170,7 @@ Stack支持增、删、改、查操作，常用API如下：
 | 操作 | 方法 | 描述 |
 | --------- | ------- | ------- |
 | 增加元素 | push(item: T) | 在栈顶增加一个元素。 |
-| 访问元素 | peek() | 获取栈顶元素，不进行出队操作。 |
+| 访问元素 | peek() | 获取栈顶元素，不进行出栈操作。 |
 | 访问元素 | locate(element: T) | 获取元素对应的位置。 |
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) =&gt; void, thisArg?: Object) | 遍历访问整个Stack容器的每个元素，并执行指定的回调函数。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
@@ -198,7 +206,7 @@ Vector支持增、删、改、查操作，常用API如下：
 | 修改元素 | setLength(newSize:number) | 设置Vector的长度大小。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
 | 删除元素 | removeByIndex(index:number) | 删除index位置对应的元素。 |
-| 删除元素 | removeByRange(fromIndex:number,toIndex:number) | 删除指定范围内的元素。 |
+| 删除元素 | removeByRange(fromIndex:number, toIndex:number) | 删除指定范围内的元素。 |
 
 ## 线性容器的使用
 

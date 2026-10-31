@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍SharedArrayBuffer对象的共享内存能力：多个线程可直接访问同一块内存区域避免数据拷贝，适用于大数据量的跨线程共享场景，支持Atomics原子操作保障并发访问安全，并附使用示例。"
+keywords: [SharedArrayBuffer, 共享内存, 多线程数据共享, Atomics原子操作, 零拷贝, 二进制数据, 线程间通信]
+doctype: guide
+status: active
+---
+
 # SharedArrayBuffer对象
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 SharedArrayBuffer内部包含一块Native内存，其JS对象壳被分配在虚拟机本地堆（LocalHeap）。支持跨并发实例间共享Native内存，但是对共享Native内存的访问及修改需要采用Atomics类，防止数据竞争。SharedArrayBuffer可用于多个并发实例间的状态或数据共享。通信过程如下图所示：
 
@@ -15,10 +23,11 @@ SharedArrayBuffer内部包含一块Native内存，其JS对象壳被分配在虚�
 
 使用TaskPool传递Int32Array对象，实现如下：
 
-<!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/SharedArrayBufferObject.ets) -->
+<!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/SharedArrayBufferObject.ets) -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Concurrent
 function transferAtomics(arg1: Int32Array) {
@@ -30,7 +39,7 @@ function transferAtomics(arg1: Int32Array) {
 
 @Entry
 @Component
-struct sharedArrayBuffer {
+struct CSharedArrayBuffer {
   @State message: string = 'Hello World';
 
   build() {
@@ -49,12 +58,15 @@ struct sharedArrayBuffer {
           let int32 = new Int32Array(sab);
           let task: taskpool.Task = new taskpool.Task(transferAtomics, int32);
           taskpool.execute(task).then((res) => {
-            console.info('this res is: ' + res);
+            this.message = 'success';
+            console.info(`this res is: ${res}`);
+          }).catch((e: BusinessError) => {
+            this.message = 'fail';
+            console.error(`taskpool: execute task: code: ${e.code}, message: ${e.message}`);
           });
           setTimeout(() => {
             Atomics.notify(int32, 0, 1);
           }, 1000);
-          this.message = 'success';
         })
     }
     .height('100%')

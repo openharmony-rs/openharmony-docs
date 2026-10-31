@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=aa0a67ae9790115e74a1e29268966a05ae945ba8 translatedAt=2026-10-19T01:24:56.204Z pushedAt=2026-10-19T07:35:54.714Z -->
 
 After a canvas is created, it has default fill and stroke effects. You can directly draw primitives. However, the default effects cannot meet requirements in most cases. For example, the default color is black, and only black graphics can be drawn. The default effects do not include blurring or gradient effects. For more effects, such as red graphics, blurring effects, or gradient effects, you need to set a custom brush or pen for the canvas.
 

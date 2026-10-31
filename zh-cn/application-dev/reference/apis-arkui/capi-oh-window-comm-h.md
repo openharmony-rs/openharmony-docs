@@ -1,9 +1,9 @@
 # oh_window_comm.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
@@ -48,7 +48,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | 帧率指标回调类型。 |
+| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | 帧率指标回调类型。 |
 | [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | 窗口缩放系数相关信息回调类型。 |
 
 ## 枚举类型说明
@@ -72,6 +72,7 @@ enum WindowManager_ErrorCode
 | WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | 非法参数。<br/>**起始版本：** 15 |
 | WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | 设备不支持。<br/>**起始版本：** 15 |
 | INVAILD_WINDOW_ID = 1000 | 非法窗口ID。 |
+| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | 非法窗口ID。<br>**起始版本：** 26.0.0 |
 | SERVICE_ERROR = 2000 | 服务异常。 |
 | WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | 窗口状态异常。<br/>**起始版本：** 15 |
 | WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | 窗口管理器服务异常。<br/>**起始版本：** 15 |
@@ -118,7 +119,7 @@ enum WindowManager_WindowType
 | -- | -- |
 | WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | 子窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | 主窗口。 |
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 悬浮窗口。 |
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 全局悬浮窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | 模态窗口。 |
 
 ## 函数说明
@@ -126,7 +127,8 @@ enum WindowManager_WindowType
 ### OH_WindowManager_FrameMetricsMeasuredCallback()
 
 ```c
-typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)
+typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(
+    int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)
 ```
 
 **描述**

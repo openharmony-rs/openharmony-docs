@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T10:28:42.329Z pushedAt=2026-09-05T10:47:30.420Z -->
 
 The quickFixManager module provides APIs for quick fix. With quick fix, you can fix bugs in your application by applying patches, which is more efficient than by updating the entire application.
 
@@ -22,7 +23,7 @@ import { quickFixManager } from '@kit.AbilityKit';
 
 ## HapModuleQuickFixInfo
 
-Defines the quick fix information at the HAP file level.
+Quick fix information at the HAP level.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -31,7 +32,7 @@ Defines the quick fix information at the HAP file level.
 | Name       | Type                | Read-only| Optional| Description                                                        |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
 | moduleName    | string               | Yes|  No  | Name of the HAP file.                              |
-| originHapHash    | string            | Yes|  No  | Hash value of the HAP file.                              |
+| originHapHash    | string            | Yes |  No   | Hash value of the HAP.                               |
 | quickFixFilePath    | string         | Yes|  No  | Installation path of the quick fix patch file.                              |
 
 ## ApplicationQuickFixInfo
@@ -49,7 +50,7 @@ Defines the quick fix information at the application level.
 | bundleVersionName    | string        | Yes| No  | Version number of the application that is shown to users.                              |
 | quickFixVersionCode    | number      | Yes| No  | Version code of the quick fix patch package.                              |
 | quickFixVersionName    | string      | Yes| No  | Text description of the version number of the quick fix patch package.                              |
-| hapModuleQuickFixInfo    | Array\<[HapModuleQuickFixInfo](#hapmodulequickfixinfo)>   | Yes| No  | Quick fix information at the HAP file level.    |
+| hapModuleQuickFixInfo    | Array\<[HapModuleQuickFixInfo](#hapmodulequickfixinfo)>   | Yes | No   | HAP-level quick fix information.     |
 
 ## quickFixManager.applyQuickFix
 
@@ -269,7 +270,7 @@ try {
 }
 ```
 
-## quickFixManager.revokeQuickFix<sup>10+<sup>
+## quickFixManager.revokeQuickFix<sup>10+</sup>
 
 revokeQuickFix(bundleName: string, callback: AsyncCallback\<void>): void;
 
@@ -300,7 +301,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 18500009 | The application has an ongoing quick fix task. |
 
-If an error occurs during patch installation, the error code and message are returned through the common event [COMMON_EVENT_QUICK_FIX_REVOKE_RESULT](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_quick_fix_revoke_result10).
+Errors that occur during patch revocation are returned to the application developer through the parameters of the common event [COMMON_EVENT_QUICK_FIX_REVOKE_RESULT](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_quick_fix_revoke_result10), along with their error codes and error messages. The error codes and error messages are as follows:
 
 **Example**
 
@@ -316,7 +317,7 @@ quickFixManager.revokeQuickFix(bundleName, (err) => {
 });
 ```
 
-## quickFixManager.revokeQuickFix<sup>10+<sup>
+## quickFixManager.revokeQuickFix<sup>10+</sup>
 
 revokeQuickFix(bundleName: string): Promise\<void>;
 
@@ -352,7 +353,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 18500009 | The application has an ongoing quick fix task. |
 
-If an error occurs during patch installation, the error code and message are returned through the common event [COMMON_EVENT_QUICK_FIX_REVOKE_RESULT](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_quick_fix_revoke_result10). The table below lists the possible error codes and messages.
+The error code and error message that occur during patch revocation are returned to the application developer through the common event [COMMON_EVENT_QUICK_FIX_REVOKE_RESULT](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_quick_fix_revoke_result10).
 
 **Example**
 

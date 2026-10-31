@@ -5,6 +5,7 @@
 <!--Designer: @liyujie43-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @xuqinfeng1-->
+<!-- md-trans-meta sourceCommit=bbe820b15aaf29733c2f40fbe62bda7f1f6a0b03 translatedAt=2026-06-22T07:51:21.720Z pushedAt=2026-06-23T01:06:07.981Z -->
 
 >  **NOTE**
 >
@@ -48,7 +49,6 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 >  - If either **width** or **height** is set, the value is used as the length of the QR code. If neither of them is set, the default length 200 px is used.
 >
 <!--RP1--><!--RP1End-->
-
 
 ## Events
 
@@ -125,4 +125,4 @@ export default {
 }
 ```
 
-![12](figures/12.gif)
+![qrcode](figures/qrcode.gif)

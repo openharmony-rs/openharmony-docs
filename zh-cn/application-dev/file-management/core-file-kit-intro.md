@@ -1,9 +1,9 @@
 # Core File Kit简介
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 Core File Kit（文件基础服务）为开发者提供一套访问和管理应用文件和用户文件的能力。帮助用户更高效地管理、查找和备份各类文件，使用户能够轻松应对各种文件管理的需求。
@@ -30,6 +30,16 @@ Core File Kit（文件基础服务）为开发者提供一套访问和管理应�
 
 ![File classification model](figures/file-classification-model.png)
 
+在Core File Kit套件中提供高性能的[压缩解压缩能力](archive-overview.md)，按照使用场景的不同分为以下类型：
+
+- 文件归档类压缩：支持文件和目录级别的归档压缩和解压。
+
+- 流式压缩：支持流式数据压缩和解压。
+
+- 缓冲区压缩：支持缓冲区数据压缩和解压。
+
+在Core File Kit套件中提供[网盘服务底座](clouddisk-overview.md)能力，提供实现文件夹云同步相关能力，将云端文件以占位符文件形式映射到本地，支持同步根管理、文件变更监听与同步状态管理、占位符文件生命周期管理、按需水合/脱水等能力。
+
 ## Kit使用场景
 
 Core File Kit常见的使用场景：
@@ -37,6 +47,7 @@ Core File Kit常见的使用场景：
 - 应用文件访问和文件分享。
 - 应用数据备份恢复。
 - 选择与保存用户文件。
+- 文件压缩解压缩。
 - 跨设备的文件访问和分享能力。
 
 ## 能力范围
@@ -50,7 +61,9 @@ Core File Kit常见的使用场景：
 <!--DelEnd-->
 - 提供[用户文件访问框架](#用户文件访问框架)，用于开发者访问和管理用户文件。例如选择与保存用户文件<!--Del-->和开发用户文件管理器（仅对系统应用开放）<!--DelEnd-->。
 - 支持跨设备的文件访问和拷贝能力。
+- 支持文件和目录的归档压缩和解压，支持流式和缓冲区数据的压缩和解压。
 <!--RP3--><!--RP3End-->
+- 支持网盘应用创建云同步文件夹，将云端文件以占位符文件形式映射到本地，提供同步根管理、文件变更监听与同步状态管理、占位符文件生命周期管理、按需水合/脱水等能力。
 
 ## 亮点/特征
 
@@ -62,7 +75,7 @@ Core File Kit常见的使用场景：
 - 应用分享：
 
   应用之间可以通过分享URI（Uniform Resource Identifier）或文件描述符FD（File Descriptor）的方式，进行文件共享。有以下优点：
-  - 便携性：应用之间进行文件分享，省去了用户在多个应用间切换的麻烦，简化了操作步骤，提高了效率。
+  - 便捷性：应用之间进行文件分享，省去了用户在多个应用间切换的麻烦，简化了操作步骤，提高了效率。
   - 高效性：应用间的文件分享能够更快地完成文件的传输，减少了因多次跳转和等待而浪费的时间。
   - 数据一致性：应用间的文件分享能够确保数据的完整性和一致性，避免数据在传输过程中出现损坏或丢失的情况。
   - 安全性：应用间的文件分享可以确保文件的安全性，避免文件被非法获取或篡改。同时，通过文件授权访问的方式，可以进一步增强文件的安全性。
@@ -95,6 +108,10 @@ Core File Kit常见的使用场景：
     - UserFileManager：内卡文件管理服务，基于File Access ExtensionAbility框架实现，用于管理内置存储设备上的文件。
     - ExternalFileManager：外卡文件管理服务，基于File Access ExtensionAbility框架实现，用于管理外置存储设备上的文件。
 
+<!--RP6--><!--RP6End-->
+
+<!--RP5--><!--RP5End-->
+
 ## 与相关Kit的关系
 
 Ability Kit：Core File Kit中用户文件访问框架依赖Ability Kit提供的Extension基础能力，并受Ability Kit服务调度管理。
@@ -104,5 +121,3 @@ Ability Kit：Core File Kit中用户文件访问框架依赖Ability Kit提供的
 针对Core File Kit开发，有以下相关实例可供参考：
 
 - [文件管理（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/FileManagement/FileManager)
-
-<!--RP5--><!--RP5End-->

@@ -377,6 +377,59 @@ call.answerCall(1).then(() => {
 });
 ```
 
+## call.answerCall<sup>22+</sup>
+
+answerCall(videoState: VideoStateType, callId: number, isRtt:boolean\): Promise\<void\>
+
+接听rtt来电。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.ANSWER_CALL
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| videoState | [VideoStateType](#videostatetype7) | 是   | 表示以视频或语音接听呼叫。|
+| callId | number | 是   | 表示待接听的callId。|
+| isRtt | boolean | 是   | 表示该呼叫是否为实时传输(rtt)。<br>true:该呼叫是实时传输<br>false:该呼叫不是实时传输 |
+
+**返回值：**
+
+| 类型                | 说明                        |
+| ------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8400001  | Invalid parameter value.                     |
+| 8400002  | Operation failed. Cannot connect to service. |
+| 8400003  | System internal error.                       |
+| 8400999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callId: number = 1;
+
+call.answerCall(call.VideoStateType.TYPE_VOICE, callId, true).then(() => {
+    console.info(`answerCall success, RTT call answered.`);
+}).catch((err: BusinessError) => {
+    console.error(`answerCall fail, code:${err.code}, message:${err.message}`);
+});
+```
+
 ## call.hangUpCall<sup>9+</sup>
 
 hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
@@ -433,7 +486,7 @@ hangUpCall\(callId?: number\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -1669,6 +1722,7 @@ startDTMF\(callId: number, character: string, callback: AsyncCallback\<void\>\):
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -1794,6 +1848,8 @@ stopDTMF\(callId: number\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
 **系统能力**：SystemCapability.Telephony.CallManager
 
 **参数：**
@@ -1814,6 +1870,7 @@ stopDTMF\(callId: number\): Promise\<void\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -2624,6 +2681,7 @@ separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -2655,6 +2713,8 @@ separateConference\(callId: number\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
 **系统能力**：SystemCapability.Telephony.CallManager
 
 **参数：**
@@ -2675,6 +2735,7 @@ separateConference\(callId: number\): Promise\<void\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -4746,6 +4807,59 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 });
 ```
 
+## call.sendUssdResponse
+
+sendUssdResponse\(slotId: number, content: string\): void
+
+用于向运营商发送USSD业务（Unstructured Supplementary Service Data，非结构化补充数据业务）的响应消息。
+
+**起始版本**: 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | -------- |
+| slotId    | number    | 是   | 表示发送响应的卡槽ID。 |
+| content   | string | 是   | 表示响应内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { call } from '@kit.TelephonyKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function testSendUssdResponse() {
+    const slotId: number = 0;
+    const content: string = "OK";
+
+    try {
+        call.sendUssdResponse(slotId, content);
+    } catch (error) {
+        const err = error as BusinessError;
+        hilog.error(0x0000, 'testTag', `Failed to send USSD response. Code: ${err.code}, Message: ${err.message}`);
+    }
+}
+```
+
 ## DialOptions
 
 拨打电话的可选参数。
@@ -4773,6 +4887,7 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 | videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 否   | 视频状态类型。                               |
 | dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 否   | 拨号场景。                                   |
 | dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 否   | 拨号类型。                                   |
+| xCallType                | [xCallType](#xcalltype)            | 否   | XCALL类型。 <br>**起始版本:** 26.0.0         |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -4847,7 +4962,7 @@ IP多媒体系统调用模式。
 | audioDeviceList   | Array\<[AudioDevice](#audiodevice10)\> | 是   | 音频设备列表。    |
 | currentAudioDevice | [AudioDevice](#audiodevice10)          | 是   | 当前音频设备。    |
 | isMuted            | boolean                               | 是   | 是否静音。        |
-| isMicDisabled<sup>24+</sup>     |  boolean                                | 是    | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
+| isMicDisabled<sup>24+</sup>     |  boolean                                | 否    | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -4928,6 +5043,8 @@ IP多媒体系统调用模式。
 | originalCallType<sup>11+</sup> | number                    | 是   | 视频彩振原始呼叫类型。|
 | numberLocation<sup>12+</sup> | string | 否 | 号码归属地信息 |
 | numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否 | 号码标记信息。 |
+| xCallType | [xCallType](#xcalltype) | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
+| isCustomAccessibility  | boolean              | 否 | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -4979,6 +5096,7 @@ VoIP通话信息。
 | TYPE_OTT      | 2    | OTT通话。      |
 | TYPE_ERR_CALL | 3    | 其他类型通话。 |
 | TYPE_VOIP<sup>11+</sup> | 4    | VoIP通话。 |
+| TYPE_XCALL | 5 | XCALL通话。 <br>**起始版本:** 26.0.0|
 
 ## VideoStateType<sup>7+</sup>
 
@@ -5009,7 +5127,7 @@ VoIP通话信息。
 | CALL_STATUS_ACTIVE        | 0    | 激活呼叫状态。   |
 | CALL_STATUS_HOLDING       | 1    | 保持呼叫状态。   |
 | CALL_STATUS_DIALING       | 2    | 呼叫状态拨号。   |
-| CALL_STATUS_ALERTING      | 3    | 电话报警状态。   |
+| CALL_STATUS_ALERTING      | 3    | 电话振铃状态。   |
 | CALL_STATUS_INCOMING      | 4    | 呼叫传入状态。   |
 | CALL_STATUS_WAITING       | 5    | 呼叫等待状态。   |
 | CALL_STATUS_DISCONNECTED  | 6    | 呼叫状态已断开。 |
@@ -5101,6 +5219,7 @@ VoIP通话信息。
 | DIAL_CARRIER_TYPE    | 0    | 载波拨号类型。     |
 | DIAL_VOICE_MAIL_TYPE | 1    | 语音邮件拨号类型。 |
 | DIAL_OTT_TYPE        | 2    | OTT拨号类型。      |
+| DIAL_XCALL_TYPE | 3 | XCALL拨号类型。 <br>**起始版本:** 26.0.0|
 
 ## RejectMessageOptions<sup>7+</sup>
 
@@ -5113,6 +5232,18 @@ VoIP通话信息。
 |     名称       | 类型   | 必填 | 说明     |
 | -------------- | ------ | ---- | -------- |
 | messageContent | string | 是   | 消息内容。 |
+
+## CallTransferResult<sup>8+</sup>
+
+呼叫转移结果。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+|          名称            |                 类型               | 必填 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---------------- |
+| number                   | string                             |  是  | 号码。             |
 
 ## CallWaitingStatus<sup>7+</sup>
 
@@ -5139,19 +5270,6 @@ VoIP通话信息。
 | ------------------- | ---- | -------- |
 | RESTRICTION_DISABLE | 0    | 禁用限制。 |
 | RESTRICTION_ENABLE  | 1    | 启用限制。 |
-
-## TransferStatus<sup>8+</sup>
-
-转移状态。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-| 名称             | 值   | 说明     |
-| ---------------- | ---- | -------- |
-| TRANSFER_DISABLE | 0    | 禁用转移。 |
-| TRANSFER_ENABLE  | 1    | 启用转移。 |
 
 ## DisconnectedDetails<sup>9+</sup>
 
@@ -6071,3 +6189,19 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 | MARK_TYPE_OTHERS | 9 | 其他。 |
 | MARK_TYPE_YELLOW_PAGE | 10 | 黄页。 |
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | 企业联系人。 |
+
+## XCallType
+
+表示XCall的类型。
+
+**起始版本**: 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称                           | 值     | 说明     |
+| ------------------------------ | ------ | --------|
+| XCALL_ECALL_TYPE | 0      | 表示XCall是ECall。 |
+| XCALL_BCALL_TYPE | 1      | 表示XCall是BCall。 |
+| XCALL_ICALL_TYPE | 2      | 表示XCall是ICall。 |

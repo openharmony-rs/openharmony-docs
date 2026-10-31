@@ -1,8 +1,16 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍使用AVPlayer在ArkTS环境实现音频端到端播放，覆盖创建播放器、设置监听事件与音频渲染信息、播放控制（播放/暂停/跳转/停止）、重置与资源释放等完整开发流程。"
+keywords: [AVPlayer, 音频播放, 播放控制, 静音帧, 后台播放]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer播放音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -70,13 +78,13 @@
     avPlayer.on('durationUpdate', (duration: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('timeUpdate', (time:number) => {
+    avPlayer.on('timeUpdate', (time: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('seekDone', (seekDoneTime:number) => {
+    avPlayer.on('seekDone', (seekDoneTime: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('speedDone', (speed:number) => {
+    avPlayer.on('speedDone', (speed: number) => {
         // 开发者根据需要写入业务逻辑。
     });
     avPlayer.on('volumeChange', (vol: number) => {
@@ -117,16 +125,16 @@
 
    ```ts
    let fdPath = 'fd://'; // 此处仅为示意，请替换为真实资源文件URL。
-   let path : string = `${this.context.filesDir}/${this.fileName}`; // 此处仅为示意，请替换为真实资源文件URL。
+   let path : string = `${this.context.filesDir}/${this.fileName}`; // 此处仅为示意，请替换为真实的应用沙箱文件路径。
    let file = await fs.open(path);
    fdPath = fdPath + file.fd;
    this.avPlayer = await media.createAVPlayer();
-   this.avPlayer.url = url;
+   this.avPlayer.url = fdPath;
    ```
 
 4. （可选）设置音频渲染：只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。
 
-    为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。
+    为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频[选择合适的播放流类型](../../media/audio/using-right-streamusage-for-playback.md)。
     
     ```ts
     import { audio } from '@kit.AudioKit';
@@ -191,16 +199,16 @@
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    await avPlayer.reset((err: BusinessError) => {
+    avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
-            console.error('Failed to reset,error message is :' + err.message);
+            console.error('Failed to reset, error message is :' + err.message);
         } else {
             console.info('Succeeded in resetting');
         }
     });
-    // 更换url。
-    let url = 'https://xxx.xxx.xxx.mp3';
+    // 更换URL。
+    let url = 'https://example.com/audio.mp3'; // 此处仅为示意，请替换为真实资源文件URL。
     if (avPlayer == null) {
         return;
     }

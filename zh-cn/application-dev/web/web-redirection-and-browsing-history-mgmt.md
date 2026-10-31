@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -26,6 +26,8 @@
 <!-- @[button_click_trigger_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/HistoryNavigati.ets) -->
 
 ``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
 @Entry
 @Component
 struct WebComponent {
@@ -33,7 +35,7 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button('loadData')
+      Button('backward')
         .onClick(() => {
           if (this.webviewController.accessBackward()) {
             this.webviewController.backward();
@@ -151,7 +153,7 @@ Web组件可以实现点击前端页面超链接跳转到其他应用。
                   if (!err) {
                     console.info('make call succeeded.');
                   } else {
-                    console.info('make call fail, err is:' + JSON.stringify(err));
+                    console.error('make call fail, err is:' + JSON.stringify(err));
                   }
                 });
                 return true;

@@ -46,7 +46,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
      // 如果相机数量少于2，说明只存在单侧相机，返回。
      if (cameras.length < 2) {
-      return;
+       return;
      }
 
      // 获取逻辑后置和逻辑前置。
@@ -65,9 +65,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      if (sceneModes === undefined) {
        return;
      }
-     let isSupported = sceneModes.findIndex((sceneMode: camera.SceneMode) => {
-       return sceneMode === camera.SceneMode.NORMAL_PHOTO;
-     });
+     let isSupported: boolean = sceneModes.includes(camera.SceneMode.NORMAL_PHOTO); 
      if (!isSupported) {
        return;
      }
@@ -79,7 +77,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      let concurrentInfo: Array<camera.CameraConcurrentInfo> = cameraManager.getCameraConcurrentInfos(deviceArray);
 
      if (concurrentInfo.length === 0) {
-      return;
+       return;
      }
 
      // 用并发能力集替换原始能力集。
@@ -143,7 +141,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      // 查询对应photoProfile是否存在，对应的photoProfile必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
      let photoProfiles = cameraOutputCapability.photoProfiles;
      if (photoProfiles.length < 1) {
-      return;
+       return;
      }
      let index = photoProfiles.findIndex((photoProfile: camera.Profile) => {
        return photoProfile.size.width === photoProfileObj.size.width &&
@@ -412,6 +410,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       try {
         await videoOutput?.start();
         await avRecorder?.start();
+        isRecording = true;
       } catch (error) {
         console.error(`startVideo err`);
       }
@@ -419,7 +418,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
     // 停止录制。
     async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-      if (isRecording) {
+      if (!isRecording) {
         return;
       }
       try {
@@ -458,10 +457,10 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     function hasExposureFn(ExposureMode: camera.ExposureMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
 
       // 检测曝光模式是否支持。
-      let hasFlash = session?.isExposureModeSupported(ExposureMode);
+      let isExposureSupported = session?.isExposureModeSupported(ExposureMode);
   
       // 设置曝光模式。
-      if (hasFlash) {
+      if (isExposureSupported) {
         session?.setExposureMode(ExposureMode);
       }
     }

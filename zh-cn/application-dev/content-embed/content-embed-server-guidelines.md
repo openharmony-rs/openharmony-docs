@@ -11,10 +11,10 @@
 
 [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md)内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
 
-OE服务端应用使用[OE Extension框架](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md)提供的接口，向客户端应用提供特定格式文档的嵌入与编辑能力。
+OE服务端应用使用OE Extension框架[content_embed_extension.h](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md)提供的接口，向客户端应用提供特定格式文档的嵌入与编辑能力。
 
 ## 约束限制
-在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[查询指定的系统能力是否被支持](../reference/common/init.md#caniuse)。并申请ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[canIUse()](../reference/common/syscap-ndk-8h.md#caniuse)接口查询指定的系统能力是否被支持。并申请ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
 
 ## 接口说明
 
@@ -30,7 +30,7 @@ OE服务端应用使用[OE Extension框架](../reference/apis-content-embed-kit/
 | OH_ContentEmbed_Extension_RegisterOnCreateFunc | 注册OE Extension实例创建时的生命周期函数。|
 | OH_ContentEmbed_Extension_RegisterOnDestroyFunc | 注册OE Extension实例销毁时的生命周期函数。|
 | OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc | 注册[客户端OE对象](content-embed-kit-terminology.md#客户端oe对象)连接时的回调函数。|
-| OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc | 取消注册客户端OE对象连接时的回调函数。|
+| OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc | 注册客户端OE对象断开连接时的回调函数。|
 | OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc | 注册[服务端OE对象](content-embed-kit-terminology.md#服务端oe对象)写入[OE文档](content-embed-kit-terminology.md#oe文档)数据流时的回调函数。|
 | OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc | 注册客户端OE对象请求获取OE文档快照时的回调函数。|
 | OH_ContentEmbed_Extension_RegisterOnDoEditFunc | 注册客户端OE对象请求编辑OE文档时的回调函数。|
@@ -102,26 +102,19 @@ OE服务端应用使用[OE Extension框架](../reference/apis-content-embed-kit/
 - description：OE文档查询显示描述，要求采用该名称的资源索引，以支持多语言。
 
 ### 添加动态链接库
+在Native工程的src/main/cpp/CMakeLists.txt，添加如下链接库：
 
-CMakeLists.txt中添加以下lib。
-
-```text
-# content embed
-libcontent_embed_ndk.so
-# hilog
-libhilog_ndk.z.so
-# ace
-libace_napi.z.so
-# piexlmap
-libpixelmap.so
-# ability
-libability_runtime.so
-# want
-libability_base_want.so
-# fileuri
-libohfileuri.so
-# libimage_source
-libimage_source.so
+```txt
+target_link_libraries(entry PUBLIC
+    libcontent_embed_ndk.so
+    libhilog_ndk.z.so
+    libace_napi.z.so
+    libpixelmap.so
+    libability_runtime.so
+    libability_base_want.so
+    libohfileuri.so
+    libimage_source.so
+)
 ```
 
 ### 导入头文件
@@ -374,7 +367,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
             outputFile.close();
             OH_LOG_INFO(LOG_APP, "数据写入成功.");
         } else {
-            OH_LOG_INFO(LOG_APP, "无法打开文件.");
+            OH_LOG_ERROR(LOG_APP, "无法打开文件.");
         }
         char* tempFileUri;
         OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
@@ -434,14 +427,14 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     // 获取OE文档
     ret = OH_ContentEmbed_Extension_GetContentEmbedDocument(object, &ceDocument);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
         return;
     }
     // 获取Root Storage
     ContentEmbed_Storage *rootStorage = nullptr;
     ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
         return;
     }
 
@@ -457,7 +450,7 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     char nativeFilePath[MAX_PATH_LENGTH];
     ret = OH_ContentEmbed_Document_GetNativeFilePath(ceDocument, nativeFilePath);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
         return;
     }
 
@@ -476,13 +469,13 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     // 往OE文档写数据
     ret = OH_ContentEmbed_Stream_Write(destStream, buffer.data(), oriFileSize, &num);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
         return;
     }
     // 刷新OE文档
     ret = OH_ContentEmbed_Document_Flush(ceDocument);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
         return;
     }
 }

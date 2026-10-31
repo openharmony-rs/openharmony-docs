@@ -1,10 +1,11 @@
 # native_avsession.h
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=24e474de4473251d020526f4b2e5c7927649d47c translatedAt=2026-09-01T13:04:53.795Z pushedAt=2026-09-08T04:40:57.075Z -->
 
 ## Overview
 
@@ -26,167 +27,58 @@ The file declares the AVSession definition, which can be used to set metadata, p
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md) | AVSession_PlaybackPosition | Describes the information related to the playback position.|
-| [OH_AVSession](capi-ohavsession-oh-avsession.md) | OH_AVSession | Defines a struct for the playback control session object. You can use **OH_AVSession_Create** to create such an object.|
-
-### Enums
-
-| Name| typedef Keyword| Description|
-| -- | -- | -- |
-| [AVSession_Type](#avsession_type) | AVSession_Type | Enumerates the session types.|
-| [AVSession_PlaybackState](#avsession_playbackstate) | AVSession_PlaybackState | Enumerates the media playback states.|
-| [AVSession_LoopMode](#avsession_loopmode) | AVSession_LoopMode | Enumerates the loop modes of media playback.|
-| [AVSession_ControlCommand](#avsession_controlcommand) | AVSession_ControlCommand | Enumerates the playback control commands.|
-| [AVSessionCallback_Result](#avsessioncallback_result) | AVSessionCallback_Result | Enumerates the callback execution results.|
+| [OH_AVSession](capi-ohavsession-oh-avsession.md) | OH_AVSession | Defines a struct for the playback control session object. You can use the [OH_AVSession_Create](#oh_avsession_create) method to create a playback control session object. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) | OH_AVCastController | Defines a struct for the casting controller object. You can use the [OH_AVSession_CreateAVCastController](capi-native-avsession-h.md#oh_avsession_createavcastcontroller) method to create a casting controller object.|
 
 ### Functions
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData)](#oh_avsessioncallback_oncommand) | OH_AVSessionCallback_OnCommand | Defines a callback for a common playback control command.|
-| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData)](#oh_avsessioncallback_onfastforward) | OH_AVSessionCallback_OnFastForward | Defines a callback for the fast-forward operation.|
-| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData)](#oh_avsessioncallback_onrewind) | OH_AVSessionCallback_OnRewind | Defines a callback for the rewind operation.|
-| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData)](#oh_avsessioncallback_onseek) | OH_AVSessionCallback_OnSeek | Defines a callback for the seek operation.|
+| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData)](#oh_avsessioncallback_onfastforward) | OH_AVSessionCallback_OnFastForward | Defines a callback for the fast-forward operation. The unit of **seekTime** is millisecond. |
+| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData)](#oh_avsessioncallback_onrewind) | OH_AVSessionCallback_OnRewind | Fast-rewind callback. The unit of the seekTime parameter is milliseconds (ms). |
+| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData)](#oh_avsessioncallback_onseek) | OH_AVSessionCallback_OnSeek | Defines a callback for the seek operation. The unit of **seekTime** is millisecond. |
 | [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData)](#oh_avsessioncallback_onsetloopmode) | OH_AVSessionCallback_OnSetLoopMode | Defines a callback for the operation of setting the loop mode.|
 | [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData)](#oh_avsessioncallback_ontogglefavorite) | OH_AVSessionCallback_OnToggleFavorite | Defines a callback for the operation of favoriting a media asset.|
-| [AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* sessionTag,const char* bundleName, const char* abilityName, OH_AVSession** avsession)](#oh_avsession_create) | - | Creates a session object.|
+| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo)](#oh_avsessioncallback_outputdevicechange) | OH_AVSessionCallback_OutputDeviceChange | Defines a callback for the device changes.|
+| [AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)](#oh_avsession_create) | - | Creates a session object.|
 | [AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)](#oh_avsession_destroy) | - | Destroys a session object.|
 | [AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)](#oh_avsession_activate) | - | Activates a session.|
 | [AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)](#oh_avsession_deactivate) | - | Deactivates a session.|
 | [AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession_Type* sessionType)](#oh_avsession_getsessiontype) | - | Obtains the session type.|
-| [AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char** sessionId)](#oh_avsession_getsessionid) | - | Obtains the session ID.|
+| [AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char** sessionId)](#oh_avsession_getsessionid) | - | Obtains the session ID. |
 | [AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetadata* avmetadata)](#oh_avsession_setavmetadata) | - | Sets media metadata.|
 | [AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSession_PlaybackState playbackState)](#oh_avsession_setplaybackstate) | - | Sets the playback state.|
 | [AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSession_PlaybackPosition* playbackPosition)](#oh_avsession_setplaybackposition) | - | Sets the playback position.|
 | [AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorite)](#oh_avsession_setfavorite) | - | Favorites or unfavorites the media asset.|
 | [AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_LoopMode loopMode)](#oh_avsession_setloopmode) | - | Sets a loop mode.|
-| [AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession,AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback, void* userData)](#oh_avsession_registercommandcallback) | - | Registers a callback for a common playback control command.|
+| [AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, bool enabled)](#oh_avsession_setremotecastenabled) | - | Requests to enable remote casting. |
+| [AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback, void* userData)](#oh_avsession_registercommandcallback) | - | Registers a callback for a common playback control command.|
 | [AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession, AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback)](#oh_avsession_unregistercommandcallback) | - | Unregisters the callback for a common playback control command.|
 | [AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnFastForward callback, void* userData)](#oh_avsession_registerforwardcallback) | - | Registers a callback for the fast-forward operation.|
 | [AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnFastForward callback)](#oh_avsession_unregisterforwardcallback) | - | Unregisters the callback for the fast-forward operation.|
 | [AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind callback, void* userData)](#oh_avsession_registerrewindcallback) | - | Registers a callback for the rewind operation.|
 | [AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind callback)](#oh_avsession_unregisterrewindcallback) | - | Unregisters the callback for the rewind operation.|
-| [AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback, void* userData)](#oh_avsession_registerseekcallback) | - | Registers a callback for the seek operation.|
-| [AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback)](#oh_avsession_unregisterseekcallback) | - | Unregisters the callback for the seek operation.|
+| [AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback, void* userData)](#oh_avsession_registerseekcallback) | - | Registers a callback for the seek operation. |
+| [AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback)](#oh_avsession_unregisterseekcallback) | - | Unregisters the callback for the seek operation. |
 | [AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback, void* userData)](#oh_avsession_registersetloopmodecallback) | - | Registers a callback for the operation of setting the loop mode.|
 | [AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback)](#oh_avsession_unregistersetloopmodecallback) | - | Unregisters the callback for the operation of setting the loop mode.|
-| [AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback, void* userData)](#oh_avsession_registertogglefavoritecallback) | - | Registers a callback for the operation of favoriting a media asset.|
-| [AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback)](#oh_avsession_unregistertogglefavoritecallback) | - | Unregisters the callback for the operation of favoriting a media asset.|
-
-## Enums
-
-### AVSession_Type
-
-```c
-enum AVSession_Type
-```
-
-**Description**
-
-Enumerates the session types.
-
-**Since**: 13
-
-| Enum Item| Description|
-| -- | -- |
-| SESSION_TYPE_AUDIO = 0 | Audio.|
-| SESSION_TYPE_VIDEO = 1 | Video.|
-| SESSION_TYPE_VOICE_CALL = 2 | Audio call.|
-| SESSION_TYPE_VIDEO_CALL = 3 | Video call.|
-
-### AVSession_PlaybackState
-
-```c
-enum AVSession_PlaybackState
-```
-
-**Description**
-
-Enumerates the media playback states.
-
-**Since**: 13
-
-| Enum Item| Description|
-| -- | -- |
-| PLAYBACK_STATE_INITIAL = 0 | Initial state.|
-| PLAYBACK_STATE_PREPARING = 1 | Ready.|
-| PLAYBACK_STATE_PLAYING = 2 | Playing.|
-| PLAYBACK_STATE_PAUSED = 3 | Paused.|
-| PLAYBACK_STATE_FAST_FORWARDING = 4 | Fast-forwarding.|
-| PLAYBACK_STATE_REWINDED = 5 | Rewinded.|
-| PLAYBACK_STATE_STOPPED = 6 | Stopped.|
-| PLAYBACK_STATE_COMPLETED = 7 | Playback complete.|
-| PLAYBACK_STATE_RELEASED = 8 | Released.|
-| PLAYBACK_STATE_ERROR = 9 | Error.|
-| PLAYBACK_STATE_IDLE = 10 | Idle.|
-| PLAYBACK_STATE_BUFFERING = 11 | Buffering.|
-| PLAYBACK_STATE_MAX = 12 | Maximum value. (Error code 401 is returned in this case.)|
-
-### AVSession_LoopMode
-
-```c
-enum AVSession_LoopMode
-```
-
-**Description**
-
-Enumerates the loop modes of media playback.
-
-**Since**: 13
-
-| Enum Item| Description|
-| -- | -- |
-| LOOP_MODE_SEQUENCE = 0 | Sequential playback.|
-| LOOP_MODE_SINGLE = 1 | Single loop.|
-| LOOP_MODE_LIST = 2 | Playlist loop.|
-| LOOP_MODE_SHUFFLE = 3 | Shuffle.|
-| LOOP_MODE_CUSTOM = 4 | Custom playback.|
-
-### AVSession_ControlCommand
-
-```c
-enum AVSession_ControlCommand
-```
-
-**Description**
-
-Enumerates the playback control commands.
-
-**Since**: 13
-
-| Enum Item| Description|
-| -- | -- |
-| CONTROL_CMD_INVALID = -1 | Invalid control command.|
-| CONTROL_CMD_PLAY = 0 | Play command.|
-| CONTROL_CMD_PAUSE = 1 | Pause command.|
-| CONTROL_CMD_STOP = 2 | Stop command.|
-| CONTROL_CMD_PLAY_NEXT = 3 | Command for playing the next media asset.|
-| CONTROL_CMD_PLAY_PREVIOUS = 4 | Command for playing the previous media asset.|
-
-### AVSessionCallback_Result
-
-```c
-enum AVSessionCallback_Result
-```
-
-**Description**
-
-Enumerates the callback execution results.
-
-**Since**: 13
-
-| Enum Item| Description|
-| -- | -- |
-| AVSESSION_CALLBACK_RESULT_SUCCESS = 0 | The operation is successful.|
-| AVSESSION_CALLBACK_RESULT_FAILURE = -1 | The operation fails.|
-
+| [AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback, void* userData)](#oh_avsession_registertogglefavoritecallback) | - | Registers a callback for the favorite operation. |
+| [AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback)](#oh_avsession_unregistertogglefavoritecallback) | - | Unregisters the callback for the favorite operation. |
+| [AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)](#oh_avsession_registeroutputdevicechangecallback) | - | Registers a callback for device changes.|
+| [AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)](#oh_avsession_unregisteroutputdevicechangecallback) | - | Unregisters the callback for device changes.|
+| [AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)](#oh_avsession_acquiresession) | - | Obtains an existing media session object. When the media session object is no longer used, call [OH_AVSession_Destroy](#oh_avsession_destroy) to release it. |
+| [AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, OH_AVCastController** avcastcontroller)](#oh_avsession_createavcastcontroller) | - | Creates a casting controller object. When the casting controller object is no longer needed, call [OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy) to release it.|
+| [AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)](#oh_avsession_stopcasting) | - | Stops the current casting and disconnects the device.|
+| [AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo** outputDeviceInfo)](#oh_avsession_acquireoutputdevice) | - | Obtains the current output device.|
+| [AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo *outputDeviceInfo)](#oh_avsession_releaseoutputdevice) | - | Releases the output device object.|
 
 ## Function Description
 
 ### OH_AVSessionCallback_OnCommand()
 
 ```c
-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session,AVSession_ControlCommand command, void* userData)
+typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData)
 ```
 
 **Description**
@@ -198,43 +90,43 @@ Defines a callback for a common playback control command.
 ### OH_AVSessionCallback_OnFastForward()
 
 ```c
-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session,uint32_t seekTime, void* userData)
+typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData)
 ```
 
 **Description**
 
-Defines a callback for the fast-forward operation.
+Defines a callback for the fast-forward operation. The unit of **seekTime** is millisecond.
 
 **Since**: 13
 
 ### OH_AVSessionCallback_OnRewind()
 
 ```c
-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session,uint32_t seekTime, void* userData)
+typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData)
 ```
 
 **Description**
 
-Defines a callback for the rewind operation.
+Defines a callback for the rewind operation. The unit of **seekTime** is millisecond.
 
 **Since**: 13
 
 ### OH_AVSessionCallback_OnSeek()
 
 ```c
-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session,uint64_t seekTime, void* userData)
+typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData)
 ```
 
 **Description**
 
-Defines a callback for the seek operation.
+Defines a callback for the seek operation. The unit of **seekTime** is millisecond.
 
 **Since**: 13
 
 ### OH_AVSessionCallback_OnSetLoopMode()
 
 ```c
-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session,AVSession_LoopMode curLoopMode, void* userData)
+typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData)
 ```
 
 **Description**
@@ -246,7 +138,7 @@ Defines a callback for the operation of setting the loop mode.
 ### OH_AVSessionCallback_OnToggleFavorite()
 
 ```c
-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session,const char* assetId, void* userData)
+typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData)
 ```
 
 **Description**
@@ -255,10 +147,22 @@ Defines a callback for the operation of favoriting a media asset.
 
 **Since**: 13
 
+### OH_AVSessionCallback_OutputDeviceChange()
+
+```c
+typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo)
+```
+
+**Description**
+
+Defines a callback for the device changes.
+
+**Since:** 23
+
 ### OH_AVSession_Create()
 
 ```c
-AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* sessionTag,const char* bundleName, const char* abilityName, OH_AVSession** avsession)
+AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)
 ```
 
 **Description**
@@ -267,22 +171,21 @@ Creates a session object.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [AVSession_Type](capi-native-avsession-h.md#avsession_type) sessionType |  Session type. For details about the available options, see [AVSession_Type](capi-native-avsession-h.md#avsession_type).|
-| const char* sessionTag |   Pointer to the session tag.|
-| const char* bundleName |   Pointer to the bundle name.|
-| const char* abilityName |  Pointer to the ability name.|
-| [OH_AVSession](capi-ohavsession-oh-avsession.md)** avsession |    Double pointer to the session object created.|
+| [AVSession_Type](capi-native-avsession-base-h.md#avsession_type) sessionType |  Session type. For details about the available options, see [AVSession_Type](capi-native-avsession-base-h.md#avsession_type).|
+| const char* sessionTag | Custom session tag set by the application. |
+| const char* bundleName |   Bundle name.|
+| const char* abilityName | Ability component name. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)** avsession |    Session object created.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                 1. **sessionType** is invalid.<br>                                 2. **sessionTag** is nullptr.<br>                                 3. **bundleName** is nullptr.<br>                                 4. **abilityName** is nullptr.<br>                                 5. **avsession** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: Internal server error.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. **sessionType** is invalid.<br>                                         2. The **sessionTag** parameter is **nullptr**.<br>                                         3. The **bundleName** parameter is **nullptr**.<br>                                         4. The **abilityName** parameter is **nullptr**.<br>                                         5. The **avsession** parameter is **nullptr**.|
 
 ### OH_AVSession_Destroy()
 
@@ -296,7 +199,6 @@ Destroys a session object.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -307,7 +209,7 @@ Destroys a session object.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_INVALID_PARAMETER**: **avsession** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**: The **avsession** parameter is **nullptr**.|
 
 ### OH_AVSession_Activate()
 
@@ -321,7 +223,6 @@ Activates a session.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -332,7 +233,7 @@ Activates a session.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_INVALID_PARAMETER**: **avsession** is nullptr.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**: The **avsession** parameter is **nullptr**.|
 
 ### OH_AVSession_Deactivate()
 
@@ -346,7 +247,6 @@ Deactivates a session.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -357,7 +257,7 @@ Deactivates a session.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_INVALID_PARAMETER**: **avsession** is nullptr.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**: The **avsession** parameter is **nullptr**.|
 
 ### OH_AVSession_GetSessionType()
 
@@ -371,19 +271,18 @@ Obtains the session type.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [AVSession_Type](capi-native-avsession-h.md#avsession_type)* sessionType | Pointer to the session type obtained.|
+| [AVSession_Type](capi-native-avsession-base-h.md#avsession_type)* sessionType | Pointer to the session type obtained.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal or an error occurs.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **sessionType** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **sessionType** parameter is **nullptr**.|
 
 ### OH_AVSession_GetSessionId()
 
@@ -397,19 +296,18 @@ Obtains the session ID.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| const char** sessionId | Double pointer to the session ID obtained.|
+| const char** sessionId | Session ID. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                 1. **avsession** is nullptr.<br>                                 2. **sessionId** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **sessionId** parameter is **nullptr**.|
 
 ### OH_AVSession_SetAVMetadata()
 
@@ -423,7 +321,6 @@ Sets media metadata.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -435,12 +332,12 @@ Sets media metadata.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                 1. **avsession** is nullptr.<br>                                 2. **avmetadata** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **avmetadata** parameter is **nullptr**.|
 
 ### OH_AVSession_SetPlaybackState()
 
 ```c
-AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession,AVSession_PlaybackState playbackState)
+AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSession_PlaybackState playbackState)
 ```
 
 **Description**
@@ -449,24 +346,23 @@ Sets the playback state.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [AVSession_PlaybackState](capi-native-avsession-h.md#avsession_playbackstate) playbackState | Playback state.|
+| [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate) playbackState | Playback state.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **playbackState** is invalid.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **playbackState** parameter is invalid.|
 
 ### OH_AVSession_SetPlaybackPosition()
 
 ```c
-AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession,AVSession_PlaybackPosition* playbackPosition)
+AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSession_PlaybackPosition* playbackPosition)
 ```
 
 **Description**
@@ -474,7 +370,6 @@ AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession,AVSes
 Sets the playback position.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -487,7 +382,7 @@ Sets the playback position.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                 1. **avsession** is nullptr.<br>                                 2. **playbackPosition** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **playbackPosition** parameter is **nullptr**.|
 
 ### OH_AVSession_SetFavorite()
 
@@ -501,7 +396,6 @@ Favorites or unfavorites the media asset.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -513,7 +407,7 @@ Favorites or unfavorites the media asset.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**: **avsession** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**: The **avsession** parameter is **nullptr**.|
 
 ### OH_AVSession_SetLoopMode()
 
@@ -527,24 +421,48 @@ Sets a loop mode.
 
 **Since**: 13
 
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
+| [AVSession_LoopMode](capi-native-avsession-base-h.md#avsession_loopmode) loopMode | Loop mode.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **loopMode** parameter is invalid.|
+
+### OH_AVSession_SetRemoteCastEnabled()
+
+```c
+AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, bool enabled)
+```
+
+**Description**
+
+Requests to enable remote casting.
+
+**Since:** 23
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [AVSession_LoopMode](capi-native-avsession-h.md#avsession_loopmode) loopMode | Loop mode.|
+| bool enabled | Whether to enable remote casting. The value **true** indicates it is enabled, and **false** indicates it is disabled. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                   1. **avsession** is nullptr.<br>                                   2. **loopMode** is invalid.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_CODE_SESSION_NOT_EXIST**: The session does not exist.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**: The **avsession** parameter is **nullptr**.|
 
 ### OH_AVSession_RegisterCommandCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession,AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback, void* userData)
+AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback, void* userData)
 ```
 
 **Description**
@@ -553,13 +471,12 @@ Registers a callback for a common playback control command.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [AVSession_ControlCommand](capi-native-avsession-h.md#avsession_controlcommand) command |   Playback control command.|
+| [AVSession_ControlCommand](capi-native-avsession-base-h.md#avsession_controlcommand) command |   Playback control command.|
 | [OH_AVSessionCallback_OnCommand](capi-native-avsession-h.md#oh_avsessioncallback_oncommand) callback |  Callback for the control command.|
 | void* userData |  Pointer to the application data passed through the callback functions.|
 
@@ -567,12 +484,12 @@ Registers a callback for a common playback control command.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_CODE_COMMAND_INVALID**: The playback control command is invalid.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_CODE_COMMAND_INVALID**: The playback control command is invalid.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_UnregisterCommandCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession,AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback)
+AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession, AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback)
 ```
 
 **Description**
@@ -581,25 +498,24 @@ Unregisters the callback for a common playback control command.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [AVSession_ControlCommand](capi-native-avsession-h.md#avsession_controlcommand) command |   Playback control command.|
+| [AVSession_ControlCommand](capi-native-avsession-base-h.md#avsession_controlcommand) command |   Playback control command.|
 | [OH_AVSessionCallback_OnCommand](capi-native-avsession-h.md#oh_avsessioncallback_oncommand) callback |  Callback for the control command.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_CODE_COMMAND_INVALID**: The playback control command is invalid.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_CODE_COMMAND_INVALID**: The playback control command is invalid.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_RegisterForwardCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnFastForward callback, void* userData)
+AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnFastForward callback, void* userData)
 ```
 
 **Description**
@@ -608,7 +524,6 @@ Registers a callback for the fast-forward operation.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -621,12 +536,12 @@ Registers a callback for the fast-forward operation.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_UnregisterForwardCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnFastForward callback)
+AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnFastForward callback)
 ```
 
 **Description**
@@ -635,7 +550,6 @@ Unregisters the callback for the fast-forward operation.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -647,12 +561,12 @@ Unregisters the callback for the fast-forward operation.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_RegisterRewindCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnRewind callback, void* userData)
+AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind callback, void* userData)
 ```
 
 **Description**
@@ -661,7 +575,6 @@ Registers a callback for the rewind operation.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -674,12 +587,12 @@ Registers a callback for the rewind operation.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_UnregisterRewindCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnRewind callback)
+AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind callback)
 ```
 
 **Description**
@@ -688,7 +601,6 @@ Unregisters the callback for the rewind operation.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -700,12 +612,12 @@ Unregisters the callback for the rewind operation.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_RegisterSeekCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSeek callback, void* userData)
+AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback, void* userData)
 ```
 
 **Description**
@@ -714,7 +626,6 @@ Registers a callback for the seek operation.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -727,12 +638,12 @@ Registers a callback for the seek operation.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_UnregisterSeekCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSeek callback)
+AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback)
 ```
 
 **Description**
@@ -741,7 +652,6 @@ Unregisters the callback for the seek operation.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -753,12 +663,12 @@ Unregisters the callback for the seek operation.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_RegisterSetLoopModeCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSetLoopMode callback, void* userData)
+AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback, void* userData)
 ```
 
 **Description**
@@ -767,7 +677,6 @@ Registers a callback for the operation of setting the loop mode.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -780,12 +689,12 @@ Registers a callback for the operation of setting the loop mode.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_UnregisterSetLoopModeCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSetLoopMode callback)
+AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback)
 ```
 
 **Description**
@@ -794,7 +703,6 @@ Unregisters the callback for the operation of setting the loop mode.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -806,57 +714,233 @@ Unregisters the callback for the operation of setting the loop mode.
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_RegisterToggleFavoriteCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnToggleFavorite callback, void* userData)
+AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback, void* userData)
 ```
 
 **Description**
 
-Registers a callback for the operation of favoriting a media asset.
+Registers a callback for the favorite operation.
 
 **Since**: 13
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [OH_AVSessionCallback_OnToggleFavorite](capi-native-avsession-h.md#oh_avsessioncallback_ontogglefavorite) callback | Callback for the operation of favoriting a media asset.|
+| [OH_AVSessionCallback_OnToggleFavorite](#oh_avsessioncallback_ontogglefavorite) callback | Callback for the favorite command. |
 | void* userData | Pointer to the application data passed through the callback functions.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
 
 ### OH_AVSession_UnregisterToggleFavoriteCallback()
 
 ```c
-AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnToggleFavorite callback)
+AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback)
 ```
 
 **Description**
 
-Unregisters the callback for the operation of favoriting a media asset.
+Unregisters the callback for the favorite operation.
 
 **Since**: 13
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [OH_AVSessionCallback_OnToggleFavorite](capi-native-avsession-h.md#oh_avsessioncallback_ontogglefavorite) callback | Callback for the operation of favoriting a media asset.|
+| [OH_AVSessionCallback_OnToggleFavorite](#oh_avsessioncallback_ontogglefavorite) callback | Callback for the operation of favoriting a media asset. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br> **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br> **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                  1. **avsession** is nullptr.<br>                                  2. **callback** is nullptr.|
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
+
+### OH_AVSession_RegisterOutputDeviceChangeCallback()
+
+```c
+AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)
+```
+
+**Description**
+
+Registers a callback for device changes.
+
+**Since:** 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
+| [OH_AVSessionCallback_OutputDeviceChange](capi-native-avsession-h.md#oh_avsessioncallback_outputdevicechange) callback | Sets a callback for device changes.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
+
+### OH_AVSession_UnregisterOutputDeviceChangeCallback()
+
+```c
+AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)
+```
+
+**Description**
+
+Unregisters the callback for device changes.
+
+**Since:** 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
+| [OH_AVSessionCallback_OutputDeviceChange](capi-native-avsession-h.md#oh_avsessioncallback_outputdevicechange) callback | Sets a callback for device changes.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **callback** parameter is **nullptr**.|
+
+### OH_AVSession_AcquireSession()
+
+```c
+AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)
+```
+
+**Description**
+
+Obtains an existing media session object. When the media session object is no longer used, call [OH_AVSession_Destroy](#oh_avsession_destroy) to release it.
+
+**Since:** 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char* sessionTag | Pointer to the custom session tag set by the application.|
+| const char* bundleName | Pointer to the application bundle name.|
+| const char* abilityName | Pointer to the application ability name.|
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)** avsession | Double pointer to the **OH_AVSession**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_CODE_SESSION_NOT_EXIST**: The session does not exist.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **sessionTag** parameter is invalid.<br>                                         2. The **bundleName** parameter is invalid.<br>                                         3. The **abilityName** parameter is invalid.<br>                                         4. The **avsession** parameter is **nullptr**.|
+
+### OH_AVSession_CreateAVCastController()
+
+```c
+AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, OH_AVCastController** avcastcontroller)
+```
+
+**Description**
+
+Creates a casting controller object. When the casting controller object is no longer needed, call [OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy) to release it.
+
+**Since:** 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)** avcastcontroller | Double pointer to the **OH_AVCastController**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_CODE_SESSION_NOT_EXIST**: The session does not exist.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **avcastcontroller** parameter is **nullptr**.|
+
+### OH_AVSession_StopCasting()
+
+```c
+AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)
+```
+
+**Description**
+
+Stops the current casting and disconnects the device.
+
+**Since:** 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_CODE_SESSION_NOT_EXIST**: The session does not exist.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**: The **avsession** parameter is **nullptr**.|
+
+### OH_AVSession_AcquireOutputDevice()
+
+```c
+AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo** outputDeviceInfo)
+```
+
+**Description**
+
+Obtains the current output device.
+
+**Since:** 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)** outputDeviceInfo | Double pointer to the **AVSession_OutputDeviceInfo**. The **outputDeviceInfo** pointer cannot be released separately. When the **outputDeviceInfo** is no longer needed, call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release it.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: The session service is abnormal.<br>         **AV_SESSION_ERR_CODE_SESSION_NOT_EXIST**: The session does not exist.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **outputDeviceInfo** parameter is **nullptr**.|
+
+### OH_AVSession_ReleaseOutputDevice()
+
+```c
+AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo *outputDeviceInfo)
+```
+
+**Description**
+
+Releases the output device object.
+
+**Since:** 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) *outputDeviceInfo | Pointer to the output device to be released.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **outputDeviceInfo** parameter is **nullptr**.|
+
+

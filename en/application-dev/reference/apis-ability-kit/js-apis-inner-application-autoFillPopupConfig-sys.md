@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a25f23f63f302873dc43f20e41915285e52f064b translatedAt=2026-09-03T11:44:26.750Z pushedAt=2026-09-05T10:47:30.685Z -->
 
 The module describes the size and position information of an auto-fill pop-up.
 
@@ -42,8 +43,8 @@ Describes the width and height of the auto-fill pop-up.
 
 | Name| Type  | Read-Only| Optional| Description           |
 | ------ | ------ | ---- | ---- | --------------- |
-| width  | number | No  | No  | Width of the auto-fill pop-up.|
-| height | number | No  | No  | Height of the auto-fill pop-up.|
+| width  | number | No   | No   | Width of the popup, in px. |
+| height | number | No   | No   | Height of the popup, in px. |
 
 ## PopupPlacement
 

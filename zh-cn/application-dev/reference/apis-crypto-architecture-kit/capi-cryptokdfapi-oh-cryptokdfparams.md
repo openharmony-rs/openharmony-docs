@@ -13,7 +13,7 @@ typedef struct OH_CryptoKdfParams OH_CryptoKdfParams
 
 ## 概述
 
-定义密钥派生函数(KDF)参数结构。
+KDF参数结构体，表示KDF参数。
 
 **起始版本：** 20
 

@@ -1,10 +1,11 @@
 # ArkTS Widget Overview
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f66217a374191afa08e6502e3cd59173c85fd1ac translatedAt=2026-08-26T04:40:12.699Z pushedAt=2026-08-28T08:00:58.012Z -->
 
 This document describes how to develop an ArkTS widget based on the declarative paradigm.
 
@@ -43,13 +44,13 @@ Unlike JS widgets, ArkTS widgets support logic code execution. The widget page c
 ## ArkTS Widget Types
 ArkTS widgets are classified into dynamic widgets, static widgets, and interactive widgets.
 
-The overall running framework and rendering process of static widgets are the same as those of dynamic widgets. The main difference is that after the widget rendering service renders the widget content, the widget host uses the last frame of rendered data as a static image, and the widget rendering instance releases all running resources of the widget to save memory. As such, frequent updating of static widgets causes continuous creation and destruction of resources, resulting in increased power consumption.<br>
+The overall runtime framework and rendering process of a static widget are the same as those of a dynamic widget. The main difference is that after the widget rendering service finishes rendering the widget content, the widget host uses the data of the last rendered frame as a static image for display. In addition, the widget instance in the widget rendering service releases all runtime resources of the widget to save memory. Therefore, frequent refresh causes the runtime resources of a static widget to be repeatedly created and destroyed, increasing the power consumption of the widget.<br/>
 
 | Widget Type| Supported Capability| Scenario| Pros and Cons|
-| ------- | ------ | ------- | ------- | 
+| ------- | ------ | ------- | ------- |
 | Static widget| Supports only UI components and layout capabilities.| Suitable for presenting static information (with a stable UI), allowing navigation to a specific UIAbility via the **FormLink** component.| Offers basic functionality with efficient memory management.|
 | Dynamic widget| Supports UI components, layout capabilities, common events, and custom animation capabilities.| Suitable for scenarios requiring complex logic and interactions, such as updating images or content on a widget.| Provides enhanced capabilities at the cost of high memory overhead.|
-| Interactive widget| Supports overflow animation capabilities alongside dynamic widget capabilities.| Suitable for scenarios requiring complex logic and interactions, and where overflow animation is needed for better visual experience, such as widget games on the home screen.| Provides enhanced capabilities at the cost of high memory overhead.|
+| Interactive widget | Supports overflow animation capabilities alongside dynamic widget capabilities. | Suitable for scenarios requiring complex logic and interactions, and where overflow animation is needed for better visual experience, such as widget games on the home screen. | Provides enhanced capabilities at the cost of high memory overhead. |
 
 ### Dynamic Widget
 For dynamic ArkTS widgets, the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API is provided for the interaction between **Card.ets** and FormExtensionAbility. Currently, this API supports the router, message, call events, and touch events in the widget.
@@ -67,6 +68,8 @@ The **FormLink** component is provided for interactions between static widgets a
 
 ### Interactive Widget
 Interactive widgets are supported since API version 20. They provide overflow animations and implement human-machine interactions to improve information notifications, shallow interactions, and playability. For details, see [Overview of Interactive Widgets](arkts-ui-liveform-overview.md).
+
+<!--RP1--><!--RP1End-->
 
 ## Constraints
 ArkTS widgets support running logic code within the UI. Compared to JS widgets, they offer more robust capabilities but also introduce an increased risk of malicious activities conducted through the widgets. The code (in **widget.abc**) that carries the ArkTS widget UI runs in the system public FRS process and is finally displayed in the widget host (generally the home screen application). To ensure the stability of the system rendering process, isolation security between widgets, and resource usage such as memory and power consumption, the following constraints are imposed on the capabilities available to the ArkTS widget UI:
@@ -91,6 +94,12 @@ In addition, ArkTS widgets do not support the following features:
 
 - Hot reload
 
-- setTimeOut
+- [setTimeout](../reference/common/js-apis-timer.md#settimeout)
 
 - For details about widget constraints in DevEco Studio, see [Constraints](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-service-widget#section1181172254318).
+
+## Samples
+
+For ArkTS widgets, the following sample is available:
+
+- [FormGame (ArkTS) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/Widget/FormGame)

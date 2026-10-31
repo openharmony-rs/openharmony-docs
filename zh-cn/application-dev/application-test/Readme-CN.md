@@ -4,7 +4,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 - [Test Kit简介](test-kit-overview.md)
 <!--Del-->
 - [应用测试](../test/Readme-CN.md)

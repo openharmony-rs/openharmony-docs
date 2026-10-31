@@ -5,8 +5,9 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=d87b1aca1fe0f3ca5e5d103ab386c792109de81e translatedAt=2026-09-03T12:00:27.667Z pushedAt=2026-09-05T10:47:30.848Z -->
 
-The module defines the parameters required for mission synchronization. It can be used an input parameter in [startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions).
+Serves as an input parameter of [startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions), representing the interface of the parameters required for sync.
 
 > **NOTE**
 >
@@ -22,6 +23,8 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 ## MissionParameter
 
+**Device behavior differences** This API does not take effect on Wearable devices that do not support distributed services.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
@@ -32,6 +35,6 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 | Name         | Type   | Read-Only  | Optional  | Description         |
 | ----------- | ------- | ---- | ---- | ----------- |
-| deviceId    | string  | No   | No   | Device ID.    |
-| fixConflict | boolean | No   | No   | Whether a version conflict exists. **true** if yes, **false** otherwise.|
-| tag         | number  | No   | No   | Tag of the mission. The value **0** means the default tag.   |
+| deviceId    | string  | No    | No    | ID of the target device for sync.     |
+| fixConflict | boolean | No    | No    | Whether to handle version conflicts. The value true means to handle conflicts, and false means not to handle conflicts. |
+| tag         | number  | No    | No    | Tag of the mission, which is a non-negative integer. The value 0 indicates the default tag, used to identify and distinguish different sync missions.    |

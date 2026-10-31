@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides the enumerated variables, structures, and macros used in USB DDK APIs.
+Provides the enumeration types and structures used in USB DDK APIs, including core data structures such as USB device description, control transfer, and request pipe, to facilitate driver development.
 
 **File to include**: <usb/usb_ddk_types.h>
 
@@ -26,19 +26,19 @@ Provides the enumerated variables, structures, and macros used in USB DDK APIs.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | \_\_attribute\_\_((aligned(8))) UsbControlRequestSetup | Setup data for control transfer. It corresponds to **Setup Data** in the USB protocol.|
-| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | \_\_attribute\_\_((aligned(8))) UsbDeviceDescriptor | Defines standard device descriptors, which correspond to **Standard Device Descriptor** in the USB protocol.|
-| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | \_\_attribute\_\_((packed)) UsbConfigDescriptor | Defines standard configuration descriptors, which correspond to **Standard Configuration Descriptor** in the USB protocol.|
-| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | \_\_attribute\_\_((packed)) UsbInterfaceDescriptor | Defines standard interface descriptors, which correspond to **Standard Interface Descriptor** in the USB protocol.|
-| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | \_\_attribute\_\_((packed)) UsbEndpointDescriptor | Defines standard endpoint descriptors, which correspond to **Standard Endpoint Descriptor** in the USB protocol.|
-| [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) | UsbDdkEndpointDescriptor | Defines endpoint descriptors.|
-| [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) | UsbDdkInterfaceDescriptor | Defines USB interface descriptors.|
+| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | UsbControlRequestSetup | Setup data for control transfer. It corresponds to **Setup Data** in the USB protocol.|
+| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | UsbDeviceDescriptor | Defines standard device descriptors, which correspond to **Standard Device Descriptor** in the USB protocol.|
+| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | UsbConfigDescriptor | Defines standard configuration descriptors, which correspond to **Standard Configuration Descriptor** in the USB protocol.|
+| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | UsbInterfaceDescriptor | Defines standard interface descriptors, which correspond to **Standard Interface Descriptor** in the USB protocol.|
+| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | UsbEndpointDescriptor | Defines standard endpoint descriptors, which correspond to **Standard Endpoint Descriptor** in the USB protocol.|
+| [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) | UsbDdkEndpointDescriptor | Defines endpoint descriptors, including standard endpoint descriptors and descriptors that are not parsed.|
+| [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) | UsbDdkInterfaceDescriptor | Defines interface descriptors, including standard interface descriptors and endpoint descriptors.|
 | [UsbDdkInterface](capi-usbddk-usbddkinterface.md) | UsbDdkInterface | Defines a USB DDK API, which is a collection of alternate settings for a particular USB interface.|
-| [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | UsbDdkConfigDescriptor | Defines configuration descriptors.|
-| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | \_\_attribute\_\_((aligned(8))) UsbRequestPipe | Defines a USB request pipe.|
-| [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | UsbDeviceMemMap | Device memory map created by calling **OH_Usb_CreateDeviceMemMap**. A buffer using the device memory map can provide better performance.|
-| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | Defines the device ID list, which is used to store the device IDs and device quantity obtained using **OH_Usb_GetDevices**.|
-| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | Usb_NonRootHubArray | Defines the non-root hub list, which is used to store the non-root hub IDs and quantity obtained using **OH_Usb_GetNonRootHubs**.|
+| [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | UsbDdkConfigDescriptor | Defines configuration descriptors, including standard configuration descriptors and interface descriptors.|
+| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | UsbRequestPipe | Defines a request pipe, which is actually a USB data transfer request. It describes the basic configuration parameters for USB data transfer, including the interface handle, endpoint address, and timeout interval. This API applies to scenarios where USB data transfer is required.|
+| [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | UsbDeviceMemMap | Defines the device memory map created by calling [OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap). A buffer using the device memory map can provide better data transfer performance.|
+| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | Defines the device ID array, which is used to store the device IDs and device quantity obtained using [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices). After using the structure, you must release the memory allocated for the device ID array. Otherwise, resource leaks may occur.|
+| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | Usb_NonRootHubArray | Defines the non-root hub array, which is used to store the non-root hub IDs and quantity obtained using [OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs). After using the structure, you must release the memory allocated for the non-root hub ID array. Otherwise, resource leaks may occur.|
 
 ### Enums
 
@@ -64,11 +64,11 @@ Enumerates the USB DDK error code definitions.
 | -- | -- |
 | USB_DDK_SUCCESS = 0 | Operation succeeded.|
 | USB_DDK_FAILED = -1 | Operation failed.<br> **Deprecated from**: 16|
-| USB_DDK_NO_PERM = 201 | No permission.<br> **Since**: 14|
-| USB_DDK_INVALID_PARAMETER = 401 | Invalid parameter. The value is **-2** before API version 16.|
-| USB_DDK_MEMORY_ERROR = 27400001 | Memory errors, such as insufficient memory, memory data copy failure, or memory allocation failure. The value is **-3** before API version 16.|
-| USB_DDK_INVALID_OPERATION = 27400002 | Invalid operation. The value is **-4** before API version 16.|
-| USB_DDK_NULL_PTR = -5 | Null pointer.<br> **Deprecated from**: 16|
-| USB_DDK_DEVICE_BUSY = -6 | Device busy.<br> **Deprecated from**: 16|
-| USB_DDK_IO_FAILED = 27400003 | Device I/O operation failure.<br> **Since**: 14|
-| USB_DDK_TIMEOUT = 27400004 | Transmission timeout. The value is **-7** before API version 16.|
+| USB_DDK_NO_PERM = 201 | No permission. Ensure that you have obtained the **ohos.permission.ACCESS_DDK_USB** permission.<br> **Since**: 14|
+| USB_DDK_INVALID_PARAMETER = 401 | Invalid parameter. Check the validity of the input parameter, including whether the pointer is null and whether the value range is valid. The value is **-2** in versions earlier than API version 16.|
+| USB_DDK_MEMORY_ERROR = 27400001 | Memory-related error, for example, insufficient memory, memory data copy failure, or memory application failure. Check whether the available system memory is sufficient and whether the memory operation parameters are correct. The value is **-3** in versions earlier than API version 16.|
+| USB_DDK_INVALID_OPERATION = 27400002 | Invalid operation, for example, calling an API before the device is initialized or performing an operation when the device is in an incorrect state. Check whether the DDK has been initialized and whether the API handle is valid. The value is **-4** in versions earlier than API version 16.|
+| USB_DDK_NULL_PTR = -5 | Null pointer error. For example, the input pointer parameter is null. Check whether the input pointer parameter is valid.<br> **Deprecated from**: 16|
+| USB_DDK_DEVICE_BUSY = -6 | The device is busy. For example, the device is performing other operations or the device resources are occupied. Wait until the device is idle and try again, or release the occupied device resources.<br> **Deprecated from**: 16|
+| USB_DDK_IO_FAILED = 27400003 | Device I/O operation failure. Check whether the device connection is normal and whether the device supports the operation.<br> **Since**: 14|
+| USB_DDK_TIMEOUT = 27400004 | Transfer timed out. Check whether the device response is normal or increase the timeout interval. The value is **-7** in versions earlier than API version 16.|

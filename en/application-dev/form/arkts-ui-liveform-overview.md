@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=b5b6b01d9a6d838f0233eb9681dbc03ce52a038e translatedAt=2026-08-26T04:41:23.276Z pushedAt=2026-08-28T08:02:13.756Z -->
 
 Supported since API version 20, interactive widgets provide animation capabilities such as overflow animations, rich information notifications, and shallow interactions, greatly enhancing user experience.
 
@@ -22,7 +23,7 @@ Users can tap a fun-based widget to play mini games. Currently, this feature can
 
 ### Scene-based Widget
 
-Scene-based widgets support scene animations. For example, a weather widget activates and triggers its weather animation effect when the weather changes to a thunderstorm. Once the animation ends, the widget reverts to its original display. For details, see [Overview of Scene-based Widgets](arkts-ui-liveform-sceneanimation-overview.md).
+Scene-based widgets support scene animations. For example, a weather widget activates and triggers its weather animation effect when the weather changes to a thunderstorm. Once the animation ends, the widget reverts to its original display. For details, see [Developing a Scene-based Widget](arkts-ui-liveform-sceneanimation-development.md).
 
 ## Constraints
 - As an enhancement of the widget functionality, interactive widgets cannot overly depend on animations.

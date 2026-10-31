@@ -47,7 +47,7 @@ sendData(data: Record\<string, Object>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -107,7 +107,7 @@ setReceiveDataCallback(callback: (data: Record\<string, Object>) => void): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -161,7 +161,7 @@ setReceiveDataForResultCallback(callback: (data: Record<string, Object>) => Reco
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -201,7 +201,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -221,8 +221,8 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -271,7 +271,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -292,8 +292,8 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -344,7 +344,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -370,8 +370,8 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -429,7 +429,7 @@ Ability的终止方式包括以下几种情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -449,8 +449,8 @@ Ability的终止方式包括以下几种情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -504,7 +504,7 @@ Ability的终止方式包括以下几种情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -525,8 +525,8 @@ Ability的终止方式包括以下几种情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -582,7 +582,7 @@ Ability的终止方式包括以下几种情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -609,8 +609,8 @@ Ability的终止方式包括以下几种情况：
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -677,7 +677,7 @@ setWindowBackgroundColor(color: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -733,8 +733,8 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | The application is not system-app, can not use system-api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -804,8 +804,8 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | The application is not system-app, can not use system-api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -882,8 +882,8 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | The application is not system-app, can not use system-api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -955,7 +955,7 @@ getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**

@@ -2,12 +2,13 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=d7833d54288ec20034339cf7164e5aaef52722e9 translatedAt=2026-09-03T11:56:53.702Z pushedAt=2026-09-05T10:47:30.786Z -->
 
-The ErrorObserver module defines an observer to listen for application errors. It can be used as an input parameter in [ErrorManager.on](js-apis-app-ability-errorManager.md#errormanageronerror) to listen for errors that occur in the current application.
+Defines exception listening, which can be used as the input parameter of [errorManager.on('error')](js-apis-app-ability-errorManager.md#errormanageronerror) to listen for exceptions that occur in the current application. Through exception listening, developers can promptly capture and handle uncaught exceptions during application running and exceptions reported by the JavaScript layer, improving application stability and user experience.
 
 > **NOTE**
 > 
@@ -23,7 +24,9 @@ import { errorManager } from '@kit.AbilityKit';
 
 onUnhandledException(errMsg: string): void
 
-Called when an uncaught exception occurs in the application.
+Called when an uncaught exception occurs in the application. When an uncaught exception occurs in the application code, the system automatically invokes this method to pass the exception information to the developer for processing.
+
+The difference from [ErrorObserver.onException](#errorobserveronexception10) is that onUnhandledException captures only unhandled exceptions, and its parameter contains only an error message string, whereas onException captures all exceptions reported to the JavaScript layer, and its parameter is a complete Error object containing more information such as name, message, and stack. It is recommended to use onException when complete error information is required, and onUnhandledException when only a simple error message is required. The two can be used in combination.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -33,7 +36,7 @@ Called when an uncaught exception occurs in the application.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| errMsg | string | Yes| Message and error stack trace about the exception.|
+| errMsg | string | Yes | Information about the exception. |
 
 **Example**
 
@@ -42,8 +45,8 @@ import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
-  onUnhandledException(errorMsg) {
-    console.error('onUnhandledException, errorMsg: ', errorMsg);
+  onUnhandledException(errMsg) {
+    console.error('onUnhandledException, errMsg: ', errMsg);
   }
 };
 
@@ -58,7 +61,11 @@ try {
 
 onException?(errObject: Error): void
 
-Called when the application encounters an exception and reports it to the JavaScript layer.
+Called when the application encounters an exception and reports it to the JavaScript layer. This callback is optional. If it is not implemented, the default system exception handling logic is used.
+
+Can be used together with [ErrorObserver.onUnhandledException](#errorobserveronunhandledexception) to implement exception listening by registering an ErrorObserver object through errorManager.on('error').
+
+It is recommended to implement both callback methods to obtain complete exception information.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -77,8 +84,8 @@ import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
-  onUnhandledException(errorMsg) {
-    console.error('onUnhandledException, errorMsg: ', errorMsg);
+  onUnhandledException(errObject) {
+    console.error('onUnhandledException, errObject: ', errObject);
   },
   onException(errorObj) {
     console.error('onException, name: ', errorObj.name);

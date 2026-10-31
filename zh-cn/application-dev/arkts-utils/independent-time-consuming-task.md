@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用TaskPool执行独立耗时任务的方法：任务在子线程完成后将结果返回宿主线程，以图片加载为例演示任务函数定义、任务提交执行与结果接收的完整开发流程。"
+keywords: [独立耗时任务, TaskPool, 子线程执行, 图片加载, 结果返回, Concurrent装饰器]
+doctype: guide
+status: active
+---
+
 # 使用TaskPool执行独立的耗时任务
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 对于独立运行的耗时任务，任务完成后将结果返回给宿主线程。可采用以下方式实现。
 
@@ -78,8 +86,11 @@
                taskpool.execute(loadPictureTask).then((res: object) => {
                  // loadPicture方法的执行结果
                  iconItemSourceList = res as IconItemSource[];
+                 this.message = 'success';
+               }).catch(() => {
+                 console.error(`Failed to execute taskpool.`);
+                 this.message = 'fail';
                })
-               this.message = 'success';
              })
          }
          .width('100%')

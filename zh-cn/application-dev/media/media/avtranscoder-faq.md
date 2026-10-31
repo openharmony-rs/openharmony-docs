@@ -1,14 +1,21 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "汇总AVTranscoder视频转码过程中的常见问题，包括音频编码格式自动变更原因及转码失败后的处理建议，适用于转码功能排障场景。"
+keywords: [AVTranscoder, 转码, 常见问题, 音频编码格式, AAC, 转码失败, 错误处理, 格式支持]
+doctype: faq
+status: active
+---
 # 转码常见问题
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 应用发送视频进行转码，音频编码格式为什么变化
 
-在转码过程中，若未指定音频轨道格式，系统默认将其转换为AAC编码格式。
+在转码过程中，若未指定音频编码格式，系统默认将其转换为AAC编码格式。
 
 <!--RP2--><!--RP2End-->
 

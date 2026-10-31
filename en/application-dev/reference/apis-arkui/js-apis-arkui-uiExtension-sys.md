@@ -1,10 +1,11 @@
 # @ohos.arkui.uiExtension (uiExtension) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=14625634576e5f43c091573fa23d9b97482aee50 translatedAt=2026-08-29T09:39:33.382Z pushedAt=2026-09-01T01:49:21.636Z -->
 
 The **uiExtension** module provides APIs for the EmbeddedUIExtensionAbility (or UIExtensionAbility) to obtain the host application window information or the information about the corresponding **EmbeddedComponent** (or **UIExtensionComponent**).
 
@@ -22,7 +23,7 @@ import { uiExtension } from '@kit.ArkUI';
 
 ## WindowProxy
 
-Implements the proxy for the UIExtension host application window.
+Implements the proxy for the host window of UIExtension.
 
 ### hideNonSecureWindows
 
@@ -32,13 +33,15 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 
 > **NOTE**
 >
-> - A non-secure window refers to any window that may obstruct the [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md) or [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md), such as global floating windows, host subwindows, and dialog box windows created by the host application (excluding windows of these types created by system applications).
-> - When using the **EmbeddedComponent** or **UIExtensionComponent** to display sensitive information, call this API to hide non-secure windows and prevent information obstruction. Hidden non-secure windows will reappear when the **EmbeddedComponent** or **UIExtensionComponent** is hidden or destroyed.
-> - On PCs/2-in-1 devices, global floating windows within non-secure windows remain visible when **hideNonSecureWindows(true)** is called.
+> - A non-secure window refers to any window that may obstruct the [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md) (or [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)) component, such as global floating windows, host subwindows, and dialog box windows created by the host window (excluding windows of these types created by system applications).
+> - When using the **EmbeddedComponent** (or **UIExtensionComponent**) component to display sensitive operation prompts, you can choose to hide non-secure windows to protect the prompts from being obscured. When the **EmbeddedComponent** (or **UIExtensionComponent**) component is not displayed or is destroyed, the non-secure windows will be displayed again.
+> - For PCs/2-in-1 devices, when **hideNonSecureWindows(true)** is called, global floating windows within the non-secure windows are not hidden.
 
 **Required permissions**: ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -75,21 +78,21 @@ export default class EntryAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // Hide non-secure windows.
-    extensionHostWindow.hideNonSecureWindows(true).then(()=> {
+    extensionHostWindow.hideNonSecureWindows(true).then(() => {
       console.info(`Succeeded in hiding the non-secure windows.`);
-    }).catch((err: BusinessError)=> {
-      console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
-    })
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to hide the non-secure windows. Code: ${err.code}, message: ${err.message}`);
+    });
   }
   
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // Unhide non-secure windows.
-    extensionHostWindow.hideNonSecureWindows(false).then(()=> {
+    extensionHostWindow.hideNonSecureWindows(false).then(() => {
       console.info(`Succeeded in showing the non-secure windows.`);
-    }).catch((err: BusinessError)=> {
-      console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
-    })
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to show the non-secure windows. Code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -103,7 +106,9 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 >
 > With the watermark flag added, the watermark is applied on the full screen when the window is in the foreground, regardless of whether the window is displayed in full screen, floating, and split screen mode.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -111,7 +116,7 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 
 | Name| Type    | Mandatory| Description                                           |
 | ------ | ------- | --- | ------------------------------------------------ |
-| enable | boolean | Yes  | Whether to add or delete the flag. The value **true** means to add the watermark flag, and **false** means to delete the watermark flag.|
+| enable | boolean | Yes | Whether to add or delete the flag. The value **true** means to add the watermark flag, and **false** means to delete the watermark flag. |
 
 **Return value**
 
@@ -141,8 +146,8 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.setWaterMarkFlag(true).then(() => {
       console.info(`Succeeded in setting water mark flag of window.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to setting water mark flag of window. Cause:${JSON.stringify(err)}`);
-    })
+      console.error(`Failed to set water mark flag of window. Code: ${err.code}, message: ${err.message}`);
+    });
   }
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
@@ -150,8 +155,8 @@ export default class EntryAbility extends UIExtensionAbility {
     extensionHostWindow.setWaterMarkFlag(false).then(() => {
       console.info(`Succeeded in deleting water mark flag of window.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to deleting water mark flag of window. Cause:${JSON.stringify(err)}`);
-    })
+      console.error(`Failed to delete water mark flag of window. Code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```

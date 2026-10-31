@@ -82,14 +82,14 @@
         hdc shell bm dump -n com.example.myapplication
         ```
 
-    2. 通过查看输出中`name`为的`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
+    2. 通过查看输出中`name`为`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
 
         ```json5
         // 输出示例（skills部分）：
         // ...
-        "name": "EntryAbility",
-        // ...
         {
+          "name": "EntryAbility",
+          // ...
           "skills": [
             {
               "actions": [
@@ -158,7 +158,7 @@
     >
     > - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
-    <!-- @[Deep Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[Deep_Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     import { common } from '@kit.AbilityKit'

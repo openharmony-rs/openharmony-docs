@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=03549490c8da5aa8e7aea81503480383b2dce6d7 translatedAt=2026-09-04T02:45:00.946Z pushedAt=2026-09-09T09:11:03.644Z -->
 
 ## Overview
 
@@ -38,9 +39,9 @@ Defines the predicates for an RDB store.
 
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notlike) | Sets an **OH_Predicates** object to match a string that is not similar to the specified value.<br>This API is similar to the SQL **Not like** statement.|
-| [int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_glob) | Sets an **OH_Predicates** object to match a string containing a wildcard.<br>Different from **like**, the input parameters of this API are case-sensitive.|
-| [int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notglob) | Sets an **OH_Predicates** object to not match a string containing a wildcard.<br>Different from **Not Like**, the input parameters of this API are case-sensitive.|
+| [int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notlike) | Sets **OH_Predicates** to match fields whose data type is string and whose value is not similar to the specified value.<br>This method is similar to "Not Like" in SQL statements. |
+| [int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_glob) | Sets **OH_Predicates** to match the specified field (whose data type is string) whose value contains a wildcard.<br>Unlike the "Like" method, the input parameters of this method are case-sensitive. |
+| [int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notglob) | Sets **OH_Predicates** to not match the specified field (whose data type is string) whose value contains a wildcard.<br>Unlike the "Not Like" method, the input parameters of this method are case-sensitive. |
 | [int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)](#oh_predicates_having) | Sets an **OH_Predicates** object to filter grouped results by specified conditions.|
 
 ## Enum Description
@@ -73,7 +74,7 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 
 **Description**
 
-Sets an **OH_Predicates** object to match a string that is not similar to the specified value.<br>This API is similar to the SQL **Not like** statement.
+Sets the **OH_Predicates** to match fields whose data type is string and whose value is not similar to the specified value.<br>This method is similar to "Not Like" in SQL statements.
 
 **Since**: 20
 
@@ -82,15 +83,15 @@ Sets an **OH_Predicates** object to match a string that is not similar to the sp
 
 | Name                                            | Description                                                      |
 | -------------------------------------------------- | ---------------------------------------------------------- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance.|
-| const char *field                                  | Pointer to the column name in the database table.                                    |
-| const char *pattern                                | Pointer to the pattern used.                                    |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance. Must not be null. |
+| const char *field                                  | Column name in the database table. Must not be null.                                     |
+| const char *pattern                                | Specified value to be compared. Must not be null.                                     |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK**: success.<br>**RDB_E_INVALID_ARGS**: invalid parameter. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Predicates_Glob()
 
@@ -100,7 +101,7 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 
 **Description**
 
-Sets an **OH_Predicates** object to match a string containing a wildcard.<br>Different from **like**, the input parameters of this API are case-sensitive.
+Sets the **OH_Predicates** to match the specified field (of the string type) whose value contains wildcards.<br>Unlike the "Like" method, the input parameters of this method are case-sensitive.
 
 **Since**: 20
 
@@ -109,15 +110,15 @@ Sets an **OH_Predicates** object to match a string containing a wildcard.<br>Dif
 
 | Name                                            | Description                                                      |
 | -------------------------------------------------- | ---------------------------------------------------------- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance.|
-| const char *field                                  | Pointer to the column name in the database table.                                    |
-| const char *pattern                                | Pointer to the pattern used.                                      |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to an [OH_Predicates](capi-rdb-oh-predicates.md) instance. It must not be null. |
+| const char *field                                  | Column name in the database table. It must not be null.                                     |
+| const char *pattern                                | Value to match against the predicate. It must not be null.                                       |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Result code indicating whether the operation is successful.<br>**RDB_OK**: success.<br>**RDB_E_INVALID_ARGS**: invalid parameter. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Predicates_NotGlob()
 
@@ -127,7 +128,7 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 
 **Description**
 
-Sets an **OH_Predicates** object to not match a string containing a wildcard.<br>Different from **Not Like**, the input parameters of this API are case-sensitive.
+Sets the **OH_Predicates** to not match the specified field (of the string type) whose value contains wildcards.<br>Unlike the "Not Like" method, the input parameters of this method are case-sensitive.
 
 **Since**: 20
 
@@ -136,15 +137,15 @@ Sets an **OH_Predicates** object to not match a string containing a wildcard.<br
 
 | Name                                            | Description                                                      |
 | -------------------------------------------------- | ---------------------------------------------------------- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance.|
-| const char *field                                  | Pointer to the column name in the database table.                                    |
-| const char *pattern                                | Pointer to the pattern used.                                    |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance. Must not be null. |
+| const char *field                                  | Column name in the database table. Must not be null.                                     |
+| const char *pattern                                | Specified value to be compared. Must not be null.                                     |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Predicates_Having()
 
@@ -163,12 +164,13 @@ Sets an **OH_Predicates** object to filter grouped results by specified conditio
 
 | Name                                                | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates     | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance.  |
-| const char *conditions                                 | Pointer to the filter condition specified in the HAVING clause.                                |
-| const [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates     | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance. Must not be null.   |
+| const char *conditions                                 | Filter condition in the HAVING clause. Must not be null or an empty string.                                 |
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance. Must not be null. |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK**: success.<br>**RDB_E_INVALID_ARGS**: invalid parameter. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+

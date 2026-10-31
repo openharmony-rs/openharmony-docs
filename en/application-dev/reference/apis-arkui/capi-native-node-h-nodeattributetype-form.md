@@ -1,10 +1,12 @@
 # ArkUI_NodeAttributeType (Form Component Attribute)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao; @liyi0309-->
 <!--Designer: @houguobiao; @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bb3c2a8816ac5d1e8b05da72cf79834d93e12fa9 translatedAt=2026-08-25T02:20:00.123Z pushedAt=2026-08-26T03:24:17.184Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -31,18 +33,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Background color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format.|
+| .value[0].u32 | Background color, in 0xARGB format. |
 
 ## NODE_TOGGLE_SWITCH_POINT_COLOR
 
@@ -55,18 +56,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the circular thumb, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Color of the circular thumb, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the circular thumb, in 0xARGB format.|
+| .value[0].u32 | Color of the circular thumb, in 0xARGB format. |
 
 ## NODE_TOGGLE_VALUE
 
@@ -78,7 +78,6 @@ Toggle value of the component of the switch type. This attribute can be set, res
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -103,18 +102,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Background color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format.|
+| .value[0].u32 | Background color, in 0xARGB format. |
 
 ## NODE_BUTTON_LABEL
 
@@ -127,7 +125,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -138,7 +135,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .string| Default text content.|
+| .string | Default text content. |
 
 ## NODE_BUTTON_TYPE
 
@@ -151,18 +148,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Button style. The parameter type is [ArkUI_ButtonType](capi-native-type-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**.|
+| .value[0].i32 | Button type. The parameter type is [ArkUI_ButtonType](capi-button-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Button style. The parameter type is [ArkUI_ButtonType](capi-native-type-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**.|
+| .value[0].i32 | Button type. The parameter type is [ArkUI_ButtonType](capi-button-h.md#arkui_buttontype). The default value is **ARKUI_BUTTON_TYPE_CAPSULE**. |
 
 ## NODE_BUTTON_MIN_FONT_SCALE
 
@@ -174,7 +170,6 @@ Minimum font scale factor for the button. This attribute can be set, reset, and 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 18
-
 
 **Parameters**
 
@@ -199,7 +194,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -222,7 +216,6 @@ Whether the [CheckBox](arkui-ts/ts-basic-components-checkbox.md) component is se
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -247,18 +240,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the check box when it is selected, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Color of the check box when it is selected, in 0xARGB format, for example, **0xFF1122FF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the check box when it is selected, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Color of the check box when it is selected, in 0xARGB format, for example, **0xFF1122FF**. |
 
 ## NODE_CHECKBOX_UNSELECT_COLOR
 
@@ -271,18 +263,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**. |
 
 ## NODE_CHECKBOX_MARK
 
@@ -295,12 +286,11 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**. |
 | .value[1]?.f32 | Size of the internal mark, in vp. This parameter is optional.|
 | .value[2]?.f32 | Stroke width of the internal mark, in vp. This parameter is optional. The default value is **2**.|
 
@@ -308,7 +298,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**. |
 | .value[1].f32 | Size of the internal mark, in vp.|
 | .value[2].f32 | Stroke width of the internal mark, in vp. The default value is **2**.|
 
@@ -323,18 +313,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape).|
+| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape).|
+| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).|
 
 ## NODE_CHECKBOX_NAME
 
@@ -346,7 +335,6 @@ Name of the **CheckBox** component. This attribute can be set, reset, and obtain
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -371,18 +359,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .string | Component name.|
+| .string | Component name. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .string | Component name.|
+| .string | Component name. |
 
 ## NODE_SLIDER_BLOCK_COLOR
 
@@ -395,18 +382,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the slider thumb, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Color of the slider thumb, in 0xARGB format, for example, **0xFF1122FF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the slider thumb, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Color of the slider thumb, in 0xARGB format, for example, **0xFF1122FF**. |
 
 ## NODE_SLIDER_TRACK_COLOR
 
@@ -419,18 +405,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Background color, in 0xARGB format, for example, **0xFF1122FF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Background color, in 0xARGB format, for example, **0xFF1122FF**. |
 
 ## NODE_SLIDER_SELECTED_COLOR
 
@@ -443,18 +428,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the selected part of the slider track, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Color of the selected part of the slider track, in 0xARGB format, for example, **0xFF1122FF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the selected part of the slider track, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Color of the selected part of the slider track, in 0xARGB format, for example, **0xFF1122FF**. |
 
 ## NODE_SLIDER_SHOW_STEPS
 
@@ -466,7 +450,6 @@ Whether to display the step scale value. This attribute can be set, reset, and o
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -491,14 +474,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-native-type-h.md#arkui_sliderblockstyle).|
+| .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-slider-h.md#arkui_sliderblockstyle).|
 | .string? | This parameter is optional, and its value depends on the shape.<br>**ARKUI_SLIDER_BLOCK_STYLE_IMAGE**: image resource of the slider thumb. Example: /pages/common/icon.png.<br>**ARKUI_SLIDER_BLOCK_STYLE_SHAPE**: custom shape of the slider thumb. In this case, the width and height values in the defined shape do not represent the actual size of the thumb; they are scaled proportionally to ensure the thumb displays correctly.<br>There are four types. For the path type, **.string** indicates the command string for drawing the path.|
-| .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
+| .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-visual-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
 | .value[2].f32 | Width of the rectangle, circle, ellipse, or path type.|
 | .value[3].f32 | Height of the rectangle, circle, ellipse, or path type.|
 | .value[4].f32 | Width of the rounded corner of the rectangle type.|
@@ -508,9 +490,9 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-native-type-h.md#arkui_sliderblockstyle).|
+| .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-slider-h.md#arkui_sliderblockstyle).|
 | .string? | This parameter is optional, and its value depends on the shape.<br>**ARKUI_SLIDER_BLOCK_STYLE_IMAGE**: image resource of the slider thumb. Example: /pages/common/icon.png.<br>**ARKUI_SLIDER_BLOCK_STYLE_SHAPE**: custom shape of the slider thumb.<br>There are four types. For the path type, **.string** indicates the command string for drawing the path.|
-| .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
+| .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-visual-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
 | .value[2].f32 | Width of the rectangle, circle, ellipse, or path type.|
 | .value[3].f32 | Height of the rectangle, circle, ellipse, or path type.|
 | .value[4].f32 | Width of the rounded corner of the rectangle type.|
@@ -526,7 +508,6 @@ Current value of the slider. This attribute can be set, reset, and obtained as r
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -551,7 +532,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -574,7 +554,6 @@ Maximum value of the slider. This attribute can be set, reset, and obtained as r
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -599,7 +578,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -623,18 +601,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Display style. The parameter type is [ArkUI_SliderDirection](capi-native-type-h.md#arkui_sliderdirection).|
+| .value[0].i32 | Slider direction. The parameter type is [ArkUI_SliderDirection](capi-slider-h.md#arkui_sliderdirection). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Display style. The parameter type is [ArkUI_SliderDirection](capi-native-type-h.md#arkui_sliderdirection).|
+| .value[0].i32 | Slider direction. The parameter type is [ArkUI_SliderDirection](capi-slider-h.md#arkui_sliderdirection). |
 
 ## NODE_SLIDER_REVERSE
 
@@ -646,7 +623,6 @@ Whether the slider values are reversed. This attribute can be set, reset, and ob
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -671,18 +647,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Display style. The parameter type is [ArkUI_SliderStyle](capi-native-type-h.md#arkui_sliderstyle).|
+| .value[0].i32 | Slider style. The parameter type is [ArkUI_SliderStyle](capi-slider-h.md#arkui_sliderstyle).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Display style. The parameter type is [ArkUI_SliderStyle](capi-native-type-h.md#arkui_sliderstyle).|
+| .value[0].i32 | Slider style. The parameter type is [ArkUI_SliderStyle](capi-slider-h.md#arkui_sliderstyle).|
 
 ## NODE_SLIDER_TRACK_THICKNESS
 
@@ -694,7 +669,6 @@ Track thickness of the slider. This attribute can be set, reset, and obtained as
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -720,18 +694,17 @@ To enable haptic feedback, you must add **"name": "ohos.permission.VIBRATE"** un
 
 **Since:** 18
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Whether to enable haptic feedback. **true** to enable; **false** otherwise. The default value is **true**.|
+| .value[0].i32 | Whether to enable haptic feedback. **true** to enable; **false** otherwise. The default value is **true**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Whether haptic feedback is enabled.|
+| .value[0].i32 | Whether haptic feedback is enabled. |
 
 ## NODE_SLIDER_PREFIX
 
@@ -743,7 +716,6 @@ Custom prefix component for the start edge of the slider.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -762,7 +734,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -775,11 +746,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_SLIDER_BLOCK_LINEAR_GRADIENT_COLOR = 17016
 ```
 
-Color of the slider thumb. This attribute can be set, reset, and obtained as required through APIs.<br>
+Linear gradient color of the slider thumb. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
-
 
 **Parameters**
 
@@ -804,7 +774,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 21
 
-
 **Parameters**
 
 | Name| Description|
@@ -827,7 +796,6 @@ Linear gradient color of the selected part of the slider track. This attribute c
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
-
 
 **Parameters**
 
@@ -852,7 +820,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -876,22 +843,21 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0]?.u32 | Color of the background when the radio button is selected, in 0xARGB format. The default value is **0xFF007DFF**.|
-| .value[1]?.u32 | Color of the border when the radio button is deselected, in 0xARGB format. The default value is **0xFF182431**.|
-| .value[2]?.u32 | Color of the indicator when the radio button is selected, in 0xARGB format. The default value is **0xFFFFFFFF**.|
+| .value[0]?.u32 | Color of the background when the radio button is selected, in 0xARGB format. The default value is **0xFF007DFF**. |
+| .value[1]?.u32 | Color of the border when the radio button is deselected, in 0xARGB format. The default value is **0xFF182431**. |
+| .value[2]?.u32 | Color of the indicator when the radio button is selected, in 0xARGB format. The default value is **0xFFFFFFFF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the background when the radio button is selected, in 0xARGB format. The default value is **0xFF007DFF**.|
-| .value[1].u32 | Color of the border when the radio button is deselected, in 0xARGB format. The default value is **0xFF182431**.|
-| .value[2].u32 | Color of the indicator when the radio button is selected, in 0xARGB format. The default value is **0xFFFFFFFF**.|
+| .value[0].u32 | Color of the background when the radio button is selected, in 0xARGB format. The default value is **0xFF007DFF**. |
+| .value[1].u32 | Color of the border when the radio button is deselected, in 0xARGB format. The default value is **0xFF182431**. |
+| .value[2].u32 | Color of the indicator when the radio button is selected, in 0xARGB format. The default value is **0xFFFFFFFF**. |
 
 ## NODE_RADIO_VALUE
 
@@ -903,7 +869,6 @@ Current value of the radio button. This attribute can be set, reset, and obtaine
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -928,7 +893,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -951,7 +915,6 @@ Name of the **CheckboxGroup** component. This attribute can be set, reset, and o
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -976,7 +939,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
-
 **Parameters**
 
 | Name| Description|
@@ -1000,18 +962,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the selected state, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Color of the selected state, in 0xARGB format, for example, **0xFF1122FF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color for the selected state of the [CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md) component, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Color for the selected state of the [CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md) component, in 0xARGB format, for example, **0xFF1122FF**. |
 
 ## NODE_CHECKBOX_GROUP_UNSELECTED_COLOR
 
@@ -1024,18 +985,17 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**. |
 
 ## NODE_CHECKBOX_GROUP_MARK
 
@@ -1048,12 +1008,11 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**. |
 | .value[1]?.f32 | Size of the internal mark, in vp. This parameter is optional.|
 | .value[2]?.f32 | Stroke width of the internal mark, in vp. This parameter is optional. The default value is **2**.|
 
@@ -1061,7 +1020,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**.|
+| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFF1122FF**. |
 | .value[1]?.f32 | Size of the internal mark, in vp. This parameter is optional.|
 | .value[2]?.f32 | Stroke width of the internal mark, in vp. This parameter is optional. The default value is **2**.|
 
@@ -1076,15 +1035,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 15
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape).|
+| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape).|
+| .value[0].i32 | Component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).|

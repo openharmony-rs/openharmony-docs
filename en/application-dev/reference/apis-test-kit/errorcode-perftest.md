@@ -6,6 +6,7 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fa715e076d4d88419e10085f9538284e3293d667 translatedAt=2026-07-29T01:30:03.177Z pushedAt=2026-07-30T03:36:37.692Z -->
 
 > **NOTE**
 >
@@ -27,9 +28,10 @@ The bundle name of the application cannot be obtained.
 
 **Solution**
 
-Run the **ps** command to check whether the application process exists. Ensure that the application process exists.
+Check whether the test application is properly installed and available, and ensure that the bundle name of the test application can be obtained.
 
 ## 32400002 Internal Error
+
 **Error Message**
 
 Internal error.
@@ -41,14 +43,17 @@ An internal error occurs in the framework.
 **Possible Causes**
 
 1. IPC transmission fails.
+
 2. The **PerfTest** object does not exist.
 
 **Solution**
 
 1. Retry the IPC transmission.
-2. Check whether the **PerfTest** object has been destroyed. If yes, create a **PerfTest** object again. For details, see the [create](js-apis-perftest.md#create) API.
+
+2. Check whether the **PerfTest** object has been destroyed. If so, create a new **PerfTest** object using [PerfTest.create](js-apis-perftest.md#create).
 
 ## 32400003 Parameter Verification Failed
+
 **Error Message**
 
 Parameter verification failed.
@@ -59,31 +64,34 @@ Parameter verification failed.
 
 **Possible Causes**
 
-The parameter type is incorrect or the parameter value is out of the specified range.
+The parameter type is incorrect, or the parameter value is out of the specified range.
 
 **Solution**
 
-Check whether the input parameters of the API meet the requirements.
+Check whether the type and value range of the input parameter meet the API requirements.
 
 ## 32400004 Failed to Execute the Callback
+
 **Error Message**
 
 Failed to execute the callback.
 
 **Description**
 
-Failed to execute the callback.
+The callback fails to be executed.
 
 **Possible Causes**
 
 1. An exception is thrown in the callback.
+
 2. The callback execution times out.
 
 **Solution**
 
-Check the internal logic of the callback to ensure that no exception is thrown and that the callback execution does not time out.
+Check the internal logic of the callback, including the exception handling and timeout control mechanisms, to ensure that no exception is thrown and that the callback execution does not time out.
 
 ## 32400005 Failed to Collect Performance Data
+
 **Error Message**
 
 Failed to collect metric data.
@@ -101,6 +109,7 @@ The application process does not exist during performance data collection.
 Run the **ps** command to check whether the application process exists during performance data collection. Ensure that the application process exists.
 
 ## 32400006 Failed to Obtain Performance Data
+
 **Error Message**
 
 Failed to obtain the measurement result.
@@ -118,6 +127,7 @@ The data collection is not complete.
 Ensure that the [PerfTest.run](js-apis-perftest.md#run) API has been executed and no exception is thrown. Ensure that the data collection is complete before obtaining the specified data.
 
 ## 32400007 API Does Not Support Concurrent Calls
+
 **Error Message**
 
 The API does not support concurrent calls.

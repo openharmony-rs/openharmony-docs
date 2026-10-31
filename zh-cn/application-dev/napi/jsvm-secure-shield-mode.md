@@ -1,32 +1,40 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "说明JSVM坚盾守护模式的功能限制与启用方法。该模式面向高安全需求用户，开启后全局禁用JIT与WebAssembly，并指导开发者评估应用在此模式下的兼容性与性能表现。"
+keywords: [坚盾守护模式, JSVM, JIT, WebAssembly, 安全限制, 功能限制, 兼容性评估]
+doctype: guide
+status: active
+---
+
 # JSVM-API 坚盾守护模式
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 坚盾守护模式是为高安全需求用户设计的系统级安全防护方案。该模式通过实施严格的功能限制，显著增强系统安全性，有效防范针对远程攻击面的各类威胁。在坚盾守护模式下，JSVM 增加了功能限制，需要开发者评估应用在坚盾守护模式下的可用性。
 
 ## 启用坚盾守护模式
 
 要启用坚盾守护模式，请按以下路径操作：
-1. 进入手机系统设置
-2. 选择"隐私和安全"选项
-3. 点击"坚盾守护模式"并开启
+1. 进入手机系统设置。
+2. 选择"隐私和安全"选项。
+3. 点击"坚盾守护模式"并开启。
 
 ## 坚盾守护模式下的功能限制
 
 为降低JSVM受攻击风险，坚盾守护模式将实施以下关键安全限制：
-- 全面禁用即时编译(JIT)功能，包括已获取 ACL 权限的应用程序
-- 暂停 WebAssembly 支持（当前版本中 WebAssembly 依赖 JIT 功能实现）
+- 全面禁用即时编译（JIT）功能，包括已获取 ACL 权限的应用程序。
+- 暂停 WebAssembly 支持（当前版本中 WebAssembly 依赖 JIT 功能实现）。
 
 ## 应用兼容性评估指南
 
 在坚盾守护模式下运行应用程序时，建议进行以下兼容性检查：
 1. JavaScript 性能评估：
-    - 测试应用在限制环境中的运行效率
-    - 优化可能存在的性能瓶颈
+    - 测试应用在限制环境中的运行效率。
+    - 优化可能存在的性能瓶颈。
 
 2. WebAssembly 兼容性检查：
     - 静态代码分析：检查项目中的 WebAssembly 相关API调用，与第三方库的 Wasm 依赖情况。

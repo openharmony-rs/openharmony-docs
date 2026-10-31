@@ -2,11 +2,12 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=609b93af78bb4044c48524ed67f55f94adaac019 translatedAt=2026-09-14T01:52:41.357Z pushedAt=2026-09-14T10:03:33.571Z -->
 
-The **deviceStatus** module provides the device status awareness functionality.
+This module provides the device status awareness capability. By listening for device sensor data, it provides applications with awareness capabilities such as device posture.
 
 > **NOTE**
 >
@@ -51,9 +52,9 @@ For details about the error codes, see [Device Status Awareness Error Codes](err
       deviceStatus.getDeviceRotationRadian().then((radian: deviceStatus.DeviceRotationRadian) => {
          console.info('x:' + radian.x + ' y:' + radian.y + ' z:' + radian.z);
       }).catch((err: BusinessError) => {
-         console.error('get device rotation radian failed, errmsg:' + err);
-      })
+         console.error(`Failed to get device rotation radians. Code: ${err.code}, message: ${err.message}`);
+      });
    } catch (err) {
-      console.error('invoke failed, errmsg:' + err)
+      console.error(`Failed to invoke. Code: ${err.code}, message: ${err.message}`);
    }
    ```

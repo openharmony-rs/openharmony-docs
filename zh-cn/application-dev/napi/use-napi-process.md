@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API实现ArkTS/JS与C/C++跨语言交互的完整开发流程，包括创建Native C++工程、模块注册、接口映射和ArkTS侧调用，帮助开发者快速上手Node-API开发。"
+keywords: [Node-API, 开发流程, 跨语言交互, 模块注册, Native工程, C++, ArkTS调用, napi_module_register]
+doctype: guide
+status: active
+---
+
 # 使用Node-API实现跨语言交互开发流程
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 使用Node-API实现跨语言交互，首先需要按照Node-API的机制实现模块的注册和加载等相关动作。

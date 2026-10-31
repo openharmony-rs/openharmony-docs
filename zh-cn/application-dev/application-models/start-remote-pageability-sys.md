@@ -12,10 +12,10 @@
 启动远程PageAbility同样通过featureAbility中的startAbility接口实现。
 
 
-除引入'\@ohos.ability.featureAbility'外，还需引入'\@ohos.distributedHardware.deviceManager'，通过DeviceManager（该组件提供帐号无关的分布式设备的认证组网能力）的[getTrustedDeviceListSync](../reference/apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)接口（获取信任设备列表）获取远端的deviceId，写入Want中，用于启动远程PageAbility。
+除引入'\@ohos.ability.featureAbility'外，还需引入'\@ohos.distributedHardware.deviceManager'，通过DeviceManager（该组件提供账号无关的分布式设备的认证组网能力）的[getTrustedDeviceListSync()](../reference/apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)接口（获取信任设备列表）获取远端的deviceId，写入Want中，用于启动远程PageAbility。
 
 
-由于当前DeviceManager的[getTrustedDeviceListSync](../reference/apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)接口仅对系统应用开放，故现阶段非系统应用无法获取其他设备信息，无远程启动设备选择入口，远程启动Ability开发。
+由于当前DeviceManager的[getTrustedDeviceListSync()](../reference/apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)接口仅对系统应用开放，故现阶段非系统应用无法获取其他设备信息，无远程启动设备选择入口，远程启动Ability开发。
 
 
   **表1** featureAbility接口说明
@@ -47,7 +47,7 @@
 
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| requestPermissionsFromUser(permissions:&nbsp;Array&lt;string&gt;,&nbsp;<br>requestCode:&nbsp;number,&nbsp;resultCallback:&nbsp;AsyncCallback&lt;<br>PermissionRequestResult&gt;):&nbsp;void | 以callback形式从系统请求某些权限，详见对应[接口文档](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextrequestpermissionsfromuser7-1)。 |
+| requestPermissionsFromUser(permissions:&nbsp;Array&lt;string&gt;,&nbsp;<br>requestCode:&nbsp;number,&nbsp;resultCallback:&nbsp;AsyncCallback&lt;<br>PermissionRequestResult&gt;):&nbsp;void | 以callback形式从系统请求某些权限，详见对应[requestPermissionsFromUser()](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextrequestpermissionsfromuser7)。 |
 
 
 如下示例代码展示了向用户申请数据同步权限的方法：
@@ -87,7 +87,7 @@ struct PagePageAbilitySecond {
     }
     let context = featureAbility.getContext();
     context.requestPermissionsFromUser(requestPermissions, 1, (error, data) => {
-      hilog.info(domain, TAG, 'error:' + error.message + ',data:' + JSON.stringify(data));
+      hilog.error(domain, TAG, 'error:' + error.message + ',data:' + JSON.stringify(data));
       hilog.info(domain, TAG, 'data requestCode:' + data.requestCode);
       hilog.info(domain, TAG, 'data permissions:' + data.permissions);
       hilog.info(domain, TAG, 'data authResults:' + data.authResults);
@@ -128,7 +128,7 @@ struct PagePageAbilitySecond {
       if (typeof dmClass === 'object' && dmClass !== null) {
         let list = dmClass.getAvailableDeviceListSync();
         if (typeof (list) == undefined || list.length == 0) {
-          hilog.info(domain, TAG, 'EntryAbility onButtonClick getRemoteDeviceId err: list is null');
+          hilog.error(domain, TAG, 'EntryAbility onButtonClick getRemoteDeviceId err: list is null');
           return;
         }
         hilog.info(domain, TAG, `EntryAbility onButtonClick getRemoteDeviceId success[${list.length}]:` + JSON.stringify(list[0]));
@@ -139,10 +139,10 @@ struct PagePageAbilitySecond {
           message: this.deviceID
         });
       } else {
-        hilog.info(domain, TAG, 'EntryAbility onButtonClick getRemoteDeviceId err: dmClass is null');
+        hilog.error(domain, TAG, 'EntryAbility onButtonClick getRemoteDeviceId err: dmClass is null');
       }
     } catch (error) {
-      hilog.info(domain, TAG, `getRemoteDeviceId error, error=${error}, message=${error.message}`);
+      hilog.error(domain, TAG, `getRemoteDeviceId error, error=${error}, message=${error.message}`);
     }
   }
 

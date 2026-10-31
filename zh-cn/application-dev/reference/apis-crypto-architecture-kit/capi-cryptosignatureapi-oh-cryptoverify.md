@@ -13,7 +13,7 @@ typedef struct OH_CryptoVerify OH_CryptoVerify
 
 ## 概述
 
-定义验签结构体。
+验签结构体，表示验签上下文。
 
 **起始版本：** 12
 

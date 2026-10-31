@@ -10,7 +10,7 @@
 
 Below is the typical directory structure (**entry/src/main/js/Widget**) of a JS service widget.
 
-```
+```text
 ├─widget
 │   ├─common
 │   │   └─widget.png
@@ -53,7 +53,6 @@ Application resources can be accessed via an absolute or relative path. In this 
 - In a **.css** file, use the **url()** function to create a URL, for example, **url(/common/test.png)**.
 
 > **NOTE**
->
 > When code file A needs to reference code file B:
 >
 > - If code files A and B are in the same directory, you can use either a relative or absolute path in code file B to reference resource files.
@@ -64,6 +63,6 @@ Application resources can be accessed via an absolute or relative path. In this 
 
 ## Configuration Files
 
-If you are developing a widget in the FA model, configure the **config.json** file. For details, see [Overview of Application Configuration Files in FA Model](../../../quick-start/application-configuration-file-overview-fa.md).
+If you are developing a widget in the FA model, configure the **config.json** file. For details, see [Application Configuration File Overview (FA Model)](../../../quick-start/application-configuration-file-overview-fa.md).
 
-If you are developing a widget in the stage model, configure **ExtensionAbility** under **extensionAbilities** in the **module.json5** file. For details, see [Overview of Application Configuration Files in Stage Model](../../../quick-start/application-configuration-file-overview-stage.md).
+If you are developing a widget in the stage model, configure **ExtensionAbility** under **extensionAbilities** in the **module.json5** file. For details, see [Application Configuration Files (Stage Model)](../../../quick-start/application-configuration-file-overview-stage.md).

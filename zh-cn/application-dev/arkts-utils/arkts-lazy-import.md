@@ -1,10 +1,18 @@
-# 延迟加载（lazy import）
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS延迟加载（lazy import）特性，使文件在冷启动阶段不被加载而按需加载，缩短冷启动时间，适用于优化应用启动性能场景。"
+keywords: [ArkTS, lazy import, 延迟加载, 冷启动, 性能优化, 按需加载, 启动性能, 模块加载]
+doctype: guide
+status: active
+---
+
+# 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @DaiHuina1997-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 随着应用程序功能的扩展，冷启动时间显著增加，主要是因为启动初期加载了大量未实际执行的模块。这不仅延长了应用的初始化时间，还浪费了资源。需要精简加载流程，剔除非必需的文件执行，优化冷启动性能，确保用户体验流畅。
 
@@ -12,7 +20,7 @@
 >
 > - 延迟加载特性在API 12版本开始支持。
 >
-> - 开发者如需在API 12上使用lazy import语法，需在工程中配置"compatibleSdkVersionStage": "beta3"，否则将无法通过编译。参考[DevEco Studio build-profile.json5配置文件说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5#section511142752919)。
+> - 开发者如需在API 12上使用lazy import语法，需在工程中配置"compatibleSdkVersionStage": "beta3"，否则将无法通过编译。请参考DevEco Studio [build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5#section511142752919)配置。
 > - 针对API version大于12的工程，开发者可直接使用lazy import语法，无需再进行其他配置。
 
 ## 功能特性
@@ -21,7 +29,7 @@
 
 ## 使用方式
 
-开发者可以利用[DevEco Profiler展示冷启动过程文件加载情况](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-launch)、[可延迟加载文件检测](#可延迟加载文件检测)、<!--Del-->[<!--DelEnd-->Trace<!--Del-->](../performance/common-trace-using-instructions.md)<!--DelEnd-->工具或日志记录等手段，识别冷启动期间未被实际调用的文件<!--RP1-->，分析方法可参考[可延迟加载文件检测](#可延迟加载文件检测)<!--RP1End-->。通过对这些数据的分析，开发者可以精准定位启动阶段不必预先加载的文件列表，并在这些文件的调用点增加lazy标识。但需要注意，后续执行的加载是同步加载，可能阻塞任务执行（如单击任务，触发了延迟加载，那么运行时会去执行冷启动未加载的文件，从而增加耗时），因此是否使用lazy需要开发者自行评估。
+开发者可以参考[Launch模板基本操作](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-launch)、[可延迟加载文件检测](#可延迟加载文件检测)、<!--Del-->[<!--DelEnd-->常用Trace使用指导<!--Del-->](../performance/common-trace-using-instructions.md)<!--DelEnd-->，利用工具或日志记录等手段，识别冷启动期间未被实际调用的文件<!--RP1-->，分析方法可参考[可延迟加载文件检测](#可延迟加载文件检测)<!--RP1End-->。通过对这些数据的分析，开发者可以精准定位启动阶段不必预先加载的文件列表，并在这些文件的调用点增加lazy标识。但需要注意，后续执行的加载是同步加载，可能阻塞任务执行（如单击任务，触发了延迟加载，那么运行时会去执行冷启动未加载的文件，从而增加耗时），因此是否使用lazy需要开发者自行评估。
 
 > **说明：**
 >
@@ -39,15 +47,19 @@ import { c } from "./mod2";         // "mod2" 执行
 // ...
 
 console.info("main executed");
-while (false) {
+function useModules(): void{
     let xx = a;
     let yy = c;
 }
+```
 
+```typescript
 // mod1.ets
 export let a = "mod1 executed"
 console.info(a);
+```
 
+```typescript
 // mod2.ets
 export let c = "mod2 executed"
 console.info(c);
@@ -75,7 +87,7 @@ import { b } from './mod1'; // 'mod1' 执行
 
 ``` TypeScript
 console.info('main executed');
-while (false) {
+function useModules(): void{
   let xx = a;
   let yy = c;
   let zz = b;
@@ -146,7 +158,7 @@ lazy-import 相较于动态加载的优势：
 
 - 延迟加载共享模块或依赖路径内包含共享模块。
 
-    延迟加载对于共享模块依旧生效，使用限制参考[共享模块开发指导](../arkts-utils/arkts-sendable-module.md)。
+    延迟加载对于共享模块依旧生效，使用限制参考[共享模块](../arkts-utils/arkts-sendable-module.md)开发指导。
 
 ### 错误示例
 
@@ -186,11 +198,15 @@ import type lazy { obj } from "./mod";    // 不支持，编译器、应用编�
 export let a = "Variable A from mod1";
 export let b = "Variable B from mod1";
 console.info("mod1 executed");
+```
 
+```typescript
 // mod2.ets
 export let c = "Variable C from mod2";
 console.info("mod2 executed");
+```
 
+```typescript
 // main.ets
 import lazy { a } from "./mod1";    // 从"mod1"内获取a对象，标记为延迟加载
 import { c } from "./mod2";
@@ -300,7 +316,7 @@ ReferenceError: module environment is undefined
 
 ### 检测步骤
 
-1. 打开工具：获取[hdc工具](../dfx/hdc.md#环境准备)，连接设备，在终端直接输入下方命令执行。
+1. 打开工具：获取[hdc](../dfx/hdc.md)工具，连接设备，在终端直接输入下方命令执行。
 
     ```shell
     hdc shell param set persist.ark.properties 0x200105c
@@ -312,7 +328,7 @@ ReferenceError: module environment is undefined
     hdc shell param set persist.ark.importDuration 1000
     ```
 
-3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundlename}/files/）生成主/子线程对应文件。
+3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundleName}/files/）生成主/子线程对应的文件。
 
     > **注意：**
     >
@@ -403,7 +419,7 @@ export function func() {
 <----Summary----> Total file number: 13, total time: 2ms, including used file:12, cost time: 1ms, and unused file: 1, cost time: 1ms
 ```
 
-上述信息表示应用当前线程在冷启动抓取时间段内加载了13个文件，共耗时2ms。其中，12个文件导出内容被其他文件加载使用，执行这12个文件共耗时1ms；1个文件执行完成，但是其导出内容没有被其他文件在冷启阶段用到，耗时1ms。
+上述信息表示应用当前线程在冷启动抓取时间段内加载了13个文件，共耗时2ms。其中，12个文件导出内容被其他文件加载使用，执行这12个文件共耗时1ms；1个文件执行完成，但是其导出内容没有被其他文件在冷启动阶段用到，耗时1ms。
 
 ### 被使用文件
 
@@ -422,8 +438,8 @@ export function func() {
     
     ``` TypeScript
     // entry/src/main/ets/pages/outer1.ets
-    import { a } from './1' // outer文件从1文件中加载了a变量
-    console.info('example ', a); // a变量在outer文件执行时就被使用
+    import { a } from './1' // outer1文件从1文件中加载了a变量
+    console.info('example ', a); // a变量在outer1文件执行时就被使用
     ```
 
     ```ts
@@ -446,8 +462,8 @@ export function func() {
     
     ``` TypeScript
     // entry/src/main/ets/pages/outer1.ets
-    import { a } from './1' // outer文件从1文件中加载了a变量
-    console.info('example ', a); // a变量在outer文件执行时就被使用
+    import { a } from './1' // outer1文件从1文件中加载了a变量
+    console.info('example ', a); // a变量在outer1文件执行时就被使用
     ```
 
     <!-- @[scenario_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/innerinner.ets) -->
@@ -565,7 +581,9 @@ export function func() {
 ```javascript
 // A.ets
 export let A = "A";
+```
 
+```javascript
 // Index.ets
 import { A } from "./A";
 
@@ -615,7 +633,9 @@ struct Index {
 ```javascript
 // A.ets
 export let A = "A";
+```
 
+```javascript
 // Index.ets
 import lazy { A } from "./A"; // 此处添加lazy关键字，标记该文件可延迟加载
 
@@ -643,7 +663,7 @@ struct Index {
 
 | 优化效果 | 加载文件耗时（微秒μs） |
 |---------| --------------------- |
-| 优化前 | 412us              |
-| 优化后 | 350us              |
+| 优化前 | 412μs              |
+| 优化后 | 350μs              |
 
 根据上述优化前后案例Trace图对比分析，使用延迟加载后应用冷启动时不再加载A文件，在资源加载阶段减少因加载冗余文件产生的耗时约15%，提高了应用冷启动性能。（由于案例仅演示场景，优化数据仅做参考，在实际业务中随着引用文件的复杂度提高，引用文件数量增多，优化效果也会随之提升。）

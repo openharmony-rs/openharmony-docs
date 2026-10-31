@@ -278,8 +278,8 @@ import { call } from '@kit.TelephonyKit';
 
 | 错误码ID | 错误信息（此处仅提供错误抛出的关键信息） |
 | -------- | ---------------------------------------- |
-| 1300001  | This is repeat operation.                |
-| 1300002  | This window state is abnormally.         |
+| 1300001  | This is a repeat operation. <br>适用版本：x-y （SDK注释中错误码如标记为[since x-y]时，采用此方式。）        |
+| 1300002  | This window state is abnormal. <br>适用版本：y+  （SDK注释中错误码如标记为[since y]时，采用此方式。）   |
 
 **示例：**
 
@@ -555,6 +555,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 | 变更说明                                                                 | 日期         |
 | ----------------------------------------------------------------------- | ------------ |
+| 增加错误码适用版本格式的写法。 | 2026/05/21 |
 | 增加API版本26.0.0后，三段式版本说明的写法。 | 2026/03/20 |
 | @deprecated标签说明细化，补充表格中的写法。 | 2025/12/03 |
 | 新增被装饰器修饰的Class/Interface/属性写法。 | 2025/09/19|

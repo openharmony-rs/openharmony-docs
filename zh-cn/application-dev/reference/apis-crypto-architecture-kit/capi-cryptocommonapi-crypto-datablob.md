@@ -27,7 +27,7 @@ typedef struct Crypto_DataBlob {...} Crypto_DataBlob
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t* data | 数据Blob的内容。 |
-| size_t len | 数据Blob的长度。 |
+| uint8_t *data | 数据缓冲区。 |
+| size_t len | 数据长度。 |
 
 

@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-10-29T09:03:51.911Z pushedAt=2026-10-30T03:00:11.261Z nl=1 -->
 
 
 
@@ -34,8 +35,8 @@ Decomposing elements on a page and implementing each basic element in sequence c
 
 **Figure 1** Page layout decomposition
 
-![en-us_image_0000001070558189](figures/en-us_image_0000001070558189.png)
+![Layout-Description-2](figures/Layout-Description-2.png)
 
 **Figure 2** Layout of the comment area
 
-![en-us_image_0000001063442797](figures/en-us_image_0000001063442797.png)
+![Layout-Description-1](figures/Layout-Description-1.png)

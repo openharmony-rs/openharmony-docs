@@ -2,16 +2,19 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
-<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Owner: @piggyguy; @lushi871202; @hehongyang3-->
+<!--Designer: @piggyguy; @lushi871202; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=5a4264c9dc0635cb9b4fb88fb3431f8701ad9d40 translatedAt=2026-08-29T09:36:45.687Z pushedAt=2026-08-31T11:51:26.867Z -->
 
-Provides APIs for listening for UI component behavior changes. [UIObserver](./arkts-apis-uicontext-uiobserver.md) is recommended for component observation.
+Provides APIs for listening for UI component behavior changes, including listening for page states, scroll events, page routing, screen pixel density, layout and drawing, page switching, and **TabContent** state changes. It is suitable for scenarios where UI state changes need to be sensed without intruding into the component service logic. [UIObserver](./arkts-apis-uicontext-uiobserver.md) is recommended for component observation.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 >
 > - UIObserver can only listen for relevant information within the current process and does not support obtaining information in cross-process scenarios<!--Del--> such as [UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)<!--DelEnd-->.
 
@@ -57,7 +60,7 @@ Enumerates the scroll event types.
 
 ## RouterPageState
 
-Enumerates the states of a page during routing. **RouterPageState** is used in [RouterPageInfo](#routerpageinfo) as the callback parameter for passive observation via [routerPageUpdate](#uiobserveronrouterpageupdate11).
+Enumerates the states of a page during routing. **RouterPageState** is used in [RouterPageInfo](#routerpageinfo) as the callback parameter for passive observation via [routerPageUpdate](#uiobserveronrouterpageupdate).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -86,7 +89,7 @@ Enumerates the **TabContent** component states.
 
 ## NavDestinationInfo
 
-Information about the **NavDestination** component, returned by the system to developers.
+Provides information about the **NavDestination** component, returned by the system to developers.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -220,11 +223,11 @@ Provides the **TabContent** switching information.
 | ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
 | tabContentId | string                                       | No  | No  | ID of the **TabContent** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | tabContentUniqueId | number                                 | No  | No  | Unique ID of the **TabContent** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.               |
-| state        | [TabContentState](#tabcontentstate12)        | No  | No  | Enumerates the **TabContent** component states.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
+| state        | [TabContentState](#tabcontentstate12)        | No  | No  | State of the **TabContent** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
 | index        | number                                       | No  | No  | Index of the **TabContent** component. The index is zero-based.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | id           | string                                       | No  | No  | ID of the **Tabs** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | uniqueId     | number                                       | No  | No  | Unique ID of the **Tabs** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
-| lastIndex<sup>22+</sup>    | number                                       | No  | Yes  | Index of the previously focused **TabContent** component. The index is zero-based. This parameter is available only in the callback of [on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22).<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
+| lastIndex<sup>22+</sup>    | number                                       | No   | Yes   | Subscript index of the most recently focused **TabContent** component. The index starts from 0. It exists only in the callback of [on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22).  <br/>**Atomic service API:** This API can be used in atomic services since API version 22.   |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 
@@ -537,7 +540,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -580,7 +583,7 @@ struct Index {
 }
 ```
 
-## uiObserver.on('routerPageUpdate')<sup>11+</sup>
+## uiObserver.on('routerPageUpdate')
 
 on(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback: Callback\<RouterPageInfo\>): void
 
@@ -634,7 +637,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## uiObserver.off('routerPageUpdate')<sup>11+</sup>
+## uiObserver.off('routerPageUpdate')
 
 off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: Callback\<RouterPageInfo\>): void
 
@@ -747,7 +750,7 @@ Unregisters the listener for screen pixel density changes.
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **densityUpdate** event under the current UI context are unregistered.|
 
 ```ts
-import { uiObserver, UIContext } from '@kit.ArkUI';
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -1288,7 +1291,7 @@ struct TabsExample {
   }
 
   aboutToDisappear(): void {
-    // Unregister the listeners.
+    // Unregister the listener.
     uiObserver.off('tabContentUpdate', callbackFunc);
   }
 
@@ -1378,7 +1381,7 @@ struct TabsExample {
   }
 
   aboutToDisappear(): void {
-    // Unregister the listeners.
+    // Unregister the listener.
     uiObserver.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 

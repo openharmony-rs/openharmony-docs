@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=795678d6d6efd468f2c7707f1e103147c856438a translatedAt=2026-09-04T02:52:29.581Z pushedAt=2026-09-09T09:11:03.649Z -->
 
 ## Overview
 
@@ -27,7 +28,7 @@ Defines APIs and enums related to transactions.
 | Name                                              | typedef Keyword      | Description                                                        |
 | -------------------------------------------------- | ------------------- | ------------------------------------------------------------ |
 | [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) | OH_RDB_TransOptions | Defines the [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) struct.|
-| [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)   | OH_Rdb_Transaction  | Defines the [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) struct.|
+| [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)   | OH_Rdb_Transaction  | Defines the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) struct. |
 
 ### Enums
 
@@ -100,7 +101,7 @@ Creates a transaction configuration object.
 
 | Type                                              | Description                                                        |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) | Returns a pointer to the [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) instance if the operation is successful; returns **nullptr** otherwise.<br>Use [OH_RdbTrans_DestroyOptions](capi-oh-rdb-transaction-h.md#oh_rdbtrans_destroyoptions) to release the memory in time.|
+| [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) * | Pointer to the [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) instance when the operation is successful. **NULL** otherwise.<br>After use, you must release the memory through the [OH_RdbTrans_DestroyOptions](#oh_rdbtrans_destroyoptions) API. |
 
 ### OH_RdbTrans_DestroyOptions()
 
@@ -234,7 +235,7 @@ Inserts a row of data into a table.
 ### OH_RdbTrans_InsertWithConflictResolution()
 
 ```c
-int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row,Rdb_ConflictResolution resolution, int64_t *rowId)
+int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row, Rdb_ConflictResolution resolution, int64_t *rowId)
 ```
 
 **Description**
@@ -315,7 +316,7 @@ Updates data in an RDB store based on specified conditions.
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
 | const [OH_VBucket](capi-rdb-oh-vbucket.md) *row              | Row of data to update.                                  |
 | const [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance, specifying the update conditions.  |
-| int64_t *changes                                         | Pointer to the number of successful updates.                              |
+| int64_t *changes                                         | Output parameter, indicating the number of rows successfully updated. |
 
 **Returns**
 
@@ -326,7 +327,7 @@ Updates data in an RDB store based on specified conditions.
 ### OH_RdbTrans_UpdateWithConflictResolution()
 
 ```c
-int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row,const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes)
+int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
 **Description**
@@ -371,7 +372,7 @@ Deletes data from the database based on specified conditions.
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
 | const [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance, specifying the deletion conditions.  |
-| int64_t *changes                                         | Pointer to the number of successful deletions.                                        |
+| int64_t *changes                                         | Output parameter, indicating the number of successful deletions.                               |
 
 **Returns**
 
@@ -399,13 +400,13 @@ Queries data from the database based on specified conditions.
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
 | const [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance, specifying the query conditions.  |
 | const char *columns[]                       | Columns to query. If null is passed in, all columns are queried.          |
-| int len                                                  | Number of elements in a column.                                        |
+| int len                                                  | Length of the **columns** array passed in. If **len** is greater than the actual length of the **columns** array, an out-of-bounds access occurs. |
 
 **Returns**
 
 | Type                          | Description                                                        |
 | ------------------------------ | ------------------------------------------------------------ |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns null if the database is closed or does not respond.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful. **NULL** if the database has been closed or the database does not respond. |
 
 ### OH_RdbTrans_QuerySql()
 
@@ -432,7 +433,7 @@ Queries data from the database based on the SQL statement.
 
 | Type                          | Description                                                        |
 | ------------------------------ | ------------------------------------------------------------ |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns null if the database is closed or does not respond.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful. **NULL** if the database has been closed or the database does not respond. |
 
 ### OH_RdbTrans_Execute()
 
@@ -515,7 +516,7 @@ Queries data from the database based on specified conditions without calculating
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns a null pointer if the database is closed or does not respond.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful. **NULL** if the database has been closed or the database does not respond. |
 
 ### OH_RdbTrans_QuerySqlWithoutRowCount()
 
@@ -541,7 +542,7 @@ Queries data from the database based on the SQL statement without calculating th
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns a null pointer if the database is closed or does not respond.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful. **NULL** if the database has been closed or the database does not respond. |
 
 ### OH_RdbTrans_BatchInsertWithReturning()
 
@@ -598,7 +599,7 @@ Updates data in the database based on specified conditions and outputs the chang
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *row | Row of data to update.|
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance.|
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure and the actual change data cannot be obtained properly.|
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | Resolution strategy [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) to use when a conflict occurs. **RDB_CONFLICT_FAIL** is not recommended because it throws an exception on failure, <br>making it impossible to obtain the actual changed data. |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance.|
 
 **Returns**

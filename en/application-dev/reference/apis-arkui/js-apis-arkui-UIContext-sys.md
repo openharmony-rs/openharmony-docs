@@ -5,16 +5,21 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=72b6bf3dfcf1f6e95afed9d4636166e890b11e73 translatedAt=2026-08-29T09:38:11.998Z pushedAt=2026-09-01T02:28:21.300Z -->
 
-In the stage model, a window stage or window can use the **loadContent** API to load pages, create a UI instance, and render page content to the associated window. Naturally, UI instances and windows are associated on a one-by-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback, the current UI context may fail to be identified, resulting in API execution errors.
+In the stage model, a window stage or window can use the [loadContent](arkts-apis-window-Window.md#loadcontent9) API to load pages, create a UI instance, and render page content to the associated window. Therefore, UI instances and windows are associated on a one-to-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback not bound to the current UI context, the current UI context may fail to be identified, resulting in API execution errors.
+
+**UIContext** is used to obtain the context associated with a specific UI instance, allowing you to call context-related UI APIs on the corresponding UI instance. This module provides system capabilities such as component dimming and freezing, keyboard style configuration, resource cache clearing, background luminance sampling, image memory reclamation for invisible **Image** components, and component snapshot.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The APIs of this module can be used only in the stage model.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [Class (UIContext)](arkts-apis-uicontext-uicontext.md).
+> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+>
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [Class (UIContext)](arkts-apis-uicontext-uicontext.md).
 
 ## UIContext
 
@@ -33,12 +38,14 @@ Sets the dynamic dimming degree of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | ------- | ------- | ------- | ------- |
 | id | string | Yes| Component ID.|
-| value | number | Yes| Dynamic dimming degree of the component. The value range is [0, 1]. The component is brighter with a larger value.|
+| value | number | Yes | Component dimming degree. The value range is [0, 1], gradually becoming brighter from 0 to 1. |
 
 **Example**
 
@@ -61,7 +68,7 @@ struct Index {
   }
 }
 ```
-![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
+![api-switch-overview](../apis-arkui/figures/dynamicDimming.gif)
 
 ### freezeUINode<sup>18+</sup>
 
@@ -69,7 +76,9 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +87,7 @@ Sets whether to freeze a specific component by **id** to prevent it from being m
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | id | string | Yes| ID of the target component.|
-| isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
+| isFrozen | boolean | Yes | Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>The default value is **false**. If `undefined` is passed, it is processed as **false**.|
 
 **Error codes**
 
@@ -143,7 +152,7 @@ struct Index {
             this.getUIContext().freezeUINode('tab1', false);
             // Update the width of the Column node in the tab1 node through the state variable: Set this.columnWidth1 to '20%'.
             this.columnWidth1 = '20%';
-          }, 5000)
+          }, 5000);
         })
 
          TabContent() {
@@ -187,7 +196,9 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,7 +207,7 @@ Sets whether to freeze a specific component by **uniqueId** to prevent it from b
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | uniqueId | number | Yes| Unique ID of the component.|
-| isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
+| isFrozen | boolean | Yes | Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>The default value is **false**. If `undefined` is passed, it is processed as **false**.|
 
 **Error codes**
 
@@ -232,16 +243,20 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab1' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab1 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab1' based on its uniqueId to false when the TabContent is shown.
-          this.getUIContext().freezeUINode(uniqueId, false)
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to false through uniqueId when the TabContent with id being set to tab1 is displayed.
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
         TabContent() {
@@ -255,25 +270,29 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab2');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab2' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab2 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // When the TabContent with id 'tab2' is shown, set the freeze state of the node with id 'tab1' based on its uniqueId to true.
-          // Change the width of the Column within the node with id 'tab1' via the state variable. Since the node's freeze state is true, dirty marking stops at TabContent and does not trigger layout.
-          this.getUIContext().freezeUINode(uniqueId, true);
-          this.columnWidth1 = '50%';
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node with id being set to tab1 to true through uniqueId when the TabContent with id being set to tab2 is displayed.
+            // Change the width of the Column node inside the node with id being set to tab1 through a state variable. Since the freeze state of the node with id being set to tab1 is set to true, dirty marking stops at this TabContent, and layout is not triggered from this node.
+            this.getUIContext().freezeUINode(uniqueId, true);
+            this.columnWidth1 = '50%';
 
-          // Configure a delayed task.
-          setTimeout(() => {
-            // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
-            this.getUIContext().freezeUINode(uniqueId, false);
-            this.columnWidth1 = '20%';
-          }, 5000)
+            // Set a delayed task.
+            setTimeout(() => {
+              // Set the freeze state of the node with id being set to tab1 to false to re-trigger marking and layout.
+              this.getUIContext().freezeUINode(uniqueId, false);
+              this.columnWidth1 = '20%';
+            }, 5000);
+          }
         })
 
          TabContent() {
@@ -287,16 +306,20 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab3' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab3 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab3' based on its uniqueId to false when the TabContent is shown.
-          this.getUIContext().freezeUINode(uniqueId, false);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to false through uniqueId when the TabContent with id being set to tab3 is displayed.
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
       }
@@ -321,7 +344,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
+Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about the immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
 
 **System API**: This is a system API.
 
@@ -435,7 +458,51 @@ Obtains the [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) col
 
 **Example**
 
-For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23).
+For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange).
+
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+Sets the memory reclamation switch for invisible **Image** components. ([Component visibility](../../../application-dev/ui/arkts-manage-components-visibility.md) refers to the display status of a component on the screen.) After this feature is enabled, the image memory resources held by the **Image** component will be automatically reclaimed when the system is idle (for example, when the application is running in the background) if the component is not involved in rendering. This reduces the memory usage of the application. When the component is involved in rendering again, the related image resources will be reloaded as required.
+
+This API is mainly used for optimization in memory-sensitive scenarios, such as scenarios where there are a large number of images, pages are frequently switched between the foreground and background, or the component visibility changes significantly.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description|
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | Yes  | Whether to enable memory reclamation for invisible **Image** components.<br>The value **true** means to enable memory reclamation and the image memory resources are automatically released when the **Image** component is invisible;<br>**false** means to disable memory reclamation and the image memory resources are still retained when the **Image** component is invisible.<br>The default value is **false**. If **undefined** is passed, the default value is used.|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
 
 ## ComponentSnapshot<sup>12+</sup>
 
@@ -452,9 +519,9 @@ Captures a snapshot of the area between two specified components. This API uses 
 >
 > The components corresponding to **start** and **end** must belong to the same component tree, and the **start** component must be an ancestor of the **end** component.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -479,7 +546,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------ | ------- |
 | 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>Applicable versions: 23+ |
 
 **Example**
 
@@ -555,48 +622,6 @@ struct SnapshotExample {
 }
 ```
 
-![en-us_image_getWithRange](figures/en-us_image_getWithRange.gif)
+![en-us_image_getWithRange](figures/image-getWithRange.gif)
 
-### recycleInvisibleImageMemory<sup>23+</sup>
-
-recycleInvisibleImageMemory(enabled: boolean): void
-
-Sets the memory reclamation switch for invisible **Image** components. ([Component visibility](../../../application-dev/ui/arkts-manage-components-visibility.md) refers to the display status of a component on the screen.) After this feature is enabled, the image memory resources held by the **Image** component will be automatically reclaimed when the system is idle (for example, when the application is running in the background) if the component is not involved in rendering. This reduces the memory usage of the application. When the component is involved in rendering again, the related image resources will be reloaded as required.
-
-This API is mainly used for optimization in memory-sensitive scenarios, such as scenarios where there are a large number of images, pages are frequently switched between the foreground and background, or the component visibility changes significantly.
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type   | Mandatory| Description|
-| -------- | ------- | ---- | ---- |
-| enabled  | boolean | Yes  | Whether to enable memory reclamation for invisible **Image** components.<br>The value **true** means to enable memory reclamation and the image memory resources are automatically released when the **Image** component is invisible;<br>**false** means to disable memory reclamation and the image memory resources are still retained when the **Image** component is invisible.<br>The default value is **false**. If **undefined** is passed, the default value is used.|
-
-**Example**
-
-```ts
-@Entry
-@Component
-struct ImageRecycleSample {
-  build() {
-    Column({ space: 12 }) {
-      Button('Enable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(true)
-        })
-
-      Button('Disable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(false)
-        })
-    }
-    .width('100%')
-    .padding(16)
-  }
-}
-```
+<!--no_check-->

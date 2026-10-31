@@ -1,8 +1,8 @@
 # Web深色模式适配
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @KeeGitee-->
-<!--Designer: @LongLie-->
+<!--Owner: @ohxianzhi-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -210,6 +210,7 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
   <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/entryability/EntryAbility.ets) -->
   
   ``` TypeScript
+  import { window } from '@kit.ArkUI';
   import { AbilityConstant, ConfigurationConstant, UIAbility, Want, Configuration } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   

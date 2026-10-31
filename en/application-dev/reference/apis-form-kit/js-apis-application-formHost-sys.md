@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=340d103cc1b7ad3604f8dd89e08d1aa4f2f4d7e8 translatedAt=2026-09-15T01:53:36.359Z pushedAt=2026-09-15T07:34:27.850Z -->
 
 The **formHost** module provides APIs related to the widget host, which is an application that displays the widget content and controls the position where the widget is displayed. You can use the APIs to delete, release, and update widgets installed by the same user, and obtain widget information and status.
 
@@ -20,7 +21,7 @@ The **formHost** module provides APIs related to the widget host, which is an ap
 import formHost from '@ohos.application.formHost';
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -50,7 +51,7 @@ formHost.deleteForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
@@ -85,7 +86,7 @@ formHost.deleteForm(formId).then(() => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -117,7 +118,7 @@ formHost.releaseForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -150,7 +151,7 @@ formHost.releaseForm(formId, true, (error: Base.BusinessError) => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
@@ -186,7 +187,7 @@ formHost.releaseForm(formId, true).then(() => {
 });
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -201,7 +202,7 @@ Requests a widget update. This API uses an asynchronous callback to return the r
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formId | string | Yes  | Widget ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is updated, **err** is undefined; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is updated, **error** is **undefined**; otherwise, **error** is an error object.|
 
 **Example**
 
@@ -216,7 +217,7 @@ formHost.requestForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string): Promise&lt;void&gt;
 
@@ -251,7 +252,7 @@ formHost.requestForm(formId).then(() => {
 });
 ```
 
-## castTempForm
+## formHost.castTempForm
 
 castTempForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -281,7 +282,7 @@ formHost.castTempForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## castTempForm
+## formHost.castTempForm
 
 castTempForm(formId: string): Promise&lt;void&gt;
 
@@ -316,7 +317,7 @@ formHost.castTempForm(formId).then(() => {
 });
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -338,15 +339,15 @@ Instructs the widget framework to make a widget visible. After this API is calle
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.notifyVisibleForms(formId, (error: Base.BusinessError) => {
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyVisibleForms(formIds, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost notifyVisibleForms, error: ${JSON.stringify(error)}`);
   }
 });
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -373,15 +374,15 @@ Instructs the widget framework to make a widget visible. After this API is calle
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.notifyVisibleForms(formId).then(() => {
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyVisibleForms(formIds).then(() => {
   console.info('formHost notifyVisibleForms success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost notifyVisibleForms, error: ${JSON.stringify(error)}`);
 });
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -403,15 +404,15 @@ Instructs the widget framework to make a widget invisible. After this API is cal
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.notifyInvisibleForms(formId, (error: Base.BusinessError) => {
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
   }
 });
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -438,15 +439,15 @@ Instructs the widget framework to make a widget invisible. After this API is cal
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.notifyInvisibleForms(formId).then(() => {
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds).then(() => {
   console.info('formHost notifyInvisibleForms success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
 });
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -468,15 +469,15 @@ Instructs the widget framework to make a widget updatable. After this API is cal
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.enableFormsUpdate(formId, (error: Base.BusinessError) => {
+let formIds: string[] = ['12400633174999288'];
+formHost.enableFormsUpdate(formIds, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost enableFormsUpdate, error: ${JSON.stringify(error)}`);
   }
 });
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -503,15 +504,15 @@ Instructs the widget framework to make a widget updatable. After this API is cal
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.enableFormsUpdate(formId).then(() => {
+let formIds: string[] = ['12400633174999288'];
+formHost.enableFormsUpdate(formIds).then(() => {
   console.info('formHost enableFormsUpdate success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost enableFormsUpdate, error: ${JSON.stringify(error)}`);
 });
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -533,15 +534,15 @@ Instructs the widget framework to make a widget not updatable. After this API is
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.disableFormsUpdate(formId, (error: Base.BusinessError) => {
+let formIds: string[] = ['12400633174999288'];
+formHost.disableFormsUpdate(formIds, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost disableFormsUpdate, error: ${JSON.stringify(error)}`);
   }
 });
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -568,15 +569,15 @@ Instructs the widget framework to make a widget not updatable. After this API is
 ```ts
 import Base from '@ohos.base';
 
-let formId: string[] = ['12400633174999288'];
-formHost.disableFormsUpdate(formId).then(() => {
+let formIds: string[] = ['12400633174999288'];
+formHost.disableFormsUpdate(formIds).then(() => {
   console.info('formHost disableFormsUpdate success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost disableFormsUpdate, error: ${JSON.stringify(error)}`);
 });
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
@@ -603,7 +604,7 @@ formHost.isSystemReady((error: Base.BusinessError) => {
 });
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(): Promise&lt;void&gt;
 
@@ -630,7 +631,7 @@ formHost.isSystemReady().then(() => {
 });
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -661,7 +662,7 @@ formHost.getAllFormsInfo((error: Base.BusinessError, data: formInfo.FormInfo[]) 
 });
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -690,7 +691,7 @@ Obtains the widget information provided by all applications on the device. This 
   });
   ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -722,7 +723,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', (error: Base.BusinessError,
 });
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -755,7 +756,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: Base.Busin
 });
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -791,7 +792,7 @@ Obtains the widget information provided by a given application on the device. Th
   });
   ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -823,7 +824,7 @@ formHost.deleteInvalidForms(formIds, (error: Base.BusinessError, data: number) =
 });
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
@@ -858,7 +859,7 @@ formHost.deleteInvalidForms(formIds).then((data: number) => {
 });
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
 
@@ -892,7 +893,7 @@ let want: Want = {
     'ohos.extra.param.key.form_dimension': 2
   }
 };
-formHost.acquireFormState(want, (error:Base.BusinessError, data: formInfo.FormStateInfo) => {
+formHost.acquireFormState(want, (error: Base.BusinessError, data: formInfo.FormStateInfo) => {
   if (error.code) {
     console.error(`formHost acquireFormState, error: ${JSON.stringify(error)}`);
   } else {
@@ -901,7 +902,7 @@ formHost.acquireFormState(want, (error:Base.BusinessError, data: formInfo.FormSt
 });
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
@@ -947,7 +948,7 @@ formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
 });
 ```
 
-## on('formUninstall')
+## formHost.on('formUninstall')
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
@@ -963,7 +964,7 @@ Subscribes to widget uninstall events. This API uses an asynchronous callback to
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
-| type | string | Yes  | Event type. The value **'formUninstall'** indicates a widget uninstallation event.|
+| type | string | Yes  | Event type. The value **'formUninstall'** indicates a widget uninstall event.|
 | callback | Callback&lt;string&gt; | Yes| Callback used to return the widget ID.|
 
 **Example**
@@ -976,7 +977,7 @@ formHost.on('formUninstall', (formId: string) => {
 });
 ```
 
-## off('formUninstall')
+## formHost.off('formUninstall')
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
@@ -1005,7 +1006,7 @@ formHost.off('formUninstall', (formId: string) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1036,7 +1037,7 @@ formHost.notifyFormsVisible(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
 
@@ -1072,7 +1073,7 @@ formHost.notifyFormsVisible(formIds, true).then(() => {
 });
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1103,7 +1104,7 @@ formHost.notifyFormsEnableUpdate(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
 
@@ -1115,16 +1116,16 @@ Instructs the widgets to enable or disable updates. This API uses a promise to r
 
 **Parameters**
 
-  | Name| Type   | Mandatory| Description   |
-  | ------ | ------ | ---- | ------- |
-  | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-  | isEnableUpdate | boolean | Yes  | Whether to make the widgets updatable.|
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ | ---- | ------- |
+| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
+| isEnableUpdate | boolean | Yes  | Whether to make the widgets updatable.|
 
 **Return value**
 
-  | Type| Description|
-  | -------- | -------- |
-  | Promise&lt;void&gt; | Promise that returns no value.|
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
 

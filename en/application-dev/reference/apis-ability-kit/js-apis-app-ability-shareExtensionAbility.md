@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7738447060c2cc1f595c9bdcb430e65d6029dba4 translatedAt=2026-09-03T10:30:30.242Z pushedAt=2026-09-05T10:47:30.431Z -->
 
 ShareExtensionAbility provides extended capabilities for integrating a share details page. It inherits from [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md).
 

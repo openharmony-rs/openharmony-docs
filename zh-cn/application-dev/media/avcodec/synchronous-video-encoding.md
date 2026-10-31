@@ -1,8 +1,16 @@
-# 视频编码同步模式
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍以主动请求Buffer送帧方式完成同步模式视频编码的开发流程，支持Surface与Buffer两种输入模式，适用于需要应用主动控制编码输入节奏的场景。"
+keywords: [视频编码, 同步模式, Surface模式, Buffer模式, OH_VideoEncoder, 主动请求Buffer, NV12, 跨距]
+doctype: guide
+status: active
+---
+
+# 同步模式视频编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
@@ -15,7 +23,7 @@
 
 当前支持的编码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
-视频编码的限制约束、支持的能力、状态机调用关系请参考[视频编码](video-encoding.md)。
+视频编码的限制约束、支持的能力、状态机调用关系请参考[异步模式视频编码](video-encoding.md)。
 
 ## 适用场景
 
@@ -61,7 +69,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    #include <shared_mutex>
    ```
    
-2. 全局变量（仅作参考，可以根据实际情况将其封装到对象中）。
+2. 定义全局变量（仅作示例，具体参数值，请据能力查询接口获取相应值范围来参考配置）。
 
    ```c++
    // 视频帧宽度。
@@ -82,7 +90,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    bool outputDone = false;
    // 编码输入。
    bool inputDone = false;
-   std::unique_ptr<std::ifstream> inFile_;
    ```
 
 ### Surface模式
@@ -145,7 +152,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    示例中的变量说明如下：
 
-   nativeWindow：获取方式请参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤-6：设置surface”。
+   nativeWindow：获取方式请参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)的“步骤-6：设置surface”。
 
    ```c++
    // 获取需要输入的surface，以进行编码。
@@ -169,7 +176,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 5. 调用OH_VideoEncoder_Start()启动编码器。
 
    ```c++
-   // 配置待编码文件路径。
+   // 配置待编码文件路径。可填写应用沙箱路径等可访问目录。
    std::string_view outputFilePath = "/*yourpath*.h264";
    std::unique_ptr<std::ofstream> outputFile = std::make_unique<std::ofstream>();
    if (outputFile != nullptr) {
@@ -211,7 +218,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                    return false;
                }
                if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                   outputDone = 1;
+                   outputDone = true;
                }
 
                // 将编码完成帧数据buffer写入到对应输出文件中。
@@ -423,7 +430,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     配置输入文件、输出文件。
 
     ```c++
-    // 配置待编码文件路径。
+    // 配置待编码文件路径。可填写应用沙箱路径等可访问目录。
     std::string_view inputFilePath = "/*yourpath*.yuv";
     std::string_view outputFilePath = "/*yourpath*.h264";
     std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
@@ -517,8 +524,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     // 异常处理。
                     return false;
                 }
-                if (inFile_->eof()) {
-                    inputDone = 1;
+                if (inputFile->eof()) {
+                    inputDone = true;
                 }
                 break;
             }
@@ -574,7 +581,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     outputFile->write(reinterpret_cast<char *>(addr), info.size);
                 }
                 if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    outputDone = 1;
+                    outputDone = true;
                 }
                 // 释放已完成处理的信息，index为对应buffer队列的下标。
                 OH_AVErrCode freeOutputRet = OH_VideoEncoder_FreeOutputBuffer(videoEnc, index);

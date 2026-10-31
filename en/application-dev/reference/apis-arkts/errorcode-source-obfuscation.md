@@ -26,7 +26,7 @@ The obfuscation rule configuration file specified in the `arkOptions.obfuscation
 
 **Solution**
 
-Check whether the {path} exists and whether the path is correct. For details, see the [example of the obfuscation configuration file](../../arkts-utils//source-obfuscation-guide.md#how-to-use).
+Check whether the {path} exists and whether the path is correct. For details, see the [example of the obfuscation configuration file](../../arkts-utils/source-obfuscation-guide.md#how-to-use).
 
 ## 10804002 Incorrect nameCache.json File Format
 

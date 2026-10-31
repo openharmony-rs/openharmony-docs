@@ -39,7 +39,7 @@ In the [animate](../reference/apis-arkui/arkui-js/js-components-svg-animate.md) 
 </div>
 ```
 
-![en-us_image_0000001183871404](figures/en-us_image_0000001183871404.gif)
+![attributeStyleAnimation](figures/attributeStyleAnimation.gif)
 
 > **NOTE**
 >
@@ -64,7 +64,7 @@ In the [animateMotion](../reference/apis-arkui/arkui-js/js-components-svg-animat
 </div>
 ```
 
-![en-us_image_0000001229510983](figures/en-us_image_0000001229510983.gif)
+![motionPathAnimation](figures/motionPathAnimation.gif)
 
 
 ## animateTransform Animation
@@ -109,4 +109,4 @@ In the [animateTransform](../reference/apis-arkui/arkui-js/js-components-svg-ani
 }
 ```
 
-![en-us_image_0000001182832088](figures/en-us_image_0000001182832088.gif)
+![animateTransformAnimation](figures/animateTransformAnimation.gif)

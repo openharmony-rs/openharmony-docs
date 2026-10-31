@@ -6,20 +6,20 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c19dbf1705cb8d92f0c4c5c7f491a291e1870a2e translatedAt=2026-09-23T02:22:25.595Z pushedAt=2026-09-24T06:00:14.206Z -->
 
 The **statistics** module provides APIs to query real-time or historical traffic statistics by the specified network interface card (NIC) or user ID (UID).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.net.statistics (Traffic Management)](js-apis-net-statistics.md).
+> This page contains only the system APIs of this module. For details about the public APIs, see [@ohos.net.statistics (Traffic Management)](js-apis-net-statistics.md).
 
 ## Modules to Import
 
 ```js
 import { statistics } from '@kit.NetworkKit';
 ```
-
 
 ## statistics.on('netStatsChange')
 
@@ -42,9 +42,9 @@ Subscribes to traffic change events. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -82,14 +82,14 @@ Unsubscribes from traffic change events. This API uses an asynchronous callback 
 
 | Name  | Type                                       | Mandatory| Description                                                              |
 | -------- | ------------------------------------------- | ---- | ----------------------------------------------------------------- |
-| type     | string                                      | Yes  | Event type. This field has a fixed value of **netStatsChange**.                            |
-| callback | Callback\<[NetStatsChangeInfo](#netstatschangeinfo11)\> | No  | Callback invoked when the traffic changes.|
+| type     | string                                      | Yes   | Unsubscribe event, fixed to **'netStatsChange'**.                             |
+| callback | Callback\<[NetStatsChangeInfo](#netstatschangeinfo11)\> | No   | Callback for the netStatsChange event, which is registered through **on('netStatsChange')**. |
 
 **Error codes**
 
-For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -119,7 +119,7 @@ statistics.off('netStatsChange');
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtains the historical data traffic of the specified NIC. This API uses an asynchronous callback to return the result.
+Obtains the historical traffic information of the specified network interface. This API uses an asynchronous callback to return the result. Based on the network interface name and time range specified in **ifaceInfo**, the system reads the transmitted and received bytes and packets of the network interface in the corresponding period from the statistics database and returns them through the callback. If the network interface name is invalid or no statistics are available in the period, all-zero statistics are returned.
 
 **System API**: This is a system API.
 
@@ -132,13 +132,13 @@ Obtains the historical data traffic of the specified NIC. This API uses an async
 | Name   | Type                                           | Mandatory| Description                                                                                   |
 | --------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | ifaceInfo | [IfaceInfo](#ifaceinfo)                       | Yes  | NIC information. For details, see [IfaceInfo](#ifaceinfo).                                    |
-| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined** and **statsInfo** is the historical traffic statistics of the NIC. Otherwise, **error** is an error object.|
+| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | Yes   | Callback function. When the historical traffic information of the specified network interface card is obtained successfully, **err** is **undefined** and **data** is the obtained historical traffic information of the network interface card; otherwise, it is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -157,7 +157,10 @@ import { statistics } from '@kit.NetworkKit';
 let iFaceInfo: statistics.IfaceInfo | null = null;
 if (iFaceInfo) {
   statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo, (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    console.error(JSON.stringify(error));
+    if (error) {
+      console.error(JSON.stringify(error));
+      return;
+    };
     console.info(
       "getTrafficStatsByIface bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -182,7 +185,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
-Obtains the historical data traffic of the specified NIC. This API uses a promise to return the result.
+Obtains the historical traffic information of the specified network interface. This API uses a promise to return the result. Based on the network interface name and time range specified in **ifaceInfo**, the system reads the transmitted and received bytes and packets of the network interface in the corresponding period from the statistics database and returns them in a promise. If the network interface name is invalid or no statistics are available in the period, all-zero statistics are returned.
 
 **System API**: This is a system API.
 
@@ -190,20 +193,23 @@ Obtains the historical data traffic of the specified NIC. This API uses a promis
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
+**Parameters**
+
 | Name   | Type                     | Mandatory| Description                                               |
 | --------- | ------------------------- | ---- | --------------------------------------------------- |
 | ifaceInfo | [IfaceInfo](#ifaceinfo) | Yes  | NIC information. For details, see [IfaceInfo](#ifaceinfo).|
 
 **Return value**
+
 | Type| Description|
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise used to return the result, which is the historical traffic statistics of the specified NIC.|
+| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise object used to return the historical traffic information of the network interface. |
 
 **Error codes**
 
-For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -245,7 +251,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtains the historical data traffic of the specified application. This API uses an asynchronous callback to return the result.
+Obtains the historical traffic information of the specified application. This API uses an asynchronous callback to return the result. Based on the application UID, network interface, and time range specified in **uidInfo**, the system reads the transmitted and received bytes and packets of the application in the corresponding period from the statistics database and returns them through the callback. If the application has no traffic records in the specified period, all-zero statistics are returned.
 
 **System API**: This is a system API.
 
@@ -258,13 +264,13 @@ Obtains the historical data traffic of the specified application. This API uses 
 | Name  | Type                                           | Mandatory| Description                                                                                   |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | uidInfo  | [UidInfo](#uidinfo)                           | Yes  | Application information. For details, see [UidInfo](#uidinfo).                                        |
-| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined** and **statsInfo** is the historical traffic statistics of the application. Otherwise, **error** is an error object.|
+| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | Yes | Callback invoked to return the application historical traffic information. If the operation is successful, **err** is **undefined** and **data** is the obtained application historical traffic information. Otherwise, err is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -292,7 +298,10 @@ let uidInfo: statistics.UidInfo = {
 statistics.getTrafficStatsByUid(
   uidInfo,
   (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    console.error(JSON.stringify(error));
+    if (error) {
+      console.error(JSON.stringify(error));
+      return;
+    };
     console.info(
       "getTrafficStatsByUid bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -317,7 +326,7 @@ statistics.getTrafficStatsByUid(
 
 getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
-Obtains the historical data traffic of the specified application. This API uses a promise to return the result.
+Obtains the historical traffic information of the specified application. This API uses a promise to return the result. Based on the application UID, network interface, and time range specified in **uidInfo**, the system reads the transmitted and received bytes and packet counts of the application within the corresponding period from the statistics database and returns them in a promise. If the application has no traffic records within the specified period, all-zero statistics are returned.
 
 **System API**: This is a system API.
 
@@ -335,13 +344,13 @@ Obtains the historical data traffic of the specified application. This API uses 
 
 | Type                                     | Description                                              |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise used to return the result, which is the historical traffic statistics of the specified NIC.|
+| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise object used to return the application historical traffic information. |
 
 **Error codes**
 
-For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -377,7 +386,7 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
 
 getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
-Obtains the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
+Obtains the traffic usage details of all applications on the specified network within the specified period. This API uses a promise to return the result. Based on the network type, time range, and **simId** in **networkInfo**, the system aggregates the historical traffic data of each application (by UID) on the network from the statistics database and returns **UidNetStatsInfo** in a promise. The **simId** takes effect only when the network type is cellular (**BEARER_CELLULAR**).
 
 **System API**: This is a system API.
 
@@ -395,13 +404,13 @@ Obtains the traffic statistics of all applications on the specified network with
 
 | Type                                             | Description                              |
 |-------------------------------------------------|----------------------------------|
-| Promise\<[UidNetStatsInfo](#uidnetstatsinfo12)> | Promise used to return the result, which is the historical traffic statistics of all applications.|
+| Promise\<[UidNetStatsInfo](#uidnetstatsinfo12)> | Promise object that returns all application historical traffic information. |
 
 **Error codes**
 
-For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -435,7 +444,7 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
 
 getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<NetStatsInfoSequence>
 
-Obtains the traffic statistics of the specified application on the specified network within the specified period. This method uses a promise to return the result.
+Obtains the traffic usage details of the application on the specified network within the specified period. This API uses a promise to return the result. Based on the UID and the network type, time range, and **simId** in **networkInfo**, the system reads the historical traffic data of the application on the specified network from the statistics database, returns a **NetStatsInfoSequence** sequence by time period, and returns it in a promise. The **simId** takes effect only when the network type is cellular (**BEARER_CELLULAR**).
 
 **System API**: This is a system API.
 
@@ -454,13 +463,13 @@ Obtains the traffic statistics of the specified application on the specified net
 
 | Type                                                       | Description                              |
 |-----------------------------------------------------------|----------------------------------|
-| Promise\<[NetStatsInfoSequence](#netstatsinfosequence12)> | Promise used to return the result, which is the historical traffic statistics of the application.|
+| Promise\<[NetStatsInfoSequence](#netstatsinfosequence12)> | Promise object used to return the application historical traffic statistics information. |
 
 **Error codes**
 
-For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -484,19 +493,25 @@ let networkInfo: statistics.NetworkInfo = {
 }
 
 statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence: statistics.NetStatsInfoSequence) => {
-  for (let i = 0; i < statsInfoSequence.length; i--) {
+  for (let i = 0; i < statsInfoSequence.length; i++) {
     console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
   }
 })
 ```
 
-## statistics.setCalibrationTraffic<sup>26+</sup>
+## statistics.setCalibrationTraffic
 
-setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>;
+setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>
 
-Sets traffic calibration data. You can use this API to set traffic data during traffic calibration. This API uses a promise to return the result.
+Sets traffic calibration data. During traffic calibration, you can use this API to set the related traffic data. The API writes the remaining traffic (**remainTraffic**) and the total traffic of the plan (**totalTraffic**) corresponding to **simId** into the system traffic statistics database for subsequent traffic statistics and calibration calculation. The calibration result takes effect on the data returned by subsequent query APIs. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Required permissions**: ohos.permission.GET_NETWORK_STATS
 
@@ -518,14 +533,13 @@ Sets traffic calibration data. You can use this API to set traffic data during t
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [Traffic Management Error Codes](errorcode-net-statistics.md).
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                    |
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 202       | Non-system applications use system APIs.     |
-| 401       | Parameter error.                             |
-| 801       | Capability not supportedr.                             |
+| 202       | Nonsystem applications use system APIs.    |
+| 801       | Capability not supported.                             |
 | 2100001   | Invalid parameter value, such as simId error.                     |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error, such as nullptr.                       |
@@ -533,7 +547,8 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 **Example**
 
 ```js
-import { connection, statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
 
 let simId:number = 1;
 let remainData:number = 600*1024*1024;   // The remaining traffic is 600 MB.
@@ -541,7 +556,7 @@ let totalData:number = 1024*1024*1024;   // The total traffic is 1 GB.
 statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
   console.info(`setCalibrationTraffic succ`);
 }).catch((error: BusinessError) => {
-  console.info(`setCalibrationTraffic error. code:${error.code}, message:${error.message}`);
+  console.error(`setCalibrationTraffic error. code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -569,7 +584,7 @@ Defines the parameters for querying historical traffic of an application.
 
 | Name     | Type                                 | Read-Only|Optional| Description                       |
 | --------- | ------------------------------------- | ---- |---| -------------------------- |
-| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo)> | No  |No|NIC information, including the NIC name and query time range.|
+| ifaceInfo | [IfaceInfo](#ifaceinfo) | No | No | Network interface and time parameter information to query. |
 | uid       | number                                | No  |No|Application UID.         |
 
 ## NetStatsInfo
@@ -589,7 +604,7 @@ Defines the historical traffic information.
 
 ## NetStatsChangeInfo<sup>11+</sup>
 
-Defines the NIC status and usage of an application.
+NIC name and application UID reported in a traffic change event.
 
 **System API**: This is a system API.
 
@@ -625,7 +640,7 @@ Defines the historical traffic statistics of all applications.
 
 | Name       | Type                                           | Read-Only|Optional| Description          |
 |-----------|-----------------------------------------------|----|---|--------------|
-| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo) | No |No|Historical traffic statistics of all applications.|
+| [uid: number] | [NetStatsInfo](#netstatsinfo) | No | No | Historical traffic information of all applications. |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 

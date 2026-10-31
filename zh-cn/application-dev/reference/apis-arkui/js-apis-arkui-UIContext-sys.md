@@ -6,15 +6,19 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在Stage模型中，WindowStage/Window可以通过loadContent接口加载页面并创建UI的实例，并将页面内容渲染到关联的窗口中，所以UI实例和窗口是一一关联的。一些全局的UI接口是和具体UI实例的执行上下文相关的，在当前接口调用时，通过追溯调用链跟踪到UI的上下文，来确定具体的UI实例。若在非UI页面中或者一些异步回调中调用这类接口，可能无法跟踪到当前UI的上下文，导致接口执行失败。
+在Stage模型中，WindowStage/Window可以通过[loadContent](arkts-apis-window-Window.md#loadcontent9)接口加载页面并创建UI实例，并将页面内容渲染到关联窗口中，因此UI实例和窗口一一关联。与具体UI实例执行上下文相关的全局UI接口，在调用时会通过追溯调用链跟踪UI上下文，确定具体的UI实例。若在非UI页面中或者未绑定当前UI上下文的异步回调中调用这类接口，可能无法跟踪到当前UI上下文，导致接口执行失败。
+
+UIContext用于获取与具体UI实例关联的上下文，使开发者可在对应UI实例上调用上下文相关的UI接口。本模块提供组件压暗和冻结、键盘样式配置、资源缓存清理、背景亮度取色、不可见Image组件图像内存回收以及组件截图等系统能力。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 本模块接口仅可在Stage模型下使用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[Class (UIContext)](arkts-apis-uicontext-uicontext.md)。
+> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[Class (UIContext)](arkts-apis-uicontext-uicontext.md)。
 
 ## UIContext
 
@@ -33,12 +37,14 @@ setDynamicDimming(id: string, value: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
 | id | string | 是 | 组件id。 |
-| value | number | 是 | 组件压暗程度取值范围[0,1], 由0到1逐渐变亮。 |
+| value | number | 是 | 组件压暗程度取值范围[0, 1]，由0到1逐渐变亮。 |
 
 **示例：**
 
@@ -61,7 +67,7 @@ struct Index {
   }
 }
 ```
-![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
+![api-switch-overview](../apis-arkui/figures/dynamicDimming.gif)
 
 ### freezeUINode<sup>18+</sup>
 
@@ -69,7 +75,9 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +86,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
 | id | string | 是 | 组件的id。|
-| isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。|
+| isFrozen | boolean | 是 | 是否冻结组件。<br>true表示冻结组件，false表示不冻结组件。<br>默认值为false，传入`undefined`时按false处理。|
 
 **错误码：**
 
@@ -143,7 +151,7 @@ struct Index {
             this.getUIContext().freezeUINode('tab1', false);
             // 通过状态变量更新tab1内部Column节点的宽度，设置this.columnWidth1为'20%'。
             this.columnWidth1 = '20%';
-          }, 5000)
+          }, 5000);
         })
 
          TabContent() {
@@ -187,7 +195,9 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,7 +206,7 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
 | uniqueId | number | 是 | 组件的uniqueId。|
-| isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。|
+| isFrozen | boolean | 是 | 是否冻结组件。<br>true表示冻结组件，false表示不冻结组件。<br>默认值为false，传入`undefined`时按false处理。|
 
 **错误码：**
 
@@ -232,16 +242,20 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab1的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab1的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab1的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
-          this.getUIContext().freezeUINode(uniqueId, false)
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab1的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
         TabContent() {
@@ -255,25 +269,29 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab2');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab2的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab2的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab2的TabContent显示的时候，通过uniqueId设置id为tab1的节点的冻结状态为true。
-          // 通过状态变量改变id为tab1的节点内部Column节点的宽度。由于id为tab1的节点冻结状态为true，标脏至该TabContent时会终止标记，并且不会从该节点开始触发布局。
-          this.getUIContext().freezeUINode(uniqueId, true);
-          this.columnWidth1 = '50%';
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab2的TabContent显示的时候，通过uniqueId设置id为tab1的节点的冻结状态为true。
+            // 通过状态变量改变id为tab1的节点内部Column节点的宽度。由于id为tab1的节点冻结状态为true，标脏至该TabContent时会终止标记，并且不会从该节点开始触发布局。
+            this.getUIContext().freezeUINode(uniqueId, true);
+            this.columnWidth1 = '50%';
 
-          // 设置延时任务。
-          setTimeout(() => {
-            // 将id为tab1的节点的冻结状态设置为false，以重新触发标记和布局。
-            this.getUIContext().freezeUINode(uniqueId, false);
-            this.columnWidth1 = '20%';
-          }, 5000)
+            // 设置延时任务。
+            setTimeout(() => {
+              // 将id为tab1的节点的冻结状态设置为false，以重新触发标记和布局。
+              this.getUIContext().freezeUINode(uniqueId, false);
+              this.columnWidth1 = '20%';
+            }, 5000);
+          }
         })
 
          TabContent() {
@@ -287,16 +305,20 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab3的TabContent隐藏时，通过uniqueId将该节点的冻结状态设置为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab3的TabContent隐藏时，通过uniqueId将该节点的冻结状态设置为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab3的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
-          this.getUIContext().freezeUINode(uniqueId, false);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab3的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
       }
@@ -321,7 +343,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance枚举说明](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
+设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
 
 **系统接口：** 此接口为系统接口。
 
@@ -435,13 +457,267 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
 **示例：**
 
-参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
+参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange)接口的示例。
+
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+设置不可见Image组件的内存回收开关（[组件可见性](../../../application-dev/ui/arkts-manage-components-visibility.md)是指组件在屏幕上的显示状态）。开启后，当Image组件不参与渲染时，其内部持有的图像内存资源将在系统空闲时（如应用退后台）主动回收，以降低应用系统内存占用；当组件重新参与渲染时，将按需重新加载相关图像资源。
+
+该接口主要用于内存敏感场景下的优化，适用于图片数量较多、页面频繁切换前后台或组件可见性变化较为明显的场景。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明 |
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | 是   | 是否开启不可见Image组件的内存回收能力。<br/>true表示开启内存回收，Image组件在不可见时将主动释放图像内存资源；<br/>false表示关闭内存回收，Image组件在不可见时仍保留图像内存资源。<br/>默认值为false，传入`undefined`时将恢复为默认值。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+### createModalUIExtension
+
+createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): number
+
+创建并显示模态UIExtension。使用callback异步回调。返回的sessionId可用于调用[closeModalUIExtension](#closemodaluiextension)关闭该模态UIExtension。
+
+通过该方法创建的模态UIExtension以模态弹层形式展示，其内容在被拉起的[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)对应进程中运行，宿主应用不参与其内部布局和渲染。
+
+若未指定[transition](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)转场效果，则模态UIExtension无动画展示。若指定了transition，则在模态显示和关闭时分别播放出现和消失转场动画。
+
+被拉起的Ability必须是带UI的Ability扩展，如何实现带UI的Ability扩展请参考[带界面的ExtensionAbility组件](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型                                                         | 必填 | 说明                                                       |
+| --------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| want      | [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 要拉起的UIExtensionAbility对应的Want。                     |
+| options   | [ModalUIExtensionOptions](#modaluiextensionoptions)        | 否   | 模态UIExtension的创建选项，包括DPI跟随策略、窗口模式跟随策略和转场效果。 |
+| callback  | [ModalUIExtensionCallback](#modaluiextensioncallback)     | 否   | 模态UIExtension的生命周期回调集合。                         |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| number | 模态UIExtension的sessionId。取值范围：[0, +∞)。值为0表示创建失败，值大于0表示创建成功。该sessionId可用于调用[closeModalUIExtension](#closemodaluiextension)关闭模态UIExtension。 |
+
+**示例：**
+
+```ts
+import { ComponentContent, UIContext } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct ModalUIExtensionExample {
+  @State windowModeStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE;
+  @State dpiFollowStrategy: DpiFollowStrategy = DpiFollowStrategy.FOLLOW_HOST_DPI;
+  @State sessionId: number = 0;
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    Column() {
+      Button('Create Modal UIExtension')
+        .onClick(() => {
+          const want: Want = {
+            bundleName: 'com.example.modalprovider',
+            abilityName: 'ModalUIExtensionAbility',
+            parameters: {
+              'ability.want.params.uiExtensionType': 'sys/commonUI'
+            }
+          };
+          // 创建并显示模态UIExtension
+          this.sessionId = this.uiContext.createModalUIExtension(
+            want,
+            {
+              transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
+              dpiFollowStrategy: this.dpiFollowStrategy,
+              windowModeFollowStrategy: this.windowModeStrategy
+            },
+            {
+              onRemoteReady: (proxy) => {
+                console.info('UIExtension onRemoteReady');
+              },
+              onReceive: () => {
+                console.info('UIExtension onReceive');
+              },
+              onError: (error) => {
+                console.info('UIExtension onReceive');
+              },
+              onTerminated: (info) => {
+                console.info('UIExtension onTerminated');
+                this.uiContext.closeModalUIExtension(this.sessionId);
+              },
+              onDrawReady: () => {
+                console.info('UIExtension onDrawReady');
+              },
+            });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### closeModalUIExtension
+
+closeModalUIExtension(sessionId: number): void
+
+关闭模态UIExtension。
+
+若创建模态UIExtension时指定了[transition](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)转场效果，则在关闭时先播放消失转场动画，动画结束后再关闭。无效的、已关闭的或正在关闭中的sessionId将被静默忽略。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                                                 |
+| ---------- | ------ | ---- | -------------------------------------------------------------------- |
+| sessionId  | number | 是   | 由[createModalUIExtension](#createmodaluiextension)返回的sessionId。取值范围：[0, +∞)。值为0表示创建失败，值大于0表示创建成功。 |
+
+**示例：**
+
+```ts
+import { ComponentContent, UIContext } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct ModalUIExtensionExample {
+  @State windowModeStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE;
+  @State dpiFollowStrategy: DpiFollowStrategy = DpiFollowStrategy.FOLLOW_HOST_DPI;
+  @State sessionId: number = 0;
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    Column() {
+      Button('Create Modal UIExtension')
+        .onClick(() => {
+          const want: Want = {
+            bundleName: 'com.example.modalprovider',
+            abilityName: 'ModalUIExtensionAbility',
+            parameters: {
+              'ability.want.params.uiExtensionType': 'sys/commonUI'
+            }
+          };
+          this.sessionId = this.uiContext.createModalUIExtension(
+            want,
+            {
+              transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
+              dpiFollowStrategy: this.dpiFollowStrategy,
+              windowModeFollowStrategy: this.windowModeStrategy
+            },
+            {
+              onRemoteReady: (proxy) => {
+                console.info('UIExtension onRemoteReady');
+              },
+              onReceive: () => {
+                console.info('UIExtension onReceive');
+              },
+              onError: (error) => {
+                console.info('UIExtension onReceive');
+              },
+              onTerminated: (info) => {
+                console.info('UIExtension onTerminated');
+                // 关闭模态UIExtension
+                this.uiContext.closeModalUIExtension(this.sessionId);
+              },
+              onDrawReady: () => {
+                console.info('UIExtension onDrawReady');
+              },
+            });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## ModalUIExtensionOptions
+
+模态UIExtension的创建选项。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                    | 类型                                                           | 只读 | 可选 | 说明                                                   |
+| ----------------------- | -------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------ |
+| dpiFollowStrategy       | [DpiFollowStrategy](arkui-ts/ts-container-ui-extension-component-sys.md#dpifollowstrategy12) | 否   | 是   | DPI跟随策略。</br>默认值：DpiFollowStrategy.FOLLOW_HOST_DPI |
+| windowModeFollowStrategy | [WindowModeFollowStrategy](arkui-ts/ts-container-ui-extension-component-sys.md#windowmodefollowstrategy18) | 否 | 是 | 窗口模式跟随策略。</br>默认值：WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE |
+| transition              | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 模态UIExtension显示和关闭时播放的转场动画效果。</br>默认值：TransitionEffect.IDENTITY（无动画） |
+
+## ModalUIExtensionCallback
+
+模态UIExtension的生命周期回调集合。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| onRemoteReady | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;[UIExtensionProxy](arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)&gt; | 否 | 是 | UIExtensionAbility连接完成时的回调。回调参数为[UIExtensionProxy](arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)实例，可通过该实例向被拉起的Ability发送数据。 |
+| onReceive     | [ReceiveCallback](arkui-ts/ts-container-ui-extension-component-sys.md#receivecallback18) | 否   | 是   | 收到被拉起的Ability发送的数据时触发的回调。                  |
+| onError       | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 是   | 被拉起的Ability扩展在运行过程中发生异常时触发的回调。可通过回调参数中的code、name和message获取错误信息，业务错误码详细介绍请参见[UIExtension错误码](errorcode-uiextension.md)。 |
+| onTerminated  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;[TerminationInfo](arkui-ts/ts-container-ui-extension-component-sys.md#terminationinfo12)&gt; | 否 | 是 | 被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时触发的回调。 |
+| onDrawReady   | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;void&gt; | 否   | 是   | 被拉起的UIExtensionAbility绘制第一帧时触发的回调。           |
 
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
 
-缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的是还是图形变换前的效果。
+缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
 
 ### getWithRange<sup>20+</sup>
 getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>;
@@ -452,9 +728,9 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 >
 > start对应的组件和end对应的组件必须为同一棵组件树上的组件，且start对应的组件需要为end对应的组件的祖先组件。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -479,7 +755,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 | ------ | ------- |
 | 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>适用版本：23+ |
 
 **示例：** 
 
@@ -555,48 +831,4 @@ struct SnapshotExample {
 }
 ```
 
-![zh-cn_image_getWithRange](figures/zh-cn_image_getWithRange.gif)
-
-### recycleInvisibleImageMemory<sup>23+</sup>
-
-recycleInvisibleImageMemory(enabled: boolean): void
-
-设置不可见Image组件的内存回收开关（[组件可见性](../../../application-dev/ui/arkts-manage-components-visibility.md)是指组件在屏幕上的显示状态）。开启后，当Image组件不参与渲染时，其内部持有的图像内存资源将在系统空闲时（如应用退后台）主动回收，以降低应用系统内存占用；当组件重新参与渲染时，将按需重新加载相关图像资源。
-
-该接口主要用于内存敏感场景下的优化，适用于图片数量较多、页面频繁切换前后台或组件可见性变化较为明显的场景。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。 
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型    | 必填 | 说明 |
-| -------- | ------- | ---- | ---- |
-| enabled  | boolean | 是   | 是否开启不可见Image组件的内存回收能力。<br/>true表示开启内存回收，Image组件在不可见时将主动释放图像内存资源；<br/>false表示关闭内存回收，Image组件在不可见时仍保留图像内存资源。<br/>默认值为false，传入`undefined`时将恢复为默认值。 |
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct ImageRecycleSample {
-  build() {
-    Column({ space: 12 }) {
-      Button('Enable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(true)
-        })
-
-      Button('Disable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(false)
-        })
-    }
-    .width('100%')
-    .padding(16)
-  }
-}
-```
+![zh-cn_image_getWithRange](figures/image-getWithRange.gif)

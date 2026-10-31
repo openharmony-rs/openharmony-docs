@@ -9,6 +9,8 @@
 
 证书管理主要提供系统级的证书管理能力，实现证书全生命周期（安装，存储，使用，销毁）的管理和安全使用。
 
+可用于校验应用服务器的HTTPS证书链、通过双向HTTPS登录网站或应用服务器。
+
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -38,7 +40,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| CM_DIGEST_NONE | 0      | 不需要摘要算法，选用此项时，需要业务传入已经计算过摘要的数据进行签名、验签。 |
+| CM_DIGEST_NONE | 0      | 选用此项时，需要应用程序传入已经计算过摘要的数据进行签名、验签。 |
 | CM_DIGEST_MD5 | 1      | MD5摘要算法。 |
 | CM_DIGEST_SHA1 | 2      | SHA1摘要算法。 |
 | CM_DIGEST_SHA224 | 3      | SHA224摘要算法。 |
@@ -68,8 +70,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | purpose          | [CmKeyPurpose](#cmkeypurpose)                       | 否  | 否  | 表示密钥使用目的的枚举。 |
-| padding        | [CmKeyPadding](#cmkeypadding)                       | 否   | 是  | 表示填充方式的枚举。 |
-| digest        | [CmKeyDigest](#cmkeydigest)                       | 否   | 是  | 表示摘要算法的枚举。 |
+| padding        | [CmKeyPadding](#cmkeypadding)                       | 否   | 是  | 表示填充方式的枚举。默认值：CM_PADDING_PSS，表示使用PSS填充方式。 |
+| digest        | [CmKeyDigest](#cmkeydigest)                       | 否   | 是  | 表示摘要算法的枚举。默认值：CM_DIGEST_SHA256，表示使用SHA256摘要算法。 |
 
 
 ## CertInfo
@@ -148,7 +150,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。 |
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
-| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br>**起始版本：** 26.0.0 |
+| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CMHandle
 
@@ -162,17 +164,19 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 ## CertBlob
 
-表示证书二进制数据。
+表示证书文件数据。
 
 **起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
-| certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据。 |
-| certFormat  | [CertFileFormat](#certfileformat)   | 否   | 是  | 表示证书文件格式。 |
-| certScope   | [CertScope](#certscope18)         | 否   | 是  | 表示用户CA证书的存储位置。 |
+| certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据。当certFormat传入PEM_DER，最大长度为8KB。当certFormat传入P7B，最大长度为300KB。 |
+| certFormat  | [CertFileFormat](#certfileformat)   | 否   | 是  | 表示证书文件格式。默认值：PEM_DER。 |
+| certScope   | [CertScope](#certscope18)         | 否   | 是  | 表示用户CA证书的存储位置。默认值：CURRENT_USER。 |
 
 ## CMErrorCode
 
@@ -189,9 +193,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | CM_ERROR_INCORRECT_FORMAT  | 17500003      | 表示输入证书或凭据的数据格式无效。 |
 | CM_ERROR_MAX_CERT_COUNT_REACHED<sup>12+</sup>  | 17500004      | 表示证书或凭据数量达到上限。 |
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。 |
-| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。 |
+| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。该模式下CA证书安装操作受限。 |
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。   |
-| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。   |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB Key服务失败。   |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。   |
 
 ## CertType<sup>18+</sup>
@@ -225,7 +229,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称            | 值 | 说明                       |
 |---------------| ------ |--------------------------|
 | INTERNATIONAL | 1      | 表示国际密码算法，如RSA、NIST ECC等。 |
-| SM            | 2      | 表示商用密码算法，如SM2、SM4等。      |
+| SM            | 2      | 表示商用密码算法，如SM2、SM4等。海外设备不支持使用该算法的证书。      |
 
 ## CertStoreProperty<sup>18+</sup>
 
@@ -237,7 +241,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 |-----------|-----------------------------------| ---- | ------------------------------------------------------------ |---------------------------------------------|
 | certType  | [CertType](#certtype18)           | 否  | 否  | 表示证书的类型。                                    |
 | certScope | [CertScope](#certscope18)         | 否   | 是  | 表示证书的存储位置。当证书类型为CA_CERT_USER时，此项为必选项。       |
-| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | 否   | 是  | 表示证书算法类型。仅当certType为CA_CERT_SYSTEM时有效，默认值为INTERNATIONAL。 |
+| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | 否   | 是  | 表示证书算法类型。仅当certType为CA_CERT_SYSTEM时有效，默认值为INTERNATIONAL。海外设备不支持SM算法。 |
 
 ## AuthStorageLevel<sup>18+</sup>
 
@@ -266,13 +270,13 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 ## UkeyInfo<sup>22+</sup>
 
-提供USB凭据属性信息。
+提供USB Key证书凭据属性信息。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称           | 类型  | 只读 | 可选 | 说明  |
 | -------------- | ---- | ---- | ---- | ---- |
-| certPurpose  | [CertificatePurpose](#certificatepurpose22)  | 否   | 是  | 表示凭据用途。 |
+| certPurpose  | [CertificatePurpose](#certificatepurpose22)  | 否   | 是  | 表示凭据用途。默认值：PURPOSE_DEFAULT。 |
 
 ## CertFileFormat
 
@@ -281,6 +285,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 **起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 值 | 说明      |
 | ---------- | ------ | --------- |
@@ -291,7 +297,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>): void
 
-表示安装私有凭据，使用Callback回调异步返回结果。
+安装私有凭据。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -303,7 +309,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | keystore | Uint8Array                   | 是   | 表示带有密钥对和证书的密钥库文件，最大长度为20480字节。 |
 | keystorePwd | string | 是   | 表示密钥库文件的密码，长度限制32字节以内。 |
-| certAlias | string | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，长度建议32字节以内。 |
+| certAlias | string | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，最大长度32字节。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当安装私有凭据成功时，err为null，data为[CMResult](#cmresult)对象中的uri属性；否则为错误对象。 |
 
 **错误码：**
@@ -313,7 +319,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004 | The number of certificates or credentials reaches the maximum allowed.<br>适用版本：12+ |
@@ -324,11 +330,11 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 /* 安装的凭据数据需要业务赋值，本例数据非凭据数据 */
 let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
-let keystorePwd: string = "123456";
+let keystorePwd: string = '123456';
 try {
-  certificateManager.installPrivateCertificate(keystore, keystorePwd, "test", (err, cmResult) => {
+  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', (err, cmResult) => {
     if (err != null) {
       console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
     } else {
@@ -345,7 +351,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise\<CMResult>
 
-表示安装私有凭据。使用Promise异步回调。
+安装私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -357,7 +363,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | keystore | Uint8Array                   | 是   | 表示带有密钥对和证书的密钥库文件，最大长度为20480字节。 |
 | keystorePwd | string | 是   | 表示密钥库文件的密码，长度限制32字节以内。 |
-| certAlias | string | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，长度建议32字节以内。 |
+| certAlias | string | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，最大长度32字节。 |
 
 **返回值**：
 
@@ -372,7 +378,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004 | The number of certificates or credentials reaches the maximum allowed.<br>适用版本：12+ |
@@ -385,9 +391,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 安装的凭据数据需要业务赋值，本例数据非凭据数据 */
 let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
-let keystorePwd: string = "123456";
+let keystorePwd: string = '123456';
 try {
   certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
     let uri: string = cmResult?.uri ?? '';
@@ -395,7 +401,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -405,7 +411,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, level: AuthStorageLevel): Promise\<CMResult>
 
-表示安装私有凭据并指定凭据的存储级别。使用Promise异步回调。
+安装私有凭据并指定凭据的存储级别。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -417,7 +423,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | ----------- | ---------- | ---- | ------------------------------------------------------------ |
 | keystore    | Uint8Array | 是   | 表示带有密钥对和证书的密钥库文件，最大长度为20480字节。                           |
 | keystorePwd | string     | 是   | 表示密钥库文件的密码。<br>长度限制：32字节以内。                   |
-| certAlias   | string     | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线。<br>长度建议：32字节以内。 |
+| certAlias   | string     | 是   | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，最大长度32字节。 |
 | level   | [AuthStorageLevel](#authstoragelevel18)   | 是   | 表示凭据的存储级别。 |
 
 **返回值：**
@@ -433,7 +439,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 错误码ID               | 错误信息                                                     |
 | ---------------------- | ------------------------------------------------------------ |
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
-| 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401                    | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 | 17500003               | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004               | The number of certificates or credentials reaches the maximum allowed. |
@@ -446,9 +452,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
 let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
-let keystorePwd: string = "123456";
+let keystorePwd: string = '123456';
 try {
   /* 安装凭据在首次解锁设备后可以使用。 */
   let level = certificateManager.AuthStorageLevel.EL2;
@@ -458,7 +464,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -468,7 +474,7 @@ try {
 
 getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 
-表示获取私有凭据的详细信息，使用Callback回调异步返回结果。
+获取私有凭据的详细信息，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -488,9 +494,9 @@ getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate does not exist. |
+| 17500002 | The certificate does not exist. Possible causes: 1. The certificate URI is incorrect; 2. The certificate has been uninstalled. Please check the certificate URI. |
 
 **示例**：
 ```ts
@@ -519,7 +525,7 @@ try {
 
 getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取私有凭据详情。使用Promise异步回调。
+获取私有凭据详情。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -544,7 +550,7 @@ getPrivateCertificate(keyUri: string): Promise\<CMResult>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -565,7 +571,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -575,7 +581,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): void
 
-表示卸载指定的私有凭据，使用Callback回调异步返回结果。
+卸载指定的私有凭据，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -595,7 +601,7 @@ uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): voi
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -605,7 +611,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
 try {
-  certificateManager.uninstallPrivateCertificate(uri, (err, result) => {
+  certificateManager.uninstallPrivateCertificate(uri, (err) => {
     if (err != null) {
       console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
     } else {
@@ -621,7 +627,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
-表示卸载指定的私有凭据。使用Promise异步回调。
+卸载指定的私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -646,7 +652,7 @@ uninstallPrivateCertificate(keyUri: string): Promise\<void>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -657,12 +663,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
 try {
-  certificateManager.uninstallPrivateCertificate(uri).then((cmResult) => {
+  certificateManager.uninstallPrivateCertificate(uri).then(() => {
     console.info('Succeeded in uninstalling private certificate.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -670,15 +676,17 @@ try {
 
 ## certificateManager.installUserTrustedCertificate
 
-installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
+installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 
 安装用户CA证书。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT（该权限仅系统应用可申请）<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -699,7 +707,7 @@ installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201         | Permission verification failed. The application does not have the permission required to call the API. |
-| 401         | Parameter verification failed. Possible causes: the certData parameter is empty or exceeds the maximum length. |
+| 401         | [Sync] Parameter error. Possible causes: The certData parameter is empty or exceeds the maximum length. |
 | 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003    | Indicates that the certificate is in an invalid format. |
 | 17500004    | Indicates that the number of certificates reaches the maximum allowed. |
@@ -713,7 +721,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 安装的CA证书数据需要业务赋值，本例数据非CA证书数据 */
 let certData: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 try {
   let certBlob: certificateManager.CertBlob = {
@@ -727,7 +735,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -735,11 +743,11 @@ try {
 
 ## certificateManager.installUserTrustedCertificateSync<sup>18+</sup>
 
-installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMResult
+installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope): CMResult
 
-表示安装用户CA证书。
+安装用户CA证书。
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT（该权限仅系统应用可申请）<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -763,7 +771,7 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMRe
 | 错误码ID                  | 错误信息                                                                                                                                            |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401                    | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 | 17500003               | Indicates that the certificate is in an invalid format.                                                                                         |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed.                                                                          |
@@ -776,15 +784,16 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 /* 安装的CA证书数据需要业务赋值，本例数据非CA证书数据 */
 let certData: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 try {
-  let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData, certificateManager.CertScope.CURRENT_USER);
+  let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData,
+    certificateManager.CertScope.CURRENT_USER);
   let certUri = result.uri;
   if (certUri === undefined) {
-    console.error("The result of install user trusted certificate is undefined.");
+    console.error('The result of install user trusted certificate is undefined.');
   } else {
-    console.info("Succeeded to install user trusted certificate.");
+    console.info('Succeeded in installing user trusted certificate.');
   }
 } catch (error) {
   console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
@@ -795,9 +804,9 @@ try {
 
 uninstallUserTrustedCertificateSync(certUri: string) : void
 
-表示删除用户CA证书。
+卸载用户CA证书。
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT（该权限仅系统应用可申请）<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -805,7 +814,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 
 | 参数名       | 类型                         | 必填 | 说明           |
 |-----------|----------------------------|----|--------------|
-| certUri     | string                 | 是  | 表示待卸删除证书的唯一标识符，长度限制256字节以内。    |
+| certUri     | string                 | 是  | 表示待卸载证书的唯一标识符，长度限制256字节以内。    |
 
 **错误码：**
 
@@ -814,7 +823,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 | 错误码ID                  | 错误信息                                                                                                                                            |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401                    | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
 | 17500002               | Indicates that the certificate does not exist.                                                                                                  |
 
@@ -823,7 +832,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
-let certUri: string = "test"; /* 业务删除证书，需要使用证书的标识符，此处省略 */
+let certUri: string = 'test'; /* 业务删除证书，需要使用证书的标识符，此处省略 */
 try {
   certificateManager.uninstallUserTrustedCertificateSync(certUri);
 } catch (error) {
@@ -835,7 +844,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>): void
 
-表示使用凭据进行签名、验签的初始化操作，使用Callback回调异步返回结果。
+使用凭据进行签名、验签的初始化操作，是签名验签流程的第一步，后续需依次调用update和finish接口完成操作。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -856,10 +865,10 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user.<br>适用版本：12+ |
+| 17500005 | The application is not authorized by the user. Please call [openAuthorizeDialog](./js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog20) method to request user authorization for the certificate or credential.<br>适用版本：12+ |
 
 **示例**：
 ```ts
@@ -870,7 +879,7 @@ const req: certificateManager.CMSignatureSpec = {
   purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
   padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
   digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
-}
+};
 try {
   certificateManager.init(uri, req, (err, cmHandle) => {
     if (err != null) {
@@ -878,7 +887,7 @@ try {
     } else {
       console.info('Succeeded in initiating.');
     }
-  })
+  });
 } catch (error) {
   console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
 }
@@ -888,7 +897,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
-表示使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
+使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -914,7 +923,7 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 | 17500005 | The application is not authorized by the user.<br>适用版本：12+ |
@@ -929,14 +938,14 @@ const req: certificateManager.CMSignatureSpec = {
   purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
   padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
   digest: certificateManager.CmKeyDigest.CM_DIGEST_MD5
-}
+};
 try {
   certificateManager.init(uri, req).then((handle) => {
     console.info('Succeeded in initiating.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
 }
@@ -946,7 +955,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): void
 
-表示签名、验签的数据更新操作，使用Callback回调异步返回结果。
+签名、验签的数据更新操作，需要在init操作之后调用，用于传入待签名、验签的数据。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -956,7 +965,7 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | data | Uint8Array                   | 是   | 表示待签名、验签的数据。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当签名、验签的数据更新操作成功时，err为null，否则为错误对象。 |
 
@@ -967,7 +976,7 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
@@ -982,7 +991,7 @@ let srcData: Uint8Array = new Uint8Array([
   0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
 ]);
 try {
-  certificateManager.update(cmHandle, srcData, (err, result) => {
+  certificateManager.update(cmHandle, srcData, (err) => {
     if (err != null) {
       console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
     } else {
@@ -998,7 +1007,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
-表示签名、验签的数据更新操作。使用Promise异步回调。
+签名、验签的数据更新操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1008,7 +1017,7 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | data | Uint8Array                   | 是   | 表示待签名、验签的数据。 |
 
 **返回值**：
@@ -1024,7 +1033,7 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
@@ -1040,12 +1049,12 @@ let srcData: Uint8Array = new Uint8Array([
   0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
 ]);
 try {
-  certificateManager.update(cmHandle, srcData).then((result) => {
+  certificateManager.update(cmHandle, srcData).then(() => {
     console.info('Succeeded in updating.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to update. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1055,7 +1064,7 @@ try {
 
 finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-表示完成签名的操作，Callback回调异步返回结果。
+完成签名的操作，是签名流程的最后一步，需要先调用init和update接口。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1065,7 +1074,7 @@ finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当签名成功时，err为null，data为[CMResult](#cmresult)对象中的outData属性，表示签名数据；否则为错误对象。 |
 
 **错误码：**
@@ -1075,7 +1084,7 @@ finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
@@ -1099,7 +1108,7 @@ try {
       }
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`Failed to finish. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1108,7 +1117,7 @@ try {
 
 finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-表示完成验签的操作，使用Callback回调异步返回结果。
+完成验签的操作，是验签流程的最后一步，需要先调用init和update接口。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1118,9 +1127,9 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | signature | Uint8Array                   | 是   | 表示签名数据。 |
-| callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当验签成功时，err为null；否则为错误对象。 |
+| callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当验签成功时，err为null，data为[CMResult](#cmresult)对象中的outData属性，验签时outData属性为null；否则为错误对象。 |
 
 **错误码：**
 
@@ -1129,7 +1138,7 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
@@ -1151,7 +1160,7 @@ try {
       console.info('Succeeded in finishing.');
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`Failed to finish. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1160,7 +1169,7 @@ try {
 
 finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
-表示完成签名、验签的操作。使用Promise异步回调。
+完成签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1170,8 +1179,8 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
-| signature | Uint8Array                   | 否   | 表示用于验签操作的签名数据，仅验签操作需要指定。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
+| signature | Uint8Array                   | 否   | 表示用于验签操作的签名数据。签名操作时无需传入此参数。 |
 
 **返回值**：
 
@@ -1186,7 +1195,7 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
@@ -1210,7 +1219,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to finish signature. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 
   /* 签名的结果 */
   let signRes: Uint8Array = new Uint8Array([
@@ -1222,8 +1231,8 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to finish verification. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch(error) {
+  });
+} catch (error) {
   console.error(`Failed to finish. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1232,7 +1241,7 @@ try {
 
 abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
-表示中止签名、验签的操作，使用Callback回调异步返回结果。
+中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1252,7 +1261,7 @@ abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
@@ -1264,14 +1273,14 @@ let cmHandle: Uint8Array = new Uint8Array([
   0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
 ]);
 try {
-  certificateManager.abort(cmHandle, (err, cmResult) => {
+  certificateManager.abort(cmHandle, (err) => {
     if (err != null) {
       console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('Succeeded in aborting.');
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`Failed to abort. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1280,7 +1289,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-表示中止签名、验签的操作。使用Promise异步回调。
+中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1305,7 +1314,7 @@ abort(handle: Uint8Array): Promise\<void>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
@@ -1318,12 +1327,12 @@ let cmHandle: Uint8Array = new Uint8Array([
   0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08
 ]);
 try {
-  certificateManager.abort(cmHandle).then((result) => {
+  certificateManager.abort(cmHandle).then(() => {
     console.info('Succeeded in aborting.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to abort. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1333,7 +1342,7 @@ try {
 
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取用户公共凭据的详细信息。使用Promise异步回调。
+获取用户公共凭据的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1358,7 +1367,7 @@ getPublicCertificate(keyUri: string): Promise\<CMResult>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 | 17500005 | The application is not authorized by the user. |
@@ -1380,7 +1389,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get Public certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get Public certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1390,7 +1399,7 @@ try {
 
 isAuthorizedApp(keyUri: string): Promise\<boolean>
 
-表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。
+当前应用是否由指定的用户凭据授权。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1415,7 +1424,7 @@ isAuthorizedApp(keyUri: string): Promise\<boolean>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
@@ -1434,7 +1443,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to check if the application is authorized. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to check if the application is authorized. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1444,7 +1453,7 @@ try {
 
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
-表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
+获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1483,7 +1492,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get all user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get all user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1493,7 +1502,7 @@ try {
 
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
-表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
+根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1518,7 +1527,7 @@ getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.      |
 
 **示例**：
@@ -1528,7 +1537,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  /* 获取当前用户下的用户根CA证书列表; 如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
+  /* 获取当前用户下的用户根CA证书列表，如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
   let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
   certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
     if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
@@ -1542,7 +1551,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1552,7 +1561,7 @@ try {
 
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
-表示获取用户根CA证书的详细信息。使用Promise异步回调。
+获取用户根CA证书的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1577,7 +1586,7 @@ getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -1598,7 +1607,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to get user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to get user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1607,7 +1616,7 @@ try {
 
 getPrivateCertificates(): Promise\<CMResult>
 
-表示获取应用安装的凭据列表。使用Promise异步回调。
+获取应用安装的凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1645,17 +1654,19 @@ try {
     }
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to get all private certificates installed by the application. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to get all private certificates installed by the application. ` +
+      `Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-  console.error(`Failed to get all private certificates installed by the application. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get all private certificates installed by the application. ` +
+    `Code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## certificateManager.getCertificateStorePath<sup>18+</sup>
 
-getCertificateStorePath(property: CertStoreProperty): string;
+getCertificateStorePath(property: CertStoreProperty): string
 
-表示获取证书的存储路径。
+获取证书的存储路径。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -1677,7 +1688,7 @@ getCertificateStorePath(property: CertStoreProperty): string;
 
 | 错误码ID    | 错误信息      |
 |----------| ------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified.  |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified.  |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm.<br>适用版本：20+ |
 
@@ -1688,34 +1699,34 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 try {
   /* 获取系统CA的存储位置 */
   let property1: certificateManager.CertStoreProperty = {
-    certType: certificateManager.CertType.CA_CERT_SYSTEM,
-  }
+    certType: certificateManager.CertType.CA_CERT_SYSTEM
+  };
   let systemCAPath = certificateManager.getCertificateStorePath(property1);
-  console.info(`Success to get system ca path: ${systemCAPath}`);
+  console.info(`Succeeded in getting system CA path: ${systemCAPath}`);
 
   /* 获取当前用户的用户CA存储位置 */
   let property2: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_USER,
-    certScope: certificateManager.CertScope.CURRENT_USER,
-  }
+    certScope: certificateManager.CertScope.CURRENT_USER
+  };
   let userCACurrentPath = certificateManager.getCertificateStorePath(property2);
-  console.info(`Success to get current user's user ca path: ${userCACurrentPath}`);
+  console.info(`Succeeded in getting current user's user CA path: ${userCACurrentPath}`);
 
   /* 获取设备公共的用户CA存储位置 */
   let property3: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_USER,
-    certScope: certificateManager.CertScope.GLOBAL_USER,
-  }
+    certScope: certificateManager.CertScope.GLOBAL_USER
+  };
   let globalCACurrentPath = certificateManager.getCertificateStorePath(property3);
-  console.info(`Success to get global user's user ca path: ${globalCACurrentPath}`);
+  console.info(`Succeeded in getting global user's user CA path: ${globalCACurrentPath}`);
 
   /* 获取SM算法系统CA的存储位置 */
   let property4: certificateManager.CertStoreProperty = {
     certType: certificateManager.CertType.CA_CERT_SYSTEM,
-    certAlg: certificateManager.CertAlgorithm.SM,
-  }
+    certAlg: certificateManager.CertAlgorithm.SM
+  };
   let smSystemCAPath = certificateManager.getCertificateStorePath(property4);
-  console.info(`Success to get SM system ca path: ${smSystemCAPath}`);
+  console.info(`Succeeded in getting SM system CA path: ${smSystemCAPath}`);
 } catch (error) {
   console.error(`Failed to get store path. Code: ${error.code}, message: ${error.message}`);
 }
@@ -1724,26 +1735,28 @@ try {
 
 getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-表示获取USB凭据详细信息。使用Promise异步回调。
+获取USB Key证书凭据详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+- 从API版本26.0.0开始，该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
+- 在API版本22-24，该接口在PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 
 | 参数名   | 类型   | 必填 | 说明    |
 | -------- | ------- | ---- | ------ |
-| keyUri | string | 是   | 表示USB凭据的唯一标识符，长度限制256字节以内。 |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB凭据的属性信息。 |
+| keyUri | string | 是   | 表示USB Key证书凭据的唯一标识符，长度限制256字节以内。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB Key证书凭据的属性信息。 |
 
 **返回值**：
 
 | 类型  | 说明  |
 | ----- | ----- |
-| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取到的USB凭据详情的结果。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取到的USB Key证书凭据详情的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
 
 **错误码：**
 
@@ -1751,11 +1764,11 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
 | 错误码ID    | 错误信息      |
 |----------| ------------- |
-| 201      | Permission verification failed. |
-| 801      | Capability not supported. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported because the HUKS service is not support Ukey feature. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | Indicates that the certificate does not exist. |
-| 17500010 | Indicates that access USB key service failed. |
+| 17500010 | Indicates that access USB Key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.  |
 
 **示例**：
@@ -1765,18 +1778,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* USB凭据的唯一标识符，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
-  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
-}
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT
+};
 try {
   certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
-    let list = cmResult.credentialDetailList;
-    console.info('Succeeded in getting detail of USB key certificate.');
+    if (cmResult?.credentialDetailList === undefined) {
+      console.info('The result of getting detail of USB Key certificate is undefined.');
+    } else {
+      let list = cmResult.credentialDetailList;
+      console.info('Succeeded in getting detail of USB Key certificate.');
+    }
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to get detail of USB key certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to get detail of USB Key certificate. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-  console.error(`Failed to get detail of USB key certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get detail of USB Key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1784,7 +1801,7 @@ try {
 
 getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-获取USB凭据证书列表。使用Promise异步回调。
+获取USB Key证书凭据列表。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1792,20 +1809,22 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
 | 参数名       | 类型                                | 必填 | 说明                                      |
 | ------------ | ----------------------------------- | ---- | ----------------------------------------- |
-| ukeyProvider | string                               | 是   | 表示USB凭据提供商。                       |
-| ukeyInfo     | [UkeyInfo](#ukeyinfo22)             | 是   | 表示USB凭据的属性信息。                     |
+| ukeyProvider | string                               | 是   | 表示USB Key的设备提供商。                       |
+| ukeyInfo     | [UkeyInfo](#ukeyinfo22)             | 是   | 表示USB Key证书凭据的属性信息。                     |
 
 **返回值**：
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取USB凭据证书列表的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取USB Key证书凭据列表的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
 
 **错误码：**
 
@@ -1814,9 +1833,9 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201         | Permission verification failed. The application does not have the permission required to call the API. |
-| 801         | Capability not supported. |
+| 801         | Capability not supported because the HUKS service is not support Ukey feature. |
 | 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
-| 17500010    | Indicates that access USB key service failed. |
+| 17500010    | Indicates that access USB Key service failed. |
 | 17500011    | Parameter verification failed. Possible causes: the ukeyInfo parameter is invalid. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -1827,18 +1846,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let ukeyProvider: string = 'testProvider'; /* USB凭据提供商，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
-  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
-}
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT
+};
 try {
   certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult) => {
     let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
-    console.info('Succeeded in getting USB key certificate list.');
+    console.info('Succeeded in getting USB Key certificate list.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to get USB Key certificate list. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-  console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get USB Key certificate list. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1854,15 +1873,17 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| keyUri | string | 是 | 表示USB key证书的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
-| cert | Uint8Array | 是 | 表示待导入的证书数据。<br>证书数据格式遵循SKF规范的定义。 |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN或PURPOSE_ENCRYPT。 |
+| keyUri | string | 是 | 表示USB Key证书凭据的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为10KB。<br>证书数据格式遵循SKF（Smart Key Framework）规范的定义。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB Key证书凭据属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
 
 **返回值**：
 
@@ -1877,10 +1898,10 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported because the HUKS service is not support Ukey feature. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | Indicates that the certificate does not exist. |
-| 17500010 | Indicates that access USB key service failed. |
+| 17500002 | The certificate identified by keyUri does not exist. |
+| 17500010 | Indicates that access USB Key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -1890,21 +1911,21 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 /* keyUri和cert数据需要业务赋值，本例数据仅为示例 */
-let keyUri: string = 'test'; /* USB key证书的uri，可通过getUkeyCertificateList获取 */
+let keyUri: string = 'test'; /* USB Key证书的uri，可通过getUkeyCertificateList获取 */
 let certData: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 let ukeyInfo: certificateManager.UkeyInfo = {
-  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN
 };
 try {
   certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
-    console.info('Succeeded in importing USB key certificate.');
+    console.info('Succeeded in importing USB Key certificate.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to import USB Key certificate. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
-  console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to import USB Key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```

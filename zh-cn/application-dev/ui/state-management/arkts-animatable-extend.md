@@ -8,9 +8,9 @@
 
 @AnimatableExtend装饰器用于自定义可动画的属性方法，在这个属性方法中修改组件不可动画的属性。在动画执行过程中，通过逐帧回调函数修改不可动画属性值，让不可动画属性也能实现动画效果。也可通过逐帧回调函数修改可动画属性的值，实现逐帧布局的效果。
 
-- 可动画属性：如果一个属性方法在[animation](../arkts-animation.md)属性前调用，改变这个属性的值可以使animation属性的动画效果生效，这个属性称为可动画属性。比如height、width、backgroundColor、translate属性，和Text组件的fontSize属性等。
+- 可动画属性：如果一个属性方法在[animation](../arkts-animation.md)属性前调用，改变这个属性的值可以使animation属性的动画效果生效，这个属性称为可动画属性。比如[height](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[width](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[translate](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)属性，和Text组件的[fontSize](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)属性等。
 
-- 不可动画属性：如果一个属性方法在animation属性前调用，改变这个属性的值不能使animation属性的动画效果生效，这个属性称为不可动画属性。比如Polyline组件的points属性等。
+- 不可动画属性：如果一个属性方法在animation属性前调用，改变这个属性的值不能使animation属性的动画效果生效，这个属性称为不可动画属性。比如[Polyline](../../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)组件的[points](../../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#points)属性等。
 
 >  **说明：**
 >
@@ -49,11 +49,12 @@
 以下示例通过改变Text组件宽度实现逐帧布局的效果。
 
 
-<!-- @[animatable_extend_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets) -->
+<!-- @[animatable_extend_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets) -->  
 
 ``` TypeScript
 @AnimatableExtend(Text)
 function animatableWidth(width: number) {
+  // 在逐帧回调中将width写入Text的width属性
   .width(width)
 }
 
@@ -67,6 +68,7 @@ struct AnimatablePropertyText {
       Text('AnimatableProperty')
         .animatableWidth(this.textWidth)
         .animation({ duration: 2000, curve: Curve.Ease })
+      // 点击按钮切换textWidth，触发Text逐帧更新宽度并产生动画效果
       Button('Play')
         .onClick(() => {
           this.textWidth = this.textWidth == 80 ? 160 : 80;

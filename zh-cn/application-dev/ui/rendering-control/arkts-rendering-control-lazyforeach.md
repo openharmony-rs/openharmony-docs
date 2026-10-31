@@ -129,7 +129,7 @@ struct InitialRendering {
 
 **错误案例：键值相同导致渲染异常**
 
-当不同数据项生成的键值相同时，框架的行为是不可预测的。例如，在以下代码中，`LazyForEach`渲染的数据项键值均相同，在滑动过程中，`LazyForEach`会预加载划入划出当前页面的子组件，而新建的子组件和销毁的旧子组件具有相同的键值，框架可能取用错误的缓存，导致子组件渲染出现问题。
+当不同数据项生成的键值相同时，框架的行为是不可预测的。例如，在以下代码中，`LazyForEach`渲染的数据项键值均相同，在滑动过程中，`LazyForEach`会预加载滑入滑出当前页面的子组件，而新建的子组件和销毁的旧子组件具有相同的键值，框架可能取用错误的缓存，导致子组件渲染出现问题。
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
@@ -768,7 +768,7 @@ struct PreciselyModifyingDataTwo {
 使用该接口时请注意以下事项。
 
 1. 不要将`onDatasetChange`与其他操作数据的接口混用。
-2. 传入`onDatasetChange`的`operations`中，每一项`operation`的`index`均从修改前的原数组中查找。因此，`operations`中的`index`不总是与`Datasource`中的`index`一一对应，并且不能为负数。
+2. 传入`onDatasetChange`的`operations`中，每一项`operation`的`index`均从修改前的原数组中查找。因此，`operations`中的`index`不总是与`DataSource`中的`index`一一对应，并且不能为负数。
 
    第一个例子清楚地显示了这一点:
 
@@ -788,7 +788,7 @@ struct PreciselyModifyingDataTwo {
    "Hello k","Hello l" 被删除了，而 "Hello k" 在原数组中的 index=10，因此第四个 operation 为 `{ type: DataOperationType.DELETE, index: 10, count: 2 }`。
 
 3. 在同一个`onDatasetChange`批量处理数据时，如果多个`DataOperation`操作同一个`index`，只有第一个`DataOperation`生效。
-4. 部分操作由开发者传入键值，LazyForEach不再重复调用`keygenerator`获取键值，开发者需保证传入键值的正确性。
+4. 部分操作由开发者传入键值，LazyForEach不再重复调用`keyGenerator`获取键值，开发者需保证传入键值的正确性。
 5. 若操作集合中包含RELOAD操作，则其他操作均不生效。
 
 ## 高级特性
@@ -1201,6 +1201,94 @@ struct DragandDropSorting {
 **LazyForEach拖拽排序效果图**  
 ![LazyForEach-Drag-Sort](figures/LazyForEach-Drag-Sort.gif)
 
+### 主动清理预加载的子组件
+
+LazyForEach会构建并持有预加载区域内的子组件。
+
+从API version 26.1.0开始，当开发者需要主动释放这些预加载的子组件时，可以通过控制器[LazyForEachController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#lazyforeachcontroller)实现。
+
+使用方式：创建LazyForEachController对象，并在创建LazyForEach时通过[LazyForEachOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#lazyforeachoptions)的controller字段完成绑定；需要清理缓存时，调用控制器上的[clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#clearcache)方法。
+
+> **说明：**
+>
+> 1. controller仅在LazyForEach创建时绑定，不支持动态修改。
+> 2. 一个控制器只能控制一个LazyForEach组件。若将控制器绑定到另一个LazyForEach，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
+
+以下示例中，点击Clear按钮可主动清理LazyForEach预加载的子组件。
+
+<!-- @[lazyforeach_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/LazyForEachClearCache.ets) --> 
+
+``` TypeScript
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
+import { BasicDataSource } from './BasicDataSource';
+
+class DataSource extends BasicDataSource {
+  public dataArray: string[] = [];
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Component
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@Component
+struct ClearCacheDemo {
+  private data: DataSource = new DataSource();
+  // 创建LazyForEachController对象
+  private controller: LazyForEachController = new LazyForEachController();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.pushData(`item ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        // 通过LazyForEachOptions的controller字段绑定控制器
+        LazyForEach(this.data,
+          (item: string, index: number) => {
+            ListItem() {
+              ChildComponent()
+            }
+          },
+          (item: string, index: number) => item,
+          { controller: this.controller }
+        )
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理LazyForEach预加载的子组件
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
+
 ## 常见问题
 
 ### 删除节点后渲染结果非预期
@@ -1443,18 +1531,18 @@ import { GenericBasicDataSource } from './GenericBasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-class FliceringDataSource extends GenericBasicDataSource<ImageFliceringStringData> {
-  private dataArray: ImageFliceringStringData[] = [];
+class FlickeringDataSource extends GenericBasicDataSource<ImageFlickeringStringData> {
+  private dataArray: ImageFlickeringStringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): ImageFliceringStringData {
+  public getData(index: number): ImageFlickeringStringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: ImageFliceringStringData): void {
+  public pushData(data: ImageFlickeringStringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
@@ -1462,7 +1550,7 @@ class FliceringDataSource extends GenericBasicDataSource<ImageFliceringStringDat
 
 // @Observed类装饰器 和 @ObjectLink 用于在涉及嵌套对象或数组的场景中进行双向数据同步
 @Observed
-class ImageFliceringStringData {
+class ImageFlickeringStringData {
   public message: string;
   public imgSrc: Resource;
 
@@ -1475,25 +1563,25 @@ class ImageFliceringStringData {
 @Entry
 @Component
 struct ImageFlickeringDuringRerenders {
-  private data: FliceringDataSource = new FliceringDataSource();
+  private data: FlickeringDataSource = new FlickeringDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
       // 此处'app.media.img'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      this.data.pushData(new ImageFliceringStringData(`Hello ${i}`, $r('app.media.img')));
+      this.data.pushData(new ImageFlickeringStringData(`Hello ${i}`, $r('app.media.img')));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: ImageFliceringStringData, index: number) => {
+      LazyForEach(this.data, (item: ImageFlickeringStringData, index: number) => {
         ListItem() {
           ImageFlickeringChildComponent({ data: item })
         }
         .onClick(() => {
           item.message += '0';
         })
-      }, (item: ImageFliceringStringData, index: number) => index.toString()) // 键值不受message属性影响
+      }, (item: ImageFlickeringStringData, index: number) => index.toString()) // 键值不受message属性影响
     }
     .cachedCount(5)
   }
@@ -1501,8 +1589,8 @@ struct ImageFlickeringDuringRerenders {
 
 @Component
 struct ImageFlickeringChildComponent {
-  // 用状态变量来驱动UI刷新，而不是通过Lazyforeach的api来驱动UI刷新
-  @ObjectLink data: ImageFliceringStringData;
+  // 用状态变量来驱动UI刷新，而不是通过LazyForEach的api来驱动UI刷新
+  @ObjectLink data: ImageFlickeringStringData;
 
   build() {
     Column() {
@@ -1787,7 +1875,7 @@ import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-class ScreenFliceringDataSource extends BasicDataSource {
+class ScreenFlickeringDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -1818,7 +1906,7 @@ class ScreenFliceringDataSource extends BasicDataSource {
 @Component
 struct ScreenFlickeringInList {
   private moved: number[] = [];
-  private data: ScreenFliceringDataSource = new ScreenFliceringDataSource();
+  private data: ScreenFlickeringDataSource = new ScreenFlickeringDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 10; i++) {

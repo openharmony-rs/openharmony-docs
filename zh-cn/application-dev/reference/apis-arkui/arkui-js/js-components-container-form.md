@@ -86,4 +86,4 @@ export default{
 }
 ```
 
-![zh-cn_image_0000001180658376](figures/zh-cn_image_0000001180658376.gif)
+![form](figures/form.gif)

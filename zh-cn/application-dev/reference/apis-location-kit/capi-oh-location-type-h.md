@@ -43,6 +43,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
+| [bool OH_LocationInfo_IsFromMock(Location_Info* location)](#oh_locationinfo_isfrommock) | - | 判断定位信息是否来自模拟位置功能。<br />**起始版本：** 26.0.0 |
 | [Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)](#oh_locationinfo_getbasicinfo) | - | 获取位置基本信息。 |
 | [Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)](#oh_locationinfo_getadditionalinfo) | - | 获取位置信息中的附加信息。 |
 | [typedef void (\*Location_InfoCallback)(Location_Info* location, void* userData)](#location_infocallback) | Location_InfoCallback | 用于接收位置上报的回调函数。 |
@@ -90,7 +91,7 @@ enum Location_UseScene
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | 导航场景。<br> 适用于在户外获取设备实时位置的场景，如车载、步行导航。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
+| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | 表示导航场景。<br> 适用于在户外获取设备实时位置的场景，如车载、步行导航。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
 | LOCATION_USE_SCENE_SPORT = 0x0402 | 表示运动场景。<br> 适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
 | LOCATION_USE_SCENE_TRANSPORT = 0x0403 | 表示出行场景。<br> 适用于用户出行场景，如打车、乘坐公共交通等场景。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
 | LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | 表示日常服务使用场景。<br> 适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。<br> 该场景仅使用网络定位技术提供定位服务，功耗较低。 |
@@ -134,6 +135,30 @@ enum Location_SourceType
 
 
 ## 函数说明
+
+### OH_LocationInfo_IsFromMock()
+
+```c
+bool OH_LocationInfo_IsFromMock(Location_Info* location)
+```
+
+**描述**
+
+判断定位信息是否来自模拟位置功能。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_Info](capi-location-location-info.md)* location | 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回 bool 类型的结果，用于指示该位置是否来自模拟位置功能。<br> 如果值为 true，表示该位置来自模拟位置功能；如果值为 false，表示该位置源自系统的真实定位结果。<br> |
 
 ### OH_LocationInfo_GetBasicInfo()
 

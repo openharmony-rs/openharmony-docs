@@ -1,10 +1,11 @@
 # Canvas
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-10-29T08:55:06.667Z pushedAt=2026-10-30T03:00:21.990Z nl=1 -->
 
 
 The **\<canvas>** component provides a canvas for drawing customized graphics. For details, see [CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md).
@@ -39,7 +40,7 @@ canvas {
 }
 ```
 
-![en-us_image_0000001222984605](figures/en-us_image_0000001222984605.png)
+![canvas-Component](figures/canvas-Component.png)
 
 > **NOTE**
 > - The default background color of the **\<canvas>** component is the same as that of the parent component.
@@ -79,14 +80,14 @@ canvas {
 }
 ```
 
-![en-us_image_0000001177623482](figures/en-us_image_0000001177623482.png)
+![Adding-Styles](figures/Adding-Styles.png)
 
 
 ## Adding Events
 
 Add the long press event to the **\<canvas>** component. When the event is triggered, the value of **dataUrl** (image information returned by the **toDataURL** method) of the **\<canvas>** component can be obtained and printed in the text area below.
 
-> **NOTE**
+> **NOTE** 
 >
 > For details about the APIs related to **promptAction**, see [@ohos.promptAction (Prompt)](../reference/apis-arkui/js-apis-promptAction.md).
 
@@ -144,16 +145,24 @@ export default {
         ctx.strokeRect(100, 100, 300, 300);
     },
     getUrl() {
-        let el = this.$refs.canvas1
-        let dataUrl = el.toDataURL()
+        let el = this.$refs.canvas1;
+        let dataUrl = el.toDataURL();
         this.dataURL = dataUrl;
-        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" })
+        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" });
     }
 }
 ```
 
-![en-us_image_0000001222985331](figures/en-us_image_0000001222985331.gif)
+![Adding-Events](figures/Adding-Events.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > The **\<canvas>** component cannot be created in **onInit** or **onReady**.
+
+## Samples
+
+The following samples are provided to help you better understand how to develop **Canvas**:
+
+- [Customized Lottery Wheel (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/JSCanvasComponent)
+
+- [Image Editing (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEditorTemplate)

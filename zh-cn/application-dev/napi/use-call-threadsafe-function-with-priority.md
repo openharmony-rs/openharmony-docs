@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API的napi_call_threadsafe_function_with_priority接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务，支持任务优先级和队列位置控制。"
+keywords: [Node-API, 线程安全, napi_call_threadsafe_function_with_priority, 任务优先级, 入队方式, 异步线程, ArkTS线程, 任务投递]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 Node-API中的napi_call_threadsafe_function_with_priority接口的功能是从异步线程向ArkTS线程投递指定优先级和入队方式的任务，底层队列会根据任务的优先级和入队方式来处理任务。
 
 ## 函数说明

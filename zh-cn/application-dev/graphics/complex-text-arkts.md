@@ -1,9 +1,9 @@
 # 复杂文本绘制与显示（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 在进行文本绘制时，可以通过选择合适的字体、大小和颜色完成简单文本的绘制与显示；此外，还支持通过设置其他丰富的样式、语言、段落等进行复杂文本的绘制。
 
@@ -103,7 +103,7 @@
 
 ### 效果展示
 
-![zh-cn_image_0000002246603733](figures/zh-cn_image_0000002246603733.png)
+![Effect](figures/Effect.png)
 
 
 ## 多行文本绘制与显示
@@ -167,7 +167,7 @@
 
    <!-- -->
 
-4. 初始化段落对象，并添加占位符和文本。
+4. 初始化段落对象，并添加文本。
 
    <!-- @[arkts_multi_line_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
    
@@ -205,14 +205,14 @@
 
 | 段落样式设置（断词策略、文本对齐方式、最大行数限制） | 效果示意 | 
 | -------- | -------- |
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_0000002246563849](figures/zh-cn_image_0000002246563849.png) | 
-| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_0000002211443900](figures/zh-cn_image_0000002211443900.png) | 
-| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_complexArkTsDemoJustify](figures/zh-cn_image_complexArkTsDemoJustify.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002211603680](figures/zh-cn_image_0000002211603680.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002246563845](figures/zh-cn_image_0000002246563845.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts_word_break_hyphen_locale_undefined.jpg](figures/ts_word_break_hyphen_locale_undefined.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-gb.jpg](figures/ts_word_break_hyphen_local_en-gb.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-us.jpg](figures/ts_word_break_hyphen_local_en-us.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-LEFT](figures/BREAK-WORD-LEFT.png) | 
+| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-RIGHT](figures/BREAK-WORD-RIGHT.png) | 
+| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![complexArkTsDemoJustify](figures/complexArkTsDemoJustify.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT](figures/BREAK-ALL-LEFT.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT-10](figures/BREAK-ALL-LEFT-10.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) | 
 
 
 ## 多样式文本绘制与显示
@@ -261,7 +261,7 @@
 
 ### 字体特征
 
-**字体特征**（[FontFeature](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#fontfeature)）绘制专注于在文本渲染过程中对字体特性（如粗体、斜体、字体变种等）的处理，允许字体在不同的排版场景下表现出不同的效果，可用于增强文本的表现力，使其更符合设计和阅读需求。
+**字体特征**（[FontFeature](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#fontfeature)）绘制专注于在文本渲染过程中对字体特性（如粗体、斜体、字体变体等）的处理，允许字体在不同的排版场景下表现出不同的效果，可用于增强文本的表现力，使其更符合设计和阅读需求。
 
 常见的**FontFeature**包含有liga、frac、case等，需要对应的ttf文件支持才能正常使能。
 
@@ -415,11 +415,10 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 ### 示例一（装饰线、字体特征）
 
-<!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
+<!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) --> 
 
 ``` TypeScript
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
+import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
 import { text } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
@@ -441,7 +440,7 @@ class MyRenderNode extends RenderNode {
         },
         // 装饰线样式，支持波浪，虚线，直线等
         decorationStyle:text.TextDecorationStyle.SOLID,
-        // 装饰线的高度
+        // 装饰线粗细缩放比例
         decorationThicknessScale: 1
       };
 
@@ -482,7 +481,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -564,24 +563,22 @@ struct Font08 {
 ```
 
 
+
 具体示意效果如下所示：
 
 | 样式设置（装饰线样式、字体特征） | 示意效果 | 
 | -------- | -------- |
-| 不开启装饰线和字体特征 | ![zh-cn_image_complexArkTsDemo1_1](figures/zh-cn_image_complexArkTsDemo1_1.png) | 
-| 开启装饰线和字体特征 | ![zh-cn_image_complexArkTsDemo1_2](figures/zh-cn_image_complexArkTsDemo1_2.png) | 
+| 不开启装饰线和字体特征 | ![complexArkTsDemo1-1](figures/complexArkTsDemo1-1.png) | 
+| 开启装饰线和字体特征 | ![complexArkTsDemo1-2](figures/complexArkTsDemo1-2.png) | 
 
 ### 示例二（可变字体、文本阴影、占位符）
 这里以可变字体、文本阴影、占位符三个特性为例，呈现多样式文本的绘制与显示。
 
-<!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
+<!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) --> 
 
 ``` TypeScript
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
-import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
+import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+import { drawing, text, common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -658,7 +655,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -739,17 +736,18 @@ struct Font08 {
 }
 ```
 
+
 具体示意效果如下所示：
 
 | 样式设置（可变字体、文本阴影、占位符） | 示意效果 | 
 | -------- | -------- |
-| 不开启可变字体和文本阴影，不使用占位符 | ![zh-cn_image_complexArkTsDemo2_1](figures/zh-cn_image_complexArkTsDemo2_1.png) | 
-| 开启可变字体和文本阴影，使用占位符 | ![zh-cn_image_complexArkTsDemo2_2](figures/zh-cn_image_complexArkTsDemo2_2.png) | 
+| 不开启可变字体和文本阴影，不使用占位符 | ![complexArkTsDemo2-1](figures/complexArkTsDemo2-1.png) | 
+| 开启可变字体和文本阴影，使用占位符 | ![complexArkTsDemo2-2](figures/complexArkTsDemo2-2.png) | 
 
 ### 示例三（垂直对齐）
 这里以垂直对齐-居中对齐特性为例，呈现文本垂直方向排版的特性。
 
-<!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) -->
+<!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -799,7 +797,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -880,18 +878,19 @@ struct Font08 {
 ```
 
 
+
 具体示意效果如下所示：
 | 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
-| 基线对齐（默认）| ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg) | 
-| 顶部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg) | 
-| 居中对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg) | 
-| 底部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_bottom.jpg) | 
+| 基线对齐（默认）| ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg) | 
+| 顶部对齐 | ![verticalAlignment-top](figures/verticalAlignment-top.jpg) | 
+| 居中对齐 | ![verticalAlignment-center](figures/verticalAlignment-center.jpg) | 
+| 底部对齐 | ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg) | 
 
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
 
-<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
+<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -951,7 +950,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -1032,16 +1031,17 @@ struct Font08 {
 ```
 
 
+
 具体示意效果如下所示：
 | 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
-| 上标文本 | ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_subscript.jpg) | 
-| 下标文本 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg) | 
+| 上标文本 | ![superscript](figures/superscript.jpg) | 
+| 下标文本 | ![subscript](figures/subscript.jpg) | 
 
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。
 
-<!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) -->
+<!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext} from '@kit.ArkUI'
@@ -1088,7 +1088,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -1167,27 +1167,28 @@ struct Font08 {
 }
 ```
 
+
 具体示意效果如下所示：
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
-| 不开启高对比度 | ![zh-cn_image_complexArkTsDemo5_1](figures/zh-cn_image_complexArkTsDemo5_1.png) | 
-| 开启高对比度 | ![zh-cn_image_complexArkTsDemo5_2](figures/zh-cn_image_complexArkTsDemo5_2.png) | 
+| 不开启高对比度 | ![complexArkTsDemo5-1](figures/complexArkTsDemo5-1.png) | 
+| 开启高对比度 | ![complexArkTsDemo5-2](figures/complexArkTsDemo5-2.png) | 
 
 ### 示例六（行高调整方式一）
 这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
 
-  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
+  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) --> 
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
-
+  
   // 创建一个MyRenderNode类，并绘制文本。
   class MyRenderNode extends RenderNode {
     async draw(context: DrawContext) {
       let canvas = context.canvas;
-
+  
       let myTextStyle: text.TextStyle = {
         color: {
           alpha: 255,
@@ -1201,19 +1202,19 @@ struct Font08 {
         // 设置行高下限
         lineHeightMinimum: 65,
       };
-
+  
       let myParagraphStyle: text.ParagraphStyle = {
         textStyle: myTextStyle,
       };
-
+  
       let fontCollection = text.FontCollection.getGlobalInstance();
       let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-
+  
       // 设置待排版文本要应用的样式
       paragraphBuilder.pushStyle(myTextStyle);
       // 添加文本
       paragraphBuilder.addText('Hello World!');
-
+  
       // 生成段落
       let paragraph = paragraphBuilder.build();
       // 布局
@@ -1222,10 +1223,10 @@ struct Font08 {
       paragraph.paint(canvas, 0, 0);
     }
   }
-
+  
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode()
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1234,10 +1235,10 @@ struct Font08 {
   }
   textNode.pivot = { x: 0.2, y: 0.8 };
   textNode.scale = { x: 1, y: 1 };
-
+  
   class MyNodeController extends NodeController {
     private rootNode: FrameNode | null = null;
-
+  
     makeNode(uiContext: UIContext): FrameNode {
       this.rootNode = new FrameNode(uiContext)
       if (this.rootNode == null) {
@@ -1255,7 +1256,7 @@ struct Font08 {
       }
       return this.rootNode;
     }
-
+  
     addNode(node: RenderNode): void {
       if (this.rootNode == null) {
         return;
@@ -1265,7 +1266,7 @@ struct Font08 {
         renderNode.appendChild(node);
       }
     }
-
+  
     clearNodes(): void {
       if (this.rootNode == null) {
         return;
@@ -1276,14 +1277,14 @@ struct Font08 {
       }
     }
   }
-
+  
   let myNodeController: MyNodeController = new MyNodeController();
-
+  
   async function performTask() {
     myNodeController.clearNodes();
     myNodeController.addNode(textNode);
   }
-
+  
   @Entry
   @Component
   struct Font08 {
@@ -1304,6 +1305,7 @@ struct Font08 {
     }
   }
   ```
+  
 
 具体效果如下所示：
 
@@ -1315,17 +1317,17 @@ struct Font08 {
 ### 示例七（行高调整方式二）
 这里以行高缩放且行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
 
-  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) --> 
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
-
+  
   // 创建一个MyRenderNode类，并绘制文本。
   class MyRenderNode extends RenderNode {
     async draw(context: DrawContext) {
       let canvas = context.canvas;
-
+  
       let myTextStyle: text.TextStyle = {
         color: {
           alpha: 255,
@@ -1341,19 +1343,19 @@ struct Font08 {
         // 设置行高缩放风格
         lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT,
       };
-
+  
       let myParagraphStyle: text.ParagraphStyle = {
         textStyle: myTextStyle,
       };
-
+  
       let fontCollection = text.FontCollection.getGlobalInstance();
       let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-
+  
       // 设置待排版文本要应用的样式
       paragraphBuilder.pushStyle(myTextStyle);
       // 添加文本
       paragraphBuilder.addText('Hello World!');
-
+  
       // 生成段落
       let paragraph = paragraphBuilder.build();
       // 布局
@@ -1362,10 +1364,10 @@ struct Font08 {
       paragraph.paint(canvas, 0, 0);
     }
   }
-
+  
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode();
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1374,10 +1376,10 @@ struct Font08 {
   }
   textNode.pivot = { x: 0.2, y: 0.8 };
   textNode.scale = { x: 1, y: 1 };
-
+  
   class MyNodeController extends NodeController {
     private rootNode: FrameNode | null = null;
-
+  
     makeNode(uiContext: UIContext): FrameNode {
       this.rootNode = new FrameNode(uiContext)
       if (this.rootNode == null) {
@@ -1395,7 +1397,7 @@ struct Font08 {
       }
       return this.rootNode;
     }
-
+  
     addNode(node: RenderNode): void {
       if (this.rootNode == null) {
         return
@@ -1405,7 +1407,7 @@ struct Font08 {
         renderNode.appendChild(node);
       }
     }
-
+  
     clearNodes(): void {
       if (this.rootNode == null) {
         return;
@@ -1416,14 +1418,14 @@ struct Font08 {
       }
     }
   }
-
+  
   let myNodeController: MyNodeController = new MyNodeController();
-
+  
   async function performTask() {
     myNodeController.clearNodes();
     myNodeController.addNode(textNode);
   }
-
+  
   @Entry
   @Component
   struct Font08 {
@@ -1444,6 +1446,7 @@ struct Font08 {
     }
   }
   ```
+  
 具体效果如下所示：
 
 | 行高缩放样式 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
@@ -1454,17 +1457,17 @@ struct Font08 {
 ### 示例八（行间距调整）
 这里以关闭段落上升部下降部并设置行间距为例，呈现行间距增加后的文本绘制与显示。
 
-  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) --> 
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
-
+  
   // 创建一个MyRenderNode类，并绘制文本。
   class MyRenderNode extends RenderNode {
     async draw(context: DrawContext) {
       let canvas = context.canvas;
-
+  
       let myTextStyle: text.TextStyle = {
         color: {
           alpha: 255,
@@ -1474,7 +1477,7 @@ struct Font08 {
         },
         fontSize: 50,
       };
-
+  
       let myParagraphStyle: text.ParagraphStyle = {
         textStyle: myTextStyle,
         // 设置行间距
@@ -1482,15 +1485,15 @@ struct Font08 {
         // 关闭段落上升部和下降部
         textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
       };
-
+  
       let fontCollection = text.FontCollection.getGlobalInstance();
       let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-
+  
       // 设置待排版文本要应用的样式
       paragraphBuilder.pushStyle(myTextStyle);
       // 添加文本
       paragraphBuilder.addText('Hello World!');
-
+  
       // 生成段落
       let paragraph = paragraphBuilder.build();
       // 布局
@@ -1499,10 +1502,10 @@ struct Font08 {
       paragraph.paint(canvas, 0, 0);
     }
   }
-
+  
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode();
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1511,10 +1514,10 @@ struct Font08 {
   }
   textNode.pivot = { x: 0.2, y: 0.8 };
   textNode.scale = { x: 1, y: 1 };
-
+  
   class MyNodeController extends NodeController {
     private rootNode: FrameNode | null = null;
-
+  
     makeNode(uiContext: UIContext): FrameNode {
       this.rootNode = new FrameNode(uiContext);
       if (this.rootNode == null) {
@@ -1532,7 +1535,7 @@ struct Font08 {
       }
       return this.rootNode;
     }
-
+  
     addNode(node: RenderNode): void {
       if (this.rootNode == null) {
         return;
@@ -1542,7 +1545,7 @@ struct Font08 {
         renderNode.appendChild(node);
       }
     }
-
+  
     clearNodes(): void {
       if (this.rootNode == null) {
         return;
@@ -1553,14 +1556,14 @@ struct Font08 {
       }
     }
   }
-
+  
   let myNodeController: MyNodeController = new MyNodeController();
-
+  
   async function performTask() {
     myNodeController.clearNodes();
     myNodeController.addNode(textNode);
   }
-
+  
   @Entry
   @Component
   struct Font08 {
@@ -1581,6 +1584,7 @@ struct Font08 {
     }
   }
   ```
+  
 具体效果如下所示：
 
 | 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |

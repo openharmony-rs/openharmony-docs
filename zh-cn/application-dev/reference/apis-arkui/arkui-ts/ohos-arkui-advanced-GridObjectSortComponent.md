@@ -1,9 +1,9 @@
 # GridObjectSortComponent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangrunsen-->
-<!--Designer: @YanSanzo-->
-<!--Tester: @ybhou1993-->
+<!--Owner: @rongShao-Z-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -15,8 +15,6 @@
 >  - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件仅可在Stage模型下使用。
->
-> - 如果GridObjectSortComponent设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到GridObjectSortComponent本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议GridObjectSortComponent设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -47,8 +45,8 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 | 名称     | 类型                             | 必填 | 装饰器类型 | 说明         |
 | -------- | -------------------------------- | ---------- | ---- | ---- |
 | options  | [GridObjectSortComponentOptions](#gridobjectsortcomponentoptions) | 是     | @Prop      | 组件配置信息。 |
-| dataList | Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)> | 是    | -     | 传入的数据，最大长度为50，数据长度超过50，只会取前50的数据。 |
-| onSave | (select: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>, unselect: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>)  => void | 是 | - | 保存编辑排序的回调函数，返回编辑后的数据。 |
+| dataList | Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)> | 是    | -     | 传入的数据，最大长度为50，数据长度超过50，只会取前50条数据。 |
+| onSave | (select: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>, unselect: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>)  => void | 是 | - | 保存编辑排序的回调函数，select为编辑后的选中数据，unselect为编辑后的未选中数据。 |
 | onCancel | () => void | 是 | - | 取消保存数据的回调。 |
 
 ##  GridObjectSortComponentOptions
@@ -63,8 +61,8 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 | 名称           | 类型                      | 只读 | 可选 | 说明                                                          |
 | -------------- | ------------------------- |---|---|-------------------------------------------------------------|
-| type           | [GridObjectSortComponentType](#gridobjectsortcomponenttype) | 否 | 是 | 组件展示形态：文字\|图片+文字。<br />默认值：GridObjectSortComponentType.TEXT |
-| imageSize      | number \| [Resource](ts-types.md#resource) | 否 | 是 | 图片的尺寸，单位vp。<br />取值范围：大于等于0。<br />默认值：56vp                  |
+| type           | [GridObjectSortComponentType](#gridobjectsortcomponenttype) | 否 | 是 | 组件展示形态：文字\|图片+文字。设置为GridObjectSortComponentType.IMAGE_TEXT时，需为数据项配置url或symbolStyle。<br />默认值：GridObjectSortComponentType.TEXT |
+| imageSize      | number \| [Resource](ts-types.md#resource) | 否 | 是 | 图片的尺寸，单位vp。仅在type为GridObjectSortComponentType.IMAGE_TEXT时生效。设置为数值0时，普通图片按默认尺寸显示，Symbol图标的字号为0vp。<br />取值范围：大于等于0。<br />默认值：56vp                  |
 | normalTitle | [ResourceStr](ts-types.md#resourcestr)     | 否 | 是 | 未编辑状态下显示的标题。<br />默认值：频道。                                   |
 | showAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | 否 | 是 | 展示区域标题，第一个子标题。<br />默认值：长按拖动排序。                             |
 | addAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | 否 | 是 | 添加区域标题，第二个子标题。<br />默认值：点击添加。                               |
@@ -97,10 +95,14 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 | -------- | -------------------------------------- |---|---|--------------------------------------------------------------------------------------------------------------------------|
 | id       | number&nbsp;\|&nbsp;string             | 否 | 否 | 数据id序号，不可重复。<br />默认值：空字符串。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                          |
 | text     | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 显示文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                              |
-| selected | boolean                                | 否 | 否 | 是否已经被添加，已添加：true，未添加：false。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| url      | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入图片地址。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入Symbol图标资源。配置优先级高于url。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| order    | number                                 | 否 | 否 | 顺序序号。<br />取值范围：大于等于0。<br />默认值：0 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                   |
+| selected | boolean                                | 否 | 否 | 是否被选中，已选中：true，未选中：false。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| url      | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | GridObjectSortComponentType类型为IMAGE_TEXT时，用于配置图片地址；类型为TEXT时不生效。若同时配置symbolStyle，优先使用symbolStyle。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | GridObjectSortComponentType类型为IMAGE_TEXT时，用于配置Symbol图标资源；类型为TEXT时不生效。配置优先级高于url。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| order    | number                                 | 否 | 否 | 顺序序号，数值越小排序越靠前。<br />取值范围：大于等于0。<br />默认值：0 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                   |
+
+## 属性
+
+不支持[通用属性](ts-component-general-attributes.md)。
 
 ## 事件
 
@@ -162,16 +164,16 @@ struct Index {
       GridObjectSortComponent({
         options: this.option,
         dataList: this.dataList,
-        // 保存编辑排序的回调函数，返回编辑后的数据。
+        // 保存编辑排序的回调函数，接收编辑后的选中数据和未选中数据。
         onSave: (
           select: Array<GridObjectSortComponentItem>,
           unselect: Array<GridObjectSortComponentItem>
         ) => {
-          // save ToDo
+          // 实现保存数据的逻辑
         },
         // 取消保存数据的回调。
         onCancel: () =>{
-          // cancel ToDo
+          // 实现取消编辑的逻辑
         }
       })
     }

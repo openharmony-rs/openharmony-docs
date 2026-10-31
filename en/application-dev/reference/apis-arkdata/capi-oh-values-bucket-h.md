@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4bc84da0b0b4ca42cff40909145dc8bf81e8f0b0 translatedAt=2026-09-04T02:58:18.665Z pushedAt=2026-09-09T09:11:03.661Z -->
 
 ## Overview
 
@@ -57,14 +58,14 @@ Puts a [Data_Asset](capi-rdb-data-asset.md) object into the [OH_VBucket](capi-rd
 | Name                                  | Description                                                |
 | ---------------------------------------- | ---------------------------------------------------- |
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance.|
-| const char *field                        | Pointer to the column name in the database table.                                  |
+| const char *field                        | Column name in the database table, which must not be empty.                                   |
 | [Data_Asset](capi-rdb-data-asset.md) *value  | Pointer to the value to put.                        |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_VBucket_PutAssets()
 
@@ -84,19 +85,19 @@ Puts an array of [Data_Asset](capi-rdb-data-asset.md) objects into the [OH_VBuck
 | Name                                  | Description                                                        |
 | ---------------------------------------- | ------------------------------------------------------------ |
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance.        |
-| const char *field                        | Pointer to the column name in the database table.                                          |
+| const char *field                        | Name of the column in the database table. It must not be empty.                                   |
 | [Data_Asset](capi-rdb-data-asset.md) **value | Double pointer to the value to put.                                |
-| uint32_t count                           | Number of elements in the [Data_Asset](capi-rdb-data-asset.md) object to put.|
+| uint32_t count                           | Number of elements in the [Data_Asset](capi-rdb-data-asset.md) object array passed in. |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **See**
 
-OH_VBucket
+[OH_VBucket](capi-rdb-oh-vbucket.md)
 
 ### OH_VBucket_PutFloatVector()
 
@@ -116,7 +117,7 @@ Puts a float array into an [OH_VBucket](capi-rdb-oh-vbucket.md) object in the gi
 | Name                                  | Description                                                |
 | ---------------------------------------- | ---------------------------------------------------- |
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance.|
-| const char *field                        | Pointer to the column name in the database table.                                  |
+| const char *field                        | Column name in the database table, which must not be empty.                                   |
 | const float *vec                         | Pointer to the float array to put.                           |
 | size_t len                               | Length of the float array to put.                               |
 
@@ -124,11 +125,11 @@ Puts a float array into an [OH_VBucket](capi-rdb-oh-vbucket.md) object in the gi
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 **See**
 
-OH_VBucket
+[OH_VBucket](capi-rdb-oh-vbucket.md)
 
 ### OH_VBucket_PutUnlimitedInt()
 
@@ -148,7 +149,7 @@ Puts an integer of any length into an [OH_VBucket](capi-rdb-oh-vbucket.md) objec
 | Name                                  | Description                                                  |
 | ---------------------------------------- | ------------------------------------------------------ |
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance.  |
-| const char *field                        | Pointer to the column name in the database table.                                    |
+| const char *field                        | Column name in the database table, which must not be empty.                                           |
 | int sign                                 | Sign notation of the integer object. The value **0** indicates a positive integer, and the value **1** indicates a negative integer.|
 | const uint64_t *trueForm                 | Pointer to the integer object to put.                          |
 | size_t len                               | Length of the integer object to put.                                  |
@@ -157,4 +158,5 @@ Puts an integer of any length into an [OH_VBucket](capi-rdb-oh-vbucket.md) objec
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+

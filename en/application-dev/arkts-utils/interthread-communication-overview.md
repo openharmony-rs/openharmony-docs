@@ -22,4 +22,4 @@ Leveraging the TaskPool and Worker concurrency APIs, ArkTS supports a variety of
 
 Figure 1 Serialization and deserialization principles
 
-![image_0000002017033808](figures/image_0000002017033808.png)
+![Serialization-and-deserialization-principles](figures/Serialization-and-deserialization-principles.png)

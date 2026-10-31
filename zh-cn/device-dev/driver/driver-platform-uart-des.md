@@ -58,7 +58,7 @@ UART接口定义了操作UART端口的通用方法集合，包括：
 
 UART模块各分层作用：
 
-- 接口层提供打开UART设备、UART设备读取指定长度数据、UART设备写入指定长度数据、设置UART设备波特率、获取设UART设备波特率、设置UART设备属性、获取UART设备波特率、设置UART设备传输模式、关闭UART设备的接口。
+- 接口层提供打开UART设备、UART设备读取数据、UART设备写入指定长度数据、设置UART设备波特率、获取UART设备波特率、设置UART设备属性、获取UART设备属性、设置UART设备传输模式、关闭UART设备的接口。
 
 - 核心层主要提供UART控制器的创建、移除以及管理的能力，通过钩子函数与适配层交互。
 
@@ -70,13 +70,15 @@ UART模块各分层作用：
 
 ### 约束与限制
 
-UART模块UartSetTransMode接口设置传输模式在Linux中不支持，仅为空实现。
+- UartSetTransMode接口支持设置阻塞读模式（UART_MODE_RD_BLOCK）与非阻塞读模式（UART_MODE_RD_NONBLOCK）；DMA相关模式是否支持由平台决定，不支持时调用返回HDF_ERR_NOT_SUPPORT。
+- vmin/vtime仅在阻塞读模式下生效，语义遵循POSIX termios规范，是否支持由平台决定。
+- 非阻塞读模式下，UartRead为部分读语义，返回值可能小于传入的读取长度。
 
 ## 使用指导
 
 ### 场景介绍
 
-UART模块应用比较广泛，主要用于实现设备之间的低速串行通信，例如输出打印信息，当然也可以外接各种模块，如GPS、蓝牙等。
+UART模块应用比较广泛，主要用于实现设备之间的低速串行通信，例如输出打印信息，当然也可以外接各种模块，如GPS、蓝牙等。对于需要接收定长帧数据的场景，可以使用阻塞读模式并配合vmin/vtime属性控制读取的返回时机。
 
 ### 接口说明
 
@@ -88,7 +90,7 @@ UART模块提供的主要接口如表1所示，具体API[详见](https://gitcode
 | -------- | -------- |
 | DevHandle UartOpen(uint32_t port) | UART获取设备句柄 |
 | void UartClose(DevHandle handle) | UART释放设备句柄 |
-| int32_t UartRead(DevHandle handle, uint8_t \*data, uint32_t size) | 从UART设备中读取指定长度的数据 |
+| int32_t UartRead(DevHandle handle, uint8_t \*data, uint32_t size) | 从UART设备中读取数据，返回实际读取到的数据长度（最长不超过size） |
 | int32_t UartWrite(DevHandle handle, uint8_t \*data, uint32_t size) | 向UART设备中写入指定长度的数据 |
 | int32_t UartGetBaud(DevHandle handle, uint32_t \*baudRate) | UART获取波特率 |
 | int32_t UartSetBaud(DevHandle handle, uint32_t baudRate) | UART设置波特率 |
@@ -96,7 +98,8 @@ UART模块提供的主要接口如表1所示，具体API[详见](https://gitcode
 | int32_t UartSetAttribute(DevHandle handle, struct UartAttribute \*attribute) | UART设置设备属性 |
 | int32_t UartSetTransMode(DevHandle handle, enum UartTransMode mode) | UART设置传输模式 |
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
+> **说明：**
+>
 > 本文涉及的UART所有接口，支持内核态及用户态使用。
 
 ### 开发步骤
@@ -106,7 +109,6 @@ UART模块提供的主要接口如表1所示，具体API[详见](https://gitcode
 **图 4** UART使用流程图
 
 ![UART使用流程图](figures/UART使用流程图.png)
-
 
 #### 获取UART设备句柄
 
@@ -238,6 +240,16 @@ turn ret;
 }
 ```
 
+> **说明：**
+>
+> vmin与vtime仅在阻塞读模式（UART_MODE_RD_BLOCK）下生效，语义遵循POSIX termios规范（VMIN/VTIME）；非阻塞读模式下read立即返回当前可用数据，vmin/vtime不生效。vmin/vtime的实际生效情况依平台适配实现而定（见“约束与限制”）。阻塞读模式下read的返回时机由二者组合决定：
+> - vmin=0且vtime=0：立即返回当前可用数据，无数据时返回0。
+> - vmin=0且vtime大于0：定时读，在vtime×0.1秒内返回可用数据，超时返回0。
+> - vmin大于0且vtime=0：阻塞直到收到vmin个字节，使用时需注意避免长时间阻塞。
+> - vmin大于0且vtime大于0：收到第一个字节后启动字节间定时器，收满vmin个字节或字节间隔超过vtime×0.1秒时返回；若始终未收到任何数据，read将持续阻塞，使用时需注意确保对端会发送数据或合理设置vtime兜底。
+>
+> 需要接收定长数据的场景（如固定帧长协议），建议将vmin设置为帧长并使用阻塞读模式。
+
 #### UART获取设备属性
 
 设置UART的设备属性后，可以通过获取设备属性接口来查看UART当前的设备属性，获取设备属性的函数如下所示：
@@ -285,7 +297,20 @@ int32_t UartSetTransMode(DevHandle handle, enum UartTransMode mode);
 | mode | 枚举类型，待设置的传输模式 |
 | **返回值** | **返回值描述** |
 | HDF_SUCCESS | UART设置传输模式成功 |
-| 负数 | UART设置传输模式失败 |
+| HDF_ERR_INVALID_OBJECT | UART设备句柄无效 |
+| HDF_ERR_NOT_SUPPORT | 平台不支持该传输模式或传输模式值非法 |
+
+> **说明：**
+>
+> 传输模式枚举值说明：
+> - UART_MODE_RD_BLOCK：阻塞读模式，read的返回时机由vmin/vtime决定（见“UART设置设备属性”中的说明）。
+> - UART_MODE_RD_NONBLOCK：非阻塞读模式，read立即返回当前可用数据。
+> - UART_MODE_DMA_RX_EN/UART_MODE_DMA_RX_DIS：使能/关闭DMA接收，是否支持由平台决定，不支持时返回HDF_ERR_NOT_SUPPORT。
+> - UART_MODE_DMA_TX_EN/UART_MODE_DMA_TX_DIS：使能/关闭DMA发送，是否支持由平台决定，不支持时返回HDF_ERR_NOT_SUPPORT。
+>
+> 传输模式切换不影响已设置的波特率、设备属性（含vmin/vtime）以及接收缓冲区中未读取的数据。
+>
+> 设备打开后的默认读模式与vmin/vtime默认值由平台决定。建议在读取数据前根据业务需要显式调用UartSetTransMode设置传输模式，不要依赖默认值。
 
 假设需要设置的UART传输模式为UART_MODE_RD_BLOCK，设置传输模式的实例如下：
 
@@ -312,7 +337,7 @@ int32_t UartWrite(DevHandle handle, uint8_t *data, uint32_t size);
 | 参数 | 参数描述 |
 | -------- | -------- |
 | handle | DevHandle类型，UART设备句柄 |
-| data | uint8_t类型指针，待写入数据的 |
+| data | uint8_t类型指针，待写入数据 |
 | size | uint32_t类型，待写入数据的长度 |
 | **返回值** | **返回值描述** |
 | HDF_SUCCESS | UART写数据成功 |
@@ -331,7 +356,7 @@ if (ret != HDF_SUCCESS) {
 }
 ```
 
-#### 从UART设备中读取指定长度的数据
+#### 从UART设备中读取数据
 
 对应的接口函数如下所示：
 
@@ -345,12 +370,12 @@ int32_t UartRead(DevHandle handle, uint8_t *data, uint32_t size);
 | -------- | -------- |
 | handle | DevHandle类型，UART设备句柄 |
 | data | uint8_t类型指针，接收读取数据 |
-| size | uint32_t类型，待读取数据的长度 |
+| size | uint32_t类型，期望读取的最大数据长度 |
 | **返回值** | **返回值描述** |
 | 非负数 | UART读取到的数据长度 |
 | 负数 | UART读取数据失败 |
 
-读取指定长度数据的实例如下：
+读取数据的实例如下：
 
 ```c
 int32_t ret;
@@ -359,12 +384,15 @@ uint8_t rbuff[5] = {0};
 ret = UartRead(handle, rbuff, 5);    // 从UART设备读取指定长度的数据
 if (ret < 0) {
     HDF_LOGE("UartRead: failed, ret %d\n", ret);
-	return ret;
+    return ret;
 }
 ```
 
-> ![icon-caution.gif](public_sys-resources/icon-caution.gif) **注意：**
-> UART返回值为非负值，表示UART读取成功。若返回值等于0，表示UART无有效数据可以读取。若返回值大于0，表示实际读取到的数据长度，该长度小于或等于传入的参数size的大小，并且不超过当前正在使用的UART控制器规定的最大单次读取数据长度的值。
+> **注意：**
+>
+> UART返回值大于0，表示读取成功，返回值为实际读取到的数据长度，该长度小于或等于传入的参数size的大小，并且不超过当前正在使用的UART控制器规定的最大单次读取数据长度的值。若返回值等于0，表示当前无有效数据可以读取（非阻塞模式下的正常状态，不视为错误）。若返回值为负数，表示读取失败，返回负数错误码。
+>
+> 非阻塞读模式下read为部分读语义，返回值可能小于size，表示仅读取到当前缓冲区中的可用数据；阻塞读模式下返回时机由vmin/vtime决定（见“UART设置设备属性”中的说明）。若业务需要读取固定长度的数据，建议将vmin设置为期望长度后使用阻塞读模式，或在应用层循环读取直到读满。
 
 
 #### 销毁UART设备句柄

@@ -6,22 +6,22 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=2e23c2b6aa53f33aac5a467fbcaf0f2f7a3d3bf0 translatedAt=2026-10-30T03:21:54.328Z pushedAt=2026-08-20T12:06:30.560Z nl=1 -->
 
 ## When to Use
 
 The [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md) content embedding module provides an object editing framework and technology for inter-application document embedding and collaborative editing.
 
-An OE server application uses the APIs provided by the [OE Extension framework](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md) to provide client applications with embedding and editing capabilities for documents in specific formats.
+An OE server application uses the APIs provided by [content_embed_extension.h](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md) to provide client applications with embedding and editing capabilities for documents in specific formats.
 
 ## Constraints
-
-Before using the APIs, check whether the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about how to check system capabilities, see [Querying Whether a Specified System Capability Is Supported](../reference/common/init.md#caniuse). In addition, request the `ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION` permission. For details about how to configure the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+Before using the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. Call [canIUse()](../reference/common/syscap-ndk-8h.md#caniuse) to check whether the specified capability is supported. Also request the `ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
 
 Common APIs are listed in the following table. For more API details, see [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md).
 
-**Table 1** Main server APIs
+**Table 1** Main server-side APIs
 
 | API | Description |
 | ------- | ---- |
@@ -71,14 +71,13 @@ Since API version 24, configure OE ExtensionAbility in the `extensionAbilities` 
 ```
 
 Configuration description:
-
 - `name`: Name of the Extension component.
 - `srcEntry`: Path of the entry library file of the Extension component.
 - `type`: Must be set to `"contentEmbed"`.
 - `exported`: Must be set to `true`, indicating that the component is exposed externally.
 - [metadata](../quick-start/module-configuration-file.md#metadata): The `metadata` field adds a data item whose `name` is `"content_embed_config"` and whose `resource` is the resource index of the OE Extension configuration file.
 
-Developers need to add a secondary JSON configuration file for configuring OE Extension information. For example, set `resource` to `"$profile:content_embed_config"` to point to the `resources/base/profile/content_embed_config.json` configuration file. The following is an example JSON file:
+You need to add a secondary JSON configuration file for configuring OE Extension information. For example, set `resource` to `"$profile:content_embed_config"` to point to the `resources/base/profile/content_embed_config.json` configuration file. The following is an example JSON file:
 
 ```json
 {
@@ -95,36 +94,28 @@ Developers need to add a secondary JSON configuration file for configuring OE Ex
 ```
 
 Configuration description:
-
 - `oeid`: System-recognizable identifier of an OE document, used to locate the OE server application that supports the OE document.
-- If the OE server application provides the same function on other operating systems, reuse the ID already used on those systems.
-- If this function of the OE server application is provided only on OpenHarmony, you are advised to use the built-in Terminal tool and run the `uuidgen` command to generate a new ID.
+  - If the OE server application provides the same function on other operating systems, reuse the ID already used on those systems.
+  - If this function of the OE server application is provided only on OpenHarmony, you are advised to use the built-in Terminal tool and run the `uuidgen` command to generate a new ID.
 - `file_exts`: Supported file extensions, such as `".doc"` and `".docx"`. Use `"|"` to separate multiple file name extensions.
 - `icon`: Display icon used for OE document queries. The value is the index of the icon resource file.
 - `name`: Display name used for OE document queries. Use a resource index for the name to support multiple languages.
 - `description`: Display description used for OE document queries. Use a resource index for the description to support multiple languages.
 
 ### Adding Dynamic Libraries
+Add the following libraries to `src/main/cpp/CMakeLists.txt` in the native project:
 
-Add the following libraries to `CMakeLists.txt`.
-
-```text
-# content embed
-libcontent_embed_ndk.so
-# hilog
-libhilog_ndk.z.so
-# ace
-libace_napi.z.so
-# pixelmap
-libpixelmap.so
-# ability
-libability_runtime.so
-# want
-libability_base_want.so
-# fileuri
-libohfileuri.so
-# libimage_source
-libimage_source.so
+```txt
+target_link_libraries(entry PUBLIC
+    libcontent_embed_ndk.so
+    libhilog_ndk.z.so
+    libace_napi.z.so
+    libpixelmap.so
+    libability_runtime.so
+    libability_base_want.so
+    libohfileuri.so
+    libimage_source.so
+)
 ```
 
 ### Including Header Files
@@ -377,7 +368,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
             outputFile.close();
             OH_LOG_INFO(LOG_APP, "Data written successfully.");
         } else {
-            OH_LOG_INFO(LOG_APP, "Failed to open the file.");
+            OH_LOG_ERROR(LOG_APP, "Failed to open the file.");
         }
         char* tempFileUri;
         OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
@@ -437,14 +428,14 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     // Obtain the OE document.
     ret = OH_ContentEmbed_Extension_GetContentEmbedDocument(object, &ceDocument);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
         return;
     }
     // Obtain Root Storage.
     ContentEmbed_Storage *rootStorage = nullptr;
     ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
         return;
     }
 
@@ -460,7 +451,7 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     char nativeFilePath[MAX_PATH_LENGTH];
     ret = OH_ContentEmbed_Document_GetNativeFilePath(ceDocument, nativeFilePath);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
         return;
     }
 
@@ -479,16 +470,16 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     // Write data to the OE document.
     ret = OH_ContentEmbed_Stream_Write(destStream, buffer.data(), oriFileSize, &num);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
         return;
     }
     // Flush the OE document.
     ret = OH_ContentEmbed_Document_Flush(ceDocument);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
         return;
     }
 }
 ```
 
-<!--no_check--> 
+<!--no_check-->

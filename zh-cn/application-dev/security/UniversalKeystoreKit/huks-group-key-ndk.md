@@ -50,7 +50,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 指定待解密的密文。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)。
+3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)。
 
 4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 
@@ -60,7 +60,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. 指定密钥别名。
 
-2. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)。
+2. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)。
 
 3. 调用[OH_Huks_DeleteKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem)删除密钥，具体请参考[密钥删除](huks-delete-key-ndk.md)。
 
@@ -113,7 +113,6 @@ OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_
     }
     return ret;
 }
-uint32_t OH_HUKS_TAG_KEY_ACCESS_GROUP = 5 << 28 | 523;
 static const uint32_t IV_SIZE = 16;
 static uint8_t IV[IV_SIZE] = { 0 };
 static OH_Crypto_ErrCode ret = genRandomNumber(IV_SIZE, IV);
@@ -278,7 +277,7 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_ECB_INDATA_1";
+        char tmpInData[] = "AES_CBC_INDATA_1";
         struct OH_Huks_Blob inData = { (uint32_t)strlen(tmpInData), (uint8_t *)tmpInData };
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
@@ -394,8 +393,8 @@ static OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const str
     }
     return ret;
 }
-static struct OH_Huks_Blob g_keyAliasFinal1001 = {(uint32_t)strlen("HksECDHAgreeKeyAliasTest001_1_final"),
-                                                  (uint8_t *)"HksECDHAgreeKeyAliasTest001_1_final"};
+static struct OH_Huks_Blob g_keyAliasFinal1001 = {(uint32_t)strlen("HksX25519AgreeKeyAliasTest001_1_final"),
+                                                  (uint8_t *)"HksX25519AgreeKeyAliasTest001_1_final"};
 /* 集成密钥参数集 */
 static struct OH_Huks_Param g_genAgreeParams[] = {
     {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_X25519},
@@ -656,7 +655,7 @@ napi_value X25519AgreeKey(napi_env env, napi_callback_info info)
 
 **密钥派生**
 
-1. 获取密钥别名，指定对应的属性参数HuksOptions，添加参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于派生群组密钥。
+1. 获取密钥别名，指定对应的属性参数HuksOptions，添加参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，用于派生群组密钥。
 
 2. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)。
 
@@ -702,7 +701,7 @@ OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_
 static const uint32_t DERIVE_KEY_SIZE_32 = 32;
 static const uint32_t DERIVE_KEY_SIZE_256 = 256;
 static const uint32_t DERIVE_KEY_ITERATION = 10000;
-static const uint32_t SALT_SIZE = 8;
+static const uint32_t SALT_SIZE = 7;
 static const char DERIVE_KEY_SALT[SALT_SIZE] = "mysalt1";
 static struct OH_Huks_Blob g_deriveKeyAlias = {(uint32_t)strlen("test_derive"), (uint8_t *)"test_derive"};
 static struct OH_Huks_Blob g_group = {(uint32_t)strlen("ohos.test.group"), (uint8_t *)"ohos.test.group"};
@@ -713,7 +712,7 @@ static struct OH_Huks_Param g_genDeriveParams[] = {
     {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
     {.tag = OH_HUKS_TAG_KEY_ACCESS_GROUP, .blob = g_group}
 };
-static struct OH_Huks_Param g_hkdfParams[] = {
+static struct OH_Huks_Param g_pbkdf2Params[] = {
     {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_PBKDF2},
     {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DERIVE},
     {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
@@ -722,7 +721,7 @@ static struct OH_Huks_Param g_hkdfParams[] = {
     {.tag = OH_HUKS_TAG_SALT, .blob = {.size = SALT_SIZE, .data = (uint8_t *) DERIVE_KEY_SALT}},
     {.tag = OH_HUKS_TAG_KEY_ACCESS_GROUP, .blob = g_group}
 };
-static struct OH_Huks_Param g_hkdfFinishParams[] = {
+static struct OH_Huks_Param g_pbkdf2FinishParams[] = {
     {.tag = OH_HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG, .uint32Param = OH_HUKS_STORAGE_ONLY_USED_IN_HUKS},
     {.tag = OH_HUKS_TAG_KEY_ALIAS, .blob = g_deriveKeyAlias},
     {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
@@ -736,39 +735,39 @@ static struct OH_Huks_Param g_hkdfFinishParams[] = {
 static const uint32_t COMMON_SIZE = 1024;
 static const char *G_DERIVE_IN_DATA = "Hks_PBKDF2_Derive_Test_0_string";
 static OH_Huks_Result PerformPbkdfDerivation(const struct OH_Huks_Blob *genAlias,
-    struct OH_Huks_ParamSet *hkdfParamSet,
-    struct OH_Huks_ParamSet *hkdfFinishParamSet,
+    struct OH_Huks_ParamSet *pbkdf2ParamSet,
+    struct OH_Huks_ParamSet *pbkdf2FinishParamSet,
     const struct OH_Huks_Blob &inData)
 {
     OH_Huks_Result ohResult;
     /* Init */
     uint8_t handleD[sizeof(uint64_t)] = {0};
     struct OH_Huks_Blob handleDerive = {sizeof(uint64_t), handleD};
-    ohResult = OH_Huks_InitSession(genAlias, hkdfParamSet, &handleDerive, nullptr);
+    ohResult = OH_Huks_InitSession(genAlias, pbkdf2ParamSet, &handleDerive, nullptr);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         return ohResult;
     }
     /* Update */
     uint8_t tmpOut[COMMON_SIZE] = {0};
     struct OH_Huks_Blob outData = {COMMON_SIZE, tmpOut};
-    ohResult = OH_Huks_UpdateSession(&handleDerive, hkdfParamSet, &inData, &outData);
+    ohResult = OH_Huks_UpdateSession(&handleDerive, pbkdf2ParamSet, &inData, &outData);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         return ohResult;
     }
     /* Finish */
     uint8_t outDataD[COMMON_SIZE] = {0};
     struct OH_Huks_Blob outDataDerive = {COMMON_SIZE, outDataD};
-    ohResult = OH_Huks_FinishSession(&handleDerive, hkdfFinishParamSet, &inData, &outDataDerive);
+    ohResult = OH_Huks_FinishSession(&handleDerive, pbkdf2FinishParamSet, &inData, &outDataDerive);
     return ohResult;
 }
 
 napi_value PbkdfDeriveKey(napi_env env, napi_callback_info info)
 {
-    struct OH_Huks_Blob genAlias = {(uint32_t)strlen("test_signVerify"), (uint8_t *)"test_signVerify"};
+    struct OH_Huks_Blob genAlias = {(uint32_t)strlen("test_derive_key"), (uint8_t *)"test_derive_key"};
     struct OH_Huks_Blob inData = {(uint32_t)strlen(G_DERIVE_IN_DATA), (uint8_t *)G_DERIVE_IN_DATA};
     struct OH_Huks_ParamSet *genParamSet = nullptr;
-    struct OH_Huks_ParamSet *hkdfParamSet = nullptr;
-    struct OH_Huks_ParamSet *hkdfFinishParamSet = nullptr;
+    struct OH_Huks_ParamSet *pbkdf2ParamSet = nullptr;
+    struct OH_Huks_ParamSet *pbkdf2FinishParamSet = nullptr;
     OH_Huks_Result ohResult;
     do {
         ohResult = InitParamSet(&genParamSet, g_genDeriveParams, sizeof(g_genDeriveParams) /
@@ -776,12 +775,12 @@ napi_value PbkdfDeriveKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        ohResult = InitParamSet(&hkdfParamSet, g_hkdfParams, sizeof(g_hkdfParams) /
+        ohResult = InitParamSet(&pbkdf2ParamSet, g_pbkdf2Params, sizeof(g_pbkdf2Params) /
                      sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        ohResult =InitParamSet(&hkdfFinishParamSet, g_hkdfFinishParams, sizeof(g_hkdfFinishParams) /
+        ohResult = InitParamSet(&pbkdf2FinishParamSet, g_pbkdf2FinishParams, sizeof(g_pbkdf2FinishParams) /
               sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
@@ -792,13 +791,13 @@ napi_value PbkdfDeriveKey(napi_env env, napi_callback_info info)
             break;
         }
         /* 2. 派生密钥 */
-        ohResult = PerformPbkdfDerivation(&genAlias, hkdfParamSet, hkdfFinishParamSet, inData);
+        ohResult = PerformPbkdfDerivation(&genAlias, pbkdf2ParamSet, pbkdf2FinishParamSet, inData);
     } while (0);
     (void)OH_Huks_DeleteKeyItem(&genAlias, genParamSet);
     (void)OH_Huks_DeleteKeyItem(&g_deriveKeyAlias, genParamSet);
     OH_Huks_FreeParamSet(&genParamSet);
-    OH_Huks_FreeParamSet(&hkdfParamSet);
-    OH_Huks_FreeParamSet(&hkdfFinishParamSet);
+    OH_Huks_FreeParamSet(&pbkdf2ParamSet);
+    OH_Huks_FreeParamSet(&pbkdf2FinishParamSet);
 
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);

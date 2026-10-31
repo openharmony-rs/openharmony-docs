@@ -2,11 +2,11 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
-Defines APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
+Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
 The **LiteResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.
 
@@ -52,7 +52,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -60,13 +60,14 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 **Example**:
 
 ```ts
-async function getColumnNamesExample(store : relationalStore.RdbStore){
+async function getColumnNamesExample(store: relationalStore.RdbStore) {
   try {
     let resultSet: relationalStore.LiteResultSet | undefined;
     // Query EMPLOYEE1 and EMPLOYEE2 and obtain the duplicate column names. store is the obtained RdbStore instance.
     resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
     if (resultSet != undefined) {
       const names = resultSet.getColumnNames();
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
@@ -88,13 +89,13 @@ Obtains the column index based on the column name.
 
 | Name    | Type  | Mandatory| Description                      |
 | ---------- | ------ | ---- | -------------------------- |
-| columnName | string | Yes  | Column name. If the result set contains duplicate column names, the return value is not as expected.|
+| columnName | string | Yes  | Column name.|
 
 **Return value**
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Column index obtained.|
+| number | Column index obtained. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -102,11 +103,11 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -123,6 +124,7 @@ async function getColumnIndexExample(store : relationalStore.RdbStore){
       const nameIndex = resultSet.getColumnIndex("NAME");
       const ageIndex = resultSet.getColumnIndex("AGE");
       const salaryIndex = resultSet.getColumnIndex("SALARY");
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -158,12 +160,12 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -180,6 +182,7 @@ async function getColumnNameExample(store : relationalStore.RdbStore){
       const name = resultSet.getColumnName(1);
       const age = resultSet.getColumnName(2);
       const salary = resultSet.getColumnName(3);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -215,13 +218,13 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 | ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
 | 14800013     | Column index is out of bounds.                                        |
 | 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
+| 14800021     | SQLite: Generic error. |
 | 14800026     | SQLite: The database is out of memory.                       |
 | 14800028     | SQLite: Some kind of disk I/O error occurred.                |
 | 14800030     | SQLite: Unable to open the database file.                    |
@@ -246,6 +249,7 @@ async function getColumnTypeExample(store : relationalStore.RdbStore){
       let assetDataType = await resultSet.getColumnType(6);
       let assetsDataType = await resultSet.getColumnType(7);
       let floatArrayType = await resultSet.getColumnType(8);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -281,13 +285,13 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 | ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
 | 14800013     | Column index is out of bounds.                                        |
 | 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
+| 14800021     | SQLite: Generic error. |
 | 14800026     | SQLite: The database is out of memory.                       |
 | 14800028     | SQLite: Some kind of disk I/O error occurred.                |
 | 14800030     | SQLite: Unable to open the database file.                    |
@@ -312,6 +316,7 @@ async function getColumnTypeSyncExample(store : relationalStore.RdbStore){
       let assetDataType = resultSet.getColumnTypeSync(6);
       let assetsDataType = resultSet.getColumnTypeSync(7);
       let floatArrayType = resultSet.getColumnTypeSync(8);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -341,12 +346,12 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -361,6 +366,7 @@ async function goToNextRowExample(store : relationalStore.RdbStore) {
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
       resultSet.goToNextRow();
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -412,6 +418,7 @@ async function getValueExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getValue(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -426,7 +433,7 @@ getBlob(columnIndex: number): Uint8Array
 Obtains the value in the specified column in the current row as a byte array.
 
 If the data type of the current column is INTEGER, DOUBLE, TEXT, or BLOB, the data is converted to a byte array and returned. If the content of the column is null/empty, an empty byte array is returned.<br>
-If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT, 14800041 is returned.
+If the data type of the current column is **ASSET**, **ASSETS**, **FLOATVECTOR**, or **BIGINT**, error code 14800041 will be thrown.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -465,6 +472,7 @@ async function getBlobExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -478,7 +486,7 @@ getString(columnIndex: number): string
 
 Obtains the value in the specified column in the current row as a string.
 
-If the data type of the current column is INTEGER, DOUBLE, TEXT, or BLOB type, the value is returned as a string. If the content of the column is null/empty, an empty string **""** is returned.<br>
+If the data type of the current column is **INTEGER**, **DOUBLE**, **TEXT**, or **BLOB** type, the value is returned as a string. If the content of the column is null/empty, an empty string **""** is returned.<br>
 If the data type of the current column is DOUBLE, precision loss may occur. You are advised to use [getDouble](#getdouble23) API to obtain the value.<br>
 If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT, 14800041 is returned.
 
@@ -519,6 +527,7 @@ async function getStringExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -574,6 +583,7 @@ async function getLongExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -587,7 +597,7 @@ getDouble(columnIndex: number): number
 
 Obtains the value in the specified column in the current row as a Double.
 
-If the data type of the current column is INTEGER, DOUBLE, or TEXT, the value is converted to the Double type and returned. Non-numeric TEXT and BLOB types return **0.0**. If the content of the column is null/empty, **0.0** is returned.<br>
+If the data type of the current column is INTEGER, DOUBLE, or TEXT, the value is converted to the Double type and returned. Non-numeric TEXT and BLOB types return **0**. If the content of the column is null/empty, **0.0** is returned.<br>
 If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT, 14800041 is returned.<br>
 
 **Model restriction**: This API can be used only in the stage model.
@@ -627,6 +637,7 @@ async function getDoubleExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -679,6 +690,7 @@ async function getAssetExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -731,6 +743,7 @@ async function getAssetsExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getAssets(resultSet.getColumnIndex("DOCS"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -760,12 +773,12 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -781,6 +794,7 @@ async function getRowExample(store : relationalStore.RdbStore) {
       resultSet.goToNextRow();
       const rowData = resultSet.getRow();
       console.info(`rowData: ${JSON.stringify(rowData)}`);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -815,7 +829,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -832,6 +846,7 @@ async function getCurrentRowDataExample(store : relationalStore.RdbStore) {
       resultSet.goToNextRow();
       const rowData = resultSet.getCurrentRowData();
       console.info(`rowData: ${JSON.stringify(rowData)}`);
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
@@ -868,12 +883,12 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -907,6 +922,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
         console.info(JSON.stringify(rows[0]));
         position += rows.length;
       }
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -948,7 +964,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -991,6 +1007,7 @@ async function getRowsDataExample(store : relationalStore.RdbStore) {
         });
         position += rowsData.length;
       }
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
@@ -1026,13 +1043,13 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------- |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -1047,6 +1064,7 @@ async function isColumnNullExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.isColumnNull(resultSet.getColumnIndex("NAME"));
+      resultSet!.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);

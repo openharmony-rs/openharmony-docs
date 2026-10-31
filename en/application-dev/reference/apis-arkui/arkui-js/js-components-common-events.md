@@ -1,115 +1,110 @@
 # Universal Events
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:42.542Z pushedAt=2026-06-23T03:20:40.266Z -->
 
 >  **NOTE**
->
 >  Universal events are supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Event Description
 
 - Events are bound to components. When a component meets the event triggering condition, the corresponding event callback in the JS is executed to implement the interaction between the UI and the JS logic layer of the page.
 
-- The event callback can carry additional information through parameters, such as the dataset on the component and event-specific callback parameters.
-
+- The event callback can carry additional information through parameters, such as the [dataset](#target6) on the component and event-specific callback parameters.
 
 Different from private events, universal events can be bound to most components.
 
-
-| Name                    | Parameter      | Description                                                        | Bubbling Supported                                         | Capturing Supported   |
+| Name                     | Parameter       | Description                                                         | Bubbling Supported                                          | Capturing Supported    |
 | ------------------------ | ---------- | ------------------------------------------------------------ | ----------------------------------------------------- | --------------- |
-| touchstart               | TouchEvent | Triggered when the tapping starts. For details about **TouchEvent**, see Table 2.      | Yes<sup>5+</sup>                                      | Yes<sup>5+</sup>|
-| touchmove                | TouchEvent | Triggered when the tapping moves.                            | Yes<sup>5+</sup>                                      | Yes<sup>5+</sup>|
-| touchcancel              | TouchEvent | Triggered when the tapping is interrupted.                      | Yes<sup>5+</sup>                                      | Yes<sup>5+</sup>|
-| touchend                 | TouchEvent | Triggered when the tapping ends.                          | Yes<sup>5+</sup>                                      | Yes<sup>5+</sup>|
-| click                    | BaseEvent  | Triggered when a component is clicked.                                        | Yes<sup>6+</sup>                                      | No             |
-| doubleclick<sup>7+</sup> | BaseEvent  | Triggered when a component is double-clicked.                                          | No<br> Bubbling is supported since API version 9.| No             |
-| longpress                | BaseEvent  | Triggered when a component is long pressed.                                        | No<br>Bubbling is supported since API version 9. | No             |
-| swipe<sup>5+</sup>       | SwipeEvent | Triggered when a user quickly swipes on a component. For details about **SwipeEvent**, see Table 4.     | No<br>Bubbling is supported since API version 9. | No             |
-| attached<sup>6+</sup>    | -          | Triggered after the current component node is mounted to the render tree.                            | No                                                   | No             |
-| detached<sup>6+</sup>    | -          | Triggered when the current component node is removed from the render tree.                          | No                                                   | No             |
-| pinchstart<sup>7+</sup>  | PinchEvent | Triggered when a pinch operation is started.<br>For details about **PinchEvent**, see Table 5.| No                                                   | No             |
-| pinchupdate<sup>7+</sup> | PinchEvent | Triggered when a pinch operation is in progress.                          | No                                                   | No             |
-| pinchend<sup>7+</sup>    | PinchEvent | Triggered when a pinch operation is ended.                      | No                                                   | No             |
-| pinchcancel<sup>7+</sup> | PinchEvent | Triggered when a pinch operation is interrupted.                            | No                                                   | No             |
-| dragstart<sup>7+</sup>   | DragEvent  | Triggered when dragging starts.<br>For details about **DragEvent**, see Table 6.     | No                                                   | No             |
-| drag<sup>7+</sup>        | DragEvent  | Triggered when dragging is in progress.                                      | No                                                   | No             |
-| dragend<sup>7+</sup>     | DragEvent  | Triggered when dragging is ended.                                        | No                                                   | No             |
-| dragenter<sup>7+</sup>   | DragEvent  | Triggered when the dragged component enters a drop target.                                  | No                                                   | No             |
-| dragover<sup>7+</sup>    | DragEvent  | Triggered when the dragged component is being dragged over a drop target.                                    | No                                                   | No             |
-| dragleave<sup>7+</sup>   | DragEvent  | Triggered when the dragged component leaves a drop target.                                    | No                                                   | No             |
-| drop<sup>7+</sup>        | DragEvent  | Triggered when the dragged component is dropped on a drop target.                              | No                                                   | No             |
-
+| touchstart               | TouchEvent | Triggered when the tapping starts. For details about **TouchEvent**, see Table 2.       | Yes<sup>5+</sup>                                       | Yes<sup>5+</sup> |
+| touchmove                | TouchEvent | Triggered when the tapping moves.                             | Yes<sup>5+</sup>                                       | Yes<sup>5+</sup> |
+| touchcancel              | TouchEvent | Triggered when the tapping is interrupted.                       | Yes<sup>5+</sup>                                       | Yes<sup>5+</sup> |
+| touchend                 | TouchEvent | Triggered when the tapping ends.                           | Yes<sup>5+</sup>                                       | Yes<sup>5+</sup> |
+| click                    | BaseEvent  | Triggered when a component is clicked.                                         | Yes<sup>6+</sup>                                       | No              |
+| doubleclick<sup>7+</sup> | BaseEvent  | Triggered when a component is double-clicked.                                           | No<br/>Bubbling is supported since API version 9. | No              |
+| longpress                | BaseEvent  | Triggered when a component is long pressed.                                         | No<br/>Bubbling is supported since API version 9.  | No              |
+| swipe<sup>5+</sup>       | SwipeEvent | Triggered when a user quickly swipes on a component. For details about **SwipeEvent**, see Table 4.      | No<br/>Bubbling is supported since API version 9.  | No              |
+| attached<sup>6+</sup>    | -          | Triggered after the current component node is mounted to the render tree.                             | No                                                    | No              |
+| detached<sup>6+</sup>    | -          | Triggered when the current component node is removed from the render tree.                           | No                                                    | No              |
+| pinchstart<sup>7+</sup>  | PinchEvent | Triggered when a pinch operation is started.<br/>For details about **PinchEvent**, see Table 5. | No                                                    | No              |
+| pinchupdate<sup>7+</sup> | PinchEvent | Triggered when a pinch operation is in progress.                           | No                                                    | No              |
+| pinchend<sup>7+</sup>    | PinchEvent | Triggered when a pinch operation is ended.                       | No                                                    | No              |
+| pinchcancel<sup>7+</sup> | PinchEvent | Triggered when a pinch operation is interrupted.                             | No                                                    | No              |
+| dragstart<sup>7+</sup>   | DragEvent  | Triggered when dragging starts.<br/>For details about **DragEvent**, see Table 6.      | No                                                    | No              |
+| drag<sup>7+</sup>        | DragEvent  | Triggered when dragging is in progress.                                       | No                                                    | No              |
+| dragend<sup>7+</sup>     | DragEvent  | Triggered when dragging is ended.                                         | No                                                    | No              |
+| dragenter<sup>7+</sup>   | DragEvent  | Triggered when the dragged component enters a drop target.                                   | No                                                    | No              |
+| dragover<sup>7+</sup>    | DragEvent  | Triggered when the dragged component is being dragged over a drop target.                                     | No                                                    | No              |
+| dragleave<sup>7+</sup>   | DragEvent  | Triggered when the dragged component leaves a drop target.                                     | No                                                    | No              |
+| drop<sup>7+</sup>        | DragEvent  | Triggered when the dragged component is dropped on a drop target.                               | No                                                    | No              |
 
 >  **NOTE**
->
->  Events not listed in the preceding table do not support bubbling, such as the [change event](js-components-basic-input.md#events) of the **<input\>** component. For details, see the description of the specific component.
+>  Events not listed in the preceding table do not support bubbling, such as the [input change event](js-components-basic-input.md#events). For details, see the description of the specific component.
 
 **Table 1** BaseEvent
 
-| Attribute                   | Type                  | Description                          |
-| --------------------- | -------------------- | --------------------------- |
-| type                  | string               | Event type, such as **click** and **longpress**.|
-| timestamp             | number               | Timestamp when the event is triggered.                |
-| deviceId<sup>8+</sup> | number               | ID of the device that triggers the event.              |
-| target<sup>12+</sup>   | [Target](#target6)| Target object that triggers the event.                |
+| Attribute                  | Type                   | Description                                     |
+| --------------------- | ---------------------- | ---------------------------------------- |
+| type                  | string                 | Event type, such as **click** and **longpress**. |
+| timestamp             | number                 | Timestamp when the event is triggered.                   |
+| deviceId<sup>8+</sup> | number                 | ID of the device that triggers the event.                 |
+| target<sup>12+</sup>   | [Target](#target6) | Target object that triggered the event.                   |
 
 **Table 2** TouchEvent (inherited from BaseEvent)
 
-| Attribute            | Type                    | Description                                       |
+| Attribute             | Type                     | Description                                       |
 | -------------- | ---------------------- | ---------------------------------------- |
-| touches        | Array&lt;TouchInfo&gt; | Attribute set of the touch event, including the information array of the touch points on the screen.                |
-| changedTouches | Array&lt;TouchInfo&gt; | Attribute set when a touch event occurs, including the information array of changed touch points on the screen. **changedTouches** has the same data format as **touches** and indicates touch point changes, including changes in the number and location of touch points. For example, when the user's finger leaves the screen, which means that the number of touch points changes from 1 to 0, **changedTouches** has the relevant data generated, but not **touches**.|
+| touches        | Array&lt;TouchInfo&gt; | Attribute set of the touch event, including the information array of the touch points on the screen.                 |
+| changedTouches | Array&lt;TouchInfo&gt; | Attribute set when a touch event occurs, including the information array of changed touch points on the screen. **changedTouches** has the same data format as **touches** and indicates touch point changes, including changes in the number and location of touch points. For example, when the user's finger leaves the screen, which means that the number of touch points changes from 1 to 0, **changedTouches** has the relevant data generated, but not **touches**. |
 
 **Table 3** TouchInfo
 
-| Attribute                | Type    | Description                            |
+| Attribute                 | Type     | Description                             |
 | ------------------ | ------ | ------------------------------ |
-| globalX            | number | Horizontal distance from the upper left corner of the screen (excluding the status bar), which acts as the origin of coordinates.|
-| globalY            | number | Vertical distance from the upper left corner of the screen (excluding the status bar), which acts as the origin of coordinates.|
-| localX             | number | Horizontal distance from the upper left corner of the touched component, which acts as the origin of coordinates.     |
-| localY             | number | Vertical distance from the upper left corner of the touched component, which acts as the origin of coordinates.     |
-| size               | number | Touch area.                       |
-| force<sup>6+</sup> | number | Touch force.                        |
+| globalX            | number | Horizontal distance from the upper left corner of the screen (excluding the status bar), which acts as the origin of coordinates. |
+| globalY            | number | Vertical distance from the upper left corner of the screen (excluding the status bar), which acts as the origin of coordinates. |
+| localX             | number | Horizontal distance from the upper left corner of the touched component, which acts as the origin of coordinates.      |
+| localY             | number | Vertical distance from the upper left corner of the touched component, which acts as the origin of coordinates.      |
+| size               | number | Touch area.                        |
+| force<sup>6+</sup> | number | Touch force.                         |
 
 **Table 4** SwipeEvent (inherited from BaseEvent)
 
-| Attribute                   | Type    | Description                                      |
+| Attribute                    | Type     | Description                                       |
 | --------------------- | ------ | ---------------------------------------- |
-| direction             | string | Swiping direction. The value can be one of the following:<br>- **left**: Swipe left.<br>- **right**: Swipe right.<br>- **up**: Swipe up.<br>- **down**: Swipe down.|
-| distance<sup>6+</sup> | number | Swiping distance in the swiping direction.                            |
+| direction             | string | Swipe direction. The value can be one of the following:<br/>- &nbsp;**left**: Swipe left.<br/>- &nbsp;**right**: Swipe right.<br/>- &nbsp;**up**: Swipe up.<br/>- &nbsp;**down**: Swipe down. |
+| distance<sup>6+</sup> | number | Swipe distance in the swiping direction.                             |
 
 **Table 5** PinchEvent<sup>7+</sup>
 
-| Attribute          | Type    | Description            |
+| Attribute           | Type     | Description             |
 | ------------ | ------ | -------------- |
-| scale        | number | Scale factor.          |
-| pinchCenterX | number | X-coordinate of the pinch center, in px.|
-| pinchCenterY | number | Y-coordinate of the pinch center, in px.|
+| scale        | number | Scale factor.           |
+| pinchCenterX | number | X-coordinate of the pinch center, in px. |
+| pinchCenterY | number | Y-coordinate of the pinch center, in px. |
 
 **Table 6** DragEvent<sup>7+</sup> (inherited from BaseEvent)
 
-| Attribute                       | Type                              | Description               |
+| Attribute                        | Type                               | Description               |
 | ------------------------- | -------------------------------- | ---------------- |
-| type                      | string                           | Event name.           |
-| globalX                   | number                           | Horizontal distance from the upper left corner of the screen, which acts as the origin of coordinates.|
-| globalY                   | number                           | Vertical distance from the upper left corner of the screen, which acts as the origin of coordinates.|
-| timestamp                 | number                           | Timestamp.            |
-| dataTransfer<sup>9+</sup> | [DataTransfer](#datatransfer9)| Object for data transfer.         |
+| type                      | string                           | Event name.            |
+| globalX                   | number                           | Horizontal distance from the upper left corner of the screen, which acts as the origin of coordinates. |
+| globalY                   | number                           | Vertical distance from the upper left corner of the screen, which acts as the origin of coordinates. |
+| timestamp                 | number                           | Timestamp.             |
+| dataTransfer<sup>9+</sup> | [DataTransfer](#datatransfer9) | Object for data transfer.          |
 
 ## Target<sup>6+</sup>
 
 When a component triggers an event, the event callback receives an event object by default. You can obtain the corresponding information through the event object.
 
-
-
-| Attribute                  | Type    | Description                                      |
+| Name                   | Type     | Description                                       |
 | -------------------- | ------ | ---------------------------------------- |
-| dataSet<sup>6+</sup> | Object | Custom attribute set defined through [data-*](js-components-common-attributes.md#common-attributes).|
+| dataSet<sup>6+</sup> | Object | Custom attribute set defined through [data-*](js-components-common-attributes.md#common-attributes). |
 
 **Example**
 
@@ -143,16 +138,16 @@ Sets the data associated with the specified key. If there is no data associated 
 
 **Parameters**
 
-| Name  | Type  | Mandatory  | Description     |
+| Name | Type | Mandatory | Description |
 | ----- | ------ | ---- | ------- |
-| key   | string | Yes   | Data key.  |
-| value | object | Yes   | Data to be stored.|
+| key | string | Yes | Data key value. |
+| value | object | Yes | Data to be stored. |
 
 **Return value**
 
-| Type     | Description                       |
+| Type | Description |
 | ------- | ------------------------ |
-| boolean | Operation result. The value **true** means that the operation is successful, and **false** means the opposite.|
+| boolean | Operation result. The value **true** means that the operation is successful, and **false** means the opposite. |
 
 **Example**
 
@@ -169,23 +164,24 @@ dragStart(e) {
     var isSetOK = e.dataTransfer.setData('person', person);
 }
 ```
+
 ### getData<sup>9+</sup>
 
 getData(key: string): object
 
 Obtains the data associated with the specified key. If no data is associated with the key, an empty string will be returned.
 
-**Parameters**
+**Parameters** 
 
-| Name | Type  | Mandatory  | Description   |
+| Name | Type | Mandatory | Description |
 | ---- | ------ | ---- | ----- |
-| key  | string | Yes   | Data key.|
+| key | string | Yes | Data key value. |
 
 **Return value**
 
-| Type    | Description     |
+| Type | Description |
 | ------ | ------ |
-| object | Obtained data.|
+| object | Obtained data. |
 
 **Example**
 
@@ -200,24 +196,26 @@ dragEnd(e){
     var person = e.dataTransfer.getData('person');
 },
 ```
+
 ### clearData<sup>9+</sup>
 
 clearData(key?: string): boolean
 
-Deletes data associated with the specified key. If there is no data associated with the key, this API will not have any effect.
-If the key is null, all data will be deleted.
+Clears data associated with the specified key. If there is no data associated with the key, this API will not have any effect.
+
+If the key is null, all data will be cleared.
 
 **Parameters**
 
-| Name | Type  | Mandatory  | Description   |
+| Name | Type | Mandatory | Description |
 | ---- | ------ | ---- | ----- |
-| key  | string | No   | Data key.|
+| key | string | No | Data key. |
 
 **Return value**
 
-| Type     | Description                       |
-| ------- | ------------------------ |
-| boolean | Operation result. The value **true** means that the operation is successful, and **false** means the opposite.|
+| Type    | Description                                      |
+| ------- | ------------------------------------------------ |
+| boolean | Operation result. The value **true** means that the operation is successful, and **false** means the opposite. |
 
 **Example**
 
@@ -226,6 +224,7 @@ dragEnd(e) {
     var isSuccess = e.dataTransfer.clearData('name');
 }
 ```
+
 ### setDragImage<sup>9+</sup>
 
 setDragImage(pixelMap: PixelMap, offsetX: number,offsetY: number): boolean
@@ -234,27 +233,29 @@ Sets a custom drag image.
 
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                                      |
-| -------- | -------- | ---- | ---------------------------------------- |
-| pixelMap | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image transferred from the frontend.|
-| offsetX  | number   | Yes   | Horizontal offset relative to the image.                            |
-| offsetY  | number   | Yes   | Vertical offset relative to the image.                           |
+| Name     | Type                                                         | Mandatory | Description                                      |
+| -------- | ------------------------------------------------------------ | --------- | ------------------------------------------------ |
+| pixelMap | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes       | Image transferred from the frontend.      |
+| offsetX  | number                                                       | Yes       | Horizontal offset relative to the image.         |
+| offsetY  | number                                                       | Yes       | Vertical offset relative to the image.           |
 
 **Return value**
 
-| Type  | Description                       |
-| ---- | ------------------------ |
-| boolean | Operation result. The value **true** means that the operation is successful, and **false** means the opposite.|
+| Type    | Description                                      |
+| ------- | ------------------------------------------------ |
+| boolean | Operation result. The value **true** means that the operation is successful, and **false** means the opposite. |
 
-**Example**
+**Example:** 
 
 ```js
 import image from '@ohos.multimedia.image';
 
 export default {
+    // Generate a 96 x 96 PixelMap, create a color buffer and fill it with random color values, set PixelMap parameters, and then generate an instance.
     createPixelMap() {
         let color = new ArrayBuffer(4 * 96 * 96);
         var buffer = new Uint8Array(color);
+        // Fill the buffer with color values cyclically.
         for (var i = 0; i < buffer.length; i++) {
             buffer[i] = (i + 1) % 255;
         }
@@ -267,6 +268,7 @@ export default {
                 height: 96, width: 96
             }
         }
+        // Call image.createPixelMap to generate a PixelMap instance.
         const promise = image.createPixelMap(color, opts);
         promise.then((data) => {
             console.error('-create pixelMap has info message:' + JSON.stringify(data));
@@ -275,10 +277,12 @@ export default {
         })
     },
 
+    // Initialization method, which calls createPixelMap to generate a PixelMap.
     onInit() {
         this.createPixelMap()
     },
-
+    
+    // Called when the drag starts to set the drag preview image as the generated PixelMap, with an offset of (50, 50).
     dragStart(e) {
         e.dataTransfer.setDragImage(this.pixelMapReader, 50, 50);
     }

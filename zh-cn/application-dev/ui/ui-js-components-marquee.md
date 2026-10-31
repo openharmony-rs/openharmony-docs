@@ -35,12 +35,12 @@ marquee为跑马灯组件，用于展示一段单行滚动的文字。具体用�
 }
 ```
 
-![zh-cn_image_0000001227694473](figures/zh-cn_image_0000001227694473.png)
+![marquee-Component](figures/marquee-Component.png)
 
 
 ## 设置属性和样式
 
-marquee通过color和font-weight属性设置跑马灯中文本的颜色、字体粗细和边框样式。
+marquee通过color和font-weight属性设置跑马灯中文本的颜色和字体粗细，通过border属性设置边框样式。
 
 
 ```html
@@ -75,9 +75,9 @@ marquee通过color和font-weight属性设置跑马灯中文本的颜色、字体
 }
 ```
 
-![zh-cn_image_0000001227416205](figures/zh-cn_image_0000001227416205.png)
+![Attributes-and-Styles](figures/Attributes-and-Styles.png)
 
-通过scrollamount、loop和direction属性实现跑马灯滚动时移动的最大长度、滚动次数和文字滚动方向。
+通过scrollamount、loop和direction属性实现跑马灯滚动时的移动距离、滚动次数和文字滚动方向。
 
 
 ```html
@@ -156,7 +156,7 @@ export default {
 >
 > 当loop的值小于等于零时，跑马灯marquee将连续滚动。如果loop未指定，则默认为-1。
 
-![zh-cn_image_0000001227701867](figures/zh-cn_image_0000001227701867.gif)
+![Attributes-and-Styles](figures/Attributes-and-Styles.gif)
 
 
 ## 场景示例
@@ -241,4 +241,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001176075554](figures/zh-cn_image_0000001176075554.gif)
+![marquee](figures/marquee.gif)

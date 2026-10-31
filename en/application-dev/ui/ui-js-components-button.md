@@ -5,8 +5,9 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1c7e66108ace216c76ecdf477018f306a6c135f9 translatedAt=2026-10-29T08:55:11.560Z pushedAt=2026-10-30T03:00:19.596Z nl=1 -->
 
-The **\<button>** component can be used to set a capsule, circle, text, arc, or download button. For details, see [button](../reference/apis-arkui/arkui-js/js-components-basic-button.md).
+The **button** component can be used to set a capsule, circle, text, arc, or download button. For details, see [button](../reference/apis-arkui/arkui-js/js-components-basic-button.md).
 
 
 ## Creating a \<button> Component
@@ -32,7 +33,7 @@ Create a **\<button>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001267887821](figures/en-us_image_0000001267887821.png)
+![button-Component](figures/button-Component.png)
 
 
 ## Setting the Button Type
@@ -76,7 +77,7 @@ Set the **type** attribute of the **\<button>** component to **circle**, **text*
 ```
 
 
-![en-us_image_0000001222967744](figures/en-us_image_0000001222967744.png)
+![button-type](figures/button-type.png)
 
 
 > **NOTE**
@@ -88,18 +89,19 @@ Sample code for declaring the **ohos.permission.INTERNET** permission in the **c
 
 
 ```json
-<!-- config.json -->
-"module": {
-  "reqPermissions": [{
-    "name": "ohos.permission.INTERNET"
-  }],
+{
+  "module": {
+    "reqPermissions": [{
+      "name": "ohos.permission.INTERNET"
+    }]
+  }
 }
 ```
 
 
 ## Showing the Download Progress
 
-Add the **progress** method to the **\<button>** component to display the download progress in real time.
+Add the **setProgress** method for the **button** component to display the download progress in real time.
 
 ```html
 <!-- xxx.hml -->
@@ -127,7 +129,6 @@ Add the **progress** method to the **\<button>** component to display the downlo
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   data: {
     percent: 0,
@@ -141,7 +142,7 @@ export default {
         this.percent += 1;
         this.downloadText = this.percent+ "%";
        } else{
-         promptAction.showToast({
+         this.getUIContext().getPromptAction().showToast({
             message: "Download succeeded."
          })
          this.paused()
@@ -157,13 +158,13 @@ export default {
   },
  setProgress(e) {
     if(this.isPaused){
-      promptAction.showToast({
+      this.getUIContext().getPromptAction().showToast({
         message: "Started Downloading"
       })
       this.start();
       this.isPaused = false;
     }else{
-      promptAction.showToast({
+      this.getUIContext().getPromptAction().showToast({
         message: "Paused."
       })
       this.paused();
@@ -173,16 +174,16 @@ export default {
 }
 ```
 
-![en-us_image_0000001223287652](figures/en-us_image_0000001223287652.gif)
+![Download-Progress](figures/Download-Progress.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > The **setProgress** method supports only buttons of the download type.
 
 
 ## Example Scenario
 
-Switch between the button types for different types of text.
+In this scenario, you can switch the input type based on the entered text content.
 
 
 ```html
@@ -191,7 +192,7 @@ Switch between the button types for different types of text.
   <div class="input-item">
     <input class="input-text" id="change" type="{{mytype}}"  placeholder="{{myholder}}" 
       style="background-color:{{mystyle1}};
-      placeholder-color:{{mystyle2}};flex-grow:{{myflex}};"name="{{myname}}" value="{{myvalue}}"></input>
+      placeholder-color:{{mystyle2}};flex-grow:{{myflex}};" name="{{myname}}" value="{{myvalue}}"></input>
   </div>
   <div class="input-item">
     <div class="doc-row">
@@ -285,4 +286,4 @@ export default {
 ```
 
 
-![en-us_image_0000001222967740](figures/en-us_image_0000001222967740.gif)
+![Example-Scenario-1](figures/Example-Scenario-1.gif)

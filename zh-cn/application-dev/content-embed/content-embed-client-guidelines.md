@@ -11,7 +11,7 @@
 
 [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md)内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
 
-OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md)实现嵌入外部文档、展示文档快照，以及按需启动OE服务端应用编辑文档的功能。
+OE客户端应用指嵌入其他文档的应用，通过调用OE框架层[content_embed_proxy.h](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md)提供的接口实现嵌入外部文档、展示文档快照，以及按需启动OE服务端应用编辑文档的功能。
 
 典型应用场景包括：
 - 在CAD文档中嵌入Excel表格，通过点击嵌入对象启动Excel应用进行编辑。
@@ -19,7 +19,7 @@ OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口
 - 在笔记应用中嵌入其他应用的文档，实现跨应用协作。
 
 ## 约束限制
-在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[查询指定的系统能力是否被支持](../reference/common/init.md#caniuse)。并申请ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[canIUse()](../reference/common/syscap-ndk-8h.md#caniuse)接口查询指定的系统能力是否被支持。并申请ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
 
 ## 接口说明
 
@@ -30,7 +30,7 @@ OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口
 | 接口名称 | 功能描述 |
 | ------- | ---- |
 | OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建[OE文档](content-embed-kit-terminology.md#oe文档)。|
-| OH_ContentEmbed_CreateDocumentByOEId | 通过[OEID](content-embed-kit-terminology.md#oeid)创建OE文档。|
+| OH_ContentEmbed_CreateDocumentByOEid | 通过[OEID](content-embed-kit-terminology.md#oeid)创建OE文档。|
 | OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的[OE格式文件](content-embed-kit-terminology.md#oe格式文件)加载OE文档。|
 | OH_ContentEmbed_CreateExtensionProxy | 创建[客户端OE对象](content-embed-kit-terminology.md#客户端oe对象)。|
 | OH_ContentEmbed_DestroyExtensionProxy | 销毁客户端OE对象，释放相关资源。|
@@ -51,17 +51,15 @@ OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口
 以下演示使用Native API开发OE客户端应用的完整流程。
 
 ### 添加动态链接库
-CMakeLists.txt中添加以下lib。
+在Native工程的src/main/cpp/CMakeLists.txt，添加如下链接库：
 
-```text
-# content embed
-libcontent_embed_ndk.so
-# hilog
-libhilog_ndk.z.so
-# ace
-libace_napi.z.so
-# piexlmap
-libpixelmap.so
+```txt
+target_link_libraries(entry PUBLIC
+    libcontent_embed_ndk.so
+    libhilog_ndk.z.so
+    libace_napi.z.so
+    libpixelmap.so
+)
 ```
 
 ### 引用头文件
@@ -166,6 +164,7 @@ void QueryFormatByOEid(const std::string &oeid, const std::string &locale)
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale failed, errCode: %{public}d.", errCode);
         // 查询失败销毁ContentEmbed_Format对象
         OH_ContentEmbed_DestroyContentEmbedFormat(ceFormat);
+        return;
     }
     char name[MAX_NAME_LENGTH];
     char description[MAX_DESCRIPTION_LENGTH];
@@ -274,7 +273,7 @@ void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
 
 void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)
 {
-    OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
+    OH_LOG_ERROR(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
 }
 
 void ClientCallBack_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)

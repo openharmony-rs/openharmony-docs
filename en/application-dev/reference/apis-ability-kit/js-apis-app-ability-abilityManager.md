@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025 -->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T09:52:38.038Z pushedAt=2026-09-05T10:47:30.211Z -->
 
-The AbilityManager module provides APIs for obtaining ability information and running status information.
+The AbilityManager module provides ability information management, including obtaining the ability running status, restarting atomic services, and determining device capability support.
 
 > **NOTE**
 >
@@ -25,21 +26,21 @@ Enumerates the ability states. This enum can be used together with [AbilityRunni
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name| Value| Description| 
+| Name| Value| Description|
 | -------- | -------- | -------- |
-| INITIAL | 0 | The ability is in the initial state.| 
-| FOCUS | 2 | The ability has the focus.|
-| FOREGROUND | 9 | The ability is in the foreground state. | 
-| BACKGROUND | 10 | The ability is in the background state. | 
-| FOREGROUNDING | 11 | The ability is in the state of being switched to the foreground. | 
-| BACKGROUNDING | 12 | The ability is in the state of being switched to the background. | 
+| INITIAL | 0 | Indicates that the ability is in the initial state. |
+| FOCUS | 2 | Indicates that the ability is in the focused state. |
+| FOREGROUND | 9 | Indicates that the ability is in the foreground state. |
+| BACKGROUND | 10 | Indicates that the ability is in the background state. |
+| FOREGROUNDING | 11 | Indicates that the ability is in the foregrounding state. |
+| BACKGROUNDING | 12 | Indicates that the ability is in the backgrounding state. |
 
 
 ## abilityManager.getAbilityRunningInfos<sup>14+</sup>
 
 getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
-Obtains the UIAbility running information. This API uses a promise to return the result.
+Obtains the running information of UIAbility, including the process ID, ability name, and status. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -53,7 +54,7 @@ Obtains the UIAbility running information. This API uses a promise to return the
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise used to return the UIAbility running information. You can perform error handling or other custom processing.|
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise object used to return the runtime information of the UIAbility. Developers can handle errors or customize the processing of the returned data here. |
 
 **Error codes**
 
@@ -70,6 +71,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Obtain UIAbility runtime information.
   abilityManager.getAbilityRunningInfos()
     .then((data: abilityManager.AbilityRunningInfo[]) => {
       console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
@@ -107,7 +109,7 @@ Restarts the current atomic service.
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| context    | [Context](./js-apis-inner-application-context.md)   | Yes   | Context of the ability.<br>Note: Currently, only [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) is supported.<br>|
+| context    | [Context](./js-apis-inner-application-context.md)   | Yes    | Context of the current ability, used to provide the execution environment information required for restarting the atomic service.<br>**Note:** Currently, only [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) is supported. |
 
 **Error codes**
 
@@ -130,10 +132,43 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends EmbeddableUIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
+      // Restart the current atomic service.
       abilityManager.restartSelfAtomicService(this.context);
     } catch (e) {
       console.error(`restartSelfAtomicService error: ${JSON.stringify(e as BusinessError)}`);
     }
+  }
+}
+```
+
+## abilityManager.isEmbeddedUIExtensionSupported
+
+isEmbeddedUIExtensionSupported(): boolean
+
+Checks whether [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md) can be used on the current device.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| boolean | Whether the current device supports [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md). The value **true** indicates that the current device supports it, and **false** indicates the opposite. |
+
+**Example**
+
+```ts
+import { abilityManager, UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    // Determine whether the current device supports EmbeddedUIExtensionAbility.
+    let isSupported: boolean = abilityManager.isEmbeddedUIExtensionSupported();
+    console.info(`isEmbeddedUIExtensionSupported is ${isSupported}`);
   }
 }
 ```
@@ -160,4 +195,4 @@ Defines the level-2 module AbilityStateData.
 
 | Type| Description|
 | --- | --- |
-| [_AbilityStateData.default](js-apis-inner-application-abilityStateData.md) | AbilityStateData, a level-2 module that provides the ability state information.|
+| [_AbilityStateData](js-apis-inner-application-abilityStateData.md).default | Second-level module of AbilityStateData, which provides Ability state information. |

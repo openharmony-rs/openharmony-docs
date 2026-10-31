@@ -1,4 +1,4 @@
-# 属性字符串（StyledString/MutableStyledString）
+# 属性字符串 (StyledString/MutableStyledString)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
@@ -28,9 +28,9 @@
     // 请将$r('app.string.CreateApply_Text_Forty_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动45分钟"
     styledString1: StyledString = new StyledString( this.getUIContext()
       .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Forty_Five').id));
-    // 请将$r('app.string.CreateApply_Text_Third_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动35分钟"
+    // 请将$r('app.string.CreateApply_Text_Thirty_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动35分钟"
     mutableStyledString1: MutableStyledString = new MutableStyledString( this.getUIContext()
-      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five').id));
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Thirty_Five').id));
     controller1: TextController = new TextController();
     controller2: TextController = new TextController();
   
@@ -126,7 +126,7 @@
   @Component
   struct styled_string_demo3 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -170,7 +170,7 @@
   struct styled_string_demo4 {
     @State str: string =
       this.getUIContext()
-        .getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+        .getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -237,7 +237,7 @@
   @Component
   struct styled_string_demo5 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
   
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
@@ -318,7 +318,7 @@
   @Component
   struct styled_string_demo7 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -347,7 +347,7 @@
 
 ## 设置段落样式
 
-可通过[ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle)设置段落样式布局。下图显示了如何分割文本中的段落，段落以换行符 \n 结尾。
+可通过[ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle)设置段落样式布局。下图显示了如何分割文本中的段落，段落之间以换行符`\n`分隔。
 
 ![paragraphs](figures/styledstringParagraphs.png)
 
@@ -515,7 +515,7 @@
 
 可通过[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)将属性字符串根据文本布局选项转换成对应的[Paragraph](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)数组。
 
-- 以下示例展示了通过[MeasureUtils](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md)的getParagraphs方法测算文本，当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
+- 以下示例展示了通过getParagraphs方法将属性字符串转换为Paragraph对象，进而通过Paragraph对象实现文本测算功能。当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
 
   <!-- @[styledStringConvertedToParagraph_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets) -->
   
@@ -746,10 +746,11 @@
   // xxx.ets
   import { image } from '@kit.ImageKit';
   import { LengthMetrics } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
   @Entry
   @Component
-  export struct StyledStringImageAttachment {
+  struct StyledStringImageAttachment {
     @State abled: boolean = true;
     @State message: string = 'Hello World';
     imagePixelMap: image.PixelMap | undefined = undefined;
@@ -768,24 +769,29 @@
     }]);
   
     async aboutToAppear() {
-      console.info('aboutToAppear initial imagePixelMap');
+      hilog.info(0x0000, 'testTag', 'aboutToAppear initial imagePixelMap');
       // $r('app.media.sea')需要替换为开发者所需的图像资源文件。
       this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.sea'));
     }
   
     private async getPixmapFromMedia(resource: Resource) {
-      let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
-      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-      });
-      await imageSource.release();
-      return createPixelMap;
+      try {
+        let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+        let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
+        let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+          desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+        });
+        await imageSource.release();
+        return createPixelMap;
+      } catch (error) {
+        hilog.error(0x0000, 'testTag', `Get Pixmap failed. error code: ${error.code}, error message: ${error.message}`);
+      }
+      return undefined;
     }
   
     leadingMarginValue: ParagraphStyle = new ParagraphStyle({ leadingMargin: LengthMetrics.vp(5)});
     // 行高样式对象
-    lineHeightStyle1: LineHeightStyle= new LineHeightStyle(new LengthMetrics(24));
+    lineHeightStyle1: LineHeightStyle = new LineHeightStyle(new LengthMetrics(24));
     // Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
     // 创建含段落样式的对象paragraphStyledString1
@@ -914,7 +920,7 @@
 
 ## 设置事件
 
-可通过[GestureStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#gesturestyle)设置onClick、onLongPress事件来使文本响应点击长按事件。
+可通过[GestureStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#gesturestyle)设置onClick、onLongPress事件来使文本响应点击、长按事件。
 
 除了初始化属性字符串对象即初始样式对象，亦可通过[setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle)接口再叠加新样式或更新已有样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
@@ -1009,7 +1015,7 @@
   
   @Entry
   @Component
-  export struct StyledStringGestureStyle {
+  struct StyledStringGestureStyle {
     customSpan3: MyCustomSpan = new MyCustomSpan('99VIP88%off', 200, 40, 30);
     customSpanStyledString: MutableStyledString = new MutableStyledString(this.customSpan3);
     textController: TextController = new TextController();
@@ -1065,8 +1071,8 @@
           // ...
       }
       .backgroundColor('#f1f2f3')
-      // 请将$r('app.string.TStyledStringGestureStyle_title')替换为实际资源文件，在本示例中该资源文件的value值为"设置事件"
-      .title($r('app.string.TStyledStringGestureStyle_title'))
+      // 请将$r('app.string.StyledStringGestureStyle_title')替换为实际资源文件，在本示例中该资源文件的value值为"设置事件"
+      .title($r('app.string.StyledStringGestureStyle_title'))
     }
   }
   ```
@@ -1075,7 +1081,7 @@
 
 ## 格式转换
 
-可以通过[toHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#tohtml14)、[fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml)接口实现属性字符串与HTML格式字符串的相关转换，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>。
+可以通过[toHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#tohtml14)、[fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml)接口实现属性字符串与HTML格式字符串的相关转换，支持转换的HTML标签部分范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>，完整范围参见[fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml)的接口说明。
 
 - 以下示例展示了如何将属性字符串转换成HTML格式，并展示了如何从HTML格式转换回属性字符串。
 
@@ -1085,10 +1091,11 @@
 // xxx.ets
 import { image } from '@kit.ImageKit';
 import { LengthMetrics } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
-export struct StyledStringHtml {
+struct StyledStringHtml {
   imagePixelMap: image.PixelMap | undefined = undefined;
   @State html: string | undefined = undefined;
   @State styledString: StyledString | undefined = undefined;
@@ -1097,18 +1104,23 @@ export struct StyledStringHtml {
   private uiContext: UIContext = this.getUIContext();
 
   async aboutToAppear() {
-    console.info('aboutToAppear initial imagePixelMap');
+    hilog.info(0x0000, 'testTag', 'aboutToAppear initial imagePixelMap');
     this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.startIcon'));
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
-    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-    });
-    await imageSource.release();
-    return createPixelMap;
+    try {
+      let uint8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
+      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+      });
+      await imageSource.release();
+      return createPixelMap;
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `Get Pixmap failed. error code: ${error.code}, error message: ${error.message}`);
+    }
+    return undefined;
   }
 
   build() {
@@ -1251,7 +1263,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
-export struct StyledStringSceneExample {
+struct StyledStringSceneExample {
   alignCenterParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
   // 行高样式对象
   lineHeightStyle1: LineHeightStyle = new LineHeightStyle(LengthMetrics.vp(24));

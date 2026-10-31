@@ -4,7 +4,7 @@
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct ScsiPeripheral_TestUnitReadyRequest {...} ScsiPeripheral_TestUnitReadyRequest
@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_TestUnitReadyRequest {...} ScsiPeripheral_TestUnit
 
 ## Overview
 
-Defines the request structure of the **test unit ready** command.
+Defines the SCSI command (**TEST UNIT READY**) request struct, which is usually used to check whether the logical unit is ready. A logical unit is an I/O operation entity that can be independently addressed in a SCSI device.
 
 **Since**: 18
 
@@ -26,5 +26,5 @@ Defines the request structure of the **test unit ready** command.
 
 | Name| Description|
 | -- | -- |
-| uint8_t control | **Control** field used to specify control information.|
-| uint32_t timeout | Timeout duration, in ms.|
+| uint8_t control | **Control** field used to specify the control information of the SCSI command.|
+| uint32_t timeout | Timeout interval, in milliseconds.|

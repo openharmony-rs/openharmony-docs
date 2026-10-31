@@ -2,9 +2,10 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T01:55:12.801Z pushedAt=2026-09-21T09:01:45.546Z -->
 
 ArkWeb provides the ad blocking feature for applications, supporting default EasyList rules pushed by the cloud and custom rule files set by applications through APIs. It can intercept the advertisement resource download at the network layer or inject CSS rules into the web page to hide specific advertisement elements.
 
@@ -37,13 +38,13 @@ For example, if you configure a blocking rule **||abc.com/js/123.js** to block w
 
 - The data operated by the [addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12), [removeAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#removeadsblockdisallowedlist12), [clearAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#clearadsblockdisallowedlist12), [addAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockallowedlist12), [removeAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#removeadsblockallowedlist12) and [clearAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#clearadsblockallowedlist12) APIs of the [AdsBlockManager](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md) API is not persistent. The data needs to be reset during cold start of the application.
 
-- If the ad blocking feature is enabled for a web instance but the [addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12), [removeAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#removeadsblockdisallowedlist12), [clearAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#clearadsblockdisallowedlist12), [addAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockallowedlist12), [removeAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#removeadsblockallowedlist12), and [clearAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#clearadsblockallowedlist12) APIs of the [AdsBlockManager](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md) API are not called to set disallowlist and allowlist, the ad blocking feature is enabled for all websites.
+- If the ad blocking feature is enabled for a web instance but the [AdsBlockManager](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md) APIs [addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12), [removeAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#removeadsblockdisallowedlist12), [clearAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#clearadsblockdisallowedlist12), [addAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockallowedlist12), [removeAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#removeadsblockallowedlist12), and [clearAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#clearadsblockallowedlist12) are not called to configure the disallowedlist and allowedlist data, ad blocking is enabled for all websites by default.
 
-- When both allowlist and disallowlist are used, allowlist has a higher priority than disallowlist. That is, allowlist is used for matching first. If the matching is successful, disallowlist is not used, and the ad blocking feature is enabled for the website.
+- When the allowedlist and disallowedlist data are used together, the allowedlist has a higher priority than the disallowedlist. That is, the allowedlist is used for matching first. If the matching is successful, the disallowedlist is no longer used for matching, and the ad blocking feature is enabled for the website.
 
 - If the ad blocking feature is not enabled for the application, the **Web** component does not request the default built-in EasyList file from the server.
 
-- The disallowlist and allowlist use suffix matching. For example, if the domain name of an application is **xxyy.com**, the website whose URL is **wwsstt.xxyy.com** can be matched.
+- The disallowedlist and allowedlist data use suffix matching. For example, if the app sets the domain name "xxyy.com", it can match the website whose URL is "wwsstt.xxyy.com".
 
 ## Application Scenarios
 
@@ -57,7 +58,7 @@ The following example shows how to select the EasyList file using the file picke
 import { webview } from '@kit.ArkWeb';    
 import { picker, fileUri } from '@kit.CoreFileKit';    
 
-// This example demonstrates how to click a button to open the EasyList using file picker and set the file in the Web component.   
+// This example demonstrates how to click a button to open the EasyList using file picker and set the file in the Web component.    
 @Entry    
 @Component    
 struct WebComponent {    
@@ -110,7 +111,7 @@ When the ad blocking feature of a **Web** component is enabled, in addition to t
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';    
 
-// This example demonstrates how to click a button to add an array of domain names to the disallowed list.   
+// This example demonstrates how to click a button to add an array of domain names to the disallowed list.    
 @Entry    
 @Component    
 struct WebComponent {    
@@ -158,15 +159,15 @@ struct WebComponent {
 
 Add the domain name to **DisallowedList** of **AdsBlockManager** through [addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12). When the page is loaded, the system matches the suffix of the web page URL with the domain name in **DisallowedList**. If the matching is successful, the system does not block ads on the page. In addition, [addAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockallowedlist12) is provided to be used with **DisallowedList()** to set domain names and determine whether to enable ad blocking.
 
-**AdsBlockManager** caches two lists of domain names, including **DisallowedList** and **AllowList**. **DisallowedList** is used to disable ad blocking on web pages, and **AllowList** is used to enable ad blocking disabled by **DisallowedList**. **AllowList** has a higher priority. When a web page is loaded, the system matches the web page URL with **AllowList**. If the matching is successful, the ad blocking feature is enabled. Otherwise, the system continues to match the web page URL with **DisallowedList**. If the matching is successful, the ad blocking feature is disabled. If the accessed web page is neither list in **AllowList** nor in **DisallowedList**, the ad blocking feature for this web page is enabled by default.
+**AdsBlockManager** caches two lists of domain names, namely **DisallowedList** and **AllowedList**. **DisallowedList** is used to disable ad blocking on web pages, while **AllowedList** is used to re-enable the ad blocking switch that has been turned off by **DisallowedList**. **AllowedList** has a higher priority. When a page is loaded, the page URL is first matched against **AllowedList**. If the matching is successful, ad blocking remains enabled for the web page. Otherwise, the URL is matched against **DisallowedList**. If the matching is successful, ad blocking is disabled for the web page. If the visited web page is in neither **AllowedList** nor **DisallowedList**, ad blocking remains enabled for the web page by default.
 
-For example, if you want to enable ad blocking for **news.example.com** and **sport.example.com** in an application, but not for other web pages under the **example.com** domain, you can use **addAdsBlockDisallowedList()** to add **example.com** to **DisallowedList**, and then use **addAdsBlockAllowedList()** to add **news.example.com** and **sport.example.com** to **AllowedList**.
+For example, if you want to enable ad blocking for the domains 'news.example.com' and 'sport.example.com' in an app, but disable ad blocking for web pages under other domains of 'example.com', you can first call [addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12) to add the 'example.com' domain to **DisallowedList**, and then call [addAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockallowedlist12) to add the 'news.example.com' and 'sport.example.com' domains.
 <!-- @[set_up_page_level_ad_filtering_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_two.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';    
 
-// In the following example, **addAdsBlockAllowedList()** and **addAdsBlockDisallowedList()** are used together to set the ad blocking feature for web pages.   
+// Demonstrate the combined use of addAdsBlockAllowedList and addAdsBlockDisallowedList to set the web page-level ad blocking switch.    
 @Entry    
 @Component    
 struct WebComponent {    
@@ -181,7 +182,7 @@ struct WebComponent {
       Row() {    
         Flex() {    
           TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})    
-            .id('input_url')    
+            .id('urlInput')    
             .height(40)    
             .margin(5)    
             .borderColor(Color.Blue)    

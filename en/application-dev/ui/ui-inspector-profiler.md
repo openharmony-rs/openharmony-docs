@@ -1,10 +1,11 @@
 # UI Profiling
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
+<!--Owner: @lushi871202; @liwenzhen3-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @Brilliantry_Rui; @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-10-29T09:01:07.872Z pushedAt=2026-10-30T02:56:38.032Z nl=1 -->
 
 This topic describes tools for inspecting the UI hierarchy and profiling performance, designed to enhance development efficiency and optimize the developer experience.
 
@@ -13,19 +14,26 @@ To improve the efficiency of diagnosing state management issues, the framework p
 ### State Management: hidumper
 The state management framework integrates with [hidumper](../dfx/hidumper.md). You can use the **-jsdump** command to inspect information such as components associated with state variables and custom component trees.
 
-The following parameters are available.
+The following describes the meaning of each `-jsdump` parameter:
+- `-viewHierarchy`: displays custom component tree information. By default, only the root custom component is shown.
+- `-stateVariable`: displays state variable information, including associated components and synchronization objects. Recursive dump with `-r` is not supported.
+- `-registeredElementIds`: displays the element IDs owned by the current custom component.
+- `-inactiveComponents`: lists inactive components in [component freeze](./state-management/arkts-custom-components-freeze.md) scenarios.
+- `-dumpAll`: prints the custom component tree, state variables, child components created in the build() method of custom components, and the dirty node list.
+- `-h`: displays help information.
 
-- **jsdump**: displays state management information.
-- **viewHierarchy**: displays custom component tree information. By default, only the root custom component is shown.
-- **r**: recursively displays element IDs of custom components and their child components from the root node. By default, only root node information is shown.
-- **viewId**: displays information for a specific custom component using its view ID.
-- **stateVariable**: displays state variable information, including associated components and synchronization objects. This command currently does not support recursive output (**r**).
-- **registerdElementIds**: displays element IDs of the current custom component.
+In addition to the commands above, you can enter the following commands to enable recursive printing or to print information for a specific component ID. If not specified, only the root node information of the page is printed by default.
+- `-r`: recursively prints custom components and the element IDs of their owned components from the root node. By default, only root node information is printed.
+- `-viewId`: displays information of the custom component with the specified view ID.
+
+The following is a specific example:
 
 Example:
 The following example demonstrates a typical two-layer nested component structure using [\@State](./state-management/arkts-state.md) and [\@Link](./state-management/arkts-link.md) decorators. The commands above can be combined to display information such as the frontend component tree, state variables, and components affected by state variables.
 
-```ts
+<!-- @[ui_inspector_profiler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/UIInspectorProfiler.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Page {
@@ -66,15 +74,16 @@ struct GrandChild {
 ```
 
 Step 1: Obtain the ID of the currently active window.
-```
+``` shell
 hdc shell hidumper -s WindowManagerService -a '-a'
 ```
 
-Step 2: Execute commands to inspect state variable information.
-Assuming that the active window ID is 90, use the following commands:
-- Command 1: Recursively inspect all custom components from the root node:
+Step 2: Execute the command to dump state variable information.
 
-  ```
+Assuming that the active window ID is 90, use the following commands:
+- Command 1: Recursively dump state variable information for all custom components and the root node:
+
+  ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -r'
   ```
   
@@ -83,14 +92,17 @@ Assuming that the active window ID is 90, use the following commands:
    - **View Hierarchy**: structure of the UI component tree.
    - **State variables**: state variables of the root node. For example, **@State 'message'[0]** under **Page** shows:
      - **[0]**: state variable ID.
-     - **Owned by @Component 'Page'[4]**: The state variable belongs to component **'Page'[4]** (where **[4]** is the component ID).
+     - `Owned by @Component 'Page'[4]`: indicates that the current state variable belongs to the component `'Page'[4]`, where `[4]` is the custom component ID.
      - **Sync peers**: synchronization objects. Changes to **@State message** will notify **@Link 'message'[-1] <@Component 'Child'[7]>** to refresh.
      - **dependencies**:
        - **variable assignment affects elmtIds**: components refreshed when the state variable changes, for example, **Text[6]**.
        - **Dependent elements**: components associated with the state variable and its synchronization objects.
    - **Registered Element IDs**: custom components and their child components declared in **build()**.
-   - **Dirty Registered Element IDs**: list of dirty nodes marked for re-rendering within the custom component. When a state variable changes, its associated components are marked as "dirty" and scheduled for re-rendering in the next rendering frame. These dirty components are re-rendered and the list is cleared during frame processing. During manual dump operations, the **Dirty Registered Element IDs** list is typically empty because, given the frame intervals of most current devices, it is difficult to capture the dirty node list between two consecutive frames.
-  ```ts
+   - **Dirty Registered Element IDs**: list of dirty nodes marked for re-rendering within the custom component. When a state variable changes, its associated components are marked as "dirty" and scheduled for re-rendering in the next rendering frame. These dirty nodes are re-rendered and the list is cleared during frame processing. During manual dump operations, the **Dirty Registered Element IDs** list is typically empty because, given the frame intervals of most current devices, it is difficult to capture the dirty node list between two consecutive frames.
+
+  Output:
+
+  ```text
   --------------------ViewPUInfo--------------------
   [-dumpAll, viewId=4, isRecursive=true]
   
@@ -142,11 +154,13 @@ Assuming that the active window ID is 90, use the following commands:
   Total: 0
   ```
 - Command 2: Print state variable information for a specific custom component, for example, component ID 7:
-  ```
+  ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -viewId=7'
   ```
-  The output is as follows.
-  ```ts
+
+  Output:
+
+  ```text
   --------------------ViewPUInfo--------------------
   [-dumpAll, viewId=7, isRecursive=false]
   
@@ -204,7 +218,7 @@ Step 2: After recording, the ArkUI State lane shows trace points for state varia
 
 **Figure 1** ArkUI State lane recording process
 
-![UI-StateProfier1](figures/UI-StateProfier1.gif)
+![UI-StateProfiler1](figures/UI-StateProfiler1.gif)
 
 Step 3: Select a trace point to view triggering of component re-rendering and the time consumed for creation, measurement, and layout.
 
@@ -216,7 +230,7 @@ Step 3: Select a trace point to view triggering of component re-rendering and th
 
 <!--RP3End-->
 
-### Status Management: ArkUI Inspector
+### State Management: ArkUI Inspector
 DevEco Studio's ArkUI Inspector displays detailed state variable information within custom components, including the following.
 | Name                | Description  |
 | -------------------- | ------|

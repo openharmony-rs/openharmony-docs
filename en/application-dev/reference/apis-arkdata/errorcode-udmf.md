@@ -5,6 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=40af72532e6f04b29e832323f4ac84d8abcc4223 translatedAt=2026-09-04T03:18:58.286Z pushedAt=2026-09-09T09:11:03.699Z -->
 
 > **NOTE**
 >
@@ -26,14 +27,14 @@ This error code is reported when [setAppShareOptions](js-apis-data-unifiedDataCh
 
 **Solution**
 
-Call [removeAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelremoveappshareoptions14) to clear the **ShareOptions** of the current drag-and-drop channel data, and then call [setAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelsetappshareoptions14) to set **ShareOptions**.
+First call [removeAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelremoveappshareoptions14) to clear the current scope in which drag-and-drop channel data can be used, and then call [setAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelsetappshareoptions14) to set it again.
 
 <!--Del-->
 ## 20400002 Invalid UTD Format
 
 **Error Message**
 
-The format of one or more type descriptors are invalid.
+The format of one or more typeDescriptors are invalid.
 
 **Description**
 
@@ -48,7 +49,7 @@ When [registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniform
 2. The format of any UTD is incorrect. Examples:
 
     - **typeId** is an empty string, contains more than 127 characters, or contains non-alphabetic characters, digits, hyphens (-), and periods (.).
-    
+
     - **belongingToTypes** is an empty list, the number of elements in the list exceeds 50, the list contains empty strings, or any element contains more than 127 characters.
 
     - **description**, **referenceURL**, or **iconFile** contains more than 255 characters.
@@ -90,7 +91,7 @@ Check the content of input UTDs and modify the invalid content by referring to t
 ## 20400004 Invalid UTD IDs
 
 **Error Message**
- 
+
 One or more typeIds are invalid or do not exist.
 
 **Description**

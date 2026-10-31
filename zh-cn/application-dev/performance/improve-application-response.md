@@ -70,7 +70,7 @@ struct ImageExample2 {
 
 ### 使用TaskPool线程池异步处理
 
-当前系统提供了[TaskPool线程池](../reference/apis-arkts/js-apis-taskpool.md)，TaskPool提供了任务优先级设置、线程池自动管理机制，示例如下：
+当前系统提供了[@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)，TaskPool提供了任务优先级设置、线程池自动管理机制，示例如下：
 
 ```typescript
 import { taskpool } from '@kit.ArkTS';
@@ -189,7 +189,7 @@ struct Index {
 
 ![正例总时长](./figures/improve-application-response-settimeout-all-duration.png)
 
-正例中启动时aboutToAppear阶段耗时为167us。
+正例中启动时aboutToAppear阶段耗时为167μs。
 
 ![正例时长](./figures/improve-application-response-settimeout-duration.png)
 
@@ -210,6 +210,7 @@ struct Index {
 反例：如果一个容器没有同时指定宽高，此时改变容器内部的布局，那么该容器外同级的所有组件都会重新做布局计算和测量更新，导致主线程UI刷新耗时过长。
 
 以下代码的Text('New Page')组件被状态变量isVisible控制，isVisible为true时创建，false时销毁。当isVisible发生变化时，由于其外包裹的Stack容器没有同时指定宽高，
+
 因此会扩散影响到容器外ForEach中的Text渲染：
 
 ```typescript
@@ -539,241 +540,241 @@ class AVPlayerManager {
 
 主要代码逻辑如下：
 
-1、模拟广告页，通过点击不同按钮分别进入普通页面和预加载页面。
-```typescript
-// Index.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column({ space: 5 }) {
-      // 进入普通页面
-      Button("普通页面")
-        .type(ButtonType.Capsule)
-        .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/CommonPage' });
-        })
-      // 进入预加载页面
-      Button("预加载页面")
-        .type(ButtonType.Capsule)
-        .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/PreloadedPage' });
-        })
-    }.height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-2、普通首页，也即按顺序普通渲染的页面。
-```typescript
-// CommonPage.ets
-
-import { MyBuilder, getNumbers } from '../builder/CustomerBuilder';
-
-@Entry
-@Component
-struct CommonPage {
-  build() {
-    Row() {
-      MyBuilder(getNumbers())
+1. 模拟广告页，通过点击不同按钮分别进入普通页面和预加载页面。
+    ```typescript
+    // Index.ets
+    @Entry
+    @Component
+    struct Index {
+      build() {
+        Column({ space: 5 }) {
+          // 进入普通页面
+          Button("普通页面")
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              this.getUIContext().getRouter().pushUrl({ url: 'pages/CommonPage' });
+            })
+          // 进入预加载页面
+          Button("预加载页面")
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              this.getUIContext().getRouter().pushUrl({ url: 'pages/PreloadedPage' });
+            })
+        }.height('100%')
+        .width('100%')
+        .justifyContent(FlexAlign.Center)
+      }
     }
-  }
-}
-```
-3、自定义builder，用来定制页面结构。
-```typescript
-// CustomerBuilder.ets
+    ```
 
-@Builder
-export function MyBuilder(numbers: string[]) {
-  Column() {
-    List({ space: 20, initialIndex: 0 }) {
-      ForEach(numbers, (item: string) => {
-        ListItem() {
-          Text('' + item)
-            .width('100%')
-            .height(50)
-            .fontSize(16)
-            .textAlign(TextAlign.Center)
-            .borderRadius(10)
-            .backgroundColor(0xFFFFFF)
+2. 普通首页，也即按顺序普通渲染的页面。
+    ```typescript
+    // CommonPage.ets
+
+    import { MyBuilder, getNumbers } from '../builder/CustomerBuilder';
+
+    @Entry
+    @Component
+    struct CommonPage {
+      build() {
+        Row() {
+          MyBuilder(getNumbers())
         }
-      }, (day: string) => day)
+      }
     }
-    .listDirection(Axis.Vertical) // 排列方向
-    .scrollBar(BarState.Off)
-    .friction(0.6)
-    .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // 每行之间的分界线
-    .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
-    .width('90%')
-    .height('100%')
-  }
-  .width('100%')
-  .height('100%')
-  .backgroundColor(0xDCDCDC)
-  .padding({ top: 5 })
-}
+    ```
+3. 自定义builder，用来定制页面结构。
+    ```typescript
+    // CustomerBuilder.ets
 
-export const getNumbers = (): string[] => {
-  const numbers: string[] = [];
-  for (let i = 0; i < 100; i++) {
-    numbers.push('' + i);
-  }
-  return numbers;
-}
-```
+    @Builder
+    export function MyBuilder(numbers: string[]) {
+      Column() {
+        List({ space: 20, initialIndex: 0 }) {
+          ForEach(numbers, (item: string) => {
+            ListItem() {
+              Text('' + item)
+                .width('100%')
+                .height(50)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (day: string) => day)
+        }
+        .listDirection(Axis.Vertical) // 排列方向
+        .scrollBar(BarState.Off)
+        .friction(0.6)
+        .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // 每行之间的分界线
+        .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
+        .width('90%')
+        .height('100%')
+      }
+      .width('100%')
+      .height('100%')
+      .backgroundColor(0xDCDCDC)
+      .padding({ top: 5 })
+    }
+
+    export const getNumbers = (): string[] => {
+      const numbers: string[] = [];
+      for (let i = 0; i < 100; i++) {
+        numbers.push('' + i);
+      }
+      return numbers;
+    }
+    ```
 
 正例：在启动时预加载首页。
 
 主要代码逻辑如下：
 
-1、应用启动时提前创建首页。
-```typescript
-// EntryAbility.ets  
-import { UIAbility } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-import { ControllerManager } from '../builder/CustomerController';
-import { getNumbers } from '../builder/CustomerBuilder';
+1. 应用启动时提前创建首页。
+    ```typescript
+    // EntryAbility.ets  
+    import { UIAbility } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { window } from '@kit.ArkUI';
+    import { ControllerManager } from '../builder/CustomerController';
+    import { getNumbers } from '../builder/CustomerBuilder';
 
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        // Main window is created, set main page for this ability
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
+        windowStage.loadContent('pages/Index', (err, data) => {
+          if (err.code) {
+            hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+            return;
+          }
+          hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+        });
+        window.getLastWindow(this.context, (err: BusinessError<void>, data) => {
+          if (err.code) {
+            console.error('Failed to obtain top window. Cause:' + JSON.stringify(err));
+            return;
+          }
+          // 提前创建
+          ControllerManager.getInstance().createNode(data.getUIContext(), getNumbers());
+        })
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-    window.getLastWindow(this.context, (err: BusinessError<void>, data) => {
-      if (err.code) {
-        console.error('Failed to obtain top window. Cause:' + JSON.stringify(err));
-        return;
+
+      onWindowStageDestroy(): void {
+        // Main window is destroyed, release UI related resources
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+        // 清空组件，防止内存泄漏
+        ControllerManager.getInstance().clearNode();
       }
-      // 提前创建
-      ControllerManager.getInstance().createNode(data.getUIContext(), getNumbers());
-    })
-  }
-
-  onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-    // 清空组件，防止内存泄漏
-    ControllerManager.getInstance().clearNode();
-  }
-}
-```
-
-2、预加载的首页，使用NodeContainer进行占位，当跳转到本页时直接将提前创建完成的首页填充。
-```typescript
-// PreloadedPage.ets
-
-import { ControllerManager } from '../builder/CustomerController';
-
-@Entry
-@Component
-struct PreloadedPage {
-  build() {
-    Row() {
-      NodeContainer(ControllerManager.getInstance().getNode())
     }
-  }
-}
-```
+    ```
 
-3、自定义NodeController，并提供提前创建首页的能力。
-```typescript
-// CustomerController.ets
+2. 预加载的首页，使用NodeContainer进行占位，当跳转到本页时直接将提前创建完成的首页填充。
+    ```typescript
+    // PreloadedPage.ets
 
-import { BuilderNode, NodeController } from '@kit.ArkUI';
-import { MyBuilder } from './CustomerBuilder';
+    import { ControllerManager } from '../builder/CustomerController';
 
-export class MyNodeController extends NodeController {
-  private rootNode: BuilderNode<[string[]]> | null = null;
-  private wrapBuilder: WrappedBuilder<[string[]]> = wrapBuilder(MyBuilder);
-  private numbers: string[] | null = null;
-
-  constructor(numbers: string[]) {
-    super();
-    this.numbers = numbers;
-  }
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    if (this.rootNode != null) {
-      // 返回FrameNode节点
-      return this.rootNode.getFrameNode();
+    @Entry
+    @Component
+    struct PreloadedPage {
+      build() {
+        Row() {
+          NodeContainer(ControllerManager.getInstance().getNode())
+        }
+      }
     }
-    // 返回null控制动态组件脱离绑定节点
-    return null;
-  }
+    ```
 
-  // 通过UIContext初始化BuilderNode，再通过BuilderNode中的build接口初始化@Builder中的内容
-  initNode(uiContext: UIContext) {
-    if (this.rootNode != null) {
-      return;
+3. 自定义NodeController，并提供提前创建首页的能力。
+    ```typescript
+    // CustomerController.ets
+
+    import { BuilderNode, NodeController } from '@kit.ArkUI';
+    import { MyBuilder } from './CustomerBuilder';
+
+    export class MyNodeController extends NodeController {
+      private rootNode: BuilderNode<[string[]]> | null = null;
+      private wrapBuilder: WrappedBuilder<[string[]]> = wrapBuilder(MyBuilder);
+      private numbers: string[] | null = null;
+
+      constructor(numbers: string[]) {
+        super();
+        this.numbers = numbers;
+      }
+
+      makeNode(uiContext: UIContext): FrameNode | null {
+        if (this.rootNode != null) {
+          // 返回FrameNode节点
+          return this.rootNode.getFrameNode();
+        }
+        // 返回null控制动态组件脱离绑定节点
+        return null;
+      }
+
+      // 通过UIContext初始化BuilderNode，再通过BuilderNode中的build接口初始化@Builder中的内容
+      initNode(uiContext: UIContext) {
+        if (this.rootNode != null) {
+          return;
+        }
+        // 创建节点，需要uiContext
+        this.rootNode = new BuilderNode(uiContext);
+        // 创建组件
+        this.rootNode.build(this.wrapBuilder, this.numbers);
+      }
     }
-    // 创建节点，需要uiContext
-    this.rootNode = new BuilderNode(uiContext);
-    // 创建组件
-    this.rootNode.build(this.wrapBuilder, this.numbers);
-  }
-}
 
-export class ControllerManager {
-  private static instance?: ControllerManager;
-  private myNodeController?: MyNodeController;
+    export class ControllerManager {
+      private static instance?: ControllerManager;
+      private myNodeController?: MyNodeController;
 
-  static getInstance(): ControllerManager {
-    if (!ControllerManager.instance) {
-      ControllerManager.instance = new ControllerManager();
+      static getInstance(): ControllerManager {
+        if (!ControllerManager.instance) {
+          ControllerManager.instance = new ControllerManager();
+        }
+        return ControllerManager.instance;
+      }
+
+     /**
+      * 初始化需要UIContext 需在Ability获取
+      * @param uiContext
+      * @param numbers
+      */
+      createNode(uiContext: UIContext, numbers: string[]) {
+        // 创建NodeController
+        this.myNodeController = new MyNodeController(numbers);
+        this.myNodeController.initNode(uiContext);
+      }
+
+     /**
+      * 自定义获取NodeController实例接口
+      * @returns MyNodeController
+      */
+      getNode(): MyNodeController | undefined {
+        return this.myNodeController;
+      }
+
+     /**
+      * 解除占用，防止内存泄漏
+      */
+      clearNode(): void {
+        this.myNodeController = undefined;
+      }
     }
-    return ControllerManager.instance;
-  }
+    ```
 
-  /**
-   * 初始化需要UIContext 需在Ability获取
-   * @param uiContext
-   * @param numbers
-   */
-  createNode(uiContext: UIContext, numbers: string[]) {
-    // 创建NodeController
-    this.myNodeController = new MyNodeController(numbers);
-    this.myNodeController.initNode(uiContext);
-  }
+    通过SmartPerf-Host工具抓取相关trace进行分析首页响应时延，其中主要关注两个trace tag分别是DispatchTouchEvent代表点击事件和MarshRSTransactionData代表响应，如下图所示：
 
-  /**
-   * 自定义获取NodeController实例接口
-   * @returns MyNodeController
-   */
-  getNode(): MyNodeController | undefined {
-    return this.myNodeController;
-  }
+    反例响应时延：18.1ms。
 
-  /**
-   * 解除占用，防止内存泄漏
-   */
-  clearNode(): void {
-    this.myNodeController = undefined;
-  }
-}
-```
+    ![反例响应时延](./figures/preload_counter_example_delay.png)
 
-通过SmartPerf-Host工具抓取相关trace进行分析首页响应时延，其中主要关注两个trace tag分别是DispatchTouchEvent代表点击事件和MarshRSTransactionData代表响应,如下图所示：
+    正例响应时延：9.4ms。
 
-反例响应时延：18.1ms。
+    ![正例响应时延](./figures/preload_positive_example_delay.png)
 
-![反例响应时延](./figures/preload_counter_example_delay.png)
-
-正例响应时延：9.4ms。
-
-![正例响应时延](./figures/preload_positive_example_delay.png)
-
-由上述对比数据即可得出结论，预加载首页能优化首页响应时延。
+    由上述对比数据即可得出结论，预加载首页能优化首页响应时延。
 
 ### 使用条件渲染实现预加载
 
@@ -857,7 +858,7 @@ struct ArticleSkeletonView { // 自定义骨架图
 
 将使用和未使用骨架图的组件通过SmartPerf-Host工具抓取trace后对比可得：
 
-未使用骨架图时，响应时间约为321.5ms。(其中包含setTimeout的300ms)。
+未使用骨架图时，响应时间约为321.5ms。（其中包含setTimeout的300ms）。
 
 ![骨架图占位](./figures/improve-application-response-no-skeleton-duration.png)
 
@@ -870,7 +871,7 @@ struct ArticleSkeletonView { // 自定义骨架图
 将相机的关闭和释放操作放在setTimeout函数中执行，使其延迟到系统相对空闲的时刻进行，可以避免在程序忙碌时段占用关键资源，提升整体性能及响应能力；确保相机资源在系统任务负载减轻时得以释放，维护了应用的稳定性和效率。
 ### 反例
 
-这段代码定义了在相机页面隐藏时触发的函数，用于释放相机相关资源。通过“停止拍摄进程 > 暂停并释放相机会话 > 关闭和释放预览及拍照的输入输出对象 > 清空相机管理对象”的过程，确保应用程序在不再使用相机时能够有效管理并回收所有相机资源。但是直接调用的release方法中captureSession、cameraInput、previewOutput、cameraOutput都用了await,使相机关闭和释放顺序执行可能会导致应用程序的响应性下降，造成用户界面卡顿。
+这段代码定义了在相机页面隐藏时触发的函数，用于释放相机相关资源。通过“停止拍摄进程 > 暂停并释放相机会话 > 关闭和释放预览及拍照的输入输出对象 > 清空相机管理对象”的过程，确保应用程序在不再使用相机时能够有效管理并回收所有相机资源。但是直接调用的release方法中captureSession、cameraInput、previewOutput、cameraOutput都用了await，使相机关闭和释放顺序执行可能会导致应用程序的响应性下降，造成用户界面卡顿。
 ```ts
 // 相机页面每次隐藏时触发一次
 onPageHide() {

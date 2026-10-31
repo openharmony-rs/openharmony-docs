@@ -2,11 +2,12 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c4eacd7749f17b808b6e998528fa58a7554f7518 translatedAt=2026-09-21T11:28:16.870Z pushedAt=2026-09-23T09:15:53.745Z -->
 
-In addition to component-level and application-level state management, ArkTS also provides the following specialized state management features:
+In addition to component-level and application-level state management, ArkTS also provides \@Watch, the $$ operator, \@Track, and custom component freezing to give you more capabilities:
 
 - [\@Watch decorator](arkts-watch.md): listens for the changes of state variables.
 

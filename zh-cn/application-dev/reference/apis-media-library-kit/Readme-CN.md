@@ -12,6 +12,7 @@
     - [Functions](arkts-apis-photoAccessHelper-f.md)
     - [Class (MediaAlbumChangeRequest)](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)
     - [Class (MediaAssetChangeRequest)](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)
+    - [Class (MediaAssetsChangeRequest)](arkts-apis-photoAccessHelper-MediaAssetsChangeRequest.md)
     - [Class (MediaAssetManager)](arkts-apis-photoAccessHelper-MediaAssetManager.md)
     - [Class (PhotoViewPicker)](arkts-apis-photoAccessHelper-PhotoViewPicker.md)
     - [Classes (其他)](arkts-apis-photoAccessHelper-class.md)

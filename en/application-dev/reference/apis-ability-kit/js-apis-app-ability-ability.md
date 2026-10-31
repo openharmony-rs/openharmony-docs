@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T09:37:05.003Z pushedAt=2026-09-05T10:47:30.193Z -->
 
 The Ability class is the fundamental unit for application lifecycle scheduling. It is the base class of [UIAbility](js-apis-app-ability-uiAbility.md) and [ExtensionAbility](js-apis-app-ability-extensionAbility.md), and provides callbacks for system configuration updates and memory level updates. However, you cannot inherit directly from this base class. You should opt for either [UIAbility](js-apis-app-ability-uiAbility.md) or [ExtensionAbility](js-apis-app-ability-extensionAbility.md) based on your service needs. For details, see [Introduction to Ability Kit](../../application-models/abilitykit-overview.md).
 
@@ -39,7 +40,9 @@ Called when a system environment variable changes. You can override this callbac
 
 > **NOTE**
 >
-> There are certain restrictions when this callback is actually triggered. For example, if you set the application language by calling [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11), the system does not trigger the **onConfigurationUpdate** callback even if the system language changes. For details, see [When to Use](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
+> This callback is subject to certain restrictions when actually triggered. For example, if you set the application language through [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11), the system no longer triggers the onConfigurationUpdate callback even if the system language changes. For details, see [Usage Scenario](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
+>
+> To monitor the environment variables of the Ability on a page, use [ApplicationContext.on('environment')](./js-apis-inner-application-applicationContext.md#applicationcontextonenvironment).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -49,7 +52,7 @@ Called when a system environment variable changes. You can override this callbac
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| newConfig | [Configuration](js-apis-app-ability-configuration.md) | Yes| New configuration.|
+| newConfig | [Configuration](js-apis-app-ability-configuration.md) | Required | Updated configuration, including system configuration items such as language and color mode. |
 
 **Example**
 
@@ -71,8 +74,10 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 Called when the available memory of the entire device changes to a specified level. You can override this callback to respond to changes in the memory level, for example, releasing cached data.
 
 > **NOTE**
-> 
-> Releasing UI components in the **onMemoryLevel** callback may block the main thread tasks of the current process. Therefore, you are advised not to release UI components in this callback.
+>
+> The onMemoryLevel callback runs on the main thread of the current process. If you release UI components that take a long time in this callback, the main thread tasks will be blocked. Therefore, releasing UI components in this callback is not recommended.
+>
+> To monitor the environment variables of the Ability on a page, use [ApplicationContext.on('environment')](./js-apis-inner-application-applicationContext.md#applicationcontextonenvironment).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -82,7 +87,7 @@ Called when the available memory of the entire device changes to a specified lev
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes| Level of the available memory.<br>**NOTE**<br>The trigger conditions may differ across various devices. For example, on a standard device with 12 GB of memory:<br>- When the available memory of the entire device drops to 1700 MB to 1800 MB, the **onMemoryLevel** callback of the MEMORY_LEVEL_MODERATE type is triggered, indicating that the available memory is moderate.<br>- When the available memory of the entire device drops to 1600 MB to 1700 MB, the **onMemoryLevel** callback of the MEMORY_LEVEL_LOW type is triggered, indicating that the available memory is low.<br>- When the available memory of the entire device drops below 1600 MB, the **onMemoryLevel** callback of the MEMORY_LEVEL_CRITICAL type is triggered, indicating that the available memory is critically low.|
+| level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Required | Memory level of the entire device. For details about the corresponding trigger scenarios, see [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel). |
 
 **Example**
 
@@ -91,6 +96,7 @@ Called when the available memory of the entire device changes to a specified lev
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
+  // Receive the system memory level change callback.
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
     console.info(`onMemoryLevel, level: ${JSON.stringify(level)}`);
   }

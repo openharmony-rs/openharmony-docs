@@ -2,9 +2,9 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @bitbegin-->
-<!--Designer: @guofan912-->
-<!--Tester: @wuqingyang1-->
+<!--Owner: @yh1719-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块提供有源标签的使用，包括初始化有源标签芯片、读取有源标签内容、写入内容到有源标签等。
@@ -12,6 +12,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 有源标签能力仅对系统应用开放。
 
 ## 导入模块
 
@@ -43,7 +45,7 @@ init(): boolean
 
 initialize(): void
 
-初始化有源标签芯片。
+初始化有源标签芯片。对有源标签进行读写操作前需调用本接口初始化一次，若想再次初始化需先调用[uninitialize](#connectedtaguninitialize9)。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -58,6 +60,19 @@ initialize(): void
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
+
+**示例：**
+
+```js
+import { connectedTag } from '@kit.ConnectivityKit';
+
+try {
+    console.info("connectedTag initialize");
+    connectedTag.initialize();
+} catch (error) {
+    console.error("initialize error:" + error);
+}
+```
 
 ## connectedTag.uninit<sup>(deprecated)</sup>
 
@@ -85,9 +100,9 @@ uninitialize(): void
 
 卸载有源标签芯片资源。
 
-**需要权限:** ohos.permission.NFC_TAG
+**需要权限：** ohos.permission.NFC_TAG
 
-**系统能力:** SystemCapability.Communication.ConnectedTag
+**系统能力：** SystemCapability.Communication.ConnectedTag
 
 **错误码：**
 
@@ -99,11 +114,24 @@ uninitialize(): void
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
+**示例：**
+
+```js
+import { connectedTag } from '@kit.ConnectivityKit';
+
+try {
+    console.info("connectedTag uninitialize");
+    connectedTag.uninitialize();
+} catch (error) {
+    console.error("connectedTag error: " + error);
+}
+```
+
 ## connectedTag.readNdefTag<sup>(deprecated)</sup>
 
 readNdefTag(): Promise&lt;string&gt;
 
-读取有源标签内容，使用promise方式作为异步方法。
+读取有源标签内容。使用Promise异步回调。
 
 > **说明：**
 >
@@ -117,7 +145,7 @@ readNdefTag(): Promise&lt;string&gt;
 
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;string&gt; | 返回读取有源标签内容。 |
+| Promise&lt;string&gt; | Promise对象，返回读取有源标签内容的列表。 |
 
 **示例：**
 
@@ -136,7 +164,7 @@ connectedTag.readNdefTag().then((data) => {
 
 read(): Promise&lt;number[]&gt;
 
-读取有源标签内容，使用promise方式作为异步方法。
+读取有源标签内容。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -146,7 +174,7 @@ read(): Promise&lt;number[]&gt;
 
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;number[]&gt; | 返回读取有源标签内容。 |
+| Promise&lt;number[]&gt; | Promise对象，返回读取有源标签内容的列表。 |
 
 **错误码：**
 
@@ -189,7 +217,7 @@ readNdefTag(callback: AsyncCallback&lt;string&gt;): void
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;string&gt; | 是 | 读取有源标签内容回调函数。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当读取成功时data为读取到有源标签的内容；否则为err错误对象。 |
 
 **示例：**
 
@@ -219,7 +247,7 @@ read(callback: AsyncCallback&lt;number[]&gt;): void
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;number[]&gt; | 是 | 读取有源标签内容回调函数。 |
+| callback | AsyncCallback&lt;number[]&gt; | 是 | 回调函数。当读取成功时data为读取到有源标签的内容；否则为err错误对象。 |
 
 **错误码：**
 
@@ -249,7 +277,7 @@ connectedTag.read((err, data)=> {
 
 writeNdefTag(data: string): Promise&lt;void&gt;
 
-写入内容到有源标签，使用promise方式作为异步方法。
+写入内容到有源标签。使用Promise异步回调。
 
 > **说明：**
 >
@@ -263,13 +291,13 @@ writeNdefTag(data: string): Promise&lt;void&gt;
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | string | 是 | 有源标签内容, 最大长度为1024个字节。 |
+| data | string | 是 | 有源标签内容，最大长度为1024个字节。 |
 
 **返回值：**
 
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -289,7 +317,7 @@ connectedTag.writeNdefTag(rawData).then(() => {
 
 write(data: number[]): Promise&lt;void&gt;
 
-写入内容到有源标签，使用promise方式作为异步方法。
+写入内容到有源标签。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -299,13 +327,13 @@ write(data: number[]): Promise&lt;void&gt;
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | number[] | 是 | 有源标签内容, 由十六进制数字组成。范围：0x00至0xFF。 |
+| data | number[] | 是 | 有源标签内容，由十六进制数字组成。范围：0x00至0xFF。 |
 
 **返回值：**
 
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -314,7 +342,7 @@ write(data: number[]): Promise&lt;void&gt;
 | 错误码ID | 错误信息|
 | -------- | -------- |
 |201 | Permission denied.                 |
-|401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
+|401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
@@ -350,8 +378,8 @@ writeNdefTag(data: string, callback: AsyncCallback&lt;void&gt;): void
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | string | 是 | 有源标签内容, 最大长度为1024个字节。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 读取有源标签内容回调函数。 |
+| data | string | 是 | 有源标签内容，最大长度为1024个字节。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当写入标签成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -382,8 +410,8 @@ write(data: number[], callback: AsyncCallback&lt;void&gt;): void
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | number[] | 是 | 有源标签内容, 由十六进制数字组成。范围：0x00至0xFF。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 读取有源标签内容回调函数。 |
+| data | number[] | 是 | 有源标签内容，由十六进制数字组成。范围：0x00至0xFF。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当写入标签成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -392,7 +420,7 @@ write(data: number[], callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息|
 | -------- | -------- |
 |201 | Permission denied.                 |
-|401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
+|401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
@@ -413,7 +441,7 @@ connectedTag.write(rawData, (err)=> {
 
 ## connectedTag.on('notify')
 
-on(type: "notify", callback: Callback&lt;number&gt;): void
+on(type: 'notify', callback: Callback&lt;number&gt;): void
 
 注册NFC场强状态事件。
 
@@ -426,11 +454,11 @@ on(type: "notify", callback: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"notify"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回值参见[NfcRfType](#nfcrftype)。 |
+| callback | Callback&lt;number&gt; | 是 | 回调函数。注册成功的返回值参见[NfcRfType](#nfcrftype)。 |
 
 ## connectedTag.off('notify')
 
-off(type: "notify", callback?: Callback&lt;number&gt;): void
+off(type: 'notify', callback?: Callback&lt;number&gt;): void
 
 取消NFC场强状态事件的注册。
 
@@ -454,7 +482,7 @@ function nfcStatusCb(rfState: connectedTag.NfcRfType) {
     console.info("connectedTag on Callback rfState: ", rfState);
 }
 
-// 有源nfc标签的使用流程
+// 有源NFC标签的使用流程
 async function nfcTagTestOn(): Promise<void> {
     try {
         console.info("connectedTag initialize");
@@ -463,7 +491,7 @@ async function nfcTagTestOn(): Promise<void> {
         console.error("initialize error:" + error);
     }
     // 注册回调以接收nfc进离场状态更改通知
-    connectedTag.on("notify", nfcStatusCb);
+    connectedTag.on('notify', nfcStatusCb);
     try {
         let tag = [3, 1, 0];
         console.info("connectedTag write: tag=" + tag);
@@ -478,7 +506,7 @@ async function nfcTagTestOn(): Promise<void> {
 // 业务退出时，取消注册回调、取消初始化
 async function nfcTagTestOff(): Promise<void> {
     // 取消注册回调
-    connectedTag.off("notify", nfcStatusCb);
+    connectedTag.off('notify', nfcStatusCb);
     try {
         console.info("connectedTag uninitialize");
         connectedTag.uninitialize();
@@ -487,7 +515,6 @@ async function nfcTagTestOff(): Promise<void> {
     }
 }
 
-export { nfcTagTestOn, nfcTagTestOff }
 ```
 
 ## NfcRfType

@@ -1,12 +1,13 @@
 # DrawingRenderingContext
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0ac6eaf21c519d27b118617e6aaa0ba03069a649 translatedAt=2026-08-28T01:26:16.226Z pushedAt=2026-08-31T07:52:18.276Z -->
 
-**DrawingRenderingContext** provides a rendering context for drawing rectangles, text, images, and other objects on a canvas.
+After the **DrawingRenderingContext** object is bound to the **Canvas** component, you can draw shapes, texts, and images on the **Canvas** component. Binding method: Pass the **DrawingRenderingContext** object to the constructor of the **Canvas** component to establish the binding. Drawing process: Obtain the **DrawingCanvas** object through the **canvas** property, call the drawing module APIs to perform drawing operations, and finally call **invalidate()** to trigger re-rendering. This is suitable for scenarios such as high-performance graphics drawing, custom charts, and image editing, and provides more flexible drawing APIs than **CanvasRenderingContext2D**.
 
 > **NOTE**
 >
@@ -16,9 +17,11 @@
 
 constructor(unit?: LengthMetricsUnit)
 
-Creates a **Canvas** object for drawing operations using the drawing API. Configuration of the unit mode for the **DrawingRenderingContext** object is supported.
+Creates a **Canvas** object for drawing operations using the **drawing** API. Configuration of the unit mode for the **DrawingRenderingContext** object is supported. After the object is created, you can obtain the canvas object through the **canvas** property of the **DrawingRenderingContext** object to perform drawing operations.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,15 +29,17 @@ Creates a **Canvas** object for drawing operations using the drawing API. Config
 
 | Name     | Type| Mandatory  | Description|
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No   | Unit mode of the **DrawingRenderingContext** object. The value cannot be changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **undefined**, **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**.|
+| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No    | Unit mode of the **DrawingRenderingContext** object. Once configured, the unit mode cannot be changed. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Optional values: **DEFAULT** (default vp unit) and **PX** (px pixel unit).<br>Abnormal values **undefined**, **NaN**, and **Infinity** are processed as the default value.<br>Default value: **DEFAULT** |
 
 ## size
 
 get size(): Size
 
-Obtains the size of the **DrawingRenderingContext** object.
+Obtains the size of the **DrawingRenderingContext** object. This API can be used only after the **DrawingRenderingContext** object is bound to the **Canvas** component. The returned **Size** object contains the width and height of the canvas, which can be used to calculate the drawing area or adjust drawing parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,9 +53,11 @@ Obtains the size of the **DrawingRenderingContext** object.
 
 get canvas(): DrawingCanvas
 
-Obtains the canvas object for drawing content.
+Obtains the canvas object for drawing content. This API can be used only after the **DrawingRenderingContext** object is bound to the **Canvas** component. The obtained **Canvas** object can be used to bind drawing tools such as **Brush** and **Pen** to draw shapes, texts, and images.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,31 +65,35 @@ Obtains the canvas object for drawing content.
 
 | Type         | Description                                      |
 | ----------- | ---------------------------------------- |
-| [DrawingCanvas](#drawingcanvas12) | Canvas object for drawing content.|
+| [DrawingCanvas](#drawingcanvas) | Canvas object for drawing content. |
 
 ## invalidate
 
 invalidate(): void
 
-Invalidates the component and triggers re-rendering of the component.
+Marks the component state as changed and triggers re-rendering of the component. Call this API after the **Canvas** component is bound to the **DrawingRenderingContext** object and the drawing operations are complete, so that the drawing content is rendered to the screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-## DrawingCanvas<sup>12+</sup>
+## DrawingCanvas
 
-type DrawingCanvas = Canvas
+type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas
 
-Defines a canvas object for drawing content on the **XComponent** component.
+Draws content on the **DrawingRenderingContext**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | Canvas object.|
+| import('../api/@ohos.graphics.drawing').default.[Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | Returns a **Canvas** object that can be used to draw shapes, text, images, and other content on the **Canvas** component bound to the **DrawingRenderingContext**. |
 
 ## Size
 
@@ -90,12 +101,14 @@ Provides size information of the **DrawingRenderingContext** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read Only| Optional| Description|
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
-| width | number | No| No| Width of the **DrawingRenderingContext** object, which corresponds to the width of the associated **Canvas** component.|
-| height | number | No| No| Height of the **DrawingRenderingContext** object, which corresponds to the height of the associated **Canvas** component.|
+| width | number | No | No | Width of the **DrawingRenderingContext**, which is the width of the associated **Canvas** component. The unit is determined by the **unit** parameter of the **constructor**. Supported units: vp and px. The default unit is vp. |
+| height | number | No | No | Height of the **DrawingRenderingContext**, which is the height of the associated **Canvas** component. The unit is determined by the **unit** parameter of the **constructor**. Supported units: vp and px. The default unit is vp. |
 
 ## Example
 
@@ -181,13 +194,16 @@ struct CanvasExample {
         .height('50%')
         .backgroundColor('#D5D5D5')
         .onReady(() => {
+          // Create the font object and set the font size to 50.
           let font = new drawing.Font();
           font.setSize(50);
           // Load the custom font file HarmonyOS_Sans_Bold.ttf from the rawfile directory.
           const myTypeFace = drawing.Typeface.makeFromRawFile($rawfile('HarmonyOS_Sans_Bold.ttf'));
           font.setTypeface(myTypeFace);
+          // Create the text blob object. The parameters are the text content, font object, and text encoding format, in that order.
           const textBlob =
             drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+          // Draw the text blob at the coordinates (60, 100).
           this.context.canvas.drawTextBlob(textBlob, 60, 100);
           this.context.invalidate();
         })

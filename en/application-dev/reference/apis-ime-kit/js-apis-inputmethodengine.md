@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -50,8 +50,8 @@ Provides the constant values of function keys, edit boxes, and the cursor.
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | number | 13 | Verification code edit box.|
 | OPTION_ASCII | number | 20 | ASCII values are allowed.|
 | OPTION_NONE | number | 0 | No input attribute is specified.|
-| OPTION_AUTO_CAP_CHARACTERS | number | 2 | Characters are allowed.|
-| OPTION_AUTO_CAP_SENTENCES | number | 8 | Sentences are allowed.|
+| OPTION_AUTO_CAP_CHARACTERS | number | 2 | Characters are auto-capitalized.|
+| OPTION_AUTO_CAP_SENTENCES | number | 8 | Sentences are auto-capitalized.|
 | OPTION_AUTO_WORDS | number | 4 | Words are allowed.|
 | OPTION_MULTI_LINE | number | 1 | Multiple lines are allowed.|
 | OPTION_NO_FULLSCREEN | number | 10 | Half-screen style.|
@@ -809,7 +809,7 @@ Creates an input method panel. This API can be called only by the input method a
 > **NOTE**
 >
 > Only one [SOFT_KEYBOARD](#paneltype10) panel and one [STATUS_BAR](#paneltype10) panel can be created for a single input method.<br>
-> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), and [CustomDialog](../../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md) or [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), or set **showInSubwindow** to **false**.
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../windowmanager/application-window-fa.md#setting-an-app-subwindow), [bindContextMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), and [CustomDialog](../../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md) or [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), or set **showInSubwindow** to **false**.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -26,7 +26,7 @@
 
 ## 接口说明
 
-NFC卡模拟完整的API说明以及实例代码请参考：[NFC卡模拟接口](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md)。
+NFC卡模拟完整的API说明以及实例代码请参考：[@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md)。
 
 完成HCE卡模拟功能，需要使用到下面的接口。
 
@@ -50,7 +50,7 @@ HCE应用开发者根据业务需要，可以选择实现前台刷卡或者后�
 2. HCE应用的刷卡页面退出时，需要显式调用[stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9)来释放动态注册的AID刷卡配置项。
 - HCE应用后台刷卡<br>
 1. 在配置文件module.json5中，需要静态声明NFC读卡器选择的应用ID（AID）。根据业务选择， 选择声明的AID是属于Payment类型，还是Other类型。
-2. 如果选择Payment类型，该HCE应用会在系统设置页面的NFC"默认付款应用"里出现。用户必须选择该HCE应用作为默认支付应用后，才能实现后台刷卡功能。由于提供了默认支付应用的选项， 因此Payment类型的HCE应用，不会出现多个冲突的情况。
+2. 如果选择Payment类型，该HCE应用会在系统设置页面的NFC"默认付款应用"里出现。用户选择该HCE应用作为默认支付应用后，可实现后台无冲突刷卡功能。由于提供了默认支付应用的选项， 因此Payment类型的HCE应用，不会出现多个冲突的情况。
 3. 如果选择Other类型，该HCE应用不会出现在系统设置页面的NFC"默认付款应用"里，但是多个HCE应用如果都声明了相同的Other类型的AID时，会出现冲突的可能。
 4. HCE应用后台刷卡的实现，不需要调用接口start和stop。
 5. HCE应用后台刷卡建议使用单独专用的HceAbility实现，以减少[onCreate](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)函数耗时。
@@ -110,7 +110,7 @@ HCE应用开发者根据业务需要，可以选择实现前台刷卡或者后�
 ```
 
 ```ts
-import { cardEmulation } from '@kit.ConnectivityKit';
+import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
@@ -144,7 +144,11 @@ export default class EntryAbility extends UIAbility {
 
     // 判断设备是否支持NFC能力和HCE能力
     if (!canIUse("SystemCapability.Communication.NFC.Core")) {
-      hilog.error(0x0000, 'testTag', 'nfc unavailable.');
+      hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
+      return;
+    }
+    if (!nfcController.isNfcSupported()) {
+      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
       return;
     }
     if (!cardEmulation.hasHceCapability()) {
@@ -249,7 +253,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ```ts
-import { cardEmulation } from '@kit.ConnectivityKit';
+import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
@@ -286,14 +290,17 @@ export default class HceUIAbility extends UIAbility {
 
     // 判断设备是否支持NFC能力和HCE能力
     if (!canIUse("SystemCapability.Communication.NFC.Core")) {
-      hilog.error(0x0000, 'testTag', 'nfc unavailable.');
+      hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
+      return;
+    }
+    if (!nfcController.isNfcSupported()) {
+      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
       return;
     }
     if (!cardEmulation.hasHceCapability()) {
       hilog.error(0x0000, 'testTag', 'hce unavailable.');
       return;
     }
-
     // 应用程序被运行到前台时，订阅HCE刷卡数据的接收
     hceService = new cardEmulation.HceService();
     // hceService.on同步执行，不能异步执行，以免影响HCE通信时序
@@ -307,7 +314,7 @@ export default class HceUIAbility extends UIAbility {
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-    // 退出应用程序，取消订阅接受HCE刷卡数据
+    // 退出应用程序，取消订阅接收HCE刷卡数据
     hceService.off('hceCmd', hceCommandCb);
   }
 }
@@ -346,7 +353,7 @@ export default class HceUIAbility extends UIAbility {
               "ohos.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"
             ]
           }
-        ]
+        ],
         // 根据业务需要至少定义一个Payment类型的AID，可以定义多个
         "metadata": [
           {
@@ -361,3 +368,13 @@ export default class HceUIAbility extends UIAbility {
       }
     ]
 ```
+
+## 常见问题
+
+### HCE卡模拟对模拟卡的类型有什么约束
+
+无约束，HCE可模拟任意类型的卡。
+
+### 默认付款应用为什么会切换
+
+使用HCE刷卡时，需进入系统设置将默认付款应用设置为该HCE应用。部分应用（如华为钱包）切换到前台时会检测当前默认付款应用是否为本应用，若检测不一致，将弹窗提示用户是否将默认付款应用切换至本应用，用户点击确认后，应用会调用系统接口完成默认付款应用的切换。

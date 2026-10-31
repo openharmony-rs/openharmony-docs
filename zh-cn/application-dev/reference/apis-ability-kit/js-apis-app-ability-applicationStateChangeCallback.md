@@ -8,7 +8,7 @@
 
 本模块用于监听当前应用进程的状态变化。为了便于表述，下文中将“应用进程”简称为“进程”。
 
-开发者可调用[ApplicationContext.on('applicationStateChange')](js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)方法传入自定义ApplicationStateChangeCallback来监听当前进程的前后台状态变化，从而根据进程前后台状态变化来执行某些操作。例如，统计进程前后台时长、或者当进程退到后台时清理内存缓存。
+开发者可调用[ApplicationContext.on('applicationStateChange')](js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)方法传入自定义ApplicationStateChangeCallback来监听当前进程的前后台状态变化，并执行相应操作。例如，统计进程前后台时长、或者当进程退到后台时清理内存缓存。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@
 >**说明**
 >
 > 进程的前后台状态不同于应用的前后台状态，两者的差别如下：
->- 进程的前后台状态：如果进程中存在任何前台状态的UIAbility/UIExtensionAbility或可见窗口，则认为进程状态为前台，反之为后台。
+>- 进程的前后台状态：如果进程中存在任何前台状态的[UIAbility](js-apis-app-ability-uiAbility.md)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)或可见窗口，则认为进程状态为前台，反之为后台。
 >- 应用的前后台状态：如果应用下有任何一个进程状态为前台，则认为应用状态为前台，反之为后台。
 
 ## 导入模块

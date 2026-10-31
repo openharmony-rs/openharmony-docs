@@ -6,10 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a27fe9fcb9698d710b4ee8875dc73cdcfac03c3 translatedAt=2026-09-14T02:00:42.603Z pushedAt=2026-09-14T12:21:49.052Z -->
 
 ## Overview
 
-Provides APIs for signature verification.
+Describes the APIs provided by OpenHarmony for signature verification.
 
 **Since**: 12
 
@@ -17,4 +18,4 @@ Provides APIs for signature verification.
 
 | Name| Description|
 | -- | -- |
-| [crypto_signature.h](capi-crypto-signature-h.md) | Defines APIs for signature verification.|
+| [crypto_signature.h](capi-crypto-signature-h.md) | Defines APIs for signature verification. |

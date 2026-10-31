@@ -1,9 +1,9 @@
 # 自定义字体的注册和使用（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
@@ -24,11 +24,11 @@
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| OH_Drawing_CreateSharedFontCollection (void) | 创建可共享的字体集对象OH_Drawing_FontCollection。 | 
-| OH_Drawing_RegisterFont (OH_Drawing_FontCollection\* , const char\* fontFamily, const char\* familySrc ) | 用于在字体管理器中注册自定义字体，支持的字体文件格式包含：ttf、otf。 | 
+| OH_Drawing_CreateSharedFontCollection(void) | 创建可共享的字体集对象OH_Drawing_FontCollection。 | 
+| OH_Drawing_RegisterFont(OH_Drawing_FontCollection\* fontCollection, const char\* fontFamily, const char\* familySrc) | 用于在字体管理器中注册自定义字体，支持的字体文件格式包含：ttf、otf。 |
 | OH_Drawing_CreateTextStyle(void) | 创建指向OH_Drawing_TextStyle对象的指针，用于设置文本样式。 | 
-| OH_Drawing_SetTextStyleFontFamilies (OH_Drawing_TextStyle \*, int, const char \*fontFamilies[]) | 设置字体类型。 | 
-| OH_Drawing_UnregisterFont (OH_Drawing_FontCollection\* , const char\* fontFamily) | 通过字体家族名称取消注册自定义字体。 | 
+| OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle\* style, int fontFamiliesNumber, const char \*fontFamilies[]) | 设置指定文本样式的字体家族类型。 |
+| OH_Drawing_UnregisterFont(OH_Drawing_FontCollection\* fontCollection, const char\* fontFamily) | 通过字体家族名称取消注册自定义字体。 | 
 
 ## 开发步骤
 1. 在工程的`src/main/cpp/CMakeLists.txt`文件中添加以下lib。
@@ -81,13 +81,17 @@
 
    0表示注册成功，1表示文件不存在，2表示打开文件失败，3表示读取文件失败，4表示寻找文件失败，5表示获取大小失败，9表示文件损坏。
 
-   <!-- @[custom_font_c_custom_font_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_custom_font_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
-   // 返回0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，9文件损坏
    int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
+   // 0表示注册成功，非0表示注册失败，失败时打印错误码并释放字体集对象后返回
+   if (errorCode != 0) {
+       DRAWING_LOGE("OH_Drawing_RegisterFont failed, errorCode: %{public}d", errorCode);
+       OH_Drawing_DestroyFontCollection(fontCollection);
+       return;
+   }
    ```
-
 6. 确保自定义字体注册成功后，使用OH_Drawing_CreateTextStyle()接口创建文本样式对象，并使用OH_Drawing_SetTextStyleFontFamilies()接口加入自定义字体。
 
    <!-- @[custom_font_c_custom_font_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
@@ -101,7 +105,7 @@
 
 7. 生成最终段落文本，使用自定义字体，以便实现最终的文本绘制和显示。
 
-   <!-- @[custom_font_c_custom_font_text_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_custom_font_text_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    // 设置其他文本样式
@@ -125,11 +129,14 @@
    OH_Drawing_TypographyLayout(typography, maxWidth);
    // 将文本绘制到画布(0,100)上
    OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 100);
+   // 释放段落对象和段落生成器
+   OH_Drawing_DestroyTypography(typography);
+   OH_Drawing_DestroyTypographyHandler(handler);
    ```
 
 8. 如果需要释放自定义字体，可以使用OH_Drawing_UnregisterFont接口。
 
-   <!-- @[custom_font_c_custom_font_text_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_custom_font_text_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    // 注销对应的自定义字体
@@ -145,4 +152,10 @@
    OH_Drawing_TypographyLayout(typography1, maxWidth);
    // 将文本绘制到画布(0,300)上
    OH_Drawing_TypographyPaint(typography1, cCanvas_, 0, 300);
+   // 释放内存
+   OH_Drawing_DestroyTypography(typography1);
+   OH_Drawing_DestroyTypographyHandler(handler1);
+   OH_Drawing_DestroyTypographyStyle(typographyStyle);
+   OH_Drawing_DestroyTextStyle(textStyle);
+   OH_Drawing_DestroyFontCollection(fontCollection);
    ```

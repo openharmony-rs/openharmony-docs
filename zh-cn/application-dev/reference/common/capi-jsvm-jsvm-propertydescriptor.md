@@ -1,10 +1,10 @@
 # JSVM_PropertyDescriptor
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ```c
 typedef struct {...} JSVM_PropertyDescriptor
@@ -13,6 +13,8 @@ typedef struct {...} JSVM_PropertyDescriptor
 ## 概述
 
 属性描述符。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 

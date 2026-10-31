@@ -48,7 +48,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 
 LiveFormExtensionContext是LiveFormExtensionAbility的上下文环境。
 
-### connectServiceExtensionAbility<sup>21+<sup>
+### connectServiceExtensionAbility<sup>21+</sup>
 
 connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
 
@@ -173,7 +173,7 @@ struct MyLiveFormPage {
 }
 ```
 
-### disconnectServiceExtensionAbility<sup>21+<sup>
+### disconnectServiceExtensionAbility<sup>21+</sup>
 
 disconnectServiceExtensionAbility(connectionId: number): Promise\<void>
 
@@ -251,19 +251,18 @@ struct MyLiveFormPage {
   private async disconnectServiceExtensionAbility(): Promise<void> {
     // connection为连接id，通常为connectServiceExtensionAbility接口的返回值，请开发者替换为实际取消连接的id值
     let connection = 1;
-    let commRemote: rpc.IRemoteObject | null;
-
+    //注意：应在connectServiceExtensionAbility连接成功时保存IRemoteObject对象
+    //断开连接后，将保存的IRemoteObject对象置空
     try {
       await this.liveFormContext?.disconnectServiceExtensionAbility(connection);
       // 执行正常业务
       console.info('disconnectServiceExtensionAbility succeed');
+      //将连接成功时保存的IRemoteObject对象置空，例如：this.savedRemoteObject = null;
     } catch (err) {
       // 处理错误异常
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
       console.error(`disconnectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
-    } finally {
-      commRemote = null;
     }
   }
 

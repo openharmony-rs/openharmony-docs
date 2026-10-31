@@ -1,14 +1,15 @@
 # Low-Latency Audio Recording (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d55c5f62f740ed238efabe694bb55cba967e3150 translatedAt=2026-10-22T02:39:12.209Z pushedAt=2026-10-22T03:39:27.284Z nl=1 -->
 
 Starting from API version 10, low-latency audio recording is available.
 
-Low-latency audio recording is an audio rendering solution that leverages software-hardware-chip synergy. By reducing buffer sizes and optimizing the data read/write architecture, this mode delivers significantly lower audio recording latency.
+Low-latency audio recording is an audio capture solution implemented through software-hardware co-design. Its core mechanism reduces the buffer size and optimizes the data read/write architecture, so that audio recording in this mode has lower latency.
 
 ## Prerequisites
 
@@ -21,7 +22,7 @@ Low-latency audio recording is an audio rendering solution that leverages softwa
 
 ### Overview
 
-To use the low-latency mode, you need to develop audio recording by referring to [[Recommended] Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md).
+To use the low-latency mode, you need to develop audio recording by referring to [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md).
 
 Currently, OHAudio supports two modes: normal mode (**AUDIOSTREAM_LATENCY_MODE_NORMAL**) and low-latency mode (**AUDIOSTREAM_LATENCY_MODE_FAST**).
 
@@ -53,7 +54,7 @@ The system uses the normal mode under the following conditions, even if the low-
 
 Starting from API version 20, low-latency query APIs are available:
 - You can call [OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus) to check whether the audio recording stream is operating in low-latency mode.
-- - In special scenarios (for example, a higher-priority stream is active or the current device does not support the low-latency mode), you can call [OH_AudioCapturer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange) to subscribe to low-latency status change events.
+- In certain special scenarios (for example, when a higher-priority stream exists or the currently connected device does not support the mode), you can call [OH_AudioCapturer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange) to obtain low-latency status change events.
 
 
 ### Recommended Use Cases
@@ -102,3 +103,4 @@ int32_t MyOnReadData_Legacy(
     > **NOTE**
     >
     > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioCapturer_Stop** generally takes more than 50 ms). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
+

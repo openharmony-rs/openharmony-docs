@@ -19,13 +19,13 @@ import { formBindingData } from '@kit.FormKit';
 
 ## FormBindingData
 
-FormBindingData相关描述。
+FormBindingData提供卡片数据绑定的能力，用于存储卡片需要展示的数据。
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称 | 类型 | 只读 | 可选| 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- |-------- | -------- | -------- |
-| data | Object | 否 |否 | js卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。|
+| data | Object | 否 |否 | JS卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。|
 
 
 ## formBindingData.createFormBindingData
@@ -64,20 +64,25 @@ struct Index {
   pathDir: string = this.content.filesDir;
 
   createFormBindingData() {
+    let filePath = this.pathDir + "/form.png";
+    let fd: number = -1;
     try {
-      let filePath = this.pathDir + "/form.png";
-      let file = fileIo.openSync(filePath);
+      fd = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
       let formImagesParam: Record<string, number> = {
-        'image': file.fd
+        'image': fd
       };
       let createFormBindingDataParam: Record<string, string | Record<string, number>> = {
         'name': '21°',
         'imgSrc': 'image',
         'formImages': formImagesParam
       };
-      formBindingData.createFormBindingData(createFormBindingDataParam);
+      let formBindingDataObj = formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
-      console.error(`catch error, error: ${JSON.stringify(error)}`);
+      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    } finally {
+      if (fd !== -1) {
+        fileIo.closeSync(fd);
+      }
     }
   }
 

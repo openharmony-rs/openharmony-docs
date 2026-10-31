@@ -1,10 +1,18 @@
-# 长时任务开发指导（TaskPool）
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供使用TaskPool开发长时任务的指导：以定期采集传感器数据为例，演示长时任务（LongTask）的创建、执行与结果获取，任务长时间运行也不会因超时被终止，避免阻塞UI主线程。"
+keywords: [长时任务, LongTask, TaskPool, 传感器数据采集, 定期采集, 任务监听, 后台执行]
+doctype: guide
+status: active
+---
+
+# 长时任务开发指导 (TaskPool)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 此处提供使用TaskPool进行长时任务的开发指导，以定期采集传感器数据为例。
 
@@ -38,7 +46,7 @@
    }
    ```
 
-3. 给sensor添加ohos.permission.ACCELEROMETER权限。
+3. 给应用添加ohos.permission.ACCELEROMETER权限，在module.json5中的"module"字段中添加如下代码示例的"requestPermissions"字段，配置相关权限。
 
    ```json
    "requestPermissions": [
@@ -87,14 +95,14 @@
              this.sensorTask = new taskpool.LongTask(sensorListener);
              emitter.on({ eventId: 0 }, (data) => {
                // Do something here
-               console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}`);
+               console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
              });
              taskpool.execute(this.sensorTask).then(() => {
+               this.addListener = 'success';
                console.info('Add listener of ACCELEROMETER success');
              }).catch((e: BusinessError) => {
-               // Process error
+               this.addListener = 'failed';
              })
-             this.addListener = 'success';
            })
          Text(this.deleteListener)
            .id('Delete listener')
@@ -105,10 +113,11 @@
              emitter.off(0);
              if (this.sensorTask != undefined) {
                taskpool.terminateTask(this.sensorTask);
+               this.deleteListener = 'success';
              } else {
                console.error('sensorTask is undefined.');
+               this.deleteListener = 'failed';
              }
-             this.deleteListener = 'success';
            })
        }
        .height('100%')

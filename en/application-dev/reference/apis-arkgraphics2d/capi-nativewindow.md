@@ -1,13 +1,16 @@
 # NativeWindow
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=094ced2c1714888f81b48ee277d1e52615f35dc2 translatedAt=2026-08-24T09:17:49.784Z pushedAt=2026-08-31T11:57:41.117Z -->
+
 ## Overview
 
-The **NativeWindow** module provides the **NativeWindow** capability for connection to the EGL.
+Provides the NativeWindow capability. As a data producer, it can be used to interface with EGL.
 
 **Since**: 8
 

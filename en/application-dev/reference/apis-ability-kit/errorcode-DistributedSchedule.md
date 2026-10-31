@@ -4,7 +4,8 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=12692091655ba228529ead0007e1919066cc3dae translatedAt=2026-09-03T09:22:35.350Z pushedAt=2026-09-05T10:47:30.163Z -->
 
 > **NOTE**
 >
@@ -23,8 +24,8 @@ This error code is reported when the system ability is abnormal.
 **Possible Causes**
 
 The possible causes are as follows:
-1. The DMS service is not started.
-2. The binder object of DMS is not obtained.
+1. The distributed component management service is not started.
+2. The binder object of the distributed component management service is not obtained.
 3. Other services on which ability continuation depends are not started or the binder object is not obtained.
 
 **Solution**
@@ -98,8 +99,8 @@ This error code is reported when the system ability is abnormal.
 **Possible Causes**
 
 The possible causes are as follows:
-1. The DMS service is not started.
-2. The binder object of DMS is not obtained.
+1. The distributed component management service is not started.
+2. The binder object of the distributed component management service is not obtained.
 3. Other services on which ability continuation depends are not started or the binder object is not obtained.
 
 **Solution**
@@ -267,7 +268,7 @@ This error code is reported when the **continuationManager.on** API is called wi
 
 **Possible Causes**
 
-The specified callback has been registered.
+This error code is reported because the specified callback has already been registered.
 
 **Solution**
 

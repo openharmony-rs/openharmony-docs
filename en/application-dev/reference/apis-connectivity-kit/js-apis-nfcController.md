@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=7c8fef43781ee9f20350e0279f7b09b2d9d8cc94 translatedAt=2026-10-29T12:20:11.143Z pushedAt=2026-10-30T07:30:14.732Z nl=1 -->
 
 The **nfcController** module provides APIs for opening and closing Near-Field Communication (NFC) and reading the NFC state.
 
@@ -41,7 +42,7 @@ isNfcAvailable(): boolean
 Checks whether the device supports NFC.
 
 > **NOTE**
-> This API is supported since API version 7 and deprecated since API version 9. Use [canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse) instead.
+> This API is supported since API version 7 and deprecated since API version 9. For versions earlier than API version 26, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap-ndk-8h.md#caniuse) and **nfcController.isNfcAvailable** to determine whether the device supports NFC. For API version 26 and later, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap-ndk-8h.md#caniuse) and [nfcController.isNfcSupported](#nfccontrollerisnfcsupported) instead.
 
 **System capability**: SystemCapability.Communication.NFC.Core
 
@@ -51,6 +52,23 @@ Checks whether the device supports NFC.
 | -------- | -------- |
 | boolean | Returns **true** if the device supports NFC; returns **false** otherwise.|
 
+## nfcController.isNfcSupported
+
+isNfcSupported(): boolean
+
+Checks whether the device supports NFC.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NFC.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| **Type**| **Description**|
+| -------- | -------- |
+| boolean | Returns **true** if the device supports NFC; returns **false** otherwise.|
 
 ## nfcController.openNfc<sup>(deprecated)</sup>
 
@@ -91,6 +109,9 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 |801 | Capability not supported.          |
 | 3100101 | The NFC state is abnormal in the service. |
 
+**Example**
+See the sample code in [off](#nfccontrolleroffnfcstatechange).
+
 ## nfcController.closeNfc<sup>(deprecated)</sup>
 
 closeNfc(): boolean
@@ -130,6 +151,9 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 |801 | Capability not supported.          |
 | 3100101 | The NFC state is abnormal in the service. |
 
+**Example**
+See the sample code in [off](#nfccontrolleroffnfcstatechange).
+
 ## nfcController.isNfcOpen
 
 isNfcOpen(): boolean
@@ -145,6 +169,9 @@ Checks whether NFC is open.
 | **Type**| **Description**                           |
 | -------- | ----------------------------------- |
 | boolean  | Returns **true** if NFC is open; returns **false** otherwise.|
+
+**Example**
+See the sample code in [off](#nfccontrolleroffnfcstatechange).
 
 ## nfcController.getNfcState
 
@@ -162,6 +189,16 @@ Obtains the NFC state.
 | -------- | ---------------------- |
 | [NfcState](#nfcstate) | NFC state obtained. For details, see [NfcState](#nfcstate).|
 
+**Example**
+
+```js
+import { nfcController } from '@kit.ConnectivityKit';
+
+// Obtain the NFC state.
+let nfcState: nfcController.NfcState = nfcController.getNfcState();
+console.info("nfcController on callback nfcstate: " + nfcState);
+```
+
 ## nfcController.on('nfcStateChange')
 
 on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): void
@@ -176,8 +213,11 @@ Enables listening for NFC state changes. This API uses an asynchronous callback 
  
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type. The value is **nfcStateChange**.|
+| type | string | Yes | The value is **nfcStateChange**. |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | Yes| Callback used to return the NFC state.|
+
+**Example**
+See the sample code in [off](#nfccontrolleroffnfcstatechange).
 
 ## nfcController.off('nfcStateChange')
 
@@ -193,7 +233,7 @@ Unsubscribes from the NFC state changes. Upon successful unsubscription, the sub
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type. The value is **nfcStateChange**.|
+| type | string | Yes | The value is **nfcStateChange**. |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | No| Callback for the NFC state changes. This parameter can be left blank. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
   
 **Example**
@@ -202,7 +242,7 @@ Unsubscribes from the NFC state changes. Upon successful unsubscription, the sub
 import { nfcController } from '@kit.ConnectivityKit';
 
 // Register a callback for NFC status change events.
-nfcController.on("nfcStateChange", (nfcState : number)=> {
+nfcController.on('nfcStateChange', (nfcState: number) => {
   console.info("nfcController on callback nfcState: " + nfcState);
 });
 
@@ -233,5 +273,5 @@ if (nfcController.isNfcOpen()) {
 }
 
 // Unregister the callback for NFC status change events.
-nfcController.off("nfcStateChange");
+nfcController.off('nfcStateChange');
 ```

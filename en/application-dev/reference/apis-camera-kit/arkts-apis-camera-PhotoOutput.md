@@ -1,10 +1,12 @@
 # Interface (PhotoOutput)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=9884c11e07b730764c848043431a12325c5de509 translatedAt=2026-08-20T09:34:50.600Z pushedAt=2026-08-21T02:04:59.873Z -->
 
 PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -362,7 +364,7 @@ function unRegisterCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOut
 
 on(type: 'captureStartWithInfo', callback: AsyncCallback\<CaptureStartInfo\>): void
 
-Subscribes to capture start events. This API uses an asynchronous callback to return the result.
+Subscribes to capture start events. This API uses an asynchronous callback to return the [capture start ID](arkts-apis-camera-i.md#capturestartinfo11).
 
 > **NOTE**
 >
@@ -629,7 +631,6 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | 7400103  | Session not config.                    |
 | 7400201  | Camera service fatal error.            |
 
-
 **Example**
 
 ```ts
@@ -684,6 +685,8 @@ function getSupportedMovingPhotoVideoCodecType(photoOutput: camera.PhotoOutput):
 setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 Sets a video codec type for moving photos.
+
+Before setting the codec type, you can call [getSupportedMovingPhotoVideoCodecTypes](#getsupportedmovingphotovideocodectypes13) to query the video codec types supported by the device.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1137,7 +1140,8 @@ getPhotoRotation(deviceDegree?: number): ImageRotation
 
 Obtains the photo rotation angle.
 
-- Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+- Device's natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1164,6 +1168,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID  | Error Message                        |
 |---------|------------------------------|
+| 7400101 | Parameter missing or parameter type incorrect.<br>Applicable versions: 12-22  |
 | 7400201 | Camera service fatal error.  |
 
 **Example**
@@ -1355,6 +1360,92 @@ function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualit
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setPhotoQualityPrioritization call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## isAutoExtendedGainmapDeliverySupported
+
+isAutoExtendedGainmapDeliverySupported(): boolean
+
+Checks whether the delivery of an automatically extended gain map is supported.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type            | Description                     |
+| -------------- | ----------------------- |
+| boolean | Whether the delivery of an automatically extended gain map is supported. **true** if supported, and **false** otherwise. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function isAutoExtendedGainmapDeliverySupported(photoOutput: camera.PhotoOutput): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isAutoExtendedGainmapDeliverySupported();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The isAutoExtendedGainmapDeliverySupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## enableAutoExtendedGainmapDelivery
+
+enableAutoExtendedGainmapDelivery(enabled: boolean): void
+
+Enables or disables automatic extended gain map delivery.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name      | Type                    | Mandatory | Description                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| enabled  | boolean                | Yes   | Whether to enable the delivery of an automatically extended gain map. The value **true** indicates it is enabled, and the value **false** indicates it is disabled.     |
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID    | Error Message                                           |
+| -------- |------------------------------------------------|
+| 7400102  | Operation not allowed. |
+| 7400103  | Session not config, only throw in session usage. |
+| 7400201  | Camera service fatal error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function enableAutoExtendedGainmapDelivery(photoOutput: camera.PhotoOutput): void {
+  try {
+    photoOutput.enableAutoExtendedGainmapDelivery(true);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The enableAutoExtendedGainmapDelivery call failed. error code: ${err.code}`);
   }
 }
 ```

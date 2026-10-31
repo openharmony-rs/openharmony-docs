@@ -64,6 +64,7 @@ libnet_connection.so
 #include "napi/native_api.h"
 #include "network/netmanager/net_connection.h"
 #include "network/netmanager/net_connection_type.h"
+#include "hilog/log.h"
 ```
 ### 构建工程
 
@@ -83,7 +84,7 @@ libnet_connection.so
        napi_get_value_int32(env, args[0], &param); // 从 args[0] 获取整数值并存储到 param 中
        
        NetConn_NetHandle netHandle;
-       if (param == 0) { // 如果参数是0
+       if (param == 0) { // 如果参数是0，传入NULL用于演示参数错误场景，接口将返回401
            param = OH_NetConn_GetDefaultNet(NULL);
        } else {
            param = OH_NetConn_GetDefaultNet(&netHandle);
@@ -176,30 +177,35 @@ libnet_connection.so
    struct Index {
      @State message: string = ''; // 用于展示日志消息
      // ...
-   
      build() {
-       Column() { // 显示 Logger 输出的日志
-         // ...
-         Text(this.message)
-           .fontSize(16)
-           .fontColor(Color.Black)
-           .margin({ bottom: 10 })
-           .id('test-message') // 为测试消息设置 ID，便于测试获取内容
-   
-         Button($r('app.string.GetDefaultNet'))
-           .onClick(() => {
-             this.GetDefaultNet();
-           })
+       Scroll() {
+         Column() { // 显示 Logger 输出的日志
+           // ...
+           Text(this.message)
+             .fontSize(16)
+             .fontColor('#333333')
+             .margin({ bottom: 10 })
+             .id('test-message')
+           Button($r('app.string.GetDefaultNet'))
+             .onClick(() => {
+               this.GetDefaultNet();
+             })
              // ...
-   
-         Button($r('app.string.CodeNumber'))
-           .onClick(() => {
-             this.CodeNumber();
-           })
+           Button($r('app.string.CodeNumber'))
+             .onClick(() => {
+               this.CodeNumber();
+             })
              // ...
-       }.width('100%').height('100%').justifyContent(FlexAlign.Center);
+         }
+         .width('100%')
+         .justifyContent(FlexAlign.Start)
+       }
+       .width('100%')
+       .height('100%')
+       .scrollable(ScrollDirection.Vertical)
+       .scrollBar(BarState.Auto)
+       .backgroundColor('#F5F5F5')
      }
-     
      GetDefaultNet() {
        let netId = testNetManager.NetId();
        // ...
@@ -208,6 +214,7 @@ libnet_connection.so
      }
    
      CodeNumber() {
+       // 非0表示传入有效的netHandle指针；0表示传入NULL，用于演示参数错误（401）
        let testParam = 1;
        // ...
          let codeNumber = testNetManager.GetDefaultNet(testParam);
@@ -229,8 +236,9 @@ libnet_connection.so
              // ...
              break;
          }
-       // ...
+         // ...
      }
+   
      // ...
    }
    ```

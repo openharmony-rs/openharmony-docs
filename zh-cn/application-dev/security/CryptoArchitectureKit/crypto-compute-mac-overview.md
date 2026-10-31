@@ -1,4 +1,4 @@
-# 消息认证码计算介绍及算法规格
+# 消息认证码计算
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-MAC（Message Authentication Code，消息认证码）可以对消息进行完整性校验，通过使用双方共享的密钥，识别出信息伪装篡改等行为。
+MAC（Message Authentication Code，消息认证码）可以对消息进行完整性校验，通过使用双方共享的密钥，识别出信息伪装、篡改等行为。
 
 接下来将说明系统目前支持的算法及其对应的规格。
 
@@ -33,9 +33,9 @@ HMAC通过指定的摘要算法，以通信双方共享的密钥和消息作为�
 
 ## CMAC
 
-‌CMAC（Cipher-based Message Authentication Code）是一种基于密码的消息认证码算法，主要用于确保消息的完整性和真实性。
+CMAC（Cipher-based Message Authentication Code）是一种基于密码的消息认证码算法，主要用于确保消息的完整性和真实性。
 
-CMAC通过使用分组密码（如AES）和一个密钥来生成消息认证码，确保消息在传输过程中未被篡改‌。
+CMAC通过使用分组密码（如AES）和一个密钥来生成消息认证码，确保消息在传输过程中未被篡改。
 
 | 加密算法 | API版本 |
 | -------- | -------- |

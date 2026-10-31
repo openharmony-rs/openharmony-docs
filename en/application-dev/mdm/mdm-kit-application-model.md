@@ -1,10 +1,11 @@
 # App Model
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=83d6beb8f3cf1e754bb3202a677b6894be2473ec translatedAt=2026-10-30T03:21:54.371Z pushedAt=2026-10-30T03:21:54.371Z nl=1 -->
 
 ## Overview
 
@@ -12,11 +13,11 @@ An app model is the abstraction of capabilities required by an app. It provides 
 
 ## About EnterpriseAdminExtensionAbility
 
-[EnterpriseAdminExtensionAbility](./mdm-kit-term.md#enterpriseadminextensionability) is a mandatory component for [MDM apps](./mdm-kit-term.md#mdm-application-device-administrator-application). You need to define an [EnterpriseAdminExtensionAbility](../reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)-type [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) component to activate an MDM app. Once activated, this component runs as an independent background process.
+[EnterpriseAdminExtensionAbility](./mdm-kit-term.md#enterpriseadminextensionability) is a mandatory component for [MDM apps](./mdm-kit-term.md#mdm-app). You need to define an [EnterpriseAdminExtensionAbility](../reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)-type [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) component to activate an MDM app. Once activated, this component runs as an independent background process.
 
 ### Process Model
 
-The [process model](../application-models/process-model-stage.md#process-model) of an MDM app inherits from that of a regular app. Building on the regular app model, an MDM app includes an additional independent **EnterpriseAdmin** process. When the **EnterpriseAdminExtensionAbility** component of the MDM app is activated, the **EnterpriseAdmin** process is created. As the background process of the device administrator app, the **EnterpriseAdmin** process is used to receive callbacks for events such as MDM app activation and deactivation. The lifecycle of the **EnterpriseAdmin** process is independent of the main process and is managed by the system instead. The way the **EnterpriseAdmin** process lifecycle is [managed](#enterpriseadminextensionability-capability-differences-after-activation) varies based on how the **EnterpriseAdminExtensionAbility** component is activated.
+The process model of an MDM app inherits from the [process model](../application-models/process-model-stage.md#process-model) of a regular app. Building on the regular app model, an MDM app includes an additional independent **EnterpriseAdmin** process. When the **EnterpriseAdminExtensionAbility** component of the MDM app is activated, the **EnterpriseAdmin** process is created. As the background process of the device administrator app, the **EnterpriseAdmin** process receives callbacks for events such as MDM app activation and deactivation. Its lifecycle is independent of the main process and is managed by the system. The way the **EnterpriseAdmin** process lifecycle is [managed](#enterpriseadminextensionability-capability-differences-after-activation) varies based on how the component is activated.
 
 **Figure 1** MDM app process model
 
@@ -24,7 +25,7 @@ The [process model](../application-models/process-model-stage.md#process-model) 
 
 ### EnterpriseAdmin Process Lifecycle
 
-Once activated, the **EnterpriseAdminExtensionAbility** component runs as an independent process with support for system state change callbacks. The **EnterpriseAdmin** process resides in a separate process from the app's main process, with its startup and shutdown governed by the [EDM](./mdm-kit-term.md#edm) service. It remains operational even when the app is running in the background.
+Once activated, the Admin component runs as an independent process with support for system state change callbacks. It runs separately from the app's main process, and its startup and shutdown are managed by the [EDM](./mdm-kit-term.md#enterprise-device-manager-edm) service. The Admin process can continue running when the app is in the background.
 
 **Figure 2** MDM app in foreground and activated state
 
@@ -57,14 +58,14 @@ The capabilities of the **EnterpriseAdminExtensionAbility** component vary depen
 | Feature                  | SDA                | DA                | BDA      |
 | ------------------------| --------------------| -------------------|------------ | 
 |Uninstallation prevention| Users are not allowed to uninstall the app.| By default, users can uninstall the app.| Uninstallation is prohibited.|
-| Permission to call MDM management APIs| All public management APIs are supported.| All public management APIs are supported.| Only the [restrictions.setDisallowedPolicy](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) and [restrictions.getDisallowedPolicy](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy) APIs are supported.|
+| Permission to call MDM management APIs| All public management APIs are supported.| All public management APIs are supported.| Supports APIs callable with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission.|
 | Number of supported roles| Up to 1| Up to 10| No limit|
 
 > **NOTE**
 >
-> 1. BDA and other [administrators](./mdm-kit-term.md#administrator) cannot coexist.
+> 1. BDA and other Admin roles cannot coexist.
 >
-> 2. The total number of SDAs and DAs cannot exceed 10.
+> 2. The total number of SDAs and DAs cannot exceed 10. An SDA can manage other DA apps by activating or deactivating them, whereas a DA can only control devices and cannot manage other DA apps. An MDM app activated as an SDA can activate other DA apps by calling [adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23), or deactivate them by calling [adminManager.disableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerdisabledeviceadmin23).
 
 ## Authorization Principles of Management APIs
 
@@ -72,8 +73,11 @@ The **EnterpriseAdminExtensionAbility** component of an MDM app can take effect 
 
 ### API Permission Verification Mechanism
 
-MDM management APIs verify access permissions via [ACL authorization](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) and also verify the activation status and activation type of the **EnterpriseAdminExtensionAbility** component. The preceding three conditions must be met when the MDM app invokes the MDM management APIs. Otherwise, the error code [9200001](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled), [201](../reference/errorcode-universal.md#201-permission-denied), or [9200002](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200002-permission-denied) is displayed.
+MDM management APIs verify access permissions through [ACL authorization](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism), and also verify the activation status and activation type of the Admin component. An MDM app must meet all three conditions when calling an MDM management API. Otherwise, the API returns error code [9200001](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled), [201](../reference/errorcode-universal.md#201-permission-denied), or [9200002](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200002-permission-denied).
 
 **Figure 6** EDM verification logic
 
 ![permission_check](./figures/permission_check.png)
+
+
+

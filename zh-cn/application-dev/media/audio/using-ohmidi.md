@@ -26,7 +26,7 @@ OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++
 
 ## 系统能力检查
 
-使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/init.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
+使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/syscap-ndk-8h.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
 
 ## 接口说明
 
@@ -93,14 +93,14 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 
 系统已定义[OH_MIDICallbacks](../../reference/apis-audio-kit/capi-ohmidi-oh-midicallbacks.md)结构体，开发者需要实现其中的回调函数：
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
-- onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑,如重新创建客户端。
+- onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑，如重新创建客户端。
 
 通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
 
-<!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
-// Create MIDI client
+// 创建MIDI客户端。
 static napi_value CreateMIDIClient(napi_env env, napi_callback_info info)
 {
     // ...
@@ -216,17 +216,17 @@ MIDI BLE设备可通过服务UUID `03B80E5A-EDE8-4B33-A751-6CE34EC4C700` 进行�
 
 通过[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口异步打开BLE MIDI设备，传入设备MAC地址和结果回调。
 
-<!-- @[open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
-// Open BLE device asynchronously
+// 异步打开BLE设备。
 static napi_value OpenBLEDevice(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    // Get device address
+    // 获取设备地址。
     size_t addrLen = 0;
     napi_get_value_string_utf8(env, args[0], nullptr, 0, &addrLen);
     std::string deviceAddr(addrLen, '\0');
@@ -266,7 +266,7 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 
 通过[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)接口关闭已打开的MIDI设备，释放设备资源。
 
-<!-- @[close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 static napi_value CloseDevice(napi_env env, napi_callback_info info)
@@ -336,12 +336,12 @@ static napi_value GetPortInfos(napi_env env, napi_callback_info info)
 
 通过[OH_MIDIDevice_OnReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)回调接收MIDI数据，回调中获取事件数组及其数据。
 
-<!-- @[midi_received_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[midi_received_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t eventCount)
 {
-    // userData指向InputPortContext
+    // userData指向InputPortContext。
     InputPortContext* context = static_cast<InputPortContext*>(userData);
     // ...
 }
@@ -349,7 +349,7 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 
 通过[OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)接口打开输入端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置端口参数，并注册数据接收回调。
 
-<!-- @[open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 static napi_value OpenInputPort(napi_env env, napi_callback_info info)
@@ -366,12 +366,12 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
         return result;
     }
 
-    // Construct port descriptor
+    // 构造端口描述符。
     OH_MIDIPortDescriptor descriptor;
     descriptor.portIndex = args.portIndex;
     descriptor.protocol = static_cast<OH_MIDIProtocol>(args.protocol);
 
-    // Create input port context for thread-safe callback handling
+    // 创建输入端口上下文，用于线程安全回调处理。
     auto context = std::make_shared<InputPortContext>(args.deviceId, args.portIndex);
 
     OH_MIDIStatusCode status = OH_MIDIDevice_OpenInputPort(it->second, descriptor, OnMIDIReceived, context.get());
@@ -383,10 +383,10 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 
 使用[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)接口关闭已打开的输入端口。关闭端口后，该端口将不再接收MIDI消息，注册的回调函数也将不再被调用。
 
-<!-- @[close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
-// Close input port
+// 关闭输入端口。
 static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
@@ -414,7 +414,7 @@ static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 
     OH_MIDIStatusCode status = OH_MIDIDevice_CloseInputPort(it->second, portIndex);
 
-    // Clean up input port context
+    // 清理输入端口上下文。
     auto key = std::make_pair(deviceId, portIndex);
     auto contextIt = g_inputPortContexts.find(key);
     if (contextIt != g_inputPortContexts.end()) {
@@ -431,7 +431,7 @@ static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 
 通过[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)接口打开输出端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置端口参数和协议。
 
-<!-- @[open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
@@ -446,7 +446,7 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
     uint32_t portIndex = 0;
     napi_get_value_uint32(env, args[1], &portIndex);
 
-    int32_t protocol = static_cast<int32_t>(MIDI_PROTOCOL_1_0); // Default to MIDI 1.0
+    int32_t protocol = static_cast<int32_t>(MIDI_PROTOCOL_1_0); // 默认使用MIDI 1.0协议。
     napi_get_value_int32(env, args[MIDI_ARG_INDEX_2], &protocol);
 
     OH_LOG_INFO(LOG_APP, "[OpenOutputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u, protocol=%{public}d",
@@ -475,10 +475,10 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 
 使用[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)接口关闭已打开的输出端口。关闭端口后，将无法再通过该端口发送MIDI消息。
 
-<!-- @[close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
-// Close output port
+// 关闭输出端口。
 static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
@@ -504,7 +504,7 @@ static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
         return result;
     }
     OH_MIDIStatusCode status = OH_MIDIDevice_CloseOutputPort(it->second, portIndex);
-    // Remove protocol info for this output port
+    // 移除此输出端口的协议信息。
     if (status == OH_MIDI_STATUS_OK) {
         auto key = std::make_pair(deviceId, portIndex);
         g_outputPortProtocols.erase(key);
@@ -521,7 +521,7 @@ static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
 
 构造[OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md)事件数组，通过[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送MIDI消息。
 
-<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 static napi_value SendMIDI(napi_env env, napi_callback_info info)
@@ -560,14 +560,8 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
 
     uint32_t eventsWritten = 0;
     OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
-    napi_create_object(env, &result);
-    napi_value statusValue;
-    napi_create_int32(env, static_cast<int32_t>(status), &statusValue);
-    napi_set_named_property(env, result, "status", statusValue);
-    napi_value writtenValue;
-    napi_create_uint32(env, eventsWritten, &writtenValue);
-    napi_set_named_property(env, result, "eventsWritten", writtenValue);
-    return result;
+    // ...
+}
 ```
 
 **UMP格式说明**
@@ -585,25 +579,25 @@ OH_MIDI强制使用UMP（Universal MIDI Packet）格式。常用的MIDI 1.0通�
 
 **常用MIDI消息UMP构造示例**
 
-<!-- @[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
-// Build MIDI 1.0 Note On UMP (32-bit, 1 word)
+// 构建MIDI 1.0音符开启UMP（一个32位无符号整数）。
 static void BuildMIDI1NoteOn(uint32_t channel, uint32_t note, uint32_t velocity, uint32_t* umpData)
 {
-    // UMP format: MT[31-28]=0x2, Group[27-24]=0x0, Status[23-20]=0x9
-    // Channel[19-16], Data1[15-8]=note, Data2[7-0]=velocity
+    // UMP格式（MIDI 1.0 Channel Voice - Note On）：第28~31位为消息类型(MT=0x2)，第24~27位为组号(Group=0x0)，
+    // 第20~23位为状态码(Status=0x9)，第16~19位为通道号(Channel)，第8~15位为音符号(Note)，第0~7位为力度值(Velocity)。
     umpData[0] = (MIDI_UMP_MT_1_0 << MIDI_UMP_WORDS_28) | (0x0 << MIDI_UMP_SHIFT_24) |
                  (MIDI_UMP_STATUS_NOTE_ON << MIDI_UMP_SHIFT_20) |
                  ((channel & MIDI_CHANNEL_MASK) << MIDI_UMP_WORDS_16) |
                  ((note & MIDI_NOTE_MASK) << MIDI_UMP_SHIFT_8) | (velocity & MIDI_NOTE_MASK);
 }
 
-// Build MIDI 1.0 Note Off UMP (32-bit, 1 word)
+// 构建MIDI 1.0音符关闭UMP（一个32位无符号整数）。
 static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity, uint32_t* umpData)
 {
-    // UMP format: MT[31-28]=0x2, Group[27-24]=0x0, Status[23-20]=0x8
-    // Channel[19-16], Data1[15-8]=note, Data2[7-0]=velocity
+    // UMP格式（MIDI 1.0 Channel Voice - Note Off）：第28~31位为消息类型(MT=0x2)，第24~27位为组号(Group=0x0)，
+    // 第20~23位为状态码(Status=0x8)，第16~19位为通道号(Channel)，第8~15位为音符号(Note)，第0~7位为力度值(Velocity)。
     umpData[0] = (MIDI_UMP_MT_1_0 << MIDI_UMP_WORDS_28) | (0x0 << MIDI_UMP_SHIFT_24) |
                  (MIDI_UMP_STATUS_NOTE_OFF << MIDI_UMP_SHIFT_20) |
                  ((channel & MIDI_CHANNEL_MASK) << MIDI_UMP_WORDS_16) |
@@ -624,13 +618,14 @@ static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity
 | 71 | Resonance | 共振 |
 | 74 | Filter Cutoff | 滤波器截止 |
 
-**发送系统专有消息(SysEx)**
+**发送系统独占消息(SysEx)**
 
-系统专有消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
+系统独占消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
 
 ``` C++
 // 发送大型SysEx消息。
-void SendSysExExample(OH_MIDIDevice *device, uint32_t outputPortIndex){
+void SendSysExExample(OH_MIDIDevice *device, uint32_t outputPortIndex)
+{
     // 构造SysEx数据。
     std::vector<uint8_t> sysexData;
     sysexData.push_back(0xF0);  // SysEx开始标志。

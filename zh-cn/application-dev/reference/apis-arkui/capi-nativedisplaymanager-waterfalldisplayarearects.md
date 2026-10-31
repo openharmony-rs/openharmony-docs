@@ -1,9 +1,9 @@
 # NativeDisplayManager_WaterfallDisplayAreaRects
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct {...} NativeDisplayManager_WaterfallDisplayAreaRects
 
 ## 概述
 
-瀑布屏曲面部分显示区域。
+瀑布屏曲面部分的不可用矩形区域集合。
 
 **起始版本：** 12
 

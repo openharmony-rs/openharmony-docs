@@ -39,6 +39,7 @@
   <!--Del-->
   - [@ohos.data.cloudData (端云服务)(系统接口)](js-apis-data-cloudData-sys.md)
   - [@ohos.data.cloudExtension (端云共享Extension)(系统接口)](js-apis-data-cloudExtension-sys.md)
+  - [@ohos.data.dataFabricAddress (地址数据捐赠)(系统接口)](js-apis-data-dataFabricAddress-sys.md)
   - [@ohos.data.dataShare (数据共享)(系统接口)](js-apis-data-dataShare-sys.md)
   - [@ohos.data.dataSharePredicates (数据共享谓词)(系统接口)](js-apis-data-dataSharePredicates-sys.md)
   - [@ohos.data.dataShareResultSet (数据共享结果集)(系统接口)](js-apis-data-DataShareResultSet-sys.md)
@@ -122,6 +123,7 @@
     - [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)
     - [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)
     - [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)
+    - [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
     - [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)
     - [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)
     - [OH_UdsHtml](capi-udmf-oh-udshtml.md)
@@ -140,4 +142,7 @@
   - [用户首选项错误码](errorcode-preferences.md)
   - [统一数据管理框架错误码](errorcode-udmf.md)
   - [智慧数据平台错误码](errorcode-intelligence.md)
+  <!--Del-->
+  - [地址数据捐赠错误码](errorcode-dataFabricAddress-sys.md)
+  <!--DelEnd-->
 

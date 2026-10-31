@@ -53,7 +53,7 @@ import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
-media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
@@ -63,7 +63,7 @@ media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AV
     };
     avMetadataExtractor.setUrlSource(url, headers);
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -80,7 +80,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（us）。 |
+| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
 
@@ -92,14 +92,14 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
 **示例：**
 
@@ -123,13 +123,13 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
-      pixelMap = pixelMap;
+    avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((fetchedPixelMap: image.PixelMap) => {
+      pixelMap = fetchedPixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code:${error.code} message:${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -169,7 +169,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400104  | Operation timeout. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. |
 
@@ -196,13 +196,13 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
-      pixelMap = pixelMap;
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((fetchedPixelMap: image.PixelMap | undefined) => {
+      pixelMap = fetchedPixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVMetadataExtractor, code: ${error.code}, message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code}, message: ${error.message}`);
   }
 });
 ```
@@ -233,7 +233,7 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -261,15 +261,16 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
+  let pixelMap: image.PixelMap | undefined = undefined;
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
-        console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+        console.error(`fetchFramesByTimes callback failed, code: ${err.code} message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        let pixelMap = frameInfo.image;
+        pixelMap = frameInfo.image;
       }});
   }
 }
@@ -334,15 +335,16 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
+  let pixelMap: image.PixelMap | undefined = undefined;
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+    avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
         console.error(`fetchFramesByTimes callback failed, code: ${err.code}, message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        let pixelMap = frameInfo.image;
+        pixelMap = frameInfo.image;
       }});
   }
 }
@@ -361,6 +363,7 @@ cancelAllFetchFrames(): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
@@ -371,7 +374,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.cancelAllFetchFrames();
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -388,7 +391,7 @@ fetchMetadata(callback: AsyncCallback\<AVMetadata>): void
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>       | 是   | 回调函数。异步返回音视频元数据对象（AVMetadata）。|
+| callback | AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>       | 是   | 回调函数。当获取媒体元数据成功，err为undefined，data为获取到的AVMetadata实例，否则为错误对象。|
 
 **错误码：**
 
@@ -398,7 +401,7 @@ fetchMetadata(callback: AsyncCallback\<AVMetadata>): void
 | -------- | ------------------------------------------ |
 | 5400102  | Operation not allowed. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback.  |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
 **示例：**
 
@@ -411,7 +414,7 @@ async function test() {
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   avMetadataExtractor.fetchMetadata((error: BusinessError, metadata: media.AVMetadata) => {
     if (error) {
-      console.error(`Failed to fetch Metadata, err = ${JSON.stringify(error)}`);
+      console.error(`Failed to fetch Metadata, code: ${error.code} message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
@@ -441,7 +444,7 @@ fetchMetadata(): Promise\<AVMetadata>
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400106  | Unsupported format. Returned by promise.  |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
 **示例：**
 
@@ -455,7 +458,7 @@ async function test() {
   avMetadataExtractor.fetchMetadata().then((metadata: media.AVMetadata) => {
     console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to fetch Metadata, error message:${error.message}`);
+    console.error(`Failed to fetch Metadata, code: ${error.code} message: ${error.message}`);
   });
 }
 ```
@@ -476,7 +479,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeoutMs | number | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未返回元数据则返回错误码5400104。|
+| timeoutMs | number | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未完成元数据获取操作，则返回操作超时错误码5400104。|
 
 **返回值：**
 
@@ -528,7 +531,7 @@ fetchAlbumCover(callback: AsyncCallback\<image.PixelMap>): void
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>    | 是   | 回调函数。异步返回专辑封面。 |
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>    | 是   | 回调函数。当获取音频专辑封面成功，err为undefined，data为获取到的PixelMap实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -536,7 +539,7 @@ fetchAlbumCover(callback: AsyncCallback\<image.PixelMap>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operation not allowed. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback.  |
 
 **示例：**
@@ -553,7 +556,7 @@ async function test() {
 
   avMetadataExtractor.fetchAlbumCover((error: BusinessError, pixelMap: image.PixelMap) => {
     if (error) {
-      console.error(`Failed to fetch AlbumCover, error = ${JSON.stringify(error)}`);
+      console.error(`Failed to fetch AlbumCover, code: ${error.code} message: ${error.message}`);
       return;
     }
     pixel_map = pixelMap;
@@ -565,7 +568,7 @@ async function test() {
 
 fetchAlbumCover(): Promise\<image.PixelMap>
 
-获取专辑封面。使用Promise异步回调。
+获取音频专辑封面。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -599,7 +602,7 @@ async function test() {
   avMetadataExtractor.fetchAlbumCover().then((pixelMap: image.PixelMap) => {
     pixel_map = pixelMap;
   }).catch((error: BusinessError) => {
-    console.error(`Failed to fetch AlbumCover, error message:${error.message}`);
+    console.error(`Failed to fetch AlbumCover, code:${error.code} message:${error.message}`);
   });
 }
 ```
@@ -637,7 +640,7 @@ async function test() {
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   avMetadataExtractor.release((error: BusinessError) => {
     if (error) {
-      console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+      console.error(`Failed to release, code: ${error.code} message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in releasing.`);
@@ -657,7 +660,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<void> | 异步方式释放资源release方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -676,10 +679,12 @@ import { media } from '@kit.MediaKit';
 async function test() {
   // 创建AVMetadataExtractor对象。
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-  avMetadataExtractor.release().then(() => {
-    console.info(`Succeeded in releasing.`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to release, error message:${error.message}`);
-  });
+  if (avMetadataExtractor) {
+    avMetadataExtractor.release().then(() => {
+      console.info(`Succeeded in releasing.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to release, code: ${error.code} message: ${error.message}`);
+    });
+  }
 }
 ```

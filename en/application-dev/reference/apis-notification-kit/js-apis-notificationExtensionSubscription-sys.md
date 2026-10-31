@@ -1,18 +1,19 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription) (System API)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
-<!--Designer: @dongqingran-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=523587af0396fce9af8dfb1a1fcd6595324a4b23 translatedAt=2026-10-28T11:25:22.103Z pushedAt=2026-10-28T12:15:40.124Z nl=1 -->
 
-The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/setting the notification authorization status.
+This module provides the capabilities for managing notification extensions, including opening the notification extension subscription settings page, subscribing to and unsubscribing from notification extensions, and obtaining and setting the [notification authorization](../../notification/notification-glossary.md#notification-authorization) status.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 22. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only the system APIs provided by the module. For details about its public APIs, see [notificationExtensionSubscription](./js-apis-notificationExtensionSubscription.md).
+> This topic describes only the system APIs provided by the module. For details about its public APIs, see [notificationExtensionSubscription](js-apis-notificationExtensionSubscription.md).
 
 ## Modules to Import
 
@@ -25,7 +26,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
-Obtains all applications that have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implemented [NotificationSubscriberExtensionAbility](./js-apis-notificationSubscriberExtensionAbility.md). This API uses a promise to return the result.
+Obtains all applications that have the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and have implemented [NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -35,9 +36,9 @@ Obtains all applications that have requested the [ohos.permission.SUBSCRIBE_NOTI
 
 **Return value**
 
-| Type    | Description       | 
+| Type    | Description       |
 | ------- |-----------|
-| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise used to return the applications that have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implemented [NotificationSubscriberExtensionAbility](./js-apis-notificationSubscriberExtensionAbility.md).       |
+| Promise\<[BundleOption[]](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise used to return the applications that have the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and have implemented [NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md).        |
 
 **Error codes**
 
@@ -56,7 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getAllSubscriptionBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getAllSubscriptionBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -76,7 +77,7 @@ Obtains the enabling state of the **Allow access to notifications on this device
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes  | Information about the target application. The application must have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implemented [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md). Otherwise, error code 1600022 is returned.|
+| targetBundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes   | Information about the target application. The application must have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and have implemented [NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md). Otherwise, error code 1600022 is returned.|
 
 **Return value**
 
@@ -111,7 +112,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
     console.info('GrantedState false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedState fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -131,8 +132,8 @@ Sets the enabling state of the **Allow access to notifications on this device** 
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes  | Information about the target application. The application must have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implemented [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md). Otherwise, error code 1600022 is returned.|
-| enable   | boolean | Yes  | Whether to enable the device notification access. The value **true** indicates that this functionality is enabled, and **false** indicates the opposite.|
+| targetBundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes   | Information about the target application. The application must have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and have implemented [NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md). Otherwise, error code 1600022 is returned. |
+| enabled   | boolean | Yes   | Whether to enable the device notification access. The value **true** indicates that this functionality is enabled, and **false** indicates the opposite. |
 
 **Return value**
 
@@ -157,13 +158,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
-  // Use the actual target application information.
+  // Change to the target application information that the developer needs to set.
   bundle: 'com.example.testnotification',
 };
 notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then(() => {
   console.info(`setUserGrantedState successfully.`);
 }).catch((err: BusinessError) => {
-  console.error(`setUserGrantedState fail: ${JSON.stringify(err)}`);
+  console.error(`setUserGrantedState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -183,13 +184,13 @@ Obtains the applications that are allowed to access device notifications. This A
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes  | Information about the target application. The application must have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implemented [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md). Otherwise, error code 1600022 is returned.|
+| targetBundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes   | Information about the target application to query. The application must have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and have implemented [NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md). Otherwise, error code 1600022 is returned.|
 
 **Return value**
 
 | Type    | Description       |
 | ------- |-----------|
-| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise used to return the applications obtained.       |
+| Promise\<[BundleOption[]](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise used to return the applications obtained.        |
 
 **Error codes**
 
@@ -214,7 +215,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
 notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -234,8 +235,8 @@ Sets the enabling state of device notification access for the specified applicat
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes  | Information about the target application. The application must have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implemented [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md). Otherwise, error code 1600022 is returned.|
-| enabledBundles    | [BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes  | Authorized applications.|
+| targetBundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes   | Information about the target application to set. The application must have the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implement [NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md); otherwise, error code 1600022 is returned. |
+| enabledBundles    | [BundleOption[]](js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | Yes   | Authorized applications. |
 | enabled    | boolean       | Yes  | Whether the device notification access for the specified application is enabled. The value **true** indicates that this functionality is enabled, and **false** indicates the opposite.|
 
 **Return value**
@@ -273,6 +274,58 @@ let enabledBundles: notificationExtensionSubscription.BundleOption[] = [
 notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enabledBundles, true).then(() => {
   console.info(`setUserGrantedBundleState successfully.`);
 }).catch((err: BusinessError) => {
-  console.error(`setUserGrantedBundleState fail: ${JSON.stringify(err)}`);
+  console.error(`setUserGrantedBundleState fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationExtensionSubscription.subscribeNotification
+
+subscribeNotification(priorityStrategy?: number): Promise\<void\>
+
+Subscribes to notifications based on the [priority notification](../../notification/notification-glossary.md#priority-notification) filter criteria. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---------------- | ------ | ---- | ---- |
+| priorityStrategy | number | No | Priority notification filter criteria. The default value is **0**, and the value must be an integer. This parameter is obtained by performing a bitwise OR operation on the enums of [PriorityStrategyStatus](js-apis-notificationManager-sys.md#prioritystrategystatus23).<br>After subscribing to a priority notification policy, when an application publishes a notification, only notifications that meet the corresponding policy are returned.<br>When the default priority policy `STATUS_SYSTEM_DEFAULT` is subscribed to, it indicates that the priority rule `STATUS_SYSTEM_RULE`, intelligent recognition `STATUS_INTELLIGENT`, user-defined `STATUS_USER_DEFINED`, and application-defined `STATUS_APPLICATION_DEFINED` policies are subscribed to at the same time.<br>When `priorityStrategy` is **0**, it indicates that priority notification policies are not filtered, and all notifications published by applications can be received. |
+
+**Return value**
+
+| Type            | Description                       |
+| --------------- | -------------------------- |
+| Promise\<void\> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 801      | Capability not supported. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility. |
+
+**Example**
+
+```ts
+notificationExtensionSubscription.subscribeNotification(0).then(() => {
+  console.info(`subscribeNotification successfully.`);
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```

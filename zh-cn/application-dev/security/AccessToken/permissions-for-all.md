@@ -46,7 +46,7 @@
 
 允许应用关闭前执行自定义的预关闭动作。
 
-例如，当应用被关闭时，应用可向用户通过弹窗等方式向用户确认是否执行关闭。
+例如，当应用被关闭时，应用可通过弹窗等方式向用户确认是否执行关闭。
 
 **权限级别**：normal
 
@@ -61,6 +61,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：10
 
@@ -80,11 +82,13 @@
 
 允许应用读取加速度传感器的数据。
 
-包括：加速度计传感器、未校准加速度计传感器、线性加速器传感器。
+包括：加速度计传感器、未校准加速度计传感器、线性加速度计传感器。
 
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -144,7 +148,11 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：8
+
+**变更信息**：从API 22开始，获取该权限后，增加支持P2P能力的使用。
 
 ## ohos.permission.GYROSCOPE
 
@@ -155,6 +163,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -212,6 +222,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：9
 
 **变更信息：** API 9-10，权限级别为system_basic；从API 11开始，变更为normal。
@@ -236,6 +248,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：8
 
 ## ohos.permission.VIBRATE
@@ -247,6 +261,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -271,6 +287,18 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**起始版本**：7
+
+## ohos.permission.RUNNING_LOCK
+
+允许应用获取运行锁，保证应用在后台的持续运行。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet | Car | Phone | TV | Wearable
 
 **起始版本**：7
 
@@ -303,6 +331,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable | SmartLock
 
 **起始版本**：11
 
@@ -340,9 +370,13 @@
 
 允许应用访问导航信息服务。
 
+获取该权限后，应用可设置导航信息、处理其他应用发送的导航指令等。
+
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -367,6 +401,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -424,11 +460,13 @@
 
 允许应用通过C API启动同应用的UIAbility。
 
-当前仅2in1设备应用可申请此权限。
+仅用于在Native层启动同应用内的UIAbility，适用于C/C++调用接口拉起UIAbility的场景。
 
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet | Phone
 
 **起始版本**：15
 
@@ -714,3 +752,129 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.GET_ENTERPRISE_CONFIG
+
+允许应用获取行业定制配置文件。
+
+行业定制配置文件中，包括用户壁纸、浏览器策略等配置文件。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
+## ohos.permission.ACCESS_CAR_AUDIO
+
+允许应用访问和管理车载音频。
+
+获取该权限后，应用可以设置音频音效、管理音区等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+允许应用访问车载安全隐私服务的接口。
+
+获取该权限后，应用可以查询整车隐私相关协议或政策、主驾隐私模式、一键除痕状态等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.DCAS_RUN_MODEL
+
+允许应用和服务接入端侧模型运行态管理。
+
+获取该权限后，应用可接入端侧模型运行态管理能力，完成模型的加载和推理。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+允许应用管理应用级和会话级字体。
+
+获取该权限后，应用可使用字体管理接口安装、卸载和查询应用级和会话级字体，并注册字体服务状态监听器。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+允许应用获取本地账号授权。
+
+获取该权限后，应用可调用接口请求本地账号授权。用户将通过系统授权弹窗进行本地账号身份认证后授予目标特权，应用可执行目标特权对应的敏感操作（如网络抓包等）。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car | TV | Wearable
+
+**起始版本**：26.0.1
+
+## ohos.permission.kernel.USB_CAPTURE
+
+允许应用抓取USB数据包。
+
+获取此权限后，应用程序需用户认证后才可以进行USB抓包，无此权限不允许抓取。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
+## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+允许应用识别当前使用者是否为用户本人。
+
+获取该权限后，应用可以使用用户被动识别能力，识别当前使用者是否为用户本人，并获取用户ID、认证可信等级等信息。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.GET_STORAGE_VOLUME_INFO
+
+允许应用查询存储设备基础属性信息。
+
+获取该权限后，应用可查询外置存储设备的物理磁盘信息（如磁盘ID、设备类型、厂商ID、产品ID等）和卷信息（如卷ID、挂载状态、容量、挂载路径、文件系统类型等），以及本地系统盘和数据盘的硬件信息（如物理路径、型号、品牌、介质类型、运行状态、容量等）。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car | TV
+
+**起始版本**：26.0.1

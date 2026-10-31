@@ -13,7 +13,7 @@ struct OH_Huks_KeyMaterialRsa {...}
 
 ## 概述
 
-定义Rsa密钥的结构体类型。
+定义RSA密钥的结构体类型。
 
 **起始版本：** 9
 
@@ -28,9 +28,9 @@ struct OH_Huks_KeyMaterialRsa {...}
 | 名称 | 描述 |
 | -- | -- |
 | enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。 |
-| uint32_t keySize | 密钥的长度。 |
-| uint32_t nSize | n值的长度。 |
-| uint32_t eSize | e值的长度。 |
-| uint32_t dSize | d值的长度。 |
+| uint32_t keySize | 密钥的长度，单位：Bit。 |
+| uint32_t nSize | n值的长度，单位：Byte。 |
+| uint32_t eSize | e值的长度，单位：Byte。 |
+| uint32_t dSize | d值的长度，单位：Byte。 |
 
 

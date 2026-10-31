@@ -1,10 +1,11 @@
 # @ohos.arkui.uiExtension (uiExtension)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=a9b9c746e14ae47cbf54a0e13cc6985b36c20e20 translatedAt=2026-08-29T09:41:20.180Z pushedAt=2026-09-01T02:52:34.549Z -->
 
 The **uiExtension** module provides APIs for the [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md) (or [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)) to obtain the host application window information or the information about the corresponding [EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del--> (or [UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md))<!--DelEnd--> component.
 
@@ -21,7 +22,7 @@ import { uiExtension } from '@kit.ArkUI';
 
 ## WindowProxy
 
-Implements the proxy for the UIExtension host application window.
+Implements the proxy for the host window of UIExtension.
 
 ### Properties
 
@@ -29,9 +30,11 @@ Implements the proxy for the UIExtension host application window.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                                | Type                 | Read-Only| Optional| Description                                                                                                    |
 | ------------------------------------| -------------------------------------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------ |
-| properties<sup>14+</sup>            | [WindowProxyProperties](#windowproxyproperties14) |  No |  No | Information about the component (**EmbeddedComponent** or **UIExtensionComponent**).<br>Note: Due to architecture restrictions, avoid obtaining the value in [onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate). Instead, when possible, obtain the value after receiving the [on('windowSizeChange')](../apis-arkui/js-apis-arkui-uiExtension.md#onwindowsizechange) callback.                                                                           |
+| properties<sup>14+</sup>            | [WindowProxyProperties](#windowproxyproperties14) |  No  |  No  | Information about the component (**EmbeddedComponent** or **UIExtensionComponent**).<br>**Note:** Due to architecture restrictions, avoid obtaining the value in [onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate). Instead, when possible, obtain the value after receiving the [on('windowSizeChange')](#onwindowsizechange) callback.                                                                            |
 
 ### getWindowAvoidArea
 
@@ -43,11 +46,13 @@ Obtains the area where the host application window cannot be displayed, for exam
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type |[window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the avoidance area.|
+| type |[window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the avoid area.|
 
 **Return value**
 
@@ -90,12 +95,14 @@ Subscribes to the event of changes to the area where the host application window
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | ------ | ---- | ---- | ---- |
 | type   | string | Yes| Event type. The value is fixed at **'avoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | Yes| Callback function that receives the information about the current avoidance area.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | Yes| Callback function that receives the information about the current avoid area.|
 
 **Error codes**
 
@@ -134,12 +141,14 @@ Unsubscribes from the event of changes to the area where the host application wi
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type| Mandatory| Description|
 | -------- | ---- | ---- | ---  |
 | type     | string | Yes| Event type. The value is fixed at **'avoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | No| Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | No | Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
 
 **Error codes**
 
@@ -174,6 +183,8 @@ Subscribes to size change events of the component (**EmbeddedComponent** or **UI
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -219,12 +230,14 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+| type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events. |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
 
 **Error codes**
 
@@ -260,15 +273,17 @@ Subscribes to position and size change events of the component (**EmbeddedCompon
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
 | Name  | Type                          | Mandatory| Description                                                    |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | Yes  | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**).|
+| type     | string                         | Yes   | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**). |
 | reasons  | number                         | Yes  | Reason why the position and size of the component (**EmbeddedComponent** or **UIExtensionComponent**) change. For details about the values, see [RectChangeReason](#rectchangereason14).|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | Yes| Callback used to return the current rectangle change values and the reason for the change of the component (**EmbeddedComponent** or **UIExtensionComponent**).|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | Yes | Callback used to return the current rectangle change values and the reason for the change of the component (**EmbeddedComponent** or **UIExtensionComponent**). |
 
 **Error codes**
 
@@ -308,14 +323,16 @@ Unsubscribes from position and size change events of the component (**EmbeddedCo
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
 | Name  | Type                          | Mandatory| Description                                                        |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                         | Yes  | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**).|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | No  | Callback used to return the current rectangle change values and the reason for the change of the component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+| type     | string                         | Yes  | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**). |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | No  | Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
 
 **Error codes**
 
@@ -360,7 +377,7 @@ Creates a subwindow for this window proxy. This API uses a promise to return the
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| name   | string | Yes  | Name of the subwindow.|
+| name   | string | Yes   | Name of the subwindow, used to uniquely identify the subwindow. It is globally unique within the current process. |
 | subWindowOptions | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | Yes  | Parameters used for creating the subwindow. |
 
 **Return value**
@@ -377,7 +394,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -399,22 +416,22 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) => {
-          if (err && err.code != 0) {
+          if (err && err.code) {
             return;
           }
           subWindow?.resize(300, 300, (err, data) => {
-            if (err && err.code != 0) {
+            if (err && err.code) {
               return;
             }
             subWindow?.moveWindowTo(100, 100, (err, data) => {
-              if (err && err.code != 0) {
+              if (err && err.code) {
                 return;
               }
               subWindow?.showWindow((err, data) => {
-                if (err && err.code == 0) {
-                  console.info(`The subwindow has been shown!`);
+                if (err && err.code) {
+                  console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                 } else {
-                  console.error(`Failed to show the subwindow!`);
+                  console.info(`The subwindow has been shown!`);
                 }
               });
             });
@@ -422,7 +439,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
         });
       }).catch((error: BusinessError) => {
       console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
-    })
+    });
   }
 }
 ```
@@ -431,21 +448,21 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
-Creates a subwindow under this **WindowProxy** instance. By setting **followCreatorLifecycle**, you can control whether the subwindow follows the lifecycle of its creator component (**EmbeddedComponent** or **UIExtensionComponent**). This API uses a promise to return the result.
+Creates a subwindow under this **WindowProxy** instance. You can set **followCreatorLifecycle** to determine whether the subwindow follows the lifecycle of the component (**EmbeddedComponent** or **UIExtensionComponent**). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: When **isModal** in [subWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and are in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
+**Device behavior differences**: When **isModal** in **subWindowConfig** is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| name   | string | Yes  | Name of the subwindow.|
+| name   | string | Yes   | Name of the subwindow, used to uniquely identify the subwindow. It is globally unique within the current process. |
 | subWindowConfig | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | Yes  | Parameters used for creating the subwindow. |
-| followCreatorLifecycle | boolean | Yes  | Whether the subwindow follows the lifecycle of its creator component (**EmbeddedComponent** or **UIExtensionComponent**). **true**: The subwindow is hidden when the component is hidden, and is displayed when the component is displayed. **false**: The visibility of the subwindow does not change with the component.|
+| followCreatorLifecycle | boolean | Yes   | Whether the lifecycle of the subwindow stays synchronized with the component (**EmbeddedComponent** or **UIExtensionComponent**). The value **true** means that the subwindow is hidden when the component is hidden and shown when the component is shown; the value **false** means that the visibility of the subwindow does not follow the component. |
 
 **Return value**
 
@@ -460,7 +477,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -482,22 +499,22 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) => {
-          if (err && err.code != 0) {
+          if (err && err.code) {
             return;
           }
           subWindow?.resize(300, 300, (err, data) => {
-            if (err && err.code != 0) {
+            if (err && err.code) {
               return;
             }
             subWindow?.moveWindowTo(100, 100, (err, data) => {
-              if (err && err.code != 0) {
+              if (err && err.code) {
                 return;
               }
               subWindow?.showWindow((err, data) => {
-                if (err && err.code == 0) {
-                  console.info(`The subwindow has been shown!`);
+                if (err && err.code) {
+                  console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                 } else {
-                  console.error(`Failed to show the subwindow!`);
+                  console.info(`The subwindow has been shown!`);
                 }
               });
             });
@@ -505,7 +522,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
         });
       }).catch((error: BusinessError) => {
       console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
-    })
+    });
   }
 }
 ```
@@ -520,6 +537,8 @@ Sets the events that the component (**EmbeddedComponent** or **UIExtensionCompon
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type   | Mandatory| Description          |
@@ -530,7 +549,7 @@ Sets the events that the component (**EmbeddedComponent** or **UIExtensionCompon
 
 | Type               | Description                    |
 | ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -556,15 +575,13 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     // Occupy events.
     setTimeout(() => {
       try {
-        let promise =
-          extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
-        promise.then(() => {
+        extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS).then(() => {
           console.info(`Succeeded in occupying events`);
         }).catch((err: BusinessError) => {
           console.error(`Failed to occupy events. Cause code: ${err.code}, message: ${err.message}`);
         });
-      } catch (e) {
-        console.error(`Occupy events got exception code: ${e.code}, message: ${e.message}`);
+      } catch (err) {
+        console.error(`Occupy events got exception code: ${err.code}, message: ${err.message}`);
       }
     }, 500);
   }
@@ -579,36 +596,42 @@ Enumerates event types.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                       | Value             | Description           |
 |-----------------------------| --------------- |----------------|
-| EVENT_NONE                  | 0x00000000      | No event.     |
-| EVENT_PAN_GESTURE_LEFT      | 0x00000001      | Pan-left event.   |
-| EVENT_PAN_GESTURE_RIGHT     | 0x00000002      | Pan-right event.   |
-| EVENT_PAN_GESTURE_UP        | 0x00000004      | Pan-up event.   |
-| EVENT_PAN_GESTURE_DOWN      | 0x00000008      | Pan-down event.   |
-| EVENT_CLICK                 | 0x00000100      | Click event.   |
-| EVENT_LONG_PRESS            | 0x00000200      | Long press event.   |
+| EVENT_NONE                  | 0x00000000      | No event. Select this option when there is no need to prevent the host from responding to operations in the component area.      |
+| EVENT_PAN_GESTURE_LEFT      | 0x00000001      | Pan-left event, used to occupy the leftward pan gesture event in the component area. Select this option when you need to prevent the host from responding to the pan-left operation in the component area.    |
+| EVENT_PAN_GESTURE_RIGHT     | 0x00000002      | Pan-right event, used to occupy the rightward pan gesture event in the component area. Select this option when you need to prevent the host from responding to the pan-right operation in the component area.    |
+| EVENT_PAN_GESTURE_UP        | 0x00000004      | Pan-up event, used to occupy the upward pan gesture event in the component area. Select this option when you need to prevent the host from responding to the pan-up operation in the component area.    |
+| EVENT_PAN_GESTURE_DOWN      | 0x00000008      | Pan-down event, used to occupy the downward pan gesture event in the component area. Select this option when you need to prevent the host from responding to the pan-down operation in the component area.    |
+| EVENT_CLICK                 | 0x00000100      | Click event, used to occupy the click event in the component area. Select this option when you need to prevent the host from responding to the click operation in the component area.    |
+| EVENT_LONG_PRESS            | 0x00000200      | Long-press event, used to occupy the long-press event in the component area. Select this option when you need to prevent the host from responding to the long-press operation in the component area.    |
 
 ## AvoidAreaInfo
 
-Represents the information about the avoidance area of the window.
+Represents the information about the avoid area of the window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name| Type                | Read-Only| Optional| Description       |
 | ------ | -------------------- | ----- | ---- | ------------------ |
-| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No| No| Type of the avoidance area of the window.|
-| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | No| No| Avoidance area for the content of the window.|
+| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No| No| Type of the avoid area of the window.|
+| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | No| No| Avoid area for the content of the window.|
 
 ## WindowProxyProperties<sup>14+</sup>
 
-Provides information about a component.
+Represents the position and size information about the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name                        | Type       | Read-Only| Optional| Description                            |
 | ------------------------------ | ----------- | ----- | ---- | -------------------------------- |
@@ -622,6 +645,8 @@ Enumerates the reasons for changes in the rectangle (position and size) of the c
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                   | Value    | Description                                                        |
 | ----------------------- | ------ | ------------------------------------------------------------ |
 | HOST_WINDOW_RECT_CHANGE | 0x0001 | The rectangle of the host window containing the component changes.|
@@ -633,6 +658,8 @@ Provides the values and reasons returned when the rectangle (position and size) 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name      | Type     | Read-Only| Optional| Description              |
 | ---------- | ------------- | ---- | ---- | ------------------ |
@@ -654,9 +681,9 @@ import { Want } from '@kit.AbilityKit';
 struct Index {
   @State message: string = 'Message: ';
   private want: Want = {
-    bundleName: "com.example.embeddeddemo",
-    abilityName: "ExampleEmbeddedAbility",
-  }
+    bundleName: 'com.example.embeddeddemo',
+    abilityName: 'ExampleEmbeddedAbility',
+  };
 
   build() {
     Row() {
@@ -754,40 +781,40 @@ struct Extension {
       Text(this.message)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-      Button("Obtain Component Size").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+      Button('Obtain Component Size').width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
         let rect = this.extensionWindow?.properties.uiExtensionHostWindowProxyRect;
-        console.info(`EmbeddedComponent position and size: ${JSON.stringify(rect)}`);
+        console.info(`EmbeddedComponent position and size info: ${JSON.stringify(rect)}`);
       })
-      Button("Obtain Avoid Area Info").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+      Button('Obtain System Avoid Area Info').width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
         let avoidArea: window.AvoidArea | undefined =
           this.extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-        console.info(`Avoidance area: ${JSON.stringify(avoidArea)}`);
+        console.info(`System avoid area: ${JSON.stringify(avoidArea)}`);
       })
-      Button("Create Subwindow").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+      Button('Create Subwindow').width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
         let subWindowOpts: window.SubWindowOptions = {
-          'title': 'This is a subwindow',
+          title: 'This is a subwindow',
           decorEnabled: true
         };
         this.extensionWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
           .then((subWindow: window.Window) => {
             this.subWindow = subWindow;
-            this.subWindow.loadContent('pages/Index', this.storage, (err, data) => {
-              if (err && err.code != 0) {
+            this.subWindow?.loadContent('pages/Index', this.storage, (err, data) => {
+              if (err && err.code) {
                 return;
               }
               this.subWindow?.resize(300, 300, (err, data) => {
-                if (err && err.code != 0) {
+                if (err && err.code) {
                   return;
                 }
                 this.subWindow?.moveWindowTo(100, 100, (err, data) => {
-                  if (err && err.code != 0) {
+                  if (err && err.code) {
                     return;
                   }
                   this.subWindow?.showWindow((err, data) => {
-                    if (err && err.code == 0) {
-                      console.info(`The subwindow has been shown!`);
+                    if (err && err.code) {
+                      console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                     } else {
-                      console.error(`Failed to show the subwindow!`);
+                      console.info(`The subwindow has been shown!`);
                     }
                   });
                 });
@@ -795,7 +822,7 @@ struct Extension {
             });
           }).catch((error: BusinessError) => {
           console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
-        })
+        });
       })
     }.width('100%').height('100%')
   }

@@ -1,17 +1,26 @@
 # EffectComponent (System API)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-08-21T02:22:45.743Z pushedAt=2026-08-21T07:29:42.264Z -->
+
 The **EffectComponent** component defines combined special effects for child components to optimize the special effect drawing performance.
 
 >  **NOTE**
 >
 > - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this component are system APIs.
+> - The APIs provided by this module are system APIs.
 >
-> - Currently, this component provides only combined background blur effects for child components.
+> - The APIs of this module can be used only in the stage model.
 >
-> - To use this component for combined background blur effects, first replace the **backgroundBlurStyle(BlurStyle)** attribute of the target child components with **useEffect(true)**.
-
+> - Currently, this component only supports the drawing combination optimization of the background blur effect of child components.
+>
+> - When performing drawing combination on the background blur effect of a child component, replace the child component's **backgroundBlurStyle(BlurStyle)** attribute with **useEffect(true)**.
 
 ## Child Components
 
@@ -33,7 +42,7 @@ Creates an **EffectComponent** component.
 
 EffectComponent(options?: EffectComponentOptions)
 
-Creates an effect drawing and combination component. If no parameter is passed or the parameter is EffectLayer.None, the background blur effect of child components is combined. If a parameter is specified, the current rendering layer is placed on a special layer.
+Creates an effect rendering merging component. When no parameter is passed or the parameter is **EffectLayer.NONE**, it is used to merge the rendering of the background blur effect of child components. When an explicit parameter is passed, it indicates that the current rendering layer is placed on a special layer.
 
 **System API**: This is a system API.
 
@@ -61,9 +70,9 @@ Sets the construction parameters of the current EffectComponent, including the r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                   | Mandatory| Description                                                    |
-| ----------- | --------------------------------------- | ---- | -------------------------------------------------------- |
-| effectLayer | [EffectLayer](#effectlayer20) | No  | Rendering layer of the EffectComponent.<br>Default value: EffectLayer.NONE|
+| Name        | Type                                    | Read-only| Optional| Description                                                    |
+| ----------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| effectLayer | [EffectLayer](#effectlayer20) |  No   |   Yes   | Rendering layer of EffectComponent.<br/>Default value: EffectLayer.NONE |
 
 ## EffectLayer<sup>20+</sup>
 

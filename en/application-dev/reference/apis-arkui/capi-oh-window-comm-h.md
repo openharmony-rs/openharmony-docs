@@ -1,10 +1,11 @@
 # oh_window_comm.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=f711ea03cc0a77c02e528009e96bfda1200a7f2b translatedAt=2026-08-27T08:49:56.568Z pushedAt=2026-08-28T03:11:18.056Z -->
 
 ## Overview
 
@@ -48,7 +49,7 @@ The file declares the common enums and definitions of the window manager.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | Callback for frame metrics.|
+| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | Callback for frame metrics.|
 | [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | Callback for the window scale factor information.|
 
 ## Enum Description
@@ -72,6 +73,7 @@ Enumerates the status codes returned by the window manager interface.
 | WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | Invalid parameter.<br>**Since**: 15|
 | WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | Not supported by the device.<br>**Since**: 15|
 | INVAILD_WINDOW_ID = 1000 | Invalid window ID.|
+| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | Invalid window ID.<br>**Since:** 26.0.0 |
 | SERVICE_ERROR = 2000 | Service error.|
 | WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | Abnormal window status.<br>**Since**: 15|
 | WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | Abnormal window manager service.<br>**Since**: 15|
@@ -118,7 +120,7 @@ Enumerates the window types.
 | -- | -- |
 | WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | Child window.|
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | Main window.|
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Floating window.|
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Global floating window.|
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | Modal window.|
 
 ## Function Description
@@ -126,7 +128,8 @@ Enumerates the window types.
 ### OH_WindowManager_FrameMetricsMeasuredCallback()
 
 ```c
-typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)
+typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(
+    int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)
 ```
 
 **Description**

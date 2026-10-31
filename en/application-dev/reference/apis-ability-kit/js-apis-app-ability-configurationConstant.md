@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=39c91f6014aebaf032e76cba1dba0db7318cd7f0 translatedAt=2026-09-03T10:11:44.267Z pushedAt=2026-09-05T10:47:30.362Z -->
 
 The ConfigurationConstant module provides preset enumerated values related to [Configuration](js-apis-app-ability-configuration.md) operations.
 

@@ -2,7 +2,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -138,7 +138,7 @@
 | 名称          | 类型                                                         | 只读 | 可选 | 说明                   |
 | ------------- | ------------------------------------------------------------ | ---- | ---- | ---------------------- |
 | entityId      | string                                                       | 否   | 否   | 媒体实例的ID。         |
-| pageIndex     | number                                                       | 否   | 否   | 媒体标签页的索引。     |
+| pageIndex     | number                                                       | 否   | 否   | 分页查询页码。     |
 | type          | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。         |
 | subEntityType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 否   | 是   | 子节点的媒体资源类型。 |
 | sort          | [Sort](arkts-apis-avMusicTemplate-e.md#sort)       | 否   | 是   | 查询到的列表数据排序。 |
@@ -210,8 +210,8 @@
 | isSupportPrev          | boolean  | 否   | 否   | 是否支持上一首。true表示支持，false表示不支持。无默认值。|
 | isSupportQuickForward  | boolean  | 否   | 否   | 是否支持快进。true表示支持，false表示不支持。无默认值。|
 | isSupportQuickBackward | boolean  | 否   | 否   | 是否支持快退。true表示支持，false表示不支持。无默认值。|
-| quickForwardStep       | number     | 否   | 否   | 每一次快进的幅度。                           |
-| quickBackwardStep      | number     | 否   | 否   | 每一次快退的幅度。                           |
+| quickForwardStep       | number     | 否   | 否   | 快进的步长，单位为毫秒（ms）。                           |
+| quickBackwardStep      | number     | 否   | 否   | 快退的步长，单位为毫秒（ms）。                        |
 | isSupportSkipHead      | boolean  | 否   | 否   | 是否支持跳过开头。true表示支持，false表示不支持。无默认值。|
 | isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。无默认值。|
 | isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。无默认值。|
@@ -220,8 +220,8 @@
 | currentPlayRate        | string   | 否   | 否   | 当前的播放速率。                            |
 | isSupportSoundQuality  | boolean  | 否   | 否   | 是否支持声音质量。true表示支持，false表示不支持。无默认值。|
 | isSupportSoundEffect   | boolean  | 否   | 否   | 是否支持音效。true表示支持，false表示不支持。无默认值。|
-| totalDuration          | number     | 否   | 否   | 播放总时长。                              |
-| currentPlayDuration    | number     | 否   | 否   | 当前播放的时长。                            |
+| totalDuration          | number     | 否   | 否   | 播放总时长，单位为毫秒（ms）。                            |
+| currentPlayDuration    | number     | 否   | 否   | 当前播放的时长，单位为毫秒（ms）。                         |
 | isSupportProgress      | boolean  | 否   | 否   | 是否支持进度。true表示支持，false表示不支持。默认值为true。 |
 
 ## FavoriteData
@@ -252,12 +252,12 @@
 | title        | string                                                       | 否   | 否   | 设置项的标题。                                               |
 | desc         | string                                                       | 否   | 否   | 设置项的描述。                                               |
 | settingType  | [SettingType](arkts-apis-avMusicTemplate-e.md#settingtype) | 否   | 是   | 设置项的类型。                                               |
-| settingValue | string \| boolean \| [SettingContent](#settingcontent)[] \| [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
+| settingValue | string \| boolean \| [SettingContent](#settingcontent)[] \| [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否   | 是   | 设置项的值。<br>- 当settingType为SettingType.SWITCH时，该值为boolean类型。<br>- 当settingType为SettingType.LIST时，该值为SettingContent数组。<br>- 当settingType为SettingType.JUMP时，该值为string类型。 |
 | mediaId      | string                                                       | 否   | 否   | 与当前设置关联的媒体ID。<br>如果设置与当前媒体信息相关联，需要设置mediaId；否则，不需要设置mediaId。 |
 
 ## SettingContent
 
-设置内容的定义（音频模板里有定义设置页面，设置内容用于设置页的填充）。
+设置内容的定义。用于在音频模板的设置页面中展示或配置相关内容。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -268,7 +268,7 @@
 | value      | string                                                       | 否   | 否   | 设置的内容。                                        |
 | isSelected | boolean                                                      | 否   | 否   | 是否选择设置项内容。true表示选择，false表示不选择。无默认值。|
 | textTags   | string[]                                                     | 否   | 是   | 设置内容的描述的数组。                              |
-| imageTags  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                          |
+| imageTags  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的图片标签数组。                          |
 
 ## QrCodeInfo
 
@@ -354,7 +354,7 @@
 
 ## CustomElement
 
-“我的主页”自定义元素的定义。继承自[OperResult](#operresult)。
+“我的主页”（应用内用户个人主页）自定义元素的定义。继承自[OperResult](#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -386,7 +386,7 @@
 
 ## SearchPlayInfo
 
-搜播信息的定义。
+搜播（搜索播放）信息的定义。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -396,6 +396,49 @@
 | --------- | ------------------------------------------- | ---- | ---- | ---------------- |
 | musicInfo | [SearchPlayMusicInfo](#searchplaymusicinfo) | 否   | 是   | 搜播的音频信息。 |
 | videoInfo | [SearchPlayVideoInfo](#searchplayvideoinfo) | 否   | 是   | 搜播的视频信息。 |
+| karaokeInfo | [SearchPlayKaraokeInfo](#searchplaykaraokeinfo) | 否   | 是   | 搜播的K歌信息。如果此参数留空，则仅启动K歌应用。<br>**起始版本：** 26.0.1 |
+ 
+## SearchPlayKaraokeInfo
+ 
+搜播的K歌信息的定义。
+ 
+**起始版本：** 26.0.1
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+ 
+| 名称          | 类型                                              | 只读 | 可选 | 说明             |
+| ------------- | ------------------------------------------------- | ---- | ---- | ---------------- |
+| songName      | string                                            | 否   | 是   | 歌曲名检索槽位。 |
+| artist        | string                                            | 否   | 是   | 歌手检索槽位。   |
+| albumName     | string                                            | 否   | 是   | 专辑名检索槽位。 |
+| billBoard     | string                                            | 否   | 是   | 榜单检索槽位。   |
+| scene         | string                                            | 否   | 是   | 场景检索槽位。   |
+| genre         | string                                            | 否   | 是   | 曲风检索槽位。   |
+| instrument    | string                                            | 否   | 是   | 乐器检索槽位。   |
+| language      | string                                            | 否   | 是   | 语种检索槽位。   |
+| decade        | string                                            | 否   | 是   | 年代检索槽位。   |
+| mood          | string                                            | 否   | 是   | 心情检索槽位。   |
+| gender        | string                                            | 否   | 是   | 性别检索槽位。   |
+| queryKeyWords | string                                            | 否   | 是   | 关键词检索槽位。 |
+| extra         | string                                            | 否   | 是   | K歌的额外信息。  |
+| items         | [SearchPlayKaraokeItem](#searchplaykaraokeitem)[] | 否   | 是   | K歌曲目列表。    |
+ 
+## SearchPlayKaraokeItem
+ 
+搜播的K歌项目的定义。
+ 
+**起始版本：** 26.0.1
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+ 
+| 名称       | 类型   | 只读 | 可选 | 说明               |
+| ---------- | ------ | ---- | ---- | ------------------ |
+| entityId   | string | 否   | 否   | K歌媒体资源的唯一标识。 |
+| entityName | string | 否   | 是   | K歌媒体资源的名称。     |
 
 ## SearchPlayMusicInfo
 
@@ -412,6 +455,7 @@
 | description   | string                                        | 否   | 是   | 对音频的描述。                                      |
 | playMusicOnly | boolean                                       | 否   | 是   | 是否仅执行播放音乐的操作。true表示是，false表示否。无默认值。|
 | playMode      | string                                        | 否   | 是   | 音频的播放模式。                                    |
+| extras        | string                                        | 否   | 是   | 音频的额外信息。<br>**起始版本：** 26.0.1                                    |
 
 ## SearchPlayMusicItem
 
@@ -438,5 +482,5 @@
 | ------------- | ------ | ---- | ---- | ---------------- |
 | entityId      | string | 否   | 否   | 视频的唯一标识。 |
 | episodeId     | string | 否   | 是   | 视频的集数ID。   |
-| episodeNumber | number   | 否   | 是   | 视频的集数。     |
+| episodeNumber | number   | 否   | 是   | 视频的剧集序号。     |
 | extras        | string | 否   | 是   | 视频的额外信息。 |

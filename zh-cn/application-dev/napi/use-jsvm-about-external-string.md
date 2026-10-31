@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API在Native侧Latin1或UTF16编码的字符串内存上直接创建外部JavaScript字符串，并通过copied参数确认创建结果。"
+keywords: [OH_JSVM_CreateExternalStringLatin1, OH_JSVM_CreateExternalStringUtf16, 外部字符串, Latin1, UTF16, ISO-8859-1, UTF16-LE]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -25,9 +33,9 @@ JSVM-API中新增创建和使用外部字符串的接口。
 
 JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
-### 使用接口判断是否是Number Object
+### 创建外部字符串
 
-cpp部分代码
+cpp部分代码：
 
 ```cpp
 #include <cstring>
@@ -49,7 +57,7 @@ static JSVM_Value testExternalString(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetValueStringUtf8(env, jsStrLatin1, buf, 10, nullptr);
     OH_LOG_INFO(LOG_APP, "created latin1 string is : %{public}s\n", buf);
     // 这里 copied 为 true 表示创建 external string 失败，否则表示创建成功
-    OH_LOG_INFO(LOG_APP, "create external string failed : %{public}d\n", copied);
+    OH_LOG_INFO(LOG_APP, "create external string result, copied : %{public}d\n", copied);
     copied = true;
     JSVM_Value jsStrUTF16 = nullptr;
     OH_JSVM_CreateExternalStringUtf16(env, stringUTF16, std::char_traits<char16_t>::length(stringUTF16),
@@ -57,7 +65,7 @@ static JSVM_Value testExternalString(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetValueStringUtf8(env, jsStrUTF16, buf, 10, nullptr);
     OH_LOG_INFO(LOG_APP, "created utf16 string is : %{public}s\n", buf);
     // 这里 copied 为 true 表示创建 external string 失败，否则表示创建成功
-    OH_LOG_INFO(LOG_APP, "create external string failed : %{public}d\n", copied);
+    OH_LOG_INFO(LOG_APP, "create external string result, copied : %{public}d\n", copied);
     OH_JSVM_CloseHandleScope(env, handleScope);
 
     return nullptr;
@@ -69,7 +77,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// wrapperObject方法别名，供JS调用
+// testExternalString方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"testExternalString", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
@@ -82,7 +90,7 @@ const char *srcCallNative = R"JS(testExternalString();)JS";
 ## 预期输出结果
 ```txt
 created latin1 string is : hello
-create external string failed: 0
+create external string result, copied : 0
 created utf16 string is : world
-create external string failed: 0
+create external string result, copied : 0
 ```

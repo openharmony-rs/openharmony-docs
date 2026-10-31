@@ -5,6 +5,7 @@
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=e93292804a983230322f2ef9fc704ea0c5300a10 translatedAt=2026-10-28T03:51:25.232Z pushedAt=2026-10-28T07:03:05.605Z nl=1 -->
 
 ArkTS supports conditional rendering, allowing you to display different content based on the application state using **if**, **else**, and **else if** statements.
 
@@ -14,28 +15,28 @@ ArkTS supports conditional rendering, allowing you to display different content 
 
 ## Usage Rules
 
-- Supported conditional statements include **if**, **else**, and **else if**.
+- Supported conditional rendering statements include **if**, **else**, and **else if**.
 
 - Conditions in **if** and **else if** statements can utilize both state variables and regular variables. (State variables trigger UI re-rendering when their values change, while regular variables do not.)
 
 - Conditional statements can be embedded within container components to dynamically build different child components.
 
-- Conditional rendering maintains the parent-child component relationship hierarchy. The conditional statements do not override the constraints that parent components impose on their children. For example, certain container components enforce restrictions on child component types or quantities. When conditional rendering is used within these containers, the same restrictions apply to components created within conditional branches. A specific example: The [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md) container component only supports [GridItem](../../reference/apis-arkui/arkui-ts/ts-container-griditem.md) as direct children. When conditional statements are used within the **Grid** component, only **GridItem** components can be used in conditional branches.
+- Conditional rendering statements maintains the parent-child component relationship hierarchy. They do not override the constraints that parent components impose on their children. For example, certain container components enforce restrictions on child component types or quantities. When conditional rendering is used within these containers, the same restrictions apply to components created within conditional branches. A specific example: The [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md) container component only supports [GridItem](../../reference/apis-arkui/arkui-ts/ts-container-griditem.md) as direct children. When conditional rendering statements are used within the **Grid** component, only **GridItem** components can be used in conditional branches.
 
-- The build function inside each conditional branch must follow the special rules for build functions. Each of such build functions must create one or more components. An empty build function that creates no components will result in a syntax error. For details about the build function specifications, see [Basic Syntax Overview](../state-management/arkts-basic-syntax-overview.md) and [Declarative UI Description](../state-management/arkts-declarative-ui-description.md).
+- The builder function inside each conditional branch must follow the special rules for builder functions. Each of such builder functions must create one or more components. An empty builder function that creates no components will result in a syntax error. For details about the builder function specifications, see [Basic Syntax Overview](../state-management/arkts-basic-syntax-overview.md) and [Declarative UI Description](../state-management/arkts-declarative-ui-description.md).
 
 
 ## Update Mechanism
 
-A conditional statement updates whenever a state variable used inside the **if** or **else if** condition changes. Specifically:
+A conditional rendering statement updates whenever a state variable used inside the **if** or **else if** condition changes. Specifically:
 
-1. The conditional statement re-evaluates the conditions. If the evaluation of the conditions changes, steps 2 and 3 are performed. Otherwise, no follow-up operation is required.
+1. The conditional rendering statement re-evaluates the conditions. If the evaluation of the conditions changes, steps 2 and 3 are performed. Otherwise, no follow-up operation is required.
 
 2. All previously constructed child components within the conditional branch are removed from the component tree.
 
-3. The build function of the new active branch is executed, and the generated child components are added to the **if** parent component. If no matching **else** branch exists when conditions change, no new build function executes.
+3. The builder function of the new branch is executed, and the generated child components are added to the **if** parent component. If no applicable **else** branch exists, nothing is created.
 
-Condition expressions can include TypeScript expressions. However, expressions within constructors must not modify application state.
+Conditions can contain TypeScript expressions. Expressions within builder functions must not modify application state.
 
 ## Use Cases
 
@@ -71,20 +72,21 @@ struct IfExample {
   }
 }
 ```
+![](figures/render_if.gif)
 
-Each branch of the **if** statement includes a build function. Each of such build functions must create one or more components. On initial render, **if** will execute a build function and add the generated child component to its parent component.
+Each branch of the **if** statement includes a builder function. Each of such builder functions must create one or more components. On initial render, **if** will execute a build function and add the generated child component to its parent component.
 
 **if** updates whenever a state variable used inside the **if** or **else if** condition changes, and re-evaluates the conditions. If the evaluation of the conditions changes, it means that another branch of **if** needs to be built. In this case, the ArkUI framework will:
 
 1. Remove all previously rendered components from the previous branch.
 
-2. Execute the build function of the new active branch and add the generated components to the parent container.
+2. The builder function of the new branch is executed, and the generated child components are added to their parent component.
 
-In this example, when **count** increases from 0 to 1, the condition **if (this.count > 0)** becomes true, executing the branch's build function to create and add a **Text** component to the parent **Column**. If **count** changes back to 0 later, then the **Text** component will be removed from the **Column** component. Since there is no **else** branch, no new build function will be executed.
+In the preceding example, when the value of **count** increases from **0** to **1**, the condition **if (this.count > 0)** becomes **true**. The builder function of this branch is executed, creating a [Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component and adding it to the parent **Column** component. If **count** subsequently changes to **0**, the **Text** component is removed from the [Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md) component. Because there is no **else** branch, no new builder function is executed.
 
-### if/else Statements and Child Component States
+### if/ else Statements and Child Component States
 
-This example demonstrates **if/else** statements with child components containing [\@State](../state-management/arkts-state.md) decorated variables.
+This example involves an **if/else** statement and a child component with a [\@State](../state-management/arkts-state.md) decorated variable.
 
 <!-- @[render_if_else](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfElseRendering.ets) -->
 
@@ -130,14 +132,15 @@ struct MainView {
   }
 }
 ```
+![](figures/render_if_else.gif)
 
 Initial rendering: creates **CounterView** child component with label **'CounterView \#positive'** and initial **counter** value **0**.
 
 **Modification to the counter variable of CounterView**: re-renders the existing **CounterView** component (with label **'CounterView \#positive'**) while preserving the state variable value.
 
 **MainView.toggle change to false**: updates the **if** statement, causing the following:
-1. Removal of the old **CounterView** instance (**label**: **'CounterView \#positive'**).
-2. Creation of a new **CounterView** instance (**label**: **'CounterView \#negative'**) with **counter** reset to **0**.
+1. Removal of the old **CounterView** child component (**label**: **'CounterView \#positive'**).
+2. Creation of a new **CounterView** child component (**label**: **'CounterView \#negative'**) with **counter** reset to **0**.
 
 > **NOTE**
 >
@@ -191,12 +194,13 @@ struct KeepMainView {
   }
 }
 ```
+![](figures/render_keep_counter.gif)
 
 Here, the \@State decorated variable **counter** is owned by the parent component. Therefore, it is not destroyed when the **KeepCounterView** component instance is destroyed. The **KeepCounterView** component references the state through the [\@Link](../state-management/arkts-link.md) decorator. The state must be moved from a child to its parent (or parent of parent) to avoid losing it when the conditional content (or repeated content) is destroyed.
 
-### Nested Conditional Statements
+### Nested if Statements
 
-Nested conditional statements maintain the same rendering rules without affecting parent component constraints.
+Nested conditional rendering statements maintain the same rendering rules without affecting parent component constraints.
 
 <!-- @[render_nested_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/NestedIf.ets) -->
 
@@ -249,3 +253,4 @@ struct NestedIf {
   }
 }
 ```
+![](figures/render_nested_if.gif)

@@ -89,11 +89,9 @@ struct Demo {
 
 此变更涉及应用适配。
 
-变更前：EmbeddedComponent获焦时，其拉起的EmbeddedUIExtensionAbility窗口内焦点直接下发到第一个可获焦子节点。
+变更前：EmbeddedComponent获焦时，如果外部走焦到EmbeddedUIExtensionAbility，焦点正常下发到第一个可获焦子节点；如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，在EmbeddedUIExtensionAbility页面内未设置[defaultFocus](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](../../../application-dev/ui/arkts-common-events-focus-event.md#主动获焦失焦)时，焦点仍然下发到第一个可获焦子节点。
 
-变更后：EmbeddedComponent获焦时，
-1. 如果外部走焦到EmbeddedUIExtensionAbility，焦点正常下发到第一个可获焦子节点。
-2. 如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，则与UIAbility保持统一规则。两者在拉起一个层级页面且该页面未设置[defaultFocus](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](../../../application-dev/ui/arkts-common-events-focus-event.md#主动获焦失焦)时，焦点均停留在根容器，不下发到子节点。
+变更后：EmbeddedComponent获焦时，如果外部走焦到EmbeddedUIExtensionAbility，焦点正常下发到第一个可获焦子节点；如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，则与UIAbility保持统一规则，两者在拉起一个层级页面且该页面未设置[defaultFocus](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](../../../application-dev/ui/arkts-common-events-focus-event.md#主动获焦失焦)时，焦点均停留在根容器，不下发到子节点。
 
 **起始 API Level**
 
@@ -109,7 +107,7 @@ struct Demo {
 
 **适配指导**
 
-在由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility的场景下，如果期望第一个可获焦子组件自动获焦，可以通过如下两种方式显式设置焦点。
+在由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility的场景下，焦点默认停留在根容器。如果期望第一个可获焦子组件自动获焦，可以通过如下两种方式显式设置焦点。
 
 - 方式一：在EmbeddedUIExtensionAbility的页面中，通过将[defaultFocus](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)设置为true，使得第一个可获焦子组件成为层级页面的默认焦点。
 

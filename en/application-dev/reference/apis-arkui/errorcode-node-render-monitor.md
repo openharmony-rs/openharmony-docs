@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=66d449f865d808c2ab2228de4384c97bf7b4883d translatedAt=2026-08-29T09:21:21.000Z pushedAt=2026-08-31T03:14:44.648Z -->
 
 > **NOTE**
 >
@@ -22,8 +23,8 @@ This error code is reported when the number of nodes registered to listen for re
 
 **Possible Causes**
 
-The number of nodes listening for render state exceeds the maximum allowed limit.
+When the [on('nodeRenderState')](arkts-apis-uicontext-uiobserver.md#onnoderenderstate20) API is called to register a listener for the render state of nodes, the number of nodes registered for listening in a single UI instance exceeds the limit.
 
 **Solution**
 
-Ensure that less than 64 nodes are registered to listen for render state.
+Ensure that no more than 64 nodes are registered to listen for the render state in a single UI instance.

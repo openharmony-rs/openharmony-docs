@@ -42,13 +42,12 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. 模块导入。
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
 
-2. 根据实际业务需求配置[文件保存选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅例举各选项的配置参考。
+2. 根据实际业务需求配置文件保存选项[DocumentSaveOptions](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅列举各选项的配置参考。
 
    ```ts
    // 创建文件管理器选项实例。
@@ -63,7 +62,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    documentSaveOptions.autoCreateEmptyFile = false;
    ```
 
-3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
+3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
 
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
@@ -81,8 +80,8 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ```
 
    > **注意**：
-
-   > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   >
+   > - Picker会默认预置空文件并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
    > - 避免在Picker回调中直接操作URI。
    > - 建议使用全局变量保存URI以供后续使用。
    > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
@@ -103,7 +102,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ```ts
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
 
 ## 保存音频类文件
@@ -111,8 +110,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. 模块导入。
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -143,8 +141,8 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ```
 
    > **注意**：
-
-   > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   >
+   > - Picker会默认预置空文件并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
    > - 避免在Picker回调中直接操作URI。
    > - 建议使用全局变量保存URI以供后续使用。
    > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
@@ -165,7 +163,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ```ts
    let writeLen = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
  
    ```
 
@@ -184,8 +182,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. 模块导入。
 
    ```ts
-   import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```

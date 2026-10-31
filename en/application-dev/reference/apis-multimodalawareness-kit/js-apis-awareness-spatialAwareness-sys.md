@@ -2,11 +2,12 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=c8917731060061a309b23d8368826387d9702519 translatedAt=2026-09-14T02:16:03.236Z pushedAt=2026-09-14T10:03:33.582Z -->
 
-This module provides the distance measurement awareness capability.
+This module provides the distance measurement awareness capability and supports ultrasound signal testing.
 
 > **NOTE**
 >
@@ -45,16 +46,16 @@ Provides the reporting mode of the result after the distance measurement API is 
 
 ## spatialAwareness.DistanceRank
 
-Provides the distance rank of the distance measurement result. Different ranks correspond to different distance ranges.
+Enumerates the distance ranks of distance measurement results, with each rank corresponding to a different distance range.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | Name                                | Value               | Description                  |
 | ------------------------------------ | ------------------| -----------------------|
-| RANK_ULTRA_SHORT_RANGE               | rankUltraShort    | Ultra-short distance, in cm. The value range is [0:5].   |
-| RANK_SHORT_RANGE                     | rankShort         | Short distance, in cm. The value range is (5:100].    |
-| RANK_SHORT_MEDIUM_RANGE              | rankMediumShort   | Medium-short distance, in cm. The value range is (100:500].|
-| RANK_MEDIUM_RANGE                    | rankMedium        | Medium distance, in cm. The value range is (500:1000]. |
+| RANK_ULTRA_SHORT_RANGE               | rankUltraShort    | Ultra-short range. Unit: cm, range: [0:5].    |
+| RANK_SHORT_RANGE                     | rankShort         | Short range. Unit: cm, range: (5:100].     |
+| RANK_SHORT_MEDIUM_RANGE              | rankMediumShort   | Medium-short range. Unit: cm, range: (100:500]. |
+| RANK_MEDIUM_RANGE                    | rankMedium        | Medium range. Unit: cm, range: (500:1000].  |
 
 ## spatialAwareness.DistanceMeasurementResponse
 
@@ -65,9 +66,9 @@ Provides the callback result after the distance measurement API is executed.
 | Name              | Type           | Read-Only  | Optional  | Description    |
 | -------------------| ---------------| -------|------  |-------------|
 | rank               | DistanceRank   | Yes    | No    | Distance rank.|
-| distance           | float          | Yes    | No    | Distance.|
-| confidence         | float          | Yes    | No    | Confidence.|
-| deviceId           | string         | Yes    | No    | Device ID.|
+| distance           | float          | Yes     | No     | Distance. The result is greater than or equal to 0.|
+| confidence         | float          | Yes     | No     | Confidence. Value range: [0, 1].|
+| deviceId           | string         | Yes     | No     | Device ID. String length: [1, 128].|
 
 ## spatialAwareness.PositionRelativeToDoor
 
@@ -88,9 +89,9 @@ Provides the callback result after the door inside-outside recognition API is ex
 
 | Name              | Type                  | Read-Only     | Optional      | Description    |
 | -------------------| ----------------------| ----------|----------|--------|
-| doorLockCode       | int                   | Yes       | No        | Door lock verification code.|
+| doorLockCode       | int                   | Yes        | No         | Door lock verification code, with a result ≥ 0.|
 | position           | PositionRelativeToDoor| Yes       | No         | Inside and outside door location information.|
-| deviceId           | string                | Yes       | No        | Device ID. |
+| deviceId           | string                | Yes        | No         | Device ID. String length: [1,128].  |
 
 ## spatialAwareness.DistanceMeasurementConfigParams
 
@@ -100,10 +101,10 @@ Provides the input parameter configuration of the distance measurement API. This
 
 | Name              |  Type                  | Read-Only     | Optional      | Description    |
 | -------------------| ----------------------| -----------|------------|----------|
-| deviceList         | string[]              | Yes        | No| Device list.|
+| deviceList         | string[]              | Yes         | No | Device list, device unique identifier, string length value range: [1,128], array length value range: [1,128]. |
 | techType           | TechnologyType        | Yes        | No| Signal type.|
 | reportMode         | ReportingMode         | Yes        | No | Result reporting mode.|
-| reportFrequency    | int                   | Yes        | No | Result reporting frequency.|
+| reportFrequency    | int                   | Yes         | No  | Result reporting frequency, unit: Hz, value range: [0,999999]. |
 
 ## spatialAwareness.onDistanceMeasure<sup>23+</sup>
 
@@ -149,10 +150,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call onDistanceMeasure start');
    try {
       spatialAwareness.onDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ${data.distance}');
+         console.info(`result = ${data.distance}`);
       });
    } catch (err) {
-      console.error('call onDistanceMeasure failed, errCode = ' + err.code);
+      console.error(`call onDistanceMeasure failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -200,10 +201,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call offDistanceMeasure start');
    try {
       spatialAwareness.offDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ${data.distance}');
+         console.info(`result = ${data.distance}`);
       });
    } catch (err) {
-      console.error('call offDistanceMeasure failed, errCode = ' + err.code);
+      console.error(`call offDistanceMeasure failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -251,10 +252,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call onIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.onIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DoorPositionResponse) => {
-         console.info('result = ${data.position}');
+         console.info(`result = ${data.position}`);
       });
    } catch (err) {
-      console.error('call onIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
+      console.error(`call onIndoorOrOutdoorIdentify failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -302,9 +303,9 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call offIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.offIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DoorPositionResponse) => {
-         console.info('result = ${data.position}');
+         console.info(`result = ${data.position}`);
       });
    } catch (err) {
-      console.error('call offIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
+      console.error(`call offIndoorOrOutdoorIdentify failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```

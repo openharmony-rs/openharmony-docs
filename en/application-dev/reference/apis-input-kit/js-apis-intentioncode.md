@@ -6,10 +6,11 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:11:57.062Z pushedAt=2026-09-11T02:42:28.842Z -->
 
-The **intentionCode** module maps the original events of the keyboard to intention codes for normalized interaction. For example, if the mapped event of the space bar on the keyboard is **INTENTION_SELECT**, the intent is to select an item.
+The **intentionCode** module maps the original events of the keyboard to intention codes for normalized interaction. For instance, the spacebar on the keyboard is mapped to the INTENTION_SELECT event, representing a selection intention.
 
->  **NOTE**
+> **NOTE**
 > 
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 

@@ -1,12 +1,13 @@
 # @ohos.app.ability.ServiceExtensionAbility (ServiceExtensionAbility) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T10:29:18.332Z pushedAt=2026-09-05T10:47:30.426Z -->
 
-The ServiceExtensionAbility module provides extended capabilities for background services, including lifecycle callbacks for creating, destroying, connecting, and disconnecting background services.
+The ServiceExtensionAbility module provides extended capabilities for background services, including lifecycle callbacks for creating, destroying, connecting, and disconnecting background services. It is applicable to scenarios where services need to run in the background and handle long-running tasks, such as file download and background computing.
 
 > **NOTE**
 >
@@ -14,7 +15,9 @@ The ServiceExtensionAbility module provides extended capabilities for background
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs provided by this module are system APIs.
+> The APIs of this module are system APIs.
+>
+> The APIs of this module do not support implementation or use in app clones.
 
 ## Modules to Import
 
@@ -95,7 +98,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 onRequest(want: Want, startId: number): void
 
-Called following **onCreate()** when a ServiceExtensionAbility is started by calling **startAbility()** or **startServiceExtensionAbility()**. The value of **startId** is incremented for each ServiceExtensionAbility that is started.
+Extension lifecycle callback. If the service is started by [startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) or [requestDialogService](js-apis-inner-application-uiAbilityContext.md#requestdialogservice), this callback is invoked after [onCreate](#oncreate). It is invoked each time the service is started, and startId increments each time.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -106,7 +109,7 @@ Called following **onCreate()** when a ServiceExtensionAbility is started by cal
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want |  [Want](js-apis-app-ability-want.md) | Yes| Want information related to this ServiceExtensionAbility, including the ability name and bundle name.|
-| startId | number | Yes| Number of times the instance has been started. The initial value is **1** for the first start, and it increments automatically for subsequent starts.|
+| startId | number | Yes | Number of times the service is started. The initial value is 1 for the first start and increments automatically for subsequent starts. |
 
 **Example**
 
@@ -115,7 +118,7 @@ import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
-    console.info('onRequest, want: ${want.abilityName}');
+    console.info(`onRequest, want: ${want.abilityName}`);
   }
 }
 ```
@@ -125,7 +128,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>
 
-Called following **onCreate()** when a ServiceExtensionAbility is started by calling **connectAbility()**. A RemoteObject is returned for communication between the server and client.
+Extension lifecycle callback. If the service is connected through connectAbility, this callback is invoked after onCreate. It returns a RemoteObject object used for communication between the client and the server.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -158,7 +161,7 @@ class StubTest extends rpc.RemoteObject{
 }
 class ServiceExt extends ServiceExtensionAbility {
   onConnect(want: Want) {
-    console.info('onConnect , want: ${want.abilityName}');
+    console.info(`onConnect, want: ${want.abilityName}`);
     return new StubTest('test');
   }
 }
@@ -194,7 +197,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 onDisconnect(want: Want): void | Promise\<void>
 
-Called when a client is disconnected from this ServiceExtensionAbility.
+Extension lifecycle callback. It is invoked when the client disconnects from the service.
 
 This API returns the result synchronously or uses a promise to return the result.
 
@@ -218,7 +221,7 @@ This API returns the result synchronously or uses a promise to return the result
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise that returns no value.|
+| void \| Promise\<void> | No return value or a Promise object with no return value. |
 
 **Example**
 
@@ -270,7 +273,7 @@ import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onReconnect(want: Want) {
-    console.info('onReconnect, want: ${want.abilityName}');
+    console.info(`onReconnect, want: ${want.abilityName}`);
   }
 }
 ```
@@ -292,7 +295,7 @@ Called when the configuration of this ServiceExtensionAbility is updated.
 | newConfig | [Configuration](js-apis-app-ability-configuration.md) | Yes| New configuration.|
 
 **Example**
-    
+
 ```ts
 import { ServiceExtensionAbility, Configuration } from '@kit.AbilityKit';
 
@@ -317,16 +320,16 @@ Dumps the client information.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| params | Array\<string> | Yes| Parameters in the form of a command.|
+| params | Array\<string> | Yes | Array of parameters passed in command line mode. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Array\<string> | Array of client information.|
+| Array\<string> | Represents the array of dumped client information. |
 
 **Example**
-    
+
 ```ts
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
 

@@ -1,11 +1,20 @@
+---
+kits: ["Drm Kit / 数字版权保护服务"]
+description: "指导DRM解决方案集成方开发HDI插件，涵盖模块添加、驱动入口实现、HDI接口实现、编译配置及SELinux权限配置，适用于DRM方案商集成接入场景。"
+keywords: [DRM, 解决方案集成, HDI插件, 驱动开发, HDF, 编译配置, SELinux, clearplay, vendor分区]
+doctype: guide
+status: active
+---
 # DRM解决方案开发指导
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-DRM 解决方案插件实现DRM HDI接口（链接），DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
+<!--Adviser: @qin_wei_jie-->
+
+DRM解决方案插件实现DRM HDI接口，DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
 
 插件由DRM解决方案集成方开发，放置在设备的/vendor分区中。
 
@@ -44,7 +53,7 @@ DRM HDI API的IDL构建完成后，可以在`//ohos/out/产品型号/gen/drivers
 ├── hdi_service  # DRM解决方案HDI服务代码。
 │   ├── BUILD.gn # DRM解决方案HDI服务代码编译BUILD.gn。
 │   ├── common   # DRM解决方案HDI服务依赖的工具类代码，包含json解析、base64编解码。
-│   ├── include  # RM解决方案HDI服务实现头文件。
+│   ├── include  # DRM解决方案HDI服务实现头文件。
 │   └── src      # DRM解决方案HDI服务实现代码。
 ├── interfaces   # DRM解决方案HDI服务能力接口。
 │   ├── BUILD.gn # DRM解决方案HDI服务能力接口编译BUILD.gn。
@@ -368,8 +377,7 @@ group("hdf_clearplay_interfaces") {
 
 ### 服务代码编译
 
-与编译系统部件编译类似：
-`./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
+与编译系统部件编译类似：`./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
 
 编译生成的二进制文件如下：
 
@@ -453,7 +461,7 @@ clearplay :: host {
     }
 }
 ```
-设备上`/etc/drm/drm_plugin_lazyloding.cfg`为 DRM 框架服务懒加载列表配置文件，键值对形式，DRM 解决方案插件解决方案名为键，DRM解决方案服务名为值：
+设备上`/etc/drm/drm_plugin_lazyloading.cfg`为DRM框架服务懒加载列表配置文件，键值对形式，DRM解决方案名为键，DRM解决方案服务名为值：
 ```json
 {
     "plugin_services": {
@@ -468,7 +476,9 @@ clearplay :: host {
 
 selinux用于限制服务进程可访问的资源，以下给定基础的selinux配置，在此基础上按业务添加所需规则。
 
-注意：以下示例中，clearplay_host表示hcs中的hostName值，clearplay_service表示服务名称。
+> **注意：**
+>
+> 以下示例中，clearplay_host表示hcs中的hostName值，clearplay_service表示服务名称。
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/adapter/public/hdf_service_contexts
 

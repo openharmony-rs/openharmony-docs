@@ -35,6 +35,14 @@ Obtains the supported color spaces.
 | ----------------------------------------------- | ---------------------------- |
 | Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)>| Array of color spaces supported. If the API call fails, undefined is returned.    |
 
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400103         | Session not config, only throw in session usage.<br>Applicable versions: 12-17|
+
 **Example**
 
 ```ts

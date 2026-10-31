@@ -1,8 +1,16 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍AVPlayer在不同场景下设置播放URL的方法，覆盖HTTP/HTTPS、HLS流媒体点播直播、自定义HTTP请求头，以及本地Raw文件、应用沙箱文件等流媒体资源的播放地址设置。"
+keywords: [AVPlayer, URL设置, 播放地址, HTTP请求头, HLS, 流媒体, 应用沙箱, Raw文件, m3u8]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer设置播放URL(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Owner: @chennotfound-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 本开发指导将介绍如何使用AVPlayer开发播放功能，在不同的场景下如何设置URL。
@@ -231,7 +239,7 @@
     ```
 3. 通过注释、解注释/entry/src/main/ets/pages/Index.ets中的上文示例的各种情况，编译并运行。
 
-4. 在安装应用后，可将示例工程的/entry/src/main/resources/rawfile/test.m3u8通过以下命令加入应用沙箱，从而运行应用沙箱相关示例:（```<FILESDIR>```为物理路径，以示例工程为例，可通过console.info打印"this.context.filesDir"得到应用沙箱路径，再根据[应用沙箱指南](../../file-management/app-sandbox-directory.md)的```应用沙箱路径和真实物理路径的对应关系表```找到物理路径）。
+4. 在安装应用后，可将示例工程的/entry/src/main/resources/rawfile/test.m3u8通过以下命令加入应用沙箱，从而运行应用沙箱相关示例：（```<FILESDIR>```为物理路径，以示例工程为例，可通过console.info打印"this.context.filesDir"得到应用沙箱路径，再根据[应用沙箱指南](../../file-management/app-sandbox-directory.md)的```应用沙箱路径和真实物理路径的对应关系表```找到物理路径）。
     ```txt
     hdc file send "[目录]\test.m3u8" <FILESDIR>
     hdc file send "[目录]\test_01.mp3" <FILESDIR>

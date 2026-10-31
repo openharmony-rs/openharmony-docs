@@ -56,7 +56,7 @@ httpRequest.request(// 填写HTTP请求的URL地址，可以带参数也可以�
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false, // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
     caPath: '/path/to/cacert.pem', // 可选，默认使用系统预设CA证书，自API 10开始支持该属性。
     caData: '-----BEGIN CERTIFICATE-----\n' +
         'MIIDaTCCAlGgAwIBAgIICN287lmB2cMwDQYJKoZIhvcNAQELBQAwgYoxCzAJBgNV\n' +
@@ -160,7 +160,7 @@ createHttp(): HttpRequest
 创建一个HTTP请求，里面包括发起请求、中断请求、订阅/取消订阅HTTP Response Header事件。当发起多个HTTP请求时，需为每个HTTP请求创建对应HttpRequest对象。每一个HttpRequest对象对应一个HTTP请求。
 
 > **说明：**
-> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄露问题。
+> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄漏问题。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -170,7 +170,7 @@ createHttp(): HttpRequest
 
 | 类型        | 说明                                                         |
 | :---------- | :----------------------------------------------------------- |
-| HttpRequest | 返回一个HttpRequest对象，里面包括request、requestInStream、requestSync、enableAutoCookie、destroy、on和off方法。 |
+| [HttpRequest](#httprequest) | 返回一个HttpRequest对象，里面包括request、requestInStream、requestSync、enableAutoCookie、destroy、on和off方法。 |
 
 **示例：**
 
@@ -188,7 +188,7 @@ HTTP请求任务。在调用HttpRequest的方法前，需要先通过[createHttp
 
 request(url: string, callback: AsyncCallback\<HttpResponse\>): void
 
-根据URL地址，发起HTTP网络请求，使用callback方式作为异步方法。
+根据URL地址，发起HTTP网络请求，使用callback异步回调。
 
 > **说明：**
 >
@@ -206,12 +206,12 @@ request(url: string, callback: AsyncCallback\<HttpResponse\>): void
 
 | 参数名   | 类型                                           | 必填 | 说明                    |
 | -------- | ---------------------------------------------- | ---- | ---------------------- |
-| url      | string                                         | 是   | 发起网络请求的URL地址。示例：https://www.test.com |
+| url      | string                                         | 是   | 发起网络请求的URL地址。示例：`https://www.test.com` |
 | callback | AsyncCallback\<[HttpResponse](#httpresponse)\> | 是   | 回调函数。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID   | 错误信息                                                         |
@@ -246,8 +246,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 
@@ -274,7 +275,7 @@ httpRequest.request("EXAMPLE_URL", (err: Error, data: http.HttpResponse) => {
 
 request(url: string, options: HttpRequestOptions, callback: AsyncCallback\<HttpResponse\>):void
 
-根据URL地址和相关配置项，发起HTTP网络请求，使用callback方式作为异步方法。
+根据URL地址和相关配置项，发起HTTP网络请求，使用callback异步回调。
 
 > **说明：**
 >
@@ -298,7 +299,7 @@ request(url: string, options: HttpRequestOptions, callback: AsyncCallback\<HttpR
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID   | 错误信息                                                         |
@@ -333,8 +334,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 **示例：**
@@ -365,7 +367,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false, // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
 };
 
 httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
@@ -383,9 +385,9 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 
 ### request
 
-request(url: string, options? : HttpRequestOptions): Promise\<HttpResponse\>
+request(url: string, options?: HttpRequestOptions): Promise\<HttpResponse\>
 
-根据URL地址，发起HTTP网络请求，使用Promise方式作为异步方法。
+根据URL地址，发起HTTP网络请求，使用Promise异步回调。
 
 > **说明：**
 >
@@ -414,7 +416,7 @@ request(url: string, options? : HttpRequestOptions): Promise\<HttpResponse\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID   | 错误信息                                                         |
@@ -449,8 +451,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 **示例：**
@@ -509,7 +512,7 @@ httpRequest.destroy();
 
 requestInStream(url: string, callback: AsyncCallback\<number\>): void
 
-根据URL地址，发起HTTP网络请求并返回流式响应，使用callback方式作为异步方法。
+根据URL地址，发起HTTP网络请求并返回流式响应，使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -526,7 +529,7 @@ requestInStream(url: string, callback: AsyncCallback\<number\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID   | 错误信息                                                         |
@@ -561,8 +564,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 **示例：**
@@ -585,7 +589,7 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) =>
 
 requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback\<number\>): void
 
-根据URL地址和相关配置项，发起HTTP网络请求并返回流式响应，使用callback方式作为异步方法。
+根据URL地址和相关配置项，发起HTTP网络请求并返回流式响应，使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -603,7 +607,7 @@ requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID   | 错误信息                                                         |
@@ -638,8 +642,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 **示例：**
@@ -669,7 +674,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false, // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
 };
 httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , data: number) => {
   if (!err) {
@@ -682,9 +687,9 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , 
 
 ### requestInStream<sup>10+</sup>
 
-requestInStream(url: string, options? : HttpRequestOptions): Promise\<number\>
+requestInStream(url: string, options?: HttpRequestOptions): Promise\<number\>
 
-根据URL地址，发起HTTP网络请求并返回流式响应，使用Promise方式作为异步方法。
+根据URL地址，发起HTTP网络请求并返回流式响应，使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -703,11 +708,11 @@ requestInStream(url: string, options? : HttpRequestOptions): Promise\<number\>
 
 | 类型                                   | 说明                              |
 | :------------------------------------- | :-------------------------------- |
-| Promise\<number\> | 以Promise形式返回发起请求的结果，具体含义见[ResponseCode](#responsecode)。 |
+| Promise\<number\> | Promise对象，返回发起请求的结果，具体含义见[ResponseCode](#responsecode)。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID   | 错误信息                                                         |
@@ -742,8 +747,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 **示例：**
@@ -785,8 +791,8 @@ requestSync(url: string, options?: HttpRequestOptions): HttpResponse
  >(2) 如需传入cookies，请开发者自行在参数options中添加。<br>
  >(3) 若URL包含中文或其他语言，需先调用encodeURL(URL)编码，再发起请求。<br>
  >(4) 此接口为同步接口，会阻塞当前线程直到返回HTTP请求响应结果或错误码。
- 
- **起始版本：** 26.0.0
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -809,12 +815,11 @@ requestSync(url: string, options?: HttpRequestOptions): HttpResponse
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
 
 | 错误码ID   | 错误信息                                                         |
 |---------|----------------------------------------------------------------|
-| 401     | Parameter error.                                               |
 | 201     | Permission denied.                                             |
 | 2300001 | Unsupported protocol.                                          |
 | 2300003 | Invalid URL format or missing URL.                             |
@@ -844,6 +849,7 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
+| 2300996 | The request was intercepted by the HTTP global interceptor.    |
 | 2300997 | Cleartext traffic not permitted.                               |
 | 2300998 | It is not allowed to access this domain.                       |
 | 2300999 | Internal error.                                                 |
@@ -874,7 +880,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false, // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
 };
 let url = "EXAMPLE_URL"; // 访问url
 try {
@@ -900,7 +906,9 @@ enableAutoCookie(enable: boolean): void
 >
 > (1) 默认值为false，表示默认不自动携带Cookie。<br>
 > (2) 当配置由false切换为true后，会在后续调用request接口发起请求时生效，并自动共享Cookie。<br>
-> (3) 当配置由true切换为false时，会清空当前实例内保存的Cookie共享状态。
+> (3) 当配置由true切换为false时，会清空当前实例内保存的Cookie共享状态。<br>
+> (4) 关于重定向场景的Cookie处理：通过header字段手动配置的Cookie在发生重定向时不会自动发送给重定向后的目标主机，仅服务端通过Set-Cookie下发的Cookie会根据域名规则自动携带。<br>
+> (5) 关于跨域Cookie携带规则：Cookie的自动携带仅在相同域名或相同子域名之间生效，不同域名之间不支持Cookie的自动携带。
 
 **起始版本：** 26.0.0
 
@@ -1060,7 +1068,7 @@ httpRequest.off("headersReceive");
 
 once(type: "headersReceive", callback: Callback\<Object\>): void
 
-订阅HTTP Response Header 事件，只能触发一次。触发之后，订阅器就会被移除。使用callback方式作为异步方法。
+订阅HTTP Response Header 事件，只能触发一次。触发之后，订阅器就会被移除。使用callback异步回调。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -1332,10 +1340,10 @@ httpRequest.off("dataSendProgress");
 | expectDataType<sup>9+</sup>  | [HttpDataType](#httpdatatype9)  | 否  | 是  | 指定返回数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。当指定其类型为Object时，最大长度为65536字符数。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | usingCache<sup>9+</sup>      | boolean                         | 否  | 是  | 是否使用缓存，true表示请求时优先读取缓存，false表示不使用缓存；默认为true，请求时优先读取缓存。缓存跟随当前进程生效，新缓存会替换旧缓存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | priority<sup>9+</sup>        | number                          | 否  | 是  | HTTP/HTTPS请求并发优先级，值越大优先级越高，范围[1,1000]，默认为1，超出范围将设置为默认值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| header                       | Object                          | 否  | 是  | HTTP请求头字段。当请求方式为"POST" "PUT" "DELETE" 或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。<br />如果head中包含number类型的字段，最大支持int64的整数。<br />header字段支持JSON格式如 [完整示例](js-apis-http.md#完整示例) 和Record<string, string>格式输入。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| readTimeout                  | number                          | 否  | 是  | 读取超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br />设置为0表示不会出现超时情况。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| header                       | Object                          | 否  | 是  | HTTP请求头字段。当请求方式为"POST"、"PUT"、"DELETE"或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。<br/>如果header中包含number类型的字段，最大支持int64的整数。<br/>header字段支持JSON格式如 [完整示例](#完整示例) 和Record<string, string>格式输入。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| readTimeout                  | number                          | 否  | 是  | 读取超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br/>设置为0表示不会出现超时情况。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | connectTimeout               | number                          | 否  | 是  | 连接超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | 否  | 是  | HTTP请求使用的协议版本。未指定时，由系统自动协商最适合的协议版本。若指定HTTP3，由于HTTP3协议的安全限制，需通过[TlsConfig](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-network-kit/js-apis-http.md)指定TLS 版本为1.3，且目标域名支持HTTP3协议，才能启用HTTP3，否则将协商降级。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | 否  | 是  | HTTP请求使用的协议版本。未指定时，由系统自动协商最适合的协议版本。若指定HTTP3，由于HTTP3协议的安全限制，需通过[TlsConfig](#tlsconfig18)指定TLS版本为1.3，且目标域名支持HTTP3协议，才能启用HTTP3，否则将协商降级。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | 否  | 是  | HTTP代理配置，该项不配置时默认使用系统代理。<br />- 当usingProxy为布尔类型true时，使用默认网络代理，为false时，不使用代理。<br />- 当usingProxy为HttpProxy类型时，使用指定网络代理。从API version 22开始，HttpProxy支持指定username和password字段。<br>- 从API version 26.0.0开始，当usingSocks5Proxy被正确配置时，usingProxy项不生效。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | caPath<sup>10+</sup>     | string               | 否  | 是  | 如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。CA证书路径为沙箱映射路径（开发者可通过[UIAbilityContext](../apis-ability-kit/js-apis-app-ability-common.md#uiabilitycontext)提供的能力获取应用沙箱路径）。目前仅支持后缀名为.pem的文本格式证书。<br> 系统预设CA证书位置：/etc/ssl/certs/cacert.pem。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | caData<sup>20+</sup>     | string               | 否  | 是  | 如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。如果同时设置了caPath和caData，caData将被系统忽略。目前仅支持传入.pem格式的证书内容，最大长度为8000字节。仅支持传入单证书，不支持证书链传入。<br />系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
@@ -1360,26 +1368,25 @@ httpRequest.off("dataSendProgress");
 | reuseConnections | boolean | 否 | 是 | HTTP请求是否复用连接。默认值为true，表示复用已有的连接；设置为false时，每次请求将建立新的连接，不再复用已有连接。本字段可与inactivityMs字段搭配使用，自定义连接超时关闭时间。<br />- 连接复用是指在完成一次HTTP请求后，底层的TCP连接不会被立即关闭，而是保持在连接池中，后续的HTTP请求如果目标地址相同，可以重用该连接，从而减少TCP握手和TLS握手的开销，提高性能。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | inactivityMs | number | 否 | 是 | 连接池中的连接最大空闲时间，超过该时间后连接将被关闭。单位为毫秒（ms），默认配置值为118秒。系统内部比较时间时会先计算连接空闲时间的差值，然后向下取整到秒，再与配置的值进行比较。<br/>- 取值范围是(0, 2147483647]，传入小于等于0的数值时系统使用默认值118秒。当reuseConnections配置为false时，该参数不生效。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | usingSocks5Proxy | [Socks5Proxy](#socks5proxy) | 否 | 是 | SOCKS5代理配置，该项不配置时不启动SOCKS5代理。<br />当该项被正确配置时，如果同时配置了usingProxy，usingProxy不生效。<br />**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| enablePartialChain | boolean | 否 | 是 | 是否允许在证书链验证时使用信任库中的中间CA证书作为信任锚点。设置为false时，证书链必须逐级验证至受信任的根CA证书。设置为true时，若信任库中存在中间CA证书，则证书链验证到该中间CA时即可视为通过，无需继续追溯至根CA证书。当[SslType](#ssltype20)使用默认值或设置为TLS时，默认值为true；当[SslType](#ssltype20)设置为TLCP时，默认值为false。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## RequestMethod
 
 HTTP 请求方法。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.NetStack
 
 | 名称    | 值      | 说明                |
 | :------ | ------- | :------------------ |
-| OPTIONS | "OPTIONS" | OPTIONS方法描述了目标资源的通信选项。 |
-| GET     | "GET"     | GET方法请求指定资源的表示。使用GET的请求应该只检索数据，不应该包含请求内容。 |
-| HEAD    | "HEAD"    | HEAD方法请求与GET请求相同的响应，但没有响应主体。 |
-| POST    | "POST"    | POST方法将实体提交给指定的资源，通常会导致服务器上的状态更改。 |
-| PUT     | "PUT"     | PUT方法将目标资源的所有当前表示替换为请求内容。 |
-| DELETE  | "DELETE"  | DELETE方法用于删除指定的资源。 |
-| TRACE   | "TRACE"   | TRACE方法沿到达目标资源的路径执行消息环回测试。 |
-| CONNECT | "CONNECT" | CONNECT方法建立到由目标资源标识的服务器的隧道。 |
-| PATCH   | "PATCH"   | PATCH方法对资源进行部分修改。 <br/>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| OPTIONS | "OPTIONS" | OPTIONS方法描述了目标资源的通信选项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET     | "GET"     | GET方法请求指定资源的表示。使用GET的请求应该只检索数据，不应该包含请求内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| HEAD    | "HEAD"    | HEAD方法请求与GET请求相同的响应，但没有响应主体。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| POST    | "POST"    | POST方法将实体提交给指定的资源，通常会导致服务器上的状态更改。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PUT     | "PUT"     | PUT方法将目标资源的所有当前表示替换为请求内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DELETE  | "DELETE"  | DELETE方法用于删除指定的资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TRACE   | "TRACE"   | TRACE方法沿到达目标资源的路径执行消息环回测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| CONNECT | "CONNECT" | CONNECT方法建立到由目标资源标识的服务器的隧道。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PATCH   | "PATCH"   | PATCH方法对资源进行部分修改。 <br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ResponseCode
 
@@ -1463,16 +1470,16 @@ request方法回调函数的返回值类型。
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| dnsTiming  | number | 否   | 否   | 从[request](#request)请求到DNS解析完成耗时。 |
-| tcpTiming  | number | 否   | 否   | 从[request](#request)请求到TCP连接完成耗时。 |
-| tlsTiming  | number | 否   | 否   | 从[request](#request)请求到TLS连接完成耗时。 |
-| firstSendTiming  | number | 否   | 否   | 从[request](#request)请求到开始发送第一个字节的耗时。 |
-| firstReceiveTiming  | number | 否   | 否   | 从[request](#request)请求到接收第一个字节的耗时。 |
-| totalFinishTiming  | number | 否   | 否  | 从[request](#request)请求到完成请求的耗时。 |
-| redirectTiming  | number | 否   | 否  | 从[request](#request)请求到完成所有重定向步骤的耗时。 |
-| responseHeaderTiming  | number | 否   | 否   | 从[request](#request)请求到header解析完成的耗时。 |
-| responseBodyTiming  | number | 否   | 否   | 从[request](#request)请求到body解析完成的耗时。 |
-| totalTiming  | number | 否   | 否   | 从[request](#request)请求回调到应用程序的耗时。 |
+| dnsTiming  | number | 否   | 否   | 从[request](#request)请求到DNS解析完成耗时。单位为毫秒(ms)。 |
+| tcpTiming  | number | 否   | 否   | 从[request](#request)请求到TCP连接完成耗时。单位为毫秒(ms)。 |
+| tlsTiming  | number | 否   | 否   | 从[request](#request)请求到TLS连接完成耗时。单位为毫秒(ms)。 |
+| firstSendTiming  | number | 否   | 否   | 从[request](#request)请求到开始发送第一个字节的耗时。单位为毫秒(ms)。 |
+| firstReceiveTiming  | number | 否   | 否   | 从[request](#request)请求到接收第一个字节的耗时。单位为毫秒(ms)。 |
+| totalFinishTiming  | number | 否   | 否  | 从[request](#request)请求到完成请求的耗时。单位为毫秒(ms)。 |
+| redirectTiming  | number | 否   | 否  | 从[request](#request)请求到完成所有重定向步骤的耗时。单位为毫秒(ms)。 |
+| responseHeaderTiming  | number | 否   | 否   | 从[request](#request)请求到header解析完成的耗时。单位为毫秒(ms)。 |
+| responseBodyTiming  | number | 否   | 否   | 从[request](#request)请求到body解析完成的耗时。单位为毫秒(ms)。 |
+| totalTiming  | number | 否   | 否   | 从[request](#request)请求回调到应用程序的耗时。单位为毫秒(ms)。 |
 
 ## ConnectionExtraInfo<sup>24+</sup>
 
@@ -1612,7 +1619,7 @@ let httpResponseCache = http.createHttpResponseCache();
 
 flush(callback: AsyncCallback\<void\>): void
 
-将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用callback方式作为异步方法。缓存数据包括：响应头(header)、响应体(result)、cookies、请求时间(requestTime)和响应时间(responseTime)。
+将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用callback异步回调。缓存数据包括：响应头(header)、响应体(result)、cookies、请求时间(requestTime)和响应时间(responseTime)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1653,7 +1660,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
 
 flush(): Promise\<void\>
 
-将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用Promise方式作为异步方法。
+将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1677,7 +1684,7 @@ let promise = httpRequest.request("EXAMPLE_URL");
 
 promise.then((data: http.HttpResponse) => {
   httpResponseCache.flush().then(() => {
-    console.error('flush success');
+    console.info('flush success');
   }).catch((err: BusinessError) => {
     console.error('flush fail');
   });
@@ -1690,7 +1697,7 @@ promise.then((data: http.HttpResponse) => {
 
 delete(callback: AsyncCallback\<void\>): void
 
-禁用缓存并删除其中的数据，使用callback方式作为异步方法。
+禁用缓存并删除其中的数据，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1732,7 +1739,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 
 delete(): Promise\<void\>
 
-禁用缓存并删除其中的数据，使用Promise方式作为异步方法。
+禁用缓存并删除其中的数据，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1825,7 +1832,7 @@ type HttpProxy = connection.HttpProxy
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
-| connection.HttpProxy | 网络代理配置信息。     |
+| [connection.HttpProxy](js-apis-net-connection.md#httpproxy10) | 网络代理配置信息。     |
 
 ## Socks5Proxy
 
@@ -1857,7 +1864,11 @@ QueryParamObject中允许使用的单个参数值类型。
 
 | 类型 | 说明 |
 | ---------------- | --------------------------- |
-| string \| number \| boolean \| null \| undefined | query参数单值类型。number和boolean会先转为字符串再参与编码；null和undefined会按仅key不带`=`值的形式序列化。 |
+| string | 字符串类型。 |
+| number | 数字类型，会先转为字符串再参与编码。 |
+| boolean | 布尔类型，会先转为字符串再参与编码。 |
+| null | 空值类型，会按仅key不带`=`值的形式序列化。 |
+| undefined | 未定义类型，会按仅key不带`=`值的形式序列化。 |
 
 ## QueryParamObject
 
@@ -1871,12 +1882,9 @@ type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-> **说明：**
->
-> (1) 每个属性名作为QueryParamObject参数的key，对应属性值可以是单个QueryParamValue，也可以是QueryParamValue数组。<br>
-> (2) 数组会展开为同名多参数，例如`{ tag: ['a', 'b'] }`会序列化为`tag=a&tag=b`。<br>
-> (3) key和value由系统自动进行URL编码，开发者应传入原始未编码内容。<br>
-> (4) 如需严格控制参数顺序或重复键顺序，建议直接使用queryParams的string形式。
+| 类型 | 说明 |
+| ---------------- | --------------------------- |
+| Record\<string, [QueryParamValue](#queryparamvalue) \| [QueryParamValue](#queryparamvalue)[]\> | 键值对象类型，用于构造URL查询参数。每个属性名作为URL参数的key，属性值作为参数值。<br>**说明：**<br>(1) 对象的每个属性名作为URL参数的key，属性值作为参数值。例如`{ scene: 'demo', page: 1 }`会序列化为`scene=demo&page=1`。<br>(2) 当属性值为数组时，会展开为同名多参数。例如`{ tag: ['a', 'b'] }`会序列化为`tag=a&tag=b`。<br>(3) key和value由系统自动进行URL编码，开发者应传入原始未编码内容。<br>(4) 如需严格控制参数顺序或重复键顺序，建议直接使用queryParams的string形式。 |
 
 ## AddressFamily<sup>15+</sup>
 
@@ -1900,8 +1908,8 @@ type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
 
 |  名称  |  类型  |  只读  | 可选  |说明     |
 | ------------------  |---- |-- | -- |----------- |
-| username       | string | 否 |否 |用于身份验证的用户名。默认值为' '。 |
-| password        | string |  否  |否 |用于身份验证的密码。默认值为' '。 |
+| username       | string | 否 |否 |用于身份验证的用户名。默认值为''。 |
+| password        | string |  否  |否 |用于身份验证的密码。默认值为''。 |
 
 ## ServerAuthentication<sup>18+</sup>
 
@@ -1963,7 +1971,7 @@ TLS配置。
 
 ## RemoteValidation<sup>18+</sup>
 
-type RemoteValidation = 'system' | 'skip'
+type RemoteValidation = 'system' | 'skip' | ValidationCallback
 
 验证远程服务器身份的方式。
 
@@ -1975,6 +1983,64 @@ type RemoteValidation = 'system' | 'skip'
 |-------------------------------|------------------------------------------------------------------------------------|
 | 'system'  | 表示使用系统CA验证远端服务器身份，值固定为'system'字符串，是未配置时的默认值。 |
 | 'skip'   | 表示跳过验证远端服务器身份流程，值固定为'skip'字符串。 |
+| [ValidationCallback](#validationcallback) | 表示使用自定义验证方式验证远端服务器身份。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## X509Cert
+
+type X509Cert = cert.X509Cert
+
+X509证书对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [cert.X509Cert](../apis-device-certificate-kit/js-apis-cert.md#x509cert) | X509证书对象。     |
+
+## ValidationContext
+
+验证远端服务器身份时的证书上下文信息，作为[ValidationCallback](#validationcallback)的参数传入。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+| 名称   | 类型                                           | 只读 | 可选 |说明                    |
+| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
+| pemCerts        | string[] | 否   | 否  | PEM格式的证书原始数据。   |
+| x509Certs | [X509Cert](#x509cert)[] | 否   | 否 | X509证书链。 |
+| host        | string | 否   | 否  | 本次请求的目标主机名。   |
+| ip | string | 否   | 否 | 本次请求实际连接的IP地址。 |
+
+## ValidationCallback
+
+type ValidationCallback = (context: ValidationContext) => boolean | Promise\<boolean\>
+
+自定义远端服务器身份验证回调函数。开发者可通过此回调实现自定义的证书验证逻辑，支持同步或异步返回验证结果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                            |
+| ---------------- | -------------------  | ------ | --------------------------------------------- |
+| context | [ValidationContext](#validationcontext) | 是 | 证书验证上下文，包含证书链、主机名和IP地址等信息。             |
+
+**返回值：**
+
+| 类型 | 说明                                   |
+| ------ | -------------------------------------- |
+| boolean \| Promise\<boolean\> | 返回布尔值表示验证是否通过。true表示验证通过，false表示验证不通过。支持返回Promise对象，用于异步验证场景。   |
 
 ## AuthenticationType<sup>18+</sup>
 
@@ -2139,7 +2205,7 @@ type SslType = 'TLS' | 'TLCP'
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
 | 'TLS' | 表示使用TLS安全通信协议，值固定为'TLS'字符串。   |
-| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。<br>**说明**：<br>（1）证书支持字符串的规格：<br> - UTF8String（英文字符集）<br> - PrintableString<br>  - IA5String<br>从API Version 22开始支持：<br> - TeletexString<br>（2）证书支持扩展的规格：<br> - BasicConstraints（OID 2.5.29.19）<br> - KeyUsage（OID2.5.29.15）<br> - SubjectKeyIdentifier（OID2.5.29.14）<br> - AuthorityKeyIdentifier（OID2.5.29.35）<br>从API Version 22开始支持：<br> - SubjectAltName（OID 2.5.29.17）<br> - ExtendedKeyUsage（OID 2.5.29.37）<br/> |
+| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。<br>**说明**：<br>（1）证书支持字符串的规格：<br> - UTF8String（英文字符集）<br> - PrintableString<br>  - IA5String<br>从API version 22开始支持：<br> - TeletexString<br>（2）证书支持扩展的规格：<br> - BasicConstraints（OID 2.5.29.19）<br> - KeyUsage（OID2.5.29.15）<br> - SubjectKeyIdentifier（OID2.5.29.14）<br> - AuthorityKeyIdentifier（OID2.5.29.35）<br>从API version 22开始支持：<br> - SubjectAltName（OID 2.5.29.17）<br> - ExtendedKeyUsage（OID 2.5.29.37）<br/> |
 
 ## InterceptorType<sup>22+</sup>
 
@@ -2289,7 +2355,7 @@ addChain(chain: HttpInterceptor[]): boolean
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID    | 错误信息                                               |
@@ -2423,7 +2489,7 @@ apply(httpRequest: HttpRequest): boolean
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID    | 错误信息                                               |

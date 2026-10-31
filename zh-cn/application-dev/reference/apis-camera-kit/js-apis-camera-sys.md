@@ -184,7 +184,7 @@ isCameraMuteSupported(): boolean
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202             |  Permission verification failed. A non-system application calls a system API.   |
+| 202             |  Permission verification failed. A non-system application calls a system API.<br>适用版本：13+   |
 
 **示例：**
 
@@ -282,7 +282,7 @@ on(type: 'cameraMute', callback: AsyncCallback\<boolean\>): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202               |  Permission verification failed. A non-system application calls a system API.       |
+| 202               |  Permission verification failed. A non-system application calls a system API.<br>适用版本：13+       |
 
 
 **示例：**
@@ -327,7 +327,7 @@ off(type: 'cameraMute', callback?: AsyncCallback\<boolean\>): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202               |  Permission verification failed. A non-system application calls a system API.     |
+| 202               |  Permission verification failed. A non-system application calls a system API.<br>适用版本：13+     |
 
 **示例：**
 
@@ -371,7 +371,7 @@ isPrelaunchSupported(camera: CameraDevice): boolean
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **示例：**
@@ -418,10 +418,10 @@ setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202 | Not System Application. |
+| 202 | Not System Application.<br>适用版本：12+ |
 | 7400101 | Parameter missing or parameter type incorrect. |
 | 7400102 | Operation not allowed. |
-| 7400201 | Camera service fatal error. |
+| 7400201 | Camera service fatal error.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1027,6 +1027,8 @@ enableDepthFusion(enabled: boolean): void
 
 启用深度融合功能。
 
+进行设置之前先使用[isDepthFusionSupported](#isdepthfusionsupported14)检查设备是否支持深度融合。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -1194,6 +1196,8 @@ function getSketchRatio(previewOutput: camera.PreviewOutput): number {
 enableSketch(enabled: boolean): void
 
 使能画中画。
+
+进行设置之前先使用[isSketchSupported](#issketchsupported11)检查设备是否支持画中画。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1637,6 +1641,8 @@ deferImageDelivery(type: DeferredDeliveryImageType): void
 
 开启相关类型分段式能力。
 
+设置之前，需要调用[isDeferredImageDeliverySupported](#isdeferredimagedeliverysupported11)判断当前模式是否支持相关分段式能力。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -2052,33 +2058,6 @@ function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
 
 metadata流。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
-## MetadataObjectType
-
-枚举，metadata元数据检测类型。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                       | 值   | 说明              |
-| -------------------------- | ---- | ----------------- |
-| HUMAN_BODY<sup>13+</sup>                 | 1    | 用于检测人体的metadata类型。 |
-| CAT_FACE<sup>13+</sup>                   | 2    | 用于检测猫脸的metadata类型。 |
-| CAT_BODY<sup>13+</sup>                   | 3    | 用于检测猫的身体的metadata类型。 |
-| DOG_FACE<sup>13+</sup>                   | 4    | 用于检测狗脸的metadata类型。 |
-| DOG_BODY<sup>13+</sup>                   | 5    | 用于检测狗的身体的metadata类型。 |
-| SALIENT_DETECTION<sup>13+</sup>          | 6    | 用于显著性检测。 |
-
-## Emotion<sup>13+</sup>
-枚举，人脸检测信息中的情绪类型。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                       | 值   | 说明              |
-| -------------------------- | ---- | ----------------- |
-| NEUTRAL                 | 0    | 平静。 |
-| SADNESS                   | 1    | 悲伤。 |
-| SMILE                   | 2    | 微笑。 |
-| SURPRISE                   | 3    | 惊讶。 |
-
 ## MetadataObject
 
 相机检测元数据信息的基础类型，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
@@ -2089,74 +2068,6 @@ metadata流。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 | -----------  | ------------------------------------------- | ---- | ---- | ----------------- |
 | objectId<sup>13+</sup>     | number                                      |  是  |  否  | metadataObject Id序号。|
 | confidence<sup>13+</sup>   | number                                      |  是  |  否  | 检测置信度，取值范围[0, 1]。|
-
-## MetadataFaceObject<sup>13+</sup>
-
-相机检测到的人脸元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                    | 类型                              | 只读 | 可选 |说明                |
-| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
-| leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                             |  是  |  否  | 左眼区域框|
-| rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                            |  是  |  否  | 右眼区域框。|
-| emotion                | [Emotion](#emotion13)             |  是  |  否  | 检测到的情绪类型。|
-| emotionConfidence      | number                            |  是  |  否  | 情绪检测置信度，取值范围[0, 1]。|
-| pitchAngle             | number                            |  是  |  否  | 俯仰角度，取值范围[-90, 90]，以向下为正。|
-| yawAngle               | number                            |  是  |  否  | 左右旋转角度，取值范围[-90, 90]，以向右为正。|
-| rollAngle              | number                            |  是  |  否  | 平面内旋转角度，取值范围[-180, 180]，以顺时针方向为正。|
-
-## MetadataHumanBodyObject<sup>13+</sup>
-
-相机检测到的人体元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## MetadataCatFaceObject<sup>13+</sup>
-
-相机检测到的猫脸元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                    | 类型                              | 只读 | 可选 |说明                |
-| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
-| leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                              |  是  |  否  | 左眼区域框。|
-| rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                              |  是  |  否  | 右眼区域框。|
-
-## MetadataCatBodyObject<sup>13+</sup>
-
-相机检测到的猫的身体元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## MetadataDogFaceObject<sup>13+</sup>
-
-相机检测到的狗脸元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                    | 类型                              | 只读 | 可选 |说明                |
-| ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
-| leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                              |  是  |  否  | 左眼区域框。|
-| rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                              |  是  |  否  | 右眼区域框。|
-
-## MetadataDogBodyObject<sup>13+</sup>
-
-相机检测到的狗的身体元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## MetadataSalientDetectionObject<sup>13+</sup>
-
-相机检测到的显著性元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## MetadataBarcodeObject<sup>14+</sup>
-
-相机检测到的二维码元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## PortraitEffect
 
@@ -2224,7 +2135,7 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |美颜类型为自动时支持的美颜强度，0表明关闭美颜，其余正值表明自动的美颜强度。    |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | 美颜类型为光滑时支持的美颜强度，0表明关闭光滑，其余正值表明光滑的美颜强度。    |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | 美颜类型为瘦脸时支持的美颜强度，0表明关闭瘦脸，其余正值表明瘦脸的美颜强度。   |
-| SKIN_TONE      | [-1, 16242611]      | 美颜类型为美肤时支持的美颜强度，-1表明关闭美肤，其余非负值为使用RGB表示的美肤美颜强度，<br> 16242611转化为16进制为0xF7D7B3，F7为R通道值，D7为G通道值，B3位B通道值。    |
+| SKIN_TONE      | [-1, 16242611]      | 美颜类型为美肤时支持的美颜强度，-1表明关闭美肤，其余非负值为使用RGB表示的美肤美颜强度，<br> 16242611转化为16进制为0xF7D7B3，F7为R通道值，D7为G通道值，B3为B通道值。    |
 
 **系统接口：** 此接口为系统接口。
 
@@ -2555,70 +2466,13 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
 }
 ```
 
-## ZoomPointInfo<sup>12+</sup>
-
-等效焦距信息。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称     | 类型        |   只读   | 可选  | 说明       |
-| -------- | ---------- | -------- |-----| ---------- |
-| zoomRatio |   number   |   是     | 否   | 可变焦距比。 |
-| equivalentFocalLength |   number   |   是     | 否   | 当前焦距比对应的等效焦距值。 |
-
 ## ZoomQuery<sup>12+</sup>
 
 提供获取当前模式的等效焦距信息列表的方法。
 
-### getZoomPointInfos<sup>12+</sup>
-
-getZoomPointInfos(): Array\<ZoomPointInfo\>
-
-获取当前模式的等效焦距信息列表。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型                | 说明                                                  |
-| ----------          | -----------------------------                         |
-|  Array\<[ZoomPointInfo](#zoompointinfo12)\>| 获取当前模式的等效焦距信息列表。                   |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202                    |  Not System Application.                      |
-| 7400103                |  Session not config, only throw in session usage.      |
-
-**示例：**
-
-```ts
-import { camera } from '@kit.CameraKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getZoomPointInfos(photoSessionForSys: camera.PhotoSessionForSys): Array<camera.ZoomPointInfo> {
-  let zoomPointInfos: Array<camera.ZoomPointInfo> = [];
-  try {
-    zoomPointInfos = photoSessionForSys.getZoomPointInfos();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getZoomPointInfos call failed. error code: ${err.code}`);
-  }
-  return zoomPointInfos;
-}
-```
-
 ## Zoom<sup>11+</sup>
 
-Zoom extend [ZoomQuery](#zoomquery12)
+Zoom extends [ZoomQuery](#zoomquery12)
 
 提供了处理设备变焦效果的相关方法，包括获取当前的变焦比，设置变焦比率，以及通过平滑方法设置目标变焦比，以及一些开启和结束变焦的函数。
 
@@ -2757,9 +2611,9 @@ getBeauty(type: BeautyType): number
 | type     | [BeautyType](#beautytype) | 是   | 美颜类型。   |
 
 **返回值：**
-| 参数名      | 类型                                              | 必填 | 说明                    |
-| -------- | ------------------------------------------------- | ---- | --------------------- |
-| value     | number | 是   | 美颜强度。  |
+| 类型    | 说明         |
+| ------- | ----------- |
+| number  | 美颜强度。  |
 
 **错误码：**
 
@@ -3199,7 +3053,7 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |美颜类型为自动时支持的美颜强度，0表明关闭美颜，其余正值表明自动的美颜强度。    |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | 美颜类型为光滑时支持的美颜强度，0表明关闭光滑，其余正值表明光滑的美颜强度。    |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | 美颜类型为瘦脸时支持的美颜强度，0表明关闭瘦脸，其余正值表明瘦脸的美颜强度。   |
-| SKIN_TONE      | [-1, 16242611]      | 美颜类型为美肤时支持的美颜强度，-1表明关闭美肤，其余非负值为使用RGB表示的美肤美颜强度，<br> 16242611转化为16进制为0xF7D7B3，F7为R通道值，D7为G通道值，B3位B通道值。    |
+| SKIN_TONE      | [-1, 16242611]      | 美颜类型为美肤时支持的美颜强度，-1表明关闭美肤，其余非负值为使用RGB表示的美肤美颜强度，<br> 16242611转化为16进制为0xF7D7B3，F7为R通道值，D7为G通道值，B3为B通道值。    |
 
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11)替代。
@@ -4073,7 +3927,7 @@ NightPhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect
 
 夜景拍照模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置夜景拍照模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)、[PhotoOutput](arkts-apis-camera-PhotoOutput.md)。
 
-夜景拍照需要监听拍照结束事件[onCaptureEnd](arkts-apis-camera-PhotoOutput.md#oncaptureend)作为一次拍照的结束。
+夜景拍照需要监听拍照结束事件[on('captureEnd')](arkts-apis-camera-PhotoOutput.md#oncaptureend)作为一次拍照的结束。
 
 ### on('error')<sup>11+</sup>
 
@@ -8384,11 +8238,13 @@ setLightPaintingType(type: LightPaintingType): void
 
 设置当前生效的流光快门模式类型。
 
+可以先通过[getSupportedLightPaintingTypes](#getsupportedlightpaintingtypes12)获取当前设备所支持的流光快门模式类型。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**返回值：**
+**参数：**
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
 | type | [LightPaintingType](#lightpaintingtype12) | 是   | 设置流光快门模式的类型。 |

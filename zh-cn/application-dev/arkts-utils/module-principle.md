@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS模块化运行的原理和加载流程，涵盖ECMAScript模块规范和CommonJS模块规范，支持ets/ts/js/json/Native模块的加载、解析和执行。"
+keywords: [ArkTS, 模块化, 运行原理, 模块加载, ECMAScript模块, CommonJS模块, 动态加载, 延迟加载, 模块图]
+doctype: guide
+status: active
+---
+
 # 模块化运行简介
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 为了解决大型或复杂应用开发过程中，部分代码编译时被多次拷贝导致包体积增大、文件依赖、代码与资源共享困难以及单例和全局变量污染等问题，ArkTS支持应用模块化编译、打包和运行，简化代码的编写与维护。
 
@@ -32,7 +40,7 @@ A文件称为入口文件，即执行起点。一些内置的加载接口，如[
 
 ECMAScript模块（ECMAScript Modules，后文称ES Module）是JavaScript自ECMAScript6.0之后，从标准层面（ECMAScript® 2025 Language Specification (tc39.es)）实现的模块功能。其模块功能由两个命令组成：export和import。
 
-ArkTS中export和import用法详见[ArkTS语言介绍](../quick-start/introduction-to-arkts.md#模块)。
+ArkTS中export和import用法详见[模块系统](../quick-start/arkts-language-guide-module-system.md)。
 
 ### CommonJS模块
 
@@ -67,7 +75,7 @@ CommonJS与ES Module互相引用的规格如下表所示，导入和导出语法
 
 ### JSON文件
 
-JSON（JavaScript Object Notation）是一种轻量级的数据交互格式，采用完全独立于编程语言的文本格式来存储和表示数据。
+JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。
 
 JSON文件只能使用default方式导入，如下所示：
 
@@ -90,7 +98,7 @@ Native模块（so）的导入导出与加载ets/ts/js语法规格一致。详情
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
-// libentry.so对应的index.d.ts
+// libentry.so对应的Index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 

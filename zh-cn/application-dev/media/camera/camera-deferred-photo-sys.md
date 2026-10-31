@@ -23,7 +23,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)(系统接口)](../../reference/apis-camera-kit/js-apis-camera-sys.md)。
 
 1. 导入依赖，需要导入相机框架、媒体库、图片相关领域依赖。
 
@@ -43,7 +43,7 @@
     cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
     let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
     if (photoProfilesArray === null || photoProfilesArray === undefined) {
-      console.error("createOutput photoProfilesArray is null!");
+      console.error("createPhotoOutput photoProfilesArray is null!");
       return undefined;
     }
     let photoOutput: camera.PhotoOutput | undefined = undefined;
@@ -78,7 +78,7 @@
 4. 使能分段式拍照能力。
 
    ```ts
-   function EnableDeferredPhotoAbility(photoOutput: camera.PhotoOutput): void {
+   function enableDeferredPhotoAbility(photoOutput: camera.PhotoOutput): void {
      photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
    }
    ```

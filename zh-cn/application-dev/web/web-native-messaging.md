@@ -1,8 +1,8 @@
 # 使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @libing23232323-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -40,6 +40,8 @@
 - WebNativeMessagingExtensionAbility仅支持拉起本应用的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)，不支持拉起其他应用UIAbility或者其他类型ExtensionAbility。
 
 - WebNativeMessagingExtensionAbility仅用于浏览器扩展与应用通信场景，不支持如后台服务等其他场景使用。
+
+- 应用包名仅允许使用小写英文字母、数字、下划线（_）、点（.）。
 
 ## 运作机制
 
@@ -185,7 +187,7 @@ function sendMessageToNative() {
        {message: nativeMessage},
        function(response) {
        // 收到一次应用回复的信息后断开连接
-       console.info("sendNativeMessage收到应用程序响应:", JSON.stringify (response));
+       console.info("sendNativeMessage收到应用程序响应:", JSON.stringify(response));
        }
      )
    }
@@ -244,7 +246,7 @@ function sendMessageToNative() {
          let writeLen = await fileIo.write(fdWrite, writeBuffer.buffer);
          hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
        } catch (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + " message: " + err.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + " message: " + err.message);
        }
      }
 
@@ -290,7 +292,7 @@ function sendMessageToNative() {
    }
    ```
 
-6.在shared_config.json添加[extension配置](#datashare存放应用extension配置信息)。
+6. 在shared_config.json添加[extension配置](#datashare存放应用extension配置信息)。
 
    ```json5
    {
@@ -312,7 +314,7 @@ function sendMessageToNative() {
 ### 实现拉起WebNativeMessagingExtensionAbility（浏览器开发者）
 浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING。
 
-1. 当接收到创建NativeMessaging连接时，先通过[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
+1. 当接收到创建NativeMessaging连接时，先通过[get20](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
    ```ts
    import { dataShare } from '@kit.ArkData';
 
@@ -378,7 +380,7 @@ function sendMessageToNative() {
      }
      onDisconnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
        // disconnect
-       console.error(`onDisconnect id ${connection.connectionId} is connected`);
+       console.error(`onDisconnect id ${connection.connectionId} is disconnected`);
      }
      onFailed(code:webNativeMessagingExtensionManager.NmErrorCode, errMsg:string) {
        console.error(`onFailed error code is ${code}, errMsg is ${errMsg}`);

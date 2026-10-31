@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-多选框群组，用于控制多选框全选或者不全选状态。
+多选框群组，用于控制多选框全选或取消全选状态。适用于需要批量管理多个Checkbox选择状态的场景，如列表项批量选择、表单全选等，可简化用户操作，提升交互体验。
 
 >  **说明：**
 >
@@ -76,7 +76,7 @@ selectAll(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否全选。<br/>默认值：false<br/>值为true时，多选框群组将全部被选中；值为false时，多选框群组将全部取消选中。 |
+| value  | boolean | 是   | 是否全选。<br/>默认值：false<br/>值为true时，多选框群组将全部被选中；值为false时，多选框群组将全部取消选中。<br/>若同组的[Checkbox](ts-basic-components-checkbox.md)显式设置了select属性，则Checkbox的优先级高。 |
 
 ### selectAll<sup>18+</sup>
 
@@ -91,6 +91,8 @@ selectAll(isAllSelected: Optional\<boolean>)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +130,8 @@ selectedColor(resColor: Optional\<ResourceColor>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -143,6 +147,8 @@ unselectedColor(value: ResourceColor)
 设置非选中状态边框颜色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,6 +166,8 @@ unselectedColor(resColor: Optional\<ResourceColor>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -176,13 +184,15 @@ mark(value: MarkStyle)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                         | 必填 | 说明                 |
 | ------ | -------------------------------------------- | ---- | -------------------- |
-| value  | [MarkStyle](ts-types.md#markstyle10对象说明) | 是   | 多选框内部图标样式。 |
+| value  | [MarkStyle](ts-types.md#markstyle10对象说明) | 是   | 多选框内部图标样式。<br/>异常值按照默认值处理。 |
 
 ### mark<sup>18+</sup>
 
@@ -191,6 +201,8 @@ mark(style: Optional\<MarkStyle>)
 设置多选框内部图标样式。与[mark](#mark10)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,13 +222,15 @@ checkboxShape(value: CheckBoxShape)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | 是   | 设置CheckboxGroup组件形状，包括圆形和圆角方形。<br/>默认值：CheckBoxShape.CIRCLE <br />**说明：**<br/>CheckboxGroup组件将按照设置的形状显示。<br/>CheckboxGroup内所有未单独设置shape类型的Checkbox，其形状将与CheckboxGroup保持一致。<br/>CheckboxGroup内已单独设置shape类型的Checkbox，其形状将优先于CheckboxGroup的设置，按照自身设置显示。 |
+| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | 是   | 设置CheckboxGroup组件形状，包括圆形和圆角方形。<br/>默认值：CheckBoxShape.CIRCLE <br />**说明：**<br/>CheckboxGroup组件将按照设置的形状显示。<br/>CheckboxGroup内所有未单独设置shape类型的Checkbox，其形状将与CheckboxGroup保持一致。<br/>CheckboxGroup内已单独设置shape类型的Checkbox，其形状将优先于CheckboxGroup的设置，按照自身设置显示。<br/>异常值按照默认值处理。 |
 
 ### checkboxShape<sup>18+</sup>
 
@@ -228,13 +242,15 @@ checkboxShape(shape: Optional\<CheckBoxShape>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | 是   | 设置CheckboxGroup组件形状，包括圆形和圆角方形。<br/>当shape的值为undefined时，默认值为CheckBoxShape.CIRCLE。<br />**说明：**<br/>CheckboxGroup组件将按照设置的形状显示。<br/>CheckboxGroup内所有未单独设置shape类型的Checkbox，其形状将与CheckboxGroup保持一致。<br/>CheckboxGroup内已单独设置shape类型的Checkbox，其形状将优先于CheckboxGroup的设置，按照自身设置显示。 |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | 是   | 设置CheckboxGroup组件形状，包括圆形和圆角方形。<br/>当shape的值为undefined时，默认值为CheckBoxShape.CIRCLE。<br />**说明：**<br/>CheckboxGroup组件将按照设置的形状显示。<br/>CheckboxGroup内所有未单独设置shape类型的Checkbox，其形状将与CheckboxGroup保持一致。<br/>CheckboxGroup内已单独设置shape类型的Checkbox，其形状将优先于CheckboxGroup的设置，按照自身设置显示。<br/>异常值按照默认值处理。 |
 
 ### contentModifier<sup>21+</sup>
 
@@ -247,6 +263,8 @@ contentModifier(modifier: Optional<ContentModifier\<CheckBoxGroupConfiguration>>
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,7 +282,7 @@ contentModifier(modifier: Optional<ContentModifier\<CheckBoxGroupConfiguration>>
 
 onChange(callback: OnCheckboxGroupChangeCallback)
 
-CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。
+CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。在与带有缓存功能的组件（如[List](ts-container-list.md)）配合使用时，需注意未创建的Checkbox的选中状态对回调结果的影响。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -282,11 +300,13 @@ CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化�
 
 onChange(callback: Optional\<OnCheckboxGroupChangeCallback>)
 
-CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。在与带有缓存功能的组件（如[List](ts-container-list.md)）配合使用时，需注意未创建的Checkbox的选中状态对回调结果的影响。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -305,6 +325,8 @@ type OnCheckboxGroupChangeCallback  = (value: CheckboxGroupResult) => void
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -327,7 +349,7 @@ type OnCheckboxGroupChangeCallback  = (value: CheckboxGroupResult) => void
 | 名称    | 类型   | 只读 | 可选 | 说明      |
 | ------ | ------ | ------- | ------- | ------- |
 | name   | Array&lt;string&gt; | 否 | 否 | 群组内所有被选中的多选框名称。 |
-| status | [SelectStatus](#selectstatus枚举说明) | 否 | 否 | 选中状态。 |
+| status | [SelectStatus](#selectstatus枚举说明) | 否 | 否 | 群组多选框的选中状态。 |
 
 ## SelectStatus枚举说明
 
@@ -341,9 +363,9 @@ type OnCheckboxGroupChangeCallback  = (value: CheckboxGroupResult) => void
 
 | 名称  | 值 | 说明 |
 | ----- | -------------------- | -------------------- |
-| All   | 0  | 群组多选择框全部选择。 |
-| Part  | 1 | 群组多选择框部分选择。 |
-| None  | 2 | 群组多选择框全部没有选择。 |
+| All   | 0  | 群组内多选框全部选中。 |
+| Part  | 1 | 群组内多选框部分选中。 |
+| None  | 2 | 群组内多选框全部未选中。 |
 
 ## CheckBoxGroupConfiguration<sup>21+</sup>对象说明
 
@@ -351,11 +373,13 @@ type OnCheckboxGroupChangeCallback  = (value: CheckboxGroupResult) => void
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型    |    只读    |    可选      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| name | string | 否 | 否 |当前多选框群组名称。 |
+| name | string | 否 | 否 |当前多选框群组名称，用于标识和关联Checkbox与CheckboxGroup，与Checkbox的group属性值相同时属于同一群组。 |
 | status | [SelectStatus](#selectstatus枚举说明)| 否 | 否 | 表示多选框群组的选中状态。 |
 | triggerChange |Callback\<boolean>| 否 | 否 |触发多选框群组选中状态变化。true表示从部分选中或未选中变为全部选中，false表示从全部选中或部分选中变为全部未选中。 |
 
@@ -363,7 +387,7 @@ type OnCheckboxGroupChangeCallback  = (value: CheckboxGroupResult) => void
 
 ### 示例1（设置多选框群组）
 
-该示例用于控制多选框全选或者不全选状态。
+该示例用于控制多选框群组的全选或取消全选状态。
 
 ```ts
 // xxx.ets
@@ -373,18 +397,18 @@ struct CheckboxExample {
   build() {
     Scroll() {
       Column() {
-        // 全选按钮
+        // 多选框群组
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           CheckboxGroup({ group: 'checkboxGroup' })
             .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
             .selectedColor('#007DFF')
             .onChange((itemName: CheckboxGroupResult) => {
-              console.info("checkbox group content" + JSON.stringify(itemName));
+              console.info('checkbox group content' + JSON.stringify(itemName));
             })
           Text('Select All').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
         }
 
-        // 选项1
+        // 复选框1
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
             .selectedColor('#007DFF')
@@ -395,7 +419,7 @@ struct CheckboxExample {
           Text('Checkbox1').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
         }.margin({ left: 36 })
 
-        // 选项2
+        // 复选框2
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
             .selectedColor('#007DFF')
@@ -406,7 +430,7 @@ struct CheckboxExample {
           Text('Checkbox2').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
         }.margin({ left: 36 })
 
-        // 选项3
+        // 复选框3
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           Checkbox({ name: 'checkbox3', group: 'checkboxGroup' })
             .selectedColor('#007DFF')
@@ -425,7 +449,7 @@ struct CheckboxExample {
 
 ### 示例2（自定义勾选样式）
 
-该示例通过配置mark实现自定义多选框群组的勾选样式。
+该示例通过配置CheckboxGroup的mark属性，实现自定义多选框群组的勾选样式。
 
 ```ts
 // xxx.ets
@@ -441,10 +465,10 @@ struct Index {
             .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
             .selectedColor(Color.Orange)
             .onChange((itemName: CheckboxGroupResult) => {
-              console.info("checkbox group content" + JSON.stringify(itemName));
+              console.info('checkbox group content' + JSON.stringify(itemName));
             })
             .mark({
-              strokeColor:Color.Black,
+              strokeColor: Color.Black,
               size: 40,
               strokeWidth: 5
             })
@@ -458,10 +482,10 @@ struct Index {
             .selectedColor(0x39a2db)
             .shape(CheckBoxShape.ROUNDED_SQUARE)
             .onChange((value: boolean) => {
-              console.info('Checkbox1 change is'+ value);
+              console.info('Checkbox1 change is' + value);
             })
             .mark({
-              strokeColor:Color.Black,
+              strokeColor: Color.Black,
               size: 50,
               strokeWidth: 5
             })
@@ -504,7 +528,9 @@ struct Index {
 
 ### 示例3（自定义多选框样式）
 
-从API version 21开始，该示例通过[contentModifier](#contentmodifier21)属性实现了自定义复选框群组样式的功能。自定义样式实现了一个五边形复选框群组，如果全部选中，内部会出现红色三角图案，标题会显示全选字样；如果部分选中，三角图案显示蓝色，标题会显示部分选中字样；如果未选中，三角图案消失，标题会显示未选中。
+该示例通过[contentModifier](#contentmodifier21)属性实现了自定义复选框群组样式的功能。自定义样式实现了一个五边形复选框群组，如果全部选中，内部会出现红色三角图案，标题会显示全选字样；如果部分选中，三角图案显示蓝色，标题会显示部分选中字样；如果未选中，三角图案消失，标题会显示未选中。
+
+从API version 21开始，支持contentModifier属性。
 
 ```ts
 // xxx.ets
@@ -533,7 +559,7 @@ function buildCheckboxgroup(config: CheckBoxGroupConfiguration) {
         .fillOpacity(0)
         .strokeWidth(3)
         .onClick(() => {
-          console.info('checkboxgroup status ', statusString[config.status])
+          console.info('checkboxGroup status ', statusString[config.status])
           if (config.status === SelectStatus.All ||  config.status === SelectStatus.Part) {
             config.triggerChange(false);
             console.info('checkboxgroup not selected')
@@ -583,7 +609,7 @@ struct Index {
 
   build() {
     Column({ space: 100 }) {
-      CheckboxGroup({  group: 'checkboxGroup' })
+      CheckboxGroup({ group: 'checkboxGroup' })
          .contentModifier(new MyCheckboxGroupStyle(Color.Red))
         .onChange((itemName: CheckboxGroupResult) => {
           console.info(" CheckboxGroup onChange: " + JSON.stringify(itemName));
@@ -624,7 +650,7 @@ struct Index {
 
 ### 示例4（设置全选）
 
-该示例实现了在结合带缓存功能的组件使用时(如List)，未被创建的Checkbox全选的功能。
+该示例展示了在结合带缓存功能的组件（如List）使用时，手动控制未被创建的Checkbox选中状态。
 
 ```ts
 class BasicDataSource implements IDataSource {
@@ -760,7 +786,7 @@ struct MyComponent {
         LazyForEach(this.data, (item: checkboxItemData, index: number) => {
           ListItem() {
             Row() {
-              Checkbox({ name: `checkbox-${item}` })
+              Checkbox({ name: `${item.itemName}` })
                 .select(item.isCheck)
                 .onChange((value: boolean) => {
                   this.data.operateItem(value, index)

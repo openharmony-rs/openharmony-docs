@@ -1,14 +1,14 @@
 # Drawing
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
 
-Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能函数。<br>本模块采用屏幕物理像素单位px。
+Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能函数。<br>本模块采用屏幕物理像素单位px。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -23,7 +23,7 @@ Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能�
 | [drawing_color.h](capi-drawing-color-h.md) | 文件中定义了与颜色相关的功能函数。 |
 | [drawing_color_filter.h](capi-drawing-color-filter-h.md) | 声明与绘图模块中的颜色滤波器对象相关的函数。 |
 | [drawing_color_space.h](capi-drawing-color-space-h.md) | 文件中定义了与颜色空间相关的功能函数。 |
-| [drawing_error_code.h](capi-drawing-error-code-h.md) | 声明与绘图模块中的错误码相关的函数。include native_drawing/drawing_error_code.h |
+| [drawing_error_code.h](capi-drawing-error-code-h.md) | 声明与绘图模块中的错误码相关的函数。 |
 | [drawing_filter.h](capi-drawing-filter-h.md) | 声明与绘图模块中的滤波器对象相关的函数。 |
 | [drawing_font.h](capi-drawing-font-h.md) | 文件中定义了与字体相关的功能函数。 |
 | [drawing_font_collection.h](capi-drawing-font-collection-h.md) | 定义绘制模块中与字体集合相关的函数。 |
@@ -31,7 +31,7 @@ Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能�
 | [drawing_gpu_context.h](capi-drawing-gpu-context-h.md) | 声明与绘图模块中的图形处理器上下文对象相关的函数。 |
 | [drawing_image.h](capi-drawing-image-h.md) | 文件中定义了与图片相关的功能函数。 |
 | [drawing_image_filter.h](capi-drawing-image-filter-h.md) | 声明与绘图模块中的图像滤波器对象相关的函数。 |
-| [drawing_mask_filter.h](capi-drawing-mask-filter-h.md) | 声明与绘图模块中的对象相关的函数。 |
+| [drawing_mask_filter.h](capi-drawing-mask-filter-h.md) | 声明与绘图模块中的蒙版滤波器对象相关的函数。 |
 | [drawing_matrix.h](capi-drawing-matrix-h.md) | 文件中定义了与矩阵相关的功能函数。 |
 | [drawing_memory_stream.h](capi-drawing-memory-stream-h.md) | 文件中定义了与内存流相关的功能函数。 |
 | [drawing_path.h](capi-drawing-path-h.md) | 文件中定义了与自定义路径相关的功能函数。 |

@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS与C/C++的跨语言交互能力，基于Node-API规范扩展实现，支持开发者通过Native模块开发和封装，在ArkTS侧导入so库实现跨语言调用。"
+keywords: [ArkTS, 跨语言交互, Node-API, C/C++, Native模块, 模块导入, so库, 跨语言调用]
+doctype: guide
+status: active
+---
+
 # ArkTS跨语言交互
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 除了支持使用ArkTS开发外，开发者还可以通过Node-API实现ArkTS与C/C++(Native)的跨语言交互能力。
 

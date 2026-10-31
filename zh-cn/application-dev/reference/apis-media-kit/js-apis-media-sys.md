@@ -1,10 +1,10 @@
 # @ohos.multimedia.media (媒体服务)(系统接口)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 媒体子系统为开发者提供一套简单且易于理解的接口，使得开发者能够方便接入系统并使用系统的媒体资源。
 
@@ -54,7 +54,7 @@ createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 202      | Not system App.                |
+| 202      | Not System App. <br>适用版本：12+               |
 | 5400101  | No memory. Return by callback. |
 
 **示例：**
@@ -95,7 +95,7 @@ createVideoRecorder(): Promise\<VideoRecorder>
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
-| 202      | Not system App.               |
+| 202      | Not System App. <br>适用版本：12+              |
 | 5400101  | No memory. Return by promise. |
 
 **示例：**
@@ -326,7 +326,7 @@ media.createParallelSoundPool(5, audioRendererInfo).then((soundpool_: media.Soun
 
 | 名称     | 类型   |  只读   |   可选    |  说明                   |
 | -------- | ------ |   ------| ------ | ---------------------- |
-| colorFormat  | [PixelFormat](#pixelformat11) |  否   |  是   | 输出的缩略图颜色格式。<br>**系统接口：** 该接口为系统接口。      |
+| colorFormat  | [PixelFormat](#pixelformat11) |  否   |  是   | 输出的缩略图颜色格式。<br/>**系统接口：** 此接口为系统接口。      |
 
 ## PixelFormat<sup>11+</sup>
 
@@ -491,7 +491,7 @@ setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise\<void>
 
 | 参数名   | 类型                  | 必填 | 说明                         |
 | -------- | -------------------- | ---- | --------------------------- |
-| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)      | 是   | 图像PixelMap数据。<br>当前支持规格:<br>-当前仅支持pixelformat为RGBA8888。<br>-原图像为8K时->水印图像限制范围3072x288,原图像为4K时->水印图像限制范围1536x144。 |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)      | 是   | 图像PixelMap数据。<br/>当前支持规格:<br/>- 当前仅支持pixelformat为RGBA8888。<br/>- 原图像为8K时->水印图像限制范围3072x288，原图像为4K时->水印图像限制范围1536x144。 |
 | config    | [WatermarkConfig](#watermarkconfig13)   | 是   | 水印的相关配置参数。 |
 
 **返回值：**
@@ -524,16 +524,6 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
   console.error(`Failed to setWatermark and catch error is ${error.message}`);
 });
 ```
-
-## AVRecorderProfile<sup>9+</sup>
-
-音视频录制的配置文件。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
-
-| 名称             | 类型                                         | 只读 | 可选 | 说明                                                         |
-| ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| enableStableQualityMode<sup>18+</sup>            | boolean                        | 否   | 是   | 视频录制是否选择稳定质量模式，选择视频录制时选填，enableStableQualityMode默认为false。设置为true时，启用视频编码策略以实现质量稳定的编码。<br>**系统接口：** 该接口为系统接口。|
 
 ## VideoRecorder<sup>9+</sup>
 
@@ -578,7 +568,7 @@ prepare(config: VideoRecorderConfig, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
 | 201      | Permission denied. Return by callback.     |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400105  | Service died. Return by callback.          |
@@ -652,7 +642,7 @@ prepare(config: VideoRecorderConfig): Promise\<void>
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201      | Permission denied. Return by promise.     |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400105  | Service died. Return by promise.          |
@@ -721,7 +711,7 @@ getInputSurface(callback: AsyncCallback\<string>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -771,7 +761,7 @@ getInputSurface(): Promise\<string>;
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -815,7 +805,7 @@ start(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -859,7 +849,7 @@ start(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -901,7 +891,7 @@ pause(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -945,7 +935,7 @@ pause(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -985,7 +975,7 @@ resume(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1027,7 +1017,7 @@ resume(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1069,7 +1059,7 @@ stop(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1113,7 +1103,7 @@ stop(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1153,7 +1143,7 @@ release(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400105  | Service died. Return by callback. |
 
 **示例：**
@@ -1193,8 +1183,8 @@ release(): Promise\<void>
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
-| 5400105  | Service died. Return by callback. |
+| 202      | Not System App. <br>适用版本：12+  |
+| 5400105  | Service died. Return by promise. |
 
 **示例：**
 
@@ -1233,7 +1223,7 @@ reset(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1276,7 +1266,7 @@ reset(): Promise\<void>
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 202      | Not system App.                  |
+| 202      | Not System App. <br>适用版本：12+ |
 | 5400103  | I/O error. Return by promise.    |
 | 5400105  | Service died. Return by promise. |
 
@@ -1316,8 +1306,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 201      | permission denied.                |
-| 202      | Not system App.                   |
+| 201      | permission denied. <br>适用版本：12+  |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1333,6 +1323,8 @@ videoRecorder.on('error', (error: BusinessError) => { // 设置'error'事件回�
 ```
 
 ## VideoRecordState<sup>9+</sup>
+
+type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'
 
 视频录制的状态机。可通过state属性获取当前状态。
 
@@ -1364,9 +1356,9 @@ videoRecorder.on('error', (error: BusinessError) => { // 设置'error'事件回�
 | audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)           | 否   | 是   | 视频录制的音频源类型，选择音频录制时必填。                      |
 | videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)           | 否   | 否   | 视频录制的视频源类型。                                       |
 | profile         | [VideoRecorderProfile](#videorecorderprofile9) | 否   | 否   | 视频录制的profile。                                          |
-| rotation        | number                                         | 否   | 是   | 录制的视频旋转角度，仅支持0，90，180，270，默认值为0。       |
+| rotation        | number                                         | 否   | 是   | 录制的视频旋转角度，单位为度（°）。仅支持0°、90°、180°和270°，默认值为0°。       |
 | location        | [Location](arkts-apis-media-i.md#location)                          | 否   | 是   | 录制视频的地理位置，默认不记录地理位置信息。                 |
-| url             | string                                         | 否   | 否   | 视频输出URL：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/zh-cn_image_url.png) |
+| url             | string                                         | 否   | 否   | 视频输出URL：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/image-url.png) |
 
 ## VideoRecorderProfile<sup>9+</sup>
 
@@ -1495,6 +1487,7 @@ screenCaptureMonitor.off('systemScreenRecorder');
 | ------------------------ | --------------- | ------------------------------------------------------------ |
 | SCREENCAPTURE_STARTED       | 0   | 表示系统录屏应用开始录屏。                       |
 | SCREENCAPTURE_STOPPED        | 1    | 表示系统录屏应用停止录屏。 |
+| SCREENCAPTURE_DIED<sup>23+</sup>           | 2    | 表示录屏框架服务进程终止。 |
 
 ## enableDeviceLevelCapture<sup>20+</sup>
 
@@ -1528,65 +1521,7 @@ Audio/Video播放示例可参考：[使用AVPlayer播放音频(ArkTS)](../../med
 
 | 名称               | 类型                                   | 只读 | 可选 | 说明             |
 | ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
-| privacyType | [audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。详细信息请参阅[audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>默认值为PRIVACY_TYPE_PUBLIC。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| enableStartFrameRateOpt | boolean | 否   | 是   |是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br>true表示采用，false表示不采用，默认值为false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-
-### getCurrentTrack
-
-getCurrentTrack(trackType: MediaType): Promise\<number>
-
-获取指定媒体类型的选定轨道。使用Promise异步回调。
-
-只有当AVPlayer处于prepared、playing或者paused状态时，才能调用该接口。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
-**参数：**
-
-| 参数名   | 类型     | 必填 | 说明                                                         |
-| -------- | -------- | ---- | ------------------------------------------------------------ |
-| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| 是   | 媒体类型枚举。<br>仅支持获取MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
-
-**返回值：**
-
-| 类型           | 说明                                       |
-| -------------- | ------------------------------------------ |
-| Promise\<number> | Promise对象，返回指定媒体类型选中轨道的索引值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 202  | Called from Non-System applications. Return by promise.|
-| 5400101  | No memory. Return by promise.|
-| 5400102  | Operation not allowed. Return by promise.|
-| 5400103  | I/O error. Return by promise.|
-| 5400105  |Service died. Return by promise.|
-
-**示例：**
-
-```ts
-async function test(){
-  let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
-  let myTrackId : number;
-  let trackType: media.MediaType = media.MediaType.MEDIA_TYPE_AUD;
-  avPlayer.getCurrentTrack(trackType).then((trackId: number) => {
-    console.info('Succeeded in getting CurrentTrack');
-    myTrackId = trackId;
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to get CurrentTrack, error:${error}`);
-  });
-}
-```
+| enableStartFrameRateOpt | boolean | 否   | 是   |是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br/>true表示采用，false表示不采用，默认值为false。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### forceLoadVideo
 
@@ -1631,5 +1566,47 @@ async function test(){
   let avPlayer = await media.createAVPlayer();
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
   avPlayer.forceLoadVideo(true);
+}
+```
+
+### enableCameraPostprocessing
+
+enableCameraPostprocessing(): Promise\<void>
+
+开启后处理功能，在视频播放时做效果处理。使用Promise异步回调。
+
+只有当AVPlayer处于initialized状态时，才能调用此接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 202  | Called from Non-System applications. Return by promise.|
+| 5400102  | Operation not allowed. Return by promise.|
+| 5400105  | Service died.|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.enableCameraPostprocessing();
 }
 ```

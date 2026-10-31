@@ -1127,7 +1127,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### on('serviceDie')
 
-on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
+on(type: 'serviceDie', callback: Callback&lt;{}&gt;): void
 
 Subscribes to the dead events of the **DeviceManager** service. The application will be notified when the **DeviceManager** service is terminated unexpectedly. This API uses an asynchronous callback to return the result.
 
@@ -1140,7 +1140,7 @@ Subscribes to the dead events of the **DeviceManager** service. The application 
   | Name      | Type                   | Mandatory  | Description                                      |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
   | type     | string                  | Yes   | Event type, which has a fixed value of **'serviceDie'**.|
-  | callback | Callback&lt;{}&gt; | No   | Callback invoked when the **DeviceManager** service is terminated unexpectedly.                       |
+  | callback | Callback&lt;{}&gt; | Yes   | Callback invoked when the **DeviceManager** service is terminated unexpectedly.                       |
 
 **Error codes**
 

@@ -1,12 +1,12 @@
 # SceneNode
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供3D图形中场景资源节点的类型及操作方法。SceneNode是3D场景的基础构建单元，它允许开发者通过层级结构管理场景中的对象，实现高效的场景组织与交互控制。
+本模块提供ArkGraphics 3D中场景资源节点的类型及操作方法。SceneNode是3D场景的基础构建单元，它允许开发者通过层级结构管理场景中的对象，实现高效的场景组织与交互控制。
 
 > **说明：**
 >
@@ -59,8 +59,8 @@ function layerMask(): void {
           let enabled: boolean = node.layerMask.getEnabled(1);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -96,8 +96,8 @@ function layerMask(): void {
           node.layerMask.setEnabled(1, true);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -124,7 +124,7 @@ function layerMask(): void {
 
 append(item: T): void
 
-追加一个对象到容器。
+追加一个对象到容器。如果追加的对象已存在于容器中，容器会先移除该对象再插入，因此数量不会增加。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -150,8 +150,8 @@ function append(): void {
         result.root?.children.get(0)?.children.append(node);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -160,7 +160,7 @@ function append(): void {
 
 insertAfter(item: T, sibling: T | null): void
 
-在兄弟节点后面插入对象。
+在兄弟节点后面插入对象。如果插入的对象已存在于容器中，容器会先移除该对象再插入，因此数量不会增加。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -169,7 +169,7 @@ insertAfter(item: T, sibling: T | null): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | item | T | 是 | 要插入节点。 |
-| sibling | T \| null | 是 | 兄弟节点。 |
+| sibling | T \| null | 是 | 兄弟节点。当为null时，表示插入到容器的开头位置。 |
 
 **示例：**
 
@@ -187,8 +187,8 @@ function insertAfter(): void {
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -223,8 +223,8 @@ function remove(): void {
         result.root?.children.remove(node);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -260,11 +260,13 @@ function get(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // 从children中get 0号节点
-      result.root?.children.get(0)?.children.insertAfter(node, null);
+      if (node) {
+        // 从children中get 0号节点
+        result.root?.children.get(0)?.children.insertAfter(node, null);
+      }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -293,8 +295,8 @@ function clear(): void {
         node.children.clear();
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -336,7 +338,7 @@ function count(): void {
 
 ## Node
 
-3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)。
+3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource)。
 
 ### 属性
 
@@ -352,7 +354,7 @@ function count(): void {
 | layerMask | [LayerMask](#layermask) | 是 | 否 | 节点的图层掩码。 |
 | path | string | 是 | 否 | 节点路径。 |
 | parent | [Node](#node) \| null | 是 | 否 | 节点的父节点，不存在则为空值。 |
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 节点的子节点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子节点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的节点已存在于容器中，容器会先移除该节点再插入，因此数量不会增加，看似“无效”；添加新节点才会真正增加子节点数量。 |
+| children | [Container](#containert)\<[Node](#node)> | 是 | 否 | 节点的子节点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子节点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的节点已存在于容器中，容器会先移除该节点再插入，因此数量不会增加，看似“无效”；添加新节点才会真正增加子节点数量。 |
 
 ### getNodeByPath
 
@@ -391,6 +393,32 @@ function getNode(): void {
 }
 ```
 
+调用getNodeByPath时需传入节点路径参数path。可通过遍历节点树并打印各节点的属性获取可用的path值，示例如下：
+
+```ts
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+// 打印给定节点的树状结构，每行表示一个节点的路径。
+function printNodeTreeInRelativePath(node: Node | null): void {
+  if (!node) {
+    return;
+  }
+  let basePath: string = node.path + node.name + '/';
+  let printRelative = (n: Node | null): void => {
+    if (!n) {
+      return;
+    }
+    console.info(n.path.substring(basePath.length + 1) + n.name);
+    for (let i = 0; i < n.children.count(); i++) {
+      printRelative(n.children.get(i));
+    }
+  }
+  for (let i = 0; i < node.children.count(); i++) {
+    printRelative(node.children.get(i));
+  }
+}
+```
+
 ## Geometry
 
 几何节点类型，用于承载可渲染的网格数据，并支持可选的形变功能，继承自[Node](#node)。
@@ -411,7 +439,9 @@ function getNode(): void {
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
 | DIRECTIONAL | 1 | 平行光类型。 |
-| SPOT | 2 | 点光源类型。 |
+| SPOT | 2 | 聚光灯类型。 |
+| POINT | 3 | 点光源类型。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| RECT | 4 | 矩形面光源类型。 <br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Light
 
@@ -423,9 +453,13 @@ function getNode(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | lightType | [LightType](#lighttype) | 是 | 否 | 光源类型。 |
 | color | [Color](js-apis-inner-scene-types.md#color) | 否 | 否 | 颜色。 |
-| intensity | number | 否 | 否 | 光照密度，单位为坎德拉（cd），取值范围是大于0的实数。 |
+| intensity | number | 否 | 否 | 光照强度，单位为坎德拉（cd），取值范围是大于0的实数。 |
 | shadowEnabled | boolean | 否 | 否 | 是否使能阴影。true表示添加阴影，false表示没有阴影效果。 |
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
+
+> **说明：**
+>
+> 单个场景中所有光源的数量上限为64。当光源数量超过64时，超出该上限后添加的光源将被直接舍弃，不参与场景渲染。
 
 ## SpotLight
 
@@ -450,6 +484,40 @@ function getNode(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+## PointLight
+
+点光源类型，继承自[Light](#light)。点光源不支持阴影投射，设置[Light](#light)的shadowEnabled属性不生效。
+
+点光源从空间中的单个点向所有方向均匀发射光，强度随着距离光源位置的增加而衰减。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| range | number | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统根据设置的intensity值计算一个经验值作为range。 |
+
+## RectLight
+
+矩形面光源类型，继承自[Light](#light)。矩形面光源不支持阴影投射，设置[Light](#light)的shadowEnabled属性不生效。
+
+矩形面光源从矩形面发射光，模拟柔和的区域照明效果，强度随着距离的增加而衰减。矩形面光源功耗较高、性能开销较大，建议优先使用[DirectionalLight](#directionallight)等其他光源类型近似想要的渲染效果。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| width | number | 否 | 是 | 矩形面光源的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
+| height | number | 否 | 是 | 矩形面光源的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
+| twoSided | boolean | 否 | 是 | 矩形面光源是否从矩形面的两侧发光。true表示矩形面光源两侧发光，false表示矩形面光源单侧发光。默认值为false。 |
+
 ## Camera
 
 相机类型，Camera继承自[Node](#node)。
@@ -460,7 +528,7 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| fov | number | 否 | 否 | 视场，单位为弧度（rad），取值在0到π弧度之间。 |
+| fov | number | 否 | 否 | 视场，单位为弧度（rad），取值范围为(0, π)。 |
 | nearPlane | number | 否 | 否 | 近平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。 |
 | farPlane | number | 否 | 否 | 远平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于nearPlane。 |
 | enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。 |
@@ -489,7 +557,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise<[RaycastResult](js-apis-inner-scene.md#raycastresult20)[]> | 返回命中的结果数组（按距离从近到远排序），若无命中则返回空数组。 |
+| Promise<[RaycastResult](js-apis-inner-scene.md#raycastresult20)[]> | Promise对象，返回命中的结果数组（按距离从近到远排序），若无命中则返回空数组。 |
 
 **示例：**
 
@@ -528,7 +596,7 @@ function Sub(l: Vec3, r: Vec3): Vec3 {
 }
 // 向量点积，返回l和r的内积
 function Dot(l: Vec3, r: Vec3): number {
-  return l.x * r.x + l.y * r.y + r.z * l.z;
+  return l.x * r.x + l.y * r.y + l.z * r.z;
 }
 // 向量归一化，返回l的单位向量
 function Normalize(l: Vec3): Vec3 {
@@ -597,7 +665,7 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
         y: m2.x - m0.z,
         z: m0.y - m1.x,
         w: t
-      }
+      };
     }
   }
   node.position = eye;

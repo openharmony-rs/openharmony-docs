@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=54a85e57a9e078c186b756489db16f65a538d313 translatedAt=2026-09-03T09:29:44.739Z pushedAt=2026-09-05T10:47:30.171Z -->
 
 The particleAbility module provides APIs for operating a DataAbility and ServiceAbility. You can use the APIs to start and terminate a ParticleAbility, obtain a dataAbilityHelper object, and connect to or disconnect from a ServiceAbility.
 
@@ -196,7 +197,7 @@ Obtains a dataAbilityHelper object.
 
 | Name| Type  | Mandatory| Description                    |
 | :--- | ------ | ---- | ------------------------ |
-| uri  | string | Yes  | URI of the file to open.|
+| uri  | string | Yes   | URI of the DataAbility to access. |
 
 **Return value**
 

@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -87,7 +87,7 @@ Query the plaintext of asset **demo_alias**.
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();
-   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query.
+   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query. At most one asset will meet the condition.
    query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL); // Return all asset information, including the attributes and asset plaintext. The plaintext needs to be decrypted, so the query takes a long time.
    try {
      asset.query(query).then((res: Array<asset.AssetMap>) => {
@@ -133,7 +133,7 @@ Query attributes of asset **demo_alias**.
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();
-   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query.
+   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query. At most one asset will meet the condition.
    query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // Return only the attributes of the asset, that is, the result does not include the asset plaintext.
    try {
      asset.query(query).then((res: Array<asset.AssetMap>) => {

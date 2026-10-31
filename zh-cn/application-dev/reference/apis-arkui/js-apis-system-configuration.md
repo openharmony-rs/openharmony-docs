@@ -1,12 +1,12 @@
 # @system.configuration (应用配置)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 > **说明：**
-> - 从API Version 7 开始，该接口不再维护，推荐使用新接口[`@ohos.i18n`](../apis-localization-kit/js-apis-i18n.md)和[`@ohos.intl`](../apis-localization-kit/js-apis-intl.md)。
+> - 从API Version 7 开始，该接口不再维护，推荐使用新接口[@ohos.i18n](../apis-localization-kit/js-apis-i18n.md)和[@ohos.intl](../apis-localization-kit/js-apis-intl.md)。
 >
 > 
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -24,7 +24,7 @@ import Configuration from '@system.configuration';
 
 static getLocale(): LocaleResponse
 
-获取应用当前的语言和地区。默认与系统的语言和地区同步。
+获取应用当前的语言、地区和文字布局方向。默认与系统的语言、地区和文字布局方向同步。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -38,16 +38,16 @@ static getLocale(): LocaleResponse
 **示例：**
 
 ArkTS示例：
-  ```
+  ```js
   export default {    
     getLocale() {        
-      const localeInfo = configuration.getLocale();        
+      const localeInfo = Configuration.getLocale();        
       console.info(localeInfo.language);    
     }
   }
   ```
 
-JS示例：
+HML示例：
 ```xml
 <!-- xxx.hml -->
 <div class="container">
@@ -114,11 +114,6 @@ JS示例：
     width: 100%;
     height: 35px;
 }
-.label {
-    font-size: 24px;
-    height: 40px;
-    color: #aaaaaa;
-}
 .value {
     font-size: 24px;
     height: 40px;
@@ -155,7 +150,7 @@ export default {
             this.language = localeInfo.language || 'Unknown';
             this.countryOrRegion = localeInfo.countryOrRegion || 'Unknown';
             this.dir = localeInfo.dir || 'Unknown';
-            
+
             this.displayLanguage = this.getDisplayLanguage(this.language);
             this.displayRegion = this.getDisplayRegion(this.countryOrRegion);
             this.displayDir = this.getDisplayDirection(this.dir);

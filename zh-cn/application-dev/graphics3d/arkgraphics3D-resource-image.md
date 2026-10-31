@@ -1,14 +1,28 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍基于JPEG、PNG、KTX格式创建3D纹理图片资源的能力，演示通过SceneResourceFactory.createImage()加载图片并绑定到Shader材质的BASE_COLOR_Image输入属性，实现模型表面贴图替换。"
+keywords: [ArkGraphics 3D, 3D渲染, 纹理, 贴图]
+doctype: guide
+status: active
+---
+
 # 创建并使用图片资源
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
-图片（Image）：图片本质上是一个储存信息的二维内存块(buffer)，用于储存3D渲染计算过程需要的相关信息，比如基础颜色、法线等等。
+图片（Image）：3D渲染中的二维纹理资源，本质为存储像素数据的内存缓冲区（buffer）。它提供物体表面渲染所需的数据，包括基础颜色、法线、金属度、粗糙度和环境遮蔽等贴图，也可作为材质或自定义着色器的纹理输入，最终决定物体表面的外观。
 
-ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支持用户自定义需要的Image资源。
+ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支持用户自定义需要的Image资源。各个格式的支持情况如下表所示：
+
+| 格式 | 支持情况 |
+|------|----------|
+| JPEG（.jpg/.jpeg） | 支持识别头部携带JFIF、Exif或ICC Profile标记的JPEG文件；<br>搭载OpenHarmony 7.0.0及以上版本的设备，新增支持识别头部包含DQT、XMP、MPF或Adobe标记的JPEG文件。 |
+| PNG（.png） | 支持标准的PNG文件。 |
+| KTX（.ktx） | 支持KTX格式的文件。KTX（Khronos Texture）是由Khronos Group定义的纹理容器格式，用于存储GPU可直接读取的纹理数据。 |
 
 ## 开发步骤
 1. 导入相关模块。
@@ -30,10 +44,10 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
    
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // 将加载的场景赋值给globalScene，以便统一创建资源
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -53,7 +67,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```
@@ -67,7 +81,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // 记录原始材质
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
@@ -80,7 +94,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
    ``` TypeScript
    function createImagePromise(): Promise<Image> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
@@ -119,16 +133,16 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
          return;
        }
    
-       // create shader
+       // 创建着色器
        this.shader = await this.rf.createShader({
          name: 'shaderResource',
          uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
        });
    
-       // create imageMat
+       // 创建图像材质
        this.imageMat = await this.rf.createMaterial({ name: 'imageMat' }, MaterialType.SHADER) as ShaderMaterial;
    
-       // bind between shader and imageMat
+       // 在着色器和图像材质之间进行绑定
        this.imageMat.colorShader = this.shader;
        let createdImage =  await createImagePromise();
        if (createdImage) {

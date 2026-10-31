@@ -1,18 +1,19 @@
 # Obtaining the Web Page Content Height
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zhou-ke13-->
-<!--Designer: @LongLie-->
+<!--Owner: @sinat_22543221-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=1a96632fba2a4580ec09c0d977471feef6b32786 translatedAt=2026-09-21T02:16:20.342Z pushedAt=2026-09-21T12:48:04.756Z -->
 
 The [getPageHeight](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight) API can obtain the actual height of the current web page content. You can select a proper method as required.
 
 ## When to Use
 
-The height obtained during web page loading may be inaccurate, especially when the rendering is not complete. The value will be updated after dynamic content is loaded. The web page content may take a long time to load. To speed up the initial loading, many websites use dynamic loading. When the first frame of a web page is displayed, remaining images and content continue to load.
+The height obtained during web page loading may be inaccurate, especially when the rendering is not complete. The value will be updated after dynamic content is loaded. The web page content may take a long time to load. To optimize the first-load speed, websites currently use dynamic web page loading techniques. When you see the first frame of a web page, the page resources are still being loaded dynamically, especially for pages that contain images and dynamic content.
 
-You are advised to not obtain the height of a non-static web page during the [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend), [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9), [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10) and [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) callbacks. You need to obtain the actual height of the current web page content through JSBridge or delay in a specific callback notification on the frontend based on the characteristics of the current web page.
+For a non-static web page, avoid obtaining the web page content height in the [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend), [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9), [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10), and [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) events, which are Web component lifecycle callbacks and Web performance metric callbacks. Instead, based on the characteristics of the current web page, obtain the actual height of the web page content in a specific frontend callback notification through JSBridge or a delayed approach.
 
 ## Common Static Page
 
@@ -61,7 +62,7 @@ class TestClass {
   }
 
   notifyToGet(): void {
-    console.info("page height:" + this.testController.getPageHeight());
+    console.info("page height: " + this.testController.getPageHeight());
   }
 }
 
@@ -110,7 +111,7 @@ Frontend code:
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is error");
+            console.info("jsbObj is undefined");
         }
     })
 </script>
@@ -122,7 +123,7 @@ Frontend code:
 
 When a web page contains large images, use the image loading completion callback to trigger the height measurement.
 
-Replace the image in the frontend code with a real image.
+In the frontend code, replace the sample image path with the actual image resource.
 ```html
 <!--index.html-->
 <!DOCTYPE html>

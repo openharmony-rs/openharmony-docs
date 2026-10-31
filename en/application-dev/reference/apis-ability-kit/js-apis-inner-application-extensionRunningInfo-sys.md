@@ -1,12 +1,13 @@
 # ExtensionRunningInfo (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=8e4ee7947dfeb3a89be0dfff4e576f69a510a94f translatedAt=2026-09-03T11:57:46.730Z pushedAt=2026-09-05T10:47:30.819Z -->
 
-The ExtensionRunningInfo module encapsulates ExtensionAbility running information, which can be obtained through [getExtensionRunningInfos](js-apis-app-ability-abilityManager-sys.md#getextensionrunninginfos).
+The ExtensionRunningInfo module encapsulates the running information of an Extension, including the Extension information, process ID, user ID, process name, start time, client package name, and Extension type. You can obtain the information through [getExtensionRunningInfos](js-apis-app-ability-abilityManager-sys.md#getextensionrunninginfos).
 
 > **NOTE**
 > 
@@ -33,10 +34,10 @@ Import the abilityManager module and obtain the ExtensionAbility running informa
 | -------- | -------- | -------- | -------- | -------- |
 | extension | [ElementName](js-apis-bundleManager-elementName.md) | No| No| ExtensionAbility information.|
 | pid | number | No| No| Process ID.|
-| uid | number | No| No| UID of the application.|
+| uid | number | No | No | User ID of the application to which the Extension belongs. |
 | processName | string | No| No| Process name.|
 | startTime | number | No| No| Timestamp when the ExtensionAbility is started.|
-| clientPackage | Array&lt;String&gt; | No| No| Names of all packages in the process.|
+| clientPackage | Array&lt;string&gt; | No | No | List of package names of the client applications connected to the Extension. |
 | type | [bundle.ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | No| No| ExtensionAbility type.|
 
 **Example**
@@ -48,7 +49,7 @@ let upperLimit = 1;
 function getExtensionInfos() {
   abilityManager.getExtensionRunningInfos(upperLimit, (error, data) => {
     if (error) {
-      console.error(`getForegroundApplications failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
+      console.error(`getExtensionRunningInfos failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
       return;
     }
 

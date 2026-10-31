@@ -2,7 +2,7 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @yhf-->
+<!--Owner: @HarMonkey-->
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
@@ -18,7 +18,7 @@
   - [查询关键资产(ArkTS)](asset-js-query.md)
   - [查询需要用户认证的关键资产(ArkTS)](asset-js-query-auth.md)
   - [批量新增关键资产(ArkTS)](asset-js-batch-add.md)
-  - [批量刪除关键资产(ArkTS)](asset-js-batch-remove.md)
+  - [批量删除关键资产(ArkTS)](asset-js-batch-remove.md)
   - [批量更新关键资产(ArkTS)](asset-js-batch-update.md)
   - [管理群组关键资产(ArkTS)](asset-js-group-access-control.md)
   - [同步（备份恢复）关键资产(ArkTS)](asset-js-sync.md)
@@ -32,3 +32,4 @@
   - [查询关键资产(C/C++)](asset-native-query.md)
   - [管理群组关键资产(C/C++)](asset-native-group-access-control.md)
   - [同步（备份恢复）关键资产(C/C++)](asset-native-sync.md)
+- [Asset Store Kit术语](asset-glossary.md)

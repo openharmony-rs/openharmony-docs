@@ -1,16 +1,19 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
-<!--Designer: @dongqingran-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-28T11:24:06.254Z pushedAt=2026-10-28T12:15:40.122Z nl=1 -->
 
-The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/setting the notification authorization status.
+This module provides the capabilities for managing notification extensions, including opening the notification extension subscription settings page, subscribing to and unsubscribing from notification extensions, and obtaining and setting the [notification authorization](../../notification/notification-glossary.md#notification-authorization) status.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 22. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> Notification extension events subscribed through this module are not delivered through the callbacks of this module's APIs. Instead, they are delivered through the callbacks (such as **onReceiveMessage**) of [NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md), and these callbacks are executed on the main thread of the **ExtensionAbility** instance.
 ## Modules to Import
 
 ```ts
@@ -32,7 +35,7 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 | Name  | Type                    | Mandatory| Description                |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | Ability context bound to the notification settings page.|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes | Context of the ability bound to the [notification setting](../../notification/notification-glossary.md#notification-setting) page. |
 
 **Return value**
 
@@ -57,16 +60,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 
 try {
-  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    console.info(`openSubscriberSettings success`);
-  }).catch((e:Error) => {
-    let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.info(`openSubscriptionSettings success`);
+  }).catch((e: Error) => {
+    let error = e as BusinessError;
+    console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -88,13 +91,13 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 | Name  | Type                    | Mandatory| Description                |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | Ability context bound to the notification settings page.|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes   | Context of the ability bound to the [notification setting](../../notification/notification-glossary.md#notification-setting) page. |
 
 **Return value**
 
-| Type    | Description| 
+| Type    | Description|
 | ------- |--|
-| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise used to return the result of the authorization set by the user.|
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise used to return the result of the authorization set by the user. |
 
 **Error codes**
 
@@ -113,16 +116,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 
 try {
-  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
-  }).catch((e:Error) => {
-    let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  }).catch((e: Error) => {
+    let error = e as BusinessError;
+    console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -170,9 +173,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  console.info(`subscribe success`);
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 
 ```
@@ -208,9 +211,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -247,7 +250,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
   console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -288,7 +291,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
     console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -296,7 +299,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result.
+Obtains the applications that are allowed to access device notifications for the current application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -304,9 +307,9 @@ Obtains the applications that are allowed to access device notifications. This A
 
 **Return value**
 
-| Type    | Description       | 
+| Type    | Description       |
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise used to return the applications obtained.       |
+| Promise\<[GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)[]\>   | Promise used to return the list of applications that are allowed to access device notifications for the current application.        |
 
 **Error codes**
 
@@ -325,7 +328,109 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationExtensionSubscription.getUserGrantedBundleIcon
+
+getUserGrantedBundleIcon(bundleName: string): Promise\<image.PixelMap\>
+
+Obtains the icons of the applications that are allowed to access device notifications in this application. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Notification.Notification
+
+**Required permission:** ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------------------------ | ---- |--------------------|
+| bundleName | string | Yes | Bundle name of the application whose icon is to be queried. |
+
+**Return value**
+
+| Type | Description |
+| ------- |-----------|
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | Promise used to return the application icon. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID | Error Message                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |
+| 801      | Capability not supported. |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.Failed to obtain or decode the application icon. |
+| 1600003  | Failed to connect to the service. |
+| 1600022  | The specified bundle is invalid. Possible causes: 1. The application is not in the list. 2. The application is disabled. |
+
+**Example**
+
+```ts
+import { image } from '@kit.ImageKit';
+
+notificationExtensionSubscription.getUserGrantedBundleIcon('com.example.myapplication').then((data: image.PixelMap) => {
+  console.info(`getUserGrantedBundleIcon successfully, pixel bytes number is ${data.getPixelBytesNumber()}`);
+}).catch((err: BusinessError) => {
+  console.error(`getUserGrantedBundleIcon fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationExtensionSubscription.disableUserGrantedByBundle
+
+disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise\<void\>
+
+Disables the device notification access for a specified application in this application. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Notification.Notification
+
+**Required permission:** ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------------------------ | ---- |--------------------|
+| bundle | [GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | Yes | Bundle information of the application that is to be disallowed to access device notifications. |
+
+**Return value**
+
+| Type     | Description        |
+| ------- |-----------|
+| Promise\<void\> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID | Error Message                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |
+| 801      | Capability not supported. |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.Database operation failed. |
+| 1600003  | Failed to connect to the service. |
+| 1600022  | The specified bundle is invalid. |
+
+**Example**
+
+```ts
+let bundle: notificationExtensionSubscription.GrantedBundleInfo = {
+  bundleName: 'com.example.myapplication',
+  appIndex: 0
+};
+notificationExtensionSubscription.disableUserGrantedByBundle(bundle).then(() => {
+  console.info(`disableUserGrantedByBundle successfully`);
+}).catch((err: BusinessError) => {
+  console.error(`disableUserGrantedByBundle fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -335,7 +440,7 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 
 Describes the information about the notification extension subscription.
 
-**System capability**: SystemCapability.Notification.Notification
+**System capability:** SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |
@@ -345,13 +450,13 @@ Describes the information about the notification extension subscription.
 
 type NotificationInfo = _NotificationInfo
 
-Describes the notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.
+Defines the notification information in the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of the [notification subscription](../../notification/notification-glossary.md#notification-subscription) extension ability.
 
 **System capability**: SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |
-| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |Describes the notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |Notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
 
 ## SubscribeType
 
@@ -369,7 +474,7 @@ type BundleOption = _BundleOption
 
 Describes the bundle information of an application.
 
-**System capability**: SystemCapability.Notification.Notification
+**System capability:** SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |
@@ -381,7 +486,7 @@ type GrantedBundleInfo = _GrantedBundleInfo
 
 Describes the bundle information of the authorized application.
 
-**System capability**: SystemCapability.Notification.Notification
+**System capability:** SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |
@@ -397,7 +502,7 @@ Describes the user authorization settings.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.Notification.Notification
+**System capability:** SystemCapability.Notification.Notification
 
 | Type| Description|
 | --- | --- |

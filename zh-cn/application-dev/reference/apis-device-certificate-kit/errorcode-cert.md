@@ -38,21 +38,25 @@ Runtime error.
 
 **错误描述**
 
-运行时外部错误。
+运行时错误。
 
 **可能原因**
 
-系统出现的不可预期的错误。
+1. 系统内部发生内存拷贝失败。
+2. 系统内部出现空指针，例如证书链校验器对象为空。
+3. 获取原生对象或转换参数失败，例如调用NAPI或ANI接口失败。
 
 **处理步骤**
 
-检查当前系统功能是否正常。
+1. 检查内存空间是否充足，清理内存后重试。
+2. 系统异常，请稍后重试或重启设备。
+3. 若以上检查均无法定位问题，请收集日志信息并联系华为技术支持。
 
 ## 19020003 参数检查失败
 
 **错误信息**
 
-Indicates that parameter check failed.
+Parameter check failed.
 
 **错误描述**
 
@@ -66,7 +70,7 @@ Indicates that parameter check failed.
 
 检查输入参数的正确性。
 
-## 19030001 算法相关的操作错误，调用三方算法库API出错
+## 19030001 调用三方算法库API出错
 
 **错误信息**
 
@@ -161,7 +165,7 @@ Failed to obtain the certificate issuer.
 
 检查证书的正确性。
 
-## 19030006 证书的密钥用途不包括证书签名
+## 19030006 证书的密钥用途不含证书签名
 
 **错误信息**
 
@@ -179,7 +183,7 @@ The key cannot be used for signing a certificate.
 
 检查证书的正确性。
 
-## 19030007 证书的密钥用途不包括数字签名
+## 19030007 证书的密钥用途不含数字签名
 
 **错误信息**
 
@@ -201,7 +205,7 @@ The key cannot be used for digital signature.
 
 **错误信息**
 
-The password may be wrong.
+Maybe wrong password.
 
 **错误描述**
 
@@ -219,7 +223,7 @@ The password may be wrong.
 
 **错误信息**
 
-The certificate is untrusted.
+Untrusted certificate.
 
 **错误描述**
 
@@ -251,15 +255,15 @@ The certificate has been revoked.
 
 证书已被吊销，请不要信任该证书。请更换有效证书。
 
-## 19030011 不支持的关键扩展
+## 19030011 未知的关键扩展
 
 **错误信息**
 
-Unknown critical extension.
+Unsupported critical extension.
 
 **错误描述**
 
-证书包含不支持的关键扩展。
+证书包含未知的关键扩展。
 
 **可能原因**
 
@@ -267,13 +271,13 @@ Unknown critical extension.
 
 **处理步骤**
 
-可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误，然后通过证书算法库相关接口获取该扩展数据自行进行校验。
+可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误，然后通过证书算法库相关接口获取该扩展数据自行进行校验。
 
 ## 19030012 主机名不匹配
 
 **错误信息**
 
-Hostname mismatch.
+Hostname mismatch in the certificate.
 
 **错误描述**
 
@@ -285,13 +289,13 @@ Hostname mismatch.
 
 **处理步骤**
 
-检查[hostnames](js-apis-cert.md#x509certvalidatorparams)参数是否正确。若正确，请不要信任该证书。
+检查[hostnames](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030013 邮箱地址不匹配
 
 **错误信息**
 
-Email address mismatch.
+Email address mismatch in the certificate.
 
 **错误描述**
 
@@ -303,17 +307,17 @@ Email address mismatch.
 
 **处理步骤**
 
-检查[emailAddresses](js-apis-cert.md#x509certvalidatorparams)参数是否正确。若正确，请不要信任该证书。
+检查[emailAddresses](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
-## 19030014 密钥用法不匹配
+## 19030014 密钥用途不匹配
 
 **错误信息**
 
-Key usage mismatch.
+Key usage mismatch in the certificate.
 
 **错误描述**
 
-证书密钥用法不匹配。
+证书密钥用途不匹配。
 
 **可能原因**
 
@@ -321,17 +325,17 @@ Key usage mismatch.
 
 **处理步骤**
 
-检查[keyUsage](js-apis-cert.md#x509certvalidatorparams)参数是否正确。若正确，请不要信任该证书。
+检查[keyUsage](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
-## 19030015 未找到CRL
+## 19030015 无法获取证书吊销列表
 
 **错误信息**
 
-CRL not found.
+Failed to obtain the certificate revocation list.
 
 **错误描述**
 
-未找到证书吊销列表（CRL）。
+无法获取证书吊销列表。
 
 **可能原因**
 
@@ -344,17 +348,17 @@ CRL not found.
 1. 检查是否提供了CRL数据。
 2. 若开启了在线下载CRL，检查证书是否包含CDP扩展。
 3. 若开启了在线下载CRL，检查网络连接是否正常，且保证可以正常访问网络。
-4. 若允许在校验证书吊销状态时忽略未找到证书吊销列表的错误，可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误。
+4. 若允许在校验证书吊销状态时忽略未找到证书吊销列表的错误，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
 
-## 19030016 CRL未生效
+## 19030016 证书吊销列表尚未生效
 
 **错误信息**
 
-CRL not yet valid.
+The certificate revocation list has not taken effect.
 
 **错误描述**
 
-CRL尚未生效。
+证书吊销列表尚未生效。
 
 **可能原因**
 
@@ -362,19 +366,19 @@ CRL的生效时间晚于当前验证时间。
 
 **处理步骤**
 
-1. 若允许CRL的生效时间晚于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误。
-2. 若未配置[date](js-apis-cert.md#x509certvalidatorparams)参数，请检查设备时间是否正确。
-3. 若配置了[date](js-apis-cert.md#x509certvalidatorparams)参数，请检查该参数是否合理。
+1. 若允许CRL的生效时间晚于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
+2. 若未配置[date](js-apis-cert.md#certvalidationparams)参数，请检查设备时间是否正确。
+3. 若配置了[date](js-apis-cert.md#certvalidationparams)参数，请检查该参数是否合理。
 
-## 19030017 CRL已过期
+## 19030017 证书吊销列表已过期
 
 **错误信息**
 
-CRL has expired.
+The certificate revocation list has expired.
 
 **错误描述**
 
-CRL已过期。
+证书吊销列表已过期。
 
 **可能原因**
 
@@ -382,19 +386,19 @@ CRL的失效时间早于当前验证时间。
 
 **处理步骤**
 
-1. 若允许CRL的失效时间早于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误。
-2. 若未配置[date](js-apis-cert.md#x509certvalidatorparams)参数，请检查设备时间是否正确。
-3. 若配置了[date](js-apis-cert.md#x509certvalidatorparams)参数，请检查该参数是否合理。
+1. 若允许CRL的失效时间早于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
+2. 若未配置[date](js-apis-cert.md#certvalidationparams)参数，请检查设备时间是否正确。
+3. 若配置了[date](js-apis-cert.md#certvalidationparams)参数，请检查该参数是否合理。
 
-## 19030018 CRL签名验证失败
+## 19030018 证书吊销列表签名验证失败
 
 **错误信息**
 
-CRL signature verification failed.
+Failed to verify the signature of the certificate revocation list.
 
 **错误描述**
 
-CRL签名验证失败。
+证书吊销列表签名验证失败。
 
 **可能原因**
 
@@ -404,15 +408,15 @@ CRL的签名验证失败，可能是签名错误或颁发者证书不匹配。
 
 检查CRL数据的正确性和颁发者证书。
 
-## 19030019 未找到CRL颁发者
+## 19030019 无法获取证书吊销列表颁发者
 
 **错误信息**
 
-CRL issuer not found.
+Failed to find the issuer of the certificate revocation list.
 
 **错误描述**
 
-未找到CRL颁发者证书。
+无法获取证书吊销列表颁发者。
 
 **可能原因**
 
@@ -422,15 +426,15 @@ CRL issuer not found.
 
 一般在部分证书链校验场景可能出现该错误，建议在该场景仅校验终端实体证书的吊销状态。若要校验所有证书的吊销状态，建议不要设置部分证书链校验。
 
-## 19030020 未找到OCSP响应
+## 19030020 无法获取在线证书状态协议（OCSP）响应
 
 **错误信息**
 
-OCSP response not found.
+Failed to obtain the OCSP response.
 
 **错误描述**
 
-未找到OCSP响应。
+无法获取在线证书状态协议（OCSP）响应。
 
 **可能原因**
 
@@ -443,13 +447,13 @@ OCSP response not found.
 1. 检查是否提供了OCSP响应数据。
 2. 若开启了在线OCSP检查，检查证书是否包含OCSP URL。
 3. 若开启了在线OCSP检查，检查网络连接是否正常，且保证可以正常访问网络。
-4. 若允许在校验证书吊销状态时忽略未找到OCSP响应的错误，可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误。
+4. 若允许在校验证书吊销状态时忽略未找到OCSP响应的错误，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
 
 ## 19030021 无效的OCSP响应
 
 **错误信息**
 
-OCSP response invalid.
+Invalid OCSP response.
 
 **错误描述**
 
@@ -467,7 +471,7 @@ OCSP响应数据格式错误、无法解析或已过期。
 
 **错误信息**
 
-OCSP signature verification failed.
+Failed to verify the OCSP signature. 
 
 **错误描述**
 
@@ -481,15 +485,15 @@ OCSP响应的签名验证失败，可能是签名错误或签名者证书不匹�
 
 将OCSP响应的签名者证书以及颁发者证书添加到不信任证书或信任证书列表中，并将其根添加到信任证书列表中。
 
-## 19030023 未知的OCSP证书状态
+## 19030023 OCSP证书状态未知
 
 **错误信息**
 
-OCSP certificate status unknown.
+Unknown OCSP certificate status.
 
 **错误描述**
 
-OCSP返回未知的证书状态。
+OCSP证书状态未知。
 
 **可能原因**
 
@@ -503,7 +507,7 @@ OCSP服务器无法确定证书的状态。
 
 **错误信息**
 
-Network timeout.
+Network connection timed out.
 
 **错误描述**
 

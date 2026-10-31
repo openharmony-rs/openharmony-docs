@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=0dc6b70dbe42c1b36afc6691262832ade4d73493 translatedAt=2026-09-03T11:02:05.867Z pushedAt=2026-09-05T10:47:30.509Z -->
 
 The module provides application information. Unless otherwise specified, the information is obtained through [bundle.getApplicationInfo](js-apis-Bundle.md#bundlegetapplicationinfodeprecated).
 
@@ -14,7 +15,7 @@ The module provides application information. Unless otherwise specified, the inf
 > 
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-ApplicationInfo](js-apis-bundleManager-applicationInfo.md) instead.
 
-## ApplicationInfo<sup>(deprecated)<sup>
+## ApplicationInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -28,20 +29,20 @@ The module provides application information. Unless otherwise specified, the inf
 | -------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | name                       | string                                                       | Yes  | No  | Application name.                                            |
 | description                | string                                                       | Yes  | No  | Application description.                                        |
-| descriptionId              | number                                                       | Yes  | No  | ID of the application description.                                |
+| descriptionId              | number                                                       | Yes  | No   | Resource ID of the application description.                  |
 | systemApp                  | boolean                                                      | Yes  | No  | Whether the application is a system application. **true** if yes, **false** otherwise.                       |
 | enabled                    | boolean                                                      | Yes  | No  | Whether the application is enabled. **true** if enabled, **false** otherwise.                      |
 | label                      | string                                                       | Yes  | No  | Application label.                                        |
-| labelId                    | string                                                       | Yes  | No  | ID of the application label.                                  |
+| labelId                    | string                                                       | Yes  | No   | Resource ID value of the application label.                  |
 | icon                       | string                                                       | Yes  | No  | Application icon.                                            |
-| iconId                     | string                                                       | Yes  | No  | ID of the application icon.                                    |
+| iconId                     | string                                                       | Yes  | No   | Resource ID value of the application icon.                   |
 | process                    | string                                                       | Yes  | No  | Process name.                |
 | supportedModes             | number                                                       | Yes  | No  | Modes supported by the application. Currently, only the **drive** mode is defined. This attribute applies only to telematics devices.|
-| moduleSourceDirs           | Array\<string>                                               | Yes  | No  | Relative paths for storing application resources. Do not access resource files using concatenated paths. Use [@ohos.resourceManager](../apis-localization-kit/js-apis-resource-manager.md) instead.                              |
+| moduleSourceDirs           | Array\<string>                                               | Yes  | No   | Relative path for storing application resources. The path cannot be concatenated to access resource files. Please use [@ohos.resourceManager (resource management)](../apis-localization-kit/js-apis-resource-manager.md) to access resources. |
 | permissions                | Array\<string>                                               | Yes  | No  | Permissions required for accessing the application.<br>The value is obtained by passing in GET_APPLICATION_INFO_WITH_PERMISSION to [bundle.getApplicationInfo](js-apis-Bundle.md#bundlegetapplicationinfodeprecated).|
 | moduleInfos                | Array\<[ModuleInfo](js-apis-bundle-ModuleInfo.md)>           | Yes  | No  | Application module information.                                        |
-| entryDir                   | string                                                       | Yes  | No  | Path for storing application files. Do not access resource files using concatenated paths. Use [@ohos.resourceManager](../apis-localization-kit/js-apis-resource-manager.md) instead.                                    |
-| codePath<sup>8+</sup>      | string                                                       | Yes  | No  | Installation directory of the application. Do not access resource files using concatenated paths. Use [@ohos.resourceManager](../apis-localization-kit/js-apis-resource-manager.md) instead.                                        |
+| entryDir                   | string                                                       | Yes  | No   | File storage path of the application. The path cannot be concatenated to access resource files. Please use [@ohos.resourceManager (resource management)](../apis-localization-kit/js-apis-resource-manager.md) to access resources. |
+| codePath<sup>8+</sup>      | string                                                       | Yes  | No   | Installation directory of the application. The path cannot be concatenated to access resource files. Please use [@ohos.resourceManager (resource management)](../apis-localization-kit/js-apis-resource-manager.md) to access resources. |
 | metaData<sup>8+</sup>      | Map\<string, Array\<[CustomizeData](js-apis-bundle-CustomizeData.md)>> | Yes  | No  | Custom metadata of the application.<br>The value is obtained by passing in GET_APPLICATION_INFO_WITH_METADATA to [bundle.getApplicationInfo](js-apis-Bundle.md#bundlegetapplicationinfodeprecated).|
 | removable<sup>8+</sup>     | boolean                                                      | Yes  | No  | Whether the application is removable. **true** if removable, **false** otherwise.                                    |
 | accessTokenId<sup>8+</sup> | number                                                       | Yes  | No  | Access token ID of the application.                                   |

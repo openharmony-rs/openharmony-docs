@@ -4,7 +4,7 @@
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
@@ -12,7 +12,7 @@ typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 
 ## Overview
 
-Defines a struct for the key code array.
+Defines an array of key value attribute codes, which stores information about the key value codes supported by an HID device.
 
 **Since**: 11
 
@@ -26,5 +26,5 @@ Defines a struct for the key code array.
 
 | Name| Description|
 | -- | -- |
-| Hid_KeyCode* hidKeyCode | Key code array.|
-| uint16_t length | Valid length of an array.|
+| [Hid_KeyCode](capi-hid-ddk-types-h.md#hid_keycode)* hidKeyCode | Pointer to the array of key codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length.|
+| uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidKeyCode** array.|

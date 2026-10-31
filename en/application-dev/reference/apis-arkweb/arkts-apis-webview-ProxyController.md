@@ -1,12 +1,16 @@
 # Class (ProxyController)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:45:12.270Z pushedAt=2026-08-07T10:36:46.751Z -->
 
-Implements a **ProxyController** object to set a proxy for an application.
+ProxyController is a static class in the ArkWeb framework used to manage the proxy configuration of all Web components in an app. With ProxyController, developers can uniformly set or remove proxy configurations for all Web requests in the app, which is suitable for scenarios where Web traffic needs to be routed to a specific proxy server (such as enterprise network environments, content filtering, and traffic monitoring).
+
+ProxyController provides two core methods: **applyProxyOverride** is used to apply a proxy configuration, which accepts a [ProxyConfig](./arkts-apis-webview-ProxyConfig.md) object and a callback function for successful proxy setup; **removeProxyOverride** is used to remove the current proxy configuration and restore the default network connection. Note that the proxy setting or removal does not take effect immediately. Before loading a page, wait for the callback function to be triggered. The callback function is invoked on the UI thread.
 
 > **NOTE**
 >
@@ -26,7 +30,7 @@ import { webview } from '@kit.ArkWeb';
 
 static applyProxyOverride(proxyConfig: ProxyConfig, callback: OnProxyConfigChangeCallback): void
 
-Sets the proxy used by all web pages in an application. URLs that match the bypass rule inserted through [insertBypassRule](./arkts-apis-webview-ProxyConfig.md#insertbypassrule15) do not use the proxy. Instead, their requests are directly sent to the source addresses specified by the URLs. The new proxy may not be used immediately after the network is connected. Before loading the page, wait for the listener to be triggered in the UI thread.
+Sets the proxy configuration used by all Web instances in the app. URLs that match the bypass rules inserted through [insertBypassRule](./arkts-apis-webview-ProxyConfig.md#insertbypassrule15) will not use the proxy but instead send requests directly to the origin address specified by the URL. After the proxy is successfully set, there is no guarantee that the new proxy configuration will be used immediately after the network is connected. Before loading a page, wait for the callback function to be triggered. The callback function is invoked on the UI thread.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -35,7 +39,7 @@ Sets the proxy used by all web pages in an application. URLs that match the bypa
 | Name         | Type    |  Mandatory | Description          |
 | ---------------| ------- | ---- | ------------- |
 | proxyConfig     | [ProxyConfig](./arkts-apis-webview-ProxyConfig.md)  | Yes  | Configuration of the proxy.|
-| callback     | [OnProxyConfigChangeCallback](./arkts-apis-webview-t.md#onproxyconfigchangecallback15)   | Yes  | Callback used when the proxy is successfully set.|
+| callback     | [OnProxyConfigChangeCallback](./arkts-apis-webview-t.md#onproxyconfigchangecallback15)   | Yes   | Callback invoked when the proxy configuration changes. |
 
 **Error codes**
 
@@ -53,7 +57,7 @@ For details about the sample code, see [removeProxyOverride](./arkts-apis-webvie
 
 static removeProxyOverride(callback: OnProxyConfigChangeCallback): void
 
-Removes the proxy configuration. The new proxy may not be used immediately after the network is connected. Before loading the page, wait for the listener to be triggered in the UI thread.
+Removes the proxy configuration. After the proxy configuration is removed, there is no guarantee that the default network connection will be restored immediately after the network is connected. Before loading a page, wait for the callback function to be triggered. The callback function is invoked on the UI thread.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -61,7 +65,7 @@ Removes the proxy configuration. The new proxy may not be used immediately after
 
 | Name         | Type    |  Mandatory | Description          |
 | ---------------| ------- | ---- | ------------- |
-| callback     | [OnProxyConfigChangeCallback](./arkts-apis-webview-t.md#onproxyconfigchangecallback15)   | Yes  | Callback used when the proxy is successfully set.|
+| callback     | [OnProxyConfigChangeCallback](./arkts-apis-webview-t.md#onproxyconfigchangecallback15)   | Yes   | Callback for proxy configuration changes. |
 
 **Error codes**
 
@@ -89,8 +93,8 @@ struct WebComponent {
       Column() {
         Button("applyProxyOverride").onClick(()=>{
           let proxyConfig:webview.ProxyConfig = new webview.ProxyConfig();
-          // The first proxy configuration https://proxy.XXX.com is preferentially used.
-          // When the proxy fails, insertDirectRule is used.
+          // Use the first proxy configuration https://proxy.XXX.com first
+          // Fall back to direct server connection insertDirectRule after proxy failure.
           try {
             proxyConfig.insertProxyRule("https://proxy.XXX.com", webview.ProxySchemeFilter.MATCH_ALL_SCHEMES);
           } catch (error) {
@@ -140,7 +144,7 @@ struct WebComponent {
         })
         Button("removeProxyOverride").onClick(()=>{
           try {
-          webview.ProxyController.removeProxyOverride(() => {
+            webview.ProxyController.removeProxyOverride(() => {
             console.info("PROXYCONTROLLER proxy changed");
           });
           } catch (error) {

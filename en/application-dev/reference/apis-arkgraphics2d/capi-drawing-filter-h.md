@@ -2,14 +2,15 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=357665bbb6caa6d8123e7eb4a2cbf8a969d1a249 translatedAt=2026-08-24T08:26:32.312Z pushedAt=2026-08-25T06:55:50.037Z -->
 
 ## Overview
 
-This file declares the functions related to the filter in the drawing module.
+Declares functions related to the filter object in the drawing module.<br>This module adopts a single-thread model policy, and the caller must manage thread safety and context state switching.
 
 **File to include**: <native_drawing/drawing_filter.h>
 
@@ -70,7 +71,6 @@ Sets an **OH_Drawing_ImageFilter** object for an **OH_Drawing_Filter** object.<b
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -91,7 +91,6 @@ Sets an **OH_Drawing_MaskFilter** object for an **OH_Drawing_Filter** object.<br
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -114,7 +113,6 @@ Sets an **OH_Drawing_ColorFilter** object for an **OH_Drawing_Filter** object.<b
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -136,7 +134,6 @@ Obtains an **OH_Drawing_ColorFilter** object from an **OH_Drawing_Filter** objec
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -157,7 +154,6 @@ Destroys an **OH_Drawing_Filter** object and reclaims the memory occupied by the
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
-
 
 **Parameters**
 

@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=79c965e8e98a1b9ec686c81b298af1075b43b9bc translatedAt=2026-10-30T03:45:54.956Z pushedAt=2026-10-30T07:24:46.057Z nl=1 -->
 
 For details about the algorithm specifications, see [DH](crypto-key-agreement-overview.md#dh).
 
@@ -13,9 +14,9 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key pair (**KeyPair**) that uses the DH key algorithm and the well-known security prime group modp1536.
 
-   In addition to the example in this topic, [DH](crypto-asym-key-generation-conversion-spec.md#dh) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate a DH asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+   To learn how to generate a DH asymmetric key, refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: DH](crypto-key-generation-conversion.md#dh) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the referenced documents may differ from the current example in input parameters.
 
-2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter **'DH_modp1536'** to create a key agreement (**KeyAgreement**) that uses the DH key algorithm and the well-known security prime group modp1536.
+2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter 'DH_modp1536' to create a key agreement generator (KeyAgreement) that uses the DH algorithm and the well-known safe prime group modp1536.
 
 3. Call [KeyAgreement.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret-1) to perform key agreement with the specified private key (**KeyPair.priKey**) and public key (**KeyPair.pubKey**), and return the shared secret.
 
@@ -55,7 +56,7 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
-  function dhAwait() {
+  function dhSync() {
     let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
     // Randomly generate public-private key pair A.
     let keyPairA = keyGen.generateKeyPairSync();
@@ -75,3 +76,4 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
     }
   }
   ```
+

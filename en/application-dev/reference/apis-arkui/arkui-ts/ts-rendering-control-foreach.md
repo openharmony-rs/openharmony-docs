@@ -4,9 +4,10 @@
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=3cd7a88aa48788902d0133e2f69247ba0fd6a00d translatedAt=2026-09-01T11:38:08.594Z pushedAt=2026-09-02T11:24:50.053Z -->
 
-**ForEach** enables rendering of repeated content based on array type data.
+The **ForEach** API performs loop rendering based on array-type data. It can quickly generate child components with the same structure but different content based on array data. It is applicable to scenarios such as dynamic lists and batch data display, and must be used together with a container component.
 
 > **NOTE**
 >
@@ -18,7 +19,7 @@ For details about the development, see [ForEach: Rendering Repeated Content](../
 
 ForEach(arr: Array\<any\>, itemGenerator: (item: any, index: number) => void, keyGenerator?: (item: any, index: number) => string)
 
-**ForEach** enables rendering of repeated content based on array type data. It must be used in a container component, and the component it returns must be one allowed inside the container component. For example, a **ListItem** component is allowed only when the parent container component of **ForEach** is [List](../../../reference/apis-arkui/arkui-ts/ts-container-list.md) or [ListItemGroup](../../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md).
+This API must be used together with a container component, and the components returned by the API must be child components that are allowed to be contained in the **ForEach** parent container component. For example, the [ListItem](../../../reference/apis-arkui/arkui-ts/ts-container-listitem.md) component requires that the parent container component of **ForEach** must be a [List](../../../reference/apis-arkui/arkui-ts/ts-container-list.md) component or a [ListItemGroup](../../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -30,27 +31,27 @@ ForEach(arr: Array\<any\>, itemGenerator: (item: any, index: number) => void, ke
 
 | Name       | Type                                   | Mandatory| Description                                                        |
 | ------------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| arr           | Array\<any\>                         | Yes  | Data source, which is an array.<br>If this parameter is set to **undefined**, the **ForEach** API does not take effect.<br>**NOTE**<br>- You can set this parameter to an empty array. In this case, no child component is created.<br>- You can also set this parameter to a function whose return value is an array, for example, **arr.slice (1, 3)**. However, the set function cannot change any state variables including the array itself. For example, **Array.splice**, **Array.sort**, and **Array.reverse** functions are not allowed, as they may change the array.|
-| itemGenerator | (item: any, index: number) => void   | Yes  | Component generator.<br>- It generates a component for each data item in an array. <br>- (Optional) **item**: data item in the **arr** array.<br>- (Optional) **index**: index of the data item in the **arr** array.<br>**NOTE**<br>- The type of the created component must be the one allowed inside the parent container component of **ForEach**. For example, a **ListItem** component is allowed only when the parent container component of **ForEach** is **List**.|
-| keyGenerator  | (item: any, index: number) => string | No  | Key generator.<br>- It generates a unique and persistent key for each array item of the data source **arr**. You can customize the key generation rule using this function.<br>- (Optional) **item**: data item in the **arr** array.<br>- (Optional) **index**: index of the data item in the **arr** array.<br>**NOTE**<br>- If this function is not specified, the default key generator of the framework is used: **(item: T, index: number) => { return index + '__' + JSON.stringify(item); }**.<br>- The key generator should not change any component state.|
+| arr           | Array\<any\>                         | required   | Data source, of the `Array` type.<br>If it is set to `undefined`, the **ForEach** API does not take effect.<br>**Note:**<br>- It can be set to an empty array, in which case no child component is created.<br>- It can be set to a function that returns an array, for example, `arr.slice(1, 3)`. However, the function set must not change any state variable, including the array itself. For example, functions that change the original array, such as `Array.splice()`, `Array.sort()`, or `Array.reverse()`, must not be used. |
+| itemGenerator | (item: any, index: number) => void   | required   | Component generation function.<br>- Creates a component for each data item in the array.<br>- `item` parameter (optional): data item in the `arr` array.<br>- `index` parameter (optional): index of the data item in the `arr` array.<br>- It is recommended that the data type of `item` be consistent with that of `arr`. Otherwise, if the `itemGenerator` contains operations strongly related to the data type, the child component may fail to render properly or even crash at runtime.<br>**Note:**<br>- The component type must be allowed by the parent container of `ForEach`. For example, the `ListItem` component requires the parent container component of `ForEach` to be a `List` component or a `ListItemGroup` component.<br>- The component generation function must not change any component state. |
+| keyGenerator  | (item: any, index: number) => string | optional   | Key generation function.<br>- Generates a unique and stable key value for each data item in the data source `arr`. Developers can customize the key generation rule through this function. For example, when a data item contains a unique identifier, the identifier can be used as the key value to improve rendering performance. When data items may be added, deleted, or reordered, a custom stable key value ensures correct component reuse. If the key value is not unique or persistent, component reuse errors or rendering exceptions may occur.<br>- `item` parameter (optional): data item in the `arr` array. It is recommended that the data type of `item` be consistent with that of `arr`. Otherwise, if the `keyGenerator` contains operations strongly related to the data type, the child component may fail to render properly or even crash at runtime.<br>- `index` parameter (optional): index of the data item in the `arr` array.<br>**Note:**<br>- If this function is omitted, the default key generation function of the framework is `(item: any, index: number) => { return index + '__' + JSON.stringify(item); }`<br>- The key generation function must not change any component state. |
 
 > **NOTE**
 >
-> - The **itemGenerator** function can contain an **if/else** statement, and an **if/else** statement can contain **ForEach**.
-> - On initial rendering, **ForEach** loads all data of the data source, creates a component for each data item, and mounts the created components to the render tree. If the data source contains a large number of items or performance is a critical concern, you are advised to use **LazyForEach**. For best practices, see [Performance Optimization Using LazyForEach](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-lazyforeach-optimization).
+> - The `itemGenerator` function of `ForEach` can contain [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) conditional rendering logic. In addition, the `ForEach` component can also be used in `if/else` conditional rendering statements.
+> - During initial rendering, `ForEach` loads all data in the data source, creates a corresponding component for each data item, and then mounts it to the rendering tree. When the number of data items in the data source is large (for example, hundreds or more) or performance issues such as lag during the first loading of a list occur, you are advised to use the [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) component. For best practices, see [Optimizing Performance Using LazyForEach](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-lazyforeach-optimization).
 
-The data source item type is **any**, and no type consistency check is performed. It is recommended that you maintain consistent type declarations when using **ForEach **(see the following code snippet). Incorrect usage shown in the following code snippet may cause child component rendering failures.
+The data source item type is **any**, and no type consistency check is performed. It is recommended that you maintain consistent type declarations when using **ForEach** (see the following code snippet). Incorrect usage shown in the following code snippet may cause child component rendering failures.
 
 ```ts
 // Incorrect usage.
 arr: Array<Type1 | Type2> = [];
 
-ForEach(this.arr, (item: Type1) => {...}, (item: Type2) => item.toString()) // The item type is inconsistent with the data item type.
+ForEach(this.arr, (item: Type1) => {...}, (item: Type2) => item.toString()); // The item type is inconsistent with the data item type.
 
 // Correct usage.
 arr: Array<Type1 | Type2> = [];
 
-ForEach(this.arr, (item: Type1 | Type2) => {...}, (item: Type1 | Type2) => item.toString()) // The type of item matches the type of the array elements.
+ForEach(this.arr, (item: Type1 | Type2) => {...}, (item: Type1 | Type2) => item.toString()); // The item type is consistent with the data item type.
 ```
 
 ## Attributes

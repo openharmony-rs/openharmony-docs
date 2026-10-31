@@ -3,9 +3,9 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @chenzhe123-->
-<!--Designer: @wangchun-->
+<!--Designer: @wangchun410-->
 <!--Tester: @RayShih-->
-<!--Adviser: @fang-jinxu -->
+<!--Adviser: @fang-jinxu-->
 
 This module provides APIs for querying the DND mode status, including whether the system DND mode is enabled, whether the application is allowed to be disturbed, and so on. When a specific intelligent scene (DND mode, sleep mode, study mode, work mode, or custom mode) is enabled, the DND mode is enabled.
 
@@ -51,16 +51,19 @@ For details about the error codes, see [Intelligent Scene Error Codes](errorcode
 ```js
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
-let isDoNotDisturbEnabled: boolean = false;
-try {
-  isDoNotDisturbEnabled = await intelligentScene.isDoNotDisturbEnabled();
-} catch (err) {
-  console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
-}
-if (isDoNotDisturbEnabled) {
-  console.info('DoNotDisturb state is open');
-} else {
-  console.info('DoNotDisturb state is closed');
+async function isDoNotDisturbEnabled(): Promise<boolean> {
+  let isDoNotDisturbEnabled: boolean = false;
+  try {
+    isDoNotDisturbEnabled = await intelligentScene.isDoNotDisturbEnabled();
+  } catch (err) {
+    console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
+  }
+  if (isDoNotDisturbEnabled) {
+    console.info('DoNotDisturb state is open');
+  } else {
+    console.info('DoNotDisturb state is closed');
+  }
+  return isDoNotDisturbEnabled;
 }
 ```
 
@@ -96,15 +99,18 @@ For details about the error codes, see [Intelligent Scene Error Codes](errorcode
 ```js
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
-let isNotifyAllowedInDoNotDisturb: boolean = false;
-try {
-  isNotifyAllowedInDoNotDisturb = await intelligentScene.isNotifyAllowedInDoNotDisturb();
-} catch (err) {
-  console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
-}
-if (isNotifyAllowedInDoNotDisturb) {
-  console.info('Allowed to notify in doNotDisturb state');
-} else {
-  console.info('Not allowed to notify in doNotDisturb state or doNotDisturb is closed');
+async function isNotifyAllowedInDoNotDisturb(): Promise<boolean> {
+  let isNotifyAllowedInDoNotDisturb: boolean = false;
+  try {
+    isNotifyAllowedInDoNotDisturb = await intelligentScene.isNotifyAllowedInDoNotDisturb();
+  } catch (err) {
+    console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
+  }
+  if (isNotifyAllowedInDoNotDisturb) {
+    console.info('Allowed to notify in doNotDisturb state');
+  } else {
+    console.info('Not allowed to notify in doNotDisturb state or doNotDisturb is closed');
+  }
+  return isNotifyAllowedInDoNotDisturb;
 }
 ```

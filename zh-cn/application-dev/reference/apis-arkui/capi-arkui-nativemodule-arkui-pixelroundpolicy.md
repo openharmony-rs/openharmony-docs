@@ -1,8 +1,8 @@
 # ArkUI_PixelRoundPolicy
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @little-bear-sleeps-->
-<!--Designer: @lanshouren-->
+<!--Owner: @zhangwentao96-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,4 +18,4 @@ typedef struct ArkUI_PixelRoundPolicy ArkUI_PixelRoundPolicy
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [layout.h](capi-layout-h.md)

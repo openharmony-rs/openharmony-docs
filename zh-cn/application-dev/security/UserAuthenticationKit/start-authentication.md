@@ -31,7 +31,7 @@
 认证控件的样式如图所示，通过[WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)配置对应参数。
 
 <!--RP1-->
-![zh-cn_image_0000001789150921](figures/zh-cn_image_0000001789150921.png)
+![unified-UI-component-authentication](figures/unified-UI-component-authentication.png)
 <!--RP1End-->
 
 - 标注1：用户认证界面的标题（WidgetParam.title），不支持传空字串，最大长度为500字符。应用可在此配置符合场景的字符串，建议传入认证目的，例如用于支付、登录应用等。
@@ -47,28 +47,34 @@
 
   当前仅系统应用可以选择和使用全屏类型的认证界面。
 
-  ![zh-cn_image_0000001742032002](figures/zh-cn_image_0000001742032002.png)
+  ![popup-authentication](figures/popup-authentication.png)
 <!--DelEnd-->
 
 当前支持使用认证控件的认证类型包括：
 
-- 锁屏口令认证
+- 锁屏口令认证。
 
-- 人脸认证
+- 人脸认证。
 
-- 指纹认证
+- 指纹认证。
 
-- 人脸+锁屏口令认证
+- 人脸+锁屏口令认证。
 
-- 指纹+锁屏口令认证
+- 指纹+锁屏口令认证。
 
-- 人脸+指纹+锁屏口令认证
+- 人脸+指纹+锁屏口令认证。
 
-- 人脸+自定义导航按键
+- 人脸+自定义导航按键。
 
-- 指纹+自定义导航按键
+- 指纹+自定义导航按键。
 
-- 人脸+指纹+自定义导航按键<sup>18+</sup>
+- 从API版本18开始，支持人脸+指纹+自定义导航按键的认证类型。
+
+<!--RP3--><!--RP3End-->
+
+> **说明：**
+>
+> 从API版本26.0.1开始，在企业账号场景下，如果用户开通了企业账号认证解锁但没有注册锁屏口令时，应用发起的锁屏口令认证将会自动切换为企业账号密码认证。
 
 ## 开发步骤
 
@@ -300,4 +306,4 @@ initiatingUserAuthentication4() {
 
 ## 示例代码
 
-  - [发起认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - 可参考[用户认证服务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)示例代码。

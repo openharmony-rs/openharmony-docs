@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=69b456e9e43352d383c769b91ae4ec52c774afd2 translatedAt=2026-08-26T04:59:18.371Z pushedAt=2026-08-28T08:53:28.184Z -->
 
 ## Widget Overview
 
@@ -15,11 +16,11 @@ A widget usually appears as a part of the UI of another application (which curre
 - Before you get started, it would be helpful if you have a basic understanding of the following concepts:
 
   - Widget provider: an atomic service that controls the widget content to display, how widget components are laid out, and how they interact with users.
-  
+
   - Widget host: an application that displays the widget content and controls the widget location.
-  
+
   - Widget Manager: a resident agent that provides widget management features such as periodic widget updates.
-  
+
    ![formHostModule](./figures/widget-host-development-guide-1.png)
 
 ## When to Use
@@ -52,7 +53,7 @@ The **temporary** field in **FormComponent** specifies whether a widget is a tem
 - Normal widget: a widget persistently used by the widget host, for example, a widget added to the home screen.
 
 - Temporary widget: a widget temporarily used by the widget host, for example, the widget displayed when you swipe up on a widget application.
-  
+
 Data of a temporary widget will be deleted on the Widget Manager if the widget framework is killed and restarted. The widget provider, however, is not notified of the deletion and still keeps the data. Therefore, the widget provider needs to clear the data of temporary widgets proactively if the data has been kept for a long period of time. If the widget host has converted a temporary widget into a normal one, the widget provider should change the widget data from temporary storage to persistent storage. Otherwise, the widget data may be deleted by mistake. 
 
 ## Using formHost APIs
@@ -239,7 +240,7 @@ struct formHostSample {
     let formHapRecordMap: HashMap<string, formInfo.FormInfo[]> = new HashMap();
     this.formInfoRecord = [];
     formHost.getAllFormsInfo().then((formList: Array<formInfo.FormInfo>) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'getALlFormsInfo size:' + formList.length);
+      hilog.info(DOMAIN_NUMBER, TAG, 'getAllFormsInfo size:' + formList.length);
       for (let formItemInfo of formList) {
         let formBundleName = formItemInfo.bundleName;
         if (formHapRecordMap.hasKey(formBundleName)) {
@@ -285,7 +286,7 @@ struct formHostSample {
             this.getAllBundleFormsInfo();
           })
 
-        // After a user taps the button, a selection page is displayed. After the user taps OK, the selected widget of the default size is added.
+        // Tap the button to open the selection UI, and display the selected card through FormComponent after selection.
         // Replace $r('app.string.selectAddForm') with the actual resource file. In this example, the value of the resource file is "Add widget".
         Button($r('app.string.selectAddForm'))
           .enabled(this.showFormPicker)
@@ -514,3 +515,8 @@ struct formHostSample {
 
 ![screenshot](./figures/widget-host-development-guide-2.jpeg)
 
+## Samples
+
+For widget host development, the following sample is available:
+
+- [FormHost (Stage) (API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Form/FormHost)

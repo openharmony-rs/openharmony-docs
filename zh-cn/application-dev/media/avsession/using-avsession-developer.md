@@ -1,8 +1,8 @@
 # 媒体会话提供方(ArkTS)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -10,9 +10,9 @@
 
 ## 基本概念
 
-- 媒体会话元数据（AVMetadata）： 用于描述媒体数据相关属性，包含标识当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等属性。
+- 媒体会话元数据（AVMetadata）：用于描述媒体数据相关属性，包含标识当前媒体的ID（assetId）、上一首媒体的ID（previousAssetId）、下一首媒体的ID（nextAssetId）、标题（title）、艺术家（artist）、专辑作者（author）、专辑名称（album）、词作者（writer）和媒体时长（duration）等属性。
 
-- 媒体播放状态（AVPlaybackState）：用于描述媒体播放状态的相关属性，包含当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体Id（activeItemId）、自定义媒体数据（extras）等属性。
+- 媒体播放状态（AVPlaybackState）：用于描述媒体播放状态的相关属性，包含当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）和自定义媒体数据（extras）等属性。
 
 ## 接口说明
 
@@ -22,20 +22,20 @@
 
 | 接口名 | 说明 | 
 | -------- | -------- |
-| createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback&lt;AVSession&gt;): void<sup>10+<sup> | 创建媒体会话。<br/>一个UIAbility只能存在一个媒体会话，重复创建会失败。 | 
-| setAVMetadata(data: AVMetadata, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置媒体会话元数据。 | 
-| setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置媒体会话播放状态。 | 
-| setLaunchAbility(ability: WantAgent, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置启动UIAbility。 | 
-| getController(callback: AsyncCallback&lt;AVSessionController&gt;): void<sup>10+<sup> | 获取当前会话自身控制器。 | 
-| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+<sup> | 获取播放设备相关信息。 |
-| activate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 激活媒体会话。 | 
-| deactivate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 禁用当前会话。 |
-| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 销毁媒体会话。 | 
-| setAVQueueItems(items: Array&lt;AVQueueItem&gt;, callback: AsyncCallback&lt;void&gt;): void <sup>10+<sup> | 设置媒体播放列表。 |
-| setAVQueueTitle(title: string, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置媒体播放列表名称。 |
-| dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置会话内自定义事件。 |
-| setExtras(extras: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置键值对形式的自定义媒体数据包。|
-| getOutputDeviceSync(): OutputDeviceInfo<sup>10+<sup> | 使用同步方法获取当前输出设备信息。 |
+| createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback&lt;AVSession&gt;): void<sup>10+</sup> | 创建媒体会话。<br/>一个UIAbility只能存在一个媒体会话，重复创建会失败。 | 
+| setAVMetadata(data: AVMetadata, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置媒体会话元数据。 | 
+| setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置媒体会话播放状态。 | 
+| setLaunchAbility(ability: WantAgent, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置启动UIAbility。 | 
+| getController(callback: AsyncCallback&lt;AVSessionController&gt;): void<sup>10+</sup> | 获取当前会话自身控制器。 | 
+| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+</sup> | 获取输出设备相关信息。 |
+| activate(callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 激活媒体会话。 | 
+| deactivate(callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 禁用当前会话。 |
+| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 销毁媒体会话。 | 
+| setAVQueueItems(items: Array&lt;AVQueueItem&gt;, callback: AsyncCallback&lt;void&gt;): void <sup>10+</sup> | 设置媒体播放列表。 |
+| setAVQueueTitle(title: string, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置媒体播放列表名称。 |
+| dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置会话内自定义事件。 |
+| setExtras(extras: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置键值对形式的自定义媒体数据包。|
+| getOutputDeviceSync(): OutputDeviceInfo<sup>10+</sup> | 使用同步方法获取当前输出设备信息。 |
 
 ## 开发步骤
 
@@ -93,7 +93,7 @@
 
    音视频应用设置的媒体会话信息，会被媒体会话控制方通过AVSessionController相关方法获取后进行显示或处理。
      
-   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) -->
+   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) --> 
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -123,7 +123,7 @@
                artist: 'ARTIST'
              };
              session.setAVMetadata(metadata).then(() => {
-               console.info(`SetAVMetadata successfully`);
+               console.info(`setAVMetadata successfully`);
                // ...
              }).catch((err: BusinessError) => {
                console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
@@ -139,7 +139,7 @@
                  console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
                  // ...
                } else {
-                 console.info(`SetAVPlaybackState successfully`);
+                 console.info(`setAVPlaybackState successfully`);
                  // ...
                }
              });
@@ -204,6 +204,7 @@
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { wantAgent } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    
    @Entry
    @Component
@@ -232,6 +233,8 @@
              }
              wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
                session.setLaunchAbility(agent);
+             }).catch((err: BusinessError) => {
+               console.error(`Failed to getWantAgent. Code: ${err.code}, message: ${err.message}`);
              })
              // ...
            })
@@ -242,10 +245,10 @@
    }
    ```
     
-4. 设置一个即时的自定义会话事件，以供媒体控制方接收到事件后进行相应的操作。
+4. 发送一个即时的自定义会话事件，以供媒体控制方接收到事件后进行相应的操作。
 
    > **说明：**<br>
-   > 通过dispatchSessionEvent方法设置的数据不会保存在会话对象或AVSession服务中。
+   > 通过dispatchSessionEvent方法发送的数据不会保存在会话对象或AVSession服务中。
 
    <!-- @[dispatchSessionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DispatchSessionEvent.ets) -->
    
@@ -336,12 +339,13 @@
    6.1 固定控制命令的监听。
    > **说明：**
    >
-   > 媒体会话提供方在注册相关固定播控命令事件监听时，监听的事件会在媒体会话控制方的getValidCommands()方法中体现，即媒体会话控制方会认为对应的方法有效，进而根据需要触发相应暂不使用时的事件。为了保证媒体会话控制方下发的播控命令可以被正常执行，媒体会话提供方请勿进行无逻辑的空实现监听。
+   > 媒体会话提供方在注册相关固定播控命令事件监听时，监听的事件会在媒体会话控制方的getValidCommands()方法中体现，即媒体会话控制方会认为对应的方法有效，进而根据需要触发相应的事件。为了保证媒体会话控制方下发的播控命令可以被正常执行，媒体会话提供方请勿进行无逻辑的空实现监听。
 
    Session侧的固定播控命令主要包括播放、暂停、上一首、下一首等基础操作命令，详细介绍请参见[AVControlCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avcontrolcommand10)。
 
+   控制场景包括：播控中心点击、播控中心通知栏移除、蓝牙耳机佩戴、蓝牙耳机/有线耳机按键、语音助手控制等。
      
-   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) -->
+   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) --> 
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -369,49 +373,49 @@
                console.info(`on play , do play task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('play')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态。
              });
              session.on('pause', () => {
                console.info(`on pause , do pause task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('pause')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态。
              });
              session.on('stop', () => {
                console.info(`on stop , do stop task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('stop')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态。
              });
              session.on('playNext', () => {
                console.info(`on playNext , do playNext task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('playNext')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态，使用SetAVMetadata上报媒体信息。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态，使用setAVMetadata上报媒体信息。
              });
              session.on('playPrevious', () => {
                console.info(`on playPrevious , do playPrevious task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('playPrevious')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态，使用SetAVMetadata上报媒体信息。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态，使用setAVMetadata上报媒体信息。
              });
              session.on('fastForward', () => {
                console.info(`on fastForward , do fastForward task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('fastForward')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态和播放position。
              });
              session.on('rewind', () => {
                console.info(`on rewind , do rewind task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('rewind')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态和播放position。
              });
-             session.on('seek', (time) => {
-               console.info(`on seek , the seek time is ${time}`);
+             session.on('seek', (time: number) => {
+               console.info(`on seek , the time is ${time}`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('seek')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态和播放position。
              });
              session.on('setSpeed', (speed) => {
                console.info(`on setSpeed , the speed is ${speed}`);
@@ -422,13 +426,13 @@
                console.info(`on setLoopMode , the loop mode is ${mode}`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('setLoopMode')取消监听。
-               // 应用自定下一个模式，处理完毕后，请使用SetAVPlaybackState上报切换后的LoopMode。
+               // 应用自定义下一个模式，处理完毕后，请使用setAVPlaybackState上报切换后的LoopMode。
              });
              session.on('toggleFavorite', (assetId) => {
                console.info(`on toggleFavorite , the target asset Id is ${assetId}`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('toggleFavorite')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报收藏结果isFavorite。
+               // 处理完毕后，请使用setAVPlaybackState上报收藏结果isFavorite。
              });
              // ...
            })
@@ -441,11 +445,11 @@
 
    6.2 高级播控事件的监听。
 
-   Session侧的可以注册的高级播控事件主要包括：
+   Session侧可注册的高级播控事件主要包括：
 
    - skipToQueueItem: 播放列表其中某项被选中的事件。
    - handleKeyEvent: 按键事件。
-   - outputDeviceChange: 播放设备变化的事件。
+   - outputDeviceChange: 输出设备变化的事件。
    - commonCommand: 自定义控制命令变化的事件。
 
    <!-- @[advancedPlayback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/AdvancedPlaybackControlEvents.ets) -->
@@ -483,8 +487,8 @@
                  // ...
                  // 实现具体功能。
                });
-               session.on('outputDeviceChange', (device) => {
-                 console.info(`on outputDeviceChange , the device info is ${JSON.stringify(device)}`);
+               session.on('outputDeviceChange', (state: AVSessionManager.ConnectionState, device: AVSessionManager.OutputDeviceInfo) => {
+                 console.info(`on outputDeviceChange , the state is ${JSON.stringify(state)} and device info is ${JSON.stringify(device)}`);
                  // ...
                  // 实现具体功能。
                });
@@ -563,7 +567,7 @@
 
 8. 音视频应用在退出，并且不需要继续播放时，及时取消监听以及销毁媒体会话释放资源。
 
-   取消播控命令监听的示例代码如下所示 ：
+   取消播控命令监听的示例代码如下所示：
 
    <!-- @[off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/Off.ets) -->
    

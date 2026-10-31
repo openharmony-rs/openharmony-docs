@@ -1,8 +1,8 @@
 # OffscreenCanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -95,7 +95,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001218599708](figures/zh-cn_image_0000001218599708.gif)
+![OffscreenCanvasRenderingContext2D](figures/OffscreenCanvasRenderingContext2D.gif)
 
 
 ## 判断位置
@@ -202,4 +202,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001178084014](figures/zh-cn_image_0000001178084014.gif)
+![Determining-Position](figures/Determining-Position.gif)

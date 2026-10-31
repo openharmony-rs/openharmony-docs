@@ -1,8 +1,8 @@
-# DLP Service Development
+# DLP Service Development (ArkTS)
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -11,11 +11,11 @@ The Data Loss Prevention (DLP) service is a system solution provided to prevent 
 
 A DLP file can be accessed only after successful device-cloud authentication (network connection required). The permissions for accessing a DLP file include the following:
 
-- Read-only: The user can only view the file.
+- Read-only: The user can only read the file.
 - Edit: The user can read and write the file, but cannot change the permission on the file.
 - Full control: The user can read and write the file, change the permission on the file, and restore the plaintext of the file.
 
-When an application accesses a DLP file, the system automatically installs a dual application, a copy based on the current application. Both can run at the same time without affecting each other. The dual application is running in a sandbox, which is restricted from external access to prevent data leakage. For simplicity, the dual application running in a sandbox is referred to as a sandbox application hereinafter. Each time a DLP file is opened, a sandbox application is generated. The sandbox applications are also isolated from each other. When an application is closed, its sandbox application will be automatically uninstalled and the temporary data generated in the sandbox directory will be cleared.
+When an application accesses a DLP file, the system automatically installs a dual application. The dual application inherits the data and configuration of the original application, but they do not share data with each other. The dual application is running in a sandbox, which is restricted from external access to prevent data leakage. For simplicity, the dual application running in a sandbox is referred to as a sandbox application hereinafter. Each time a DLP file is opened, a sandbox application is generated. The sandbox applications are also isolated from each other. When an application is closed, its sandbox application will be automatically uninstalled and the temporary data generated in the sandbox directory will be cleared.
 
 Normally, the application is unaware of the sandbox and accesses the file in plaintext, like accessing a common file. However, the DLP sandbox restricts the application from accessing external resources (such as the network, clipboard, screenshot capturing, screen recording, and Bluetooth). For better user experience, you need to adapt your application based on service requirements. For example, for a read-only file, you'd better hide the **Save** button and disable automatic Internet access.
 
@@ -43,16 +43,16 @@ For an application in the DLP sandbox state, the permissions granted to the appl
 | off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void | Unsubscribes from the file open event of DLP files.|
 | isInSandbox(): Promise&lt;boolean&gt; <br>isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void | Checks whether this application is running in a sandbox.|
 | getDLPSupportedFileTypes(): Promise&lt;Array&lt;string&gt;&gt;<br>getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void | Obtains the file name extension types that can be appended with .dlp.|
-| setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt; <br> setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Sets the sandbox application retention state. If the retention state is set for a DLP file, the sandbox application will not be automatically uninstalled when the DLP file is closed.|
-| cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;<br> cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Cancels the sandbox application retention state.|
-| getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandboxInfo&gt;&gt; <br> getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void  <br> getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void| Obtains the sandbox applications in the retention state.|
+| setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt; <br> setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Sets the retention state of the dual application.|
+| cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;<br> cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Cancels the retention state of the dual application.|
+| getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandboxInfo&gt;&gt; <br> getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void  <br> getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void| Obtains the retention sandbox list.|
 | getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt; <br> getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void | Obtains the DLP files that are accessed recently.|
-|setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;|Set sandbox application configuration.|
-|getSandboxAppConfig(): Promise&lt;string&gt;|Obtain the sandbox application configuration.|
-|cleanSandboxAppConfig(): Promise&lt;void&gt;|Clear the sandbox application configuration.|
+|setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;|Sets sandbox application configuration.|
+|getSandboxAppConfig(): Promise&lt;string&gt;|Obtains the sandbox application configuration.|
+|cleanSandboxAppConfig(): Promise&lt;void&gt;|Clears the sandbox application configuration.|
 | startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt; <br>| Starts the DLP manager application on the current UIAbility page in borderless mode (available only for the stage model).|
 |setEnterprisePolicy(policy: EnterprisePolicy): void|Sets the protection policy for enterprise applications.|
-| scanFile(filePath: string, identifyPolicysies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| Identifies sensitive content in a specified file.<br>This API is supported since API version 21.|
+| scanFile(filePath: string, identifyPolicies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| Identifies sensitive content in a specified file.<br>This API is supported since API version 21.|
 
 ## How to Develop
 
@@ -66,7 +66,7 @@ This document provides API sample code. For details about how to create a projec
     import { identifySensitiveContent } from '@kit.DataProtectionKit';
     ```
 
-2. Open an encrypted file. The system automatically installs a DLP sandbox application for your application. <br>Add the following code to your application: 
+2. Open an encrypted file. The system automatically installs a dual application for your application. <br>Add the following code to your application page ability: 
 
    Prerequisites for using this API: The DLP credential server has been connected. 
 
@@ -138,7 +138,7 @@ This document provides API sample code. For details about how to create a projec
 
     Currently, the DLP feature supports the following file types: ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".odp", ".odt", ".pdf", ".pot", ".potm", ".potx", ".ppa", ".ppam", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".rtf", ".txt", ".wps", ".xla", ".xlam", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltm", ".xltx", ".xlw", ".xml", ".xps"
 
-    A file of the supported type that can be accessed by the application is available. For example, a file in the **Files** directory. 
+    A file of the supported type that can be read or written by an application with DLP permissions is available. For example, a file in the **Files** directory. 
 
     Start the DLP manager application in borderless mode. This API can be called only in the UIAbility context and supports only the stage model. Run the following code to open the permission settings page of the DLP manager application, enter the account information, and tap **Save**. On the page started by file Picker, select the directory to save the DLP file.
     <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -211,7 +211,7 @@ This document provides API sample code. For details about how to create a projec
     }
     ```
 
-6. Obtain information about the file name extension types that support the DLP solution. Based on the information obtained, you can learn what types of files can be used to generate DLP files.
+6. Obtain the list of file name extension types that support the DLP solution. Based on the information obtained, you can learn what types of files can be used to generate DLP files.
 
     <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     

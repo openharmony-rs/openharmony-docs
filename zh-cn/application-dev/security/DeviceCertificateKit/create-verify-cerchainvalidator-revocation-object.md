@@ -9,20 +9,20 @@
 
 ## 本地证书链吊销状态校验时仅校验终端实体证书
 
-API 22开始支持本地证书链吊销状态校验时仅校验终端实体证书。
+从API版本22开始支持本地证书链吊销状态校验时仅校验终端实体证书。
 
 ### 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11)创建证书链对象。
 
-3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X509证书对象。
+3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X.509证书对象。
 
-4. 调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X509证书吊销列表对象。
+4. 调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X.509证书吊销列表对象。
 
 5. 构造[cert.CertChainValidationParameters](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchainvalidationparameters11)证书链校验参数对象。
 
@@ -79,10 +79,10 @@ async function createCert(certData: string): Promise<cert.X509Cert> {
   return x509Cert;
 }
 
-export async function createCRL(crmPem: string): Promise<cert.CertCRLCollection> {
+export async function createCRL(crlPem: string): Promise<cert.CertCRLCollection> {
   try {
     let crlEncodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(crmPem),
+      data: stringToUint8Array(crlPem),
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     }
     let crl: cert.X509CRL = await cert.createX509CRL(crlEncodingBlob);
@@ -120,24 +120,24 @@ async function doTestLeafCertCrlCheck() {
 
 ## 在线校验证书链中的中间CA证书的吊销状态
 
-从API 22开始，支持在线校验证书链中的中间CA证书的吊销状态。
+从API版本22开始，支持在线校验证书链中的中间CA证书的吊销状态。
 
 ### 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11)创建证书链对象。
 
-3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X509证书对象。
+3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X.509证书对象。
 
 4. 构造[cert.CertChainValidationParameters](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchainvalidationparameters11)证书链校验参数。
 
 5. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
 
-> **说明**
+> **说明：**
 >
 > 本开发指导中提供的示例代码需要在配置网络的前提下执行。
 
@@ -219,20 +219,22 @@ async function doTestCaCheck() {
 
 ## 证书链校验时忽略在线证书吊销检查的网络不可达异常
 
-从API 23开始，支持证书链校验时忽略网络不可达的在线证书吊销检查异常。
+从API版本23开始，支持证书链校验时忽略网络不可达的在线证书吊销检查异常。
 
 ### 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11-2)创建证书链对象。
 
-3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X509证书对象。构造 `cert.CertChainValidationParameters` 证书链校验参数，配置 `revocationCheckParam` 为 `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
+3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X.509证书对象。
 
-4. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+4. 构造`cert.CertChainValidationParameters`证书链校验参数，配置`revocationCheckParam`为`RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
+
+5. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
 
 在线CRL检查忽略网络不可达异常示例：
 

@@ -1453,7 +1453,7 @@ access(sourceFileUri: string, callback: AsyncCallback&lt;boolean&gt;) : void
 
 getFileInfoFromUri(uri: string) : Promise\<FileInfo>
 
-以异步方法获取uri对应的FileInfo对象。使用promise异步回调。
+以异步方法获取uri对应的FileInfo对象。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1544,7 +1544,7 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
 
 getFileInfoFromRelativePath(relativePath: string) : Promise\<FileInfo>
 
-以异步方法获取relativePath对应的FileInfo对象。使用promise异步回调。
+以异步方法获取relativePath对应的FileInfo对象。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1946,7 +1946,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise&lt;strin
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | 是   | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。  |
 | destUri   | string  | 是   | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。        |
-| fileName  | string  | 是   | 如果目标目录中有1.txt文件，就是用fileName 作为文件名进行复制。 |
+| fileName  | string  | 是   | 若目标目录已存在1.txt，则使用fileName作为文件名进行复制。 |
 
 **返回值：**
 
@@ -1999,7 +1999,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | 是   | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。  |
 | destUri   | string                                           | 是   | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。         |
-| fileName  | string                                           | 是   | 如果目标目录中有1.txt文件。就是用fileName 作为文件名进行复制。 |
+| fileName  | string                                           | 是   | 若目标目录已存在1.txt，则使用fileName作为文件名进行复制。 |
 | callback  | AsyncCallback&lt;string&gt; | 是   | 返回一个复制成功的文件的uri。 |
 
 **示例：**
@@ -2216,7 +2216,7 @@ async function UnregisterObserver03() {
 | 参数名   | 类型                                              | 必填 | 说明                      |
 | -------- | ------------------------------------------------- | ---- | ------------------------- |
 | uri      | string                                            | 是   | 文件或目录的uri。           |
-| callback | Callback&lt;[NotifyMessage](#notifymessage10)&gt; | 否   | 解注册uri下对应的callback。如果该参数不填，则解注册对应的所有callbackback。 |
+| callback | Callback&lt;[NotifyMessage](#notifymessage10)&gt; | 否   | 解注册uri下对应的callback。如果该参数不填，则解注册对应的所有callback。 |
 
 **示例1: 解注册监听uri的一个callback**
 
@@ -2385,7 +2385,7 @@ moveItem(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array
 
 | 类型                                                    | 说明                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | 返回 moveresult 数组。moveResult 为移动操作失败的返回信息；复制成功无返回信息。 |
+| Promise&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | 返回moveresult数组。moveResult为移动操作失败的返回信息；移动成功无返回信息。 |
 
 **错误码：**
 
@@ -2783,7 +2783,7 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 | 名称 | 类型                        | 只读 | 可选 | 说明                                                      |
 | ---- | --------------------------- | ---- | ---- | --------------------------------------------------------- |
 | type | [NotifyType](#notifytype10) | 否   | 否   | 变更的通知类型。                                            |
-| uris | Array&lt;string&gt;         | 否   | 否   | 所变更文件的uri集合，目前仅支持单条通知，后序支持多条通知。 |
+| uris | Array&lt;string&gt;         | 否   | 否   | 所变更文件的uri集合，目前仅支持单条通知，后续支持多条通知。 |
 
 ## MoveResult<sup>11+</sup>
 

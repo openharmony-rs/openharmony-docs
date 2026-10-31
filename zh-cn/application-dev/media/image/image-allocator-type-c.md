@@ -104,7 +104,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 2. 获取和操作stride值。
 
-   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->     
+   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->      
    
    ``` C++
    #include <cstring>
@@ -131,8 +131,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
                return 8; // 每通道16位浮点数，共4通道，合计8字节。
            case PIXEL_FORMAT_NV21:
            case PIXEL_FORMAT_NV12:
-               // NV21和NV12格式是YUV 4:2:0半平面格式，返回2作为每像素字节。
-               return 2; // 每像素2字节（简化处理）。
+               // NV21和NV12是YUV 4:2:0半平面格式，不能用整数每像素字节数计算行跨度。
+               return 0;
            case PIXEL_FORMAT_RGBA_1010102:
                return 4; // 每像素4字节。
            case PIXEL_FORMAT_YCBCR_P010:
@@ -173,29 +173,14 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        return;
    }
    
-   void DataCopy(OH_PixelmapNative *pixelmap, OH_ImageSourceNative* imageSource, OH_DecodingOptions *options,
-                 IMAGE_ALLOCATOR_TYPE allocatorType)
+   static void CopyPixelRows(void *pixels, void *newPixels, const PixelmapInfo &srcInfo, uint32_t dstRowStride,
+       IMAGE_ALLOCATOR_TYPE allocatorType)
    {
-       PixelmapInfo srcInfo;
-       GetPixelmapInfo(pixelmap, &srcInfo);
-       GetPixelmapAddrInfo(pixelmap, &srcInfo);
-   
-       void *pixels = nullptr;
-       OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
-       OH_PixelmapNative *newPixelmap = nullptr;
-       OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
-       uint32_t dstRowStride = srcInfo.width * GetPixelFormatBytes(srcInfo.pixelFormat);
-       void *newPixels = nullptr;
-       OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
        uint8_t *src = reinterpret_cast<uint8_t *>(pixels);
        uint8_t *dst = reinterpret_cast<uint8_t *>(newPixels);
        uint32_t dstSize = srcInfo.byteCount;
-       uint32_t rowSize;
-       if (allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA) {
-           rowSize = srcInfo.rowStride;
-       } else {
-           rowSize = dstRowStride;
-       }
+       uint32_t rowSize = allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA ? srcInfo.rowStride :
+           dstRowStride;
        for (uint32_t i = 0; i < srcInfo.height; ++i) {
            if (dstSize >= dstRowStride) {
                std::copy(src, src + dstRowStride, dst);
@@ -206,6 +191,41 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
            dst += dstRowStride;
            dstSize -= dstRowStride;
        }
+   }
+   
+   void DataCopy(OH_PixelmapNative *pixelmap, OH_ImageSourceNative* imageSource, OH_DecodingOptions *options,
+                 IMAGE_ALLOCATOR_TYPE allocatorType)
+   {
+       PixelmapInfo srcInfo;
+       GetPixelmapInfo(pixelmap, &srcInfo);
+       GetPixelmapAddrInfo(pixelmap, &srcInfo);
+       void *pixels = nullptr;
+       OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
+       OH_PixelmapNative *newPixelmap = nullptr;
+       Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
+       if (image_ErrorCode != IMAGE_SUCCESS || newPixelmap == nullptr) {
+           OH_PixelmapNative_UnaccessPixels(pixelmap);
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           OH_PixelmapNative_Release(pixelmap);
+           if (newPixelmap != nullptr) {
+               OH_PixelmapNative_Release(newPixelmap);
+           }
+           return;
+       }
+       int32_t pixelBytes = GetPixelFormatBytes(srcInfo.pixelFormat);
+       if (pixelBytes == 0) {
+           OH_PixelmapNative_UnaccessPixels(pixelmap);
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           OH_PixelmapNative_Release(pixelmap);
+           OH_PixelmapNative_Release(newPixelmap);
+           return;
+       }
+       uint32_t dstRowStride = srcInfo.width * pixelBytes;
+       void *newPixels = nullptr;
+       OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
+       CopyPixelRows(pixels, newPixels, srcInfo, dstRowStride, allocatorType);
        OH_PixelmapNative_UnaccessPixels(newPixelmap);
        OH_PixelmapNative_UnaccessPixels(pixelmap);
        OH_DecodingOptions_Release(options);
@@ -235,11 +255,23 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
    
        OH_ImageSourceNative* imageSource = nullptr;
        Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &imageSource);
+       if (image_ErrorCode != IMAGE_SUCCESS || imageSource == nullptr) {
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        OH_DecodingOptions *options = nullptr;
-       OH_DecodingOptions_Create(&options);
+       image_ErrorCode = OH_DecodingOptions_Create(&options);
+       if (image_ErrorCode != IMAGE_SUCCESS || options == nullptr) {
+           OH_ImageSourceNative_Release(imageSource);
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        IMAGE_ALLOCATOR_TYPE allocatorType = IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA;  // 使用DMA创建pixelMap。
        OH_PixelmapNative *pixelmap = nullptr;
        image_ErrorCode = OH_ImageSourceNative_CreatePixelmapUsingAllocator(imageSource, options, allocatorType, &pixelmap);
+       if (image_ErrorCode != IMAGE_SUCCESS || pixelmap == nullptr) {
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        DataCopy(pixelmap, imageSource, options, allocatorType);
        return GetJsResult(env, image_ErrorCode);
    }
@@ -341,16 +373,9 @@ napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
 
 ## 系统默认的内存分配方式
 
-在使用[OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)接口进行解码时，不同场景下会采取不同的内存分配类型。
+使用[OH_ImageSourceNative_CreatePixelmap()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)解码时，系统自动选择共享内存或DMA内存。
 
-以下场景将使用DMA_ALLOC。
-
-- 解码HDR图片。
-- 解码HEIF格式图片。
-- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，[PIXEL_FORMAT](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format)为PIXEL_FORMAT_RGBA_8888或PIXEL_FORMAT_NV21，同时硬件不繁忙（并发数为3）。
-- 解码其他格式图片。要求[OH_DecodingOptions](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)中的desiredSize大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
-
-除上述场景外，其余情况均使用SHARE_MEMORY。
+需要指定内存类型时，应调用[OH_ImageSourceNative_CreatePixelmapUsingAllocator()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。
 
 ## 解码单张图片的内存限制
 

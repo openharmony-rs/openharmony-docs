@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d66ce495242bdf35b08a89dbf23cdf3929953623 translatedAt=2026-08-24T07:56:22.571Z pushedAt=2026-08-25T06:30:45.568Z -->
 
-Describes the attributes used for text rendering, such as size and typeface.
+The Font class describes the attributes used for font drawing (such as size, typeface, weight, skew, and scale), and supports capabilities such as text measurement, glyph conversion, path outline retrieval, and theme font following.
 
 > **NOTE**
 >
@@ -27,7 +28,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 isSubpixel(): boolean
 
-Checks whether sub-pixel rendering is used for a font.
+Obtains whether the font uses subpixel rendering.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -37,12 +38,12 @@ Checks whether sub-pixel rendering is used for a font.
 
 | Type  | Description                |
 | ------ | -------------------- |
-| boolean | Check result. The value **true** means that sub-pixel rendering is used, and **false** means the opposite.|
+| boolean | Return Font whether to use subpixel rendering, true indicates use, false indicates not use. |
 
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.enableSubpixel(true)
@@ -68,10 +69,10 @@ Checks whether linear scaling is used for this font.
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.enableLinearMetrics(true)
+font.enableLinearMetrics(true);
 console.info("values=" + font.isLinearMetrics());
 ```
 
@@ -79,7 +80,7 @@ console.info("values=" + font.isLinearMetrics());
 
 getSkewX(): number
 
-Obtains the horizontal skew factor of this font.
+Obtains the skew ratio of the font in the x-axis direction.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -89,15 +90,15 @@ Obtains the horizontal skew factor of this font.
 
 | Type  | Description                |
 | ------ | -------------------- |
-| number | Horizontal skew factor.|
+| number | Return Font skew ratio in the x-axis direction. |
 
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.setSkewX(-1)
+font.setSkewX(-1);
 console.info("values=" + font.getSkewX());
 ```
 
@@ -120,7 +121,7 @@ Checks whether the bold effect is set for this font.
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.enableEmbolden(true);
@@ -146,7 +147,7 @@ Obtains the horizontal scale ratio of this font.
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.setScaleX(2);
@@ -172,7 +173,7 @@ Obtains the font hinting effect.
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 console.info("values=" + font.getHinting());
@@ -197,7 +198,7 @@ Obtains the font edging effect.
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 console.info("values=" + font.getEdging());
@@ -225,7 +226,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -258,7 +259,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -291,7 +292,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -316,7 +317,7 @@ Sets the font size.
 
 | Name  | Type  | Mandatory| Description            |
 | -------- | ------ | ---- | ---------------- |
-| textSize | number | Yes  | Font size. The value is a floating point number. If a negative number is passed in, the size is set to **0**. If the size is **0**, the text drawn will not be displayed.|
+| textSize | number | Yes | Font size. This parameter is a floating-point number. If it is a negative number, it is set to 0. If it is 0, the drawn text is not displayed. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -324,7 +325,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -349,7 +350,7 @@ Obtains the font size.
 
 | Type  | Description            |
 | ------ | ---------------- |
-| number | Font size. The value is a floating point number.|
+| number | Returns the font size, a floating-point number. The unit is physical pixel px. |
 
 **Example**
 
@@ -383,7 +384,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -433,7 +434,7 @@ Obtains the font metrics of the typeface.
 
 | Type                       | Description             |
 | --------------------------- | ----------------- |
-| [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) | Font metrics.|
+| [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) | The metrics attribute object associated with the font. |
 
 **Example**
 
@@ -462,14 +463,14 @@ Measures the text width.
 
 | Name  | Type                         | Mandatory| Description      |
 | -------- | ----------------------------- | ---- | ---------- |
-| text     | string                        | Yes  | Content of the item in the operation area.|
-| encoding | [TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | Yes  | Pointer to the encoding format.|
+| text     | string                        | Yes   | Text content to be measured, which will be parsed according to the encoding format specified by encoding. |
+| encoding | [TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | Yes   | Encoding format of the text. |
 
 **Returns**
 
 | Type  | Description            |
 | ------ | ---------------- |
-| number | Width of the text. The value is a floating point number.|
+| number | Text width, in units of physical pixel px. The value is a floating-point number. |
 
 **Error codes**
 
@@ -477,7 +478,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -508,7 +509,7 @@ Measures the width of a single character. If the typeface of the current font do
 
 | Type  | Description            |
 | ------ | ---------------- |
-| number | Width of the character. The value is a floating point number.|
+| number | Character width, a floating-point number. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -516,7 +517,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -549,13 +550,13 @@ Measures the width of a single character with font features. If the typeface of 
 | Name| Type               | Mandatory| Description       |
 | ------ | ------------------- | ---- | ----------- |
 | text | string | Yes| Pointer to the single character to measure. The length of the string must be **1**.|
-| features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | Yes| Array of the font feature object. For an empty array, the preset font features in the TrueType Font (TTF) file are used.|
+| features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | Yes | Array of font feature objects. When this parameter is an empty array, the preset font features in the TTF (TrueType Font) file are used. |
 
 **Returns**
 
 | Type  | Description            |
 | ------ | ---------------- |
-| number | Width of the character. The value is a floating point number in px.|
+| number | Character width, in units of physical pixel px. The value is a floating-point number. |
 
 **Error codes**
 
@@ -586,7 +587,7 @@ class DrawingRenderNode extends RenderNode {
 
 setScaleX(scaleX: number): void
 
-Sets a horizontal scale factor for this font.
+Sets the scale ratio of the font in the x-axis direction.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -596,7 +597,7 @@ Sets a horizontal scale factor for this font.
 
 | Name  | Type                         | Mandatory| Description      |
 | -------- | ----------------------------- | ---- | ---------- |
-| scaleX     | number                      | Yes  | Horizontal scale factor. The value is a floating point number.|
+| scaleX     | number                      | Yes   | Scale ratio of the font on the x-axis. This parameter is a floating-point number. |
 
 **Error codes**
 
@@ -604,7 +605,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -632,7 +633,7 @@ class DrawingRenderNode extends RenderNode {
 
 setSkewX(skewX: number): void
 
-Sets a horizontal skew factor for this font.
+Sets the skew ratio of the font in the x-axis direction.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -642,7 +643,7 @@ Sets a horizontal skew factor for this font.
 
 | Name  | Type                         | Mandatory| Description      |
 | -------- | ----------------------------- | ---- | ---------- |
-| skewX     | number                      | Yes  | Horizontal skew factor. A positive number means a skew to the left, and a negative number means a skew to the right. The value is a floating point number.|
+| skewX     | number                      | Yes   | Skew ratio of the font in the x-axis direction. A positive value indicates a leftward skew, and a negative value indicates a rightward skew. This parameter is a floating-point number. |
 
 **Error codes**
 
@@ -650,7 +651,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -696,7 +697,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -729,7 +730,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -754,7 +755,7 @@ Obtains the number of glyphs represented by text.
 
 | Name  | Type                         | Mandatory| Description      |
 | -------- | ----------------------------- | ---- | ---------- |
-| text     | string                        | Yes  | Content of the item in the operation area.|
+| text     | string                        | Yes   | Text content to be counted. |
 
 **Returns**
 
@@ -768,7 +769,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -794,7 +795,7 @@ Sets whether to request that baselines be snapped to pixels when the current can
 
 | Name         | Type   | Mandatory| Description                                      |
 | --------------- | ------- | ---- | ---------------------------------------- |
-| isBaselineSnap | boolean | Yes  | Check result. The value **true** means to request that baselines be snapped to pixels, and **false** means the opposite.|
+| isBaselineSnap | boolean | Yes | Indicates whether the font baseline is aligned with pixels. The value true indicates alignment, and false indicates no alignment. |
 
 **Error codes**
 
@@ -802,7 +803,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -814,7 +815,7 @@ font.setBaselineSnap(true);
 console.info("drawing font isBaselineSnap: " + font.isBaselineSnap());
 ```
 
-## isBaselineSnap()<sup>12+</sup>
+## isBaselineSnap<sup>12+</sup>
 
 isBaselineSnap(): boolean
 
@@ -828,7 +829,7 @@ Checks whether baselines are requested to be snapped to pixels when the current 
 
 | Type  | Description            |
 | ------ | ---------------- |
-| boolean | Check result. The value **true** means that the baselines are requested to be snapped to pixels, and **false** means the opposite.|
+| boolean | Returns whether the font baseline is aligned with pixels. true indicates aligned, false indicates not aligned. |
 
 **Example**
 
@@ -845,7 +846,7 @@ console.info("drawing font isBaselineSnap: " + font.isBaselineSnap());
 
 setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 
-Sets whether to use bitmaps in this font.
+Sets whether to use the embedded bitmap glyphs in the font file for rendering.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -855,7 +856,7 @@ Sets whether to use bitmaps in this font.
 
 | Name  | Type  | Mandatory| Description            |
 | -------- | ------ | ---- | ---------------- |
-| isEmbeddedBitmaps | boolean | Yes  | Whether to use bitmaps in the font. The value **true** means to use bitmaps in the font, and **false** means the opposite.|
+| isEmbeddedBitmaps | boolean | Yes | Whether to use the embedded bitmap glyphs in the font file for rendering. The value true indicates to use the embedded bitmap glyphs, and false indicates not to convert them into bitmaps for processing. |
 
 **Error codes**
 
@@ -863,7 +864,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -876,11 +877,11 @@ font.setEmbeddedBitmaps(false);
 console.info("draw isEmbeddedBitmaps: " + font.isEmbeddedBitmaps());
 ```
 
-## isEmbeddedBitmaps()<sup>12+</sup>
+## isEmbeddedBitmaps<sup>12+</sup>
 
 isEmbeddedBitmaps(): boolean
 
-Checks whether bitmaps are used in this font.
+Gets the result of whether the font uses embedded bitmaps for rendering.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -890,7 +891,7 @@ Checks whether bitmaps are used in this font.
 
 | Type  | Description            |
 | ------ | ---------------- |
-| boolean | Check result. The value **true** means that the bitmaps are used, and **false** means the opposite.|
+| boolean | Return Font whether embedded bitmap rendering is used. true indicates use of embedded bitmap glyphs, and false indicates not converting to bitmap processing. |
 
 **Example**
 
@@ -907,7 +908,7 @@ console.info("draw isEmbeddedBitmaps: " + font.isEmbeddedBitmaps());
 
 setForceAutoHinting(isForceAutoHinting: boolean): void
 
-Sets whether to forcibly use auto hinting, that is, whether to always hint glyphs.
+Sets whether to automatically adjust the font outline to optimize rendering.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -917,7 +918,7 @@ Sets whether to forcibly use auto hinting, that is, whether to always hint glyph
 
 | Name  | Type  | Mandatory| Description            |
 | -------- | ------ | ---- | ---------------- |
-| isForceAutoHinting | boolean | Yes  | Check result. The value **true** means to forcibly use auto hinting, and **false** means the opposite.|
+| isForceAutoHinting | boolean | Yes | Whether to automatically adjust the font outline to optimize rendering. The value true means to automatically adjust, and false means not to automatically adjust. |
 
 **Error codes**
 
@@ -925,7 +926,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -942,7 +943,7 @@ console.info("drawing isForceAutoHinting:  " + font.isForceAutoHinting());
 
 isForceAutoHinting(): boolean
 
-Checks whether auto hinting is forcibly used.
+Gets the result of whether the font automatically adjusts the outline to optimize rendering.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -952,7 +953,7 @@ Checks whether auto hinting is forcibly used.
 
 | Type  | Description            |
 | ------ | ---------------- |
-| boolean | Check result. The value **true** means that auto hinting is forcibly used, and **false** means the opposite.|
+| boolean | Return the result of whether the font automatically adjusts the outline to optimize rendering effect. true indicates automatic adjustment, and false indicates no automatic adjustment. |
 
 **Example**
 
@@ -985,7 +986,7 @@ Obtains the width of each glyph in an array.
 
 | Type  | Description            |
 | ------ | ---------------- |
-| Array\<number> | Glyph width array.|
+| Array\<number> | Array of glyph widths, as floating-point numbers. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -993,7 +994,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -1023,8 +1024,8 @@ Converts text into glyph indexes.
 
 | Name  | Type                         | Mandatory| Description      |
 | -------- | ----------------------------- | ---- | ---------- |
-| text     | string                        | Yes  | Text string.|
-| glyphCount | number | No  | Number of glyphs represented by the text. The value must be the same as the value obtained from [countText](#counttext12). The default value is the number of characters in the text string. The value is an integer.|
+| text | string | Yes | Text string to be converted to glyph indices. |
+| glyphCount | number | No | Number of characters represented by the text. This parameter is an integer. When passed in, it must be equal to the value obtained by [countText](#counttext12). If not passed in, it defaults to the number of characters represented by text. |
 
 **Returns**
 
@@ -1038,7 +1039,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -1092,7 +1093,7 @@ for (let index = 0; index < fontBounds.length; index++) {
 
 getTextPath(text: string, byteLength: number, x: number, y: number): Path
 
-Obtains the outline path of a text.
+Obtains the path outline of the text.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1102,10 +1103,10 @@ Obtains the outline path of a text.
 
 | Name   | Type                                              | Mandatory| Description                   |
 | ------   | ------------------------------------------------   | ---- | ---------------------- |
-|   text   |    string                                          | Yes  | UTF-8 text-encoded characters.|
-|byteLength|    number                                          | Yes  | Length of the outline path, which is obtained based on the minimum value between the passed value of **byteLength** and the actual text byte size.|
-|    x     |    number                                          | Yes  | X coordinate of the text in the drawing area, with the origin as the start point.|
-|    y     |    number                                          | Yes  | Y coordinate of the text in the drawing area, with the origin as the start point.|
+|   text   |    string                                          | Yes   | Text string encoded in UTF-8 format.|
+|byteLength|    number                                          | Yes   | Byte length of the text path to be obtained. The text path is obtained based on the minimum value between the passed byte length and the actual byte size of the text.|
+|    x     |    number                                          | Yes   | X coordinate of the text in the drawing area, with the origin as the start position. The unit is physical pixel px.|
+|    y     |    number                                          | Yes   | Y coordinate of the text in the drawing area, with the origin as the start position. The unit is physical pixel px.|
 
 **Returns**
 
@@ -1119,7 +1120,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1141,6 +1142,56 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## getTextPathWithFallback
+
+getTextPathWithFallback(text: string, byteLength: number, x: number, y: number): Path
+
+Obtains the outline path of text, with font fallback support.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Parameters**
+
+| Name  | Type                 | Mandatory| Description  |
+| ------ | --------------------- | ---- | ------ |
+|   text   |    string                                          | Yes  | Text string encoded in UTF-8 format.|
+|byteLength|    number                                          | Yes  | Byte length of the text path to obtain. The text path is obtained based on the minimum value between the passed byte length and the actual text byte size.|
+|    x     |    number                                          | Yes  | X coordinate of the text in the drawing area, with the origin as the start position. The unit is physical pixel px.|
+|    y     |    number                                          | Yes  | Y coordinate of the text in the drawing area, with the origin as the start position. The unit is physical pixel px.|
+
+**Return value**
+
+| Type  | Description            |
+| ------ | ---------------- |
+| [Path](arkts-apis-graphics-drawing-Path.md) | Outline path of the obtained text. Returns undefined if the path object fails to be created. |
+
+**Example**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { buffer } from '@kit.ArkTS';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    font.setSize(50);
+    let myString: string = "Hello";
+    let length = buffer.from(myString).length;
+    let path = font.getTextPathWithFallback(myString, length, 0, 100);
+    if (path == undefined) {
+      return;
+    }
+    canvas.drawPath(path);
+  }
+}
+```
+
 ## createPathForGlyph<sup>18+</sup>
 
 createPathForGlyph(index: number): Path
@@ -1155,7 +1206,7 @@ Obtains the outline path of a glyph.
 
 | Name  | Type                 | Mandatory| Description  |
 | -------- | --------------------- | ---- | ------ |
-| index | number | Yes  | Index of the glyph.|
+| index | number | Yes | Glyph index, which can be generated by [textToGlyphs](#texttoglyphs12). |
 
 **Returns**
 
@@ -1173,12 +1224,12 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     let font = new drawing.Font();
-    font.setSize(50)
+    font.setSize(50);
     let text: string = 'Hello';
     let glyphs: number[] = font.textToGlyphs(text);
     for (let index = 0; index < glyphs.length; index++) {
-      let path: drawing.Path = font.createPathForGlyph(glyphs[index])
-      canvas.drawPath(path)
+      let path: drawing.Path = font.createPathForGlyph(glyphs[index]);
+      canvas.drawPath(path);
     }
   }
 }
@@ -1206,7 +1257,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 

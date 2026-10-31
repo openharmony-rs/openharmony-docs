@@ -1,20 +1,20 @@
 # Stack Layout (Stack)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-08-04T06:34:45.605Z pushedAt=2026-08-04T07:39:54.133Z -->
 
 ## Overview
 
-The stack layout reserves an area on the screen to display elements in a component and allows the elements to be stacked. You can implement a stack layout through the [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) component, which provides a stack container where positioned or non-positioned child elements are pushed successively and the latter one sits on top of the previous one.
+Stack layout (Stack) reserves an area on the screen for displaying elements within a component, providing a layout where elements can overlap. The stack layout implements fixed positioning and stacking through the [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) container component. Child elements in the container are placed in sequence, with each subsequent child element covering the previous one. Child elements can be stacked on top of each other and can also have their positions set.
 
 The stack layout excels at page stacking and positioning, and is widely used in ad and widget arrangement.
 
 In the **Stack** component shown in Figure 1, the sequence of child elements is Item1 -> Item2 -> Item3.
-
 
   **Figure 1** Stack layout 
 
@@ -49,9 +49,7 @@ struct StackLayoutExample {
 }
 ```
 
-
 ![stack-layout-sample](figures/stack-layout-sample.png)
-
 
 ## Alignment
 
@@ -59,7 +57,7 @@ Alignment of elements in the **Stack** component is set through the [alignConten
 
   **Figure 2** Alignment modes in the Stack component 
 
-![en-us_image_0000001562940621](figures/en-us_image_0000001562940621.png)
+![stack2](figures/stack2.png)
 
 <!-- @[StackLayoutAlignContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutAlignContent.ets) -->
 
@@ -105,10 +103,9 @@ Stack({ alignContent: Alignment.BottomStart }) {
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-![en-us_image_0000001511900544](figures/en-us_image_0000001511900544.png)
+![stackLayoutNozIndex](figures/stackLayoutNozIndex.png)
 
 In the preceding figure, the size of the stacked element 3 is greater than that of all the elements before it. Therefore, the first two elements are completely hidden. To show these elements, modify their **zIndex** attribute settings.
-
 
 <!-- @[StackLayoutzIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutzIndex.ets) -->
 
@@ -131,13 +128,11 @@ Stack({ alignContent: Alignment.BottomStart }) {
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-![en-us_image_0000001563060797](figures/en-us_image_0000001563060797.png)
-
+![stackLayoutzIndex](figures/stackLayoutzIndex.png)
 
 ## Example Scenario
 
 In this example, the stack layout is used to quickly set up a page.
-
 
 <!-- @[StackLayoutSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutSceneExample.ets) -->
 
@@ -180,6 +175,6 @@ struct StackSample {
 }
 ```
 
+![stackLayoutSceneExample](figures/stackLayoutSceneExample.png)
 
-![en-us_image_0000001511421368](figures/en-us_image_0000001511421368.png)
 <!--RP1--><!--RP1End-->

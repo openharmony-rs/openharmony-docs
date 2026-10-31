@@ -5,6 +5,7 @@
 <!--Designer: @sunfei2021-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:48:08.498Z pushedAt=2026-07-09T12:00:56.479Z -->
 
 You can use a .js file in the ECMAScript compliant JavaScript language to define the service logic of an HML page. With dynamic typing, JavaScript can make your application more expressive with a flexible design. The following describes the JavaScript compilation and running.
 
@@ -223,7 +224,7 @@ The ECMAScript 6.0 syntax is supported.
    };
    ```
 
-![en-us_image_0000001118642007](figures/en-us_image_0000001118642007.gif)
+![en-us_image_0000001118642007](figures/Obtaining-DOM-Element.gif)
 
 ## Obtaining the ViewModel
 
@@ -249,7 +250,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001118642008](figures/en-us_image_0000001118642008.png)
+![en-us_image_0000001118642008](figures/Obtaining-ViewModel.png)
 
 Customize the parent component.
 
@@ -300,11 +301,11 @@ export default {
   childClicked () {
     this.isShow = !this.isShow;
     console.info('child component get parent text');
-    console.info('${this.$parent().text}');
+    console.info(`${this.$parent().text}`);
     console.info('child component get root text');
-    console.info('${this.$root().text}');
+    console.info(`${this.$root().text}`);
   },
 }
 ```
 
-![en-us_image_0000001118642009](figures/en-us_image_0000001118642009.gif)
+![en-us_image_0000001118642009](figures/Obtaining-ViewModel.gif)

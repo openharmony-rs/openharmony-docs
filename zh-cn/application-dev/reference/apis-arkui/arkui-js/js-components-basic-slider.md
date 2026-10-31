@@ -24,10 +24,10 @@
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| min | number | 0 | 否 | 滑动选择器的最小值。 |
-| max | number | 100 | 否 | 滑动选择器的最大值。 |
+| min | number | 0 | 否 | 滑动条的最小值。 |
+| max | number | 100 | 否 | 滑动条的最大值。 |
 | step | number | 1 | 否 | 每次滑动的步长。 |
-| value | number | 0 | 否 | 滑动选择器的初始值。 |
+| value | number | 0 | 否 | 滑动条的初始值。 |
 | mode<sup>5+</sup> | string | outset | 否 | 滑动条样式：<br/>-&nbsp;outset：滑块在滑杆上；<br/>-&nbsp;inset：滑块在滑杆内。 |
 | showsteps<sup>5+</sup> | boolean | false | 否 | 是否显示步长标识。true表示显示步长标识，false表示不显示步长标识。 |
 | showtips<sup>5+</sup> | boolean | false | 否 | 滑动时是否有气泡提示百分比。true表示有气泡提示百分比，false表示没有气泡提示百分比。 |
@@ -41,7 +41,7 @@
 | -------- | -------- | -------- | -------- | -------- |
 | color | &lt;color&gt; | #19000000 | 否 | 滑动条的背景颜色。 |
 | selected-color | &lt;color&gt; | #ff007dff | 否 | 滑动条的已选择颜色。 |
-| block-color | &lt;color&gt; | \#ffffff | 否 | 滑动条的滑块颜色。 |
+| block-color | &lt;color&gt; | #ffffff | 否 | 滑动条的滑块颜色。 |
 
 
 ## 事件
@@ -56,8 +56,8 @@
 
 | 属性 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| value<sup>5+</sup> | number | 当前slider的进度值。 |
-| mode<sup>5+</sup> | string | 当前change事件的类型，可选值为：<br/>-&nbsp;start：slider的值开始改变。<br/>-&nbsp;move：slider的值跟随手指拖动中。<br/>-&nbsp;end：slider的值结束改变。<br/>-&nbsp;click：slider的值在点击进度条后改变。 |
+| value<sup>5+</sup> | number | 当前滑动条的进度值。 |
+| mode<sup>5+</sup> | string | 当前change事件的类型，可选值为：<br/>-&nbsp;start：滑动条的值开始改变。<br/>-&nbsp;move：滑动条的值跟随手指拖动中。<br/>-&nbsp;end：滑动条的值结束改变。<br/>-&nbsp;click：滑动条的值在点击进度条后改变。 |
 
 
 ## 示例

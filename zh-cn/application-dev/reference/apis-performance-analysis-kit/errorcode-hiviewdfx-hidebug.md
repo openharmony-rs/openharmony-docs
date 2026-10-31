@@ -63,9 +63,9 @@ The number of available invocations for the interface is insufficient. Please wa
 
 **可能原因**
 
-1.进程调用次数超出配额（1次/天）。
+1. 进程调用次数超出配额（1次/天）。
 
-2.整机调用次数超出配额（5次/周）。
+2. 整机调用次数超出配额（5次/周）。
 
 **处理步骤**
 
@@ -191,9 +191,9 @@ Failed to create dump file.
 
 **可能原因**
 
-1、进程目录下存在同名文件。
+1. 进程目录下存在同名文件。
 
-2、系统资源不足。
+2. 系统资源不足。
 
 **处理步骤**
 

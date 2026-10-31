@@ -1,10 +1,10 @@
-# 创建瀑布流（WaterFlow）
+# 创建瀑布流 (WaterFlow)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
-<!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @guozejun-->
+<!--Designer: @guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 瀑布流[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)常用于展示图片信息，尤其在购物和资讯类应用中。
@@ -63,7 +63,7 @@ build() {
             .width('100%')
             .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
             .backgroundColor(this.colors[item % 5])
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }
         .columnsTemplate('1fr '.repeat(this.columns))
         .backgroundColor(0xFAEEE0)
@@ -112,7 +112,7 @@ build() {
             .width('100%')
             .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
             .backgroundColor(this.colors[item % 5])
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }
         .columnsTemplate('1fr '.repeat(this.columns))
         .backgroundColor(0xFAEEE0)
@@ -197,7 +197,7 @@ export struct WaterFlowDynamicSwitchover {
                 .width('100%')
                 .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
                 .backgroundColor(this.colors[item % 5])
-              }, (item: string) => item)
+              }, (item: number) => item.toString())
             }
             .columnsTemplate('1fr '.repeat(this.columns))
             .backgroundColor(0xFAEEE0)
@@ -292,7 +292,7 @@ export struct WaterFlowGroupingMixing {
     for (let i = 0; i < 15; ++i) {
       this.gridItems.push(i);
     }
-    // 所有分组的itemCount之和需要和WaterFlow下数据源的子节点总数相等，否则无法正常布局
+    // 所有分组的itemsCount之和需要和WaterFlow下数据源的子节点总数相等，否则无法正常布局
     let sectionOptions: SectionOptions[] = [this.oneColumnSection, this.twoColumnSection, this.lastSection];
     this.sections.splice(0, 0, sectionOptions);
   }
@@ -323,7 +323,7 @@ export struct WaterFlowGroupingMixing {
             .width('100%')
             .aspectRatio(item != 0 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
             .backgroundColor(item != 0 ? this.colors[item % 5] : Color.White)
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }
         .backgroundColor(0xFAEEE0)
         .height('100%')
@@ -332,7 +332,7 @@ export struct WaterFlowGroupingMixing {
           if (last + 20 >= this.dataSource.totalCount()) {
             setTimeout(() => {
               this.dataSource.addNewItems(100);
-              // 增加数据后同步调整对应分组的itemCount
+              // 增加数据后同步调整对应分组的itemsCount
               this.twoColumnSection.itemsCount += 100;
               this.sections.update(1, this.twoColumnSection);
             }, 1000);
@@ -349,7 +349,7 @@ export struct WaterFlowGroupingMixing {
 >
 >使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。
 >
->增加或删除数据后需要同步修改对应分组的itemCount。
+>增加或删除数据后需要同步修改对应分组的itemsCount。
 
 ## 相关实例
 

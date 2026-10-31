@@ -15,7 +15,7 @@
 
 粘贴控件效果如图所示。
 
-![zh-cn_image_0000001760763261](figures/zh-cn_image_0000001760763261.gif)
+![paste-control-effect](figures/paste-control-effect.gif)
 
 ## 约束与限制
 

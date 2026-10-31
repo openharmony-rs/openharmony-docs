@@ -4,13 +4,13 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HellloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## Object is not initialized
 
 **问题现象**
 
-应用运行时报错：“Object is not initialized”导致应用无法正常运行。
+应用运行时报错："Object is not initialized"导致应用无法正常运行，具体报错信息中的Object为实际使用的变量，如"a is not initialized"。
 
 **可能原因**
 
@@ -62,13 +62,17 @@
 ``` typescript
 // A.ets
 import { Animal } from './B'
+
 export let a = "this is A";
 export function A() {
-  return new Animal;
+  return new Animal();
 }
+```
 
+``` typescript
 // B.ets
 import { a } from './A'
+
 export class Animal {
   static {
     console.info("this is in class");
@@ -86,15 +90,15 @@ ModuleImportStack:
 #2 &entry/src/main/ets/pages/Index&
 ```
 
-## cannot find module 'fileName'，which is application Entry Point.
+## cannot find module 'fileName', which is application Entry Point.
 
 **问题现象**
 
-应用启动时报错：cannot find module 'fileName'，which is application Entry Point。
+应用启动时报错：cannot find module 'fileName', which is application Entry Point。
 
 **可能原因**
 
-应用在升级时并未升级版本号，或者应用使用了normalized特性，但是在升级或者更新时没有重启应用。
+应用在升级时并未升级版本号，或者应用使用了[normalized](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section13181758123312)特性，但是在升级或者更新时没有重启应用。
 
 **解决措施**
 
@@ -110,7 +114,7 @@ ModuleImportStack:
 
 3. 检查是否使用了normalized特性但未重启应用。
 
-   查看[反编译](./tool-disassembler.md)后的abc文件为normalized ohmurl格式。可以在文件内搜索@normalized：
+   查看反编译后的abc文件为normalized ohmurl格式。可以在文件内搜索@normalized：
 
    ![normalized](./figures/module_normalized.PNG)
 
@@ -118,17 +122,17 @@ ModuleImportStack:
 
 **参考链接**
 
-[反编译工具](./tool-disassembler.md)
+[Disassembler反汇编工具](./tool-disassembler.md)
 
 ## cannot find record 'fileName', please check request path.
 
 **问题现象**
 
-应用运行时报错：cannot find record 'fileName', please check request path，提示无法找到指定的模块或文件，导致应用运行异常。
+应用运行时报错：cannot find record 'fileName', please check request path.提示无法找到指定的模块或文件，导致应用运行异常。
 
 **可能原因**
 
-1. 该文件为动态加载表达式、动态加载文件等，但没有进行相关文件配置。
+1. 该文件使用了动态import加载模块，但未在build-profile.json5的"buildOption"中进行[相关配置](./arkts-dynamic-import.md#动态import变量表达式)。
 
 2. 文件路径配置错误，导致无法在hap包中找到对应文件。
 
@@ -136,11 +140,11 @@ ModuleImportStack:
 
 1. 检查动态加载文件的配置是否正确。
 
-   按照[动态加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-dynamic-import)写法进行检查。
+   按照[动态加载写法](./arkts-dynamic-import.md#动态import实现中的关键点)进行检查。
 
 2. 检查文件路径和编译产物是否匹配。
 
-      在本地工程复现问题，可以在entry/build/default/cache/default/default@CompileArkTS/esmodule/release/filesInfo.txt文件中搜索报错的文件路径，搜索可能有两种情况：
+      在本地工程复现问题，可以在entry/build/default/cache/default/default@CompileArkTS/esmodule/release/filesInfo.txt（以release工程为例）文件中搜索报错的文件路径，搜索可能有两种情况：
 
    情况一：搜索不到完整的文件名，但可以搜索到相似的名字。
 
@@ -156,6 +160,4 @@ ModuleImportStack:
 
 **参考链接**
 
-[动态加载指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-dynamic-import)
-
-
+[动态加载](./arkts-dynamic-import.md)

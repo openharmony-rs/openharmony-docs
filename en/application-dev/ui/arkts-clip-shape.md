@@ -48,7 +48,7 @@ struct ClipShapeExample {
 }
 ```
 
-![en-us_image_clip_rotundity](figures/en-us_image_clip_rotundity.png)
+![clip-circle](figures/clip-circle.png)
 
 ## Clipping an Image into an Ellipse
 
@@ -80,7 +80,7 @@ struct ClipShapeExample {
 }
 ```
 
-![en-us_image_clipl_elliptical](figures/en-us_image_clipl_elliptical.png)
+![clip-elliptical](figures/clip-elliptical.png)
 
 ## Clipping an Image into a Rectangle
 
@@ -112,7 +112,7 @@ struct ClipShapeExample {
 }
 ```
 
-![en-us_image_clipl_rectangle](figures/en-us_image_clipl_rectangle.png)
+![clip-rectangle](figures/clip-rectangle.png)
 
 ## Clipping an Image into Custom Shapes
 
@@ -143,4 +143,4 @@ struct ClipShapeExample {
 }
 ```
 
-![en-us_image_clip_Irregular_shapes](figures/en-us_image_clip_Irregular_shapes.png)
+![clip-irregular](figures/clip-irregular.png)

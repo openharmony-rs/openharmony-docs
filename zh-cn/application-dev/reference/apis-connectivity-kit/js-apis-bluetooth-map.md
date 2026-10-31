@@ -3,11 +3,11 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于消息访问协议（Message Access Profile，[MAP](../../connectivity/terminology.md#map)）的蓝牙消息访问能力，支持获取连接状态等方法。
+本模块提供基于消息访问协议（Message Access Profile，[MAP](../../connectivity/bluetooth/terminology.md#map)）的蓝牙消息访问能力，支持创建MSE实例、获取和订阅设备间蓝牙消息服务连接状态等，适用于需要通过蓝牙协议进行消息访问与连接管理的场景。
 
 > **说明：**
 >
@@ -35,7 +35,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createMapMseProfile(): MapMseProfile
 
-创建蓝牙消息访问协议中的[MSE](../../connectivity/terminology.md#mse)实例。通过该实例可使用本端作为MSE设备的接口，如：获取和其他设备间的蓝牙消息服务连接状态。
+创建蓝牙消息访问协议中的[MSE](../../connectivity/bluetooth/terminology.md#mse)实例。通过该实例可使用本端作为MSE设备时提供的接口，如：获取和其他设备间的蓝牙消息服务连接状态。适用于蓝牙消息同步、车载蓝牙消息查看等场景。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -43,7 +43,7 @@ createMapMseProfile(): MapMseProfile
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-| MapMseProfile | 返回该profile的实例。 |
+| [MapMseProfile](#mapmseprofile) | 返回MapMseProfile实例，该实例可用于本端作为MSE设备进行蓝牙消息访问相关操作。 |
 
 **错误码**：
 
@@ -69,7 +69,7 @@ try {
 
 ## MapMseProfile
 
-该实例表示蓝牙消息访问协议中的[MSE](../../connectivity/terminology.md#mse)角色。
+该实例表示蓝牙消息访问协议中的[MSE](../../connectivity/bluetooth/terminology.md#mse)角色。
 - 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。
 - 使用该类的接口前，需通过[createMapMseProfile](#mapcreatemapmseprofile)接口构造该类的实例。
-- 和该实例角色相对应的是[MCE](../../connectivity/terminology.md#mce)角色。
+- 和该实例角色相对应的是[MCE](../../connectivity/bluetooth/terminology.md#mce)角色。

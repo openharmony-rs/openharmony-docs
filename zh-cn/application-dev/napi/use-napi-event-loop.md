@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API扩展接口在异步线程中运行和停止事件循环，通过napi_run_event_loop和napi_stop_event_loop管理事件循环，支持nowait和default两种模式。"
+keywords: [Node-API, 事件循环, napi_run_event_loop, napi_stop_event_loop, 异步线程, 事件队列, nowait, default模式]
+doctype: guide
+status: active
+---
+
 # 使用扩展的Node-API接口在异步线程中运行和停止事件循环
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 开发者在自己创建的ArkTS运行环境中调用异步的ArkTS接口时，可以通过使用Node-API中的扩展接口napi_run_event_loop和napi_stop_event_loop来运行和停止ArkTS实例中的事件循环。
@@ -91,7 +99,7 @@
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objectUtils);
       if (ret != napi_ok) {
-          OH_LOG_INFO(LOG_APP, "Failed to load module");
+          OH_LOG_ERROR(LOG_APP, "Failed to load module");
           napi_close_handle_scope(env, scope);
           napi_destroy_ark_runtime(&env);
           return nullptr;
@@ -126,7 +134,7 @@
       if (env != nullptr) {
           napi_status destroy_ret = napi_destroy_ark_runtime(&env);
           if (destroy_ret != napi_ok) {
-              OH_LOG_INFO(LOG_APP, "Failed to destroy ark runtime");
+              OH_LOG_ERROR(LOG_APP, "Failed to destroy ark runtime");
           }
           env = nullptr;
       }
@@ -214,13 +222,15 @@
    <!-- @[napi_event_loop_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
    
    ``` JSON5
-   "buildOption": {
-     "arkOptions" : {
-       "runtimeOnly" : {
-         "sources": [
-           "./src/main/ets/pages/ObjectUtils.ets"
-         ]
-       }
+     "buildOption": {
+       "arkOptions" : {
+         "runtimeOnly" : {
+           "sources": [
+             "./src/main/ets/pages/ObjectUtils.ets"
+           ]
+         }
+       },
+   // ...
      },
    ```
 
@@ -244,7 +254,7 @@
     return new Promise((resolve) => {
       setTimeout(() => {
         console.info('set timer delay 1s');
-        // attempt to stop the event loop at napi terminal
+        // 尝试在napi侧停止事件循环
         resolve();
       }, 1000)
     })

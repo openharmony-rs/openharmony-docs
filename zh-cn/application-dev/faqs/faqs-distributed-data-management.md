@@ -15,7 +15,7 @@
 
 **参考链接**
 
-[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
+关系型数据库[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
 
 
 ## 关系型数据库rdb中使用TRUNCATE TABLE语句无法清空表数据(API 9)
@@ -26,7 +26,7 @@
 
 **解决措施**
 
-关系型数据库rdb使用Sqlite数据库， 它不支持 TRUNCATE TABLE 语句，建议使用delete语句，如：DELETE FROM sqlite_sequence WHERE name = 'table_name' ，另外发生该错误会抛出空异常。
+关系型数据库rdb使用SQLite数据库， 它不支持 TRUNCATE TABLE 语句，建议使用delete语句，如：DELETE FROM sqlite_sequence WHERE name = 'table_name' ，另外发生该错误会抛出空异常。
 
 
 ## 关系型数据库rdb支持哪些数据类型(API 9)
@@ -144,7 +144,7 @@ API9版本之前对TEXT文本存储长度限制在1024字节，所以会存在�
 
 1. 使用put操作后，使用flush持久化数据，然后再使用get获取数据。
 
-2. 由于flush操作是异步执行，将Storage实例通过异步线程回写入文件中, 所以需要等待flush操作执行完成后，再执行get操作。
+2. 由于flush操作是异步执行，将Storage实例通过异步线程回写入文件中，所以需要等待flush操作执行完成后，再执行get操作。
 
 
 ## 使用RDB数据库时，能否指定内存数据库模式(API 9)
@@ -158,7 +158,7 @@ RDB数据库底层使用的是SQLite，默认的内存数据库模式是文件�
 
 **解决措施**
 
-可以使用[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行sql语句获取数据库大小，如：SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()。关系型数据库使用的是WAL模式，在查询前可以执行sql语句触发一次checkpoint刷新数据库文件大小，如：PRAGMA wal_checkpoint。
+可以使用[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行SQL语句获取数据库大小，如：SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()。关系型数据库使用的是WAL模式，在查询前可以执行SQL语句触发一次checkpoint刷新数据库文件大小，如：PRAGMA wal_checkpoint。
 
 
 ## 如何获取rdb关系型数据库路径

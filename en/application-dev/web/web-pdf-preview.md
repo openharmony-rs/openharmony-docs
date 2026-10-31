@@ -1,19 +1,21 @@
 # Previewing PDF Files
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @Yuan_ss-->
-<!--Designer: @qiu-gongkai-->
+<!--Owner: @shulssins-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=bcbbbedf2234f156fe3ad4387f2cc76834ae7941 translatedAt=2026-09-21T02:25:06.003Z pushedAt=2026-09-21T13:52:48.313Z -->
 
-The [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) supports PDF preview on web pages. An application can use the **src** parameter of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) and the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load PDF files, including network PDF files, PDF files in the application sandbox, and local PDF files.
+The [Web](../reference/apis-arkweb/arkts-basic-components-web.md) component supports previewing PDF files in web pages. However, due to performance limitations, frame drops may occur in some scenarios. If smoothness is required, use [PdfView](https://developer.huawei.com/consumer/en/doc/harmonyos-references/pdf-arkts-pdfview-component) or the third-party parsing library [PDF.js](https://github.com/mozilla/pdf.js). An app loads a PDF document through the src parameter of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) and the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API. Specific scenarios include network PDF documents, PDF documents in the app sandbox, and local PDF documents.
 
 To obtain network documents, you need to configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
-<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) -->
+<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) --> 
 
 ``` JSON5
 "requestPermissions":[
+  // ...
   {
     "name" : "ohos.permission.INTERNET"
   }
@@ -22,7 +24,7 @@ To obtain network documents, you need to configure the network access permission
 
 ## Loading Different PDF Files
 
-In the following example, the network PDF file **https://www.example.com/test.pdf** is specified as the default PDF file to be loaded when the **Web** component is created. Replace it with an actual accessible address.
+In the following example, the network PDF document `https://www.example.com/test.pdf` is specified as the default PDF document to be loaded when the **Web** component is created. Replace it with an actual accessible URL.
 
 <!-- @[web_module_create_load_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PreviewPDF.ets) -->
 
@@ -56,7 +58,7 @@ The PDF preview page uses **window.localStorage** to record the expansion status
   Web().domStorageAccess(true)
   ```
 
-When creating the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md), specify the default PDF file to be loaded. When the default PDF file is loaded, if you want to change the PDF file displayed on the **Web** component, call the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load the specified PDF file. The value of the first parameter **src** of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl).
+When creating the [Web](../reference/apis-arkweb/arkts-basic-components-web.md) component, specify the default PDF document to be loaded. After the default PDF document is loaded, if you need to change the PDF document displayed by the **Web** component, call the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load the specified PDF document. The first parameter variable src of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) cannot be dynamically changed through a state variable (for example, [@State](../ui/state-management/arkts-state.md)). To change the address, reload it through [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl).
 
 There are three scenarios for loading and previewing PDF files:
 - Preview and load an online PDF file.
@@ -91,19 +93,19 @@ There are three scenarios for loading and previewing PDF files:
 
 ## Controlling the PDF File Preview Page Status
 
-Currently, the following parameters are supported:
+The following parameters are supported:
 
 | Syntax| Description|
 | --------- | ---------- |
-| nameddest=destination |  Specifies a naming destination in a PDF file.|
-| page=pagenum | Specifies the page number with an integer. The **pagenum** value of the first page of the file is **1**.| 
-| zoom=scale    zoom=scale,left,top | Sets the scaling and scrolling coefficients using a floating or integer value. For example, the scaling value **100** indicates 100%. The left and up scrolling values are located in the coordinate system. **0,0** indicates the upper left corner of the visible page, regardless of how the document is rotated.|
-| toolbar=1 \| 0 | Opens or closes the top toolbar.| 
-| navpanes=1 \| 0 | Opens or closes the side navigation pane.| 
+| nameddest=destination |  Specifies a named destination in a PDF file.|
+| page=pagenum | Specifies the page number with an integer. The **pagenum** value of the first page of the file is **1**.|
+| zoom=scale,left,top | Sets the zoom and scroll factors using floating-point or integer values. For example, a zoom value of 100 indicates a zoom factor of 100%. The left and top scroll values are in a coordinate system where 0,0 represents the top-left corner of the visible page, regardless of how the document is rotated. scale is a required parameter. left and top are optional parameters. |
+| toolbar=1 or 0 | 1 opens the top toolbar. 0 closes the top toolbar. |
+| navpanes=1 or 0 | 1 opens the side navigation pane. 0 closes the side navigation pane. |
 | pdfbackgroundcolor=color | Specifies the background color of a PDF file. The value of color is a six-digit hexadecimal number in RGB format. The value ranges from 000000 to ffffff. For example, **ffffff** indicates white. This parameter is supported since OpenHarmony 6.0.|
 
 
-URL Examples:
+URL example:
 ```txt
 https://example.com/test.pdf#nameddest=Chapter6  
 https://example.com/test.pdf#page=3  
@@ -116,9 +118,9 @@ https://example.com/test.pdf#pdfbackgroundcolor=ffffff
 
 ## Using the PDF File Preview Callback
 
-Since API version 20, PDF file preview supports the loading success/failure callback and the callback that triggered when the page scrolls to the bottom.
+Since API version 20, PDF document preview supports two callback functions: the loading success/failure callback and the callback triggered when the page scrolls to the bottom.
 
-In the following example, the network PDF file **https://www.example.com/test.pdf** is specified as the default PDF file to be loaded when the **Web** component is created. Replace it with an actual accessible address.
+In the following example, the network PDF document `https://www.example.com/test.pdf` is specified as the default PDF document to be loaded when the **Web** component is created. Replace it with an actual accessible URL.
 
 - **onPdfLoadEvent** is triggered when the loading succeeds or fails.
   ```ts
@@ -133,7 +135,7 @@ In the following example, the network PDF file **https://www.example.com/test.pd
     )
   ```
 
-- **onPdfScrollAtBottom** is triggered when the user scrolls to the bottom.
+- Callback triggered when the page scrolls to the bottom.
   ```ts
   Web({ 
     src: 'https://www.example.com/test.pdf',

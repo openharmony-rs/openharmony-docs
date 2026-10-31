@@ -1,12 +1,16 @@
 # drawing_text_blob.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8ed03ffe90bb2522b0df0e44ac852e6dea1907ea translatedAt=2026-08-24T08:59:49.809Z pushedAt=2026-09-01T06:29:25.354Z -->
+
 ## Overview
-This file declares the functions related to the text blob in the drawing module.
+
+Defines the text-related functions in the file.<br>This module adopts a single-thread model, and the caller must manage thread safety and context state switching.
 
 **File to include**: <native_drawing/drawing_text_blob.h>
 
@@ -24,7 +28,7 @@ This file declares the functions related to the text blob in the drawing module.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_Drawing_RunBuffer](capi-drawing-oh-drawing-runbuffer.md) | OH_Drawing_RunBuffer | Describes a run, which provides storage for glyphs and positions.|
+| [OH_Drawing_RunBuffer](capi-drawing-oh-drawing-runbuffer.md) | OH_Drawing_RunBuffer | Describes a block of memory used to store text and position information. |
 
 ### Functions
 
@@ -38,8 +42,8 @@ This file declares the functions related to the text blob in the drawing module.
 | [uint32_t OH_Drawing_TextBlobUniqueID(const OH_Drawing_TextBlob* textBlob)](#oh_drawing_textblobuniqueid) | Obtains the unique identifier of a text blob. The identifier is a non-zero value.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **textBlob** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_TextBlobBuilder* textBlobBuilder,const OH_Drawing_Font* font, int32_t count, const OH_Drawing_Rect* rect)](#oh_drawing_textblobbuilderallocrunpos) | Allocates a run to store glyphs and positions. The pointer returned does not need to be managed by the caller. It can no longer be used after [OH_Drawing_TextBlobBuilderMake](capi-drawing-text-blob-h.md#oh_drawing_textblobbuildermake) is called.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **textBlobBuilder** or **font** is NULL or **count** is less than or equal to 0, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [OH_Drawing_TextBlob* OH_Drawing_TextBlobBuilderMake(OH_Drawing_TextBlobBuilder* textBlobBuilder)](#oh_drawing_textblobbuildermake) | Makes an **OH_Drawing_TextBlob** object from an **OH_Drawing_TextBlobBuilder**.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **textBlobBuilder** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
-| [void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)](#oh_drawing_textblobdestroy) | Destroys an **OH_Drawing_TextBlob** object and reclaims the memory occupied by the object.|
-| [void OH_Drawing_TextBlobBuilderDestroy(OH_Drawing_TextBlobBuilder* textBlobBuilder)](#oh_drawing_textblobbuilderdestroy) | Destroys an **OH_Drawing_TextBlobBuilder** object and reclaims the memory occupied by the object.|
+| [void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)](#oh_drawing_textblobdestroy) | Destroys a text object and reclaims the memory occupied by the object. |
+| [void OH_Drawing_TextBlobBuilderDestroy(OH_Drawing_TextBlobBuilder* textBlobBuilder)](#oh_drawing_textblobbuilderdestroy) | Destroys a text blob builder object and reclaims the memory occupied by the object. |
 
 ## Function Description
 
@@ -61,12 +65,12 @@ Creates an **OH_Drawing_TextBlobBuilder** object.
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md)* | Returns the pointer to the **OH_Drawing_TextBlobBuilder** object created.|
+| [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md)* | The function returns a pointer to the created text blob builder object. |
 
 ### OH_Drawing_TextBlobCreateFromText()
 
 ```c
-OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t byteLength,const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
+OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t byteLength, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
 ```
 
 **Description**
@@ -77,26 +81,25 @@ Creates an **OH_Drawing_TextBlob** object from the text.<br>This API may return 
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | const void* text | Pointer to the text.|
 | size_t byteLength | Length of the text, in bytes.|
-| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) object.|
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | Text encoding type [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding).|
+| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the font object OH_Drawing_Font. |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | Text encoding type. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* | Returns a pointer to the created [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) object.|
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* | Pointer to the created text object OH_Drawing_TextBlob. |
 
 ### OH_Drawing_TextBlobCreateFromPosText()
 
 ```c
-OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size_t byteLength,OH_Drawing_Point2D* point2D, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
+OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size_t byteLength, OH_Drawing_Point2D* point2D, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
 ```
 
 **Description**
@@ -107,27 +110,26 @@ Creates an **OH_Drawing_TextBlob** object from the text. The coordinates of each
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | const void* text | Pointer to the text.|
 | size_t byteLength | Length of the text, in bytes.|
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | Pointer to the start address of the [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) array. The number of entries in the array is determined by [OH_Drawing_FontCountText](capi-drawing-font-h.md#oh_drawing_fontcounttext).|
-| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) object.|
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | Text encoding type [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding).|
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point2D | Pointer to the first address of the array of 2D points OH_Drawing_Point2D. The number of elements in the array is determined by the result of [OH_Drawing_FontCountText](capi-drawing-font-h.md#oh_drawing_fontcounttext). |
+| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the font object OH_Drawing_Font. |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | Text encoding type OH_Drawing_TextEncoding. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* | Returns a pointer to the created [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) object.|
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* | Pointer to the created text object OH_Drawing_TextBlob. |
 
 ### OH_Drawing_TextBlobCreateFromString()
 
 ```c
-OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str,const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
+OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
 ```
 
 **Description**
@@ -138,20 +140,19 @@ Creates an **OH_Drawing_TextBlob** object from a string.<br>This API may return 
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | const char* str | Pointer to a string.|
-| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) object.|
-| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | Text encoding type [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding).|
+| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the font object OH_Drawing_Font. |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncoding | Text encoding type OH_Drawing_TextEncoding. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* | Returns a pointer to the created [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) object.|
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* | Pointer to the created text object OH_Drawing_TextBlob. |
 
 ### OH_Drawing_TextBlobGetBounds()
 
@@ -167,13 +168,12 @@ Obtains the bounds of an **OH_Drawing_TextBlob** object.<br>This API may return 
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | Pointer to the [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) object.|
-| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to the [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) object. You can call [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) to create a rectangle object.|
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | Pointer to the text object OH_Drawing_TextBlob. |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to the rectangle object OH_Drawing_Rect, which developers can create by calling the OH_Drawing_Rect API. |
 
 ### OH_Drawing_TextBlobUniqueID()
 
@@ -189,12 +189,11 @@ Obtains the unique identifier of a text blob. The identifier is a non-zero value
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | Pointer to the [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) object.|
+| const [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | Pointer to the text object OH_Drawing_TextBlob. |
 
 **Returns**
 
@@ -205,7 +204,7 @@ Obtains the unique identifier of a text blob. The identifier is a non-zero value
 ### OH_Drawing_TextBlobBuilderAllocRunPos()
 
 ```c
-const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_TextBlobBuilder* textBlobBuilder,const OH_Drawing_Font* font, int32_t count, const OH_Drawing_Rect* rect)
+const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_TextBlobBuilder* textBlobBuilder, const OH_Drawing_Font* font, int32_t count, const OH_Drawing_Rect* rect)
 ```
 
 **Description**
@@ -216,13 +215,12 @@ Allocates a run to store glyphs and positions. The pointer returned does not nee
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md)* textBlobBuilder | Pointer to an **OH_Drawing_TextBlobBuilder** object.|
-| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to an **OH_Drawing_Font** object.|
+| const [OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | Pointer to the font object OH_Drawing_Font. |
 | int32_t count | Number of text blobs.|
 | const [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Rectangle of the text blob. The value NULL means that no rectangle is set.|
 
@@ -240,7 +238,6 @@ Makes an **OH_Drawing_TextBlob** object from an **OH_Drawing_TextBlobBuilder**.<
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -251,7 +248,7 @@ Makes an **OH_Drawing_TextBlob** object from an **OH_Drawing_TextBlobBuilder**.<
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* | Returns the pointer to the **OH_Drawing_TextBlob** object created.|
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* | Pointer to the created text object OH_Drawing_TextBlob. |
 
 ### OH_Drawing_TextBlobDestroy()
 
@@ -261,18 +258,17 @@ void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)
 
 **Description**
 
-Destroys an **OH_Drawing_TextBlob** object and reclaims the memory occupied by the object.
+Destroys a text object and reclaims the memory occupied by the object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | Pointer to an **OH_Drawing_TextBlob** object.|
+| [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md)* textBlob | Pointer to the text object OH_Drawing_TextBlob. |
 
 ### OH_Drawing_TextBlobBuilderDestroy()
 
@@ -282,12 +278,11 @@ void OH_Drawing_TextBlobBuilderDestroy(OH_Drawing_TextBlobBuilder* textBlobBuild
 
 **Description**
 
-Destroys an **OH_Drawing_TextBlobBuilder** object and reclaims the memory occupied by the object.
+Destroys a text blob builder object and reclaims the memory occupied by the object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
-
 
 **Parameters**
 

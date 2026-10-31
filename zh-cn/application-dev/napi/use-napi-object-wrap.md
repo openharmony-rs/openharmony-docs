@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API的napi_wrap和napi_unwrap接口实现Native C++对象与ArkTS对象的绑定，支持在ArkTS中操作Native对象，适用于封装C++类供ArkTS调用。"
+keywords: [Node-API, 对象绑定, napi_wrap, napi_unwrap, Native对象, C++对象, 对象封装, ArkTS绑定]
+doctype: guide
+status: active
+---
+
 # Native与ArkTS对象绑定
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 
@@ -82,7 +90,7 @@
     {
         napi_status status = napi_delete_reference(env_, wrapper_);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "Failed to delete reference, return code: %{public}d", status);
+            OH_LOG_ERROR(LOG_APP, "Failed to delete reference, return code: %{public}d", status);
         }
     }
 
@@ -180,7 +188,7 @@
             MyObject* obj = new MyObject(value);
 
             obj->env_ = env;
-            // 通过napi_wrap将ArkTS对象jsThis)与C++对象obj绑定
+            // 通过napi_wrap将ArkTS对象jsThis与C++对象obj绑定
             status = napi_wrap(env,
                                jsThis,
                                reinterpret_cast<void*>(obj),

@@ -338,7 +338,7 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', set
 
 getValue(context: Context, name: string, callback: AsyncCallback\<string>): void
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -374,7 +374,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
 
 getValue(context: Context, name: string): Promise\<string>
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用Promise异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -715,7 +715,7 @@ openNetworkManagerSettings(context: Context): Promise\<boolean>
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **返回值**：
 
@@ -747,11 +747,15 @@ settings.openNetworkManagerSettings(context).then((status) => {
 });
 ```
 
-## settings.enableAirplaneMode
+## settings.enableAirplaneMode<sup>(deprecated)</sup>
 
 enableAirplaneMode(enable: boolean, callback: AsyncCallback\<void>): void
 
 启用或禁用飞行模式。使用callback异步回调（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 7开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -775,11 +779,15 @@ settings.enableAirplaneMode(isEnabled, (err:Error) => {
 })
 ```
 
-## settings.enableAirplaneMode
+## settings.enableAirplaneMode<sup>(deprecated)</sup>
 
 enableAirplaneMode(enable: boolean): Promise\<void>
 
 启用或禁用飞行模式。使用Promise异步回调（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 7开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -806,11 +814,15 @@ settings.enableAirplaneMode(isEnabled).then(() => {
 })
 ```
 
-## settings.canShowFloating
+## settings.canShowFloating<sup>(deprecated)</sup>
 
 canShowFloating(callback: AsyncCallback\<boolean>): void
 
 检查应用是否能够以悬浮窗形式显示。使用callback异步回调（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 7开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -832,11 +844,15 @@ settings.canShowFloating((err:Error, status: boolean) => {
 });
 ```
 
-## settings.canShowFloating
+## settings.canShowFloating<sup>(deprecated)</sup>
 
 canShowFloating(): Promise\<boolean>
 
 检查应用是否能够以悬浮窗形式显示。使用Promise异步回调（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 7开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -854,11 +870,15 @@ settings.canShowFloating().then((status:boolean) => {
 });
 ```
 
-## settings.getUriSync<sup>8+</sup>
+## settings.getUriSync<sup>(deprecated)</sup>
 
 getUriSync(name: string): string
 
 获取数据项的URI（暂不支持）。
+
+> **说明：**
+>
+> 从 API version 8开始支持，从API version 26.0.0开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -889,7 +909,7 @@ getURI(name: string, callback: AsyncCallback\<object>): void
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供代替接口。
+> 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -916,7 +936,7 @@ getURI(name: string): Promise\<object>
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供代替接口。
+> 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供替代接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
@@ -946,7 +966,7 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => 
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback\<object>): void
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
 
 > **说明：**
 >
@@ -984,7 +1004,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise\<object>
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用Promise异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1194,13 +1214,13 @@ openBiometricsSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1236,13 +1256,13 @@ openNfcSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1268,6 +1288,76 @@ try {
 }
 ```
 
+## settings.openDoubleClickSettingsPage<sup>24+</sup>
+
+openDoubleClickSettingsPage(context: Context): void
+
+打开按键设置-双击下按键页面。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口仅在Wearable设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.    |
+| 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDoubleClickSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the DoubleClick settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.isDoubleClickAppForSelf<sup>24+</sup>
+
+isDoubleClickAppForSelf(): Promise\<boolean>
+
+判断双击下按键的默认启动应用是否为本应用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口仅在Wearable设备中可正常调用，在其他设备调用不生效。
+
+**返回值**：
+
+| 类型             | 说明                    |
+| ---------------- |-----------------------|
+| Promise\<boolean> | Promise对象。返回true表示是当前应用，返回false表示非当前应用。 |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+
+settings.isDoubleClickAppForSelf().then((result: boolean) => {
+  console.info(`isDoubleClickAppForSelf result: ${result}`);
+})
+```
+
 ## settings.openMobileNetworkSettingsPage
 
 openMobileNetworkSettingsPage(context: Context): void
@@ -1286,7 +1376,7 @@ openMobileNetworkSettingsPage(context: Context): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1330,7 +1420,7 @@ openDisplaySettingsPage(context: Context): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1374,7 +1464,7 @@ openScreenRefreshRateSettingsPage(context: Context): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1412,13 +1502,13 @@ openSoundSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1462,7 +1552,7 @@ openAboutDeviceSettingsPage(context: Context): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1490,7 +1580,7 @@ try {
 
 ## settings.openAppDetailSettingsPage
 
-openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
+openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: number): void
 
 打开应用详情设置页面。
 
@@ -1506,9 +1596,9 @@ openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int):
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | bundleName  | string | 是 | 应用包名 |
-| appIndex  | int | 否 | 应用分身的索引 |
+| appIndex  | number | 否 | 应用分身的索引 |
 
 **错误码**：
 

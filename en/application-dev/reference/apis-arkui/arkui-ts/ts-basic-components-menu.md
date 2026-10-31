@@ -1,12 +1,12 @@
 # Menu
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Menu** component is a vertical list of items presented to the user.
+The **Menu** component is a vertical list of items presented to the user. It supports menu items, submenus, icons, and separators, which can be used to display operation options and feature entries.
 
 > **NOTE**
 >
@@ -28,7 +28,7 @@ Creates a fixed container for a menu. This API does not have any parameters.
 >
 > - Rules for calculating the width of menus and menu items:
 >
->   - During the layout, the width of each menu item is expected to be the same. If a child component has its width set, the [size calculation rule](ts-universal-attributes-size.md#constraintsize) prevails.
+>   - During the layout, the width of each menu item is expected to be the same. If a child component has its width set, [constraintSize](ts-universal-attributes-size.md#constraintsize) prevails.
 >
 >   - If no width is set for the **Menu** component, it applies a default two-column width to the **MenuItem** and **MenuItemGroup** child components. If a menu item's content area exceeds the two-column width, the **Menu** component automatically expands the menu item's content area.
 >
@@ -36,7 +36,7 @@ Creates a fixed container for a menu. This API does not have any parameters.
 >
 >   - The minimum width is 64 vp.
 >
-> - Universal attributes unsupported by **Menu**: [outline](ts-universal-attributes-outline.md) attributes and the [shadow](ts-universal-attributes-image-effect.md#shadow) attribute
+> - Common attributes that are not supported by **Menu** include the following: attributes [Outline Styling](ts-universal-attributes-outline.md) and the [shadow](ts-universal-attributes-image-effect.md#shadow) attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -50,9 +50,11 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 font(value: Font)
 
-Sets the size of all text within the menu.
+Sets the font style of all text within the menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +62,7 @@ Sets the size of all text within the menu.
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | Yes  | Size of all text within the menu.<br>Default value:<br>{<br>      size: 16,<br>      family: 'HarmonyOS Sans',<br>      weight: FontWeight.Medium,<br>      style: FontStyle.Normal<br>} |
+| value  | [Font](ts-types.md#font) | Yes  | Font style of all text within the menu.<br>Default value:<br>{<br>      size: '16.0fp',<br>      family: 'HarmonyOS Sans',<br>      weight: FontWeight.Medium,<br>      style: FontStyle.Normal<br>} |
 ### fontColor<sup>10+</sup>
 
 fontColor(value: ResourceColor)
@@ -68,6 +70,8 @@ fontColor(value: ResourceColor)
 Sets the font color of all text within the menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +88,8 @@ radius(value: Dimension | BorderRadiuses)
 Sets the radius of the menu border corners.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,13 +109,15 @@ If the sum of **startMargin** and **endMargin** exceeds the component width, bot
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name    | Type                                                    | Mandatory        | Description          |
 |---------|--------------------------------------------------------|------------| -------------- |
-| options | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)&nbsp;\| &nbsp;undefined | Yes  | Style of the menu item divider.<br>- **strokeWidth**: stroke width of the divider.<br>- **color**: color of the divider.<br>- **startMargin**: distance between the divider and the start edge of the menu item.<br>- **endMargin**: distance between the divider and the end edge of the menu item.<br>- **mode**: mode of the divider, which is **FLOATING_ABOVE_MENU** by default.|
+| options | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)&nbsp;\| &nbsp;undefined | Yes  | Style of the menu item divider.<br>- **strokeWidth**: stroke width of the divider. The default value is 1 px.<br>- **color**: color of the divider. The default value is **#33000000**.<br>- **startMargin**: distance between the divider and the start edge of the menu item, in vp. The default value is 16 vp.<br>- **endMargin**: distance between the divider and the end edge of the menu item, in vp. The default value is 16 vp.<br>- **mode**: mode of the divider, which is **FLOATING_ABOVE_MENU** by default.<br>If the sum of **startMargin** and **endMargin** exceeds the component width, both **startMargin** and **endMargin** will be set to **0**.|
 
 ### menuItemGroupDivider<sup>12+</sup>
 
@@ -119,13 +127,15 @@ Sets the style of the top and bottom dividers for the menu item group. If this a
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name    | Type                                                    | Mandatory        | Description          |
 |---------|--------------------------------------------------------|------------| -------------- |
-| options | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)&nbsp;\| &nbsp;undefined | Yes  | Style of the top and bottom dividers for the menu item group.<br>- **strokeWidth**: stroke width of the divider. The default value is 1 px.<br>- **color**: color of the divider. The default value is **#33000000**.<br>- **startMargin**: distance between the divider and the start edge of the menu item group. The default value is 16 vp.<br>- **endMargin**: distance between the divider and the end edge of the menu item group. The default value is 16 vp.<br>- **mode**: mode of the divider, which is **FLOATING_ABOVE_MENU** by default.|
+| options | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)&nbsp;\| &nbsp;undefined | Yes  | Style of the top and bottom dividers for the menu item group.<br>- **strokeWidth**: stroke width of the divider. The default value is 1 px.<br>- **color**: color of the divider. The default value is **#33000000**.<br>- **startMargin**: distance between the divider and the start edge of the menu item group, in vp. The default value is 16 vp.<br>- **endMargin**: distance between the divider and the end edge of the menu item group, in vp. The default value is 16 vp.<br>- **mode**: mode of the divider, which is **FLOATING_ABOVE_MENU** by default.<br>If the sum of **startMargin** and **endMargin** exceeds the component width, both **startMargin** and **endMargin** will be set to **0**.|
 
 ### subMenuExpandingMode<sup>12+</sup>
 
@@ -135,21 +145,25 @@ Sets the submenu expanding mode of the menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                        | Mandatory| Description          |
 | ------ | ---------------------------- | ---- |--------------|
-| mode  | [SubMenuExpandingMode](#submenuexpandingmode12) | Yes  | Submenu expanding mode of the menu.<br>Default value: **SubMenuExpandingMode.SIDE_EXPAND** |
+| mode  | [SubMenuExpandingMode](#submenuexpandingmode12) | Yes  | Submenu expanding mode of the menu.<br>Default value: **SubMenuExpandingMode.SIDE_EXPAND**<br>If this parameter is set to **SIDE_EXPAND**, the [subMenuExpandSymbol](#submenuexpandsymbol20) attribute will not be displayed. If this parameter is set to **EMBEDDED_EXPAND** or **STACK_EXPAND**, the **subMenuExpandSymbol** attribute takes effect. |
 
 ### subMenuExpandSymbol<sup>20+</sup>
 
 subMenuExpandSymbol(symbol: SymbolGlyphModifier)
 
-Sets the submenu expand symbol of the menu.
+Sets the submenu expand symbol of the menu. This attribute is displayed only in **SubMenuExpandingMode.EMBEDDED_EXPAND** or **SubMenuExpandingMode.STACK_EXPAND** mode, and is not displayed in **SubMenuExpandingMode.SIDE_EXPAND** mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,7 +171,7 @@ Sets the submenu expand symbol of the menu.
 
 | Name| Type                        | Mandatory| Description          |
 | ------ | ---------------------------- | ---- |--------------|
-| symbol  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| Yes  | Submenu expand symbol of the menu.<br>1. **SubMenuExpandingMode.SIDE_EXPAND**: The expand symbol is not displayed.<br>2. **SubMenuExpandingMode.EMBEDDED_EXPAND**: The symbol rotates 180° clockwise upon expansion.<br>Default value: **$r('sys.symbol.chevron_down').fontSize('24vp')**<br>3. **SubMenuExpandingMode.STACK_EXPAND**: The symbol rotates 90° clockwise upon expansion.<br>Default value: **$r('sys.symbol.chevron_forward').fontSize('20vp').padding('2vp')** |
+| symbol  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| Yes  | Submenu expand symbol of the menu.<br>1. **SubMenuExpandingMode.SIDE_EXPAND**: The expand symbol is not displayed.<br>2. **SubMenuExpandingMode.EMBEDDED_EXPAND**: The symbol rotates 180° clockwise upon expansion. By default, the expand symbol uses **new SymbolGlyphModifier($r('sys.symbol.chevron_down')).fontSize('24vp')**.<br>3. **SubMenuExpandingMode.STACK_EXPAND**: The symbol rotates 90° clockwise upon expansion. By default, the expand symbol uses **new SymbolGlyphModifier($r('sys.symbol.chevron_forward')).fontSize('20vp').padding('2vp')**.|
 
 ### fontSize<sup>(deprecated)</sup>
 
@@ -183,12 +197,14 @@ Enumerates the submenu expanding modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name           | Value  | Description                                      |
 | --------------- | ---- | ------------------------------------------ |
 | SIDE_EXPAND     | 0    | Default mode. Submenus are expanded on the side on the same plane.|
-| EMBEDDED_EXPAND | 1    | Embedded mode. Submenus are expanded while embedded within the main menu.    |
+| EMBEDDED_EXPAND | 1    | Embedded mode. Submenus are expanded within the main menu.    |
 | STACK_EXPAND    | 2    | Stack mode. Submenus are expanded above the main menu.      |
 
 ## Example
@@ -201,48 +217,47 @@ This example demonstrates how to implement a multi-level menu by configuring the
 @Entry
 @Component
 struct Index {
-  @State select: boolean = true;
   // Replace $r('app.media.xxx') with the image resource file you use.
-  private iconStr: ResourceStr = $r("app.media.view_list_filled");
-  private iconStr2: ResourceStr = $r("app.media.arrow_right_filled");
+  private iconStr: ResourceStr = $r('app.media.view_list_filled');
+  private iconStr2: ResourceStr = $r('app.media.arrow_right_filled');
 
   @Builder
   SubMenu() {
     Menu() {
-      MenuItem({ content: "Copy", labelInfo: "Ctrl+C" })
-      MenuItem({ content: "Paste", labelInfo: "Ctrl+V" })
+      MenuItem({ content: 'Copy', labelInfo: 'Ctrl+C' })
+      MenuItem({ content: 'Paste', labelInfo: 'Ctrl+V' })
     }
   }
 
   @Builder
-  MyMenu(){
+  MyMenu() {
     Menu() {
-      MenuItem({ startIcon: $r("app.media.icon"), content: "Menu item" })
-      MenuItem({ startIcon: $r("app.media.icon"), content: "Menu item" })
+      MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu item' })
+      MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu item' })
         .enabled(false)
       MenuItem({
         startIcon: this.iconStr,
-        content: "Menu item",
+        content: 'Menu item',
         endIcon: this.iconStr2,
-        builder: ():void=>this.SubMenu()
+        builder: (): void => this.SubMenu()
       })
       MenuItemGroup({ header: 'Subtitle' }) {
         MenuItem({
           startIcon: this.iconStr,
-          content: "Menu item",
+          content: 'Menu item',
           endIcon: this.iconStr2,
-          builder: ():void=>this.SubMenu()
+          builder: (): void => this.SubMenu()
         })
         MenuItem({
-          startIcon: $r("app.media.app_icon"),
-          content: "Menu item",
+          startIcon: $r('app.media.app_icon'),
+          content: 'Menu item',
           endIcon: this.iconStr2,
-          builder: ():void=>this.SubMenu()
+          builder: (): void => this.SubMenu()
         })
       }
       MenuItem({
         startIcon: this.iconStr,
-        content: "Menu item",
+        content: 'Menu item',
       })
     }
   }
@@ -284,39 +299,39 @@ struct Index {
   @Builder
   SubMenu() {
     Menu() {
-      MenuItem({ content: "Copy", labelInfo: "Ctrl+C" })
-      MenuItem({ content: "Paste", labelInfo: "Ctrl+V" })
+      MenuItem({ content: 'Copy', labelInfo: 'Ctrl+C' })
+      MenuItem({ content: 'Paste', labelInfo: 'Ctrl+V' })
     }
   }
 
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ symbolStartIcon: this.startIconModifier, content: "Menu item" })
-      MenuItem({ symbolStartIcon: this.startIconModifier, content: "Menu item" })
+      MenuItem({ symbolStartIcon: this.startIconModifier, content: 'Menu item' })
+      MenuItem({ symbolStartIcon: this.startIconModifier, content: 'Menu item' })
         .enabled(false)
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "Menu item",
+        content: 'Menu item',
         symbolEndIcon: this.endIconModifier,
         builder: (): void => this.SubMenu()
       })
       MenuItemGroup({ header: 'Subtitle' }) {
         MenuItem({
           symbolStartIcon: this.startIconModifier,
-          content: "Menu item",
+          content: 'Menu item',
           symbolEndIcon: this.endIconModifier,
           builder: (): void => this.SubMenu()
         })
         MenuItem({
           symbolStartIcon: this.startIconModifier,
-          content: "Menu item",
+          content: 'Menu item',
           symbolEndIcon: this.endIconModifier,
           builder: (): void => this.SubMenu()
         })
       }
       MenuItem({
-        content: "Menu item",
+        content: 'Menu item',
       }).selected(this.select).selectIcon(this.selectIconModifier)
     }
   }
@@ -340,7 +355,7 @@ struct Index {
 
 ### Example 3: Setting the Menu Submenu Expand Symbol
 
-This example demonstrates how to configure the expand symbol color for menu submenus using **subMenuExpandSymbol**.
+This example demonstrates how to use **subMenuExpandSymbol** to set the color and size of the menu submenu expand symbol.
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -358,11 +373,11 @@ struct Index {
     Menu() {
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "Icons"
+        content: 'Icon'
       })
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "List"
+        content: 'List'
       })
     }.backgroundColor(Color.Grey)
   }
@@ -373,22 +388,24 @@ struct Index {
       MenuItem({
         symbolStartIcon: this.startIconModifier,
         symbolEndIcon: this.endIconModifier,
-        content: "New folder",
+        content: 'New folder',
         builder: (): void => this.SubMenu(),
       })
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "Sort by",
+        content: 'Sort by',
         builder: (): void => this.SubMenu(),
       })
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "View mode",
+        content: 'View mode',
         builder: (): void => this.SubMenu(),
       })
     }
+    // Set the submenu expand mode to embedded.
     .subMenuExpandingMode(SubMenuExpandingMode.EMBEDDED_EXPAND)
     .backgroundColor(Color.Grey)
+    // Set the submenu expand symbol.
     .subMenuExpandSymbol(this.expandSymbolModifier)
   }
 
@@ -400,10 +417,11 @@ struct Index {
 }
 ```
 
+![image](figures/menu-arrow.gif)
 
 ### Example 4: Using the Divider Style
 
-This example demonstrates how to implement the divider style using **menuItemGroupDivider**.
+This example demonstrates how to set the divider style using the **menuItemDivider** and **menuItemGroupDivider** attributes.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI'
@@ -415,20 +433,22 @@ struct Index {
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ content: "Item Content" })
-      MenuItem({ content: "Item Content" })
-      MenuItem({ content: "Item Content" })
+      MenuItem({ content: 'Item Content' })
+      MenuItem({ content: 'Item Content' })
+      MenuItem({ content: 'Item Content' })
       MenuItemGroup() {
-        MenuItem({ content: "Group Child" })
-        MenuItem({ content: "Group Child" })
+        MenuItem({ content: 'Group Child' })
+        MenuItem({ content: 'Group Child' })
       }
-      MenuItem({ content: "Item Content" })
+      MenuItem({ content: 'Item Content' })
     }
+    // Set the style of the menu item divider.
     .menuItemDivider({
       strokeWidth: LengthMetrics.vp(5),
       color: '#d5d5d5',
       mode: DividerMode.EMBEDDED_IN_MENU
     })
+    // Set the style of the menu item group divider.
     .menuItemGroupDivider({
       strokeWidth: LengthMetrics.vp(5),
       color: '#707070',
@@ -438,8 +458,8 @@ struct Index {
 
   build() {
     RelativeContainer() {
-      Button("show menu")
-        .bindMenu(this.MyMenu())
+      Button('show menu')
+        .bindMenu(this.MyMenu)
     }
     .height('100%')
     .width('100%')
@@ -448,3 +468,62 @@ struct Index {
 ```
 
 ![dividerStyleMode](figures/MenudividerStyleMode.png)
+
+### Example 5: Setting Multi-level Menus for a Custom Menu Item
+
+This example demonstrates how to use **subMenuBuilder** to add multi-level menus for a custom menu item.
+
+The [subMenuBuilder](ts-basic-components-menuitem.md#submenubuilder) attribute is added since API version 26.0.0.
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: 'Copy', labelInfo: 'Ctrl+C' })
+      MenuItem({ content: 'Paste', labelInfo: 'Ctrl+V' })
+    }
+  }
+
+  @Builder
+  SubMenuContent() {
+    Row() {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
+      Image($r('app.media.startIcon')).width(20).height(20)
+      Text('Custom Menu Item').margin({start: LengthMetrics.vp(5)})
+    }.padding(20)
+  }
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem(this.SubMenuContent)
+      MenuItem(this.SubMenuContent)
+        .enabled(false)
+      MenuItem(this.SubMenuContent).subMenuBuilder(this.SubMenu)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![subMenuBuilder](figures/subMenuBuilder.jpg)
+
+<!--no_check-->

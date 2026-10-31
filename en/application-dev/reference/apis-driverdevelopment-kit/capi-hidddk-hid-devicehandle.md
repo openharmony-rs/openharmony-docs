@@ -4,7 +4,7 @@
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_DeviceHandle Hid_DeviceHandle
@@ -12,7 +12,7 @@ typedef struct Hid_DeviceHandle Hid_DeviceHandle
 
 ## Overview
 
-Defines the opaque USB HID device structure.
+Defines the opaque USB HID device structure, which is used to identify and operate HID device instances. You can use this handle to open, close, read, and write HID devices.
 
 **Since**: 18
 

@@ -1,12 +1,14 @@
 # Interface (NativeMediaPlayerHandler)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=b2db66489434139fa3bd3ae09bc9cd93d0621bd6 translatedAt=2026-08-07T04:23:54.363Z pushedAt=2026-08-07T08:11:08.058Z -->
 
-Implements a **NativeMediaPlayerHandler** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback. The application uses this object to report the player status to the ArkWeb engine.
+NativeMediaPlayerHandler is the parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback function. When an app uses [NativeMediaPlayerBridge](./arkts-apis-webview-NativeMediaPlayerBridge.md) to take over web media playback, it must synchronize various player state changes to the ArkWeb kernel in real time. This ensures that the web JavaScript can obtain the correct player state. The ArkWeb kernel converts these states into standard HTML5 Media Events and triggers the event listeners registered in the web page, thereby ensuring the normal functioning of the web page.
 
 > **NOTE**
 >
@@ -46,7 +48,7 @@ Called to notify the ArkWeb engine of the volume of the player when the volume c
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| volume | number | Yes| Volume of the player. The value range is [0, 1.0].|
+| volume | number | Yes | Volume of the player. Value range: [0, 1.0]. If the value is out of range, the ArkWeb kernel will not execute it. |
 
 **Example**
 
@@ -74,7 +76,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 handlePlaybackRateChanged(playbackRate: number): void
 
-Called to notify the ArkWeb engine of the playback rate of the player when the playback rate changes.
+When the playback rate of the player changes, this method is called to notify the ArkWeb kernel of the playback rate.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -82,7 +84,7 @@ Called to notify the ArkWeb engine of the playback rate of the player when the p
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| playbackRate | number | Yes| Playback rate. The value range is [0, +∞).|
+| playbackRate | number | Yes | Playback rate. The value range is [0, +∞). If a negative number is passed in, the ArkWeb kernel will not execute it.|
 
 **Example**
 
@@ -100,7 +102,7 @@ Called to notify the ArkWeb engine of the total duration of the media.
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| duration | number | Yes| Total duration of the media.<br>Unit: second. Value range: [0,+∞)|
+| duration | number | Yes | Total duration of the media.<br>Unit: second. Value range: [0, +∞). If a negative number is passed in, the ArkWeb kernel will not execute. |
 
 **Example**
 
@@ -118,7 +120,7 @@ Called to notify the ArkWeb engine of the playback progress when the playback pr
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| currentPlayTime | number | Yes| Current progress.<br>Unit: second. Value range: [0, duration] |
+| currentPlayTime | number | Yes | Current playback time.<br>Unit: second. Value range: [0, duration]. If the value is out of range, the ArkWeb kernel will not execute it. |
 
 **Example**
 
@@ -136,7 +138,7 @@ Called to notify the ArkWeb engine of the buffer time when the buffer time chang
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| bufferedEndTime | number | Yes| Duration of media data in the buffer.<br>Unit: second. Value range: [0, duration]|
+| bufferedEndTime | number | Yes | Duration of the buffered media.<br>Unit: second. Value range: [0, duration]. If the value is out of range, the ArkWeb kernel will not execute. |
 
 **Example**
 
@@ -146,7 +148,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 handleEnded(): void
 
-Called to notify the ArkWeb engine that the media playback ends.
+When media playback ends, this method is called to notify the ArkWeb kernel of the playback end event.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -212,7 +214,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 handleSeeking(): void
 
-Called to notify the ArkWeb engine that the player enters the seek state.
+When the player enters the seek state, this method is called to notify the ArkWeb kernel of the seek entry event. After the seek is complete, handleSeekFinished should be called to notify the ArkWeb kernel of the seek completion event.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -224,7 +226,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 handleSeekFinished(): void
 
-Called to notify the ArkWeb engine that the seek operation is complete.
+When the player completes seeking, this method is called to notify the ArkWeb kernel of the seek completion event.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -236,7 +238,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 handleError(error: MediaError, errorMessage: string): void
 
-Called to notify the ArkWeb engine that an error occurs with the player.
+When an error occurs in the player, this method is called to notify the ArkWeb kernel of the error.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -255,7 +257,7 @@ For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-
 
 handleVideoSizeChanged(width: number, height: number): void
 
-Called to notify the ArkWeb engine of the video size of the player.
+When the player parses the video dimensions, this method is called to notify the ArkWeb kernel of the video size.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -263,8 +265,8 @@ Called to notify the ArkWeb engine of the video size of the player.
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| width  | number | Yes| Video width, in pixels. Value range: [0,+∞)|
-| height | number | Yes| Video height, in pixels. Value range: [0,+∞)|
+| width | number | Yes | Width of the video, in pixels. Value range: [0, +∞). If a negative number is passed in, the ArkWeb kernel ignores this value. |
+| height | number | Yes | Height of the video, in pixels. Value range: [0, +∞). If a negative number is passed in, the ArkWeb kernel ignores this value. |
 
 **Example**
 

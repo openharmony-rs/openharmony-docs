@@ -19,13 +19,15 @@
 
 2. 用户主动终止应用，例如在任务列表中点击清理按钮以清除所有应用，或上划清除单个应用，不会生成栈等维测日志。
 
-3. 应用开发者主动调用exit系统调用时，不会生成栈等维测日志。
+3. 应用主动调用exit()等接口退出。
+
+   对于API版本26.1.0及之后版本，系统支持“退出捕获”功能，在debug版本应用中开启`hilog.exit.catch.abort`开关后，应用主动退出会被转换为`SIGABRT`信号，从而生成包含调用栈的CppCrash日志，具体操作请参考[应用主动退出缺失崩溃日志](cppcrash-guidelines.md#应用主动退出缺失崩溃日志)问题指导；对于API版本26.1.0之前版本，不支持捕获应用主动退出时的崩溃日志。
 
 4. 应用发生主线程堵塞，导致界面冻结，通常会生成APP_FREEZE日志。
 
 5. 资源使用过度将导致系统对应用进行管控，并提供详细的维测信息。例如，应用发生内存泄漏时，通常会生成资源泄漏类的维测日志。开发者可以通过HiAppEvent订阅RESOURCE_OVERLIMIT获取对应的事件和日志。
 
-6. 系统对应用进行管控时，部分场景无法提供详细的维测信息，比如LowMemoryKiller、应用的RSS内存超过4G、快速泄漏等。
+6. 系统对应用进行管控时，部分场景无法提供详细的维测信息，比如LowMemoryKiller、应用的RSS内存超过4GB、快速泄漏等。
 
 本节主要覆盖在场景5和6中因SIGKILL信号导致的应用终止。
 
@@ -104,8 +106,9 @@
     | VrsKill                            | 三方应用检测到恶意进程后，调用PC端病毒检测处置服务接口终止进程。                             | 无需处理。                                                                                                  | 否             | 否        |
     | RssThresholdKiller                 | 应用的RSS内存超一定阈值。                                                | 尝试通过HiAppEvent订阅RESOURCE_OVERLIMIT获取更多的RSS内存日志，找到泄漏点后，尝试降低应用自身的内存占用，避免出现RSS内存超过阈值的情况。                                                                        | 是             | 是        |
     | OomKiller                          | 整机低内存，触发了内核管控，按照一定策略终止应用。                                     | 尝试降低应用自身的内存占用，以减少被整机管控策略选中的概率。                                                                         | 否             | 否        |
-    | CpaKiller                          | DRM（Digital Right Management）业务申请内存但是内存不足时，会按照一定策略终止进程以回收内存。 | 尝试降低应用自身的内存占用，以减少被整机管控策略选中的概率。                                                                         | 否             | 否        |
+    | CpaKiller                          | DRM（Digital Rights Management）业务申请内存但是内存不足时，会按照一定策略终止进程以回收内存。 | 尝试降低应用自身的内存占用，以减少被整机管控策略选中的概率。                                                                         | 否             | 否        |
     | KillApplication                    | 应用主动退出。                                                       | 无需处理。                                                                                                  | 否             | 否        |
+    | KillProcess                        | 应用主动退出。<br>**说明**：从API版本26.0.0开始支持该参数。                                   | 无需处理。                                                                                                  | 否             | 否        |
     | OnRemoteDied                       | 远程服务死亡。                                                       | 检查依赖的远程服务是否正常。                                                                                         | 否             | 否        |
     | Restart                            | 应用重启。                                                         | 无需处理。                                                                                                  | 否             | 否        |
     | UserRequest                        | 最近任务上划或清理。                                                    | 无需处理。                                                                                                  | 否             | 否        |
@@ -114,8 +117,10 @@
     | Logout                             | 用户注销时，卸载应用沙箱。                                                 | 无需处理。                                                                                                  | 否             | 否        |
     | PermissionUpdate                   | 应用权限更新。                                                       | 检查应用权限使用是否合理。                                                                                          | 否             | 否        |
     | aaForceStop                        | 通过aa命令强制停止应用。                                                 | 无需处理。                                                                                                  | 否             | 否        |
-    | ThreadBlock6S                      | 应用主线程卡死超时。                                                    | 检查应用主线程是否存在阻塞操作，优化代码逻辑。                                                                                | 是             | 是，具体参考[ThreadBlock6S](./appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)。        |
-    | AppInputBlock                      | 用户输入响应超时。                                                     | 检查应用UI响应是否及时，优化输入处理逻辑。                                                                                 | 是             | 是，具体参考[AppInputBlock](./appfreeze-guidelines.md#app_input_block-用户输入响应超时)。        |
+    | signalKill                         | 应用收到SIGKILL等信号被终止。<br>**说明**：从API版本26.0.1开始支持该参数。                                           | 检查是否有外部进程发送信号，或系统因资源管控发送信号。                                                                                                | 否             | 否        |
+    | signalExit                         | 应用进程通过exit()系统调用主动退出。<br>**说明**：从API版本26.0.1开始支持该参数。                                     | 检查应用退出逻辑，确认是否为预期行为。若为非预期退出，需排查调用栈。                                                                                    | 否             | 否        |
+    |ThreadBlock6S                      | 应用主线程卡死超时。                                                    | 检查应用主线程是否存在阻塞操作，优化代码逻辑。                                                                                | 是             | 是，具体参考[ThreadBlock6S](./appfreeze-guidelines.md#thread_block_6s应用主线程卡死超时)。        |
+    | AppInputBlock                      | 用户输入响应超时。                                                     | 检查应用UI响应是否及时，优化输入处理逻辑。                                                                                 | 是             | 是，具体参考[AppInputBlock](./appfreeze-guidelines.md#app_input_block用户输入响应超时)。        |
     | LifecycleTimeout                   | 应用生命周期超时。                                                     | 检查应用生命周期回调是否存在耗时操作。                                                                                    | 是             | 否       |
     | JsError                            | js层程序崩溃。                                                      | 检查js代码是否存在异常，优化错误处理。                                                                                   | 是             | 是，具体参考[JsError](./jscrash-guidelines.md)。        |
     | CppCrash                           | native层程序崩溃。                                                  | 检查native代码是否存在异常，优化错误处理。                                                                               | 是             | 是，具体参考[CppCrash](./cppcrash-guidelines.md)。        |

@@ -7,11 +7,12 @@
 <!--Adviser: @zengyawen-->
 
 - ArkTS API<!--data-protection-arkts-->
-  - [@ohos.dlpPermission (数据防泄漏)](js-apis-dlppermission.md)
+  - [@ohos.dlpPermission (数据防泄露)](js-apis-dlppermission.md)
   - [@ohos.security.identifySensitiveContent (识别敏感内容)](js-apis-identifySensitiveContent.md)
+  - [@ohos.security.privacyComputation (隐私计算)](js-apis-privacyComputation.md)
   <!--Del-->
-  - [@ohos.dlpPermission (数据防泄漏)(系统接口)](js-apis-dlppermission-sys.md)
-  - [@ohos.dlpSetDlpFeature (设置数据防泄漏入口)(系统接口)](js-apis-dlpsetdlpfeature-sys.md)
+  - [@ohos.dlpPermission (数据防泄露)(系统接口)](js-apis-dlppermission-sys.md)
+  - [@ohos.dlpSetDlpFeature (设置数据防泄露入口)(系统接口)](js-apis-dlpsetdlpfeature-sys.md)
   <!--DelEnd-->
 - C API<!--data-protection-c-->
   - 模块<!--data-protection-module-->

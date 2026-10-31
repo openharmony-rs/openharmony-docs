@@ -59,6 +59,35 @@
     - [编译形态整体说明](quick-start/quickstart-appendix-compiledform.md)
     - [Hi3516标准系统入门（IDE方式）](quick-start/quickstart-appendix-hi3516-ide.md)
     - [Hi3516标准系统入门（命令行方式）](quick-start/quickstart-appendix-hi3516-pkg.md) 
+  - 应用适配器
+    - [应用适配器CSS属性说明](quick-start/application-adapter/README-CN.md)
+    - [align-content CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-align-content.md)
+    - [align-items CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-align-items.md)
+    - [align-self CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-align-self.md)
+    - [aspect-ratio CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-aspect-ratio.md)
+    - [flex-basis CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-basis.md)
+    - [flex-direction CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-direction.md)
+    - [flex-grow CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-grow.md)
+    - [flex-shrink CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-shrink.md)
+    - [flex-wrap CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-wrap.md)
+    - [gap CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-gap.md)
+    - [justify-content CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-justify-content.md)
+    - [margin-left CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-margin-left.md)
+    - [max-height CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-max-height.md)
+    - [max-width CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-max-width.md)
+    - [min-height CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-min-height.md)
+    - [min-width CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-min-width.md)
+    - [overflow CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-overflow.md)
+    - [position CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-position.md)
+    - [Button组件开发指导](quick-start/application-adapter/quickstart-lite-ui-button.md)
+    - [ScrollBar组件开发指导](quick-start/application-adapter/quickstart-lite-ui-scrollbar.md)
+    - [Slider组件开发指导](quick-start/application-adapter/quickstart-lite-ui-slider.md)
+    - [Switch组件开发指导](quick-start/application-adapter/quickstart-lite-ui-switch.md)
+    - [GPU graphic接口快速接入指导文档](quick-start/application-adapter/quickstart-lite-graphics-gpu-interface.md)
+    - [轻图形-SVG开发指导](quick-start/application-adapter/quickstart-lite-graphics-svg.md)
+    - [轻图形-动画开发指导](quick-start/application-adapter/quickstart-lite-graphics-animation.md)
+    - [轻图形-线性渐变开发指导](quick-start/application-adapter/quickstart-lite-graphics-gradient.md)
+    - [轻量系统路由页面转场动效开发指导](quick-start/application-adapter/quickstart-lite-router-page-transition.md)
   - [获取源码](get-code/sourcecode-acquire.md)
 - 隐私和安全
   - [隐私保护](security/security-privacy-protection.md)
@@ -78,6 +107,7 @@
       - [配置其他子系统](porting/porting-minichip-subsys-others.md)
     - [移植验证](porting/porting-minichip-verification.md)
     - [常见问题](porting/porting-chip-faqs.md)
+    - [轻量系统小型化适配指导](porting/porting-minichip-minimal.md)
   - 小型系统芯片移植指导
     - 移植准备
       - [移植须知](porting/porting-smallchip-prepare-needs.md)
@@ -506,7 +536,7 @@
   - [Docker编译环境](get-code/gettools-acquire.md)
   - [IDE集成开发环境](get-code/gettools-ide.md)
 - 示例教程
-  - [Demo示例](https://growing.openharmony.cn/mainPlay/sample)
+  - [Demo示例](https://growing.openharmony.cn/mainPlay/sample/)
   - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md) 
 - 参考
   - 常见问题

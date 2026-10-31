@@ -6,6 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:19.883Z pushedAt=2026-06-25T01:35:11.422Z -->
 
 ## Overview
 
@@ -27,8 +28,8 @@ Provides context-related APIs for configuring runtime information. These APIs ar
 
 | Name                                                          | typedef Keyword| Description                               |
 |--------------------------------------------------------------|------------|-----------------------------------|
-| [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) | void*      | Defines the pointer to the MindSpore Lite context.|
-| [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)   | void*          | Defines the pointer to the MindSpore Lite device information.                                 |
+| [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) | void*      | Pointer to MindSpore Lite context information. |
+| [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)   | void*          | Pointer to MindSpore Lite runtime device information.                                  |
 
 ### Functions
 
@@ -104,7 +105,6 @@ Destroys a context object.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -122,7 +122,6 @@ OH_AI_API void OH_AI_ContextSetThreadNum(OH_AI_ContextHandle context, int32_t th
 Sets the number of runtime threads.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -142,7 +141,6 @@ OH_AI_API int32_t OH_AI_ContextGetThreadNum(const OH_AI_ContextHandle context)
 Obtains the number of threads.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -168,7 +166,6 @@ Sets the affinity mode for binding runtime threads to CPU cores, which are class
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -187,7 +184,6 @@ OH_AI_API int OH_AI_ContextGetThreadAffinityMode(const OH_AI_ContextHandle conte
 Obtains the affinity mode for binding runtime threads to CPU cores.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -213,7 +209,6 @@ Sets the list of CPU cores bound to a runtime thread.<br> For example, if **core
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -233,7 +228,6 @@ OH_AI_API const int32_t *OH_AI_ContextGetThreadAffinityCoreList(const OH_AI_Cont
 Obtains the list of bound CPU cores.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -260,7 +254,6 @@ Sets whether to enable parallelism between operators. The setting is ineffective
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -279,7 +272,6 @@ OH_AI_API bool OH_AI_ContextGetEnableParallel(const OH_AI_ContextHandle context)
 Checks whether parallelism between operators is supported.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -305,7 +297,6 @@ Attaches the custom device information to the inference context.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -324,7 +315,6 @@ OH_AI_API OH_AI_DeviceInfoHandle OH_AI_DeviceInfoCreate(OH_AI_DeviceType device_
 Creates a device information object.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -350,7 +340,6 @@ Destroys a device information object. Note: After the device information instanc
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -368,7 +357,6 @@ OH_AI_API void OH_AI_DeviceInfoSetProvider(OH_AI_DeviceInfoHandle device_info, c
 Sets the name of the provider.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -388,7 +376,6 @@ OH_AI_API const char *OH_AI_DeviceInfoGetProvider(const OH_AI_DeviceInfoHandle d
 Obtains the provider name.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -414,7 +401,6 @@ Sets the name of a provider device.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -433,7 +419,6 @@ OH_AI_API const char *OH_AI_DeviceInfoGetProviderDevice(const OH_AI_DeviceInfoHa
 Obtains the name of a provider device.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -459,7 +444,6 @@ Obtains the device type.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -484,7 +468,6 @@ Sets whether to enable float16 inference. This function is available only for CP
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -503,7 +486,6 @@ OH_AI_API bool OH_AI_DeviceInfoGetEnableFP16(const OH_AI_DeviceInfoHandle device
 Checks whether float16 inference is enabled. This function is available only for CPU and GPU devices.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -529,7 +511,6 @@ Sets the NPU frequency type. This function is available only for NPU devices.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -548,7 +529,6 @@ OH_AI_API int OH_AI_DeviceInfoGetFrequency(const OH_AI_DeviceInfoHandle device_i
 Obtains the NPU frequency type. This function is available only for NPU devices.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -574,7 +554,6 @@ Obtains the descriptions of all NNRt devices in the system.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -598,7 +577,6 @@ OH_AI_API NNRTDeviceDesc *OH_AI_GetElementOfNNRTDeviceDescs(NNRTDeviceDesc *desc
 Obtains the pointer to an element in the NNRt device description array.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -625,7 +603,6 @@ Destroys the NNRt device description array obtained by [OH_AI_GetAllNNRTDeviceDe
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -643,7 +620,6 @@ OH_AI_API size_t OH_AI_GetDeviceIdFromNNRTDeviceDesc(const NNRTDeviceDesc *desc)
 Obtains the NNRt device ID from the specified NNRt device description. Note that this ID is valid only for NNRt devices.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -669,7 +645,6 @@ Obtains the NNRt device name from the specified NNRt device description.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -693,7 +668,6 @@ OH_AI_API OH_AI_NNRTDeviceType OH_AI_GetTypeFromNNRTDeviceDesc(const NNRTDeviceD
 Obtains the NNRt device type from the specified NNRt device description.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -719,7 +693,6 @@ Searches for the NNRt device with the specified name and creates the NNRt device
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -743,7 +716,6 @@ OH_AI_API OH_AI_DeviceInfoHandle OH_AI_CreateNNRTDeviceInfoByType(OH_AI_NNRTDevi
 Searches for the NNRt device with the specified type and creates the NNRt device information based on the information about the first found NNRt device.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -769,7 +741,6 @@ Sets the NNRt device ID. This function is available only for NNRt devices.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -788,7 +759,6 @@ OH_AI_API size_t OH_AI_DeviceInfoGetDeviceId(const OH_AI_DeviceInfoHandle device
 Obtains the NNRt device ID. This function is available only for NNRt devices.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -814,7 +784,6 @@ Sets the NNRt performance mode. This function is available only for NNRt devices
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -833,7 +802,6 @@ OH_AI_API OH_AI_PerformanceMode OH_AI_DeviceInfoGetPerformanceMode(const OH_AI_D
 Obtains the NNRt performance mode. This function is available only for NNRt devices.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -859,7 +827,6 @@ Sets the priority of an NNRt task. This function is available only for NNRt devi
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -878,7 +845,6 @@ OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandl
 Obtains the priority of an NNRt task. This function is available only for NNRt devices.
 
 **Since**: 23
-
 
 **Parameters**
 
@@ -903,7 +869,6 @@ OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle devic
 Adds extended configuration in the form of key/value pairs to the device information. This function is available only for NNRt devices.<br>Currently, only the following 11 keys are supported: {"CachePath": "YourCachePath"}, {"CacheVersion": "YourCacheVersion"}, {"QuantBuffer": "YourQuantBuffer"}, {"ModelName": "YourModelName"}, {"isProfiling": "YourProfilingSwitch"}, {"opLayout": "YourOpLayout"}, {"InputDims": "YourInputDims"}, {"DynamicDims": "YourDynamicDims"}, {"QuantConfigData": "YourQuantConfigData"}, {"BandMode": "YourBandMode"}, and {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}. You can configure the value of each key based on the actual requirement.
 
 **Since**: 10
-
 
 **Parameters**
 

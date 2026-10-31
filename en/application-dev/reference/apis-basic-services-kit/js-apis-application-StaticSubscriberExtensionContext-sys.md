@@ -1,14 +1,15 @@
 # @ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext) (System API)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:41:57.580Z pushedAt=2026-10-08T02:39:02.481Z -->
 
-The **StaticSubscriberExtensionContext** module, inherited from **StaticSubscriberExtensionAbility**, provides context for StaticSubscriberExtensionAbilities.
+The **StaticSubscriberExtensionContext** module, inherited from **ExtensionContext**, provides context for **StaticSubscriberExtensionAbility**.
 
-You can use the APIs of this module to start StaticSubscriberExtensionAbilities.
+You can use the APIs of this module to start **StaticSubscriberExtensionAbility**.
 
 > **NOTE**
 >
@@ -26,7 +27,7 @@ import { StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
 
 ## Usage
 
-Before using the **StaticSubscriberExtensionContext** module, you must first obtain a **StaticSubscriberExtensionAbility** instance.
+Before using the **StaticSubscriberExtensionContext** module, you must first use **StaticSubscriberExtensionAbility** to obtain the context.
 
 ```ts
 import { StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
@@ -36,11 +37,7 @@ import { StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } fr
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-Starts an ability that belongs to the same application as this StaticSubscriberExtensionAbility. This API uses an asynchronous callback to return the result.
-
-Observe the following when using this API:
- - If an application running in the background needs to call this API to start an ability, it must have the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission.
- - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the **ohos.permission.START_INVISIBLE_ABILITY** permission.
+Starts an ability that belongs to the same application as this **StaticSubscriberExtensionAbility**. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -52,8 +49,8 @@ Observe the following when using this API:
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| want     | [Want](../apis-ability-kit/js-apis-wantAgent.md) | Yes  | Want information about the target ability.   |
-| callback | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result.|
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Want information about the target ability. The target ability must belong to the same app as the static subscription.    |
+| callback | AsyncCallback&lt;void&gt;           | Yes  | Callback used to receive the result of starting the ability.|
 
 **Error codes**
 
@@ -61,9 +58,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201     | The application does not have permission to call the interface. |
-| 202     | The application is not system-app, can not use system-api. |
-| 401     | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.      |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      |
 | 16000001 | The specified ability does not exist.                        |
 | 16000002 | Incorrect ability type.                                      |
 | 16000004 | Cannot start an invisible component.                           |
@@ -85,8 +82,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { Want } from '@kit.AbilityKit';
 
   let want: Want = {
-    bundleName: "com.example.myapp",
-    abilityName: "MyAbility"
+    bundleName: 'com.example.myapp',
+    abilityName: 'MyAbility'
   };
 
   class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
@@ -97,7 +94,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         this.context.startAbility(want, (error: BusinessError) => {
           if (error) {
             // Process service logic errors.
-            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+            console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
             return;
           }
           // Carry out normal service processing.
@@ -117,11 +114,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 startAbility(want: Want): Promise&lt;void&gt;
 
-Starts an ability that belongs to the same application as this StaticSubscriberExtensionAbility. This API uses a promise to return the result.
-
-Observe the following when using this API:
- - If an application running in the background needs to call this API to start an ability, it must have the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission.
- - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the **ohos.permission.START_INVISIBLE_ABILITY** permission.
+Starts an ability that belongs to the same application as this **StaticSubscriberExtensionAbility**. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -133,13 +126,13 @@ Observe the following when using this API:
 
 | Name| Type                               | Mandatory| Description                   |
 | ------ | ----------------------------------- | ---- | ----------------------- |
-| want   | [Want](../apis-ability-kit/js-apis-wantAgent.md) | Yes  | Want information about the target ability.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Want information about the target ability. The target ability must belong to the same app as the static subscription. |
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -147,9 +140,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201     | The application does not have permission to call the interface. |
-| 202     | The application is not system-app, can not use system-api. |
-| 401     | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.      |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      |
 | 16000001 | The specified ability does not exist.                        |
 | 16000002 | Incorrect ability type.                                      |
 | 16000004 | Cannot start an invisible component.                           |
@@ -171,8 +164,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { Want } from '@kit.AbilityKit';
 
   let want: Want = {
-    bundleName: "com.example.myapp",
-    abilityName: "MyAbility"
+    bundleName: 'com.example.myapp',
+    abilityName: 'MyAbility'
   };
 
   class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
@@ -186,7 +179,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
           })
           .catch((error: BusinessError) => {
             // Process service logic errors.
-            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+            console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
           });
       } catch (paramError) {
         // Process input parameter errors.

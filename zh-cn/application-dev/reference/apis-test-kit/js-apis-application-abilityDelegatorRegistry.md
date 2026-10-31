@@ -5,7 +5,7 @@
 <!--Owner: @li-weifeng2024-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 <!--deprecated_code_no_check-->
 
@@ -13,7 +13,7 @@ AbilityDelegatorRegistry模块提供用于存储已注册的[AbilityDelegator](j
 
 > **说明：**
 > 
-> 本模块首批接口从API version 8开始支持，从API version 9废弃，替换模块为[@ohos.app.ability.abilityDelegatorRegistry](js-apis-app-ability-abilityDelegatorRegistry.md)。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 8开始支持，从API version 9开始废弃，替换模块为[@ohos.app.ability.abilityDelegatorRegistry](js-apis-app-ability-abilityDelegatorRegistry.md)。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -25,7 +25,7 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 
 Ability生命周期状态。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称          | 值   | 说明                        |
 | ------------- | ---- | --------------------------- |
@@ -41,7 +41,7 @@ getAbilityDelegator(): AbilityDelegator
 
 获取应用程序的AbilityDelegator对象。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 

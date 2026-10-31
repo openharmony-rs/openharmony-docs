@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T09:05:31.956Z pushedAt=2026-09-05T10:47:30.147Z -->
 
 ## Overview
 
@@ -39,11 +40,11 @@ Want is a carrier for information transfer between objects (application componen
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, AbilityBase_Element element)](#oh_abilitybase_setwantelement) | Sets the Element struct, which consists of **bundleName**, **moduleName**, and **abilityName** in Want.|
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, AbilityBase_Element* element)](#oh_abilitybase_getwantelement) | Obtains the Element struct, which consists of **bundleName**, **moduleName**, and **abilityName** in Want.|
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, const char* key, const char* value)](#oh_abilitybase_setwantcharparam) | Sets **Param** in Want.|
-| [AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, const char* key,char* value, size_t valueSize)](#oh_abilitybase_getwantcharparam) | Obtains **Param** in Want.|
+| [AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, const char* key, char* value, size_t valueSize)](#oh_abilitybase_getwantcharparam) | Gets the Want Param parameter. |
 | [AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const char* key, int32_t fd)](#oh_abilitybase_addwantfd) | Adds a Want file descriptor.|
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const char* key, int32_t* fd)](#oh_abilitybase_getwantfd) | Obtains a Want file descriptor.|
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const char* uri)](#oh_abilitybase_setwanturi) | Sets **uri** in Want.|
-| [AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* uri, size_t uriSize)](#oh_abilitybase_getwanturi) | Obtains **uri** set in Want. For details about the URI, see [uri in Want](js-apis-app-ability-want.md).|
+| [AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* uri, size_t uriSize)](#oh_abilitybase_getwanturi) | Gets the URI string in Want. For details about the URI, refer to the uri description in [Want](js-apis-app-ability-want.md#want). |
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t value)](#oh_abilitybase_setwantint32param) | Sets a value of the int32_t type in Want.|
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t* value)](#oh_abilitybase_getwantint32param) | Obtains a value of the int32_t type set in Want.|
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, const char* key, bool value)](#oh_abilitybase_setwantboolparam) | Sets a value of the bool type in Want.|
@@ -100,7 +101,7 @@ Destroys Want. Want cannot be used after being destroyed. Otherwise, undefined b
 
 | Type| Description|
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | One of the following execution results:<br>**ABILITY_BASE_ERROR_CODE_NO_ERROR**: Want is destroyed.<br>**ABILITY_BASE_ERROR_CODE_PARAM_INVALID**: **element** is invalid.|
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | Result code.<br>Returns ABILITY_BASE_ERROR_CODE_NO_ERROR if the Want is destroyed successfully.<br>Returns ABILITY_BASE_ERROR_CODE_PARAM_INVALID if the Want parameter is invalid. |
 
 ### OH_AbilityBase_SetWantElement()
 
@@ -171,7 +172,7 @@ Sets **Param** in Want. For details about **Param**, see [parameters in Want](js
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Parameter key name of the string in Want. |
 | const char* value | Pointer to the value of the key in Want.|
 
 **Returns**
@@ -183,7 +184,7 @@ Sets **Param** in Want. For details about **Param**, see [parameters in Want](js
 ### OH_AbilityBase_GetWantCharParam()
 
 ```c
-AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, const char* key,char* value, size_t valueSize)
+AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, const char* key, char* value, size_t valueSize)
 ```
 
 **Description**
@@ -198,7 +199,7 @@ Obtains **Param** set by [OH_AbilityBase_SetWantCharParam](#oh_abilitybase_setwa
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Key name of the string parameter in Want. |
 | char* value | Pointer to the value of the key in Want.|
 | size_t valueSize | Length of the value string. If **valueSize** is less than the actual value length, the [ABILITY_BASE_ERROR_CODE_PARAM_INVALID](capi-ability-base-common-h.md#abilitybase_errorcode) error is reported.|
 
@@ -216,7 +217,7 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 
 **Description**
 
-Adds a Want file descriptor. The file descriptor can be obtained through [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).
+Adds a file descriptor to the Want. The file descriptor can be obtained through [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).
 
 **Since**: 15
 
@@ -225,8 +226,8 @@ Adds a Want file descriptor. The file descriptor can be obtained through [fs.ope
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want |  Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
-| int32_t fd | File descriptor, which is obtained by calling [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).|
+| const char* key | String parameter key name in Want. |
+| int32_t fd | File descriptor, which can be obtained through [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen). |
 
 **Returns**
 
@@ -251,7 +252,7 @@ Obtains a Want file descriptor.
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Parameter key name of the string in Want. |
 | int32_t* fd | Pointer to the file descriptor.|
 
 **Returns**
@@ -268,7 +269,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 
 **Description**
 
-Sets **uri** in Want. For details about the URI, see [uri in Want](js-apis-app-ability-want.md).
+Sets the URI string in the Want. For details about the URI, refer to the uri description in [Want](js-apis-app-ability-want.md#want).
 
 **Since**: 17
 
@@ -277,7 +278,7 @@ Sets **uri** in Want. For details about the URI, see [uri in Want](js-apis-app-a
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* uri | Pointer to a URI. If a URI is specified in Want, Want will match the specified URI information. For details about the URI, see [uri in Want](js-apis-app-ability-want.md).|
+| const char* uri | URI. If a URI is specified in the Want, the Want matches the specified URI information. For details about the URI, see the uri description in [Want](js-apis-app-ability-want.md#want). |
 
 **Returns**
 
@@ -293,7 +294,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 
 **Description**
 
-Obtains **uri** set in Want. For details about the URI, see [uri in Want](js-apis-app-ability-want.md).
+Gets the URI string in the Want. For details about the URI, refer to the uri description in [Want](js-apis-app-ability-want.md#want).
 
 **Since**: 17
 
@@ -302,7 +303,7 @@ Obtains **uri** set in Want. For details about the URI, see [uri in Want](js-api
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| char* uri | Pointer to a URI. If a URI is specified in Want, Want will match the specified URI information. For details about the URI, see [uri in Want](js-apis-app-ability-want.md).|
+| char* uri | URI. If a URI is specified in a Want, the Want matches the specified URI information. For details about the URI, refer to the uri description in [Want](js-apis-app-ability-want.md#want). |
 | size_t uriSize | Length of the URI string. If **uriSize** is less than the actual URI length, the [ABILITY_BASE_ERROR_CODE_PARAM_INVALID](capi-ability-base-common-h.md#abilitybase_errorcode) error is reported.|
 
 **Returns**
@@ -329,7 +330,7 @@ Sets a value of the int32_t type in Want.
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Parameter key name of the int32_t value in a Want. |
 | int32_t value | Value of the int32_t type of the key.|
 
 **Returns**
@@ -355,7 +356,7 @@ Obtains a value of the int32_t type set in Want.
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Parameter key name of the int32_t value in a Want. |
 | int32_t* value | Pointer to the value of the int32_t type of the key.|
 
 **Returns**
@@ -381,7 +382,7 @@ Sets a value of the bool type in Want.
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Parameter key name of the bool value in Want. |
 | bool value | Value of the bool type of the key.|
 
 **Returns**
@@ -407,7 +408,7 @@ Obtains a value of the bool type set in Want.
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Parameter key name of the bool value in Want. |
 | bool* value | Pointer to the value of the bool type of the key.|
 
 **Returns**
@@ -433,7 +434,7 @@ Sets a value of the double type in Want.
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Parameter key name of the double value in Want. |
 | double value | Value of the double type of the key.|
 
 **Returns**
@@ -459,7 +460,7 @@ Obtains a value of the double type set in Want.
 | Name| Description|
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Pointer to Want.|
-| const char* key | Pointer to a key in Want.|
+| const char* key | Parameter key name of the double value in Want. |
 | double* value | Pointer to the value of the double type of the key.|
 
 **Returns**

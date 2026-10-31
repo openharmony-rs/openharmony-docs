@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 A result set is a set of results returned after the relational database (RDB) query APIs are called. You can use the **resultset** APIs to obtain required data.
@@ -12,7 +12,7 @@ A result set is a set of results returned after the relational database (RDB) qu
 > 
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are no longer maintained since API version 9. You are advised to use [@ohos.data.relationalStore#ResultSet](arkts-apis-data-relationalStore-ResultSet.md) instead.
+> The APIs of this module are no longer maintained since API version 9. You are advised to use [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) instead.
 
 ## ResultSet
 
@@ -22,14 +22,15 @@ Provides methods to access the result set, which is obtained by querying the RDB
 
 You need to obtain a **resultSet** object by using [RdbStore.query()](js-apis-data-rdb.md#query).
 
-```js
+```ts
 import dataRdb from '@ohos.data.rdb';
 let predicates = new dataRdb.RdbPredicates("EMPLOYEE");
 predicates.equalTo("AGE", 18);
 let promise = rdbStore.query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promise.then((resultSet) => {
-  console.log(TAG + "resultSet columnNames:" + resultSet.columnNames);
-  console.log(TAG + "resultSet columnCount:" + resultSet.columnCount);
+  console.info("resultSet columnNames:" + resultSet.columnNames);
+  console.info("resultSet columnCount:" + resultSet.columnCount);
+  resultSet.close();
 });
 ```
 
@@ -71,7 +72,7 @@ Obtains the column index based on the column name.
 
 **Example**
 
-```js
+```ts
 const success = resultSet.goToFirstRow();
 if (success) {
   const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
@@ -103,7 +104,7 @@ Obtains the column name based on the column index.
 
 **Example**
 
-```js
+```ts
 const id = resultSet.getColumnName(0);
 const name = resultSet.getColumnName(1);
 const age = resultSet.getColumnName(2);
@@ -131,14 +132,14 @@ Moves the result set forward or backward to the specified row with an offset rel
 
 **Example**
 
-```js
+```ts
 let predicatesgoto = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoto = rdbStore.query(predicatesgoto, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoto.then((resultSet) => {
   resultSet.goTo(1);
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -164,14 +165,14 @@ Moves the cursor to the specified row in the result set.
 
 **Example**
 
-```js
+```ts
 let predicatesgotorow = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygotorow = rdbStore.query(predicatesgotorow, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygotorow.then((resultSet) => {
   resultSet.goToRow(5);
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -187,18 +188,18 @@ Moves the cursor to the first row of the result set.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | **true** if the cursor is successfully moved to the first row in the result set; **false** otherwise.|
 
 **Example**
 
-```js
+```ts
 let predicatesgoFirst = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoFirst = rdbStore.query(predicatesgoFirst, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoFirst.then((resultSet) => {
   resultSet.goToFirstRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -214,18 +215,18 @@ Moves the cursor to the last row of the result set.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | **true** if the cursor is successfully moved to the last row of the result set; **false** otherwise.|
 
 **Example**
 
-```js
+```ts
 let predicatesgoLast = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoLast = rdbStore.query(predicatesgoLast, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoLast.then((resultSet) => {
   resultSet.goToLastRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -241,18 +242,18 @@ Moves the cursor to the next row in the result set.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | **true** if the cursor is successfully moved to the next row in the result set; **false** otherwise.|
 
 **Example**
 
-```js
+```ts
 let predicatesgoNext = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoNext = rdbStore.query(predicatesgoNext, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoNext.then((resultSet) => {
   resultSet.goToNextRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -268,18 +269,18 @@ Moves the cursor to the previous row in the result set.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | **true** if the cursor is successfully moved to the previous row in the result set; **false** otherwise.|
 
 **Example**
 
-```js
+```ts
 let predicatesgoPrev = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoPrev = rdbStore.query(predicatesgoPrev, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoPrev.then((resultSet) => {
   resultSet.goToPreviousRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -305,7 +306,7 @@ Obtains the value from the specified column in the current row as a byte array.
 
 **Example**
 
-```js
+```ts
 const codes = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
 ```
 
@@ -331,7 +332,7 @@ Obtains the value from the specified column in the current row as a string.
 
 **Example**
 
-```js
+```ts
 const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
 ```
 
@@ -357,7 +358,7 @@ Obtains the value from the specified column in the current row as a Long.
 
 **Example**
 
-```js
+```ts
 const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
 ```
 
@@ -379,11 +380,11 @@ Obtains the value from the specified column in the current row as a Double.
 
   | Type| Description|
   | -------- | -------- |
-  | number | Value in the specified column as a Double.|
+  | number | Value in the specified column as a double.|
 
 **Example**
 
-```js
+```ts
 const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
 ```
 
@@ -409,7 +410,7 @@ Checks whether the value in the specified column of the current row is null.
 
 **Example**
 
-```js
+```ts
 const isColumnNull = resultSet.isColumnNull(resultSet.getColumnIndex("CODES"));
 ```
 
@@ -423,12 +424,12 @@ Closes this result set.
 
 **Example**
 
-```js
+```ts
 let predicatesClose = new dataRdb.RdbPredicates("EMPLOYEE");
 let promiseClose = rdbStore.query(predicatesClose, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promiseClose.then((resultSet) => {
   resultSet.close();
 }).catch((err) => {
-  console.log('resultset close failed');
+  console.error('resultset close failed');
 });
 ```

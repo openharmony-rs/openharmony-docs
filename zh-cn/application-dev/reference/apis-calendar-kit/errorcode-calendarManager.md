@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -33,7 +33,7 @@ Parameter value error.
 
 **处理步骤**
 
-1. 检查参数字串长度是否超范围。
+1. 检查参数字符串长度是否超范围。
 
 2. 检查参数值是否超范围。
 
@@ -63,7 +63,7 @@ The specified account was not found.
 
 **错误信息**
 
-Internal program error.
+Internal program errors.
 
 **错误描述**
 
@@ -79,7 +79,7 @@ Internal program error.
 
 **处理步骤**
 
-内部异常，请稍后重试
+内部异常，请稍后重试。
 
 ## 23900005 该日程不支持编辑
 

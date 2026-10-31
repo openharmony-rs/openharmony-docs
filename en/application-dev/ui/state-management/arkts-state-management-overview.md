@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -18,7 +18,7 @@ In the declarative UI framework, the UI is the execution result of the applicati
 
 Custom components have variables. A variable must be decorated by a decorator whenever the re-rendering of the UI depends on this variable. Otherwise, the UI is rendered only at initialization and will not be updated. The following figure shows the relationship between the state and view (UI).
 
-![en-us_image_0000001562352677](figures/en-us_image_0000001562352677.png)
+![en-us_image_0000001562352677](figures/State-UI-relationship.png)
 
 - View (UI): UI rendering, which is visual representation of the UI description in the **build** method and \@Builder decorated method.
 
@@ -53,7 +53,7 @@ By data flow patterns and synchronization types, decorators can be categorized i
 
 The following figure illustrates the decorators. For details, see <!--RP1-->[@State Decorator: State Owned by Component](arkts-state.md)<!--RP1End--> and <!--RP2-->[Application State Management Overview](arkts-application-state-management-overview.md)<!--RP2End-->. You can use these decorators to implement linkage between data and the UI.
 
-![en-us_image_0000001502704640](figures/en-us_image_0000001502704640.png)
+![en-us_image_0000001502704640](figures/V1-Decorators.png)
 
 In the preceding figure, the decorators in the **Components** area are used for component-level state management, while others are used for application-level state management. Specifically, you can use [@StorageLink](arkts-appstorage.md#storagelink) or [@LocalStorageLink](arkts-localstorage.md#localstoragelink) to implement two-way synchronization for the application and component state, and [@StorageProp](arkts-appstorage.md#storageprop) or [@LocalStorageProp](arkts-localstorage.md#localstorageprop) to implement one-way synchronization.
 
@@ -93,13 +93,13 @@ In the preceding figure, the decorators in the **Components** area are used for 
 
 [$$ operator](arkts-two-way-sync.md): creates two-way binding between TypeScript variables and built-in component states.
 
-###  
+### Samples
 
- 
+The following sample is provided to help you better understand page status management:
 
--  
+- [State Management (ArkTS) (API 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/StateManagement)
 
--  
+- [Target Management (ArkTS) (API 9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TargetManagement)
 
 ## State Management V2
 
@@ -132,7 +132,7 @@ State management V2 adopts direct data observation, making the data itself obser
 
 State management of V2 provides a new set of decorators.
 
-- [\@ObservedV2](arkts-new-observedV2-and-trace.md): \@ObservedV2 allows for deep observation on the decorated classes. \@ObservedV2 and \@Trace are used in pairs to enable deep observation of properties in a class.
+- [\@ObservedV2](arkts-new-observedV2-and-trace.md): \@ObservedV2 is used to decorate a class, indicating that the class is an observable object but does not have the observation capability itself. \@ObservedV2 and \@Trace are used in pairs to enable deep observation of properties in a class.
 
 - [\@Trace](arkts-new-observedV2-and-trace.md): \@Trace is used to decorate a property in an \@ObservedV2 class, enabling the property to be observed.
 
@@ -159,7 +159,7 @@ State management of V2 provides a new set of decorators.
 | V1 Capability  | V2 Capability                                            | Description                                                        |
 | ------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
 | \@Observed   | \@ObservedV2                                           | Both mark an object as observable, but with key differences:<br>\@Observed is used to observe the top-level properties and requires \@ObjectLink to take effect.<br>\@ObservedV2 does not have the observation capability. It only marks a class as observable. To observe the class properties, use it together with \@Trace.|
-| \@Track      | \@Trace                                                | \@Track enables precise observation and can be used independently of @Observed. Without it, precise observation of class properties is unavailable.<br>\@Trace in V2 similarly enables precise tracking of decorated properties.|
+| \@Track      | \@Trace                                                | \@Track enables precise observation and can be used independently of @Observed. Without it, @Track does not provide precise observation for class properties.<br>\@Trace in V2 similarly enables precise tracking of decorated properties.|
 | \@Component  | \@ComponentV2                                          | \@Component is the decorator for custom components in V1.<br>@ComponentV2 is the decorator for custom components in V2.|
 | \@State      | \@Local (no external initialization)<br>\@Param and \@Once (one-time external initialization)| Both \@State and \@Local can work as data sources. The difference is that \@State can be initialized through external input, but \@Local cannot.|
 | \@Prop       | \@Param                                                | \@Prop and \@Param both represent parameters for custom components. For complex input types, \@Prop uses deep copying, while \@Param uses references.|

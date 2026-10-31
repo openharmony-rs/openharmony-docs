@@ -50,7 +50,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function startVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.start((err: BusinessError) => {
-    if (err.code) {
+    if (err) {
       console.error(`Failed to start the video output, error code: ${err.code}.`);
       return;
     }
@@ -332,7 +332,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 参数名     | 类型         | 必填 | 说明                                 |
 | -------- | ------------- | ---- | ----------------------------------- |
-| type     | string       | 是   | 监听事件，固定为'error'，photoOutput创建成功后可监听。 |
+| type     | string       | 是   | 监听事件，固定为'error'，videoOutput创建成功后可监听。 |
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
 **示例：**
@@ -466,7 +466,7 @@ getActiveProfile(): VideoProfile
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.Profile | undefined {
+function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.VideoProfile | undefined {
   let activeProfile: camera.VideoProfile | undefined = undefined;
   try {
     activeProfile = videoOutput.getActiveProfile();
@@ -510,7 +510,7 @@ enableMirror(enabled: boolean): void
 
 启用/关闭镜像录像。
 
-- 调用该接口前，需要通过[isMirrorSupported](#ismirrorsupported15)查询是否支录像镜像功能。
+- 调用该接口前，需要通过[isMirrorSupported](#ismirrorsupported15)查询是否支持录像镜像功能。
 
 - 启用/关闭录像镜像后，需要通过[getVideoRotation](#getvideorotation12)获取录像旋转角度以及[updateRotation](../apis-media-kit/arkts-apis-media-AVRecorder.md#updaterotation12)更新旋转角度。
 
@@ -584,6 +584,7 @@ getVideoRotation(deviceDegree?: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：12-22    |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -614,7 +615,7 @@ function testGetVideoRotationWithOutParam(videoOutput: camera.VideoOutput): came
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The videoOutput.testGetVideoRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The videoOutput.getVideoRotation call failed. error code: ${err.code}`);
   }
   return videoRotation;
 }

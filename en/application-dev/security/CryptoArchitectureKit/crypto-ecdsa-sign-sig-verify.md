@@ -6,14 +6,15 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:27:31.704Z pushedAt=2026-08-10T08:23:07.988Z -->
 
 For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-verify-overview.md#ecdsa).
 
 **Signing**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate a 256-bit key pair (**KeyPair**) using ECC.
-   
-   In addition to the example in this topic, [ECC](crypto-asym-key-generation-conversion-spec.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an ECC asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+
+   To generate an ECC asymmetric key, you can refer to the example below and read it together with [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to the differences when reading.
 
 2. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) with the string parameter **'ECC256|SHA256'** to create a **Sign** instance. The key type is **ECC256**, and the MD algorithm is **SHA256**.
 
@@ -36,7 +37,7 @@ For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-veri
 - Example (using asynchronous APIs):
 
   <!-- @[signature_verification_with_ecdsa_key_pair_ark_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_asynchronous.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -79,11 +80,10 @@ For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-veri
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[signature_verification_with_ecdsa_key_pair_ark_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -92,7 +92,7 @@ For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-veri
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   
-  function signMessagePromise(priKey: cryptoFramework.PriKey) {
+  function signMessageSync(priKey: cryptoFramework.PriKey) {
     let signAlg = 'ECC256|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
     signer.initSync(priKey);
@@ -101,7 +101,7 @@ For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-veri
     return signData;
   }
   
-  function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
+  function verifyMessageSync(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = 'ECC256|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     verifier.initSync(pubKey);
@@ -115,8 +115,8 @@ For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-veri
     let keyGenAlg = 'ECC256';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = generator.generateKeyPairSync();
-    let signData = signMessagePromise(keyPair.priKey);
-    let verifyResult = verifyMessagePromise(signData, keyPair.pubKey);
+    let signData = signMessageSync(keyPair.priKey);
+    let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
     if (verifyResult === true) {
       console.info('verify result: success.');
     } else {
@@ -124,3 +124,5 @@ For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-veri
     }
   }
   ```
+
+  <!--no_check-->

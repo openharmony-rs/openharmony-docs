@@ -4,7 +4,7 @@
 <!--Subsystem: AGC-->
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
-<!--Tester: @lusq-->
+<!--Tester: @hid12719688-->
 <!--Adviser: @HelloCrease-->
 
 本章节介绍如何拉起金融类应用扩展面板。
@@ -83,7 +83,7 @@ startAbilityByType接口中type字段为finance，对应的wantParam参数：
         | CreditCardRepayment      | 声明应用支持信用卡还款功能    |
    2. 设置scheme、host、port、path/pathStartWith属性，与Want中URI相匹配，以便区分不同功能。
 
-    ```json
+    ```json5
     {
       "abilities": [
           {

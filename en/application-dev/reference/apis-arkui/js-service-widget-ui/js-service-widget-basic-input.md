@@ -1,17 +1,18 @@
 # input
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9a5da59cdf4f4c3dc0f87035f85ddf06f80ecfc4 translatedAt=2026-07-31T01:13:54.154Z pushedAt=2026-07-31T12:04:26.591Z -->
 
-
-The **\<input>** component provides a radio button to receive user input. 
+The **\<input>** component provides a radio button to receive user input.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Attributes
 
@@ -20,15 +21,13 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | Name     | Type     | Default Value  | Mandatory  | Description                                      |
 | ------- | ------- | ----- | ---- | ---------------------------------------- |
 | type    | string  | radio | Yes   | Type of the **\<input>** component. Currently, only the radio button is supported.<br>- **radio**: a radio button that allows users to select one from multiple others with the same name.|
-| checked | boolean | false | No   | Whether the component is checked or not.                               |
+| checked | boolean | false | No   | Whether the component is selected. **true**: selected; **false**: not selected.                               |
 | name    | string  | -     | No   | Name of the **\<input>** component.                             |
-| value   | string  | -     | No   | Value of the **\<input>** component. When **type** is **radio**, this attribute is mandatory and the value must be unique for radio buttons with the same name. |
-
+| value   | string  | -     | No   | Value of the **\<input>** component. When **type** is **radio**, this attribute is mandatory and the value must be unique for radio buttons with the same name.|
 
 ## Styles
 
 The [universal styles](js-service-widget-common-styles.md) are supported.
-
 
 ## Events
 
@@ -37,9 +36,7 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
 | change | $event.checkedItem | Triggered when the **checked** status of a radio button changes. This event returns the value of the selected **\<input>** component.|
 | click  | -                  | Triggered when the component is clicked.                              |
 
-
 ## Example
-
 
 ```html
 <!-- xxx.hml -->
@@ -50,7 +47,6 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .content{
@@ -60,7 +56,6 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
   align-items: center;
 }
 ```
-
 
 ```json
 {
@@ -74,6 +69,7 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
   }
 }
 ```
+
 **4 x 4 widget**
 
 ![input](figures/input.gif)

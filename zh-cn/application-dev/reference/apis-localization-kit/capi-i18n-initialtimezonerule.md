@@ -3,7 +3,7 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
@@ -27,7 +27,7 @@ typedef struct InitialTimeZoneRule {...} InitialTimeZoneRule
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t rawOffset | 时区的原始偏移量。 |
-| int32_t dstSavings | 夏令时的偏移量。 |
+| int32_t rawOffset | 时区的原始偏移量，单位为毫秒（ms）。 |
+| int32_t dstSavings | 夏令时的偏移量，单位为毫秒（ms）。 |
 
 

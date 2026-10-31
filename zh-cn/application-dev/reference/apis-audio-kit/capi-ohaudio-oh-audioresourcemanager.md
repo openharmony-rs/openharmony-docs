@@ -7,12 +7,12 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioResourceManager OH_AudioResourceManager
+typedef struct OH_AudioResourceManager OH_AudioResourceManager;
 ```
 
 ## 概述
 
-声明音频资源管理器。用于管理音频资源相关功能。
+声明音频资源管理器。用于管理音频资源。
 
 **起始版本：** 20
 

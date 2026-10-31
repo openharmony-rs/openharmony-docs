@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_ContextCallback
 
 ## Overview
 
-Defines the event callback type.
+Provides an event callback type, which is used to define the callback function and its user-defined data. When an API of this type is called to trigger a callback, the callback is invoked and **userData** is passed as a parameter.
 
 **Since**: 12
 
@@ -26,14 +26,14 @@ Defines the event callback type.
 
 | Name| Description|
 | -- | -- |
-| void* userData | Custom type. The data of the custom type is passed as a parameter during callback.|
+| void* userData | Pointer to the user-defined data, which is passed as a parameter during callback.|
 
 
 ### Member Functions
 
 | Name| Description|
 | -- | -- |
-| [void (\*callback)(void* userData)](#callback) | Event callback.|
+| [void (\*callback)(void* userData)](#callback) | Pointer to the callback executed when an event is triggered. The user-defined data pointed to by **userData** is passed when the callback is invoked.|
 
 ## Member Function Description
 
@@ -46,4 +46,4 @@ void (*callback)(void* userData)
 **Description**
 
 
-Event callback.
+Pointer to the callback executed when an event is triggered. This callback does not return any value. When the callback is triggered, the user-defined data pointed to by **userData** is passed as a parameter to execute the custom processing logic. The specific triggering time is defined by the API of this type.

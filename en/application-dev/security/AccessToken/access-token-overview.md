@@ -15,7 +15,7 @@ To prevent improper or malicious use of data or functions, the system provides a
 
 All applications running on the system are deployed in independent sandbox directories, which isolate the data of different applications and prevent improper application behavior, such as unauthorized data access between applications and device tampering.
 
-The application sandbox ensures that only the intended application can access the data within the application, while also restricting the scope of data accessible to the application. For details, see [Application Sandbox Directory](../../file-management/app-sandbox-directory.md).
+The application sandbox ensures that only the intended application can access the in-application data, while also restricting the scope of data accessible to the application. For details, see [Application Sandbox Directory](../../file-management/app-sandbox-directory.md).
 
 ## Application Permissions
 

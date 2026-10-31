@@ -5,18 +5,16 @@
 <!--Owner: @yaoyao1798--> 
 <!--Designer: @yaoyao1798-->  
 <!--Tester: @yangjiayong2686--> 
-<!--Adviser: @yaoyao1798-->
+<!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=c41ee24119717ac6e011a5eb6c87ee4ac4914b0a translatedAt=2026-08-28T01:31:45.678Z pushedAt=2026-08-28T09:09:17.123Z -->
 
-**DownloadFileButton** is a download button that, when clicked, allows you to obtain the storage location of the current application in the public **Download** directory.
-
+A download file button that provides a unified style of download button in file download scenarios.
 
 > **NOTE**
 >
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
->
-> This component is not supported on wearables.
 
-##  Modules to Import
+## Modules to Import
 
 ```ts
 import { DownloadFileButton } from '@kit.ArkUI';
@@ -32,7 +30,9 @@ The [universal attributes](ts-component-general-attributes.md) are supported.
 
 ## DownloadFileButton
 
-Creates a download file button, which by default displays both an icon and text.
+DownloadFileButton({ contentOptions: DownloadContentOptions, styleOptions: DownloadStyleOptions })
+
+A download file button that provides a unified style of download button in file download scenarios.
 
 **Decorator**: @Component
 
@@ -42,8 +42,8 @@ Creates a download file button, which by default displays both an icon and text.
 
 | Name          | Type                                             | Mandatory| Decorator| Description                            |
 | -------------- | ------------------------------------------------- | ---- | ---------- | -------------------------------- |
-| contentOptions | [DownloadContentOptions](#downloadcontentoptions) | Yes  | @State     | Content options for creating the download file button.|
-| styleOptions   | [DownloadStyleOptions](#downloadstyleoptions)     | Yes  | @State     | Style options for creating the download file button.|
+| contentOptions | [DownloadContentOptions](#downloadcontentoptions) | Yes | @State | Content displayed on the download button. |
+| styleOptions   | [DownloadStyleOptions](#downloadstyleoptions)     | Yes  | @State     | Style options for the download button.|
 
 ## DownloadContentOptions
 
@@ -55,8 +55,8 @@ Defines the content displayed in the download file button.
 
 | Name| Type                                                        | Read-Only| Optional| Description                                                        |
 | ---- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| icon | [DownloadIconStyle](#downloadiconstyle) | No  | Yes  | Icon style of the download file button.<br>If this parameter is not specified, no icon is contained. Either **icon** or **text**, or both, must be set.|
-| text | [DownloadDescription](#downloaddescription) | No  | Yes  | Text on the download file button.<br>If this parameter is not specified, no text is contained. Either **icon** or **text**, or both, must be set.|
+| icon | [DownloadIconStyle](#downloadiconstyle) | No | Yes | Icon style of the download button.<br>Default value: not set. If this parameter is not passed, no icon is displayed. At least one of **icon** and **text** must be set; otherwise, the component cannot be displayed properly. |
+| text | [DownloadDescription](#downloaddescription) | No | Yes | Text description of the download button.<br>Default value: not set. If this parameter is not passed, no text description is displayed. At least one of **icon** and **text** must be set; otherwise, the component cannot be displayed properly. |
 
 ## DownloadStyleOptions
 
@@ -68,15 +68,15 @@ Defines the style of the icon and text in the download file button.
 
 | Name           | Type                                                        | Read-Only| Optional| Description                                                        |
 | --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| iconSize        | [Dimension](ts-types.md#dimension10)    | No  | Yes  | Icon size of the download file button. The value cannot be in percentage.<br>Default value: **16vp**           |
-| layoutDirection | [DownloadLayoutDirection](#downloadlayoutdirection) | No  | Yes  | Direction of the icon and text on the download file button.<br>Default value: **DownloadLayoutDirection.HORIZONTAL**|
-| fontSize        | [Dimension](ts-types.md#dimension10) | No  | Yes  | Font size of the download file button. The value cannot be in percentage.<br>Default value: **16fp**           |
-| fontStyle       | [FontStyle](ts-appendix-enums.md#fontstyle) | No  | Yes  | Font style of the download file button.<br>Default value: **FontStyle.Normal**             |
-| fontWeight      | number\|[FontWeight](ts-appendix-enums.md#fontweight)\|string | No  | Yes  | Font weight of the download file button. For the number type, the value ranges from 100 to 900, at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>Default value: **FontWeight.Medium**|
-| fontFamily      | string\|[Resource](ts-types.md#resource) | No  | Yes  | Font family of the download file button.<br> Default font: **'HarmonyOS Sans'**     |
-| fontColor       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Font color of the download file button.<br>Default value: **#ffffffff**                    |
-| iconColor       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Icon color of the download file button.<br>Default value: **#ffffffff**                    |
-| textIconSpace   | [Dimension](ts-types.md#dimension10) | No  | Yes  | Space between the icon and text on the download file button.<br> Default value: **4vp**                    |
+| iconSize | [Dimension](ts-types.md#dimension10) | No | Yes | Size of the icon on the download button. The percentage format is not supported. This attribute takes effect only when **contentOptions.icon** is set.<br>Default value: **16vp**<br>Unit: vp |
+| layoutDirection | [DownloadLayoutDirection](#downloadlayoutdirection) | No | Yes | Layout direction of the icon and text on the download button. This attribute takes effect only when both **contentOptions.icon** and **contentOptions.text** are set. <br>Default value: **DownloadLayoutDirection.HORIZONTAL** |
+| fontSize        | [Dimension](ts-types.md#dimension10) | No   | Yes   | Size of the text on the download button. The percentage format is not supported. This attribute takes effect only when **contentOptions.text** is set.<br>Default value: **16fp**<br>Unit: fp |
+| fontStyle | [FontStyle](ts-appendix-enums.md#fontstyle) | No | Yes | Style of the text on the download button. This attribute takes effect only when **contentOptions.text** is set. <br>Default value: **FontStyle.Normal** |
+| fontWeight | number\|[FontWeight](ts-appendix-enums.md#fontweight)\|string | No | Yes | Font weight of the text on the download button. This attribute takes effect only when **contentOptions.text** is set. For the number type, the value ranges from 100 to 900 at an interval of 100, and the default value is 400. A larger value indicates a heavier font weight. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in **FontWeight**. <br>Default value: **FontWeight.Medium** |
+| fontFamily | string\|[Resource](ts-types.md#resource) | No | Yes | Font of the text on the download button. This attribute takes effect only when **contentOptions.text** is set.<br> Default font: **'HarmonyOS Sans'**|
+| fontColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Color of the text on the download button. This attribute takes effect only when **contentOptions.text** is set.<br>Default value: **#ffffffff** |
+| iconColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Color of the icon on the download button. This attribute takes effect only when **contentOptions.icon** is set. <br>Default value: **#ffffffff** |
+| textIconSpace | [Dimension](ts-types.md#dimension10) | No | Yes | Spacing between the icon and text on the download button. This attribute takes effect only when both **contentOptions.icon** and **contentOptions.text** are set.<br> Default value: **4vp**<br>Unit: vp |
 
 ## DownloadIconStyle
 
@@ -91,11 +91,9 @@ Defines the icon style of the download file button.
 | FULL_FILLED | 1    | Filled style icon.|
 | LINES       | 2    | Line style icon.|
 
-
-
 ## DownloadDescription
 
-Defines the text on the download file button.
+Defines the description on the download button. Different text descriptions apply to different scenarios: **DOWNLOAD** is used for general file download scenarios, **DOWNLOAD_FILE** is used for download scenarios where the file object needs to be emphasized, the **SAVE** series is used for saving scenarios (such as saving images and saving files), **DOWNLOAD_AND_SHARE** is used for scenarios where sharing is required after download, and the **RECEIVE** series is used for file receiving scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -112,8 +110,6 @@ Defines the text on the download file button.
 | RECEIVE             | 7    | The text on the download file button is **Receive**.    |
 | CONTINUE_TO_RECEIVE | 8    | The text on the download file button is **Continue**.|
 
-
-
 ## DownloadLayoutDirection
 
 Defines the direction of the icon and text in the download file button.
@@ -124,8 +120,8 @@ Defines the direction of the icon and text in the download file button.
 
 | Name      | Value  | Description                                      |
 | ---------- | ---- | ------------------------------------------ |
-| HORIZONTAL | 0    | The icon and text on the download file button are horizontally arranged.|
-| VERTICAL   | 1    | The icon and text on the download file button are vertically arranged.|
+| HORIZONTAL | 0    | The icon and text on the download file button are arranged horizontally. |
+| VERTICAL   | 1    | The icon and text on the download file button are arranged vertically. |
 
 ## Events
 
@@ -160,7 +156,7 @@ struct Index {
           fontColor: '#ffffffff',
           iconColor: '#ffffffff',
           textIconSpace: '4vp'
-        }
+       }
       })
         .backgroundColor('#007dff')
         .borderStyle(BorderStyle.Dotted)
@@ -192,7 +188,9 @@ struct Index {
         }
         console.info(`downloadAction result:  ${JSON.stringify(result)}`);
       });
-    } catch (e) {
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      console.error(`downloadAction failed. Code: ${err.code}, message: ${err.message}`);
     }
   }
 }

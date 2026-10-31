@@ -1,12 +1,12 @@
 # SoundPool (音频池)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-音频池提供了短音频的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。
+音频池提供了短音频的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。SoundPool适用于游戏音效、UI交互音效、通知音等需要快速响应和低延迟播放的场景。
 
 SoundPool需要和@ohos.multimedia.media配合使用，需要先通过[media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10)完成音频池实例的创建。
 
@@ -32,11 +32,11 @@ import { audio } from '@kit.AudioKit';
 | 名称            | 类型                                     | 只读 | 可选 | 说明                                                         |
 | --------------- | ---------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | loop | number   | 否 | 是  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。<br>当loop为浮点数时只截取整数部分。                   |
-| rate | number    | 否 | 是  | 设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8)。默认值：0。 |
+| rate | number    | 否 | 是  | 设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8)。默认值：RENDER_RATE_NORMAL，对应枚举值0。 |
 | leftVolume  | number | 否 | 是  | 设置左声道音量。设置范围为[0.0, 1.0]，默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。                       |
 | rightVolume | number  | 否 | 是  | 设置右声道音量（当前不支持左右分别设置，将以左声道音量为准）。设置范围为[0.0, 1.0]，默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。 |
 | priority  | number  | 否 | 是  | 音频流播放的优先级。0为最低优先级，数值越大优先级越高。<br> 通过相互比较数值大小确定播放优先级，设置范围为大于等于0的整数。默认值为0。 <br> 当优先级为负数时自动设置为0，为浮点数时只截取整数部分。     |
-| pitch  | number  | 否 | 是  | 设置音频流播放的音调。设置范围为[0.25, 4.0]，默认值为1.0。<br>当音调超过边界值时自动设置为边界值。<br>**起始版本：** 26.0.0。<br>**模型约束：** 此接口仅可在Stage模型下使用。       |
+| pitch  | number  | 否 | 是  | 设置音频流播放的音调。设置范围为[0.25, 4.0]，默认值为1.0。<br>当音调超过边界值时自动设置为边界值。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。       |
 
 ## ErrorType<sup>20+</sup>
 
@@ -222,7 +222,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading uri');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundPool. Code: ${err.code}, message: ${err.message}');
+        console.error(`Failed to load soundPool. Code: ${err.code}, message: ${err.message}`);
       });
     }); // '/test_01.mp3' 作为样例，使用时需要传入文件对应路径。
   }
@@ -287,12 +287,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // 通过fileIo.stat()获取size值。
-    let uri: string = "";
     // 获取fd的描述信息，test_01.mp3不是rawfile目录资源下面的音频。
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
-      uri = 'fd://' + (file.fd).toString();
       soundPool.load(file.fd, 0, fileSize, (error: BusinessError, soundId_: number) => {
         if (error) {
           console.error(`Failed to load soundPool: Code: ${error.code}, message: ${error.message}`);
@@ -406,12 +404,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // 通过fileIo.stat()获取size值。
-    let uri: string = "";
     // 获取fd的描述信息，test_01.mp3不是rawfile目录资源下面的音频。
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
-      uri = 'fd://' + (file.fd).toString();
       soundPool.load(file.fd, 0, fileSize).then((soundId: number) => {
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
@@ -508,7 +504,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let soundID: number = 0;
     let streamID: number = 0;
     let playParameters: media.PlayParameters = {
-      loop: 3, // 循环3次。
+      loop: 3, // 实际播放4次（loop≥0时实际播放次数为loop+1）。
       rate: audio.AudioRendererRate.RENDER_RATE_NORMAL, // 正常倍速。
       leftVolume: 0.5, // range = 0.0-1.0
       rightVolume: 0.5, // range = 0.0-1.0
@@ -640,7 +636,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let soundID: number = 0;
     let streamID: number = 0;
     let playParameters: media.PlayParameters = {
-      loop: 3, // 循环4次。
+      loop: 3, // 实际播放4次（loop≥0时实际播放次数为loop+1）。
       rate: audio.AudioRendererRate.RENDER_RATE_NORMAL, // 正常倍速。
       leftVolume: 0.5, // range = 0.0-1.0。
       rightVolume: 0.5, // range = 0.0-1.0。
@@ -652,7 +648,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       console.info('Succeeded in playing soundpool');
       streamID = streamId;
     },(err: BusinessError) => {
-      console.error('Failed to play soundpool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to play soundpool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -791,7 +787,7 @@ setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| loop | number | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。 |
+| loop | number | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>当loop为浮点数时只截取整数部分。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当setLoop的回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -852,7 +848,7 @@ setLoop(streamID: number, loop: number): Promise\<void>
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| loop | number | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。|
+| loop | number | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>当loop为浮点数时只截取整数部分。|
 
 **返回值：**
 
@@ -1020,7 +1016,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setPriority(streamID, 1).then(() => {
       console.info('Succeeded in setting Priority soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1269,7 +1265,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setVolume(streamID, 0.5, 0.5).then(() => {
       console.info('Succeeded in setVolume soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to setVolume soundPool and catch error is ' + err.message);
+      console.error(`Failed to setVolume soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1294,7 +1290,9 @@ setInterruptMode(interruptMode: media.SoundInterruptMode): void
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
 // 创建soundPool实例。
 let soundPool: media.SoundPool;
@@ -1431,7 +1429,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.unload(soundID).then(() => {
       console.info('Succeeded in unload soundPool');
     }, (err: BusinessError) => {
-      console.error('Failed to unload soundPool and catch error is ' + err.message);
+      console.error(`Failed to unload soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1535,7 +1533,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.release().then(() => {
       console.info('Succeeded in releasing soundPool');
     }, (err: BusinessError) => {
-      console.error('Failed to release soundPool and catch error is ' + err.message);
+      console.error(`Failed to release soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1578,7 +1576,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool = soundPool_;
     console.info(`Succeeded in createSoundPool`);
     soundPool.on('loadComplete', (soundId: number) => {
-      console.info('Succeeded in loadComplete, soundId：' + soundId);
+      console.info('Succeeded in loadComplete, soundId: ' + soundId);
     })
   }
 });

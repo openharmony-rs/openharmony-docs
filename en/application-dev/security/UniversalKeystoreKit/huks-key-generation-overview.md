@@ -44,7 +44,7 @@ The key management service specifications include mandatory specifications and o
 **You are advised to use mandatory specifications in your development for compatibility purposes.**
 <!--DelEnd-->
 
-**Specifications****<!--RP1--> for standard devices<!--RP1End-->**
+**Specifications<!--RP1--> for standard devices<!--RP1End-->**
 
 | Algorithm| Supported Key Length (Bit)| API Version| <!--DelCol4-->Mandatory|
 | -------- | -------- | -------- | -------- |
@@ -64,13 +64,14 @@ The key management service specifications include mandatory specifications and o
 | SM4 | 128 | 9+ | Yes|
 | DES | 64 | 18+ | Yes|
 | 3DES | 128, 192| 18+ | Yes|
+| ML-DSA | Security parameter set: 44, 65, and 87| 26.0.0+ | Yes|
 
 > **NOTE**
 >
 > The DH algorithm uses the FFDHE named safe prime groups.
 > Use DES and 3DES algorithms only in certain cases; avoid them otherwise.
 
-**Specifications****<!--RP2--> for mini-system devices<!--RP2End-->**
+**Specifications<!--RP2--> for mini-system devices<!--RP2End-->**
 
 <!--Del-->
 Before implementing the specifications for mini-system devices, determine whether your device supports the related specifications.

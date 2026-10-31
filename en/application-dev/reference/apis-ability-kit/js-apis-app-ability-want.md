@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=84474fd67db0a73a342cb372b4641b984bfe4ab7 translatedAt=2026-09-03T10:39:30.621Z pushedAt=2026-09-05T10:47:30.459Z -->
 
 Want is a carrier for information transfer between objects (application components).
 
@@ -17,7 +18,10 @@ A typical scenario is when a UIAbility (for example, UIAbility A) needs to launc
 
 ## Constraints
 
-Launching an ability is subject to IPC limitations. The maximum data supported in the **Want** field is 100 KB.
+Due to IPC limitations, the **Want** field passed when launching an ability must meet the following requirements.
+
+- Starting from API version 23, the maximum data supported in the **Want** field is 200 KB.
+- In API version 22 and earlier, the maximum data supported in the **Want** field is 100 KB.
 
 ## Modules to Import
 
@@ -36,14 +40,14 @@ import { Want } from '@kit.AbilityKit';
 | deviceId    | string               | No| Yes| Device ID. It indicates the device ID of the target application in the application launch scenario. If not specified, it defaults to the current device.              |
 | bundleName   | string               | No| Yes | Bundle name of the application. It represents the bundle name of the target application in the application launch scenario.|
 | moduleName | string | No| Yes| Module name of the application. It represents the module name of the target application in the application launch scenario.<br>**NOTE**<br> If the ability belongs to a [HAR](../../quick-start/har-package.md) module, **moduleName** must be set to the name of the [HAP](../../quick-start/hap-package.md) or [HSP](../../quick-start/in-app-hsp.md) module that depends on this HAR.|
-| abilityName  | string               | No| Yes | Ability name of the application. It represents the ability name of the target application in the application launch scenario. If both **bundleName** and **abilityName** are specified in a Want object, the Want object can match a specific ability. The value of **abilityName** must be unique in an application.|
+| abilityName  | string               | No | Yes  | Name of the Ability component of the application. In the application startup scenario, indicates the name of the Ability component of the launched party. If both bundleName and abilityName are specified in the Want, the Want can directly match the specified Ability. The abilityName must be unique within an application. |
 | action | string               | No| Yes | Action to take, such as viewing and sharing application details. In implicit Want, you can define this field and use it together with **uri** or **parameters** to specify the operation to be performed on the data. For details about the definition and matching rules of implicit Want, see [Matching Rules of Explicit Want and Implicit Want](../../application-models/explicit-implicit-want-mappings.md).     |
 | entities | Array\<string> | No| Yes| Additional category information (such as browser and video player) of the ability. It is a supplement to the **action** field for implicit Want. and is used to filter ability types.|
 | uri | string | No| Yes| URI, which is used with **type** to specify the data type to be processed in the application launch scenario. If **uri** is specified in a Want, the Want will match the specified URI information, including **scheme**, **schemeSpecificPart**, **authority**, and **path**.|
-| type | string | No| Yes| MIME type, that is, the type of the file to open, for example, **'text/xml'** and **'image/*'**. For details about the MIME type definition, see [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com).|
-| parameters   | Record\<string, Object> | No| Yes | List of parameters in the Want object.<br>1. The values of the following keys are assigned by the system. Manual settings do not take effect, since the system automatically changes the values to the actual values during data transfer.<br>- **ohos.aafwk.param.callerPid**: PID of the caller. The value is a string.<br>- **ohos.aafwk.param.callerBundleName**: bundle name of the caller. The value is a string.<br>- **ohos.aafwk.param.callerAbilityName**: ability name of the caller. The value is a string.<br>- **ohos.aafwk.param.callerNativeName**: process name of the caller when the native method is called. The value is a string.<br>- **ohos.aafwk.param.callerAppId**: appId of the caller. The value is a string.<br>- **ohos.aafwk.param.callerAppIdentifier**: appIdentifier of the caller. The value is a string.<br>- **ohos.aafwk.param.callerToken**: token of the caller. The value is a string.<br>- **ohos.aafwk.param.callerUid**: UID in [BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1), that is, the application's UID in the bundle information. The value is a number.<br>- **ohos.param.callerAppCloneIndex**: clone index of the caller. The value is of the numeric type.<br>- **component.startup.newRules**: enabled status of the new control rule. The value is of the Boolean type.<br>- **moduleName**: module name of the caller. The value is a string.<br>- **ohos.ability.params.abilityRecoveryRestart**: support for ability restart upon fault recovery. The value is of the Boolean type.<br>- **ohos.extra.param.key.showMode**: mode to show the atomic service startup. The value is an enumerated value of [wantConstant.ShowMode](js-apis-app-ability-wantConstant.md#showmode12).<br><br>**NOTE**<br>In cross-device scenarios, the following fields do not take effect and cannot be used for identity or permission verification: **ohos.aafwk.param.callerPid**, **ohos.aafwk.param.callerToken**, and **ohos.aafwk.param.callerUid**.<br><br>2. Certain keys are defined by the system, and their values need to be manually assigned. For details about the keys and their values, see [wantConstant.Params](js-apis-app-ability-wantConstant.md#params)<!--Del--> and [wantConstant.Params (for System Applications Only)](js-apis-app-ability-wantConstant-sys.md#params)<!--DelEnd-->.<br><br>3. In addition to the foregoing cases, applications may further agree on the key-value pairs to transfer.<br><br>**NOTE**<br>For details about the constants of **Params** in **want**, see [wantConstant](js-apis-app-ability-wantConstant.md).<br>Note that a maximum of 100 KB data that can be transferred by using **WantParams**. If the data volume exceeds 100 KB, transfer data in [WriteRawDataBuffer](../apis-ipc-kit/js-apis-rpc.md#writerawdatabuffer11) or [uri](../apis-arkts/js-apis-uri.md) mode.<br>The values of **parameters** must be of the following basic data types: String, Number, Boolean, Object, undefined, and null. Functions in an object cannot be transferred.|
+| type | string | No | Yes | Indicates the MIME type description, that is, the type of the file to open. It is mainly used by the file manager to open files, for example, 'text/xml' and 'image/*'. For details about MIME, see [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com). |
+| parameters   | Record\<string, Object> | No | Yes  | Indicates the WantParams description.<br />1. The following keys are assigned by the system. Manual modification by developers does not take effect, and the system automatically changes them to the actual values during data transfer.<br />- ohos.aafwk.param.callerPid: indicates the PID of the launching party. Value is of string type.<br />- ohos.aafwk.param.callerBundleName: indicates the bundle name of the launching party. Value is of string type.<br />- ohos.aafwk.param.callerAbilityName: indicates the ability name of the launching party. Value is of string type.<br />- ohos.aafwk.param.callerNativeName: indicates the process name of the launching party in a native call. Value is of string type.<br />- ohos.aafwk.param.callerAppId: indicates the AppId information of the launched application. Value is of string type.<br />- ohos.aafwk.param.callerAppIdentifier: indicates the AppIdentifier information of the launched application. Value is of string type.<br />- ohos.aafwk.param.callerToken: indicates the token of the launching party. Value is of string type.<br />- ohos.aafwk.param.callerUid: indicates the UID in [BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1), that is, the UID of the application in the application package. Value is of number type.<br />- ohos.param.callerAppCloneIndex: indicates the clone index of the launching application. Value is of number type.<br />- component.startup.newRules: indicates whether to enable the new control rules. Value is of boolean type.<br />- moduleName: indicates the module name of the launched party. Value is of string type.<br />- ohos.ability.params.abilityRecoveryRestart: indicates whether the current Ability is restarted due to fault recovery. Value is of boolean type.<br />- ohos.extra.param.key.showMode: indicates the display mode for launching an Atomic Service. Value is of enum type [wantConstant.ShowMode](js-apis-app-ability-wantConstant.md#showmode12).<br/><br/>**Note:**<br/>In cross-device scenarios, the following three fields do not take effect and cannot be used for identity or permission verification: ohos.aafwk.param.callerPid, ohos.aafwk.param.callerToken, and ohos.aafwk.param.callerUid.<br /><br />2. Some keys defined by the system are provided for developers to assign values as needed. For details about the specific keys and their descriptions, see [wantConstant.Params](js-apis-app-ability-wantConstant.md#params)<!--Del--> and [wantConstant.Params (system applications only)](js-apis-app-ability-wantConstant-sys.md#params)<!--DelEnd-->.<br /><br />3. In addition to the preceding cases, applications can agree on key-value pairs to be passed between them.<br /><br />**Note:**<br/>For details about the constants for Params operations of Want, see [wantConstant](js-apis-app-ability-wantConstant.md).<br/>Note that the maximum amount of data that WantParams supports for transfer follows the [Want Constraints](#constraints). When the data amount exceeds the limit, use [WriteRawDataBuffer](../apis-ipc-kit/js-apis-rpc.md#writerawdatabuffer11) or [uri](../apis-arkts/js-apis-uri.md) to transfer data.<br/>The Value of parameters supports only the basic data types: String, Number, Boolean, Object, undefined, and null. Functions inside Object are not supported. |
 | flags | number | No| Yes| How the Want object will be handled. The value is of the enumeration type [Flags](js-apis-app-ability-wantConstant.md#flags). A numeric value should be passed by default.<br>For example, if the value is 0x00000001 (**wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION**), the receiver is temporarily granted the permission to read the data pointed to by the URI.|
-| fds<sup>15+</sup> | Record\<string, number> | Yes| Yes| File descriptor (FD). The FD written by the launcher in the application launch scenario is set to this parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| fds<sup>15+</sup> | Record\<string, number> | Yes | Yes | Indicates the set of file descriptors. In the application startup scenario, when the launching party passes a Want through [startAbility](js-apis-inner-application-uiAbilityContext.md#startability), the file descriptors must be passed in parameters as fixed key-value pairs. The launched party can obtain the file descriptors through this field. For details about how to use it, see the "File Descriptor (FD)" example.<br>**Atomic Service API**: Since API version 15, this API is supported in Atomic Services. |
 
 **Example**
 
@@ -209,6 +213,7 @@ import { Want } from '@kit.AbilityKit';
     * FD
 
         ```ts
+        // Launcher: Pass the file descriptor in parameters in the fixed key-value pair format {'type':'FD','value':fd}.
         import { UIAbility, Want } from '@kit.AbilityKit';
         import { window } from '@kit.ArkUI';
         import { BusinessError } from '@kit.BasicServicesKit';
@@ -231,7 +236,9 @@ import { Want } from '@kit.AbilityKit';
               abilityName: 'FuncAbility',
               moduleName: 'entry', // moduleName is optional.
               parameters: {
-                'keyFd': { 'type': 'FD', 'value': fd } // {'type':'FD', 'value':fd} is a fixed usage, indicating that the data is a file descriptor.
+                // keyFd is a custom key. The launched party uses this key to find the corresponding value.
+                // {'type':'FD','value':fd} is a fixed key-value pair, where fd is the file descriptor passed by the developer.
+                'keyFd': { 'type': 'FD', 'value': fd }
               }
             };
 
@@ -244,10 +251,34 @@ import { Want } from '@kit.AbilityKit';
         }
         ```
 
+        ```ts
+        // Launched party: Obtain the file descriptor passed by the launcher through want.fds.
+        import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
+        import { fileIo } from '@kit.CoreFileKit';
+
+        export default class FuncAbility extends UIAbility {
+          onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+            let fd: number = -1;
+            // Obtain the file descriptor passed by the launcher from want.fds. The keyFd must be consistent with the key used by the launcher when passing it.
+            const fds = want.fds;
+            if (fds && fds.keyFd !== undefined) {
+              fd = fds.keyFd;
+            }
+            // Check whether the file descriptor is valid (a non-negative integer indicates validity). If it is invalid, log an error and exit immediately to avoid a crash caused by using an invalid fd later.
+            if (fd < 0) {
+              console.error(`Failed to get fd from want.fds`);
+              return;
+            }
+            // ...
+            fileIo.closeSync(fd); // Close the file descriptor after use to avoid file descriptor leakage.
+          }
+        }
+        ```
+
     * **parameters** usage: **parameters** carries custom parameters. It is transferred by UIAbilityA to UIAbilityB and obtained from UIAbilityB.
 
         ```ts
-        // (1) UIAbilityA calls startAbility to start UIAbilityB.
+        // (1) UIAbilityA starts UIAbilityB through startAbility.
         import { UIAbility, Want } from '@kit.AbilityKit';
         import { window } from '@kit.ArkUI';
         import { BusinessError } from '@kit.BasicServicesKit';

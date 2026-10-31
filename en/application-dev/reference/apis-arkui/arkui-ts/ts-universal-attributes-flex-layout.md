@@ -2,22 +2,27 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=386d3d79d27becb231d4edf5e42d9c56a63599cb translatedAt=2026-09-01T12:31:34.809Z -->
 
-The flex layout enables flexible arrangement, alignment, and space distribution among child components within a container. It allows elements to dynamically expand or shrink based on available space, meeting responsive layout requirements across different screen sizes.
+The flex layout provides flexible component arrangement and alignment capabilities, dynamically allocating space among child components within a container so that elements automatically expand or shrink based on available space. It is suitable for responsive UI layouts, dynamic content layouts, and complex layout implementations, and it resolves issues of traditional layouts such as difficulty in adapting to multiple devices, layout misalignment caused by content changes, and complex alignment requirements that are hard to fulfill.
 
 >  **NOTE**
->  - The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - Supported since API version 7. For newly added APIs in later versions, the earliest API version is marked with a superscript.
 >
->  - [GridRow](ts-container-gridrow.md) supports only [alignSelf](#alignself), but [Flex](ts-container-flex.md), [Column](ts-container-column.md), and [Row](ts-container-row.md) supports the following four attributes.
+> - **flexBasis**: Sets the base size of a component, which serves as the initial reference value for layout and takes precedence over width/height.
+> - **flexGrow**: Defines the expansion ratio of a component when the parent container has remaining space. The remaining space is allocated according to the flexGrow ratio of each component.
+> - **flexShrink**: Defines the shrink ratio of a component when the parent container runs out of space. The excess size is distributed according to the flexShrink ratio of each component.
+> - flexBasis sets the base size, flexGrow controls the expansion behavior, and flexShrink controls the shrink behavior. The three can be used individually or in combination.
+> - The following four attributes take effect only when the parent component is [Flex](ts-container-flex.md), [Column](ts-container-column.md), [Row](ts-container-row.md), or [DynamicLayout](ts-container-dynamiclayout.md). When the parent component is [GridRow](ts-container-gridrow.md), setting [alignSelf](#alignself) takes effect.
 
 ## flexBasis
 
 flexBasis(value: number | string): T
 
-Sets the base size of the component.
+Sets the base size of a component. This attribute can be set only when the component is a child of a Flex, Column, Row, or DynamicLayout container. After it is set, the component uses this base size as its initial size in layout calculation. When the parent container is Column or Row, you must set the size along the main axis. When the main axis size (width/height/size) is not set, Column and Row still follow the default layout behavior and adapt to the child component size on the main axis, which may affect the effect of flexBasis.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -29,19 +34,20 @@ Sets the base size of the component.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | Yes  | Base size of the component in the main axis of the parent container.<br>Default value: **'auto'** (indicating that the base size of the component in the main axis is the original size of the component)<br>For the string type, the value must be a string that can be converted into a number (for example, **'10'**), a string that includes a length unit (for example, **'10px'**), or the literal string **'auto'**; percentage-based strings are not supported.<br>For the number type, the value range is (0, +∞), and the unit is vp.<br>Invalid values are treated as the default value **'auto'**.|
+| value  | number&nbsp;\|&nbsp;string | Yes   | Base size of the component on the main axis of the parent container.<br>Default value: 'auto' (indicating that the base size of the component on the main axis is the original size of the component).<br>string type: percentage strings are not allowed. Optional values: a string that can be converted to a number (for example, '10'), a string with a length unit (for example, '10px'), or 'auto'. If a string that does not meet the requirements is passed in, the default value 'auto' is used.<br>number: value range (0, +∞), in vp (virtual pixel).<br>When an invalid value is set, this attribute is processed as the default value 'auto'.<br>[constraintSize](ts-universal-attributes-size.md#constraintsize) restricts the size range of the component. When the base size set by flexBasis exceeds the restriction range of constraintSize, it is constrained by constraintSize. |
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-|  T | Current component.|
+|  T | Current component, used for chained calls. |
 
 ## flexGrow
 
+
 flexGrow(value: number): T
 
-Sets the percentage of the parent container's remaining space that is allocated to the component.
+Sets the proportion of the component in the remaining space of the parent container. This attribute can be set only when the component is a child of a Flex, Column, Row, or DynamicLayout container. After it is set, the component expands according to the ratio to occupy the remaining space of the parent container. When the parent container is Column or Row, you must set the size along the main axis. When the main axis size (width/height/size) is not set, Column and Row still follow the default layout behavior and adapt to the child component size on the main axis, which may affect the remaining space allocation effect of flexGrow. Setting this attribute triggers a second layout. In scenarios with strict performance requirements, use [layoutWeight](ts-universal-attributes-size.md#layoutweight) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -53,23 +59,23 @@ Sets the percentage of the parent container's remaining space that is allocated 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Percentage of the parent container's remaining space that is allocated to the component.<br>Value range: [0, +∞).<br>Default value: **0**<br>If this parameter is set to an invalid value, the default value will be used.|
+| value  | number | Yes   | Sets the proportion of the remaining space in the parent container along the main axis (horizontal for row layout and vertical for column layout) allocated to the component where this attribute resides. The value 0 means the component does not participate in the allocation of remaining space and keeps its original size. When the value is greater than 0, the remaining space of the parent container is allocated proportionally; the larger the value, the more space is allocated.<br>Value range: [0, +∞)<br>Default value: 0<br>When the parent container is [Column](ts-container-column.md) or [Row](ts-container-row.md), you need to set the size along the main axis ([width](ts-universal-attributes-size.md#width)/[height](ts-universal-attributes-size.md#height)/[size](ts-universal-attributes-size.md#size)); otherwise, the remaining space allocation effect of flexGrow may be affected.<br>[constraintSize](ts-universal-attributes-size.md#constraintsize) restricts the size range of the component. When the component size after flexGrow expansion exceeds the maximum limit of constraintSize, it is constrained by constraintSize.<br>When an invalid value is set, this attribute takes the default value. |
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-|  T | Current component.|
+|  T | Current component, used for chained calls. |
 
 ## flexShrink
 
 flexShrink(value: number): T
 
-Sets the percentage of the parent container's shrink size that is allocated to the component. When the parent container is **Column** or **Row**, you must set the size along the main axis.
+Sets the proportion of the shrink size allocated to the component where this attribute resides when the parent container runs out of space. This attribute can be set only when the component is a child of a Flex, Column, Row, or DynamicLayout container. When the parent container is Column or Row, the parent container must set the size along the main axis (that is, width/height/size) for flexShrink to take effect. When the main axis size (width/height/size) is not set, Column and Row still follow the default layout behavior and adapt to the child component size on the main axis, in which case flexShrink does not take effect. Setting this attribute triggers a second layout. In scenarios with strict performance requirements, use [layoutWeight](ts-universal-attributes-size.md#layoutweight) instead.
 
 >  **NOTE**
 >
->  When [getInspectorByKey](ts-universal-attributes-component-id.md#getinspectorbykey9) is used to obtain the **flexShrink** attribute, if the node does not have **flexShrink** set, the default value of **1** is returned by default.
+>  When [getInspectorByKey](ts-universal-attributes-component-id.md#getinspectorbykey9) is used to obtain the flexShrink attribute, if the node does not have flexShrink set, 1 is returned by default (consistent with the default value of the Flex container, but different from the default value 0 of the Column and Row containers).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -79,21 +85,22 @@ Sets the percentage of the parent container's shrink size that is allocated to t
 
 **Parameters**
 
+<!--Table: auto; 10%; 10%; auto-->
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Percentage of the parent container's shrink size that is allocated to the component.<br>If the parent container is [Column](ts-container-column.md) or [Row](ts-container-row.md), the default value is **0**, and the value range is (0, +∞).<br> If the parent container is [Flex](ts-container-flex.md), the default value is **1**.<br>[constraintSize](ts-universal-attributes-size.md#constraintsize) limits the component's size range. For [Column](ts-container-column.md) and [Row](ts-container-row.md) components without explicit main axis size specified (through [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), or [size](ts-universal-attributes-size.md#size)), the default layout behavior (adapt-to-fit child components) applies, even when [constraintSize](ts-universal-attributes-size.md#constraintsize) is configured. In this case, **flexShrink** has no effect.<br>If this parameter is set to an invalid value, the default value will be used.|
+| value  | number | Yes   | Sets the proportion of the compressed size allocated to the component to which this attribute belongs when the parent container space is insufficient. The value 0 indicates that the component does not participate in compression; when the value is greater than 0, compression is performed proportionally, and a larger value indicates a larger compression amount.<br>When the parent container is [Column](ts-container-column.md) or [Row](ts-container-row.md), default value: 0, value range: [0, +∞).<br>When the parent container is [Flex](ts-container-flex.md), default value: 1, value range: [0, +∞).<br>[constraintSize](ts-universal-attributes-size.md#constraintsize) restricts the size range of the component. Even if [constraintSize](ts-universal-attributes-size.md#constraintsize) is set for [Column](ts-container-column.md) and [Row](ts-container-row.md), when the main axis size ([width](ts-universal-attributes-size.md#width)/[height](ts-universal-attributes-size.md#height)/[size](ts-universal-attributes-size.md#size)) is not set in the parent container, the default layout behavior is still followed, and the component size is adapted to the children on the main axis. In this case, flexShrink does not take effect.<br>When an exception value is set, this attribute uses the default value.|
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-|  T | Current component.|
+|  T | Current component, used for chained calls. |
 
 ## alignSelf
 
 alignSelf(value: ItemAlign): T
 
-Sets the alignment mode of the child components along the cross axis of the parent container.
+The alignment mode of the child component along the cross axis (the direction perpendicular to the main axis) of the parent container. After it is set, it overrides the alignItems setting of the parent container. This attribute is supported only by Flex, Column, Row, DynamicLayout, and GridRow containers.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -105,13 +112,13 @@ Sets the alignment mode of the child components along the cross axis of the pare
 
 | Name| Type                                       | Mandatory| Description                                                        |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ItemAlign](ts-appendix-enums.md#itemalign) | Yes  | Alignment mode of the child components along the cross axis of the parent container. The setting overwrites the **alignItems** setting of the parent container ([Flex](ts-container-flex.md), [Column](ts-container-column.md), [Row](ts-container-row.md), or [GridRow](ts-container-gridrow.md)).<br>[GridCol](./ts-container-gridcol.md) can have the **alignSelf** attribute bound to change its own layout along the cross axis.<br>Default value: **ItemAlign.Auto**|
+| value  | [ItemAlign](ts-appendix-enums.md#itemalign) | Yes   | Alignment format of the child component on the cross axis of the parent container, which overrides the alignItems setting in the [Flex](ts-container-flex.md), [Column](ts-container-column.md), [Row](ts-container-row.md), [DynamicLayout](ts-container-dynamiclayout.md), and [GridRow](ts-container-gridrow.md) layout containers. Use it when a child component needs a different alignment from other child components in the parent container (typical scenarios: most child components in the parent container are center-aligned, but a specific child component needs top or bottom alignment; or a special alignment needs to be specified for a single child component).<br>[GridCol](./ts-container-gridcol.md) can bind the alignSelf attribute to change its own layout in the cross axis direction.<br>Default value: ItemAlign.Auto (indicates inheriting the alignment setting of the parent container) |
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-|  T | Current component.|
+|  T | Current component, used for chained calls. |
 
 ## Example
 

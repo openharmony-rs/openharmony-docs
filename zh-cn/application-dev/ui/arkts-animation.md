@@ -1,15 +1,15 @@
 # 动画概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
 UI（用户界面）是用户与设备进行交互的界面，包含各种可视化组件（如按钮、列表等）。属性作为接口，用于控制组件的行为，属性值的变化会引起UI的变化。动画可在UI发生改变时，添加流畅的过渡效果，使属性值从起始状态逐渐变化到终点状态，避免因瞬间变化造成的突兀感，保持用户的视觉焦点。
 
-![zh-cn_image_20230822](figures/zh-cn_image_20230822.gif)
+![zh-cn_image_20230822](figures/Animation-what.gif)
 
 动画的目的包括：
 
@@ -40,7 +40,7 @@ ArkUI中提供多种动画接口（[属性动画](arkts-attribute-animation-over
 
 - [动画衔接](arkts-animation-smoothing.md)：介绍如何实现动画与动画之间、手势与动画之间的自然过渡。
 
-- [动画效果](arkts-blur-effect.md)：介绍模糊、大阴影和颜色渐变等高阶效果接口的使用方法。
+- [动态模糊](arkts-blur-effect.md)：介绍模糊、大阴影和颜色渐变等高阶效果接口的使用方法。
 
 - [帧动画](arkts-animator.md)：系统侧提供在动画过程中的插值结果，由开发者每帧修改属性值产生动画，相比于属性动画，有可实现暂停的优点，但性能不如属性动画。
 

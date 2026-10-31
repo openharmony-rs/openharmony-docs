@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-10-29T08:58:30.552Z pushedAt=2026-10-30T03:02:40.530Z nl=1 -->
 
 
 The **&lt;slider&gt;** component is used to quickly adjust settings, such as the volume and brightness. For details, see [slider](../reference/apis-arkui/arkui-js/js-components-basic-slider.md).
@@ -36,12 +37,12 @@ Create a **&lt;slider&gt;** component in the .hml file under **pages/index**.
 ```
 
 
-![en-us_image_0000001232162312](figures/en-us_image_0000001232162312.gif)
+![slider-Component](figures/slider-Component.gif)
 
 
 ## Setting Styles and Attributes
 
-Use the **&lt;slider&gt;** component to set the background color, selected color, and slider color using the **color**, **selected-color**, and **block-color** attributes, respectively.
+The slider component uses the color, scrollbar-color, and background-color styles to set the background color, scrollbar color, and background color of the slider, respectively.
 
 
 ```html
@@ -69,7 +70,7 @@ Use the **&lt;slider&gt;** component to set the background color, selected color
 }
 ```
 
-![en-us_image_0000001232003000](figures/en-us_image_0000001232003000.gif)
+![Styles-and-Attributes](figures/Styles-and-Attributes.gif)
 
 Add the **min**, **max**, **value**, **step**, and **mode** attributes to set the minimum value, maximum value, initial value, step, and style of the slider.
 
@@ -94,13 +95,13 @@ Add the **min**, **max**, **value**, **step**, and **mode** attributes to set th
 }
 ```
 
-![en-us_image_0000001276003517](figures/en-us_image_0000001276003517.gif)
+![Styles-and-Attributes-1](figures/Styles-and-Attributes-1.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > The **mode** attribute indicates the slider style. The options are as follows:
 >
-> - **outset**: The slider is on the sliding bar.
+> - **outset**: The slider is on the slider bar.
 >
 > - **inset**: The slider is inside the sliding bar.
 
@@ -158,7 +159,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001275803169](figures/en-us_image_0000001275803169.gif)
+![Binding-Events-4](figures/Binding-Events-4.gif)
 
 
 ## Example Scenario
@@ -170,7 +171,7 @@ Adjust the value of the slider to change the image size and dynamically print th
 <!-- xxx.hml -->
 <div class="container">
   <image src="common/landscape3.jpg" style=" width: {{WidthVal}}px;height:{{HeightVal}}px;margin-top: -150px;"></image>
-  <div class="txt">
+  <div class="text">
     <slider min="0" max="100" value="{{value}}" onchange="setValue"></slider>
     <text>The width of this picture is {{WidthVal}}</text>
     <text>The height of this picture is {{HeightVal}}</text>
@@ -212,9 +213,18 @@ export default{
   },
   setValue(e) {
     this.WidthVal = 200 + e.value;
-    this.HeightVal = 200 + e.value
+    this.HeightVal = 200 + e.value;
   }
 }
 ```
 
-![en-us_image_0000001275922997](figures/en-us_image_0000001275922997.gif)
+![Example-Scenario-15](figures/Example-Scenario-15.gif)
+
+
+## Samples
+
+The following samples are provided to help you better understand how to develop **slider**:
+
+- [Using slider Components (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/SliderApplication)
+
+- [Simple Video Player (ArkTS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)

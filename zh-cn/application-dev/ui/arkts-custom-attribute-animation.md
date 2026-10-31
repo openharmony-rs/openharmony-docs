@@ -1,8 +1,8 @@
 # 自定义属性动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -37,7 +37,7 @@ struct AnimatablePropertyExample {
         .animation({ duration: 2000, curve: Curve.Ease }) // 第三步:为自定义可动画属性接口绑定动画。
       Button('Play')
         .onClick(() => {
-          this.textWidth = this.textWidth == 80 ? 160 : 80; // 第四步：改变自定义可动画属性的参数，产生动画。
+          this.textWidth = this.textWidth === 80 ? 160 : 80; // 第四步：改变自定义可动画属性的参数，产生动画。
         })
     }
     .width('100%')
@@ -47,7 +47,7 @@ struct AnimatablePropertyExample {
 ```
 
 
-![zh-cn_image_0000001600119626](figures/zh-cn_image_0000001600119626.gif)
+![animation-frame](figures/animation-frame.gif)
 
 
 ## 使用自定义数据类型改变图形形状
@@ -195,7 +195,7 @@ struct AnimatedShape {
 ```
 
 
-![zh-cn_image_0000001592669598](figures/zh-cn_image_0000001592669598.gif)
+![animation-shape](figures/animation-shape.gif)
 
 ## 相关实例
 

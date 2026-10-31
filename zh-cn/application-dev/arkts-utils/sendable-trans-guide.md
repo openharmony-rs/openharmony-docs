@@ -1,26 +1,34 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Sendable对象改造实践：使用TurboTrans三方库实现TurboTransJSON序列化反序列化、TurboTransProtobuf编解码并生成Sendable对象，结合makeObserved将Sendable对象转换为观察对象驱动UI实时更新。"
+keywords: [Sendable改造, TurboTrans, TurboTransJSON, TurboTransProtobuf, makeObserved, 可观察对象, UI实时更新]
+doctype: guide
+status: active
+---
+
 # Sendable对象改造实践
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
-本文介绍[TurboTransJSON](https://gitcode.com/openharmony-sig/turbo_trans)工具中@hadss/turbo-trans-json（下文简称**turbotransJSON**）与@hadss/turbo-trans-protobuf（下文简称**turbotransProtobuf**）在ArkTS中操作Sendable对象的典型用法：
+本文介绍[TurboTrans](https://gitcode.com/openharmony-sig/turbo_trans)三方库中@hadss/turbo-trans-json（下文简称**TurboTransJSON**）与@hadss/turbo-trans-protobuf（下文简称**TurboTransProtobuf**）在ArkTS中操作Sendable对象的典型用法：
 
-- 使用**turbotransJSON**将JSON字符串反序列化为对象，并转换为Sendable对象在并发实例间传递，适用于将普通对象或JSON字符串转换为Sendable对象，详细可参考[使用turbotransJSON序列化/反序列化并生成Sendable对象](#使用turbotransjson序列化反序列化并生成sendable对象)。
-- 使用**turbotransProtobuf**通过.proto生成@Sendable的消息类，并进行编码/解码，详细可参考[使用turbotransProtobuf生成Sendable对象并编解码](#使用turbotransprotobuf生成sendable对象并编解码)。
-- 使用turbotransJSON或turbotransProtobuf转换生成Sendable对象后，如果还需要绑定UI进行组件刷新的话，可以阅读[使用makeObserved将Sendable对象转换为可观察对象](#使用makeobserved将sendable对象转换为可观察对象)章节。
+- 使用**TurboTransJSON**将JSON字符串反序列化为对象，并转换为Sendable对象在并发实例间传递，适用于将普通对象或JSON字符串转换为Sendable对象，详细可参考[使用TurboTransJSON序列化/反序列化并生成Sendable对象](#使用turbotransjson序列化反序列化并生成sendable对象)。
+- 使用**TurboTransProtobuf**通过.proto生成@Sendable的消息类，并进行编码/解码，详细可参考[使用TurboTransProtobuf生成Sendable对象并编解码](#使用turbotransprotobuf生成sendable对象并编解码)。
+- 使用TurboTransJSON或TurboTransProtobuf转换生成Sendable对象后，如果还需要绑定UI进行组件刷新的话，可以阅读[使用makeObserved将Sendable对象转换为可观察对象](#使用makeobserved将sendable对象转换为可观察对象)章节。
 
 ## 使用TurboTrans三方库操作Sendable对象
 
-### 使用turbotransJSON序列化/反序列化并生成Sendable对象
+### 使用TurboTransJSON序列化/反序列化并生成Sendable对象
 
 1. 环境配置
 
-   引入TurboTransJSONPlugin和TurboTransJSON三方库。
+   引入TurboTrans三方库。
 
    <!-- @[transferableObject_jsonPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigor/hvigor-config.json5) -->
    
@@ -39,7 +47,7 @@
 
    插件生效还需在工程根目录hvigorfile.ts添加相关插件配置。
 
-   <!-- @[transferableObject_configPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigorfile.ts) -->
+   <!-- @[transferableObject_configPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigorfile.ts) --> 
    
    ``` TypeScript
    import { turboTransJsonPlugin } from '@hadss/turbo-trans-json-plugin';
@@ -50,13 +58,9 @@
      system: appTasks, /* Built-in plugin of Hvigor. It cannot be modified. */
      plugins: [
        turboTransJsonPlugin(hvigor, {
-         ignoreModuleNames: ['TurboTransCore' , 'TurboTransJSON',  'PerformanceBaseline','TurboTransProtobuf'], // 忽略的模块
+         ignoreModuleNames: ['TurboTransCore', 'TurboTransJSON', 'PerformanceBaseline', 'TurboTransProtobuf'], // 忽略的模块
          scanDir: ['src/main/ets'], // 扫描目录
          deserializationMode: 'performance', // 反序列化模式
-         importRewrite: {
-           scanPaths: ['src/main/ets', 'src/ohosTest/ets'],
-           preserveOriginalImports: false
-         }
        }),
      ]       /* Custom plugin to extend the functionality of Hvigor. */
    }
@@ -65,15 +69,17 @@
 
 2. 定义可序列化模型。
    
-   通过@Serializable装饰器标记需序列化的类，添加generateSendable: true属性，并利用`@SerialName()`完成属性的定制化配置，其中：
+   通过@Serializable装饰器标记需序列化的类，添加generateSendable属性，并利用`@SerialName()`完成属性的定制化配置，其中：
    
    - `@Serializable({ generateSendable: true })`：表示需要生成与该模型对应的Sendable类型与转换方法。
    - `@SerialName({ name: 'xxx' })`：将类属性与JSON字段名绑定。
 
-     <!-- @[transferableObject_Layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets) -->
+     <!-- @[transferableObject_Layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets) --> 
      
      ``` TypeScript
+     // 本文件在工程中的路径：entry/src/main/ets/turbotrans_JSON/layout.ets
      import { Serializable, SerialName } from '@hadss/turbo-trans-core';
+     import { collections } from '@kit.ArkTS';
      // ...
      
      @Serializable({ generateSendable: true})
@@ -83,18 +89,25 @@
        @SerialName({ name: 'arr'})
        public arr: number[] = [];
      }
+     
+     @Sendable
+     export class LayoutS {
+       public type: string = '';
+       public arr: collections.Array<number> = new collections.Array();
+     }
      ```
 
 3. 从JSON字符串反序列化为普通对象（TJSON.fromString）。
 
    使用`TJSON.fromString<Model>(jsonStr, Model)`从JSON字符串反序列化为普通对象，可用`ArkTSUtils.isSendable(obj)`进行校验。工程示例演示了两种输入来源，并在反序列化后继续将普通对象转换为Sendable对象，形成“JSON字符串 -> 普通对象 -> Sendable对象”的前半段链路。
 
-   - testJSON1方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
-   - testJSON2方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
+   - testJSON1()方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
+   - testJSON2()方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
 
-     <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) -->
+     <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) --> 
      
      ``` TypeScript
+     // 本文件在工程中的路径：entry/src/main/ets/turbotrans_JSON/test1.ets
      import { TJSON } from '@hadss/turbo-trans-json';
      import { Layout, LayoutS } from 'entry/ets/turbotrans_JSON/layout';
      import type { ITSerializable } from '@hadss/turbo-trans-json';
@@ -106,7 +119,7 @@
        obj.arr = [3, 4];
        let str = JSON.stringify(obj);
        let layoutNormal = TJSON.fromString<Layout>(str, Layout);
-       console.info('111 layout arr: ' + layoutNormal.arr);
+       console.info('testJSON1 layout arr: ' + layoutNormal.arr);
        let layoutSendable = (layoutNormal as object as ITSerializable).toSendable();
        if (ArkTSUtils.isSendable(layoutSendable)) {
          console.info('expect layout from JSON string is Sendable');
@@ -120,7 +133,7 @@
      export function testJSON2(): LayoutS {
        let layoutStr = '{"type":"Text","arr":[3,4]}';
        let layoutNormal = TJSON.fromString<Layout>(layoutStr, Layout);
-       console.info('222 layout arr: ' + layoutNormal.arr);
+       console.info('testJSON2 layout arr: ' + layoutNormal.arr);
        let layoutSendable = (layoutNormal as object as ITSerializable).toSendable();
        if (ArkTSUtils.isSendable(layoutSendable)) {
          console.info('expect layout from simple string is Sendable');
@@ -130,18 +143,15 @@
        let layoutS = layoutSendable as LayoutS;
        return layoutS;
      }
-     
-     export function testJSON() {
-       testJSON1();
-       testJSON2();
-     }
      ```
 
 4. 将普通对象转换为Sendable对象（toSendable）。
 
-   当`generateSendable: true`生效后，构建产物中会生成`toSendable()`，将普通对象转换为Sendable对象。其关键点在于会对普通对象做必要的容器转换，例如把`number[]`转换为`collections.Array<number>`。以下代码为编译时工具自动生成的，文件位于entry/src/generated目录下。
+   当`generateSendable: true`生效后，构建产物中会生成`toSendable()`，将普通对象转换为Sendable对象。其关键点在于会对普通对象做必要的容器转换，例如把`number[]`转换为`collections.Array<number>`。以下代码为编译时工具自动生成的，文件位于entry/src/generated/ets/turbotrans_JSON目录下。
 
    ``` TypeScript
+   import { collections } from '@kit.ArkTS';
+
    toSendable(): SendableLayout {
      const sendable = new SendableLayout();
    
@@ -153,7 +163,7 @@
    }
    ```
 
-   同时，生成的Sendable类型通常会提供`toOrigin()`，用于在需要继续按普通对象处理、复用原有逻辑或重新序列化时，将Sendable对象还原为普通对象。以下代码为编译时工具自动生成的，文件位于entry/src/generated目录下。
+   同时，生成的Sendable类型通常会提供`toOrigin()`，用于在需要继续按普通对象处理、复用原有逻辑或重新序列化时，将Sendable对象还原为普通对象。以下代码为编译时工具自动生成的，文件位于entry/src/generated/ets/turbotrans_JSON目录下。
 
    ``` TypeScript
    @Sendable
@@ -174,11 +184,11 @@
 
    JSON字符串 -> `TJSON.fromString()` -> 普通对象 -> `toSendable()` -> Sendable对象 -> `toOrigin()` -> 普通对象。
 
-### 使用turbotransProtobuf生成Sendable对象并编解码
+### 使用TurboTransProtobuf生成Sendable对象并编解码
 
 1. 环境配置
 
-   引入TurboTransProtobufPlugin和TurboTransProtobuf三方库。
+   引入TurboTrans三方库。
 
    ```ts
    "dependencies": {
@@ -204,7 +214,7 @@
      system: appTasks, /* Built-in plugin of Hvigor. It cannot be modified. */
      plugins: [
        turboTransProtobufPlugin({
-         saveDir: 'src/main/ets/protobuf',
+         saveDir: 'src/main/ets/protobuf', // 保存生成代码的目录
          ignoreModuleNames: ['TurboTransCore', 'PerformanceBaseline', 'TurboTransProtobufCommon'], // 忽略的模块
          sendable: true, // 是否开启sendable
          debug: false, // 是否开启debug
@@ -250,7 +260,7 @@
 
 4. 创建Sendable消息对象并进行编码与解码。
 
-   使用生成类提供的encode/decode完成二进制序列化/反序列化并且解码后得到的消息对象仍可继续作为Sendable对象向后传递。test_pb经过编解码后仍然保留Sendable特性，因此也可以像JSON路径生成的Sendable对象一样，继续作为并发任务的返回值进入UI绑定流程。以下示例中testProtobuf方法先创建test_pb实例，再编码为二进制，最后解码回test_pb并校验其仍为Sendable对象。
+   使用生成类提供的encode()/decode()完成二进制序列化/反序列化并且解码后得到的消息对象仍可继续作为Sendable对象向后传递。test_pb经过编解码后仍然保留Sendable特性，因此也可以像JSON路径生成的Sendable对象一样，继续作为并发任务的返回值进入UI绑定流程。以下示例中testProtobuf()方法先创建test_pb实例，再编码为二进制，最后解码回test_pb并校验其仍为Sendable对象。
 
    ```ts
    import { test_pb } from '../protobuf/test_pb'
@@ -271,7 +281,7 @@
      obj.value_float = 11;
      obj.value_double = 12;
      obj.value_bool = true;
-     obj.value_string = "TestProtobuf_Success";
+     obj.value_string = `TestProtobuf_Success`;
      obj.value_bytes?.fill(13);
    
      if (ArkTSUtils.isSendable(obj)) {
@@ -287,19 +297,20 @@
    
    function testdecode(data: ArrayBuffer | collections.ArrayBuffer) {
      let obj = test_pb.decode(data);
-     console.info("expect value_int32 " + obj?.value_int32 + " = 1");
-     console.info("expect value_double " + obj?.value_double + " = 12");
+     console.info(`expect value_int32 ${obj?.value_int32} = 1`);
+     console.info(`expect value_double ${obj?.value_double} = 12`);
      if (ArkTSUtils.isSendable(obj)) {
        console.info("decode a sendable object");
      }
    }
    
-   export function testProtobuf() {
+   export function testProtobuf(): test_pb {
      let obj = testCreate();
      let buf = testencode(obj);
      if (buf) {
        testdecode(buf);
      }
+     return obj;
    }
    ```
 
@@ -307,8 +318,42 @@
 
 使用[UIUtils.makeObserved()](../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)方法可以将Sendable对象转换为可观察对象。
 
+- 定义并发任务。
 - 使用`taskpool.execute()`获取并发任务返回的Sendable对象，再通过`UIUtils.makeObserved()`转为可观察对象。
 - 当可观察对象的属性发生变化时，绑定的UI组件会自动刷新显示。
+
+### 定义并发任务
+
+定义observeJSON1与observeJSON2并发任务
+
+<!-- @[transferableObject_observeJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/concurrentFunc.ets) -->
+
+``` TypeScript
+import { LayoutS } from '../turbotrans_JSON/layout';
+import { testJSON1, testJSON2 } from '../turbotrans_JSON/test1';
+
+@Concurrent
+export function observeJSON1(): LayoutS {
+  return testJSON1();
+}
+
+@Concurrent
+export function observeJSON2(): LayoutS {
+  return testJSON2();
+}
+```
+
+定义observeProtobuf并发任务
+
+``` TypeScript
+import { testProtobuf } from '../turbotrans_protobuf/test1'
+import { test_pb } from '../protobuf/test_pb'
+
+@Concurrent
+export function observeProtobuf(): test_pb {
+  return testProtobuf();
+}
+```
 
 ### 通过taskpool执行异步任务并将Sendable对象转换为可观察对象
 
@@ -326,13 +371,23 @@ runTests() {
 }
 ```
 
+执行observeProtobuf并发任务返回Sendable对象工程示例如下：
+
+``` TypeScript
+runTestsPb() {
+  taskpool.execute(observeProtobuf).then((res) => {
+    this.pb = UIUtils.makeObserved(res as test_pb);
+  })
+}
+```
+
 ### 创建UI组件实时观察Sendable对象属性变化
 
 Index.ets中通过`@Local`状态保存任务返回值，再由Text组件绑定`pb.value_string`和`layout.type`。其中，pb存储的是observeProtobuf返回的Sendable对象（test_pb类型），layout存储的是observeJSON1返回的Sendable对象（LayoutS类型）。
 
 observeJSON1返回的Sendable对象工程示例如下：
 
-<!-- @[transferableObject_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[transferableObject_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { LayoutS } from '../turbotrans_JSON/layout';
@@ -344,6 +399,8 @@ import { UIUtils } from '@kit.ArkUI';
 @ComponentV2
 struct Index {
   @Local message: string = 'Hello World';
+  // 替换成 pb: test_pb = test_pb.create(); 则用于observeProtobuf返回Sendable对象的场景
+  // @Local pb: test_pb = test_pb.create();
   @Local layout: LayoutS = new LayoutS();
 
   build() {
@@ -368,60 +425,6 @@ struct Index {
 
           Text(`TestJSON: ${this.layout.type}`)
             .fontSize(24)
-            .textAlign(TextAlign.Start)
-            .backgroundColor(Color.White)
-            .padding(10)
-            .borderRadius(8)
-            .margin({ bottom: 10 })
-            .width('100%')
-        }
-        .width('100%')
-        .padding(10)
-      }
-      .height('60%')
-      .width('100%')
-    }
-    .height('100%')
-    .width('100%')
-    .padding(20)
-    .backgroundColor('#F5F5F5')
-  }
-
-// ...
-}
-```
-
-observeProtobuf返回的Sendable对象工程示例如下：
-
-``` TypeScript
-@Entry
-@ComponentV2
-struct Index {
-  @Local message: string = 'Hello World';
-  @Local pb: test_pb = test_pb.create();
-
-  build() {
-    Column() {
-      Text(this.message)
-        .id('HelloWorld')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-        .margin({ top: 20 })
-
-      Button('运行TaskPool测试')
-        .width('80%')
-        .height(50)
-        .margin({ top: 20, bottom: 20 })
-        .onClick(() => {
-          this.runTests();
-        })
-        .id('button')
-
-      Scroll() {
-        Column() {
-
-          Text(`TestProtobuf: ${this.pb.value_string}`)
-            .fontSize(14)
             .textAlign(TextAlign.Start)
             .backgroundColor(Color.White)
             .padding(10)

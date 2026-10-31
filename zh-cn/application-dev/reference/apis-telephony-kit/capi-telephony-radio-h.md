@@ -8,7 +8,7 @@
 
 ## 概述
 
-为网络搜索模块定义C接口。
+为网络搜索模块定义C接口，提供获取移动网络状态（包括网络注册状态、运营商信息、网络制式等）的能力，适用于应用需要查询当前卡槽网络连接状态的场景。
 
 **引用文件：** <telephony/core_service/telephony_radio.h>
 
@@ -52,7 +52,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | 用户接收网络状态信息的结构体。 |
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | 用于接收网络状态信息的结构体。 |
 
 **返回：**
 
@@ -82,7 +82,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Teleph
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t slotId | 卡槽ID。 |
-| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | 用户接收网络状态信息的结构体。 |
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) *state | 用于接收网络状态信息的结构体。 |
 
 **返回：**
 

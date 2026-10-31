@@ -15,6 +15,8 @@
 
 - [密钥协商](huks-key-agreement-overview.md)。
 
+- [密钥封装](huks-kem-overview.md)。
+
 - [密钥派生](huks-key-derivation-overview.md)。
 
 本章节提供了以上常用密钥操作的示例，这部分示例均没有设置二次身份访问控制，如设置了密钥访问控制请参考[用户身份认证访问控制](huks-identity-authentication-overview.md)。
@@ -27,7 +29,7 @@ HUKS基于密钥会话来操作数据，使用密钥时基于以下流程：
 
 1. （必选）初始化密钥会话[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)。
 
-   传入密钥别名和密钥操作参数，初始化一个密钥会话并获取会话句柄。其中密钥操作参数必须包含对应密码算法所必须的参数，包括密码算法、密钥大小、密钥目的、工作模式、填充模式、散列模式、IV、NONCE、AAD等。
+   传入密钥别名和密钥操作参数，初始化一个密钥会话并获取会话句柄。其中密钥操作参数必须包含对应密码算法所必需的参数，包括密码算法、密钥大小、密钥目的、工作模式、填充模式、散列模式、IV、NONCE、AAD等。
 
 2. （可选）分段操作数据[updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)。
 

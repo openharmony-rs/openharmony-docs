@@ -53,7 +53,7 @@ The file declares the native APIs provided by the LowPowerVideoSink. You can use
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnError onError, void* userData)](#oh_lowpowervideosinkcallback_seterrorlistener) | Sets an error listener for an OH_LowPowerVideoSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnRenderStarted onRenderStarted, void* userData)](#oh_lowpowervideosinkcallback_setrenderstartlistener) | Sets a render start listener for an OH_LowPowerVideoSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnStreamChanged onStreamChanged, void* userData)](#oh_lowpowervideosinkcallback_setstreamchangedlistener) | Sets a stream change listener for an OH_LowPowerVideoSinkCallback instance.|
-| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)](#oh_lowpowervideosinkcallback_setfirstframedecodedlistener) | Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.|
+| [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)](#oh_lowpowervideosinkcallback_setfirstframedecodedlistener) | Sets a first-frame decoded listener for an OH_LowPowerVideoSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnEos onEos, void* userData)](#oh_lowpowervideosinkcallback_seteoslistener) | Sets an end-of-stream listener for an OH_LowPowerVideoSinkCallback instance.|
 
 ## Function Description
@@ -74,7 +74,7 @@ Creates an OH_LowPowerVideoSink instance.
 
 | Name| Description|
 | -- | -- |
-| const char* mime | Pointer to the MIME type of the video decoder. For details about the available options, see [AVCODEC_MIME_TYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
+| const char* mime | Pointer to the MIME type of the video decoder. For details about the available options, see [OH_AVCODEC_MIMETYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
@@ -430,7 +430,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetSyncAudioSink(OH_LowPowerVideoSink* videoSi
 
 **Description**
 
-Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_LowPowerVideoSink instance.
+Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_LowPowerVideoSink instance. This function must be called before **OH_LowPowerVideoSink_Prepare**.
 
 **Since**: 20
 
@@ -729,7 +729,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 
 **Description**
 
-Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.
+Sets a first-frame decoded listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
@@ -738,7 +738,7 @@ Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)* callback | Pointer to an OH_LowPowerVideoSinkCallback instance.|
-| [OH_LowPowerVideoSink_OnFirstFrameDecoded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onfirstframedecoded) onFirstFrameDecoded | OH_LowPowerVideoSink_OnFirstFrameReady, which is invoked when the first frame is ready in the OH_LowPowerVideoSink instance.|
+| [OH_LowPowerVideoSink_OnFirstFrameDecoded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_onfirstframedecoded) onFirstFrameDecoded | **OH_LowPowerVideoSink_OnFirstFrameDecoded** method, which is called when the first frame is successfully decoded.|
 | void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
 **Returns**

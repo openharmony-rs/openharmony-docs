@@ -1,8 +1,8 @@
 # ArkUI_AnimatorOnFrameEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_AnimatorOnFrameEvent ArkUI_AnimatorOnFrameEvent
 
 ## 概述
 
-定义animator接收到帧时回调对象。
+定义animator动画播放过程中逐帧回调的事件数据对象。
 
 **起始版本：** 12
 

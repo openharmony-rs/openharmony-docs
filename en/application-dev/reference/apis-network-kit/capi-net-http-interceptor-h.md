@@ -6,13 +6,18 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b3dc5073b0d12510b7528f1bae4daf72268ec42d translatedAt=2026-09-23T01:14:57.451Z pushedAt=2026-09-24T06:00:14.094Z -->
 
 ## Overview
 
-Defines the APIs of the HTTP global interceptor module. With interceptors, you can monitor HTTP mobile data and implement the logging feature.
+Defines the APIs of the HTTP global interceptor module, which includes read-only interceptors and writable interceptors. With global read-only interceptors, you can monitor all HTTP requests initiated by the application through supported system network components to implement the logging feature. With global writable interceptors, you can add custom logic to modify the request headers, response headers, and response bodies of HTTP requests initiated by the application through supported system network components.
 
+- Read-only interceptors are supported since API version 24. Writable interceptors are supported since API version 26.0.0.
 - **Restrictions on read-only interceptors**: Do not modify the request and response content or release the pointer in a read-only interceptor. Even if you modify the content, the modification will not take effect on the request, but may affect the subsequent read-only interceptors' reading of the data packet content. In addition, setting **OH_ABORT** in a read-only interceptor will not take effect.
-- **Supported components**: Currently, the global interceptor supports [@ohos.net.http](../../reference/apis-network-kit/js-apis-http.md), [net_http.h](capi-net-http-h.md), [rcp](https://developer.huawei.com/consumer/en/doc/harmonyos-references/remote-communication-rcp) and [@ohos.request.cacheDownload](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md).
+- **Supported components**:
+  - Read-only interceptors currently support [@ohos.net.http](../../reference/apis-network-kit/js-apis-http.md), [net_http.h](capi-net-http-h.md), [rcp](https://developer.huawei.com/consumer/en/doc/harmonyos-references/remote-communication-rcp), and [@ohos.request.cacheDownload](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md).
+  - Writable interceptors currently support [@ohos.net.http](../../reference/apis-network-kit/js-apis-http.md) and [net_http.h](capi-net-http-h.md).
+
 - **Trigger conditions**:
   - The intermediate process of automatic redirection is not intercepted (only the final response is exposed).
   - The response when a cache hit occurs is not intercepted (because there is no actual network request).
@@ -34,6 +39,7 @@ Defines the APIs of the HTTP global interceptor module. With interceptors, you c
 | Name| Description|
 | -- | -- |
 | [int32_t OH_Http_AddReadOnlyInterceptor(struct OH_Http_Interceptor *interceptor)](#oh_http_addreadonlyinterceptor) | Adds a global read-only HTTP interceptor.|
+| [int32_t OH_Http_AddWritableInterceptor(struct OH_Http_Interceptor *interceptor)](#oh_http_addwritableinterceptor) | Adds a global writable interceptor for HTTP. |
 | [int32_t OH_Http_RemoveInterceptor(struct OH_Http_Interceptor *interceptor)](#oh_http_removeinterceptor) | Removes a specified global HTTP interceptor.|
 | [int32_t OH_Http_RemoveAllInterceptors(int32_t groupId)](#oh_http_removeallinterceptors) | Removes all HTTP interceptors of a specified group ID.|
 | [int32_t OH_Http_StartAllInterceptors(int32_t groupId)](#oh_http_startallinterceptors) | Enables all HTTP interceptors of a specified group ID.|
@@ -50,14 +56,43 @@ int32_t OH_Http_AddReadOnlyInterceptor(struct OH_Http_Interceptor *interceptor)
 
 Adds a global read-only HTTP interceptor.
 
-- Currently, only the read-only response interceptor (**OH_STAGE_RESPONSE**) is supported.
-- Once an interceptor is added, it remains effective until you explicitly remove it.
-- To release resources, you must call [OH_Http_RemoveInterceptor](#oh_http_removeinterceptor) to remove a single interceptor or call [OH_Http_RemoveAllInterceptors](#oh_http_removeallinterceptors) to remove all interceptors in a group.
-- If the member variable **enabled** of the interceptor [OH_Http_Interceptor](capi-netstack-http-interceptor.md) is **0**, you need to call [OH_Http_StartAllInterceptors](#oh_http_startallinterceptors) to start the interceptor.
+- Currently, only read-only response (OH_STAGE_RESPONSE) interceptors are supported.
+- After an interceptor is added, it takes effect continuously. You need to explicitly call APIs to release resources. You can call [OH_Http_RemoveInterceptor](#oh_http_removeinterceptor) to remove a single interceptor, or call [OH_Http_RemoveAllInterceptors](#oh_http_removeallinterceptors) to remove an entire interceptor group to release resources.
+- On-demand startup control is supported. If the **enabled** property of the interceptor [OH_Http_Interceptor](capi-netstack-http-interceptor.md) is set to **0**, the interceptor will not start immediately after the add API is called. You need to call [OH_Http_StartAllInterceptors](#oh_http_startallinterceptors) later to enable the interceptor. If the **enabled** property is set to **1**, you can also call [OH_Http_StopAllInterceptors](#oh_http_stopallinterceptors) to disable the interceptor.
 
 **System capability**: SystemCapability.Communication.NetStack
 
+**Required permissions:** ohos.permission.INTERNET
+
 **Since**: 24
+
+**Parameters**
+| Name| Description|
+| -- | -- |
+| [struct OH_Http_Interceptor](capi-netstack-http-interceptor.md) *interceptor | Pointer to the [OH_Http_Interceptor](capi-netstack-http-interceptor.md) struct, which is the interceptor to add. |
+
+**Returns**
+| Type| Description|
+| -- | -- |
+| int32_t | If the return value is **0**, the execution is successful. If the return value is **201**, the permission is denied. If the return value is **401**, the parameter is incorrect (for example, the pointer is **nullptr**, or the added interceptor type is not supported). For details about the error codes, see [OH_HTTP_RESULT_OK](capi-net-http-type-h.md#http_errcode), [OH_HTTP_PERMISSION_DENIED](capi-net-http-type-h.md#http_errcode), and [OH_HTTP_PARAMETER_ERROR](capi-net-http-type-h.md#http_errcode). |
+
+### OH_Http_AddWritableInterceptor()
+
+```c
+int32_t OH_Http_AddWritableInterceptor(struct OH_Http_Interceptor *interceptor)
+```
+**Description**
+
+Adds a global writable HTTP interceptor.
+
+- After an interceptor is added, it takes effect continuously. You need to explicitly call APIs to release resources. You can call [OH_Http_RemoveInterceptor](#oh_http_removeinterceptor) to remove a single interceptor, or call [OH_Http_RemoveAllInterceptors](#oh_http_removeallinterceptors) to remove an entire interceptor group to release resources.
+- On-demand startup control is supported. If the **enabled** property of the interceptor [OH_Http_Interceptor](capi-netstack-http-interceptor.md) is set to **0**, the interceptor will not start immediately after the add API is called. You need to call [OH_Http_StartAllInterceptors](#oh_http_startallinterceptors) later to enable the interceptor. If the **enabled** property is set to **1**, you can also call [OH_Http_StopAllInterceptors](#oh_http_stopallinterceptors) to disable the interceptor.
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Required permissions:** ohos.permission.INTERNET
+
+**Since:** 26.0.0
 
 **Parameters**
 | Name| Description|
@@ -79,6 +114,8 @@ int32_t OH_Http_RemoveInterceptor(struct OH_Http_Interceptor *interceptor)
 Removes a specified global HTTP interceptor.
 
 **System capability**: SystemCapability.Communication.NetStack
+
+**Required permissions:** ohos.permission.INTERNET
 
 **Since**: 24
 
@@ -107,6 +144,8 @@ Removes all HTTP interceptors of a specified group ID.
 
 **System capability**: SystemCapability.Communication.NetStack
 
+**Required permissions:** ohos.permission.INTERNET
+
 **Since**: 24
 
 **Parameters**
@@ -131,6 +170,8 @@ Enables all HTTP interceptors of a specified group ID.
 - Call [OH_Http_StopAllInterceptors](#oh_http_stopallinterceptors) to stop the interceptors.
 
 **System capability**: SystemCapability.Communication.NetStack
+
+**Required permissions:** ohos.permission.INTERNET
 
 **Since**: 24
 
@@ -157,6 +198,8 @@ Disables all HTTP interceptors of a specified group ID.
 
 **System capability**: SystemCapability.Communication.NetStack
 
+**Required permissions:** ohos.permission.INTERNET
+
 **Since**: 24
 
 **Parameters**
@@ -168,3 +211,4 @@ Disables all HTTP interceptors of a specified group ID.
 | Type| Description|
 | -- | -- |
 | int32_t | If the return value is **0**, the execution is successful. If the return value is **201**, the permission is denied. For details about the error codes, see [OH_HTTP_RESULT_OK](capi-net-http-type-h.md#http_errcode) and [OH_HTTP_PERMISSION_DENIED](capi-net-http-type-h.md#http_errcode).|
+

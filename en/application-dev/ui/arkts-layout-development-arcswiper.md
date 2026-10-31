@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **ArcSwiper** is an arc carousel component designed specifically for circular screens, allowing you to display content in an arc layout. For details, see [ArcSwiper](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md).
@@ -96,28 +96,30 @@ The **ArcSwiper** component supports four page switching modes: swiping with fin
     ArcSwiper,
     ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
     ArcSwiperController,
-  // ···
+    // ...
   } from '@kit.ArkUI';
-  // ···
-  @Entry
+  // ...
+  
+  // To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+  // @Entry
   @Component
   export struct ArcSwiperToggle {
     private wearableSwiperController: ArcSwiperController = new ArcSwiperController();
   
     build() {
-      // ···
+      // ...
         Column({ space: 12 }) {
-          // ···
+          // ...
             Stack() {
               ArcSwiper(
                 this.wearableSwiperController
               ) {
-              // ···
+                // ...
               }
               .vertical(true)
               .indicator(false)
   
-              // ···
+              // ...
   
   
               Column() {
@@ -146,9 +148,9 @@ The **ArcSwiper** component supports four page switching modes: swiping with fin
                 })
               }.width('100%').height('100%')
             }
-          // ···
+            // ...
         }
-      // ···
+        // ...
     }
   }
   ```
@@ -234,13 +236,11 @@ import { Decimal } from '@kit.ArkTS';
 import {
   ArcSwiper,
   ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
-  ArcDotIndicator,
-  ArcDirection,
-  ArcSwiperController
 } from '@kit.ArkUI';
-// ···
+// ...
 
-@Entry
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct ArcSwiperAction {
   private MIN_SCALE: number = 0.1;
@@ -256,9 +256,9 @@ export struct ArcSwiperAction {
   }
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
           ArcSwiper() {
             ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
               Text(index.toString())
@@ -286,10 +286,10 @@ export struct ArcSwiperAction {
               }
             }
           })
-        // ···
+          // ...
       }
       .width('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -306,22 +306,20 @@ The swipe gesture of the **ArcSwiper** component may conflict with the swipe-to-
 import {
   ArcSwiper,
   ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
-  ArcDotIndicator,
-  ArcDirection,
-  ArcSwiperController
 } from '@kit.ArkUI';
-// ···
+// ...
 
-@Entry
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct ArcSwiperSideSlip {
   @State backgroundColors: Color[] = [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.Gray, Color.Orange];
   innerSelectedIndex: number = 0;
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
           ArcSwiper() {
             ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
               Text(index.toString())
@@ -352,10 +350,10 @@ export struct ArcSwiperSideSlip {
             }
             return GestureJudgeResult.CONTINUE;
           })
-        // ···
+          // ...
       }
       .width('100%')
-    // ···
+      // ...
   }
 }
 ```

@@ -1,7 +1,7 @@
 # Component3D
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
@@ -61,7 +61,7 @@ Component3D组件配置选项。
 
 ## Scene<sup>12+</sup>
 
-type Scene = Scene
+type Scene = import('../api/@ohos.graphics.scene').Scene
 
 设置3D场景。
 
@@ -71,7 +71,7 @@ type Scene = Scene
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 用于设置场景。 |
+| import('../api/@ohos.graphics.scene').[Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 用于设置场景。 |
 
 ## 属性
 
@@ -239,7 +239,7 @@ class EngineTime {
 let engineTime = new EngineTime();
 let frameCount: number = 0;
 
-function TickFrame() {
+function tickFrame() {
   if (frameCount == 10) {
     engineTime.totalTimeUs += 1.0;
     engineTime.deltaTimeUs += 1.0;
@@ -270,7 +270,7 @@ struct Index {
       console.info('backAnimator onfinish');
     }
     this.backAnimator.onFrame = (value: number) => {
-      TickFrame();
+      tickFrame();
       this.timeDelta[0] = engineTime.deltaTimeUs;
     }
 

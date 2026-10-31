@@ -1,8 +1,16 @@
-# 视频解码同步模式
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍以主动请求Buffer送帧方式完成同步模式视频解码的开发流程，支持Surface与Buffer两种输出模式，适用于需要应用主动控制解码输出与取帧节奏的场景。"
+keywords: [视频解码, 同步模式, Surface模式, Buffer模式, OH_VideoDecoder, 主动请求Buffer, YUV, NV12]
+doctype: guide
+status: active
+---
+
+# 同步模式视频解码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
@@ -15,7 +23,7 @@
 
 当前支持的解码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频解码)。
 
-视频解码的限制约束、支持的能力、状态机调用关系请参考[视频解码](video-decoding.md)。
+视频解码的限制约束、支持的能力、状态机调用关系请参考[异步模式视频解码](video-decoding.md)。
 
 ## 适用场景
 
@@ -62,7 +70,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    #include <string.h>
    ```
 
-2. 全局变量（仅作参考，可以根据实际情况将其封装到对象中）。
+2. 定义全局变量（仅作示例，具体参数值，请根据能力查询接口获取相应值范围来参考配置）。
 
    ```c++
    // 视频帧宽度。
@@ -142,7 +150,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    示例中的变量说明如下：
    
-   nativeWindow：获取方式请参考[视频解码Surface模式](video-decoding.md#surface模式)的“步骤-6：设置surface”。
+   nativeWindow：获取方式请参考异步模式视频解码[Surface模式](video-decoding.md#surface模式)的“步骤-6：设置surface”。
 
     ```c++
     // 设置surface。
@@ -183,7 +191,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 
    送入输入队列进行解码，示例中的变量说明如下：
-   - size、offset、pts、frameData：输入尺寸、偏移量、时间戳、帧数据等字段信息，获取方式可以参考[媒体数据解析](./audio-video-demuxer.md#开发步骤)“步骤-9：开始解封装，循环获取sample”。
+   - size、offset、pts、frameData：输入尺寸、偏移量、时间戳、帧数据等字段信息，获取方式可以参考媒体数据解封装[开发步骤](./audio-video-demuxer.md#开发步骤)中的“步骤-9：开始解封装，循环获取sample”。
    - flags：缓冲区标记的类别，请参考[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)。
 
    ```c++
@@ -219,6 +227,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                info.size = size;
                info.offset = offset;
                info.pts = pts;
+               // 创建时确保inFile_正确打开。
                if (inFile_->eof()) {
                    info.flags = AVCODEC_BUFFER_FLAGS_EOS;
                } else {
@@ -235,7 +244,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                    return false;
                }
                if (inFile_->eof()) {
-                   inputDone = 1;
+                   inputDone = true;
                }
                break;
            }
@@ -281,7 +290,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                    return false;
                }
                if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                   outputDone = 1;
+                   outputDone = true;
                }
                
                // 解码输出数据处理。
@@ -338,7 +347,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    ```c++
    bool result = true;
-   int64_t timeoutUs = 0; // 单位：微秒（us），负值：无限等待；0：立即退出；正值：指定时间后结束后退出。
+   int64_t timeoutUs = 0; // 单位：微秒（us），负值：无限等待；0：立即退出；正值：等待指定时长后退出。
 
    while (!outputDone && result) {
        if (!inputDone) {
@@ -568,7 +577,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                     return false;
                 }
                 if (inFile_->eof()) {
-                    inputDone = 1;
+                    inputDone = true;
                 }
                 break;
             }
@@ -619,7 +628,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                     return false;
                 }
                 if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    outputDone = 1;
+                    outputDone = true;
                 }
                 
                 // 释放已完成处理的信息，index为对应buffer队列的下标。

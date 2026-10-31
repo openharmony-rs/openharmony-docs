@@ -5,12 +5,13 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-09-01T03:33:59.925Z pushedAt=2026-09-02T06:59:46.002Z -->
 
 The **Prompt** module provides APIs for creating and showing toasts, dialog boxes, and action menus.
 
 > **NOTE**
 >
-> - The APIs of this module are deprecated since API version 8. You are advised to use [@ohos.promptAction](js-apis-promptAction.md) instead.
+> - The APIs of this module are deprecated since API version 8. You are advised to use [@ohos.promptAction (Prompt)](js-apis-promptAction.md) instead.
 >
 >
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -153,13 +154,13 @@ Describes the options for showing the toast.
 
 ## Button
 
-Defines the prompt information of a button.
+Defines the display information of a button.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type  | Mandatory  | Description     |
 | ----- | ------ | ---- | ------- |
-| text  | string | Yes   | Text displayed on the button.|
+| text  | string | Yes    | Text of the button. |
 | color | string | Yes   | Color of the button.|
 
 ## ShowDialogSuccessResponse
@@ -170,7 +171,7 @@ Defines the dialog box response result.
 
 | Name   | Type  | Mandatory  | Description        |
 | ----- | ------ | ---- | ---------- |
-| index | number | Yes   | Data index.|
+| index | number | Yes | Index of the clicked button. |
 
 ## ShowDialogOptions
 
@@ -182,10 +183,10 @@ Describes the options for showing the dialog box.
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | title    | string                                   | No   | Title of the text to display.                                   |
 | message  | string                                   | No   | Text body.                                   |
-| buttons  | [[Button](#button), [Button](#button)?, [Button](#button)?] | No   | Array of buttons in the dialog box. The array structure is **{text:'button', color: '\#666666'}**. One to six buttons are supported. If there are more than six buttons, extra buttons will not be displayed.|
-| success  | (data: [ShowDialogSuccessResponse](#showdialogsuccessresponse)) => void | No   | Callback upon success.                            |
-| cancel   | (data: string, code: string) => void     | No   | Callback upon failure.                            |
-| complete | (data: string) => void                   | No   | Called when the API call is complete.                            |
+| buttons  | [[Button](#button), [Button](#button)?, [Button](#button)?] | No    | Array of buttons in the dialog box. The structure is {text:'button', color: '\#666666'}, which supports 1 to 3 buttons. If more than 3 buttons are specified, the dialog box is not displayed. |
+| success  | (data: [ShowDialogSuccessResponse](#showdialogsuccessresponse)) => void | No   | Callback invoked upon success.                            |
+| cancel   | (data: string, code: string) => void     | No    | Callback invoked when the API call is canceled.                             |
+| complete | (data: string) => void                   | No   | Called invoked when the API call is complete.                            |
 
 ## ShowActionMenuOptions<sup>6+</sup>
 
@@ -196,7 +197,7 @@ Describes the options for showing the action menu.
 | Name      | Type                                    | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | title    | string                                   | No   | Title of the text to display.                                   |
-| buttons  | [[Button](#button), [Button](#button)?, [Button](#button)?, [Button](#button)?, [Button](#button)?, [Button](#button)?] | Yes   | Array of buttons in the dialog box. The array structure is **{text:'button', color: '\#666666'}**. One to six buttons are supported.|
-| success  | (tapIndex: number, errMsg: string) => void | No   | Invoked when a dialog box is displayed.                               |
-| fail     | (errMsg: string) => void                 | No   | Callback upon failure.                            |
-| complete | (data: string) => void                   | No   | Invoked when a dialog box is closed.                               |
+| buttons  | [[Button](#button), [Button](#button)?, [Button](#button)?, [Button](#button)?, [Button](#button)?, [Button](#button)?] | Yes    | Array of buttons in the action menu. The structure is {text: 'button', color: '\#666666'}, which supports 1 to 6 buttons. |
+| success  | (tapIndex: number, errMsg: string) => void | No    | Callback invoked when an action menu item is selected successfully.                                |
+| fail     | (errMsg: string) => void                 | No   | Callback invoked upon failure.                            |
+| complete | (data: string) => void                   | No    | Callback invoked when the API call is complete.                                |

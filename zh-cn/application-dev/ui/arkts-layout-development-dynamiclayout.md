@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -13,7 +13,7 @@
 ## 约束与限制
 1. 布局算法类使用[@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，不支持[@State](./state-management/arkts-state.md)装饰器。
 2. 切换布局算法时，子组件的状态（如输入框内容、滚动位置等）保持不变。
-3. 在自定义布局算法的[onMeasure](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法中不允许修改状态变量，避免不可预期的行为。
+3. 在自定义布局算法的[onMeasure()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法中不允许修改状态变量，避免不可预期的行为。
 
 ## 创建DynamicLayout
 
@@ -23,7 +23,7 @@
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute,RowLayoutAlgorithm, ColumnLayoutAlgorithm, LayoutAlgorithm
+  DynamicLayout, RowLayoutAlgorithm, ColumnLayoutAlgorithm, LayoutAlgorithm
 } from '@kit.ArkUI';
 
 @Entry
@@ -79,7 +79,7 @@ struct CreateDynamicLayout {
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, LengthMetrics
+  DynamicLayout, RowLayoutAlgorithm, LengthMetrics
 } from '@kit.ArkUI';
 
 @Entry
@@ -157,7 +157,7 @@ struct RowLayoutExample {
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, ColumnLayoutAlgorithm, LengthMetrics
+  DynamicLayout, ColumnLayoutAlgorithm, LengthMetrics
 } from '@kit.ArkUI';
 
 @Entry
@@ -235,7 +235,7 @@ struct ColumnLayoutExample {
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, StackLayoutAlgorithm
+  DynamicLayout, StackLayoutAlgorithm
 } from '@kit.ArkUI';
 
 @Entry
@@ -307,7 +307,7 @@ struct StackLayoutExample {
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, GridLayoutAlgorithm, LengthMetrics
+  DynamicLayout, GridLayoutAlgorithm, LengthMetrics
 } from '@kit.ArkUI';
 
 export class GridDataSource implements IDataSource {
@@ -406,17 +406,17 @@ struct GridLayoutExample {
 
 ## 自定义布局算法
 
-自定义布局算法通过继承[CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)类，重写[onMeasure](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法实现。开发者可以根据具体业务需求，自定义子组件的大小测量和位置排列，实现内置布局算法无法满足的个性化布局效果，如瀑布流、标签云等不规则布局。
+自定义布局算法通过继承[CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)类，重写[onMeasure()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法实现。开发者可以根据具体业务需求，自定义子组件的大小测量和位置排列，实现内置布局算法无法满足的个性化布局效果，如瀑布流、标签云等不规则布局。
 
 ### 自定义布局算法实现指导
 
-通过调用[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的[getChildrenCount()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchildrencount12)和[getChild()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12)方法，开发者可以获取所有子组件FrameNode。在onMeasure方法中，调用[measure()](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12)方法可以自定义测量子组件大小。在onLayout方法中，调用[getMeasuredSize()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)可以获取子组件测量后的尺寸，调用[layout()](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12)方法可以自定义排列子组件位置。下述示例展示如何重写[onMeasure](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法，调用[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的相关方法实现水平方向线性布局的效果。
+通过调用[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的[getChildrenCount()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchildrencount12)和[getChild()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12)方法，开发者可以获取所有子组件FrameNode。在onMeasure()方法中，调用[measure()](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12)方法可以自定义测量子组件大小。在onLayout()方法中，调用[getMeasuredSize()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)可以获取子组件测量后的尺寸，调用[layout()](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12)方法可以自定义排列子组件位置。下述示例展示如何重写[onMeasure()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法，调用[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的相关方法实现水平方向线性布局的效果。
 
 <!-- @[CustomLayoutBasic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/customlayout/CustomLayoutBasic.ets) -->
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, FrameNode, LayoutConstraint, Position, LayoutAlgorithm
+  DynamicLayout, CustomLayoutAlgorithm, FrameNode, LayoutConstraint, Position, LayoutAlgorithm
 } from '@kit.ArkUI';
 
 // 自定义布局算法类
@@ -515,7 +515,7 @@ struct CustomLayoutBasic {
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
+  DynamicLayout, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
 } from '@kit.ArkUI';
 
 // 瀑布流布局算法
@@ -680,7 +680,7 @@ interface Product {
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
+  DynamicLayout, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
 } from '@kit.ArkUI';
 
 // 2x2网格布局算法
@@ -837,7 +837,7 @@ struct GridLayoutExample {
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
+  DynamicLayout, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
 } from '@kit.ArkUI';
 
 // 标签云布局算法
@@ -852,6 +852,7 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
     let currentLineWidth = 0;
     let totalHeight = 0;
     let maxLineWidth = 0;
+    let currentLineHeight = 0;
 
     for (let i = 0; i < childCount; i++) {
       const child = self.getChild(i);
@@ -864,23 +865,25 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
         };
         child.measure(childConstraint);
         const childSize = child.getMeasuredSize();
+
         // 检查是否需要换行
         if (currentLineWidth + childSize.width > maxWidth && currentLineWidth > 0) {
-          // 换行
-          totalHeight += this.verticalGap;
-          currentLineWidth = childSize.width;
-          totalHeight += childSize.height;
+          // 换行前，累加上一行的高度
+          totalHeight += currentLineHeight + this.verticalGap;
+          currentLineWidth = childSize.width + this.horizontalGap;
+          currentLineHeight = childSize.height;
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         } else {
           // 继续当前行
           currentLineWidth += childSize.width + this.horizontalGap;
-          if (i === 0) {
-            totalHeight = childSize.height;
-          }
+          currentLineHeight = Math.max(currentLineHeight, childSize.height);
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         }
       }
     }
+    // 累加最后一行的高度
+    totalHeight += currentLineHeight;
+
     self.setMeasuredSize({
       width: Math.min(maxLineWidth, maxWidth),
       height: totalHeight
@@ -985,7 +988,7 @@ DynamicLayout在切换布局算法时会保持子组件的状态不变，比如�
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, ColumnLayoutAlgorithm, LayoutAlgorithm, curves, LengthMetrics,
+  DynamicLayout, ColumnLayoutAlgorithm, LayoutAlgorithm, curves, LengthMetrics,
   GridLayoutAlgorithm
 } from '@kit.ArkUI';
 
@@ -1122,16 +1125,16 @@ DynamicLayout支持以下几种方式触发重新布局：
 
 - 通过状态变量切换布局算法。
 
-  开发者使用@Local装饰器修饰布局算法变量，可以实现运行时动态切换布局。
+  开发者使用[@Local](./state-management/arkts-new-local.md)装饰器修饰布局算法变量，可以实现运行时动态切换布局。
 
   <!-- @[ChangeLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutAlgorithm.ets) -->
-
+  
   ``` TypeScript
   import {
-    DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, ColumnLayoutAlgorithm,
+    DynamicLayout, RowLayoutAlgorithm, ColumnLayoutAlgorithm,
     StackLayoutAlgorithm, GridLayoutAlgorithm, LayoutAlgorithm, LengthMetrics
   } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct LayoutSwitchExample {
@@ -1141,7 +1144,7 @@ DynamicLayout支持以下几种方式触发重新布局：
     });
     @Local childWidth: string = '20%'
     @Local childHeight: string = '20%'
-
+  
     build() {
       Column() {
         // 使用状态变量控制布局算法
@@ -1184,7 +1187,7 @@ DynamicLayout支持以下几种方式触发重新布局：
         .backgroundColor(0xEFEFEF)
         .borderRadius(12)
         .padding(10)
-
+  
         Column({ space: 10 }) {
           Row({ space: 10 }) {
             Button('Row布局')
@@ -1241,17 +1244,17 @@ DynamicLayout支持以下几种方式触发重新布局：
   开发者可以使用条件运算符，根据状态变量的值选择合适的布局算法。
 
   <!-- @[ChangeLayoutWithConditionVariable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithConditionVariable.ets) -->
-
+  
   ``` TypeScript
-  import { 
-    DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, ColumnLayoutAlgorithm, LengthMetrics 
+  import {
+    DynamicLayout, RowLayoutAlgorithm, ColumnLayoutAlgorithm, LengthMetrics
   } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct ConditionalLayoutExample {
     @Local isHorizontal: boolean = true;
-
+  
     build() {
       Column() {
         // 使用三元运算符根据条件选择布局算法
@@ -1279,7 +1282,7 @@ DynamicLayout支持以下几种方式触发重新布局：
         .width('100%')
         .height(150)
         .backgroundColor(0xEFEFEF)
-
+  
         Button('切换方向')
           .onClick(() => {
             this.isHorizontal = !this.isHorizontal;
@@ -1297,12 +1300,12 @@ DynamicLayout支持以下几种方式触发重新布局：
   布局算法类使用[@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，布局算法成员属性使用[@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰，修改属性值可以触发DynamicLayout组件重新布局。
 
   <!-- @[ChangeAlgorithmProperties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeAlgorithmProperties.ets) -->
-
+  
   ``` TypeScript
   import {
-    DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, LengthMetrics
+    DynamicLayout, RowLayoutAlgorithm, LengthMetrics
   } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct PropertyChangeExample {
@@ -1310,7 +1313,7 @@ DynamicLayout支持以下几种方式触发重新布局：
       space: LengthMetrics.vp(10),
       justifyContent: FlexAlign.Start
     });
-
+  
     build() {
       Column() {
         DynamicLayout(this.algorithm) {
@@ -1333,7 +1336,7 @@ DynamicLayout支持以下几种方式触发重新布局：
         .width('100%')
         .height(80)
         .backgroundColor(0xEFEFEF)
-
+  
         Row({ space: 10 }) {
           Button('增加间距')
             .fontSize(14)
@@ -1367,14 +1370,16 @@ DynamicLayout支持以下几种方式触发重新布局：
 
   开发者可以结合[mediaquery](../reference/apis-arkui/arkts-apis-uicontext-mediaquery.md)接口监听屏幕方向变化，自动切换商品列表的布局方式。竖屏时使用列表视图（每行一个商品），横屏时使用网格视图（2x2网格布局）。
 
-  <!-- @[ChangeLayoutWithMediaQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithMediaQuery.ets) -->
+  此示例在运行前需要在工程配置文件[module.json5](../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "auto_rotation"。
 
+  <!-- @[ChangeLayoutWithMediaQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithMediaQuery.ets) -->
+  
   ``` TypeScript
   import {
-    DynamicLayout, DynamicLayoutAttribute, ColumnLayoutAlgorithm, LayoutAlgorithm, LengthMetrics, mediaquery,
+    DynamicLayout, ColumnLayoutAlgorithm, LayoutAlgorithm, LengthMetrics, mediaquery,
     GridLayoutAlgorithm
   } from '@kit.ArkUI';
-
+  
   // 商品数据模型
   interface Product {
     id: string;
@@ -1382,7 +1387,7 @@ DynamicLayout支持以下几种方式触发重新布局：
     price: string;
     image: string;
   }
-
+  
   @Entry
   @ComponentV2
   struct ProductListExample {
@@ -1397,10 +1402,10 @@ DynamicLayout支持以下几种方式触发重新布局：
       { id: '3', name: '智能手表', price: '¥1999', image: '商品' },
       { id: '4', name: '平板电脑', price: '¥3999', image: '商品' }
     ];
-
+  
     // 监听横屏事件
     listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
-
+  
     // 当满足媒体查询条件时，触发回调
     onOrientationChange(mediaQueryResult: mediaquery.MediaQueryResult) {
       if (mediaQueryResult.matches) {
@@ -1419,19 +1424,19 @@ DynamicLayout支持以下几种方式触发重新布局：
         this.currentOrientation = '竖屏';
       }
     }
-
+  
     aboutToAppear() {
       // 绑定回调函数
       this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
         this.onOrientationChange(mediaQueryResult);
       });
     }
-
+  
     aboutToDisappear() {
       // 解绑listener中注册的回调函数
       this.listener.off('change');
     }
-
+  
     // 商品卡片组件
     @Builder ProductCard(product: Product) {
       Row() {
@@ -1462,7 +1467,7 @@ DynamicLayout支持以下几种方式触发重新布局：
       .borderRadius(8)
       .border({ width: 1, color: 0xE0E0E0 })
     }
-
+  
     build() {
       Column() {
         // 标题栏
@@ -1482,7 +1487,7 @@ DynamicLayout支持以下几种方式触发重新布局：
         .width('100%')
         .padding({ left: 16, right: 16, top: 12, bottom: 12 })
         .backgroundColor(Color.White)
-
+  
         // 商品列表
         Scroll() {
           DynamicLayout(this.algorithm) {
@@ -1497,7 +1502,7 @@ DynamicLayout支持以下几种方式触发重新布局：
         .layoutWeight(1)
         .width('100%')
         .backgroundColor(0xF5F5F5)
-
+  
         // 提示信息
         Text('旋转设备可查看不同布局效果')
           .fontSize(12)

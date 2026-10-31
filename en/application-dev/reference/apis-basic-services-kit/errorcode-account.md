@@ -11,7 +11,7 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-The following includes the error codes for system accounts, distributed accounts, and application accounts.
+The following includes the error codes for OS accounts, distributed accounts, and application accounts.
 
 ## 12300001 System Service Abnormal
 
@@ -21,6 +21,7 @@ The system service works abnormally.
 
 **Possible Causes**
 
+ 
 1. The account management service cannot start properly.
 2. The IPC object for account management cannot be obtained.
 3. The services on which the account management depends cannot start properly, or the IPC object on which the account management depends cannot be obtained.
@@ -43,10 +44,11 @@ Invalid parameter.
 
 **Possible Causes**
 
+ 
 1. The user name is empty.
-2. The user name of the system account exceeds 1024 characters.
+2. The user name of the OS account exceeds 1024 characters.
 3. The user name of the distributed account exceeds 256 characters.
-4. The system account ID is less than 0 or 100, or greater than 1099.
+4. The OS account ID is less than 0 or 100, or greater than 1099.
 5. The distributed account ID exceeds 512 characters.
 6. The event type passed in for the distributed account is not supported.
 7. The domain name is empty.
@@ -56,7 +58,7 @@ Invalid parameter.
 11. The constraint is empty.
 12. The constraint exceeds 128 characters.
 13. Invalid authentication or query parameters are passed in.
-14. The profile photo string of the system account exceeds 4 KB.
+14. The profile photo string of the OS account exceeds 4 KB.
 15. The profile photo string of the distributed account exceeds 2 MB.
 16. The images are not in .jpg or .png format.
 17. The application account name exceeds 512 characters.
@@ -72,7 +74,7 @@ Invalid parameter.
 
 Set parameters correctly.
 
-## 12300003 Account Not Exist
+## 12300003 Account Not Found
 
 **Error Message**
 
@@ -80,6 +82,7 @@ The account does not exist.
 
 **Possible Causes**
 
+ 
 1. The account to query, activate, or delete is not created.
 2. The account to query, activate, or delete has been deleted.
 3. The constraint, user name, or profile photo is set for an account that has been deleted.
@@ -104,6 +107,8 @@ The account already exists.
 
 **Possible Causes**
 
+ 
+
 The account to create already exists.
 
 **Solution**
@@ -117,6 +122,8 @@ Rename the account.
 Multi-user is not supported.
 
 **Possible Causes**
+
+ 
 
 The device does not support multiple users.
 
@@ -146,7 +153,7 @@ The number of accounts has reached the upper limit.
 
 **Possible Causes**
 
-The number of system accounts or application accounts has reached 1000.
+The number of OS accounts or application accounts has reached 1000.
 
 **Solution**
 
@@ -160,6 +167,7 @@ The specified account is restricted.
 
 **Possible Causes**
 
+ 
 1. The account to delete is a reserved account of the system.
 2. The constraint source type to query belongs to a reserved account.
 3. The ID of the account to create is 0 to 100.
@@ -176,6 +184,8 @@ The account has been activated.
 
 **Possible Causes**
 
+ 
+
 The account to activate is already activated.
 
 **Solution**
@@ -190,6 +200,7 @@ The account service is busy.
 
 **Possible Causes**
 
+ 
 1. Repeated requests, such as the requests for activating an account or applying the same settings, are submitted in a short period of time.
 2. When the number of authentication sessions for application accounts reaches 256, new authentication requests cannot be processed.
 
@@ -205,6 +216,8 @@ The event listener has been registered.
 
 **Possible Causes**
 
+ 
+
 The listener to register has been registered with the system already.
 
 **Solution**
@@ -218,6 +231,8 @@ Cancel the operation or register an unregistered listener.
 The event listener has not been registered.
 
 **Possible Causes**
+
+ 
 
 The event listener to unregister has not been registered.
 
@@ -233,6 +248,7 @@ Network exception.
 
 **Possible Causes**
 
+ 
 1. Not connected to the Internet.
 2. The network connection is abnormal.
 3. The application does not have the network access permission.
@@ -289,7 +305,7 @@ Log out of the system and log in to the system using a new account.
 
 <!--Del-->
 
-## 12300017 Foreground System Account Not Found
+## 12300017 Foreground OS Account Not Found
 
 **Error Message**
 
@@ -297,9 +313,10 @@ The foreground OS account is not found.
 
 **Possible Causes**
 
-1. The foreground system account does not exist on the specified logical display (either it is not activated or it is not switched to the foreground).
+ 
+1. The foreground OS account does not exist on the specified logical display (either it is not activated or it is not switched to the foreground).
 2. The specified **displayId** is invalid or the corresponding logical display does not exist.
-3. The specified **localId** is invalid or the corresponding system account does not exist.
+3. The specified **localId** is invalid or the corresponding OS account does not exist.
 
 **Solution**
 
@@ -313,6 +330,7 @@ Display not found.
 
 **Possible Causes**
 
+ 
 1. The specified **displayId** is invalid or the corresponding logical display does not exist.
 2. The target logical display is not connected or has been disconnected.
 
@@ -328,13 +346,15 @@ Cross-display activation not supported.
 
 **Possible Causes**
 
+ 
+
 The current system strategy or configuration does not allow cross-display activation.
 
 **Solution**
 
 Activate the account on the same logical display, or log out of the account on the specified logical display and then activate the account.
 
-## 12300021 System Account Already Bound
+## 12300021 OS Account Already Bound
 
 **Error Message**
 
@@ -342,15 +362,15 @@ The OS account is already bound.
 
 **Description**
 
-This error code is reported if the input system account has been bound to a domain account.
+This error code is reported if the input OS account has been bound to a domain account.
 
 **Possible Causes**
 
-The input system account has been bound to a domain account.
+This error code is reported if the input OS account has been bound to a domain account.
 
 **Solution**
 
-Multiple system accounts cannot be bound to one domain account. Bind the system account to another domain account.
+Multiple OS accounts cannot be bound to one domain account. Bind the system account to another domain account.
 
 ## 12300022 Domain Account Already Bound
 
@@ -360,11 +380,11 @@ The domain account is already bound.
 
 **Description**
 
-This error code is reported if the input domain account has been bound to a system account.
+This error code is reported if the input domain account has been bound to an OS account.
 
 **Possible Causes**
 
-The input domain account has been bound to a system account.
+This error code is reported if the input domain account has been bound to an OS account.
 
 **Solution**
 
@@ -394,6 +414,7 @@ The credential is incorrect.
 
 **Possible Causes**
 
+ 
 1. An incorrect password is entered.
 2. The biological feature does not match the feature enrolled.
 3. The token is invalid.
@@ -402,7 +423,7 @@ The credential is incorrect.
 
 Enter a correct credential and try again.
 
-## 12300102 Credential Not Exist
+## 12300102 Credential Not Found
 
 **Error Message**
 
@@ -410,6 +431,7 @@ The credential does not exist.
 
 **Possible Causes**
 
+ 
 1. The credential to authenticate has not been enrolled.
 2. The credential to query has not been enrolled.
 3. The credential to delete has not been enrolled.
@@ -426,19 +448,23 @@ The credential inputer already exists.
 
 **Possible Causes**
 
+ 
+
 The PIN inputer has been registered and cannot be registered again before deregistration.
 
 **Solution**
 
 No further action is required.
 
-## 12300104 Credential Inputer Not Exist
+## 12300104 Credential Inputer Not Found
 
 **Error Message**
 
 The credential inputer is not found.
 
 **Possible Causes**
+
+ 
 
 No credential inputer is registered when a credential is authenticated, added or modified.
 
@@ -454,6 +480,8 @@ The trust level is not supported.
 
 **Possible Causes**
 
+ 
+
 The trust level passed in is not supported.
 
 **Solution**
@@ -468,13 +496,15 @@ The authentication type is not supported.
 
 **Possible Causes**
 
+ 
+
 The authentication type passed in is not supported.
 
 **Solution**
 
 Use an authentication type supported by the system.
 
-## 12300107 Authentication Type Not Exist
+## 12300107 Authentication Type Not Found
 
 **Error Message**
 
@@ -482,19 +512,23 @@ The authentication type does not exist.
 
 **Possible Causes**
 
+ 
+
 The specified authentication type does not exist when a token is queried or deleted.
 
 **Solution**
 
 Use an existing authentication type.
 
-## 12300108 Authentication Session Not Exist
+## 12300108 Authentication Session Not Found
 
 **Error Message**
 
 The authentication session does not exist.
 
 **Possible Causes**
+
+ 
 
 The session callback to query does not exist.
 
@@ -509,6 +543,8 @@ Use an opened session to query session callbacks.
 The authentication, enrollment, or update operation is canceled.
 
 **Possible Causes**
+
+ 
 
 1. The user cancels the authentication.
 2. The user canceled the credential enrollment.
@@ -526,6 +562,8 @@ The authentication is locked.
 
 **Possible Causes**
 
+ 
+
 The number of authentication type errors exceeds the limit.
 
 **Solution**
@@ -540,7 +578,8 @@ The authentication time out.
 
 **Possible Causes**
 
-1. The authentication or credential enrollment of a system account takes more than three minutes.
+ 
+1. The authentication or credential enrollment of an OS account takes more than three minutes.
 2. The authentication service does not respond in time due to network problems.
 
 **Solution**
@@ -548,7 +587,7 @@ The authentication time out.
 1. Try again if the authentication or credential enrollment times out.
 2. Check and rectify network problems, and try again.
 
-## 12300112 Authentication Service Not Respond
+## 12300112 Authentication Service Does Not Respond
 
 **Error Message**
 
@@ -556,20 +595,24 @@ The authentication service is busy.
 
 **Possible Causes**
 
-1. The total number of system accounts being authenticated exceeds 5.
+ 
+
+1. The total number of OS accounts being authenticated exceeds 5.
 2. The authentication service of the third-party application does not respond.
 
 **Solution**
 
 Try again later.
 
-## 12300113 Authentication Service Not Exist
+## 12300113 Authentication Service Not Found
 
 **Error Message**
 
 The account authentication service does not exist.
 
 **Possible Causes**
+
+ 
 
 For application accounts:
 1. When an authentication is requested, the application does not support the authentication service.
@@ -590,6 +633,7 @@ The account authentication service works abnormally.
 
 **Possible Causes**
 
+ 
 1. An unknown error occurs in the identity authentication service.
 2. The application authenticator does not comply with specifications.
 
@@ -658,7 +702,78 @@ In the companion device authentication scenario, the companion device has expire
 Delete the companion device and bind it again.
 <!--DelEnd-->
 
-## 12400001 Application Not Exist
+## 12300401 OS Account Sub-profile Not Found
+
+**Error Message**
+
+OS account sub-profile not found.
+
+**Possible Causes**
+
+No valid OS account sub-profile ID is specified.
+
+**Solution**
+
+Specify a valid sub-profile.
+
+## 12300402 Number of OS Account Sub-profiles Has Reached the Upper Limit
+
+**Error Message**
+
+The number of sub-profiles under the OS account has reached limit.
+
+**Possible Causes**
+
+Too many sub-profiles have been created under the target OS account.
+
+**Solution**
+
+Delete existing sub-profiles and try again, or stop creating new sub-profiles.
+
+## 12300403 Restricted OS Account Sub-profile
+
+**Error Message**
+
+Restricted OS account sub-profile.
+
+**Possible Causes**
+
+1. The target sub-profile cannot be deleted.
+2. The target sub-profile cannot be switched.
+
+**Solution**
+
+Stop the operation on the target sub-profile.
+
+## 12300404 Foreground Sub-profile of the OS Account Cannot Be Deleted
+
+**Error Message**
+
+The foreground sub-profile of the OS account cannot be deleted.
+
+**Possible Causes**
+
+The OS Account sub-profile to be deleted is in the foreground.
+
+**Solution**
+
+Stop deleting the OS Account sub-profile.
+
+## 12300405 Foreground Sub-profile with a Logged-in Distributed Account Cannot Be Directly Switched to the Background
+
+**Error Message**
+
+The foreground sub-profile with a logged-in distributed account cannot be directly switched to the background.
+
+**Possible Causes**
+
+The distributed account associated with the foreground sub-identity is still in the login state.
+
+**Solution**
+
+Log out the distributed account associated with the foreground sub-identity and then trigger the switchover.
+
+## 12400001 Application Not Found
 
 **Error Message**
 
@@ -666,6 +781,7 @@ The application does not exist.
 
 **Possible Causes**
 
+ 
 1. The target application does not exist when the application permission is set.
 2. The target application does not exist when the application permission is authorized.
 
@@ -673,7 +789,7 @@ The application does not exist.
 
 Check that the target application has been installed, and use the bundle of the application.
 
-## 12400002 Custom Data Not Exist
+## 12400002 Custom Data Not Found
 
 **Error Message**
 

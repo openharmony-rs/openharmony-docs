@@ -48,4 +48,4 @@ The [universal attributes](js-components-svg-common-attributes.md) and the attri
 ```
 
 
-![en-us_image_0000001173164793](figures/en-us_image_0000001173164793.png)
+![ellipse](figures/ellipse.png)

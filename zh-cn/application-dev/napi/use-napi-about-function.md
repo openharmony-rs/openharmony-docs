@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行函数创建和调用，包括获取回调参数、调用ArkTS函数和创建ArkTS函数，支持在Node-API模块中实现函数式编程能力。"
+keywords: [Node-API, 函数, napi_get_cb_info, napi_call_function, napi_create_function, 回调参数, ArkTS函数, 函数调用]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行函数创建和调用
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -25,7 +33,7 @@
 ## 使用示例
 
 Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
-## napi_get_cb_info
+### napi_get_cb_info
 
 获取有关函数调用的详细信息。
 
@@ -137,11 +145,14 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
   testNapi.getCbContext().toString());
 ```
 
-## napi_call_function
+### napi_call_function
 
 在C/C++侧对ArkTS函数进行调用。
 
-注意事项：napi_call_function传入的argv的长度必须大于等于argc声明的数量，并且每个元素都应初始化为nullptr。
+注意事项：
+- napi_call_function传入的argv长度需不少于argc。
+- argc为0时可传nullptr，否则argv元素应为有效的`napi_value`。
+- napi_call_function执行后会触发微任务执行。
 
 cpp部分代码
 
@@ -149,6 +160,7 @@ cpp部分代码
 
 ``` C++
 // napi_call_function
+constexpr int ARG_NUM = 10;
 static napi_value CallFunction(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -158,10 +170,13 @@ static napi_value CallFunction(napi_env env, napi_callback_info info)
     // 获取全局对象，这里用global是因为napi_call_function的第二个参数是JS函数的this入参。
     napi_value global = nullptr;
     napi_get_global(env, &global);
+    // 创建数字入参
+    napi_value args[1] = {nullptr};
+    napi_create_int32(env, ARG_NUM, &args[0]);
     // 调用ArkTS方法
     napi_value result = nullptr;
-    // 调用napi_call_function时传入的argv的长度必须大于等于argc声明的数量，且被初始化成nullptr
-    napi_call_function(env, global, argv[0], argc, argv, &result);
+    // 调用napi_call_function时传入的argv的长度必须大于等于argc声明的数量
+    napi_call_function(env, global, argv[0], 1, args, &result);
     return result;
 }
 
@@ -174,8 +189,8 @@ static napi_value ObjCallFunction(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     // 调用ArkTS方法
     napi_value result = nullptr;
-    // 调用napi_call_function时传入的argv的长度必须大于等于argc声明的数量，且被初始化成nullptr
-    napi_call_function(env, argv[0], argv[1], argc, argv, &result);
+    // age方法无入参，napi_call_function的argc传0、argv传nullptr
+    napi_call_function(env, argv[0], argv[1], 0, nullptr, &result);
     return result;
 }
 ```
@@ -195,8 +210,8 @@ ArkTS 侧示例代码
 <!-- @[ark_napi_call_function_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-function returnNumber() {
-  return 10;
+function returnNumber(num: number) {
+  return num;
 }
 
 class Person {
@@ -217,7 +232,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
   testNapi.objCallFunction(person, person.age));
 ```
 
-## napi_create_function
+### napi_create_function
 
 将一个C/C++函数包装为可在ArkTS中调用的函数，并返回一个表示该函数的napi_value。
 
@@ -241,6 +256,18 @@ static napi_value CalculateArea(napi_env env, napi_callback_info info)
     napi_create_double(env, width * height, &area);
     return area;
 }
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // ...
+    napi_value fn = nullptr;
+    napi_create_function(env, nullptr, 0, CalculateArea, nullptr, &fn);
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    napi_set_named_property(env, exports, "calculateArea", fn);
+    return exports;
+}
+EXTERN_C_END
 ```
 
 接口声明

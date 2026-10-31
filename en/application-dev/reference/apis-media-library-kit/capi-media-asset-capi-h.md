@@ -6,6 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:33:03.024Z pushedAt=2026-06-23T09:25:46.753Z -->
 
 ## Overview
 
@@ -59,7 +60,6 @@ Obtains the URI of a media asset.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -84,7 +84,6 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetMediaType(OH_MediaAsset* mediaAsset, Med
 Obtains the type of a media asset.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -111,7 +110,6 @@ Obtains the subtype of a media asset.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -136,7 +134,6 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDisplayName(OH_MediaAsset* mediaAsset, c
 Obtains the display name of a media asset.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -163,7 +160,6 @@ Obtains the size of a media asset file.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -188,7 +184,6 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAdded(OH_MediaAsset* mediaAsset, uin
 Obtains the date when a media asset was added.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -215,7 +210,6 @@ Obtains the date when a media asset (content not the media asset name) was last 
 
 **Since**: 13
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -240,7 +234,6 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateTaken(OH_MediaAsset* mediaAsset, uin
 Obtains the date when a media asset was taken.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -267,7 +260,6 @@ Obtains the date when a media asset was added, in ms.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -292,7 +284,6 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateModifiedMs(OH_MediaAsset* mediaAsset
 Obtains the date when a media asset (content not the media asset name) was last modified, in ms.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -319,7 +310,6 @@ Obtains the duration of a media asset, in ms.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -344,7 +334,6 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetWidth(OH_MediaAsset* mediaAsset, uint32_
 Obtains the image width (in pixels) of a media asset.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -371,7 +360,6 @@ Obtains the image height (in pixels) of a media asset.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -393,17 +381,16 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, u
 
 **Description**
 
-Obtains the orientation of a media asset, in degrees.
+Obtains the rotation angle of an image, in degrees (°).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance.|
-| uint32_t* orientation | Pointer to the orientation of the image obtained, in degrees.|
+| uint32_t* orientation | Pointer to the rotation angle of an image, in degrees (°). |
 
 **Return value**
 
@@ -422,7 +409,6 @@ MediaLibrary_ErrorCode OH_MediaAsset_IsFavorite(OH_MediaAsset* mediaAsset, uint3
 Checks whether a media asset is favorited.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -449,7 +435,6 @@ Obtains the title of a media asset.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -474,7 +459,6 @@ MediaLibrary_ErrorCode OH_MediaAsset_Release(OH_MediaAsset* mediaAsset)
 Releases a media asset.
 
 **Since**: 12
-
 
 **Parameters**
 

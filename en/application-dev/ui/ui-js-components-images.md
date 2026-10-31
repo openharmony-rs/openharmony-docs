@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39f66a31c4cd77f8015af575d95ace022de7992b translatedAt=2026-10-29T08:56:51.840Z pushedAt=2026-10-30T03:01:54.870Z nl=1 -->
 
 The **\<image>** component is used to render and display images. For details, see [image](../reference/apis-arkui/arkui-js/js-components-basic-image.md).
 
@@ -31,7 +32,7 @@ Create an **\<image>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001223127736](figures/en-us_image_0000001223127736.png)
+![image-Component](figures/image-Component.png)
 
 
 ## Setting the Image Style
@@ -68,7 +69,7 @@ image{
 ```
 
 
-![en-us_image_0000001222807796](figures/en-us_image_0000001222807796.png)
+![Image-Style](figures/Image-Style.png)
 
 
 ## Loading the Image
@@ -126,13 +127,13 @@ export default {
 }
 ```
 
-![en-us_image_images](figures/en-us_image_images.gif)
+![Loading-Image](figures/Loading-Image.gif)
 
 
 
 ## Example Scenario
 
-In this example you touch and hold an image to gradually hide it. After the image is completely hidden, it will show in its original setting. Set a **setInterval** timer to change the image opacity at a specified interval so that it is hidden gradually. When the opacity changes to **0**, the timer is cleared and the opacity is set to **1**.
+In this scenario, after the developer long presses the image, the image is gradually hidden, and once it is fully hidden, the original image is displayed again. The timer setInterval changes the image opacity at intervals to achieve the gradual hiding effect. When the opacity reaches 0, the timer is cleared and the opacity is set to 1.
 ```html
 <!-- index.hml -->
 <div class="page-container">
@@ -208,4 +209,12 @@ export default {
 }
 ```
 
-![en-us_image_0000001267607905](figures/en-us_image_0000001267607905.gif)
+![Example-Scenario-6](figures/Example-Scenario-6.gif)
+
+## Samples
+
+The following samples are provided to help you better understand how to develop **image**:
+
+- [Using the image and image-animator Components (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/ClickableJs)
+
+- [Common Image Operations (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageOperation)

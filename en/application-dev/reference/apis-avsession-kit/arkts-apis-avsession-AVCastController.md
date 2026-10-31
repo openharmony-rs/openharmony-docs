@@ -1,22 +1,23 @@
 # Interface (AVCastController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+
+After a casting connection is set up, you can call [avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10) to obtain the cast controller. Through the controller, you can query the session ID, send commands and events to a session, and obtain session metadata and playback state information.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 10.
 
-After a casting connection is set up, you can call [avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10) to obtain the cast controller. Through the controller, you can query the session ID, send commands and events to a session, and obtain session metadata and playback state information.
-
 ## Modules to Import
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## getAVPlaybackState<sup>10+</sup>
@@ -44,14 +45,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
+avCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
   if (err) {
-    console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getAVPlaybackState : SUCCESS');
+    console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting AV playback state.');
 });
 ```
 
@@ -82,12 +81,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
-  console.info('getAVPlaybackState : SUCCESS');
+avCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+  console.info('Succeeded in getting AV playback state.');
 }).catch((err: BusinessError) => {
-  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -105,7 +102,7 @@ Obtains the decoding modes supported by the current remote device. This API uses
 
 | Type                                                       | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| Promise\<Array\<[DecoderType](arkts-apis-avsession-e.md#decodertype19)\>\> | Promise return an array of decoding modes supported by the remote device.|
+| Promise\<Array\<[DecoderType](arkts-apis-avsession-e.md#decodertype19)\>\> | Promise used to return an array of decoding modes supported by the remote device.|
 
 **Error codes**
 
@@ -118,15 +115,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
-  console.info(`getSupportedDecoders : SUCCESS : decoderTypes.length : ${decoderTypes.length}`);
+avCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
+  console.info(`Succeeded in getting supported decoders, length: ${decoderTypes.length}`);
   if (decoderTypes.length > 0 ) {
-    console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
+    console.info(`Succeeded in getting supported decoder: ${decoderTypes[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported decoders, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -144,13 +139,13 @@ Obtains the recommended resolution level based on the passed decoding mode. This
 
 | Name  | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| decoderType | [DecoderType](arkts-apis-avsession-e.md#decodertype19) | Yes| Decoding format supported by the device.<br>The following decoding formats are supported by the device:<br>**'OH_AVCODEC_MIMETYPE_VIDEO_AVC'**: VIDEO AVC.<br>**'OH_AVCODEC_MIMETYPE_VIDEO_HEVC'**: VIDEO HEVC.<br>**'OH_AVCODEC_MIMETYPE_AUDIO_VIVID'**: AUDIO AV3A.|
+| decoderType | [DecoderType](arkts-apis-avsession-e.md#decodertype19) | Yes| The following decoding formats are supported by the device:<br>**'OH_AVCODEC_MIMETYPE_VIDEO_AVC'**: VIDEO AVC.<br>**'OH_AVCODEC_MIMETYPE_VIDEO_HEVC'**: VIDEO HEVC.<br>**'OH_AVCODEC_MIMETYPE_AUDIO_VIVID'**: AUDIO AV3A.|
 
 **Return value**
 
 | Type                                                       | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| Promise\<[ResolutionLevel](arkts-apis-avsession-e.md#resolutionlevel19)\> | Promise return the recommended resolution level of the remote device.|
+| Promise\<[ResolutionLevel](arkts-apis-avsession-e.md#resolutionlevel19)\> | Promise used to return the recommended resolution level of the remote device.|
 
 **Error codes**
 
@@ -163,13 +158,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
-aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
-  console.info('getRecommendedResolutionLevel successfully');
+avCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
+  console.info('Succeeded in getting recommended resolution level.');
 }).catch((err: BusinessError) => {
-  console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get recommended resolution level, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -200,16 +193,15 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import type hdrCapability from './@ohos.graphics.hdrCapability';
+import { type hdrCapability } from '@kit.ArkGraphics2D';
 
-aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
-  console.info(`getSupportedHdrCapabilities : SUCCESS : hdrFormats.length : ${hdrFormats.length}`);
+avCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
+  console.info(`Succeeded in getting supported HDR capabilities, length: ${hdrFormats.length}`);
   if (hdrFormats.length > 0 ) {
-    console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
+    console.info(`Succeeded in getting supported HDR capability: ${hdrFormats[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported HDR capabilities, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -217,7 +209,7 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
 
 getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
-Obtains the playback speeds supported by the current remote device. This API uses a promise to return the result.
+Obtains the playback speeds supported by the remote device. This API is only supported for devices connected using the Cast+ protocol. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -240,15 +232,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
-  console.info(`getSupportedPlaySpeeds : SUCCESS : hdrFormats.length : ${nums.length}`);
+avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
+  console.info(`Succeeded in getting supported play speeds, length: ${nums.length}`);
   if (nums.length > 0 ) {
-    console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
+    console.info(`Succeeded in getting supported play speed: ${nums[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported play speeds, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -281,7 +271,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
 | 6600109  | The remote connection is not established. |
@@ -289,13 +279,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let avCommand: avSession.AVCastControlCommand = {command:'play'};
-aVCastController.sendControlCommand(avCommand).then(() => {
-  console.info('SendControlCommand successfully');
+let avCommand: avSession.AVCastControlCommand = {command: 'play'};
+avCastController.sendControlCommand(avCommand).then(() => {
+  console.info('Succeeded in sending control command.');
 }).catch((err: BusinessError) => {
-  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to send control command, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -320,7 +308,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
 | 6600109  | The remote connection is not established. |
@@ -328,15 +316,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let avCommand: avSession.AVCastControlCommand = {command:'play'};
-aVCastController.sendControlCommand(avCommand, (err: BusinessError) => {
+let avCommand: avSession.AVCastControlCommand = {command: 'play'};
+avCastController.sendControlCommand(avCommand, (err: BusinessError) => {
   if (err) {
-    console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SendControlCommand successfully');
+    console.error(`Failed to send control command, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in sending control command.');
 });
 ```
 
@@ -368,14 +354,16 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. You are advised to: 1. Scheduled retry. 2. Destroy the current session or session controller and re-create it. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.sendCustomData({customData : "This is custom data"});
+avCastController.sendCustomData({customData: 'This is custom data'}).then(() => {
+  console.info('Succeeded in sending custom data.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to send custom data, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## prepare<sup>10+</sup>
@@ -399,15 +387,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Set playback parameters.
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -420,18 +406,18 @@ let playItem: avSession.AVQueueItem = {
     duration: 0,
     artist: 'mysong',
     albumTitle: 'song1_title',
-    albumCoverUri: "http://resource1_album_address",
-    lyricUri: "http://resource1_lyric_address",
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
     appName: 'MyMusic'
   }
 };
 // Prepare for playback. This operation triggers loading and buffering, but not the actual playback.
-aVCastController.prepare(playItem, (err: BusinessError) => {
+avCastController.prepare(playItem, (err: BusinessError) => {
   if (err) {
-    console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('prepare successfully');
+    console.error(`Failed to prepare, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in preparing.');
 });
 ```
 
@@ -464,15 +450,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Set playback parameters.
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -485,16 +469,16 @@ let playItem: avSession.AVQueueItem = {
     duration: 0,
     artist: 'mysong',
     albumTitle: 'song1_title',
-    albumCoverUri: "http://resource1_album_address",
-    lyricUri: "http://resource1_lyric_address",
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
     appName: 'MyMusic'
   }
 };
 // Prepare for playback. This operation triggers loading and buffering, but not the actual playback.
-aVCastController.prepare(playItem).then(() => {
-  console.info('prepare successfully');
+avCastController.prepare(playItem).then(() => {
+  console.info('Succeeded in preparing.');
 }).catch((err: BusinessError) => {
-  console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to prepare, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -503,6 +487,10 @@ aVCastController.prepare(playItem).then(() => {
 start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 Prepares for the playback of a media asset. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> In the audio and video casting scenario, when the application sequentially calls the [prepare](#prepare10) and **start** APIs and the asset ID remains unchanged, if a valid **mediaUri** or **fdSrc** is passed to the **prepare** API, the **start** API will reuse the complete **AVMediaDescription** object information in the prepare phase.
 
 **System capability**: SystemCapability.Multimedia.AVSession.AVCast
 
@@ -519,15 +507,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Set playback parameters.
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -540,19 +526,19 @@ let playItem: avSession.AVQueueItem = {
     duration: 0,
     artist: 'mysong',
     albumTitle: 'song1_title',
-    albumCoverUri: "http://resource1_album_address",
-    lyricUri: "http://resource1_lyric_address",
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
     appName: 'MyMusic'
   }
 };
 
 // Start playback.
-aVCastController.start(playItem, (err: BusinessError) => {
+avCastController.start(playItem, (err: BusinessError) => {
   if (err) {
-    console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('start successfully');
+    console.error(`Failed to start, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in starting.');
 });
 ```
 
@@ -561,6 +547,10 @@ aVCastController.start(playItem, (err: BusinessError) => {
 start(item: AVQueueItem): Promise\<void>
 
 Prepares for the playback of a media asset. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> In the audio and video casting scenario, when the application sequentially calls the [prepare](#prepare10) and **start** APIs and the asset ID remains unchanged, if a valid **mediaUri** or **fdSrc** is passed to the **prepare** API, the **start** API will reuse the complete **AVMediaDescription** object information in the prepare phase.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -584,15 +574,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Set playback parameters.
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -605,16 +593,16 @@ let playItem: avSession.AVQueueItem = {
     duration: 0,
     artist: 'mysong',
     albumTitle: 'song1_title',
-    albumCoverUri: "http://resource1_album_address",
-    lyricUri: "http://resource1_lyric_address",
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
     appName: 'MyMusic'
   }
 };
 // Start playback.
-aVCastController.start(playItem).then(() => {
-  console.info('start successfully');
+avCastController.start(playItem).then(() => {
+  console.info('Succeeded in starting.');
 }).catch((err: BusinessError) => {
-  console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to start, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -643,14 +631,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
+avCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
   if (err) {
-    console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getCurrentItem successfully');
+    console.error(`Failed to get current item, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting current item.');
 });
 ```
 
@@ -681,12 +667,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
-  console.info('getCurrentItem successfully');
+avCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
+  console.info('Succeeded in getting current item.');
 }).catch((err: BusinessError) => {
-  console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current item, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -702,7 +686,7 @@ Obtains the supported commands. This API uses an asynchronous callback to return
 
 | Name| Type| Mandatory| Description|
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| callback | AsyncCallback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)>> | Yes| Callback return the supported commands.|
+| callback | AsyncCallback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)>> | Yes| Callback used to return the supported commands.|
 
 **Error codes**
 
@@ -715,14 +699,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
+avCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
   if (err) {
-    console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getValidCommands successfully');
+    console.error(`Failed to get valid commands, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting valid commands.');
 });
 ```
 
@@ -751,12 +733,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
-  console.info('getValidCommands successfully');
+avCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
+  console.info('Succeeded in getting valid commands.');
 }).catch((err: BusinessError) => {
-  console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get valid commands, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -789,7 +769,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 
 **Example**
@@ -801,7 +781,11 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
   // Obtain a media key from the server. Assign a value based on service requirements.
   let licenseResponseData: Uint8Array = new Uint8Array();
   console.info(`Succeeded in get license by ${drmUrl}.`);
-  aVCastController.processMediaKeyResponse(assetId, licenseResponseData);
+  avCastController.processMediaKeyResponse(assetId, licenseResponseData).then(() => {
+    console.info('Succeeded in processing media key response.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to process media key response, code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -809,7 +793,7 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 
 release(callback: AsyncCallback\<void>): void
 
-Releases this cast controller. This API uses an asynchronous callback to return the result.
+Destroys this controller. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.AVSession.AVCast
 
@@ -830,14 +814,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.release((err: BusinessError) => {
+avCastController.release((err: BusinessError) => {
   if (err) {
-    console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('release successfully');
+    console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in releasing.');
 });
 ```
 
@@ -868,21 +850,19 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.release().then(() => {
-  console.info('release successfully');
+avCastController.release().then(() => {
+  console.info('Succeeded in releasing.');
 }).catch((err: BusinessError) => {
-  console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
 });
 
 ```
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
 
-Subscribes to playback state change events.
+Subscribes to playback state change events. This API uses an asynchronous callback to return the result.
 
 Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
 
@@ -895,8 +875,8 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'playbackStateChange'** is triggered when the playback state changes.|
-| filter   |  Array\<string>\|'all'| Yes  | The value **'all'** indicates that any playback state field change will trigger the event, and **Array\<string>** indicates that only changes to the listed playback state field will trigger the event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is Array\<keyof AVPlaybackState> \| 'all'.|
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | Yes  | Callback function, where the **state** parameter indicates the new playback state.                     |
+| filter   |  Array\<keyof AVPlaybackState>\|'all'| Yes  | **Array\<keyof AVPlaybackState>** indicates monitoring for updates to fields in the array.<br>The value **'all'** indicates monitoring for changes of all playback state fields,|
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | Yes  | Callback function, where the **state** parameter indicates the new playback state.|
 
 **Error codes**
 
@@ -904,18 +884,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
 let playbackFilter: Array<keyof avSession.AVPlaybackState> = ['state', 'speed', 'loopMode'];
-aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 ```
@@ -934,7 +914,7 @@ Unsubscribes from playback state change events. If a callback is specified, the 
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'playbackStateChange'** in this case.   |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'playbackStateChange'** event is supported.   |
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | No  | Callback function, where the **state** parameter indicates the new playback state.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                     |
 
 **Error codes**
@@ -943,20 +923,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('playbackStateChange');
+avCastController.off('playbackStateChange');
 ```
 
 ## on('mediaItemChange')<sup>10+</sup>
 
 on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
-Subscribes to media asset change events.
+Subscribes to media asset change events. This API uses an asynchronous callback to return the result.
 
 Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
 
@@ -977,13 +957,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
+avCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
   console.info(`on mediaItemChange state : ${item.itemId}`);
 });
 ```
@@ -1002,7 +982,7 @@ Unsubscribes from media asset change events. If a callback is specified, the cor
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'mediaItemChange'** in this case.   |
+| type     | string                                                       | Yes  |Type of the event to be unsubscribed from. Currently, only the **'mediaItemChange'** event is supported.   |
 
 **Error codes**
 
@@ -1010,13 +990,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('mediaItemChange');
+avCastController.off('mediaItemChange');
 ```
 
 ## on('playNext')<sup>10+</sup>
@@ -1044,13 +1024,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.on('playNext', () => {
+avCastController.on('playNext', () => {
   console.info('on playNext');
 });
 ```
@@ -1069,7 +1049,7 @@ Unsubscribes from playNext command events. If a callback is specified, the corre
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'playNext'** in this case.   |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'playNext'** event is supported.   |
 
 **Error codes**
 
@@ -1077,13 +1057,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('playNext');
+avCastController.off('playNext');
 ```
 
 ## on('playPrevious')<sup>10+</sup>
@@ -1111,13 +1091,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.on('playPrevious', () => {
+avCastController.on('playPrevious', () => {
   console.info('on playPrevious');
 });
 ```
@@ -1136,7 +1116,7 @@ Unsubscribes from playPrevious command events. If a callback is specified, the c
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'playPrevious'** in this case.   |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'playPrevious'** event is supported.   |
 
 **Error codes**
 
@@ -1144,13 +1124,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('playPrevious');
+avCastController.off('playPrevious');
 ```
 
 ## on('requestPlay')<sup>11+</sup>
@@ -1168,7 +1148,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'requestPlay'** is triggered when a playback request is received.|
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | Yes  | Callback function, where the **AVQueueItem** parameter specifies the media asset that is being played. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object. | 
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | Yes  | Callback function, where the **AVQueueItem** parameter specifies the media asset that is being played. | 
 
 **Error codes**
 
@@ -1176,13 +1156,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
+avCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
   console.info(`on requestPlay state : ${item.itemId}`);
 });
 ```
@@ -1199,8 +1179,8 @@ Unsubscribes from playback request events. If a callback is specified, the corre
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
-| type     | string                                                      | Yes  | Event type, which is **'requestPlay'** in this case.   |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>             | No  | Callback function, where the **AVQueueItem** parameter specifies the media asset that is being played. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string                                                      | Yes  | Type of the event to be unsubscribed from. Currently, only the **'requestPlay'** event is supported.   |
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>             | No  | Callback function, where the **AVQueueItem** parameter specifies the media asset that is being played. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -1208,13 +1188,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('requestPlay');
+avCastController.off('requestPlay');
 ```
 
 ## on('endOfStream')<sup>11+</sup>
@@ -1232,7 +1212,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------| ---- | ------------------------------------------------------------ |
 | type     | string                                                      | Yes  | Event type. The event **'endOfStream'** is triggered when the playback operation is complete.|
-| callback | Callback\<void\>                                            | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.     |
+| callback | Callback\<void\>                                            | Yes  | Callback invoked when the playback operation is complete.     |
 
 **Error codes**
 
@@ -1240,13 +1220,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.on('endOfStream', () => {
+avCastController.on('endOfStream', () => {
   console.info('on endOfStream');
 });
 ```
@@ -1263,8 +1243,8 @@ Unsubscribes from the playback end events. If a callback is specified, the corre
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
-| type     | string                                                      | Yes  | Event type, which is **'endOfStream'** in this case.   |
-| callback | Callback\<void\>                                            | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.  |
+| type     | string                                                      | Yes  | Type of the event to be unsubscribed from. Currently, only the **'endOfStream'** event is supported.   |
+| callback | Callback\<void\>                                            | No  | Callback used to return the result. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.  |
 
 **Error codes**
 
@@ -1272,13 +1252,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('endOfStream');
+avCastController.off('endOfStream');
 ```
 
 ## on('seekDone')<sup>10+</sup>
@@ -1306,13 +1286,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.on('seekDone', (pos: number) => {
+avCastController.on('seekDone', (pos: number) => {
   console.info(`on seekDone pos: ${pos} `);
 });
 ```
@@ -1331,7 +1311,7 @@ Unsubscribes from the seek done events. If a callback is specified, the correspo
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'seekDone'** in this case.   |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'seekDone'** event is supported.   |
 
 **Error codes**
 
@@ -1339,18 +1319,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('seekDone');
+avCastController.off('seekDone');
 ```
 
 ## on('validCommandChange')<sup>11+</sup>
 
-on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>): void
+on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>)
 
 Subscribes to valid command change events.
 
@@ -1363,29 +1343,30 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'validCommandChange'** is triggered when the valid commands supported by the session changes.|
-| callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\>   | Yes  | Callback used for subscription. The **commands** parameter in the callback is a set of valid commands.                    |
+| callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\>   | Yes  | Callback used to return the result. The **commands** parameter in the callback is a set of valid commands.                    |
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ------------------------------ |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **Example**
 
 ```ts
-aVCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
-  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
-  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+avCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
+  console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
+  console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
 });
 ```
 
 ## off('validCommandChange')<sup>11+</sup>
 
-off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>): void
+off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>)
 
 Unsubscribes from valid command change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -1395,22 +1376,23 @@ Unsubscribes from valid command change events. If a callback is specified, the c
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'validCommandChange'** in this case.        |
-| callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\> | No  | Callback used for unsubscription. The **commands** parameter in the callback is a set of valid commands.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.         |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'validCommandChange'** event is supported.        |
+| callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\> | No  | Callback used to return the result. The **commands** parameter in the callback is a set of valid commands.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.         |
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message          |
 | -------- | ---------------- |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **Example**
 
 ```ts
-aVCastController.off('validCommandChange');
+avCastController.off('validCommandChange');
 ```
 
 ## on('videoSizeChange')<sup>12+</sup>
@@ -1426,7 +1408,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The event **'videoSizeChange'** is triggered when the video size changes.|
+| type     | string                                                       | Yes  | Event type, which is **'videoSizeChange'** in this case. This event is triggered when the video size changes.|
 | callback | (width: number, height: number) => void   | Yes  | Callback used to return the result.                   |
 
 **Error codes**
@@ -1435,14 +1417,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.on('videoSizeChange', (width: number, height: number) => {
-  console.info(`videoSizeChange : SUCCESS : size : ${width}, ${height}`);
+avCastController.on('videoSizeChange', (width: number, height: number) => {
+  console.info(`Succeeded in video size change, size: ${width}, ${height}`);
 });
 ```
 
@@ -1458,7 +1440,7 @@ Unsubscribes from video size change events. If a callback is specified, the corr
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The event **'videoSizeChange'** is triggered when the video size changes.|
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'videoSizeChange'** event is supported.|
 
 **Error codes**
 
@@ -1466,13 +1448,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('videoSizeChange');
+avCastController.off('videoSizeChange');
 ```
 
 ## on('error')<sup>10+</sup>
@@ -1496,17 +1478,17 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message             |
 | -------- | --------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 5400101  | No memory.            |
 | 5400102  | Operation not allowed.   |
 | 5400103  | I/O error.             |
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
-| 5400106  | Unsupport format.     |
+| 5400106  | Unsupported format.     |
 | 6600101  | Session service exception. |
 
 **Example**
@@ -1514,8 +1496,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.on('error', (error: BusinessError) => {
-  console.info(`error happened, error code: ${error.code}, error message : ${error.message}.`)
+avCastController.on('error', (error: BusinessError) => {
+  console.error(`error happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1537,23 +1519,23 @@ Unsubscribes from remote player errors. If a callback is specified, the correspo
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message             |
 | -------- | --------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 5400101  | No memory.            |
 | 5400102  | Operation not allowed.   |
 | 5400103  | I/O error.             |
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
-| 5400106  | Unsupport format.     |
+| 5400106  | Unsupported format.     |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('error')
+avCastController.off('error')
 ```
 
 ## on('keyRequest')<sup>12+</sup>
@@ -1582,7 +1564,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message          |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
@@ -1591,7 +1573,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
   console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
 }
-aVCastController.on('keyRequest', keyRequestCallback);
+avCastController.on('keyRequest', keyRequestCallback);
 ```
 
 ## off('keyRequest')<sup>12+</sup>
@@ -1608,8 +1590,8 @@ Unsubscribes from media key requests during the cast of online DRM resources. If
 
 | Name| Type  | Mandatory| Description                                     |
 | ------ | ------ | ---- | ----------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'keyRequest'** in this case.|
-| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'keyRequest'** event is supported.|
+| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | No  | Callback used to return the result. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
 
 **Error codes**
 
@@ -1617,13 +1599,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message          |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
 
 ```ts
-aVCastController.off('keyRequest');
+avCastController.off('keyRequest');
 ```
 
 ## on('castControlGenericError')<sup>13+</sup>
@@ -1670,8 +1652,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlGenericError', (error: BusinessError) => {
-  console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlGenericError', (error: BusinessError) => {
+  console.error(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1689,8 +1673,8 @@ Unsubscribes from generic error events during cast control. If a callback is spe
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | 	Event type, which is **'castControlGenericError'** in this case.|
-| callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string   | Yes  |  Type of the event to be unsubscribed from. Currently, only the **'keyRequest'** event is supported.|
+| callback | ErrorCallback | No  | Callback used to return the result. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -1703,7 +1687,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlGenericError');
+avCastController.off('castControlGenericError');
 ```
 
 ## on('castControlIoError')<sup>13+</sup>
@@ -1753,8 +1737,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlIoError', (error: BusinessError) => {
-  console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlIoError', (error: BusinessError) => {
+  console.error(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1772,8 +1758,8 @@ Unsubscribes from input/output error events during cast control. If a callback i
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | Event type, which is **'castControlIoError'** in this case.|
-| callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string   | Yes  | Type of the event to be unsubscribed from. Currently, only the **'castControlIoError'** event is supported.|
+| callback | ErrorCallback | No  | Callback used to return the result. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -1786,7 +1772,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlIoError');
+avCastController.off('castControlIoError');
 ```
 
 ## on('castControlParsingError')<sup>13+</sup>
@@ -1824,8 +1810,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlParsingError', (error: BusinessError) => {
-  console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlParsingError', (error: BusinessError) => {
+  console.error(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1843,8 +1831,8 @@ Unsubscribes from parsing error events during cast control. If a callback is spe
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | 	Event type, which is **'castControlParsingError'** in this case.|
-| callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string   | Yes  |  Type of the event to be unsubscribed from. Currently, only the **'castControlParsingError'** event is supported.|
+| callback | ErrorCallback | No  | Callback used to return the result. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -1857,7 +1845,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlParsingError');
+avCastController.off('castControlParsingError');
 ```
 
 ## on('castControlDecodingError')<sup>13+</sup>
@@ -1896,8 +1884,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlDecodingError', (error: BusinessError) => {
-  console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlDecodingError', (error: BusinessError) => {
+  console.error(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1915,8 +1905,8 @@ Unsubscribes from decoding error events during cast control. If a callback is sp
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | 	Event type, which is **'castControlDecodingError'** in this case.|
-| callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string   | Yes  |  Type of the event to be unsubscribed from. Currently, only the **'castControlDecodingError'** event is supported.|
+| callback | ErrorCallback | No  | Callback used to return the result. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -1929,7 +1919,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlDecodingError');
+avCastController.off('castControlDecodingError');
 ```
 
 ## on('castControlAudioRendererError')<sup>13+</sup>
@@ -1965,8 +1955,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
-  console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlAudioRendererError', (error: BusinessError) => {
+  console.error(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1984,8 +1976,8 @@ Unsubscribes from audio renderer error events during cast control. If a callback
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | Event type, which is **'castControlAudioRendererError'** in this case.|
-| callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string   | Yes  | Type of the event to be unsubscribed from. Currently, only the **'castControlAudioRendererError'** event is supported.|
+| callback | ErrorCallback | No  | Callback used to return the result. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -1998,7 +1990,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlAudioRendererError');
+avCastController.off('castControlAudioRendererError');
 ```
 
 ## on('castControlDrmError')<sup>13+</sup>
@@ -2041,8 +2033,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlDrmError', (error: BusinessError) => {
-  console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlDrmError', (error: BusinessError) => {
+  console.error(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -2060,8 +2054,8 @@ Unsubscribes from DRM error events during cast control. If a callback is specifi
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | Event type, which is **'castControlDrmError'** in this case.|
-| callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string   | Yes  | Type of the event to be unsubscribed from. Currently, only the **'castControlDrmError'** event is supported.|
+| callback | ErrorCallback | No  | Callback used to return the result. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -2074,7 +2068,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlDrmError');
+avCastController.off('castControlDrmError');
 ```
 
 ## on('customDataChange')<sup>20+</sup>
@@ -2082,6 +2076,8 @@ aVCastController.off('castControlDrmError');
 on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 Subscribes to events indicating that custom data is sent to a remote device.
+
+Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2105,8 +2101,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-aVCastController.on('customDataChange', (callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+avCastController.on('customDataChange', (data: Record<string, Object>) => {
+    console.info(`Caught customDataChange event, the new data is: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -2124,7 +2120,7 @@ Unsubscribes from events indicating that custom data is sent to a remote device.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | Yes  | Event type, which is **'customDataChange'** in this case.        |
+| type     | string                           | Yes  | Type of the event to be unsubscribed from. Currently, only the **'customDataChange'** event is supported.        |
 | callback | Callback\<Record\<string, Object>> | No  | Callback used for unsubscription. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -2138,5 +2134,5 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-aVCastController.off('customDataChange');
+avCastController.off('customDataChange');
 ```

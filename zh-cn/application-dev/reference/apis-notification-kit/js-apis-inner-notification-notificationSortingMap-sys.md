@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -22,5 +22,5 @@
 
 | 名称        | 类型     | 只读 | 可选 | 说明                                       |
 | ----------- | ------- | --- | ----- |------------------------------------------ |
-| sortings    | Record<string, [NotificationSorting](js-apis-inner-notification-notificationSorting-sys.md)\> | 是 | 否  | 通知排序信息。                                   |
+| sortings    | Record<string, [NotificationSorting](js-apis-inner-notification-notificationSorting-sys.md)\> | 是 | 否  | [通知排序](../../notification/notification-glossary.md#notification-sorting通知排序)信息。                                   |
 | sortedHashCode | Array<string\> | 是 | 否  | 通知排序的HashCode。 |
