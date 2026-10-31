@@ -11,15 +11,23 @@
 
 ## 版本概述
 
-OpenHarmony在6.1 LTS版本的基础上，更新发布6.1.1 LTS版本，在轻量和小型系统进行了相关增强。
+OpenHarmony在6.1 LTS版本的基础上，更新发布6.1.1 LTS版本，在小型系统进行了相关增强。
 
-#### 小型系统支持JS应用不同页面之间切换的动效
+#### **[小型系统支持JS应用不同页面之间切换的动效](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-LTS/zh-cn/device-dev/quick-start/application-adapter/quickstart-lite-router-page-transition.md)**
 
 - 支持JS页面淡入淡出、上下滑动、页面左右滑动等场景的切换动效
 - 支持JS应用不同页面之间切换的缩放动效
 
+#### **[小型系统图形UI组件，Flex CSS布局等能力增强](https://gitcode.com/openharmony/docs/blob/OpenHarmony-6.1-LTS/zh-cn/device-dev/quick-start/application-adapter/README-CN.md)**
 
-#### 小型系统分布式互联互通能力
+- 支持过渡、路径、专场等动画能力
+- 支持对角线以及0度，45度，90度以及135度方向的线性渐变能力
+- 支持SVG基础形状/路劲/渐变渲染能力、支持SVG多层叠加/同心圆/文本绘制以及SVG动画渲染能力，等
+- Flex 支持容器方向控制、主轴对齐控制、交叉轴对齐、换行、子项伸缩等css能力适配
+- Slider组件能力适配：刻度值数组，背景色/前景色管理、刻度标识大小，刻度值文字显示，扩展区域点击，等
+
+
+#### **[小型系统分布式互联互通能力](https://gitcode.com/openharmony/communication_dsoftbus/blob/master/README_zh.md)**
 
 - 小型设备支持分布式软总线同局域网设备与L2设备互通
 - 分布式软总线发现小型化，支持动态裁剪资源优化，支持同局域网发现协议扩展厂商自定义字段
@@ -28,13 +36,6 @@ OpenHarmony在6.1 LTS版本的基础上，更新发布6.1.1 LTS版本，在轻�
 - DM支持设备发布和发现功能，支持设备上下线监听功能
 
 
-#### 小型系统图形UI组件，Flex CSS布局等能力增强
-
-- 支持过渡、路径、专场等动画能力
-- 支持对角线以及0度，45度，90度以及135度方向的线性渐变能力
-- 支持SVG基础形状/路劲/渐变渲染能力、支持SVG多层叠加/同心圆/文本绘制以及SVG动画渲染能力，等
-- Flex 支持容器方向控制、主轴对齐控制、交叉轴对齐、换行、子项伸缩等css能力适配
-- Slider组件能力适配：刻度值数组，背景色/前景色管理、刻度标识大小，刻度值文字显示，扩展区域点击，等
 
 
 ## 配套关系
