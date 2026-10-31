@@ -70145,5 +70145,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/napi/use-napi-about-microtask.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":223,
+						"name":"napi_open_microtask_scope",
+						"start_line":105
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":28,
+						"name":"napi_open_microtask_scope_api",
+						"start_line":26
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":103,
+						"name":"ark_napi_open_microtask_scope",
+						"start_line":95
+					}
+				]
+			}
+		]
 	}
 ]
