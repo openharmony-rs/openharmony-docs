@@ -53,7 +53,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function setZoomRatio(photoSession: camera.PhotoSession, zoomRatio: number): void {
   let zoomRatioRange = photoSession.getZoomRatioRange();
   if (zoomRatio < zoomRatioRange[0] || zoomRatio > zoomRatioRange[1]) {
-    console.error(`invalide zoomRatio`);
+    console.error(`invalid zoomRatio`);
     return;
   }
   try {
@@ -142,9 +142,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number,
   photoSession: camera.PhotoSession, mode: camera.SmoothZoomMode): void {
-  let ZoomRatioRange = photoSession.getZoomRatioRange();
-  if (targetZoomRatio < ZoomRatioRange[0] || targetZoomRatio > ZoomRatioRange[1]) {
-    console.error(`invalied targetZoomRatio.`);
+  let zoomRatioRange = photoSession.getZoomRatioRange();
+  if (targetZoomRatio < zoomRatioRange[0] || targetZoomRatio > zoomRatioRange[1]) {
+    console.error(`invalid targetZoomRatio.`);
     return;
   }
   try {

@@ -96,7 +96,7 @@ import { colorSpaceManager } from '@kit.ArkGraphics2D';
 function setColorSpace(session: camera.PhotoSession, colorSpace: colorSpaceManager.ColorSpace): void {
   let colors = session.getSupportedColorSpaces();
   if (!colors.includes(colorSpace)) {
-    console.error(`invalied colorSpaces.`);
+    console.error(`invalid colorSpaces.`);
     return;
   }
   try {

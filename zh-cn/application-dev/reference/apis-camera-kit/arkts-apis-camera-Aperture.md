@@ -103,14 +103,14 @@ function setPhysicalAperture(photoSession: camera.PhotoSession, aperture: number
     let index = apertures.findIndex((apertureValue: camera.PhysicalAperture) =>
       apertureValue.apertures.includes(aperture));
     if (index < 0) {
-      console.error(`invalied aperture`);
+      console.error(`invalid aperture`);
       return;
     }
     let curZoomValue = photoSession.getZoomRatio();
     if (curZoomValue >= apertures[index].zoomRange.min && curZoomValue <= apertures[index].zoomRange.max) {
       photoSession.setPhysicalAperture(aperture);
     } else {
-      console.error(`current aperture: ${aperture} invalied in zoomRatio: ${curZoomValue}.`);
+      console.error(`current aperture: ${aperture} invalid in zoomRatio: ${curZoomValue}.`);
       return;
     }
   } catch (error) {

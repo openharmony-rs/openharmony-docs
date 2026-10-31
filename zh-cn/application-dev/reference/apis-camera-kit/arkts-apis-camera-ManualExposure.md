@@ -99,7 +99,7 @@ function setExposureDuration(photoSession: camera.PhotoSession, exposureDuration
   try {
     let durationRange = photoSession.getSupportedExposureDurationRange();
     if (!durationRange.includes(exposureDuration)) {
-      console.error(`invalied exposureDuration.`);
+      console.error(`invalid exposureDuration.`);
       return;
     }
     photoSession.setExposureDuration(exposureDuration);

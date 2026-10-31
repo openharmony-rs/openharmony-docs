@@ -98,7 +98,7 @@ function getSupportedSceneModes(cameraManager: camera.CameraManager, cameraDevic
     if (cameras.some(camera => camera.cameraId === cameraDevice.cameraId)) {
       modes = cameraManager.getSupportedSceneModes(cameraDevice);
     } else {
-      console.error(`current camera invalied.`);
+      console.error(`current camera invalid.`);
       return [];
     }
   } catch (error) {
@@ -149,7 +149,7 @@ function getSupportedOutputCapability(camera: camera.CameraDevice,
       return cameraOutputCapability;
     }
   }
-  console.error(`invalied camera or sceneMode.`);
+  console.error(`invalid camera or sceneMode.`);
   return cameraOutputCapability;
 }
 ```
@@ -202,7 +202,7 @@ function getSupportedFullOutputCapability(camera: camera.CameraDevice,
       return cameraOutputCapability;
     }
   }
-  console.error(`camera or sceneMode invalied.`);
+  console.error(`camera or sceneMode invalid.`);
   return undefined;
 }
 ```
@@ -284,7 +284,7 @@ function createCameraInput(camera: camera.CameraDevice, cameraManager: camera.Ca
     if (cameras.some(cameraValue => cameraValue.cameraId === camera.cameraId)) {
       cameraInput = cameraManager.createCameraInput(camera);
     } else {
-      console.error(`camera invalied.`);
+      console.error(`camera invalid.`);
       return undefined;
     }
   } catch (error) {
@@ -402,11 +402,11 @@ function createPreviewOutput(previewProfile: camera.Profile, cameraDevice: camer
   cameraManager: camera.CameraManager, surfaceId: string): camera.PreviewOutput | undefined {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   if (cameraOutputCapability.previewProfiles.findIndex((profile: camera.Profile) => {
-    return profile.format == previewProfile.format &&
+    return profile.format === previewProfile.format &&
       profile.size.width == previewProfile.size.width &&
       profile.size.height == previewProfile.size.height;
-  }) == -1) {
-    console.error(`invalied previewProfile.`);
+  }) === -1) {
+    console.error(`invalid previewProfile.`);
     return undefined;
   }
   let previewOutput: camera.PreviewOutput | undefined = undefined;
@@ -514,11 +514,11 @@ function createDeferredPreviewOutput(previewProfile: camera.Profile, cameraDevic
   cameraManager: camera.CameraManager): camera.PreviewOutput | undefined {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   if (cameraOutputCapability.previewProfiles.findIndex((profile: camera.Profile) => {
-    return profile.format == previewProfile.format &&
+    return profile.format === previewProfile.format &&
       profile.size.width == previewProfile.size.width &&
       profile.size.height == previewProfile.size.height;
-  }) == -1) {
-    console.error(`invalied previewProfile.`);
+  }) === -1) {
+    console.error(`invalid previewProfile.`);
     return undefined;
   }
   let previewOutput: camera.PreviewOutput | undefined = undefined;
@@ -577,11 +577,11 @@ function createPhotoOutput(photoProfile: camera.Profile, cameraDevice: camera.Ca
   cameraManager: camera.CameraManager): camera.PhotoOutput | undefined {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   if (cameraOutputCapability.photoProfiles.findIndex((profile: camera.Profile) => {
-    return profile.format == photoProfile.format &&
+    return profile.format === photoProfile.format &&
       profile.size.width == photoProfile.size.width &&
       profile.size.height == photoProfile.size.height;
-  }) == -1) {
-    console.error(`invalied photoProfile.`);
+  }) === -1) {
+    console.error(`invalid photoProfile.`);
     return undefined;
   }
   let photoOutput: camera.PhotoOutput | undefined = undefined;
@@ -648,13 +648,13 @@ function createVideoOutput(videoProfile: camera.VideoProfile, cameraDevice: came
   cameraManager: camera.CameraManager, surfaceId: string): camera.VideoOutput | undefined {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_VIDEO);
   if (cameraOutputCapability.videoProfiles.findIndex((profile: camera.VideoProfile) => {
-    return profile.format == videoProfile.format &&
+    return profile.format === videoProfile.format &&
       profile.size.width == videoProfile.size.width &&
       profile.size.height == videoProfile.size.height &&
-      profile.frameRateRange.min == videoProfile.frameRateRange.min &&
-      profile.frameRateRange.max == videoProfile.frameRateRange.max;
-  }) == -1) {
-    console.error(`invalied videoProfile.`);
+      profile.frameRateRange.min === videoProfile.frameRateRange.min &&
+      profile.frameRateRange.max === videoProfile.frameRateRange.max;
+  }) === -1) {
+    console.error(`invalid videoProfile.`);
     return undefined;
   }
   let videoOutput: camera.VideoOutput | undefined = undefined;
@@ -767,7 +767,7 @@ function createMetadataOutput(metadataTypes: Array<camera.MetadataObjectType>,
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   let metadataObjectTypes: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
   if (!metadataTypes.every(type => metadataObjectTypes.includes(type))) {
-    console.error(`invalied metadataTypes.`);
+    console.error(`invalid metadataTypes.`);
     return undefined;
   }
   let metadataOutput: camera.MetadataOutput | undefined = undefined;
@@ -830,7 +830,7 @@ function createSession(cameraManager: camera.CameraManager,
   let photoSession: camera.PhotoSession | undefined = undefined;
   let modes = cameraManager.getSupportedSceneModes(cameraDevice);
   if (!modes.includes(sceneMode)) {
-    console.error(`invalied sceneMode.`);
+    console.error(`invalid sceneMode.`);
     return undefined;
   }
   try {
@@ -1646,7 +1646,7 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager,
     // 判断选择的相机镜头组合是否在相机列表中。
     if (cameraDeviceArray.length === 0 ||
       !cameraDeviceArray.every(camera => cameras.some(cameraValue => cameraValue.cameraId === camera.cameraId))) {
-      console.error(`invalide cameraDeviceArray.`);
+      console.error(`invalid cameraDeviceArray.`);
       return cameraConcurrentInfos;
     }
     cameraConcurrentInfos = cameraManager.getCameraConcurrentInfos(cameraDeviceArray);

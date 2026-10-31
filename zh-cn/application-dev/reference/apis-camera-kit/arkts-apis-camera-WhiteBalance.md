@@ -142,7 +142,7 @@ function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession, whi
     if (whiteBalance >= whiteBalances[0] && whiteBalance <= whiteBalances[1]) {
       session.setWhiteBalance(whiteBalance);
     } else {
-      console.error(`invalied whiteBalance.`);
+      console.error(`invalid whiteBalance.`);
     }
   } catch (error) {
     let err = error as BusinessError;
@@ -232,6 +232,8 @@ function setColorTint(session: camera.PhotoSession | camera.VideoSession, colorT
     let tints: Array<number> = session.getColorTintRange();
     if (colorTint >= tints[0] && colorTint <= tints[1]) {
       session.setColorTint(colorTint);
+    } else {
+      console.error(`invalid colorTint.`);
     }
   } catch (error) {
     let err = error as BusinessError;
