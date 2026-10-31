@@ -418,16 +418,6 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 | NWebHandlerDelegate::OnNavigationEntryCommitted、<br> event_message: Commit source_id xxx | 主进程收到DidCommitNavigation。|
 | event_message: load_timing_info error_code:0,...| 主资源加载完成，以及各阶段耗时。|
 | event_message: MarkFirstContentfulPaint| 标记解析到有可显示内容的元素。|
-<!-- @[set_render_process_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/RenderAndCacheMode.ets) -->
-
-``` TypeScript
-// 设置渲染进程为单进程模式，解决 Tablet/PC/2in1 设备上多进程 iframe 加载白屏问题
-try {
-  webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
-} catch (error) {
-  console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
-}
-```
 | NWebHandlerDelegate::OnFirstContentfulPaint| 第一帧有内容展示。|
 | event_message: content load finished | 页面解析完成。|
 | event_message: page load finished、<br> NWebHandlerDelegate::OnLoadEnd、<br> NWebHandlerDelegate::MainFrame OnLoadEnd、<br> NWebHandlerDelegate::OnFirstMeaningfulPaint | 页面以及子资源加载完成。|
