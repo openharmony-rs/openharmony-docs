@@ -5996,7 +5996,7 @@ onGetVisibleFormRect(callback: formInfo.GetFormRectInfoCallback): void
 
 订阅请求可见卡片位置和尺寸事件。使用callback异步回调。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6005,6 +6005,10 @@ onGetVisibleFormRect(callback: formInfo.GetFormRectInfoCallback): void
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+
 
 **参数：**
 
@@ -6056,7 +6060,7 @@ offGetVisibleFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 
 取消订阅请求可见卡片位置和尺寸事件。使用callback异步回调。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6065,6 +6069,8 @@ offGetVisibleFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
