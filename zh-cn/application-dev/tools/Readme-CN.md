@@ -42,9 +42,10 @@
 <!--DelEnd-->
 - 命令行工具<!--command-line-utilities-->
   - [toybox工具](toybox.md)
-  - [mediatool工具](mediatool.md)
+  - [媒体库资源访问工具](mediatool.md)
   - [devicedebug工具](devicedebug-tool.md)
   - [rawheap-translator工具](rawheap-translator.md)
   - [js-rawheap-translator工具](js-rawheap-translator.md)
+  - [SourceMap Splitter工具](sourcemap-splitter-tool.md)
   <!--RP1--><!--RP1End-->
 - [二进制签名工具](binary-sign-tool.md)

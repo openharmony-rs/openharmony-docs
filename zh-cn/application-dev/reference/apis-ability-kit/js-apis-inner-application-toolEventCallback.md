@@ -20,6 +20,22 @@ ToolEventCallback用于接收CLI工具进程运行期间产生的会话事件。
 import { common } from '@kit.AbilityKit';
 ```
 
+## OnEventFn
+
+type OnEventFn = (event: CliToolEvent) => void
+
+CLI工具会话事件的回调函数类型。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | [CliToolEvent](js-apis-inner-application-cliToolEvent.md#clitoolevent) | 是 | CLI工具进程运行期间产生的会话事件。 |
+
 ## ToolEventCallback
 
 CLI工具会话事件的回调接口。
@@ -32,7 +48,7 @@ CLI工具会话事件的回调接口。
 
 | 名称    | 类型                                                 | 只读 | 可选 | 说明                      |
 | ------- | ---------------------------------------------------- | ---- | ---- | ------------------------- |
-| onEvent | (event: [CliToolEvent](js-apis-inner-application-cliToolEvent.md#clitoolevent)) => void | 否   | 否   | CLI工具会话事件回调函数。 |
+| onEvent | [OnEventFn](#oneventfn) | 否 | 否 | CLI工具会话事件回调函数。 |
 
 **示例：**
 

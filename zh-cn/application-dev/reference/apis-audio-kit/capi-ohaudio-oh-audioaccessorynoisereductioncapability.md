@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioAccessoryNoiseReductionCapability {...} OH_AudioAccessoryNoiseReductionCapability
+typedef struct {...} OH_AudioAccessoryNoiseReductionCapability
 ```
 
 ## 概述

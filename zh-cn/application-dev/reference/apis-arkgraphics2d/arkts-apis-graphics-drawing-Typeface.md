@@ -107,7 +107,7 @@ static makeFromFile(filePath: string): Typeface
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | 返回从指定字体文件加载的字体对象。 |
+| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | 返回从指定字体文件加载的字体对象。创建失败时返回undefined。 |
 
 **错误码：**
 

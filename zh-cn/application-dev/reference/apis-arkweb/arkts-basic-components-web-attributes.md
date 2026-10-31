@@ -3944,6 +3944,49 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
   }
   ```
 
+## enableBlankScreenMonitor
+
+enableBlankScreenMonitor(enable: boolean)
+
+设置是否开启白屏检测。开启白屏检测后，Web组件检测到白屏时会触发回调[onMonitoredBlankScreen](./arkts-basic-components-web-events.md#onmonitoredblankscreen)。当属性没有显式调用时，默认关闭白屏检测。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| enable | boolean | 是 | 是否开启白屏检测。true表示开启，false表示关闭。 |
+
+**示例：**
+
+  ```ts
+  // enableBlankScreenMonitor.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableBlankScreenMonitor(true)
+          .onMonitoredBlankScreen((event: MonitoredBlankScreenEventInfo)=>{
+            console.info(`Monitored blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.reason}.`);
+            console.info(`The extra message is ${event.extraMsg}.`);
+          })
+      }
+    }
+  }
+  ```
+
 ## enableImageAnalyzer<sup>23+</sup>
 
 enableImageAnalyzer(enable: boolean)

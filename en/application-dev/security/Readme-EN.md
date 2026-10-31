@@ -21,5 +21,5 @@
   - [hapsigner Overview](hapsigntool-overview.md)
   - [hapsigner Guide](hapsigntool-guidelines.md)
   - [HarmonyAppProvision File](app-provision-structure.md)
-  - [Signature Tool Error Code](hapsigntool-errorcode.md)
+  - [Signature Tool Error Codes](hapsigntool-errorcode.md)
 <!--DelEnd-->
