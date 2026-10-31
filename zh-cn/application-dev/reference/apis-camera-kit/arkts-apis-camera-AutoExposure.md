@@ -106,10 +106,10 @@ setExposureMode(aeMode: ExposureMode): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setExposureMode(photoSession: camera.PhotoSession): void {
+function setExposureMode(mode: camera.ExposureMode, photoSession: camera.PhotoSession): void {
   try {
-    if (photoSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_LOCKED)) {
-      photoSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_LOCKED);
+    if (photoSession.isExposureModeSupported(mode)) {
+      photoSession.setExposureMode(mode);
     }
   } catch (error) {
     // 失败返回错误码error.code并处理。

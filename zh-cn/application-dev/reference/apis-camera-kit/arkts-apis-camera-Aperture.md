@@ -97,11 +97,23 @@ setPhysicalAperture(aperture: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setPhysicalAperture(photoSession: camera.PhotoSession): void {
+function setPhysicalAperture(photoSession: camera.PhotoSession, aperture: number): void {
   try {
-    let apertures = photoSession.getSupportedPhysicalApertures();
-    photoSession.setZoomRatio(apertures[0].zoomRange[0]);
-    photoSession.setPhysicalAperture(apertures[0].apertures[0]);
+    let apertures: Array<camera.PhysicalAperture> = photoSession.getSupportedPhysicalApertures();
+    let index = apertures.findIndex((apertureValue: camera.PhysicalAperture) => {
+      apertureValue.apertures.includes(aperture)
+    });
+    if (index < 0) {
+      console.error(`invalied aperture`);
+      return;
+    }
+    let curZoomValue = photoSession.getZoomRatio();
+    if (curZoomValue >= apertures[index].zoomRange.min && curZoomValue <= apertures[index].zoomRange.max) {
+      photoSession.setPhysicalAperture(aperture);
+    } else {
+      console.error(`current aperture: ${aperture} invalied in zoomRatio: ${curZoomValue}.`);
+      return;
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
