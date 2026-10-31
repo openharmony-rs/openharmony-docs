@@ -136,10 +136,14 @@ setWhiteBalance(whiteBalance: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession): void {
+function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession, whiteBalance: number): void {
   try {
-    let whiteBalance: Array<number> = session.getWhiteBalanceRange();
-    session.setWhiteBalance(whiteBalance[0]);
+    let whiteBalances: Array<number> = session.getWhiteBalanceRange();
+    if (whiteBalance >= whiteBalances[0] && whiteBalance <= whiteBalances[1]) {
+      session.setWhiteBalance(whiteBalance);
+    } else {
+      console.error(`invalied whiteBalance.`);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setWhiteBalance call failed. error code: ${err.code}`);
@@ -223,10 +227,12 @@ setColorTint(colorTint: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setColorTint(session: camera.PhotoSession | camera.VideoSession): void {
-  let colorTint: Array<number> = session.getColorTintRange();
+function setColorTint(session: camera.PhotoSession | camera.VideoSession, colorTint: number): void {
   try {
-    session.setColorTint(colorTint[0]);
+    let tints: Array<number> = session.getColorTintRange();
+    if (colorTint >= tints[0] && colorTint <= tints[1]) {
+      session.setColorTint(colorTint);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setColorTint call failed. error code: ${err.code}`);

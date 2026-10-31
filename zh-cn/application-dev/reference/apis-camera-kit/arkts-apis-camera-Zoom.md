@@ -50,13 +50,14 @@ setZoomRatio(zoomRatio: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setZoomRatio(photoSession: camera.PhotoSession): void {
+function setZoomRatio(photoSession: camera.PhotoSession, zoomRatio: number): void {
   let zoomRatioRange = photoSession.getZoomRatioRange();
-  if (zoomRatioRange === undefined || zoomRatioRange.length <= 0) {
+  if (zoomRatio < zoomRatioRange[0] || zoomRatio > zoomRatioRange[1]) {
+    console.error(`invalide zoomRatio`);
     return;
   }
   try {
-    photoSession.setZoomRatio(zoomRatioRange[0]);
+    photoSession.setZoomRatio(zoomRatio);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -137,13 +138,17 @@ setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
 **示例：**
 
 ```ts
-function setSmoothZoom(sessionExtendsZoom: camera.Zoom, photoSession: camera.PhotoSession, mode: camera.SmoothZoomMode): void {
-  let targetZoomRatio = photoSession.getZoomRatioRange();
-  if (targetZoomRatio === undefined || targetZoomRatio.length <= 0) {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number,
+  photoSession: camera.PhotoSession, mode: camera.SmoothZoomMode): void {
+  let ZoomRatioRange = photoSession.getZoomRatioRange();
+  if (targetZoomRatio < ZoomRatioRange[0] || targetZoomRatio > ZoomRatioRange[1]) {
+    console.error(`invalied targetZoomRatio.`);
     return;
   }
   try {
-    sessionExtendsZoom.setSmoothZoom(targetZoomRatio[0], mode);
+    sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

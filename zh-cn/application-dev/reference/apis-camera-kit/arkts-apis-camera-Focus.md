@@ -271,9 +271,8 @@ lockFocusTracking(focusPoint: Point): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function lockFocusTracking(photoSession: camera.PhotoSession): void {
+function lockFocusTracking(focusPoint: camera.Point, photoSession: camera.PhotoSession): void {
   try {
-    const focusPoint: camera.Point = {x: 0, y: 0};
     if (photoSession.isLockFocusTrackingSupported()) {
       photoSession.lockFocusTracking(focusPoint);
     }

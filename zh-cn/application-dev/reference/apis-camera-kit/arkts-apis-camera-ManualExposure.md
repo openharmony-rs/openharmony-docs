@@ -95,10 +95,14 @@ setExposureDuration(exposureDuration: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setExposureDuration(photoSession: camera.PhotoSession): void {
+function setExposureDuration(photoSession: camera.PhotoSession, exposureDuration: number): void {
   try {
     let durationRange = photoSession.getSupportedExposureDurationRange();
-    photoSession.setExposureDuration(durationRange[0]);
+    if (!durationRange.includes(exposureDuration)) {
+      console.error(`invalied exposureDuration.`);
+      return;
+    }
+    photoSession.setExposureDuration(exposureDuration);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
