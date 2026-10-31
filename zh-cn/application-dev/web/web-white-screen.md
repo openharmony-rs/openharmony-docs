@@ -446,6 +446,15 @@ Tablet/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进�
 
 通过[setRenderProcessMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setrenderprocessmode12)设置WebView渲染模式为单进程加载。
 <!-- @[set_render_process_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/RenderAndCacheMode.ets) -->
+
+``` TypeScript
+// 设置渲染进程为单进程模式，解决 Tablet/PC/2in1 设备上多进程 iframe 加载白屏问题
+try {
+  webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
+} catch (error) {
+  console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+}
+```
    
 ## WebView默认缓存模式下缓存协商与服务端资源更新不一致导致的白屏
 
