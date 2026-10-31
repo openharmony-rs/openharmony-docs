@@ -8,13 +8,13 @@
 
 ## 场景介绍
 
-[WindowManager](../reference/apis-arkui/capi-windowmanager.md)提供应用窗口的管理能力，可以用于管理多模输入事件。
+[WindowManager](../reference/apis-arkui/capi-windowmanager.md)提供应用窗口的管理能力，可以用于管理多模[@ohos.multimodalInput.inputEvent (输入事件)](../reference/apis-input-kit/js-apis-inputevent.md)。
 
-当前支持使用WindowManager进行多模输入事件的过滤，还可以将多模触摸事件注入目标窗口，具体开发步骤可见下文。
+当前支持使用WindowManager进行多模[@ohos.multimodalInput.keyEvent (按键输入事件)](../reference/apis-input-kit/js-apis-keyevent.md)的过滤，还可以将多模触摸事件[Input_TouchEvent](../reference/apis-input-kit/capi-input-input-touchevent.md)注入目标窗口，具体开发步骤可见下文。
 
-## 过滤多模输入事件
+## 过滤多模按键输入事件
 
-使用WindowManager模块提供的能力去拦截按键事件，让按键事件不往应用内部组件分发。
+使用WindowManager模块提供的能力去拦截按键输入事件，让按键输入事件不往应用内部组件分发。
 
 ### 在CMake脚本中链接动态库
 
@@ -26,13 +26,14 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 
 | 接口名                                                       | 描述                                         |
 | ------------------------------------------------------------ | -------------------------------------------- |
-| OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter keyEventFilter) | 为指定的窗口注册过滤回调函数keyEventFilter。 |
-| OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId) | 取消指定窗口上的过滤回调函数。               |
+| [OH_NativeWindowManager_KeyEventFilter](../reference/apis-arkui/capi-oh-window-event-filter-h.md#oh_nativewindowmanager_keyeventfilter) | 定义多模按键的过滤函数。 |
+| [OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter keyEventFilter)](../reference/apis-arkui/capi-oh-window-event-filter-h.md#oh_nativewindowmanager_registerkeyeventfilter) | 为指定的窗口注册按键事件过滤函数。 |
+| [OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId)](../reference/apis-arkui/capi-oh-window-event-filter-h.md#oh_nativewindowmanager_unregisterkeyeventfilter) | 取消注册指定窗口的按键事件过滤函数。 |
 
 - 应用窗口创建后，使用窗口ID绑定按键事件过滤函数。
 - 应用窗口需要收到按键事件时，才触发按键事件的拦截。
-- 当回调函数返回true表示拦截，false表示不拦截。
-- 同一个窗口ID注册的回调函数只允许一个，最后注册的回调函数会覆盖之前注册过的回调函数。如需过滤多个按键的组合场景，建议在一个回调函数里面处理。
+- 当按键事件过滤函数返回true表示拦截，false表示不拦截。
+- 同一个窗口ID注册的按键事件过滤函数只允许一个，最后注册的过滤函数会覆盖之前注册过的过滤函数。如需过滤多个按键的组合场景，建议在一个过滤函数里面处理。
 
 ### 示例代码
 
@@ -42,7 +43,6 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 
 ``` C++
 #include "napi/native_api.h"
-#include "window_manager/oh_window_comm.h"
 #include "window_manager/oh_window_event_filter.h"
 #include "multimodalinput/oh_input_manager.h"
 #include "multimodalinput/oh_key_code.h"
@@ -117,7 +117,7 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 
 | 接口名                                                       | 描述                       |
 | ------------------------------------------------------------ | -------------------------- |
-| OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY) | 为指定的窗口注入触摸事件。 |
+| [OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)](../reference/apis-arkui/capi-oh-window-h.md#oh_windowmanager_injecttouchevent) | 为指定的窗口注入触摸事件。 |
 
 - 构造事件参数，向目标窗口ID注入事件。
 
@@ -142,7 +142,7 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
   | id         | [OH_Input_SetTouchEventFingerId](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_settoucheventfingerid) | 表示手指ID，默认值为0。<br>应为大于等于0的整数，否则返回错误码1300003。 |
   | displayX   | [OH_Input_SetTouchEventDisplayX](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_settoucheventdisplayx) | 表示事件落点相对于屏幕的横坐标，默认值为0。<br>参数应为非负整数，否则返回错误码1300003。建议与windowX保持对应关系，即使不一致也不会返回错误码，仅校验入参合法范围。转换方法推荐使用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取windowRect属性，通过displayX减去windowRect中窗口左上角横坐标计算对应的windowX。 |
   | displayY   | [OH_Input_SetTouchEventDisplayY](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_settoucheventdisplayy) | 表示事件落点相对于屏幕的纵坐标，默认值为0。<br/>参数应为非负整数，否则返回错误码1300003。建议与windowY保持对应关系，即使不一致也不会返回错误码，仅校验入参合法范围。转换方法推荐使用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取windowRect属性，通过displayY减去windowRect中窗口左上角纵坐标计算对应的windowY。 |
-  | actionTime | [OH_Input_SetTouchEventActionTime](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_settoucheventactiontime) | 表示时间戳，默认值为-1。参数应为非负整数，否则返回错误码1300003。 |
+  | actionTime | [OH_Input_SetTouchEventActionTime](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_settoucheventactiontime) | 表示时间戳，默认值为-1。 |
   | windowId   | [OH_Input_SetTouchEventWindowId](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_settoucheventwindowid) | 表示事件注入窗口ID，默认值为-1。若参数不为默认值且不等于[OH_WindowManager_InjectTouchEvent](../reference/apis-arkui/capi-oh-window-h.md#oh_windowmanager_injecttouchevent)接口参数windowId，将校验传入参数错误。 |
   | displayId  | [OH_Input_SetTouchEventDisplayId](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_settoucheventdisplayid) | 表示事件注入屏幕ID，默认值为-1。无限制，但是应该尽量保证与[OH_WindowManager_InjectTouchEvent](../reference/apis-arkui/capi-oh-window-h.md#oh_windowmanager_injecttouchevent)接口参数windowId有相互对应关系，推荐使用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取displayId属性。 |
 

@@ -4285,7 +4285,7 @@ try {
 
 on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
-开启模态窗口所遮罩区域的点击或触摸事件的监听，除模态窗口以外其他窗口调用此接口不生效。
+开启模态窗口或模态子窗所遮罩区域的点击或触摸事件的监听，除模态窗口以外其他窗口调用此接口不生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4323,7 +4323,7 @@ try {
 
 off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
-关闭模态窗口所遮罩区域的点击或触摸事件的监听。
+关闭模态窗口或模态子窗所遮罩区域的点击或触摸事件的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
