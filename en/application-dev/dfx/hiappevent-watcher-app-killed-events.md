@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=ec121c2784bcfdcd6bed31c59479fdb588154d76 translatedAt=2026-08-21T03:19:10.575Z pushedAt=2026-08-21T09:03:34.489Z -->
+<!-- md-trans-meta sourceCommit=aea3054fcb02a01f087d14db00717422495cf6f3 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
@@ -17,14 +17,11 @@ The killed event refers to a phenomenon that an application is forced to exit by
 HiAppEvent APIs for subscribing to application killed events:
 
 - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
-
 - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
 
 > **NOTE**
 >
 > Application killed events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, application killed events can be subscribed to using HiAppEvent in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
-
-The **params** attribute in the application killed event is described as follows.
 
 ## Field Description
 
@@ -39,6 +36,8 @@ The **params** attribute in the application killed event is described as follows
 | foreground | boolean | Whether the application is in the foreground. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
 | app_running_unique_id | string | Unique ID associated with the app runtime.<br>**Note**: This parameter is supported since API version 24. |
 | bundle_version | string | App version information.<br>**Note**: This parameter is supported since API version 24. |
+| calling_pid | string | ID of the process that initiates termination.<br>**Note:** Supported starting from API version 26.0.1. |
+| calling_process_name | string | Name of the process that initiates termination.<br>**Note:** Supported starting from API version 26.0.1. |
 | last_exit_detail_info | string | Detailed information before the app exits. For details, see [last_exit_detail_info](#last_exit_detail_info).<br>**Note:** This parameter is supported since API version 26.0.0. |
 
 ### reason
@@ -73,6 +72,8 @@ The **params** attribute in the application killed event is described as follows
 | Logout                        | The app sandbox is uninstalled when the user logs out.                   |
 | PermissionUpdate              | The app permissions are updated.                          |
 | aaForceStop                   | The app is forcibly stopped using the aa command.                    |
+| signalKill | The application is terminated by a signal such as SIGKILL.<br>**Note:** Supported starting from API version 26.0.1. |
+| signalExit | The application process exits voluntarily through the exit() system call.<br>**Note:** Supported starting from API version 26.0.1. |
 | ThreadBlock6S                 | The main thread of the app is frozen and times out.                       |
 | AppInputBlock                 | The user input response times out.                        |
 | LifecycleTimeout              | The app lifecycle times out.                        |

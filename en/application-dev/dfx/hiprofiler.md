@@ -6,21 +6,29 @@
 <!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=96e17581019f7c56bbb41cd0a0fe7f8461a8d7d1 translatedAt=2026-08-24T11:34:47.921Z pushedAt=2026-08-25T03:17:20.749Z -->
+<!-- md-trans-meta sourceCommit=456fe2f1321bc472dec9c4aac55a6dd86679d1a1 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
+
 
 ## Overview
 
+
 hiprofiler provides the performance profiling capabilities for you to analyze memory and performance issues.
+
 
 Its overall architecture comprises the profiling data display page on the PC and performance profiling service on the device. The PC and device services use the C/S model. The profiling data on the PC is displayed on the [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install) and [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases) pages. The device program consists of multiple parts that run in the system environment. The **hiprofilerd** process communicates with DevEco Studio to provide profiling services. The device also contains the CLI tool (**hiprofiler_cmd**) and data collection process (**hiprofiler_plugins**). Based on the Producer-Consumer model, the profiling service controls the data collection process to obtain profiling data and sends the data to DevEco Studio. Currently, plugins such as nativehook, CPU, ftrace, GPU, hiperf, xpower, and memory have been implemented, providing comprehensive profiling capabilities for CPU, GPU, memory, and power consumption.
 
+
+
 Benchmarking with profilers in the industry, hiprofiler provides more capabilities. For details, see [Plugin Parameters](#plugin-parameters), including cross-language stack unwinding, power consumption data obtaining, and long-time heap memory stack capturing.
+
+
 
 ## Environment Requirements
 
 - The environment for OpenHarmony Device Connector (hdc) has been set up. For details, see [Environment Setup](hdc.md#environment-setup).
 
 - The devices are properly connected and **hdc shell** is executed.
+
 
 ## Architecture
 
@@ -35,6 +43,7 @@ Benchmarking with profilers in the industry, hiprofiler provides more capabiliti
 5. The PC parses the data, generates lanes, and displays the obtained profiling data.
 
 ![hiprofiler-plugins](figures/hiprofiler-plugins.png)
+
 
 ## Command Syntax
 
@@ -69,6 +78,7 @@ $ hiprofiler_cmd \
 CONFIG
 ```
 
+
 | Command| Description|
 | -------- | -------- |
 | -c | After setting this option, you need to place the configuration file in the **/data/local/tmp** directory and input the path.|
@@ -80,9 +90,12 @@ CONFIG
 | start | After this option is set, profiling continues until you run the **hiprofiler_cmd stop** command. Use this command in the format **hiprofiler_cmd start params**, where **params** indicates other parameters passed to **hiprofiler_cmd**. This option cannot be used together with **-t**.<br>For details, see [Common Commands](#common-commands).<br>Note: This parameter is supported since API version 24. If **hiprofiler_cmd stop** is not executed after profiling starts, profiling ends automatically after 3600 seconds.|
 | stop | Stops profiling that was started by the **start** command.<br>Note: This parameter is supported since API version 24. The **start** and **stop** commands must be used in pairs to avoid repeatedly starting or stopping profiling.|
 
+
 After inputting the **hiprofiler_cmd** parameter, input the plugin configuration information, which starts with **<<CONFIG** and ends with **CONFIG**. The configuration varies depending on the plugin. For details, see [Plugin Parameters](#plugin-parameters).
 
+
 The following table describes the **session config** fields.
+
 
 | Field| Description|
 | -------- | -------- |
@@ -90,7 +103,9 @@ The following table describes the **session config** fields.
 | split_file | Whether to split a file. The value **true** means to split the file, and **false** means the opposite.|
 | split_file_max_size_mb | Maximum size of each split file when **split_file** is set to **true**.|
 
+
 The following table describes the **plugin_configs** fields.
+
 
 | Field| Description|
 | -------- | -------- |
@@ -98,7 +113,9 @@ The following table describes the **plugin_configs** fields.
 | sample_interval | Interval for the plugin to obtain profiling data, in milliseconds.|
 | config_data | Parameters of the plugin. The parameters required by each plugin are different. For details, see the **proto** definition of the plugins.<br>(The code path is **developtools/profiler/protos**.)|
 
+
 Download the generated trace file to the local PC by running the **hdc file recv** command, and then upload the file to SmartPerf or DevEco Studio for parsing.
+
 
 ## Plugins Supported
 
@@ -116,7 +133,9 @@ Download the generated trace file to the local PC by running the **hdc file recv
 | [hisysevent plugin](#hisysevent-plugin)| Obtains the HiSysEvent event data by running the HiSysEvent commands.| - |
 | [hidump plugin](#hidump-plugin)| Obtains the related data by running the SP_daemon commands.| - |
 
+
 ## Applications Signed by the Debug Certificate
+
 
 > **NOTE**
 >
@@ -136,7 +155,9 @@ If the application is a debug-type application, the following information is dis
 
 To build a debug application, you need to use a debug certificate for signature. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
 
+
 ## Plugin Parameters
+
 
 ### nativehook
 
@@ -191,6 +212,8 @@ Obtains the call stack information of heap memory allocations (by the **malloc**
 | RES_VMA_ARKWEB | Memory tracing for the ArkWeb PA allocator.| 23 |
 | RES_ARK_LOCAL_HANDLE | Ark local handle allocation stack.| 23 |
 | RES_COMPOSITE_HEAP | Composite heap debug log, which includes the call stack trace, heap snapshot rawheap, and map mapping file. | 26.0.0 |
+| RES_CHROMIUM_HEAP | V8 JS heap memory allocation stacks for the chromium/cef/electron frameworks. | 26.1.0 |
+| RES_VMA_CHROMIUM | PartitionAlloc allocator memory tracking for the chromium/cef/electron frameworks. | 26.1.0 |
 
 ### async_type Parameter Details
 
@@ -203,6 +226,7 @@ Obtains the call stack information of heap memory allocations (by the **malloc**
 | PROMISE | Async stacks generated by the JavaScript Promise mechanism.| 24 |
 | ARKTS_WORKER | Async stacks generated by ArkTS worker threads.| 24 |
 | ARKTS_TASKPOOL | Async stacks generated by the ArkTS task pool.| 24 |
+
 
 **Result analysis**
 
@@ -231,15 +255,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
    max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: true
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    js_stack_report: 1
@@ -276,15 +296,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
    max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: false
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    js_stack_report: 1
@@ -319,15 +335,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
    max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: true
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    statistics_interval: 10
@@ -363,15 +375,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
    max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: false
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    statistics_interval: 0
@@ -380,7 +388,6 @@ $ hiprofiler_cmd \
  }
 CONFIG
 ```
-
 ![hiprofiler-nativehook-non-statistical](figures/hiprofiler-nativehook-non-statistical.png)
 
 ### ftrace-plugin
@@ -440,6 +447,7 @@ You can click the arrow on the right of **binder transaction** to go to the proc
 
 ![hiprofiler-ftrace-binder](figures/hiprofiler-ftrace-binder.png)
 
+
 ### memory-plugin
 
 **Parameters**
@@ -453,47 +461,26 @@ You can click the arrow on the right of **binder transaction** to go to the proc
 | parse_smaps_rollup | bool | Whether to read smaps statistics from the **smaps_rollup** node.| Data is read from the **/proc/{pid}/smaps_rollup** node. The profiling effect (for CPU and memory usage) is better than that of using the **report_smaps_mem_info** parameter.|
 
 The following memory information is displayed:
-
 - **MemTotal**: total memory size.
-
 - **MemFree**: free memory size.
-
 - **Buffers**: buffer size of files.
-
 - **Cached**: cache size.
-
 - **Shmem**: size of allocated shared memory.
-
 - **Slab**: kernel data cache size.
-
 - **SUnreclaim**: size of unreclaimable slab.
-
 - **SwapTotal**: total size of the swap space.
-
 - **SwapFree**: size of the unused swap space.
-
 - **Mapped**: size of the mapping for devices and files.
-
 - **VmallocUsed**: size of the used virtual memory.
-
 - **PageTables**: size of the index table that manages memory paging.
-
 - **KernelStack**: memory consumed by the kernel.
-
 - **Active**: size of the buffer or cache page file that is frequently used.
-
 - **Inactive**: size of the buffer or cache page file that is not frequently used.
-
 - **Unevictable**: size of the memory page that cannot be released.
-
 - **VmallocTotal**: total size of the vmalloc virtual memory.
-
 - **CmaTotal**: total size of the contiguous available memory.
-
 - **CmaFree**: size of the free available memory.
-
 - **Zram**: size of the used zRAM.
-
 - **ZramTotal**: total size of zRAM.
 
 >**NOTE**
@@ -586,6 +573,7 @@ You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **M
 
 You can go to **DevEco Studio** -> **Profiler** -> **Realtime Monitor** to obtain the power consumption data of related processes.
 
+
 ### gpu-plugin
 
 Obtain the GPU usage information.
@@ -596,6 +584,7 @@ Obtain the GPU usage information.
 | -------- | -------- | -------- | -------- |
 | pid | int | Process ID to profile, which is the same as the process ID in the **/proc/** node.| - |
 | report_gpu_info | bool | Whether to display the GPU usage of a specified process.| The value **true** means to display the GPU data of a specified process (PID needs to be set), and **false** means the opposite.|
+
 
 ### cpu-plugin
 
@@ -610,17 +599,11 @@ Obtain the CPU usage information.
 | skip_thread_cpu_info | bool | Whether to skip the thread CPU usage data.| The value **true** means to not display the CPU usage of each thread, which reduces the profiling overhead;<br>the value **false** means the opposite.|
 
 The following lists the basic CPU information:
-
 - **Start Time**: start time of the collection.
-
 - **Duration**: interval between the previous collection and the current collection.
-
 - **TotalLoad%**: total CPU usage.
-
 - **UserLoad%**: CPU usage in user mode.
-
 - **SystemLoad%**: CPU usage in kernel mode.
-
 - **Process**: process ID.
 
 **Result analysis**
@@ -666,21 +649,13 @@ Obtain the disk I/O usage information of the entire device.
 | report_io_stats | IoReportType | Disk I/O statistics.| The value is an enum type. Currently, only **IO_REPORT** is supported.|
 
 When **IO_REPORT** is set, the following disk I/O information is obtained:
-
 - **Data Read**: total number of bytes read from the disk to the memory.
-
 - **Data Read/sec**: number of bytes read from the disk to the memory per second.
-
 - **Data Write**: total number of bytes written from the memory to the disk.
-
 - **Data Write/sec**: number of bytes written from the memory to the disk per second.
-
 - **Reads In**: number of bytes read.
-
 - **Reads In/sec**: number of bytes read per second.
-
 - **Write Out**: number of bytes written.
-
 - **Write Out/sec**: number of bytes written per second.
 
 **Result analysis**
@@ -715,6 +690,7 @@ This command reads the basic disk I/O statistics. After the command is executed,
 
 ![diskio_001.png](figures/diskio_001.png)
 
+
 ### hidump-plugin
 
 Obtain the frame rate of an application process.
@@ -731,6 +707,7 @@ Obtain the frame rate of an application process.
 Currently, this plugin only supports trace data parsing on DevEco Studio. SmartPerf is not supported. For details, see the following figure.
 
 ![fps_001.png](figures/fps_001.png)
+
 
 ### hisysevent-plugin
 
@@ -772,13 +749,13 @@ plugin_configs {
 }
 CONFIG
 ```
-
 This command captures information about all HiSysEvent subscriptions. After the command is executed, run the **hdc file recv /data/local/tmp/hiprofiler_data.htrace** command to export the file to the current directory, and then open and parse the file on SmartPerf. The following figure shows an example result.
 
 ![hisysevent_001.png](figures/hisysevent_001.png)
 
-### network-plugin
 
+### network-plugin
+ 
 Obtains the network upload and download data, and collects statistics on network traffic and connection status provided by the network management module.
 
 **Parameters**
@@ -794,25 +771,15 @@ Obtains the network upload and download data, and collects statistics on network
 > **startup_process_name** and **restart_process_name** cannot be both empty.
 
 The following lists the network information:
-
 - **StartTime**: start time of the collection.
-
 - **Duration**: interval between the previous collection and the current collection.
-
 - **Data Received**: total number of received network bytes.
-
 - **Data Received/sec**: number of received network bytes per second.
-
 - **Data Send**: total number of sent network bytes.
-
 - **Data Send/sec**: number of sent network bytes per second.
-
 - **Packets In**: total number of received network packets.
-
 - **Packets In/sec**: number of received network packets per second.
-
 - **Packets Out**: total number of sent network packets.
-
 - **Packets Out/sec**: number of sent network packets per second.
 
 **Result analysis**
@@ -841,13 +808,12 @@ plugin_configs {
 }
 CONFIG
 ```
-
 This command captures network data of the entire device. After the command is executed, run the **hdc file recv /data/local/tmp/hiprofiler_data.htrace** command to export the file to the current directory, and then open and parse the file on SmartPerf. The following figure shows an example result.
 
 ![network_001.png](figures/network_001.png)
 
 ### network profiler
-
+ 
 Obtains the network request information of a process, and records each HTTP request as a data point.
 
 **Parameters**
@@ -862,6 +828,7 @@ Obtains the network request information of a process, and records each HTTP requ
 | flush_interval | int | Disk flush interval.| No| A disk flush is triggered every **flush_interval** network requests, optimizing the I/O efficiency.<br>The default value is **1**.|
 | block | bool | Whether to enable the block mode.| No| **true**: Enable the block mode when the shared memory is full, which may affect the performance.<br>**false**: Discard the excess data when the shared memory is full.<br>The default value is **false**.|
 
+
 **Result analysis**
 
 Currently, SmartPerf does not support trace data parsing of this plugin. To analyze network data, use the NetWork feature of DevEco Studio Profiler. The reference is as follows:
@@ -870,14 +837,15 @@ Currently, SmartPerf does not support trace data parsing of this plugin. To anal
 
 ## Common Commands
 
-### Sampling Records of Heap Memory Allocation Call Stack Data
+### Capturing the Native Heap Memory Call Stack of a Specified Process
 
 Capture the stack of heap memory allocation operations of the **com.example.insight_test_stage** process, and enable fp stack unwinding, offline symbolization, and statistics mode.
 
 ```shell
 $ hiprofiler_cmd \
   -c - \
-  -t 30 \
+  -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
@@ -891,27 +859,278 @@ plugin_configs {
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-  save_file: false
   smb_pages: 16384
-  max_stack_depth: 20
+  max_stack_depth: 30
   process_name: "com.example.insight_test_stage"
-  string_compressed: true
   fp_unwind: true
   blocked: true
-  callframe_compress: true
-  record_accurately: true
   offline_symbolization: true
   startup_mode: false
   statistics_interval: 10
-  sample_interval: 256
+  sample_interval: 4096
   js_stack_report: 1
   max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
   }
 }
 CONFIG
 ```
 
 The collected data is saved to the **/data/local/tmp/hiprofiler_data.htrace** file, which contains the function call information, thread and dynamic library memory allocation information, call stack count and allocation size required for memory leak analysis. Enabling offline symbolization, fp stack unwinding, and statistics mode can improve the data processing efficiency of the profiling service.
+
+### Capturing the Call Stack of GlobalHandle Objects in a Specified Process
+
+Since API version 23, capturing the call stack of **napi_ref** created by a specified process is supported. Call stacks created for weak references are not captured.
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_GLOBAL_HANDLE"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
+
+### Capturing the Call Stack of LocalHandle Objects in a Specified Process
+
+Since API version 23, LocalHandle memory recording is supported. For example, you can use the following command to record memory for the **com.example.insight_test_stage** process.
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: true
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_LOCAL_HANDLE"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
+
+The LocalHandle memory recording feature requires the profiled application to load the profiling library at startup. Otherwise, LocalHandle memory information cannot be collected properly.
+
+How to load the profiling library at startup:
+
+1. If the application has exited, send the LocalHandle memory recording command with **startup_mode** set to **true**, and then start the application. Data collection starts after the application is launched.
+
+2. If the application is running, send the LocalHandle memory recording command with **startup_mode** set to **true**, and then restart the application. Data collection starts after the application restarts.
+
+> **NOTE**
+> 
+> 1. After the application loads the profiling library, the library remains effective until the application exits. Subsequently, LocalHandle memory can be recorded in non-startup mode, but **startup_mode** must be set to **false**.
+> 
+> 2. This method increases the startup time of the current launch and causes some performance loss during the current run. It does not affect subsequent use.
+> 
+> 3. LocalHandle memory captured in this way is leaked memory.
+> 
+> 4. Trace files obtained through the command line can be parsed using the DevEco Profiler [Offline Import](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388) feature. A single imported file must not exceed 1.5 GB.
+> 
+> 5. Starting from API version 26.0.0, statistics mode supports collecting local/global handle address information.
+
+### Capturing the GPU Memory Call Stack of a Specified Process
+
+Capture the GPU memory call stack of a specified process. The latest SmartPerf release is required to parse the file. Download link: [smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_GPU_VK"
+  restrace_tag: "RES_GPU_GLES_BUFFER"
+  restrace_tag: "RES_GPU_GLES_IMAGE"
+  restrace_tag: "RES_GPU_CL_BUFFER"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
+
+The **malloc_disable** parameter is used in the command to filter the native heap stack data. If the **restrace_tag** parameter does not contain **RES_GPU_CL_IMAGE**, the GPU memory allocation stack of the OpenCL image type is not captured.
+
+### Capturing the Handle Call Stack of a Specified Process
+
+To capture handle call stack data for a specified process, set **restrace_tag** to **"RES_FD_ALL"**.
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_FD_ALL"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
+
+### Capturing the DMA Memory Call Stack of a Specified Process
+
+To capture DMA memory call stack data for a specified process, set **restrace_tag** to **"RES_DMABUF_MASK"**.
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 180 \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  smb_pages: 16384
+  max_stack_depth: 30
+  process_name: "com.example.insight_test_stage"
+  fp_unwind: true
+  blocked: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_DMABUF_MASK"
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
+  }
+}
+CONFIG
+```
 
 ### Obtaining the CPU Usage of a Specified Process
 
@@ -921,7 +1140,7 @@ Collect CPU data of the process whose process ID is **1234**. The collection dur
 $ hiprofiler_cmd \
   -c - \
   -o /data/local/tmp/hiprofiler_data.htrace \
-  -t 30 \
+  -t 180 \
   -s \
   -k \
 <<CONFIG
@@ -942,158 +1161,6 @@ $ hiprofiler_cmd \
 CONFIG
 ```
 
-### Capturing the GPU Memory Call Stack of a Specified Process
-
-Capture the GPU memory call stack of a specified process. The latest SmartPerf release is required to parse the file. Download link: [smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
-
-```shell
-$ hiprofiler_cmd \
-  -c - \
-  -t 30 \
-  -s \
-  -k \
-<<CONFIG
-request_id: 1
-session_config {
-  buffers {
-  pages: 16384
-  }
-}
-plugin_configs {
-  plugin_name: "nativehook"
-  sample_interval: 5000
-  config_data {
-  save_file: false
-  smb_pages: 16384
-  max_stack_depth: 20
-  pid: 11237
-  string_compressed: true
-  fp_unwind: true
-  blocked: true
-  callframe_compress: true
-  record_accurately: true
-  offline_symbolization: true
-  startup_mode: false
-  statistics_interval: 10
-  malloc_disable: true
-  memtrace_enable: true
-  restrace_tag: "RES_GPU_VK"
-  restrace_tag: "RES_GPU_GLES_BUFFER"
-  restrace_tag: "RES_GPU_GLES_IMAGE"
-  restrace_tag: "RES_GPU_CL_BUFFER"
-  js_stack_report: 1
-  max_js_stack_depth: 10
-  }
-}
-CONFIG
-```
-
-The **malloc_disable** parameter is used in the command to filter the native heap stack data. If the **restrace_tag** parameter does not contain **RES_GPU_CL_IMAGE**, the GPU memory allocation stack of the OpenCL image type is not captured.
-
-### Capturing the Call Stack of GlobalHandle Objects in a Specified Process
-
-Since API version 23, capturing the call stack of **napi_ref** created by a specified process is supported. Call stacks created for weak references are not captured.
-
-```shell
-$ hiprofiler_cmd \
-  -c - \
-  -t 60 \
-  -o /data/local/tmp/hiprofiler_data.txt \
-  -s \
-  -k \
-<<CONFIG
-request_id: 1
-session_config {
-  buffers {
-  pages: 16384
-  }
-}
-plugin_configs {
-  plugin_name: "nativehook"
-  sample_interval: 5000
-  config_data {
-  save_file: false
-  smb_pages: 16384
-  max_stack_depth: 20
-  pid: 11237
-  string_compressed: true
-  fp_unwind: true
-  blocked: true
-  callframe_compress: true
-  record_accurately: true
-  offline_symbolization: true
-  startup_mode: false
-  statistics_interval: 10
-  malloc_disable: true
-  memtrace_enable: true
-  restrace_tag: "RES_ARK_GLOBAL_HANDLE"
-  js_stack_report: 1
-  max_js_stack_depth: 10
-  }
-}
-CONFIG
-```
-
-### Capturing the Call Stack of LocalHandle Objects in a Specified Process
-
-Since API version 23, LocalHandle memory recording is supported. For example, you can use the following command to record memory for the **com.example.insight_test_stage** process.
-
-```shell
-$ hiprofiler_cmd \
-  -c - \
-  -t 60 \
-  -o /data/local/tmp/hiprofiler_data.txt \
-  -s \
-  -k \
-<<CONFIG
-request_id: 1
-session_config {
-  buffers {
-  pages: 16384
-  }
-}
-plugin_configs {
-  plugin_name: "nativehook"
-  sample_interval: 5000
-  config_data {
-  save_file: false
-  smb_pages: 16384
-  max_stack_depth: 20
-  process_name: "com.example.insight_test_stage"
-  string_compressed: true
-  fp_unwind: true
-  blocked: true
-  callframe_compress: true
-  record_accurately: true
-  offline_symbolization: true
-  startup_mode: true
-  statistics_interval: 10
-  malloc_disable: true
-  memtrace_enable: true
-  restrace_tag: "RES_ARK_LOCAL_HANDLE"
-  js_stack_report: 1
-  max_js_stack_depth: 10
-  }
-}
-CONFIG
-```
-
-The LocalHandle memory recording feature requires the profiled application to load the profiling library at startup. Otherwise, LocalHandle memory information cannot be collected properly.
-
-How to load the profiling library at startup:
-
-1. If the application has exited, send the LocalHandle memory recording command with **startup_mode** set to **true**, and then start the application. Data collection starts after the application is launched.
-
-2. If the application is running, send the LocalHandle memory recording command with **startup_mode** set to **true**, and then restart the application. Data collection starts after the application restarts.
-
-> **NOTE**
->
-> 1. After the application loads the profiling library, the library remains effective until the application exits. After that, LocalHandle memory can be recorded in non-startup mode, but **startup_mode** must be set to **false**.
-> 2. This method increases the startup time of the current launch and causes some performance loss during the current run. It does not affect subsequent use.
-> 3. LocalHandle memory captured in this way is leaked memory.
-> 4. Trace files obtained through the command line can be parsed by using the DevEco Profiler [Offline Import](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388) feature. The size of a single imported file must not exceed 1.5 GB.
-> 5. Since API version 26.0.0, statistics mode supports collecting local/global handle address information.
-
 ### Manually Controlling the Collection Duration
 
 Use the manual start/stop profiling mode to capture the stack of heap memory allocation operations of the **com.example.insight_test_stage** process.
@@ -1103,6 +1170,7 @@ Start profiling:
 ```shell
 $ hiprofiler_cmd start \
   -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
   -s \
   -k \
 <<CONFIG
@@ -1116,28 +1184,28 @@ plugin_configs {
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-  save_file: false
   smb_pages: 16384
-  max_stack_depth: 20
+  max_stack_depth: 30
   process_name: "com.example.insight_test_stage"
-  string_compressed: true
   fp_unwind: true
   blocked: true
-  callframe_compress: true
-  record_accurately: true
   offline_symbolization: true
   startup_mode: false
   statistics_interval: 10
-  sample_interval: 256
+  sample_interval: 4096
   js_stack_report: 1
   max_js_stack_depth: 10
+  use_file_cache_mode: true
+  async_type: ALL_ASYNC_TYPE
+  async_nesting_depth: 1
+  async_task_stack_depth: 16
+  async_stack_table_size: 256
   }
 }
 CONFIG
 ```
 
 Stop profiling:
-
 ```shell
 $ hiprofiler_cmd stop
 ```
@@ -1154,7 +1222,7 @@ Since API version 24, file cache mode is supported. You can use the following me
 $ hiprofiler_cmd \
   -c - \
   -o /data/local/tmp/hiprofiler_data.htrace \
-  -t 60 \
+  -t 180 \
   -s \
   -k \
 <<CONFIG
@@ -1168,15 +1236,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
-   max_stack_depth: 20
+   max_stack_depth: 30
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: false
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    startup_mode: false
    max_js_stack_depth: 20
@@ -1203,8 +1267,8 @@ Example:
 ```shell
 $ hiprofiler_cmd \
   -c - \
-  -o /data/local/tmp/hiprofiler_data.htrace \
-  -t 60 \
+  -o /data/local/tmp/hiprofiler_data.zip \
+  -t 180 \
   -s \
   -k \
 <<CONFIG
@@ -1218,15 +1282,11 @@ $ hiprofiler_cmd \
   plugin_name: "nativehook"
   sample_interval: 5000
   config_data {
-   save_file: false
    smb_pages: 16384
-   max_stack_depth: 20
+   max_stack_depth: 30
    process_name: "com.example.insight_test_stage"
-   string_compressed: true
    fp_unwind: true
    blocked: true
-   callframe_compress: true
-   record_accurately: true
    offline_symbolization: true
    js_stack_report: 1
    max_js_stack_depth: 20
@@ -1237,12 +1297,65 @@ $ hiprofiler_cmd \
    restrace_tag: "RES_ARK_GLOBAL_HANDLE"
    startup_mode: true
    memtrace_enable: true
-   malloc_disable: false
+   malloc_disable:false
    discard_destroyed_traces: true
+   use_file_cache_mode: true
   }
  }
 CONFIG
 ```
+
+### Capturing V8 JS Heap Allocation Stacks and PartitionAlloc Memory Call Stacks for Chromium, CEF, and Electron
+
+Starting from API version 26.1.0, you can capture V8 JS heap allocation stacks and PartitionAlloc memory call stacks for the chromium/cef/electron frameworks. The following command captures heap allocation stacks for the **com.example.insight_test_stage** process with fp stack unwinding, offline symbolization, statistics mode, cross-language stack unwinding, asynchronous stack capture, startup mode, and file cache mode enabled. Use **restrace_tag** to capture V8 JS heap allocation stacks and PartitionAlloc memory tracking data for chromium/cef/electron.
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t  60 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 131072
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 1000
+  is_protobuf_serialize:true
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 50
+  process_name: "com.example.insight_test_stage"
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  statistics_interval: 1
+  startup_mode: true
+  js_stack_report: 1 
+  max_js_stack_depth: 16
+  malloc_disable: false
+  memtrace_enable: true
+  async_stack_enable: true
+  async_type: ALL_ASYNC_TYPE
+  restrace_tag: "RES_CHROMIUM_HEAP"
+  restrace_tag: "RES_VMA_CHROMIUM"
+  unique_stack_table_size:256
+  use_file_cache_mode:true
+  }
+}
+CONFIG
+```
+
+The collected data is saved to **/data/local/tmp/hiprofiler_data.htrace**. The file contains V8 JS heap allocation call stacks, PartitionAlloc memory allocation tracking data, cross-language (mixed JS and Native) call stacks, asynchronous call stacks, and statistics on call stack occurrence counts and allocation sizes for chromium/cef/electron.
 
 ## FAQs
 
@@ -1278,6 +1391,7 @@ The native heap captured by hiprofiler is different from that viewed by hidumper
 
 hidumper captures the process-level memory usage, while hiprofiler captures the heap memory data allocated by the user-mode process using basic library functions such as **malloc**, **mmap**, and **realloc**. The **operator new** function also calls **malloc**. Therefore, the native heap information captured by them differs in the thread memory cache, heap memory release delay, and memory used by the loader.
 
+
 ### What should I do if the target process freezes during profiling?
 
 **Symptom**
@@ -1289,11 +1403,8 @@ When the **hiprofiler_cmd** command is executed, and the fp or dwarf stack unwin
 You can change the **config** parameter in the **hiprofiler_cmd** command.
 
 The procedure is as follows:
-
  - Decrease the values of **max_stack_depth** and **max_js_stack_depth** to reduce the stack unwinding depth and the collection of call stack information.
-
  - Increase the value of **smb_pages** to increase the shared memory size for profiling data transmission. The default value is 16384 pages, that is, 16384 x 4096 = 67108864 bytes (64 MB). You can change the value to 128 MB.
-
  - Increase the value of **sample_interval** to increase the size of the sampling thread stack. The default value is 256. You can change the value to 512.
 
 ### What should I do if fp stack unwinding fails during profiling?

@@ -6,11 +6,12 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=e66df917b57615b81b9710929e438ae8b2dc0859 translatedAt=2026-07-30T09:22:44.701Z pushedAt=2026-07-30T11:41:11.826Z -->
+<!-- md-trans-meta sourceCommit=e66df917b57615b81b9710929e438ae8b2dc0859 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
 HiTraceMeter provides APIs for system performance tracing. You can call the APIs at key code to track processes and check system and application performance.
+
 
 ## Available APIs
 
@@ -35,6 +36,7 @@ The **HiTraceMeter** module provides APIs for performance tracing. For details, 
 
 HiTraceMeter APIs are classified into three types: synchronous timeslice tracing APIs, asynchronous timeslice tracing APIs, and integer tracing APIs. HiTraceMeter APIs are synchronous. The synchronous and asynchronous modes describe the traced services. The synchronous timeslice tracing APIs are used for synchronous services, and the asynchronous timeslice tracing APIs are used for asynchronous services. HiTraceMeter APIs can be used with [HiTraceChain](hitracechain-guidelines-ndk.md) to associate and analyze logging across devices, processes, or threads.
 
+
 ### Use Scenarios
 
 - Synchronous timeslice tracing APIs:
@@ -48,14 +50,16 @@ HiTraceMeter APIs are classified into three types: synchronous timeslice tracing
   During trace parsing, different asynchronous traces are identified by the **name** and **taskId** parameters. These two APIs must be used in sequence as a pair, with the same **name** and **taskId** passed. 
 
   Different **name** and **taskId** values must be used for different asynchronous processes. However, the same **name** and **taskId** values can be used if asynchronous processes do not occur at the same time. 
-
+  
   If the API is called incorrectly, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Integer tracing APIs:
 
   The APIs are used to trace integer variables. The **OH_HiTrace_CountTraceEx()** API is called when integer values change. You can view the change in the lane diagram of SmartPerf. The values during the interval between the start of data collection and the first logging cannot be viewed.
 
+
 ### Parameter Description
+
 
 | Name| Type| Description|
 | -------- | -------- | -------- |
@@ -68,15 +72,19 @@ HiTraceMeter APIs are classified into three types: synchronous timeslice tracing
 | callback | void (*)(bool) | Registered callback.|
 | index | int32_t | Callback index returned by **OH_HiTrace_RegisterTraceListener()**.|
 
+
 > **NOTE**
 >
 > The maximum length of a [user-mode trace](hitracemeter-view.md#user-mode-trace-format) is 512 characters. Excess characters will be truncated. Therefore, it is recommended that the total length of the **name**, **customCategory**, and **customArgs** fields be less than or equal to 420 characters.
+
 
 ## How to Develop
 
 The following is an example of a native C++ application that uses the HiTraceMeter APIs.
 
+
 ### Step 1: Creating a Project
+
 
 1. Create a project in DevEco Studio and select **Native C++**. The project directory structure is as follows:
 
@@ -101,23 +109,22 @@ The following is an example of a native C++ application that uses the HiTraceMet
    ```
 
 2. In the **entry/src/main/cpp/CMakeLists.txt** file, add **libhitrace_ndk.z.so** and **libhilog_ndk.z.so**. The complete file content is as follows:
-
     <!-- @[hitracemeter_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/CMakeLists.txt) -->
-
+    
     ``` cmake
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)
     project(HiTraceChainTest03)
-   
+    
     set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-   
+    
     if(DEFINED PACKAGE_FIND_FILE)
         include(${PACKAGE_FIND_FILE})
     endif()
-   
+    
     include_directories(${NATIVERENDER_ROOT_PATH}
                         ${NATIVERENDER_ROOT_PATH}/include)
-   
+    
     add_library(entry SHARED napi_init.cpp)
     target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)
     ```
@@ -125,7 +132,7 @@ The following is an example of a native C++ application that uses the HiTraceMet
 3. In the **entry/src/main/cpp/napi_init.cpp** file, call the HiTraceMeter NDK_C API in the **Add** function to trace performance. The sample code is as follows:
 
    <!-- @[hitracemeter_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include <cstdio>
    #include <cstring>
@@ -239,6 +246,7 @@ The following is an example of a native C++ application that uses the HiTraceMet
    }
    ```
 
+
 ### Step 2: Collecting and Viewing Trace Information
 
 1. Run the following command in DevEco Studio Terminal to enable trace capture:
@@ -267,6 +275,7 @@ The following is an example of a native C++ application that uses the HiTraceMet
    <...>-49837   (-------) [002] .... 349137.708301: tracing_mark_write: S|49837|H:myTestAsyncTrace|1003|M62|categoryTest|key0=value0,key1=value1,key2=value2,key3=value3,key4=value4,key5=value5,key6=value6,key7=value7,key8=value8,key9=value9
    <...>-49837   (-------) [002] .... 349137.708323: tracing_mark_write: F|49837|H:myTestAsyncTrace|1003|M62
    ```
+
 
 ### Step 3: Stopping Trace Capture
 

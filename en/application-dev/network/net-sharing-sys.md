@@ -5,13 +5,14 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=02d3c290f2373edf41bcd8a9d43d1c4bd235b090 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 ## Overview
 
 The Network Sharing module allows you to share your device's Internet connection with other connected devices by means of Wi-Fi hotspot, Bluetooth, and USB sharing. It also allows you to query the network sharing state and shared mobile data volume.
 
 > **NOTE**
-> To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-sharing-sys.md).
+> To ensure app running efficiency, most API calls are asynchronous. For asynchronous APIs, both callback and Promise modes are provided. The following examples use promise functions. For more modes, see [@ohos.net.sharing (Network Sharing Management)](../reference/apis-network-kit/js-apis-net-sharing-sys.md).
 
 ## Basic Concepts
 
@@ -42,14 +43,14 @@ For the complete list of APIs and example code, see [Network Sharing](../referen
 | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | isSharingSupported(callback: AsyncCallback\<boolean>): void;    | Checks whether the system supports network sharing. This API uses an asynchronous callback to return the result.                                                      |
 | isSharing(callback: AsyncCallback\<boolean>): void;             | Checks whether network sharing is active. This API uses an asynchronous callback to return the result.                                                                  |
-| startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void;  | Starts network sharing. This API uses an asynchronous callback to return the result.               |
-| stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void;  | Stops network sharing. This API uses an asynchronous callback to return the result.            |
+| startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void;  | Starts sharing. The parameter **type** indicates the sharing type, which currently supports Wi-Fi hotspot, Bluetooth, and USB. This API uses an asynchronous callback to return the result.                |
+| stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void;  | Stops sharing of the specified type. The parameter **type** indicates the sharing type, including Wi-Fi hotspot, Bluetooth, and USB. This API uses an asynchronous callback to return the result.             |
 | getStatsRxBytes(callback: AsyncCallback\<number>): void;         | Obtains the received data traffic during network sharing, in KB. This API uses an asynchronous callback to return the result.                                                       |
 | getStatsTxBytes(callback: AsyncCallback\<number>): void;         | Obtains the sent data traffic during network sharing, in KB. This API uses an asynchronous callback to return the result.                                                       |
 | getStatsTotalBytes(callback: AsyncCallback\<number>): void;      | Obtains the total data traffic during network sharing, in KB. This API uses an asynchronous callback to return the result.                                                       |
-| getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback\<Array\<string>>): void;  | Obtains the names of network interface cards (NICs) in the specified network sharing state.. This API uses an asynchronous callback to return the result.|
-| getSharingState(type: SharingIfaceType, callback: AsyncCallback\<SharingIfaceState>): void;  | Obtains the network sharing state of the specified type. This API uses an asynchronous callback to return the result. |
-| getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<string>>): void;  | Obtains regular expressions of NICs of a specified type. This API uses an asynchronous callback to return the result.|
+| getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback\<Array\<string>>): void;  | Obtains the names of network interface cards (NICs) in the specified network sharing state. This API uses an asynchronous callback to return the result.|
+| getSharingState(type: SharingIfaceType, callback: AsyncCallback\<SharingIfaceState>): void;  | Obtains the sharing state of the specified type. The parameter **type** indicates the type, which currently supports Wi-Fi hotspot, Bluetooth, and USB. This API uses an asynchronous callback to return the result.  |
+| getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<string>>): void;  | Obtains the list of NIC regular expressions that match the specified type. The parameter **type** indicates the type, which currently supports Wi-Fi hotspot, Bluetooth, and USB. This API uses an asynchronous callback to return the result. |
 | on(type: 'sharingStateChange', callback: Callback\<boolean>): void;        | Subscribes to network sharing state changes.                                                               |
 | off(type: 'sharingStateChange', callback?: Callback\<boolean>): void;      | Unsubscribes from network sharing state changes.                                                               |
 | function on(type: 'interfaceSharingStateChange', callback: Callback\<{ type: SharingIfaceType, iface: string, state: SharingIfaceState }>): void;    | Subscribes to network sharing state changes of the specified NIC.   |
@@ -105,7 +106,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.error('start wifi sharing failed');
+  console.error('stop wifi sharing failed');
 });
 ```
 
@@ -141,7 +142,7 @@ sharing.getStatsTotalBytes().then((data: number) => {
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.error('start wifi sharing failed');
+  console.error('stop wifi sharing failed');
 });
 
 // Call getStatsTotalBytes again. The data volume of network sharing has been cleared.
