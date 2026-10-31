@@ -1689,6 +1689,13 @@ function textInputBuilder(params:Params) {
   使用同层渲染技术需要显式开启同层渲染开关
 <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
 
+``` TypeScript
+Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+// ...
+  // 配置同层渲染开关开启。
+  .enableNativeEmbedMode(true)
+```
+
 - 同层标签使用有误
 
   如果使用&lt;embed&gt;标签，需要显式书写embed，并且type类型以"native/"开头；如果使用&lt;object&gt;标签，需要注册&lt;object&gt;标签及type类型。
