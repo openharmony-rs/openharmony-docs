@@ -7310,3 +7310,5 @@ struct RichEditorBuilderSpanPage {
 ```
 
 ![builderSpanInfoDemo](figures/richeditor-builderspan-info.gif)
+
+<!--no_check-->
