@@ -625,3 +625,5 @@ Using annotations on abstract classes or abstract methods is not supported; othe
 ### Child Classes Do Not Inherit Annotations
 
 A child class does not inherit the annotations of its base class, nor the annotations of the base class methods.
+
+<!--no_check-->

@@ -44,7 +44,7 @@ bm dump -n com.example.myapplication | grep fingerprint
 
 ![alt text](figures/get_fingerprint.png)
 
-* Obtain fingerprint information from the **.cer** certificate file. For details about obtaining public keys and signing information for HarmonyOS applications and atomic services, see the [App Filing FAQs](https://developer.huawei.com/consumer/cn/doc/app/50130). The fingerprint information is generated using the SHA-1 hash algorithm.
+* Obtain fingerprint information from the **.cer** certificate file. The fingerprint information is generated using the SHA-1 hash algorithm.
 
 * Obtain fingerprint information using the keytool tool. For details, see [Generating a Signing Certificate Fingerprint](https://developer.huawei.com/consumer/en/doc/AppGallery-connect-Guides/appgallerykit-preparation-game-0000001055356911#section147011294331). The fingerprint information is generated using the SHA-256 hash algorithm.
 

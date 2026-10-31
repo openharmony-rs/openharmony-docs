@@ -470,7 +470,7 @@ for (let pair of pairs) {
 
 ### for...in Loop
 
-`for...in` iterates over the **property keys** of an object (including inherited enumerable properties), unlike `for...of`, which iterates over **values**. The iteration order of `for...in` is not guaranteed to be fixed, and when iterating over an array it returns string indices (such as `"0"` instead of `0`), which can easily lead to type and logic errors. ArkTS does not support `for...in` (`arkts-no-for-in`). For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#for-in-is-not-supported). To iterate over an array, use `for...of` or `forEach`; to iterate over object keys, use `Object.keys()`.
+`for...in` iterates over the **property keys** of an object (including inherited enumerable properties), unlike `for...of`, which iterates over **values**. The iteration order of `for...in` is not guaranteed to be fixed, and when iterating over an array it returns string indices (such as `"0"` instead of `0`), which can easily lead to type and logic errors. ArkTS does not support `for...in` (`arkts-no-for-in`). For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#for--in-is-not-supported). To iterate over an array, use `for...of` or `forEach`; to iterate over object keys, use `Object.keys()`.
 
 **TypeScript Comparison**
 

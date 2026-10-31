@@ -329,7 +329,7 @@ let unicode2: string = '\u0041';          // Unicode escape ('A')
 let unicode3: string = '\x41';            // ASCII escape ('A')
 
 // Unicode code point
-let emoji: string = '\u{1F600}';          // 😀（emoji）
+let emoji: string = '\u{1F600}';          // 😀 (emoji)
 let chinese: string = '\u{4E2D}';         // the Chinese character for 'middle'
 
 // Obtain the Unicode code point of the character.
@@ -416,7 +416,7 @@ console.info(`${multibyteChinese.length.toString()}`);  // 4
 
 // Emoji character (the length of some multibyteEmoji may be 2).
 let multibyteEmoji: string = '😀';
-console.info(`${multibyteEmoji.length.toString()}`);  // 2（surrogate pair）
+console.info(`${multibyteEmoji.length.toString()}`);  // 2 (surrogate pair)
 
 // Combined character.
 let multibyteCombined: string = 'é';  // e + combining accent
@@ -770,7 +770,7 @@ let utilityCode: number = utilityText.charCodeAt(0);  // 72
 let concatenated: string = 'Hello'.concat(' ', 'World');  // "Hello World"
 
 // localeCompare: Performs locale-aware comparison.
-let comparison: number = 'a'.localeCompare('b');  // -1（a < b）
+let comparison: number = 'a'.localeCompare('b');  // -1 (a < b)
 
 // toString: Converts to a string.
 let numStr: string = (42).toString();  // "42"
