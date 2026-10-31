@@ -159,7 +159,7 @@ onOpenResource用于打开指定资源（如建立会话或连接），handle为
        return Promise.resolve(result);
      }
 
-     // 解析resource index，API版本22需要解析index字键，在API版本26及以上可直接使用。
+     // 解析resource index，API版本22需要解析index字段，在API版本26及以上可直接使用。
      const apiVersion = deviceInfo.sdkApiVersion;
      let index: string;
      if (apiVersion >= 26) {
