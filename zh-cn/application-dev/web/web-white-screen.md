@@ -311,6 +311,24 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 * 特殊协议拦截。
 * 若H5页面调用tel:、mailto:等协议导致白屏，需通过onInterceptRequest拦截并调用系统拨号能力：
 <!-- @[InterceptTelScheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/InterceptTelScheme.ets) -->
+
+``` TypeScript
+.onInterceptRequest((event) => {
+  if (!event) {
+    return null;
+  }
+  // 拦截 tel: 协议，调用系统拨号能力，阻止 Web 默认行为导致白屏
+  if (event.request.getRequestUrl().startsWith('tel:')) {
+    this.makePhoneCall(event.request.getRequestUrl(), 'onInterceptRequest');
+    // 返回非空 WebResourceResponse 阻止 Web 组件继续加载该 URL，避免白屏
+    let response = new WebResourceResponse();
+    response.setResponseCode(404);
+    response.setReasonMessage('Not Found');
+    return response;
+  }
+  return null;
+})
+```
 ## 监控内存与生命周期
 内存达到阈值会导致渲染进程被终止，从而引发白屏现象；同样，渲染进程创建失败或非正常销毁也会导致白屏。可从日志中排查原因。检查Web组件是否与WebviewController正确绑定，或是否因WebviewController提前释放导致白屏。关注日志中与Render进程相关的信息：是否存在内存泄漏使渲染内存不足。关键字“MEMORY_PRESSURE_LEVEL_CRITICAL”表明内存已达到阈值，此情形下Web可能遭遇黑屏、花屏或闪屏等异常状况，需排查是否存在内存泄漏问题。Render进程是否成功启动或异常退出。
 
