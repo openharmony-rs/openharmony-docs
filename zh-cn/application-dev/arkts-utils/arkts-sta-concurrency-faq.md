@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-ArkTS-Sta并发能力基于共享内存模型实现，[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务函数、[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)任务函数、普通对象和ArrayBuffer默认可以跨线程共享。与动态ArkTS相比，ArkTS-Sta不需要@Concurrent、@Sendable、Worker线程文件或Structured Clone，但需要开发者关注共享可变对象的同步、EAWorker生命周期和TaskPool任务编排。
+ArkTS-Sta并发能力基于共享内存模型实现，[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务函数、[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)任务函数、普通对象和ArrayBuffer默认可以跨线程共享。与动态ArkTS相比，ArkTS-Sta不需要@Concurrent、@Sendable、Worker线程文件或Structured Clone，但需要开发者关注共享可变对象的同步、EAWorker生命周期和TaskPool任务编排。
 
 本文整理ArkTS-Sta并发开发中的常见问题及排查方向。涉及TaskPool运行日志时，不同版本的日志字段可能存在差异，应以设备实际Hilog和Trace为准。
 

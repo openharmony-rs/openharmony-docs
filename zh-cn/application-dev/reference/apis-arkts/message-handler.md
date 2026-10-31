@@ -11,7 +11,7 @@ MessageHandler用于定义消息（[Message](./message.md)）的处理逻辑。�
 ## constructor
 constructor(handler: (msg:Message)=>void, worker?: EAWorker = EAWorker.current())
 
-MessageHandler的构造器用于创建MessageHandler实例，需要传入消息处理函数，可选传入[EAWorker](./eaworker_managed.md)实例。
+MessageHandler的构造器用于创建MessageHandler实例，需要传入消息处理函数，可选传入[EAWorker](./eaworker-managed.md)实例。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
@@ -19,7 +19,7 @@ MessageHandler的构造器用于创建MessageHandler实例，需要传入消息�
 |参数名|类型|必填|说明|
 |-----|----|--|----|
 |handler|(msg:Message)=>void|是|消息处理函数，用于处理接收到的消息。|
-|worker|[EAWorker](./eaworker_managed.md)|否|[EAWorker](./eaworker_managed.md)实例，默认为当前线程的[EAWorker](./eaworker_managed.md)实例。|
+|worker|[EAWorker](./eaworker-managed.md)|否|[EAWorker](./eaworker-managed.md)实例，默认为当前线程的[EAWorker](./eaworker-managed.md)实例。|
 
 **示例：**
 ```ts
@@ -32,7 +32,7 @@ let handler = new concurrency.MessageHandler((msg: concurrency.Message)=>{
 ## hasCallbacks
 hasCallbacks(callback: ()=>void): boolean
 
-查询当前MessageHandler对应的[EAWorker](./eaworker_managed.md)中是否存在由callback构造的消息。如果存在，返回true；否则，返回false。
+查询当前MessageHandler对应的[EAWorker](./eaworker-managed.md)中是否存在由callback构造的消息。如果存在，返回true；否则，返回false。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
@@ -67,7 +67,7 @@ console.info("has callback: ", handler.hasCallbacks(callback));// has callback: 
 ## hasMessages
 hasMessages(what: int): boolean
 
-检查消息中是否包含指定的标识符。当创建Message时未指定标识符时，调用此接口会返回false。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
+检查消息队列中是否存在由指定标识符构造的消息。创建Message时未指定标识符，调用此接口会返回false。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
@@ -96,9 +96,9 @@ console.info("has message: ", handler.hasMessages(1));// has message: true
 ```
 
 ## hasMessages
-hasMessages(what: int, obj: Object): boolean
+hasMessages(what: int, obj: Any): boolean
 
-检查消息中是否包含指定的标识符和数据对象。当创建Message时未指定标识符时，调用此接口会返回false。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
+检查消息队列中是否存在由指定标识符和携带数据构造的消息。携带数据使用严格相等（===）进行匹配。创建Message时未指定标识符，调用此接口会返回false。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
@@ -106,12 +106,12 @@ hasMessages(what: int, obj: Object): boolean
 |参数名|类型|必填|说明|
 |-----|----|--|----|
 |what|int|是|消息标识符。|
-|obj|Object|是|消息数据对象。|
+|obj|Any|是|消息携带的数据。|
 
 **返回值：**
 | 类型       | 说明                 |
 | -------- | ------------------ |
-| boolean   | 如果包含指定标识符和数据对象构造的消息则返回true，否则返回false。 |
+| boolean   | 如果消息队列中存在由指定标识符和携带数据构造的消息则返回true，否则返回false。 |
 
 **示例：**
 ```ts
@@ -210,7 +210,7 @@ eaw.join();
 ## removeMessages
 removeMessages(what: int): boolean
 
-从消息队列中移除指定标识符的消息。当创建Message时未指定标识符时，调用此接口会返回false且不会移除任何消息。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
+从消息队列中移除指定标识符的消息。创建Message时未指定标识符，调用此接口会返回false且不会移除任何消息。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
@@ -248,9 +248,9 @@ eaw.join();
 ```
 
 ## removeMessages
-removeMessages(what: int, obj: Object): boolean
+removeMessages(what: int, obj: Any): boolean
 
-从消息队列中移除指定标识符和数据对象构建的消息。当创建Message时未指定标识符时，调用此接口会返回false且不会移除任何消息。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
+从消息队列中移除由指定标识符和携带数据构造的消息。携带数据使用严格相等（===）进行匹配。创建Message时未指定标识符，调用此接口会返回false且不会移除任何消息。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
@@ -258,7 +258,7 @@ removeMessages(what: int, obj: Object): boolean
 |参数名|类型|必填|说明|
 |-----|----|--|----|
 |what|int|是|消息标识符。|
-|obj|Object|是|消息数据对象。|
+|obj|Any|是|消息携带的数据。|
 
 **返回值：**
 | 类型       | 说明                 |
@@ -354,14 +354,14 @@ eaw.join();
 
 getWorker(): EAWorker
 
-获取当前MessageHandler关联的[EAWorker](./eaworker_managed.md)。
+获取当前MessageHandler关联的[EAWorker](./eaworker-managed.md)。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
 | -------- | ------------------ |
-| [EAWorker](./eaworker_managed.md)   | 返回当前MessageHandler关联的[EAWorker](./eaworker_managed.md)实例。 |
+| [EAWorker](./eaworker-managed.md)   | 返回当前MessageHandler关联的[EAWorker](./eaworker-managed.md)实例。 |
 
 **示例：**
 ```ts
