@@ -22,6 +22,65 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
 
 <!-- @[set_window_layout_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/ImmersiveWeb.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: number = 0x0000;
+const TAG: string = 'ImmersiveWeb';
+const TITLE_HEIGHT: number = 56;
+const TITLE_FONT_SIZE: number = 20;
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  private win: window.Window | null = null;
+
+  aboutToAppear(): void {
+    // 设置窗口全屏，启用沉浸式效果
+    const ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    window.getLastWindow(ctx).then((win) => {
+      this.win = win;
+      win.setWindowLayoutFullScreen(true).catch((error: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `setWindowLayoutFullScreen failed: %{public}s`, error.message);
+      });
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `getLastWindow failed: %{public}s`, error.message);
+    });
+  }
+
+  aboutToDisappear(): void {
+    // 离开页面时恢复窗口布局
+    if (this.win) {
+      this.win.setWindowLayoutFullScreen(false).catch((error: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `setWindowLayoutFullScreen failed: %{public}s`, error.message);
+      });
+    }
+  }
+
+  build() {
+    Column() {
+      // 顶部标题条，背景色延伸到状态栏，直观体现沉浸式全屏效果
+      Text($r('app.string.immersive_web_title'))
+        .width('100%')
+        .height(TITLE_HEIGHT)
+        .fontSize(TITLE_FONT_SIZE)
+        .fontColor($r('app.color.immersive_title_font'))
+        .textAlign(TextAlign.Center)
+        .backgroundColor($r('app.color.immersive_title_bg'))
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP])
+
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
+    }
+  }
+}
+```
+
 - 通过[expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域，可以自定义扩展类型和方向。下面的示例中，Web组件可扩展至状态栏和导航栏，实现沉浸式效果。
 
 <!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
