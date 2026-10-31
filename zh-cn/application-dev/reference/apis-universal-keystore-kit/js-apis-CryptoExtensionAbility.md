@@ -173,7 +173,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     // ...
 
     result.handle = "your handle";
-    result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_SUCCESS;
+    result.resultCode = 0;
     return Promise.resolve(result);
   }
 }
