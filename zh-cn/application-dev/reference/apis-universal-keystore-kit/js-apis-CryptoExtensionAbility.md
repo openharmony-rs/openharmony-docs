@@ -146,17 +146,34 @@ onOpenResource(resourceId: string, params: Array\<huksExternalCrypto.HuksExterna
 **示例：**
 
 ```ts
-import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto, HuksCryptoExtensionParam, CryptoExtensionAbility, HuksCryptoExtensionResult, HuksCryptoExtensionResultCode } from '@kit.UniversalKeystoreKit';
+import { deviceInfo } from '@kit.BasicServicesKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     // 解析resourceId，打开底层句柄，并映射为新的句柄返回。
     let result: HuksCryptoExtensionResult = {
-      resultCode: 0,
-      handle: "test handle"
+      resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
     };
 
+    // 解析resource index，API版本22需要解析index字键，在API版本26及以上可直接使用。
+    const apiVersion = deviceInfo.sdkApiVersion;
+    let index: string;
+    if (apiVersion >= 26) {
+      index = resourceId;
+    } else {
+      try {
+        index = JSON.parse(resourceId)['index'];
+      } catch (e) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        return Promise.resolve(result);
+      }
+    }
+
     // ...
+
+    result.handle = "your handle";
+    result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_SUCCESS;
     return Promise.resolve(result);
   }
 }
