@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit"]
+description: "An introduction to ArkTS as the default development language for OpenHarmony, its TypeScript-based ecosystem, enhanced static checking and analysis for stability and performance, and a recommended learning path."
+keywords: ["ArkTS", "getting started with ArkTS", "TypeScript", "development language", "static checking", "OpenHarmony", "learning path"]
+doctype: guide
+status: active
+---
+
 # Getting Started with ArkTS
 
 <!--Kit: ArkTS-->
@@ -6,8 +14,9 @@
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
-ArkTS is the preferred programming language for OpenHarmony application development. Built on the [TypeScript](https://www.typescriptlang.org/) (TS) ecosystem, ArkTS extends its functionality while maintaining the basic style of TS. It enhances static check and analysis during development through standardized definitions, improving program execution stability and performance.
+ArkTS is the default programming language for OpenHarmony application development. Built on the [TypeScript](https://www.typescriptlang.org/) (TS) ecosystem, ArkTS extends its functionality while maintaining the basic style of TS. It enhances static checking and analysis during development through standardized definitions, improving program execution stability and performance.
 
 ![ArkTS](figures/arkts.png)
 
@@ -19,7 +28,7 @@ Since API version 10, ArkTS further strengthens its static check and analysis in
 
 - Forced use of static types: Static typing is one of the most important features of ArkTS. With static typing, the types of variables in the program are definite. In addition, because all types are known at compile time, the compiler can verify the code correctness, thereby reducing the type check at run time and helping improve performance.
 
-- Forbidden object layout at runtime: To achieve maximum performance, ArkTS requires that the object layout remain unchanged during program execution.
+- No changes to object layouts at runtime: To achieve maximum performance, ArkTS requires that object layouts remain unchanged during program execution.
 
 - Restricted operator semantics: For performance and code readability purposes, ArkTS restricts the semantics of some operators. For example, it confines the use of unary plus operators to numbers.
 
@@ -27,6 +36,6 @@ Since API version 10, ArkTS further strengthens its static check and analysis in
 
 ArkTS is compatible with the TS and JavaScript (JS) ecosystem, so that you can write new code or reuse existing code in TS or JS for development. For details about how the OpenHarmony system supports TS or JS language, see [ArkCompiler Runtime Compatibility with TS/JS](arkts-migration-background.md#arkcompiler-runtime-compatibility-with-tsjs).
 
-ArkTS will continue to accommodate ever-changing application development and running requirements, and gradually provides more features, such as enhanced parallelization and concurrency, improved system, and distributed development paradigm.
+ArkTS will continue to evolve with application development and runtime requirements, gradually enhancing parallelism and concurrency, extending the type system, and introducing features such as distributed development paradigms.
 
 For details about ArkTS, see [Introduction to ArkTS](../arkts-utils/arkts-overview.md).
