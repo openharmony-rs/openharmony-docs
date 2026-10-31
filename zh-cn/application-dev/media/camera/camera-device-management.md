@@ -42,7 +42,9 @@
    >
    > 如果获取对象失败，说明相机可能被占用或无法使用。如果被占用，须等到相机被释放后才能重新获取。
 
-3. 通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
+3. 获取相机列表。
+
+    方法一：获取逻辑相机，通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
 
    ```ts
    function getCameraDevices(cameraManager: camera.CameraManager): Array<camera.CameraDevice> {
@@ -60,6 +62,38 @@
        return [];
      }
    }
+   ```
+
+   方法二：获取物理相机，通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)的[getCameraDevices](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevices23)方法，获取获取当前设备支持的相机列表，筛选相机属性[CameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameradevice).isLogicalCamera为false的相机。
+
+   ```ts
+   function getPhysicalCameraDevicesFn(cameraManager: camera.CameraManager,
+   position: camera.CameraPosition, cameraTypes: Array<camera.CameraType>):  Array<camera.CameraDevice> {
+     let cameraArray: Array<camera.CameraDevice> = []
+     try {
+       cameraArray =
+         cameraManager.getCameraDevices(position, cameraTypes, camera.   ConnectionType.CAMERA_CONNECTION_BUILT_IN);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`getCameraDevices failed, err code: ${err.code}`);
+     }
+     if (cameraArray != undefined && cameraArray.length > 0) {
+       for (let index = 0; index < cameraArray.length; index++) {
+         console.info(`cameraId : ${cameraArray[index].cameraId}`);  // 获取相机ID。
+         console.info(`cameraPosition : ${cameraArray[index].cameraPosition}`);  // 获取相机位置。
+         console.info(`cameraType : ${cameraArray[index].cameraType}`);  // 获取相机类型。
+         console.info(`isLogicalCamera : ${cameraArray[index].isLogicalCamera}`);  // 获取相机连接类型。
+         if (cameraArray[index].isLogicalCamera) {
+           cameraArray.splice(index, 1); // 剔除逻辑相机。
+           console.info(`delete logicalCamera: ${cameraArray[index].cameraId}`);
+         }
+       }
+       return cameraArray;
+     } else {
+       console.error("cameraManager.getSupportedCameras error");
+       return [];
+     }
+   } 
    ```
 
 
