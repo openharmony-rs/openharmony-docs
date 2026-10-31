@@ -1664,6 +1664,13 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 
   使用同层渲染技术需要显式开启同层渲染开关
   <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  
+  ``` TypeScript
+  Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+  // ...
+    // 配置同层渲染开关开启。
+    .enableNativeEmbedMode(true)
+  ```
 
 - 同层标签使用有误
 
