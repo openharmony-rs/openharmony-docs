@@ -482,13 +482,15 @@ getVisibleFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 获取可见卡片区域的位置和尺寸。使用Promise异步回调。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
