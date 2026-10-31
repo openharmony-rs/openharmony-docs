@@ -3337,7 +3337,7 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let pageParam = new pageParam();
+            let pageParam = new PageParam();
             // 将name指定的NavDestination页面信息入栈，传递的数据为param，添加接收处理结果的onPop回调。
             this.pageInfo.pushDestinationByName('pageTwo', pageParam, (popInfo) => {
               this.message = 
