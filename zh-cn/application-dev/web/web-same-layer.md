@@ -1678,3 +1678,13 @@ function textInputBuilder(params:Params) {
 ### 涉及界面交互的ArkUI组件（如TextInput等）光标与输入框错位该如何解决？
 首先，需使用Stack包裹同层组件容器和BuilderNode。其次，同层组件容器NodeContainer应与同层标签的位置绑定。示例如下：
 <!-- @[same_layer_and_same_tag_bundle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+
+``` TypeScript
+ForEach(this.componentIdArr, (componentId: string) => {
+  NodeContainer(this.nodeControllerMap.get(componentId))
+    // 同层组件容器应与同层标签的宽高和位置绑定。
+    .position(this.positionMap.get(componentId))
+    .width(this.widthMap.get(componentId))
+    .height(this.heightMap.get(componentId))
+}, (embedId: string) => embedId)
+```
