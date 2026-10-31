@@ -130,13 +130,13 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
      JSVM_Status addRepeatStatus = OH_JSVM_SetHeapThresholdCallback(
          vm, threshold, OnHeapThresholdReached, testData);
      if (addRepeatStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Set repeated callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Set repeated callback failed (expected)");
      }
  
      JSVM_Status addInvalidStatus = OH_JSVM_SetHeapThresholdCallback(
          vm, 0, OnHeapThresholdReached, testData);
      if (addInvalidStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Set callback with 0 threshold failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Set callback with 0 threshold failed (expected)");
      }
  }
  
@@ -151,13 +151,13 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
      JSVM_Status removeRepeatStatus = OH_JSVM_ClearHeapThresholdCallback(
          vm, threshold, OnHeapThresholdReached, testData);
      if (removeRepeatStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Clear repeated callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Clear repeated callback failed (expected)");
      }
  
      JSVM_Status removeMismatchStatus = OH_JSVM_ClearHeapThresholdCallback(
          vm, 999999, OnHeapThresholdReached, testData);
      if (removeMismatchStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Clear mismatch threshold callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Clear mismatch threshold callback failed (expected)");
      }
  }
  
