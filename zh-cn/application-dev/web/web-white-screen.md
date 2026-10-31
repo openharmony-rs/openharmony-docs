@@ -114,10 +114,10 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
       以下结合示例说明如何使用HTTP或HTTPS等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js文件置于工程的rawfile目录下。当使用resource协议访问index.html时，js/script.js文件因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原有的resource协议，同时利用onInterceptRequest接口替换资源，确保js/script.js文件可以成功加载，从而解决跨域拦截问题。
     <!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-
+    
     @Entry
     @Component
     struct Index {
@@ -133,7 +133,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
         ['index.html', 'text/html'],
         ['js/script.js', 'text/javascript']
       ])
-
+    
       build() {
         Row() {
           Column() {
