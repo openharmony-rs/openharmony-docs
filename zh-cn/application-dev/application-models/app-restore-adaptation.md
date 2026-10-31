@@ -7,63 +7,31 @@
 
 [UIAbility备份恢复](ability-recover-guideline.md)基础文档介绍了通过[setRestoreEnabled()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14)开启备份恢复、通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)保存临时数据的基本用法。对使用Navigation或router等多页面路由框架的中大型应用，仅保存临时数据还不够——用户被系统回收前停留在第3层甚至更深的页面，重拉后如果只回到首页，用户体验仍然是断裂的。
 
-完成**整页页面栈与页面数据恢复**的适配涉及方案选型、恢复判定、数据通道、空值兜底、深栈补推、落盘引用等一系列改造点，手工逐项排查成本较高。为此提供了**备份恢复适配skill**：一个面向AI编码助手的适配技能，内置完整的适配知识与代码模板，辅助开发者自动化完成选型判定与代码改造。
-
-本文的核心是介绍该skill的**使用方法**；skill内置的适配知识（运行机制、约束限制、方案选型、各方案开发步骤、常见问题、验证方法）收录于文后参考章节，可配合skill产出对照阅读，也可独立阅读。
+完成**整页页面栈与页面数据恢复**的适配涉及方案选型、恢复判定、数据通道、空值兜底、深栈补推、落盘引用等一系列改造点。本文按典型应用场景梳理各个适配方案与手动适配方法：先在[典型场景矩阵](#典型场景矩阵)中对号入座确定适配方案，再按[开发步骤](#开发步骤)完成改造，各方案的接入步骤与关键代码均配有配套示例工程`UIAbilityRecover`（见[验证方法](#验证方法)）中的对应页面，开发者参照示例可独立完成接入。
 
 > **说明：**
 >
 > 本指南面向的是[UIAbility备份恢复](ability-recover-guideline.md)（default recovery，仅在应用切后台时保存、被系统回收后重拉时恢复），与[应用故障恢复](../dfx/apprecovery-guidelines.md)（fault recovery，通过`appRecovery.enableAppRecovery()`开启，面向异常崩溃场景）是两条独立链路，本文不涉及后者。
 
-## 备份恢复适配skill使用指南
+## 典型场景矩阵
 
-### skill简介
+适配前先按应用的实际场景对号入座，确定适配方案与参照示例：
 
-备份恢复适配skill是一个可装入AI编码助手（支持skill机制的编码助手）的适配技能，定位是**辅助三方开发者完成应用状态恢复与页面栈恢复改造**。
+| 场景 | 典型应用 | 数据/栈特征 | 适配方案 | 参照示例（UIAbilityRecover工程） |
+| --- | --- | --- | --- | --- |
+| 单页轻量状态恢复 | 工具类、计算器类 | 少量键值数据、无多级页面栈 | [通用基础](#通用基础)（仅做数据恢复，不配页面栈恢复） | ReaderPage的数据通道 |
+| 断点续读（页面栈不超过2层） | 阅读、资讯、视频 | 章节/进度/草稿等轻量数据，Navigation栈深不超过2 | [方案A：Navigation栈恢复](#方案anavigation栈恢复) | RestoreIndex + ReaderPage |
+| 深栈内容浏览（栈深超过2层） | 电商、社区、图片浏览 | 层层详情页深入，栈深超过2层 | 方案A + [深栈补推](#深栈补推) | DeepPage |
+| 三方路由框架 | 使用HMRouter等三方路由或自研路由的中大型应用 | 基于 uri 的路由跳转 | [方案B：路由凭证保存重放](#方案b自有路由凭证保存重放hmrouter等三方路由) | 伪代码示意（不依赖具体三方路由包） |
+| 纯@ohos.router应用 | 轻量应用 | router页面栈，页面`recoverable`默认为true | [方案C：纯@ohos.router](#方案c纯ohosrouter) | RouterPage / AdvertPage |
+| 超限数据（长草稿、编辑中内容） | 笔记、编辑器 | 单项数据可能超过序列化预算（长文本、大段编辑内容） | 任一方案叠加[方案D：超限数据落盘引用](#方案d超限数据落盘引用) | RestoreBlob + ReaderPage草稿分支 |
 
-skill内置的知识与能力：
+选型补充规则：
 
-| 能力 | 说明 |
-| --- | --- |
-| 方案选型判定 | 依据应用的路由框架（Navigation / HMRouter等三方路由 / @ohos.router / 混用 / 自研）、API版本、数据量，按决策树自动判定适配方案（方案A/B/C/D，可叠加） |
-| 代码生成 | 按选型结果产出各改造点代码：恢复判定（版本隔离）、数据通道、恢复数据中转与消费、页面参数瘦身、空值兜底、恢复守卫、深栈补推、超限数据落盘引用 |
-| 机制结论 | 内置系统机制结论（保存/恢复链路、前2页限制、序列化约束、7天过期等），避免开发者逐一踩坑 |
-| 验证清单 | 产出真机验证步骤清单（后台回收后桌面图标重拉验证页面栈与数据恢复） |
-
-skill产出的代码与本文参考章节的[开发步骤](#开发步骤)一致，配套示例工程为`UIAbilityRecover`（见[验证方法](#验证方法)）。
-
-### 获取与安装
-
-skill以目录形式分发（包含技能定义与参考文档）。安装步骤：
-
-1. 获取skill目录（获取途径以skill开放发布时的说明为准）；
-2. 将skill目录装入所用AI编码助手的技能目录（具体位置以所用助手的产品说明为准）；
-3. 安装完成后，在应用工程中启动AI编码助手会话即可使用。
-
-### 触发方式
-
-在AI编码助手会话中，用自然语言描述适配需求即可触发skill，例如包含以下关键词的对话：
-
-- “备份恢复”、“状态恢复”、“恢复现场”；
-- “页面恢复”、“页面栈恢复”；
-- “断点续读”、“续读”。
-
-skill被触发后会接管适配流程，通过多轮对话收集必要信息并逐步产出改造代码。
-
-### 使用流程
-
-skill的典型工作流程分为四步：
-
-1. **现状收集**：skill会询问应用的现状——使用的路由框架、目标API版本（`compatible`字段）、需要恢复的页面与数据类型及大致数据量。开发者按实际情况回答即可，也可以直接贴出工程的Ability/页面代码让skill自行分析；
-2. **选型判定**：skill按内置决策树判定适配方案（详见参考章节[方案选型](#方案选型)），并说明判定依据（如API compatible低于14为硬门槛、Navigation场景优先方案A、数据超预算叠加方案D）；
-3. **代码生成**：skill按选型结果逐项产出改造代码（恢复判定、数据通道、兜底、守卫等，详见参考章节[开发步骤](#开发步骤)），开发者确认后合入工程；
-4. **验证清单**：skill给出真机验证步骤（后台回收后**桌面图标重拉**，见参考章节[验证方法](#验证方法)），开发者按清单逐项断言页面栈与数据恢复。
-
-### 使用注意事项
-
-- skill产出的代码合入前应结合工程实际情况review（如Ability生命周期内已有的初始化逻辑、已有的AppStorage键名冲突）；
-- 并非所有页面都适合参与页面栈恢复——**参数可序列化且有空值兜底**的页面才允许恢复，广告页/登录页等应显式排除，skill会在逐页评估时提示；
-- 一个应用只使用一条页面栈恢复路径（系统栈恢复与自行路由重放不可混用，见参考章节[常见问题](#常见问题)）。
+- **API compatible ≥ 14是硬门槛**：低于14时`setRestoreEnabled()`不可用，无从适配；
+- Navigation与router混用的应用，**以主框架的方案为准**——混用两套恢复链路有互相破坏风险（见[常见问题](#常见问题)）；
+- 逐页评估可行性：页面参数**可序列化 + 有空值兜底**的页面才允许参与页面栈恢复（Navigation场景即加`recoverable(true)`），否则宁可只保数据不保页面——恢复出一个白屏页面比回到首页更糟；
+- 存在超限数据时，方案D可与A/B/C任意叠加。
 
 ## 运行机制
 
@@ -100,24 +68,6 @@ skill的典型工作流程分为四步：
 - 备份恢复机制依赖任务保留机制，设置`removeMissionAfterTerminate`为true或设备不支持任务保留（如PC/2in1设备）时机制不生效；
 - [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复；
 - `setRestoreEnabled()`与router页面`recoverable`属性自API 14起可用；Navigation/NavDestination的`recoverable`属性ArkTS-Dyn自API 14起可用（ArkTS-Sta自API 23起）。
-
-## 方案选型
-
-按应用使用的路由框架对号入座：
-
-| 路由框架 | 推荐方案 | 说明 |
-| --- | --- | --- |
-| Navigation（NavPathStack + NavDestination） | 方案A：Navigation栈恢复 | 系统自动恢复栈顶前2页，改造成本最低 |
-| HMRouter（@hadss/hmrouter）等三方路由 | 方案B：路由凭证保存重放 | uri天然可序列化，不受"前2页"限制，不依赖recoverable三件套 |
-| @ohos.router | 方案C：纯router | router页面`recoverable`默认为true，仅需开关+数据保存 |
-| Navigation与router混用 | 以主框架方案为准 | 混用两套恢复链路有互相破坏风险，需明确恢复目标 |
-| 自研/未知路由 | 方案B通用形态 | 保存路由凭证（uri/页面名/参数），onCreate中重放 |
-
-补充规则：
-
-- **API compatible ≥ 14是硬门槛**：低于14时`setRestoreEnabled()`不可用，无从适配；
-- 数据量超过预算（如未提交的长文本草稿）时，**方案D可与A/B/C任意叠加**；
-- 逐页评估可行性：页面参数**可序列化 + 有空值兜底**的页面才允许参与页面栈恢复（Navigation场景即加`recoverable(true)`），否则宁可只保数据不保页面——恢复出一个白屏页面比回到首页更糟。
 
 ## 开发步骤
 
@@ -335,7 +285,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 ### 方案A：Navigation栈恢复
 
-系统自动恢复Navigation路由栈（栈顶前2页），应用负责数据通道与兜底。前提三件套缺一不可：
+**适用场景**：应用使用Navigation（NavPathStack + NavDestination）路由，页面栈不超过2层（更深层级叠加深栈补推）。对应场景矩阵中的“断点续读”“深栈内容浏览”。系统自动恢复Navigation路由栈（栈顶前2页），应用负责数据通道与兜底，改造成本最低。前提三件套缺一不可：
 
 1. Navigation设置通用属性[id()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)（恢复按id匹配，不设则整座Navigation不恢复）；
 2. Navigation设置[recoverable(true)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#recoverable14)（默认false）；
@@ -434,7 +384,9 @@ onPageShow(): void {
 
 ### 方案B：自有路由凭证保存重放（HMRouter等三方路由）
 
-不依赖系统Navigation栈恢复：onSaveState只存轻量路由凭证（uri/页面名/可序列化参数），恢复启动后由应用自行重放路由。适用于HMRouter等基于uri的三方路由框架，或自研路由。
+**适用场景**：应用使用HMRouter（@hadss/hmrouter）等基于uri的三方路由框架，或自研路由。uri天然可序列化，不受Navigation“前2页”限制，不依赖recoverable三件套。
+
+不依赖系统Navigation栈恢复：onSaveState只存轻量路由凭证（uri/页面名/可序列化参数），恢复启动后由应用自行重放路由。
 
 要点：
 
@@ -471,7 +423,7 @@ if (RestoreJudge.isRestoring()) {
 
 ### 方案C：纯@ohos.router
 
-router页面的[recoverable](../reference/apis-arkui/js-apis-router.md#routeroptions)属性默认为**true**（API 14起），纯router应用只需：开启`setRestoreEnabled()` + 保存/恢复业务数据，页面栈由系统惰性全栈恢复（无Navigation"前2页"限制）。
+**适用场景**：应用使用@ohos.router路由且未混用Navigation。router页面的[recoverable](../reference/apis-arkui/js-apis-router.md#routeroptions)属性默认为**true**（API 14起），纯router应用只需：开启`setRestoreEnabled()` + 保存/恢复业务数据，页面栈由系统惰性全栈恢复（无Navigation"前2页"限制）。
 
 无需恢复的页面（广告页、活动页等）通过`recoverable: false`显式排除：
 
@@ -493,7 +445,7 @@ Button('跳转广告页（不参与恢复）')
 
 ### 方案D：超限数据落盘引用
 
-当页面数据接近或超过want.parameters序列化预算（如未提交的长文本草稿、大段编辑内容）时，数据本体写入应用沙箱文件，want.parameters中只放轻量引用对象（文件名/版本/字节数，保持1KB以内），恢复时按引用读回：
+**适用场景**：任一方案下存在单项数据接近或超过want.parameters序列化预算（如未提交的长文本草稿、大段编辑内容）时叠加使用。数据本体写入应用沙箱文件，want.parameters中只放轻量引用对象（文件名/版本/字节数，保持1KB以内），恢复时按引用读回：
 
 <!-- @[blob_ref](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/common/RestoreBlob.ets) -->
 
