@@ -100,9 +100,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function setPhysicalAperture(photoSession: camera.PhotoSession, aperture: number): void {
   try {
     let apertures: Array<camera.PhysicalAperture> = photoSession.getSupportedPhysicalApertures();
-    let index = apertures.findIndex((apertureValue: camera.PhysicalAperture) => {
-      apertureValue.apertures.includes(aperture)
-    });
+    let index = apertures.findIndex((apertureValue: camera.PhysicalAperture) =>
+      apertureValue.apertures.includes(aperture));
     if (index < 0) {
       console.error(`invalied aperture`);
       return;
