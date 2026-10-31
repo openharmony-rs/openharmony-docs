@@ -54121,7 +54121,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/outer3.ets",
 				"functions":[
 					{
-						"end_line":20,
+						"end_line":22,
 						"name":"scenario_4",
 						"start_line":16
 					}
