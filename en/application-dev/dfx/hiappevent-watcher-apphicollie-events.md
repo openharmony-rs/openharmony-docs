@@ -20,7 +20,7 @@ This topic describes task execution timeout detection principles and the meaning
 
 > **NOTE**
 >
-> You can subscribe to task execution timeout events through HiAppEvent in [app clone](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone) scenarios, but not in atomic service scenarios. Starting from API version 22, subscription is supported for [input method applications](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide).
+> You can subscribe to task execution timeout events through HiAppEvent in [app clone](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) scenarios, but not in atomic service scenarios. Starting from API version 22, subscription is supported for [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
 
 ## Detection Principles
 

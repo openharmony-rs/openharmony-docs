@@ -988,7 +988,7 @@ How to load the profiling library at startup:
 > 
 > 3. LocalHandle memory captured in this way is leaked memory.
 > 
-> 4. Trace files obtained through the command line can be parsed using the DevEco Profiler [Offline Import](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388) feature. A single imported file must not exceed 1.5 GB.
+> 4. Trace files obtained through the command line can be parsed using the DevEco Profiler [Offline Import](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388) feature. A single imported file must not exceed 1.5 GB.
 > 
 > 5. Starting from API version 26.0.0, statistics mode supports collecting local/global handle address information.
 

@@ -32,7 +32,7 @@ The following figure shows the relationship.
 
 You can obtain hdc in any of the following ways:
 
-1. Obtain hdc from the OpenHarmony SDK, which is embedded in [DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/) and requires no additional download or configuration. By default, hdc is installed in **DevEco Studio/sdk/default/openharmony/toolchains**. On macOS, the SDK is under **DevEco Studio/Contents**. Run **where hdc** or **which hdc** in the DevEco Studio terminal to view the full hdc path.
+1. Obtain hdc from the OpenHarmony SDK, which is embedded in [DevEco Studio](https://developer.huawei.com/consumer/en/deveco-studio/) and requires no additional download or configuration. By default, hdc is installed in **DevEco Studio/sdk/default/openharmony/toolchains**. On macOS, the SDK is under **DevEco Studio/Contents**. Run **where hdc** or **which hdc** in the DevEco Studio terminal to view the full hdc path.
 
 2. Obtain related tools through the SDK directory of [Command Line Tools](https://developer.huawei.com/consumer/en/download/). hdc is installed in **Command Line Tools/sdk/default/openharmony/toolchains** by default.
 
@@ -874,10 +874,10 @@ FileTransfer finish, Size:xxx, File...
 $ hdc file recv -b com.example.myapplication /test/test # Export the sandbox file test/test of com.example.myapplication.
 FileTransfer finish, Size:xxx, File...
 
-$ hdc file recv /mnt/data/100/media_fuse/Photo/相机/文件A # Export file A.
+$ hdc file recv /mnt/data/100/media_fuse/Photo/Camera/FileA # Export file A.
 FileTransfer finish, Size:xxx, File...
 
-$ hdc file recv /mnt/data/100/media_fuse/Photo/相机 # Export the Camera directory and files in the directory.
+$ hdc file recv /mnt/data/100/media_fuse/Photo/Camera # Export the Camera directory and files in the directory.
 FileTransfer finish, Size:xxx, File...
 ```
 
@@ -1836,7 +1836,7 @@ Solution: Clear the registry. The procedure is as follows:
 2. Enter the following address in the address bar, and press **Enter** to access the registry of the USB device driver.
 
    ```shell
-   计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{88bae032-5a81-49f0-bc3d-a4ff138216d6}
+   Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{88bae032-5a81-49f0-bc3d-a4ff138216d6}
    ```
 
 3. Right-click **UpperFilters** and choose **Modify** from the shortcut menu. Back up and clear the value data in the file. If the fault persists, restore the data.
