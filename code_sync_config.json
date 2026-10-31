@@ -55490,6 +55490,16 @@
 						"start_line":84
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"CMake_lib_suite_libohaudiosuite",
+						"start_line":22
+					}
+				]
 			}
 		]
 	},
@@ -55538,6 +55548,16 @@
 						"end_line":28,
 						"name":"audioSuite_AudioDataInfo",
 						"start_line":21
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"CMake_lib_suite",
+						"start_line":18
 					}
 				]
 			}
@@ -55845,6 +55865,16 @@
 						"start_line":20
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"CMake_lib_suite_libohaudiosuite",
+						"start_line":22
+					}
+				]
 			}
 		]
 	},
@@ -55918,6 +55948,16 @@
 						"end_line":28,
 						"name":"audioSuite_AudioDataInfo",
 						"start_line":21
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"CMake_lib_suite",
+						"start_line":18
 					}
 				]
 			}
