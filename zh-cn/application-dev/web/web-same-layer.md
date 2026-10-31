@@ -1632,9 +1632,27 @@ struct TextInputComponent {
 
   build() {
     Column() {
-<!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+      TextInput({text: '', placeholder: 'please input your word...'})
+        .placeholderColor(Color.Gray)
+        .id(this.params?.elementId)
+        .placeholderFont({size: 13, weight: 400})
+        .caretColor(Color.Gray)
+        .fontSize(14)
+        .fontColor(Color.Black)
+    }
+    // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
+    .width(this.params.width)
+    .height(this.params.height)
+  }
+}
 
-``` TypeScript
+// @Builder中为动态组件的具体组件内容。
+@Builder
+function textInputBuilder(params:Params) {
+  TextInputComponent({params: params})
+    .backgroundColor(Color.White)
+}
+```
 Web({src: $rawfile('test2.html'), controller: this.browserTabController})
 // ...
   // 配置同层渲染开关开启。
