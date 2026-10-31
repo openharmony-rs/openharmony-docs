@@ -1161,7 +1161,7 @@ Subscribes to the WindowStage lifecycle change event.
 >
 > 2. This API does not support listening for focus gain/loss states of the WindowStage. For such requirements, use [on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10).
 >
-> 3. For details about system mechanisms and lifecycle transitions, see [Managing the Lifecycle of an App's Main Window](../../windowmanager/window-overview.md#managing-the-lifecycle-of-an-apps-main-window).
+> 3. For details about system mechanisms and lifecycle transitions, see [Managing the Lifecycle of an App's Main Window](../../windowmanager/window-lifecycle.md#managing-the-lifecycle-of-an-apps-main-window).
 
 **Model restriction**: This API can be used only in the stage model.
 
