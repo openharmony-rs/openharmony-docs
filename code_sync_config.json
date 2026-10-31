@@ -39409,7 +39409,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidance3DES/entry/src/main/ets/pages/3des_ecb_encryption_decryption_asynchronous.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":66,
 						"name":"async_symmetry_encrypt_decrypt",
 						"start_line":16
 					}
@@ -39419,7 +39419,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidance3DES/entry/src/main/ets/pages/3des_ecb_encryption_decryption_synchronous.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":66,
 						"name":"sync_symmetry_encrypt_decrypt",
 						"start_line":16
 					}
@@ -39603,7 +39603,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/SpecifyUncompressedPublicKey.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":37,
 						"name":"convert_ecc_uncompressed_pub_keypair",
 						"start_line":16
 					}
@@ -39859,7 +39859,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Promise.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":47,
 						"name":"specify_parameter_generate_sm2_keypair",
 						"start_line":16
 					}
@@ -39909,7 +39909,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Promise.ets",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":37,
 						"name":"generate_rsa_keypair",
 						"start_line":16
 					}
@@ -39929,7 +39929,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Promise.ets",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":37,
 						"name":"generate_sm2_keypair",
 						"start_line":16
 					}
@@ -39979,7 +39979,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/singleTime/SingleTimeAsync.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":37,
 						"name":"message_digest_md5_single_time_async",
 						"start_line":15
 					}
@@ -39989,7 +39989,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/singleTime/SingleTimeSync.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":36,
 						"name":"message_digest_md5_single_time_sync",
 						"start_line":15
 					}
@@ -39999,7 +39999,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/segmentation/SegmentationAsync.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":43,
 						"name":"message_digest_md5_segmentation_async",
 						"start_line":15
 					}
@@ -40009,7 +40009,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/segmentation/SegmentationSync.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":44,
 						"name":"message_digest_md5_segmentation_sync",
 						"start_line":16
 					}
@@ -40049,7 +40049,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeAsync.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":37,
 						"name":"message_digest_sha256_single_time_async",
 						"start_line":15
 					}
@@ -40059,7 +40059,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeSync.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":36,
 						"name":"message_digest_sha256_single_time_sync",
 						"start_line":15
 					}
@@ -40069,7 +40069,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationAsync.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":43,
 						"name":"message_digest_sha256_segmentation_async",
 						"start_line":15
 					}
@@ -40079,7 +40079,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationSync.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":44,
 						"name":"message_digest_sha256_segmentation_sync",
 						"start_line":16
 					}
@@ -40219,7 +40219,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":59,
 						"name":"message_authentication_code_calculation_cmac_segmentation_async",
 						"start_line":16
 					}
@@ -40229,7 +40229,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Sync.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":57,
 						"name":"message_authentication_code_calculation_cmac_segmentation_sync",
 						"start_line":15
 					}
@@ -40239,7 +40239,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Async.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":52,
 						"name":"message_authentication_code_calculation_cmac_single_time_async",
 						"start_line":15
 					}
@@ -40249,7 +40249,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Sync.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":52,
 						"name":"message_authentication_code_calculation_cmac_single_time_sync",
 						"start_line":15
 					}
@@ -40289,7 +40289,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":49,
 						"name":"message_authentication_code_calculated_as_fragmented_hmac_async",
 						"start_line":15
 					}
@@ -40299,7 +40299,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":49,
 						"name":"message_authentication_code_calculated_as_fragmented_hmac_sync",
 						"start_line":15
 					}
@@ -40309,7 +40309,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Async.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":57,
 						"name":"message_authentication_code_calculation_hmac_one_time_incoming",
 						"start_line":16
 					}
@@ -40319,7 +40319,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Sync.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":55,
 						"name":"message_authentication_code_calculation_sync_one_time_incoming",
 						"start_line":15
 					}
@@ -40329,7 +40329,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Spec.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":52,
 						"name":"hmac_spec_async",
 						"start_line":15
 					}
@@ -40499,7 +40499,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Await.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":37,
 						"name":"generate_hmac_key",
 						"start_line":16
 					}
@@ -40509,7 +40509,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Sync.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":37,
 						"name":"generate_hmac_key_sync",
 						"start_line":16
 					}
@@ -40553,7 +40553,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/GetKeyObject.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":46,
 						"name":"specify_ecc_uncompressed_point_get_keypair",
 						"start_line":16
 					}
@@ -40563,7 +40563,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/CompressedPointData.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":35,
 						"name":"convert_ecc_uncompressed_point",
 						"start_line":16
 					}
@@ -40603,7 +40603,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha3/singleTime/SingleTimeAsync.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":37,
 						"name":"message_digest_sha3_single_time_async",
 						"start_line":15
 					}
@@ -40613,7 +40613,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha3/singleTime/SingleTimeSync.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":36,
 						"name":"message_digest_sha3_single_time_sync",
 						"start_line":15
 					}
@@ -40623,7 +40623,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha3/segmentation/SegmentationAsync.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":43,
 						"name":"message_digest_sha3_segmentation_async",
 						"start_line":15
 					}
@@ -40633,7 +40633,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha3/segmentation/SegmentationSync.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":44,
 						"name":"message_digest_sha3_segmentation_sync",
 						"start_line":16
 					}
@@ -40663,7 +40663,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Await.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":34,
 						"name":"secure_hard_ware_random_number_generation_await",
 						"start_line":15
 					}
@@ -40703,7 +40703,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/ets/pages/Await.ets",
 				"functions":[
 					{
-						"end_line":27,
+						"end_line":33,
 						"name":"secure_hard_ware_random_number_generation_await",
 						"start_line":15
 					}
@@ -40753,7 +40753,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/aes/Promise.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":33,
 						"name":"generate_aes_key",
 						"start_line":16
 					}
@@ -40763,7 +40763,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/aes/Sync.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":34,
 						"name":"generate_aes_key_sync",
 						"start_line":16
 					}
@@ -40773,7 +40773,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/sm4/Promise.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":33,
 						"name":"generate_sm4_key",
 						"start_line":16
 					}
@@ -40783,7 +40783,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/sm4/Sync.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":34,
 						"name":"generate_sm4_key_sync",
 						"start_line":16
 					}
@@ -40813,7 +40813,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/DH/DHAsync.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":43,
 						"name":"use_dh_for_key_negotiation_async",
 						"start_line":15
 					}
@@ -40823,7 +40823,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/DH/DHSync.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":45,
 						"name":"use_dh_for_key_negotiation_sync",
 						"start_line":17
 					}
@@ -40861,7 +40861,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/ECDHAsync.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":54,
 						"name":"use_ecdh_for_key_negotiation_async",
 						"start_line":15
 					}
@@ -40901,7 +40901,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Async.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":50,
 						"name":"use_x25519a_for_key_negotiation_async",
 						"start_line":15
 					}
@@ -40911,7 +40911,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Sync.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":50,
 						"name":"use_x25519a_for_key_negotiation_sync",
 						"start_line":15
 					}
@@ -40941,7 +40941,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Await.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":42,
 						"name":"use_hkdf_for_key_derivation_await",
 						"start_line":16
 					}
@@ -40961,7 +40961,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Sync.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":41,
 						"name":"use_hkdf_for_key_derivation_sync",
 						"start_line":15
 					}
@@ -40991,7 +40991,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Await.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":37,
 						"name":"use_pbkdf2_for_key_derivation_await",
 						"start_line":15
 					}
@@ -41011,7 +41011,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Sync.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":37,
 						"name":"use_pbkdf2_for_key_derivation_sync",
 						"start_line":15
 					}
@@ -41091,7 +41091,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Await.ets",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":40,
 						"name":"use_x963kdf_for_key_derivation_await",
 						"start_line":16
 					}
@@ -41111,7 +41111,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Sync.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":39,
 						"name":"use_x963kdf_for_key_derivation_sync",
 						"start_line":15
 					}
@@ -41194,7 +41194,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1/RSAPKCS1Async.ets",
 				"functions":[
 					{
-						"end_line":100,
+						"end_line":133,
 						"name":"rsa_pkcs1_encrypt_decrypt_async",
 						"start_line":16
 					}
@@ -41257,7 +41257,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyEncoding.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":36,
 						"name":"prikey_encoding",
 						"start_line":15
 					}
@@ -41391,7 +41391,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionAsync.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":84,
 						"name":"sm2_encrypt_decrypt_async",
 						"start_line":16
 					}
@@ -41441,7 +41441,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/CreateASN.1Ciphertext.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":38,
 						"name":"sm2_create_asn1_ciphertext",
 						"start_line":16
 					}
@@ -41451,7 +41451,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/ObtainCiphertext.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":41,
 						"name":"sm2_obtain_ciphertext",
 						"start_line":16
 					}
@@ -65660,7 +65660,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationAsync.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":88,
 						"name":"rsa_segmentation_encrypt_decrypt_async",
 						"start_line":16
 					}
@@ -65670,7 +65670,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationSync.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":88,
 						"name":"rsa_segmentation_encrypt_decrypt_sync",
 						"start_line":16
 					}
@@ -65680,7 +65680,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1_oaep/RSAPKCS1OAEPAsync.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":111,
 						"name":"pss_verify_rsa_keypair_sign_async",
 						"start_line":16
 					}
@@ -65690,7 +65690,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1_oaep/RSAPKCS1OAEPSync.ets",
 				"functions":[
 					{
-						"end_line":100,
+						"end_line":106,
 						"name":"pss_verify_rsa_keypair_sign_sync",
 						"start_line":16
 					}
