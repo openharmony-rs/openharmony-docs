@@ -1999,7 +1999,7 @@ getIndex(text: string): string
 
 static isBilingualIndexSupported(locale: Intl.Locale): boolean
 
-检查指定的区域是否支持双语索引。
+检查指定的区域是否支持双语索引（本地索引和英文索引）。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -2054,7 +2054,7 @@ getBilingualIndexList(mode?: BilingualIndexMode): Array&lt;string&gt;
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| Array&lt;string&gt; | 双语索引列表。其中第一个元素是“#”，后面是本地索引列表和英语索引列表。如果区域不支持双语索引，则首元素“#”后面只有本地索引列表。 |
+| Array&lt;string&gt; | 双语索引列表。其中第一个元素是'#'，后面是本地索引和英语索引。如果区域不支持双语索引，则只返回首元素'#'和本地索引。 |
 
 **示例：**
 
@@ -2068,7 +2068,7 @@ let indexList = indexUtil.getBilingualIndexList(); // indexList = ['#', 'あ', '
 
 getBilingualIndex(text: string): string
 
-获取文本的双语索引。
+获取文本的双语索引值。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2090,7 +2090,7 @@ getBilingualIndex(text: string): string
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| string | 文本对应的双语索引。文本为空或找不到正确的索引，则返回“#”。 |
+| string | 文本对应的双语索引值。文本为空或找不到正确的索引，则返回'#'。 |
 
 **示例：**
 
@@ -2117,9 +2117,9 @@ let enIndex = indexUtil.getBilingualIndex('apple'); // enIndex = 'A'
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| FULL | 0 | 全量列表：本地索引和英文索引。 |
-| COMPRESSED_EN | 1 | 压缩英文索引的列表：本地索引和被压缩成“Z”的英文索引。 |
-| COMPRESSED_LOCAL | 2 | 压缩本地索引的列表：被压缩成首个索引值的本地索引和英文索引。 |
+| FULL | 0 | 全量索引，列表由本地索引和英文索引组成。 |
+| COMPRESSED_EN | 1 | 压缩英文索引。压缩后，英文索引聚合为一个'Z'，列表由本地索引和'Z'组成。 |
+| COMPRESSED_LOCAL | 2 | 压缩本地索引。压缩后，本地索引聚合为其首索引值，列表由本地索引的首索引值和英文索引组成。 |
 
 ## i18n.getLineInstance<sup>8+</sup>
 
