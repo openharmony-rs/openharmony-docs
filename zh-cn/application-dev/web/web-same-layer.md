@@ -470,7 +470,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 ```
 
 应用侧代码。
-  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets ) -->
 
 ## 绘制XComponent+AVPlayer和Button组件
 
