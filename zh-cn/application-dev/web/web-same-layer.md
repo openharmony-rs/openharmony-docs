@@ -1632,7 +1632,14 @@ struct TextInputComponent {
 
   build() {
     Column() {
-      TextInput({text: '', placeholder: 'please input your word...'})
+<!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+
+``` TypeScript
+Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+// ...
+  // 配置同层渲染开关开启。
+  .enableNativeEmbedMode(true)
+```
         .placeholderColor(Color.Gray)
         .id(this.params?.elementId)
         .placeholderFont({size: 13, weight: 400})
