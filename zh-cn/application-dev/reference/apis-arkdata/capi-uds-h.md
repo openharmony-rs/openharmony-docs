@@ -26,115 +26,127 @@
 
 | 名称                                           | typedef关键字     | 描述                                   |
 | ---------------------------------------------- | ----------------- | -------------------------------------- |
-| [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)     | OH_UdsPlainText   | 描述纯文本类型数据的统一数据结构。     |
-| [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)     | OH_UdsHyperlink   | 描述超链接类型的统一数据结构。         |
-| [OH_UdsHtml](capi-udmf-oh-udshtml.md)               | OH_UdsHtml        | 描述超文本标记语言类型的统一数据结构。 |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)         | OH_UdsAppItem     | 描述桌面图标类型的统一数据结构。       |
-| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)         | OH_UdsFileUri     | 描述文件Uri类型的统一数据结构。        |
-| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)       | OH_UdsPixelMap    | 描述像素图片类型的统一数据结构。       |
-| [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) | OH_UdsArrayBuffer | 描述ArrayBuffer类型的统一数据结构。    |
-| [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) | OH_UdsContentForm | 描述内容卡片类型的统一数据结构。       |
-| [OH_UdsDetails](capi-udmf-oh-udsdetails.md) | OH_UdsDetails | 描述字典类型的统一数据结构。 |
+| [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)    | OH_UdsPlainText   | 描述纯文本类型数据的统一数据结构。     |
+| [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)    | OH_UdsHyperlink   | 描述超链接类型的统一数据结构。         |
+| [OH_UdsHtml](capi-udmf-oh-udshtml.md)              | OH_UdsHtml        | 描述超文本标记语言类型的统一数据结构。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)        | OH_UdsAppItem     | 描述桌面图标类型的统一数据结构。       |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)        | OH_UdsFileUri     | 描述文件Uri类型的统一数据结构。        |
+| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)      | OH_UdsPixelMap    | 描述像素图片类型的统一数据结构。       |
+| [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)| OH_UdsArrayBuffer | 描述ArrayBuffer类型的统一数据结构。    |
+| [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)| OH_UdsContentForm | 描述内容卡片类型的统一数据结构。       |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)| OH_UdsDetails | 描述字典类型的统一数据结构。 |
+| [OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md)| OH_UDMF_VirtualFileCallbacks | 描述用于提供虚拟文件元数据和内容的回调。<br> `structSize`必须设置为`sizeof(OH_UDMF_VirtualFileCallbacks)`。 `onRead`为必选回调，`onStat`和`onCancel`为可选回调；所有文件必须预先声明大小。 不需要取消通知时，将`onCancel`设置为nullptr。 不同线程可能并发调用回调，回调不可无限期阻塞。 |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)| OH_UDMF_VirtualItem | 描述虚拟文件或虚拟目录的节点。 |
+| [OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)| OH_UDMF_VirtualFileInfo | 描述虚拟文件的入口及其数据回调。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Udmf_AuthPermission](#udmf_authpermission) | Udmf_AuthPermission | 拖拽场景下的URI授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。|
+| [Udmf_AuthPermission](#udmf_authpermission)| Udmf_AuthPermission | 拖拽场景下的URI授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。|
 
 ### 函数
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_UdsPlainText* OH_UdsPlainText_Create()](#oh_udsplaintext_create) | 创建纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsPlainText_Destroy](capi-uds-h.md#oh_udsplaintext_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UdsPlainText_Destroy(OH_UdsPlainText* pThis)](#oh_udsplaintext_destroy) | 销毁纯文本类型数据[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)指针指向的实例对象。 |
-| [const char* OH_UdsPlainText_GetType(OH_UdsPlainText* pThis)](#oh_udsplaintext_gettype) | 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取类型ID。 |
-| [const char* OH_UdsPlainText_GetContent(OH_UdsPlainText* pThis)](#oh_udsplaintext_getcontent) | 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取纯文本内容信息。 |
-| [const char* OH_UdsPlainText_GetAbstract(OH_UdsPlainText* pThis)](#oh_udsplaintext_getabstract) | 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取纯文本摘要信息。 |
-| [int OH_UdsPlainText_SetContent(OH_UdsPlainText* pThis, const char* content)](#oh_udsplaintext_setcontent) | 设置纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中的纯文本内容参数。 |
-| [int OH_UdsPlainText_SetAbstract(OH_UdsPlainText* pThis, const char* abstract)](#oh_udsplaintext_setabstract) | 设置纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中的纯文本摘要参数。 |
-| [OH_UdsHyperlink* OH_UdsHyperlink_Create()](#oh_udshyperlink_create) | 创建超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsHyperlink_Destroy](capi-uds-h.md#oh_udshyperlink_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)](#oh_udshyperlink_destroy) | 销毁超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)指针指向的实例对象。 |
-| [const char* OH_UdsHyperlink_GetType(OH_UdsHyperlink* pThis)](#oh_udshyperlink_gettype) | 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取类型ID。 |
-| [const char* OH_UdsHyperlink_GetUrl(OH_UdsHyperlink* pThis)](#oh_udshyperlink_geturl) | 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取URL参数。 |
-| [const char* OH_UdsHyperlink_GetDescription(OH_UdsHyperlink* pThis)](#oh_udshyperlink_getdescription) | 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取描述参数。 |
-| [int OH_UdsHyperlink_SetUrl(OH_UdsHyperlink* pThis, const char* url)](#oh_udshyperlink_seturl) | 设置超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例中URL参数。 |
-| [int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* description)](#oh_udshyperlink_setdescription) | 设置超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例中描述参数。 |
-| [OH_UdsHtml* OH_UdsHtml_Create()](#oh_udshtml_create)        | 创建超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsHtml_Destroy](capi-uds-h.md#oh_udshtml_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UdsHtml_Destroy(OH_UdsHtml* pThis)](#oh_udshtml_destroy) | 销毁超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)指针指向的实例对象。 |
-| [const char* OH_UdsHtml_GetType(OH_UdsHtml* pThis)](#oh_udshtml_gettype) | 获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中类型ID。 |
-| [const char* OH_UdsHtml_GetContent(OH_UdsHtml* pThis)](#oh_udshtml_getcontent) | 获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中HTML格式内容参数。 |
-| [const char* OH_UdsHtml_GetPlainContent(OH_UdsHtml* pThis)](#oh_udshtml_getplaincontent) | 获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中的纯文本内容参数。 |
-| [int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)](#oh_udshtml_setcontent) | 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的HTML格式内容参数。 |
-| [int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)](#oh_udshtml_setplaincontent) | 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的纯文本内容参数。 |
-| [OH_UdsAppItem* OH_UdsAppItem_Create()](#oh_udsappitem_create) | 创建桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsAppItem_Destroy](capi-uds-h.md#oh_udsappitem_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)](#oh_udsappitem_destroy) | 销毁桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)指针指向的实例对象。 |
-| [const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)](#oh_udsappitem_gettype) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例获取类型ID。 |
-| [const char* OH_UdsAppItem_GetId(OH_UdsAppItem* pThis)](#oh_udsappitem_getid) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取应用ID。 |
-| [const char* OH_UdsAppItem_GetName(OH_UdsAppItem* pThis)](#oh_udsappitem_getname) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取应用名称。 |
-| [const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)](#oh_udsappitem_geticonid) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取图片ID。 |
-| [const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)](#oh_udsappitem_getlabelid) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取标签ID。 |
-| [const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)](#oh_udsappitem_getbundlename) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取bundle名称。 |
-| [const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)](#oh_udsappitem_getabilityname) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取ability名称。 |
-| [int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)](#oh_udsappitem_setid) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的应用ID。 |
-| [int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)](#oh_udsappitem_setname) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的应用名称。 |
-| [int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)](#oh_udsappitem_seticonid) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的图片ID。 |
-| [int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)](#oh_udsappitem_setlabelid) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的标签ID。 |
-| [int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)](#oh_udsappitem_setbundlename) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的bundle名称。 |
-| [int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)](#oh_udsappitem_setabilityname) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的ability名称。 |
-| [OH_UdsFileUri* OH_UdsFileUri_Create()](#oh_udsfileuri_create) | 创建文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)的实例对象以及指向它的指针。当不再需要使用指针时，请使用[OH_UdsFileUri_Destroy](capi-uds-h.md#oh_udsfileuri_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UdsFileUri_Destroy(OH_UdsFileUri* pThis)](#oh_udsfileuri_destroy) | 销毁文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)的实例对象。 |
-| [const char* OH_UdsFileUri_GetType(OH_UdsFileUri* pThis)](#oh_udsfileuri_gettype) | 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取类型ID。 |
-| [const char* OH_UdsFileUri_GetFileUri(OH_UdsFileUri* pThis)](#oh_udsfileuri_getfileuri) | 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取文件Uri。 |
-| [const char* OH_UdsFileUri_GetFileType(OH_UdsFileUri* pThis)](#oh_udsfileuri_getfiletype) | 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取文件类型。 |
-| [int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)](#oh_udsfileuri_setfileuri) | 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的Uri信息。 |
-| [int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)](#oh_udsfileuri_setfiletype) | 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的文件类型。 |
-| [OH_UdsPixelMap* OH_UdsPixelMap_Create()](#oh_udspixelmap_create) | 创建像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)的实例对象以及指向它的指针。当不再需要使用指针时，请使用[OH_UdsPixelMap_Destroy](capi-uds-h.md#oh_udspixelmap_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)](#oh_udspixelmap_destroy) | 销毁像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)的实例对象。 |
-| [const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)](#oh_udspixelmap_gettype) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取类型ID。 |
-| [void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)](#oh_udspixelmap_getpixelmap) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取像素图片[OH_PixelmapNative](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_antialiasinglevel)实例的指针。 |
-| [int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)](#oh_udspixelmap_setpixelmap) | 设置像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)对象的像素图片内容。 |
-| [OH_UdsArrayBuffer* OH_UdsArrayBuffer_Create()](#oh_udsarraybuffer_create) | 创建ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)的实例对象以及指向它的指针。当不再需要使用指针时，请使用[OH_UdsArrayBuffer_Destroy](capi-uds-h.md#oh_udsarraybuffer_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)](#oh_udsarraybuffer_destroy) | 销毁ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)的实例对象。 |
-| [int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, unsigned int len)](#oh_udsarraybuffer_setdata) | 设置ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)对象的数据内容。 |
-| [int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, unsigned int* len)](#oh_udsarraybuffer_getdata) | 从ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)实例中获取用户自定义的ArrayBuffer数据内容。 |
-| [OH_UdsContentForm* OH_UdsContentForm_Create()](#oh_udscontentform_create) | 创建内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsContentForm_Destroy](capi-uds-h.md#oh_udscontentform_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)](#oh_udscontentform_destroy) | 销毁内容卡片类型数据[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针指向的实例对象。 |
-| [const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)](#oh_udscontentform_gettype) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取类型ID。 |
-| [int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thumbData, unsigned int* len)](#oh_udscontentform_getthumbdata) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取图片数据。 |
-| [const char* OH_UdsContentForm_GetDescription(OH_UdsContentForm* pThis)](#oh_udscontentform_getdescription) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取描述信息。 |
-| [const char* OH_UdsContentForm_GetTitle(OH_UdsContentForm* pThis)](#oh_udscontentform_gettitle) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取标题信息。 |
-| [int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIcon, unsigned int* len)](#oh_udscontentform_getappicon) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取应用图标数据。 |
-| [const char* OH_UdsContentForm_GetAppName(OH_UdsContentForm* pThis)](#oh_udscontentform_getappname) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取应用名称信息。 |
-| [const char* OH_UdsContentForm_GetLinkUri(OH_UdsContentForm* pThis)](#oh_udscontentform_getlinkuri) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取超链接信息。 |
-| [int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char* thumbData, unsigned int len)](#oh_udscontentform_setthumbdata) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的图片数据。 |
-| [int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* description)](#oh_udscontentform_setdescription) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的描述信息。 |
-| [int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)](#oh_udscontentform_settitle) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的标题信息。 |
-| [int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* appIcon, unsigned int len)](#oh_udscontentform_setappicon) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的应用图标数据。 |
-| [int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)](#oh_udscontentform_setappname) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的应用名称数据。 |
-| [int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)](#oh_udscontentform_setlinkuri) | 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的超链接数据。 |
-| [int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)](#oh_udsplaintext_getdetails) | 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
-| [int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* details)](#oh_udsplaintext_setdetails) | 设置纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
-| [int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)](#oh_udshyperlink_getdetails) | 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
-| [int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* details)](#oh_udshyperlink_setdetails) | 设置超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
-| [int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)](#oh_udshtml_getdetails) | 从超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
-| [int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)](#oh_udshtml_setdetails) | 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
-| [int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)](#oh_udsappitem_getdetails) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
-| [int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)](#oh_udsappitem_setdetails) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
-| [int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)](#oh_udsfileuri_getdetails) | 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
-| [int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)](#oh_udsfileuri_setdetails) | 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
-| [int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)](#oh_udspixelmap_getdetails) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
-| [int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* details)](#oh_udspixelmap_setdetails) | 设置像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
-| [OH_UdsDetails* OH_UdsDetails_Create()](#oh_udsdetails_create) | 创建字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针及实例对象。<br>当不再需要使用指针时，请使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)](#oh_udsdetails_destroy) | 销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象。 |
-| [bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_haskey) | 检查字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中是否存在指定键。 |
-| [int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_remove) | 删除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定键值对。 |
-| [int OH_UdsDetails_Clear(OH_UdsDetails* pThis)](#oh_udsdetails_clear) | 清除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有数据。 |
-| [int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)](#oh_udsdetails_setvalue) | 向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中添加键值对数据。 |
-| [const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_getvalue) | 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定的键对应的值。 |
-| [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys) | 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有键的结果集。 |
-| [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy) | 给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
-| [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy) | 给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
+| [OH_UdsPlainText* OH_UdsPlainText_Create()](#oh_udsplaintext_create)| 创建纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsPlainText_Destroy](capi-uds-h.md#oh_udsplaintext_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsPlainText_Destroy(OH_UdsPlainText* pThis)](#oh_udsplaintext_destroy)| 销毁纯文本类型数据[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)指针指向的实例对象。 |
+| [const char* OH_UdsPlainText_GetType(OH_UdsPlainText* pThis)](#oh_udsplaintext_gettype)| 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取类型ID。 |
+| [const char* OH_UdsPlainText_GetContent(OH_UdsPlainText* pThis)](#oh_udsplaintext_getcontent)| 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取纯文本内容信息。 |
+| [const char* OH_UdsPlainText_GetAbstract(OH_UdsPlainText* pThis)](#oh_udsplaintext_getabstract)| 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取纯文本摘要信息。 |
+| [int OH_UdsPlainText_SetContent(OH_UdsPlainText* pThis, const char* content)](#oh_udsplaintext_setcontent)| 设置纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中的纯文本内容参数。 |
+| [int OH_UdsPlainText_SetAbstract(OH_UdsPlainText* pThis, const char* abstract)](#oh_udsplaintext_setabstract)| 设置纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中的纯文本摘要参数。 |
+| [OH_UdsHyperlink* OH_UdsHyperlink_Create()](#oh_udshyperlink_create)| 创建超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsHyperlink_Destroy](capi-uds-h.md#oh_udshyperlink_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)](#oh_udshyperlink_destroy)| 销毁超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)指针指向的实例对象。 |
+| [const char* OH_UdsHyperlink_GetType(OH_UdsHyperlink* pThis)](#oh_udshyperlink_gettype)| 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取类型ID。 |
+| [const char* OH_UdsHyperlink_GetUrl(OH_UdsHyperlink* pThis)](#oh_udshyperlink_geturl)| 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取URL参数。 |
+| [const char* OH_UdsHyperlink_GetDescription(OH_UdsHyperlink* pThis)](#oh_udshyperlink_getdescription)| 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取描述参数。 |
+| [int OH_UdsHyperlink_SetUrl(OH_UdsHyperlink* pThis, const char* url)](#oh_udshyperlink_seturl)| 设置超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例中URL参数。 |
+| [int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* description)](#oh_udshyperlink_setdescription)| 设置超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例中描述参数。 |
+| [OH_UdsHtml* OH_UdsHtml_Create()](#oh_udshtml_create)       | 创建超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsHtml_Destroy](capi-uds-h.md#oh_udshtml_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsHtml_Destroy(OH_UdsHtml* pThis)](#oh_udshtml_destroy)| 销毁超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)指针指向的实例对象。 |
+| [const char* OH_UdsHtml_GetType(OH_UdsHtml* pThis)](#oh_udshtml_gettype)| 获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中类型ID。 |
+| [const char* OH_UdsHtml_GetContent(OH_UdsHtml* pThis)](#oh_udshtml_getcontent)| 获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中HTML格式内容参数。 |
+| [const char* OH_UdsHtml_GetPlainContent(OH_UdsHtml* pThis)](#oh_udshtml_getplaincontent)| 获取超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中的纯文本内容参数。 |
+| [int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)](#oh_udshtml_setcontent)| 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的HTML格式内容参数。 |
+| [int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)](#oh_udshtml_setplaincontent)| 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的纯文本内容参数。 |
+| [OH_UdsAppItem* OH_UdsAppItem_Create()](#oh_udsappitem_create)| 创建桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsAppItem_Destroy](capi-uds-h.md#oh_udsappitem_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)](#oh_udsappitem_destroy)| 销毁桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)指针指向的实例对象。 |
+| [const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)](#oh_udsappitem_gettype)| 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例获取类型ID。 |
+| [const char* OH_UdsAppItem_GetId(OH_UdsAppItem* pThis)](#oh_udsappitem_getid)| 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取应用ID。 |
+| [const char* OH_UdsAppItem_GetName(OH_UdsAppItem* pThis)](#oh_udsappitem_getname)| 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取应用名称。 |
+| [const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)](#oh_udsappitem_geticonid)| 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取图片ID。 |
+| [const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)](#oh_udsappitem_getlabelid)| 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取标签ID。 |
+| [const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)](#oh_udsappitem_getbundlename)| 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取bundle名称。 |
+| [const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)](#oh_udsappitem_getabilityname)| 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取ability名称。 |
+| [int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)](#oh_udsappitem_setid)| 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的应用ID。 |
+| [int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)](#oh_udsappitem_setname)| 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的应用名称。 |
+| [int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)](#oh_udsappitem_seticonid)| 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的图片ID。 |
+| [int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)](#oh_udsappitem_setlabelid)| 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的标签ID。 |
+| [int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)](#oh_udsappitem_setbundlename)| 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的bundle名称。 |
+| [int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)](#oh_udsappitem_setabilityname)| 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的ability名称。 |
+| [OH_UdsFileUri* OH_UdsFileUri_Create()](#oh_udsfileuri_create)| 创建文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)的实例对象以及指向它的指针。当不再需要使用指针时，请使用[OH_UdsFileUri_Destroy](capi-uds-h.md#oh_udsfileuri_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsFileUri_Destroy(OH_UdsFileUri* pThis)](#oh_udsfileuri_destroy)| 销毁文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)的实例对象。 |
+| [const char* OH_UdsFileUri_GetType(OH_UdsFileUri* pThis)](#oh_udsfileuri_gettype)| 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取类型ID。 |
+| [const char* OH_UdsFileUri_GetFileUri(OH_UdsFileUri* pThis)](#oh_udsfileuri_getfileuri)| 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取文件Uri。 |
+| [const char* OH_UdsFileUri_GetFileType(OH_UdsFileUri* pThis)](#oh_udsfileuri_getfiletype)| 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取文件类型。 |
+| [int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)](#oh_udsfileuri_setfileuri)| 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的Uri信息。 |
+| [int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)](#oh_udsfileuri_setfiletype)| 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的文件类型。 |
+| [OH_UdsPixelMap* OH_UdsPixelMap_Create()](#oh_udspixelmap_create)| 创建像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)的实例对象以及指向它的指针。当不再需要使用指针时，请使用[OH_UdsPixelMap_Destroy](capi-uds-h.md#oh_udspixelmap_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)](#oh_udspixelmap_destroy)| 销毁像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)的实例对象。 |
+| [const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)](#oh_udspixelmap_gettype)| 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取类型ID。 |
+| [void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)](#oh_udspixelmap_getpixelmap)| 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取像素图片[OH_PixelmapNative](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_antialiasinglevel)实例的指针。 |
+| [int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)](#oh_udspixelmap_setpixelmap)| 设置像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)对象的像素图片内容。 |
+| [OH_UdsArrayBuffer* OH_UdsArrayBuffer_Create()](#oh_udsarraybuffer_create)| 创建ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)的实例对象以及指向它的指针。当不再需要使用指针时，请使用[OH_UdsArrayBuffer_Destroy](capi-uds-h.md#oh_udsarraybuffer_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)](#oh_udsarraybuffer_destroy)| 销毁ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)的实例对象。 |
+| [int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, unsigned int len)](#oh_udsarraybuffer_setdata)| 设置ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)对象的数据内容。 |
+| [int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, unsigned int* len)](#oh_udsarraybuffer_getdata)| 从ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)实例中获取用户自定义的ArrayBuffer数据内容。 |
+| [OH_UdsContentForm* OH_UdsContentForm_Create()](#oh_udscontentform_create)| 创建内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsContentForm_Destroy](capi-uds-h.md#oh_udscontentform_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)](#oh_udscontentform_destroy)| 销毁内容卡片类型数据[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针指向的实例对象。 |
+| [const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)](#oh_udscontentform_gettype)| 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取类型ID。 |
+| [int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thumbData, unsigned int* len)](#oh_udscontentform_getthumbdata)| 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取图片数据。 |
+| [const char* OH_UdsContentForm_GetDescription(OH_UdsContentForm* pThis)](#oh_udscontentform_getdescription)| 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取描述信息。 |
+| [const char* OH_UdsContentForm_GetTitle(OH_UdsContentForm* pThis)](#oh_udscontentform_gettitle)| 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取标题信息。 |
+| [int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIcon, unsigned int* len)](#oh_udscontentform_getappicon)| 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取应用图标数据。 |
+| [const char* OH_UdsContentForm_GetAppName(OH_UdsContentForm* pThis)](#oh_udscontentform_getappname)| 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取应用名称信息。 |
+| [const char* OH_UdsContentForm_GetLinkUri(OH_UdsContentForm* pThis)](#oh_udscontentform_getlinkuri)| 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取超链接信息。 |
+| [int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char* thumbData, unsigned int len)](#oh_udscontentform_setthumbdata)| 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的图片数据。 |
+| [int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* description)](#oh_udscontentform_setdescription)| 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的描述信息。 |
+| [int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)](#oh_udscontentform_settitle)| 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的标题信息。 |
+| [int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* appIcon, unsigned int len)](#oh_udscontentform_setappicon)| 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的应用图标数据。 |
+| [int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)](#oh_udscontentform_setappname)| 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的应用名称数据。 |
+| [int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)](#oh_udscontentform_setlinkuri)| 设置内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中的超链接数据。 |
+| [int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)](#oh_udsplaintext_getdetails)| 从纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* details)](#oh_udsplaintext_setdetails)| 设置纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)](#oh_udshyperlink_getdetails)| 从超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* details)](#oh_udshyperlink_setdetails)| 设置超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)](#oh_udshtml_getdetails)| 从超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)对象中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)](#oh_udshtml_setdetails)| 设置超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)中的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)](#oh_udsappitem_getdetails)| 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)](#oh_udsappitem_setdetails)| 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)](#oh_udsfileuri_getdetails)| 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)](#oh_udsfileuri_setdetails)| 设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)](#oh_udspixelmap_getdetails)| 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| [int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* details)](#oh_udspixelmap_setdetails)| 设置像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
+| [OH_UdsDetails* OH_UdsDetails_Create()](#oh_udsdetails_create)| 创建字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针及实例对象。<br>当不再需要使用指针时，请使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)](#oh_udsdetails_destroy)| 销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象。 |
+| [bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_haskey)| 检查字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中是否存在指定键。 |
+| [int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_remove)| 删除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定键值对。 |
+| [int OH_UdsDetails_Clear(OH_UdsDetails* pThis)](#oh_udsdetails_clear)| 清除字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有数据。 |
+| [int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)](#oh_udsdetails_setvalue)| 向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中添加键值对数据。 |
+| [const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_getvalue)| 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定的键对应的值。 |
+| [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys)| 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有键的结果集。 |
+| [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy)| 给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
+| [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy)| 给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
+| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)](#oh_udmf_createvirtualfileitem)| 创建必须显式设置文件大小的虚拟文件节点。<br> 将节点添加到目录或创建虚拟文件信息前，必须调用[OH_UDMF_SetVirtualFileSize](capi-uds-h.md#oh_udmf_setvirtualfilesize)设置文件大小。 文件大小为0表示空文件，未设置大小时不会通过其他方式推断文件大小。 |
+| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)](#oh_udmf_createvirtualdirectoryitem)| 创建虚拟目录节点。 |
+| [void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)](#oh_udmf_destroyvirtualitem)| 销毁虚拟节点。 |
+| [int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)](#oh_udmf_setvirtualfilesize) | 设置虚拟文件节点的文件大小，单位为字节。 |
+| [int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)](#oh_udmf_addvirtualitemchild)| 向虚拟目录添加子节点。<br> 此接口会复制`child`，调用方仍持有原节点的所有权。 |
+| [OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)](#oh_udmf_createvirtualfileinfo)| 创建虚拟文件信息。<br> 此接口会复制节点树和回调表。`context`非nullptr时必须提供`finalize`。 接口执行成功后，UDMF持有该上下文，直到最后一个引用释放。 |
+| [void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)](#oh_udmf_destroyvirtualfileinfo)| 销毁虚拟文件信息。<br> 虚拟文件信息已附加到文件Uri或统一数据记录时，回调状态会保持有效，直到相关引用全部释放。 |
+| [int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)](#oh_udmf_setfileurivirtualentry)| 为文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)附加虚拟文件信息。 |
+| [int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)](#oh_udmf_clearfileurivirtualentry)| 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)移除虚拟文件信息。 |
 
 
 ## 枚举类型说明
@@ -1215,6 +1227,379 @@ int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | int  | 返回执行的状态代码。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+### OH_UDMF_VirtualFileOnStat()
+
+```c
+typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)
+```
+
+**描述：**
+
+通过文件标识返回对应虚拟文件的信息，如文件名、大小和修改时间。
+
+返回的节点必须由[OH_UDMF_CreateVirtualFileItem](capi-uds-h.md#oh_udmf_createvirtualfileitem)创建，其所有权将转移给UDMF，回调返回后不可销毁该节点。
+
+<!--Device-typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)--><!--Device-typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | [入参] 通过[OH_UDMF_CreateVirtualFileInfo](capi-uds-h.md#oh_udmf_createvirtualfileinfo)传入的用户上下文。 |
+| const char* id | [入参] 请求的虚拟文件标识。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_VirtualItem*](capi-udmf-oh-udmf-virtualitem.md)| 成功时返回虚拟文件节点，失败时返回nullptr。 |
+
+### OH_UDMF_VirtualFileOnRead()
+
+```c
+typedef int (*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t offset, uint32_t length, uint8_t* data, uint32_t* bytesRead)
+```
+
+**描述：**
+
+根据文件标识、读取起始位置和请求长度，将文件内容写入提供的缓冲区，并返回实际读取的字节数和处理结果。
+
+<!--Device-typedef int (*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t offset, uint32_t length, uint8_t* data, uint32_t* bytesRead)--><!--Device-typedef int (*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t offset, uint32_t length, uint8_t* data, uint32_t* bytesRead)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | [入参] 通过[OH_UDMF_CreateVirtualFileInfo](capi-uds-h.md#oh_udmf_createvirtualfileinfo)传入的用户上下文。 |
+| const char* id | [入参] 请求的虚拟文件标识。 |
+| int64_t offset | [入参] 读取偏移量，单位为字节。 |
+| uint32_t length | [入参] 本次最多需要提供的字节数，正常FUSE回调中取值为1～5,242,880（5MiB），且不超过文件剩余大小。 |
+| uint8_t* data | [出参] UDMF提供的目标缓冲区，仅在回调执行期间有效。 |
+| uint32_t* bytesRead | [出参] 用于返回实际写入`data`的字节数。成功时须设置`*bytesRead`，取值为0～`length`；到达文件末尾且无数据可返回时设置为0，EOF处理约束见上述描述。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示回调执行成功，包括到达文件末尾且无数据可返回的情况，实际字节数通过`*bytesRead`返回。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示传入了无效参数。</li> <li>[UDMF_ERR](capi-udmf-err-code-h.md#udmf_errcode)表示发生内部错误，无法提供数据。</li> </ul> |
+
+### OH_UDMF_VirtualFileOnCancel()
+
+```c
+typedef int (*OH_UDMF_VirtualFileOnCancel)(void* context, const char* const *idList, uint32_t count)
+```
+
+**描述：**
+
+根据文件标识列表取消对应文件的待处理任务。
+
+<!--Device-typedef int (*OH_UDMF_VirtualFileOnCancel)(void* context, const char* const *idList, uint32_t count)--><!--Device-typedef int (*OH_UDMF_VirtualFileOnCancel)(void* context, const char* const *idList, uint32_t count)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | [入参] 通过[OH_UDMF_CreateVirtualFileInfo](capi-uds-h.md#oh_udmf_createvirtualfileinfo)传入的用户上下文。 |
+| const char* const *idList | [入参] 需要取消待处理任务的虚拟文件标识列表，可能包含重复id。该数组及其中的字符串仅在回调执行期间有效。 |
+| uint32_t count | [入参] `idList`中的文件标识数量。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示取消成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示传入了无效参数。</li> <li>[UDMF_ERR](capi-udmf-err-code-h.md#udmf_errcode)表示发生内部错误，取消失败。</li> </ul> |
+
+### OH_UDMF_VirtualFileFinalize()
+
+```c
+typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)
+```
+
+**描述：**
+
+释放UDMF持有的用户上下文。
+
+引用该上下文的全部虚拟文件对象释放后，此回调仅执行一次。回调可能在任意线程执行。
+
+<!--Device-typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)--><!--Device-typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | [入参] 待释放的用户上下文。 |
+
+### OH_UDMF_CreateVirtualFileItem()
+
+```c
+OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)
+```
+
+**描述：**
+
+根据文件名、文件标识和修改时间创建虚拟文件节点，用于配置文件大小、添加到虚拟目录或创建虚拟文件信息对象。
+
+<!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)--><!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**资源释放：** [OH_UDMF_DestroyVirtualItem](#oh_udmf_destroyvirtualitem)
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* name | [入参] 文件名，不能包含路径分隔符。 |
+| const char* id | [入参] 传递给虚拟文件回调的文件标识。 |
+| int64_t modifyTime | [入参] 文件修改时间，以Unix时间戳表示，单位为ms。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_VirtualItem*](capi-udmf-oh-udmf-virtualitem.md)| 成功时返回创建的虚拟节点；参数无效或内存分配失败时返回nullptr。 |
+
+### OH_UDMF_CreateVirtualDirectoryItem()
+
+```c
+OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)
+```
+
+**描述：**
+
+创建虚拟目录节点。
+
+<!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)--><!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**资源释放：** [OH_UDMF_DestroyVirtualItem](#oh_udmf_destroyvirtualitem)
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* name | [入参] 目录名，不能包含路径分隔符。 |
+| int64_t modifyTime | [入参] 目录修改时间，以Unix时间戳表示，单位为ms。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_VirtualItem*](capi-udmf-oh-udmf-virtualitem.md)| 成功时返回创建的虚拟节点；参数无效或内存分配失败时返回nullptr。 |
+
+### OH_UDMF_DestroyVirtualItem()
+
+```c
+void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)
+```
+
+**描述：**
+
+销毁虚拟节点。
+
+<!--Device-void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)--><!--Device-void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* item | [入参] 待销毁的虚拟节点。 |
+
+### OH_UDMF_SetVirtualFileSize()
+
+```c
+int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)
+```
+
+**描述：**
+
+设置虚拟文件节点的文件大小，单位为字节。
+
+<!--Device-int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)--><!--Device-int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* item | [入参] 待设置文件大小的有效虚拟文件节点。 |
+| int64_t size | [入参] 文件大小，单位为字节。取值范围为[0, INT64_MAX]，0表示空文件。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示设置成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示`item`无效、不是文件节点或`size`为负数。</li> </ul> |
+
+### OH_UDMF_AddVirtualItemChild()
+
+```c
+int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)
+```
+
+**描述：**
+
+向虚拟目录添加子节点。
+
+<!--Device-int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)--><!--Device-int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* directory | [入参] 虚拟目录节点。 |
+| [const OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* child | [入参] 待添加的子节点。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示添加成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示节点无效、`directory`不是目录，或结果违反虚拟文件树约束。</li> </ul> |
+
+### OH_UDMF_CreateVirtualFileInfo()
+
+```c
+OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)
+```
+
+**描述：**
+
+创建虚拟文件信息。
+
+<!--Device-OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)--><!--Device-OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**资源释放：** [OH_UDMF_DestroyVirtualFileInfo](#oh_udmf_destroyvirtualfileinfo)
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)* itemInfo | [入参] 虚拟根节点。 |
+| [const OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md)* callbacks | [入参] 虚拟文件回调。 |
+| void* context | [入参] 传递给各回调的用户上下文，可为nullptr。非空时，其释放责任仅在接口成功返回非空对象后交给UDMF；返回nullptr时由调用方自行释放。 |
+| [OH_UDMF_VirtualFileFinalize](capi-uds-h.md#oh_udmf_virtualfilefinalize)finalize | [入参] 用于释放`context`及其关联资源的回调。`context`非nullptr时必须提供；`context`为nullptr时允许传入，但UDMF不会调用。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_VirtualFileInfo*](capi-udmf-oh-udmf-virtualfileinfo.md)| 成功时返回创建的虚拟文件信息；节点或回调无效、内存分配失败时返回nullptr。 |
+
+### OH_UDMF_DestroyVirtualFileInfo()
+
+```c
+void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)
+```
+
+**描述：**
+
+销毁调用方持有的虚拟文件信息句柄。
+
+<!--Device-void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)--><!--Device-void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)* info | [入参] 待销毁的虚拟文件信息。 |
+
+### OH_UDMF_SetFileUriVirtualEntry()
+
+```c
+int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)
+```
+
+**描述：**
+
+为文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)附加虚拟文件信息。
+
+<!--Device-int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)--><!--Device-int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* fileUri | [入参] 待更新的文件Uri实例。 |
+| [const OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)* info | [入参] 待附加的虚拟文件信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示附加成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示`fileUri`或`info`无效。</li> </ul> |
+
+### OH_UDMF_ClearFileUriVirtualEntry()
+
+```c
+int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)
+```
+
+**描述：**
+
+从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)移除虚拟文件信息。
+
+<!--Device-int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)--><!--Device-int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* fileUri | [入参] 待更新的文件Uri实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行状态码。具体请参阅[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<ul> <li>[UDMF_E_OK](capi-udmf-err-code-h.md#udmf_errcode)表示移除成功。</li> <li>[UDMF_E_INVALID_PARAM](capi-udmf-err-code-h.md#udmf_errcode)表示`fileUri`无效。</li> </ul> |
 
 ### OH_UdsPixelMap_Create()
 
