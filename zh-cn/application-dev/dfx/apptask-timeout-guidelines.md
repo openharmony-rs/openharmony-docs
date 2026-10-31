@@ -44,11 +44,11 @@
 
    ![sample_stack_1](figures/sample_stack_1.png)
 
-   （2）第1轮未检测到主线程处理超时（主线程处理时长 > 150ms），第2轮检测到主线程处理超时（主线程处理时长 > 150ms），开始执行堆栈采集流程，每隔150ms采集1次，共采集10次堆栈，第12轮收集堆栈并上报事件，结束检测。
+   （2）第1轮未检测到主线程处理超时（主线程处理时长 < 150ms），第2轮检测到主线程处理超时（主线程处理时长 > 150ms），开始执行堆栈采集流程，每隔150ms采集1次，共采集10次堆栈，第12轮收集堆栈并上报事件，结束检测。
 
    ![sample_stack_2](figures/sample_stack_2.png)
 
-   （3）前2轮均未检测到主线程处理超时（主线程处理时长 > 150ms），结束检测。
+   （3）前2轮均未检测到主线程处理超时（主线程处理时长 < 150ms），结束检测。
 
    ![sample_stack_3](figures/sample_stack_3.png)
 
@@ -56,7 +56,7 @@
 
    当主线程处理超时（主线程处理时长 > 450ms），调用开启trace采集接口，启动周期性检测，每隔150ms检测主线程处理时长超过150ms（检测轮数 = 20）。分两种情况：
 
-   （1）20轮均未检测到主线程处理超时（主线程处理时长 > 150ms），无trace文件生成，结束检测。
+   （1）20轮均未检测到主线程处理超时（主线程处理时长 < 150ms），无trace文件生成，结束检测。
 
    ![dump-trace1](figures/dump-trace1.PNG)
 
@@ -138,7 +138,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
 3. 主线程超时检测采集trace规格
 
-   trace文件大小约为1-5M左右。trace文件可以通过[HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行可视化分析。工具下载链接：[developtools_smartperf_host官方发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
+   trace文件大小约为1-5MB左右。trace文件可以通过[HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行可视化分析。工具下载链接：[developtools_smartperf_host官方发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
 
    trace文件说明参考：[web端加载trace说明](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md)。
 
