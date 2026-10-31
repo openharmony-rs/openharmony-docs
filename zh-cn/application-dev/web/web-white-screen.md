@@ -113,69 +113,81 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
       开发者应使用HTTP或HTTPS协议替代file或resource协议，确保Web组件能够成功访问跨域资源。替代的URL域名应为自定义构造，仅限于个人或组织使用，以防止与互联网上的实际域名冲突。此外，开发者需要利用Web组件的[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)方法，对本地资源进行拦截和相应替换。
 
       以下结合示例说明如何使用HTTP或HTTPS等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js文件置于工程的rawfile目录下。当使用resource协议访问index.html时，js/script.js文件因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原有的resource协议，同时利用onInterceptRequest接口替换资源，确保js/script.js文件可以成功加载，从而解决跨域拦截问题。
-<!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
+    <!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
 
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  webviewController: webview.WebviewController = new webview.WebviewController();
-  // 构造域名和本地文件的映射表
-  schemeMap = new Map([
-    ['https://www.example.com/index.html', 'index.html'],
-    ['https://www.example.com/js/script.js', 'js/script.js'],
-  ])
-  // 构造本地文件和构造返回的格式mimeType
-  mimeTypeMap = new Map([
-    ['index.html', 'text/html'],
-    ['js/script.js', 'text/javascript']
-  ])
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      webviewController: webview.WebviewController = new webview.WebviewController();
+      // 构造域名和本地文件的映射表
+      schemeMap = new Map([
+        ['https://www.example.com/index.html', 'index.html'],
+        ['https://www.example.com/js/script.js', 'js/script.js'],
+      ])
+      // 构造本地文件和构造返回的格式mimeType
+      mimeTypeMap = new Map([
+        ['index.html', 'text/html'],
+        ['js/script.js', 'text/javascript']
+      ])
 
-  build() {
-    Row() {
-      Column() {
-        // 针对本地index.html,使用http或者https协议代替file协议或者resource协议，并且构造一个属于自己的域名。
-        // 本例中构造www.example.com为例。
-        Web({ src: 'https://www.example.com/index.html', controller: this.webviewController })
-          .javaScriptAccess(true)
-          .fileAccess(true)
-          .domStorageAccess(true)
-          .geolocationAccess(true)
+      build() {
+        Row() {
+          Column() {
+            // 针对本地index.html,使用http或者https协议代替file协议或者resource协议，并且构造一个属于自己的域名。
+            // 本例中构造www.example.com为例。
+            Web({ src: 'https://www.example.com/index.html', controller: this.webviewController })
+              .javaScriptAccess(true)
+              .fileAccess(true)
+              .domStorageAccess(true)
+              .geolocationAccess(true)
+              .width('100%')
+              .height('100%')
+              .onInterceptRequest((event) => {
+                if (!event) {
+                  return;
+                }
+                // 此处匹配自己想要加载的本地离线资源，进行资源拦截替换，绕过跨域
+                if (this.schemeMap.has(event.request.getRequestUrl())) {
+                  let rawfileName: string = this.schemeMap.get(event.request.getRequestUrl())!;
+                  let mimeType = this.mimeTypeMap.get(rawfileName);
+                  if (typeof mimeType === 'string') {
+                    let response = new WebResourceResponse();
+                    // 构造响应数据，如果本地文件在rawfile下，可以通过如下方式设置
+                    response.setResponseData($rawfile(rawfileName));
+                    response.setResponseEncoding('utf-8');
+                    response.setResponseMimeType(mimeType);
+                    response.setResponseCode(200);
+                    response.setReasonMessage('OK');
+                    response.setResponseIsReady(true);
+                    return response;
+                  }
+                }
+                return null;
+              })
+          }
           .width('100%')
-          .height('100%')
-          .onInterceptRequest((event) => {
-            if (!event) {
-              return;
-            }
-            // 此处匹配自己想要加载的本地离线资源，进行资源拦截替换，绕过跨域
-            if (this.schemeMap.has(event.request.getRequestUrl())) {
-              let rawfileName: string = this.schemeMap.get(event.request.getRequestUrl())!;
-              let mimeType = this.mimeTypeMap.get(rawfileName);
-              if (typeof mimeType === 'string') {
-                let response = new WebResourceResponse();
-                // 构造响应数据，如果本地文件在rawfile下，可以通过如下方式设置
-                response.setResponseData($rawfile(rawfileName));
-                response.setResponseEncoding('utf-8');
-                response.setResponseMimeType(mimeType);
-                response.setResponseCode(200);
-                response.setReasonMessage('OK');
-                response.setResponseIsReady(true);
-                return response;
-              }
-            }
-            return null;
-          })
+        }
+        .height('100%')
       }
-      .width('100%')
     }
-    .height('100%')
-  }
-}
-```
-
+    ```
+    ```html
+    <!-- main/resources/rawfile/index.html -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+    <body>
+      <script crossorigin src="./js/script.js"></script>
+    </body>
+    </html>
+    ```
+    
     ```js
     // main/resources/rawfile/js/script.js
     const body = document.body;
