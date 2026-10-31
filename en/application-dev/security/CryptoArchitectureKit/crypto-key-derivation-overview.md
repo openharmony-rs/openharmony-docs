@@ -1,4 +1,4 @@
-# Key Derivation Overview and Algorithm Specifications
+# Key Derivation
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=858505f536999bd946705d818d535cf8d7fec8f1 translatedAt=2026-08-07T03:31:15.955Z pushedAt=2026-08-10T09:27:45.882Z -->
+<!-- md-trans-meta sourceCommit=fd500ca82713c7732ea8f0441b20e4da66f10c9e translatedAt=2026-10-30T03:47:28.867Z pushedAt=2026-10-30T07:25:34.552Z nl=1 -->
 
 A key derivation function (KDF) is a cryptographic algorithm that derives one or more secret keys from a secret value by using a pseudorandom function (PRF). It can be used to stretch keys into longer keys or to obtain keys in the required format.
 
@@ -17,7 +17,6 @@ Password-Based Key Derivation Function (PBKDF) is a key derivation function with
 PBKDF2 applies a PRF, such as an [HMAC](crypto-compute-hmac.md), to an input password together with a salt value, and repeats the process multiple times to generate a derived key.
 
 Key derivation can be performed using a string parameter, which is composed of the KDF algorithm and HMAC algorithm separated by a vertical bar (|). The string parameter is used to specify the algorithm specifications when the KDF generator is created.
-
 | KDF Algorithm| HMAC Algorithm| String Parameter| API Version|
 | -------- | -------- | -------- | -------- |
 | PBKDF2 | SHA1 | PBKDF2\|SHA1 | 11+ |
@@ -39,15 +38,12 @@ It extracts keys from the input key material and salt value, and expands keys ba
 HKDF has three modes: EXTRACT_ONLY, EXPAND_ONLY, and EXTRACT_AND_EXPAND.
 
 - **EXTRACT_ONLY**: generates a pseudorandom key (PRK) from the input key material (IKM) and an optional salt.
-
 - **EXPAND_ONLY**: expands a short key into a longer one. It uses the extracted pseudorandom key to expand a key of the specified length while preserving randomness.
-
 - **EXTRACT_AND_EXPAND**: derives a pseudorandom key and expands it to a key of the specified length.
 
 When creating a KDF generator, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the KDF algorithm, HMAC algorithm, and mode with a vertical bar (|) in between.
 
 As shown in the following table, you can select at most one value from each range (the content in []) to form the string parameter. The mode is optional and defaults to **EXTRACT_AND_EXPAND** if not specified. For example, when the key derivation algorithm is HKDF, the HMAC function digest algorithm is SHA1, and the mode is **EXTRACT_AND_EXPAND**, the string parameter is "HKDF|SHA1" or "HKDF|SHA1|EXTRACT_AND_EXPAND".
-
 | KDF Algorithm| HMAC Algorithm| Mode| API Version|
 | -------- | -------- | -------- | -------- |
 | HKDF | SHA1 | [EXPAND_ONLY\|EXTRACT_ONLY\|EXTRACT_AND_EXPAND] | 12+ |
@@ -86,4 +82,3 @@ X963KDF is a key derivation function (KDF) based on HMAC. It is usually used wit
 | X963KDF | SHA3-256 | X963KDF\|SHA3-256 | 26.0.0+ |
 | X963KDF | SHA3-384 | X963KDF\|SHA3-384 | 26.0.0+ |
 | X963KDF | SHA3-512 | X963KDF\|SHA3-512 | 26.0.0+ |
-| X963KDF | SM3 | X963KDF\|SM3 | 22+ |

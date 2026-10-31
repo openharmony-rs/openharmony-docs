@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=938751e4702aa9713fca5c6265b7741bd118ef94 translatedAt=2026-08-13T08:20:23.121Z pushedAt=2026-08-13T10:20:24.673Z -->
+<!-- md-trans-meta sourceCommit=2bacfee4422d681c1c12b53710941106e9561ff9 translatedAt=2026-10-30T09:01:51.280Z pushedAt=2026-10-31T00:48:34.206Z nl=1 -->
 
 To ensure data security, delete the key that is no longer required.
 
@@ -56,11 +56,11 @@ let generateHuksOptions: huks.HuksOptions = {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -87,11 +87,11 @@ let deleteHuksOptions: huks.HuksOptions = {
 function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.deleteKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.deleteKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {

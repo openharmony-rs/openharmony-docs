@@ -6,14 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-08-07T03:28:56.603Z pushedAt=2026-08-11T01:38:12.866Z -->
+<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:40:42.620Z pushedAt=2026-10-30T07:17:27.368Z nl=1 -->
 
 Starting from API version 22, the algorithm library supports digest computation using this algorithm.
 
 For details about the algorithm specifications, see [Supported Algorithms and Specifications](crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications).
 
 ## Adding the Dynamic Library in the CMake Script
-
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
@@ -75,6 +74,7 @@ OH_Crypto_ErrCode doTestSha3Md()
 }
 ```
 
+
 ### Generating an MD by Passing In Data by Segment
 
 1. Call [OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create) with the MD algorithm **SHA3-256** to generate an MD operation instance (**OH_CryptoDigest**).
@@ -110,7 +110,7 @@ OH_Crypto_ErrCode doLoopSha3Md()
     }
     Crypto_DataBlob out = {.data = nullptr, .len = 0};
     int mdLen = 0;
-    int isBlockSize = 20;
+    int blockSize = 20;
     int offset = 0;
 
     ret = OH_CryptoDigest_Create("SHA3-256", &ctx);
@@ -119,15 +119,15 @@ OH_Crypto_ErrCode doLoopSha3Md()
         return ret;
     }
     do {
-        for (int i = 0; i < INT_640 / isBlockSize; i++) {
+        for (int i = 0; i < INT_640 / blockSize; i++) {
             Crypto_DataBlob in = {
                 .data = reinterpret_cast<uint8_t *>(testData + offset),
-                .len = static_cast<size_t>(isBlockSize)};
+                .len = static_cast<size_t>(blockSize)};
             ret = OH_CryptoDigest_Update(ctx, &in);
             if (ret != CRYPTO_SUCCESS) {
                 break;
             }
-            offset += isBlockSize;
+            offset += blockSize;
         }
         ret = OH_CryptoDigest_Final(ctx, &out);
         if (ret != CRYPTO_SUCCESS) {
@@ -141,3 +141,4 @@ OH_Crypto_ErrCode doLoopSha3Md()
     return ret;
 }
 ```
+

@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-10-29T08:58:59.841Z pushedAt=2026-10-30T03:02:47.374Z nl=1 -->
 
 The **&lt;text&gt;** component is used to display a piece of textual information. For details, see [text](../reference/apis-arkui/arkui-js/js-components-basic-text.md).
 
@@ -39,7 +40,7 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
 
 - Adding a text style
 
-  Set the **color**, **font-size**, **allow-scale**, **word-spacing**, and **text-align** attributes to add the color, size, zoom, text spacing, and vertical alignment of the text.
+  Set the color, font-size, allow-scale, word-spacing, and text-align attributes to add color, size, whether scaling is allowed, spacing between text, and horizontal text alignment to the text, respectively.
 
   ```html
   <!-- xxx.hml -->
@@ -66,13 +67,13 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   }
   ```
 
-    ![Text-Style](figures/Text-Style.png)
+  ![Text-Style](figures/Text-Style.png)
 
 
 
 - Adding a text decoration
 
-  Set the **text-decoration** attribute to add a decoration line to selected text. Set the **text-decoration-color** attribute to apply specific color to the decoration line. For values of **text-decoration**, see text styles.
+  Set the text-decoration and text-decoration-color attributes to add a decoration and its color to the text. For the text-decoration enumeration values, see the text built-in styles.
 
   ```html
   <!-- xxx.hml -->
@@ -159,10 +160,10 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   ```
 
   ![Text-Style-1](figures/Text-Style-1.png)
-  > **NOTE**
-  > - When the **&lt;span&gt;** child component is used to form a text paragraph, incorrect **&lt;span&gt;** attribute settings (for example, setting of **font-weight** to **1000**) will result in abnormal display of the text paragraph.
+    > **NOTE**
+    > - When the **&lt;span&gt;** child component is used to form a text paragraph, incorrect **&lt;span&gt;** attribute settings (for example, setting of **font-weight** to **1000**) will result in abnormal display of the text paragraph.
     >
-  > - When the **&lt;span&gt;** child component is being used, do not include any text you want to show in the **&lt;text&gt;** component, as such text will not be displayed if you do so.
+    > - When the **&lt;span&gt;** child component is being used, do not include any text you want to show in the **&lt;text&gt;** component, as such text will not be displayed if you do so.
 
 
 ## Example Scenario

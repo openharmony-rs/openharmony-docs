@@ -415,7 +415,7 @@
     - [FAQs About Dynamic Attribute Setting](arkts-attribute-modifier-faq.md)
     - [FAQs About Imperative Nodes](arkts-arkui-frameNode-faq.md)
     - [FAQs About UI Parallelization](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
-    - [FAQs About Immersive Light Sense](arkts-immersive-light-sense-faq.md)
+    - [FAQs About Immersive Lighting](arkts-immersive-light-sense-faq.md)
     
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->

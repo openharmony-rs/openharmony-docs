@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9a5da59cdf4f4c3dc0f87035f85ddf06f80ecfc4 translatedAt=2026-10-29T08:56:46.459Z pushedAt=2026-10-30T03:02:23.419Z nl=1 -->
 
 The **&lt;input&gt;** component provides an interactive way to receive user input of various types, including **date**, **checkbox**, and **button**. For details, see [input](../reference/apis-arkui/arkui-js/js-components-basic-input.md).
 
@@ -232,7 +233,7 @@ import promptAction from '@ohos.promptAction'
 
 ![Input-Error-Message](figures/Input-Error-Message.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > This method is available when the input type is set to **text**, **email**, **date**, **time**, **number**, or **password**.
 

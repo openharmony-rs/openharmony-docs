@@ -5,6 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-10-29T08:55:06.667Z pushedAt=2026-10-30T03:00:21.990Z nl=1 -->
 
 
 The **\<canvas>** component provides a canvas for drawing customized graphics. For details, see [CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md).
@@ -86,7 +87,7 @@ canvas {
 
 Add the long press event to the **\<canvas>** component. When the event is triggered, the value of **dataUrl** (image information returned by the **toDataURL** method) of the **\<canvas>** component can be obtained and printed in the text area below.
 
-> **NOTE**
+> **NOTE** 
 >
 > For details about the APIs related to **promptAction**, see [@ohos.promptAction (Prompt)](../reference/apis-arkui/js-apis-promptAction.md).
 
@@ -154,7 +155,7 @@ export default {
 
 ![Adding-Events](figures/Adding-Events.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > The **\<canvas>** component cannot be created in **onInit** or **onReady**.
 
