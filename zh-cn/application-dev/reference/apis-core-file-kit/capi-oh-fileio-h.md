@@ -82,6 +82,6 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileI
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。  <br>401 - Invalid input parameter, pointer is null. ERR_ENOENT <br>13900002 - No such file or directory. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 
