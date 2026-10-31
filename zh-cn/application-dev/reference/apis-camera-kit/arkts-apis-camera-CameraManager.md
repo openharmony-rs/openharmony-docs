@@ -541,7 +541,7 @@ function createPhotoOutput(photoProfile: camera.Profile, cameraDevice: camera.Ca
       profile.size.width == photoProfile.size.width &&
       profile.size.height == photoProfile.size.height;
   }) == -1) {
-    console.error(`invalied previewProfile.`);
+    console.error(`invalied photoProfile.`);
     return undefined;
   }
   let photoOutput: camera.PhotoOutput | undefined = undefined;
@@ -602,7 +602,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function createVideoOutput(videoProfile: camera.VideoProfile, cameraDevice: camera.CameraDevice,
   cameraManager: camera.CameraManager, surfaceId: string): camera.VideoOutput | undefined {
-  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_VIDEO);
   if (cameraOutputCapability.videoProfiles.findIndex((profile: camera.VideoProfile) => {
     return profile.format == videoProfile.format &&
       profile.size.width == videoProfile.size.width &&
@@ -610,7 +610,7 @@ function createVideoOutput(videoProfile: camera.VideoProfile, cameraDevice: came
       profile.frameRateRange.min == videoProfile.frameRateRange.min &&
       profile.frameRateRange.max == videoProfile.frameRateRange.max;
   }) == -1) {
-    console.error(`invalied previewProfile.`);
+    console.error(`invalied videoProfile.`);
     return undefined;
   }
   let videoOutput: camera.VideoOutput | undefined = undefined;
