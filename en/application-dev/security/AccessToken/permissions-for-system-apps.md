@@ -9079,7 +9079,7 @@ Allows an application to access data on the external storage card of the dashcam
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 

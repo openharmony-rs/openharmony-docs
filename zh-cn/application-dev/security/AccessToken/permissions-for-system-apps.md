@@ -9106,7 +9106,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
