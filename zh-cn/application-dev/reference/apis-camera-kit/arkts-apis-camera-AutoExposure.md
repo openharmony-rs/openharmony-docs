@@ -97,7 +97,7 @@ setExposureMode(aeMode: ExposureMode): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setExposureMode(mode: camera.ExposureMode, photoSession: camera.PhotoSession): void {
+function setExposureMode(photoSession: camera.PhotoSession, mode: camera.ExposureMode): void {
   try {
     if (photoSession.isExposureModeSupported(mode)) {
       photoSession.setExposureMode(mode);

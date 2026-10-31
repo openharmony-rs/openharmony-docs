@@ -320,7 +320,7 @@ function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraMan
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
   if (!metadataObjectTypes.every(type => types.includes(type))) {
-    console.error(`invalied metadataObjectTypes.`);
+    console.error(`invalid metadataObjectTypes.`);
     return;
   }
   try {
@@ -369,7 +369,7 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, camera
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
   if (!metadataObjectTypes.every(type => types.includes(type))) {
-    console.error(`invalied metadataObjectTypes.`);
+    console.error(`invalid metadataObjectTypes.`);
     return;
   }
   try {
