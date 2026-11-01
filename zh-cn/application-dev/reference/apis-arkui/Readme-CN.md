@@ -198,6 +198,9 @@
       - [布局约束](arkui-ts/ts-universal-attributes-layout-constraints.md)
       - [Flex布局](arkui-ts/ts-universal-attributes-flex-layout.md)
       - [安全区域](arkui-ts/ts-universal-attributes-expand-safe-area.md)
+      <!--Del-->
+      - [安全区域 (系统接口)](arkui-ts/ts-universal-attributes-expand-safe-area-sys.md)
+      <!--DelEnd-->
       - [组件级像素取整](arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
       - [页面级像素取整](arkui-ts/ts-universal-attributes-pixelRoundForPage.md)
       - [边框设置](arkui-ts/ts-universal-attributes-border.md)
