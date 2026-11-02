@@ -100,7 +100,7 @@ status: active
 
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
 
-     <!-- @[AVMetadataExtractor_**](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[AVMetadataExtractor_SetUrlSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      import { media } from '@kit.MediaKit';
@@ -156,7 +156,7 @@ status: active
 
 4. 对于视频资源：可以通过fetchMetadata获取的AVMetadata对象metadata拿到视频资源的宽、高等数据。
 
-   <!-- @[AVMetadataExtractor_**](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[AVMetadataExtractor_Width_Height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
    // 获取视频资源的宽和高。
@@ -192,7 +192,7 @@ status: active
 
 6. （可选）获取视频缩略图：调用fetchFrameByTime，可以获取到视频缩略图。
 
-   <!-- @[AVMetadataExtractor_**](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[AVMetadataExtractor_FetchFrameByTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
    import { image } from '@kit.ImageKit';
@@ -211,7 +211,7 @@ status: active
 
 7. （可选）批量获取视频缩略图：调用fetchFramesByTimes，能够批量获取视频缩略图。
 
-   <!-- @[AVMetadataExtractor_**](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[AVMetadataExtractor_FetchFramesByTimes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
    import { image } from '@kit.ImageKit';
