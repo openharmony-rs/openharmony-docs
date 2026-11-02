@@ -37,21 +37,17 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
    ArkTS-Dyn示例：
 
+   <!-- @[SoundPool_Creat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
-   import { media } from '@kit.MediaKit';
-   import { audio } from '@kit.AudioKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   private soundPool: media.SoundPool | undefined = undefined;
-   // audioRendererInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE。
+   // audioRenderInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE。
    // STREAM_USAGE_AUDIOBOOK时，SoundPool播放短音时为混音模式，不会打断其他音频播放。
    let audioRendererInfo: audio.AudioRendererInfo = {
      usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
      rendererFlags: 1 // 音频渲染器标志。
-   };
-
-   // 创建soundPool实例。
-   this.soundPool = await media.createSoundPool(14, audioRendererInfo); // 最大播放的流数为14。
+   }
+   //创建soundPool实例。
+   this.soundPool = await media.createSoundPool(14,audioRendererInfo);
    ```
    
    ArkTS-Sta示例：
@@ -73,8 +69,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
    ArkTS-Dyn示例：
 
+   <!-- @[SoundPool_onLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
-   private soundId: number = 0;
    // 加载完成回调。
    this.soundPool!.on('loadComplete', (soundId_: number) => {
      this.soundId = soundId_;
@@ -102,14 +99,13 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
     
    ArkTS-Dyn示例：
 
+   <!-- @[SoundPool_onPlayFinshed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    this.soundPool!.on('playFinished', () => {
-     console.info("receive play finished message");
+     console.info('receive play finished message');
      // 可进行下次播放。
-   });
-   this.soundPool!.on('playFinishedWithStreamId', (streamId) => {
-     console.info("receive play finished message, streamId: " + streamId);
-   });
+   })
    ```
     
    ArkTS-Sta示例：
@@ -130,11 +126,13 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
    ArkTS-Dyn示例：
 
+   <!-- @[SoundPool_onError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    this.soundPool!.on('error', (error: BusinessError) => {
      console.error('error happened,message is :' + error.code);
      console.error('error happened,message is :' + error.message);
-   });
+   })
    ```
     
    ArkTS-Sta示例：
@@ -159,13 +157,10 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
     
    ArkTS-Dyn示例：
 
+   <!-- @[SoundPool_Load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   private soundId: number = 0;
-   // 获取当前组件所在Ability的Context，以通过Context获取应用文件路径。
-   let context = this.getUIContext().getHostContext();
-   // 获取输入文件fd，test.ogg为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
+   let context = this.getUIContext().getHostContext();;
    let fileDescriptor = await context!.resourceManager.getRawFd('test.ogg');
    this.soundId = await this.soundPool!.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length);
    console.info(`load soundPool soundId: ${this.soundId}`)
@@ -187,23 +182,23 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
    ArkTS-Dyn示例：
 
+   <!-- @[SoundPool_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
-   private soundId: number = 0;
-   private streamId: number = 0;
    let playParameters: media.PlayParameters = {
      loop: 1, // 循环1次，即播放2次。
      rate: 1, // 1倍速播放。
-     leftVolume: 0.5, // 取值范围[0.0, 1.0]。
-     rightVolume: 0.5, // 取值范围[0.0, 1.0]。
+     leftVolume: 0.5, // 取值范围0.0-1.0。
+     rightVolume: 0.5, // 取值范围0.0-1.0。
      priority: 0, // 最低优先级。
    };
-   // 开始播放，调用play可携带播放参数PlayParameters。请在音频资源加载完毕，即收到loadComplete回调之后再执行play操作。
+   // 开始播放，这边play也可带播放播放的参数PlayParameters，请在音频资源加载完毕，即收到loadComplete回调之后再执行play操作。
    this.soundPool!.play(this.soundId, playParameters, (error, streamID: number) => {
      if (error) {
        console.error(`play sound Error: errCode is ${error.code}, errMessage is ${error.message}`)
      } else {
        this.streamId = streamID;
-       console.info('Succeeded in playing soundId:' + this.streamId);
+       console.info('play success soundid:' + this.streamId);
      }
    });
    ```
@@ -236,6 +231,8 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 7. 调用setLoop方法设置循环次数。
 
+   <!-- @[SoundPool_SetLoop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    // 设置循环播放次数。
    await this.soundPool!.setLoop(this.streamId, 2); // 播放3次。
@@ -243,13 +240,17 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 8. 调用setPriority方法设置优先级。
 
-   ``` TypeScript
-   // 设置对应流的优先级。
-   await this.soundPool!.setPriority(this.streamId, 1);
-   ```
+  <!-- @[SoundPool_SetPriority](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // 设置对应流的优先级。
+  await this.soundPool!.setPriority(this.streamId, 1);
+  ```
 
 9. 调用setVolume方法设置音量。
 
+   <!-- @[SoundPool_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    // 设置音量。
    await this.soundPool!.setVolume(this.streamId, 0.5, 0.5);
@@ -257,41 +258,49 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 10. 调用stop方法终止指定流的播放。
 
-    ``` TypeScript
-    // 终止指定流的播放。
-    await this.soundPool!.stop(this.streamId);
-    ```
+   <!-- @[SoundPool_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 终止指定流的播放。
+   await this.soundPool!.stop(this.streamId);
+   ```
 
 11. 调用unload方法卸载音频资源。
 
-    ``` TypeScript
-    // 卸载音频资源。
-    await this.soundPool!.unload(this.soundId);
-    ```
+   <!-- @[SoundPool_Unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 卸载音频资源。
+   await this.soundPool!.unload(this.soundId);
+   ```
 
 12. 调用off('loadComplete')方法注销加载完成监听。
 
     ArkTS-Dyn示例：
 
-    ``` TypeScript
-    await this.soundPool!.off('loadComplete');
-    ```
-    
+     <!-- @[SoundPool_offLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+     ``` TypeScript
+     this.soundPool!.off('loadComplete');
+     ```
+
     ArkTS-Sta示例：
 
-    <!-- @[off_callback_load_completed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/SoundPool/SoundPoolStaArkTS/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    this.soundPool!.offLoadComplete();
-    ```
+     <!-- @[off_callback_load_completed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/SoundPool/SoundPoolStaArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+     ``` TypeScript
+     this.soundPool!.offLoadComplete();
+     ```
 
 13. 调用off('playFinished')方法注销播放完成监听。
 
     ArkTS-Dyn示例：
 
-    ``` TypeScript
-    await this.soundPool!.off('playFinished');
-    ```
+     <!-- @[SoundPool_offPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+     ``` TypeScript
+     this.soundPool!.off('playFinished');
+     ```
     
     ArkTS-Sta示例：
 
@@ -305,9 +314,11 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
     ArkTS-Dyn示例：
 
-    ``` TypeScript
-    await this.soundPool!.off('error');
-    ```
+     <!-- @[SoundPool_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+     ``` TypeScript
+     this.soundPool!.off('error');
+     ```
     
     ArkTS-Sta示例：
 
@@ -319,10 +330,12 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 15. 调用release方法释放SoundPool实例。
 
-    ``` TypeScript
-    // 释放SoundPool。
-    await this.soundPool!.release();
-    ```
+     <!-- @[SoundPool_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+     ``` TypeScript
+     // 释放SoundPool。
+     await this.soundPool!.release();
+     ```
 
 ## 运行示例工程
 
