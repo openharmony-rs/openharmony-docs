@@ -101,7 +101,7 @@ import { dialog } from '@kit.ArkUI';
 | maskColor               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的蒙层颜色。<br/>默认值：跟随系统主题的默认蒙层颜色。                                           |
 | isModal                 | boolean                                                      | 否   | 是   | 弹出框是否为模态。值为true表示为模态且有蒙层，值为false表示为非模态且无蒙层。<br/>默认值：true |
 | showInSubWindow         | boolean                                                      | 否   | 是   | 是否在子窗口中显示。值为true表示在子窗口中显示，值为false表示在应用内显示。<br/>默认值：false<br/>**说明：** isModal为true和showInSubWindow为true不能同时使用。 |
-| displayModeInSubWindow  | [DialogDisplayMode](arkui-ts/ts-appendix-enums.md#dialogdisplaymode) | 否   | 是   | 定义在子窗口中显示时的弹出框显示模式。<br/>默认值：DialogDisplayMode.SCREEN_BASED |
+| displayModeInSubWindow  | [DialogDisplayMode](arkui-ts/ts-appendix-enums.md#dialogdisplaymode24) | 否   | 是   | 定义在子窗口中显示时的弹出框显示模式。<br/>默认值：DialogDisplayMode.SCREEN_BASED |
 | autoCancel              | boolean                                                      | 否   | 是   | 是否允许通过触摸蒙层或按返回键退出。值为true表示允许退出，值为false表示不允许退出。<br/>默认值：true |
 | focusable               | boolean                                                      | 否   | 是   | 弹出框是否可以获得焦点。值为true表示可以获得焦点，值为false表示不可以获得焦点。<br/>默认值：true |
 | dialogTransition        | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭弹出框内容区域的弹出框过渡动效参数。<br/>默认值：系统默认过渡动效。            |
@@ -115,9 +115,9 @@ import { dialog } from '@kit.ArkUI';
 | onWillDismiss           | Callback&lt;[DialogDismissal](#dialogdismissal)&gt;          | 否   | 是   | 弹出框交互关闭的回调。<br/>**说明：** 如果注册了此回调，则用户点击蒙层或返回按钮后弹出框不会立即关闭，回调中的reason参数用于判断是否可以关闭弹出框。 |
 | enableHoverMode         | boolean                                                      | 否   | 是   | 是否启用悬停模式。值为true表示启用，值为false表示不启用。<br/>默认值：false |
 | hoverModeArea           | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是   | 悬停模式下弹出框的显示区域。<br/>默认值：HoverModeAreaType.BOTTOM_SCREEN |
-| levelMode               | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明)     | 否   | 是   | 弹出框的显示级别。<br/>默认值：LevelMode.OVERLAY             |
+| levelMode               | [LevelMode](js-apis-promptAction.md#levelmode15)     | 否   | 是   | 弹出框的显示级别。<br/>默认值：LevelMode.OVERLAY             |
 | levelUniqueId           | number                                                       | 否   | 是   | 页面级弹出框显示层下节点的唯一标识。<br/>取值范围：大于等于0的整数。<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。 |
-| immersiveMode           | [ImmersiveMode](js-apis-promptAction.md#immersivemode15枚举说明) | 否   | 是   | 页面级弹出框蒙层效果。<br/>默认值：ImmersiveMode.DEFAULT<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。     |
+| immersiveMode           | [ImmersiveMode](js-apis-promptAction.md#immersivemode15) | 否   | 是   | 页面级弹出框蒙层效果。<br/>默认值：ImmersiveMode.DEFAULT<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。     |
 | levelOrder              | [LevelOrder](js-apis-promptAction.md#levelorder18)           | 否   | 是   | 弹出框的显示顺序。<br/>默认值：`LevelOrder.clamp(0)`返回的值。 |
 | systemMaterial          | [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | 否   | 是   | 为弹出框设置系统样式材质，不同的材质有不同的效果，会影响背景色、边框、阴影和弹出框的其他视觉属性。 |
 
