@@ -600,7 +600,7 @@ Allows an application to use the fraud app Picker to obtain application informat
 
 ## ohos.permission.ACCESS_DDK_DRIVERS
 
-Allows a extended peripheral driver client to bind to the driver server.
+Allows an extended peripheral driver client to bind to the driver server.
 
 This permission can be requested successfully only when:
 
@@ -619,7 +619,7 @@ This permission can be requested successfully only when:
 
 ## ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
-Allows a extended peripheral driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
+Allows an extended peripheral driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
 
 The APIs can be used to develop the following types of extended peripheral drivers:
 
@@ -638,7 +638,7 @@ Peripherals connected to the host via a USB bus and:
 
 ## ohos.permission.ACCESS_DDK_USB_SERIAL
 
-Allows a extended peripheral driver to access the USB Serial DDK APIs.
+Allows an extended peripheral driver to access the USB Serial DDK APIs.
 
 The USB Serial DDK APIs can be used to develop the following types of extended peripheral drivers:
 
