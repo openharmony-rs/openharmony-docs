@@ -176,10 +176,11 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-    
+
     @Entry
     @Component
     struct Index {
+     @State message: string = 'Hello World';
       webviewController: webview.WebviewController = new webview.WebviewController();
       // 构造域名和本地文件的映射表
       schemeMap = new Map([
