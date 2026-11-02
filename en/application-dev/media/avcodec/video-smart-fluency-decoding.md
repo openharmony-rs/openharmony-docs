@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes intelligent smooth high-speed playback decoding, which uses motion vectors and a human perception model to discard non-key frames with low perceptual weights before decoding, reducing decoding and rendering loads during high-speed playback. Supports adaptive, full passthrough, and uniform frame retention modes."
+keywords: [intelligent smooth high-speed playback decoding, motion vectors, frame retention modes, adaptive, uniform, high-speed playback, load and temperature reduction, decoding performance optimization]
+doctype: guide
+status: active
+---
+
 # Intelligent Smooth High-Speed Playback Decoding
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8d7339f7f68611cdea74d68ec9cdc200bbdc0fc4 translatedAt=2026-10-22T04:19:56.006Z pushedAt=2026-10-22T13:51:17.627Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Overview
 

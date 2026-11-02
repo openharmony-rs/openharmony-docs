@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes the core process and state machine interactions for asynchronous video decoding, with Surface and Buffer output modes to decode H.264, H.265, and other bitstreams into raw image data for playback, real-time preview, and editing."
+keywords: [video decoding, asynchronous mode, Surface mode, Buffer mode, OH_VideoDecoder, state machine, H.264, H.265, YUV]
+doctype: guide
+status: active
+---
+
 # Asynchronous Video Decoding
 
 <!--Kit: AVCodec Kit-->
@@ -6,6 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Video decoding is a core part of multimedia processing that converts compressed video streams into raw pixel data. It supports synchronous and asynchronous modes, which differ primarily in how buffers are obtained. Choose the API calling mode that suits your application.
 
@@ -87,97 +96,97 @@ The sample code provided in this section adheres to the C++17 standard and is fo
 
 1. Add the header files.
 
-    ```c++
-    #include <condition_variable>
-    #include <memory>
-    #include <mutex>
-    #include <queue>
-    #include <shared_mutex>
-    ```
+   ```c++
+   #include <condition_variable>
+   #include <memory>
+   #include <mutex>
+   #include <queue>
+   #include <shared_mutex>
+   ```
 
 2. Define the information about the decoder callback buffer.
 
-    ```c++
-    struct CodecBufferInfo {
-        CodecBufferInfo(uint32_t index, OH_AVBuffer *buffer): index(index), buffer(buffer), isValid(true) {}
-        // Callback buffer.
-        OH_AVBuffer *buffer = nullptr;
-        // Index of the callback buffer.
-        uint32_t index = 0;
-        // Check whether the current buffer information is valid.
-        bool isValid = true;
-    };
-    ```
+   ```c++
+   struct CodecBufferInfo {
+       CodecBufferInfo(uint32_t index, OH_AVBuffer *buffer): index(index), buffer(buffer), isValid(true) {}
+       // Callback buffer.
+       OH_AVBuffer *buffer = nullptr;
+       // Index of the callback buffer.
+       uint32_t index = 0;
+       // Check whether the current buffer information is valid.
+       bool isValid = true;
+   };
+   ```
 
 3. Define the input and output queue for decoding.
 
-    ```c++
-    class CodecBufferQueue {
-    public:
-        // Pass the callback buffer information to the queue.
-        void Enqueue(const std::shared_ptr<CodecBufferInfo> bufferInfo)
-        {
-            std::unique_lock<std::mutex> lock(mutex_);
-            bufferQueue_.push(bufferInfo);
-            cond_.notify_all();
-        }
+   ```c++
+   class CodecBufferQueue {
+   public:
+       // Pass the callback buffer information to the queue.
+       void Enqueue(const std::shared_ptr<CodecBufferInfo> bufferInfo)
+       {
+           std::unique_lock<std::mutex> lock(mutex_);
+           bufferQueue_.push(bufferInfo);
+           cond_.notify_all();
+       }
 
-        // Obtain the information about the callback buffer.
-        std::shared_ptr<CodecBufferInfo> Dequeue(int32_t timeoutMs = 1000)
-        {
-            std::unique_lock<std::mutex> lock(mutex_);
-            (void)cond_.wait_for(lock, std::chrono::milliseconds(timeoutMs), [this]() { return !bufferQueue_.empty(); });
-            if (bufferQueue_.empty()) {
-                return nullptr;
-            }
-            std::shared_ptr<CodecBufferInfo> bufferInfo = bufferQueue_.front();
-            bufferQueue_.pop();
-            return bufferInfo;
-        }
+       // Obtain the information about the callback buffer.
+       std::shared_ptr<CodecBufferInfo> Dequeue(int32_t timeoutMs = 1000)
+       {
+           std::unique_lock<std::mutex> lock(mutex_);
+           (void)cond_.wait_for(lock, std::chrono::milliseconds(timeoutMs), [this]() { return !bufferQueue_.empty(); });
+           if (bufferQueue_.empty()) {
+               return nullptr;
+           }
+           std::shared_ptr<CodecBufferInfo> bufferInfo = bufferQueue_.front();
+           bufferQueue_.pop();
+           return bufferInfo;
+       }
 
-        // Clear the queue. The previous callback buffer becomes unavailable.
-        void Flush()
-        {
-            std::unique_lock<std::mutex> lock(mutex_);
-            while (!bufferQueue_.empty()) {
-                std::shared_ptr<CodecBufferInfo> bufferInfo = bufferQueue_.front();
-                // After the flush, stop, reset, and destroy operations are performed, the previous callback buffer information is invalid.
-                bufferInfo->isValid = false;
-                bufferQueue_.pop();
-            }
-        }
+       // Clear the queue. The previous callback buffer becomes unavailable.
+       void Flush()
+       {
+           std::unique_lock<std::mutex> lock(mutex_);
+           while (!bufferQueue_.empty()) {
+               std::shared_ptr<CodecBufferInfo> bufferInfo = bufferQueue_.front();
+               // After the flush, stop, reset, and destroy operations are performed, the previous callback buffer information is invalid.
+               bufferInfo->isValid = false;
+               bufferQueue_.pop();
+           }
+       }
 
-    private:
-        std::mutex mutex_;
-        std::condition_variable cond_;
-        std::queue<std::shared_ptr<CodecBufferInfo>> bufferQueue_;
-    };
-    ```
+   private:
+       std::mutex mutex_;
+       std::condition_variable cond_;
+       std::queue<std::shared_ptr<CodecBufferInfo>> bufferQueue_;
+   };
+   ```
 
 4. Configure global variables.
 
    These global variables are for reference only. They can be encapsulated into an object based on service requirements.
 
-    ```c++
-    // Video frame width.
-    int32_t width = 320;
-    // Video frame height.
-    int32_t height = 240;
-    // Video pixel format.
-     OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
-    // Video width stride.
-    int32_t widthStride = 0;
-    // Video height stride.
-    int32_t heightStride = 0;
-    // Pointer to the decoder instance.
-    OH_AVCodec *videoDec = nullptr;
-    // Decoder synchronization lock.
-    std::shared_mutex codecMutex;
-    // Decoder input queue.
-    CodecBufferQueue inQueue;
-    // Decoder output queue.
-    CodecBufferQueue outQueue;
-    ```
+   ```c++
+   // Video frame width.
+   int32_t width = 320;
+   // Video frame height.
+   int32_t height = 240;
+   // Video pixel format.
+   OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
+   // Video width stride.
+   int32_t widthStride = 0;
+   // Video height stride.
+   int32_t heightStride = 0;
+   // Pointer to the decoder instance.
+   OH_AVCodec *videoDec = nullptr;
+   // Decoder synchronization lock.
+   std::shared_mutex codecMutex;
+   // Decoder input queue.
+   CodecBufferQueue inQueue;
+   // Decoder output queue.
+   CodecBufferQueue outQueue;
+   ```
 
 ### Surface Mode
 
@@ -185,14 +194,14 @@ The following walks you through how to implement the entire video decoding proce
 
 1. Add the header files.
 
-    ```c++
-    #include <multimedia/player_framework/native_avcodec_videodecoder.h>
-    #include <multimedia/player_framework/native_avcapability.h>
-    #include <multimedia/player_framework/native_avcodec_base.h>
-    #include <multimedia/player_framework/native_avformat.h>
-    #include <multimedia/player_framework/native_avbuffer.h>
-    #include <fstream>
-    ```
+   ```c++
+   #include <multimedia/player_framework/native_avcodec_videodecoder.h>
+   #include <multimedia/player_framework/native_avcapability.h>
+   #include <multimedia/player_framework/native_avcodec_base.h>
+   #include <multimedia/player_framework/native_avformat.h>
+   #include <multimedia/player_framework/native_avbuffer.h>
+   #include <fstream>
+   ```
 
 2. Create a decoder instance.
 
@@ -202,23 +211,23 @@ The following walks you through how to implement the entire video decoding proce
    - **capability**: pointer to the decoder capability query instance.
    - **OH_AVCODEC_MIMETYPE_VIDEO_AVC**: AVC video codec.
 
-    ```c++
-    // To create a decoder by name, call OH_AVCapability_GetName to obtain the codec names available and then call OH_VideoDecoder_CreateByName. If your application has special requirements, for example, expecting a decoder that supports a certain resolution, you can call OH_AVCodec_GetCapability to query the capability first.
-    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false);
-    // Create a hardware decoder instance.
-    OH_AVCapability *capability= OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
-    const char *name = OH_AVCapability_GetName(capability);
-    OH_AVCodec *videoDec = OH_VideoDecoder_CreateByName(name);
-    ```
+   ```c++
+   // To create a decoder by name, call OH_AVCapability_GetName to obtain the codec names available and then call OH_VideoDecoder_CreateByName. If your application has special requirements, for example, expecting a decoder that supports a certain resolution, you can call OH_AVCodec_GetCapability to query the capability first.
+   OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false);
+   // Create a hardware decoder instance.
+   OH_AVCapability *capability= OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
+   const char *name = OH_AVCapability_GetName(capability);
+   OH_AVCodec *videoDec = OH_VideoDecoder_CreateByName(name);
+   ```
 
-    ```c++
-    // Create a decoder by MIME type. Only specific codecs recommended by the system can be created in this way.
-    // If multiple codecs need to be created, create hardware decoder instances first. If the hardware resources are insufficient, create software decoder instances.
-    // Create an H.264 decoder for software/hardware decoding.
-    OH_AVCodec *videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
-    // Create an H.265 decoder for software/hardware decoding.
-    OH_AVCodec *videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
-    ```
+   ```c++
+   // Create a decoder by MIME type. Only specific codecs recommended by the system can be created in this way.
+   // If multiple codecs need to be created, create hardware decoder instances first. If the hardware resources are insufficient, create software decoder instances.
+   // Create an H.264 decoder for software/hardware decoding.
+   OH_AVCodec *videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+   // Create an H.265 decoder for software/hardware decoding.
+   OH_AVCodec *videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
+   ```
 
 3. Call **OH_VideoDecoder_RegisterCallback()** to register the callback functions.
 
@@ -233,56 +242,56 @@ The following walks you through how to implement the entire video decoding proce
 
    <!--RP2--><!--RP2End-->
 
-    ```c++
-    // Implement the OH_AVCodecOnError callback function.
-    static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
-    {
-        // Process the error code in the callback.
-        (void)codec;
-        (void)errorCode;
-        (void)userData;
-    }
+   ```c++
+   // Implement the OH_AVCodecOnError callback function.
+   static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
+   {
+       // Process the error code in the callback.
+       (void)codec;
+       (void)errorCode;
+       (void)userData;
+   }
 
-    // Implement the OH_AVCodecOnStreamChanged callback function.
-    // This callback is triggered when the resolution of the input video stream changes.
-    static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
-    {
-        // The changed video width and height can be obtained through format.
-        (void)codec;
-        (void)userData;
-        bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
-                   OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
-        if (!ret) {
-            // Handle exceptions.
-        }
-    }
+   // Implement the OH_AVCodecOnStreamChanged callback function.
+   // This callback is triggered when the resolution of the input video stream changes.
+   static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
+   {
+       // The changed video width and height can be obtained through format.
+       (void)codec;
+       (void)userData;
+       bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
+                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
+       if (!ret) {
+           // Handle exceptions.
+       }
+   }
 
-    // Implement the OH_AVCodecOnNeedInputBuffer callback function.
-    static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-    {
-        // The data buffer of the input frame and its index are sent to inQueue.
-        (void)codec;
-        (void)userData;
-        inQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
-    }
+   // Implement the OH_AVCodecOnNeedInputBuffer callback function.
+   static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+   {
+       // The data buffer of the input frame and its index are sent to inQueue.
+       (void)codec;
+       (void)userData;
+       inQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
+   }
 
-    // Implement the OH_AVCodecOnNewOutputBuffer callback function.
-    static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-    {
-        // The data buffer of the finished frame and its index are sent to outQueue.
-        (void)codec;
-        (void)userData;
-        outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
-    }
+   // Implement the OH_AVCodecOnNewOutputBuffer callback function.
+   static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+   {
+       // The data buffer of the finished frame and its index are sent to outQueue.
+       (void)codec;
+       (void)userData;
+       outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
+   }
 
-    // Call OH_VideoDecoder_RegisterCallback() to register the callback functions.
-    OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
-    // Set the asynchronous callbacks.
-    OH_AVErrCode ret = OH_VideoDecoder_RegisterCallback(videoDec, cb, nullptr); // nullptr: userData on which the callback depends is empty.
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   // Call OH_VideoDecoder_RegisterCallback() to register the callback functions.
+   OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
+   // Set the asynchronous callbacks.
+   OH_AVErrCode ret = OH_VideoDecoder_RegisterCallback(videoDec, cb, nullptr); // nullptr: userData on which the callback depends is empty.
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
    > **NOTE**
    >
@@ -294,53 +303,53 @@ The following walks you through how to implement the entire video decoding proce
 
    Add the header files.
 
-    ```c++
-    #include <multimedia/drm_framework/native_mediakeysystem.h>
-    #include <multimedia/drm_framework/native_mediakeysession.h>
-    #include <multimedia/drm_framework/native_drm_err.h>
-    #include <multimedia/drm_framework/native_drm_common.h>
-    ```
+   ```c++
+   #include <multimedia/drm_framework/native_mediakeysystem.h>
+   #include <multimedia/drm_framework/native_mediakeysession.h>
+   #include <multimedia/drm_framework/native_drm_err.h>
+   #include <multimedia/drm_framework/native_drm_common.h>
+   ```
 
    Link the dynamic libraries in the CMake script.
 
-    ``` cmake
-    target_link_libraries(sample PUBLIC libnative_drm.so)
-    ```
+   ```cmake
+   target_link_libraries(sample PUBLIC libnative_drm.so)
+   ```
 
-   <!--RP4-->The sample code is as follows:<!--RP4End-->
+   <!--RP4-->Example:<!--RP4End-->
 
-    ```c++
-    // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
-    MediaKeySystem *system = nullptr;
-    int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
-    if (system == nullptr) {
-        printf("create media key system failed");
-        return;
-    }
+   ```c++
+   // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
+   MediaKeySystem *system = nullptr;
+   int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
+   if (system == nullptr) {
+       printf("create media key system failed");
+       return;
+   }
 
-    // Create a decryption session. If a secure video channel is used, create a MediaKeySession with the content protection level of CONTENT_PROTECTION_LEVEL_HW_CRYPTO or higher.
-    // To use a non-secure video channel, create a MediaKeySession with the content protection level of CONTENT_PROTECTION_LEVEL_SW_CRYPTO or higher.
-    MediaKeySession *session = nullptr;
-    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-    ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-    if (ret != DRM_ERR_OK) {
-        // If the creation fails, refer to the DRM interface document and check logs.
-        printf("create media key session failed.");
-        return;
-    }
-    if (session == nullptr) {
-        printf("media key session is nullptr.");
-        return;
-    }
+   // Create a decryption session. If a secure video channel is used, create a MediaKeySession with the content protection level of CONTENT_PROTECTION_LEVEL_HW_CRYPTO or higher.
+   // To use a non-secure video channel, create a MediaKeySession with the content protection level of CONTENT_PROTECTION_LEVEL_SW_CRYPTO or higher.
+   MediaKeySession *session = nullptr;
+   DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+   ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
+   if (ret != DRM_ERR_OK) {
+       // If the creation fails, refer to the DRM interface document and check logs.
+       printf("create media key session failed.");
+       return;
+   }
+   if (session == nullptr) {
+       printf("media key session is nullptr.");
+       return;
+   }
 
-    // Generate a media key request and set the response to the media key request.
+   // Generate a media key request and set the response to the media key request.
 
-    // Set the decryption configuration, that is, set the decryption session and secure video channel flag to the decoder.
-    // If the DRM scheme supports a secure video channel, set secureVideoPath to true and create a secure decoder before using the channel.
-    // That is, in step 2, call OH_VideoDecoder_CreateByName, with a decoder name followed by .secure (for example, [CodecName].secure) passed in, to create a secure decoder.
-    bool secureVideoPath = false;
-    ret = OH_VideoDecoder_SetDecryptionConfig(videoDec, session, secureVideoPath);
-    ```
+   // Set the decryption configuration, that is, set the decryption session and secure video channel flag to the decoder.
+   // If the DRM scheme supports a secure video channel, set secureVideoPath to true and create a secure decoder before using the channel.
+   // That is, in step 2, call OH_VideoDecoder_CreateByName, with a decoder name followed by .secure (for example, [CodecName].secure) passed in, to create a secure decoder.
+   bool secureVideoPath = false;
+   ret = OH_VideoDecoder_SetDecryptionConfig(videoDec, session, secureVideoPath);
+   ```
 
 5. Call **OH_VideoDecoder_Configure()** to configure the decoder.
 
@@ -352,25 +361,25 @@ The following walks you through how to implement the entire video decoding proce
 
    Currently, the following options must be configured for all supported formats: video frame width and height.
 
-    ```c++
+   ```c++
 
-    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
-    if (format == nullptr) {
-        // Handle exceptions.
-    }
-    // Set the format.
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_WIDTH, width); // Mandatory.
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_HEIGHT, height); // Mandatory.
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PIXEL_FORMAT, pixelFormat);
-    // (Optional) Configure low-latency decoding.
-    // If supported by the platform, the video decoder outputs frames in the decoding sequence when OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY is enabled.
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY, 1);
-    // Configure the decoder.
-    OH_AVErrCode ret = OH_VideoDecoder_Configure(videoDec, format.get());
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
+   if (format == nullptr) {
+       // Handle exceptions.
+   }
+   // Set the format.
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_WIDTH, width); // Mandatory.
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_HEIGHT, height); // Mandatory.
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PIXEL_FORMAT, pixelFormat);
+   // (Optional) Configure low-latency decoding.
+   // If supported by the platform, the video decoder outputs frames in the decoding sequence when OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY is enabled.
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY, 1);
+   // Configure the decoder.
+   OH_AVErrCode ret = OH_VideoDecoder_Configure(videoDec, format.get());
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 6. Set the surface.
 
@@ -380,40 +389,40 @@ The following walks you through how to implement the entire video decoding proce
 
    Add the header files.
 
-    ```c++
-    #include <native_window/external_window.h>
-    ```
+   ```c++
+   #include <native_window/external_window.h>
+   ```
 
    Link the dynamic libraries in the CMake script.
 
-    ``` cmake
-    target_link_libraries(sample PUBLIC libnative_window.so)
-    ```
+   ```cmake
+   target_link_libraries(sample PUBLIC libnative_window.so)
+   ```
 
    6.1.1 On ArkTS, call **getXComponentSurfaceId()** of the xComponentController to obtain the surface ID of the XComponent. For details about the operation, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
 
    6.1.2 On the native side, call **OH_NativeWindow_CreateNativeWindowFromSurfaceId** to create a NativeWindow instance.
 
-    ```c++
-    OHNativeWindow* nativeWindow;
-    // Create a NativeWindow instance based on the surface ID obtained in step 1.1.
-    OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &nativeWindow);
-    ```
+   ```c++
+   OHNativeWindow* nativeWindow;
+   // Create a NativeWindow instance based on the surface ID obtained in step 1.1.
+   OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &nativeWindow);
+   ```
 
    6.2 If OpenGL post-processing is performed after decoding, obtain NativeWindow from NativeImage. For details about the operation, see [NativeImage](../../graphics/native-image-guidelines.md).
 
    In surface mode, you can perform this step during decoding to switch the surface dynamically.
 
-    ```c++
-    // Set the surface.
-    // Set the window parameters.
-    OH_AVErrCode ret = OH_VideoDecoder_SetSurface(videoDec, nativeWindow);  // Obtain a NativeWindow instance using either of the preceding methods.
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Configure the matching mode between the video and screen. (Scale the buffer at the original aspect ratio to enable the smaller side of the buffer to match the window, while making the excess part transparent.)
-    OH_NativeWindow_NativeWindowSetScalingModeV2(nativeWindow, OH_SCALING_MODE_SCALE_CROP_V2);
-    ```
+   ```c++
+   // Set the surface.
+   // Set the window parameters.
+   OH_AVErrCode ret = OH_VideoDecoder_SetSurface(videoDec, nativeWindow);  // Obtain a NativeWindow instance using either of the preceding methods.
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Configure the matching mode between the video and screen. (Scale the buffer at the original aspect ratio to enable the smaller side of the buffer to match the window, while making the excess part transparent.)
+   OH_NativeWindow_NativeWindowSetScalingModeV2(nativeWindow, OH_SCALING_MODE_SCALE_CROP_V2);
+   ```
 
    > **NOTE**
    > If both decoder 1 and decoder 2 are bound to the same NativeWindow using the **OH_VideoDecoder_SetSurface** function, and decoder 2 is running, destroying decoder 1 with **OH_VideoDecoder_Destroy** will cause decoder 2's video playback to freeze.
@@ -427,39 +436,39 @@ The following walks you through how to implement the entire video decoding proce
 
    This API prepares data before the decoder starts running.
 
-    ```c++
-    OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 8. Call **OH_VideoDecoder_Start()** to start the decoder.
 
-    ```c++
-    // Start the decoder.
-    OH_AVErrCode ret = OH_VideoDecoder_Start(videoDec);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   // Start the decoder.
+   OH_AVErrCode ret = OH_VideoDecoder_Start(videoDec);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 9. (Optional) Call **OH_VideoDecoder_SetParameter()** to set the surface parameters of the decoder.
 
    For details about the configurable options, see the video-specific key-value pairs in [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
-    ```c++
-    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
-    if (format == nullptr) {
-        // Handle exceptions.
-    }
-    // Configure the display rotation angle.
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_ROTATION, 90);
-    OH_AVErrCode ret = OH_VideoDecoder_SetParameter(videoDec, format.get());
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
+   if (format == nullptr) {
+       // Handle exceptions.
+   }
+   // Configure the display rotation angle.
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_ROTATION, 90);
+   OH_AVErrCode ret = OH_VideoDecoder_SetParameter(videoDec, format.get());
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 10. (Optional) Call **OH_AVCencInfo_SetAVBuffer()** to set the Common Encryption Scheme (CENC) information.
 
@@ -477,7 +486,7 @@ The following walks you through how to implement the entire video decoding proce
     target_link_libraries(sample PUBLIC libnative_media_avcencinfo.so)
     ```
 
-    In the code snippet below, the following variable is used:
+    The sample code is as follows.
     - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**.
     ```c++
     uint32_t keyIdLen = DRM_KEY_ID_SIZE;
@@ -678,7 +687,6 @@ The following walks you through how to implement the entire video decoding proce
     if (pushInputRet != AV_ERR_OK) {
         // Handle exceptions.
     }
-
     ```
 
 14. (Optional) Call **OH_VideoDecoder_Reset()** to reset the decoder.
@@ -761,35 +769,35 @@ The following walks you through how to implement the entire video decoding proce
 
 1. Add the header files.
 
-    ```c++
-    #include <multimedia/player_framework/native_avcodec_videodecoder.h>
-    #include <multimedia/player_framework/native_avcapability.h>
-    #include <multimedia/player_framework/native_avcodec_base.h>
-    #include <multimedia/player_framework/native_avformat.h>
-    #include <multimedia/player_framework/native_avbuffer.h>
-    #include <native_buffer/native_buffer.h>
-    #include <fstream>
-    ```
+   ```c++
+   #include <multimedia/player_framework/native_avcodec_videodecoder.h>
+   #include <multimedia/player_framework/native_avcapability.h>
+   #include <multimedia/player_framework/native_avcodec_base.h>
+   #include <multimedia/player_framework/native_avformat.h>
+   #include <multimedia/player_framework/native_avbuffer.h>
+   #include <native_buffer/native_buffer.h>
+   #include <fstream>
+   ```
 
 2. Create a decoder instance.
 
    The procedure is the same as that in surface mode and is not described here.
 
-    ```c++
-    // To create a decoder by name, call OH_AVCapability_GetName to obtain the codec names available and then call OH_VideoDecoder_CreateByName. If your application has special requirements, for example, expecting a decoder that supports a certain resolution, you can call OH_AVCodec_GetCapability to query the capability first.
-    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false);
-    const char *name = OH_AVCapability_GetName(capability);
-    OH_AVCodec *videoDec = OH_VideoDecoder_CreateByName(name);
-    ```
+   ```c++
+   // To create a decoder by name, call OH_AVCapability_GetName to obtain the codec names available and then call OH_VideoDecoder_CreateByName. If your application has special requirements, for example, expecting a decoder that supports a certain resolution, you can call OH_AVCodec_GetCapability to query the capability first.
+   OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false);
+   const char *name = OH_AVCapability_GetName(capability);
+   OH_AVCodec *videoDec = OH_VideoDecoder_CreateByName(name);
+   ```
 
-    ```c++
-    // Create a decoder by MIME type. Only specific codecs recommended by the system can be created in this way.
-    // If multiple codecs need to be created, create hardware decoder instances first. If the hardware resources are insufficient, create software decoder instances.
-    // Create an H.264 decoder for software/hardware decoding.
-    OH_AVCodec *videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
-    // Create an H.265 decoder for hardware decoding.
-    OH_AVCodec *videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
-    ```
+   ```c++
+   // Create a decoder by MIME type. Only specific codecs recommended by the system can be created in this way.
+   // If multiple codecs need to be created, create hardware decoder instances first. If the hardware resources are insufficient, create software decoder instances.
+   // Create an H.264 decoder for software/hardware decoding.
+   OH_AVCodec *videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+   // Create an H.265 decoder for hardware decoding.
+   OH_AVCodec *videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
+   ```
 
 3. Call **OH_VideoDecoder_RegisterCallback()** to register the callback functions.
 
@@ -804,88 +812,88 @@ The following walks you through how to implement the entire video decoding proce
 
    <!--RP2--><!--RP2End-->
 
-    ```c++
-    int32_t cropTop = 0;
-    int32_t cropBottom = 0;
-    int32_t cropLeft = 0;
-    int32_t cropRight = 0;
-    bool isFirstFrame = true;
-    // Implement the OH_AVCodecOnError callback function.
-    static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
-    {
-        // Process the error code in the callback.
-        (void)codec;
-        (void)errorCode;
-        (void)userData;
-    }
-
-    // Implement the OH_AVCodecOnStreamChanged callback function.
-    // This callback is triggered when the resolution of the input video stream changes.
-    static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
-    {
-        // Optional. Configure the data when you want to obtain the video width, height, and stride.
-        // The changed video width, height, and stride can be obtained through format.
-        (void)codec;
-        (void)userData;
-        bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
-                   OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &height) &&
-                   OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
-                   OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride) &&
-                   // (Optional) Obtain the cropped rectangle information.
-                   OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
-                   OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
-                   OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
-                   OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
-        if (!ret) {
-            // Handle exceptions.
-        }
-    }
-
-    // Implement the OH_AVCodecOnNeedInputBuffer callback function.
-    static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-    {
-        // The data buffer of the input frame and its index are sent to inQueue.
-        (void)codec;
-        (void)userData;
-        inQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
-    }
-
-    // Implement the OH_AVCodecOnNewOutputBuffer callback function.
-    static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-    {
-        // Optional. Configure the data when you want to obtain the video width, height, and stride.
-        // Obtain the video width, height, and stride.
-        if (isFirstFrame) {
-            auto format = std::shared_ptr<OH_AVFormat>(OH_VideoDecoder_GetOutputDescription(codec), OH_AVFormat_Destroy);
-            if (format == nullptr) {
-                // Handle exceptions.
-            }
-            bool ret = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
-                       OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_HEIGHT, &height) &&
-                       OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
-                       OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride) &&
-                       // (Optional) Obtain the cropped rectangle information.
-                       OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
-                       OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
-                       OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
-                       OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
-            if (!ret) {
-                // Handle exceptions.
-            }
-            isFirstFrame = false;
-        }
-        // The data buffer of the finished frame and its index are sent to outQueue.
-        (void)userData;
-        outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
-    }
-    // Call OH_VideoDecoder_RegisterCallback() to register the callback functions.
-    OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
-    // Set the asynchronous callbacks.
-    OH_AVErrCode ret = OH_VideoDecoder_RegisterCallback(videoDec, cb, nullptr); // nullptr: userData on which the callback depends is empty.
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   int32_t cropTop = 0;
+   int32_t cropBottom = 0;
+   int32_t cropLeft = 0;
+   int32_t cropRight = 0;
+   bool isFirstFrame = true;
+   // Implement the OH_AVCodecOnError callback function.
+   static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
+   {
+       // Process the error code in the callback.
+       (void)codec;
+       (void)errorCode;
+       (void)userData;
+   }
+   
+   // Implement the OH_AVCodecOnStreamChanged callback function.
+   // This callback is triggered when the resolution of the input video stream changes.
+   static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
+   {
+       // Optional. Configure the data when you want to obtain the video width, height, and stride.
+       // The changed video width, height, and stride can be obtained through format.
+       (void)codec;
+       (void)userData;
+       bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
+                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &height) &&
+                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
+                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride) &&
+                  // (Optional) Obtain the cropped rectangle information.
+                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
+                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
+                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
+                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
+       if (!ret) {
+           // Handle exceptions.
+       }
+   }
+   
+   // Implement the OH_AVCodecOnNeedInputBuffer callback function.
+   static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+   {
+       // The data buffer of the input frame and its index are sent to inQueue.
+       (void)codec;
+       (void)userData;
+       inQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
+   }
+   
+   // Implement the OH_AVCodecOnNewOutputBuffer callback function.
+   static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+   {
+       // Optional. Configure the data when you want to obtain the video width, height, and stride.
+       // Obtain the video width, height, and stride.
+       if (isFirstFrame) {
+           auto format = std::shared_ptr<OH_AVFormat>(OH_VideoDecoder_GetOutputDescription(codec), OH_AVFormat_Destroy);
+           if (format == nullptr) {
+               // Handle exceptions.
+           }
+           bool ret = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
+                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_HEIGHT, &height) &&
+                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
+                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride) &&
+                      // (Optional) Obtain the cropped rectangle information.
+                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
+                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
+                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
+                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
+           if (!ret) {
+               // Handle exceptions.
+           }
+           isFirstFrame = false;
+       }
+       // The data buffer of the finished frame and its index are sent to outQueue.
+       (void)userData;
+       outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
+   }
+   // Call OH_VideoDecoder_RegisterCallback() to register the callback functions.
+   OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
+   // Set the asynchronous callbacks.
+   OH_AVErrCode ret = OH_VideoDecoder_RegisterCallback(videoDec, cb, nullptr); // nullptr: userData on which the callback depends is empty.
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
    > **NOTE**
    >
@@ -895,111 +903,111 @@ The following walks you through how to implement the entire video decoding proce
 
    Add the header files.
 
-    ```c++
-    #include <multimedia/drm_framework/native_mediakeysystem.h>
-    #include <multimedia/drm_framework/native_mediakeysession.h>
-    #include <multimedia/drm_framework/native_drm_err.h>
-    #include <multimedia/drm_framework/native_drm_common.h>
-    ```
+   ```c++
+   #include <multimedia/drm_framework/native_mediakeysystem.h>
+   #include <multimedia/drm_framework/native_mediakeysession.h>
+   #include <multimedia/drm_framework/native_drm_err.h>
+   #include <multimedia/drm_framework/native_drm_common.h>
+   ```
 
    Link the dynamic libraries in the CMake script.
 
-    ``` cmake
-    target_link_libraries(sample PUBLIC libnative_drm.so)
-    ```
+   ```cmake
+   target_link_libraries(sample PUBLIC libnative_drm.so)
+   ```
 
    The sample code is as follows.
 
-    ```c++
-    // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
-    MediaKeySystem *system = nullptr;
-    int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
-    if (system == nullptr) {
-        printf("create media key system failed");
-        return;
-    }
+   ```c++
+   // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
+   MediaKeySystem *system = nullptr;
+   int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
+   if (system == nullptr) {
+       printf("create media key system failed");
+       return;
+   }
 
-    // Create a media key session.
-    // To use a non-secure video channel, create a MediaKeySession with the content protection level of CONTENT_PROTECTION_LEVEL_SW_CRYPTO or higher.
-    MediaKeySession *session = nullptr;
-    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-    ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-    if (ret != DRM_ERR_OK) {
-        // If the creation fails, refer to the DRM interface document and check logs.
-        printf("create media key session failed.");
-        return;
-    }
-    if (session == nullptr) {
-        printf("media key session is nullptr.");
-        return;
-    }
-    // Generate a media key request and set the response to the media key request.
-    // Set the decryption configuration, that is, set the decryption session and secure video channel flag to the decoder.
-    bool secureVideoPath = false;
-    ret = OH_VideoDecoder_SetDecryptionConfig(videoDec, session, secureVideoPath);
-    ```
+   // Create a media key session.
+   // To use a non-secure video channel, create a MediaKeySession with the content protection level of CONTENT_PROTECTION_LEVEL_SW_CRYPTO or higher.
+   MediaKeySession *session = nullptr;
+   DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+   ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
+   if (ret != DRM_ERR_OK) {
+       // If the creation fails, refer to the DRM interface document and check logs.
+       printf("create media key session failed.");
+       return;
+   }
+   if (session == nullptr) {
+       printf("media key session is nullptr.");
+       return;
+   }
+   // Generate a media key request and set the response to the media key request.
+   // Set the decryption configuration, that is, set the decryption session and secure video channel flag to the decoder.
+   bool secureVideoPath = false;
+   ret = OH_VideoDecoder_SetDecryptionConfig(videoDec, session, secureVideoPath);
+   ```
 
 5. Call **OH_VideoDecoder_Configure()** to configure the decoder.
 
    The procedure is the same as that in surface mode and is not described here.
 
-    ```c++
-    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
-    if (format == nullptr) {
-        // Handle exceptions.
-    }
-    // Set the format.
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_WIDTH, width); // Mandatory.
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_HEIGHT, height); // Mandatory.
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PIXEL_FORMAT, pixelFormat);
-    // Configure the decoder.
-    OH_AVErrCode ret = OH_VideoDecoder_Configure(videoDec, format.get());
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
+   if (format == nullptr) {
+       // Handle exceptions.
+   }
+   // Set the format.
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_WIDTH, width); // Mandatory.
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_HEIGHT, height); // Mandatory.
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PIXEL_FORMAT, pixelFormat);
+   // Configure the decoder.
+   OH_AVErrCode ret = OH_VideoDecoder_Configure(videoDec, format.get());
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 6. Call **OH_VideoDecoder_Prepare()** to prepare the decoder.
 
    This API prepares data before the decoder starts running.
 
-    ```c++
-    OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 7. Call **OH_VideoDecoder_Start()** to start the decoder.
 
-    ```c++
-    std::unique_ptr<std::ofstream> outputFile = std::make_unique<std::ofstream>();
-    if (outputFile != nullptr) {
-        outputFile->open("/*yourpath*.yuv", std::ios::out | std::ios::binary | std::ios::ate);
-    }
-    // Start the decoder.
-    OH_AVErrCode ret = OH_VideoDecoder_Start(videoDec);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   std::unique_ptr<std::ofstream> outputFile = std::make_unique<std::ofstream>();
+   if (outputFile != nullptr) {
+       outputFile->open("/*yourpath*.yuv", std::ios::out | std::ios::binary | std::ios::ate);
+   }
+   // Start the decoder.
+   OH_AVErrCode ret = OH_VideoDecoder_Start(videoDec);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 8. (Optional) Call **OH_VideoDecoder_SetParameter()** to set the decoder parameters.
 
    For details about the configurable options, see the video-specific key-value pairs in [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
-    ```c++
-    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
-    if (format == nullptr) {
-        // Handle exceptions.
-    }
-    // Set the frame rate.
-    OH_AVFormat_SetDoubleValue(format.get(), OH_MD_KEY_FRAME_RATE, 30.0);
-    OH_AVErrCode ret = OH_VideoDecoder_SetParameter(videoDec, format.get());
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
+   if (format == nullptr) {
+       // Handle exceptions.
+   }
+   // Set the frame rate.
+   OH_AVFormat_SetDoubleValue(format.get(), OH_MD_KEY_FRAME_RATE, 30.0);
+   OH_AVErrCode ret = OH_VideoDecoder_SetParameter(videoDec, format.get());
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 9. (Optional) Call **OH_AVCencInfo_SetAVBuffer()** to set the CENC information.
 
@@ -1007,57 +1015,57 @@ The following walks you through how to implement the entire video decoding proce
 
    The sample code is as follows.
 
-    ```c++
-    uint32_t keyIdLen = DRM_KEY_ID_SIZE;
-    uint8_t keyId[] = {
-        0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
-        0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
-    uint32_t ivLen = DRM_KEY_IV_SIZE;
-    uint8_t iv[] = {
-        0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
-        0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
-    uint32_t encryptedBlockCount = 0;
-    uint32_t skippedBlockCount = 0;
-    uint32_t firstEncryptedOffset = 0;
-    uint32_t subsampleCount = 1;
-    DrmSubsample subsamples[1] = { {0x10, 0x16} };
-    // Create a CencInfo instance.
-    OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
-    if (cencInfo == nullptr) {
-        // Handle exceptions.
-    }
-    // Set the decryption algorithm.
-    OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set KeyId and Iv.
-    errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set the sample information.
-    errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
-        subsampleCount, subsamples);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set the mode. KeyId, Iv, and SubSamples have been set.
-    errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set CencInfo to the AVBuffer.
-    errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Destroy the CencInfo instance.
-    errNo = OH_AVCencInfo_Destroy(cencInfo);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   uint32_t keyIdLen = DRM_KEY_ID_SIZE;
+   uint8_t keyId[] = {
+       0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
+       0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
+   uint32_t ivLen = DRM_KEY_IV_SIZE;
+   uint8_t iv[] = {
+       0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
+       0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
+   uint32_t encryptedBlockCount = 0;
+   uint32_t skippedBlockCount = 0;
+   uint32_t firstEncryptedOffset = 0;
+   uint32_t subsampleCount = 1;
+   DrmSubsample subsamples[1] = { {0x10, 0x16} };
+   // Create a CencInfo instance.
+   OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
+   if (cencInfo == nullptr) {
+       // Handle exceptions.
+   }
+   // Set the decryption algorithm.
+   OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set KeyId and Iv.
+   errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set the sample information.
+   errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
+       subsampleCount, subsamples);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set the mode. KeyId, Iv, and SubSamples have been set.
+   errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set CencInfo to the AVBuffer.
+   errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Destroy the CencInfo instance.
+   errNo = OH_AVCencInfo_Destroy(cencInfo);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 10. Call **OH_VideoDecoder_PushInputBuffer()** to push the stream to the input buffer for decoding.
 
@@ -1104,7 +1112,7 @@ The following walks you through how to implement the entire video decoding proce
     - **index**: parameter passed by the callback function **OnNewOutputBuffer**, which uniquely corresponds to the buffer.
     - **buffer**: parameter passed by the callback function **OnNewOutputBuffer**. You can obtain the virtual address of an image by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
     - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
-
+    
     ```c++
     std::shared_ptr<CodecBufferInfo> bufferInfo = outQueue.Dequeue();
     std::shared_lock<std::shared_mutex> lock(codecMutex);

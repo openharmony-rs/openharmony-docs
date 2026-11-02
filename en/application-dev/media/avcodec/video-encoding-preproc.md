@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes preprocessing input frames by downsampling, cropping, and frame dropping before video encoding for low-resolution output, region-only encoding, and adaptive low frame rates. Supports asynchronous Surface mode only."
+keywords: [encoding preprocessing, downsampling, cropping, frame dropping, primary encoder, low-resolution encoding, ROI, adaptive bitrate, ABR]
+doctype: guide
+status: active
+---
+
 # Video Encoding Preprocessing
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2e205e439bc0f41b94da84e35d75dd910dd5454c translatedAt=2026-10-22T04:11:20.498Z pushedAt=2026-10-22T13:40:44.193Z nl=1 -->
+<!-- md-trans-meta sourceCommit=908020b331b2d0fc8a0193a96bfbc54ad6afbbd3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 26.0.0, video encoders support preprocessing, including downsampling, cropping, and frame dropping.
 
@@ -213,7 +221,7 @@ if (ret != AV_ERR_OK || window == nullptr) {
 
 // Bind the window to a data source such as Camera or XComponent.
 // For example: cameraManager->SetPreviewSurface(window)
-//       nativeXComponent->SetSurface(window)
+//       nativeXComponent->SetSurface(window).
 ```
 
 > **Key rules:**
