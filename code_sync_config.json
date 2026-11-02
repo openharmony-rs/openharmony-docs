@@ -47336,6 +47336,11 @@
 						"end_line":291,
 						"name":"rotate_anim",
 						"start_line":158
+					},
+					{
+						"end_line":132,
+						"name":"show_blur_anim",
+						"start_line":93
 					}
 				]
 			}
@@ -47436,6 +47441,11 @@
 						"end_line":498,
 						"name":"create_photo_output",
 						"start_line":475
+					},
+					{
+						"end_line":1496,
+						"name":"photo_available",
+						"start_line":1334
 					}
 				]
 			}
