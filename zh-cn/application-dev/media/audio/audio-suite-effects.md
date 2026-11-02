@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "详细说明 OHAudioSuite 提供的均衡器、降噪、声场、音源分离、声音美化、环境效果、混音、空间渲染、传统变声、通用变声、变速变调、HOA 空间音频等多种音频效果节点的参数规格、预置效果与设置方法，适用于离线编辑和实时预览管线中的效果节点配置。"
+keywords: [OHAudioSuite, 音频效果, 均衡器, 降噪, 声场, 音源分离, 声音美化, 环境效果, 混音, 空间渲染, 传统变声, 通用变声, 变速变调, HOA空间音频, 预置效果]
+doctype: guide
+status: active
+---
+
 # 音频效果(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -415,3 +423,9 @@ HOA（High-Order Ambisonics）转双耳空间音频节点[EFFECT_NODE_TYPE_HOA_S
 - 该节点的前置节点必须连接音频格式为HOA的输入节点。
 - 如果节点未正确连接，在调用[OH_AudioSuiteEngine_StartPipeline](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline)接口时将会报错。
 - 该节点无需额外配置参数，创建并正确连接后即会生效。
+
+## 相关主题推荐
+
+- [音频编创开发概述(C/C++)](audio-suite.md)
+- [离线编辑(C/C++)](audio-suite-manual-rendering.md)
+- [空间音频渲染(C/C++)](audio-suite-space-render.md)
