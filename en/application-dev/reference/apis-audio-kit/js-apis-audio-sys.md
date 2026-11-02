@@ -2683,17 +2683,17 @@ deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo
 ```
 
 ## SoundCardInfo
- 
+
 Describes the sound card information.
- 
+
 **Since:** 26.0.0
- 
+
 **System API**: This is a system API.
- 
+
 **Model restriction**: This API can be used only in the stage model.
- 
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
- 
+
 | Name| Type| Read-Only| Optional| Description|
 | :--- | :--- | :--- | :--- | :--- |
 | name | string | Yes| No| Sound card name.|
