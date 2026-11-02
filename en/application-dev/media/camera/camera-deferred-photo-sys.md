@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=7364789dc4119f3afbcafcbbd9119bd50891f3c2 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
-As an important feature of the camera, high-performance photo capture enables deferred photo capture and further reduces the response delay, delivering a better user experience. High-performance photo capture is implemented as follows: After an application delivers a phot capture request, the system quickly returns a thumbnail to the application, and the application stores the thumbnail and related information in the mediaLibrary. Then the subservice performs scheduling based on the system pressure and custom scenarios and sends the postprocessed original image to the mediaLibrary.
+As an important feature of the camera, high-performance photo capture enables deferred photo capture and further reduces the response delay, delivering a better user experience. High-performance photo capture is implemented as follows: After an application delivers a photo capture request, the system quickly returns a thumbnail to the application, and the application stores the thumbnail and related information in the mediaLibrary. Then the subservice performs scheduling based on the system pressure and custom scenarios and sends the postprocessed original image to the mediaLibrary.
 
 To develop high-performance photo capture, perform the following steps:
 
