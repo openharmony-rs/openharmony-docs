@@ -1368,7 +1368,7 @@ onFocusedApplicationChanged(observer: FocusedApplicationObserver): number
 **示例：**
 
 ```ts
-import { appManager } from '@kit.AbilityKit';
+import { appManager, UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let focusedApplicationObserver: appManager.FocusedApplicationObserver = {
@@ -1377,13 +1377,19 @@ let focusedApplicationObserver: appManager.FocusedApplicationObserver = {
   }
 };
 
-try {
-  const observerId = appManager.onFocusedApplicationChanged(focusedApplicationObserver);
-  console.info(`[appManager] observerId: ${observerId}`);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    try {
+      const observerId = appManager.onFocusedApplicationChanged(focusedApplicationObserver);
+      console.info(`[appManager] observerId: ${observerId}`);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+    console.info('Register appProcessStateObserver');
+  }
 }
 ```
 
@@ -1422,34 +1428,42 @@ offFocusedApplicationChanged(observerId: number): void
 **示例：**
 
 ```ts
-import { appManager } from '@kit.AbilityKit';
+import { appManager, UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let observerId = 0;
 
-// 1.注册获焦应用监听器
 let focusedApplicationObserver: appManager.FocusedApplicationObserver = {
   onFocusedApplicationChanged(info: appManager.FocusedApplicationInfo) {
     console.info(`[appManager] onFocusedApplicationChanged: ${JSON.stringify(info)}`);
   }
 };
 
-try {
-  observerId = appManager.onFocusedApplicationChanged(focusedApplicationObserver);
-  console.info(`[appManager] observerId: ${observerId}`);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    // 注册获焦应用监听器
+    try {
+      observerId = appManager.onFocusedApplicationChanged(focusedApplicationObserver);
+      console.info(`[appManager] observerId: ${observerId}`);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+  }
 
-// 2.注销获焦应用监听器
-try {
-  appManager.offFocusedApplicationChanged(observerId);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
+  // 不再需要或应用退出时取消监听
+  onDestroy() {
+    // 注销获焦应用监听器
+    try {
+      appManager.offFocusedApplicationChanged(observerId);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+  }
 }
 ```
 

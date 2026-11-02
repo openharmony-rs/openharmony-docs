@@ -3123,15 +3123,15 @@ The number of registered observers for the current application has reached the u
 
 **错误描述**
 
-注册新的observer失败。
+当前应用已注册的observer数量达到上限，注册失败。
 
 **可能原因**
 
-当前应用已注册observer数量达到上限。
+当前应用已注册的observer数量达到上限。
 
 **处理步骤**
 
-注销掉其他进程中的observer。
+注销掉当前应用其他进程中的observer。
 
 <!--Del-->
 ## 16000301 任务已存在
