@@ -3347,8 +3347,34 @@ isWindowInfoInitialized(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Button('Check window information')
+        .onClick(() => {
+          const initialized = this.uiContext.isWindowInfoInitialized();
+          console.info(`Window information initialized: ${initialized}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
