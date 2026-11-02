@@ -398,7 +398,7 @@ Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session
 
 **描述**
 
-设置会话模式。<br> 此接口不能在[OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig)之后使用。<br> 建议在使用[OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession)后立即使用此接口。<br>推荐使用[OH_CameraManager_GetSupportedSceneMode](./capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取Camera_SceneMode。
+设置会话模式。<br> 此接口不能在[OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig)之后使用。<br> 建议在使用[OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession)后立即使用此接口。
 
 **起始版本：** 12
 
@@ -407,7 +407,7 @@ Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 相机模式。推荐使用[OH_CameraManager_GetSupportedSceneMode](./capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取Camera_SceneMode。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 相机模式。推荐使用[OH_CameraManager_GetSupportedSceneModes](./capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取Camera_SceneMode。 |
 
 **返回：**
 
@@ -895,6 +895,7 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 **描述**
 
 设置闪光灯模式。
+
 **起始版本：** 11
 
 **参数：**
