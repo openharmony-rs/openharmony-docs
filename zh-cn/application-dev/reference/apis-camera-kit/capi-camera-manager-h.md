@@ -792,6 +792,7 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutputWithObjectTypes(Camera_Man
 **描述**
 
 使用元数据对象类型数组创建元数据输出实例。
+
 **起始版本：** 23
 
 **参数：**
