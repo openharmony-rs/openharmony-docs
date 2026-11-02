@@ -5324,13 +5324,15 @@ format(num: number): string
 | SIZE_FILE_BYTE | 22 | 文件大小。 |
 | SIZE_SHORTFILE_BYTE | 23 | 简短的文件大小。 |
 
-## i18n.getCurrency<sup>26+</sup>
+## i18n.getCurrency
 
 getCurrency(locale: Intl.Locale): Currency
 
 创建并返回Currency对象。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -5356,23 +5358,27 @@ let currency: i18n.Currency = i18n.getCurrency(locale);
 ```
 
 
-## Currency<sup>26+</sup>
+## Currency
 
 提供货币相关的能力，包括获取符合ISO 4217标准的货币代码。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-### getISO4217Code<sup>26+</sup>
+### getISO4217Code
 
 getISO4217Code(): string
 
 获取符合ISO 4217标准的货币代码。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
