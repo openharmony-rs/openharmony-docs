@@ -162,49 +162,6 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
 }
 ```
 
-确认弹窗页面（DeleteConfirm.ets）中，用户点击“Cancel”或“Delete”按钮后销毁模态窗口，被遮蔽窗口恢复交互，示例代码如下：
-
-<!-- @[modal_sub_window_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/DeleteConfirm.ets) -->
-
-```ts
-@Entry
-@Component
-struct DeleteConfirm {
-  build() {
-    Column({ space: 24 }) {
-      Text('Are you sure you want to delete this item?')
-        .fontSize(20)
-        .fontWeight(FontWeight.Medium)
-
-      Row({ space: 16 }) {
-        Button('Cancel')
-          .onClick(() => {
-            this.destroySubWindow();
-          })
-        Button('Delete')
-          .onClick(() => {
-            // 执行删除逻辑
-            this.destroySubWindow();
-          })
-      }
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-
-  // 用户确认或取消后，销毁模态窗口，被遮蔽窗口恢复交互
-  private destroySubWindow(): void {
-    let subWindow = window.findWindow('deleteConfirm');
-    subWindow.destroyWindow().then(() => {
-      console.info('Succeeded in destroying the subwindow.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to destroy the subwindow. Cause code: ${err.code}, message: ${err.message}`);
-    });
-  }
-}
-```
-
 ### 实现应用主窗口置顶
 
 视频通话、实时导航等场景中，应用主窗口需要常驻显示且不被其他应用窗口遮挡，可通过[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)实现置顶。
