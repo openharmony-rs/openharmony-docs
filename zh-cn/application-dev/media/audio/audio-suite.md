@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍 OHAudioSuite 音频编创的整体架构，包括引擎、管线、节点三大核心概念，管线的两种工作模式（离线编辑与实时预览）、反向驱动机制以及节点数量与编排规则，帮助开发者快速理解音频编创开发模型。"
+keywords: [OHAudioSuite, 音频编创, 引擎, 管线, 节点, 输入节点, 输出节点, 效果节点, 离线编辑, 实时预览, 反向驱动, 管线数量限制, 节点编排规则, IsNodeTypeSupported, OH_AudioNode_Type]
+doctype: guide
+status: active
+---
+
 # 音频编创开发概述(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -102,3 +110,10 @@
 
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->
+
+## 相关主题推荐
+
+- [离线编辑(C/C++)](audio-suite-manual-rendering.md)
+- [实时预览(C/C++)](audio-suite-real-time-rendering.md)
+- [音频效果(C/C++)](audio-suite-effects.md)
+- [Audio Kit简介](audio-kit-intro.md)

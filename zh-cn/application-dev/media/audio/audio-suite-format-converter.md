@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "从 API version 26 起提供独立的 PCM 音频格式转换能力，支持采样率、声道布局、采样格式（位深）之间的相互转换，适用于纯音频转码等场景，包含流式数据处理的完整开发步骤与使用限制。"
+keywords: [OHAudioSuite, 音频格式转换, 采样率转换, 声道布局转换, 采样格式转换, 位深转换, OH_AudioConverter, OH_AudioConverter_Process, 纯音频转码, 14种采样率, 32种声道布局, 5种采样格式]
+doctype: guide
+status: active
+---
+
 # 音频格式转换(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -229,3 +237,9 @@ target_link_libraries(entry PUBLIC libohaudiosuite.so)
 
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->
+
+## 相关主题推荐
+
+- [音频编创开发概述(C/C++)](audio-suite.md)
+- [离线编辑(C/C++)](audio-suite-manual-rendering.md)
+- [音频效果(C/C++)](audio-suite-effects.md)
