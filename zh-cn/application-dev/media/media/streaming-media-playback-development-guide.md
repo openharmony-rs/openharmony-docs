@@ -79,13 +79,13 @@ status: active
 
 监听当前bufferingUpdate缓冲状态示例代码：
 
-<!-- @[bufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[bufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
-  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
-})
-```
+   ``` TypeScript
+   this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+     console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
+   })
+   ```
 
 ### HLS切换码率
 

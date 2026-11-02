@@ -89,30 +89,30 @@ status: active
 
 当应用需要通过解析应用沙箱中的m3u8文件，播放在线流媒体资源时，可以通过[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)获取文件句柄，将其拼接成fdUrl，并通过[setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
 
-  <!-- @[fd-m3u8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[fd-m3u8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
 
-  ``` TypeScript
-  let filePath = `${this.context.filesDir}/${this.m3u8FileName}`;
-  // 通过fs.openSync获取文件句柄。
-  let file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
-  let fd : string = file.fd.toString();
-  // 用文件句柄构造本地m3u8的URL。
-  let fdUrl : string = "fd://" + fd + "?offset=" + "0" + "&size=" + "0";
+   ``` TypeScript
+   let filePath = `${this.context.filesDir}/${this.m3u8FileName}`;
+   // 通过fs.openSync获取文件句柄。
+   let file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+   let fd : string = file.fd.toString();
+   // 用文件句柄构造本地m3u8的URL。
+   let fdUrl : string = "fd://" + fd + "?offset=" + "0" + "&size=" + "0";
 
-  // 按需设置HTTP请求头。
-  let headers : Record<string,string> = {"User-Agent" : "User-Agent-Value", "Cookie" : "Cookie-Value"};
-  // 通过本地m3u8的URL和HTTP请求头构造mediaSource媒体来源。
-  let mediaSource : media.MediaSource = media.createMediaSourceWithUrl(fdUrl, headers);
+   // 按需设置HTTP请求头。
+   let headers : Record<string,string> = {"User-Agent" : "User-Agent-Value", "Cookie" : "Cookie-Value"};
+   // 通过本地m3u8的URL和HTTP请求头构造mediaSource媒体来源。
+   let mediaSource : media.MediaSource = media.createMediaSourceWithUrl(fdUrl, headers);
 
-  // 设置媒体MIME类型为APPLICATION_M3U8。
-  let mimeType : media.AVMimeTypes = media.AVMimeTypes.APPLICATION_M3U8;
-  mediaSource.setMimeType(mimeType);
+   // 设置媒体MIME类型为APPLICATION_M3U8。
+   let mimeType : media.AVMimeTypes = media.AVMimeTypes.APPLICATION_M3U8;
+   mediaSource.setMimeType(mimeType);
 
-  // 设置播放策略，设置缓冲区数据量为20s。
-  let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
-  // 为avPlayer设置媒体来源和播放策略。
-  this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
-  ```
+   // 设置播放策略，设置缓冲区数据量为20s。
+   let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
+   // 为avPlayer设置媒体来源和播放策略。
+   this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
+   ```
 
 ## 本地raw文件播放场景下设置URL
 **情况一：应用沙箱文件播放**
