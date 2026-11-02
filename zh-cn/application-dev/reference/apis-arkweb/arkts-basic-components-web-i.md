@@ -1192,6 +1192,22 @@ Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
 | contentfulNodesCountThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。<br>注：检测策略最大节点依赖于所选择的检测策略。|
 
+## MonitoredBlankScreenEventInfo
+
+白屏检测归因信息，包括页面URL、白屏根因、归因详情。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | 否 | 否 | 页面URL。    |
+| reason | [BlankScreenReason](./arkts-basic-components-web-e.md#blankscreenreason) | 否 | 否 | 白屏的具体原因。    |
+| extraMsg | string | 否 | 否 | 归因详情，JSON格式的字符串。 |
+
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 
 提供摄像头触发回调时的状态变化信息，包括改变前的状态和改变后的状态。适用于需要监控摄像头状态变化的场景，提升摄像头管理的可见性和用户体验。

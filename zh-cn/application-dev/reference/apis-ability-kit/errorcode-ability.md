@@ -734,7 +734,7 @@ The caller does not exist.
 
 **错误描述**
 
-通过backToCallerAbilityWithResult接口向调用方返回结果时，如果根据传入的requestCode无法找到调用方，返回该错误码。
+通过backToCallerAbilityWithResult或backToCallerAppWithResult接口向调用方返回结果时，如果根据传入的requestCode无法找到调用方，返回该错误码。
 
 **可能原因**
 
@@ -756,7 +756,7 @@ BackToCaller is not supported.
 
 **错误描述**
 
-不支持通过backToCallerAbilityWithResult接口返回到调用方时，返回该错误码。
+不支持通过backToCallerAbilityWithResult或backToCallerAppWithResult接口返回到调用方时，返回该错误码。
 
 **可能原因**
 
@@ -2182,6 +2182,26 @@ The API is not called in the main thread.
 
 请将接口调用逻辑迁移到主线程中执行。
 
+<!--Del-->
+## 16000206 指定应用未获授解锁前启动权限
+
+**错误信息**
+
+The specified application is not authorized to start before the user is unlocked.
+
+**错误描述**
+
+目标应用未获授ohos.permission.ALLOW_DIRECT_BOOT权限，无法设置用户解锁前自启动。
+
+**可能原因**
+
+调用setApplicationAutoStartup接口时，info.isDirectBoot为true，但目标应用未获授ohos.permission.ALLOW_DIRECT_BOOT权限。
+
+**处理步骤**
+
+确认目标应用已申请并获授[ohos.permission.ALLOW_DIRECT_BOOT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionallow_direct_boot)权限，再重新设置用户解锁前自启动。
+<!--DelEnd-->
+
 ## 10110000 装饰器参数声明错误
 
 **错误信息**
@@ -3094,3 +3114,62 @@ Failed to parse the configuration file.
 **处理步骤**
 
 检查对应模块目录下`src/main/resources/rawfile/memory_optimizer.json`配置文件是否存在，并确认其内容格式是否正确。
+
+## 16000165 应用注册的观察者数量已达到上限
+
+**错误信息**
+
+The number of registered observers for the current application has reached the upper limit.
+
+**错误描述**
+
+注册新的observer失败。
+
+**可能原因**
+
+当前应用已注册observer数量达到上限。
+
+**处理步骤**
+
+注销掉其他进程中的observer。
+
+<!--Del-->
+## 16000301 任务已存在
+ 
+**错误信息**
+ 
+Task already exists.
+ 
+**错误描述**
+ 
+启动任务时，若指定任务ID的任务已存在，方法将返回该错误码。
+ 
+**可能原因**
+ 
+调用[startTask](js-apis-app-agent-taskManager-sys.md#taskmanagerstarttask)接口时，传入的taskId对应的任务尚未结束。任务存续期间，不允许重复启动相同taskId的任务。
+ 
+**处理步骤**
+ 
+1. 若该任务已存在，请先调用[finishTask](js-apis-app-agent-taskManager-sys.md#taskmanagerfinishtask)接口结束该任务，再重新启动。
+2. 若需要并行执行多个任务，请使用不同的taskId。
+ 
+## 16000302 任务不存在
+ 
+**错误信息**
+ 
+Task not found.
+ 
+**错误描述**
+ 
+结束任务时，若指定的任务不存在或已结束，方法将返回该错误码。
+ 
+**可能原因**
+ 
+1. 调用[finishTask](js-apis-app-agent-taskManager-sys.md#taskmanagerfinishtask)接口时，传入的taskId未通过[startTask](js-apis-app-agent-taskManager-sys.md#taskmanagerstarttask)接口启动，或该任务已结束（包括被系统自动结束，例如任务超时、创建者进程退出）。
+2. 调用方不是创建该任务的应用，仅任务创建者可以结束任务。
+ 
+**处理步骤**
+ 
+1. 确认传入的taskId对应的任务已启动且尚未结束。
+2. 确认调用方为创建该任务的应用。
+<!--DelEnd-->

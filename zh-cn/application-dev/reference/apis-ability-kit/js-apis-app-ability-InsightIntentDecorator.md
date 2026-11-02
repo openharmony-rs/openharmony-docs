@@ -424,6 +424,7 @@ PageIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 | pagePath           | string        | 否          | 否   | 表示与意图绑定的页面路径，该页面需要是一个实际存在的文件。 |
 | navigationId       | string        | 否        | 是   | 表示与意图绑定的[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation24)的id属性。 |
 | navDestinationName | string         | 否       | 是   | 表示与意图绑定[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。 |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
 
 ## @InsightIntentPage
 
@@ -458,6 +459,7 @@ PageIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 | icon               | string   | 否   | 是   | 表示意图图标，用于在AI入口显示。ArkTS-Sta为字符串类型，所以与ArkTS-Dyn写法存在部分差异：<br/>- 当表示图标读取网络资源时，赋值无差异，例如`https://www.example.com/music/`。<br/>- 当表示图标读取本地资源时，ArkTS-Dyn写法为`$r("app.media.app_icon")`、ArkTS-Sta写法为`'$r("app.media.app_icon")'`。 |
 | llmDescription     | string   | 否   | 是   | 表示意图的功能，用于大型语言模型理解该意图。                 |
 | keywords           | string[] | 否   | 是   | 表示意图的搜索关键字。                                       |
+| permissions        | string[] | 否   | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**ArkTS-Sta起始版本：** 26.1.0 |
 | parameters         | string   | 否   | 是   | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。取值参见[各垂域意图Schema](https://developer.huawei.com/consumer/cn/doc/service/intents-schema-0000001901962713)。与ArkTS-Dyn不同，ArkTS-Sta场景下的parameters字段为字符串类型，需赋值`Record<string, RecordData>`类型变量的名称。 |
 | result             | string   | 否   | 是   | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。与ArkTS-Dyn不同，ArkTS-Sta场景下的result字段为字符串类型，需赋值`Record<string, RecordData>`类型变量的名称。 |
 | uiAbility          | string   | 否   | 是   | 表示与意图绑定的UIAbility名称。                              |
@@ -580,11 +582,15 @@ export class ClassForFuncDemo {
 
 ## FunctionIntentDecoratorInfo
 
-[@InsightIntentFunctionMethod](#insightintentfunctionmethod)装饰器的参数类型，当前全部属性均继承自[IntentDecoratorInfo](#intentdecoratorinfo)。
+[@InsightIntentFunctionMethod](#insightintentfunctionmethod)装饰器的参数类型，继承自[IntentDecoratorInfo](#intentdecoratorinfo)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
+
+| 名称               | 类型         | 只读       | 可选 | 说明                                                         |
+| ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
 
 ## @InsightIntentFunction
 
@@ -637,6 +643,7 @@ export class ClassForFuncDemo {
 | icon               | string   | 否   | 是   | 表示意图图标，用于在AI入口显示。ArkTS-Sta为字符串类型，所以与ArkTS-Dyn写法存在部分差异：<br/>- 当表示图标读取网络资源时，赋值无差异，例如`https://www.example.com/music/`。<br/>- 当表示图标读取本地资源时，ArkTS-Dyn写法为`$r("app.media.app_icon")`、ArkTS-Sta写法为`'$r("app.media.app_icon")'`。 |
 | llmDescription     | string   | 否   | 是   | 表示意图的功能，用于大型语言模型理解该意图。                 |
 | keywords           | string[] | 否   | 是   | 表示意图的搜索关键字。                                       |
+| permissions        | string[] | 否   | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**ArkTS-Sta起始版本：** 26.1.0 |
 | parameters         | string   | 否   | 是   | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。取值参见[各垂域意图Schema](https://developer.huawei.com/consumer/cn/doc/service/intents-schema-0000001901962713)。与ArkTS-Dyn不同，ArkTS-Sta场景下的parameters字段为字符串类型，需赋值`Record<string, RecordData>`类型变量的名称。 |
 | result             | string   | 否   | 是   | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。与ArkTS-Dyn不同，ArkTS-Sta场景下的result字段为字符串类型，需赋值`Record<string, RecordData>`类型变量的名称。 |
 
@@ -784,6 +791,7 @@ EntryIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 | ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
 | abilityName        | string       | 否        | 否   | 表示与意图绑定的Ability名称。                                  |
 | executeMode        | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[]| 否        | 否   | 表示意图调用执行模式。即拉起绑定的Ability时支持的执行模式。 |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
 
 ## @InsightIntentEntry
 
@@ -820,6 +828,7 @@ EntryIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 | icon               | string                                                       | 否   | 是   | 表示意图图标，用于在AI入口显示。ArkTS-Sta为字符串类型，所以与ArkTS-Dyn写法存在部分差异：<br/>- 当表示图标读取网络资源时，赋值无差异，例如`https://www.example.com/music/`。<br/>- 当表示图标读取本地资源时，ArkTS-Dyn写法为`$r("app.media.app_icon")`、ArkTS-Sta写法为`'$r("app.media.app_icon")'`。 |
 | llmDescription     | string                                                       | 否   | 是   | 表示意图的功能，用于大型语言模型理解该意图。                 |
 | keywords           | string[]                                                     | 否   | 是   | 表示意图的搜索关键字。                                       |
+| permissions        | string[] | 否   | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**ArkTS-Sta起始版本：** 26.1.0 |
 | parameters         | string                                                       | 否   | 是   | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。取值参见[各垂域意图Schema](https://developer.huawei.com/consumer/cn/doc/service/intents-schema-0000001901962713)。与ArkTS-Dyn不同，ArkTS-Sta场景下的parameters字段为字符串类型，需赋值`Record<string, RecordData>`类型变量的名称。 |
 | result             | string                                                       | 否   | 是   | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。与ArkTS-Dyn不同，ArkTS-Sta场景下的result字段为字符串类型，需赋值`Record<string, RecordData>`类型变量的名称。 |
 | abilityName        | string                                                       | 否   | 否   | 表示与意图绑定的Ability名称。                                |

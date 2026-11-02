@@ -203,12 +203,12 @@
              resolution.selectedProposal = new SelectActionProposal(node);
            }
          }
-       // 划一划手势意图，需滚动容器内容，滚动距离200px
+       // 划一划手势意图，需滚动容器内容，滚动距离200vp
        } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
          // ScrollActionProposal的目标节点为滚动容器而非按钮，此处通过容器id获取Scroll的FrameNode
          const node = this.getUIContext().getFrameNodeById('long_scroll');
          if (node) {
-           // 构造滚动动作提案，指定目标容器节点和滚动距离(200px)
+           // 构造滚动动作提案，指定目标容器节点和滚动距离(200vp)
            resolution.selectedProposal = new ScrollActionProposal(node, 200);
          }
        }

@@ -614,3 +614,61 @@ function offExposureInfoChange(photoSession: camera.PhotoSession): void {
   photoSession.offExposureInfoChange();
 }
 ```
+
+## onCameraSwitchRequest
+
+onCameraSwitchRequest(callback: Callback\<CameraDevice\>): void
+
+订阅相机切换请求事件回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型            | 必填 | 说明       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 是   | 回调函数，用于获取目标相机设备。 |
+
+**示例：**
+
+```ts
+function onCameraSwitchRequest(photoSession: camera.PhotoSession): void {
+  photoSession.onCameraSwitchRequest((cameraDevice: camera.CameraDevice) => {
+    console.info(`Camera switch request to cameraId: ${cameraDevice.cameraId}`);
+  });
+}
+```
+
+## offCameraSwitchRequest
+
+offCameraSwitchRequest(callback?: Callback\<CameraDevice\>): void
+
+取消订阅相机切换请求事件回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型            | 必填 | 说明       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function offCameraSwitchRequest(photoSession: camera.PhotoSession): void {
+  photoSession.offCameraSwitchRequest();
+}
+```

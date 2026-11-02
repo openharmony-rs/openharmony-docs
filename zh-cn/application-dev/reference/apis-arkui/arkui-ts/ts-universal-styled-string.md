@@ -4128,7 +4128,7 @@ struct StyledStringResizablePage {
 
 ### 示例23（获取图片文本标签）
 
-该示例通过[ImageAttachment](#imageattachment)的imageTag属性为表情图片设置图片文本标签，使用[getStyles](#getstyles)获取属性字符串中的图片样式。随后从图片样式中读取图片文本标签，将图片转义为“标签”形式的纯文本内容。
+该示例通过[ImageAttachment](#imageattachment)的imageTag属性为表情图片设置图片文本标签，使用[getStyles](#getstyles)获取属性字符串中的图片样式。随后从图片样式中读取图片文本标签，将图片替换为“标签”形式的纯文本内容。
 
 从API版本26.1.0开始，[ImageAttachment](#imageattachment)、[ImageAttachmentInterface](#imageattachmentinterface对象说明)和[ResourceImageAttachmentOptions](#resourceimageattachmentoptions15)新增imageTag属性。
 
@@ -4170,7 +4170,7 @@ struct StyledStringImageTagDemo {
 
   build() {
     Column() {
-      // 展示图片转义后的纯文本内容
+      // 展示图片替换为文本标签后的纯文本内容
       Text(this.tagResult)
         .fontSize(18)
         .fontWeight(FontWeight.Bold)
@@ -4241,7 +4241,7 @@ struct StyledStringImageTagDemo {
 
   build() {
     Column() {
-      // 展示图片转义后的纯文本内容
+      // 展示图片替换为文本标签后的纯文本内容
       Text(this.tagResult)
         .fontSize(18)
         .fontWeight(FontWeight.Bold)

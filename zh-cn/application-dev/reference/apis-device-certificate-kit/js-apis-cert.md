@@ -20959,7 +20959,7 @@ function testCreateCmsGenerator() {
 
 ### addSigner<sup>18+</sup>
 
-addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
+addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void
 
 用于为内容类型为SIGNED_DATA的CMS添加签名者信息。
   

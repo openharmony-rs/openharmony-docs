@@ -266,6 +266,8 @@ on(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, option
 
 Subscribes to data of the barometer sensor.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability**: SystemCapability.Sensors.Sensor
 
 **Parameters**
@@ -2691,6 +2693,8 @@ off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): voi
 
 Unsubscribes from data of the barometer sensor.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability**: SystemCapability.Sensors.Sensor
 
 **Parameters**
@@ -2741,6 +2745,8 @@ try {
 off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;BarometerResponse&gt;): void
 
 Unsubscribes from data of the barometer sensor.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -6422,7 +6428,7 @@ Enumerates the sensor types.
 | GYROSCOPE                   | 2    | Gyroscope sensor.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | AMBIENT_LIGHT               | 5    | Ambient light sensor.                                              |
 | MAGNETIC_FIELD              | 6    | Magnetic field sensor.                                                |
-| BAROMETER                   | 8    | Barometer sensor.                                              |
+| BAROMETER                   | 8    | Barometer sensor.<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0. |
 | HALL                        | 10   | Hall effect sensor.                                                |
 | PROXIMITY                   | 12   | Proximity sensor.                                              |
 | HUMIDITY                    | 13   | Humidity sensor.                                                |
@@ -6794,12 +6800,14 @@ Describes the ambient temperature sensor data. It extends from [Response](#respo
 
 Describes the barometer sensor data. It extends from [Response](#response).
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability**: SystemCapability.Sensors.Sensor
 
 
 | Name    | Type  | Read-Only| Optional| Description                  |
 | -------- | ------ | ---- | ---- | ---------------------- |
-| pressure | number | No  | No  | Atmospheric pressure, in units of hPa.|
+| pressure | number | No  | No  | Atmospheric pressure, in units of hPa.<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0. |
 
 
 ## HeartRateResponse

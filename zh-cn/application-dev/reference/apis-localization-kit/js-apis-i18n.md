@@ -1995,6 +1995,131 @@ getIndex(text: string): string
   let index: string = indexUtil.getIndex('hi'); // index = 'H'
   ```
 
+### isBilingualIndexSupported
+
+static isBilingualIndexSupported(locale: Intl.Locale): boolean
+
+检查指定的区域是否支持双语索引（本地索引和英文索引）。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| locale | [Intl.Locale](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 是  | 区域对象。 |
+
+**返回值：**
+
+| 类型     | 说明          |
+| ------ | ----------- |
+| boolean | 是否支持双语索引。true表示支持双语索引，false表示不支持双语索引。 |
+
+**示例：**
+
+```ts
+let locale = new Intl.Locale('ja-JP');
+let isSupported = i18n.IndexUtil.isBilingualIndexSupported(locale); // isSupported = true
+```
+
+### getBilingualIndexList
+
+getBilingualIndexList(mode?: BilingualIndexMode): Array&lt;string&gt;
+
+获取双语索引列表。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| mode | [BilingualIndexMode](#bilingualindexmode) | 否  | 双语索引的模式。默认值：FULL。 |
+
+**返回值：**
+
+| 类型     | 说明          |
+| ------ | ----------- |
+| Array&lt;string&gt; | 双语索引列表。其中第一个元素是'#'，后面是本地索引和英文索引。如果区域不支持双语索引，则只返回首元素'#'和本地索引。 |
+
+**示例：**
+
+```ts
+let locale = new Intl.Locale('ja-JP');
+let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
+let indexList = indexUtil.getBilingualIndexList(); // indexList = ['#', 'あ', 'か', 'さ', 'た', 'な', 'は', 'ま', 'や', 'ら', 'わ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+```
+
+### getBilingualIndex
+
+getBilingualIndex(text: string): string
+
+获取文本的双语索引值。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| text | string | 是  | 输入的文本。 |
+
+**返回值：**
+
+| 类型     | 说明          |
+| ------ | ----------- |
+| string | 文本对应的双语索引值。文本为空或找不到正确的索引，则返回'#'。 |
+
+**示例：**
+
+```ts
+let locale = new Intl.Locale('ja-JP');
+let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
+let jaIndex = indexUtil.getBilingualIndex('リンゴ'); // jaIndex = 'ら'
+let enIndex = indexUtil.getBilingualIndex('apple'); // enIndex = 'A'
+```
+
+## BilingualIndexMode
+
+表示双语索引模式的枚举。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| FULL | 0 | 全量索引，列表由本地索引和英文索引组成。 |
+| COMPRESSED_EN | 1 | 压缩英文索引。压缩后，英文索引聚合为一个'Z'，列表由本地索引和'Z'组成。 |
+| COMPRESSED_LOCAL | 2 | 压缩本地索引。压缩后，本地索引聚合为其首索引值，列表由本地索引的首索引值和英文索引组成。 |
 
 ## i18n.getLineInstance<sup>8+</sup>
 
@@ -5177,7 +5302,7 @@ let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | ------- | ------- | ------- | --------------------------------------- |
-| dateFormat   | 'calendar' \| 'ordinal' \| 'week' |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
+| dateFormat   | 'calendar' \| 'ordinal' \| 'week' |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-e**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
 | timePrecision   | 'dateOnly' \| 'hours' \| 'minutes' \| 'seconds' \| 'milliSeconds' |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
 | separatorStyle  | 'extended' \| 'basic' |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
 | timeZone        | [TimeZone](#timezone) |   否   |   是   |  时区。默认值：**UTC**。   |

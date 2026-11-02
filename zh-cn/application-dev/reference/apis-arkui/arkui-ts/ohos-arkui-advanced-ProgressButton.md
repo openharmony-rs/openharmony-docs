@@ -177,7 +177,7 @@ struct Index {
 }
 ```
 
-![img.png](./figures/img.png)
+![progressButtonDemo1.gif](./figures/progressButtonDemo1.gif)
 
 ### 示例2（自定义颜色按钮）
 该示例实现了一个简单的自定义颜色的文本下载按钮。
@@ -298,7 +298,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_progressbutton_example02](figures/image-progressbutton-example02.png)
+![progressButtonDemo2.gif](./figures/progressButtonDemo2.gif)
 
 ### 示例3（自定义圆角按钮）
 该示例实现了一个简单的自定义圆角的文本下载按钮。
@@ -409,4 +409,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_progressbutton_example03](figures/image-progressbutton-example03.png)
+![progressButtonDemo3.gif](./figures/progressButtonDemo3.gif)

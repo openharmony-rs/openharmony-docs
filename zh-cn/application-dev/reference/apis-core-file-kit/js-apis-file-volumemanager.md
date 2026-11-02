@@ -21,7 +21,7 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-## volumemanager.getExternalDiskInfos
+## volumeManager.getExternalDiskInfos
 
 getExternalDiskInfos(): Promise&lt;Array&lt;ExternalDiskInfo&gt;&gt;
 
@@ -79,7 +79,7 @@ volumeManager.getExternalDiskInfos().then((disks: Array<volumeManager.ExternalDi
 });
 ```
 
-## volumemanager.getExternalVolumeInfos
+## volumeManager.getExternalVolumeInfos
 
 getExternalVolumeInfos(): Promise&lt;Array&lt;ExternalVolumeInfo&gt;&gt;
 

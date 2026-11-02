@@ -551,7 +551,7 @@ napi_value AttachCallback(napi_env env, void* value, void* hint)
     // 将JS对象object和native对象value生命周期进行绑定
     napi_status status = napi_wrap(env, object, value, FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "Node-API attachCallback is failed.");
+        OH_LOG_ERROR(LOG_APP, "Node-API attachCallback is failed.");
     }
     // JS对象携带native信息
     napi_coerce_to_native_binding_object(env, object, DetachCallback, AttachCallback, value, hint);
@@ -571,7 +571,7 @@ static napi_value Init(napi_env env, napi_value exports)
     auto object = Object::GetInstance();
     napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
+        OH_LOG_ERROR(LOG_APP, "Node-API napi_wrap is failed.");
     }
     napi_coerce_to_native_binding_object(env, exports, DetachCallback, AttachCallback, reinterpret_cast<void*>(object),
                                          nullptr);

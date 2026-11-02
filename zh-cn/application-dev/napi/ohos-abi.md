@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "定义OpenHarmony系统的OHOS ABI（应用二进制接口）基础标准，涵盖字节序与字宽、过程调用规范、C++ ABI、浮点格式、可执行文件格式及支持的架构（armeabi-v7a、arm64-v8a、x86_64），确保应用在各种OpenHarmony设备上的二进制兼容性。"
+keywords: [ABI, 应用二进制接口, ELF, little-endian, LP64, Itanium C++ ABI, IEEE754, armeabi-v7a, arm64-v8a]
+doctype: guide
+status: active
+---
+
 # OpenHarmony ABI
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @huang_huijin-->
-<!--Designer: @huang_huijin-->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
 <!--RP1-->
