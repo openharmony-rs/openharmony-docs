@@ -187,7 +187,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     </body>
     </html>
     ```
-    
+
     ```js
     // main/resources/rawfile/js/script.js
     const body = document.body;
