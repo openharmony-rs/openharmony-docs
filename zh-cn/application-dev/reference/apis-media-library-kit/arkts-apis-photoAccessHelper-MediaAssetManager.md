@@ -660,11 +660,11 @@ static requestEnhancementImage(context: Context, asset: PhotoAsset, dataHandler:
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied. The application does not have the required permission ohos.permission.READ_IMAGEVIDEO.         |
-| 202      | Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800108      | The specified asset does not exist.        |
 | 23800151      | Scene parameters validate failed, possible causes: 1. The context is invalid. 2. The photoAsset does not support local AI enhancement.        |
-| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. The database is corrupted;<br>2. The file system is abnormal;<br>3. The IPC request timed out.         |
+| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 
 **示例：**
 
