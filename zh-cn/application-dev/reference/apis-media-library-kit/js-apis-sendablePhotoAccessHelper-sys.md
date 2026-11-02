@@ -576,10 +576,10 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 | 名称         | 类型                          | 只读                         | 可选 | 说明             |
 | ------------ | ----------------------------- | ---------------------------- | ---- | ---------------- |
-| shareRiskType   | string                                        | 是  | 是   | 共享相册的风控类型。<br>**起始版本：** 26.0.1   |
-| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 是  | 是   | 共享相册的风控状态。<br>**起始版本：** 26.0.1   |
-| cloudId         | string                                        | 是  | 是   | 相册CloudId。<br>**起始版本：** 26.0.1         |
-| shareAlbumOwner | string                                        | 是  | 是   | 共享相册的所有者。<br>**起始版本：** 26.0.1     |
+| shareRiskType   | string                                        | 是  | 是   | 共享相册的风控类型。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。   |
+| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 是  | 是   | 共享相册的风控状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。   |
+| cloudId         | string                                        | 是  | 是   | 相册CloudId。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。         |
+| shareAlbumOwner | string                                        | 是  | 是   | 共享相册的所有者。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。     |
 
 ### getFaceId<sup>13+</sup>
 
@@ -649,7 +649,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | 名称  | 值   | 说明                                           |
 | ----- | ---- | ---------------------------------------------- |
 | SMART | 4096 | 智慧分析相册。**系统接口**：此接口为系统接口。 |
-| SHARE | 8192 | 共享相册。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
+| SHARE | 8192 | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumSubtype
 
@@ -672,7 +672,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | GROUP_PHOTO           | 4103 | 合影相册。**系统接口**：此接口为系统接口。                 |
 | HIGHLIGHT             | 4104 | 时刻相册。**系统接口**：此接口为系统接口。                 |
 | HIGHLIGHT_SUGGESTIONS | 4105 | 时刻建议相册。**系统接口**：此接口为系统接口。             |
-| SHARE                 | 8193 | 共享相册。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。                 |
+| SHARE                 | 8193 | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。                 |
 
 ## ShareAlbumRiskStatus
 

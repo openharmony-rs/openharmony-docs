@@ -5628,7 +5628,7 @@ onShareAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是 | 回调函数，返回变更的共享相册信息[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是 | 回调函数，返回变更的共享相册信息。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
 
 **错误码：**
 
@@ -5731,7 +5731,7 @@ class ShareAlbumExample {
 
 applyShareAlbumChanges(mediaChangeRequest: [MediaShareAlbumChangeRequest](#mediasharealbumchangerequest)): Promise&lt;[Album](#album)|null&gt;
 
-提交共享相册变更请求，使用Promise异步回调返回变更后的目标共享相册。
+提交共享相册变更请求，返回变更后的目标共享相册。使用Promise异步回调。
 
 变更内容包括修改共享相册名称、增删共享相册成员、更新成员状态、设置共享相册封面等，通过[MediaShareAlbumChangeRequest](#mediasharealbumchangerequest)对象设置，所有变更需通过本接口提交后生效。
 
@@ -5755,7 +5755,7 @@ applyShareAlbumChanges(mediaChangeRequest: [MediaShareAlbumChangeRequest](#media
 
 | 类型   | 说明   |
 | -------- | -------- |
-| Promise&lt;[Album](#album)&gt; | Promise对象，返回变更后的目标共享相册；返回null表示未返回相册信息。 |
+| Promise&lt;[Album](#album)|null&gt; | Promise对象，返回变更后的目标共享相册；返回null表示未返回相册信息。 |
 
 **错误码：**
 
@@ -14357,7 +14357,7 @@ async function example(context: Context) {
 | 名称                  | 值    | 说明                        |
 | ------------------- | ---- | ------------------------- |
 | SMART<sup>11+</sup> | 4096 | 智慧分析相册。<br>**系统接口**：此接口为系统接口。 |
-| SHARE               | 8192 | 共享相册。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
+| SHARE               | 8192 | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumSubtype
 
@@ -14380,7 +14380,7 @@ async function example(context: Context) {
 | HIGHLIGHT<sup>12+</sup>           | 4104       | 时刻相册。**系统接口**：此接口为系统接口。         |
 | HIGHLIGHT_SUGGESTIONS<sup>12+</sup> | 4105     | 时刻建议相册。**系统接口**：此接口为系统接口。         |
 | CLOUD_ENHANCEMENT<sup>13+</sup> | 1032     | AI云增强相册。**系统接口**：此接口为系统接口。         |
-| SHARE                             | 8193     | 共享相册。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。         |
+| SHARE                             | 8193     | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。         |
 
 ## RequestPhotoType<sup>11+</sup>
 
@@ -14444,11 +14444,11 @@ async function example(context: Context) {
 | SHARE_RISK_STATUS | 'share_risk_status' | 共享相册资产的风控状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | SHARE_RISK_TYPE | 'share_risk_type' | 共享相册资产的风控类型。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | SHARE_GROUP | 'share_group' | 共享相册资产的共享分组。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
-| SHARE_DATE_DAY | 'share_date_day' | 共享相册资产的共享日期天。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| SHARE_DATE_DAY | 'share_date_day' | 共享相册资产的共享日期。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | MUSIC_MASTER_MODE | 'music_master_mode' | 音乐大师模式。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | LOCAL_ENHANCEMENT_ABILITY | 'local_enhancement_ability' | 本地AI增强任务类型。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 | LOCAL_ENHANCEMENT_STATUS | 'local_enhancement_status' | 本地AI增强任务状态。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
-| PHOTO_VISIBILITY | 'photo_visibility' | 照片资产的照片可见性。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| PHOTO_VISIBILITY | 'photo_visibility' | 资产的可见性。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -15939,7 +15939,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## MemberInfo
 
-成员信息。
+共享相册成员信息。
 
 **起始版本：** 26.0.1
 
@@ -15956,7 +15956,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## ShareMemberStatus
 
-枚举共享相册的成员状态。
+表示共享相册的成员状态的枚举。
 
 **起始版本：** 26.0.1
 
@@ -15968,7 +15968,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| INVITING |  0 |  正在邀请成员。|
+| INVITING |  0 |  成员正在被邀请。|
 | ACCEPTED |  1 |  成员已接受邀请。  |
 | DECLINED |  2 |  成员已拒绝邀请。  |
 | REQUESTING |  3 |  成员请求加入。  |
