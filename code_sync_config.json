@@ -37474,62 +37474,62 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets",
 				"functions":[
 					{
-						"end_line":106,
+						"end_line":105,
 						"name":"create_AudioLoopback",
 						"start_line":16
 					},
 					{
-						"end_line":378,
+						"end_line":377,
 						"name":"get_Status",
 						"start_line":18
 					},
 					{
-						"end_line":135,
+						"end_line":134,
 						"name":"set_Volume",
 						"start_line":19
 					},
 					{
-						"end_line":187,
+						"end_line":186,
 						"name":"set_ReverbPreset",
 						"start_line":23
 					},
 					{
-						"end_line":472,
+						"end_line":471,
 						"name":"get_ReverbPreset",
 						"start_line":24
 					},
 					{
-						"end_line":239,
+						"end_line":238,
 						"name":"set_EqualizerPreset",
 						"start_line":25
 					},
 					{
-						"end_line":481,
+						"end_line":480,
 						"name":"get_EqualizerPreset",
 						"start_line":26
 					},
 					{
-						"end_line":353,
+						"end_line":352,
 						"name":"enable",
 						"start_line":27
 					},
 					{
-						"end_line":354,
+						"end_line":353,
 						"name":"all_audioLoopback",
 						"start_line":15
 					},
 					{
-						"end_line":425,
+						"end_line":424,
 						"name":"get_SupportedDevicePairs",
 						"start_line":21
 					},
 					{
-						"end_line":456,
+						"end_line":455,
 						"name":"get_PreferredDevicePair",
 						"start_line":22
 					},
 					{
-						"end_line":393,
+						"end_line":392,
 						"name":"get_Volume",
 						"start_line":20
 					}
