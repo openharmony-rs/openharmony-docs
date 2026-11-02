@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:50:23.510Z pushedAt=2026-10-13T02:01:17.556Z -->
+<!-- md-trans-meta sourceCommit=0ef6b2e715d0a4700aedd77cf2d338efa6171255 translatedAt=2026-10-31T02:52:22.835Z pushedAt=2026-10-31T06:04:58.952Z nl=1 -->
 
 This topic uses AES-128, RSA-2048, SM2, and DES64 as examples to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
@@ -96,11 +96,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getAesGenerateProperties() {
@@ -299,11 +295,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getAesGenerateProperties() {
@@ -740,11 +732,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getRsaGenerateProperties() {
@@ -939,11 +927,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getRsaGenerateProperties() {
@@ -1138,11 +1122,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getSm2GenerateProperties() {
@@ -1328,13 +1308,8 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
-
 function getDesGenerateProperties() {
   let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
