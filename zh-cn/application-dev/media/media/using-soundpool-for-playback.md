@@ -105,16 +105,11 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    <!-- @[SoundPool_Load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    private soundId: number = 0;
-    // 获取当前组件所在Ability的Context，以通过Context获取应用文件路径。
-    let context = this.getUIContext().getHostContext();
-    // 获取输入文件fd，test.ogg为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
-    let fileDescriptor = await context!.resourceManager.getRawFd('test.ogg');
-    this.soundId = await this.soundPool!.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length);
-    console.info(`load soundPool soundId: ${this.soundId}`)
-    ```
+   let context = this.getUIContext().getHostContext();;
+   let fileDescriptor = await context!.resourceManager.getRawFd('test.ogg');
+   this.soundId = await this.soundPool!.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length);
+   console.info(`load soundPool soundId: ${this.soundId}`)
+   ```
 
 6. 配置播放参数PlayParameters，并在收到loadComplete回调通知之后，调用play方法播放音频。多次调用play播放同一个soundID，只会播放一次。
 
