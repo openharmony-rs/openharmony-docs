@@ -773,22 +773,5 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    ```
 
-7. 编码器送帧/出帧处理循环。
-
-    示例中的EncoderInput、EncoderOutput为开发者参考步骤5、步骤6封装的处理函数，分别完成获取输入buffer并写入图像数据后送入编码器、获取输出buffer并写入文件后释放的处理。
-
-    ```c++
-    bool result = true;
-    int64_t timeoutUs = 0; // 单位：微秒（us），负值：无限等待；0：立即退出；正值：等待指定时长后退出。
-
-    while (!outputDone && result) {
-        if (!inputDone) {
-            result = EncoderInput(videoEnc, timeoutUs);
-        }
-        if (!outputDone) {
-            result = EncoderOutput(videoEnc, timeoutUs);
-        }
-    }
-    ```
 
 后续流程（包括刷新、重置、停止和销毁编码器）与Surface模式基本一致，请参考[Surface模式](#surface模式)的步骤8-11。
