@@ -178,45 +178,157 @@
     "mdNamePrefix": "arkts-network-network-depr-*.md"
   },
   {
-    "kit": "ArkUI",
-    "overrideLevel": "api",
-    "file": "",
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/app/appVersionInfo.d.ts",
     "api": "",
-    "mdNamePrefix": ""
+    "mdNamePrefix": "arkts-ability-appversioninfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/app/context.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-context-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/app/processInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-processinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/PermissionDef.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-permissiondef-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/abilityInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-abilityinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/applicationInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-applicationinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/bundleInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-bundleinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/bundleInstaller.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-bundleinstaller-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/bundleStatusCallback.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-bundlestatuscallback-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/customizeData.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-customizedata-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/elementName.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-elementname-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/hapModuleInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-hapmoduleinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/launcherAbilityInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-launcherabilityinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/moduleInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-moduleinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/remoteAbilityInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-remoteabilityinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/shortcutInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-shortcutinfo-depr-*.md"
   },
   {
     "kit": "ArkUI",
     "overrideLevel": "api",
-    "file": "",
-    "api": "",
-    "mdNamePrefix": ""
+    "file": "api/@ohos.arkui.advanced.ComposeListItemV2.d.ets",
+    "api": "declare type OnActionCallback = () => void;",
+    "mdNamePrefix": "arkts-arkui-composelistitemv2-onactioncallback-t.md"
   },
   {
     "kit": "ArkUI",
     "overrideLevel": "api",
-    "file": "",
-    "api": "",
-    "mdNamePrefix": ""
+    "file": "api/@ohos.arkui.advanced.ComposeTitleBarV2.d.ets",
+    "api": "declare type OnActionCallback = () => void;",
+    "mdNamePrefix": "arkts-arkui-composetitlebarv2-onactioncallback-t.md"
   },
   {
     "kit": "ArkUI",
     "overrideLevel": "api",
-    "file": "",
-    "api": "",
-    "mdNamePrefix": ""
+    "file": "api/@ohos.arkui.advanced.EditableTitleBarV2.d.ets",
+    "api": "declare type OnActionCallback = () => void;",
+    "mdNamePrefix": "arkts-arkui-editabletitlebarv2-onactioncallback-t.md"
   },
   {
     "kit": "ArkUI",
     "overrideLevel": "api",
-    "file": "",
-    "api": "",
-    "mdNamePrefix": ""
+    "file": "api/@internal/component/ets/custom_dialog_controller.d.ts",
+    "api": "declare interface DismissDialogAction",
+    "mdNamePrefix": "arkts-arkui-customdialog-comp-dismissdialogaction-i.md"
   },
   {
     "kit": "ArkUI",
     "overrideLevel": "api",
-    "file": "",
-    "api": "",
-    "mdNamePrefix": ""
+    "file": "api/@internal/component/ets/action_sheet.d.ts",
+    "api": "declare interface DismissDialogAction",
+    "mdNamePrefix": "arkts-arkui-actionsheet-comp-dismissdialogaction-i.md"
+  },
+  {
+    "kit": "ArkUI",
+    "overrideLevel": "api",
+    "file": "api/@internal/component/ets/alert_dialog.d.ts",
+    "api": "declare interface DismissDialogAction",
+    "mdNamePrefix": "arkts-arkui-alertdialog-comp-dismissdialogaction-i.md"
   }
 ]
