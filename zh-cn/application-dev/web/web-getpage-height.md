@@ -267,7 +267,7 @@ struct Index {
             if (typeof jsbObj !== 'undefined') {
                 jsbObj.notifyToGet();
             } else {
-                console.error("jsbObj is error");
+                console.error("jsbObj is undefined");
             }
         })
     }
