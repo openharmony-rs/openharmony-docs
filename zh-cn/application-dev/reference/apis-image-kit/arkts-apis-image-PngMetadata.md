@@ -40,7 +40,7 @@ import { image } from '@kit.ImageKit';
 | modificationTime | string | 是   | 是   | PNG图像最后一次修改时间。 |
 | gamma | number | 是   | 是   | PNG图像的伽玛值。 |
 | yPixelsPerMeter | number | 是   | 是   | PNG图像Y方向每米像素数。<br>该值为正整数。 |
-| sRGBIntent | number | 是   | 是   | PNG图像的sRGB（standard Red Green Blue，标准红绿蓝）渲染意图。<br>- 0表示感知意图。<br>- 1表示相对比色意图。<br>- 2表示饱和度意图。<br>- 3绝对色度意图。 |
+| sRGBIntent | number | 是   | 是   | PNG图像的sRGB（standard Red Green Blue，标准红绿蓝）渲染意图。<br>- 0表示感知意图。<br>- 1表示相对比色意图。<br>- 2表示饱和度意图。<br>- 3表示绝对色度意图。 |
 | title | string | 是   | 是   | PNG图像的标题。 |
 | warning | string | 是   | 是   | PNG图像的警告信息。 |
 | chromaticities | number[] | 是   | 是   | PNG图像中白点和三原色在1931 CIE xy色度空间中的坐标值。<br>例如，sRGB色彩空间对应的色度坐标可表示为：[0.3127, 0.3290, 0.6400, 0.3300, 0.3000, 0.6000, 0.1500, 0.0600]，依次表示白点、红色、绿色和蓝色的x/y坐标。 |
