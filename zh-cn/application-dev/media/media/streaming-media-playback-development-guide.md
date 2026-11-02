@@ -98,7 +98,7 @@ status: active
    ``` TypeScript
    this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
      console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
-     this.bitrate = bitrates[0]; // 保存需要切换的码率
+     this.bitrate = bitrates[0]; // 保存需要切换的码率。
    })
    ```
 
@@ -107,7 +107,7 @@ status: active
    <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 设置播放码率
+   // 设置播放码率。
    try {
      this.avPlayer.setBitrate(bitrate);
    } catch (error) {
@@ -172,7 +172,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
    <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 切换至目标视频轨道
+   // 切换至目标视频轨道。
    try {
      this.avPlayer.selectTrack(track);
    } catch (error) {
