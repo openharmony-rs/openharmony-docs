@@ -241,7 +241,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 8. 调用setPriority方法设置优先级。
 
     <!-- @[SoundPool_SetPriority](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // 设置对应流的优先级。
     await this.soundPool!.setPriority(this.streamId, 1);
