@@ -34,7 +34,7 @@
 | -- | -- | -- |
 | [typedef void (\*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData)](#oh_arkui_nativemodule_uieventinjectioncallback) | OH_ArkUI_NativeModule_UIEventInjectionCallback | 注入完成回调。<br>用于通知命令的派发结果和组件对命令的即时处理结果，不等待组件延迟效果或渲染完成。每个已受理请求在注入函数返回后，在原UI线程恰好回调一次。不同UI线程上的回调不保证全局串行执行。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_ContextHandle uiContext, uint32_t uniqueId, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectcompositecommand) | - | 向目标UI节点异步注入控制命令。<br>本接口不提供取消操作或固定的完成超时，完成依赖UI线程的任务处理。调用方等待超时不会取消已受理请求。实例销毁不会取消已受理请求的完成回调。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | - | 异步向UI注入宽松的交互命令。命令表达click、content_switch、scroll、backpress或key等高层交互意图，无需指定目标组件，由系统根据执行模式决定如何执行。<br>命令由[OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)创建的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象承载，顶层结构为`{"schemaVersion":1,"cmd":{"type":"<命令类型>","mode":"<执行模式>","action_info":{...}}}`。各类命令的参数如下，除标记为必填的字段外，action_info中的字段均为可选：<br>- click：mode可选，默认为"auto"；action_info.coordinates中的x1和y1均为必填。<br>- content_switch：mode必须为"target"；action_info.count为正整数，可选，默认为1；action_info.direction可选，取值为"forward"或"backward"，默认为"forward"；action_info.coordinates.pos中的x和y均为必填。<br>- scroll：mode可选，默认为"auto"；action_info.direction可选，取值为"forward"、"backward"、"left"、"right"、"up"或"down"，默认为"forward"；action_info.distance为非负物理像素值，可选，默认为窗口高度的三分之一；action_info.coordinates中的x1和y1均为必填，x2和y2可选。<br>- backpress：无参数。<br>- key：action_info.code为有效的虚拟键码，必填。<br>所有位置坐标均相对于窗口，单位为物理像素（px）。缺少必填字段或参数值超出有效范围时，返回ARKUI_ERROR_CODE_PARAM_INVALID。<br>本接口线程安全，可从任意线程调用，不等待命令执行完成，不支持异步信号安全调用。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | - | 异步向UI注入宽松的交互命令。<br>该命令表达了一个高层次的交互意图(点击、content_switch、scroll、backpress、或关键)，而不针对特定的组件；系统根据模式。<br>该命令由使用创建的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象携带`OH_ArkUI_NativeModule_UIJsonWrapper_Create`。命令负载的顶层结构是：<br>`{ "schemaVersion": 1, "cmd": { "type": "<命令类型>","mode":"<执行模式>","action_info":{...}}}`<br>命令特定的参数如下；除非标记为必需，否则action_info字段可选：- 单击：模式（可选，默认为“auto”）;action_info.坐标与x1和y1（都是必需的）。- content_switch: mode必须为“target”；action_info.count必须为正整数(可选，default 1); action_info.direct（"前向"\|"后向"，可选，默认"前向"）；带有x和y的action_info.codices.pos（必需）。- scroll：模式（可选，默认为“auto”）;action_info.direct(“向前”\|“向后”\|“向左”\| "right" \| "up" \| "down"，可选，默认"forward";action_info.mote，非负物理像素值（可选，默认为窗口高度的三分之一）;action_info.坐标其中x1和y1是必需的，x2和y2是可选的。- backpress：无参数。- key: action_info.code，密钥的虚拟密钥代码，必须是有效的密钥代码（必填项）。<br>所有位置坐标都是相对于窗口的，以物理像素（px）为单位。如果需要字段缺失或值超出其有效范围，返回`RKUI_ERROR_CODE_PARAM_INVALID`。<br>这个函数是线程安全的，可以从任何线程调用，不会阻塞调用者，并且是而不是async-signal-safe。 |
 
 ### 变量
 
@@ -120,19 +120,19 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 
 **描述：**
 
-异步向UI注入宽松的交互命令。命令表达click、content_switch、scroll、backpress或key等高层交互意图，无需指定目标组件，由系统根据执行模式决定如何执行。
+异步向UI注入宽松的交互命令。
 
-命令由[OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)创建的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象承载，顶层结构为`{"schemaVersion":1,"cmd":{"type":"<命令类型>","mode":"<执行模式>","action_info":{...}}}`。各类命令的参数如下，除标记为必填的字段外，action_info中的字段均为可选：
+该命令表达了一个高层次的交互意图(点击、content_switch、scroll、backpress、或关键)，而不针对特定的组件；系统根据模式。
 
-- click：mode可选，默认为"auto"；action_info.coordinates中的x1和y1均为必填。
-- content_switch：mode必须为"target"；action_info.count为正整数，可选，默认为1；action_info.direction可选，取值为"forward"或"backward"，默认为"forward"；action_info.coordinates.pos中的x和y均为必填。
-- scroll：mode可选，默认为"auto"；action_info.direction可选，取值为"forward"、"backward"、"left"、"right"、"up"或"down"，默认为"forward"；action_info.distance为非负物理像素值，可选，默认为窗口高度的三分之一；action_info.coordinates中的x1和y1均为必填，x2和y2可选。
-- backpress：无参数。
-- key：action_info.code为有效的虚拟键码，必填。
+该命令由使用创建的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象携带`OH_ArkUI_NativeModule_UIJsonWrapper_Create`。命令负载的顶层结构是：
 
-所有位置坐标均相对于窗口，单位为物理像素（px）。缺少必填字段或参数值超出有效范围时，返回ARKUI_ERROR_CODE_PARAM_INVALID。
+`{ "schemaVersion": 1, "cmd": { "type": "<命令类型>","mode":"<执行模式>","action_info":{...}}}`
 
-本接口线程安全，可从任意线程调用，不等待命令执行完成，不支持异步信号安全调用。
+命令特定的参数如下；除非标记为必需，否则action_info字段可选：- 单击：模式（可选，默认为“auto”）;action_info.坐标与x1和y1（都是必需的）。- content_switch: mode必须为“target”；action_info.count必须为正整数(可选，default 1); action_info.direct（"前向"|"后向"，可选，默认"前向"）；带有x和y的action_info.codices.pos（必需）。- scroll：模式（可选，默认为“auto”）;action_info.direct(“向前”|“向后”|“向左”| "right" | "up" | "down"，可选，默认"forward";action_info.mote，非负物理像素值（可选，默认为窗口高度的三分之一）;action_info.坐标其中x1和y1是必需的，x2和y2是可选的。- backpress：无参数。- key: action_info.code，密钥的虚拟密钥代码，必须是有效的密钥代码（必填项）。
+
+所有位置坐标都是相对于窗口的，以物理像素（px）为单位。如果需要字段缺失或值超出其有效范围，返回`RKUI_ERROR_CODE_PARAM_INVALID`。
+
+这个函数是线程安全的，可以从任何线程调用，不会阻塞调用者，并且是而不是async-signal-safe。
 
 **起始版本：** 26.1.0
 
@@ -140,13 +140,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [入参] UI实例指针，不能为NULL。 |
-| const [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [入参] 使用[OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)创建的JSON命令对象，不能为NULL，调用期间必须有效。被调用方不保留该对象。 |
-| [OH_ArkUI_NativeModule_UIEventInjectionCallback](#oh_arkui_nativemodule_uieventinjectioncallback) callback | [入参] 可选的完成回调，在注入命令执行完成时调用一次，可以为NULL。 |
-| void *userData | [入参] 传递给callback的自定义用户数据指针，可以为NULL。框架不接管其所有权，调用方须保持数据有效直至回调完成。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [入参] 指向UI实例的指针。不能为空。 |
+| const [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [入参] 配置的JSON命令。它不能为空，并且必须对呼叫的持续时间。被调用方不保留。 |
+| [OH_ArkUI_NativeModule_UIEventInjectionCallback](#oh_arkui_nativemodule_uieventinjectioncallback) callback | [入参] 可选回调，当注入的命令执行完成时调用一次。可以为空。 |
+| void *userData | [入参] 传递给回调的自定义用户数据。可以为空。框架做了而不是取得它的所有权；调用者必须保持它有效，直到回调完成。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)：命令入队成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)：参数无效或缺少必填字段。<br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)：UI上下文无效。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | `RKUI_ERROR_CODE_NO_ERROR`如果命令排队成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)如果参数无效或缺少必填字段。<br>如果UI上下文无效，则`RKUI_ERROR_CODE_UI_CONTEXT_INVALID`。 |
