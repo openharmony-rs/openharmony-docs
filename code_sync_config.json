@@ -12013,9 +12013,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":233,
+						"end_line":235,
 						"name":"Crash_ArkTS_Add_Event",
-						"start_line":191
+						"start_line":193
 					},
 					{
 						"end_line":223,
