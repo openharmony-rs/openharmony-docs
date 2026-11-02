@@ -228,7 +228,7 @@ libnative_buffer.so
 
 2. **创建OH_NativeImage实例**。
 
-    创建nativeImage_为OH_NativeImage实例，将作为[OH_NativeImage_AcquireNativeWindow()](../reference/apis-arkgraphics2d/capi-native-image-h.md#oh_nativeimage_acquirenativewindow)的入参。
+    创建的nativeImage_为OH_NativeImage实例，将作为[OH_NativeImage_AcquireNativeWindow()](../reference/apis-arkgraphics2d/capi-native-image-h.md#oh_nativeimage_acquirenativewindow)接口的入参。
     <!-- @[nativeimage_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
     
     ``` C++
