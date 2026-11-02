@@ -159,8 +159,3 @@
         - [打印首选项开发指导](subsys-print-preferences-guide.md)
     - 打印驱动
         - [打印驱动开发指导](subsys-print-driver-guide.md)
-- 打印服务
-    - 打印首选项 
-        - [打印首选项开发指导](subsys-print-preferences-guide.md)
-    - 打印驱动
-        - [打印驱动开发指导](subsys-print-driver-guide.md)
