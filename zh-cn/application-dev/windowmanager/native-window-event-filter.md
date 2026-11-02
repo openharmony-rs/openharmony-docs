@@ -8,9 +8,7 @@
 
 ## 场景介绍
 
-[WindowManager](../reference/apis-arkui/capi-windowmanager.md)提供应用窗口的管理能力，可以用于管理多模输入事件[@ohos.multimodalInput.inputEvent (输入事件)](../reference/apis-input-kit/js-apis-inputevent.md)。
-
-当前支持使用WindowManager进行多模按键输入事件[@ohos.multimodalInput.keyEvent (按键输入事件)](../reference/apis-input-kit/js-apis-keyevent.md)的过滤，还可以将多模触摸事件[Input_TouchEvent](../reference/apis-input-kit/capi-input-input-touchevent.md)注入目标窗口，具体开发步骤可见下文。
+[WindowManager](../reference/apis-arkui/capi-windowmanager.md)提供应用窗口的管理能力，当前支持使用WindowManager对多种多模输入事件（如@ohos.multimodalInput.keyEvent (按键输入事件) (../reference/apis-input-kit/js-apis-keyevent.md)、@ohos.multimodalInput.mouseEvent (鼠标输入事件) (../reference/apis-input-kit/js-apis-mouseevent.md)、@ohos.multimodalInput.touchEvent (触屏输入事件) (../reference/apis-input-kit/js-apis-touchevent.md)）进行过滤，本文档以按键输入事件的过滤为例进行说明；此外，还可以将多模触摸事件Input_TouchEvent (../reference/apis-input-kit/capi-input-input-touchevent.md)注入目标窗口，具体开发步骤可见下文。
 
 ## 过滤多模按键输入事件
 
