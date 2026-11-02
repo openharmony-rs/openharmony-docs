@@ -5,25 +5,26 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=7364789dc4119f3afbcafcbbd9119bd50891f3c2 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
-As an important feature of the camera, high-performance photo capture enables deferred photo delivery and further reduces the response delay, delivering a better user experience. High-performance photo capture is implemented as follows: After an application delivers a phot capture request, the system quickly returns a thumbnail to the application, and the application stores the thumbnail and related information in the mediaLibrary. Then the subservice performs scheduling based on the system pressure and custom scenarios and sends the postprocessed original image to the mediaLibrary.
+As an important feature of the camera, high-performance photo capture enables deferred photo capture and further reduces the response delay, delivering a better user experience. High-performance photo capture is implemented as follows: After an application delivers a phot capture request, the system quickly returns a thumbnail to the application, and the application stores the thumbnail and related information in the mediaLibrary. Then the subservice performs scheduling based on the system pressure and custom scenarios and sends the postprocessed original image to the mediaLibrary.
 
 To develop high-performance photo capture, perform the following steps:
 
-- Check whether the device supports deferred photo delivery of a certain type.
-- Enable deferred photo delivery (if supported).
+- Check whether the device supports deferred photo capture of a certain type.
+- Enable deferred photo capture (if supported).
 - Listen for thumbnails, obtain a thumbnail proxy class object, and save the thumbnail to the mediaLibrary.
 
 > **NOTE**
 > 
-> - Deferred photo delivery varies according to the device and type. Therefore, if the device or type is changed, you must enable the corresponding deferred photo delivery capability.
-> - Deferred photo delivery must be enabled during the stream configuration. After the stream configuration is complete, enabling deferred photo delivery does not take effect.
+> - Deferred photo capture varies according to the device and type. Therefore, if the device or type is changed, you must enable the corresponding deferred photo capture capability.
+> - Deferred photo capture must be enabled during the stream configuration. After the stream configuration is complete, enabling deferred photo capture does not take effect.
 
 
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
+For detailed API descriptions, refer to [@ohos.multimedia.camera (Camera Management) (System API)](../../reference/apis-camera-kit/js-apis-camera-sys.md).
 
 1. Import dependencies. Specifically, import the camera, image, and mediaLibrary modules.
 
@@ -43,7 +44,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
     cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
     let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
     if (photoProfilesArray === null || photoProfilesArray === undefined) {
-      console.error("createOutput photoProfilesArray is null!");
+      console.error("createPhotoOutput photoProfilesArray is null!");
       return undefined;
     }
     let photoOutput: camera.PhotoOutput | undefined = undefined;
@@ -62,7 +63,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    }
    ```
 
-3. Check whether the device supports deferred photo delivery of a certain type.
+3. Check whether the device supports deferred photo capture of a certain type.
 
    ```ts
    function isDeferredImageDeliverySupported(photoOutput: camera.PhotoOutput): boolean {
@@ -75,21 +76,21 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    }
    ```
 
-4. Enable deferred photo delivery.
+4. Enable deferred photo capture.
 
    ```ts
-   function EnableDeferredPhotoAbility(photoOutput: camera.PhotoOutput): void {
+   function enableDeferredPhotoAbility(photoOutput: camera.PhotoOutput): void {
      photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
    }
    ```
 
-5. Check whether deferred photo delivery is enabled.
+5. Check whether deferred photo capture is enabled.
 
    ```ts
    function isDeferredImageDeliveryEnabled(photoOutput: camera.PhotoOutput): boolean {
-   	 let isEnabled: boolean = false;
+     let isEnabled: boolean = false;
      if (photoOutput !== null) {
-   	   isEnabled = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
+       isEnabled = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
      }
      console.info(`isDeferredImageDeliveryEnabled isEnabled: ${isEnabled}`);
      return isEnabled;
@@ -97,6 +98,8 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    ```
 
 6. Trigger photo capture. This procedure is the same as that in the common photo capture mode. For details, see [Photo Capture](camera-shooting.md).
+
+
 
 ## Status Listening
 
@@ -119,6 +122,8 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      });
    }
    ```
+
+   
 
 2. Call the mediaLibrary APIs to flush the thumbnail to the disk.
 

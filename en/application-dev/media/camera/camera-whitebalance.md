@@ -5,8 +5,9 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=50dec56a341b97aef1539386746f21dec3cdaddd translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
-Starting from API version 20, you can configure white balance effects. White balance is a color correction technique used by cameras to produce different visual effects in photos. Currently, white balance effects are supported in the following sessions: photo session (for taking photos), video session (for recording videos), and secure session (for secure camera operations).
+Starting from API version 20, white balance effects are supported. White balance is a camera color correction technique that produces different effects in photos by adjusting the white balance settings. Currently, white balance effects are supported for photo capture ([PhotoSession](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md)), video recording ([VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md)), and secure camera mode ([SecureSession](../../reference/apis-camera-kit/arkts-apis-camera-SecureSession.md)).
 
 ## How to Develop
 
@@ -21,7 +22,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 2. Set white balance. Two methods are provided for setting white balance.
 
-   - Method 1: Use [isWhiteBalanceModeSupported](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20) to check whether a specific white balance mode is supported. Then, call [setWhiteBalanceMode](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalance.md#setwhitebalancemode20) and [getWhiteBalanceMode](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalance.md#getwhitebalancemode20) to set and obtain the white balance mode. Note that you can only view the currently set white balance mode. The available white balance modes include automatic, manual, cloudy, incandescent, fluorescent, and daylight. If both a white balance mode and a white balance value are set, only one takes effect, with the white balance mode taking precedence by default.
+   - Method 1: Call [isWhiteBalanceModeSupported](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20) to check whether a specific white balance mode is supported. Then, call [setWhiteBalanceMode](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalance.md#setwhitebalancemode20) and [getWhiteBalanceMode](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalance.md#getwhitebalancemode20) to set and obtain the white balance mode. Note that you can only view the currently set white balance mode. The available white balance modes include automatic, manual, cloudy, incandescent, fluorescent, daylight, and locked. If both a white balance mode and a white balance value are set, only one takes effect, with the white balance mode taking precedence by default.
       ```ts
       function isWhiteBalanceModeSupported(session: camera.PhotoSession | camera.VideoSession): boolean {
          let status: boolean = false;
@@ -30,12 +31,12 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
             let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
             status = session.isWhiteBalanceModeSupported(mode);
             if(status){
-            session.setWhiteBalanceMode(mode);
+               session.setWhiteBalanceMode(mode);
             }
             whiteBalanceMode = session.getWhiteBalanceMode();
          } catch (error) {
-         let err = error as BusinessError;
-         console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
+            let err = error as BusinessError;
+            console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
          }
          return status;
       }
@@ -48,8 +49,8 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
          try {
             range = session.getWhiteBalanceRange();
             let whiteBalance: number = 3000;
-            if(whiteBalance > range[0] && whiteBalance < range[1]){
-            session.setWhiteBalance(whiteBalance);
+            if(whiteBalance >= range[0] && whiteBalance <= range[1]) {
+               session.setWhiteBalance(whiteBalance);
             }
             whiteBalance = session.getWhiteBalance();
          } catch (error) {

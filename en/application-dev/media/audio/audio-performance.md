@@ -70,7 +70,7 @@ DevEco Profiler is primarily used for analyzing and optimizing the runtime proce
 
 HiSmartPerf is a standalone performance tuning tool used to collect system, CPU, and GPU performance data during a test period. It presents the data through a visual interface, making it easier for you to analyze the performance of your applications and identify the causes of performance issues, which can then be used as a basis for in-depth performance optimization to make the application run more smoothly.
 
-For a complete introduction to HiSmartPerf, see [HiSmartPerf](https://developer.huawei.com/consumer/en/doc/AppGallery-connect-Guides/smartperf-tool-0000001873208929).
+<!--Del--> <!--DelEnd-->
 
 This section describes how to use HiSmartPerf to analyze audio playback scenarios.
 
