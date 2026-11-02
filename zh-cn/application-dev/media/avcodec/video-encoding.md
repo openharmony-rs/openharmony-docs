@@ -276,7 +276,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    <!-- @[encoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
-   // 通过 MIME TYPE 创建编码器，由系统选择对应的编码器实现。
+   // 通过MIME TYPE创建编码器，由系统选择对应的编码器实现。
    OH_AVCodec *VideoEncoder::GetCodecByMime(const char *mime)
    {
        CHECK_AND_RETURN_RET_LOG(mime != nullptr, nullptr, "Codec mime is nullptr");
@@ -457,7 +457,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    <!-- @[encoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
-   // 申请编码器运行所需资源。Prepare 成功后才能调用 Start。
+   // 申请编码器运行所需资源。Prepare成功后才能调用Start。
    int32_t VideoEncoder::Prepare()
    {
        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
@@ -501,7 +501,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    ```c++
    int32_t VideoEncoder::SetParameter(OH_AVFormat *format)
    {
-       // 参数对象由调用方创建和销毁。本方法仅在编码器已启动期间转交参数，不保存 format 指针。
+       // 参数对象由调用方创建和销毁。本方法仅在编码器已启动期间转交参数，不保存format指针。
        CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Parameter format is null");
        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
        const int32_t ret = OH_VideoEncoder_SetParameter(encoder_, format);
@@ -573,10 +573,15 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     while (true) {
         CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
         // 获取输出buffer。
+        const int64_t waitStart = RecorderClockUs();
         std::shared_ptr<CodecBufferInfo> bufferInfo = context->outputBufferQueue.Dequeue();
-        std::shared_lock<std::shared_mutex> codecLock(context->codecMutex);
         // 开发者可根据业务需要，对输出数据进行保存/释放处理。
+        // 示例：将编码完成帧数据buffer写入到对应输出文件中。
+        // outputFile->write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(bufferInfo->buffer)), bufferInfo->attr.size);
         // ...
+        if (!ProcessVideoOutputBuffer(encoder, context, muxer, *bufferInfo, isPrimary, receivedAtUs)) {
+            break;
+        }
     }
     ```
 
@@ -608,7 +613,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```c++
     int32_t VideoEncoder::Flush()
     {
-        // Flush 会使此前通过回调或同步查询取得的 Buffer 索引失效，调用方需先结束对这些 Buffer 的访问。
+        // Flush会使此前通过回调或同步查询取得的buffer索引失效，调用方需先结束对这些buffer的访问。
         CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
         const int32_t ret = OH_VideoEncoder_Flush(encoder_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
@@ -640,7 +645,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```c++
     int32_t VideoEncoder::Reset()
     {
-        // Reset 会丢弃当前配置与缓存，编码器回到初始状态；不能将其当作可直接继续编码的 Flush 使用。
+        // Reset会丢弃当前配置与缓存，编码器回到初始状态；不能将其当作可直接继续编码的Flush使用。
         CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
         const int32_t ret = OH_VideoEncoder_Reset(encoder_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
@@ -672,7 +677,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```c++
     int32_t VideoEncoder::Stop()
     {
-        // Stop 前先清除缓存，确保已排队但尚未输出的编码数据不会落入下一次 Start。
+        // Stop前先清除缓存，确保已排队但尚未输出的编码数据不会落入下一次Start。
         CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
 
         int32_t ret = OH_VideoEncoder_Flush(encoder_);
@@ -705,29 +710,16 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```c++
     void Recorder::ReleaseVideoEncoder()
     {
-        // API 26 要求先销毁副编码器，再销毁主编码器；主路拥有共享输入的生命周期。
-        if (secondaryVideoEncoder_ != nullptr) {
-            if (secondaryEncContext_ != nullptr) {
-                secondaryEncContext_->isDestroyed.store(true);
-                std::unique_lock<std::shared_mutex> codecLock(secondaryEncContext_->codecMutex);
-                secondaryEncContext_->ClearQueue();
-            }
-            secondaryVideoEncoder_->Release();
-            secondaryVideoEncoder_.reset();
-            if (secondaryEncContext_ != nullptr) {
-                delete secondaryEncContext_;
-                secondaryEncContext_ = nullptr;
-            }
-        }
+        // ...
         if (videoEncoder_ != nullptr) {
             if (encContext_ != nullptr) {
-                // 回调只借用上下文。先拒绝迟到回调，再销毁 codec 和上下文。
+                // 回调只借用上下文。先拒绝迟到回调，再销毁codec和上下文。
                 encContext_->isDestroyed.store(true);
-                // 清空回调队列并取得写锁后，再释放 codec Buffer。
+                // 清空回调队列并取得写锁后，再释放codec buffer。
                 std::unique_lock<std::shared_mutex> codecLock(encContext_->codecMutex);
                 encContext_->ClearQueue();
             }
-            // codec 销毁前仍可能访问其输出 Surface，因此先释放 codec，再归还应用持有的窗口引用。
+            // codec销毁前仍可能访问其输出surface，因此先释放codec，再归还应用持有的窗口引用。
             videoEncoder_->Release();
             videoEncoder_.reset();
             if (sampleInfo_.video.window != nullptr) {
@@ -745,7 +737,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     int32_t VideoEncoder::Release()
     {
         if (encoder_ != nullptr) {
-            // Destroy 是编码器句柄的最终释放点。销毁后立即置空，避免后续调用继续使用失效句柄。
+            // Destroy是编码器句柄的最终释放点。销毁后立即置空，避免后续调用继续使用失效句柄。
             const int32_t ret = OH_VideoEncoder_Destroy(encoder_);
             encoder_ = nullptr;
             CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
@@ -801,7 +793,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    <!-- @[encoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
-   // 通过 MIME TYPE 创建编码器，由系统选择对应的编码器实现。
+   // 通过MIME TYPE创建编码器，由系统选择对应的编码器实现。
    OH_AVCodec *VideoEncoder::GetCodecByMime(const char *mime)
    {
        CHECK_AND_RETURN_RET_LOG(mime != nullptr, nullptr, "Codec mime is nullptr");
@@ -943,7 +935,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    <!-- @[encoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
-   // 申请编码器运行所需资源。Prepare 成功后才能调用 Start。
+   // 申请编码器运行所需资源。Prepare成功后才能调用Start。
    int32_t VideoEncoder::Prepare()
    {
        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
