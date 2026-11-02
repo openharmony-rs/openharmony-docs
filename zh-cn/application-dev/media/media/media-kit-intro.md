@@ -9,7 +9,7 @@ status: active
 # Media Kit简介
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
+<!--Owner: @chennotfound-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
