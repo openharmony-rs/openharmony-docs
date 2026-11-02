@@ -223,26 +223,28 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
   plus(rhs: PointVector): PointVector {
     let result = new PointVector([]);
     const len = Math.min(this.length, rhs.length);
-    for (let i = 0; i < len; i++) {
-      result.push((this as Array<Point>)[i].plus((rhs as Array<Point>)[i]));
-    }
+    this.forEach((point: Point, index: number) => {
+      if (index < len) {
+        result.push(point.plus((rhs as Array<Point>)[index]));
+      }
+    });
     return result;
   }
 
   subtract(rhs: PointVector): PointVector {
     let result = new PointVector([]);
     const len = Math.min(this.length, rhs.length);
-    for (let i = 0; i < len; i++) {
-      result.push((this as Array<Point>)[i].subtract((rhs as Array<Point>)[i]));
-    }
+    this.forEach((point: Point, index: number) => {
+      if (index < len) {
+        result.push(point.subtract((rhs as Array<Point>)[index]));
+      }
+    });
     return result;
   }
 
   multiply(scale: number): PointVector {
     let result = new PointVector([]);
-    for (let i = 0; i < this.length; i++) {
-      result.push((this as Array<Point>)[i].multiply(scale));
-    }
+    this.forEach((point: Point) => result.push(point.multiply(scale)));
     return result;
   }
 
@@ -250,12 +252,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     if (this.length != rhs.length) {
       return false;
     }
-    for (let i = 0; i < this.length; i++) {
-      if (!(this as Array<Point>)[i].equals((rhs as Array<Point>)[i])) {
-        return false;
-      }
-    }
-    return true;
+    return this.every((point: Point, index: number) => point.equals((rhs as Array<Point>)[index]));
   }
 
   get(): Array<Object[]> {
