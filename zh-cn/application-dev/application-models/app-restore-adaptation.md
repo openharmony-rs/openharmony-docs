@@ -1,4 +1,4 @@
-8# 应用状态恢复与页面栈恢复适配指南
+# 应用状态恢复与页面栈恢复适配指南
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
