@@ -121,13 +121,15 @@ this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: n
 
 下述示例代码描述了设置视频宽度1920px、高度1080px起播。AVPlayer会选择MPD资源中一路分辨率为1920x1080的视频资源进行播放。
 
-```ts
-import { media } from '@kit.MediaKit';
-
-let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://example/abc.mpd",  {"User-Agent" : "User-Agent-Value"});
-let playbackStrategy : media.PlaybackStrategy = {preferredWidth: 1920, preferredHeight: 1080};
-this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
-```
+   <!-- @[setMediaSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let mediaSource : media.MediaSource = media.createMediaSourceWithUrl('http://example/abc.mpd',  {'User-Agent' : 'User-Agent-Value'});
+   // 设置视频宽度1920px、高度1080px起播。
+   let playbackStrategy : media.PlaybackStrategy = {preferredWidth: 1920, preferredHeight: 1080};
+   // 为avPlayer设置媒体来源和播放策略。
+   this.avPlayer?.setMediaSource(mediaSource, playbackStrategy);
+   ```
 
 ### DASH切换音视频轨道
 
