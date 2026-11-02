@@ -29,7 +29,7 @@ Updates the printer state. This API uses an asynchronous callback to return the 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | printerId | string | Yes | Printer ID. |
-| state | [PrinterState](arkts-basicservices-print-printerstate-e.md) | Yes | Printer state. |
+| state | [PrinterState](arkts-basicservices-print-printerstate-e.md) | Yes | Printer state to be updated. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -84,7 +84,7 @@ Updates the printer state. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | printerId | string | Yes | Printer ID. |
-| state | [PrinterState](arkts-basicservices-print-printerstate-e.md) | Yes | Printer state. |
+| state | [PrinterState](arkts-basicservices-print-printerstate-e.md) | Yes | Printer state to be updated. |
 
 **Return value:**
 

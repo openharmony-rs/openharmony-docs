@@ -4,7 +4,7 @@
 enum WatermarkHandleResult
 ```
 
-Watermark handling result.
+Enumerates the results of forcible watermark processing.
 
 **Since:** 24
 
@@ -18,7 +18,7 @@ Watermark handling result.
 WATERMARK_HANDLE_FAILURE = 1
 ```
 
-Watermark handling failure.
+The forcible watermark processing fails.
 
 **Since:** 24
 
@@ -34,7 +34,7 @@ Watermark handling failure.
 WATERMARK_HANDLE_SUCCESS = 0
 ```
 
-Watermark handling success.
+The forcible watermark processing is successful.
 
 **Since:** 24
 

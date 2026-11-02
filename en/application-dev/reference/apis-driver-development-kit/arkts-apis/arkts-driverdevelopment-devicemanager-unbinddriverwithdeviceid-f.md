@@ -12,7 +12,7 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 function unbindDriverWithDeviceId(deviceId: number): Promise<number>
 ```
 
-Unbinds a peripheral device. This API uses a promise to return the result.
+Unbinds a device. Before calling this method, you must call **bindDriverWithDeviceId** to bind the device. This API uses a promise to return the result.
 
 **Since:** 19
 

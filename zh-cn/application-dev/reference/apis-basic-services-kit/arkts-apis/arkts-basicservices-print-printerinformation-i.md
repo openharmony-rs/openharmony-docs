@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 alias?: string
 ```
 
-表示打印机别名。
+表示打印机别名。不传入时默认值为空字符串。
 
 **类型：** string
 
@@ -56,7 +56,7 @@ capability?: PrinterCapabilities
 description?: string
 ```
 
-表示打印机说明。
+表示打印机说明。不传入时默认值为空字符串。
 
 **类型：** string
 
@@ -72,7 +72,7 @@ description?: string
 options?: string
 ```
 
-表示打印机详细信息。
+表示打印机详细信息。不传入时默认值为空字符串。
 
 **类型：** string
 
@@ -120,7 +120,7 @@ printerId: string
 printerMake?: string
 ```
 
-表示打印机型号。
+表示打印机型号。不传入时默认值为空字符串。
 
 **类型：** string
 
@@ -170,8 +170,6 @@ selectedDriver?: PpdInfo
 
 表示添加打印机时选择的驱动的信息。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **类型：** [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)
 
 **起始版本：** 24
@@ -188,9 +186,7 @@ selectedDriver?: PpdInfo
 selectedProtocol?: string
 ```
 
-表示添加打印机时使用的协议。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+表示添加打印机时选择的协议。不传入时默认值为空字符串。
 
 **类型：** string
 
@@ -208,7 +204,7 @@ selectedProtocol?: string
 uri?: string
 ```
 
-表示打印机uri。
+表示打印机URI。不传入时默认值为空字符串。
 
 **类型：** string
 

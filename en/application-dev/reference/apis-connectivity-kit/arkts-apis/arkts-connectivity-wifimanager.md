@@ -33,6 +33,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [createGroup](arkts-connectivity-wifimanager-creategroup-f.md#creategroup-1) | Create a P2P group. |
 | [disableWifi](arkts-connectivity-wifimanager-disablewifi-f.md#disablewifi-1) | Disable Wi-Fi. |
 | [disconnect](arkts-connectivity-wifimanager-disconnect-f.md#disconnect-1) | Disconnect connection between sta and Wi-Fi hotspot. |
+| [disconnectFromCandidateConfig](arkts-connectivity-wifimanager-disconnectfromcandidateconfig-f.md#disconnectfromcandidateconfig-1) | Disconnects a candidate network identified by networkId for a period of time. The disconnected candidate network will not be re-associated during the block duration. You can only disconnect candidate networks that were added by the caller. |
 | [enableWifi](arkts-connectivity-wifimanager-enablewifi-f.md#enablewifi-1) | Enable Wi-Fi. |
 | [getCandidateConfigs](arkts-connectivity-wifimanager-getcandidateconfigs-f.md#getcandidateconfigs-1) | Obtain the list of all existed candidate Wi-Fi configurations which added by ourself. You can obtain only the Wi-Fi configurations you created on your own application. |
 | [getCountryCode](arkts-connectivity-wifimanager-getcountrycode-f.md#getcountrycode-1) | Obtain the country code of the device. |

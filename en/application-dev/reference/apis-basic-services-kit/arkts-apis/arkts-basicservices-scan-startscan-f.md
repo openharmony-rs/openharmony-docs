@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function startScan(scannerId: string, batchMode: boolean): Promise<void>
 ```
 
-Starts scanning. This API uses a promise to return the result.
+Starts scanning. This API uses a promise to return the result. This method can be called only after the scanner is opened by calling **openScanner()**. During the scanning, you can call **getPictureScanProgress()** to obtain the scanning progress. To cancel the scanning, call **cancelScan()**.
 
 **Since:** 20
 

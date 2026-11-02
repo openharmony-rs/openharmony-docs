@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function on(type: 'scanDeviceFound', callback: Callback<ScannerDevice>): void
 ```
 
-注册扫描仪设备发现事件回调。使用callback异步回调。
+注册扫描仪设备发现事件回调，当调用startScannerDiscovery发现新的扫描仪设备时会触发此事件。使用callback异步回调。
 
 **起始版本：** 20
 
@@ -52,7 +52,7 @@ scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
 function on(type: 'scanDeviceSync', callback: Callback<ScannerSyncDevice>): void
 ```
 
-注册扫描仪设备同步事件回调。使用callback异步回调。
+注册扫描仪设备同步事件回调，当扫描仪设备状态发生变化（如扫描仪设备ID变更或掉线）时会触发此事件，通知应用同步维护扫描仪列表。使用callback异步回调。适用于应用需要持续跟踪扫描仪设备状态变化的场景，如扫描仪重新连接时更新本地设备信息。
 
 **起始版本：** 20
 

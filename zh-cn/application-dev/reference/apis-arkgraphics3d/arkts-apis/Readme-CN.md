@@ -18,6 +18,8 @@
     - [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md)
     <!--Del-->
     - [RenderResourceFactory（系统接口）](arkts-arkgraphics3d-scene-renderresourcefactory-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [RenderTargetParameters（系统接口）](arkts-arkgraphics3d-scene-rendertargetparameters-i-sys.md)<!--DelEnd-->
     - [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md)
     <!--Del-->
     - [SceneLoadParams（系统接口）](arkts-arkgraphics3d-scene-sceneloadparams-i-sys.md)<!--DelEnd-->
@@ -71,6 +73,8 @@
     - [Morpher](arkts-arkgraphics3d-sceneresources-morpher-i.md)
     - [OcclusionMaterial](arkts-arkgraphics3d-sceneresources-occlusionmaterial-i.md)
     - [RenderSort](arkts-arkgraphics3d-sceneresources-rendersort-i.md)
+    <!--Del-->
+    - [RenderTarget（系统接口）](arkts-arkgraphics3d-sceneresources-rendertarget-i-sys.md)<!--DelEnd-->
     - [Sampler](arkts-arkgraphics3d-sceneresources-sampler-i.md)
     - [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
     - [Shader](arkts-arkgraphics3d-sceneresources-shader-i.md)

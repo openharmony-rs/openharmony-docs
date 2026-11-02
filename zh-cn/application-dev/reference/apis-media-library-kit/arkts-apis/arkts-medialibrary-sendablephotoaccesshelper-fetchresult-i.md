@@ -38,7 +38,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 
@@ -89,7 +89,7 @@ getAllObjects(): Promise<Array<T>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 
@@ -136,7 +136,7 @@ getCount(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 
@@ -183,7 +183,7 @@ getFirstObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 
@@ -230,7 +230,7 @@ getLastObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 
@@ -279,7 +279,7 @@ getNextObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 
@@ -333,8 +333,8 @@ getObjectByPosition(index: number): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 
@@ -381,7 +381,7 @@ isAfterLast(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 

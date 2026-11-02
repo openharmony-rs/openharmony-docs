@@ -20,7 +20,7 @@ Defines a callback for marshalling [StyledStringMarshallingValue](arkts-arkui-st
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| marshallableVal | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) | Yes | Object to be marshaled. |
+| marshallableVal | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) | Yes | UserDataSpan object in the styled string that requires custom serialization. In the callback function, the developer selects the corresponding serialization API based on the type of this parameter to convert it into an ArrayBuffer. |
 
 **Return value:**
 

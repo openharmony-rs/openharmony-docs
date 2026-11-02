@@ -14,6 +14,12 @@ function isAutoStartupSupported(): boolean
 
 Check whether the current device supports auto startup on this device.
 
+> **NOTE:** 
+> 
+> It is recommended that you call this API to check the device capability before calling
+> [autoStartupManager.getAutoStartupStatusForSelf](arkts-ability-autostartupmanager-getautostartupstatusforself-f.md).
+> If false is returned, the current device does not support auto-start on boot.
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -26,7 +32,7 @@ Check whether the current device supports auto startup on this device.
 
 | Type | Description |
 | --- | --- |
-| boolean | `true`: Device supports auto startup.           - `false`: Device do not support auto startup. |
+| boolean | Whether the current device supports auto-start on boot. The value true means that auto-start on boot is supported, and false means the opposite. |
 
 **Examples**
 

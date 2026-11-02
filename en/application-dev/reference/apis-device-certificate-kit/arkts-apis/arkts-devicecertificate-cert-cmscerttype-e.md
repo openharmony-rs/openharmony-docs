@@ -34,7 +34,7 @@ All certificates.
 SIGNER_CERTS = 0
 ```
 
-Signer certificates.
+Signer certificate.
 
 **Since:** 22
 

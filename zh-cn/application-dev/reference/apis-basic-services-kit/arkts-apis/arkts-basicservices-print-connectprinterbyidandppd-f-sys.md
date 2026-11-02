@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function connectPrinterByIdAndPpd(printerId: string, protocol: string, ppdName: string): Promise<void>
 ```
 
-根据打印机ID查询推荐的打印机驱动程序。
+根据打印机ID和PPD连接打印机，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,15 +30,15 @@ function connectPrinterByIdAndPpd(printerId: string, protocol: string, ppdName: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 |
-| protocol | string | 是 | 协议类型。 |
-| ppdName | string | 是 | ppd名称。 |
+| printerId | string | 是 | 待连接的打印机ID。 |
+| protocol | string | 是 | 待连接的打印机的协议类型。 |
+| ppdName | string | 是 | 待连接的打印机的PPD名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -212,13 +212,13 @@ public onRequestPrinterCapability(printerId: number): print.PrinterCapability
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | number | 是 | 表示打印机ID，应为已连接的打印机，取值于打印机发现流程上报的有效打印机标识。 |
+| printerId | number | 是 | 表示打印机ID，取值于打印机发现流程上报的有效打印机标识。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [print.PrinterCapability](arkts-basicservices-print-printercapability-i.md) | printer capability. |
+| [print.PrinterCapability](arkts-basicservices-print-printercapability-i.md) | 表示打印机支持的能力信息，用于描述打印机的各项功能特性，如色彩模式、双面打印模式、支持的纸张尺寸等。 |
 
 **错误码：**
 

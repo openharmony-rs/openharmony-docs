@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void
 ```
 
-开始打印任务，使用callback异步回调。
+开始打印任务，使用callback异步回调。可通过监听[on('jobStateChange')](arkts-basicservices-print-on-f-sys.md#onjobstatechange)事件获取打印任务状态变化。
 
 **起始版本：** 10
 
@@ -28,7 +28,7 @@ function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息，用于指定要执行的打印任务详细配置，包括文件列表、任务ID、打印机ID、打印参数等。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步开始打印任务之后的回调。 |
 
 **错误码：**
@@ -81,7 +81,7 @@ print.startPrintJob(jobInfo, (error: BusinessError) => {
 function startPrintJob(jobInfo: PrintJob): Promise<void>
 ```
 
-开始打印任务，使用Promise异步回调。
+开始打印任务，使用Promise异步回调。可通过监听[on('jobStateChange')](arkts-basicservices-print-on-f-sys.md#onjobstatechange)事件获取打印任务状态变化。
 
 **起始版本：** 10
 
@@ -97,7 +97,7 @@ function startPrintJob(jobInfo: PrintJob): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息，用于指定要执行的打印任务详细配置，包括文件列表、任务ID、打印机ID、打印参数等。 |
 
 **返回值：**
 

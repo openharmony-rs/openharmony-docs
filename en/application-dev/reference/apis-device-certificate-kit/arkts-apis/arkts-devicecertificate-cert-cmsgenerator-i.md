@@ -4,7 +4,7 @@
 interface CmsGenerator
 ```
 
-Provides APIs for generating the messages in CMS format.
+Provide APIs for generating messages in CMS format.
 
 > **NOTE:** 
 > 
@@ -30,9 +30,9 @@ import { cert } from '@kit.DeviceCertificateKit';
 addCert(cert: X509Cert): void
 ```
 
-Adds a CMS certificate of the **SIGNED_DATA** content type, for example, the issuer certificate of a signing certificate.
+Adds a certificate for the CMS **SIGNED_DATA** structure, for example, the issuer certificate of a signing certificate.
 
-<br>If the **addSigner** API is not called and only the certificate is added, the generated CMS signed data contains only the certificate.
+<br>If the certificate is added without calling **addSigner**, the generated CMS signature data contains only the certificate information.
 
 **Since:** 18
 
@@ -46,7 +46,7 @@ Adds a CMS certificate of the **SIGNED_DATA** content type, for example, the iss
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | Yes | X.509 certificate to add. |
+| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | Yes | X.509 certificate to be added. |
 
 **Error codes:**
 
@@ -120,9 +120,9 @@ function testAddCert() {
 addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>
 ```
 
-Adds recipient information to a CMS with the content type of **ENVELOPED_DATA**. This API uses a promise to return the result.
+Adds recipient information to the CMS **ENVELOPED_DATA** structure. This API uses a promise to return the result.
 
-<br>At least one recipient needs to be set.
+<br>At least one recipient must be set.
 
 **Since:** 22
 
@@ -136,7 +136,7 @@ Adds recipient information to a CMS with the content type of **ENVELOPED_DATA**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| recipientInfo | [CmsRecipientInfo](arkts-devicecertificate-cert-cmsrecipientinfo-i.md) | Yes | Recipient information. |
+| recipientInfo | [CmsRecipientInfo](arkts-devicecertificate-cert-cmsrecipientinfo-i.md) | Yes | Recipient Information. |
 
 **Return value:**
 
@@ -242,7 +242,12 @@ async function testAddRecipientInfo() {
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void
 ```
 
-Adds signer information to the CMS whose content type is **SIGNED_DATA**.
+Adds a signer to the CMS **SIGNED_DATA** structure.
+
+> **NOTE:** 
+> 
+> OpenSSL does not support signature verification of self-signed certificates. Therefore, self-signed
+> certificates cannot be used as issuer certificates.
 
 **Since:** 18
 
@@ -258,7 +263,7 @@ Adds signer information to the CMS whose content type is **SIGNED_DATA**.
 | --- | --- | --- | --- |
 | cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | Yes | X.509 certificate. |
 | keyInfo | [PrivateKeyInfo](arkts-devicecertificate-cert-privatekeyinfo-i.md) | Yes | Private key information. |
-| config | [CmsSignerConfig](arkts-devicecertificate-cert-cmssignerconfig-i.md) | Yes | Signer configuration. |
+| config | [CmsSignerConfig](arkts-devicecertificate-cert-cmssignerconfig-i.md) | Yes | CMS signer configuration. |
 
 **Error codes:**
 
@@ -362,7 +367,7 @@ function testAddSigner() {
 doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>
 ```
 
-Obtains the CMS message, for example, the CMS signed data or CMS enveloped data. This API uses a promise to return the result.
+Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data. This API uses a promise to return the result.
 
 **Since:** 18
 
@@ -376,14 +381,14 @@ Obtains the CMS message, for example, the CMS signed data or CMS enveloped data.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | Uint8Array | Yes | Data to be operated. |
+| data | Uint8Array | Yes | CMS data to be operated. |
 | options | [CmsGeneratorOptions](arkts-devicecertificate-cert-cmsgeneratoroptions-i.md) | No | Configuration of the CMS operation. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Uint8Array &#124; string&gt; | Promise used to return the CMS message. |
+| Promise&lt;Uint8Array &#124; string&gt; | Promise used to return CMS messages. |
 
 **Error codes:**
 
@@ -499,7 +504,7 @@ async function testDoFinalByPromise() {
 doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string
 ```
 
-Obtains the CMS message, for example, the CMS signed data or CMS enveloped data. This API returns the result synchronously.
+Obtains the CMS message, for example, the CMS signature data or CMS encapsulated data. This API returns the result synchronously.
 
 **Since:** 18
 
@@ -513,14 +518,14 @@ Obtains the CMS message, for example, the CMS signed data or CMS enveloped data.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | Uint8Array | Yes | Data to be operated. |
+| data | Uint8Array | Yes | CMS data to be operated. |
 | options | [CmsGeneratorOptions](arkts-devicecertificate-cert-cmsgeneratoroptions-i.md) | No | Configuration of the CMS operation. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Uint8Array &#124; string | CMS message generated. |
+| Uint8Array &#124; string | CMS message. |
 
 **Error codes:**
 
@@ -633,9 +638,9 @@ function testDoFinalSync() {
 getEncryptedContentData(): Promise<Uint8Array>
 ```
 
-Obtains the encrypted content data of the CMS whose content type is **ENVELOPED_DATA**. This API uses a promise to return the result.
+Obtains the encrypted data of the CMS **ENVELOPED_DATA** structure. This API uses a promise to return the result.
 
-<br>Obtains the encrypted content data if the **CmsGenerator** of the **ENVELOPED_DATA** type is created and data separation is used to generate detached CMS enveloped data.
+<br>Obtains the encrypted data if a **CmsGenerator** object of the **ENVELOPED_DATA** type is created and data separation is used to generate CMS encapsulated data.
 
 **Since:** 22
 
@@ -762,9 +767,9 @@ async function testGetEncryptedContentData() {
 setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void
 ```
 
-Sets the encryption algorithm for the CMS whose content type is **ENVELOPED_DATA**.
+Sets the encryption algorithm for CMS **ENVELOPED_DATA**.
 
-<br>This method should be called immediately after the **CmsGenerator** of the **ENVELOPED_DATA** type is created. If this method is not called, AES_256_GCM is used as the encryption algorithm by default.
+<br>This API should be called immediately after a **CmsGenerator** object of the **ENVELOPED_DATA** type is created. If not, AES_256_GCM is used as the encryption algorithm by default.
 
 **Since:** 22
 
@@ -778,7 +783,7 @@ Sets the encryption algorithm for the CMS whose content type is **ENVELOPED_DATA
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| algorithm | [CmsRecipientEncryptionAlgorithm](arkts-devicecertificate-cert-cmsrecipientencryptionalgorithm-e.md) | Yes | Encryption algorithm used by the CMS to encapsulate data. |
+| algorithm | [CmsRecipientEncryptionAlgorithm](arkts-devicecertificate-cert-cmsrecipientencryptionalgorithm-e.md) | Yes | Encryption algorithm used to encapsulate data based on CMS. |
 
 **Error codes:**
 

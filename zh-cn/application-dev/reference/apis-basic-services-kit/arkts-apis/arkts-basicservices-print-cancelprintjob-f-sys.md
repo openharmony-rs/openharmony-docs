@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function cancelPrintJob(jobId: string, callback: AsyncCallback<void>): void
 ```
 
-取消已发送到打印机的打印任务，使用callback异步回调。
+取消已发送到打印机的打印任务，使用callback异步回调。仅可取消处于运行状态的打印任务，对不存在或已完成的任务调用将返回错误。
 
 **起始版本：** 10
 
@@ -28,7 +28,7 @@ function cancelPrintJob(jobId: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 打印任务ID。 |
+| jobId | string | 是 | 已发送到打印机的打印任务ID。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步取消已发送到打印机的打印任务之后的回调。 |
 
 **错误码：**
@@ -65,7 +65,7 @@ print.cancelPrintJob(jobId, (error: BusinessError) => {
 function cancelPrintJob(jobId: string): Promise<void>
 ```
 
-取消已发送到打印机的打印任务，使用Promise异步回调。
+取消已发送到打印机的打印任务，使用Promise异步回调。仅可取消处于运行状态的打印任务，对不存在或已完成的任务调用将返回错误。
 
 **起始版本：** 10
 
@@ -81,7 +81,7 @@ function cancelPrintJob(jobId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 打印任务ID。 |
+| jobId | string | 是 | 已发送到打印机的打印任务ID。 |
 
 **返回值：**
 

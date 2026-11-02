@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 readonly isRetractable?: boolean
 ```
 
-Camera device retractable attribute
+相机设备的可伸缩属性。
 
 **类型：** boolean
 

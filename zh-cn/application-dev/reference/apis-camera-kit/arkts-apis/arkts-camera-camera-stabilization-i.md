@@ -4,8 +4,6 @@
 interface Stabilization extends StabilizationQuery
 ```
 
-Stabilization继承自[StabilizationQuery](arkts-camera-camera-stabilizationquery-i.md)。
-
 提供设备在录像模式下设置视频防抖的操作。
 
 需要会话中有录像流（[VideoOutput](arkts-camera-camera-videooutput-i.md)）的前提下，才可以对视频进行防抖设置。

@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function init(): Promise<void>
 ```
 
-初始化扫描服务。使用Promise异步回调。
+初始化扫描服务，必须在调用其它扫描接口前完成初始化。使用Promise异步回调。使用完毕后需调用exit()退出扫描服务，释放资源。
 
 **起始版本：** 20
 
@@ -26,7 +26,7 @@ function init(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，初始化扫描服务成功时resolve，失败时reject。 |
 
 **错误码：**
 

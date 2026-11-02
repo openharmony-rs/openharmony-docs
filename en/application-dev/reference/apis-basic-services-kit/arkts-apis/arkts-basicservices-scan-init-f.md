@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function init(): Promise<void>
 ```
 
-Initializes the scan service. This API uses a promise to return the result.
+Initializes the scan service. This API must be called before other scanning APIs. This API uses a promise to return the result. After using the service, call **exit()** to exit the scan service and release resources.
 
 **Since:** 20
 

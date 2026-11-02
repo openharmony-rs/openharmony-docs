@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function getScannerParameter(scannerId: string): Promise<ScannerParameter[]>
 ```
 
-Obtains scanner parameters. This API uses a promise to return the result.
+Obtains scanner parameters. This API uses a promise to return the result. This method can be called only after the scanner is opened by calling **openScanner()**. Your app can use this method to obtain the parameter index (**optionIndex**), which is used to call methods such as **setScannerParameter**, **setScanAutoOption**, and **getScannerCurrentSetting**.
 
 **Since:** 20
 

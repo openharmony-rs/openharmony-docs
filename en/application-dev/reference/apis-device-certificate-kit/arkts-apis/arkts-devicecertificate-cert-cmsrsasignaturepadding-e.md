@@ -18,7 +18,7 @@ Enumerates the RSA CMS signature padding modes.
 PKCS1_PADDING = 0
 ```
 
-PKCS #1 padding mode.
+PKCS #1 v1.5 padding mode.
 
 **Since:** 22
 

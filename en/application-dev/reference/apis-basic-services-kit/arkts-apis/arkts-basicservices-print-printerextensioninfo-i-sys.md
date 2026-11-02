@@ -4,7 +4,7 @@
 interface PrinterExtensionInfo
 ```
 
-Provides the printer extension information.
+Defines the printer extension information.
 
 **Since:** 10
 
@@ -26,7 +26,7 @@ import { print } from '@kit.BasicServicesKit';
 extensionId: string
 ```
 
-ID of the printer extension.
+Printer extension ID.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ ID of the printer extension.
 vendorIcon: number
 ```
 
-Vendor icon of the printer extension.
+Vendor icon resource ID.
 
 **Type:** number
 

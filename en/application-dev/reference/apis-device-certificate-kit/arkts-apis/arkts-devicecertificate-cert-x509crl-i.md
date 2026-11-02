@@ -4,7 +4,7 @@
 interface X509CRL
 ```
 
-Provides APIs for X.509 CRL operations.
+Provides APIs for operations on X.509 CRLs.
 
 **Since:** 11
 
@@ -38,7 +38,7 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the serialized X.509 CRL data obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Yes | Callback used to return the result. If the serialized X.509 CRL data is successfully obtained, **err** is **undefined**, and **data** is the serialized X.509 CRL data obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -159,7 +159,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Promise used to return the serialized X.509 CRL data obtained. |
+| Promise&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Promise used to return the serialized X.509 CRL data. |
 
 **Error codes:**
 
@@ -260,7 +260,7 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 getExtensions(): DataBlob
 ```
 
-Obtains the CRL extensions data in DER format.
+Obtains CRL extensions, in DER format.
 
 **Since:** 11
 
@@ -274,7 +274,7 @@ Obtains the CRL extensions data in DER format.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | CRL extensions data in DER format obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | CRL extensions, in DER format. |
 
 **Error codes:**
 
@@ -354,7 +354,7 @@ Obtains the CRL extension object.
 
 | Type | Description |
 | --- | --- |
-| [CertExtension](arkts-devicecertificate-cert-certextension-i.md) | CRL extensions object obtained. |
+| [CertExtension](arkts-devicecertificate-cert-certextension-i.md) | CRL extension object. |
 
 **Error codes:**
 
@@ -419,7 +419,7 @@ async function crlGetExtensionsObject() {
 getIssuerName(): DataBlob
 ```
 
-Obtains the issuer of the X.509 CRL.
+Obtains the X.509 CRL issuer name.
 
 > **NOTE:** 
 > 
@@ -437,7 +437,7 @@ Obtains the issuer of the X.509 CRL.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Issuer of the X.509 CRL obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | X.509 CRL issuer name obtained. |
 
 **Error codes:**
 
@@ -545,7 +545,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getIssuerName(encodingType: EncodingType): string
 ```
 
-Obtains the issuer name of an X.509 CRL based on the encoding type.
+Obtains the X.509 CRL issuer name based on the encoding type.
 
 **Since:** 20
 
@@ -632,7 +632,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getIssuerX500DistinguishedName(): X500DistinguishedName
 ```
 
-Obtains the distinguished name (DN) of the X.509 CRL issuer.
+Obtains the X.500 distinguished name object of the CRL issuer.
 
 **Since:** 12
 
@@ -646,7 +646,7 @@ Obtains the distinguished name (DN) of the X.509 CRL issuer.
 
 | Type | Description |
 | --- | --- |
-| [X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md) | DN object obtained. |
+| [X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md) | X.500 distinguished name object. |
 
 **Error codes:**
 
@@ -706,7 +706,7 @@ async function crlGetIssuerX500DistinguishedName() {
 getLastUpdate(): string
 ```
 
-Obtains the last update date of this X.509 CRL.
+Obtains the last update date of the X.509 CRL.
 
 **Since:** 11
 
@@ -720,7 +720,7 @@ Obtains the last update date of this X.509 CRL.
 
 | Type | Description |
 | --- | --- |
-| string | Last update date of the X.509 CRL, in an ASN.1 time format, specifically UTCTime or GeneralizedTime. |
+| string | Last update date of the X.509 CRL, in **ASN.1 UTCTime** or **GeneralizedTime** format. |
 
 **Error codes:**
 
@@ -828,7 +828,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getNextUpdate(): string
 ```
 
-Obtains the next update date of this CRL.
+Obtains the date when the CRL will be updated the next time.
 
 **Since:** 11
 
@@ -842,7 +842,7 @@ Obtains the next update date of this CRL.
 
 | Type | Description |
 | --- | --- |
-| string | Next update date of the CRL, in an ASN.1 time format, specifically UTCTime or GeneralizedTime. |
+| string | Next update date of the X.509 CRL, in **ASN.1 UTCTime** or **GeneralizedTime** format. |
 
 **Error codes:**
 
@@ -950,7 +950,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getRevokedCert(serialNumber: bigint): X509CRLEntry
 ```
 
-Obtains the revoked certificate entry from the X.509 CRL based on the specified serial number.
+Obtains the revoked certificate based on the specified certificate serial number.
 
 **Since:** 11
 
@@ -970,7 +970,7 @@ Obtains the revoked certificate entry from the X.509 CRL based on the specified 
 
 | Type | Description |
 | --- | --- |
-| [X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md) | Revoked certificate entry obtained. |
+| [X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md) | CRL entry. |
 
 **Error codes:**
 
@@ -1033,7 +1033,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getRevokedCerts(callback: AsyncCallback<Array<X509CRLEntry>>): void
 ```
 
-Obtains all the revoked certificate entries from the X.509 CRL. This API uses an asynchronous callback to return the result.
+Obtains revoked certificates. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
 
@@ -1047,7 +1047,7 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the revoked certificate entries obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md)&gt;&gt; | Yes | Callback used to return the result. If the revoked certificates are obtained successfully, **err** is **undefined**, and **data** is the CRL obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1109,7 +1109,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getRevokedCerts(): Promise<Array<X509CRLEntry>>
 ```
 
-Obtains all the revoked certificate entries from the X.509 CRL. This API uses a promise to return the result.
+Obtains revoked certificates. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -1123,7 +1123,7 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses a 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md)&gt;&gt; | Promise used to return the revoked certificate entries obtained. |
+| Promise&lt;Array&lt;[X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md)&gt;&gt; | Promise used to return the revoked certificates. |
 
 **Error codes:**
 
@@ -1182,7 +1182,7 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 getRevokedCertWithCert(cert: X509Cert): X509CRLEntry
 ```
 
-Obtains the revoked certificate entry from the X.509 CRL based on the specified certificate.
+Obtains the revoked certificate based on the specified certificate object.
 
 **Since:** 11
 
@@ -1202,7 +1202,7 @@ Obtains the revoked certificate entry from the X.509 CRL based on the specified 
 
 | Type | Description |
 | --- | --- |
-| [X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md) | Revoked certificate entry obtained. |
+| [X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md) | CRL entry. |
 
 **Error codes:**
 
@@ -1423,7 +1423,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getSignatureAlgName(): string
 ```
 
-Obtains the signing algorithm of the X.509 CRL.
+Obtains the signature algorithm of the X.509 CRL.
 
 **Since:** 11
 
@@ -1437,7 +1437,7 @@ Obtains the signing algorithm of the X.509 CRL.
 
 | Type | Description |
 | --- | --- |
-| string | Signing algorithm obtained. |
+| string | Signature algorithm name of the X.509 CRL obtained. |
 
 **Error codes:**
 
@@ -1545,7 +1545,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getSignatureAlgOid(): string
 ```
 
-Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
 **Since:** 11
 
@@ -1559,7 +1559,7 @@ Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the In
 
 | Type | Description |
 | --- | --- |
-| string | OID of the X.509 CRL signing algorithm obtained. |
+| string | OID of the X.509 CRL signature algorithm obtained. |
 
 **Error codes:**
 
@@ -1667,7 +1667,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getSignatureAlgParams(): DataBlob
 ```
 
-Obtains the parameters of the X.509 CRL signing algorithm.
+Obtains the parameters of the X.509 CRL signature algorithm.
 
 **Since:** 11
 
@@ -1681,7 +1681,7 @@ Obtains the parameters of the X.509 CRL signing algorithm.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Algorithm parameters obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Parameters of the X.509 CRL signature algorithm obtained. |
 
 **Error codes:**
 
@@ -1790,7 +1790,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getTBSInfo(): DataBlob
 ```
 
-Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
+Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
 **Since:** 11
 
@@ -2085,7 +2085,7 @@ Obtains the hash value of the data in DER format.
 
 | Type | Description |
 | --- | --- |
-| Uint8Array | Hash value obtained. |
+| Uint8Array | Hash value in DER format obtained. |
 
 **Error codes:**
 
@@ -2145,7 +2145,7 @@ async function crlHashCode() {
 isRevoked(cert: X509Cert): boolean
 ```
 
-Checks whether an X.509 certificate is revoked.
+Checks whether the certificate is revoked.
 
 **Since:** 11
 
@@ -2601,7 +2601,7 @@ async function crlToString() {
 verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 ```
 
-Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This API uses an asynchronous callback to return the result.
+Verifies the X.509 CRL signature. This API uses an asynchronous callback to return the result. RSA can be used for signature verification.
 
 **Since:** 11
 
@@ -2879,7 +2879,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 verify(key: cryptoFramework.PubKey): Promise<void>
 ```
 
-Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This API uses a promise to return the result.
+Verifies the X.509 CRL signature. This API uses a promise to return the result. RSA can be used for signature verification.
 
 **Since:** 11
 

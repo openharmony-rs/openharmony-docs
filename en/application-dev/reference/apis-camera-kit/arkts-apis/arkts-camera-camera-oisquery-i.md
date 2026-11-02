@@ -40,7 +40,7 @@ Gets the current custom bias value for the specified OIS axis.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | Yes | The OIS axis |
+| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | Yes | The OIS axis. |
 
 **Return value:**
 

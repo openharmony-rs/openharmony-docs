@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function addPrinterToCups(printerUri: string, printerName: string, printerMake: string): Promise<boolean>
 ```
 
-Add a printer to cups.
+Adds a printer to CUPS. This API uses an asynchronous callback to return the result. CUPS is the print service framework in the system, which is used to manage printers and print jobs.
 
 **Since:** 24
 
@@ -30,15 +30,15 @@ Add a printer to cups.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerUri | string | Yes | Indicates the printer uri. <br>Printer URI in the process of connecting. |
-| printerName | string | Yes | Indicates the printer name. <br>Printer name in the process of connecting. |
-| printerMake | string | Yes | Indicates the printer make. <br>Printer make in the process of connecting. |
+| printerUri | string | Yes | Printer URI, which can be obtained by calling [PrinterInformation](arkts-basicservices-print-printerinformation-i.md). |
+| printerName | string | Yes | Printer name. |
+| printerMake | string | Yes | Printer brand. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | the promise returned by the function. |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful, and **false** indicates the opposite. |
 
 **Error codes:**
 

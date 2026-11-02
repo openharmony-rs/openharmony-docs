@@ -13,7 +13,7 @@ function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, 
     onFileStateChanged: Callback<PrintFileCreationState>): void
 ```
 
-Starts to obtain the print file. This API uses an asynchronous callback to return the result.
+Starts to obtain the print file. This API uses an asynchronous callback to return the result. After **print()** is executed, **jobId** is created, and [PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md) is registered, you can call this function to obtain the actual print file content.
 
 **Since:** 11
 
@@ -29,9 +29,9 @@ Starts to obtain the print file. This API uses an asynchronous callback to retur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | ID of the print job. |
+| jobId | string | Yes | ID of the created print job. |
 | printAttributes | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | Yes | Print attributes. |
-| fd | number | Yes | File descriptor. |
+| fd | number | Yes | Print file descriptor, which must be a non-negative integer. |
 | onFileStateChanged | [Callback](arkts-basicservices-base-callback-i.md)&lt;[PrintFileCreationState](arkts-basicservices-print-printfilecreationstate-e.md)&gt; | Yes | Callback for updating the file state. |
 
 **Error codes:**

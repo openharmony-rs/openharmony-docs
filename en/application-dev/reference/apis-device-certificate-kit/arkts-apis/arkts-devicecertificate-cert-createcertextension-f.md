@@ -27,7 +27,7 @@ Creates a certificate extension object. This API uses an asynchronous callback t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Yes | Serialized certificate extension data. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CertExtension](arkts-devicecertificate-cert-certextension-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the **CertExtension** instance created. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CertExtension](arkts-devicecertificate-cert-certextension-i.md)&gt; | Yes | Callback used to return the result. If the certificate extension object is successfully created, **err** is **undefined**, and **data** is the **CertExtension** instance obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -98,7 +98,7 @@ Creates a certificate extension object. This API uses a promise to return the re
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[CertExtension](arkts-devicecertificate-cert-certextension-i.md)&gt; | Promise used to return the **CertExtension** instance created. |
+| Promise&lt;[CertExtension](arkts-devicecertificate-cert-certextension-i.md)&gt; | Promise that returns the **CertExtension** instance created. |
 
 **Error codes:**
 

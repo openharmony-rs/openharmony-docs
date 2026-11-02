@@ -41,3 +41,23 @@ false：动画过程中不允许复用子组件。
 <!--Device-RepeatOptions-allowReuseInAnimation?: boolean--><!--Device-RepeatOptions-allowReuseInAnimation?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## controller
+
+```TypeScript
+controller?: RepeatController
+```
+
+绑定到Repeat组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](arkts-arkui-repeat-comp-repeatcontroller-c.md#clearcache)清理Repeat组件复用池中的节点。
+
+**类型：** [RepeatController](arkts-arkui-repeat-comp-repeatcontroller-c.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RepeatOptions-controller?: RepeatController--><!--Device-RepeatOptions-controller?: RepeatController-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -67,6 +67,7 @@ import { formHost } from '@kit.FormKit';
 | [off('getFormRect')](arkts-form-formhost-off-f-sys.md#offgetformrect) | Unsubscribes from the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result. |
 | [off('getLiveFormStatus')](arkts-form-formhost-off-f-sys.md#offgetliveformstatus) | Cancels Listening to the event of get live form status. |
 | [offDeleteFormsCallback](arkts-form-formhost-offdeleteformscallback-f-sys.md#offdeleteformscallback-1) | Unregister the callback for deleting forms. |
+| [offGetVisibleFormRect](arkts-form-formhost-offgetvisibleformrect-f-sys.md#offgetvisibleformrect-1) | Meaning: deregistration to obtain the visible card area Application scenario: Callback of the area where the card is used to obtain the visible card is deregistered in the FMS. Effect: The FMS clears the callback record. |
 | [offGetWantParamsCallback](arkts-form-formhost-offgetwantparamscallback-f-sys.md#offgetwantparamscallback-1) | Unregister callback of getting the want parameters of the form. |
 | [offTemplateFormDetailInfoChange](arkts-form-formhost-offtemplateformdetailinfochange-f-sys.md#offtemplateformdetailinfochange-1) | Unsubscribes from changes in the static configuration information of template widgets. This API uses an asynchronous callback to return the result. |
 | [offUpdateFormsConfigCallback](arkts-form-formhost-offupdateformsconfigcallback-f-sys.md#offupdateformsconfigcallback-1) | Unregister the callback for updating form config. |
@@ -76,6 +77,7 @@ import { formHost } from '@kit.FormKit';
 | [on('getFormRect')](arkts-form-formhost-on-f-sys.md#ongetformrect) | Subscribes to the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result. |
 | [on('getLiveFormStatus')](arkts-form-formhost-on-f-sys.md#ongetliveformstatus) | Listens to the event of get live form status. |
 | [onDeleteFormsCallback](arkts-form-formhost-ondeleteformscallback-f-sys.md#ondeleteformscallback-1) | Register the callback for deleting forms. |
+| [onGetVisibleFormRect](arkts-form-formhost-ongetvisibleformrect-f-sys.md#ongetvisibleformrect-1) | Subscribes to the event of requesting visible widget position and dimension. This API uses an asynchronous callback to return the result. |
 | [onGetWantParamsCallback](arkts-form-formhost-ongetwantparamscallback-f-sys.md#ongetwantparamscallback-1) | Register callback of getting the want parameters of the form. |
 | [onTemplateFormDetailInfoChange](arkts-form-formhost-ontemplateformdetailinfochange-f-sys.md#ontemplateformdetailinfochange-1) | Subscribes to changes in the static configuration information of template widgets. This API uses an asynchronous callback to return the result. |
 | [onUpdateFormsConfigCallback](arkts-form-formhost-onupdateformsconfigcallback-f-sys.md#onupdateformsconfigcallback-1) | Register the callback for updating form config. |

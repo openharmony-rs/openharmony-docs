@@ -4,7 +4,7 @@
 interface CertChainBuildResult
 ```
 
-Represents the certificate chain build result.
+Represents the result of building a certificate chain.
 
 **Since:** 12
 
@@ -42,7 +42,7 @@ Certificate chain object created.
 readonly validationResult: CertChainValidationResult
 ```
 
-Result of the certificate chain validation.
+Certificate chain validation result.
 
 **Type:** [CertChainValidationResult](arkts-devicecertificate-cert-certchainvalidationresult-i.md)
 

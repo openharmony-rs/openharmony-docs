@@ -64,7 +64,7 @@ Whether the final CMS message does not contain the raw data. The default value i
 outFormat?: CmsFormat
 ```
 
-Format of the CMS message generated. The default value is **DER**.
+Format of the CMS data generated. The default value is **DER**.
 
 **Type:** [CmsFormat](arkts-devicecertificate-cert-cmsformat-e.md)
 

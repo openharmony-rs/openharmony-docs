@@ -12,7 +12,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 function unregisterTypeDescriptors(typeIds: Array<string>): Promise<void>
 ```
 
-Unregister one or more type descriptors from the system by the given type IDs.
+Unregisters one or more uniform data types from the system. This API uses a promise to return the result. After unregistration, the data types are no longer recognized by the system, and data that depends on these data types may fail to be processed properly. Ensure that related data dependencies are cleared before unregistration.
 
 **Since:** 22
 
@@ -32,13 +32,13 @@ Unregister one or more type descriptors from the system by the given type IDs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| typeIds | Array&lt;string&gt; | Yes | The list of type IDs to be unregistered. |
+| typeIds | Array&lt;string&gt; | Yes | List of **typeId**s to unregister. The list cannot be empty, and the number of elements cannot exceed 50. The length of each item cannot exceed 127.<br> **typeId constraints:** <br>1. The uniform data type corresponding to the **typeId** must have been registered in the system; <br>2. The **typeId** must start with the bundle name of the current application; <br>3. The uniform data type corresponding to the **typeId** must have been registered through the registerTypeDescriptors API. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

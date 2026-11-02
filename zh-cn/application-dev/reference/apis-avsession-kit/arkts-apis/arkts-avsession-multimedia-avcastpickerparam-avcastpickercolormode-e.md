@@ -18,7 +18,7 @@ export declare enum AVCastPickerColorMode
 AUTO = 0
 ```
 
-Auto mode which follows the definition of system.
+跟随系统模式。
 
 **起始版本：** 12
 
@@ -34,7 +34,7 @@ Auto mode which follows the definition of system.
 DARK = 1
 ```
 
-Dark mode.
+深色模式。
 
 **起始版本：** 12
 
@@ -50,7 +50,7 @@ Dark mode.
 LIGHT = 2
 ```
 
-Light mode.
+浅色模式。
 
 **起始版本：** 12
 

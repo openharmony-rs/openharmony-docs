@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function setScanAutoOption(scannerId: string, optionIndex: number): Promise<void>
 ```
 
-Sets the scan option to auto mode. This API uses a promise to return the result.
+Sets the scan option to auto mode, in which the scanner automatically determines the value of this option. This API uses a promise to return the result. This method can be called only after the scanner is opened by calling **openScanner()**.
 
 **Since:** 20
 

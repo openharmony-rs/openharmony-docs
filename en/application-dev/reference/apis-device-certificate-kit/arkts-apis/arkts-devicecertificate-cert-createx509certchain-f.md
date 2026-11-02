@@ -12,7 +12,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 function createX509CertChain(inStream: EncodingBlob): Promise<X509CertChain>
 ```
 
-Creates an **X509CertChain** instance. This API uses a promise to return the result.
+Creates an X.509 certificate chain object. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -32,7 +32,7 @@ Creates an **X509CertChain** instance. This API uses a promise to return the res
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md)&gt; | Promise used to return the **X509CertChain** instance created. |
+| Promise&lt;[X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md)&gt; | Promise that returns the **X509CertChain** instance created. |
 
 **Error codes:**
 
@@ -139,7 +139,7 @@ createX509CertChain();
 function createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback<X509CertChain>): void
 ```
 
-Creates an **X509CertChain** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 certificate chain object. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
 
@@ -154,7 +154,7 @@ Creates an **X509CertChain** instance. This API uses an asynchronous callback to
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Yes | X.509 certificate serialization data. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the **X509CertChain** instance created. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md)&gt; | Yes | Callback used to return the result. If the X.509 certificate chain object is successfully created, **err** is **undefined**, and **data** is the **X509CertChain** instance obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -270,13 +270,13 @@ Creates an X.509 certificate chain object based on the specified certificates. T
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| certs | Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Yes | Array of X.509 certificates. |
+| certs | Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Yes | X.509 certificates. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md) | **X509CertChain** object created. |
+| [X509CertChain](arkts-devicecertificate-cert-x509certchain-i.md) | X.509 certificate chain object. |
 
 **Error codes:**
 

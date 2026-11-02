@@ -4,7 +4,7 @@
 interface Sign
 ```
 
-Signing interface, defining methods for signing data using a private key. Before use, you must create a **Sign** instance by using [createSign(algName: string): Sign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md). Invoke **init()**, **update()**, and **sign()** in this class in sequence to complete the signing operation. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
+Provides a signing API for signing data based on a private key. Before calling this API, you need to construct this instance using [createSign(algName: string): Sign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md). Invoke **init()**, **update()**, and **sign()** in this class in sequence to complete the signing operation. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 <br>The **Sign** instance does not support repeated initialization. When a new key is used for signing, you must create a new **Sign** instance and call **init()** for initialization.
 
@@ -91,9 +91,9 @@ function testGetSignSpec() {
 init(priKey: PriKey, callback: AsyncCallback<void>): void
 ```
 
-Initializes the **Sign** object using a private key. This API uses an asynchronous callback to return the result. **init**, **update**, and **sign** must be used together. **init** and **sign** are mandatory, and **update** is optional.
+Initializes the **Sign** instance using a private key. This API uses an asynchronous callback to return the result. **init**, **update**, and **sign** must be used together. **init** and **sign** are mandatory, and **update** is optional.
 
-<br>The **Sign** instance does not support repeated use of **init**.
+<br>The **Sign** instance does not support repeated initialization.
 
 **Since:** 9
 
@@ -128,11 +128,11 @@ Initializes the **Sign** object using a private key. This API uses an asynchrono
 init(priKey: PriKey): Promise<void>
 ```
 
-Initializes the **Sign** object using a private key. This API uses a promise to return the result.
+Initializes the **Sign** instance using a private key. This API uses a promise to return the result.
 
 **init**, **update**, and **sign** must be used together. **init** and **sign** are mandatory, and **update** is optional.
 
-<br>The **Sign** instance does not support repeated use of **init**.
+<br>The **Sign** instance does not support repeated initialization.
 
 **Since:** 9
 
@@ -268,9 +268,7 @@ function testSetSignSpec() {
 setSignSpec(itemType: SignSpecItem, itemValue: number | Uint8Array): void
 ```
 
-Sets the specified parameter for the Sign instance.
-
-<br>Currently, only PSS_SALT_LEN in RSA and USER_ID in SM2 are supported.
+Sets signing specifications. You can use this API to set signing parameters that cannot be set by [createSign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md). Currently, only RSA and SM2 are supported. Since API version 11, SM2 signing parameters can be set.
 
 **Since:** 11
 
@@ -286,8 +284,8 @@ Sets the specified parameter for the Sign instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | Yes | Indicates the specified parameter type. |
-| itemValue | number &#124; Uint8Array | Yes | The value of the specified parameter. |
+| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | Yes | Signing parameter to set. |
+| itemValue | number &#124; Uint8Array | Yes | Value of the signing parameter to set. |
 
 **Error codes:**
 
@@ -319,7 +317,7 @@ function testSetSignSpec() {
 setSignSpec(itemType: SignSpecItem, itemValue: number | Uint8Array | boolean): void
 ```
 
-Sets the specified parameter for the Sign instance.
+Sets signing specifications. String parameters of the signing algorithm are specified using **createSign**. The ML-DSA parameters are set using this API, including whether to use deterministic signatures, whether to use external mu pre-hashing, and the context string.
 
 <br>Currently, only PSS_SALT_LEN in RSA, USER_ID in SM2, and ML_DSA_DETERMINISTIC, ML_DSA_MU, and ML_DSA_CONTEXT in ML-DSA are supported.
 
@@ -338,7 +336,7 @@ Sets the specified parameter for the Sign instance.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | Yes | Indicates the specified parameter type. |
-| itemValue | number &#124; Uint8Array &#124; boolean | Yes | The value of the specified parameter. |
+| itemValue | number &#124; Uint8Array &#124; boolean | Yes | Value of the signing parameter to set. For details about the parameters, see SignSpecItem. |
 
 **Error codes:**
 
@@ -369,6 +367,8 @@ sign(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 ```
 
 Signs the data, including data added via the update interface. This API uses an asynchronous callback to return the result.
+
+<br>The **Sign** class does not support repeated use of **sign**.
 
 **Since:** 9
 
@@ -438,7 +438,7 @@ Signs data. This API uses an asynchronous callback to return the result.
 sign(data: DataBlob): Promise<DataBlob>
 ```
 
-Signs the data, including data added via the update interface. This API uses a promise to return the result.
+Signs the data, including data added via the update interface. This API uses a promise to return the result. The **Sign** class does not support repeated use of **sign**.
 
 **Since:** 9
 
@@ -554,7 +554,7 @@ Signs the data. This API returns the result synchronously.
 
 **Examples**
 
-For more examples of signing and signature verification, see Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -616,7 +616,7 @@ function signByCallback() {
 }
 ```
 
-For more examples of signing and signature verification, see Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -680,7 +680,7 @@ async function signByPromise() {
 }
 ```
 
-For more examples of signing and signature verification, see Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -752,7 +752,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 
 Updates data to be signed. This API uses an asynchronous callback to return the result.
 
-<br>This API can be called only after the [Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md) instance is initialized by using [init](#init) or [initSync](#initsync).
+<br>This API can be called only after the [Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md) instance is initialized by using [init()](#init) or [initSync()](#initsync)..
 
 > **NOTE:** 
 > 

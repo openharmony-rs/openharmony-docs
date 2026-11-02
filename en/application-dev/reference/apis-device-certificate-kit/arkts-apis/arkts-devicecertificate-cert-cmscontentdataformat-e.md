@@ -18,7 +18,7 @@ Enumerates the CMS message formats.
 BINARY = 0
 ```
 
-Binary.
+Binary data format.
 
 **Since:** 18
 
@@ -34,7 +34,7 @@ Binary.
 TEXT = 1
 ```
 
-Text.
+Text data format.
 
 **Since:** 18
 

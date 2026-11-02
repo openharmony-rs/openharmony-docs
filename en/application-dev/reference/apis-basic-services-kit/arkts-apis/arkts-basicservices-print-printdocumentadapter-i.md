@@ -4,7 +4,7 @@
 interface PrintDocumentAdapter
 ```
 
-Provides information about the document to print. This API must be implemented by a third-party application.
+Provides information about the document to print. This API must be implemented by a third-party application. This API provides a callback to listen for file rendering and print job status events. You can pass a **PrintDocumentAdapter** instance through the **print.print** API.
 
 **Since:** 11
 
@@ -82,7 +82,7 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
       writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
 ```
 
-Sends an empty PDF file descriptor to a third-party application. The third-party application updates the file with the new print attributes and then calls **writeResultCallback** to print the file.
+The printing service uses this API to pass the file descriptor of an empty PDF file to the third-party app. The third-party app uses the new printing parameters to update the file to be printed. After the update is complete, the third-party app notifies the printing service using **writeResultCallback**.
 
 **Since:** 11
 
@@ -98,7 +98,7 @@ Sends an empty PDF file descriptor to a third-party application. The third-party
 | --- | --- | --- | --- |
 | jobId | string | Yes | ID of the print job. |
 | oldAttrs | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | Yes | Old print attributes. |
-| newAttrs | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | Yes | New print attributes. |
+| newAttrs | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | Yes | New print attributes. The app uses this parameter to update the file to be printed. |
 | fd | number | Yes | PDF file descriptor sent to the API caller. |
 | writeResultCallback | (jobId: string, writeResult: PrintFileCreationState) =&gt; void | Yes | Callback used to print the updated file. |
 

@@ -12,6 +12,14 @@ declare class StyledString
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## 规则说明
+
+* 当组件样式和属性字符串中的样式冲突时，冲突部分以属性字符串设置的样式为准，未冲突部分则生效组件的样式。  
+* 当属性字符串和 [Text](../arkts-components/arkts-arkui-text-comp.md)子组件冲突时，属性字符串优先级高，即当Text组件中绑定了属性字符串，忽略Text组件下包含[Span](../arkts-components/arkts-arkui-span-comp.md)等子组件的情况。  
+* 不支持[@State](../../../ui/state-management/arkts-state.md)修饰。  
+* 建议将StyledString定义为成员变量，从而避免应用退后台后被销毁。  
+* 不支持在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)之前创建
+
 ## constructor
 
 ```TypeScript
@@ -77,7 +85,7 @@ static fromHtml(html: string): Promise<StyledString>
 
 将HTML格式字符串转换成属性字符串，HTML标签将映射为对应的属性字符串样式（如加粗类标签映射为TextStyle、装饰类标签映射为DecorationStyle）。支持的HTML标签范围详见下方表格，不同标签支持的起始API版本不同。
 
-使用方法参考[示例12（fromHtml和toHtml互相转换）](../../../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#示例12fromhtml和tohtml互相转换)和[示例18（fromHtml转换）](../../../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#示例18fromhtml转换)。
+使用方法参考[示例12（fromHtml和toHtml互相转换）](arkts-arkui-styledstring-c.md)和[示例18（fromHtml转换）](arkts-arkui-styledstring-c.md)。
 
 | 标签名称 | 说明 |  
 | ------------- | ---------------------------- |  
@@ -95,18 +103,18 @@ static fromHtml(html: string): Promise<StyledString>
 | \<del\><sup>20+</sup> | 删除线（中划线）。 |  
 | \<sup\><sup>20+</sup> | 上标文本。 |  
 | \<sub\><sup>20+</sup> | 下标文本。 |  
-| \<cite\> | 斜体文本。 |  
-| \<dfn\> | 斜体文本。 |  
-| \<small\> | 缩小字号标签。字号缩放为父容器字号属性的0.8倍，支持嵌套叠加。 |  
-| \<h1\> | 一级标题。 |  
-| \<h2\> | 二级标题。 |  
-| \<h3\> | 三级标题。 |  
-| \<h4\> | 四级标题。 |  
-| \<h5\> | 五级标题。 |  
-| \<h6\> | 六级标题。 |  
-| \<ol\> | 有序列表。 |  
-| \<ul\> | 无序列表。 |  
-| \<li\> | 列表项。 |
+| \<cite\> | 斜体文本。<br>**起始版本：** 26.0.0 |  
+| \<dfn\> | 斜体文本。<br>**起始版本：** 26.0.0 |  
+| \<small\> | 缩小字号标签。字号缩放为父容器字号属性的0.8倍，支持嵌套叠加。<br>**起始版本：** 26.0.0 |  
+| \<h1\> | 一级标题。<br>**起始版本：** 26.0.0 |  
+| \<h2\> | 二级标题。<br>**起始版本：** 26.0.0 |  
+| \<h3\> | 三级标题。<br>**起始版本：** 26.0.0 |  
+| \<h4\> | 四级标题。<br>**起始版本：** 26.0.0 |  
+| \<h5\> | 五级标题。<br>**起始版本：** 26.0.0 |  
+| \<h6\> | 六级标题。<br>**起始版本：** 26.0.0 |  
+| \<ol\> | 有序列表。<br>**起始版本：** 26.0.0 |  
+| \<ul\> | 无序列表。<br>**起始版本：** 26.0.0 |  
+| \<li\> | 列表项。<br>**起始版本：** 26.0.0 |
 
 **起始版本：** 12
 

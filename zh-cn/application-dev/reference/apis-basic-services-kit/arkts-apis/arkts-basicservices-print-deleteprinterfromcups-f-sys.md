@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function deletePrinterFromCups(printerName: string): Promise<void>
 ```
 
-从cups中删除打印机，使用Promise异步回调。
+从CUPS中删除打印机，使用Promise异步回调。CUPS是系统中的打印服务框架，用于管理打印机和打印任务。
 
 **起始版本：** 24
 

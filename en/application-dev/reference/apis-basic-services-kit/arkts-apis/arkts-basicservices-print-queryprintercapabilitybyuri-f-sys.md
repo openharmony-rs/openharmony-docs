@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise<PrinterCapabilities>
 ```
 
-Query printer capabilityies by printer uri.
+Queries the printer capability by the printer URI. This API uses a promise to return the result. This API can be used to query the capabilities of a printer when the printer URI is known but the printer is not registered locally. It can also be used to discover the capabilities of a USB printer.
 
 **Since:** 24
 
@@ -30,14 +30,14 @@ Query printer capabilityies by printer uri.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerUri | string | Yes | Indicates the printer uri. <br>Printer URI in the process of connecting. |
-| printerId | string | Yes | Indicates the printer ID. <br>Printer ID in the process of connecting. |
+| printerUri | string | Yes | Printer URI, which can be obtained by calling [PrinterInformation](arkts-basicservices-print-printerinformation-i.md). |
+| printerId | string | Yes | Printer ID. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[PrinterCapabilities](arkts-basicservices-print-printercapabilities-i.md)&gt; | Promise that resolves with the printer capabilityies. |
+| Promise&lt;[PrinterCapabilities](arkts-basicservices-print-printercapabilities-i.md)&gt; | Promise used to return the printer capabilities, which are used to obtain the functions and configuration options supported by the printer. |
 
 **Error codes:**
 

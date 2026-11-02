@@ -4,7 +4,14 @@
 export interface AgentProxy
 ```
 
-The proxy object of the AgentExtensionAbility, used to send messages to the AgentExtensionAbility, etc.
+AgentProxy is used to send data or security authentication requests from the client to the AgentExtensionAbility server.
+
+> **NOTE:** 
+> 
+> - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module are all system APIs.
+> - The APIs of this module can be used only in the stage model.
+> - The APIs of this module must be used in the main thread. They cannot be used in child threads such as Worker and TaskPool.
 
 **Since:** 24
 
@@ -20,7 +27,7 @@ The proxy object of the AgentExtensionAbility, used to send messages to the Agen
 authorize(handshakeData: string): void
 ```
 
-Send authentication to the AgentExtensionAbility.
+The client calls this API to send a security authentication request to the AgentExtensionAbility server.
 
 **Since:** 24
 
@@ -36,7 +43,7 @@ Send authentication to the AgentExtensionAbility.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| handshakeData | string | Yes | Indicates the handshake data to send. |
+| handshakeData | string | Yes | Security authentication data to be sent to the AgentExtensionAbility server. |
 
 **Error codes:**
 
@@ -50,7 +57,7 @@ Send authentication to the AgentExtensionAbility.
 sendData(data: string): void
 ```
 
-Send data to the AgentExtensionAbility.
+The client calls this API to send data to the AgentExtensionAbility server.
 
 **Since:** 24
 
@@ -66,7 +73,7 @@ Send data to the AgentExtensionAbility.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | string | Yes | Indicates the data to send. |
+| data | string | Yes | Data to be sent to the AgentExtensionAbility server. |
 
 **Error codes:**
 

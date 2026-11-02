@@ -24,7 +24,7 @@ import { StartupConfig } from '@kit.AbilityKit';
 startupListener?: StartupListener
 ```
 
-AppStartup listener, which is called when all the startup tasks are complete.
+Listener of the startup framework, which is invoked when all startup tasks are complete. If this parameter is not set, no callback notification is sent.
 
 **Type:** [StartupListener](arkts-ability-app-appstartup-startuplistener-startuplistener-c.md)
 
@@ -42,7 +42,7 @@ AppStartup listener, which is called when all the startup tasks are complete.
 timeoutMs?: number
 ```
 
-Timeout for executing all startup tasks, measured in ms. The default value is 10000 ms.
+Timeout duration for executing all startup tasks, in ms. The default value is 10000. When the timeout expires, the startup framework stops waiting and returns a timeout error through the startupListener.onCompleted callback. The timeout does not interrupt the startup tasks being executed, but affects the execution of subsequent tasks.
 
 **Type:** number
 

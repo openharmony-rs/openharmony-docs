@@ -4,9 +4,9 @@
 interface GetDataParams
 ```
 
-Represents the parameters for obtaining data from UDMF, including the destination directory, option for resolving file conflicts, and progress indicator type.
+Represents the parameters used to obtain data from UDMF, including the destination path, file conflict options, and progress bar type.
 
-For details, see [Obtaining Data Asynchronously Through Drag-and-Drop].
+For details about how to use it, see [Obtaining Data Asynchronously Through Drag-and-Drop].
 
 **Since:** 15
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 dataProgressListener: DataProgressListener
 ```
 
-Indicates progress and data listener when getting unified data.
+Represents the progress and data listener used when obtaining unified data.
 
 **Since:** 15
 
@@ -44,7 +44,7 @@ Indicates progress and data listener when getting unified data.
 acceptableInfo?: DataLoadInfo
 ```
 
-Indicates the supported data information.
+efines the receiver's capability to accept data types and the number of data records. In lazy loading scenarios, the sender can generate and return more appropriate data content based on this information. It defaults to empty, indicating that the receiver's data acceptance capability is not provided.
 
 **Type:** [DataLoadInfo](arkts-arkdata-unifieddatachannel-dataloadinfo-i.md)
 
@@ -64,7 +64,7 @@ Indicates the supported data information.
 destUri?: string
 ```
 
-Indicates the dest path uri where copy file will be copied to sandbox of application.
+Destination path for copying files. If file processing is not supported, this parameter does not need to be set and defaults to empty. If file processing is supported, it must be set to an existing directory. If the application involves complex file processing policies or needs to distinguish multi-path storage of files, it is recommended not to set this parameter and let the application complete the file copy processing on its own. When this parameter is not set, the obtained URI is the source path URI; when it is set, the obtained URI is the destination path URI.
 
 **Type:** string
 
@@ -84,7 +84,7 @@ Indicates the dest path uri where copy file will be copied to sandbox of applica
 fileConflictOptions?: FileConflictOptions
 ```
 
-Indicates file conflict options when dest path has file with same name.
+Defines the options for file copy conflicts. The default value is OVERWRITE.
 
 **Type:** [FileConflictOptions](arkts-arkdata-unifieddatachannel-fileconflictoptions-e.md)
 
@@ -104,7 +104,7 @@ Indicates file conflict options when dest path has file with same name.
 progressIndicator: ProgressIndicator
 ```
 
-Indicates whether to use default system progress indicator.
+Defines the progress bar indicator options, which determine whether to use the system default progress display.
 
 **Type:** [ProgressIndicator](arkts-arkdata-unifieddatachannel-progressindicator-e.md)
 

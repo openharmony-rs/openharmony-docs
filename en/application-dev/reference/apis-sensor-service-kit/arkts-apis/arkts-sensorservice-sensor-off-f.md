@@ -616,6 +616,8 @@ Unsubscribes from data of the barometer sensor. Call this method to cancel the s
 
 **Since:** 9
 
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
 <!--Device-sensor-function off(type: SensorId.BAROMETER, callback?: Callback<BarometerResponse>): void--><!--Device-sensor-function off(type: SensorId.BAROMETER, callback?: Callback<BarometerResponse>): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
@@ -671,6 +673,8 @@ function off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callba
 Unsubscribes from data of the barometer sensor. Call this method to cancel the subscription when the barometric pressure sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
 **Since:** 19
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-sensor-function off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback<BarometerResponse>): void--><!--Device-sensor-function off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback<BarometerResponse>): void-End-->
 

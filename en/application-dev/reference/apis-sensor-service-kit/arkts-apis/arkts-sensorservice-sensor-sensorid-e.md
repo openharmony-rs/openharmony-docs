@@ -80,6 +80,8 @@ Barometric pressure sensor, which is used to measure atmospheric pressure.
 
 **Since:** 9
 
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
 <!--Device-SensorId-BAROMETER = 8--><!--Device-SensorId-BAROMETER = 8-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

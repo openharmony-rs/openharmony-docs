@@ -4,7 +4,7 @@
 interface PhotoOutput extends CameraOutput
 ```
 
-拍照会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
+拍照会话中使用的输出信息。
 
 **继承/实现关系：** PhotoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 burstCapture(setting: PhotoCaptureSetting): Promise<void>
 ```
 
-Starts the burst mode, in which users can capture a series of photos in quick succession. This API is generally used in photo mode. After the burst mode starts, the bottom layer continues displaying photos. You can call [confirmCapture](#confirmcapture) to cancel the burst mode. This API uses a promise to return the result.
+启动连拍模式，用户可连续快速拍摄多张照片。该接口通常用于拍照模式。连拍开始后，底层会持续显示照片。可调用[confirmCapture](#confirmcapture) 取消连拍模式。该接口使用 Promise返回结果。
 
 **起始版本：** 12
 
@@ -40,13 +40,13 @@ Starts the burst mode, in which users can capture a series of photos in quick su
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| setting | [PhotoCaptureSetting](arkts-camera-camera-photocapturesetting-i.md) | 是 | Shooting parameters. The input of **undefined** is processed as if no parameters were passed. |
+| setting | [PhotoCaptureSetting](arkts-camera-camera-photocapturesetting-i.md) | 是 | 拍照参数。传入 **undefined** 时按未传参处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | 无返回值的 Promise。 |
 
 **错误码：**
 
@@ -91,7 +91,7 @@ function burstCapture(photoOutput: camera.PhotoOutput): void {
 confirmCapture(): void
 ```
 
-Confirms photo capture. This API is generally used in night photo mode when users need to stop the exposure countdown and take a photo in advance. This API is used to end the burst mode, which is started by calling [burstCapture](#burstcapture).
+确认拍照。该接口通常用于夜间拍照模式下用户需要停止曝光倒计时并提前拍照的场景。该接口用于结束由[burstCapture](#burstcapture) 启动的连拍模式。
 
 **起始版本：** 11
 
@@ -133,7 +133,7 @@ function confirmCapture(photoOutput: camera.PhotoOutput): void {
 deferImageDelivery(type: DeferredDeliveryImageType): void
 ```
 
-Enables deferred delivery of a certain type.
+使能指定类型的分段式投递。
 
 **起始版本：** 11
 
@@ -147,7 +147,7 @@ Enables deferred delivery of a certain type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [DeferredDeliveryImageType](arkts-camera-camera-deferreddeliveryimagetype-e-sys.md) | 是 | Deferred delivery image type. |
+| type | [DeferredDeliveryImageType](arkts-camera-camera-deferreddeliveryimagetype-e-sys.md) | 是 | 分段式投递的图像类型。 |
 
 **错误码：**
 
@@ -175,7 +175,7 @@ function deferImageDelivery(photoOutput: camera.PhotoOutput, type: camera.Deferr
 enableAutoCloudImageEnhancement(enabled: boolean): void
 ```
 
-Enable auto cloud image enhancement
+使能云端自动图像增强。
 
 **起始版本：** 13
 
@@ -189,7 +189,7 @@ Enable auto cloud image enhancement
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Target state for auto cloud image enhancement. |
+| enabled | boolean | 是 | 云端自动图像增强的目标状态。 |
 
 **错误码：**
 
@@ -205,7 +205,7 @@ Enable auto cloud image enhancement
 enableAutoHighQualityPhoto(enabled: boolean): void
 ```
 
-Enables automatic high quality for photos. Before using this API, call [isAutoHighQualityPhotoSupported](#isautohighqualityphotosupported) to check whether automatic high quality is supported.
+使能照片自动高质量。使用该接口前，请先调用[isAutoHighQualityPhotoSupported](#isautohighqualityphotosupported) 检查是否支持自动高质量。
 
 **起始版本：** 13
 
@@ -219,7 +219,7 @@ Enables automatic high quality for photos. Before using this API, call [isAutoHi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Whether to enable or disable automatic high quality for photos. **true** to enable, **false** otherwise. |
+| enabled | boolean | 是 | 是否使能照片自动高质量。**true**表示使能，**false**表示去使能。 |
 
 **错误码：**
 
@@ -249,7 +249,7 @@ function enableAutoHighQualityPhoto(photoOutput: camera.PhotoOutput): void {
 enableDepthDataDelivery(enabled: boolean): void
 ```
 
-Enable depth data delivery.
+使能深度数据投递。
 
 **起始版本：** 13
 
@@ -263,7 +263,7 @@ Enable depth data delivery.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Target state for depth data delivery. |
+| enabled | boolean | 是 | 深度数据投递的目标状态。 |
 
 **错误码：**
 
@@ -280,7 +280,7 @@ Enable depth data delivery.
 enableOffline(): void
 ```
 
-Enable offline processing.
+使能离线处理。
 
 **起始版本：** 18
 
@@ -304,7 +304,7 @@ Enable offline processing.
 enableOriginalImageGeneration(enabled: boolean): void
 ```
 
-Enable original image generation.
+使能原图生成。
 
 **起始版本：** 24
 
@@ -320,7 +320,7 @@ Enable original image generation.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | enable original image generation if TRUE. |
+| enabled | boolean | 是 | 为 TRUE 时使能原图生成。 |
 
 **错误码：**
 
@@ -335,7 +335,7 @@ Enable original image generation.
 enableQuickThumbnail(enabled: boolean): void
 ```
 
-Enables or disables the quick thumbnail feature. This API takes effect after [addOutput](arkts-camera-camera-session-i.md#addoutput) and [addInput](arkts-camera-camera-session-i.md#addinput) and before [commitConfig](arkts-camera-camera-session-i.md#commitconfig).
+使能或去使能快速缩略图功能。该接口在调用 [addOutput](arkts-camera-camera-session-i.md#addoutput) 和[addInput](arkts-camera-camera-session-i.md#addinput) 之后、[commitConfig](arkts-camera-camera-session-i.md#commitconfig) 之前调用生效。
 
 **起始版本：** 10
 
@@ -349,7 +349,7 @@ Enables or disables the quick thumbnail feature. This API takes effect after [ad
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Whether to enable the quick thumbnail feature. **true** to enable, **false** otherwise. |
+| enabled | boolean | 是 | 是否使能快速缩略图功能。**true**表示使能，**false**表示去使能。 |
 
 **错误码：**
 
@@ -404,7 +404,7 @@ async function enableQuickThumbnail(context: common.BaseContext, mode: camera.Sc
 enableRawDelivery(enabled: boolean): void
 ```
 
-Enable raw image image delivery.
+使能 Raw 图像投递。
 
 **起始版本：** 13
 
@@ -418,7 +418,7 @@ Enable raw image image delivery.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Target state for raw image delivery. |
+| enabled | boolean | 是 | Raw 图像投递的目标状态。 |
 
 **错误码：**
 
@@ -435,7 +435,7 @@ Enable raw image image delivery.
 isAutoCloudImageEnhancementSupported(): boolean
 ```
 
-Confirm if the auto cloud image enhancement is supported.
+检查是否支持云端自动图像增强。
 
 **起始版本：** 13
 
@@ -449,7 +449,7 @@ Confirm if the auto cloud image enhancement is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | TRUE if the auto cloud image enhancement is supported. |
+| boolean | 表示是否支持云端自动图像增强。**true**表示支持。 |
 
 **错误码：**
 
@@ -464,7 +464,7 @@ Confirm if the auto cloud image enhancement is supported.
 isAutoHighQualityPhotoSupported(): boolean
 ```
 
-Checks whether automatic high quality is supported for photos.
+检查是否支持照片自动高质量。
 
 **起始版本：** 13
 
@@ -478,7 +478,7 @@ Checks whether automatic high quality is supported for photos.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for whether automatic high quality is supported. **true** if supported, **false** otherwise. |
+| boolean | 表示是否支持自动高质量。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 
@@ -507,7 +507,7 @@ function isAutoHighQualityPhotoSupported(photoOutput: camera.PhotoOutput): boole
 isDeferredImageDeliveryEnabled(type: DeferredDeliveryImageType): boolean
 ```
 
-Checks whether deferred delivery of a certain type is enabled.
+检查是否已使能指定类型的分段式投递。
 
 **起始版本：** 11
 
@@ -521,13 +521,13 @@ Checks whether deferred delivery of a certain type is enabled.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [DeferredDeliveryImageType](arkts-camera-camera-deferreddeliveryimagetype-e-sys.md) | 是 | Deferred delivery image type. |
+| type | [DeferredDeliveryImageType](arkts-camera-camera-deferreddeliveryimagetype-e-sys.md) | 是 | 分段式投递的图像类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for whether deferred delivery is enabled. **true** if enabled, **false** otherwise. |
+| boolean | 表示是否已使能分段式投递。**true**表示已使能，**false**表示未使能。 |
 
 **错误码：**
 
@@ -557,7 +557,7 @@ function isDeferredImageDeliveryEnabled(photoOutput: camera.PhotoOutput, type: c
 isDeferredImageDeliverySupported(type: DeferredDeliveryImageType): boolean
 ```
 
-Checks whether deferred delivery of a certain type is supported.
+检查是否支持指定类型的分段式投递。
 
 **起始版本：** 11
 
@@ -571,13 +571,13 @@ Checks whether deferred delivery of a certain type is supported.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [DeferredDeliveryImageType](arkts-camera-camera-deferreddeliveryimagetype-e-sys.md) | 是 | Deferred delivery image type. |
+| type | [DeferredDeliveryImageType](arkts-camera-camera-deferreddeliveryimagetype-e-sys.md) | 是 | 分段式投递的图像类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of deferred delivery. **true** if supported, **false** otherwise. |
+| boolean | 表示是否支持分段式投递。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 
@@ -607,7 +607,7 @@ function isDeferredImageDeliverySupported(photoOutput: camera.PhotoOutput, type:
 isDepthDataDeliverySupported(): boolean
 ```
 
-Check if the depth data delivery is supported.
+检查是否支持深度数据投递。
 
 **起始版本：** 13
 
@@ -621,7 +621,7 @@ Check if the depth data delivery is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | TRUE if the type of delivery image is enabled. |
+| boolean | 表示是否已使能该图像投递类型。**true**表示已使能。 |
 
 **错误码：**
 
@@ -637,7 +637,7 @@ Check if the depth data delivery is supported.
 isOfflineSupported(): boolean
 ```
 
-Confirm if offline processing is supported.
+检查是否支持离线处理。
 
 **起始版本：** 18
 
@@ -651,7 +651,7 @@ Confirm if offline processing is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | TRUE if the type of offline is supported. |
+| boolean | 表示是否支持该离线处理类型。**true**表示支持。 |
 
 **错误码：**
 
@@ -666,7 +666,7 @@ Confirm if offline processing is supported.
 isOriginalImageGenerationSupported(): boolean
 ```
 
-Confirm if original image generation supported.
+检查是否支持原图生成。
 
 **起始版本：** 24
 
@@ -682,7 +682,7 @@ Confirm if original image generation supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | TRUE if the original image generation is supported. |
+| boolean | 表示是否支持原图生成。**true**表示支持。 |
 
 **错误码：**
 
@@ -697,7 +697,7 @@ Confirm if original image generation supported.
 isQuickThumbnailSupported(): boolean
 ```
 
-Checks whether the quick thumbnail feature is supported. This API takes effect after [addOutput](arkts-camera-camera-session-i.md#addoutput) and [addInput](arkts-camera-camera-session-i.md#addinput) and before [commitConfig](arkts-camera-camera-session-i.md#commitconfig).
+检查是否支持快速缩略图功能。该接口在调用 [addOutput](arkts-camera-camera-session-i.md#addoutput) 和[addInput](arkts-camera-camera-session-i.md#addinput) 之后、[commitConfig](arkts-camera-camera-session-i.md#commitconfig) 之前调用生效。
 
 **起始版本：** 10
 
@@ -711,7 +711,7 @@ Checks whether the quick thumbnail feature is supported. This API takes effect a
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of the quick thumbnail feature. **true** if supported, **false** otherwise. |
+| boolean | 表示是否支持快速缩略图功能。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 
@@ -764,7 +764,7 @@ async function isQuickThumbnailSupported(context: common.BaseContext, mode: came
 isRawDeliverySupported(): boolean
 ```
 
-Confirm if the raw image delivery is supported
+检查是否支持 Raw 图像投递。
 
 **起始版本：** 13
 
@@ -778,7 +778,7 @@ Confirm if the raw image delivery is supported
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | TRUE if the type of delivery image is support. |
+| boolean | 表示是否支持该图像投递类型。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 
@@ -794,7 +794,7 @@ Confirm if the raw image delivery is supported
 off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback<DeferredPhotoProxy>): void
 ```
 
-Unsubscribes from events indicating available thumbnail proxies.
+取消订阅缩略图代理可用事件。
 
 **起始版本：** 11
 
@@ -808,8 +808,8 @@ Unsubscribes from events indicating available thumbnail proxies.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'deferredPhotoProxyAvailable' | 是 | Event type. The value is fixed at **'deferredPhotoProxyAvailable'**. The event can be listened for when a photoOutput instance is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('deferredPhotoProxyAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'deferredPhotoProxyAvailable' | 是 | 事件类型。取值固定为**'deferredPhotoProxyAvailable'**。该事件可在创建 photoOutput 实例时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件**on('deferredPhotoProxyAvailable')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -847,7 +847,7 @@ function unRegisterPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.Ph
 off(type: 'quickThumbnail', callback?: AsyncCallback<image.PixelMap>): void
 ```
 
-Unsubscribes from quick thumbnail output events.
+取消订阅快速缩略图输出事件。
 
 **起始版本：** 10
 
@@ -861,8 +861,8 @@ Unsubscribes from quick thumbnail output events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'quickThumbnail' | 是 | Event type. The value is fixed at **'quickThumbnail'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('quickThumbnail')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'quickThumbnail' | 是 | 事件类型。取值固定为**'quickThumbnail'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件 **on('quickThumbnail')**中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 <!--Del-->
 **示例**
@@ -881,7 +881,7 @@ function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
 off(type: 'offlineDeliveryFinished', callback?: AsyncCallback<void>): void
 ```
 
-Unsubscribes offline Delivery finished events. This method is valid only after enableOffline() is called.
+取消订阅离线投递完成事件。仅在调用 enableOffline() 后有效。
 
 **起始版本：** 18
 
@@ -895,8 +895,8 @@ Unsubscribes offline Delivery finished events. This method is valid only after e
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'offlineDeliveryFinished' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | Callback used to get offline Delivery finished events. |
+| type | 'offlineDeliveryFinished' | 是 | 事件类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 用于获取离线投递完成事件的回调。 |
 
 **错误码：**
 
@@ -910,7 +910,7 @@ Unsubscribes offline Delivery finished events. This method is valid only after e
 on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback<DeferredPhotoProxy>): void
 ```
 
-Subscribes to events indicating available thumbnail proxies. This API uses an asynchronous callback to return the result.
+订阅缩略图代理可用事件。该接口使用异步回调返回结果。
 
 **起始版本：** 11
 
@@ -924,8 +924,8 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'deferredPhotoProxyAvailable' | 是 | Event type. The value is fixed at **'deferredPhotoProxyAvailable'**. The event can be listened for when a photoOutput instance is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 是 | Callback used to return the thumbnail proxy. |
+| type | 'deferredPhotoProxyAvailable' | 是 | 事件类型。取值固定为**'deferredPhotoProxyAvailable'**。该事件可在创建 photoOutput 实例时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 是 | 用于返回缩略图代理的回调。 |
 
 **错误码：**
 
@@ -963,7 +963,7 @@ function registerPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.Phot
 on(type: 'quickThumbnail', callback: AsyncCallback<image.PixelMap>): void
 ```
 
-Subscribes to quick thumbnail output events. This API uses an asynchronous callback to return the result. The listening takes effect after **enableQuickThumbnail(true)** is called.
+订阅快速缩略图输出事件。该接口使用异步回调返回结果。调用 **enableQuickThumbnail(true)** 后监听生效。
 
 **起始版本：** 10
 
@@ -977,8 +977,8 @@ Subscribes to quick thumbnail output events. This API uses an asynchronous callb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'quickThumbnail' | 是 | Event type. The value is fixed at **'quickThumbnail'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | Callback that returns a PixelMap instance. |
+| type | 'quickThumbnail' | 是 | 事件类型。取值固定为**'quickThumbnail'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | 返回 PixelMap 实例的回调。 |
 
 <!--Del-->
 **示例**
@@ -1036,7 +1036,7 @@ async function registerQuickThumbnail(context: common.BaseContext, mode: camera.
 on(type: 'offlineDeliveryFinished', callback: AsyncCallback<void>): void
 ```
 
-Subscribes offline Delivery finished events. This method is valid only after enableOffline() is called.
+订阅离线投递完成事件。仅在调用 enableOffline() 后有效。
 
 **起始版本：** 18
 
@@ -1050,8 +1050,8 @@ Subscribes offline Delivery finished events. This method is valid only after ena
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'offlineDeliveryFinished' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to get offline Delivery finished events. |
+| type | 'offlineDeliveryFinished' | 是 | 事件类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 用于获取离线投递完成事件的回调。 |
 
 **错误码：**
 
@@ -1065,7 +1065,7 @@ Subscribes offline Delivery finished events. This method is valid only after ena
 setEditData(editData: string): void
 ```
 
-Set edit data.
+设置编辑数据。
 
 **起始版本：** 24
 
@@ -1081,7 +1081,7 @@ Set edit data.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| editData | string | 是 | The edit data. |
+| editData | string | 是 | 编辑数据。 |
 
 **错误码：**
 

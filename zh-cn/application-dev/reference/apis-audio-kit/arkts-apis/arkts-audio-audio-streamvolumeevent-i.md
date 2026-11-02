@@ -24,7 +24,7 @@ import { audio } from '@kit.AudioKit';
 previousVolume?: number
 ```
 
-变化前的音量值。取值限定为整数。
+变化前的音量值。
 
 **类型：** number
 

@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 allowDownloadIntermediateCa?: boolean
 ```
 
-Whether to allow the application to download the missing intermediate CA certificate from the network. **true** means yes; **false** otherwise. The default value is **false**. <br>The download address is obtained from the certificate AIA extension. Only HTTP is supported. To use the network for download, you need to request the **ohos.permission.INTERNET** permission. For details about the permission configuration, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
+Whether to allow downloading the missing intermediate CA certificate from the network. **true** means yes; **false** otherwise. The default value is **false**. <br>The download address is obtained from the certificate AIA extension. Only HTTP is supported. To use the network for download, you need to request the **ohos.permission.INTERNET** permission. For details about the permission configuration, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 **Type:** boolean
 
@@ -44,7 +44,7 @@ Whether to allow the application to download the missing intermediate CA certifi
 certCRLs?: Array<CertCRLCollection>
 ```
 
-CRL collections used to check whether the certificate is revoked.
+CRLs used to check whether a certificate is revoked.
 
 **Type:** Array&lt;[CertCRLCollection](arkts-devicecertificate-cert-certcrlcollection-i.md)&gt;
 
@@ -62,7 +62,7 @@ CRL collections used to check whether the certificate is revoked.
 date?: string
 ```
 
-Date for checking certificate validity.
+Date used to check the validity of a certificate.
 
 **Type:** string
 
@@ -134,7 +134,7 @@ Parameters for checking the certificate revocation status.
 sslHostname?: string
 ```
 
-Host name in the certificate to be verified. This parameter must be used together with **policy**.
+Host name in the certificate to be verified. This parameter must be used with **policy** together.
 
 **Type:** string
 
@@ -170,7 +170,7 @@ List of trusted anchors.
 trustSystemCa?: boolean
 ```
 
-Whether to use the prebuilt CA certificate to validate the certificate chain. **true** means yes; **false** otherwise.
+Whether to trust system CA certificates. The default value is **false**. **true**: Use the system's prebuilt CA certificate store as the trust anchor. **false**: Do not use the system's prebuilt CA certificate store as the trust anchor.
 
 **Type:** boolean
 

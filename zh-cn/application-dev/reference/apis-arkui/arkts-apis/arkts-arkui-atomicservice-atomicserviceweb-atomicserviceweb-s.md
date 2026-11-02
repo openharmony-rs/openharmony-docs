@@ -12,7 +12,7 @@ export declare struct AtomicServiceWeb
 > 
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 > 
-> - 如果AtomicServiceWeb设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到AtomicServiceWeb本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议AtomicServiceWeb设置通用属性和通用事件。
+> - 如果AtomicServiceWeb设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)和[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到AtomicServiceWeb本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议AtomicServiceWeb设置通用属性和通用事件。
 
 **起始版本：** 12
 

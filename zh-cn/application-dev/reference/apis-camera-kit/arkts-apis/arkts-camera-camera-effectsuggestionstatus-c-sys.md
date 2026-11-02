@@ -4,7 +4,7 @@
 class EffectSuggestionStatus
 ```
 
-效果建议状态
+效果建议状态。
 
 **起始版本：** 12
 

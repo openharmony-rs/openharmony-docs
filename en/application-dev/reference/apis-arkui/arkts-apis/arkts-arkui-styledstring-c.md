@@ -12,6 +12,14 @@ StyledString
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Rules of Use
+
+* If a styled string conflicts with the current style settings in a component, the style set in the styled string takes effect.  
+* If a styled string conflicts with the child components in [Text](../arkts-components/arkts-arkui-text-comp.md), the style set in the styled string is applied to the **Text** component, and style settings of the child components, including [Span](../arkts-components/arkts-arkui-span-comp.md), are ignored.  
+* The [@State](../../../ui/state-management/arkts-state.md) decorator is not supported.  
+* Define **StyledString** as a member variable to prevent it from being destroyed when the application moves to the background.  
+* Creation before [loadContent()](arkts-arkui-window-window-i.md#loadcontent-1) is not supported
+
 ## constructor
 
 ```TypeScript
@@ -75,9 +83,40 @@ Checks whether this styled string is the same as another styled string.
 static fromHtml(html: string): Promise<StyledString>
 ```
 
-Converts an HTML-formatted string into a styled string. HTML tags are mapped to the corresponding styled string styles (for example, bold tags are mapped to **TextStyle**, and decoration tags are mapped to **DecorationStyle**). The HTML tags currently supported for conversion are: \<p>, \<span>, \<img>, \
+Converts an HTML-formatted string into a styled string. HTML tags are mapped to the corresponding styled string styles (for example, bold tags are mapped to **TextStyle**, and decoration tags are mapped to **DecorationStyle**).For the scope of supported HTML tags, see the table below. Different tags support different starting API versions.
 
-, \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, \<sub>, \<cite>, \<dfn>, \<small>, \<h1>, \<h2>, \<h3>, \<h4>, \<h5>, \
+For details about how to use this API, see [Example 12: Implementing Conversion Using fromHtml and toHtml](arkts-arkui-styledstring-c.md) and [Example 18: Conversion Using fromHtml](arkts-arkui-styledstring-c.md).
+
+| Tag Name| Description |  
+| ------------- | ---------------------------- |  
+| \<p\> | Paragraph, separates text paragraphs. |  
+| \<span\> | Inline text supporting style configuration. In API version 17 and earlier, the **background-color**attribute set using **\<span\>** does not take effect. |
+
+| \<img\> | Image. |  
+| \<strong\> | Bolds text. |  
+| <br><sup>20+</sup> | Line break. |  
+| \<b\><sup>20+</sup> | Bolds text. |  
+| \<a\><sup>20+</sup> | Hyperlink. |  
+| \<i\><sup>20+</sup> | Italic text. |  
+| \<em\><sup>20+</sup> | Italic text. |  
+| \<s\><sup>20+</sup> | Strikethrough. |  
+| \<u\><sup>20+</sup> | Underline. |  
+| \<del\><sup>20+</sup> | Strikethrough. |  
+| \<sup\><sup>20+</sup> | Superscript text. |  
+| \<sub\><sup>20+</sup> | Subscript text. |  
+| \<cite\> | Italic text.<br>**Since:** 26.0.0 |  
+| \<dfn\> | Italic text.<br>**Since:** 26.0.0 |  
+| \<small\> | Font‑size reduction tag. The font size is scaled to 0.8 times the parent container font size, and nesting is supported.<br>**Since:** 26.0.0 |
+
+| \<h1\> | Level-1 heading.<br>**Since:** 26.0.0 |  
+| \<h2\> | Level-2 heading.<br>**Since:** 26.0.0 |  
+| \<h3\> | Level-3 heading.<br>**Since:** 26.0.0 |  
+| \<h4\> | Level-4 heading.<br>**Since:** 26.0.0 |  
+| \<h5\> | Level-5 heading.<br>**Since:** 26.0.0 |  
+| \<h6\> | Level-6 heading.<br>**Since:** 26.0.0 |  
+| \<ol\> | Ordered list.<br>**Since:** 26.0.0 |  
+| \<ul\> | Unordered list.<br>**Since:** 26.0.0 |  
+| \<li\> | List item.<br>**Since:** 26.0.0 |
 
 **Since:** 12
 

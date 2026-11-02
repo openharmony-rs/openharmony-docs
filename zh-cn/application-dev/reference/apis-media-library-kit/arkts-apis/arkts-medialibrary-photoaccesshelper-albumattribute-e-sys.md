@@ -68,6 +68,24 @@ FRIEND_ID_ATTR = 'friend_id'
 
 **系统接口：** 此接口为系统接口。
 
+## HIDDEN_ATTR
+
+```TypeScript
+HIDDEN_ATTR = 'hidden'
+```
+
+相册隐藏操作属性。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AlbumAttribute-HIDDEN_ATTR = 'hidden'--><!--Device-AlbumAttribute-HIDDEN_ATTR = 'hidden'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## IS_REMOVED_ATTR
 
 ```TypeScript

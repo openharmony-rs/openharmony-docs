@@ -12,7 +12,7 @@ import { featureAbility } from '@kit.AbilityKit';
 function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<number>): void
 ```
 
-Starts an ability. This API uses an asynchronous callback to return the result.
+Starts an ability. This API uses an asynchronous callback to return the result. It is used to start an ability for page navigation, launching other applications, opening third-party applications, and other scenarios.
 
 > **NOTE:** 
 > 
@@ -72,7 +72,7 @@ featureAbility.startAbility(
 function startAbility(parameter: StartAbilityParameter): Promise<number>
 ```
 
-Starts an ability. This API uses a promise to return the result.
+Starts an ability. This API uses a promise to return the result. It is used to start an ability for page navigation, launching other applications, opening third-party applications, and other scenarios.
 
 > **NOTE:** 
 > 

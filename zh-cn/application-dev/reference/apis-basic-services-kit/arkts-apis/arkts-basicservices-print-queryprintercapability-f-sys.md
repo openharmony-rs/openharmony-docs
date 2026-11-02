@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryPrinterCapability(printerId: string, callback: AsyncCallback<void>): void
 ```
 
-查询打印机能力，使用callback异步回调。
+查询打印机能力，使用callback异步回调。能力查询结果可通过监听[on('printerStateChange')](arkts-basicservices-print-on-f-sys.md#onprinterstatechange)事件回调中的PrinterInfo.capability获取。
 
 **起始版本：** 10
 
@@ -28,7 +28,7 @@ function queryPrinterCapability(printerId: string, callback: AsyncCallback<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 |
+| printerId | string | 是 | 表示打印机ID。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步查询打印机能力之后的回调。 |
 
 **错误码：**
@@ -65,7 +65,7 @@ print.queryPrinterCapability(printerId, (error: BusinessError) => {
 function queryPrinterCapability(printerId: string): Promise<void>
 ```
 
-查询打印机能力，使用Promise异步回调。
+查询打印机能力，使用Promise异步回调。能力查询结果可通过监听[on('printerStateChange')](arkts-basicservices-print-on-f-sys.md#onprinterstatechange)事件回调中的PrinterInfo.capability获取。
 
 **起始版本：** 10
 
@@ -81,7 +81,7 @@ function queryPrinterCapability(printerId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 |
+| printerId | string | 是 | 表示打印机ID。 |
 
 **返回值：**
 

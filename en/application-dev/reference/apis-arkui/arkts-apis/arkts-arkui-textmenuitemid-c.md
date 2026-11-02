@@ -412,6 +412,26 @@ Translation, a first-level menu item. Provides translation service for the selec
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## TRANSLATE_INPUT
+
+```TypeScript
+static readonly TRANSLATE_INPUT: TextMenuItemId
+```
+
+ID for the quick translate input menu item. It is a level-1 menu item.
+
+**Type:** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-TextMenuItemId-static readonly TRANSLATE_INPUT: TextMenuItemId--><!--Device-TextMenuItemId-static readonly TRANSLATE_INPUT: TextMenuItemId-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## url
 
 ```TypeScript

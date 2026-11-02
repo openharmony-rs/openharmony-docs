@@ -14,13 +14,17 @@ The RunningAppClone module defines the information of an application clone in th
 
 **System API:** This is a system API.
 
+## How to Use
+
+The RunningAppClone struct is obtained from [getRunningMultiAppInfo](arkts-ability-appmanager-getrunningmultiappinfo-f-sys.md) of **appManager**.
+
 ## appCloneIndex
 
 ```TypeScript
 appCloneIndex: number
 ```
 
-Index of an application clone.
+Index of the app clone, used to identify different clone instances. The index starts from 0 and increments in the order in which clones are created. 0 indicates the primary app instance, and 1 or greater indicates a clone instance.
 
 **Type:** number
 
@@ -38,7 +42,7 @@ Index of an application clone.
 pids: Array<number>
 ```
 
-Process ID set of the application.
+Set of process IDs of the application, including the process IDs of all running processes of the application. An application may run multiple processes, so an array is returned.
 
 **Type:** Array&lt;number&gt;
 

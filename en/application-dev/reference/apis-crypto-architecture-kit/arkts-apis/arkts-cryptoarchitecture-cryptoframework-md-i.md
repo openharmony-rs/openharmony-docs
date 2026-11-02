@@ -4,7 +4,7 @@
 interface Md
 ```
 
-Message digest interface, defining methods for calculating message digests. Before use, you must create an **Md** instance by using [createMd](arkts-cryptoarchitecture-cryptoframework-createmd-f.md).
+Defines the MD API for calculating the message digest. Before calling this API, you need to create an **Md** instance by using [createMd](arkts-cryptoarchitecture-cryptoframework-createmd-f.md).
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 digest(callback: AsyncCallback<DataBlob>): void
 ```
 
-Generates a message digest. This API uses an asynchronous callback to return the result.
+Generates a message digest (MD). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -46,7 +46,7 @@ Generates a message digest. This API uses an asynchronous callback to return the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the message digest obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the MD generated. If the MD calculation is successful, **err** is **undefined**, and **data** is the MD obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -79,7 +79,7 @@ function mdByCallback() {
 digest(): Promise<DataBlob>
 ```
 
-Generates a message digest. This API uses a promise to return the result.
+Generates an MD. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -97,7 +97,7 @@ Generates a message digest. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the message digest generated. |
+| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the MD generated. |
 
 **Error codes:**
 
@@ -214,7 +214,7 @@ export default {
 digestSync(): DataBlob
 ```
 
-Generates a message digest. This API returns the result synchronously.
+Generates an MD. This API returns the result synchronously.
 
 <br><br>**NOTE:** <br>It is recommended to prioritize the use of asynchronous API, [digest](#digest). Synchronous API may take a long time and block the main thread due to system busyness, high load, and other reasons. Therefore, it is advised to invoke synchronous API within a child thread to avoid blocking the main thread.
 
@@ -338,7 +338,7 @@ export default {
 getMdLength(): number
 ```
 
-Obtains the message digest length, in bytes.
+Obtains the MD length, in bytes.
 
 **Since:** 9
 
@@ -472,7 +472,7 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API r
 update(input: DataBlob, callback: AsyncCallback<void>): void
 ```
 
-Updates the message digest status. This API uses an asynchronous callback to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
+Updates the MD status. This API uses an asynchronous callback to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
 
 > **NOTE:** 
 > 
@@ -515,7 +515,7 @@ Updates the message digest status. This API uses an asynchronous callback to ret
 update(input: DataBlob): Promise<void>
 ```
 
-Updates the message digest status. This API uses a promise to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
+Updates the MD status. This API uses a promise to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
 
 > **NOTE:** 
 > 
@@ -561,7 +561,7 @@ Updates the message digest status. This API uses a promise to return the result.
 updateSync(input: DataBlob): void
 ```
 
-Updates the message digest status. This API returns the result synchronously. **updateSync** must be used with **digestSync** together. **digestSync** is mandatory, and **updateSync** is optional.
+Updates the MD digest status. This API returns the result synchronously. **updateSync** must be used with **digestSync** together. **digestSync** is mandatory, and **updateSync** is optional.
 
 > **NOTE:** 
 > 
@@ -601,7 +601,7 @@ Updates the message digest status. This API returns the result synchronously. **
 readonly algName: string
 ```
 
-Indicates the algorithm name.
+Digest algorithm.
 
 **Type:** string
 

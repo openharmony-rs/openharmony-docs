@@ -4,7 +4,7 @@
 interface TripodDetectionResult extends SceneFeatureDetectionResult
 ```
 
-TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)描述三脚架检测结果。
+描述三脚架检测结果。
 
 **继承/实现关系：** TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)
 

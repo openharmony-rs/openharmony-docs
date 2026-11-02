@@ -34,7 +34,7 @@ Binary data.
 FILE_DESCRIPTOR = 0
 ```
 
-File data.
+File descriptor.
 
 **Since:** 23
 

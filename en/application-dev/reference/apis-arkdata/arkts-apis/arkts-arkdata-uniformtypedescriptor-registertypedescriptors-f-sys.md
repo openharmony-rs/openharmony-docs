@@ -12,7 +12,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 function registerTypeDescriptors(typeDescriptors: Array<TypeDescriptor>): Promise<void>
 ```
 
-Register type descriptors into the system.
+Registers a group of uniform data types to the system. This API uses a promise to return the result. After successful registration, the uniform data types are managed by the system and can be shared and identified across other applications or devices through the UDMF framework.
 
 **Since:** 22
 
@@ -32,13 +32,13 @@ Register type descriptors into the system.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| typeDescriptors | Array&lt;[TypeDescriptor](arkts-arkdata-uniformtypedescriptor-typedescriptor-c.md)&gt; | Yes | The list of type descriptors to be registered. |
+| typeDescriptors | Array&lt;[TypeDescriptor](arkts-arkdata-uniformtypedescriptor-typedescriptor-c.md)&gt; | Yes | List of uniform data type descriptors to register. **TypeDescriptor** is used to describe the attributes of a custom data type, including the type ID, belonging types, file name extensions, MIME types, and so on. The list cannot be empty, and the number of elements cannot xceed 50. The total number of uniform data type descriptors registered by a single application cannot exceed 200. <br>**TypeDescriptor format requirements** <br>1. typeId cannot be an empty string. Its length cannot exceed 127, and it can contain only letters, digits, hyphens (-), and periods (.). <br>2. The number of elements in **belongingToTypes** cannot exceed 50. Each element cannot be an empty string, and its length cannot exceed 127. <br>3. The length of each of description, **referenceURL**, and **iconFile** cannot exceed 255. <br>4. The number of elements in **filenameExtensions** cannot exceed 50. Each element cannot be an empty string, its length cannot exceed 127, and its first character must be a period (.). <br>5. The number of elements in **mimeTypes** cannot exceed 50. Each element cannot be an empty string, and its length cannot exceed 127. <br>**TypeDescriptor content requirements** <br>1. **typeId** must be unique and cannot duplicate the **typeId** of a registered type. <br>2. typeId must start with the bundle name of the current application. <br>3. The uniform data type IDs in **belongingToTypes** must be [preset data types](../../../database/uniform-data-type-list.md) or the **typeIds** of other uniform data types registered in this registration. <br>4. No circular dependency can exist between uniform data types. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

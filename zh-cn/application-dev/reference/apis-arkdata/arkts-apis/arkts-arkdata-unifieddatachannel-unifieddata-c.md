@@ -42,12 +42,6 @@ addRecord(record: UnifiedRecord): void
 | --- | --- | --- | --- |
 | record | [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) | 是 | 要添加到统一数据对象中的数据记录，该记录为UnifiedRecord或其子类对象。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
-
 **示例**
 
 ```TypeScript
@@ -93,12 +87,6 @@ constructor(record: UnifiedRecord)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | record | [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) | 是 | 要添加到统一数据对象中的数据记录，该记录为UnifiedRecord或其子类对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 
@@ -275,12 +263,6 @@ hasType(type: string): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 有指定的数据类型返回true，否则返回false。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 

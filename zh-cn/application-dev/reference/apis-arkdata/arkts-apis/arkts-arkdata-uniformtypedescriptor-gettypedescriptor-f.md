@@ -34,12 +34,6 @@ function getTypeDescriptor(typeId: string): TypeDescriptor
 | --- | --- |
 | [TypeDescriptor](arkts-arkdata-uniformtypedescriptor-typedescriptor-c.md) | 返回标准化数据类型描述类对象。如果要查询的标准化数据类型不存在，则返回null。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
-
 **示例**
 
 ```TypeScript

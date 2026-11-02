@@ -4,7 +4,7 @@
 interface PixelMap
 ```
 
-Represents data of the pixel map type defined by the system.
+Represents the system-defined pixel map typed data, used to describe image pixel data. After a PixelMap object is created, it can be used in scenarios such as image drag-and-drop and image sharing to implement cross-application image data transfer.
 
 **Since:** 15
 
@@ -24,7 +24,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 details?: Record<string, number | string | Uint8Array>
 ```
 
-Object of the dictionary type used to describe the icon. The key is of the string type, and the value can be a number, a string, or a Uint8Array. By default, it is an empty dictionary object.
+Dictionary type object. The key is of the string type, and the value can contain data of the number (numeric type), string (string type), or Uint8Array (binary byte array) type. This is an optional field, and the default value is an empty dictionary object.
 
 **Type:** Record&lt;string, number &#124; string &#124; Uint8Array&gt;
 
@@ -42,7 +42,7 @@ Object of the dictionary type used to describe the icon. The key is of the strin
 pixelMap: image.PixelMap
 ```
 
-Binary data of the pixel map.
+Pixel map object.
 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -60,7 +60,7 @@ Binary data of the pixel map.
 readonly uniformDataType: 'openharmony.pixel-map'
 ```
 
-Uniform data type, which has a fixed value of **openharmony.pixel-map**. For details, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md).
+Unified data type identifier of the pixel map typed data, fixed to "openharmony.pixel-map". For details about the data type description information, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md).
 
 **Type:** 'openharmony.pixel-map'
 

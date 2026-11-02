@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function checkPreferencesConflicts(printerId: string, changedType: string, preferences: PrinterPreferences): Promise<string[]>
 ```
 
-检查首选项冲突。
+检查首选项冲突，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,15 +30,15 @@ function checkPreferencesConflicts(printerId: string, changedType: string, prefe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 |
-| changedType | string | 是 | 在打印界面上修改的字段名称。 |
+| printerId | string | 是 | 系统中已添加的打印机ID。 |
+| changedType | string | 是 | 在打印预览或首选项界面上设置的字段名称。 |
 | preferences | [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md) | 是 | 打印界面选择的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string[]&gt; | Promise that resolves with the conflicting field names. |
+| Promise&lt;string[]&gt; | Promise对象，返回冲突的字段名称列表。 |
 
 **错误码：**
 

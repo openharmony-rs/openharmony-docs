@@ -26,7 +26,11 @@ AppServiceExtensionContext provides APIs to connect to and disconnect from a Ser
 connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 ```
 
-Connects this AppServiceExtensionAbility to a ServiceExtensionAbility. It enables communication with the ServiceExtensionAbility via a proxy, allowing access to the capabilities exposed by the ServiceExtensionAbility. This API can be called only by the main thread.
+Connects this AppServiceExtensionAbility to a ServiceExtensionAbility (a ServiceExtensionAbility can be developed only by system applications, but third-party applications can connect to it). It enables communication with the ServiceExtensionAbility through the remote object returned by the onConnect callback of ConnectOptions, allowing access to the capabilities exposed by the ServiceExtensionAbility. You can use the returned connectionID to call disconnectServiceExtensionAbility() to disconnect. This API can be called only by the main thread.
+
+> **NOTE:** 
+> 
+> This API does not support connecting to the ServiceExtensionAbility of a cloned application.
 
 **Since:** 20
 
@@ -164,7 +168,7 @@ For details, see [connectServiceExtensionAbility](#connectserviceextensionabilit
 startAbility(want: Want, options?: StartOptions): Promise<void>
 ```
 
-Starts the UIAbility. This API can be called only by the main thread. It uses a promise to return the result.
+Starts a UIAbility. After this API is called, the system starts the target UIAbility based on the Want information. This API uses a promise to return the result. This API can be called only by the main thread.
 
 **Since:** 20
 
@@ -256,7 +260,7 @@ export default class MyAppServiceExtensionAbility extends AppServiceExtensionAbi
 terminateSelf(): Promise<void>
 ```
 
-Terminates this AppServiceExtensionAbility. This API can be called only by the main thread. It uses a promise to return the result.
+Destroys this AppServiceExtensionAbility. This API uses a promise to return the result. This API can be called only by the main thread.
 
 **Since:** 20
 

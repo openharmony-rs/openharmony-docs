@@ -4,7 +4,7 @@
 interface PpdInfo
 ```
 
-defines ppd info.
+Defines the PPD file information of the printer driver.
 
 **Since:** 24
 
@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 manufacturer: string
 ```
 
-Manufacturer.
+Printer vendor name in the current PPD file.
 
 **Type:** string
 
@@ -42,7 +42,7 @@ Manufacturer.
 nickName: string
 ```
 
-Nick name.
+Printer alias in the current PPD file.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ Nick name.
 ppdName: string
 ```
 
-Ppd name.
+Name of the current PPD file.
 
 **Type:** string
 

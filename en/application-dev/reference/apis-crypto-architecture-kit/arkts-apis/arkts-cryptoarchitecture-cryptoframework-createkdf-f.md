@@ -12,7 +12,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 function createKdf(algName: string): Kdf
 ```
 
-Creates a key derivation function instance.
+Creates a KDF instance.
 
 <br>For details about the supported specifications, see [Key Derivation Function Specifications](../../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).
 
@@ -30,13 +30,13 @@ Creates a key derivation function instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| algName | string | Yes | Key derivation algorithm (including the hash function for the HMAC). Currently, PBKDF2, HKDF, SCRYPT, and X963KDF are supported. For example, **PBKDF2&#124;SHA256**, **HKDF&#124;SHA256**, **SCRYPT**, and **X963KDF&#124;SHA256**.<br>For details about the supported specifications, see [Key Derivation Function Specifications](../../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md). |
+| algName | string | Yes | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, SCRYPT and X963KDF are supported. For example, **PBKDF2&#124;SHA256**, **HKDF&#124;SHA256**, **SCRYPT**, or **X963KDF&#124;SHA256**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Kdf](arkts-cryptoarchitecture-cryptoframework-kdf-i.md) | Returns the **Kdf** instance corresponding to the specified algorithm. |
+| [Kdf](arkts-cryptoarchitecture-cryptoframework-kdf-i.md) | **Kdf** instance of the corresponding algorithm. |
 
 **Error codes:**
 

@@ -4,7 +4,9 @@
 export default class PrintExtensionContext extends ExtensionContext
 ```
 
-The context of print extension. It allows access to serviceExtension-specific resources.
+**PrintExtensionContext** represents the context of **PrintExtensionAbility** and is inherited from [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md).
+
+It can be directly used as the context of **PrintExtensionAbility** to obtain and manage printing resources for printing extension development, so as to complete printing tasks. For details about the design logic and accessible resources of **PrintExtensionContext**, see **PrintExtensionAbility** and [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md).
 
 **Inheritance/Implementation:** PrintExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 

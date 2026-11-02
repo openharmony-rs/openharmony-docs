@@ -1,4 +1,4 @@
-# @ohos.multimedia.videoProcessing(Provides the capability of video quality processing.)
+# @ohos.multimedia.videoProcessing(Video Processing)
 
 Provides the VideoProcessor type, including AIHDR related functions.
 

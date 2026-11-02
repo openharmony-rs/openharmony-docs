@@ -4,7 +4,7 @@
 type ValueType = number | number | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined
 ```
 
-Enumerates the data field types allowed in a unified data record.
+Represents the data field types allowed for a unified data record.
 
 **Since:** 12
 
@@ -23,9 +23,9 @@ Enumerates the data field types allowed in a unified data record.
 | double | Double. |
 | string | String. |
 | boolean | Boolean. |
-| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | The value is of the [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) type. |
-| [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md). |
-| ArrayBuffer | ArrayBuffer. |
-| object | Object. |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | The [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) type. |
+| [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | The [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) type. |
+| ArrayBuffer | The ArrayBuffer type. |
+| object | The object type. |
 | null | Null. |
 | undefined | Undefined. |

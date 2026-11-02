@@ -4,8 +4,6 @@
 interface Focus extends FocusQuery
 ```
 
-Focus继承自[FocusQuery](arkts-camera-camera-focusquery-i.md)。
-
 对焦类，对设备对焦操作。
 
 **继承/实现关系：** Focus extends [FocusQuery](arkts-camera-camera-focusquery-i.md)

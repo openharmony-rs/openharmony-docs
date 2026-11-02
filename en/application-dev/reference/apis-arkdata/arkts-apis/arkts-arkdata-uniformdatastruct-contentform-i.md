@@ -4,7 +4,7 @@
 interface ContentForm
 ```
 
-Represents data of the content widget type.
+Defines the content card typed data, which is used to share content card information across applications. Typical usage scenarios include sharing article cards in news applications, sharing product cards in e-commerce applications, and sharing content previews in social applications.
 
 **Since:** 14
 
@@ -24,7 +24,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 appIcon?: Uint8Array
 ```
 
-Application icon data in the content widget.
+Application icon data in the content card. The default value is empty.
 
 **Type:** Uint8Array
 
@@ -42,7 +42,7 @@ Application icon data in the content widget.
 appName?: string
 ```
 
-Application name in the content widget.
+Application name in the content card. The default value is an empty string.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ Application name in the content widget.
 description?: string
 ```
 
-Description of the content widget.
+Description information in the content card. The default value is an empty string.
 
 **Type:** string
 
@@ -78,7 +78,7 @@ Description of the content widget.
 linkUri?: string
 ```
 
-Hyperlink in the content widget.
+Redirect hyperlink corresponding to the content card, which must comply with the URI format specification. The default value is an empty string.
 
 **Type:** string
 
@@ -96,7 +96,7 @@ Hyperlink in the content widget.
 thumbData?: Uint8Array
 ```
 
-Image data in the content widget.
+Image data corresponding to the content card. The default value is empty.
 
 **Type:** Uint8Array
 

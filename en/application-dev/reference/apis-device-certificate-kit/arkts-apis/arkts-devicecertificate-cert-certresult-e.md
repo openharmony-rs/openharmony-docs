@@ -18,7 +18,7 @@ Enumerates the error codes.
 ERR_CERT_EMAIL_ADDRESS_MISMATCH = 19030013
 ```
 
-Email address mismatch in the certificate.
+The email address in the certificate is not matched.
 
 **Since:** 26.0.0
 
@@ -52,7 +52,7 @@ The certificate has expired.
 ERR_CERT_HAS_REVOKED = 19030010
 ```
 
-The certificate has been revoked.
+This error code is reported if the certificate has been revoked.
 
 **Since:** 26.0.0
 
@@ -70,7 +70,7 @@ The certificate has been revoked.
 ERR_CERT_HOSTNAME_MISMATCH = 19030012
 ```
 
-Hostname mismatch in the certificate.
+This error code is reported if the hostname is not matched.
 
 **Since:** 26.0.0
 
@@ -138,7 +138,7 @@ The certificate signature verification failed.
 ERR_CERT_UNTRUSTED = 19030009
 ```
 
-Untrusted certificate.
+This error code is reported if the certificate is untrusted.
 
 **Since:** 26.0.0
 
@@ -156,7 +156,7 @@ Untrusted certificate.
 ERR_CRL_HAS_EXPIRED = 19030017
 ```
 
-The certificate revocation list has expired.
+This error code is reported if the CRL has expired.
 
 **Since:** 26.0.0
 
@@ -174,7 +174,7 @@ The certificate revocation list has expired.
 ERR_CRL_ISSUER_NOT_FOUND = 19030019
 ```
 
-Failed to find the issuer of the certificate revocation list.
+This error code is reported if the attempt to obtain the CRL issuer fails.
 
 **Since:** 26.0.0
 
@@ -192,7 +192,7 @@ Failed to find the issuer of the certificate revocation list.
 ERR_CRL_NOT_FOUND = 19030015
 ```
 
-Failed to obtain the certificate revocation list.
+This error code is reported if the attempt to obtain the CRL fails.
 
 **Since:** 26.0.0
 
@@ -210,7 +210,7 @@ Failed to obtain the certificate revocation list.
 ERR_CRL_NOT_YET_VALID = 19030016
 ```
 
-The certificate revocation list has not taken effect.
+This error code is reported if the CRL has not taken effect.
 
 **Since:** 26.0.0
 
@@ -228,7 +228,7 @@ The certificate revocation list has not taken effect.
 ERR_CRL_SIGNATURE_FAILURE = 19030018
 ```
 
-Failed to verify the signature of the certificate revocation list.
+This error code is reported if the CRL signature verification fails.
 
 **Since:** 26.0.0
 
@@ -246,7 +246,7 @@ Failed to verify the signature of the certificate revocation list.
 ERR_CRYPTO_OPERATION = 19030001
 ```
 
-Crypto operation error.
+An error occurs when the API of a third-party algorithm library is called.
 
 **Since:** 9
 
@@ -278,7 +278,7 @@ The key cannot be used for signing a certificate.
 ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE = 19030007
 ```
 
-The key cannot be used for a digital signature.
+The key cannot be used for digital signature.
 
 **Since:** 9
 
@@ -294,7 +294,7 @@ The key cannot be used for a digital signature.
 ERR_MAYBE_WRONG_PASSWORD = 19030008
 ```
 
-The password for the private key may be incorrect.
+The private key password may be incorrect.
 
 **Since:** 18
 
@@ -310,7 +310,7 @@ The password for the private key may be incorrect.
 ERR_NETWORK_TIMEOUT = 19030024
 ```
 
-Network connection timed out.
+This error code is reported if the network connection times out.
 
 **Since:** 26.0.0
 
@@ -328,7 +328,7 @@ Network connection timed out.
 ERR_OCSP_CERT_STATUS_UNKNOWN = 19030023
 ```
 
-Unknown OCSP certificate status.
+This error code is reported if the OCSP certificate status is unknown.
 
 **Since:** 26.0.0
 
@@ -346,7 +346,7 @@ Unknown OCSP certificate status.
 ERR_OCSP_RESPONSE_INVALID = 19030021
 ```
 
-Invalid OCSP response.
+This error code is reported if the OCSP response is invalid.
 
 **Since:** 26.0.0
 
@@ -364,7 +364,7 @@ Invalid OCSP response.
 ERR_OCSP_RESPONSE_NOT_FOUND = 19030020
 ```
 
-Failed to obtain the OCSP response.
+This error code is reported if the attempt to obtain the Online Certificate Status Protocol (OCSP) response fails.
 
 **Since:** 26.0.0
 
@@ -382,7 +382,7 @@ Failed to obtain the OCSP response.
 ERR_OCSP_SIGNATURE_FAILURE = 19030022
 ```
 
-Failed to verify the OCSP signature.
+This error code is reported if the OCSP signature verification fails.
 
 **Since:** 26.0.0
 
@@ -432,7 +432,7 @@ Parameter check failed.
 ERR_RUNTIME_ERROR = 19020002
 ```
 
-Runtime error.
+This error code is reported if an error occurs during running.
 
 **Since:** 9
 
@@ -464,7 +464,7 @@ Failed to obtain the certificate issuer.
 ERR_UNKNOWN_CRITICAL_EXTENSION = 19030011
 ```
 
-Unsupported critical extension.
+This error code is reported if there is an unknown critical extension.
 
 **Since:** 26.0.0
 
@@ -482,7 +482,7 @@ Unsupported critical extension.
 INVALID_PARAMS = 401
 ```
 
-Invalid parameters.
+Invalid parameter.
 
 **Since:** 9
 
@@ -498,7 +498,7 @@ Invalid parameters.
 NOT_SUPPORT = 801
 ```
 
-This operation is not supported.
+Unsupported operation.
 
 **Since:** 9
 

@@ -24,7 +24,7 @@ import { scan } from '@kit.BasicServicesKit';
 optionConstraintInt?: number[]
 ```
 
-选项整数约束。
+选项整数约束，仅在optionConstraintType为SCAN_CONSTRAINT_WORD_LIST时有效。默认为空数组。
 
 **类型：** number[]
 
@@ -40,7 +40,7 @@ optionConstraintInt?: number[]
 optionConstraintRange?: Range
 ```
 
-选项范围约束。
+选项范围约束，仅在optionConstraintType为SCAN_CONSTRAINT_RANGE时有效。
 
 **类型：** [Range](arkts-basicservices-scan-range-i.md)
 
@@ -56,7 +56,7 @@ optionConstraintRange?: Range
 optionConstraintString?: string[]
 ```
 
-选项字符串约束。
+选项字符串约束，仅在optionConstraintType为SCAN_CONSTRAINT_STRING_LIST时有效。默认为空数组。
 
 **类型：** string[]
 
@@ -72,7 +72,7 @@ optionConstraintString?: string[]
 optionConstraintType: ConstraintType
 ```
 
-选项约束类型。
+选项约束类型，决定有效的约束字段。当类型为SCAN_CONSTRAINT_NONE时无约束。
 
 **类型：** [ConstraintType](arkts-basicservices-scan-constrainttype-e.md)
 
@@ -104,7 +104,7 @@ optionDesc: string
 optionIndex: number
 ```
 
-选项索引。
+要获取的选项的索引，可通过getScannerParameter()获取。
 
 **类型：** number
 

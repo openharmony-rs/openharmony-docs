@@ -28,7 +28,7 @@ Adds printers. This API uses an asynchronous callback to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printers | Array&lt;[PrinterInfo](arkts-basicservices-print-printerinfo-i.md)&gt; | Yes | List of printers to add. |
+| printers | Array&lt;[PrinterInfo](arkts-basicservices-print-printerinfo-i.md)&gt; | Yes | List of printers to be added. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -89,7 +89,7 @@ Adds printers. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printers | Array&lt;[PrinterInfo](arkts-basicservices-print-printerinfo-i.md)&gt; | Yes | List of printers to add. |
+| printers | Array&lt;[PrinterInfo](arkts-basicservices-print-printerinfo-i.md)&gt; | Yes | List of printers to be added. |
 
 **Return value:**
 

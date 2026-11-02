@@ -4,7 +4,7 @@
 class Summary
 ```
 
-Summarizes the data information of the **unifiedData** object, including the data type and size.
+Describes the data summary of a unified data object, including the data type and size.
 
 **Since:** 10
 
@@ -46,7 +46,7 @@ The extensions are unique, include the leading period, and use lowercase ASCII l
 get overview(): Record<string, number>
 ```
 
-Indicates the overview information of unifiedData.
+Mapping between all data types in the unified data object and the sizes of the records of each type, where the data size is in bytes. When the obtained unified data object is empty, the value of this overview attribute is empty.
 
 **Type:** Record&lt;string, number&gt;
 
@@ -66,7 +66,7 @@ Indicates the overview information of unifiedData.
 get summary(): Record<string, number>
 ```
 
-A map for each type and data size, key is data type, value is the corresponding data size
+dictionary object whose key indicates the data type (see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)) and whose value is the total size (in bytes) of the records of that type in the unified data object.
 
 **Type:** Record&lt;string, number&gt;
 
@@ -84,7 +84,7 @@ A map for each type and data size, key is data type, value is the corresponding 
 set summary(value: Record<string, number>)
 ```
 
-A map for each type and data size, key is data type, value is the corresponding data size
+dictionary object whose key indicates the data type (see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)) and whose value is the total size (in bytes) of the records of that type in the unified data object.
 
 **Type:** Record&lt;string, number&gt;
 
@@ -104,7 +104,7 @@ A map for each type and data size, key is data type, value is the corresponding 
 get totalSize(): number
 ```
 
-Total data size of data in Bytes
+Total size (in bytes) of the records in the unified data object.
 
 **Type:** number
 
@@ -122,7 +122,7 @@ Total data size of data in Bytes
 set totalSize(value: number)
 ```
 
-Total data size of data in Bytes
+Total size (in bytes) of the records in the unified data object.
 
 **Type:** number
 

@@ -18,7 +18,7 @@ Enumerates the options for checking the certificate revocation status.
 REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1
 ```
 
-Obtain the CRL/OCSP response over the network. By default, it is disabled. Only the first CRL distribution point address can be obtained from the CDP extension of the certificate to check the certificate revocation status, or the first OCSP server address can be obtained from the AIA extension of the certificate to check the certificate revocation status. Moreover, only HTTP is supported. You must declare the ohos.permission.INTERNET permission.
+Obtain the CRL/OCSP response over the network. By default, it is disabled. The certificate revocation status can be checked by obtaining the first CRL distribution point address from the CDP extension or the first OCSP server address from the AIA extension. Moreover, only HTTP is supported. You must declare the ohos.permission.INTERNET permission.
 
 **Since:** 12
 
@@ -87,7 +87,7 @@ This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows
 REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6
 ```
 
-If this capability is enabled, the system ignores the network unreachable error when obtaining the CRL or OCSP response over the network for revocation status check. This capability is disabled by default. By default, the network unreachable error may cause certificate chain validation failure.
+If this option is enabled, the CRL/OCSP response obtained over the network is used to check the certificate revocation status, ignoring the unreachable network error. This capability is disabled by default. By default, the network unreachable error may cause certificate chain validation failure.
 
 **Since:** 23
 
@@ -103,7 +103,7 @@ If this capability is enabled, the system ignores the network unreachable error 
 REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5
 ```
 
-If this capability is enabled, the system checks the revocation status of the leaf certificate based on the local CRL. This capability is disabled by default.
+If this option is enabled, the response of a local CRL is used to check the revocation status of the end entity certificate. This capability is disabled by default.
 
 > **NOTE:** 
 > 

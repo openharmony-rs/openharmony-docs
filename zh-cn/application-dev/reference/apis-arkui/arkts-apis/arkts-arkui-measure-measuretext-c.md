@@ -27,6 +27,7 @@ static measureText(options: MeasureOptions): number
 计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
 
 > **说明：** 
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[measureText](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretext)替代。 measureText需要先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)方法获取[MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md)对象，然后通过该对象进行调用。且直接使用measureText可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 > 
 > - 从API version 12开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)方法获取当前UI上下文关联的[MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 > 
@@ -91,6 +92,7 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 计算指定文本的宽度和高度。
 
 > **说明：** 
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[measureTextSize](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretextsize)替代。 measureTextSize需要先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)方法获取[MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md)对象，然后通过该对象进行调用。且直接使用measureTextSize可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 > 
 > - 从API version 12开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)方法获取当前UI上下文关联的[MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 

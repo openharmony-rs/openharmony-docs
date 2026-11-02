@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function getPrinterDefaultPreferences(printerId: string): Promise<PrinterPreferences>
 ```
 
-按打印机ID获取默认首选项。
+按打印机ID获取默认首选项，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,13 +30,13 @@ function getPrinterDefaultPreferences(printerId: string): Promise<PrinterPrefere
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 |
+| printerId | string | 是 | 系统中已添加的打印机ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md)&gt; | Promise that resolves with the default preferences of the printer. |
+| Promise&lt;[PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md)&gt; | Promise对象，返回打印机的默认首选项。 |
 
 **错误码：**
 

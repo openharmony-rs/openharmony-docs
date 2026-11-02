@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function getAddedScanners(): Promise<ScannerDevice[]>
 ```
 
-Obtains the added scanners. This API uses a promise to return the result.
+Obtains the added scanners. This is a system API. This API can be used to query the list of available scanners for users to select one. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -28,7 +28,7 @@ Obtains the added scanners. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)[]&gt; | Promise used to return the array of added scanners. |
+| Promise&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)[]&gt; | Promise used to return the result. **resolve** returns the array of added scanners; **reject** indicates that the scanners fail to be obtained. |
 
 **Error codes:**
 

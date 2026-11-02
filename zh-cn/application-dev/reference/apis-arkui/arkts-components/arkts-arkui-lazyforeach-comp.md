@@ -74,6 +74,12 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [LazyForEachController](arkts-arkui-lazyforeach-comp-lazyforeachcontroller-c.md) | LazyForEach组件的控制器。通过[LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md)中的controller字段将控制器绑定到LazyForEach组件上，需要清理缓存时调用[clearCache](arkts-arkui-lazyforeach-comp-lazyforeachcontroller-c.md#clearcache)清理LazyForEach组件预加载的子组件。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -176,7 +182,7 @@ struct MemoryOptimizeDemo {
 
 ### 示例2（主动清理预加载的子组件）
 
-以下示例中，通过[LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md)的controller属性绑定了[LazyForEachController](#lazyforeachcontroller)，点击Clear按钮时主动清理LazyForEach预加载的子组件。
+以下示例中，通过[LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md)的controller属性绑定了[LazyForEachController](arkts-arkui-lazyforeach-comp-lazyforeachcontroller-c.md)，点击Clear按钮时主动清理LazyForEach预加载的子组件。
 
 从API版本26.1.0开始，LazyForEachOptions新增controller属性。
 

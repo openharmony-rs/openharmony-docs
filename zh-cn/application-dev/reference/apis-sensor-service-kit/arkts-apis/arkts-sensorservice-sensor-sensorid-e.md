@@ -80,6 +80,8 @@ BAROMETER = 8
 
 **起始版本：** 9
 
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-SensorId-BAROMETER = 8--><!--Device-SensorId-BAROMETER = 8-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor

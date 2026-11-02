@@ -4,9 +4,9 @@
 type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>
 ```
 
-Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies.
+Defines the handler for delayed data loading. It allows the data sender to dynamically generate data based on the information passed in by the receiver, enabling a more flexible and precise data interaction strategy. The result is returned asynchronously through a promise.
 
-This API is an asynchronous function, which uses a promise to return the result. It does not block the main thread and can be used to process time-consuming tasks with complex service logic.
+This handler is an asynchronous function that does not block the main thread. It can handle complex business logic and execute long-running tasks.
 
 **Since:** 22
 
@@ -22,10 +22,10 @@ This API is an asynchronous function, which uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| acceptableInfo | [DataLoadInfo](arkts-arkdata-unifieddatachannel-dataloadinfo-i.md) | No | Data type and quantity to receive. The default value is empty. |
+| acceptableInfo | [DataLoadInfo](arkts-arkdata-unifieddatachannel-dataloadinfo-i.md) | No | Data types and quantity that the data receiver can accept. The default value is empty. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) &#124; null&gt; | Promise used to return the result. |
+| Promise&lt;[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) &#124; null&gt; | Promise used to return the UnifiedData object generated based on the receiver information, or null. Rejects with error information on failure. |

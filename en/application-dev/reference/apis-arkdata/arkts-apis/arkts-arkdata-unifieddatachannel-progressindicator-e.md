@@ -4,7 +4,7 @@
 enum ProgressIndicator
 ```
 
-Enumerates the progress indicator options.
+Enumerates the progress indicator options, which determine whether to use the system default progress display.
 
 **Since:** 15
 
@@ -18,7 +18,7 @@ Enumerates the progress indicator options.
 DEFAULT = 1
 ```
 
-Use the default progress indicator. If data is obtained within 500 ms, the default progress bar is not started.
+Uses the system default progress display. If data is obtained within 500 ms, the default progress bar will not be displayed.
 
 **Since:** 15
 
@@ -36,7 +36,7 @@ Use the default progress indicator. If data is obtained within 500 ms, the defau
 NONE = 0
 ```
 
-Do not use the default progress indicator.
+Does not use the system default progress display.
 
 **Since:** 15
 

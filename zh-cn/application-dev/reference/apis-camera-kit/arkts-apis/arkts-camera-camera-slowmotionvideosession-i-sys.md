@@ -4,7 +4,7 @@
 interface SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect
 ```
 
-SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect实现慢动作录像会话，设置慢动作录像模式的参数，并保存运行相机所需的所有[CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。继承自[Session](arkts-camera-camera-session-i.md)。
+实现慢动作录像会话，设置慢动作录像模式的参数，并保存运行相机所需的所有[CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。
 
 **继承/实现关系：** SlowMotionVideoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
 

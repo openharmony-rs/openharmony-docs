@@ -4,7 +4,7 @@
 interface PrinterInfo
 ```
 
-定义打印信息的接口。
+定义打印机信息的接口。
 
 **起始版本：** 24
 
@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 capability?: PrinterCapability
 ```
 
-表示打印机功能。
+表示打印机能力。
 
 **类型：** [PrinterCapability](arkts-basicservices-print-printercapability-i.md)
 
@@ -56,7 +56,7 @@ description?: string
 options?: Object
 ```
 
-表示JSON对象字符串。
+表示以JSON格式字符串化的打印机信息。
 
 **类型：** Object
 

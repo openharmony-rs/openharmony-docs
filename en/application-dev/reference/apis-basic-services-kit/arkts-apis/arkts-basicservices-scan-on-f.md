@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function on(type: 'scanDeviceFound', callback: Callback<ScannerDevice>): void
 ```
 
-Registers a callback used to listen for the scanner discovery event. This API uses an asynchronous callback to return the result.
+Registers a callback to listen for the scanner discovery event. This callback is triggered when a new scanner is discovered by calling **startScannerDiscovery**. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
 
@@ -52,7 +52,7 @@ scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
 function on(type: 'scanDeviceSync', callback: Callback<ScannerSyncDevice>): void
 ```
 
-Registers a callback used to listen for the scanner sync event. This API uses an asynchronous callback to return the result.
+Registers a callback to listen for the scanner sync event. This callback is triggered when the scanner status changes (for example, the scanner ID changes or the scanner goes offline), notifying the app to update the scanner list. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where your app needs to continuously track scanner status changes, for example, updating local device information when a scanner is reconnected.
 
 **Since:** 20
 

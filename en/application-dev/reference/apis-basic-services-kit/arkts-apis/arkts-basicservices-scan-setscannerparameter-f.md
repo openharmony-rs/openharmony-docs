@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise<void>
 ```
 
-Sets scanner parameters. This API uses a promise to return the result.
+Sets scanner parameters. This API uses a promise to return the result. This method can be called only after the scanner is opened by calling **openScanner()**.
 
 **Since:** 20
 

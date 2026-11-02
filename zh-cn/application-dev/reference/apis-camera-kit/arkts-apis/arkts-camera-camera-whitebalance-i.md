@@ -4,8 +4,6 @@
 interface WhiteBalance extends WhiteBalanceQuery
 ```
 
-WhiteBalance继承自[WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md)。
-
 提供了处理设备白平衡的相关功能，包括获取和设置白平衡模式以及白平衡值。
 
 **继承/实现关系：** WhiteBalance extends [WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md)

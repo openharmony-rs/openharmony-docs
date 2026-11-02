@@ -44,7 +44,7 @@ Encrypts or decrypts data using AES.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [CipherAesOptions](arkts-cryptoarchitecture-system-cipher-cipheraesoptions-i.md) | Yes | AES options. |
+| options | [CipherAesOptions](arkts-cryptoarchitecture-system-cipher-cipheraesoptions-i.md) | Yes | Parameters set for AES encryption or decryption. |
 
 **Examples**
 
@@ -117,7 +117,7 @@ Encrypts or decrypts data using RSA.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [CipherRsaOptions](arkts-cryptoarchitecture-system-cipher-cipherrsaoptions-i.md) | Yes | RSA options. |
+| options | [CipherRsaOptions](arkts-cryptoarchitecture-system-cipher-cipherrsaoptions-i.md) | Yes | Parameters set for RSA encryption or decryption. |
 
 **Examples**
 

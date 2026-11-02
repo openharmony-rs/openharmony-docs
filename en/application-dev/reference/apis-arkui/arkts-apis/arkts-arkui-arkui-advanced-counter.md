@@ -1,4 +1,4 @@
-# @ohos.arkui.advanced.Counter
+# @ohos.arkui.advanced.Counter(The **Counter** component is used for precise numerical value adjustment. It supports four styles: list,)
 
 ## Modules to Import
 
@@ -23,7 +23,7 @@ import { CounterComponent, CounterOptions, CounterType, DateData } from '@kit.Ar
 
 | Name | Description |
 | --- | --- |
-| [CounterComponent](arkts-arkui-arkui-advanced-counter-countercomponent-s.md) | The **Counter** component is used for precise numerical value adjustment. It supports four styles: list, compact, inline numeric, and inline date, and is suitable for scenarios such as shopping quantity adjustment, parameter setting, and date selection. It provides flexible style configuration and event callback capabilities. |
+| [CounterComponent](arkts-arkui-arkui-advanced-counter-countercomponent-s.md) | Creates a **Counter** component instance. |
 
 ### Enums
 

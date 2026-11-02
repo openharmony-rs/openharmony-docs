@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 colorMode: number
 ```
 
-表示色彩模式。
+表示色彩模式，取值参考[PrintColorMode](arkts-basicservices-print-printcolormode-e.md)。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ colorMode: number
 copyNumber: number
 ```
 
-表示文件列表副本。
+表示文件打印份数。取值应为正整数，默认为1。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ copyNumber: number
 duplexMode: number
 ```
 
-表示单双面打印模式。
+表示单双面打印模式，取值参考[PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)。
 
 **类型：** number
 
@@ -184,7 +184,7 @@ margin?: PrintMargin
 options?: Object
 ```
 
-表示JSON对象字符串。
+表示以JSON格式字符串化的打印任务详细信息。
 
 **类型：** Object
 
@@ -200,7 +200,7 @@ options?: Object
 pageRange: PrinterRange
 ```
 
-表示打印范围大小。
+表示打印页面范围。
 
 **类型：** [PrinterRange](arkts-basicservices-print-printerrange-i.md)
 
@@ -255,5 +255,23 @@ printerId: string
 **起始版本：** 24
 
 <!--Device-PrintJob-printerId: string--><!--Device-PrintJob-printerId: string-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## vendorOptions
+
+```TypeScript
+vendorOptions?: string
+```
+
+表示以JSON格式字符串化的打印机驱动的厂商打印任务属性。
+
+**类型：** string
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJob-vendorOptions?: string--><!--Device-PrintJob-vendorOptions?: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

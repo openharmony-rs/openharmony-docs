@@ -4,7 +4,7 @@
 interface DepthDataOutput extends CameraOutput
 ```
 
-实现深度数据输出。继承自 [CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
+实现深度数据输出。
 
 **继承/实现关系：** DepthDataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 

@@ -2,11 +2,9 @@
 
 The **Progress** component is a progress indicator that displays the progress of content loading or an operation. It supports multiple styles such as linear, ring, circular, and capsule, and allows customization of colors, gradient effects, and animations. It is suitable for scenarios that require displaying progress status, such as file download, data loading, and task processing. With rich style and animation configurations, progress visualization can be quickly implemented to improve user experience.
 
-> **NOTE:** 
-
 ## Child Components
 
-Not supported
+Not supported.
 
 ## Progress
 

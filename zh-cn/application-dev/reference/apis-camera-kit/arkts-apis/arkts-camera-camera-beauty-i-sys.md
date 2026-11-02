@@ -4,7 +4,7 @@
 interface Beauty extends BeautyQuery
 ```
 
-Beauty继承[BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md)提供获取和设置美颜效果的接口。
+提供获取和设置美颜效果的接口。
 
 **继承/实现关系：** Beauty extends [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md)
 

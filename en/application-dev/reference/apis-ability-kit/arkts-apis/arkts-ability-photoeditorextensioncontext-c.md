@@ -17,14 +17,16 @@ The context of Photo Editor extension. It allows access to PhotoEditorExtension-
 ## saveEditedContentWithImage
 
 ```TypeScript
-saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise<AbilityResult>
+saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption): Promise<AbilityResult>
 ```
 
-Save image data by image pixmap.
+Save image data by image pixelMap.
 
 **Since:** 12
 
-<!--Device-PhotoEditorExtensionContext-saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise<AbilityResult>--><!--Device-PhotoEditorExtensionContext-saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise<AbilityResult>-End-->
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhotoEditorExtensionContext-saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption): Promise<AbilityResult>--><!--Device-PhotoEditorExtensionContext-saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
@@ -32,20 +34,20 @@ Save image data by image pixmap.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| pixeMap | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | Image pixmap. |
+| pixelMap | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | Image pixelMap. |
 | option | [image.PackingOption](../../apis-image-kit/arkts-apis/arkts-image-image-packingoption-i.md) | Yes | Option for image packing. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Returns the result of save. |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Promise used to return the result of save. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Params error. Possible causes: 1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | [29600001](../errorcode-ability.md#29600001-internal-error-during-image-editing) | Internal error. |
 | [29600002](../errorcode-ability.md#29600002-image-input-error) | Image input error. |
 | [29600003](../errorcode-ability.md#29600003-image-too-large) | Image too big. |
@@ -102,6 +104,8 @@ Save image data by uri.
 
 **Since:** 12
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-PhotoEditorExtensionContext-saveEditedContentWithUri(uri: string): Promise<AbilityResult>--><!--Device-PhotoEditorExtensionContext-saveEditedContentWithUri(uri: string): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AppExtension.PhotoEditorExtension
@@ -122,7 +126,7 @@ Save image data by uri.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Params error. Possible causes: 1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Params error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | [29600001](../errorcode-ability.md#29600001-internal-error-during-image-editing) | Internal error. |
 | [29600002](../errorcode-ability.md#29600002-image-input-error) | Image input error. |
 | [29600003](../errorcode-ability.md#29600003-image-too-large) | Image too big. |

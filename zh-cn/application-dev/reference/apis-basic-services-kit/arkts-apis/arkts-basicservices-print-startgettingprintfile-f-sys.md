@@ -13,7 +13,7 @@ function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, 
     onFileStateChanged: Callback<PrintFileCreationState>): void
 ```
 
-开始获取打印文件，使用Callback异步回调。
+开始获取打印文件，使用callback回调。在print()已执行、jobId已创建、[PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md)已注册之后，可以调用该函数获取实际打印文件内容。
 
 **起始版本：** 11
 
@@ -29,9 +29,9 @@ function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 表示打印任务ID。 |
+| jobId | string | 是 | 表示已创建的打印任务ID。 |
 | printAttributes | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | 是 | 表示打印参数。 |
-| fd | number | 是 | 表示打印文件描述符。 |
+| fd | number | 是 | 表示打印文件描述符，应为非负整数。 |
 | onFileStateChanged | [Callback](arkts-basicservices-base-callback-i.md)&lt;[PrintFileCreationState](arkts-basicservices-print-printfilecreationstate-e.md)&gt; | 是 | 表示更新文件状态的回调。 |
 
 **错误码：**

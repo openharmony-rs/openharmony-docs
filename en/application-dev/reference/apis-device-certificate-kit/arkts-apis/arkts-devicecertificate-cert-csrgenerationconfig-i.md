@@ -4,17 +4,17 @@
 interface CsrGenerationConfig
 ```
 
-Configuration parameters for generating a CSR, including the subject name, digest algorithm, attribute, and output format.
+Describes the configuration parameters for generating a CSR, including the subject name, extension, message digest (MD) algorithm, and output format.
 
 > **NOTE:** 
 > 
-> - subject is an X500DistinguishedName object.
+> - **subject** is an object of the Name type defined by X509.
 > 
-> - mdName indicates the digest algorithm name. Currently, SHA1, SHA256, SHA384, and SHA512 are supported.
+> - **mdName** specifies the message digest algorithm. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
 > 
-> - attributes is an optional parameter that specifies the attribute types and attribute values specified in PKCS #9 to generate a CSR. For example, challengePassword.
+> - **attributes** is optional. You can specify the extension types and values defined in OpenSSL to generate a CSR, for example, **challengePassword** and **keyUsage**.
 > 
-> - outFormat specifies the format of the output CSR. If the format is not specified, the PEM format is used by default.
+> - **outFormat** specifies the format of the CSR generated. If it is not specified, the PEM format is used by default.
 
 **Since:** 18
 
@@ -34,7 +34,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 attributes?: Array<CsrAttribute>
 ```
 
-A collection of attributes.
+Extension.
 
 **Type:** Array&lt;[CsrAttribute](arkts-devicecertificate-cert-csrattribute-i.md)&gt;
 
@@ -52,7 +52,7 @@ A collection of attributes.
 mdName: string
 ```
 
-Message digest algorithm name.
+MD algorithm name. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
 
 **Type:** string
 
@@ -70,11 +70,9 @@ Message digest algorithm name.
 outFormat?: EncodingBaseFormat
 ```
 
-Output format.
+Output type. The default value is **PEM**.
 
 **Type:** [EncodingBaseFormat](arkts-devicecertificate-cert-encodingbaseformat-e.md)
-
-**Default:** EncodingBaseFormat.PEM
 
 **Since:** 18
 

@@ -138,7 +138,7 @@ dataSrc?: media.AVDataSrcDescriptor
 
 播放列表数据源描述。
 
-**类型：** [media.AVDataSrcDescriptor](../../apis-media/arkts-apis/arkts-media-media-avdatasrcdescriptor-i.md)
+**类型：** [media.AVDataSrcDescriptor](../../apis-media-kit/arkts-apis/arkts-media-media-avdatasrcdescriptor-i.md)
 
 **起始版本：** 12
 
@@ -252,7 +252,7 @@ fdSrc?: media.AVFileDescriptor
 
 播放列表媒体本地文件的句柄。
 
-**类型：** [media.AVFileDescriptor](../../apis-media/arkts-apis/arkts-media-media-avfiledescriptor-i.md)
+**类型：** [media.AVFileDescriptor](../../apis-media-kit/arkts-apis/arkts-media-media-avfiledescriptor-i.md)
 
 **起始版本：** 10
 

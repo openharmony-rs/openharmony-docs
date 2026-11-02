@@ -4,7 +4,7 @@
 interface SceneFeatureDetectionResult
 ```
 
-Describes the scene feature detection result.
+场景特性检测结果。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 readonly detected: boolean
 ```
 
-Whether the specified scene feature is detected. **true** if detected, **false** otherwise.
+是否检测到指定的场景特性。**true**表示检测到，**false**表示未检测到。
 
 **类型：** boolean
 
@@ -44,7 +44,7 @@ Whether the specified scene feature is detected. **true** if detected, **false**
 readonly featureType: SceneFeatureType
 ```
 
-Scene feature type.
+场景特性类型。
 
 **类型：** [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md)
 

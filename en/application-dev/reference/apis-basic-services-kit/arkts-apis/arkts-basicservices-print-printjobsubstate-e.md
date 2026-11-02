@@ -116,7 +116,7 @@ The print driver is missing.
 PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED = 44
 ```
 
-The print job is restricted by EDM policy.
+The print job is restricted by the EDM policy.
 
 **Since:** 26.0.1
 
@@ -412,7 +412,7 @@ There is an unknown error with the printer.
 PRINT_JOB_COMPLETED_CANCELLED = 2
 ```
 
-The print job is canceled by user.
+The print job is canceled.
 
 **Since:** 14
 
@@ -426,7 +426,7 @@ The print job is canceled by user.
 PRINT_JOB_COMPLETED_FAILED = 1
 ```
 
-The print job is failed.
+The print job fails.
 
 **Since:** 14
 

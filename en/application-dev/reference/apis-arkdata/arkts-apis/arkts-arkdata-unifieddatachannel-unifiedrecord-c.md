@@ -4,7 +4,7 @@
 class UnifiedRecord
 ```
 
-An abstract definition of the data content supported by the UDMF. A **UnifiedRecord** object contains one or more data records, for example, a text record, an image record, or an HTML record. Since API version 15, different styles of the same content can be added to a **UnifiedRecord** object. Data users can obtain the corresponding styles as required.
+An abstract definition of the data content supported by UDMF, called a data record. A unified data object contains one or more data records, for example, a text record, an image record, and an HTML record. Since API version 15, different data formats of the same content can be added to a data record (for example, the same text can be stored in plain text, HTML, or hyperlink formats at the same time). Data consumers can obtain the corresponding format through the getEntry method based on their service requirements.
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 addEntry(type: string, value: ValueType): void
 ```
 
-Adds data of a specified data type and content to the current data record. You can use this API to add different data types and contents to the same data.
+Adds a data entry with the specified data type and content to the current data record. The data type and content added through this method are different representations of the same content. After the call is successful, the specified data type and content are added to the current data record.
 
 **Since:** 15
 
@@ -40,14 +40,8 @@ Adds data of a specified data type and content to the current data record. You c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | string | Yes | Type of the data to add. For details, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md). |
-| value | [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Yes | Value of the data to add. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| type | string | Yes | Data type to create. For details, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md). |
+| value | [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Yes | Value of the data to create. |
 
 **Examples**
 
@@ -82,7 +76,7 @@ unifiedData.addRecord(record);
 constructor()
 ```
 
-Defines a constructor used to create a **UnfiedRecord** object.
+Creates a data record. After the call is successful, an empty UnifiedRecord object is returned.
 
 **Since:** 12
 
@@ -106,11 +100,9 @@ let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 constructor(type: string, value: ValueType)
 ```
 
-Defines a constructor used to create a data record with the specified type and value.
+Creates a data record of the specified type and value. After the call is successful, a UnifiedRecord object containing the specified type and value is returned.<br>When the parameter **value** is of the [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) type, the parameter **type** must correspond to the value of OPENHARMONY_PIXEL_MAP in [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md).
 
-If **value** is of the [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) type, **type** must be the value of **OPENHARMONY_PIXEL_MAP** in [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md).
-
-If **value** is of the [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) type, **type** must be the value of **OPENHARMONY_WANT** in [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md).
+When the parameter **value** is of the [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) type, the parameter **type** must correspond to the value of OPENHARMONY_WANT in [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md).
 
 **Since:** 12
 
@@ -126,14 +118,8 @@ If **value** is of the [Want](../../apis-ability-kit/arkts-apis/arkts-ability-ap
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | string | Yes | Type of the data record to create. |
+| type | string | Yes | Type of the data record to create, used to identify the specific type of the data record. For details about the values, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md), for example, 'general.plain-text' and 'general.hyperlink'. |
 | value | [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Yes | Value of the data record to create. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -176,7 +162,7 @@ let pixelMapRecord =
 getEntries(): Record<string, ValueType>
 ```
 
-Obtains all the data in the current data record.
+Obtains the types and contents of all data in the current data record.
 
 **Since:** 15
 
@@ -192,7 +178,7 @@ Obtains all the data in the current data record.
 
 | Type | Description |
 | --- | --- |
-| Record&lt;string, [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md)&gt; | Values and types obtained. |
+| Record&lt;string, [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md)&gt; | Types and contents corresponding to the current data record. |
 
 **Examples**
 
@@ -249,7 +235,7 @@ for (let i = 0; i < records.length; i++) {
 getEntry(type: string): ValueType
 ```
 
-Obtains data of the specified type from the data record.
+Obtains the data content in a data record by data type.
 
 **Since:** 15
 
@@ -271,13 +257,7 @@ Obtains data of the specified type from the data record.
 
 | Type | Description |
 | --- | --- |
-| [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Value obtained. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Value corresponding to the current data record. |
 
 **Examples**
 
@@ -335,7 +315,7 @@ for (let i = 0; i < records.length; i++) {
 getType(): string
 ```
 
-Obtains the type of this **UnfiedRecord**. The data obtained by [getRecords](arkts-arkdata-unifieddatachannel-unifieddata-c.md#getrecords) from the **UnifiedData** object is a **UnifiedRecord** object. You need to use this API to obtain the specific type of the record, convert the **UnifiedRecord** object to its child class, and call the child class interfaces.
+Obtains the type of the current data record. Since the data obtained by calling [getRecords](arkts-arkdata-unifieddatachannel-unifieddata-c.md#getrecords) from a unified data object is a UnifiedRecord object, you need to use this API to query the specific type of the record, and then convert the UnifiedRecord object to its subclass and call the subclass APIs.
 
 **Since:** 10
 
@@ -351,7 +331,7 @@ Obtains the type of this **UnfiedRecord**. The data obtained by [getRecords](ark
 
 | Type | Description |
 | --- | --- |
-| string | Data type obtained. For details, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md). |
+| string | Specific data type corresponding to the current data record. For details, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md). |
 
 **Examples**
 
@@ -379,7 +359,7 @@ if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
 getTypes(): Array<string>
 ```
 
-Obtains all the data types in the data record. This API can be called using the **UnifiedRecord** object to query all data types in the record, including the data types added using the [addEntry](#addentry) function.
+Obtains the types of all data records in the current unified data object.
 
 **Since:** 15
 
@@ -395,7 +375,7 @@ Obtains all the data types in the data record. This API can be called using the 
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | Array of [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)s obtained. |
+| Array&lt;string&gt; | Array of [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md), which represents the set of data types of the current records. The element values include 'general.plain-text','general.hyperlink', 'openharmony.form', and so on. |
 
 **Examples**
 
@@ -447,7 +427,7 @@ for (let i = 0; i < records.length; i++) {
 getValue(): ValueType
 ```
 
-Obtains the value of this data record.
+Obtains the value of the current data record.
 
 **Since:** 12
 
@@ -463,7 +443,7 @@ Obtains the value of this data record.
 
 | Type | Description |
 | --- | --- |
-| [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Value obtained. |
+| [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Value corresponding to the current data record. |
 
 **Examples**
 

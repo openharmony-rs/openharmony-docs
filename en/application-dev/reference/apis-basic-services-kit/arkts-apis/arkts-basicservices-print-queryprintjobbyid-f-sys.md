@@ -28,7 +28,7 @@ Queries a print job by ID. This API uses an asynchronous callback to return the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | ID of the print job. |
+| jobId | string | Yes | ID of the created print job. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[PrintJob](arkts-basicservices-print-printjob-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -81,7 +81,7 @@ Queries a print job by ID. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | ID of the print job. |
+| jobId | string | Yes | ID of the created print job. |
 
 **Return value:**
 

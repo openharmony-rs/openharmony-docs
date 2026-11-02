@@ -1,4 +1,4 @@
-# @ohos.multimedia.videoProcessing(提供视频画质处理能力。)
+# @ohos.multimedia.videoProcessing(视频处理)
 
 提供VideoProcessor类型，包括AIHDR相关功能。
 

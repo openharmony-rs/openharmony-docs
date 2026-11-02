@@ -18,7 +18,10 @@ Represents the base controller for **TextInput**, **TextArea**, and **Search** c
 getText(range?: TextRange): string
 ```
 
-Obtains the text content within a specified range.
+Obtains the text content within a specified range.This API can be used in the following scenarios:  
+- Obtain the text content selected by the user in a text editor for processing.  
+- Obtain the text content within a specific range for checking during content validation.  
+- Extract part of the text content for analysis or conversion in a text processing application.
 
 **Since:** 19
 

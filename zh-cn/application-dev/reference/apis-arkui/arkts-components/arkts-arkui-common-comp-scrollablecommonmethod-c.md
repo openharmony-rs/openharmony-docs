@@ -8,7 +8,7 @@ CommonScrollableMethod
 
 **继承/实现关系：** ScrollableCommonMethod extends CommonMethod&lt;T&gt;
 
-**起始版本：** 12
+**起始版本：** 11
 
 <!--Device-unnamed-declare class ScrollableCommonMethod<T> extends CommonMethod<T>--><!--Device-unnamed-declare class ScrollableCommonMethod<T> extends CommonMethod<T>-End-->
 

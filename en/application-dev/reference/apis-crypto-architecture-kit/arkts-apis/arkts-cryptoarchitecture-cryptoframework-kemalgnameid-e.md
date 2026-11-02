@@ -4,7 +4,7 @@
 enum KemAlgNameId
 ```
 
-Enumerates the KEM algorithm name IDs.
+Enumerates the key-encapsulation mechanism (KEM) algorithms.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Enumerates the KEM algorithm name IDs.
 ML_KEM_1024 = 2
 ```
 
-Indicates the ML_KEM_1024 algorithm name ID.
+Name ID of ML-KEM-1024.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ Indicates the ML_KEM_1024 algorithm name ID.
 ML_KEM_512 = 0
 ```
 
-Indicates the ML_KEM_512 algorithm name ID.
+Name ID of ML-KEM-512.
 
 **Since:** 26.0.0
 
@@ -54,7 +54,7 @@ Indicates the ML_KEM_512 algorithm name ID.
 ML_KEM_768 = 1
 ```
 
-Indicates the ML_KEM_768 algorithm name ID.
+Name ID of ML-KEM-768.
 
 **Since:** 26.0.0
 

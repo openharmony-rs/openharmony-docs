@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function startDiscoverPrinter(extensionList: Array<string>, callback: AsyncCallback<void>): void
 ```
 
-Discovers printers by specifying the extension list. The discovered printers contain the specified print extension abilities. If an empty extension list is specified, all extension abilities are loaded. This API uses an asynchronous callback to return the result.
+Discovers printers by specifying the extension list. The discovered printers have the specified print extension abilities. If an empty extension list is specified, all extension abilities are loaded. This API uses an asynchronous callback to return the result. When printer discovery is no longer needed, call [stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f.md#stopdiscoverprinter-1) to stop the discovery and release system resources. Otherwise, the system will continuously discover printers, consuming system resources.
 
 **Since:** 20
 
@@ -63,7 +63,7 @@ print.startDiscoverPrinter(extensionList, (error: BusinessError) => {
 function startDiscoverPrinter(extensionList: Array<string>): Promise<void>
 ```
 
-Discovers printers by specifying the extension list. The discovered printers contain the specified print extension abilities. If an empty extension list is specified, all extension abilities are loaded. This API uses a promise to return the result.
+Discovers printers by specifying the extension list. The discovered printers have the specified print extension abilities. If an empty extension list is specified, all extension abilities are loaded. This API uses a promise to return the result. When printer discovery is no longer needed, call [stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f.md#stopdiscoverprinter-1) to stop the discovery and release system resources. Otherwise, the system will continuously discover printers, consuming system resources.
 
 **Since:** 20
 

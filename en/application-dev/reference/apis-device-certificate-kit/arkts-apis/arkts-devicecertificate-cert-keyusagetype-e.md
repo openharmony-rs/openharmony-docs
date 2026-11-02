@@ -4,7 +4,7 @@
 enum KeyUsageType
 ```
 
-Enumerates the purposes for which the key in the certificate is used.
+Enumerates the purposes, for which the key in the certificate is used.
 
 **Since:** 12
 
@@ -18,7 +18,7 @@ Enumerates the purposes for which the key in the certificate is used.
 KEYUSAGE_CRL_SIGN = 6
 ```
 
-The certificate holder can use the private key contained in the certificate to sign CRLs.
+The certificate public key can be used to sign CRLs.
 
 **Since:** 12
 
@@ -50,7 +50,7 @@ The certificate holder can use the public key contained in the certificate for d
 KEYUSAGE_DECIPHER_ONLY = 8
 ```
 
-The certificate holder can use the key to perform decryption operations only.
+The certificate holder can use the key to perform decryption only.
 
 **Since:** 12
 
@@ -82,7 +82,7 @@ The certificate holder can use the private key contained in the certificate to g
 KEYUSAGE_ENCIPHER_ONLY = 7
 ```
 
-The certificate holder can use the key to perform encryption operations only.
+The certificate holder can use the key to perform encryption only.
 
 **Since:** 12
 
@@ -98,7 +98,7 @@ The certificate holder can use the key to perform encryption operations only.
 KEYUSAGE_KEY_AGREEMENT = 4
 ```
 
-The certificate holder can use the private key contained in the certificate to perform key agreement operations.
+The certificate public key can be used to perform key agreement operations.
 
 **Since:** 12
 
@@ -114,7 +114,7 @@ The certificate holder can use the private key contained in the certificate to p
 KEYUSAGE_KEY_CERT_SIGN = 5
 ```
 
-The certificate holder can use the private key contained in the certificate to sign other certificates.
+The certificate public key can be used to sign other certificates.
 
 **Since:** 12
 

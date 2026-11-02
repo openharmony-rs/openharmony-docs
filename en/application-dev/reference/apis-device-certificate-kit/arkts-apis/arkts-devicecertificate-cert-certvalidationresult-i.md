@@ -4,7 +4,7 @@
 interface CertValidationResult
 ```
 
-Result of certificate validation.
+Represents the certificate verification result.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 readonly certChain: Array<X509Cert>
 ```
 
-Indicates the authenticated certificate chain. Upon successful authentication, the complete certificate chain is returned, from the end-entity certificate to the trust anchor. It can be used for subsequent certificate information query or other verification operations.
+Verified certificate chain. When the verification is successful, a complete certificate chain (from the end-entity certificate to the trust anchor) is returned. It can be used for subsequent certificate information query or other verification operations.
 
 **Type:** Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;
 

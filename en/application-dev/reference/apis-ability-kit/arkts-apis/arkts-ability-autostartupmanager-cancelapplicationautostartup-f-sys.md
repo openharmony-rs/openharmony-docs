@@ -12,7 +12,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 function cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback<void>): void
 ```
 
-Cancels the auto-startup setting for an application component. This API uses an asynchronous callback to return the result. Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned. For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
+Cancels the auto-startup setting for an application component. This API uses an asynchronous callback to return the result. Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050. Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned. For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
 **Since:** 11
 
@@ -51,7 +51,7 @@ Cancels the auto-startup setting for an application component. This API uses an 
 function cancelApplicationAutoStartup(info: AutoStartupInfo): Promise<void>
 ```
 
-Cancels the auto-startup setting for an application component. This API uses a promise to return the result. Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned. For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
+Cancels the auto-startup setting for an application component. This API uses a promise to return the result. Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050. Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned. For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
 **Since:** 11
 

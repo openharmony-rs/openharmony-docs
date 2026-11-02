@@ -29,7 +29,7 @@ enableMirror(enabled: boolean): void
 Enables or disables mirror recording.
 
 - Before calling this API, check whether mirror recording is supported by using [isMirrorSupported](#ismirrorsupported).  
-- After enabling or disabling mirror recording, call [getVideoRotation](#getvideorotation) to obtain the rotation angle and [updateRotation](../../apis-media/arkts-apis/arkts-media-media-avrecorder-i.md#updaterotation) to update the rotation angle.
+- After enabling or disabling mirror recording, call [getVideoRotation](#getvideorotation) to obtain the rotation angle and [updateRotation](../../apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md#updaterotation) to update the rotation angle.
 
 **Since:** 15
 

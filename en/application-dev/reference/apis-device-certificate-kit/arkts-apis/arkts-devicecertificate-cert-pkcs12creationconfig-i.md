@@ -4,7 +4,7 @@
 interface Pkcs12CreationConfig
 ```
 
-Represents the configuration for creating .p12 files.
+Represents the configuration for creating a PKCS #12 file.
 
 **Since:** 21
 
@@ -42,7 +42,7 @@ Algorithm parameters for encrypting the certificate.
 encryptCert?: boolean
 ```
 
-Whether to encrypt the certificate. The default value is **true**. **true** means to encrypt the certificate; **false** otherwise.
+Whether to encrypt the certificate. The default value is **true**. **true**: yes; **false**: no.
 
 **Type:** boolean
 
@@ -80,7 +80,7 @@ Algorithm parameters for encrypting the private key.
 macDigestAlgorithm?: Pkcs12MacDigestAlgorithm
 ```
 
-MAC digest algorithm for the P12. The default value is **SHA256**.
+PKCS #12 MAC digest algorithm. The default value is **SHA256**.
 
 **Type:** [Pkcs12MacDigestAlgorithm](arkts-devicecertificate-cert-pkcs12macdigestalgorithm-e.md)
 
@@ -100,7 +100,7 @@ MAC digest algorithm for the P12. The default value is **SHA256**.
 macIterations?: number
 ```
 
-Number of P12 MAC iterations. The default value is **2048**. The value must be a positive integer.
+Number of iterations for the PKCS #12 MAC algorithm. The default value is **2048**.
 
 **Type:** number
 
@@ -120,7 +120,7 @@ Number of P12 MAC iterations. The default value is **2048**. The value must be a
 macSaltLen?: number
 ```
 
-Length of the salt value of the P12 MAC. The minimum value is **8**, and the default value is **16**. The value must be an integer greater than or equal to 8.
+Salt length of the PKCS #12 MAC algorithm. The minimum value is **8**, and the default value is **16**.
 
 **Type:** number
 
@@ -140,7 +140,7 @@ Length of the salt value of the P12 MAC. The minimum value is **8**, and the def
 password: string
 ```
 
-Password of the .p12 file. The minimum length is 4.
+Password of the PKCS #12 file. The minimum length is 4.
 
 **Type:** string
 

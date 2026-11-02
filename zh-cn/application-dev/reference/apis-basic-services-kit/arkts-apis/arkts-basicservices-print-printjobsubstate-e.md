@@ -110,6 +110,22 @@ PRINT_JOB_BLOCK_DRIVER_MISSING = 34
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+## PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED
+
+```TypeScript
+PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED = 44
+```
+
+打印任务被EDM策略限制。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobSubState-PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED = 44--><!--Device-PrintJobSubState-PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED = 44-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
 ## PRINT_JOB_BLOCK_FILE_PARSING_ERROR
 
 ```TypeScript

@@ -74,10 +74,7 @@ Type of the bundle running in the process.
 isPreload?: boolean
 ```
 
-Indicates whether the process is in the preload state.
-
-- `true`: The process is currently in the preload state.  
-- `false`: The process is either not a preload process, or its preload state has been consumed.
+Whether the process is preloaded. The value is true if the process is preloaded and has not been used by any component startup request; otherwise, the value is false.
 
 **Type:** boolean
 

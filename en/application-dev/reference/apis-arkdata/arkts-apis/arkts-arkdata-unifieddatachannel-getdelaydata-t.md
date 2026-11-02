@@ -4,7 +4,7 @@
 type GetDelayData = (type: string) => UnifiedData
 ```
 
-Defines a function used to obtain a deferred **UnifiedData** object. Currently, it can be used only in the pasteboard application of the same device.
+A deferred wrapper for UnifiedData that supports deferred data retrieval. When the data receiver requests a specific type of data, the system triggers this callback, and the data sender can dynamically generate the data in the callback instead of preparing all data in advance. Currently, only the same-device clipboard scenario is supported.
 
 **Since:** 12
 
@@ -20,10 +20,10 @@ Defines a function used to obtain a deferred **UnifiedData** object. Currently, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | string | Yes | Identifier of the deferred encapsulation. |
+| type | string | Yes | Identifier of the deferred data type, used to distinguish different types of data. For the values, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md). For example, 'general.plain-text' indicates the plain text type. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) | **UnifiedData** object. |
+| [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) | UnifiedData object that contains the data of the corresponding type and is returned when the deferred callback is triggered. It can be used for cross-application data sharing and transfer. |

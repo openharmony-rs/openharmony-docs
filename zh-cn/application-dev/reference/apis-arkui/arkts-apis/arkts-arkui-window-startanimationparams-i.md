@@ -28,7 +28,7 @@ import { window } from '@kit.ArkUI';
 type: AnimationType
 ```
 
-The type of window animation
+窗口动画类型，用于指定窗口启动时使用的动画效果，如淡入淡出等。
 
 **类型：** [AnimationType](arkts-arkui-window-animationtype-e.md)
 

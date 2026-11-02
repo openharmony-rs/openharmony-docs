@@ -4,7 +4,7 @@
 enum CmsRecipientEncryptionAlgorithm
 ```
 
-Enumerates the content-encryption algorithms for CMS enveloped data.
+Enumerates the encryption algorithms for CMS-encapsulated data.
 
 **Since:** 22
 
@@ -18,7 +18,7 @@ Enumerates the content-encryption algorithms for CMS enveloped data.
 AES_128_CBC = 0
 ```
 
-AES_128_CBC.
+AES-128-CBC.
 
 **Since:** 22
 
@@ -34,7 +34,7 @@ AES_128_CBC.
 AES_128_GCM = 3
 ```
 
-AES_128_GCM.
+AES-128-GCM.
 
 **Since:** 22
 
@@ -50,7 +50,7 @@ AES_128_GCM.
 AES_192_CBC = 1
 ```
 
-AES_192_CBC.
+AES-192-CBC.
 
 **Since:** 22
 
@@ -66,7 +66,7 @@ AES_192_CBC.
 AES_192_GCM = 4
 ```
 
-AES_192_GCM.
+AES-192-GCM.
 
 **Since:** 22
 
@@ -82,7 +82,7 @@ AES_192_GCM.
 AES_256_CBC = 2
 ```
 
-AES_256_CBC.
+AES-256-CBC.
 
 **Since:** 22
 
@@ -98,7 +98,7 @@ AES_256_CBC.
 AES_256_GCM = 5
 ```
 
-AES_256_GCM.
+AES-256-GCM.
 
 **Since:** 22
 

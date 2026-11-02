@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise<boolean>
 ```
 
-Add a printer to system.
+Adds a printer to the system. This API uses a promise to return the result. This API is intended for scenarios where printers or scanners need to be managed, such as the management of the printer drivers, printing management software, third-party printing management software, and cloud printing.
 
 **Since:** 24
 
@@ -28,16 +28,16 @@ Add a printer to system.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerName | string | Yes | Indicates the printer name. <br>Name of the printer to be added. |
-| uri | string | Yes | Indicates the printer uri. <br>Uri of the printer to be added. |
-| ppdName | string | No | Indicates the ppd name. <br>Ppd name of the printer to be added. |
-| options | string | No | Indicates the options. <br>Optional parameters when adding a printer. |
+| printerName | string | Yes | Printer name. |
+| uri | string | Yes | Printer URI. |
+| ppdName | string | No | PPD driver file name of the printer in the file system. The name is generated after the driver is installed on the device, which is in the format of **package name_module name_file name**. For details about the name, contact the driver vendor. This parameter is passed when a specific PPD driver file needs to be specified. If this parameter is not passed, the system automatically matches a PPD driver file. |
+| options | string | No | JSON object string, which indicates the printer option parameter. This is a reserved field, which is not used currently. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | the promise returned by the function. |
+| Promise&lt;boolean&gt; | Promise used to return the result indicating whether the printer is successfully added. **true** if the operation is successful, and **false** otherwise. |
 
 **Error codes:**
 

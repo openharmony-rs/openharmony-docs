@@ -20,6 +20,10 @@ abortCommonEvent(callback: AsyncCallback<void>): void
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **起始版本：** 7
 
 <!--Device-CommonEventSubscriber-abortCommonEvent(callback: AsyncCallback<void>): void--><!--Device-CommonEventSubscriber-abortCommonEvent(callback: AsyncCallback<void>): void-End-->
@@ -65,6 +69,10 @@ abortCommonEvent(): Promise<void>
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **起始版本：** 7
 
 <!--Device-CommonEventSubscriber-abortCommonEvent(): Promise<void>--><!--Device-CommonEventSubscriber-abortCommonEvent(): Promise<void>-End-->
@@ -100,6 +108,10 @@ abortCommonEventSync(): void
 
 同步添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **起始版本：** 10
 
 <!--Device-CommonEventSubscriber-abortCommonEventSync(): void--><!--Device-CommonEventSubscriber-abortCommonEventSync(): void-End-->
@@ -124,6 +136,10 @@ clearAbortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
+
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
 
 **起始版本：** 7
 
@@ -170,6 +186,10 @@ clearAbortCommonEvent(): Promise<void>
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **起始版本：** 7
 
 <!--Device-CommonEventSubscriber-clearAbortCommonEvent(): Promise<void>--><!--Device-CommonEventSubscriber-clearAbortCommonEvent(): Promise<void>-End-->
@@ -205,6 +225,10 @@ clearAbortCommonEventSync(): void
 
 同步清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **起始版本：** 10
 
 <!--Device-CommonEventSubscriber-clearAbortCommonEventSync(): void--><!--Device-CommonEventSubscriber-clearAbortCommonEventSync(): void-End-->
@@ -229,6 +253,11 @@ finishCommonEvent(callback: AsyncCallback<void>): void
 ```
 
 用于订阅者结束对当前有序公共事件的处理。使用callback异步回调。
+
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但调用不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。超时后系统将自动结束当前订阅者的处理并向下一优先级订阅者投递该事件，且不会通知当前订阅者；此后调用本接口不会报错，但不会生效。
 
 **起始版本：** 9
 
@@ -268,6 +297,11 @@ finishCommonEvent(): Promise<void>
 
 用于订阅者结束对当前有序公共事件的处理。使用Promise异步回调。
 
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但调用不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。超时后系统将自动结束当前订阅者的处理并向下一优先级订阅者投递该事件，且不会通知当前订阅者；此后调用本接口仍会返回成功，但实际不会生效。
+
 **起始版本：** 9
 
 <!--Device-CommonEventSubscriber-finishCommonEvent(): Promise<void>--><!--Device-CommonEventSubscriber-finishCommonEvent(): Promise<void>-End-->
@@ -297,6 +331,10 @@ getAbortCommonEvent(callback: AsyncCallback<boolean>): void
 ```
 
 获取当前有序公共事件是否处于中止状态。使用callback异步回调。
+
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，而是通过callback或Promise返回默认值false。
 
 **起始版本：** 7
 
@@ -336,6 +374,10 @@ getAbortCommonEvent(): Promise<boolean>
 
 获取当前有序公共事件是否处于中止状态。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值false。
+
 **起始版本：** 7
 
 <!--Device-CommonEventSubscriber-getAbortCommonEvent(): Promise<boolean>--><!--Device-CommonEventSubscriber-getAbortCommonEvent(): Promise<boolean>-End-->
@@ -366,6 +408,10 @@ getAbortCommonEventSync(): boolean
 
 同步获取当前有序公共事件是否处于中止状态。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值false。
+
 **起始版本：** 10
 
 <!--Device-CommonEventSubscriber-getAbortCommonEventSync(): boolean--><!--Device-CommonEventSubscriber-getAbortCommonEventSync(): boolean-End-->
@@ -392,6 +438,10 @@ getCode(callback: AsyncCallback<number>): void
 ```
 
 获取有序公共事件传递的数据。使用callback异步回调。
+
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，而是通过callback或Promise返回默认值0。
 
 **起始版本：** 7
 
@@ -433,6 +483,10 @@ getCode(): Promise<number>
 
 获取有序公共事件传递的数据。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值0。
+
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -465,6 +519,10 @@ getCodeSync(): number
 
 同步获取有序公共事件传递的数据。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值0。
+
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -493,6 +551,10 @@ getData(callback: AsyncCallback<string>): void
 ```
 
 获取有序公共事件传递的数据。使用callback异步回调。
+
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，而是通过callback或Promise返回默认值空字符串""。
 
 **起始版本：** 7
 
@@ -535,6 +597,10 @@ getData(): Promise<string>
 
 获取有序公共事件传递的数据。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值空字符串""。
+
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -566,6 +632,10 @@ getDataSync(): string
 ```
 
 同步获取有序公共事件传递的数据。
+
+> **说明：** 
+> 
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值空字符串""。
 
 **起始版本：** 10
 
@@ -697,6 +767,10 @@ isOrderedCommonEvent(callback: AsyncCallback<boolean>): void
 
 查询当前公共事件是否为有序公共事件。使用callback异步回调。
 
+> **说明：** 
+> 
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；退订后调用时不抛出错误，而是通过callback或Promise返回false。
+
 **起始版本：** 7
 
 <!--Device-CommonEventSubscriber-isOrderedCommonEvent(callback: AsyncCallback<boolean>): void--><!--Device-CommonEventSubscriber-isOrderedCommonEvent(callback: AsyncCallback<boolean>): void-End-->
@@ -735,6 +809,10 @@ isOrderedCommonEvent(): Promise<boolean>
 
 查询当前公共事件是否为有序公共事件。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；退订后调用时不抛出错误，返回false。
+
 **起始版本：** 7
 
 <!--Device-CommonEventSubscriber-isOrderedCommonEvent(): Promise<boolean>--><!--Device-CommonEventSubscriber-isOrderedCommonEvent(): Promise<boolean>-End-->
@@ -765,6 +843,10 @@ isOrderedCommonEventSync(): boolean
 
 同步查询当前公共事件是否为有序公共事件。
 
+> **说明：** 
+> 
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；退订后调用时不抛出错误，返回false。
+
 **起始版本：** 10
 
 <!--Device-CommonEventSubscriber-isOrderedCommonEventSync(): boolean--><!--Device-CommonEventSubscriber-isOrderedCommonEventSync(): boolean-End-->
@@ -791,6 +873,10 @@ isStickyCommonEvent(callback: AsyncCallback<boolean>): void
 ```
 
 查询当前公共事件是否为一个粘性公共事件。使用callback异步回调。
+
+> **说明：** 
+> 
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；在接收回调外或退订后调用时不抛出错误，但通过callback或Promise返回的结果不可靠。
 
 **起始版本：** 7
 
@@ -830,6 +916,10 @@ isStickyCommonEvent(): Promise<boolean>
 
 查询当前公共事件是否为一个粘性公共事件。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；在接收回调外或退订后调用时不抛出错误，但返回值不可靠。
+
 **起始版本：** 7
 
 <!--Device-CommonEventSubscriber-isStickyCommonEvent(): Promise<boolean>--><!--Device-CommonEventSubscriber-isStickyCommonEvent(): Promise<boolean>-End-->
@@ -860,6 +950,10 @@ isStickyCommonEventSync(): boolean
 
 同步检查当前公共事件是否为一个粘性公共事件。
 
+> **说明：** 
+> 
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；在接收回调外或退订后调用时不抛出错误，但返回值不可靠。
+
 **起始版本：** 10
 
 <!--Device-CommonEventSubscriber-isStickyCommonEventSync(): boolean--><!--Device-CommonEventSubscriber-isStickyCommonEventSync(): boolean-End-->
@@ -886,6 +980,11 @@ setCode(code: number, callback: AsyncCallback<void>): void
 ```
 
 设置有序公共事件传递的数据。使用callback异步回调。
+
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **起始版本：** 7
 
@@ -927,6 +1026,11 @@ setCode(code: number): Promise<void>
 ```
 
 设置有序公共事件传递的数据。使用Promise异步回调。
+
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **起始版本：** 7
 
@@ -972,6 +1076,11 @@ setCodeAndData(code: number, data: string, callback: AsyncCallback<void>): void
 
 设置有序公共事件传递的数据。使用callback异步回调。
 
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
+
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -1013,6 +1122,11 @@ setCodeAndData(code: number, data: string): Promise<void>
 ```
 
 设置有序公共事件传递的数据。使用Promise异步回调。
+
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **起始版本：** 7
 
@@ -1059,6 +1173,11 @@ setCodeAndDataSync(code: number, data: string): void
 
 同步设置有序公共事件传递的数据。
 
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
+
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -1099,6 +1218,11 @@ setCodeSync(code: number): void
 
 同步设置有序公共事件传递的数据。
 
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
+
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -1137,6 +1261,11 @@ setData(data: string, callback: AsyncCallback<void>): void
 ```
 
 设置有序公共事件传递的数据。使用callback异步回调。
+
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **起始版本：** 7
 
@@ -1178,6 +1307,11 @@ setData(data: string): Promise<void>
 ```
 
 设置有序公共事件传递的数据。使用Promise异步回调。
+
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **起始版本：** 7
 
@@ -1222,6 +1356,11 @@ setDataSync(data: string): void
 ```
 
 同步设置有序公共事件传递的数据。
+
+> **说明：** 
+> 
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **起始版本：** 10
 

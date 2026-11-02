@@ -4,7 +4,7 @@
 interface Options
 ```
 
-Defines the data operation performed by the UDMF. It includes three optional parameters: **intention**, **key**, and **visibility**. The three parameters can be left unspecified. For details, see the parameter description of the specific API.
+The data operation APIs provided by UDMF include three optional parameters: intention, key, and visibility. If an API does not require these parameters, they can be left unspecified. For details, see the parameter description of the specific API.
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 intention?: Intention
 ```
 
-Type of the data channel related to the data operation.
+Data channel type related to the data operation. The value is an [Intention](#intention) enum, including DATA_HUB and DRAG. If not specified, the value is empty by default. For details about whether this parameter is mandatory, see the parameter description of the specific API.
 
 **Type:** [Intention](arkts-arkdata-unifieddatachannel-intention-e.md)
 
@@ -44,11 +44,9 @@ Type of the data channel related to the data operation.
 key?: string
 ```
 
-Unique identifier of the data object in the UDMF, which can be obtained from the value returned by [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata-1).
+Unique identifier of the data object in UDMF. It can be obtained from the return value of [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata-1).
 
-The key consists of **udmf:/**, **intention**, **bundleName**, and **groupId** with a (/) in between, for example, **udmf://DataHub/com.ohos.test/0123456789**.
-
-**udmf:/** is fixed, **DataHub** is an enum of **intention**, **com.ohos.test** is the bundle name, and **0123456789** is a group ID randomly generated.
+If not specified, the value is empty by default. For details about whether this parameter is mandatory, see the parameter description of the specific API.<br>It consists of four parts: udmf:/, intention, bundleName, and groupId, which are connected by '/', for example, udmf://DataHub/com.ohos.test/0123456789.<br>Among them, udmf:/ is fixed, DataHub is the value of the corresponding enum, com.ohos.test is the bundle name, and 0123456789 is the randomly generated groupId.
 
 **Type:** string
 
@@ -68,7 +66,7 @@ The key consists of **udmf:/**, **intention**, **bundleName**, and **groupId** w
 visibility?: Visibility
 ```
 
-Data visibility level. This parameter is effective only when specified during data writing. If unspecified, the default value **Visibility.ALL** is used.
+Visibility level of the data. It is available only for public data channels. The value is a [Visibility](#visibility) enum. It takes effect only when specified during data writing. If not specified, the default value is Visibility.ALL.<br>**Atomic service API:** This API is supported in atomic services since API version 20.
 
 **Type:** [Visibility](arkts-arkdata-unifieddatachannel-visibility-e.md)
 

@@ -12,9 +12,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 function insertData(options: Options, data: UnifiedData, callback: AsyncCallback<string>): void
 ```
 
-Writes data to the public data channel of the UDMF and generates a unique identifier for the data. This API uses an asynchronous callback to return the result.
-
-Implementation mechanism After receiving the UnifiedData object, the system verifies data integrity and serializes the data for storage. It routes the data to the corresponding storage space based on the intention value and generates a unique identifier key. The validity period of the data in the public data channel is managed by the system, and the default policy is to automatically clear the data after the application exits.
+Writes data to the public data channel of the UDMF and generates a unique identifier for the data. This API uses an asynchronous callback to return the result. **Implementation mechanism** After receiving the UnifiedData object, the system verifies data integrity and serializes the data for storage. It routes the data to the corresponding storage space based on the intention value and generates a unique identifier key. The validity period of the data in the public data channel is managed by the system, and the default policy is to automatically clear the data after the application exits.
 
 **Since:** 10
 
@@ -30,15 +28,15 @@ Implementation mechanism After receiving the UnifiedData object, the system veri
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [Options](arkts-arkdata-unifieddatachannel-options-i.md) | Yes | Configuration for the data insertion operation. The **intention** field is mandatory (the DRAG channel is not supported). If it is not specified, error code 401 will be returned. The settings of other parameters do not affect the use of this API. |
-| data | [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) | Yes | Data to insert. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the key (unique identifier) of the data inserted. |
+| options | [Options](arkts-arkdata-unifieddatachannel-options-i.md) | Yes | Configuration parameters. The **intention** field is mandatory and does not support **DRAG**. If it is not specified, error code 401 is returned. Whether other fields are specified does not affect the use of this API. |
+| data | [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) | Yes | Unified data object to write or update, used to store data records and their attribute information. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback invoked to return the unique identifier key of the data written to the UDMF. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -94,20 +92,20 @@ Writes data to the public data channel of UDMF and generates a unique identifier
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [Options](arkts-arkdata-unifieddatachannel-options-i.md) | Yes | Configuration for the data insertion operation. The **intention** field is mandatory (the DRAG channel is not supported). If it is not specified, error code 401 will be returned. The settings of other parameters do not affect the use of this API. |
-| data | [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) | Yes | Data to insert. |
+| options | [Options](arkts-arkdata-unifieddatachannel-options-i.md) | Yes | Configuration options. The **intention** field is mandatory and does not support DRAG. If it is not specified, error code 401 is returned. Whether other fields are specified does not affect the use of this API |
+| data | [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) | Yes | Target data. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the key of the data inserted. |
+| Promise&lt;string&gt; | Promise used to return the unique identifier key of the data written to UDMF. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

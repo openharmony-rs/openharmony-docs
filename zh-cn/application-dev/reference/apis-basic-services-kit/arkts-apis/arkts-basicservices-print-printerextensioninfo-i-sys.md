@@ -4,7 +4,7 @@
 interface PrinterExtensionInfo
 ```
 
-定义打印扩展信息的接口。
+定义打印机扩展信息的接口。
 
 **起始版本：** 10
 
@@ -26,7 +26,7 @@ import { print } from '@kit.BasicServicesKit';
 extensionId: string
 ```
 
-表示打印机扩展的扩展ID。
+表示打印机扩展ID。
 
 **类型：** string
 
@@ -44,7 +44,7 @@ extensionId: string
 vendorIcon: number
 ```
 
-表示供应商图标。
+表示供应商图标资源ID。
 
 **类型：** number
 

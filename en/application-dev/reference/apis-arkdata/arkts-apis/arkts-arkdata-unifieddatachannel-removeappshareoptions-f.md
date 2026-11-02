@@ -12,7 +12,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 function removeAppShareOptions(intention: Intention): void
 ```
 
-Removes the data control information set by [setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md).
+Clears the control information set by [setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md). After this API is called successfully, the control information set by setAppShareOptions is cleared, and the in-app drag-and-drop channel data is restored to the default usage scope.
 
 **Since:** 14
 
@@ -30,13 +30,13 @@ Removes the data control information set by [setAppShareOptions](arkts-arkdata-u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| intention | [Intention](arkts-arkdata-unifieddatachannel-intention-e.md) | Yes | Type of the data channel. Currently, only the data channel of the **DRAG** type is supported. |
+| intention | [Intention](arkts-arkdata-unifieddatachannel-intention-e.md) | Yes | Data channel type related to the data operation. Currently, only the DRAG data channel is supported. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 14 and later |
 
 **Examples**

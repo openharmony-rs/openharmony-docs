@@ -62,6 +62,12 @@ getAcceptType(): Array<string>
 
 获取文件过滤类型。
 
+> **说明：** 
+> 
+> 与getMimeTypes和getAcceptableFileTypes的对应关系：getAcceptType和getMimeTypes对应HTML input标签的accept属性，
+> getAcceptableFileTypes对应HTML showOpenFilePicker、showDirectoryPicker、showSaveFilePicker接口参数options的types属性。
+> 根据HTML规范，accept属性与types属性为互斥关系，不应同时使用。
+
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。

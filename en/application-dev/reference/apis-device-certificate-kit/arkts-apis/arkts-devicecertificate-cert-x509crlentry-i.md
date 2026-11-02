@@ -24,11 +24,11 @@ import { cert } from '@kit.DeviceCertificateKit';
 getCertIssuer(): DataBlob
 ```
 
-Obtains the issuer name of the revoked certificate.
+Obtains the issuer name of a revoked certificate.
 
 > **NOTE:** 
 > 
-> The obtained issuer name of this revoked certificate contains a string terminator.
+> The obtained issuer name of the revoked certificate contains a string terminator.
 
 **Since:** 11
 
@@ -42,7 +42,7 @@ Obtains the issuer name of the revoked certificate.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Issuer name of the revoked certificate obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Issuer name of a revoked certificate. |
 
 **Error codes:**
 
@@ -155,7 +155,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 getCertIssuer(encodingType: EncodingType): string
 ```
 
-Obtains the issuer name of the revoked certificate based on the encoding type.
+Obtains the issuer name of a revoked certificate based on the encoding type.
 
 **Since:** 20
 
@@ -243,7 +243,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 getCertIssuerX500DistinguishedName(): X500DistinguishedName
 ```
 
-Obtains the distinguished name (DN) of the issuer of the revoked certificate.
+Obtains the X.500 distinguished name object of the issuer of a revoked certificate.
 
 **Since:** 12
 
@@ -257,7 +257,7 @@ Obtains the distinguished name (DN) of the issuer of the revoked certificate.
 
 | Type | Description |
 | --- | --- |
-| [X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md) | DN object obtained. |
+| [X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md) | X.500 distinguished name object. |
 
 **Error codes:**
 
@@ -316,7 +316,7 @@ async function certGetCertIssuerX500DistinguishedName() {
 getEncoded(callback: AsyncCallback<EncodingBlob>): void
 ```
 
-Obtains the serialized data of this revoked certificate entry. This API uses an asynchronous callback to return the result.
+Obtains the serialized data of a revoked certificate. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
 
@@ -330,7 +330,7 @@ Obtains the serialized data of this revoked certificate entry. This API uses an 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the serialized data of the revoked certificate entry obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Yes | Callback used to return the result. If the serialized data of the CRL entry is obtained successfully, **err** is **undefined**, and **data** is the serialized data of the CRL entry obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -453,7 +453,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 getEncoded(): Promise<EncodingBlob>
 ```
 
-Obtains the serialized data of this revoked certificate entry. This API uses a promise to return the result.
+Obtains the serialized data of a revoked certificate. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -467,7 +467,7 @@ Obtains the serialized data of this revoked certificate entry. This API uses a p
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Promise used to return the serialized data of the revoked certificate entry obtained. |
+| Promise&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Promise used to return the serialized data of the CRL entry. |
 
 **Error codes:**
 
@@ -586,7 +586,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 getExtensions(): DataBlob
 ```
 
-Obtains the CRL entry extensions in DER format.
+Obtains the CRL extensions.
 
 **Since:** 11
 
@@ -668,7 +668,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 getExtensionsObject(): CertExtension
 ```
 
-Obtains the CRL entry extension object.
+Obtains the extension object of a CRL entry.
 
 **Since:** 12
 
@@ -682,7 +682,7 @@ Obtains the CRL entry extension object.
 
 | Type | Description |
 | --- | --- |
-| [CertExtension](arkts-devicecertificate-cert-certextension-i.md) | CRL entry extensions. |
+| [CertExtension](arkts-devicecertificate-cert-certextension-i.md) | Extension object of a CRL entry. |
 
 **Error codes:**
 
@@ -808,7 +808,7 @@ async function certGetExtensionsObject() {
 getRevocationDate(): string
 ```
 
-Obtains the certificate's revocation date.
+Obtains the date when the certificate was revoked.
 
 **Since:** 11
 
@@ -948,7 +948,7 @@ Obtains the serial number of this revoked certificate.
 
 | Type | Description |
 | --- | --- |
-| bigint | Serial number of the revoked certificate obtained. |
+| bigint | Serial number of a revoked certificate. |
 
 **Error codes:**
 
@@ -1013,7 +1013,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 hasExtensions(): boolean
 ```
 
-Checks whether this CRL entry has extensions.
+Checks whether a CRL entry has extensions.
 
 **Since:** 11
 
@@ -1027,7 +1027,7 @@ Checks whether this CRL entry has extensions.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if the CRL entry has an extension; returns **false** otherwise. |
+| boolean | **true** is returned if the CRL entry has extensions; **false** is returned otherwise. |
 
 **Error codes:**
 
@@ -1106,7 +1106,7 @@ Obtains the hash value of the data in DER format.
 
 | Type | Description |
 | --- | --- |
-| Uint8Array | Hash value obtained. |
+| Uint8Array | Hash value in DER format obtained. |
 
 **Error codes:**
 

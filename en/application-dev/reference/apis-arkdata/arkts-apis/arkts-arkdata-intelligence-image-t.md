@@ -4,7 +4,7 @@
 type Image = string
 ```
 
-The type of the image can be its URI.
+Defines the URI of the image, which is a string. URI of the image. The maximum length is 512 characters. An exception is thrown when the length exceeds the limit.
 
 **Type:** string
 

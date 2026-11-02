@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function restartPrintJob(jobId: string): Promise<void>
 ```
 
-重新打印之前打印过的打印任务，使用Promise异步回调。
+重新开始失败的打印任务，使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -28,7 +28,7 @@ function restartPrintJob(jobId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 之前打印过的打印任务ID。 |
+| jobId | string | 是 | 历史打印任务ID。 |
 
 **返回值：**
 

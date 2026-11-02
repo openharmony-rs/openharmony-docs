@@ -13,7 +13,7 @@ function notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' 
     callback: AsyncCallback<void>): void
 ```
 
-将spooler关闭信息通知打印服务，使用callback异步回调。
+将打印预览界面关闭信息通知打印服务，使用callback异步回调。用于在打印预览界面关闭后，让打印服务进行清理、退出等操作。
 
 **起始版本：** 11
 
@@ -29,17 +29,17 @@ function notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 表示打印任务ID。 |
-| type | 'spooler_closed_for_cancelled' &#124; 'spooler_closed_for_started' | 是 | 表示spooler关闭信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步将spooler关闭信息通知打印服务之后的回调。 |
+| jobId | string | 是 | 表示已创建的打印任务ID。 |
+| type | 'spooler_closed_for_cancelled' &#124; 'spooler_closed_for_started' | 是 | 表示打印预览界面关闭信息的类型。'spooler_closed_for_cancelled'表示因取消当前打印任务而关闭打印预览界面；'spooler_closed_for_started'表示因打印任务成功下发而关闭打印预览界面。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当将打印预览界面关闭信息成功通知打印服务，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 <!--Del-->
 **示例**
@@ -68,7 +68,7 @@ function notifyPrintService(jobId: string,
     type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started'): Promise<void>
 ```
 
-将spooler关闭信息通知打印服务，使用Promise异步回调。
+将打印预览界面关闭信息通知打印服务，使用Promise异步回调。用于在打印预览界面关闭后，让打印服务进行清理、退出等操作。
 
 **起始版本：** 11
 
@@ -84,8 +84,8 @@ function notifyPrintService(jobId: string,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 表示打印任务ID。 |
-| type | 'spooler_closed_for_cancelled' &#124; 'spooler_closed_for_started' | 是 | 表示spooler关闭信息。 |
+| jobId | string | 是 | 表示已创建的打印任务ID。 |
+| type | 'spooler_closed_for_cancelled' &#124; 'spooler_closed_for_started' | 是 | 表示打印预览界面关闭信息的类型。'spooler_closed_for_cancelled'表示因取消当前打印任务而关闭打印预览界面；'spooler_closed_for_started'表示因打印任务成功下发而关闭打印预览界面。 |
 
 **返回值：**
 
@@ -97,9 +97,9 @@ function notifyPrintService(jobId: string,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 <!--Del-->
 **示例**

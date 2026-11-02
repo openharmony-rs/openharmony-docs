@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise<void>
 ```
 
-删除扫描仪（系统API）。使用Promise异步回调。
+删除扫描仪（系统接口）。适用于扫描仪设备离线或不再需要时移除设备的场景，删除成功后将触发scanDeviceDel事件通知，可通过on('scanDeviceDel')监听设备删除事件。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -28,8 +28,8 @@ function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uniqueId | string | 是 | 扫描仪的唯一ID。 |
-| discoveryMode | [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md) | 是 | 发现模式。 |
+| uniqueId | string | 是 | 扫描仪的唯一ID，可通过getAddedScanners()获取或从scan.on('scanDeviceAdd')事件回调中获得。 |
+| discoveryMode | [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md) | 是 | 扫描仪的发现模式，需与添加该扫描仪时使用的发现模式保持一致。 |
 
 **返回值：**
 

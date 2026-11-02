@@ -4,7 +4,7 @@
 interface CmsKeyTransRecipientInfo
 ```
 
-Represents KeyTrans recipient information for CMS enveloped data.
+Represents the recipient information for key transport encapsulated using CMS.
 
 **Since:** 22
 

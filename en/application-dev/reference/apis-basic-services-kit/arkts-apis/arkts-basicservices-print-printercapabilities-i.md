@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 options?: string
 ```
 
-Printer capability details.
+Printer capability details. If no value is passed, the default value is an empty string.
 
 **Type:** string
 
@@ -72,7 +72,7 @@ List of single- and double-sided modes supported by the printer.
 supportedMediaTypes?: Array<string>
 ```
 
-List of paper types supported by the printer.
+List of paper types supported by the printer. If no value is passed, the default value is an empty list.
 
 **Type:** Array&lt;string&gt;
 
@@ -88,7 +88,7 @@ List of paper types supported by the printer.
 supportedOrientations?: Array<PrintOrientationMode>
 ```
 
-List of print directions supported by the printer.
+List of print directions supported by the printer. If no value is passed, the default value is an empty list.
 
 **Type:** Array&lt;[PrintOrientationMode](arkts-basicservices-print-printorientationmode-e.md)&gt;
 
@@ -120,7 +120,7 @@ List of paper sizes supported by the printer.
 supportedQualities?: Array<PrintQuality>
 ```
 
-List of print quality supported by the printer.
+List of print quality supported by the printer. If no value is passed, the default value is an empty list.
 
 **Type:** Array&lt;[PrintQuality](arkts-basicservices-print-printquality-e.md)&gt;
 
@@ -136,7 +136,7 @@ List of print quality supported by the printer.
 vendorJobAttrAbility?: string
 ```
 
-Ability to configure job vendor-specific attributes.
+Print job settings page provided by the printer driver vendor. If no value is passed, the default value is an empty string.
 
 **Type:** string
 
@@ -154,7 +154,7 @@ Ability to configure job vendor-specific attributes.
 vendorPrinterPrefAbility?: string
 ```
 
-Ability to configure printer vendor-specific preferences.
+Printer preference settings page provided by the printer driver vendor. If no value is passed, the default value is an empty string.
 
 **Type:** string
 

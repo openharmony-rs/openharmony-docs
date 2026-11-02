@@ -4,8 +4,6 @@
 interface Flash extends FlashQuery
 ```
 
-Flash继承自[FlashQuery](arkts-camera-camera-flashquery-i.md)。
-
 闪光灯类，对设备闪光灯操作。
 
 **继承/实现关系：** Flash extends [FlashQuery](arkts-camera-camera-flashquery-i.md)
@@ -28,9 +26,9 @@ import { camera } from '@kit.CameraKit';
 enableLcdFlash(enabled: boolean): void
 ```
 
-Enables or disables the LCD flash.
+使能或去使能 LCD 闪光灯。
 
-Before the setting, call [isLcdFlashSupported](arkts-camera-camera-flashquery-i-sys.md#islcdflashsupported) to check whether the device supports the LCD flash.
+设置前，先通过[isLcdFlashSupported](arkts-camera-camera-flashquery-i-sys.md#islcdflashsupported)检查设备是否支持 LCD 闪光灯。
 
 **起始版本：** 13
 
@@ -44,7 +42,7 @@ Before the setting, call [isLcdFlashSupported](arkts-camera-camera-flashquery-i-
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Whether to enable or disable the LCD flash. **true** to enable, **false** otherwise. If null or undefined is passed, it is treated as 0 and the LCD flash is disabled. |
+| enabled | boolean | 是 | 是否使能 LCD 闪光灯。**true**表示使能，**false**表示去使能。传参为null或者undefined，作为0处理，LCD 闪光灯关闭。 |
 
 **错误码：**
 

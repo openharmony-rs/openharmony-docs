@@ -626,7 +626,7 @@ readonly state: media.AVPlayerState
 
 Gets player state.
 
-**Type:** [media.AVPlayerState](../../apis-media/arkts-apis/arkts-media-media-avplayerstate-t.md)
+**Type:** [media.AVPlayerState](../../apis-media-kit/arkts-apis/arkts-media-media-avplayerstate-t.md)
 
 **Since:** 10
 

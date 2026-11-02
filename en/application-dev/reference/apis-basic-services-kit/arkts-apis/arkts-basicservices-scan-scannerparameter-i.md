@@ -24,7 +24,7 @@ import { scan } from '@kit.BasicServicesKit';
 optionConstraintInt?: number[]
 ```
 
-Integer constraints of the option.
+String constraint of the option. This parameter is valid only when **optionConstraintType** is set to **SCAN_CONSTRAINT_WORD_LIST**. The default value is an empty array.
 
 **Type:** number[]
 
@@ -40,7 +40,7 @@ Integer constraints of the option.
 optionConstraintRange?: Range
 ```
 
-Range constraint of the option.
+Option range constraint. This parameter is valid only when **optionConstraintType** is set to **SCAN_CONSTRAINT_RANGE**.
 
 **Type:** [Range](arkts-basicservices-scan-range-i.md)
 
@@ -56,7 +56,7 @@ Range constraint of the option.
 optionConstraintString?: string[]
 ```
 
-String constraints of the option.
+String constraint of the option. This parameter is valid only when **optionConstraintType** is set to **SCAN_CONSTRAINT_STRING_LIST**. The default value is an empty array.
 
 **Type:** string[]
 
@@ -72,7 +72,7 @@ String constraints of the option.
 optionConstraintType: ConstraintType
 ```
 
-Constraint type of the option.
+Constraint type of the option, which determines the valid constraint field. If this parameter is set to **SCAN_CONSTRAINT_NONE**, there is no constraint.
 
 **Type:** [ConstraintType](arkts-basicservices-scan-constrainttype-e.md)
 

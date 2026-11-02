@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function off(type: 'scanDeviceFound', callback?: Callback<ScannerDevice>): void
 ```
 
-Unregisters a callback used to listen for the scanner discovery event. This API uses an asynchronous callback to return the result.
+Unregisters a callback used to listen for the scanner discovery event.
 
 **Since:** 20
 
@@ -55,7 +55,7 @@ scan.off('scanDeviceFound', callback);
 function off(type: 'scanDeviceSync', callback?: Callback<ScannerSyncDevice>): void
 ```
 
-Unregisters a callback used to listen for the scanner sync event. This API uses an asynchronous callback to return the result.
+Unregisters a callback used to listen for the scanner sync event.
 
 **Since:** 20
 

@@ -24,7 +24,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 static genEccSignature(spec: EccSignatureSpec): Uint8Array
 ```
 
-Converts an ECC/SM2 signature (r, s) to the ASN.1 DER encoding.
+Converts an ECC/SM2 signature (r, s) to the ASN.1 DER format.
 
 **Since:** 20
 
@@ -38,13 +38,13 @@ Converts an ECC/SM2 signature (r, s) to the ASN.1 DER encoding.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| spec | [EccSignatureSpec](arkts-cryptoarchitecture-cryptoframework-eccsignaturespec-i.md) | Yes | ECC/SM2 signature data to convert. |
+| spec | [EccSignatureSpec](arkts-cryptoarchitecture-cryptoframework-eccsignaturespec-i.md) | Yes | ECC/SM2 signature data that contains (r, s). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Uint8Array | Signature data in ASN.1 DER encoding. |
+| Uint8Array | Signature data encoded in ASN.1 DER format. |
 
 **Error codes:**
 
@@ -84,7 +84,7 @@ function testGenEccSignature() {
 static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 ```
 
-Generates r and s from the ECC/SM2 signature data in ASN.1 DER encoding.
+Generates r and s from the ECC/SM2 signature data encoded in ASN.1 DER format.
 
 **Since:** 20
 
@@ -98,13 +98,13 @@ Generates r and s from the ECC/SM2 signature data in ASN.1 DER encoding.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | Uint8Array | Yes | Signature data in ASN.1 DER encoding. |
+| data | Uint8Array | Yes | Signature data encoded in ASN.1 DER format. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [EccSignatureSpec](arkts-cryptoarchitecture-cryptoframework-eccsignaturespec-i.md) | Object that contains r and s. |
+| [EccSignatureSpec](arkts-cryptoarchitecture-cryptoframework-eccsignaturespec-i.md) | Data object that contains r and s. |
 
 **Error codes:**
 

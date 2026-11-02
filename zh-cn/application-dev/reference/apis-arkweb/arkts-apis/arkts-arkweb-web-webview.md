@@ -2,6 +2,8 @@
 
 本模块提供管理Web模块的能力。
 
+## 需要权限
+
 访问在线网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
 **起始版本：** 9

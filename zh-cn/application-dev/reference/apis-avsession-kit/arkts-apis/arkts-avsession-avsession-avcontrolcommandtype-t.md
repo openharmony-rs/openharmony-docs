@@ -4,7 +4,7 @@
 type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'seek' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite' | 'playFromAssetId' | 'playWithAssetId' | 'answer' | 'hangUp' | 'toggleCallMute' | 'setTargetLoopMode'
 ```
 
-The type of control command
+会话可传递的命令。
 
 **起始版本：** 10
 
@@ -16,20 +16,20 @@ The type of control command
 
 | 类型 | 说明 |
 | --- | --- |
-| 'play' | Play the current media.<br>**起始版本：** 10 |
-| 'pause' | Pause the current media.<br>**起始版本：** 10 |
-| 'stop' | Stop the current media.<br>**起始版本：** 10 |
-| 'playNext' | Play the next media in the queue.<br>**起始版本：** 10 |
-| 'playPrevious' | Play the previous media in the queue.<br>**起始版本：** 10 |
-| 'fastForward' | Fast forward the current media.<br>**起始版本：** 10 |
-| 'rewind' | Rewind the current media.<br>**起始版本：** 10 |
-| 'seek' | Seek to a specific position in the media.<br>**起始版本：** 10 |
-| 'setSpeed' | Set the playback speed.<br>**起始版本：** 10 |
-| 'setLoopMode' | Set the loop mode for the media.<br>**起始版本：** 10 |
-| 'toggleFavorite' | Toggle the favorite status of the current media.<br>**起始版本：** 10 |
-| 'playFromAssetId' | Play media specified by an asset ID.<br>**起始版本：** 11 |
-| 'playWithAssetId' | Play media with an asset ID (dynamic support).<br>**起始版本：** 20 |
-| 'answer' | Answer an incoming call.<br>**起始版本：** 11 |
-| 'hangUp' | Hang up the current call.<br>**起始版本：** 11 |
-| 'toggleCallMute' | Toggle the mute status of the call.<br>**起始版本：** 11 |
-| 'setTargetLoopMode' | Set the target loop mode.<br>**起始版本：** 18 |
+| 'play' | 播放。<br>**起始版本：** 10 |
+| 'pause' | 暂停。<br>**起始版本：** 10 |
+| 'stop' | 停止。<br>**起始版本：** 10 |
+| 'playNext' | 下一首。<br>**起始版本：** 10 |
+| 'playPrevious' | 上一首。<br>**起始版本：** 10 |
+| 'fastForward' | 快进。<br>**起始版本：** 10 |
+| 'rewind' | 快退。<br>**起始版本：** 10 |
+| 'seek' | 跳转到指定时间点。<br>**起始版本：** 10 |
+| 'setSpeed' | 设置播放倍速。<br>**起始版本：** 10 |
+| 'setLoopMode' | 设置循环模式。<br>**起始版本：** 10 |
+| 'toggleFavorite' | 切换收藏状态。<br>**起始版本：** 10 |
+| 'playFromAssetId' | 播放指定的assetId。<br>**起始版本：** 11 |
+| 'playWithAssetId' | 播放指定的assetId。<br>**起始版本：** 20 |
+| 'answer' | 接听。<br>**起始版本：** 11 |
+| 'hangUp' | 挂断。<br>**起始版本：** 11 |
+| 'toggleCallMute' | 切换通话静音状态。<br>**起始版本：** 11 |
+| 'setTargetLoopMode' | 设置目标循环模式。<br>**起始版本：** 18 |

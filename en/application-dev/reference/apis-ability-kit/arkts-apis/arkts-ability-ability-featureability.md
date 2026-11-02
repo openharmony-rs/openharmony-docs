@@ -2,6 +2,13 @@
 
 The FeatureAbility module provides APIs that enable user interaction. You can use the APIs to start or terminate an ability, obtain a dataAbilityHelper object, obtain the window corresponding to the current ability, and connect to or disconnect from a ServiceAbility.
 
+> **NOTE:** 
+> 
+> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a
+> superscript to indicate their earliest API version.
+> 
+> The APIs of this module can be used only in the FA model.
+
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
@@ -9,6 +16,10 @@ The FeatureAbility module provides APIs that enable user interaction. You can us
 <!--Device-unnamed-declare namespace featureAbility--><!--Device-unnamed-declare namespace featureAbility-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
+
+## Constraints
+
+The APIs of the FeatureAbility module can be called only by PageAbilities.
 
 ## Modules to Import
 
@@ -33,8 +44,8 @@ import { featureAbility } from '@kit.AbilityKit';
 | [getWindow](arkts-ability-featureability-getwindow-f.md#getwindow-2) | Obtains the window corresponding to this ability. This API uses a promise to return the result. |
 | [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md#haswindowfocus-1) | Checks whether the main window of this ability has the focus. This API uses an asynchronous callback to return the result. |
 | [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md#haswindowfocus-2) | Checks whether the main window of this ability has the focus. This API uses a promise to return the result. |
-| [startAbility](arkts-ability-featureability-startability-f.md#startability-1) | Starts an ability. This API uses an asynchronous callback to return the result. |
-| [startAbility](arkts-ability-featureability-startability-f.md#startability-2) | Starts an ability. This API uses a promise to return the result. |
+| [startAbility](arkts-ability-featureability-startability-f.md#startability-1) | Starts an ability. This API uses an asynchronous callback to return the result. It is used to start an ability for page navigation, launching other applications, opening third-party applications, and other scenarios. |
+| [startAbility](arkts-ability-featureability-startability-f.md#startability-2) | Starts an ability. This API uses a promise to return the result. It is used to start an ability for page navigation, launching other applications, opening third-party applications, and other scenarios. |
 | [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult-1) | Starts an ability. This API uses an asynchronous callback to return the result. The following situations may be possible for a started ability: |
 | [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult-2) | Starts an ability. This API uses a promise to return the result. The following situations may be possible for a started ability: |
 | [terminateSelf](arkts-ability-featureability-terminateself-f.md#terminateself-1) | Terminates this ability. This API uses an asynchronous callback to return the result. |

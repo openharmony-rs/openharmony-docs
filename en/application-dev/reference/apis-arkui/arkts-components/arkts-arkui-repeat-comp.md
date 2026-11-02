@@ -4,6 +4,12 @@ Defines Repeat Component, and Add More Array Type.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [RepeatController](arkts-arkui-repeat-comp-repeatcontroller-c.md) | Defines a controller of the **Repeat** component. You can bind the controller to the **Repeat** component through the **controller** field in [RepeatOptions](arkts-arkui-repeat-comp-repeatoptions-i.md) and call [clearCache](arkts-arkui-repeat-comp-repeatcontroller-c.md#clearcache) to clear the nodes in the reuse pool of the **Repeat** component as needed. |
+
 ### Interfaces
 
 | Name | Description |

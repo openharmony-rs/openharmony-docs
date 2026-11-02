@@ -4,7 +4,7 @@
 interface CertCRLCollection
 ```
 
-Provides APIs for locating certificates or CRLs in a **CertCRLCollection** object.
+Certificate and CRL collection.
 
 **Since:** 11
 
@@ -44,7 +44,7 @@ Selects certificates that match the specified parameters. This API uses a promis
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;&gt; | Promise used to return the matched certificates. |
+| Promise&lt;Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;&gt; | Promise used to return an array of matched certificate objects. |
 
 **Error codes:**
 
@@ -140,7 +140,7 @@ Selects certificates that match the specified parameters. This API uses an async
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | param | [X509CertMatchParameters](arkts-devicecertificate-cert-x509certmatchparameters-i.md) | Yes | Parameters used to match the certificates. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the matched certificates obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;&gt; | Yes | Callback used to return the result. If the certificate objects are successfully found, **err** is **undefined** and **data** is an array of matched certificate objects obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -371,7 +371,7 @@ Selects CRLs that match the specified parameters. This API uses an asynchronous 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | param | [X509CRLMatchParameters](arkts-devicecertificate-cert-x509crlmatchparameters-i.md) | Yes | Parameters used to match the CRLs. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the matched CRLs obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt;&gt; | Yes | Callback used to return the result. If the CRLs are successfully found, **err** is **undefined** and **data** is an array of CRLs obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 

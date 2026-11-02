@@ -26,13 +26,13 @@ Creates an **X500DistinguishedName** object with a name in the form of a string.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| nameStr | string | Yes | Name in a slash-separated format, each relative distinguished name is in the format of **attribute=value**. Common attributes include **CN** (common name), **O** (organization name), **OU** (organization unit), **C** (country/region), **ST** (province/state), and **L** (city/district). For example, **\/CN=example.com/O=Example/C=CN**. |
+| nameStr | string | Yes | Distinguishable names of the string type are separated by slashes (/). Each distinguishable name is in the format of an attribute=a value. Common attributes include **CN** (common name), **O** (organization name), **OU** (organization unit), **C** (country/region), **ST** (province/state), and **L** (city/district). For example, **\/CN=example.com/O=Example/C=CN**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md)&gt; | Promise used to return the **X500DistinguishedName** object created. |
+| Promise&lt;[X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md)&gt; | Promise used to return the **X500DistinguishedName** instance obtained. |
 
 **Error codes:**
 
@@ -108,7 +108,7 @@ Creates an **X500DistinguishedName** object with a name in DER format. This API 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md)&gt; | Promise used to return the **X500DistinguishedName** object created. |
+| Promise&lt;[X500DistinguishedName](arkts-devicecertificate-cert-x500distinguishedname-i.md)&gt; | Promise used to return the **X500DistinguishedName** instance obtained. |
 
 **Error codes:**
 

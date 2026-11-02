@@ -32,6 +32,8 @@ pressure: number
 
 **起始版本：** 8
 
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-BarometerResponse-pressure: double--><!--Device-BarometerResponse-pressure: double-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor

@@ -52,7 +52,7 @@ Cancels a request for the asset, the callback of which has not been triggered ye
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>2.The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
 
 **Examples**
@@ -109,7 +109,7 @@ Loads a moving photo in the application sandbox. This API uses a promise to retu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
 
 **Examples**
@@ -125,6 +125,41 @@ async function example(context: Context) {
   }
 }
 ```
+
+## loadSingleFileMovingPhoto
+
+```TypeScript
+static loadSingleFileMovingPhoto(singleFileMovingPhotoUri: string): MovingPhoto
+```
+
+Load single file moving photo as MovingPhoto.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaAssetManager-static loadSingleFileMovingPhoto(singleFileMovingPhotoUri: string): MovingPhoto--><!--Device-MediaAssetManager-static loadSingleFileMovingPhoto(singleFileMovingPhotoUri: string): MovingPhoto-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| singleFileMovingPhotoUri | string | Yes | Uri of single file moving photo. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [MovingPhoto](arkts-medialibrary-photoaccesshelper-movingphoto-i.md) | MovingPhoto Object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: <br>1. The singleFileMovingPhotoUri is empty or can not open. <br>2. The singleFileMovingPhotoUri is belonging to MediaLibrary. |
+| 23800109 | Incorrect file format. |
 
 ## quickRequestImage
 
@@ -167,7 +202,7 @@ Requests an image quickly. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
 **Examples**
@@ -241,7 +276,7 @@ Requests an image. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
 **Examples**
@@ -323,7 +358,7 @@ Requests image data. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
 **Examples**
@@ -409,7 +444,7 @@ Requests a moving photo object, which can be used to request the asset data of t
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**Applicable version:** 18 and later |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
@@ -496,7 +531,7 @@ Requests a video and saves it to the specified sandbox directory. This API uses 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**Applicable version:** 15 and later |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.The dataHandler parameter must be a valid object; <br>3.User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 

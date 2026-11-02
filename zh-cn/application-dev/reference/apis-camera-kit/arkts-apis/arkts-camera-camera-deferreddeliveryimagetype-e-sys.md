@@ -4,7 +4,7 @@
 enum DeferredDeliveryImageType
 ```
 
-Enumerates the deferred delivery image types. In deferred delivery, photo and video capture are divided into two phases. In the first phase, an image or video is output to users at a relatively fast speed. In the second phase, a higher-resolution image or video is output again after optimization processing.
+枚举，分段式投递图像类型。在分段式投递中，拍照和录像分为两个阶段。第一阶段以较快的速度向用户输出图像或视频。第二阶段在优化处理之后，再次输出更高分辨率的图像或视频。
 
 **起始版本：** 11
 
@@ -20,7 +20,7 @@ Enumerates the deferred delivery image types. In deferred delivery, photo and vi
 NONE = 0
 ```
 
-Deferred delivery is not supported.
+不支持分段式投递。
 
 **起始版本：** 11
 
@@ -36,7 +36,7 @@ Deferred delivery is not supported.
 PHOTO = 1
 ```
 
-Deferred delivery for photo capture.
+拍照的分段式投递。
 
 **起始版本：** 11
 
@@ -52,7 +52,7 @@ Deferred delivery for photo capture.
 VIDEO = 2
 ```
 
-Deferred delivery for video capture.
+录像的分段式投递。
 
 **起始版本：** 11
 

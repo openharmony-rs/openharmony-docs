@@ -4,7 +4,7 @@
 enum LightStatus
 ```
 
-Enumerates the camera light statuses, which are obtained by calling VideoSessionForSys. [on('lightStatusChange')](arkts-camera-camera-videosession-i-sys.md#onlightstatuschange).
+枚举，相机光照状态，通过调用 VideoSessionForSys 的[on('lightStatusChange')](arkts-camera-camera-videosession-i-sys.md#onlightstatuschange)接口获取。
 
 **起始版本：** 18
 
@@ -20,7 +20,7 @@ Enumerates the camera light statuses, which are obtained by calling VideoSession
 INSUFFICIENT = 1
 ```
 
-Insufficient lighting (too dark).
+光照不足（过暗）。
 
 **起始版本：** 18
 
@@ -36,7 +36,7 @@ Insufficient lighting (too dark).
 NORMAL = 0
 ```
 
-Normal lighting conditions.
+正常光照条件。
 
 **起始版本：** 18
 

@@ -4,7 +4,7 @@
 enum PolicyType
 ```
 
-Enumerates the policy types.
+枚举，策略类型。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Enumerates the policy types.
 PRIVACY = 1
 ```
 
-Privacy.
+隐私。
 
 **起始版本：** 12
 

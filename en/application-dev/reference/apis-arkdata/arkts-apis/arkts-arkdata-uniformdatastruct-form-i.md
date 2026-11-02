@@ -4,7 +4,7 @@
 interface Form
 ```
 
-Represents data of the widget type defined by the system.
+Represents the system-defined card typed data, which is used to share card information across applications. Typical usage scenarios include card drag-and-drop sharing, cross-application transfer of card content, and data sharing of home screen widgets.
 
 **Since:** 15
 
@@ -24,7 +24,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 abilityName: string
 ```
 
-Ability name corresponding to the widget.
+Ability name corresponding to the card. It is recommended that the name follow the Ability component naming convention: a string no longer than 127 bytes, starting with a letter and containing letters, digits, underscores (_), or periods (.). Ensure that the name is unique within the entire application. The "package name.Ability name" format is recommended (for example, "com.example.myapplication.MainAbility").
 
 **Type:** string
 
@@ -42,7 +42,7 @@ Ability name corresponding to the widget.
 bundleName: string
 ```
 
-Bundle to which the widget belongs.
+Bundle name of the card. The format must comply with the application package name specification.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ Bundle to which the widget belongs.
 details?: Record<string, number | string | Uint8Array>
 ```
 
-Object of the dictionary type used to describe the icon. The key is of the string type, and the value can be a number, a string, or a Uint8Array. By default, it is an empty dictionary object.
+Dictionary type object. The key is of the string type, and the value can contain data of the number (numeric type), string (string type), or Uint8Array (binary byte array) type. This is an optional field, and the default value is an empty dictionary object.
 
 **Type:** Record&lt;string, number &#124; string &#124; Uint8Array&gt;
 

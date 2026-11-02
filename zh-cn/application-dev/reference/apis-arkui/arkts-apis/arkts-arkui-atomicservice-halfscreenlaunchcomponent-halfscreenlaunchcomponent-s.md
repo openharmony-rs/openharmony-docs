@@ -12,7 +12,7 @@ export declare struct HalfScreenLaunchComponent
 > 
 > - 当需要在该组件中实现一个可嵌入式运行的原子化服务时，原子化服务必须继承自[EmbeddableUIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)。若不继承自EmbeddableUIAbility，系统无法确保原子化服务正常运行。
 > 
-> - 如果HalfScreenLaunchComponent设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到HalfScreenLaunchComponent本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议HalfScreenLaunchComponent设置通用属性和通用事件。
+> - 如果HalfScreenLaunchComponent设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)和[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到HalfScreenLaunchComponent本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议HalfScreenLaunchComponent设置通用属性和通用事件。
 
 **起始版本：** 18
 

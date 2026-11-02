@@ -4,7 +4,7 @@
 enum EncodingType
 ```
 
-Enumerates the encoding formats.
+Enumerates the obtained encoding formats.
 
 **Since:** 12
 

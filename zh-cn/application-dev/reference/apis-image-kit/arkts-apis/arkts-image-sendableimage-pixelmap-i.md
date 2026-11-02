@@ -155,7 +155,7 @@ createAlphaPixelmapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -248,7 +248,7 @@ cropSync(region: image.Region): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -341,7 +341,7 @@ flipSync(horizontal: boolean, vertical: boolean): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -528,7 +528,7 @@ getImageInfoSync(): image.ImageInfo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -738,7 +738,7 @@ opacitySync(rate: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -863,7 +863,7 @@ readPixelsSync(area: image.PositionArea): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -958,7 +958,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -1103,7 +1103,7 @@ rotateSync(angle: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -1203,7 +1203,7 @@ scaleSync(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -1350,7 +1350,7 @@ translateSync(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -1538,7 +1538,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 
@@ -1673,7 +1673,7 @@ writePixelsSync(area: image.PositionArea): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| [501](../../errorcode-universal.md#501-资源被其他线程占用访问被拒绝) | Access denied because the resource is occupied by another thread. |
 
 **示例**
 

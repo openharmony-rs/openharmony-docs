@@ -4,7 +4,7 @@
 interface Hyperlink
 ```
 
-Represents data of the hyperlink type.
+Defines the hyperlink typed data, which is used to describe and manage hyperlink information. After a Hyperlink object is created, it can be used in scenarios such as drag-and-drop and sharing to implement cross-application hyperlink data transfer and redirection.
 
 **Since:** 12
 
@@ -24,7 +24,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 description?: string
 ```
 
-Description of the linked content. This parameter is optional. By default, it is an empty string.
+Description of the link content. This is an optional field. Pass this parameter when a text description needs to be provided for the hyperlink (for example, for accessibility, link preview, and other scenarios). If it is not passed, the default value is an empty string, and no description information is provided.
 
 **Type:** string
 
@@ -42,7 +42,7 @@ Description of the linked content. This parameter is optional. By default, it is
 details?: Record<string, string>
 ```
 
-Object of the dictionary type used to describe the attributes of the hyperlink. Both the key and value of the object are of the string type. For example, the following is a **details** object used to describe the properties of a file:
+Dictionary type object whose keys and values are all of the string type. It is used to describe the detailed attribute content of Hyperlink. This is an optional field, and the default value is an empty dictionary object. For example, a data object whose details content is
 
 {
 
@@ -88,7 +88,7 @@ Uniform data type, which has a fixed value of **general.hyperlink**. For details
 url: string
 ```
 
-URL.
+URL of the link. It supports protocols such as http and https and must conform to the standard URL format. For example, `https://www.example.com` or `file:///path/to/file`.
 
 **Type:** string
 

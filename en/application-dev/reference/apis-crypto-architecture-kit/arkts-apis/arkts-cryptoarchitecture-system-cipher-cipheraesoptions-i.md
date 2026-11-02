@@ -95,7 +95,7 @@ Called when data is encrypted or decrypted successfully.
 action: string
 ```
 
-Action to perform. The options are as follows:
+Cipher operation type. The options are as follows:
 
 1. **encrypt**: Encrypts data.
 2. **decrypt**: Decrypts data.

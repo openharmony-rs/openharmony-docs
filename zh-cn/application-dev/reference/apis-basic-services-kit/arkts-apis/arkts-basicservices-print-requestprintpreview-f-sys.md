@@ -28,8 +28,8 @@ function requestPrintPreview(jobInfo: PrintJob, callback: Callback<number>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 请求预览打印数据之后的回调。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息，用于指定要预览的打印任务详细配置。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 请求预览打印数据之后的回调，用于接收预览结果。回调参数为number类型，表示预览打印数据的返回结果，0表示请求成功，非零值表示失败原因的错误码。 |
 
 **错误码：**
 
@@ -93,13 +93,13 @@ function requestPrintPreview(jobInfo: PrintJob): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | 是 | 打印任务信息，用于指定要预览的打印任务详细配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回预览结果。 |
+| Promise&lt;number&gt; | Promise对象，返回预览打印数据的结果。结果为number类型，0表示请求成功，非零值表示失败原因的错误码。 |
 
 **错误码：**
 

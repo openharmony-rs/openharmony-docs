@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function disconnectPrinter(printerId: string, callback: AsyncCallback<void>): void
 ```
 
-断开特定打印机的连接，使用callback异步回调。
+断开指定打印机的连接，使用callback异步回调。
 
 **起始版本：** 10
 
@@ -28,8 +28,8 @@ function disconnectPrinter(printerId: string, callback: AsyncCallback<void>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步断开特定打印机的连接之后的回调。 |
+| printerId | string | 是 | 表示打印机ID。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步断开指定打印机的连接之后的回调。 |
 
 **错误码：**
 
@@ -65,7 +65,7 @@ print.disconnectPrinter(printerId, (error: BusinessError) => {
 function disconnectPrinter(printerId: string): Promise<void>
 ```
 
-断开特定打印机的连接，使用Promise异步回调。
+断开指定打印机的连接，使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -81,7 +81,7 @@ function disconnectPrinter(printerId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 |
+| printerId | string | 是 | 表示打印机ID。 |
 
 **返回值：**
 

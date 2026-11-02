@@ -197,6 +197,61 @@ try {
 }
 ```
 
+## isPermissionSupported
+
+```TypeScript
+isPermissionSupported(permissionName: Permissions): boolean
+```
+
+查询当前设备是否支持该权限，同步返回结果。调用成功后，返回该权限在当前设备上的支持状态。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-AtManager-isPermissionSupported(permissionName: Permissions): boolean--><!--Device-AtManager-isPermissionSupported(permissionName: Permissions): boolean-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permissionName | Permissions | 是 | 需要查询状态的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度需大于0且不能超过256个字符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 返回`true`表示当前设备支持该权限；返回`false`表示不支持。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
+
+**示例**
+
+```TypeScript
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+try {
+  // 查询目标权限的支持状态
+  let result: boolean = atManager.isPermissionSupported('ohos.permission.CAMERA');
+  console.info(`isPermissionSupported success, result: ${result}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isPermissionSupported fail, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('selfPermissionStateChange')
 
 ```TypeScript

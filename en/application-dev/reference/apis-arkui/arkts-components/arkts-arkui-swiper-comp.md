@@ -4,7 +4,7 @@ Defines a container that provides the capability to swipe and display child comp
 
 > **NOTE:** 
 > 
-> - The **Swiper** component implements the scrolling carousel effect through the built-in [PanGesture](arkts-arkui-gesturecontrol-n.md) gesture. When the [disableSwipe](arkts-arkui-swiper-comp-attribute.md#disableswipe) attribute is set to **true**, the gesture listening is disabled, thereby preventing the scrolling operation.
+> - The **Swiper** component implements the scrolling carousel effect through the built-in PanGesture gesture. When the [disableSwipe](arkts-arkui-swiper-comp-attribute.md#disableswipe) attribute is set to **true**, the gesture listening is disabled, thereby preventing the scrolling operation.
 > 
 > - When [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) is reused in the **Swiper** component, recursive updates of parent component state variables by child nodes are prohibited.
 

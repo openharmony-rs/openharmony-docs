@@ -4,7 +4,7 @@
 enum DefaultPrinterType
 ```
 
-Enumerates default printer types.
+Enumerates the methods for determining the default printer.
 
 **Since:** 18
 

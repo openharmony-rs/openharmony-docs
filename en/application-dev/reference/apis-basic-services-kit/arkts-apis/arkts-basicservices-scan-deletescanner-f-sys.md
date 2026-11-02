@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise<void>
 ```
 
-Deletes a scanner. This API uses a promise to return the result.
+Deletes a scanner. This is a system API. This method can be used to remove a scanner when it is offline or no longer needed. After the scanner is deleted, the **scanDeviceDel** event is triggered. You can use **on('scanDeviceDel')** to listen for the device deletion event. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -28,8 +28,8 @@ Deletes a scanner. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uniqueId | string | Yes | Unique ID of the scanner. |
-| discoveryMode | [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md) | Yes | Discovery mode. |
+| uniqueId | string | Yes | Unique ID of a scanner, which can be obtained by calling **getAddedScanners()** or from the **scan.on('scanDeviceAdd')** event callback. |
+| discoveryMode | [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md) | Yes | Discovery mode of the scanner, which must be the same as that used when the scanner is added. |
 
 **Return value:**
 

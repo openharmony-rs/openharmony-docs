@@ -65,7 +65,7 @@ class ServiceExt extends ServiceExtensionAbility {
 onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>
 ```
 
-Called following **onCreate()** when a ServiceExtensionAbility is started by calling **connectAbility()**. A RemoteObject is returned for communication between the server and client.
+Extension lifecycle callback. If the service is connected through connectAbility, this callback is invoked after onCreate. It returns a RemoteObject object used for communication between the client and the server.
 
 **Since:** 9
 
@@ -217,7 +217,15 @@ class ServiceExt extends ServiceExtensionAbility {
 onDisconnect(want: Want): void | Promise<void>
 ```
 
-Called when a client is disconnected from this ServiceExtensionAbility. This API returns the result synchronously or uses a promise to return the result.
+Extension lifecycle callback. It is invoked when the client disconnects from the service.
+
+This API returns the result synchronously or uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> - Once the **onDisconnect** lifecycle callback completes, the application may exit. This can interrupt any pending asynchronous operations (such as asynchronously writing data to a database), preventing them from finishing successfully. For any non-instantaneous tasks, you are advised to use Promise-based asynchronous callbacks.
+> 
+> - Be aware that asynchronous operations are subject to a default timeout of approximately 1 second. Even if this timeout is exceeded, the system may still force-terminate the application. Note that the exact timeout duration can vary by device.
 
 **Since:** 9
 
@@ -287,7 +295,7 @@ Dumps the client information.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| params | Array&lt;string&gt; | Yes | Parameters in the form of a command. |
+| params | Array&lt;string&gt; | Yes | Array of parameters passed in command line mode. |
 
 **Return value:**
 
@@ -356,7 +364,7 @@ class ServiceExt extends ServiceExtensionAbility {
 onRequest(want: Want, startId: number): void
 ```
 
-Called following **onCreate()** when a ServiceExtensionAbility is started by calling **startAbility()** or **startServiceExtensionAbility()**. The value of **startId** is incremented for each ServiceExtensionAbility that is started.
+Extension lifecycle callback. If the service is started by startServiceExtensionAbility or requestDialogService, this callback is invoked after [onCreate](#oncreate). It is invoked each time the service is started, and startId increments each time.
 
 **Since:** 9
 

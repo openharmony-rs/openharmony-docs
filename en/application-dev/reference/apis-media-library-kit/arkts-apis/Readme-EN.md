@@ -69,6 +69,7 @@
   - [ResultSet(system api)](arkts-medialibrary-photoaccesshelper-resultset-c-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ShareAlbumMemberInfo(system api)](arkts-medialibrary-photoaccesshelper-sharealbummemberinfo-c-sys.md)<!--DelEnd-->
+  - [SingleFileMovingPhotoUtil](arkts-medialibrary-photoaccesshelper-singlefilemovingphotoutil-c.md)
   <!--Del-->
   - [TaskSignal(system api)](arkts-medialibrary-photoaccesshelper-tasksignal-c-sys.md)<!--DelEnd-->
   - [VideoDurationFilter](arkts-medialibrary-photoaccesshelper-videodurationfilter-c.md)

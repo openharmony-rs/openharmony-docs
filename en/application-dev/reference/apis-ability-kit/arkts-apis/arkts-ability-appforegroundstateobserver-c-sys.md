@@ -4,7 +4,7 @@
 export default class AppForegroundStateObserver
 ```
 
-The module defines the listener used to listen for application startup and exit state changes. It can be used as an input parameter of [appManager.on('appForegroundState')](arkts-ability-appmanager-on-f-sys.md#onappforegroundstate) to listen for the state changes of all applications.
+The module defines the listener used to listen for application startup, foreground and background, and exit states. It can be used as an input parameter of [appManager.on('appForegroundState')](arkts-ability-appmanager-on-f-sys.md#onappforegroundstate) to listen for the state changes of all applications.
 
 **Since:** 11
 
@@ -20,7 +20,7 @@ The module defines the listener used to listen for application startup and exit 
 onAppStateChanged(appStateData: AppStateData): void
 ```
 
-Called when the application launch or exit state changes.
+Called when the application startup, foreground and background, or exit state changes.
 
 **Since:** 11
 

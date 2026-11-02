@@ -43,12 +43,6 @@ addEntry(type: string, value: ValueType): void
 | type | string | 是 | 要创建的数据类型，见[UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)。 |
 | value | [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | 是 | 要创建的数据的值。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
-
 **示例**
 
 ```TypeScript
@@ -128,12 +122,6 @@ constructor(type: string, value: ValueType)
 | --- | --- | --- | --- |
 | type | string | 是 | 要创建的数据记录的类型，用于标识数据记录的具体类型。取值见[UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)，如'general.plain-text'、'general.hyperlink'等。 |
 | value | [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | 是 | 要创建的数据记录的值。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例**
 
@@ -272,12 +260,6 @@ getEntry(type: string): ValueType
 | 类型 | 说明 |
 | --- | --- |
 | [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | 当前数据记录对应的值。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 

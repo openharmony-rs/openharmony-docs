@@ -28,7 +28,7 @@ Removes printers. This API uses an asynchronous callback to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerIds | Array&lt;string&gt; | Yes | List of printers to remove. |
+| printerIds | Array&lt;string&gt; | Yes | IDs of the printers to remove. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -81,7 +81,7 @@ Removes printers. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerIds | Array&lt;string&gt; | Yes | List of printers to remove. |
+| printerIds | Array&lt;string&gt; | Yes | IDs of the printers to remove. |
 
 **Return value:**
 

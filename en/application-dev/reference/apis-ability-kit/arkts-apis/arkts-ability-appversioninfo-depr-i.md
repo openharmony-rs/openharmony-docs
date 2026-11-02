@@ -26,8 +26,7 @@ Application name.
 
 **Since:** 7
 
-**Model restriction:** 
-- API version 12 and later: This API can be used only in the FA model.
+**Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -49,8 +48,7 @@ Application version number.
 
 **Since:** 7
 
-**Model restriction:** 
-- API version 12 and later: This API can be used only in the FA model.
+**Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -72,8 +70,7 @@ Application version name.
 
 **Since:** 7
 
-**Model restriction:** 
-- API version 12 and later: This API can be used only in the FA model.
+**Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

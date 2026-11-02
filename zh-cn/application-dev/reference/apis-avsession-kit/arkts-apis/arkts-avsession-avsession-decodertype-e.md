@@ -18,7 +18,7 @@ enum DecoderType
 OH_AVCODEC_MIMETYPE_AUDIO_VIVID = 'audio/av3a'
 ```
 
-Defination of audio vivid codec type.
+AUDIO AV3A格式。
 
 **起始版本：** 19
 
@@ -34,7 +34,7 @@ Defination of audio vivid codec type.
 OH_AVCODEC_MIMETYPE_VIDEO_AVC = 'video/avc'
 ```
 
-Defination of avc codec type.
+VIDEO AVC格式。
 
 **起始版本：** 19
 
@@ -50,7 +50,7 @@ Defination of avc codec type.
 OH_AVCODEC_MIMETYPE_VIDEO_HEVC = 'video/hevc'
 ```
 
-Defination of hevc codec type.
+VIDEO HEVC格式。
 
 **起始版本：** 19
 

@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryPrinterInfoByIp(printerIp: string): Promise<void>
 ```
 
-根据ip查询打印机信息。
+根据IP查询打印机信息，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -36,7 +36,7 @@ function queryPrinterInfoByIp(printerIp: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

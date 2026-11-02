@@ -4,7 +4,7 @@
 class Image extends File
 ```
 
-Represents the image data. It is a child class of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe images.
+Represents image data. It is a subclass of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe an image file.
 
 **Inheritance/Implementation:** Image extends [File](arkts-arkdata-unifieddatachannel-file-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get imageUri(): string
 ```
 
-Indicates the uri of image
+URI of the local image data or network image. The URI of the local image data can be obtained by calling [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md).
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Indicates the uri of image
 set imageUri(value: string)
 ```
 
-Indicates the uri of image
+URI of the local image data or network image. The URI of the local image data can be obtained by calling [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md).
 
 **Type:** string
 

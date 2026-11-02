@@ -68,15 +68,11 @@ CAMERA_POSITION_FOLD_INNER = 3
 
 折叠态相机。
 
-从API版本11开始支持，从API版本12开始废弃。
-
 **起始版本：** 11
 
 **废弃版本：** 12
 
-**替代接口：** null、null
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**替代接口：** null
 
 <!--Device-CameraPosition-CAMERA_POSITION_FOLD_INNER = 3--><!--Device-CameraPosition-CAMERA_POSITION_FOLD_INNER = 3-End-->
 

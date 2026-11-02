@@ -4,7 +4,7 @@
 enum ListenerStatus
 ```
 
-Enumerates the status codes returned when data is obtained from the UDMF.
+Enumerates the status codes returned when obtaining data from UDMF.
 
 **Since:** 15
 
@@ -18,7 +18,7 @@ Enumerates the status codes returned when data is obtained from the UDMF.
 CANCELED = 2
 ```
 
-The task is canceled.
+Canceled.
 
 **Since:** 15
 
@@ -36,7 +36,7 @@ The task is canceled.
 COPY_FILE_FAILED = 204
 ```
 
-Failed to copy data.
+An error occurred during file copy.
 
 **Since:** 15
 
@@ -72,7 +72,7 @@ No data is obtained.
 FINISHED = 0
 ```
 
-The task is completed.
+Finished.
 
 **Since:** 15
 
@@ -90,7 +90,7 @@ The task is completed.
 INNER_ERROR = 200
 ```
 
-An internal error occurs.
+An internal error occurred.
 
 **Since:** 15
 
@@ -126,7 +126,7 @@ INVALID_PARAMETERS = 201
 PROCESSING = 1
 ```
 
-The task is being processed.
+Processing.
 
 **Since:** 15
 
@@ -144,7 +144,7 @@ The task is being processed.
 SYNC_FAILED = 203
 ```
 
-Failed to sync data.
+An error occurred during synchronization.
 
 **Since:** 15
 

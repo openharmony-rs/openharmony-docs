@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function off(type: 'printerChange', callback?: PrinterChangeCallback): void
 ```
 
-取消注册打印机变动事件回调，使用callback回调。
+取消注册打印机变动事件回调。
 
 **起始版本：** 18
 
@@ -27,7 +27,7 @@ function off(type: 'printerChange', callback?: PrinterChangeCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
-| callback | [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md) | 否 | 表示取消注册打印机变动事件后的回调。 |
+| callback | [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md) | 否 | 表示要取消注册的打印机变动事件回调。不传入时取消调用方所有已注册的回调。 |
 
 **错误码：**
 

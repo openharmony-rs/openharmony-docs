@@ -4,7 +4,7 @@
 enum NetworkPolicy
 ```
 
-Indicates network policy.
+Enumerates the network policies for downloading cloud-side models.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Indicates network policy.
 WIFI_AND_CELLULAR = 1
 ```
 
-Using WiFi and Cellular.
+Download the model over both Wi-Fi and cellular networks. This policy applies to scenarios where the model needs to be obtained quickly and mobile data usage is allowed.
 
 **Since:** 26.0.0
 
@@ -34,7 +34,7 @@ Using WiFi and Cellular.
 WIFI_ONLY = 0
 ```
 
-Using WiFi.
+Download the model only over Wi-Fi. This policy applies to scenarios where mobile data traffic needs to be saved.
 
 **Since:** 26.0.0
 

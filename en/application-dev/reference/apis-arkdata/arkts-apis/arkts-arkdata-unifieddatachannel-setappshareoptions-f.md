@@ -12,7 +12,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 function setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 ```
 
-Sets the [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) for the application data. Currently, only the drag- and-drop data channel is supported.
+Sets the usage scope of the data in the in-app drag-and-drop data channel, as defined by [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md). Currently, only the DRAG data channel supports this management setting. After the call succeeds, the usage scope of the data in the in-app drag-and-drop data channel is set to the specified ShareOptions value.
 
 **Since:** 14
 
@@ -30,14 +30,14 @@ Sets the [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) for 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| intention | [Intention](arkts-arkdata-unifieddatachannel-intention-e.md) | Yes | Type of the data channel. Currently, only the data channel of the **DRAG** type is supported. |
-| shareOptions | [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) | Yes | Usage scope of the [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddataproperties-c.md). |
+| intention | [Intention](arkts-arkdata-unifieddatachannel-intention-e.md) | Yes | Data channel type related to the data operation. Currently, only the DRAG data channel is supported. |
+| shareOptions | [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) | Yes | Usage scope of [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddataproperties-c.md) within the device. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [20400001](../errorcode-udmf.md#20400001-settings-already-exist) | Settings already exist. To reconfigure, remove the existing sharing options. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 14 and later |
 

@@ -36,6 +36,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
+| [RenderTarget](arkts-arkgraphics3d-sceneresources-rendertarget-i-sys.md) | 渲染目标类型，继承自[Image](arkts-arkgraphics3d-sceneresources-image-i.md)，用于离屏渲染。 |
 | [UnlitShadowAlphaMaterial](arkts-arkgraphics3d-sceneresources-unlitshadowalphamaterial-i-sys.md) | 此材质继承自[Material](arkts-arkgraphics3d-sceneresources-material-i.md)，仅绘制材质表面阴影。材质启用[Blend](arkts-arkgraphics3d-sceneresources-blend-i.md)属性时，可与背景融合模拟透明效果。 |
 <!--DelEnd-->
 

@@ -4,7 +4,7 @@
 interface HighResolutionPhotoSession extends Session, AutoExposure, Focus
 ```
 
-HighResolutionPhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[Focus](arkts-camera-camera-focus-i.md)。实现高分辨率拍照会话，用于设置高分辨率拍照模式的参数，并保存运行相机所需的[CameraInput](arkts-camera-camera-camerainput-i.md)和[CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。继承自[Session](arkts-camera-camera-session-i.md)。
+实现高分辨率拍照会话，用于设置高分辨率拍照模式的参数，并保存运行相机所需的[CameraInput](arkts-camera-camera-camerainput-i.md)和[CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。
 
 > **说明：** 
 > 

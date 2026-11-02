@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function openScanner(scannerId: string): Promise<void>
 ```
 
-Opens a scanner. This API uses a promise to return the result.
+Opens a scanner. This API can be used only after initialization is complete by calling **init()**. This API uses a promise to return the result. After using the scanner, call **closeScanner()** to close the scanner and release resources.
 
 **Since:** 20
 

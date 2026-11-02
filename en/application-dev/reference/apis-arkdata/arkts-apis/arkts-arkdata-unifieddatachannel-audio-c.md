@@ -4,7 +4,7 @@
 class Audio extends File
 ```
 
-Represents audio data. It is a child class of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe an audio file.
+Audio data, a subclass of [File](arkts-arkdata-unifieddatachannel-file-c.md), used to describe an audio file.
 
 **Inheritance/Implementation:** Audio extends [File](arkts-arkdata-unifieddatachannel-file-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get audioUri(): string
 ```
 
-Indicates the uri of audio
+URI of the local audio data or network audio data. The URI of the local audio data can be obtained by calling [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md).
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Indicates the uri of audio
 set audioUri(value: string)
 ```
 
-Indicates the uri of audio
+URI of the local audio data or network audio data. The URI of the local audio data can be obtained by calling [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md).
 
 **Type:** string
 

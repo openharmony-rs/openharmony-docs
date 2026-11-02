@@ -4,7 +4,7 @@
 enum PortraitEffect
 ```
 
-Enumerates the portrait effects.
+枚举，人像效果。
 
 **起始版本：** 10
 
@@ -20,7 +20,7 @@ Enumerates the portrait effects.
 CIRCLES = 1
 ```
 
-Circles.
+圆形。
 
 **起始版本：** 10
 
@@ -36,7 +36,7 @@ Circles.
 HEART = 2
 ```
 
-Heart-shaped.
+心形。
 
 **起始版本：** 11
 
@@ -52,7 +52,7 @@ Heart-shaped.
 OFF = 0
 ```
 
-Disabled.
+关闭。
 
 **起始版本：** 10
 
@@ -68,7 +68,7 @@ Disabled.
 ROTATED = 3
 ```
 
-Rotated.
+旋转。
 
 **起始版本：** 11
 
@@ -84,7 +84,7 @@ Rotated.
 STUDIO = 4
 ```
 
-Studio light.
+影棚光。
 
 **起始版本：** 11
 
@@ -100,7 +100,7 @@ Studio light.
 THEATER = 5
 ```
 
-Theater light.
+剧场光。
 
 **起始版本：** 11
 

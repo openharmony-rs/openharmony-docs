@@ -18,7 +18,7 @@ Enumerates the certificate encoding formats.
 FORMAT_DER = 0
 ```
 
-Distinguished Encoding Rules (DER) format.
+DER.
 
 **Since:** 9
 
@@ -34,7 +34,7 @@ Distinguished Encoding Rules (DER) format.
 FORMAT_PEM = 1
 ```
 
-Privacy-Enhanced Mail (PEM) format.
+PEM.
 
 **Since:** 9
 
@@ -50,7 +50,7 @@ Privacy-Enhanced Mail (PEM) format.
 FORMAT_PKCS7 = 2
 ```
 
-PKCS #7 format.
+PKCS #7.
 
 **Since:** 11
 

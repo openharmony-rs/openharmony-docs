@@ -4,7 +4,7 @@
 class ECCKeyUtil
 ```
 
-Provides utilities for ECC key parameter generation and point conversion based on the specified elliptic curve.
+Provides tools for generating ECC key parameters and converting points based on a specified elliptic curve.
 
 **Since:** 11
 

@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 checkValidityWithDate(date: string): void
 ```
 
-Checks the validity period of this X.509 certificate.
+Checks the validity period of the X.509 certificate.
 
 **Since:** 9
 
@@ -38,7 +38,7 @@ Checks the validity period of this X.509 certificate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| date | string | Yes | Date in an ASN.1 time format, specifically UTCTime or GeneralizedTime. |
+| date | string | Yes | Date, in **ASN.1 UTCTime** or **GeneralizedTime** format. |
 
 **Error codes:**
 
@@ -106,7 +106,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getBasicConstraints(): number
 ```
 
-Obtains the basic constraints of this X.509 certificate.
+Obtains basic constraints on the X.509 certificate.
 
 **Since:** 9
 
@@ -246,7 +246,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getCRLDistributionPoint(): DataArray
 ```
 
-Obtains the CRL distribution points of this X.509 certificate.
+Obtains URIs of the CRL distribution points of the X.509 certificate.
 
 **Since:** 12
 
@@ -260,7 +260,7 @@ Obtains the CRL distribution points of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | URIs of the CRL distribution points from this X.509 certificate obtained. |
+| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | URIs of the distribution points for this X.509 CRL obtained. |
 
 **Error codes:**
 
@@ -340,7 +340,7 @@ Obtains the serialized X.509 certificate data. This API uses an asynchronous cal
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the serialized X.509 certificate data obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Yes | Callback used to return the result. If the serialized X.509 certificate data is successfully obtained, **err** is **undefined**, and **data** is the serialized X.509 certificate data obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -418,7 +418,7 @@ Obtains the serialized X.509 certificate data. This API uses a promise to return
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Promise used to return the serialized X.509 certificate data obtained. |
+| Promise&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | Promise used to return the serialized X.509 certificate data. |
 
 **Error codes:**
 
@@ -493,7 +493,7 @@ Obtains the certificate extension object.
 
 | Type | Description |
 | --- | --- |
-| [CertExtension](arkts-devicecertificate-cert-certextension-i.md) | Certificate extensions object obtained. |
+| [CertExtension](arkts-devicecertificate-cert-certextension-i.md) | Certificate extension object. |
 
 **Error codes:**
 
@@ -657,11 +657,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getIssuerAltNames(): DataArray
 ```
 
-Obtains the Issuer Alternative Names (IANs) of this X.509 certificate.
+Obtains the alternative issuer names of the X509 certificate.
 
 > **NOTE:** 
 > 
-> The obtained IANs contain a string terminator.
+> The obtained alternative issuer names of the X509 certificate contain a string terminator.
 
 **Since:** 9
 
@@ -675,7 +675,7 @@ Obtains the Issuer Alternative Names (IANs) of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | IANs obtained. |
+| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | Alternative issuer names of the X509 certificate obtained. |
 
 **Error codes:**
 
@@ -748,12 +748,12 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getIssuerName(): DataBlob
 ```
 
-Obtains the issuer name of this X.509 certificate.
+Obtains the X.509 certificate issuer name.
 
 > **NOTE:** 
 > 
-> - The obtained X.509 certificate issuer name ends with a NUL terminator (value 0). Determine whether to remove this terminator based on your business requirements.
-> - The obtained certificate issuer name is ASCII-encoded. When converted to a string, it is a distinguished name string that starts with a slash (/) and uses slashes (/) to separate relative distinguished names.
+> - The obtained X.509 certificate issuer name ends with a null terminator (with the value of **0**). Determine whether to remove the terminator based on service requirements.
+> - The obtained certificate issuer name is encoded in ASCII. After being converted into a string, the name starts with a slash (/), followed by a string of distinguished names separated by slashes (/).
 
 **Since:** 9
 
@@ -767,7 +767,7 @@ Obtains the issuer name of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | X.509 certificate issuer obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | X.509 certificate issuer name obtained. |
 
 **Error codes:**
 
@@ -831,7 +831,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getIssuerName(encodingType: EncodingType): string
 ```
 
-Obtains the issuer name of this X.509 certificate based on the encoding type.
+Obtains the X.509 certificate issuer name based on the encoding type.
 
 **Since:** 20
 
@@ -928,7 +928,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getIssuerX500DistinguishedName(): X500DistinguishedName
 ```
 
-Obtains the X.500 distinguished name object of the X.509 certificate issuer.
+Obtains the X.500 distinguished name of the X.509 certificate issuer.
 
 **Since:** 12
 
@@ -1118,7 +1118,7 @@ Obtains the key usage of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Key usage of the X.509 certificate obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Usage of the X.509 certificate key. |
 
 **Error codes:**
 
@@ -1191,7 +1191,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getNotAfterTime(): string
 ```
 
-Obtains the expiration time of this X.509 certificate.
+Obtains the expiration time of the X.509 certificate.
 
 **Since:** 9
 
@@ -1205,7 +1205,7 @@ Obtains the expiration time of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| string | Certificate expiration time obtained, in an ASN.1 time format, specifically UTCTime or GeneralizedTime. |
+| string | X.509 certificate expiration time, in **ASN.1 UTCTime** or **GeneralizedTime** format. |
 
 **Error codes:**
 
@@ -1269,7 +1269,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getNotBeforeTime(): string
 ```
 
-Obtains the start time of this X.509 certificate.
+Obtains the start time of the X.509 certificate.
 
 **Since:** 9
 
@@ -1283,7 +1283,7 @@ Obtains the start time of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| string | Certificate start time obtained, in an ASN.1 time format, specifically UTCTime or GeneralizedTime. |
+| string | X.509 certificate effective time, in **ASN.1 UTCTime** or **GeneralizedTime** format. |
 
 **Error codes:**
 
@@ -1347,7 +1347,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getPublicKey(): cryptoFramework.PubKey
 ```
 
-Obtains the public key of this X.509 certificate.
+Obtains the public key of the X.509 certificate.
 
 **Since:** 9
 
@@ -1423,7 +1423,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getSignature(): DataBlob
 ```
 
-Obtains the signature data of this X.509 certificate.
+Obtains the signature data of the X.509 certificate.
 
 **Since:** 9
 
@@ -1437,7 +1437,7 @@ Obtains the signature data of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Signature data obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Indicates the X.509 certificate signature data. |
 
 **Error codes:**
 
@@ -1501,7 +1501,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getSignatureAlgName(): string
 ```
 
-Obtains the signing algorithm of this X.509 certificate.
+Obtains the name of the X.509 certificate signature algorithm.
 
 **Since:** 9
 
@@ -1515,7 +1515,7 @@ Obtains the signing algorithm of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| string | X.509 certificate signing algorithm obtained. |
+| string | Name of the X.509 certificate signature algorithm obtained. |
 
 **Error codes:**
 
@@ -1579,7 +1579,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getSignatureAlgOid(): string
 ```
 
-Obtains the object identifier (OID) of the X.509 certificate signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the object identifier (OID) of the X.509 certificate signature algorithm. OIDs are allocated by the ISO.
 
 **Since:** 9
 
@@ -1657,7 +1657,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getSignatureAlgParams(): DataBlob
 ```
 
-Obtains the signing algorithm parameters of this X.509 certificate.
+Obtains parameters of the X.509 certificate signature algorithm.
 
 **Since:** 9
 
@@ -1671,7 +1671,7 @@ Obtains the signing algorithm parameters of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | X.509 certificate signing algorithm parameters obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Parameters of the X.509 certificate signature algorithm obtained. |
 
 **Error codes:**
 
@@ -1751,11 +1751,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getSubjectAltNames(): DataArray
 ```
 
-Obtains the Subject Alternative Names (SANs) of this X.509 certificate.
+Obtains the alternative subject names of the X.509 certificate.
 
 > **NOTE:** 
 > 
-> The obtained SANs contain a string terminator.
+> The obtained alternative subject names of the X.509 certificate contain a string terminator.
 
 **Since:** 9
 
@@ -1769,7 +1769,7 @@ Obtains the Subject Alternative Names (SANs) of this X.509 certificate.
 
 | Type | Description |
 | --- | --- |
-| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | SANs obtained. |
+| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | Alternative subject names of the X.509 certificate obtained. |
 
 **Error codes:**
 
@@ -1844,13 +1844,13 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getSubjectName(encodingType?: EncodingType): DataBlob
 ```
 
-Obtains the subject name of this X.509 certificate.
+Obtains the X.509 certificate subject name.
 
 > **NOTE:** 
 > 
-> - If the encodingType parameter is not set, the obtained certificate subject name ends with a NUL terminator (value 0). Determine whether to remove this terminator based on your business requirements.
-> - If the encodingType parameter is not set, the obtained certificate subject name is ASCII-encoded. When converted to a string, it is a distinguished name string that starts with a slash (/) and uses slashes (/) to separate relative distinguished names.
-> - It is recommended to set the encodingType parameter to EncodingType.ENCODING_UTF8. The obtained certificate subject name is a distinguished name string that uses commas (,) to separate relative distinguished names.
+> - If the encodingType parameter is not set, the obtained certificate subject name ends with a null terminator (with the value of **0**). Determine whether to remove the terminator based on service requirements.
+> - If the encodingType parameter is not set, the obtained certificate subject name is encoded in ASCII. After being converted into a string, the name starts with a slash (/), followed by a string of distinguished names separated by slashes (/).
+> - You are advised to set **encodingType** to **EncodingType.ENCODING_UTF8**. In this case, the obtained certificate subject name is a string of distinguished names separated by commas (,).
 
 **Since:** 9
 
@@ -1864,13 +1864,13 @@ Obtains the subject name of this X.509 certificate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| encodingType | [EncodingType](arkts-devicecertificate-cert-encodingtype-e.md) | No | Encoding type. If this parameter is set, the subject name in UTF-8 format is to be obtained. If this parameter is not set, the subject name in ASCII encoding format is obtained by default.<br>This parameter is available since API version 12.<br>**Since:** 12 |
+| encodingType | [EncodingType](arkts-devicecertificate-cert-encodingtype-e.md) | No | Encoding type. The value is UTF-8. If this parameter is not set, ASCII encoding is used by default. This parameter can be set in versions later than API version 12.<br>**Since:** 12 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Represents the subject name of an X.509 certificate. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Subject name of the X.509 certificate. |
 
 **Error codes:**
 
@@ -1942,7 +1942,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 getSubjectX500DistinguishedName(): X500DistinguishedName
 ```
 
-Obtains the X.500 distinguished name object of the X.509 certificate subject.
+Obtains the X.500 distinguished name of the X.509 certificate subject.
 
 **Since:** 12
 
@@ -2108,7 +2108,7 @@ Obtains the hash value of the data in DER format.
 
 | Type | Description |
 | --- | --- |
-| Uint8Array | Hash value obtained. |
+| Uint8Array | Hash value in DER format obtained. |
 
 **Error codes:**
 
@@ -2183,7 +2183,7 @@ async function certHashCode() {
 match(param: X509CertMatchParameters): boolean
 ```
 
-Checks whether this certificate matches the specified parameters.
+Checks whether the certificate matches the input parameters.
 
 **Since:** 11
 
@@ -2490,7 +2490,7 @@ Verifies the certificate signature. This API uses an asynchronous callback to re
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | [cryptoFramework.PubKey](../../apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | Yes | Public key used for signature verification. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If signature verification is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 

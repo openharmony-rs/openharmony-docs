@@ -4,7 +4,7 @@
 interface KemEncapResult
 ```
 
-Represents the encapsulation result of the KEM.
+Indicates the key encapsulation result.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 sharedSecret: Uint8Array
 ```
 
-Indicates the shared secret key of the KEM.
+Shared key generated during key encapsulation.
 
 **Type:** Uint8Array
 
@@ -44,7 +44,7 @@ Indicates the shared secret key of the KEM.
 wrappedKey: Uint8Array
 ```
 
-Indicates the wrapped key of the KEM, which is the ciphertext of the KEM.
+Wrapped key generated during key encapsulation.
 
 **Type:** Uint8Array
 

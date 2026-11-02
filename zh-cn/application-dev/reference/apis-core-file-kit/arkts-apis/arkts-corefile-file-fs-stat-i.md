@@ -311,6 +311,31 @@ readonly atimeNs?:bigint
 | --- | --- |
 | 13900042 | Internal error |
 
+## blocks
+
+```TypeScript
+readonly blocks?: number
+```
+
+分配给文件的块数，以512字节为单位。
+
+**类型：** number
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Stat-readonly blocks?: number--><!--Device-Stat-readonly blocks?: number-End-->
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
+
 ## ctime
 
 ```TypeScript

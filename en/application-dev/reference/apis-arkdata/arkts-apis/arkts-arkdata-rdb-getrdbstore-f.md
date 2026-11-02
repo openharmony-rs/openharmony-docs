@@ -27,7 +27,7 @@ Obtains an RDB store. This API uses an asynchronous callback to return the resul
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | Context | Yes | Application context. <br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). <br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). |
+| context | Context | Yes | Application context. <br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md). <br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
 | config | [StoreConfig](arkts-arkdata-rdb-storeconfig-i.md) | Yes | Configuration of the RDB store. |
 | version | number | Yes | RDB store version.<br>Currently, automatic RDB upgrades and downgrades performed based on **version** is not supported. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RdbStore](arkts-arkdata-rdb-rdbstore-i.md)&gt; | Yes | Callback used to return the RDB store obtained. |
@@ -53,7 +53,7 @@ Obtains an RDB store. This API uses a promise to return the result. You can set 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). <br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). |
+| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md). <br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
 | config | [StoreConfig](arkts-arkdata-rdb-storeconfig-i.md) | Yes | Configuration of the RDB store. |
 | version | number | Yes | RDB store version.<br>Currently, automatic RDB upgrades and downgrades performed based on **version** is not supported. |
 

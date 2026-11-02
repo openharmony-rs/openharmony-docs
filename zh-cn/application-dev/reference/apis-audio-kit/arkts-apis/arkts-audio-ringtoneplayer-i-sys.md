@@ -626,7 +626,7 @@ readonly state: media.AVPlayerState
 
 音频渲染器的状态。
 
-**类型：** [media.AVPlayerState](../../apis-media/arkts-apis/arkts-media-media-avplayerstate-t.md)
+**类型：** [media.AVPlayerState](../../apis-media-kit/arkts-apis/arkts-media-media-avplayerstate-t.md)
 
 **起始版本：** 10
 

@@ -4,7 +4,7 @@
 class Text extends UnifiedRecord
 ```
 
-Represents the text data. It is a child class of [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) and a base class of text data. You are advised to use the child class of **Text**, for example, [PlainText](arkts-arkdata-unifieddatachannel-plaintext-c.md), [Hyperlink](arkts-arkdata-unifieddatachannel-hyperlink-c.md), and [HTML](arkts-arkdata-unifieddatachannel-html-c.md), to describe data.
+Represents text data. It is a subclass of [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) and the base class of text data, used to describe text data. You are advised to use subclasses of Text, such as [PlainText](arkts-arkdata-unifieddatachannel-plaintext-c.md), [Hyperlink](arkts-arkdata-unifieddatachannel-hyperlink-c.md), and [HTML](arkts-arkdata-unifieddatachannel-html-c.md), to describe data.
 
 **Inheritance/Implementation:** Text extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)
 
@@ -26,17 +26,17 @@ import { unifiedDataChannel } from '@kit.ArkData';
 details?: Record<string, string>
 ```
 
-A dictionary type object, where both the key and value are of the string type and are used to describe the text content. For example, a data object with the following content can be created to describe a text file:
+A dictionary object whose keys and values are both strings, used to describe the text content. For example, you can create a data object whose details are
 
 {
 
-"title":"Title of the file",
+"title":"Title",
 
-"content":"Content of the file"
+"content":"Content"
 
 }
 
-The default value is an empty dictionary object.
+to describe an article. This is an optional field, and the default value is an empty dictionary object.
 
 **Type:** Record&lt;string, string&gt;
 

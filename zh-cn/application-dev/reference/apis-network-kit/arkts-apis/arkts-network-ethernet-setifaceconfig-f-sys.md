@@ -42,7 +42,7 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: Asy
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
-| 2201004 | Invalid Ethernet profile. |
+| [2201004](../errorcode-net-ethernet.md#2201004-以太网配置信息无效) | Invalid Ethernet profile. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 | [2201006](../errorcode-net-ethernet.md#2201006-设备未连接) | Ethernet device not connected. |
 | [2201007](../errorcode-net-ethernet.md#2201007-用户配置写入失败) | Ethernet failed to write user configuration information. |
@@ -116,7 +116,7 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void
 | [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
-| 2201004 | Invalid Ethernet profile. |
+| [2201004](../errorcode-net-ethernet.md#2201004-以太网配置信息无效) | Invalid Ethernet profile. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 | [2201006](../errorcode-net-ethernet.md#2201006-设备未连接) | Ethernet device not connected. |
 | [2201007](../errorcode-net-ethernet.md#2201007-用户配置写入失败) | Ethernet failed to write user configuration information. |

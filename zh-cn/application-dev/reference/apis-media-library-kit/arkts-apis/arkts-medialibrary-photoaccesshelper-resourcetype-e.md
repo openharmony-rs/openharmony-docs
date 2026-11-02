@@ -28,6 +28,22 @@ IMAGE_RESOURCE = 1
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## PRIVATE_MOVING_PHOTO_RESOURCE
+
+```TypeScript
+PRIVATE_MOVING_PHOTO_RESOURCE = 4
+```
+
+表示私有动态照片资源。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4--><!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## VIDEO_RESOURCE
 
 ```TypeScript

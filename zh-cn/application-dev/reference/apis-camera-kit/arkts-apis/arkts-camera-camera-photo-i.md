@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 release(): Promise<void>
 ```
 
-Releases output resources. This API uses a promise to return the result.
+释放输出资源。该接口使用 Promise 返回结果。
 
 **起始版本：** 11
 
@@ -38,7 +38,7 @@ Releases output resources. This API uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | 无返回值的 Promise。 |
 
 **示例**
 
@@ -54,7 +54,7 @@ async function releasePhoto(photo: camera.Photo): Promise<void> {
 main: image.Image
 ```
 
-Full-quality image.
+全质量图像。
 
 **类型：** [image.Image](../../apis-image-kit/arkts-apis/arkts-image-image-image-i.md)
 

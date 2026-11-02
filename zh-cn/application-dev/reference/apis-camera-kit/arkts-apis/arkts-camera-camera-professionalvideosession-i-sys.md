@@ -5,7 +5,7 @@ interface ProfessionalVideoSession extends Session, AutoExposure, ManualExposure
     ManualFocus, WhiteBalance, ManualIso, Flash, Zoom, ColorEffect, Aperture
 ```
 
-ProfessionalVideoSession extends Session, AutoExposure, ManualExposure, Focus, ManualFocus, WhiteBalance, ManualIso, Flash, Zoom, ColorEffect, Aperture Implements a professional video session, which sets the parameters of the professional video mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
+专业录像会话类。用于设置专业录像模式的参数，并保存运行相机所需的全部[CameraInput](arkts-camera-camera-camerainput-i.md) 和 [CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。继承自 [Session](arkts-camera-camera-session-i.md)。
 
 **继承/实现关系：** ProfessionalVideoSession extends [Session](arkts-camera-camera-session-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [Flash](arkts-camera-camera-flash-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->, [Aperture](arkts-camera-camera-aperture-i.md)
 
@@ -29,7 +29,7 @@ import { camera } from '@kit.CameraKit';
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from HighResolutionPhotoSession error events.
+取消订阅高分辨率拍照会话错误事件。
 
 **起始版本：** 12
 
@@ -43,8 +43,8 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'error' | 是 | 事件类型。取值固定为**'error'**。该事件可在创建会话时监听。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件 **on('error')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -69,7 +69,7 @@ function unregisterSessionError(professionalVideoSession: camera.ProfessionalVid
 off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 ```
 
-Unsubscribes from focus state change events.
+取消订阅对焦状态变化事件。
 
 **起始版本：** 12
 
@@ -83,8 +83,8 @@ Unsubscribes from focus state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'focusStateChange' | 是 | 事件类型。取值固定为**'focusStateChange'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件 **on('focusStateChange')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -109,7 +109,7 @@ function unregisterFocusStateChange(professionalVideoSession: camera.Professiona
 off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void
 ```
 
-Unsubscribes from smooth zoom state change events.
+取消订阅平滑变焦状态变化事件。
 
 **起始版本：** 12
 
@@ -123,8 +123,8 @@ Unsubscribes from smooth zoom state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'smoothZoomInfoAvailable' | 是 | 事件类型。取值固定为**'smoothZoomInfoAvailable'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件**on('smoothZoomInfoAvailable')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -149,7 +149,7 @@ function unregisterSmoothZoomInfo(professionalVideoSession: camera.ProfessionalV
 off(type: 'isoInfoChange', callback?: AsyncCallback<IsoInfo>): void
 ```
 
-Unsubscribes from automatic ISO change events.
+取消订阅自动 ISO 变化事件。
 
 **起始版本：** 12
 
@@ -163,8 +163,8 @@ Unsubscribes from automatic ISO change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'isoInfoChange' | 是 | Event type. The value is fixed at **'isoInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 否 | Callback, which is optional and is used to match **callback** in **on('isoInfoChange')**. |
+| type | 'isoInfoChange' | 是 | 事件类型。取值固定为**'isoInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 否 | 可选参数，用于匹配 **on('isoInfoChange')** 中的 **callback**。 |
 
 **错误码：**
 
@@ -189,7 +189,7 @@ function unregisterIsoInfoEvent(professionalVideoSession: camera.ProfessionalVid
 off(type: 'exposureInfoChange', callback?: AsyncCallback<ExposureInfo>): void
 ```
 
-Unsubscribes from exposure information change events.
+取消订阅曝光信息变化事件。
 
 **起始版本：** 12
 
@@ -203,8 +203,8 @@ Unsubscribes from exposure information change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'exposureInfoChange' | 是 | Event type. The value is fixed at **'exposureInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 否 | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**. |
+| type | 'exposureInfoChange' | 是 | 事件类型。取值固定为**'exposureInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 否 | 可选参数，用于匹配 **on('exposureInfoChange')** 中的 **callback**。 |
 
 **错误码：**
 
@@ -229,7 +229,7 @@ function unregisterExposureInfoEvent(professionalVideoSession: camera.Profession
 off(type: 'apertureInfoChange', callback?: AsyncCallback<ApertureInfo>): void
 ```
 
-Unsubscribes from aperture change events.
+取消订阅光圈变化事件。
 
 **起始版本：** 12
 
@@ -243,8 +243,8 @@ Unsubscribes from aperture change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'apertureInfoChange' | 是 | Event type. The value is fixed at **'apertureInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApertureInfo](arkts-camera-camera-apertureinfo-i-sys.md)&gt; | 否 | Callback, which is optional and is used to match **callback** in **on('apertureInfoChange')**. |
+| type | 'apertureInfoChange' | 是 | 事件类型。取值固定为**'apertureInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApertureInfo](arkts-camera-camera-apertureinfo-i-sys.md)&gt; | 否 | 可选参数，用于匹配 **on('apertureInfoChange')** 中的 **callback**。 |
 
 **错误码：**
 
@@ -269,7 +269,7 @@ function unregisterApertureInfoEvent(professionalVideoSession: camera.Profession
 off(type: 'luminationInfoChange', callback?: AsyncCallback<LuminationInfo>): void
 ```
 
-Unsubscribes from illumination change events.
+取消订阅光照变化事件。
 
 **起始版本：** 12
 
@@ -283,8 +283,8 @@ Unsubscribes from illumination change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'luminationInfoChange' | 是 | Event type. The value is fixed at **'luminationInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LuminationInfo](arkts-camera-camera-luminationinfo-i-sys.md)&gt; | 否 | Callback, which is optional and is used to match **callback** in **on('luminationInfoChange')**. |
+| type | 'luminationInfoChange' | 是 | 事件类型。取值固定为**'luminationInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LuminationInfo](arkts-camera-camera-luminationinfo-i-sys.md)&gt; | 否 | 可选参数，用于匹配 **on('luminationInfoChange')** 中的 **callback**。 |
 
 **错误码：**
 
@@ -309,7 +309,7 @@ function unregisterLuminationInfoEvent(professionalVideoSession: camera.Professi
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
+订阅高分辨率拍照会话错误事件。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -323,8 +323,8 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
+| type | 'error' | 是 | 事件类型。取值固定为**'error'**。该事件可在创建会话时监听。当调用会话相关接口（例如[beginConfig](arkts-camera-camera-session-i.md#beginconfig)、[commitConfig](arkts-camera-camera-session-i.md#commitconfig) 和[addInput](arkts-camera-camera-session-i.md#addinput)）过程中发生错误时，会触发该事件并返回错误信息。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 用于返回错误码的回调，错误码定义见[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 
@@ -355,7 +355,7 @@ function registerSessionError(professionalVideoSession: camera.ProfessionalVideo
 on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 ```
 
-Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
+订阅对焦状态变化事件。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -369,8 +369,8 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | Callback used to return the focus state change. |
+| type | 'focusStateChange' | 是 | 事件类型。取值固定为**'focusStateChange'**。该事件可在创建会话时监听。该事件仅在自动对焦模式下相机对焦状态发生变化时触发。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | 用于返回对焦状态变化的回调。 |
 
 **错误码：**
 
@@ -405,7 +405,7 @@ function registerFocusStateChange(professionalVideoSession: camera.ProfessionalV
 on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void
 ```
 
-Subscribes to smooth zoom state change events. This API uses an asynchronous callback to return the result.
+订阅平滑变焦状态变化事件。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -419,8 +419,8 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | Callback used to return the smooth zoom state change. |
+| type | 'smoothZoomInfoAvailable' | 是 | 事件类型。取值固定为**'smoothZoomInfoAvailable'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | 用于返回平滑变焦状态变化的回调。 |
 
 **错误码：**
 
@@ -455,7 +455,7 @@ function registerSmoothZoomInfo(professionalVideoSession: camera.ProfessionalVid
 on(type: 'isoInfoChange', callback: AsyncCallback<IsoInfo>): void
 ```
 
-Subscribes to automatic ISO change events to obtain real-time ISO information. This API uses an asynchronous callback to return the result.
+订阅自动 ISO 变化事件，用于获取实时 ISO 信息。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -469,8 +469,8 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'isoInfoChange' | 是 | Event type. The value is fixed at **'isoInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 是 | Callback used to return the ISO information. |
+| type | 'isoInfoChange' | 是 | 事件类型。取值固定为**'isoInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 是 | 用于返回 ISO 信息的回调。 |
 
 **错误码：**
 
@@ -505,7 +505,7 @@ function registerIsoInfoEvent(professionalVideoSession: camera.ProfessionalVideo
 on(type: 'exposureInfoChange', callback: AsyncCallback<ExposureInfo>): void
 ```
 
-Subscribes to exposure information change events to obtain the exposure information. This API uses an asynchronous callback to return the result.
+订阅曝光信息变化事件，用于获取曝光信息。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -519,8 +519,8 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'exposureInfoChange' | 是 | Event type. The value is fixed at **'exposureInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 是 | Callback used to return the exposure information. |
+| type | 'exposureInfoChange' | 是 | 事件类型。取值固定为**'exposureInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 是 | 用于返回曝光信息的回调。 |
 
 **错误码：**
 
@@ -555,7 +555,7 @@ function registerExposureInfoEvent(professionalVideoSession: camera.Professional
 on(type: 'apertureInfoChange', callback: AsyncCallback<ApertureInfo>): void
 ```
 
-Subscribes to aperture change events to obtain the real-time aperture information. This API uses an asynchronous callback to return the result.
+订阅光圈变化事件，用于获取实时光圈信息。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -569,8 +569,8 @@ Subscribes to aperture change events to obtain the real-time aperture informatio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'apertureInfoChange' | 是 | Event type. The value is fixed at **'apertureInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApertureInfo](arkts-camera-camera-apertureinfo-i-sys.md)&gt; | 是 | Callback used to return the aperture information. |
+| type | 'apertureInfoChange' | 是 | 事件类型。取值固定为**'apertureInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApertureInfo](arkts-camera-camera-apertureinfo-i-sys.md)&gt; | 是 | 用于返回光圈信息的回调。 |
 
 **错误码：**
 
@@ -605,7 +605,7 @@ function registerApertureInfoEvent(professionalVideoSession: camera.Professional
 on(type: 'luminationInfoChange', callback: AsyncCallback<LuminationInfo>): void
 ```
 
-Subscribes to illumination change events to obtain real-time illumination information. This API uses an asynchronous callback to return the result.
+订阅光照变化事件，用于获取实时光照信息。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -619,8 +619,8 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'luminationInfoChange' | 是 | Event type. The value is fixed at **'luminationInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LuminationInfo](arkts-camera-camera-luminationinfo-i-sys.md)&gt; | 是 | Callback used to return the illumination information. |
+| type | 'luminationInfoChange' | 是 | 事件类型。取值固定为**'luminationInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LuminationInfo](arkts-camera-camera-luminationinfo-i-sys.md)&gt; | 是 | 用于返回光照信息的回调。 |
 
 **错误码：**
 

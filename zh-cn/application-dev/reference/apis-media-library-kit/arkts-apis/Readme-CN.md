@@ -63,6 +63,7 @@
   - [ResultSet（系统接口）](arkts-medialibrary-photoaccesshelper-resultset-c-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ShareAlbumMemberInfo（系统接口）](arkts-medialibrary-photoaccesshelper-sharealbummemberinfo-c-sys.md)<!--DelEnd-->
+  - [SingleFileMovingPhotoUtil](arkts-medialibrary-photoaccesshelper-singlefilemovingphotoutil-c.md)
   <!--Del-->
   - [TaskSignal（系统接口）](arkts-medialibrary-photoaccesshelper-tasksignal-c-sys.md)<!--DelEnd-->
   - [VideoDurationFilter](arkts-medialibrary-photoaccesshelper-videodurationfilter-c.md)

@@ -34,12 +34,6 @@ Obtains the **TypeDescriptor** object based on the uniform data type ID.
 | --- | --- |
 | [TypeDescriptor](arkts-arkdata-uniformtypedescriptor-typedescriptor-c.md) | **TypeDescriptor** object obtained. If the uniform data type does not exist, **null** is returned. |
 
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
-
 **Examples**
 
 ```TypeScript

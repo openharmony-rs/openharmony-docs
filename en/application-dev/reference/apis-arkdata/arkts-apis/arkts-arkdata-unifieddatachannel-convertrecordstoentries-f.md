@@ -12,12 +12,11 @@ import { unifiedDataChannel } from '@kit.ArkData';
 function convertRecordsToEntries(data: UnifiedData): void
 ```
 
-Converts the provided data into a multi-style data structure, which is useful when the original data uses multiple records to represent different styles of the same data.
+Converts the passed-in data into a multi-style data structure. If the original data uses multiple records to carry different data formats of the same data, you can use this API to convert the original data into a multi-style data structure. The conversion is performed and the passed-in data is converted into a multi-style data structure when the following rules are met:
+1. The number of records in the data is greater than 1.
+2. The value of the tag in the properties of the data is "records_to_entries_data_format".
 
-This API is used only when the following rules are met:
-
-1. The number of records in data is greater than 1.
-2. The value of **unifiedData.properties.tag** is **records_to_entries_data_format**.
+Otherwise, no action is taken.
 
 **Since:** 17
 
@@ -33,13 +32,7 @@ This API is used only when the following rules are met:
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) | Yes | Data to convert. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| data | [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) | Yes | Unified data object to be converted into a multi-style data structure. |
 
 **Examples**
 

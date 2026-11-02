@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise<ScannerOptionValue>
 ```
 
-Obtains the current scanner settings. This API uses a promise to return the result.
+Obtains the current scanner settings. This API uses a promise to return the result. This method can be called only after the scanner is opened by calling **openScanner()**.
 
 **Since:** 20
 

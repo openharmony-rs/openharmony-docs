@@ -412,6 +412,26 @@ static readonly TRANSLATE: TextMenuItemId
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## TRANSLATE_INPUT
+
+```TypeScript
+static readonly TRANSLATE_INPUT: TextMenuItemId
+```
+
+快捷翻译，为一级菜单项。
+
+**类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextMenuItemId-static readonly TRANSLATE_INPUT: TextMenuItemId--><!--Device-TextMenuItemId-static readonly TRANSLATE_INPUT: TextMenuItemId-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## url
 
 ```TypeScript

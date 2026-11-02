@@ -20,7 +20,7 @@ The ExtensionRunningInfo module encapsulates ExtensionAbility running informatio
 clientPackage: Array<String>
 ```
 
-Names of all packages in the process.
+List of package names of the client applications connected to the Extension.
 
 **Type:** Array&lt;String&gt;
 
@@ -140,7 +140,7 @@ ExtensionAbility type.
 uid: number
 ```
 
-UID of the application.
+User ID of the application to which the Extension belongs.
 
 **Type:** number
 

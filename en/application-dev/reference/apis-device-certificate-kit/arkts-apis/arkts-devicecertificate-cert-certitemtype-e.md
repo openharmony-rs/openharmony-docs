@@ -18,7 +18,7 @@ Enumerates the certificate fields that can be obtained.
 CERT_ITEM_TYPE_EXTENSIONS = 4
 ```
 
-Certificate extensions, each of which is identified by a unique object identifier (OID).
+Certificate extensions.
 
 **Since:** 10
 

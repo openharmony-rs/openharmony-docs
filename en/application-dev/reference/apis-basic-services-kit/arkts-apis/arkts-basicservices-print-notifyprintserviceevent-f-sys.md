@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function notifyPrintServiceEvent(event: ApplicationEvent): Promise<void>
 ```
 
-Notifies the print service of the print application events. This API uses a promise to return the result.
+Notifies the print service of the print app events. This API uses a promise to return the result. This method is used to notify the print service to perform corresponding processing when a lifecycle event such as creation and destruction of a print app occurs.
 
 **Since:** 12
 
@@ -68,7 +68,7 @@ print.notifyPrintServiceEvent(event).then(() => {
 function notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promise<void>
 ```
 
-Notifies the print service of the print application events. This API uses a promise to return the result.
+Notifies the print service of the print app events. This API uses a promise to return the result. This method is used to notify the print service based on the print job ID to perform corresponding processing when a lifecycle event such as creation and destruction of a print app occurs.
 
 **Since:** 18
 
@@ -84,8 +84,8 @@ Notifies the print service of the print application events. This API uses a prom
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [ApplicationEvent](arkts-basicservices-print-applicationevent-e.md) | Yes | Print application events. |
-| jobId | string | Yes | ID of the print job. |
+| event | [ApplicationEvent](arkts-basicservices-print-applicationevent-e.md) | Yes | Print app event, which is used to notify the print service of the app lifecycle event. |
+| jobId | string | Yes | ID of the created print job. |
 
 **Return value:**
 

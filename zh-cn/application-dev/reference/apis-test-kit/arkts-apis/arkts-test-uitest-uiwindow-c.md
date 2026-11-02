@@ -430,7 +430,7 @@ async function demo() {
 maximize(): Promise<void>
 ```
 
-将窗口最大化。使用Promise异步回调。适用于支持窗口最大化操作的窗口。
+将窗口最大化。可通过[resume()](#resume)恢复到之前的窗口模式。使用Promise异步回调。适用于支持窗口最大化操作的窗口。
 
 **起始版本：** 9
 
@@ -475,7 +475,7 @@ async function demo() {
 minimize(): Promise<void>
 ```
 
-将窗口最小化。使用Promise异步回调。适用于支持窗口最小化操作的窗口。
+将窗口最小化。可通过[resume()](#resume)恢复到之前的窗口模式。使用Promise异步回调。适用于支持窗口最小化操作的窗口。
 
 **起始版本：** 9
 
@@ -659,7 +659,7 @@ async function demo() {
 split(): Promise<void>
 ```
 
-将窗口模式切换成分屏模式。使用Promise异步回调。适用于支持切换分屏模式的窗口。
+将窗口模式切换成分屏模式。可通过[resume()](#resume)恢复到之前的窗口模式。使用Promise异步回调。适用于支持切换分屏模式的窗口。
 
 **起始版本：** 9
 

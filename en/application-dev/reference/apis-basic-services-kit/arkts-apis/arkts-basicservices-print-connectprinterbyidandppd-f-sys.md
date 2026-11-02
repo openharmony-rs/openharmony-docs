@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function connectPrinterByIdAndPpd(printerId: string, protocol: string, ppdName: string): Promise<void>
 ```
 
-Query recommend printer drivers by printer ID.
+Connect a printer by the printer ID and ppd.
 
 **Since:** 24
 
@@ -30,9 +30,9 @@ Query recommend printer drivers by printer ID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerId | string | Yes | Indicates the printer ID. <br>Printer ID of the printer to be connected. |
-| protocol | string | Yes | Indicates the protocol. <br>Protocol of the printer to be connected. |
-| ppdName | string | Yes | Indicates the ppd name. <br>Ppd name of the printer to be connected. |
+| printerId | string | Yes | Indicates the printer ID of the printer to be connected. |
+| protocol | string | Yes | Indicates the protocol of the printer to be connected. |
+| ppdName | string | Yes | Indicates the PPD name of the printer to be connected. |
 
 **Return value:**
 

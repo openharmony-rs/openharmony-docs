@@ -4,7 +4,7 @@
 enum ScannerSyncMode
 ```
 
-定义扫描仪同步码的枚举。
+定义扫描仪同步模式的枚举。
 
 **起始版本：** 20
 
@@ -18,7 +18,7 @@ enum ScannerSyncMode
 DELETE_STR = 'delete'
 ```
 
-删除码，表示扫描仪掉线。
+删除模式，表示扫描仪掉线。
 
 **起始版本：** 20
 
@@ -32,7 +32,7 @@ DELETE_STR = 'delete'
 UPDATE_STR = 'update'
 ```
 
-更新码，表示扫描仪id的变化。
+更新模式，表示扫描仪ID的变化。
 
 **起始版本：** 20
 

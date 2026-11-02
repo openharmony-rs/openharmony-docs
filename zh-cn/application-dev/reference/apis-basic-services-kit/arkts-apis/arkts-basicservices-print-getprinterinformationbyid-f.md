@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function getPrinterInformationById(printerId: string): Promise<PrinterInformation>
 ```
 
-根据打印机id获取打印机信息，使用Promise异步回调。
+根据打印机ID获取打印机信息，使用Promise异步回调。
 
 **起始版本：** 14
 
@@ -26,7 +26,7 @@ function getPrinterInformationById(printerId: string): Promise<PrinterInformatio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 表示待获取信息的打印机id。 |
+| printerId | string | 是 | 表示待获取信息的打印机ID。 |
 
 **返回值：**
 

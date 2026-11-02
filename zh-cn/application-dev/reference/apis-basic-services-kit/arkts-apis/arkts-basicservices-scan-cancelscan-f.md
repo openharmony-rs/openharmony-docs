@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function cancelScan(scannerId: string): Promise<void>
 ```
 
-取消扫描。使用Promise异步回调。
+取消扫描。使用Promise异步回调。必须在开始扫描之后才能调用此方法。
 
 **起始版本：** 20
 
@@ -26,13 +26,13 @@ function cancelScan(scannerId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scannerId | string | 是 | 扫描仪的ID。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，取消扫描成功时resolve，失败时reject。 |
 
 **错误码：**
 

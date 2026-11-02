@@ -26,7 +26,7 @@ function offApplicationFocusStateChange(callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 否 | Callback used to return the result whether application process focused or not. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 否 | 已注册的回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有应用进程焦点状态变化的监听。 |
 
 **示例**
 

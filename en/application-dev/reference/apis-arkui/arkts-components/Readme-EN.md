@@ -853,6 +853,7 @@
   - [Want(system api)](arkts-arkui-isolatedcomponent-comp-want-t-sys.md)<!--DelEnd-->
 - [LazyForEach](arkts-arkui-lazyforeach-comp.md)
   - [LazyForEach properties/events](arkts-arkui-lazyforeach-comp-attribute.md)
+  - [LazyForEachController](arkts-arkui-lazyforeach-comp-lazyforeachcontroller-c.md)
   - [DataAddOperation](arkts-arkui-lazyforeach-comp-dataaddoperation-i.md)
   - [DataChangeListener](arkts-arkui-lazyforeach-comp-datachangelistener-i.md)
   - [DataChangeOperation](arkts-arkui-lazyforeach-comp-datachangeoperation-i.md)
@@ -1132,6 +1133,7 @@
   - [WindowAnimationTarget(system api)](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md)<!--DelEnd-->
 - [Repeat](arkts-arkui-repeat-comp.md)
   - [Repeat properties/events](arkts-arkui-repeat-comp-attribute.md)
+  - [RepeatController](arkts-arkui-repeat-comp-repeatcontroller-c.md)
   - [RepeatItem](arkts-arkui-repeat-comp-repeatitem-i.md)
   - [RepeatOptions](arkts-arkui-repeat-comp-repeatoptions-i.md)
   - [TemplateOptions](arkts-arkui-repeat-comp-templateoptions-i.md)

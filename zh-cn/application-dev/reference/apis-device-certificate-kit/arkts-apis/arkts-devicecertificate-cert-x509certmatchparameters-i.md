@@ -150,7 +150,7 @@ minPathLenConstraint?: number
 nameConstraints?: Uint8Array
 ```
 
-指定证书的使用者名称。
+指定待匹配名称约束条目，与证书nameConstraints扩展中任一名称约束条目的类型与值进行匹配。
 
 **类型：** Uint8Array
 
@@ -296,7 +296,7 @@ subjectAlternativeNames?: Array<GeneralName>
 subjectKeyIdentifier?: Uint8Array
 ```
 
-指定证书公钥。
+指定证书主体密钥标识符。
 
 **类型：** Uint8Array
 

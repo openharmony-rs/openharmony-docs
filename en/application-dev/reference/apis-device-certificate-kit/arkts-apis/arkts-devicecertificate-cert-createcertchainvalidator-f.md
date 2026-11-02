@@ -12,7 +12,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 function createCertChainValidator(algorithm: string): CertChainValidator
 ```
 
-Creates a **CertChainValidator** object.
+Creates a certificate chain validator object.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ Creates a **CertChainValidator** object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| algorithm | string | Yes | Certificate chain validator algorithm. Currently, only **PKIX** is supported. |
+| algorithm | string | Yes | Algorithm of the certificate chain validator obtained. Currently, only **PKIX** is supported. |
 
 **Return value:**
 

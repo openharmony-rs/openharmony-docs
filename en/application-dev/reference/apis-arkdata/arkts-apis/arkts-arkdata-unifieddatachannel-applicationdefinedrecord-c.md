@@ -4,7 +4,7 @@
 class ApplicationDefinedRecord extends UnifiedRecord
 ```
 
-Represents the custom data type for applications only. It is a child class of [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) and a base class of custom data types of applications. Applications can extend custom data types based on this class.
+ApplicationDefinedRecord is a subclass of [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) and the base class of application-defined data types. It describes custom data types that circulate only within the application ecosystem. Applications can extend custom data types based on this class.
 
 **Inheritance/Implementation:** ApplicationDefinedRecord extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get applicationDefinedType(): string
 ```
 
-Indicates the type of data, should always be started with 'ApplicationDefined.', will return error otherwise
+Identifier of the application-defined type. It must start with 'ApplicationDefined'.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Indicates the type of data, should always be started with 'ApplicationDefined.',
 set applicationDefinedType(value: string)
 ```
 
-Indicates the type of data, should always be started with 'ApplicationDefined.', will return error otherwise
+Identifier of the application-defined type. It must start with 'ApplicationDefined'.
 
 **Type:** string
 
@@ -64,7 +64,7 @@ Indicates the type of data, should always be started with 'ApplicationDefined.',
 get rawData(): Uint8Array
 ```
 
-Indicates the raw data of application defined data
+Binary data of the application-defined data type.
 
 **Type:** Uint8Array
 
@@ -82,7 +82,7 @@ Indicates the raw data of application defined data
 set rawData(value: Uint8Array)
 ```
 
-Indicates the raw data of application defined data
+Binary data of the application-defined data type.
 
 **Type:** Uint8Array
 

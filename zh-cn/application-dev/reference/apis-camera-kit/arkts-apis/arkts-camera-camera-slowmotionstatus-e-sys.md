@@ -4,7 +4,7 @@
 enum SlowMotionStatus
 ```
 
-Enumerates the slow-motion states.
+枚举，慢动作状态。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Enumerates the slow-motion states.
 DISABLED = 0
 ```
 
-Disabled.
+关闭。
 
 **起始版本：** 12
 
@@ -36,7 +36,7 @@ Disabled.
 FINISHED = 4
 ```
 
-Finished.
+已完成。
 
 **起始版本：** 12
 
@@ -52,7 +52,7 @@ Finished.
 READY = 1
 ```
 
-Ready.
+就绪。
 
 **起始版本：** 12
 
@@ -68,7 +68,7 @@ Ready.
 VIDEO_DONE = 3
 ```
 
-Video complete.
+录像完成。
 
 **起始版本：** 12
 
@@ -84,7 +84,7 @@ Video complete.
 VIDEO_START = 2
 ```
 
-Video start.
+录像开始。
 
 **起始版本：** 12
 

@@ -1,6 +1,6 @@
-# setPowerOnTimerEnabled（系统接口）
+# setPowerOnTimerEnabled (System API)
 
-## 导入模块
+## Modules to Import
 
 ```TypeScript
 import { systemTimer } from '@kit.BasicServicesKit';
@@ -20,30 +20,30 @@ The matching conditions and enabled state are specified through [PowerOnTimerEna
 > The enabled state set by this API is valid only during the current device run. After the device is restarted,
 > the enabled state needs to be set again.
 
-**起始版本：** 26.2.0
+**Since:** 26.1.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-systemTimer-function setPowerOnTimerEnabled(options?: PowerOnTimerEnabledOptions): Promise<void>--><!--Device-systemTimer-function setPowerOnTimerEnabled(options?: PowerOnTimerEnabledOptions): Promise<void>-End-->
 
-**系统能力：** SystemCapability.MiscServices.Time
+**System capability:** SystemCapability.MiscServices.Time
 
-**系统接口：** 此接口为系统接口。
+**System API:** This is a system API.
 
-**参数：**
+**Parameters:**
 
-| 参数名 | 类型 | 必填 | 说明 |
+| Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [PowerOnTimerEnabledOptions](arkts-basicservices-systemtimer-powerontimerenabledoptions-i-sys.md) | 否 | Options for enabling or disabling the power-on timer, including the matching conditions and the enabled state. See [PowerOnTimerEnabledOptions](arkts-basicservices-systemtimer-powerontimerenabledoptions-i-sys.md). If this parameter is not specified, all power-on timers are enabled. |
+| options | [PowerOnTimerEnabledOptions](arkts-basicservices-systemtimer-powerontimerenabledoptions-i-sys.md) | No | Options for enabling or disabling the power-on timer, including the matching conditions and the enabled state. See [PowerOnTimerEnabledOptions](arkts-basicservices-systemtimer-powerontimerenabledoptions-i-sys.md). If this parameter is not specified, all power-on timers are enabled. |
 
-**返回值：**
+**Return value:**
 
-| 类型 | 说明 |
+| Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
-**错误码：**
+**Error codes:**
 
-| 错误码ID | 错误信息 |
+| Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |

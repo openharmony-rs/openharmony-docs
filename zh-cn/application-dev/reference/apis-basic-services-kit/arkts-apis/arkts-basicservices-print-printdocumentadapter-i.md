@@ -4,7 +4,7 @@
 interface PrintDocumentAdapter
 ```
 
-第三方应用程序实现此接口来渲染要打印的文件。
+三方应用实现此接口来渲染要打印的文件。该接口提供文件渲染和打印任务状态监听等回调方法，可通过print.print接口传入PrintDocumentAdapter实例配合使用。
 
 **起始版本：** 11
 
@@ -82,7 +82,7 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
       writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
 ```
 
-打印服务会通过本接口将一个空的pdf文件的文件描述符传给三方应用，由三方应用使用新的打印参数更新待打印文件，更新文件完成后通过本接口的回调方法writeResultCallback通知打印服务。
+打印服务通过本接口将一个空的PDF文件的文件描述符传给三方应用。三方应用使用新的打印参数更新待打印文件。更新完成后，三方应用通过回调方法writeResultCallback通知打印服务。
 
 **起始版本：** 11
 
@@ -98,8 +98,8 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 | --- | --- | --- | --- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | oldAttrs | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | 是 | 表示旧打印参数。 |
-| newAttrs | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | 是 | 表示新打印参数。 |
-| fd | number | 是 | 表示打印文件传给接口调用方的pdf文件的文件描述符。 |
+| newAttrs | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | 是 | 表示新打印参数，应用使用该参数更新待打印文件。 |
+| fd | number | 是 | 表示打印服务传给接口调用方的PDF文件的文件描述符。 |
 | writeResultCallback | (jobId: string, writeResult: PrintFileCreationState) =&gt; void | 是 | 表示三方应用使用新的打印参数更新待打印文件完成后的回调。 |
 
 **错误码：**

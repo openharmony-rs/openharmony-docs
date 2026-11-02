@@ -24,7 +24,7 @@ import { scan } from '@kit.BasicServicesKit';
 discoveryMode: ScannerDiscoveryMode
 ```
 
-Discovery mode.
+Discovery mode of the scanner, indicating how the scanner is discovered.
 
 **Type:** [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md)
 
@@ -56,7 +56,7 @@ Old scanner ID, which is valid only when **syncMode** is set to **update**.
 scannerId: string
 ```
 
-Scanner ID.
+Scanner ID, which can be obtained using the scanDeviceFound callback after startScannerDiscovery is called.
 
 **Type:** string
 
@@ -72,7 +72,7 @@ Scanner ID.
 syncMode: ScannerSyncMode
 ```
 
-Sync mode.
+Synchronization mode, which determines whether **oldScannerId** is valid. When **syncMode** is set to **'update'**, **oldScannerId** is valid. When **syncMode** is set to **'delete'**, **oldScannerId** is invalid.
 
 **Type:** [ScannerSyncMode](arkts-basicservices-scan-scannersyncmode-e.md)
 
@@ -88,7 +88,7 @@ Sync mode.
 uniqueId: string
 ```
 
-Unique ID.
+Unique ID of the scanner.
 
 **Type:** string
 

@@ -26,7 +26,7 @@ Creates a **CmsGenerator** object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| contentType | [CmsContentType](arkts-devicecertificate-cert-cmscontenttype-e.md) | Yes | CMS message type. |
+| contentType | [CmsContentType](arkts-devicecertificate-cert-cmscontenttype-e.md) | Yes | CMS content type. |
 
 **Return value:**
 

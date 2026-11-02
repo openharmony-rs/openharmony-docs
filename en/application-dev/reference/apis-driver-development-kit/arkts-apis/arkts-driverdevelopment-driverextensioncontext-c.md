@@ -4,10 +4,9 @@
 declare class DriverExtensionContext extends ExtensionContext
 ```
 
-The **DriverExtensionContext** module provides the context of **DriverExtensionAbility**. It inherits from **ExtensionContext**. The **DriverExtensionContext** module provides the operations that need to be actively initiated in the **DriverExtensionAbility** implementation.
+The **DriverExtensionContext** module provides the context of **DriverExtensionAbility**. It inherits from **ExtensionContext**.
 
-> **NOTE:** 
-> - The APIs of this module can be used only in the stage model.
+The **DriverExtensionContext** module provides the operations that need to be actively initiated in the **DriverExtensionAbility** implementation.
 
 **Inheritance/Implementation:** DriverExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 

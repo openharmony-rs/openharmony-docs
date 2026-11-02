@@ -12,7 +12,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 ```
 
-Parses P12.
+Parse the PKCS #12 file.
 
 **Since:** 18
 
@@ -26,14 +26,14 @@ Parses P12.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | Uint8Array | Yes | Raw data of P12 file, in DER format. |
-| config | [Pkcs12ParsingConfig](arkts-devicecertificate-cert-pkcs12parsingconfig-i.md) | Yes | Configuration for parsing the P12. |
+| data | Uint8Array | Yes | Original data of the PKCS #12 file in DER format. |
+| config | [Pkcs12ParsingConfig](arkts-devicecertificate-cert-pkcs12parsingconfig-i.md) | Yes | Configuration for parsing the PKCS #12 file. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Pkcs12Data](arkts-devicecertificate-cert-pkcs12data-i.md) | Indicates the parsed P12 data. |
+| [Pkcs12Data](arkts-devicecertificate-cert-pkcs12data-i.md) | Certificate, private key, and other certificates parsed from a PKCS #12 file. |
 
 **Error codes:**
 

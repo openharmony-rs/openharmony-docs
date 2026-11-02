@@ -36,7 +36,7 @@ Creates a **KeyAgreement** instance.
 
 | Type | Description |
 | --- | --- |
-| [KeyAgreement](arkts-cryptoarchitecture-cryptoframework-keyagreement-i.md) | Returns the **KeyAgreement** instance corresponding to the specified algorithm. |
+| [KeyAgreement](arkts-cryptoarchitecture-cryptoframework-keyagreement-i.md) | **KeyAgreement** instance of the corresponding algorithm. |
 
 **Error codes:**
 

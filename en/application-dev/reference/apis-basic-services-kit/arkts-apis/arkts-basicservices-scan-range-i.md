@@ -56,7 +56,7 @@ Minimum value.
 quantValue: number
 ```
 
-Quantized value.
+Quantized value of the range, which indicates the step between valid values within the range.
 
 **Type:** number
 

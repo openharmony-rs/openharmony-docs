@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void): void
 ```
 
-Registers a listener for printer state change events. This API uses a callback to return the result.
+Registers a callback for the printer state change event. This API uses a callback to return the result. When the listener is no longer needed, call [print.off('printerStateChange')](arkts-basicservices-print-off-f-sys.md#offprinterstatechange) to unregister the callback. Otherwise, the callback may be continuously triggered, causing memory leak.
 
 **Since:** 10
 
@@ -65,7 +65,7 @@ print.on('printerStateChange', (state: print.PrinterState, info: print.PrinterIn
 function on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void): void
 ```
 
-Registers a listener for print job state change events. This API uses a callback to return the result.
+Registers a callback for the print job state change event. This API uses a callback to return the result. When the listener is no longer needed, call [print.off('jobStateChange')](arkts-basicservices-print-off-f-sys.md#offjobstatechange) to unregister the callback. Otherwise, the callback may be continuously triggered, causing memory leak.
 
 **Since:** 10
 
@@ -112,7 +112,7 @@ print.on('jobStateChange', (state: print.PrintJobState, job: print.PrintJob) => 
 function on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void): void
 ```
 
-Registers a listener for printer extension information change events. This API uses a callback to return the result.
+Registers a callback for the printer extension information change event. This API uses a callback to return the result. When the listener is no longer needed, call [print.off('extInfoChange')](arkts-basicservices-print-off-f-sys.md#offextinfochange) to unregister the callback. Otherwise, the callback may be continuously triggered, causing memory leak.
 
 **Since:** 10
 
@@ -128,8 +128,8 @@ Registers a listener for printer extension information change events. This API u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'extInfoChange' | Yes | Listening type. The value is fixed at **'extInfoChange'**. |
-| callback | (extensionId: string, info: string) =&gt; void | Yes | Callback used to return the result. |
+| type | 'extInfoChange' | Yes | Printer extension information changes. |
+| callback | (extensionId: string, info: string) =&gt; void | Yes | Callback invoked when the printer extension information changes. **extensionId** indicates the printer extension ID, and **info** indicates the extension information content. |
 
 **Error codes:**
 

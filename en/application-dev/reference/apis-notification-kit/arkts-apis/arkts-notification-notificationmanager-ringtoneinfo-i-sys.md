@@ -80,7 +80,7 @@ Type of the ringtone.
 ringtoneUri?: string
 ```
 
-URI of the ringtone. For supported resources, see [media.AVPlayer](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md). The size cannot exceed 202 bytes; otherwise, error code 401 is returned. The default value is empty.
+URI of the ringtone. For supported resources, see [media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md). The size cannot exceed 202 bytes; otherwise, error code 401 is returned. The default value is empty.
 
 **Type:** string
 

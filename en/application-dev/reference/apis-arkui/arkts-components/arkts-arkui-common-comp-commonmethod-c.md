@@ -5514,7 +5514,7 @@ Sets how the component content is obscured.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | Yes | How the component content is obscured.<br>This API is only available for the [Image](arkts-arkui-image-comp.md)<!--Del-->, [FormComponent](arkts-arkui-formcomponent-comp-sys.md)<sup>12+</sup>,<!--DelEnd--> and [Text](arkts-arkui-text-comp.md) components.<br>**NOTE:** <br>To obscure an image when it is being loaded, you must set the width and height of the **Image** component.<br>Obscuring is not available for **Text** components that have child components or have any [styled string](../arkts-apis/arkts-arkui-styledstring.md#styled_string) configured. <br>Default value: []. |
+| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | Yes | How the component content is obscured.<br>This API is only available for the [Image](arkts-arkui-image-comp.md)<!--Del-->, [FormComponent](arkts-arkui-formcomponent-comp-sys.md)<sup>12+</sup>,<!--DelEnd--> and [Text](arkts-arkui-text-comp.md) components.<br>**NOTE:** <br>To obscure an image when it is being loaded, you must set the width and height of the **Image** component.<br>Obscuring is not available for **Text** components that have child components or have any [styled string](../arkts-apis/arkts-arkui-styledstring.md#styled_stringa-styled-string-is-an-object-that-associates-text-styles-with-text-content-styles-specify-text-ranges-through) configured. <br>Default value: []. |
 
 **Return value:**
 
@@ -6754,6 +6754,18 @@ onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | unde
 
 Called when component is focused, the return value indicates whether keyboard is needed.
 
+This API does not take effect for components that cannot gain focus.
+
+For the text box, if the return value of this API is set to **false**, the keyboard will not be displayed when the text box is tapped.
+
+When the **Web** component uses this method, if the return value is `true`, the **Web** component checks whether there are editable nodes in the component and retains the keyboard only if editable nodes exist; if the return value is `false`, the keyboard is not retained regardless of whether editable nodes exist.
+
+When the **XComponent** component uses this method, the keyboard is retained only if the return value is `true` and the **XComponent** component sets [OH_ArkUI_XComponent_SetNeedSoftKeyboard()](../../../reference/apis-arkui/ capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard) to request a keyboard; if the return value is `false`, the keyboard is not retained regardless of how the component is configured.
+
+When the return value is `true`, the self-drawn input box of the application needs to proactively call [attach] [attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-3) upon focus acquisition to establish the communication between the input method framework and the input method application; otherwise, tapping the keyboard will not respond. Note: The communication between the input method framework and the input method application is disconnected upon focus loss and needs to be re-established upon focus acquisition.
+
+This API is applicable only to the scenario of input method application continuation and does not take effect for custom keyboards. For custom keyboard continuation, see [setCustomKeyboardContinueFeature](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#setcustomkeyboardcontinuefeature).
+
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
@@ -6768,13 +6780,13 @@ Called when component is focused, the return value indicates whether keyboard is
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) &#124; undefined | Yes | Callback executed when an event is triggered. The system determines whether a keyboard is required based on the return value of the callback. If this parameter is set to undefined, no callback is triggered, and the input box component returns true. For other components, false is returned. Prerequisite: The component must be able to obtain focus. Otherwise, this interface does not take effect. When the return value is true, the self-drawn text box needs to actively invoke the [attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-3) method to establish input method communication when the focus is obtained. Otherwise, the keyboard does not respond. |
+| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) &#124; undefined | Yes | Callback invoked when the event is triggered. The system determines whether the keyboard is needed based on the return value of the callback. <br>When set to undefined, the callback is not triggered, and input box components behave as if returning true. Other components behave as if returning false. Prerequisite: The component must be focusable; otherwise, this API does not take effect. When the return value is true, the self-drawn input box must proactively call the [attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-3) method upon focus acquisition to establish communication with the input method; otherwise, tapping the keyboard will not respond. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| T |  |
+| T | Current component. |
 
 ## onPreDrag
 

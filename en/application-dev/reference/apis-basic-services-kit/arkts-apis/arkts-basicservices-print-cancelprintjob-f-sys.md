@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function cancelPrintJob(jobId: string, callback: AsyncCallback<void>): void
 ```
 
-Cancels the specified print job, which is on the print queue of the printer. This API uses an asynchronous callback to return the result.
+Cancels a print job that has been sent to the printer. This API uses an asynchronous callback to return the result. Only an ongoing print job can be canceled. Calling this API for a nonexistent or completed job returns an error.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | Print job ID. |
+| jobId | string | Yes | ID of the print job sent to the printer. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -65,7 +65,7 @@ print.cancelPrintJob(jobId, (error: BusinessError) => {
 function cancelPrintJob(jobId: string): Promise<void>
 ```
 
-Cancels the specified print job, which is on the print queue of the printer. This API uses a promise to return the result.
+Cancels a print job that has been sent to the printer. This API uses a promise to return the result. Only an ongoing print job can be canceled. Calling this API for a nonexistent or completed job returns an error.
 
 **Since:** 10
 
@@ -81,7 +81,7 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | Print job ID. |
+| jobId | string | Yes | ID of the print job sent to the printer. |
 
 **Return value:**
 

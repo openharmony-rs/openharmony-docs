@@ -43,19 +43,3 @@ Metadata resource of the private moving photo.
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
-
-## PRIVATE_MOVING_PHOTO_RESOURCE
-
-```TypeScript
-PRIVATE_MOVING_PHOTO_RESOURCE = 4
-```
-
-Private moving photo.
-
-**Since:** 13
-
-<!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4--><!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.

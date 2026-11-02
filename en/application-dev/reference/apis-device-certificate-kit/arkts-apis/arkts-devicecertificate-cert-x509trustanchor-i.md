@@ -60,7 +60,7 @@ Public key of the trusted CA certificate, in DER format. This parameter takes ef
 CASubject?: Uint8Array
 ```
 
-Subject of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the **CAPubKey** type (self-signed or upper-level), and can be the subject or issuer of the root certificate.
+Subject name of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the CA public key type (self-signed or upper-level), and can be the subject or issuer name of the root certificate.
 
 **Type:** Uint8Array
 

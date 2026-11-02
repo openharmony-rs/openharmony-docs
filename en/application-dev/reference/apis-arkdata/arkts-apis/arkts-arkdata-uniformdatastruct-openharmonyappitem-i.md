@@ -4,7 +4,7 @@
 interface OpenHarmonyAppItem
 ```
 
-Represents data of the home screen icon type defined by the system.
+Represents the system-defined desktop icon typed data, which is used to share desktop icon information across applications. Typical usage scenarios include dragging icons on the home screen launcher, sharing application icons in the app store, or creating shortcuts.
 
 **Since:** 12
 
@@ -24,7 +24,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 abilityName: string
 ```
 
-Application ability name corresponding to the icon.
+Ability name of the application corresponding to the icon. It is recommended that the name follow the Ability component naming convention: a string no longer than 127 bytes that starts with a letter and can contain letters, digits, underscores (_), or periods (.). Ensure that the name is unique within the entire application. The"package name.Ability name" format is recommended (for example, **"com.example.myapplication.MainAbility"**).
 
 **Type:** string
 
@@ -114,7 +114,7 @@ Name of the application, for which the icon is used.
 bundleName: string
 ```
 
-Bundle name corresponding to the icon.
+Bundle name of the application corresponding to the icon. The format must comply with the application package name specification.
 
 **Type:** string
 
@@ -132,7 +132,7 @@ Bundle name corresponding to the icon.
 details?: Record<string, number | string | Uint8Array>
 ```
 
-Object of the dictionary type used to describe the icon. The key is of the string type, and the value can be a number, a string, or a Uint8Array. By default, it is an empty dictionary object.
+Dictionary type object. The key is of the string type, and the value can contain data of the number (numeric type), string (string type), or Uint8Array (binary byte array) type. This is an optional field, and the default value is an empty dictionary object.
 
 **Type:** Record&lt;string, number &#124; string &#124; Uint8Array&gt;
 

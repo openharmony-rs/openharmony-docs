@@ -18,7 +18,7 @@ enum MetadataObjectType
 TEXT_DETECTION = 9
 ```
 
-Text detection type.
+文本检测类型。
 
 **起始版本：** 24
 

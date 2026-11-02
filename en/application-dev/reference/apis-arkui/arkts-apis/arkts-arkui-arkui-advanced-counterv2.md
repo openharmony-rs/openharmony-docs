@@ -1,4 +1,4 @@
-# @ohos.arkui.advanced.CounterV2
+# @ohos.arkui.advanced.CounterV2(The **CounterV2** component enables precise numeric value adjustment. It provides four types: list, compact,)
 
 ## Modules to Import
 
@@ -23,7 +23,7 @@ import { CounterV2Component, CounterV2Options, CounterV2DateData, CounterV2Type 
 
 | Name | Description |
 | --- | --- |
-| [CounterV2Component](arkts-arkui-arkui-advanced-counterv2-counterv2component-s.md) | The **CounterV2** component enables precise numeric value adjustment. It provides four types: list, compact, inline number, and inline date, which are applicable to scenarios such as shopping cart quantity adjustment and date selection. |
+| [CounterV2Component](arkts-arkui-arkui-advanced-counterv2-counterv2component-s.md) | Defines the **CounterV2** component. |
 
 ### Types
 

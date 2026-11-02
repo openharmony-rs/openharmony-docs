@@ -32,6 +32,8 @@ Atmospheric pressure, in hPa.
 
 **Since:** 8
 
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
 <!--Device-BarometerResponse-pressure: double--><!--Device-BarometerResponse-pressure: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

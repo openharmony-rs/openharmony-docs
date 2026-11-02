@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 ```
 
-Discovers USB printers. This API uses a promise to return the result.
+Discovers USB printers. This API uses an asynchronous callback to return the result. It returns the discovered USB printer information, and the printer URI can be used to query printer capabilities by calling [queryPrinterCapabilityByUri](arkts-basicservices-print-queryprintercapabilitybyuri-f-sys.md) or to add the printer to CUPS by calling [addPrinterToCups](arkts-basicservices-print-addprintertocups-f-sys.md).
 
 **Since:** 18
 
@@ -28,7 +28,7 @@ Discovers USB printers. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)&gt;&gt; | Promise used to return the information about the discovered USB printers. |
+| Promise&lt;Array&lt;[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)&gt;&gt; | Promise used to return the discovered USB printer information. |
 
 **Error codes:**
 

@@ -53,6 +53,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [RecentPhotoOptions](arkts-medialibrary-photoaccesshelper-recentphotooptions-c.md) | 最近图片配置选项。 |
 | [RecommendationOptions](arkts-medialibrary-photoaccesshelper-recommendationoptions-c.md) | 图片推荐选项(基于图片数据分析结果，依赖设备适配)。 |
 | [RequestReadPermissionResult](arkts-medialibrary-photoaccesshelper-requestreadpermissionresult-c.md) | 包含已授权的uri列表和无效的uri列表。 |
+| [SingleFileMovingPhotoUtil](arkts-medialibrary-photoaccesshelper-singlefilemovingphotoutil-c.md) | 合一动态照片管理类 |
 | [VideoDurationFilter](arkts-medialibrary-photoaccesshelper-videodurationfilter-c.md) | 可选择媒体文件视频时长的过滤配置。 |
 
 <!--Del-->

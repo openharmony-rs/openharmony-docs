@@ -2,6 +2,13 @@
 
 This module provides the capabilities for managing notification extensions, including opening the notification extension subscription settings page, subscribing to and unsubscribing from notification extensions, and obtaining and setting the [notification authorization](../../../notification/notification-glossary.md#notification-authorization) status.
 
+> **NOTE:** 
+> 
+> Notification extension events subscribed through this module are not delivered through the callbacks of this module
+> 's APIs. Instead, they are delivered through the callbacks (such as **onReceiveMessage**) of
+> [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md),
+> and these callbacks are executed on the main thread of the **ExtensionAbility** instance.
+
 **Since:** 22
 
 <!--Device-unnamed-declare namespace notificationExtensionSubscription--><!--Device-unnamed-declare namespace notificationExtensionSubscription-End-->

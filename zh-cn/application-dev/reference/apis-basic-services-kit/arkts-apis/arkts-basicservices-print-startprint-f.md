@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function startPrint(job: PrintJobData): Promise<void>
 ```
 
-打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。
+打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。该接口直接通过PrintJobData指定目标打印机ID及打印参数创建打印任务；如需拉起系统打印预览界面，请使用print.print接口。
 
 **起始版本：** 23
 
@@ -28,7 +28,7 @@ function startPrint(job: PrintJobData): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| job | [PrintJobData](arkts-basicservices-print-printjobdata-i.md) | 是 | 打印任务数据。 |
+| job | [PrintJobData](arkts-basicservices-print-printjobdata-i.md) | 是 | 表示打印任务数据。 |
 
 **返回值：**
 

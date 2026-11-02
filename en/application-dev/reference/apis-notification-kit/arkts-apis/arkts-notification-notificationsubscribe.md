@@ -2,6 +2,14 @@
 
 This module provides [notification subscription](../../../notification/notification-glossary.md#notification-subscription), unsubscription, notification removal, and other capabilities. Generally, only system applications have the permissions for these operations.
 
+> **NOTE:** 
+> 
+> When subscribing in a worker thread, call **unsubscribe** to cancel the subscription before the thread exits. If
+> the thread environment is destroyed without canceling the subscription, the system automatically cancels the
+> subscription. Before the cancellation takes effect, events delivered by the server are discarded and do not trigger
+> the subscriber callback. After **unsubscribe** is called, in-transit events that have not been dispatched are also
+> discarded and do not trigger the subscriber callback.
+
 **Since:** 9
 
 <!--Device-unnamed-declare namespace notificationSubscribe--><!--Device-unnamed-declare namespace notificationSubscribe-End-->

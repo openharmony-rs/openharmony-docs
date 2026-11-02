@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 binaryData?: Uint8Array
 ```
 
-Binary data to print.
+Binary data to print. This parameter is required when **docFlavor** is set to **BYTES**.
 
 **Type:** Uint8Array
 
@@ -60,7 +60,7 @@ Color mode.
 copyNumber: number
 ```
 
-Number of file list copies.
+Number of printed file copies. The value is a positive integer. The default value is **1**.
 
 **Type:** number
 
@@ -78,7 +78,7 @@ Number of file list copies.
 docFlavor: DocFlavor
 ```
 
-Data source type.
+Data source type. If this parameter is set to **FILE_DESCRIPTOR**, the **fdList** parameter must be provided. If this parameter is set to **BYTES**, the **binaryData** parameter must be provided.
 
 **Type:** [DocFlavor](arkts-basicservices-print-docflavor-e.md)
 
@@ -132,7 +132,7 @@ Simplex or duplex mode.
 fdList?: number[]
 ```
 
-FD list of files to print.
+FD list of files to print. This parameter is required when **docFlavor** is set to **FILE_DESCRIPTOR**.
 
 **Type:** number[]
 
@@ -186,7 +186,7 @@ Whether to print without margins. The value **true** means to print without marg
 isCollate?: boolean
 ```
 
-Whether pages are printed uncollated. The value **true** means that pages are printed uncollated, and **false** means the opposite. Default value: **true**.
+Whether pages are printed uncollated. The value **true** means that pages are printed collated, and **false** means the opposite. Default value: **true**.
 
 **Type:** boolean
 
@@ -240,7 +240,7 @@ Whether pages are printed in reverse order. The value **true** means that pages 
 isSequential?: boolean
 ```
 
-Whether pages are printed in sequential order.
+Whether the printing is sequential. The value **true** means that the printing is sequential, and **false** means the opposite. The default value is **false**.
 
 **Type:** boolean
 
@@ -312,7 +312,7 @@ Type of the paper to print.
 options?: string
 ```
 
-Object stringified in JSON format.
+Additional information about the print job, in JSON format. The parameter must contain the **printerUri**, **printerName**, and **documentFormat** fields. If the value is not passed or the format is invalid, the CUPS task will fail to be created.
 
 **Type:** string
 
@@ -384,7 +384,7 @@ Print quality.
 vendorOptions?: string
 ```
 
-Vendor-specific job options in JSON format.
+Vendor-specific print job attributes of the printer driver, in JSON format.
 
 **Type:** string
 

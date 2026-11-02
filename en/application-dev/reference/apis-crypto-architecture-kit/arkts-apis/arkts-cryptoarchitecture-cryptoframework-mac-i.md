@@ -4,7 +4,7 @@
 interface Mac
 ```
 
-Message authentication code (MAC) interface, defining methods for calculating MACs based on symmetric keys. Before use, you must create a **Mac** instance by using [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac-1).
+Defines the MAC API for calculating the message authentication code based on the symmetric key. Before calling this API, you need to create a **Mac** instance by calling [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac-1).
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 doFinal(callback: AsyncCallback<DataBlob>): void
 ```
 
-Finishes the MAC computation and obtains the MAC computation result. This API uses an asynchronous callback to return the result.
+Finalizes MAC calculation and obtains the result. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -42,7 +42,7 @@ Finishes the MAC computation and obtains the MAC computation result. This API us
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the MAC computation result obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the MAC computation result. If the MAC calculation is successful, **err** is **undefined**, and **data** is the MAC calculation result. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -82,7 +82,7 @@ function hmacByCallback() {
 doFinal(): Promise<DataBlob>
 ```
 
-Finishes the MAC computation and obtains the MAC computation result. This API uses a promise to return the result.
+Finalizes MAC calculation and obtains the result. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -98,7 +98,7 @@ Finishes the MAC computation and obtains the MAC computation result. This API us
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the MAC computation result. |
+| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the MAC calculation result. |
 
 **Error codes:**
 
@@ -135,7 +135,7 @@ async function hmacByPromise() {
 doFinalSync(): DataBlob
 ```
 
-Finishes the MAC computation. This API returns the result synchronously.
+Finalizes MAC calculation and obtains the result synchronously.
 
 <br><br>**NOTE:** <br>It is recommended to prioritize the use of asynchronous API, doFinal. Synchronous API may take a long time and block the main thread due to system busyness, high load, and other reasons. Therefore, it is advised to invoke synchronous API within a child thread to avoid blocking the main thread.
 
@@ -151,7 +151,7 @@ Finishes the MAC computation. This API returns the result synchronously.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | MAC computation result. |
+| [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | MAC calculation result. |
 
 **Error codes:**
 
@@ -259,6 +259,18 @@ init(key: SymKey, callback: AsyncCallback<void>): void
 
 Initializes the MAC computation using a symmetric key. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
+> **NOTE:** 
+> 
+> You are advised to create a symmetric key generator based on the
+> [HMAC key generation specifications](../../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac)
+> and use [generateSymKey](arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md#generatesymkey-1)
+> to randomly generate a symmetric key or use
+> [convertKey](arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md#convertkey-1)
+> to convert the binary data (whose length is the same as the key specifications) into a key.<br>If **HMAC** is
+> specified to generate the symmetric key generator, only
+> [convertKey](arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md#convertkey-1)
+> can be called to pass in a binary key of 1 to 4,096 bytes.
+
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
@@ -273,8 +285,8 @@ Initializes the MAC computation using a symmetric key. This API uses an asynchro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | [SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md) | Yes | Symmetric key. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+| key | [SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md) | Yes | Symmetric key obtained. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the HMAC initialization is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -306,7 +318,7 @@ Initializes the MAC computation using a symmetric key. This API uses a promise t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | [SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md) | Yes | Symmetric key. |
+| key | [SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md) | Yes | Symmetric key obtained. |
 
 **Return value:**
 
@@ -345,7 +357,7 @@ Initializes the MAC computation using a symmetric key. This API returns the resu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | [SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md) | Yes | Symmetric key. |
+| key | [SymKey](arkts-cryptoarchitecture-cryptoframework-symkey-i.md) | Yes | Symmetric key obtained. |
 
 **Error codes:**
 
@@ -384,7 +396,7 @@ Updates the MAC status. This API uses an asynchronous callback to return the res
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | input | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Data to pass in. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the HMAC update is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -483,7 +495,7 @@ Updates the MAC status. This API returns the result synchronously.
 readonly algName: string
 ```
 
-Indicates the algorithm name.
+Digest algorithm.
 
 **Type:** string
 

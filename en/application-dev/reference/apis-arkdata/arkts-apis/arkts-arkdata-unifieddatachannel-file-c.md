@@ -4,7 +4,7 @@
 class File extends UnifiedRecord
 ```
 
-Represents the file data. It is a child class of [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) and a base class of the data of the file type. You are advised to use the child class of **File**, for example, [Image](arkts-arkdata-unifieddatachannel-image-c.md), [Video](arkts-arkdata-unifieddatachannel-video-c.md), and [Folder](arkts-arkdata-unifieddatachannel-folder-c.md), to describe data.
+The File type data is a subclass of [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) and the base class of file type data. It is used to describe file type data. You are advised to use subclasses of File, such as [Image](arkts-arkdata-unifieddatachannel-image-c.md), [Video](arkts-arkdata-unifieddatachannel-video-c.md), and [Folder](arkts-arkdata-unifieddatachannel-folder-c.md), to describe data.
 
 **Inheritance/Implementation:** File extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)
 
@@ -26,17 +26,17 @@ import { unifiedDataChannel } from '@kit.ArkData';
 details?: Record<string, string>
 ```
 
-A dictionary type object, where both the key and value are of the string type and are used to describe file information. For example, a data object with the following content can be created to describe a file:
+A dictionary object whose keys and values are both of the string type. It is used to describe file-related information. For example, you can create a data object with the following details to describe a file:
 
 {
 
-"name":"File name",
+"name":"file name",
 
-"type":"File type"
+"type":"file type"
 
-}
+}.
 
-The default value is an empty dictionary object.
+This is an optional field, and the default value is an empty dictionary object.
 
 **Type:** Record&lt;string, string&gt;
 
@@ -56,7 +56,7 @@ The default value is an empty dictionary object.
 get uri(): string
 ```
 
-Indicates the uri of file
+URI of a local file or a network file. The URI of a local file can be obtained by calling [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)
 
 **Type:** string
 
@@ -74,7 +74,7 @@ Indicates the uri of file
 set uri(value: string)
 ```
 
-Indicates the uri of file
+URI of a local file or a network file. The URI of a local file can be obtained by calling [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)
 
 **Type:** string
 
@@ -94,7 +94,7 @@ Indicates the uri of file
 set uriAuthorizationPolicies(value: Array<UriPermission> | undefined)
 ```
 
-Defines URI authorization policies for drag intention.
+URI authorization policy used in drag-and-drop scenarios. The default value is READ+WRITE+PERSIST (read + write + persistent authorization). It applies only to a single record and has the highest priority. For details about the policies, see [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md).
 
 **Type:** Array&lt;[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)&gt;
 

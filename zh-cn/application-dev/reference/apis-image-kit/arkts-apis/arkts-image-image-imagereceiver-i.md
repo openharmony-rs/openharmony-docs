@@ -470,7 +470,7 @@ setMemoryName(name: string): void
 
 设置ImageReceiver实例的内存名称。使用同步形式返回结果。
 
-仅支持可见ASCII字符。空格、换行符、制表符及其他控制字符将被过滤。若过滤后的结果全部为数字，将自动添加前缀"ImageReceiver:"。name的长度不能超过256字节。
+仅支持可见ASCII字符。空格、换行符、制表符及其他控制字符将被过滤。若过滤后的结果全部为数字，将自动添加前缀"ImageReceiver:"。name的长度不能超过255字节。
 
 **起始版本：** 26.0.1
 
@@ -484,13 +484,13 @@ setMemoryName(name: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 要设置的内存名称。<br>最大长度为256。 |
+| name | string | 是 | 要设置的内存名称。<br>最大长度为255。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [7900201](../errorcode-image.md#7900201-无效参数) | 参数无效。可能原因：<ol><li>name为空。</li> <li>过滤后name中无可视字符。</li> <li>name的长度超过256字节。</li> <li>请确保name参数包含可见ASCII字符。</li></ol> |
+| [7900201](../errorcode-image.md#7900201-无效参数) | 参数无效。可能原因：<ol><li>name为空。</li> <li>过滤后name中无可视字符。</li> <li>name的长度超过255字节。</li> <li>请确保name参数包含可见ASCII字符。</li></ol> |
 
 **示例**
 

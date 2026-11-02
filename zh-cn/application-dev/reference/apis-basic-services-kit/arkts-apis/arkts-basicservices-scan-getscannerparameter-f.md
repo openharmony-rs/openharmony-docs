@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function getScannerParameter(scannerId: string): Promise<ScannerParameter[]>
 ```
 
-获取扫描仪参数。使用Promise异步回调。
+获取扫描仪参数。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。应用可通过此方法获取参数索引（optionIndex），用于setScannerParameter、setScanAutoOption和getScannerCurrentSetting等方法的调用。
 
 **起始版本：** 20
 
@@ -26,13 +26,13 @@ function getScannerParameter(scannerId: string): Promise<ScannerParameter[]>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scannerId | string | 是 | 扫描仪的ID。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ScannerParameter](arkts-basicservices-scan-scannerparameter-i.md)[]&gt; | Promise used to return the scanner parameters. |
+| Promise&lt;[ScannerParameter](arkts-basicservices-scan-scannerparameter-i.md)[]&gt; | Promise对象，获取扫描仪参数成功时resolve并返回扫描仪参数数组，失败时reject。 |
 
 **错误码：**
 

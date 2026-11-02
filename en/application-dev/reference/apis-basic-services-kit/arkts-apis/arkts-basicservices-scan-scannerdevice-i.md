@@ -88,7 +88,7 @@ Model of the scanner.
 scannerId: string
 ```
 
-Unique identifier of the scanner.
+Scanner ID, which can be obtained using the scanDeviceFound callback after startScannerDiscovery is called.
 
 **Type:** string
 

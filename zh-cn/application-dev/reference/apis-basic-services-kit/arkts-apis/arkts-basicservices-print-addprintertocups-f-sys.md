@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function addPrinterToCups(printerUri: string, printerName: string, printerMake: string): Promise<boolean>
 ```
 
-添加打印机到cups，使用Promise异步回调。
+添加打印机到CUPS，使用Promise异步回调。CUPS是系统中的打印服务框架，用于管理打印机和打印任务。
 
 **起始版本：** 24
 
@@ -30,15 +30,15 @@ function addPrinterToCups(printerUri: string, printerName: string, printerMake: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerUri | string | 是 | 表示打印机uri。 |
+| printerUri | string | 是 | 表示打印机URI，可通过[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)获取。 |
 | printerName | string | 是 | 表示打印机名称。 |
-| printerMake | string | 是 | 表示打印机型号。 |
+| printerMake | string | 是 | 表示打印机品牌。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示添加打印机到cups成功；返回false表示添加打印机到cups失败。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示添加打印机到CUPS成功；返回false表示添加打印机到CUPS失败。 |
 
 **错误码：**
 

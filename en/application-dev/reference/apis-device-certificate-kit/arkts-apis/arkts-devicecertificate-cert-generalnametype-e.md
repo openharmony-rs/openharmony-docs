@@ -4,7 +4,7 @@
 enum GeneralNameType
 ```
 
-Enumerates the types of GeneralName as defined in X.509, which can appear in Subject Alternative Name and other extensions.
+Enumerates the general name types defined in X.509. These types can be used in the subject alternative name and other extensions.
 
 **Since:** 12
 
@@ -18,7 +18,7 @@ Enumerates the types of GeneralName as defined in X.509, which can appear in Sub
 GENERAL_NAME_TYPE_DIRECTORY_NAME = 4
 ```
 
-Indicates a directory name.
+Directory name.
 
 **Since:** 12
 
@@ -34,7 +34,7 @@ Indicates a directory name.
 GENERAL_NAME_TYPE_DNS_NAME = 2
 ```
 
-Indicates a DNS name.
+DNS name.
 
 **Since:** 12
 
@@ -50,7 +50,7 @@ Indicates a DNS name.
 GENERAL_NAME_TYPE_EDI_PARTY_NAME = 5
 ```
 
-Indicates an Electronic Data Interchange (EDI) entity.
+Electronic Data Interchange (EDI) entity.
 
 **Since:** 12
 
@@ -66,7 +66,7 @@ Indicates an Electronic Data Interchange (EDI) entity.
 GENERAL_NAME_TYPE_IP_ADDRESS = 7
 ```
 
-Indicates an IP address.
+IP address.
 
 **Since:** 12
 
@@ -82,7 +82,7 @@ Indicates an IP address.
 GENERAL_NAME_TYPE_OTHER_NAME = 0
 ```
 
-Indicates an otherName.
+Other name.
 
 **Since:** 12
 
@@ -98,7 +98,7 @@ Indicates an otherName.
 GENERAL_NAME_TYPE_REGISTERED_ID = 8
 ```
 
-Indicates a registered object identifier.
+Registered OID.
 
 **Since:** 12
 
@@ -114,7 +114,7 @@ Indicates a registered object identifier.
 GENERAL_NAME_TYPE_RFC822_NAME = 1
 ```
 
-Indicates an email address.
+Email address.
 
 **Since:** 12
 
@@ -130,7 +130,7 @@ Indicates an email address.
 GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID = 6
 ```
 
-Indicates a uniform resource identifier.
+Uniform Resource Identifier (URI).
 
 **Since:** 12
 
@@ -146,7 +146,7 @@ Indicates a uniform resource identifier.
 GENERAL_NAME_TYPE_X400_ADDRESS = 3
 ```
 
-Indicates an X.400 address.
+X.400 address.
 
 **Since:** 12
 

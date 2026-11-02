@@ -95,7 +95,7 @@ Called when data is encrypted or decrypted successfully.
 action: string
 ```
 
-Action to perform. The options are as follows:
+Cipher operation type. The options are as follows:
 
 1. **encrypt**: Encrypts data.
 2. **decrypt**: Decrypts data.
@@ -118,7 +118,7 @@ Action to perform. The options are as follows:
 key: string
 ```
 
-RSA key. It is a public key in encryption and a private key in decryption.
+RSA key used for encryption or decryption. It is a public key in encryption and a private key in decryption.
 
 **Type:** string
 

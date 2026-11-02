@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function getPrinterInfoById(printerId: string): Promise<PrinterInfo>
 ```
 
-Obtains printer information based on the printer ID. This API uses a promise to return the result.
+Obtains printer information based on the printer ID. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
 

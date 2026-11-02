@@ -4,7 +4,7 @@
 interface PrinterInfo
 ```
 
-Provides the printer information.
+Defines the printer information.
 
 **Since:** 24
 
@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 capability?: PrinterCapability
 ```
 
-Printer capability.
+Printer capabilities.
 
 **Type:** [PrinterCapability](arkts-basicservices-print-printercapability-i.md)
 
@@ -56,7 +56,7 @@ Printer description.
 options?: Object
 ```
 
-Printer options. The value is a JSON object string.
+Printer information, in JSON format.
 
 **Type:** Object
 

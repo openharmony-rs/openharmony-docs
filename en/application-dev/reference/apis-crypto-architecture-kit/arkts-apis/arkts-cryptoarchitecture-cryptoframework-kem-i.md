@@ -4,7 +4,7 @@
 interface Kem
 ```
 
-Key encapsulation mechanism (KEM) interface, defining methods for key encapsulation and decapsulation based on KEM. Before use, you must create a **Kem** instance by using [createKem(algNameId: KemAlgNameId): Kem](arkts-cryptoarchitecture-cryptoframework-createkem-f.md).
+Defines an API for key encapsulation and decapsulation based on the key encapsulation mechanism (KEM). Before calling this API, you must use the [createKem](arkts-cryptoarchitecture-cryptoframework-createkem-f.md) method to create a Kem instance.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>
 ```
 
-Key decapsulation operation. Using the receiver's private key, executed by the receiver, to decapsulate the shared key from the ciphertext. This API uses a promise to return the result.
+Decapsulates a key based on the given private key and wrapped key. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -40,14 +40,14 @@ Key decapsulation operation. Using the receiver's private key, executed by the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| priKey | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | Yes | The private key of the receiver. |
-| wrappedKey | Uint8Array | Yes | The wrapped key of the KEM. |
+| priKey | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | Yes | Private key used for key decapsulation. |
+| wrappedKey | Uint8Array | Yes | Wrapped key generated during key encapsulation. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the shared secret. |
+| Promise&lt;Uint8Array&gt; | Promise used to return the shared key obtained through key decapsulation. |
 
 **Error codes:**
 
@@ -86,9 +86,9 @@ async function kemDecapsulate() {
 decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array
 ```
 
-Key decapsulation operation. Using the receiver's private key, executed by the receiver, to decapsulate the shared key from the ciphertext.
+Decapsulates a key based on the given private key and wrapped key. This API returns the result synchronously.
 
-<br><br>**NOTE:** <br>It is recommended to prioritize the use of asynchronous API, [decapsulate](#decapsulate). Synchronous API may take a long time and block the main thread due to system busyness, high load, and other reasons. Therefore, it is advised to invoke synchronous API within a child thread to avoid blocking the main thread.
+<br><br>**NOTE:** <br>You are advised to preferentially use the asynchronous API <br>[decapsulate](#decapsulate) in a child thread. A synchronous API may block the main thread due to long execution time caused by the busy system or a high load.
 
 **Since:** 26.0.0
 
@@ -104,14 +104,14 @@ Key decapsulation operation. Using the receiver's private key, executed by the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| priKey | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | Yes | The private key of the receiver. |
-| wrappedKey | Uint8Array | Yes | The wrapped key of the KEM. |
+| priKey | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | Yes | Private key used for key decapsulation. |
+| wrappedKey | Uint8Array | Yes | Wrapped key generated during key encapsulation. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Uint8Array | The decapsulation result of the KEM. |
+| Uint8Array | Shared key obtained through key decapsulation. |
 
 **Error codes:**
 
@@ -150,7 +150,7 @@ function kemDecapsulateSync() {
 encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>
 ```
 
-Key encapsulation operation. Using the recipient's public key, executed by the sender, to generate and encapsulate a shared key. This API uses a promise to return the result.
+Encapsulates a key based on the given public key. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -166,7 +166,7 @@ Key encapsulation operation. Using the recipient's public key, executed by the s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | Yes | The public key of the receiver. |
+| pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | Yes | Public key used for key encapsulation. |
 | ikme | Uint8Array &#124; null | Yes | Random number seed, used to replace the random number within the algorithm. For the ML-KEM algorithm, the random number seed is 32 bytes. It is recommended to pass null. |
 
 **Return value:**
@@ -212,9 +212,9 @@ async function kemEncapsulate() {
 encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
 ```
 
-Key encapsulation operation. Using the recipient's public key, executed by the sender, to generate and encapsulate a shared key.
+Encapsulates a key based on the given public key. This API returns the result synchronously.
 
-<br><br>**NOTE:** <br>It is recommended to prioritize the use of asynchronous API, [encapsulate](#encapsulate). Synchronous API may take a long time and block the main thread due to system busyness, high load, and other reasons. Therefore, it is advised to invoke synchronous API within a child thread to avoid blocking the main thread.
+<br><br>**NOTE:** <br>You are advised to preferentially use the asynchronous API <br>[encapsulate](#encapsulate) in a child thread. A synchronous API may block the main thread due to long execution time caused by the busy system or a high load.
 
 **Since:** 26.0.0
 
@@ -230,7 +230,7 @@ Key encapsulation operation. Using the recipient's public key, executed by the s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | Yes | The public key of the receiver. |
+| pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | Yes | Public key used for key encapsulation. |
 | ikme | Uint8Array &#124; null | Yes | Random number seed, used to replace the random number within the algorithm. For the ML-KEM algorithm, the random number seed is 32 bytes. It is recommended to pass null. |
 
 **Return value:**

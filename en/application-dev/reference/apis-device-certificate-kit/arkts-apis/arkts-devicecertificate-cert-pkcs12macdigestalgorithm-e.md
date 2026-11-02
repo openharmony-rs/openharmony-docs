@@ -4,7 +4,7 @@
 enum Pkcs12MacDigestAlgorithm
 ```
 
-Enumerates the P12 MAC digest algorithms.
+Enumerates the PKCS #12 MAC digest algorithms.
 
 **Since:** 21
 

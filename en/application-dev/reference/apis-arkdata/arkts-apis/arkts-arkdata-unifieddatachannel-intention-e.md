@@ -4,7 +4,7 @@
 enum Intention
 ```
 
-Enumerates the data channel types supported by the UDMF. It is used to identify different service scenarios, to which the UDMF data channels apply.
+Enumerates the data channels supported by UDMF. It is mainly used to identify the different business scenarios targeted by various UDMF data channels.
 
 **Since:** 10
 
@@ -19,6 +19,8 @@ DATA_HUB = 'DataHub'
 ```
 
 Public data channel.
+
+**Applicable scenario:** Suitable for cross-application data sharing using UDMF in public data sharing scenarios.
 
 **Since:** 10
 
@@ -36,9 +38,9 @@ Public data channel.
 DRAG = 'Drag'
 ```
 
-Channel in which data can be dragged and dropped.
+Drag-and-drop data channel.
 
-**Use scenario**: This API is used to share data across applications in drag-and-drop scenarios.
+**Applicable scenario:** Suitable for cross-application data sharing using UDMF in drag-and-drop scenarios.
 
 **Since:** 14
 
@@ -54,9 +56,9 @@ Channel in which data can be dragged and dropped.
 MENU = 'Menu'
 ```
 
-Data channel of the menu type.
+Menu data channel.
 
-**Use scenario**: This API is used to share data across applications in the shortcut menu.
+**Applicable scenario:** Suitable for cross-application data sharing using UDMF in right-click menu scenarios.
 
 **Since:** 20
 
@@ -72,9 +74,9 @@ Data channel of the menu type.
 PICKER = 'Picker'
 ```
 
-Data channel of the picker type.
+Picker data channel.
 
-**Use scenario**: This API is used to share data across applications in the scenarios where a picker is used.
+**Applicable scenario:** Suitable for cross-application data sharing using UDMF in picker scenarios.
 
 **Since:** 20
 
@@ -90,9 +92,9 @@ Data channel of the picker type.
 SYSTEM_SHARE = 'SystemShare'
 ```
 
-Data channel of the system sharing type.
+System sharing data channel.
 
-**Use scenario**: This API is used to share data across applications in system sharing scenarios.
+**Applicable scenario:** Suitable for cross-application data sharing using UDMF in system sharing scenarios.
 
 **Since:** 20
 

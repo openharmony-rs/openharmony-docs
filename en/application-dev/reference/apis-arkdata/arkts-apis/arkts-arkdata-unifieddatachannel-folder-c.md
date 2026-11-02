@@ -4,7 +4,7 @@
 class Folder extends File
 ```
 
-Represents the folder data. It is a child class of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe a folder.
+Folder type data, a subclass of [File](arkts-arkdata-unifieddatachannel-file-c.md), used to describe a folder.
 
 **Inheritance/Implementation:** Folder extends [File](arkts-arkdata-unifieddatachannel-file-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get folderUri(): string
 ```
 
-Indicates the uri of folder
+URI of a local folder or a network folder. The URI of a local folder can be obtained by [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md).
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Indicates the uri of folder
 set folderUri(value: string)
 ```
 
-Indicates the uri of folder
+URI of a local folder or a network folder. The URI of a local folder can be obtained by [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md).
 
 **Type:** string
 

@@ -49,5 +49,5 @@ This API is used to identify the BR entry and the BLE entry of the same dual-mod
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900003 | Bluetooth disabled. |
 | [2900016](../errorcode-bluetoothManager.md#2900016-device-not-paired) | Device unpaired. |
-| 2900017 | No BLE address is associated with the input BR address. |
+| [2900017](../errorcode-bluetoothManager.md#2900017-no-ble-address-associated-with-the-input-br-address) | No BLE address is associated with the input BR address. |
 | 2900099 | Operation failed. |

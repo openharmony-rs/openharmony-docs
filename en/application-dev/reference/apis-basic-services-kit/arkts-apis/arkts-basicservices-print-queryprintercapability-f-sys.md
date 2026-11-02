@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryPrinterCapability(printerId: string, callback: AsyncCallback<void>): void
 ```
 
-Queries the printer capability. This API uses an asynchronous callback to return the result.
+Queries the printer capability. This API uses an asynchronous callback to return the result. The query result can be obtained from **PrinterInfo.capability** in the [on('printerStateChange')](arkts-basicservices-print-on-f-sys.md#onprinterstatechange) event callback.
 
 **Since:** 10
 
@@ -65,7 +65,7 @@ print.queryPrinterCapability(printerId, (error: BusinessError) => {
 function queryPrinterCapability(printerId: string): Promise<void>
 ```
 
-Queries the printer capability. This API uses a promise to return the result.
+Queries the printer capability. This API uses a promise to return the result. The query result can be obtained from **PrinterInfo.capability** in the [on('printerStateChange')](arkts-basicservices-print-on-f-sys.md#onprinterstatechange) event callback.
 
 **Since:** 10
 

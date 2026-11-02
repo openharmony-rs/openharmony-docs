@@ -2,11 +2,17 @@
 
 Defines Web Component.
 
-**ohos.permission.INTERNET**, required for accessing online web pages. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
-
 <p><strong>API Note</strong>:
 
 <strong>Performance Note</strong>: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-comp-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
+
+## Required Permissions
+
+**ohos.permission.INTERNET**, required for accessing online web pages. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
+
+## Child Components
+
+Not supported
 
 ## Web
 
@@ -15,6 +21,12 @@ Web(value: WebOptions)
 ```
 
 Sets Value.
+
+> **NOTE:** 
+> 
+> - Transition animation is not supported.
+> 
+> - To ensure the independence and performance isolation of Web components, multiple Web components on the same page must be bound to different WebviewController instances.
 
 **Since:** 8
 

@@ -6,8 +6,6 @@ interface Aperture extends ApertureQuery
 
 物理光圈对象。
 
-Aperture继承自ApertureQuery。
-
 **继承/实现关系：** Aperture extends [ApertureQuery](arkts-camera-camera-aperturequery-i.md)
 
 **起始版本：** 24
@@ -69,7 +67,7 @@ function getVirtualAperture(session: camera.PortraitPhotoSession): number {
 setVirtualAperture(aperture: number): void
 ```
 
-设置虚拟光圈。可以先通过getSupportedVirtualApertures获取当前设备所支持的虚拟光圈列表。
+设置虚拟光圈。可以先通过[getSupportedVirtualApertures](arkts-camera-camera-aperturequery-i-sys.md#getsupportedvirtualapertures)获取当前设备所支持的虚拟光圈列表。
 
 **起始版本：** 11
 

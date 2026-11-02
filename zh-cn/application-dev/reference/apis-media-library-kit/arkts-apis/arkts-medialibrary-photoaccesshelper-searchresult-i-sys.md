@@ -6,7 +6,7 @@ interface SearchResult
 
 搜索查询的结果。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 <!--Device-photoAccessHelper-interface SearchResult--><!--Device-photoAccessHelper-interface SearchResult-End-->
 
@@ -30,7 +30,7 @@ results: string[]
 
 **类型：** string[]
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

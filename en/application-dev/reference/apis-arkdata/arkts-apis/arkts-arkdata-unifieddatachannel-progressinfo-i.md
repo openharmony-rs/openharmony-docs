@@ -4,7 +4,7 @@
 interface ProgressInfo
 ```
 
-Represents the progress information.
+Defines the data for progress reporting.
 
 **Since:** 15
 
@@ -24,9 +24,9 @@ import { unifiedDataChannel } from '@kit.ArkData';
 progress: number
 ```
 
-Progress of the drag task, in percentage.
+Progress percentage of the drag-and-drop task reported by the system.
 
-The value is an integer ranging from -1 to 100. The value **-1** indicates a failure to obtain data, and the value **100** indicates data is obtained.
+The value is an integer in the range [-1, 100], where -1 indicates that data acquisition failed this time, and 100 indicates that data acquisition is complete.
 
 **Type:** number
 
@@ -46,7 +46,7 @@ The value is an integer ranging from -1 to 100. The value **-1** indicates a fai
 status: ListenerStatus
 ```
 
-Status code of the drag task reported by the system.
+Status code of the drag-and-drop task reported by the system.
 
 **Type:** [ListenerStatus](arkts-arkdata-unifieddatachannel-listenerstatus-e.md)
 

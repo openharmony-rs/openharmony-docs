@@ -4,9 +4,7 @@
 type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 ```
 
-Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies.
-
-This API is a synchronous function and is applicable to simple service logic. If the service logic is complex and the execution time lasts for more than 3s, you are advised to use the asynchronous handler [DelayedDataLoadHandler](arkts-arkdata-unifieddatachannel-delayeddataloadhandler-t.md).
+Defines the handler for delayed data loading. It allows the data sender to dynamically generate data based on the information passed in by the receiver, enabling more flexible and precise data interaction strategies. This handler is a synchronous function and is suitable for simple business logic. If the business logic is complex or takes a long time to execute (more than 3 seconds), use the asynchronous handler [DelayedDataLoadHandler](arkts-arkdata-unifieddatachannel-delayeddataloadhandler-t.md).
 
 **Since:** 20
 
@@ -22,10 +20,10 @@ This API is a synchronous function and is applicable to simple service logic. If
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| acceptableInfo | [DataLoadInfo](arkts-arkdata-unifieddatachannel-dataloadinfo-i.md) | No | Data type and quantity to receive. The default value is empty. |
+| acceptableInfo | [DataLoadInfo](arkts-arkdata-unifieddatachannel-dataloadinfo-i.md) | No | Data types and quantity that the data receiver can accept. The default value is empty. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) &#124; null | Returns **UnifiedData** or **null** when the processing function for lazy data loading is triggered. |
+| [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md) &#124; null | UnifiedData object generated based on the receiver information when the delayed handler is triggered, used for data transfer. If the data cannot be generated or generation fails, null is returned. |

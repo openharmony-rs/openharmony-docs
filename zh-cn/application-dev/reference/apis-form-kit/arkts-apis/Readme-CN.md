@@ -5,6 +5,8 @@
   <!--Del-->
   - [getAvailableFormHostServices（系统接口）](arkts-form-formagent-getavailableformhostservices-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [getVisibleFormRect（系统接口）](arkts-form-formagent-getvisibleformrect-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [requestPublishForm（系统接口）](arkts-form-formagent-requestpublishform-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [requestPublishFormCrossDevice（系统接口）](arkts-form-formagent-requestpublishformcrossdevice-f-sys.md)<!--DelEnd-->
@@ -68,6 +70,8 @@
   <!--Del-->
   - [offDeleteFormsCallback（系统接口）](arkts-form-formhost-offdeleteformscallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [offGetVisibleFormRect（系统接口）](arkts-form-formhost-offgetvisibleformrect-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [offGetWantParamsCallback（系统接口）](arkts-form-formhost-offgetwantparamscallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offTemplateFormDetailInfoChange（系统接口）](arkts-form-formhost-offtemplateformdetailinfochange-f-sys.md)<!--DelEnd-->
@@ -77,6 +81,8 @@
   - [on（系统接口）](arkts-form-formhost-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onDeleteFormsCallback（系统接口）](arkts-form-formhost-ondeleteformscallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onGetVisibleFormRect（系统接口）](arkts-form-formhost-ongetvisibleformrect-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onGetWantParamsCallback（系统接口）](arkts-form-formhost-ongetwantparamscallback-f-sys.md)<!--DelEnd-->
   <!--Del-->

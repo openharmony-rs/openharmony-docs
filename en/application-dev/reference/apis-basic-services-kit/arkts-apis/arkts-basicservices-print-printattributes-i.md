@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 colorMode?: PrintColorMode
 ```
 
-Color mode of the files to print.
+Color mode of the files to print. If no value is passed, **0** is used by default.
 
 **Type:** [PrintColorMode](arkts-basicservices-print-printcolormode-e.md)
 
@@ -40,7 +40,7 @@ Color mode of the files to print.
 copyNumber?: number
 ```
 
-Number of printed file copies. The default value is **1**.
+Number of printed file copies. The value must be a positive integer. If no value is passed, **0** is used by default.
 
 **Type:** number
 
@@ -56,7 +56,7 @@ Number of printed file copies. The default value is **1**.
 directionMode?: PrintDirectionMode
 ```
 
-Print direction mode.
+Print direction mode. If no value is passed, **0** is used by default.
 
 **Type:** [PrintDirectionMode](arkts-basicservices-print-printdirectionmode-e.md)
 
@@ -72,7 +72,7 @@ Print direction mode.
 duplexMode?: PrintDuplexMode
 ```
 
-Duplex mode of the files to print.
+Duplex mode of the files to print. If no value is passed, **0** is used by default.
 
 **Type:** [PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)
 
@@ -88,7 +88,7 @@ Duplex mode of the files to print.
 pageRange?: PrintPageRange
 ```
 
-Page range of the file to print.
+Page range of the file to print. If no value is passed, the default value is an empty range object.
 
 **Type:** [PrintPageRange](arkts-basicservices-print-printpagerange-i.md)
 
@@ -104,7 +104,7 @@ Page range of the file to print.
 pageSize?: PrintPageSize | PrintPageType
 ```
 
-Page size of the file to print.
+Paper size of the file to print. If no value is passed, the default value is an empty paper size object.
 
 **Type:** [PrintPageSize](arkts-basicservices-print-printpagesize-i.md) &#124; [PrintPageType](arkts-basicservices-print-printpagetype-e.md)
 

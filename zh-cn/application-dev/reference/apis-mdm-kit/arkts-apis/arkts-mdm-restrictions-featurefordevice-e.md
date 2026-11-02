@@ -92,6 +92,22 @@ CAMERA = 19
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## CONTROL_CENTER
+
+```TypeScript
+CONTROL_CENTER = 59
+```
+
+控制中心。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FeatureForDevice-CONTROL_CENTER = 59--><!--Device-FeatureForDevice-CONTROL_CENTER = 59-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## CORE_DUMP
 
 ```TypeScript
@@ -411,6 +427,22 @@ NOTIFICATION = 31
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FeatureForDevice-NOTIFICATION = 31--><!--Device-FeatureForDevice-NOTIFICATION = 31-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## NOTIFICATION_CENTER
+
+```TypeScript
+NOTIFICATION_CENTER = 60
+```
+
+通知中心。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FeatureForDevice-NOTIFICATION_CENTER = 60--><!--Device-FeatureForDevice-NOTIFICATION_CENTER = 60-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -41,7 +41,7 @@ Creates a **Mac** instance.
 
 | Type | Description |
 | --- | --- |
-| [Mac](arkts-cryptoarchitecture-cryptoframework-mac-i.md) | Returns the **Mac** instance corresponding to the specified algorithm. |
+| [Mac](arkts-cryptoarchitecture-cryptoframework-mac-i.md) | **Mac** instance of the corresponding algorithm. |
 
 **Error codes:**
 
@@ -95,7 +95,7 @@ Creates a **Mac** instance.
 
 | Type | Description |
 | --- | --- |
-| [Mac](arkts-cryptoarchitecture-cryptoframework-mac-i.md) | Returns the **Mac** instance corresponding to the specified algorithm. |
+| [Mac](arkts-cryptoarchitecture-cryptoframework-mac-i.md) | **Mac** instance of the corresponding algorithm. |
 
 **Error codes:**
 

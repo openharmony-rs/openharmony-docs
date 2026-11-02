@@ -4,7 +4,7 @@
 interface SceneDetection extends SceneDetectionQuery
 ```
 
-Provides the scene detection capability. It inherits from [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md).
+提供场景检测能力。
 
 **继承/实现关系：** SceneDetection extends [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 enableSceneFeature(type: SceneFeatureType, enabled: boolean): void
 ```
 
-Enables or disables a scene feature. This API must be called after [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md) of the corresponding scene feature is received.
+使能或去使能场景特性。该接口必须在收到对应场景特性的[SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md) 之后再调用。
 
 **起始版本：** 12
 
@@ -42,8 +42,8 @@ Enables or disables a scene feature. This API must be called after [SceneFeature
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md) | 是 | Scene feature. |
-| enabled | boolean | 是 | Whether to enable the scene feature. **true** to enable, **false** otherwise. |
+| type | [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md) | 是 | 场景特性。 |
+| enabled | boolean | 是 | 是否使能场景特性。**true**表示使能，**false**表示去使能。 |
 
 **错误码：**
 

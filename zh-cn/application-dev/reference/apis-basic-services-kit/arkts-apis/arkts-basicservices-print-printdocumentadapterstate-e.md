@@ -18,7 +18,7 @@ enum PrintDocumentAdapterState
 PREVIEW_DESTROY = 0
 ```
 
-表示预览失败。
+表示打印预览界面销毁。
 
 **起始版本：** 11
 

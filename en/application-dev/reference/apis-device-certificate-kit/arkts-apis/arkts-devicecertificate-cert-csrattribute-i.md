@@ -4,9 +4,9 @@
 interface CsrAttribute
 ```
 
-Defines the CSR attribute representation.
+Defines the CSR attribute.
 
-<br>CSR attribute field. Currently, only string-type attribute fields are supported. The attribute value added to the CSR is encoded in UTF-8 format. The common type is challengePassword.
+<br>The CSR attribute field can only be set to a UTF-8 string currently. **type** is commonly set to **challengePassword**.
 
 **Since:** 18
 

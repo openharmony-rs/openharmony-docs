@@ -86,9 +86,12 @@
   <!--Del-->
   - [getDeviceRotationRadian(system api)](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md)<!--DelEnd-->
   - [off](arkts-multimodalawareness-devicestatus-off-f.md)
+  - [offDropDetect](arkts-multimodalawareness-devicestatus-offdropdetect-f.md)
   - [on](arkts-multimodalawareness-devicestatus-on-f.md)
+  - [onDropDetect](arkts-multimodalawareness-devicestatus-ondropdetect-f.md)
   <!--Del-->
   - [DeviceRotationRadian(system api)](arkts-multimodalawareness-devicestatus-devicerotationradian-i-sys.md)<!--DelEnd-->
+  - [DropDetectionStatus](arkts-multimodalawareness-devicestatus-dropdetectionstatus-e.md)
   - [SteadyStandingStatus](arkts-multimodalawareness-devicestatus-steadystandingstatus-e.md)
 - [@ohos.multimodalAwareness.metadataBinding(Metadata binding–specific)](arkts-multimodalawareness-multimodalawareness-metadatabinding.md)
   <!--Del-->

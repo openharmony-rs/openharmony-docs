@@ -34,7 +34,7 @@ Creates an **AsyKeyGeneratorBySpec** instance based on the specified key specifi
 
 | Type | Description |
 | --- | --- |
-| [AsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md) | Returns the **AsyKeyGeneratorBySpec** instance created. |
+| [AsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md) | **AsyKeyGeneratorBySpec** instance. |
 
 **Error codes:**
 

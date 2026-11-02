@@ -95,6 +95,22 @@ Device camera capability.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## CONTROL_CENTER
+
+```TypeScript
+CONTROL_CENTER = 59
+```
+
+Control Center.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-CONTROL_CENTER = 59--><!--Device-FeatureForDevice-CONTROL_CENTER = 59-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## CORE_DUMP
 
 ```TypeScript
@@ -414,6 +430,22 @@ Device notification capability. After this capability is disabled, notifications
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-FeatureForDevice-NOTIFICATION = 31--><!--Device-FeatureForDevice-NOTIFICATION = 31-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## NOTIFICATION_CENTER
+
+```TypeScript
+NOTIFICATION_CENTER = 60
+```
+
+Notification Center.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-NOTIFICATION_CENTER = 60--><!--Device-FeatureForDevice-NOTIFICATION_CENTER = 60-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

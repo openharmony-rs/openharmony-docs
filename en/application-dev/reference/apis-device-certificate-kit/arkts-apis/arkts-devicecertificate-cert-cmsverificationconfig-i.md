@@ -4,7 +4,7 @@
 interface CmsVerificationConfig
 ```
 
-Represents CMS verification configuration.
+CMS signature verification configuration.
 
 **Since:** 22
 
@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 contentData?: Uint8Array
 ```
 
-Content data. If the detached mode is used, you need to specify the plaintext data. This parameter can be left empty in attached mode.
+Content data. If the detached mode is used, you need to specify the plaintext data. This parameter is optional in attached mode.
 
 **Type:** Uint8Array
 
@@ -62,7 +62,7 @@ Format of the content. The default value is **CmsContentDataFormat.BINARY**.
 signerCerts?: Array<X509Cert>
 ```
 
-Signer certificates.
+Signer certificate. This parameter is left empty by default.
 
 **Type:** Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;
 
@@ -80,11 +80,7 @@ Signer certificates.
 trustCerts: Array<X509Cert>
 ```
 
-Trusted certificates.
-
-> **NOTE:** 
-> 
-> You need to configure the trust certificates of all signers.
+Trust certificate. Note: You need to configure the trust certificates for all signers.
 
 **Type:** Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;
 

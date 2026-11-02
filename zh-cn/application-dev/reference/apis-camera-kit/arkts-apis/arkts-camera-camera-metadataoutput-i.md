@@ -4,7 +4,7 @@
 interface MetadataOutput extends CameraOutput
 ```
 
-metadata流。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
+metadata流。
 
 **继承/实现关系：** MetadataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 
@@ -40,7 +40,7 @@ addMetadataObjectTypes(types: Array<MetadataObjectType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| types | Array&lt;[MetadataObjectType](arkts-camera-camera-metadataobjecttype-e.md)&gt; | 是 | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types | Array&lt;[MetadataObjectType](arkts-camera-camera-metadataobjecttype-e.md)&gt; | 是 | metadata流类型信息，通过[getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability-2)接口获取。 |
 
 **错误码：**
 
@@ -319,7 +319,7 @@ removeMetadataObjectTypes(types: Array<MetadataObjectType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| types | Array&lt;[MetadataObjectType](arkts-camera-camera-metadataobjecttype-e.md)&gt; | 是 | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types | Array&lt;[MetadataObjectType](arkts-camera-camera-metadataobjecttype-e.md)&gt; | 是 | metadata流类型信息，通过[getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability-2)接口获取。 |
 
 **错误码：**
 

@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function unregisterWatermarkCallback(callback?: WatermarkCallback): void
 ```
 
-Unregister to listen for watermark handling.
+Deregisters an event listener for forcible watermark processing. When an enterprise management app no longer needs to forcibly add watermarks to printed files, you can call this API to unregister the previously registered watermark processing callback.
 
 **Since:** 24
 
@@ -28,7 +28,7 @@ Unregister to listen for watermark handling.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | No | Indicates the callback type used in registering to listen for watermark handling. <br>Indicates the callback type used in registering to listen for watermark handling. |
+| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | No | Watermark processing callback to be unregistered. If this parameter is not passed, all registered callbacks of the caller will be unregistered. |
 
 **Error codes:**
 

@@ -4,7 +4,7 @@
 enum SceneFeatureType
 ```
 
-Enumerates the scene features.
+枚举，场景特性。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Enumerates the scene features.
 LOW_LIGHT_BOOST = 2
 ```
 
-Scene for long exposure photography. This is a system API.
+长曝光拍摄场景。
 
 **起始版本：** 13
 
@@ -36,7 +36,7 @@ Scene for long exposure photography. This is a system API.
 MOON_CAPTURE_BOOST = 0
 ```
 
-Moon scene. This is a system API.
+月亮场景。
 
 **起始版本：** 12
 
@@ -52,7 +52,7 @@ Moon scene. This is a system API.
 TRIPOD_DETECTION = 1
 ```
 
-Scene where a tripod is used for photo capture. This is a system API.
+使用三脚架拍照的场景。
 
 **起始版本：** 13
 

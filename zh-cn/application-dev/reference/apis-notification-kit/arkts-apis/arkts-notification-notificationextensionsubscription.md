@@ -2,6 +2,12 @@
 
 本模块提供管理通知扩展的能力，具体包括：打开通知扩展订阅设置界面、订阅和取消订阅通知扩展、获取和设置[通知授权](../../../notification/notification-glossary.md#notification-authorization通知授权)状态。
 
+> **说明：** 
+> 
+> 通过本模块订阅的通知扩展事件不通过本模块的接口回调投递，而是通过
+> [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md)
+> 的回调（如onReceiveMessage）投递，相关回调在该ExtensionAbility实例的主线程上执行。
+
 **起始版本：** 22
 
 <!--Device-unnamed-declare namespace notificationExtensionSubscription--><!--Device-unnamed-declare namespace notificationExtensionSubscription-End-->

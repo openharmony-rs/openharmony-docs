@@ -464,7 +464,7 @@ setMemoryName(name: string): void
 
 Sets the memory name for the ImageReceiver instance. This API returns the result synchronously.
 
-Only visible ASCII characters are supported. Spaces, newlines, tabs, and other control characters will be filtered out. If the filtered result consists entirely of digits, a prefix "ImageReceiver:" will be automatically prepended.The length of name must not exceed 256 bytes.
+Only visible ASCII characters are supported. Spaces, newlines, tabs, and other control characters will be filtered out. If the filtered result consists entirely of digits, a prefix "ImageReceiver:" will be automatically prepended.The length of name must not exceed 255 bytes.
 
 **Since:** 26.0.1
 
@@ -478,13 +478,13 @@ Only visible ASCII characters are supported. Spaces, newlines, tabs, and other c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | Memory name to set. <br>The maximum length is 256. |
+| name | string | Yes | Memory name to set. <br>The maximum length is 255. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [7900201](../errorcode-image.md#7900201-invalid-parameter) | Invalid parameter. Possible causes: <ol><li>Name is empty.</li> <li>Name contains no visible characters after filtering.</li> <li>The length of name exceeds 256 bytes.</li> <li>Ensure the name parameter contains visible ASCII characters.</li></ol> |
+| [7900201](../errorcode-image.md#7900201-invalid-parameter) | Invalid parameter. Possible causes: <ol><li>Name is empty.</li> <li>Name contains no visible characters after filtering.</li> <li>The length of name exceeds 255 bytes.</li> <li>Ensure the name parameter contains visible ASCII characters.</li></ol> |
 
 ## capacity
 

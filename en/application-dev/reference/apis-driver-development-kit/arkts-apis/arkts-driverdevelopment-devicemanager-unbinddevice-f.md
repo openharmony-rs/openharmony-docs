@@ -12,7 +12,7 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 ```
 
-Unbinds a peripheral device.
+Unbinds a peripheral device. You must call **bindDevice** to bind the device first.
 
 **Since:** 10
 
@@ -30,7 +30,7 @@ Unbinds a peripheral device.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | number | Yes | Device ID, which can be obtained via **queryDevices()**. |
+| deviceId | number | Yes | Device ID, which can be obtained via [queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -68,7 +68,7 @@ try {
 function unbindDevice(deviceId: number): Promise<number>
 ```
 
-Unbinds a peripheral device. This API uses a promise to return the result.
+Unbinds a peripheral device. You must call **bindDevice** to bind the device first. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -86,7 +86,7 @@ Unbinds a peripheral device. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | number | Yes | Device ID, which can be obtained via **queryDevices()**. |
+| deviceId | number | Yes | Device ID, which can be obtained via [queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md). |
 
 **Return value:**
 

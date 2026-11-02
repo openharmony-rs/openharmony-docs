@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function closeScanner(scannerId: string): Promise<void>
 ```
 
-Closes a scanner. This API uses a promise to return the result.
+Closes a scanner. This API uses a promise to return the result. After a scanner is closed, you cannot obtain or set parameters for the scanner or perform scanning operations on the scanner. To use the scanner again, call **openScanner()**.
 
 **Since:** 20
 

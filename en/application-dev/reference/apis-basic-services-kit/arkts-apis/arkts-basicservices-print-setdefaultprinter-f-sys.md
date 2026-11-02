@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise<void>
 ```
 
-Sets the default printer. This API uses a promise to return the result.
+Sets the default printer. This API uses an asynchronous callback to return the result. It is used in scenarios where the system default printer needs to be specified, such as when a user manually selects a default printer or the system automatically sets the printer used last time as the default printer.
 
 **Since:** 18
 
@@ -29,7 +29,7 @@ Sets the default printer. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | printerId | string | Yes | Printer ID. |
-| type | [DefaultPrinterType](arkts-basicservices-print-defaultprintertype-e.md) | Yes | Default printer type. |
+| type | [DefaultPrinterType](arkts-basicservices-print-defaultprintertype-e.md) | Yes | Default printer type, which is used to specify the default printer. |
 
 **Return value:**
 

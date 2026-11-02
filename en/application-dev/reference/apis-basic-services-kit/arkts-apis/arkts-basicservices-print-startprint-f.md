@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function startPrint(job: PrintJobData): Promise<void>
 ```
 
-Prints a file or binary data. This API uses a promise to return the result.
+Prints a file or binary data. This API uses a promise to return the result. This API directly creates a print job by specifying the target printer ID and print parameters in **PrintJobData**. Call **print.print** to display the system print preview page.
 
 **Since:** 23
 

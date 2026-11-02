@@ -40,6 +40,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | [getAppNativeMemInfoAsync](arkts-performanceanalysis-hidebug-getappnativememinfoasync-f.md#getappnativememinfoasync-1) | 读取/proc/{pid}/smaps_rollup和/proc/{pid}/statm节点的数据以获取应用进程内存信息，使用Promise异步回调。 |
 | [getAppNativeMemInfoWithCache](arkts-performanceanalysis-hidebug-getappnativememinfowithcache-f.md#getappnativememinfowithcache-1) | 获取应用进程内存信息。与`getAppNativeMemInfo`接口相比，该接口使用了缓存机制，以提高性能。缓存的有效期为5分钟。 |
 | [getAppRunningUniqueId](arkts-performanceanalysis-hidebug-getapprunninguniqueid-f.md#getapprunninguniqueid-1) | 获取应用程序的运行唯一标识符。 |
+| [getAppSharedHeapObjectUsedSize](arkts-performanceanalysis-hidebug-getappsharedheapobjectusedsize-f.md#getappsharedheapobjectusedsize-1) | 获取虚拟机中共享堆对象所占用的内存大小。 |
 | [getAppThreadCpuUsage](arkts-performanceanalysis-hidebug-getappthreadcpuusage-f.md#getappthreadcpuusage-1) | 获取应用线程CPU使用情况。 |
 | [getAppVMMemoryInfo](arkts-performanceanalysis-hidebug-getappvmmemoryinfo-f.md#getappvmmemoryinfo-1) | 获取VM内存相关信息。 |
 | [getAppVMObjectUsedSize](arkts-performanceanalysis-hidebug-getappvmobjectusedsize-f.md#getappvmobjectusedsize-1) | 获取当前虚拟机中ArkTS对象所占用的内存大小。 |

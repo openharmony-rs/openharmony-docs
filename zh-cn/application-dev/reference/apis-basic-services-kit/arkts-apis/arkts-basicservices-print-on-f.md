@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function on(type: 'printerChange', callback: PrinterChangeCallback): void
 ```
 
-注册打印机变动事件回调，使用callback回调。
+注册打印机变动事件回调，使用callback异步回调。
 
 **起始版本：** 18
 

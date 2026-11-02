@@ -1,4 +1,4 @@
-# @ohos.arkui.advanced.CounterV2
+# @ohos.arkui.advanced.CounterV2(CounterV2组件用于精确调节数值，包含列表型、紧凑型、数值内联型和日期内联型四种类型，适用于购物车数量调节、日期选择等场景。)
 
 ## 导入模块
 
@@ -23,7 +23,7 @@ import { CounterV2Component, CounterV2Options, CounterV2DateData, CounterV2Type 
 
 | 名称 | 说明 |
 | --- | --- |
-| [CounterV2Component](arkts-arkui-arkui-advanced-counterv2-counterv2component-s.md) | CounterV2组件用于精确调节数值，包含列表型、紧凑型、数值内联型和日期内联型四种类型，适用于购物车数量调节、日期选择等场景。 |
+| [CounterV2Component](arkts-arkui-arkui-advanced-counterv2-counterv2component-s.md) | 定义CounterV2。 |
 
 ### 类型
 

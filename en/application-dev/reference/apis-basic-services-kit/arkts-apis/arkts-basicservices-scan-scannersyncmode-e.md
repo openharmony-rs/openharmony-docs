@@ -4,7 +4,7 @@
 enum ScannerSyncMode
 ```
 
-Enumerates the scanner sync codes.
+Enumerates the scanner sync modes.
 
 **Since:** 20
 
@@ -18,7 +18,7 @@ Enumerates the scanner sync codes.
 DELETE_STR = 'delete'
 ```
 
-Deletion code, which indicates that the scanner is offline.
+Deletion mode, which indicates that the scanner is offline.
 
 **Since:** 20
 
@@ -32,7 +32,7 @@ Deletion code, which indicates that the scanner is offline.
 UPDATE_STR = 'update'
 ```
 
-Update code, which indicates that the scanner ID changes.
+Update mode, which indicates that the scanner ID changes.
 
 **Since:** 20
 

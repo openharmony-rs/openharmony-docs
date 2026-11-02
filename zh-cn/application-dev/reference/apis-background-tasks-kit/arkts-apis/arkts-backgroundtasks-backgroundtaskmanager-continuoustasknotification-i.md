@@ -42,7 +42,7 @@ contentType: notificationManager.ContentType
 continuousTaskId?: number
 ```
 
-长时任务 Id。
+长时任务 ID。
 
 **类型：** number
 
@@ -60,7 +60,7 @@ continuousTaskId?: number
 notificationId: number
 ```
 
-长时任务通知 Id。
+长时任务通知 ID。
 
 **类型：** number
 

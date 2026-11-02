@@ -18,7 +18,7 @@ enum SceneMode
 APERTURE_VIDEO = 14
 ```
 
-Large aperture video mode. This is a system API.
+大光圈录像模式。
 
 **起始版本：** 12
 
@@ -34,7 +34,7 @@ Large aperture video mode. This is a system API.
 FLUORESCENCE_PHOTO = 17
 ```
 
-Fluorescence photo mode. This is a system API.
+荧光拍照模式。
 
 **起始版本：** 13
 
@@ -50,7 +50,7 @@ Fluorescence photo mode. This is a system API.
 HIGH_RESOLUTION_PHOTO = 11
 ```
 
-High-resolution photo mode. This is a system API.
+高分辨率拍照模式。
 
 **起始版本：** 12
 
@@ -66,7 +66,7 @@ High-resolution photo mode. This is a system API.
 LIGHT_PAINTING_PHOTO = 10
 ```
 
-Light painting mode. This is a system API.
+流光快门模式。
 
 **起始版本：** 12
 
@@ -82,7 +82,7 @@ Light painting mode. This is a system API.
 MACRO_PHOTO = 8
 ```
 
-Macro photo mode. This is a system API.
+微距拍照模式。
 
 **起始版本：** 12
 
@@ -98,7 +98,7 @@ Macro photo mode. This is a system API.
 MACRO_VIDEO = 9
 ```
 
-Macro video mode. This is a system API.
+微距录像模式。
 
 **起始版本：** 12
 
@@ -114,7 +114,7 @@ Macro video mode. This is a system API.
 NIGHT_PHOTO = 4
 ```
 
-Night photo mode. This is a system API.
+夜间拍照模式。
 
 **起始版本：** 11
 
@@ -130,7 +130,7 @@ Night photo mode. This is a system API.
 PANORAMA_PHOTO = 15
 ```
 
-Panoramic photo mode. This is a system API.
+全景拍照模式。
 
 **起始版本：** 12
 
@@ -146,7 +146,7 @@ Panoramic photo mode. This is a system API.
 PORTRAIT_PHOTO = 3
 ```
 
-Portrait photo mode. This is a system API.
+人像拍照模式。
 
 **起始版本：** 11
 
@@ -162,7 +162,7 @@ Portrait photo mode. This is a system API.
 PROFESSIONAL_PHOTO = 5
 ```
 
-Professional photo mode. This is a system API.
+专业拍照模式。
 
 **起始版本：** 12
 
@@ -178,7 +178,7 @@ Professional photo mode. This is a system API.
 PROFESSIONAL_VIDEO = 6
 ```
 
-Professional video mode. This is a system API.
+专业录像模式。
 
 **起始版本：** 12
 
@@ -194,7 +194,7 @@ Professional video mode. This is a system API.
 QUICK_SHOT_PHOTO = 13
 ```
 
-Quick snap mode. This is a system API.
+快拍模式。
 
 **起始版本：** 12
 
@@ -210,7 +210,7 @@ Quick snap mode. This is a system API.
 SLOW_MOTION_VIDEO = 7
 ```
 
-Slow-motion video mode. This is a system API.
+慢动作录像模式。
 
 **起始版本：** 12
 
@@ -226,7 +226,7 @@ Slow-motion video mode. This is a system API.
 TIME_LAPSE_PHOTO = 16
 ```
 
-Time-lapse photo mode. This is a system API.
+延时摄影模式。
 
 **起始版本：** 12
 

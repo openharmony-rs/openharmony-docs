@@ -46,12 +46,6 @@ Checks whether this data type belongs to the specified uniform data type.
 | --- | --- |
 | boolean | Returns **true** if the data type belongs to or is the same as the specified uniform data type; returns **false** if they are not related. |
 
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
-
 **Examples**
 
 ```TypeScript
@@ -100,12 +94,6 @@ Checks whether this data type is the same as the specified uniform data type. Th
 | --- | --- |
 | boolean | Returns **true** if the type IDs are the same; returns **false** otherwise. |
 
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
-
 **Examples**
 
 ```TypeScript
@@ -153,12 +141,6 @@ Checks whether this data type is a higher-level type of the specified uniform da
 | --- | --- |
 | boolean | Returns **true** if the data type is a higher-level type of the specified uniform data type; returns **false** otherwise. |
 
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
-
 **Examples**
 
 ```TypeScript
@@ -205,12 +187,6 @@ Checks whether this data type is a lower-level type of the specified uniform dat
 | Type | Description |
 | --- | --- |
 | boolean | Returns **true** if the data type is a lower-level type of the specified uniform data type; returns **false** otherwise. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

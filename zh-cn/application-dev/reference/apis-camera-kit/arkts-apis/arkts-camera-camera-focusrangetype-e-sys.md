@@ -4,7 +4,7 @@
 enum FocusRangeType
 ```
 
-Enumerates the focus range types.
+枚举，对焦范围类型。
 
 **起始版本：** 15
 
@@ -20,7 +20,7 @@ Enumerates the focus range types.
 AUTO = 0
 ```
 
-Auto focus.
+自动对焦。
 
 **起始版本：** 15
 
@@ -36,7 +36,7 @@ Auto focus.
 NEAR = 1
 ```
 
-Focus on near objects.
+对焦于近处物体。
 
 **起始版本：** 15
 

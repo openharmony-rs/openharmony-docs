@@ -29,7 +29,7 @@ Sets the printer preferences. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | printerId | string | Yes | Printer ID. |
-| printerPreferences | [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md) | Yes | Printer preferences. |
+| printerPreferences | [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md) | Yes | Printer preferences. This parameter is used to configure the default print parameters of the printer, such as the default duplex mode. |
 
 **Return value:**
 

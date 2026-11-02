@@ -4,7 +4,7 @@
 type Image = string
 ```
 
-表示图片的URI地址，为string类型。
+表示图片的URI地址，为string类型。长度上限为512个字符。超出长度时抛出异常。
 
 **类型：** string
 

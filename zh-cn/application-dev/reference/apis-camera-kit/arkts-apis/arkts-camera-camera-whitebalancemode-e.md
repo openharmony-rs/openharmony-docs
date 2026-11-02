@@ -18,7 +18,7 @@ enum WhiteBalanceMode
 AUTO = 0
 ```
 
-自动
+自动。
 
 **起始版本：** 20
 
@@ -34,7 +34,7 @@ AUTO = 0
 CLOUDY = 1
 ```
 
-阴天
+阴天。
 
 **起始版本：** 20
 
@@ -50,7 +50,7 @@ CLOUDY = 1
 DAYLIGHT = 4
 ```
 
-日光
+日光。
 
 **起始版本：** 20
 
@@ -66,7 +66,7 @@ DAYLIGHT = 4
 FLUORESCENT =3
 ```
 
-荧光
+荧光。
 
 **起始版本：** 20
 
@@ -82,7 +82,7 @@ FLUORESCENT =3
 INCANDESCENT =2
 ```
 
-白炽光
+白炽光。
 
 **起始版本：** 20
 
@@ -98,7 +98,7 @@ INCANDESCENT =2
 LOCKED = 6
 ```
 
-锁定
+锁定。
 
 **起始版本：** 20
 
@@ -114,7 +114,7 @@ LOCKED = 6
 MANUAL = 5
 ```
 
-手动
+手动。
 
 **起始版本：** 20
 

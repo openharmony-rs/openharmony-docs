@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryRecommendDriversById(printerId: string): Promise<PpdInfo[]>
 ```
 
-根据打印机ID查询推荐的打印机驱动程序。
+根据打印机ID查询推荐的打印机驱动程序，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -36,7 +36,7 @@ function queryRecommendDriversById(printerId: string): Promise<PpdInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[]&gt; | Promise that resolves with all ppd info of the printer. |
+| Promise&lt;[PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[]&gt; | Promise对象，返回该打印机的所有PPD信息。 |
 
 **错误码：**
 

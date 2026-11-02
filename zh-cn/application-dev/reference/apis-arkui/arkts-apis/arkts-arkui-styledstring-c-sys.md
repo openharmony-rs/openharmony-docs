@@ -12,6 +12,14 @@ declare class StyledString
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## 规则说明
+
+* 当组件样式和属性字符串中的样式冲突时，冲突部分以属性字符串设置的样式为准，未冲突部分则生效组件的样式。  
+* 当属性字符串和 [Text](../arkts-components/arkts-arkui-text-comp.md)子组件冲突时，属性字符串优先级高，即当Text组件中绑定了属性字符串，忽略Text组件下包含[Span](../arkts-components/arkts-arkui-span-comp.md)等子组件的情况。  
+* 不支持[@State](../../../ui/state-management/arkts-state.md)修饰。  
+* 建议将StyledString定义为成员变量，从而避免应用退后台后被销毁。  
+* 不支持在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)之前创建
+
 ## marshalling
 
 ```TypeScript

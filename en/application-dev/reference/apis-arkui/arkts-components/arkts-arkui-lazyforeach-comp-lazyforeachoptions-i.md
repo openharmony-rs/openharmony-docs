@@ -26,6 +26,26 @@ Configures the resource release strategy and memory optimization strategy of **L
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## controller
+
+```TypeScript
+controller?: LazyForEachController
+```
+
+Controller bound to the **LazyForEach** component. When the controller is bound, you can call [clearCache](arkts-arkui-lazyforeach-comp-lazyforeachcontroller-c.md#clearcache) to clear the child components prebuilt by the **LazyForEach** component as needed.
+
+**Type:** [LazyForEachController](arkts-arkui-lazyforeach-comp-lazyforeachcontroller-c.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-LazyForEachOptions-controller?: LazyForEachController--><!--Device-LazyForEachOptions-controller?: LazyForEachController-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## customComponentFreezeMode
 
 ```TypeScript

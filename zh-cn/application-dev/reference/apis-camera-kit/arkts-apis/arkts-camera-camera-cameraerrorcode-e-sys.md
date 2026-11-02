@@ -20,7 +20,7 @@ enum CameraErrorCode
 CAMERA_LENS_RETRACTED = 7400112
 ```
 
-Camera lens retracted.
+相机镜头已回缩。
 
 **起始版本：** 18
 
@@ -36,7 +36,7 @@ Camera lens retracted.
 DEVICE_FREQUENTLY_SWITCHED = 7400111
 ```
 
-Camera frequently switched.
+相机频繁切换。
 
 **起始版本：** 18
 

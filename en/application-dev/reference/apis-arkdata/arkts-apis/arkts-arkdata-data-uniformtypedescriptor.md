@@ -33,8 +33,8 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [registerTypeDescriptors](arkts-arkdata-uniformtypedescriptor-registertypedescriptors-f-sys.md#registertypedescriptors-1) | Register type descriptors into the system. |
-| [unregisterTypeDescriptors](arkts-arkdata-uniformtypedescriptor-unregistertypedescriptors-f-sys.md#unregistertypedescriptors-1) | Unregister one or more type descriptors from the system by the given type IDs. |
+| [registerTypeDescriptors](arkts-arkdata-uniformtypedescriptor-registertypedescriptors-f-sys.md#registertypedescriptors-1) | Registers a group of uniform data types to the system. This API uses a promise to return the result. After successful registration, the uniform data types are managed by the system and can be shared and identified across other applications or devices through the UDMF framework. |
+| [unregisterTypeDescriptors](arkts-arkdata-uniformtypedescriptor-unregistertypedescriptors-f-sys.md#unregistertypedescriptors-1) | Unregisters one or more uniform data types from the system. This API uses a promise to return the result. After unregistration, the data types are no longer recognized by the system, and data that depends on these data types may fail to be processed properly. Ensure that related data dependencies are cleared before unregistration. |
 <!--DelEnd-->
 
 ### Classes

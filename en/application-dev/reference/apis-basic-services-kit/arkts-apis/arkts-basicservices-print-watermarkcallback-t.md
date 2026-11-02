@@ -4,7 +4,7 @@
 type WatermarkCallback = (jobId: string, fd: number) => void
 ```
 
-Defines the callback type used in registering to listen for watermark handling. The value of jobId indicates the print job ID. The value of fd indicates the fd.
+Callback type used to register an event listener for forcible watermark processing.
 
 **Since:** 24
 
@@ -18,5 +18,5 @@ Defines the callback type used in registering to listen for watermark handling. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | the print job ID <br>Print job ID in preview. |
-| fd | number | Yes | File Descriptor <br>File descriptor in preview. |
+| jobId | string | Yes | ID of the print job. |
+| fd | number | Yes | File descriptor of the file. |

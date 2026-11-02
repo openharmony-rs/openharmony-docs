@@ -22,6 +22,8 @@ Starts an [ArkTS child process](../../../application-models/ability-terminology.
 > function is done, the child process is not automatically destroyed. Instead, it must be destroyed by calling
 > [process.abort](../../apis-arkts/arkts-apis/arkts-arkts-process-abort-f.md). After the process that calls this API is destroyed, the
 > created child process is also destroyed.
+> 
+> The child process created by calling this API supports asynchronous ArkTS API calls.
 
 **Since:** 12
 
@@ -36,8 +38,8 @@ Starts an [ArkTS child process](../../../application-models/ability-terminology.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | srcEntry | string | Yes | Path of the source file of the child process relative to the root directory **src/main**. The source file cannot be stored in the module of the HAR type. The value consists of a module name, a slash (/), and a file path. For example, if the child process file is **src/main/ets/process/DemoProcess.ets** in module1, then **srcEntry** is **module1/ets/process/DemoProcess.ets**.<br>In addition, ensure that the source file of the child process is referenced by other files to prevent it from being optimized by the build tool. (For details, see the sample code below.) |
-| args | [ChildProcessArgs](arkts-ability-app-ability-childprocessargs-childprocessargs-i.md) | Yes | Parameters transferred to the child process. |
-| options | [ChildProcessOptions](arkts-ability-app-ability-childprocessoptions-childprocessoptions-i.md) | No | Startup configuration of the child process. |
+| args | [ChildProcessArgs](arkts-ability-app-ability-childprocessargs-childprocessargs-i.md) | Yes | Parameters passed to the child process. The object contains entryParams (string type, parameters passed to the child process) and fds (a set of file descriptor handles used for communication between the parent process and the child process). |
+| options | [ChildProcessOptions](arkts-ability-app-ability-childprocessoptions-childprocessoptions-i.md) | No | Startup configuration options of the child process. The object contains properties such as isolationMode (whether to enable the isolation mode). If this parameter is not passed, the default configuration in ChildProcessOptions is used. |
 
 **Return value:**
 

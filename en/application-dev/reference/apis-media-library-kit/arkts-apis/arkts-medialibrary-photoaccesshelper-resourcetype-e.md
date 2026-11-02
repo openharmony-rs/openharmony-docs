@@ -28,6 +28,22 @@ Image resource.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## PRIVATE_MOVING_PHOTO_RESOURCE
+
+```TypeScript
+PRIVATE_MOVING_PHOTO_RESOURCE = 4
+```
+
+Private moving photo.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4--><!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## VIDEO_RESOURCE
 
 ```TypeScript

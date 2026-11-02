@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise<void>
 ```
 
-设置默认打印机，使用Promise异步回调。
+设置默认打印机，使用Promise异步回调。用于需要指定系统默认打印机的场景，如用户手动选择默认打印机或系统自动将最后使用的打印机设为默认打印机。
 
 **起始版本：** 18
 
@@ -29,7 +29,7 @@ function setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | printerId | string | 是 | 表示打印机ID。 |
-| type | [DefaultPrinterType](arkts-basicservices-print-defaultprintertype-e.md) | 是 | 表示默认打印机类型。 |
+| type | [DefaultPrinterType](arkts-basicservices-print-defaultprintertype-e.md) | 是 | 表示默认打印机类型，用于指定默认打印机的设置方式。 |
 
 **返回值：**
 

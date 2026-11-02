@@ -61,7 +61,7 @@ Asserts that a component that matches the given attributes exists on the current
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] if the input parameters are invalid. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-api-does-not-support-concurrent-calls) | The API does not support concurrent calls. |
 | [17000003](../errorcode-uitest.md#17000003-assertion-failure) | if the assertion failed. |
 

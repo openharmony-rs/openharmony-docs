@@ -106,7 +106,7 @@ print.off('jobStateChange', (data: boolean) => {
 function off(type: 'extInfoChange', callback?: Callback<boolean>): void
 ```
 
-Unregisters the listener for printer extension information change events. This API uses a callback to return the result.
+Unregisters the callback for the printer extension information change event. This API uses a callback to return the result.
 
 **Since:** 10
 
@@ -122,8 +122,8 @@ Unregisters the listener for printer extension information change events. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'extInfoChange' | Yes | Listening type. The value is fixed at **'extInfoChange'**. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | No | Callback used to return the result. The value **true** means that the operation is successful, and **false** means the opposite. |
+| type | 'extInfoChange' | Yes | Printer extension information change. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | No | Callback used to return the result of whether the callback for the printer extension information change event is successfully unregistered. The value **true** indicates success, and **false** indicates failure. |
 
 **Error codes:**
 

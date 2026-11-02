@@ -4246,7 +4246,13 @@ struct WebComponent {
 getZoomFactor(): number
 ```
 
-获取当前网页的浏览器级缩放倍率。
+获取当前网页的页面缩放倍率。
+
+> **说明：** 
+> 
+> - 本接口返回当前Web组件实际生效的页面缩放倍率。该倍率可能由本Controller通过[setZoomFactor](#setzoomfactor)设置，也可能在[zoomControlAccess](../arkts-components/arkts-arkweb-web-comp-attribute.md#zoomcontrolaccess)开启时由用户通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板调整，还可能受其他同Host Web组件的缩放操作影响，因此不一定等于本Controller上次设置的值。
+> 
+> - 浏览器实例尚未创建时，**getZoomFactor**返回默认值**1.0**，不会返回尚待应用的设置值。
 
 **起始版本：** 26.1.0
 
@@ -4260,7 +4266,7 @@ getZoomFactor(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 当前浏览器级缩放倍率。**1**表示不缩放。<br>取值范围：[0.25, 5.0]，默认值为**1**。 |
+| number | 当前页面缩放倍率。**1**表示不缩放，小于**1**表示缩小，大于**1**表示放大。<br>取值范围：[0.25, 5.0]，默认值为**1**。 |
 
 **错误码：**
 
@@ -8690,6 +8696,10 @@ scrollBy(deltaX: number, deltaY: number, duration?: number): void
 
 在指定时间内将页面滚动指定的偏移量。
 
+> **说明：** 
+> 
+> 嵌套滚动场景中，调用scrollBy不会触发父组件的嵌套滚动。
+
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -8780,6 +8790,13 @@ scrollByWithResult(deltaX: number, deltaY: number): boolean
 ```
 
 将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。
+
+> **说明：** 
+> 
+> - 返回值场景：Web页面处于触摸中状态时，返回false，否则返回true。
+> - 同层渲染场景中，Web的同层渲染区域处于触摸中状态时，返回值为true。
+> - 嵌套滚动场景中，调用scrollByWithResult不会触发父组件的嵌套滚动。
+> - 此接口不保证滑动帧率性能。
 
 **起始版本：** 12
 
@@ -11369,7 +11386,19 @@ struct WebComponent {
 setZoomFactor(zoomFactor: number): void
 ```
 
-调用此接口设置当前网页的浏览器级缩放倍率。文字与图片同时缩放，页面重新布局（reflow）以适应Web组件宽度。该接口与[zoom](#zoom)、[zoomIn](#zoomin)、[zoomOut](#zoomout)（仅视觉缩放，不触发重新布局）以及[textZoomRatio](../arkts-components/arkts-arkweb-web-comp-attribute.md#textzoomratio)（仅缩放文字）相互独立。缩放倍率仅作用于当前Web组件实例，页面内跨文档跳转后保持不变。
+设置当前网页的页面缩放倍率。页面缩放会同时缩放文字和图片，并触发页面重新布局以适应Web组件宽度。
+
+> **说明：** 
+> 
+> - 页面缩放倍率按网页的主机名（Host）管理。在同一浏览数据上下文中，设置成功后，已打开的同Host Web组件会同步缩放，后续打开的同Host网页也会使用已保存的倍率；不同Host互不影响。当前Web组件导航至其他Host时，使用目标Host的页面缩放倍率，而非继续沿用原Host的倍率。
+> 
+> - 如需让不同Host的网页使用相同倍率，可在网页开始加载时通过[onPageBegin](../arkts-components/arkts-arkweb-web-comp-attribute.md#onpagebegin)针对当前Web组件再次调用本接口；原Host的倍率不会自动应用到目标Host。
+> 
+> - [zoomControlAccess](../arkts-components/arkts-arkweb-web-comp-attribute.md#zoomcontrolaccess)是Web组件的用户缩放开关：设置为**true**时，用户可通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板调整页面缩放倍率；设置为**false**时，上述用户操作无效。该开关不限制本接口的程序化设置。
+> 
+> - 需要按指定倍率调整页面布局时，建议使用本接口；[zoom](#zoom)、[zoomIn](#zoomin)、[zoomOut](#zoomout)适用于视觉缩放，[textZoomRatio](../arkts-components/arkts-arkweb-web-comp-attribute.md#textzoomratio)适用于文字缩放，三者相互独立。
+> 
+> - 本接口需在Controller关联Web组件后调用，无需等待网页加载完成。若浏览器实例尚未创建，设置的倍率会在缩放控制器可用后应用。
 
 **起始版本：** 26.1.0
 
@@ -11383,7 +11412,7 @@ setZoomFactor(zoomFactor: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| zoomFactor | number | 是 | 要设置的浏览器级缩放倍率。**1**表示不缩放，小于**1**表示缩小，大于**1**表示放大。<br>取值范围：[0.25, 5]。<br>超出该范围的值会被裁剪到边界值。 |
+| zoomFactor | number | 是 | 要设置的页面缩放倍率。**1**表示不缩放，小于**1**表示缩小，大于**1**表示放大。<br>取值范围：[0.25, 5]。<br>超出该范围的值会被裁剪到边界值。 |
 
 **错误码：**
 
@@ -12327,6 +12356,12 @@ zoom(factor: number): void
 
 调整当前网页的缩放比例，[zoomAccess](../arkts-components/arkts-arkweb-web-comp-attribute.md#zoomaccess)需为true。
 
+> **说明：** 
+> 
+> 入参超出取值范围时，本次调用不生效，网页缩放比例保持不变。
+> 
+> 当网页缩放比例已达到最大值或最小值时，继续同向缩放的调用同样不生效。
+
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -12339,7 +12374,7 @@ zoom(factor: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| factor | number | 是 | 基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
+| factor | number | 是 | 缩放倍数，与当前网页缩放比例相乘得到新的缩放比例。入参为1时缩放比例保持不变，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
 
 **错误码：**
 

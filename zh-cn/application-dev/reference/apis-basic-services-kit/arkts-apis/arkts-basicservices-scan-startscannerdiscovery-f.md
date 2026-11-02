@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function startScannerDiscovery(): Promise<void>
 ```
 
-开始发现扫描仪。使用Promise异步回调。
+开始发现扫描仪，发现的扫描仪设备信息通过on('scanDeviceFound')事件回调通知。需在调用init()完成初始化后使用。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -26,7 +26,7 @@ function startScannerDiscovery(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，开始发现扫描仪成功时resolve，失败时reject。 |
 
 **错误码：**
 

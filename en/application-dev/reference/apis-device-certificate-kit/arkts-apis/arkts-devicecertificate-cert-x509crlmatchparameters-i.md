@@ -42,7 +42,7 @@ CRL issuer, in DER format.
 maxCRL?: bigint
 ```
 
-Maximum value of the CRL number.
+Maximum CRL number.
 
 **Type:** bigint
 
@@ -60,7 +60,7 @@ Maximum value of the CRL number.
 minCRL?: bigint
 ```
 
-Minimum value of the CRL number.
+Minimum CRL number.
 
 **Type:** bigint
 
@@ -78,7 +78,7 @@ Minimum value of the CRL number.
 updateDateTime?: string
 ```
 
-CRL update time.
+CRL update time, for example, **20231121074700Z**.
 
 **Type:** string
 
@@ -96,7 +96,7 @@ CRL update time.
 x509Cert?: X509Cert
 ```
 
-Certificate object.
+Certificate object used to determine whether the certificate is in the CRL.
 
 **Type:** [X509Cert](arkts-devicecertificate-cert-x509cert-i.md)
 

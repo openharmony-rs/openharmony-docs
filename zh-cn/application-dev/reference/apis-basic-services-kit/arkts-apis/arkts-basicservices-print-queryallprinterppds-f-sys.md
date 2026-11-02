@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryAllPrinterPpds(): Promise<PpdInfo[]>
 ```
 
-查询所有打印机ppd。
+查询所有打印机PPD，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,7 +30,7 @@ function queryAllPrinterPpds(): Promise<PpdInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[]&gt; | Promise that resolves with all printer ppd info. |
+| Promise&lt;[PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[]&gt; | Promise对象，返回所有打印机PPD信息。 |
 
 **错误码：**
 

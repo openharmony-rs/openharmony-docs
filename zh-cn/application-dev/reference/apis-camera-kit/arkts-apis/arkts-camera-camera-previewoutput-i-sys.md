@@ -4,7 +4,7 @@
 interface PreviewOutput extends CameraOutput
 ```
 
-预览输出类。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
+预览输出类。
 
 **继承/实现关系：** PreviewOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 attachSketchSurface(surfaceId: string): void
 ```
 
-Attaches a surface for PiP preview.
+为画中画预览绑定 surface。
 
 **起始版本：** 11
 
@@ -40,7 +40,7 @@ Attaches a surface for PiP preview.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| surfaceId | string | 是 | Surface ID, which is obtained from XComponent. |
+| surfaceId | string | 是 | Surface ID，通过XComponent 获取。 |
 
 **错误码：**
 
@@ -81,7 +81,7 @@ function attachSketchSurface(previewOutput: camera.PreviewOutput, session: camer
 enableSketch(enabled: boolean): void
 ```
 
-Enables or disables PiP preview.
+使能或去使能画中画预览。
 
 **起始版本：** 11
 
@@ -95,7 +95,7 @@ Enables or disables PiP preview.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Whether to enable or disable PiP view. **true** to enable, **false** otherwise. |
+| enabled | boolean | 是 | 是否使能画中画视图。**true**表示使能，**false**表示去使能。 |
 
 **错误码：**
 
@@ -135,7 +135,7 @@ function enableSketch(previewOutput: camera.PreviewOutput, session: camera.Sessi
 getSketchRatio(): number
 ```
 
-Obtains the zoom ratio when PiP preview is enabled.
+获取启用画中画预览时的变焦比。
 
 **起始版本：** 11
 
@@ -149,7 +149,7 @@ Obtains the zoom ratio when PiP preview is enabled.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Zoom ratio. If PiP preview is not supported, the value **-1** is returned. |
+| number | 变焦比。若不支持画中画预览，返回**-1**。 |
 
 **错误码：**
 
@@ -176,7 +176,7 @@ function getSketchRatio(previewOutput: camera.PreviewOutput): number {
 isSketchSupported(): boolean
 ```
 
-Checks whether Picture-in-Picture (PiP) preview is supported.
+检查是否支持画中画（PiP）预览。
 
 **起始版本：** 11
 
@@ -190,7 +190,7 @@ Checks whether Picture-in-Picture (PiP) preview is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of the PiP preview. **true** if supported, **false** otherwise. |
+| boolean | 表示是否支持画中画预览。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 
@@ -225,7 +225,7 @@ function isSketchSupported(previewOutput: camera.PreviewOutput): boolean {
 off(type: 'sketchStatusChanged', callback?: AsyncCallback<SketchStatusData>): void
 ```
 
-Unsubscribes from PiP status change events.
+取消订阅画中画状态变化事件。
 
 **起始版本：** 11
 
@@ -239,8 +239,8 @@ Unsubscribes from PiP status change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'sketchStatusChanged' | 是 | Event type. The value is fixed at **'sketchStatusChanged'**. The event can be listened for when a PiP preview stream is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SketchStatusData](arkts-camera-camera-sketchstatusdata-i-sys.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('sketchStatusChanged')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'sketchStatusChanged' | 是 | 事件类型。取值固定为**'sketchStatusChanged'**。该事件可在创建画中画预览流时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SketchStatusData](arkts-camera-camera-sketchstatusdata-i-sys.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件**on('sketchStatusChanged')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -265,7 +265,7 @@ function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): voi
 on(type: 'sketchStatusChanged', callback: AsyncCallback<SketchStatusData>): void
 ```
 
-Subscribes to PiP status change events. This API uses an asynchronous callback to return the result.
+订阅画中画状态变化事件。该接口使用异步回调返回结果。
 
 **起始版本：** 11
 
@@ -279,8 +279,8 @@ Subscribes to PiP status change events. This API uses an asynchronous callback t
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'sketchStatusChanged' | 是 | Event type. The value is fixed at **'sketchStatusChanged'**. The event can be listened for when a PiP preview stream is created. This event is triggered when PiP preview is enabled or disabled or the zoom ratio changes while PiP preview is enabled. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SketchStatusData](arkts-camera-camera-sketchstatusdata-i-sys.md)&gt; | 是 | Callback used to return the PiP status data. |
+| type | 'sketchStatusChanged' | 是 | 事件类型。取值固定为**'sketchStatusChanged'**。该事件可在创建画中画预览流时监听。当画中画预览使能、去使能，或使能画中画预览后变焦比变化时，会触发该事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SketchStatusData](arkts-camera-camera-sketchstatusdata-i-sys.md)&gt; | 是 | 用于返回画中画状态数据的回调。 |
 
 **错误码：**
 

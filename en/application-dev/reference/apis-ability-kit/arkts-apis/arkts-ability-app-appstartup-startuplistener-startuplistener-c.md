@@ -38,7 +38,7 @@ Called when all startup tasks complete.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| error | [BusinessError](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md)&lt;void&gt; | Yes | Indicates the error during execution. |
+| error | [BusinessError](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md)&lt;void&gt; | Yes | Error information of the startup task execution. On success, error is null. On failure, it contains an error code and an error description. You can obtain the error code through error.code and the error description through error.message. Possible error codes include 28800001, 28800002, 28800003, and 28800004. For details about the error causes and handling measures, see Ability Subsystem Error Codes. |
 
 **Examples**
 

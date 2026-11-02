@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function off(type: 'scanDeviceAdd', callback?: Callback<ScannerDevice>): void
 ```
 
-Unregisters the callback used to listen for the scanner addition event. This API uses an asynchronous callback to return the result.
+Unregisters the callback used to listen for the scanner addition event. This is a system API.
 
 **Since:** 20
 
@@ -29,7 +29,7 @@ Unregisters the callback used to listen for the scanner addition event. This API
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'scanDeviceAdd' | Yes | Event type. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | No | Callback used to return the added scanner. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | No | Callback to unregister. If this parameter is not passed, all registered callbacks of the caller will be unregistered. |
 
 **Error codes:**
 
@@ -61,7 +61,7 @@ scan.off('scanDeviceAdd', callback);
 function off(type: 'scanDeviceDel', callback?: Callback<ScannerDevice>): void
 ```
 
-Unregisters the callback used to listen for the scanner deletion event. This API uses an asynchronous callback to return the result.
+Unregisters the callback used to listen for the scanner deletion event. This is a system API.
 
 **Since:** 20
 
@@ -78,7 +78,7 @@ Unregisters the callback used to listen for the scanner deletion event. This API
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'scanDeviceDel' | Yes | Event type. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | No | Callback used to return the deleted scanner. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | No | Callback to unregister. If this parameter is not passed, all registered callbacks of the caller will be unregistered. |
 
 **Error codes:**
 

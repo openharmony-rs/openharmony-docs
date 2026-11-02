@@ -4,11 +4,7 @@
 declare struct CounterComponent
 ```
 
-The **Counter** component is used for precise numerical value adjustment. It supports four styles: list, compact, inline numeric, and inline date, and is suitable for scenarios such as shopping quantity adjustment, parameter setting, and date selection. It provides flexible style configuration and event callback capabilities.
-
-> **NOTE:** 
-> 
-> - If the **Counter** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) set, the compilation toolchain generates an additional node named \_\_Common\_\_ and attaches the universal attributes or events to \_\_Common\_\_ instead of directly applying them to the **Counter** component. This may cause the universal attributes or events to not take effect or behave unexpectedly. Therefore, setting universal attributes and events for the **Counter** component is not recommended.
+Creates a **Counter** component instance.
 
 **Since:** 11
 

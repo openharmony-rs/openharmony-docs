@@ -4,11 +4,11 @@
 interface CmsRecipientInfo
 ```
 
-Represents recipient information for the CMS message.
+Represents the recipient information encapsulated using CMS.
 
 > **NOTE:** 
 > 
-> At least one recipient needs to be set.
+> At least one recipient must be set.
 
 **Since:** 22
 
@@ -28,7 +28,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 keyAgreeInfo?: CmsKeyAgreeRecipientInfo
 ```
 
-KeyAgree recipient information.
+Recipient information for key agreement.
 
 **Type:** [CmsKeyAgreeRecipientInfo](arkts-devicecertificate-cert-cmskeyagreerecipientinfo-i.md)
 
@@ -46,7 +46,7 @@ KeyAgree recipient information.
 keyTransInfo?: CmsKeyTransRecipientInfo
 ```
 
-KeyTrans recipient information.
+Recipient information for key transport.
 
 **Type:** [CmsKeyTransRecipientInfo](arkts-devicecertificate-cert-cmskeytransrecipientinfo-i.md)
 

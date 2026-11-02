@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function notifyPrintServiceEvent(event: ApplicationEvent): Promise<void>
 ```
 
-将打印应用相关事件通知打印服务，使用Promise异步回调。
+将打印应用相关事件通知打印服务，使用Promise异步回调。用于在打印应用创建、销毁等生命周期事件发生时通知打印服务进行相应处理。
 
 **起始版本：** 12
 
@@ -68,7 +68,7 @@ print.notifyPrintServiceEvent(event).then(() => {
 function notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promise<void>
 ```
 
-将打印应用相关事件通知打印服务，使用Promise异步回调。
+将打印应用相关事件通知打印服务，使用Promise异步回调。用于在打印应用创建、销毁等生命周期事件发生时，携带打印任务ID通知打印服务进行相应处理。
 
 **起始版本：** 18
 
@@ -84,8 +84,8 @@ function notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [ApplicationEvent](arkts-basicservices-print-applicationevent-e.md) | 是 | 表示打印应用事件。 |
-| jobId | string | 是 | 表示打印任务ID。 |
+| event | [ApplicationEvent](arkts-basicservices-print-applicationevent-e.md) | 是 | 表示打印应用事件，用于给打印服务通知应用的生命周期事件。 |
+| jobId | string | 是 | 表示已创建的打印任务ID。 |
 
 **返回值：**
 

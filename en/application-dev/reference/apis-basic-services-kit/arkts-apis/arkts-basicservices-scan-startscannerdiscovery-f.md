@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function startScannerDiscovery(): Promise<void>
 ```
 
-Starts scanner discovery. This API uses a promise to return the result.
+Starts scanner discovery. The discovered scanner information is returned through the **on('scanDeviceFound')** event callback. This API can be used only after initialization is complete by calling **init()**. This API uses a promise to return the result.
 
 **Since:** 20
 

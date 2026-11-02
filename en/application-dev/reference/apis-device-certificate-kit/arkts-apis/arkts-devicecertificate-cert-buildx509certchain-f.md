@@ -12,7 +12,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 function buildX509CertChain(param: CertChainBuildParameters): Promise<CertChainBuildResult>
 ```
 
-Builds an X.509 certificate chain with a CertChainBuildParameters object. This API uses a promise to return the result.
+Builds an X.509 certificate chain with a **CertChainBuildParameters** object. This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -26,13 +26,13 @@ Builds an X.509 certificate chain with a CertChainBuildParameters object. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [CertChainBuildParameters](arkts-devicecertificate-cert-certchainbuildparameters-i.md) | Yes | Object used to build the certificate chain.<br> The value of **maxLength** in [CertChainBuildParameters](arkts-devicecertificate-cert-certchainbuildparameters-i.md) must be less than the number of certificates in the certificate set. |
+| param | [CertChainBuildParameters](arkts-devicecertificate-cert-certchainbuildparameters-i.md) | Yes | Object used to build the certificate chain. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[CertChainBuildResult](arkts-devicecertificate-cert-certchainbuildresult-i.md)&gt; | Promise used to return the **CertChainBuildResult** object created. |
+| Promise&lt;[CertChainBuildResult](arkts-devicecertificate-cert-certchainbuildresult-i.md)&gt; | Promise that returns the **CertChainBuildResult** instance created. |
 
 **Error codes:**
 

@@ -28,8 +28,8 @@ Updates the printer extension information. This API uses an asynchronous callbac
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| info | string | Yes | New printer extension information. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| info | string | Yes | Printer extension change information. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked after the printer extension information is asynchronously updated. |
 
 **Error codes:**
 
@@ -81,7 +81,7 @@ Updates the printer extension information. This API uses a promise to return the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| info | string | Yes | New printer extension information. |
+| info | string | Yes | Printer extension change information. |
 
 **Return value:**
 
