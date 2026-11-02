@@ -5348,7 +5348,7 @@ getCurrency(locale: Intl.Locale): Currency
 
 | 类型                       | 说明                    |
 | ------------------------ | --------------------- |
-| [Currency](#currency26) | 根据区域对象创建的Currency对象。 |
+| [Currency](#currency) | 根据区域对象创建的Currency对象。 |
 
 **示例：**
 
