@@ -12,7 +12,7 @@
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.dialog (弹出框)](js-apis-dialog.md)。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -23,6 +23,8 @@ import { dialog } from '@kit.ArkUI';
 ## DialogBaseOptions
 
 所有弹出框共享的基本选项，定义弹出框的背景、边框、对齐、蒙层、避让等通用属性。本节仅列出系统接口属性，其他公开属性参见[DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)。
+
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
