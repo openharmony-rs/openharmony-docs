@@ -642,11 +642,11 @@ static requestEnhancementImage(context: Context, asset: PhotoAsset, dataHandler:
 
 **参数：**
 
-| 参数名            | 类型                                                                                                        | 必填 | 明                      |
+| 参数名            | 类型                                                                                                        | 必填 | 说明                      |
 |----------------|-----------------------------------------------------------------------------------------------------------| ---- | ------------------------- |
-| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)                                                           | 是   | 入Ability实例的上下文。 |
-| asset         | [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)                                                                                | 是   |待请求的资产。 |
-| dataHandler    | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;[image.ImageSource](../apis-image-kit/rkts-apis-image-ImageSource.md)&gt; | 是   | 回调函数，image.ImageSource包含本地AI增强图片数据。|
+| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)                                                           | 是   | 传入Ability实例的上下文。 |
+| asset         | [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)                                                                                | 是   | 待请求的资产。 |
+| dataHandler    | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;[image.ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md)&gt; | 是   | 回调函数，image.ImageSource包含本地AI增强图片数据。|
 
 **返回值：**
 
@@ -664,7 +664,7 @@ static requestEnhancementImage(context: Context, asset: PhotoAsset, dataHandler:
 | 202      | Called by non-system application.         |
 | 23800108      | The specified asset does not exist.        |
 | 23800151      | Scene parameters validate failed, possible causes: 1. The context is invalid. 2. The photoAsset does not support local AI enhancement.        |
-| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. The database is corrupted;<br>2. The file system is bnormal;<br>3. The IPC request timed out.         |
+| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. The database is corrupted;<br>2. The file system is abnormal;<br>3. The IPC request timed out.         |
 
 **示例：**
 
@@ -716,4 +716,4 @@ async function example(context: Context) {
     }
   });
 }
- ```
+```
