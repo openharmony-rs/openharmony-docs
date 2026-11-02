@@ -4285,7 +4285,7 @@ try {
 
 on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
-开启TYPE_DIALOG类型的窗口，模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）和模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听，除此以外其他窗口调用此接口不生效。
+开启TYPE_DIALOG类型的窗口、模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）或模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听，除此以外其他窗口调用此接口不生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4295,8 +4295,8 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                          |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口，模态子窗口和模态主窗口所遮罩区域的点击或触摸事件。 |
-| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在TYPE_DIALOG类型的窗口，模态子窗口和模态主窗口所遮罩区域的回调。 |
+| type     | string              | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的点击或触摸事件。 |
+| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的回调。 |
 
 **错误码：**
 
@@ -4323,7 +4323,7 @@ try {
 
 off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
-关闭TYPE_DIALOG类型的窗口，模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）和模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听
+关闭TYPE_DIALOG类型的窗口、模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）或模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4333,8 +4333,8 @@ off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                          |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                 | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口，模态子窗口和模态主窗口所遮罩区域的点击或触摸事件。 |
-| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击事件发生在TYPE_DIALOG类型的窗口，模态子窗口和模态主窗口所遮罩区域的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有该窗口所遮罩区域的点击事件的监听。 |
+| type     | string                 | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的点击或触摸事件。 |
+| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击事件发生在TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的回调。若传入参数，则关闭该监听。若未传入参数，则关闭该窗口所有所遮罩区域的点击事件的监听。 |
 
 **错误码：**
 
