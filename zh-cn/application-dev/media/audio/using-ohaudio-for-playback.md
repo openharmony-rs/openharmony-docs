@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "指导C/C++开发者使用OHAudio的OH_AudioRenderer播放PCM音频，涵盖低时延模式、声道布局、Audio Vivid及播放状态管理。"
-keywords: [OHAudio, 音频播放, OH_AudioRenderer, 低时延播放, Audio Vivid, PCM, 声道布局]
+keywords: [OHAudio, 音频播放, OH_AudioRenderer, 低时延播放, Audio Vivid, 声道布局]
 doctype: guide
 status: active
 ---
