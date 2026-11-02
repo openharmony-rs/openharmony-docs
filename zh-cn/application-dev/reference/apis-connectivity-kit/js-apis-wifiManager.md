@@ -1179,6 +1179,54 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
   }
 ```
 
+## wifiManager.disconnectFromCandidateConfig
+
+disconnectFromCandidateConfig(networkId: number, blockDuration: number): void
+
+断开指定ID的候选网络，被断开的候选网络在阻断时长内不会被重新关联。
+
+- 只能断开调用方通过[addCandidateConfig](#wifimanageraddcandidateconfig)添加的候选网络。
+- 当blockDuration取值为-1时，该候选网络被永久阻断，不再被重新关联。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | networkId | number | 是 | 待断开的候选网络的网络配置ID。 |
+  | blockDuration | number | 是 | 阻断时长，单位为秒，表示在此时长内该候选网络不会被重新关联。取值为-1时表示永久阻断。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | -------- | ---------------------------- |
+  | 201 | Permission denied.                 |
+  | 801 | Capability not supported.          |
+  | 2501000  | Operation failed.|
+  | 2501001  | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+  import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let networkId = 0; // 候选网络ID，在添加候选网络时生成
+    let blockDuration = 60; // 阻断60秒，该候选网络在60秒内不会被重新关联
+    wifiManager.disconnectFromCandidateConfig(networkId, blockDuration);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+```
+
 ## wifiManager.addDeviceConfig<sup>15+</sup>
 
 addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
