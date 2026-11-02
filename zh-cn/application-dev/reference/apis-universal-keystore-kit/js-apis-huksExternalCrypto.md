@@ -11,6 +11,8 @@
 
 > **说明**
 >
+> 本模块仅适用于ArkTS-Dyn。
+>
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -28,7 +30,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | 名称  | 值   | 说明    |
 | ----- | ---- | -------- |
 | HUKS_EXT_CRYPTO_TAG_TYPE_INT | 1 << 28   | 表示TAG的值为整数类型。 |
-| HUKS_EXT_CRYPTO_TAG_TYPE_UINT | 2 << 28   | 表示TAG的值为无符号整数类型。 |
+| HUKS_EXT_CRYPTO_TAG_TYPE_UINT | 2 << 28   | 表示TAG的值为无符号整数类型。<br>**起始版本：** 26.0.1 |
 | HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 5 << 28  | 表示TAG的值为字节数组。 |
 
 ## HuksExternalCryptoTag

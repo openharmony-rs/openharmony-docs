@@ -56,14 +56,14 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 
 ### 定制化认证UI
 
-系统提供PIN码认证弹窗能力，供上层应用在需要时拉起UKey PIN认证界面。若系统默认弹窗不满足业务需求，密钥管理扩展应用可注册自定义认证UI，在注册Provider时同步关联，由证书管理在需要时统一拉起。
+系统提供PIN码认证弹窗能力，供上层应用在需要时拉起UKey PIN认证界面。若系统默认弹窗不满足业务需求，密钥管理扩展应用可注册自定义认证UI，在注册Provider时同步关联，在需要时调用证书管理的接口拉起。
 
 从API版本26.0.0开始，支持注册[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)作为自定义认证UI，开发者自行实现UI布局与交互逻辑。该方式仅支持由上层应用拉起，依赖调用方持有上下文信息。
 
 从API版本26.0.1开始，新增支持注册[UkeyAuthExtensionAbility](../../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md#ukeyauthextensionability)作为自定义认证UI，开发者继承后自行实现UI布局与交互逻辑。该方式支持两种拉起路径：一种由上层应用拉起，依赖调用方持有上下文信息；另一种由UKey驱动应用主动拉起，不依赖上层应用持有上下文信息。
 
 - 数量限制：同一resourceId字段对应的资源，仅支持关联一种类型的定制化认证UI（UIAbility或UkeyAuthExtensionAbility），不可同时注册两种类型。1个CryptoExtensionAbility最多关联**10个**自定义认证UI，超出时registerProvider返回HUKS_ERR_CODE_EXCEED_LIMIT。
-- 字段说明：在注册密钥管理扩展时同步注册对应的定制化认证UI弹窗，通过[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入JSON字符串，其中abilityName字段对应module.json5中name字段，最大长度为127字节，index字段对应resourceId，最大长度为512字节，用于将定制化认证UI路由到具体资源。
+- 字段说明：在注册密钥管理扩展时同步注册对应的定制化认证UI弹窗，通过[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入JSON字符串，其中abilityName字段对应module.json5中name字段，最大长度为127字节，index对应自定义资源标识，最大长度为512字节，用于将定制化认证UI路由到具体资源。
 - 典型场景：自定义PIN输入框、自定义证书选择界面、自定义用户确认对话框等。
 
 两种方式的差异如下：
