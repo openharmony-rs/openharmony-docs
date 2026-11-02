@@ -21,7 +21,7 @@ UIAbilityContext是需要保存状态的[UIAbility](js-apis-app-ability-uiAbilit
 import { common } from '@kit.AbilityKit';
 ```
 
-> **关于示例代码的说明：**
+> **说明：**
 >
 > 在本文档的示例中，通过`this.context`来获取`UIAbilityContext`，其中`this`代表继承自`UIAbility`的`UIAbility`实例。如需要在页面中使用`UIAbilityContext`提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
