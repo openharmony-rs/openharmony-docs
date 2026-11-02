@@ -25,7 +25,7 @@ status: active
 **情况一：播放HTTP/HTTPS媒体资源**
 
    <!-- @[HTTP-HTTPS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    let url = "https://vd3.bdstatic.com/mda-pdc2kmwtd2vxhiy4/cae_h264/1681502407203843413/mda-pdc2kmwtd2vxhiy4.mp4";
    this.avPlayer.url = url;
@@ -34,7 +34,7 @@ status: active
 **情况二：HLS媒体资源播放（点播/直播）**
 
    <!-- @[HLS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    let url = 'http://media.iyuns.top:1000/720-270-480.m3u8';
    this.avPlayer.url = url;
@@ -45,7 +45,7 @@ status: active
 当服务器需要校验HTTP请求头信息时，可通过[createMediaSourceWithUrl](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreatemediasourcewithurl12)设置HTTP请求头信息。
 
    <!-- @[HTTP-Head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    let url = 'https://vd3.bdstatic.com/mda-nmh2004d24kf4bjh/hd/h264/1671326683061787710/mda-nmh2004d24kf4bjh.mp4';
    // 创建mediaSource实例对象，设置媒体来源，定制HTTP请求，如需要，可以键值对的形式设置User-Agent、Cookie、Referer等字段。
@@ -63,7 +63,7 @@ status: active
 当应用需要通过解析本地Raw文件中的m3u8文件，播放在线流媒体资源时，可以通过[resourceManager.getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取文件描述符，将其拼接成fdUrl，并通过[setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
 
    <!-- @[raw-m3u8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // 通过本地m3u8文件名，获取文件描述符。
    let fileDescriptor = await this.context.resourceManager.getRawFd(this.m3u8FileName);
@@ -74,11 +74,11 @@ status: active
    let headers : Record<string,string> = {"User-Agent" : "User-Agent-Value", "Cookie" : "Cookie-Value"};
    // 通过本地m3u8的URL和HTTP请求头构造mediaSource媒体来源。
    let mediaSource : media.MediaSource = media.createMediaSourceWithUrl(fdUrl, headers);
-   
+
    // 设置媒体MIME类型为APPLICATION_M3U8。
    let mimeType : media.AVMimeTypes = media.AVMimeTypes.APPLICATION_M3U8;
    mediaSource.setMimeType(mimeType);
-   
+
    // 设置播放策略，设置缓冲区数据量为20s。
    let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
    // 为avPlayer设置媒体来源和播放策略。
@@ -90,7 +90,7 @@ status: active
 当应用需要通过解析应用沙箱中的m3u8文件，播放在线流媒体资源时，可以通过[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)获取文件句柄，将其拼接成fdUrl，并通过[setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
 
   <!-- @[fd-m3u8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
-  
+
   ``` TypeScript
   let filePath = `${this.context.filesDir}/${this.m3u8FileName}`;
   // 通过fs.openSync获取文件句柄。
@@ -98,16 +98,16 @@ status: active
   let fd : string = file.fd.toString();
   // 用文件句柄构造本地m3u8的URL。
   let fdUrl : string = "fd://" + fd + "?offset=" + "0" + "&size=" + "0";
-  
+
   // 按需设置HTTP请求头。
   let headers : Record<string,string> = {"User-Agent" : "User-Agent-Value", "Cookie" : "Cookie-Value"};
   // 通过本地m3u8的URL和HTTP请求头构造mediaSource媒体来源。
   let mediaSource : media.MediaSource = media.createMediaSourceWithUrl(fdUrl, headers);
-  
+
   // 设置媒体MIME类型为APPLICATION_M3U8。
   let mimeType : media.AVMimeTypes = media.AVMimeTypes.APPLICATION_M3U8;
   mediaSource.setMimeType(mimeType);
-  
+
   // 设置播放策略，设置缓冲区数据量为20s。
   let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
   // 为avPlayer设置媒体来源和播放策略。
@@ -118,7 +118,7 @@ status: active
 **情况一：应用沙箱文件播放**
 
    <!-- @[raw-url](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    let fdPath = 'fd://';
    // 通过UIAbilityContext获取沙箱地址filesDir，以Stage模型为例。
@@ -135,7 +135,7 @@ status: active
 > 当使用AVPlayer播放本地资源时，AVPlayer会独占此fd。
 
    <!-- @[fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // 通过UIAbilityContext的resourceManager成员的getRawFd接口获取媒体资源播放地址。
    // 返回类型为{fd,offset,length},fd为HAP包fd地址，offset为媒体资源偏移量，length为播放长度。
