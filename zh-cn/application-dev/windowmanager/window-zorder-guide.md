@@ -128,7 +128,6 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
    - 当设置modalityType为APPLICATION_MODALITY时，遮蔽当前应用的所有窗口，适合全局性阻断。
    - 如需中途取消模态，可调用[setSubWindowModal()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowmodal12)传入false。
 2. 调用[loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)加载确认弹窗页面，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)显示子窗。
-3. 用户确认或取消后，调用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)销毁子窗，被遮蔽窗口恢复交互。
 
 <!-- @[modal_sub_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/Index.ets) -->
 
@@ -163,7 +162,7 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
 }
 ```
 
-步骤3中模态窗口的销毁逻辑位于确认弹窗页面（DeleteConfirm.ets）中，用户点击“Cancel”或“Delete”按钮后销毁模态窗口，示例代码如下：
+确认弹窗页面（DeleteConfirm.ets）中，用户点击“Cancel”或“Delete”按钮后销毁模态窗口，被遮蔽窗口恢复交互，示例代码如下：
 
 <!-- @[modal_sub_window_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/DeleteConfirm.ets) -->
 
@@ -194,7 +193,7 @@ struct DeleteConfirm {
     .justifyContent(FlexAlign.Center)
   }
 
-  // 步骤3：用户确认或取消后，销毁模态窗口，被遮蔽窗口恢复交互
+  // 用户确认或取消后，销毁模态窗口，被遮蔽窗口恢复交互
   private destroySubWindow(): void {
     let subWindow = window.findWindow('deleteConfirm');
     subWindow.destroyWindow().then(() => {
