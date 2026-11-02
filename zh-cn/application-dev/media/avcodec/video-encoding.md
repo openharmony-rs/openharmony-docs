@@ -129,6 +129,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    // 回调buffer输入输出队列。
    class CodecBufferQueue {
    public:
+       // 将回调buffer的信息传入队列。
        void Enqueue(const std::shared_ptr<CodecBufferInfo> bufferInfo)
        {
            std::unique_lock<std::mutex> lock(mutex_);
@@ -137,6 +138,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            cond_.notify_all();
        }
 
+       // 获取回调buffer的信息。
        std::shared_ptr<CodecBufferInfo> Dequeue(int32_t timeoutMs = 1000)
        {
            std::unique_lock<std::mutex> lock(mutex_);
@@ -214,6 +216,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        int32_t hevcProfile = HEVC_PROFILE_MAIN;
        // 关键帧间隔时间，单位为ms。
        int32_t iFrameInterval = 100;
+       // 图形接口。
+       OHNativeWindow *window = nullptr;
    };
 
    struct SampleInfo {
@@ -222,6 +226,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    // 编码器实例指针。
    OH_AVCodec *encoder_ = nullptr;
+   std::unique_ptr<VideoEncoder> videoEncoder_ = nullptr;
+   CodecUserData *encContext_ = nullptr;
    ```
 
 ### Surface模式
@@ -590,22 +596,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     > **说明：**
     >
     > 本例将编码完成帧数据buffer写入Muxer封装。开发者也可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针后，将编码完成帧数据写入到对应输出文件中。
-
-    输出buffer释放：
-
-    <!-- @[encoder_free_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
-
-    ```c++
-    int32_t VideoEncoder::FreeOutputBuffer(const CodecBufferInfo &info)
-    {
-        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
-
-        int32_t ret = OH_VideoEncoder_FreeOutputBuffer(encoder_, info.bufferIndex);
-        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
-            "Free output data failed, ret: %{public}d", ret);
-        return AVCODEC_SAMPLE_ERR_OK;
-    }
-    ```
 
 14. （可选）调用OH_VideoEncoder_Flush()刷新编码器。
 

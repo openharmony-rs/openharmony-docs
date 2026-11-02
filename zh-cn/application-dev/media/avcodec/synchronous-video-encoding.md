@@ -7,6 +7,7 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+
 从API version 20开始，支持视频编码同步模式。
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频编码。
@@ -50,7 +51,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    #include <multimedia/player_framework/native_avcodec_videoencoder.h>
    #include <multimedia/player_framework/native_avcapability.h>
    #include <multimedia/player_framework/native_avcodec_base.h>
-   #include <multimedia/player_framework/native_avformat.h>
    #include <multimedia/player_framework/native_avbuffer.h>
    #include <multimedia/player_framework/native_averrors.h>
    #include <native_buffer/native_buffer.h>
@@ -61,6 +61,10 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    ```
 
 2. 定义全局变量（仅作示例，具体参数值，请据能力查询接口获取相应值范围来参考配置）。
+
+   ```c++
+
+   ```
 
    ```c++
    // 视频帧宽度。
@@ -247,10 +251,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    ```
 
-   > **说明：**
-   >
-   > 本例将编码完成帧数据buffer写入Muxer封装。开发者也可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针后，将编码完成帧数据写入到对应输出文件中。
-
    获取输出buffer：
 
    <!-- @[encoder_sync_get_outputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
@@ -322,6 +322,10 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
+
+   > **说明：**
+   >
+   > 本例将编码完成帧数据buffer写入Muxer封装。开发者也可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针后，将编码完成帧数据写入到对应输出文件中。
 
 7. 调用OH_VideoEncoder_NotifyEndOfStream()通知编码器结束。
 
@@ -727,8 +731,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                        return false;
                    }
                    info.buffer = buffer;
-                   return true;
                    // 开发者可根据业务需要，对输出数据进行保存/释放处理。
+                   return true;
                }
                case AV_ERR_TRY_AGAIN_LATER: {
                    AVCODEC_SAMPLE_LOGE("Get output buffer timeout.");
