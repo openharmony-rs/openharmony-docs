@@ -239,7 +239,7 @@ status: active
    if (this.avPlayer == null) {
      return;
    }
-   this.avPlayer.url = url;    
+   this.avPlayer.url = url;
    ```
 
    **示例二：应用沙箱文件播放**
