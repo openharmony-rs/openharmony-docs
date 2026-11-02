@@ -11,7 +11,7 @@
 
 本文按适配层次组织，开发者可按层次递进接入：
 
-- **第一层：基础能力**——开启备份恢复总开关、Navigation三件套、了解系统保存/恢复链路。这是所有应用必做的必要条件。
+- **第一层：基础能力**——开启备份恢复总开关（唯一必做项）、了解系统保存/恢复链路；页面栈恢复开关（Navigation三件套等）按应用形态选配。
 - **第二层：业务数据恢复**——页面状态变量与自定义业务数据的保存恢复。系统只恢复页面栈结构和启动参数，运行时状态需要开发者自行保存恢复。
 - **第三层：开发者自定义操作**——恢复启动判定、NavPathStack主动管理、自定义路由自管、不可序列化参数处理。按应用复杂度按需选用。
 
@@ -19,7 +19,7 @@
 >
 > 本指南面向的是[UIAbility备份恢复](ability-recover-guideline.md)（default recovery，仅在应用切后台时保存、被系统回收后重拉时恢复），与[应用故障恢复](../dfx/apprecovery-guidelines.md)（fault recovery，通过`appRecovery.enableAppRecovery()`开启，面向异常崩溃场景）是两条独立链路，本文不涉及后者。
 
-## 第一层：基础能力（必要条件）
+## 第一层：基础能力
 
 ### 开启备份恢复总开关
 
@@ -34,9 +34,11 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### Navigation三件套
+> **最小适配**：只需要数据恢复、不需要页面栈恢复的应用（如单页工具类，或页面可接受重拉后回到首页），开启总开关并在[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)中保存数据（写法见第二层数据通道）即完成适配，无需任何页面栈改造。
 
-使用Navigation路由的应用，三件套缺一不可，否则页面栈不参与恢复：
+### Navigation三件套（按需选配）
+
+需要恢复Navigation页面栈的应用才需要配置三件套；不做三件套时Navigation页面栈不参与恢复，但数据仍可经onSaveState正常保存恢复（即上面的最小适配）。配置时三件缺一不可，任一缺失则整座Navigation页面栈不参与恢复：
 
 1. Navigation设置通用属性[id()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)（恢复按id匹配，不设则整座Navigation不恢复）；
 2. Navigation设置[recoverable(true)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#recoverable14)（默认false）；
