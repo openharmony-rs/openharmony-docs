@@ -2054,7 +2054,7 @@ getBilingualIndexList(mode?: BilingualIndexMode): Array&lt;string&gt;
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| Array&lt;string&gt; | 双语索引列表。其中第一个元素是'#'，后面是本地索引和英语索引。如果区域不支持双语索引，则只返回首元素'#'和本地索引。 |
+| Array&lt;string&gt; | 双语索引列表。其中第一个元素是'#'，后面是本地索引和英文索引。如果区域不支持双语索引，则只返回首元素'#'和本地索引。 |
 
 **示例：**
 
