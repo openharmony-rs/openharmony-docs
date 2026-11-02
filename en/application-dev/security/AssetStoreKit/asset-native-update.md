@@ -1,4 +1,4 @@
-# Update an Asset (C/C++)
+# Updating Assets (C/C++)
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->

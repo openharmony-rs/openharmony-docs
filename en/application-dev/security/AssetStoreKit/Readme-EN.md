@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 <!-- md-trans-meta sourceCommit=0f15572057cde5e246e5efac8fa50aaf3207c8bf translatedAt=2026-10-31T06:57:00.632Z pushedAt=2026-10-31T09:09:04.689Z nl=1 -->
 
-- [Introduction to Asset Store Kit](asset-store-kit-overview.md)
+- [About This Kit](asset-store-kit-overview.md)
 - Scenarios<!--asset-scenarios-->
   - [Protecting Asset Data](asset-scenario1.md)
   - [Protecting Asset Data with User Authentication](asset-scenario2.md)
@@ -17,7 +17,7 @@
   - [Removing Assets (ArkTS)](asset-js-remove.md)
   - [Updating an Asset (ArkTS)](asset-js-update.md)
   - [Querying Assets (ArkTS)](asset-js-query.md)
-  - [Querying Assets Used for User Authentication (ArkTS)](asset-js-query-auth.md)
+  - [Querying an Asset with User Authentication (ArkTS)](asset-js-query-auth.md)
   - [Adding Assets in Batches (ArkTS)](asset-js-batch-add.md)
   - [Removing Assets in Batches (ArkTS)](asset-js-batch-remove.md)
   - [Updating Assets in Batches (ArkTS)](asset-js-batch-update.md)
@@ -29,7 +29,7 @@
 - Asset Store Kit Development (C/C++)<!--asset-native-->
   - [Adding an Asset (C/C++)](asset-native-add.md)
   - [Removing Assets (C/C++)](asset-native-remove.md)
-  - [Updating an Asset (C/C++)](asset-native-update.md)
+  - [Updating Assets (C/C++)](asset-native-update.md)
   - [Querying Assets (C/C++)](asset-native-query.md)
   - [Managing Assets in a Group (C/C++)](asset-native-group-access-control.md)
   - [Syncing Assets (Backup and Restore) (C/C++)](asset-native-sync.md)
