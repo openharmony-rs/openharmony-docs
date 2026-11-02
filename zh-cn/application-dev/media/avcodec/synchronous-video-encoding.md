@@ -7,16 +7,18 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+本文档主要介绍同步模式视频编码的实现流程。同步模式下开发者通过主动轮询获取输入和输出Buffer，若业务需要主动申请Buffer发送帧数据时可选用该模式。优先推荐使用[异步模式视频编码](video-encoding.md)。
 
-从API version 20开始，支持视频编码同步模式。
+同步模式视频编码也同样包含Surface模式和Buffer模式两种输出模式。其状态机调用关系、支持的能力与异步模式视频编码一致，详细信息请参考[异步模式视频编码](video-encoding.md)。
 
-开发者可以调用本模块的Native API接口，完成同步模式的视频编码。
+从API version 20开始支持同步模式视频编码，视频编码支持的格式请参考[视频编码](avcodec-support-formats.md#视频编码)。
+
 
 具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVCodec/AVCodec)。
 
 当前支持的编码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
-视频编码的限制约束、支持的能力、状态机调用关系请参考[异步模式视频编码](video-encoding.md)。
+
 
 ## 适用场景
 
