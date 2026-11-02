@@ -537,7 +537,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 * 特殊协议拦截。
 * 若H5页面调用tel:、mailto:等协议导致白屏，需通过onInterceptRequest拦截并调用系统拨号能力：
 <!-- @[InterceptTelScheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/InterceptTelScheme.ets) -->
- 
+
 ``` TypeScript
 .onInterceptRequest((event) => {
   if (!event) {
