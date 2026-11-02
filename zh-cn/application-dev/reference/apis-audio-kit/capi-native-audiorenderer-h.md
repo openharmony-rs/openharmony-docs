@@ -870,7 +870,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRen
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：参数renderer为nullptr。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：不允许设置当前音频流的静音模式。 |
 
 ### OH_AudioRenderer_GetSilentModeAndMixWithOthers()
 
@@ -895,7 +895,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRen
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数renderer为nullptr。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：音频渲染器无法重置输出设备。<br>         AUDIOSTREAM_ERROR_SYSTEM：系统错误。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>       AUDIOSTREAM_ERROR_SYSTEM：系统错误。 |
 
 ### OH_AudioRenderer_SetDefaultOutputDevice()
 
