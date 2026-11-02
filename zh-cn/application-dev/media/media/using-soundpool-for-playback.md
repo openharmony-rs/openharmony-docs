@@ -121,25 +121,23 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    <!-- @[SoundPool_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-    private soundId: number = 0;
-    private streamId: number = 0;
-    let playParameters: media.PlayParameters = {
-      loop: 1, // 循环1次，即播放2次。
-      rate: 1, // 2倍速播放。
-      leftVolume: 0.5, // 取值范围0.0-1.0。
-      rightVolume: 0.5, // 取值范围0.0-1.0。
-      priority: 0, // 最低优先级。
-    };
-    // 开始播放，调用play可携带播放参数PlayParameters。请在音频资源加载完毕，即收到loadComplete回调之后再执行play操作。
-    this.soundPool!.play(this.soundId, playParameters, (error, streamID: number) => {
-      if (error) {
-        console.error(`play sound Error: errCode is ${error.code}, errMessage is ${error.message}`)
-      } else {
-        this.streamId = streamID;
-        console.info('play success soundId:' + this.streamId);
-      }
-    });
-    ```
+   let playParameters: media.PlayParameters = {
+     loop: 1, // 循环1次，即播放2次。
+     rate: 1, // 1倍速播放。
+     leftVolume: 0.5, // 取值范围0.0-1.0。
+     rightVolume: 0.5, // 取值范围0.0-1.0。
+     priority: 0, // 最低优先级。
+   };
+   // 开始播放，这边play也可带播放播放的参数PlayParameters，请在音频资源加载完毕，即收到loadComplete回调之后再执行play操作。
+   this.soundPool!.play(this.soundId, playParameters, (error, streamID: number) => {
+     if (error) {
+       console.error(`play sound Error: errCode is ${error.code}, errMessage is ${error.message}`)
+     } else {
+       this.streamId = streamID;
+       console.info('play success soundid:' + this.streamId);
+     }
+   });
+   ```
 
 7. 调用setLoop方法设置循环次数。
 
