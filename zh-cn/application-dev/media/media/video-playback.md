@@ -70,7 +70,7 @@ status: active
    | audioInterrupt | 监听音频焦点切换信息，搭配属性audioInterruptMode使用。<br/>如果当前设备存在多个媒体正在播放，音频焦点被切换（即播放其他媒体如通话等）时将上报该事件，应用可以及时处理。 |
 
    <!-- @[setAVPlayerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer == null) {
      console.error(`${this.tag}: avPlayer has not init!`);
@@ -224,7 +224,7 @@ status: active
    > - 需要使用[支持的播放格式与协议](media-kit-intro.md#支持的格式与协议)。
 
    <!-- @[changeUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->    
-
+   
    ``` TypeScript
    // 更换url。
    let url = '';
@@ -239,7 +239,7 @@ status: active
    应用需要从XComponent组件获取surfaceId，获取方式请参考[getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。
 
    <!-- @[setSurfaceId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->    
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -253,7 +253,7 @@ status: active
 5. 准备播放：调用prepare()，AVPlayer进入prepared状态，此时可以获取duration，设置缩放模式、音量等。
 
    <!-- @[avPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -268,7 +268,7 @@ status: active
 6. 视频播控：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
 
    <!-- @[avPlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -280,7 +280,7 @@ status: active
    ```
 
    <!-- @[avPause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -293,7 +293,7 @@ status: active
    ```
 
    <!-- @[avSeek](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -307,7 +307,7 @@ status: active
    ```
 
    <!-- @[avStop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -322,7 +322,7 @@ status: active
 7. （可选）更换资源：调用reset()重置资源，AVPlayer重新进入idle状态，允许更换资源url。
 
    <!-- @[avReset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -334,7 +334,7 @@ status: active
    ```
 
    <!-- @[changeUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // 更换url。
    let url = '';
@@ -347,7 +347,7 @@ status: active
 8. 退出播放：调用release()销毁实例，AVPlayer进入released状态，退出播放。
 
    <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    this.avPlayer.release((err) => {
      if (err == null) {

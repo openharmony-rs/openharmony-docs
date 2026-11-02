@@ -65,7 +65,7 @@ status: active
    | audioInterrupt | 监听音频焦点切换信息，搭配属性audioInterruptMode使用。<br/>如果当前设备存在多个音频正在播放，音频焦点被切换（即播放其他媒体如通话等）时将上报该事件，应用可以及时处理。 |
 
    <!-- @[setAVPlayerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer == null) {
      console.error(`${this.tag}: avPlayer has not init!`);
@@ -233,7 +233,7 @@ status: active
    **示例一：播放网络媒体资源**
 
    <!-- @[setUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    let url = ''; // 此处仅为示意，请替换为真实资源文件URL。
    if (this.avPlayer == null) {
@@ -245,7 +245,7 @@ status: active
    **示例二：应用沙箱文件播放**
 
    <!-- @[setFdPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    let fdPath = 'fd://'; // 此处仅为示意，请替换为真实资源文件URL。
    let path : string = `${this.context?.filesDir}/${this.fileName}`; // 此处仅为示意，请替换为真实的应用沙箱文件路径。
@@ -264,7 +264,7 @@ status: active
     为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频[选择合适的播放流类型](../../media/audio/using-right-streamusage-for-playback.md)。
 
    <!-- @[audioRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      this.avPlayer.audioRendererInfo = {
@@ -277,7 +277,7 @@ status: active
 5. 准备播放：调用 prepare()方法进入准备播放阶段，AVPlayer 将切换至 prepared 状态，此时可获取视频时长（duration）并调整音量参数。
 
    <!-- @[avPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -295,7 +295,7 @@ status: active
    > 在API version 23及之后版本中，播放音频时会跳过静音帧。
 
    <!-- @[avPlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -307,7 +307,7 @@ status: active
    ```
 
    <!-- @[avPause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -320,7 +320,7 @@ status: active
    ```
 
    <!-- @[avSeek](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -334,7 +334,7 @@ status: active
    ```
 
    <!-- @[avStop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -349,7 +349,7 @@ status: active
 7. （可选）更换资源：调用reset()方法重置播放资源，AVPlayer重新进入idle状态，此时可重新设置资源url。
 
    <!-- @[avReset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.avPlayer) {
      try {
@@ -361,7 +361,7 @@ status: active
    ```
 
    <!-- @[changeUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // 更换url。
    let url = '';
@@ -373,20 +373,8 @@ status: active
 
 8. 退出播放：调用release()销毁实例，AVPlayer进入released状态，退出播放。
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    avPlayer.release((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to release,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in releasing');
-        }
-    });
-    ```
-
    <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    this.avPlayer.release((err) => {
      if (err == null) {
