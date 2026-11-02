@@ -1686,3 +1686,47 @@ Allows an application to obtain the list of applications installed on the device
 **Supported devices**: PCs/2-in-1 devices
  
 **Since**: 26.0.1
+
+## ohos.permission.ASSESSMENT_CONFIGURATION
+
+Allows an application to enter exam mode. The system service will display a dialog to remind the user that system capabilities will be restricted once exam mode is enabled. This prevents cheating or information leakage during exams, ensuring exam fairness while protecting user rights.
+
+<!--RP112--><!--RP112End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.DIRECT_CALL
+ 
+Allows an application to make calls with one tap.
+
+With this permission, the application can make calls directly without opening the Contacts screen when the device has a single SIM card or a default SIM card has been specified on a multi-SIM device. 
+ 
+<!--RP114--><!--RP114End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: user_grant
+ 
+**Supported devices**: phones
+ 
+**Since**: 26.0.1
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+Allows an application to obtain the device hardware information.
+ 
+<!--RP118--><!--RP118End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.0.1

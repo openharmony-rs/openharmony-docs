@@ -46,7 +46,10 @@
    #include <native_drawing/drawing_path.h>
    #include <native_drawing/drawing_pen.h>
    
-   ArkUI_NodeHandle testRenderNode(ArkUI_NativeNodeAPI_1 *nodeAPI) {
+   #include "ArkUINode.h"
+   #include "NativeEntry.h"
+   
+   std::shared_ptr<ArkUIBaseNode> testRenderNode(ArkUI_NativeNodeAPI_1 *nodeAPI) {
        // 创建NDK原有容器逻辑。
        ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
        ArkUI_NumberValue valueWidth[] = {400};
@@ -80,7 +83,7 @@
        auto result = OH_ArkUI_RenderNodeUtils_AddRenderNode(Custom, renderRootNode);
        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
            // 通过错误码判断根节点是否挂载成功。
-           return scroll;
+           return std::make_shared<ArkUINode>(scroll);
        }
        
        OH_ArkUI_RenderNodeUtils_AddChild(renderRootNode, firstChildRenderNode);
@@ -133,7 +136,7 @@
        colorOption = nullptr;
    
        nodeAPI->addChild(scroll, column);
-       return scroll;
+       return std::make_shared<ArkUINode>(scroll);
    }
 
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
@@ -142,11 +145,22 @@
    
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
+       // 获取NodeContent。
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (contentHandle == nullptr) {
+           return nullptr;
+       }
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+
        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       ArkUI_NodeHandle testNode = nullptr;
+       std::shared_ptr<ArkUIBaseNode> testNode = nullptr;
        if (nodeAPI != nullptr) {
             testNode = testRenderNode(nodeAPI);
+       }
+       if (testNode == nullptr) {
+           return nullptr;
        }
    
        NativeEntry::GetInstance()->SetRootNode(testNode);
@@ -162,7 +176,7 @@
 
 1. 按照[接入ArkTS页面](ndk-access-the-arkts-page.md)创建前置工程。
 
-2. 创建渲染节点能力对象。
+2. 创建渲染节点能力对象。调用createNativeRoot时，需要在NodeContent对象后额外传入UIContext对象（例如this.getUIContext()），用于执行动画。
    ```c
    // NativeEntry.cpp
    // 自定义容器组件示例。
@@ -180,8 +194,11 @@
    #include <native_drawing/drawing_color.h>
    #include <native_drawing/drawing_path.h>
    #include <native_drawing/drawing_pen.h>
-   
-   ArkUI_NodeHandle testRenderNode2(ArkUI_NativeNodeAPI_1 *nodeAPI, ArkUI_ContextHandle context) {
+
+   #include "ArkUINode.h"
+   #include "NativeEntry.h"
+
+   std::shared_ptr<ArkUIBaseNode> testRenderNode2(ArkUI_NativeNodeAPI_1 *nodeAPI, ArkUI_ContextHandle context) {
    
        ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_COLUMN);
        ArkUI_NumberValue valueWidth[] = {400};
@@ -190,8 +207,9 @@
        ArkUI_NumberValue valueHeight[] = {600};
        ArkUI_AttributeItem itemHeight = {valueHeight, sizeof(valueHeight) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(scroll, NODE_HEIGHT, &itemHeight);
-       valueHeight[0].u32 = 0xff00F100;
-       nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &itemHeight);
+       ArkUI_NumberValue bgColor[] = {{.u32 = 0xff00F100}};
+       ArkUI_AttributeItem bgItem = {bgColor, sizeof(bgColor) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &bgItem);
    
        ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
        ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
@@ -307,7 +325,7 @@
        nodeAPI->addChild(column, text);
        nodeAPI->addChild(column, Custom);
        nodeAPI->addChild(scroll, column);
-       return scroll;
+       return std::make_shared<ArkUINode>(scroll);
    }
 
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
@@ -316,9 +334,17 @@
    
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
+       // 获取NodeContent。
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (contentHandle == nullptr) {
+           return nullptr;
+       }
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+
        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       ArkUI_NodeHandle testNode = nullptr;
+       std::shared_ptr<ArkUIBaseNode> testNode = nullptr;
        if (nodeAPI != nullptr) {
             // 获取ets侧传入的context。
             ArkUI_ContextHandle context = nullptr;
@@ -328,6 +354,9 @@
                 return nullptr;
             }
             testNode = testRenderNode2(nodeAPI, context);
+       }
+       if (testNode == nullptr) {
+           return nullptr;
        }
    
        NativeEntry::GetInstance()->SetRootNode(testNode);
@@ -379,7 +408,9 @@
 
 在进行如下代码开发前，请参考[接入ArkTS页面](ndk-access-the-arkts-page.md)，创建前置工程。
 
-<!--RP1-->完整示例请参考[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)。<!--RP1End-->
+<!--RP1-->
+完整示例请参考[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)。
+<!--RP1End-->
 
 1. NDK初始化组件环境，并创建对应的渲染节点根节点。
 

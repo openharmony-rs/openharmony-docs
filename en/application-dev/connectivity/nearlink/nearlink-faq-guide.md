@@ -1,4 +1,4 @@
-# FAQs
+# NearLink FAQs
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->

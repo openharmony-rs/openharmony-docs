@@ -6,6 +6,8 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=10a823f5114708793f873c2259ddf0b8d1e5f84e translatedAt=2026-10-31T01:19:45.493Z pushedAt=2026-10-31T02:03:16.766Z nl=2 -->
+
 ## Introduction
 The Wi-Fi STA mode (that is, station mode) enables wireless devices to connect to a wireless local area network (WLAN) as clients. In this mode, devices such as mobile phones, computers, and tablets can access the network by connecting to an access point (AP) or wireless router.
 
@@ -17,7 +19,7 @@ The Wi-Fi STA mode (that is, station mode) enables wireless devices to connect t
 
 ## Available APIs
 
-For details about the JavaScript APIs and sample code, see the [STA API Reference](../../reference/apis-connectivity-kit/js-apis-wifiManager.md).
+For the complete JS API reference and sample code, see [@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md).
 
 The following table describes the related APIs.
 
@@ -97,17 +99,30 @@ The following table describes the related APIs.
 
    ```ts
    import { wifiManager } from '@kit.ConnectivityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   let recvWifiConnectionChangeFunc = (result: number) => {
+     console.info("Receive wifi connection change event: " + result);
+     if (result === 1) {
+       // A result of 1 indicates that the device is connected. Only then is it meaningful to query the connection status and connection information.
+       if (!wifiManager.isConnected()) {
+         console.info("Wi-Fi not connected");
+       }
+       // Obtain the connection information.
+       wifiManager.getLinkedInfo().then(data => {
+         console.info("get Wi-Fi linked info: " + JSON.stringify(data));
+       }).catch((e: BusinessError) => {
+         console.error(`getLinkedInfo failed. Code: ${e.code}, message: ${e.message}`);
+       });
+     }
+   }
 
    try {
-     let recvWifiConnectionChangeFunc = (result: number) => {
-       console.info("Receive wifi connection change event: " + result);
-     }
-
      let config: wifiManager.WifiDeviceConfig = {
        ssid: "****",
        bssid: "****",
        preSharedKey: "****",
-       securityType: 0
+       securityType: 3 // 3 indicates WIFI_SEC_TYPE_PSK.
      }
 
      // Update the current Wi-Fi connection status.
@@ -116,25 +131,27 @@ The following table describes the related APIs.
      wifiManager.addCandidateConfig(config).then(result => {
        // Connect to the specified network.
        wifiManager.connectToCandidateConfig(result);
+     }).catch((e: BusinessError) => {
+       console.error(`addCandidateConfig failed. Code: ${e.code}, message: ${e.message}`);
+       // If adding fails, no connection event is generated. Unregister the listener here to avoid leakage.
+       try {
+         wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
+       } catch (err) {
+         console.error(`off failed. ${err.message}`);
+       }
      });
-
-     if (!wifiManager.isConnected()) {
-       console.info("Wi-Fi not connected");
-     }
-     // Obtain link information.
-     wifiManager.getLinkedInfo().then(data => {
-       console.info("get Wi-Fi linked info: " + JSON.stringify(data));
-     })
      // Query the signal strength.
      let rssi = -88;
      let band = 1;
      let level = wifiManager.getSignalLevel(rssi, band);
      console.info("level:" + JSON.stringify(level));
-
-     // Unsubscribe from Wi-Fi connection state changes.
-     wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
    } catch (error) {
      console.error(`WiFi Connection failed. ${error.message}`);
+     try {
+       wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
+     } catch (e) {
+       console.error(`WiFi Connection off failed. ${e.message}`);
+     }
    }
    ```
 6. Check the Wi-Fi connection status. For details, see [ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate).

@@ -62,7 +62,7 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-创建RunningLock锁。使用callback异步回调。
+创建RunningLock锁对象。使用callback异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。不建议在多个 Worker/TaskPool 中并发调用 create 创建锁对象。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -102,7 +102,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-创建RunningLock锁。使用Promise异步回调。
+创建RunningLock锁对象。使用Promise异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。不建议在多个 Worker/TaskPool 中并发调用 create 创建锁对象。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -277,13 +277,17 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 ## RunningLock
 
-阻止系统睡眠的锁。
+阻止系统睡眠或使能接近光控制亮灭屏的锁，不同的锁类型具有不同的功能，详见[RunningLockType](#runninglocktype)。
+ 
+需结合[create](#runninglockcreate9)创建锁、[hold](#hold9)持锁、[unhold](#unhold9)释放锁使用。具体使用方法见示例。
+
+RunningLock 对象不可在多个 Worker/TaskPool 线程间共享。同一 RunningLock 实例的 hold()、unhold()、isHolding() 方法必须在同一线程调用，跨线程共享可能导致锁状态不一致且不报错。当电源服务异常重启后，已创建的 RunningLock 对象仍然有效，但锁的持有状态可能丢失。建议在服务重启场景下通过 isHolding() 检查锁状态，必要时重新调用 hold()。当 RunningLock 的 JS 对象被垃圾回收时，底层持有的锁会被自动释放。如需长期持锁，请保持对 RunningLock 对象的引用。
 
 ### hold<sup>9+</sup>
 
 hold(timeout: number): void
 
-锁定和持有RunningLock。
+锁定和持有RunningLock。适用于应用需要在后台持续运行（如后台下载、长时间定位追踪等）时阻止系统睡眠的场景或通话时需要接近光控制亮灭屏的场景等。调用此方法后，必须在使用完毕时调用unhold()释放锁，或者在调用时设置超时释放时间由系统自动释放，与unhold()方法配对使用。未释放锁会导致阻止睡眠或者控制亮灭屏功能持续生效。重复调用hold()不会报错。注意：如果先调用hold(-1)（永久持锁）再调用 hold(timeout)（定时持锁），锁将在timeout毫秒后释放，即后一次调用的超时参数会覆盖前一次。建议如需更新超时时间，先调用unhold()释放锁后再调用hold(newTimeout)。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -339,7 +343,7 @@ class RunningLockTest {
 
 unhold(): void
 
-释放RunningLock锁。
+释放RunningLock锁。此方法与hold()配对使用，在调用hold()锁定后调用此方法释放锁。对未持有的锁调用unhold()不会报错，视为无操作。建议在调用unhold()前通过isHolding()确认锁的持有状态。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -520,4 +524,4 @@ RunningLock锁的类型。
 | --------------------------------- | ---- | ------------------------------------------------------------ |
 | BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
 | PROXIMITY_SCREEN_CONTROL          | 2    | 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。  |
-| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。<br>**注意：** 不能阻止如PC合盖等场景系统进入强制睡眠，使用方必须监听[COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁请参考[阻止系统闲时进入睡眠开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。|
+| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。<br>**注意：** 不能阻止如PC合盖等场景系统进入强制睡眠，使用方必须监听[COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁请参考[阻止系统闲时进入睡眠开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。当设备不支持 BACKGROUND_USER_IDLE 类型时，create() 仍返回成功，但后续 hold() 调用不会生效且不报错。建议在 create() 后通过 isSupported() 确认设备是否支持该类型。|

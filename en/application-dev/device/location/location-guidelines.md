@@ -1,12 +1,11 @@
 # Obtaining Device Location Information (ArkTS)
-
 <!--Kit: Location Kit-->
 <!--Subsystem: Location-->
 <!--Owner: @xxthadsl-->
 <!--Designer: @liu-binjun-->
 <!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=2e283ed2d7daf96e1708ee4cce1229b6d49b2429 translatedAt=2026-07-28T02:36:18.246Z pushedAt=2026-07-28T03:19:47.072Z -->
+<!-- md-trans-meta sourceCommit=2c7620d54062997379c5f7d2a16c6e4e49a1ae66 translatedAt=2026-10-31T01:29:20.502Z pushedAt=2026-10-31T03:42:12.623Z nl=1 -->
 
 ## When to Use
 
@@ -34,13 +33,11 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
 1. Before using system basic location capabilities, check whether your application has been granted the permission to access the device location information. If not, your application first needs to apply for the required permission. For details, see [Applying for Location Permissions](location-permission-guidelines.md).
 
 2. Import the **geoLocationManager** module by which you can implement all APIs related to the basic location capabilities.
-
+   
    ```ts
    import { geoLocationManager } from '@kit.LocationKit';
    ```
-
 3. Check whether the location switch is enabled.<br/>
-
    The return result is a Boolean value. The value **true** indicates that the location switch is enabled, and the value **false** indicates the opposite.
 
    ```ts
@@ -51,13 +48,10 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
        console.error("errCode:" + err.code + ", message:"  + err.message);
    }
    ```
-
    If the location switch is not enabled, launch the global switch settings dialog box to guide the user to enable the location switch. For details, see [requestGlobalSwitch](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12).
 
 4. Obtain the current location of the device. It is mainly used in scenarios such as viewing of the current location, signing in/out, and service recommendation.
-
    - Method 1: Obtain the latest location in the system cache.<br>
-
       If the system does not have a cached location, an error code is returned.<br>
       Using this API to obtain the device location can reduce the system power consumption.<br>
       If a fresh location is expected, your application can first obtain the cached location and then compare the timestamp in it with the current time. If the location is not fresh, try method 2.<br>
@@ -68,24 +62,19 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
       try {
           let location = geoLocationManager.getLastLocation();
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
    - Method 2: Obtain the current location.<br>
-
       Instantiate a [SingleLocationRequest](../../reference/apis-location-kit/js-apis-geoLocationManager.md#singlelocationrequest12) object to notify the system of the type of location service to be provided for applications and the timeout interval for a single location.<br>
-
       - Set the location priority by using **LocatingPriority**.<br>
-
          If a precise location is required, set **LocatingPriority** to **PRIORITY_ACCURACY**. The most accurate location result within the specified period of time will be provided for the application.<br>
          If fast location is expected, you are advised to set **LocatingPriority** to **PRIORITY_LOCATING_SPEED**. The first obtained location result will be provided for the application.<br>
          Both the GNSS positioning and the network positioning technologies are used in the two location policies. This can lead to significant hardware resource consumption and power consumption.<br>
-
       - Set the location timeout interval by using **locatingTimeoutMs**.<br>
-
          Due to the impact of the ambient environment, device status, and system power consumption control policy, the location response delay may fluctuate greatly. You are advised to set the timeout interval for a single location to 10 seconds.<br>
-
+         
       The following code snippet uses **PRIORITY_LOCATING_SPEED** as an example.<br>
 
       ```ts
@@ -103,26 +92,20 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
             console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
          });
        } catch (err) {
-         console.error("errCode:" + JSON.stringify(err));
+         console.error("errCode:" + err.code + ", message:"  + err.message);
        }
       ```
-
    The coordinates obtained by this module are in the WGS-84 coordinate system. If you need to use coordinates in other coordinate systems, perform a coordinate system conversion.
 
    <!--RP1-->   You can use the SDK capabilities provided by a third-party map to implement coordinate system conversion.<!--RP1End-->
-
+   
 5. Obtain the device location continuously. It is mainly used in scenarios such as navigation, movement trajectory, and travel.<br>
-
    Instantiate a [ContinuousLocationRequest](../../reference/apis-location-kit/js-apis-geoLocationManager.md#continuouslocationrequest12) object to notify the system of the type of location service to be provided for applications and the interval for reporting location information.<br>
-
    - Set the location scenario by using **locationScenario**.<br>
-
       You are advised to set **locationScenario** based on the application scenario. For details about the enum values of this parameter, see [UserActivityScenario](../../reference/apis-location-kit/js-apis-geoLocationManager.md#useractivityscenario12). For example, if **locationScenario** is set to **NAVIGATION**, the application will obtain the device location in both the indoor and outdoor scenarios for navigation.<br>
-
    - Set the interval for reporting location information by using **interval**.<br>
-
       The interval for reporting location information is in unit of seconds. The default value is **1**. Leave this parameter unspecified if there is no special requirement for the location reporting interval.
-
+   
    The following code snippet uses the map navigation scenario as an example.
 
    ```ts
@@ -137,13 +120,15 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
    try {
       geoLocationManager.on('locationChange', request, locationCallback);
    } catch (err) {
-      console.error("errCode:" + JSON.stringify(err));
+      console.error("errCode:" + err.code + ", message:"  + err.message);
    }
    ```
-
    If your application no longer needs the device location, stop obtaining the device location to avoid high power consumption.
-
    ```ts
    // The callback must be the same as that passed by the **on** API.
-   geoLocationManager.off('locationChange', locationCallback);
+   try {
+      geoLocationManager.off('locationChange', locationCallback);
+   } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+   }
    ```

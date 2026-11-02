@@ -10,8 +10,8 @@
 
 > **说明：**
 >
-> 从API version 9开始，该模块不再维护，建议使用[@ohos.notificationManager](js-apis-notificationManager.md)替代。
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 从API版本9开始，该模块不再维护，建议使用[@ohos.notificationManager](js-apis-notificationManager.md)替代。
+> 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)和取消订阅仅对系统应用开放。
 
@@ -959,7 +959,7 @@ Notification.isDistributedEnabled().then((data: boolean) => {
 **系统能力**：SystemCapability.Notification.Notification
 
 > **说明：**
-> 从 API version 7开始支持，从API version 9开始废弃。建议使用[notificationManager.BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)替代。
+> 从API版本7开始支持，从API版本9开始废弃。建议使用[notificationManager.BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)替代。
 
 | 名称   | 类型   | 必填 | 说明   |
 | ------ | ------ | --- |  ------ |
@@ -971,7 +971,7 @@ Notification.isDistributedEnabled().then((data: boolean) => {
 **系统能力**：SystemCapability.Notification.Notification
 
 > **说明：**
-> 从 API version 7开始支持，从API version 9开始废弃。<!--Del-->建议使用[notificationManager.NotificationKey](js-apis-notificationSubscribe-sys.md#notificationkey)替代。<!--DelEnd-->
+> 从API版本7开始支持，从API版本9开始废弃。<!--Del-->建议使用[notificationManager.NotificationKey](js-apis-notificationSubscribe-sys.md#notificationkey)替代。<!--DelEnd-->
 
 | 名称  | 类型   | 可读 | 可写 | 说明     |
 | ----- | ------ | ---- | --- | -------- |

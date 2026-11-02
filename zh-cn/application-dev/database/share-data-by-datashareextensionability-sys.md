@@ -207,8 +207,8 @@
    // 以下配置以settingsdata为例，应用需根据实际情况配置各个字段
    "extensionAbilities": [
      {
-       "srcEntry": "./ets/DataAbility/DataExtAbility.ets",
-       "name": "DataExtAbility",
+       "srcEntry": "./ets/DataShareExtAbility/DataShareExtAbility.ets",
+       "name": "DataShareExtAbility",
        "icon": "$media:icon",
        "description": "$string:description_datashareextability",
        "type": "dataShare",

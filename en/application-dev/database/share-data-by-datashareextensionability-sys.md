@@ -5,7 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=83627f931a3d4181bdf684edadfb6dd7d2e32c12 translatedAt=2026-09-14T08:39:41.512Z pushedAt=2026-09-15T08:12:53.932Z -->
+<!-- md-trans-meta sourceCommit=4b46da9d28202b88db8195cd5c0fa84b6d3b4e70 translatedAt=2026-10-31T01:25:25.283Z pushedAt=2026-10-31T03:37:19.856Z nl=1 -->
 
 
 ## When to Use
@@ -23,7 +23,7 @@ There are two roles in **DataShare**:
 
 - Data consumer: accesses the data provided by the provider using [createDataShareHelper()](../reference/apis-arkdata/js-apis-data-dataShare-sys.md#datasharecreatedatasharehelper).
 
-**Figure 1** Data sharing mechanism 
+**Figure 1** Data sharing mechanism  
 ![dataShare](figures/dataShare.jpg)
 
 - The **DataShareExtensionAbility** module, as the data provider, implements services related to data sharing between applications.
@@ -66,7 +66,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
 2. Right-click the **DataShareExtAbility** directory, and choose **New > ArkTS File** to create a file named **DataShareExtAbility.ets**.
 
 3. In the **DataShareExtAbility.ets** file, import the **DataShareExtensionAbility** module. You can override the service implementation as required. For example, if the data provider provides only the insert, delete, and query services, you can override only these APIs and import the dependency modules. If permission verification is required, override the callbacks using [getCallingPid](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingpid), [getCallingUid](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid), and [getCallingTokenId](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingtokenid8) provided by the IPC module to obtain the data consumer information for permission verification.
-
+   
    ```ts
    import { DataShareExtensionAbility, dataShare, dataSharePredicates, relationalStore, DataShareResultSet, ValuesBucket } from '@kit.ArkData';
    import { Want } from '@kit.AbilityKit';
@@ -74,7 +74,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    ```
 
 4. Implement the data provider services. For example, implement data storage of the data provider by creating and using a database, reading and writing files, or accessing the network.
-
+   
    ```ts
    const DB_NAME = 'DB00.db';
    const TBL_NAME = 'TBL00';
@@ -191,7 +191,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
 5. Define **DataShareExtensionAbility** in **module.json5**.
 
      **Table 1** Fields in module.json5
-
+   
    | Name| Description| Mandatory|
    | -------- | -------- | -------- |
    | name | Ability name, corresponding to the **ExtensionAbility** class name derived from **Ability**.| Yes|
@@ -203,13 +203,13 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    | metadata   | Silent access configuration, which includes the following:<br> **name**: identifies the configuration, which has a fixed value of **ohos.extension.dataShare**.<br> **resource**: has a fixed value of **$profile:data_share_config**, which indicates that the profile name is **data_share_config.json**.| **metadata** is mandatory when the ability launch type is **singleton**. For details about the ability launch type, see **launchType** in the [Internal Structure of the abilities Attribute](../quick-start/module-structure.md#internal-structure-of-the-abilities-attribute).|
 
 **module.json5 example**
-
+    
    ```json5
    // The following uses settingsdata as an example.
    "extensionAbilities": [
      {
-       "srcEntry": "./ets/DataAbility/DataExtAbility.ets",
-       "name": "DataExtAbility",
+       "srcEntry": "./ets/DataShareExtAbility/DataShareExtAbility.ets",
+       "name": "DataShareExtAbility",
        "icon": "$media:icon",
        "description": "$string:description_datashareextability",
        "type": "dataShare",
@@ -230,9 +230,9 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    | tableConfig         | Configuration label, which includes **uri** and **crossUserMode**.<br>- **uri**: specifies the range for which the configuration takes effect. The URI supports the following formats in descending order by priority:<br> 1. *: indicates all databases and tables.<br> 2. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}**: specifies a database.<br> 3. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}/{*tableName*}**: specifies a table.<br>- **crossUserMode**: Whether to share data between multiple users.<br>The value **1** means to share data between multiple users, and the value **2** means the opposite.| Yes  |
    | isSilentProxyEnable | Whether to enable silent access for this ExtensionAbility.<br>**false**: Silent access is disabled.<br>**true**: Silent access is enabled.<br>The default value is **true**.<br>If an application has multiple ExtensionAbilities and this field is set to **false** for one of them, silent access is disabled for the application.<br>If the data provider has called **enableSilentProxy** or **disableSilentProxy**, silent access is enabled or disabled based on the API settings. Otherwise, the setting here takes effect.| No  |
    | launchInfos         | Information including **storeId** and **tableNames**.<br>If the data in a table involved in the configuration changes, an extensionAbility will be started based on the URI in **extensionAbilities**. You need to set this parameter only when the service needs to start an extensionAbility to process data that is not actively changed by the service.<br>- **storeId**: database name, excluding the file name extension. For example, if the database name is **test.db**, set this parameter to **test**.<br>- **tableNames**: names of the database tables. Any change in a table will start **extension**.| No  |
-
+   
    **data_share_config.json Example**
-
+   
    ```json
    {
        "tableConfig":[
@@ -263,7 +263,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
 ### Data Consumer Application Development
 
 1. Import dependencies.
-
+   
    ```ts
    import { UIAbility } from '@kit.AbilityKit';
    import { dataShare, dataSharePredicates, DataShareResultSet, ValuesBucket } from '@kit.ArkData';
@@ -272,14 +272,14 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    ```
 
 2. Define the URI used to communicate with the data provider.<br/> The URI is the identifier configured by the data provider in its configuration file. You can append query parameters to the URI to specify the target resource. Query parameters must be appended to the end of the URI, beginning with a question mark (?).<br/> - Currently, only the **user** parameter is supported.<br/> - The **user** parameter must be an integer that specifies the user ID of the data provider. If this parameter is omitted, the user ID of the data consumer is used by default. For information about the **user** parameter and how to obtain the user ID, see [getActivatedOsAccountLocalIds](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9).<br/> - Cross-user access requires the data consumer to hold the **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS** permission. Currently, cross-user access is supported only for CRUD operations. Notification subscriptions do not support cross-user access.
-
+   
    ```ts
    // Different from the URI defined in the module.json5 file, the URI passed in the parameter has an extra slash (/) because there is a DeviceID parameter between the second and the third slash (/).
    let dseUri = 'datashare:///com.ohos.settingsdata.DataAbility';
    ```
 
 3. Use **createDataShareHelper()** to pass the URI to create a **DataShareHelper** object.
-
+   
    ```ts
    let dsHelper: dataShare.DataShareHelper | undefined = undefined;
    let abilityContext: Context;
@@ -295,7 +295,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    ```
 
 4. After obtaining the **DataShareHelper** object, use the APIs provided by the object (such as **insert()**, **delete()**, **update()**, or **query()**) to access the provider data.
-
+   
    ```ts
    // Construct a piece of data.
    let key1 = 'name';

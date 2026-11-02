@@ -1687,7 +1687,7 @@ struct RepeatBuilderPage {
 }
 ```
 
-@Builder传参方式依次为makeBinding()、地址传递和值传递，界面展示如下图，进入页面后点击按钮改变数据。在@Builder构造函数中使用值传递传参不会引起函数内的UI刷新。
+@Builder传参方式依次为makeBinding()、引用传递和值传递，界面展示如下图，进入页面后点击按钮改变数据。在@Builder构造函数中使用值传递传参不会引起函数内的UI刷新。
 
 ![Repeat-Builder](figures/Repeat-Builder.png)
 

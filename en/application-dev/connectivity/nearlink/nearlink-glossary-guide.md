@@ -1,4 +1,4 @@
-# Glossary
+# NearLink Glossary
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->

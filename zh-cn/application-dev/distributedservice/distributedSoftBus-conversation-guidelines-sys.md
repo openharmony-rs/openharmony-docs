@@ -24,7 +24,7 @@
 - 不同设备间只有相同`bundleName`的应用才能进行消息交互。
 - 目标设备必须是同账号可信设备。
 - 支持系统原生的快速设备唤醒能力，近距离打开蓝牙、Wi-Fi，且Wi-Fi连接同一局域网。
-- 该能力从API版本 26.1.0开始支持。
+- 该能力从API版本 26.0.1开始支持。
 
 ## 环境准备
 
@@ -35,7 +35,7 @@
 ### 搭建环境
 
 1. 在开发PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download)，版本要求在4.1及以上。
-2. 将public-SDK更新到API 26.1.0或以上，具体操作参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
+2. 将public-SDK更新到API 26.0.1或以上，具体操作参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到开发PC。
 4. 确保两台设备已开启网络连接，并登录相同账号。
 
@@ -52,15 +52,13 @@
 
 ## 分布式软总线会话开发指导
 
-- 接收端调用[registerConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener)注册会话监听器，监听来自可信设备的数据。
-- 发送端调用[getTrustedDevices()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices)获取可信设备列表，选择目标设备后调用[postConversationData()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata)发送会话数据。
-- 不再需要接收数据时，调用[unregisterConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener)注销会话监听器。
+- 接收端调用[conversation.registerConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener)接口注册会话监听器，监听来自可信设备的数据。
+- 发送端调用[conversation.getTrustedDevices()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices)接口获取可信设备列表，选择目标设备后调用[conversation.postConversationData()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata)接口发送会话数据。
+- 不再需要接收数据时，调用[conversation.unregisterConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener)接口注销会话监听器。
 
 ### 接收端开发指导
 
 1. 导入所需的模块。
-
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -99,8 +97,6 @@
 
 3. 定义会话监听器回调函数。
 
-   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // 定义消息回调
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
@@ -117,8 +113,6 @@
 
 4. 注册会话监听器，接收来自可信设备的数据。
 
-   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // 注册监听器
    registerListener(): void {
@@ -135,8 +129,6 @@
 
 5. 注销会话监听器。
 
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // 注销监听器
    unregisterListener(): void {
@@ -154,8 +146,6 @@
 ### 发送端开发指导
 
 1. 导入所需的模块。
-
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -194,8 +184,6 @@
 
 3. 获取可信设备列表，选择目标设备。
 
-   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // 获取受信任设备
    getTrustedDevices(): void {
@@ -220,8 +208,6 @@
 
 4. 向指定设备发送会话数据。
 
-   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // 发送消息
    sendMessage(): void {

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-08-11T02:00:06.505Z pushedAt=2026-08-11T07:40:35.533Z -->
+<!-- md-trans-meta sourceCommit=3cabfb41c56c012808b2e0701411bdb2e0217269 translatedAt=2026-10-31T02:51:44.119Z pushedAt=2026-10-31T06:02:02.429Z nl=1 -->
 
 Certificates with PKCS #12 can be parsed since API version 18.
 
@@ -21,7 +21,6 @@ PKCS #12 is a standard format used to store and transmit private keys, certifica
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-
 2. Call [cert.createPkcs12](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatepkcs1221) to create a PKCS #12 file.
 
 3. Call [cert.parsePkcs12](../../reference/apis-device-certificate-kit/js-apis-cert.md#certparsepkcs1218) to parse the PKCS #12 file.
@@ -219,7 +218,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
   }
   return x509Cert;
 }
