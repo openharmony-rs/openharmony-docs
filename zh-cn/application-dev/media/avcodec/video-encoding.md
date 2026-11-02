@@ -133,7 +133,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        void Enqueue(const std::shared_ptr<CodecBufferInfo> bufferInfo)
        {
            std::unique_lock<std::mutex> lock(mutex_);
-           // 队列只共享描述对象，不取得 OH_AVBuffer 的所有权。消费者必须按所属编解码器归还bufferIndex。
+           // 队列只共享描述对象，不取得OH_AVBuffer的所有权。消费者必须按所属编解码器归还bufferIndex。
            bufferQueue_.push(bufferInfo);
            cond_.notify_all();
        }
@@ -144,7 +144,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            std::unique_lock<std::mutex> lock(mutex_);
            (void)cond_.wait_for(lock, std::chrono::milliseconds(timeoutMs),
                [this]() { return cancelled_ || !bufferQueue_.empty(); });
-           // 返回空既可能是超时，也可能是解码器不处于Running状态；调用方应结合所属流水线的运行状态决定后续动作。
+           // 返回空既可能是超时，也可能是编码器不处于Running状态；调用方应结合所属流水线的运行状态决定后续动作。
            if (cancelled_ || bufferQueue_.empty()) {
                return nullptr;
            }
@@ -157,7 +157,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        {
            std::unique_lock<std::mutex> lock(mutex_);
            // 清空回调buffer队列。
-           // 调用方需先与codec 的 Flush/Stop 及工作线程完成同步，避免在其他线程仍访问 Buffer 时清空队列。
+           // 调用方需先与codec的Flush/Stop及工作线程完成同步，避免在其他线程仍访问buffer时清空队列。
            while (!bufferQueue_.empty()) {
                bufferQueue_.pop();
            }
@@ -290,7 +290,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
    - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等；
-   - OH_AVCodecOnNeedInputBuffer输入回调无作用，开发者通过获取的surface输入数据；
+   - OH_AVCodecOnNeedInputBuffer输入回调无作用，开发者通过获取的surface来输入数据；
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即编码完成。
 
    示例如下所示：
@@ -325,7 +325,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    // 编码输入回调OH_AVCodecOnNeedInputBuffer实现。
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
-       // Surface模式下，该回调函数无作用，开发者通过获取的surface输入数据。
+        // Surface模式下，该回调函数无作用，开发者通过获取的surface来输入数据。
        (void)userData;
        (void)index;
        (void)buffer;
@@ -343,7 +343,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            return;
        }
 
-       // 输出帧的数据buffer和对应的index送入outputBufferQueue队列。
+        // 将输出帧的数据buffer和对应的index送入outputBufferQueue队列。
        codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
    ```
@@ -470,7 +470,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 8. 调用OH_VideoEncoder_Start()启动编码器。
 
-   配置编码输出文件路径。可填写应用沙箱路径等可访问目录。
+    配置编码输出文件路径。可填写应用沙箱路径等可访问的目录。
 
    ```c++
    // 配置待编码文件路径。
@@ -513,7 +513,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 10. 写入编码图像。
 
-    在之前的第6步中，开发者已经对OH_VideoEncoder_GetSurface接口返回的OHNativeWindow*类型变量进行配置。因为编码所需的数据，由配置的surface进行持续地输入，所以开发者无需对OnNeedInputBuffer回调函数进行处理，也无需使用OH_VideoEncoder_PushInputBuffer接口输入数据。
+    在之前的第6步中，开发者已经对OH_VideoEncoder_GetSurface接口返回的OHNativeWindow*类型变量进行配置。因为编码所需的数据，由配置的surface持续输入，所以开发者无需对OnNeedInputBuffer回调函数进行处理，也无需使用OH_VideoEncoder_PushInputBuffer接口输入数据。
     <!--RP13--><!--RP13End-->
 
 11. （可选）调用OH_VideoEncoder_PushInputParameter()通知编码器随帧参数配置输入完成。
@@ -670,7 +670,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 16. （可选）调用OH_VideoEncoder_Stop()停止编码器。
 
-    调用OH_VideoEncoder_Stop接口后，编码器保留了编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码。
+    调用OH_VideoEncoder_Stop接口后，编码器仍保留编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码。
 
     <!-- @[encoder_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
@@ -853,7 +853,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            codecUserData->isEncFirstFrame = false;
        }
 
-       // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
+        // 将输入帧的数据buffer和对应的index送入inputBufferQueue队列。
        codecUserData->inputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
 
@@ -869,7 +869,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            return;
        }
 
-       // 输出帧的数据buffer和对应的index送入outputBufferQueue队列。
+        // 将输出帧的数据buffer和对应的index送入outputBufferQueue队列。
        codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
    ```
@@ -997,7 +997,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 8. 调用OH_VideoEncoder_PushInputBuffer()写入编码图像。
 
    送入输入队列进行编码，以下示例中：
-   - widthStride: 获取到的buffer数据的宽跨距。
+   - widthStride：获取到的buffer数据的宽跨距。
    - heightStride：获取到的buffer数据的高跨距。
 
    bufferInfo的成员变量：
@@ -1014,16 +1014,16 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    // 写入图像数据。
    int32_t frameSize = 0;
    if (widthStride == width && heightStride == height) {
-       frameSize = width * height * 3 / 2; // NV12像素格式下，每帧数据大小的计算公式
+       frameSize = width * height * 3 / 2; // NV12像素格式下，每帧数据大小的计算公式。
        int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
        if (frameSize > capacity) {
            // 异常处理。
        }
        // 处理文件流得到帧的长度，再将需要编码的数据写入到对应index的buffer中。
        uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
-       if (addr == nullptr) {
-          // 异常处理。
-       }
+        if (addr == nullptr) {
+            // 异常处理。
+        }
        if (inputFile != nullptr && inputFile->is_open()) {
            inputFile->read(reinterpret_cast<char *>(addr), frameSize);
        }
@@ -1034,7 +1034,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    OH_AVCodecBufferAttr info;
    info.size = frameSize;
    info.offset = 0;
-   // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
+    // 注意此处和Surface模式不同，pts需要由应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
    info.pts = 0;
    // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）。
    info.flags = 0;
@@ -1042,7 +1042,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    if (setBufferRet != AV_ERR_OK) {
        // 异常处理。
    }
-   // 配置buffer 随帧信息。
+    // 配置buffer随帧信息。
    // 值由开发者决定。
    int32_t isIFrame;
    auto parameter = std::shared_ptr<OH_AVFormat>(OH_AVBuffer_GetParameter(bufferInfo->buffer), OH_AVFormat_Destroy);
@@ -1111,7 +1111,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    rect.height = ((rect.height + 1) / 2)  * 2; // 避免height为奇数。
    rect.width = ((rect.width + 1) / 2)  * 2; // 避免width为奇数。
 
-   // Y 将Y区域的源数据复制到另一个区域的目标数据中。
+   // Y：将Y区域的源数据复制到另一个区域的目标数据中。
    for (int32_t i = 0; i < rect.height; ++i) {
        // 将源数据的一行数据复制到目标数据的一行中。
        memcpy(dstTemp, srcTemp, rect.width);
@@ -1124,7 +1124,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    dstTemp += (dstRect.hStride - rect.height) * dstRect.wStride;
    srcTemp += (srcRect.hStride - rect.height) * srcRect.wStride;
    rect.height >>= 1;
-   // UV 将UV区域的源数据复制到另一个区域的目标数据中。
+   // UV：将UV区域的源数据复制到另一个区域的目标数据中。
    for (int32_t i = 0; i < rect.height; ++i) {
        memcpy(dstTemp, srcTemp, rect.width);
        dstTemp += dstRect.wStride;
@@ -1137,9 +1137,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    src = nullptr;
    ```
 
-   硬件编码在处理buffer数据时（推送数据前），需要开发者拷贝宽、高对齐后的图像数据到输入回调的AVbuffer中。
+   硬件编码在处理buffer数据时（推送数据前），需要开发者拷贝宽、高对齐后的图像数据到输入回调的AVBuffer中。
 
-   一般需要获取数据的宽、高、跨距、像素格式来保证编码输入数据被正确的处理。
+   一般需要获取数据的宽、高、跨距、像素格式来保证编码输入数据被正确地处理。
 
    具体实现请参考：[Buffer模式](#buffer模式)的步骤3-调用OH_VideoEncoder_RegisterCallback接口设置回调函数来获取数据的宽、高、跨距、像素格式。
 
@@ -1159,7 +1159,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    以下示例中，bufferInfo的成员变量：
    - bufferIndex：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
-   - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针;
+    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
    - attr：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
 
    ```c++
@@ -1173,7 +1173,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    OH_AVCodecBufferAttr info;
    info.size = frameSize;
    info.offset = 0;
-   // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
+    // 注意此处和Surface模式不同，pts需要由应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
    info.pts = 0;
    info.flags = AVCODEC_BUFFER_FLAGS_EOS;
    OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);

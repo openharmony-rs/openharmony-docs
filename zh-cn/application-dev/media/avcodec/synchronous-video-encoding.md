@@ -7,12 +7,11 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
-本文档主要介绍同步模式视频编码的实现流程。同步模式下开发者通过主动轮询获取输入和输出Buffer，若业务需要主动申请Buffer发送帧数据时可选用该模式。优先推荐使用[异步模式视频编码](video-encoding.md)。
+本文档主要介绍同步模式视频编码的实现流程。同步模式下开发者通过主动轮询获取输入和输出buffer，若业务需要主动申请buffer发送帧数据时可选用该模式。优先推荐使用[异步模式视频编码](video-encoding.md)。
 
 同步模式视频编码也同样包含Surface模式和Buffer模式两种输出模式。其状态机调用关系、支持的能力与异步模式视频编码一致，详细信息请参考[异步模式视频编码](video-encoding.md)。
 
 从API version 20开始支持同步模式视频编码，视频编码支持的格式请参考[视频编码](avcodec-support-formats.md#视频编码)。
-
 
 具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVCodec/AVCodec)。
 
@@ -58,7 +57,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    #include <shared_mutex>
    ```
 
-2. 定义全局变量（仅作示例，具体参数值，请据能力查询接口获取相应值范围来参考配置）。
+2. 定义全局变量（仅作示例，具体参数值，请根据能力查询接口获取相应值范围来参考配置）。
 
    ```c++
    struct CodecUserData {
@@ -235,7 +234,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 5. 调用OH_VideoEncoder_Start()启动编码器。
 
-   配置编码输出文件路径。可填写应用沙箱路径等可访问目录。
+    配置编码输出文件路径。可填写应用沙箱路径等可访问的目录。
 
    ```c++
    // 配置待编码文件路径。
@@ -301,7 +300,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                    CHECK_AND_RETURN_RET_LOG(getBufferRet == AV_ERR_OK, false,
                        "Get buffer attr error, ret: %{public}d", getBufferRet);
                    info.buffer = buffer;
-                   // 开发者可根据业务需要，对输出数据进行保存/释放处理
+                   // 开发者可根据业务需要，对输出数据进行保存/释放处理。
                    return true;
                }
                case AV_ERR_TRY_AGAIN_LATER: {
@@ -406,7 +405,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    ```
 
-   若需重新开始解码，可参考上述[Surface模式](#surface模式)-步骤2至5配置并启动解码器。
+    若需重新开始编码，可参考上述[Surface模式](#surface模式)-步骤2至5配置并启动编码器。
 
    > **注意：**
    >
@@ -414,7 +413,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 10. （可选）调用OH_VideoEncoder_Stop()停止编码器。
 
-    调用OH_VideoEncoder_Stop接口后，编码器保留了编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码。
+    调用OH_VideoEncoder_Stop接口后，编码器仍保留编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码。
 
     <!-- @[encoder_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
@@ -433,7 +432,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     }
     ```
 
-    若需重新开始解码，可参考上述[Surface模式](#surface模式)-步骤5启动解码器。
+    若需重新开始编码，可参考上述[Surface模式](#surface模式)-步骤5启动编码器。
 
 11. 调用OH_VideoEncoder_Destroy()销毁编码器实例，释放资源。
 
@@ -481,7 +480,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     > **说明：**
     >
-    > 执行该步骤之后，需要开发者将encoder_指向nullptr，防止野指针导致程序错误。
+    > 执行该步骤之后，开发者需要将encoder_置为nullptr，防止野指针导致程序错误。
 
 ### Buffer模式
 
@@ -776,7 +775,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 7. 编码器送帧/出帧处理循环。
 
-   示例中的EncoderInput、EncoderOutput为开发者参考步骤5、步骤6封装的处理函数，分别完成获取输入buffer写入图像数据后送入编码器、获取输出buffer写入文件后释放的处理。
+    示例中的EncoderInput、EncoderOutput为开发者参考步骤5、步骤6封装的处理函数，分别完成获取输入buffer并写入图像数据后送入编码器、获取输出buffer并写入文件后释放的处理。
 
     ```c++
     bool result = true;
