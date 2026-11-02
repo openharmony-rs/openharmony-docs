@@ -370,10 +370,10 @@ function createPreviewOutput(previewProfile: camera.Profile, cameraDevice: camer
   cameraManager: camera.CameraManager, surfaceId: string): camera.PreviewOutput | undefined {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   if (cameraOutputCapability.previewProfiles.findIndex((profile: camera.Profile) => {
-    return profile.format === previewProfile.format &&
+    return profile.format == previewProfile.format &&
       profile.size.width == previewProfile.size.width &&
       profile.size.height == previewProfile.size.height;
-  }) === -1) {
+  }) == -1) {
     console.error(`invalid previewProfile.`);
     return undefined;
   }
@@ -478,10 +478,10 @@ function createDeferredPreviewOutput(previewProfile: camera.Profile, cameraDevic
   cameraManager: camera.CameraManager): camera.PreviewOutput | undefined {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   if (cameraOutputCapability.previewProfiles.findIndex((profile: camera.Profile) => {
-    return profile.format === previewProfile.format &&
+    return profile.format == previewProfile.format &&
       profile.size.width == previewProfile.size.width &&
       profile.size.height == previewProfile.size.height;
-  }) === -1) {
+  }) == -1) {
     console.error(`invalid previewProfile.`);
     return undefined;
   }
@@ -537,10 +537,10 @@ function createPhotoOutput(photoProfile: camera.Profile, cameraDevice: camera.Ca
   cameraManager: camera.CameraManager): camera.PhotoOutput | undefined {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   if (cameraOutputCapability.photoProfiles.findIndex((profile: camera.Profile) => {
-    return profile.format === photoProfile.format &&
+    return profile.format == photoProfile.format &&
       profile.size.width == photoProfile.size.width &&
       profile.size.height == photoProfile.size.height;
-  }) === -1) {
+  }) == -1) {
     console.error(`invalid photoProfile.`);
     return undefined;
   }
@@ -604,12 +604,12 @@ function createVideoOutput(videoProfile: camera.VideoProfile, cameraDevice: came
   cameraManager: camera.CameraManager, surfaceId: string): camera.VideoOutput | undefined {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_VIDEO);
   if (cameraOutputCapability.videoProfiles.findIndex((profile: camera.VideoProfile) => {
-    return profile.format === videoProfile.format &&
+    return profile.format == videoProfile.format &&
       profile.size.width == videoProfile.size.width &&
       profile.size.height == videoProfile.size.height &&
-      profile.frameRateRange.min === videoProfile.frameRateRange.min &&
-      profile.frameRateRange.max === videoProfile.frameRateRange.max;
-  }) === -1) {
+      profile.frameRateRange.min == videoProfile.frameRateRange.min &&
+      profile.frameRateRange.max == videoProfile.frameRateRange.max;
+  }) == -1) {
     console.error(`invalid videoProfile.`);
     return undefined;
   }
