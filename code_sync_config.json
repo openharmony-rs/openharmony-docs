@@ -10101,6 +10101,36 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/AutoShowSoftKeyboard.ets",
+				"functions":[
+					{
+						"end_line":37,
+						"name":"soft_keyboard_auto_popup",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/ExpandSafeArea.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"soft_keyboard_expand_safe_area",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/OnIntKbdAttachSysCustIn.ets",
+				"functions":[
+					{
+						"end_line":123,
+						"name":"soft_keyboard_web",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -70746,6 +70776,76 @@
 						"end_line":480,
 						"name":"decoder_save_file_YUV420",
 						"start_line":462
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-event-sequence.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":133,
+						"name":"the_status_of_web_component_web_page_loading",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/OnRenderExitedReload.ets",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"avoid_page_stuck_caused_by_render_process_exit",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-native-messaging.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"MyWebNativeMessageExtAbility",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry2/src/main/ets/pages/GetManifestData.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"GetManifestData",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry2/src/main/ets/pages/ConnectNative.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"ConnectNative",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry2/src/main/ets/pages/DisconnectNative.ets",
+				"functions":[
+					{
+						"end_line":22,
+						"name":"DisconnectNative",
+						"start_line":15
 					}
 				]
 			}
