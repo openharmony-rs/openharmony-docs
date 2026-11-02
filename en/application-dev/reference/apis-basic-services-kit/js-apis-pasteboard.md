@@ -2058,7 +2058,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 getData(): Promise&lt;PasteData&gt;
 
-Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses a promise to return the result. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. This API can be used when an app needs to read data from the pasteboard using [UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata).
+Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses a promise to return the result. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. 
 
 To use the custom control to access the pasteboard content, you must [request the permission to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md). Those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
@@ -2956,7 +2956,6 @@ Sets pasteable range of pasteboard data for applications. This API can be used t
 
 - This API is used together with **removeAppShareOptions()**.
 - To delete the configured sharing scope, call **removeAppShareOptions()**.
-- The sharing scope must be deleted from the same place where it was set, ensuring consistency between the setting and deletion of the sharing scope.
 
 **Required permissions**: ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
 
@@ -2966,7 +2965,7 @@ Sets pasteable range of pasteboard data for applications. This API can be used t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| shareOptions | [ShareOption](#shareoption9) | Yes| Pasteable range. Only **pasteboard.ShareOption.INAPP** is allowed. If other values are passed, error code 401 is returned.|
+| shareOptions | [ShareOption](#shareoption9) | Yes| Pasteable range. Only the enumeretion values defined in **pasteboard.ShareOption** are allowed. If other values are passed, error code 401 is returned.|
 
 **Error codes**
 
