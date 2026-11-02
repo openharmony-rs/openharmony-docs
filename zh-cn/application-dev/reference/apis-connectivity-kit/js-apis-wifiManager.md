@@ -1185,14 +1185,15 @@ disconnectFromCandidateConfig(networkId: number, blockDuration: number): void
 
 断开指定ID的候选网络，被断开的候选网络在阻断时长内不会被重新关联。
 
-- 只能断开调用方通过[addCandidateConfig](#wifimanageraddcandidateconfig)添加的候选网络。
+- 只能断开调用方通过[addCandidateConfig](#wifimanageraddcandidateconfig)添加的候选网络，且networkId需对应已存在的候选网络。
+- 调用方需在前台运行。
 - 当blockDuration取值为-1时，该候选网络被永久阻断，不再被重新关联。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1211,7 +1212,7 @@ disconnectFromCandidateConfig(networkId: number, blockDuration: number): void
   | -------- | ---------------------------- |
   | 201 | Permission denied.                 |
   | 801 | Capability not supported.          |
-  | 2501000  | Operation failed.|
+  | 2501000  | Operation failed. Possible causes: 1. The network identified by networkId does not exist.<br>2. The candidate network was not added by the caller.<br>3. The caller is not running in the foreground.|
   | 2501001  | Wi-Fi STA disabled. |
 
 **示例：**
