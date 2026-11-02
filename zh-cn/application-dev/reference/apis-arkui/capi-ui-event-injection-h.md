@@ -120,13 +120,11 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 
 **描述：**
 
-向指定UI实例异步注入宽松交互命令，无需指定节点ID。支持点击、内容切换、滚动、返回和按键五类命令，参数格式及示例参见[注入实例级交互命令](../../ui/ndk-ui-event-injection.md)。本接口仅作用于调用方进程内的UI实例。
+向指定UI实例异步注入宽松交互命令，无需指定节点ID。支持click、content_switch、scroll、backpress和key五类命令。
 
-本接口可从任意线程调用，在返回前完成JSON参数校验和复制，将命令投递到目标实例的UI线程执行。同步返回0仅表示请求已受理，执行结果通过callback报告。返回非零值时，不执行命令，也不触发回调。
+本接口可从任意线程调用，返回前完成JSON参数校验和复制，将命令投递到目标实例的UI线程执行。同步返回0表示请求已受理，执行结果通过callback报告；返回非零值时，不执行命令，也不触发回调。
 
-callback非NULL时，在命令完成后于目标实例的UI线程调用一次。UI线程发起时，回调在注入函数返回后执行；其他线程发起时，回调可能在注入函数返回前执行。回调表示命令派发与即时处理结束，不等待动画或渲染完成。可同时提交多个请求，不保证执行或回调顺序。
-
-用户操作可中断尚未完成的命令，回调报告INTERRUPTED_BY_USER。请求受理后实例失效，未完成请求报告TARGET_NOT_FOUND；已经判定为用户中断的请求保留INTERRUPTED_BY_USER结果。实例销毁不取消完成通知，但通知依赖UI线程继续处理任务，不提供固定完成超时。调用方等待超时不会取消请求，也不能据此释放回调资源或userData。
+callback非NULL时，命令完成后在目标实例的UI线程回调一次，不等待动画或渲染完成。多个命令的执行及回调顺序不保证。
 
 **起始版本：** 26.1.0
 
@@ -135,7 +133,7 @@ callback非NULL时，在命令完成后于目标实例的UI线程调用一次。
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [入参] 目标UI实例句柄，不能为NULL，调用期间必须有效。调用方须同步句柄自身的销毁。 |
-| const [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [入参] 使用[OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)创建的JSON命令对象，不能为NULL。调用期间必须有效，函数返回后可立即销毁。 |
+| const [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [入参] 使用[OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)创建的JSON命令对象，不能为NULL。顶层结构为`{"schemaVersion":1,"cmd":{"type":"<命令类型>","action_info":{...}}}`，schemaVersion必须为数字1。调用期间必须有效，函数返回后可立即销毁。 |
 | [OH_ArkUI_NativeModule_UIEventInjectionCallback](#oh_arkui_nativemodule_uieventinjectioncallback) callback | [入参] 完成回调，可为NULL。非NULL时，须保持可调用直至回调退出。 |
 | void *userData | [入参] 原样传递给callback的自定义用户数据指针，可为NULL。框架不访问、复制或释放所指数据，不接管其所有权。callback非NULL时，数据必须在发起调用前准备好，并保持有效直至回调退出；运行环境关闭时须同步回调退出后再释放。 |
 

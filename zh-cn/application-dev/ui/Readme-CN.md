@@ -322,7 +322,6 @@
   - [添加事件响应](ndk-add-event-response.md)
     - [添加事件监听](ndk-add-component-events.md)
     - [绑定基础输入事件](ndk-bind-input-events.md)
-    - [注入实例级交互命令](ndk-ui-event-injection.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
     - [绑定拖拽事件](ndk-drag-event.md)
   - 使用自定义能力<!--arkts-build-custom-ndk-->
