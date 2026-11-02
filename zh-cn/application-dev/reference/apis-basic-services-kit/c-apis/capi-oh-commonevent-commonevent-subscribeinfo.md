@@ -12,7 +12,7 @@ typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo
 
 **起始版本：** 12
 
-**相关模块：** [OH_CommonEvent](capi-oh-commonevent.md)
+**相关模块：** [OH_CommonEvent](capi-others-oh-commonevent.md)
 
 **所在头文件：** [oh_commonevent.h](capi-oh-commonevent-h.md)
 

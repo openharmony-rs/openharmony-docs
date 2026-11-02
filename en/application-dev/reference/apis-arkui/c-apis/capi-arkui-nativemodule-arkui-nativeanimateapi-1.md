@@ -12,7 +12,7 @@ Declares a set of animation APIs of ArkUI on the native side.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_animate.h](capi-native-animate-h.md)
 
@@ -102,7 +102,7 @@ Creates an animator animation object and returns its pointer. Unlike the trigger
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) | Pointer to the animator animation object, which is used to control the animation object subsequently. **NULL** is returned when the function parameter is invalid. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) | Pointer to the animator animation object, which is used to control the animation object subsequently. **NULL** is returned when the function parameter is invalid. |
 
 ### disposeAnimator()
 
@@ -118,6 +118,6 @@ Disposes of the animator animation object and releases its memory. After the dis
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator animation object, which must be a valid handle created by **createAnimator**. It must not be an object that has been disposed of. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator animation object, which must be a valid handle created by **createAnimator**. It must not be an object that has been disposed of. |
 
 

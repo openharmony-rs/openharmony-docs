@@ -10,7 +10,7 @@ This file declares the functions related to the path operation iterator object.
 
 **Since**: 23
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 

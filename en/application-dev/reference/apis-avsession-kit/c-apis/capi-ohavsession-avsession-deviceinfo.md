@@ -12,7 +12,7 @@ Declaring the device information. The instance is used to get more device inform
 
 **Since**: 23
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-others-ohavsession.md)
 
 **Header file**: [native_deviceinfo.h](capi-native-deviceinfo-h.md)
 

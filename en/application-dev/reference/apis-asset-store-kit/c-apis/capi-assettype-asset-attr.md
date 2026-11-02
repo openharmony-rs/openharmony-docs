@@ -12,7 +12,7 @@ Defines an asset attribute, which consists of a tag and a value in the form of a
 
 **Since**: 11
 
-**Related module**: [AssetType](capi-assettype.md)
+**Related module**: [AssetType](capi-others-assettype.md)
 
 **Header file**: [asset_type.h](capi-asset-type-h.md)
 

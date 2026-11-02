@@ -10,7 +10,7 @@ Provides database related functions and enumerations.
 
 **Since**: 10
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 ## Summary
 
@@ -43,8 +43,8 @@ Provides database related functions and enumerations.
 | [Rdb_ChangeType](#rdb_changetype) | Rdb_ChangeType | Describes the change type. |
 | [Rdb_SubscribeType](#rdb_subscribetype) | Rdb_SubscribeType | Indicates the subscribe type. |
 | [Rdb_SyncMode](#rdb_syncmode) | Rdb_SyncMode | Indicates the database synchronization mode. |
-| [Rdb_Progress](#rdb_progress) | Rdb_Progress |  |
-| [Rdb_ProgressCode](#rdb_progresscode) | Rdb_ProgressCode |  |
+| [Rdb_Progress](#rdb_progress) | Rdb_Progress | The cloud sync progress |
+| [Rdb_ProgressCode](#rdb_progresscode) | Rdb_ProgressCode | Describes the status of cloud sync progress. |
 
 ### Macro
 
@@ -135,16 +135,6 @@ Provides database related functions and enumerations.
 | [int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdb_batchinsertwithreturning) | - | Inserts a batch of data into the target table and output change info to context.<br> A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code RDB_E_INVALID_ARGS is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters. For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760). Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters. |
 | [int OH_Rdb_UpdateWithReturning(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdb_updatewithreturning) | - | Updates data in the database based on specified conditions and output change info to context. |
 | [int OH_Rdb_DeleteWithReturning(OH_Rdb_Store *store, OH_Predicates *predicates, OH_RDB_ReturningContext *context)](#oh_rdb_deletewithreturning) | - | Deletes data from the database based on specified conditions and output change info to context. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t count) | The callback function of cloud data change event.<br>**Since**: 11<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core |
-| void (*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **changeInfo, uint32_t count) | The callback function of cloud data change details event.<br>**Since**: 11<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core |
-| void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progressDetails) | The callback function of progress.<br>**Since**: 11<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core |
-| void (*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails) | The callback function of sync.<br>**Since**: 11<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core |
-| void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store) | The callback function of database corruption handle.<br>**Since**: 22<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core |
 
 ## Enum type description
 
@@ -316,7 +306,11 @@ enum Rdb_Progress
 
 **Description**
 
+The cloud sync progress
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Since**: 11
 
 | Enum item | Description |
 | -- | -- |
@@ -332,7 +326,11 @@ enum Rdb_ProgressCode
 
 **Description**
 
+Describes the status of cloud sync progress.
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Since**: 11
 
 | Enum item | Description |
 | -- | -- |

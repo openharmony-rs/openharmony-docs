@@ -10,7 +10,7 @@ This file declares the capabilities for obtaining the character position in a te
 
 **Since**: 18
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 
@@ -37,12 +37,6 @@ This file declares the capabilities for obtaining the character position in a te
 | [typedef bool (\*Drawing_CaretOffsetsCallback)(double offset, int32_t index, bool leadingEdge)](#drawing_caretoffsetscallback) | Drawing_CaretOffsetsCallback | Defines a custom callback used to receive the offset and index of each character in a text line object as its parameters. |
 | [void OH_Drawing_TextLineEnumerateCaretOffsets(OH_Drawing_TextLine* line, Drawing_CaretOffsetsCallback callback)](#oh_drawing_textlineenumeratecaretoffsets) | - | Enumerates the offset and index of each character in a text line object and passes them to a custom callback function. You can use the offset and index array for other operations. |
 | [double OH_Drawing_TextLineGetAlignmentOffset(OH_Drawing_TextLine* line, double alignmentFactor, double alignmentWidth)](#oh_drawing_textlinegetalignmentoffset) | - | Obtains the offset of a text line object after alignment based on the alignment factor and alignment width. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| bool (*Drawing_CaretOffsetsCallback)(double offset, int32_t index, bool leadingEdge) | Defines a custom callback used to receive the offset and index of each character in a text line object as its parameters.<br>**Since**: 18<br>**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing |
 
 ## Function description
 

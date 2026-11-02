@@ -12,7 +12,7 @@ typedef struct OH_AVSession_AVMediaDescription OH_AVSession_AVMediaDescription
 
 **起始版本：** 23
 
-**相关模块：** [OHAVSession](capi-ohavsession.md)
+**相关模块：** [OHAVSession](capi-others-ohavsession.md)
 
 **所在头文件：** [native_avqueueitem.h](capi-native-avqueueitem-h.md)
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -69,16 +69,6 @@
 | [bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSessionManager)](#oh_audiosessionmanager_isothermediaplaying) | - | 检查是否有其他应用正在播放音乐、视频、听书、游戏四种媒体类型的音频，已激活的媒体场景音频会话也将会被计入。 |
 | [OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)](#oh_audiosessionmanager_setcapturemutehint) | - | 应用将当前音频会话内录音流的自身静音状态传递给系统音频模块。 <br>该接口用于向系统音频模块上报当前音频会话内录音流的静音状态，不会改变录音流的实际静音状态。 <br>系统音频模块在设备底层能力支持的情况下，根据设置的状态调整策略以降低功耗。 <br>该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回错误码AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE。 <br>若某条录音流同时调用了流级接口和本接口，流级接口设置优先级更高，以流级接口设置值为准。 |
 | [OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager *audioSessionManager, uint32_t behavior)](#oh_audiosessionmanager_setbehavior) | - | 设置音频会话行为参数（支持多种标志位的组合使用）。 当音频会话在激活状态时调用此接口后，必须重新调用接口[OH_AudioSessionManager_ActivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)使其生效。 若未调用此接口，系统将使用默认行为参数。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_AudioSession_StateChangedCallback) ( OH_AudioSession_StateChangedEvent event) | 音频会话状态变更回调函数的原型定义。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioSession_AvailableDeviceChangedCallback) ( OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | 音频可用设备设备变化回调函数的原型定义。<br>**起始版本：** 21<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioSession_CurrentInputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason) | 当前输入设备变化回调函数的原型定义。<br>**起始版本：** 21<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioSession_CurrentOutputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason, OH_AudioSession_OutputDeviceChangeRecommendedAction recommendedAction) | 当前输出设备变化回调函数的原型定义。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioSession_DeactivatedCallback) ( OH_AudioSession_DeactivatedEvent event) | 音频会话停用事件回调函数的原型定义。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## 枚举类型说明
 

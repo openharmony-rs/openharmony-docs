@@ -12,7 +12,7 @@ Defines a shared memory block, which can be registered or allocated.
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-teeclient.md)
+**Related module**: [TeeClient](capi-others-teeclient.md)
 
 **Header file**: [tee_client_type.h](capi-tee-client-type-h.md)
 

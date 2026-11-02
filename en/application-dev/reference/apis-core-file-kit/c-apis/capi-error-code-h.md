@@ -10,7 +10,7 @@ Declare the error codes of file management module.
 
 **Since**: 12
 
-**Related module**: [FileIO](capi-fileio.md)
+**Related module**: [FileIO](capi-core-file-kit-fileio.md)
 
 ## Summary
 

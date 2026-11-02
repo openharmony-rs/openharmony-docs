@@ -12,7 +12,7 @@ typedef struct Input_DeviceInfo Input_DeviceInfo
 
 **起始版本：** 13
 
-**相关模块：** [input](capi-input.md)
+**相关模块：** [input](capi-others-input.md)
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
 

@@ -12,7 +12,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 ## 汇总
 

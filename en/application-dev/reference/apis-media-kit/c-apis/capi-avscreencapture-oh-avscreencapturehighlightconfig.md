@@ -12,7 +12,7 @@ The struct describes the style of the highlight border shown during screen captu
 
 **Since**: 22
 
-**Related module**: [AVScreenCapture](capi-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-others-avscreencapture.md)
 
 **Header file**: [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

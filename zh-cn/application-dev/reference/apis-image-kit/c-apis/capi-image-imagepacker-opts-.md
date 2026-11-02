@@ -1,7 +1,7 @@
 # ImagePacker_Opts_
 
 ```c
-struct ImagePacker_Opts_ {...}
+typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts
 ```
 
 ## 概述
@@ -12,7 +12,7 @@ struct ImagePacker_Opts_ {...}
 
 **起始版本：** 11
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-others-image.md)
 
 **所在头文件：** [image_packer_mdk.h](capi-image-packer-mdk-h.md)
 

@@ -4,7 +4,7 @@
 
 Defines common data structures and error codes for crypto operations.
 
-**Include**: <CryptoArchitectureKit/crypto_common.h>
+**File to Include**: <CryptoArchitectureKit/crypto_common.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines common data structures and error codes for crypto operations.
 
 **Since**: 12
 
-**Related module**: [CryptoCommonApi](capi-cryptocommonapi.md)
+**Related module**: [CryptoCommonApi](capi-crypto-architecture-kit-cryptocommonapi.md)
 
 ## Summary
 

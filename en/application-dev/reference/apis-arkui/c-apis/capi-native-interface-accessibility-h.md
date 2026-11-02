@@ -10,7 +10,7 @@ Declares the APIs used to access the native Accessibility.
 
 **Since**: 13
 
-**Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)
+**Related module**: [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 ## Summary
 
@@ -145,8 +145,8 @@ Defines an enum for accessibility action types.
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | Text selection action, requiring the setting of <b>selectTextBegin</b>, <b>TextEnd</b>, and <b>TextInForward</b> parameters to select a text segment in the text box. |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_TEXT = 0x00004000 | Text content setting action. |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_CURSOR_POSITION = 0x00100000 | Cursor position setting action. |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | Support action for find next item in focus move operation @since 15 |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PREVIOUS_HTML_ITEM = 0x04000000 | Support action for find previous item in focus move operation @since 15 |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | Support action for find next item in focus move operation @since 15<br>**Since**: 15 |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PREVIOUS_HTML_ITEM = 0x04000000 | Support action for find previous item in focus move operation @since 15<br>**Since**: 15 |
 
 ### ArkUI_AccessibilityEventType
 
@@ -1743,7 +1743,7 @@ Obtains the pointer to the <b> ArkUI_AccessibilityProvider</b> instance of this 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | Indicates the pointer to the <b>ArkUI_NodeHandle</b> instance. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Indicates the pointer to the <b>ArkUI_NodeHandle</b> instance. |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)** provider | Indicates the pointer to the <b>ArkUI_AccessibilityProvider</b> instance. |
 
 **Returns**:
@@ -1797,9 +1797,9 @@ Binds an external ArkUI sub-tree to the third-party framework's accessibility tr
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) owner | [in] Pointer to the ArkUI host node of the third-party framework. This is the node in the RenderNode tree where the third-party framework is mounted (for example, an XComponent or Custom node). The node must be a valid ArkUI_NodeHandle. The handle is borrowed, not retained: this API does not take ownership of the node or extend its lifetime. If the node is destroyed or replaced while the binding exists, the binding becomes inactive immediately (the accessibility service no longer traverses into the bound sub-tree); its remaining internal resources are released when the host window is destroyed. To keep the binding effective, the node must remain valid until [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) owner | [in] Pointer to the ArkUI host node of the third-party framework. This is the node in the RenderNode tree where the third-party framework is mounted (for example, an XComponent or Custom node). The node must be a valid ArkUI_NodeHandle. The handle is borrowed, not retained: this API does not take ownership of the node or extend its lifetime. If the node is destroyed or replaced while the binding exists, the binding becomes inactive immediately (the accessibility service no longer traverses into the bound sub-tree); its remaining internal resources are released when the host window is destroyed. To keep the binding effective, the node must remain valid until [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called. |
 | int64_t bindId | [in] Accessibility ID of the placeholder node in the third-party framework's internal accessibility tree. This is the node in the third-party framework's accessibility tree where the mixed ArkUI sub-tree is to be mounted. When the accessibility service traverses to this node, it will enter the bound ArkUI sub-tree. The value is the accessibility ID assigned by the third-party framework to that node; any such ID is accepted and no values are reserved. The ID must identify an existing node of the third-party framework's accessibility tree, but the node does not need to have been reported to the accessibility service when this API is called — the binding takes effect once the third-party tree is registered. The ID must be unique among the active bindings of the same owner. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) exportedRoot | [in] Pointer to the root node of the mixed ArkUI sub-tree to be bound. This node and its descendants will be registered as a sub-tree in the accessibility tree under the placeholder node specified by bindId. The handle is borrowed, not retained: this API does not take ownership of the node or extend its lifetime. If the node is destroyed or replaced while the binding exists, the binding becomes inactive immediately; its remaining internal resources are released when [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called with the same (owner, bindId) pair or the host window is destroyed. To keep the binding effective, the node and its sub-tree must remain valid until [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) exportedRoot | [in] Pointer to the root node of the mixed ArkUI sub-tree to be bound. This node and its descendants will be registered as a sub-tree in the accessibility tree under the placeholder node specified by bindId. The handle is borrowed, not retained: this API does not take ownership of the node or extend its lifetime. If the node is destroyed or replaced while the binding exists, the binding becomes inactive immediately; its remaining internal resources are released when [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called with the same (owner, bindId) pair or the host window is destroyed. To keep the binding effective, the node and its sub-tree must remain valid until [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called. |
 
 **Returns**:
 
@@ -1830,7 +1830,7 @@ Unbinds a previously bound external ArkUI sub-tree from the third-party framewor
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) owner | [in] Pointer to the ArkUI host node of the third-party framework. This must be the same node that was passed to [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree) when the binding was created. The node must be a valid ArkUI_NodeHandle. The handle is used only to identify the binding within this call and is not retained after the call returns; it does not need to remain valid afterwards. If the node has already been destroyed, its bindings have become inactive automatically and no explicit unbinding is required; their remaining internal resources are released when the host window is destroyed. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) owner | [in] Pointer to the ArkUI host node of the third-party framework. This must be the same node that was passed to [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree) when the binding was created. The node must be a valid ArkUI_NodeHandle. The handle is used only to identify the binding within this call and is not retained after the call returns; it does not need to remain valid afterwards. If the node has already been destroyed, its bindings have become inactive automatically and no explicit unbinding is required; their remaining internal resources are released when the host window is destroyed. |
 | int64_t bindId | [in] Accessibility ID of the placeholder node in the third-party framework's internal accessibility tree. This must be the same bindId that was passed to [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree) when the binding was created. No values are reserved; unbinding an (owner, bindId) pair that has no active binding is idempotent and returns ARKUI_ERROR_CODE_NO_ERROR. |
 
 **Returns**:
@@ -1890,7 +1890,7 @@ Unregisters the accessibility hover event handler from the specified node.<br> A
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | [in] Indicates the host node from which the accessibility hover event handler is to be unregistered. This must be the same node that was passed to [OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_registeraccessibilityhovereventhandler) when the handler was registered. Only <b>ARKUI_NODE_XCOMPONENT</b>, <b>ARKUI_NODE_CUSTOM</b>, and <b>ARKUI_NODE_XCOMPONENT_TEXTURE</b> nodes are supported. This parameter must not be null. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [in] Indicates the host node from which the accessibility hover event handler is to be unregistered. This must be the same node that was passed to [OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_registeraccessibilityhovereventhandler) when the handler was registered. Only <b>ARKUI_NODE_XCOMPONENT</b>, <b>ARKUI_NODE_CUSTOM</b>, and <b>ARKUI_NODE_XCOMPONENT_TEXTURE</b> nodes are supported. This parameter must not be null. |
 
 **Returns**:
 

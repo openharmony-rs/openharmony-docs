@@ -4,7 +4,7 @@
 
 Defines **Picker** node types for **NativeNode** APIs, which support various picker components including the date picker and text picker. It is applicable to scenarios requiring scroll‑selection implementation at the native layer. It provides rich style configuration and data‑linkage capabilities for you to flexibly construct diverse selection interactions.
 
-**Include**: <arkui/node_attributes/picker.h>
+**File to Include**: <arkui/node_attributes/picker.h>
 
 **Library**: libace_ndk.z.so
 
@@ -12,7 +12,7 @@ Defines **Picker** node types for **NativeNode** APIs, which support various pic
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -70,9 +70,9 @@ Enumerates the column display modes of the date picker.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_DATEPICKER_MODE_DATE = 0 |  |
-| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 |  |
-| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 |  |
+| ARKUI_DATEPICKER_MODE_DATE = 0 | A mode that displays the date in months, days of month, and years.<br>**Since**: 18 |
+| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 | A mode that displays the date in months and years.<br>**Since**: 18 |
+| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 | A mode that displays the date in months and days of the month.<br>**Since**: 18 |
 
 ### ArkUI_TextPickerRangeType
 
@@ -90,10 +90,10 @@ Enumerates the types of the text picker.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 |  |
-| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 |  |
-| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 |  |
-| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 |  |
+| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | Single-column text picker.<br>**Since**: 12 |
+| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | Multi-column text picker.<br>**Since**: 12 |
+| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | Single-column text picker with image resources.<br>**Since**: 12 |
+| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | Interconnected multi-column text picker.<br>**Since**: 12 |
 
 ### ArkUI_CalendarAlignment
 
@@ -111,9 +111,9 @@ Enumerates the alignment modes between the calendar picker and the entry compone
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_CALENDAR_ALIGNMENT_START = 0 |  |
-| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 |  |
-| ARKUI_CALENDAR_ALIGNMENT_END = 2 |  |
+| ARKUI_CALENDAR_ALIGNMENT_START = 0 | Left aligned.<br>**Since**: 12 |
+| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | Center aligned.<br>**Since**: 12 |
+| ARKUI_CALENDAR_ALIGNMENT_END = 2 | Right aligned.<br>**Since**: 12 |
 
 ### ArkUI_PickerIndicatorType
 
@@ -131,8 +131,8 @@ Enumerates the indicator types of the selected item.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_PICKER_INDICATOR_BACKGROUND = 0 |  |
-| ARKUI_PICKER_INDICATOR_DIVIDER = 1 |  |
+| ARKUI_PICKER_INDICATOR_BACKGROUND = 0 | background.<br>**Since**: 23 |
+| ARKUI_PICKER_INDICATOR_DIVIDER = 1 | divider.<br>**Since**: 23 |
 
 
 ## Function description
@@ -151,7 +151,7 @@ Creates an **ArkUI_TextPickerRangeContentArray** array object, which is used to 
 
 **Since**: 19
 
-**Resource release**: OH_ArkUI_TextPickerRangeContentArray_Destroy {return}
+**Resource release**: [OH_ArkUI_TextPickerRangeContentArray_Destroy](#oh_arkui_textpickerrangecontentarray_destroy)
 
 **Parameters**:
 
@@ -243,7 +243,7 @@ Creates an **ArkUI_TextCascadePickerRangeContentArray** array object, which is u
 
 **Since**: 19
 
-**Resource release**: OH_ArkUI_TextCascadePickerRangeContentArray_Destroy {return}
+**Resource release**: [OH_ArkUI_TextCascadePickerRangeContentArray_Destroy](#oh_arkui_textcascadepickerrangecontentarray_destroy)
 
 **Parameters**:
 

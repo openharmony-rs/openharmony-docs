@@ -6,13 +6,13 @@ struct UsbDeviceMemMap {...}
 
 ## Overview
 
-Device memory map created by calling OH_Usb_CreateDeviceMemMap. A buffer using the device memory map can improve data transmission performance.
+Device memory map created by calling [OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap). A buffer using the device memory map can improve data transmission performance.
 
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-others-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

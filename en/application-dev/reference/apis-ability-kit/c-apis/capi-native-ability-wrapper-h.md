@@ -10,7 +10,7 @@ Provides the NativeAbility data information APIs for obtaining the Ability insta
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 

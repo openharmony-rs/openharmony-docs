@@ -4,7 +4,7 @@
 
 Declares the error codes of the distributed device management module.
 
-**Include**: <distributedhardware/device_manager/oh_device_manager_err_code.h>
+**File to Include**: <distributedhardware/device_manager/oh_device_manager_err_code.h>
 
 **Library**: libdevicemanager_ndk.so
 
@@ -12,7 +12,7 @@ Declares the error codes of the distributed device management module.
 
 **Since**: 20
 
-**Related module**: [DeviceManager](capi-devicemanager.md)
+**Related module**: [DeviceManager](capi-distributed-service-kit-devicemanager.md)
 
 ## Summary
 

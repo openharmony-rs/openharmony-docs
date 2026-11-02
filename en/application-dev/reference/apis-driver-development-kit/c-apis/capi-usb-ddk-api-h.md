@@ -10,7 +10,7 @@ Declares the USB DDK APIs used by the USB host to access USB devices.
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 ## Summary
 

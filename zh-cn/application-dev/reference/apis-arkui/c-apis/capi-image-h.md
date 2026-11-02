@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -44,10 +44,10 @@ enum ArkUI_ImageRepeat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMAGE_REPEAT_NONE = 0 |  |
-| ARKUI_IMAGE_REPEAT_X = 1 |  |
-| ARKUI_IMAGE_REPEAT_Y = 2 |  |
-| ARKUI_IMAGE_REPEAT_XY = 3 |  |
+| ARKUI_IMAGE_REPEAT_NONE = 0 | 不重复铺设图片，图片按原样显示一次。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_REPEAT_X = 1 | 在X轴方向重复铺设图片，使图片横向铺满显示区域。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_REPEAT_Y = 2 | 在Y轴方向重复铺设图片，使图片纵向铺满显示区域。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_REPEAT_XY = 3 | 在X轴和Y轴方向重复铺设图片，使图片铺满整个显示区域。<br>**起始版本：** 12 |
 
 ### ArkUI_ImageSize
 
@@ -65,9 +65,9 @@ enum ArkUI_ImageSize
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMAGE_SIZE_AUTO = 0 |  |
-| ARKUI_IMAGE_SIZE_COVER = 1 |  |
-| ARKUI_IMAGE_SIZE_CONTAIN = 2 |  |
+| ARKUI_IMAGE_SIZE_AUTO = 0 | 保持原图的比例不变。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_SIZE_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片的宽度和高度都大于或等于显示边界的宽度和高度（可能超出边界部分被裁剪）。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_SIZE_CONTAIN = 2 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。<br>**起始版本：** 12 |
 
 ### ArkUI_ObjectFit
 
@@ -85,22 +85,22 @@ enum ArkUI_ObjectFit
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_OBJECT_FIT_CONTAIN = 0 |  |
-| ARKUI_OBJECT_FIT_COVER = 1 |  |
-| ARKUI_OBJECT_FIT_AUTO = 2 |  |
-| ARKUI_OBJECT_FIT_FILL = 3 |  |
-| ARKUI_OBJECT_FIT_SCALE_DOWN = 4 |  |
-| ARKUI_OBJECT_FIT_NONE = 5 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 |  |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 |  |
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 |  |
+| ARKUI_OBJECT_FIT_CONTAIN = 0 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片的宽度和高度都大于或等于显示边界的宽度和高度（可能超出边界部分被裁剪）。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_AUTO = 2 | 自适应显示，根据图片和容器尺寸自动选择合适的填充方式。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_FILL = 3 | 不保持宽高比进行放大缩小，使得图片充满显示边界。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | 保持宽高比显示，图片缩小或者保持不变。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE = 5 | 图片大小不变。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | 图片大小不变，在Image组件中顶部起始端对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | 图片大小不变，在Image组件中顶部横向居中对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | 图片大小不变，在Image组件中顶部尾端对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | 图片大小不变，在Image组件中起始端纵向居中对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | 图片大小不变，在Image组件中横向和纵向居中对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | 图片大小不变，在Image组件中尾端纵向居中对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | 图片大小不变，在Image组件中底部起始端对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | 图片大小不变，在Image组件中底部横向居中对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | 图片大小不变，在Image组件中底部尾端对齐。<br>**起始版本：** 12 |
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，在Image组件中需要配合[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_IMAGE_MATRIX使用， 通过矩阵变换控制图像的显示效果（如缩放、旋转、平移等）。 若不配合NODE_IMAGE_IMAGE_MATRIX使用，该枚举值将无法生效。<br>**起始版本：** 21 |
 
 ### ArkUI_ImageInterpolation
 
@@ -118,10 +118,10 @@ enum ArkUI_ImageInterpolation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMAGE_INTERPOLATION_NONE = 0 |  |
-| ARKUI_IMAGE_INTERPOLATION_LOW = 1 |  |
-| ARKUI_IMAGE_INTERPOLATION_MEDIUM = 2 |  |
-| ARKUI_IMAGE_INTERPOLATION_HIGH = 3 |  |
+| ARKUI_IMAGE_INTERPOLATION_NONE = 0 | 不使用图片插值。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_INTERPOLATION_LOW = 1 | 低质量图片插值。计算量小、渲染速度快，适用于对画质要求不高或需要快速渲染大量图片的场景。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_INTERPOLATION_MEDIUM = 2 | 中等质量图片插值。在计算量与图像质量之间取得平衡，适用于大多数常规显示场景。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_INTERPOLATION_HIGH = 3 | 高质量图片插值，插值质量最高。计算量较大、资源消耗较高，适用于对图像质量要求较高的展示场景。<br>**起始版本：** 12 |
 
 ### ArkUI_DynamicRangeMode
 
@@ -139,9 +139,9 @@ enum ArkUI_DynamicRangeMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 |  |
-| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 |  |
-| ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 |  |
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR）， 表示图片中显示亮度（brightness）的最小值和最大值的范围（典型最大亮度可达1000尼特以上），范围越大， 图像的亮度动态范围越接近人眼在真实环境中的感知范围，在太亮的环境下不会产生过曝（纯白）， 太暗的环境下不会产生过暗的效果（纯黑）。<br>**起始版本：** 21 |
+| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | 受限的高动态范围，包含比SDR更丰富的亮度和色彩，但不是完整的HDR，一般用于需要兼容SDR的情况。<br>**起始版本：** 21 |
+| ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | 标准动态范围（Standard Dynamic Range，简称SDR）， 表示亮度范围有限，一般在0~100尼特（亮度单位）左右，明暗对比度较小，暗部容易糊成黑，亮部容易过曝。<br>**起始版本：** 21 |
 
 ### ArkUI_ImageRotateOrientation
 
@@ -159,15 +159,15 @@ enum ArkUI_ImageRotateOrientation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ORIENTATION_AUTO = 0 |  |
-| ARKUI_ORIENTATION_UP = 1 |  |
-| ARKUI_ORIENTATION_RIGHT = 2 |  |
-| ARKUI_ORIENTATION_DOWN = 3 |  |
-| ARKUI_ORIENTATION_LEFT = 4 |  |
-| ARKUI_ORIENTATION_UP_MIRRORED = 5 |  |
-| ARKUI_ORIENTATION_RIGHT_MIRRORED = 6 |  |
-| ARKUI_ORIENTATION_DOWN_MIRRORED = 7 |  |
-| ARKUI_ORIENTATION_LEFT_MIRRORED = 8 |  |
+| ARKUI_ORIENTATION_AUTO = 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。<br>**起始版本：** 21 |
+| ARKUI_ORIENTATION_UP = 1 | 默认按照当前图片的像素数据进行显示，不做任何处理。<br>**起始版本：** 21 |
+| ARKUI_ORIENTATION_RIGHT = 2 | 将当前图片顺时针旋转90度后显示。<br>**起始版本：** 21 |
+| ARKUI_ORIENTATION_DOWN = 3 | 将当前图片顺时针旋转180度后显示。<br>**起始版本：** 21 |
+| ARKUI_ORIENTATION_LEFT = 4 | 将当前图片顺时针旋转270度后显示。<br>**起始版本：** 21 |
+| ARKUI_ORIENTATION_UP_MIRRORED = 5 | 将当前图片水平翻转后显示。<br>**起始版本：** 21 |
+| ARKUI_ORIENTATION_RIGHT_MIRRORED = 6 | 将当前图片水平翻转再顺时针旋转90度后显示。<br>**起始版本：** 21 |
+| ARKUI_ORIENTATION_DOWN_MIRRORED = 7 | 将当前图片垂直翻转后显示。<br>**起始版本：** 21 |
+| ARKUI_ORIENTATION_LEFT_MIRRORED = 8 | 将当前图片水平翻转再顺时针旋转270度后显示。<br>**起始版本：** 21 |
 
 ### ArkUI_ImageRenderMode
 
@@ -185,7 +185,7 @@ enum ArkUI_ImageRenderMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMAGE_RENDER_MODE_ORIGINAL = 0 |  |
-| ARKUI_IMAGE_RENDER_MODE_TEMPLATE = 1 |  |
+| ARKUI_IMAGE_RENDER_MODE_ORIGINAL = 0 | 原色渲染模式。<br>**起始版本：** 12 |
+| ARKUI_IMAGE_RENDER_MODE_TEMPLATE = 1 | 黑白渲染模式。<br>**起始版本：** 12 |
 
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [Sensor](capi-sensor.md)
+**相关模块：** [Sensor](capi-sensor-service-kit-sensor.md)
 
 ## 汇总
 

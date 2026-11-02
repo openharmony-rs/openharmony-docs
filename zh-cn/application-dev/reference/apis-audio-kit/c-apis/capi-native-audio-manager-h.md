@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -29,12 +29,6 @@
 | [OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *scene)](#oh_getaudioscene) | - | 获取音频场景。 <br>音频场景主要用于表示音频通话相关的系统状态，调用者可通过音频场景识别系统是否处于语音通话或通话响铃状态。 |
 | [OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)](#oh_audiomanager_registeraudioscenechangecallback) | - | 注册音频场景变化回调函数。 <br>音频场景主要用于表示音频通话相关的系统状态，调用者可通过此接口监听系统是否进入或退出通话状态。 <br>若不再需要监听音频场景变化，可调用[OH_AudioManager_UnregisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_unregisteraudioscenechangecallback)取消注册。 |
 | [OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback)](#oh_audiomanager_unregisteraudioscenechangecallback) | - | 取消注册音频场景变化回调函数。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_AudioManager_OnAudioSceneChangeCallback) ( void *userData, OH_AudioScene scene ) | 音频场景变化回调函数的原型定义，用于[OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback)接口。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## 函数说明
 
@@ -103,7 +97,7 @@ OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *
 
 | 参数项 | 描述 |
 | -- | -- |
-| audioManager | the [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) handle received from [OH_GetAudioManager](capi-native-audio-manager-h.md#oh_getaudiomanager). |
+| [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)* manager | [in] 指向通过[OH_GetAudioManager](capi-native-audio-manager-h.md#oh_getaudiomanager)获取的音频管理器实例。 |
 | [OH_AudioScene](capi-native-audio-common-h.md#oh_audioscene) *scene | [out] 用于接收获取的音频场景。 |
 
 **返回值：**

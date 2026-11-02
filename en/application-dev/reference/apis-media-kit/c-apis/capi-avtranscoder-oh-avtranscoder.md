@@ -10,7 +10,7 @@ The struct initializes an AVTranscoder.
 
 **Since**: 20
 
-**Related module**: [AVTranscoder](capi-avtranscoder.md)
+**Related module**: [AVTranscoder](capi-others-avtranscoder.md)
 
 **Header file**: [avtranscoder_base.h](capi-avtranscoder-base-h.md)
 

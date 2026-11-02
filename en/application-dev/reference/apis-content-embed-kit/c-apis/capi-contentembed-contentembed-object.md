@@ -12,7 +12,7 @@ Declares the ContentEmbed_Object structure. Points to the program object (server
 
 **Since**: 24
 
-**Related module**: [ContentEmbed](capi-contentembed.md)
+**Related module**: [ContentEmbed](capi-others-contentembed.md)
 
 **Header file**: [content_embed_extension.h](capi-content-embed-extension-h.md)
 

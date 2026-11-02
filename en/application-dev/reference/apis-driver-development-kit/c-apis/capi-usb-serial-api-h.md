@@ -10,7 +10,7 @@ Declares the USB Serial DDK APIs used by the host to access the serial port devi
 
 **Since**: 18
 
-**Related module**: [USBSerialDDK](capi-usbserialddk.md)
+**Related module**: [USBSerialDDK](capi-driver-development-kit-usbserialddk.md)
 
 ## Summary
 

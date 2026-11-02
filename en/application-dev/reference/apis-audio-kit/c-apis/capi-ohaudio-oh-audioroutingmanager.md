@@ -12,7 +12,7 @@ Declaring the audio routing manager. The handle of audio routing manager used fo
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_routing_manager.h](capi-native-audio-routing-manager-h.md)
 

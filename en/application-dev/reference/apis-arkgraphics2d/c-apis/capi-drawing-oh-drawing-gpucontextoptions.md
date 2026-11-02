@@ -14,7 +14,7 @@ This struct describes the options about the GPU context.
 
 **Deprecated**: 18
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_gpu_context.h](capi-drawing-gpu-context-h.md)
 

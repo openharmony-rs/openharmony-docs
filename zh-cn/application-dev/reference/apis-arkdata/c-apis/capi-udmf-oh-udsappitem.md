@@ -12,7 +12,7 @@ typedef struct OH_UdsAppItem OH_UdsAppItem
 
 **起始版本：** 12
 
-**相关模块：** [UDMF](capi-udmf.md)
+**相关模块：** [UDMF](capi-others-udmf.md)
 
 **所在头文件：** [uds.h](capi-uds-h.md)
 

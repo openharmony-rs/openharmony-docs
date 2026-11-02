@@ -12,7 +12,7 @@ typedef struct OH_Camera_MetadataObjectExt OH_Camera_MetadataObjectExt
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [metadata_object_ext.h](capi-metadata-object-ext-h.md)
 

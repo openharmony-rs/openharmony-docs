@@ -12,7 +12,7 @@ struct OH_AudioSession_StateChangedEvent {...}
 
 **起始版本：** 20
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-others-ohaudio.md)
 
 **所在头文件：** [native_audio_session_manager.h](capi-native-audio-session-manager-h.md)
 

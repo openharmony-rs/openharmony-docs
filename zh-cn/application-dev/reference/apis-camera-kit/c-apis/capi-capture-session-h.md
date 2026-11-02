@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## 汇总
 
@@ -157,22 +157,9 @@
 | [bool OH_CaptureSession_IsLockFocusTrackingSupported(const Camera_CaptureSession* session)](#oh_capturesession_islockfocustrackingsupported) | - | 查询是否支持锁定焦点跟踪。 |
 | [Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* session, Camera_Point focusPoint)](#oh_capturesession_lockfocustracking) | - | 锁定焦点跟踪，可通过[OH_CaptureSession_UnlockFocusTracking](capi-capture-session-h.md#oh_capturesession_unlockfocustracking)解锁。 |
 | [Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* session)](#oh_capturesession_unlockfocustracking) | - | 解锁焦点跟踪。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_CaptureSession_OnFocusStateChange)(Camera_CaptureSession* session, Camera_FocusState focusState) | 在[CaptureSession_Callbacks](capi-oh-camera-capturesession-callbacks.md)中被调用的捕获会话焦点状态回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnError)(Camera_CaptureSession* session, Camera_ErrorCode errorCode) | 在[CaptureSession_Callbacks](capi-oh-camera-capturesession-callbacks.md)中被调用的捕获会话错误回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnSmoothZoomInfo)(Camera_CaptureSession* session, Camera_SmoothZoomInfo* smoothZoomInfo) | 拍照会话平滑变焦信息回调，触发平滑变焦后该回调会返回。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnAutoDeviceSwitchStatusChange)(Camera_CaptureSession* session, Camera_AutoDeviceSwitchStatusInfo* autoDeviceSwitchStatusInfo) | 捕获会话设备切换状态回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnSystemPressureLevelChange)(Camera_CaptureSession* session, Camera_SystemPressureLevel systemPressureLevel) | 捕获系统压力状态变化回调。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnFlashStateChange)(const Camera_CaptureSession* session, OH_Camera_FlashState flashState) | 捕获会话闪光灯状态变更回调。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnExposureStateChange)(void* context, OH_Camera_ExposureState exposureState) | 定义曝光状态变更时的回调函数。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnIsoChange)(Camera_CaptureSession* session, int32_t isoValue) | 用于在相机会话中监听感光度（ISO）变化的回调函数。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnExposureDurationChange)(const Camera_CaptureSession* session, int32_t exposureDuration) | 捕获会话曝光时间变更回调。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnMacroStatusChange)(Camera_CaptureSession* session, bool isMacroDetected) | 相机会话微距状态改变回调。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CaptureSession_OnControlCenterEffectStatusChange)(Camera_CaptureSession* session, Camera_ControlCenterStatusInfo* controlCenterStatusInfo) | 相机控制器效果激活状态变化回调。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
+| [typedef void (\*OH_CaptureSession_OnCameraDeviceSwitchRequest)(void *userContext, Camera_CaptureSession *userSession, Camera_Device *userDevice)](#oh_capturesession_oncameradeviceswitchrequest) | OH_CaptureSession_OnCameraDeviceSwitchRequest | 定义一个回调函数，当发生相机设备切换请求时调用。 |
+| [Camera_ErrorCode OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)](#oh_capturesession_registercameradeviceswitchrequestcallback) | - | 注册相机设备切换请求回调。<br> 注册此回调后，当相机设备切换请求发生在 捕获会话。 |
+| [Camera_ErrorCode OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)](#oh_capturesession_unregistercameradeviceswitchrequestcallback) | - | 取消注册相机设备切换请求回调。 |
 
 ## 函数说明
 
@@ -3708,5 +3695,95 @@ Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* se
 | 类型 | 说明 |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_CaptureSession_OnCameraDeviceSwitchRequest()
+
+```c
+typedef void (*OH_CaptureSession_OnCameraDeviceSwitchRequest)(void *userContext, Camera_CaptureSession *userSession, Camera_Device *userDevice)
+```
+
+**描述：**
+
+定义一个回调函数，当发生相机设备切换请求时调用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 26.0.1
+
+**资源释放：** OH_CameraManager_DeleteCameraDevices {userDevice}
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void *userContext | 【out】输出参数，指向自定义上下文的指针。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) *userSession | 【out】输出参数，指向[Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)实例的指针。 |
+| [Camera_Device](capi-oh-camera-camera-device.md) *userDevice | 【out】输出参数，指向[Camera_Device](capi-oh-camera-camera-device.md)实例的指针。 |
+
+### OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback()
+
+```c
+Camera_ErrorCode OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)
+```
+
+**描述：**
+
+注册相机设备切换请求回调。<br> 注册此回调后，当相机设备切换请求发生在 捕获会话。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) *session | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)实例。 |
+| void *context | 指向自定义上下文的指针。 |
+| [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) callback | [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest)表示注册的回调。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | _OK 如果方法调用成功。如果参数缺失或参数类型不正确，则[CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode)。 |
+
+**参考：**
+
+[OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) 了解更多信息。
+
+
+### OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback()
+
+```c
+Camera_ErrorCode OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)
+```
+
+**描述：**
+
+取消注册相机设备切换请求回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) *session | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)实例。 |
+| void *context | 指向注册回调时指定的用户定义上下文的指针。 |
+| [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) callback | [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest)取消注册回调。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | _OK 如果方法调用成功。如果参数缺失或参数类型不正确，则[CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode)。 |
+
+**参考：**
+
+[OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) 了解更多信息。
+
 
 

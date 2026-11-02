@@ -10,7 +10,7 @@ The file declares the capability to take screenshots.
 
 **起始版本：** 14
 
-**相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)
+**相关模块：** [OH_DisplayManager](capi-arkui-oh-displaymanager.md)
 
 ## 汇总
 

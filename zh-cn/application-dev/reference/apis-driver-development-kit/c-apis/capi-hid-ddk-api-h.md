@@ -12,7 +12,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [HidDdk](capi-hidddk.md)
+**相关模块：** [HidDdk](capi-driver-development-kit-hidddk.md)
 
 ## 汇总
 
@@ -192,7 +192,7 @@ int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle 
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t deviceId | 操作设备的ID，可通过OH_Usb_GetDevices查询获取。 |
+| uint64_t deviceId | 操作设备的ID，可通过[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)查询获取。 |
 | uint8_t interfaceIndex | 接口索引，对应HID设备的接口。 |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) **dev | 设备操作句柄，输出参数。接口执行成功后会被赋值，表示打开的HID设备。 |
 

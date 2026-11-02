@@ -14,7 +14,7 @@ Information about a single swap key.
 
 **System API:** This is a system API.
 
-**Related module**: [Swapfs](capi-swapfs.md)
+**Related module**: [Swapfs](capi-others-swapfs.md)
 
 **Header file**: [oh_swapfs.h(System API)](capi-oh-swapfs-h-sys.md)
 

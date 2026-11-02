@@ -10,7 +10,7 @@ Provides functions and enumerations related to the data value buckets.
 
 **Since**: 18
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 ## Summary
 

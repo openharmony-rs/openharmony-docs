@@ -12,7 +12,7 @@ typedef struct OH_AVRecorder OH_AVRecorder
 
 **起始版本：** 18
 
-**相关模块：** [AVRecorder](capi-avrecorder.md)
+**相关模块：** [AVRecorder](capi-others-avrecorder.md)
 
 **所在头文件：** [avrecorder_base.h](capi-avrecorder-base-h.md)
 

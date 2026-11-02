@@ -12,7 +12,7 @@ Defines custom mouse cursor configuration, which is used to define and manage th
 
 **Since**: 22
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-others-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

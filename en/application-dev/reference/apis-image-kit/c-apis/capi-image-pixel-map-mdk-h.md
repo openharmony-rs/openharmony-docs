@@ -10,7 +10,7 @@ Declares the APIs that can lock, access, and unlock a pixel map.
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-image-kit-image.md)
 
 ## Summary
 
@@ -21,7 +21,6 @@ Declares the APIs that can lock, access, and unlock a pixel map.
 | [OhosPixelMapInfos](capi-image-ohospixelmapinfos.md) | - | Defines the pixel map information. |
 | [OhosPixelMapCreateOps](capi-image-ohospixelmapcreateops.md) | - | Defines the options used for creating a pixel map. |
 | [NativePixelMap_](capi-image-nativepixelmap-.md) | - | Defines the native pixel map information. |
-| [NativePixelMap](capi-image-nativepixelmap.md) | NativePixelMap | Defines the data type name of the native pixel map. |
 
 ### Enum
 
@@ -251,7 +250,7 @@ Initializes a NativePixelMap object.
 
 | Type | Description |
 | -- | -- |
-| [NativePixelMap*](capi-image-nativepixelmap.md) | Pointer to the NativePixelMap object. |
+| [NativePixelMap*](capi-image-nativepixelmap-.md) | Pointer to the NativePixelMap object. |
 
 **Reference**:
 
@@ -276,7 +275,7 @@ Obtains the number of bytes per row of a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | int32_t* num | Pointer to the number of bytes per row. |
 
 **Returns**:
@@ -308,7 +307,7 @@ Checks whether a NativePixelMap object is editable.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | int32_t* editable | Pointer to the editing type of the NativePixelMap object. |
 
 **Returns**:
@@ -340,7 +339,7 @@ Checks whether a NativePixelMap object supports alpha channels.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | int32_t* alpha | Pointer to the support for alpha channels. |
 
 **Returns**:
@@ -372,7 +371,7 @@ Sets an alpha channel for a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | int32_t alpha | Alpha channel to set. |
 
 **Returns**:
@@ -404,7 +403,7 @@ Obtains the pixel density of a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | int32_t* density | Pointer to the pixel density. |
 
 **Returns**:
@@ -436,7 +435,7 @@ Sets the pixel density for a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | int32_t density | Pixel density to set. |
 
 **Returns**:
@@ -468,7 +467,7 @@ Sets the opacity for a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | float opacity | Opacity to set. |
 
 **Returns**:
@@ -500,7 +499,7 @@ Scales a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | float x | Scale ratio of the width. |
 | float y | Scale ratio of the height. |
 
@@ -533,7 +532,7 @@ Scales a NativePixelMap object based on the specified anti-aliasing level, width
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | float x | Scale ratio of the width. |
 | float y | Scale ratio of the height. |
 | [OH_PixelMap_AntiAliasingLevel](capi-image-pixel-map-mdk-h.md#oh_pixelmap_antialiasinglevel) level | Anti-aliasing level. |
@@ -567,7 +566,7 @@ Translates a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | float x | Horizontal distance to translate. |
 | float y | Vertical distance to translate. |
 
@@ -600,7 +599,7 @@ Rotates a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | float angle | Angle to rotate. |
 
 **Returns**:
@@ -632,7 +631,7 @@ Flips a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | int32_t x | Whether to flip around the x axis. |
 | int32_t y | Whether to flip around the y axis. |
 
@@ -665,7 +664,7 @@ Crops a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | int32_t x | X-coordinate of the upper left corner of the target image. |
 | int32_t y | Y-coordinate of the upper left corner of the target image. |
 | int32_t width | Width of the cropped region. |
@@ -700,7 +699,7 @@ Obtains the image information of a NativePixelMap object.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | [OhosPixelMapInfos](capi-image-ohospixelmapinfos.md) *info | Pointer to the image information. |
 
 **Returns**:
@@ -732,7 +731,7 @@ Obtains the memory address of a NativePixelMap object and locks the memory.
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 | void** addr | Double pointer to the memory address. |
 
 **Returns**:
@@ -764,7 +763,7 @@ Unlocks the memory of a NativePixelMap object. This function is used with [OH_Pi
 
 | Parameter | Description |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | Pointer to a NativePixelMap object. |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | Pointer to a NativePixelMap object. |
 
 **Returns**:
 

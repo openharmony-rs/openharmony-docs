@@ -12,7 +12,7 @@ Declare the audio stream manager. Audio stream manager provides many functions a
 
 **Since**: 19
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_stream_manager.h](capi-native-audio-stream-manager-h.md)
 

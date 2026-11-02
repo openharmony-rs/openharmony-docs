@@ -10,7 +10,7 @@ This file declares the functions related to the mask filter in the drawing modul
 
 **Since**: 11
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 

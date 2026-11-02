@@ -12,7 +12,7 @@ struct OH_Huks_KeyInfo {...}
 
 **起始版本：** 9
 
-**相关模块：** [HuksTypeApi](capi-hukstypeapi.md)
+**相关模块：** [HuksTypeApi](capi-others-hukstypeapi.md)
 
 **所在头文件：** [native_huks_type.h](capi-native-huks-type-h.md)
 
@@ -22,7 +22,7 @@ struct OH_Huks_KeyInfo {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| struct OH_Huks_Blob alias | 密钥认证时的别名。 |
+| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) alias | 密钥认证时的别名。 |
 | struct OH_Huks_ParamSet *paramSet | 指向密钥参数集的指针。 |
 
 

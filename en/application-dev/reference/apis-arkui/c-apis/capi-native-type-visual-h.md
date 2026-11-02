@@ -10,7 +10,7 @@ Defines the visual types for the native module.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -2530,7 +2530,7 @@ Creates a linear gradient blur options object.
 
 **Since**: 26.1.0
 
-**Resource release**: OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy {return}
+**Resource release**: [OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy](#oh_arkui_nativemodule_lineargradientbluroptions_destroy)
 
 **Returns**:
 

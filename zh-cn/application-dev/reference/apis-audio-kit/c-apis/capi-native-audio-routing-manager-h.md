@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -42,15 +42,6 @@
 | [typedef void (\*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData)](#oh_audioroutingmanager_ondeviceblockstatuscallback) | OH_AudioRoutingManager_OnDeviceBlockStatusCallback | 音频设备堵塞状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_SetMicBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_setmicblockstatuscallback)接口。 |
 | [OH_AudioCommon_Result OH_AudioRoutingManager_IsMicBlockDetectionSupported(OH_AudioRoutingManager *audioRoutingManager, bool *supported)](#oh_audioroutingmanager_ismicblockdetectionsupported) | - | 查询当前设备是否支持麦克风堵塞状态检测。 |
 | [OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnDeviceBlockStatusCallback callback, void *userData)](#oh_audioroutingmanager_setmicblockstatuscallback) | - | 设置麦克风是否堵塞状态回调。 <br>当应用正在使用麦克风录音，此场景下麦克风堵塞状态发生变化，系统才会触发此回调。 <br>在使用此功能之前，应通过[OH_AudioRoutingManager_IsMicBlockDetectionSupported](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ismicblockdetectionsupported)查询当前设备是否支持检测。 <br>目前此检测功能仅支持本地设备的内置麦克风。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback) ( OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray ) | 音频设备在线状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_RegisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerdevicechangecallback)和 [OH_AudioRoutingManager_UnregisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterdevicechangecallback)接口。 <br>可能存在多个音频设备同时发生状态变化。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | 首选输出设备变化回调函数的原型定义， 用于[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback)和 [OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback)接口。 <br>首选设备可以是多个音频输出设备。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | 首选输入设备变化回调函数的原型定义， 用于[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback)和 [OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback)接口。 <br>首选设备可以是多个音频输入设备。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData) | 音频设备堵塞状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_SetMicBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_setmicblockstatuscallback)接口。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## 函数说明
 

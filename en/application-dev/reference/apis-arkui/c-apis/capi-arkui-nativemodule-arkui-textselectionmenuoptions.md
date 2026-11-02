@@ -12,7 +12,7 @@ Defines the options of a custom text selection menu, supporting custom configura
 
 **Since**: 22
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text_common.h](capi-text-common-h.md)
 

@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -70,9 +70,9 @@ enum ArkUI_DatePickerMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DATEPICKER_MODE_DATE = 0 |  |
-| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 |  |
-| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 |  |
+| ARKUI_DATEPICKER_MODE_DATE = 0 | 默认值。日期列显示年、月、日三列，适用于需要完整日期信息的场景，如出生日期选择、预约日期选择等。<br>**起始版本：** 18 |
+| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 | 日期列显示年、月二列，适用于只需年月信息的场景，如信用卡有效期选择、合同期限选择等。<br>**起始版本：** 18 |
+| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 | 日期列显示月、日二列，适用于只需月日信息的场景，如生日选择（不关注年份）、纪念日选择等。<br>**起始版本：** 18 |
 
 ### ArkUI_TextPickerRangeType
 
@@ -90,10 +90,10 @@ enum ArkUI_TextPickerRangeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 |  |
-| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 |  |
-| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 |  |
-| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 |  |
+| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | 单列数据选择器，适用于单列数据选择场景，如性别选择、学历选择等。<br>**起始版本：** 12 |
+| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | 多列数据选择器，适用于多列独立数据选择场景，如时间选择（时、分、秒）、日期选择（年、月、日）等。<br>**起始版本：** 12 |
+| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | 支持图片资源的单列数据选择器，适用于带图标的单列数据选择场景，如城市选择（带国旗图标）、产品分类选择等。<br>**起始版本：** 12 |
+| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | 支持联动的多列数据选择器，适用于多列联动数据选择场景，如省市区三级联动选择、年月日联动选择等。<br>**起始版本：** 12 |
 
 ### ArkUI_CalendarAlignment
 
@@ -111,9 +111,9 @@ enum ArkUI_CalendarAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CALENDAR_ALIGNMENT_START = 0 |  |
-| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 |  |
-| ARKUI_CALENDAR_ALIGNMENT_END = 2 |  |
+| ARKUI_CALENDAR_ALIGNMENT_START = 0 | 设置选择器与入口组件的对齐方式为左对齐。<br>**起始版本：** 12 |
+| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | 设置选择器与入口组件的对齐方式为居中对齐。<br>**起始版本：** 12 |
+| ARKUI_CALENDAR_ALIGNMENT_END = 2 | 设置选择器与入口组件的对齐方式为右对齐。<br>**起始版本：** 12 |
 
 ### ArkUI_PickerIndicatorType
 
@@ -131,8 +131,8 @@ enum ArkUI_PickerIndicatorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_PICKER_INDICATOR_BACKGROUND = 0 |  |
-| ARKUI_PICKER_INDICATOR_DIVIDER = 1 |  |
+| ARKUI_PICKER_INDICATOR_BACKGROUND = 0 | 背景样式，适用于需要突出选中项的场景，如深色主题选择器、需要强调选中项的表单选择等。<br>**起始版本：** 23 |
+| ARKUI_PICKER_INDICATOR_DIVIDER = 1 | 分割线样式，适用于需要简洁风格的场景，如轻量级选择器、分割线风格UI设计等。<br>**起始版本：** 23 |
 
 
 ## 函数说明
@@ -151,7 +151,7 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 
 **起始版本：** 19
 
-**资源释放：** OH_ArkUI_TextPickerRangeContentArray_Destroy {return}
+**资源释放：** [OH_ArkUI_TextPickerRangeContentArray_Destroy](#oh_arkui_textpickerrangecontentarray_destroy)
 
 **参数：**
 
@@ -243,7 +243,7 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 
 **起始版本：** 19
 
-**资源释放：** OH_ArkUI_TextCascadePickerRangeContentArray_Destroy {return}
+**资源释放：** [OH_ArkUI_TextCascadePickerRangeContentArray_Destroy](#oh_arkui_textcascadepickerrangecontentarray_destroy)
 
 **参数：**
 

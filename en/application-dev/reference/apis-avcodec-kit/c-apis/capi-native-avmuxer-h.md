@@ -4,7 +4,7 @@
 
 The file declares the native APIs used for audio and video multiplexing.
 
-**Include**: <multimedia/player_framework/native_avmuxer.h>
+**File to Include**: <multimedia/player_framework/native_avmuxer.h>
 
 **Library**: libnative_media_avmuxer.so
 
@@ -12,7 +12,7 @@ The file declares the native APIs used for audio and video multiplexing.
 
 **Since**: 10
 
-**Related module**: [AVMuxer](capi-avmuxer.md)
+**Related module**: [AVMuxer](capi-avcodec-kit-avmuxer.md)
 
 ## Summary
 

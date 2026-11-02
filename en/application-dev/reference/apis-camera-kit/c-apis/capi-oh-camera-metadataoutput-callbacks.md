@@ -12,7 +12,7 @@ The struct describes the callbacks related to metadata output.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [metadata_output.h](capi-metadata-output-h.md)
 

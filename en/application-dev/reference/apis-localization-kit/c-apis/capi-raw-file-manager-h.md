@@ -10,7 +10,7 @@ This module allows you to create and release `NativeResourceManager` objects, an
 
 **Since**: 8
 
-**Related module**: [rawfile](capi-rawfile.md)
+**Related module**: [rawfile](capi-localization-kit-rawfile.md)
 
 ## Summary
 

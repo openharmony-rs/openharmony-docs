@@ -10,7 +10,7 @@ This file declares the functions related to the typeface in the drawing module. 
 
 **Since**: 11
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 

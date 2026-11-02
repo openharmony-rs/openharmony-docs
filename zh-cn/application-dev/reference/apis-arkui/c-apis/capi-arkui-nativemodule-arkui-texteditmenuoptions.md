@@ -12,7 +12,7 @@ typedef struct ArkUI_TextEditMenuOptions ArkUI_TextEditMenuOptions
 
 **起始版本：** 22
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [text_common.h](capi-text-common-h.md)
 

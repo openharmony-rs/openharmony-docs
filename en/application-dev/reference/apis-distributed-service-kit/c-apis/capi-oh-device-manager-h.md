@@ -4,7 +4,7 @@
 
 Provides APIs to obtain information about trusted devices and local devices.
 
-**Include**: <distributedhardware/device_manager/oh_device_manager.h>
+**File to Include**: <distributedhardware/device_manager/oh_device_manager.h>
 
 **Library**: libdevicemanager_ndk.so
 
@@ -12,7 +12,7 @@ Provides APIs to obtain information about trusted devices and local devices.
 
 **Since**: 20
 
-**Related module**: [DeviceManager](capi-devicemanager.md)
+**Related module**: [DeviceManager](capi-distributed-service-kit-devicemanager.md)
 
 ## Summary
 

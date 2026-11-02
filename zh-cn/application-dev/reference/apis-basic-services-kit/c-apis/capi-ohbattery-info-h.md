@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [OH_BatteryInfo](capi-oh-batteryinfo.md)
+**相关模块：** [OH_BatteryInfo](capi-basic-services-kit-oh-batteryinfo.md)
 
 ## 汇总
 
@@ -53,11 +53,11 @@ enum BatteryInfo_BatteryPluggedType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PLUGGED_TYPE_NONE |  |
-| PLUGGED_TYPE_AC |  |
-| PLUGGED_TYPE_USB |  |
-| PLUGGED_TYPE_WIRELESS |  |
-| PLUGGED_TYPE_BUTT |  |
+| PLUGGED_TYPE_NONE | 电源已拔下。<br>**起始版本：** 13 |
+| PLUGGED_TYPE_AC | 电源是交流充电。<br>**起始版本：** 13 |
+| PLUGGED_TYPE_USB | 电源是USB充电。<br>**起始版本：** 13 |
+| PLUGGED_TYPE_WIRELESS | 电源是无线充电。<br>**起始版本：** 13 |
+| PLUGGED_TYPE_BUTT | 未知类型。<br>**起始版本：** 13 |
 
 
 ## 函数说明

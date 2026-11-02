@@ -12,7 +12,7 @@ struct OH_UsbManager_UsbEndpoint {...}
 
 **起始版本：** 26.0.1
 
-**相关模块：** [UsbManager](capi-usbmanager.md)
+**相关模块：** [UsbManager](capi-others-usbmanager.md)
 
 **所在头文件：** [ohusb_manager.h](capi-ohusb-manager-h.md)
 

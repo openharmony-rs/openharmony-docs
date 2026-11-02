@@ -4,13 +4,15 @@
 
 Defines enumerations related to **TextInput**, which supports multiple input type configurations (including text, numbers, passwords, emails, and phone numbers),  style customization of the clear button, auto-filling content type settings, and input box style selection. It is applicable to scenarios requiring user interaction input, such as login and registration, form filling, and search input, helping you quickly implement single-line text input that meets service requirements.
 
+**File to Include**: <arkui/text_input.h>
+
 **Library**: libace_ndk.z.so
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -41,17 +43,17 @@ Enumerates the input types of single-line text.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXTINPUT_TYPE_NORMAL = 0 | Normal input mode. |
-| ARKUI_TEXTINPUT_TYPE_NUMBER = 2 | Number input mode. |
-| ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3 | Phone number input mode. |
-| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | Email address input mode. |
-| ARKUI_TEXTINPUT_TYPE_PASSWORD = 7 | Password input mode. |
-| ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8 | Numeric password input mode. |
-| ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input mode. |
-| ARKUI_TEXTINPUT_TYPE_USER_NAME = 10 | Username input mode. |
-| ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11 | New password input mode. |
-| ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12 | Number input mode with a decimal point. |
-| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 |  |
+| ARKUI_TEXTINPUT_TYPE_NORMAL = 0 | Normal input type with no special restrictions. |
+| ARKUI_TEXTINPUT_TYPE_NUMBER = 2 | Numeric input type. |
+| ARKUI_TEXTINPUT_TYPE_PHONE_NUMBER = 3 | Phone number input type.<br>It supports input of digits, spaces, +, -, *, #, (, ), with no length limit. |
+| ARKUI_TEXTINPUT_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, decimal points, !, #, $, %, &, ', *, +, -, /, =, ?, ^, `, \{, \\|, \}, ~, and @ (only one @ character allowed). The email address format must follow the basic specification: the part before the @ character is the username, and the part after the @ character is the domain name. |
+| ARKUI_TEXTINPUT_TYPE_PASSWORD = 7 | Password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
+| ARKUI_TEXTINPUT_TYPE_NUMBER_PASSWORD = 8 | Numeric password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
+| ARKUI_TEXTINPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input type.<br>It supports input of digits, letters, underscores, spaces, and special characters. The eye icon is shown at the end of the input box and the input text changes to dots by default. Since API version 12, on wearables, the input text is directly displayed as dots. The password input type does not support the underline style. |
+| ARKUI_TEXTINPUT_TYPE_USER_NAME = 10 | Username input type with no special restrictions.<br>When Password Vault is enabled, usernames can be auto-saved and auto-filled. |
+| ARKUI_TEXTINPUT_TYPE_NEW_PASSWORD = 11 | New password input type.<br>By default, the input text is briefly displayed and then changed to dots. Since API version 12, on PCs/2-in-1 devices, the input text is directly displayed as dots.<br>On TV devices, the eye icon is hidden by default at the end of the input box. On other devices, the eye icon is shown by default at the end of the input box. |
+| ARKUI_TEXTINPUT_TYPE_NUMBER_DECIMAL = 12 | Number input type with a decimal point.<br>It supports digits and a decimal point (only one decimal point allowed), and does not support negative numbers (including negative integers and negative decimals). |
+| ARKUI_TEXTINPUT_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions. In this type, the system input method is shown by default when the component gains focus.<br>**Since**: 20 |
 
 ### ArkUI_CancelButtonStyle
 
@@ -110,18 +112,18 @@ Enumerates autofill types.
 | ARKUI_TEXTINPUT_CONTENT_TYPE_NICKNAME | Nickname. The scenario-based autofill feature, when enabled, can automatically save and fill in nicknames. |
 | ARKUI_TEXTINPUT_CONTENT_TYPE_DETAIL_INFO_WITHOUT_STREET | Address information without street address. The scenario-based autofill feature, when enabled, can automatically save and fill in address information without street addresses. |
 | ARKUI_TEXTINPUT_CONTENT_TYPE_FORMAT_ADDRESS | Standard address. The scenario-based autofill feature, when enabled, can automatically save and fill in standard addresses. |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_PASSPORT_NUMBER |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_VALIDITY |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ISSUE_AT |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ORGANIZATION |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_TAX_ID |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ADDRESS_CITY_AND_STATE |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_FLIGHT_NUMBER |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_NUMBER |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER |  |
-| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER | License chassis number. The scenario-based autofill feature, when enabled, can automatically save and fill in license chassis numbers. @since 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_PASSPORT_NUMBER | Passport number. The scenario-based autofill feature, when enabled, can automatically save and fill in passport numbers.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_VALIDITY | Passport validity period. The scenario-based autofill feature, when enabled, can automatically save and fill in passport validity periods.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ISSUE_AT | Passport place of issue. The scenario-based autofill feature, when enabled, can automatically save and fill in the place of issue for passports.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ORGANIZATION | Invoice title. The scenario-based autofill feature, when enabled, can automatically save and fill in invoice titles.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_TAX_ID | Tax ID. The scenario-based autofill feature, when enabled, can automatically save and fill in tax IDs.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ADDRESS_CITY_AND_STATE | Location. The scenario-based autofill feature, when enabled, can automatically save and fill in locations.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_FLIGHT_NUMBER | Flight number. Currently not supported for automatic saving and auto-filling.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_NUMBER | Driver's license number. Currently not supported for automatic saving and auto-filling.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_FILE_NUMBER | Driver's license file number. Currently not supported for automatic saving and auto-filling.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_PLATE | License plate number. The scenario-based autofill feature, when enabled, can automatically save and fill in license plate numbers.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_ENGINE_NUMBER | Vehicle registration engine number. Currently not supported for automatic saving and auto-filling.<br>**Since**: 18 |
+| ARKUI_TEXTINPUT_CONTENT_TYPE_LICENSE_CHASSIS_NUMBER | Chassis number. Auto-save and auto-fill are not yet supported.<br>**Since**: 18 |
 
 ### ArkUI_TextInputStyle
 

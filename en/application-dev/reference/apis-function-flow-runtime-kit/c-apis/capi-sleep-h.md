@@ -10,7 +10,7 @@ Declares the [ffrt_usleep](capi-sleep-h.md#ffrt_usleep) and [ffrt_yield](capi-sl
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## Summary
 

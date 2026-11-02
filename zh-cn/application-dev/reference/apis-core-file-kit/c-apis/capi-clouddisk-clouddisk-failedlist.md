@@ -12,7 +12,7 @@ struct CloudDisk_FailedList {...}
 
 **起始版本：** 21
 
-**相关模块：** [CloudDisk](capi-clouddisk.md)
+**相关模块：** [CloudDisk](capi-others-clouddisk.md)
 
 **所在头文件：** [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

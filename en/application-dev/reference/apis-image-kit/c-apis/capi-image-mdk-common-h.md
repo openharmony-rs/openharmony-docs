@@ -10,7 +10,7 @@ Declares the common enums and structs used by the image interface.
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-image-kit-image.md)
 
 ## Summary
 

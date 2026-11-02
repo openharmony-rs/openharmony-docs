@@ -12,7 +12,7 @@ Compile Options
 
 **Since**: 12
 
-**Related module**: [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-others-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
@@ -22,8 +22,9 @@ Compile Options
 
 | Name | Description |
 | -- | -- |
-| JSVM_CompileOptionId id | compile option id. |
-| content->ptr | ptr type. |
+| [JSVM_CompileOptionId](capi-jsvm-types-h.md#jsvm_compileoptionid) id | compile option id. |
+| content | option content. |
+| content.ptr | ptr type. |
 | content.num | int type. |
 | content.boolean | bool type. |
 

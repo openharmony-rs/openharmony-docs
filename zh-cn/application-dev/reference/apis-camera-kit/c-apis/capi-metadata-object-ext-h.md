@@ -10,7 +10,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## 汇总
 

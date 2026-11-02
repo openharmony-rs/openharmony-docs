@@ -10,7 +10,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -27,12 +27,6 @@
 | [OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManager *manager, OH_AudioAccessory *accessory)](#oh_audioaccessorymanager_connected) | - | 将音频配件连接到音频系统。<br> 调用此函数前，必须通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)获取的音频配件管理器实例， 并通过[OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建accessory实例。<br> <b>建议：</b>建议音频配件管理程序优先接入智慧生活应用，为用户提供设备发现与连接体验的一致性； 若以独立音频配件管理应用方式，需要申请ACL权限ohos.permission.MANAGE_AUDIO_ACCESSORY |
 | [OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryManager *manager, OH_AudioAccessory *accessory)](#oh_audioaccessorymanager_disconnected) | - | 将音频配件从音频系统断开连接。 |
 | [OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager *manager, OH_AudioAccessory *accessory)](#oh_audioaccessorymanager_destroy) | - | 销毁音频配件实例。<br> 销毁前必须先断开配件连接。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| bool (*OH_AudioAccessory_SetNoiseReductionCallback)( OH_AudioAccessory *accessory, OH_AudioNoiseReductionMode mode) | 音频配件降噪模式变更回调函数。<br> <b>触发时机：</b>当配件的降噪模式发生变更时触发，此回调可以在配件连接后的任意时间触发。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## 函数说明
 
@@ -129,7 +123,11 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 
 **描述：**
 
-设置与主音频配件组合使用的副配件MAC地址列表。<br> 此函数适用于多配件组合场景（如二合一、四合一），支持动态管理配件组合： - 初始化：配件创建后，调用此接口设置初始副配件列表。 - 动态更新：副配件替换或断开连接时，调用此接口覆盖旧的MAC列表 - 线程安全：录音期间可安全调用。 - 限制：此接口仅用于更新副配件MAC地址列表，不用于更新主配件MAC地址。 主配件断开连接或主配件MAC地址变化时，应先断开并销毁原有配件句柄，再使用新的主配件信息重新创建配件实例。
+设置与主音频配件组合使用的副配件MAC地址列表。<br> 此函数适用于多配件组合场景（如二合一、四合一），支持动态管理配件组合：
+- 初始化：配件创建后，调用此接口设置初始副配件列表。
+- 动态更新：副配件替换或断开连接时，调用此接口覆盖旧的MAC列表
+- 线程安全：录音期间可安全调用。
+- 限制：此接口仅用于更新副配件MAC地址列表，不用于更新主配件MAC地址。 主配件断开连接或主配件MAC地址变化时，应先断开并销毁原有配件句柄，再使用新的主配件信息重新创建配件实例。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

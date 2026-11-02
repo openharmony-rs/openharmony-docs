@@ -4,7 +4,7 @@
 
 Declare the Native API used for basic audio encoding and decoding functions, as well as audio-specific configurations and parameters.
 
-**Include**: <multimedia/player_framework/native_avcodec_audiobase.h>
+**File to Include**: <multimedia/player_framework/native_avcodec_audiobase.h>
 
 **Library**: libnative_media_codecbase.so
 
@@ -12,7 +12,7 @@ Declare the Native API used for basic audio encoding and decoding functions, as 
 
 **Since**: 26.1.0
 
-**Related module**: [CodecBase](capi-codecbase.md)
+**Related module**: [CodecBase](capi-avcodec-kit-codecbase.md)
 
 ## Summary
 

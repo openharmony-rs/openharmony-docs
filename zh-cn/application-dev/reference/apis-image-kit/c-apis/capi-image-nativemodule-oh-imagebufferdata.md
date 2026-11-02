@@ -12,7 +12,7 @@ OH_ImageBufferData是native层封装的图像数据结构体。获取OH_ImageNat
 
 **起始版本：** 23
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [image_native.h](capi-image-native-h.md)
 

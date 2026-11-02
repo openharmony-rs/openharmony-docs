@@ -8,8 +8,8 @@
 
 | Name | Description |
 | -- | -- |
-| struct strbuf ctlbuf |  |
-| struct strbuf databuf |  |
+| [struct strbuf](capi--strbuf.md) ctlbuf |  |
+| [struct strbuf](capi--strbuf.md) databuf |  |
 | unsigned flags |  |
 
 

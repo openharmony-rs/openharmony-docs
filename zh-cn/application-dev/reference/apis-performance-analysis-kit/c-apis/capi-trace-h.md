@@ -10,7 +10,7 @@ HiTraceMeter和HiTraceChain模块接口定义，通过这些接口实现性能�
 
 **起始版本：** 10
 
-**相关模块：** [HiTrace](capi-hitrace.md)
+**相关模块：** [HiTrace](capi-performance-analysis-kit-hitrace.md)
 
 ## 汇总
 
@@ -70,12 +70,6 @@ HiTraceMeter和HiTraceChain模块接口定义，通过这些接口实现性能�
 | [bool OH_HiTrace_IsTraceEnabled(void)](#oh_hitrace_istraceenabled) | - | 判断当前是否开启应用trace捕获。 |
 | [int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback)](#oh_hitrace_registertracelistener) | - | 注册应用trace捕获开关通知回调，使用callback异步回调。 注册成功后，立即执行一次回调函数，后续回调函数由应用trace捕获开关状态变化触发执行。回调函数保存在应用进程内，一个进程最多可以注册10个回调函数。 若注册的回调包含耗时操作，当回调被执行时，注册或注销行为会被阻塞（等待回调执行完成）。因此，建议不要在应用主线程中注册或注销包含耗时操作的回调， 避免发生应用冻屏。 |
 | [int32_t OH_HiTrace_UnregisterTraceListener(int32_t index)](#oh_hitrace_unregistertracelistener) | - | 注销应用trace捕获开关通知回调。 使用[OH_HiTrace_RegisterTraceListener](capi-trace-h.md#oh_hitrace_registertracelistener)返回的回调索引，注销该索引关联的回调函数。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_HiTrace_TraceEventListener)(bool traceStatus) | 定义应用trace捕获开关状态切换时的回调函数类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.HiviewDFX.HiTrace |
 
 ## 枚举类型说明
 

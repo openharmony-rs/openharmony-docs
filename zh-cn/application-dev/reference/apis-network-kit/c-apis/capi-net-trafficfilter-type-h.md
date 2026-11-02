@@ -2,7 +2,7 @@
 
 ## 概述
 
-声明网络流量过滤与重定向功能所需的通用类型和错误码。该头文件定义了流量过滤与重定向功能中使用的IP地址、端口、接口等匹配条件结构体，报文过滤规则、重定向规则等配置结构体，以及操作返回的错误码。 <br>适用于调用OH_TrafficFilter_CreateRedirector等接口时构造参数和解析返回值。
+声明网络流量过滤与重定向功能所需的通用类型和错误码。该头文件定义了流量过滤与重定向功能中使用的IP地址、端口、接口等匹配条件结构体，报文过滤规则、重定向规则等配置结构体，以及操作返回的错误码。 <br>适用于调用[OH_TrafficFilter_CreateRedirector](capi-net-trafficfilter-h.md#oh_trafficfilter_createredirector)等接口时构造参数和解析返回值。
 
 **库：** libnet_trafficfilter.so
 
@@ -10,7 +10,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [TrafficFilter](capi-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 ## 汇总
 
@@ -27,9 +27,9 @@
 | [OH_TrafficFilter_PortRange](capi-trafficfilter-oh-trafficfilter-portrange.md) | - | 范围匹配的端口匹配值。 |
 | [OH_TrafficFilter_PortMulti](capi-trafficfilter-oh-trafficfilter-portmulti.md) | - | 多端口匹配的端口匹配值。 |
 | [OH_TrafficFilter_PortMatch](capi-trafficfilter-oh-trafficfilter-portmatch.md) | - | 端口匹配条件。 |
-| [OH_TrafficFilter_ConnectionInfo](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) | - | 连接信息结构体。描述一条网络连接的五元组信息（源IP、目的IP、源端口、目的端口、协议类型），用于查询发起该连接的进程信息。<br>初始化规则：调用 OH_TrafficFilter_QueryProcess之前，调用者必须将该结构体清零（例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof( OH_TrafficFilter_ConnectionInfo)。<br>二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。 如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。 |
-| [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md) | - | 进程信息结构体。存储OH_TrafficFilter_QueryProcess返回的进程信息。<br>初始化规则：调用OH_TrafficFilter_QueryProcess之前， 调用者必须将该结构体清零（例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_ProcessInfo)。<br>二进制兼容规则（ABI， 即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些输出字段可以被安全写入。只有被[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)完全覆盖的字段才会被系统写入。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于读取 [size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)字段本身所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。<br> 输出有效性规则：当OH_TrafficFilter_QueryProcess返回[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)时，被[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)覆盖的字段包含有效的输出值。当接口返回错误时， 调用者不应依赖[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)以外的输出字段的值。 |
-| [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md) | - | 流量重定向规则。定义TCP流量重定向规则，将匹配的流量重定向到指定的代理服务器。<br>初始化规则：调用OH_TrafficFilter_AddRedirectRule之前，调用者必须将该结构体清零（ 例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_RedirectRule)。<br>二进制兼容规则（ABI，即应用程序二进制接口， 保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小，接口将返回 [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。<br>失败规则：如果 OH_TrafficFilter_AddRedirectRule返回错误，不保证规则已被添加或生效。调用者应在假设规则生效之前检查返回值。 |
+| [OH_TrafficFilter_ConnectionInfo](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) | - | 连接信息结构体。描述一条网络连接的五元组信息（源IP、目的IP、源端口、目的端口、协议类型），用于查询发起该连接的进程信息。<br>初始化规则：调用 [OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)之前，调用者必须将该结构体清零（例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof( OH_TrafficFilter_ConnectionInfo)。<br>二进制兼容规则（ABI，即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。 如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。 |
+| [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md) | - | 进程信息结构体。存储[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)返回的进程信息。<br>初始化规则：调用[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)之前， 调用者必须将该结构体清零（例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_ProcessInfo)。<br>二进制兼容规则（ABI， 即应用程序二进制接口，保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些输出字段可以被安全写入。只有被[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)完全覆盖的字段才会被系统写入。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于读取 [size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)字段本身所需的最小大小，接口将返回[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。<br> 输出有效性规则：当[OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess)返回[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)时，被[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)覆盖的字段包含有效的输出值。当接口返回错误时， 调用者不应依赖[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)以外的输出字段的值。 |
+| [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md) | - | 流量重定向规则。定义TCP流量重定向规则，将匹配的流量重定向到指定的代理服务器。<br>初始化规则：调用[OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)之前，调用者必须将该结构体清零（ 例如使用memset），然后将[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)设置为调用者分配的结构体实际大小，通常为sizeof(OH_TrafficFilter_RedirectRule)。<br>二进制兼容规则（ABI，即应用程序二进制接口， 保证新旧版本编译的代码能互相识别结构体布局）：系统通过[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)来确定哪些字段可以被安全读取。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)小于当前接口所需的最小大小，接口将返回 [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode)。如果[size](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)大于系统已知的大小，多余的字段将被忽略。<br>失败规则：如果 [OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)返回错误，不保证规则已被添加或生效。调用者应在假设规则生效之前检查返回值。 |
 | [OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md) | - | 报文描述符<br> 包含五元组信息和报文数据 |
 | [OH_TrafficFilter_Config](capi-trafficfilter-oh-trafficfilter-config.md) | - | NFQueue配置结构体 - 如果`config`为**NULL**，实现将应用以下默认值： - `packetCopyLen` = 0xFFFF（拷贝整个报文） - `nfqueueMaxlen` = 0 （使用系统默认值，即1024） - `nfqueueFlags` = OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN - 如果`config`为**非NULL**，调用者**必须**： 1. 将整个结构体零初始化（例如`memset(&cfg, 0, sizeof(cfg))`）。 2. 设置`size` = `sizeof(OH_TrafficFilter_Config)`。 3. 将所有其他字段设置为定义范围内的有效值（见下文）。 - **未遵守**此约定（例如`size`不正确、字段值超出范围） 将导致接口返回`OH_TRAFFICFILTER_ERROR_INVALID_PARAM`。 |
 | [OH_TrafficFilter_MACMatch](capi-trafficfilter-oh-trafficfilter-macmatch.md) | - | MAC地址匹配条件<br> 基于MAC地址匹配报文 仅支持源MAC地址 |
@@ -76,12 +76,6 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef OH_TrafficFilter_PacketDecision (\*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)](#oh_trafficfilter_packetcallback) | OH_TrafficFilter_PacketCallback | 报文回调函数类型 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)( const OH_TrafficFilter_PacketDesc* packet, void* userData ) | 报文回调函数类型<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Communication.NetManager.NetFirewall |
 
 ## 枚举类型说明
 

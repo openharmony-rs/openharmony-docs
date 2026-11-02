@@ -10,7 +10,7 @@ Defines the error code used in ImageEffect.
 
 **Since**: 12
 
-**Related module**: [ImageEffect](capi-imageeffect.md)
+**Related module**: [ImageEffect](capi-image-kit-imageeffect.md)
 
 ## Summary
 

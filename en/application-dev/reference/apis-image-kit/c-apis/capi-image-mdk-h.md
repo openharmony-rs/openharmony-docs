@@ -10,7 +10,7 @@ Declares functions that access the image rectangle, size, format, and component 
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-image-kit-image.md)
 
 ## Summary
 
@@ -20,7 +20,7 @@ Declares functions that access the image rectangle, size, format, and component 
 | -- | -- | -- |
 | [OhosImageRect](capi-image-ohosimagerect.md) | - | Defines the information about an image rectangle. |
 | [OhosImageComponent](capi-image-ohosimagecomponent.md) | - | Defines the image composition information. |
-| [ImageNative](capi-image-imagenative.md) | ImageNative | Defines an image object at the native layer for the image interface. |
+| [ImageNative_](capi-image-imagenative-.md) | ImageNative | Defines an image object at the native layer for the image interface. |
 
 ### Enum
 
@@ -33,12 +33,12 @@ Declares functions that access the image rectangle, size, format, and component 
 
 | Name | Description |
 | -- | -- |
-| [ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)](#oh_image_initimagenative) | Parses an [ImageNative](capi-image-imagenative.md) object at the native layer from a JavaScript native API <b>image </b> object. |
-| [int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)](#oh_image_cliprect) | Obtains [OhosImageRect](capi-image-ohosimagerect.md) of an [ImageNative](capi-image-imagenative.md) at the native layer. |
-| [int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)](#oh_image_size) | Obtains [OhosImageSize](capi-image-ohosimagesize.md) of an [ImageNative](capi-image-imagenative.md) object at the native layer. |
-| [int32_t OH_Image_Format(const ImageNative* native, int32_t* format)](#oh_image_format) | Obtains the image format of an [ImageNative](capi-image-imagenative.md) object at the native layer. |
-| [int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, struct OhosImageComponent* componentNative)](#oh_image_getcomponent) | Obtains [OhosImageComponent](capi-image-ohosimagecomponent.md) of an [ImageNative](capi-image-imagenative.md) object at the native layer. |
-| [int32_t OH_Image_Release(ImageNative* native)](#oh_image_release) | Releases an [ImageNative](capi-image-imagenative.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>Image</b> object. It is used to release the object [ImageNative](capi-image-imagenative.md) at the native layer parsed by calling [OH_Image_InitImageNative](capi-image-mdk-h.md#oh_image_initimagenative). |
+| [ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)](#oh_image_initimagenative) | Parses an [ImageNative](capi-image-imagenative-.md) object at the native layer from a JavaScript native API <b>image </b> object. |
+| [int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)](#oh_image_cliprect) | Obtains [OhosImageRect](capi-image-ohosimagerect.md) of an [ImageNative](capi-image-imagenative-.md) at the native layer. |
+| [int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)](#oh_image_size) | Obtains [OhosImageSize](capi-image-ohosimagesize.md) of an [ImageNative](capi-image-imagenative-.md) object at the native layer. |
+| [int32_t OH_Image_Format(const ImageNative* native, int32_t* format)](#oh_image_format) | Obtains the image format of an [ImageNative](capi-image-imagenative-.md) object at the native layer. |
+| [int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, struct OhosImageComponent* componentNative)](#oh_image_getcomponent) | Obtains [OhosImageComponent](capi-image-ohosimagecomponent.md) of an [ImageNative](capi-image-imagenative-.md) object at the native layer. |
+| [int32_t OH_Image_Release(ImageNative* native)](#oh_image_release) | Releases an [ImageNative](capi-image-imagenative-.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>Image</b> object. It is used to release the object [ImageNative](capi-image-imagenative-.md) at the native layer parsed by calling [OH_Image_InitImageNative](capi-image-mdk-h.md#oh_image_initimagenative). |
 
 ## Enum type description
 
@@ -93,7 +93,7 @@ ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 
 **Description**
 
-Parses an [ImageNative](capi-image-imagenative.md) object at the native layer from a JavaScript native API <b>image </b> object.
+Parses an [ImageNative](capi-image-imagenative-.md) object at the native layer from a JavaScript native API <b>image </b> object.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -110,7 +110,7 @@ Parses an [ImageNative](capi-image-imagenative.md) object at the native layer fr
 
 | Type | Description |
 | -- | -- |
-| [ImageNative*](capi-image-imagenative.md) | Returns an [ImageNative](capi-image-imagenative.md) pointer object if the operation is successful returns a null pointer otherwise. |
+| [ImageNative*](capi-image-imagenative-.md) | Returns an [ImageNative](capi-image-imagenative-.md) pointer object if the operation is successful returns a null pointer otherwise. |
 
 **Reference**:
 
@@ -125,7 +125,7 @@ int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 
 **Description**
 
-Obtains [OhosImageRect](capi-image-ohosimagerect.md) of an [ImageNative](capi-image-imagenative.md) at the native layer.
+Obtains [OhosImageRect](capi-image-ohosimagerect.md) of an [ImageNative](capi-image-imagenative-.md) at the native layer.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -135,7 +135,7 @@ Obtains [OhosImageRect](capi-image-ohosimagerect.md) of an [ImageNative](capi-im
 
 | Parameter | Description |
 | -- | -- |
-| [const ImageNative](capi-image-imagenative.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative.md) object at the native layer. |
+| [const ImageNative](capi-image-imagenative-.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative-.md) object at the native layer. |
 | [struct OhosImageRect](capi-image-ohosimagerect.md)* rect | Indicates the pointer to the [OhosImageRect](capi-image-ohosimagerect.md) object obtained. |
 
 **Returns**:
@@ -157,7 +157,7 @@ int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)
 
 **Description**
 
-Obtains [OhosImageSize](capi-image-ohosimagesize.md) of an [ImageNative](capi-image-imagenative.md) object at the native layer.
+Obtains [OhosImageSize](capi-image-ohosimagesize.md) of an [ImageNative](capi-image-imagenative-.md) object at the native layer.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -167,7 +167,7 @@ Obtains [OhosImageSize](capi-image-ohosimagesize.md) of an [ImageNative](capi-im
 
 | Parameter | Description |
 | -- | -- |
-| [const ImageNative](capi-image-imagenative.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative.md) object at the native layer. |
+| [const ImageNative](capi-image-imagenative-.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative-.md) object at the native layer. |
 | [struct OhosImageSize](capi-image-ohosimagesize.md)* size | Indicates the pointer to the [OhosImageSize](capi-image-ohosimagesize.md) object obtained. |
 
 **Returns**:
@@ -189,7 +189,7 @@ int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 
 **Description**
 
-Obtains the image format of an [ImageNative](capi-image-imagenative.md) object at the native layer.
+Obtains the image format of an [ImageNative](capi-image-imagenative-.md) object at the native layer.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -199,7 +199,7 @@ Obtains the image format of an [ImageNative](capi-image-imagenative.md) object a
 
 | Parameter | Description |
 | -- | -- |
-| [const ImageNative](capi-image-imagenative.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative.md) object at the native layer. |
+| [const ImageNative](capi-image-imagenative-.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative-.md) object at the native layer. |
 | int32_t* format | Indicates the pointer to the image format obtained. |
 
 **Returns**:
@@ -210,7 +210,7 @@ Obtains the image format of an [ImageNative](capi-image-imagenative.md) object a
 
 **Reference**:
 
-[ImageNative](capi-image-imagenative.md)
+[ImageNative](capi-image-imagenative-.md)
 
 
 ### OH_Image_GetComponent()
@@ -221,7 +221,7 @@ int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, 
 
 **Description**
 
-Obtains [OhosImageComponent](capi-image-ohosimagecomponent.md) of an [ImageNative](capi-image-imagenative.md) object at the native layer.
+Obtains [OhosImageComponent](capi-image-ohosimagecomponent.md) of an [ImageNative](capi-image-imagenative-.md) object at the native layer.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -231,7 +231,7 @@ Obtains [OhosImageComponent](capi-image-ohosimagecomponent.md) of an [ImageNativ
 
 | Parameter | Description |
 | -- | -- |
-| [const ImageNative](capi-image-imagenative.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative.md) object at the native layer. |
+| [const ImageNative](capi-image-imagenative-.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative-.md) object at the native layer. |
 | int32_t componentType | Indicates the type of the required component. |
 | [struct OhosImageComponent](capi-image-ohosimagecomponent.md)* componentNative | Indicates the pointer to the [OhosImageComponent](capi-image-ohosimagecomponent.md) object obtained. |
 
@@ -254,7 +254,7 @@ int32_t OH_Image_Release(ImageNative* native)
 
 **Description**
 
-Releases an [ImageNative](capi-image-imagenative.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>Image</b> object. It is used to release the object [ImageNative](capi-image-imagenative.md) at the native layer parsed by calling [OH_Image_InitImageNative](capi-image-mdk-h.md#oh_image_initimagenative).
+Releases an [ImageNative](capi-image-imagenative-.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>Image</b> object. It is used to release the object [ImageNative](capi-image-imagenative-.md) at the native layer parsed by calling [OH_Image_InitImageNative](capi-image-mdk-h.md#oh_image_initimagenative).
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -264,7 +264,7 @@ Releases an [ImageNative](capi-image-imagenative.md) object at the native layer.
 
 | Parameter | Description |
 | -- | -- |
-| [ImageNative](capi-image-imagenative.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative.md) object at the native layer. |
+| [ImageNative](capi-image-imagenative-.md)* native | Indicates the pointer to an [ImageNative](capi-image-imagenative-.md) object at the native layer. |
 
 **Returns**:
 

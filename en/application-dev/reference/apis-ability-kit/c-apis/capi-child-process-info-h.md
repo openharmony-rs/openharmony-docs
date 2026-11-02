@@ -10,7 +10,7 @@ Defines the child process info type and accessor functions.
 
 **Since**: 26.0.1
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 
@@ -18,8 +18,8 @@ Defines the child process info type and accessor functions.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [*OH_AbilityRuntime_ChildProcessInfosHandle](capi-abilityruntime-8hoh-abilityruntime-childprocessinfoshandle.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfos. |
-| [*OH_AbilityRuntime_ChildProcessInfoHandle](capi-abilityruntime-8hoh-abilityruntime-childprocessinfohandle.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfo. |
+| [OH_AbilityRuntime_ChildProcessInfos](capi-abilityruntime-oh-abilityruntime-childprocessinfos.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfos. |
+| [OH_AbilityRuntime_ChildProcessInfo](capi-abilityruntime-oh-abilityruntime-childprocessinfo.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfo. |
 
 ### Function
 

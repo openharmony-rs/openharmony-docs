@@ -13,10 +13,13 @@
 | uint32_t arch |  |
 | uint64_t instruction_pointer |  |
 | uint64_t stack_pointer |  |
+| entry |  |
 | entry.nr |  |
 | entry.args |  |
+| exit |  |
 | exit.rval |  |
 | exit.is_error |  |
+| seccomp |  |
 | seccomp.nr |  |
 | seccomp.args |  |
 | seccomp.ret_data |  |

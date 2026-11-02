@@ -12,7 +12,7 @@ The struct describes a user-defined data source.
 
 **Since**: 12
 
-**Related module**: [CodecBase](capi-codecbase.md)
+**Related module**: [CodecBase](capi-others-codecbase.md)
 
 **Header file**: [native_avcodec_base.h](capi-native-avcodec-base-h.md)
 
@@ -22,7 +22,7 @@ The struct describes a user-defined data source.
 
 | Name | Description |
 | -- | -- |
-| int64_t size |  |
-| [OH_AVDataSourceReadAt](capi-native-avcodec-base-h.md#oh_avdatasourcereadat) readAt |  |
+| int64_t size | Size of the data source.<br>**Since**: 12 |
+| [OH_AVDataSourceReadAt](capi-native-avcodec-base-h.md#oh_avdatasourcereadat) readAt | Callback of the data source.<br>**Since**: 12 |
 
 

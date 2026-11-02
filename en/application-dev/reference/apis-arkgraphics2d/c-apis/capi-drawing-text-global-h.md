@@ -10,7 +10,7 @@ Provides APIs for global text information, such as setting the text rendering hi
 
 **Since**: 20
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 

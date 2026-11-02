@@ -2,3 +2,13 @@
 
 ## Overview
 
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| HMODULE handle |  |
+| char* errmsg |  |
+
+

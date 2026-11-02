@@ -14,7 +14,7 @@ move to vk_ohos_native_buffer.h
 
 **Deprecated**: 23
 
-**Related module**: [Vulkan](capi-vulkan.md)
+**Related module**: [Vulkan](capi-others-vulkan.md)
 
 **Header file**: [vulkan_ohos.h](capi-vulkan-ohos-h.md)
 

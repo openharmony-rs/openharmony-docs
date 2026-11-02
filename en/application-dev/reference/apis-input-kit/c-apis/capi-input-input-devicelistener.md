@@ -12,7 +12,7 @@ Defines the struct for listening for device hot swapping. It is applicable to ap
 
 **Since**: 13
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-others-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

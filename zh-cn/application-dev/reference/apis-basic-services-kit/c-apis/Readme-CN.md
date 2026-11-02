@@ -1,16 +1,16 @@
 # C API<!--c-basicserviceskit-->
 
 - 模块<!--basicserviceskit-module-->
-    - [Pasteboard](capi-pasteboard.md)
-    - [SyscapNdk](capi-syscapndk.md)
-    - [DeviceInfo](capi-deviceinfo.md)
-    - [OsAccount](capi-osaccount.md)
-    - [OH_Scan](capi-oh-scan.md)
-    - [TimeService](capi-timeservice.md)
-    - [UsbManager](capi-usbmanager.md)
-    - [OH_BatteryInfo](capi-oh-batteryinfo.md)
-    - [Print](capi-print.md)
-    - [OH_CommonEvent](capi-oh-commonevent.md)
+    - [Pasteboard](capi-basic-services-kit-pasteboard.md)
+    - [SyscapNdk](capi-basic-services-kit-syscapndk.md)
+    - [DeviceInfo](capi-basic-services-kit-deviceinfo.md)
+    - [OsAccount](capi-basic-services-kit-osaccount.md)
+    - [OH_Scan](capi-basic-services-kit-oh-scan.md)
+    - [TimeService](capi-basic-services-kit-timeservice.md)
+    - [UsbManager](capi-basic-services-kit-usbmanager.md)
+    - [OH_BatteryInfo](capi-basic-services-kit-oh-batteryinfo.md)
+    - [Print](capi-basic-services-kit-print.md)
+    - [OH_CommonEvent](capi-basic-services-kit-oh-commonevent.md)
 - 头文件<!--basicserviceskit-headerfile-->
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
     - [oh_pasteboard.h](capi-oh-pasteboard-h.md)

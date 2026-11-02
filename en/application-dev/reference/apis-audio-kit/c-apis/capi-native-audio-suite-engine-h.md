@@ -10,7 +10,7 @@ Declare audio suite engine related interfaces.<br> This file provides interfaces
 
 **Since**: 22
 
-**Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 ## Summary
 
@@ -64,12 +64,6 @@ Declare audio suite engine related interfaces.<br> This file provides interfaces
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType* type)](#oh_audiosuiteengine_getgeneralvoicechangetype) | - | Get general voice change type of audio node. |
 | [OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)](#oh_audiosuite_printinfo) | - | Print AudioSuite runtime snapshot. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| int32_t (*OH_InputNode_RequestDataCallback)( OH_AudioNode* audioNode, void* userData, void* audioData, int32_t audioDataSize, bool* finished) | Callback function of request data, Only [INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type) support this setting.<br> This function allows the application to write partial data which ranges from 0 to the audioDataSize. The application should fill the data according to the size of audioDataSize. When all the data from the application has been passed to the pipeline through the callback, the application should set finished to true in the last callback. When finished is set to true, the pipeline will no longer call this interface to obtain data from the application. This callback is triggered when the pipeline needs audio data from the input node during rendering process. The callback is triggered repeatedly during [OH_AudioSuiteEngine_RenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe) execution until finished is set to true.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine |
-
 ## Function description
 
 ### OH_AudioSuiteEngine_Create()
@@ -90,7 +84,7 @@ Request to create the audio engine.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md)** audioSuiteEngine | Pointer to a variable to receive audioSuiteEngine. |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)** audioSuiteEngine | Pointer to a variable to receive audioSuiteEngine. |
 
 **Returns**:
 
@@ -116,7 +110,7 @@ Request to destroy the engine.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md)* audioSuiteEngine | Reference created by OH_AudioSuiteEngine_Create. |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | Reference created by OH_AudioSuiteEngine_Create. |
 
 **Returns**:
 
@@ -142,8 +136,8 @@ Request to create the pipeline.<br> The pipeline is the unit within the engine r
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md)* audioSuiteEngine | Reference created by OH_AudioSuiteEngine_Create. |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)** audioSuitePipeline | Pointer to a variable to receive the pipeline. |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | Reference created by OH_AudioSuiteEngine_Create. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)** audioSuitePipeline | Pointer to a variable to receive the pipeline. |
 | [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode) workMode | It indicates whether the pipeline is operating in Edit mode or real-time rendering mode. |
 
 **Returns**:
@@ -170,7 +164,7 @@ Request to destroy the pipeline.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
 
 **Returns**:
 
@@ -196,7 +190,7 @@ Request to start the pipeline.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
 
 **Returns**:
 
@@ -222,7 +216,7 @@ Stop the pipeline and clear the node cache.<br> This function will not alter the
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
 
 **Returns**:
 
@@ -248,7 +242,7 @@ Request to get one pipeline state
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
 | [OH_AudioSuite_PipelineState](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate)* pipelineState | Pipeline state, which will be returned as the output parameter. |
 
 **Returns**:
@@ -275,7 +269,7 @@ The application uses this interface for audio data processing.<br> The applicati
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline |
 | void* audioData | Audio data pointer, where user should read, unit is byte. |
 | int32_t requestFrameSize | Size of audio data user specified, unit is byte. |
 | int32_t* responseSize | Size of audio data the system really writes. |
@@ -305,7 +299,7 @@ The application uses this interface for audio data processing.<br> For most node
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | Audio data array pointer, where user should read, The size of each one-dimensional array should be consistent. |
 | int32_t* responseSize | Size of audio data the system really writes, The system ensures that the data size filled for each one-dimensional array is consistent, unit is byte. |
 | bool* finishedFlag | This flag is used to indicate to the user whether all data processing has been completed. |
@@ -334,7 +328,7 @@ Create an audio node builder which can be used to create an audio node<br> The b
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)** builder | The builder reference to the created result. |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)** builder | The builder reference to the created result. |
 
 **Returns**:
 
@@ -360,7 +354,7 @@ Destroy audio node builder.<br> This function must be called when you are done u
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
 
 **Returns**:
 
@@ -386,7 +380,7 @@ Reset audio node builder.<br> If the application intends to reuse the builder to
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
 
 **Returns**:
 
@@ -412,7 +406,7 @@ Set the audio node type to be created by the builder.<br> When creating a node, 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
 | [OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type) type | Audio node type. [OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type) |
 
 **Returns**:
@@ -439,7 +433,7 @@ Set the audio format supported by the node.<br> For [INPUT_NODE_TYPE_DEFAULT](ca
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
 | [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md) audioFormat | audio node format. |
 
 **Returns**:
@@ -466,7 +460,7 @@ Callback function of request data, Only [INPUT_NODE_TYPE_DEFAULT](capi-native-au
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | AudioNode where this callback occurs. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | AudioNode where this callback occurs. |
 | void* userData | User data which is passed by user. |
 | void* audioData | Audio data pointer, where user should fill in audio data. |
 | int32_t audioDataSize | Size of audio data that user should fill in, unit is byte. |
@@ -496,7 +490,7 @@ Set input node request data callback, Only [INPUT_NODE_TYPE_DEFAULT](capi-native
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | Reference created by OH_AudioSuiteNodeBuilder_Create. |
 | [OH_InputNode_RequestDataCallback](capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback) callback | Callback to functions that will write audio data. |
 | void* userData | Pointer to an application data structure that will be passed to the callback functions. |
 
@@ -524,9 +518,9 @@ Request to create audio node with audio node builder.<br> When executing this fu
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | Audio node builder created by OH_AudioSuiteNodeBuilder_Create. |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)** audioNode | Pointer to a variable to receive the audio node. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | Audio node builder created by OH_AudioSuiteNodeBuilder_Create. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)** audioNode | Pointer to a variable to receive the audio node. |
 
 **Returns**:
 
@@ -552,7 +546,7 @@ Destroy an audio node.<br> Whether the node can be deleted depends on the state 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 
 **Returns**:
 
@@ -578,7 +572,7 @@ Request to get audio node bypass status.<br> Only effect node support bypass, Wh
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | bool* bypassStatus | node bypass status, which will be returned as the output parameter, When the value of bypassStatus is false, it indicates that the node has not been set to bypass; when it is true, it means the node has been set to bypass. |
 
 **Returns**:
@@ -605,7 +599,7 @@ Request to set the effect node bypass.<br> This command can only be set on an ef
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | bool bypass | This parameter determines whether the node merely forwards data transparently. |
 
 **Returns**:
@@ -632,7 +626,7 @@ Set the audio format for input and output nodes, specify the audio format of the
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md)* audioFormat | Audio Format. |
 
 **Returns**:
@@ -659,8 +653,8 @@ Executing the connect command will link two nodes in sequence.<br> Connect two n
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* sourceAudioNode | source node Reference created by OH_AudioSuiteEngine_CreateNode. |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* destAudioNode | dest node Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* sourceAudioNode | source node Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* destAudioNode | dest node Reference created by OH_AudioSuiteEngine_CreateNode. |
 
 **Returns**:
 
@@ -686,8 +680,8 @@ Executing the disconnect command will sever the connection between two nodes. Th
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* sourceAudioNode | Preceding audio node Reference created by OH_AudioSuiteEngine_CreateNode. |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* destAudioNode | Subsequent audio node Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* sourceAudioNode | Preceding audio node Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* destAudioNode | Subsequent audio node Reference created by OH_AudioSuiteEngine_CreateNode. |
 
 **Returns**:
 
@@ -740,7 +734,7 @@ Set equalizer frequency band gains of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) frequencyBandGains | The equalizer frequency band gains. |
 
 **Returns**:
@@ -767,7 +761,7 @@ Get equalizer frequency band gains of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md)* frequencyBandGains | Current equalizer frequency band gains of audioNode. |
 
 **Returns**:
@@ -794,7 +788,7 @@ Set sound field type of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype) soundFieldType | The sound field type. |
 
 **Returns**:
@@ -821,7 +815,7 @@ Get sound field type of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)* soundFieldType | Current sound field type of audioNode. |
 
 **Returns**:
@@ -848,7 +842,7 @@ Set environment type of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_EnvironmentType](capi-native-audio-suite-base-h.md#oh_environmenttype) environmentType | The environment type. |
 
 **Returns**:
@@ -875,7 +869,7 @@ Get environment type of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_EnvironmentType](capi-native-audio-suite-base-h.md#oh_environmenttype)* environmentType | Current environment type of audioNode. |
 
 **Returns**:
@@ -902,7 +896,7 @@ Set voice beautifier type of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype) voiceBeautifierType | the voice beautifier type. |
 
 **Returns**:
@@ -929,7 +923,7 @@ Get voice beautifier type of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)* voiceBeautifierType | Current voice beautifier type of audioNode. |
 
 **Returns**:
@@ -956,7 +950,7 @@ Set position parameters for space rendering
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md) position | Position parameters. |
 
 **Returns**:
@@ -983,7 +977,7 @@ Get position parameters for space rendering
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)* position | Position parameters. |
 
 **Returns**:
@@ -1010,7 +1004,7 @@ Set rotation parameters for space rendering
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md) rotation | Rotation parameters. |
 
 **Returns**:
@@ -1037,7 +1031,7 @@ Get rotation parameters for space rendering
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)* rotation | Rotation parameters. |
 
 **Returns**:
@@ -1064,7 +1058,7 @@ Set extension parameters for space rendering
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md) extension | Extension parameters. |
 
 **Returns**:
@@ -1091,7 +1085,7 @@ Get extension parameters for space rendering
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)* extension | Extension parameters. |
 
 **Returns**:
@@ -1118,7 +1112,7 @@ Set the tempo and pitch adjustment parameters.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | float speed | value range: [0.5, 10.0] for Tempo, where 1.0 means normal tempo speed. If the value is outside the valid range, [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) will be returned. |
 | float pitch | value range: [0.1, 5.0] for Pitch, where 1.0 means normal pitch. If the value is outside the valid range, [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) will be returned. |
 
@@ -1146,7 +1140,7 @@ Get the tempo and pitch adjustment parameters.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | float* speed | value range: [0.5, 10.0] for Tempo. |
 | float* pitch | value range: [0.1, 5.0] for Pitch. |
 
@@ -1174,7 +1168,7 @@ Set pure change voice option of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) option | Change voice option. [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) |
 
 **Returns**:
@@ -1201,7 +1195,7 @@ Get pure voice change option of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)* option | Change voice option. [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) |
 
 **Returns**:
@@ -1228,7 +1222,7 @@ Set general voice change type of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_GeneralVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype) type | Change voice type. [OH_AudioSuite_GeneralVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype) |
 
 **Returns**:
@@ -1255,7 +1249,7 @@ Get general voice change type of audio node.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
 | [OH_AudioSuite_GeneralVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype)* type | Change voice type. [OH_AudioSuite_GeneralVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype) |
 
 **Returns**:
@@ -1282,8 +1276,8 @@ Print AudioSuite runtime snapshot.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md)* audioSuiteEngine | Pointer to the AudioSuiteEngine whose runtime snapshot needs to be displayed. |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | Pointer to the AudioSuitePipeline whose runtime snapshot needs to be displayed. If audioSuitePipeline is NULL: output all pipelines (all pipelines/nodes under the engine). Otherwise, output only the snapshot of this pipeline and nodes. |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | Pointer to the AudioSuiteEngine whose runtime snapshot needs to be displayed. |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Pointer to the AudioSuitePipeline whose runtime snapshot needs to be displayed. If audioSuitePipeline is NULL: output all pipelines (all pipelines/nodes under the engine). Otherwise, output only the snapshot of this pipeline and nodes. |
 | int fd | is a file handle, indicates the location where the snapshot information is stored. If the fd is less than 0, the snapshot information is stored in the log. Otherwise, the snapshot is stored in the file pointed to by the fd handle in append mode. |
 
 **Returns**:

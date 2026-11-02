@@ -10,7 +10,7 @@ Defines common enum types of ArkTS native module.
 
 **Since**: 10
 
-**Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)
+**Related module**: [ArkTS_Napi_NativeModule](capi-arkts-arkts-napi-nativemodule.md)
 
 ## Summary
 

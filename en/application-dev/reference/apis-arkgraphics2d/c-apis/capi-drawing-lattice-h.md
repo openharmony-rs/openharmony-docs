@@ -10,7 +10,7 @@ This file declares the functions related to the rectangular lattice object.
 
 **Since**: 23
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 
@@ -45,9 +45,9 @@ Enumerates the types of rectangles used to fill the lattices. It is applicable o
 
 | Enum item | Description |
 | -- | -- |
-| DEFAULT |  |
-| TRANSPARENT |  |
-| FIXED_COLOR |  |
+| DEFAULT | Draws an image into the rectangular lattice.<br>**Since**: 23 |
+| TRANSPARENT | Sets the rectangular lattice to be transparent.<br>**Since**: 23 |
+| FIXED_COLOR | Draws the colors from the **fColors** array of the rectangular lattice object into the lattice.<br>**Since**: 23 |
 
 
 ## Function description

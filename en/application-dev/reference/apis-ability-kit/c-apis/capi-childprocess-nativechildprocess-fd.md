@@ -12,7 +12,7 @@ The struct describes the information about the file descriptor passed to the chi
 
 **Since**: 13
 
-**Related module**: [ChildProcess](capi-childprocess.md)
+**Related module**: [ChildProcess](capi-others-childprocess.md)
 
 **Header file**: [native_child_process.h](capi-native-child-process-h.md)
 
@@ -24,6 +24,6 @@ The struct describes the information about the file descriptor passed to the chi
 | -- | -- |
 | char* fdName | Pointer to the name of the file descriptor. It contains a maximum of 20 characters.<br>**Since**: 13 |
 | int32_t fd | Value of the file descriptor.<br>**Since**: 13 |
-| struct NativeChildProcess_Fd* next | Pointer to the next file descriptor.<br>**Since**: 13 |
+| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) next | Pointer to the next file descriptor.<br>**Since**: 13 |
 
 

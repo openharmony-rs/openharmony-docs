@@ -12,7 +12,7 @@ Defines the image size.
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_mdk_common.h](capi-image-mdk-common-h.md)
 

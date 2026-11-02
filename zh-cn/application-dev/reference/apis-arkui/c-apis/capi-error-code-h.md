@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -66,7 +66,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 | 节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见106210 节点不是被目标节点接纳的附属节点。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND = 106211 | 无法获取属性，因为之前未设置该属性。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID = 106212 | 子动画参数无效。<br>**起始版本：** 26.0.1 |
-| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | 在[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md)上未找到指定的动画组。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | 在[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)上未找到指定的动画组。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | 检测到同一线程上对动画组接口的重入调用。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | 动画组未处于操作所需的状态。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT = 106216 | 解析的目标节点不属于注册动画组时传入的context所在的UIContext。<br>**起始版本：** 26.0.1 |

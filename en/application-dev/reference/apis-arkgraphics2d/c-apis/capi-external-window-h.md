@@ -10,7 +10,7 @@ Defines the functions for obtaining and using a native window.
 
 **Since**: 8
 
-**Related module**: [NativeWindow](capi-nativewindow.md)
+**Related module**: [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 ## Summary
 
@@ -25,8 +25,6 @@ Defines the functions for obtaining and using a native window.
 | [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | Defines the ipc parcel. |
 | [NativeWindow](capi-nativewindow-nativewindow.md) | - | native window. |
 | [NativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) | - | native window buffer. |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) | OHNativeWindow | define the new type name OHNativeWindow for struct NativeWindow. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) | OHNativeWindowBuffer | define the new type name OHNativeWindowBuffer for struct NativeWindowBuffer. |
 
 ### Enum
 
@@ -104,8 +102,8 @@ Indicates the operation code in the function OH_NativeWindow_NativeWindowHandleO
 | SET_FORMAT | set native window buffer format, variable parameter in function is [in] int32_t format, the enumeration value refers to [OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format). |
 | GET_USAGE | get native window buffer usage, variable parameter in function is [out] uint64_t *usage, the enumeration value refers to [OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage). |
 | SET_USAGE | set native window buffer usage, variable parameter in function is [in] uint64_t usage, the enumeration value refers to [OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage). |
-| SET_STRIDE |  |
-| GET_STRIDE |  |
+| SET_STRIDE | set native window buffer stride, variable parameter in function is [in] int32_t stride.<br>**Deprecated**: 16 |
+| GET_STRIDE | get native window buffer stride, variable parameter in function is [out] int32_t *stride.<br>**Deprecated**: 16<br>**Replaced by**: Use [OH_NativeWindow_GetBufferHandleFromNative](capi-external-window-h.md#oh_nativewindow_getbufferhandlefromnative) to get a BufferHandleand from a buffer and then retrieve the stride from the [BufferHandle](capi-nativewindow-bufferhandle.md).  |
 | SET_SWAP_INTERVAL | set native window buffer swap interval, variable parameter in function is [in] int32_t interval. |
 | GET_SWAP_INTERVAL | get native window buffer swap interval, variable parameter in function is [out] int32_t *interval. |
 | SET_TIMEOUT | set the timeout in milliseconds when the native window requests a buffer, the default value is 3000 milliseconds when not set, variable parameter in function is [in] int32_t timeout, in milliseconds. |
@@ -115,15 +113,15 @@ Indicates the operation code in the function OH_NativeWindow_NativeWindowHandleO
 | SET_TRANSFORM | set native window buffer transform, variable parameter in function is [in] int32_t transform, the enumeration value refers to [OH_NativeBuffer_TransformType](capi-buffer-common-h.md#oh_nativebuffer_transformtype). |
 | GET_TRANSFORM | get native window buffer transform, variable parameter in function is [out] int32_t *transform, the enumeration value refers to [OH_NativeBuffer_TransformType](capi-buffer-common-h.md#oh_nativebuffer_transformtype). |
 | SET_UI_TIMESTAMP | set native window buffer uiTimestamp, variable parameter in function is [in] uint64_t uiTimestamp. |
-| GET_BUFFERQUEUE_SIZE |  |
-| SET_SOURCE_TYPE |  |
-| GET_SOURCE_TYPE |  |
-| SET_APP_FRAMEWORK_TYPE |  |
-| GET_APP_FRAMEWORK_TYPE |  |
-| SET_HDR_WHITE_POINT_BRIGHTNESS |  |
-| SET_SDR_WHITE_POINT_BRIGHTNESS |  |
-| SET_DESIRED_PRESENT_TIMESTAMP = 24 |  |
-| OH_NATIVEWINDOW_SET_DMABUFFER_NAME = 25 |  |
+| GET_BUFFERQUEUE_SIZE | get native window bufferqueue size, variable parameter in function is [out] int32_t *size.<br>**Since**: 12 |
+| SET_SOURCE_TYPE | set surface source type, variable parameter in function is [in] int32_t sourceType, the enumeration value refers to [OHSurfaceSource](capi-external-window-h.md#ohsurfacesource).<br>**Since**: 12 |
+| GET_SOURCE_TYPE | get surface source type, variable parameter in function is [out] int32_t *sourceType, the enumeration value refers to [OHSurfaceSource](capi-external-window-h.md#ohsurfacesource).<br>**Since**: 12 |
+| SET_APP_FRAMEWORK_TYPE | set app framework type, variable parameter in function is [in] char* frameworkType. maximum length is 64 bytes, otherwise the setting fails.<br>**Since**: 12 |
+| GET_APP_FRAMEWORK_TYPE | get app framework type, variable parameter in function is [out] char** frameworkType.<br>**Since**: 12 |
+| SET_HDR_WHITE_POINT_BRIGHTNESS | set hdr white point brightness, variable parameter in function is [in] float brightness. the value range is 0.0f to 1.0f.<br>**Since**: 12 |
+| SET_SDR_WHITE_POINT_BRIGHTNESS | set sdr white point brightness, variable parameter in function is [in] float brightness. the value range is 0.0f to 1.0f.<br>**Since**: 12 |
+| SET_DESIRED_PRESENT_TIMESTAMP = 24 | Set native window buffer desiredPresentTimestamp, indicates the desired time to present the buffer. Which should be generated by std::chrono::steady_clock in nanoseconds. It is only effective when RenderService is the consumer. The buffer will wait until desiredPresentTimestamp is reached before being consumed and displayed. If multiple buffers reach desiredPresentTimestamp, the earlier buffer will be dropped. This Operation should be called before calling <b>OH_NativeWindow_NativeWindowFlushBuffer</b>. If desiredPresentTimestamp is greater than 1 second of the consumer-provided timestamp, the desiredPresentTimestamp will be ignored. Variable parameter in function is [in] int64_t desiredPresentTimestamp.<br>**Since**: 13 |
+| OH_NATIVEWINDOW_SET_DMABUFFER_NAME = 25 | Set dma buffer name, variable parameter in function is [in] const char* name. The dma buffer name string. The name must start with a letter, only contain letters or digits, and be no longer than 64 bytes.<br>**Since**: 26.0.1 |
 
 ### OHScalingMode
 
@@ -242,7 +240,7 @@ Creates a <b>OHNativeWindow</b> instance. A new <b>OHNativeWindow</b> instance i
 
 | Type | Description |
 | -- | -- |
-| [OHNativeWindow*](capi-nativewindow-ohnativewindow.md) | Returns the pointer to the <b>OHNativeWindow</b> instance created. |
+| [OHNativeWindow*](capi-nativewindow-nativewindow.md) | Returns the pointer to the <b>OHNativeWindow</b> instance created. |
 
 ### OH_NativeWindow_DestroyNativeWindow()
 
@@ -262,7 +260,7 @@ Decreases the reference count of a <b>OHNativeWindow</b> instance by 1, and when
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md)* window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md)* window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 
 ### OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer()
 
@@ -292,7 +290,7 @@ Creates a <b>OHNativeWindowBuffer</b> instance. A new <b>OHNativeWindowBuffer</b
 
 | Type | Description |
 | -- | -- |
-| [OHNativeWindowBuffer*](capi-nativewindow-ohnativewindowbuffer.md) | Returns the pointer to the <b>OHNativeWindowBuffer</b> instance created. |
+| [OHNativeWindowBuffer*](capi-nativewindow-nativewindowbuffer.md) | Returns the pointer to the <b>OHNativeWindowBuffer</b> instance created. |
 
 ### OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer()
 
@@ -318,7 +316,7 @@ Creates a <b>OHNativeWindowBuffer</b> instance. A new <b>OHNativeWindowBuffer</b
 
 | Type | Description |
 | -- | -- |
-| [OHNativeWindowBuffer*](capi-nativewindow-ohnativewindowbuffer.md) | Returns the pointer to the <b>OHNativeWindowBuffer</b> instance created. |
+| [OHNativeWindowBuffer*](capi-nativewindow-nativewindowbuffer.md) | Returns the pointer to the <b>OHNativeWindowBuffer</b> instance created. |
 
 ### OH_NativeWindow_DestroyNativeWindowBuffer()
 
@@ -338,7 +336,7 @@ Decreases the reference count of a <b>OHNativeWindowBuffer</b> instance by 1 and
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md)* buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)* buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
 
 ### OH_NativeWindow_NativeWindowRequestBuffer()
 
@@ -358,8 +356,8 @@ Requests a <b>OHNativeWindowBuffer</b> through a <b>OHNativeWindow</b> instance 
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) **buffer | Indicates the double pointer to a <b>OHNativeWindowBuffer</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) **buffer | Indicates the double pointer to a <b>OHNativeWindowBuffer</b> instance. |
 | int *fenceFd | Indicates the pointer to a file descriptor handle. |
 
 **Returns**:
@@ -386,8 +384,8 @@ Flushes the <b>OHNativeWindowBuffer</b> filled with the content to the buffer qu
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
 | int fenceFd | Indicates a file descriptor handle, which is used for timing synchronization. |
 | [Region](capi-nativewindow-region.md) region | Indicates a dirty region where content is updated. |
 
@@ -419,8 +417,8 @@ Get the last flushed <b>OHNativeWindowBuffer</b> from a <b>OHNativeWindow</b> in
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) **buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> pointer. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) **buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> pointer. |
 | int *fenceFd | Indicates the pointer to a file descriptor handle. |
 | float matrix[16] | Indicates the retrieved 4*4 transform matrix. |
 
@@ -448,8 +446,8 @@ Returns the <b>OHNativeWindowBuffer</b> to the buffer queue through a <b>OHNativ
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
 
 **Returns**:
 
@@ -475,7 +473,7 @@ Sets or obtains the attributes of a native window, including the width, height, 
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | int code | Indicates the operation code, pointer to <b>NativeWindowOperation</b>. |
 | [](capi-nativewindow-region.md).[](capi-nativewindow-region.md).[](capi-nativewindow-region.md).[](capi-nativewindow-region.md) | variable parameter, must correspond to code one-to-one. |
 
@@ -503,7 +501,7 @@ Obtains the pointer to a <b>BufferHandle</b> of a <b>OHNativeWindowBuffer</b> in
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
 
 **Returns**:
 
@@ -611,7 +609,7 @@ Sets scalingMode of a native window.
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | uint32_t sequence | Indicates the sequence to a produce buffer. |
 | [OHScalingMode](capi-external-window-h.md#ohscalingmode) scalingMode | Indicates the enum value to <b>OHScalingMode</b> |
 
@@ -641,7 +639,7 @@ Sets metaData of a native window.
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | uint32_t sequence | Indicates the sequence to a produce buffer. |
 | int32_t size | Indicates the size of a <b>OHHDRMetaData</b> vector. |
 | [const OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md) *metaData | Indicates the pointer to a <b>OHHDRMetaData</b> vector. |
@@ -672,7 +670,7 @@ Sets metaDataSet of a native window.
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | uint32_t sequence | Indicates the sequence to a produce buffer. |
 | [OHHDRMetadataKey](capi-external-window-h.md#ohhdrmetadatakey) key | Indicates the enum value to <b>OHHDRMetadataKey</b> |
 | int32_t size | Indicates the size of a uint8_t vector. |
@@ -704,7 +702,7 @@ Sets tunnel handle of a native window.
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | [const OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) *handle | Indicates the pointer to a <b>OHExtDataHandle</b>. |
 
 **Returns**:
@@ -731,8 +729,8 @@ Attach a buffer to an <b>OHNativeWindow</b> instance. This interface needs to be
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
 
 **Returns**:
 
@@ -758,8 +756,8 @@ Detach a buffer from an <b>OHNativeWindow</b> instance. This interface is a non-
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *buffer | Indicates the pointer to a <b>OHNativeWindowBuffer</b> instance. |
 
 **Returns**:
 
@@ -785,7 +783,7 @@ Get surfaceId from native window. This interface is a non-thread-safe type inter
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
 | uint64_t *surfaceId | Indicates the pointer to a surfaceId. |
 
 **Returns**:
@@ -813,7 +811,7 @@ Creates an <b>OHNativeWindow</b> instance. This interface needs to be used in co
 | Parameter | Description |
 | -- | -- |
 | uint64_t surfaceId | Indicates the surfaceId to a surface. |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) **window | indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) **window | indicates the pointer to an <b>OHNativeWindow</b> instance. |
 
 **Returns**:
 
@@ -839,7 +837,7 @@ Sets scalingMode of a native window. This interface is a non-thread-safe type in
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | indicates the pointer to an <b>OHNativeWindow</b> instance. |
 | [OHScalingModeV2](capi-external-window-h.md#ohscalingmodev2) scalingMode | Indicates the enum value to <b>OHScalingModeV2</b> |
 
 **Returns**:
@@ -866,7 +864,7 @@ Set native window buffer hold. This interface is a non-thread-safe type interfac
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
 
 ### OH_NativeWindow_WriteToParcel()
 
@@ -886,7 +884,7 @@ Write an OHNativeWindow to an OHIPCParcel. This interface is a non-thread-safe t
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
 | [OHIPCParcel](capi-nativewindow-ohipcparcel.md) *parcel | Indicates the pointer to an <b>OHIPCParcel</b> instance. |
 
 **Returns**:
@@ -914,7 +912,7 @@ Read an OHNativeWindow from an OHIPCParcel. This interface is a non-thread-safe 
 | Parameter | Description |
 | -- | -- |
 | [OHIPCParcel](capi-nativewindow-ohipcparcel.md) *parcel | Indicates the pointer to an <b>OHIPCParcel</b> instance. |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) **window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) **window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
 
 **Returns**:
 
@@ -940,8 +938,8 @@ Get the last flushed <b>OHNativeWindowBuffer</b> from an <b>OHNativeWindow</b> i
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md) **buffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> pointer. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to an <b>OHNativeWindow</b> instance. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) **buffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> pointer. |
 | int *fenceFd | Indicates the pointer to a file descriptor handle. |
 | float matrix[16] | Indicates the retrieved 4*4 transform matrix. |
 
@@ -969,7 +967,7 @@ Set the color space of the native window. This interface is a non-thread-safe ty
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | [OH_NativeBuffer_ColorSpace](capi-buffer-common-h.md#oh_nativebuffer_colorspace) colorSpace | Indicates the color space of native window, see <b>OH_NativeBuffer_ColorSpace</b>. |
 
 **Returns**:
@@ -996,7 +994,7 @@ Get the color space of the native window. This interface is a non-thread-safe ty
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | [OH_NativeBuffer_ColorSpace](capi-buffer-common-h.md#oh_nativebuffer_colorspace) *colorSpace | Indicates the color space of native window, see <b>OH_NativeBuffer_ColorSpace</b>. |
 
 **Returns**:
@@ -1023,7 +1021,7 @@ Set the metadata type of the native window. This interface is a non-thread-safe 
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Indicates the metadata type of native window, see <b>OH_NativeBuffer_MetadataKey</b>. |
 | int32_t size | Indicates the size of a uint8_t vector. |
 | uint8_t *metadata | Indicates the pointer to a uint8_t vector. |
@@ -1052,7 +1050,7 @@ Set the metadata type of the native window. This interface is a non-thread-safe 
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Indicates the metadata type of native window, see <b>OH_NativeBuffer_MetadataKey</b>. |
 | int32_t *size | Indicates the size of a uint8_t vector. |
 | uint8_t **metadata | Indicates the pointer to a uint8_t vector. |
@@ -1081,7 +1079,7 @@ Clean all <b>OHNativeWindowBuffer</b> caches of this <b>OHNativeWindow</b> This 
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 
 **Returns**:
 
@@ -1107,7 +1105,7 @@ PreAlloc <b>OHNativeWindowBuffer</b> of this <b>OHNativeWindow</b> This interfac
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | uint32_t allocBufferCnt | Indicates the count of <b>OHNativeWindowBuffers</b>. |
 
 **Returns**:
@@ -1134,9 +1132,9 @@ Requests an <b>OHNativeWindowBuffer</b> through an <b>OHNativeWindow</b> instanc
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md)* window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md)* window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | [Region](capi-nativewindow-region.md) region | Indicates the info of the dirty region. |
-| [OHNativeWindowBuffer](capi-nativewindow-ohnativewindowbuffer.md)** buffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> pointer. |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)** buffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> pointer. |
 
 **Returns**:
 
@@ -1162,7 +1160,7 @@ Flushes the <b>OHNativeWindowBuffer</b> filled with the content to the buffer qu
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md)* window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md)* window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 
 **Returns**:
 
@@ -1188,7 +1186,7 @@ Set the 3D metadata of the native window. This interface is a non-thread-safe ty
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | [OH_NativeBuffer_3D_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_3d_metadatakey) metadataKey | Indicates the 3D metadata type of native window, see <b>OH_NativeBuffer_3D_MetadataKey</b>. |
 | int32_t size | Indicates the size of a uint8_t vector. |
 | uint8_t *metadata | Indicates the pointer to a uint8_t vector. |
@@ -1217,7 +1215,7 @@ Get the 3D metadata of the native window. This interface is a non-thread-safe ty
 
 | Parameter | Description |
 | -- | -- |
-| [OHNativeWindow](capi-nativewindow-ohnativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
+| [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | [OH_NativeBuffer_3D_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_3d_metadatakey) metadataKey | Indicates the 3D metadata type of native window, see <b>OH_NativeBuffer_3D_MetadataKey</b>. |
 | int32_t *size | Indicates the size of a uint8_t vector. |
 | uint8_t **metadata | Indicates the pointer to a uint8_t vector. |

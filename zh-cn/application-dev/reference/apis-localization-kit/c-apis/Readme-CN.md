@@ -1,9 +1,9 @@
 # C API<!--c-localizationkit-->
 
 - 模块<!--localizationkit-module-->
-    - [i18n](capi-i18n.md)
-    - [rawfile](capi-rawfile.md)
-    - [resourcemanager](capi-resourcemanager.md)
+    - [i18n](capi-localization-kit-i18n.md)
+    - [rawfile](capi-localization-kit-rawfile.md)
+    - [resourcemanager](capi-localization-kit-resourcemanager.md)
 - 头文件<!--localizationkit-headerfile-->
     - [errorcode.h](capi-errorcode-h.md)
     - [timezone.h](capi-timezone-h.md)

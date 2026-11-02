@@ -13,7 +13,7 @@ Defines the type descriptor handle of the ModularObject dispatcher. The handle p
 **Since**: 26.0.0 /
 typedef struct OH_AbilityRuntime_ModularObjectDispatcher_TypeDescriptor
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
 
 **Header file**: [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 

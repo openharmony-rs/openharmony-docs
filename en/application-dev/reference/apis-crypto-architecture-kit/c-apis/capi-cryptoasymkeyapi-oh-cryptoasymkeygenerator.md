@@ -12,7 +12,7 @@ Asymmetric key generator structure, representing an asymmetric key generator.
 
 **Since**: 12
 
-**Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)
+**Related module**: [CryptoAsymKeyApi](capi-others-cryptoasymkeyapi.md)
 
 **Header file**: [crypto_asym_key.h](capi-crypto-asym-key-h.md)
 

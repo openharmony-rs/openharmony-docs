@@ -12,7 +12,7 @@ Defines a struct for the USB certificate credential information.
 
 **起始版本：** 22
 
-**相关模块：** [CertManagerType](capi-certmanagertype.md)
+**相关模块：** [CertManagerType](capi-others-certmanagertype.md)
 
 **所在头文件：** [cm_native_type.h](capi-cm-native-type-h.md)
 

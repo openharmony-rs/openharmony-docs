@@ -12,7 +12,7 @@ Defines the pixel map information.
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [pixelmap_native.h](capi-pixelmap-native-h.md)
 

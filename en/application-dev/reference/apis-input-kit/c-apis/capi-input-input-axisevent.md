@@ -12,7 +12,7 @@ Defines an axis event object, which is used to represent axis event data from an
 
 **Since**: 12
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-others-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

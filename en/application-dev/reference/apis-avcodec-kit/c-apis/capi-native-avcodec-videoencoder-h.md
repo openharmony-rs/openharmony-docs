@@ -10,7 +10,7 @@ Declare the interface used for video encoding.
 
 **Since**: 9
 
-**Related module**: [VideoEncoder](capi-videoencoder.md)
+**Related module**: [VideoEncoder](capi-avcodec-kit-videoencoder.md)
 
 ## Summary
 
@@ -75,12 +75,6 @@ Declare the interface used for video encoding.
 | [OH_AVFormat *OH_VideoEncoder_GetInputDescription(OH_AVCodec *codec)](#oh_videoencoder_getinputdescription) | - | Obtains the description of the image received by a video encoder. This function must be called after [OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure) is called.<br> You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to release the OH_AVFormat instance in the return value. |
 | [OH_AVErrCode OH_VideoEncoder_IsValid(OH_AVCodec *codec, bool *isValid)](#oh_videoencoder_isvalid) | - | Check whether the current codec instance is valid. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData) | Defines the pointer to the function that is called when new input parameters are required for a frame with the specified index.<br> This callback can be used only in surface mode after it is registered by calling OH_VideoEncoder_RegisterParameterCallback.<br> In buffer mode, OH_AVBuffer can directly carry the encoding parameter associated with each frame. Currently, it can manage parameters, including **QPMin**, **QPMax**, and reference frames for Long Term Reference (LTR), on a per-frame basis.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.VideoEncoder |
-
 ## Enum type description
 
 ### OH_VideoEncodeBitrateMode
@@ -103,9 +97,9 @@ Enumerates the bit rate modes of a video encoder.
 
 | Enum item | Description |
 | -- | -- |
-| CBR = 0 |  |
-| VBR = 1 |  |
-| CQ = 2 |  |
+| CBR = 0 | constant bit rate mode.<br>**Since**: 9<br>**Deprecated**: 14<br>**Replaced by**: BITRATE_MODE_CBR |
+| VBR = 1 | variable bit rate mode.<br>**Since**: 9<br>**Deprecated**: 14<br>**Replaced by**: BITRATE_MODE_VBR |
+| CQ = 2 | constant quality mode.<br>**Since**: 9<br>**Deprecated**: 14<br>**Replaced by**: BITRATE_MODE_CQ |
 
 
 ## Function description
@@ -193,7 +187,9 @@ OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCod
 
 **Description**
 
-Creates a primary video encoder instance that supports pre-processing. The encoder provides the following capabilities:<br> 1. Pre-processing features (downsampling, cropping, and frame dropping).<br> 2. Creation of a secondary encoder from this primary encoder to enable dual-output encoding with one input.<br> The encoder created via this API supports only the surface mode, and does not support the buffer mode or synchronous mode. After the encoder is successfully created, it must be destroyed via [OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy).
+Creates a primary video encoder instance that supports pre-processing. The encoder provides the following capabilities:<br>
+1. Pre-processing features (downsampling, cropping, and frame dropping).<br>
+2. Creation of a secondary encoder from this primary encoder to enable dual-output encoding with one input.<br> The encoder created via this API supports only the surface mode, and does not support the buffer mode or synchronous mode. After the encoder is successfully created, it must be destroyed via [OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy).
 
 **System capability**: SystemCapability.Multimedia.Media.VideoEncoder
 
@@ -220,7 +216,13 @@ OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_
 
 **Description**
 
-Creates a secondary video encoder instance from the primary encoder. The secondary encoder:<br> 1. Shares the input source with the primary encoder.<br> 2. Can be configured with independent encoding parameters.<br> 3. Supports different pre-processing parameters.<br> 4. Can be started and stopped independently (not dependent on the start/stop state of the primary encoder).<br> 5. Has a lifecycle shorter than that of the primary encoder.<br> 6. A primary encoder can have only one secondary encoder at a time.<br> A secondary encoder must be created after the primary encoder is successfully created. Once a secondary encoder is successfully created, it must be destroyed via [OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy). You are advised to destroy the secondary encoder before destroying the primary encoder.
+Creates a secondary video encoder instance from the primary encoder. The secondary encoder:<br>
+1. Shares the input source with the primary encoder.<br>
+2. Can be configured with independent encoding parameters.<br>
+3. Supports different pre-processing parameters.<br>
+4. Can be started and stopped independently (not dependent on the start/stop state of the primary encoder).<br>
+5. Has a lifecycle shorter than that of the primary encoder.<br>
+6. A primary encoder can have only one secondary encoder at a time.<br> A secondary encoder must be created after the primary encoder is successfully created. Once a secondary encoder is successfully created, it must be destroyed via [OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy). You are advised to destroy the secondary encoder before destroying the primary encoder.
 
 > **Note**:
 >
@@ -606,7 +608,7 @@ Obtains the input surface from a video encoder. This function must be called aft
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video encoder instance. |
-| [OHNativeWindow](capi-codecbase-ohnativewindow.md) **window | Double pointer to an OHNativeWindow instance. The application manages the lifecycle of the window and calls OH_NativeWindow_DestroyNativeWindow to release the window when the lifecycle ends. |
+| [OHNativeWindow](capi-codecbase-nativewindow.md) **window | Double pointer to an OHNativeWindow instance. The application manages the lifecycle of the window and calls [OH_NativeWindow_DestroyNativeWindow](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#oh_nativewindow_destroynativewindow) to release the window when the lifecycle ends. |
 
 **Returns**:
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## 汇总
 
@@ -42,16 +42,9 @@
 | [Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver, Image_Size* size)](#oh_imagereceivernative_getsize) | - | 通过OH_ImageReceiverNative获取ImageReceiver的大小。 |
 | [Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* receiver, int32_t* capacity)](#oh_imagereceivernative_getcapacity) | - | 通过OH_ImageReceiverNative获取ImageReceiver的容量。 |
 | [Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_release) | - | 释放Native OH_ImageReceiverNative对象。 |
-| [Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative* receiver, OH_ImageReceiver_ImageArriveCallback callback, void *userData)](#oh_imagereceivernative_onimagearrive) | - |  |
-| [Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative* receiver, OH_ImageReceiver_ImageArriveCallback callback)](#oh_imagereceivernative_offimagearrive) | - |  |
+| [Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative* receiver, OH_ImageReceiver_ImageArriveCallback callback, void *userData)](#oh_imagereceivernative_onimagearrive) | - | 注册[OH_ImageReceiver_ImageArriveCallback](capi-image-receiver-native-h.md#oh_imagereceiver_imagearrivecallback)回调。 |
+| [Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative* receiver, OH_ImageReceiver_ImageArriveCallback callback)](#oh_imagereceivernative_offimagearrive) | - | 注销[OH_ImageReceiver_ImageArriveCallback](capi-image-receiver-native-h.md#oh_imagereceiver_imagearrivecallback)回调。 |
 | [Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)](#oh_imagereceivernative_setmemoryname) | - | 设置OH_ImageReceiverNative对象的内存名称。<br> 仅支持可见ASCII字符，空格、换行、制表符及其他控制字符将被过滤掉。 如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。 过滤后的名称长度（包括结束符'\0'）不得超过256字节。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_ImageReceiver_OnCallback)(OH_ImageReceiverNative *receiver) | 定义native层图片的回调方法。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver |
-| void (*OH_ImageReceiver_ImageArriveCallback)(OH_ImageReceiverNative *receiver, void *userData) | ImageArrive事件的回调方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver |
 
 ## 函数说明
 
@@ -537,6 +530,8 @@ Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative* rec
 
 **描述：**
 
+注册[OH_ImageReceiver_ImageArriveCallback](capi-image-receiver-native-h.md#oh_imagereceiver_imagearrivecallback)回调。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 20
@@ -562,6 +557,8 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative* re
 ```
 
 **描述：**
+
+注销[OH_ImageReceiver_ImageArriveCallback](capi-image-receiver-native-h.md#oh_imagereceiver_imagearrivecallback)回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 

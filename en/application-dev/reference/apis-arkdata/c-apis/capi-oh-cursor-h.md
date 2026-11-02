@@ -10,7 +10,7 @@ Provides functions and enumerations related to the resultSet.
 
 **Since**: 10
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 ## 汇总
 
@@ -58,6 +58,7 @@
 | [OH_ScreenCaptureHighlightMode](#oh_screencapturehighlightmode) | OH_ScreenCaptureHighlightMode | 枚举，表示屏幕录制高亮边框的模式。 |
 | [OH_AVScreenCapture_FillMode](#oh_avscreencapture_fillmode) | OH_AVScreenCapture_FillMode | 枚举，图像填充模式。<br> OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT适用于需要保持图像原始宽高比、避免变形的场景；<br> OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL适用于需要完全填充目标区域、可接受图像变形的场景。 |
 | [OH_CapturePickerMode](#oh_capturepickermode) | OH_CapturePickerMode | 枚举，表示Picker显示模式。<br> 根据应用需求选择合适的Picker模式：仅显示窗口模式适用于只允许用户选择窗口进行录制的场景； 仅显示屏幕模式适用于只允许用户选择整个屏幕的场景； 同时显示屏幕和窗口模式为默认模式，适用于需要灵活选择录制目标的场景； 仅显示应用模式适用于只允许录制单个应用的场景。 |
+| [typedef  OH_AVScreenCapture_AutoPauseCaptureSceneEnum](#typedef  oh_avscreencapture_autopausecapturesceneenum) | - | 屏幕录制自动暂停场景枚举。 |
 
 ### 函数
 
@@ -79,16 +80,8 @@
 | 名称 | 描述 |
 | -- | -- |
 | const char *OH_SCREEN_CAPTURE_CONTENT_RECT | 获取录屏图像帧中有效内容区域信息的key。<br> 通过此key获取到的返回值是一个int32_t数组，单位为像素（px）。 数组长度为4。数组元素定义为[top, left, width, height]，其中top表示矩形窗口左上角纵坐标，left表示矩形窗口左上角横坐标， width表示矩形窗口的宽度，height表示矩形窗口的高度。数组元素可以从[OH_AVFormat_GetIntBuffer](capi-native-avformat-h.md#oh_avformat_getintbuffer)中获取。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t errorCode) | 当OH_AVScreenCapture实例运行出错时，系统将调用该函数指针通知应用程序。 从API version 12开始，推荐使用接口[OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror)替代。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *capture, bool isReady, OH_AudioCaptureSourceType type) | 当OH_AVScreenCapture实例操作期间音频缓冲区可用时，系统将调用该函数指针通知应用程序。 从API版本12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。OH_AVScreenCapture_OnBufferAvailable将音频和 视频缓冲区回调统一为一个接口，通过bufferType参数区分缓冲区数据类型，同时增加了timestamp和userData参数支持， 开发者无需分别注册音频和视频回调。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *capture, bool isReady) | 当OH_AVScreenCapture实例操作期间视频缓冲区可用时，系统将调用该函数指针通知应用程序。 从API version 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCapture_OnStateChange)(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData) | 当OH_AVScreenCapture实例操作期间发生状态变更时，将调用函数指针。 需通过OH_AVScreenCapture相关接口设置该回调后方可生效，未设置时回调不会被调用。 此回调通过stateCode参数返回状态码。状态变更包括录屏开始、暂停、恢复、停止、中断及隐私场景切换等， 具体状态码见[OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode)。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCapture_OnError)(OH_AVScreenCapture *capture, int32_t errorCode, void *userData) | 当OH_AVScreenCapture实例操作期间发生错误时，系统将调用该函数指针通知应用程序。 使用前需将该回调注册到OH_AVScreenCapture实例中。应在录屏开始前注册该错误回调以便及时处理错误。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType, int64_t timestamp, void *userData) | 当OH_AVScreenCapture实例操作期间音频或视频缓冲区可用时，系统将调用该函数指针通知应用程序。 使用前需将该回调注册到OH_AVScreenCapture实例中。 该回调方法执行结束返回后，数据缓冲区不再有效，应用需要在回调内及时处理数据。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCapture_OnDisplaySelected)(OH_AVScreenCapture *capture, uint64_t displayId, void *userData) | 当录屏事件开始时，将调用函数指针。使用前需将该回调注册到OH_AVScreenCapture实例中。应在录屏开始前完成注册。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* capture, OH_AVScreenCaptureContentChangedEvent event, OH_Rect* area, void *userData) | 当OH_AVScreenCapture实例操作期间录屏内容变化时，将调用函数指针。使用前需将该回调注册到OH_AVScreenCapture实例中。 此回调通过event参数返回内容变更事件，具体事件值参见[OH_AVScreenCaptureContentChangedEvent](capi-native-avscreen-capture-base-h.md#oh_avscreencapturecontentchangedevent)枚举。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData) | 当用户在授权界面（选择界面）选择参数时，系统通过该回调函数将用户选择的参数返回给应用程序。 需要通过相关注册方法设置到OH_AVScreenCapture实例中。应在启动授权流程前完成注册以便接收用户选择结果。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
-| void (*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture, OH_PrivacyProtectInfo* privacyProtect, void *userData) | 当[OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)实例在运行过程中发生隐私保护事件时，将调用函数指针。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
+| uint32_t OH_AVScreenCapture_AutoPauseSceneSet | 屏幕录制自动暂停场景条件集声明。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
+| typedef uint32_t OH_AVScreenCapture_AutoPauseSceneSet | 屏幕录制自动暂停场景条件集声明。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture |
 
 ## 枚举类型说明
 
@@ -393,6 +386,25 @@ enum OH_CapturePickerMode
 | OH_CAPTURE_PICKER_MODE_WINDOW_AND_APP = 4 | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0 |
 | OH_CAPTURE_PICKER_MODE_SCREEN_AND_APP = 5 | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0 |
 | OH_CAPTURE_PICKER_MODE_SCREEN_WINDOW_AND_APP = 6 | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0 |
+
+### typedef  OH_AVScreenCapture_AutoPauseCaptureSceneEnum
+
+```c
+enum typedef  OH_AVScreenCapture_AutoPauseCaptureSceneEnum
+```
+
+**描述：**
+
+屏幕录制自动暂停场景枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAPTURE_AUTO_PAUSE_SCENE_NONE = 0 | 默认值，表示在任何场景下都不进行自动暂停。<br>**起始版本：** 26.1.0 |
+| OH_CAPTURE_AUTO_PAUSE_SCENE_SCREEN_FOLD_STATE_CHANGE = 1 << 0 | 屏幕折叠状态发生变化的场景。<br>**起始版本：** 26.1.0 |
 
 
 ## 函数说明

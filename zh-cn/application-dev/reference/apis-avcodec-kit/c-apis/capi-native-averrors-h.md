@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [Core](capi-core.md)
+**相关模块：** [Core](capi-avcodec-kit-core.md)
 
 ## 汇总
 
@@ -40,16 +40,16 @@ enum OH_AVErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_ERR_OK = 0 |  |
-| AV_ERR_NO_MEMORY = 1 |  |
-| AV_ERR_OPERATE_NOT_PERMIT = 2 |  |
-| AV_ERR_INVALID_VAL = 3 |  |
-| AV_ERR_IO = 4 |  |
-| AV_ERR_TIMEOUT = 5 |  |
-| AV_ERR_UNKNOWN = 6 |  |
-| AV_ERR_SERVICE_DIED = 7 |  |
-| AV_ERR_INVALID_STATE = 8 |  |
-| AV_ERR_UNSUPPORT = 9 |  |
+| AV_ERR_OK = 0 | 操作成功。<br>**起始版本：** 9 |
+| AV_ERR_NO_MEMORY = 1 | 无内存。<br>**起始版本：** 9 |
+| AV_ERR_OPERATE_NOT_PERMIT = 2 | 操作不允许。<br>**起始版本：** 9 |
+| AV_ERR_INVALID_VAL = 3 | 无效值。<br>**起始版本：** 9 |
+| AV_ERR_IO = 4 | IO错误。<br>**起始版本：** 9 |
+| AV_ERR_TIMEOUT = 5 | 超时错误。<br>**起始版本：** 9 |
+| AV_ERR_UNKNOWN = 6 | 未知错误。<br>**起始版本：** 9 |
+| AV_ERR_SERVICE_DIED = 7 | 服务死亡。<br>**起始版本：** 9 |
+| AV_ERR_INVALID_STATE = 8 | 当前状态不支持此操作。<br>**起始版本：** 9 |
+| AV_ERR_UNSUPPORT = 9 | 未支持的接口。<br>**起始版本：** 9 |
 | AV_ERR_INPUT_DATA_ERROR = 10 | &nbsp;输入数据错误。<br>**起始版本：** 12 |
 | AV_ERR_UNSUPPORTED_FORMAT = 11 | &nbsp;不支持的格式。<br>**起始版本：** 18 |
 | AV_ERR_EXTEND_START = 100 | 扩展错误码初始值。 |
@@ -69,7 +69,7 @@ enum OH_AVErrCode
 | AV_ERR_IO_SSL_SERVER_CERT_UNTRUSTED = 5411010 | &nbsp;SSL服务器证书不受信任。<br>**起始版本：** 14 |
 | AV_ERR_IO_UNSUPPORTED_REQUEST = 5411011 | &nbsp;网络协议不支持该请求。<br>**起始版本：** 14 |
 | AV_ERR_IO_CLEARTEXT_NOT_PERMITTED = 5411012 | &nbsp;不允许HTTP明文访问。<br>**起始版本：** 23 |
-| AV_ERR_STREAM_CHANGED = 5410005 | &nbsp;同步模式下流格式发生变更。 可以通过调用接口OH_VideoEncoder_GetOutputDescription（视频编码）、OH_VideoDecoder_GetOutputDescription（视频解码）、 OH_AudioCodec_GetOutputDescription音频编解码来获取更新后流的配置信息。<br>**起始版本：** 20 |
+| AV_ERR_STREAM_CHANGED = 5410005 | &nbsp;同步模式下流格式发生变更。 可以通过调用接口[OH_VideoEncoder_GetOutputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputdescription)（视频编码）、[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)（视频解码）、 [OH_AudioCodec_GetOutputDescription](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_getoutputdescription)音频编解码来获取更新后流的配置信息。<br>**起始版本：** 20 |
 | AV_ERR_TRY_AGAIN_LATER = 5410006 | &nbsp;同步模式下临时缓冲区查询失败，建议等待短暂间隔后重试操作。<br>**起始版本：** 20 |
 | AV_ERR_SUPER_RESOLUTION_UNSUPPORTED = 5410003 | &nbsp;该媒体源或者当前设备不支持超分。<br>**起始版本：** 23 |
 | AV_ERR_SUPER_RESOLUTION_NOT_ENABLED = 5410004 | &nbsp;未使能超分。<br>**起始版本：** 23 |

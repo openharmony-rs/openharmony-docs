@@ -12,7 +12,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [LowPowerVideoSink](capi-lowpowervideosink.md)
+**相关模块：** [LowPowerVideoSink](capi-media-kit-lowpowervideosink.md)
 
 ## 汇总
 
@@ -178,7 +178,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, co
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| [const OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md)* surface | 指向OHNativeWindow实例的指针。请参考[OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) |
+| [const OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md)* surface | 指向OHNativeWindow实例的指针。请参考[OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) |
 
 **返回值：**
 

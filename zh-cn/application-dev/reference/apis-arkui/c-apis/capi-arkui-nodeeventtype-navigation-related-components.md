@@ -6,7 +6,7 @@ Enumerates the event types supported by the NativeNode component.
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_node.h](capi-native-node-h.md)
 
@@ -66,7 +66,9 @@ NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL
 
 **描述：**
 
-Define the <b>ARKUI_NODE_SWIPER</b> to listen for Swiper page slide events. Instruction: 1. If the ArkUI_SwiperDisplayModeType attribute is set to ARKUI_SWIPER_DISPLAY_MODE_AUTO_LINEAR, the interface does not take effect. 2, circular scenario, set prevMargin and nextMargin attributes, so that Swiper front and back end display the same page, the interface does not take effect. 3. During page sliding, the ContentDidScrollCallback callback is triggered frame-by-frame for all pages in the window. For example, when there are two pages in the window with subscripts 0 and 1, callbacks with index values 0 and 1 are triggered twice per frame. 4, set the swipeByGroup parameter of the displayCount property to true if at least one page in the same group is in the window, A callback is triggered for all pages in the group. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains four parameters:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].i32: indicates the index of the Swiper component, which is consistent with the index change in the onChange event.</li> <li>ArkUI_NodeComponentEvent.data[1].i32: The index of a page in the window.</li> <li>ArkUI_NodeComponentEvent.data[2].f32: The proportion of page movement relative to the start position of the Swiper spindle (selectedIndex corresponds to the start position of the page).</li> <li>ArkUI_NodeComponentEvent.data[3].f32: The length of the page in the axis direction.</li> </ul>
+Define the <b>ARKUI_NODE_SWIPER</b> to listen for Swiper page slide events. Instruction: <br>
+1. If the ArkUI_SwiperDisplayModeType attribute is set to ARKUI_SWIPER_DISPLAY_MODE_AUTO_LINEAR, the interface does not take effect. 2, circular scenario, set prevMargin and nextMargin attributes, so that Swiper front and back end display the same page, the interface does not take effect. <br>
+3. During page sliding, the ContentDidScrollCallback callback is triggered frame-by-frame for all pages in the window. For example, when there are two pages in the window with subscripts 0 and 1, callbacks with index values 0 and 1 are triggered twice per frame. 4, set the swipeByGroup parameter of the displayCount property to true if at least one page in the same group is in the window, A callback is triggered for all pages in the group. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains four parameters:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].i32: indicates the index of the Swiper component, which is consistent with the index change in the onChange event.</li> <li>ArkUI_NodeComponentEvent.data[1].i32: The index of a page in the window.</li> <li>ArkUI_NodeComponentEvent.data[2].f32: The proportion of page movement relative to the start position of the Swiper spindle (selectedIndex corresponds to the start position of the page).</li> <li>ArkUI_NodeComponentEvent.data[3].f32: The length of the page in the axis direction.</li> </ul>
 
 **起始版本：** 12
 
@@ -78,7 +80,9 @@ NODE_SWIPER_EVENT_ON_SELECTED = 1001005
 
 **描述：**
 
-Defines the event triggered when the selected index of the <b>ARKUI_NODE_SWIPER</b> changed. This event is triggered under the following scenarios: 1. When the page switching animation starts after the user lifts their finger after swiping and the swipe meets the threshold for page turning. 2. When the page is changed programmatically using either <b>NODE_SWIPER_INDEX</b> or <b>NODE_SWIPER_SWIPE_TO_INDEX</b>. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].i32: index of the currently selected element.</li> </ul>
+Defines the event triggered when the selected index of the <b>ARKUI_NODE_SWIPER</b> changed. This event is triggered under the following scenarios: <br>
+1. When the page switching animation starts after the user lifts their finger after swiping and the swipe meets the threshold for page turning.<br>
+2. When the page is changed programmatically using either <b>NODE_SWIPER_INDEX</b> or <b>NODE_SWIPER_SWIPE_TO_INDEX</b>. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].i32: index of the currently selected element.</li> </ul>
 
 **起始版本：** 18
 
@@ -90,7 +94,9 @@ NODE_SWIPER_EVENT_ON_UNSELECTED = 1001006
 
 **描述：**
 
-Defines the event triggered when the selected index of the <b>ARKUI_NODE_SWIPER</b> changed. This event is triggered under the following scenarios: 1. When the page switching animation starts after the user lifts their finger after swiping and the swipe meets the threshold for page turning. 2. When the page is changed programmatically using either <b>NODE_SWIPER_INDEX</b> or <b>NODE_SWIPER_SWIPE_TO_INDEX</b>. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].i32: the index of the element becomes unselected.</li> </ul>
+Defines the event triggered when the selected index of the <b>ARKUI_NODE_SWIPER</b> changed. This event is triggered under the following scenarios: <br>
+1. When the page switching animation starts after the user lifts their finger after swiping and the swipe meets the threshold for page turning.<br>
+2. When the page is changed programmatically using either <b>NODE_SWIPER_INDEX</b> or <b>NODE_SWIPER_SWIPE_TO_INDEX</b>. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].i32: the index of the element becomes unselected.</li> </ul>
 
 **起始版本：** 18
 

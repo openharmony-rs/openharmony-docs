@@ -14,7 +14,7 @@ typedef struct OH_DecomposeOptions OH_DecomposeOptions
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [picture_native.h（系统接口）](capi-picture-native-h-sys.md)
 

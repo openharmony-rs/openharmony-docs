@@ -12,7 +12,7 @@ OH_PackingOptions is an image encoding option struct encapsulated at the native 
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [image_packer_native.h](capi-image-packer-native-h.md)
 

@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)
+**相关模块：** [CryptoAsymKeyApi](capi-crypto-architecture-kit-cryptoasymkeyapi.md)
 
 ## 汇总
 
@@ -199,7 +199,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 **起始版本：** 12
 
-**资源释放：** crypto_asym_key/OH_CryptoAsymKeyGenerator_Destroy {ctx}
+**资源释放：** [OH_CryptoAsymKeyGenerator_Destroy](#oh_cryptoasymkeygenerator_destroy)
 
 **参数：**
 
@@ -234,7 +234,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *
 
 **起始版本：** 12
 
-**资源释放：** crypto_asym_key/OH_CryptoKeyPair_Destroy {keyCtx}
+**资源释放：** [OH_CryptoKeyPair_Destroy](#oh_cryptokeypair_destroy)
 
 **参数：**
 
@@ -263,7 +263,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *c
 
 **起始版本：** 12
 
-**资源释放：** crypto_asym_key/OH_CryptoKeyPair_Destroy {keyCtx}
+**资源释放：** [OH_CryptoKeyPair_Destroy](#oh_cryptokeypair_destroy)
 
 **参数：**
 
@@ -413,7 +413,7 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 
 **起始版本：** 12
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -444,7 +444,7 @@ OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_P
 
 **起始版本：** 12
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {value}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -502,7 +502,7 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncoding
 
 **起始版本：** 20
 
-**资源释放：** crypto_asym_key/OH_CryptoPrivKeyEncodingParams_Destroy {ctx}
+**资源释放：** [OH_CryptoPrivKeyEncodingParams_Destroy](#oh_cryptoprivkeyencodingparams_destroy)
 
 **参数：**
 
@@ -583,7 +583,7 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_Encoding
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -615,7 +615,7 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {value}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -645,7 +645,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveNa
 
 **起始版本：** 20
 
-**资源释放：** crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
+**资源释放：** [OH_CryptoAsymKeySpec_Destroy](#oh_cryptoasymkeyspec_destroy)
 
 **参数：**
 
@@ -674,7 +674,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen
 
 **起始版本：** 20
 
-**资源释放：** crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
+**资源释放：** [OH_CryptoAsymKeySpec_Destroy](#oh_cryptoasymkeyspec_destroy)
 
 **参数：**
 
@@ -704,7 +704,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 
 **起始版本：** 20
 
-**资源释放：** crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
+**资源释放：** [OH_CryptoAsymKeySpec_Destroy](#oh_cryptoasymkeyspec_destroy)
 
 **参数：**
 
@@ -789,7 +789,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, Cryp
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {value}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -839,7 +839,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec 
 
 **起始版本：** 20
 
-**资源释放：** crypto_asym_key/OH_CryptoAsymKeyGeneratorWithSpec_Destroy {generator}
+**资源释放：** [OH_CryptoAsymKeyGeneratorWithSpec_Destroy](#oh_cryptoasymkeygeneratorwithspec_destroy)
 
 **参数：**
 
@@ -873,7 +873,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyG
 
 **起始版本：** 20
 
-**资源释放：** crypto_asym_key/OH_CryptoKeyPair_Destroy {keyPair}
+**资源释放：** [OH_CryptoKeyPair_Destroy](#oh_cryptokeypair_destroy)
 
 **参数：**
 
@@ -922,7 +922,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob
 
 **起始版本：** 20
 
-**资源释放：** crypto_asym_key/OH_CryptoEcPoint_Destroy {point}
+**资源释放：** [OH_CryptoEcPoint_Destroy](#oh_cryptoecpoint_destroy)
 
 **参数：**
 
@@ -958,7 +958,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {x}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -1021,7 +1021,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *f
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 

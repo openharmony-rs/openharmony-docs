@@ -12,7 +12,7 @@ Declare the audio session manager. The handle of audio session manager is used f
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_session_manager.h](capi-native-audio-session-manager-h.md)
 

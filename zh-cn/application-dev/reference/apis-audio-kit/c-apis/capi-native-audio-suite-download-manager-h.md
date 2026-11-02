@@ -10,5 +10,5 @@ Declare audio download manager related interfaces.
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 

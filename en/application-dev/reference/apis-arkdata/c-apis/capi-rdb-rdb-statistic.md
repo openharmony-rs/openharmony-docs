@@ -12,7 +12,7 @@ Describes the statistic of the cloud sync process.
 
 **Since**: 11
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

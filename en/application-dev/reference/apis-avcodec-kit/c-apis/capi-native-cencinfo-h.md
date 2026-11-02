@@ -10,7 +10,7 @@ The file declares the native APIs used to set decryption parameters.
 
 **Since**: 12
 
-**Related module**: [Multimedia_Drm](capi-multimedia-drm.md)
+**Related module**: [Multimedia_Drm](capi-avcodec-kit-multimedia-drm.md)
 
 ## Summary
 

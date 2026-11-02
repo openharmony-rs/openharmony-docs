@@ -10,7 +10,7 @@ Defines APIs of the **HiTraceMeter** and **HiTraceChain** modules for performanc
 
 **Since**: 10
 
-**Related module**: [HiTrace](capi-hitrace.md)
+**Related module**: [HiTrace](capi-performance-analysis-kit-hitrace.md)
 
 ## Summary
 
@@ -70,12 +70,6 @@ Defines APIs of the **HiTraceMeter** and **HiTraceChain** modules for performanc
 | [bool OH_HiTrace_IsTraceEnabled(void)](#oh_hitrace_istraceenabled) | - | Checks whether trace capture is enabled for an application. |
 | [int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback)](#oh_hitrace_registertracelistener) | - | Registers a callback to notify whether the application trace capture is enabled. This API uses an asynchronous callback to return the result. After the registration is successful, the callback is executed immediately. Subsequent callbacks are executed when the application trace capture status changes. Callbacks are stored in the application process. A maximum of 10 callbacks can be registered in a process. If the callback contains time-consuming operations, the registration or unregistration will be blocked (waiting for the callback execution to complete) when the callback is executed. Therefore, you are advised not to register or unregister callbacks containing time-consuming operations in the main thread of the application to avoid application freeze. |
 | [int32_t OH_HiTrace_UnregisterTraceListener(int32_t index)](#oh_hitrace_unregistertracelistener) | - | Unregisters the callback used to notify whether the application trace capture is enabled. You can use this function to unregister the callback function associated with the callback index returned by [OH_HiTrace_RegisterTraceListener](capi-trace-h.md#oh_hitrace_registertracelistener). |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_HiTrace_TraceEventListener)(bool traceStatus) | Defines a callback to listen for whether the trace capture is enabled.<br>**Since**: 22<br>**System capability**: SystemCapability.HiviewDFX.HiTrace |
 
 ## Enum type description
 

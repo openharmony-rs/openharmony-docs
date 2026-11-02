@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [effectKit](capi-effectkit.md)
+**相关模块：** [effectKit](capi-arkgraphics2d-effectkit.md)
 
 ## 汇总
 

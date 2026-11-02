@@ -12,7 +12,7 @@ OH_Pixelmap_ImageInfo是Native层封装的图像像素信息结构体，保存�
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [pixelmap_native.h](capi-pixelmap-native-h.md)
 

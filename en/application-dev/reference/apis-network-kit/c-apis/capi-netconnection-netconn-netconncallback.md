@@ -12,7 +12,7 @@ Defines a struct for the network status listener callback collection. All callba
 
 **Since**: 12
 
-**Related module**: [NetConnection](capi-netconnection.md)
+**Related module**: [NetConnection](capi-others-netconnection.md)
 
 **Header file**: [net_connection_type.h](capi-net-connection-type-h.md)
 

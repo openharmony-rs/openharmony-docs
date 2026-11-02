@@ -10,7 +10,7 @@ HiAppEvent模块为应用开发者提供的事件订阅和事件打点函数定�
 
 **起始版本：** 8
 
-**相关模块：** [HiAppEvent](capi-hiappevent.md)
+**相关模块：** [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 ## 汇总
 
@@ -21,7 +21,7 @@ HiAppEvent模块为应用开发者提供的事件订阅和事件打点函数定�
 | [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md) | - | 单个事件信息，包含事件领域、事件名称、事件类型和事件携带的用JSON格式字符串表示的自定义参数列表。 |
 | [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md) | - | 一组事件信息，用于管理和组织具有相同名称的事件信息。该结构体包含事件组的名称，按名称分组的单个事件信息数组，事件数组的长度。 |
 | [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | - | The OH_HiAppEvent_ExternalLog 结构体用于描述外部日志信息，包括 文件路径、生成时间戳、文件大小、系统事件类型。 |
-| [ParamList](capi-hiappevent-paramlist.md) | ParamList | 事件参数列表节点。用于组织和管理事件参数列表信息，通过ParamListNode可以构建参数链表，支持多参数事件的参数传递。 |
+| [ParamListNode*](capi-hiappevent-paramlistnode8h.md) | ParamList | 事件参数列表节点。用于组织和管理事件参数列表信息，通过ParamListNode可以构建参数链表，支持多参数事件的参数传递。 |
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md) | HiAppEvent_Watcher | 接收应用事件的事件观察者。用于对应用事件进行监听和处理。 |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md) | HiAppEvent_Processor | 应用事件上报的处理者。用于事件的上报和管理，开发者可自定义数据处理配置，满足不同的数据处理需求。 |
 | [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md) | HiAppEvent_Config | 设置系统事件自定义规格的配置对象。可以用来自定义系统事件规格参数，参数列表设置可参考应用事件的宏定义。 |
@@ -91,15 +91,6 @@ HiAppEvent模块为应用开发者提供的事件订阅和事件打点函数定�
 | [int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)](#oh_hiappevent_reportframeworkmemanomaly) | - | 报告应用框架内存占用异常的信息。 <br>该接口的调用频率限制为：1分钟最多能成功调用1次，超过频率限制会返回错误码HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED。 <br>当应用检测到应用框架内存占用异常，并且调用该接口返回操作成功时： <br>1. 若开发者已经订阅了事件领域domain为“HIVIEWDFX”，且事件名称names为“FW_MEM_ANOMALY”的应用事件，则应用中将会收到应用框架内存占用异常信息的回调。 <br>2. 若开发者未订阅该应用事件，则应用中将不会收到应用框架内存占用异常信息的回调。 |
 | [typedef void (\*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen)](#oh_hiappevent_externallogcapacityreachedcallback) | OH_HiAppEvent_ExternalLogCapacityReachedCallback | OH_HiAppEvent_RegExternalLogCapacityReachedCallback函数的参数 当外部日志目录容量达到时，作为回调函数。 |
 | [int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLogCapacityReachedCallback callback)](#oh_hiappevent_regexternallogcapacityreachedcallback) | - | 设置外部日志目录容量达到时的回调。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_HiAppEvent_OnReceive)( const char* domain, const struct HiAppEvent_AppEventGroup* appEventGroups, uint32_t groupLen) | 事件观察者接收到事件后，将触发该回调，将事件内容传递给调用方。注意：回调中的指针所指对象的生命周期仅限于该回调函数内，请勿在该回调函数外直接使用该指针，若需缓存该信息，请对指针指向的内容进行深拷贝。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiAppEvent |
-| void (*OH_HiAppEvent_OnTrigger)(int row, int size) | 事件观察者收到事件后，若事件观察者中未设置OH_HiAppEvent_OnReceive回调，将保存该事件。 当保存的事件满足通过[OH_HiAppEvent_SetTriggerCondition](capi-hiappevent-h.md#oh_hiappevent_settriggercondition)设定的条件后，将触发该回调。回调结束后，当新保存的事件消息再次满足设定的条件后，将再次进行回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiAppEvent |
-| void (*OH_HiAppEvent_OnTake)(const char* const *events, uint32_t eventLen) | 使用[OH_HiAppEvent_TakeWatcherData](capi-hiappevent-h.md#oh_hiappevent_takewatcherdata)获取事件观察者接收到的事件时，事件观察者接收到的事件将通过该回调函数传递给调用者。注意：回调中的指针所指对象的生命周期仅限于该回调函数内， 请勿在该回调函数外直接使用该指针。若需缓存该信息，请对指针指向的内容进行深拷贝。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiAppEvent |
-| void (*OH_HiAppEvent_ExternalLogCapacityReachedCallback)( OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen) | OH_HiAppEvent_RegExternalLogCapacityReachedCallback函数的参数 当外部日志目录容量达到时，作为回调函数。<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.HiviewDFX.HiAppEvent |
 
 ## 枚举类型说明
 
@@ -186,12 +177,12 @@ enum OH_HiAppEvent_SysEvent
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_APP_CRASH = 1 |  |
-| OH_APP_FREEZE = 2 |  |
-| OH_RESOURCE_OVERLIMIT = 3 |  |
-| OH_ADDRESS_SANITIZER = 4 |  |
-| OH_APP_HICOLLIE = 5 |  |
-| OH_CPU_USAGE_HIGH = 6 |  |
+| OH_APP_CRASH = 1 | 崩溃事件。<br>**起始版本：** 26.0.1 |
+| OH_APP_FREEZE = 2 | 应用冻屏事件。<br>**起始版本：** 26.0.1 |
+| OH_RESOURCE_OVERLIMIT = 3 | 资源泄漏事件。<br>**起始版本：** 26.0.1 |
+| OH_ADDRESS_SANITIZER = 4 | 地址越界事件。<br>**起始版本：** 26.0.1 |
+| OH_APP_HICOLLIE = 5 | 任务执行超时事件。<br>**起始版本：** 26.0.1 |
+| OH_CPU_USAGE_HIGH = 6 | CPU高负载事件。<br>**起始版本：** 26.0.1 |
 
 
 ## 函数说明
@@ -278,7 +269,7 @@ ParamList OH_HiAppEvent_CreateParamList(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 指向参数列表对象的指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 指向参数列表对象的指针。 |
 
 ### OH_HiAppEvent_DestroyParamList()
 
@@ -298,7 +289,7 @@ void OH_HiAppEvent_DestroyParamList(ParamList list)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 参数列表对象指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 参数列表对象指针。 |
 
 ### OH_HiAppEvent_AddBoolParam()
 
@@ -318,7 +309,7 @@ ParamList OH_HiAppEvent_AddBoolParam(ParamList list, const char* name, bool bool
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | bool boolean | 需要添加的布尔参数值。 |
 
@@ -326,7 +317,7 @@ ParamList OH_HiAppEvent_AddBoolParam(ParamList list, const char* name, bool bool
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddBoolArrayParam()
 
@@ -346,7 +337,7 @@ ParamList OH_HiAppEvent_AddBoolArrayParam(ParamList list, const char* name, cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const bool* booleans | 需要添加的布尔数组参数值。 |
 | int arrSize | 需要添加的参数数组大小。 |
@@ -355,7 +346,7 @@ ParamList OH_HiAppEvent_AddBoolArrayParam(ParamList list, const char* name, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddInt8Param()
 
@@ -375,7 +366,7 @@ ParamList OH_HiAppEvent_AddInt8Param(ParamList list, const char* name, int8_t nu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | int8_t num | 需要添加的int8_t参数值。 |
 
@@ -383,7 +374,7 @@ ParamList OH_HiAppEvent_AddInt8Param(ParamList list, const char* name, int8_t nu
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddInt8ArrayParam()
 
@@ -403,7 +394,7 @@ ParamList OH_HiAppEvent_AddInt8ArrayParam(ParamList list, const char* name, cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const int8_t* nums | 需要添加的int8_t数组参数值。 |
 | int arrSize | 需要添加的参数数组大小。 |
@@ -412,7 +403,7 @@ ParamList OH_HiAppEvent_AddInt8ArrayParam(ParamList list, const char* name, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddInt16Param()
 
@@ -432,7 +423,7 @@ ParamList OH_HiAppEvent_AddInt16Param(ParamList list, const char* name, int16_t 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | int16_t num | 需要添加的int16_t参数值。 |
 
@@ -440,7 +431,7 @@ ParamList OH_HiAppEvent_AddInt16Param(ParamList list, const char* name, int16_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddInt16ArrayParam()
 
@@ -460,7 +451,7 @@ ParamList OH_HiAppEvent_AddInt16ArrayParam(ParamList list, const char* name, con
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const int16_t* nums | 需要添加的int16_t数组参数值。 |
 | int arrSize | 需要添加的参数数组大小。 |
@@ -469,7 +460,7 @@ ParamList OH_HiAppEvent_AddInt16ArrayParam(ParamList list, const char* name, con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddInt32Param()
 
@@ -489,7 +480,7 @@ ParamList OH_HiAppEvent_AddInt32Param(ParamList list, const char* name, int32_t 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | int32_t num | 需要添加的int32_t参数值。 |
 
@@ -497,7 +488,7 @@ ParamList OH_HiAppEvent_AddInt32Param(ParamList list, const char* name, int32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddInt32ArrayParam()
 
@@ -517,7 +508,7 @@ ParamList OH_HiAppEvent_AddInt32ArrayParam(ParamList list, const char* name, con
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const int32_t* nums | 需要添加的int32_t数组参数值。 |
 | int arrSize | 需要添加的参数数组大小。 |
@@ -526,7 +517,7 @@ ParamList OH_HiAppEvent_AddInt32ArrayParam(ParamList list, const char* name, con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddInt64Param()
 
@@ -546,7 +537,7 @@ ParamList OH_HiAppEvent_AddInt64Param(ParamList list, const char* name, int64_t 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | int64_t num | 需要添加的int64_t参数值。 |
 
@@ -554,7 +545,7 @@ ParamList OH_HiAppEvent_AddInt64Param(ParamList list, const char* name, int64_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddInt64ArrayParam()
 
@@ -574,7 +565,7 @@ ParamList OH_HiAppEvent_AddInt64ArrayParam(ParamList list, const char* name, con
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const int64_t* nums | 需要添加的int64_t数组参数值。 |
 | int arrSize | 需要添加的参数数组大小。 |
@@ -583,7 +574,7 @@ ParamList OH_HiAppEvent_AddInt64ArrayParam(ParamList list, const char* name, con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddFloatParam()
 
@@ -603,7 +594,7 @@ ParamList OH_HiAppEvent_AddFloatParam(ParamList list, const char* name, float nu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | float num | 需要添加的float参数值。 |
 
@@ -611,7 +602,7 @@ ParamList OH_HiAppEvent_AddFloatParam(ParamList list, const char* name, float nu
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddFloatArrayParam()
 
@@ -631,7 +622,7 @@ ParamList OH_HiAppEvent_AddFloatArrayParam(ParamList list, const char* name, con
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const float* nums | 需要添加的float数组参数值。 |
 | int arrSize | 需要添加的参数数组大小。 |
@@ -640,7 +631,7 @@ ParamList OH_HiAppEvent_AddFloatArrayParam(ParamList list, const char* name, con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddDoubleParam()
 
@@ -660,7 +651,7 @@ ParamList OH_HiAppEvent_AddDoubleParam(ParamList list, const char* name, double 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | double num | 需要添加的double参数值。 |
 
@@ -668,7 +659,7 @@ ParamList OH_HiAppEvent_AddDoubleParam(ParamList list, const char* name, double 
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddDoubleArrayParam()
 
@@ -688,7 +679,7 @@ ParamList OH_HiAppEvent_AddDoubleArrayParam(ParamList list, const char* name, co
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const double* nums | 需要添加的double数组参数值。 |
 | int arrSize | 需要添加的参数数组大小。 |
@@ -697,7 +688,7 @@ ParamList OH_HiAppEvent_AddDoubleArrayParam(ParamList list, const char* name, co
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddStringParam()
 
@@ -717,7 +708,7 @@ ParamList OH_HiAppEvent_AddStringParam(ParamList list, const char* name, const c
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const char* str | 需要添加的字符串参数值。 |
 
@@ -725,7 +716,7 @@ ParamList OH_HiAppEvent_AddStringParam(ParamList list, const char* name, const c
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_AddStringArrayParam()
 
@@ -745,7 +736,7 @@ ParamList OH_HiAppEvent_AddStringArrayParam(ParamList list, const char* name, co
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) list | 需要添加参数的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) list | 需要添加参数的参数列表指针。 |
 | const char* name | 需要添加的参数名称。 |
 | const char * const *strs | 需要添加的字符串数组参数值。 |
 | int arrSize | 需要添加的参数数组大小。 |
@@ -754,7 +745,7 @@ ParamList OH_HiAppEvent_AddStringArrayParam(ParamList list, const char* name, co
 
 | 类型 | 说明 |
 | -- | -- |
-| [ParamList](capi-hiappevent-paramlist.md) | 添加参数后的参数列表指针。 |
+| [ParamList](capi-hiappevent-paramlistnode8h.md) | 添加参数后的参数列表指针。 |
 
 ### OH_HiAppEvent_Write()
 
@@ -777,7 +768,7 @@ int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType typ
 | const char* domain | 事件领域。开发者可以根据需要自定义事件领域。 事件领域名称支持数字、字母、下划线字符，需要以字母开头且不能以下划线结尾，长度非空且不超过32个字符。 |
 | const char* name | 事件名称。开发者可以根据需要自定义事件名称。 首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过48个字符。 |
 | enum EventType type | 事件类型，在[EventType](capi-hiappevent-h.md#eventtype)中定义。 |
-| [const ParamList](capi-hiappevent-paramlist.md) list | 事件参数列表，每个参数由参数名和参数值组成，其规格定义如下： <br>1、参数名为字符串类型。 首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。 <br>2、参数值支持字符串、数值、布尔、数组类型。字符串类型参数长度需在8 * 1024个字符以内，超出会做丢弃处理； 数组类型参数中的元素类型只能为字符串、数值、布尔中的一种，且元素个数需在100以内，超出会做丢弃处理。 <br>3、参数个数需在32个以内，超出的参数会做丢弃处理。 |
+| [const ParamList](capi-hiappevent-paramlistnode8h.md) list | 事件参数列表，每个参数由参数名和参数值组成，其规格定义如下： <br>1、参数名为字符串类型。 首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。 <br>2、参数值支持字符串、数值、布尔、数组类型。字符串类型参数长度需在8 * 1024个字符以内，超出会做丢弃处理； 数组类型参数中的元素类型只能为字符串、数值、布尔中的一种，且元素个数需在100以内，超出会做丢弃处理。 <br>3、参数个数需在32个以内，超出的参数会做丢弃处理。 |
 
 **返回值：**
 
@@ -1007,7 +998,10 @@ int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)
 
 **描述：**
 
-添加事件观察者的接口，事件观察者开始监听系统消息。<br> > **注意：**<br>> [OH_HiAppEvent_AddWatcher](capi-hiappevent-h.md#oh_hiappevent_addwatcher)接口涉及I/O操作。在对性能敏感的业务场景中，开发者应根据实际需要确定该接口是在主线程还是在子线程中调用。 > 订阅接口[OH_HiAppEvent_AddWatcher](capi-hiappevent-h.md#oh_hiappevent_addwatcher)传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。
+添加事件观察者的接口，事件观察者开始监听系统消息。<br>
+> **注意：**
+> [OH_HiAppEvent_AddWatcher](capi-hiappevent-h.md#oh_hiappevent_addwatcher)接口涉及I/O操作。在对性能敏感的业务场景中，开发者应根据实际需要确定该接口是在主线程还是在子线程中调用。
+> 订阅接口[OH_HiAppEvent_AddWatcher](capi-hiappevent-h.md#oh_hiappevent_addwatcher)传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 

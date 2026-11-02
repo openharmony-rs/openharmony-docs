@@ -12,7 +12,7 @@ struct OH_Drawing_RectSize {...}
 
 **起始版本：** 24
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

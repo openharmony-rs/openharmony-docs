@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_TextEditorStyledStringController OH_ArkUI_TextEditorStyl
 
 **起始版本：** 24
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [rich_editor.h](capi-rich-editor-h.md)
 

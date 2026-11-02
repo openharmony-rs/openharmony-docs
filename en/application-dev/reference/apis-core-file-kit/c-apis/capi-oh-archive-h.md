@@ -10,7 +10,7 @@ Provides archive APIs.
 
 **Since**: 26.0.0
 
-**Related module**: [Archive](capi-archive.md)
+**Related module**: [Archive](capi-core-file-kit-archive.md)
 
 ## Summary
 
@@ -20,10 +20,10 @@ Provides archive APIs.
 | -- | -- | -- |
 | [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md) | OH_Archive_StreamInfo | Stream compression information structure. |
 | [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md) | OH_Archive_Stream_Config | Stream compression configuration structure. |
-| [*OH_Archive_Writer_Ctx](capi-archive-8hoh-archive-writer-ctx.md) | *OH_Archive_Writer_Ctx | Archive Writer context structure. |
-| [*OH_Archive_Reader_Ctx](capi-archive-8hoh-archive-reader-ctx.md) | *OH_Archive_Reader_Ctx | Archive Reader context structure. |
-| [*OH_Archive_StreamWrite_Ctx](capi-archive-8hoh-archive-streamwrite-ctx.md) | *OH_Archive_StreamWrite_Ctx | Archive streamWrite context structure. |
-| [*OH_Archive_StreamRead_Ctx](capi-archive-8hoh-archive-streamread-ctx.md) | *OH_Archive_StreamRead_Ctx | Archive streamRead context structure. |
+| [ArchiveWriteCtx](capi-archive-archivewritectx.md) | *OH_Archive_Writer_Ctx | Archive Writer context structure. |
+| [ArchiveReadCtx](capi-archive-archivereadctx.md) | *OH_Archive_Reader_Ctx | Archive Reader context structure. |
+| [ArchiveStreamWriteCtx](capi-archive-archivestreamwritectx.md) | *OH_Archive_StreamWrite_Ctx | Archive streamWrite context structure. |
+| [ArchiveStreamReadCtx](capi-archive-archivestreamreadctx.md) | *OH_Archive_StreamRead_Ctx | Archive streamRead context structure. |
 
 ### Enum
 
@@ -72,13 +72,6 @@ Provides archive APIs.
 | [OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamread_update) | - | Submit decompression data. This interface will block when the memory pool is full |
 | [OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_Archive_StreamInfo *streamInfo)](#oh_archive_streamread_end) | - | End the decompression, flush all remaining data, and clean up memory |
 | [void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_destroy) | - | Destroy the decompression instance and release associated resources |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| OH_Archive_ProgressType (*OH_Archive_ProgressHandlerWithData)(int32_t progress, void *userData) | Defines a function pointer type OH_Archive_ProgressHandlerWithData for specifying the progress display handler.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.FileManagement.File.FileIO |
-| uint64_t (*OH_Archive_Stream_OutputHandler)(const void* data, uint64_t size, void* userData) | Function pointer type for user-defined callback function to handle compressed data.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.FileManagement.File.FileIO |
 
 ## Enum type description
 
@@ -251,7 +244,7 @@ Opens an archive file for reading.
 
 **Since**: 26.0.0
 
-**Resource release**: archive/OH_Archive_Reader_Close {return}
+**Resource release**: [OH_Archive_Reader_Close](#oh_archive_reader_close)
 
 **Parameters**:
 
@@ -364,7 +357,7 @@ Creates and opens an archive file.
 
 **Since**: 26.0.0
 
-**Resource release**: archive/OH_Archive_Writer_Close {return}
+**Resource release**: [OH_Archive_Writer_Close](#oh_archive_writer_close)
 
 **Parameters**:
 
@@ -592,7 +585,7 @@ Creates a compression instance.
 
 **Since**: 26.0.0
 
-**Resource release**: archive/OH_Archive_StreamWrite_Destroy {return}
+**Resource release**: [OH_Archive_StreamWrite_Destroy](#oh_archive_streamwrite_destroy)
 
 **Parameters**:
 
@@ -776,7 +769,7 @@ Create a decompression instance
 
 **Since**: 26.0.0
 
-**Resource release**: archive/OH_Archive_StreamRead_Destroy {return}
+**Resource release**: [OH_Archive_StreamRead_Destroy](#oh_archive_streamread_destroy)
 
 **Parameters**:
 

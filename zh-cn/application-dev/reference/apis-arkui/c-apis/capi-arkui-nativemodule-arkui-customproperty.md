@@ -12,7 +12,7 @@ typedef struct ArkUI_CustomProperty ArkUI_CustomProperty
 
 **起始版本：** 14
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_type.h](capi-native-type-h.md)
 

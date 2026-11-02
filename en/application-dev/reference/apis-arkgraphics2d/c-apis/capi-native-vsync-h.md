@@ -10,7 +10,7 @@ Defines the functions for obtaining and using a native vsync.
 
 **Since**: 9
 
-**Related module**: [NativeVsync](capi-nativevsync.md)
+**Related module**: [NativeVsync](capi-arkgraphics2d-nativevsync.md)
 
 ## Summary
 

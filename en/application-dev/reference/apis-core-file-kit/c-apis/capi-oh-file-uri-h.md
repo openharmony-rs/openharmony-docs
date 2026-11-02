@@ -10,7 +10,7 @@ uri verification and conversion This class is mainly for URI format verification
 
 **Since**: 12
 
-**Related module**: [fileUri](capi-fileuri.md)
+**Related module**: [fileUri](capi-core-file-kit-fileuri.md)
 
 ## Summary
 

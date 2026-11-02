@@ -10,7 +10,7 @@ Provides the context data structure [AbilityRuntime_Context](capi-abilityruntime
 
 **Since**: 24
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 
@@ -19,7 +19,7 @@ Provides the context data structure [AbilityRuntime_Context](capi-abilityruntime
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md) | - | Define the AbilityRuntime_Context structure type. |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) | AbilityRuntime_ContextHandle | Defines the pointer to AbilityRuntime_Context. |
+| [AbilityRuntime_Context*](capi-abilityruntime-abilityruntime-context8h.md) | AbilityRuntime_ContextHandle | Defines the pointer to AbilityRuntime_Context. |
 
 ### Function
 
@@ -59,7 +59,7 @@ Obtain the cache directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get cache directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get cache directory from. |
 | char* buffer | A pointer to a buffer that receives the cache directory of the context. |
 | int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -88,7 +88,7 @@ Obtain the temp directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get temp directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get temp directory from. |
 | char* buffer | A pointer to a buffer that receives the temp directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -117,7 +117,7 @@ Obtain the files directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get files directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get files directory from. |
 | char* buffer | A pointer to a buffer that receives the files directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -146,7 +146,7 @@ Obtain the database directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get database directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get database directory from. |
 | char* buffer | A pointer to a buffer that receives the database directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -175,7 +175,7 @@ Obtain the preferences directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get preferences directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get preferences directory from. |
 | char* buffer | A pointer to a buffer that receives the preferences directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -204,7 +204,7 @@ Obtain the bundle code directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get bundle code directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get bundle code directory from. |
 | char* buffer | A pointer to a buffer that receives the bundle code directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -233,7 +233,7 @@ Obtain the distributed files directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get distributed files directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get distributed files directory from. |
 | char* buffer | A pointer to a buffer that receives the distributed files directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -262,7 +262,7 @@ Obtain the resource directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get resource directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get resource directory from. |
 | char* buffer | A pointer to a buffer that receives the resource directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -291,7 +291,7 @@ Obtain the cloud file directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get cloud file directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get cloud file directory from. |
 | char* buffer | A pointer to a buffer that receives the cloud file directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -320,7 +320,7 @@ Gets the data encryption level of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get the area mode from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get the area mode from. |
 | [AbilityRuntime_AreaMode](capi-context-constant-h.md#abilityruntime_areamode)* areaMode | Pointer to receive the data encryption level. |
 
 **Returns**:
@@ -347,7 +347,7 @@ Sets the data encryption level of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to set the area mode for. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to set the area mode for. |
 | [AbilityRuntime_AreaMode](capi-context-constant-h.md#abilityruntime_areamode) areaMode | Data encryption level. |
 
 **Returns**:
@@ -374,7 +374,7 @@ Obtain the log file directory of the context.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get log file directory from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get log file directory from. |
 | char* buffer | A pointer to a buffer that receives the log file directory of the context. |
 | const int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |
@@ -403,7 +403,7 @@ Obtain the process name.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md) context | The context to get the process name from. |
+| [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | The context to get the process name from. |
 | char* buffer | A pointer to a buffer that receives the process name. |
 | int32_t bufferSize | The length of the buffer. |
 | int32_t* writeLength | The string length actually written to the buffer, when returning [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode). |

@@ -10,7 +10,7 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 
 **Since**: 12
 
-**Related module**: [UDMF](capi-udmf.md)
+**Related module**: [UDMF](capi-arkdata-udmf.md)
 
 ## Summary
 
@@ -142,15 +142,6 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 | [void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)](#oh_udmfdataloadinfo_settype) | - | Sets the data type in a data load information {@OH_UdmfDataLoadInfo}. |
 | [int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_getrecordcount) | - | Gets the record count from the {@OH_UdmfDataLoadInfo}. |
 | [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | Sets the record count to the {@OH_UdmfDataLoadInfo}. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data) | Defines the callback used to return progress information and data. When using it, check whether a null pointer is returned. Data is returned only when the progress reaches 100%.<br>**Since**: 15<br>**System capability**: SystemCapability.DistributedDataManager.UDMF.Core * |
-| OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo) | Indicates the callback function for loading data.<br>**Since**: 20<br>**System capability**: SystemCapability.DistributedDataManager.UDMF.Core * |
-| void (*UdmfData_Finalize)(void* context) | Defines the callback function used free the context.<br>**Since**: 13<br>**System capability**: SystemCapability.DistributedDataManager.UDMF.Core * |
-| void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type) | Defines a callback function used to obtain data by type.<br>**Since**: 13<br>**System capability**: SystemCapability.DistributedDataManager.UDMF.Core * |
 
 ## Enum type description
 
@@ -2135,7 +2126,7 @@ Creates an [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance.
 
 **Since**: 26.0.1
 
-**Resource release**: udmf/OH_UDMF_DestroySummary {return}
+**Resource release**: [OH_UDMF_DestroySummary](#oh_udmf_destroysummary)
 
 **Returns**:
 

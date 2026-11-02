@@ -12,7 +12,7 @@ typedef struct JSVM_PropertyHandlerConfigurationStruct {...} JSVM_PropertyHandle
 
 **起始版本：** 12
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**相关模块：** [JSVM](capi-others-jsvm.md)
 
 **所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
 
@@ -54,8 +54,8 @@ typedef struct JSVM_PropertyHandlerConfigurationStruct {...} JSVM_PropertyHandle
 | JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,
  JSVM_Value thisArg,
  JSVM_Value indexedPropertyData) | 通过获取对象上的所有索引属性而触发的回调函数。 |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) namedPropertyData | 命名属性回调使用的数据。 |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) indexedPropertyData | 索引属性回调使用的数据。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) namedPropertyData | 命名属性回调使用的数据。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) indexedPropertyData | 索引属性回调使用的数据。 |
 
 
 ### 成员函数

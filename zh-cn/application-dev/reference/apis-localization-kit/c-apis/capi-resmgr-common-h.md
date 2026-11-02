@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [resourcemanager](capi-resourcemanager.md)
+**相关模块：** [resourcemanager](capi-localization-kit-resourcemanager.md)
 
 ## 汇总
 

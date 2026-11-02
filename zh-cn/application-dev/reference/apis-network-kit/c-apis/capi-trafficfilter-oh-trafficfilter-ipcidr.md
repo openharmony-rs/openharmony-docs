@@ -12,7 +12,7 @@ CIDR（Classless Inter-Domain Routing，无类别域间路由）匹配的IP匹�
 
 **起始版本：** 26.0.0
 
-**相关模块：** [TrafficFilter](capi-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

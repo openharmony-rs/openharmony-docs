@@ -12,7 +12,7 @@ typedef struct OH_Rdb_Store {...} OH_Rdb_Store
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-others-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 

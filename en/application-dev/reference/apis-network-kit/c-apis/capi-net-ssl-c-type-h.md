@@ -10,7 +10,7 @@ Defines the data structures for the C APIs of the SSL/TLS certificate chain veri
 
 **Since**: 11
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 ## Summary
 

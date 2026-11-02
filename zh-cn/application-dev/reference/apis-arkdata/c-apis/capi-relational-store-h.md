@@ -12,7 +12,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 ## 汇总
 
@@ -45,8 +45,8 @@
 | [Rdb_ChangeType](#rdb_changetype) | Rdb_ChangeType | 描述数据变更类型。 |
 | [Rdb_SubscribeType](#rdb_subscribetype) | Rdb_SubscribeType | 描述订阅类型。 |
 | [Rdb_SyncMode](#rdb_syncmode) | Rdb_SyncMode | 表示数据库的同步模式。 |
-| [Rdb_Progress](#rdb_progress) | Rdb_Progress |  |
-| [Rdb_ProgressCode](#rdb_progresscode) | Rdb_ProgressCode |  |
+| [Rdb_Progress](#rdb_progress) | Rdb_Progress | 描述端云同步过程。 |
+| [Rdb_ProgressCode](#rdb_progresscode) | Rdb_ProgressCode | 表示端云同步过程的状态。 |
 
 ### 宏定义
 
@@ -138,16 +138,6 @@
 | [int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdb_batchinsertwithreturning) | - | 将批量数据插入目标表，并将变更信息输出到上下文中。 <br>一次最多可以插入32766个参数。如果参数数量超过上限，则返回错误代码RDB_E_INVALID_ARGS。 <br>参数数量计算方式为插入数据条数乘以插入数据时所有字段的并集大小。 <br>例如：插入数据的所有字段的并集大小为10则最多可以插入3276条数据（3276*10=32760）。 <br>请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。 |
 | [int OH_Rdb_UpdateWithReturning(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdb_updatewithreturning) | - | 根据指定条件更新数据库中的数据并输出更改信息到上下文。 |
 | [int OH_Rdb_DeleteWithReturning(OH_Rdb_Store *store, OH_Predicates *predicates, OH_RDB_ReturningContext *context)](#oh_rdb_deletewithreturning) | - | 根据指定条件从数据库中删除数据并输出更改信息到上下文。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t count) | 端云数据更改事件的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
-| void (*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **changeInfo, uint32_t count) | 端云数据更改事件的细节的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
-| void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progressDetails) | 端云同步进度的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
-| void (*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails) | 数据库端云同步的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
-| void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store) | 数据库异常处理的回调函数。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 
 ## 枚举类型说明
 
@@ -319,7 +309,11 @@ enum Rdb_Progress
 
 **描述：**
 
+描述端云同步过程。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 11
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -335,7 +329,11 @@ enum Rdb_ProgressCode
 
 **描述：**
 
+表示端云同步过程的状态。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 11
 
 | 枚举项 | 描述 |
 | -- | -- |

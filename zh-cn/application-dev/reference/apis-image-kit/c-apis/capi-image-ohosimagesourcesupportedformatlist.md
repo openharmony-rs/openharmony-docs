@@ -12,7 +12,7 @@ struct OhosImageSourceSupportedFormatList {...}
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-others-image.md)
 
 **所在头文件：** [image_source_mdk.h](capi-image-source-mdk-h.md)
 
@@ -22,9 +22,9 @@ struct OhosImageSourceSupportedFormatList {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| struct OhosImageSourceSupportedFormat** supportedFormatList = nullptr |  |
-| size_t size = 0 |  |
-| struct OhosImageSourceSupportedFormat** supportedFormatList |  |
-| size_t size |  |
+| struct OhosImageSourceSupportedFormat** supportedFormatList = nullptr | Image source supported format string list head.<br>**起始版本：** 10 |
+| size_t size = 0 | Image source supported format string list size.<br>**起始版本：** 10 |
+| [struct OhosImageSourceSupportedFormat*](capi-image-ohosimagesourcesupportedformat.md)* supportedFormatList | Image source supported format string list head.<br>**起始版本：** 10 |
+| size_t size | Image source supported format string list size.<br>**起始版本：** 10 |
 
 

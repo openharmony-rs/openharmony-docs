@@ -12,7 +12,7 @@ The struct describes the effect status information of a camera controller.
 
 **Since**: 20
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

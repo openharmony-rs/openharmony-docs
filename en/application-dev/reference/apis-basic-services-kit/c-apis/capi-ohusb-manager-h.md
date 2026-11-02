@@ -4,7 +4,7 @@
 
 Declares the C APIs for USB device management.
 
-**Include**: <BasicServicesKit/ohusb_manager.h>
+**File to Include**: <BasicServicesKit/ohusb_manager.h>
 
 **Library**: libohusb_manager.so
 
@@ -12,7 +12,7 @@ Declares the C APIs for USB device management.
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-usbmanager.md)
+**Related module**: [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 ## Summary
 
@@ -45,12 +45,6 @@ Declares the C APIs for USB device management.
 | [OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, OH_UsbManager_PermissionCallback callback, void *userContext)](#oh_usbmanager_requestpermission) | - | Requests permission to access the specified USB device asynchronously. <br>This may trigger a system dialog asking the user for permission. The function <br>returns immediately and the result is delivered via the callback. |
 | [OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe *pipe, int32_t *fd)](#oh_usbmanager_getfiledescriptor) | - | Obtains the file descriptor for the opened USB device pipe. The fd can be <br>used for low-level ioctl-based USB transfers. |
 | [OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pipe)](#oh_usbmanager_closepipe) | - | Closes the USB device pipe and releases the underlying resources. <br>The pipe must be obtained from [OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice). |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext) | Defines the callback type used to return the result of <br>[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission).<br>**Since**: 26.0.1<br>**System capability**: SystemCapability.USB.USBManager |
 
 ## Enum type description
 
@@ -114,7 +108,7 @@ Obtains the list of all connected USB devices. The caller must release the <br>r
 
 **Since**: 26.0.1
 
-**Resource release**: OH_UsbManager_FreeUsbDeviceList {devices}
+**Resource release**: [OH_UsbManager_FreeUsbDeviceList](#oh_usbmanager_freeusbdevicelist)
 
 **Parameters**:
 

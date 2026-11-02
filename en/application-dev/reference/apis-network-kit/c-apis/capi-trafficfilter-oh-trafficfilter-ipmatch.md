@@ -12,7 +12,7 @@ IP match condition
 
 **Since**: 26.0.0
 
-**Related module**: [TrafficFilter](capi-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-others-trafficfilter.md)
 
 **Header file**: [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 
@@ -22,8 +22,9 @@ IP match condition
 
 | Name | Description |
 | -- | -- |
-| OH_TrafficFilter_IPMatchType type | Match type<br>**Since**: 26.0.0 |
+| [OH_TrafficFilter_IPMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_ipmatchtype) type | Match type<br>**Since**: 26.0.0 |
 | bool invert | Whether to invert the match result<br>**Since**: 26.0.0 |
+| value | Match rule<br>**Since**: 26.0.0 |
 | value.single | Single IP address, used when type is OH_TRAFFICFILTER_IP_MATCH_SINGLE<br>**Since**: 26.0.0 |
 | value.cidr | CIDR match value, used when type is OH_TRAFFICFILTER_IP_MATCH_CIDR<br>**Since**: 26.0.0 |
 | value.range | IP range match value, used when type is OH_TRAFFICFILTER_IP_MATCH_RANGE<br>**Since**: 26.0.0 |

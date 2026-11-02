@@ -10,7 +10,7 @@ Defines the functions for obtaining and using a native displaySoloist.
 
 **Since**: 12
 
-**Related module**: [NativeDisplaySoloist](capi-nativedisplaysoloist.md)
+**Related module**: [NativeDisplaySoloist](capi-arkgraphics2d-nativedisplaysoloist.md)
 
 ## Summary
 
@@ -31,12 +31,6 @@ Defines the functions for obtaining and using a native displaySoloist.
 | [int32_t OH_DisplaySoloist_Start(OH_DisplaySoloist* displaySoloist, OH_DisplaySoloist_FrameCallback callback, void* data)](#oh_displaysoloist_start) | - | Sets a callback function for each frame. The callback function is triggered each time a VSync signal arrives. |
 | [int32_t OH_DisplaySoloist_Stop(OH_DisplaySoloist* displaySoloist)](#oh_displaysoloist_stop) | - | Stops requesting the next VSync signal and triggering the callback function. |
 | [int32_t OH_DisplaySoloist_SetExpectedFrameRateRange(OH_DisplaySoloist* displaySoloist, DisplaySoloist_ExpectedRateRange* range)](#oh_displaysoloist_setexpectedframeraterange) | - | Sets the expected frame rate range. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data) | Defines the pointer to an OH_DisplaySoloist callback function.<br>**Since**: 12<br>**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager |
 
 ## Function description
 

@@ -12,7 +12,7 @@ Defines the image composition information.
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_mdk.h](capi-image-mdk-h.md)
 

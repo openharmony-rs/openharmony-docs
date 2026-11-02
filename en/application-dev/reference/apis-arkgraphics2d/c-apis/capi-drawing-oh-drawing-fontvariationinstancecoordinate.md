@@ -12,7 +12,7 @@ Variable font attribute key-value pair.
 
 **Since**: 24
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_text_font_descriptor.h](capi-drawing-text-font-descriptor-h.md)
 

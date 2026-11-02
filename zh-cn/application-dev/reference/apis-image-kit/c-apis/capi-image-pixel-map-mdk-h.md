@@ -10,7 +10,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 ## 汇总
 
@@ -21,7 +21,6 @@
 | [OhosPixelMapInfos](capi-image-ohospixelmapinfos.md) | - | 用于描述PixelMap的基本属性信息，包括图片宽高、内存行字节数和像素格式。<br> 开发者在调用PixelMap属性查询相关接口时，可通过该结构体获取PixelMap的宽、高、行字节数及像素格式等信息， 便于统一读取和管理图片属性。适用于需要查询并使用PixelMap属性信息的场景。 |
 | [OhosPixelMapCreateOps](capi-image-ohospixelmapcreateops.md) | - | 用于定义创建PixelMap的设置选项，包含图片宽高、像素格式、是否可编辑、透明度类型及缩放类型信息， 适用于在Native层创建PixelMap时指定初始化属性的场景。 |
 | [NativePixelMap_](capi-image-nativepixelmap-.md) | - | 定义Native层PixelMap数据类型名称。作为Native层操作PixelMap的句柄类型， 适用于在C/C++层对PixelMap进行像素读写、属性查询、图像变换等操作的场景。 |
-| [NativePixelMap](capi-image-nativepixelmap.md) | NativePixelMap | 定义native层PixelMap数据类型名称。 |
 
 ### 枚举
 
@@ -150,7 +149,7 @@ int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info, voi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像头解码失败。<br> IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br> IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_DECODE_ABNORMAL：图像解码失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_INIT_ABNORMAL：图像初始化失败。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ENCODE_FAILED：图像添加像素位图失败。<br> IMAGE_RESULT_HW_DECODE_UNSUPPORT：图像不支持硬件解码。<br> IMAGE_RESULT_HW_DECODE_FAILED：硬件解码失败。<br> IMAGE_RESULT_INDEX_INVALID：ipc失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像头解码失败。<br> IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br> IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_DECODE_ABNORMAL：图像解码失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_INIT_ABNORMAL：图像初始化失败。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ENCODE_FAILED：图像添加像素位图失败。<br> IMAGE_RESULT_HW_DECODE_UNSUPPORT：图像不支持硬件解码。<br> IMAGE_RESULT_HW_DECODE_FAILED：硬件解码失败。<br> IMAGE_RESULT_INDEX_INVALID：ipc失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_CreatePixelMapWithStride()
 
@@ -181,7 +180,7 @@ int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。 |
 
 ### OH_PixelMap_CreateAlphaPixelMap()
 
@@ -209,7 +208,7 @@ int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_va
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像头解码失败。<br> IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br> IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_DECODE_ABNORMAL：图像解码失败。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_INIT_ABNORMAL：图像初始化失败。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ENCODE_FAILED：图像添加像素位图失败。<br> IMAGE_RESULT_HW_DECODE_UNSUPPORT：图像不支持硬件解码。<br> IMAGE_RESULT_HW_DECODE_FAILED：硬件解码失败。<br> IMAGE_RESULT_INDEX_INVALID：ipc失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像头解码失败。<br> IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br> IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_DECODE_ABNORMAL：图像解码失败。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_INIT_ABNORMAL：图像初始化失败。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ENCODE_FAILED：图像添加像素位图失败。<br> IMAGE_RESULT_HW_DECODE_UNSUPPORT：图像不支持硬件解码。<br> IMAGE_RESULT_HW_DECODE_FAILED：硬件解码失败。<br> IMAGE_RESULT_INDEX_INVALID：ipc失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_InitNativePixelMap()
 
@@ -236,7 +235,7 @@ NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)
 
 | 类型 | 说明 |
 | -- | -- |
-| [NativePixelMap*](capi-image-nativepixelmap.md) | 操作成功则返回NativePixelMap的指针；如果操作失败，则返回错误码。 |
+| [NativePixelMap*](capi-image-nativepixelmap-.md) | 操作成功则返回NativePixelMap的指针；如果操作失败，则返回错误码。 |
 
 ### OH_PixelMap_GetBytesNumberPerRow()
 
@@ -256,14 +255,14 @@ int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | int32_t* num | PixelMap对象的每行字节数指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。 |
 
 ### OH_PixelMap_GetIsEditable()
 
@@ -283,14 +282,14 @@ int32_t OH_PixelMap_GetIsEditable(const NativePixelMap* native, int32_t* editabl
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | int32_t* editable | PixelMap对象是否可编辑的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。 |
 
 ### OH_PixelMap_IsSupportAlpha()
 
@@ -310,14 +309,14 @@ int32_t OH_PixelMap_IsSupportAlpha(const NativePixelMap* native, int32_t* alpha)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | int32_t* alpha | 是否支持Alpha的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。 |
 
 ### OH_PixelMap_SetAlphaAble()
 
@@ -337,14 +336,14 @@ int32_t OH_PixelMap_SetAlphaAble(const NativePixelMap* native, int32_t alpha)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | int32_t alpha | Alpha通道。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。 |
 
 ### OH_PixelMap_GetDensity()
 
@@ -364,14 +363,14 @@ int32_t OH_PixelMap_GetDensity(const NativePixelMap* native, int32_t* density)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | int32_t* density | 像素密度指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。 |
 
 ### OH_PixelMap_SetDensity()
 
@@ -391,14 +390,14 @@ int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | int32_t density | 像素密度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。 |
 
 ### OH_PixelMap_SetOpacity()
 
@@ -418,14 +417,14 @@ int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | float opacity | 透明度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。 |
 
 ### OH_PixelMap_Scale()
 
@@ -445,7 +444,7 @@ int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | float x | 宽度的缩放比例。 |
 | float y | 高度的缩放比例。 |
 
@@ -453,7 +452,7 @@ int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_INIT_ABNORMAL：图像初始化失败。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_INIT_ABNORMAL：图像初始化失败。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_ScaleWithAntiAliasing()
 
@@ -473,7 +472,7 @@ int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | float x | 宽度的缩放比例。 |
 | float y | 高度的缩放比例。 |
 | [OH_PixelMap_AntiAliasingLevel](capi-image-pixel-map-mdk-h.md#oh_pixelmap_antialiasinglevel) level | 缩放算法。 |
@@ -502,7 +501,7 @@ int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | float x | 水平偏移量。 |
 | float y | 垂直偏移量。 |
 
@@ -510,7 +509,7 @@ int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_Rotate()
 
@@ -530,14 +529,14 @@ int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | float angle | 旋转角度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_Flip()
 
@@ -557,7 +556,7 @@ int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | int32_t x | 根据水平方向x轴进行图片翻转。 |
 | int32_t y | 根据垂直方向y轴进行图片翻转。 |
 
@@ -565,7 +564,7 @@ int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_Crop()
 
@@ -585,7 +584,7 @@ int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | int32_t x | 目标图片左上角的x坐标。 |
 | int32_t y | 目标图片左上角的y坐标。 |
 | int32_t width | 裁剪区域的宽度。 |
@@ -595,7 +594,7 @@ int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_GetImageInfo()
 
@@ -615,14 +614,14 @@ int32_t OH_PixelMap_GetImageInfo(const NativePixelMap* native, OhosPixelMapInfos
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | [OhosPixelMapInfos](capi-image-ohospixelmapinfos.md) *info | 图像信息指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_AccessPixels()
 
@@ -642,14 +641,14 @@ int32_t OH_PixelMap_AccessPixels(const NativePixelMap* native, void** addr)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 | void** addr | 用于指向的内存地址的双指针对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 ### OH_PixelMap_UnAccessPixels()
 
@@ -669,12 +668,12 @@ int32_t OH_PixelMap_UnAccessPixels(const NativePixelMap* native)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const NativePixelMap](capi-image-nativepixelmap.md)* native | NativePixelMap的指针。 |
+| [const NativePixelMap](capi-image-nativepixelmap-.md)* native | NativePixelMap的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_DECODE_FAILED：解码失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia能力失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br> IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存失败。<br> IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_MALLOC_ABNORMAL：图像分配内存失败。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_CROP：裁剪失败。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。<br> IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br> IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br> IMAGE_RESULT_ALPHA_TYPE_ERROR：透明度类型错误。<br> IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配类型错误。 |
 
 

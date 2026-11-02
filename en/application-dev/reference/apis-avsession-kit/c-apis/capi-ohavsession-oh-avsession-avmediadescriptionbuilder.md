@@ -12,7 +12,7 @@ Declaring the AVMediaDescription builder. The instance of builder is used for cr
 
 **Since**: 23
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-others-ohavsession.md)
 
 **Header file**: [native_avqueueitem.h](capi-native-avqueueitem-h.md)
 

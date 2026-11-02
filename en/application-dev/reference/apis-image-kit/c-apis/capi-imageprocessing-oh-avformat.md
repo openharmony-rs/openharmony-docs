@@ -12,7 +12,7 @@ Forward declaration of OH_AVFormat.
 
 **Since**: 13
 
-**Related module**: [ImageProcessing](capi-imageprocessing.md)
+**Related module**: [ImageProcessing](capi-others-imageprocessing.md)
 
 **Header file**: [image_processing_types.h](capi-image-processing-types-h.md)
 

@@ -12,7 +12,7 @@ typedef struct ArkUI_SelectedDragPreviewStyle ArkUI_SelectedDragPreviewStyle
 
 **起始版本：** 23
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_type.h](capi-native-type-h.md)
 

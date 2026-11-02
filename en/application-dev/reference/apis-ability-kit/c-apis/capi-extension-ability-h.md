@@ -10,7 +10,7 @@ Provides the type declaration of the ExtensionAbility callback function and the 
 
 **Since**: 24
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 
@@ -19,7 +19,7 @@ Provides the type declaration of the ExtensionAbility callback function and the 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AbilityRuntime_ExtensionInstance](capi-abilityruntime-abilityruntime-extensioninstance.md) | - | Define the AbilityRuntime_ExtensionInstance structure type. |
-| [AbilityRuntime_ExtensionInstanceHandle](capi-abilityruntime-abilityruntime-extensioninstancehandle.md) | AbilityRuntime_ExtensionInstanceHandle | Defines the pointer to AbilityRuntime_ExtensionInstance. |
+| [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-abilityruntime-extensioninstance8h.md) | AbilityRuntime_ExtensionInstanceHandle | Defines the pointer to AbilityRuntime_ExtensionInstance. |
 
 ### Function
 
@@ -32,7 +32,6 @@ Provides the type declaration of the ExtensionAbility callback function and the 
 | Name | Description |
 | -- | -- |
 | [AbilityRuntime_Extension_CreateFunc](capi-extension-ability-h.md#abilityruntime_extension_createfunc) OH_AbilityRuntime_OnNativeExtensionCreate | The name of the function that native extension ability instance looks for when launching its native code.<br>**Since**: 24<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
-| void AbilityRuntime_Extension_CreateFunc( AbilityRuntime_ExtensionInstanceHandle handle, const char *abilityName) | Defines the callback function type for ExtensionAbility creation. Callback function that must be implemented in the ExtensionAbility, which is used to instantiate the ExtensionAbility.<br>**Since**: 24<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
 
 ## Function description
 

@@ -10,7 +10,7 @@ Defines APIs for gamepads.
 
 **Since**: 21
 
-**Related module**: [GameController](capi-gamecontroller.md)
+**Related module**: [GameController](capi-game-controller-kit-gamecontroller.md)
 
 ## Summary
 

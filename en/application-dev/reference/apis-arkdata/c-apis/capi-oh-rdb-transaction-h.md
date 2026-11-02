@@ -10,7 +10,7 @@ Provides database transaction related functions and enumerations.
 
 **Since**: 18
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 ## Summary
 

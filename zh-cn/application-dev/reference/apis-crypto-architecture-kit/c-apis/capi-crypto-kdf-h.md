@@ -12,7 +12,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [CryptoKdfApi](capi-cryptokdfapi.md)
+**相关模块：** [CryptoKdfApi](capi-crypto-architecture-kit-cryptokdfapi.md)
 
 ## 汇总
 
@@ -84,7 +84,7 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 
 **起始版本：** 20
 
-**资源释放：** crypto_kdf/OH_CryptoKdfParams_Destroy {params}
+**资源释放：** [OH_CryptoKdfParams_Destroy](#oh_cryptokdfparams_destroy)
 
 **参数：**
 
@@ -166,7 +166,7 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 
 **起始版本：** 20
 
-**资源释放：** crypto_kdf/OH_CryptoKdf_Destroy {ctx}
+**资源释放：** [OH_CryptoKdf_Destroy](#oh_cryptokdf_destroy)
 
 **参数：**
 
@@ -200,7 +200,7 @@ OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParam
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {key}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 

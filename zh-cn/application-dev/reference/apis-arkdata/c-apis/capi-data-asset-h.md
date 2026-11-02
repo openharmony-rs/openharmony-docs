@@ -12,7 +12,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 ## 汇总
 

@@ -8,7 +8,7 @@ Provides the model file types and device types supported by MindSpore Lite.
 
 **Since**: 9
 
-**Related module**: [MindSpore](capi-mindspore.md)
+**Related module**: [MindSpore](capi-mind-spore-lite-kit-mindspore.md)
 
 ## Summary
 

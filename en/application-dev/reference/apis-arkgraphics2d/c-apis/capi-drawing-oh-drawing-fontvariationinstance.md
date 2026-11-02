@@ -12,7 +12,7 @@ Describes a variable font instance and stores the preset variable font style inf
 
 **Since**: 24
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_text_declaration.h](capi-drawing-text-declaration-h.md)
 

@@ -12,7 +12,7 @@ typedef struct OH_UDMF_Summary OH_UDMF_Summary
 
 **起始版本：** 26.0.1
 
-**相关模块：** [UDMF](capi-udmf.md)
+**相关模块：** [UDMF](capi-others-udmf.md)
 
 **所在头文件：** [udmf.h](capi-udmf-h.md)
 

@@ -10,7 +10,7 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -23,17 +23,17 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_NativeAnimateAPI_1](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md) | ArkUI_NativeAnimateAPI_1 | Declares a set of animation APIs of ArkUI on the native side. |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md) | ArkUI_AnimateOption | Defines the animation configuration, which is used to set the animation-related attributes. |
 | [ArkUI_Curve](capi-arkui-nativemodule-arkui-curve.md) | ArkUI_Curve | Defines an interpolation curve object, which is used to calculate the interpolation of an animation attribute value. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | ArkUI_CurveHandle | Defines the pointer to interpolation object of the curve. Curve interpolation is used to control how animation attribute values change over time. Different types of interpolation curves can achieve different animation transition effects. |
+| [ArkUI_Curve*](capi-arkui-nativemodule-arkui-curve8h.md) | ArkUI_CurveHandle | Defines the pointer to interpolation object of the curve. Curve interpolation is used to control how animation attribute values change over time. Different types of interpolation curves can achieve different animation transition effects. |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md) | ArkUI_KeyframeAnimateOption | Defines a keyframe animation option, which is used as an input parameter of the keyframe animation API. The related APIs must be called on the main thread. |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md) | ArkUI_AnimatorOption | Defines an animator animation option object, which is used to set animation attributes when creating an animator animation. |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) | ArkUI_AnimatorHandle | Defines the pointer to an animator object, which is used to operate and control the ArkUI animation object. |
+| [ArkUI_Animator*](capi-arkui-nativemodule-arkui-animator8h.md) | ArkUI_AnimatorHandle | Defines the pointer to an animator object, which is used to operate and control the ArkUI animation object. |
 | [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md) | ArkUI_AnimatorEvent | Defines the animator callback event object, which is used to receive events in the animation status change callback. |
 | [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md) | ArkUI_AnimatorOnFrameEvent | Defines the event data object for frame-by-frame callback during the playback of an animator animation. |
 | [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md) | ArkUI_TransitionEffect | Defines a transition effect object, which is used to configure the transition animation effect when a component appears or disappears. |
-| [*OH_ArkUI_PropertyAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-propertyanimationhandle.md) | *OH_ArkUI_PropertyAnimationHandle | Defines the handle to a property animation. |
-| [*OH_ArkUI_KeyframeAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-keyframeanimationhandle.md) | *OH_ArkUI_KeyframeAnimationHandle | Defines the handle to a keyframe animation. |
-| [*OH_ArkUI_PathAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-pathanimationhandle.md) | *OH_ArkUI_PathAnimationHandle | Defines the handle to a path animation. |
-| [*OH_ArkUI_AnimationGroupHandle](capi-arkui-nativemodule-8hoh-arkui-animationgrouphandle.md) | *OH_ArkUI_AnimationGroupHandle | Defines the handle to an animation group. |
+| [OH_ArkUI_PropertyAnimation](capi-arkui-nativemodule-oh-arkui-propertyanimation.md) | *OH_ArkUI_PropertyAnimationHandle | Defines the handle to a property animation. |
+| [OH_ArkUI_KeyframeAnimation](capi-arkui-nativemodule-oh-arkui-keyframeanimation.md) | *OH_ArkUI_KeyframeAnimationHandle | Defines the handle to a keyframe animation. |
+| [OH_ArkUI_PathAnimation](capi-arkui-nativemodule-oh-arkui-pathanimation.md) | *OH_ArkUI_PathAnimationHandle | Defines the handle to a path animation. |
+| [OH_ArkUI_AnimationGroup](capi-arkui-nativemodule-oh-arkui-animationgroup.md) | *OH_ArkUI_AnimationGroupHandle | Defines the handle to an animation group. |
 
 ### Function
 
@@ -611,7 +611,7 @@ Sets the interpolation curve for the animation.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration. <br>If **option** is set to **NULL**, the operation is invalid. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | Animation curve parameters. <br>If **value** is set to **NULL**, the operation is invalid. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve parameters. <br>If **value** is set to **NULL**, the operation is invalid. |
 
 ### OH_ArkUI_AnimateOption_GetICurve()
 
@@ -637,7 +637,7 @@ Obtains the interpolation curve of the animation.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Animation curve parameters. Returns **NULL** if the option parameter is invalid. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Animation curve parameters. Returns **NULL** if the option parameter is invalid. |
 
 ### OH_ArkUI_KeyframeAnimateOption_Create()
 
@@ -845,7 +845,7 @@ Sets the animation curve for a specific keyframe animation segment.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Pointer to a keyframe animation configuration. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | Animation curve to set. Default value: [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve). |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve to set. Default value: [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve). |
 | int32_t index | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states. <br>If the value of **index** is less than 0 or out of range, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
@@ -1013,7 +1013,7 @@ Obtains the animation curve of a specific state in a keyframe animation.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Animation curve. If the parameter is abnormal, **NULL** is returned. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Animation curve. If the parameter is abnormal, **NULL** is returned. |
 
 ### OH_ArkUI_AnimatorOption_Create()
 
@@ -1227,7 +1227,7 @@ Sets the interpolation curve for the animation of an animator.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | Interpolation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve) to obtain a smoother animation effect. <br>If **value** is set to **NULL**, the default curve [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve) to obtain a smoother animation effect. <br>If **value** is set to **NULL**, the default curve [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
 
 **Returns**:
 
@@ -1376,7 +1376,7 @@ Sets the keyframe curve type for the animation of an animator.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration. <br>If **option** is set to **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | Interpolation curve. Default value: **NULL**, indicating linear interpolation. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: **NULL**, indicating linear interpolation. |
 | int32_t index | Index of the keyframe. The value range is [0, keyframeSize-1], where **keyframeSize** indicates the number of keyframes. <br>If **index** is out of range, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
@@ -1539,7 +1539,7 @@ Obtains the interpolation curve of the animation of an animator.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Interpolation curve. If **option** is invalid, **NULL** is returned. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Interpolation curve. If **option** is invalid, **NULL** is returned. |
 
 ### OH_ArkUI_AnimatorOption_GetBegin()
 
@@ -1698,7 +1698,7 @@ Obtains the interpolation curve for a keyframe in the animation of an animator.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Interpolation curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Interpolation curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_AnimatorEvent_GetUserData()
 
@@ -1908,7 +1908,7 @@ Resets the configuration of the animator animation.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Pointer to the animator animation object. When **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Pointer to the animator animation object. When **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an animator animation configuration. If **option** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
@@ -1935,7 +1935,7 @@ Starts the animator animation. This API must be called on the main thread.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
@@ -1961,7 +1961,7 @@ Finishes the animator animation. The animation jumps to the end state and then s
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
@@ -1987,7 +1987,7 @@ Pauses the animation of an animator.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
@@ -2013,7 +2013,7 @@ Cancels the animation of an animator.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
@@ -2039,7 +2039,7 @@ Plays this animation in reverse order.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | Animator animation object. If **animatorHandle** is **NULL**, the error code ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
 **Returns**:
 
@@ -2071,7 +2071,7 @@ Implements initialization for the interpolation curve, which is used to create a
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateStepsCurve()
 
@@ -2098,7 +2098,7 @@ Creates a step curve.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateCubicBezierCurve()
 
@@ -2127,7 +2127,7 @@ Creates a cubic Bezier curve.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateSpringCurve()
 
@@ -2156,7 +2156,7 @@ Creates a spring curve. The curve shape is determined by the spring parameters, 
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateSpringMotion()
 
@@ -2188,7 +2188,7 @@ Creates a spring animation curve. If multiple spring animations are applied to t
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateResponsiveSpringMotion()
 
@@ -2220,7 +2220,7 @@ Creates a responsive spring animation curve. It is a special case of **springMot
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateInterpolatingSpring()
 
@@ -2253,7 +2253,7 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_CreateCustomCurve()
 
@@ -2280,7 +2280,7 @@ Creates a custom curve.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | Pointer to the interpolation object of the curve. Returns **NULL** if a parameter error occurs. |
 
 ### OH_ArkUI_Curve_DisposeCurve()
 
@@ -2300,7 +2300,7 @@ Disposes of a custom curve.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curveHandle | Pointer to the interpolation object of the curve. The operation is invalid when **curveHandle** is **NULL**. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curveHandle | Pointer to the interpolation object of the curve. The operation is invalid when **curveHandle** is **NULL**. |
 
 ### OH_ArkUI_CreateOpacityTransitionEffect()
 
@@ -2481,7 +2481,7 @@ Create an identity transition effect. Identity transition effect performs no vis
 
 **Since**: 26.0.0
 
-**Resource release**: native_animate/OH_ArkUI_TransitionEffect_Dispose {return}
+**Resource release**: [OH_ArkUI_TransitionEffect_Dispose](#oh_arkui_transitioneffect_dispose)
 
 **Returns**:
 
@@ -2581,7 +2581,7 @@ Creates a property animation for a specific animatable property.<br> <b>property
 
 **Since**: 26.0.1
 
-**Resource release**: native_animate/OH_ArkUI_NativeModule_PropertyAnimation_Destroy {return}
+**Resource release**: [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](#oh_arkui_nativemodule_propertyanimation_destroy)
 
 **Parameters**:
 
@@ -2854,7 +2854,7 @@ Sets the animation curve for a property animation.<br> The actual effective anim
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] Indicates the animation curve. <b>NULL</b> means inheriting the group's curve set by [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve). This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] Indicates the animation curve. <b>NULL</b> means inheriting the group's curve set by [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve). This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. |
 
 **Returns**:
 
@@ -2881,7 +2881,7 @@ Obtains the animation curve of a property animation.<br> This API returns only t
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. <b>NULL</b> means the curve has not been set on this animation and will inherit the group's curve at runtime. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. <b>NULL</b> means the curve has not been set on this animation and will inherit the group's curve at runtime. |
 
 **Returns**:
 
@@ -3070,7 +3070,7 @@ Sets the target render node for a property animation.<br> The target node is the
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
 
 **Returns**:
 
@@ -3097,7 +3097,7 @@ Obtains the target render node of a property animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] Indicates the property animation handle. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
 
 **Returns**:
 
@@ -3119,7 +3119,7 @@ Creates a keyframe animation for a specific animatable property.<br> The keyfram
 
 **Since**: 26.0.1
 
-**Resource release**: native_animate/OH_ArkUI_NativeModule_KeyframeAnimation_Destroy {return}
+**Resource release**: [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](#oh_arkui_nativemodule_keyframeanimation_destroy)
 
 **Parameters**:
 
@@ -3343,7 +3343,7 @@ Sets the animation curves for keyframes.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
-| [const ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *value | [in] Indicates the array of curve handles. This API does not take ownership of the curve handles; the caller must ensure all curves remain valid when using this handle. |
+| [const ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *value | [in] Indicates the array of curve handles. This API does not take ownership of the curve handles; the caller must ensure all curves remain valid when using this handle. |
 | int32_t size | [in] Indicates the number of curves. The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. |
 
 **Returns**:
@@ -3372,7 +3372,7 @@ Sets the animation curve for a keyframe at the specified index.
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
 | int32_t index | [in] Indicates the keyframe index. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] Indicates the animation curve. <b>NULL</b> means inheriting the group's curve set by [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve). This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. The actual effective animation curve is determined by priority: if the curve is set for the keyframe (via this API or [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves)), that value is used; otherwise, the curve set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] Indicates the animation curve. <b>NULL</b> means inheriting the group's curve set by [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve). This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. The <b>springMotion</b>, <b>responsiveSpringMotion</b>, and <b>interpolatingSpring</b> curves are not supported because they do not have effective duration settings. The actual effective animation curve is determined by priority: if the curve is set for the keyframe (via this API or [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves)), that value is used; otherwise, the curve set on the animation group via [OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve) is used; if neither is set, [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used. |
 
 **Returns**:
 
@@ -3400,7 +3400,7 @@ Obtains the curve of a keyframe at the specified index.<br> This API returns onl
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
 | int32_t index | [in] Indicates the keyframe index. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. <b>NULL</b> means the curve has not been set for the keyframe and will inherit the group's curve at runtime. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. <b>NULL</b> means the curve has not been set for the keyframe and will inherit the group's curve at runtime. |
 
 **Returns**:
 
@@ -3697,7 +3697,7 @@ Sets the target render node for a keyframe animation.<br> The target node is the
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
 
 **Returns**:
 
@@ -3724,7 +3724,7 @@ Obtains the target render node of a keyframe animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] Indicates the keyframe animation handle. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
 
 **Returns**:
 
@@ -3746,7 +3746,7 @@ Creates a path animation that moves the component along a geometric path.<br> Th
 
 **Since**: 26.0.1
 
-**Resource release**: native_animate/OH_ArkUI_NativeModule_PathAnimation_Destroy {return}
+**Resource release**: [OH_ArkUI_NativeModule_PathAnimation_Destroy](#oh_arkui_nativemodule_pathanimation_destroy)
 
 **Parameters**:
 
@@ -4123,7 +4123,7 @@ Sets the target render node for a path animation.<br> The target node is the ren
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PathAnimationHandle animation | [in] Indicates the path animation handle. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) targetNode | [in] Indicates the render node to animate. <b>NULL</b> means inheriting the group's default target. The default value is <b>NULL</b>. |
 
 **Returns**:
 
@@ -4150,7 +4150,7 @@ Obtains the target render node of a path animation.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_PathAnimationHandle animation | [in] Indicates the path animation handle. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means inheriting the group's default target. |
 
 **Returns**:
 
@@ -4172,7 +4172,7 @@ Creates an animation group.
 
 **Since**: 26.0.1
 
-**Resource release**: native_animate/OH_ArkUI_NativeModule_AnimationGroup_Destroy {return}
+**Resource release**: [OH_ArkUI_NativeModule_AnimationGroup_Destroy](#oh_arkui_nativemodule_animationgroup_destroy)
 
 **Returns**:
 
@@ -4327,7 +4327,7 @@ Sets the animation curve for an animation group.<br> The group's curve serves as
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] Indicates the animation curve. <b>NULL</b> means the group uses the default [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) at runtime. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] Indicates the animation curve. <b>NULL</b> means the group uses the default [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) at runtime. This API does not take ownership of the curve handle; the caller must ensure the curve remains valid when using this handle. |
 
 **Returns**:
 
@@ -4354,7 +4354,7 @@ Obtains the animation curve of an animation group.<br> This API returns only the
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. <b>NULL</b> means the curve has not been set on this group and defaults to [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) at runtime. |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] Receives a borrowed curve handle; the caller must not destroy it. <b>NULL</b> means the curve has not been set on this group and defaults to [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) at runtime. |
 
 **Returns**:
 
@@ -4625,7 +4625,7 @@ Sets the default target render node for an animation group.<br> The default targ
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) targetNode | [in] Indicates the default render node to animate. <b>NULL</b> means no group-level default. The default value is <b>NULL</b>. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) targetNode | [in] Indicates the default render node to animate. <b>NULL</b> means no group-level default. The default value is <b>NULL</b>. |
 
 **Returns**:
 
@@ -4652,7 +4652,7 @@ Obtains the default target render node of an animation group.
 | Parameter | Description |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means no group-level default is set. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) *outBorrowedTargetNode | [out] Receives a borrowed render-node handle; the caller must not destroy it. <b>NULL</b> means no group-level default is set. |
 
 **Returns**:
 
@@ -4759,7 +4759,7 @@ Registers an animation group on a UIContext with a specified key and starts play
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_ContextHandle context | [in] Indicates the [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) (UIContext) on which the animation group is registered and played. |
+| ArkUI_ContextHandle context | [in] Indicates the [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) (UIContext) on which the animation group is registered and played. |
 | OH_ArkUI_AnimationGroupHandle group | [in] Indicates the animation group handle. |
 | const char *key | [in] Indicates the key used to identify the animation group on the UIContext. The key is a user-defined string that must be unique within the same UIContext. If an animation group has already been registered with the same key, the system removes the previous one before registering the new one. |
 

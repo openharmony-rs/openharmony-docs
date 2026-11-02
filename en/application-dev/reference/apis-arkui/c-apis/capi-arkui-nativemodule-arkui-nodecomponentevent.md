@@ -12,7 +12,7 @@ Defines the parameter type of a component callback event, which is used to pass 
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 

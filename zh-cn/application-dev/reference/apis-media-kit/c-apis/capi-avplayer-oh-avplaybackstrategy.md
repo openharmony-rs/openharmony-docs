@@ -12,7 +12,7 @@ typedef struct OH_AVPlaybackStrategy OH_AVPlaybackStrategy
 
 **起始版本：** 23
 
-**相关模块：** [AVPlayer](capi-avplayer.md)
+**相关模块：** [AVPlayer](capi-others-avplayer.md)
 
 **所在头文件：** [avplayer_base.h](capi-avplayer-base-h.md)
 

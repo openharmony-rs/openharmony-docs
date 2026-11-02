@@ -12,7 +12,7 @@ typedef struct OH_ComposeOptions OH_ComposeOptions
 
 **Since**: 23
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [picture_native.h](capi-picture-native-h.md)
 

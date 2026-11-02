@@ -12,7 +12,7 @@ typedef struct InputMethod_AttachOptions InputMethod_AttachOptions
 
 **起始版本：** 12
 
-**相关模块：** [InputMethod](capi-inputmethod.md)
+**相关模块：** [InputMethod](capi-others-inputmethod.md)
 
 **所在头文件：** [inputmethod_attach_options_capi.h](capi-inputmethod-attach-options-capi-h.md)
 

@@ -12,7 +12,7 @@ Defines the parameters required for obtaining the pasteboard data and paste prog
 
 **Since**: 15
 
-**Related module**: [Pasteboard](capi-pasteboard.md)
+**Related module**: [Pasteboard](capi-others-pasteboard.md)
 
 **Header file**: [oh_pasteboard.h](capi-oh-pasteboard-h.md)
 

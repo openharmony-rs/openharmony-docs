@@ -1,11 +1,11 @@
 # C API<!--c-performanceanalysiskit-->
 
 - Module<!--performanceanalysiskit-module-->
-    - [HiTrace](capi-hitrace.md)
-    - [HiCollie](capi-hicollie.md)
-    - [HiLog](capi-hilog.md)
-    - [HiDebug](capi-hidebug.md)
-    - [HiAppEvent](capi-hiappevent.md)
+    - [HiTrace](capi-performance-analysis-kit-hitrace.md)
+    - [HiCollie](capi-performance-analysis-kit-hicollie.md)
+    - [HiLog](capi-performance-analysis-kit-hilog.md)
+    - [HiDebug](capi-performance-analysis-kit-hidebug.md)
+    - [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 - Header file<!--performanceanalysiskit-headerfile-->
     - [trace.h](capi-trace-h.md)
     - [hicollie.h](capi-hicollie-h.md)
@@ -33,13 +33,13 @@
     - [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)
     - [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)
     - [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)
-    - [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md)
+    - [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md)
     - [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage8h.md)
     - [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)
     - [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md)
     - [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md)
     - [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md)
-    - [ParamList](capi-hiappevent-paramlist.md)
+    - [ParamListNode*](capi-hiappevent-paramlistnode8h.md)
     - [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)
     - [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)
     - [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md)

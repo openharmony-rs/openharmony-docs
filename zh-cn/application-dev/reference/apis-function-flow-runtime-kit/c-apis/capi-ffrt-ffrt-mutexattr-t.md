@@ -12,7 +12,7 @@ typedef struct ffrt_mutexattr_t {...} ffrt_mutexattr_t
 
 **起始版本：** 10
 
-**相关模块：** [FFRT](capi-ffrt.md)
+**相关模块：** [FFRT](capi-others-ffrt.md)
 
 **所在头文件：** [type_def.h](capi-type-def-h.md)
 
@@ -22,6 +22,6 @@ typedef struct ffrt_mutexattr_t {...} ffrt_mutexattr_t
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | 互斥锁属性的内部存储。请勿直接访问，通过ffrt_mutexattr_init初始化。 |
+| long storage | 互斥锁属性的内部存储。请勿直接访问，通过[ffrt_mutexattr_init](capi-mutex-h.md#ffrt_mutexattr_init)初始化。 |
 
 

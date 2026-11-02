@@ -12,7 +12,7 @@ Defines a processor for application events.
 
 **Since**: 18
 
-**Related module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-others-hiappevent.md)
 
 **Header file**: [hiappevent.h](capi-hiappevent-h.md)
 

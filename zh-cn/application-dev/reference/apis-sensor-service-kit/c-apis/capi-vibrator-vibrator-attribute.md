@@ -12,7 +12,7 @@ Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用�
 
 **起始版本：** 11
 
-**相关模块：** [Vibrator](capi-vibrator.md)
+**相关模块：** [Vibrator](capi-others-vibrator.md)
 
 **所在头文件：** [vibrator_type.h](capi-vibrator-type-h.md)
 

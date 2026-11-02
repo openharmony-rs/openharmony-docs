@@ -10,7 +10,7 @@ Declare the interface for parsing audio and video media data.
 
 **Since**: 10
 
-**Related module**: [AVDemuxer](capi-avdemuxer.md)
+**Related module**: [AVDemuxer](capi-avcodec-kit-avdemuxer.md)
 
 ## Summary
 
@@ -37,13 +37,6 @@ Declare the interface for parsing audio and video media data.
 | [OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfoCallback callback)](#oh_avdemuxer_setmediakeysysteminfocallback) | - | Sets a callback for obtaining the media key system information.(Deprecated in API14) |
 | [OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, Demuxer_MediaKeySystemInfoCallback callback)](#oh_avdemuxer_setdemuxermediakeysysteminfocallback) | - | Sets a callback for obtaining the media key system information. |
 | [OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#oh_avdemuxer_getmediakeysysteminfo) | - | Obtains the media key system information. The media key system information can be obtained only after [Demuxer_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback) or [DRM_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#drm_mediakeysysteminfocallback) is successfully invoked. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo) | Defines a pointer to the callback function for DRM_MediaKeySystemInfo. No demuxer instance is returned. This callback function applies to the scenario where a single demuxer instance is used.<br> You need to call [OH_AVDemuxer_SetMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setmediakeysysteminfocallback) to set the callback function as a callback.<br>**Since**: 11<br>**Deprecated**: 14<br>**Replaced by**: Demuxer_MediaKeySystemInfoCallback<br>**System capability**: SystemCapability.Multimedia.Media.Spliter |
-| void (*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo) | Defines a pointer to the callback function for [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md). A demuxer instance is returned. This callback function applies to the scenario where multiple demuxer instances are used.<br> You need to call [OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setdemuxermediakeysysteminfocallback) to set the callback function as a callback. This callback function is recommended.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.Spliter |
 
 ## Function description
 

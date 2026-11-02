@@ -4,7 +4,7 @@
 
 The file declares the native APIs used for audio decoding.
 
-**Include**: <multimedia/player_framework/native_avcodec_audiodecoder.h>
+**File to Include**: <multimedia/player_framework/native_avcodec_audiodecoder.h>
 
 **Library**: libnative_media_adec.so
 
@@ -12,7 +12,7 @@ The file declares the native APIs used for audio decoding.
 
 **Since**: 9
 
-**Related module**: [AudioDecoder](capi-audiodecoder.md)
+**Related module**: [AudioDecoder](capi-avcodec-kit-audiodecoder.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@ Stream compression information structure.
 
 **Since**: 26.0.0
 
-**Related module**: [Archive](capi-archive.md)
+**Related module**: [Archive](capi-others-archive.md)
 
 **Header file**: [oh_archive.h](capi-oh-archive-h.md)
 

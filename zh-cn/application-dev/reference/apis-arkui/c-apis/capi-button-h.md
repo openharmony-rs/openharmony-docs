@@ -10,7 +10,7 @@ Provides Button node type definitions for <b>NativeNode</b> APIs.
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -38,9 +38,9 @@ enum ArkUI_ButtonType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BUTTON_TYPE_NORMAL = 0 |  |
-| ARKUI_BUTTON_TYPE_CAPSULE |  |
-| ARKUI_BUTTON_TYPE_CIRCLE |  |
-| ARKUI_BUTTON_ROUNDED_RECTANGLE = 8 |  |
+| ARKUI_BUTTON_TYPE_NORMAL = 0 | 普通按钮，默认不带圆角。<br>**起始版本：** 12 |
+| ARKUI_BUTTON_TYPE_CAPSULE | 胶囊型按钮，圆角默认为高度的一半。<br>**起始版本：** 12 |
+| ARKUI_BUTTON_TYPE_CIRCLE | 圆形按钮。<br>**起始版本：** 12 |
+| ARKUI_BUTTON_ROUNDED_RECTANGLE = 8 | 圆角矩形按钮。<br>**起始版本：** 19 |
 
 

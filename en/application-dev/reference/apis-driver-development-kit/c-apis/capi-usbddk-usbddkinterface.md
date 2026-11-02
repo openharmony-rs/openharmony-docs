@@ -12,7 +12,7 @@ Defines a USB DDK API, which is a collection of alternate settings for a particu
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-others-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

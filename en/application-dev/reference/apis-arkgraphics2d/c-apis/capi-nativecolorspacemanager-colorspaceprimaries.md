@@ -12,7 +12,7 @@ Provides the declaration for the color primary structure, which is used to store
 
 **Since**: 13
 
-**Related module**: [NativeColorSpaceManager](capi-nativecolorspacemanager.md)
+**Related module**: [NativeColorSpaceManager](capi-others-nativecolorspacemanager.md)
 
 **Header file**: [native_color_space_manager.h](capi-native-color-space-manager-h.md)
 

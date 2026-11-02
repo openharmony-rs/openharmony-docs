@@ -10,7 +10,7 @@ Declares the SCSI Peripheral DDK APIs used by the host to access the SCSI device
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 ## Summary
 

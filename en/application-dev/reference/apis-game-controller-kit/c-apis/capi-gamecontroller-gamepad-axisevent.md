@@ -12,7 +12,7 @@ Defines gamepad axis events.
 
 **Since**: 21
 
-**Related module**: [GameController](capi-gamecontroller.md)
+**Related module**: [GameController](capi-others-gamecontroller.md)
 
 **Header file**: [game_pad_event.h](capi-game-pad-event-h.md)
 

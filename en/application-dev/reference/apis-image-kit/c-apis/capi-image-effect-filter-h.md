@@ -10,7 +10,7 @@ Declares the functions for setting filter parameters, registering custom filter 
 
 **Since**: 12
 
-**Related module**: [ImageEffect](capi-imageeffect.md)
+**Related module**: [ImageEffect](capi-image-kit-imageeffect.md)
 
 ## Summary
 
@@ -83,16 +83,6 @@ Declares the functions for setting filter parameters, registering custom filter 
 | [ImageEffect_ErrorCode OH_EffectFilter_Render(OH_EffectFilter *filter, OH_PixelmapNative *inputPixelmap, OH_PixelmapNative *outputPixelmap)](#oh_effectfilter_render) | - | Render the filter effects. The function is designed to support the same input and output image |
 | [ImageEffect_ErrorCode OH_EffectFilter_RenderWithTextureId(OH_EffectFilter *filter, int32_t inputTextureId, int32_t outputTextureId, int32_t colorSpace)](#oh_effectfilter_renderwithtextureid) | - | Applies the filter effect using texture IDs. This function does not support using the same texture for for both input and output. |
 | [ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)](#oh_effectfilter_release) | - | Clear the internal resources of the OH_EffectFilter and destroy the OH_EffectFilter instance |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| bool (*OH_EffectFilterDelegate_SetValue)(OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) | When executing the method of [OH_EffectFilter_SetValue](capi-image-effect-filter-h.md#oh_effectfilter_setvalue) for the delegate filter, the function pointer will be called for checking the parameters is valid for the delegate filter<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
-| void (*OH_EffectFilterDelegate_PushData)(OH_EffectFilter *filter, OH_EffectBufferInfo *info) | Actively execute this callback function at the end of invoking the method of [OH_EffectFilterDelegate_Render](capi-image-effect-filter-h.md#oh_effectfilterdelegate_render) for passing possible new OH_EffectBufferInfo to the next filter. It should be noted that when passing new OH_EffectBufferInfo, the buffer in OH_EffectBufferInfo needs to be manually released after the execution of the function ends<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
-| bool (*OH_EffectFilterDelegate_Render)(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) | When the method of OH_ImageEffect_Start is executed on delegate filter that is contained in OH_ImageEffect, the function pointer will be called for rendering the delegate filter effects<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
-| bool (*OH_EffectFilterDelegate_Save)(OH_EffectFilter *filter, char **info) | When the method of OH_ImageEffect_Save is executed on delegate filter that is contained in OH_ImageEffect, the function pointer will be called for serializing the delegate filter parameters<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
-| OH_EffectFilter *(*OH_EffectFilterDelegate_Restore)(const char *info) | When the method of OH_ImageEffect_Restore is executed on delegate filter that is contained in OH_ImageEffect, the function pointer will be called for deserializing the delegate filter parameters<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
 
 ## Enum type description
 

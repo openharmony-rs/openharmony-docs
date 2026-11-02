@@ -12,7 +12,7 @@ Define the OH_RDB_TransOptions structure type.
 
 **Since**: 18
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [oh_rdb_transaction.h](capi-oh-rdb-transaction-h.md)
 

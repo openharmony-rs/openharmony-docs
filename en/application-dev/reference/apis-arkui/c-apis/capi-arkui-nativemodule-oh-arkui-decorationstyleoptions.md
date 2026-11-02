@@ -12,7 +12,7 @@ Defines decoration style options, which are used to add decorative line effects 
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text_common.h](capi-text-common-h.md)
 

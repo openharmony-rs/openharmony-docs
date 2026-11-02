@@ -10,7 +10,7 @@ Provides URI-based file and directory authorization and persistence, permission 
 
 **Since**: 12
 
-**Related module**: [fileShare](capi-fileshare.md)
+**Related module**: [fileShare](capi-core-file-kit-fileshare.md)
 
 ## Summary
 

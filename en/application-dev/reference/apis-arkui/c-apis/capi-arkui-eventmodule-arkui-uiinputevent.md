@@ -12,7 +12,7 @@ Represents a UI input event in ArkUI. The event APIs in **ArkUI_EventModule** pa
 
 **Since**: 12
 
-**Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)
+**Related module**: [ArkUI_EventModule](capi-others-arkui-eventmodule.md)
 
 **Header file**: [ui_input_event.h](capi-ui-input-event-h.md)
 

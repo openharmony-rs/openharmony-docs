@@ -12,7 +12,7 @@ struct DateTimeRule {...}
 
 **起始版本：** 22
 
-**相关模块：** [i18n](capi-i18n.md)
+**相关模块：** [i18n](capi-others-i18n.md)
 
 **所在头文件：** [timezone.h](capi-timezone-h.md)
 

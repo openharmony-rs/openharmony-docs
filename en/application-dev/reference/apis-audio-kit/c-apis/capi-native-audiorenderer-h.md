@@ -10,7 +10,7 @@ Declare audio stream related interfaces for output type.
 
 **Since**: 10
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 
@@ -18,27 +18,27 @@ Declare audio stream related interfaces for output type.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)](#oh_audiorenderer_release) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)](#oh_audiorenderer_start) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)](#oh_audiorenderer_pause) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)](#oh_audiorenderer_stop) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)](#oh_audiorenderer_flush) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* renderer, OH_AudioStream_State* state)](#oh_audiorenderer_getcurrentstate) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* renderer, int32_t* rate)](#oh_audiorenderer_getsamplingrate) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, uint32_t* streamId)](#oh_audiorenderer_getstreamid) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* renderer, int32_t* channelCount)](#oh_audiorenderer_getchannelcount) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* renderer, OH_AudioStream_SampleFormat* sampleFormat)](#oh_audiorenderer_getsampleformat) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer, OH_AudioStream_LatencyMode* latencyMode)](#oh_audiorenderer_getlatencymode) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* renderer, OH_AudioStream_Usage* usage)](#oh_audiorenderer_getrendererinfo) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer, OH_AudioStream_EncodingType* encodingType)](#oh_audiorenderer_getencodingtype) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)](#oh_audiorenderer_getframeswritten) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_gettimestamp) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)](#oh_audiorenderer_getframesizeincallback) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)](#oh_audiorenderer_getspeed) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)](#oh_audiorenderer_setspeed) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, float volume)](#oh_audiorenderer_setvolume) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* renderer, float volume, int32_t durationMs)](#oh_audiorenderer_setvolumewithramp) | - |  |
-| [OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, float* volume)](#oh_audiorenderer_getvolume) | - |  |
+| [OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)](#oh_audiorenderer_release) | - | Request to release the renderer stream. |
+| [OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)](#oh_audiorenderer_start) | - | Request to start the renderer stream. |
+| [OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)](#oh_audiorenderer_pause) | - | Request to pause the renderer stream. |
+| [OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)](#oh_audiorenderer_stop) | - | Request to stop renderer stream. |
+| [OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)](#oh_audiorenderer_flush) | - | Request to flush the renderer stream. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* renderer, OH_AudioStream_State* state)](#oh_audiorenderer_getcurrentstate) | - | Query the current state of the renderer client. This function will return the renderer state without updating the state. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* renderer, int32_t* rate)](#oh_audiorenderer_getsamplingrate) | - | Query the sample rate value of the renderer client This function will return the renderer sample rate value without updating the state. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, uint32_t* streamId)](#oh_audiorenderer_getstreamid) | - | Query the stream id of the renderer client. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* renderer, int32_t* channelCount)](#oh_audiorenderer_getchannelcount) | - | Query the channel count of the renderer client. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* renderer, OH_AudioStream_SampleFormat* sampleFormat)](#oh_audiorenderer_getsampleformat) | - | Query the sample format of the renderer client. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer, OH_AudioStream_LatencyMode* latencyMode)](#oh_audiorenderer_getlatencymode) | - | Query the latency mode of the renderer client. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* renderer, OH_AudioStream_Usage* usage)](#oh_audiorenderer_getrendererinfo) | - | Query the renderer info of the renderer client. The renderer info includes [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) value. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer, OH_AudioStream_EncodingType* encodingType)](#oh_audiorenderer_getencodingtype) | - | Query the encoding type of the renderer client. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)](#oh_audiorenderer_getframeswritten) | - | Query the number of frames that have been written since the stream was created. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_gettimestamp) | - | Query the time at which a particular frame was presented. It is recommended to use new api [OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo) because it adapts to playback speed change, but current api does not. The increasing speed for position will not change when speed become fast. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)](#oh_audiorenderer_getframesizeincallback) | - | Query the frame size in callback, it is a fixed length that the stream want to be filled for each callback. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)](#oh_audiorenderer_getspeed) | - | Query the playback speed of the stream client |
+| [OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)](#oh_audiorenderer_setspeed) | - | Set the playback speed of the stream client |
+| [OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, float volume)](#oh_audiorenderer_setvolume) | - | Set volume of current renderer. |
+| [OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* renderer, float volume, int32_t durationMs)](#oh_audiorenderer_setvolumewithramp) | - | Changes the volume with ramp for a duration. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, float* volume)](#oh_audiorenderer_getvolume) | - | Get the volume of current renderer. |
 | [OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* renderer, uint32_t samplePos, OH_AudioRenderer_OnMarkReachedCallback callback, void* userData)](#oh_audiorenderer_setmarkposition) | - | Set mark position on current renderer. Calling this function will overwrite the mark postion which has already set. |
 | [OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)](#oh_audiorenderer_cancelmark) | - | Cancel mark which has set by [OH_AudioRenderer_SetMarkPosition](capi-native-audiorenderer-h.md#oh_audiorenderer_setmarkposition). |
 | [OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* renderer, uint32_t* count)](#oh_audiorenderer_getunderflowcount) | - | Gets the underflow count on this stream. |
@@ -60,15 +60,6 @@ Declare audio stream related interfaces for output type.
 | [OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH_AudioStream_LatencyType type, int32_t* latencyMs)](#oh_audiorenderer_getlatency) | - | Gets the estimated audio latency in milliseconds for current audio route. For wireless connection audio devices cases, the latency result may not be very accurate, system just provides it for reference only. The real-time buffer status is also not taken into consideration, so it is recommended to get it only at the beginning of audio playback, and do not call th function very frequently because it may be blocked by route change. Applications should still use [OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo) to handle A/V sync after audio data has been output to hardware. |
 | [OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_AudioRenderer* renderer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)](#oh_audiorenderer_setindependentaudiosessionstrategy) | - | Configure audio session strategy and behavior parameters to adjust the focus preemption policy. Each time you call this interface to set parameters, you need to call the interface [OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start) again for the settings to take effect. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint) | Called when an interrupt event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnInterruptEvent.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error) | Called when an error event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnError.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioRenderer_OnFastStatusChange)( OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status ) | Callback function of fast status change event for audio renderer.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize) | Callback function of write data on Render.<br> Different with OH_AudioRenderer_OnWriteDataCallback, this function allows the caller to write partial data which ranges from 0 to the callback buffer size. If 0 is returned, the callback thread will sleep for a while. Otherwise, the system may callback again immediately.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-
 ## Function description
 
 ### OH_AudioRenderer_Release()
@@ -79,6 +70,8 @@ OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 
 **Description**
 
+Request to release the renderer stream.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -87,7 +80,7 @@ OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
@@ -103,6 +96,8 @@ OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 
 **Description**
 
+Request to start the renderer stream.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -111,7 +106,7 @@ OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | reference created by OH_AudioStreamBuilder |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | reference created by OH_AudioStreamBuilder |
 
 **Returns**:
 
@@ -127,6 +122,8 @@ OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 
 **Description**
 
+Request to pause the renderer stream.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -135,7 +132,7 @@ OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
@@ -151,6 +148,8 @@ OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 
 **Description**
 
+Request to stop renderer stream.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -159,7 +158,7 @@ OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
@@ -175,6 +174,8 @@ OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 
 **Description**
 
+Request to flush the renderer stream.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -183,7 +184,7 @@ OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
@@ -199,6 +200,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* rendere
 
 **Description**
 
+Query the current state of the renderer client.This function will return the renderer state without updating the state.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -207,7 +210,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* rendere
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioStream_State](capi-native-audiostream-base-h.md#oh_audiostream_state)* state | Pointer to a variable that will be set for the state value. |
 
 **Returns**:
@@ -224,6 +227,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* rendere
 
 **Description**
 
+Query the sample rate value of the renderer clientThis function will return the renderer sample rate value without updating the state.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -232,7 +237,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* rendere
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int32_t* rate | Pointer to a variable that will be set for the sampling rate. |
 
 **Returns**:
@@ -249,6 +254,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, u
 
 **Description**
 
+Query the stream id of the renderer client.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -257,7 +264,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, u
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | uint32_t* streamId | Pointer to a variable that will be set for the stream id. |
 
 **Returns**:
@@ -274,6 +281,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* rendere
 
 **Description**
 
+Query the channel count of the renderer client.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -282,7 +291,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* rendere
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int32_t* channelCount | Pointer to a variable that will be set for the channel count. |
 
 **Returns**:
@@ -299,6 +308,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* rendere
 
 **Description**
 
+Query the sample format of the renderer client.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -307,7 +318,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* rendere
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioStream_SampleFormat](capi-native-audiostream-base-h.md#oh_audiostream_sampleformat)* sampleFormat | Pointer to a variable that will be set for the sample format. |
 
 **Returns**:
@@ -324,6 +335,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer
 
 **Description**
 
+Query the latency mode of the renderer client.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -332,7 +345,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode)* latencyMode | Pointer to a variable that will be set for the latency mode. |
 
 **Returns**:
@@ -349,6 +362,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* rendere
 
 **Description**
 
+Query the renderer info of the renderer client.The renderer info includes [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) value.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -357,7 +372,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* rendere
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)* usage | Pointer to a variable that will be set for the stream usage. |
 
 **Returns**:
@@ -374,6 +389,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* rendere
 
 **Description**
 
+Query the encoding type of the renderer client.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -382,7 +399,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* rendere
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype)* encodingType | Pointer to a variable that will be set for the encoding type. |
 
 **Returns**:
@@ -399,6 +416,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 
 **Description**
 
+Query the number of frames that have been written since the stream was created.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -407,7 +426,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int64_t* frames | Pointer to a variable that will be set for the frame count number. |
 
 **Returns**:
@@ -424,6 +443,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 **Description**
 
+Query the time at which a particular frame was presented.It is recommended to use new api [OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo)because it adapts to playback speed change, but current api does not. Theincreasing speed for position will not change when speed become fast.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -432,7 +453,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | clockid_t clockId | CLOCK_MONOTONIC |
 | int64_t* framePosition | Pointer to a variable to receive the position. |
 | int64_t* timestamp | Pointer to a variable to receive the timestamp, unit is nanosecond. |
@@ -451,6 +472,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 
 **Description**
 
+Query the frame size in callback, it is a fixed length that the stream want to be filled for each callback.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -459,7 +482,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int32_t* frameSize | Pointer to a variable that will be set for the frame size. |
 
 **Returns**:
@@ -476,6 +499,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, floa
 
 **Description**
 
+Query the playback speed of the stream client
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 11
@@ -484,7 +509,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, floa
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float* speed | Pointer to a variable to receive the playback speed. |
 
 **Returns**:
@@ -501,6 +526,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, floa
 
 **Description**
 
+Set the playback speed of the stream client
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 11
@@ -509,7 +536,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, floa
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float speed | The playback speed, from 0.25 to 4.0. |
 
 **Returns**:
@@ -526,6 +553,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, flo
 
 **Description**
 
+Set volume of current renderer.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -534,7 +563,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, flo
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float volume | Volume to set which changes from 0.0 to 1.0. |
 
 **Returns**:
@@ -551,6 +580,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* rende
 
 **Description**
 
+Changes the volume with ramp for a duration.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -559,7 +590,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* rende
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float volume | Volume to set which changes from 0.0 to 1.0. |
 | int32_t durationMs | Duration for volume ramp, in millisecond. |
 
@@ -577,6 +608,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 
 **Description**
 
+Get the volume of current renderer.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -585,7 +618,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float* volume | Pointer to a variable to receive the volume. |
 
 **Returns**:
@@ -612,7 +645,7 @@ Set mark position on current renderer. Calling this function will overwrite the 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | uint32_t samplePos | Mark position in samples. |
 | [OH_AudioRenderer_OnMarkReachedCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_onmarkreachedcallback) callback | Callback used when the samplePos has reached. |
 | void* userData | User data which is passed by user. |
@@ -641,7 +674,7 @@ Cancel mark which has set by [OH_AudioRenderer_SetMarkPosition](capi-native-audi
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 
 **Returns**:
 
@@ -667,7 +700,7 @@ Gets the underflow count on this stream.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | uint32_t* count | Pointer to a variable to receive the underflow count number. |
 
 **Returns**:
@@ -694,7 +727,7 @@ Query the channel layout of the renderer client.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)* channelLayout | Pointer to a variable to receive the channel layout |
 
 **Returns**:
@@ -721,7 +754,7 @@ Query current audio effect mode.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioStream_AudioEffectMode](capi-native-audiostream-base-h.md#oh_audiostream_audioeffectmode)* effectMode | Pointer to a variable to receive current audio effect mode |
 
 **Returns**:
@@ -748,7 +781,7 @@ Set current audio effect mode.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioStream_AudioEffectMode](capi-native-audiostream-base-h.md#oh_audiostream_audioeffectmode) effectMode | Audio effect mode that will be set for the stream |
 
 **Returns**:
@@ -775,7 +808,7 @@ Get the privacy of this stream.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioStream_PrivacyType](capi-native-audiostream-base-h.md#oh_audiostream_privacytype)* privacy | Pointer to a variable which receives the results. |
 
 **Returns**:
@@ -802,7 +835,7 @@ Set silent and mix with other streams for this stream.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | bool on | The silent and mix with other streams mode. true: set the silent mode and mix with other streams. false: unset the silent mode, current stream will trigger the audio focus internally. |
 
 **Returns**:
@@ -829,7 +862,7 @@ Query silent and mix with other streams status for this stream.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | bool* on | Pointer to the silent and mix with other streams status. |
 
 **Returns**:
@@ -856,7 +889,7 @@ Temporarily changes the current audio device This function applys on audiorender
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Renderer generated by OH_AudioStreamBuilder_GenerateRenderer() |
 | [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) deviceType | The target device. The available deviceTypes are: EARPIECE: Built-in earpiece SPEAKER: Built-in speaker DEFAULT: System default output device |
 
 **Returns**:
@@ -883,7 +916,7 @@ Query the timestamp at which a particular frame was presented in clock monotonic
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer() |
 | int64_t* framePosition | Pointer to a variable to receive the position |
 | int64_t* timestamp | Pointer to a variable to receive the timestamp |
 
@@ -911,7 +944,7 @@ Called when an interrupt event occurs in an AudioRenderer instance. This functio
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Pointer to the AudioRenderer instance that triggers the callback. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to the AudioRenderer instance that triggers the callback. |
 | void* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetRendererInterruptCallback. |
 | [OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) type | Type of force that causes the interrupt event. |
 | [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) hint | Hint provided along with the interrupt event. |
@@ -939,7 +972,7 @@ Called when an error event occurs in an AudioRenderer instance. This function is
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Pointer to the AudioRenderer instance that triggers the callback. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to the AudioRenderer instance that triggers the callback. |
 | void* userData | Pointer to the user data passed when setting the callback via OH_AudioStreamBuilder_SetRendererErrorCallback. |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | Specific error information. |
 
@@ -966,7 +999,7 @@ Gets audio renderer running status, check if it works in fast status.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Reference created by OH_AudioStreamBuilder_GenerateRenderer. |
 | [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus)* status | Pointer to a variable to receive the status. |
 
 **Returns**:
@@ -993,7 +1026,7 @@ Callback function of fast status change event for audio renderer.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | Pointer to an audio renderer instance for which this callback occurs. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance for which this callback occurs. |
 | void* userData | Userdata which is passed by register. |
 | [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | Current fast status. |
 
@@ -1015,7 +1048,7 @@ Sets the loudness gain of current renderer. The default loudness gain is 0.0dB. 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRender created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | AudioRender created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float loudnessGain | Loudness gain to set which changes from -90.0 to 24.0, expressing in dB. |
 
 **Returns**:
@@ -1042,7 +1075,7 @@ Get the loudness gain of current renderer.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRender created by OH_AudioStreamBuilder_GenerateRenderer() |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | AudioRender created by OH_AudioStreamBuilder_GenerateRenderer() |
 | float* loudnessGain | Pointer to a variable to receive the loudness gain, unit is dB. |
 
 **Returns**:
@@ -1069,7 +1102,7 @@ Callback function of write data on Render.<br> Different with OH_AudioRenderer_O
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer where this callback occurs. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | AudioRenderer where this callback occurs. |
 | void* userData | User data which is passed by user. |
 | void* audioData | Audio data pointer, where user should fill in audio data. |
 | int32_t audioDataSize | Size of audio data that user should fill in, unit is byte. |
@@ -1103,7 +1136,7 @@ Gets the estimated audio latency in milliseconds for current audio route. For wi
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer created by OH_AudioStreamBuilder_GenerateRenderer(). |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | AudioRenderer created by OH_AudioStreamBuilder_GenerateRenderer(). |
 | [OH_AudioStream_LatencyType](capi-native-audiostream-base-h.md#oh_audiostream_latencytype) type | Type of audio latency to get. |
 | int32_t* latencyMs | Pointer to a variable to receive the latency in milliseconds. |
 
@@ -1131,7 +1164,7 @@ Configure audio session strategy and behavior parameters to adjust the focus pre
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | AudioRenderer created by OH_AudioStreamBuilder_GenerateRenderer(). |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | AudioRenderer created by OH_AudioStreamBuilder_GenerateRenderer(). |
 | [const OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md)* strategy | pointer to [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) which is used to set the audio session strategy. |
 | uint32_t behavior | Audio session behavior flag, which can be a single flag or a bitwise OR combination of multiple flags [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags). |
 

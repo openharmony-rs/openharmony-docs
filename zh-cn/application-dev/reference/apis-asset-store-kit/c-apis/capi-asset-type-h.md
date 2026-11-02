@@ -10,7 +10,7 @@ Defines the enums, structs, and error codes used in the asset store service.
 
 **起始版本：** 11
 
-**相关模块：** [AssetType](capi-assettype.md)
+**相关模块：** [AssetType](capi-asset-store-kit-assettype.md)
 
 ## 汇总
 
@@ -102,20 +102,20 @@ enum Asset_Tag
 | ASSET_TAG_DATA_LABEL_NORMAL_2 = ASSET_TYPE_BYTES \| 0x31 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。 |
 | ASSET_TAG_DATA_LABEL_NORMAL_3 = ASSET_TYPE_BYTES \| 0x32 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。 |
 | ASSET_TAG_DATA_LABEL_NORMAL_4 = ASSET_TYPE_BYTES \| 0x33 | 表示一个用户可自定义传入的字段，该字段可被更新，其值为bytes类型。 |
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1 = ASSET_TYPE_BYTES \| 0x34 |  |
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2 = ASSET_TYPE_BYTES \| 0x35 |  |
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3 = ASSET_TYPE_BYTES \| 0x36 |  |
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4 = ASSET_TYPE_BYTES \| 0x37 |  |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1 = ASSET_TYPE_BYTES \| 0x34 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12 |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2 = ASSET_TYPE_BYTES \| 0x35 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12 |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3 = ASSET_TYPE_BYTES \| 0x36 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12 |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4 = ASSET_TYPE_BYTES \| 0x37 | 表示一个用户可自定义传入的字段，该字段可被更新，该项信息不会进行同步，其值为bytes类型。<br>**起始版本：** 12 |
 | ASSET_TAG_RETURN_TYPE = ASSET_TYPE_NUMBER \| 0x40 | 表示查询关键资产时的返回类型，其值为uint32_t类型。 |
 | ASSET_TAG_RETURN_LIMIT = ASSET_TYPE_NUMBER \| 0x41 | 表示查询关键资产时的最大返回数量，其值为uint32_t类型。 |
 | ASSET_TAG_RETURN_OFFSET = ASSET_TYPE_NUMBER \| 0x42 | 表示查询关键资产时的偏移量，其值为uint32_t类型。 |
 | ASSET_TAG_RETURN_ORDERED_BY = ASSET_TYPE_NUMBER \| 0x43 | 表示查询关键资产时的排序依据，其值为uint32_t类型。 |
 | ASSET_TAG_CONFLICT_RESOLUTION = ASSET_TYPE_NUMBER \| 0x44 | 表示增加关键资产时的冲突处理策略，其值为uint32_t类型。 |
-| ASSET_TAG_UPDATE_TIME = ASSET_TYPE_BYTES \| 0x45 |  |
-| ASSET_TAG_OPERATION_TYPE = ASSET_TYPE_NUMBER \| 0x46 |  |
-| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED = ASSET_TYPE_BOOL \| 0x47 |  |
-| ASSET_TAG_GROUP_ID = ASSET_TYPE_BYTES \| 0x48 |  |
-| ASSET_TAG_WRAP_TYPE = ASSET_TYPE_NUMBER \| 0x49 |  |
+| ASSET_TAG_UPDATE_TIME = ASSET_TYPE_BYTES \| 0x45 | 表示关键资产的更新时间（时间戳形式），其值为bytes类型。<br>**起始版本：** 12 |
+| ASSET_TAG_OPERATION_TYPE = ASSET_TYPE_NUMBER \| 0x46 | 表示附加的操作类型，其值为uint32_t类型。<br>**起始版本：** 12 |
+| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED = ASSET_TYPE_BOOL \| 0x47 | 表示是否加密业务自定义附属信息，其值为bool类型。true表示加密业务自定义附属信息，false表示不加密。<br>**起始版本：** 14 |
+| ASSET_TAG_GROUP_ID = ASSET_TYPE_BYTES \| 0x48 | 表示关键资产所属群组，其值为bytes类型。<br>**起始版本：** 18 |
+| ASSET_TAG_WRAP_TYPE = ASSET_TYPE_NUMBER \| 0x49 | 表示关键资产支持的加密导入导出类型，其值为uint32_t类型。<br>**起始版本：** 18 |
 
 ### Asset_ResultCode
 
@@ -153,7 +153,7 @@ ASSET APIs使用的结果码。
 | ASSET_GET_SYSTEM_TIME_ERROR = 24000015 | 表示获取系统时间失败。 |
 | ASSET_LIMIT_EXCEEDED = 24000016 | 表示缓存数量超限。 |
 | ASSET_UNSUPPORTED = 24000017 | 表示该子功能不支持。 |
-| ASSET_PARAM_VERIFICATION_FAILED = 24000018 |  |
+| ASSET_PARAM_VERIFICATION_FAILED = 24000018 | 表示参数校验失败。<br>**起始版本：** 20 |
 
 ### Asset_Accessibility
 
@@ -213,7 +213,7 @@ enum Asset_SyncType
 | ASSET_SYNC_TYPE_NEVER = 0 | 不允许同步关键资产。 |
 | ASSET_SYNC_TYPE_THIS_DEVICE = 1 << 0 | 只在本设备进行同步，如仅在本设备还原的备份场景。 |
 | ASSET_SYNC_TYPE_TRUSTED_DEVICE = 1 << 1 | 只在可信设备间进行同步，如克隆场景。 |
-| ASSET_SYNC_TYPE_TRUSTED_ACCOUNT = 1 << 2 |  |
+| ASSET_SYNC_TYPE_TRUSTED_ACCOUNT = 1 << 2 | 只在登录可信账号的设备间进行同步，如云同步场景。<br>**起始版本：** 12 |
 
 ### Asset_WrapType
 

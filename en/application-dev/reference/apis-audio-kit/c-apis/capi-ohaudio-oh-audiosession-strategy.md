@@ -12,7 +12,7 @@ Declares the audio session strategy.
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_session_base.h](capi-native-audio-session-base-h.md)
 

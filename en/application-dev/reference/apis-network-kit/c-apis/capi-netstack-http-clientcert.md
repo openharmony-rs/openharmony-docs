@@ -12,7 +12,7 @@ Defines the client certificate sent to a remote server, which will be used by th
 
 **Since**: 20
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-others-netstack.md)
 
 **Header file**: [net_http_type.h](capi-net-http-type-h.md)
 

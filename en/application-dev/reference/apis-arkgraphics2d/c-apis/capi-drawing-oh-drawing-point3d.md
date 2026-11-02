@@ -12,7 +12,18 @@ This struct describes a three-dimensional coordinate point.
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
+
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| float x |  |
+| float y |  |
+| float z |  |
+
 

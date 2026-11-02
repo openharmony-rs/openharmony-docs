@@ -12,7 +12,7 @@ struct OH_AudioStreamInfo {...}
 
 **起始版本：** 19
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-others-ohaudio.md)
 
 **所在头文件：** [native_audiostream_base.h](capi-native-audiostream-base-h.md)
 

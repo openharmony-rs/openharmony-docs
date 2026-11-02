@@ -4,7 +4,7 @@
 
 Declares the APIs used by in-app intelligent agents and UI automation to observe UI interaction events and hit nodes.<br> Status-returning functions report errors through ArkUI_ErrorCode. Asynchronous execution results are reported through the documented completion callback. errno is not an error-reporting channel for these APIs; its value after a call is unspecified and must not be used to determine success or failure.
 
-**Include**: <arkui/ui_info_collection.h>
+**File to Include**: <arkui/ui_info_collection.h>
 
 **Library**: libace_ndk.z.so
 
@@ -12,7 +12,7 @@ Declares the APIs used by in-app intelligent agents and UI automation to observe
 
 **Since**: 26.1.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -65,15 +65,6 @@ Declares the APIs used by in-app intelligent agents and UI automation to observe
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle context, const int32_t* nodeIds, uint32_t count, OH_ArkUI_NativeModule_ImageCollectionCallback callback, void* userData)](#oh_arkui_nativemodule_getimagesbynodeidasync) | - | Asynchronously collects images for specified ArkUI node IDs.<br> The framework accepts from <b>1</b> to <b>20</b> unique node IDs in one request and copies the <b>nodeIds</b> array before this function returns. If <b>count</b> is less than or equal to <b>0</b> or greater than <b>20</b>, this function returns ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE.<br> Each accepted node ID has one result in the collection, including a result for a node ID that cannot be found or whose image cannot be captured. An <b>Image</b> node returns its complete source <b>PixelMap</b> when available and otherwise falls back to capturing the rendered content within the node bounds. A non-<b>Image</b> node uses the same node-bounds capture behavior. A node does not need to be visible.<br> If the ArkUI node corresponding to a requested node ID cannot be found, the corresponding collection item reports <b>ARKUI_ERROR_CODE_NODE_NOT_FOUND</b>; the caller should check the node ID. A capture timeout reports <b>ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT</b>; the caller can retry the request. An item's error is available when consuming its collection entry. If any item fails, the callback reports ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED and still returns the collection.<br> The caller can call this function from any thread. For each accepted request, the framework invokes <b>callback</b> exactly once on the UI thread associated with <b>context</b>. If the previous request has not finished, this function returns ARKUI_ERROR_CODE_COMMAND_UNFINISHED. The caller must wait for that request to complete before submitting another request. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_NativeModule_ImageCollection* collection, int32_t nodeId, OH_PixelmapNative** outPixelmap, ArkUI_ErrorCode* outItemError)](#oh_arkui_nativemodule_imagecollectiontakeitembynodeid) | - | Consumes the result for a specified node ID.<br> For a successful image result, this function transfers ownership of the <b>PixelMap</b> to the caller. The caller must release it by calling <b>OH_PixelmapNative_Destroy</b>. This function also consumes a failed image result. In that case, it sets <b>*outPixelmap</b> to <b>NULL</b> and writes the item error to <b>*outItemError</b>. Each node ID in a collection can be consumed only once.<br> Destroying the collection releases only <b>PixelMap</b> instances that the caller has not taken and does not invalidate a transferred <b>PixelMap</b>.<br> The caller must not call this function concurrently with another collection API for the same collection. |
 | [void OH_ArkUI_NativeModule_ImageCollectionDestroy(OH_ArkUI_NativeModule_ImageCollection* collection)](#oh_arkui_nativemodule_imagecollectiondestroy) | - | Destroys an image collection and releases <b>PixelMap</b> instances that have not been consumed.<br> The caller must destroy every non-<b>NULL</b> collection returned through the callback, even after all its items have been consumed. This function does not release or invalidate <b>PixelMap</b> instances that the caller obtained through <b>OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId</b>.<br> The caller must not call this function concurrently with another collection API for the same collection. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)( const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | Callback type for receiving a sensed interaction event.<br> The callback carries a borrowed [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object that holds the event payload. The object is valid only within the callback invocation; the callback must not retain or destroy it. All positional coordinates in the payload are relative to the screen (display), in physical pixels (px). The payload always includes a top-level schemaVersion field. Its top-level structure is { "schemaVersion": 1, "type": "<event type>", ... }.<br> The event-specific fields are listed below. - Tap or click: id, point, count, fingers. - Long press: id, point, actualDuration (milliseconds), action ("end"). - Pan: id, point, direction, action ("start" \| "end" \| "cancel"). - Pinch: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); scale is present only on "end". - Rotation: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); angle (degrees) is present only on "end". - Swipe: id, downPoint (array of [x, y]), upPoint (array of [x, y]), direction, speed, actualSpeed. - Drag: action ("start" \| "end"); "start" carries id, point, hostName, actualDuration; "end" carries point, dropResult ("success" \| "fail"), id (target, present only on success), hostName. - Touch: action ("down" \| "up"), fingerId, point; "down" also carries id (hit node ID).<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | Defines the callback invoked after an asynchronous JSON tree request completes.<br> The callback is invoked exactly once on the UI thread for each accepted request. The callback receives ownership of a non-NULL JSON object only when errorCode is ARKUI_ERROR_CODE_NO_ERROR. The caller must release the object by calling OH_ArkUI_NativeModule_UIJsonWrapperDestroy.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)( const OH_ArkUI_NativeModule_UIContentChangeEvent* event, void* userData) | Defines the callback invoked for a registered ArkUI state change event.<br> The callback runs on the user interface thread associated with the registered context. The event snapshot is immutable and valid only until this callback returns. ArkUI borrows but does not access or release userData.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData) | Defines the callback used to return the result of collecting images of ArkUI nodes.<br> The framework invokes this callback exactly once on the UI thread for each accepted request. Every non-<b>NULL</b> <b>collection</b> is transferred to the caller. A collection is also returned for partial item failure. The caller must release each non-<b>NULL</b> collection by calling <b>OH_ArkUI_NativeModule_ImageCollectionDestroy</b>.<br> The framework returns <b>userData</b> unchanged without dereferencing, copying, or releasing the object it points to. The caller must keep that object valid until the callback has finished using it.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
 ## Enum type description
 
@@ -204,7 +195,15 @@ typedef void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(co
 
 **Description**
 
-Callback type for receiving a sensed interaction event.<br> The callback carries a borrowed [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object that holds the event payload. The object is valid only within the callback invocation; the callback must not retain or destroy it. All positional coordinates in the payload are relative to the screen (display), in physical pixels (px). The payload always includes a top-level schemaVersion field. Its top-level structure is { "schemaVersion": 1, "type": "<event type>", ... }.<br> The event-specific fields are listed below. - Tap or click: id, point, count, fingers. - Long press: id, point, actualDuration (milliseconds), action ("end"). - Pan: id, point, direction, action ("start" \| "end" \| "cancel"). - Pinch: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); scale is present only on "end". - Rotation: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); angle (degrees) is present only on "end". - Swipe: id, downPoint (array of [x, y]), upPoint (array of [x, y]), direction, speed, actualSpeed. - Drag: action ("start" \| "end"); "start" carries id, point, hostName, actualDuration; "end" carries point, dropResult ("success" \| "fail"), id (target, present only on success), hostName. - Touch: action ("down" \| "up"), fingerId, point; "down" also carries id (hit node ID).
+Callback type for receiving a sensed interaction event.<br> The callback carries a borrowed [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object that holds the event payload. The object is valid only within the callback invocation; the callback must not retain or destroy it. All positional coordinates in the payload are relative to the screen (display), in physical pixels (px). The payload always includes a top-level schemaVersion field. Its top-level structure is { "schemaVersion": 1, "type": "<event type>", ... }.<br> The event-specific fields are listed below.
+- Tap or click: id, point, count, fingers.
+- Long press: id, point, actualDuration (milliseconds), action ("end").
+- Pan: id, point, direction, action ("start" \| "end" \| "cancel").
+- Pinch: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); scale is present only on "end".
+- Rotation: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); angle (degrees) is present only on "end".
+- Swipe: id, downPoint (array of [x, y]), upPoint (array of [x, y]), direction, speed, actualSpeed.
+- Drag: action ("start" \| "end"); "start" carries id, point, hostName, actualDuration; "end" carries point, dropResult ("success" \| "fail"), id (target, present only on success), hostName.
+- Touch: action ("down" \| "up"), fingerId, point; "down" also carries id (hit node ID).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,7 +234,7 @@ Registers an observer for UI interaction events.<br> The observer receives callb
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] Pointer to a UI instance. It must not be NULL. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] Pointer to a UI instance. It must not be NULL. |
 | uint32_t eventMask | [in] Bitmask of [OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollection_interactioneventtype) values to observe, combined with the bitwise OR operator. The supported bits are OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP through OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH. Bits outside this range are ignored. If no supported bit is set, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | uint32_t *registerID | [out] Receives the observer registration ID on success. It must not be NULL, requires no initialization, and on failure is set to 0. |
 | [OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectioninteractionjsoncallback) callback | [in] Callback invoked when a matching event occurs. It must not be NULL. |
@@ -287,13 +286,13 @@ Defines the callback invoked after an asynchronous JSON tree request completes.<
 
 **Since**: 26.1.0
 
-**Resource release**: ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}.
+**Resource release**: OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}.
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] The UI context used to start the request. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] The UI context used to start the request. |
 | uint64_t requestId | [in] The identifier assigned to the accepted request. |
 | [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) errorCode | [in] The request result. |
 | [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *json | [in] Immutable JSON result. If the request fails, the value is NULL. Otherwise, the control tree is in the JSON structure, which includes a top-level schemaVersion field. This object needs to be released by the developer after being used. |
@@ -313,7 +312,7 @@ Create a UI tree collection request.
 
 **Since**: 26.1.0
 
-**Resource release**: OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy {request}
+**Resource release**: [OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy](#oh_arkui_nativemodule_uiagenttreerequestdestroy)
 
 **Parameters**:
 
@@ -551,13 +550,13 @@ Collects a UI tree synchronously and returns it as JSON.<br> This function must 
 
 **Since**: 26.1.0
 
-**Resource release**: ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}
+**Resource release**: [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] The UI context whose tree is collected. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] The UI context whose tree is collected. |
 | [const OH_ArkUI_NativeModule_UIAgentTreeRequest](capi-arkui-nativemodule-oh-arkui-nativemodule-uiagenttreerequest.md) *request | [in] The collection request. |
 | [OH_ArkUI_NativeModule_UIJsonFormat](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonformat) format | [in] The JSON output format. |
 | [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) **json | [out] Receives the immutable JSON result object. The pointer must not be NULL and must point to writable storage valid for the duration of the call. The caller does not need to initialize *json. On success, *json is non-NULL and the result includes a top-level schemaVersion field. The caller owns the result and must release it with [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy). On any failure, *json is set to NULL if json points to valid writable storage; no result needs to be released. |
@@ -586,7 +585,7 @@ Initiate an asynchronous UI tree collection request. Receive the collection thro
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] The UI context whose tree is collected. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] The UI context whose tree is collected. |
 | [const OH_ArkUI_NativeModule_UIAgentTreeRequest](capi-arkui-nativemodule-oh-arkui-nativemodule-uiagenttreerequest.md) *request | [in] The collection request. |
 | [OH_ArkUI_NativeModule_UIJsonFormat](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonformat) format | [in] The JSON output format. |
 | [OH_ArkUI_NativeModule_UIAgentJsonCallback](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentjsoncallback) callback | [in] The completion callback. On success, the callback receives ownership of the JSON object and must release it by calling OH_ArkUI_NativeModule_UIJsonWrapperDestroy. The JSON object includes a top-level schemaVersion field. |
@@ -613,13 +612,13 @@ Synchronously collects the text on the current ArkUI page and outputs the text i
 
 **Since**: 26.1.0
 
-**Resource release**: ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {pageText}
+**Resource release**: [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] Context of the target UI instance for text collection |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] Context of the target UI instance for text collection |
 | [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)** pageText | [out] output slot, initialized to NULL by the caller. On success, the caller owns the returned object and must release it with [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) when it is no longer needed. A valid slot is set to NULL on failure. On success, the returned JSON object includes a top-level schemaVersion field, even when the page is empty. |
 
 **Returns**:
@@ -667,7 +666,7 @@ Registers to the selected ArkUI state change event categories for a user interfa
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] User interface context to observe. The handle must remain valid for the subscription. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] User interface context to observe. The handle must remain valid for the subscription. |
 | bool withStart | [in] Whether to report start events. When set to true, start events (such as page change start and scroll start) are reported; when set to false, only end events are reported. |
 | uint32_t eventMask | [in] Bitwise OR combination of [OH_ArkUI_NativeModule_UIContentChangeEventCategory](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeeventcategory) values. Must not be zero. The [OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeeventcategory) category does not differentiate between scroll sub-types. Set the corresponding [OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeignoretype) or [OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeignoretype) bit in ignoreMask to ignore those events. |
 | uint32_t ignoreMask | [in] Bitwise OR combination of [OH_ArkUI_NativeModule_UIContentChangeIgnoreType](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeignoretype) values. |
@@ -699,7 +698,7 @@ Unregisters an active ArkUI state change event subscription from a user interfac
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] User interface context that owns the subscription. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] User interface context that owns the subscription. |
 | uint64_t subscriptionId | [in] Nonzero ID of an active subscription owned by uiContext. |
 
 **Returns**:
@@ -781,7 +780,7 @@ Obtains the user interface context associated with an ArkUI state change event s
 | Parameter | Description |
 | -- | -- |
 | [const OH_ArkUI_NativeModule_UIContentChangeEvent](capi-arkui-nativemodule-oh-arkui-nativemodule-uicontentchangeevent.md)* event | [in] Pointer to the event snapshot. The pointer is valid only while the callback is running. |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md)* uiContext | [out] Pointer to the borrowed user interface context handle written when the operation succeeds. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)* uiContext | [out] Pointer to the borrowed user interface context handle written when the operation succeeds. |
 
 **Returns**:
 
@@ -830,7 +829,7 @@ Defines the callback used to return the result of collecting images of ArkUI nod
 
 **Since**: 26.1.0
 
-**Resource release**: OH_ArkUI_NativeModule_ImageCollectionDestroy {collection}
+**Resource release**: [OH_ArkUI_NativeModule_ImageCollectionDestroy](#oh_arkui_nativemodule_imagecollectiondestroy)
 
 **Parameters**:
 
@@ -858,7 +857,7 @@ Asynchronously collects images for specified ArkUI node IDs.<br> The framework a
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] Indicates the ArkUI context used to process the request. The parameter must not be <b>NULL</b>. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] Indicates the ArkUI context used to process the request. The parameter must not be <b>NULL</b>. |
 | const int32_t* nodeIds | [in] Indicates the first element of an array containing <b>count</b> unique ArkUI node IDs. The parameter must not be NULL. |
 | uint32_t count | [in] Indicates the number of node IDs. The valid range is (0, 20]. |
 | [OH_ArkUI_NativeModule_ImageCollectionCallback](capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectioncallback) callback | [in] Indicates the callback used to receive the result. The parameter must not be <b>NULL</b>. |
@@ -884,7 +883,7 @@ Consumes the result for a specified node ID.<br> For a successful image result, 
 
 **Since**: 26.1.0
 
-**Resource release**: multimedia/image_framework/image/OH_PixelmapNative_Destroy {outPixelmap}
+**Resource release**: [OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)
 
 **Parameters**:
 

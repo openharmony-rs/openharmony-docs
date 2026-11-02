@@ -12,7 +12,7 @@ Defines the rwlock structure used to store internal data of the rwlock.
 
 **Since**: 18
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-others-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

@@ -12,7 +12,7 @@
 
 **起始版本：** 22
 
-**相关模块：** [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
+**相关模块：** [HuksExternalCryptoApi](capi-universal-keystore-kit-huksexternalcryptoapi.md)
 
 ## 汇总
 

@@ -4,7 +4,7 @@
 
 Defines the key agreement interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_key_agreement.h>
+**File to Include**: <CryptoArchitectureKit/crypto_key_agreement.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the key agreement interfaces.
 
 **Since**: 20
 
-**Related module**: [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
+**Related module**: [CryptoKeyAgreementApi](capi-crypto-architecture-kit-cryptokeyagreementapi.md)
 
 ## Summary
 
@@ -46,7 +46,7 @@ Creates a key agreement context based on the given algorithm name.
 
 **Since**: 20
 
-**Resource release**: crypto_key_agreement/OH_CryptoKeyAgreement_Destroy {ctx}
+**Resource release**: [OH_CryptoKeyAgreement_Destroy](#oh_cryptokeyagreement_destroy)
 
 **Parameters**:
 
@@ -80,7 +80,7 @@ Generates a shared secret.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {secret}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

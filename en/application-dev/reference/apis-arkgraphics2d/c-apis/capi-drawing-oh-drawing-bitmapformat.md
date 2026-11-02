@@ -12,7 +12,7 @@ This struct describes the pixel format of a bitmap, including the color type and
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_bitmap.h](capi-drawing-bitmap-h.md)
 

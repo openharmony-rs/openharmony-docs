@@ -12,7 +12,7 @@ Defines a struct for a binary large object (BLOB).
 
 **Since**: 22
 
-**Related module**: [CertManagerType](capi-certmanagertype.md)
+**Related module**: [CertManagerType](capi-others-certmanagertype.md)
 
 **Header file**: [cm_native_type.h](capi-cm-native-type-h.md)
 

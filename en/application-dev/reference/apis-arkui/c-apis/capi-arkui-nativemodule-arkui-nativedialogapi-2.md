@@ -12,7 +12,7 @@ Provides the custom dialog box APIs for the native side.
 
 **Since**: 15
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_dialog.h](capi-native-dialog-h.md)
 
@@ -56,7 +56,7 @@ Defines the distance between the customDialog and system keyboard.<br>
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Indicates the pointer to the custom dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Indicates the pointer to the custom dialog box controller. |
 |  float distance | distance, in vp. |
 |  [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit |  Indicates the unit, which is an enumerated value of [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) |
 
@@ -86,7 +86,7 @@ Sets the level mode for a custom dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Indicates the pointer to the custom dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Indicates the pointer to the custom dialog box controller. |
 |  [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode) levelMode | Indicates the level mode. The parameter type is [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode). |
 
 **Returns**:
@@ -115,7 +115,7 @@ Sets the level uniqueId for a custom dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Indicates the pointer to the custom dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Indicates the pointer to the custom dialog box controller. |
 |  int32_t uniqueId | Indicates the uniqueId of any nodes in router or navigation pages. |
 
 **Returns**:
@@ -144,7 +144,7 @@ Sets the immersive mode for a custom dialog box.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | Indicates the pointer to the custom dialog box controller. |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Indicates the pointer to the custom dialog box controller. |
 |  [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode) immersiveMode | Indicates the immersive mode. The parameter type is [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode). |
 
 **Returns**:

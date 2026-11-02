@@ -12,7 +12,7 @@ struct VideoOutput_Callbacks {...}
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [video_output.h](capi-video-output-h.md)
 

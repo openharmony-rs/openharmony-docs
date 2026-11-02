@@ -10,7 +10,7 @@ Declares APIs for acquiring the set of system capabilities .
 
 **Since**: 10
 
-**Related module**: [SyscapNdk](capi-syscapndk.md)
+**Related module**: [SyscapNdk](capi-basic-services-kit-syscapndk.md)
 
 ## Summary
 

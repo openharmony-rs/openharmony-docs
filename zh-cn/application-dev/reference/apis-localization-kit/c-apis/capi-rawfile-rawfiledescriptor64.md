@@ -12,7 +12,7 @@ typedef struct RawFileDescriptor64 {...} RawFileDescriptor64
 
 **起始版本：** 11
 
-**相关模块：** [rawfile](capi-rawfile.md)
+**相关模块：** [rawfile](capi-others-rawfile.md)
 
 **所在头文件：** [raw_file.h](capi-raw-file-h.md)
 

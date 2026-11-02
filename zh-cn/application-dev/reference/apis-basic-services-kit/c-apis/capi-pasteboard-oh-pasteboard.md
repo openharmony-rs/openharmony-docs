@@ -12,7 +12,7 @@ typedef struct OH_Pasteboard OH_Pasteboard
 
 **起始版本：** 13
 
-**相关模块：** [Pasteboard](capi-pasteboard.md)
+**相关模块：** [Pasteboard](capi-others-pasteboard.md)
 
 **所在头文件：** [oh_pasteboard.h](capi-oh-pasteboard-h.md)
 

@@ -12,7 +12,7 @@ Defines a custom dialog controller object for ArkUI on the native side, which is
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_type.h](capi-native-type-h.md)
 

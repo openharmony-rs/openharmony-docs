@@ -12,7 +12,7 @@ Represents the Wi-Fi connection information.<br> This structure describes the ho
 
 **Since**: 24
 
-**Related module**: [Wifi](capi-wifi.md)
+**Related module**: [Wifi](capi-others-wifi.md)
 
 **Header file**: [oh_wifi.h](capi-oh-wifi-h.md)
 

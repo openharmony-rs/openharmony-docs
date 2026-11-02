@@ -12,7 +12,7 @@ typedef struct OH_AudioStreamManager OH_AudioStreamManager
 
 **起始版本：** 19
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-others-ohaudio.md)
 
 **所在头文件：** [native_audio_stream_manager.h](capi-native-audio-stream-manager-h.md)
 

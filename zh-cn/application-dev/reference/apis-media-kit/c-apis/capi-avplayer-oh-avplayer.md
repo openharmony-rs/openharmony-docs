@@ -12,7 +12,7 @@ typedef struct OH_AVPlayer OH_AVPlayer
 
 **起始版本：** 11
 
-**相关模块：** [AVPlayer](capi-avplayer.md)
+**相关模块：** [AVPlayer](capi-others-avplayer.md)
 
 **所在头文件：** [avplayer_base.h](capi-avplayer-base-h.md)
 

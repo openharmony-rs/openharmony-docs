@@ -16,7 +16,7 @@ Quantization information.<br> In quantization scenarios, the 32-bit floating-poi
 
 **Replaced by**: [NN_QuantParam](capi-neuralnetworkruntime-nn-quantparam.md)
 
-**Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
+**Related module**: [NeuralNetworkRuntime](capi-others-neuralnetworkruntime.md)
 
 **Header file**: [neural_network_runtime_type.h](capi-neural-network-runtime-type-h.md)
 
@@ -26,7 +26,7 @@ Quantization information.<br> In quantization scenarios, the 32-bit floating-poi
 
 | Name | Description |
 | -- | -- |
-| uint32_t quantCount |  |
+| uint32_t quantCount | Specifies the length of the numBits, scale, and zeroPoint arrays. In the per-layer quantization scenario, <b>quantCount</b> is usually set to <b>1</b>. That is, all channels of a tensor share a set of quantization parameters. In the per-channel quantization scenario, <b>quantCount</b> is usually the same as the number of tensor channels, and each channel uses its own quantization parameters.<br>**Since**: 9 |
 | const uint32_t *numBits | Number of quantization bits |
 | const double *scale | Pointer to the scale data in the quantization formula |
 | const int32_t *zeroPoint | Pointer to the zero point data in the quantization formula |

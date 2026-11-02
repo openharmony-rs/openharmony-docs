@@ -12,7 +12,7 @@ The struct describes the frame shutter end information during capture.
 
 **Since**: 12
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

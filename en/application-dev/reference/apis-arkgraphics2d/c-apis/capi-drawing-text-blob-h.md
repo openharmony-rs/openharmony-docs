@@ -10,7 +10,7 @@ This file declares the functions related to the text blob in the drawing module.
 
 **Since**: 11
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 
@@ -104,7 +104,7 @@ Creates a sequence of `OH_Drawing_TextBlob` objects from the text with font fall
 
 **Since**: 26.0.1
 
-**Resource release**: drawing_text_blob/OH_Drawing_TextBlobsArrayDestroy {textBlobs}
+**Resource release**: [OH_Drawing_TextBlobsArrayDestroy](#oh_drawing_textblobsarraydestroy)
 
 **Parameters**:
 
@@ -167,7 +167,7 @@ Creates a sequence of `OH_Drawing_TextBlob` objects from text with font fallback
 
 **Since**: 26.0.1
 
-**Resource release**: drawing_text_blob/OH_Drawing_TextBlobsArrayDestroy {textBlobs}
+**Resource release**: [OH_Drawing_TextBlobsArrayDestroy](#oh_drawing_textblobsarraydestroy)
 
 **Parameters**:
 
@@ -229,7 +229,7 @@ Creates a sequence of `OH_Drawing_TextBlob` objects from a string with font fall
 
 **Since**: 26.0.1
 
-**Resource release**: drawing_text_blob/OH_Drawing_TextBlobsArrayDestroy {textBlobs}
+**Resource release**: [OH_Drawing_TextBlobsArrayDestroy](#oh_drawing_textblobsarraydestroy)
 
 **Parameters**:
 

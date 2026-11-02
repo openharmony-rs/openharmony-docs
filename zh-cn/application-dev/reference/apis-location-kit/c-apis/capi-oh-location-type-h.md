@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [Location](capi-location.md)
+**相关模块：** [Location](capi-location-kit-location.md)
 
 ## 汇总
 
@@ -45,12 +45,6 @@
 | [void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene)](#oh_locationrequestconfig_setpowerconsumptionscene) | - | 设置位置请求参数中的功耗场景。 |
 | [void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval)](#oh_locationrequestconfig_setinterval) | - | 设置位置请求参数中的位置上报间隔。 |
 | [void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData)](#oh_locationrequestconfig_setcallback) | - | 设置回调函数。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*Location_InfoCallback)(Location_Info* location, void* userData) | 用于接收位置上报的回调函数。<br>指向Location_Info实例的指针，携带最新的位置信息。<br>location实例的内存会在Location_InfoCallback结束时回收，请在此之前调用OH_LocationInfo_GetBasicInfo等接口获取位置信息。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Location.Location.Core |
 
 ## 枚举类型说明
 

@@ -10,7 +10,7 @@ The file declares the photo output concepts.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## Summary
 
@@ -84,22 +84,6 @@ The file declares the photo output concepts.
 | [Camera_ErrorCode OH_Camera_C2PASignatureConfig_SetAuthorName(OH_Camera_C2PASignatureConfig* config, const char* authorName)](#oh_camera_c2pasignatureconfig_setauthorname) | - | Sets the author name for the C2PA signature configuration. |
 | [Camera_ErrorCode OH_Camera_C2PASignatureConfig_SetAuthorID(OH_Camera_C2PASignatureConfig* config, const char* authorID)](#oh_camera_c2pasignatureconfig_setauthorid) | - | Sets the author ID for the C2PA signature configuration. |
 | [Camera_ErrorCode OH_PhotoOutput_ConfigureC2PASignature(Camera_PhotoOutput* photoOutput, bool enableC2PA, OH_Camera_C2PASignatureConfig* config)](#oh_photooutput_configurec2pasignature) | - | Configures the C2PA signature settings. This function enables or disables C2PA signature and optionally sets the author information for the C2PA signature.<br> Before calling this function, check whether C2PA signature is supported by calling [OH_PhotoOutput_IsC2PASignatureSupported](capi-photo-output-h.md#oh_photooutput_isc2pasignaturesupported). |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput) | Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report photo output frame start events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info) | Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report frame shutter events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount) | Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report photo output frame end events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode) | Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report photo output errors.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_CaptureEnd) (Camera_PhotoOutput* photoOutput, int32_t frameCount) | Defines the callback invoked when the capture ends.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_CaptureStartWithInfo) (Camera_PhotoOutput* photoOutput, Camera_CaptureStartInfo* Info) | Defines the callback invoked when the capture starts.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_OnFrameShutterEnd) (Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* Info) | Defines the callback invoked when frame shutter ends.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_CaptureReady) (Camera_PhotoOutput* photoOutput) | Defines the callback invoked when the camera is ready to take photos. When the callback is received, the next capture can be performed.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_EstimatedCaptureDuration) (Camera_PhotoOutput* photoOutput, int64_t duration) | Defines the callback for the estimated capture duration.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo) | Defines the callback invoked when a high-resolution photo is available.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset) | Defines the callback invoked when a photo asset is available.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
 
 ## Function description
 

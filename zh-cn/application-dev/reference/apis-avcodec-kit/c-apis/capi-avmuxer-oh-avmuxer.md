@@ -12,7 +12,7 @@ typedef struct OH_AVMuxer OH_AVMuxer
 
 **起始版本：** 10
 
-**相关模块：** [AVMuxer](capi-avmuxer.md)
+**相关模块：** [AVMuxer](capi-others-avmuxer.md)
 
 **所在头文件：** [native_avmuxer.h](capi-native-avmuxer-h.md)
 

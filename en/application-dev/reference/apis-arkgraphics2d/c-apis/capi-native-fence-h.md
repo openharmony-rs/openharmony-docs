@@ -10,7 +10,7 @@ Defines the functions for using native fence.
 
 **Since**: 20
 
-**Related module**: [NativeFence](capi-nativefence.md)
+**Related module**: [NativeFence](capi-arkgraphics2d-nativefence.md)
 
 ## Summary
 

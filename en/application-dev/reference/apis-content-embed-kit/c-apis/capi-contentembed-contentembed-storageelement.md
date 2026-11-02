@@ -12,7 +12,7 @@ Defines the structure type of a storage element in an OE document. Use [OH_Conte
 
 **Since**: 24
 
-**Related module**: [ContentEmbed](capi-contentembed.md)
+**Related module**: [ContentEmbed](capi-others-contentembed.md)
 
 **Header file**: [content_embed_document.h](capi-content-embed-document-h.md)
 

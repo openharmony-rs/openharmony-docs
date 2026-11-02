@@ -12,7 +12,7 @@ Defines the expected frame rate range struct.
 
 **Since**: 20
 
-**Related module**: [NativeVsync](capi-nativevsync.md)
+**Related module**: [NativeVsync](capi-others-nativevsync.md)
 
 **Header file**: [native_vsync.h](capi-native-vsync-h.md)
 

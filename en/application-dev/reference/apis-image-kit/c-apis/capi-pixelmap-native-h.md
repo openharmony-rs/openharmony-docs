@@ -10,7 +10,7 @@ Declares the APIs that can access a pixel map.
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## Summary
 
@@ -182,8 +182,8 @@ typedef enum {
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102 format |
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010 format |
 | PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010 format |
-| PIXEL_FORMAT_ALPHA_U8 = 15 |  |
-| PIXEL_FORMAT_ALPHA_F16 = 16 |  |
+| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8 format<br>**Since**: 26.0.0 |
+| PIXEL_FORMAT_ALPHA_F16 = 16 | ALPHA_F16 format<br>**Since**: 26.0.0 |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [FFRT](capi-ffrt.md)
+**相关模块：** [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## 汇总
 

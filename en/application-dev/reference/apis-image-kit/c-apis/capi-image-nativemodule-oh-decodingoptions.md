@@ -12,7 +12,7 @@ The OH_DecodingOptions struct describes the decoding options encapsulated at the
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [image_source_native.h](capi-image-source-native-h.md)
 

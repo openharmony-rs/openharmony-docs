@@ -10,7 +10,7 @@ Defines the code of the HiDebug module.
 
 **起始版本：** 12
 
-**相关模块：** [HiDebug](capi-hidebug.md)
+**相关模块：** [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 ## 汇总
 
@@ -31,7 +31,7 @@ Defines the code of the HiDebug module.
 | [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | - | 采样配置的结构定义。 |
 | [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | - | 封装单次资源采集的结果。 |
 | [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | - | 定义资源采集配置结构体类型。 |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) | HiDebug_Backtrace_Object | 用于栈回溯及栈解析的对象。该对象封装了栈回溯所需的上下文信息，包括调用栈地址、线程状态等数据，通过相关接口可获取详细的栈帧信息和符号解析结果。该对象通过HiDebug相关接口创建，使用后需要调用对应的销毁接口释放资源。 |
+| [HiDebug_Backtrace_Object\_\_*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | 用于栈回溯及栈解析的对象。该对象封装了栈回溯所需的上下文信息，包括调用栈地址、线程状态等数据，通过相关接口可获取详细的栈帧信息和符号解析结果。该对象通过HiDebug相关接口创建，使用后需要调用对应的销毁接口释放资源。 |
 | [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage8h.md) | HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage. |
 
 ### 枚举
@@ -95,8 +95,6 @@ Defines the code of the HiDebug module.
 | 名称 | 描述 |
 | -- | -- |
 | HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage.<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath) | 请求trace采集的回调类型定义。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result) | 定义资源采集回调函数。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 
 ## 枚举类型说明
 

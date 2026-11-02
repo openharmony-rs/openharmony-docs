@@ -12,7 +12,7 @@ Defines a text menu item, used to represent a single menu item in a text selecti
 
 **Since**: 22
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text_common.h](capi-text-common-h.md)
 

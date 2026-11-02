@@ -12,7 +12,7 @@ The **Vibrator_Attribute** struct is used to describe the attributes of the vibr
 
 **Since**: 11
 
-**Related module**: [Vibrator](capi-vibrator.md)
+**Related module**: [Vibrator](capi-others-vibrator.md)
 
 **Header file**: [vibrator_type.h](capi-vibrator-type-h.md)
 

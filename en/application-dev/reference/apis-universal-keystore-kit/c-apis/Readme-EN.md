@@ -1,11 +1,11 @@
 # C API<!--c-universalkeystorekit-->
 
 - Module<!--universalkeystorekit-module-->
-    - [HuksKeyApi](capi-hukskeyapi.md)
-    - [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
-    - [HuksTypeApi](capi-hukstypeapi.md)
-    - [HuksParamSetApi](capi-huksparamsetapi.md)
-    - [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
+    - [HuksKeyApi](capi-universal-keystore-kit-hukskeyapi.md)
+    - [HuksExternalCryptoTypeApi](capi-universal-keystore-kit-huksexternalcryptotypeapi.md)
+    - [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
+    - [HuksParamSetApi](capi-universal-keystore-kit-huksparamsetapi.md)
+    - [HuksExternalCryptoApi](capi-universal-keystore-kit-huksexternalcryptoapi.md)
 - Header file<!--universalkeystorekit-headerfile-->
     - [native_huks_api.h](capi-native-huks-api-h.md)
     - [native_huks_external_crypto_type.h](capi-native-huks-external-crypto-type-h.md)

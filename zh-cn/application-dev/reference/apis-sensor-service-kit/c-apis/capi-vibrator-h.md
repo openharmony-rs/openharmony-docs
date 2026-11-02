@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [Vibrator](capi-vibrator.md)
+**相关模块：** [Vibrator](capi-sensor-service-kit-vibrator.md)
 
 ## 汇总
 

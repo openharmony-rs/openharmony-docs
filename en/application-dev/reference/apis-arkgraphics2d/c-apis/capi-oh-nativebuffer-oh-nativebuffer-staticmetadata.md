@@ -12,7 +12,7 @@ Indicates the HDR static metadata.
 
 **Since**: 12
 
-**Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**Related module**: [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
 
 **Header file**: [buffer_common.h](capi-buffer-common-h.md)
 

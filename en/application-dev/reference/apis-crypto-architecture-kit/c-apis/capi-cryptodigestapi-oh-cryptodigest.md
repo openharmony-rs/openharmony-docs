@@ -12,7 +12,7 @@ Digest structure, representing a digest context.
 
 **Since**: 12
 
-**Related module**: [CryptoDigestApi](capi-cryptodigestapi.md)
+**Related module**: [CryptoDigestApi](capi-others-cryptodigestapi.md)
 
 **Header file**: [crypto_digest.h](capi-crypto-digest-h.md)
 

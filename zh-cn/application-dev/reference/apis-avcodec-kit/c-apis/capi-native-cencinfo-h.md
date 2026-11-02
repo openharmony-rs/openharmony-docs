@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [Multimedia_Drm](capi-multimedia-drm.md)
+**相关模块：** [Multimedia_Drm](capi-avcodec-kit-multimedia-drm.md)
 
 ## 汇总
 
@@ -69,12 +69,12 @@ Drm CENC算法类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DRM_ALG_CENC_UNENCRYPTED = 0x0 |  |
-| DRM_ALG_CENC_AES_CTR = 0x1 |  |
-| DRM_ALG_CENC_AES_WV = 0x2 |  |
-| DRM_ALG_CENC_AES_CBC = 0x3 |  |
-| DRM_ALG_CENC_SM4_CBC = 0x4 |  |
-| DRM_ALG_CENC_SM4_CTR = 0x5 |  |
+| DRM_ALG_CENC_UNENCRYPTED = 0x0 | 不加密算法。<br>**起始版本：** 12 |
+| DRM_ALG_CENC_AES_CTR = 0x1 | AES CTR算法。<br>**起始版本：** 12 |
+| DRM_ALG_CENC_AES_WV = 0x2 | AES WV算法。<br>**起始版本：** 12 |
+| DRM_ALG_CENC_AES_CBC = 0x3 | AES CBC算法。<br>**起始版本：** 12 |
+| DRM_ALG_CENC_SM4_CBC = 0x4 | SM4 CBC算法。<br>**起始版本：** 12 |
+| DRM_ALG_CENC_SM4_CTR = 0x5 | SM4 CTR算法。<br>**起始版本：** 12 |
 
 ### DrmCencInfoMode
 

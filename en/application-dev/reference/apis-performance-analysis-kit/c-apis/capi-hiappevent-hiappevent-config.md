@@ -12,7 +12,7 @@ Defines the configuration object used to set the conditions for triggering syste
 
 **Since**: 15
 
-**Related module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-others-hiappevent.md)
 
 **Header file**: [hiappevent.h](capi-hiappevent-h.md)
 

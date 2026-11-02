@@ -12,7 +12,7 @@ Defines the text content change event of the **TextEditor** component, which is 
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 

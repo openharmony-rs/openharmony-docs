@@ -8,7 +8,7 @@ The file declares the enums used by the AVImageGenerator.
 
 **Since**: 18
 
-**Related module**: [AVImageGenerator](capi-avimagegenerator.md)
+**Related module**: [AVImageGenerator](capi-media-kit-avimagegenerator.md)
 
 ## Summary
 

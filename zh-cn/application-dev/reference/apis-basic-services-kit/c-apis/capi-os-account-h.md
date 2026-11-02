@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OsAccount](capi-osaccount.md)
+**相关模块：** [OsAccount](capi-basic-services-kit-osaccount.md)
 
 ## 汇总
 

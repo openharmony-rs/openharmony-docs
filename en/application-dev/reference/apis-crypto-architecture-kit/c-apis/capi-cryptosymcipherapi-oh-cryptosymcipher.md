@@ -12,7 +12,7 @@ Symmetric cipher structure, representing a symmetric cipher context.
 
 **Since**: 12
 
-**Related module**: [CryptoSymCipherApi](capi-cryptosymcipherapi.md)
+**Related module**: [CryptoSymCipherApi](capi-others-cryptosymcipherapi.md)
 
 **Header file**: [crypto_sym_cipher.h](capi-crypto-sym-cipher-h.md)
 

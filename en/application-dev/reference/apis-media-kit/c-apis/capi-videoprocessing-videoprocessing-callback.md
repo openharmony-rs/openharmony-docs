@@ -6,13 +6,13 @@ typedef struct VideoProcessing_Callback VideoProcessing_Callback
 
 ## Overview
 
-Video processing asynchronous callback object type.<br> Define a null pointer of VideoProcessing_Callback and call OH_VideoProcessingCallback_Create to create a callback object. The pointer should be null before creating the callback object. Register the callback to a video processing instance by calling OH_VideoProcessing_RegisterCallback.
+Video processing asynchronous callback object type.<br> Define a null pointer of VideoProcessing_Callback and call [OH_VideoProcessingCallback_Create](capi-video-processing-h.md#oh_videoprocessingcallback_create) to create a callback object. The pointer should be null before creating the callback object. Register the callback to a video processing instance by calling [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback).
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 12
 
-**Related module**: [VideoProcessing](capi-videoprocessing.md)
+**Related module**: [VideoProcessing](capi-others-videoprocessing.md)
 
 **Header file**: [video_processing_types.h](capi-video-processing-types-h.md)
 

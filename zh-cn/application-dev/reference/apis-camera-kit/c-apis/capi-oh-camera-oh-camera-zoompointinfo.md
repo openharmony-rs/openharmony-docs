@@ -12,7 +12,7 @@ struct OH_Camera_ZoomPointInfo {...}
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 
@@ -22,7 +22,7 @@ struct OH_Camera_ZoomPointInfo {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| float zoomRatio |  |
-| uint32_t equivalentFocalLength |  |
+| float zoomRatio | 变焦比例。<br>**起始版本：** 26.0.0 |
+| uint32_t equivalentFocalLength | 等效焦距。<br>**起始版本：** 26.0.0 |
 
 

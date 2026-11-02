@@ -4,7 +4,7 @@
 
 Defines the logging functions of the HiLog module. Before outputting logs, you must define the service domain, and log tag, use the API with the specified log type and level, and specify the privacy identifier. <br>**Service domain**: service domain of logs. You can define the value as required. Its value is a hexadecimal integer ranging from 0x0 to 0xFFFF. If the value exceeds the range, logs cannot be printed. <br>**Log tag**: a string used to identify the class, file, or service behavior. <br>**Log level**: DEBUG, INFO, WARN, ERROR, or FATAL. <br>**Parameter format**: printf format string, which starts with a % character, including a parameter type identifier and a variable parameter. <br>**Privacy identifier**: **{public}** or **{private}** added between the % character and the parameter type identifier in each parameter. **Note**: If no privacy identifier is added, the parameter is considered to be **<br>private**.
 
-**Include**: <hilog/log.h>
+**File to Include**: <hilog/log.h>
 
 **Library**: libhilog_ndk.z.so
 
@@ -12,7 +12,7 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 
 **Since**: 8
 
-**Related module**: [HiLog](capi-hilog.md)
+**Related module**: [HiLog](capi-performance-analysis-kit-hilog.md)
 
 ## Summary
 
@@ -47,12 +47,6 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 | [void OH_LOG_SetCallback(LogCallback callback)](#oh_log_setcallback) | - | Registers a callback function. After this function is called, the custom callback can receive all HiLog logs of the current process. <br>Note that whether this API is called or not, it does not change the default log processing of the current process. |
 | [void OH_LOG_SetMinLogLevel(LogLevel level)](#oh_log_setminloglevel) | - | Sets the minimum log level. <br>NOTE: <br>1. If the set log level is lower than the global log level, the setting does not take effect. <br>2. This function does not take effect for debug applications. |
 | [void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)](#oh_log_setloglevel) | - | Sets the minimum log level of the current application process. <br>You can configure different preference strategies using the **prefer** parameter. The **PREFER_CLOSE_LOG**<br>strategy has the same effect as the **OH_LOG_SetMinLogLevel()** function. <br>Note: This function does not take effect for debug applications. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg) | Customizes the processing of HiLog logs in the callback.<br>**Since**: 11<br>**System capability**: SystemCapability.HiviewDFX.HiLog |
 
 ## Enum type description
 

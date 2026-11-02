@@ -12,7 +12,7 @@ Defines the style option of a linear progress indicator. It is applicable to sce
 
 **Since**: 15
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [progress.h](capi-progress-h.md)
 

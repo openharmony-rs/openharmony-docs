@@ -12,7 +12,7 @@ typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
 
 **起始版本：** 20
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_brush.h](capi-drawing-brush-h.md)
 

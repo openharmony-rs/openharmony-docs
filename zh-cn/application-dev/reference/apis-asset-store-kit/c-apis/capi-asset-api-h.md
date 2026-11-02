@@ -10,7 +10,7 @@ Declares the APIs for accessing assets.
 
 **起始版本：** 11
 
-**相关模块：** [AssetApi](capi-assetapi.md)
+**相关模块：** [AssetApi](capi-asset-store-kit-assetapi.md)
 
 ## 汇总
 

@@ -10,7 +10,7 @@ Provides the enums, structs, macros, and error codes used by **CertManager** API
 
 **Since**: 22
 
-**Related module**: [CertManagerType](capi-certmanagertype.md)
+**Related module**: [CertManagerType](capi-device-certificate-kit-certmanagertype.md)
 
 ## Summary
 

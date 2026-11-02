@@ -10,7 +10,7 @@ Provides the error code definitions for the ContentEmbed module and the type enu
 
 **Since**: 24
 
-**Related module**: [ContentEmbed](capi-contentembed.md)
+**Related module**: [ContentEmbed](capi-content-embed-kit-contentembed.md)
 
 ## Summary
 

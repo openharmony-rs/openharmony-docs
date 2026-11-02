@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## 汇总
 
@@ -124,10 +124,10 @@ enum Camera_ErrorCode
 | CAMERA_CONFLICT_CAMERA = 7400107 | 因冲突而无法使用相机。 |
 | CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。 |
 | CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
-| CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 |  |
-| CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 |  |
+| CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
+| CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | 可选属性不存在。<br>**起始版本：** 26.0.0 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
-| CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 |  |
+| CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 | 表示设备当前不支持该能力。<br>**起始版本：** 26.0.0 |
 | CAMERA_ERROR_UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400115 | 不支持的多摄组合。当因为硬件限制或驱动约束而尝试使用不支持的多摄组合时会返回此错误。请考虑使用其他相机组合，或查看设备支持的相机配置。<br>**起始版本：** 26.0.1 |
 | CAMERA_ERROR_PARAM_OUT_OF_RANGE = 7400116 | 参数超出范围。当参数值（如ISO、曝光时间或对焦距离）超出有效范围时会返回此错误。请确保取值在当前相机配置支持的范围内。<br>**起始版本：** 26.0.1 |
 
@@ -208,21 +208,21 @@ Car设备摄像头位置的枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 |  |
-| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 |  |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0 | Car设备外部其他位置摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1 | Car设备外部前侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2 | Car设备外部后侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3 | Car设备外部左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4 | Car设备外部右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5 | Car设备内部其他位置摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6 | Car设备内部第一排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7 | Car设备内部第一排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8 | Car设备内部第一排右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9 | Car设备内部第二排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10 | Car设备内部第二排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11 | Car设备内部第二排右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 | Car设备内部第三排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 | Car设备内部第三排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 | Car设备内部第三排右侧摄像头。<br>**起始版本：** 26.0.0 |
 
 ### Camera_Type
 
@@ -282,10 +282,10 @@ enum OH_Camera_SensorColorFilterArrangement
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_SENSOR_CFA_BGGR = 0 |  |
-| OH_CAMERA_SENSOR_CFA_GBRG = 1 |  |
-| OH_CAMERA_SENSOR_CFA_GRBG = 2 |  |
-| OH_CAMERA_SENSOR_CFA_RGGB = 3 |  |
+| OH_CAMERA_SENSOR_CFA_BGGR = 0 | BGGR（Blue-Green-Green-Red）滤色阵列排列。<br>**起始版本：** 24 |
+| OH_CAMERA_SENSOR_CFA_GBRG = 1 | GBRG（Green-Blue-Red-Green）滤色阵列排列。<br>**起始版本：** 24 |
+| OH_CAMERA_SENSOR_CFA_GRBG = 2 | GRBG（Green-Red-Blue-Green）滤色阵列排列。<br>**起始版本：** 24 |
+| OH_CAMERA_SENSOR_CFA_RGGB = 3 | RGGB（Red-Green-Green-Blue）滤色阵列排列。<br>**起始版本：** 24 |
 
 ### Camera_Format
 
@@ -304,13 +304,13 @@ enum Camera_Format
 | 枚举项 | 描述 |
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888格式。 |
-| CAMERA_FORMAT_DNG = 4 |  |
-| CAMERA_FORMAT_DNG_XDRAW = 5 |  |
+| CAMERA_FORMAT_DNG = 4 | DNG格式。<br>**起始版本：** 24 |
+| CAMERA_FORMAT_DNG_XDRAW = 5 | 增强型DNG格式。<br>**起始版本：** 26.0.0 |
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420格式。 |
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
-| CAMERA_FORMAT_YCBCR_P010 = 2001 |  |
-| CAMERA_FORMAT_YCRCB_P010 = 2002 |  |
-| CAMERA_FORMAT_HEIC = 2003 |  |
+| CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
+| CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010 格式。<br>**起始版本：** 12 |
+| CAMERA_FORMAT_HEIC = 2003 | HEIC格式。<br>**起始版本：** 23 |
 
 ### Camera_FlashMode
 
@@ -349,9 +349,9 @@ enum OH_Camera_FlashState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0 |  |
-| OH_CAMERA_FLASH_STATE_READY = 1 |  |
-| OH_CAMERA_FLASH_STATE_FLASHING = 2 |  |
+| OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0 | 闪光灯为不可用状态，为默认值。<br>**起始版本：** 24 |
+| OH_CAMERA_FLASH_STATE_READY = 1 | 闪光灯为可用状态。<br>**起始版本：** 24 |
+| OH_CAMERA_FLASH_STATE_FLASHING = 2 | 闪光灯已经被打开。<br>**起始版本：** 24 |
 
 ### Camera_ExposureMode
 
@@ -369,11 +369,11 @@ enum Camera_ExposureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EXPOSURE_MODE_UNSPECIFIED = -1 |  |
+| EXPOSURE_MODE_UNSPECIFIED = -1 | 曝光模式未指定。<br>**起始版本：** 24 |
 | EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。 |
-| EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用OH_CaptureSession_SetMeteringPoint接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
+| EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用[OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
 | EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。 |
-| EXPOSURE_MODE_MANUAL = 3 |  |
+| EXPOSURE_MODE_MANUAL = 3 | 手动曝光模式。可以使用[OH_CaptureSession_SetExposureDuration](capi-capture-session-h.md#oh_capturesession_setexposureduration)接口设置曝光时长。<br>**起始版本：** 24 |
 
 ### OH_Camera_ExposureMeteringMode
 
@@ -391,9 +391,9 @@ enum OH_Camera_ExposureMeteringMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0 |  |
-| OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1 |  |
-| OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2 |  |
+| OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0 | 矩阵测光模式。对整个画面测光，适用于自然风景拍摄。<br>**起始版本：** 24 |
+| OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1 | 中央测光模式。对画面中心区域测光，适用于人像拍摄。<br>**起始版本：** 24 |
+| OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2 | 点测光模式。对指定微小区域测光，适用于拍摄主体细节（如人物眼睛）。<br>**起始版本：** 24 |
 
 ### OH_Camera_ExposureState
 
@@ -411,8 +411,8 @@ enum OH_Camera_ExposureState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_EXPOSURE_STATE_SCAN = 0 |  |
-| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 |  |
+| OH_CAMERA_EXPOSURE_STATE_SCAN = 0 | 表示曝光处于扫描状态。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | 表示曝光已经收敛。<br>**起始版本：** 26.0.0 |
 
 ### Camera_WhiteBalanceMode
 
@@ -518,13 +518,13 @@ enum Camera_ImageRotation
 | 枚举项 | 描述 |
 | -- | -- |
 | IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](capi-camera-h.md#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_0 = 0 |  |
+| CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 23 |
 | IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](capi-camera-h.md#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_90 = 90 |  |
+| CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 23 |
 | IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](capi-camera-h.md#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_180 = 180 |  |
+| CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 23 |
 | IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](capi-camera-h.md#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_270 = 270 |  |
+| CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 23 |
 
 ### Camera_QualityLevel
 
@@ -563,15 +563,15 @@ enum Camera_MetadataObjectType
 | 枚举项 | 描述 |
 | -- | -- |
 | FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype)。 |
-| CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 |  |
-| CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 |  |
-| CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2 |  |
-| CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3 |  |
-| CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4 |  |
-| CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5 |  |
-| CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6 |  |
-| CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7 |  |
-| CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8 |  |
+| CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br>**起始版本：** 23 |
+| CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | 元数据的对象类型，用于人体检测。<br>**起始版本：** 23 |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2 | 元数据的对象类型，用于猫脸检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3 | 元数据的对象类型，用于猫体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4 | 元数据的对象类型，用于狗脸检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5 | 元数据的对象类型，用于狗体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6 | 元数据的对象类型，用于显著性物体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7 | 元数据的对象类型，用于二维码检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8 | 元数据的对象类型，用于基础人脸检测。<br>**起始版本：** 26.0.0 |
 
 ### Camera_TorchMode
 
@@ -590,11 +590,11 @@ enum Camera_TorchMode
 | 枚举项 | 描述 |
 | -- | -- |
 | OFF = 0 | 设备手电筒常关。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](capi-camera-h.md#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_OFF = 0 |  |
+| CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 23 |
 | ON = 1 | 设备手电筒常开。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](capi-camera-h.md#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_ON = 1 |  |
+| CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 23 |
 | AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](capi-camera-h.md#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_AUTO = 2 |  |
+| CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 23 |
 
 ### Camera_SmoothZoomMode
 
@@ -613,7 +613,7 @@ enum Camera_SmoothZoomMode
 | 枚举项 | 描述 |
 | -- | -- |
 | NORMAL = 0 | 贝塞尔曲线模式。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](capi-camera-h.md#camera_smoothzoommode)。 |
-| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 |  |
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 23 |
 
 ### Camera_PreconfigType
 
@@ -635,7 +635,7 @@ enum Camera_PreconfigType
 | PRECONFIG_1080P = 1 | 预配置照片分辨率为1080P。 |
 | PRECONFIG_4K = 2 | 预配置照片分辨率为4K。 |
 | PRECONFIG_HIGH_QUALITY = 3 | 预配置照片为高质量。 |
-| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 |  |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**起始版本：** 23 |
 
 ### Camera_PreconfigRatio
 
@@ -676,6 +676,7 @@ enum Camera_HostDeviceType
 | HOST_DEVICE_TYPE_UNKNOWN_TYPE = 0 | 未知设备类型。 |
 | HOST_DEVICE_TYPE_PHONE = 0x0E | 手机设备。 |
 | HOST_DEVICE_TYPE_TABLET = 0x11 | 平板设备。 |
+| HOST_DEVICE_TYPE_GLASSES = 0xA31 | 眼镜设备。<br>**起始版本：** 26.0.1 |
 
 ### Camera_FoldStatus
 
@@ -694,11 +695,11 @@ enum Camera_FoldStatus
 | 枚举项 | 描述 |
 | -- | -- |
 | NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](capi-camera-h.md#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 |  |
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 23 |
 | EXPANDED = 1 | 展开状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](capi-camera-h.md#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_EXPANDED = 1 |  |
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 23 |
 | FOLDED = 2 | 折叠状态。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](capi-camera-h.md#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_FOLDED = 2 |  |
+| CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 23 |
 
 ### Camera_QualityPrioritization
 
@@ -816,8 +817,8 @@ enum Camera_ControlCenterEffectType
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
-| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 |  |
-| CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 |  |
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。<br>**起始版本：** 24 |
+| CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 | 控制器效果类型：XMAGE风格。<br>**起始版本：** 26.0.0 |
 
 ### OH_Camera_OISMode
 
@@ -835,9 +836,9 @@ enum OH_Camera_OISMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_OIS_MODE_OFF = 0 |  |
-| OH_CAMERA_OIS_MODE_AUTO = 1 |  |
-| OH_CAMERA_OIS_MODE_CUSTOM = 2 |  |
+| OH_CAMERA_OIS_MODE_OFF = 0 | 关闭光学防抖模式。<br>**起始版本：** 24 |
+| OH_CAMERA_OIS_MODE_AUTO = 1 | 自动光学防抖模式。<br>**起始版本：** 24 |
+| OH_CAMERA_OIS_MODE_CUSTOM = 2 | 手动光学防抖模式。<br>**起始版本：** 24 |
 
 ### OH_Camera_OISAxes
 
@@ -855,8 +856,8 @@ enum OH_Camera_OISAxes
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_OIS_AXES_PITCH = 0 |  |
-| OH_CAMERA_OIS_AXES_YAW = 1 |  |
+| OH_CAMERA_OIS_AXES_PITCH = 0 | 俯仰轴：控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。<br>**起始版本：** 24 |
+| OH_CAMERA_OIS_AXES_YAW = 1 | 偏航轴：控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。<br>**起始版本：** 24 |
 
 ### OH_Camera_MetadataObjectEmotion
 
@@ -874,10 +875,10 @@ enum OH_Camera_MetadataObjectEmotion
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0 |  |
-| OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1 |  |
-| OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 |  |
-| OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 |  |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0 | 平静。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1 | 悲伤。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | 微笑。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | 惊讶。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

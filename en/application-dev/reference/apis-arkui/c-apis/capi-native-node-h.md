@@ -10,7 +10,7 @@ Provides type definitions for <b>NativeNode</b> APIs.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -19,12 +19,12 @@ Provides type definitions for <b>NativeNode</b> APIs.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) | ArkUI_NodeComponentEvent | Defines the parameter type of a component callback event, which is used to pass event-related data when the component callback is triggered, so that the application can obtain the callback event parameters. |
-| [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent | Defines the type of string parameters used in component callback events. This struct is used to pass string data in the asynchronous event callback of a component. It is applicable to scenarios where the component callback event needs to carry text information. |
-| [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md) | ArkUI_TextChangeEvent | Defines a text change event, which is used to listen to and handle text change events in text input scenarios. This struct contains the text content, extended information, and numeric parameters. It allows you to obtain text change data in real time, making it suitable for scenarios such as listening to text box content, real-time search, and word count. |
+| [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent | Defines the string type parameter used by the component callback event, which is used to pass string data in the asynchronous event callback of a component. It applies to scenarios where a component callback event needs to carry text information. |
+| [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md) | ArkUI_TextChangeEvent | Defines a text change event, which is used to listen for and handle text changes in text input scenarios. This struct contains the text content, extended information, and numeric parameters, allowing you to obtain text change data in real time. It applies to scenarios such as input box content monitoring, real-time search, and character count. |
 | [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md) | ArkUI_NativeNodeAPI_1 | Provides a collection of native-side APIs of the Node type provided by ArkUI, supporting capabilities such as component node creation and destruction, node tree operations, attribute and event management, measurement, and layout. It is suitable for scenarios where native APIs are used to build and operate ArkUI component nodes. APIs related to the Node module must be called on the main thread. |
 | [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | OH_ArkUI_TextEditorChangeEvent | Defines the text content change event of the **TextEditor** component, which is used to notify users when the text content changes and supports obtaining information such as the content before and after the change. It is applicable to scenarios where interception or validation is required before the text content changes, such as input interception, content filtering, and change confirmation. |
 | [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) | ArkUI_NodeCustomEvent | Defines a custom component event. This is a general struct type. This struct is used to pass event information in the measurement, layout, and drawing event callbacks of a custom component. |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) | ArkUI_NodeAdapterHandle | Defines the pointer to a component adapter object, which is used for lazy loading of elements in scrollable components. This is applicable to scenarios where a large amount of scrollable content needs to be loaded on demand. It prevents all elements from being created at once, reducing memory usage and improving scrolling performance. |
+| [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md) | ArkUI_NodeAdapterHandle | Defines the pointer to a component adapter object, which is used for lazy loading of elements in scrollable components. This is applicable to scenarios where a large amount of scrollable content needs to be loaded on demand. It prevents all elements from being created at once, reducing memory usage and improving scrolling performance. |
 | [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md) | ArkUI_NodeAdapterEvent | Defines a component adapter event object, used to pass information such as the event type, host node, and data item index in the event callback of the node adapter. |
 | [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md) | ArkUI_NodeContentEvent | Defines a node content event. This is a general struct type. It is used as the event parameter of the node content event callback to obtain the event type and the node content object that triggers the event. |
 
@@ -143,7 +143,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node, void* userData, void (\*onDrawCompleted)(void* userData))](#oh_arkui_registerdrawcallbackonnodehandle) | - | Registers a drawing completion callback function for a specific node. |
 | [int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)](#oh_arkui_unregisterlayoutcallbackonnodehandle) | - | Unregisters the layout completion callback function for a specific node. |
 | [int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)](#oh_arkui_unregisterdrawcallbackonnodehandle) | - | Unregisters the drawing completion callback function for a specific node. |
-| [int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* snapshotOptions, OH_PixelmapNative** pixelmap)](#oh_arkui_getnodesnapshot) | - | Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the PixelMap is no longer used, you should call OH_PixelmapNative_Release to release it. |
+| [int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* snapshotOptions, OH_PixelmapNative** pixelmap)](#oh_arkui_getnodesnapshot) | - | Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the PixelMap is no longer used, you should call [OH_PixelmapNative_Release](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_release) to release it. |
 | [int32_t OH_ArkUI_GetNodeSnapshotSizeLimitation(int32_t* maxWidth, int32_t* maxHeight)](#oh_arkui_getnodesnapshotsizelimitation) | - | Obtains the size limit of a component screenshot. |
 | [int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntOffset* globalOffset)](#oh_arkui_nodeutils_getpositiontoparent) | - | Obtains the offset of the target node relative to its parent node, in px. |
 | [ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiStates, void (statesChangeHandler)(int32_t currentStates, void* userData), bool excludeInner, void* userData)](#oh_arkui_addsupporteduistates) | - | Adds the polymorphic style states supported by the component. To handle states efficiently, specify the states of interest and their corresponding handlers. When a state of interest occurs, the handler will be executed. You can adjust the UI style based on the current state within the callback. If this API is called multiple times on the same node, the last set of states and handlers will take precedence. Some component types have default system handling for certain states. For example, the **Button** component has a default style effect for the PRESSED state. When custom state handling is implemented on such components, the default style effect will be applied first, followed by the custom style changes, resulting in a combined effect. To disable the default style effects, set **excludeInner** to **true**, if this is allowed by the system implementation. When this API is called, the provided handler function will be executed immediately. There is no need to explicitly register a listener for the NORMAL state. Once a non-NORMAL state is registered, the system will automatically notify your application when the state changes back to NORMAL. |
@@ -165,7 +165,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskData, void (\*asyncUITask)(void* asyncUITaskData), void (\*onFinish)(void* asyncUITaskData))](#oh_arkui_postasyncuitask) | - | Submits the **asyncUITask** function to a non-UI thread provided by the ArkUI framework for execution. After **asyncUITask** finishes execution, the **onFinish** function is called in the UI thread.<br> This is suitable for scenarios involving multi-threaded UI component creation. You can use this API to create UI components in non-UI threads and then mount the created components to the main tree in the UI thread. |
 | [int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (\*task)(void* taskData))](#oh_arkui_postuitask) | - | Submits the **task** function to the UI thread for execution.<br> This is suitable for scenarios involving multi-threaded UI component creation. When you create UI components in a self-built thread, you can use this API to mount the created components to the main tree on the UI thread. |
 | [int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle uiContext, bool visible)](#oh_arkui_nativemodule_atomicservicemenubarsetvisible) | - | Sets the visibility of the menu bar. |
-| [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component size and area changes. This API can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node at any time. The newly registered callback will replace the previously registered callback for this event and take effect from the next frame. When the callback is no longer needed, use [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released. |
+| [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component size and area changes. This API can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and take effect from the next frame. When the callback is no longer needed, use [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released. |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) | - | Unregisters the callback for listening for component size and area changes. |
 | [int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, void (\*task)(void* taskData))](#oh_arkui_postuitaskandwait) | - | Submits the **task** function to the UI thread for execution. The thread calling this API will block until the **task** function completes execution. Calling this API from the UI thread is equivalent to synchronously calling the **task** function.<br> This is suitable for scenarios involving multi-threaded UI component creation. When you need to call functions that are only supported on the UI thread during the multi-threaded component creation process, you can use this API to return to the UI thread to call the function and then resume multi-threaded component creation after the call completes.<br> When the UI thread is under high load, non-UI threads calling this API may block for extended periods, affecting the performance of multi-threaded UI component creation. Frequent use is not recommended. |
 | [int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_startfakedrag) | - | Starts a simulated drag on a **Swiper** node. [OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby) can be used to simulate a drag action. [OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag) can be used to stop the drag simulation.<br> A simulated drag can be interrupted by a real drag. To ignore a drag event from a user during the simulated drag, use [NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype). |
@@ -182,14 +182,10 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | Sets the child node mounting policy for a target node. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy* policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | Obtains the current child node mounting policy of a target node. The default child node mounting policy of a target node is OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE. |
 | [ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context, bool enable)](#oh_arkui_nodeutils_setuidvsyncswitch) | - | Sets the UI Dvsync switch.<br> When enabled, the system responds to Vsync requests more promptly and executes rendering tasks more frequently. It is typically enabled at the start of an animation in a self-rendering framework and disabled when the animation ends, to ensure smoother animation effects while preventing frequent Vsync requests from affecting other functionalities. Calling this function on a non-UI thread will cause the application to exit. |
+| [int32_t OH_ArkUI_NativeModule_RegisterInspectorTreeGetter(ArkUI_NodeHandle node, void* userData, void (\*getInspectorTree)(void *userData, char** inspectorTree))](#oh_arkui_nativemodule_registerinspectortreegetter) | - | Registers an inspector tree getter callback on the specified node.<br> This API allows third-party frameworks (such as Flutter, CMP, and ArkWeb) to report component tree information to the ArkUI inspector. When the inspector traverses the component tree and encounters a node with a registered callback, it invokes <b>getInspectorTree</b> to obtain the external component subtree and merges the result into the complete inspector tree output.<br> one more inspector tree getter callback can be registered for the same node. |
+| [int32_t OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter(ArkUI_NodeHandle node, void (\*getInspectorTree)(void *userData, char** inspectorTree))](#oh_arkui_nativemodule_unregisterinspectortreegetter) | - | Unregister the inspector tree getter callback on the specified node.<br> After unregistration, the inspector will no longer invoke the callback when traversing this node. The <b>userData</b> previously passed to [OH_ArkUI_NativeModule_RegisterInspectorTreeGetter](capi-native-node-h.md#oh_arkui_nativemodule_registerinspectortreegetter) is not released by this function; the caller is responsible for freeing it. |
 | [int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)](#oh_arkui_nativemodule_adoptchildwithpolicy) | - | Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node. Configure the render position of the overlay node of the adopted node by policy. |
 | [int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)](#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation) | - | Sets the position compensation from an adopted child to its adopt parent. The compensation represents the aggregate effect of the pure rendering node tree between them. First, the translation is performed using compensationOffset, and then the transformation is performed using compensationTransform. Compensation only takes effect if the child node has been adopted using the following policy [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy). |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event) | Defines a callback for the **NodeContent** event.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
 ## Enum type description
 
@@ -229,10 +225,10 @@ Enumerates the component types that can be created by ArkUI on the native side.
 | ARKUI_NODE_SLIDER = 17 | Slider. |
 | ARKUI_NODE_RADIO = 18 | Radio button. |
 | ARKUI_NODE_IMAGE_ANIMATOR = 19 | Frame animation component. |
-| ARKUI_NODE_XCOMPONENT_TEXTURE | XComponent of the TEXTURE type. @since 18 |
-| ARKUI_NODE_CHECKBOX_GROUP = 21 | Check box group. @since 15 |
-| ARKUI_NODE_TEXT_EDITOR = 22 |  |
-| ARKUI_NODE_ARC_ALPHABET_INDEXER = 23 |  |
+| ARKUI_NODE_XCOMPONENT_TEXTURE | XComponent of the TEXTURE type. @since 18<br>**Since**: 18 |
+| ARKUI_NODE_CHECKBOX_GROUP = 21 | Check box group. @since 15<br>**Since**: 15 |
+| ARKUI_NODE_TEXT_EDITOR = 22 | Text editor.<br>**Since**: 24 |
+| ARKUI_NODE_ARC_ALPHABET_INDEXER = 23 | Arc alphabet index component.<br>**Since**: 26.0.1 |
 | ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM | Stack container. |
 | ARKUI_NODE_SWIPER | Swiper. |
 | ARKUI_NODE_SCROLL | Scrollable container. |
@@ -249,13 +245,13 @@ Enumerates the component types that can be created by ArkUI on the native side.
 | ARKUI_NODE_GRID | Grid. |
 | ARKUI_NODE_GRID_ITEM | Grid item. |
 | ARKUI_NODE_CUSTOM_SPAN | Custom span. Common attributes cannot be set or obtained. You can use [OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo](capi-native-node-h.md#oh_arkui_nodecustomevent_getcustomspanmeasureinfo), [OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics](capi-native-node-h.md#oh_arkui_nodecustomevent_setcustomspanmetrics), and [OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo](capi-native-node-h.md#oh_arkui_nodecustomevent_getcustomspandrawinfo) to obtain and set the node information of components of this type. For details about the usage, see text_capi_sample. |
-| ARKUI_NODE_EMBEDDED_COMPONENT |  |
-| ARKUI_NODE_UNDEFINED |  |
-| ARKUI_NODE_PICKER = 1018 |  |
-| ARKUI_NODE_ARC_LIST = 1019 |  |
-| ARKUI_NODE_ARC_LIST_ITEM = 1020 |  |
-| ARKUI_NODE_ARC_SCROLL_BAR = 1021 |  |
-| ARKUI_NODE_ARC_SWIPER = 1022 |  |
+| ARKUI_NODE_EMBEDDED_COMPONENT | In-application embedded component.<br>**Since**: 20 |
+| ARKUI_NODE_UNDEFINED | Undefined component type. It specifies all component types in the color inversion API.<br>**Since**: 20 |
+| ARKUI_NODE_PICKER = 1018 | **Picker** component, which is used to implement user selection operations.<br>**Since**: 23 |
+| ARKUI_NODE_ARC_LIST = 1019 | Arc list.<br>**Since**: 26.0.0 |
+| ARKUI_NODE_ARC_LIST_ITEM = 1020 | Arc list item.<br>**Since**: 26.0.0 |
+| ARKUI_NODE_ARC_SCROLL_BAR = 1021 | Arc scrollbar.<br>**Since**: 26.0.0 |
+| ARKUI_NODE_ARC_SWIPER = 1022 | Arc swipe container.<br>**Since**: 26.0.1 |
 
 ### ArkUI_NodeDirtyFlag
 
@@ -353,7 +349,7 @@ Enumerates the policy for adopting a child node.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0 |  |
+| OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0 | The position of the adopted node's overlays follows the adopt-parent chain and applies the developer-provided compensation at each adoption boundary.<br>**Since**: 26.1.0 |
 
 
 ## Function description
@@ -434,7 +430,7 @@ Obtains the component object that triggers an event.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Component object that triggers the event. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Component object that triggers the event. |
 
 ### OH_ArkUI_NodeEvent_GetInputEvent()
 
@@ -735,7 +731,7 @@ Disposes of a component adapter.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 
 ### OH_ArkUI_NodeAdapter_SetTotalNodeCount()
 
@@ -755,7 +751,7 @@ Sets the total number of elements in the specified adapter.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 | uint32_t size | Number of elements. |
 
 **Returns**:
@@ -782,7 +778,7 @@ Obtains the total number of elements in the specified adapter.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 
 **Returns**:
 
@@ -813,7 +809,7 @@ Registers an event callback for the specified adapter. After the callback event 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 | void* userData | Pointer to the custom data. |
 | void (*receiver)(ArkUI_NodeAdapterEvent* event) | Event receiving callback. |
 
@@ -841,7 +837,7 @@ Unregisters an event callback for the specified adapter.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 
 ### OH_ArkUI_NodeAdapter_ReloadAllItems()
 
@@ -861,7 +857,7 @@ Instructs the specified adapter to reload all elements.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 
 **Returns**:
 
@@ -888,7 +884,7 @@ Instructs the specified adapter to reload certain elements.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 | uint32_t startPosition | Start position of an element change. |
 | uint32_t itemCount | Number of changed elements. |
 
@@ -917,7 +913,7 @@ Instructs the specified adapter to remove certain elements.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 | uint32_t startPosition | Start position for deleting an element. |
 | uint32_t itemCount | Number of deleted elements. |
 
@@ -946,7 +942,7 @@ Instructs the specified adapter to insert certain elements.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 | uint32_t startPosition | Start position for inserting an element. |
 | uint32_t itemCount | Number of inserted elements. |
 
@@ -974,7 +970,7 @@ Instructs the specified adapter to move certain elements.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
 | uint32_t from | Start position of the element shift. |
 | uint32_t to | End position of the element shift. |
 
@@ -1002,8 +998,8 @@ Obtains all elements stored in the specified adapter. When the API is called, th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) handle | Component adapter object. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)** items | Double pointer to the array of nodes in the adapter. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | Component adapter object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)** items | Double pointer to the array of nodes in the adapter. |
 | uint32_t* size | Pointer to the number of elements. |
 
 **Returns**:
@@ -1088,7 +1084,7 @@ Obtains the element to be removed for the event to be destroyed.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Element to be removed. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Element to be removed. |
 
 ### OH_ArkUI_NodeAdapterEvent_GetItemIndex()
 
@@ -1140,7 +1136,7 @@ Obtains the scrollable container node that uses the specified adapter.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Scrollable container node that uses the specified adapter. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Scrollable container node that uses the specified adapter. |
 
 ### OH_ArkUI_NodeAdapterEvent_SetItem()
 
@@ -1161,7 +1157,7 @@ Sets the component to be added to the specified adapter.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md)* event | Pointer to the adapter event object. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Component to be added. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Component to be added. |
 
 **Returns**:
 
@@ -1350,7 +1346,7 @@ Obtains a component object through a custom component event.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Component object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Component object. |
 
 ### OH_ArkUI_NodeCustomEvent_GetEventType()
 
@@ -1497,7 +1493,7 @@ Registers an event callback for **NodeContent**.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object for which a callback needs to be registered. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md) content | **NodeContent** object for which a callback needs to be registered. |
 | [ArkUI_NodeContentCallback](capi-native-node-h.md#arkui_nodecontentcallback) callback | Callback to be executed when the event is triggered. |
 
 **Returns**:
@@ -1556,7 +1552,7 @@ Obtains the object that triggers the specified **NodeContent** event.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) | **NodeContent** object that triggers the event. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md) | **NodeContent** object that triggers the event. |
 
 ### OH_ArkUI_NodeContent_SetUserData()
 
@@ -1576,7 +1572,7 @@ Saves custom data to the specified **NodeContent** object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object to which custom data needs to be saved. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md) content | **NodeContent** object to which custom data needs to be saved. |
 | void* userData | Pointer to the custom data to be saved. |
 
 **Returns**:
@@ -1603,7 +1599,7 @@ Obtains the custom data saved on the specified **NodeContent** object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object on which custom data needs to be saved. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md) content | **NodeContent** object on which custom data needs to be saved. |
 
 **Returns**:
 
@@ -1629,8 +1625,8 @@ Adds an ArkUI component node to the specified **NodeContent** object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object to which a node is to be added. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node to be added. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md) content | **NodeContent** object to which a node is to be added. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node to be added. |
 
 **Returns**:
 
@@ -1656,8 +1652,8 @@ Removes an ArkUI component node from the specified **NodeContent** object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object from which a node is to be removed. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node to be removed. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md) content | **NodeContent** object from which a node is to be removed. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node to be removed. |
 
 **Returns**:
 
@@ -1683,8 +1679,8 @@ Inserts an ArkUI component node into a specific position of the specified **Node
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontenthandle.md) content | **NodeContent** object into which a node is to be inserted. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node to be inserted. |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md) content | **NodeContent** object into which a node is to be inserted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node to be inserted. |
 | int32_t position | Position where a node is to be inserted. |
 
 **Returns**:
@@ -1711,7 +1707,7 @@ Obtains the layout area size of the component. The size does not count in transf
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle pointer. |
 | [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md)* size | Pointer to the size of the component handle layout area, in px. |
 
 **Returns**:
@@ -1738,7 +1734,7 @@ Obtains the position of the component's layout area relative to its parent compo
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle pointer. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* localOffset | Pointer to the offset of the component handle relative to the parent component, in px. |
 
 **Returns**:
@@ -1765,7 +1761,7 @@ Obtains the position of the component's layout area relative to the window. The 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle pointer. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* globalOffset | Pointer to the offset of the component handle relative to the window, in px. |
 
 **Returns**:
@@ -1792,7 +1788,7 @@ Obtains the position of the component's layout area relative to the screen. The 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle pointer. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* screenOffset | Pointer to the offset of the component handle relative to the screen, in px. |
 
 **Returns**:
@@ -1819,7 +1815,7 @@ Obtains the offset of the specified component relative to the global display. Th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle pointer. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* offset | Pointer to the offset of the component handle relative to the screen, in px. |
 
 **Returns**:
@@ -1846,7 +1842,7 @@ Obtains the position of the component in the window, including the translate att
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle pointer. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* translateOffset | Pointer to the accumulated offset of the component handle, its parent component, and its ancestor node, in px. |
 
 **Returns**:
@@ -1873,7 +1869,7 @@ Obtains the position of the component on the screen, including the translate att
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI_NodeHandle pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle pointer. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* translateOffset | Pointer to the accumulated offset of the component handle, its parent component, and its ancestor node, in px. |
 
 **Returns**:
@@ -1900,7 +1896,7 @@ Sets a custom property for a component. This API takes effect only in the main t
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer. |
 | const char* name | Pointer to the name of the custom property. A null pointer is not allowed. |
 | const char* value | Pointer to the value of the custom property corresponding to the key parameter name. A null pointer is not allowed. |
 
@@ -1922,7 +1918,7 @@ Removes a custom property that has been set for the specified component.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer. |
 | const char* name | Pointer to the name of the custom property. |
 
 ### OH_ArkUI_NodeUtils_GetCustomProperty()
@@ -1943,7 +1939,7 @@ Obtains the custom property of a component and returns an **ArkUI_CustomProperty
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer. |
 | const char* name | Pointer to the name of the custom property. |
 | [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)** handle | Double pointer to the struct that receives the custom property corresponding to the key parameter name. |
 
@@ -1971,13 +1967,13 @@ Obtains the parent node, which can be a component node created with ArkTS.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the component if the component exists; **NULL** otherwise. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the component if the component exists; **NULL** otherwise. |
 
 ### OH_ArkUI_NodeUtils_GetActiveChildrenInfo()
 
@@ -1997,7 +1993,7 @@ Obtains the FrameNode child node whose internal active state is **true** and gen
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) head | Node for which to obtain the child nodes. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) head | Node for which to obtain the child nodes. |
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)** handle | Double pointer to the struct containing information about the child nodes of the head node. |
 
 **Returns**:
@@ -2024,13 +2020,13 @@ Obtains the root node of the current page.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the root node if the node exists; **NULL** otherwise. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the root node if the node exists; **NULL** otherwise. |
 
 ### OH_ArkUI_NodeUtils_IsCreatedByNDK()
 
@@ -2050,7 +2046,7 @@ Checks whether the specified component is created with C APIs.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node object. |
 
 **Returns**:
 
@@ -2076,7 +2072,7 @@ Obtains the type of the specified node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node object. |
 
 **Returns**:
 
@@ -2102,7 +2098,7 @@ Obtains the information about the window to which a node belongs.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node object. |
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)** info | Double pointer to the window information object. The memory allocated for this object must be released using [OH_ArkUI_HostWindowInfo_Destroy](capi-native-type-h.md#oh_arkui_hostwindowinfo_destroy). |
 
 **Returns**:
@@ -2129,7 +2125,7 @@ Obtains the index of the first child node of the target node in the tree without
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the target node. |
 | uint32_t* index | Pointer to the index of the child node. |
 
 **Returns**:
@@ -2156,7 +2152,7 @@ Obtains the index of the last child node of the target node in the tree without 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the target node. |
 | uint32_t* index | Pointer to the index of the child node. |
 
 **Returns**:
@@ -2183,9 +2179,9 @@ Obtains a child node at the specified index using different expansion modes.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the target node. |
 | int32_t position | Index of the child node to obtain. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* subnode | Pointer to the obtained child node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* subnode | Pointer to the obtained child node. |
 | uint32_t expandMode | Expansion mode for node traversal. For details, see [ArkUI_ExpandMode](capi-native-type-h.md#arkui_expandmode). |
 
 **Returns**:
@@ -2240,13 +2236,13 @@ Obtains the pointer to the UI context object of the specified node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) | Pointer to the UI context object. If a null pointer is returned, it may be because the node is empty. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) | Pointer to the UI context object. If a null pointer is returned, it may be because the node is empty. |
 
 ### OH_ArkUI_RegisterSystemColorModeChangeEvent()
 
@@ -2294,7 +2290,7 @@ Unregisters the event listener for system color mode changes.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 
 ### OH_ArkUI_RegisterSystemFontStyleChangeEvent()
 
@@ -2342,7 +2338,7 @@ Unregisters the event listener for system font style changes.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 
 ### OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale()
 
@@ -2415,7 +2411,7 @@ Obtains the target node based on the provided user ID.
 | Parameter | Description |
 | -- | -- |
 | const char* id | ID of the target node. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Pointer to the target node. |
 
 **Returns**:
 
@@ -2441,8 +2437,8 @@ Moves a node to a target parent node as a child.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node to be moved. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) target_parent | Pointer to the target parent node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node to be moved. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) target_parent | Pointer to the target parent node. |
 | int32_t index | Index of the node after the movement. If the index is invalid, the node will be added to the end of the target parent node. |
 
 **Returns**:
@@ -2469,7 +2465,7 @@ Triggers the node attribute update in this frame.<br> If the attributes of the c
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node whose attributes are to be updated. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node whose attributes are to be updated. |
 
 **Returns**:
 
@@ -2495,7 +2491,7 @@ Sets the cross-language option for the target node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the target node. |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option ([ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)). |
 
 **Returns**:
@@ -2522,7 +2518,7 @@ Obtains the cross-language option of the target node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the target node. |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option ([ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)). |
 
 **Returns**:
@@ -2605,7 +2601,7 @@ Unregisters the layout completion callback function for a specific node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node for which the callback function is to be unregistered. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node for which the callback function is to be unregistered. |
 
 **Returns**:
 
@@ -2631,7 +2627,7 @@ Unregisters the drawing completion callback function for a specific node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node for which the callback function is to be unregistered. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node for which the callback function is to be unregistered. |
 
 **Returns**:
 
@@ -2647,7 +2643,7 @@ int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* s
 
 **Description**
 
-Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the PixelMap is no longer used, you should call OH_PixelmapNative_Release to release it.
+Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the PixelMap is no longer used, you should call [OH_PixelmapNative_Release](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_release) to release it.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2657,7 +2653,7 @@ Obtains a snapshot of a given component. If the node is not in the component tre
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node to capture a snapshot. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node to capture a snapshot. |
 | ArkUI_SnapshotOptions* snapshotOptions | Pointer to the snapshot configuration. If the value is null, the default configuration is used.<br>The screenshot configuration includes the scaling attribute, color space, and dynamic range mode. The color space and dynamic range mode are supported since API version 23.<br>The scaling attribute value is a floating point number greater than 0. The default value is **1.0**.<br>The color space value can be **3**<br>(RGB color gamut is of the Display P3 type), **4** (RGB color gamut is of the SRGB type), or **27** (RGB color gamut is of the Display BT2020 type). The default value is **4**.<br> The dynamic range mode value is specified using [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode). The default value is **ARKUI_DYNAMIC_RANGE_MODE_STANDARD**. |
 | OH_PixelmapNative** pixelmap | Pointer to the Pixelmap created by the system. |
 
@@ -2712,7 +2708,7 @@ Obtains the offset of the target node relative to its parent node, in px.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* globalOffset | Pointer to the offset of the target node relative to its parent node, in px. |
 
 **Returns**:
@@ -2769,7 +2765,7 @@ Removes registered UI states. When all states registered using **OH_ArkUI_AddSup
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 | int32_t uiStates | Target UI states to be removed. |
 
 **Returns**:
@@ -2825,7 +2821,7 @@ Obtain a node by its unique ID.
 | Parameter | Description |
 | -- | -- |
 | const uint32_t uniqueId | Unique ID of the target node. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | Pointer to the target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Pointer to the target node. |
 
 **Returns**:
 
@@ -2851,7 +2847,7 @@ Obtains the unique ID of the target node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI node pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI node pointer. |
 | int32_t* uniqueId | Pointer to the unique ID of the target node. The component ID is read-only and unique in the process. If the node exists, the unique ID of the node is returned. Otherwise, **-1** is returned. |
 
 **Returns**:
@@ -2878,7 +2874,7 @@ Obtains whether a node is in the render state. If RenderNode of a node is in the
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ArkUI node pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI node pointer. |
 | bool* isInRenderState | Pointer to the **isInRenderState** parameter indicating whether the node is in render state. *<br>*true**: The node is in the render state. **false**: The node is not in the render state. |
 
 **Returns**:
@@ -2905,8 +2901,8 @@ Adopts the target node as an affiliated node. The adopted node must not have an 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer, which specifies the parent node of the node to be adopted. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | **ArkUI_NodeHandle** pointer, which specifies the child node to be adopted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer, which specifies the parent node of the node to be adopted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | **ArkUI_NodeHandle** pointer, which specifies the child node to be adopted. |
 
 **Returns**:
 
@@ -2932,8 +2928,8 @@ Removes a previously-adopted affiliated node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer, which specifies the parent node. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | **ArkUI_NodeHandle** pointer, which specifies the child node to be removed. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer, which specifies the parent node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | **ArkUI_NodeHandle** pointer, which specifies the child node to be removed. |
 
 **Returns**:
 
@@ -3017,7 +3013,7 @@ Unregisters the basic event callback for the target node.<br> For details about 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 | [ArkUI_NodeEventType](capi-arkui-nodeeventtype.md) eventType | Event type. |
 
 **Returns**:
@@ -3075,7 +3071,7 @@ Unregisters the basic event callback for visible area changes with a constrained
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
@@ -3101,7 +3097,7 @@ Converts the coordinates of a point from the coordinate system of a specified no
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) currentNode | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) currentNode | Specified node. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) localPosition | Coordinates of the point in the coordinate system of the specified node, in px. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* windowPosition | Pointer to the converted coordinates (in the current window coordinate system, in px). |
 
@@ -3129,7 +3125,7 @@ Converts the coordinates of a point from the current window's coordinate system 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) targetNode | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) targetNode | Target node. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) windowPosition | Coordinates of the point in the current window coordinate system, in px. |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* localPosition | Pointer to the converted coordinates (in the coordinate system of the target node, in px). |
 
@@ -3157,7 +3153,7 @@ Stops the page turning animation that is being executed on the specified **Swipe
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 
 **Returns**:
 
@@ -3240,7 +3236,7 @@ Sets the visibility of the menu bar.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | ArkUI context handle, which specifies the context of the ArkUI container. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | ArkUI context handle, which specifies the context of the ArkUI container. |
 | bool visible | Whether the menu bar is visible. The value **true** indicates that the menu bar is visible, and **false** indicates the opposite. |
 
 **Returns**:
@@ -3257,7 +3253,7 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_Nod
 
 **Description**
 
-Registers a callback for listening for component size and area changes. This API can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node at any time. The newly registered callback will replace the previously registered callback for this event and take effect from the next frame. When the callback is no longer needed, use [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.
+Registers a callback for listening for component size and area changes. This API can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and take effect from the next frame. When the callback is no longer needed, use [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3267,7 +3263,7 @@ Registers a callback for listening for component size and area changes. This API
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_NodeHandle node | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) pointer. |
+| rkUI_NodeHandle node | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) pointer. |
 | float expectedUpdateInterval | Interval at which the callback is triggered by the expected calculation area change, in ms. |
 | void* userData | Pointer to the custom data. |
 | void (*callback)(ArkUI_NodeEvent* event) | Pointer to the event callback. |
@@ -3296,7 +3292,7 @@ Unregisters the callback for listening for component size and area changes.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) pointer. |
 
 **Returns**:
 
@@ -3350,7 +3346,7 @@ Starts a simulated drag on a **Swiper** node. [OH_ArkUI_Swiper_FakeDragBy](capi-
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 | bool* isSuccessful | Pointer to the **isSuccessful** parameter indicating whether the simulated drag is successfully started. **true** is returned if the simulated drag is successfully started.<br> **false** is returned if **Swiper** is not ready to start the simulated drag or a real drag or simulated drag is in progress. |
 
 **Returns**:
@@ -3377,7 +3373,7 @@ Simulates the drag effect by setting the offset of a **Swiper** node. Before cal
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 | float offset | Offset to be dragged, in vp. |
 | bool* isConsumedOffset | Pointer to the **isConsumedOffset** parameter indicating whether to consume the offset to trigger dragging. **true** is returned if the offset is consumed to trigger dragging.<br> **false** is returned if the dragging is not in progress or no offset is consumed. |
 
@@ -3405,7 +3401,7 @@ Stops the drag simulation on a **Swiper** node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 | bool* isSuccessful | Pointer to the **isSuccessful** parameter indicating whether the simulated drag is successfully stopped. **true** is returned if the simulated drag is successfully stopped.<br> **false** is returned if **Swiper** is not ready to stop the simulated drag or no simulated drag is in progress. |
 
 **Returns**:
@@ -3432,7 +3428,7 @@ Obtains the drag simulation status on a **Swiper** node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 | bool* isFakeDragging | Pointer to the **isFakeDragging** parameter indicating whether the simulated drag is in progress. **true** is returned if the simulated drag is in progress; **false** otherwise. |
 
 **Returns**:
@@ -3459,7 +3455,7 @@ Displays the previous page of a **Swiper** node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 
 **Returns**:
 
@@ -3485,7 +3481,7 @@ Displays the next page of a **Swiper** node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Specified node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Specified node. |
 
 **Returns**:
 
@@ -3511,7 +3507,7 @@ Displays the previous page of the **ArcSwiper** node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer. |
 
 **Returns**:
 
@@ -3537,7 +3533,7 @@ Displays the next page of the **ArcSwiper** node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer. |
 
 **Returns**:
 
@@ -3563,7 +3559,7 @@ Finishes the animation being executed by the **ArcSwiper** node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | **ArkUI_NodeHandle** pointer. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer. |
 
 **Returns**:
 
@@ -3589,8 +3585,8 @@ Obtains the root node of the page of a specified instance.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | Pointer to the UI instance object. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* rootNode | Handle to the target root node. If the page corresponding to the context does not have a root node, this parameter is set to null. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | Pointer to the UI instance object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* rootNode | Handle to the target root node. If the page corresponding to the context does not have a root node, this parameter is set to null. |
 
 **Returns**:
 
@@ -3642,7 +3638,7 @@ Sets the child node mounting policy for a target node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 | [OH_ArkUI_NodeMountPolicy](capi-native-type-h.md#oh_arkui_nodemountpolicy) policy | Mounting policy to be set. |
 
 **Returns**:
@@ -3669,7 +3665,7 @@ Obtains the current child node mounting policy of a target node. The default chi
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 | [OH_ArkUI_NodeMountPolicy](capi-native-type-h.md#oh_arkui_nodemountpolicy)* policy | Pointer to the child node mounting policy of the target node. |
 
 **Returns**:
@@ -3696,7 +3692,7 @@ Sets the UI Dvsync switch.<br> When enabled, the system responds to Vsync reques
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] Pointer to an ArkUI_ContextHandle. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] Pointer to an ArkUI_ContextHandle. |
 | bool enable | [in] Whether to enable Dvsync. The value true enables Dvsync, and false disables Dvsync. |
 
 **Returns**:
@@ -3704,6 +3700,66 @@ Sets the UI Dvsync switch.<br> When enabled, the system responds to Vsync reques
 | Type | Description |
 | -- | -- |
 | ArkUI_ErrorCode | Returns the result. <ul><li>ARKUI_ERROR_CODE_NO_ERROR The operation is successful. </li><li>ARKUI_ERROR_CODE_CAPI_INIT_ERROR Failed to initialize the CAPI. </li><li>ARKUI_ERROR_CODE_PARAM_INVALID The function parameter is invalid.</li></ul> |
+
+### OH_ArkUI_NativeModule_RegisterInspectorTreeGetter()
+
+```c
+int32_t OH_ArkUI_NativeModule_RegisterInspectorTreeGetter(ArkUI_NodeHandle node, void* userData, void (*getInspectorTree)(void *userData, char** inspectorTree))
+```
+
+**Description**
+
+Registers an inspector tree getter callback on the specified node.<br> This API allows third-party frameworks (such as Flutter, CMP, and ArkWeb) to report component tree information to the ArkUI inspector. When the inspector traverses the component tree and encounters a node with a registered callback, it invokes <b>getInspectorTree</b> to obtain the external component subtree and merges the result into the complete inspector tree output.<br> one more inspector tree getter callback can be registered for the same node.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| rkUI_NodeHandle node | [in] Indicates the host node of the third-party framework. Only <b>ARKUI_NODE_XCOMPONENT</b> and <b>ARKUI_NODE_CUSTOM</b> and <b>ARKUI_NODE_XCOMPONENT_TEXTURE</b> nodes are supported. |
+| void* userData | [in] Indicates the custom data to be saved. This value is passed back as the <b>userData</b> parameter when the <b>getInspectorTree</b>  callback is invoked. |
+| void (*getInspectorTree)(void *userData | [in] Indicates the callback function invoked by the inspector to obtain the component subtree of the third-party framework. The <b>inspectorTree</b> output should be a JSON string in a format consistent with the ArkUI inspector output. The memory for the string is allocated by the callback implementation and should be freed by the caller using <b>free()</b>. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Error code. <ul><li>ARKUI_ERROR_CODE_NO_ERROR Success. </li><li>RKUI_ERROR_CODE_CAPI_INIT_ERROR Failed to initialize the CAPI. </li><li>ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception, or the node type is not <b>ARKUI_NODE_XCOMPONENT</b> or <b>ARKUI_NODE_CUSTOM</b> or <b>ARKUI_NODE_XCOMPONENT_TEXTURE</b> or getInspectorTree is null.</li></ul> |
+
+**Reference**:
+
+[OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter](capi-native-node-h.md#oh_arkui_nativemodule_unregisterinspectortreegetter) for unregister inspector tree getter
+
+
+### OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter()
+
+```c
+int32_t OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter(ArkUI_NodeHandle node, void (*getInspectorTree)(void *userData, char** inspectorTree))
+```
+
+**Description**
+
+Unregister the inspector tree getter callback on the specified node.<br> After unregistration, the inspector will no longer invoke the callback when traversing this node. The <b>userData</b> previously passed to [OH_ArkUI_NativeModule_RegisterInspectorTreeGetter](capi-native-node-h.md#oh_arkui_nativemodule_registerinspectortreegetter) is not released by this function; the caller is responsible for freeing it.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| rkUI_NodeHandle node | [in] Indicates the target node. Only <b>ARKUI_NODE_XCOMPONENT</b> and <b>ARKUI_NODE_CUSTOM</b> and <b>ARKUI_NODE_XCOMPONENT_TEXTURE</b> nodes are supported. |
+| void (*getInspectorTree)(void *userData | [in] Indicates the callback function pointer to unregister. This must be the same function pointer that was passed to [OH_ArkUI_NativeModule_RegisterInspectorTreeGetter](capi-native-node-h.md#oh_arkui_nativemodule_registerinspectortreegetter) during registration. If the pointer does not match any registered callback on the node, the operation has no effect. If the pointer is null, all callbck of the node will be unregistered. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Error code. <ul><li>ARKUI_ERROR_CODE_NO_ERROR Success. </li><li>RKUI_ERROR_CODE_CAPI_INIT_ERROR Failed to initialize the CAPI. </li><li>ARKUI_ERROR_CODE_PARAM_INVALID Function parameter exception, or the node type is not <b>ARKUI_NODE_XCOMPONENT</b> or <b>ARKUI_NODE_CUSTOM</b> or <b>ARKUI_NODE_XCOMPONENT_TEXTURE</b> or getInspectorTree is not registered.</li></ul> |
 
 ### OH_ArkUI_NativeModule_AdoptChildWithPolicy()
 
@@ -3723,8 +3779,8 @@ Adopts the target node as an affiliated node. The adopted node must not have an 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | [in] **ArkUI_NodeHandle** pointer, which specifies the parent node of the node to be adopted. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | [in] **ArkUI_NodeHandle** pointer, which specifies the child node to be adopted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [in] **ArkUI_NodeHandle** pointer, which specifies the parent node of the node to be adopted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | [in] **ArkUI_NodeHandle** pointer, which specifies the child node to be adopted. |
 | [OH_ArkUI_AdoptPolicy](capi-native-node-h.md#oh_arkui_adoptpolicy) policy | [in] Rendering position policy of overlay nodes of adopted node. Valid values correspond to [OH_ArkUI_AdoptPolicy](capi-native-node-h.md#oh_arkui_adoptpolicy). |
 
 **Returns**:
@@ -3751,7 +3807,7 @@ Sets the position compensation from an adopted child to its adopt parent. The co
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) adoptedChild | [in] The adopted node that require location compensation. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) adoptedChild | [in] The adopted node that require location compensation. |
 | const ArkUI_PointF* compensationOffset | [in] x/y offset compensation, in px. |
 | const ArkUI_Matrix4* compensationTransform | [in] Aggregation transformation compensation. |
 

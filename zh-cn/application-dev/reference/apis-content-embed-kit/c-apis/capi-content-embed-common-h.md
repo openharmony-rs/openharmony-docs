@@ -12,7 +12,7 @@
 
 **起始版本：** 24
 
-**相关模块：** [ContentEmbed](capi-contentembed.md)
+**相关模块：** [ContentEmbed](capi-content-embed-kit-contentembed.md)
 
 ## 汇总
 

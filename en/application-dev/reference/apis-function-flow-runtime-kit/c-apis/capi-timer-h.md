@@ -10,7 +10,7 @@ Declares the timer interfaces in C.<br> Provides timer capabilities based on QoS
 
 **Since**: 12
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## Summary
 

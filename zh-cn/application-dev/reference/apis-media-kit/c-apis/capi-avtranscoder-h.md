@@ -10,7 +10,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [AVTranscoder](capi-avtranscoder.md)
+**相关模块：** [AVTranscoder](capi-media-kit-avtranscoder.md)
 
 ## 汇总
 

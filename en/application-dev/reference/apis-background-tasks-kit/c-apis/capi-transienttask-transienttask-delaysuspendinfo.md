@@ -12,7 +12,7 @@ A struct that describes the returned information about a transient task. The str
 
 **Since**: 13
 
-**Related module**: [TransientTask](capi-transienttask.md)
+**Related module**: [TransientTask](capi-others-transienttask.md)
 
 **Header file**: [transient_task_type.h](capi-transient-task-type-h.md)
 

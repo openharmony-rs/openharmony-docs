@@ -12,7 +12,7 @@ Defines the struct types of the replaceable/restorable **HiDebug_MallocDispatch*
 
 **Since**: 20
 
-**Related module**: [HiDebug](capi-hidebug.md)
+**Related module**: [HiDebug](capi-others-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

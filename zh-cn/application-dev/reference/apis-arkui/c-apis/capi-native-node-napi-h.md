@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -70,7 +70,7 @@ int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_GetContextFromNapiValue()
 
@@ -98,7 +98,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_GetNodeContentFromNapiValue()
 
@@ -126,7 +126,7 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_GetDrawableDescriptorFromNapiValue()
 
@@ -154,7 +154,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value val
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue()
 
@@ -182,7 +182,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_GetNavigationId()
 
@@ -205,13 +205,13 @@ ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, in
 | ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，NavigationID写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
-| int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
+| int32_t* writeLength | 在返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)时表示实际写入到缓冲区的字符串长度。 <br>在返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)时表示可以容纳目标的最小缓冲区大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败，可能因为当前节点未挂载在页面下。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数据大小超过指定的缓冲区大小。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点未挂载在页面下。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 数据大小超过指定的缓冲区大小。 |
 
 ### OH_ArkUI_GetNavDestinationName()
 
@@ -234,13 +234,13 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buff
 | ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，被查询的NavDestination名称写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
-| int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
+| int32_t* writeLength | 在返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)时表示实际写入到缓冲区的字符串长度。 <br>在返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)时表示可以容纳目标的最小缓冲区大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败，可能因为当前节点未挂载在页面下。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点未挂载在页面下。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
 
 ### OH_ArkUI_GetNavStackLength()
 
@@ -267,7 +267,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* lengt
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败，可能因为当前节点未挂载在页面下。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点未挂载在页面下。 |
 
 ### OH_ArkUI_GetNavDestinationNameByIndex()
 
@@ -297,7 +297,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID if the node, buffer or writeLength is null. ARKUI_ERROR_CODE_NODE_INDEX_INVALID index为非法值。ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败，可能因为当前节点未挂载在页面下。ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if the node, buffer or writeLength is null. [ARKUI_ERROR_CODE_NODE_INDEX_INVALID](capi-error-code-h.md#arkui_errorcode) index为非法值。[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点未挂载在页面下。[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
 
 ### OH_ArkUI_GetNavDestinationId()
 
@@ -320,13 +320,13 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer
 | ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，NavDestinationID写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
-| int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
+| int32_t* writeLength | 在返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)时表示实际写入到缓冲区的字符串长度。 <br>在返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)时表示可以容纳目标的最小缓冲区大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败，可能因为当前节点未挂载在页面下。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数据大小超过指定的缓冲区大小。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点未挂载在页面下。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 数据大小超过指定的缓冲区大小。 |
 
 ### OH_ArkUI_GetNavDestinationState()
 
@@ -353,7 +353,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_Nav
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败，可能因为当前节点未挂载在页面下。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点未挂载在页面下。 |
 
 ### OH_ArkUI_GetNavDestinationIndex()
 
@@ -380,7 +380,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败，可能因为当前节点未挂载在页面下。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点未挂载在页面下。 |
 
 ### OH_ArkUI_GetNavDestinationParam()
 
@@ -433,7 +433,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* inde
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 指定的节点或传递的索引异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败，可能因为当前节点未挂载在页面下。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 指定的节点或传递的索引异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点未挂载在页面下。 |
 
 ### OH_ArkUI_GetRouterPageName()
 
@@ -456,13 +456,13 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, 
 | ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，页面名称写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
-| int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
+| int32_t* writeLength | 在返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)时表示实际写入到缓冲区的字符串长度。 <br>在返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)时表示可以容纳目标的最小缓冲区大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
 
 ### OH_ArkUI_GetRouterPagePath()
 
@@ -485,13 +485,13 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, 
 | ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，页面路径写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
-| int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
+| int32_t* writeLength | 在返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)时表示实际写入到缓冲区的字符串长度。 <br>在返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)时表示可以容纳目标的最小缓冲区大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
 
 ### OH_ArkUI_GetRouterPageState()
 
@@ -518,7 +518,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterP
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败。 |
 
 ### OH_ArkUI_GetRouterPageId()
 
@@ -541,13 +541,13 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, in
 | ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，页面ID写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
-| int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
+| int32_t* writeLength | 在返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)时表示实际写入到缓冲区的字符串长度。 <br>在返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)时表示可以容纳目标的最小缓冲区大小。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_GET_INFO_FAILED 查询信息失败。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数据大小超过指定的缓冲区大小。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-error-code-h.md#arkui_errorcode) 查询信息失败。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 数据大小超过指定的缓冲区大小。 |
 
 ### OH_ArkUI_PostFrameCallback()
 
@@ -577,7 +577,7 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_CAPI_INIT_ERROR CAPI初始化错误，请确认ArkUI Native接口运行环境已完成初始化后重试。<br>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID uiContext对象无效，请检查uiContext是否为空或是否来自有效的UIContext对象。<br>ARKUI_ERROR_CODE_CALLBACK_INVALID 回调函数无效，请检查callback是否为空。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode) CAPI初始化错误，请确认ArkUI Native接口运行环境已完成初始化后重试。<br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) uiContext对象无效，请检查uiContext是否为空或是否来自有效的UIContext对象。<br>[ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-error-code-h.md#arkui_errorcode) 回调函数无效，请检查callback是否为空。 |
 
 ### OH_ArkUI_PostIdleCallback()
 
@@ -607,7 +607,7 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_CAPI_INIT_ERROR CAPI初始化错误。<br>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID uiContext对象无效。<br>ARKUI_ERROR_CODE_CALLBACK_INVALID 回调函数无效。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。<br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) uiContext对象无效。<br>[ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-error-code-h.md#arkui_errorcode) 回调函数无效。 |
 
 ### OH_ArkUI_InitModuleForArkTSEnv()
 
@@ -633,7 +633,7 @@ ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数无效（如env为null或设置白名单失败）。<br>ARKUI_ERROR_CODE_CAPI_INIT_ERROR CAPI初始化错误。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数无效（如env为null或设置白名单失败）。<br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode) CAPI初始化错误。 |
 
 ### OH_ArkUI_NotifyArkTSEnvDestroy()
 
@@ -681,6 +681,6 @@ ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, b
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID uiContext对象无效 。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) uiContext对象无效 。 |
 
 

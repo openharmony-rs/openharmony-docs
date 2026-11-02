@@ -12,7 +12,7 @@ typedef struct OH_AudioResourceManager OH_AudioResourceManager
 
 **起始版本：** 20
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-others-ohaudio.md)
 
 **所在头文件：** [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
 

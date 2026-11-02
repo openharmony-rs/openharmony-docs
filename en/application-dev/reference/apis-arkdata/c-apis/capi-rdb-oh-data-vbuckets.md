@@ -12,7 +12,7 @@ Define the OH_Data_VBuckets structure type.
 
 **Since**: 18
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [oh_data_values_buckets.h](capi-oh-data-values-buckets-h.md)
 

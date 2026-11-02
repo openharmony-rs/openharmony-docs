@@ -12,7 +12,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [USBSerialDDK](capi-usbserialddk.md)
+**相关模块：** [USBSerialDDK](capi-driver-development-kit-usbserialddk.md)
 
 ## 汇总
 
@@ -100,7 +100,7 @@ int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_D
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t deviceId | 设备ID，代表要操作的设备，可通过OH_Usb_GetDevices查询获取。 |
+| uint64_t deviceId | 设备ID，代表要操作的设备，可通过[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)查询获取。 |
 | uint8_t interfaceIndex | 接口索引，对应USB协议中的bInterfaceNumber。 |
 | [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) **dev | 设备句柄，输出参数，用于返回打开后的USB串口设备句柄，使用完毕后需调用[OH_UsbSerial_Close](capi-usb-serial-api-h.md#oh_usbserial_close)释放。 |
 

@@ -12,7 +12,7 @@
 
 **起始版本：** 24
 
-**相关模块：** [ContentEmbed](capi-contentembed.md)
+**相关模块：** [ContentEmbed](capi-content-embed-kit-contentembed.md)
 
 ## 汇总
 
@@ -89,7 +89,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, Co
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyDocument {document}
+**资源释放：** [OH_ContentEmbed_DestroyDocument](#oh_contentembed_destroydocument)
 
 **参数：**
 
@@ -118,7 +118,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFileP
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyDocument {document}
+**资源释放：** [OH_ContentEmbed_DestroyDocument](#oh_contentembed_destroydocument)
 
 **参数：**
 
@@ -149,7 +149,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFileP
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyDocument {document}
+**资源释放：** [OH_ContentEmbed_DestroyDocument](#oh_contentembed_destroydocument)
 
 **参数：**
 
@@ -290,7 +290,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Docu
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyStorage {storage}
+**资源释放：** [OH_ContentEmbed_DestroyStorage](#oh_contentembed_destroystorage)
 
 **参数：**
 
@@ -345,7 +345,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyStorage {childStorage}
+**资源释放：** [OH_ContentEmbed_DestroyStorage](#oh_contentembed_destroystorage)
 
 **参数：**
 
@@ -375,7 +375,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Sto
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyStorage {childStorage}
+**资源释放：** [OH_ContentEmbed_DestroyStorage](#oh_contentembed_destroystorage)
 
 **参数：**
 
@@ -405,7 +405,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyStream {childStream}
+**资源释放：** [OH_ContentEmbed_DestroyStream](#oh_contentembed_destroystream)
 
 **参数：**
 
@@ -435,7 +435,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *p
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyStream {childStream}
+**资源释放：** [OH_ContentEmbed_DestroyStream](#oh_contentembed_destroystream)
 
 **参数：**
 
@@ -791,7 +791,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_Stora
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_StorageElements_Destroy {storageElements}
+**资源释放：** [OH_ContentEmbed_StorageElements_Destroy](#oh_contentembed_storageelements_destroy)
 
 **参数：**
 

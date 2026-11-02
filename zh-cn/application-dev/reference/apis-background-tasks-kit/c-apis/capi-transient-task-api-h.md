@@ -12,7 +12,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [TransientTask](capi-transienttask.md)
+**相关模块：** [TransientTask](capi-background-tasks-kit-transienttask.md)
 
 ## 汇总
 

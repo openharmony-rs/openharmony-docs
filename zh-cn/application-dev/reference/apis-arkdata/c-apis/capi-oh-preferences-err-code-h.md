@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [Preferences](capi-preferences.md)
+**相关模块：** [Preferences](capi-arkdata-preferences.md)
 
 ## 汇总
 

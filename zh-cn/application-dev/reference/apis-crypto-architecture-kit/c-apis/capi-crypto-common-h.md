@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [CryptoCommonApi](capi-cryptocommonapi.md)
+**相关模块：** [CryptoCommonApi](capi-crypto-architecture-kit-cryptocommonapi.md)
 
 ## 汇总
 

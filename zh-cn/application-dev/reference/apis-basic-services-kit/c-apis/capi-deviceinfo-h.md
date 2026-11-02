@@ -12,7 +12,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [DeviceInfo](capi-deviceinfo.md)
+**相关模块：** [DeviceInfo](capi-basic-services-kit-deviceinfo.md)
 
 ## 汇总
 

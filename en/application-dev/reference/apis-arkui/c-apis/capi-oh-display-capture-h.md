@@ -10,7 +10,7 @@ The file declares the capability to take screenshots.
 
 **Since**: 14
 
-**Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)
+**Related module**: [OH_DisplayManager](capi-arkui-oh-displaymanager.md)
 
 ## Summary
 

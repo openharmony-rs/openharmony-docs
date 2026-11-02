@@ -10,7 +10,7 @@ typedef struct OH_AVImageGenerator OH_AVImageGenerator
 
 **起始版本：** 18
 
-**相关模块：** [AVImageGenerator](capi-avimagegenerator.md)
+**相关模块：** [AVImageGenerator](capi-others-avimagegenerator.md)
 
 **所在头文件：** [avimage_generator.h](capi-avimage-generator-h.md)
 

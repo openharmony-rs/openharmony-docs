@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -123,7 +123,6 @@
 | ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray | 定义手势识别器句柄数组类型，用于表示或传递多个手势识别器句柄，例如获取响应链中的手势识别器集合。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 | ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle | 定义触摸识别器句柄，用于表示触摸识别器对象，并在手势打断、手势收集拦截等接口中传递该对象。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 | ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray | 定义触摸识别器句柄数组，用于在批量管理多个触摸识别器时使用，例如从手势打断信息中获取多个触摸识别器句柄。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| void (*ArkUI_GestureRecognizerDisposeNotifyCallback)(ArkUI_GestureRecognizer* recognizer, void* userData) | 定义手势识别器析构通知事件的回调函数类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 | typedef uint32_t ArkUI_GestureEventActionTypeMask | 定义手势事件类型集合。例：ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 | typedef uint32_t ArkUI_GestureDirectionMask | 定义滑动手势方向集合。 <br>例：ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT。 <br>directions 表明支持左右水平方向。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 
@@ -257,8 +256,8 @@ enum ArkUI_GestureRecognizerType
 | ROTATION_GESTURE | 旋转手势。 |
 | SWIPE_GESTURE | 快滑手势。 |
 | GROUP_GESTURE | 手势组合。 |
-| CLICK_GESTURE |  |
-| DRAG_DROP |  |
+| CLICK_GESTURE | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
+| DRAG_DROP | 用于拖放的拖拽手势。<br>**起始版本：** 20 |
 
 ### ArkUI_GestureInterruptResult
 
@@ -478,7 +477,7 @@ int32_t OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers(const ArkUI_GestureInt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>返回 ARKUI_ERROR_CODE_NO_ERROR 表示成功。<br>返回 ARKUI_ERROR_CODE_PARAM_INVALID 表示参数错误。 |
+| int32_t | 错误码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 表示参数错误。 |
 
 ### OH_ArkUI_TouchRecognizer_GetNodeHandle()
 
@@ -531,7 +530,7 @@ int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recogni
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>返回 ARKUI_ERROR_CODE_NO_ERROR 成功。<br>返回 ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。 |
+| int32_t | 错误码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。 |
 
 ### OH_ArkUI_GestureEvent_GetActionType()
 
@@ -949,7 +948,7 @@ int32_t OH_ArkUI_GetResponseRecognizersFromInterruptInfo(const ArkUI_GestureInte
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。 |
 
 ### OH_ArkUI_SetGestureRecognizerEnabled()
 
@@ -976,7 +975,7 @@ int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。 |
 
 ### OH_ArkUI_SetGestureRecognizerLimitFingerCount()
 
@@ -1003,7 +1002,7 @@ int32_t OH_ArkUI_SetGestureRecognizerLimitFingerCount(ArkUI_GestureRecognizer* r
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。 |
 
 ### OH_ArkUI_GetGestureRecognizerEnabled()
 
@@ -1056,7 +1055,7 @@ int32_t OH_ArkUI_GetGestureRecognizerState(ArkUI_GestureRecognizer* recognizer, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。 |
 
 ### OH_ArkUI_GetGestureEventTargetInfo()
 
@@ -1083,7 +1082,7 @@ int32_t OH_ArkUI_GetGestureEventTargetInfo(ArkUI_GestureRecognizer* recognizer, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。 |
 
 ### OH_ArkUI_GestureEventTargetInfo_IsScrollBegin()
 
@@ -1110,7 +1109,7 @@ int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollBegin(ArkUI_GestureEventTargetIn
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。<br>ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER - 非滚动类容器。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。<br>[ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER](capi-error-code-h.md#arkui_errorcode) - 非滚动类容器。 |
 
 ### OH_ArkUI_GestureEventTargetInfo_IsScrollEnd()
 
@@ -1137,7 +1136,7 @@ int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(ArkUI_GestureEventTargetInfo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。<br>ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER - 非滚动类容器。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。<br>[ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER](capi-error-code-h.md#arkui_errorcode) - 非滚动类容器。 |
 
 ### OH_ArkUI_GetPanGestureDirectionMask()
 
@@ -1164,7 +1163,7 @@ int32_t OH_ArkUI_GetPanGestureDirectionMask(ArkUI_GestureRecognizer* recognizer,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。 |
 
 ### OH_ArkUI_IsBuiltInGesture()
 
@@ -1219,7 +1218,7 @@ int32_t OH_ArkUI_GetGestureTag(ArkUI_GestureRecognizer* recognizer, char* buffer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH - 存储区大小不足。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-error-code-h.md#arkui_errorcode) - 存储区大小不足。 |
 
 ### OH_ArkUI_GetGestureBindNodeId()
 
@@ -1248,7 +1247,7 @@ int32_t OH_ArkUI_GetGestureBindNodeId(ArkUI_GestureRecognizer* recognizer, char*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH - 存储区大小不足。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-error-code-h.md#arkui_errorcode) - 存储区大小不足。 |
 
 ### OH_ArkUI_IsGestureRecognizerValid()
 
@@ -1354,7 +1353,7 @@ int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_Parallel
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。 |
 
 ### OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify()
 
@@ -1382,7 +1381,7 @@ int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR - 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID - 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) - 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) - 参数错误。 |
 
 ### OH_ArkUI_GetGestureParam_DirectMask()
 
@@ -1409,7 +1408,7 @@ int32_t OH_ArkUI_GetGestureParam_DirectMask(ArkUI_GestureRecognizer* recognizer,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。 |
 
 ### OH_ArkUI_GetGestureParam_FingerCount()
 
@@ -1436,7 +1435,7 @@ int32_t OH_ArkUI_GetGestureParam_FingerCount(ArkUI_GestureRecognizer* recognizer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。 |
 
 ### OH_ArkUI_GetGestureParam_limitFingerCount()
 
@@ -1463,7 +1462,7 @@ int32_t OH_ArkUI_GetGestureParam_limitFingerCount(ArkUI_GestureRecognizer* recog
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。 |
 
 ### OH_ArkUI_GetGestureParam_repeat()
 
@@ -1490,7 +1489,7 @@ int32_t OH_ArkUI_GetGestureParam_repeat(ArkUI_GestureRecognizer* recognizer, boo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_GetGestureParam_distance()
 
@@ -1517,7 +1516,7 @@ int32_t OH_ArkUI_GetGestureParam_distance(ArkUI_GestureRecognizer* recognizer, d
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_GetGestureParam_speed()
 
@@ -1544,7 +1543,7 @@ int32_t OH_ArkUI_GetGestureParam_speed(ArkUI_GestureRecognizer* recognizer, doub
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_GetGestureParam_duration()
 
@@ -1571,7 +1570,7 @@ int32_t OH_ArkUI_GetGestureParam_duration(ArkUI_GestureRecognizer* recognizer, i
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_GetGestureParam_angle()
 
@@ -1598,7 +1597,7 @@ int32_t OH_ArkUI_GetGestureParam_angle(ArkUI_GestureRecognizer* recognizer, doub
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_GetGestureParam_distanceThreshold()
 
@@ -1625,7 +1624,7 @@ int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* reco
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_LongPressGesture_GetAllowableMovement()
 
@@ -1652,7 +1651,7 @@ ArkUI_ErrorCode OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureReco
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。<br>ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_PanGesture_SetDistanceMap()
 
@@ -1681,7 +1680,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* reco
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>返回 ARKUI_ERROR_CODE_NO_ERROR 成功。<br>返回 ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。<br>返回 ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| ArkUI_ErrorCode | 错误码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。<br>返回 [ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_PanGesture_GetDistanceByToolType()
 
@@ -1709,7 +1708,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognize
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>返回 ARKUI_ERROR_CODE_NO_ERROR 成功。<br>返回 ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。<br>返回 ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| ArkUI_ErrorCode | 错误码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。<br>返回 [ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_SetTouchTestDoneCallback()
 
@@ -1737,7 +1736,7 @@ ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node, void* u
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>返回 ARKUI_ERROR_CODE_NO_ERROR 成功。<br>返回 ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。 |
+| ArkUI_ErrorCode | 错误码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。 |
 
 ### OH_ArkUI_GestureInterrupter_GetUserData()
 
@@ -1789,7 +1788,7 @@ ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>返回 ARKUI_ERROR_CODE_NO_ERROR 成功。<br>返回 ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。 |
+| ArkUI_ErrorCode | 错误码。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。 |
 
 ### OH_ArkUI_LongPressGesture_SetAllowableMovement()
 
@@ -1816,7 +1815,7 @@ ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureReco
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数错误。<br>ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED 不支持手势识别器类型。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数错误。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 
 ### OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers()
 
@@ -1844,7 +1843,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers(cons
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回ARKUI_ERROR_CODE_NO_ERROR表示成功。<br>返回ARKUI_ERROR_CODE_PARAM_INVALID表示发生参数异常。 |
+| ArkUI_ErrorCode | 返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示成功。<br>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示发生参数异常。 |
 
 ### OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers()
 
@@ -1872,7 +1871,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers(const A
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回ARKUI_ERROR_CODE_NO_ERROR表示成功。<br>返回ARKUI_ERROR_CODE_PARAM_INVALID表示发生参数异常。 |
+| ArkUI_ErrorCode | 返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示成功。<br>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示发生参数异常。 |
 
 ### OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectIntervention()
 
@@ -1899,7 +1898,7 @@ ArkUI_ErrorCode OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectInterventi
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 如果成功，则返回ARKUI_ERROR_CODE_NO_ERROR。<br>参数异常返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| ArkUI_ErrorCode | 如果成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)。<br>参数异常返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 ### OH_ArkUI_GetGestureBindNodeUniqueId()
 
@@ -1926,7 +1925,7 @@ ArkUI_ErrorCode OH_ArkUI_GetGestureBindNodeUniqueId(const ArkUI_GestureRecognize
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回ARKUI_ERROR_CODE_NO_ERROR表示成功。<br>返回ARKUI_ERROR_CODE_PARAM_INVALID表示发生参数异常。 |
+| ArkUI_ErrorCode | 返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示成功。<br>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示发生参数异常。 |
 
 ### OH_ArkUI_TouchRecognizer_IsHostBelongsTo()
 

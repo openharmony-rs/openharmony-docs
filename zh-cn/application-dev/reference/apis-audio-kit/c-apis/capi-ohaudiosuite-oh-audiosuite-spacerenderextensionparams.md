@@ -12,7 +12,7 @@ struct OH_AudioSuite_SpaceRenderExtensionParams {...}
 
 **起始版本：** 23
 
-**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 
@@ -22,7 +22,7 @@ struct OH_AudioSuite_SpaceRenderExtensionParams {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| float extRadius |  |
-| int32_t extAngle |  |
+| float extRadius | 扩展半径，表示声音源的空间扩散范围。取值越大，声音的空间扩散范围越宽广。取值范围为[1.0, 5.0]，单位为米（m）。<br>**起始版本：** 23 |
+| int32_t extAngle | 扩展角度，表示声音源在水平面上的扩散角度范围。取值越大，声音的扩散角度越宽。取值范围为(0, 360)，单位为度（°）。<br>**起始版本：** 23 |
 
 

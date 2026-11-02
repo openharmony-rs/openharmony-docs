@@ -12,7 +12,7 @@ MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等�
 
 **起始版本：** 11
 
-**相关模块：** [Drm](capi-drm.md)
+**相关模块：** [Drm](capi-others-drm.md)
 
 **所在头文件：** [native_mediakeysession.h](capi-native-mediakeysession-h.md)
 

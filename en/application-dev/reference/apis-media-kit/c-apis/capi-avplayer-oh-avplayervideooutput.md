@@ -10,7 +10,7 @@ OH_AVPlayerVideoOutput field.
 
 **Since**: 26.0.0
 
-**Related module**: [AVPlayer](capi-avplayer.md)
+**Related module**: [AVPlayer](capi-others-avplayer.md)
 
 **Header file**: [avplayer.h](capi-avplayer-h.md)
 

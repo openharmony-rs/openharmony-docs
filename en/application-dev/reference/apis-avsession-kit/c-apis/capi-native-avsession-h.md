@@ -10,7 +10,7 @@ Declare avsession interface.
 
 **Since**: 13
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 ## Summary
 
@@ -63,18 +63,6 @@ Declare avsession interface.
 | [AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)](#oh_avsession_stopcasting) | - | Request to stop current cast and disconnect device connection. |
 | [AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo** outputDeviceInfo)](#oh_avsession_acquireoutputdevice) | - | Acquire current output device. |
 | [AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo *outputDeviceInfo)](#oh_avsession_releaseoutputdevice) | - | Release outputDeviceInfo object. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData) | Declaring the callback struct for playback command<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData) | Declaring the callback struct for forward command<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData) | Declaring the callback struct for rewind command<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData) | Declaring the callback struct for seek command<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData) | Declaring the callback struct for set loop mode command<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData) | Declaring the callback struct for toggle favorite command<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo) | Declaring the callback struct for output device change<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
 
 ## Function description
 
@@ -413,7 +401,7 @@ Request to set av metadata.
 | Parameter | Description |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | The avsession instance pointer |
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadata.md)* avmetadata | The metadata to set |
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)* avmetadata | The metadata to set |
 
 **Returns**:
 

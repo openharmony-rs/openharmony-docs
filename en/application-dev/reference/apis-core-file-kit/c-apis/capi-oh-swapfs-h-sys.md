@@ -12,7 +12,7 @@ Defines the native APIs for swapfs.
 
 **System API:** This is a system API.
 
-**Related module**: [Swapfs](capi-swapfs.md)
+**Related module**: [Swapfs](capi-core-file-kit-swapfs.md)
 
 ## Summary
 
@@ -114,7 +114,7 @@ Creates a swapfs manager.
 
 **Since**: 26.0.0
 
-**Resource release**: swapfs/OH_Swapfs_DestroyManager {manager}
+**Resource release**: [OH_Swapfs_DestroyManager](#oh_swapfs_destroymanager)
 
 **System API:** This is a system API.
 

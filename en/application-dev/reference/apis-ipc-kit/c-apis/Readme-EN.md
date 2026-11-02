@@ -1,11 +1,11 @@
 # C API<!--c-ipckit-->
 
 - Module<!--ipckit-module-->
-    - [IPCKit](capi-ipckit.md)
-    - [OHIPCRemoteObject](capi-ohipcremoteobject.md)
-    - [OHIPCSkeleton](capi-ohipcskeleton.md)
-    - [OHIPCErrorCode](capi-ohipcerrorcode.md)
-    - [OHIPCParcel](capi-ohipcparcel.md)
+    - [IPCKit](capi-ipc-kit-ipckit.md)
+    - [OHIPCRemoteObject](capi-ipc-kit-ohipcremoteobject.md)
+    - [OHIPCSkeleton](capi-ipc-kit-ohipcskeleton.md)
+    - [OHIPCErrorCode](capi-ipc-kit-ohipcerrorcode.md)
+    - [OHIPCParcel](capi-ipc-kit-ohipcparcel.md)
 - Header file<!--ipckit-headerfile-->
     - [ipc_kit.h](capi-ipc-kit-h.md)
     - [ipc_cremote_object.h](capi-ipc-cremote-object-h.md)

@@ -9,6 +9,7 @@
 | Name | Description |
 | -- | -- |
 | CONDITION_VARIABLE cond_var |  |
+| unused_ |  |
 | unused_.waiters_count |  |
 | unused_.waiters_count_lock |  |
 | unused_.signal_event |  |

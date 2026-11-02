@@ -4,7 +4,7 @@
 
 Defines the digest algorithm interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_digest.h>
+**File to Include**: <CryptoArchitectureKit/crypto_digest.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the digest algorithm interfaces.
 
 **Since**: 12
 
-**Related module**: [CryptoDigestApi](capi-cryptodigestapi.md)
+**Related module**: [CryptoDigestApi](capi-crypto-architecture-kit-cryptodigestapi.md)
 
 ## Summary
 
@@ -49,7 +49,7 @@ Creates a digest context based on the given algorithm name.
 
 **Since**: 12
 
-**Resource release**: crypto_digest/OH_DigestCrypto_Destroy {ctx}
+**Resource release**: [OH_DigestCrypto_Destroy](#oh_digestcrypto_destroy)
 
 **Parameters**:
 
@@ -115,7 +115,7 @@ Finishes the digest operation and outputs the result.
 
 **Since**: 12
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

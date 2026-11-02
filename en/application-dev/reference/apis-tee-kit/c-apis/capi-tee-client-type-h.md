@@ -10,7 +10,7 @@ Defines basic data types and data structures.
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-teeclient.md)
+**Related module**: [TeeClient](capi-tee-kit-teeclient.md)
 
 ## Summary
 

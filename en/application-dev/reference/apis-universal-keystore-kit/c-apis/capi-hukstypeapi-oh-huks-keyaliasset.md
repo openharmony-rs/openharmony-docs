@@ -12,7 +12,7 @@ Defines the struct of a key alias set.
 
 **Since**: 20
 
-**Related module**: [HuksTypeApi](capi-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-others-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 

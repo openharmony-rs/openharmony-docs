@@ -10,7 +10,7 @@ native_interface_arkweb.h is the core entry header file of ArkWeb Native API. It
 
 **Since**: 11
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 ## Summary
 
@@ -57,17 +57,6 @@ native_interface_arkweb.h is the core entry header file of ArkWeb Native API. It
 | [bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()](#oh_nativearkweb_isactivewebengineevergreen) | - | Checks whether the ArkWeb kernel used by the application is the evergreen kernel, that is, the latest kernel of the system. |
 | [ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, char** cookieValue)](#oh_arkwebcookiemanager_fetchcookiesync) | - | Obtains the cookies corresponding to the specified URL. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first. |
 | [void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, OH_ArkWeb_OnCookieFetchCallback callback)](#oh_arkwebcookiemanager_fetchcookieasync) | - | Asynchronously obtains the cookies corresponding to the specified URL. Without initializing the CookieManager API, this API is automatically executed on the UI thread. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*NativeArkWeb_OnJavaScriptCallback)(const char*) | Called to return the result after the JavaScript code is executed.<br>**Since**: 11<br>**System capability**: SystemCapability.Web.Webview.Core |
-| char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32_t argc) | Called when a JavaScript proxy is registered.<br>**Since**: 11<br>**System capability**: SystemCapability.Web.Webview.Core |
-| void (*NativeArkWeb_OnValidCallback)(const char*) | Called when a **Web** component is valid.<br>**Since**: 11<br>**System capability**: SystemCapability.Web.Webview.Core |
-| void (*NativeArkWeb_OnDestroyCallback)(const char*) | Called when a **Web** component is destroyed.<br>**Since**: 11<br>**System capability**: SystemCapability.Web.Webview.Core |
-| void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode) | Called when a cookie is saved.<br>**Since**: 20<br>**System capability**: SystemCapability.Web.Webview.Core |
-| void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char* cookieValue) | Defines a pointer to the callback invoked when the cookie fetch operation is complete.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Web.Webview.Core |
 
 ## Enum type description
 
@@ -416,7 +405,13 @@ ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char*
 
 **Description**
 
-Sets whether blankless loading is enabled. This API must be used together with OH_NativeArkWeb_GetBlanklessInfoWithKey.<br> > **NOTE**<br>> > - This API must be called after the page loading API is triggered. Other constraints are the same as those of > [OH_NativeArkWeb_GetBlanklessInfoWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_getblanklessinfowithkey). > - The page must be loaded in the component that calls this set of APIs. > - When the similarity is low, the system will deem the scene change too abrupt and frame insertion will fail.
+Sets whether blankless loading is enabled. This API must be used together with OH_NativeArkWeb_GetBlanklessInfoWithKey.<br>
+> **NOTE**
+>
+> - This API must be called after the page loading API is triggered. Other constraints are the same as those of
+> [OH_NativeArkWeb_GetBlanklessInfoWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_getblanklessinfowithkey).
+> - The page must be loaded in the component that calls this set of APIs.
+> - When the similarity is low, the system will deem the scene change too abrupt and frame insertion will fail.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -467,7 +462,23 @@ ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag,
 
 **Description**
 
-Obtains the first screen loading prediction information, and starts to generate the loading transition frame. The application determines whether to enable blankless loading based on the information. For details, see [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) . This API must be used together with the [OH_NativeArkWeb_SetBlanklessLoadingWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingwithkey) API and must be called before the page loading API is triggered and after **WebViewController** is bound to the **Web** component.<br> > **NOTE**<br>> > - The default size of the persistent cache capacity is 30 MB (about 30 pages). You can set the cache capacity by > calling [OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingcachecapacity). For details, see the description of this API. > When the maximum capacity is exceeded, the cache is updated based on the Least Recently Used (LRU) mechanism. The > persistent cache data that has been stored for more than seven days is automatically cleared. After the cache is > cleared, the optimization effect appears when the page is loaded for the third time. > - If the value of **similarity** in [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) is extremely low, check whether the key value is > correctly passed. > - After this API is called, page loading snapshot detection and transition frame generation calculation are enabled > , which generates certain resource overhead. > - Blankless loading consumes resources, which depends on the resolution of the **Web** component. It is assumed > that a width and a height of the resolution are respectively **w** and **h**. When a page is opened, the peak > memory usage increases by about **12×w×h** B. After the page is opened, the memory is reclaimed, which does not > affect the stable memory usage. When the size of the solid-state application cache is increased, the increased > cache of each page is about **w×h/10** B and the cache is located in the application cache.
+Obtains the first screen loading prediction information, and starts to generate the loading transition frame. The application determines whether to enable blankless loading based on the information. For details, see [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) . This API must be used together with the [OH_NativeArkWeb_SetBlanklessLoadingWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingwithkey) API and must be called before the page loading API is triggered and after **WebViewController** is bound to the **Web** component.<br>
+> **NOTE**
+>
+> - The default size of the persistent cache capacity is 30 MB (about 30 pages). You can set the cache capacity by
+> calling [OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingcachecapacity). For details, see the description of this API.
+> When the maximum capacity is exceeded, the cache is updated based on the Least Recently Used (LRU) mechanism. The
+> persistent cache data that has been stored for more than seven days is automatically cleared. After the cache is
+> cleared, the optimization effect appears when the page is loaded for the third time.
+> - If the value of **similarity** in [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) is extremely low, check whether the key value is
+> correctly passed.
+> - After this API is called, page loading snapshot detection and transition frame generation calculation are enabled
+> , which generates certain resource overhead.
+> - Blankless loading consumes resources, which depends on the resolution of the **Web** component. It is assumed
+> that a width and a height of the resolution are respectively **w** and **h**. When a page is opened, the peak
+> memory usage increases by about **12×w×h** B. After the page is opened, the memory is reclaimed, which does not
+> affect the stable memory usage. When the size of the solid-state application cache is increased, the increased
+> cache of each page is about **w×h/10** B and the cache is located in the application cache.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

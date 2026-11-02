@@ -12,7 +12,7 @@ Defines the network list.
 
 **Since**: 11
 
-**Related module**: [NetConnection](capi-netconnection.md)
+**Related module**: [NetConnection](capi-others-netconnection.md)
 
 **Header file**: [net_connection_type.h](capi-net-connection-type-h.md)
 

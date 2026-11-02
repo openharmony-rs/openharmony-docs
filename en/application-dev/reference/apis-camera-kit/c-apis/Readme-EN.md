@@ -1,7 +1,7 @@
 # C API<!--c-camerakit-->
 
 - Module<!--camerakit-module-->
-    - [OH_Camera](capi-oh-camera.md)
+    - [OH_Camera](capi-camera-kit-oh-camera.md)
 - Header file<!--camerakit-headerfile-->
     - [camera.h](capi-camera-h.md)
     - [capture_session.h](capi-capture-session-h.md)

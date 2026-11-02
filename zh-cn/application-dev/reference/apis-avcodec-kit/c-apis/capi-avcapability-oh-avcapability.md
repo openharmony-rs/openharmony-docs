@@ -12,7 +12,7 @@ typedef struct OH_AVCapability OH_AVCapability
 
 **起始版本：** 10
 
-**相关模块：** [AVCapability](capi-avcapability.md)
+**相关模块：** [AVCapability](capi-others-avcapability.md)
 
 **所在头文件：** [native_avcapability.h](capi-native-avcapability-h.md)
 

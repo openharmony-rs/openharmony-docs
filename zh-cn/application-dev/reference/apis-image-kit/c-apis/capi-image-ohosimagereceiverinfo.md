@@ -12,7 +12,7 @@ struct OhosImageReceiverInfo {...}
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-others-image.md)
 
 **所在头文件：** [image_receiver_mdk.h](capi-image-receiver-mdk-h.md)
 

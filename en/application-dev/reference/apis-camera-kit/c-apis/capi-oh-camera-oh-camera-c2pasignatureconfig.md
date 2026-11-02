@@ -12,7 +12,7 @@ Defines the C2PA signature configuration.
 
 **Since**: 26.0.1
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [photo_output.h](capi-photo-output-h.md)
 

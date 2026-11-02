@@ -12,7 +12,7 @@ Defines the dependency data structure used to describe a single dependency betwe
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-others-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

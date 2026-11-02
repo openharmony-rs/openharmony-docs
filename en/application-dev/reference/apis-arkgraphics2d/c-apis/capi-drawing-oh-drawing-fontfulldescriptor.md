@@ -12,7 +12,7 @@ Describes the detailed information about a font.
 
 **Since**: 22
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_text_declaration.h](capi-drawing-text-declaration-h.md)
 

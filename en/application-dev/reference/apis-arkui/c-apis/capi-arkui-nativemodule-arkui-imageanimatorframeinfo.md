@@ -12,7 +12,7 @@ Defines the image animation frame information.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [image_animator.h](capi-image-animator-h.md)
 

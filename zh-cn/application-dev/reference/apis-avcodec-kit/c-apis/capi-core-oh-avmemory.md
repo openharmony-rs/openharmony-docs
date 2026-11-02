@@ -12,7 +12,7 @@ typedef struct OH_AVMemory OH_AVMemory
 
 **起始版本：** 9
 
-**相关模块：** [Core](capi-core.md)
+**相关模块：** [Core](capi-others-core.md)
 
 **所在头文件：** [native_avmemory.h](capi-native-avmemory-h.md)
 

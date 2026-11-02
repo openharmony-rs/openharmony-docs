@@ -12,7 +12,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [CodecBase](capi-codecbase.md)
+**相关模块：** [CodecBase](capi-avcodec-kit-codecbase.md)
 
 ## 汇总
 

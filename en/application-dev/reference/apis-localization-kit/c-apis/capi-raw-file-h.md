@@ -10,7 +10,7 @@ Provides the capabilities to operate on rawfiles, including reading files, obtai
 
 **Since**: 8
 
-**Related module**: [rawfile](capi-rawfile.md)
+**Related module**: [rawfile](capi-localization-kit-rawfile.md)
 
 ## Summary
 
@@ -20,8 +20,8 @@ Provides the capabilities to operate on rawfiles, including reading files, obtai
 | -- | -- | -- |
 | [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) | RawFileDescriptor | Provides rawfile file descriptor information, including the file descriptor, start position within the HAP, and file length.<br>This information is obtained through [OH_ResourceManager_GetRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptordata), and must be released through [OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata) after use. |
 | [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) | RawFileDescriptor64 | Provides the rawfile file descriptor information, including the file descriptor, start position within the HAP, and file length. Large files larger than 2 GB are supported.<br>This information is obtained through [OH_ResourceManager_GetRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptor64), and must be released through [OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64) after use. |
-| [RawFile64](capi-rawfile-rawfile64.md) | - | `RawFile64` represents an opened rawfile object, which is used for accessing large files of 2 GB and above. It is obtained through OH_ResourceManager_OpenRawFile64, and must be closed and released through [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64) after use. |
-| [RawFile](capi-rawfile-rawfile.md) | RawFile | `RawFile` represents an opened rawfile object. It is obtained through OH_ResourceManager_OpenRawFile, and must be closed and released through [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile) after use. |
+| [RawFile64](capi-rawfile-rawfile64.md) | - | `RawFile64` represents an opened rawfile object, which is used for accessing large files of 2 GB and above. It is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64), and must be closed and released through [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64) after use. |
+| [RawFile](capi-rawfile-rawfile.md) | RawFile | `RawFile` represents an opened rawfile object. It is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile), and must be closed and released through [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile) after use. |
 
 ### Macro
 
@@ -72,7 +72,7 @@ Reads data of the specified length from the current offset position of a rawfile
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through OH_ResourceManager_OpenRawFile. |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). |
 | void *buf | Output parameter. Pointer to the buffer for receiving the read data. The memory is allocated by you and needs to be freed after use. |
 | size_t length | Input parameter. Expected length of data to be read, in bytes. |
 
@@ -100,7 +100,7 @@ Adjusts the offset position of a rawfile based on the specified offset and offse
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through OH_ResourceManager_OpenRawFile. |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). |
 | long offset | Input parameter. Specified offset. The value is an integer. A positive value indicates backward offset, and a negative value indicates forward offset. The unit is bytes. |
 | int whence | Input parameter. Offset mode. The value can be `0`, `1`, or `2`. <br>`0`: The offset is calculated from the beginning of the file. <br>`1`: The offset is calculated from the current position. <br>`2`: The offset is calculated from the end of the file. |
 
@@ -128,7 +128,7 @@ Obtains the length (in bytes) of a rawfile.
 
 | Parameter | Description |
 | -- | -- |
-| [RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through OH_ResourceManager_OpenRawFile. |
+| [RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). |
 
 **Returns**:
 
@@ -154,7 +154,7 @@ Obtains the remaining length (in bytes) of a rawfile from the current offset pos
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through OH_ResourceManager_OpenRawFile. |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). |
 
 **Returns**:
 
@@ -180,11 +180,11 @@ Closes a `RawFile` object and releases all associated resources.
 
 | Parameter | Description |
 | -- | -- |
-| [RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through OH_ResourceManager_OpenRawFile. After the release, the pointer becomes invalid and cannot be used for other operations. |
+| [RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). After the release, the pointer becomes invalid and cannot be used for other operations. |
 
 **Reference**:
 
-OH_ResourceManager_OpenRawFile
+[OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile)
 
 
 ### OH_ResourceManager_GetRawFileOffset()
@@ -205,7 +205,7 @@ Obtains the current offset position (in bytes) of a rawfile. This information ca
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through OH_ResourceManager_OpenRawFile. |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). |
 
 **Returns**:
 
@@ -235,7 +235,7 @@ Obtains the rawfile descriptor information. After obtaining the file descriptor 
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through OH_ResourceManager_OpenRawFile. |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). |
 | descriptor | Output parameter. Reference to the [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) object, After use, you must call [OH_ResourceManager_ReleaseRawFileDescriptor](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor) to release the file descriptor, preventing file descriptor leakage. |
 
 **Returns**:
@@ -262,7 +262,7 @@ Obtains the rawfile descriptor information. After obtaining the file descriptor 
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through OH_ResourceManager_OpenRawFile. |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). |
 | [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) *descriptor | Output parameter. Pointer to the `RawFileDescriptor` object, which is used to return the file descriptor information. After use, you must call [OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata) to release the file descriptor, preventing file descriptor leakage. |
 
 **Returns**:
@@ -274,7 +274,9 @@ Obtains the rawfile descriptor information. After obtaining the file descriptor 
 ### OH_ResourceManager_ReleaseRawFileDescriptor()
 
 ```c
-bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)
+#ifdef __cplusplus
+bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor);
+#endif // __cplusplus
 ```
 
 **Description**
@@ -345,7 +347,7 @@ Reads data of the specified length from the current offset position of a rawfile
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through OH_ResourceManager_OpenRawFile64. |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64). |
 | void *buf | Output parameter. Pointer to the buffer for receiving the read data. The memory is allocated by you and needs to be freed after use. |
 | int64_t length | Input parameter. Expected length of data to be read, in bytes. |
 
@@ -373,7 +375,7 @@ Adjusts the offset position of a rawfile based on the specified offset and offse
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through OH_ResourceManager_OpenRawFile64. |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64). |
 | int64_t offset | Input parameter. Specified offset. The value is an integer. A positive value indicates backward offset, and a negative value indicates forward offset. The unit is bytes. |
 | int whence | Input parameter. Offset mode. The value can be `0`, `1`, or `2`. <br>`0`: The offset is calculated from the beginning of the file. <br>`1`: The offset is calculated from the current position. <br>`2`: The offset is calculated from the end of the file. |
 
@@ -401,7 +403,7 @@ Obtains the length (in bytes) of a rawfile. Files larger than 2 GB are supported
 
 | Parameter | Description |
 | -- | -- |
-| [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through OH_ResourceManager_OpenRawFile64. |
+| [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64). |
 
 **Returns**:
 
@@ -427,7 +429,7 @@ Obtains the remaining length (in bytes) of a rawfile from the current offset pos
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through OH_ResourceManager_OpenRawFile64. |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64). |
 
 **Returns**:
 
@@ -453,11 +455,11 @@ Closes a `RawFile64` object and releases all associated resources.
 
 | Parameter | Description |
 | -- | -- |
-| [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through OH_ResourceManager_OpenRawFile64. After the release, the pointer becomes invalid and cannot be used for other operations. |
+| [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64). After the release, the pointer becomes invalid and cannot be used for other operations. |
 
 **Reference**:
 
-OH_ResourceManager_OpenRawFile64
+[OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64)
 
 
 ### OH_ResourceManager_GetRawFileOffset64()
@@ -478,7 +480,7 @@ Obtains the current offset position (in bytes) of a rawfile. This information ca
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through OH_ResourceManager_OpenRawFile64. |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64). |
 
 **Returns**:
 
@@ -504,7 +506,7 @@ Obtains the rawfile descriptor information. After obtaining the file descriptor 
 
 | Parameter | Description |
 | -- | -- |
-| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through OH_ResourceManager_OpenRawFile64. |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64). |
 | [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) *descriptor | Output parameter. Pointer to the `RawFileDescriptor64` object, which is used to return the file descriptor information. After use, you must call [OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64) to release the file descriptor, preventing file descriptor leakage. |
 
 **Returns**:

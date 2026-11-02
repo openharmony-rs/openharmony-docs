@@ -15,6 +15,7 @@
 | char ut_id |  |
 | char ut_user |  |
 | char ut_host |  |
+| ut_exit |  |
 | ut_exit.\_\_e_termination |  |
 | ut_exit.\_\_e_exit |  |
 | int ut_session, \_\_ut_pad2 |  |

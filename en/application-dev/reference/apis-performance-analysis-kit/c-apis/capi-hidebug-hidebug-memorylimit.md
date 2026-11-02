@@ -12,7 +12,7 @@ Defines the struct for the memory limit of the application process.
 
 **Since**: 12
 
-**Related module**: [HiDebug](capi-hidebug.md)
+**Related module**: [HiDebug](capi-others-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 
@@ -22,7 +22,7 @@ Defines the struct for the memory limit of the application process.
 
 | Name | Description |
 | -- | -- |
-| uint64_t rssLimit | Limit on the physical memory size of the application process, in KB. Currently, the system does not limit the physical memory size of the process. However, the available physical memory of the process cannot exceed the maximum physical memory of the device. You can call OH_HiDebug_GetSystemMemInfo to obtain the physical memory usage of the device. |
+| uint64_t rssLimit | Limit on the physical memory size of the application process, in KB. Currently, the system does not limit the physical memory size of the process. However, the available physical memory of the process cannot exceed the maximum physical memory of the device. You can call [OH_HiDebug_GetSystemMemInfo](capi-hidebug-h.md#oh_hidebug_getsystemmeminfo) to obtain the physical memory usage of the device. |
 | uint64_t vssLimit | Limit on the virtual set size, in KB. |
 
 

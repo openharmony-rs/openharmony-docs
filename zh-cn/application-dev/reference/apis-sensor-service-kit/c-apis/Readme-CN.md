@@ -1,8 +1,8 @@
 # C API<!--c-sensorservicekit-->
 
 - 模块<!--sensorservicekit-module-->
-    - [Sensor](capi-sensor.md)
-    - [Vibrator](capi-vibrator.md)
+    - [Sensor](capi-sensor-service-kit-sensor.md)
+    - [Vibrator](capi-sensor-service-kit-vibrator.md)
 - 头文件<!--sensorservicekit-headerfile-->
     - [oh_sensor_type.h](capi-oh-sensor-type-h.md)
     - [oh_sensor.h](capi-oh-sensor-h.md)

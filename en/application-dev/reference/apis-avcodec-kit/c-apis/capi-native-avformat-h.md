@@ -10,7 +10,7 @@ The file declares the functions and enums related to OH_AVFormat.
 
 **Since**: 9
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 ## Summary
 
@@ -73,12 +73,12 @@ Enumerates the video pixel formats.
 
 | Enum item | Description |
 | -- | -- |
-| AV_PIXEL_FORMAT_YUVI420 = 1 |  |
-| AV_PIXEL_FORMAT_NV12 = 2 |  |
-| AV_PIXEL_FORMAT_NV21 = 3 |  |
-| AV_PIXEL_FORMAT_SURFACE_FORMAT = 4 |  |
-| AV_PIXEL_FORMAT_RGBA = 5 |  |
-| AV_PIXEL_FORMAT_RGBA1010102 = 6 |  |
+| AV_PIXEL_FORMAT_YUVI420 = 1 | YUV 420 Planar.<br>**Since**: 9 |
+| AV_PIXEL_FORMAT_NV12 = 2 | NV12. YUV 420 semi-planar.<br>**Since**: 9 |
+| AV_PIXEL_FORMAT_NV21 = 3 | NV21. YVU 420 semi-planar.<br>**Since**: 9 |
+| AV_PIXEL_FORMAT_SURFACE_FORMAT = 4 | Pixel format obtained from the surface. This value takes effect only in surface mode.<br>**Since**: 9 |
+| AV_PIXEL_FORMAT_RGBA = 5 | RGBA8888<br>**Since**: 9 |
+| AV_PIXEL_FORMAT_RGBA1010102 = 6 | RGBA1010102<br>**Since**: 20 |
 
 
 ## Function description

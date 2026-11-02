@@ -12,7 +12,7 @@ The OH_HiAppEvent_ExternalLog structure is used to describe external log informa
 
 **Since**: 26.0.1
 
-**Related module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-others-hiappevent.md)
 
 **Header file**: [hiappevent.h](capi-hiappevent-h.md)
 
@@ -22,9 +22,9 @@ The OH_HiAppEvent_ExternalLog structure is used to describe external log informa
 
 | Name | Description |
 | -- | -- |
-| const char* filePath |  |
-| long long generationTs |  |
-| long fileSize |  |
-| [OH_HiAppEvent_SysEvent](capi-hiappevent-h.md#oh_hiappevent_sysevent) event |  |
+| const char* filePath | The log file path.<br>**Since**: 26.0.1 |
+| long long generationTs | The timestamp of the file generation in ms.<br>**Since**: 26.0.1 |
+| long fileSize | The file size in kb.<br>**Since**: 26.0.1 |
+| [OH_HiAppEvent_SysEvent](capi-hiappevent-h.md#oh_hiappevent_sysevent) event | The system event type.<br>**Since**: 26.0.1 |
 
 

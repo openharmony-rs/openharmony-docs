@@ -12,7 +12,7 @@ Defines the custom proxy configuration.
 
 **Since**: 20
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-others-netstack.md)
 
 **Header file**: [net_http_type.h](capi-net-http-type-h.md)
 
@@ -25,5 +25,6 @@ Defines the custom proxy configuration.
 | const char *host;
  int32_t port;
  const char *exclusionLists | Host name of the proxy server. If no port is explicitly set, the port number is defaulted to **1080**. |
+| int32_t port |  |
 
 

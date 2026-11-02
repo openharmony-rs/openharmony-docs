@@ -12,7 +12,7 @@ Picture解码参数结构体。<br>使用[OH_DecodingOptionsForPicture_Create](c
 
 **起始版本：** 13
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [image_source_native.h](capi-image-source-native-h.md)
 

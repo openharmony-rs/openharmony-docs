@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -179,7 +179,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | ListItemSwipeActionItem实例。 |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 侧滑操作项的内容节点。不设置时，侧滑操作项无可显示内容。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 侧滑操作项的内容节点。不设置时，侧滑操作项无可显示内容。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance()
 
@@ -590,14 +590,14 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ListItem节点对象。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ListItem节点对象。 |
 | [ArkUI_ListItemSwipeActionDirection](capi-list-item-h.md#arkui_listitemswipeactiondirection) direction | ListItem划出菜单的展开方向。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_ERROR 传入的节点对象类型错误，请检查传入的节点是否为ListItem节点。<br>ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE 传入的节点未挂载到组件树上，请先将节点挂载到组件树上再执行该操作。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode) 传入的节点对象类型错误，请检查传入的节点是否为ListItem节点。<br>[ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-error-code-h.md#arkui_errorcode) 传入的节点未挂载到组件树上，请先将节点挂载到组件树上再执行该操作。 |
 
 ### OH_ArkUI_ListItemSwipeAction_Collapse()
 
@@ -617,12 +617,12 @@ int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | ListItem节点对象。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ListItem节点对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_ERROR 传入的节点对象类型错误，请检查传入的节点是否为ListItem节点。<br>ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE 传入的节点未挂载到组件树上，请先将节点挂载到组件树上再执行该操作。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode) 传入的节点对象类型错误，请检查传入的节点是否为ListItem节点。<br>[ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-error-code-h.md#arkui_errorcode) 传入的节点未挂载到组件树上，请先将节点挂载到组件树上再执行该操作。 |
 
 

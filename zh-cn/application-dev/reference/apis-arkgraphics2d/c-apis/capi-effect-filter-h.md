@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [effectKit](capi-effectkit.md)
+**相关模块：** [effectKit](capi-arkgraphics2d-effectkit.md)
 
 ## 汇总
 
@@ -46,7 +46,7 @@ EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** 
 
 **起始版本：** 12
 
-**资源释放：** effect_filter/OH_Filter_Release {filter}
+**资源释放：** [OH_Filter_Release](#oh_filter_release)
 
 **参数：**
 

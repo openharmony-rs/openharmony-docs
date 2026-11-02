@@ -12,7 +12,7 @@ Provides the declaration of an **OH_NativeColorSpaceManager** struct.
 
 **Since**: 20
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_brush.h](capi-drawing-brush-h.md)
 

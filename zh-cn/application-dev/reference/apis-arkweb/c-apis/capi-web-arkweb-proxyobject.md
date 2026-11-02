@@ -12,7 +12,7 @@ ArkWeb_ProxyObject是注入到Web页面的JavaScript代理对象结构体，用�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 

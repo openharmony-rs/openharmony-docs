@@ -12,7 +12,7 @@ struct OH_AudioFormat {...}
 
 **起始版本：** 22
 
-**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 

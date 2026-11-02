@@ -4,7 +4,7 @@
 
 Provides the input method types.
 
-**Include**: <inputmethod/inputmethod_types_capi.h>
+**File to Include**: <inputmethod/inputmethod_types_capi.h>
 
 **Library**: libohinputmethod.so
 
@@ -12,7 +12,7 @@ Provides the input method types.
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-ime-kit-inputmethod.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@ Define the Data_Asset structure type.<br> Provides information of an asset.
 
 **Since**: 11
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [data_asset.h](capi-data-asset-h.md)
 

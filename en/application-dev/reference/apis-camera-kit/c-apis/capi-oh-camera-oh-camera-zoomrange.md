@@ -12,7 +12,7 @@ Describes the zoom range configuration.
 
 **Since**: 24
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 
@@ -22,7 +22,7 @@ Describes the zoom range configuration.
 
 | Name | Description |
 | -- | -- |
-| float minZoom |  |
-| float maxZoom |  |
+| float minZoom | Minimum zoom value.<br>**Since**: 24 |
+| float maxZoom | Maximum zoom value.<br>**Since**: 24 |
 
 

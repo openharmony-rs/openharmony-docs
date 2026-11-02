@@ -14,7 +14,7 @@ Define feature version information structure.
 
 **System API:** This is a system API.
 
-**Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_download_manager.h(System API)](capi-native-audio-suite-download-manager-h-sys.md)
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [Sensor](capi-sensor.md)
+**相关模块：** [Sensor](capi-sensor-service-kit-sensor.md)
 
 ## 汇总
 
@@ -77,12 +77,6 @@
 | [int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)](#oh_sensor_destroysubscriber) | - | 销毁[Sensor_Subscriber](capi-sensor-sensor-subscriber.md)实例并回收内存。 |
 | [int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sensor_EventCallback callback)](#oh_sensorsubscriber_setcallback) | - | 设置一个回调函数来报告传感器数据。调用成功后，订阅者将使用指定的回调函数来报告传感器数据。 |
 | [int32_t OH_SensorSubscriber_GetCallback(Sensor_Subscriber* subscriber, Sensor_EventCallback *callback)](#oh_sensorsubscriber_getcallback) | - | 获取用于报告传感器数据的回调函数。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*Sensor_EventCallback)(Sensor_Event *event) | 定义用于报告传感器数据的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Sensors.Sensor |
 
 ## 枚举类型说明
 

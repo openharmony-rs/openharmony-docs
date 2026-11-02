@@ -12,7 +12,7 @@ ArkWeb_WebMessagePortAPI is a native API struct for web message ports. This stru
 
 **Since**: 12
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-others-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -49,9 +49,9 @@ Sends a message to the HTML page. It is used when native code needs to pass data
 
 | Parameter | Description |
 | -- | -- |
-| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md) webMessagePort | Pointer to the message port. |
+| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Pointer to the message port. |
 |  const char* webTag | Name of the Web component, used to identify the Web component to operate. It must be a unique identifier bound to the Web component. If no Web component bound to webTag is found, an initialization failure error is returned. |
-|  const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | Message to send. |
+|  const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | Message to send. |
 
 **Returns**:
 
@@ -73,7 +73,7 @@ Closes a message port.
 
 | Parameter | Description |
 | -- | -- |
-| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md) webMessagePort | Pointer to the message port. |
+| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Pointer to the message port. |
 |  const char* webTag | Name of the **Web** component. |
 
 ### setMessageEventHandler()
@@ -90,7 +90,7 @@ Sets a callback for receiving HTML messages. It is used when messages, requests,
 
 | Parameter | Description |
 | -- | -- |
-| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md) webMessagePort | Pointer to the message port. |
+| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Pointer to the message port. |
 |  const char* webTag | Name of the **Web** component. |
 | [ArkWeb_OnMessageEventHandler](capi-arkweb-type-h.md#arkweb_onmessageeventhandler) messageEventHandler | Callback used to handle messages. |
 |  void* userData | User-defined data that is passed to the messageEventHandler callback when triggered. It can be used to carry context information or additional service data, and its lifecycle is managed by the app. |

@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OH_CommonEvent](capi-oh-commonevent.md)
+**相关模块：** [OH_CommonEvent](capi-basic-services-kit-oh-commonevent.md)
 
 ## 汇总
 

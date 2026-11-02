@@ -10,5 +10,5 @@ Defines the native APIs for swapfs.
 
 **Since**: 26.0.0
 
-**Related module**: [Swapfs](capi-swapfs.md)
+**Related module**: [Swapfs](capi-core-file-kit-swapfs.md)
 

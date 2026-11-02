@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [TimeService](capi-timeservice.md)
+**相关模块：** [TimeService](capi-basic-services-kit-timeservice.md)
 
 ## 汇总
 

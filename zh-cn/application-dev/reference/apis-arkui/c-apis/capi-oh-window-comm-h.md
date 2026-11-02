@@ -10,7 +10,7 @@ The file declares the common enums and definitions of the window manager.
 
 **起始版本：** 12
 
-**相关模块：** [WindowManager](capi-windowmanager.md)
+**相关模块：** [WindowManager](capi-arkui-windowmanager.md)
 
 ## 汇总
 
@@ -42,13 +42,6 @@ The file declares the common enums and definitions of the window manager.
 | [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | 帧率指标回调类型。 |
 | [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | density信息回调类型。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_WindowManager_FrameMetricsMeasuredCallback)( int32_t windowId, const OH_WindowManager_FrameMetrics* metrics) | 帧率指标回调类型。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Window.SessionManager |
-| void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info) | density信息回调类型。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Window.SessionManager |
-
 ## 枚举类型说明
 
 ### WindowManager_ErrorCode
@@ -68,20 +61,20 @@ enum WindowManager_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | OK = 0 | 成功。 |
-| WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201 |  |
-| WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 |  |
-| WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 |  |
+| WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201 | 无权限。<br>**起始版本：** 15 |
+| WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | 非法参数。<br>**起始版本：** 15 |
+| WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | 设备不支持。<br>**起始版本：** 15 |
 | INVAILD_WINDOW_ID = 1000 | 非法窗口ID。 |
-| INVALID_WINDOW_ID = INVAILD_WINDOW_ID |  |
+| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | 非法窗口ID。<br>**起始版本：** 26.0.0 |
 | SERVICE_ERROR = 2000 | 服务异常。 |
-| WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 |  |
-| WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015 |  |
-| WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016 |  |
+| WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | 窗口状态异常。<br>**起始版本：** 15 |
+| WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | 窗口管理器服务异常。<br>**起始版本：** 15 |
+| WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011 | 画中画销毁失败。<br>**起始版本：** 20 |
+| WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012 | 画中画状态异常。<br>**起始版本：** 20 |
+| WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013 | 画中画创建失败。<br>**起始版本：** 20 |
+| WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014 | 画中画内部错误。可能原因：<br/>1.画中画依赖的窗口异常，可能窗口为空；2.画中画控制器异常。<br>**起始版本：** 20 |
+| WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015 | 画中画重复操作。<br>**起始版本：** 20 |
+| WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016 | 参数错误。可能原因：<br/>1.参数取值范围非法；2.参数数量非法；3.参数类型非法。<br>**起始版本：** 20 |
 
 ### WindowManager_AvoidAreaType
 

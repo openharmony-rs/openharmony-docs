@@ -4,7 +4,7 @@
 
 Defines the symmetric key cipher interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_sym_cipher.h>
+**File to Include**: <CryptoArchitectureKit/crypto_sym_cipher.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the symmetric key cipher interfaces.
 
 **Since**: 12
 
-**Related module**: [CryptoSymCipherApi](capi-cryptosymcipherapi.md)
+**Related module**: [CryptoSymCipherApi](capi-crypto-architecture-kit-cryptosymcipherapi.md)
 
 ## Summary
 
@@ -82,7 +82,7 @@ Creates symmetric cipher parameters.
 
 **Since**: 12
 
-**Resource release**: crypto_sym_cipher/OH_CryptoSymCipherParams_Destroy {params}
+**Resource release**: [OH_CryptoSymCipherParams_Destroy](#oh_cryptosymcipherparams_destroy)
 
 **Parameters**:
 
@@ -163,7 +163,7 @@ Creates a symmetric cipher context based on the given algorithm name.
 
 **Since**: 12
 
-**Resource release**: crypto_sym_cipher/OH_CryptoSymCipher_Destroy {ctx}
+**Resource release**: [OH_CryptoSymCipher_Destroy](#oh_cryptosymcipher_destroy)
 
 **Parameters**:
 
@@ -232,7 +232,7 @@ Updates cipher data, outputting encrypted or decrypted data.
 
 **Since**: 12
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -267,7 +267,7 @@ Finishes the cipher operation, outputting the final result.
 
 **Since**: 12
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

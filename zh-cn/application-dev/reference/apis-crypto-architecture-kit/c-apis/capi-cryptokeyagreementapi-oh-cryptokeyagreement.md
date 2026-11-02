@@ -12,7 +12,7 @@ typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement
 
 **起始版本：** 20
 
-**相关模块：** [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
+**相关模块：** [CryptoKeyAgreementApi](capi-others-cryptokeyagreementapi.md)
 
 **所在头文件：** [crypto_key_agreement.h](capi-crypto-key-agreement-h.md)
 

@@ -4,7 +4,7 @@
 
 Declares the data types for filter effects, used to define the matrices, status codes, and tile modes for filter effects, and supports scenarios such as creating custom filter effects and processing image shader tiling. <br>The status code types defined in this document are used for status returns of related APIs. For the usage instructions of status codes for specific APIs, see the corresponding API documentation.
 
-**Include**: <native_effect/effect_types.h>
+**File to Include**: <native_effect/effect_types.h>
 
 **Library**: libnative_effect.so
 
@@ -12,7 +12,7 @@ Declares the data types for filter effects, used to define the matrices, status 
 
 **Since**: 12
 
-**Related module**: [effectKit](capi-effectkit.md)
+**Related module**: [effectKit](capi-arkgraphics2d-effectkit.md)
 
 ## Summary
 

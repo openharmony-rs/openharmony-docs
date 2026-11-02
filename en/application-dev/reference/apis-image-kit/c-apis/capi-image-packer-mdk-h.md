@@ -10,7 +10,7 @@ Declares APIs for encoding image into data or file.<br> The packing image data m
 
 **Since**: 11
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-image-kit-image.md)
 
 ## Summary
 
@@ -18,19 +18,18 @@ Declares APIs for encoding image into data or file.<br> The packing image data m
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ImagePacker_Opts_](capi-image-imagepacker-opts-.md) | - | Defines the image packing options. |
-| [ImagePacker_Native](capi-image-imagepacker-native.md) | ImagePacker_Native | Defines an image packer object at the native layer for the image packer interface. |
-| [ImagePacker_Opts](capi-image-imagepacker-opts.md) | ImagePacker_Opts | Defines alias of image packing options. |
+| [ImagePacker_Opts_](capi-image-imagepacker-opts-.md) | ImagePacker_Opts | Defines the image packing options. |
+| [ImagePacker_Native_](capi-image-imagepacker-native-.md) | ImagePacker_Native | Defines an image packer object at the native layer for the image packer interface. |
 
 ### Function
 
 | Name | Description |
 | -- | -- |
 | [int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)](#oh_imagepacker_create) | Creates an <b>ImagePacker</b> object at the JavaScript native layer. |
-| [ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)](#oh_imagepacker_initnative) | Parses an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the native layer from a JavaScript native API <b>ImagePacker</b> object. |
+| [ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)](#oh_imagepacker_initnative) | Parses an [ImagePacker_Native](capi-image-imagepacker-native-.md) object at the native layer from a JavaScript native API <b>ImagePacker</b> object. |
 | [int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, uint8_t* outData, size_t* size)](#oh_imagepacker_packtodata) | Encoding an <b>ImageSource</b> or a <b>PixelMap</b> into the data with required format |
 | [int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, int fd)](#oh_imagepacker_packtofile) | Encoding an <b>ImageSource</b> or a <b>PixelMap</b> into the a file with fd with required format |
-| [int32_t OH_ImagePacker_Release(ImagePacker_Native* native)](#oh_imagepacker_release) | Releases an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>ImagePacker</b> object. It is used to release the object [ImagePacker_Native](capi-image-imagepacker-native.md) at the native layer parsed by calling [OH_ImagePacker_InitNative](capi-image-packer-mdk-h.md#oh_imagepacker_initnative). |
+| [int32_t OH_ImagePacker_Release(ImagePacker_Native* native)](#oh_imagepacker_release) | Releases an [ImagePacker_Native](capi-image-imagepacker-native-.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>ImagePacker</b> object. It is used to release the object [ImagePacker_Native](capi-image-imagepacker-native-.md) at the native layer parsed by calling [OH_ImagePacker_InitNative](capi-image-packer-mdk-h.md#oh_imagepacker_initnative). |
 
 ## Function description
 
@@ -69,7 +68,7 @@ ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)
 
 **Description**
 
-Parses an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the native layer from a JavaScript native API <b>ImagePacker</b> object.
+Parses an [ImagePacker_Native](capi-image-imagepacker-native-.md) object at the native layer from a JavaScript native API <b>ImagePacker</b> object.
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
@@ -86,7 +85,7 @@ Parses an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the n
 
 | Type | Description |
 | -- | -- |
-| [ImagePacker_Native*](capi-image-imagepacker-native.md) | Returns an [ImagePacker_Native](capi-image-imagepacker-native.md) pointer object if the operation is successful returns a null pointer otherwise. |
+| [ImagePacker_Native*](capi-image-imagepacker-native-.md) | Returns an [ImagePacker_Native](capi-image-imagepacker-native-.md) pointer object if the operation is successful returns a null pointer otherwise. |
 
 **Reference**:
 
@@ -111,9 +110,9 @@ Encoding an <b>ImageSource</b> or a <b>PixelMap</b> into the data with required 
 
 | Parameter | Description |
 | -- | -- |
-| [ImagePacker_Native](capi-image-imagepacker-native.md)* native | Indicates the pointer to an ImagePacker object at the native layer. |
+| [ImagePacker_Native](capi-image-imagepacker-native-.md)* native | Indicates the pointer to an ImagePacker object at the native layer. |
 | napi_value source | Indicates an encoding source, a JS pixel map object or a JS image source object . |
-| [ImagePacker_Opts](capi-image-imagepacker-opts.md)* opts | Indicates the encoding [ImagePacker_Opts](capi-image-imagepacker-opts.md) . |
+| [ImagePacker_Opts](capi-image-imagepacker-opts-.md)* opts | Indicates the encoding [ImagePacker_Opts](capi-image-imagepacker-opts-.md) . |
 | uint8_t* outData | Indicates the pointer to the encoded data. |
 | size_t* size | Indicates the pointer to the [OhosImageComponent](capi-image-ohosimagecomponent.md) object obtained. |
 
@@ -146,9 +145,9 @@ Encoding an <b>ImageSource</b> or a <b>PixelMap</b> into the a file with fd with
 
 | Parameter | Description |
 | -- | -- |
-| [ImagePacker_Native](capi-image-imagepacker-native.md)* native | Indicates the pointer to an ImagePacker object at the native layer. |
+| [ImagePacker_Native](capi-image-imagepacker-native-.md)* native | Indicates the pointer to an ImagePacker object at the native layer. |
 | napi_value source | Indicates an encoding source, a JS pixel map object or a JS image source object . |
-| [ImagePacker_Opts](capi-image-imagepacker-opts.md)* opts | Indicates the encoding [ImagePacker_Opts](capi-image-imagepacker-opts.md) . |
+| [ImagePacker_Opts](capi-image-imagepacker-opts-.md)* opts | Indicates the encoding [ImagePacker_Opts](capi-image-imagepacker-opts-.md) . |
 | int fd | Indicates the a writable file descriptor. |
 
 **Returns**:
@@ -170,7 +169,7 @@ int32_t OH_ImagePacker_Release(ImagePacker_Native* native)
 
 **Description**
 
-Releases an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>ImagePacker</b> object. It is used to release the object [ImagePacker_Native](capi-image-imagepacker-native.md) at the native layer parsed by calling [OH_ImagePacker_InitNative](capi-image-packer-mdk-h.md#oh_imagepacker_initnative).
+Releases an [ImagePacker_Native](capi-image-imagepacker-native-.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>ImagePacker</b> object. It is used to release the object [ImagePacker_Native](capi-image-imagepacker-native-.md) at the native layer parsed by calling [OH_ImagePacker_InitNative](capi-image-packer-mdk-h.md#oh_imagepacker_initnative).
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
@@ -180,7 +179,7 @@ Releases an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the
 
 | Parameter | Description |
 | -- | -- |
-| [ImagePacker_Native](capi-image-imagepacker-native.md)* native | Indicates the pointer to an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the native layer. |
+| [ImagePacker_Native](capi-image-imagepacker-native-.md)* native | Indicates the pointer to an [ImagePacker_Native](capi-image-imagepacker-native-.md) object at the native layer. |
 
 **Returns**:
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 22
 
-**相关模块：** [i18n](capi-i18n.md)
+**相关模块：** [i18n](capi-localization-kit-i18n.md)
 
 ## 汇总
 

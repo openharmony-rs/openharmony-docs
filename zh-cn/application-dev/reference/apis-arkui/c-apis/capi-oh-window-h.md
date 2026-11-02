@@ -10,7 +10,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 
 **起始版本：** 15
 
-**相关模块：** [WindowManager](capi-windowmanager.md)
+**相关模块：** [WindowManager](capi-arkui-windowmanager.md)
 
 ## 汇总
 
@@ -55,12 +55,6 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Listen for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. |
 | [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | Unlisten for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. |
 | [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | 释放DensityInfo指针指向的内存空间 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize) | 接收主窗口截图列表的回调接口。<br>**起始版本：** 21<br>**系统能力：** SystemCapability.Window.SessionManager |
 
 ## 函数说明
 

@@ -12,7 +12,7 @@ The struct contains a set of callback function pointers for the LowPowerAudioSin
 
 **Since**: 20
 
-**Related module**: [LowPowerAudioSink](capi-lowpoweraudiosink.md)
+**Related module**: [LowPowerAudioSink](capi-others-lowpoweraudiosink.md)
 
 **Header file**: [lowpower_audio_sink_base.h](capi-lowpower-audio-sink-base-h.md)
 

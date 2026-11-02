@@ -12,7 +12,7 @@ Return result of the **OH_QoS_GewuSubmitRequest()** API, used to obtain the subm
 
 **Since**: 20
 
-**Related module**: [QoS](capi-qos.md)
+**Related module**: [QoS](capi-others-qos.md)
 
 **Header file**: [qos.h](capi-qos-h.md)
 

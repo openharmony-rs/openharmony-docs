@@ -12,7 +12,7 @@ Sets a custom drag preview option (such as the shadow and rounded corner effect)
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [drag_and_drop.h](capi-drag-and-drop-h.md)
 

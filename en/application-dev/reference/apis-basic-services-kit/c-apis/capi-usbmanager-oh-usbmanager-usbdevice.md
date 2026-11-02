@@ -12,7 +12,7 @@ Defines a flat representation of a USB device.
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-usbmanager.md)
+**Related module**: [UsbManager](capi-others-usbmanager.md)
 
 **Header file**: [ohusb_manager.h](capi-ohusb-manager-h.md)
 

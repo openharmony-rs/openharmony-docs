@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [HuksKeyApi](capi-hukskeyapi.md)
+**相关模块：** [HuksKeyApi](capi-universal-keystore-kit-hukskeyapi.md)
 
 ## 汇总
 

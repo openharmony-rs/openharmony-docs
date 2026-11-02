@@ -12,7 +12,7 @@ typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontV
 
 **起始版本：** 24
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_text_font_descriptor.h](capi-drawing-text-font-descriptor-h.md)
 

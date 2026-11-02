@@ -12,7 +12,7 @@ Declares the ContentEmbed_StorageElements structure. Use [OH_ContentEmbed_Storag
 
 **Since**: 24
 
-**Related module**: [ContentEmbed](capi-contentembed.md)
+**Related module**: [ContentEmbed](capi-others-contentembed.md)
 
 **Header file**: [content_embed_document.h](capi-content-embed-document-h.md)
 

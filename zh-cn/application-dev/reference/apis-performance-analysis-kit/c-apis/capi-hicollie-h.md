@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [HiCollie](capi-hicollie.md)
+**相关模块：** [HiCollie](capi-performance-analysis-kit-hicollie.md)
 
 ## 汇总
 
@@ -48,16 +48,6 @@
 | [void* OH_HiCollie_SetFreezeCallback(OH_HiCollie_FreezeCallback callback)](#oh_hicollie_setfreezecallback) | - | 将冻屏回调设置进系统，系统将在冻屏事件发生时回调此函数。 |
 | [HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)](#oh_hicollie_associateprocessreport) | - | 报告一个进程的冻屏事件，此时会生成APP_HICOLLIE类型HiAppEvent事件。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_HiCollie_Task)(void) | 在业务线程卡死检测中，通过实现该函数来检测业务线程是否卡住。 HiCollie将在业务线程中每3秒调用一次该函数。 例如：该函数可实现向业务线程发送消息，在业务线程接收到消息之后，设置一个标记，检查这个标记，确定业务线程是否卡住。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiCollie |
-| void (*OH_HiCollie_BeginFunc)(const char* eventName) | 卡顿检测中，需要在业务线程处理事件前后各插入一个桩函数。该函数在每个事件处理前插入。 由HiCollie检查事件的执行时间。如果超过预设阈值，上报jank事件。 该函数在每个事件处理前插入。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiCollie |
-| void (*OH_HiCollie_EndFunc)(const char* eventName) | 卡顿检测中，该函数用于记录业务线程处理事件的结束时间。该函数在每个事件处理后插入。 由HiCollie检查事件的执行时间。如果超过预设阈值，上报jank事件。 该函数在每个事件处理后插入。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiCollie |
-| void (*OH_HiCollie_Callback)(void*) | 当用户调用[OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer)后，未在其自定义的任务超时时间阈值内调用[OH_HiCollie_CancelTimer](capi-hicollie-h.md#oh_hicollie_canceltimer)，回调函数将被执行。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.HiviewDFX.HiCollie |
-| size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void* buffer, size_t size) | 冻屏事件使用的回调。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.HiviewDFX.HiCollie |
-
 ## 枚举类型说明
 
 ### HiCollie_ErrorCode
@@ -76,15 +66,15 @@ enum HiCollie_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HICOLLIE_SUCCESS = 0 |  |
-| HICOLLIE_INVALID_ARGUMENT = 401 |  |
-| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 |  |
-| HICOLLIE_REMOTE_FAILED = 29800002 |  |
-| HICOLLIE_INVALID_TIMER_NAME = 29800003 |  |
-| HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 |  |
-| HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 |  |
-| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 |  |
-| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 |  |
+| HICOLLIE_SUCCESS = 0 | 成功。<br>**起始版本：** 12 |
+| HICOLLIE_INVALID_ARGUMENT = 401 | 无效参数。<br>**起始版本：** 12 |
+| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | 调用线程错误。<br>**起始版本：** 12 |
+| HICOLLIE_REMOTE_FAILED = 29800002 | 远程调用错误。<br>**起始版本：** 12 |
+| HICOLLIE_INVALID_TIMER_NAME = 29800003 | 无效的计时器名称。<br>**起始版本：** 18 |
+| HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | 无效的函数执行超时时间阈值。<br>**起始版本：** 18 |
+| HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | 函数执行超时检测接入进程错误。<br>**起始版本：** 18 |
+| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的计时器id的指针不应为NULL。<br>**起始版本：** 18 |
+| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 上报频率超过限制。<br>**起始版本：** 24 |
 
 ### HiCollie_Flag
 

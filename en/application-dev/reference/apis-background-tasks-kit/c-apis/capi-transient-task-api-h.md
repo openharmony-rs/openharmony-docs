@@ -10,7 +10,7 @@ Declares the APIs for Transient task management.
 
 **Since**: 13
 
-**Related module**: [TransientTask](capi-transienttask.md)
+**Related module**: [TransientTask](capi-background-tasks-kit-transienttask.md)
 
 ## Summary
 

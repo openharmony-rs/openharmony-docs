@@ -12,7 +12,7 @@ struct OhosImageSourceProperty {...}
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-others-image.md)
 
 **所在头文件：** [image_source_mdk.h](capi-image-source-mdk-h.md)
 
@@ -22,9 +22,9 @@ struct OhosImageSourceProperty {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| char* value = nullptr |  |
-| size_t size = 0 |  |
-| char* value |  |
-| size_t size |  |
+| char* value = nullptr | Image source property key and value string head.<br>**起始版本：** 10 |
+| size_t size = 0 | Image source property key and value string size.<br>**起始版本：** 10 |
+| char* value | Image source property key and value string head.<br>**起始版本：** 10 |
+| size_t size | Image source property key and value string size.<br>**起始版本：** 10 |
 
 

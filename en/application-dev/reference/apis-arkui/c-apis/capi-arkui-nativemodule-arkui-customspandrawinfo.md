@@ -12,7 +12,7 @@ Defines the drawing information of a custom span, which is passed to you in the 
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [custom_span.h](capi-custom-span-h.md)
 

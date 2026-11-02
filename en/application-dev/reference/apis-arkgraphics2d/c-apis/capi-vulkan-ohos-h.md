@@ -10,7 +10,7 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 
 **Since**: 10
 
-**Related module**: [Vulkan](capi-vulkan.md)
+**Related module**: [Vulkan](capi-arkgraphics2d-vulkan.md)
 
 ## Summary
 
@@ -28,7 +28,7 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 | [VkImportNativeBufferInfoOHOS](capi-vulkan-vkimportnativebufferinfoohos.md) | - | Defines the pointer to an <b>OH_NativeBuffer</b> struct. |
 | [VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md) | - | Defines a struct used to obtain an <b>OH_NativeBuffer</b> from the Vulkan memory. |
 | [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md) | - | Defines an externally defined format. |
-| [OHNativeWindow](capi-vulkan-ohnativewindow.md) | OHNativeWindow | Defines the <b>OHNativeWindow</b> struct. |
+| [NativeWindow](capi-vulkan-nativewindow.md) | OHNativeWindow | Defines the <b>OHNativeWindow</b> struct. |
 | [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md) | - | Defines the <b>OH_NativeBuffer</b> struct. |
 
 ### Enum
@@ -73,14 +73,6 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 | Name | Description |
 | -- | -- |
 | VkFlags VkSurfaceCreateFlagsOHOS | Defines the bit mask of the VkFlags type used for the creation of a Vulkan surface. It is a reserved flag type.<br>**Since**: 10<br>**System capability**: SystemCapability.Graphic.Vulkan |
-| VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)( VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface ) | Defines the function pointer for creating a Vulkan surface.<br>**Since**: 10<br>**System capability**: SystemCapability.Graphic.Vulkan |
-| VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence) | this type is deprecated, please use PFN_vkAcquireImageOHOS instead<br>**Since**: 10<br>**Deprecated**: 10<br>**System capability**: SystemCapability.Graphic.Vulkan |
-| VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd) | this type is deprecated, please use PFN_vkQueueSignalReleaseImageOHOS instead<br>**Since**: 10<br>**Deprecated**: 10<br>**System capability**: SystemCapability.Graphic.Vulkan |
-| VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage) | move to vk_ohos_native_buffer.h<br>**Since**: 10<br>**Deprecated**: 23<br>**System capability**: SystemCapability.Graphic.Vulkan |
-| VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence) | move to vk_ohos_native_buffer.h<br>**Since**: 10<br>**Deprecated**: 23<br>**System capability**: SystemCapability.Graphic.Vulkan |
-| VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd) | move to vk_ohos_native_buffer.h<br>**Since**: 10<br>**Deprecated**: 23<br>**System capability**: SystemCapability.Graphic.Vulkan |
-| VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)( VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties ) | Defines a function pointer used to obtain <b>OH_NativeBuffer</b> properties.<br>**Since**: 10<br>**System capability**: SystemCapability.Graphic.Vulkan |
-| VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)( VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer ) | Defines a function pointer used to obtain an <b>OH_NativeBuffer</b> instance.<br>**Since**: 10<br>**System capability**: SystemCapability.Graphic.Vulkan |
 
 ## Enum type description
 

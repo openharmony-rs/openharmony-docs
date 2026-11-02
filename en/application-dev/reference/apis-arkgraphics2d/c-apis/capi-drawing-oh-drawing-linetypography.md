@@ -12,7 +12,7 @@ Defines a struct used to extract a single line of data from a piece of text for 
 
 **Since**: 18
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_text_declaration.h](capi-drawing-text-declaration-h.md)
 

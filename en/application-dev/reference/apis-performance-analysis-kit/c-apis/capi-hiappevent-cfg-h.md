@@ -10,7 +10,7 @@ Defines the names of all the configuration items of the event logging configurat
 
 **Since**: 8
 
-**Related module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@ When the object's getter, setter, deleter, and enumerator operations are perform
 
 **Since**: 12
 
-**Related module**: [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-others-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
@@ -54,8 +54,8 @@ When the object's getter, setter, deleter, and enumerator operations are perform
 | JSVM_Value(JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,
  JSVM_Value thisArg,
  JSVM_Value indexedPropertyData) | A callback function triggered by getting all indexed properties requests on an object. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) namedPropertyData | data will be utilized by the named property callbacks in this struct. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) indexedPropertyData | data will be utilized by the indexed property callbacks in this struct. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) namedPropertyData | data will be utilized by the named property callbacks in this struct. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) indexedPropertyData | data will be utilized by the indexed property callbacks in this struct. |
 
 
 ### Member functions

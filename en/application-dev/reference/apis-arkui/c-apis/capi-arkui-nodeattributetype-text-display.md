@@ -6,7 +6,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
@@ -354,7 +354,10 @@ NODE_TEXT_CONTENT_WITH_STYLED_STRING
 
 **Description**
 
-String to use in the styled string. This attribute can be set, reset, and obtained as required through APIs. Configuring a custom [OH_Drawing_Typography](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-typography.md) object for the **Text** component will skip the layout measurement phase of the component. Note the following: 1. Ensure that the lifecycles of the **OH_ArkUI_StyledString** object and **OH_Drawing_Typography** object are aligned with the lifecycle of the **Text** component. Reset the **OH_ArkUI_StyledString** object when the **Text** component is destroyed; otherwise, it may lead to null pointer crashes in the application. 2. Ensure that the **OH_Drawing_TypographyLayout** API is called prior to the layout measurement of the **Text** component. 3. When the **OH_ArkUI_StyledString** and **OH_Drawing_Typography** objects are released, the **reset** API of the **Text** component must be called synchronously; otherwise, it may cause null pointer crashes in the application. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: string to use in the styled string. The parameter type is [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: string to use in the styled string. The parameter type is [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md).</li> </ul>
+String to use in the styled string. This attribute can be set, reset, and obtained as required through APIs. Configuring a custom [OH_Drawing_Typography](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-typography.md) object for the **Text** component will skip the layout measurement phase of the component. Note the following:
+1. Ensure that the lifecycles of the **OH_ArkUI_StyledString** object and **OH_Drawing_Typography** object are aligned with the lifecycle of the **Text** component. Reset the **OH_ArkUI_StyledString** object when the **Text** component is destroyed; otherwise, it may lead to null pointer crashes in the application.
+2. Ensure that the **OH_Drawing_TypographyLayout** API is called prior to the layout measurement of the **Text** component.
+3. When the **OH_ArkUI_StyledString** and **OH_Drawing_Typography** objects are released, the **reset** API of the **Text** component must be called synchronously; otherwise, it may cause null pointer crashes in the application. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: string to use in the styled string. The parameter type is [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: string to use in the styled string. The parameter type is [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md).</li> </ul>
 
 **Since**: 12
 
@@ -565,7 +568,7 @@ Text selection area, which will be highlighted, for the component that obtains f
 ### NODE_TEXT_ORPHAN_CHAR_OPTIMIZATION
 
 ```c
-	  NODE_TEXT_ORPHAN_CHAR_OPTIMIZATION = 1047
+NODE_TEXT_ORPHAN_CHAR_OPTIMIZATION = 1047
 ```
 
 **Description**

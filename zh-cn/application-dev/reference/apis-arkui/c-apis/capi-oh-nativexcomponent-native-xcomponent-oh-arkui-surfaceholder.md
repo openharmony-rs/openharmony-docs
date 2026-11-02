@@ -12,7 +12,7 @@ OH_ArkUI_SurfaceHolder用于封装和管理Native XComponent的Surface，提供�
 
 **起始版本：** 19
 
-**相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+**相关模块：** [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
 
 **所在头文件：** [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 

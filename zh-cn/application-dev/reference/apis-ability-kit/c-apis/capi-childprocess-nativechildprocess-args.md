@@ -12,7 +12,7 @@ struct NativeChildProcess_Args {...}
 
 **起始版本：** 13
 
-**相关模块：** [ChildProcess](capi-childprocess.md)
+**相关模块：** [ChildProcess](capi-others-childprocess.md)
 
 **所在头文件：** [native_child_process.h](capi-native-child-process-h.md)
 
@@ -23,6 +23,6 @@ struct NativeChildProcess_Args {...}
 | 名称 | 描述 |
 | -- | -- |
 | char* entryParams | 入口参数，大小不能超过150KB。 |
-| struct NativeChildProcess_FdList fdList | 传递给子进程的文件描述符信息列表。 |
+| [struct NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList | 传递给子进程的文件描述符信息列表。 |
 
 

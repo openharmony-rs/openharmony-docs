@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ImageEffect](capi-imageeffect.md)
+**相关模块：** [ImageEffect](capi-image-kit-imageeffect.md)
 
 ## 汇总
 
@@ -83,16 +83,6 @@
 | [ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)](#oh_effectfilter_release) | - | 销毁OH_EffectFilter实例。 |
 | [ImageEffect_ErrorCode OH_EffectBufferInfo_SetTimestamp(OH_EffectBufferInfo *info, int64_t timestamp)](#oh_effectbufferinfo_settimestamp) | - | 设置滤镜时间戳。 |
 | [ImageEffect_ErrorCode OH_EffectBufferInfo_GetTimestamp(OH_EffectBufferInfo *info, int64_t *timestamp)](#oh_effectbufferinfo_gettimestamp) | - | 获取滤镜时间戳。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| bool (*OH_EffectFilterDelegate_SetValue)(OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) | 自定义滤镜设置参数的回调函数，用于开发者校验参数及参数值。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
-| void (*OH_EffectFilterDelegate_PushData)(OH_EffectFilter *filter, OH_EffectBufferInfo *info) | 自定义滤镜传递图像信息到下一级滤镜的函数指针。需要在[OH_EffectFilterDelegate_Render](capi-image-effect-filter-h.md#oh_effectfilterdelegate_render) 的回调中主动调用该函数指针。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
-| bool (*OH_EffectFilterDelegate_Render)(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) | 自定义滤镜渲染图像的回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
-| bool (*OH_EffectFilterDelegate_Save)(OH_EffectFilter *filter, char **info) | 自定义滤镜序列化的回调函数，按照JSON格式进行滤镜序列化处理。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
-| OH_EffectFilter *(*OH_EffectFilterDelegate_Restore)(const char *info) | 自定义滤镜反序列化的回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.ImageEffect.Core |
 
 ## 枚举类型说明
 

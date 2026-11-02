@@ -4,7 +4,7 @@
 
 Defines key codes of the key device.
 
-**Include**: <multimodalinput/oh_key_code.h>
+**File to Include**: <multimodalinput/oh_key_code.h>
 
 **Library**: libohinput.so
 
@@ -12,7 +12,7 @@ Defines key codes of the key device.
 
 **Since**: 12
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-input-kit-input.md)
 
 ## Summary
 

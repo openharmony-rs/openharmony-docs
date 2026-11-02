@@ -10,7 +10,7 @@ Neural Network Core模块接口定义，AI推理框架使用Neural Network Core�
 
 **起始版本：** 11
 
-**相关模块：** [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
+**相关模块：** [NeuralNetworkRuntime](capi-neural-network-runtime-kit-neuralnetworkruntime.md)
 
 ## 汇总
 
@@ -291,7 +291,13 @@ OH_NN_ReturnCode OH_NNCompilation_SetCache(OH_NNCompilation *compilation, const 
 
 **描述：**
 
-设置编译模型的缓存目录和版本。<br> 在支持模型缓存的硬件上，模型在硬件驱动层编译后可以保存为模型缓存文件，下次编译时直接从模型缓存文件读取模型， 减少重新编译的耗时。 该接口接受模型缓存路径和版本，根据缓存路径中和版本的不同情况，该接口采取不同的行为：<br> - 模型缓存路径指定的目录下没有文件： 将编译后的模型缓存到目录下，设置缓存版本等于version。<br> - 模型缓存路径指定的目录下存在完整的缓存文件，且版本号 == version： 读取路径下的缓存文件，传递到底层硬件中转换为可以执行的模型实例。<br> - 模型缓存路径指定的目录下存在完整的缓存文件，但版本号 < version： 路径下的缓存文件需要更新，模型在底层硬件完成编译后，覆写路径下的缓存文件，将版本号更新为version。<br> - 模型缓存路径指定的目录下存在完整的缓存文件，但版本号 > version： 路径下的缓存文件版本高于version，不读取缓存文件，同时返回[OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode)错误码。<br> - 模型缓存路径指定的目录下的缓存文件不完整或没有缓存文件的访问权限： 返回[OH_NN_INVALID_FILE](capi-neural-network-runtime-type-h.md#oh_nn_returncode)错误码。<br> - 模型缓存目录不存在，或者没有访问权限： 返回[OH_NN_INVALID_PATH](capi-neural-network-runtime-type-h.md#oh_nn_returncode)错误码。
+设置编译模型的缓存目录和版本。<br> 在支持模型缓存的硬件上，模型在硬件驱动层编译后可以保存为模型缓存文件，下次编译时直接从模型缓存文件读取模型， 减少重新编译的耗时。 该接口接受模型缓存路径和版本，根据缓存路径中和版本的不同情况，该接口采取不同的行为：<br>
+- 模型缓存路径指定的目录下没有文件： 将编译后的模型缓存到目录下，设置缓存版本等于version。<br>
+- 模型缓存路径指定的目录下存在完整的缓存文件，且版本号 == version： 读取路径下的缓存文件，传递到底层硬件中转换为可以执行的模型实例。<br>
+- 模型缓存路径指定的目录下存在完整的缓存文件，但版本号 < version： 路径下的缓存文件需要更新，模型在底层硬件完成编译后，覆写路径下的缓存文件，将版本号更新为version。<br>
+- 模型缓存路径指定的目录下存在完整的缓存文件，但版本号 > version： 路径下的缓存文件版本高于version，不读取缓存文件，同时返回[OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode)错误码。<br>
+- 模型缓存路径指定的目录下的缓存文件不完整或没有缓存文件的访问权限： 返回[OH_NN_INVALID_FILE](capi-neural-network-runtime-type-h.md#oh_nn_returncode)错误码。<br>
+- 模型缓存目录不存在，或者没有访问权限： 返回[OH_NN_INVALID_PATH](capi-neural-network-runtime-type-h.md#oh_nn_returncode)错误码。
 
 **系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1391,7 +1397,11 @@ OH_NN_ReturnCode OH_NNDevice_GetType(size_t deviceID, OH_NN_DeviceType *deviceTy
 
 **描述：**
 
-获取指定硬件的类别信息。<br> 通过deviceID指定计算硬件，获取硬件的类别。如果deviceID是0，那么会默认使用设备列表中的第一个设备。目前支持的设备类型有： - CPU设备：OH_NN_CPU - GPU设备：OH_NN_GPU - 机器学习专用加速器：OH_NN_ACCELERATOR - 不属于以上类型的其他硬件类型：OH_NN_OTHERS
+获取指定硬件的类别信息。<br> 通过deviceID指定计算硬件，获取硬件的类别。如果deviceID是0，那么会默认使用设备列表中的第一个设备。目前支持的设备类型有：<br>
+- CPU设备：OH_NN_CPU<br>
+- GPU设备：OH_NN_GPU<br>
+- 机器学习专用加速器：OH_NN_ACCELERATOR<br>
+- 不属于以上类型的其他硬件类型：OH_NN_OTHERS
 
 **系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 

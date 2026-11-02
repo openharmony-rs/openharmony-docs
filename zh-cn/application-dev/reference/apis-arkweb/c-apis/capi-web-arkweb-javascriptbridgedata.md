@@ -12,7 +12,7 @@ ArkWeb_JavaScriptBridgeData是JavaScript桥接数据定义结构体，用于在N
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 

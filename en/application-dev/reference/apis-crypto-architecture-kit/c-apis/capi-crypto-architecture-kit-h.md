@@ -4,7 +4,7 @@
 
 Provides a unified entry point for crypto header files for developer convenience.
 
-**Include**: <CryptoArchitectureKit/crypto_architecture_kit.h>
+**File to Include**: <CryptoArchitectureKit/crypto_architecture_kit.h>
 
 **Library**: libohcrypto.so
 
@@ -12,5 +12,5 @@ Provides a unified entry point for crypto header files for developer convenience
 
 **Since**: 12
 
-**Related module**: [CryptoArchitectureKit](capi-cryptoarchitecturekit.md)
+**Related module**: [CryptoArchitectureKit](capi-crypto-architecture-kit-cryptoarchitecturekit.md)
 

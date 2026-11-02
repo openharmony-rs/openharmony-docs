@@ -12,7 +12,7 @@ Define certificate information.
 
 **起始版本：** 12
 
-**相关模块：** [netstack](capi-netstack.md)
+**相关模块：** [netstack](capi-others-netstack.md)
 
 **所在头文件：** [net_ssl_c_type.h](capi-net-ssl-c-type-h.md)
 

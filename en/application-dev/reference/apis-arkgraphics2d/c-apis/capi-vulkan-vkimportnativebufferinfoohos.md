@@ -12,7 +12,7 @@ Defines the pointer to an <b>OH_NativeBuffer</b> struct.
 
 **Since**: 10
 
-**Related module**: [Vulkan](capi-vulkan.md)
+**Related module**: [Vulkan](capi-others-vulkan.md)
 
 **Header file**: [vulkan_ohos.h](capi-vulkan-ohos-h.md)
 
@@ -24,6 +24,6 @@ Defines the pointer to an <b>OH_NativeBuffer</b> struct.
 | -- | -- |
 | VkStructureType            sType | Struct type. |
 | const void*                pNext | Pointer to the next-level struct. |
-| struct OH_NativeBuffer*    buffer | Pointer to an <b>OH_NativeBuffer</b> struct. |
+| [struct OH_NativeBuffer*](capi-vulkan-oh-nativebuffer.md)    buffer | Pointer to an <b>OH_NativeBuffer</b> struct. |
 
 

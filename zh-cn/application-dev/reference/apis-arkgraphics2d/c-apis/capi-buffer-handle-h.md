@@ -10,7 +10,7 @@
 
 **起始版本：** 8
 
-**相关模块：** [NativeWindow](capi-nativewindow.md)
+**相关模块：** [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 ## 汇总
 

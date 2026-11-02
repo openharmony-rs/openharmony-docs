@@ -12,7 +12,7 @@ Defines the recording command class, which is used to store the set of recording
 
 **Since**: 13
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

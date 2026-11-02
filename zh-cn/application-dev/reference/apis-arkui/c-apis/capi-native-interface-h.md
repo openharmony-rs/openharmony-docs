@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -58,7 +58,7 @@ enum ArkUI_NativeAPIVariantKind
 | ARKUI_NATIVE_DIALOG | 弹窗相关接口类型，详见[native_dialog.h](capi-native-dialog-h.md)中的结构体类型定义。 |
 | ARKUI_NATIVE_GESTURE | 手势相关接口类型，详见[native_gesture.h](capi-native-gesture-h.md)中的结构体类型定义。 |
 | ARKUI_NATIVE_ANIMATE | 动画相关接口类型，详见[native_animate.h](capi-native-animate-h.md)中的结构体类型定义。 |
-| ARKUI_MULTI_THREAD_NATIVE_NODE |  |
+| ARKUI_MULTI_THREAD_NATIVE_NODE | 多线程UI组件相关接口类型，详见[native_node.h](capi-native-node-h.md)中的结构体类型定义。<br>**起始版本：** 22 |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckType
 
@@ -176,6 +176,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_SetRuntimeCheckMode(OH_ArkUI_NativeModule_
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回值：<ul><li>设置更新成功返回ARKUI_ERROR_CODE_NO_ERROR。</li><li>checkType或mode无效时返回ARKUI_ERROR_CODE_PARAM_INVALID。</li></ul> *     返回无效参数错误时，保留之前的设置。 |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回值：<ul><li>设置更新成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)。</li><li>checkType或mode无效时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。</li></ul> *     返回无效参数错误时，保留之前的设置。 |
 
 

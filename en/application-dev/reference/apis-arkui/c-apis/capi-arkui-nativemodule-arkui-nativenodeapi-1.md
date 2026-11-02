@@ -12,7 +12,7 @@ Provides a collection of native-side APIs of the Node type provided by ArkUI, su
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
@@ -94,7 +94,7 @@ Creates a component based on [ArkUI_NodeType](capi-native-node-h.md#arkui_nodety
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the created component object. If the component fails to be created, **NULL** is returned. When the component object is no longer needed, call [disposeNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) to destroy it. Improper lifecycle management may cause Use After Free, process crashes, or memory leak. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the created component object. If the component fails to be created, **NULL** is returned. When the component object is no longer needed, call [disposeNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) to destroy it. Improper lifecycle management may cause Use After Free, process crashes, or memory leak. |
 
 ### disposeNode()
 
@@ -112,7 +112,7 @@ Disposes of the component to which the specified pointer points. When calling th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to a component object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to a component object. |
 
 ### addChild()
 
@@ -130,8 +130,8 @@ Attaches a component to a parent node. This API is used for node operations, and
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) parent | Pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | Pointer to the child node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Pointer to the parent node. |
+|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Pointer to the child node. |
 
 **Returns**:
 
@@ -155,8 +155,8 @@ Removes a component from its parent node. This API is used for node operations, 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) parent | Pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | Pointer to the child node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Pointer to the parent node. |
+|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Pointer to the child node. |
 
 **Returns**:
 
@@ -180,9 +180,9 @@ Attaches a component to a parent node, with the position after the **sibling** n
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) parent | Pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | Pointer to the child node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) sibling | Pointer to the sibling node after which the target node is to be inserted. If the value is null, the node is inserted at the end of the parent node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Pointer to the parent node. |
+|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Pointer to the child node. |
+|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) sibling | Pointer to the sibling node after which the target node is to be inserted. If the value is null, the node is inserted at the end of the parent node. |
 
 **Returns**:
 
@@ -206,9 +206,9 @@ Attaches a component to a parent node, with the position before the **sibling** 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) parent | Pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | Pointer to the child node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) sibling | Pointer to the sibling node before which the target node is to be inserted. If the value is null, the node is inserted at the end of the parent node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Pointer to the parent node. |
+|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Pointer to the child node. |
+|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) sibling | Pointer to the sibling node before which the target node is to be inserted. If the value is null, the node is inserted at the end of the parent node. |
 
 **Returns**:
 
@@ -232,8 +232,8 @@ Attaches a component to a parent node, with the position specified by **position
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) parent | Pointer to the parent node. |
-|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | Pointer to the child node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Pointer to the parent node. |
+|  [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) child | Pointer to the child node. |
 |  int32_t position | Inserting position. The value range is [0, current child count]. If the value is a negative number or invalid, the component is inserted at the end of the parent node. |
 
 **Returns**:
@@ -258,7 +258,7 @@ Sets attributes. You are advised to call this API in the main thread. In actual 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node whose attribute needs to be set. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node whose attribute needs to be set. |
 |  [ArkUI_NodeAttributeType](capi-arkui-nodeattributetype.md) attribute | Type of attribute to set. |
 |  const [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* item | Attribute value to set. |
 
@@ -284,7 +284,7 @@ Obtains attributes. The pointer returned by this API is an internal buffer point
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node whose attribute needs to be obtained. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node whose attribute needs to be obtained. |
 |  [ArkUI_NodeAttributeType](capi-arkui-nodeattributetype.md) attribute | Type of the attribute to obtain. |
 
 **Returns**:
@@ -309,7 +309,7 @@ Resets attributes. You are advised to call this API in the main thread.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node whose attribute needs to be reset. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node whose attribute needs to be reset. |
 |  [ArkUI_NodeAttributeType](capi-arkui-nodeattributetype.md) attribute | Type of the attribute to reset. |
 
 **Returns**:
@@ -334,7 +334,7 @@ Registers an event for the specified node. After the event is triggered, it can 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  [ArkUI_NodeEventType](capi-arkui-nodeeventtype.md) eventType | Type of the event to register. |
 | int32_t targetId | Custom event ID, which is passed in the callback of [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) when the event is triggered. |
 |  void* userData | Custom event parameter, which is passed in the callback of [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) when the event is triggered. |
@@ -361,7 +361,7 @@ Unregisters an event for the specified node, which is previously registered thro
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  [ArkUI_NodeEventType](capi-arkui-nodeeventtype.md) eventType | Type of the event to unregister. |
 
 ### registerNodeEventReceiver()
@@ -410,7 +410,7 @@ Forcibly marks the current node for re-measurement, re-layout, or re-drawing. Re
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Node object that needs to be marked for re-measurement, re-layout, or re-drawing. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node object that needs to be marked for re-measurement, re-layout, or re-drawing. |
 |  [ArkUI_NodeDirtyFlag](capi-native-node-h.md#arkui_nodedirtyflag) dirtyFlag | Type of the process to be re-executed. |
 
 ### getTotalChildCount()
@@ -429,7 +429,7 @@ Obtains the number of child nodes.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
@@ -453,14 +453,14 @@ Obtains the child node at the specified index.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  int32_t position | Zero-based index of the target node in the child node list. The value range is [0, Number of child nodes - 1). **NULL** is returned if the index is out of range. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the child node at the specified index, or **NULL** if no child node exists at the position. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the child node at the specified index, or **NULL** if no child node exists at the position. |
 
 ### getFirstChild()
 
@@ -478,13 +478,13 @@ Obtains the first child node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the first child node, or **NULL** if there is no child node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the first child node, or **NULL** if there is no child node. |
 
 ### getLastChild()
 
@@ -502,13 +502,13 @@ Obtains the last child node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the last child node, or **NULL** if there is no child node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the last child node, or **NULL** if there is no child node. |
 
 ### getPreviousSibling()
 
@@ -526,13 +526,13 @@ Obtains the previous sibling node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the previous sibling node, or **NULL** if no previous sibling node exists. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the previous sibling node, or **NULL** if no previous sibling node exists. |
 
 ### getNextSibling()
 
@@ -550,13 +550,13 @@ Obtains the next sibling node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the next sibling node, or **NULL** if no next sibling node exists. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the next sibling node, or **NULL** if no next sibling node exists. |
 
 ### registerNodeCustomEvent()
 
@@ -574,7 +574,7 @@ Registers a custom event for a node. After the event is triggered, it can be rec
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  [ArkUI_NodeCustomEventType](capi-custom-attributes-h.md#arkui_nodecustomeventtype) eventType | Type of the event to register. |
 |  int32_t targetId | Custom event ID, which is passed in the callback of [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) when the event is triggered. |
 |  void* userData | Custom event parameter, which is passed in the callback of [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) when the event is triggered. |
@@ -601,7 +601,7 @@ Unregisters a custom event for a node, which is previously registered through [r
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  [ArkUI_NodeCustomEventType](capi-custom-attributes-h.md#arkui_nodecustomeventtype) eventType | Type of the event to unregister. |
 
 ### registerNodeCustomEventReceiver()
@@ -650,7 +650,7 @@ Sets the width and height of the component after measurement is complete in the 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  int32_t width | Width of the component after measurement, in px. If the value is less than 0, 0 is used. |
 |  int32_t height | Height of the component after measurement, in px. If the value is less than 0, 0 is used. |
 
@@ -676,7 +676,7 @@ Sets the layout position of the component relative to its parent component in th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  int32_t positionX | X-axis layout coordinate of the component relative to its parent component, in px. |
 |  int32_t positionY | Y-axis layout coordinate of the component relative to its parent component, in px. |
 
@@ -702,7 +702,7 @@ Obtains the width and height of a component after measurement.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
@@ -726,7 +726,7 @@ Obtains the offset of a node relative to its parent node after component layout 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
@@ -750,7 +750,7 @@ Measures a node. You can use the **getMeasuredSize** API to obtain the size afte
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the size constraint used during measurement of the target component. The unit is px. |
 
 **Returns**:
@@ -775,7 +775,7 @@ Lays out a node and specifies the expected position of the node relative to its 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 |  int32_t positionX | Expected X-axis coordinate of the target component relative to its parent component, in px. |
 |  int32_t positionY | Expected Y-axis coordinate of the target component relative to its parent component, in px. |
 
@@ -901,7 +901,7 @@ Saves custom data on a component.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Component on which the custom data will be saved. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Component on which the custom data will be saved. |
 |  void* userData | Custom data to be saved. |
 
 **Returns**:
@@ -926,7 +926,7 @@ Obtains the custom data stored on a component.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target component. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target component. |
 
 **Returns**:
 
@@ -950,7 +950,7 @@ Sets the unit used when setting length-type attributes of a component through th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Component for which you want to set the unit. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Component for which you want to set the unit. |
 |  [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | Unit type for component length attributes. The default value is **ARKUI_LENGTH_METRIC_UNIT_DEFAULT**. When the default value is used, the unit for font-related attributes is fp, and the unit for non-font attributes is vp. |
 
 **Returns**:
@@ -975,13 +975,13 @@ Obtains the parent node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Target node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Pointer to the parent node, or **NULL** if no parent node exists. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the parent node, or **NULL** if no parent node exists. |
 
 ### removeAllChildren()
 
@@ -999,7 +999,7 @@ Removes all child nodes from the parent component.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) parent | Pointer to the parent node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) parent | Pointer to the parent node. |
 
 **Returns**:
 

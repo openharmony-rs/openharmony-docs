@@ -12,7 +12,7 @@ struct OH_Huks_KeyMaterialEcc {...}
 
 **起始版本：** 9
 
-**相关模块：** [HuksTypeApi](capi-hukstypeapi.md)
+**相关模块：** [HuksTypeApi](capi-others-hukstypeapi.md)
 
 **所在头文件：** [native_huks_type.h](capi-native-huks-type-h.md)
 

@@ -12,7 +12,7 @@ typedef struct ArkUI_Matrix4RotationOptions ArkUI_Matrix4RotationOptions
 
 **起始版本：** 24
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_type_visual.h](capi-native-type-visual-h.md)
 

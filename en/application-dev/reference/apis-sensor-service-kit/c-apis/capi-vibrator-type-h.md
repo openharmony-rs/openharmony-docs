@@ -10,7 +10,7 @@ Declares the APIs for controlling vibration. This module supports multiple vibra
 
 **Since**: 11
 
-**Related module**: [Vibrator](capi-vibrator.md)
+**Related module**: [Vibrator](capi-sensor-service-kit-vibrator.md)
 
 ## Summary
 

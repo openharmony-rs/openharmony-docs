@@ -10,7 +10,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_ImmersiveMaterial](capi-arkui-nativemodule-arkui-immersivematerial.md) | ArkUI_ImmersiveMaterial | 定义Native侧的沉浸式材质对象，根据设备算力等级提供适配的视觉效果。<br>沉浸式材质的等级根据设备算力等级而不同。<br>材质等级由[ArkUI_MaterialLevel](capi-native-material-h.md#arkui_materiallevel)定义，可通过 [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。<br>在高算力和中算力设备上，会影响沉浸式材质渲染层的滤镜效果和阴影（[NODE_SHADOW](capi-native-node-h.md#arkui_nodeattributetype)或 [NODE_CUSTOM_SHADOW](capi-native-node-h.md#arkui_nodeattributetype)）效果。在低算力设备上，会影响背景颜色[NODE_BACKGROUND_COLOR](capi-native-node-h.md#arkui_nodeattributetype)、边框颜色[NODE_BORDER_COLOR](capi-native-node-h.md#arkui_nodeattributetype)、边框宽度 [NODE_BORDER_WIDTH](capi-native-node-h.md#arkui_nodeattributetype)和阴影（[NODE_SHADOW](capi-native-node-h.md#arkui_nodeattributetype)或[NODE_CUSTOM_SHADOW](capi-native-node-h.md#arkui_nodeattributetype)）效果。 |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) | ArkUI_ImmersiveMaterialHandle | 定义指向沉浸式材质对象的指针，沉浸式材质用于实现沉浸式视觉效果对象。<br>可以通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Create](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_create)创建沉浸式材质对象， 创建后必须在使用完毕时调用[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)销毁沉浸式材质对象以释放资源，避免内存泄漏。 |
+| [ArkUI_ImmersiveMaterial*](capi-arkui-nativemodule-arkui-immersivematerial8h.md) | ArkUI_ImmersiveMaterialHandle | 定义指向沉浸式材质对象的指针，沉浸式材质用于实现沉浸式视觉效果对象。<br>可以通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Create](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_create)创建沉浸式材质对象， 创建后必须在使用完毕时调用[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)销毁沉浸式材质对象以释放资源，避免内存泄漏。 |
 | [ArkUI_LightEffectOptions](capi-arkui-nativemodule-arkui-lighteffectoptions.md) | ArkUI_LightEffectOptions | 定义沉浸式材质的光感交互效果配置对象，用于配置沉浸式材质在用户交互时产生的光感响应效果。详细设计逻辑请参见[native_material.h](capi-native-material-h.md)。沉浸式材质是一种具有深度感和层次感的视觉材质风格， 光感交互效果指用户与组件交互时产生的光影视觉反馈。创建后需通过[OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)将配置对象设置到沉浸式材质对象上才能生效。 <br>未指定光感交互颜色时，默认光感交互颜色为白色（0xffffffff）。 |
 
 ### 枚举
@@ -50,12 +50,12 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool applyShadow)](#oh_arkui_nativemodule_immersivematerial_setapplyshadow) | 设置沉浸式材质对象是否应用阴影。该参数对所有等级材质都生效。 <br>当该参数为true时，材质中的阴影效果生效，优先于阴影通用属性。当该参数为false时，阴影通用属性生效，材质无阴影效果。如果不设置，默认值为true。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool* applyShadow)](#oh_arkui_nativemodule_immersivematerial_getapplyshadow) | 获取沉浸式材质对象是否应用阴影。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_ImmersiveMaterialHandle material, bool interactive)](#oh_arkui_nativemodule_immersivematerial_setinteractive) | 设置沉浸式材质对象是否可交互形变。即材质在用户交互（如触摸、按压）时是否产生视觉形变响应。该参数对所有等级材质都生效。 <br>当该参数为true时，材质可交互形变。当该参数为false时，材质不可交互形变。如果不设置，遵循组件的行为。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_ImmersiveMaterialHandle material, bool* interactive)](#oh_arkui_nativemodule_immersivematerial_getinteractive) | 获取沉浸式材质对象的可交互形变属性。建议先通过[OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setinteractive)设置该属性后再调用本接口获取， 如果从未设置过该属性，函数将返回ARKUI_ERROR_CODE_PARAM_ERROR。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_ImmersiveMaterialHandle material, bool* interactive)](#oh_arkui_nativemodule_immersivematerial_getinteractive) | 获取沉浸式材质对象的可交互形变属性。建议先通过[OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setinteractive)设置该属性后再调用本接口获取， 如果从未设置过该属性，函数将返回[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode)。 |
 | [ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()](#oh_arkui_nativemodule_lighteffectoptions_create) | 创建光感交互效果配置对象，用于配置沉浸式材质的触摸高亮反馈效果。默认颜色为白色（0xffffffff）。创建完成后，需通过 [OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)将配置对象设置到沉浸式材质对象上才能生效。 |
 | [void OH_ArkUI_NativeModule_LightEffectOptions_Destroy(ArkUI_LightEffectOptionsHandle options)](#oh_arkui_nativemodule_lighteffectoptions_destroy) | 销毁光感交互效果配置对象。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEffectOptionsHandle options, uint32_t color)](#oh_arkui_nativemodule_lighteffectoptions_setcolor) | 设置光感交互效果的颜色。如果不设置，默认颜色为白色（0xffffffff）。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_ImmersiveMaterialHandle material, const ArkUI_LightEffectOptionsHandle options)](#oh_arkui_nativemodule_immersivematerial_setlighteffect) | 设置沉浸式材质对象的光感交互效果，即在材质表面呈现随用户交互动态变化的光效反射。该参数对所有等级材质都生效。 <br>传入NULL的光感交互效果配置指针表示禁用光感交互效果，适用于纯展示性材质表面场景；传入非NULL的光感交互效果配置指针表示使用该配置参数进行光感交互，适用于需要增强触摸视觉反馈的交互式组件场景。如果不调用该接口设置， 光感交互效果遵循组件的行为。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)](#oh_arkui_nativemodule_immersivematerial_getlighteffectcolor) | 获取沉浸式材质对象的光感交互效果颜色。 <br>只有在调用[OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)成功设置非NULL的光感交互效果配置指针后，此接口才能成功获取颜色值。 如果从未设置过光感交互效果或已禁用（传入NULL的光感交互效果配置指针），函数将返回ARKUI_ERROR_CODE_PARAM_ERROR。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)](#oh_arkui_nativemodule_immersivematerial_getlighteffectcolor) | 获取沉浸式材质对象的光感交互效果颜色。 <br>只有在调用[OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)成功设置非NULL的光感交互效果配置指针后，此接口才能成功获取颜色值。 如果从未设置过光感交互效果或已禁用（传入NULL的光感交互效果配置指针），函数将返回[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode)。 |
 
 ### 变量
 
@@ -81,11 +81,11 @@ enum ArkUI_ImmersiveStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0 |  |
-| ARKUI_IMMERSIVE_STYLE_THIN |  |
-| ARKUI_IMMERSIVE_STYLE_REGULAR |  |
-| ARKUI_IMMERSIVE_STYLE_THICK |  |
-| ARKUI_IMMERSIVE_STYLE_ULTRA_THICK |  |
+| ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0 | 超薄样式。材质层极薄，透明度效果极强。<br>**起始版本：** 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_THIN | 薄样式。材质层较薄，透明度效果强。<br>**起始版本：** 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_REGULAR | 常规样式。材质层厚度标准，视觉效果均衡。<br>**起始版本：** 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_THICK | 厚样式。模糊效果强。<br>**起始版本：** 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_ULTRA_THICK | 超厚样式。材质层极厚，模糊效果极强。<br>**起始版本：** 26.0.0 |
 
 ### ArkUI_MaterialLevel
 
@@ -103,9 +103,9 @@ enum ArkUI_MaterialLevel
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 |  |
-| ARKUI_MATERIAL_LEVEL_GENTLE |  |
-| ARKUI_MATERIAL_LEVEL_SMOOTH |  |
+| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 | 高算力设备材质等级。<br>**起始版本：** 26.0.0 |
+| ARKUI_MATERIAL_LEVEL_GENTLE | 中算力设备材质等级。<br>**起始版本：** 26.0.0 |
+| ARKUI_MATERIAL_LEVEL_SMOOTH | 低算力设备材质等级。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
@@ -164,19 +164,19 @@ ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(Ark
 
 **起始版本：** 26.0.0
 
-**资源释放：** native_material/OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy {return}
+**资源释放：** [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](#oh_arkui_nativemodule_immersivematerial_destroy)
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveStyle](capi-native-material-h.md#arkui_immersivestyle) style | 材质样式。传入无效样式将导致设置失败，返回ARKUI_ERROR_CODE_PARAM_INVALID错误码。该样式仅对高算力和中算力设备的显示效果有效，对低算力设备不生效但不会报错。 |
+| [ArkUI_ImmersiveStyle](capi-native-material-h.md#arkui_immersivestyle) style | 材质样式。传入无效样式将导致设置失败，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)错误码。该样式仅对高算力和中算力设备的显示效果有效，对低算力设备不生效但不会报错。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) | 返回指向创建的沉浸式材质对象的指针。如果创建失败或材质样式无效，返回NULL。<br>返回的对象使用完后需要通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) | 返回指向创建的沉浸式材质对象的指针。如果创建失败或材质样式无效，返回NULL。<br>返回的对象使用完后需要通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy()
 
@@ -196,7 +196,7 @@ void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHand
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle()
 
@@ -216,14 +216,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_Immersive
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 <br>material为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_ImmersiveStyle](capi-native-material-h.md#arkui_immersivestyle) style | 材质样式。传入无效样式将导致设置失败，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 <br>material为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ImmersiveStyle](capi-native-material-h.md#arkui_immersivestyle) style | 材质样式。传入无效样式将导致设置失败，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL或style无效），请确保传入有效的material指针和有效的style枚举值。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL或style无效），请确保传入有效的material指针和有效的style枚举值。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle()
 
@@ -243,14 +243,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_Immersive
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 |
 | [ArkUI_ImmersiveStyle](capi-native-material-h.md#arkui_immersivestyle)* style | 指向用于接收材质样式的变量的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL或style为NULL），请确保material和style均为有效指针。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL或style为NULL），请确保material和style均为有效指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor()
 
@@ -270,14 +270,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_I
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 <br>material为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 <br>material为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | uint32_t color | 材质颜色，0xAARRGGBB格式，对所有算力设备的显示效果有效。传入0表示透明（默认值）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL），请确保material为有效指针。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL），请确保material为有效指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor()
 
@@ -297,14 +297,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_I
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 |
 | uint32_t* color | 指向用于接收0xAARRGGBB格式的材质颜色的变量的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL或color为NULL），请确保material和color均为有效指针。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL或color为NULL），请确保material和color均为有效指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow()
 
@@ -324,14 +324,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_Imm
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 |
 | bool applyShadow | 是否添加材质效果的阴影。true表示材质阴影生效并优先于阴影通用属性，false表示不添加材质阴影、阴影通用属性生效。默认值为true。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL），请确保material为有效指针。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL），请确保material为有效指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow()
 
@@ -351,14 +351,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_Imm
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 |
 | bool* applyShadow | 指向用于接收是否应用阴影的变量的指针。如果从未显式设置过该属性，该指针将接收默认值true。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL或applyShadow为NULL），请确保material和applyShadow均为有效指针。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL或applyShadow为NULL），请确保material和applyShadow均为有效指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive()
 
@@ -378,14 +378,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_Imm
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 |
 | bool interactive | 材质是否可交互形变。true表示材质可交互形变，false表示材质不可交互形变。如果不设置，遵循组件的行为。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL），请确保material为有效指针。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL），请确保material为有效指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive()
 
@@ -395,7 +395,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_Imm
 
 **描述：**
 
-获取沉浸式材质对象的可交互形变属性。建议先通过[OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setinteractive)设置该属性后再调用本接口获取， 如果从未设置过该属性，函数将返回ARKUI_ERROR_CODE_PARAM_ERROR。
+获取沉浸式材质对象的可交互形变属性。建议先通过[OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setinteractive)设置该属性后再调用本接口获取， 如果从未设置过该属性，函数将返回[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -405,14 +405,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_Imm
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 <br>material为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| bool* interactive | 指向用于接收材质是否可交互形变的变量的指针。 <br>interactive为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 <br>material为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| bool* interactive | 指向用于接收材质是否可交互形变的变量的指针。 <br>interactive为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL或interactive为NULL），请确保material和interactive均为有效指针。<br>ARKUI_ERROR_CODE_PARAM_ERROR 从未设置过该属性。请先调用OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive设置该属性后再获取。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL或interactive为NULL），请确保material和interactive均为有效指针。<br>[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode) 从未设置过该属性。请先调用OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive设置该属性后再获取。 |
 
 ### OH_ArkUI_NativeModule_LightEffectOptions_Create()
 
@@ -428,7 +428,7 @@ ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()
 
 **起始版本：** 26.0.0
 
-**资源释放：** native_material/OH_ArkUI_NativeModule_LightEffectOptions_Destroy {return}
+**资源释放：** [OH_ArkUI_NativeModule_LightEffectOptions_Destroy](#oh_arkui_nativemodule_lighteffectoptions_destroy)
 
 **返回值：**
 
@@ -481,7 +481,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEff
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（options为NULL），请确保options为有效指针。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（options为NULL），请确保options为有效指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect()
 
@@ -501,14 +501,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_Imm
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 |
 | const ArkUI_LightEffectOptionsHandle options | 指向光感交互效果配置对象的指针。传入NULL禁用光感交互效果，传入非NULL启用。非NULL指针需通过 [OH_ArkUI_NativeModule_LightEffectOptions_Create](capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_create)创建。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL），请确保material为有效指针。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL），请确保material为有效指针。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor()
 
@@ -518,7 +518,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkU
 
 **描述：**
 
-获取沉浸式材质对象的光感交互效果颜色。 <br>只有在调用[OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)成功设置非NULL的光感交互效果配置指针后，此接口才能成功获取颜色值。 如果从未设置过光感交互效果或已禁用（传入NULL的光感交互效果配置指针），函数将返回ARKUI_ERROR_CODE_PARAM_ERROR。
+获取沉浸式材质对象的光感交互效果颜色。 <br>只有在调用[OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)成功设置非NULL的光感交互效果配置指针后，此接口才能成功获取颜色值。 如果从未设置过光感交互效果或已禁用（传入NULL的光感交互效果配置指针），函数将返回[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -528,13 +528,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkU
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | 指向沉浸式材质对象的指针。 |
 | uint32_t* color | 指向用于接收0xAARRGGBB格式的光感交互效果颜色的变量的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR 操作成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数异常（material为NULL或color为NULL），请确保material和color均为有效指针。<br>ARKUI_ERROR_CODE_PARAM_ERROR 光感交互效果从未设置或已禁用，请先调用OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect设置非NULL的光感交互效果配置指针后再获取颜色。 |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数异常（material为NULL或color为NULL），请确保material和color均为有效指针。<br>[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode) 光感交互效果从未设置或已禁用，请先调用OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect设置非NULL的光感交互效果配置指针后再获取颜色。 |
 
 

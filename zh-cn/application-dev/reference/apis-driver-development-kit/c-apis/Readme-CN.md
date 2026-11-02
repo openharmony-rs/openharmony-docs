@@ -1,11 +1,11 @@
 # C API<!--c-driverdevelopmentkit-->
 
 - 模块<!--driverdevelopmentkit-module-->
-    - [Ddk](capi-ddk.md)
-    - [HidDdk](capi-hidddk.md)
-    - [UsbDdk](capi-usbddk.md)
-    - [USBSerialDDK](capi-usbserialddk.md)
-    - [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
+    - [Ddk](capi-driver-development-kit-ddk.md)
+    - [HidDdk](capi-driver-development-kit-hidddk.md)
+    - [UsbDdk](capi-driver-development-kit-usbddk.md)
+    - [USBSerialDDK](capi-driver-development-kit-usbserialddk.md)
+    - [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 - 头文件<!--driverdevelopmentkit-headerfile-->
     - [ddk_api.h](capi-ddk-api-h.md)
     - [ddk_types.h](capi-ddk-types-h.md)

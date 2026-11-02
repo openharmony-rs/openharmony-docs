@@ -10,7 +10,7 @@ The file declares the APIs related to moving photos. You can use the APIs to obt
 
 **Since**: 13
 
-**Related module**: [MediaAssetManager](capi-mediaassetmanager.md)
+**Related module**: [MediaAssetManager](capi-media-library-kit-mediaassetmanager.md)
 
 ## Summary
 

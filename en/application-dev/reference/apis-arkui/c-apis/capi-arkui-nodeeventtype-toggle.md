@@ -6,7 +6,7 @@ Enumerates the event types supported by the NativeNode component.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 

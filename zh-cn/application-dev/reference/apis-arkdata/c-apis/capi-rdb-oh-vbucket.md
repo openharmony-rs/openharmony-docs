@@ -12,7 +12,7 @@ typedef struct OH_VBucket {...} OH_VBucket
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-others-rdb.md)
 
 **所在头文件：** [oh_values_bucket.h](capi-oh-values-bucket-h.md)
 

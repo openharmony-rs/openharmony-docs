@@ -8,7 +8,7 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 
 **Since**: 11
 
-**Related module**: [AVPlayer](capi-avplayer.md)
+**Related module**: [AVPlayer](capi-media-kit-avplayer.md)
 
 ## Summary
 
@@ -72,7 +72,7 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_addfdsubtitlesource) | - | Adds the subtitle resource represented by the file descriptor to the player. Currently, the external subtitle must be set after the **fdSrc** of the video resource is set in the AVPlayer. |
 | [OH_AVErrCode OH_AVPlayer_AddUrlSubtitleSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_addurlsubtitlesource) | - | Adds the subtitle resource represented by the URL to the player. The external subtitle must be set after the URL is set for the AVPlayer. |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackRange(OH_AVPlayer *player, int32_t mSecondsStart, int32_t mSecondsEnd, bool closestRange)](#oh_avplayer_setplaybackrange) | - | Sets the start and end positions of the playback. After the setting, only the content within the specified range of the audio and video file is played. This API can be called when the player is in the initialized, prepared, paused, stopped, or completed state. |
-| [OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaType, bool muted)](#oh_avplayer_setmediamuted) | - |  |
+| [OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaType, bool muted)](#oh_avplayer_setmediamuted) | - | Mute the media stream. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. |
 | [int32_t OH_AVPlayer_GetPlaybackPosition(OH_AVPlayer *player)](#oh_avplayer_getplaybackposition) | - | Obtains the playback position, in milliseconds. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. |
 | [bool OH_AVPlayer_IsSeekContinuousSupported(OH_AVPlayer *player)](#oh_avplayer_isseekcontinuoussupported) | - | Checks whether the media source supports continuous seek. If this API is called when the AVPlayer is in the prepared, playing, paused, or completed state, the actual value is returned. Other, **false** is returned. For devices that do not support the [AV_SEEK_CONTINUOUS](capi-avplayer-base-h.md#avplayerseekmode) mode, **false** is returned. |
 | [OH_AVErrCode OH_AVPlayer_SelectTrackWithMode(OH_AVPlayer *player, int32_t index, AVPlayerTrackSwitchMode mode)](#oh_avplayer_selecttrackwithmode) | - | Selects a track in the specified switching mode when playing a resource that contains multiple audio and video tracks. |
@@ -106,12 +106,6 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | Method to get one video decoded frame. This API can be called only when the avplayer is in the paused or playing state. |
 | [OH_AVErrCode OH_AVPlayer_SetPCMProcessorCallback(OH_AVPlayer *player, OH_AVPlayerPCMProcessorCallback callback, void *userData)](#oh_avplayer_setpcmprocessorcallback) | - | Method to set audio pcm data process callback. This API can be called only when the avplayer is in the idle or initialized state. |
 | [OH_AVErrCode OH_AVPlayer_SetPCMProcessorMaxLen(OH_AVPlayer *player, int32_t maxProcessedPCMLen)](#oh_avplayer_setpcmprocessormaxlen) | - | Sets the maximum amount of data that can be returned at a time during audio post-processing. Allows some PCM data to be cached and returned with the next PCM data. This API can be called only when the avplayer is in the idle or initialized state. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*Player_MediaKeySystemInfoCallback)(OH_AVPlayer *player, DRM_MediaKeySystemInfo* mediaKeySystemInfo) | Called when media key system information of the AVPlayer is updated.<br>**Since**: 12 |
 
 ## Function description
 
@@ -766,7 +760,7 @@ Sets a playback window. This function must be called after **SetSource** and bef
 | Parameter | Description |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance. |
-| [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-ohnativewindow.md) *window | Pointer to the OHNativeWindow instance. |
+| [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-nativewindow.md) *window | Pointer to the OHNativeWindow instance. |
 
 **Returns**:
 
@@ -1315,6 +1309,8 @@ OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaTy
 ```
 
 **Description**
+
+Mute the media stream. This API can be called only when the AVPlayer is in the prepared, playing,paused, or completed state.
 
 **Since**: 23
 
@@ -2068,7 +2064,7 @@ Method to set video decoded frame output callback. This API can be called only w
 | Parameter | Description |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an OH_AVPlayer instance. |
-| [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-ohnativewindow.md) *window | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-ohnativewindow.md) |
+| [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-nativewindow.md) *window | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-nativewindow.md) |
 
 **Returns**:
 

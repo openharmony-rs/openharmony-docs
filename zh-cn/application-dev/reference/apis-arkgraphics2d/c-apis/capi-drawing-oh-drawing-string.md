@@ -12,7 +12,7 @@ typedef struct OH_Drawing_String {...} OH_Drawing_String
 
 **起始版本：** 14
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
 

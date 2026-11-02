@@ -10,7 +10,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**相关模块：** [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 ## 汇总
 
@@ -75,11 +75,11 @@ OH_NativeBuffer的用途。
 | NATIVEBUFFER_USAGE_CPU_READ = (1ULL << 0) | CPU可读 |
 | NATIVEBUFFER_USAGE_CPU_WRITE = (1ULL << 1) | CPU可写 |
 | NATIVEBUFFER_USAGE_MEM_DMA = (1ULL << 3) | 直接内存访问缓冲区 |
-| NATIVEBUFFER_USAGE_MEM_MMZ_CACHE = (1ULL << 5) |  |
-| NATIVEBUFFER_USAGE_HW_RENDER = (1ULL << 8) |  |
-| NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9) |  |
-| NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16) |  |
-| NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18) |  |
+| NATIVEBUFFER_USAGE_MEM_MMZ_CACHE = (1ULL << 5) | 媒体内存区域缓存<br>**起始版本：** 20 |
+| NATIVEBUFFER_USAGE_HW_RENDER = (1ULL << 8) | GPU可写<br>**起始版本：** 12 |
+| NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9) | GPU可读<br>**起始版本：** 12 |
+| NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16) | CPU可直接映射<br>**起始版本：** 12 |
+| NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18) | 512字节对齐<br>**起始版本：** 12 |
 
 ### OH_NativeBuffer_ColorGamut
 

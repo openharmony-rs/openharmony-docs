@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityProvider ArkUI_AccessibilityProvider
 
 **起始版本：** 13
 
-**相关模块：** [ArkUI_Accessibility](capi-arkui-accessibility.md)
+**相关模块：** [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
 
 **所在头文件：** [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 

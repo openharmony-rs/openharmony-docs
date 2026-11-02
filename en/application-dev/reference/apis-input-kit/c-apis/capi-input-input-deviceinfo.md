@@ -12,7 +12,7 @@ Defines input device information, which is used to describe the basic informatio
 
 **Since**: 13
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-others-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

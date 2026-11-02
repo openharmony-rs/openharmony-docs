@@ -10,7 +10,7 @@ Declares the HID DDK functions for accessing an input device from the host.
 
 **Since**: 11
 
-**Related module**: [HidDdk](capi-hidddk.md)
+**Related module**: [HidDdk](capi-driver-development-kit-hidddk.md)
 
 ## Summary
 

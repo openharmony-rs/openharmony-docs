@@ -10,7 +10,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -104,7 +104,7 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintRendererInfo(OH_AudioDebuggi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | [in] 通过[OH_AudioManager_GetAudioDebuggingManager](capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager)获取的音频调试管理器实例。 |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md) *renderer | [in] 指向目标音频播放实例的指针，用于打印快照信息。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md) *renderer | [in] 指向目标音频播放实例的指针，用于打印快照信息。 |
 | int32_t fd | [in] 文件描述符。当fd小于0或不可写时，快照信息将输出到运行日志，否则输出到fd指向的文件。 |
 
 **返回值：**
@@ -132,7 +132,7 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintCapturerInfo(OH_AudioDebuggi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | [in] 通过[OH_AudioManager_GetAudioDebuggingManager](capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager)获取的音频调试管理器实例。 |
-| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md) *capturer | [in] 指向目标录音实例的指针，用于打印快照信息。 |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md) *capturer | [in] 指向目标录音实例的指针，用于打印快照信息。 |
 | int32_t fd | [in] 文件描述符。当fd小于0或不可写时，快照信息将输出到运行日志，否则输出到fd指向的文件。 |
 
 **返回值：**

@@ -12,7 +12,7 @@ typedef struct ArkUI_NativeGestureAPI_1 {...} ArkUI_NativeGestureAPI_1
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_gesture.h](capi-native-gesture-h.md)
 
@@ -249,7 +249,7 @@ Adds a gesture to a gesture group.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs, for example, attempting to add a gesture to an object that is not a gesture group. |
+| int32_t | Error code. <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) if the operation is successful. <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if a parameter error occurs, for example, attempting to add a gesture to an object that is not a gesture group. |
 
 ### removeChildGesture()
 
@@ -272,7 +272,7 @@ Removes a gesture from a gesture group.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| int32_t | Error code. <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) if the operation is successful. <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### setGestureEventTarget()
 
@@ -297,7 +297,7 @@ Registers a callback for gestures.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| int32_t | Error code. <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) if the operation is successful. <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### addGestureToNode()
 
@@ -322,7 +322,7 @@ Adds a gesture to a UI component.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| int32_t | Error code. <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) if the operation is successful. <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### removeGestureFromNode()
 
@@ -345,7 +345,7 @@ Removes a gesture from a node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| int32_t | Error code. <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) if the operation is successful. <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### setGestureInterrupterToNode()
 
@@ -368,7 +368,7 @@ Sets a gesture interruption callback for a node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| int32_t | Error code. <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) if the operation is successful. <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### getGestureType()
 
@@ -414,7 +414,7 @@ Sets the callback function for the parallel internal gesture event.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) if the operation is successful. <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### createTapGestureWithDistanceThreshold()
 

@@ -6,13 +6,22 @@ struct OH_TrafficFilter_Config {...}
 
 ## 概述
 
-NFQueue配置结构体 - 如果`config`为**NULL**，实现将应用以下默认值： - `packetCopyLen` = 0xFFFF（拷贝整个报文） - `nfqueueMaxlen` = 0 （使用系统默认值，即1024） - `nfqueueFlags` = OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN - 如果`config`为**非NULL**，调用者**必须**： 1. 将整个结构体零初始化（例如`memset(&cfg, 0, sizeof(cfg))`）。 2. 设置`size` = `sizeof(OH_TrafficFilter_Config)`。 3. 将所有其他字段设置为定义范围内的有效值（见下文）。 - **未遵守**此约定（例如`size`不正确、字段值超出范围） 将导致接口返回`OH_TRAFFICFILTER_ERROR_INVALID_PARAM`。
+NFQueue配置结构体
+- 如果`config`为**NULL**，实现将应用以下默认值：
+- `packetCopyLen` = 0xFFFF（拷贝整个报文）
+- `nfqueueMaxlen` = 0 （使用系统默认值，即1024）
+- `nfqueueFlags` = OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN
+- 如果`config`为**非NULL**，调用者**必须**：
+1. 将整个结构体零初始化（例如`memset(&cfg, 0, sizeof(cfg))`）。
+2. 设置`size` = `sizeof(OH_TrafficFilter_Config)`。
+3. 将所有其他字段设置为定义范围内的有效值（见下文）。
+- **未遵守**此约定（例如`size`不正确、字段值超出范围） 将导致接口返回`OH_TRAFFICFILTER_ERROR_INVALID_PARAM`。
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.1
 
-**相关模块：** [TrafficFilter](capi-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

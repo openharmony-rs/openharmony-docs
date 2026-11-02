@@ -12,7 +12,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [Drm](capi-drm.md)
+**相关模块：** [Drm](capi-drm-kit-drm.md)
 
 ## 汇总
 
@@ -43,13 +43,6 @@
 | [Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysystem_clearofflinemediakeys) | - | 按ID清除离线媒体密钥。 |
 | [Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem, DRM_CertificateStatus *certStatus)](#oh_mediakeysystem_getcertificatestatus) | - | 获取设备DRM证书状态。 |
 | [Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)](#oh_mediakeysystem_destroy) | - | 销毁MediaKeySystem实例。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | MediaKeySystem事件触发时将调用的回调函数，不返回MediaKeySystem实例，适用于单个MediaKeySystem场景。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
-| Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | MediaKeySystem事件触发时将调用的回调函数，返回MediaKeySystem实例，适用于多个MediaKeySystem场景。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Drm.Core |
 
 ## 函数说明
 

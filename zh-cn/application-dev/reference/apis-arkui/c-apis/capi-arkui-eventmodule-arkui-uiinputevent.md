@@ -12,7 +12,7 @@ ArkUI_UIInputEvent用于表示ArkUI中的UI输入事件。ArkUI_EventModule中�
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_EventModule](capi-arkui-eventmodule.md)
+**相关模块：** [ArkUI_EventModule](capi-others-arkui-eventmodule.md)
 
 **所在头文件：** [ui_input_event.h](capi-ui-input-event-h.md)
 

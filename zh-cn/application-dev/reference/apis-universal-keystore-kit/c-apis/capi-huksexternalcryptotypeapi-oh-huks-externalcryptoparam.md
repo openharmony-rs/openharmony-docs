@@ -12,7 +12,7 @@ struct OH_Huks_ExternalCryptoParam {...}
 
 **起始版本：** 22
 
-**相关模块：** [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
+**相关模块：** [HuksExternalCryptoTypeApi](capi-others-huksexternalcryptotypeapi.md)
 
 **所在头文件：** [native_huks_external_crypto_type.h](capi-native-huks-external-crypto-type-h.md)
 

@@ -12,7 +12,7 @@ struct AVSession_OutputDeviceInfo {...}
 
 **起始版本：** 23
 
-**相关模块：** [OHAVSession](capi-ohavsession.md)
+**相关模块：** [OHAVSession](capi-others-ohavsession.md)
 
 **所在头文件：** [native_deviceinfo.h](capi-native-deviceinfo-h.md)
 

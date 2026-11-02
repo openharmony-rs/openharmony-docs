@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [OHAVSession](capi-ohavsession.md)
+**相关模块：** [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 ## 汇总
 
@@ -63,18 +63,6 @@
 | [AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)](#oh_avsession_stopcasting) | - | 停止当前投播并断开设备连接。 |
 | [AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo** outputDeviceInfo)](#oh_avsession_acquireoutputdevice) | - | 获取当前输出设备。 |
 | [AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo *outputDeviceInfo)](#oh_avsession_releaseoutputdevice) | - | 释放输出设备对象。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData) | 通用的执行播控命令的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData) | 快进的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData) | 快退的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData) | 进度调节的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData) | 设置循环模式的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData) | 收藏的回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo) | 设备变化的回调。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 
 ## 函数说明
 
@@ -413,7 +401,7 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | 媒体会话对象。 |
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadata.md)* avmetadata | 设置媒体元数据信息。 |
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)* avmetadata | 设置媒体元数据信息。 |
 
 **返回值：**
 

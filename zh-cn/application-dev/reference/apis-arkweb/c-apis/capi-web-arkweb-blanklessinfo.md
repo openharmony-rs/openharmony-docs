@@ -12,7 +12,7 @@ typedef struct ArkWeb_BlanklessInfo {...} ArkWeb_BlanklessInfo
 
 **起始版本：** 20
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [native_interface_arkweb.h](capi-native-interface-arkweb-h.md)
 

@@ -6,13 +6,21 @@ struct OH_TrafficFilter_FilterRule {...}
 
 ## 概述
 
-报文过滤规则<br> 定义报文匹配条件。 1. **初始化约定（调用方）**： - 调用者必须在使用前将整个结构体**零初始化**（例如通过`memset`）。 - `size`字段**必须**显式设置为`sizeof(OH_TrafficFilter_FilterRule)`。 - 如果`size`小于`sizeof(OH_TrafficFilter_FilterRule)`，实现将仅读取截至`size`的稳定 前缀字段，忽略后续字节。<br> 2. **读取约定（实现方）**： - 实现严格根据`size`值确定有效字段范围。 - 如果`size` < `sizeof(OH_TrafficFilter_FilterRule)`，实现将其视为旧版本，仅读取 与该大小兼容的前缀字段。 - 如果`size`为0或指针为NULL，实现必须返回错误。
+报文过滤规则<br> 定义报文匹配条件。
+1. **初始化约定（调用方）**：
+- 调用者必须在使用前将整个结构体**零初始化**（例如通过`memset`）。
+- `size`字段**必须**显式设置为`sizeof(OH_TrafficFilter_FilterRule)`。
+- 如果`size`小于`sizeof(OH_TrafficFilter_FilterRule)`，实现将仅读取截至`size`的稳定 前缀字段，忽略后续字节。<br>
+2. **读取约定（实现方）**：
+- 实现严格根据`size`值确定有效字段范围。
+- 如果`size` < `sizeof(OH_TrafficFilter_FilterRule)`，实现将其视为旧版本，仅读取 与该大小兼容的前缀字段。
+- 如果`size`为0或指针为NULL，实现必须返回错误。
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.1
 
-**相关模块：** [TrafficFilter](capi-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

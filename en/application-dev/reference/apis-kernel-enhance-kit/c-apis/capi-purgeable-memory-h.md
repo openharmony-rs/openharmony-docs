@@ -10,7 +10,7 @@ Provides APIs for managing the purgeable memory. <br>For example, you can create
 
 **Since**: 10
 
-**Related module**: [memory](capi-memory.md)
+**Related module**: [memory](capi-kernel-enhance-kit-memory.md)
 
 ## Summary
 
@@ -18,7 +18,7 @@ Provides APIs for managing the purgeable memory. <br>For example, you can create
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) | OH_PurgeableMemory | Defines a purgeable memory struct. |
+| [PurgMem](capi-memory-purgmem.md) | OH_PurgeableMemory | Defines a purgeable memory struct. |
 
 ### Function
 
@@ -34,12 +34,6 @@ Provides APIs for managing the purgeable memory. <br>For example, you can create
 | [void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_getcontent) | - | get content ptr of a PurgMem obj.<br> * |
 | [size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_contentsize) | - | get content size of a PurgMem obj.<br> * |
 | [bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMemory_ModifyFunc func, void *funcPara)](#oh_purgeablememory_appendmodify) | - | append a modify to a PurgMem obj.<br> * |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *) | function pointer, it points to a function which is used to build content of a PurgMem obj.<br> *<br>**Since**: 10<br>**System capability**: SystemCapability.Kernel.Memory |
 
 ## Function description
 
@@ -97,7 +91,7 @@ create a PurgMem obj.<br> *
 
 | Type | Description |
 | -- | -- |
-| [OH_PurgeableMemory *](capi-memory-oh-purgeablememory.md) | a PurgMem obj. |
+| [OH_PurgeableMemory *](capi-memory-purgmem.md) | a PurgMem obj. |
 
 ### OH_PurgeableMemory_Destroy()
 
@@ -117,7 +111,7 @@ destroy a PurgMem obj.<br> *
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | Pointer to the purgeable memory object to be destroyed. |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | Pointer to the purgeable memory object to be destroyed. |
 
 **Returns**:
 
@@ -143,7 +137,7 @@ begin read a PurgMem obj.<br> *
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | Pointer to the purgeable memory object. |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | Pointer to the purgeable memory object. |
 
 **Returns**:
 
@@ -169,7 +163,7 @@ end read a PurgMem obj.<br> *
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | Pointer to the purgeable memory object. When this function ends, the OS may reclaim the memory of the content of the purgeable memory object later. |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | Pointer to the purgeable memory object. When this function ends, the OS may reclaim the memory of the content of the purgeable memory object later. |
 
 ### OH_PurgeableMemory_BeginWrite()
 
@@ -189,7 +183,7 @@ begin write a PurgMem obj.<br> *
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | Pointer to the purgeable memory object. |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | Pointer to the purgeable memory object. |
 
 **Returns**:
 
@@ -215,7 +209,7 @@ end write a PurgMem obj.<br> *
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | Pointer to the purgeable memory object. When this function ends, the OS may reclaim the memory of the content of the purgeable memory object later. |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | Pointer to the purgeable memory object. When this function ends, the OS may reclaim the memory of the content of the purgeable memory object later. |
 
 ### OH_PurgeableMemory_GetContent()
 
@@ -235,7 +229,7 @@ get content ptr of a PurgMem obj.<br> *
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | Pointer to the purgeable memory object. |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | Pointer to the purgeable memory object. |
 
 **Returns**:
 
@@ -261,7 +255,7 @@ get content size of a PurgMem obj.<br> *
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | Pointer to the purgeable memory object. |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | Pointer to the purgeable memory object. |
 
 **Returns**:
 
@@ -287,7 +281,7 @@ append a modify to a PurgMem obj.<br> *
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-oh-purgeablememory.md) *purgObj | Pointer to the purgeable memory object. |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | Pointer to the purgeable memory object. |
 | [OH_PurgeableMemory_ModifyFunc](capi-purgeable-memory-h.md#oh_purgeablememory_modifyfunc) func | Function used to modify the content of a purgeable memory object. |
 | void *funcPara | Pointer to the parameter used by func. |
 

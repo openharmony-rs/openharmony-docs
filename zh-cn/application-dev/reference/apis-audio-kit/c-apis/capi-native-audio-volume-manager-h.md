@@ -10,7 +10,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -36,13 +36,6 @@
 | [OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager *volumeManager, OH_AudioRingerMode *ringerMode)](#oh_audiovolumemanager_getringermode) | - | 获取系统当前的铃声模式。 |
 | [OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnRingerModeChangeCallback callback, void *userData)](#oh_audiovolumemanager_registerringermodechangecallback) | - | 注册铃声模式变化回调函数。 <br>多次注册时，系统会保存所有不同的回调函数，在铃声模式变化时遍历触发。 <br>若不再需要监听铃声模式变化，可调用[OH_AudioVolumeManager_UnregisterRingerModeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_unregisterringermodechangecallback)取消注册。 |
 | [OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnRingerModeChangeCallback callback)](#oh_audiovolumemanager_unregisterringermodechangecallback) | - | 取消注册铃声模式变化回调函数。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)( void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi ) | 音量变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback)。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)( void *userData, OH_AudioRingerMode ringerMode ) | 铃声模式变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterRingerModeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerringermodechangecallback)。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## 函数说明
 

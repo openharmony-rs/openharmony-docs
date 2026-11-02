@@ -10,7 +10,7 @@
 
 **起始版本：** 17
 
-**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## 汇总
 
@@ -63,9 +63,7 @@
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowWidthValue(AbilityRuntime_StartOptions *startOptions, int32_t *minWindowWidth)](#oh_abilityruntime_getstartoptionsminwindowwidthvalue) | 获取启动Ability时的窗口最小宽度，单位为vp。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowWidthValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowWidth)](#oh_abilityruntime_getstartoptionsmaxwindowwidthvalue) | 获取启动Ability时的窗口最大宽度，单位为vp。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *minWindowHeight)](#oh_abilityruntime_getstartoptionsminwindowheightvalue) | 获取启动Ability时的窗口最小高度，单位为vp。 |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowHeight)
-
-} // extern "C"](#oh_abilityruntime_getstartoptionsmaxwindowheightvalue) | 获取启动Ability时的窗口最大高度，单位为vp。 |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowHeight)](#oh_abilityruntime_getstartoptionsmaxwindowheightvalue) | 获取启动Ability时的窗口最大高度，单位为vp。 |
 
 ## 函数说明
 
@@ -1299,8 +1297,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeightValue(A
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowHeight)
-
-} // extern "C"
 ```
 
 **描述：**
@@ -1316,7 +1312,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(A
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象。 |
-| maxWindowHeight | 指向启动Ability时窗口最大高度的指针，单位为vp。 |
+| int32_t *maxWindowHeight | 指向启动Ability时窗口最大高度的指针，单位为vp。 |
 
 **返回值：**
 

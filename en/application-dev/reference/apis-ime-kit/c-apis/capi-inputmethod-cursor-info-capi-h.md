@@ -4,7 +4,7 @@
 
 Provides methods for creating, destroying, reading, and writing cursor information objects.
 
-**Include**: <inputmethod/inputmethod_cursor_info_capi.h>
+**File to Include**: <inputmethod/inputmethod_cursor_info_capi.h>
 
 **Library**: libohinputmethod.so
 
@@ -12,7 +12,7 @@ Provides methods for creating, destroying, reading, and writing cursor informati
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-ime-kit-inputmethod.md)
 
 ## Summary
 

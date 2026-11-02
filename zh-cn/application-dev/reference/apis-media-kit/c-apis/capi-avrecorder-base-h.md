@@ -12,7 +12,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [AVRecorder](capi-avrecorder.md)
+**相关模块：** [AVRecorder](capi-media-kit-avrecorder.md)
 
 ## 汇总
 
@@ -54,14 +54,6 @@
 | [typedef void (\*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)](#oh_avrecorder_onstatechange) | OH_AVRecorder_OnStateChange | 当录制状态发生变化时调用。 |
 | [typedef void (\*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avrecorder_onerror) | OH_AVRecorder_OnError | 当录制过程中发生错误时调用。 |
 | [typedef void (\*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)](#oh_avrecorder_onuri) | OH_AVRecorder_OnUri | 当录制文件的生成模式为[OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE时调用，用于通知应用获取录制生成的媒体资源。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData) | 当录制状态发生变化时调用。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVRecorder |
-| void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData) | 当录制过程中发生错误时调用。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVRecorder |
-| void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData) | 当录制文件的生成模式为[OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE时调用，用于通知应用获取录制生成的媒体资源。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVRecorder |
 
 ## 枚举类型说明
 

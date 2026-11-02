@@ -12,7 +12,7 @@ ArkWeb_WebMessagePortAPI是Web消息端口相关Native API结构体。该结构�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -49,9 +49,9 @@ ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, c
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md) webMessagePort | Post Message端口结构体指针。 |
+| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Post Message端口结构体指针。 |
 |  const char* webTag | Web组件名称，用于标识要操作的Web组件。必须是与Web组件绑定的唯一标识符，如果未找到与webTag绑定的Web组件将返回初始化失败错误。 |
-|  const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 需要发送的消息。 |
+|  const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 需要发送的消息。 |
 
 **返回值：**
 
@@ -73,7 +73,7 @@ void (*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md) webMessagePort | Post Message端口结构体指针。 |
+| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Post Message端口结构体指针。 |
 |  const char* webTag | Web组件名称。 |
 
 ### setMessageEventHandler()
@@ -90,7 +90,7 @@ void (*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, co
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md) webMessagePort | Post Message端口结构体指针。 |
+| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Post Message端口结构体指针。 |
 |  const char* webTag | Web组件名称。 |
 | [ArkWeb_OnMessageEventHandler](capi-arkweb-type-h.md#arkweb_onmessageeventhandler) messageEventHandler | 处理消息的回调。 |
 |  void* userData | 用户自定义数据，将在触发回调时传递给messageEventHandler回调函数。可用于携带上下文信息或额外的业务数据，由应用自行管理其生命周期。 |

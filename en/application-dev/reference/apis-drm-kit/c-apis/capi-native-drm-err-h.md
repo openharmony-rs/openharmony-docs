@@ -10,7 +10,7 @@ The file declares the DRM error codes.
 
 **Since**: 11
 
-**Related module**: [Drm](capi-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 ## Summary
 

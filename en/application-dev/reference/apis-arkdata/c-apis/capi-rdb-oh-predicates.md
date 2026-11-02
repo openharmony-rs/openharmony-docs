@@ -12,7 +12,7 @@ Define the OH_Predicates structure type.
 
 **Since**: 10
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [oh_predicates.h](capi-oh-predicates-h.md)
 

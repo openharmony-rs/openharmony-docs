@@ -12,7 +12,7 @@ Defines the options for visible area change listening, including the threshold a
 
 **Since**: 17
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [common_attributes.h](capi-common-attributes-h.md)
 

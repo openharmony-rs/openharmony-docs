@@ -1,8 +1,8 @@
 # C API<!--c-devicecertificatekit-->
 
 - Module<!--devicecertificatekit-module-->
-    - [CertManagerType](capi-certmanagertype.md)
-    - [CertManager](capi-certmanager.md)
+    - [CertManagerType](capi-device-certificate-kit-certmanagertype.md)
+    - [CertManager](capi-device-certificate-kit-certmanager.md)
 - Header file<!--devicecertificatekit-headerfile-->
     - [cm_native_type.h](capi-cm-native-type-h.md)
     - [cm_native_api.h](capi-cm-native-api-h.md)

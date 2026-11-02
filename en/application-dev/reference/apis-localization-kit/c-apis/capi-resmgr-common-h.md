@@ -10,7 +10,7 @@ Provides the enumeration and structure definitions required by the `resourcemana
 
 **Since**: 12
 
-**Related module**: [resourcemanager](capi-resourcemanager.md)
+**Related module**: [resourcemanager](capi-localization-kit-resourcemanager.md)
 
 ## Summary
 

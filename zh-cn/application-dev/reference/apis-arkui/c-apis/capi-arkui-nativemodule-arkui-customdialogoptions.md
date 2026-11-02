@@ -12,7 +12,7 @@ typedef struct ArkUI_CustomDialogOptions ArkUI_CustomDialogOptions
 
 **起始版本：** 19
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_dialog.h](capi-native-dialog-h.md)
 

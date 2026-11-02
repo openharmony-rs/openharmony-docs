@@ -12,7 +12,7 @@ struct Camera_AutoDeviceSwitchStatusInfo {...}
 
 **起始版本：** 13
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 

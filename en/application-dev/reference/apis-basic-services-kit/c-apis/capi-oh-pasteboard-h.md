@@ -4,7 +4,7 @@
 
 Provides data structure, enum types, and APIs for accessing the system pasteboard.
 
-**Include**: <database/pasteboard/oh_pasteboard.h>
+**File to Include**: <database/pasteboard/oh_pasteboard.h>
 
 **Library**: libpasteboard.so
 
@@ -12,7 +12,7 @@ Provides data structure, enum types, and APIs for accessing the system pasteboar
 
 **Since**: 13
 
-**Related module**: [Pasteboard](capi-pasteboard.md)
+**Related module**: [Pasteboard](capi-basic-services-kit-pasteboard.md)
 
 ## Summary
 
@@ -77,14 +77,6 @@ Provides data structure, enum types, and APIs for accessing the system pasteboar
 | [void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)](#oh_pasteboard_progresscancel) | - | Cancels the ongoing paste operation when the pasteboard data is obtained. |
 | [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status)](#oh_pasteboard_getdatawithprogress) | - | Obtains the pasteboard data and paste progress. Folders cannot be copied. |
 | [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (\*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | Syncs all delayed data from the application to the pasteboard. Use this API together with the [OH_UdmfRecordProvider_SetData](../../apis-arkdata/c-apis/capi-udmf-h.md#oh_udmfrecordprovider_setdata)API.When the application uses the delayed copy feature, only the data types supported by the application are written to the pasteboard. Before the application exits, it should call the [OH_Pasteboard_SetData](capi-oh-pasteboard-h.md#oh_pasteboard_setdata) API to submit all copied data or call the **OH_Pasteboard_SyncDelayedDataAsync** API to notify the pasteboard to obtain all data. The application can exit only after the data sync is complete. Otherwise, other applications may fail to obtain the data. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progressInfo) | Defines a callback to be invoked to obtain the progress information when the default progress indicator is not used.<br>**Since**: 15<br>**System capability**: SystemCapability.MiscServices.Pasteboard * |
-| void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type) | Defines a callback to be invoked when the pasteboard content changes.<br>**Since**: 13<br>**System capability**: SystemCapability.MiscServices.Pasteboard * |
-| void (*Pasteboard_Finalize)(void* context) | Defines a callback to be invoked to release the context when the pasteboard observer object is destroyed.<br>**Since**: 13<br>**System capability**: SystemCapability.MiscServices.Pasteboard * |
 
 ## Enum type description
 

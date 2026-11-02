@@ -12,7 +12,7 @@ typedef struct Location_RequestConfig Location_RequestConfig
 
 **起始版本：** 13
 
-**相关模块：** [Location](capi-location.md)
+**相关模块：** [Location](capi-others-location.md)
 
 **所在头文件：** [oh_location_type.h](capi-oh-location-type-h.md)
 

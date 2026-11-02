@@ -10,7 +10,7 @@ Declares the APIs that can lock, access, and unlock a pixel map. Need link <b>li
 
 **Since**: 8
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-image-kit-image.md)
 
 ## Summary
 

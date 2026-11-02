@@ -11,7 +11,10 @@
 | int r_version |  |
 | struct link_map *r_map |  |
 | ElfW(Addr) r_brk |  |
-| enum { RT_CONSISTENT, RT_ADD, RT_DELETE } r_state |  |
+| r_state |  |
+| r_state.RT_CONSISTENT, |  |
+| r_state.RT_ADD, |  |
+| r_state.RT_DELETE |  |
 | ElfW(Addr) r_ldbase |  |
 
 

@@ -12,7 +12,7 @@ OH_LowPowerAVSink_Capability的前向声明。
 
 **起始版本：** 20
 
-**相关模块：** [AVSinkBase](capi-avsinkbase.md)
+**相关模块：** [AVSinkBase](capi-others-avsinkbase.md)
 
 **所在头文件：** [lowpower_avsink_base.h](capi-lowpower-avsink-base-h.md)
 

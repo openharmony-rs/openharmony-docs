@@ -12,7 +12,7 @@ OH_DecodingOptions是native层封装的解码选项参数结构体，用于设�
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [image_source_native.h](capi-image-source-native-h.md)
 

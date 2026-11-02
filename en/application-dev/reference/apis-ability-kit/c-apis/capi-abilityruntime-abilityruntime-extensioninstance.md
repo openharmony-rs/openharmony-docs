@@ -12,7 +12,7 @@ Define the AbilityRuntime_ExtensionInstance structure type.
 
 **Since**: 24
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
 
 **Header file**: [extension_ability.h](capi-extension-ability-h.md)
 

@@ -12,7 +12,7 @@ Defines the parameter structure for method invocation. rgvarg points to the arra
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
 
 **Header file**: [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 

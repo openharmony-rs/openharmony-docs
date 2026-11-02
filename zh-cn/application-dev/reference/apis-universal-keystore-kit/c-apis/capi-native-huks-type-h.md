@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [HuksTypeApi](capi-hukstypeapi.md)
+**相关模块：** [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 ## 汇总
 
@@ -494,7 +494,7 @@ enum OH_Huks_AuthAccessType
 | -- | -- |
 | OH_HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0 | 安全访问控制类型为清除密码后密钥无效。 |
 | OH_HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1 | 安全访问控制类型为新录入生物特征后密钥无效。 |
-| OH_HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2 |  |
+| OH_HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2 | 安全访问控制类型为该密钥总是有效。<br>**起始版本：** 11 |
 
 ### OH_Huks_AuthStorageLevel
 
@@ -694,11 +694,11 @@ enum OH_Huks_Tag
 | OH_HUKS_TAG_ATTESTATION_ID_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 511 | 密钥认证时的别名。 |
 | OH_HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO = OH_HUKS_TAG_TYPE_BYTES \| 514 | 密钥认证时的安全凭据。 |
 | OH_HUKS_TAG_ATTESTATION_ID_VERSION_INFO = OH_HUKS_TAG_TYPE_BYTES \| 515 | 密钥认证时的版本号。 |
-| OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 |  |
-| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 |  |
-| OH_HUKS_TAG_KEY_CLASS = OH_HUKS_TAG_TYPE_UINT \| 522 |  |
-| OH_HUKS_TAG_KEY_ACCESS_GROUP = OH_HUKS_TAG_TYPE_BYTES \| 523 |  |
-| OH_HUKS_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 529 |  |
+| OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 | 是否覆写同名密钥。<br>**起始版本：** 20 |
+| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | CCM模式下指定的AEAD长度。<br>**起始版本：** 22 |
+| OH_HUKS_TAG_KEY_CLASS = OH_HUKS_TAG_TYPE_UINT \| 522 | 密钥类别，用于区分设备本地由HUKS管理的密钥或者外部装置中存储的密钥。<br>**起始版本：** 22 |
+| OH_HUKS_TAG_KEY_ACCESS_GROUP = OH_HUKS_TAG_TYPE_BYTES \| 523 | 表示群组标识，在同一开发者ID下归属于相同的群组可共享该群组下的密钥。<br>**起始版本：** 23 |
+| OH_HUKS_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 529 | Asynchronous timeout duration in seconds, customizable by business logic.<br>**起始版本：** 26.0.1 |
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | 是否是密钥别名。 |
 | OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | 密钥存储方式的标签，类型可在枚举 [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype)选择。 |
 | OH_HUKS_TAG_IS_ALLOWED_WRAP = OH_HUKS_TAG_TYPE_BOOL \| 1003 | 是否允许密钥封装。 |

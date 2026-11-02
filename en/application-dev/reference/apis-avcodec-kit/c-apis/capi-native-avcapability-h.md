@@ -10,7 +10,7 @@ Declare the Native API used for querying encoding and decoding capabilities.
 
 **Since**: 10
 
-**Related module**: [AVCapability](capi-avcapability.md)
+**Related module**: [AVCapability](capi-avcodec-kit-avcapability.md)
 
 ## Summary
 
@@ -102,10 +102,10 @@ The codec type
 
 | Enum item | Description |
 | -- | -- |
-| OH_AVCODEC_TYPE_VIDEO_ENCODER = 0 |  |
-| OH_AVCODEC_TYPE_VIDEO_DECODER = 1 |  |
-| OH_AVCODEC_TYPE_AUDIO_ENCODER = 2 |  |
-| OH_AVCODEC_TYPE_AUDIO_DECODER = 3 |  |
+| OH_AVCODEC_TYPE_VIDEO_ENCODER = 0 | Indicates video encoder.<br>**Since**: 24 |
+| OH_AVCODEC_TYPE_VIDEO_DECODER = 1 | Indicates video decoder.<br>**Since**: 24 |
+| OH_AVCODEC_TYPE_AUDIO_ENCODER = 2 | Indicates audio encoder<br>**Since**: 24 |
+| OH_AVCODEC_TYPE_AUDIO_DECODER = 3 | Indicates audio decoder<br>**Since**: 24 |
 
 ### OH_AVCapabilityFeature
 
@@ -126,8 +126,8 @@ The enum of optional features that can be used in specific codec seenarios.
 | VIDEO_ENCODER_TEMPORAL_SCALABILITY = 0 | Feature for codec supports temporal scalability. It is only used in video encoder. |
 | VIDEO_ENCODER_LONG_TERM_REFERENCE = 1 | Feature for codec supports long-term reference. It is only used in video encoder. |
 | VIDEO_LOW_LATENCY = 2 | Feature for codec supports low latency. It is only used in video decoder. |
-| VIDEO_ENCODER_B_FRAME = 7 |  |
-| VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER = 8 |  |
+| VIDEO_ENCODER_B_FRAME = 7 | Feature for codec supports B-frame encoding. It is only used in video encoder.<br>**Since**: 20 |
+| VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER = 8 | Feature for codec supports decoding sequence output. It is only used in video decoder.<br>**Since**: 26.0.0 |
 | VIDEO_ENCODER_PREPROC_DOWNSAMPLING = 9 | Feature for codec supports downsampling preprocessing. It is only used in video encoder.<br>**Since**: 26.0.0 |
 | VIDEO_ENCODER_PREPROC_CROP = 10 | Feature for codec supports Crop preprocessing. It is only used in video encoder.<br>**Since**: 26.0.0 |
 

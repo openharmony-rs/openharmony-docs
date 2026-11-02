@@ -12,7 +12,7 @@ Summarizes the data information of the **unifiedData** object, including the dat
 
 **Since**: 26.0.1
 
-**Related module**: [UDMF](capi-udmf.md)
+**Related module**: [UDMF](capi-others-udmf.md)
 
 **Header file**: [udmf.h](capi-udmf-h.md)
 

@@ -12,7 +12,7 @@ ArkWeb_AnyNativeAPI是ArkWeb Native API的基础结构体类型，用于统一�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_interface.h](capi-arkweb-interface-h.md)
 

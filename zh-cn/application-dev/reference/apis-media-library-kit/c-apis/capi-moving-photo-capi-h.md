@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)
+**相关模块：** [MediaAssetManager](capi-media-library-kit-mediaassetmanager.md)
 
 ## 汇总
 

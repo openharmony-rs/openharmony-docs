@@ -12,7 +12,7 @@ ArkUI（方舟UI框架）提供的Native侧动画接口集合。
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_animate.h](capi-native-animate-h.md)
 
@@ -56,7 +56,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常，请检查传入参数的类型和有效性。可能原因：context无效、option为NULL或配置不合理。解决措施：确保context有效、option配置正确且非NULL。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常，请检查传入参数的类型和有效性。可能原因：context无效、option为NULL或配置不合理。解决措施：确保context有效、option配置正确且非NULL。 |
 
 ### keyframeAnimateTo()
 
@@ -79,7 +79,7 @@ int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateO
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常，请检查传入参数的类型和有效性。可能原因：context无效、option为NULL或配置不合理。解决措施：确保context有效、option配置正确且非NULL。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常，请检查传入参数的类型和有效性。可能原因：context无效、option为NULL或配置不合理。解决措施：确保context有效、option配置正确且非NULL。 |
 
 ### createAnimator()
 
@@ -102,7 +102,7 @@ ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_Animat
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) | animator动画对象指针，用于后续对动画对象进行控制。函数参数异常时返回NULL。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) | animator动画对象指针，用于后续对动画对象进行控制。函数参数异常时返回NULL。 |
 
 ### disposeAnimator()
 
@@ -118,6 +118,6 @@ void (*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | animator动画对象，必须为由createAnimator创建的有效handle，不可传入已销毁的对象。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | animator动画对象，必须为由createAnimator创建的有效handle，不可传入已销毁的对象。 |
 
 

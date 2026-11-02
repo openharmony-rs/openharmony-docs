@@ -10,7 +10,7 @@ Declare image processing functions.<br> Provides SDR content processing for imag
 
 **Since**: 13
 
-**Related module**: [ImageProcessing](capi-imageprocessing.md)
+**Related module**: [ImageProcessing](capi-image-kit-imageprocessing.md)
 
 ## Summary
 

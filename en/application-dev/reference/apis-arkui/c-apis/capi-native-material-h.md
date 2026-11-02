@@ -10,7 +10,7 @@ Provides immersive material types and API declarations for ArkUI on the native s
 
 **Since**: 26.0.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -19,7 +19,7 @@ Provides immersive material types and API declarations for ArkUI on the native s
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_ImmersiveMaterial](capi-arkui-nativemodule-arkui-immersivematerial.md) | ArkUI_ImmersiveMaterial | Defines an immersive material object on the native side, which provides adaptive visual effects based on the device computing power level. |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) | ArkUI_ImmersiveMaterialHandle | Defines the pointer to an immersive material object, which is used to implement immersive visual effects. |
+| [ArkUI_ImmersiveMaterial*](capi-arkui-nativemodule-arkui-immersivematerial8h.md) | ArkUI_ImmersiveMaterialHandle | Defines the pointer to an immersive material object, which is used to implement immersive visual effects. |
 | [ArkUI_LightEffectOptions](capi-arkui-nativemodule-arkui-lighteffectoptions.md) | ArkUI_LightEffectOptions | Defines a light sensing interaction effect configuration object for immersive materials, which is used to configure the light sensing response effect generated when users interact with immersive materials. For details about the design logic, see [native_material.h](capi-native-material-h.md). An immersive material is a visual material style with a sense of depth and layering, and the light sensing interaction effect refers to the light and shadow visual feedback generated when users interact with components. After creation, the configuration object must be set to the immersive material object through [OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect) to take effect. |
 | [ArkUI_LightEffectOptions*](capi-arkui-nativemodule-arkui-lighteffectoptions8h.md) | ArkUI_LightEffectOptionsHandle | Defines the pointer to the light effect options. |
 
@@ -82,11 +82,11 @@ Enumerates the immersive material styles. Different styles correspond to differe
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0 |  |
-| ARKUI_IMMERSIVE_STYLE_THIN |  |
-| ARKUI_IMMERSIVE_STYLE_REGULAR |  |
-| ARKUI_IMMERSIVE_STYLE_THICK |  |
-| ARKUI_IMMERSIVE_STYLE_ULTRA_THICK |  |
+| ARKUI_IMMERSIVE_STYLE_ULTRA_THIN = 0 | Ultra thin style. The material layer is ultra thin, with a very strong transparency effect.<br>**Since**: 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_THIN | Thin style. The material layer is thin, with a strong transparency effect.<br>**Since**: 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_REGULAR | Regular style. The material layer has a standard thickness with balanced visual effect.<br>**Since**: 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_THICK | Thick style. The blur effect is strong.<br>**Since**: 26.0.0 |
+| ARKUI_IMMERSIVE_STYLE_ULTRA_THICK | Ultra thick style.<br>**Since**: 26.0.0 |
 
 ### ArkUI_MaterialLevel
 
@@ -104,9 +104,9 @@ Enumerates the material levels, which indicate the computing power level of the 
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 |  |
-| ARKUI_MATERIAL_LEVEL_GENTLE |  |
-| ARKUI_MATERIAL_LEVEL_SMOOTH |  |
+| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 | Exquisite level. The effect is exquisite and is suitable for high-end computing device.<br>**Since**: 26.0.0 |
+| ARKUI_MATERIAL_LEVEL_GENTLE | Gentle level. The effect is gentle and is suitable for mid-range computing device.<br>**Since**: 26.0.0 |
+| ARKUI_MATERIAL_LEVEL_SMOOTH | Smooth level. The effect is smooth and is suitable for low-end computing device.<br>**Since**: 26.0.0 |
 
 
 ## Function description
@@ -165,7 +165,7 @@ Creates an immersive material object with a specified style. The material level 
 
 **Since**: 26.0.0
 
-**Resource release**: native_material/OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy {return}
+**Resource release**: [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](#oh_arkui_nativemodule_immersivematerial_destroy)
 
 **Parameters**:
 
@@ -177,7 +177,7 @@ Creates an immersive material object with a specified style. The material level 
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) | Pointer to the created immersive material object. If the creation fails or the material style is invalid, null is returned. The returned object must be released by calling [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy) after being used. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) | Pointer to the created immersive material object. If the creation fails or the material style is invalid, null is returned. The returned object must be released by calling [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy) after being used. |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy()
 
@@ -197,7 +197,7 @@ Destroys the immersive material object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle()
 
@@ -217,7 +217,7 @@ Sets a style for an immersive material object. This attribute is valid only for 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. If **material** is **NULL**, the API returns the error code ARKUI_ERROR_CODE_PARAM_INVALID. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. If **material** is **NULL**, the API returns the error code ARKUI_ERROR_CODE_PARAM_INVALID. |
 | [ArkUI_ImmersiveStyle](capi-native-material-h.md#arkui_immersivestyle) style | Material style. Passing an invalid style will cause the setting failure, and the error code ARKUI_ERROR_CODE_PARAM_INVALID will be returned. |
 
 **Returns**:
@@ -244,7 +244,7 @@ Obtains the style of an immersive material object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. |
 | [ArkUI_ImmersiveStyle](capi-native-material-h.md#arkui_immersivestyle)* style | Pointer to the variable used to receive the material style. |
 
 **Returns**:
@@ -271,7 +271,7 @@ Sets a material color for an immersive material object. This attribute is valid 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. If **material** is **NULL**, the API returns the error code ARKUI_ERROR_CODE_PARAM_INVALID. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. If **material** is **NULL**, the API returns the error code ARKUI_ERROR_CODE_PARAM_INVALID. |
 | uint32_t color | Material color, in 0xAARRGGBB format, which takes effect on the display effects of devices with all computing power levels. The value **0** indicates transparent (default value). |
 
 **Returns**:
@@ -298,7 +298,7 @@ Obtains the material color of an immersive material object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. |
 | uint32_t* color | Pointer to the variable used to receive the material color in 0xAARRGGBB format. |
 
 **Returns**:
@@ -325,7 +325,7 @@ Sets whether to apply a shadow to an immersive material object. This parameter t
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. |
 | bool applyShadow | Whether to apply a shadow to the material. The value **true** indicates that the material shadow takes effect and takes precedence over the common shadow attribute. The value **false** indicates that the material shadow is not added and the common shadow attribute takes effect. The default value is **true**. |
 
 **Returns**:
@@ -352,7 +352,7 @@ Obtains whether a shadow is applied to an immersive material object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. |
 | bool* applyShadow | Pointer to the variable used to receive whether the shadow is applied. If never explicitly set, this pointer receives the default value **true**. |
 
 **Returns**:
@@ -379,7 +379,7 @@ Sets whether an immersive material object can be interactively deformed. That is
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. |
 | bool interactive | Whether interactive deformation can be performed for a material. The value **true** indicates that interactive deformation can be performed for a material, and **false** indicates the opposite. If this parameter is not set, the component behavior is followed. |
 
 **Returns**:
@@ -406,7 +406,7 @@ Obtains whether an immersive material object can be interactively deformed. You 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. If **material** is **NULL**, the API returns the error code ARKUI_ERROR_CODE_PARAM_INVALID. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. If **material** is **NULL**, the API returns the error code ARKUI_ERROR_CODE_PARAM_INVALID. |
 | bool* interactive | Pointer to the variable used to receive whether the material supports interactive deformation. If **interactive** is **NULL**, the API returns the error code ARKUI_ERROR_CODE_PARAM_INVALID. |
 
 **Returns**:
@@ -429,7 +429,7 @@ Creates a light sensing interaction effect configuration object, which is used t
 
 **Since**: 26.0.0
 
-**Resource release**: native_material/OH_ArkUI_NativeModule_LightEffectOptions_Destroy {return}
+**Resource release**: [OH_ArkUI_NativeModule_LightEffectOptions_Destroy](#oh_arkui_nativemodule_lighteffectoptions_destroy)
 
 **Returns**:
 
@@ -502,7 +502,7 @@ Sets the light sensing interaction effect for an immersive material object, that
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. |
 | const ArkUI_LightEffectOptionsHandle options | Pointer to the light sensing interaction effect configuration object. A null pointer disables the light sensing interaction effect, and a non-null enables it. A non-null pointer must be created through [OH_ArkUI_NativeModule_LightEffectOptions_Create](capi-native-material-h.md#oh_arkui_nativemodule_lighteffectoptions_create). |
 
 **Returns**:
@@ -529,7 +529,7 @@ Obtains the color of the light sensing interaction effect for an immersive mater
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | Pointer to the immersive material object. |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerial8h.md) material | Pointer to the immersive material object. |
 | uint32_t* color | Pointer to the variable used to receive the light sensing interaction effect color in 0xAARRGGBB format. |
 
 **Returns**:

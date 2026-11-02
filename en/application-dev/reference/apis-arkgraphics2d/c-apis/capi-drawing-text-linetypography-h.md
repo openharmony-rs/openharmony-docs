@@ -10,7 +10,7 @@ Provides APIs related to typography lines, such as obtaining the number of chara
 
 **Since**: 18
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 

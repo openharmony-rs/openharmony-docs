@@ -12,7 +12,7 @@ struct FileShare_PolicyErrorResult {...}
 
 **起始版本：** 12
 
-**相关模块：** [fileShare](capi-fileshare.md)
+**相关模块：** [fileShare](capi-others-fileshare.md)
 
 **所在头文件：** [oh_file_share.h](capi-oh-file-share-h.md)
 

@@ -8,7 +8,7 @@ The file declares the constants used by the AVMetadataExtractor.
 
 **Since**: 18
 
-**Related module**: [AVMetadataExtractor](capi-avmetadataextractor.md)
+**Related module**: [AVMetadataExtractor](capi-media-kit-avmetadataextractor.md)
 
 ## Summary
 

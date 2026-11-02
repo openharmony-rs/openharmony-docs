@@ -12,7 +12,7 @@ KDF parameters structure, representing KDF parameters.
 
 **Since**: 20
 
-**Related module**: [CryptoKdfApi](capi-cryptokdfapi.md)
+**Related module**: [CryptoKdfApi](capi-others-cryptokdfapi.md)
 
 **Header file**: [crypto_kdf.h](capi-crypto-kdf-h.md)
 

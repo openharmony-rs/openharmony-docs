@@ -14,7 +14,7 @@ typedef struct OH_SwapfsManager OH_SwapfsManager
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Swapfs](capi-swapfs.md)
+**相关模块：** [Swapfs](capi-others-swapfs.md)
 
 **所在头文件：** [oh_swapfs.h（系统接口）](capi-oh-swapfs-h-sys.md)
 

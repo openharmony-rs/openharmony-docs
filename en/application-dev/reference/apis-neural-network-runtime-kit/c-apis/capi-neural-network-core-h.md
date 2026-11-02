@@ -10,7 +10,7 @@ Defines the Neural Network Core APIs. The AI inference framework uses the Native
 
 **Since**: 11
 
-**Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
+**Related module**: [NeuralNetworkRuntime](capi-neural-network-runtime-kit-neuralnetworkruntime.md)
 
 ## Summary
 
@@ -291,7 +291,13 @@ OH_NN_ReturnCode OH_NNCompilation_SetCache(OH_NNCompilation *compilation, const 
 
 **Description**
 
-Set the cache directory and version of the compiled model.<br> On the device that supports caching, a model can be saved as a cache file after being compiled on the device driver. The model can be directly read from the cache file in the next compilation, saving recompilation time. This method performs different operations based on the passed cache directory and version: <br> - No file exists in the cache directory: Caches the compiled model to the directory and sets the cache version to <b>version</b>. <br> - A complete cache file exists in the cache directory, and its version is <b>version</b>: Reads the cache file in the path and passes the data to the underlying device for conversion into executable model instances. <br> - A complete cache file exists in the cache directory, and its version is earlier than <b>version</b>: When model compilation is complete on the underlying device, overwrites the cache file and changes the version number to <b>version</b>. <br> - A complete cache file exists in the cache directory, and its version is later than <b>version</b>: Returns the [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code without reading the cache file. <br> - The cache file in the cache directory is incomplete or you do not have the permission to access the cache file. Returns the [OH_NN_INVALID_FILE](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code. <br> - The cache directory does not exist or you do not have the access permission. Returns the [OH_NN_INVALID_PATH](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code.
+Set the cache directory and version of the compiled model.<br> On the device that supports caching, a model can be saved as a cache file after being compiled on the device driver. The model can be directly read from the cache file in the next compilation, saving recompilation time. This method performs different operations based on the passed cache directory and version: <br>
+- No file exists in the cache directory: Caches the compiled model to the directory and sets the cache version to <b>version</b>.<br>
+- A complete cache file exists in the cache directory, and its version is <b>version</b>: Reads the cache file in the path and passes the data to the underlying device for conversion into executable model instances.<br>
+- A complete cache file exists in the cache directory, and its version is earlier than <b>version</b>: When model compilation is complete on the underlying device, overwrites the cache file and changes the version number to <b>version</b>.<br>
+- A complete cache file exists in the cache directory, and its version is later than <b>version</b>: Returns the [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code without reading the cache file.<br>
+- The cache file in the cache directory is incomplete or you do not have the permission to access the cache file. Returns the [OH_NN_INVALID_FILE](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code.<br>
+- The cache directory does not exist or you do not have the access permission. Returns the [OH_NN_INVALID_PATH](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code.
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1391,7 +1397,11 @@ OH_NN_ReturnCode OH_NNDevice_GetType(size_t deviceID, OH_NN_DeviceType *deviceTy
 
 **Description**
 
-Obtains the type information of the specified device.<br> <b>deviceID</b> specifies the device whose type will be obtained. If it is 0, the first device in the current device list will be used. Currently the following device types are supported: - <b>OH_NN_CPU</b>: CPU device. - <b>OH_NN_GPU</b>: GPU device. - <b>OH_NN_ACCELERATOR</b>: machine learning dedicated accelerator. - <b>OH_NN_OTHERS</b>: other hardware types.
+Obtains the type information of the specified device.<br> <b>deviceID</b> specifies the device whose type will be obtained. If it is 0, the first device in the current device list will be used. Currently the following device types are supported:
+- <b>OH_NN_CPU</b>: CPU device.
+- <b>OH_NN_GPU</b>: GPU device.
+- <b>OH_NN_ACCELERATOR</b>: machine learning dedicated accelerator.
+- <b>OH_NN_OTHERS</b>: other hardware types.
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 

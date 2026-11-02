@@ -12,7 +12,7 @@ Declares the ContentEmbed_Info structure. Use [OH_ContentEmbed_GetContentEmbedIn
 
 **Since**: 24
 
-**Related module**: [ContentEmbed](capi-contentembed.md)
+**Related module**: [ContentEmbed](capi-others-contentembed.md)
 
 **Header file**: [content_embed_proxy.h](capi-content-embed-proxy-h.md)
 

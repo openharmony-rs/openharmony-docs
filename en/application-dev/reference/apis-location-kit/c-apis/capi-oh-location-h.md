@@ -10,7 +10,7 @@ Define interfaces for querying location switch status, starting locating, and st
 
 **Since**: 13
 
-**Related module**: [Location](capi-location.md)
+**Related module**: [Location](capi-location-kit-location.md)
 
 ## Summary
 

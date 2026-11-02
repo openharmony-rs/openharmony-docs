@@ -4,7 +4,7 @@
 
 Declares the APIs used to access HUKS.
 
-**Include**: <huks/native_huks_api.h>
+**File to Include**: <huks/native_huks_api.h>
 
 **Library**: libhuks_ndk.z.so
 
@@ -12,7 +12,7 @@ Declares the APIs used to access HUKS.
 
 **Since**: 9
 
-**Related module**: [HuksKeyApi](capi-hukskeyapi.md)
+**Related module**: [HuksKeyApi](capi-universal-keystore-kit-hukskeyapi.md)
 
 ## Summary
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OsAccount](capi-osaccount.md)
+**相关模块：** [OsAccount](capi-basic-services-kit-osaccount.md)
 
 ## 汇总
 
@@ -38,10 +38,10 @@ enum OsAccount_ErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OS_ACCOUNT_ERR_OK = 0 |  |
+| OS_ACCOUNT_ERR_OK = 0 | 成功。<br>**起始版本：** 12 |
 | OS_ACCOUNT_ERR_PERMISSION_DENIED = 201 | &nbsp;没有权限。<br>**起始版本：** 26.0.0 |
-| OS_ACCOUNT_ERR_INTERNAL_ERROR = 12300001 |  |
-| OS_ACCOUNT_ERR_INVALID_PARAMETER = 12300002 |  |
+| OS_ACCOUNT_ERR_INTERNAL_ERROR = 12300001 | 内部错误。<br>**起始版本：** 12 |
+| OS_ACCOUNT_ERR_INVALID_PARAMETER = 12300002 | 无效的参数。<br>**起始版本：** 12 |
 | OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND = 12300003 | &nbsp;账号不存在。<br>**起始版本：** 26.0.0 |
 | OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT = 12300008 | &nbsp;受限账号。<br>**起始版本：** 26.0.0 |
 

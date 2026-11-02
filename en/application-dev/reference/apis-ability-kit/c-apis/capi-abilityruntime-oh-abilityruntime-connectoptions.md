@@ -12,7 +12,7 @@ Defines the OH_AbilityRuntime_ConnectOptions struct, which is used to configure 
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
 
 **Header file**: [connect_options.h](capi-connect-options-h.md)
 

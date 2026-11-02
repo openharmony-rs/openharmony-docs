@@ -12,7 +12,7 @@ typedef struct OH_UdmfRecordProvider OH_UdmfRecordProvider
 
 **起始版本：** 13
 
-**相关模块：** [UDMF](capi-udmf.md)
+**相关模块：** [UDMF](capi-others-udmf.md)
 
 **所在头文件：** [udmf.h](capi-udmf-h.md)
 

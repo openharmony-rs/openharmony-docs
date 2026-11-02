@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [HiDebug](capi-hidebug.md)
+**相关模块：** [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 ## 汇总
 
@@ -75,14 +75,6 @@
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)](#oh_hidebug_setmaxdurationsec) | - | 设置最大采集持续时间（单位：秒）。 |
 | [HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilerStackTraceMode mode)](#oh_hidebug_setstacktracemode) | - | 设置调用栈追踪模式。 |
 | [HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType type, OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofilerwithoptions) | - | 根据指定资源类型和配置启动分配栈trace日志采集。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame) | 若[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口调用成功，将通过该函数将解析后的栈信息返回给调用者。注意：由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks) | 轻量级Perf采样栈内容的回调函数定义。注意：采样数据仅在该回调函数执行期间有效，若需在函数外使用，务必对采样栈内容进行深拷贝。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg) | 内存导出监听的回调函数。开发者通过应用中的文件描述符（FD）来写入内存数据，从而可利用hidumper命令导出数据。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 
 ## 函数说明
 
@@ -455,7 +447,7 @@ int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, v
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) object | 由[OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject)接口获取到的用来栈回溯的对象。 |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object--8h.md) object | 由[OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject)接口获取到的用来栈回溯的对象。 |
 | void* startFp | 栈回溯的起始栈帧地址。 |
 | void** pcArray | 保存栈回溯得到的pc地址的数组。 |
 | int size | 保存栈回溯得到的pc地址的数组长度。 |
@@ -506,7 +498,7 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) object | 由[OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject)接口创建的对象。 |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object--8h.md) object | 由[OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject)接口创建的对象。 |
 | void* pc | 由[OH_HiDebug_BacktraceFromFp](capi-hidebug-h.md#oh_hidebug_backtracefromfp)接口获取到的pc地址。 |
 | void* arg | 保留的自定义参数，符号解析成功后系统内部会将该参数传递给回调函数[OH_HiDebug_SymbolicAddressCallback](capi-hidebug-h.md#oh_hidebug_symbolicaddresscallback)。 |
 | [OH_HiDebug_SymbolicAddressCallback](capi-hidebug-h.md#oh_hidebug_symbolicaddresscallback) callback | 用于返回解析后栈信息的回调函数。 |
@@ -535,7 +527,7 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) | 返回创建的对象的指针，当创建失败时返回NULL。 |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object--8h.md) | 返回创建的对象的指针，当创建失败时返回NULL。 |
 
 ### OH_HiDebug_DestroyBacktraceObject()
 
@@ -555,7 +547,7 @@ void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) object | 需要被销毁的对象。 |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object--8h.md) object | 需要被销毁的对象。 |
 
 ### OH_HiDebug_SetCrashObj()
 
@@ -875,7 +867,7 @@ OH_HiDebug_ProfilerOptions *OH_HiDebug_CreateProfilerOptions(void)
 
 **起始版本：** 26.0.1
 
-**资源释放：** hidebug/OH_HiDebug_DestroyProfilerOptions {return}
+**资源释放：** [OH_HiDebug_DestroyProfilerOptions](#oh_hidebug_destroyprofileroptions)
 
 **返回值：**
 

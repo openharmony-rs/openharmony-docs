@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## 汇总
 
@@ -172,8 +172,8 @@ enum PIXEL_FORMAT
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102格式。 |
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010格式。 |
 | PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010格式。 |
-| PIXEL_FORMAT_ALPHA_U8 = 15 |  |
-| PIXEL_FORMAT_ALPHA_F16 = 16 |  |
+| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。<br>**起始版本：** 26.0.0 |
+| PIXEL_FORMAT_ALPHA_F16 = 16 | ALPHA_F16格式。<br>**起始版本：** 26.0.0 |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 

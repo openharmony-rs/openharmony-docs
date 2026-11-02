@@ -10,7 +10,7 @@ Defines the native APIs used to obtain the location of a file.
 
 **Since**: 12
 
-**Related module**: [FileIO](capi-fileio.md)
+**Related module**: [FileIO](capi-core-file-kit-fileio.md)
 
 ## Summary
 

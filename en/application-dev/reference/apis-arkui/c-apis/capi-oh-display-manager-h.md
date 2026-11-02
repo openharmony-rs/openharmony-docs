@@ -10,7 +10,7 @@ The file declares the functions for basic display management. You can call the f
 
 **Since**: 12
 
-**Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)
+**Related module**: [OH_DisplayManager](capi-arkui-oh-displaymanager.md)
 
 ## Summary
 
@@ -58,16 +58,6 @@ The file declares the functions for basic display management. You can call the f
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterdisplayremovelistener) | - | Unregisters the listener for display removal events. |
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint64_t displayId, NativeDisplayManager_SourceMode *sourceMode)](#oh_nativedisplaymanager_getdisplaysourcemode) | - | Obtains the display source mode. The default value is **DisplaySourceMode.None**. |
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64_t displayId, int32_t *x, int32_t *y)](#oh_nativedisplaymanager_getdisplayposition) | - | Obtains the display position, that is, the x-coordinate and y-coordinate relative to the original point (the upper left corner of the main screen). |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId) | Defines a callback function to listen for display status changes.<br>**Since**: 12<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
-| void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)( NativeDisplayManager_FoldDisplayMode displayMode) | Defines a callback function to listen for folded/unfolded state changes of the display.<br>**Since**: 12<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
-| void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId) | Defines a callback function to listen for available area changes of a display.<br>**Since**: 20<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
-| void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId) | Defines a callback function to listen for display addition events.<br>**Since**: 20<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
-| void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId) | Defines a callback function to listen for display removal events.<br>**Since**: 20<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core |
 
 ## Function description
 

@@ -10,7 +10,7 @@ Declares the event loop interfaces in C.
 
 **Since**: 12
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## Summary
 

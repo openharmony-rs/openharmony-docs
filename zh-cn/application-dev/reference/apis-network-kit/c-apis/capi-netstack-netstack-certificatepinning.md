@@ -12,7 +12,7 @@ Defines certificate pinning information.
 
 **起始版本：** 12
 
-**相关模块：** [netstack](capi-netstack.md)
+**相关模块：** [netstack](capi-others-netstack.md)
 
 **所在头文件：** [net_ssl_c_type.h](capi-net-ssl-c-type-h.md)
 
@@ -22,8 +22,8 @@ Defines certificate pinning information.
 
 | 名称 | 描述 |
 | -- | -- |
-| NetStack_CertificatePinningKind kind | Certificate lock type |
-| NetStack_HashAlgorithm hashAlgorithm | Hash algorithm |
+| [NetStack_CertificatePinningKind](capi-net-ssl-c-type-h.md#netstack_certificatepinningkind) kind | Certificate lock type |
+| [NetStack_HashAlgorithm](capi-net-ssl-c-type-h.md#netstack_hashalgorithm) hashAlgorithm | Hash algorithm |
 | *publicKeyHash |  |
 
 

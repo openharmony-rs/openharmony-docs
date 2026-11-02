@@ -12,7 +12,7 @@ struct OH_AudioSession_Strategy {...}
 
 **起始版本：** 12
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-others-ohaudio.md)
 
 **所在头文件：** [native_audio_session_base.h](capi-native-audio-session-base-h.md)
 

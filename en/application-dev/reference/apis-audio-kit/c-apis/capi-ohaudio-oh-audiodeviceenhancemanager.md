@@ -12,7 +12,7 @@ Defines the handle type of the audio device enhancement manager, which is used f
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_device_enhance_manager.h](capi-native-audio-device-enhance-manager-h.md)
 

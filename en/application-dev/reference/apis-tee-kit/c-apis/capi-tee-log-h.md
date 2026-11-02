@@ -10,7 +10,7 @@ Provides TEE log APIs.<br> Reference of TEE log APIs and internal definitions.
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 ## Summary
 

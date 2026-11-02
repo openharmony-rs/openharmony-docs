@@ -10,7 +10,7 @@ Provides the error codes returned by internationalization APIs.
 
 **Since**: 22
 
-**Related module**: [i18n](capi-i18n.md)
+**Related module**: [i18n](capi-localization-kit-i18n.md)
 
 ## Summary
 

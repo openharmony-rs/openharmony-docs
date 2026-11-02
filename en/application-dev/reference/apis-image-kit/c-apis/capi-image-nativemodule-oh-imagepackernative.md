@@ -12,7 +12,7 @@ The struct describes the image packer, which is used to perform operations relat
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [image_packer_native.h](capi-image-packer-native-h.md)
 

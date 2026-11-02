@@ -12,7 +12,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 ## 汇总
 
@@ -45,7 +45,7 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludeContent(struct OH_AVScreenCapture *capture, struct OH_AVScreenCapture_ContentFilter *filter)](#oh_avscreencapture_excludecontent) | 设置OH_AVScreenCapture实例的内容过滤器ContentFilter。<br> 适用于需要在录屏中排除特定音频或窗口内容的场景，如隐私保护时排除敏感窗口、避免录制无关系统通知音等。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddWindowContent(struct OH_AVScreenCapture_ContentFilter *filter, int32_t *windowIDs, int32_t windowCount)](#oh_avscreencapture_contentfilter_addwindowcontent) | 向ContentFilter实例添加可被过滤的窗口ID列表。<br> 适用于需要从录屏画面中排除特定窗口的场景，如录制教程时排除聊天窗口、录制演示时排除通知面板等。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCapture *capture, int32_t width, int32_t height)](#oh_avscreencapture_resizecanvas) | 调整录屏屏幕数据的分辨率。<br> 调用该方法可以设置录屏屏幕数据的分辨率，width为屏幕的宽度，height为屏幕的高度。<br> 该接口目前仅支持录屏取码流的场景，不支持录屏存文件的场景。应用需要确保自身能够支持收到的视频数据分辨率发生变化。 约束与限制：<br> - 该接口仅允许在录屏运行阶段调用。<br> - 设置自动跟随旋转配置[OH_AVScreenCapture_StrategyForCanvasFollowRotation](capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)时， 不支持同时调用该接口调整录屏分辨率。<br> |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SkipPrivacyMode(struct OH_AVScreenCapture *capture, int32_t *windowIDs, int32_t windowCount)](#oh_avscreencapture_skipprivacymode) | 录屏时豁免隐私窗口，应在录屏启动之前被调用。<br> 应用调用该方法可以豁免本应用隐私窗口，windowIDs为需要豁免的隐私窗口ID指针，windowCount为隐私窗口ID列表的长度， 目前豁免需要传入所有隐私子窗口和主窗口ID。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SkipPrivacyMode(struct OH_AVScreenCapture *capture, int32_t *windowIDs, int32_t windowCount)](#oh_avscreencapture_skipprivacymode) | 录屏时豁免隐私窗口，应在录屏启动之前被调用。<br> 应用调用该方法仅能豁免本应用隐私窗口，windowIDs为需要豁免的隐私窗口ID指针，windowCount为隐私窗口ID列表的长度， 目前豁免需要传入所有隐私子窗口和主窗口ID。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AVScreenCapture *capture, int32_t frameRate)](#oh_avscreencapture_setmaxvideoframerate) | 设置录屏时的最大帧率。<br> 该接口应在录屏启动之后被调用。<br> 调用该方法可以设置录屏时的最大帧率，frameRate为想要设置的最大帧率。<br> 该接口设置最大帧率时，实际设置的帧率受限设备的能力，由底层的系统能力决定。<br> 目前接口入参的最大值不设限制，但当前支持的最高帧率为60FPS，当入参设置超过60FPS，将以60FPS处理。 不超过上限时，则按照实际入参值处理。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ShowCursor(struct OH_AVScreenCapture *capture, bool showCursor)](#oh_avscreencapture_showcursor) | 设置光标显示开关。应在录屏启动之前被调用。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureArea(struct OH_AVScreenCapture *capture, uint64_t displayId, OH_Rect* area)](#oh_avscreencapture_setcapturearea) | 设置或更新捕获区域。<br> 接口在开始录屏前后都可以设置，设置的坐标和宽高不能为负数，捕获区域不能跨屏幕，区域位置设置失败后仍按照上一次的区域进行捕获。 |
@@ -73,6 +73,7 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_pausescreencapture) | 暂停屏幕捕获。应在录屏启动之后被调用。<br> 与[OH_AVScreenCapture_ResumeScreenCapture](capi-native-avscreen-capture-h.md#oh_avscreencapture_resumescreencapture)配合使用，调用后暂停录屏数据采集，已采集的数据保持有效。 调用此接口前，需先通过[OH_AVScreenCapture_StrategyForPause](capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpause)设置允许暂停策略（value设为true）， 并通过OH_AVScreenCapture_SetCaptureStrategy在录屏启动前完成策略配置。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | 恢复屏幕捕获。应在录屏启动之后被调用。<br> 与[OH_AVScreenCapture_PauseScreenCapture](capi-native-avscreen-capture-h.md#oh_avscreencapture_pausescreencapture)配合使用，调用后恢复录屏数据采集。调用此接口前， 需先通过OH_AVScreenCapture_StrategyForPause设置允许暂停策略（value设为true）， 并通过OH_AVScreenCapture_SetCaptureStrategy在录屏启动前完成策略配置。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyformicaec) | 设置当麦克风开启时是否使能回声消除（AEC）功能。<br> 该策略需通过[OH_AVScreenCapture_SetCaptureStrategy](capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)](#oh_avscreencapture_strategyforcontentautopausescenes) | 设置自动暂停屏幕内容采集的场景集合。<br> 当指定的场景发生时，系统将自动暂停屏幕内容采集。可调用[OH_AVScreenCapture_ResumeScreenCapture](capi-native-avscreen-capture-h.md#oh_avscreencapture_resumescreencapture)接口恢复屏幕内容采集。 |
 
 ## 函数说明
 
@@ -131,7 +132,11 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCapture(struct OH_AVSc
 
 **描述：**
 
-开始录屏，采集原始码流。<br> 调用后可执行以下操作：<br> 1. 通过[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)回调来监听当前是否有码流的产生。<br> 2. 通过[OH_AVScreenCapture_OnStateChange](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onstatechange)回调监听启动状态。<br> 3. 调用[OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer)获取音频buffer。<br> 4. 调用[OH_AVScreenCapture_AcquireVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer)获取视频buffer从而获取录屏的原始码流。<br> 与[OH_AVScreenCapture_StartScreenRecording](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)和[OH_AVScreenCapture_StartScreenCaptureWithSurface](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreencapturewithsurface)不同， 本接口用于获取实时音视频原始码流数据，适用于需要对码流进行二次处理的场景； 而[OH_AVScreenCapture_StartScreenRecording](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)用于将录屏内容直接保存为文件，适用于仅需保存录屏的场景； [OH_AVScreenCapture_StartScreenCaptureWithSurface](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreencapturewithsurface)使用Surface模式输出，适用于需要直接渲染或与其他组件共享数据的场景。
+开始录屏，采集原始码流。<br> 调用后可执行以下操作：<br> 
+1. 通过[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)回调来监听当前是否有码流的产生。<br> 
+2. 通过[OH_AVScreenCapture_OnStateChange](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onstatechange)回调监听启动状态。<br> 
+3. 调用[OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer)获取音频buffer。<br> 
+4. 调用[OH_AVScreenCapture_AcquireVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer)获取视频buffer从而获取录屏的原始码流。<br> 与[OH_AVScreenCapture_StartScreenRecording](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)和[OH_AVScreenCapture_StartScreenCaptureWithSurface](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreencapturewithsurface)不同， 本接口用于获取实时音视频原始码流数据，适用于需要对码流进行二次处理的场景； 而[OH_AVScreenCapture_StartScreenRecording](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)用于将录屏内容直接保存为文件，适用于仅需保存录屏的场景； [OH_AVScreenCapture_StartScreenCaptureWithSurface](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreencapturewithsurface)使用Surface模式输出，适用于需要直接渲染或与其他组件共享数据的场景。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -282,7 +287,7 @@ OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBuffer*](capi-avscreencapture-oh-nativebuffer.md) | 执行成功返回OH_NativeBuffer对象，通过OH_NativeBuffer对象相关接口可以获取到视频buffer和分辨率等信息参数。 |
+| [OH_NativeBuffer*](../../apis-arkgraphics2d/c-apis/capi-nativewindow-oh-nativebuffer.md) | 执行成功返回OH_NativeBuffer对象，通过OH_NativeBuffer对象相关接口可以获取到视频buffer和分辨率等信息参数。 |
 
 ### OH_AVScreenCapture_ReleaseAudioBuffer()
 
@@ -425,7 +430,9 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetStateCallback(struct OH_AVScre
 
 **描述：**
 
-设置状态变更处理回调方法，在开始录制前调用。<br> 调用该设置方法成功后，在启动录屏时将通过隐私弹窗方式征求用户同意：<br> 1. 如果用户同意则开始启动录屏流程，在启动录屏成功后， 通过该状态处理回调方法上报[OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_STARTED状态，告知应用启动录屏成功， 并在屏幕显示录屏通知。如果启动录屏失败， 则通过该状态处理回调方法上报失败状态信息（如，若麦克风不可用则上报[OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode). OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE状态），或通过错误处理回调方法[OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror)上报错误信息。<br> 2. 如果用户拒绝，则终止启动录屏， 通过该状态处理回调方法上报[OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_CANCELED状态， 告知应用用户拒绝启动录屏，启动录屏失败。
+设置状态变更处理回调方法，在开始录制前调用。<br> 调用该设置方法成功后，在启动录屏时将通过隐私弹窗方式征求用户同意：<br>
+1. 如果用户同意则开始启动录屏流程，在启动录屏成功后， 通过该状态处理回调方法上报[OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_STARTED状态，告知应用启动录屏成功， 并在屏幕显示录屏通知。如果启动录屏失败， 则通过该状态处理回调方法上报失败状态信息（如，若麦克风不可用则上报[OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode). OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE状态），或通过错误处理回调方法[OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror)上报错误信息。<br>
+2. 如果用户拒绝，则终止启动录屏， 通过该状态处理回调方法上报[OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_CANCELED状态， 告知应用用户拒绝启动录屏，启动录屏失败。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -453,7 +460,9 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDataCallback(struct OH_AVScree
 
 **描述：**
 
-设置数据处理回调方法，在开始录制前调用。<br> 当OH_AVScreenCapture操作期间有音频或视频数据缓冲区可用时，将调用该数据处理回调方法。<br> 应用需要在该数据处理回调方法中根据数据类型完成处理麦克风音频、内录音频、视频数据， 当该数据处理回调方法返回后数据缓冲区将不再有效。<br> 调用该方法成功后：<br> 1. 当OH_AVScreenCapture操作期间有音视频缓存区可用时，将不再调用通过[OH_AVScreenCapture_SetCallback](capi-native-avscreen-capture-h.md#oh_avscreencapture_setcallback)设置的 数据回调方法[OH_AVScreenCaptureOnAudioBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonaudiobufferavailable) 和[OH_AVScreenCaptureOnVideoBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonvideobufferavailable)。<br> 2. 不允许应用调用如下4个方法[OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer)、 [OH_AVScreenCapture_ReleaseAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releaseaudiobuffer)、[OH_AVScreenCapture_AcquireVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer) 和[OH_AVScreenCapture_ReleaseVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releasevideobuffer)，直接返回失败。<br>
+设置数据处理回调方法，在开始录制前调用。<br> 当OH_AVScreenCapture操作期间有音频或视频数据缓冲区可用时，将调用该数据处理回调方法。<br> 应用需要在该数据处理回调方法中根据数据类型完成处理麦克风音频、内录音频、视频数据， 当该数据处理回调方法返回后数据缓冲区将不再有效。<br> 调用该方法成功后：<br>
+1. 当OH_AVScreenCapture操作期间有音视频缓存区可用时，将不再调用通过[OH_AVScreenCapture_SetCallback](capi-native-avscreen-capture-h.md#oh_avscreencapture_setcallback)设置的 数据回调方法[OH_AVScreenCaptureOnAudioBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonaudiobufferavailable) 和[OH_AVScreenCaptureOnVideoBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonvideobufferavailable)。<br>
+2. 不允许应用调用如下4个方法[OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer)、 [OH_AVScreenCapture_ReleaseAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releaseaudiobuffer)、[OH_AVScreenCapture_AcquireVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer) 和[OH_AVScreenCapture_ReleaseVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releasevideobuffer)，直接返回失败。<br>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -548,7 +557,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCaptureWithSurface(str
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) *window | 指向OHNativeWindow实例的指针。 |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) *window | 指向OHNativeWindow实例的指针。 |
 
 **返回值：**
 
@@ -564,7 +573,9 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 **描述：**
 
-是否打开录屏屏幕数据旋转功能。应在录屏启动之前被调用。<br> 当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。当canvasRotation为false时， 关闭录屏屏幕数据旋转功能，录制的屏幕数据将不自动保持正向。<br>默认为false。<br> 与[OH_AVScreenCapture_StrategyForCanvasFollowRotation](capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)不同，本接口是静态旋转设置，仅在canvasRotation为true时 将录屏数据保持正向；而StrategyForCanvasFollowRotation是自动跟随旋转策略，会在屏幕旋转时自动调换虚拟屏尺寸以保持画面正向。 建议仅在需要固定正向输出时使用本接口，在需要动态跟随旋转时使用StrategyForCanvasFollowRotation。<br> >说明：<br> >从API版本20开始，新增支持折叠PC/2in1设备。
+是否打开录屏屏幕数据旋转功能。应在录屏启动之前被调用。<br> 当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。当canvasRotation为false时， 关闭录屏屏幕数据旋转功能，录制的屏幕数据将不自动保持正向。<br>默认为false。<br> 与[OH_AVScreenCapture_StrategyForCanvasFollowRotation](capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)不同，本接口是静态旋转设置，仅在canvasRotation为true时 将录屏数据保持正向；而StrategyForCanvasFollowRotation是自动跟随旋转策略，会在屏幕旋转时自动调换虚拟屏尺寸以保持画面正向。 建议仅在需要固定正向输出时使用本接口，在需要动态跟随旋转时使用StrategyForCanvasFollowRotation。<br>
+>说明：<br>
+>从API版本20开始，新增支持折叠PC/2in1设备。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -717,7 +728,9 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 
 **描述：**
 
-调整录屏屏幕数据的分辨率。<br> 调用该方法可以设置录屏屏幕数据的分辨率，width为屏幕的宽度，height为屏幕的高度。<br> 该接口目前仅支持录屏取码流的场景，不支持录屏存文件的场景。应用需要确保自身能够支持收到的视频数据分辨率发生变化。 约束与限制：<br> - 该接口仅允许在录屏运行阶段调用。<br> - 设置自动跟随旋转配置[OH_AVScreenCapture_StrategyForCanvasFollowRotation](capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)时， 不支持同时调用该接口调整录屏分辨率。<br>
+调整录屏屏幕数据的分辨率。<br> 调用该方法可以设置录屏屏幕数据的分辨率，width为屏幕的宽度，height为屏幕的高度。<br> 该接口目前仅支持录屏取码流的场景，不支持录屏存文件的场景。应用需要确保自身能够支持收到的视频数据分辨率发生变化。 约束与限制：<br>
+- 该接口仅允许在录屏运行阶段调用。<br>
+- 设置自动跟随旋转配置[OH_AVScreenCapture_StrategyForCanvasFollowRotation](capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)时， 不支持同时调用该接口调整录屏分辨率。<br>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -745,7 +758,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SkipPrivacyMode(struct OH_AVScree
 
 **描述：**
 
-录屏时豁免隐私窗口，应在录屏启动之前被调用。<br> 应用调用该方法可以豁免本应用隐私窗口，windowIDs为需要豁免的隐私窗口ID指针，windowCount为隐私窗口ID列表的长度， 目前豁免需要传入所有隐私子窗口和主窗口ID。
+录屏时豁免隐私窗口，应在录屏启动之前被调用。<br> 应用调用该方法仅能豁免本应用隐私窗口，windowIDs为需要豁免的隐私窗口ID指针，windowCount为隐私窗口ID列表的长度， 目前豁免需要传入所有隐私子窗口和主窗口ID。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1490,5 +1503,32 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapt
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br> AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数strategy为空指针或输入value为无效值。 |
+
+### OH_AVScreenCapture_StrategyForContentAutoPauseScenes()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)
+```
+
+**描述：**
+
+设置自动暂停屏幕内容采集的场景集合。<br> 当指定的场景发生时，系统将自动暂停屏幕内容采集。可调用[OH_AVScreenCapture_ResumeScreenCapture](capi-native-avscreen-capture-h.md#oh_avscreencapture_resumescreencapture)接口恢复屏幕内容采集。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | 指向OH_AVScreenCapture_CaptureStrategy实例的指针。 |
+| OH_AVScreenCapture_AutoPauseSceneSet scenes | 场景集合，使用OH_AVScreenCapture_AutoPauseCaptureSceneEnum中的枚举值按位或组合而成。<br> 若传入OH_CAPTURE_AUTO_PAUSE_SCENE_NONE，则系统不会自动暂停。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br> AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数strategy为空指针或参数scenes为无效值。 |
 
 

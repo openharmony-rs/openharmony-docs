@@ -12,7 +12,7 @@ Configuration information for starting a child process, including the process na
 
 **Since**: 20
 
-**Related module**: [ChildProcess](capi-childprocess.md)
+**Related module**: [ChildProcess](capi-others-childprocess.md)
 
 **Header file**: [native_child_process.h](capi-native-child-process-h.md)
 

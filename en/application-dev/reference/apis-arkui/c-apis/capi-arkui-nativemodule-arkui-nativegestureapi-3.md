@@ -12,7 +12,7 @@ Defines a collection of gesture APIs, including gesture APIs in the [ArkUI_Nativ
 
 **Since**: 26.0.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
 

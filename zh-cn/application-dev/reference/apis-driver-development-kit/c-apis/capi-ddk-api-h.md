@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [Ddk](capi-ddk.md)
+**相关模块：** [Ddk](capi-driver-development-kit-ddk.md)
 
 ## 汇总
 

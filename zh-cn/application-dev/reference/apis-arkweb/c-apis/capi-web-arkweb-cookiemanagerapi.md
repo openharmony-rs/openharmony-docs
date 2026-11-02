@@ -12,7 +12,7 @@ ArkWeb_CookieManagerAPI是Cookie管理相关Native API结构体。该结构体�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 

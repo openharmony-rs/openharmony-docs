@@ -12,7 +12,7 @@ struct Rdb_TableDetails {...}
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-others-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 

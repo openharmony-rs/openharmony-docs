@@ -12,7 +12,7 @@ MIDI事件结构体（通用），用于以UMP（Universal MIDI Packet）格式�
 
 **起始版本：** 24
 
-**相关模块：** [OHMIDI](capi-ohmidi.md)
+**相关模块：** [OHMIDI](capi-others-ohmidi.md)
 
 **所在头文件：** [native_midi_base.h](capi-native-midi-base-h.md)
 

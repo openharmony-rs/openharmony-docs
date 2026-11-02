@@ -4,7 +4,7 @@
 
 Declares interfaces for shared memory and named semaphores in group-specific directories.
 
-**Include**: <sys/group_ipc.h>
+**File to Include**: <sys/group_ipc.h>
 
 **Library**: libc.so
 
@@ -12,7 +12,7 @@ Declares interfaces for shared memory and named semaphores in group-specific dir
 
 **Since**: 26.1.0
 
-**Related module**: [MuslGroupIPC](capi-muslgroupipc.md)
+**Related module**: [MuslGroupIPC](capi-cstandard-library-muslgroupipc.md)
 
 ## Summary
 

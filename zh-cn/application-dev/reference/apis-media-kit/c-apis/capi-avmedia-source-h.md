@@ -12,7 +12,7 @@
 
 **起始版本：** 23
 
-**相关模块：** [AVMediaSource](capi-avmediasource.md)
+**相关模块：** [AVMediaSource](capi-media-kit-avmediasource.md)
 
 ## 汇总
 
@@ -59,14 +59,6 @@
 | [OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceOpenedCallback callback, void *userData)](#oh_avmediasourceloader_setsourceopencallback) | - | 为OH_AVMediaSourceLoader设置打开回调函数。 |
 | [OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceReadCallback callback, void *userData)](#oh_avmediasourceloader_setsourcereadcallback) | - | 为OH_AVMediaSourceLoader设置读取回调函数。 |
 | [OH_AVErrCode OH_AVMediaSourceLoader_SetSourceCloseCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceClosedCallback callback, void *userData)](#oh_avmediasourceloader_setsourceclosecallback) | - | 为OH_AVMediaSourceLoader设置关闭回调函数。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| int64_t (*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSourceLoadingRequest *request, void *userData) | 定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。 客户端必须在处理完请求后立即返回句柄。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.Core |
-| void (*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t requestedOffset, int64_t requestedLength, void *userData) | 定义由服务端调用的SourceReadCallback函数。客户端应记录读取请求，并在有足够数据时通过请求对象的[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)和[OH_AVMediaSourceLoadingRequest_RespondHeader](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_respondheader) 方法推送数据。客户端必须在处理完请求后立即返回。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.Core |
-| void (*OH_AVMediaSourceLoaderOnSourceClosedCallback)(int64_t uuid, void *userData) | 定义由服务端调用的SourceCloseCallback函数。客户端应释放相关资源，并在处理完请求后立即返回。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.Core |
 
 ## 枚举类型说明
 

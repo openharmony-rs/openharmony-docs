@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)
+**相关模块：** [MediaAssetManager](capi-media-library-kit-mediaassetmanager.md)
 
 ## 汇总
 
@@ -53,10 +53,6 @@
 | -- | -- |
 | static const int32_t UUID_STR_MAX_LENGTH = 37 | 定义UUID最大长度。这个常量定义了UUID字符串的最大长度。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core |
 | static const int32_t UUID_STR_MAX_LENGTH = 37 | Maximum length of a request ID.<br>**起始版本：** 12<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core |
-| void (*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_RequestId requestId) | 当所请求的媒体资源准备完成时会触发回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core |
-| void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative) | 当请求的图像源准备就绪时会触发回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core |
-| void (*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_MovingPhoto* movingPhoto) | 当请求的动态照片准备就绪时会触发回调。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core |
-| void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative, OH_PictureNative* pictureNative) | 当请求的图像源准备就绪时调用此函数。如果系统中存在图像缓冲区，则会返回一个图片对象，从而减少编码时间。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core |
 
 ## 枚举类型说明
 

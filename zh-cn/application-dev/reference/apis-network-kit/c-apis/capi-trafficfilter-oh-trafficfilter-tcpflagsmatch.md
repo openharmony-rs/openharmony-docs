@@ -12,7 +12,7 @@ TCP标志匹配条件<br> 基于TCP标志设置匹配TCP报文
 
 **起始版本：** 26.0.1
 
-**相关模块：** [TrafficFilter](capi-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

@@ -12,7 +12,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## 汇总
 

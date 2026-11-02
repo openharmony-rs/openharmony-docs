@@ -10,7 +10,7 @@ Declares the underlying data structure for MIDI module.
 
 **Since**: 24
 
-**Related module**: [OHMIDI](capi-ohmidi.md)
+**Related module**: [OHMIDI](capi-audio-kit-ohmidi.md)
 
 ## Summary
 
@@ -23,8 +23,8 @@ Declares the underlying data structure for MIDI module.
 | [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md) | OH_MIDIPortInformation | Port Information (detailed). Used for enumeration (contains display names). |
 | [OH_MIDIPortDescriptor](capi-ohmidi-oh-midiportdescriptor.md) | OH_MIDIPortDescriptor | Port Descriptor. |
 | [OH_MIDICallbacks](capi-ohmidi-oh-midicallbacks.md) | OH_MIDICallbacks | Client callbacks structure. |
-| [OH_MIDIClient](capi-ohmidi-oh-midiclient.md) | OH_MIDIClient | Declares a MIDI client. |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) | OH_MIDIDevice | Declares a MIDI device. |
+| [OH_MIDIClientStruct](capi-ohmidi-oh-midiclientstruct.md) | OH_MIDIClient | Declares a MIDI client. |
+| [OH_MIDIDeviceStruct](capi-ohmidi-oh-mididevicestruct.md) | OH_MIDIDevice | Declares a MIDI device. |
 
 ### Enum
 
@@ -44,15 +44,6 @@ Declares the underlying data structure for MIDI module.
 | [typedef void (\*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)](#oh_midicallback_onerror) | OH_MIDICallback_OnError | Callback for handling client-level errors. Invoked when a critical error occurs in the MIDI service (e.g., service crash). Applications may need to recreate the client when this occurs. |
 | [typedef void (\*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *events, size_t eventCount)](#oh_mididevice_onreceived) | OH_MIDIDevice_OnReceived | Callback for receiving MIDI data (Batch Processing). |
 | [typedef void (\*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info)](#oh_midiclient_ondeviceopened) | OH_MIDIClient_OnDeviceOpened | Callback for the result of asynchronously opening a BLE device.<br> This callback is invoked when the BLE device open attempt finishes, either successfully or with a failure. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_MIDICallback_OnDeviceChange)( void *userData, OH_MIDIDeviceChangeAction action, OH_MIDIDeviceInformation deviceInfo) | Callback for monitoring device connection/disconnection.<br>**Since**: 24<br>**System capability**: SystemCapability.Multimedia.Audio.MIDI |
-| void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code) | Callback for handling client-level errors. Invoked when a critical error occurs in the MIDI service (e.g., service crash). Applications may need to recreate the client when this occurs.<br>**Since**: 24<br>**System capability**: SystemCapability.Multimedia.Audio.MIDI |
-| void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *events, size_t eventCount) | Callback for receiving MIDI data (Batch Processing).<br>**Since**: 24<br>**System capability**: SystemCapability.Multimedia.Audio.MIDI |
-| void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info) | Callback for the result of asynchronously opening a BLE device.<br> This callback is invoked when the BLE device open attempt finishes, either successfully or with a failure.<br>**Since**: 24<br>**System capability**: SystemCapability.Multimedia.Audio.MIDI |
 
 ## Enum type description
 
@@ -190,7 +181,7 @@ Callback for monitoring device connection/disconnection.
 
 | Parameter | Description |
 | -- | -- |
-| void *userData | The user context pointer passed to OH_MIDIClient_Create. |
+| void *userData | The user context pointer passed to [OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create). |
 | [OH_MIDIDeviceChangeAction](capi-native-midi-base-h.md#oh_mididevicechangeaction) action | Device change action (connected/disconnected). |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) deviceInfo | Information of the changed device. |
 
@@ -212,7 +203,7 @@ Callback for handling client-level errors. Invoked when a critical error occurs 
 
 | Parameter | Description |
 | -- | -- |
-| void *userData | The user context pointer passed to OH_MIDIClient_Create. |
+| void *userData | The user context pointer passed to [OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create). |
 | [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) code | The error code indicating the cause. |
 
 ### OH_MIDIDevice_OnReceived()
@@ -237,7 +228,7 @@ Callback for receiving MIDI data (Batch Processing).
 
 | Parameter | Description |
 | -- | -- |
-| void *userData | The user context pointer passed to OH_MIDIDevice_OpenInputPort. |
+| void *userData | The user context pointer passed to [OH_MIDIDevice_OpenInputPort](capi-native-midi-h.md#oh_mididevice_openinputport). |
 | [const OH_MIDIEvent](capi-ohmidi-oh-midievent.md) *events | Pointer to the array of MIDI events received. |
 | size_t eventCount | The number of events in the array. |
 
@@ -259,9 +250,9 @@ Callback for the result of asynchronously opening a BLE device.<br> This callbac
 
 | Parameter | Description |
 | -- | -- |
-| void *userData | The user context pointer passed to OH_MIDIClient_OpenBLEDevice. |
+| void *userData | The user context pointer passed to [OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice). |
 | bool opened | Indicates whether the device was successfully opened. True: Device successfully opened, device handle is valid. False: Device open failed, device handle is NULL. |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | The handle of the opened device. If opened is true, the application MUST close this handle using OH_MIDIClient_CloseDevice when it is no longer needed. If opened is false, this parameter is NULL. |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | The handle of the opened device. If opened is true, the application MUST close this handle using [OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice) when it is no longer needed. If opened is false, this parameter is NULL. |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) info | The information of the opened device. Note: This object is valid ONLY within the scope of this callback. If you need to persist specific attributes (e.g., ID or Name), copy them. |
 
 

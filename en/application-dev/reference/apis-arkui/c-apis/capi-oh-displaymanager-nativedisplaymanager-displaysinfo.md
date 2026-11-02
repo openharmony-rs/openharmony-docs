@@ -12,7 +12,7 @@ The struct describes the information about displays of a device with multiple sc
 
 **Since**: 14
 
-**Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)
+**Related module**: [OH_DisplayManager](capi-others-oh-displaymanager.md)
 
 **Header file**: [oh_display_info.h](capi-oh-display-info-h.md)
 

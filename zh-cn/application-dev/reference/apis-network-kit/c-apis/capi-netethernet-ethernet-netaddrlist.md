@@ -12,7 +12,7 @@ struct Ethernet_NetAddrList {...}
 
 **起始版本：** 26.0.0
 
-**相关模块：** [NetEthernet](capi-netethernet.md)
+**相关模块：** [NetEthernet](capi-others-netethernet.md)
 
 **所在头文件：** [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 
@@ -22,7 +22,7 @@ struct Ethernet_NetAddrList {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) netAddrList[ETHERNET_MAX_NET_SIZE] |  |
-| int32_t netAddrListSize |  |
+| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) netAddrList[ETHERNET_MAX_NET_SIZE] | 以太网网络地址列表。<br>**起始版本：** 26.0.0 |
+| int32_t netAddrListSize | netAddrList的实际大小。<br>**起始版本：** 26.0.0 |
 
 

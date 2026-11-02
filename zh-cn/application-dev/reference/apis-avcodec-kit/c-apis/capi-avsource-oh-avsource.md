@@ -12,7 +12,7 @@ typedef struct OH_AVSource OH_AVSource
 
 **起始版本：** 10
 
-**相关模块：** [AVSource](capi-avsource.md)
+**相关模块：** [AVSource](capi-others-avsource.md)
 
 **所在头文件：** [native_avsource.h](capi-native-avsource-h.md)
 

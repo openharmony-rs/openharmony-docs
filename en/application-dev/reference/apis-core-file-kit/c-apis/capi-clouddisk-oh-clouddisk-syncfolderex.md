@@ -12,7 +12,7 @@ Defines the sync folder of cloud disk with placeholder support.<br> The version 
 
 **Since**: 26.0.1
 
-**Related module**: [CloudDisk](capi-clouddisk.md)
+**Related module**: [CloudDisk](capi-others-clouddisk.md)
 
 **Header file**: [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

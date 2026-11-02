@@ -10,7 +10,7 @@ The file declares the native APIs used for video decoding.
 
 **Since**: 9
 
-**Related module**: [VideoDecoder](capi-videodecoder.md)
+**Related module**: [VideoDecoder](capi-avcodec-kit-videodecoder.md)
 
 ## Summary
 
@@ -218,7 +218,7 @@ Sets an output surface for a video decoder.<br> In the initialization phase, thi
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance. |
-| [OHNativeWindow](capi-codecbase-ohnativewindow.md) *window | Pointer to an OHNativeWindow instance. |
+| [OHNativeWindow](capi-codecbase-nativewindow.md) *window | Pointer to an OHNativeWindow instance. |
 
 **Returns**:
 
@@ -603,7 +603,11 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_
 
 **Description**
 
-Returns the output buffer corresponding to the index to a video decoder. The buffer carries the decoded data and is used to instruct the decoder to finish rendering within the specified duration on the output surface.<br> If no output surface is configured, calling this API only returns the output buffer corresponding to the specified index to the decoder.<br> You can request the system to render the buffer at a specific time (after the VSYNC or buffer timestamp) based on the timestamp. To render the buffer at the specified timestamp, that timestamp should approximate the current system time within an acceptable margin of error. Pay attention to the following:<br> 1. Buffers are processed sequentially, which may result in the display of subsequent buffers on the surface being blocked. This is particularly important for interactive scenarios, such as responding to user actions like stopping, fast-forwarding, or rewinding a video.<br> 2. If multiple buffers are sent to the surface for rendering on a single VSYNC event, the last buffer is rendered and other buffers are discarded.<br> 3. If the difference between the timestamp and the current system time exceeds the acceptable margin of error, the surface ignores the timestamp and renders the buffer at the earliest feasible time. In this case, no frames are discarded.<br> 4. If you want the system to handle frame-dropping based on the display's refresh rate, you have to use this function. Otherwise, your application manages frame-dropping on its own.
+Returns the output buffer corresponding to the index to a video decoder. The buffer carries the decoded data and is used to instruct the decoder to finish rendering within the specified duration on the output surface.<br> If no output surface is configured, calling this API only returns the output buffer corresponding to the specified index to the decoder.<br> You can request the system to render the buffer at a specific time (after the VSYNC or buffer timestamp) based on the timestamp. To render the buffer at the specified timestamp, that timestamp should approximate the current system time within an acceptable margin of error. Pay attention to the following:<br>
+1. Buffers are processed sequentially, which may result in the display of subsequent buffers on the surface being blocked. This is particularly important for interactive scenarios, such as responding to user actions like stopping, fast-forwarding, or rewinding a video.<br>
+2. If multiple buffers are sent to the surface for rendering on a single VSYNC event, the last buffer is rendered and other buffers are discarded.<br>
+3. If the difference between the timestamp and the current system time exceeds the acceptable margin of error, the surface ignores the timestamp and renders the buffer at the earliest feasible time. In this case, no frames are discarded.<br>
+4. If you want the system to handle frame-dropping based on the display's refresh rate, you have to use this function. Otherwise, your application manages frame-dropping on its own.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -713,7 +717,10 @@ OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 
 **Description**
 
-Obtains the index of the next available output buffer.<br> You can perform the following operations to display or release the decoded frame of the buffer instance obtained through [OH_VideoDecoder_GetOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputbuffer): 1. Return the processed output buffer to the decoder by calling [OH_VideoDecoder_FreeOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_freeoutputbuffer).<br> 2. Render the output surface by calling [OH_VideoDecoder_RenderOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer).<br> 3. Render the output surface within the specified time by calling [OH_VideoDecoder_RenderOutputBufferAtTime](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime).<br> Note that the preceding operations are supported only in synchronous mode.
+Obtains the index of the next available output buffer.<br> You can perform the following operations to display or release the decoded frame of the buffer instance obtained through [OH_VideoDecoder_GetOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputbuffer):
+1. Return the processed output buffer to the decoder by calling [OH_VideoDecoder_FreeOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_freeoutputbuffer).<br>
+2. Render the output surface by calling [OH_VideoDecoder_RenderOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer).<br>
+3. Render the output surface within the specified time by calling [OH_VideoDecoder_RenderOutputBufferAtTime](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime).<br> Note that the preceding operations are supported only in synchronous mode.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoDecoder
 

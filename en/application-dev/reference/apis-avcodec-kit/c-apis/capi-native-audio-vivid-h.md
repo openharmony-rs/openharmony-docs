@@ -4,7 +4,7 @@
 
 The file declares the functions and enums related to Audio Vivid.
 
-**Include**: <multimedia/player_framework/native_audio_vivid.h>
+**File to Include**: <multimedia/player_framework/native_audio_vivid.h>
 
 **Library**: libnative_media_core.so
 
@@ -12,7 +12,7 @@ The file declares the functions and enums related to Audio Vivid.
 
 **Since**: 26.0.0
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 ## Summary
 
@@ -23,7 +23,7 @@ The file declares the functions and enums related to Audio Vivid.
 | [OH_CartesianPosition](capi-core-oh-cartesianposition.md) | - | Represents a position in Cartesian coordinates.<br> Cartesian coordinates use x, y, and z axes to define a position in three-dimensional space. |
 | [OH_PolarPosition](capi-core-oh-polarposition.md) | - | Represents a position in polar (spherical) coordinates.<br> Polar coordinates use azimuth, elevation, and distance to define a position in three-dimensional space. |
 | [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) | - | Represents the position of an audio object in three-dimensional space.<br> The position can be expressed in either Cartesian or polar coordinates. |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) | OH_AudioVividMetaBuilder | Forward declaration of OH_AudioVividMetaBuilder. |
+| [OH_AudioVividMetaBuilderStruct](capi-core-oh-audiovividmetabuilderstruct.md) | OH_AudioVividMetaBuilder | Forward declaration of OH_AudioVividMetaBuilder. |
 
 ### Enum
 
@@ -67,7 +67,7 @@ Enumerates the signal formats of the Audio Vivid encoder.
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MONO = 0 | Mono. The encoder accepts mono data and internally sets the channel layout to [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_MONO.<br>**Since**: 26.0.0 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_STEREO = 1 | Stereo. The encoder accepts stereo data and internally sets the channel layout to [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO.<br>**Since**: 26.0.0 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Multi-channel audio. The encoder supports the following channel layouts: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2.<br>**Since**: 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | Audio Vivid encoding HOA type ID. In this encoding mode, the audio channel type needs to be configured. The supported audio channel types are as follows: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D. OH_AudioCodec_Configure takes effect in the configuration phase. If an unsupported audio channel type is configured, [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode) is returned.<br>**Since**: 26.0.1 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | Audio Vivid encoding HOA type ID. In this encoding mode, the audio channel type needs to be configured. The supported audio channel types are as follows: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D. [OH_AudioCodec_Configure](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_configure) takes effect in the configuration phase. If an unsupported audio channel type is configured, [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode) is returned.<br>**Since**: 26.0.1 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Hybrid mode, including a bed and an object. The bed supports the following channel layouts: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2.<br>**Since**: 26.0.0 |
 
 
@@ -95,7 +95,7 @@ Creates an Audio Vivid metadata builder.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) **builder | Output parameter, which is used to obtain the double pointer to the **OH_AudioVividMetaBuilder**<br>instance. |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) **builder | Output parameter, which is used to obtain the double pointer to the **OH_AudioVividMetaBuilder**<br>instance. |
 | [const OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to **OH_AVFormat** that contains the audio format information. |
 
 **Returns**:
@@ -122,7 +122,7 @@ Updates the position of the audio object when the Audio Vivid signal format is [
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
 | int32_t objectIndex | Index of the audio object to be updated, starting from 0. The value cannot be greater than [OH_MD_KEY_AUDIO_OBJECT_NUMBER](capi-native-avcodec-base-h.md#变量) set in the **format** parameter passed to [OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create) for creating the builder. |
 | [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) pos | New position of the audio object source. |
 
@@ -150,7 +150,7 @@ Updates the linear gain of audio object rendering when the Audio Vivid signal fo
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
 | int32_t objectIndex | Index of the audio object to be updated, starting from 0. The value cannot be greater than [OH_MD_KEY_AUDIO_OBJECT_NUMBER](capi-native-avcodec-base-h.md#变量) set in the **format** parameter passed to [OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create) for creating the builder. |
 | float gain | Linear gain applied during object rendering. The value range is [0.0, 6.0], where **0.0** indicates silence, and **1.0** indicates no change. This parameter is optional. If it is not set, no gain is applied. |
 
@@ -178,7 +178,7 @@ Obtains the length of metadata.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
+| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
 | bool withStaticMeta | Whether the output length includes static metadata. The value **true** indicates that the output length includes static metadata, and the value **false** indicates that the output length includes only dynamic metadata. |
 | int32_t *len | Pointer used to receive the metadata length. The unit is bytes. |
 
@@ -206,7 +206,7 @@ Obtains the metadata buffer.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
+| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
 | bool withStaticMeta | Whether the output buffer includes static metadata. The value **true** indicates that the output buffer includes static metadata, and the value **false** indicates that the output buffer includes only dynamic metadata. |
 | uint8_t *buffer | Pointer to the buffer for receiving the metadata. |
 | int32_t len | Buffer length, in bytes. |
@@ -235,7 +235,7 @@ Destroys an Audio Vivid metadata builder and releases resources.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | Pointer to **OH_AudioVividMetaBuilder** to be destroyed. |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder** to be destroyed. |
 
 **Returns**:
 
@@ -265,7 +265,7 @@ Creates an empty Audio Vivid metadata builder.<br> This function is used for mer
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) **builder | Output Parameter. Pointer to retrieve the OH_AudioVividMetaBuilder instance pointer. |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) **builder | Output Parameter. Pointer to retrieve the OH_AudioVividMetaBuilder instance pointer. |
 
 **Returns**:
 
@@ -295,7 +295,7 @@ Updates the base metadata of the builder.<br> The buffer contains complete Audio
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | Pointer to the OH_AudioVividMetaBuilder. |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to the OH_AudioVividMetaBuilder. |
 | const uint8_t *buffer | Pointer to the buffer containing the base metadata data. |
 | int32_t len | Length of the buffer in bytes. |
 
@@ -327,7 +327,7 @@ Adds a new audio object to the builder.<br> After adding an object, you can upda
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | Pointer to the OH_AudioVividMetaBuilder. |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to the OH_AudioVividMetaBuilder. |
 | int32_t *objectIndex | Output parameter. Pointer to receive the index of the newly added object. |
 
 **Returns**:
@@ -354,7 +354,7 @@ Removes an audio object from the builder.<br> Only objects added by [OH_AudioViv
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | Pointer to the OH_AudioVividMetaBuilder. |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to the OH_AudioVividMetaBuilder. |
 | int32_t objectIndex | Index of the audio object to remove. |
 
 **Returns**:

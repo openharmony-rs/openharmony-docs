@@ -12,7 +12,7 @@ Return result of the **OH_QoS_GewuCreateSession()** API, used to encapsulate the
 
 **Since**: 20
 
-**Related module**: [QoS](capi-qos.md)
+**Related module**: [QoS](capi-others-qos.md)
 
 **Header file**: [qos.h](capi-qos-h.md)
 

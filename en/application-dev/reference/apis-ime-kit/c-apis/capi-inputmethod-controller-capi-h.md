@@ -4,7 +4,7 @@
 
 Provides methods for binding and unbinding input methods.
 
-**Include**: <inputmethod/inputmethod_controller_capi.h>
+**File to Include**: <inputmethod/inputmethod_controller_capi.h>
 
 **Library**: libohinputmethod.so
 
@@ -12,7 +12,7 @@ Provides methods for binding and unbinding input methods.
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-ime-kit-inputmethod.md)
 
 ## Summary
 

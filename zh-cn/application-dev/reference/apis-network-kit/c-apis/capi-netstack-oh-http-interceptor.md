@@ -12,7 +12,7 @@ struct OH_Http_Interceptor {...}
 
 **起始版本：** 24
 
-**相关模块：** [netstack](capi-netstack.md)
+**相关模块：** [netstack](capi-others-netstack.md)
 
 **所在头文件：** [http_interceptor_type.h](capi-http-interceptor-type-h.md)
 

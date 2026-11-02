@@ -10,7 +10,7 @@ Provides the JSVM API define.<br> Provides API to Provide independent, standard,
 
 **Since**: 11
 
-**Related module**: [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-arkts-jsvm.md)
 
 ## Summary
 
@@ -252,9 +252,7 @@ Provides the JSVM API define.<br> Provides API to Provide independent, standard,
 | [JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeForGC triggerTime, JSVM_HandlerForGC handler, void* userData)](#oh_jsvm_removehandlerforgc) | Remove VM GC Callback. |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)](#oh_jsvm_backgrounddeserialize) | Deserialize JavaScript code cache in thread pool, and release JSVM_DeserializeResult with OH_JSVM_ReleaseDeserializeResult. |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result)](#oh_jsvm_releasedeserializeresult) | Release deserialize result. |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result)
-
-EXTERN_C_END](#oh_jsvm_createarraybufferfromexternalmemory) | Creates a JavaScript ArrayBuffer whose content is initialized from user-provided external memory. The implementation may either directly reference the external memory (zero-copy) or copy the data into an internally managed buffer, depending on engine implementation.<br> When zero-copy is used, the ArrayBuffer directly references the external memory. The caller must NOT free it before the finalize callback is invoked.<br> When a copy occurs, the data is copied into engine-managed memory. The copied output parameter is set to true so the caller knows their memory is no longer referenced. The resulting ArrayBuffer's data pointer (from OH_JSVM_GetArraybufferInfo) will differ from externalData. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result)](#oh_jsvm_createarraybufferfromexternalmemory) | Creates a JavaScript ArrayBuffer whose content is initialized from user-provided external memory. The implementation may either directly reference the external memory (zero-copy) or copy the data into an internally managed buffer, depending on engine implementation.<br> When zero-copy is used, the ArrayBuffer directly references the external memory. The caller must NOT free it before the finalize callback is invoked.<br> When a copy occurs, the data is copied into engine-managed memory. The copied output parameter is set to true so the caller knows their memory is no longer referenced. The resulting ArrayBuffer's data pointer (from OH_JSVM_GetArraybufferInfo) will differ from externalData. |
 
 ## Function description
 
@@ -303,7 +301,7 @@ This API create a new VM instance.
 | Parameter | Description |
 | -- | -- |
 | [const JSVM_CreateVMOptions](capi-jsvm-jsvm-createvmoptions.md)* options | The options for create the VM instance. |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md)* result | The new VM instance. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md)* result | The new VM instance. |
 
 **Returns**:
 
@@ -329,7 +327,7 @@ This function controls how Microtasks are invoked of the vm. If the method is no
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance to set mircrotasks policy. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance to set mircrotasks policy. |
 | [JSVM_MicrotaskPolicy](capi-jsvm-types-h.md#jsvm_microtaskpolicy) policy | Policy for running microtasks. |
 
 **Returns**:
@@ -356,7 +354,7 @@ Destroys VM instance.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance to be Destroyed. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance to be Destroyed. |
 
 **Returns**:
 
@@ -382,10 +380,10 @@ This API allocates a default JavaScript Proxy. It is the equivalent of doing new
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) target | A JSVM_Value representing the JavaScript Object which you want to proxy. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) handler | A JSVM_Value representing the JavaScript Object that defines which operations will be intercepted and how to redefine intercepted operations. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript Proxy. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) target | A JSVM_Value representing the JavaScript Object which you want to proxy. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) handler | A JSVM_Value representing the JavaScript Object that defines which operations will be intercepted and how to redefine intercepted operations. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript Proxy. |
 
 **Returns**:
 
@@ -411,8 +409,8 @@ This API checks if the value passed in is a Proxy.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isProxy | Whether the given value is Proxy. |
 
 **Returns**:
@@ -439,9 +437,9 @@ This API gets target from proxy.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript Proxy whose target to return. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | Target of the given proxy. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript Proxy whose target to return. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Target of the given proxy. |
 
 **Returns**:
 
@@ -467,8 +465,8 @@ This API open a new VM scope for the VM instance.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance to open scope for. |
-| [JSVM_VMScope](capi-jsvm-jsvm-vmscope.md)* result | The new VM scope. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance to open scope for. |
+| [JSVM_VMScope](capi-jsvm-jsvm-vmscope--8h.md)* result | The new VM scope. |
 
 **Returns**:
 
@@ -494,8 +492,8 @@ This function close the VM scope for the VM instance.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance to close scope for. |
-| [JSVM_VMScope](capi-jsvm-jsvm-vmscope.md) scope | The VM scope to be closed. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance to close scope for. |
+| [JSVM_VMScope](capi-jsvm-jsvm-vmscope--8h.md) scope | The VM scope to be closed. |
 
 **Returns**:
 
@@ -521,10 +519,10 @@ This function create a new environment with optional properties for the context 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance that the env will be created in. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance that the env will be created in. |
 | size_t propertyCount | The number of elements in the properties array. |
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | The array of property descriptor. |
-| [JSVM_Env](capi-jsvm-jsvm-env.md)* result | The new environment created. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md)* result | The new environment created. |
 
 **Returns**:
 
@@ -550,9 +548,9 @@ This function create a new environment from the start snapshot of the vm.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance that the env will be created in. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance that the env will be created in. |
 | size_t index | The index of the environment in the snapshot. |
-| [JSVM_Env](capi-jsvm-jsvm-env.md)* result | The new environment created. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md)* result | The new environment created. |
 
 **Returns**:
 
@@ -578,7 +576,7 @@ This function destroys the environment.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment to be destroyed. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment to be destroyed. |
 
 **Returns**:
 
@@ -604,8 +602,8 @@ This function open a new environment scope.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
-| [JSVM_EnvScope](capi-jsvm-jsvm-envscope.md)* result | The new environment scope. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_EnvScope](capi-jsvm-jsvm-envscope--8h.md)* result | The new environment scope. |
 
 **Returns**:
 
@@ -631,8 +629,8 @@ This function closes the environment scope of the environment.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
-| [JSVM_EnvScope](capi-jsvm-jsvm-envscope.md) scope | The environment scope to be closed. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_EnvScope](capi-jsvm-jsvm-envscope--8h.md) scope | The environment scope to be closed. |
 
 **Returns**:
 
@@ -658,8 +656,8 @@ This function retrieves the VM instance of the given environment.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md)* result | The VM instance of the environment. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md)* result | The VM instance of the environment. |
 
 **Returns**:
 
@@ -685,13 +683,13 @@ This function compiles a string of JavaScript code and returns the compiled scri
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) script | A JavaScript string containing the script yo be compiled. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | A JavaScript string containing the script yo be compiled. |
 | const uint8_t* cachedData | Optional code cache data for the script. |
 | size_t cacheDataLength | The length of cachedData array. |
 | bool eagerCompile | Whether to compile the script eagerly. |
 | bool* cacheRejected | Whether the code cache rejected by compilation. |
-| [JSVM_Script](capi-jsvm-jsvm-script.md)* result | The compiled script. |
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md)* result | The compiled script. |
 
 **Returns**:
 
@@ -717,14 +715,14 @@ This function compiles a string of JavaScript code with the source code informat
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) script | A JavaScript string containing the script to be compiled. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | A JavaScript string containing the script to be compiled. |
 | const uint8_t* cachedData | Optional code cache data for the script. |
 | size_t cacheDataLength | The length of cachedData array. |
 | bool eagerCompile | Whether to compile the script eagerly. |
 | bool* cacheRejected | Whether the code cache rejected by compilation. |
 | [JSVM_ScriptOrigin](capi-jsvm-jsvm-scriptorigin.md)* origin | The information of source code. |
-| [JSVM_Script](capi-jsvm-jsvm-script.md)* result | The compiled script. |
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md)* result | The compiled script. |
 
 **Returns**:
 
@@ -750,8 +748,8 @@ This function creates code cache for the compiled script.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
-| [JSVM_Script](capi-jsvm-jsvm-script.md) script | A compiled script to create code cache for. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | A compiled script to create code cache for. |
 | const uint8_t** data | The data of the code cache. |
 | size_t* length | The length of the code cache data. |
 
@@ -779,9 +777,9 @@ This function executes a string of JavaScript code and returns its result with t
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Script](capi-jsvm-jsvm-script.md) script | A JavaScript string containing the script to execute. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The value resulting from having executed the script. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | A JavaScript string containing the script to execute. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The value resulting from having executed the script. |
 
 ### OH_JSVM_SetInstanceData()
 
@@ -801,7 +799,7 @@ This API associates data with the currently running JSVM environment. data can l
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
 | void* data | The data item to make available to bindings of this instance. |
 | JSVM_Finalize finalizeCb | The function to call when the environment is being torn down. The function receives data so that it might free it. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional hint to pass to the finalize callback during collection. |
@@ -830,7 +828,7 @@ This API retrieves data that was previously associated with the currently runnin
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
 | void** data | The data item that was previously associated with the currently running JSVM environment by a call to OH_JSVM_SetInstanceData(). |
 
 **Returns**:
@@ -857,7 +855,7 @@ This API retrieves a JSVM_ExtendedErrorInfo structure with information about the
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
 | [const JSVM_ExtendedErrorInfo](capi-jsvm-jsvm-extendederrorinfo.md)** result | The JSVM_ExtendedErrorInfo structure with more information about the error. |
 
 **Returns**:
@@ -884,8 +882,8 @@ This API throws the JavaScript value provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) error | The JavaScript value to be thrown. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) error | The JavaScript value to be thrown. |
 
 **Returns**:
 
@@ -911,7 +909,7 @@ This API throws a JavaScript Error with the text provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* code | Optional error code to be set on the error. |
 | const char* msg | C string representing the text to be associated with the error. |
 
@@ -939,7 +937,7 @@ This API throws a JavaScript TypeError with the text provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* code | Optional error code to be set on the error. |
 | const char* msg | C string representing the text to be associated with the error. |
 
@@ -967,7 +965,7 @@ This API throws a JavaScript RangeError with the text provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* code | Optional error code to be set on the error. |
 | const char* msg | C string representing the text to be associated with the error. |
 
@@ -995,7 +993,7 @@ This API throws a JavaScript SyntaxError with the text provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* code | Optional error code to be set on the error. |
 | const char* msg | C string representing the text to be associated with the error. |
 
@@ -1023,8 +1021,8 @@ This API queries a JSVM_Value to check if it represents an error object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JSVM_Value to be checked. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JSVM_Value to be checked. |
 | bool* result | Boolean value that is set to true if JSVM_Value represents an error, false otherwise. |
 
 **Returns**:
@@ -1051,10 +1049,10 @@ This API returns a JavaScript Error with the text provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) code | Optional JSVM_Value with the string for the error code to be associated with the error. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) msg | JSVM_Value that references a JavaScript string to be used as the message for the Error. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the error created. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | Optional JSVM_Value with the string for the error code to be associated with the error. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | JSVM_Value that references a JavaScript string to be used as the message for the Error. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the error created. |
 
 **Returns**:
 
@@ -1080,10 +1078,10 @@ This API returns a JavaScript TypeError with the text provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) code | Optional JSVM_Value with the string for the error code to be associated with the error. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) msg | JSVM_Value that references a JavaScript string to be used as the message for the Error. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the error created. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | Optional JSVM_Value with the string for the error code to be associated with the error. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | JSVM_Value that references a JavaScript string to be used as the message for the Error. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the error created. |
 
 **Returns**:
 
@@ -1109,10 +1107,10 @@ This API returns a JavaScript RangeError with the text provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) code | Optional JSVM_Value with the string for the error code to be associated with the error. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) msg | JSVM_Value that references a JavaScript string to be used as the message for the Error. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the error created. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | Optional JSVM_Value with the string for the error code to be associated with the error. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | JSVM_Value that references a JavaScript string to be used as the message for the Error. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the error created. |
 
 **Returns**:
 
@@ -1138,10 +1136,10 @@ This API returns a JavaScript SyntaxError with the text provided.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) code | Optional JSVM_Value with the string for the error code to be associated with the error. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) msg | JSVM_Value that references a JavaScript string to be used as the message for the Error. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the error created. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | Optional JSVM_Value with the string for the error code to be associated with the error. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | JSVM_Value that references a JavaScript string to be used as the message for the Error. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the error created. |
 
 **Returns**:
 
@@ -1167,8 +1165,8 @@ This API returns a JavaScript exception if one is pending, NULL otherwise.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The exception if one is pending, NULL otherwise. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The exception if one is pending, NULL otherwise. |
 
 **Returns**:
 
@@ -1194,7 +1192,7 @@ This API returns true if an exception is pending, false otherwise.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | bool* result | Boolean value that is set to true if an exception is pending. |
 
 **Returns**:
@@ -1221,8 +1219,8 @@ This API opens a new scope.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_HandleScope](capi-jsvm-jsvm-handlescope.md)* result | JSVM_Value representing the new scope. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_HandleScope](capi-jsvm-jsvm-handlescope--8h.md)* result | JSVM_Value representing the new scope. |
 
 **Returns**:
 
@@ -1248,8 +1246,8 @@ This API closes the scope passed in. Scopes must be closed in the reverse order 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_HandleScope](capi-jsvm-jsvm-handlescope.md) scope | JSVM_Value representing the scope to be closed. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_HandleScope](capi-jsvm-jsvm-handlescope--8h.md) scope | JSVM_Value representing the scope to be closed. |
 
 **Returns**:
 
@@ -1275,8 +1273,8 @@ This API opens a new scope from which one object can be promoted to the outer sc
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope.md)* result | JSVM_Value representing the new scope. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md)* result | JSVM_Value representing the new scope. |
 
 **Returns**:
 
@@ -1302,8 +1300,8 @@ This API closes the scope passed in. Scopes must be closed in the reverse order 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope.md) scope | JSVM_Value representing the scope to be closed. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md) scope | JSVM_Value representing the scope to be closed. |
 
 **Returns**:
 
@@ -1329,10 +1327,10 @@ This API promotes the handle to the JavaScript object so that it is valid for th
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope.md) scope | JSVM_Value representing the current scope. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) escapee | JSVM_Value representing the JavaScript Object to be escaped. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the handle to the escaped Object in the outer scope. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md) scope | JSVM_Value representing the current scope. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) escapee | JSVM_Value representing the JavaScript Object to be escaped. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the handle to the escaped Object in the outer scope. |
 
 **Returns**:
 
@@ -1358,10 +1356,10 @@ This API creates a new reference with the specified reference count to the value
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JSVM_Value for which a reference is being created. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JSVM_Value for which a reference is being created. |
 | uint32_t initialRefcount | Initial reference count for the new reference. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md)* result | JSVM_Ref pointing to the new reference. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | JSVM_Ref pointing to the new reference. |
 
 **Returns**:
 
@@ -1387,8 +1385,8 @@ his API deletes the reference passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md) ref | JSVM_Ref to be deleted. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | JSVM_Ref to be deleted. |
 
 **Returns**:
 
@@ -1414,8 +1412,8 @@ his API increments the reference count for the reference passed in and returns t
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md) ref | JSVM_Ref for which the reference count will be incremented. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | JSVM_Ref for which the reference count will be incremented. |
 | uint32_t* result | The new reference count. |
 
 **Returns**:
@@ -1442,8 +1440,8 @@ This API decrements the reference count for the reference passed in and returns 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md) ref | JSVM_Ref for which the reference count will be decremented. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | JSVM_Ref for which the reference count will be decremented. |
 | uint32_t* result | The new reference count. |
 
 **Returns**:
@@ -1470,9 +1468,9 @@ If still valid, this API returns the JSVM_Value representing the JavaScript valu
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md) ref | The JSVM_Ref for which the corresponding value is being requested. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The JSVM_Value referenced by the JSVM_Ref. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | The JSVM_Ref for which the corresponding value is being requested. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The JSVM_Value referenced by the JSVM_Ref. |
 
 **Returns**:
 
@@ -1498,8 +1496,8 @@ This API returns a JSVM-API value corresponding to a JavaScript Array type.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript Array. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript Array. |
 
 **Returns**:
 
@@ -1525,9 +1523,9 @@ This API returns a JSVM-API value corresponding to a JavaScript Array type. The 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | size_t length | The initial length of the Array. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript Array. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript Array. |
 
 **Returns**:
 
@@ -1553,10 +1551,10 @@ This API returns a JSVM-API value corresponding to a JavaScript ArrayBuffer. Arr
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | size_t byteLength | The length in bytes of the array buffer to create. |
 | void** data | Pointer to the underlying byte buffer of the ArrayBuffer.data can optionally be ignored by passing NULL. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript Array. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript Array. |
 
 **Returns**:
 
@@ -1636,12 +1634,12 @@ This API create an array buffer using the backing store data.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | void* data | pointer to the backing store memory. |
 | size_t backingStoreSize | size of backing store memory. |
 | size_t offset | start position of the array buffer in the backing store memory. |
 | size_t arrayBufferSize | size of the array buffer. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | pointer that receive the array buffer. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | pointer that receive the array buffer. |
 
 **Returns**:
 
@@ -1667,9 +1665,9 @@ This API does not observe leap seconds; they are ignored, as ECMAScript aligns w
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | double time | ECMAScript time value in milliseconds since 01 January, 1970 UTC. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript Date. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript Date. |
 
 **Returns**:
 
@@ -1695,11 +1693,11 @@ This API allocates a JavaScript value with external data attached to it. This is
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | void* data | Raw pointer to the external data. |
 | JSVM_Finalize finalizeCb | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional hint to pass to the finalize callback during collection. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing an external value. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing an external value. |
 
 **Returns**:
 
@@ -1725,8 +1723,8 @@ This API allocates a default JavaScript Object. It is the equivalent of doing ne
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result |  A JSVM_Value representing a JavaScript Object. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result |  A JSVM_Value representing a JavaScript Object. |
 
 **Returns**:
 
@@ -1752,9 +1750,9 @@ This API creates a JavaScript symbol value from a UTF8-encoded C string.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) description | Optional JSVM_Value which refers to a JavaScript string to be set as the description for the symbol. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript symbol. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) description | Optional JSVM_Value which refers to a JavaScript string to be set as the description for the symbol. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript symbol. |
 
 **Returns**:
 
@@ -1780,10 +1778,10 @@ This API searches in the global registry for an existing symbol with the given d
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* utf8description | UTF-8 C string representing the text to be used as the description for the symbol. |
 | size_t length | The length of the description string in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript symbol. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript symbol. |
 
 **Returns**:
 
@@ -1809,12 +1807,12 @@ This API creates a JavaScript TypedArray object over an existing ArrayBuffer. Ty
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype) type | Scalar datatype of the elements within the TypedArray. |
 | size_t length | Number of elements in the TypedArray. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) arraybuffer | ArrayBuffer underlying the typed array. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | ArrayBuffer underlying the typed array. |
 | size_t byteOffset | The byte offset within the ArrayBuffer from which to start projecting the TypedArray. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript TypedArray |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript TypedArray |
 
 **Returns**:
 
@@ -1840,11 +1838,11 @@ This API creates a JavaScript DataView object over an existing ArrayBuffer. Data
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | size_t length | Number of elements in the DataView. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) arraybuffer | ArrayBuffer underlying the DataView. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | ArrayBuffer underlying the DataView. |
 | size_t byteOffset | The byte offset within the ArrayBuffer from which to start projecting the DataView. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript DataView. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript DataView. |
 
 **Returns**:
 
@@ -1870,9 +1868,9 @@ This API is used to convert from the C int32_t type to the JavaScript number typ
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | int32_t value | Integer value to be represented in JavaScript. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript number. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript number. |
 
 **Returns**:
 
@@ -1898,9 +1896,9 @@ This API is used to convert from the C uint32_t type to the JavaScript number ty
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | uint32_t value | Unsigned integer value to be represented in JavaScript. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript number. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript number. |
 
 **Returns**:
 
@@ -1926,9 +1924,9 @@ This API is used to convert from the C int64_t type to the JavaScript number typ
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | int64_t value | Integer value to be represented in JavaScript. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript number. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript number. |
 
 **Returns**:
 
@@ -1954,9 +1952,9 @@ This API is used to convert from the C double type to the JavaScript number type
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | double value | Double-precision value to be represented in JavaScript. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript number. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript number. |
 
 **Returns**:
 
@@ -1982,9 +1980,9 @@ This API converts the C int64_t type to the JavaScript BigInt type.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | int64_t value | Integer value to be represented in JavaScript. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript BigInt. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript BigInt. |
 
 **Returns**:
 
@@ -2010,9 +2008,9 @@ This API converts the C uint64_t type to the JavaScript BigInt type.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | uint64_t value | Unsigned integer value to be represented in JavaScript. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript BigInt. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript BigInt. |
 
 **Returns**:
 
@@ -2038,11 +2036,11 @@ This API converts an array of unsigned 64-bit words into a single BigInt value. 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | int signBit | Determines if the resulting BigInt will be positive or negative. |
 | size_t wordCount | The length of the words array. |
 | const uint64_t* words | An array of uint64_t little-endian 64-bit words. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript BigInt. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript BigInt. |
 
 **Returns**:
 
@@ -2068,10 +2066,10 @@ This API creates a JavaScript string value from an ISO-8859-1-encoded C string. 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* str | Character buffer representing an ISO-8859-1-encoded string. |
 | size_t length | The length of the string in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript string. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript string. |
 
 **Returns**:
 
@@ -2097,10 +2095,10 @@ This API creates a JavaScript string value from a UTF16-LE-encoded C string. The
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char16_t* str | Character buffer representing a UTF16-LE-encoded string. |
 | size_t length | The length of the string in two-byte code units, or JSVM_AUTO_LENGTH if it is null-terminated. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript string. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript string. |
 
 **Returns**:
 
@@ -2126,10 +2124,10 @@ This API creates a JavaScript string value from a UTF8-encoded C string. The nat
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* str | Character buffer representing a UTF8-encoded string. |
 | size_t length | The length of the string in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript string. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript string. |
 
 **Returns**:
 
@@ -2155,8 +2153,8 @@ This API returns the length of an array.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing the JavaScript Array whose length is being queried. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing the JavaScript Array whose length is being queried. |
 | uint32_t* result | uint32 representing length of the array. |
 
 **Returns**:
@@ -2183,8 +2181,8 @@ This API is used to retrieve the underlying data buffer of an ArrayBuffer and it
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) arraybuffer | JSVM_Value representing the ArrayBuffer being queried. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | JSVM_Value representing the ArrayBuffer being queried. |
 | void** data | The underlying data buffer of the ArrayBuffer. If byte_length is 0, this may be NULL or any other pointer value. |
 | size_t* byteLength | Length in bytes of the underlying data buffer. |
 
@@ -2212,9 +2210,9 @@ This API returns the length of an array.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | JSVM_Value representing JavaScript Object whose prototype to return. This returns the equivalent of Object.getPrototypeOf (which is not the same as the function's prototype property). |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing prototype of the given object. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | JSVM_Value representing JavaScript Object whose prototype to return. This returns the equivalent of Object.getPrototypeOf (which is not the same as the function's prototype property). |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing prototype of the given object. |
 
 **Returns**:
 
@@ -2240,12 +2238,12 @@ This API returns various properties of a typed array.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) typedarray | JSVM_Value representing the TypedArray whose properties to query. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) typedarray | JSVM_Value representing the TypedArray whose properties to query. |
 | [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype)* type | Scalar datatype of the elements within the TypedArray. |
 | size_t* length | The number of elements in the TypedArray. |
 | void** data | The data buffer underlying the TypedArray adjusted by the byte_offset value so that it points to the first element in the TypedArray. If the length of the array is 0, this may be NULL or any other pointer value. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* arraybuffer | The ArrayBuffer underlying the TypedArray. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | The ArrayBuffer underlying the TypedArray. |
 | size_t* byteOffset | The byte offset within the underlying native array at which the first element of the arrays is located. The value for the data parameter has already been adjusted so that data points to the first element in the array. Therefore, the first byte of the native array would be at data - byte_offset. |
 
 **Returns**:
@@ -2272,11 +2270,11 @@ Any of the out parameters may be NULL if that property is unneeded. This API ret
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) dataview | JSVM_Value representing the DataView whose properties to query. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) dataview | JSVM_Value representing the DataView whose properties to query. |
 | size_t* bytelength | Number of bytes in the DataView. |
 | void** data | The data buffer underlying the DataView. If byte_length is 0, this may be NULL or any other pointer value. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* arraybuffer | ArrayBuffer underlying the DataView. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | ArrayBuffer underlying the DataView. |
 | size_t* byteOffset | The byte offset within the data buffer from which to start projecting the DataView. |
 
 **Returns**:
@@ -2303,8 +2301,8 @@ Returns JSVM_OK if the function executed successfully. If a non-date JSVM_Value 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing a JavaScript Date. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing a JavaScript Date. |
 | double* result | Time value as a double represented as milliseconds since midnight at the beginning of 01 January, 1970 UTC. |
 
 **Returns**:
@@ -2331,8 +2329,8 @@ This API returns the C boolean primitive equivalent of the given JavaScript Bool
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript Boolean. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript Boolean. |
 | bool* result | C boolean primitive equivalent of the given JavaScript Boolean. |
 
 **Returns**:
@@ -2359,8 +2357,8 @@ This API returns the C double primitive equivalent of the given JavaScript numbe
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript number. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript number. |
 | double* result | C double primitive equivalent of the given JavaScript number. |
 
 **Returns**:
@@ -2387,8 +2385,8 @@ This API returns the C int64_t primitive equivalent of the given JavaScript BigI
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript BigInt. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript BigInt. |
 | int64_t* result | C int64_t primitive equivalent of the given JavaScript BigInt. |
 | bool* lossless | Indicates whether the BigInt value was converted losslessly. |
 
@@ -2416,8 +2414,8 @@ This API returns the C uint64_t primitive equivalent of the given JavaScript Big
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript BigInt. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript BigInt. |
 | uint64_t* result | C uint64_t primitive equivalent of the given JavaScript BigInt. |
 | bool* lossless | Indicates whether the BigInt value was converted losslessly. |
 
@@ -2445,8 +2443,8 @@ This API converts a single BigInt value into a sign bit, 64-bit little-endian ar
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript BigInt. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript BigInt. |
 | int* signBit | Integer representing if the JavaScript BigInt is positive or negative. |
 | size_t* wordCount | Must be initialized to the length of the words array. Upon return, it will be set to the actual number of words that would be needed to store this BigInt. |
 | uint64_t* words | Pointer to a pre-allocated 64-bit word array. |
@@ -2475,8 +2473,8 @@ This API retrieves the external data pointer that was previously passed to OH_JS
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript external value. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript external value. |
 | void** result | Pointer to the data wrapped by the JavaScript external value. |
 
 **Returns**:
@@ -2503,8 +2501,8 @@ This API returns the C int32 primitive equivalent of the given JavaScript number
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript number. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript number. |
 | int32_t* result | C int32 primitive equivalent of the given JavaScript number. |
 
 **Returns**:
@@ -2531,8 +2529,8 @@ This API returns the C int64 primitive equivalent of the given JavaScript number
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript number. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript number. |
 | int64_t* result | C int64 primitive equivalent of the given JavaScript number. |
 
 **Returns**:
@@ -2559,8 +2557,8 @@ This API returns the ISO-8859-1-encoded string corresponding the value passed in
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript string. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript string. |
 | char* buf | Buffer to write the ISO-8859-1-encoded string into. If NULL is passed in, the length of the string in bytes and excluding the null terminator is returned in result. |
 | size_t bufsize | Size of the destination buffer. When this value is insufficient, the returned string is truncated and null-terminated. |
 | size_t* result | Number of bytes copied into the buffer, excluding the null terminator. |
@@ -2589,8 +2587,8 @@ This API returns the UTF8-encoded string corresponding the value passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript string. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript string. |
 | char* buf | Buffer to write the UTF8-encoded string into. If NULL is passed in, the length of the string in bytes and excluding the null terminator is returned in result. |
 | size_t bufsize | Size of the destination buffer. When this value is insufficient, the returned string is truncated and null-terminated. |
 | size_t* result | Number of bytes copied into the buffer, excluding the null terminator. |
@@ -2619,8 +2617,8 @@ This API returns the UTF16-encoded string corresponding the value passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript string. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript string. |
 | char16_t* buf | Buffer to write the UTF16-LE-encoded string into. If NULL is passed in, the length of the string in 2-byte code units and excluding the null terminator is returned. |
 | size_t bufsize | Size of the destination buffer. When this value is insufficient, the returned string is truncated and null-terminated. |
 | size_t* result | Number of 2-byte code units copied into the buffer, excluding the null terminator. |
@@ -2649,8 +2647,8 @@ This API returns the C primitive equivalent of the given JSVM_Value as a uint32_
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | JSVM_Value representing JavaScript number. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM_Value representing JavaScript number. |
 | uint32_t* result | C primitive equivalent of the given JSVM_Value as a uint32_t. |
 
 **Returns**:
@@ -2677,9 +2675,9 @@ This API is used to return the JavaScript singleton object that is used to repre
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | bool value | The value of the boolean to retrieve. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing JavaScript Boolean singleton to retrieve. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing JavaScript Boolean singleton to retrieve. |
 
 **Returns**:
 
@@ -2705,8 +2703,8 @@ This API returns the global object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing JavaScript global object. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing JavaScript global object. |
 
 **Returns**:
 
@@ -2732,8 +2730,8 @@ This API returns the null object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing JavaScript null object. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing JavaScript null object. |
 
 **Returns**:
 
@@ -2759,8 +2757,8 @@ This API returns the Undefined object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing JavaScript Undefined value. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing JavaScript Undefined value. |
 
 **Returns**:
 
@@ -2786,9 +2784,9 @@ This API implements the abstract operation ToBoolean()
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to coerce. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the coerced JavaScript Boolean. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to coerce. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the coerced JavaScript Boolean. |
 
 **Returns**:
 
@@ -2814,9 +2812,9 @@ This API implements the abstract operation ToNumber() as defined. This function 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to coerce. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the coerced JavaScript number. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to coerce. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the coerced JavaScript number. |
 
 **Returns**:
 
@@ -2842,9 +2840,9 @@ This API implements the abstract operation ToObject().
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to coerce. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the coerced JavaScript Object. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to coerce. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the coerced JavaScript Object. |
 
 **Returns**:
 
@@ -2870,9 +2868,9 @@ This API implements the abstract operation ToString().This function potentially 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to coerce. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the coerced JavaScript string. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to coerce. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the coerced JavaScript string. |
 
 **Returns**:
 
@@ -2898,8 +2896,8 @@ This API represents behavior similar to invoking the typeof Operator on the obje
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value whose type to query. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value whose type to query. |
 | [JSVM_ValueType](capi-jsvm-types-h.md#jsvm_valuetype)* result | The type of the JavaScript value. |
 
 **Returns**:
@@ -2926,9 +2924,9 @@ This API represents invoking the instanceof Operator on the object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The JavaScript value to check. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) constructor | The JavaScript function object of the constructor function to check against. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The JavaScript value to check. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) constructor | The JavaScript function object of the constructor function to check against. |
 | bool* result | Boolean that is set to true if object instanceof constructor is true. |
 
 **Returns**:
@@ -2955,8 +2953,8 @@ This API represents invoking the IsArray operation on the object
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given object is an array. |
 
 **Returns**:
@@ -2983,8 +2981,8 @@ This API checks if the Object passed in is an array buffer.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given object is an ArrayBuffer. |
 
 **Returns**:
@@ -3011,8 +3009,8 @@ This API checks if the Object passed in is a date.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isDate | Whether the given JSVM_Value represents a JavaScript Date object. |
 
 **Returns**:
@@ -3039,8 +3037,8 @@ This API checks if the Object passed in is a typed array.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given JSVM_Value represents a TypedArray. |
 
 **Returns**:
@@ -3067,8 +3065,8 @@ This API checks if the Object passed in is a DataView.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given JSVM_Value represents a DataView. |
 
 **Returns**:
@@ -3095,9 +3093,9 @@ This API represents the invocation of the Strict Equality algorithm.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) lhs | The JavaScript value to check. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) rhs | The JavaScript value to check against. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | The JavaScript value to check. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | The JavaScript value to check against. |
 | bool* result | Whether the two JSVM_Value objects are equal. |
 
 **Returns**:
@@ -3124,9 +3122,9 @@ This API represents the invocation of the Relaxed Equality algorithm. Returns tr
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) lhs | The JavaScript value to check. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) rhs | The JavaScript value to check against. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | The JavaScript value to check. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | The JavaScript value to check against. |
 | bool* result | Whether the two JSVM_Value objects are relaxed equal. |
 
 **Returns**:
@@ -3153,8 +3151,8 @@ This API represents the invocation of the ArrayBuffer detach operation.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) arraybuffer | The JavaScript ArrayBuffer to be detached. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | The JavaScript ArrayBuffer to be detached. |
 
 **Returns**:
 
@@ -3180,8 +3178,8 @@ This API represents the invocation of the ArrayBuffer IsDetachedBuffer operation
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript ArrayBuffer to be checked. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript ArrayBuffer to be checked. |
 | bool* result | Whether the arraybuffer is detached. |
 
 **Returns**:
@@ -3208,9 +3206,9 @@ This API returns the names of the enumerable properties of object as an array of
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object from which to retrieve the properties. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing an array of JavaScript values that represent the property names of the object. The API can be used to iterate over result using OH_JSVM_GetArrayLength and OH_JSVM_GetElement. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object from which to retrieve the properties. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing an array of JavaScript values that represent the property names of the object. The API can be used to iterate over result using OH_JSVM_GetArrayLength and OH_JSVM_GetElement. |
 
 **Returns**:
 
@@ -3236,12 +3234,12 @@ This API returns an array containing the names of the available properties of th
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object from which to retrieve the properties. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object from which to retrieve the properties. |
 | [JSVM_KeyCollectionMode](capi-jsvm-types-h.md#jsvm_keycollectionmode) keyMode | Whether to retrieve prototype properties as well. |
 | [JSVM_KeyFilter](capi-jsvm-types-h.md#jsvm_keyfilter) keyFilter | Which properties to retrieve (enumerable/readable/writable). |
 | [JSVM_KeyConversion](capi-jsvm-types-h.md#jsvm_keyconversion) keyConversion | Whether to convert numbered property keys to strings. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing an array of JavaScript values that represent the property names of the object. OH_JSVM_GetArrayLength and OH_JSVM_GetElement can be used to iterate over result. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing an array of JavaScript values that represent the property names of the object. OH_JSVM_GetArrayLength and OH_JSVM_GetElement can be used to iterate over result. |
 
 **Returns**:
 
@@ -3267,10 +3265,10 @@ This API set a property on the Object passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object on which to set the property. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) key | The name of the property to set. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The property value. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object on which to set the property. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | The name of the property to set. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The property value. |
 
 **Returns**:
 
@@ -3296,10 +3294,10 @@ This API gets the requested property from the Object passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object from which to retrieve the property. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) key | The name of the property to retrieve. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The value of the property. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object from which to retrieve the property. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | The name of the property to retrieve. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The value of the property. |
 
 **Returns**:
 
@@ -3325,9 +3323,9 @@ This API checks if the Object passed in has the named property.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to query. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) key | The name of the property whose existence to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to query. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | The name of the property whose existence to check. |
 | bool* result | Whether the property exists on the object or not. |
 
 **Returns**:
@@ -3354,9 +3352,9 @@ This API attempts to delete the key own property from object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to query. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) key | The name of the property to delete. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to query. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | The name of the property to delete. |
 | bool* result | Whether the property deletion succeeded or not. result can optionally be ignored by passing NULL. |
 
 **Returns**:
@@ -3383,9 +3381,9 @@ This API checks if the Object passed in has the named own property. key must be 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to query. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) key | The name of the own property whose existence to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to query. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | The name of the own property whose existence to check. |
 | bool* result |  Whether the own property exists on the object or not. |
 
 **Returns**:
@@ -3412,10 +3410,10 @@ This method is equivalent to calling OH_JSVM_SetProperty with a JSVM_Value creat
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object on which to set the property. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object on which to set the property. |
 | const char* utf8name | The name of the property to set. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The property value. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The property value. |
 
 **Returns**:
 
@@ -3441,10 +3439,10 @@ This method is equivalent to calling OH_JSVM_SetProperty with a JSVM_Value creat
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object from which to retrieve the property. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object from which to retrieve the property. |
 | const char* utf8name | The name of the property to get. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The value of the property. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The value of the property. |
 
 **Returns**:
 
@@ -3470,8 +3468,8 @@ This method is equivalent to calling OH_JSVM_SetProperty with a JSVM_Value creat
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to query. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to query. |
 | const char* utf8name | The name of the property whose existence to check. |
 | bool* result | Whether the property exists on the object or not. |
 
@@ -3499,10 +3497,10 @@ This API sets an element on the Object passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object from which to set the properties. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object from which to set the properties. |
 | uint32_t index | The index of the property to set. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The property value. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The property value. |
 
 **Returns**:
 
@@ -3528,10 +3526,10 @@ This API gets the element at the requested index.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object from which to retrieve the property. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object from which to retrieve the property. |
 | uint32_t index | The index of the property to get. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The value of the property. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The value of the property. |
 
 **Returns**:
 
@@ -3557,8 +3555,8 @@ This API returns if the Object passed in has an element at the requested index.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to query. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to query. |
 | uint32_t index | The index of the property whose existence to check. |
 | bool* result | Whether the property exists on the object or not. |
 
@@ -3586,8 +3584,8 @@ This API attempts to delete the specified index from object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to query. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to query. |
 | uint32_t index | The index of the property to delete. |
 | bool* result | Whether the element deletion succeeded or not. result can optionally be ignored by passing NULL. |
 
@@ -3615,8 +3613,8 @@ This method allows the efficient definition of multiple properties on a given ob
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object from which to retrieve the properties. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object from which to retrieve the properties. |
 | size_t propertyCount | The number of elements in the properties array. |
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | The array of property descriptors. |
 
@@ -3644,8 +3642,8 @@ This method freezes a given object. This prevents new properties from being adde
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to freeze. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to freeze. |
 
 **Returns**:
 
@@ -3671,8 +3669,8 @@ This method seals a given object. This prevents new properties from being added 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to seal. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to seal. |
 
 **Returns**:
 
@@ -3698,12 +3696,12 @@ This method allows a JavaScript function object to be called from a native add-o
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) recv | The this value passed to the called function. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) func | JSVM_Value representing the JavaScript function to be invoked. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) recv | The this value passed to the called function. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) func | JSVM_Value representing the JavaScript function to be invoked. |
 | size_t argc | The count of elements in the argv array. |
-| [const JSVM_Value](capi-jsvm-jsvm-value.md)* argv | Array of JSVM_values representing JavaScript values passed in as arguments to the function. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the JavaScript object returned. |
+| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | Array of JSVM_values representing JavaScript values passed in as arguments to the function. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the JavaScript object returned. |
 
 **Returns**:
 
@@ -3729,11 +3727,11 @@ This API allows an add-on author to create a function object in native code. Thi
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* utf8name | Optional name of the function encoded as UTF8. This is visible within JavaScript as the new function object's name property. |
 | size_t length | The length of the utf8name in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
 | JSVM_Callback cb | The native function which should be called when this function object is invoked and data. JSVM_Callback provides more details. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the JavaScript function object for the newly created function. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the JavaScript function object for the newly created function. |
 
 **Returns**:
 
@@ -3759,11 +3757,11 @@ This method is used within a callback function to retrieve details about the cal
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_CallbackInfo](capi-jsvm-jsvm-callbackinfo.md) cbinfo | The callback info passed into the callback function. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_CallbackInfo](capi-jsvm-jsvm-callbackinfo--8h.md) cbinfo | The callback info passed into the callback function. |
 | size_t* argc | Specifies the length of the provided argv array and receives the actual count of arguments. argc can optionally be ignored by passing NULL. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* argv | C array of JSVM_values to which the arguments will be copied. If there are more arguments than the provided count, only the requested number of arguments are copied. If there are fewer arguments provided than claimed, the rest of argv is filled with JSVM_Value values that represent undefined. argv can optionally be ignored by passing NULL. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* thisArg | Receives the JavaScript this argument for the call. thisArg can optionally be ignored by passing NULL. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | C array of JSVM_values to which the arguments will be copied. If there are more arguments than the provided count, only the requested number of arguments are copied. If there are fewer arguments provided than claimed, the rest of argv is filled with JSVM_Value values that represent undefined. argv can optionally be ignored by passing NULL. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* thisArg | Receives the JavaScript this argument for the call. thisArg can optionally be ignored by passing NULL. |
 | void** data | Receives the data pointer for the callback. data can optionally be ignored by passing NULL. |
 
 **Returns**:
@@ -3790,9 +3788,9 @@ This API returns the new.target of the constructor call. If the current callback
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_CallbackInfo](capi-jsvm-jsvm-callbackinfo.md) cbinfo | The callback info passed into the callback function. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The new.target of the constructor call. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_CallbackInfo](capi-jsvm-jsvm-callbackinfo--8h.md) cbinfo | The callback info passed into the callback function. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The new.target of the constructor call. |
 
 **Returns**:
 
@@ -3818,11 +3816,11 @@ his method is used to instantiate a new JavaScript value using a given JSVM_Valu
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) constructor | JSVM_Value representing the JavaScript function to be invoked as a constructor. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) constructor | JSVM_Value representing the JavaScript function to be invoked as a constructor. |
 | size_t argc | The count of elements in the argv array. |
-| [const JSVM_Value](capi-jsvm-jsvm-value.md)* argv | Array of JavaScript values as JSVM_Value representing the arguments to the constructor. If argc is zero this parameter may be omitted by passing in NULL. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the JavaScript object returned, which in this case is the constructed object. |
+| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | Array of JavaScript values as JSVM_Value representing the arguments to the constructor. If argc is zero this parameter may be omitted by passing in NULL. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the JavaScript object returned, which in this case is the constructed object. |
 
 **Returns**:
 
@@ -3848,13 +3846,13 @@ When wrapping a C++ class, the C++ constructor callback passed via constructor s
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* utf8name | Name of the JavaScript constructor function. For clarity, it is recommended to use the C++ class name when wrapping a C++ class. |
 | size_t length | The length of the utf8name in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
 | JSVM_Callback constructor | Struct include callback function that handles constructing instances of the class. When wrapping a C++ class, this method must be a static member with the JSVM_Callback.callback signature. A C++ class constructor cannot be used. Include Optional data to be passed to the constructor callback as the data property of the callback info. JSVM_Callback provides more details. |
 | size_t propertyCount | Number of items in the properties array argument. |
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Array of property descriptors describing static and instance data properties, accessors, and methods on the class See JSVM_PropertyDescriptor. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing the constructor function for the class. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing the constructor function for the class. |
 
 **Returns**:
 
@@ -3880,12 +3878,12 @@ Wraps a native instance in a JavaScript object. The native instance can be retri
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) jsObject | The JavaScript object that will be the wrapper for the native object. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | The JavaScript object that will be the wrapper for the native object. |
 | void* nativeObject | The native instance that will be wrapped in the JavaScript object. |
 | JSVM_Finalize finalizeCb | Optional native callback that can be used to free the native instance when the JavaScript object has been garbage-collected. |
 | void* finalizeHint | Optional contextual hint that is passed to the finalize callback. properties, accessors, and methods on the class See JSVM_PropertyDescriptor. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md)* result | Optional reference to the wrapped object. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | Optional reference to the wrapped object. |
 
 **Returns**:
 
@@ -3911,8 +3909,8 @@ When JavaScript code invokes a method or property accessor on the class, the cor
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) jsObject | The object associated with the native instance. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | The object associated with the native instance. |
 | void** result | Pointer to the wrapped native instance. |
 
 **Returns**:
@@ -3939,8 +3937,8 @@ Retrieves a native instance that was previously wrapped in the JavaScript object
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) jsObject | The object associated with the native instance. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | The object associated with the native instance. |
 | void** result | Pointer to the wrapped native instance. |
 
 **Returns**:
@@ -3967,8 +3965,8 @@ Associates the value of the typeTag pointer with the JavaScript object or extern
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript object or external to be marked. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript object or external to be marked. |
 | [const JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)* typeTag | The tag with which the object is to be marked. |
 
 **Returns**:
@@ -3995,8 +3993,8 @@ Compares the pointer given as typeTag with any that can be found on js object. I
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript object or external whose type tag to examine. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript object or external whose type tag to examine. |
 | [const JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)* typeTag | The tag with which to compare any tag found on the object. |
 | bool* result | Whether the type tag given matched the type tag on the object. false is also returned if no type tag was found on the object. |
 
@@ -4024,12 +4022,12 @@ This API can be called multiple times on a single JavaScript object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) jsObject | The JavaScript object to which the native data will be attached. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | The JavaScript object to which the native data will be attached. |
 | void* finalizeData | Optional data to be passed to finalizeCb. |
 | JSVM_Finalize finalizeCb | Native callback that will be used to free the native data when the JavaScript object has been garbage-collected. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional contextual hint that is passed to the finalize callback. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md)* result | Optional reference to the JavaScript object. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | Optional reference to the JavaScript object. |
 
 **Returns**:
 
@@ -4055,7 +4053,7 @@ This API returns the highest JSVM-API version supported by the JSVM runtime.<br>
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | uint32_t* result | The highest version of JSVM-API supported. |
 
 **Returns**:
@@ -4108,7 +4106,7 @@ This function gives V8 an indication of the amount of externally allocated memor
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | int64_t changeInBytes | The change in externally allocated memory that is kept alive by JavaScript objects. |
 | int64_t* result | The adjusted value |
 
@@ -4136,7 +4134,7 @@ This function notifies the VM that the system is running low on memory and optio
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | [JSVM_MemoryPressureLevel](capi-jsvm-types-h.md#jsvm_memorypressurelevel) level | The memory pressure level set to the current VM. |
 
 **Returns**:
@@ -4163,9 +4161,9 @@ This API creates a deferred object and a JavaScript promise.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Deferred](capi-jsvm-jsvm-deferred.md)* deferred | A newly created deferred object which can later be passed to OH_JSVM_ResolveDeferred() or OH_JSVM_RejectDeferred() to resolve resp. reject the associated promise. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* promise | The JavaScript promise associated with the deferred object. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md)* deferred | A newly created deferred object which can later be passed to OH_JSVM_ResolveDeferred() or OH_JSVM_RejectDeferred() to resolve resp. reject the associated promise. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* promise | The JavaScript promise associated with the deferred object. |
 
 **Returns**:
 
@@ -4191,9 +4189,9 @@ This API resolves a JavaScript promise by way of the deferred object with which 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Deferred](capi-jsvm-jsvm-deferred.md) deferred | The deferred object whose associated promise to resolve. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) resolution | The value with which to resolve the promise. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md) deferred | The deferred object whose associated promise to resolve. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) resolution | The value with which to resolve the promise. |
 
 **Returns**:
 
@@ -4219,9 +4217,9 @@ This API rejects a JavaScript promise by way of the deferred object with which i
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Deferred](capi-jsvm-jsvm-deferred.md) deferred | The deferred object whose associated promise to resolve. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) rejection | The value with which to reject the promise. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md) deferred | The deferred object whose associated promise to resolve. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rejection | The value with which to reject the promise. |
 
 **Returns**:
 
@@ -4247,8 +4245,8 @@ This API return indicating whether promise is a native promise object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The value to examine |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The value to examine |
 | bool* isPromise | Flag indicating whether promise is a native promise object |
 
 **Returns**:
@@ -4275,11 +4273,11 @@ This API register a resolution/rejection handler with a promise.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) promise | The promise to be handled. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) onFulfilled | The function to be invoked if promise is resolved. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) onRejected | The function to be invoked if promise is rejected. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | Another promise returned from promise then/catch method. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) promise | The promise to be handled. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) onFulfilled | The function to be invoked if promise is resolved. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) onRejected | The function to be invoked if promise is rejected. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Another promise returned from promise then/catch method. |
 
 **Returns**:
 
@@ -4305,9 +4303,9 @@ This API parses a JSON string and returns it as value if successful.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) jsonString | The string to parse. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The parse value if successful. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsonString | The string to parse. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The parse value if successful. |
 
 **Returns**:
 
@@ -4333,9 +4331,9 @@ This API stringifies the object and returns it as string if successful.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) jsonObject | The object to stringify. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The string if successfully stringified. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsonObject | The object to stringify. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The string if successfully stringified. |
 
 **Returns**:
 
@@ -4361,9 +4359,9 @@ This API create the startup snapshot of the VM.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The environment that the API is invoked under. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
 | size_t contextCount | The object to stringify. |
-| [const JSVM_Env](capi-jsvm-jsvm-env.md)* contexts | The array of contexts to add to the snapshot. |
+| [const JSVM_Env](capi-jsvm-jsvm-env--8h.md)* contexts | The array of contexts to add to the snapshot. |
 | const char** blobData | The snapshot data. |
 | size_t* blobSize | The size of snapshot data. |
 
@@ -4391,7 +4389,7 @@ This function returns a set of statistics data of the heap of the VM.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM whose heap statistics are returned. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap statistics are returned. |
 | [JSVM_HeapStatistics](capi-jsvm-jsvm-heapstatistics.md)* result | The heap statistics data. |
 
 **Returns**:
@@ -4418,8 +4416,8 @@ This function creates and starts a CPU profiler.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM to start CPU profiler for. |
-| [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler.md)* result | The pointer to the CPU profiler. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM to start CPU profiler for. |
+| [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler--8h.md)* result | The pointer to the CPU profiler. |
 
 **Returns**:
 
@@ -4445,8 +4443,8 @@ This function stops the CPU profiler and output to the stream.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | THe VM to start CPU profiler for. |
-| [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler.md) profiler | The CPU profiler to stop. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | THe VM to start CPU profiler for. |
+| [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler--8h.md) profiler | The CPU profiler to stop. |
 | JSVM_OutputStream stream | The output stream callback for receiving the data. |
 | void* streamData | Optional data to be passed to the stream callback. |
 
@@ -4474,7 +4472,7 @@ This function takes the current heap snapshot and output to the stream.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM whose heap snapshot is taken. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap snapshot is taken. |
 | JSVM_OutputStream stream | The output stream callback for receiving the data. |
 | void* streamData | Optional data to be passed to the stream callback. |
 
@@ -4502,7 +4500,7 @@ This function takes the current heap snapshot and outputs it to the stream in ra
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM whose heap snapshot is taken. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap snapshot is taken. |
 | JSVM_OutputStream stream | The output stream callback for receiving the binary data. |
 | void *streamData | Optional data to be passed to the stream callback. |
 
@@ -4530,7 +4528,7 @@ Set a heap threshold callback for vm and the vm can only have one heap threshold
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM whose heap usage will be monitored. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap usage will be monitored. |
 | uint64_t threshold | The heap usage threshold in bytes. The value must be greater than 0 and must not exceed heapSizeLimit, where heapSizeLimit is a field in JSVM_HeapStatistics. |
 | JSVM_HandlerForHeapThreshold callback | The callback function to be invoked when a threshold check observes heap usage greater than or equal to threshold. |
 | void *data | Optional user-provided data passed to the callback.The caller is responsible for managing the lifetime of this data. |
@@ -4559,7 +4557,7 @@ Clear the heap threshold callback previously registered for vm. This API is not 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM whose heap threshold callback is to be cleared. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM whose heap threshold callback is to be cleared. |
 | uint64_t threshold | The heap usage threshold in bytes which is previously registered. |
 | JSVM_HandlerForHeapThreshold callback | The callback function previously registered by OH_JSVM_SetHeapThresholdCallback. |
 | void *data | The user-provided data used during registration. |
@@ -4588,7 +4586,7 @@ This functiong activates insepctor on host and port.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* host | The host to listen to for inspector connections. |
 | uint16_t port | The port to listen to for inspector connections. |
 
@@ -4616,7 +4614,7 @@ This function attempts to close all remaining inspector connections.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 
 **Returns**:
 
@@ -4642,7 +4640,7 @@ This function will block until a client (existing or connected later) has sent R
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | bool breakNextLine | Whether break on the next line of JavaScript code. |
 
 **Returns**:
@@ -4669,7 +4667,7 @@ Define a JavaScript class with given class name, constructor, properties, callba
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* utf8name | Name of the JavaScript constructor function. For clarity, it is recommended to use the C++ class name when wrapping a C++ class. |
 | size_t length | The length of the utf8name in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
 | JSVM_Callback constructor | Struct include callback function that handles constructing instances of the class. When wrapping a C++ class, this method must be a static member with the JSVM_Callback.callback signature. A C++ class constructor cannot be used. Include Optional data to be passed to the constructor callback as the data property of the callback info. JSVM_Callback provides more details. |
@@ -4677,7 +4675,7 @@ Define a JavaScript class with given class name, constructor, properties, callba
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Array of property descriptors describing static and instance data properties, accessors, and methods on the class See JSVM_PropertyDescriptor. |
 | JSVM_PropertyHandlerCfg propertyHandlerCfg | The instance object triggers the corresponding callback function. |
 | JSVM_Callback callAsFunctionCallback | Calling an instance object as a function will trigger this callback. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing the constructor function for the class. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing the constructor function for the class. |
 
 **Returns**:
 
@@ -4703,7 +4701,7 @@ Determines whether the current thread holds the lock for the specified environme
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | bool* isLocked | Flag indicating whether the current thread holds the lock for the specified environment. |
 
 **Returns**:
@@ -4730,7 +4728,7 @@ Acquire the lock for the specified environment. Only threads that hold locks can
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 
 **Returns**:
 
@@ -4756,7 +4754,7 @@ Release the lock for the specified environment. Only threads that hold locks can
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 
 **Returns**:
 
@@ -4782,7 +4780,7 @@ Starts the running of the task queue inside the VM. This task queue can be execu
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance on which to start the task queue. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance on which to start the task queue. |
 | bool* result | Whether the task queue was successfully started. |
 
 **Returns**:
@@ -4809,7 +4807,7 @@ Check to see if there are any microtasks waiting in the queue, and if there are,
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance on which to check microtasks. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance on which to check microtasks. |
 
 **Returns**:
 
@@ -4835,8 +4833,8 @@ This API checks if the value passed in is callable.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isCallable | Whether the given value is callable. |
 
 **Returns**:
@@ -4863,8 +4861,8 @@ This API checks if the value passed in is undefined. This equals to `value === u
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isUndefined | Whether the given value is Undefined. |
 
 **Returns**:
@@ -4891,8 +4889,8 @@ This API checks if the value passed in is a null object. This equals to `value =
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isNull | Whether the given value is Null. |
 
 **Returns**:
@@ -4919,8 +4917,8 @@ This API checks if the value passed in is either a null or an undefined object. 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isNullOrUndefined | Whether the given value is Null or Undefined. |
 
 **Returns**:
@@ -4947,8 +4945,8 @@ This API checks if the value passed in is a boolean. This equals to `typeof valu
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isBoolean | Whether the given value is Boolean. |
 
 **Returns**:
@@ -4975,8 +4973,8 @@ This API checks if the value passed in is a number. This equals to `typeof value
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isNumber | Whether the given value is Number. |
 
 **Returns**:
@@ -5003,8 +5001,8 @@ This API checks if the value passed in is a string. This equals to `typeof value
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isString | Whether the given value is String. |
 
 **Returns**:
@@ -5031,8 +5029,8 @@ This API checks if the value passed in is a symbol. This equals to `typeof value
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isSymbol | Whether the given value is Symbol. |
 
 **Returns**:
@@ -5059,8 +5057,8 @@ This API checks if the value passed in is a function. This equals to `typeof val
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isFunction | Whether the given value is Function. |
 
 **Returns**:
@@ -5087,8 +5085,8 @@ This API checks if the value passed in is an object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isObject | Whether the given value is Object. |
 
 **Returns**:
@@ -5115,8 +5113,8 @@ This API checks if the value passed in is a bigInt. This equals to `typeof value
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The VM instance on which to check microtasks. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The VM instance on which to check microtasks. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isBigInt | Whether the given value is BigInt. |
 
 **Returns**:
@@ -5143,8 +5141,8 @@ This API returns a JSVM-API value corresponding to a JavaScript Map type.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript Map. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript Map. |
 
 **Returns**:
 
@@ -5170,8 +5168,8 @@ This API checks if the value passed in is a Map.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isMap | Whether the given value is Map. |
 
 **Returns**:
@@ -5198,8 +5196,8 @@ This API returns a JSVM-API value corresponding to a JavaScript Set type.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript Set. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript Set. |
 
 **Returns**:
 
@@ -5225,8 +5223,8 @@ This API checks if the value passed in is a Set.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isSet | Whether the given value is Set. |
 
 **Returns**:
@@ -5253,11 +5251,11 @@ This function compiles a string of JavaScript code with the compile options and 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the JSVM-API call is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) script | A JavaScript string containing the script to be compiled. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the JSVM-API call is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | A JavaScript string containing the script to be compiled. |
 | size_t optionCount | length of option array. |
 | [JSVM_CompileOptions](capi-jsvm-jsvm-compileoptions.md) options[] | Compile options to be passed. |
-| [JSVM_Script](capi-jsvm-jsvm-script.md)* result | The compiled script. |
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md)* result | The compiled script. |
 
 **Returns**:
 
@@ -5283,9 +5281,9 @@ This API implements the abstract operation ToBigInt().
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to coerce. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the coerced JavaScript BigInt. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to coerce. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the coerced JavaScript BigInt. |
 
 **Returns**:
 
@@ -5311,8 +5309,8 @@ This API checks if the value passed in is a regExp. This equals to `value instan
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given value is RegExp. |
 
 **Returns**:
@@ -5339,8 +5337,8 @@ This API checks if the value passed in is a constructor.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* isConstructor | Whether the given value is Constructor. |
 
 **Returns**:
@@ -5367,10 +5365,10 @@ This API returns the JavaScript value of the regular expression corresponding to
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript string to convert to a regular expression. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript string to convert to a regular expression. |
 | [JSVM_RegExpFlags](capi-jsvm-types-h.md#jsvm_regexpflags) flags | Regular expression flag bits. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript RegExp. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript RegExp. |
 
 **Returns**:
 
@@ -5396,9 +5394,9 @@ This API returns the Object prototype.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | JSVM_Value representing JavaScript Object whose prototype to return. This returns the equivalent of Object.getPrototypeOf (which is not the same as the function's prototype property). |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing prototype of the given object. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | JSVM_Value representing JavaScript Object whose prototype to return. This returns the equivalent of Object.getPrototypeOf (which is not the same as the function's prototype property). |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing prototype of the given object. |
 
 **Returns**:
 
@@ -5424,9 +5422,9 @@ This API set the prototype on the Object passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object on which to set the prototype. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) prototype | The prototype value. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object on which to set the prototype. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) prototype | The prototype value. |
 
 **Returns**:
 
@@ -5452,13 +5450,13 @@ Creates a function with a given script as its body.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* funcName | A string containing the function's name. Pass NULL to create an anonymous function. |
 | size_t length | The length of the funcName in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
 | size_t argc | The count of elements in the argv array. |
-| [const JSVM_Value](capi-jsvm-jsvm-value.md)* argv | Array of JSVM_Values representing JavaScript strings passed in as arguments to the function. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) script | A JavaScript string containing the script to use as the function's body. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | JSVM_Value representing the JavaScript function object for the newly created function. |
+| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | Array of JSVM_Values representing JavaScript strings passed in as arguments to the function. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | A JavaScript string containing the script to use as the function's body. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Value representing the JavaScript function object for the newly created function. |
 
 **Returns**:
 
@@ -5484,8 +5482,8 @@ This function keep persistently save a JSVM_Script and extend its lifecycle beyo
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Script](capi-jsvm-jsvm-script.md) script | A JavaScript string containing the script to be retained. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | A JavaScript string containing the script to be retained. |
 
 **Returns**:
 
@@ -5511,8 +5509,8 @@ This function release the script retained by OH_JSVM_RetainScript
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Script](capi-jsvm-jsvm-script.md) script | A JavaScript string containing the script to be retained. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | A JavaScript string containing the script to be retained. |
 
 **Returns**:
 
@@ -5538,7 +5536,7 @@ This function activates insepctor with pid and alias it.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | int pid | A process id to identify the inspector connection. |
 | const char* name | An alias for the inspector that under a specific pid. default name is jsvm if a nullptr is passed in. |
 
@@ -5566,13 +5564,13 @@ Compile WebAssembly bytecode into a WebAssembly module. If WebAssembly cache pro
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const uint8_t *wasmBytecode | WebAssembly bytecode. |
 | size_t wasmBytecodeLength | WebAssembly bytecode length in byte. |
 | const uint8_t *cacheData | Optional WebAssembly cache. |
 | size_t cacheDataLength | Optional WebAssembly cache length in byte. |
 | bool *cacheRejected | Output parameter representing whether the provided cacheData is rejected. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) *wasmModule | Output parameter representing compiled WebAssembly module. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *wasmModule | Output parameter representing compiled WebAssembly module. |
 
 **Returns**:
 
@@ -5598,8 +5596,8 @@ Compile the function with the specified index in the WebAssembly module into the
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) wasmModule | The WebAssembly module to which the function to compiled belongs. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) wasmModule | The WebAssembly module to which the function to compiled belongs. |
 | uint32_t functionIndex | The index of the function to be compiled, should never be out of range. |
 | [JSVM_WasmOptLevel](capi-jsvm-types-h.md#jsvm_wasmoptlevel) optLevel | Optimization level the function will be compiled with. |
 
@@ -5627,8 +5625,8 @@ Check whether the given JSVM_Value is a WebAssembly module.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given value is a WebAssembly module. |
 
 **Returns**:
@@ -5655,8 +5653,8 @@ Create cache for compiled WebAssembly module.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) wasmModule | The compiled WebAssembly module. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) wasmModule | The compiled WebAssembly module. |
 | const uint8_t** data | Output parameter representing generated WebAssembly module cache. |
 | size_t* length | Output parameter representing byte length of generated WebAssembly module cache. |
 
@@ -5684,7 +5682,7 @@ Release cache data with specified cache type.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const uint8_t* cacheData | The cache data to be released, double free is undefined behaviors. |
 | [JSVM_CacheType](capi-jsvm-types-h.md#jsvm_cachetype) cacheType | The type of cache data. |
 
@@ -5712,12 +5710,12 @@ This API creates an external JavaScript string value from an ISO-8859-1-encoded 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | char* str | Character buffer representing an ISO-8859-1-encoded string. |
 | size_t length | The length of the string in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
 | JSVM_Finalize finalizeCallback | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional hint to pass to the finalize callback during collection. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript external string. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript external string. |
 | bool* copied | flag indicate whether the external string is successfully created, true for faild to create external ones and fall back to non-external strings, false for success. |
 
 **Returns**:
@@ -5744,12 +5742,12 @@ This API creates an external JavaScript string value from an UTF16-LE-encoded C 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | char16_t* str | Character buffer representing an UTF16-LE-encoded string. |
 | size_t length | The length of the string in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
 | JSVM_Finalize finalizeCallback | Optional callback to call when the external value is being collected. JSVM_Finalize provides more details. |
 | void* finalizeHint | Optional hint to pass to the finalize callback during collection. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing a JavaScript external string. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing a JavaScript external string. |
 | bool* copied | flag indicate whether the external string is successfully created, true for faild to create external ones and fall back to non-external strings, false for success. |
 
 **Returns**:
@@ -5776,9 +5774,9 @@ This API creates a JavaScript private key.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) description | Optional JSVM_Value which refers to a JavaScript string to be set as the description for the private key. |
-| [JSVM_Data](capi-jsvm-jsvm-data.md)* result | A JSVM_Data representing a JavaScript private key. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) description | Optional JSVM_Value which refers to a JavaScript string to be set as the description for the private key. |
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md)* result | A JSVM_Data representing a JavaScript private key. |
 
 **Returns**:
 
@@ -5804,10 +5802,10 @@ This API set a private property on the Object passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object on which to set the private property. |
-| [JSVM_Data](capi-jsvm-jsvm-data.md) key | The private key of the property. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The private property value. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object on which to set the private property. |
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | The private key of the property. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The private property value. |
 
 **Returns**:
 
@@ -5833,10 +5831,10 @@ This API gets the requested private property from the Object passed in.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object from which to retrieve the private property. |
-| [JSVM_Data](capi-jsvm-jsvm-data.md) key | The private key of the property. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) *result | The value of the private property. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object from which to retrieve the private property. |
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | The private key of the property. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | The value of the private property. |
 
 **Returns**:
 
@@ -5862,9 +5860,9 @@ This API attempts to delete the property of the private key from object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) object | The object to query. |
-| [JSVM_Data](capi-jsvm-jsvm-data.md) key | The private key of the property to delete. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | The object to query. |
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | The private key of the property to delete. |
 
 **Returns**:
 
@@ -5890,10 +5888,10 @@ This API creates a new reference with the specified reference count to the data 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Data](capi-jsvm-jsvm-data.md) data | The JSVM_Data for which a reference is being created. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) data | The JSVM_Data for which a reference is being created. |
 | uint32_t initialRefcount | Initial reference count for the new reference. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md)* result | JSVM_Ref pointing to the new reference. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | JSVM_Ref pointing to the new reference. |
 
 **Returns**:
 
@@ -5919,9 +5917,9 @@ If still valid, this API returns the JSVM_Data representing the JavaScript data 
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Ref](capi-jsvm-jsvm-ref.md) ref | The JSVM_Ref for which the corresponding value is being requested. |
-| [JSVM_Data](capi-jsvm-jsvm-data.md)* result | The JSVM_Data referenced by the JSVM_Ref. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | The JSVM_Ref for which the corresponding value is being requested. |
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md)* result | The JSVM_Data referenced by the JSVM_Ref. |
 
 **Returns**:
 
@@ -5947,8 +5945,8 @@ Check whether the given JSVM_Value is a BigInt Object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given value is a BigInt Object. |
 
 **Returns**:
@@ -5975,8 +5973,8 @@ Check whether the given JSVM_Value is a Boolean Object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given value is a Boolean Object. |
 
 **Returns**:
@@ -6003,8 +6001,8 @@ Check whether the given JSVM_Value is a String Object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given value is a String Object. |
 
 **Returns**:
@@ -6031,8 +6029,8 @@ Check whether the given JSVM_Value is a Number Object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given value is a Number Object. |
 
 **Returns**:
@@ -6059,8 +6057,8 @@ Check whether the given JSVM_Value is a Symbol Object.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) value | The JavaScript value to check. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | The JavaScript value to check. |
 | bool* result | Whether the given value is a Symbol Object. |
 
 **Returns**:
@@ -6087,8 +6085,8 @@ This API returns the Symbol.asyncIterator of Well-Known Symbols.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.asyncIterator of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.asyncIterator of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6114,8 +6112,8 @@ This API returns the Symbol.hasInstance of Well-Known Symbols.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.hasInstance of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.hasInstance of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6141,8 +6139,8 @@ This API returns the Symbol.isConcatSpreadable of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.isConcatSpreadable of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.isConcatSpreadable of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6168,8 +6166,8 @@ This API returns the Symbol.match of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.match of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.match of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6195,8 +6193,8 @@ This API returns the Symbol.replace of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.replace of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.replace of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6222,8 +6220,8 @@ This API returns the Symbol.search of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.search of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.search of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6249,8 +6247,8 @@ This API returns the Symbol.split of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.split of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.split of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6276,8 +6274,8 @@ This API returns the Symbol.toPrimitive of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.toPrimitive of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.toPrimitive of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6303,8 +6301,8 @@ This API returns the Symbol.unscopables of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.unscopables of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.unscopables of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6330,8 +6328,8 @@ This API returns the Symbol.toStringTag of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.toStringTag of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.toStringTag of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6357,8 +6355,8 @@ This API returns the Symbol.iterator of Well-Known Symbols
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | The Symbol.iterator of Well-Known Symbols. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | The Symbol.iterator of Well-Known Symbols. |
 
 **Returns**:
 
@@ -6440,7 +6438,7 @@ Set Handler For OOM Error. If this function is invoked repeatedly, only the last
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The environment that the API is invoked under. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
 | JSVM_HandlerForOOMError handler | The handler for OOM Error. |
 
 **Returns**:
@@ -6467,7 +6465,7 @@ This API is used to enable/disable the given debug option for a certain JSVM_Env
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | [JSVM_DebugOption](capi-jsvm-types-h.md#jsvm_debugoption) debugOption | The debug option to be changed. |
 | bool isEnabled | Whether to enable or disable the debug option. |
 
@@ -6495,7 +6493,7 @@ Set Handler For Fatal Error. If this function is invoked repeatedly, only the la
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The environment that the API is invoked under. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
 | JSVM_HandlerForFatalError handler | The handler for Fatal Error. |
 
 **Returns**:
@@ -6522,7 +6520,7 @@ Set Handler For Promise Reject. If this function is invoked repeatedly, only the
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The environment that the API is invoked under. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
 | JSVM_HandlerForPromiseReject handler | The handler for Promise Reject. |
 
 **Returns**:
@@ -6549,16 +6547,16 @@ When wrapping a C++ class, the C++ constructor callback passed via constructor s
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | const char* utf8name | Name of the JavaScript constructor function. For clarity, it is recommended to use the C++ class name when wrapping a C++ class. |
 | size_t length | The length of the utf8name in bytes, or JSVM_AUTO_LENGTH if it is null-terminated. |
 | JSVM_Callback constructor | Struct include callback function that handles constructing instances of the class. When wrapping a C++ class, this method must be a static member with the JSVM_Callback.callback signature. A C++ class constructor cannot be used. Include Optional data to be passed to the constructor callback as the data property of the callback info. JSVM_Callback provides more details. |
 | size_t propertyCount | Number of items in the properties array argument. |
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Array of property descriptors describing static and instance data properties, accessors, and methods on the class See JSVM_PropertyDescriptor. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md) parentClass | The parent-class of the currently defined class. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) parentClass | The parent-class of the currently defined class. |
 | size_t option_count | Number of items in an option array argument. |
 | [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md) options[] | DefineClass options to be passed. |
-| [JSVM_Value](capi-jsvm-jsvm-value.md)* result | A JSVM_Value representing the constructor function for the class. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing the constructor function for the class. |
 
 **Returns**:
 
@@ -6584,7 +6582,7 @@ Add VM GC Callback.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The environment that the API is invoked under. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
 | [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | The timing of GC callback trigger. |
 | JSVM_HandlerForGC handler | When Trigger gc, the callback function will be called. |
 | [JSVM_GCType](capi-jsvm-types-h.md#jsvm_gctype) gcType | The type of gc. |
@@ -6614,7 +6612,7 @@ Remove VM GC Callback.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The environment that the API is invoked under. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The environment that the API is invoked under. |
 | [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | The timing of GC callback trigger. |
 | JSVM_HandlerForGC handler | When Trigger gc, the callback function will be called. |
 | void* userData | The native pointer data. |
@@ -6643,9 +6641,9 @@ Deserialize JavaScript code cache in thread pool, and release JSVM_DeserializeRe
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm.md) vm | The VM instance where background deserialize will be performed. |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | The VM instance where background deserialize will be performed. |
 | [JSVM_CodeCache](capi-jsvm-jsvm-codecache.md) cacheData | Code cache data to be deserialized. |
-| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | The result of background deserialize. |
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult--8h.md)* result | The result of background deserialize. |
 
 **Returns**:
 
@@ -6671,7 +6669,7 @@ Release deserialize result.
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md) result | The background deserialize result to be release. |
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult--8h.md) result | The background deserialize result to be release. |
 
 **Returns**:
 
@@ -6682,9 +6680,9 @@ Release deserialize result.
 ### OH_JSVM_CreateArrayBufferFromExternalMemory()
 
 ```c
-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result)
-
-EXTERN_C_END
+#ifdef JSVM_EXPERIMENTAL
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result);
+#endif // JSVM_EXPERIMENTAL
 ```
 
 **Description**
@@ -6699,13 +6697,13 @@ Creates a JavaScript ArrayBuffer whose content is initialized from user-provided
 
 | Parameter | Description |
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env.md) env | The environment that the API is invoked under. |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | The environment that the API is invoked under. |
 | void* externalData | Pointer to the source memory block. Must be 8-byte aligned. Can be nullptr only if byteLength is 0. |
 | size_t byteLength | The length in bytes of the source memory block. Must not exceed the engine's maximum ArrayBuffer size. |
 | JSVM_FinalizeArrayBuffer finalizeCb | Optional callback invoked when the ArrayBuffer object created by this API is garbage collected. The callback receives the original externalData pointer, finalizeHint, and a boolean indicating whether the data was copied. When copied is true, the engine does not reference externalData and the caller may free it immediately after this API returns. When copied is false (zero-copy), externalData is still in use and should only be freed in this callback. Can be NULL if no cleanup is needed. |
 | void* finalizeHint | Optional hint passed to finalizeCb. Can be NULL. |
 | bool* copied | Optional output parameter. If non-NULL, set to true when data was copied into an internal buffer, or false when zero-copy was used. Pass NULL if the caller does not need this information. |
-| result | A JSVM_Value representing the created JavaScript ArrayBuffer. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | A JSVM_Value representing the created JavaScript ArrayBuffer. |
 
 **Returns**:
 

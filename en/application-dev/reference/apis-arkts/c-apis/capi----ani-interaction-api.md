@@ -6,6 +6,26 @@
 
 ## Summary
 
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| void *reserved0 |  |
+| void *reserved1 |  |
+| void *reserved2 |  |
+| void *reserved3 |  |
+| void *reserved4 |  |
+| void *reserved5 |  |
+| void *reserved6 |  |
+| void *reserved7 |  |
+| void *reserved8 |  |
+| void *reserved9 |  |
+| void *reserved10 |  |
+| void *reserved11 |  |
+| void *reserved12 |  |
+| void *reserved13 |  |
+
+
 ### Member functions
 
 | Name | Description |

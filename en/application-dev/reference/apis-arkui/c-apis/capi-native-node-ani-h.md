@@ -10,7 +10,7 @@ Declares APIs for converting <b>FrameNode</b> objects on the ArkTS side to <b>Ar
 
 **Since**: 23
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 

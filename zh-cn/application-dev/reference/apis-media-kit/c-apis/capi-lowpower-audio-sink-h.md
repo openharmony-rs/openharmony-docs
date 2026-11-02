@@ -12,7 +12,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [LowPowerAudioSink](capi-lowpoweraudiosink.md)
+**相关模块：** [LowPowerAudioSink](capi-media-kit-lowpoweraudiosink.md)
 
 ## 汇总
 

@@ -12,7 +12,7 @@ OH_QoS_GewuSubmitRequest()接口的返回结果，用于获取格物服务（Gew
 
 **起始版本：** 20
 
-**相关模块：** [QoS](capi-qos.md)
+**相关模块：** [QoS](capi-others-qos.md)
 
 **所在头文件：** [qos.h](capi-qos-h.md)
 

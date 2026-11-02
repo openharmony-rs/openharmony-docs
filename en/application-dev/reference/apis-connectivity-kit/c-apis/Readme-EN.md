@@ -1,8 +1,8 @@
 # C API<!--c-connectivitykit-->
 
 - Module<!--connectivitykit-module-->
-    - [Bluetooth](capi-bluetooth.md)
-    - [Wifi](capi-wifi.md)
+    - [Bluetooth](capi-connectivity-kit-bluetooth.md)
+    - [Wifi](capi-connectivity-kit-wifi.md)
 - Header file<!--connectivitykit-headerfile-->
     - [oh_bluetooth.h](capi-oh-bluetooth-h.md)
     - [oh_wifi.h](capi-oh-wifi-h.md)

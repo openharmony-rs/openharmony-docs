@@ -12,7 +12,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [Archive](capi-archive.md)
+**相关模块：** [Archive](capi-core-file-kit-archive.md)
 
 ## 汇总
 

@@ -12,7 +12,7 @@ Defines the AbilityRuntime_NativeAbilityWrapper struct type, which is used to en
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
 
 **Header file**: [native_ability_wrapper.h](capi-native-ability-wrapper-h.md)
 

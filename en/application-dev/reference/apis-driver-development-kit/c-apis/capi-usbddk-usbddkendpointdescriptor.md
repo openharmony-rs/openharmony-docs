@@ -12,7 +12,7 @@ Defines endpoint descriptors.
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-others-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 
@@ -22,7 +22,7 @@ Defines endpoint descriptors.
 
 | Name | Description |
 | -- | -- |
-| struct UsbEndpointDescriptor endpointDescriptor | Standard endpoint descriptor. |
+| [struct UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) endpointDescriptor | Standard endpoint descriptor. |
 | const uint8_t *extra | Unresolved descriptor, including class- or vendor-specific descriptors. |
 | uint32_t extraLength | Length of the unresolved descriptor. |
 

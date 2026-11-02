@@ -9,6 +9,7 @@
 | Name | Description |
 | -- | -- |
 | struct sockaddr ifa_addr |  |
+| ifa_ifu |  |
 | ifa_ifu.sockaddr	ifu_broadaddr |  |
 | ifa_ifu.sockaddr	ifu_dstaddr |  |
 | struct iface *ifa_ifp |  |

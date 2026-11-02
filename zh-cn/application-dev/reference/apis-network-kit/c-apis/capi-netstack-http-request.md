@@ -12,7 +12,7 @@ HTTP请求结构体。
 
 **起始版本：** 20
 
-**相关模块：** [netstack](capi-netstack.md)
+**相关模块：** [netstack](capi-others-netstack.md)
 
 **所在头文件：** [net_http_type.h](capi-net-http-type-h.md)
 

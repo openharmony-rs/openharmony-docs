@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [NativeDisplaySoloist](capi-nativedisplaysoloist.md)
+**相关模块：** [NativeDisplaySoloist](capi-arkgraphics2d-nativedisplaysoloist.md)
 
 ## 汇总
 
@@ -31,12 +31,6 @@
 | [int32_t OH_DisplaySoloist_Start(OH_DisplaySoloist* displaySoloist, OH_DisplaySoloist_FrameCallback callback, void* data)](#oh_displaysoloist_start) | - | 开始请求VSync信号，并且每次VSync信号到来时调用回调函数。如果通过OH_DisplaySoloist_SetExpectedFrameRateRange设置了期望帧率范围，则开始生效该期望帧率范围。 |
 | [int32_t OH_DisplaySoloist_Stop(OH_DisplaySoloist* displaySoloist)](#oh_displaysoloist_stop) | - | 用于停止请求VSync信号，并停止调用回调函数callback；同时会使通过OH_DisplaySoloist_SetExpectedFrameRateRange设置的期望帧率范围失效。 停止后可再次调用OH_DisplaySoloist_Start重新启动。与OH_DisplaySoloist_Start成对使用，且必须在OH_DisplaySoloist_Start之后调用。 |
 | [int32_t OH_DisplaySoloist_SetExpectedFrameRateRange(OH_DisplaySoloist* displaySoloist, DisplaySoloist_ExpectedRateRange* range)](#oh_displaysoloist_setexpectedframeraterange) | - | 设置VSync期望帧率范围，设置的期望帧率范围将作为系统调度的参考，系统会尽量在此范围内调整绘制帧率。 未调用该方法或传入DisplaySoloist_ExpectedRateRange(0, 0, 0)时，将跟随应用当前运行的帧率。 建议在调用OH_DisplaySoloist_Start前设置，以便立即生效；调用OH_DisplaySoloist_Start之后设置也可以生效但可能存在延迟。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data) | OH_DisplaySoloist回调函数类型。在每次VSync信号到来时被系统调用，用于执行每帧的自定义业务。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Graphic.Graphic2D.HyperGraphicManager |
 
 ## 函数说明
 

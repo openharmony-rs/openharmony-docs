@@ -10,7 +10,7 @@ This file declares the functions related to the canvas in the drawing module. By
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 

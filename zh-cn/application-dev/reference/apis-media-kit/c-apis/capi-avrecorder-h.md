@@ -10,7 +10,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [AVRecorder](capi-avrecorder.md)
+**相关模块：** [AVRecorder](capi-media-kit-avrecorder.md)
 
 ## 汇总
 
@@ -124,7 +124,7 @@ OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWind
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) **window | 指向OHNativeWindow实例指针的指针，用于获取输入Surface。*window必须为nullptr，由框架层统一分配和释放内存，防止内存泄漏或重复释放等问题。 调用成功后，*window指向框架层分配的OHNativeWindow实例，调用者可从此实例中获取Surface填入视频数据。若*window不为nullptr，将返回AV_ERR_INVALID_VAL错误。 |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) **window | 指向OHNativeWindow实例指针的指针，用于获取输入Surface。*window必须为nullptr，由框架层统一分配和释放内存，防止内存泄漏或重复释放等问题。 调用成功后，*window指向框架层分配的OHNativeWindow实例，调用者可从此实例中获取Surface填入视频数据。若*window不为nullptr，将返回AV_ERR_INVALID_VAL错误。 |
 
 **返回值：**
 

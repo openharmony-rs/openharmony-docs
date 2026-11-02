@@ -10,7 +10,7 @@ arkweb_scheme_handler.h是ArkWeb中用于拦截和自定义网络请求的完整
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-arkweb-web.md)
 
 ## 汇总
 
@@ -18,13 +18,13 @@ arkweb_scheme_handler.h是ArkWeb中用于拦截和自定义网络请求的完整
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md) | ArkWeb_SchemeHandler | ArkWeb_SchemeHandler是用于注册自定义Scheme（协议）拦截器的结构体，定义了onRequestStart请求开始回调和onRequestStop请求停止回调两个函数指针。通过该结构体， 开发者可以拦截Web组件中指定scheme的网络请求，适用于资源本地化、数据模拟、请求过滤、协议扩展等场景：在onRequestStart中判断是否拦截并返回自定义数据，在onRequestStop中执行资源清理， onRequestStart和onRequestStop会按请求生命周期顺序依次调用。该结构体配合ArkWeb_ResourceHandler和ArkWeb_Response实现完整的请求拦截与自定义响应流程，调用顺序为： ArkWeb_SchemeHandler拦截请求 → ArkWeb_ResourceHandler处理资源 → ArkWeb_Response返回响应。 |
-| [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md) | ArkWeb_ResourceHandler | ArkWeb_ResourceHandler是用于处理被拦截的Scheme请求的资源处理器结构体。在ArkWeb_SchemeHandler拦截到指定scheme的请求后， 通过该结构体可以向Web组件返回自定义的响应数据，包括响应状态码、响应头、响应体等。该结构体在onRequestStart回调中作为参数传入，开发者通过它实现对被拦截请求的完全自定义响应。 |
-| [ArkWeb_Response](capi-web-arkweb-response.md) | ArkWeb_Response | ArkWeb_Response是用于构建自定义HTTP响应的结构体，定义了响应状态码、响应头、响应体等核心字段。该结构体配合ArkWeb_ResourceHandler使用， 在Scheme请求拦截场景中为被拦截的请求提供完整的HTTP响应数据，实现自定义的资源返回能力。 |
-| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md) | ArkWeb_ResourceRequest | ArkWeb_ResourceRequest是被拦截的Scheme请求的详细信息结构体，包含请求的URL、HTTP方法、请求头等元数据。 该结构体在ArkWeb_SchemeHandler的onRequestStart回调中作为参数传入，适用于自定义协议处理、资源拦截等场景，帮助开发者实现跨域请求控制、本地资源映射等功能，从而增强安全性和性能。 开发者通过它获取被拦截请求的完整信息，据此决定是否拦截以及如何构建自定义响应。 |
-| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md) | ArkWeb_RequestHeaderList | ArkWeb_RequestHeaderList是HTTP请求头列表结构体，用于在ArkWeb NDK中表示和管理HTTP请求头的键值对集合。该结构体包含请求头数组（headers）和数组长度（headerCount）， headers为ArkWeb_RequestHeader指针数组，headerCount表示数组元素个数。该结构体配合ArkWeb_ResourceRequest等结构体使用，提供对Web组件网络请求头的读取和设置能力。使用场景： 在自定义协议处理器中处理HTTP请求头、在网络请求拦截器中修改请求头、在API鉴权场景中添加认证头、在缓存控制和内容协商等场景中配置请求头。 |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md) | ArkWeb_HttpBodyStream | ArkWeb_HttpBodyStream是HTTP请求体流结构体，用于在自定义Scheme请求拦截场景中获取HTTP请求的body数据。当拦截到的POST等包含请求体的HTTP请求时， 可通过该结构体读取请求体的原始字节流数据。该结构体通常与ArkWeb_ResourceRequest配合使用，在ArkWeb_SchemeHandler的回调中获取完整的请求信息。 |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md) | ArkWeb_ErrorInfo | OH_ArkWebResourceHandler_DidFailWithErrorInfo的错误信息； |
+| [ArkWeb_SchemeHandler_](capi-web-arkweb-schemehandler-.md) | ArkWeb_SchemeHandler | ArkWeb_SchemeHandler是用于注册自定义Scheme（协议）拦截器的结构体，定义了onRequestStart请求开始回调和onRequestStop请求停止回调两个函数指针。通过该结构体， 开发者可以拦截Web组件中指定scheme的网络请求，适用于资源本地化、数据模拟、请求过滤、协议扩展等场景：在onRequestStart中判断是否拦截并返回自定义数据，在onRequestStop中执行资源清理， onRequestStart和onRequestStop会按请求生命周期顺序依次调用。该结构体配合ArkWeb_ResourceHandler和ArkWeb_Response实现完整的请求拦截与自定义响应流程，调用顺序为： ArkWeb_SchemeHandler拦截请求 → ArkWeb_ResourceHandler处理资源 → ArkWeb_Response返回响应。 |
+| [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler-.md) | ArkWeb_ResourceHandler | ArkWeb_ResourceHandler是用于处理被拦截的Scheme请求的资源处理器结构体。在ArkWeb_SchemeHandler拦截到指定scheme的请求后， 通过该结构体可以向Web组件返回自定义的响应数据，包括响应状态码、响应头、响应体等。该结构体在onRequestStart回调中作为参数传入，开发者通过它实现对被拦截请求的完全自定义响应。 |
+| [ArkWeb_Response_](capi-web-arkweb-response-.md) | ArkWeb_Response | ArkWeb_Response是用于构建自定义HTTP响应的结构体，定义了响应状态码、响应头、响应体等核心字段。该结构体配合ArkWeb_ResourceHandler使用， 在Scheme请求拦截场景中为被拦截的请求提供完整的HTTP响应数据，实现自定义的资源返回能力。 |
+| [ArkWeb_ResourceRequest_](capi-web-arkweb-resourcerequest-.md) | ArkWeb_ResourceRequest | ArkWeb_ResourceRequest是被拦截的Scheme请求的详细信息结构体，包含请求的URL、HTTP方法、请求头等元数据。 该结构体在ArkWeb_SchemeHandler的onRequestStart回调中作为参数传入，适用于自定义协议处理、资源拦截等场景，帮助开发者实现跨域请求控制、本地资源映射等功能，从而增强安全性和性能。 开发者通过它获取被拦截请求的完整信息，据此决定是否拦截以及如何构建自定义响应。 |
+| [ArkWeb_RequestHeaderList_](capi-web-arkweb-requestheaderlist-.md) | ArkWeb_RequestHeaderList | ArkWeb_RequestHeaderList是HTTP请求头列表结构体，用于在ArkWeb NDK中表示和管理HTTP请求头的键值对集合。该结构体包含请求头数组（headers）和数组长度（headerCount）， headers为ArkWeb_RequestHeader指针数组，headerCount表示数组元素个数。该结构体配合ArkWeb_ResourceRequest等结构体使用，提供对Web组件网络请求头的读取和设置能力。使用场景： 在自定义协议处理器中处理HTTP请求头、在网络请求拦截器中修改请求头、在API鉴权场景中添加认证头、在缓存控制和内容协商等场景中配置请求头。 |
+| [ArkWeb_HttpBodyStream_](capi-web-arkweb-httpbodystream-.md) | ArkWeb_HttpBodyStream | ArkWeb_HttpBodyStream是HTTP请求体流结构体，用于在自定义Scheme请求拦截场景中获取HTTP请求的body数据。当拦截到的POST等包含请求体的HTTP请求时， 可通过该结构体读取请求体的原始字节流数据。该结构体通常与ArkWeb_ResourceRequest配合使用，在ArkWeb_SchemeHandler的回调中获取完整的请求信息。 |
+| [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo-.md) | ArkWeb_ErrorInfo | OH_ArkWebResourceHandler_DidFailWithErrorInfo的错误信息； |
 
 ### 枚举
 
@@ -118,16 +118,6 @@ arkweb_scheme_handler.h是ArkWeb中用于拦截和自定义网络请求的完整
 | [void OH_ArkWeb_ReleaseString(char* string)](#oh_arkweb_releasestring) | - | 释放由NDK接口创建的字符串。 |
 | [void OH_ArkWeb_ReleaseByteArray(uint8_t* byteArray)](#oh_arkweb_releasebytearray) | - | 释放由NDK接口创建的字节数组。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler, ArkWeb_ResourceRequest* resourceRequest, const ArkWeb_ResourceHandler* resourceHandler, bool* intercept) | 请求开始的回调，这将在IO线程上被调用。用于在请求开始时拦截和处理指定scheme的网络请求，开发者可通过此回调实现自定义协议处理、本地资源替换、数据加密传输等功能。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, const ArkWeb_ResourceRequest* resourceRequest) | 请求完成时的回调函数。这将在IO线程上被调用。用于在请求完成时进行资源清理、状态更新或日志记录等操作。 <br>应该使用OH_ArkWebResourceRequest_Destroy销毁resourceRequest， 并使用OH_ArkWebResourceHandler_Destroy销毁在ArkWeb_OnRequestStart中接收到的ArkWeb_ResourceHandler。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bytesRead) | 当OH_ArkWebHttpBodyStream_Read读取操作完成时的回调函数。该回调函数会在ArkWeb工作线程中运行。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bytesRead) | 当OH_ArkWebHttpBodyStream_AsyncRead读取操作完成时的回调函数。该回调函数会在ArkWeb工作线程中运行。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_HttpBodyStreamInitCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, ArkWeb_NetError result) | ArkWeb_HttpBodyStream初始化操作完成时回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
-
 ## 枚举类型说明
 
 ### ArkWeb_CustomSchemeOption
@@ -214,9 +204,9 @@ typedef void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | ArkWeb_SchemeHandler。 |
-| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | 通过该对象获取请求的信息。 |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 请求的ArkWeb_ResourceHandler。如果intercept设置为false，则不应使用它。 |
+| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | ArkWeb_SchemeHandler。 |
+| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | 通过该对象获取请求的信息。 |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | 请求的ArkWeb_ResourceHandler。如果intercept设置为false，则不应使用它。 |
 | bool* intercept | 如果为true，则会拦截请求；如果为false，则不会拦截。 |
 
 ### ArkWeb_OnRequestStop()
@@ -237,8 +227,8 @@ typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | ArkWeb_SchemeHandler。 |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | ArkWeb_SchemeHandler。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 
 ### ArkWeb_HttpBodyStreamReadCallback()
 
@@ -258,7 +248,7 @@ typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* h
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | uint8_t* buffer | 接收数据的buffer。 |
 | int bytesRead | 读取的字节数。如果bytesRead大于0，则表示buffer已填充了bytesRead字节的数据。开发者可以从buffer中读取数据， 如果OH_ArkWebHttpBodyStream_IsEof的返回值为false，则开发者可以继续读取剩余的数据。 |
 
@@ -280,7 +270,7 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | uint8_t* buffer | 接收数据的缓冲区。 |
 | int bytesRead | 标识异步读取操作执行结果的字节计数值。如果bytesRead大于0，则表示buffer已填充了bytesRead字节的数据。开发者可以从buffer中读取数据， 如果OH_ArkWebHttpBodyStream_IsEof的返回值为false，则开发者可以继续读取剩余的数据。 |
 
@@ -302,7 +292,7 @@ ArkWeb_HttpBodyStream初始化操作完成时回调函数。
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) result | 成功时返回ARKWEB_NET_OK，否则请参考[arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md)。 |
 
 ### OH_ArkWebRequestHeaderList_Destroy()
@@ -323,7 +313,7 @@ void OH_ArkWebRequestHeaderList_Destroy(ArkWeb_RequestHeaderList* requestHeaderL
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)* requestHeaderList | 将被销毁的ArkWeb_RequestHeaderList。 |
+| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist-.md)* requestHeaderList | 将被销毁的ArkWeb_RequestHeaderList。 |
 
 ### OH_ArkWebRequestHeaderList_GetSize()
 
@@ -343,7 +333,7 @@ int32_t OH_ArkWebRequestHeaderList_GetSize(const ArkWeb_RequestHeaderList* reque
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)* requestHeaderList | 请求头的列表。 |
+| [const ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist-.md)* requestHeaderList | 请求头的列表。 |
 
 **返回值：**
 
@@ -369,7 +359,7 @@ void OH_ArkWebRequestHeaderList_GetHeader(const ArkWeb_RequestHeaderList* reques
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)* requestHeaderList | 请求头列表。 |
+| [const ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist-.md)* requestHeaderList | 请求头列表。 |
 | int32_t index | 请求头的索引。取值范围为[0, size-1]，其中size是请求头列表的大小。超出范围时行为未定义。 |
 | char** key | 请求头的键（key）。调用者必须使用OH_ArkWeb_ReleaseString函数来释放这个字符串。 |
 | char** value | 请求头的值（value）。调用者必须使用OH_ArkWeb_ReleaseString函数来释放这个字符串。 |
@@ -392,7 +382,7 @@ int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceReq
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 | void* userData | 将要设置的用户数据。 |
 
 **返回值：**
@@ -419,7 +409,7 @@ void* OH_ArkWebResourceRequest_GetUserData(const ArkWeb_ResourceRequest* resourc
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 
 **返回值：**
 
@@ -445,7 +435,7 @@ void OH_ArkWebResourceRequest_GetMethod(const ArkWeb_ResourceRequest* resourceRe
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 | char** method | HTTP请求方法。此函数将为method字符串分配内存，调用者必须使用OH_ArkWeb_ReleaseString释放字符串。 |
 
 ### OH_ArkWebResourceRequest_GetUrl()
@@ -466,7 +456,7 @@ void OH_ArkWebResourceRequest_GetUrl(const ArkWeb_ResourceRequest* resourceReque
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 | char** url | 请求的URL。此函数将为URL字符串分配内存，调用者必须通过OH_ArkWeb_ReleaseString释放该字符串。 |
 
 ### OH_ArkWebResourceRequest_GetHttpBodyStream()
@@ -487,8 +477,8 @@ void OH_ArkWebResourceRequest_GetHttpBodyStream(const ArkWeb_ResourceRequest* re
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)** httpBodyStream | 请求的上传数据。此函数将为httpBodyStream分配内存， 调用者必须使用OH_ArkWebResourceRequest_DestroyHttpBodyStream释放httpBodyStream。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)** httpBodyStream | 请求的上传数据。此函数将为httpBodyStream分配内存， 调用者必须使用OH_ArkWebResourceRequest_DestroyHttpBodyStream释放httpBodyStream。 |
 
 ### OH_ArkWebResourceRequest_DestroyHttpBodyStream()
 
@@ -508,7 +498,7 @@ void OH_ArkWebResourceRequest_DestroyHttpBodyStream(ArkWeb_HttpBodyStream* httpB
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | 待销毁的httpBodyStream。 |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | 待销毁的httpBodyStream。 |
 
 ### OH_ArkWebResourceRequest_GetResourceType()
 
@@ -528,7 +518,7 @@ int32_t OH_ArkWebResourceRequest_GetResourceType(const ArkWeb_ResourceRequest* r
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 
 **返回值：**
 
@@ -554,7 +544,7 @@ void OH_ArkWebResourceRequest_GetFrameUrl(const ArkWeb_ResourceRequest* resource
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 | char** frameUrl | 触发此请求的Frame的URL。此函数将为URL字符串分配内存，并且调用者必须通过OH_ArkWeb_ReleaseString来释放该字符串。 |
 
 ### OH_ArkWebHttpBodyStream_SetUserData()
@@ -575,7 +565,7 @@ int32_t OH_ArkWebHttpBodyStream_SetUserData(ArkWeb_HttpBodyStream* httpBodyStrea
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | void* userData | 要设置的用户数据。 |
 
 **返回值：**
@@ -602,7 +592,7 @@ void* OH_ArkWebHttpBodyStream_GetUserData(const ArkWeb_HttpBodyStream* httpBodyS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 
 **返回值：**
 
@@ -628,7 +618,7 @@ int32_t OH_ArkWebHttpBodyStream_SetReadCallback(ArkWeb_HttpBodyStream* httpBodyS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | [ArkWeb_HttpBodyStreamReadCallback](capi-arkweb-scheme-handler-h.md#arkweb_httpbodystreamreadcallback) readCallback | OH_ArkWebHttpBodyStream_Read的回调函数。 |
 
 **返回值：**
@@ -655,7 +645,7 @@ int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* http
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | [ArkWeb_HttpBodyStreamAsyncReadCallback](capi-arkweb-scheme-handler-h.md#arkweb_httpbodystreamasyncreadcallback) readCallback | OH_ArkWebHttpBodyStream_AsyncRead的回调函数。 |
 
 **返回值：**
@@ -682,7 +672,7 @@ int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream, ArkW
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | [ArkWeb_HttpBodyStreamInitCallback](capi-arkweb-scheme-handler-h.md#arkweb_httpbodystreaminitcallback) initCallback | 初始化的回调函数。 |
 
 **返回值：**
@@ -709,7 +699,7 @@ void OH_ArkWebHttpBodyStream_Read(const ArkWeb_HttpBodyStream* httpBodyStream, u
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | uint8_t* buffer | 接收数据的buffer。buffer的大小必须大于bufLen。 |
 | int bufLen | 要读取的字节数。取值范围必须为正整数，传入负数时行为未定义。 |
 
@@ -731,7 +721,7 @@ void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStre
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | uint8_t* buffer | 接收数据的缓冲区。 |
 | int bufLen | 要读取的字节数。 |
 
@@ -753,7 +743,7 @@ uint64_t OH_ArkWebHttpBodyStream_GetSize(const ArkWeb_HttpBodyStream* httpBodySt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 
 **返回值：**
 
@@ -779,7 +769,7 @@ uint64_t OH_ArkWebHttpBodyStream_GetPosition(const ArkWeb_HttpBodyStream* httpBo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 
 **返回值：**
 
@@ -805,7 +795,7 @@ bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStre
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 
 **返回值：**
 
@@ -831,7 +821,7 @@ bool OH_ArkWebHttpBodyStream_IsEof(const ArkWeb_HttpBodyStream* httpBodyStream)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 
 **返回值：**
 
@@ -857,7 +847,7 @@ bool OH_ArkWebHttpBodyStream_IsInMemory(const ArkWeb_HttpBodyStream* httpBodyStr
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 
 **返回值：**
 
@@ -883,7 +873,7 @@ int32_t OH_ArkWebResourceRequest_Destroy(const ArkWeb_ResourceRequest* resourceR
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 
 **返回值：**
 
@@ -909,7 +899,7 @@ void OH_ArkWebResourceRequest_GetReferrer(const ArkWeb_ResourceRequest* resource
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 | char** referrer | 请求的Referrer。此函数将为referrer字符串分配内存，调用者必须使用OH_ArkWeb_ReleaseString释放该字符串。 |
 
 ### OH_ArkWebResourceRequest_GetRequestHeaders()
@@ -930,8 +920,8 @@ void OH_ArkWebResourceRequest_GetRequestHeaders(const ArkWeb_ResourceRequest* re
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
-| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)** requestHeaderList | 请求的请求头列表。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist-.md)** requestHeaderList | 请求的请求头列表。 |
 
 ### OH_ArkWebResourceRequest_IsRedirect()
 
@@ -951,7 +941,7 @@ bool OH_ArkWebResourceRequest_IsRedirect(const ArkWeb_ResourceRequest* resourceR
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 
 **返回值：**
 
@@ -977,7 +967,7 @@ bool OH_ArkWebResourceRequest_IsMainFrame(const ArkWeb_ResourceRequest* resource
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 
 **返回值：**
 
@@ -1003,7 +993,7 @@ bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceR
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)* resourceRequest | ArkWeb_ResourceRequest。 |
+| [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)* resourceRequest | ArkWeb_ResourceRequest。 |
 
 **返回值：**
 
@@ -1057,7 +1047,7 @@ bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHa
 | 参数项 | 描述 |
 | -- | -- |
 | const char* scheme | 需要被拦截的scheme，需符合RFC 3986规范。 |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | 该scheme的拦截器ArkWeb_SchemeHandler。只有通过ServiceWorker触发的请求才会通过这个schemeHandler进行通知。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | 该scheme的拦截器ArkWeb_SchemeHandler。只有通过ServiceWorker触发的请求才会通过这个schemeHandler进行通知。 |
 
 **返回值：**
 
@@ -1085,7 +1075,7 @@ bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_S
 | -- | -- |
 | const char* scheme | 需要被拦截的scheme。 |
 | const char* webTag | Web组件的标签名称，用于标识某个唯一组件，由开发者来保证名称唯一性。建议长度不超过256字符。 |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | 该scheme的拦截器ArkWeb_SchemeHandler。只有从指定web触发的请求才会通过这个schemeHandler进行通知。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | 该scheme的拦截器ArkWeb_SchemeHandler。只有从指定web触发的请求才会通过这个schemeHandler进行通知。 |
 
 **返回值：**
 
@@ -1157,7 +1147,7 @@ void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)** schemeHandler | 返回创建的ArkWeb_SchemeHandler。在不需要时使用[OH_ArkWeb_DestroySchemeHandler](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyschemehandler)销毁它。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)** schemeHandler | 返回创建的ArkWeb_SchemeHandler。在不需要时使用[OH_ArkWeb_DestroySchemeHandler](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyschemehandler)销毁它。 |
 
 ### OH_ArkWeb_DestroySchemeHandler()
 
@@ -1177,7 +1167,7 @@ void OH_ArkWeb_DestroySchemeHandler(ArkWeb_SchemeHandler* schemeHandler)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | 待销毁的ArkWeb_SchemeHandler。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | 待销毁的ArkWeb_SchemeHandler。 |
 
 ### OH_ArkWebSchemeHandler_SetUserData()
 
@@ -1197,7 +1187,7 @@ int32_t OH_ArkWebSchemeHandler_SetUserData(ArkWeb_SchemeHandler* schemeHandler, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | ArkWeb_SchemeHandler。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | ArkWeb_SchemeHandler。 |
 | void* userData | 要设置的用户数据。 |
 
 **返回值：**
@@ -1224,7 +1214,7 @@ void* OH_ArkWebSchemeHandler_GetUserData(const ArkWeb_SchemeHandler* schemeHandl
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | ArkWeb_SchemeHandler。 |
+| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | ArkWeb_SchemeHandler。 |
 
 **返回值：**
 
@@ -1240,7 +1230,10 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStart(ArkWeb_SchemeHandler* schemeHan
 
 **描述：**
 
-为SchemeHandler设置OnRequestStart回调。<br> > **说明**<br>> > - 重定向后的URL无法单独拦截。如需拦截，必须同时对原始请求URL进行拦截。
+为SchemeHandler设置OnRequestStart回调。<br>
+> **说明**
+>
+> - 重定向后的URL无法单独拦截。如需拦截，必须同时对原始请求URL进行拦截。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1250,7 +1243,7 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStart(ArkWeb_SchemeHandler* schemeHan
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | 该scheme的SchemeHandler。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | 该scheme的SchemeHandler。 |
 | [ArkWeb_OnRequestStart](capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart) onRequestStart | OnRequestStart回调函数。 |
 
 **返回值：**
@@ -1277,7 +1270,7 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStop(ArkWeb_SchemeHandler* schemeHand
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)* schemeHandler | 该scheme的SchemeHandler。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)* schemeHandler | 该scheme的SchemeHandler。 |
 | [ArkWeb_OnRequestStop](capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop) onRequestStop | OnRequestStop回调函数。 |
 
 **返回值：**
@@ -1304,7 +1297,7 @@ void OH_ArkWeb_CreateResponse(ArkWeb_Response** response)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)** response | 返回创建的ArkWeb_Response。在不需要时使用OH_ArkWeb_DestroyResponse进行销毁。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)** response | 返回创建的ArkWeb_Response。在不需要时使用OH_ArkWeb_DestroyResponse进行销毁。 |
 
 ### OH_ArkWeb_DestroyResponse()
 
@@ -1324,7 +1317,7 @@ void OH_ArkWeb_DestroyResponse(ArkWeb_Response* response)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | 待销毁的ArkWeb_Response。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | 待销毁的ArkWeb_Response。 |
 
 ### OH_ArkWebResponse_SetUrl()
 
@@ -1344,7 +1337,7 @@ int32_t OH_ArkWebResponse_SetUrl(ArkWeb_Response* response, const char* url)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | const char* url | 解析后的URL。 |
 
 **返回值：**
@@ -1371,7 +1364,7 @@ void OH_ArkWebResponse_GetUrl(const ArkWeb_Response* response, char** url)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | char** url | 解析后的URL。此函数将为URL字符串分配内存，调用方必须通过OH_ArkWeb_ReleaseString释放该字符串。 |
 
 ### OH_ArkWebResponse_SetError()
@@ -1392,7 +1385,7 @@ int32_t OH_ArkWebResponse_SetError(ArkWeb_Response* response, ArkWeb_NetError er
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | 失败请求的错误码。 |
 
 **返回值：**
@@ -1419,7 +1412,7 @@ ArkWeb_NetError OH_ArkWebResponse_GetError(const ArkWeb_Response* response)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 
 **返回值：**
 
@@ -1445,7 +1438,7 @@ int32_t OH_ArkWebResponse_SetStatus(ArkWeb_Response* response, int status)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | int status | 响应的HTTP状态码。取值范围为100-599，应符合HTTP标准状态码规范（信息100-199、成功200-299、重定向300-399、客户端错误400-499、服务器错误500-599）。 超出范围时行为未定义。 |
 
 **返回值：**
@@ -1472,7 +1465,7 @@ int OH_ArkWebResponse_GetStatus(const ArkWeb_Response* response)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 
 **返回值：**
 
@@ -1498,7 +1491,7 @@ int32_t OH_ArkWebResponse_SetStatusText(ArkWeb_Response* response, const char* s
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | const char* statusText | 响应的状态文本。设置状态文本会为HTTP状态码提供更详细的描述，例如：状态码200可以对应“OK”、状态码404可以对应“Not Found”等，帮助客户端更好地理解请求结果。 |
 
 **返回值：**
@@ -1525,7 +1518,7 @@ void OH_ArkWebResponse_GetStatusText(const ArkWeb_Response* response, char** sta
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | char** statusText | 返回ArkWeb_Response的状态文本。此函数将为statusText字符串分配内存，调用方必须通过OH_ArkWeb_ReleaseString释放该字符串。 |
 
 ### OH_ArkWebResponse_SetMimeType()
@@ -1546,7 +1539,7 @@ int32_t OH_ArkWebResponse_SetMimeType(ArkWeb_Response* response, const char* mim
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | const char* mimeType | 响应的媒体类型。设置媒体类型会告诉客户端响应内容的类型，例如：text/html表示HTML文档、application/json表示JSON数据、image/png表示PNG图片等， 浏览器会根据媒体类型选择合适的渲染方式。 |
 
 **返回值：**
@@ -1573,7 +1566,7 @@ void OH_ArkWebResponse_GetMimeType(const ArkWeb_Response* response, char** mimeT
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | char** mimeType | 返回ArkWeb_Response的媒体类型。此函数将为mimeType字符串分配内存，调用方必须通过OH_ArkWeb_ReleaseString释放该字符串。 |
 
 ### OH_ArkWebResponse_SetCharset()
@@ -1594,7 +1587,7 @@ int32_t OH_ArkWebResponse_SetCharset(ArkWeb_Response* response, const char* char
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | const char* charset | 响应的字符集。设置字符集会告诉客户端响应内容使用的字符编码，例如：UTF-8表示使用UTF-8编码、GBK表示使用GBK编码等，浏览器会根据字符集正确解析和显示文本内容。 |
 
 **返回值：**
@@ -1621,7 +1614,7 @@ void OH_ArkWebResponse_GetCharset(const ArkWeb_Response* response, char** charse
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | char** charset | 返回ArkWeb_Response的字符集。此函数将为charset字符串分配内存，调用方必须通过OH_ArkWeb_ReleaseString释放字符串。 |
 
 ### OH_ArkWebResponse_SetHeaderByName()
@@ -1642,7 +1635,7 @@ int32_t OH_ArkWebResponse_SetHeaderByName(ArkWeb_Response* response, const char*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | const char* name | header的名称。指定要设置的HTTP响应头名称，例如：Content-Type、Content-Length、Cache-Control等，不同的header会影响浏览器如何处理响应。 |
 | const char* value | header的值。指定HTTP响应头的值，例如：对于Content-Type可以设置为text/html、对于Cache-Control可以设置为no-cache等， 实际效果取决于header的名称和值的组合。 |
 | bool overwrite | 如果为true，将覆盖现有的header，否则不覆盖。 |
@@ -1671,7 +1664,7 @@ void OH_ArkWebResponse_GetHeaderByName(const ArkWeb_Response* response, const ch
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
 | const char* name | header的名称。 |
 | char** value | 返回header的值。此函数将为value字符串分配内存，调用方必须通过OH_ArkWeb_ReleaseString释放该字符串。 |
 
@@ -1693,7 +1686,7 @@ int32_t OH_ArkWebResourceHandler_Destroy(const ArkWeb_ResourceHandler* resourceH
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | ArkWeb_ResourceHandler。 |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | ArkWeb_ResourceHandler。 |
 
 **返回值：**
 
@@ -1719,8 +1712,8 @@ int32_t OH_ArkWebResourceHandler_DidReceiveResponse(const ArkWeb_ResourceHandler
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 该请求的ArkWeb_ResourceHandler。 |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | 该拦截请求的ArkWeb_Response。 |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | 该请求的ArkWeb_ResourceHandler。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | 该拦截请求的ArkWeb_Response。 |
 
 **返回值：**
 
@@ -1746,7 +1739,7 @@ int32_t OH_ArkWebResourceHandler_DidReceiveData(const ArkWeb_ResourceHandler* re
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 该请求的ArkWeb_ResourceHandler。 |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | 该请求的ArkWeb_ResourceHandler。 |
 | const uint8_t* buffer | 要发送的buffer数据。 |
 | int64_t bufLen | buffer的大小，单位：字节。 |
 
@@ -1774,7 +1767,7 @@ int32_t OH_ArkWebResourceHandler_DidFinish(const ArkWeb_ResourceHandler* resourc
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 该请求的ArkWeb_ResourceHandler。 |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | 该请求的ArkWeb_ResourceHandler。 |
 
 **返回值：**
 
@@ -1800,7 +1793,7 @@ int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | 该请求的错误码。请参考[arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md)。 |
 
 **返回值：**
@@ -1827,7 +1820,7 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | 该请求的错误码。请参考[arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md)。 |
 | bool completeIfNoResponse | 若之前未调用过[OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)，调用 [OH_ArkWebResourceHandler_DidFailWithErrorV2](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2)时，此次网络请求是否完成；值为true时，若之前未调用过 [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)，则会自动生成一个response以完成此次网络请求，网络错误码为-104；值为false时，将等待应用调用 [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)并传入response，不会直接完成此次网络请求。 |
 
@@ -1855,7 +1848,7 @@ void OH_ArkWeb_CreateErrorInfo(ArkWeb_ErrorInfo** errorInfo)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)** errorInfo | 返回创建的ArkWeb_ErrorInfo。 如果errorInfo为空，则不做任何操作。 如果创建成功，则*errorInfo指向新创建的对象。当不再需要时，必须使用OH_ArkWeb_DestroyErrorInfo进行销毁。 如果创建失败，*errorInfo将被设置为NULL。 |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)** errorInfo | 返回创建的ArkWeb_ErrorInfo。 如果errorInfo为空，则不做任何操作。 如果创建成功，则*errorInfo指向新创建的对象。当不再需要时，必须使用OH_ArkWeb_DestroyErrorInfo进行销毁。 如果创建失败，*errorInfo将被设置为NULL。 |
 
 ### OH_ArkWeb_DestroyErrorInfo()
 
@@ -1875,7 +1868,7 @@ void OH_ArkWeb_DestroyErrorInfo(ArkWeb_ErrorInfo* errorInfo)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | 要销毁的ArkWeb_ErrorInfo。 |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | 要销毁的ArkWeb_ErrorInfo。 |
 
 ### OH_ArkWebErrorInfo_SetCompleteIfNoResponse()
 
@@ -1895,7 +1888,7 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | ArkWeb_ErrorInfo。 |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | ArkWeb_ErrorInfo。 |
 | bool completeIfNoResponse | 如果为true，将在尚未收到响应时构造响应。 |
 
 **返回值：**
@@ -1922,7 +1915,7 @@ bool OH_ArkWebErrorInfo_GetCompleteIfNoResponse(const ArkWeb_ErrorInfo* errorInf
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | ArkWeb_ErrorInfo。 |
+| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | ArkWeb_ErrorInfo。 |
 
 **返回值：**
 
@@ -1948,7 +1941,7 @@ int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | ArkWeb_ErrorInfo。 |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | ArkWeb_ErrorInfo。 |
 | int32_t errorCode | 自定义错误码。 |
 
 **返回值：**
@@ -1975,7 +1968,7 @@ int32_t OH_ArkWebErrorInfo_GetCustomErrorCode(const ArkWeb_ErrorInfo* errorInfo)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | ArkWeb_ErrorInfo。 |
+| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | ArkWeb_ErrorInfo。 |
 
 **返回值：**
 
@@ -2001,7 +1994,7 @@ int32_t OH_ArkWebErrorInfo_SetErrorCode(ArkWeb_ErrorInfo* errorInfo, ArkWeb_NetE
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | ArkWeb_ErrorInfo。 |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | ArkWeb_ErrorInfo。 |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | 此请求的错误代码。请参阅arkweb_net_error_list.h。 |
 
 **返回值：**
@@ -2028,7 +2021,7 @@ ArkWeb_NetError OH_ArkWebErrorInfo_GetErrorCode(const ArkWeb_ErrorInfo* errorInf
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | ArkWeb_ErrorInfo。 |
+| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | ArkWeb_ErrorInfo。 |
 
 **返回值：**
 
@@ -2054,8 +2047,8 @@ int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorIn
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response。 |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | 响应的ArkWeb_ErrorInfo。 |
+| [ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response。 |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | 响应的ArkWeb_ErrorInfo。 |
 
 **返回值：**
 
@@ -2081,13 +2074,13 @@ ArkWeb_ErrorInfo* OH_ArkWebResponse_GetErrorInfo(const ArkWeb_Response* response
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_Response](capi-web-arkweb-response.md)* response | ArkWeb_Response对象。 |
+| [const ArkWeb_Response](capi-web-arkweb-response-.md)* response | ArkWeb_Response对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_ErrorInfo*](capi-web-arkweb-errorinfo.md) | 如果已设置ArkWeb_ErrorInfo，则返回指向ArkWeb_ErrorInfo的指针；否则返回NULL。 |
+| [ArkWeb_ErrorInfo*](capi-web-arkweb-errorinfo-.md) | 如果已设置ArkWeb_ErrorInfo，则返回指向ArkWeb_ErrorInfo的指针；否则返回NULL。 |
 
 ### OH_ArkWebResourceHandler_DidFailWithErrorInfo()
 
@@ -2107,8 +2100,8 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorInfo(const ArkWeb_ResourceHandl
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | 请求的ArkWeb_ResourceHandler。 |
-| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)* errorInfo | 此请求的错误信息。 |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | 请求的ArkWeb_ResourceHandler。 |
+| [const ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)* errorInfo | 此请求的错误信息。 |
 
 **返回值：**
 

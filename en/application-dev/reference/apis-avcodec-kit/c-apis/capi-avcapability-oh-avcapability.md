@@ -12,7 +12,7 @@ Forward declaration of OH_AVCapability.
 
 **Since**: 10
 
-**Related module**: [AVCapability](capi-avcapability.md)
+**Related module**: [AVCapability](capi-others-avcapability.md)
 
 **Header file**: [native_avcapability.h](capi-native-avcapability-h.md)
 

@@ -10,7 +10,7 @@ Defines APIs related to font information, such as obtaining font information, fi
 
 **Since**: 14
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 
@@ -86,7 +86,7 @@ Defines an enum for the system font types.
 | GENERIC = 1 << 1 | System font type. |
 | STYLISH = 1 << 2 | Style font type. |
 | INSTALLED = 1 << 3 | User-installed font type. |
-| CUSTOMIZED = 1 << 4 |  |
+| CUSTOMIZED = 1 << 4 | Custom font type.<br>**Since**: 18 |
 
 ### OH_Drawing_FontFullDescriptorAttributeId
 
@@ -114,18 +114,18 @@ Enumerates font descriptor attributes. You can use the corresponding APIs to obt
 | FULL_DESCRIPTOR_ATTR_I_ITALIC = 7 | Whether the font is italic, of the int type. **1** means that the font is italic; **0** otherwise. |
 | FULL_DESCRIPTOR_ATTR_B_MONO = 8 | Whether the font is monospaced. The value is of the bool type. The value true means the font is monospaced, and false means the opposite. |
 | FULL_DESCRIPTOR_ATTR_B_SYMBOLIC = 9 | Whether the font supports the symbol font, of the bool type. **true** means yes; **false** otherwise. |
-| FULL_DESCRIPTOR_ATTR_S_LOCAL_POSTSCRIPT_NAME = 10 |  |
-| FULL_DESCRIPTOR_ATTR_S_LOCAL_FULL_NAME = 11 |  |
-| FULL_DESCRIPTOR_ATTR_S_LOCAL_FAMILY_NAME = 12 |  |
-| FULL_DESCRIPTOR_ATTR_S_LOCAL_SUB_FAMILY_NAME = 13 |  |
-| FULL_DESCRIPTOR_ATTR_S_VERSION = 14 |  |
-| FULL_DESCRIPTOR_ATTR_S_MANUFACTURE = 15 |  |
-| FULL_DESCRIPTOR_ATTR_S_COPYRIGHT = 16 |  |
-| FULL_DESCRIPTOR_ATTR_S_TRADEMARK = 17 |  |
-| FULL_DESCRIPTOR_ATTR_S_LICENSE = 18 |  |
-| FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS = 19 |  |
-| FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE = 20 |  |
-| FULL_DESCRIPTOR_ATTR_I_INDEX = 21 |  |
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_POSTSCRIPT_NAME = 10 | Extracts the postscript name of the font based on the system language configuration.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_FULL_NAME = 11 | Extracts the full name of the font based on the system language configuration.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_FAMILY_NAME = 12 | Extracts the font family name based on the system language configuration.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_LOCAL_SUB_FAMILY_NAME = 13 | Extracts the font subfamily name based on the system language configuration.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_VERSION = 14 | Font version.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_MANUFACTURE = 15 | Font manufacturer information.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_COPYRIGHT = 16 | The copyright of the font<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_TRADEMARK = 17 | Font trademark information.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_S_LICENSE = 18 | Font license information.<br>**Since**: 23 |
+| FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS = 19 | Font variable axis array.<br>**Since**: 24 |
+| FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE = 20 | Font variable instance array.<br>**Since**: 24 |
+| FULL_DESCRIPTOR_ATTR_I_INDEX = 21 | Font index.<br>**Since**: 23 |
 
 ### OH_Drawing_FontVariationAxisAttributeId
 

@@ -12,7 +12,7 @@ struct OhosImageDecodingOps {...}
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-others-image.md)
 
 **所在头文件：** [image_source_mdk.h](capi-image-source-mdk-h.md)
 
@@ -28,7 +28,7 @@ struct OhosImageDecodingOps {...}
 | uint32_t index | Defines decoding index of image source. |
 | uint32_t sampleSize | Defines decoding sample size option. |
 | uint32_t rotate | Defines decoding rotate option. |
-| struct OhosImageSize size | Defines decoding target pixel size of width and height. |
-| struct OhosImageRegion region | Defines image source pixel region for decoding. |
+| [struct OhosImageSize](capi-image-ohosimagesize.md) size | Defines decoding target pixel size of width and height. |
+| [struct OhosImageRegion](capi-image-ohosimageregion.md) region | Defines image source pixel region for decoding. |
 
 

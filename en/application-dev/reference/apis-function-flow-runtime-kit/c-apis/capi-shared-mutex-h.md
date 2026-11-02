@@ -10,7 +10,7 @@ Declares the shared mutex interfaces in C.
 
 **Since**: 18
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## Summary
 

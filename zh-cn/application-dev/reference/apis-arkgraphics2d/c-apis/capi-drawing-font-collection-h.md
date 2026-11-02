@@ -10,7 +10,7 @@
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## 汇总
 
@@ -42,7 +42,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 **起始版本：** 8
 
-**资源释放：** OH_Drawing_DestroyFontCollection {return}
+**资源释放：** [OH_Drawing_DestroyFontCollection](#oh_drawing_destroyfontcollection)
 
 **废弃版本：** 26.0.1
 
@@ -132,7 +132,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 
 **起始版本：** 12
 
-**资源释放：** OH_Drawing_DestroyFontCollection {return}
+**资源释放：** [OH_Drawing_DestroyFontCollection](#oh_drawing_destroyfontcollection)
 
 **返回值：**
 

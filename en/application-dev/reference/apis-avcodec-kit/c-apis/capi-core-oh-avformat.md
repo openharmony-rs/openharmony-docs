@@ -12,7 +12,7 @@ Describes a native object for the OH_AVFormat interface.
 
 **Since**: 9
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-others-core.md)
 
 **Header file**: [native_avformat.h](capi-native-avformat-h.md)
 

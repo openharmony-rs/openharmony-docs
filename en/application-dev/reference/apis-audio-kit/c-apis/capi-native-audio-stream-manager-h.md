@@ -10,7 +10,7 @@ Declare audio stream manager related interfaces.<br> This file interface is used
 
 **Since**: 19
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 

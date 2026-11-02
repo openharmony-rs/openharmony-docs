@@ -10,7 +10,7 @@ Defines C APIs for the SSL/TLS certificate chain verification module.
 
 **Since**: 11
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 ## Summary
 

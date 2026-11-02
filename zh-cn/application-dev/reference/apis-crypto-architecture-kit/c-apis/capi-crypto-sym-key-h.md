@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [CryptoSymKeyApi](capi-cryptosymkeyapi.md)
+**相关模块：** [CryptoSymKeyApi](capi-crypto-architecture-kit-cryptosymkeyapi.md)
 
 ## 汇总
 
@@ -52,7 +52,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 **起始版本：** 12
 
-**资源释放：** crypto_sym_key/OH_CryptoSymKeyGenerator_Destroy {ctx}
+**资源释放：** [OH_CryptoSymKeyGenerator_Destroy](#oh_cryptosymkeygenerator_destroy)
 
 **参数：**
 
@@ -87,7 +87,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ct
 
 **起始版本：** 12
 
-**资源释放：** crypto_sym_key/OH_CryptoSymKey_Destroy {keyCtx}
+**资源释放：** [OH_CryptoSymKey_Destroy](#oh_cryptosymkey_destroy)
 
 **参数：**
 
@@ -116,7 +116,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx
 
 **起始版本：** 12
 
-**资源释放：** crypto_sym_key/OH_CryptoSymKey_Destroy {keyCtx}
+**资源释放：** [OH_CryptoSymKey_Destroy](#oh_cryptosymkey_destroy)
 
 **参数：**
 
@@ -218,7 +218,7 @@ OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_Dat
 
 **起始版本：** 12
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 

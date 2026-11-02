@@ -1,7 +1,7 @@
 # C API<!--c-telephonykit-->
 
 - Module<!--telephonykit-module-->
-    - [Telephony](capi-telephony.md)
+    - [Telephony](capi-telephony-kit-telephony.md)
 - Header file<!--telephonykit-headerfile-->
     - [telephony_data.h](capi-telephony-data-h.md)
     - [telephony_radio_type.h](capi-telephony-radio-type-h.md)

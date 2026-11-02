@@ -12,7 +12,7 @@ Defines the mutex structure used to store internal data of the mutex.
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-others-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

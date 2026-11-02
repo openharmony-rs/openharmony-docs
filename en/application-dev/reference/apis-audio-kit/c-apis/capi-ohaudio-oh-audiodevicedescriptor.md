@@ -12,7 +12,7 @@ Declaring the audio device descriptor. The instance is used to get more audio de
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_device_base.h](capi-native-audio-device-base-h.md)
 

@@ -10,7 +10,7 @@ Declares the C APIs for network traffic filtering and redirection. This header f
 
 **Since**: 26.0.0
 
-**Related module**: [TrafficFilter](capi-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 ## Summary
 
@@ -48,7 +48,7 @@ Creates a traffic redirection instance for redirecting TCP traffic to a proxy se
 
 **Since**: 26.0.0
 
-**Resource release**: TrafficFilter/OH_TrafficFilter_DestroyRedirector {redirector}
+**Resource release**: [OH_TrafficFilter_DestroyRedirector](#oh_trafficfilter_destroyredirector)
 
 **Parameters**:
 
@@ -255,7 +255,7 @@ Creates a packet controller instance. Creates a packet controller for intercepti
 
 **Since**: 26.0.1
 
-**Resource release**: TrafficFilter/OH_TrafficFilter_DestroyPacketController {controller}
+**Resource release**: [OH_TrafficFilter_DestroyPacketController](#oh_trafficfilter_destroypacketcontroller)
 
 **Parameters**:
 

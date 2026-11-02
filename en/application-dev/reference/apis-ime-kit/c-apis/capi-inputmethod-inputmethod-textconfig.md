@@ -12,7 +12,7 @@ Define the InputMethod_TextConfig structure type.<br> The configuration of the t
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-others-inputmethod.md)
 
 **Header file**: [inputmethod_text_config_capi.h](capi-inputmethod-text-config-capi-h.md)
 

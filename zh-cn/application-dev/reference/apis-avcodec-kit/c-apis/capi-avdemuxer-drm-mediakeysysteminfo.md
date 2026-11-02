@@ -12,7 +12,7 @@ typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
 
 **起始版本：** 11
 
-**相关模块：** [AVDemuxer](capi-avdemuxer.md)
+**相关模块：** [AVDemuxer](capi-others-avdemuxer.md)
 
 **所在头文件：** [native_avdemuxer.h](capi-native-avdemuxer-h.md)
 

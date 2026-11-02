@@ -10,7 +10,7 @@ Defines APIs for game devices.
 
 **Since**: 21
 
-**Related module**: [GameController](capi-gamecontroller.md)
+**Related module**: [GameController](capi-game-controller-kit-gamecontroller.md)
 
 ## Summary
 

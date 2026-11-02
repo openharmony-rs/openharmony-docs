@@ -12,7 +12,7 @@ Defines the vibration file description. This method is used to describe the file
 
 **Since**: 11
 
-**Related module**: [Vibrator](capi-vibrator.md)
+**Related module**: [Vibrator](capi-others-vibrator.md)
 
 **Header file**: [vibrator_type.h](capi-vibrator-type-h.md)
 

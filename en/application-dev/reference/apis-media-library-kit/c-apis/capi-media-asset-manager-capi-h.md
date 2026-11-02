@@ -10,7 +10,7 @@ The file declares the APIs of the media asset manager. You can use the functions
 
 **Since**: 12
 
-**Related module**: [MediaAssetManager](capi-mediaassetmanager.md)
+**Related module**: [MediaAssetManager](capi-media-library-kit-mediaassetmanager.md)
 
 ## Summary
 

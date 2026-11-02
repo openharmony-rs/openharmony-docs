@@ -12,7 +12,7 @@ Defines the struct of key information.
 
 **Since**: 9
 
-**Related module**: [HuksTypeApi](capi-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-others-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 
@@ -22,7 +22,7 @@ Defines the struct of key information.
 
 | Name | Description |
 | -- | -- |
-| struct OH_Huks_Blob alias | Key alias. |
+| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) alias | Key alias. |
 | struct OH_Huks_ParamSet *paramSet | Pointer to the key parameter set. |
 
 

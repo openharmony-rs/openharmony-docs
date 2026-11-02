@@ -12,7 +12,7 @@ struct OH_AudioSuite_SpaceRenderPositionParams {...}
 
 **起始版本：** 23
 
-**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 
@@ -22,8 +22,8 @@ struct OH_AudioSuite_SpaceRenderPositionParams {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| float x |  |
-| float y |  |
-| float z |  |
+| float x | 空间中的X坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23 |
+| float y | 空间中的Y坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23 |
+| float z | 空间中的Z坐标。取值范围为[-5.0, 5.0]，单位为米。<br>**起始版本：** 23 |
 
 

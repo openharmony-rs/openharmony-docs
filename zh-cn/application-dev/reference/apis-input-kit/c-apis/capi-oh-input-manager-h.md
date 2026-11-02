@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [input](capi-input.md)
+**相关模块：** [input](capi-input-kit-input.md)
 
 ## 汇总
 
@@ -240,19 +240,6 @@
 | [Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConfig, bool *followSystem)](#oh_input_cursorconfig_isfollowsystem) | - | 查询自定义鼠标光标配置是否跟随系统设置调整光标大小。 |
 | [Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* customCursor, Input_CursorConfig* cursorConfig)](#oh_input_setcustomcursor) | - | 设置自定义鼠标光标样式。 <br>应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。此接口仅支持设置本应用进程内窗口的自定义鼠标光标样式。 |
 | [Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)](#oh_input_bindinputdevicetodisplay) | - | 绑定指定输入设备到指定屏幕。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*Input_HotkeyCallback)(Input_Hotkey* hotkey) | 回调函数，用于回调快捷键事件。<br>**起始版本：** 14<br>**系统能力：** SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent) | 按键事件的回调函数，keyEvent的生命周期为回调函数内。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent) | 鼠标事件的回调函数，mouseEvent的生命周期为回调函数内。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent) | 触屏输入事件的回调函数，touchEvent的生命周期为回调函数内。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent) | 轴事件的回调函数，axisEvent的生命周期为回调函数内。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_DeviceAddedCallback)(int32_t deviceId) | 回调函数，用于接收输入设备的热插事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_DeviceRemovedCallback)(int32_t deviceId) | 回调函数，用于接收输入设备的热拔事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedStatus) | 回调函数，用于获取注入权限状态。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.MultimodalInput.Input.Core |
 
 ## 枚举类型说明
 
@@ -710,7 +697,7 @@ struct Input_KeyState* OH_Input_CreateKeyState()
 
 **起始版本：** 12
 
-**资源释放：** OH_Input_DestroyKeyState {return}
+**资源释放：** [OH_Input_DestroyKeyState](#oh_input_destroykeystate)
 
 **返回值：**
 
@@ -3938,7 +3925,7 @@ Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)
 
 **起始版本：** 14
 
-**资源释放：** OH_Input_DestroyAllSystemHotkeys {return}
+**资源释放：** [OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)
 
 **参数：**
 
@@ -4862,7 +4849,7 @@ Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, in
 
 **起始版本：** 22
 
-**资源释放：** OH_Input_CustomCursor_Destroy {return}
+**资源释放：** [OH_Input_CustomCursor_Destroy](#oh_input_customcursor_destroy)
 
 **参数：**
 
@@ -4967,7 +4954,7 @@ Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)
 
 **起始版本：** 22
 
-**资源释放：** OH_Input_CursorConfig_Destroy {return}
+**资源释放：** [OH_Input_CursorConfig_Destroy](#oh_input_cursorconfig_destroy)
 
 **参数：**
 

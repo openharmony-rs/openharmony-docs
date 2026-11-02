@@ -12,7 +12,7 @@ Define the audio stream info structure, used to describe basic audio format.
 
 **Since**: 19
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audiostream_base.h](capi-native-audiostream-base-h.md)
 

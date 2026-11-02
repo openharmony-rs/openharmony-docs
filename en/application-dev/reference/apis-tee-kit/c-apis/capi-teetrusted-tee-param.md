@@ -12,7 +12,7 @@ Enumerates the TEE parameter.
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-teetrusted.md)
+**Related module**: [TeeTrusted](capi-others-teetrusted.md)
 
 **Header file**: [tee_defines.h](capi-tee-defines-h.md)
 
@@ -22,11 +22,14 @@ Enumerates the TEE parameter.
 
 | Name | Description |
 | -- | -- |
-| memref->buffer | Pointer to the memory buffer. |
+| memref | Describes a memory reference.<br>**Since**: 20 |
+| memref.buffer | Pointer to the memory buffer. |
 | memref.size | Size of the memory buffer. |
+| value | Describes value parameters.<br>**Since**: 20 |
 | value.a | First value. |
 | value.b | Second value. |
-| sharedmem->buffer | Pointer to the shared memory buffer. |
+| sharedmem | Describes shared memory reference.<br>**Since**: 20 |
+| sharedmem.buffer | Pointer to the shared memory buffer. |
 | sharedmem.size | Size of the shared memory buffer. |
 
 

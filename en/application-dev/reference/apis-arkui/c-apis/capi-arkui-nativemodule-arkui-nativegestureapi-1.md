@@ -12,7 +12,7 @@ Defines the APIs for creating tap, long press, pan, pinch, rotation, and fling g
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
 
@@ -57,7 +57,12 @@ ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNu
 
 **Description**
 
-Creates a tap gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a tap gesture with one, two, or more taps. 2. When multi-tap is configured, the timeout between the last finger up of the previous tap and the first finger down of the next tap is 300 ms. 3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails. 4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the first finger's being pressed is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count. 5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.
+Creates a tap gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
+1. This API is used to trigger a tap gesture with one, two, or more taps.
+2. When multi-tap is configured, the timeout between the last finger up of the previous tap and the first finger down of the next tap is 300 ms.
+3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.
+4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the first finger's being pressed is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count.
+5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.
 
 **Parameters**:
 
@@ -80,7 +85,10 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 
 **Description**
 
-Creates a long press gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()**<br>to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a long press gesture, which requires one or more fingers with a minimum 500 ms hold-down time. 2. In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**, the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows: If the duration of the long press gesture is less than 500 ms, the long press gesture receives a higher response priority than the drag action. If the duration of the long press gesture is greater than or equal to 500 ms, the drag action receives a higher response priority than the long press gesture. 3. If a finger moves more than 15 px after being pressed, the gesture recognition fails.
+Creates a long press gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()**<br>to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
+1. This API is used to trigger a long press gesture, which requires one or more fingers with a minimum 500 ms hold-down time.
+2. In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**, the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows: If the duration of the long press gesture is less than 500 ms, the long press gesture receives a higher response priority than the drag action. If the duration of the long press gesture is greater than or equal to 500 ms, the drag action receives a higher response priority than the long press gesture.
+3. If a finger moves more than 15 px after being pressed, the gesture recognition fails.
 
 **Parameters**:
 
@@ -104,7 +112,9 @@ ArkUI_GestureRecognizer* (*createPanGesture)(int32_t fingersNum, ArkUI_GestureDi
 
 **Description**
 
-Creates a pan gesture. Different from [createSwipeGesture](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#createswipegesture) (swipe gesture), the pan gesture is triggered based on the minimum drag distance, while the swipe gesture is triggered based on the minimum swipe speed. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a pan gesture when the movement distance of a finger on the screen exceeds the minimum value. 2. If a swipe on the **Tabs** component and this pan gesture event occur at the same time, set **distanceNum**<br>to **1** to make dragging more sensitive and avoid response conflicts between the **Tabs** component swipe event and this pan gesture event.
+Creates a pan gesture. Different from [createSwipeGesture](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#createswipegesture) (swipe gesture), the pan gesture is triggered based on the minimum drag distance, while the swipe gesture is triggered based on the minimum swipe speed. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
+1. This API is used to trigger a pan gesture when the movement distance of a finger on the screen exceeds the minimum value.
+2. If a swipe on the **Tabs** component and this pan gesture event occur at the same time, set **distanceNum** to **1** to make dragging more sensitive and avoid response conflicts between the **Tabs** component swipe event and this pan gesture event.
 
 **Parameters**:
 
@@ -128,7 +138,9 @@ ArkUI_GestureRecognizer* (*createPinchGesture)(int32_t fingersNum, double distan
 
 **Description**
 
-Creates a pinch gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a pinch gesture, which requires two to five fingers with a minimum pinch distance of pixels specified by **distanceNum**. 2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first fingers equal to the value of **fingersNum** participate in the gesture calculation.
+Creates a pinch gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
+1. This API is used to trigger a pinch gesture, which requires two to five fingers with a minimum pinch distance of pixels specified by **distanceNum**.
+2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first fingers equal to the value of **fingersNum** participate in the gesture calculation.
 
 **Parameters**:
 
@@ -151,7 +163,9 @@ ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double ang
 
 **Description**
 
-Creates a rotation gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()**<br>to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle (specified by **angleNum**). 2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first two fingers that are pressed participate in the gesture calculation.
+Creates a rotation gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()**<br>to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
+1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle (specified by **angleNum**).
+2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first two fingers that are pressed participate in the gesture calculation.
 
 **Parameters**:
 
@@ -424,7 +438,13 @@ ArkUI_GestureRecognizer* (*createTapGestureWithDistanceThreshold)(int32_t countN
 
 **Description**
 
-Creates a tap gesture with a movement range limit. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a tap gesture with one, two, or more taps. 2. If multi-tap is configured, the timeout between the last finger up of the previous tap and the first finger down of the next tap is 300 ms. 3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails. 4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the first finger's being pressed is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count. 5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized. 6. If the finger moves beyond the preset distance limit, gesture recognition fails.
+Creates a tap gesture with a movement range limit. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
+1. This API is used to trigger a tap gesture with one, two, or more taps.
+2. If multi-tap is configured, the timeout between the last finger up of the previous tap and the first finger down of the next tap is 300 ms.
+3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.
+4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the first finger's being pressed is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count.
+5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.
+6. If the finger moves beyond the preset distance limit, gesture recognition fails.
 
 **Parameters**:
 

@@ -12,7 +12,7 @@ Defines the initial rule of a timezone which has no clear start time.
 
 **Since**: 22
 
-**Related module**: [i18n](capi-i18n.md)
+**Related module**: [i18n](capi-others-i18n.md)
 
 **Header file**: [timezone.h](capi-timezone-h.md)
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**相关模块：** [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 ## 汇总
 
@@ -85,8 +85,8 @@ OH_NativeBuffer的颜色空间。 Move from native_buffer.h to native_common.h
 | OH_COLORSPACE_DISPLAY_BT2020_SRGB | 色域范围为BT2020，传递函数为SRGB，转换矩阵为BT2020，数据范围为RANGE_FULL。 |
 | OH_COLORSPACE_DISPLAY_BT2020_HLG | 等同于 OH_COLORSPACE_BT2020_HLG_FULL。 |
 | OH_COLORSPACE_DISPLAY_BT2020_PQ | 等同于OH_COLORSPACE_BT2020_PQ_FULL。 |
-| OH_COLORSPACE_BT2020_LOG_FULL |  |
-| OH_COLORSPACE_BT2020_LOG_LIMIT |  |
+| OH_COLORSPACE_BT2020_LOG_FULL | COLORPRIMARIES_BT2020 \\| (TRANSFUNC_PRIV_LOG << 8) \\| (MATRIX_BT2020 << 16) \\| (RANGE_FULL << 21)<br>**起始版本：** 26.0.0 |
+| OH_COLORSPACE_BT2020_LOG_LIMIT | COLORPRIMARIES_BT2020 \\| (TRANSFUNC_PRIV_LOG << 8) \\| (MATRIX_BT2020 << 16) \\| (RANGE_LIMITED << 21)<br>**起始版本：** 26.0.0 |
 
 ### OH_NativeBuffer_MetadataType
 
@@ -107,11 +107,11 @@ OH_NativeBuffer的图像标准。
 | OH_VIDEO_HDR_HLG | 视频HLG。 |
 | OH_VIDEO_HDR_HDR10 | 视频HDR10。 |
 | OH_VIDEO_HDR_VIVID | 视频HDR VIVID。 |
-| OH_IMAGE_HDR_VIVID_DUAL |  |
-| OH_IMAGE_HDR_VIVID_SINGLE |  |
-| OH_IMAGE_HDR_ISO_DUAL |  |
-| OH_IMAGE_HDR_ISO_SINGLE |  |
-| OH_VIDEO_NONE = -1 |  |
+| OH_IMAGE_HDR_VIVID_DUAL | 图片HDR VIVID DUAL。<br>**起始版本：** 22 |
+| OH_IMAGE_HDR_VIVID_SINGLE | 图片HDR VIVID SINGLE。<br>**起始版本：** 22 |
+| OH_IMAGE_HDR_ISO_DUAL | 图片HDR ISO DUAL。<br>**起始版本：** 23 |
+| OH_IMAGE_HDR_ISO_SINGLE | 图片HDR ISO SINGLE。<br>**起始版本：** 23 |
+| OH_VIDEO_NONE = -1 | 无元数据。<br>**起始版本：** 13 |
 
 ### OH_NativeBuffer_MetadataKey
 
@@ -132,7 +132,7 @@ enum OH_NativeBuffer_MetadataKey
 | OH_HDR_METADATA_TYPE | value：OH_NativeBuffer_MetadataType类型。 |
 | OH_HDR_STATIC_METADATA | value：OH_NativeBuffer_StaticMetadata类型。 |
 | OH_HDR_DYNAMIC_METADATA | 视频流中SEI的字节流。 |
-| OH_REGION_OF_INTEREST_METADATA |  |
+| OH_REGION_OF_INTEREST_METADATA | 感兴趣区域（ROI）元数据用于在视频编码中配置ROI功能。值类型为字符串， 格式为"Top1,Left1-Bottom1,Right1[=Params1];Top2,Left2-Bottom2,Right2[=Params2];"。 每个"Top,Left-Bottom,Right"表示一个ROI的坐标信息。 "[=Params]"为可选内容。 "[=Params]"的格式因版本而异： 1. 26.0.0版本之前：仅支持一个表示量化参数偏移的int32_t值（例如"=QpOffset"）。 2. 26.0.0版本及之后：额外支持并推荐使用键值对格式， 使用逗号分隔的键值对（例如"=dqp:-6,slb:1"）。 支持的键： - "dqp"：量化参数偏移。 - "slb"：语义标签。取值必须与[OH_VideoMetadataRoiSemanticLabel](../../apis-avcodec-kit/c-apis/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)对应。 如果完全省略"=Params"，如"Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2=dqp:-6;"， 编码器将对第一个ROI使用默认参数进行ROI编码，并对第二个ROI使用指定参数。 请注意，可同时应用的ROI数量不得超过六个，且总面积不得超过图像总面积的五分之一。<br>**起始版本：** 22 |
 
 ### OH_NativeBuffer_Format
 
@@ -150,9 +150,9 @@ OH_NativeBuffer格式的枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 |  |
-| NATIVEBUFFER_PIXEL_FMT_CLUT1 |  |
-| NATIVEBUFFER_PIXEL_FMT_CLUT4 |  |
+| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 | CLUT8格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_CLUT1 | CLUT1格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_CLUT4 | CLUT4格式。<br>**起始版本：** 12 |
 | NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3 | RGB565格式。 |
 | NATIVEBUFFER_PIXEL_FMT_RGBA_5658 | RGBA5658格式。 |
 | NATIVEBUFFER_PIXEL_FMT_RGBX_4444 | RGBX4444格式。 |
@@ -171,28 +171,28 @@ OH_NativeBuffer格式的枚举。
 | NATIVEBUFFER_PIXEL_FMT_BGRA_5551 | BGRA5551格式。 |
 | NATIVEBUFFER_PIXEL_FMT_BGRX_8888 | BGRX8888格式。 |
 | NATIVEBUFFER_PIXEL_FMT_BGRA_8888 | BGRA8888格式。 |
-| NATIVEBUFFER_PIXEL_FMT_YUV_422_I |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P |  |
-| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG |  |
-| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG |  |
-| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG |  |
-| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 |  |
-| NATIVEBUFFER_PIXEL_FMT_RAW10 |  |
-| NATIVEBUFFER_PIXEL_FMT_BLOB |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT |  |
-| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 |  |
-| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 |  |
-| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 |  |
+| NATIVEBUFFER_PIXEL_FMT_YUV_422_I | YUV422 interleaved 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP | YCBCR422 semi-planar 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP | YCRCB422 semi-planar 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP | YCBCR420 semi-planar 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP | YCRCB420 semi-planar 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P | YCBCR422 planar 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P | YCRCB422 planar 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P | YCBCR420 planar 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P | YCRCB420 planar 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG | YUYV422 packed 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10bit packed 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10bit packed 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10bit packed 格式。<br>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB格式。<br>**起始版本：** 15 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float格式。<br>**起始版本：** 15 |
+| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8格式。<br>**起始版本：** 20 |
+| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16格式。<br>**起始版本：** 20 |
+| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask 格式。<br>**起始版本：** 12 |
 | } OH_NativeBuffer_Format; | NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF          /** 无效格式 |
 
 ### OH_NativeBuffer_TransformType

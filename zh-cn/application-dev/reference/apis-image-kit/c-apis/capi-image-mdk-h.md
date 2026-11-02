@@ -10,7 +10,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 ## 汇总
 
@@ -20,7 +20,7 @@
 | -- | -- | -- |
 | [OhosImageRect](capi-image-ohosimagerect.md) | - | 定义图像矩形信息。 |
 | [OhosImageComponent](capi-image-ohosimagecomponent.md) | - | 定义图像组件信息。 |
-| [ImageNative](capi-image-imagenative.md) | ImageNative | 为图像接口定义native层图像对象。 |
+| [ImageNative_](capi-image-imagenative-.md) | ImageNative | 为图像接口定义native层图像对象。 |
 
 ### 枚举
 
@@ -110,7 +110,7 @@ ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageNative*](capi-image-imagenative.md) | 如果操作成功返回ImageNative指针对象，如果操作失败返回空指针。 |
+| [ImageNative*](capi-image-imagenative-.md) | 如果操作成功返回ImageNative指针对象，如果操作失败返回空指针。 |
 
 **参考：**
 
@@ -135,7 +135,7 @@ int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageNative](capi-image-imagenative.md)* native | 表示指向ImageNative native层对象的指针。 |
+| [const ImageNative](capi-image-imagenative-.md)* native | 表示指向ImageNative native层对象的指针。 |
 | [struct OhosImageRect](capi-image-ohosimagerect.md)* rect | 表示作为转换结果的OhosImageRect对象指针。 |
 
 **返回值：**
@@ -167,7 +167,7 @@ int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageNative](capi-image-imagenative.md)* native | 表示ImageNative native对象的指针。 |
+| [const ImageNative](capi-image-imagenative-.md)* native | 表示ImageNative native对象的指针。 |
 | [struct OhosImageSize](capi-image-ohosimagesize.md)* size | 表示作为转换结果的OhosImageSize对象的指针。 |
 
 **返回值：**
@@ -199,7 +199,7 @@ int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageNative](capi-image-imagenative.md)* native | 表示ImageNative native对象的指针。 |
+| [const ImageNative](capi-image-imagenative-.md)* native | 表示ImageNative native对象的指针。 |
 | int32_t* format | 表示作为转换结果的图像格式对象的指针。 |
 
 **返回值：**
@@ -210,7 +210,7 @@ int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 
 **参考：**
 
-[ImageNative](capi-image-imagenative.md)
+[ImageNative](capi-image-imagenative-.md)
 
 
 ### OH_Image_GetComponent()
@@ -231,7 +231,7 @@ int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ImageNative](capi-image-imagenative.md)* native | 表示ImageNative native对象的指针。 |
+| [const ImageNative](capi-image-imagenative-.md)* native | 表示ImageNative native对象的指针。 |
 | int32_t componentType | 表示所需组件的组件类型。 |
 | [struct OhosImageComponent](capi-image-ohosimagecomponent.md)* componentNative | 表示转换结果的OhosImageComponent对象的指针。 |
 
@@ -264,7 +264,7 @@ int32_t OH_Image_Release(ImageNative* native)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ImageNative](capi-image-imagenative.md)* native | 表示ImageNative native对象的指针。 |
+| [ImageNative](capi-image-imagenative-.md)* native | 表示ImageNative native对象的指针。 |
 
 **返回值：**
 

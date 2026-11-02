@@ -12,7 +12,7 @@ Defines a clipping option for a render node. It is used to describe the clipping
 
 **Since**: 20
 
-**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
 
 **Header file**: [native_render.h](capi-native-render-h.md)
 

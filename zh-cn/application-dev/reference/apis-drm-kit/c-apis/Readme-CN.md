@@ -1,7 +1,7 @@
 # C API<!--c-drmkit-->
 
 - 模块<!--drmkit-module-->
-    - [Drm](capi-drm.md)
+    - [Drm](capi-drm-kit-drm.md)
 - 头文件<!--drmkit-headerfile-->
     - [native_mediakeysession.h](capi-native-mediakeysession-h.md)
     - [native_mediakeysystem.h](capi-native-mediakeysystem-h.md)

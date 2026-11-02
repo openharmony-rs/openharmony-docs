@@ -10,7 +10,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [UsbDdk](capi-usbddk.md)
+**相关模块：** [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 ## 汇总
 

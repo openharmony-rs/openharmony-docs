@@ -10,7 +10,7 @@ The file declares the APIs related to the application-level context.
 
 **Since**: 13
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 
@@ -37,9 +37,7 @@ The file declares the APIs related to the application-level context.
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(AbilityBase_Want *want, AbilityRuntime_StartOptions *options, int32_t *targetPid)](#oh_abilityruntime_startselfuiabilitywithpidresult) | Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlogfiledir) | Obtains the application-level log file directory of the application. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)](#oh_abilityruntime_applicationcontextnotifypagechanged) | This API can be called only from third-party frameworks. Each time a third-party framework switches pages, it notifies the system of the target page information (including the target page path, the length of the target page path, and the window ID corresponding to the target page). The system can adjust or recover the page according to product policies. |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
-
-} // extern "C"](#oh_abilityruntime_acquireuiabilitychildprocessinfos) | Acquires UIAbility child process infos of the current application.<br> Includes child processes created via startAbility with ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)](#oh_abilityruntime_acquireuiabilitychildprocessinfos) | Acquires UIAbility child process infos of the current application.<br> Includes child processes created via startAbility with ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT. |
 
 ## Function description
 
@@ -579,8 +577,6 @@ This API can be called only from third-party frameworks. Each time a third-party
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
-
-} // extern "C"
 ```
 
 **Description**
@@ -591,14 +587,14 @@ Acquires UIAbility child process infos of the current application.<br> Includes 
 
 **Since**: 26.0.1
 
-**Resource release**: OH_AbilityRuntime_ReleaseChildProcessInfos {infos}
+**Resource release**: [OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos)
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
 | OH_AbilityRuntime_ChildProcessInfosHandle* infos | [out] Pointer to child process info collection. It must not be NULL. When no child processes exist, the dereferenced value of the pointer **infos** is set to nullptr. |
-| count | [out] Pointer to the number of child processes. It must not be NULL. |
+| uint32_t* count | [out] Pointer to the number of child processes. It must not be NULL. |
 
 **Returns**:
 

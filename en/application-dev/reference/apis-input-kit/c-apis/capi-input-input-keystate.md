@@ -12,7 +12,7 @@ Defines key information used to identify key behavior. For example, the "Ctrl" k
 
 **Since**: 12
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-others-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

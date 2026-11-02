@@ -2,3 +2,14 @@
 
 ## Overview
 
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| HANDLE Handle |  |
+| ULONG Events |  |
+| NTSTATUS Status |  |
+
+

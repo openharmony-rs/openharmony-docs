@@ -10,7 +10,7 @@ The file declares the APIs for obtaining picture data and information.
 
 **Since**: 13
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## Summary
 
@@ -100,8 +100,8 @@ Type of the auxiliary picture.
 | AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3 | Unrefocus map |
 | AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4 | Linear map |
 | AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5 | Fragment map |
-| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11 |  |
-| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12 |  |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11 | Oxygen saturation map<br>**Since**: 26.0.1 |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12 | Melanin concentration map<br>**Since**: 26.0.1 |
 
 
 ## Function description
@@ -638,7 +638,7 @@ Creates a deep copy of a PictureNative object with specified auxiliary pictures 
 
 **Since**: 26.0.0
 
-**Resource release**: picture_native/OH_PictureNative_Release {picture}
+**Resource release**: [OH_PictureNative_Release](#oh_picturenative_release)
 
 **Parameters**:
 
@@ -921,7 +921,7 @@ Obtains the OH_PixelmapNative object of an auxiliary picture.
 
 **Since**: 26.0.0
 
-**Resource release**: pixelmap_native/OH_PixelmapNative_Destroy {pixelmap}
+**Resource release**: [OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)
 
 **Parameters**:
 

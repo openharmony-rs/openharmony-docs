@@ -10,7 +10,7 @@ Declares the APIs for the sensor service, including obtaining sensor information
 
 **Since**: 11
 
-**Related module**: [Sensor](capi-sensor.md)
+**Related module**: [Sensor](capi-sensor-service-kit-sensor.md)
 
 ## Summary
 

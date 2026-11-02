@@ -12,7 +12,7 @@ Declares the ArkUI image acquisition result structure.
 
 **Since**: 26.1.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [ui_info_collection.h](capi-ui-info-collection-h.md)
 

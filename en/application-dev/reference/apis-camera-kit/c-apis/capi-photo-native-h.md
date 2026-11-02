@@ -10,7 +10,7 @@ The file declares the camera photo concepts.
 
 **Since**: 12
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## Summary
 
@@ -102,7 +102,7 @@ Obtains an auxiliary image.
 
 **Since**: 26.0.1
 
-**Resource release**: OH_PhotoNative_ReleaseImage {outImage}
+**Resource release**: [OH_PhotoNative_ReleaseImage](#oh_photonative_releaseimage)
 
 **Parameters**:
 
@@ -132,7 +132,7 @@ Obtains an uncompressed auxiliary image.
 
 **Since**: 26.0.1
 
-**Resource release**: OH_PhotoNative_ReleasePicture {outImage}
+**Resource release**: [OH_PhotoNative_ReleasePicture](#oh_photonative_releasepicture)
 
 **Parameters**:
 

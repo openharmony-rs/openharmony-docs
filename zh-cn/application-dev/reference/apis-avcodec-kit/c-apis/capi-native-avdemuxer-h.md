@@ -12,7 +12,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [AVDemuxer](capi-avdemuxer.md)
+**相关模块：** [AVDemuxer](capi-avcodec-kit-avdemuxer.md)
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
@@ -41,13 +41,6 @@
 | [OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfoCallback callback)](#oh_avdemuxer_setmediakeysysteminfocallback) | - | 设置DRM信息回调函数。(API14废弃) |
 | [OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, Demuxer_MediaKeySystemInfoCallback callback)](#oh_avdemuxer_setdemuxermediakeysysteminfocallback) | - | 设置DRM信息回调函数。 |
 | [OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#oh_avdemuxer_getmediakeysysteminfo) | - | 获取DRM信息。在[Demuxer_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)或[DRM_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#drm_mediakeysysteminfocallback)接口成功回调以后， 调用此接口才能获取到DRM信息。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo* mediaKeySystemInfo) | DRM_MediaKeySystemInfo回调函数指针类型，不返回解封装器实例，适用于单个解封装器实例场景。<br> 需要使用[OH_AVDemuxer_SetMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setmediakeysysteminfocallback)接口将其设置为回调。<br>**起始版本：** 11<br>**废弃版本：** 14<br>**替代接口：** [Demuxer_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)<br>**系统能力：** SystemCapability.Multimedia.Media.Spliter |
-| void (*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo) | DRM_MediaKeySystemInfo回调函数指针类型，返回解封装器实例，适用于多个解封装器实例场景。<br> 需要使用[OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setdemuxermediakeysysteminfocallback)接口将其设置为回调，推荐使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.Spliter |
 
 ## 函数说明
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## 汇总
 
@@ -102,7 +102,7 @@ Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, O
 
 **起始版本：** 26.0.1
 
-**资源释放：** OH_PhotoNative_ReleaseImage {outImage}
+**资源释放：** [OH_PhotoNative_ReleaseImage](#oh_photonative_releaseimage)
 
 **参数：**
 
@@ -132,7 +132,7 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNati
 
 **起始版本：** 26.0.1
 
-**资源释放：** OH_PhotoNative_ReleasePicture {outImage}
+**资源释放：** [OH_PhotoNative_ReleasePicture](#oh_photonative_releasepicture)
 
 **参数：**
 

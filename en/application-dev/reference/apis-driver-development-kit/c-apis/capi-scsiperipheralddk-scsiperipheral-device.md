@@ -12,7 +12,7 @@ Opaque SCSI device structure.
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

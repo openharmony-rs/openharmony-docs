@@ -4,7 +4,7 @@
 
 Declares the shared JSON data object for APIs such as UI perception and control.<br> Errors are reported through the documented return values. errno is not an error-reporting channel for these APIs; its value after a call is unspecified and must not be used to determine success or failure.<br> These functions may be called from any thread, including the UI thread, within the object's documented lifetime. Read-only queries on the same live object may run concurrently. The caller must serialize destruction with all uses of that object and its borrowed data. Operations on independent objects may run concurrently. These functions do not invoke application callbacks; they may be called from callbacks when the ownership and lifetime requirements are met. They are not async-signal-safe and must not be called from a signal handler. Queries read local memory synchronously; creation and destruction also allocate or free memory. There is no asynchronous completion or cancellation operation, and no maximum allocator latency is guaranteed.
 
-**Include**: <arkui/ui_json_wrapper.h>
+**File to Include**: <arkui/ui_json_wrapper.h>
 
 **Library**: libace_ndk.z.so
 
@@ -12,7 +12,7 @@ Declares the shared JSON data object for APIs such as UI perception and control.
 
 **Since**: 26.1.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -75,7 +75,7 @@ Creates a JSON data object from a caller-provided JSON string.<br> The provided 
 
 **Since**: 26.1.0
 
-**Resource release**: ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {outOwned}
+**Resource release**: [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](#oh_arkui_nativemodule_uijsonwrapperdestroy)
 
 **Parameters**:
 

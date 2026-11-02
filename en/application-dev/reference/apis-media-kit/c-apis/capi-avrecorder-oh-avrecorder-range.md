@@ -10,7 +10,7 @@ The struct describes the range.
 
 **Since**: 18
 
-**Related module**: [AVRecorder](capi-avrecorder.md)
+**Related module**: [AVRecorder](capi-others-avrecorder.md)
 
 **Header file**: [avrecorder_base.h](capi-avrecorder-base-h.md)
 

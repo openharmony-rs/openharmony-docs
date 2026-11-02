@@ -12,7 +12,7 @@ This struct describes the image information.
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 
@@ -22,9 +22,9 @@ This struct describes the image information.
 
 | Name | Description |
 | -- | -- |
-| int32_t width |  |
-| int32_t height |  |
-| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType |  |
-| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType |  |
+| int32_t width | Width, in pixels.<br>**Since**: 12 |
+| int32_t height | Height, in pixels.<br>**Since**: 12 |
+| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType | Color type.<br>**Since**: 12 |
+| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType | Alpha type.<br>**Since**: 12 |
 
 

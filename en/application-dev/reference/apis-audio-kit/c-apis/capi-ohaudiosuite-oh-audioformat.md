@@ -12,7 +12,7 @@ Define the audio format info structure, used to describe basic audio format.
 
 **Since**: 22
 
-**Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 

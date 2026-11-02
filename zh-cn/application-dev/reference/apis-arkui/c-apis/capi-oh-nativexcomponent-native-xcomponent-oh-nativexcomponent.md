@@ -12,7 +12,7 @@ OH_NativeXComponent是ArkUI提供的XComponent在Native侧的实例封装。 用
 
 **起始版本：** 8
 
-**相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+**相关模块：** [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
 
 **所在头文件：** [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 

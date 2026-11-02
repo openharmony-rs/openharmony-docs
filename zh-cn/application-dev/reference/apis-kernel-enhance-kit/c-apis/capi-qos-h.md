@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [QoS](capi-qos.md)
+**相关模块：** [QoS](capi-kernel-enhance-kit-qos.md)
 
 ## 汇总
 
@@ -54,7 +54,6 @@
 | -- | -- |
 | unsigned int OH_QoS_GewuSession | 会话句柄。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Resourceschedule.QoS.Core |
 | unsigned int OH_QoS_GewuRequest | 请求句柄。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Resourceschedule.QoS.Core |
-| void (*OH_QoS_GewuOnResponse)(void* context, const char* response) | 用于接收格物服务回复的回调。格物服务在推理完成后异步调用该回调函数，非流式推理时调用一次，流式推理时根据生成过程多次调用。例如：在使用格物服务进行对话式AI推理时，可通过此回调接收模型生成的回复内容。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Resourceschedule.QoS.Core |
 
 ## 枚举类型说明
 

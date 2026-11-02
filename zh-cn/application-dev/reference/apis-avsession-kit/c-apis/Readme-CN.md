@@ -1,7 +1,7 @@
 # C API<!--c-avsessionkit-->
 
 - 模块<!--avsessionkit-module-->
-    - [OHAVSession](capi-ohavsession.md)
+    - [OHAVSession](capi-avsession-kit-ohavsession.md)
 - 头文件<!--avsessionkit-headerfile-->
     - [native_avmetadata.h](capi-native-avmetadata-h.md)
     - [native_avsession_errors.h](capi-native-avsession-errors-h.md)
@@ -12,8 +12,8 @@
     - [native_avsession_base.h](capi-native-avsession-base-h.md)
     - [native_avqueueitem.h](capi-native-avqueueitem-h.md)
 - 结构体<!--avsessionkit-struct-->
-    - [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)
-    - [OH_AVMetadata](capi-ohavsession-oh-avmetadata.md)
+    - [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md)
+    - [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md)
     - [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)
     - [OH_AVSession](capi-ohavsession-oh-avsession.md)
     - [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)

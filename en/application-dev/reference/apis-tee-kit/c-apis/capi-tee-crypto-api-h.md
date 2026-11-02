@@ -10,7 +10,7 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 ## Summary
 
@@ -19,16 +19,14 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [TEE_DH_OtherInfo](capi-teetrusted-tee-dh-otherinfo.md) | TEE_DH_OtherInfo | Defines a struct for TEE_DH_OtherInfo. |
-| [\_\_TEE_OperationInfo](capi-teetrusted---tee-operationinfo.md) | - | Defines the operation information. |
+| [\_\_TEE_OperationInfo](capi-teetrusted---tee-operationinfo.md) | TEE_OperationInfo | Defines the operation information. |
 | [TEE_OperationInfoKey](capi-teetrusted-tee-operationinfokey.md) | TEE_OperationInfoKey | Defines the key information stored in the <b>OperationInfo</b>. |
 | [TEE_OperationInfoMultiple](capi-teetrusted-tee-operationinfomultiple.md) | TEE_OperationInfoMultiple | Defines information about an operation. |
-| [\_\_TEE_OperationHandle](capi-teetrusted---tee-operationhandle.md) | - | Defines the cryptographic operation handle. |
+| [\_\_TEE_OperationHandle](capi-teetrusted---tee-operationhandle.md) | TEE_OperationHandleVar | Defines the cryptographic operation handle. |
 | [crypto_uint2uint](capi-teetrusted-crypto-uint2uint.md) | crypto_uint2uint | Defines the data used for conversion of integers. |
 | [peration_src_dest](capi-teetrusted-peration-src-dest.md) | - | Defines a structure to hold the input and output data. |
 | [peration_ae_init](capi-teetrusted-peration-ae-init.md) | - | Defines the AE initialization data. |
-| [TEE_OperationInfo](capi-teetrusted-tee-operationinfo.md) | TEE_OperationInfo | Defines a struct for \_\_TEE_OperationInfo. |
-| [TEE_OperationHandleVar](capi-teetrusted-tee-operationhandlevar.md) | TEE_OperationHandleVar | Defines the <b>\_\_TEE_OperationHandle</b> struct. |
-| [TEE_ObjectHandleVar](capi-teetrusted-tee-objecthandlevar.md) | TEE_ObjectHandleVar | Defines the <b>\_\_TEE_ObjectHandle</b> struct. |
+| [\_\_TEE_ObjectHandle](capi-teetrusted---tee-objecthandle.md) | TEE_ObjectHandleVar | Defines the <b>\_\_TEE_ObjectHandle</b> struct. |
 
 ### Enum
 
@@ -469,7 +467,7 @@ Obtains operation information.
 | Parameter | Description |
 | -- | -- |
 | const TEE_OperationHandle operation | Indicates the operation handle. |
-| [TEE_OperationInfo](capi-teetrusted-tee-operationinfo.md) *operationInfo | Indicates the pointer to the operation information. |
+| [TEE_OperationInfo](capi-teetrusted---tee-operationinfo.md) *operationInfo | Indicates the pointer to the operation information. |
 
 ### TEE_ResetOperation()
 

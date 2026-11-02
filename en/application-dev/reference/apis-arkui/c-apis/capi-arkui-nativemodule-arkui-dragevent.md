@@ -12,7 +12,7 @@ Defines a drag event, used to represent event information during the drag proces
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [drag_and_drop.h](capi-drag-and-drop-h.md)
 

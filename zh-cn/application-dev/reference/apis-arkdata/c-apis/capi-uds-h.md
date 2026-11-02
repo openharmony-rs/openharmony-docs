@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [UDMF](capi-udmf.md)
+**相关模块：** [UDMF](capi-arkdata-udmf.md)
 
 ## 汇总
 
@@ -138,7 +138,21 @@ enum Udmf_AuthPermission
 
 **描述：**
 
-拖拽场景下的URI授权策略。<br> > **说明：**<br>> 此授权策略仅在拖拽场景下生效，其他场景不生效。<br> 支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：<br> - 仅使用NONE：不做任何文件授权。 - 仅使用READ：仅做单次只读授权。 - 仅使用WRITE：做单次读、写授权（写授权包含读授权）。 - READ+WRITE：做单次读、写授权，与仅写授权等同。 - READ+PERSIST：做持久化读授权。 - WRITE+PERSIST：做持久化读写授权。 - READ+WRITE+PERSIST：做持久化读写授权。<br> 拖拽授权策略应用规则（按优先级从高到低）：<br> - 单个数据级别：FileUri、HTML两个UDS支持配置授权策略参数，仅对单个record单次生效，优先级最高。 - [OH_UdmfData](capi-udmf-oh-udmfdata.md)级别：[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中提供的授权参数对单次 拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。 - 默认级别：若单个数据和[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：<br> - FileUri类型数据：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。 - HTML类型数据：仅针对HTML文本中img标签下的uri做读授权。
+拖拽场景下的URI授权策略。<br>
+> **说明：**
+> 此授权策略仅在拖拽场景下生效，其他场景不生效。<br> 支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：<br>
+- 仅使用NONE：不做任何文件授权。
+- 仅使用READ：仅做单次只读授权。
+- 仅使用WRITE：做单次读、写授权（写授权包含读授权）。
+- READ+WRITE：做单次读、写授权，与仅写授权等同。
+- READ+PERSIST：做持久化读授权。
+- WRITE+PERSIST：做持久化读写授权。
+- READ+WRITE+PERSIST：做持久化读写授权。<br> 拖拽授权策略应用规则（按优先级从高到低）：<br>
+- 单个数据级别：FileUri、HTML两个UDS支持配置授权策略参数，仅对单个record单次生效，优先级最高。
+- [OH_UdmfData](capi-udmf-oh-udmfdata.md)级别：[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中提供的授权参数对单次 拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。
+- 默认级别：若单个数据和[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：<br>
+- FileUri类型数据：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。
+- HTML类型数据：仅针对HTML文本中img标签下的uri做读授权。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -975,7 +989,9 @@ int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)
 
 **描述：**
 
-给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。<br> > **说明：**<br>> 此授权策略仅在拖拽场景下生效，其他场景不生效。
+给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。<br>
+> **说明：**
+> 此授权策略仅在拖拽场景下生效，其他场景不生效。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1801,7 +1817,9 @@ int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)
 
 **描述：**
 
-给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。<br> > **说明：**<br>> 此授权策略仅在拖拽场景下生效，其他场景不生效。
+给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。<br>
+> **说明：**
+> 此授权策略仅在拖拽场景下生效，其他场景不生效。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 

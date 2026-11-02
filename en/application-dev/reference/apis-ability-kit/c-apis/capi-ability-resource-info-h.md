@@ -10,7 +10,7 @@ The file declares the APIs for obtaining the following ability resource informat
 
 **Since**: 21
 
-**Related module**: [Native_Bundle](capi-native-bundle.md)
+**Related module**: [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 ## Summary
 
@@ -32,8 +32,7 @@ The file declares the APIs for obtaining the following ability resource informat
 | [BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)](#oh_nativebundle_checkdefaultapp) | Checks whether the application to which the ability belongs is a default application. |
 | [BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, size_t count)](#oh_abilityresourceinfo_destroy) | Releases memory allocated for ability resource information. |
 | [int OH_NativeBundle_GetSize()](#oh_nativebundle_getsize) | Obtains the size of a single [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md) struct. |
-| [BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)
-} // extern "C"](#oh_nativebundle_getdrawabledescriptor) | Obtains the DrawableDescriptor object of the ability icon resource. After using this function, you must manually release the pointer returned to prevent memory leakage. |
+| [BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)](#oh_nativebundle_getdrawabledescriptor) | Obtains the DrawableDescriptor object of the ability icon resource. After using this function, you must manually release the pointer returned to prevent memory leakage. |
 
 ## Function description
 
@@ -250,7 +249,6 @@ Obtains the size of a single [OH_NativeBundle_AbilityResourceInfo](capi-native-b
 
 ```c
 BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)
-} // extern "C"
 ```
 
 **Description**
@@ -266,7 +264,7 @@ Obtains the DrawableDescriptor object of the ability icon resource. After using 
 | Parameter | Description |
 | -- | -- |
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
-| drawableIcon | [in] Double pointer to the DrawableDescriptor object. |
+| [ArkUI_DrawableDescriptor](../../apis-arkui/c-apis/capi-arkui-nativemodule-arkui-drawabledescriptor.md)** drawableIcon | [in] Double pointer to the DrawableDescriptor object. |
 
 **Returns**:
 

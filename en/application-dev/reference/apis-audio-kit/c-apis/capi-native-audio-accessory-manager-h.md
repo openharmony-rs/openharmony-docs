@@ -10,7 +10,7 @@ Declare audio accessory manager related interfaces.
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 
@@ -27,12 +27,6 @@ Declare audio accessory manager related interfaces.
 | [OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManager *manager, OH_AudioAccessory *accessory)](#oh_audioaccessorymanager_connected) | - | Connects the audio accessory to the audio framework.<br> All required capabilities must be registered before calling this function.<br> <b>Recommendation:</b> It is recommended that third-party audio accessories prioritize integration with the Smart Life app. This ensures a consistent user experience for device discovery and connection, allowing the accessory service to avoid direct permission management. |
 | [OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryManager *manager, OH_AudioAccessory *accessory)](#oh_audioaccessorymanager_disconnected) | - | Disconnects the audio accessory from the audio framework. |
 | [OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager *manager, OH_AudioAccessory *accessory)](#oh_audioaccessorymanager_destroy) | - | Destroys the audio accessory instance.<br> The accessory must be disconnected before destroying. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| bool (*OH_AudioAccessory_SetNoiseReductionCallback)( OH_AudioAccessory *accessory, OH_AudioNoiseReductionMode mode) | Callback for noise reduction mode change on an accessory.<br> <b>When Called:</b> When the system requests a change to the noise reduction mode on the accessory. This callback may be called at any time after the accessory is connected.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ## Function description
 

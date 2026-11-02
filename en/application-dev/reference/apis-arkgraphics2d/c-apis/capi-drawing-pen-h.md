@@ -10,7 +10,7 @@ This file declares functions related to the pen in the drawing module.
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 

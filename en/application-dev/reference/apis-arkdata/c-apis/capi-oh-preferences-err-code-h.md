@@ -10,7 +10,7 @@ Defines the error codes used in the **Preferences** module.
 
 **Since**: 13
 
-**Related module**: [Preferences](capi-preferences.md)
+**Related module**: [Preferences](capi-arkdata-preferences.md)
 
 ## Summary
 

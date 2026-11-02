@@ -12,7 +12,7 @@ struct NetConn_NetCapabilities {...}
 
 **起始版本：** 11
 
-**相关模块：** [NetConnection](capi-netconnection.md)
+**相关模块：** [NetConnection](capi-others-netconnection.md)
 
 **所在头文件：** [net_connection_type.h](capi-net-connection-type-h.md)
 

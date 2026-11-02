@@ -10,7 +10,7 @@ Defines the APIs for debugging.
 
 **Since**: 12
 
-**Related module**: [HiDebug](capi-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 ## Summary
 
@@ -75,14 +75,6 @@ Defines the APIs for debugging.
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)](#oh_hidebug_setmaxdurationsec) | - | Sets the maximum profiling duration in seconds. |
 | [HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilerStackTraceMode mode)](#oh_hidebug_setstacktracemode) | - | Sets the stack trace mode. |
 | [HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType type, OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofilerwithoptions) | - | Starts the profiler with the specified options and resource type. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame) | If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function. Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.<br>**Since**: 20<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks) | Triggered for the lightweight Perf sampling stack content. Note: The sampling data is valid only during the execution of this callback. If you need to use the data outside the function, deep copy the sampling stack content.<br>**Since**: 22<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg) | Callback triggered for listening. You can use FDs to write memory data in your app so that you can export the data using the hidumper command.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 
 ## Function description
 
@@ -455,7 +447,7 @@ Performs stack back-tracing based on the given fp address. This function is asyn
 
 | Parameter | Description |
 | -- | -- |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) object | Object obtained by the [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) API for stack backtracing. |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object--8h.md) object | Object obtained by the [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) API for stack backtracing. |
 | void* startFp | Start frame pointer for stack backtracing. |
 | void** pcArray | Array of PC addresses obtained from stack backtracing. |
 | int size | Length of the PC address array obtained by stack backtracing. |
@@ -506,7 +498,7 @@ Obtains detailed symbol information based on the specified PC address. This func
 
 | Parameter | Description |
 | -- | -- |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) object | Object created by the [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) API. |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object--8h.md) object | Object created by the [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) API. |
 | void* pc | PC address obtained through the [OH_HiDebug_BacktraceFromFp](capi-hidebug-h.md#oh_hidebug_backtracefromfp) API. |
 | void* arg | Reserved custom parameter. After the symbol is successfully parsed, this parameter is passed to [OH_HiDebug_SymbolicAddressCallback](capi-hidebug-h.md#oh_hidebug_symbolicaddresscallback). |
 | [OH_HiDebug_SymbolicAddressCallback](capi-hidebug-h.md#oh_hidebug_symbolicaddresscallback) callback | Callback used to return the parsed stack information. |
@@ -535,7 +527,7 @@ Creates an object for stack backtracing and parsing. This function is not asyn-s
 
 | Type | Description |
 | -- | -- |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) | Pointer to the created object. If the object fails to be created, NULL is returned. |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object--8h.md) | Pointer to the created object. If the object fails to be created, NULL is returned. |
 
 ### OH_HiDebug_DestroyBacktraceObject()
 
@@ -555,7 +547,7 @@ Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h
 
 | Parameter | Description |
 | -- | -- |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) object | Object to destroy. |
+| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object--8h.md) object | Object to destroy. |
 
 ### OH_HiDebug_SetCrashObj()
 
@@ -875,7 +867,7 @@ Create Profiler Options.
 
 **Since**: 26.0.1
 
-**Resource release**: hidebug/OH_HiDebug_DestroyProfilerOptions {return}
+**Resource release**: [OH_HiDebug_DestroyProfilerOptions](#oh_hidebug_destroyprofileroptions)
 
 **Returns**:
 

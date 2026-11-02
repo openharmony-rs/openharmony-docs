@@ -10,7 +10,7 @@
 
 **起始版本：** 22
 
-**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 ## 汇总
 
@@ -64,12 +64,6 @@
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType* type)](#oh_audiosuiteengine_getgeneralvoicechangetype) | - | 获取通用变声节点的配置参数。 |
 | [OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)](#oh_audiosuite_printinfo) | - | 打印AudioSuite运行时快照。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| int32_t (*OH_InputNode_RequestDataCallback)( OH_AudioNode* audioNode, void* userData, void* audioData, int32_t audioDataSize, bool* finished) | 定义输入节点请求数据的回调函数。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine |
-
 ## 函数说明
 
 ### OH_AudioSuiteEngine_Create()
@@ -90,7 +84,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_Create(OH_AudioSuiteEngine** audioSuite
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md)** audioSuiteEngine | 音频编创引擎句柄，指向接收audioSuiteEngine变量的指针。 |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)** audioSuiteEngine | 音频编创引擎句柄，指向接收audioSuiteEngine变量的指针。 |
 
 **返回值：**
 
@@ -116,7 +110,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_Destroy(OH_AudioSuiteEngine* audioSuite
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md)* audioSuiteEngine | 音频编创引擎句柄，通过[OH_AudioSuiteEngine_Create](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_create)获取句柄。 |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | 音频编创引擎句柄，通过[OH_AudioSuiteEngine_Create](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_create)获取句柄。 |
 
 **返回值：**
 
@@ -142,8 +136,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* aud
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md)* audioSuiteEngine | 音频编创引擎句柄。通过[OH_AudioSuiteEngine_Create](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_create)获取句柄。 |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)** audioSuitePipeline | 音频编创管线句柄。 |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | 音频编创引擎句柄。通过[OH_AudioSuiteEngine_Create](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_create)获取句柄。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)** audioSuitePipeline | 音频编创管线句柄。 |
 | [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode) workMode | 管线工作模式。 |
 
 **返回值：**
@@ -170,7 +164,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyPipeline(OH_AudioSuitePipeline* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取需要销毁的句柄。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取需要销毁的句柄。 |
 
 **返回值：**
 
@@ -196,7 +190,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* au
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 
 **返回值：**
 
@@ -222,7 +216,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StopPipeline(OH_AudioSuitePipeline* aud
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 
 **返回值：**
 
@@ -248,7 +242,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetPipelineState(OH_AudioSuitePipeline*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | [OH_AudioSuite_PipelineState](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate)* pipelineState | 管线状态的输出参数。 |
 
 **返回值：**
@@ -275,7 +269,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | void* audioData | 获取音频需要写入的数据地址。 |
 | int32_t requestFrameSize | audioData的内存字节大小，需大于0。 |
 | int32_t* responseSize | 管线写入audioData的音频数据大小，不会大于requestFrameSize，单位为字节(Byte)。 |
@@ -305,7 +299,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | 用户读取音频数据时所使用的数组指针，每个一维数组大小需一致。 |
 | int32_t* responseSize | 管线写入audioDataArray的音频数据大小。系统会确保每个一维数组被填充的数据大小一致， 单位为字节(Byte)。 |
 | bool* finishedFlag | 标记当前管线是否渲染完成。 |
@@ -334,7 +328,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** build
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)** builder | 音频编创节点构造器句柄。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)** builder | 音频编创节点构造器句柄。 |
 
 **返回值：**
 
@@ -360,7 +354,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Destroy(OH_AudioNodeBuilder* build
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
 
 **返回值：**
 
@@ -386,7 +380,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Reset(OH_AudioNodeBuilder* builder
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
 
 **返回值：**
 
@@ -412,7 +406,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetNodeType(OH_AudioNodeBuilder* b
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
 | [OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type) type | 节点类型。 |
 
 **返回值：**
@@ -439,7 +433,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetFormat(OH_AudioNodeBuilder* bui
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
 | [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md) audioFormat | 音频流格式。 |
 
 **返回值：**
@@ -466,7 +460,7 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | void* userData | 用户使用的数据指针。系统调用此回调函数时， 将使用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口传入的userData。 |
 | void* audioData | 系统提供的内存地址，用于将需要处理的音频数据流写入（需由用户填充）。 |
 | int32_t audioDataSize | audioData内存地址指向的音频数据大小，单位为字节(Byte)。 |
@@ -496,7 +490,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetRequestDataCallback(OH_AudioNod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
 | [OH_InputNode_RequestDataCallback](capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback) callback | 写入当前节点音频数据的回调接口。 |
 | void* userData | 用户自定义数据，在回调函数callback中传入给用户。不使用时可传空指针。 |
 
@@ -524,9 +518,9 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)** audioNode | 输出参数，用于返回创建的音频编创节点句柄的指针。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)** audioNode | 输出参数，用于返回创建的音频编创节点句柄的指针。 |
 
 **返回值：**
 
@@ -552,7 +546,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyNode(OH_AudioNode* audioNode)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 
 **返回值：**
 
@@ -578,7 +572,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetNodeBypassStatus(OH_AudioNode* audio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | bool* bypassStatus | 获取当前效果类节点使能状态，false表示未跳过节点处理，true表示已跳过节点处理。 |
 
 **返回值：**
@@ -605,7 +599,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_BypassEffectNode(OH_AudioNode* audioNod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | bool bypass | 当前效果类节点使能状态。 |
 
 **返回值：**
@@ -632,7 +626,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md)* audioFormat | 指向音频流格式的指针，用于设置音频格式信息。 |
 
 **返回值：**
@@ -659,8 +653,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* sourceAudioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* destAudioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* sourceAudioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* destAudioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 
 **返回值：**
 
@@ -686,8 +680,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAud
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* sourceAudioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* destAudioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* sourceAudioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* destAudioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 
 **返回值：**
 
@@ -740,7 +734,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(OH_Audio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) frequencyBandGains | 均衡器节点的均衡参数。 |
 
 **返回值：**
@@ -767,7 +761,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetEqualizerFrequencyBandGains(OH_Audio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md)* frequencyBandGains | 均衡器节点的均衡参数。 |
 
 **返回值：**
@@ -794,7 +788,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSoundFieldType(OH_AudioNode* audioNo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype) soundFieldType | 声场效果节点的配置参数。 |
 
 **返回值：**
@@ -821,7 +815,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSoundFieldType(OH_AudioNode* audioNo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)* soundFieldType | 声场效果节点的配置参数。 |
 
 **返回值：**
@@ -848,7 +842,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetEnvironmentType(OH_AudioNode* audioN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_EnvironmentType](capi-native-audio-suite-base-h.md#oh_environmenttype) environmentType | 环境效果节点的配置参数。 |
 
 **返回值：**
@@ -875,7 +869,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetEnvironmentType(OH_AudioNode* audioN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_EnvironmentType](capi-native-audio-suite-base-h.md#oh_environmenttype)* environmentType | 环境效果节点的配置参数。 |
 
 **返回值：**
@@ -902,7 +896,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetVoiceBeautifierType(OH_AudioNode* au
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype) voiceBeautifierType | 声音美化效果节点的配置参数。 |
 
 **返回值：**
@@ -929,7 +923,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetVoiceBeautifierType(OH_AudioNode* au
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)* voiceBeautifierType | 声音美化效果节点的配置参数。 |
 
 **返回值：**
@@ -956,7 +950,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderPositionParams(OH_AudioNo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md) position | 空间渲染效果节点固定摆位模式的配置参数。 |
 
 **返回值：**
@@ -983,7 +977,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderPositionParams(OH_AudioNo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)* position | 空间渲染效果节点固定摆位模式的配置参数。 |
 
 **返回值：**
@@ -1010,7 +1004,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderRotationParams(OH_AudioNo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md) rotation | 空间渲染效果节点旋转模式的配置参数。 |
 
 **返回值：**
@@ -1037,7 +1031,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderRotationParams(OH_AudioNo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)* rotation | 空间渲染效果节点旋转模式的配置参数。 |
 
 **返回值：**
@@ -1064,7 +1058,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderExtensionParams(OH_AudioN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md) extension | 空间渲染效果节点扩展模式的配置参数。 |
 
 **返回值：**
@@ -1091,7 +1085,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderExtensionParams(OH_AudioN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)* extension | 空间渲染效果节点扩展模式的配置参数。 |
 
 **返回值：**
@@ -1118,7 +1112,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetTempoAndPitch(OH_AudioNode* audioNod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | float speed | 变速参数。取值范围为[0.5, 10.0]。 |
 | float pitch | 变调参数。取值范围为[0.1, 5.0]。 |
 
@@ -1146,7 +1140,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetTempoAndPitch(OH_AudioNode* audioNod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | float* speed | 变速参数。取值范围为[0.5, 10.0]。 |
 | float* pitch | 变调参数。取值范围为[0.1, 5.0]。 |
 
@@ -1174,7 +1168,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetPureVoiceChangeOption(OH_AudioNode* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) option | 传统变声效果节点的配置参数。 |
 
 **返回值：**
@@ -1201,7 +1195,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetPureVoiceChangeOption(OH_AudioNode* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)* option | 传统变声效果节点的配置参数。 |
 
 **返回值：**
@@ -1228,7 +1222,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetGeneralVoiceChangeType(OH_AudioNode*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_GeneralVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype) type | 通用变声节点的配置参数。 |
 
 **返回值：**
@@ -1255,7 +1249,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | [OH_AudioSuite_GeneralVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype)* type | 通用变声节点的配置参数。 |
 
 **返回值：**
@@ -1282,8 +1276,8 @@ OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteengine.md)* audioSuiteEngine | 指向需要显示运行时快照的AudioSuiteEngine的指针。 |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 指向需要显示运行时快照的AudioSuitePipeline的指针。 <br>如果audioSuitePipeline为空，输出所有管线（引擎下的所有管线/节点）。否则，仅输出此管线和节点的快照。 |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | 指向需要显示运行时快照的AudioSuiteEngine的指针。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 指向需要显示运行时快照的AudioSuitePipeline的指针。 <br>如果audioSuitePipeline为空，输出所有管线（引擎下的所有管线/节点）。否则，仅输出此管线和节点的快照。 |
 | int fd | 文件句柄，表示快照信息存储的位置。 <br>如果fd小于0，快照信息存储在日志中。否则，快照将以追加模式存储在由fd句柄指向的文件中。 |
 
 **返回值：**

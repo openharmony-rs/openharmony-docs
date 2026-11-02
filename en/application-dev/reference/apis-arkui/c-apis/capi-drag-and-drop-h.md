@@ -10,7 +10,7 @@ Declares the APIs of **NativeDrag**, supporting obtaining drag events, setting a
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -1061,7 +1061,7 @@ Cancels the ongoing data synchronization.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | Pointer to the UI instance. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | Pointer to the UI instance. |
 | const char* key | Pointer to the data key returned by [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading). |
 
 **Returns**:
@@ -1088,7 +1088,7 @@ Sets whether to disable the data prefetch process before executing [NODE_ON_DROP
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 | bool disabled | Whether to disable data prefetching. The value **true** means to disable it, and **false** means the opposite. |
 
 **Returns**:
@@ -1115,7 +1115,7 @@ Sets whether to enable strict reporting on drag events. This feature is disabled
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 | bool enabled | Whether to enable strict reporting on drag events. The value **true** means to enable strict reporting on drag events, and **false** means the opposite. |
 
 **Returns**:
@@ -1142,7 +1142,7 @@ Sets whether to enable strict reporting on drag events. This feature is disabled
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | Pointer to the UI instance. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | Pointer to the UI instance. |
 | bool enabled | Whether to enable strict reporting on drag events. The value **true** means to enable strict reporting on drag events, and **false** means the opposite. |
 
 **Returns**:
@@ -1169,7 +1169,7 @@ Sets the types of data that can be dropped to the specified component. This API 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 | const char* typesArray[] | Pointer to the array of types of data that can be dropped. The array elements are strings of unified data type identifiers defined by UDMF. |
 | int32_t count | Length of the array, indicating the number of data type strings in **typesArray**. The number must be consistent with the actual number of elements in **typesArray**. |
 
@@ -1197,7 +1197,7 @@ Configures the specified component to disallow any data types. This API resets t
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 
 **Returns**:
 
@@ -1223,7 +1223,7 @@ Configures the specified component to allow any data types. This API resets the 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 
 **Returns**:
 
@@ -1249,7 +1249,7 @@ Sets whether the component is draggable.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 | bool enabled | Whether the component is draggable. The value **true** means that the component is draggable, and **<br>false** means the opposite. |
 
 **Returns**:
@@ -1276,7 +1276,7 @@ Sets a custom drag preview for the specified component.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 | [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md)* preview | Custom drag preview, which is a pixel map. |
 
 **Returns**:
@@ -1505,7 +1505,7 @@ Sets an **ArkUI_DragPreviewOption** object for the specified component.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 | [ArkUI_DragPreviewOption](capi-arkui-nativemodule-arkui-dragpreviewoption.md)* option | Pointer to the custom drag preview parameter object to be set on the target component. |
 
 **Returns**:
@@ -1532,7 +1532,7 @@ Creates a drag operation object, which must be associated with a UI instance. Th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. |
 
 **Returns**:
 
@@ -1558,7 +1558,7 @@ Creates a drag operation object, which must be associated with a UI instance. Th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | Pointer to the UI instance. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | Pointer to the UI instance. |
 
 **Returns**:
 
@@ -2054,7 +2054,7 @@ Sets whether the drop-disallowed badge can be displayed. This API is suitable fo
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | Pointer to the UI instance. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | Pointer to the UI instance. |
 | bool enabled | Whether the drop-disallowed badge can be displayed. The value **true** means that the drop- disallowed badge can be displayed, and **false** means the opposite. |
 
 **Returns**:

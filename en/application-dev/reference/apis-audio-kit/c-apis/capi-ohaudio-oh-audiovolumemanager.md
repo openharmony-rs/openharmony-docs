@@ -12,7 +12,7 @@ Declare the audio volume manager. Audio volume manager provides many functions f
 
 **Since**: 20
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_volume_manager.h](capi-native-audio-volume-manager-h.md)
 

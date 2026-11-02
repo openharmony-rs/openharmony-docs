@@ -14,7 +14,7 @@ OH_SwapfsStats用于获取swapfs管理器的统计信息，包括活跃key数量
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Swapfs](capi-swapfs.md)
+**相关模块：** [Swapfs](capi-others-swapfs.md)
 
 **所在头文件：** [oh_swapfs.h（系统接口）](capi-oh-swapfs-h-sys.md)
 

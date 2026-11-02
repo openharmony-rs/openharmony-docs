@@ -12,7 +12,7 @@ Defines the parameters for the proactive connection closure initiated by the Web
 
 **Since**: 11
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-others-netstack.md)
 
 **Header file**: [net_websocket_type.h](capi-net-websocket-type-h.md)
 

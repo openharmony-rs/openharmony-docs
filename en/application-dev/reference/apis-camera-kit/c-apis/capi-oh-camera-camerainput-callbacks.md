@@ -12,7 +12,7 @@ The struct describes the callbacks used to listen for camera input errors.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera_input.h](capi-camera-input-h.md)
 

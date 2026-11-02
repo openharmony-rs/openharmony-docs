@@ -12,7 +12,7 @@ Defines a network address.
 
 **Since**: 26.0.0
 
-**Related module**: [NetEthernet](capi-netethernet.md)
+**Related module**: [NetEthernet](capi-others-netethernet.md)
 
 **Header file**: [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 
@@ -22,9 +22,9 @@ Defines a network address.
 
 | Name | Description |
 | -- | -- |
-| uint8_t family |  |
-| uint8_t prefixlen |  |
-| uint16_t port |  |
-| char address[ETHERNET_MAX_STR_LEN] |  |
+| uint8_t family | Network address family. IPv4 = 1, IPv6 = 2.<br>**Since**: 26.0.0 |
+| uint8_t prefixlen | Prefix length.<br>**Since**: 26.0.0 |
+| uint16_t port | Port number.<br>**Since**: 26.0.0 |
+| char address[ETHERNET_MAX_STR_LEN] | IP address.<br>**Since**: 26.0.0 |
 
 

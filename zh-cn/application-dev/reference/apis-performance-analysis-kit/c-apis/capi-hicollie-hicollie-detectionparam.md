@@ -12,7 +12,7 @@ struct HiCollie_DetectionParam {...}
 
 **起始版本：** 12
 
-**相关模块：** [HiCollie](capi-hicollie.md)
+**相关模块：** [HiCollie](capi-others-hicollie.md)
 
 **所在头文件：** [hicollie.h](capi-hicollie-h.md)
 

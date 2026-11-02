@@ -12,7 +12,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [Drm](capi-drm.md)
+**相关模块：** [Drm](capi-drm-kit-drm.md)
 
 ## 汇总
 

@@ -12,7 +12,7 @@ Forward declaration for resource profiler options.
 
 **Since**: 26.0.1
 
-**Related module**: [HiDebug](capi-hidebug.md)
+**Related module**: [HiDebug](capi-others-hidebug.md)
 
 **Header file**: [hidebug.h](capi-hidebug-h.md)
 

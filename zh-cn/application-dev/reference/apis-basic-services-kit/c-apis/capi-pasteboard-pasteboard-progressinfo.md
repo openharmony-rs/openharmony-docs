@@ -12,7 +12,7 @@ typedef struct Pasteboard_ProgressInfo Pasteboard_ProgressInfo
 
 **起始版本：** 15
 
-**相关模块：** [Pasteboard](capi-pasteboard.md)
+**相关模块：** [Pasteboard](capi-others-pasteboard.md)
 
 **所在头文件：** [oh_pasteboard.h](capi-oh-pasteboard-h.md)
 

@@ -10,7 +10,7 @@ Declared the common media types definition.
 
 **Since**: 18
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 ## Summary
 

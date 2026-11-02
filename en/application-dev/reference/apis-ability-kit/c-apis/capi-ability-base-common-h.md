@@ -10,7 +10,7 @@ The file declares the error codes defined by AbilityBase.
 
 **Since**: 15
 
-**Related module**: [AbilityBase](capi-abilitybase.md)
+**Related module**: [AbilityBase](capi-ability-kit-abilitybase.md)
 
 ## Summary
 
@@ -38,7 +38,7 @@ Enumerates the error codes of AbilityBase.
 
 | Enum item | Description |
 | -- | -- |
-| ABILITY_BASE_ERROR_CODE_NO_ERROR = 0 |  |
-| ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401 |  |
+| ABILITY_BASE_ERROR_CODE_NO_ERROR = 0 | Operation successful.<br>**Since**: 15 |
+| ABILITY_BASE_ERROR_CODE_PARAM_INVALID = 401 | Invalid parameter.<br>**Since**: 15 |
 
 

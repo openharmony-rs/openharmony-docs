@@ -12,7 +12,7 @@ Crypto data structure.
 
 **Since**: 12
 
-**Related module**: [CryptoCommonApi](capi-cryptocommonapi.md)
+**Related module**: [CryptoCommonApi](capi-others-cryptocommonapi.md)
 
 **Header file**: [crypto_common.h](capi-crypto-common-h.md)
 

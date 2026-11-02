@@ -12,7 +12,7 @@ The property-handler used to define class.
 
 **Since**: 18
 
-**Related module**: [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-others-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 

@@ -12,7 +12,7 @@ struct OH_NativeBuffer_ColorXY {...}
 
 **起始版本：** 12
 
-**相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**相关模块：** [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
 
 **所在头文件：** [buffer_common.h](capi-buffer-common-h.md)
 

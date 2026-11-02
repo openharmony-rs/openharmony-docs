@@ -12,7 +12,7 @@ struct OH_PictureNative_MetadataCopyItem {...}
 
 **起始版本：** 26.0.0
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [picture_native.h](capi-picture-native-h.md)
 

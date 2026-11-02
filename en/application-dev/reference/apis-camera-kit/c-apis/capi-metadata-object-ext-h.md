@@ -10,7 +10,7 @@ The file declares the metadata object ext concepts.
 
 **Since**: 26.0.0
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## Summary
 

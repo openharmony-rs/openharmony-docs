@@ -10,7 +10,7 @@ The file declares the metadata output concepts.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## Summary
 
@@ -45,15 +45,6 @@ The file declares the metadata output concepts.
 | [Camera_ErrorCode OH_MetadataOutput_UnlockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_unlockmetadataobjecttracking) | - | Unlock metadata object tracking. |
 | [Camera_ErrorCode OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled(Camera_MetadataOutput* metadataOutput, bool enable)](#oh_metadataoutput_setinframemetadataforencoderenabled) | - | Enable or disable in frame metadata delivery for encoder. |
 | [bool OH_MetadataOutput_IsInFrameMetadataForEncoderSupported(const Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_isinframemetadataforencodersupported) | - | Check if in frame metdata for encoder is supported. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_MetadataOutput_OnMetadataObjectAvailable)(Camera_MetadataOutput* metadataOutput, Camera_MetadataObject* metadataObject, uint32_t size) | Defines the callback defined in the [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) struct and used to report metadata output data.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_MetadataOutput_OnMetadataObjectExtAvailable)(void* context, OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t size) | Defines the callback used to listen for metadata object ext available.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_MetadataOutput_OnError)(Camera_MetadataOutput* metadataOutput, Camera_ErrorCode errorCode) | Defines the callback defined in the [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) struct and used to report metadata output errors.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_MetadataOutput_OnErrorExt)(void* context, Camera_ErrorCode errorCode) | Defines the callback used to listen for error ext event.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
 
 ## Function description
 

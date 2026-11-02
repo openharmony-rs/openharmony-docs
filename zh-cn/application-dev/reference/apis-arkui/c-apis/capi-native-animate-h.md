@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -23,17 +23,17 @@
 | [ArkUI_NativeAnimateAPI_1](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md) | ArkUI_NativeAnimateAPI_1 | ArkUI（方舟UI框架）提供的Native侧动画接口集合。 |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md) | ArkUI_AnimateOption | 定义动画效果的配置参数，用于配置动画的相关属性。 |
 | [ArkUI_Curve](capi-arkui-nativemodule-arkui-curve.md) | ArkUI_Curve | 提供动画曲线的插值对象定义，用于动画属性值的插值计算。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | ArkUI_CurveHandle | 曲线插值对象的指针类型定义。曲线插值用于控制动画属性值随时间的变化规律，不同类型的插值曲线可实现不同的动画过渡效果。 |
+| [ArkUI_Curve*](capi-arkui-nativemodule-arkui-curve8h.md) | ArkUI_CurveHandle | 曲线插值对象的指针类型定义。曲线插值用于控制动画属性值随时间的变化规律，不同类型的插值曲线可实现不同的动画过渡效果。 |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md) | ArkUI_KeyframeAnimateOption | 定义关键帧动画参数对象，作为关键帧动画接口的输入参数使用。相关接口需要在主线程上调用。 |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md) | ArkUI_AnimatorOption | 定义animator动画参数对象，用于创建animator动画时配置动画属性参数。 |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) | ArkUI_AnimatorHandle | 定义animator动画对象指针，用于对ArkUI（方舟UI框架）动画对象进行操作和控制。 |
+| [ArkUI_Animator*](capi-arkui-nativemodule-arkui-animator8h.md) | ArkUI_AnimatorHandle | 定义animator动画对象指针，用于对ArkUI（方舟UI框架）动画对象进行操作和控制。 |
 | [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md) | ArkUI_AnimatorEvent | 定义animator回调事件对象，用于在动画状态变化回调中接收事件。 |
 | [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md) | ArkUI_AnimatorOnFrameEvent | 定义animator动画播放过程中逐帧回调的事件数据对象。 |
 | [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md) | ArkUI_TransitionEffect | 定义transition属性的转场效果参数对象，用于配置组件出现或消失时的过渡动画效果。 |
-| [*OH_ArkUI_PropertyAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-propertyanimationhandle.md) | *OH_ArkUI_PropertyAnimationHandle | 定义属性动画的句柄。 |
-| [*OH_ArkUI_KeyframeAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-keyframeanimationhandle.md) | *OH_ArkUI_KeyframeAnimationHandle | 定义关键帧动画的句柄。 |
-| [*OH_ArkUI_PathAnimationHandle](capi-arkui-nativemodule-8hoh-arkui-pathanimationhandle.md) | *OH_ArkUI_PathAnimationHandle | 定义路径动画的句柄。 |
-| [*OH_ArkUI_AnimationGroupHandle](capi-arkui-nativemodule-8hoh-arkui-animationgrouphandle.md) | *OH_ArkUI_AnimationGroupHandle | 定义动画组的句柄。 |
+| [OH_ArkUI_PropertyAnimation](capi-arkui-nativemodule-oh-arkui-propertyanimation.md) | *OH_ArkUI_PropertyAnimationHandle | 定义属性动画的句柄。 |
+| [OH_ArkUI_KeyframeAnimation](capi-arkui-nativemodule-oh-arkui-keyframeanimation.md) | *OH_ArkUI_KeyframeAnimationHandle | 定义关键帧动画的句柄。 |
+| [OH_ArkUI_PathAnimation](capi-arkui-nativemodule-oh-arkui-pathanimation.md) | *OH_ArkUI_PathAnimationHandle | 定义路径动画的句柄。 |
+| [OH_ArkUI_AnimationGroup](capi-arkui-nativemodule-oh-arkui-animationgroup.md) | *OH_ArkUI_AnimationGroupHandle | 定义动画组的句柄。 |
 
 ### 函数
 
@@ -135,7 +135,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetToValue(OH_ArkUI_PropertyAnimationHandle animation, const ArkUI_NumberValue *value, int32_t size)](#oh_arkui_nativemodule_propertyanimation_settovalue) | 设置属性动画的结束值。<br> 必须设置结束值，否则属性动画句柄无实际意义。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetToValue(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_NumberValue *value, int32_t size)](#oh_arkui_nativemodule_propertyanimation_gettovalue) | 获取属性动画的结束值。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDuration(OH_ArkUI_PropertyAnimationHandle animation, int32_t duration)](#oh_arkui_nativemodule_propertyanimation_setduration) | 设置属性动画的持续时间。<br> 实际生效的动画持续时间按以下优先级确定： 如果通过本接口设置了子动画的持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)在动画组上设置的持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDuration(OH_ArkUI_PropertyAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_propertyanimation_getduration) | 获取属性动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDuration(OH_ArkUI_PropertyAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_propertyanimation_getduration) | 获取属性动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode)。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDelay(OH_ArkUI_PropertyAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_propertyanimation_setdelay) | 设置属性动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDelay(OH_ArkUI_PropertyAnimationHandle animation, int32_t *delay)](#oh_arkui_nativemodule_propertyanimation_getdelay) | 获取属性动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetCurve(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_propertyanimation_setcurve) | 设置属性动画的动画曲线。 <br> 实际生效的动画曲线按以下优先级确定： 如果通过本接口设置了曲线，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve)在动画组上设置的曲线； 如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 支持弹簧曲线（<b>springMotion</b>、<b>responsiveSpringMotion</b>和<b>interpolatingSpring</b>）。 设置弹簧曲线时，通过[OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration)设置的持续时间不生效，动画持续时间由弹簧曲线决定。 |
@@ -160,7 +160,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_keyframeanimation_setcurve) | 设置指定索引处关键帧的动画曲线。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_keyframeanimation_getcurve) | 获取指定索引处关键帧的动画曲线。 <br> 本接口仅返回为关键帧显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果关键帧未设置曲线，则<b>outBorrowedCurve</b>输出为<b>NULL</b>。 运行时实际生效的动画曲线按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurve)或 [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线； 如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration(OH_ArkUI_KeyframeAnimationHandle animation, int32_t duration)](#oh_arkui_nativemodule_keyframeanimation_setduration) | 设置关键帧动画的持续时间。 <br> 实际生效的动画持续时间按以下优先级确定： 如果通过本接口设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)在动画组上设置的持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration(OH_ArkUI_KeyframeAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_keyframeanimation_getduration) | 获取关键帧动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration(OH_ArkUI_KeyframeAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_keyframeanimation_getduration) | 获取关键帧动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode)。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDelay(OH_ArkUI_KeyframeAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_keyframeanimation_setdelay) | 设置关键帧动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDelay(OH_ArkUI_KeyframeAnimationHandle animation, int32_t *delay)](#oh_arkui_nativemodule_keyframeanimation_getdelay) | 获取关键帧动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetTempo(OH_ArkUI_KeyframeAnimationHandle animation, float tempo)](#oh_arkui_nativemodule_keyframeanimation_settempo) | 设置关键帧动画的播放速率。 |
@@ -174,7 +174,7 @@
 | [OH_ArkUI_PathAnimationHandle OH_ArkUI_NativeModule_PathAnimation_Create(const char *path)](#oh_arkui_nativemodule_pathanimation_create) | 创建路径动画，使组件沿几何路径移动。 <br> 路径动画作用于OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION属性。 |
 | [void OH_ArkUI_NativeModule_PathAnimation_Destroy(OH_ArkUI_PathAnimationHandle animation)](#oh_arkui_nativemodule_pathanimation_destroy) | 销毁路径动画。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDuration(OH_ArkUI_PathAnimationHandle animation, int32_t duration)](#oh_arkui_nativemodule_pathanimation_setduration) | 设置路径动画的持续时间。 <br> 实际生效的动画持续时间按以下优先级确定： 如果通过本接口设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)在动画组上设置的持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDuration(OH_ArkUI_PathAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_pathanimation_getduration) | 获取路径动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDuration(OH_ArkUI_PathAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_pathanimation_getduration) | 获取路径动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode)。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDelay(OH_ArkUI_PathAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_pathanimation_setdelay) | 设置路径动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDelay(OH_ArkUI_PathAnimationHandle animation, int32_t *delay)](#oh_arkui_nativemodule_pathanimation_getdelay) | 获取路径动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetTempo(OH_ArkUI_PathAnimationHandle animation, float tempo)](#oh_arkui_nativemodule_pathanimation_settempo) | 设置路径动画的播放速率。 |
@@ -190,7 +190,7 @@
 | [OH_ArkUI_AnimationGroupHandle OH_ArkUI_NativeModule_AnimationGroup_Create(void)](#oh_arkui_nativemodule_animationgroup_create) | 创建动画组。 |
 | [void OH_ArkUI_NativeModule_AnimationGroup_Destroy(OH_ArkUI_AnimationGroupHandle group)](#oh_arkui_nativemodule_animationgroup_destroy) | 销毁动画组的前端句柄。<br> 本接口仅释放前端句柄。 通过[OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup)注册的动画组的后端（运行时）对象将被单独释放——在finish回调触发时自动释放， 或通过[OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup)释放。<br> 添加到动画组的子动画不会被自动销毁。 需要分别调用[OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy)、 [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy)。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDuration(OH_ArkUI_AnimationGroupHandle group, int32_t duration)](#oh_arkui_nativemodule_animationgroup_setduration) | 设置动画组的持续时间。<br> 动画组的持续时间作为未通过[OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration)、 [OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration)或[OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration) 设置自身持续时间的子动画的默认持续时间。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDuration(OH_ArkUI_AnimationGroupHandle group, int32_t *duration)](#oh_arkui_nativemodule_animationgroup_getduration) | 获取动画组的持续时间。 <br> 本接口仅返回在本动画组上显式设置的持续时间，不受子动画的持续时间影响。 如果本动画组未设置持续时间，则返回ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND。运行时，未设置的动画组持续时间默认为**1000**毫秒。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDuration(OH_ArkUI_AnimationGroupHandle group, int32_t *duration)](#oh_arkui_nativemodule_animationgroup_getduration) | 获取动画组的持续时间。 <br> 本接口仅返回在本动画组上显式设置的持续时间，不受子动画的持续时间影响。 如果本动画组未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode)。运行时，未设置的动画组持续时间默认为**1000**毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDelay(OH_ArkUI_AnimationGroupHandle group, int32_t delay)](#oh_arkui_nativemodule_animationgroup_setdelay) | 设置动画组的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDelay(OH_ArkUI_AnimationGroupHandle group, int32_t *delay)](#oh_arkui_nativemodule_animationgroup_getdelay) | 获取动画组的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetCurve(OH_ArkUI_AnimationGroupHandle group, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_animationgroup_setcurve) | 设置动画组的动画曲线。 <br> 动画组的曲线作为未通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setcurve)、 [OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurve) 设置自身曲线的子动画的默认曲线。 不支持<b>springMotion</b>、<b>responsiveSpringMotion</b>和<b>interpolatingSpring</b>曲线，因为这些曲线没有有效的持续时间设置。 |
@@ -209,13 +209,13 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_PropertyAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addpropertyanimation) | 将属性动画添加到动画组中。<br> 动画的目标节点由[OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_settargetnode)确定； 如果未设置，则动画继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。 在注册动画组时，每个子动画必须解析为非NULL目标。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_KeyframeAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addkeyframeanimation) | 将关键帧动画添加到动画组中。 <br> 动画的目标节点由[OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_settargetnode)确定； 如果未设置，则动画继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。 在注册动画组时，每个子动画必须解析为非NULL目标。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_PathAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addpathanimation) | 将路径动画添加到动画组中。 <br> 动画的目标节点由[OH_ArkUI_NativeModule_PathAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_settargetnode)确定； 如果未设置，则动画继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。 在注册动画组时，每个子动画必须解析为非NULL目标。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle context, OH_ArkUI_AnimationGroupHandle group, const char *key)](#oh_arkui_nativemodule_addanimationgroup) | 在UIContext上以指定key注册动画组并开始播放。 <br> UIContext通过<b>key</b>拥有动画组：注册后，UIContext持有动画组的后端（运行时）对象，调用者可以在注册后销毁前端动画组句柄（及子动画句柄）， 因为后端通过(UIContext, key)独立运行。 key按UIContext（实例）划分作用域：不同UIContext中的相同key不会冲突。 在一个UIContext内，如果已用相同key注册了动画组，系统会先移除前一个动画组（释放其后端对象）再注册新动画组。 动画组随后通过相同的(UIContext, key)对进行标识和管理。 <br> 通过[OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpropertyanimation)、 [OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addkeyframeanimation)或 [OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpathanimation)添加的每个子动画， 驱动由其自身<b>SetTargetNode</b>接口设置的目标节点； 如果该目标未设置（或为<b>NULL</b>），则继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。 注册时，每个子动画必须解析为非NULL目标节点（自身的或动画组默认的）。如果子动画无可解析的目标节点，则返回ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID。 每个解析后的目标节点必须属于与<b>context</b>相同的UIContext，否则返回错误码ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT。 <br> 播放控制和生命周期接口（[OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup)、 [OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)、 [OH_ArkUI_NativeModule_HasAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_hasanimationgroup)、 [OH_ArkUI_NativeModule_PauseAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_pauseanimationgroup)、 [OH_ArkUI_NativeModule_ResumeAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_resumeanimationgroup)、 [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup)）均以(UIContext, key)对为键。 <br> finish回调（见[OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)）仅触发一次， 由停止动画的事件触发——自然结束、[OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup)或目标节点销毁。 如果[OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup)返回错误，动画创建失败，finish回调不会被触发。 回调返回后，系统自动从UIContext移除动画组并释放动画组及其子动画的后端（运行时）对象； 前端句柄（动画组及其子动画）仍需由调用者通过[OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy)、 [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy)、 [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy)销毁。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle context, OH_ArkUI_AnimationGroupHandle group, const char *key)](#oh_arkui_nativemodule_addanimationgroup) | 在UIContext上以指定key注册动画组并开始播放。 <br> UIContext通过<b>key</b>拥有动画组：注册后，UIContext持有动画组的后端（运行时）对象，调用者可以在注册后销毁前端动画组句柄（及子动画句柄）， 因为后端通过(UIContext, key)独立运行。 key按UIContext（实例）划分作用域：不同UIContext中的相同key不会冲突。 在一个UIContext内，如果已用相同key注册了动画组，系统会先移除前一个动画组（释放其后端对象）再注册新动画组。 动画组随后通过相同的(UIContext, key)对进行标识和管理。 <br> 通过[OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpropertyanimation)、 [OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addkeyframeanimation)或 [OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpathanimation)添加的每个子动画， 驱动由其自身<b>SetTargetNode</b>接口设置的目标节点； 如果该目标未设置（或为<b>NULL</b>），则继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。 注册时，每个子动画必须解析为非NULL目标节点（自身的或动画组默认的）。如果子动画无可解析的目标节点，则返回[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-error-code-h.md#arkui_errorcode)。 每个解析后的目标节点必须属于与<b>context</b>相同的UIContext，否则返回错误码[ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT](capi-error-code-h.md#arkui_errorcode)。 <br> 播放控制和生命周期接口（[OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup)、 [OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)、 [OH_ArkUI_NativeModule_HasAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_hasanimationgroup)、 [OH_ArkUI_NativeModule_PauseAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_pauseanimationgroup)、 [OH_ArkUI_NativeModule_ResumeAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_resumeanimationgroup)、 [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup)）均以(UIContext, key)对为键。 <br> finish回调（见[OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)）仅触发一次， 由停止动画的事件触发——自然结束、[OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup)或目标节点销毁。 如果[OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup)返回错误，动画创建失败，finish回调不会被触发。 回调返回后，系统自动从UIContext移除动画组并释放动画组及其子动画的后端（运行时）对象； 前端句柄（动画组及其子动画）仍需由调用者通过[OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy)、 [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy)、 [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy)销毁。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_RemoveAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_removeanimationgroup) | 从UIContext中移除指定key标识的动画组。 <br> 停止动画组（如果仍在运行）并释放动画组及其子动画的后端（运行时）对象。被动画的目标节点将恢复到动画开始时的状态。 前端句柄（动画组及其子动画）不会被本调用释放，需要由调用者通过[OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy)、 [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy)、 [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy)销毁。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetAnimationGroupState(ArkUI_ContextHandle context, const char *key, OH_ArkUI_AnimationGroupState *state)](#oh_arkui_nativemodule_getanimationgroupstate) | 获取UIContext上指定key标识的动画组的播放状态。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_HasAnimationGroup(ArkUI_ContextHandle context, const char *key, bool *exists)](#oh_arkui_nativemodule_hasanimationgroup) | 检查UIContext上是否存在指定key的动画组。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PauseAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_pauseanimationgroup) | 暂停UIContext上指定key标识的动画组。 <br> 调用此接口时动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ResumeAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_resumeanimationgroup) | 恢复UIContext上指定key标识的动画组。<br> 调用此接口时动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_FinishAnimationGroup(ArkUI_ContextHandle context, const char *key, OH_ArkUI_AnimationFinishMode mode)](#oh_arkui_nativemodule_finishanimationgroup) | 结束UIContext上指定key标识的动画组。 <br> 根据指定的结束模式结束动画组：跳转到结束状态、跳转到起始状态或保持当前值。 动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)或[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PauseAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_pauseanimationgroup) | 暂停UIContext上指定key标识的动画组。 <br> 调用此接口时动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode)。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ResumeAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_resumeanimationgroup) | 恢复UIContext上指定key标识的动画组。<br> 调用此接口时动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode)。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_FinishAnimationGroup(ArkUI_ContextHandle context, const char *key, OH_ArkUI_AnimationFinishMode mode)](#oh_arkui_nativemodule_finishanimationgroup) | 结束UIContext上指定key标识的动画组。 <br> 根据指定的结束模式结束动画组：跳转到结束状态、跳转到起始状态或保持当前值。 动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)或[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode)。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。 |
 
 ## 函数说明
 
@@ -611,7 +611,7 @@ void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHa
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 <br>option为NULL时，操作无效。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | 动画曲线参数。 <br>value为NULL时，操作无效。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画曲线参数。 <br>value为NULL时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_GetICurve()
 
@@ -637,7 +637,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 动画的插值曲线。参数option异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画的插值曲线。参数option异常时返回NULL。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_Create()
 
@@ -703,14 +703,14 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0，表示不延迟。value大于0为延迟播放，value小于0表示提前播放。对于value小于0的情况： 当value的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到value绝对值的时刻的状态；当value的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。 其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。可能原因：option为NULL。解决措施：请确保option为有效的动画参数对象指针。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。可能原因：option为NULL。解决措施：请确保option为有效的动画参数对象指针。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetIterations()
 
@@ -730,14 +730,14 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1，表示播放一次。 <br>value小于-1时，操作无效，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1，表示播放一次。 <br>value小于-1时，操作无效，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback()
 
@@ -757,7 +757,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_KeyframeAnimateOption* option | 关键帧动画参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| rkUI_KeyframeAnimateOption* option | 关键帧动画参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | void* userData | 用户自定义对象指针。 <br>不涉及异常值处理。 |
 | 回调函数。 | <br>userData：回调函数的入参，用户自定义对象指针。 <br>onFinish为NULL时，操作无效。 |
 
@@ -765,7 +765,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate()
 
@@ -785,14 +785,14 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimat
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | 关键帧动画的期望帧率。 <br>frameRate为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | 关键帧动画的期望帧率。 <br>frameRate为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetDuration()
 
@@ -812,15 +812,15 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | int32_t value | 关键帧动画的持续时间，单位为ms（毫秒），默认值1000ms。取值范围：[0, +∞)。 <br>value小于0时，按0处理。 |
-| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。 <br>index超出范围时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。 <br>index超出范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetCurve()
 
@@ -844,15 +844,15 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* opt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | 该关键帧使用的动画曲线。默认值：[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)。 |
-| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。 <br>index小于0或index超出范围时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 该关键帧使用的动画曲线。默认值：[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)。 |
+| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。 <br>index小于0或index超出范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback()
 
@@ -872,16 +872,16 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(ArkUI_KeyframeAni
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_KeyframeAnimateOption* option | 关键帧动画参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| rkUI_KeyframeAnimateOption* option | 关键帧动画参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | void (*event)(void* userData) | 闭包函数。 <br>userData：回调函数的入参，用户自定义对象指针。 <br>event为NULL时，操作无效。 |
 | void* userData | 用户定义对象指针。 <br>不涉及异常值处理。 |
-| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。 <br>index小于0或index超出范围时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。 <br>index小于0或index超出范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDelay()
 
@@ -1013,7 +1013,7 @@ ArkUI_CurveHandle OH_ArkUI_KeyframeAnimateOption_GetCurve(ArkUI_KeyframeAnimateO
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 动画曲线。参数异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画曲线。参数异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_Create()
 
@@ -1083,14 +1083,14 @@ int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 播放的时长，单位为ms（毫秒），默认值0ms。取值范围：[0, +∞)。 <br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| int32_t value | 播放的时长，单位为ms（毫秒），默认值0ms。取值范围：[0, +∞)。 <br>value小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetDelay()
 
@@ -1110,14 +1110,14 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0，表示不延迟。value大于0为延迟播放，value小于0表示提前播放。对于value小于0的情况： 当value的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到value绝对值的时刻的状态；当value的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。 其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetIterations()
 
@@ -1141,14 +1141,14 @@ int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int3
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | int32_t value | 取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。 <br>value小于-1时，操作无效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetFill()
 
@@ -1168,14 +1168,14 @@ int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_Anim
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | 动画执行时组件在动画开始前和结束后的状态。默认值：[ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-h.md#arkui_animationfillmode)。 <br>ARKUI_ANIMATION_FILL_MODE_NONE（0）表示动画前后均恢复初始状态，ARKUI_ANIMATION_FILL_MODE_FORWARDS（1）表示动画结束后保持终点状态， ARKUI_ANIMATION_FILL_MODE_BACKWARDS（2）表示动画开始前保持起点状态，ARKUI_ANIMATION_FILL_MODE_BOTH（3）表示动画前后均保持对应状态。 <br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | 动画执行时组件在动画开始前和结束后的状态。默认值：[ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-h.md#arkui_animationfillmode)。 <br>ARKUI_ANIMATION_FILL_MODE_NONE（0）表示动画前后均恢复初始状态，ARKUI_ANIMATION_FILL_MODE_FORWARDS（1）表示动画结束后保持终点状态， ARKUI_ANIMATION_FILL_MODE_BACKWARDS（2）表示动画开始前保持起点状态，ARKUI_ANIMATION_FILL_MODE_BOTH（3）表示动画前后均保持对应状态。 <br>value小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetDirection()
 
@@ -1195,14 +1195,14 @@ int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | 动画播放方向。默认值：[ARKUI_ANIMATION_DIRECTION_NORMAL](capi-native-type-h.md#arkui_animationdirection)。 <br>ARKUI_ANIMATION_DIRECTION_NORMAL（0）表示正向播放，ARKUI_ANIMATION_DIRECTION_REVERSE（1）表示反向播放， ARKUI_ANIMATION_DIRECTION_ALTERNATE（2）表示交替正向和反向播放，奇数次正向，偶数次反向，ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE（3） 表示交替反向和正向播放，奇数次反向，偶数次正向。 <br>value超出取值范围时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | 动画播放方向。默认值：[ARKUI_ANIMATION_DIRECTION_NORMAL](capi-native-type-h.md#arkui_animationdirection)。 <br>ARKUI_ANIMATION_DIRECTION_NORMAL（0）表示正向播放，ARKUI_ANIMATION_DIRECTION_REVERSE（1）表示反向播放， ARKUI_ANIMATION_DIRECTION_ALTERNATE（2）表示交替正向和反向播放，奇数次正向，偶数次反向，ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE（3） 表示交替反向和正向播放，奇数次反向，偶数次正向。 <br>value超出取值范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetCurve()
 
@@ -1226,14 +1226,14 @@ int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_Cur
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | 动画插值曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)，建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)获得更平滑的动画效果。 <br>value为NULL时，使用默认曲线[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)，建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)获得更平滑的动画效果。 <br>value为NULL时，使用默认曲线[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetBegin()
 
@@ -1247,7 +1247,7 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 
 > **说明：**
 >
-> 当animator动画为关键帧动画时，此方法返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。
+> 当animator动画为关键帧动画时，此方法返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1257,14 +1257,14 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | float value | 动画插值起点，默认值0.0。取值范围：(-∞, +∞)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetEnd()
 
@@ -1278,7 +1278,7 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 
 > **说明：**
 >
-> 当animator动画为关键帧动画时，此方法返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。
+> 当animator动画为关键帧动画时，此方法返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1288,14 +1288,14 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | float value | 动画插值终点。取值范围：(-∞, +∞)。默认值：1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange()
 
@@ -1315,14 +1315,14 @@ int32_t OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(ArkUI_AnimatorOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 期望的帧率范围对象。 <br>value为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 期望的帧率范围对象。 <br>value为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetKeyframe()
 
@@ -1342,16 +1342,16 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| float time | 关键帧时间。取值范围：[0, 1], 各关键帧时间必须依次递增，即后一关键帧的time值大于前一关键帧的time值。默认值：按索引均匀分布（如第1帧为0.0，第2帧为0.5，第3帧为1.0）。 <br>time小于0或time大于1时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| float time | 关键帧时间。取值范围：[0, 1], 各关键帧时间必须依次递增，即后一关键帧的time值大于前一关键帧的time值。默认值：按索引均匀分布（如第1帧为0.0，第2帧为0.5，第3帧为1.0）。 <br>time小于0或time大于1时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | float value | 关键帧对应的插值目标值，表示动画在该关键帧时刻要达到的属性值。取值范围：(-∞, +∞)。 |
-| int32_t index | 关键帧的索引值。 <br>index小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index | 关键帧的索引值。 <br>index小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_SetKeyframeCurve()
 
@@ -1375,15 +1375,15 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframeCurve(ArkUI_AnimatorOption* option, A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) value | 动画插值曲线。默认值：NULL，表示线性插值。 |
-| int32_t index | 关键帧的索引值。取值范围：[0, keyframeSize-1]，其中keyframeSize为关键帧个数。 <br>index超出取值范围时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：NULL，表示线性插值。 |
+| int32_t index | 关键帧的索引值。取值范围：[0, keyframeSize-1]，其中keyframeSize为关键帧个数。 <br>index超出取值范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_GetDuration()
 
@@ -1539,7 +1539,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 动画插值曲线。option异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画插值曲线。option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_GetBegin()
 
@@ -1698,7 +1698,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetKeyframeCurve(ArkUI_AnimatorOption*
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 动画插值曲线。函数参数异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画插值曲线。函数参数异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorEvent_GetUserData()
 
@@ -1796,7 +1796,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(ArkUI_AnimatorOption* op
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_AnimatorOption* option | animator动画对象参数。option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| rkUI_AnimatorOption* option | animator动画对象参数。option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | void* userData | 用户自定义参数。 |
 | 回调函数。 | <br>- event：回调函数的入参，动画事件对象。 |
 
@@ -1804,7 +1804,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(ArkUI_AnimatorOption* op
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFinishCallback()
 
@@ -1824,7 +1824,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(ArkUI_AnimatorOption* o
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_AnimatorOption* option | animator动画对象参数。option为NULL时，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| rkUI_AnimatorOption* option | animator动画对象参数。option为NULL时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | void* userData | 用户自定义参数。 |
 | 回调函数。 | <br>- event：回调函数的入参，动画事件对象。 |
 
@@ -1832,7 +1832,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(ArkUI_AnimatorOption* o
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnCancelCallback()
 
@@ -1852,7 +1852,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(ArkUI_AnimatorOption* o
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_AnimatorOption* option | animator动画对象参数。option为NULL时，返回 ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| rkUI_AnimatorOption* option | animator动画对象参数。option为NULL时，返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | void* userData | 用户自定义参数。 |
 | 回调函数。 | <br>- event：回调函数的入参，动画事件对象。 |
 
@@ -1860,7 +1860,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(ArkUI_AnimatorOption* o
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback()
 
@@ -1880,7 +1880,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(ArkUI_AnimatorOption* o
 
 | 参数项 | 描述 |
 | -- | -- |
-| rkUI_AnimatorOption* option | animator动画对象参数。option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| rkUI_AnimatorOption* option | animator动画对象参数。option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | void* userData | 用户自定义参数。 |
 | 回调函数。 | <br>- event：回调函数的入参，动画事件对象。 |
 
@@ -1888,7 +1888,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(ArkUI_AnimatorOption* o
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_Animator_ResetAnimatorOption()
 
@@ -1908,14 +1908,14 @@ int32_t OH_ArkUI_Animator_ResetAnimatorOption(ArkUI_AnimatorHandle animatorHandl
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | animator动画对象。 <br>animatorHandle为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画参数。 <br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | animator动画对象。 <br>animatorHandle为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画参数。 <br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_Animator_Play()
 
@@ -1935,13 +1935,13 @@ int32_t OH_ArkUI_Animator_Play(ArkUI_AnimatorHandle animatorHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_Animator_Finish()
 
@@ -1961,13 +1961,13 @@ int32_t OH_ArkUI_Animator_Finish(ArkUI_AnimatorHandle animatorHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_Animator_Pause()
 
@@ -1987,13 +1987,13 @@ int32_t OH_ArkUI_Animator_Pause(ArkUI_AnimatorHandle animatorHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_Animator_Cancel()
 
@@ -2013,13 +2013,13 @@ int32_t OH_ArkUI_Animator_Cancel(ArkUI_AnimatorHandle animatorHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_Animator_Reverse()
 
@@ -2039,13 +2039,13 @@ int32_t OH_ArkUI_Animator_Reverse(ArkUI_AnimatorHandle animatorHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animatorhandle.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) animatorHandle | animator动画对象。animatorHandle为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_Curve_CreateCurveByType()
 
@@ -2071,7 +2071,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCurveByType(ArkUI_AnimationCurve curve)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 插值曲线对象指针，用于动画属性值的插值计算。curve值异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 插值曲线对象指针，用于动画属性值的插值计算。curve值异常时返回NULL。 |
 
 ### OH_ArkUI_Curve_CreateStepsCurve()
 
@@ -2098,7 +2098,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateStepsCurve(int32_t count, bool end)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 阶梯曲线对象指针。如果参数异常返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 阶梯曲线对象指针。如果参数异常返回NULL。 |
 
 ### OH_ArkUI_Curve_CreateCubicBezierCurve()
 
@@ -2127,7 +2127,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCubicBezierCurve(float x1, float y1, floa
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 三阶贝塞尔曲线对象指针。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 三阶贝塞尔曲线对象指针。 |
 
 ### OH_ArkUI_Curve_CreateSpringCurve()
 
@@ -2156,7 +2156,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, f
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 插值器弹簧曲线的插值对象指针，用于基于弹簧物理模型进行插值计算，生成从0到1的动画曲线。如果参数异常返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 插值器弹簧曲线的插值对象指针，用于基于弹簧物理模型进行插值计算，生成从0到1的动画曲线。如果参数异常返回NULL。 |
 
 ### OH_ArkUI_Curve_CreateSpringMotion()
 
@@ -2188,7 +2188,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampin
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 弹性动画曲线的插值对象指针，使用响应式参数构造曲线，支持动画间的速度继承。如果参数异常返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 弹性动画曲线的插值对象指针，使用响应式参数构造曲线，支持动画间的速度继承。如果参数异常返回NULL。 |
 
 ### OH_ArkUI_Curve_CreateResponsiveSpringMotion()
 
@@ -2220,7 +2220,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, fl
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 响应式弹簧动画曲线的插值对象指针，是springMotion的一种特例，仅默认参数不同。如果参数异常返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 响应式弹簧动画曲线的插值对象指针，是springMotion的一种特例，仅默认参数不同。如果参数异常返回NULL。 |
 
 ### OH_ArkUI_Curve_CreateInterpolatingSpring()
 
@@ -2253,7 +2253,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 曲线的插值对象指针。如果参数异常返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 曲线的插值对象指针。如果参数异常返回NULL。 |
 
 ### OH_ArkUI_Curve_CreateCustomCurve()
 
@@ -2280,7 +2280,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCustomCurve(void* userData, float (*inter
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) | 曲线的插值对象指针。如果参数异常返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 曲线的插值对象指针。如果参数异常返回NULL。 |
 
 ### OH_ArkUI_Curve_DisposeCurve()
 
@@ -2300,7 +2300,7 @@ void OH_ArkUI_Curve_DisposeCurve(ArkUI_CurveHandle curveHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curveHandle | 曲线的插值对象指针。 <br>curveHandle为NULL时，操作无效。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curveHandle | 曲线的插值对象指针。 <br>curveHandle为NULL时，操作无效。 |
 
 ### OH_ArkUI_CreateOpacityTransitionEffect()
 
@@ -2481,7 +2481,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateIdentityTransitionEffect(void)
 
 **起始版本：** 26.0.0
 
-**资源释放：** native_animate/OH_ArkUI_TransitionEffect_Dispose {return}
+**资源释放：** [OH_ArkUI_TransitionEffect_Dispose](#oh_arkui_transitioneffect_dispose)
 
 **返回值：**
 
@@ -2527,14 +2527,14 @@ int32_t OH_ArkUI_TransitionEffect_Combine(ArkUI_TransitionEffect* firstEffect, A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* firstEffect | 链式组合的前一个转场效果，将与secondEffect组合形成包含多种转场效果的TransitionEffect。 <br>firstEffect为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* secondEffect | 需要组合的后一个转场效果，将与firstEffect链式组合形成包含多种转场效果的TransitionEffect。 <br>secondEffect为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* firstEffect | 链式组合的前一个转场效果，将与secondEffect组合形成包含多种转场效果的TransitionEffect。 <br>firstEffect为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* secondEffect | 需要组合的后一个转场效果，将与firstEffect链式组合形成包含多种转场效果的TransitionEffect。 <br>secondEffect为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_TransitionEffect_SetAnimation()
 
@@ -2558,14 +2558,14 @@ int32_t OH_ArkUI_TransitionEffect_SetAnimation(ArkUI_TransitionEffect* effect, A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* effect | 要设置动画参数的转场效果对象。 <br>effect为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* effect | 要设置动画参数的转场效果对象。 <br>effect为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* animation | 属性显示动画效果相关参数。 <br>animation为NULL时，设置动画参数为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_Create()
 
@@ -2641,7 +2641,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetFromValue(OH_ArkUI_Pr
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetFromValue()
 
@@ -2662,14 +2662,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetFromValue(OH_ArkUI_Pr
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] 表示属性动画句柄。 |
-| ArkUI_NumberValue *value | [out] 表示用于接收[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)起始值数组的指针。  value中元素的数量和类型取决于创建属性动画时传入的propertyType的取值，具体请参考[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)的枚举描述。 例如，如果取值为[OH_ARKUI_ANIMATION_PROPERTY_OPACITY](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)，则value需要传入1个f32值。值将写入该指针指向的内存。  <br>该指针不能为**NULL**。如果**value**设置为**NULL**，则返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t size | [in] 表示输出数组的大小。 必须等于[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)所需的元素个数，否则返回错误码ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR。 |
+| ArkUI_NumberValue *value | [out] 表示用于接收[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)起始值数组的指针。  value中元素的数量和类型取决于创建属性动画时传入的propertyType的取值，具体请参考[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)的枚举描述。 例如，如果取值为[OH_ARKUI_ANIMATION_PROPERTY_OPACITY](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)，则value需要传入1个f32值。值将写入该指针指向的内存。  <br>该指针不能为**NULL**。如果**value**设置为**NULL**，则返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| int32_t size | [in] 表示输出数组的大小。 必须等于[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)所需的元素个数，否则返回错误码[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND 未设置起始值。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数组大小与所需大小不一致。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode) 未设置起始值。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 数组大小与所需大小不一致。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetToValue()
 
@@ -2697,7 +2697,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetToValue(OH_ArkUI_Prop
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetToValue()
 
@@ -2718,14 +2718,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetToValue(OH_ArkUI_Prop
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] 表示属性动画句柄。 |
-| ArkUI_NumberValue *value | [out] 表示用于接收[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)结束值数组的指针。  value中元素的数量和类型取决于创建属性动画时传入的propertyType的取值，具体请参考[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)的枚举描述。 例如，如果取值为[OH_ARKUI_ANIMATION_PROPERTY_OPACITY](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)，则value需要传入1个f32值。值将写入该指针指向的内存。  <br>该指针不能为**NULL**。如果**value**设置为**NULL**，则返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t size | [in] 表示输出数组的大小。 必须等于[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)所需的元素个数；否则返回错误码ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR。 |
+| ArkUI_NumberValue *value | [out] 表示用于接收[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)结束值数组的指针。  value中元素的数量和类型取决于创建属性动画时传入的propertyType的取值，具体请参考[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)的枚举描述。 例如，如果取值为[OH_ARKUI_ANIMATION_PROPERTY_OPACITY](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)，则value需要传入1个f32值。值将写入该指针指向的内存。  <br>该指针不能为**NULL**。如果**value**设置为**NULL**，则返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| int32_t size | [in] 表示输出数组的大小。 必须等于[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)所需的元素个数；否则返回错误码[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND 未设置结束值。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数组大小与所需大小不一致。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode) 未设置结束值。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 数组大小与所需大小不一致。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetDuration()
 
@@ -2752,7 +2752,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDuration(OH_ArkUI_Pro
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetDuration()
 
@@ -2762,7 +2762,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDuration(OH_ArkUI_Pro
 
 **描述：**
 
-获取属性动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。
+获取属性动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode)。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2779,7 +2779,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDuration(OH_ArkUI_Pro
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND 未设置持续时间。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode) 未设置持续时间。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetDelay()
 
@@ -2806,7 +2806,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDelay(OH_ArkUI_Proper
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetDelay()
 
@@ -2833,7 +2833,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDelay(OH_ArkUI_Proper
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetCurve()
 
@@ -2854,13 +2854,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetCurve(OH_ArkUI_Proper
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] 表示属性动画句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] 表示动画曲线。 <b>NULL</b>表示继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线。 本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] 表示动画曲线。 <b>NULL</b>表示继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线。 本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetCurve()
 
@@ -2881,13 +2881,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetCurve(OH_ArkUI_Proper
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] 表示属性动画句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] 表示用于接收动画曲线的指针。 调用者不得销毁该句柄。 <b>NULL</b>表示本动画未设置曲线，运行时将继承动画组的曲线。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] 表示用于接收动画曲线的指针。 调用者不得销毁该句柄。 <b>NULL</b>表示本动画未设置曲线，运行时将继承动画组的曲线。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetTempo()
 
@@ -2914,7 +2914,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetTempo(OH_ArkUI_Proper
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetTempo()
 
@@ -2941,7 +2941,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetTempo(OH_ArkUI_Proper
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetAutoReverse()
 
@@ -2968,7 +2968,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetAutoReverse(OH_ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetAutoReverse()
 
@@ -2995,7 +2995,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetAutoReverse(OH_ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetIterations()
 
@@ -3016,13 +3016,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetIterations(OH_ArkUI_P
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_PropertyAnimationHandle animation | [in] 表示属性动画句柄。 |
-| int32_t iterations | [in] 表示播放次数。该值必须为-1或大于等于1；值为0时返回ARKUI_ERROR_CODE_PARAM_INVALID。值<b>-1</b>表示无限次播放。 默认值为<b>1</b>。 |
+| int32_t iterations | [in] 表示播放次数。该值必须为-1或大于等于1；值为0时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。值<b>-1</b>表示无限次播放。 默认值为<b>1</b>。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetIterations()
 
@@ -3049,7 +3049,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetIterations(OH_ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode()
 
@@ -3076,7 +3076,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode(OH_ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_GetTargetNode()
 
@@ -3103,7 +3103,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetTargetNode(OH_ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_Create()
 
@@ -3180,7 +3180,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetKeyTimes(OH_ArkUI_Key
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetKeyTime()
 
@@ -3208,7 +3208,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetKeyTime(OH_ArkUI_Keyf
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetKeyTime()
 
@@ -3236,7 +3236,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetKeyTime(OH_ArkUI_Keyf
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetValue()
 
@@ -3265,7 +3265,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetValue(OH_ArkUI_Keyfra
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetValues()
 
@@ -3293,7 +3293,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetValues(OH_ArkUI_Keyfr
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetValue()
 
@@ -3315,14 +3315,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetValue(OH_ArkUI_Keyfra
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] 表示关键帧动画句柄。 |
 | int32_t index | [in] 表示关键帧索引。 |
-| ArkUI_NumberValue *value | [out] 表示用于接收[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)值数组的指针。  value中元素的数量和类型取决于创建关键帧动画时传入的propertyType的取值，具体请参考[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)的枚举描述。 例如，如果取值为[OH_ARKUI_ANIMATION_PROPERTY_OPACITY](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)，则value需要传入1个f32值。值将写入该指针指向的内存。  <br>该指针不能为**NULL**。如果**value**设置为**NULL**，则返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t size | [in] 表示输出数组的大小。必须等于[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)所需的元素个数； 否则返回错误码ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR。 |
+| ArkUI_NumberValue *value | [out] 表示用于接收[ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md)值数组的指针。  value中元素的数量和类型取决于创建关键帧动画时传入的propertyType的取值，具体请参考[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)的枚举描述。 例如，如果取值为[OH_ARKUI_ANIMATION_PROPERTY_OPACITY](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)，则value需要传入1个f32值。值将写入该指针指向的内存。  <br>该指针不能为**NULL**。如果**value**设置为**NULL**，则返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| int32_t size | [in] 表示输出数组的大小。必须等于[OH_ArkUI_AnimationPropertyType](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)所需的元素个数； 否则返回错误码[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND 关键帧的值未设置。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数组大小与所需大小不一致。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode) 关键帧的值未设置。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 数组大小与所需大小不一致。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves()
 
@@ -3343,14 +3343,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves(OH_ArkUI_Keyfr
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] 表示关键帧动画句柄。 |
-| [const ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *value | [in] 表示曲线句柄数组。 本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，所有曲线保持有效。 不支持<b>springMotion</b>、<b>responsiveSpringMotion</b>和<b>interpolatingSpring</b>曲线，因为这些曲线没有有效的持续时间设置。 |
+| [const ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *value | [in] 表示曲线句柄数组。 本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，所有曲线保持有效。 不支持<b>springMotion</b>、<b>responsiveSpringMotion</b>和<b>interpolatingSpring</b>曲线，因为这些曲线没有有效的持续时间设置。 |
 | int32_t size | [in] 表示曲线数量。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve()
 
@@ -3372,13 +3372,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve(OH_ArkUI_Keyfra
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] 表示关键帧动画句柄。 |
 | int32_t index | [in] 表示关键帧索引。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] 表示动画曲线。 <b>NULL</b>表示继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线。 本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 不支持<b>springMotion</b>、<b>responsiveSpringMotion</b>和<b>interpolatingSpring</b>曲线，因为这些曲线没有有效的持续时间设置。 实际生效的动画曲线按以下优先级确定： 如果通过本接口或[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve)在动画组上设置的曲线； 如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] 表示动画曲线。 <b>NULL</b>表示继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线。 本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 不支持<b>springMotion</b>、<b>responsiveSpringMotion</b>和<b>interpolatingSpring</b>曲线，因为这些曲线没有有效的持续时间设置。 实际生效的动画曲线按以下优先级确定： 如果通过本接口或[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setcurve)在动画组上设置的曲线； 如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve()
 
@@ -3400,13 +3400,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_Keyfra
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] 表示关键帧动画句柄。 |
 | int32_t index | [in] 表示关键帧索引。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] 表示用于接收动画曲线的指针。 调用者不得销毁该句柄。 <b>NULL</b>表示该关键帧未设置曲线，运行时将继承动画组的曲线。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] 表示用于接收动画曲线的指针。 调用者不得销毁该句柄。 <b>NULL</b>表示该关键帧未设置曲线，运行时将继承动画组的曲线。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration()
 
@@ -3433,7 +3433,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration(OH_ArkUI_Key
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration()
 
@@ -3443,7 +3443,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration(OH_ArkUI_Key
 
 **描述：**
 
-获取关键帧动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。
+获取关键帧动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode)。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3460,7 +3460,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration(OH_ArkUI_Key
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND 未设置持续时间。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode) 未设置持续时间。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetDelay()
 
@@ -3487,7 +3487,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDelay(OH_ArkUI_Keyfra
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetDelay()
 
@@ -3514,7 +3514,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDelay(OH_ArkUI_Keyfra
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetTempo()
 
@@ -3541,7 +3541,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetTempo(OH_ArkUI_Keyfra
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetTempo()
 
@@ -3568,7 +3568,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetTempo(OH_ArkUI_Keyfra
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetAutoReverse()
 
@@ -3595,7 +3595,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetAutoReverse(OH_ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetAutoReverse()
 
@@ -3622,7 +3622,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetAutoReverse(OH_ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetIterations()
 
@@ -3643,13 +3643,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetIterations(OH_ArkUI_K
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_KeyframeAnimationHandle animation | [in] 表示关键帧动画句柄。 |
-| int32_t iterations | [in] 表示播放次数。该值必须为-1或大于等于1；值为0时返回ARKUI_ERROR_CODE_PARAM_INVALID。值<b>-1</b>表示无限次播放。 默认值为<b>1</b>。 |
+| int32_t iterations | [in] 表示播放次数。该值必须为-1或大于等于1；值为0时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。值<b>-1</b>表示无限次播放。 默认值为<b>1</b>。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetIterations()
 
@@ -3676,7 +3676,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetIterations(OH_ArkUI_K
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode()
 
@@ -3703,7 +3703,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode(OH_ArkUI_K
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_GetTargetNode()
 
@@ -3730,7 +3730,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetTargetNode(OH_ArkUI_K
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_Create()
 
@@ -3805,7 +3805,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDuration(OH_ArkUI_PathAni
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetDuration()
 
@@ -3815,7 +3815,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDuration(OH_ArkUI_PathAni
 
 **描述：**
 
-获取路径动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。
+获取路径动画的持续时间。 <br> 本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。 如果本动画未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode)。 运行时实际生效的动画持续时间按以下优先级确定： 如果通过[OH_ArkUI_NativeModule_PathAnimation_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_setduration)设置了持续时间，则使用该值； 否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间； 如果两者都未设置，则使用默认值**1000**毫秒。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3832,7 +3832,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDuration(OH_ArkUI_PathAni
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND 未设置持续时间。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode) 未设置持续时间。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetDelay()
 
@@ -3859,7 +3859,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDelay(OH_ArkUI_PathAnimat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetDelay()
 
@@ -3886,7 +3886,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDelay(OH_ArkUI_PathAnimat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetTempo()
 
@@ -3913,7 +3913,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetTempo(OH_ArkUI_PathAnimat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetTempo()
 
@@ -3940,7 +3940,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetTempo(OH_ArkUI_PathAnimat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetAutoReverse()
 
@@ -3967,7 +3967,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoReverse(OH_ArkUI_Path
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetAutoReverse()
 
@@ -3994,7 +3994,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetAutoReverse(OH_ArkUI_Path
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetIterations()
 
@@ -4015,13 +4015,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetIterations(OH_ArkUI_PathA
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_PathAnimationHandle animation | [in] 表示路径动画句柄。 |
-| int32_t iterations | [in] 表示播放次数。该值必须为-1或大于等于1；值为0时返回ARKUI_ERROR_CODE_PARAM_INVALID。值<b>-1</b>表示无限次播放。 默认值为<b>1</b>。 |
+| int32_t iterations | [in] 表示播放次数。该值必须为-1或大于等于1；值为0时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。值<b>-1</b>表示无限次播放。 默认值为<b>1</b>。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetIterations()
 
@@ -4048,7 +4048,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetIterations(OH_ArkUI_PathA
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetAutoRotation()
 
@@ -4075,7 +4075,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoRotation(OH_ArkUI_Pat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetAutoRotation()
 
@@ -4102,7 +4102,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetAutoRotation(OH_ArkUI_Pat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetTargetNode()
 
@@ -4129,7 +4129,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetTargetNode(OH_ArkUI_PathA
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_PathAnimation_GetTargetNode()
 
@@ -4156,7 +4156,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetTargetNode(OH_ArkUI_PathA
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_Create()
 
@@ -4225,7 +4225,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDuration(OH_ArkUI_Animat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetDuration()
 
@@ -4235,7 +4235,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDuration(OH_ArkUI_Animat
 
 **描述：**
 
-获取动画组的持续时间。 <br> 本接口仅返回在本动画组上显式设置的持续时间，不受子动画的持续时间影响。 如果本动画组未设置持续时间，则返回ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND。运行时，未设置的动画组持续时间默认为**1000**毫秒。
+获取动画组的持续时间。 <br> 本接口仅返回在本动画组上显式设置的持续时间，不受子动画的持续时间影响。 如果本动画组未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode)。运行时，未设置的动画组持续时间默认为**1000**毫秒。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4252,7 +4252,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDuration(OH_ArkUI_Animat
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND 未设置持续时间。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-error-code-h.md#arkui_errorcode) 未设置持续时间。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetDelay()
 
@@ -4279,7 +4279,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDelay(OH_ArkUI_Animation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetDelay()
 
@@ -4306,7 +4306,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDelay(OH_ArkUI_Animation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetCurve()
 
@@ -4327,13 +4327,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetCurve(OH_ArkUI_Animation
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] 表示动画组句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) curve | [in] 表示动画曲线。 <b>NULL</b>表示动画组在运行时使用默认值[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [in] 表示动画曲线。 <b>NULL</b>表示动画组在运行时使用默认值[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetCurve()
 
@@ -4354,13 +4354,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetCurve(OH_ArkUI_Animation
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] 表示动画组句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curvehandle.md) *outBorrowedCurve | [out] 表示用于接收动画曲线的指针。 调用者不得销毁该句柄。 <b>NULL</b>表示本动画组未设置曲线，运行时默认使用[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [out] 表示用于接收动画曲线的指针。 调用者不得销毁该句柄。 <b>NULL</b>表示本动画组未设置曲线，运行时默认使用[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetTempo()
 
@@ -4387,7 +4387,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetTempo(OH_ArkUI_Animation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetTempo()
 
@@ -4414,7 +4414,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetTempo(OH_ArkUI_Animation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetAutoReverse()
 
@@ -4441,7 +4441,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetAutoReverse(OH_ArkUI_Ani
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetAutoReverse()
 
@@ -4468,7 +4468,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetAutoReverse(OH_ArkUI_Ani
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetIterations()
 
@@ -4489,13 +4489,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetIterations(OH_ArkUI_Anim
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] 表示动画组句柄。 |
-| int32_t iterations | [in] 表示播放次数。该值必须为-1或大于等于1；值为0时返回ARKUI_ERROR_CODE_PARAM_INVALID。值<b>-1</b>表示无限次播放。 默认值为<b>1</b>。 |
+| int32_t iterations | [in] 表示播放次数。该值必须为-1或大于等于1；值为0时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。值<b>-1</b>表示无限次播放。 默认值为<b>1</b>。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetIterations()
 
@@ -4522,7 +4522,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetIterations(OH_ArkUI_Anim
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetExpectedFrameRateRange()
 
@@ -4549,7 +4549,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetExpectedFrameRateRange(O
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetExpectedFrameRateRange()
 
@@ -4570,13 +4570,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetExpectedFrameRateRange(O
 | 参数项 | 描述 |
 | -- | -- |
 | OH_ArkUI_AnimationGroupHandle group | [in] 表示动画组句柄。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md) *frameRate | [out] 表示用于接收期望帧率范围的指针。  [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)对象的值将写入该指针指向的内存。 <br>该指针不能为**NULL**。如果**frameRate**设置为**NULL**，则返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md) *frameRate | [out] 表示用于接收期望帧率范围的指针。  [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)对象的值将写入该指针指向的内存。 <br>该指针不能为**NULL**。如果**frameRate**设置为**NULL**，则返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback()
 
@@ -4604,7 +4604,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback(OH
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode()
 
@@ -4631,7 +4631,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode(OH_ArkUI_Anim
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_GetTargetNode()
 
@@ -4658,7 +4658,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetTargetNode(OH_ArkUI_Anim
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation()
 
@@ -4685,7 +4685,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation(OH_Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID OH_ArkUI_PropertyAnimationHandle参数无效。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-error-code-h.md#arkui_errorcode) OH_ArkUI_PropertyAnimationHandle参数无效。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation()
 
@@ -4712,7 +4712,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation(OH_Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID OH_ArkUI_KeyframeAnimationHandle参数无效。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-error-code-h.md#arkui_errorcode) OH_ArkUI_KeyframeAnimationHandle参数无效。 |
 
 ### OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation()
 
@@ -4739,7 +4739,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation(OH_ArkUI_A
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID OH_ArkUI_PathAnimationHandle参数无效。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-error-code-h.md#arkui_errorcode) OH_ArkUI_PathAnimationHandle参数无效。 |
 
 ### OH_ArkUI_NativeModule_AddAnimationGroup()
 
@@ -4749,7 +4749,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle cont
 
 **描述：**
 
-在UIContext上以指定key注册动画组并开始播放。 <br> UIContext通过<b>key</b>拥有动画组：注册后，UIContext持有动画组的后端（运行时）对象，调用者可以在注册后销毁前端动画组句柄（及子动画句柄）， 因为后端通过(UIContext, key)独立运行。 key按UIContext（实例）划分作用域：不同UIContext中的相同key不会冲突。 在一个UIContext内，如果已用相同key注册了动画组，系统会先移除前一个动画组（释放其后端对象）再注册新动画组。 动画组随后通过相同的(UIContext, key)对进行标识和管理。 <br> 通过[OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpropertyanimation)、 [OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addkeyframeanimation)或 [OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpathanimation)添加的每个子动画， 驱动由其自身<b>SetTargetNode</b>接口设置的目标节点； 如果该目标未设置（或为<b>NULL</b>），则继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。 注册时，每个子动画必须解析为非NULL目标节点（自身的或动画组默认的）。如果子动画无可解析的目标节点，则返回ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID。 每个解析后的目标节点必须属于与<b>context</b>相同的UIContext，否则返回错误码ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT。 <br> 播放控制和生命周期接口（[OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup)、 [OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)、 [OH_ArkUI_NativeModule_HasAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_hasanimationgroup)、 [OH_ArkUI_NativeModule_PauseAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_pauseanimationgroup)、 [OH_ArkUI_NativeModule_ResumeAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_resumeanimationgroup)、 [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup)）均以(UIContext, key)对为键。 <br> finish回调（见[OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)）仅触发一次， 由停止动画的事件触发——自然结束、[OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup)或目标节点销毁。 如果[OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup)返回错误，动画创建失败，finish回调不会被触发。 回调返回后，系统自动从UIContext移除动画组并释放动画组及其子动画的后端（运行时）对象； 前端句柄（动画组及其子动画）仍需由调用者通过[OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy)、 [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy)、 [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy)销毁。
+在UIContext上以指定key注册动画组并开始播放。 <br> UIContext通过<b>key</b>拥有动画组：注册后，UIContext持有动画组的后端（运行时）对象，调用者可以在注册后销毁前端动画组句柄（及子动画句柄）， 因为后端通过(UIContext, key)独立运行。 key按UIContext（实例）划分作用域：不同UIContext中的相同key不会冲突。 在一个UIContext内，如果已用相同key注册了动画组，系统会先移除前一个动画组（释放其后端对象）再注册新动画组。 动画组随后通过相同的(UIContext, key)对进行标识和管理。 <br> 通过[OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpropertyanimation)、 [OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addkeyframeanimation)或 [OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_addpathanimation)添加的每个子动画， 驱动由其自身<b>SetTargetNode</b>接口设置的目标节点； 如果该目标未设置（或为<b>NULL</b>），则继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。 注册时，每个子动画必须解析为非NULL目标节点（自身的或动画组默认的）。如果子动画无可解析的目标节点，则返回[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-error-code-h.md#arkui_errorcode)。 每个解析后的目标节点必须属于与<b>context</b>相同的UIContext，否则返回错误码[ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT](capi-error-code-h.md#arkui_errorcode)。 <br> 播放控制和生命周期接口（[OH_ArkUI_NativeModule_RemoveAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_removeanimationgroup)、 [OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)、 [OH_ArkUI_NativeModule_HasAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_hasanimationgroup)、 [OH_ArkUI_NativeModule_PauseAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_pauseanimationgroup)、 [OH_ArkUI_NativeModule_ResumeAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_resumeanimationgroup)、 [OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup)）均以(UIContext, key)对为键。 <br> finish回调（见[OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)）仅触发一次， 由停止动画的事件触发——自然结束、[OH_ArkUI_NativeModule_FinishAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_finishanimationgroup)或目标节点销毁。 如果[OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup)返回错误，动画创建失败，finish回调不会被触发。 回调返回后，系统自动从UIContext移除动画组并释放动画组及其子动画的后端（运行时）对象； 前端句柄（动画组及其子动画）仍需由调用者通过[OH_ArkUI_NativeModule_AnimationGroup_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_destroy)、 [OH_ArkUI_NativeModule_PropertyAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_destroy)、 [OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_destroy)销毁。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4759,7 +4759,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle cont
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_ContextHandle context | [in] 表示注册并播放动画组的[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md)（UIContext）。 |
+| ArkUI_ContextHandle context | [in] 表示注册并播放动画组的[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)（UIContext）。 |
 | OH_ArkUI_AnimationGroupHandle group | [in] 表示动画组句柄。 |
 | const char *key | [in] 表示用于在UIContext上标识动画组的key。 key为用户自定义的字符串，在同一UIContext内需唯一。 如果已用相同key注册了动画组，系统会先移除前一个动画组再注册新动画组。 |
 
@@ -4767,7 +4767,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle cont
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT 解析后的目标节点不属于与<b>context</b>相同的UIContext。ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID 子动画无可解析的目标节点或子动画参数非法。ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL 检测到同线程重入调用。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT](capi-error-code-h.md#arkui_errorcode) 解析后的目标节点不属于与<b>context</b>相同的UIContext。[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-error-code-h.md#arkui_errorcode) 子动画无可解析的目标节点或子动画参数非法。[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
 
 ### OH_ArkUI_NativeModule_RemoveAnimationGroup()
 
@@ -4794,7 +4794,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_RemoveAnimationGroup(ArkUI_ContextHandle c
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND 在UIContext上未找到<b>key</b>标识的动画组。ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL 检测到同线程重入调用。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](capi-error-code-h.md#arkui_errorcode) 在UIContext上未找到<b>key</b>标识的动画组。[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
 
 ### OH_ArkUI_NativeModule_GetAnimationGroupState()
 
@@ -4822,7 +4822,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetAnimationGroupState(ArkUI_ContextHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND 在UIContext上未找到<b>key</b>标识的动画组。ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL 检测到同线程重入调用。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](capi-error-code-h.md#arkui_errorcode) 在UIContext上未找到<b>key</b>标识的动画组。[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
 
 ### OH_ArkUI_NativeModule_HasAnimationGroup()
 
@@ -4850,7 +4850,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_HasAnimationGroup(ArkUI_ContextHandle cont
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL 检测到同线程重入调用。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
 
 ### OH_ArkUI_NativeModule_PauseAnimationGroup()
 
@@ -4860,7 +4860,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PauseAnimationGroup(ArkUI_ContextHandle co
 
 **描述：**
 
-暂停UIContext上指定key标识的动画组。 <br> 调用此接口时动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。
+暂停UIContext上指定key标识的动画组。 <br> 调用此接口时动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode)。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4877,7 +4877,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PauseAnimationGroup(ArkUI_ContextHandle co
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND 在UIContext上未找到<b>key</b>标识的动画组。ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE 动画组不处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态。ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL 检测到同线程重入调用。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](capi-error-code-h.md#arkui_errorcode) 在UIContext上未找到<b>key</b>标识的动画组。[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode) 动画组不处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态。[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
 
 ### OH_ArkUI_NativeModule_ResumeAnimationGroup()
 
@@ -4887,7 +4887,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ResumeAnimationGroup(ArkUI_ContextHandle c
 
 **描述：**
 
-恢复UIContext上指定key标识的动画组。<br> 调用此接口时动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。
+恢复UIContext上指定key标识的动画组。<br> 调用此接口时动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode)。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4904,7 +4904,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ResumeAnimationGroup(ArkUI_ContextHandle c
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND 在UIContext上未找到<b>key</b>标识的动画组。ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE 动画组不处于[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态。ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL 检测到同线程重入调用。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](capi-error-code-h.md#arkui_errorcode) 在UIContext上未找到<b>key</b>标识的动画组。[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode) 动画组不处于[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态。[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
 
 ### OH_ArkUI_NativeModule_FinishAnimationGroup()
 
@@ -4914,7 +4914,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_FinishAnimationGroup(ArkUI_ContextHandle c
 
 **描述：**
 
-结束UIContext上指定key标识的动画组。 <br> 根据指定的结束模式结束动画组：跳转到结束状态、跳转到起始状态或保持当前值。 动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)或[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。
+结束UIContext上指定key标识的动画组。 <br> 根据指定的结束模式结束动画组：跳转到结束状态、跳转到起始状态或保持当前值。 动画组必须处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)或[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态； 否则返回[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode)。 可通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组的播放状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4932,6 +4932,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_FinishAnimationGroup(ArkUI_ContextHandle c
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常，例如<b>context</b>或<b>key</b>无效，或<b>mode</b>不是[OH_ArkUI_AnimationFinishMode](capi-native-type-visual-h.md#oh_arkui_animationfinishmode)的有效值。ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND 在UIContext上未找到<b>key</b>标识的动画组。ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE 动画组不处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)或[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态。ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL 检测到同线程重入调用。 |
+| ArkUI_ErrorCode | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常，例如<b>context</b>或<b>key</b>无效，或<b>mode</b>不是[OH_ArkUI_AnimationFinishMode](capi-native-type-visual-h.md#oh_arkui_animationfinishmode)的有效值。[ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND](capi-error-code-h.md#arkui_errorcode) 在UIContext上未找到<b>key</b>标识的动画组。[ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE](capi-error-code-h.md#arkui_errorcode) 动画组不处于[OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)或[OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED](capi-native-type-visual-h.md#oh_arkui_animationgroupstate)状态。[ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
 
 

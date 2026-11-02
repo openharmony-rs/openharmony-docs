@@ -10,7 +10,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [netstack](capi-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 ## 汇总
 

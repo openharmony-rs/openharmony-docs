@@ -12,7 +12,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 ## 汇总
 
@@ -29,12 +29,6 @@
 | [int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)（系统接口）](#oh_audiosuiteenginesystem_setnodeparam) | - | 设置系统节点的参数。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)（系统接口）](#oh_audiosuiteenginesystem_getnodeparam) | - | 获取系统节点的参数。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint32_t* inSize, uint32_t* outSize)（系统接口）](#oh_audiosuiteenginesystem_getnodeinoutsize) | - | 获取系统节点的输入和输出帧大小。<br>**系统接口：** 此接口为系统接口。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)（系统接口） | 请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。 每当应用程序或用户调用[OH_AudioSuiteEngine_MetaRenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_metarenderframe)时， 则会触发一次回调。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br>**系统接口：** 此接口为系统接口。 |
 
 ## 函数说明
 
@@ -58,7 +52,7 @@ int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePip
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipeline.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取。 |
 | [OH_AudioSuite_MetaFrame](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md)* metaFrame | 音频元数据帧结构体指针。 |
 | int32_t* responseAudioSize | 接口实际写入的音频数据的大小，单位是字节(Byte)。 |
 | int32_t* responseMetaSize | 接口实际写入的元数据的大小，单位是字节(Byte)。 |
@@ -90,7 +84,7 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
 | OH_AudioSuite_SystemNodeType type | [OH_AudioSuite_SystemNodeType](capi-native-audio-suite-base-h.md#oh_audiosuite_systemnodetype)音频系统节点类型。 |
 
 **返回值：**
@@ -119,7 +113,7 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, O
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
 | [OH_AudioSuite_SystemNodeFormat](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md) audioFormat | 音频节点格式。 |
 
 **返回值：**
@@ -148,7 +142,7 @@ typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
 | void* userData | 由用户传递的用户数据指针。 |
 | [OH_AudioSuite_MetaFrame](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md)* metaFrame | 音频元数据帧结构体指针。 |
 | int32_t* responseMetaDataSize | 应用程序实际写入的元数据的大小，单位是字节(Byte)。 |
@@ -180,7 +174,7 @@ int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
+| [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
 | [OH_InputNode_RequestMetaDataCallback](capi-native-audio-suite-engine-h.md#oh_inputnode_requestmetadatacallback) callback | 用户自定义数据，会在callback函数中将地址传入给用户，如果不使用，可以传入空指针。 |
 | void* userData | 指向将传递给回调函数的应用程序数据结构的指针。 |
 
@@ -210,7 +204,7 @@ int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_Aud
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
 | [OH_AudioSuite_SystemNodeFormat](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md)* audioFormat | 音频格式。 |
 
 **返回值：**
@@ -239,7 +233,7 @@ int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
 | uint8_t* param | 参数缓冲区。 |
 | uint32_t paramSize | 参数缓冲区大小。 |
 
@@ -269,7 +263,7 @@ int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
 | uint8_t* param | 参数缓冲区。 |
 | uint32_t paramSize | 参数缓冲区大小。 |
 
@@ -299,7 +293,7 @@ int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionode.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取。 |
 | uint32_t* inSize | 输入帧大小，单位为字节(Byte)。 |
 | uint32_t* outSize | 输出帧大小，单位为字节(Byte)。 |
 

@@ -12,7 +12,7 @@ Forward declaration of OH_LowPowerAVSink_Capability.
 
 **Since**: 20
 
-**Related module**: [AVSinkBase](capi-avsinkbase.md)
+**Related module**: [AVSinkBase](capi-others-avsinkbase.md)
 
 **Header file**: [lowpower_avsink_base.h](capi-lowpower-avsink-base-h.md)
 

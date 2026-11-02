@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [VideoEncoder](capi-videoencoder.md)
+**相关模块：** [VideoEncoder](capi-avcodec-kit-videoencoder.md)
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
@@ -78,12 +78,6 @@
 | [OH_AVBuffer *OH_VideoEncoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)](#oh_videoencoder_getinputbuffer) | - | 获取可用输入缓冲区的实例。<br> 需要注意的是，此接口仅适用于同步模式。 |
 | [OH_AVErrCode OH_VideoEncoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)](#oh_videoencoder_queryoutputbuffer) | - | 查询下一个可用输出缓冲区的索引。<br> 通过[OH_VideoEncoder_GetOutputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)接口获取的缓冲区实例可以通过[OH_VideoEncoder_FreeOutputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer)接口将处理后的输出缓冲区返回到编码器。<br> 需要注意的是，上述操作仅在同步模式下支持。 |
 | [OH_AVBuffer *OH_VideoEncoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)](#oh_videoencoder_getoutputbuffer) | - | 获取可用输出缓冲区的实例。<br> 需要注意的是，此接口仅适用于同步模式。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData) | 配置随帧参数，当需要设置index对应帧的编码参数时，可以通过该接口设置。只在Surface模式生效。<br> 该接口只能在Surface模式下使用，使用前需要调用OH_VideoEncoder_RegisterParameterCallback接口注册。<br> 在Buffer模式下，OH_AVBuffer可以直接携带帧的编码参数，当前可以支持的随帧参数有帧级QPMin/QPMax，指定LTR设置参考帧。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder |
 
 ## 枚举类型说明
 
@@ -197,7 +191,9 @@ OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCod
 
 **描述：**
 
-创建支持前处理的主视频编码器实例。<br> 该编码器支持以下能力：<br> 1. 前处理功能（降采样、裁剪、丢帧）。<br> 2. 从该主编码器创建副编码器实现一入二出双路编码。<br> 通过该接口创建的编码器仅支持Surface模式，不支持Buffer模式和同步模式。创建成功后需通过[OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy)销毁。
+创建支持前处理的主视频编码器实例。<br> 该编码器支持以下能力：<br>
+1. 前处理功能（降采样、裁剪、丢帧）。<br>
+2. 从该主编码器创建副编码器实现一入二出双路编码。<br> 通过该接口创建的编码器仅支持Surface模式，不支持Buffer模式和同步模式。创建成功后需通过[OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy)销毁。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
@@ -224,7 +220,13 @@ OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_
 
 **描述：**
 
-从主编码器创建副视频编码器实例。<br> 副编码器具有以下特性：<br> 1. 与主编码器共享输入源。<br> 2. 可独立配置编码参数。<br> 3. 可使用不同的前处理参数。<br> 4. 可独立启动/停止（不依赖主编码器的启停状态）。<br> 5. 生命周期必须短于主编码器。<br> 6. 一个主编码器同时只能拥有一个副编码器。<br> 必须在主编码器创建成功之后才能创建。创建成功后需通过[OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy)销毁。销毁顺序建议先Destroy Secondary再Destroy Primary。
+从主编码器创建副视频编码器实例。<br> 副编码器具有以下特性：<br>
+1. 与主编码器共享输入源。<br>
+2. 可独立配置编码参数。<br>
+3. 可使用不同的前处理参数。<br>
+4. 可独立启动/停止（不依赖主编码器的启停状态）。<br>
+5. 生命周期必须短于主编码器。<br>
+6. 一个主编码器同时只能拥有一个副编码器。<br> 必须在主编码器创建成功之后才能创建。创建成功后需通过[OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy)销毁。销毁顺序建议先Destroy Secondary再Destroy Primary。
 
 > **说明：**
 >
@@ -610,7 +612,7 @@ OH_AVErrCode OH_VideoEncoder_GetSurface(OH_AVCodec *codec, OHNativeWindow **wind
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
-| [OHNativeWindow](capi-codecbase-ohnativewindow.md) **window | 指向OHNativeWindow实例的指针, 请参阅[OHNativeWindow](capi-codecbase-ohnativewindow.md)。 应用负责管理window的生命周期，结束时调用OH_NativeWindow_DestroyNativeWindow释放。 |
+| [OHNativeWindow](capi-codecbase-nativewindow.md) **window | 指向OHNativeWindow实例的指针, 请参阅[OHNativeWindow](capi-codecbase-nativewindow.md)。 应用负责管理window的生命周期，结束时调用[OH_NativeWindow_DestroyNativeWindow](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#oh_nativewindow_destroynativewindow)释放。 |
 
 **返回值：**
 

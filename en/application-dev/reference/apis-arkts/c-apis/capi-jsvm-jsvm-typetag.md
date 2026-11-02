@@ -12,7 +12,7 @@ A 128-bit value stored as two unsigned 64-bit integers. It serves as a UUID with
 
 **Since**: 11
 
-**Related module**: [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-others-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 

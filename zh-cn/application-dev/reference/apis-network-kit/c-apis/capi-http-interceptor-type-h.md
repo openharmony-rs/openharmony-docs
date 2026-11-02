@@ -10,7 +10,7 @@
 
 **起始版本：** 24
 
-**相关模块：** [netstack](capi-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 ## 汇总
 
@@ -36,12 +36,6 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef OH_Interceptor_Result (\*OH_Http_InterceptorHandler)(OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified)](#oh_http_interceptorhandler) | OH_Http_InterceptorHandler | 定义HTTP拦截器处理函数。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| OH_Interceptor_Result (*OH_Http_InterceptorHandler)( OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified) | 定义HTTP拦截器处理函数。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Communication.NetStack |
 
 ## 枚举类型说明
 

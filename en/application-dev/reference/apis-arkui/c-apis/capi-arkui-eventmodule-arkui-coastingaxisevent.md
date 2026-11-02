@@ -12,7 +12,7 @@ Defines a coasting axis event, which supports listening for the decaying sliding
 
 **Since**: 22
 
-**Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)
+**Related module**: [ArkUI_EventModule](capi-others-arkui-eventmodule.md)
 
 **Header file**: [ui_input_event.h](capi-ui-input-event-h.md)
 

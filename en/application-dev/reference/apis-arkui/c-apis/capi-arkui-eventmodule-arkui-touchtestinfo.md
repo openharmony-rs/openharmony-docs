@@ -12,7 +12,7 @@ Defines touch test information, which is used to set the hit test policy and the
 
 **Since**: 22
 
-**Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)
+**Related module**: [ArkUI_EventModule](capi-others-arkui-eventmodule.md)
 
 **Header file**: [ui_input_event.h](capi-ui-input-event-h.md)
 

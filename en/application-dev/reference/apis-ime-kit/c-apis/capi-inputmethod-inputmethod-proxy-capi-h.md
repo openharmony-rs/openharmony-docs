@@ -4,7 +4,7 @@
 
 Provides methods for using the input method, allowing requests and notifications to be sent to the input method application.
 
-**Include**: <inputmethod/inputmethod_inputmethod_proxy_capi.h>
+**File to Include**: <inputmethod/inputmethod_inputmethod_proxy_capi.h>
 
 **Library**: libohinputmethod.so
 
@@ -12,7 +12,7 @@ Provides methods for using the input method, allowing requests and notifications
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-ime-kit-inputmethod.md)
 
 ## Summary
 

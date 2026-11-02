@@ -15,8 +15,8 @@
 
 | Name | Complete quotation | Description |
 | -- | -- | -- |
-| [void (\*work)(struct uv\_\_work *w)](#work) | work() |  |
-| [void (\*done)(struct uv\_\_work *w, int status)](#done) | done() |  |
+| [void (\*work)(struct uv\_\_work *w)](#work) | work |  |
+| [void (\*done)(struct uv\_\_work *w, int status)](#done) | done |  |
 
 ## Member function description
 

@@ -6,7 +6,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
@@ -186,7 +186,7 @@ NODE_SLIDER_PREFIX
 
 **Description**
 
-Custom prefix component for the start edge of the slider.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.object: The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md). The prefix component is typically placed on the left in LTR layouts.</li> </ul>
+Custom prefix component for the start edge of the slider.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.object: The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). The prefix component is typically placed on the left in LTR layouts.</li> </ul>
 
 **Since**: 20
 
@@ -198,7 +198,7 @@ NODE_SLIDER_SUFFIX
 
 **Description**
 
-Custom suffix component for the end edge of the slider.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.object: The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md). The suffix component is typically placed on the right in LTR layouts.</li> </ul>
+Custom suffix component for the end edge of the slider.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.object: The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). The suffix component is typically placed on the right in LTR layouts.</li> </ul>
 
 **Since**: 20
 

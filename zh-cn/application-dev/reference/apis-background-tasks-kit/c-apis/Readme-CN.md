@@ -1,8 +1,8 @@
 # C API<!--c-backgroundtaskskit-->
 
 - 模块<!--backgroundtaskskit-module-->
-    - [TransientTask](capi-transienttask.md)
-    - [BackgroundProcessManager](capi-backgroundprocessmanager.md)
+    - [TransientTask](capi-background-tasks-kit-transienttask.md)
+    - [BackgroundProcessManager](capi-background-tasks-kit-backgroundprocessmanager.md)
 - 头文件<!--backgroundtaskskit-headerfile-->
     - [transient_task_api.h](capi-transient-task-api-h.md)
     - [transient_task_type.h](capi-transient-task-type-h.md)

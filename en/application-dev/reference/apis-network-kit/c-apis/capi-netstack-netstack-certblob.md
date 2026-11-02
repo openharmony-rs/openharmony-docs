@@ -12,7 +12,7 @@ Defines the certificate data structure.
 
 **Since**: 11
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-others-netstack.md)
 
 **Header file**: [net_ssl_c_type.h](capi-net-ssl-c-type-h.md)
 
