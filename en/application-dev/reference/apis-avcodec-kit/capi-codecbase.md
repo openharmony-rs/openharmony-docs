@@ -73,6 +73,7 @@ The table below lists the media codec formats. The type is a constant string.
 | OH_AVCODEC_MIMETYPE_VIDEO_VC1 | MIME type of the VC-1 video codec.<br>This specification is supported since API version 22.|
 | OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MIME type of the Microsoft Video 1 (MSVIDEO1) video codec.<br>This specification is supported since API version 22.|
 | OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | MIME type of the WMV3 video codec.<br>This specification is supported since API version 22.|
+| OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | MIME type of the WMV3 video codec.<br>This specification is supported since API version 22.|
 | OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MIME type of the Motion JPEG (MJPEG) video codec.<br>This specification is supported since API version 22.|
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4 | MIME type of the MPEG4 video encoder, which is used only for multiplexing MPEG4 video streams. (It is deprecated from API version 11.)|
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | MIME type of the MPEG4 Part 2 video codec.|
