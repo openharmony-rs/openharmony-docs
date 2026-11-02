@@ -726,6 +726,7 @@ workScheduler.isLastWorkTimeOut(500)
 | idleWaitTime    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |空闲等待时间，单位：ms。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23            |
 | parameters      | ArkTS-Dyn: Record<string, number \| string \| boolean> <br> ArkTS-Sta: Record<string, int \| double \| string \| boolean>| 否    | 是    |携带参数信息。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
 | earliestStartTime<sup>22+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 是    |任务首次执行时间距离任务申请时间的间隔，单位：ms，默认为0，范围大于等于0。 <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
+| isPerformanceSensitive    | boolean                 | 否    | 是    |是否为性能敏感任务。系统对性能敏感任务的运行时长、运行频率以及整机总运行时长有严格限制。<br> - true表示是性能敏感任务，当设置为true时，isCharging与isDeepIdle必须同时为true，且周期性任务的repeatCycleTime必须大于等于24小时。<br> - false表示不是性能敏感任务。<br>默认值：false<br>**ArkTS-Dyn起始版本：** 26.1.0 <br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## NetworkType
 
