@@ -15240,7 +15240,7 @@ try {
 | ----- |  ---- |  ---- |
 | RETAIN_FORCE |  0 |  删除原文件在云空间的本地元数据和缩略图。 |
 | HDC_RETAIN_FORCE<sup>22+</sup> |  1 |  删除原文件在家庭存储设备的本地元数据和缩略图。 |
-| SHARE_RETAIN_FORCE |  2 |  删除云端原始共享文件和共享相册的本地元数据和缩略图。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| SHARE_RETAIN_FORCE |  2 |  删除云端原始共享文件和共享相册的本地元数据和缩略图。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 
@@ -15382,10 +15382,10 @@ try {
 | displayName | string  | 否 | 是 | 媒体资产（图片/视频）的显示名称。<br>**系统接口**：此接口为系统接口。  |
 | size | number  | 否 | 是 | 媒体资产（图片/视频）的文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**系统接口**：此接口为系统接口。  |
 | albumChangeInfos | [AlbumChangeInfo](#albumchangeinfo20)[]  | 否 | 是 | 智慧相册的相册变更信息。<br>**系统接口**：此接口为系统接口。  |
-| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 否 | 是 | 共享相册资产的风险状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
-| shareDateDay | number | 否 | 是 | 共享相册资产待共享的日期天。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
-| photoVisibility | number | 否 | 是 | 图片的可见性。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
-| shareGroup | number | 否 | 是 | 待共享的共享相册资产分组。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 否 | 是 | 共享相册资产的风险状态。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| shareDateDay | number | 否 | 是 | 共享相册资产待共享的日期天。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| photoVisibility | number | 否 | 是 | 图片的可见性。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| shareGroup | number | 否 | 是 | 待共享的共享相册资产分组。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 
@@ -15979,17 +15979,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **起始版本：** 26.0.1
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统接口**：此接口为系统接口。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| UNDER_REVIEW |  0 |  正在审查中。**系统接口**：此接口为系统接口。|
-| LOW_REVIEW_RISK |  1 |  审核风险低。**系统接口**：此接口为系统接口。  |
-| HIGH_REVIEW_RISK |  2 |  审核风险高。**系统接口**：此接口为系统接口。  |
+| UNDER_REVIEW |  0 |  表示正在审查中。|
+| LOW_REVIEW_RISK |  1 |  表示审核风险低。  |
+| HIGH_REVIEW_RISK |  2 |  表示审核风险高。  |
 
 ## ShareAlbumMemberInfo
 
@@ -16012,13 +16008,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 表示管理共享相册的变更请求。
 
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+### 属性
+
+**起始版本：** 26.0.1
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-### 属性
 
 | 名称           | 类型    | 只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
@@ -16028,7 +16030,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 constructor(album: [Album](#album))
 
-构造函数用于初始化新创建的对象。用于对共享相册进行操作。
+构造函数，用于创建共享相册变更请求对象。
 
 **起始版本：** 26.0.1
 
@@ -16344,7 +16346,7 @@ static deleteShareAlbum(context: [Context](../apis-ability-kit/js-apis-inner-app
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -16406,7 +16408,7 @@ static deleteMemberShareAlbum(context: [Context](../apis-ability-kit/js-apis-inn
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -16448,7 +16450,7 @@ static deleteShareAssets(context: [Context](../apis-ability-kit/js-apis-inner-ap
 
 - 删除资产说明：
   - 需要删除的资产必须属于共享相册。
-  - 通过 uri 指定要删除的资产。当删除的资产属于共享相册时，只有共享相册的所有者或分享该资产的用户才能删除。
+  - 通过URI指定要删除的资产。当删除的资产属于共享相册时，只有共享相册的所有者或分享该资产的用户才能删除。
 
 **起始版本：** 26.0.1
 
@@ -16472,7 +16474,7 @@ static deleteShareAssets(context: [Context](../apis-ability-kit/js-apis-inner-ap
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
