@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes one-in dual-out video encoding, in which a primary and a secondary encoder share an input Surface and produce two bitstreams with different specifications for adaptive bitrate live streaming, multi-party meetings, and video calls."
+keywords: [one-in dual-out, primary encoder, secondary encoder, adaptive bitrate live streaming, ABR, dual bitstreams, Surface sharing, video calls, downsampling]
+doctype: guide
+status: active
+---
+
 # Video Encoding with One Input and Dual Outputs
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d8da44d9389782cf4839d2e77f3518c20aa1b228 translatedAt=2026-10-22T04:10:30.844Z pushedAt=2026-10-22T13:40:28.331Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 26.0.0, video encoding supports one input and dual outputs. This capability allows the same video input data to simultaneously drive **two independent encoders** to generate two encoded streams with different configurations.
 
@@ -115,7 +123,7 @@ if (ret != AV_ERR_OK || g_primary == nullptr) {
 
 ### Registering Callbacks for the Primary Encoder
 
-The implementation is the same as that of a regular encoder. For details, see step 3 (call `OH_VideoEncoder_RegisterCallback()` to register the callback functions) in [Surface Mode](video-encoding.md#surface-mode) of video encoding.
+The implementation is the same as that for a regular encoder. For details, see step 3 (call `OH_VideoEncoder_RegisterCallback()` to register the callback functions) in [Surface Mode](video-encoding.md#surface-mode) of video encoding.
 
 ### Configuring the Primary Encoder
 
@@ -239,8 +247,8 @@ if (ret != AV_ERR_OK || window == nullptr) {
 }
 
 // Bind the window to the Camera/XComponent data source.
-// cameraManager->SetPreviewSurface(window)
-// nativeXComponent->SetSurface(window)
+// cameraManager->SetPreviewSurface(window).
+// nativeXComponent->SetSurface(window).
 ```
 
 > **Core rules:**
