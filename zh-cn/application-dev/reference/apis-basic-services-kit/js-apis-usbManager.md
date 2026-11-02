@@ -936,7 +936,7 @@ async function usbSubmitTransfer() {
   let device: usbManager.USBDevice = devicesList?.[0];
   await usbManager.requestRight(device.name);
   if (!usbManager.hasRight(device.name)) {
-    console.info(`request right fail`);
+    console.error(`request right fail`);
     return;
   }
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
