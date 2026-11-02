@@ -22,24 +22,25 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
 
   ArkTS-Dyn示例：
 <!-- @[set_window_layout_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/ImmersiveWeb.ets) -->
+
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
- 
+
 const DOMAIN: number = 0x0000;
 const TAG: string = 'ImmersiveWeb';
 const TITLE_HEIGHT: number = 56;
 const TITLE_FONT_SIZE: number = 20;
- 
+
 @Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   private win: window.Window | null = null;
- 
+
   aboutToAppear(): void {
     // 设置窗口全屏，启用沉浸式效果
     const ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -52,7 +53,7 @@ struct WebComponent {
       hilog.error(DOMAIN, TAG, `getLastWindow failed: %{public}s`, error.message);
     });
   }
- 
+
   aboutToDisappear(): void {
     // 离开页面时恢复窗口布局
     if (this.win) {
