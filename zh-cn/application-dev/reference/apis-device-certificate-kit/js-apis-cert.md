@@ -345,7 +345,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 | authorityKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书颁发机构密钥。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
 | minPathLenConstraint<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 是 |指定证书CA路径长度。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
 | extendedKeyUsage<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书扩展用途。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
-| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书的使用者名称。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
+| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定待匹配名称约束条目，与证书nameConstraints扩展中任一名称约束条目的类型与值进行匹配。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
 | certPolicy<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书策略。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
 | privateKeyValid<sup>12+</sup> | string | 否  | 是 |指定证书私钥有效期。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
 | subjectKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书主体公钥标识符（Subject Key Identifier扩展）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
