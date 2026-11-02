@@ -59,7 +59,6 @@
       if (err) {
         console.error(`createOsAccount code is ${err.code}, message is ${err.message}`);
       } else {
-        this.createLocalId = osAccountInfo.localId;
         console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
       }
     });
