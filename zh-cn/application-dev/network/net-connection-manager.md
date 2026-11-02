@@ -293,7 +293,7 @@ function socketTest() {
         connection.getDefaultNet().then((data: connection.NetHandle) => {
           if (data.netId == 0) {
             hilog.error(0x0000, 'testTag', `don't have defaultNet`);
-            // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理
+            // 当前无默认网络时，获取的NetHandler的netid为0,属于异常情况，需要额外处理
             return;
           }
           if (data) {
