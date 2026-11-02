@@ -380,17 +380,17 @@ getShareAlbums(options?: photoAccessHelper.FetchOptions): Promise&lt;FetchResult
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 否 | 检索选项。 |
+| options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 否 | 检索选项。默认值为空，查询所有共享相册。 |
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;FetchResult&lt;[Album](#album)&gt;&gt; | Promise用于返回相册的fetch结果。 |
+| Promise&lt;FetchResult&lt;[Album](#album)&gt;&gt; | Promise对象，返回相册的fetch结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -409,6 +409,7 @@ import { dataSharePredicates } from '@kit.ArkData'
 
 async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   console.info('getShareAlbums demo');
+  // 配置检索选项。
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
   predicates.equalTo("album_name", "newAlbumName");
   let fetchOption: photoAccessHelper.FetchOptions = {
@@ -416,6 +417,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
     predicates: predicates
   };
   try {
+    // 查询共享相册。
     let fetchResult = await phAccessHelper.getShareAlbums(fetchOption)
     if (fetchResult == undefined) {
       console.error(`getShareAlbums fetchResult is undefined`);
@@ -423,6 +425,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
     }
     let album = await fetchResult.getFirstObject();
     console.info(`getShareAlbums successfully, albumName: ${album.albumName}`);
+    // 关闭FetchResult。
     fetchResult.close();
   } catch (err) {
     console.error(`getShareAlbums failed: ${err.code}, ${err.message}`);
