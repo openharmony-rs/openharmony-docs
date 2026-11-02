@@ -907,6 +907,8 @@ Allows an MDM application to copy large files from USB drives during the OOBE ph
 **Certificate-based authorization**: true<!--DelEnd-->
  
 **Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
  
 ## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
 
