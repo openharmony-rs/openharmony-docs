@@ -45,7 +45,10 @@
 3. 获取相机列表。
 
     方法一：获取逻辑相机，通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
-    逻辑相机是一台"虚拟"相机，系统内部在物理镜头间切换/融合，应用无感知。根据[CameraPosition](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraposition)区分为前置镜头和后置镜头。
+
+    > **说明**
+    >
+    > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)获取相机列表时，根据[CameraPosition](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraposition)区分前置镜头与后置镜头即可。
 
    ```ts
    function getCameraDevices(cameraManager: camera.CameraManager): Array<camera.CameraDevice> {
