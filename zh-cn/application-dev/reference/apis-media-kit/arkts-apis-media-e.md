@@ -509,6 +509,23 @@ Codec MIME类型枚举。
 | SCREEN_AND_APP | 5    | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SCREEN_WINDOW_AND_APP | 6    | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
+## AVScreenCaptureAutoPauseCaptureScene
+
+自动暂停屏幕录制的场景枚举定义。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| -------------------------- | ---- | -------------------------------------- |
+| SCENE_NONE | 0 | 不设置任何场景，在任何场景下都不会自动暂停屏幕录制。 |
+| SCENE_SCREEN_FOLD_STATE_CHANGE | 1 << 0 | 屏幕折叠状态发生变化的场景。 |
+
 ## AVMetricsEventType<sup>23+</sup>
 
 表示媒体服务支持的指标事件的枚举。

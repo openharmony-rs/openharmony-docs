@@ -85,6 +85,7 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | 恢复屏幕捕获。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyformicaec) | 在使用麦克风时是否开启回声消除（Acoustic Echo Cancellation）功能。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyforhdrcapture) | 录屏是否以HDR格式输出图像。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)](#oh_avscreencapture_strategyforcontentautopausescenes) | 设置自动暂停屏幕内容采集的场景集合。 |
 
 ## 函数说明
 
@@ -1576,3 +1577,27 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreen
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数strategy为空指针或输入enable为无效值。 |
+### OH_AVScreenCapture_StrategyForContentAutoPauseScenes()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)
+```
+
+**描述**
+
+设置自动暂停屏幕内容采集的场景集合。<br>当指定的场景发生时，系统将自动暂停屏幕内容采集。可调用[OH_AVScreenCapture_ResumeScreenCapture](#oh_avscreencapture_resumescreencapture)接口恢复屏幕内容采集。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | 指向OH_AVScreenCapture_CaptureStrategy实例的指针。 |
+| OH_AVScreenCapture_AutoPauseSceneSet scenes | 场景集合，使用[OH_AVScreenCapture_AutoPauseCaptureSceneEnum](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_autopausecapturesceneenum)中的枚举值按位或组合而成。<br> 若传入OH_CAPTURE_AUTO_PAUSE_SCENE_NONE，则系统不会自动暂停。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数strategy为空指针或参数scenes为无效值。 |
