@@ -356,7 +356,9 @@ async function testAddWaterMark() {
 
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
-录屏时，应用仅能对本应用的隐私窗口做安全豁免。使用Promise异步回调。
+录屏时豁免指定隐私窗口列表。使用Promise异步回调。
+
+录屏时，应用仅能对本应用的隐私窗口做安全豁免。
 
 如录屏时，用户在本应用进行输入密码等操作，应用不会进行黑屏处理。
 
