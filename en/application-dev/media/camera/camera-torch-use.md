@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=f1667dc35c11730d26b8d208f83a66cfc58c22cc translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 To use the flashlight mode, you manipulate your device to turn on the flashlight, which then stays on persistently.
 
@@ -16,7 +17,7 @@ When you use the flashlight mode with a camera application, the following situat
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
+For detailed API descriptions, refer to [@ohos.multimedia.camera (Camera Management)](../../reference/apis-camera-kit/arkts-apis-camera.md).
 
 1. Import the camera module, which provides camera-related properties and methods.
 
@@ -50,7 +51,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
         isTorchModeSupport = cameraManager.isTorchModeSupported(torchMode);
       } catch (error) {
         let err = error as BusinessError;
-        console.error('Failed to set the torch mode. errorCode = ' + err.code);
+        console.error('Failed to check the torch mode. errorCode = ' + err.code);
       }
       return isTorchModeSupport;
     }
@@ -66,7 +67,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
     function setTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : void {
       cameraManager.setTorchMode(torchMode);
       let isTorchMode = cameraManager.getTorchMode();
-      console.info(`Returned with the torch mode supportd mode: ${isTorchMode}`);
+      console.info(`Returned with the torch mode supported mode: ${isTorchMode}`);
     }
     ```
 

@@ -1,44 +1,49 @@
 # YUV Capture (ArkTS)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:21:48.304Z pushedAt=2026-07-21T10:23:29.444Z -->
+<!-- md-trans-meta sourceCommit=7e2c464fa3fdb5361a0b269eee8732621c2a28c3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 23, Camera Kit provides the capability to capture images in YUV format. Compared with regular photo capture, YUV capture obtains unencoded image data, which fully preserves the raw luminance and chrominance information captured by the sensor, making it suitable for video encoding or professional processing. However, the capture process incurs higher energy consumption, and saving the data occupies more storage space.
 
 ## How to Develop
 
-For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camera-kit/arkts-apis-camera.md).
+For detailed camera API descriptions, see [Camera Module Description](../../reference/apis-camera-kit/arkts-apis-camera.md).
 
 1. Import required modules.
 
    To obtain captured image data, use the system-provided `image`, `dataSharePredicates`, and `photoAccessHelper` APIs as follows.
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[import_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+   
+   ``` TypeScript
    import { camera } from '@kit.CameraKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { dataSharePredicates } from '@kit.ArkData';
-   import { fileIo } from '@kit.CoreFileKit';
    import { image } from '@kit.ImageKit';
-   import { photoAccessHelper} from '@kit.MediaLibraryKit';
+   import { fileIo } from '@kit.CoreFileKit';
    ```
 
 2. Obtain the full output capability of the camera device.
 
    Use the [getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23) method to obtain the capabilities of all output streams supported by the current camera device, including the preview stream, photo stream, and video stream. The output streams are contained in the respective profile fields of [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability), where the photo stream supports the YUV format.
 
-   ```ts
-   function getFullOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice, sceneMode: camera.SceneMode): camera.CameraOutputCapability | undefined {
-     let cameraOutputCapability = cameraManager.getSupportedFullOutputCapability(cameraDevice, sceneMode);
-     if (!cameraOutputCapability) {
-       console.error("cameraManager.getSupportedFullOutputCapability error");
-       return undefined;
-     }
-     return cameraOutputCapability;
+   <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+   
+   ``` TypeScript
+     getFullOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice,
+       sceneMode: camera.SceneMode): camera.CameraOutputCapability | undefined {
+       let cameraOutputCapability = cameraManager.getSupportedFullOutputCapability(cameraDevice, sceneMode);
+       if (!cameraOutputCapability) {
+         console.error('cameraManager.getSupportedFullOutputCapability error');
+         return undefined;
+       }
+       // ...
+       return cameraOutputCapability;
    }
    ```
 
@@ -58,7 +63,7 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
        photoOutput = cameraManager.createPhotoOutput(photoProfile);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("Failed to createPhotoOutput. error: ${err}");
+       console.error(`Failed to createPhotoOutput. error: ${err}`);
      }
      return photoOutput;
    }
@@ -66,7 +71,7 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
 
 4. Set callbacks for the photo output stream.
 
-   Set the callback for one-shot photo capture [onCapturePhotoAvailable](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#oncapturephotoavailable23) or deferred photo capture [on('photoAssetAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12), and save the captured pixelMap data as an image. If the app needs to receive the image quickly, the deferred photo capture callback is recommended.
+   Set the callback for one-shot photo capture [onCapturePhotoAvailable](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#oncapturephotoavailable23) or deferred photo capture [on('photoAssetAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12), and save the captured pixelMap data as an image. If your app needs to quickly obtain the returned image, the deferred photo capture callback is recommended.
 
    For details about how to obtain the context, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -77,202 +82,242 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
    - **One-shot photo capture (onCapturePhotoAvailable) development**:
 
      - Register the one-shot photo capture callback before the session calls [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11-1).
-
      - In the one-shot photo capture callback function, obtain the image information, parse the pixelMap data, and perform custom service processing.
-
      - Return the processed pixelMap through the callback for image display, or save the image to a file using a security component.
-
      - After use, unregister the one-shot photo capture callback.
 
-     ```ts
-     // One-shot photo capture callback function.
-     function setPhotoOutputSingleCb(context: Context, photoOutput: camera.PhotoOutput)
-     {
+     <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+     
+     ``` TypeScript
+     setPhotoOutputCbSingle(photoOutput: camera.PhotoOutput, context: Context) {
        // After the callback is set, calling the capture method of photoOutput returns the captured pixelMap through the callback.
-       photoOutput.onCapturePhotoAvailable(async (capturePhoto: camera.CapturePhoto): Promise<void> => {
-         console.info("getPhoto start");
+       photoOutput.onCapturePhotoAvailable((capturePhoto: camera.CapturePhoto): void => {
          if (capturePhoto === undefined) {
-           console.error("getPhoto failed, capturePhoto is null or undefined");
+           Logger.error(TAG_LOG, 'getPhoto failed');
            return;
          }
-         let pictureObj: image.Picture = capturePhoto.main as image.Picture;
-         if (pictureObj === undefined) {
-           console.error("getPhoto failed, pictureObj is null or undefined");
-           return;
-         }
-         // Obtain the pixelMap of the main image captured.
-         let mainPixelMap: image.PixelMap = pictureObj.getMainPixelmap();
-         if (mainPixelMap === undefined) {
-           console.error("getPhoto failed, mainPixelMap is null or undefined");
-           return;
-         }
-         // Encode the data in pixelMap.
-         const imagePackerApi = image.createImagePacker();
-         let packOpts: image.PackingOption = {format: 'image/jpeg', quality: 95};
-         const path: string = context.cacheDir + '/pixel_map.jpg';
-         let srcFileUri: string = '';
-         let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-         try {
-           await imagePackerApi.packToFile(mainPixelMap, file.fd, packOpts);
-           srcFileUri = file.path;
-         } catch (error) {
-           console.error("Failed to pack the pixelMap to file. And the errorcode: ${error.code} ,error.message: ${error.message}");
-         }
-         // Save the image.
-         let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-         try {
-           // Specify the URI of the image in the app sandbox to be saved to the media library.
-           let srcFileUris: string[] = [
-             srcFileUri
-           ];
-           // Specify the creation options for the photo to be saved, including the file extension and photo type. The title and photo subtype are optional.
-           let photoCreationConfigs: photoAccessHelper.PhotoCreationConfig[] = [
-             {
-               title: 'test', // Optional.
-               fileNameExtension: 'jpg',
-               photoType: photoAccessHelper.PhotoType.IMAGE,
-               subtype: photoAccessHelper.PhotoSubtype.DEFAULT, // Optional.
-             }
-           ];
-           // Obtain the target URI of the media library through dialog-based authorization.
-           let desFileUris: string[] = await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
-           // Write the photo content from the application sandbox to the target URI of the media library.
-           let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
-           let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
-           await fileIo.copyFile(srcFile.fd, desFile.fd);
-           fileIo.closeSync(srcFile);
-           fileIo.closeSync(desFile);
-           console.info("create asset by dialog successfully");
-         } catch (err) {
-           console.error("failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}");
-         }
-         // Obtain metadata from the PixelMap.
-         let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
-         let pictureMetadata: Promise<image.Metadata>  = pictureObj.getMetadata(metadataType);
-         if (pictureMetadata != undefined) {
-           console.info("Get picture metadata with EXIF_METADATA successfully");
-         } else {
-           console.error("Get picture metadata with EXIF_METADATA failed");
-         }
-         // Release resources.
-         mainPixelMap.release();
-         pictureObj.release();
+     
+         Logger.info(TAG_LOG, 'photoAvailable success');
+         this.mediaLibSavePhotoSingle(context, capturePhoto.main)
        });
+     }
+     
+     async mediaLibSavePhotoSingle(context: Context, imageObj: image.Image | image.Picture) {
+       let picture: image.Picture = imageObj as image.Picture;
+       Logger.info(TAG_LOG, 'picture GetMainPixelmap E');
+       await this.GetMainPixelmap(context, picture);
+       Logger.info(TAG_LOG, 'picture GetMainPixelmap X');
+     
+       Logger.info(TAG_LOG, 'picture Release E');
+       await this.Release(picture);
+       Logger.info(TAG_LOG, 'picture Release X');
+     }
+     
+     async packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
+       const imagePackerApi = image.createImagePacker();
+       let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+       const path : string = context.cacheDir + '/pixel_map.jpg';
+       let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+       try {
+         await imagePackerApi.packToFile(pixelMap, file.fd, packOpts);
+         this.srcFileUri = file.path;
+       } catch (error) {
+         Logger.error(TAG_LOG, `Failed to pack the pixelMap to file. And the errorcode: ${error.code} ,error.message: ${error.message}`);
+       }
+     }
+     
+     async saveFile(srcFileUri: string, phAccessHelper: photoAccessHelper.PhotoAccessHelper){
+       try {
+         // Specify the URI of the image in the application sandbox to be saved to the media library.
+         let srcFileUris: string[] = [
+           srcFileUri
+         ];
+         // Specify the creation options for the photo to be saved, including the file extension and photo type. The title and photo subtype are optional.
+         let photoCreationConfigs: photoAccessHelper.PhotoCreationConfig[] = [
+           {
+             title: 'test', // Optional.
+             fileNameExtension: 'jpg',
+             photoType: photoAccessHelper.PhotoType.IMAGE,
+             subtype: photoAccessHelper.PhotoSubtype.DEFAULT, // Optional.
+           }
+         ];
+         // Obtain the target URI of the media library through dialog-based authorization.
+         let desFileUris: string[] = await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
+         // Write the photo content from the application sandbox to the target URI of the media library.
+         let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
+         let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
+         await fileIo.copyFile(srcFile.fd, desFile.fd);
+         fileIo.closeSync(srcFile);
+         fileIo.closeSync(desFile);
+         console.info('create asset by dialog successfully');
+       } catch (err) {
+         console.error(`failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`);
+       }
+     }
+     
+     // Obtain the pixelMap of the main photo captured.
+     async GetMainPixelmap(context: Context, pictureObj : image.Picture) {
+       let funcName = 'getMainPixelmap';
+       if (pictureObj != null) {
+         let mainPixelmap: image.PixelMap = pictureObj.getMainPixelmap();
+         if (mainPixelmap != null) {
+           // Encode.
+           await this.packToFileFromPixelMap(context, mainPixelmap);
+           // Save.
+           let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+           this.saveFile(this.srcFileUri, phAccessHelper);
+     
+           this.callback(mainPixelmap, '');
+           mainPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+             if (imageInfo != null) {
+               Logger.info(TAG_LOG, 'GetMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
+                 ' pixelFormat:' + imageInfo.pixelFormat + ' isHdr:' + imageInfo.isHdr);
+             }
+           }).catch((error: BusinessError) => {
+             Logger.error(TAG_LOG, `Failed error.code: ${error.code} ,error.message: ${error.message}`);
+           });
+         } else {
+           Logger.error(TAG_LOG, 'PictureObj getMainPixelmap is null');
+         }
+       } else {
+         Logger.error(TAG_LOG, 'PictureObj is null');
+       }
+     }
+     
+     // Release resources.
+     async Release(pictureObj : image.Picture) {
+       let funcName = 'Release';
+       if (pictureObj != null) {
+         pictureObj.release();
+         if (pictureObj.getMainPixelmap() == null) {
+           Logger.info(TAG_LOG, 'PictureObj release Success !');
+         } else {
+           Logger.error(TAG_LOG, 'PictureObj release Failed !');
+         }
+       } else {
+         Logger.error(TAG_LOG, 'PictureObj is null');
+       }
      }
      ```
 
    - **Deferred photo capture (PhotoAvailable) development**:
 
      - Register the deferred photo capture callback before the session [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11-1).
-
      - Obtain image information in the deferred photo capture callback function, parse the pixelMap data, and perform custom service processing.
-
      - Return the processed pixelMap for image display or save the image by writing to a file through a security component.
-
      - After calling [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2) to take a photo, promptly call [saveCameraPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#savecameraphoto12) to save the image or [discardCameraPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#discardcameraphoto12) to cancel saving the image. Otherwise, subsequent image capture will be affected.
-
      - After use, unregister the deferred photo capture callback function.
 
-     ```ts
-     // Deferred photo capture callback function.
-     function setPhotoOutputDefferCb(photoOutput: camera.PhotoOutput, context: Context, callback: (pixelMap: image.PixelMap, uri: string) => void)
-     {
-        photoOutput.on('photoAssetAvailable', async (_err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): Promise<void> => {
-          try {
-            console.info("On photoAssetAvailable callback uri: ${photoAsset.uri}");
-            let accessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-            // Save the image.
-            try {
-              // Create a media asset change request.
-              let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
-              let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-              console.info("Start to save camera photo");
-              // Save the photo captured by the camera.
-              await assetChangeRequest.saveCameraPhoto(photoAccessHelper.ImageFileType.JPEG);
-              // Submit the media change request.
-              await phAccessHelper.applyChanges(assetChangeRequest);
-              console.info("Save camera photo end");
-              await phAccessHelper.release();
-            } catch (error) {
-              console.error("On photoAssetAvailable save camera photo error:  ${error.code}, ${error.message}");
-            }
-            // Obtain the image pixelMap information.
-            try {
-              class MediaDataHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
-                onDataPrepared(data: image.Picture, imageSource: image.ImageSource, map: Map<string, string>) {
-                  if (data != undefined) {
-                    console.info("On photoAssetAvailable callback data is not undefined");
-                    let pixelMap: image.PixelMap = data.getMainPixelmap();
-                    pixelMap.getImageInfo().then((info) => {
-                      console.info("On photoAssetAvailable pixelMap.width: " + info.size.width + ", pixelMap.height: " +
-                        info.size.height + ", pixelMap.pixelFormat: " + info.pixelFormat);
-                    })
-                    callback(pixelMap, photoAsset.uri);
-                  } else if (data === undefined && imageSource != undefined) {
-                    console.info("On photoAssetAvailable callback data is undefined, and imageSource is not undefined");
-                    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
-                      callback(pixelMap, photoAsset.uri);
-                    }).catch((error: BusinessError) => {
-                      console.error("On photoAssetAvailable callback createPixelMap failed, error: ${error.message}");
-                    })
-                  } else {
-                    console.error("On photoAssetAvailable callback data and imageSource are both undefined");
-                    return;
-                  }
-                }
-              }
-              // Create a data sharing predicate.
-              let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-              // Configure the media asset retrieval conditions.
-              let fetchOptions: photoAccessHelper.FetchOptions = {
-                fetchColumns: [],
-                predicates: predicates,
-              };
-              // Configure the request strategy to balanced mode.
-              let requestOptions: photoAccessHelper.RequestOptions = {
-                deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE
-              };
-              const handler = new MediaDataHandler();
-              await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);
-              console.info("On photoAssetAvailable callback end");
-            } catch (error) {
-              console.error("On photoAssetAvailable quickRequest error:  ${error.code}, ${error.message}");
-            }
-          } catch (error) {
-            console.error("On photoAssetAvailable callback error:  ${error.code}, ${error.message}");
-          }
-        });
-        console.info("Set photoAssetAvailable callback end");
+     <!-- @[set_photo_cb_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+     
+     ``` TypeScript
+     // Save the image.
+     async mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
+       phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<void> {
+       try {
+         let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+           new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+         Logger.info(TAG_LOG, `saveCameraPhoto E`);
+         await assetChangeRequest.saveCameraPhoto(photoAccessHelper.ImageFileType.JPEG);
+         await phAccessHelper.applyChanges(assetChangeRequest);
+         Logger.info(TAG_LOG, `saveCameraPhoto X`);
+         await phAccessHelper.release();
+       } catch (error) {
+         Logger.error(TAG_LOG, `apply saveCameraPhoto failed with error: ${error.code}, ${error.message}`);
+       }
+     }
+     
+     async mediaLibRequestBuffer(photoAsset: photoAccessHelper.PhotoAsset, context: Context,
+       callback: (pixelMap: image.PixelMap, url: string) => void) {
+       // Obtain the image pixelMap information.
+       try {
+         Logger.info(TAG_LOG, 'quickRequestImage E');
+     
+         class MediaDataHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
+           onDataPrepared(data: image.Picture, imageSource: image.ImageSource, map: Map<string, string>) {
+             if (data != undefined) {
+               console.info(`On photoAssetAvailable callback data is not undefined`);
+               let pixelMap: image.PixelMap = data.getMainPixelmap();
+               callback(pixelMap, photoAsset.uri);
+             } else if (data === undefined && imageSource != undefined) {
+               console.info(`On photoAssetAvailable callback data is undefined, and imageSource is not undefined`);
+               imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+                 callback(pixelMap, photoAsset.uri);
+               }).catch((error: BusinessError) => {
+                 console.error(`On photoAssetAvailable callback createPixelMap failed, error: ${error.message}`);
+               })
+             } else {
+               console.error(`On photoAssetAvailable callback data and imageSource are both undefined`);
+               return;
+             }
+           }
+         }
+         // Create a data share predicate.
+         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+         // Configure the media asset retrieval conditions.
+         let fetchOptions: photoAccessHelper.FetchOptions = {
+           fetchColumns: [],
+           predicates: predicates
+         };
+         // Configure the request strategy to balanced mode.
+         let requestOptions: photoAccessHelper.RequestOptions = {
+           deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+         }
+     
+         const handler = new MediaDataHandler();
+         await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);
+       } catch (error) {
+         Logger.error(TAG_LOG, `mediaLibRequestBuffer failed with error: ${error.code}, ${error.message}`);
+       }
+     }
+     
+     
+     public setPhotoOutputCbDouble(cameraPhotoOutput: camera.PhotoOutput) {
+       Logger.info(TAG_LOG, 'setPhotoOutputCbDouble ...');
+       cameraPhotoOutput.on('photoAssetAvailable',
+         async (_err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): Promise<void> => {
+           try {
+             Logger.info(TAG_LOG, `on photoAssetAvailable callback uri:${photoAsset.uri}`);
+             let accessHelper: photoAccessHelper.PhotoAccessHelper =
+               photoAccessHelper.getPhotoAccessHelper(this.context);
+             await this.mediaLibSavePhoto(photoAsset, accessHelper);
+             await this.mediaLibRequestBuffer(photoAsset, this.context, this.callback);
+           } catch (_err) {
+             Logger.error(TAG_LOG, `photoAssetAvailable err:${_err.code}`);
+           }
+         });
      }
      ```
 
 5. Trigger photo capture.
 
-   Use the [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2) method of `photoOutput` to execute the capture task. This method has two parameters: the first parameter is the capture settings (`setting`), in which you can set the image quality, image rotation angle, and other information; the second parameter is an asynchronous callback used to return the result. If the API call fails, the corresponding error code is returned.
+   Call the [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2) method of `photoOutput` to execute the capture task. This method has two parameters. The first parameter is the capture settings (`setting`), where you can configure the image quality, image rotation angle, and other information. The second parameter is an asynchronous callback function used to return the result. If the API call fails, a corresponding error code is returned.
 
    Use the [getPhotoRotation](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#getphotorotation12) method in PhotoOutput to obtain the capture rotation angle.
 
    Use the [geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) method in `geoLocationManager` to obtain the geographic location information of the image. For usage, refer to the [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-3) example.
 
-   ```ts
-   function capture(captureLocation: camera.Location, photoOutput: camera.PhotoOutput): void {
+   <!-- @[capture_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+   
+   ``` TypeScript
+   public async capture(isFront: boolean) {
+     Logger.info(TAG_LOG, 'capture start.');
+     const degree = await this.getPhotoDegree();
+     let rotation = this.getPhotoRotation(this.output!, degree);
+     rotation = camera.ImageRotation.ROTATION_0;
+     Logger.info(TAG_LOG, `rotation: ${rotation}.`);
      let settings: camera.PhotoCaptureSetting = {
-       quality: camera.QualityLevel.QUALITY_LEVEL_HIGH,  // Set the image quality to high.
-       rotation: camera.ImageRotation.ROTATION_0,  // Set the image rotation angle to 0 degrees.
-       location: captureLocation,  // Set the image geographic location.
-       mirror: false  // Set the mirror enable switch (disabled by default).
+       quality: camera.QualityLevel.QUALITY_LEVEL_HIGH,  // Set the image quality.
+       rotation,  // Set the image rotation angle.
+       mirror: isFront  // Set the mirror enable switch.
      };
-     try {
-       photoOutput.capture(settings, (err: BusinessError) => {
-         if (err) {
-           console.error("Failed to capture the photo. error: ${err}");
-           return;
-         }
-         console.info("Callback invoked to indicate the photo capture request success.");
-       });
-     } catch (error) {
-       console.error("capture call failed. error: ${error}");
-     }
+     this.output?.capture(settings, (err: BusinessError) => {
+       if (err) {
+         Logger.error(TAG_LOG, `Failed to capture the photo. error: ${JSON.stringify(err)}`);
+         return;
+       }
+       Logger.info(TAG_LOG, 'Callback invoked to indicate the photo capture request success.');
+     });
    }
    ```
 
@@ -282,50 +327,67 @@ During camera app development, you can monitor the status of the photo output st
 
 - By registering the fixed `captureStart` callback, you can listen for the capture start result. This callback can be registered once the `photoOutput` is successfully created. It is triggered when the camera device is ready to start the current capture, and the event returns the `captureId` of this capture.
 
-  ```ts
-  function onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
+  <!-- @[set_capture_start_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+  
+  ``` TypeScript
+  onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo) => {
       if (err !== undefined && err.code !== 0) {
         return;
       }
-      console.info("photo capture started, captureId : ${captureStartInfo.captureId}");
+      console.info(`photo capture started, captureId : ${captureStartInfo.captureId}`);
     });
   }
   ```
 
 - By registering the fixed `captureEnd` callback, you can listen for the capture end result. This callback can be registered once the `photoOutput` is successfully created. The event returns information related to the completion of the capture, specifically [CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#captureendinfo).
 
-  ```ts
-  function onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
+  <!-- @[set_capture_end_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+  
+  ``` TypeScript
+  onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo) => {
       if (err !== undefined && err.code !== 0) {
         return;
       }
-      console.info("photo capture end, captureId : ${captureEndInfo.captureId}");
-      console.info("frameCount : ${captureEndInfo.frameCount}");
+      console.info(`photo capture end, captureId : ${captureEndInfo.captureId}`);
+      console.info(`frameCount : ${captureEndInfo.frameCount}`);
     });
   }
   ```
 
 - By registering the fixed `captureReady` callback, you can listen for whether the next photo can be captured. This callback can be registered once the `photoOutput` is successfully created. It is triggered when the next photo is ready for capture, and the event returns information related to the readiness of the next photo.
 
-  ```ts
-  function onPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
-    photoOutput.on('captureReady', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info("photo capture ready");
-    });
+  <!-- @[set_capture_ready_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+  
+  ``` TypeScript
+  captureReadyCallback(err: BusinessError): void {
+    if (err !== undefined && err.code !== 0) {
+      Logger.error(TAG_LOG, `Callback Error, errorCode: ${err.code}`);
+      return;
+    }
+    Logger.info(TAG_LOG, `photo capture ready`);
+  }
+  
+  registerPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
+    Logger.info(TAG_LOG, `register PhotoOutput Capture Ready...`);
+    photoOutput.on('captureReady', this.captureReadyCallback);
+  }
+  
+  unregisterPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
+    Logger.info(TAG_LOG, `unregister PhotoOutput Capture Ready...`);
+    photoOutput.off('captureReady');
   }
   ```
 
 - You can register a fixed error callback to listen for error results of the photo output stream. The callback returns the corresponding error code when an error occurs while using the photo output APIs. For details about the error codes, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
 
-  ```ts
-  function onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
+  <!-- @[set_photo_error_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+  
+  ``` TypeScript
+  onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('error', (error: BusinessError) => {
-      console.error("Photo output error code: ${error.code}");
+      console.error(`Photo output error code: ${error.code}`);
     });
   }
   ```
