@@ -37,7 +37,7 @@
 * 当前仅支持手机设备。
 * 在开发者模式下，使用debug签名的应用不受系统侧管控限制，开发者可自主进行快启特性的接入、调试与本地测试。
 <!--RP1--><!--RP1End-->
-* 从API version 24开始，应用配置快启后，应用调用sethypersnapenabled表示应用可以启用快启能力，实际是否进行快启以及具体的快启时机，均由系统根据用户习惯等信息来综合决定。开发者无法对此进行干预。
+* 从API版本24开始，应用配置快启并调用[setHyperSnapEnabled()](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled)接口，仅表示应用声明并开启了快启能力。系统最终会结合用户使用习惯、资源可用性及系统策略，自主决定是否触发快启以及具体的快启时机，开发者无法对此进行人工干预。
 
 ## 实现原理
 
