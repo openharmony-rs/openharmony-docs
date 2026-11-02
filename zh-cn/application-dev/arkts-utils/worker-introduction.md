@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Worker的运作机制与基本用法：Worker与宿主线程内存隔离、通过消息传递通信，涵盖Worker线程文件目录与Stage、FA模型文件路径规则、生命周期管理及多级Worker推荐用法，指导正确创建和使用Worker。"
+keywords: [Worker, 运作机制, 宿主线程, 消息传递, 生命周期, 多级Worker, 文件路径规则, 线程创建, 多线程, Stage模型]
+doctype: guide
+status: active
+---
+
 # Worker简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

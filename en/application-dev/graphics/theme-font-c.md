@@ -1,10 +1,11 @@
 # Using Theme Fonts (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T01:37:21.334Z pushedAt=2026-10-19T10:58:36.722Z -->
 
 ## Overview
 
@@ -31,7 +32,7 @@ The following table lists the APIs for registering and using theme fonts. For de
 | Name| Description|
 | -------- | -------- |
 | OH_Drawing_FontCollection\* OH_Drawing_GetFontCollectionGlobalInstance(void) | Obtains an **OH_Drawing_FontCollection** object.|
-| [onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) | Called when system configuration is updated.<br>Currently, theme applications provide only an ArkTS API to publish change events. Therefore, cross-language calling is required for your application.|
+| [onConfigurationUpdate(newConfig: Configuration): void](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) | Called when the system configuration is updated.<br/>The theme application currently provides only ArkTS APIs for publishing change events, so the application must handle cross-language invocation on its own. |
 
 
 ## How to Develop
@@ -51,7 +52,7 @@ The following table lists the APIs for registering and using theme fonts. For de
 
    Include header files.
 
-   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    #include <native_drawing/drawing_font_collection.h>
@@ -64,9 +65,9 @@ The following table lists the APIs for registering and using theme fonts. For de
 
    > **NOTE**
    >
-   > The registered theme fonts are used for the global font collection object. Therefore, you must use **OH_Drawing_GetFontCollectionGlobalInstance**. If you use **OH_Drawing_CreateSharedFontCollection** or **OH_Drawing_CreateFontCollection**, the theme fonts will be unavailable. The global font collection object obtained by **OH_Drawing_GetFontCollectionGlobalInstance** cannot be released because it can lead to disordered font rendering.
+   > Theme fonts are registered on the global font collection object. Therefore, you must use **OH_Drawing_GetFontCollectionGlobalInstance** to obtain the global font collection object for drawing. If you use **OH_Drawing_CreateSharedFontCollection** or **OH_Drawing_CreateFontCollection** to create a font collection object, theme fonts cannot be applied. The global font collection obtained through **OH_Drawing_GetFontCollectionGlobalInstance** must not be released by the developer; otherwise, font rendering may become disordered.
 
-   <!-- @[theme_font_c_draw_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[theme_font_c_draw_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_GetFontCollectionGlobalInstance();
@@ -75,19 +76,16 @@ The following table lists the APIs for registering and using theme fonts. For de
 
 5. **OH_Drawing_SetTextStyleFontFamilies()** can be used to specify the font family name for implementing the specified font. However, to use a theme font, do not call **OH_Drawing_SetTextStyleFontFamilies()** to avoid using the specified font instead of the theme font.
 
-   <!-- @[theme_font_c_draw_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[theme_font_c_draw_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    OH_Drawing_TextStyle *myTextStyle = OH_Drawing_CreateTextStyle();
-   // const char* myFontFamilies[] = {"otherFontFamilyName"};
-   // Do not use this API to specify the font.
-   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
    ```
 
 
 6. Set the paragraph text content to "Hello World. \nThis is the theme font." In this case, the theme font is used for the paragraph text.
 
-   <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    // Set other text styles.

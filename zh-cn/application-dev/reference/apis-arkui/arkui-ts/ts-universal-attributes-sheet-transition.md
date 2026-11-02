@@ -364,16 +364,15 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 值 | 说明           |
 | ------- | ---- | -------- |
-| STANDARD | 0 | 标准模式，标题栏与内容区竖直排列不重叠。  |
-| STACK    | 1 | 堆叠模式，标题栏悬浮在内容区上方，设置为该样式时开发者需要在内容区顶部添加内边距以避免遮挡。 |
+| STANDARD | 0 | 标准模式，标题栏与内容区竖直排列不重叠。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| STACK    | 1 | 堆叠模式，标题栏悬浮在内容区上方，设置为该样式时开发者需要在内容区顶部添加内边距以避免遮挡。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| SAFE_AREA_PADDING | 2 | 安全区模式，标题栏放置在安全区域内边距区域，内容区扩展到安全区，滚动内容的裁剪范围延伸到安全区范围。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 ### 示例1（不同高度的半模态弹窗）
@@ -1074,16 +1073,18 @@ struct SheetMaterialExample {
 
 ### 示例11（半模态设置标题栏悬浮模式）
 
-该示例通过titleBarHoverMode属性设置半模态标题栏为STACK堆叠模式，标题栏悬浮在内容区上方。
+该示例通过titleBarHoverMode属性演示不同半模态标题栏悬浮模式（[SheetTitleBarHoverMode](#sheettitlebarhovermode)）的效果。
 
-从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。
+从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。从API版本26.1.0开始，SheetTitleBarHoverMode中新增[SAFE_AREA_PADDING](#sheettitlebarhovermode)枚举值。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct SheetMaterialExample {
-  @State isShow: boolean = false;
+struct SheetTitleBarHoverModeDemo {
+  @State isShowStandard: boolean = false;
+  @State isShowStack: boolean = false;
+  @State isShowSafeAreaPadding: boolean = false;
 
   @Builder
   myBuilder() {
@@ -1119,16 +1120,38 @@ struct SheetMaterialExample {
   build() {
     Stack() {
       Column() {
-        Button('拉起半模态')
+        Button('STANDARD')
           .onClick(() => {
-            this.isShow = true;
+            this.isShowStandard = true;
           })
           .fontSize(20)
           .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
+          .bindSheet($$this.isShowStandard, this.myBuilder(), {
             height: SheetSize.MEDIUM,
-            title: { title: '标题' },
+            title: { title: 'title standard' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STANDARD,
+          })
+        Button('STACK')
+          .onClick(() => {
+            this.isShowStack = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowStack, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title stack' },
             titleBarHoverMode: SheetTitleBarHoverMode.STACK,
+          })
+        Button('SAFE_AREA_PADDING')
+          .onClick(() => {
+            this.isShowSafeAreaPadding = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowSafeAreaPadding, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title safeArea' },
+            titleBarHoverMode: SheetTitleBarHoverMode.SAFE_AREA_PADDING,
           })
       }
       .justifyContent(FlexAlign.Center)
@@ -1139,7 +1162,7 @@ struct SheetMaterialExample {
 }
 ```
 
-![zh-cn_sheet](figures/sheet13-stack.jpg)
+![zh-cn_sheet](figures/sheetTitleBarHoverMode.gif)
 
 
 ### 示例12（半模态自定义滚动条状态）

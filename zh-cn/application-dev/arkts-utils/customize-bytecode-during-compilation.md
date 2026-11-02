@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍通过transformLib编译选项加载动态库、在编译期对生成的方舟字节码文件执行插桩等自定义修改的能力配置、执行机制与开发示例。"
+keywords: [方舟字节码, 编译期修改, transformLib, 字节码插桩, Transform方法, 动态库, build-profile.json5]
+doctype: guide
+status: active
+---
+
 # 编译期自定义修改方舟字节码
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

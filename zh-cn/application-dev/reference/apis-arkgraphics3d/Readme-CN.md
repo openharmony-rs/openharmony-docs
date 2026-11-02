@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 - ArkTS API<!--arkgraphics-3d-arkts-->

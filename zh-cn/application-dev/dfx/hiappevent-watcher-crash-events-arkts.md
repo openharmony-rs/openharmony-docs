@@ -75,6 +75,7 @@
         "appCrashPolicy": { // 崩溃事件配置策略
           "pageSwitchLogEnable": true, // 从API version 24开始，支持使能页面切换日志
           "collectMinidump": true // 从API版本26.0.0开始，支持使能minidump
+          "publishOnNextLaunch": true // 从API版本26.1.0开始，支持使能固定在重启后收到事件回调
         }
       };
       // 开发者可以设置崩溃事件配置策略
@@ -243,23 +244,21 @@
 
 ### 验证观察者是否订阅到崩溃事件
 
-在应用主动捕获崩溃异常和未主动捕获崩溃异常的场景下，崩溃事件的回调时机不同，需在不同时间验证是否订阅到崩溃事件。
+从API版本26.1.0开始，若应用已经使能固定在重新启动之后收到事件回调，HiAppEvent会在应用重启后，将崩溃事件上报给已注册的监听并完成回调。
 
-**应用未主动捕获崩溃异常场景**
+在API版本26.1.0之前或应用未使能固定在应用重启后收到事件回调，事件回调将遵循“尽快送达”原则：
 
-若应用未主动捕获崩溃异常，系统处理崩溃后应用将退出。**应用下次启动时**，HiAppEvent将崩溃事件上报给已注册的监听，完成回调。
+- 故障日志生成后，一旦满足回调时机，立即执行回调；
+- 未能及时送达的事件回调，将保留至应用下次重启后再行送达。
 
-若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
+其中，崩溃事件的回调时机可能有所不同：
 
-**应用主动捕获崩溃异常场景**
+- 若应用崩溃后未立即退出（例如应用主动捕获崩溃异常后继续运行，或异常处理耗时过长等场景），更可能在本次生命周期内收到故障事件回调；
+- 若应用在崩溃后立即退出，则更可能在下一次重启后完成回调。
 
-若应用主动捕获崩溃异常，崩溃事件将在**应用退出前**回调，例如以下两种情况：
+因此，需在不同时机下验证是否订阅到崩溃事件。
 
-1. 异常处理中未主动退出，应用崩溃后将不会退出。
-
-   采用[errorManager.on](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)方法捕获异常会导致JsError类型的崩溃事件在应用退出前回调。若应用主动注册[崩溃信号](cppcrash-guidelines.md#系统处理的崩溃信号)处理函数但未主动退出，会导致NativeCrash类型的崩溃事件在应用退出前回调。
-
-2. 异常处理耗时过长，导致应用退出延迟。
+从API版本21开始，若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
 在开发调试阶段，HiAppEvent上报事件完成回调后，可以在DevEco Studio的HiLog窗口查看JsError类型崩溃事件内容。NativeCrash类型崩溃事件内容略有不同，具体参见[崩溃事件字段说明](hiappevent-watcher-crash-events.md#事件字段说明)。JsError类型崩溃事件内容样例如下：
 

@@ -1982,7 +1982,7 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
+设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：`http://127.0.0.1:21998/PacProxyScript.pac`。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
 
 >**说明：** 
 >
@@ -2395,11 +2395,11 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
-  if (data.length !== 0) {
-    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data.ipAddress)}`);
-    console.info(`Succeeded to get iface: ${JSON.stringify(data.iface)}`);
-    console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
-  }
+  data.forEach((info: connection.NetIpMacInfo) => {
+    console.info(`Succeeded to get ipAddress: ${JSON.stringify(info.ipAddress)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(info.iface)}`);
+    console.info(`Succeeded to get macAddress: ${JSON.stringify(info.macAddress)}`);
+  });
 }).catch((error: BusinessError) => {
   console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
 });
@@ -3254,7 +3254,7 @@ interface Data {
   if (socketType == "TCPSocket") {
     tcp.bind({address:"192.168.xxx.xxx",
               port:8080,
-              family:1} as socket.NetAddress, (error: Error) => {
+              family:1} as socket.NetAddress, (error: BusinessError) => {
       if (error) {
         console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
@@ -3866,7 +3866,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netHandle            | [NetHandle](#nethandle)               | 否 | 否   |网络句柄。   |
-| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是阻塞状态。true：标识当前网络是阻塞状态；false：标识当前网络不是阻塞状态。 |
 
 ## ConnectionProperties
 

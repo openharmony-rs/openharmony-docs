@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS延迟加载（lazy import）特性，使文件在冷启动阶段不被加载而按需加载，缩短冷启动时间，适用于优化应用启动性能场景。"
+keywords: [ArkTS, lazy import, 延迟加载, 冷启动, 性能优化, 按需加载, 启动性能, 模块加载]
+doctype: guide
+status: active
+---
+
 # 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

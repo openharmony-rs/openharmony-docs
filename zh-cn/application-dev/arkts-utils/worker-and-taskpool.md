@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Worker常驻线程结合TaskPool进行多任务并发处理的开发方式：在Worker线程中通过TaskPool执行并发任务，兼顾Worker生命周期可控与TaskPool调度便捷，适用于既有常驻业务又有大量并发任务的场景。"
+keywords: [Worker与TaskPool结合, 常驻线程, 多任务并发, 混合并发模式, 任务分发, 消息通信]
+doctype: guide
+status: active
+---
+
 # Worker常驻线程通过TaskPool进行多任务并发处理
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

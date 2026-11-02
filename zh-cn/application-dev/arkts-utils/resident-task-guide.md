@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供使用Worker开发常驻任务的指导：Worker持续执行任务直至宿主线程发送终止指令，示例演示Worker的自动创建、start与stop指令交互及任务执行，适用于需要长期后台运行的业务。"
+keywords: [常驻任务, Worker, ThreadWorker, 常驻线程, start与stop指令, 后台运行, 生命周期管理]
+doctype: guide
+status: active
+---
+
 # 常驻任务开发指导 (Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

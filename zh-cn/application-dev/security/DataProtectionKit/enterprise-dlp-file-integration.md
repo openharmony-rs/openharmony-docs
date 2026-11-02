@@ -143,4 +143,4 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
  
     6.1 具体开发步骤可以参考[单客户端订阅场景](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicesecurity-audit-subscribe-arkts-suevent)。 
 
-    6.2. DLP文件事件的eventId为0x00F000006。
+    6.2 DLP文件事件的eventId为0x00F000006。

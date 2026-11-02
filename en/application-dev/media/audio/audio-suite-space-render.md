@@ -1,12 +1,11 @@
-# Spatial Rendering (C/C++)
-
+# Spatial Audio Rendering (C/C++)
  <!--Kit: Audio Kit-->
  <!--Subsystem: Multimedia-->
  <!--Owner: @xxngwang-->
  <!--Designer: @jay-liusong-->
  <!--Tester: @Filger-->
  <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:16:44.771Z pushedAt=2026-07-15T09:19:35.732Z -->
+<!-- md-trans-meta sourceCommit=d9d760905c0c2b985a89f8de206fa099e14f74c4 translatedAt=2026-10-22T03:43:31.910Z pushedAt=2026-10-22T07:24:18.107Z nl=1 -->
 
 Starting from API version 23, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides a spatial rendering effect node [EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type), which is used to implement 3D spatial audio rendering capabilities. The node offers three [working modes](audio-suite-space-render.md#working-modes): fixed placement, rotation, and extension. It can position, rotate, and extend audio sources in three-dimensional space, helping you efficiently create immersive spatial audio experiences.
 
@@ -15,35 +14,27 @@ Starting from API version 23, [OHAudioSuite](../../reference/apis-audio-kit/capi
 Spatial rendering uses a left-hand coordinate system. Extend your left hand and form an "L" shape with your thumb and index finger.
 
 - Thumb pointing to the right indicates the positive X-axis direction.
-
 - Index finger pointing upward indicates the positive Y-axis direction.
-
 - The remaining fingers pointing forward indicate the positive Z-axis direction.
 
 Coordinate system parameter description:
-
 - X coordinate: left-right direction. A negative value indicates the left side, and a positive value indicates the right side. The value range is [-5.0, 5.0], and the unit is meter (m).
-
 - Y coordinate: up-down direction. A negative value indicates the lower side, and a positive value indicates the upper side. The value range is [-5.0, 5.0], and the unit is meter (m).
-
 - Z coordinate: front-back direction. A negative value indicates the rear, and a positive value indicates the front. The value range is [-5.0, 5.0], and the unit is meter (m).
 
 ## Working Modes
 
 ### Fixed Placement Mode
-
 Fixed placement mode is used to place an audio source at a fixed position in a specific space. It is suitable for scenarios that require a fixed sound source position. You can configure parameters for the spatial rendering node by calling [OH_AudioSuiteEngine_SetSpaceRenderPositionParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams). The following figure shows the fixed placement mode.
 
 ![audiosuite-space-render-position](figures/audiosuite-space-render-position.png)
 
 ### Rotation Mode
-
 Rotation mode enables dynamic rendering of an audio source by setting the single-cycle rotation time and direction at a specified position. You can call [OH_AudioSuiteEngine_SetSpaceRenderRotationParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams) to configure parameters for the spatial rendering node. The following figure shows the rotation mode.
 
 ![audiosuite-space-render-rotation](figures/audiosuite-space-render-rotation.png)
 
 ### Extension Mode
-
 In extension mode, the audio source is extended based on radius and angle. You can call [OH_AudioSuiteEngine_SetSpaceRenderExtensionParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams) to configure parameters for the spatial rendering node. The following figure shows the extension mode.
 
 ![audiosuite-space-render-extension](figures/audiosuite-space-render-extension.png)
@@ -82,7 +73,7 @@ For detailed API descriptions, see [OHAudioSuite](../../reference/apis-audio-kit
 1. Create the engine and pipeline.
 
    <!-- @[audioSuite_CreateSpaceRenderRotationEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
-
+   
    ``` C++
    // The sample code does not include return value verification. Add verification logic in actual use.
    // Create the engine.
@@ -98,7 +89,7 @@ For detailed API descriptions, see [OHAudioSuite](../../reference/apis-audio-kit
    To create an input node, implement the custom callback function `InputNodeWriteDataCallBack`, whose function type is [OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback). Call [OH_AudioSuiteNodeBuilder_SetRequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback) to set the callback function.
 
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
-
+   
    ``` C
    struct AudioDataInfo {
        uint8_t *buffer = nullptr;   // Audio data.
@@ -107,9 +98,8 @@ For detailed API descriptions, see [OHAudioSuite](../../reference/apis-audio-kit
        int32_t totalReadSize = 0;  // Total size of audio data read.
    };
    ```
-
    <!-- @[audioSuite_SpaceRenderRotationInputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value verification. Add verification logic in actual use.
    // Callback function for the input node to request data.
@@ -138,9 +128,8 @@ For detailed API descriptions, see [OHAudioSuite](../../reference/apis-audio-kit
        return actualDataSize;
    }
    ```
-
    <!-- @[audioSuite_CreateSpaceRenderRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value verification. Add verification logic in actual use.
    // Create a node builder.
@@ -220,7 +209,7 @@ For detailed API descriptions, see [OHAudioSuite](../../reference/apis-audio-kit
 3. In the player callback function, copy the processed data to the buffer of the `OH_AudioRenderer` instance to enable real-time preview during audio playback.
 
    <!-- @[audioSuite_SpaceRenderRotationAudioRendererOnWriteData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value verification. Add verification logic in actual use.
    static OH_AudioData_Callback_Result AudioRendererOnWriteData(OH_AudioRenderer *renderer, void *userData,
@@ -242,9 +231,8 @@ For detailed API descriptions, see [OHAudioSuite](../../reference/apis-audio-kit
        return AUDIO_DATA_CALLBACK_RESULT_VALID;
    }
    ```
-
    <!-- @[audioSuite_StartSpaceRenderRotationPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value verification. Add verification logic in actual use.
    // Create the builder.
@@ -276,7 +264,7 @@ For detailed API descriptions, see [OHAudioSuite](../../reference/apis-audio-kit
 4. Destroy resources.
 
    <!-- @[audioSuite_DestroySpaceRenderRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value verification. Add verification logic in actual use.
    // Destroy the stream builder.
@@ -298,9 +286,7 @@ For detailed API descriptions, see [OHAudioSuite](../../reference/apis-audio-kit
    ```
 
 <!--RP1-->
-
 ## Samples
 
 - [AudioSuiteSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
-
 <!--RP1End-->

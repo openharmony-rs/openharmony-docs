@@ -5,7 +5,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=bfb534f7ef7aee7bc4a0cc1282b3267eac00ff8c translatedAt=2026-09-18T02:59:05.267Z pushedAt=2026-09-20T03:53:08.403Z -->
+<!-- md-trans-meta sourceCommit=d9d760905c0c2b985a89f8de206fa099e14f74c4 translatedAt=2026-10-22T03:42:02.029Z pushedAt=2026-10-22T07:23:52.294Z nl=1 -->
 
 Since API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides various audio effect nodes. You can select appropriate effect nodes to process audio based on your service requirements.
 
@@ -204,7 +204,7 @@ Refer to [Mixing and Cascading](audio-suite-manual-rendering.md#mixing-and-casca
 
 ## Spatial Rendering
 
-The spatial rendering effect node [EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) is used to implement the positioning and rendering of 3D spatial audio. It adopts a left-handed coordinate system (the thumb points to the positive X-axis direction, the index finger points to the positive Y-axis direction, and the remaining fingers point to the positive Z-axis direction). For details, see [Spatial Rendering (C/C++)](audio-suite-space-render.md).
+The spatial rendering effect node [EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) is used to implement the positioning and rendering of 3D spatial audio. It adopts a left-handed coordinate system (the thumb points to the positive X-axis direction, the index finger points to the positive Y-axis direction, and the remaining fingers point to the positive Z-axis direction). For details, see [Spatial Audio Rendering (C/C++)](audio-suite-space-render.md).
 
 ### Rendering Mode
 

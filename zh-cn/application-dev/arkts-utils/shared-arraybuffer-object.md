@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍SharedArrayBuffer对象的共享内存能力：多个线程可直接访问同一块内存区域避免数据拷贝，适用于大数据量的跨线程共享场景，支持Atomics原子操作保障并发访问安全，并附使用示例。"
+keywords: [SharedArrayBuffer, 共享内存, 多线程数据共享, Atomics原子操作, 零拷贝, 二进制数据, 线程间通信]
+doctype: guide
+status: active
+---
+
 # SharedArrayBuffer对象
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

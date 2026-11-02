@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=7439d3babf47266895594fc2897be69b794cd762 translatedAt=2026-10-19T01:15:23.211Z pushedAt=2026-10-19T02:56:22.439Z -->
 
 ## Overview
 
@@ -21,7 +22,7 @@ You can set the basic fill color using a brush and use the brush to implement mo
 
 ### Available APIs
 
-The following table lists the APIs for setting the drawing effect using a brush. For details, see [drawing.Brush](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md).
+The following table describes the commonly used APIs for setting drawing effects with a brush. For details about the usage and parameters, see [drawing.Brush](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md) and [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
 | API| Description|
 | -------- | -------- |
@@ -38,7 +39,7 @@ The following table lists the APIs for setting the drawing effect using a brush.
    <!-- @[arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
-   // Set the brush.
+   // Create a brush.
    const brush = new drawing.Brush();
    ```
 
@@ -90,18 +91,18 @@ You can set the basic stroke color using a pen and use the pen to implement more
 
 ### Available APIs
 
-The following table lists the APIs for setting the drawing effect using a pen. For details, see [drawing.Pen](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md).
+The following table describes the commonly used APIs for setting drawing effects with a pen. For details about the usage and parameters, see [drawing.Pen](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md) and [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
 
 | API| Description|
 | -------- | -------- |
 | attachPen(pen: Pen): void | Attaches a pen to a canvas so that the canvas can use the style and color of the pen to outline a shape.|
 | setColor(alpha: number, red: number, green: number, blue: number): void | Sets the color for a pen, which is used to outline a shape.|
-| setStrokeWidth(width: number) : void | Sets the width for a pen. The value **0** is treated as an unusually thin width. During drawing, the width of 0 is always drawn as 1 pixel wide, regardless of any scaling applied to the canvas. Negative values are also regarded as the value **0** during the drawing process.|
+| setStrokeWidth(width: number) : void | Sets the stroke width for a pen. The value **0** is treated as an unusually thin width. During drawing, the width of 0 is always drawn as 1 pixel wide, regardless of any scaling applied to the canvas. Negative values are also regarded as the value **0** during the drawing process.|
 | setAntiAlias(aa: boolean) : void | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent.|
 | setCapStyle(style: CapStyle): void | Sets the line cap style for a pen.|
 | setJoinStyle(style: JoinStyle): void | Sets the line join style for a pen.|
-| detachPen(): void | Removes the brush from the canvas. After the execution, the canvas does not draw the outline of the shape and restores to the default fill effect.|
+| detachPen(): void | Removes the pen from the canvas. After the execution, the canvas does not draw the outline of the shape and restores to the default fill effect.|
 
 
 ### How to Develop
@@ -115,16 +116,7 @@ The following table lists the APIs for setting the drawing effect using a pen. F
    let pen = new drawing.Pen();
    ```
 
-2. Call **attachPen()** to set a pen for the canvas. The canvas uses the pen style and color to draw the outline.
-
-   <!-- @[arkts_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
-   
-   ``` TypeScript
-   // Set a pen for the canvas.
-   canvas.attachPen(pen);
-   ```
-
-3. (Optional) Use the pen to set the stroke effect. You can select one or more of the following effects:
+2. Use the pen to set specific stroke effects (you can choose one or more of the following effects).
 
    - You can call **setColor()** to set the pen color, which is used to outline a shape.
 
@@ -135,7 +127,7 @@ The following table lists the APIs for setting the drawing effect using a pen. F
       pen.setColor(0xFF, 0xFF, 0x00, 0x00);
       ```
 
-   - You can call **setStrokeWidth()** to set the pen width.
+   - You can call **setStrokeWidth()** to set the stroke width.
 
       <!-- @[arkts_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
       
@@ -183,9 +175,18 @@ The following table lists the APIs for setting the drawing effect using a pen. F
 
       | Line Join Style| Description| Effect|
       | -------- | -------- | -------- |
-      | MITER_JOIN | Miter join.| ![MITER-JOIN](figures/MITER-JOIN.png)|
-      | ROUND_JOIN | Round join.| ![ROUND-JOIN](figures/ROUND-JOIN.png)|
-      | BEVEL_JOIN | Beveled join.| ![BEVEL-JOIN](figures/BEVEL-JOIN.png)|
+      | MITER_JOIN | The line join style is a sharp corner. | ![MITER-JOIN](figures/MITER-JOIN.png) |
+      | ROUND_JOIN | The line join style is a round corner. | ![ROUND-JOIN](figures/ROUND-JOIN.png) |
+      | BEVEL_JOIN | The line join style is a flat corner. | ![BEVEL-JOIN](figures/BEVEL-JOIN.png) |
+
+3. Use the **attachPen()** API to set the pen for the canvas. The canvas will use the configured pen style and color to draw shape outlines.
+
+   <!-- @[arkts_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Set the pen for the canvas.
+   canvas.attachPen(pen);
+   ```
 
 4. Draw primitives as required. For details, see [Drawing Primitives](primitive-drawing-overview.md).
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS模块化加载副作用的问题场景及优化方式，涵盖顶层代码执行、全局状态变化、原型链修改等副作用分析，帮助开发者编写无副作用模块代码。"
+keywords: [ArkTS, 模块副作用, 模块加载, 顶层代码, 全局状态, 原型链, 副作用优化, 模块化]
+doctype: guide
+status: active
+---
+
 # 模块加载副作用及优化
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

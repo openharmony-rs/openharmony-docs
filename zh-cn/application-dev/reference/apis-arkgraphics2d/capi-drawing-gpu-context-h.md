@@ -33,7 +33,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOptions gpuContextOptions)](#oh_drawing_gpucontextcreatefromgl) | 用于创建一个使用OpenGL作为后端接口的图形处理器上下文对象。创建的图形处理器上下文对象使用完毕后，需要调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)销毁并回收内存。 |
+| [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOptions gpuContextOptions)](#oh_drawing_gpucontextcreatefromgl) | 用于创建一个使用OpenGL作为后端接口的图形处理器上下文对象。创建的图形处理器上下文对象使用完毕后，需要调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)销毁并回收内存。(已废弃) |
 | [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)](#oh_drawing_gpucontextcreate) | 用于创建一个图形处理器上下文对象，使用的后端类型取决于运行设备。创建的图形处理器上下文对象使用完毕后，需要调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)销毁并回收内存。 |
 | [void OH_Drawing_GpuContextDestroy(OH_Drawing_GpuContext* gpuContext)](#oh_drawing_gpucontextdestroy) | 用于销毁图形处理器上下文对象并回收该对象占用的内存。调用后该图形处理器上下文对象指针失效，不可再次使用或重复调用。 |
 

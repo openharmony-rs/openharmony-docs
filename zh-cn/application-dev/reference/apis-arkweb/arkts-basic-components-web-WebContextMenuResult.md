@@ -174,3 +174,39 @@ saveImage(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## copyLinkToTextMenu
+
+copyLinkToTextMenu(): void
+
+将指向当前高亮文本的Text Fragment链接复制到系统剪贴板。复制的URL包含符合W3C Text Fragments规范的**#:~:text=**片段。剪贴板内容与[getTextFragmentGeneratedLink](./arkts-basic-components-web-WebContextMenuParam.md#gettextfragmentgeneratedlink)返回的URL相同。
+
+建议在[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)事件回调中使用此接口。调用此接口前，建议先调用[shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext)检查当前选中文本是否支持链接生成。若选中文本不支持链接生成，此方法不会向剪贴板写入内容。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## removeFragments
+
+removeFragments(): void
+
+移除当前网页上所有Text Fragment高亮，恢复原始文本样式。
+
+建议在[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)事件回调中使用此接口。调用此接口前，建议先调用[isOverTextFragment](./arkts-basic-components-web-WebContextMenuParam.md#isovertextfragment)检查是否存在高亮。若不存在高亮，此方法不做任何操作。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core

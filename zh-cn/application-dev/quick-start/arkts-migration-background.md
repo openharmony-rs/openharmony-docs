@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "从程序稳定性、程序性能、代码兼容性及与TS/JS交互等角度，阐述ArkTS通过强制静态类型强化检查的动机，说明将TS代码适配为ArkTS的价值。"
+keywords: [ArkTS, 语法适配, 适配背景, 静态类型, TypeScript, 程序稳定性, 程序性能, 代码兼容]
+doctype: guide
+status: active
+---
+
 # ArkTS语法适配背景
 
 <!--Kit: ArkTS-->

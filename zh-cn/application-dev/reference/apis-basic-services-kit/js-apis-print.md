@@ -1160,6 +1160,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 | PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR<sup>18+</sup> | 30 | 表示文件上传失败。 |
 | PRINT_JOB_BLOCK_DRIVER_MISSING<sup>20+</sup> | 34 | 表示打印驱动缺失。 |
 | PRINT_JOB_BLOCK_INTERRUPT<sup>20+</sup> | 35 | 表示打印任务中断。 |
+| PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED | 44 | 表示打印任务受EDM策略限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.1<br> |
 | PRINT_JOB_BLOCK_PRINTER_UNAVAILABLE<sup>20+</sup> | 98 | 表示打印机不可用。 |
 | PRINT_JOB_BLOCK_UNKNOWN | 99 | 表示打印未知问题。 |
 
@@ -1185,6 +1186,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 | E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。请等待账号解锁后重试，或联系管理员处理。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 | E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | 表示SMB协议共享打印机连接失败（发生网络错误、主机不可达或端口被阻止）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 | E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | 表示SMB协议共享打印机账号/密码错误。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
+| E_PRINT_EDM_POLICY_RESTRICTED | 13100015 | 表示打印操作受EDM策略限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.1<br> |
 
 ## ApplicationEvent<sup>14+</sup>
 

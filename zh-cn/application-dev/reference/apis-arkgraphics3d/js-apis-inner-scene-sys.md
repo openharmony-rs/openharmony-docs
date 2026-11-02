@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 本模块作为ArkGraphics 3D基础模块，提供场景加载参数等数据类型和场景加载方法。
@@ -42,6 +42,8 @@ import { SceneLoadParams, Scene, RenderResourceFactory } from '@kit.ArkGraphics3
 createScene(uri: ResourceStr, param: SceneLoadParams): Promise\<Scene>
 
 根据指定的资源路径和场景加载参数创建场景，使用Promise异步回调。
+
+该接口为耗时操作。在异步任务执行期间，调用其他接口可能会被阻塞，直到该异步任务完成。
 
 **起始版本：** 26.0.0
 
@@ -88,6 +90,8 @@ function createSceneWithParams(): Promise<Scene> {
 static load(uri: ResourceStr, param: SceneLoadParams): Promise\<Scene>
 
 根据指定的资源路径和场景加载参数加载资源，使用Promise异步回调。
+
+该接口为耗时操作。在异步任务执行期间，调用其他接口可能会被阻塞，直到该异步任务完成。
 
 **起始版本：** 26.0.0
 

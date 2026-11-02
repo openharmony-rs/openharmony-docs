@@ -269,7 +269,7 @@
 
 **起始版本**：12
 
-**变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
+**变更信息**：API 12-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
 
 ## ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -791,3 +791,22 @@ UDID（Unified Device ID）是设备的唯一标识。
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.1
+
+## ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+允许企业类应用获取音频声卡信息。
+
+<!--RP7--><!--RP7End-->
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0

@@ -5,7 +5,7 @@
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e7b735b321b909a4f33274a48567a7c7d00b5e61 translatedAt=2026-09-01T11:42:37.150Z pushedAt=2026-09-02T11:24:51.743Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-30T09:02:29.185Z pushedAt=2026-10-30T09:32:33.723Z nl=1 -->
 
 > **NOTE**
 >
@@ -27,8 +27,6 @@ LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) =
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **Parameters**
 
 | Name       | Type                                                     | Mandatory| Description                                                        |
@@ -48,6 +46,8 @@ Iterates data on demand from the provided data source and creates the correspond
 > **NOTE**
 >
 > Since API version 26.0.0, **LazyForEach** supports passing [LazyForEachOptions](#lazyforeachoptions) to enable custom component freezing and configure the memory optimization strategy and resource release strategy.
+>
+> Since API version 26.1.0, **LazyForEachOptions** adds the [controller](#lazyforeachoptions) attribute, which is used to bind the controller [LazyForEachController](#lazyforeachcontroller).
 
 **Since**: 26.0.0
 
@@ -62,9 +62,9 @@ Iterates data on demand from the provided data source and creates the correspond
 | Name        | Type                                                      | Mandatory | Description                                                         |
 | ------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | dataSource    | [IDataSource](#idatasource)                       | Yes   | Data source of **LazyForEach**. The developer needs to implement the related APIs.  |
-| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | Yes   | Child component generation function, which creates a child component for each data item in the array.<br>**NOTE**<br>- **item** is the current data item (optional), and **index** is the index of the data item (optional).<br>- It is recommended that the data type of item remains consistent with the data type of the data source. Otherwise, when there exists in **itemGenerator** an operation strongly related to the data type, the child component cannot render normally, or even crashes at runtime.<br>- The function body of **itemGenerator** must use braces {...}.<br>- **itemGenerator** can and must generate only one child component in each iteration.<br>- An if statement can be used in **itemGenerator**, but each branch of the if statement must create a child component of the same type. |
-| keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | No   | Key generation function, used to generate a unique and fixed key for each data item in the data source. If modifying a data item in the data source does not affect its generated key, the corresponding component is not updated; otherwise, the corresponding component is rebuilt and updated. The `keyGenerator` parameter is optional, but it is recommended to provide it so that the development framework can better identify array changes and correctly update components.<br>Uses by default the built-in key generation function of the framework (see the description below for details).<br>**NOTE**<br>- **item** is the current data item (optional), and **index** is the index of the data item (optional).<br>- It is recommended that the data type of item remains consistent with the data type of the data source. Otherwise, when there exists in **keyGenerator** an operation strongly related to the data type, the child component cannot render normally, or even crashes at runtime.<br>- When `keyGenerator` is not specified, use the default key generation function, that is, `(item: Object, index: number) => { return viewId + '-' + index.toString(); }`. The generated key is affected only by the index value (**viewId** is generated during compiler conversion, and **viewId** is the same within the same **LazyForEach** component).<br>- To ensure that `LazyForEach` updates child components correctly and efficiently and to avoid issues such as abnormal rendering results and reduced rendering efficiency, the key should meet the following conditions.<br>1. Keys are unique, and the keys corresponding to different data items are different from each other.<br>2. Keys are consistent, and the key remains unchanged when the data item is unchanged. |
-| options   | [LazyForEachOptions](#lazyforeachoptions)   | No   | Developer configuration item, used to enable custom component freezing and configure the memory optimization strategy and resource release strategy. When this configuration item is used, the key generation function must be set; otherwise, compilation fails. When it is not passed, the default configuration is used (the custom component freezing mode defaults to **AUTO**, the resource release strategy defaults to **BATCH** , and the memory optimization strategy defaults to **DEFAULT**).   |
+| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | Yes   | Child component generation function, which creates a child component for each data item in the array.<br>**NOTE**<br>- **item** is the current data item (optional), and **index** is the index of the data item (optional).<br>- It is recommended that the data type of item remain consistent with the data type of the data source. Otherwise, when there is an operation in **itemGenerator** that is strongly related to the data type, the child component cannot render normally, or even crashes at runtime.<br>- The function body of **itemGenerator** must use braces {...}.<br>- **itemGenerator** can and must generate only one child component in each iteration.<br>- An if statement can be used in **itemGenerator**, but each branch of the if statement must create a child component of the same type. |
+| keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | No   | Key generation function, used to generate a unique and fixed key for each data item in the data source. If modifying a data item in the data source does not affect its generated key, the corresponding component is not updated; otherwise, the corresponding component is rebuilt and updated. The `keyGenerator` parameter is optional, but it is recommended to provide it so that the development framework can better identify array changes and correctly update components.<br>By default, the built-in key generation function of the framework is used (see the description below for details).<br>**NOTE**<br>- **item** is the current data item (optional), and **index** is the index of the data item (optional).<br>- It is recommended that the data type of item remain consistent with the data type of the data source. Otherwise, when there is an operation in **keyGenerator** that is strongly related to the data type, the child component cannot render normally, or even crashes at runtime.<br>- When `keyGenerator` is not specified, use the default key generation function, that is, `(item: Object, index: number) => { return viewId + '-' + index.toString(); }`. The generated key is affected only by the index value (**viewId** is generated during compiler conversion, and **viewId** is the same within the same **LazyForEach** component).<br>- To ensure that `LazyForEach` updates child components correctly and efficiently and to avoid issues such as abnormal rendering results and reduced rendering efficiency, the key should meet the following conditions.<br>1. Keys are unique; the key corresponding to each data item is different from the others.<br>2. Keys are consistent; the key remains unchanged when the data item is unchanged. |
+| options   | [LazyForEachOptions](#lazyforeachoptions)   | No   | Developer configuration item, used to enable custom component freezing, configure the memory optimization strategy and resource release strategy, and bind the controller. When this configuration item is used, the key generation function must be set; otherwise, compilation fails. When it is not passed, the default configuration is used (the custom component freezing mode defaults to AUTO, the resource release strategy defaults to BATCH, and the memory optimization strategy defaults to **DEFAULT**).   |
 
 ## Attributes
 
@@ -116,7 +116,7 @@ Obtains the data item that matches the specified index.
 | ------------------- | --------- |
 | any | Data item that matches the specified index. The actual type is determined by the data source implementation.|
 
-> **NOTE**
+> **NOTE** 
 >
 > Avoid performing time-consuming operations in the `getData` function to reduce frame freezing and dropping during application swiping. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread - Repeated Rendering](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section4551193714439).
 
@@ -156,7 +156,7 @@ Unregisters the listener for data changes.
 
 Defines the data change listener, used to notify the **LazyForEach** component to perform corresponding rendering updates when the data source changes. It supports listening for multiple data change types, including data addition, deletion, change, move, swap, and reload.
 
-> **NOTE**
+> **NOTE** 
 >
 > In the methods of **DataChangeListener** other than **onDatasetChange**, when a parameter contains index and its value is negative, it is replaced with 0 by default. In **onDatasetChange**, when a single **DataOperation** parameter contains index and its value is outside the index range of the data source (in **DataAddOperation**, **index** can be equal to the data source length), rendering exceptions may occur.
 
@@ -168,7 +168,7 @@ Defines the data change listener, used to notify the **LazyForEach** component t
 
 onDataReloaded(): void
 
-Invoked when all data is reloaded. For data items whose key remains unchanged, the original child component is used. For data items whose key changes, a new child component is created.  
+Invoked when all data is reloaded. For data items whose key remains unchanged, the original child component is used. For data items whose key changes, a new child component is created.
 
 > **NOTE**
 >
@@ -208,7 +208,7 @@ When reuse of old child components during the update is not allowed, data items 
 
 onDataAdded(index: number): void
 
-Invoked when data is added to the position indicated by the specified index.  
+Invoked when data is added to the position indicated by the specified index.
 
 > **NOTE**
 >
@@ -228,7 +228,7 @@ onDataMoved(from: number, to: number): void
 
 Invoked when data is moved, that is, when data is swapped between the **from** and **to** positions.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This API is supported since API version 7 and deprecated since API version 8. You are advised to use [onDataMove](#ondatamove8) instead.
 >
@@ -247,7 +247,7 @@ Invoked when data is moved, that is, when data is swapped between the **from** a
 
 onDataDeleted(index: number): void
 
-Invoked when data is deleted from the position indicated by the specified index. LazyForEach will update the displayed content accordingly.  
+Invoked when data is deleted from the position indicated by the specified index. LazyForEach will update the displayed content accordingly.
 
 > **NOTE**
 >
@@ -265,7 +265,7 @@ Invoked when data is deleted from the position indicated by the specified index.
 
 onDataChanged(index: number): void
 
-Invoked when data in the position indicated by the specified index is changed.  
+Invoked when data in the position indicated by the specified index is changed.
 
 > **NOTE**
 >
@@ -283,9 +283,9 @@ Invoked when data in the position indicated by the specified index is changed.
 
 onDataAdd(index: number): void
 
-Invoked when data is added to the position indicated by the specified index.  
+Invoked when data is added to the position indicated by the specified index.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API cannot be used together with the **onDatasetChange** API.
 
@@ -303,9 +303,9 @@ Invoked when data is added to the position indicated by the specified index.
 
 onDataMove(from: number, to: number): void
 
-Invoked when data is moved, that is, when data is swapped between the **from** and **to** positions.  
+Invoked when data is moved, that is, when data is swapped between the **from** and **to** positions.
 
-> **NOTE**
+> **NOTE** 
 >
 > - The key must remain unchanged before and after the data move. If the key changes, use the data deletion and data addition APIs instead.
 > - This API cannot be used together with the **onDatasetChange** API.
@@ -325,9 +325,9 @@ Invoked when data is moved, that is, when data is swapped between the **from** a
 
 onDataDelete(index: number): void
 
-Invoked when data is deleted from the position indicated by the specified index. LazyForEach will update the displayed content accordingly.  
+Invoked when data is deleted from the position indicated by the specified index. LazyForEach will update the displayed content accordingly.
 
-> **NOTE**
+> **NOTE** 
 >
 > - Ensure that the corresponding data in **dataSource** has been deleted before **onDataDelete** is called. Otherwise, undefined behavior may occur during page rendering.
 > - This API cannot be used together with the **onDatasetChange** API.
@@ -368,7 +368,7 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 Invoked when data is processed in batches to notify the component of refreshing.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API cannot be used together with other data operation APIs of **DataChangeListener**. For example, in the same **LazyForEach**, if you have called **onDataAdd**, do not call **onDatasetChange**; if you have called **onDatasetChange**, do not call **onDataAdd** or other data operation APIs. Different **LazyForEach** instances on the page do not affect each other. When data is processed in batches within the same **onDatasetChange** callback, if multiple **DataOperation** instances target the same index, only the first **DataOperation** will take effect.
 
@@ -498,7 +498,7 @@ When reuse of old child components during the update is not allowed, data items 
 | Name| Type                    | Read-Only| Optional| Description            |
 | ------ | ------------------------ | ---- | ---- | ---------------- |
 | type   | [DataOperationType](#dataoperationtype12).RELOAD | No | No   | Type for reloading all data. |
-| reuseImmediately   | boolean | No | Yes   | Whether to reuse the old child components during the update.<br/>**true**: allows reusing the old child components during the update.<br/>**false**: does not allow reusing the old child components during the update.<br/>Default value: false<br/>When the value is **undefined** or **null**, the default value is used.<br/>**Since:** 26.0.1<br/>**Model constraints:** this API is only used under the Stage model.<br/>**Atomic service API:** since API version 26.0.1, this API supports use in atomic services. |
+| reuseImmediately   | boolean | No | Yes   | Whether to reuse the old child components during the update.<br/>**true**: allows reusing the old child components during the update.<br/>**false**: does not allow reusing the old child components during the update.<br/>Default value: false<br/>When the value is **undefined** or **null**, the default value is used.<br/>**Since:** 26.0.1<br/>**Model restriction:** this API is only used under the Stage model.<br/>**Atomic service API:** since API version 26.0.1, this API supports use in atomic services. |
 
 ### DataOperationType<sup>12+</sup>
 
@@ -562,7 +562,7 @@ Enumerates the data operation types.
 
 Configures the resource release strategy and memory optimization strategy of **LazyForEach**, and whether to enable custom component freezing.
 
-> **NOTE**
+> **NOTE** 
 >
 > 1. Note: When using **LazyForEachOptions**, ensure that the **keyGenerator** function has been defined; otherwise, compilation will fail.
 >
@@ -583,12 +583,13 @@ Configures the resource release strategy and memory optimization strategy of **L
 | customComponentFreezeMode   | [LazyForEachCustomComponentFreezeMode](#lazyforeachcustomcomponentfreezemode) | No | Yes   | Whether to enable custom component freezing. It takes effect only when a custom component is directly used under **LazyForEach**, and does not apply to other cases.<br>The default value is [AUTO](#lazyforeachcustomcomponentfreezemode).        |
 | releaseStrategy  | [LazyForEachReleaseStrategy](#lazyforeachreleasestrategy)   | No | Yes   | Resource release strategy for **LazyForEach**.<br>The [BATCH](#lazyforeachreleasestrategy) mode is used by default, which releases nodes in batches.           |
 | memoryOptimizationStrategy   | [LazyForEachMemOptStrategy](#lazyforeachmemoptstrategy) | No | Yes   | Memory optimization strategy of **LazyForEach**. This parameter is set when **LazyForEach** is created and does not support dynamic modification.<br>Default value: [DEFAULT](#lazyforeachmemoptstrategy) |
+| controller   | [LazyForEachController](#lazyforeachcontroller) | No | Yes   | Controller bound to the LazyForEach component. After binding, when the cache needs to be cleared, [clearCache](#clearcache) can be called to clear the preloaded child components of the LazyForEach component. This controller is bound only when LazyForEach is created and does not support dynamic modification.<br>Default value: undefined, which means no controller is bound.<br>**Since:** 26.1.0<br>**Model restriction:** This interface can be used only under the Stage model.<br>**Atomic service API:** Since API version 26.1.0, this interface started to support use in atomic services. |
 
 ## LazyForEachCustomComponentFreezeMode
 
 Selects whether to enable custom component freezing.
 
-> **NOTE**
+> **NOTE** 
 >
 > This configuration is added only when a custom component is directly used under **LazyForEach**. It is not applicable in other cases.
 
@@ -640,6 +641,51 @@ Enumerates the memory optimization strategies of **LazyForEach**.
 | --- | --- | --- |
 | DEFAULT | 0 | No memory optimization strategy. |
 | ENABLE_AUTO_CACHE_OPTIMIZATION | 1 << 0 | Automatic memory optimization strategy. When the number of list items carried by **LazyForEach** is large (for example, hundreds or more) or the structure of a single child component is complex (for example, containing multiple nested layers or dozens of child nodes), resulting in high memory usage (which can be detected through a performance analysis tool), it is recommended to use this strategy to reduce memory usage.<br>When the application moves to the background, when the component where **LazyForEach** resides is invisible (the [visibility](./ts-universal-attributes-visibility.md#visibility) attribute is set to a value other than [Visible](./ts-appendix-enums.md#visibility), or the component area is 0, regardless of occlusion), or when the device is low on memory ([MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel) reaches **MEMORY_LEVEL_LOW** or **MEMORY_LEVEL_CRITICAL**), for devices with memory greater than 6 GB, some nodes in the [preload area](../../../ui/rendering-control/arkts-rendering-control-overview.md#basic-concepts) are released until the number of nodes in both the upper and lower preload areas does not exceed 2; for devices with memory less than or equal to 6 GB, all nodes in the preload area are released.<br>When the application returns to the foreground, when the component where **LazyForEach** resides becomes visible again, or when **LazyForEach** scrolls, the nodes in the preload area are restored.<br>Releasing and restoring nodes triggers the [custom component lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md). |
+
+## LazyForEachController
+
+Controller of the **LazyForEach** component. Bind the controller to the **LazyForEach** component through the **controller** field in [LazyForEachOptions](#lazyforeachoptions). When cache cleanup is required, call [clearCache](#clearcache) to clear the preloaded child components of the **LazyForEach** component.
+
+> **NOTE**
+>
+> 1. The controller is bound only when **LazyForEach** is created and does not support dynamic modification.
+> 2. A controller can control only one **LazyForEach** component. If the controller is bound to another **LazyForEach**, the previous binding automatically becomes invalid, and the controller controls only the last bound component.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### constructor
+
+constructor()
+
+Constructor of **LazyForEachController**.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### clearCache
+
+clearCache(): void
+
+Clears the preloaded child components of the **LazyForEach** component bound to this controller.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## Examples
 
@@ -710,3 +756,81 @@ struct MemoryOptimizeDemo {
 }
 ```
 
+### Example 2 Actively Clearing Preloaded Child Components
+
+In the following example, the [LazyForEachController](#lazyforeachcontroller) is bound through the controller attribute of [LazyForEachOptions](#lazyforeachoptions). When the Clear button is clicked, the preloaded child components of LazyForEach are proactively cleared.
+
+Since API version 26.1.0, **LazyForEachOptions** adds the **controller** attribute.
+
+For the **BasicDataSource** code, see the **BasicDataSource** sample code at the end of the **LazyForEach** developer guide: [BasicDataSource implementation for the string array](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#basicdatasource-implementation-for-the-string-array).
+
+<!--code_no_check-->
+```ts
+import { BasicDataSource } from './BasicDataSource';
+
+class DataSource extends BasicDataSource {
+  public dataArray: string[] = [];
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Component
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@Component
+struct ClearCacheDemo {
+  private data: DataSource = new DataSource();
+  // Create a LazyForEachController object.
+  private controller: LazyForEachController = new LazyForEachController();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.pushData(`item ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        // Bind the controller through the controller field of LazyForEachOptions.
+        LazyForEach(this.data,
+          (item: string, index: number) => {
+            ListItem() {
+              ChildComponent()
+            }
+          },
+          (item: string, index: number) => item,
+          { controller: this.controller }
+        )
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Clear')
+        .onClick(() => {
+          // Actively clear the preloaded child components of LazyForEach.
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "汇总并发开发的常见问题与排查指导：覆盖TaskPool任务不执行、任务执行慢、序列化失败的定位思路，Sendable对象instanceof判断失效、属性类型不一致与新增属性异常，以及Promise实现原理等问题。"
+keywords: [并发常见问题, TaskPool任务不执行, 任务执行慢排查, 序列化失败, instanceof判断, Sendable异常, Promise原理]
+doctype: faq
+status: active
+---
+
 # 并发常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

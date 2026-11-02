@@ -27,12 +27,14 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
 
   示例一：
 
-  ```html
+  <!-- @[w3c_print_html_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/print.html) -->
+  
+  ``` HTML
   <!DOCTYPE html>
   <html>
-
+  
   <head>
-      <meta charset="utf-8">
+      <meta charset='utf-8'>
       <title>printTest</title>
       <style>
           @media print {
@@ -42,72 +44,73 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
           }
       </style>
   </head>
-
+  
   <body>
-      <div>
-          <h1><b>
-                  <p style="text-align: center;">This is a test page for printing</p>
-              </b>
-              <hr color="#00cc00" width="95%">
-          </h1>
-          <button class="Button Button--outline" onclick="window.print();">Print</button>
-          <p> content content content </p>
-          <div id="printableTable">
-              <table>
-                  <thead>
-                      <tr>
-                          <td>Thing</td>
-                          <td>Chairs</td>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>blue</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>green</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-          <p> content content content </p>
-          <p> content content content </p>
+  <div>
+      <h1><b>
+          <center>This is a test page for printing</center>
+      </b>
+          <hr color=#00cc00 width=95%>
+      </h1>
+      <button class='Button Button--outline' onclick='window.print();'>Print</button>
+      <p> content content content </p>
+      <div id='printableTable'>
+          <table>
+              <thead>
+              <tr>
+                  <td>Thing</td>
+                  <td>Chairs</td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td>1</td>
+                  <td>blue</td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>green</td>
+              </tr>
+              </tbody>
+          </table>
       </div>
+      <p> content content content </p>
+      <p> content content content </p>
+  </div>
   </body>
   ```
   
   示例二（iframe嵌套页面的方式）：
 
-
-  ```html
+  <!-- @[w3c_print_html_iframe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/iframe.html) --> 
+  
+  ``` HTML
   <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>iframe嵌套页面打印</title>
-  </head>
-  <body>
-      <button id="printIframe">打印iframe嵌套页面</button>
-      <iframe id="contentIframe" hidden></iframe>
-
-      <script>
-          document.getElementById("printIframe").addEventListener("click", () => {
-              var ctIframe = document.getElementById("contentIframe");
-              if(!ctIframe.contentWindow || !ctIframe.contentWindow.document) {
-                console.error("iframe页面初始化失败");
-                return;
-              }
-              var ctIframeDoc = ctIframe.contentWindow.document;
-              ctIframeDoc.write("嵌套页面");
-              ctIframeDoc.close();
-              ctIframe.contentWindow.print();
-          });
-      </script>
-  </body>
-  </html>
+    <html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>iframe嵌套页面打印</title>
+    </head>
+    <body>
+        <button id='printIframe'>打印iframe嵌套页面</button>
+        <iframe id='contentIframe' hidden></iframe>
+  
+        <script>
+            document.getElementById('printIframe').addEventListener('click', () => {
+                var ctIframe = document.getElementById('contentIframe');
+                if (!ctIframe.contentWindow || !ctIframe.contentWindow.document) {
+                  console.error('iframe页面初始化失败');
+                  return;
+                }
+                var ctIframeDoc = ctIframe.contentWindow.document;
+                ctIframeDoc.write('嵌套页面');
+                ctIframeDoc.close();
+                ctIframe.contentWindow.print();
+            });
+        </script>
+    </body>
+    </html>
   ```
 
 - 应用侧代码。

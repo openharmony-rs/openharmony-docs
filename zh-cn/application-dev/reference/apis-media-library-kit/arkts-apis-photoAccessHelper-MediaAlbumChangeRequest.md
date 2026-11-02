@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+MediaAlbumChangeRequest类实现了[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)接口。
 
 相册变更请求。
 

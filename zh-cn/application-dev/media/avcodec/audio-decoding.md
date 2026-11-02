@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍通过Native API以回调机制异步完成音频解码的开发流程，将AAC、MP3等格式码流解码为PCM数据，适用于音频播放、音频渲染及基于PCM的音频编辑场景。"
+keywords: [音频解码, 异步模式, PCM, AAC, MP3, 音频播放, 音频渲染, OH_AudioCodec]
+doctype: guide
+status: active
+---
+
 # 异步模式音频解码
 
 <!--Kit: AVCodec Kit-->
@@ -32,7 +40,7 @@
 
 参考以下示例代码，完成音频解码的全流程，包括：创建解码器、设置解码参数（采样率/码率/声道数等）、开始、刷新、重置、销毁资源。
 
-示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_*、AVCODEC_SAMPLE_LOG*、CodecUserData、CodecBufferInfo、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
+示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_\*、AVCODEC_SAMPLE_LOG\*、CodecUserData、CodecBufferInfo、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
 
 在应用开发过程中，开发者应按一定顺序调用方法，执行对应操作，否则系统可能会抛出异常或产生其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。
 
@@ -74,9 +82,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    - 方法一：通过mime type创建解码器。
 
-   <!-- @[AudioDecoder::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-   ```cpp
+   <!-- @[AudioDecoder::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    int32_t AudioDecoder::Create(const std::string &codecMime)
    {
        // 设置判定是否为编码。false表示当前是解码。
@@ -90,9 +98,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    - 方法二：通过codec name创建解码器。
 
-   <!-- @[AudioDecoder::CreateByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-   ```cpp
+   <!-- @[AudioDecoder::CreateByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    int32_t AudioDecoder::CreateByName(const std::string &codecMime)
    {
        // 通过codec name创建解码器。
@@ -122,29 +130,29 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    >
    > 请勿在回调中调用解码器的相关接口或进行耗时操作。
 
-   <!-- @[SampleCallback::OnCodecError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
-
-   ```cpp
+   <!-- @[SampleCallback::OnCodecError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+   
+   ``` C++
    void SampleCallback::OnCodecError(OH_AVCodec *codec, int32_t errorCode, void *userData)
    {
        (void)codec;
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (!IsCallbackUnavailable(codecUserData)) {
+       if (codecUserData != nullptr && !codecUserData->isDestroyed.load()) {
            codecUserData->SignalError();
        }
        AVCODEC_SAMPLE_LOGE("On codec error, error code: %{public}d", errorCode);
    }
    ```
 
-   <!-- @[SampleCallback::OnCodecFormatChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
-
-   ```cpp
+   <!-- @[SampleCallback::OnCodecFormatChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+   
+   ``` C++
    void SampleCallback::OnCodecFormatChange(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
    {
        (void)codec;
        AVCODEC_SAMPLE_LOGI("On codec format change");
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (IsCallbackUnavailable(codecUserData) || format == nullptr) {
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load() || format == nullptr) {
            return;
        }
        // 音频码流信息变化：采样率/声道数/采样格式。应用可据此判断变化并做对应处理。
@@ -161,6 +169,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            AVCODEC_SAMPLE_LOGI("Audio sample format changed: %{public}d", sampleFormat);
        }
        std::unique_lock<std::shared_mutex> codecLock(codecUserData->codecMutex);
+       // 可通过format获取到变化后的视频宽、高、跨距等。
        UpdateVideoOutputInfo(format, codecUserData);
        const int32_t pixelFormat = static_cast<int32_t>(codecUserData->outputPixelFormat);
        AVCODEC_SAMPLE_LOGI("Format changed: %{public}d*%{public}d, stride: %{public}d*%{public}d, "
@@ -170,32 +179,40 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
 
-   > **说明：**
-   >
-   > 示例函数同时服务于音视频编解码，其中UpdateVideoOutputInfo()为视频宽高、像素格式等信息的更新逻辑；OnNeedInputBuffer()中的UpdateEncoderFirstInputDescription()为视频编码首帧的信息获取逻辑（内部调用OH_VideoEncoder_GetInputDescription()）。音频解码场景均不会生效，可忽略。
+   示例函数同时服务于音视频编解码，其中UpdateVideoOutputInfo()为视频宽高、像素格式等信息的更新逻辑；OnNeedInputBuffer()中的UpdateEncoderFirstInputDescription()为视频编码首帧的信息获取逻辑（内部调用OH_VideoEncoder_GetInputDescription()）。音频解码场景均不会生效，可忽略。
 
-   <!-- @[SampleCallback::OnNeedInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
-
-   ```cpp
+   <!-- @[SampleCallback::OnNeedInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+   
+   ``` C++
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (IsCallbackUnavailable(codecUserData) || buffer == nullptr) {
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
+           return;
+       }
+       if (codec == nullptr || buffer == nullptr) {
+           AVCODEC_SAMPLE_LOGE("Invalid codec input callback argument");
+           codecUserData->SignalError();
            return;
        }
        UpdateEncoderFirstInputDescription(codec, codecUserData);
-       // 编解码器已准备好，将可用输入buffer入队，供驱动线程消费。
+       // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
        codecUserData->inputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
    ```
 
-   <!-- @[SampleCallback::OnNewOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
-
-   ```cpp
+   <!-- @[SampleCallback::OnNewOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+   
+   ``` C++
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (IsCallbackUnavailable(codecUserData) || buffer == nullptr) {
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
+           return;
+       }
+       if (codec == nullptr || buffer == nullptr) {
+           AVCODEC_SAMPLE_LOGE("Invalid codec output callback argument");
+           codecUserData->SignalError();
            return;
        }
        if (codecUserData->isDecFirstFrame) {
@@ -206,8 +223,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            }
            codecUserData->isDecFirstFrame = false;
        }
+       // 输出帧的数据buffer和对应的index送入outputBufferQueue队列。
        codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
-
+   
        // 从AVBuffer中获取时域层级信息。
        int32_t layerID = GetTemporalLayerID(buffer);
        if (layerID >= 0 && index % LIMIT_LOGD_FREQUENCY == 0) {
@@ -218,22 +236,23 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    > **说明：**
    >
-   > 示例中isDecFirstFrame分支（内部调用OH_VideoDecoder_GetOutputDescription()，该接口声明于native_avcodec_videodecoder.h，属于视频解码库）与时域层级信息的获取（GetTemporalLayerID()）为视频解码场景的扩展逻辑，音频解码场景不会生效，可忽略。
+   > isDecFirstFrame分支内部调用OH_VideoDecoder_GetOutputDescription()，该接口声明于native_avcodec_videodecoder.h，属于视频解码库。示例中isDecFirstFrame分支与时域层级信息的获取（GetTemporalLayerID()）为视频解码场景的扩展逻辑，音频解码场景不会生效，可忽略。
 
    配置回调：
 
-   <!-- @[AudioDecoder::SetCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-   ```cpp
+   <!-- @[AudioDecoder::SetCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    int32_t AudioDecoder::SetCallback(CodecUserData *codecUserData)
    {
+       // 异步模式下回调由codec内部线程触发并访问传入的userData；须先停止解码器再销毁该上下文，避免回调访问已释放的对象。
        int32_t ret = AV_ERR_OK;
        ret = OH_AudioCodec_RegisterCallback(decoder_,
                                             {SampleCallback::OnCodecError, SampleCallback::OnCodecFormatChange,
                                              SampleCallback::OnNeedInputBuffer, SampleCallback::OnNewOutputBuffer},
                                             codecUserData);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Set callback failed, ret: %{public}d", ret);
-
+   
        return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
@@ -311,20 +330,21 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | Vorbis      | 8000 ~ 192000   |
    | APE         | 1 ~ 2147483647  |
 
-   <!-- @[AudioDecoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-   ```cpp
+   <!-- @[AudioDecoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    int32_t AudioDecoder::Configure(const SampleInfo &sampleInfo)
    {
-       // 解码能力表可能未完整列出部分容器编码格式的采样率/声道信息，
+       // 解码能力表可能未完整列出部分容器编码格式的采样率/声道信息。
        // 解码器Configure调用的返回值才是最终判定依据，此处仅将能力查询结果作为参考日志。
        if (!CodecCapability::ValidateAudioConfiguration(sampleInfo, false)) {
            AVCODEC_SAMPLE_LOGW("Audio capability query did not fully describe mime: %{public}s; "
                "continue with decoder configure", sampleInfo.audio.audioCodecMime.c_str());
        }
+       // format仅用于本次Configure；所有失败路径和成功路径都要在返回前销毁。
        OH_AVFormat *format = OH_AVFormat_Create();
        CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
-
+   
        // 必选：采样格式、声道数、声道布局、采样率。
        OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_S16LE);
        OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, sampleInfo.audio.audioChannelCount);
@@ -334,31 +354,31 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        if (sampleInfo.codec.codecSyncMode) {
            OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codec.codecSyncMode);
        }
-
-       // 可选：编解码器特定数据（codec config），由解封装获取，无则不设置。
+   
+       // 可选：编解码器特定数据（codec config），由解封装获取，没有则不设置。
        if (sampleInfo.audio.codecConfigLen > 0 &&
            sampleInfo.audio.codecConfig.size() >= sampleInfo.audio.codecConfigLen) {
            OH_AVFormat_SetBuffer(format, OH_MD_KEY_CODEC_CONFIG, sampleInfo.audio.codecConfig.data(),
                sampleInfo.audio.codecConfigLen);
        }
-
+   
        // 配置解码器。
        int ret = OH_AudioCodec_Configure(decoder_, format);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Config failed, ret: %{public}d", ret);
        OH_AVFormat_Destroy(format);
        format = nullptr;
-
+   
        return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
 
 6. 调用OH_AudioCodec_Prepare()，解码器就绪。
 
-   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用，该函数先完成Configure()配置与回调注册，以下为其中Prepare部分的代码：
+   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：在Config()函数中先完成Configure()配置与回调注册，之后再调用OH_AudioCodec_Prepare()使解码器就绪。以下为其中Prepare部分的代码：
 
-   <!-- @[AudioDecoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-   ```cpp
+   <!-- @[AudioDecoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    {
        // 解码器就绪。
        int ret = OH_AudioCodec_Prepare(decoder_);
@@ -368,13 +388,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 7. 调用OH_AudioCodec_Start()启动解码器，进入运行态。
 
-   <!-- @[AudioDecoder::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-   ```cpp
+   <!-- @[AudioDecoder::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    int32_t AudioDecoder::Start()
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
-
+   
        int ret = OH_AudioCodec_Start(decoder_);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Start failed, ret: %{public}d", ret);
        return AVCODEC_SAMPLE_ERR_OK;
@@ -457,12 +477,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
-   <!-- @[AudioDecoder::PushInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-   ```cpp
+   <!-- @[AudioDecoder::PushInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    int32_t AudioDecoder::PushInputBuffer(CodecBufferInfo &info)
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
+       CHECK_AND_RETURN_RET_LOG(info.buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer is null");
        int32_t ret = OH_AVBuffer_SetBufferAttr(info.buffer, &info.attr);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Set avbuffer attr failed");
        ret = OH_AudioCodec_PushInputBuffer(decoder_, info.bufferIndex);
@@ -473,9 +494,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    示例中待解码的数据从解封装模块读取，pts、size、flags由OH_AVDemuxer_ReadSampleBuffer写入buffer属性，输入线程消费示例如下：
 
-   <!-- @[Player::AudioDecInputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp) -->
-
-   ```cpp
+   <!-- @[Player::AudioDecInputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp) -->
+   
+   ``` C++
    void Player::AudioDecInputThread()
    {
        while (isStarted_ && audioWorkerRunning_) {
@@ -484,8 +505,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            std::shared_ptr<CodecBufferInfo> bufferInfo = audioDecContext_->inputBufferQueue.Dequeue();
            std::shared_lock<std::shared_mutex> codecLock(audioDecContext_->codecMutex);
            CHECK_AND_BREAK_LOG(isStarted_ && audioWorkerRunning_, "Work done, thread out");
-           CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr && bufferInfo->isValid,
-               "Buffer queue is empty or invalid, continue");
+           CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr, "Buffer queue is empty, continue");
            audioDecContext_->inputFrameCount++;
            int32_t ret = demuxer_->ReadSample(demuxer_->GetAudioTrackId(), bufferInfo->buffer, bufferInfo->attr);
            if (ret != AVCODEC_SAMPLE_ERR_OK) {
@@ -509,13 +529,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     在获取解码PCM码流后，应及时调用OH_AudioCodec_FreeOutputBuffer()进行释放。
 
-    <!-- @[AudioDecoder::FreeOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-    ```cpp
+    <!-- @[AudioDecoder::FreeOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    
+    ``` C++
     int32_t AudioDecoder::FreeOutputBuffer(uint32_t bufferIndex, bool render)
     {
         CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
-
+    
         int32_t ret = AVCODEC_SAMPLE_ERR_OK;
         ret = OH_AudioCodec_FreeOutputBuffer(decoder_, bufferIndex);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Free output data failed");
@@ -525,21 +545,27 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     输出线程从输出buffer队列中取出解码完成的数据，取走PCM数据后及时释放，输出消费示例如下：
 
-    <!-- @[AudioOutputPump::ProcessAsyncOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp) -->
-
-    ```cpp
+    <!-- @[AudioOutputPump::ProcessAsyncOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp) -->
+    
+    ``` C++
     bool AudioOutputPump::ProcessAsyncOutput()
     {
         CHECK_AND_RETURN_RET_LOG(running_, false, "Audio decoder output thread out");
         std::shared_ptr<CodecBufferInfo> bufferInfo = context_.outputBufferQueue.Dequeue();
         std::shared_lock<std::shared_mutex> codecLock(context_.codecMutex);
-        CHECK_AND_RETURN_RET_LOG(running_, false, "Audio decoder output thread out");
-        if (bufferInfo == nullptr || !bufferInfo->isValid) {
-            AVCODEC_SAMPLE_LOGW("Buffer queue is empty or invalid, continue");
+        if (bufferInfo == nullptr) {
+            AVCODEC_SAMPLE_LOGW("Buffer queue is empty, continue");
             return true;
         }
-        CHECK_AND_RETURN_RET_LOG(!(bufferInfo->attr.flags & AVCODEC_BUFFER_FLAGS_EOS), false,
-            "Catch EOS, thread out");
+        if (!running_) {
+            (void)ReleaseOutputBuffer(*bufferInfo, "audio output worker stopped");
+            return false;
+        }
+        if (bufferInfo->attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
+            (void)ReleaseOutputBuffer(*bufferInfo, "audio output EOS");
+            AVCODEC_SAMPLE_LOGI("Catch EOS, audio output thread out");
+            return false;
+        }
         return HandleOutputBuffer(*bufferInfo, true);
     }
     ```
@@ -557,13 +583,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     * 在解码输出buffer属性为AVCODEC_BUFFER_FLAGS_EOS后，若想重新使用相同配置进行解码时，需要调用刷新。
     * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid()为true）可以调用刷新，然后调用OH_AudioCodec_Start()重新开始解码。
 
-    <!-- @[AudioDecoder::Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-    ```cpp
+    <!-- @[AudioDecoder::Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    
+    ``` C++
     int32_t AudioDecoder::Flush()
     {
         CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
-
+    
         // 刷新解码器，清空当前队列，之后需要调用Start()重新开始解码。
         int32_t ret = OH_AudioCodec_Flush(decoder_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Flush failed, ret: %{public}d", ret);
@@ -575,13 +601,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     调用OH_AudioCodec_Reset()后，解码器回到初始化状态，重置前获取到的输入/输出buffer都无法继续使用，需先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始解码。启动后重新获取输入/输出buffer。
 
-    <!-- @[AudioDecoder::Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-    ```cpp
+    <!-- @[AudioDecoder::Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    
+    ``` C++
     int32_t AudioDecoder::Reset()
     {
         CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
-
+    
         // 重置解码器，之后需要重新调用Configure()配置、Start()启动。
         int32_t ret = OH_AudioCodec_Reset(decoder_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Reset failed, ret: %{public}d", ret);
@@ -593,13 +619,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
-    <!-- @[AudioDecoder::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-    ```cpp
+    <!-- @[AudioDecoder::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    
+    ``` C++
     int32_t AudioDecoder::Stop()
     {
         CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
-
+    
         int32_t ret = OH_AudioCodec_Stop(decoder_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Stop failed, ret: %{public}d", ret);
         return AVCODEC_SAMPLE_ERR_OK;
@@ -612,9 +638,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     >
     > 禁止重复销毁解码器。
 
-    <!-- @[AudioDecoder::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
-
-    ```cpp
+    <!-- @[AudioDecoder::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    
+    ``` C++
     int32_t AudioDecoder::Release()
     {
         if (decoder_ != nullptr) {

@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d47aed805c9cbd62ce4e714ce8e213154a42a9a9 translatedAt=2026-10-19T01:16:00.701Z pushedAt=2026-10-19T03:43:25.556Z -->
 
 ## Overview
 
@@ -47,7 +48,7 @@ The following table lists the APIs for clipping. For details, see [drawing.Canva
 | clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void | Clips a rectangle.|
 | clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): void | Clips a rounded rectangle.|
 | clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void | Clips a path.|
-| clipRegion(region: Region, clipOp?: ClipOp): void | Clips a rectangle.|
+| clipRegion(region: Region, clipOp?: ClipOp): void | Clips a region.|
 
 
 ### How to Develop
@@ -211,12 +212,12 @@ canvas.detachBrush();
 ## Saving and Restoring the Canvas Status
 
 
-The saving operation is used to save the current canvas status to the top of the stack. The restoration operation is used to restore the canvas status saved at the top of the stack. Once the restoration operation is performed, a series of operations such as translation, scaling, and clipping between the saving and restoration operations are cleared.
+The save operation saves the current canvas state to the top of a stack, and the restore operation restores the canvas state saved at the top of the stack. Once the restore operation is executed, all translation, scaling, and clip operations performed between the save and restore operations are cleared.
 
 
 ### Available APIs
 
-The following table lists the APIs used for saving and restoring the canvas status. For details about the usage and parameters, see [canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+The following table lists the APIs used for canvas state saving and restoring. For details about usage and parameters, see [Class (Canvas)](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
 | API| Description|
 | -------- | -------- |

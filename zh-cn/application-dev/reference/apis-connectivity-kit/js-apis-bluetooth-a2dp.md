@@ -70,6 +70,45 @@ try {
 ```
 
 
+## a2dp.createA2dpSnkProfile
+
+createA2dpSnkProfile(): A2dpSinkProfile
+
+创建蓝牙媒体[A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink)实例。通过该实例，可以调用本端作为A2DP Sink设备时所需的各项方法。
+
+**起始版本**： 26.0.1
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| [A2dpSinkProfile](#a2dpsinkprofile) | 返回蓝牙媒体音频接收端实例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|801 | Capability not supported. |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSinkProfile = a2dp.createA2dpSnkProfile();
+    console.info('a2dpSink success');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## A2dpSourceProfile
 
 该实例表示蓝牙媒体音频中的[A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source)角色。
@@ -126,6 +165,20 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+
+## A2dpSinkProfile
+
+该实例表示蓝牙媒体音频中的[A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink)角色。
+- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。
+- 使用该类的接口前，需通过[createA2dpSnkProfile](#a2dpcreatea2dpsnkprofile)接口构造该类的实例。
+- 和该实例角色相对应的是[A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source)角色。
+
+**起始版本**： 26.0.1
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 
 ## PlayingState

@@ -1,7 +1,7 @@
 # 使用OHAudio开发音频会话功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
@@ -320,7 +320,20 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
 
 从API version 24开始，应用可以通过[OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
 
-在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
+| 枚举值 | API版本 | 推荐使用场景 |
+| -------- | -------- | -------- |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED | 24 | 直播类音频被打断场景。 |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED | 26.0.0 | 媒体类音频被其他短时媒体音频（如有声广告）打断后需要恢复播放的场景。 |
+
+在用户观看直播的场景中，当其他应用启动音频流（如键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为后，直播在被打断时会保持静音播放而非暂停，避免画面中断，打断结束后会自动解除静音。
+
+在媒体音频被其他短时媒体音频打断的场景中，系统不会通知应用恢复播放。当应用设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED会话行为后，系统会通知应用恢复播放，避免被短时媒体音频打断不恢复。若打断时长超出规定时间（即打断方为长时媒体音频），该接口将不会生效。
+
+> **注意：**
+>
+> - PAUSE_WHEN_INTERRUPTED不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。
+> - 调用[OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口配置该行为时，必须同步调用[OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)接口，否则配置将无法生效。
+> - 当音频会话在激活状态时调用[OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口后，必须重新调用接口[OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)使其生效。
 
 如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[OH_AudioRenderer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setindependentaudiosessionstrategy)。对于录音流，详情请参考[OH_AudioCapturer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setindependentaudiosessionstrategy)。
 

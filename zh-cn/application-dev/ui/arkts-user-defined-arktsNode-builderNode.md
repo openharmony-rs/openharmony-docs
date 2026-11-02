@@ -19,7 +19,7 @@
 
 ## 基本概念
 
-- 系统组件：组件是UI的必要元素，形成了在界面中的样子，由ArkUI直接提供的称为[系统组件](arkts-ui-development-overview.md)。
+- 系统组件：组件是UI的必要元素，形成了在界面中的样式，由ArkUI直接提供的称为[系统组件](arkts-ui-development-overview.md)。
 
 - 实体节点：由后端创建的Native节点。
 
@@ -206,7 +206,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[Render
 
 使用update更新BuilderNode中的节点。
 
-使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)触发BuilderNode中节点的全量更新。
+使用[updateConfiguration()](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)触发BuilderNode中节点的全量更新。
 
 更新BuilderNode中的节点。
 
@@ -965,11 +965,11 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
 
 ## 通过系统环境变化更新节点
 
-使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)来监听系统环境变化事件，以触发节点的全量更新。系统环境变化详情参见[@ohos.app.ability.Configuration (环境变量)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。
+使用[updateConfiguration()](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)来监听系统环境变化事件，以触发节点的全量更新。系统环境变化详情参见[@ohos.app.ability.Configuration (环境变量)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。
 
 > **说明：**
 >
-> updateConfiguration接口用于通知对象进行更新，更新所使用的系统环境取决于应用当前系统环境的变化。
+> updateConfiguration()接口用于通知对象进行更新，更新所使用的系统环境取决于应用当前系统环境的变化。
 
   <!-- @[Main_EnvironmentCallbackPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/EnvironmentCallbackPage.ets) -->
   
@@ -1722,7 +1722,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
 
 **页面路由**
 
-当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。图示如下：
+当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，页面1调用router.pushUrl()接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。图示如下：
 
 ![alt text](state-management/figures/freezeInPage.png)
 

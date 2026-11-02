@@ -379,7 +379,7 @@ static std::string BuildQueryConnectionInfo(
         connectionInfo.srcIp.addr)) {
         return "ERROR: Invalid source IP address";
     }
-    connectionInfo.src_port = static_cast<uint16_t>(queryArgs.srcPort);
+    connectionInfo.srcPort = static_cast<uint16_t>(queryArgs.srcPort);
 
     connectionInfo.dstIp.family = DetectIPFamilyFromAddr(queryArgs.dstIp);
     if (!ParseIPAddressByFamily(queryArgs.dstIp, connectionInfo.dstIp.family,
@@ -403,7 +403,7 @@ static napi_value CreateQueryResponseNapi(
             "QueryProcessNapi - Process found: pid=%{public}u, uid=%{public}u",
             processInfo.pid, processInfo.uid);
     } else if (ret == OH_TRAFFICFILTER_ERROR_NOT_FOUND) {
-        OH_LOG_INFO(LOG_APP, "QueryProcessNapi - Process not found");
+        OH_LOG_ERROR(LOG_APP, "QueryProcessNapi - Process not found");
     } else if (ret == OH_TRAFFICFILTER_ERROR_INVALID_PARAM) {
         OH_LOG_ERROR(LOG_APP, "QueryProcessNapi - Invalid parameters");
     } else {

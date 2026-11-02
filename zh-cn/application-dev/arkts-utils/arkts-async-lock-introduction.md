@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS异步锁（AsyncLock）能力，用于解决多线程并发实例间的数据竞争问题，避免阻塞锁在异步场景下产生死锁，支持跨线程引用传递并保护Sendable共享对象的数据安全。"
+keywords: [异步锁, AsyncLock, 数据竞争, 多线程并发, 非阻塞锁, 跨线程引用传递, Sendable, lockAsync, 死锁]
+doctype: guide
+status: active
+---
+
 # 异步锁
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

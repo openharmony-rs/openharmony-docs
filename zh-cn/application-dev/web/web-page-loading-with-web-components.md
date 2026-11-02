@@ -190,21 +190,23 @@ struct WebComponent {
 2. 修改`EntryAbility.ets`文件。
 
    以filesDir为例，获取沙箱路径。若想获取其他路径，请参考[应用文件路径](../application-models/application-context-stage.md#获取应用文件路径)。
-
-   ```ts
-   // xxx.ets
-   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-   import { webview } from '@kit.ArkWeb';
-   import { GlobalContext } from '../GlobalContext';
-
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-       // 通过在GlobalContext对象上绑定filesDir，可以实现UIAbility组件与UI之间的数据同步。
-       GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
-     }
-   }
-   ```
+  <!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { window } from '@kit.ArkUI';
+  import { GlobalContext } from '../pages/GlobalContext';
+  
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {    
+         // 通过在GlobalContext对象上绑定filesDir，可以实现UIAbility组件与UI之间的数据同步。    
+         GlobalContext.getContext().setObject('filesDir', this.context.filesDir);    
+         console.info('Sandbox path is ' + GlobalContext.getContext().getObject('filesDir'));    
+       }
+    // ...
+  }
+  ```
 
    加载的html文件。
 

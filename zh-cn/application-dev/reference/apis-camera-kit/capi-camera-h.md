@@ -95,6 +95,7 @@
 | [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | 枚举相机曝光状态。 |
 | [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | 元数据对象情绪类型枚举。 |
 | [OH_Camera_AutomotiveCameraPosition](#oh_camera_automotivecameraposition) | OH_Camera_AutomotiveCameraPosition | Car设备摄像头位置的枚举。 |
+| [OH_Camera_AuxiliaryPhotoType](#oh_camera_auxiliaryphototype) | OH_Camera_AuxiliaryPhotoType | 辅助图类型的枚举。在用于拍摄皮肤健康评估的辅助图时，使用该枚举类型来指定检测目标。 |
 
 ### 函数
 
@@ -133,6 +134,8 @@ enum Camera_ErrorCode
 | CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | 可选属性不存在。<br>**起始版本：** 26.0.0 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
 | CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 | 表示设备当前不支持该能力。 <br>**起始版本：** 26.0.0 |
+| CAMERA_ERROR_UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400115 | 不支持的多摄组合。当因为硬件限制或驱动约束而尝试使用不支持的多摄组合时会返回此错误。请考虑使用其他相机组合，或查看设备支持的相机配置。<br>**起始版本：** 26.0.1 |
+| CAMERA_ERROR_PARAM_OUT_OF_RANGE = 7400116 | 参数超出范围。当参数值（如ISO、曝光时间或对焦距离）超出有效范围时会返回此错误。请确保取值在当前相机配置支持的范围内。<br>**起始版本：** 26.0.1 |
 
 ### Camera_Status
 
@@ -794,6 +797,23 @@ Car设备摄像头位置的枚举。
 | OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 | Car设备内部第三排左侧摄像头。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 | Car设备内部第三排中央摄像头。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 | Car设备内部第三排右侧摄像头。<br>**起始版本：** 26.0.0 |
+
+### OH_Camera_AuxiliaryPhotoType
+
+```c
+enum OH_Camera_AuxiliaryPhotoType
+```
+
+**描述**
+
+辅助图类型的枚举。在用于拍摄皮肤健康评估的辅助图时，使用该枚举类型来指定检测目标。
+
+**起始版本：** 26.0.1
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_AUXILIARY_PHOTO_TYPE_OXYGEN = 0 | 血氧图。<br>**起始版本：** 26.0.1 |
+| OH_CAMERA_AUXILIARY_PHOTO_TYPE_PIGMENTATION = 1 | 色斑图。<br>**起始版本：** 26.0.1 |
 
 ## 函数说明
 

@@ -304,9 +304,9 @@ Column() {
 
 ## 设置无障碍虚拟子节点
 
-[accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)属性，用于为自绘制组件添加无障碍虚拟子节点，辅助工具会读取这些节点的信息而非实际显示内容。
+[accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)属性，用于为自绘制组件添加无障碍虚拟子节点，辅助工具会读取这些节点的信息而非实际显示内容。如[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)绘制的内容无法直接被无障碍服务识别，可通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。
 
-本示例以Column组件为例，设置accessibilityVirtualNode后，“文本2”在无障碍模式下可被辅助工具识别聚焦并播报，UI仍然显示为“文本1”。
+本示例以Canvas组件为例，在画布中绘制“Submit”和“Reset”两个按钮，并在CustomBuilder中设置位置和大小与绘制区域匹配的占位组件。设置accessibilityVirtualNode后，“Submit”“Reset”在无障碍模式下可被辅助工具识别聚焦并播报，UI仍然只显示画布绘制的内容。
 
 <!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
 
@@ -314,19 +314,45 @@ Column() {
 @Entry
 @Component
 struct VirtualNodeExample {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  // 无障碍虚拟子节点，占位组件仅做布局不做显示，位置和大小与画布中绘制内容所在区域保持一致。
   @Builder customAccessibilityNode() {
-    Text('文本2')
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
+    Stack() {
+      Text('Submit')
+        .position({ x: 50, y: 100 })
+        .width(100)
+        .height(50)
+      Text('Reset')
+        .position({ x: 200, y: 100 })
+        .width(100)
+        .height(50)
+    }
+    .width('100%')
+    .height('100%')
   }
 
   build() {
     Column() {
-      Text('文本1')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
+      Canvas(this.context)
+        .width(350)
+        .height(300)
+        .onReady(() => {
+          // 绘制“Submit”按钮，绘制内容无法直接被无障碍服务识别。
+          this.context.fillStyle = '#007DFF';
+          this.context.fillRect(50, 100, 100, 50);
+          this.context.fillStyle = '#FFFFFF';
+          this.context.font = '30px sans-serif';
+          this.context.fillText('Submit', 70, 132);
+          // 绘制“Reset”按钮。
+          this.context.fillStyle = '#007DFF';
+          this.context.fillRect(200, 100, 100, 50);
+          this.context.fillStyle = '#FFFFFF';
+          this.context.fillText('Reset', 220, 132);
+        })
+        .accessibilityVirtualNode(this.customAccessibilityNode)
     }
-    .accessibilityVirtualNode(this.customAccessibilityNode)
   }
 }
 ```

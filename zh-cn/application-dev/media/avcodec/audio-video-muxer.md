@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍将编码后的音视频数据按mp4、m4a、flv等格式封装为媒体文件的开发流程，支持音视频轨添加、封面与文件级元数据设置，适用于录像录音、编辑导出与转码保存场景。"
+keywords: [媒体数据封装, 封装器, OH_AVMuxer, mp4, m4a, flv, 音视频轨, 封面, 文件元数据]
+doctype: guide
+status: active
+---
+
 # 媒体数据封装
 
 <!--Kit: AVCodec Kit-->
@@ -42,7 +50,7 @@ target_link_libraries(sample PUBLIC libnative_media_avmuxer.so)
 target_link_libraries(sample PUBLIC libnative_media_core.so)
 ```
 
-示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_*、AVCODEC_SAMPLE_LOG*、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
+示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_\*、AVCODEC_SAMPLE_LOG\*、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
 
 ### mp4格式封装开发步骤
 
@@ -62,9 +70,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 2. 调用OH_AVMuxer_Create()创建封装器实例对象。
 
-   <!-- @[Muxer::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   <!-- @[Muxer::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    int32_t Muxer::Create(int32_t fd, int32_t outputFormat)
    {
        outputFormat_ = outputFormat;
@@ -80,13 +88,13 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    视频画面需要旋转的时候设置，示例中对mp4格式设置旋转角度，flv格式不支持旋转元数据。
 
-   <!-- @[Muxer::SetRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   <!-- @[Muxer::SetRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    int32_t Muxer::SetRotation()
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+   
        // flv不支持旋转元数据。
        if (outputFormat_ == AV_OUTPUT_FORMAT_FLV) {
            return AVCODEC_SAMPLE_ERR_OK;
@@ -159,13 +167,13 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    **方法二：用OH_AVFormat_CreateAudioFormat创建format**
 
-   <!-- @[Muxer::AddAudioTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   <!-- @[Muxer::AddAudioTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    int32_t Muxer::AddAudioTrack(SampleInfo &sampleInfo)
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+   
        // 添加音频轨：用OH_AVFormat_CreateAudioFormat创建format，这里以封装AAC音频为例。
        OH_AVFormat *formatAudio = OH_AVFormat_CreateAudioFormat(sampleInfo.audio.audioCodecMime.data(),
            sampleInfo.audio.audioSampleRate, sampleInfo.audio.audioChannelCount);
@@ -211,20 +219,30 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    **方法二：用OH_AVFormat_CreateVideoFormat创建format**
 
-   <!-- @[Muxer::AddVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   <!-- @[Muxer::AddVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    int32_t Muxer::AddVideoTrack(SampleInfo &sampleInfo)
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+   
        // 添加视频轨：用OH_AVFormat_CreateVideoFormat创建format。
+       int32_t encodedWidth = sampleInfo.video.videoWidth;
+       int32_t encodedHeight = sampleInfo.video.videoHeight;
+       if (sampleInfo.video.preprocMode == VIDEO_PREPROC_DOWNSAMPLING) {
+           encodedWidth = sampleInfo.video.downsamplingWidth;
+           encodedHeight = sampleInfo.video.downsamplingHeight;
+       } else if (sampleInfo.video.preprocMode == VIDEO_PREPROC_CROP) {
+           encodedWidth = sampleInfo.video.cropRight - sampleInfo.video.cropLeft + 1;
+           encodedHeight = sampleInfo.video.cropBottom - sampleInfo.video.cropTop + 1;
+       }
        OH_AVFormat *formatVideo = OH_AVFormat_CreateVideoFormat(sampleInfo.video.videoCodecMime.data(),
-           sampleInfo.video.videoWidth, sampleInfo.video.videoHeight);
+           encodedWidth, encodedHeight);
+       CHECK_AND_RETURN_RET_LOG(formatVideo != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create video format failed");
 
        OH_AVFormat_SetDoubleValue(formatVideo, OH_MD_KEY_FRAME_RATE, sampleInfo.video.frameRate);
-       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, sampleInfo.video.videoWidth);
-       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, sampleInfo.video.videoHeight);
+       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, encodedWidth);
+       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, encodedHeight);
        OH_AVFormat_SetStringValue(formatVideo, OH_MD_KEY_CODEC_MIME, sampleInfo.video.videoCodecMime.data());
        // HDR Vivid视频需要设置色彩信息相关key，选填。
        if (sampleInfo.video.isHDRVivid) {
@@ -234,7 +252,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
            OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS, sampleInfo.video.transfer);
            OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS, sampleInfo.video.matrix);
        }
-
+   
        int32_t ret = OH_AVMuxer_AddTrack(muxer_, &videoTrackId_, formatVideo);
        OH_AVFormat_Destroy(formatVideo);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && videoTrackId_ >= 0, AVCODEC_SAMPLE_ERR_ERROR, "AddTrack failed");
@@ -326,13 +344,13 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 9. 调用OH_AVMuxer_Start()开始封装。
 
-   <!-- @[Muxer::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   <!-- @[Muxer::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   
+   ``` C++
    int32_t Muxer::Start()
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+   
        int ret = OH_AVMuxer_Start(muxer_);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Start failed, ret: %{public}d", ret);
        return AVCODEC_SAMPLE_ERR_OK;
@@ -345,50 +363,68 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
     封装数据包括视频、音频、封面等数据。
 
-    <!-- @[Muxer::WriteSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-    ```cpp
+    <!-- @[Muxer::WriteSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+    
+    ``` C++
     int32_t Muxer::WriteSample(int32_t trackId, OH_AVBuffer *buffer, OH_AVCodecBufferAttr &attr)
     {
+        // 音视频编码输出可能由不同线程到达；整个“更新属性并写入容器”过程需要保持原子性。
         std::lock_guard<std::mutex> lock(writeMutex_);
-
+    
         CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
         CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Get a empty buffer");
-        
+    
         int32_t ret = OH_AVBuffer_SetBufferAttr(buffer, &attr);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "SetBufferAttr failed");
-
+    
         ret = OH_AVMuxer_WriteSampleBuffer(muxer_, trackId, buffer);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Write sample failed");
+        // Muxer不接管编码器输出Buffer；调用方仍需使用原bufferIndex将该Buffer归还给编码器。
         return AVCODEC_SAMPLE_ERR_OK;
     }
     ```
 
     示例中buffer来自编码器输出的AVBuffer，封装前通过OH_AVBuffer_SetBufferAttr()设置当前数据的pts、size、flags等属性，通过GetAudioTrackId()/GetVideoTrackId()选择写的音视频轨，封装封面时必须一次写完一张图片。写入示例如下：
 
-    <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
-
-    ```cpp
+    <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+    
+    ``` C++
     void Recorder::AudioEncOutputThread()
     {
         while (true) {
-            CHECK_AND_BREAK_LOG(!isEos_, "Work done, thread out");
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
 
             std::shared_ptr<CodecBufferInfo> bufferInfo = audioEncContext_->outputBufferQueue.Dequeue();
             std::shared_lock<std::shared_mutex> codecLock(audioEncContext_->codecMutex);
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-            CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr && bufferInfo->isValid,
-                                   "Buffer queue is empty or invalid, continue");
+            CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr, "Buffer queue is empty, continue");
 
             audioEncContext_->outputFrameCount++;
             AVCODEC_SAMPLE_LOGW(
                 "Audio Out buffer count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
                 audioEncContext_->outputFrameCount, bufferInfo->attr.size, bufferInfo->attr.flags, bufferInfo->attr.pts);
-            muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer,
-                                bufferInfo->attr);
+            const bool isEosBuffer = (bufferInfo->attr.flags & AVCODEC_BUFFER_FLAGS_EOS) != 0;
+            int32_t writeRet = AVCODEC_SAMPLE_ERR_OK;
+            if (!isEosBuffer && bufferInfo->attr.size > 0) {
+                // AAC只编码一次；同一输出Buffer依次写入两个Muxer，之后仍按原索引归还。
+                writeRet = muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer, bufferInfo->attr);
+                if (writeRet == AVCODEC_SAMPLE_ERR_OK && secondaryMuxer_ != nullptr) {
+                    writeRet = secondaryMuxer_->WriteSample(secondaryMuxer_->GetAudioTrackId(), bufferInfo->buffer,
+                        bufferInfo->attr);
+                }
+            }
             int32_t ret = audioEncoder_->FreeOutputData(bufferInfo->bufferIndex);
             CHECK_AND_BREAK_LOG(ret == AVCODEC_SAMPLE_ERR_OK, "Encoder output thread out");
+            if (writeRet != AVCODEC_SAMPLE_ERR_OK) {
+                AbortRecording("Write encoded audio sample failed");
+                break;
+            }
+            if (isEosBuffer) {
+                AVCODEC_SAMPLE_LOGI("Audio EOS processed, exiting output thread");
+                isAudioEos_.store(true);
+                videoEosCond_.notify_all();
+                break;
+            }
         }
         AVCODEC_SAMPLE_LOGI("Exit, frame count: %{public}u", audioEncContext_->inputFrameCount);
     }
@@ -396,13 +432,13 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 11. 调用OH_AVMuxer_Stop()，停止封装。
 
-    <!-- @[Muxer::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-    ```cpp
+    <!-- @[Muxer::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+    
+    ``` C++
     int32_t Muxer::Stop()
     {
         CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+    
         int32_t ret = OH_AVMuxer_Stop(muxer_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Muxer stop failed");
         return AVCODEC_SAMPLE_ERR_OK;
@@ -415,12 +451,13 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
     注意不能重复销毁，否则将会导致程序崩溃。
 
-    <!-- @[Muxer::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-    ```cpp
+    <!-- @[Muxer::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+    
+    ``` C++
     int32_t Muxer::Release()
     {
         if (muxer_ != nullptr) {
+            // Destroy只释放封装器资源，不关闭Create()时由业务侧传入的文件描述符。
             OH_AVMuxer_Destroy(muxer_);
             muxer_ = nullptr;
         }

@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "从API版本11开始介绍如何使用AVPlayer的C/C++接口实现流媒体播放，涵盖HLS、DASH、HTTP-FLV等协议的流媒体端到端播放全流程，适用于Native层网络流媒体播放。"
+keywords: [AVPlayer, 流媒体播放, HLS, DASH, HTTP, 缓冲状态, 切换码率]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer播放流媒体(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia--> 
@@ -28,29 +36,29 @@
 
 ## 开发步骤及注意事项
 
-- 在CMake脚本中链接动态库。
+在CMake脚本中链接如下动态库：
 
-  ```C++
-  target_link_libraries(sample PUBLIC libavplayer.so)
-  ```
+<!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
+   
+``` Text
+target_link_libraries(entry PUBLIC 
+    libavplayer.so 
+    libnative_media_core.so 
+    libhilog_ndk.z.so
+)
+```
 
-- 使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，需要在CMake脚本中链接如下动态库。
+使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，需要在CMake脚本中链接libnative_media_core.so动态库。
 
-  ```C++
-  target_link_libraries(sample PUBLIC libnative_media_core.so)
-  ```
+开发者使用系统日志能力时，需引入如下头文件。
 
-- 开发者使用系统日志能力时，需引入如下头文件。
+<!-- @[hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   
+``` C++
+#include <hilog/log.h>
+```
 
-  ```C++
-  #include <hilog/log.h>
-  ```
-
-  并需要在CMake脚本中链接如下动态库。
-
-  ```C++
-  target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
-  ```
+并需要在CMake脚本中链接libhilog_ndk.z.so动态库。
 
 开发者通过引入[avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md)、[avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用流媒体播放相关API。
 
@@ -92,13 +100,13 @@
 
 3. 设置资源：调用[OH_AVPlayer_SetURLSource()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seturlsource)，设置属性URL（支持点播和直播源），AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate).AV_INITIALIZED（初始化）状态。
 
-   <!-- @[OH_AVPlayer_SetURLSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @[OH_AVPlayer_SetURLSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->     
    
    ``` C++
    LOG("player %{public}s >> URL source", url);
    LOG("call %{public}s", "OH_AVPlayer_SetURLSource");
    ret = OH_AVPlayer_SetURLSource(player, url);
-   LOG("OH_AVPlayer_SetURLSource ret:%{public}d", ret);
+   LOG("OH_AVPlayer_SetUrlSource ret:%{public}d", ret);
    ```
 
 4. （可选）设置智能追帧：直播场景下调用[OH_AVPlayer_SetPlaybackStrategy()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplaybackstrategy)，设置AVPlayer启用智能追帧。

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用loadNativeModule接口同步动态加载Native模块，支持加载系统库和应用内Native模块，适用于按需加载so库的场景。"
+keywords: [ArkTS, loadNativeModule, 动态加载, Native模块, 同步加载, so库, 系统库, 按需加载]
+doctype: guide
+status: active
+---
+
 # 同步方式动态加载Native模块
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

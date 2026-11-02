@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVRecorder实现视频录制功能，涵盖与相机模块配合通过Surface传递视频数据、配置录制参数及录制控制等全流程，适用于开发视频录制类应用。"
+keywords: [AVRecorder, 视频录制, 录制状态机, 相机录制]
+doctype: guide
+status: active
+---
+
 # 使用AVRecorder录制视频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
