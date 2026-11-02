@@ -223,22 +223,18 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
   plus(rhs: PointVector): PointVector {
     let result = new PointVector([]);
     const len = Math.min(this.length, rhs.length);
-    this.forEach((point: Point, index: number) => {
-      if (index < len) {
-        result.push(point.plus((rhs as Array<Point>)[index]));
-      }
-    });
+    for (let i = 0; i < len; i++) {
+      result.push((this as Array<Point>)[i].plus((rhs as Array<Point>)[i]));
+    }
     return result;
   }
 
   subtract(rhs: PointVector): PointVector {
     let result = new PointVector([]);
     const len = Math.min(this.length, rhs.length);
-    this.forEach((point: Point, index: number) => {
-      if (index < len) {
-        result.push(point.subtract((rhs as Array<Point>)[index]));
-      }
-    });
+    for (let i = 0; i < len; i++) {
+      result.push((this as Array<Point>)[i].subtract((rhs as Array<Point>)[i]));
+    }
     return result;
   }
 
