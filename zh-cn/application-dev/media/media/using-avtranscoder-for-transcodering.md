@@ -304,7 +304,7 @@ export class AVTranscoderDemo {
    > **说明：**
    >
    > 写入配置参数时需要注意，prepare()接口的入参avConfig中仅设置转码相关的配置参数。<br>
-   > 受限于解析/封装/编解码能力，只能使用AVTranscoder[支持的格式](media-kit-intro.md#支持的格式)。
+   > 支持配置转码的数据格式请参考AVTranscoder[支持的格式](media-kit-intro.md#支持的格式)。
 
    ArkTS-Dyn示例：
 
