@@ -138,7 +138,7 @@ Button('跳转广告页（不参与恢复）')
 - 备份时：ArkUI遍历所有`.recoverable(true)`的Navigation → 逐页记录NavDestination的name/param/mode/组件状态 → 序列化为JSON；
 - 恢复时：ArkUI解析JSON → 重建NavDestination栈 → 栈顶页面被加载显示（生命周期正常触发） → 非栈顶页面仅记录栈位置（延迟实例化，用户返回时才创建）。
 
-> **关键约束**：Navigation页面栈恢复只自动恢复**栈顶前2页**，更深层级需应用自行补推（见[第三层：NavPathStack主动管理](#navpathstack主动管理)）。
+> **关键约束**：Navigation页面栈恢复不保证覆盖全部层级，更深层级建议应用保存路径快照自行补推（见[第三层：NavPathStack主动管理](#navpathstack主动管理)）。
 
 ## 第二层：业务数据恢复
 
@@ -223,7 +223,7 @@ onSaveState(reason: AbilityConstant.StateType,
   } else if (draft !== '') {
     wantParam[KEY_RESTORE_DRAFT] = draft;
   }
-  // 深栈补推：保存当前 Navigation 路径快照（系统只自动恢复栈顶前 2 页）
+  // 深栈补推：保存当前 Navigation 路径快照（自动恢复不保证覆盖到深层级）
   const navSnapshot = AppStorage.get<string>(KEY_NAV_SNAPSHOT);
   if (navSnapshot !== undefined) {
     wantParam[KEY_RESTORE_NAV_PATH] = navSnapshot;
@@ -415,17 +415,17 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
 ### NavPathStack主动管理
 
-Navigation页面栈恢复只自动恢复**栈顶前2页**，更深层级需应用自行补推。
+Navigation页面栈恢复不保证覆盖全部层级，更深层级需应用自行补推。
 
-**路径快照 + 补推**——平时每次导航后把当前栈路径快照发布到AppStorage（onSaveState同步读取，见第二层数据通道）；恢复启动后在首页`onPageShow`按快照从第3层起逐层补推。
+**路径快照 + 补推**——平时每次导航后把当前栈路径快照发布到AppStorage（onSaveState同步读取，见第二层数据通道）；恢复启动后在首页`onPageShow`按快照补齐缺失的更深层级。
 
-补推时机：**首页onPageShow**——此时系统已自动恢复栈顶前2页并完成渲染。禁止在loadContent回调中补推（系统栈恢复尚未执行，会与系统恢复互相冲突）：
+补推时机：**首页onPageShow**——此时系统页面栈恢复已完成、页面已渲染。禁止在loadContent回调中补推（系统栈恢复尚未执行，会与系统恢复互相冲突）：
 
 <!-- @[deep_stack_replay_timing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
 ``` TypeScript
 onPageShow(): void {
-  // 深栈补推时机：首页 onPageShow——此时系统已自动恢复 Navigation 栈顶前 2 页并完成渲染。
+  // 深栈补推时机：首页 onPageShow——此时系统页面栈恢复已完成、页面已渲染。
   // 禁止在 loadContent 回调中补推（系统栈恢复尚未执行，会与系统恢复互相冲突）。
   // 若首页有"自动跳转广告页/闪屏页"等逻辑，恢复启动这一跳必须跳过，否则会把恢复出来的栈顶页挤掉。
   this.replayDeepStack();
@@ -448,7 +448,7 @@ private reportNavSnapshot(): void {
 <!-- @[deep_stack_replay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
 ``` TypeScript
-/** 深栈补推：系统只自动恢复栈顶前 2 页，更深层级按保存的路径快照逐层补推。 */
+/** 深栈补推：与系统已恢复的页面对齐后，按保存的路径快照补齐缺失的更深层级。 */
 private replayDeepStack(): void {
   const navPath = AppStorage.get<string>(KEY_RESTORE_NAV_PATH);
   if (navPath === undefined) {
@@ -457,8 +457,9 @@ private replayDeepStack(): void {
   AppStorage.delete(KEY_RESTORE_NAV_PATH);
   try {
     const names: string[] = JSON.parse(navPath) as string[];
-    for (let i = 2; i < names.length; i++) {
-      // 补推失败则停在已恢复页，不白屏
+    const current: string[] = this.pathStack.getAllPathName();
+    // 从系统已恢复的层数起逐层补齐；补推失败则停在已恢复页，不白屏
+    for (let i = current.length; i < names.length; i++) {
       this.pathStack.pushPathByName(names[i], {} as Record<string, Object>);
     }
   } catch (e) {
@@ -470,13 +471,13 @@ private replayDeepStack(): void {
 **注意事项**：
 
 - 补推的页面param按空对象传入，页面数据靠第二层数据通道恢复（定位键在快照数据里），不要试图把原始param塞进快照；
-- 路径快照只是页面名数组，注意对深栈param有依赖的页面要先做[页面参数瘦身](#页面参数瘦身)。
+- 路径快照只是页面名数组，注意对深栈param有依赖的页面要先做[不可序列化参数处理](#不可序列化参数处理)。
 
 ### 自定义路由完全自管
 
 应用使用HMRouter（@hadss/hmrouter）等基于uri的三方路由框架，或自研路由。三方路由内部不走系统Navigation栈恢复链路，`recoverable`三件套不可控。
 
-**路由凭证保存重放**——uri天然可序列化，不受Navigation"前2页"限制。onSaveState只存轻量路由凭证（uri + 可序列化参数），恢复启动后由应用自行按凭证逐层重放路由：
+**路由凭证保存重放**——uri天然可序列化。onSaveState只存轻量路由凭证（uri + 可序列化参数），恢复启动后由应用自行按凭证逐层重放路由：
 
 1. **页面登记**：维护"页面名 → 路由凭证"的映射，凭证只含uri与可序列化参数；
 2. **保存**：onSaveState把当前路由路径的凭证列表写入wantParam；
@@ -505,7 +506,7 @@ if (routes !== undefined) {
 **注意事项**：
 
 - 重放期间应用若有"自动跳首页/重定向登录"等导航逻辑必须跳过（用一个布尔变量记录恢复流程未结束即可），重放完成后恢复正常，否则重放的路由会被自动跳转顶掉；
-- 本方案demo不随示例工程提供（依赖三方路由包）。HMRouter场景若栈深不超过2页且愿意为其内部Navigation设置id+recoverable，也可选用第一层三件套方案，但HMRouter内部Navigation实例不易注入属性，默认推荐本方案。
+- 本方案demo不随示例工程提供（依赖三方路由包）。HMRouter场景若愿意为其内部Navigation设置id+recoverable，也可选用第一层三件套方案，但HMRouter内部Navigation实例不易注入属性，默认推荐本方案。
 
 ### 不可序列化参数处理
 
@@ -604,10 +605,10 @@ private handleParam(ctx: NavDestinationContext): void {
 ## 约束速查
 
 - **API compatible ≥ 14是硬门槛**：低于14时`setRestoreEnabled()`不可用，无从适配；
-- 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)的parameters字段中，由于序列化大小限制，支持的最大数据量为200KB。应用自定义数据（不含系统保存的页面栈）建议按100KB以内预算设计，超限数据使用[超大数据落盘引用](#超大数据落盘引用)；
+- 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)的parameters字段中，受序列化大小限制，不适合存放大数据（如长文本草稿、大段编辑内容），此类数据使用[超大数据落盘引用](#超大数据落盘引用)；
 - [onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)必须返回`ALL_AGREE`，否则数据不落盘。若应用实现了[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API 20起），系统不再调用同步版onSaveState，两者不要同时使用；
 - Want parameters的值只支持String/Number/Boolean/PlainObject，**函数、Map/Set、Date、类实例不可传输**，需要转换为可序列化结构（详见[不可序列化参数处理](#不可序列化参数处理)）；
-- Navigation页面栈恢复只自动恢复**栈顶前2页**，更深层级需应用自行补推（详见[NavPathStack主动管理](#navpathstack主动管理)）；
+- Navigation页面栈恢复不保证覆盖全部层级，更深层级建议应用保存路径快照自行补推（详见[NavPathStack主动管理](#navpathstack主动管理)）；
 - Navigation参数序列化存在窄约束（嵌套深度、属性个数、字符串长度限制），**违规属性会被静默丢弃且无告警**，恢复后的页面必须做空值兜底（详见[空值兜底](#空值兜底)）；
 - 应用正常关闭不触发备份；设备重启后不支持还原备份；备份数据保存7天；
 - 备份恢复机制依赖任务保留机制，设置`removeMissionAfterTerminate`为true或设备不支持任务保留（如PC/2in1设备）时机制不生效；
