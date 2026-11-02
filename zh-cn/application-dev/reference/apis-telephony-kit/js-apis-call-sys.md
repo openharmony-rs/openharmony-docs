@@ -8,7 +8,7 @@
 
 该模块提供呼叫管理功能，包括拨打电话、跳转到拨号界面、获取通话状态、格式化电话号码等。
 
-如需订阅通话状态请使用[`observer.on('callStateChange')`](js-apis-observer.md#observeroncallstatechange)。
+如需订阅通话状态请使用[observer.on('callStateChange')](js-apis-observer.md#observeroncallstatechange)。
 
 > **说明：**
 >
@@ -5133,10 +5133,10 @@ VoIP通话信息。
 
 | 名称                      | 值   | 说明           |
 | ------------------------- | ---- | -------------- |
-| CALL_STATUS_ACTIVE        | 0    | 电话会议激活。   |
+| CALL_STATUS_ACTIVE        | 0    | 激活呼叫状态。   |
 | CALL_STATUS_HOLDING       | 1    | 保持呼叫状态。   |
 | CALL_STATUS_DIALING       | 2    | 呼叫状态拨号。   |
-| CALL_STATUS_ALERTING      | 3    | 电话报警状态。   |
+| CALL_STATUS_ALERTING      | 3    | 电话振铃状态。   |
 | CALL_STATUS_INCOMING      | 4    | 呼叫传入状态。   |
 | CALL_STATUS_WAITING       | 5    | 呼叫等待状态。   |
 | CALL_STATUS_DISCONNECTED  | 6    | 电话会议已断开。 |
