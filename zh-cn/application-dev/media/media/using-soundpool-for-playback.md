@@ -59,7 +59,6 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    <!-- @[SoundPool_onLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   private soundId: number = 0;
    // 加载完成回调。
    this.soundPool!.on('loadComplete', (soundId_: number) => {
      this.soundId = soundId_;
