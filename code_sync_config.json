@@ -37759,49 +37759,49 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":72,
 						"name":"getRoutingManager",
 						"start_line":16
 					},
 					{
-						"end_line":233,
-						"name":"getDevices",
-						"start_line":17
-					},
-					{
 						"end_line":264,
-						"name":"onDeviceChange",
+						"name":"getDevices",
 						"start_line":18
 					},
 					{
-						"end_line":291,
-						"name":"getPreferOutputDeviceForRendererInfo",
+						"end_line":295,
+						"name":"onDeviceChange",
 						"start_line":19
 					},
 					{
-						"end_line":320,
-						"name":"onPreferOutputDeviceChangeForRendererInfo",
+						"end_line":322,
+						"name":"getPreferOutputDeviceForRendererInfo",
 						"start_line":20
 					},
 					{
-						"end_line":73,
-						"name":"getSessionManager",
+						"end_line":351,
+						"name":"onPreferOutputDeviceChangeForRendererInfo",
 						"start_line":21
 					},
 					{
-						"end_line":364,
+						"end_line":75,
+						"name":"getSessionManager",
+						"start_line":22
+					},
+					{
+						"end_line":395,
 						"name":"setDefaultOutputDevice",
+						"start_line":25
+					},
+					{
+						"end_line":418,
+						"name":"getDefaultOutputDevice",
 						"start_line":24
 					},
 					{
-						"end_line":387,
-						"name":"getDefaultOutputDevice",
-						"start_line":23
-					},
-					{
-						"end_line":442,
+						"end_line":473,
 						"name":"onCurrentOutputDeviceChanged",
-						"start_line":22
+						"start_line":23
 					}
 				]
 			}
