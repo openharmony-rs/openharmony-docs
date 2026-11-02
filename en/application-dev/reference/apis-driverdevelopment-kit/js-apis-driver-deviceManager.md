@@ -557,5 +557,5 @@ Represents information about a remote device driver.
 
 | Name     | Type  | Read-Only| Optional| Description               |
 | --------- | ------ | ---- | ---- | ------------------- |
-| deviceId  | number | No   | No   | Device ID.  |
+| deviceId  | number | No   | No   | ID of the peripheral device.  |
 | remote | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | No   | No   | Remote driver communication object. |
