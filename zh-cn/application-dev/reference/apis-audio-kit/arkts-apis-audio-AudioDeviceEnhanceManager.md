@@ -54,7 +54,7 @@ import { audio } from '@kit.AudioKit';
 | model | string | 是 | 否 | 声卡型号。最大长度为128字节。 |
 | busAddress | string | 是 | 否 | 声卡总线地址。最大长度为256字节。 |
 | driver | string | 是 | 否 | 声卡驱动信息。最大长度为128字节。 |
-| cardId | string | 是 | 是 | 声卡ID。最大长度为128字节。默认使用板载声卡的声卡ID。 |
+| cardId | string | 是 | 是 | 声卡ID。默认使用板载声卡的声卡ID。最大长度为128字节。 |
 | cardType | [SoundCardType](#soundcardtype) | 是 | 是 | 声卡类型。默认为板载声卡类型。 |
 
 
@@ -292,8 +292,8 @@ getSoundCardInfoList(): Promise\<Array\<SoundCardInfo\>\>
 
 > **说明：**
 >
-> - 应用需要获取设备上所有声卡信息，包括板载声卡和USB声卡，用于资产管理与监控等场景。
-> - 此接口仅支持PC设备。非PC设备调用该接口，返回错误码801。
+> - 应用需要获取设备上所有的声卡信息，包括板载声卡和USB声卡，用于资产管理与监控等场景。
+> - 此接口仅支持PC设备。非PC设备调用该接口，将返回错误码801。
 
 **起始版本：** 26.1.0
 
