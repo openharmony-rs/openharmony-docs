@@ -74,11 +74,11 @@ status: active
    let headers : Record<string,string> = {"User-Agent" : "User-Agent-Value", "Cookie" : "Cookie-Value"};
    // 通过本地m3u8的URL和HTTP请求头构造mediaSource媒体来源。
    let mediaSource : media.MediaSource = media.createMediaSourceWithUrl(fdUrl, headers);
-
+   
    // 设置媒体MIME类型为APPLICATION_M3U8。
    let mimeType : media.AVMimeTypes = media.AVMimeTypes.APPLICATION_M3U8;
    mediaSource.setMimeType(mimeType);
-
+   
    // 设置播放策略，设置缓冲区数据量为20s。
    let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
    // 为avPlayer设置媒体来源和播放策略。
@@ -98,16 +98,16 @@ status: active
    let fd : string = file.fd.toString();
    // 用文件句柄构造本地m3u8的URL。
    let fdUrl : string = "fd://" + fd + "?offset=" + "0" + "&size=" + "0";
-
+   
    // 按需设置HTTP请求头。
    let headers : Record<string,string> = {"User-Agent" : "User-Agent-Value", "Cookie" : "Cookie-Value"};
    // 通过本地m3u8的URL和HTTP请求头构造mediaSource媒体来源。
    let mediaSource : media.MediaSource = media.createMediaSourceWithUrl(fdUrl, headers);
-
+   
    // 设置媒体MIME类型为APPLICATION_M3U8。
    let mimeType : media.AVMimeTypes = media.AVMimeTypes.APPLICATION_M3U8;
    mediaSource.setMimeType(mimeType);
-
+   
    // 设置播放策略，设置缓冲区数据量为20s。
    let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
    // 为avPlayer设置媒体来源和播放策略。
