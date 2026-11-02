@@ -38,20 +38,14 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    <!-- @[SoundPool_Creat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { media } from '@kit.MediaKit';
-   import { audio } from '@kit.AudioKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   private soundPool: media.SoundPool | undefined = undefined;
    // audioRenderInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE。
    // STREAM_USAGE_AUDIOBOOK时，SoundPool播放短音时为混音模式，不会打断其他音频播放。
    let audioRendererInfo: audio.AudioRendererInfo = {
      usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
      rendererFlags: 1 // 音频渲染器标志。
-   };
-
-   // 创建soundPool实例。
-   this.soundPool = await media.createSoundPool(14, audioRendererInfo); // 最大播放的流数为14。
+   }
+   //创建soundPool实例。
+   this.soundPool = await media.createSoundPool(14,audioRendererInfo);
    ```
 
 2. 调用[on('loadComplete')](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#onloadcomplete)方法，用于监听“资源加载完成”。
