@@ -561,10 +561,10 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 
 在此模式下，系统会创建一个虚拟扩展屏幕，应用可对其内容进行录制。关于虚拟屏和扩展屏的概念说明请参见[屏幕管理开发术语](../../displaymanager/display-terminology.md)。
 
-<!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
-// 在config中配置录虚拟扩展屏幕的宽度、高度。
+// 在config中配置待录制的虚拟扩展屏幕的宽度、高度。
 int32_t width = 1920;
 int32_t height = 1080;
 config.videoInfo.videoCapInfo.videoFrameWidth = width;
