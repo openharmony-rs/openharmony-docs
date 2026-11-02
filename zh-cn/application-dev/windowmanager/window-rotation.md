@@ -66,7 +66,7 @@
 
 ## 旋转策略及设备差异性
 
-应用可通过[module.json5配置文件](../quick-start/module-configuration-file.md)中的`orientation`字段，或在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口，设置显示方向。相同枚举值的含义一致，但各自支持的取值范围有所不同（例如`follow_recent`仅支持配置文件方式，`USER_ROTATION_PORTRAIT`仅支持接口方式）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
+应用可通过[module.json5配置文件](../quick-start/module-configuration-file.md)中的`orientation`字段，或在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口，设置显示方向。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
 
 系统提供了18种的方向类型枚举，以应对不同场景的需要。根据使用场景的不同，这些方向类型可分为：固定方向类型、自动旋转方向类型、临时方向类型和其他方向类型。
 
