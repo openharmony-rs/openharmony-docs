@@ -94,7 +94,7 @@ status: active
     this.avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
       console.info(`${this.tag}: setAVPlayerCallback AVPlayer audioInterrupt, info is ${info}`);
     });
-    // error回调监听函数,当avPlayer在操作过程中出现错误时调用reset接口触发重置流程。
+    // error回调监听函数，当avPlayer在操作过程中出现错误时调用reset接口触发重置流程。
     this.avPlayer.on('error', (err) => {
       console.error(`${this.tag}: setAVPlayerCallback Invoke avPlayer failed ${JSON.stringify(err)}`);
       if (this.avPlayer == null) {
