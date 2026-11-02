@@ -50,11 +50,11 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
   | 窗口类别 | 说明 |
   | -------- | -------- |
   | 画中画窗口 | 通过[PiPWindow.create()](../reference/apis-arkui/js-apis-pipWindow.md#pipwindowcreate)接口创建，用于以小窗形式显示视频内容，如视频通话或视频播放过程中上划退出应用，画面仍以小窗形式继续显示。 |
-  | 全局悬浮窗 | 使用[WindowType.TYPE_FLOAT](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)创建的窗口，需申请[ohos.permission.SYSTEM_FLOAT_WINDOW](../security/AccessToken/restricted-permissions.md#ohospermissionsystem_float_window)权限，位于所有应用窗口之上，仅支持在PC/2in1设备使用；另有相机类型悬浮窗、全局搜索窗口等系统接口窗口，仅系统应用可创建。 |
+  | 全局悬浮窗 | 使用[createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)创建的[WindowType.TYPE_FLOAT](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)类型的窗口，需申请[ohos.permission.SYSTEM_FLOAT_WINDOW](../security/AccessToken/restricted-permissions.md#ohospermissionsystem_float_window)权限，位于所有应用窗口之上。 |
   | 置顶主窗口 | 调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)置顶的主窗口，位于其他应用的普通主窗口之上，但仍低于上方的画中画窗口和全局悬浮窗。 |
   | 应用主窗口 | 默认创建的应用主窗口，多个主窗口之间按激活顺序叠放。 |
 
-  各层级的具体数值在不同设备形态（PC/2in1、phone等）上存在差异，上表仅描述相对层级关系。
+  各层级的具体数值在不同设备（如PC/2in1、Phone等设备）上存在差异，上表仅描述相对层级关系。
 
 - **相同类型窗口的层级调整**
 
@@ -64,14 +64,14 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
   系统为不同类型的子窗口分配了默认层级。优先级由高到低如下所示：
 
-  | 窗口类型     | 创建方式 |
-  |----------| -------- |
-  | 模态应用子窗   | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为APPLICATION_MODALITY。 |
-  | Toast子窗  | 调用[showToast()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)接口，并设置showMode为TOP_MOST。 |
-  | 文本菜单子窗   | 调用[showActionMenu()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)接口，并设置showInSubWindow为true。 |
+  | 窗口类型    | 创建方式 |
+  |---------| -------- |
+  | 模应用子窗   | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为APPLICATION_MODALITY。 |
+  | Toast子窗 | 调用[showToast()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)接口，并设置showMode为TOP_MOST。 |
+  | 文本菜单子窗  | 调用[showActionMenu()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)接口，并设置showInSubWindow为true。 |
   | Dialog子窗 | 调用[openCustomDialog()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)传入dialogContent、options参数，并设置showInSubWindow为true。<br>调用[openCustomDialog()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)传入options参数，并设置showInSubWindow为true。<br>调用[openCustomDialogWithController()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)，并设置showInSubWindow为true。 |
-  | 模态子窗     | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为WINDOW_MODALITY。 |
-  | 普通子窗     | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口创建的默认子窗。 |
+  | 模态子窗    | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为WINDOW_MODALITY。 |
+  | 普通子窗    | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口创建的默认子窗。 |
 
   不同类型窗口之间不能通过点击或API调整跨越层级范围。
 
@@ -137,7 +137,7 @@ import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 弹出确认删除操作的模态子窗
+// 弹出确认删除操作的模态窗口
 async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void> {
   let mainWindow = context.windowStage.getMainWindowSync();
   let options: window.SubWindowOptions = {
@@ -147,7 +147,9 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
     modalityType: window.ModalityType.WINDOW_MODALITY
   };
   try {
+    // 步骤1：创建模态窗口
     let subWindow = await mainWindow.createSubWindowWithOptions('deleteConfirm', options);
+    // 步骤2：加载确认弹窗页面并显示
     subWindow.loadContent('pages/DeleteConfirm', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -157,6 +159,49 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
     });
   } catch (exception) {
     console.error(`Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+}
+```
+
+步骤3中模态窗口的销毁逻辑位于确认弹窗页面（DeleteConfirm.ets）中，用户点击“Cancel”或“Delete”按钮后销毁模态窗口，示例代码如下：
+
+<!-- @[modal_sub_window_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/DeleteConfirm.ets) -->
+
+```ts
+@Entry
+@Component
+struct DeleteConfirm {
+  build() {
+    Column({ space: 24 }) {
+      Text('Are you sure you want to delete this item?')
+        .fontSize(20)
+        .fontWeight(FontWeight.Medium)
+
+      Row({ space: 16 }) {
+        Button('Cancel')
+          .onClick(() => {
+            this.destroySubWindow();
+          })
+        Button('Delete')
+          .onClick(() => {
+            // 执行删除逻辑
+            this.destroySubWindow();
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  // 步骤3：用户确认或取消后，销毁模态窗口，被遮蔽窗口恢复交互
+  private destroySubWindow(): void {
+    let subWindow = window.findWindow('deleteConfirm');
+    subWindow.destroyWindow().then(() => {
+      console.info('Succeeded in destroying the subwindow.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to destroy the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -203,10 +248,12 @@ struct Index {
       Button(this.isTopmost ? 'Cancel Topmost' : 'Set Topmost')
         .onClick(() => {
           let mainWindow = this.context.windowStage.getMainWindowSync();
+          // 步骤2：确认当前是否处于自由窗口状态（置顶仅在该状态下生效）
           if (!mainWindow.isInFreeWindowMode()) {
             console.info('The window is not in free window mode, topmost is not supported.');
             return;
           }
+          // 步骤3：调用setWindowTopmost()传入true实现主窗口置顶；窗口已置顶时传入false取消置顶
           this.isTopmost = !this.isTopmost;
           mainWindow.setWindowTopmost(this.isTopmost).then(() => {
             console.info('Succeeded in setting window topmost.');
