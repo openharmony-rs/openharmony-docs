@@ -55,7 +55,7 @@
 | [native_node.h](capi-native-node-h.md) | 提供NativeNode接口的类型定义。 |
 | [native_node_napi.h](capi-native-node-napi-h.md) | 提供将ArkTS侧的FrameNode转换为ArkUI_NodeHandle的方式。 |
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |
-| [ui_event_injection.h](capi-ui-event-injection-h.md) | 提供向UI实例注入交互命令的接口。 |
+| [ui_event_injection.h](capi-ui-event-injection-h.md) | 声明供应用内智能体和UI自动化使用的接口，用于向指定UI节点注入控制命令。 |
 | [native_type_visual.h](capi-native-type-visual-h.md) | 提供NativeModule视觉相关的类型定义。 |
 | [text.h](capi-text-h.md) | 定义Text相关的枚举和接口，用于配置文本样式、控制跑马灯效果、实现文本实体识别以及管理文本控制器等功能。适用于需要自定义文本显示效果、实现动态文本交互、识别文本中特殊实体（如地址、电话号码）以及精确控制文本字体粗细等场景。通过这些配置接口，开发者可以灵活控制文本组件的显示效果和交互行为，提升用户体验。 |
 | [text_common.h](capi-text-common-h.md) | 定义文本类组件通用的枚举和接口，涵盖文本对齐、装饰线样式、复制粘贴、溢出处理、断行策略、菜单定制等多种能力，适用于文本输入框、文本显示等场景，帮助开发者灵活控制文本样式与交互行为，降低开发复杂度。 |
