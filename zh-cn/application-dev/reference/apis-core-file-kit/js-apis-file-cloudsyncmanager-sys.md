@@ -509,8 +509,6 @@ cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
 
 清理本地云相关数据时的枚举。
 
-**需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
-
 **系统能力**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 | 名称 |  值|  说明 |
