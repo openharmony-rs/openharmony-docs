@@ -241,7 +241,7 @@ libnative_buffer.so
     
     传入image获取生产者端NativeWindow，image为使用[OH_NativeImage_Create()](../reference/apis-arkgraphics2d/capi-native-image-h.md#oh_nativeimage_create)创建的OH_NativeImage实例。
     <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
-
+    
     ``` C++
     nativeWindow_ = OH_NativeImage_AcquireNativeWindow(image);
     ```
