@@ -120,19 +120,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 
 **描述：**
 
-异步向UI注入宽松的交互命令，由系统根据执行模式处理，无需指定目标组件。
-
-命令顶层结构为`{"schemaVersion":1,"cmd":{"type":"<命令类型>","mode":"<执行模式>","action_info":{...}}}`。各类命令的参数如下，action_info中的字段除标记必填外均为可选：
-
-- click：mode默认为"auto"；action_info.coordinates中的x1、y1必填。
-- content_switch：mode必须为"target"；action_info.count为正整数，默认为1；action_info.direction为"forward"或"backward"，默认为"forward"；action_info.coordinates.pos中的x、y必填。
-- scroll：mode默认为"auto"；action_info.direction为"forward"、"backward"、"left"、"right"、"up"或"down"，默认为"forward"；action_info.distance为非负值，默认为窗口高度的三分之一；action_info.coordinates中的x1、y1必填，x2、y2可选。
-- backpress：无参数。
-- key：action_info.code为有效的虚拟键码，必填。
-
-坐标相对于窗口，坐标和距离的单位均为物理像素（px）。缺少必填字段或参数值超出有效范围时，返回ARKUI_ERROR_CODE_PARAM_INVALID。
-
-本接口线程安全，可从任意线程调用，不等待命令执行完成，不能在信号处理函数中调用。
+异步向UI注入宽松的交互命令。
 
 **起始版本：** 26.1.0
 
