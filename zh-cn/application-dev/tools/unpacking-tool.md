@@ -288,6 +288,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | originalSize         | long                        | 标识HAP包的原始大小，单位字节。         | NA             |
 | isModuleAbcCompressed  | boolean                   | 标识[modules.abc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)文件是否为压缩状态。true表示压缩状态，false表示非压缩状态。         | NA             |
 | skillProfiles    | List\<[SkillProfileInfo](#skillprofileinfo)\>  | 标识当前模块的技能配置信息列表，用于定义AI代理的技能能力。   | 从API版本26.0.0开始支持。  |
+| anyOfDeviceFeatures  | Map\<String, List\<String>> | 标识当前模块运行所需要的特定的设备特性，满足设备任一特性即可。 | 从API版本26.1.0开始支持。 |
 <!--RP1--><!--RP1End-->
 
 ### AbilityInfo结构体信息
