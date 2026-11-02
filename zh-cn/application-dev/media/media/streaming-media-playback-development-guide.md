@@ -96,7 +96,7 @@ status: active
    <!-- @[availableBitrates](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
+   this.avPlayer?.on('availableBitrates', (bitrates: Array<number>) => {
      console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
      this.bitrate = bitrates[0]; // 保存需要切换的码率。
    })
@@ -150,7 +150,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
    <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+   this.avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
      if (arrList != null) {
        for (let i = 0; i < arrList.length; i++) {
          let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
