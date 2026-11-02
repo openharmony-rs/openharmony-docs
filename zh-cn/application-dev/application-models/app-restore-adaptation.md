@@ -119,7 +119,7 @@ Button('跳转广告页（不参与恢复）')
   .onClick(() => {
     router.pushUrl({
       url: 'restore/AdvertPage',
-      // recoverable 默认 true；广告页/登录页等无需恢复的页面显式排除
+      // 广告页等无需恢复的页面显式排除
       recoverable: false
     });
   })
@@ -193,15 +193,14 @@ struct MyPage {
 <!-- @[reader_state_report](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/ReaderPage.ets) -->
 
 ``` TypeScript
-/** 数据通道：关键状态变化时把可序列化状态发布到 AppStorage，onSaveState 同步读取。
- *  只放定位键与轻量数据，不放函数/类实例/Map。 */
+/** 数据通道：状态变化时发布到 AppStorage，onSaveState 同步读取；只放可序列化的轻量数据。 */
 private reportState(): void {
   AppStorage.setOrCreate('reader.state', {
     'bookId': this.bookId,
     'chapterIndex': this.chapterIndex,
     'progress': this.progress
   } as Record<string, Object>);
-  // 草稿单独一路发布，onSaveState 按长度决定随数据保存还是落盘引用
+  // 草稿单独发布，onSaveState 按长度决定随数据保存还是落盘引用
   AppStorage.setOrCreate('reader.draft', this.draft);
 }
 ```
@@ -218,14 +217,14 @@ onSaveState(reason: AbilityConstant.StateType,
   if (st !== undefined) {
     wantParam[KEY_RESTORE_READER] = st;
   }
-  // 草稿单独保存：短草稿直接放；超过 2048 字节走落盘，want.parameters 只放文件名
+  // 超过 2048 字节的草稿走落盘引用，want.parameters 只放文件名
   const draft = AppStorage.get<string>(KEY_READER_DRAFT) ?? '';
   if (draft.length > 2048) {
     wantParam[KEY_RESTORE_DRAFT_FILE] = saveBlob(this.context, 'reader', draft);
   } else if (draft !== '') {
     wantParam[KEY_RESTORE_DRAFT] = draft;
   }
-  // 深栈补推：保存当前 Navigation 路径快照（自动恢复不保证覆盖到深层级）
+  // 深栈补推用的 Navigation 路径快照
   const navSnapshot = AppStorage.get<string>(KEY_NAV_SNAPSHOT);
   if (navSnapshot !== undefined) {
     wantParam[KEY_RESTORE_NAV_PATH] = navSnapshot;
@@ -241,20 +240,20 @@ onSaveState(reason: AbilityConstant.StateType,
 
 ``` TypeScript
 onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-  // 1. 开启备份恢复总开关：不开启则系统不会保存/恢复任何数据
+  // 开启备份恢复总开关：不开启则系统不会保存/恢复任何数据
   this.context.setRestoreEnabled(true);
 
-  // 2. 判断本次启动是否恢复启动（restoreKeys 传入本应用的全部恢复键）
+  // 判断是否恢复启动（restoreKeys 传入本应用的全部恢复键）
   const restoreKeys: string[] = [KEY_RESTORE_READER, KEY_RESTORE_DRAFT,
     KEY_RESTORE_DRAFT_FILE, KEY_RESTORE_NAV_PATH];
   if (isRestoreLaunch(want, launchParam, restoreKeys)) {
-    // 3. 系统把上次保存的数据放在 want.parameters 中带回（仅此一次，取出后即清除）。
-    //    页面此时还未创建，先经 AppStorage 中转，页面挂载后取用。
+    // 系统在恢复启动时把上次保存的数据放入 want.parameters 带回（仅此一次）；
+    // 页面尚未创建，先经 AppStorage 中转，页面挂载后取用
     const reader = want?.parameters?.[KEY_RESTORE_READER] as Record<string, Object> | undefined;
     if (reader !== undefined) {
       AppStorage.setOrCreate(KEY_RESTORE_READER, reader);
     }
-    // 草稿两路：短草稿随数据带回；超长草稿按文件名从沙箱读回（读不到降级为空）
+    // 短草稿随数据带回；超长草稿按文件名从沙箱读回（读不到降级为空）
     const draftInline = want?.parameters?.[KEY_RESTORE_DRAFT] as string | undefined;
     if (draftInline !== undefined) {
       AppStorage.setOrCreate(KEY_RESTORE_DRAFT, draftInline);
@@ -269,7 +268,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       AppStorage.setOrCreate(KEY_RESTORE_NAV_PATH, navPath);
     }
   } else {
-    // 非恢复启动（正常冷启）：清理历史落盘文件
+    // 正常冷启：清理历史落盘文件
     cleanupBlob(this.context);
   }
 }
@@ -281,7 +280,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
 ``` TypeScript
 aboutToAppear(): void {
-  // 恢复消费：优先使用 Ability 层中转的恢复数据，取出即删，防止重复消费
+  // 恢复消费：使用 Ability 层中转的恢复数据，取出即删，防止重复消费
   const restored = AppStorage.get<Record<string, Object>>('restore.reader');
   if (restored !== undefined) {
     AppStorage.delete('restore.reader');
@@ -289,7 +288,7 @@ aboutToAppear(): void {
     this.bookId = (restored['bookId'] as string) ?? '';
     this.chapterIndex = (restored['chapterIndex'] as number) ?? 1;
     this.progress = (restored['progress'] as number) ?? 0;
-    // 超限草稿单独走落盘通道，恢复成功时优先于随数据带回的短草稿
+    // 落盘草稿优先于随数据带回的短草稿
     const draftFromBlob = AppStorage.get<string>('restore.reader.draft');
     if (draftFromBlob !== undefined) {
       AppStorage.delete('restore.reader.draft');
@@ -317,10 +316,7 @@ aboutToAppear(): void {
 <!-- @[blob_save](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/common/RestoreUtil.ets) -->
 
 ``` TypeScript
-/**
- * 超大数据（如长草稿）塞不进 want.parameters 时的落盘方法：
- * 数据本体写入应用沙箱文件，返回文件名。want.parameters 中只保存这个文件名。
- */
+/** 超大数据落盘：数据本体写入沙箱文件，返回文件名，want.parameters 只保存文件名。 */
 export function saveBlob(context: common.Context, key: string, data: string): string {
   const fileName = BLOB_FILE_PREFIX + key + '.txt';
   const file = context.filesDir + '/' + fileName;
@@ -337,10 +333,7 @@ export function saveBlob(context: common.Context, key: string, data: string): st
 <!-- @[blob_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/common/RestoreUtil.ets) -->
 
 ``` TypeScript
-/**
- * 按文件名读回超大数据。文件不存在或读取失败（如设备重启后备份不还原）返回 null，
- * 调用方按空数据降级处理，不能白屏。
- */
+/** 按文件名读回落盘数据；读不到（如设备重启后不还原）返回 null，调用方按空数据降级。 */
 export function loadBlob(context: common.Context, fileName: string): string | null {
   try {
     const file = context.filesDir + '/' + fileName;
@@ -381,13 +374,10 @@ onSaveState按数据长度分流（短草稿直接放，超长走落盘，见上
 
 ``` TypeScript
 /**
- * 判断本次启动是否为恢复启动（应用被系统回收后，用户点击桌面图标重新拉起）。
- * 满足以下任一信号即为恢复启动：
- * 1. 系统键 ohos.ability.params.abilityRecoveryRestart 为 true（全版本可靠）；
- * 2. want.parameters 中存在本应用保存的恢复键（恢复键只在恢复启动时由系统合并回来）；
- * 3. launchReason 为 APP_RECOVERY 且设备 API 版本不低于 26（低版本设备重启后的启动
- *    也可能被误标为该值，不能单独采信）。
- * restoreKeys：本应用在 onSaveState 中写入 want.parameters 的全部键名。
+ * 三信号合判是否恢复启动：系统键为 true（全版本可靠）/ want.parameters 中存在
+ * 恢复键（仅恢复启动时由系统带回）/ launchReason 为 APP_RECOVERY（仅 API 26+
+ * 可信，低版本可能误标，不能单独采信）。
+ * restoreKeys：onSaveState 写入 want.parameters 的全部键名。
  */
 export function isRestoreLaunch(want: Want, launchParam: AbilityConstant.LaunchParam,
   restoreKeys: string[]): boolean {
@@ -427,9 +417,9 @@ Navigation页面栈恢复不保证覆盖全部层级，更深层级需应用自�
 
 ``` TypeScript
 onPageShow(): void {
-  // 深栈补推时机：首页 onPageShow——此时系统页面栈恢复已完成、页面已渲染。
-  // 禁止在 loadContent 回调中补推（系统栈恢复尚未执行，会与系统恢复互相冲突）。
-  // 若首页有"自动跳转广告页/闪屏页"等逻辑，恢复启动这一跳必须跳过，否则会把恢复出来的栈顶页挤掉。
+  // 深栈补推时机：此时系统栈恢复已完成、页面已渲染；禁止提前到 loadContent 回调
+  // （系统恢复尚未执行，会互相冲突）。恢复启动时首页的自动跳转（如广告页）必须跳过，
+  // 否则会把恢复出来的栈顶页挤掉。
   this.replayDeepStack();
 }
 ```
@@ -439,7 +429,7 @@ onPageShow(): void {
 <!-- @[nav_snapshot_report](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
 ``` TypeScript
-/** 深栈补推数据通道：每次导航后把当前栈路径快照发布到 AppStorage，onSaveState 同步读取。 */
+/** 每次导航后把路径快照发布到 AppStorage，onSaveState 同步读取。 */
 private reportNavSnapshot(): void {
   AppStorage.setOrCreate(KEY_NAV_SNAPSHOT, JSON.stringify(this.pathStack.getAllPathName()));
 }
@@ -450,7 +440,7 @@ private reportNavSnapshot(): void {
 <!-- @[deep_stack_replay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
 ``` TypeScript
-/** 深栈补推：与系统已恢复的页面对齐后，按保存的路径快照补齐缺失的更深层级。 */
+/** 按保存的路径快照补齐系统未恢复的深层级。 */
 private replayDeepStack(): void {
   const navPath = AppStorage.get<string>(KEY_RESTORE_NAV_PATH);
   if (navPath === undefined) {
@@ -571,10 +561,10 @@ class CallbackWrapper implements Serializable<CallbackWrapper> {
 <!-- @[empty_param_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/ReaderPage.ets) -->
 
 ``` TypeScript
-/** 空值兜底：系统恢复的页面 param 经序列化窄约束后可能为空/残缺，必须处理，否则白屏。 */
+/** 空值兜底：恢复的 param 可能为空/残缺，不处理会白屏。 */
 private handleParam(ctx: NavDestinationContext): void {
   const param = ctx.pathInfo?.param as Record<string, Object> | undefined;
-  // 路径 1：param 有效 → 用定位键重新加载数据，不依赖原始 param 中的类实例/回调
+  // param 有效：用定位键重新加载数据
   if (param !== undefined && param['bookId'] !== undefined) {
     this.bookId = param['bookId'] as string;
     if (!this.restoredFromChannel) {
@@ -582,7 +572,7 @@ private handleParam(ctx: NavDestinationContext): void {
     }
     return;
   }
-  // 路径 2：系统恢复但 param 为空 → 尝试从 AppStorage 恢复通道取
+  // param 为空：从 AppStorage 恢复通道取
   const restored = AppStorage.get<Record<string, Object>>('restore.reader');
   if (restored !== undefined) {
     AppStorage.delete('restore.reader');
@@ -595,7 +585,7 @@ private handleParam(ctx: NavDestinationContext): void {
     this.reportState();
     return;
   }
-  // 路径 3：兜底 → 退回上一页，避免白屏
+  // 兜底：退回上一页
   ctx.pathStack?.pop();
 }
 ```
