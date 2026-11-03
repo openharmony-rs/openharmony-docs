@@ -241,7 +241,7 @@ lockFocusTracking(focusPoint: Point): void
 
 锁定焦点跟踪，使对焦持续追踪指定的物体。通过focusPoint参数指定追踪目标。
 
-设置锁定焦点追踪前，先通过[isLockFocusTrackingSupported](arkts-apis-camera-FocusQuery.md#islockfocustrackingsupported)接口查询是否支持锁定焦点跟踪。
+设置锁定焦点跟踪前，先通过[isLockFocusTrackingSupported](arkts-apis-camera-FocusQuery.md#islockfocustrackingsupported)接口查询是否支持锁定焦点跟踪。
 
 **起始版本：** 26.0.0
 
