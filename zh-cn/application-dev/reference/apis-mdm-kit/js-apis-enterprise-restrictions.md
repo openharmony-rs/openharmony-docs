@@ -1347,7 +1347,7 @@ try {
 | USB_STORAGE_DEVICE_WRITE | 6    | USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<!--RP5--><!--RP5End--><br/>以下四种情况再禁用某用户USB存储设备写入能力，会报策略冲突。<br/>1）已禁用设备USB能力（[FeatureForDevice.USB](#featurefordevice24)）。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了存储类型的USB设备禁用。<br/>4）通过[setExternalStorageInterceptEnable](js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable)接口启用了外置存储设备挂载拦截。 |
 | DISK_RECOVERY_KEY | 7    | 恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。 |
 | SUDO | 8    | superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。如果已经通过[setDisallowedPolicy](#restrictionssetdisallowedpolicy24)接口禁用设备级sudo能力，再调用本接口禁用用户级sudo能力，会发生策略冲突，抛出9200010错误码。 |
-| DISTRIBUTED_TRANSMISSION_OUTGOING | 9    | 设备间分布式单向传输数据的能力（仅包含向其他设备传输数据）。当已禁用分布式管理服务（[DISTRIBUTED_TRANSMISSION](#featureforaccount)），再禁用设备间分布式单向传输数据的能力，会报策略冲突。 |
+| DISTRIBUTED_TRANSMISSION_OUTGOING | 9    | 设备间分布式单向传输数据的能力（仅包含向其他设备传输数据），<!--RP8--><!--RP8End-->当已禁用分布式管理服务（[DISTRIBUTED_TRANSMISSION](#featureforaccount)），再禁用设备间分布式单向传输数据的能力，会报策略冲突。 |
 | OPEN_FILE_BOOST | 10    | <!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
 
 ## SettingsForDevice
