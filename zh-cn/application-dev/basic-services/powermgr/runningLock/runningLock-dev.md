@@ -76,7 +76,7 @@
    
    ``` TypeScript
    // 导入runningLock、commonEventManager、BusinessError模块
-   import { runningLock } from '@kit.BasicServicesKit';
+   import { runningLock, commonEventManager } from '@kit.BasicServicesKit';
    import { commonEventManager } from '@kit.BasicServicesKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
