@@ -7877,9 +7877,9 @@ ArkTS-Sta: flingSpeedLimit(speedLimit: double | undefined)
 >
 > - 通过本接口设置的值优先于通过前端viewport max-fling-speed-x/y接口设置的值。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
