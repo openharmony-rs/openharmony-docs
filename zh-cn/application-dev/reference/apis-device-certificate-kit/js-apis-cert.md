@@ -1151,8 +1151,9 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
     }).catch((error: BusinessError) => {
       console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
     });
-  } catch (error) {
-    console.error(`getPublicKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getPublicKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }).catch((error: BusinessError) => {
   console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -11100,6 +11101,7 @@ parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function doTestParsePkcs12() {
   try {
@@ -11268,7 +11270,8 @@ function doTestParsePkcs12() {
       console.info('privateKey:' + p12.privateKey.toString());
     }
   } catch (error) {
-    console.error(`parsePKCS12 failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`parsePKCS12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11312,6 +11315,7 @@ parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTestParsePkcs12() {
   try {
@@ -11484,7 +11488,8 @@ async function doTestParsePkcs12() {
       console.info('otherCerts is empty or not an array.');
     }
   } catch (err) {
-    console.error(`parsePKCS12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`parsePKCS12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11527,6 +11532,7 @@ createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Arra
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
@@ -11622,7 +11628,8 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -11662,7 +11669,8 @@ async function doTestCreatePkcs12() {
     let p12 = await cert.createPkcs12(data, config);
     console.info('createPkcs12 result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createPkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11705,6 +11713,7 @@ createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
@@ -11800,7 +11809,8 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -11840,7 +11850,8 @@ async function doTestCreatePkcs12Sync() {
     let p12 = cert.createPkcs12Sync(data, config);
     console.info('createPkcs12Sync result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12Sync failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createPkcs12Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11998,8 +12009,9 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${err.code}, errMsg: ${err.message}`);
   });
-} catch (error) {
-  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${error.code}, errMsg: ${error.message}`);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 
 ```
@@ -13532,6 +13544,7 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetRecipientEncryptionAlgorithm() {
   try {
@@ -13542,7 +13555,8 @@ function testSetRecipientEncryptionAlgorithm() {
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
     console.info(`setRecipientEncryptionAlgorithm result: success.`);
   } catch (err) {
-    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -13586,6 +13600,7 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -13660,7 +13675,8 @@ async function testAddRecipientInfo() {
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
   } catch (err) {
-    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testAddRecipientInfo failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -13960,6 +13976,7 @@ getEncryptedContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -14048,7 +14065,8 @@ async function testGetEncryptedContentData() {
     let data = await cmsGenerator.getEncryptedContentData();
     console.info(`getEncryptedContentData result: success, data = %s`, data);
   } catch (err) {
-    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncryptedContentData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14082,6 +14100,7 @@ createCmsParser(): CmsParser
 **示例：**
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14184,8 +14203,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14241,6 +14261,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14345,8 +14366,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14381,6 +14403,7 @@ getContentType(): CmsContentType
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14487,8 +14510,9 @@ async function testCmsVerifyTest() {
     console.info('contentType = ' + contentType);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14533,6 +14557,7 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14636,8 +14661,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14672,6 +14698,7 @@ getContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14777,8 +14804,9 @@ async function testCmsVerifyTest() {
     console.info('verifySignedData result: success.');
     let contentData = await verify.getContentData();
     console.info('getContentData result: success, contentData = ' + contentData);
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14820,6 +14848,7 @@ getCerts(type: CmsCertType): Promise<Array\<X509Cert>>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14927,8 +14956,9 @@ async function testCmsVerifyTest() {
     let signerCerts: cert.X509Cert[] = await verify.getCerts(cert.CmsCertType.SIGNER_CERTS);
     console.info('getCerts result: success, signerCerts.length = ' + signerCerts.length);
     await verify.getContentData();
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14970,6 +15000,7 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUBKEY: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -15044,8 +15075,9 @@ async function testCmsDecryptTest() {
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
     console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
-  } catch (error) {
-    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`decryptEnvelopedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
