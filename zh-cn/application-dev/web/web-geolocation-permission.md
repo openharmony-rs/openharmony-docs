@@ -33,33 +33,6 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
 
 - 前端页面代码。
 
-``` HTML
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>位置信息</title>
-</head>
-<body>
-    <p id="locationInfo">位置信息</p>
-    <button onclick="getLocation()">获取位置</button>
-
-    <script>
-        let locationInfo = document.getElementById('locationInfo');
-        function getLocation() {
-            if (navigator.geolocation) {
-                // 访问设备地理位置
-                navigator.geolocation.getCurrentPosition(showPosition);
-            }
-        }
-        function showPosition(position) {
-            locationInfo.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />Longitude: ' + position.coords.longitude;
-        }
-    </script>
-</body>
-</html>
-```
  
 - 应用代码。
 

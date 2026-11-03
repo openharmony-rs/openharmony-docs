@@ -27,56 +27,6 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
 
   示例一：
   
-  ``` HTML
-  <!DOCTYPE html>
-  <html>
-  
-  <head>
-      <meta charset='utf-8'>
-      <title>printTest</title>
-      <style>
-          @media print {
-              h1 {
-                  display: none;
-              }
-          }
-      </style>
-  </head>
-  
-  <body>
-  <div>
-      <h1><b>
-          <center>This is a test page for printing</center>
-      </b>
-          <hr color=#00cc00 width=95%>
-      </h1>
-      <button class='Button Button--outline' onclick='window.print();'>Print</button>
-      <p> content content content </p>
-      <div id='printableTable'>
-          <table>
-              <thead>
-              <tr>
-                  <td>Thing</td>
-                  <td>Chairs</td>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                  <td>1</td>
-                  <td>blue</td>
-              </tr>
-              <tr>
-                  <td>2</td>
-                  <td>green</td>
-              </tr>
-              </tbody>
-          </table>
-      </div>
-      <p> content content content </p>
-      <p> content content content </p>
-  </div>
-  </body>
-  ```
   
   示例二（iframe嵌套页面的方式）：
   
@@ -130,34 +80,6 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
         .width('100%')
       }
       .height('100%')
-    }
-  }
-  ```
-
-## 通过调用应用侧接口拉起打印
-应用侧通过调用[createWebPrintDocumentAdapter](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebprintdocumentadapter11)创建打印适配器，通过将适配器传入打印的print接口调起打印。
-<!-- @[create_web_print_document](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintAppAPI.ets) -->
-
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
-import { BusinessError, print } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('createWebPrintDocumentAdapter')
-        .onClick(() => {
-          try {
-            let webPrintDocAdapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
-            print.print('example_job_id', webPrintDocAdapter, null, this.getUIContext().getHostContext());
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
       Web({ src: 'www.example.com', controller: this.controller });
     }
   }
