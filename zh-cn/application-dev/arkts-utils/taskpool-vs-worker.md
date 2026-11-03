@@ -29,6 +29,7 @@ TaskPool和Worker的作用是为应用程序提供多线程运行环境，用于
 | 实现 | TaskPool | Worker |
 | -------- | -------- | -------- |
 | 内存模型 | 线程间隔离，内存不共享。 | 线程间隔离，内存不共享。 |
+| 内存开销 | 工作线程可复用，由系统统一扩缩容，内存开销较低。 | 每个Worker创建时初始化独立的虚拟机实例（包含独立堆内存、解释器和模块系统等），单个Worker的基础内存开销约为数MB到20MB，内存开销较高。 |
 | 参数传递机制 | 采用标准的结构化克隆算法（Structured Clone）进行序列化、反序列化，完成参数传递。<br/>支持ArrayBuffer转移、SharedArrayBuffer共享和Sendable引用传递。 | 采用标准的结构化克隆算法（Structured Clone）进行序列化、反序列化，完成参数传递。<br/>支持ArrayBuffer转移、SharedArrayBuffer共享和Sendable引用传递。 |
 | 参数传递 | 直接传递，无需封装。 | 消息对象唯一参数，需要自己封装。 |
 | 方法调用 | 直接传入并调用\@Concurrent修饰的方法。 | 在Worker线程中解析消息并调用对应方法。 |
@@ -52,6 +53,8 @@ TaskPool和Worker的作用是为应用程序提供多线程运行环境，用于
 TaskPool和Worker均支持多线程并发能力。TaskPool的工作线程会绑定系统的调度优先级，并支持负载均衡（自动扩缩容），相比之下，Worker需要开发者自行创建和销毁，存在一定的创建和管理成本。因此，在大多数场景下，推荐优先使用TaskPool。
 
 Worker适用于需要长时间占据线程，并由开发者主动管理线程生命周期的场景；TaskPool适用于执行相对独立任务的场景，任务在线程中执行时无需关注线程生命周期。
+
+此外，从内存开销角度考虑，TaskPool的工作线程支持复用，由系统统一扩缩容，内存占用相对较低。而每个Worker在创建时都会初始化独立的虚拟机实例，基础内存开销约为数MB到20MB，并随Worker加载的业务模块复杂度进一步增长。当应用同时运行多个Worker时，内存开销会成倍增加，在内存受限的设备上尤为明显。因此，内存敏感场景应优先选用TaskPool；确需多个常驻Worker时，应合理规划Worker数量并复用已有Worker，具体可参见[Worker简介](worker-introduction.md)和[常驻任务开发指导](resident-task-guide.md)。
 
 ### 建议使用Worker的场景
 
