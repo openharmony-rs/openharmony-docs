@@ -1209,7 +1209,7 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。公钥需符合X.509、PKCS #1规范，并采用PEM编码。
+获取PEM编码的密钥数据。此API以同步方式返回结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1524,7 +1524,7 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。私钥格式需符合PKCS #8、PKCS #1规范，并采用PEM编码。
+获取PEM编码的私钥数据。此API以同步方式返回结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1588,7 +1588,7 @@ function testPriKeyPkcs1ToPkcs8BySync1024() {
 
 getEncodedPem(format: string, config: KeyEncodingConfig): string
 
-同步方法，获取密钥数据的字符串。支持RSA公钥和私钥。私钥格式满足PKCS #8规范、PKCS #1规范和PEM编码方式。
+获取PEM编码的加密的私钥数据。此API以同步方式返回结果。目前仅支持RSA密钥。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3452,7 +3452,7 @@ function testGeneratePriKey() {
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
     if (err) {
-      console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      console.error(`generatePriKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
     }
     console.info('generatePriKey result: success.');
@@ -4628,7 +4628,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -4862,7 +4862,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -4940,7 +4940,7 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -4988,7 +4988,7 @@ getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
 
 **示例：**
@@ -7698,7 +7698,7 @@ try {
   let mac = cryptoFramework.createMac(spec);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -8861,7 +8861,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 ## SignatureUtils<sup>20+</sup>
 
-用于SM2数据转换的工具类。
+用于ECC/SM2签名数据转换的工具类。
 
 ### genEccSignatureSpec<sup>20+</sup>
 

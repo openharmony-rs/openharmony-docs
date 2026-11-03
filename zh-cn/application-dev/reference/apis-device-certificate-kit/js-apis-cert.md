@@ -285,7 +285,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 | authorityKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书颁发机构密钥。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | minPathLenConstraint<sup>12+</sup> | number | 否  | 是 |指定证书CA路径长度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | extendedKeyUsage<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书扩展用途。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书的使用者名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定待匹配名称约束条目，与证书nameConstraints扩展中任一名称约束条目的类型与值进行匹配。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | certPolicy<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书策略。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | privateKeyValid<sup>12+</sup> | string | 否  | 是 |指定证书私钥有效期。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | subjectKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书主体公钥标识符（Subject Key Identifier扩展）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
