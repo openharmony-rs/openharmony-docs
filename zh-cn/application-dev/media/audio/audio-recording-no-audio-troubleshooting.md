@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "按权限、运行状态、数据回调和文件写入逐步排查录音无声，定位静音策略、音源选择与设备路由问题。"
-keywords: [ohos.permission.MICROPHONE, SourceType, STATE_RUNNING, readData, 写入偏移, 静音打断策略, 输入设备, 录音并发]
+keywords: [录音无声, 录音启动失败, 录音无数据, 数据异常]
 doctype: faq
 status: active
 ---
