@@ -27316,6 +27316,21 @@
 						"end_line":277,
 						"name":"set_web_peer_render",
 						"start_line":16
+					},
+					{
+						"end_line":132,
+						"name":"text_input_component",
+						"start_line":104
+					},
+					{
+						"end_line":170,
+						"name":"enable_native_embedmode",
+						"start_line":160
+					},
+					{
+						"end_line":158,
+						"name":"same_layer_and_same_tag_bundle",
+						"start_line":150
 					}
 				]
 			},
@@ -50779,6 +50794,56 @@
 						"end_line":347,
 						"name":"MainThreadJank_Button",
 						"start_line":333
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-safe-area-insets.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/ImmersiveWeb.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"set_window_layout_full_screen",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-white-screen.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"CrossDomainIntercept",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/InterceptTelScheme.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"InterceptTelScheme",
+						"start_line":44
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/RenderAndCacheMode.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"set_render_process_mode",
+						"start_line":25
 					}
 				]
 			}
