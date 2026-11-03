@@ -1175,12 +1175,18 @@ getEncoded(): DataBlob
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKey() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let symKey = await symKeyGenerator.generateSymKey();
-  let encodedKey = symKey.getEncoded();
-  console.info('key hex: ' + encodedKey.data);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let symKey = await symKeyGenerator.generateSymKey();
+    let encodedKey = symKey.getEncoded();
+    console.info('key hex: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1222,12 +1228,18 @@ ArkTS-Sta: getKeySize(): int
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKey() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let symKey = await symKeyGenerator.generateSymKey();
-  let symKeyLen = symKey.getKeySize();
-  console.info('keysize is: ' + symKeyLen);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let symKey = await symKeyGenerator.generateSymKey();
+    let symKeyLen = symKey.getKeySize();
+    console.info('keysize is: ' + symKeyLen);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1261,15 +1273,21 @@ clearMem(): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKeyFun() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let key = await symKeyGenerator.generateSymKey();
-  let encodedKey = key.getEncoded();
-  console.info('key blob: '+ encodedKey.data);
-  key.clearMem();
-  encodedKey = key.getEncoded();
-  console.info('key blob: ' + encodedKey.data);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let key = await symKeyGenerator.generateSymKey();
+    let encodedKey = key.getEncoded();
+    console.info('key blob: '+ encodedKey.data);
+    key.clearMem();
+    encodedKey = key.getEncoded();
+    console.info('key blob: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKeyFun failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1330,6 +1348,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
@@ -1355,12 +1374,17 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 }
 
 async function testGetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let pubKey = keyPair.pubKey;
-  let eccPrimeP = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let pubKey = keyPair.pubKey;
+    let eccPrimeP = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1368,6 +1392,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
@@ -1393,12 +1418,17 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 }
 
 async function testGetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let key = keyPair.pubKey;
-  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + p.toString());
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let key = keyPair.pubKey;
+    let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + p.toString());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1449,15 +1479,21 @@ getEncodedDer(format: string): DataBlob
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetEncodedDer() {
-  let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.convertKey(pubKeyBlob, null);
-  let key = keyPair.pubKey;
-  let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
-  console.info('returnBlob data: ' + returnBlob.data);
+  try {
+    let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+    let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.convertKey(pubKeyBlob, null);
+    let key = keyPair.pubKey;
+    let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
+    console.info('returnBlob data: ' + returnBlob.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncodedDer failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1501,6 +1537,7 @@ getEncodedPem(format: string): string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let publicPkcs1Str1024: string =
   '-----BEGIN RSA PUBLIC KEY-----\n'
@@ -1511,10 +1548,15 @@ let publicPkcs1Str1024: string =
 
 function testPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
-  let pubPemKey = keyPair.pubKey;
-  let pubString = pubPemKey.getEncodedPem('X509');
-  console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
+    let pubPemKey = keyPair.pubKey;
+    let pubString = pubPemKey.getEncodedPem('X509');
+    console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPubKeyPkcs1ToX509BySync1024 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1561,12 +1603,18 @@ getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccGetKeyDataTest() {
-  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await eccGenerator.generateKeyPair();
-  let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
-  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  try {
+    let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await eccGenerator.generateKeyPair();
+    let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+    console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1613,12 +1661,18 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccGetKeyDataTest() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = eccGenerator.generateKeyPairSync();
-  let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
-  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  try {
+    let keyPair = eccGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+    console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1652,6 +1706,7 @@ clearMem(): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testClearMem() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -1662,6 +1717,8 @@ async function testClearMem() {
     let returnBlob = priKey.getEncodedDer('PKCS8');
     console.info('returnBlob data: ' + returnBlob.data);
     priKey.clearMem(); // 对于非对称私钥，clearMem()释放内部密钥结构。执行clearMem后，不支持getEncoded()。
+  }).catch((error: BusinessError) => {
+    console.error(`generateKeyPair failed, ${error.code}, ${error.message}`);
   });
 }
 ```
@@ -1713,6 +1770,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   let fieldFp: cryptoFramework.ECFieldFp = {
@@ -1737,12 +1795,17 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 }
 
 async function testGetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let priKey = keyPair.priKey;
-  let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let priKey = keyPair.priKey;
+    let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1750,6 +1813,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   let fieldFp: cryptoFramework.ECFieldFp = {
@@ -1774,12 +1838,17 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 }
 
 async function testGetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let key = keyPair.priKey;
-  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + p.toString());
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let key = keyPair.priKey;
+    let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + p.toString());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1829,6 +1898,7 @@ getEncodedDer(format: string): DataBlob
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetEncodedDer() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -1838,6 +1908,8 @@ async function testGetEncodedDer() {
     let priKey = keyPair.priKey;
     let returnBlob = priKey.getEncodedDer('PKCS8');
     console.info('returnBlob data: ' + returnBlob.data);
+  }).catch((error: BusinessError) => {
+    console.error(`generateKeyPair failed, ${error.code}, ${error.message}`);
   });
 }
 ```
@@ -1883,6 +1955,7 @@ getEncodedPem(format: string): string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -1903,10 +1976,15 @@ let priKeyPkcs1Str1024: string =
 
 function testPriKeyPkcs1ToPkcs8BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let priPemKey = keyPair.priKey;
-  let priString = priPemKey.getEncodedPem('PKCS8');
-  console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
+    let priPemKey = keyPair.priKey;
+    let priString = priPemKey.getEncodedPem('PKCS8');
+    console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPriKeyPkcs1ToPkcs8BySync1024 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1952,6 +2030,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -1972,14 +2051,19 @@ let priKeyPkcs1Str1024: string =
 
 function testPriKeyPkcs1Encoded() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let options: cryptoFramework.KeyEncodingConfig = {
-    password: '123456',
-    cipherName: 'AES-128-CBC'
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
+    let options: cryptoFramework.KeyEncodingConfig = {
+      password: '123456',
+      cipherName: 'AES-128-CBC'
+    }
+    let priPemKey = keyPair.priKey;
+    let priString = priPemKey.getEncodedPem('PKCS1', options);
+    console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPriKeyPkcs1Encoded failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
-  let priPemKey = keyPair.priKey;
-  let priString = priPemKey.getEncodedPem('PKCS1', options);
-  console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
 }
 ```
 
@@ -2018,6 +2102,7 @@ getPubKey(): Promise\<PubKey>
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
   let buf1 = buffer.from(a);
@@ -2077,7 +2162,8 @@ async function generateAsyKey() {
     console.info('pk1 bin data ' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
     console.info('result = ' + ret);
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
 }
@@ -2118,6 +2204,7 @@ getPubKeySync(): PubKey
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
   let buf1 = buffer.from(a);
@@ -2177,7 +2264,8 @@ function generateAsyKey() {
     console.info('pk1 bin data' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
     console.info('result = ' + ret);
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
 }
@@ -2226,12 +2314,18 @@ getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccGetKeyDataTest() {
-  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await eccGenerator.generateKeyPair();
-  let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
-  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  try {
+    let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await eccGenerator.generateKeyPair();
+    let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+    console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2278,12 +2372,18 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccGetKeyDataTest() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = eccGenerator.generateKeyPairSync();
-  let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
-  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  try {
+    let keyPair = eccGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+    console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2363,8 +2463,14 @@ createSymKeyGenerator(algName: string): SymKeyGenerator
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+try {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createSymKeyGenerator failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## SymKeyGenerator
@@ -2437,7 +2543,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   symKeyGenerator.generateSymKey((err, symKey) => {
-    console.info('Generate symKey result: success, algName: ' + symKey.algName);
+    if (err) {
+      console.error(`generateSymKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    console.info('generateSymKey result: success, algName: ' + symKey.algName);
   });
 ```
 
@@ -2445,10 +2555,15 @@ ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGenerateSymKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
-  symKeyGenerator.generateSymKey((err, symKey) => {
+  symKeyGenerator.generateSymKey((err: BusinessError | null, symKey: cryptoFramework.SymKey | undefined) => {
+    if (err) {
+      console.error(`generateSymKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     if (symKey != undefined) {
       console.info('Generate symKey success, algName：' + symKey.algName);
     }
@@ -2565,14 +2680,20 @@ generateSymKeySync(): SymKey
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGenerateSymKeySync() {
   // 创建SymKeyGenerator实例。
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  // 使用密钥生成器随机生成对称密钥。
-  let key = symKeyGenerator.generateSymKeySync();
-  let encodedKey = key.getEncoded();
-  console.info('key hex:' + encodedKey.data);
+  try {
+    // 使用密钥生成器随机生成对称密钥。
+    let key = symKeyGenerator.generateSymKeySync();
+    let encodedKey = key.getEncoded();
+    console.info('key hex:' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSymKeySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2632,6 +2753,10 @@ function testConvertKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
+    if (err) {
+      console.error(`convertKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     console.info('Convert symKey result: success, algName: ' + symKey.algName);
   });
 }
@@ -2641,6 +2766,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyMaterialBlob(): cryptoFramework.DataBlob {
   let arr = [
@@ -2654,7 +2780,11 @@ function genKeyMaterialBlob(): cryptoFramework.DataBlob {
 function testConvertKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   let keyMaterialBlob = genKeyMaterialBlob();
-  symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
+  symKeyGenerator.convertKey(keyMaterialBlob, (err: BusinessError | null, symKey: cryptoFramework.SymKey | undefined) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     if (symKey != undefined) {
       console.info('Convert symKey success, algName: ' + symKey.algName);
     }
@@ -2802,6 +2932,7 @@ convertKeySync(key: DataBlob): SymKey
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testConvertKeySync() {
   // 对称密钥长度为64字节，512比特。
@@ -2810,9 +2941,14 @@ function testConvertKeySync() {
     data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
   }
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-  let key = symKeyGenerator.convertKeySync(keyBlob);
-  let encodedKey = key.getEncoded();
-  console.info('key encoded data: ' + encodedKey.data);
+  try {
+    let key = symKeyGenerator.convertKeySync(keyBlob);
+    let encodedKey = key.getEncoded();
+    console.info('key encoded data: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testConvertKeySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2860,8 +2996,14 @@ createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+try {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createAsyKeyGenerator failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## AsyKeyGenerator
@@ -2924,9 +3066,10 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
-asyKeyGenerator.generateKeyPair((err, keyPair) => {
+asyKeyGenerator.generateKeyPair((err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
   if (err) {
     console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
     return;
@@ -3036,6 +3179,7 @@ generateKeyPairSync(): KeyPair
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 try {
@@ -3045,7 +3189,8 @@ try {
   } else {
     console.error('[Sync]: get key pair result: fail.');
   }
-} catch (e) {
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
@@ -3124,6 +3269,7 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCall
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let pubKeyArray =
   new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -3136,7 +3282,7 @@ let priKeyArray =
 let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // 公钥二进制数据。
 let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // 私钥二进制数据。
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
-asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
   if (err) {
     console.error(`convertKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
     return;
@@ -3322,6 +3468,7 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let pubKeyArray =
   new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -3341,7 +3488,8 @@ try {
   } else {
     console.error('[Sync]: convert key pair result: fail.');
   }
-} catch (e) {
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
@@ -3461,12 +3609,12 @@ let publicPkcs1Str1024: string  =
     + '-----END RSA PUBLIC KEY-----\n';
 async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  try{
+  try {
     let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
     console.info('convertPemKey result: success.');
   } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error(`convertPemKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`convertPemKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3635,6 +3783,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -3668,7 +3817,8 @@ function testConvertPemKeyBySync() {
     } else {
       console.error('[Sync]: convert pem key pair result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3719,6 +3869,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1EncodingStr: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -3748,7 +3899,8 @@ function testConvertPemKeyBySync() {
     } else {
       console.error('[Sync]: convert pem key pair result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3796,6 +3948,7 @@ createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3823,7 +3976,12 @@ function genDsa1024KeyPairSpecBigE() {
 }
 
 let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+try {
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createAsyKeyGeneratorBySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## AsyKeyGeneratorBySpec<sup>10+</sup>
@@ -3888,6 +4046,7 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3917,7 +4076,7 @@ function genDsa1024KeyPairSpecBigE() {
 function testGenerateKeyPair() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-  asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
+  asyKeyGeneratorBySpec.generateKeyPair((err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
     if (err) {
       console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
@@ -4169,6 +4328,7 @@ generatePriKey(callback: AsyncCallback\<PriKey>): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -4198,7 +4358,7 @@ function genDsa1024KeyPairSpecBigE() {
 function testGeneratePriKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-  asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
+  asyKeyGeneratorBySpec.generatePriKey((err: BusinessError | null, prikey: cryptoFramework.PriKey | undefined) => {
     if (err) {
       console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
@@ -4367,6 +4527,7 @@ generatePriKeySync(): PriKey
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -4403,7 +4564,8 @@ function testGeneratePriKeySync() {
     } else {
       console.error('[Sync]: get pri key result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -4447,6 +4609,7 @@ generatePubKey(callback: AsyncCallback\<PubKey>): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -4476,7 +4639,7 @@ function genDsa1024KeyPairSpecBigE() {
 function testGeneratePubKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-  asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
+  asyKeyGeneratorBySpec.generatePubKey((err: BusinessError | null, pubKey: cryptoFramework.PubKey | undefined) => {
     if (err) {
       console.error(`generatePubKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
@@ -4646,6 +4809,7 @@ generatePubKeySync(): PubKey
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -4682,7 +4846,8 @@ function testGeneratePubKeySync() {
     } else {
       console.error('[Sync]: get pub key result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -4791,14 +4956,20 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 随机生成的非压缩点数据。
 let pkData =
   new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
     157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242,
     206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
-console.info('returnPoint: ' + returnPoint.x.toString(16));
+try {
+  let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
+  console.info('returnPoint: ' + returnPoint.x.toString(16));
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`convertPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ### getEncodedPoint<sup>12+</sup>
@@ -4845,21 +5016,27 @@ ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTest() {
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.generateKeyPair();
-  let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
-  let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
-  console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
-  console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
-  // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
-  let returnPoint: cryptoFramework.Point = {
-    x: BigInt('0x' + eccPkX.toString(16)),
-    y: BigInt('0x' + eccPkY.toString(16))
-  };
-  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
-  console.info('returnData: ' + returnData);
+  try {
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.generateKeyPair();
+    let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
+    let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
+    console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
+    console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
+    // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
+    let returnPoint: cryptoFramework.Point = {
+      x: BigInt('0x' + eccPkX.toString(16)),
+      y: BigInt('0x' + eccPkY.toString(16))
+    };
+    let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
+    console.info('returnData: ' + returnData);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`doTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4867,20 +5044,26 @@ ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTest() {
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.generateKeyPair();
-  let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
-  let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
-  console.info('ECC_PK_X_BN ：' + eccPkX.toString());
-  console.info('ECC_PK_Y_BN ：' + eccPkY.toString());
-  let returnPoint: cryptoFramework.Point = {
-    x: BigInt('' + eccPkX.toString()),
-    y: BigInt('' + eccPkY.toString())
-  };
-  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
-  console.info('returnData: ' + returnData);
+  try {
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.generateKeyPair();
+    let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
+    let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
+    console.info('ECC_PK_X_BN ：' + eccPkX.toString());
+    console.info('ECC_PK_Y_BN ：' + eccPkY.toString());
+    let returnPoint: cryptoFramework.Point = {
+      x: BigInt('' + eccPkX.toString()),
+      y: BigInt('' + eccPkY.toString())
+    };
+    let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
+    console.info('returnData: ' + returnData);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getEncodedPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5618,11 +5801,18 @@ ArkTS-Dyn示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -5649,11 +5839,27 @@ function cipherByCallback() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   symKeyGenerator.generateSymKey((err, symKey) => {
+    if (err) {
+      console.error(`generateSymKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
+      if (err) {
+        console.error(`init failed, errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       cipher.update(plainText, (err, encryptUpdate) => {
+        if (err) {
+          console.error(`update failed, errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         cipher.doFinal(null, (err, tag) => {
+          if (err) {
+            console.error(`doFinal failed, errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           gcmParams.authTag = tag;
           console.info('encryptUpdate plainText: ' + encryptUpdate.data);
         });
@@ -5668,6 +5874,7 @@ ArkTS-Sta示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function generateRandom(len: int) {
   let rand = cryptoFramework.createRandom();
@@ -5698,20 +5905,36 @@ function cipherByCallback() {
   let gcmParams = genGcmParamsSpec();
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  symKeyGenerator.generateSymKey((err, symKey) => {
+  symKeyGenerator.generateSymKey((err: BusinessError | null, symKey: cryptoFramework.SymKey | undefined) => {
+    if (err) {
+      console.error(`generateSymKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     if (symKey != undefined) {
-      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         let message = "This is a test";
         let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-        cipher.update(plainText, (err, encryptUpdate) => {
-          cipher.doFinal(null, (err, tag) => {
-            if (tag != undefined) {
-              gcmParams.authTag = tag;
-            }
-            if (encryptUpdate != undefined) {
+        cipher.update(plainText, (err: BusinessError | null, encryptUpdate: cryptoFramework.DataBlob | null | undefined) => {
+          if (err) {
+            console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
+          if (encryptUpdate != undefined) {
+            cipher.doFinal(null, (err: BusinessError | null, tag: cryptoFramework.DataBlob | null | undefined) => {
+              if (err) {
+                console.error(`doFinal failed: errCode: ${err.code}, errMsg: ${err.message}`);
+                return;
+              }
+              if (tag != undefined) {
+                gcmParams.authTag = tag;
+              }
               console.info('encryptUpdate plainText：' + encryptUpdate.data);
-            }
-          });
+            });
+          }
         });
       });
     }
@@ -5943,11 +6166,18 @@ ArkTS-Dyn示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -5970,16 +6200,21 @@ function genGcmParamsSpec() {
 }
 
 async function cipherByPromise() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = 'This is a test';
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = await cipher.update(plainText);
-  gcmParams.authTag = await cipher.doFinal(null);
-  console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = await cipher.update(plainText);
+    gcmParams.authTag = await cipher.doFinal(null);
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5988,6 +6223,7 @@ ArkTS-Sta示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function generateRandom(len: int) {
   let rand = cryptoFramework.createRandom();
@@ -6015,17 +6251,22 @@ function genGcmParamsSpec() {
 }
 
 async function cipherByPromise() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = "This is a test";
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = await cipher.update(plainText);
-  await cipher.doFinal(null);
-  if(encryptUpdate != undefined) {
-    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = "This is a test";
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = await cipher.update(plainText);
+    await cipher.doFinal(null);
+    if(encryptUpdate != undefined) {
+      console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -6091,11 +6332,18 @@ ArkTS-Dyn示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -6118,16 +6366,21 @@ function genGcmParamsSpec() {
 }
 
 async function cipherBySync() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = 'This is a test';
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = cipher.updateSync(plainText);
-  gcmParams.authTag = cipher.doFinalSync(null);
-  console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = cipher.updateSync(plainText);
+    gcmParams.authTag = cipher.doFinalSync(null);
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6136,6 +6389,7 @@ ArkTS-Sta示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function generateRandom(len: int) {
   let rand = cryptoFramework.createRandom();
@@ -6163,17 +6417,22 @@ function genGcmParamsSpec() {
 }
 
 async function cipherBySync() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = "This is a test";
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = cipher.updateSync(plainText);
-  cipher.doFinalSync(null);
-  if (encryptUpdate != undefined) {
-    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = "This is a test";
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = cipher.updateSync(plainText);
+    cipher.doFinalSync(null);
+    if (encryptUpdate != undefined) {
+      console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -6310,11 +6569,17 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
   let pSource = new Uint8Array([1, 2, 3, 4]);
-  cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+  try {
+    cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetCipherSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6362,11 +6627,17 @@ getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-  let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-  console.info('getCipherSpec: mdName =' + mdName);
+  try {
+    let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+    console.info('getCipherSpec: mdName =' + mdName);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetCipherSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6411,16 +6682,18 @@ createSign(algName: string): Sign
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let signer1 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-
-let signer2 = cryptoFramework.createSign('RSA1024|PSS|SHA256|MGF1_SHA256');
-
-let signer3 = cryptoFramework.createSign('ECC224|SHA256');
-
-let signer4 = cryptoFramework.createSign('DSA2048|SHA256');
-
-let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
+try {
+  let signer1 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+  let signer2 = cryptoFramework.createSign('RSA1024|PSS|SHA256|MGF1_SHA256');
+  let signer3 = cryptoFramework.createSign('ECC224|SHA256');
+  let signer4 = cryptoFramework.createSign('DSA2048|SHA256');
+  let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createSign failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Sign
@@ -6952,9 +7225,25 @@ function signByCallback() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     signer.init(keyPair.priKey, err => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       signer.update(inputUpdate, err => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         signer.sign(inputVerify, (err, signData) => {
+          if (err) {
+            console.error(`sign failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('sign output = ' + signData.data);
         });
       });
@@ -6968,6 +7257,7 @@ ArkTS-Sta示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function signByCallback() {
   let inputUpdate: cryptoFramework.DataBlob =
@@ -7013,11 +7303,27 @@ function signByCallback() {
   let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     if (keyPair != undefined) {
-      signer.init(keyPair.priKey, err => {
-        signer.update(inputUpdate, err => {
-          signer.sign(inputVerify, (err, signData) => {
+      signer.init(keyPair.priKey, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
+        signer.update(inputUpdate, (err: BusinessError | null) => {
+          if (err) {
+            console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
+          signer.sign(inputVerify, (err: BusinessError | null, signData: cryptoFramework.DataBlob | undefined) => {
+            if (err) {
+              console.error(`sign failed: errCode: ${err.code}, errMsg: ${err.message}`);
+              return;
+            }
             if (signData != undefined) {
               console.info('sign output is ' + signData.data);
             }
@@ -7036,6 +7342,7 @@ function signByCallback() {
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -7082,16 +7389,21 @@ async function signByPromise() {
       243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
       232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
       207, 254, 61, 71, 184, 167, 184]);
-  let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
-  let inputSign: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
-  let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  await signer.init(keyPair.priKey);
-  await signer.update(inputUpdate);
-  let signData = await signer.sign(inputSign);
-  console.info('signData result: ' + signData.data);
+  try {
+    let keyPair = await genKeyPairByData(pkData, skData);
+    let inputUpdate: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+    let inputSign: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+    let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+    await signer.init(keyPair.priKey);
+    await signer.update(inputUpdate);
+    let signData = await signer.sign(inputSign);
+    console.info('signData result: ' + signData.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`signByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7102,6 +7414,7 @@ async function signByPromise() {
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -7154,10 +7467,15 @@ function signBySync() {
   let inputSign: cryptoFramework.DataBlob =
     { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  signer.initSync(keyPair.priKey);
-  signer.updateSync(inputUpdate);
-  let signData = signer.signSync(inputSign);
-  console.info('signData result: ' + signData.data);
+  try {
+    signer.initSync(keyPair.priKey);
+    signer.updateSync(inputUpdate);
+    let signData = signer.signSync(inputSign);
+    console.info('signData result: ' + signData.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`signBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7206,11 +7524,17 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
   let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
   let setN = 20;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7257,11 +7581,17 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
   let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
   let setN = 20;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7304,10 +7634,16 @@ setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array \| boolean):
 **示例：**
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
   let signer = cryptoFramework.createSign('ML-DSA');
-  signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7348,10 +7684,16 @@ setSignSpec(itemType: SignSpecItem, itemValue: boolean): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
   let signer = cryptoFramework.createSign('ML-DSA');
-  signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7401,12 +7743,18 @@ ArkTS-Sta: getSignSpec(itemType: SignSpecItem): string | int
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetSignSpec() {
   let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 32;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7452,12 +7800,16 @@ createVerify(algName: string): Verify
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-
-let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
-
-let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+try {
+  let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+  let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
+  let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createVerify failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Verify
@@ -7996,9 +8348,25 @@ function verifyByCallback() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     verifier.init(keyPair.pubKey, err => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       verifier.update(inputUpdate, err => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         verifier.verify(inputVerify, signMessageBlob, (err, res) => {
+          if (err) {
+            console.error(`verify failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('verify result = ' + res);
         });
       });
@@ -8012,6 +8380,7 @@ ArkTS-Sta示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function verifyByCallback() {
   let inputUpdate: cryptoFramework.DataBlob =
@@ -8067,11 +8436,27 @@ function verifyByCallback() {
   }
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     if (keyPair != undefined) {
-      verifier.init(keyPair.pubKey, err => {
-        verifier.update(inputUpdate, err => {
-          verifier.verify(inputVerify, signMessageBlob, (err, res) => {
+      verifier.init(keyPair.pubKey, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
+        verifier.update(inputUpdate, (err: BusinessError | null) => {
+          if (err) {
+            console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
+          verifier.verify(inputVerify, signMessageBlob, (err: BusinessError | null, res) => {
+            if (err) {
+              console.error(`verify failed: errCode: ${err.code}, errMsg: ${err.message}`);
+              return;
+            }
             console.info('verify result = ' + res);
           });
         });
@@ -8088,6 +8473,7 @@ function verifyByCallback() {
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -8150,10 +8536,15 @@ async function verifyByPromise() {
       232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
   };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  await verifier.init(keyPair.pubKey);
-  await verifier.update(inputUpdate);
-  let res = await verifier.verify(inputVerify, signMessageBlob);
-  console.info('verify result: ' + res);
+  try {
+    await verifier.init(keyPair.pubKey);
+    await verifier.update(inputUpdate);
+    let res = await verifier.verify(inputVerify, signMessageBlob);
+    console.info('verify result: ' + res);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifyByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8164,6 +8555,7 @@ async function verifyByPromise() {
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -8226,10 +8618,15 @@ function verifyBySync() {
       232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
   };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  verifier.initSync(keyPair.pubKey);
-  verifier.updateSync(inputUpdate);
-  let res = verifier.verifySync(inputVerify, signMessageBlob);
-  console.info('verify result: ' + res);
+  try {
+    verifier.initSync(keyPair.pubKey);
+    verifier.updateSync(inputUpdate);
+    let res = verifier.verifySync(inputVerify, signMessageBlob);
+    console.info('verify result: ' + res);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifyBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8442,11 +8839,17 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
   let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8494,11 +8897,17 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
   let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8544,10 +8953,16 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array \| boolean
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
   let verifier = cryptoFramework.createVerify('ML-DSA');
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8590,10 +9005,16 @@ setVerifySpec(itemType: SignSpecItem, itemValue: boolean): void
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
   let verifier = cryptoFramework.createVerify('ML-DSA');
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8644,12 +9065,18 @@ ArkTS-Sta: getVerifySpec(itemType: SignSpecItem): string | int
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetVerifySpec() {
   let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8695,8 +9122,14 @@ createKeyAgreement(algName: string): KeyAgreement
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+try {
+  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createKeyAgreement failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## KeyAgreement
@@ -8841,18 +9274,24 @@ ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
-    if (err) {
-      console.error(`keyAgreement failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      return;
-    }
-    console.info('keyAgreement output = ' + secret.data);
-  });
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
+      if (err) {
+        console.error(`keyAgreement failed, errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
+      console.info('keyAgreement output = ' + secret.data);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecret failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8860,12 +9299,13 @@ ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
   let globalKeyPair = await eccGen.generateKeyPair();
   let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
+  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err: BusinessError | null, secret: cryptoFramework.DataBlob | undefined) => {
     if (err) {
       console.error("keyAgreement error.");
     }
@@ -8886,14 +9326,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
-  keyAgreementPromise.then(secret => {
-    console.info('keyAgreement output = ' + secret.data);
-  }).catch((error: BusinessError) => {
-    console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
-  });
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
+    keyAgreementPromise.then(secret => {
+      console.info('keyAgreement output = ' + secret.data);
+    }).catch((error: BusinessError) => {
+      console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecret failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8921,13 +9366,19 @@ async function testGenerateSecret() {
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecretSync() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
-  console.info('[Sync]keyAgreement output = ' + secret.data);
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
+    console.info('[Sync]keyAgreement output = ' + secret.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecretSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -9183,8 +9634,16 @@ import { buffer } from '@kit.ArkTS';
 
 function mdByCallback() {
   let md = cryptoFramework.createMd('SHA256');
-  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err) => {
+  md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) }, (err) => {
+    if (err) {
+      console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     md.digest((err, digestOutput) => {
+      if (err) {
+        console.error(`digest failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       console.info('[Callback]: MD result: ' + digestOutput.data);
       console.info('[Callback]: MD len: ' + md.getMdLength());
     });
@@ -9197,15 +9656,24 @@ ArkTS-Sta示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function mdByCallback() {
   let md = cryptoFramework.createMd('SHA256');
-  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err) => {
-    md.digest((err, digestOutput) => {
+  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err: BusinessError | null) => {
+    if (err) {
+      console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    md.digest((err: BusinessError | null, digestOutput: cryptoFramework.DataBlob | undefined) => {
+      if (err) {
+        console.error(`digest failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       if (digestOutput != undefined) {
         console.info('[Callback]: MD result: ' + digestOutput.data);
-        console.info('[Callback]: MD len: ' + md.getMdLength());
       }
+      console.info('[Callback]: MD len: ' + md.getMdLength());
     });
   });
 }
@@ -9253,13 +9721,19 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function mdByPromise() {
-  let md = cryptoFramework.createMd('SHA256');
-  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = await md.digest();
-  console.info('[Promise]: MD result: ' + mdOutput.data);
-  console.info('[Promise]: MD len: ' + md.getMdLength());
+  try {
+    let md = cryptoFramework.createMd('SHA256');
+    await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = await md.digest();
+    console.info('[Promise]: MD result: ' + mdOutput.data);
+    console.info('[Promise]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`mdByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -9387,13 +9861,19 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function mdBySync() {
   let md = cryptoFramework.createMd('SHA256');
-  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = md.digestSync();
-  console.info('[Sync]: MD result: ' + mdOutput.data);
-  console.info('[Sync]: MD len: ' + md.getMdLength());
+  try {
+    md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = md.digestSync();
+    console.info('[Sync]: MD result: ' + mdOutput.data);
+    console.info('[Sync]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`digestSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -9450,12 +9930,16 @@ function StringToUint8Array(str) {
 function mdTestSync() {
     let mdAlgName = 'SHA256';
     let message = 'mdTestMessage';
-    let md = cryptoFramework.createMd(mdAlgName);
-    md.updateSync({ data: StringToUint8Array(message) });
-    let mdResult = md.digestSync();
-    console.info('Digest successfully. result:' + mdResult.data);
-    let mdLen = md.getMdLength();
-    console.info('Digest successfully. md len: ' + mdLen);
+    try {
+        let md = cryptoFramework.createMd(mdAlgName);
+        md.updateSync({ data: StringToUint8Array(message) });
+        let mdResult = md.digestSync();
+        console.info('Digest successfully. result:' + mdResult.data);
+        let mdLen = md.getMdLength();
+        console.info('Digest successfully. md len: ' + mdLen);
+    } catch (error) {
+        console.error(`mdTestSync failed. Code: ${error.code}, message: ${error.message}`);
+    }
 }
 
 export default {
@@ -9518,12 +10002,18 @@ ArkTS-Sta: squeeze(len: int): Promise\<DataBlob>
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function squeezeByPromise() {
-  let md = cryptoFramework.createMd('SHAKE128');
-  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = await md.squeeze(64);
-  console.info('[Promise]: squeeze result length: ' + mdOutput.data.length);
+  try {
+    let md = cryptoFramework.createMd('SHAKE128');
+    await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = await md.squeeze(64);
+    console.info('[Promise]: squeeze result length: ' + mdOutput.data.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`squeeze failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -9577,12 +10067,18 @@ ArkTS-Sta: squeezeSync(len: int): DataBlob
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function squeezeSync() {
   let md = cryptoFramework.createMd('SHAKE128');
-  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = md.squeezeSync(64);
-  console.info('[Sync]: squeeze result length: ' + mdOutput.data.length);
+  try {
+    md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = md.squeezeSync(64);
+    console.info('[Sync]: squeeze result length: ' + mdOutput.data.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`squeezeSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -9626,10 +10122,16 @@ ArkTS-Sta: getMdLength() : int
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function getLength() {
   let md = cryptoFramework.createMd('SHA256');
-  console.info('[Promise]: MD len: ' + md.getMdLength());
+  try {
+    console.info('[Promise]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getMdLength failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -10034,9 +10536,25 @@ function hmacByCallback() {
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     mac.init(symKey, (err) => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) }, (err) => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         mac.doFinal((err, output) => {
+          if (err) {
+            console.error(`doFinal failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('[Callback]: HMAC result: ' + output.data);
           console.info('[Callback]: MAC len: ' + mac.getMacLength());
         });
@@ -10051,20 +10569,37 @@ ArkTS-Sta示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function hmacByCallback() {
   let mac = cryptoFramework.createMac('SHA256');
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
+  symKeyGenerator.convertKey(keyBlob, (err: BusinessError | null, symKey: cryptoFramework.SymKey | undefined) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     if (symKey != undefined) {
-      mac.init(symKey, (err) => {
-        mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) }, (err) => {
-          mac.doFinal((err, output) => {
+      mac.init(symKey, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
+        mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) }, (err: BusinessError | null) => {
+          if (err) {
+            console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
+          mac.doFinal((err: BusinessError | null, output: cryptoFramework.DataBlob | undefined) => {
+            if (err) {
+              console.error(`doFinal failed: errCode: ${err.code}, errMsg: ${err.message}`);
+              return;
+            }
             if (output != undefined) {
               console.info('[Callback]: HMAC result: ' + output.data);
-              console.info('[Callback]: MAC len: ' + mac.getMacLength());
             }
+            console.info('[Callback]: MAC len: ' + mac.getMacLength());
           });
         });
       });
@@ -10215,17 +10750,23 @@ doFinal(): Promise\<DataBlob>
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function hmacByPromise() {
-  let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = await symKeyGenerator.convertKey(keyBlob);
-  await mac.init(symKey);
-  await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
-  let macOutput = await mac.doFinal();
-  console.info('[Promise]: HMAC result: ' + macOutput.data);
-  console.info('[Promise]: MAC len: ' + mac.getMacLength());
+  try {
+    let mac = cryptoFramework.createMac('SHA256');
+    let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let symKey = await symKeyGenerator.convertKey(keyBlob);
+    await mac.init(symKey);
+    await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
+    let macOutput = await mac.doFinal();
+    console.info('[Promise]: HMAC result: ' + macOutput.data);
+    console.info('[Promise]: MAC len: ' + mac.getMacLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`hmacByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -10269,17 +10810,23 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function hmacBySync() {
   let mac = cryptoFramework.createMac('SHA256');
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = symKeyGenerator.convertKeySync(keyBlob);
-  mac.initSync(symKey);
-  mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
-  let macOutput = mac.doFinalSync();
-  console.info('[Sync]: HMAC result: ' + macOutput.data);
-  console.info('[Sync]: MAC len: ' + mac.getMacLength());
+  try {
+    let symKey = symKeyGenerator.convertKeySync(keyBlob);
+    mac.initSync(symKey);
+    mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
+    let macOutput = mac.doFinalSync();
+    console.info('[Sync]: HMAC result: ' + macOutput.data);
+    console.info('[Sync]: MAC len: ' + mac.getMacLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`hmacBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -10439,22 +10986,28 @@ ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetMacLength() {
-  let mac = cryptoFramework.createMac('SHA256');
-  console.info('Mac algName is: ' + mac.algName);
-  let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
-  let keyBlob: cryptoFramework.DataBlob = { data: keyData };
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  try {
+    let mac = cryptoFramework.createMac('SHA256');
+    console.info('Mac algName is: ' + mac.algName);
+    let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+    let keyBlob: cryptoFramework.DataBlob = { data: keyData };
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
 
-  let promiseConvertKey = await symKeyGenerator.convertKey(keyBlob);
-  let promiseMacInit = await mac.init(promiseConvertKey);
-  let blob: cryptoFramework.DataBlob = { data : new Uint8Array([83])};
-  let promiseMacUpdate = await mac.update(blob);
-  let macOutput = await mac.doFinal();
-  console.info('[Promise]: HMAC result: ' + macOutput.data);
-  let macLen = mac.getMacLength();
-  console.info('MAC len: ' + macLen);
+    let promiseConvertKey = await symKeyGenerator.convertKey(keyBlob);
+    let promiseMacInit = await mac.init(promiseConvertKey);
+    let blob: cryptoFramework.DataBlob = { data : new Uint8Array([83])};
+    let promiseMacUpdate = await mac.update(blob);
+    let macOutput = await mac.doFinal();
+    console.info('[Promise]: HMAC result: ' + macOutput.data);
+    let macLen = mac.getMacLength();
+    console.info('MAC len: ' + macLen);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`doFinal failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -10592,10 +11145,11 @@ ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function TestCreateRandom() {
   let rand = cryptoFramework.createRandom();
-  rand.generateRandom(12, (err, randData) => {
+  rand.generateRandom(12, (err: BusinessError | null, randData: cryptoFramework.DataBlob | undefined) => {
     if (err) {
       console.error("[Callback] err: " + err.code);
     } else {
@@ -10949,9 +11503,9 @@ function doTestEnableHardwareEntropy()
 {
   let rand = cryptoFramework.createRandom();
   rand.enableHardwareEntropy();
-  rand.generateRandom(12, (err, randData) => {
+  rand.generateRandom(12, (err: BusinessError | null, randData: cryptoFramework.DataBlob | undefined) => {
     if (err) {
-      console.error("[Callback] err: " + err.code);
+      console.error(`[Callback] generate random failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
       if (randData != undefined) {
         console.info('[Callback]: generate random result: ' + randData.data);
@@ -11033,7 +11587,7 @@ import { BusinessError } from '@ohos.base';
 
 function TestGenerateRandom() {
   let rand = cryptoFramework.createRandom();
-  rand.generateRandom(12, (err, randData) => {
+  rand.generateRandom(12, (err: BusinessError | null, randData: cryptoFramework.DataBlob | undefined) => {
     if (err) {
       console.error("[Callback] err: " + err.code);
     } else {
@@ -11093,8 +11647,14 @@ createKdf(algName: string): Kdf
 - PBKDF2算法
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+try {
+  let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createKdf failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Kdf<sup>11+</sup>
@@ -11217,7 +11777,7 @@ ArkTS-Sta示例：
       keySize: 32
     };
     let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
-    kdf.generateSecret(spec, (err, secret) => {
+    kdf.generateSecret(spec, (err: BusinessError | null, secret: cryptoFramework.DataBlob | undefined) => {
       if (err) {
         console.error("generateSecret error.");
         return;
@@ -11232,6 +11792,7 @@ ArkTS-Sta示例：
 - HKDF算法
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
 
   function TestGenerateSecret() {
     let spec: cryptoFramework.HKDFSpec = {
@@ -11242,7 +11803,7 @@ ArkTS-Sta示例：
       keySize: 32
     };
     let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
-    kdf.generateSecret(spec, (err, secret) => {
+    kdf.generateSecret(spec, (err: BusinessError | null, secret: cryptoFramework.DataBlob | undefined) => {
       if (err) {
         console.error("generateSecret error.");
         return;
@@ -11432,6 +11993,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 - PBKDF2算法
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   let spec: cryptoFramework.PBKDF2Spec = {
     algName: 'PBKDF2',
@@ -11441,13 +12003,19 @@ generateSecretSync(params: KdfSpec): DataBlob
     keySize: 32
   };
   let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
-  let secret = kdf.generateSecretSync(spec);
-  console.info('[Sync]key derivation output = ' + secret.data);
+  try {
+    let secret = kdf.generateSecretSync(spec);
+    console.info('[Sync]key derivation output = ' + secret.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateSecretSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
   ```
 
 - HKDF算法
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   let spec: cryptoFramework.HKDFSpec = {
     algName: 'HKDF',
@@ -11457,8 +12025,13 @@ generateSecretSync(params: KdfSpec): DataBlob
     keySize: 32
   };
   let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
-  let secret = kdf.generateSecretSync(spec);
-  console.info('[Sync]key derivation output = ' + secret.data);
+  try {
+    let secret = kdf.generateSecretSync(spec);
+    console.info('[Sync]key derivation output = ' + secret.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateSecretSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
   ```
 
 ## SignatureUtils<sup>20+</sup>
