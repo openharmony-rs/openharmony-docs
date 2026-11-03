@@ -146,7 +146,7 @@ dialCall\(phoneNumber: string, options?: DialCallOptions\): Promise\<void\>
 | 参数名      |                 类型                | 必填 |                说明                    |
 | ----------- | ----------------------------------- | ---- | -------------------------------------- |
 | phoneNumber | string                              | 是   | 电话号码。                             |
-| options     | [DialCallOptions](#dialcalloptions9)| 否   | 通话参数，携带呼叫的其他配置信息。<br/>不填该参数则默认使用如下配置，参考[DialCallOptions](#dialcalloptions9)。<br/>- 帐户Id：卡槽1。 <br/>- 音视频类型：语音通话。 <br/>- 拨号场景：普通呼叫。 <br/>- 拨号类型：运营商通话。  |
+| options     | [DialCallOptions](#dialcalloptions9)| 否   | 通话参数，携带呼叫的其他配置信息。<br/>不填该参数则默认使用如下配置，参考[DialCallOptions](#dialcalloptions9)。<br/>- 账户Id：卡槽1。 <br/>- 音视频类型：语音通话。 <br/>- 拨号场景：普通呼叫。 <br/>- 拨号类型：运营商通话。  |
 
 **返回值：**
 
@@ -4874,7 +4874,7 @@ function testSendUssdResponse() {
 
 |        名称              | 类型                               | 必填 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
-| accountId <sup>8+</sup>  | number                             | 否   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/>。此接口为系统接口。                                   |
+| accountId <sup>8+</sup>  | number                             | 否   | 账户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/>。此接口为系统接口。                                   |
 | videoState <sup>8+</sup> | [VideoStateType](#videostatetype7) | 否   | 视频状态类型。此接口为系统接口。                                                                  |
 | dialScene <sup>8+</sup>  | [DialScene](#dialscene8)           | 否   | 拨号场景。此接口为系统接口。                                                                      |
 | dialType <sup>8+</sup>   | [DialType](#dialtype8)             | 否   | 拨号类型。此接口为系统接口。                                                                      |
@@ -4889,7 +4889,7 @@ function testSendUssdResponse() {
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                         |
 | ------------------------ | ---------------------------------- | ---- | ---- | ------------------------------------------- |
-| accountId <sup>9+</sup>  | number                             | 是   | 否   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+| accountId <sup>9+</sup>  | number                             | 是   | 否   | 账户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
 | videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 是   | 否   | 视频状态类型。                               |
 | dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 是   | 否   | 拨号场景。                                   |
 | dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 是   | 否   | 拨号类型。                                   |
@@ -5037,7 +5037,7 @@ IP多媒体系统调用模式。
 | --------------- | ---------------------------------------- | ---- | ---- | -------------- |
 | accountNumber   | string                                   | 是   | 否   | 账号号码。       |
 | speakerphoneOn  | boolean                                  | 是   | 否   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
-| accountId       | number                                   | 是   | 否   | 帐户Id。         |
+| accountId       | number                                   | 是   | 否   | 账户Id。         |
 | videoState      | [VideoStateType](#videostatetype7)       | 是   | 否   | 视频状态类型。   |
 | startTime       | number                                   | 是   | 否   | 开始时间。       |
 | isEcc           | boolean                                  | 是   | 否   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
