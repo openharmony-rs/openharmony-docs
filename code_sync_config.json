@@ -10596,23 +10596,11 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/print.html",
-				"functions":[
-					{
-						"end_line":64,
-						"name":"w3c_print_html_html",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/iframe.html",
-				"functions":[
-					{
-						"end_line":42,
-						"name":"w3c_print_html_iframe",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
@@ -69520,13 +69508,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/resources/rawfile/getLocation.html",
-				"functions":[
-					{
-						"end_line":41,
-						"name":"getLocation_html",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ManageLocPerms.ets",
@@ -69575,13 +69557,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/resources/rawfile/index.html",
-				"functions":[
-					{
-						"end_line":149,
-						"name":"the_type_of_resource_for_which_permission_is_requested_html",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
