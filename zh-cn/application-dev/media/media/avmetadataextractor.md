@@ -61,7 +61,9 @@ status: active
      import { common } from '@kit.AbilityKit';
      import { media } from '@kit.MediaKit';
      const TAG = 'MetadataDemo';
-
+     
+     let fd: number = -1;
+     // ...
      // 创建AVMetadataExtractor对象。
      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
      let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -69,7 +71,7 @@ status: active
      let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
      // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
      // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
-     let fd: number = fileIo.openSync(rootPath + testFilename).fd;
+     fd = fileIo.openSync(rootPath + testFilename).fd;
      let fileSize: number = fileIo.statSync(rootPath + testFilename).size;
      // 设置dataSrc描述符，通过callback从文件中获取资源，写入buffer中。
      let dataSrc: media.AVDataSrcDescriptor = {
@@ -94,8 +96,10 @@ status: active
      // 设置dataSrc。
      avMetadataExtractor.dataSrc = dataSrc;
 
+     //...
      // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
      fileIo.closeSync(fd);
+     // ...
      ```
 
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
@@ -124,13 +128,16 @@ status: active
      import { fileIo } from '@kit.CoreFileKit';
      import { media } from '@kit.MediaKit';
 
+     let file: fileIo.File | undefined = undefined;
+     // ...
      // 创建AVMetadataExtractor对象。
      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
      // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置fdSrc属性。
      let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let rootPath: string = context.filesDir; // 应用文件目录。
      let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
-     avMetadataExtractor.fdSrc = fileIo.openSync(rootPath + testFilename); // 设置fdSrc属性。
+     file = fileIo.openSync(this.rootPath + this.testFilename); // 设置fdSrc属性。
+     avMetadataExtractor.fdSrc = file;
      ```
 
 3. 获取元数据：调用fetchMetadata()，可以获取到一个[AVMetadata](../../reference/apis-media-kit/arkts-apis-media-i.md#avmetadata11)对象，通过访问该对象的各个属性，可以获取到元数据。
@@ -173,6 +180,7 @@ status: active
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
    @State pixelMap: image.PixelMap | undefined = undefined;
+
    // 获取专辑封面（callback模式）。
    avMetadataExtractor.fetchAlbumCover((err, pixelMap) => {
      if (err) {
@@ -180,6 +188,7 @@ status: active
        return;
      }
      this.pixelMap = pixelMap;
+     // ...
    })
    ```
 
