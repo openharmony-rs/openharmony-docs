@@ -278,7 +278,7 @@
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
 

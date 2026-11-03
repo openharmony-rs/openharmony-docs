@@ -279,7 +279,7 @@ This permission applies to window content awareness scenarios for agent applicat
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
-**Valid since**: 26.2.0
+**Valid since**: 26.1.0
 
 ## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
 
