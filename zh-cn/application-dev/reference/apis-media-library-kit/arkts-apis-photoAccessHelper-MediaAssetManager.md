@@ -435,7 +435,7 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
 
 **示例：**
 

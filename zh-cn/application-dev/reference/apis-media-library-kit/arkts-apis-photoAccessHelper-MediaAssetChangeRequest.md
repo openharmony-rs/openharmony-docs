@@ -780,7 +780,7 @@ setOrientation(orientation: number): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: (1) Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: (1) Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例：**
 
