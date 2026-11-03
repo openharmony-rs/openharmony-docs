@@ -808,6 +808,20 @@ With this permission, an application can call APIs to request local account auth
 
 **Since**: 26.0.1
 
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+Allows an application to access vehicle security and privacy service APIs.
+
+With this permission, the application can query vehicle privacy agreements or policies, driver-seat privacy mode, and trace removal status.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
 ## ohos.permission.kernel.USB_CAPTURE
 
 Allows an application to capture USB data packets.
