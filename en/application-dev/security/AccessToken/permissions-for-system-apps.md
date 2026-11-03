@@ -8789,7 +8789,7 @@ Allows an application to access the driver monitoring camera.
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.ACCESS_MEDIALIB_SANDBOX
 
