@@ -76,11 +76,11 @@
 
 **系统接口：** 此接口为系统接口。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
@@ -97,11 +97,11 @@
 
 **系统接口：** 此接口为系统接口。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
