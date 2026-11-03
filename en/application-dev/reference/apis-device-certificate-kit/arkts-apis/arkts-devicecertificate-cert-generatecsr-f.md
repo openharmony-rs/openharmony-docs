@@ -12,7 +12,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 function generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint8Array
 ```
 
-Generates a CSR.
+Generates a CSR using the specified private key by passing configuration parameters such as the subject, extension, MD algorithm, and output format.
 
 **Since:** 18
 

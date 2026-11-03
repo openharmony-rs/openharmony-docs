@@ -4,7 +4,7 @@
 interface Portrait extends PortraitQuery
 ```
 
-Portrait: inherits from [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md). Provides the APIs for portrait photo settings.
+提供人像拍照设置相关接口。
 
 **继承/实现关系：** Portrait extends [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getPortraitEffect(): PortraitEffect
 ```
 
-Obtains the portrait effect in use.
+获取当前使用的人像效果。
 
 **起始版本：** 10
 
@@ -42,7 +42,7 @@ Obtains the portrait effect in use.
 
 | 类型 | 说明 |
 | --- | --- |
-| [PortraitEffect](arkts-camera-camera-portraiteffect-e-sys.md) | Portrait effect. |
+| [PortraitEffect](arkts-camera-camera-portraiteffect-e-sys.md) | 人像效果。 |
 
 **错误码：**
 
@@ -69,7 +69,7 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
 setPortraitEffect(effect: PortraitEffect): void
 ```
 
-Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](arkts-camera-camera-portraitquery-i-sys.md#getsupportedportraiteffects) to obtain the supported portrait effects and check whether the target portrait effect is supported.
+设置人像效果。设置前，先通过[getSupportedPortraitEffects](arkts-camera-camera-portraitquery-i-sys.md#getsupportedportraiteffects)获取支持的人像效果，并检查是否支持目标人像效果。
 
 **起始版本：** 10
 
@@ -83,7 +83,7 @@ Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](ar
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | [PortraitEffect](arkts-camera-camera-portraiteffect-e-sys.md) | 是 | Effect Portrait effect to set. |
+| effect | [PortraitEffect](arkts-camera-camera-portraiteffect-e-sys.md) | 是 | 待设置的人像效果。 |
 
 **错误码：**
 

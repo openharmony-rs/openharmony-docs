@@ -31,3 +31,23 @@ Whether to allow child components to be reused during the animation when the **R
 <!--Device-RepeatOptions-allowReuseInAnimation?: boolean--><!--Device-RepeatOptions-allowReuseInAnimation?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## controller
+
+```TypeScript
+controller?: RepeatController
+```
+
+Controller bound to the **Repeat** component. When the controller is bound, you can call [clearCache](arkts-arkui-repeat-comp-repeatcontroller-c.md#clearcache) to clear the nodes in the reuse pool of the **Repeat** component as needed.
+
+**Type:** [RepeatController](arkts-arkui-repeat-comp-repeatcontroller-c.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-RepeatOptions-controller?: RepeatController--><!--Device-RepeatOptions-controller?: RepeatController-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full

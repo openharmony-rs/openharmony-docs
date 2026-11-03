@@ -52,7 +52,7 @@ Adds resources from the application sandbox based on the file URI. For details a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900002 | The file corresponding to the URI is not in the app sandbox. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The asset parameter is not a valid PhotoAsset object; <br>2. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 | 14000016 | Operation type not support. Possible causes: <br>A previous asset creation or modification request has not been applied yet. |
@@ -111,7 +111,7 @@ Adds a resource using **ArrayBuffer** data.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The asset parameter is not a valid PhotoAsset object; <br>2. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 | 14000016 | Operation type not support. Possible causes: <br>A previous asset creation or modification request has not been applied yet. |
 
@@ -162,7 +162,7 @@ Constructor used to initialize an asset change request.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The constructor was not called with the new keyword; <br>2. Parameter parsing failed, please check the number and types of parameters; <br>3. The asset parameter is not a valid PhotoAsset object; <br>4. System memory insufficient, please retry; <br>5. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **Examples**
@@ -220,7 +220,7 @@ Create an asset change request based on the file type and filename extension.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context; <br>2. User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>3. System memory insufficient, please retry; <br>4. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **Examples**
@@ -283,7 +283,7 @@ For details about data source of the asset to be created, see [@ohos.file.fileur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900002 | The file corresponding to the URI is not in the app sandbox. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context; <br>2. IPC communication error, please retry; <br>3. System memory insufficient, please retry; <br>4. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
@@ -339,7 +339,7 @@ For details about data source of the asset to be created, see [@ohos.file.fileur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900002 | The file corresponding to the URI is not in the app sandbox. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context; <br>2. IPC communication error, please retry; <br>3. System memory insufficient, please retry; <br>4. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)PC timeout. Please retry and check logs. |
 
@@ -396,7 +396,7 @@ Deletes media assets. The deleted assets are moved to the trash. This API uses a
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context; <br>2. User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>3. The assets array contains elements that are not valid PhotoAsset objects; <br>4. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5. System memory insufficient, please retry. |
 
 **Examples**
@@ -458,7 +458,7 @@ Deletes media assets. The deleted assets are moved to the trash. This API uses a
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000002 | The URI format is incorrect or the URI does not exist. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context; <br>2. User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>3. The uriList array contains elements that are not valid string URIs, each element must be a valid file URI string; <br>4. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5. System memory insufficient, please retry. |
 
@@ -558,7 +558,7 @@ Obtains the asset in this asset change request.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The asset parameter is not a valid PhotoAsset object; <br>2. System memory insufficient, please retry; <br>3. PC timeout, please retry. |
 
 **Examples**
@@ -613,7 +613,7 @@ Obtains the handler used for writing a file to cache. This API uses a promise to
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The asset parameter is not a valid PhotoAsset object; <br>2. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 | 14000016 | Operation type not support. Possible causes: <br>1. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs <br>2. A previous asset creation or modification request has not been applied yet. |
 
@@ -806,7 +806,7 @@ Sets the orientation of this image.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **Examples**
@@ -862,7 +862,7 @@ Sets the media asset title.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The asset parameter is not a valid PhotoAsset object; <br>2. System memory insufficient, please retry; <br>3. IPC timeout, please retry. |
 
 **Examples**

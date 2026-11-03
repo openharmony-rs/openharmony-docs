@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function exit(): Promise<void>
 ```
 
-Exits the scan service. This API uses a promise to return the result.
+Exits the scan service. This API uses a promise to return the result. After the scan service exits, other scan methods are unavailable. To use them again, call **init()** again.
 
 **Since:** 20
 

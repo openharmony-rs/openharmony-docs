@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 endPage?: number
 ```
 
-End page. The default value is the maximum number of pages of the file to be printed.
+End page. The value must be a positive integer. The default value is the maximum number of pages in the file to be printed.
 
 **Type:** number
 
@@ -56,7 +56,7 @@ Page range set of the file to print. The default value is empty.
 startPage?: number
 ```
 
-Start page. The default value is **1**.
+Start page. The value is a positive integer. The default value is **1**.
 
 **Type:** number
 

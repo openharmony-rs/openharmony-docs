@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function unregisterWatermarkCallback(callback?: WatermarkCallback): void
 ```
 
-注销强制水印处理的监听事件。
+注销强制水印处理的监听事件。当企业管理应用不再需要在打印文件上强制添加水印时，可调用此接口注销之前注册的水印处理回调。
 
 **起始版本：** 24
 
@@ -28,7 +28,7 @@ function unregisterWatermarkCallback(callback?: WatermarkCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | 否 | 表示注册监听强制水印处理时使用的回调类型。 |
+| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | 否 | 表示要注销的水印处理回调。不传入时取消调用方所有已注册的回调。 |
 
 **错误码：**
 

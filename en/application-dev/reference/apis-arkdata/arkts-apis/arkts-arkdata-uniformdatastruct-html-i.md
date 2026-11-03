@@ -4,7 +4,7 @@
 interface HTML
 ```
 
-Represents data of the HTML type.
+Defines the HTML typed data, which is used to describe HyperText Markup Language data. After an HTML object is created, it can be used to transfer rich text content in scenarios such as drag-and-drop and copy-paste, support cross-application HTML format data interaction, and control the URI authorization policy through **uriAuthorizationPolicies**.
 
 **Since:** 12
 
@@ -24,7 +24,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 details?: Record<string, string>
 ```
 
-Object of the dictionary type used to describe the attributes of the HTML content. Both the key and value of the object are of the string type. For example, the following is a **details** object used to describe the properties of a file:
+Object of dictionary type, where both the key and value are of string type, used to describe the detailed attribute content of the HTML. This is an optional field, and the default value is an empty dictionary object. For example, a data object can be generated with the details content as
 
 {
 
@@ -52,7 +52,7 @@ By default, it is an empty dictionary object.
 htmlContent: string
 ```
 
-Content in HTML format.
+Content text in HTML format, supporting standard HTML tags. It can be a complete HTML document or an HTML fragment. The length limit is 20 MB. UTF-8 encoding is recommended. For example: \<div>\<p> title &lt;\/p&gt;&lt;\/div&gt;.
 
 **Type:** string
 
@@ -70,7 +70,7 @@ Content in HTML format.
 plainContent?: string
 ```
 
-Plaintext without HTML tags. This parameter is optional. By default, it is an empty string.
+Plain text content after removing HTML tags. This is an optional field. Pass this parameter when a plain text version of the HTML content is required (for example, for text search, display in environments without HTML rendering, and other scenarios). If not passed, the default value is an empty string, and no plain text version is provided.
 
 **Type:** string
 
@@ -106,7 +106,7 @@ Uniform data type, which has a fixed value of **general.html**. For details, see
 uriAuthorizationPolicies?: Array<number>
 ```
 
-Defines URI authorization policies for drag intention.
+URI authorization policy for drag-and-drop scenarios. The default value is READ (read-only authorization), which takes effect only in scenarios such as the img tag. It applies only to a single record and has the highest priority. For details about the policy, see [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md).
 
 **Type:** Array&lt;number&gt;
 

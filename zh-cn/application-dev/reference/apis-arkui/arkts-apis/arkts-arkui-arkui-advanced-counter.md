@@ -1,4 +1,4 @@
-# @ohos.arkui.advanced.Counter
+# @ohos.arkui.advanced.Counter(Counter组件用于精确调节数值，支持列表型、紧凑型、数值内联型和日期内联型四种样式，适用于购物数量调节、参数设置、日期选择等场)
 
 ## 导入模块
 
@@ -23,7 +23,7 @@ import { CounterComponent, CounterOptions, CounterType, DateData } from '@kit.Ar
 
 | 名称 | 说明 |
 | --- | --- |
-| [CounterComponent](arkts-arkui-arkui-advanced-counter-countercomponent-s.md) | Counter组件用于精确调节数值，支持列表型、紧凑型、数值内联型和日期内联型四种样式，适用于购物数量调节、参数设置、日期选择等场景，具有灵活的样式配置和事件回调能力。 |
+| [CounterComponent](arkts-arkui-arkui-advanced-counter-countercomponent-s.md) | 创建Counter组件实例。 |
 
 ### 枚举
 

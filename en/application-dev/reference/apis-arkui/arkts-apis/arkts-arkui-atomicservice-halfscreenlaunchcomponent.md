@@ -6,7 +6,7 @@ Not supported
 
 ## Attributes
 
-The [universal attributes](../arkts-components/arkts-arkui-common-comp.md) are not supported.
+The [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 
 ## Modules to Import
 

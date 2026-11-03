@@ -20,7 +20,7 @@ The module defines information about the application component that automaticall
 abilityName: string
 ```
 
-Ability name.
+Ability name of the application, which identifies the specific Ability component to start.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ Ability type.
 appCloneIndex?: number
 ```
 
-Index of an application clone.
+Index of the app clone. The default value is 0, indicating the main application.
 
 **Type:** number
 
@@ -80,7 +80,7 @@ Index of an application clone.
 bundleName: string
 ```
 
-Bundle name.
+Bundle name of the application, which uniquely identifies the application.
 
 **Type:** string
 
@@ -100,7 +100,7 @@ Bundle name.
 readonly canUserModify?: boolean
 ```
 
-Whether the developer is allowed to modify the auto-startup status of this application. The options include **true** (yes) and **false** (no).
+Whether developers are allowed to modify the auto-start status of this application. The value true means allowed, and false means not allowed. The default value is false.
 
 **Type:** boolean
 

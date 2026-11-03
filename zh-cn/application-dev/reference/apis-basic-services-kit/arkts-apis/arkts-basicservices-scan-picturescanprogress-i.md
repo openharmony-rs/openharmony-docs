@@ -56,7 +56,7 @@ pictureFd: number
 progress: number
 ```
 
-当前进度百分比，范围从0~100。单位：百分比。
+当前进度百分比，取值范围为0~100。
 
 **类型：** number
 

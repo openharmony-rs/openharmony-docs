@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 getEncoded(): EncodingBlob
 ```
 
-Obtains the DER-encoded data of the X.500 Distinguished Name.
+Obtains an X.500 distinguished name encoded in DER format.
 
 **Since:** 12
 
@@ -38,7 +38,7 @@ Obtains the DER-encoded data of the X.500 Distinguished Name.
 
 | Type | Description |
 | --- | --- |
-| [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | DER-encoded X.500 Distinguished Name data obtained. |
+| [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | X.500 distinguished name encoded in DER format. |
 
 **Error codes:**
 
@@ -79,7 +79,7 @@ async function getEncoded() {
 getName(): string
 ```
 
-Obtains the DN in the form of a string.
+Obtains the distinguished name in the form of a string.
 
 **Since:** 12
 
@@ -93,7 +93,7 @@ Obtains the DN in the form of a string.
 
 | Type | Description |
 | --- | --- |
-| string | DN obtained as a string. |
+| string | Distinguished name obtained. |
 
 **Error codes:**
 
@@ -136,7 +136,7 @@ async function getName() {
 getName(encodingType: EncodingType): string
 ```
 
-Obtains RDN strings based on the specified encoding format.
+Obtains the string of the distinguished names based on the specified encoding type.
 
 **Since:** 20
 
@@ -156,7 +156,7 @@ Obtains RDN strings based on the specified encoding format.
 
 | Type | Description |
 | --- | --- |
-| string | RDN string. Multiple strings are separated by commas (,). |
+| string | String of the distinguished names separated by commas (,). |
 
 **Error codes:**
 
@@ -197,7 +197,7 @@ async function getName() {
 getName(type: string): Array<string>
 ```
 
-Obtains relative distinguished name (RDN) strings of the specified type.
+Obtains the string of the relative distinguished names (RDNs) of the specified types.
 
 **Since:** 12
 
@@ -211,13 +211,13 @@ Obtains relative distinguished name (RDN) strings of the specified type.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | string | Yes | Type of the RDNs to obtain. For example, **CN** and **OU**. |
+| type | string | Yes | RDN of the specified type. For example, **CN** and **OU**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | Array of RDN strings. |
+| Array&lt;string&gt; | RDN string array. |
 
 **Error codes:**
 
@@ -274,14 +274,14 @@ Obtains an array of RDN strings based on the specified type and encoding format.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | string | Yes | Type of the RDNs to obtain. For example, **CN** and **OU**. |
+| type | string | Yes | RDN of the specified type. For example, **CN** and **OU**. |
 | encodingType | [EncodingType](arkts-devicecertificate-cert-encodingtype-e.md) | Yes | Encoding format. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | Array of RDN strings. |
+| Array&lt;string&gt; | RDN string array. |
 
 **Error codes:**
 

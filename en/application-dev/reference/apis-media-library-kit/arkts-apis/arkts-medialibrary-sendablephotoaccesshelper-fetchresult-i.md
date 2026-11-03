@@ -38,7 +38,7 @@ Closes this FetchResult instance to invalidate it. After this instance is closed
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 
@@ -89,7 +89,7 @@ Obtains all the file assets in the result set. This API uses a promise to return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 
@@ -136,7 +136,7 @@ Obtains the total number of files in the result set.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 
@@ -183,7 +183,7 @@ Obtains the first asset in the result set. This API uses a promise to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 
@@ -230,7 +230,7 @@ Obtains the last asset in the result set. This API uses a promise to return the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 
@@ -279,7 +279,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 
@@ -333,8 +333,8 @@ Obtains the asset with the given index in the result set. This API uses a promis
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 
@@ -381,7 +381,7 @@ Checks whether the cursor is in the last row of the result set.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 

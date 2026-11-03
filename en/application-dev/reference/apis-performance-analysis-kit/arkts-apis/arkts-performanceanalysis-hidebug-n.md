@@ -40,6 +40,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | [getAppNativeMemInfoAsync](arkts-performanceanalysis-hidebug-getappnativememinfoasync-f.md#getappnativememinfoasync-1) | Obtains the memory information of application processes by reading the data of the **\/proc/{pid}/smaps_rollup** and **\/proc/{pid}/statm** nodes. This API uses a promise to return the result. |
 | [getAppNativeMemInfoWithCache](arkts-performanceanalysis-hidebug-getappnativememinfowithcache-f.md#getappnativememinfowithcache-1) | Obtains the memory information of the application process. This API uses the cache mechanism and has higher performance than the **getAppNativeMemInfo** API. The cache is valid for 5 minutes. |
 | [getAppRunningUniqueId](arkts-performanceanalysis-hidebug-getapprunninguniqueid-f.md#getapprunninguniqueid-1) | Obtains the running unique identifier of the application. |
+| [getAppSharedHeapObjectUsedSize](arkts-performanceanalysis-hidebug-getappsharedheapobjectusedsize-f.md#getappsharedheapobjectusedsize-1) | Obtains the memory usage of ArkTS shared heap objects in the virtual machine. |
 | [getAppThreadCpuUsage](arkts-performanceanalysis-hidebug-getappthreadcpuusage-f.md#getappthreadcpuusage-1) | Obtains the CPU usage of application threads. |
 | [getAppVMMemoryInfo](arkts-performanceanalysis-hidebug-getappvmmemoryinfo-f.md#getappvmmemoryinfo-1) | Obtains VM memory information. |
 | [getAppVMObjectUsedSize](arkts-performanceanalysis-hidebug-getappvmobjectusedsize-f.md#getappvmobjectusedsize-1) | Obtains the VM memory size occupied by ArkTS objects. |

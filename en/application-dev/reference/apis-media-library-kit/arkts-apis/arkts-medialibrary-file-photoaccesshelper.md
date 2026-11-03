@@ -53,6 +53,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [RecentPhotoOptions](arkts-medialibrary-photoaccesshelper-recentphotooptions-c.md) | Represents the configuration options of the recent images or videos. |
 | [RecommendationOptions](arkts-medialibrary-photoaccesshelper-recommendationoptions-c.md) | Defines the image recommendation options. The image recommendation feature depends on the image data analysis capability, which varies with devices. |
 | [RequestReadPermissionResult](arkts-medialibrary-photoaccesshelper-requestreadpermissionresult-c.md) | Describes the authorized URIs and invalid URIs. |
+| [SingleFileMovingPhotoUtil](arkts-medialibrary-photoaccesshelper-singlefilemovingphotoutil-c.md) | Single file moving photo manager. |
 | [VideoDurationFilter](arkts-medialibrary-photoaccesshelper-videodurationfilter-c.md) | Describes the configuration for video duration filtering. |
 
 <!--Del-->

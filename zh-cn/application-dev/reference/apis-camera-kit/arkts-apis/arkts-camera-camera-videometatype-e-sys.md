@@ -4,7 +4,7 @@
 enum VideoMetaType
 ```
 
-Video meta type.
+视频元数据类型。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Video meta type.
 VIDEO_META_MAKER_INFO = 0
 ```
 
-Video meta type for storing maker info.
+用于存储厂商信息的视频元数据类型。
 
 **起始版本：** 12
 

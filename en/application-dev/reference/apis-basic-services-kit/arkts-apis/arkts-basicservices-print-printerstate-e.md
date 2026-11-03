@@ -32,7 +32,7 @@ A new printer is added.
 PRINTER_CAPABILITY_UPDATED = 2
 ```
 
-The printer is updated.
+The printer capabilities are updated.
 
 **Since:** 14
 

@@ -1,7 +1,4 @@
-# PrintExtensionContext
-
-打印扩展上下文
-
+# PrintExtensionContext(打印扩展上下文)
 
 ## 汇总
 

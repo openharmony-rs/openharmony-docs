@@ -4,7 +4,7 @@
 interface CloudModelInfo
 ```
 
-Indicates cloud embedding model information.
+Defines the configuration information of the cloud-side model, which is configured when using the cloud-side text embedding model. You can obtain the cloud-side model information supported by the current device through [getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md).
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { intelligence } from '@kit.ArkData';
 modelType: string
 ```
 
-Indicates cloud embedding model type.
+Model type name, for example, "arkdata_text_embedding" indicates the cloud-side text embedding model.
 
 **Type:** string
 
@@ -42,7 +42,7 @@ Indicates cloud embedding model type.
 modelVersionCode?: string
 ```
 
-Indicates cloud embedding model version.
+Model version. The default value is empty.
 
 **Type:** string
 

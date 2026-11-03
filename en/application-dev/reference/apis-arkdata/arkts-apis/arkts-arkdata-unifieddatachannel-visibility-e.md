@@ -4,7 +4,7 @@
 enum Visibility
 ```
 
-Enumerates the data visibility levels.
+Enumerates the visibility levels of data.
 
 **Since:** 20
 
@@ -18,7 +18,7 @@ Enumerates the data visibility levels.
 ALL
 ```
 
-Visible to all applications.
+Visibility level, visible to all applications.
 
 **Since:** 20
 
@@ -34,7 +34,7 @@ Visible to all applications.
 OWN_PROCESS
 ```
 
-Visible only to the data provider.
+Visibility level, visible only to the data provider.
 
 **Since:** 20
 

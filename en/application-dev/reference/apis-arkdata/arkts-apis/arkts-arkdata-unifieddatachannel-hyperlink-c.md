@@ -4,7 +4,7 @@
 class Hyperlink extends Text
 ```
 
-Represents the hyperlink data. It is a child class of [Text](arkts-arkdata-unifieddatachannel-text-c.md).
+A subclass of [Text](arkts-arkdata-unifieddatachannel-text-c.md) that describes hyperlink data.
 
 **Inheritance/Implementation:** Hyperlink extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 description?: string
 ```
 
-Indicates the description of a link
+Description of the link content. This is an optional field, and the default value is an empty string.
 
 **Type:** string
 
@@ -46,7 +46,7 @@ Indicates the description of a link
 get url(): string
 ```
 
-Indicates the url of a link
+URL of the link.
 
 **Type:** string
 
@@ -64,7 +64,7 @@ Indicates the url of a link
 set url(value: string)
 ```
 
-Indicates the url of a link
+URL of the link.
 
 **Type:** string
 

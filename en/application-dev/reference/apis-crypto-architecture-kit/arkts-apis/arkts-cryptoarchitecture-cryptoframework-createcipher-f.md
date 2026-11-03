@@ -12,9 +12,9 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 function createCipher(transformation: string): Cipher
 ```
 
-Creates a **Cipher** instance.
+Create a **Cipher** instance.
 
-<br>For details about the supported specifications, see[Encryption and Decryption Algorithm Specifications](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md).
+<br>For details about the supported specifications, see [Encryption and Decryption Algorithm Specifications](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md).
 
 > **NOTE:** 
 > 

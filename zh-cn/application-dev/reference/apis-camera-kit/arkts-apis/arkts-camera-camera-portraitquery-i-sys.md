@@ -4,7 +4,7 @@
 interface PortraitQuery
 ```
 
-Queries portrait parameters.
+查询人像参数。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getSupportedPortraitEffects(): Array<PortraitEffect>
 ```
 
-Obtains the supported portrait effects.
+获取支持的人像效果。
 
 **起始版本：** 10
 
@@ -40,7 +40,7 @@ Obtains the supported portrait effects.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[PortraitEffect](arkts-camera-camera-portraiteffect-e-sys.md)&gt; | Array of portrait effects supported. |
+| Array&lt;[PortraitEffect](arkts-camera-camera-portraiteffect-e-sys.md)&gt; | 支持的人像效果数组。 |
 
 **错误码：**
 

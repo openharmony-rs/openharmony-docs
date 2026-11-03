@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryAllActivePrintJobs(): Promise<PrintJob[]>
 ```
 
-查询所有活跃中的打印任务，使用Promise进行异步回调。
+查询所有活跃中的打印任务，使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -28,7 +28,7 @@ function queryAllActivePrintJobs(): Promise<PrintJob[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[PrintJob](arkts-basicservices-print-printjob-i.md)[]&gt; | Promise used to return a list of all active print jobs. |
+| Promise&lt;[PrintJob](arkts-basicservices-print-printjob-i.md)[]&gt; | Promise对象，返回包含所有活跃中的打印任务的列表。 |
 
 **错误码：**
 

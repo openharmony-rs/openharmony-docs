@@ -47,7 +47,7 @@ Commits the modification on the album attributes to the database. This API uses 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **Examples**
 

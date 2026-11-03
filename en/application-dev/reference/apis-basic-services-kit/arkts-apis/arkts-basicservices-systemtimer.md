@@ -27,6 +27,7 @@ import { systemTimer } from '@kit.BasicServicesKit';
 | [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer-2) | Creates a timer. This API uses a promise to return the timer ID. |
 | [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1) | Destroys a timer. This API uses an asynchronous callback to return the result. |
 | [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-2) | Destroys a timer. This API uses a promise to return the result. |
+| [setPowerOnTimerEnabled](arkts-basicservices-systemtimer-setpowerontimerenabled-f-sys.md#setpowerontimerenabled-1) | Sets the enabled state of the power-on timers that match the conditions specified in **options**. This API uses a promise to return the result. |
 | [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer-1) | Starts a timer. This API uses an asynchronous callback to return the result. |
 | [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer-2) | Starts a timer. This API uses a promise to return the result. |
 | [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer-1) | Stops the timer. This API uses an asynchronous callback to return the result. |
@@ -38,6 +39,7 @@ import { systemTimer } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
+| [PowerOnTimerEnabledOptions](arkts-basicservices-systemtimer-powerontimerenabledoptions-i-sys.md) | Defines the options for [setPowerOnTimerEnabled](arkts-basicservices-systemtimer-setpowerontimerenabled-f-sys.md). |
 | [TimerOptions](arkts-basicservices-systemtimer-timeroptions-i-sys.md) | Defines the initialization options for the system timer. |
 <!--DelEnd-->
 

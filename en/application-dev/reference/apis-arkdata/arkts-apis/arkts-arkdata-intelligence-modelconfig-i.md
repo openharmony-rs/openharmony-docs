@@ -4,7 +4,7 @@
 interface ModelConfig
 ```
 
-Manages configurations of the embedding model.
+Represents the configuration an embedded model.
 
 **Since:** 15
 
@@ -24,7 +24,7 @@ import { intelligence } from '@kit.ArkData';
 cachePath?: string
 ```
 
-If NPU is used for accelerating, a local path is required for model caching.
+If NPU is used for acceleration, a local path is required for model caching. The format is /xxx/xxx/xxx, where xxx is the path address, for example, "/data". The maximum length is 512 characters. The default value is "". An exception is thrown when the length exceeds the limit.
 
 **Type:** string
 
@@ -40,7 +40,7 @@ If NPU is used for accelerating, a local path is required for model caching.
 isNpuAvailable: boolean
 ```
 
-Indicates whether NPU is used.
+Whether to use the NPU to accelerate the vectorization process. The value **true** means to use the NPU, and the value **false** means the opposite. If this parameter is set to **true** but the device does not support NPUs, loading an embedding model will trigger error 31300000.
 
 **Type:** boolean
 
@@ -56,7 +56,7 @@ Indicates whether NPU is used.
 modelInfo?: CloudModelInfo
 ```
 
-Indicates cloud embedding model information.
+Type and version information of the cloud-side model. Configure this parameter when a text embedding model is used. The supported model information is obtained through the [getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md) API. The default value is empty.
 
 **Type:** [CloudModelInfo](arkts-arkdata-intelligence-cloudmodelinfo-i.md)
 
@@ -74,7 +74,7 @@ Indicates cloud embedding model information.
 networkPolicy?: NetworkPolicy
 ```
 
-Indicates cloud embedding model network policy.
+Network policy used when downloading the cloud-side model. The default value is WIFI_ONLY. This parameter takes effect only when a text embedding model is used, and does not take effect when an image embedding model is used.
 
 **Type:** [NetworkPolicy](arkts-arkdata-intelligence-networkpolicy-e.md)
 

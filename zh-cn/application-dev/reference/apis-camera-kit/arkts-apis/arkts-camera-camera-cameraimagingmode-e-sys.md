@@ -4,7 +4,7 @@
 enum CameraImagingMode
 ```
 
-Enumerates the camera imaging modes.
+枚举，相机成像模式。
 
 **起始版本：** 26.0.1
 
@@ -20,7 +20,7 @@ Enumerates the camera imaging modes.
 AUTO = 0
 ```
 
-Auto imaging mode.
+自动成像模式。
 
 **起始版本：** 26.0.1
 
@@ -38,7 +38,7 @@ Auto imaging mode.
 IR = 2
 ```
 
-IR imaging mode.
+红外成像模式。
 
 **起始版本：** 26.0.1
 
@@ -56,7 +56,7 @@ IR imaging mode.
 RGB = 1
 ```
 
-RGB imaging mode.
+RGB 成像模式。
 
 **起始版本：** 26.0.1
 

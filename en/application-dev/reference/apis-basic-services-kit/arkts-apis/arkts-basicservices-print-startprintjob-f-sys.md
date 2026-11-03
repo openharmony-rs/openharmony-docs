@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void
 ```
 
-Starts the specified print job. This API uses an asynchronous callback to return the result.
+Starts a print job. This API uses an asynchronous callback to return the result. You can listen for the [on('jobStateChange')](arkts-basicservices-print-on-f-sys.md#onjobstatechange) event to obtain the print job state change.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Starts the specified print job. This API uses an asynchronous callback to return
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Information about the print job. |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Print job information, which is used to specify the detailed configuration of the print job to be executed, including the file list, task ID, job ID, and print parameters. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -81,7 +81,7 @@ print.startPrintJob(jobInfo, (error: BusinessError) => {
 function startPrintJob(jobInfo: PrintJob): Promise<void>
 ```
 
-Starts the specified print job. This API uses a promise to return the result.
+Starts a print job. This API uses a promise to return the result. You can listen for the [on('jobStateChange')](arkts-basicservices-print-on-f-sys.md#onjobstatechange) event to obtain the print job state change.
 
 **Since:** 10
 
@@ -97,7 +97,7 @@ Starts the specified print job. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Information about the print job. |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Print job information, which is used to specify the detailed configuration of the print job to be executed, including the file list, task ID, printer ID, and print parameters. |
 
 **Return value:**
 

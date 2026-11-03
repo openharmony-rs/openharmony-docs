@@ -21,7 +21,7 @@ import { AVInputCastPicker } from '@kit.AVSessionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnPickerStateCallback](arkts-avsession-onpickerstatecallback-t.md) | Callback for picker state |
+| [OnPickerStateCallback](arkts-avsession-onpickerstatecallback-t.md) |  |
 
 ## 示例
 

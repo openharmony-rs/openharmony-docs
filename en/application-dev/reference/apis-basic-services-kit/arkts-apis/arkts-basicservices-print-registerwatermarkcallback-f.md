@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function registerWatermarkCallback(callback: WatermarkCallback): void
 ```
 
-Register to listen for watermark handling.
+Registers an event listener for forcible watermark processing. A forcible watermark is the watermark that must be added to printed files according to enterprise management policies. In enterprise management scenarios, when a watermark (such as a company logo or confidentiality level mark) needs to be forcibly added to printed files, you can use this API to register a watermark processing callback.
 
 **Since:** 24
 
@@ -28,7 +28,7 @@ Register to listen for watermark handling.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | Yes | Indicates the callback type used in registering to listen for watermark handling. <br>Indicates the callback type used in registering to listen for watermark handling. |
+| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | Yes | Callback type used to register an event listener for forcible watermark processing. |
 
 **Error codes:**
 

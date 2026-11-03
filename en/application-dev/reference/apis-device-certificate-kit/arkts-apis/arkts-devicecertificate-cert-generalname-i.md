@@ -4,7 +4,7 @@
 interface GeneralName
 ```
 
-Represents an X.509 GeneralName as defined in RFC 5280, which can appear in Subject Alternative Name and other extensions.
+Represents an X.509 general name defined in RFC 5280, which can be used in the subject alternative name and other extensions.
 
 **Since:** 12
 
@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 name?: Uint8Array
 ```
 
-DER-encoded value of the GeneralName.
+Value of **GeneralName** encoded in DER format.
 
 **Type:** Uint8Array
 
@@ -42,7 +42,7 @@ DER-encoded value of the GeneralName.
 type: GeneralNameType
 ```
 
-Type of the GeneralName.
+General name type.
 
 **Type:** [GeneralNameType](arkts-devicecertificate-cert-generalnametype-e.md)
 

@@ -21,7 +21,9 @@ import { deviceStatus } from '@kit.MultimodalAwarenessKit';
 | 名称 | 说明 |
 | --- | --- |
 | [off('steadyStandingDetect')](arkts-multimodalawareness-devicestatus-off-f.md#offsteadystandingdetect) | 取消订阅设备静止姿态感知（支架态）事件，用于应用在退出页面或不再需要监听支架态变化的场景。调用后释放相关资源。 |
+| [offDropDetect](arkts-multimodalawareness-devicestatus-offdropdetect-f.md#offdropdetect-1) | 取消订阅跌落检测事件。 |
 | [on('steadyStandingDetect')](arkts-multimodalawareness-devicestatus-on-f.md#onsteadystandingdetect) | 订阅设备静止姿态感知（支架态）事件。建议在不需要时调用off()取消订阅，释放资源。 |
+| [onDropDetect](arkts-multimodalawareness-devicestatus-ondropdetect-f.md#ondropdetect-1) | 订阅跌落检测事件。 |
 
 <!--Del-->
 ### 函数（系统接口）
@@ -43,4 +45,5 @@ import { deviceStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [DropDetectionStatus](arkts-multimodalawareness-devicestatus-dropdetectionstatus-e.md) | 定义手机跌落检测状态。 |
 | [SteadyStandingStatus](arkts-multimodalawareness-devicestatus-steadystandingstatus-e.md) | 设备静止姿态感知状态（支架态）。 |

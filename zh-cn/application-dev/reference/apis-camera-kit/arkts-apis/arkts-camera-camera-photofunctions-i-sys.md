@@ -4,7 +4,7 @@
 interface PhotoFunctions extends FlashQuery, AutoExposureQuery, ManualExposureQuery, FocusQuery, ZoomQuery, BeautyQuery, ColorEffectQuery, ColorManagementQuery, MacroQuery, SceneDetectionQuery
 ```
 
-Photo Functions object.
+拍照功能对象。
 
 **继承/实现关系：** PhotoFunctions extends [FlashQuery](arkts-camera-camera-flashquery-i.md), [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md), [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md), [FocusQuery](arkts-camera-camera-focusquery-i.md), [ZoomQuery](arkts-camera-camera-zoomquery-i.md)<!--Del-->, [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md)<!--DelEnd--><!--Del-->, [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md)<!--DelEnd-->, [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md), [MacroQuery](arkts-camera-camera-macroquery-i.md)<!--Del-->, [SceneDetectionQuery](arkts-camera-camera-scenedetectionquery-i-sys.md)<!--DelEnd-->
 

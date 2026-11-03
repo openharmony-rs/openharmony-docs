@@ -4,7 +4,7 @@
 interface OIS extends OISQuery
 ```
 
-OIS (Optical Image Stabilization) interface.
+提供了与光学防抖（OIS）相关的操作能力。
 
 **继承/实现关系：** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md)
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 setOISMode(mode: OISMode): void
 ```
 
-Sets the OIS mode.
+设置光学防抖模式。
 
 **起始版本：** 24
 
@@ -42,7 +42,7 @@ Sets the OIS mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [OISMode](arkts-camera-camera-oismode-e.md) | 是 | The OIS mode to set. |
+| mode | [OISMode](arkts-camera-camera-oismode-e.md) | 是 | 待设置的光学防抖模式。 |
 
 **错误码：**
 
@@ -57,7 +57,7 @@ Sets the OIS mode.
 setOISModeCustom(pitch: number, yaw: number): void
 ```
 
-Sets custom OIS bias values for each axis.
+设置各轴的自定义光学防抖偏置值。
 
 **起始版本：** 24
 
@@ -73,8 +73,8 @@ Sets custom OIS bias values for each axis.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pitch | number | 是 | Bias value for pitch axis. |
-| yaw | number | 是 | Bias value for yaw axis. |
+| pitch | number | 是 | pitch 轴偏置值。 |
+| yaw | number | 是 | yaw 轴偏置值。 |
 
 **错误码：**
 

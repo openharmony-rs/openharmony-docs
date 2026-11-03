@@ -4,9 +4,9 @@
 interface Verify
 ```
 
-Signature verification interface, defining methods for verifying signatures using a public key. Before use, you must create a **Verify** instance by using [createVerify(algName: string): Verify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md). Invoke **init()**, **update()**, and **verify()** in this class in sequence to complete the signature verification. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
+Provides a signature verification API for verifying signature data based on the public key. Before calling this API, you need to construct this instance using [createVerify(algName: string): Verify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md). Invoke **init()**, **update()**, and **verify()** in this class in sequence to complete the signature verification. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
-<br>The **Verify** class does not support repeated initialization. When a new key is used for signature verification, you must create a new **Verify** instance and call **init()** for initialization.
+<br>The **Verify** instance does not support repeated initialization. When a new key is used for signature verification, you must create a new **Verify** instance and call **init()** for initialization.
 
 <br>The signature verification mode is determined in **createVerify()**, and the key is set by **init()**.
 
@@ -422,9 +422,7 @@ function testSetVerifySpec() {
 setVerifySpec(itemType: SignSpecItem, itemValue: number | Uint8Array): void
 ```
 
-Sets the specified parameter for the Verify instance.
-
-<br>Currently, only PSS_SALT_LEN in RSA and USER_ID in SM2 are supported.
+Sets signature verification specifications. You can use this API to set signature verification parameters that cannot be set by [createVerify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md). Currently, only RSA and SM2 are supported. Since API version 11, SM2 signature verification parameters can be set.
 
 <br>The parameters for signature verification must be the same as those for signing.
 
@@ -442,8 +440,8 @@ Sets the specified parameter for the Verify instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | Yes | Indicates the specified parameter type. |
-| itemValue | number &#124; Uint8Array | Yes | The value of the specified parameter. |
+| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | Yes | Signature verification parameter to set. |
+| itemValue | number &#124; Uint8Array | Yes | Value of the signature verification parameter to set. |
 
 **Error codes:**
 
@@ -475,7 +473,7 @@ function testSetVerifySpec() {
 setVerifySpec(itemType: SignSpecItem, itemValue: number | Uint8Array | boolean): void
 ```
 
-Sets the specified parameter for the Verify instance.
+Sets signature verification specifications. String parameters of the signature verification algorithm are specified using **createVerify**. The ML-DSA parameters are set using this API, including whether to use external mu pre-hashing and the context string.
 
 <br>Currently, only PSS_SALT_LEN in RSA, USER_ID in SM2, and ML_DSA_DETERMINISTIC, ML_DSA_MU and ML_DSA_CONTEXT in ML-DSA are supported.
 
@@ -496,7 +494,7 @@ Sets the specified parameter for the Verify instance.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | Yes | Indicates the specified parameter type. |
-| itemValue | number &#124; Uint8Array &#124; boolean | Yes | The value of the specified parameter. |
+| itemValue | number &#124; Uint8Array &#124; boolean | Yes | Value of the signature verification parameter to set. For details about the parameters, see SignSpecItem. |
 
 **Error codes:**
 
@@ -702,7 +700,7 @@ Updates the data for signature verification. This API returns the result synchro
 verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback<boolean>): void
 ```
 
-Verifies the message, including the update data. This API uses an asynchronous callback to return the result.
+Verifies the signature. This API returns the verification result. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -718,7 +716,7 @@ Verifies the message, including the update data. This API uses an asynchronous c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Data to be verified. |
+| data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Pointer to the data with the signature to be verified. |
 | signatureData | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | The signature data. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** indicates that the signature verification is successful, and **false** indicates the opposite. |
 
@@ -774,7 +772,7 @@ Verifies the signature of the data. This API uses an asynchronous callback to re
 verify(data: DataBlob, signatureData: DataBlob): Promise<boolean>
 ```
 
-Verifies the message, including the update data. This API uses a promise to return the result.
+Verifies the signature. This API returns the verification result. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -790,14 +788,14 @@ Verifies the message, including the update data. This API uses a promise to retu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Data to be verified. |
+| data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Pointer to the data with the signature to be verified. |
 | signatureData | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | The signature data. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the signature verification is successful, and **false** indicates the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return the verification result. **true** if the signature verification is successful; **false** otherwise. |
 
 **Error codes:**
 
@@ -838,7 +836,7 @@ Verifies the signature of the data. This API uses a promise to return the result
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the signature verification is successful, and **false** indicates the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return the signature verification result. The value **true** indicates that the signature verification is successful, and **false** indicates the opposite. |
 
 **Error codes:**
 
@@ -893,7 +891,7 @@ Verifies the signature. This API returns the verification result synchronously.
 
 **Examples**
 
-For more examples of signing and signature verification, see Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -965,7 +963,7 @@ function verifyByCallback() {
 }
 ```
 
-For more examples, see Signing and Signature Verification with an RSA Key Pair.
+For more examples, see [Signing and Signature Verification with an RSA Key Pair](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1039,7 +1037,7 @@ async function verifyByPromise() {
 }
 ```
 
-For more examples of signing and signature verification, see Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1119,7 +1117,7 @@ function verifyBySync() {
 readonly algName: string
 ```
 
-Indicates the algorithm name of the Verify instance.
+Algorithm to be used for signature verification.
 
 **Type:** string
 

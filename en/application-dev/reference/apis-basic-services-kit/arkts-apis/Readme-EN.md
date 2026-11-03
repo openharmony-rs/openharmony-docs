@@ -219,7 +219,7 @@
   - [Available](arkts-basicservices-annotation-available-a.md)
   - [SuppressWarnings](arkts-basicservices-annotation-suppresswarnings-a.md)
   - [SuppressWarningsType](arkts-basicservices-annotation-suppresswarningstype-e.md)
-- [@ohos.app.ability.PrintExtensionAbility](arkts-basicservices-app-ability-printextensionability.md)
+- [@ohos.app.ability.PrintExtensionAbility(Print Extension Ability)](arkts-basicservices-app-ability-printextensionability.md)
   - [PrintExtensionAbility](arkts-basicservices-app-ability-printextensionability-printextensionability-c.md)
   <!--Del-->
   - [PrintExtensionAbility(system api)](arkts-basicservices-app-ability-printextensionability-printextensionability-c-sys.md)<!--DelEnd-->
@@ -414,7 +414,7 @@
   - [rebootDevice](arkts-basicservices-power-rebootdevice-f.md)
   - [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md)
   - [PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md)
-- [@ohos.print](arkts-basicservices-print.md)
+- [@ohos.print(Print)](arkts-basicservices-print.md)
   - [addPrinter](arkts-basicservices-print-addprinter-f.md)
   <!--Del-->
   - [addPrinters(system api)](arkts-basicservices-print-addprinters-f-sys.md)<!--DelEnd-->
@@ -651,7 +651,7 @@
   - [isRunningLockTypeSupported](arkts-basicservices-runninglock-isrunninglocktypesupported-f.md)
   - [RunningLock](arkts-basicservices-runninglock-runninglock-c.md)
   - [RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md)
-- [@ohos.scan](arkts-basicservices-scan.md)
+- [@ohos.scan(Scan)](arkts-basicservices-scan.md)
   <!--Del-->
   - [addScanner(system api)](arkts-basicservices-scan-addscanner-f-sys.md)<!--DelEnd-->
   - [cancelScan](arkts-basicservices-scan-cancelscan-f.md)
@@ -845,9 +845,13 @@
   <!--Del-->
   - [destroyTimer(system api)](arkts-basicservices-systemtimer-destroytimer-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [setPowerOnTimerEnabled(system api)](arkts-basicservices-systemtimer-setpowerontimerenabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [startTimer(system api)](arkts-basicservices-systemtimer-starttimer-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [stopTimer(system api)](arkts-basicservices-systemtimer-stoptimer-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PowerOnTimerEnabledOptions(system api)](arkts-basicservices-systemtimer-powerontimerenabledoptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TimerOptions(system api)](arkts-basicservices-systemtimer-timeroptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1256,7 +1260,7 @@
   - [UploadRequestOptions](arkts-basicservices-system-request-uploadrequestoptions-i.md)
   - [UploadResponse](arkts-basicservices-system-request-uploadresponse-i.md)
 - application<!--arkts-basicserviceskit-application-->
-  - [PrintExtensionContext](arkts-basicservices-printextensioncontext.md)
+  - [PrintExtensionContext(PrintExtensionContext)](arkts-basicservices-printextensioncontext.md)
     - [PrintExtensionContext](arkts-basicservices-printextensioncontext-c.md)
 - commonEvent<!--arkts-basicserviceskit-commonevent-->
   - [commonEventData(CommonEventData)](arkts-basicservices-commoneventdata.md)

@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function offPrinterInfoQuery(callback?: PrinterInfoQueryCallback): void
 ```
 
-查询到的打印机信息的Unregister事件回调。
+取消注册查询到的打印机信息的事件回调。
 
 **起始版本：** 24
 
@@ -30,7 +30,7 @@ function offPrinterInfoQuery(callback?: PrinterInfoQueryCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PrinterInfoQueryCallback](arkts-basicservices-print-printerinfoquerycallback-t-sys.md) | 否 | 查询到的打印机信息的回调函数。 |
+| callback | [PrinterInfoQueryCallback](arkts-basicservices-print-printerinfoquerycallback-t-sys.md) | 否 | 查询到的打印机信息的回调函数。如果未传入该参数，将取消该调用者注册的所有回调。 |
 
 **错误码：**
 

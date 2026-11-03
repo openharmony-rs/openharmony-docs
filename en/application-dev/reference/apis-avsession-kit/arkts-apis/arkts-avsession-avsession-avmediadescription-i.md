@@ -134,7 +134,7 @@ dataSrc?: media.AVDataSrcDescriptor
 
 DataSource descriptor. The caller ensures the fileSize and callback are valid.
 
-**Type:** [media.AVDataSrcDescriptor](../../apis-media/arkts-apis/arkts-media-media-avdatasrcdescriptor-i.md)
+**Type:** [media.AVDataSrcDescriptor](../../apis-media-kit/arkts-apis/arkts-media-media-avdatasrcdescriptor-i.md)
 
 **Since:** 12
 
@@ -238,7 +238,7 @@ fdSrc?: media.AVFileDescriptor
 
 Media file descriptor.
 
-**Type:** [media.AVFileDescriptor](../../apis-media/arkts-apis/arkts-media-media-avfiledescriptor-i.md)
+**Type:** [media.AVFileDescriptor](../../apis-media-kit/arkts-apis/arkts-media-media-avfiledescriptor-i.md)
 
 **Since:** 10
 

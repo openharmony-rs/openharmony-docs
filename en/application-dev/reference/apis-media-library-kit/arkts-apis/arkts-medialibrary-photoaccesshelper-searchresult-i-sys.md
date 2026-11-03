@@ -6,7 +6,7 @@ interface SearchResult
 
 Result of a search query.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 <!--Device-photoAccessHelper-interface SearchResult--><!--Device-photoAccessHelper-interface SearchResult-End-->
 
@@ -30,7 +30,7 @@ List of URIs matching the search query.
 
 **Type:** string[]
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

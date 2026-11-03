@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function updatePrinters(printers: Array<PrinterInfo>, callback: AsyncCallback<void>): void
 ```
 
-更新特定打印机的信息，使用callback异步回调。
+更新指定打印机的信息，使用callback异步回调。
 
 **起始版本：** 10
 
@@ -73,7 +73,7 @@ print.updatePrinters([printerInfo], (error: BusinessError) => {
 function updatePrinters(printers: Array<PrinterInfo>): Promise<void>
 ```
 
-更新特定打印机的信息，使用Promise异步回调。
+更新指定打印机的信息，使用Promise异步回调。
 
 **起始版本：** 10
 

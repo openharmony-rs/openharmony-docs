@@ -4,15 +4,13 @@ As a child component of the **Text** component, **SymbolSpan** is used to displa
 
 > **NOTE:** 
 > 
-> - This component is supported since API version 11. New APIs of later versions are marked with a superscript to indicate their
-> 
 > - This component supports inheriting the attributes of the parent **Text** component. That is, if the child component does not set an attribute but the parent component does, the child component inherits all the attributes set by the parent component.
 > 
 > - **SymbolSpan** does not gray out when dragged.
 
 ## Child Components
 
-Not supported
+Not supported.
 
 ## SymbolSpan
 

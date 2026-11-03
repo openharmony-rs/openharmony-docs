@@ -18,7 +18,7 @@ PageNodeInfo defines the page node information used for auto-fill.
 depth: number
 ```
 
-The depth of page node.
+Depth of the page node, in px.
 
 **Type:** number
 
@@ -38,7 +38,7 @@ The depth of page node.
 enableAutoFill: boolean
 ```
 
-The auto fill flag of page node.
+Status of the auto-fill feature. true if enabled, false otherwise.
 
 **Type:** boolean
 
@@ -58,7 +58,7 @@ The auto fill flag of page node.
 metadata?: string
 ```
 
-The metadata of a node.
+Metadata of the page node, used to carry custom attributes or configuration information of the node to help the auto-fill service perform more precise matching and filling. The default value is an empty string.
 
 **Type:** string
 
@@ -78,7 +78,7 @@ The metadata of a node.
 passwordRules?: string
 ```
 
-The password rules of page node.
+Rule for auto-generating a password, used to specify the format and constraints of the generated password (such as length and character types). It takes effect only when the auto-fill type is password.
 
 **Type:** string
 
@@ -98,7 +98,7 @@ The password rules of page node.
 tag: string
 ```
 
-The tag of page node.
+Tag name of the page node, used to identify the component type of the node.
 
 **Type:** string
 

@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 ```
 
-发现usb打印机，使用Promise异步回调。
+发现USB打印机，使用Promise异步回调。返回发现的USB打印机信息，其打印机URI可用于[queryPrinterCapabilityByUri](arkts-basicservices-print-queryprintercapabilitybyuri-f-sys.md)查询打印机能力或[addPrinterToCups](arkts-basicservices-print-addprintertocups-f-sys.md)添加打印机到CUPS。
 
 **起始版本：** 18
 
@@ -28,7 +28,7 @@ function discoverUsbPrinters(): Promise<Array<PrinterInformation>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)&gt;&gt; | Promise对象，返回发现到的usb打印机信息。 |
+| Promise&lt;Array&lt;[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)&gt;&gt; | Promise对象，返回发现的USB打印机信息。 |
 
 **错误码：**
 

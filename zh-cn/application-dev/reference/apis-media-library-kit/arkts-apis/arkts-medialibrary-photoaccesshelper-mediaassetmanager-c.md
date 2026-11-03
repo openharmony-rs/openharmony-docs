@@ -56,7 +56,7 @@ static cancelRequest(context: Context, requestId: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>2.The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
 
 **示例**
@@ -113,7 +113,7 @@ static loadMovingPhoto(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
 
 **示例**
@@ -129,6 +129,41 @@ async function example(context: Context) {
   }
 }
 ```
+
+## loadSingleFileMovingPhoto
+
+```TypeScript
+static loadSingleFileMovingPhoto(singleFileMovingPhotoUri: string): MovingPhoto
+```
+
+加载合一动态照片为MovingPhoto对象
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-MediaAssetManager-static loadSingleFileMovingPhoto(singleFileMovingPhotoUri: string): MovingPhoto--><!--Device-MediaAssetManager-static loadSingleFileMovingPhoto(singleFileMovingPhotoUri: string): MovingPhoto-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| singleFileMovingPhotoUri | string | 是 | 合一动态照片uri。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [MovingPhoto](arkts-medialibrary-photoaccesshelper-movingphoto-i.md) | MovingPhoto对象 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The singleFileMovingPhotoUri is empty or can not open. <br>2. The singleFileMovingPhotoUri is belonging to MediaLibrary. |
+| 23800109 | Incorrect file format. |
 
 ## quickRequestImage
 
@@ -171,7 +206,7 @@ static quickRequestImage(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
 **示例**
@@ -253,7 +288,7 @@ static requestImage(context: Context, asset: PhotoAsset, requestOptions: Request
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
 **示例**
@@ -339,7 +374,7 @@ static requestImageData(context: Context, asset: PhotoAsset, requestOptions: Req
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
 **示例**
@@ -429,7 +464,7 @@ static requestMovingPhoto(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**适用版本：** 18+ |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
@@ -520,7 +555,7 @@ static requestVideoFile(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**适用版本：** 15+ |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.The dataHandler parameter must be a valid object; <br>3.User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 

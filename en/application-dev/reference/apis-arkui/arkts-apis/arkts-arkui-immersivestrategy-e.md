@@ -102,7 +102,7 @@ Expand the title area of bindSheet as safe area for the content region.
 GRID_EXPAND_SAFE_AREA = 2
 ```
 
-Avoid the window control buttons, which are the close, minimize and zoom buttons.
+Expands the clip content of the Grid component to the safe area.
 
 **Since:** 26.1.0
 

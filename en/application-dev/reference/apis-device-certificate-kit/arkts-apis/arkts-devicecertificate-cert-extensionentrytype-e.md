@@ -4,7 +4,7 @@
 enum ExtensionEntryType
 ```
 
-Enumerates the entry types in certificate extensions that can be obtained.
+Enumerates certificate extension types.
 
 **Since:** 10
 
@@ -18,7 +18,7 @@ Enumerates the entry types in certificate extensions that can be obtained.
 EXTENSION_ENTRY_TYPE_ENTRY = 0
 ```
 
-Entire extension entry.
+Entire extension.
 
 **Since:** 10
 
@@ -34,7 +34,7 @@ Entire extension entry.
 EXTENSION_ENTRY_TYPE_ENTRY_CRITICAL = 1
 ```
 
-Critical attribute (**critical** flag) of the extension entry.
+**critical** attribute of the extension.
 
 **Since:** 10
 
@@ -50,7 +50,7 @@ Critical attribute (**critical** flag) of the extension entry.
 EXTENSION_ENTRY_TYPE_ENTRY_VALUE = 2
 ```
 
-Value (extension-specific data) of the extension entry.
+Value of the extension (extension-specific data).
 
 **Since:** 10
 

@@ -22,9 +22,11 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 
 拖拽文本的状态下不生效。
 
+`addText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑。预上屏状态由输入法管理，应用层调用`addText`/`deleteText`会破坏输入法的状态管理，因此应避免在预上屏状态下调用`addText`。
+
 > **说明：** 
 > 
-> `addText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。
+> 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
 
 **起始版本：** 15
 
@@ -41,7 +43,7 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 插入的文本内容。 |
-| textOperationOptions | [TextContentControllerOptions](arkts-arkui-common-comp-textcontentcontrolleroptions-i.md) | 否 | 插入文本的配置选项，不设置时默认插入文本至末尾。 |
+| textOperationOptions | [TextContentControllerOptions](arkts-arkui-common-comp-textcontentcontrolleroptions-i.md) | 否 | 插入文本的配置选项，用于自定义插入位置等参数。<br>默认值：无（插入文本至末尾）。 |
 
 **返回值：**
 
@@ -58,7 +60,6 @@ clearPreviewText(): void
 通知输入法清除当前的预上屏文本内容。
 
 > **说明：** 
-> 
 > 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
 
 **起始版本：** 17
@@ -84,7 +85,6 @@ deleteBackward(): void
 `deleteBackward`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不支持在预上屏场景下使用。
 
 > **说明：** 
-> 
 > 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
 
 **起始版本：** 23
@@ -105,21 +105,17 @@ deleteText(range?: TextRange): void
 
 删除已编辑文本的指定区域的内容。
 
+拖拽文本的状态下不生效。
+
+`deleteText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑。预上屏状态由输入法管理，应用层调用`addText`/`deleteText`会破坏输入法的状态管理，因此应避免在预上屏状态下调用`deleteText`。
+
 > **说明：** 
 > 
-> - 拖拽文本的状态下不生效。
-> 
-> - `deleteText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。
-> 
-> - 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
-
-> **与`deleteBackward`的差异**
-> 
-> - `deleteText`支持范围删除，可删除任意指定区域的文本；`deleteBackward`模拟用户删除操作，删除光标前一个字符或已选中文本。
-> 
-> - `deleteText`在预上屏状态下应避免调用，`deleteBackward`在预上屏场景下不支持使用。
-> 
-> - 建议根据删除需求选择：需要删除指定范围文本时使用`deleteText`，需要删除光标前字符时使用`deleteBackward`。
+> 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
+> **与[deleteBackward](#deletebackward)的差异：**
+> - deleteText支持范围删除，可删除任意指定区域的文本；deleteBackward模拟用户删除操作，删除光标前一个字符或已选中文本。
+> - deleteText在预上屏状态下应避免调用，deleteBackward在预上屏场景下不支持使用。
+> - 建议根据删除需求选择：需要删除指定范围文本时使用deleteText，需要删除光标前字符时使用deleteBackward。
 
 **起始版本：** 15
 
@@ -135,7 +131,7 @@ deleteText(range?: TextRange): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | 删除文本的范围，包括删除文本的起始位置和终止位置。<br>起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于文本长度视为文本长度。<br>未指定删除范围时，默认将删除全部文本。未指定删除文本的起始位置，则默认从下标0开始删除；未指定删除文本的终止位置，则默认以文本末尾作为删除的结束点。 |
+| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | 删除文本的范围，包括删除文本的起始位置和终止位置。<br> <br>未指定删除范围时，默认将删除全部文本。<br>未指定删除文本的起始位置，则默认从下标0开始删除；未指定删除文本的终止位置，则默认以文本末尾作为删除的结束点。 |
 
 ## getCaretOffset
 
@@ -155,7 +151,7 @@ getCaretOffset() : CaretOffset
 > 
 > - 返回值中的位置信息是光标相对于可编辑组件的位置。
 > 
-> - 当无法获取光标位置时（例如[TextInputController](arkts-arkui-textinput-comp-textinputcontroller-c.md)未与[TextInput](arkts-arkui-textinput-comp.md)组件绑定时），该接口返回null。
+> - 当无法获取光标位置时（例如[TextInputController](arkts-arkui-textinput-comp-textinputcontroller-c.md)未与[TextInput](arkts-arkui-textinput-comp.md)组件绑定时），该接口返回undefined。
 
 **起始版本：** 11
 
@@ -227,7 +223,12 @@ getTextContentLineCount() : number
 getTextContentRect() : RectResult
 ```
 
-获取已编辑文本内容区域相对于组件的位置和大小，返回值的单位为像素。
+获取已编辑文本内容区域相对于组件的位置和大小，返回值的单位为像素。  
+> **说明：** 
+> - 初始不输入文本时，返回值中有相对组件的位置信息，大小为0。
+> - 返回值中的位置信息是第一个字符相对于可编辑组件的位置。
+> - 在Search组件中，返回的位置信息是相对Search组件中搜索图标的偏移值。
+> - 有输入时，返回信息中的宽度是组件编辑区域的固定宽度。
 
 **起始版本：** 10
 
@@ -254,11 +255,6 @@ scrollToVisible(range?: TextRange): void
 将起始索引与结束索引传递给与其绑定的输入框（TextInput、TextArea、Search）组件，并将此范围内的文字滚动到可视区域。
 
 > **说明：** 
-> 
-> 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
-
-> **说明：** 
-> 
 > 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
 
 **起始版本：** 23

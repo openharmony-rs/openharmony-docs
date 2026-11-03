@@ -44,7 +44,7 @@ Bus type.
 description: string
 ```
 
-Driver description.
+Driver description, which provides detailed information about the driver functions, use scenarios, and precautions.
 
 **Type:** string
 
@@ -80,7 +80,7 @@ Driver name.
 driverSize: string
 ```
 
-Driver size, in bytes.
+Size of the driver file, in bytes. It is used to identify the storage space occupied by the driver file.
 
 **Type:** string
 

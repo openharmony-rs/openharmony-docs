@@ -6,7 +6,7 @@ declare interface NestedScrollOptions
 
 Implements an object used to configure the [nestedScroll](arkts-arkui-common-comp-scrollablecommonmethod-c.md#nestedscroll) attribute.
 
-**Since:** 23
+**Since:** 10
 
 <!--Device-unnamed-declare interface NestedScrollOptions--><!--Device-unnamed-declare interface NestedScrollOptions-End-->
 
@@ -22,7 +22,7 @@ Set NestedScrollMode when the scrollable component scrolls backward
 
 **Type:** [NestedScrollMode](../arkts-apis/arkts-arkui-nestedscrollmode-e.md)
 
-**Since:** 11
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +42,7 @@ Set NestedScrollMode when the scrollable component scrolls forward
 
 **Type:** [NestedScrollMode](../arkts-apis/arkts-arkui-nestedscrollmode-e.md)
 
-**Since:** 11
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 

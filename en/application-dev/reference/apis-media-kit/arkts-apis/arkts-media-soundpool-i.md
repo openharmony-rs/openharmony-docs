@@ -4,7 +4,7 @@
 export declare interface SoundPool
 ```
 
-Implements a sound pool that provides APIs for loading, unloading, playing, and stopping playing system sounds, setting the volume, and setting the number of loops. Before using these APIs, you must call [media.createSoundPool](../../apis-media/arkts-apis/arkts-media-media-createsoundpool-f.md) to create a SoundPool instance.
+Implements a sound pool that provides APIs for loading, unloading, playing, and stopping playing system sounds, setting the volume, and setting the number of loops. Before using these APIs, you must call [media.createSoundPool](arkts-media-media-createsoundpool-f.md) to create a SoundPool instance.
 
 > **NOTE:** 
 > 
@@ -573,7 +573,7 @@ Sets the interruption mode of the audio resources with the same sound ID during 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| interruptMode | [media.SoundInterruptMode](../../apis-media/arkts-apis/arkts-media-media-soundinterruptmode-e.md) | Yes | Interruption mode of the audio files with the same ID during playback, which is obtained through the **media.SoundInterruptMode** enum. |
+| interruptMode | [media.SoundInterruptMode](arkts-media-media-soundinterruptmode-e.md) | Yes | Interruption mode of the audio files with the same ID during playback, which is obtained through the **media.SoundInterruptMode** enum. |
 
 ## setLoop
 

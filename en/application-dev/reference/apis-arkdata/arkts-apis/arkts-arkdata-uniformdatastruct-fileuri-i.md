@@ -4,7 +4,7 @@
 interface FileUri
 ```
 
-Represents data of the file URI type.
+Defines the file URI typed data, which is used to describe the URI address information of a file. After a FileUri object is created, it can be used in scenarios such as file drag-and-drop and file sharing, support controlling file access permissions through uriAuthorizationPolicies, and implement cross-application file data transfer and permission management.
 
 **Since:** 15
 
@@ -24,7 +24,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 details?: Record<string, number | string | Uint8Array>
 ```
 
-Object of the dictionary type used to describe the icon. The key is of the string type, and the value can be a number, a string, or a Uint8Array. By default, it is an empty dictionary object.
+Dictionary type object. The key is of the string type, and the value can contain data of the number (numeric type), string (string type), or Uint8Array (binary byte array) type. This is an optional field, and the default value is an empty dictionary object.
 
 **Type:** Record&lt;string, number &#124; string &#124; Uint8Array&gt;
 
@@ -42,7 +42,7 @@ Object of the dictionary type used to describe the icon. The key is of the strin
 fileType: string
 ```
 
-File type, which must be UTD. For details, see [Prebuilt UTDs]. The maximum length of the value is 1024 bytes.
+The file type must be a standardized data type (that is, the UTD-ID corresponding to each type in the [Prebuilt UTDs](../../../database/uniform-data-type-list.md) or a custom UTD-ID). The maximum length limit of fileType is 1024 bytes. An exception is thrown when the limit is exceeded.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ File type, which must be UTD. For details, see [Prebuilt UTDs]. The maximum leng
 oriUri: string
 ```
 
-File path.
+Original URI path of the file. Supports local file absolute paths, the file:// protocol, and http/https network URL formats. The length limit is 4096 bytes. For example: `/data/local/tmp/test.txt`, `file:///data/local/tmp/test.txt`, or `http://example.com/file.txt`.
 
 **Type:** string
 
@@ -96,7 +96,7 @@ Uniform data type, which has a fixed value of **general.file-uri**. For details,
 uriAuthorizationPolicies?: Array<number>
 ```
 
-Defines URI authorization policies for drag intention.
+URI authorization policy used in drag-and-drop scenarios. The default value is **READ+WRITE+PERSIST** (read + write + persistent authorization). It applies only to a single record and has the highest priority. For details about the policies, see [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md).
 
 **Type:** Array&lt;number&gt;
 

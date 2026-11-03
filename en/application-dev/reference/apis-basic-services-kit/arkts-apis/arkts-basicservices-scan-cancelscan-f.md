@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function cancelScan(scannerId: string): Promise<void>
 ```
 
-Cancels scanning. This API uses a promise to return the result.
+Cancels scanning. This API uses a promise to return the result. This method can be called only after scanning starts.
 
 **Since:** 20
 

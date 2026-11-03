@@ -761,6 +761,7 @@
   - [disableNetwork(system api)](arkts-connectivity-wifimanager-disablenetwork-f-sys.md)<!--DelEnd-->
   - [disableWifi](arkts-connectivity-wifimanager-disablewifi-f.md)
   - [disconnect](arkts-connectivity-wifimanager-disconnect-f.md)
+  - [disconnectFromCandidateConfig](arkts-connectivity-wifimanager-disconnectfromcandidateconfig-f.md)
   <!--Del-->
   - [enableHiLinkHandshake(system api)](arkts-connectivity-wifimanager-enablehilinkhandshake-f-sys.md)<!--DelEnd-->
   <!--Del-->

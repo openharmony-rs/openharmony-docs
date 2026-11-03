@@ -46,7 +46,7 @@ Called when all the dependent startup tasks are complete. You can initialize the
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Object &#124; void&gt; | Promise used to return the execution result. |
+| Promise&lt;Object &#124; void&gt; | Promise used to return the execution result object of the startup task or void. |
 
 **Examples**
 
@@ -78,7 +78,13 @@ export default class StartupTask_001 extends StartupTask {
 onDependencyCompleted?(dependency: string, result: Object): void
 ```
 
-Called when the dependent startup task is complete.
+Called when the dependent startup task is complete. Developers can process the execution result of the dependent task in this method.
+
+> **NOTE:** 
+> 
+> Triggered once each time a dependent task is complete. This method is called before the init
+> method and can be used to process the execution result of a single dependent task. The init
+> method is called once after all dependent tasks are complete.
 
 **Since:** 12
 

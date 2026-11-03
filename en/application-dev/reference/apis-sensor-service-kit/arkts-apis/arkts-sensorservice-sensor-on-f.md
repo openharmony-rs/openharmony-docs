@@ -244,6 +244,8 @@ Subscribes to data of the barometer sensor. This API uses an asynchronous callba
 
 **Since:** 9
 
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
 <!--Device-sensor-function on(type: SensorId.BAROMETER, callback: Callback<BarometerResponse>, options?: Options): void--><!--Device-sensor-function on(type: SensorId.BAROMETER, callback: Callback<BarometerResponse>, options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

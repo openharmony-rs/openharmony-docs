@@ -33,6 +33,13 @@
 2. 高优先级订阅者先收到事件，可在回调中通过`setCodeAndData`等方法修改code与data数据，供后续订阅者接收。
 3. 处理完成后调用`finishCommonEvent`，触发事件向下一优先级订阅者投递；若需中止后续投递，可调用`abortCommonEvent`标记事件为中止状态。
 
+> **说明：** 
+> 
+> 有序公共事件对每个订阅者的处理时长有限制（超时时间为10秒）。订阅者收到有序公共事件后，若未在超时时间内调用
+> [finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishcommonevent-1)
+> ，系统将视为该订阅者处理完成，自动向下一优先级订阅者投递该事件，且不会向当前订阅者发送超时通知；此后该订阅者调用的`setCode`、`setData`、`setCodeAndData`、`finishCommonEvent`等接
+> 口不再生效。
+
 **起始版本：** 9
 
 <!--Device-unnamed-declare namespace commonEventManager--><!--Device-unnamed-declare namespace commonEventManager-End-->

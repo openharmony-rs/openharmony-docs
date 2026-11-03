@@ -4,7 +4,7 @@
 interface ScannerOptionValue
 ```
 
-Defines the scanner option value.
+Defines the scanner option value. When the constraint type of the option is **SCAN_CONSTRAINT_STRING_LIST**, the option value must be a string in the **optionConstraintString** set.
 
 **Since:** 20
 
@@ -24,7 +24,7 @@ import { scan } from '@kit.BasicServicesKit';
 boolValue?: boolean
 ```
 
-Value of the Boolean type.
+Boolean. This parameter is valid only when **valueType** is set to **SCAN_TYPE_BOOL**.
 
 **Type:** boolean
 
@@ -40,7 +40,7 @@ Value of the Boolean type.
 numValue?: number
 ```
 
-Value of the number type.
+Numeric value. This parameter is valid only when **valueType** is set to **SCAN_TYPE_INT** or **SCAN_TYPE_FIXED**.
 
 **Type:** number
 
@@ -56,7 +56,7 @@ Value of the number type.
 strValue?: string
 ```
 
-Value of the string type.
+String value. This parameter is valid only when **valueType** is set to **SCAN_TYPE_STRING**.
 
 **Type:** string
 
@@ -72,7 +72,7 @@ Value of the string type.
 valueType: OptionValueType
 ```
 
-Value type.
+Value type, which determines the value field to be used.
 
 **Type:** [OptionValueType](arkts-basicservices-scan-optionvaluetype-e.md)
 

@@ -4,7 +4,7 @@
 interface PrinterCapability
 ```
 
-定义打印能力的接口。
+定义打印机能力的接口。
 
 **起始版本：** 24
 
@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 colorMode: number
 ```
 
-表示色彩模式。
+表示色彩模式，取值参考[PrintColorMode](arkts-basicservices-print-printcolormode-e.md)。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ colorMode: number
 duplexMode: number
 ```
 
-表示单双面打印模式。
+表示单双面打印模式，取值参考[PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ minMargin?: PrintMargin
 options?: Object
 ```
 
-表示JSON对象字符串。
+表示以JSON格式字符串化的打印机能力信息。
 
 **类型：** Object
 

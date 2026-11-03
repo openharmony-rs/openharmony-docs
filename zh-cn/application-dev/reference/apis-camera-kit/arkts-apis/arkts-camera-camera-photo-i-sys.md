@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 depthData?: DepthData
 ```
 
-Depth data.
+深度数据。
 
 **类型：** [DepthData](arkts-camera-camera-depthdata-i-sys.md)
 
@@ -42,7 +42,7 @@ Depth data.
 raw?: image.Image
 ```
 
-Raw image.
+Raw 图像。
 
 **类型：** [image.Image](../../apis-image-kit/arkts-apis/arkts-image-image-image-i.md)
 

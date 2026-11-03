@@ -18,7 +18,7 @@ Queries all print jobs. This API uses an asynchronous callback to return the res
 
 **Deprecated since:** 11
 
-**Substitutes:** null
+**Substitutes:** [queryPrintJobList](arkts-basicservices-print-queryprintjoblist-f-sys.md#queryprintjoblist-1)(callback: AsyncCallback&lt;Array&lt;PrintJob&gt;&gt;)
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
@@ -83,7 +83,7 @@ Queries all print jobs. This API uses a promise to return the result.
 
 **Deprecated since:** 11
 
-**Substitutes:** null
+**Substitutes:** [queryPrintJobList](arkts-basicservices-print-queryprintjoblist-f-sys.md)()
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 

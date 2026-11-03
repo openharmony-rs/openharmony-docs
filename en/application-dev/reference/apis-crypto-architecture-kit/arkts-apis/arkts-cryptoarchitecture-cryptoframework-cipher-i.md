@@ -4,7 +4,7 @@
 interface Cipher
 ```
 
-Encryption and decryption interface, defining methods for symmetric and asymmetric encryption and decryption. Before use, you must create a **Cipher** instance by using [createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md). Call the [init()](#init-4), [update()](#update-1), and [doFinal()](#dofinal-2) APIs in this class as needed to complete encryption or decryption operations.
+Provides an encryption and decryption API, which defines symmetric and asymmetric encryption and decryption methods. Before calling this API, you must use [createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md). Call the [init()](#init-4), [update()](#update-1), and [doFinal()](#dofinal-2) APIs in this class as needed to complete encryption or decryption operations.
 
 <br>For details about the complete encryption and decryption process, see [Encryption and Decryption Overview](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md).
 
@@ -35,7 +35,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 doFinal(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 ```
 
-Finishes the crypto operation, encrypts or decrypts the input data, and then feeds back the output data. Data cannot be updated after the crypto operation is finished. This API uses an asynchronous callback to return the result.
+Encrypts or decrypts the input data and returns the output data. After the encryption or decryption operation is complete, the data cannot be updated. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -51,7 +51,7 @@ Finishes the crypto operation, encrypts or decrypts the input data, and then fee
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Indicates the data to be finally encrypted or decrypted. |
+| data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Data to encrypt or decrypt. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the encrypted or decrypted data obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -66,7 +66,7 @@ Finishes the crypto operation, encrypts or decrypts the input data, and then fee
 
 **Examples**
 
-For more encryption and decryption examples, see Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption).
+For more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption)](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -116,7 +116,7 @@ function cipherByCallback() {
 }
 ```
 
-In addition, for more encryption and decryption examples, see Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption.
+In addition, for more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -219,7 +219,7 @@ of **update()** and **doFinal()** throughout the process will yield the complete
 
 **Examples**
 
-For more encryption and decryption examples, see Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption).
+For more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption)](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -275,7 +275,7 @@ function cipherByCallback() {
 doFinal(data: DataBlob): Promise<DataBlob>
 ```
 
-Finishes the crypto operation, encrypts or decrypts the input data, and then feeds back the output data. Data cannot be updated after the crypto operation is finished. This API uses a promise to return the result.
+Encrypts or decrypts the input data and returns the output data. After the encryption or decryption operation is complete, the data cannot be updated. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -291,13 +291,13 @@ Finishes the crypto operation, encrypts or decrypts the input data, and then fee
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Indicates the data to be finally encrypted or decrypted. |
+| data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Data to encrypt or decrypt. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the encrypted or decrypted data. |
+| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the **DataBlob**, which is the encryption or decryption result of the remaining data. |
 
 **Error codes:**
 
@@ -312,7 +312,7 @@ Finishes the crypto operation, encrypts or decrypts the input data, and then fee
 
 **Examples**
 
-For more encryption and decryption examples, see Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption).
+For more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption)](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -362,7 +362,7 @@ function cipherByCallback() {
 }
 ```
 
-In addition, for more encryption and decryption examples, see Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption.
+In addition, for more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -478,7 +478,7 @@ of **update()** and **doFinal()** throughout the process will yield the complete
 
 **Examples**
 
-In addition, for more encryption and decryption examples, see Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption.
+In addition, for more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -529,9 +529,7 @@ async function cipherByPromise() {
 doFinalSync(data: DataBlob | null): DataBlob
 ```
 
-Finishes the crypto operation, encrypts or decrypts the input data, and then feeds back the output data. Data cannot be updated after the crypto operation is finished.
-
-<br>(1) Processes the remaining data and the data passed in this time, and completes the encryption or decryption operation for symmetric encryption and decryption. This API returns the encrypted or decrypted data synchronously.
+(1) Processes the remaining data and the data passed in this time, and completes the encryption or decryption operation for symmetric encryption and decryption. This API returns the encrypted or decrypted data synchronously.
 
 If a small amount of data is to be processed, you can pass in all the data at a time in **doFinalSync()** without using **updateSync()**. If data has been passed in by using [updateSync](#updatesync) in the current encryption and decryption process, you can pass in **null** to the **data** parameter of **doFinalSync()**.
 
@@ -581,7 +579,7 @@ of **updateSync()** and **doFinalSync()** throughout the process will yield the 
 
 **Examples**
 
-In addition, for more encryption and decryption examples, see Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption.
+In addition, for more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption](../../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -684,9 +682,9 @@ function testGetCipherSpec() {
 init(opMode: CryptoMode, key: Key, params: ParamsSpec, callback: AsyncCallback<void>): void
 ```
 
-Initializes the crypto operation with the given crypto mode, key and parameters. This API uses an asynchronous callback to return the result.
+Initializes the [cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) object for encryption and decryption. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
-<br>**init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+This API can be used only after a [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) instance is created by using [createCipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md).
 
 **Since:** 9
 
@@ -704,7 +702,7 @@ Initializes the crypto operation with the given crypto mode, key and parameters.
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | Yes | Operation (encryption or decryption) to perform. |
 | key | [Key](arkts-cryptoarchitecture-cryptoframework-key-i.md) | Yes | Key for encryption or decryption. |
-| params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | Yes | Indicates the algorithm parameters such as IV. |
+| params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | Yes | Parameters for encryption or decryption, for example, **IV**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -723,9 +721,9 @@ Initializes the crypto operation with the given crypto mode, key and parameters.
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback<void>): void
 ```
 
-Initializes the [cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) object for encryption and decryption. This API uses an asynchronous callback to return the result.
+Initializes the [cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) object for encryption and decryption. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
-<br>**init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+This API can be used only after a [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) instance is created by using [createCipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md).
 
 **Since:** 10
 
@@ -762,7 +760,7 @@ Initializes the [cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) o
 init(opMode: CryptoMode, key: Key, params: ParamsSpec): Promise<void>
 ```
 
-Initializes the crypto operation with the given crypto mode, key and parameters. This API uses a promise to return the result.
+Initializes the cipher object for encryption and decryption. This API uses a promise to return the result.
 
 <br>**init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
@@ -782,7 +780,7 @@ Initializes the crypto operation with the given crypto mode, key and parameters.
 | --- | --- | --- | --- |
 | opMode | [CryptoMode](arkts-cryptoarchitecture-cryptoframework-cryptomode-e.md) | Yes | Operation (encryption or decryption) to perform. |
 | key | [Key](arkts-cryptoarchitecture-cryptoframework-key-i.md) | Yes | Key for encryption or decryption. |
-| params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | Yes | Indicates the algorithm parameters such as IV. |
+| params | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | Yes | Parameters for encryption or decryption, for example, **IV**. |
 
 **Return value:**
 
@@ -976,7 +974,7 @@ Updates the data to encrypt or decrypt by segment. This API uses an asynchronous
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | data | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Yes | Data to be encrypted or decrypted. It cannot be null. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the result. If the data is updated successfully, **err** is **undefined**, and **data** is the encryption or decryption result obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the result. If the encrypted or decrypted data is updated successfully, **err** is **undefined**, and **data** is the encryption or decryption result **DataBlob**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1058,7 +1056,7 @@ Updates the data to encrypt or decrypt by segment. This API uses a promise to re
 updateSync(data: DataBlob): DataBlob
 ```
 
-Updates the data to encrypt or decrypt by segment.
+Updates the data to encrypt or decrypt by segment. This API uses an asynchronous callback to return the encrypted or decrypted data.
 
 <br>This API can be called only after the [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) instance is initialized by using [initSync()](#initsync).
 
@@ -1102,7 +1100,7 @@ Updates the data to encrypt or decrypt by segment.
 readonly algName: string
 ```
 
-Indicates the algorithm name of the cipher object.
+Algorithm.
 
 **Type:** string
 

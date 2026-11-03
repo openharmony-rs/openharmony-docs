@@ -18,7 +18,7 @@ Enumerates the print job states.
 PREVIEW_DESTROY = 0
 ```
 
-The preview fails.
+Print preview page destroyed.
 
 **Since:** 11
 
@@ -60,7 +60,7 @@ The print job is canceled.
 PRINT_TASK_FAIL = 2
 ```
 
-The print job is failed.
+The print job fails.
 
 **Since:** 11
 

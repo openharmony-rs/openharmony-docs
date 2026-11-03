@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function on(type: 'printerChange', callback: PrinterChangeCallback): void
 ```
 
-Registers a listener for the printer change events. This API uses a callback to return the result.
+Registers a listener for the printer change events. This API uses an asynchronous callback to return the result.
 
 **Since:** 18
 

@@ -34,7 +34,7 @@ DOCUMENT_FORMAT_AUTO = 0
 DOCUMENT_FORMAT_JPEG = 1
 ```
 
-表示Jpeg格式。
+表示JPEG格式。
 
 **起始版本：** 23
 

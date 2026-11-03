@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function startDiscoverPrinter(extensionList: Array<string>, callback: AsyncCallback<void>): void
 ```
 
-通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备包含指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力。使用callback异步回调。
+通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力。使用callback异步回调。在不需要继续发现时，调用[stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f.md#stopdiscoverprinter-1)停止发现，释放系统资源，否则会导致系统持续进行打印机发现，消耗系统资源。
 
 **起始版本：** 20
 
@@ -63,7 +63,7 @@ print.startDiscoverPrinter(extensionList, (error: BusinessError) => {
 function startDiscoverPrinter(extensionList: Array<string>): Promise<void>
 ```
 
-通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备包含指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力，使用Promise异步回调。
+通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力，使用Promise异步回调。在不需要继续发现时，调用[stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f.md#stopdiscoverprinter-1)停止发现，释放系统资源，否则会导致系统持续进行打印机发现，消耗系统资源。
 
 **起始版本：** 20
 

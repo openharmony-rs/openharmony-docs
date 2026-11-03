@@ -152,7 +152,7 @@ isFromWebView: boolean
 notificationId: number
 ```
 
-通知 Id。
+通知 ID。
 
 **类型：** number
 

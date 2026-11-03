@@ -18,4 +18,4 @@ Defines the callback used to listen for status changes of a distributed data obj
 | --- | --- | --- | --- |
 | sessionId | string | Yes | Session ID of the distributed data object, with a maximum length of 128 bytes. The value can contain only letters, digits, and underscores (_). |
 | networkId | string | Yes | Network ID of the peer device, with a maximum of 255 bytes. The value must be a non- empty string. |
-| status | string | Yes | Status of the distributed data object. Possible values are **'online'**, **'offline'**, and **'restore'**. |
+| status | string | Yes | Status of the distributed data object. Possible values are **'online'**, **'offline'**, and **'restored'**. |

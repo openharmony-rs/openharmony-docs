@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function authPrintJob(jobId: string, userName: string, password: string): Promise<boolean>
 ```
 
-验证打印作业。
+验证打印作业，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,15 +30,15 @@ function authPrintJob(jobId: string, userName: string, password: string): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 打印作业ID。<br>要打印的作业ID。 |
-| userName | string | 是 | 用户名。<br>用户名。 |
-| password | string | 是 | 用户密码。<br>用户密码。 |
+| jobId | string | 是 | 待打印的打印作业ID。 |
+| userName | string | 是 | 用户名。 |
+| password | string | 是 | 用户密码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | the promise returned by the function. |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示验证成功；返回false表示验证失败。 |
 
 **错误码：**
 

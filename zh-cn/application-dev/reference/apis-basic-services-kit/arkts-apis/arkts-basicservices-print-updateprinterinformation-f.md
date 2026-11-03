@@ -28,7 +28,7 @@ function updatePrinterInformation(printerInformation: PrinterInformation): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerInformation | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | 是 | 表示待更新信息的打印机。 |
+| printerInformation | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | 是 | 表示待更新信息的打印机，当前仅允许更新alias和options字段。 |
 
 **返回值：**
 

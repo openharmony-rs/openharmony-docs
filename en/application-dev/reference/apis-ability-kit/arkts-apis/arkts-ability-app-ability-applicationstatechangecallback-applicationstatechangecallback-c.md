@@ -6,11 +6,22 @@ export default class ApplicationStateChangeCallback
 
 The module is used to listen for state changes of the current application process. For ease of description, the term"application process" will be referred to as "process" in the following sections. You can call [ApplicationContext.on('applicationStateChange')](arkts-ability-applicationcontext-c.md#onapplicationstatechange) and pass in a custom ApplicationStateChangeCallback to listen for foreground/background state changes of the current process. This allows you to perform certain actions based on the process state changes, for example, tracking the duration of the process in the foreground and background, or clearing memory caches when the process moves to the background.
 
+> **NOTE:** 
+> 
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a
+> superscript to indicate their earliest API version.
+> 
+> The APIs of this module can be used only in the stage model.
+
 **Since:** 10
 
 <!--Device-unnamed-export default class ApplicationStateChangeCallback--><!--Device-unnamed-export default class ApplicationStateChangeCallback-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+## Constraints
+
+This module allows you to listen for foreground/background state changes of the current process. If you need to listen for foreground/background state changes of the entire application, use ApplicationStateObserver.onForegroundApplicationChanged.
 
 ## Modules to Import
 
@@ -87,6 +98,8 @@ onApplicationForeground(): void
 ```
 
 Called when the current process switches from the background to the foreground. When this callback is triggered, it does not mean that the process is already fully in the foreground state, but rather that it is about to enter the foreground state. At this point, operations that depend on the foreground state (such as launching another UIAbility) cannot be performed.
+
+**Example** For details, see [onApplicationBackground](#onapplicationbackground).
 
 **Since:** 10
 

@@ -532,7 +532,7 @@ In video recording mode, if SDR or HDR VIVID is enabled, the camera format and c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | profile | [VideoProfile](arkts-camera-camera-videoprofile-i.md) | Yes | Supported video profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability-2). |
-| surfaceId | string | Yes | Surface ID, which is obtained from [AVRecorder](../../apis-media/arkts-apis/arkts-media-media-avrecorder-i.md). |
+| surfaceId | string | Yes | Surface ID, which is obtained from [AVRecorder](../../apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md). |
 
 **Return value:**
 
@@ -586,7 +586,7 @@ Creates a **VideoOutput** instance without configuration. This API returns the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| surfaceId | string | Yes | Surface ID, which is obtained from [AVRecorder](../../apis-media/arkts-apis/arkts-media-media-avrecorder-i.md). |
+| surfaceId | string | Yes | Surface ID, which is obtained from [AVRecorder](../../apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md). |
 
 **Return value:**
 

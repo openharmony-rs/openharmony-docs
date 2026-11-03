@@ -12,13 +12,13 @@ import { print } from '@kit.BasicServicesKit';
 function print(files: Array<string>, callback: AsyncCallback<PrintTask>): void
 ```
 
-Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#print-4) API and pass in context.
+Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#print-3) API and pass in context.
 
 **Since:** 10
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [print](arkts-basicservices-print-f.md)
+**Substitutes:** [print](#print-3)(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;PrintTask&gt;)
 
 **Required permissions:** ohos.permission.PRINT
 
@@ -74,7 +74,7 @@ Prints files. This API uses a promise to return the result. To start the system 
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [print](arkts-basicservices-print-f.md)
+**Substitutes:** [print](#print-4)(files: Array&lt;string&gt;, context: Context)
 
 **Required permissions:** ohos.permission.PRINT
 
@@ -127,7 +127,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 function print(files: Array<string>, context: Context, callback: AsyncCallback<PrintTask>): void
 ```
 
-Prints files. This API uses an asynchronous callback to return the result.
+Prints files. The system print preview page is started. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
 
@@ -141,7 +141,7 @@ Prints files. This API uses an asynchronous callback to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| files | Array&lt;string&gt; | Yes | List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files tothe application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API. |
+| files | Array&lt;string&gt; | Yes | List of files to be printed. Currently, the following file types are supported:".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg","pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt",".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API. |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | UIAbilityContext used to start the system print UI. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[PrintTask](arkts-basicservices-print-printtask-i.md)&gt; | Yes | Callback to be invoked when the print job is finished. |
 
@@ -196,7 +196,7 @@ struct Index {
 function print(files: Array<string>, context: Context): Promise<PrintTask>
 ```
 
-Prints files. This API uses a promise to return the result.
+Prints files. The system print preview page is started. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -210,7 +210,7 @@ Prints files. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| files | Array&lt;string&gt; | Yes | List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files tothe application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API. |
+| files | Array&lt;string&gt; | Yes | List of files to be printed. Currently, the following file types are supported:".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg","pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt",".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API. |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | UIAbilityContext used to start the system print UI. |
 
 **Return value:**
@@ -269,7 +269,7 @@ function print(jobName: string, printAdapter: PrintDocumentAdapter, printAttribu
     context: Context): Promise<PrintTask>
 ```
 
-Prints a file. This API uses a promise to return the result.
+Prints a file. This API uses a promise to return the result. Currently, only the .pdf file type is supported. When a third-party app needs to pass the file descriptor (FD) to start the system print preview page for printing, this API can be used to pass a **custom PrintDocumentAdapter** value to update the file to be printed.
 
 **Since:** 11
 
@@ -283,7 +283,7 @@ Prints a file. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobName | string | Yes | Name of the file to print, for example, **test.pdf**. The printer uses the [onStartLayoutWrite](arkts-basicservices-print-printdocumentadapter-i.md#onstartlayoutwrite) API to send the **fd** of the empty PDF file to the API caller. The API caller uses the new print attributes to update the file to print. |
+| jobName | string | Yes | Name of the file to print, for example, **test.pdf**. Currently, only .pdf files are supported. The printer uses the [onStartLayoutWrite](arkts-basicservices-print-printdocumentadapter-i.md#onstartlayoutwrite) API to send the **fd** of the empty PDF file to the API caller. The API caller uses the new print attributes to update the file to print. |
 | printAdapter | [PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md) | Yes | [PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md) API instance implemented by a third-party application. |
 | printAttributes | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | Yes | Print attributes. |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | UIAbilityContext used to start the system print UI. |

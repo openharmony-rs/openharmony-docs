@@ -4,7 +4,7 @@
 enum RestoreParamType
 ```
 
-Enumerates the types of the parameters used for prelaunch.
+枚举，预启动使用的参数类型。
 
 **起始版本：** 11
 
@@ -20,7 +20,7 @@ Enumerates the types of the parameters used for prelaunch.
 NO_NEED_RESTORE_PARAM = 0
 ```
 
-The parameter used for prelaunch is not required.
+无需预启动参数。
 
 **起始版本：** 11
 
@@ -36,7 +36,7 @@ The parameter used for prelaunch is not required.
 PRESISTENT_DEFAULT_PARAM = 1
 ```
 
-Persistent parameter type. This parameter is used to restore stream information with the specified time point.
+持久化参数类型。该参数用于按指定时间点恢复流信息。
 
 **起始版本：** 11
 
@@ -52,7 +52,7 @@ Persistent parameter type. This parameter is used to restore stream information 
 TRANSIENT_ACTIVE_PARAM = 2
 ```
 
-Temporary parameter type. This parameter is used to restore stream information only within a period of time after the camera application is closed. Its priority is higher than that of the persistent parameter.
+临时参数类型。该参数仅用于在相机应用关闭后的一段时间内恢复流信息。其优先级高于持久化参数。
 
 **起始版本：** 11
 

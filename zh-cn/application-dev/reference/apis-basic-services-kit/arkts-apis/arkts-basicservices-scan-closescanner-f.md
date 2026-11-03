@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function closeScanner(scannerId: string): Promise<void>
 ```
 
-关闭扫描仪。使用Promise异步回调。
+关闭扫描仪。使用Promise异步回调。扫描仪关闭后，将不能再对该扫描仪执行参数获取、设置、扫描等操作。如需再次使用需重新调用openScanner()。
 
 **起始版本：** 20
 
@@ -26,13 +26,13 @@ function closeScanner(scannerId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scannerId | string | 是 | 要关闭的扫描仪的ID。 |
+| scannerId | string | 是 | 要关闭的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，关闭扫描仪成功时resolve，失败时reject。 |
 
 **错误码：**
 

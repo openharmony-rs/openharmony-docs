@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function exit(): Promise<void>
 ```
 
-退出扫描服务。使用Promise异步回调。
+退出扫描服务。使用Promise异步回调。扫描服务退出后，其它扫描方法将不可用，如需再次使用需重新调用init()。
 
 **起始版本：** 20
 
@@ -26,7 +26,7 @@ function exit(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，退出扫描服务成功时resolve，失败时reject。 |
 
 **错误码：**
 

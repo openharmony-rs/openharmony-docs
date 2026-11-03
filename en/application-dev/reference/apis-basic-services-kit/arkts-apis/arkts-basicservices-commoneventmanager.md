@@ -39,6 +39,17 @@ using methods such as **setCodeAndData** for subsequent subscribers to receive.
 3. After the processing is complete, call **finishCommonEvent** to deliver the event to the subscriber with the
 next highest priority. To stop delivering the event, call **abortCommonEvent** to mark the event as aborted.
 
+> **Description**
+> 
+> The processing duration of an ordered common event for each subscriber is limited (the timeout interval is 10
+> seconds). If a subscriber does not call
+> [finishCommonEvent](arkts-basicservices-commoneventsubscriber-i.md#finishcommonevent-1)
+> within the timeout interval after receiving an ordered common event, the system considers that the subscriber has
+> completed the processing and automatically delivers the event to the subscriber with the next highest priority. In
+> this case, the system does not send a timeout notification to the current subscriber. After that, the **setCode**,
+> **setData**, **setCodeAndData**, and **finishCommonEvent** APIs called by the subscriber will no longer take
+> effect.
+
 **Since:** 9
 
 <!--Device-unnamed-declare namespace commonEventManager--><!--Device-unnamed-declare namespace commonEventManager-End-->

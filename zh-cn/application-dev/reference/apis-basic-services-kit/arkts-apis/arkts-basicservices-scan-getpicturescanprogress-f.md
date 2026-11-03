@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function getPictureScanProgress(scannerId: string): Promise<PictureScanProgress>
 ```
 
-获取图片扫描进度。使用Promise异步回调。
+获取图片扫描进度。使用Promise异步回调。必须在开始扫描之后才能调用此方法。
 
 **起始版本：** 20
 
@@ -26,13 +26,13 @@ function getPictureScanProgress(scannerId: string): Promise<PictureScanProgress>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scannerId | string | 是 | 扫描仪的ID。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[PictureScanProgress](arkts-basicservices-scan-picturescanprogress-i.md)&gt; | Promise对象，返回图片扫描进度信息。 |
+| Promise&lt;[PictureScanProgress](arkts-basicservices-scan-picturescanprogress-i.md)&gt; | Promise对象，获取图片扫描进度成功时resolve并返回图片扫描进度信息，失败时reject。 |
 
 **错误码：**
 

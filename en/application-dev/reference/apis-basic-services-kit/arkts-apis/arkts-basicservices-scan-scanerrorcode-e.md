@@ -18,7 +18,7 @@ Enumerates the scan error codes.
 SCAN_ERROR_CANCELED = 13100005
 ```
 
-Operation canceled.
+Operation canceled. Check whether **cancelScan** is called or the operation is interrupted by the system.
 
 **Since:** 20
 
@@ -32,7 +32,7 @@ Operation canceled.
 SCAN_ERROR_COVER_OPEN = 13100010
 ```
 
-Cover open.
+The scanner cover is open. Close the cover and try again.
 
 **Since:** 20
 
@@ -46,7 +46,7 @@ Cover open.
 SCAN_ERROR_DEVICE_BUSY = 13100006
 ```
 
-Device busy.
+The device is busy. Wait until the device is idle and try again.
 
 **Since:** 20
 
@@ -60,7 +60,7 @@ Device busy.
 SCAN_ERROR_GENERIC_FAILURE = 13100001
 ```
 
-Generic failure.
+General failure. Check the running status of the scan service and try again.
 
 **Since:** 20
 
@@ -74,7 +74,7 @@ Generic failure.
 SCAN_ERROR_INVALID = 13100007
 ```
 
-Invalid operation.
+Invalid operation. Check whether the current operation is valid in the scanner state.
 
 **Since:** 20
 
@@ -88,7 +88,7 @@ Invalid operation.
 SCAN_ERROR_INVALID_PARAMETER = 401
 ```
 
-Invalid parameter.
+Invalid parameter. Check the parameter type and value range.
 
 **Since:** 20
 
@@ -102,7 +102,7 @@ Invalid parameter.
 SCAN_ERROR_IO_ERROR = 13100011
 ```
 
-I/O error.
+I/O error. Check the device I/O connection and try again.
 
 **Since:** 20
 
@@ -116,7 +116,7 @@ I/O error.
 SCAN_ERROR_JAMMED = 13100008
 ```
 
-Paper jammed.
+Paper jammed. Remove the jammed paper from the scanner and try again.
 
 **Since:** 20
 
@@ -130,7 +130,7 @@ Paper jammed.
 SCAN_ERROR_NO_DOCS = 13100009
 ```
 
-Out of paper.
+No paper. Place paper in the scanner and try again.
 
 **Since:** 20
 
@@ -144,7 +144,7 @@ Out of paper.
 SCAN_ERROR_NO_MEMORY = 13100012
 ```
 
-Insufficient memory.
+Insufficient memory. Release system memory and try again.
 
 **Since:** 20
 
@@ -158,7 +158,7 @@ Insufficient memory.
 SCAN_ERROR_NO_PERMISSION = 201
 ```
 
-No permission.
+No permission. Request the required permission based on the permission requirements of the corresponding API and declare the permission in the configuration file.
 
 **Since:** 20
 
@@ -172,7 +172,7 @@ No permission.
 SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202
 ```
 
-Non-system application.
+Not a system app. Check whether the app is a system app.
 
 **Since:** 20
 
@@ -186,7 +186,7 @@ Non-system application.
 SCAN_ERROR_RPC_FAILURE = 13100002
 ```
 
-RPC failure.
+RPC failure. Check the RPC communication status and try again.
 
 **Since:** 20
 
@@ -200,7 +200,7 @@ RPC failure.
 SCAN_ERROR_SERVER_FAILURE = 13100003
 ```
 
-Service failure.
+Service failure. Check whether the scan service is running properly and try again.
 
 **Since:** 20
 
@@ -214,7 +214,7 @@ Service failure.
 SCAN_ERROR_UNSUPPORTED = 13100004
 ```
 
-Unsupported operation.
+The operation is not supported. Check whether the current operation is supported by the scanner.
 
 **Since:** 20
 

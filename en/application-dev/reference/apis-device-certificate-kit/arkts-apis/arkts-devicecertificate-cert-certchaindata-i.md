@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 count: number
 ```
 
-Number of certificates contained in the input data.
+Number of certificates.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ Number of certificates contained in the input data.
 data: Uint8Array
 ```
 
-Certificate data.
+Certificate data, which is a combination of the certificate length (2 bytes) and data. For example, **08ABCDEFGH07ABCDEFG** indicates that the first certificate is an 8-byte certificate, followed by 8-byte certificate data. The second certificate is a 7-byte certificate, followed by 7-byte certificate data.
 
 **Type:** Uint8Array
 
@@ -60,7 +60,7 @@ Certificate data.
 encodingFormat: EncodingFormat
 ```
 
-Certificate encoding format.
+Encoding format.
 
 **Type:** [EncodingFormat](arkts-devicecertificate-cert-encodingformat-e.md)
 

@@ -4,7 +4,7 @@
 class HTML extends Text
 ```
 
-Represents the HTML data. It is a child class of [Text](arkts-arkdata-unifieddatachannel-text-c.md).
+The HTML type data, a subclass of [Text](arkts-arkdata-unifieddatachannel-text-c.md), is used to describe HyperText Markup Language data.
 
 **Inheritance/Implementation:** HTML extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get htmlContent(): string
 ```
 
-Indicates the content of html, with html tags
+Content in HTML format.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Indicates the content of html, with html tags
 set htmlContent(value: string)
 ```
 
-Indicates the content of html, with html tags
+Content in HTML format.
 
 **Type:** string
 
@@ -64,7 +64,7 @@ Indicates the content of html, with html tags
 plainContent?: string
 ```
 
-Plaintext without HTML tags. This parameter is optional. The default value is an empty string.
+Plain text content after HTML tags are removed. This is an optional field, and the default value is an empty string.
 
 **Type:** string
 
@@ -84,7 +84,7 @@ Plaintext without HTML tags. This parameter is optional. The default value is an
 set uriAuthorizationPolicies(value: Array<UriPermission> | undefined)
 ```
 
-Defines URI authorization policies for drag intention.
+URI authorization policy used in drag-and-drop scenarios. The default value is READ (read-only authorization), which takes effect only in scenarios such as the img tag. It applies only to a single record and has the highest priority. For details about the policies, see [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md).
 
 **Type:** Array&lt;[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)&gt;
 

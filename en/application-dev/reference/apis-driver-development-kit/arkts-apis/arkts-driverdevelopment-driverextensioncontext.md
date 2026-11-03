@@ -1,4 +1,17 @@
-# DriverExtensionContext(Defines the context of driver extension)
+# DriverExtensionContext(Driver Extension Context)
+
+## How to Use
+
+Before using **DriverExtensionContext**, you need to obtain it through a **DriverExtensionAbility** child class instance.
+
+```ts
+ let context: DriverExtensionContext | undefined;
+ class EntryAbility extends DriverExtensionAbility {
+ onInit() {
+ context = this.context; // Obtain DriverExtensionContext.
+ }
+ }
+ ```
 
 ## Summary
 
@@ -6,4 +19,4 @@
 
 | Name | Description |
 | --- | --- |
-| [DriverExtensionContext](arkts-driverdevelopment-driverextensioncontext-c.md) | The **DriverExtensionContext** module provides the context of **DriverExtensionAbility**. It inherits from **ExtensionContext**. The **DriverExtensionContext** module provides the operations that need to be actively initiated in the **DriverExtensionAbility** implementation. |
+| [DriverExtensionContext](arkts-driverdevelopment-driverextensioncontext-c.md) | The **DriverExtensionContext** module provides the context of **DriverExtensionAbility**. It inherits from **ExtensionContext**. |

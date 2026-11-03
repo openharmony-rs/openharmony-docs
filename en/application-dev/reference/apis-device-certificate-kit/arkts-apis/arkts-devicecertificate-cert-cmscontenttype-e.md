@@ -18,7 +18,7 @@ Enumerates the Cryptographic Message Syntax (CMS) message types.
 ENVELOPED_DATA = 1
 ```
 
-Enveloped data, including authenticated enveloped data.
+Encapsulated data, including authenticated encapsulated data.
 
 **Since:** 22
 

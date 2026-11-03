@@ -4,9 +4,9 @@
 interface DataLoadParams
 ```
 
-Defines the data loading policy for the data sender in the lazy loading scenario.
+Describes the data loading policy of the sender in delayed loading scenarios.
 
-If both **loadHandler** and **delayedDataLoadHandler** are passed, **delayedDataLoadHandler** is preferentially used, and **loadHandler** does not take effect.
+When both loadHandler and delayedDataLoadHandler are passed in, delayedDataLoadHandler takes precedence and loadHandler does not take effect.
 
 **Since:** 20
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 delayedDataLoadHandler?: DelayedDataLoadHandler
 ```
 
-Indicates the callback function for deferred and non-blocking data loading. This handler is optional. If it is provided, it will take precedence over the synchronous DataLoadHandler (i.e., DataLoadHandler will be ignored).
+Asynchronous handler used to load data in a delayed manner. The default value is undefined. If this parameter is not set, only loadHandler is used.
 
 **Since:** 22
 
@@ -44,7 +44,7 @@ Indicates the callback function for deferred and non-blocking data loading. This
 loadHandler: DataLoadHandler
 ```
 
-Indicates the callback function for loading data.
+Handler used to load data in a delayed manner. This handler is a synchronous function and is suitable for processing simple service logic. If the function involves complex service logic and takes a long time to execute (more than 3s), you are advised to use [DelayedDataLoadHandler](arkts-arkdata-unifieddatachannel-delayeddataloadhandler-t.md).
 
 **Since:** 20
 
@@ -62,7 +62,7 @@ Indicates the callback function for loading data.
 dataLoadInfo: DataLoadInfo
 ```
 
-Indicates data loading information.
+Describes the data types and quantities that the current sender can generate.
 
 **Type:** [DataLoadInfo](arkts-arkdata-unifieddatachannel-dataloadinfo-i.md)
 

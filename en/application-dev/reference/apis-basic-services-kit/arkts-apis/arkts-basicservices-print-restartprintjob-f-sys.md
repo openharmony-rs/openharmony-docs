@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function restartPrintJob(jobId: string): Promise<void>
 ```
 
-Restarts a print job that has been finished before. This API uses a promise to return the result.
+Restarts a failed print job. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -28,7 +28,7 @@ Restarts a print job that has been finished before. This API uses a promise to r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | ID of a print job that has been finished before. |
+| jobId | string | Yes | ID of a previous print job. |
 
 **Return value:**
 

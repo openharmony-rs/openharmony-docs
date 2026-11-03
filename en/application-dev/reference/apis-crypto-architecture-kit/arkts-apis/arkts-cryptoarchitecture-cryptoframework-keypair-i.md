@@ -35,7 +35,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 readonly priKey: PriKey
 ```
 
-KeyPair's private key.
+Private key.
 
 **Type:** [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md)
 
@@ -55,7 +55,7 @@ KeyPair's private key.
 readonly pubKey: PubKey
 ```
 
-KeyPair's public key.
+Public key.
 
 **Type:** [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md)
 

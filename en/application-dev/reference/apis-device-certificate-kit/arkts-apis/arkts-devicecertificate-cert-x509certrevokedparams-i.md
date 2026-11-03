@@ -4,7 +4,7 @@
 interface X509CertRevokedParams
 ```
 
-Parameters for checking certificate revocation status.
+Enumerates the certificate revocation check parameters.
 
 **Since:** 26.0.0
 
@@ -79,7 +79,7 @@ certificate and send a request to obtain a response;
 crls?: Array<X509CRL>
 ```
 
-CRL list. Maximum count: 100.
+CRLs. Maximum number: 100.
 
 **Type:** Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt;
 
@@ -99,7 +99,7 @@ CRL list. Maximum count: 100.
 ocspDigest?: OcspDigest
 ```
 
-Digest algorithm used by OCSP requests. The default value is SHA256.
+Digest algorithm used for OCSP requests. The default value is SHA256.
 
 **Type:** [OcspDigest](arkts-devicecertificate-cert-ocspdigest-e.md)
 
@@ -121,7 +121,7 @@ Digest algorithm used by OCSP requests. The default value is SHA256.
 ocspResponses?: Array<Uint8Array>
 ```
 
-Preconfigured OCSP response data. Maximum count: 100.
+OCSP response data. Preset OCSP response data. Maximum number: 100.
 
 **Type:** Array&lt;Uint8Array&gt;
 
@@ -141,7 +141,7 @@ Preconfigured OCSP response data. Maximum count: 100.
 revocationFlags: Array<CertRevocationFlag>
 ```
 
-Revocation check flag. Array length range: [1,4]. The array must contain either CERT_REVOCATION_CRL_CHECK or CERT_REVOCATION_OCSP_CHECK.
+Certificate revocation check flags. Value range: [1, 4]. The array must contain **CERT_REVOCATION_CRL_CHECK** or **CERT_REVOCATION_OCSP_CHECK**.
 
 **Type:** Array&lt;[CertRevocationFlag](arkts-devicecertificate-cert-certrevocationflag-e.md)&gt;
 

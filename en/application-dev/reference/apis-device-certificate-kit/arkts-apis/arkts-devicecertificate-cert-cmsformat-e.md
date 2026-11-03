@@ -18,7 +18,7 @@ Enumerates the CMS encoding formats.
 DER = 1
 ```
 
-Distinguished Encoding Rules (DER) format.
+DER.
 
 **Since:** 18
 
@@ -34,7 +34,7 @@ Distinguished Encoding Rules (DER) format.
 PEM = 0
 ```
 
-Privacy-Enhanced Mail (PEM) format.
+PEM format.
 
 **Since:** 18
 

@@ -968,7 +968,7 @@ async function demo() {
 isLongClickable(): Promise<boolean>
 ```
 
-获取控件对象可点击属性。使用Promise异步回调。
+获取控件对象可长按点击属性。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -984,7 +984,7 @@ isLongClickable(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回控件对象是否可点击。true：可点击。false：不可点击。 |
+| Promise&lt;boolean&gt; | Promise对象，返回控件对象是否可长按点击。true：可长按点击。false：不可长按点击。 |
 
 **错误码：**
 
@@ -1330,7 +1330,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise<Component>
 | --- | --- | --- | --- |
 | on | [On](arkts-test-uitest-on-c.md) | 是 | 目标控件的属性要求。 |
 | vertical | boolean | 否 | 默认为true，表示查找方向是纵向。false表示查找方向为横向。 |
-| offset | number | 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。 |
+| offset | number | 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。为负数时抛出401错误码。 |
 
 **返回值：**
 

@@ -40,7 +40,7 @@ Whether to print without margins. The value **true** means to print without marg
 defaultCollate?: boolean
 ```
 
-Default collate.
+Default output order. The value **true** means that pages are printed collated, and **false** means the opposite. The default value is **true**.
 
 **Type:** boolean
 
@@ -58,7 +58,7 @@ Default collate.
 defaultColorMode?: PrintColorMode
 ```
 
-Default color mode.
+Default color mode. The default value is black and white.
 
 **Type:** [PrintColorMode](arkts-basicservices-print-printcolormode-e.md)
 
@@ -124,7 +124,7 @@ Default print orientation.
 defaultPageSizeId?: string
 ```
 
-ID of the default paper size. The value can be a standard paper size defined by the International Organization for Standardization (ISO), for example, ISO_A4, or a non-standard paper size defined in the system, for example, Custom.178 × 254 mm.
+ID of the default paper size. The value can be a standard paper size defined by the International Organization for Standardization (ISO), for example, ISO_A4, or a non-standard paper size defined in the system, for example, Custom.178 x 254 mm.
 
 **Type:** string
 
@@ -156,7 +156,7 @@ Default print quality.
 defaultReverse?: boolean
 ```
 
-Default reverse.
+Default print order. The value **true** means that pages are printed in reverse order, and **false** means that pages are printed in normal order. The default value is **false**.
 
 **Type:** boolean
 
@@ -174,7 +174,7 @@ Default reverse.
 options?: string
 ```
 
-Other fields in the printer preferences. The fields are queried from the printer or obtained from the printer driver and stored in the string in JSON format.
+Other fields in the printer preferences. The fields are obtained from the printer or the printer driver and stored in the string in JSON format.
 
 **Type:** string
 
@@ -190,7 +190,7 @@ Other fields in the printer preferences. The fields are queried from the printer
 vendorOptions?: string
 ```
 
-Vendor-specific printer preferences in JSON format.
+Vendor-specific printer preferences of the printer driver, in JSON format.
 
 **Type:** string
 

@@ -2,11 +2,33 @@
 
 The childProcessManager module provides the child process management capability. Currently, it provides APIs to create and start a child process The created child process will exit when the parent process exits and cannot run independently.
 
+> **NOTE:** 
+> 
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a
+> superscript to indicate their earliest API version.
+> 
+> The APIs of this module can be used only in the stage model.
+
 **Since:** 11
 
 <!--Device-unnamed-declare namespace childProcessManager--><!--Device-unnamed-declare namespace childProcessManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## Constraints
+
+## Functional Limitations
+
+- The created child process does not support creating a UI.  
+- The created child process does not support API calls that depend on Context (including the APIs of the Context  
+module itself and APIs that take a Context instance as an input parameter).  
+- Child processes can be created only in the main process. A child process does not support creating child  
+processes again.
+
+## Specification Limits
+
+- A maximum of 512 child processes can be started by using the APIs of this module and the APIs defined in  
+native_child_process.h(as long as system resources are sufficient). The child processes started by [startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md#startchildprocess-1) in SELF_FORK mode are not counted.
 
 ## Modules to Import
 

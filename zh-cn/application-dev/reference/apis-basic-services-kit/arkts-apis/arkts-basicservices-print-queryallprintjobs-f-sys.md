@@ -18,7 +18,7 @@ function queryAllPrintJobs(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** null
+**替代接口：** [queryPrintJobList](arkts-basicservices-print-queryprintjoblist-f-sys.md#queryprintjoblist-1)(callback: AsyncCallback&lt;Array&lt;PrintJob&gt;&gt;)
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -83,7 +83,7 @@ function queryAllPrintJobs(): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** null
+**替代接口：** [queryPrintJobList](arkts-basicservices-print-queryprintjoblist-f-sys.md)()
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 

@@ -26,7 +26,7 @@ Obtains the uniform data type ID based on the given MIME type and data type. If 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mimeType | string | Yes | MIME type. |
+| mimeType | string | Yes | MIME type name in the format of 'type/subtype', for example, 'image/jpeg' and'text/plain'. |
 | belongsTo | string | No | ID of the uniform data type, to which the data type to be obtained belongs. This parameter has no default value. If it is not specified, the [uniform data type ID] is queried based on the MIME name. |
 
 **Return value:**
@@ -34,12 +34,6 @@ Obtains the uniform data type ID based on the given MIME type and data type. If 
 | Type | Description |
 | --- | --- |
 | string | ID of the uniform data type that matches the specified MIME type and **belongsTo** (if specified). If no match is found, the data type dynamically generated based on the rules specified by the input parameters is returned. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

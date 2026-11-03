@@ -56,7 +56,7 @@ File descriptor of the scanned picture.
 progress: number
 ```
 
-Progress percentage, whose value ranges from 0 to 100. Unit: %
+Processing progress, in percentage. The value ranges from 0 to 100.
 
 **Type:** number
 

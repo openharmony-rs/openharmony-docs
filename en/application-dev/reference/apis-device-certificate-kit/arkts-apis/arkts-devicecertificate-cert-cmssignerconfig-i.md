@@ -64,7 +64,7 @@ Whether to add a certificate. The default value is **true**. **true**: yes; **fa
 addSmimeCapAttr?: boolean
 ```
 
-Whether to add the SMIME capability to the CMS object. The default value is **true**. **true**: yes; **false**: no.
+Whether to add the S/MIME capability for CMS objects. The default value is **true**. **true**: yes; **false**: no.
 
 **Type:** boolean
 
@@ -102,11 +102,7 @@ Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256
 rsaSignaturePadding?: CmsRsaSignaturePadding
 ```
 
-Padding mode for an RSA signature. The default value is **PKCS1_PADDING**. <br>When **PKCS1_PSS_PADDING** is set, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**.
-
-> **NOTE:** 
-> 
-> This parameter is valid only when the private key type of the signature is RSA.
+Padding mode for an RSA signature. The default value is **PKCS1_PADDING**. <br>When this parameter is set to **PKCS1_PSS_PADDING**, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**. Note: This parameter is valid only when the signer private key is an RSA key.
 
 **Type:** [CmsRsaSignaturePadding](arkts-devicecertificate-cert-cmsrsasignaturepadding-e.md)
 

@@ -6,11 +6,12 @@ The **boardInfo** module provides board-level hardware information query, includ
 > 
 > The initial APIs of this module are supported since API version 26.0.1. Newly added APIs
 > will be marked with a superscript to indicate their earliest API version.
-> The APIs of this module will start a temporary process during execution. When the system
+> The APIs of this module lazily load a system ability (SA) on first call. When the system
 > load is high, blocking risks may occur. To ensure the responsiveness of the application
 > main thread, avoid calling these APIs in the main thread. Hardware information is
 > device-specific and fixed. You can cache it locally after the first retrieval to avoid
 > repeated calls and improve performance.
+> Non-PC devices, or PC devices in exception scenarios, return an empty string.
 
 **Since:** 26.0.1
 

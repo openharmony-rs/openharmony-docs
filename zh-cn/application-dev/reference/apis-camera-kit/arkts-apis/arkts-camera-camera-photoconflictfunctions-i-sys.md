@@ -4,7 +4,7 @@
 interface PhotoConflictFunctions extends ZoomQuery, MacroQuery
 ```
 
-Photo Conflict Functions object.
+拍照冲突功能对象。
 
 **继承/实现关系：** PhotoConflictFunctions extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md), [MacroQuery](arkts-camera-camera-macroquery-i.md)
 

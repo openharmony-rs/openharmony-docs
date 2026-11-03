@@ -311,6 +311,31 @@ Time of the last access to the file. The value is the number of nanoseconds elap
 | --- | --- |
 | 13900042 | Internal error |
 
+## blocks
+
+```TypeScript
+readonly blocks?: number
+```
+
+Number of blocks allocated to the file, in 512-byte units.
+
+**Type:** number
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Stat-readonly blocks?: number--><!--Device-Stat-readonly blocks?: number-End-->
+
+**System capability:** SystemCapability.FileManagement.File.FileIO
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| 13900005 | I/O error |
+| 13900042 | Unknown error |
+
 ## ctime
 
 ```TypeScript

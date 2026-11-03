@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function getSharedHosts(): Promise<SharedHost[]>
 ```
 
-获取所有可用的共享主机。
+获取所有可用的共享主机，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,7 +30,7 @@ function getSharedHosts(): Promise<SharedHost[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SharedHost](arkts-basicservices-print-sharedhost-i.md)[]&gt; | Promise that resolves with the list of shared hosts. |
+| Promise&lt;[SharedHost](arkts-basicservices-print-sharedhost-i.md)[]&gt; | Promise对象，返回所有可用的共享主机列表。 |
 
 **错误码：**
 

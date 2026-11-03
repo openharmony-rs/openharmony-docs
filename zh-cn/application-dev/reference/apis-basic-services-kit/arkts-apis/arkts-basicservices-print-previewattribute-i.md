@@ -40,7 +40,7 @@ previewRange: PrinterRange
 result?: number
 ```
 
-表示预览文件结果。默认值为-1。
+表示预览文件生成结果，具体取值含义由开发者自行定义。
 
 **类型：** number
 

@@ -4,7 +4,7 @@
 interface SharedHost
 ```
 
-Interface defining shared device information
+Defines the shared device information.
 
 **Since:** 24
 
@@ -42,7 +42,7 @@ IP address of the shared device.
 shareName: string
 ```
 
-Share name of the shared device.
+Host name of the shared device.
 
 **Type:** string
 

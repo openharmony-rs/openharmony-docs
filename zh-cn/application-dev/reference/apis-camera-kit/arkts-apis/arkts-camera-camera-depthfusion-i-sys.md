@@ -4,7 +4,7 @@
 interface DepthFusion extends DepthFusionQuery
 ```
 
-深度融合类。继承自 [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md)。
+深度融合类。
 
 **继承/实现关系：** DepthFusion extends [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md)
 

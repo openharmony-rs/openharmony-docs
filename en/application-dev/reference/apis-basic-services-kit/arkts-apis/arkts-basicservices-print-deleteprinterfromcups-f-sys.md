@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function deletePrinterFromCups(printerName: string): Promise<void>
 ```
 
-Delete a printer from cups.
+Deletes a printer from CUPS. This API uses an asynchronous callback to return the result. CUPS is the print service framework in the system, which is used to manage printers and print jobs.
 
 **Since:** 24
 
@@ -30,13 +30,13 @@ Delete a printer from cups.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerName | string | Yes | Indicates the printer name. <br>Printer name to be deleted. |
+| printerName | string | Yes | Printer name. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

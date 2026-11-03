@@ -151,8 +151,8 @@ import { avSession } from '@kit.AVSessionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md) |  |
-| [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md) | The type of control command |
+| [AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md) | 投播控制器可传递的命令。 |
+| [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md) | 会话可传递的命令。 |
 | [AVMediaCenterControlType](arkts-avsession-avsession-avmediacentercontroltype-t.md) | 应用可选择设置优先级的播控组件类型 |
 | [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md) | 当前会话支持的会话类型。 |
 | [EventProcess](arkts-avsession-avsession-eventprocess-t.md) | The general process funcation with an event and arguments. |

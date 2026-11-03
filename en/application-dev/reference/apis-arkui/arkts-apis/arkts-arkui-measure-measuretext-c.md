@@ -28,6 +28,8 @@ Measures the single-line display width of the specified text. For multi-line tex
 
 > **NOTE:** 
 > 
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [measureText](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretext) instead. Before calling this API, you need to obtain the [MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object using the [getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils) method in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md). Directly using **measureText** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context).
+> 
 > - Since API version 12, you can use the [getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)API in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to obtain the [MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object associated with the current UI context.
 > 
 > - **measureText** always measures single-line text width. Layout constraints in **options** (**constraintWidth**,
@@ -93,6 +95,7 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 Measures the width and height of the given text.
 
 > **NOTE:** 
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [measureTextSize](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretextsize) instead. Before calling this API, you need to obtain the [MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object using the [getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils) method in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md). Directly using **measureTextSize** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context).
 > 
 > - Since API version 12, you can use the [getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)API in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to obtain the [MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object associated with the current UI context.
 

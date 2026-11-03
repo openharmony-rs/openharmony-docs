@@ -4,7 +4,7 @@
 interface CmsParser
 ```
 
-Provides APIs for parsing, verifying, and decrypting CMS messages.
+Provide APIs for parsing, verifying signatures, and decapsulating CMS messages.
 
 > **NOTE:** 
 > 
@@ -30,7 +30,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise<Uint8Array>
 ```
 
-Decrypts the CMS message of the **ENVELOPED_DATA** content type. This API uses a promise to return the result.
+Decrypts the CMS message of the enveloped data type. This API uses a promise to return the result.
 
 **Since:** 22
 
@@ -151,7 +151,7 @@ async function testCmsDecryptTest() {
 getCerts(type: CmsCertType): Promise<Array<X509Cert>>
 ```
 
-Obtains the certificate from CMS message of the **SIGNED_DATA** type by passing enumerated values. The signer certificates or all certificates can be obtained. This API uses a promise to return the result.
+Obtains the certificate from CMS messages of the signature data type by passing enumerated values. Currently, the signer certificate or all certificates can be obtained. This API uses a promise to return the result.
 
 **Since:** 22
 
@@ -305,7 +305,7 @@ async function testCmsVerifyTest() {
 getContentData(): Promise<Uint8Array>
 ```
 
-Obtains the content data from CMS message of the **SIGNED_DATA** type. This API uses a promise to return the result.
+Obtains the content data from the CMS message of the signature data type. This API uses a promise to return the result.
 
 **Since:** 22
 
@@ -319,7 +319,7 @@ Obtains the content data from CMS message of the **SIGNED_DATA** type. This API 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the content data. |
+| Promise&lt;Uint8Array&gt; | Promise used to return CMS content data. |
 
 **Error codes:**
 
@@ -596,12 +596,12 @@ async function testCmsVerifyTest() {
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise<void>
 ```
 
-Set the CMS message data. This API uses a promise to return the result.
+Sets CMS message data. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
-> CMS message in PEM and DER formats is supported. **string** corresponds to the PEM format, and **Uint8Array**
-> corresponds to the DER format.
+> CMS messages in PEM and DER formats are supported. The string is in PEM format, and the Uint8Array data is in
+> DER format.
 
 **Since:** 22
 
@@ -753,7 +753,7 @@ async function testCmsVerifyTest() {
 verifySignedData(config: CmsVerificationConfig): Promise<void>
 ```
 
-Verifies the CMS message of the **SIGNED_DATA** content type. This API uses a promise to return the result.
+Verifies the CMS message of the signature data type. This API uses a promise to return the result.
 
 **Since:** 22
 

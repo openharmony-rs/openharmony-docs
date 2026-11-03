@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 height: number
 ```
 
-表示页面高度，单位：毫米。
+表示页面高度，单位：密尔（千分之一英寸）。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ name: string
 width: number
 ```
 
-表示页面宽度，单位：毫米。
+表示页面宽度，单位：密尔（千分之一英寸）。
 
 **类型：** number
 

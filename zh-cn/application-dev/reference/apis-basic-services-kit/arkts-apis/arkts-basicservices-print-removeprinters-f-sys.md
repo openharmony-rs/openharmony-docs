@@ -28,7 +28,7 @@ function removePrinters(printerIds: Array<string>, callback: AsyncCallback<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerIds | Array&lt;string&gt; | 是 | 表示需移除的打印机列表。 |
+| printerIds | Array&lt;string&gt; | 是 | 表示需移除的打印机ID列表。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步移除打印机之后的回调。 |
 
 **错误码：**
@@ -81,7 +81,7 @@ function removePrinters(printerIds: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerIds | Array&lt;string&gt; | 是 | 表示需移除的打印机列表。 |
+| printerIds | Array&lt;string&gt; | 是 | 表示需移除的打印机ID列表。 |
 
 **返回值：**
 

@@ -420,7 +420,7 @@ public setShareAlbumName(owner: string, name: string): void
 public setShareCoverUri(owner: string, coverUri: string): void
 ```
 
-设置共享相册的封面
+设置共享相册的封面。
 
 **起始版本：** 26.0.1
 

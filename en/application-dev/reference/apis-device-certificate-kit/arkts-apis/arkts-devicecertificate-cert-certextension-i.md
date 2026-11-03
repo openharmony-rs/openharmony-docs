@@ -38,7 +38,7 @@ Checks whether the certificate is a CA certificate.
 
 | Type | Description |
 | --- | --- |
-| number | If the key usage extension contains the keyCertSign bit and the CA field in the basic constraints is **true**, the certificate is a CA certificate. Returns **-1** if the certificate is not a CA certificate; returns the path length in the basic constraints otherwise. Returns **-2** if the certificate is a CA certificate but the path length is not specified in the basic constraints, which means the path length is not limited. |
+| number | If the key usage extension contains the **keyCertSign** bit and the **cA** field in the basic constraints is **true**, the certificate is a CA certificate. Returns **-1** if the certificate is not a CA certificate; returns the path length in the basic constraints otherwise. Returns **-2** if the certificate is a CA certificate but the path length is not specified in the basic constraints, which means the path length is not limited. |
 
 **Error codes:**
 
@@ -94,7 +94,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 getEncoded(): EncodingBlob
 ```
 
-Obtains the serialized data of the certificate extensions.
+Obtains the serialized data of a certificate extension.
 
 **Since:** 10
 
@@ -108,7 +108,7 @@ Obtains the serialized data of the certificate extensions.
 
 | Type | Description |
 | --- | --- |
-| [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Serialized data obtained. |
+| [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Serialized data of the obtained certificate extension. |
 
 **Error codes:**
 
@@ -165,7 +165,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob
 ```
 
-Obtains the value of a specific certificate extension entry by OID.
+Obtains the value of a certificate extension based on the OID.
 
 **Since:** 10
 
@@ -179,14 +179,14 @@ Obtains the value of a specific certificate extension entry by OID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| valueType | [ExtensionEntryType](arkts-devicecertificate-cert-extensionentrytype-e.md) | Yes | Type of the information to obtain. |
-| oid | [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Yes | OID of the certificate extension to obtain. |
+| valueType | [ExtensionEntryType](arkts-devicecertificate-cert-extensionentrytype-e.md) | Yes | Type of the extension information to be obtained. |
+| oid | [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Yes | OID of the extension item to be obtained. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Certificate extension object information obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Certificate extension data obtained. |
 
 **Error codes:**
 
@@ -248,7 +248,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 getOidList(valueType: ExtensionOidType): DataArray
 ```
 
-Obtains the OIDs of the certificate extensions.
+Obtains the OID list of a certificate extension.
 
 **Since:** 10
 
@@ -262,13 +262,13 @@ Obtains the OIDs of the certificate extensions.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| valueType | [ExtensionOidType](arkts-devicecertificate-cert-extensionoidtype-e.md) | Yes | Type of the OIDs to obtain. |
+| valueType | [ExtensionOidType](arkts-devicecertificate-cert-extensionoidtype-e.md) | Yes | Type of the OID to be obtained. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | OIDs obtained. |
+| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | OID list of the obtained certificate extension. |
 
 **Error codes:**
 
@@ -326,7 +326,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 hasUnsupportedCriticalExtension(): boolean
 ```
 
-Checks whether there is a critical extension that is not supported.
+Checks whether there is any critical extension that is not supported.
 
 **Since:** 11
 
@@ -340,7 +340,7 @@ Checks whether there is a critical extension that is not supported.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if an unsupported critical extension is found; returns **false** otherwise. |
+| boolean | Returns **true** if unsupported critical extension is found; returns **false** otherwise. |
 
 **Error codes:**
 

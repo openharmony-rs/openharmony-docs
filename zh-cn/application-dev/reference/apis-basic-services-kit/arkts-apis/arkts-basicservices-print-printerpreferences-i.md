@@ -42,8 +42,6 @@ defaultCollate?: boolean
 
 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **类型：** boolean
 
 **起始版本：** 24
@@ -61,8 +59,6 @@ defaultColorMode?: PrintColorMode
 ```
 
 表示默认色彩模式。默认值为黑白。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** [PrintColorMode](arkts-basicservices-print-printcolormode-e.md)
 
@@ -128,7 +124,7 @@ defaultOrientation?: PrintOrientationMode
 defaultPageSizeId?: string
 ```
 
-表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。
+表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸（如ISO_A4）和系统中定义的非标准的纸张尺寸（如Custom.178x254mm，表示这种纸张尺寸为178毫米*254毫米）。
 
 **类型：** string
 
@@ -162,8 +158,6 @@ defaultReverse?: boolean
 
 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **类型：** boolean
 
 **起始版本：** 24
@@ -180,12 +174,30 @@ defaultReverse?: boolean
 options?: string
 ```
 
-表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。
+表示打印机首选项中除以上字段外的其他字段，从打印机或打印机驱动获取，以JSON格式存储在string中。
 
 **类型：** string
 
 **起始版本：** 18
 
 <!--Device-PrinterPreferences-options?: string--><!--Device-PrinterPreferences-options?: string-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## vendorOptions
+
+```TypeScript
+vendorOptions?: string
+```
+
+表示以JSON格式字符串化的打印机驱动的厂商打印机首选项。
+
+**类型：** string
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrinterPreferences-vendorOptions?: string--><!--Device-PrinterPreferences-vendorOptions?: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

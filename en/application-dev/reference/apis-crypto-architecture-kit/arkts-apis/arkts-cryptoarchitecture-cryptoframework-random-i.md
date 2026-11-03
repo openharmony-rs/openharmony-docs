@@ -4,7 +4,7 @@
 interface Random
 ```
 
-Random interface, defining methods for generating random numbers. Before use, you must create a **Random** instance by using [createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md).
+Defines an API for generating random numbers. Before calling this API, you need to create a **Random** instance by calling [createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md).
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 enableHardwareEntropy(): void
 ```
 
-Enables the hardware entropy source. Secure random numbers obtained from TEE will be used as the entropy source of this random instance.
+Enables the hardware entropy source. Secure random numbers obtained from the TEE are used as the entropy source of the **Random** instance.
 
 **Since:** 21
 
@@ -96,8 +96,8 @@ Generates a random number of the specified length. This API uses an asynchronous
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| len | number | Yes | Length of the random number to generate, in bytes. The value range is [1, INT_MAX]. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the random number obtained. Otherwise, **err** is an error object. |
+| len | number | Yes | Length of the random number to generate, in bytes. The value ranges from 1 to **INT_MAX**. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the random number generated. If a random number is successfully generated, **err** is **undefined** and **data** is the random number generated. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -146,7 +146,7 @@ Generates a random number of the specified length. This API uses a promise to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| len | number | Yes | Length of the random number to generate, in bytes. The value range is [1, INT_MAX]. |
+| len | number | Yes | Length of the random number to generate, in bytes. The value ranges from 1 to **INT_MAX**. |
 
 **Return value:**
 
@@ -273,7 +273,7 @@ Generates a random number of the specified length. This API returns the result s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| len | number | Yes | Length of the random number to generate, in bytes. The value range is [1, INT_MAX]. |
+| len | number | Yes | Length of the random number to generate, in bytes. The value ranges from 1 to **INT_MAX**. |
 
 **Return value:**
 
@@ -440,7 +440,7 @@ rand.generateRandom(12, (err, randData) => {
 readonly algName: string
 ```
 
-Indicates the random generation algorithm name. Currently, only CTR_DRBG is supported.
+Algorithm used to generate the random number. Currently, only **CTR_DRBG** is supported.
 
 **Type:** string
 

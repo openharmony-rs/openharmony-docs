@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise<PrinterCapabilities>
 ```
 
-使用打印机的uri查询打印机能力，使用Promise异步回调。
+使用打印机的URI查询打印机能力，使用Promise异步回调。可用于在已知打印机URI但打印机未在本地注册时，直接查询其支持的能力；也可用于USB打印机能力的发现。
 
 **起始版本：** 24
 
@@ -30,14 +30,14 @@ function queryPrinterCapabilityByUri(printerUri: string, printerId: string): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerUri | string | 是 | 表示打印机uri。 |
+| printerUri | string | 是 | 表示打印机URI，可通过[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)获取。 |
 | printerId | string | 是 | 表示打印机ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[PrinterCapabilities](arkts-basicservices-print-printercapabilities-i.md)&gt; | Promise对象，返回打印机能力。 |
+| Promise&lt;[PrinterCapabilities](arkts-basicservices-print-printercapabilities-i.md)&gt; | Promise对象，返回查询到的打印机能力，用于获取打印机支持的功能与配置选项。 |
 
 **错误码：**
 

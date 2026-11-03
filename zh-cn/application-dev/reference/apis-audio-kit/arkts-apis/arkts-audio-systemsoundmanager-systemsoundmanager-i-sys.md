@@ -1259,7 +1259,7 @@ openAlarmTone(context: BaseContext, uri: string): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统闹铃的uri，资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md)。 |
+| uri | string | 是 | 被设置的系统闹铃的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
 
 **返回值：**
 
@@ -1318,7 +1318,7 @@ openToneHaptics(context: BaseContext, hapticsUri: string): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| hapticsUri | string | 是 | 待打开系统铃音的振动的uri，资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md)。 |
+| hapticsUri | string | 是 | 待打开系统铃音的振动的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
 
 **返回值：**
 
@@ -1559,7 +1559,7 @@ setAlarmToneUri(context: BaseContext, uri: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统闹铃的uri，资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md)。 |
+| uri | string | 是 | 被设置的系统闹铃的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
 
 **返回值：**
 
@@ -1618,7 +1618,7 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-multimedia-media.md)。 |
+| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 被设置的系统铃声的类型。 |
 
 **返回值：**
@@ -1678,7 +1678,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统提示音的uri，资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-multimedia-media.md)。 |
+| uri | string | 是 | 被设置的系统提示音的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)。 |
 | type | [SystemToneType](arkts-audio-systemsoundmanager-systemtonetype-e-sys.md) | 是 | 待获取的系统提示音的类型。 |
 
 **返回值：**
@@ -2048,7 +2048,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-multimedia-media.md)。 |
+| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 被设置的系统铃声的类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置系统铃声uri成功，err为undefined，否则为错误对象。 |
 
@@ -2106,7 +2106,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-multimedia-media.md)。 |
+| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 被设置的系统铃声的类型。 |
 
 **返回值：**

@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void
 ```
 
-Notify watermark complete.
+Notifies that watermark processing is complete so that the subsequent printing process can continue.
 
 **Since:** 24
 
@@ -28,8 +28,8 @@ Notify watermark complete.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | Indicates the job ID. <br>Print job ID in preview. |
-| result | [WatermarkHandleResult](arkts-basicservices-print-watermarkhandleresult-e.md) | Yes | Indicates the result. <br>Watermark processing results. |
+| jobId | string | Yes | ID of the print job. |
+| result | [WatermarkHandleResult](arkts-basicservices-print-watermarkhandleresult-e.md) | Yes | Watermark processing result. |
 
 **Error codes:**
 

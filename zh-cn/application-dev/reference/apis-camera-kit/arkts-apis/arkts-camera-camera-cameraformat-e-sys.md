@@ -18,7 +18,7 @@ enum CameraFormat
 CAMERA_FORMAT_DEPTH_16 = 3000
 ```
 
-Depth map in DEPTH_16 format.
+DEPTH_16 格式的深度图。
 
 **起始版本：** 13
 
@@ -34,7 +34,7 @@ Depth map in DEPTH_16 format.
 CAMERA_FORMAT_DEPTH_32 = 3001
 ```
 
-Depth map in DEPTH_32 format.
+DEPTH_32 格式的深度图。
 
 **起始版本：** 13
 

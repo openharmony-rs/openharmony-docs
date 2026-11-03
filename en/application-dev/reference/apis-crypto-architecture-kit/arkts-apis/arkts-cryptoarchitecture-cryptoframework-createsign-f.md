@@ -12,7 +12,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 function createSign(algName: string): Sign
 ```
 
-Creates a **Sign** instance.
+Creates a signing instance.
 
 <br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).
 
@@ -36,7 +36,7 @@ Creates a **Sign** instance.
 
 | Type | Description |
 | --- | --- |
-| [Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md) | Returns the **Sign** instance corresponding to the specified algorithm. |
+| [Sign](arkts-cryptoarchitecture-cryptoframework-sign-i.md) | **Sign** instance of the corresponding algorithm. |
 
 **Error codes:**
 

@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function updatePrinters(printers: Array<PrinterInfo>, callback: AsyncCallback<void>): void
 ```
 
-Updates information about the specified printers. This API uses an asynchronous callback to return the result.
+Updates the information of the specified printers. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -73,7 +73,7 @@ print.updatePrinters([printerInfo], (error: BusinessError) => {
 function updatePrinters(printers: Array<PrinterInfo>): Promise<void>
 ```
 
-Updates information about the specified printers. This API uses a promise to return the result.
+Updates the information of the specified printers. This API uses a promise to return the result.
 
 **Since:** 10
 

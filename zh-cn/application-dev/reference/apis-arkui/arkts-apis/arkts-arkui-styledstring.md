@@ -1,4 +1,4 @@
-# styled_string
+# styled_string(属性字符串是一种将文本样式与文本内容关联管理的对象，样式通过start和length指定文本区间，多种样式可叠加应用于同一区间。)
 
 ## 汇总
 

@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function openScanner(scannerId: string): Promise<void>
 ```
 
-打开扫描仪。使用Promise异步回调。
+打开扫描仪。需在调用init()完成初始化后使用。使用Promise异步回调。在使用完毕后，需调用closeScanner()关闭扫描仪，释放资源。
 
 **起始版本：** 20
 
@@ -26,13 +26,13 @@ function openScanner(scannerId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scannerId | string | 是 | 要打开的扫描仪的ID。 |
+| scannerId | string | 是 | 要打开的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，打开扫描仪成功时resolve，失败时reject。 |
 
 **错误码：**
 

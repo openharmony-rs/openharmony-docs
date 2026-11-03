@@ -2,10 +2,6 @@
 
 As a child component of the [Text](arkts-arkui-text-comp.md) component, the **ContainerSpan** component is used to manage the background colors and rounded corners of multiple [Span](arkts-arkui-span-comp.md) and [ImageSpan](arkts-arkui-imagespan-comp.md) components in a unified manner. It applies to scenarios where a unified background style needs to be set for a combination of text segments and images.
 
-> **NOTE:** 
-> 
-> - This component is supported since API version 11. Newly added APIs will be marked with a superscript to indicate their
-
 ## Child Components
 
 This component can contain the [Span](arkts-arkui-span-comp.md) and [ImageSpan](arkts-arkui-imagespan-comp.md) child components.

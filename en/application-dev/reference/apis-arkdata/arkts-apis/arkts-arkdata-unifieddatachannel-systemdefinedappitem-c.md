@@ -4,7 +4,7 @@
 class SystemDefinedAppItem extends SystemDefinedRecord
 ```
 
-Represents the data of the home screen icon defined by the system. It is a child class of [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md).
+System-defined desktop icon data, which is a subclass of [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md).
 
 **Inheritance/Implementation:** SystemDefinedAppItem extends [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get abilityName(): string
 ```
 
-Indicates the ability name of app
+Ability name of the application corresponding to the icon.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Indicates the ability name of app
 set abilityName(value: string)
 ```
 
-Indicates the ability name of app
+Ability name of the application corresponding to the icon.
 
 **Type:** string
 
@@ -64,7 +64,7 @@ Indicates the ability name of app
 get appIconId(): string
 ```
 
-Indicates the id of app icon. This field can be sourced from BMS or customized as needed.
+Image ID of the icon.
 
 **Type:** string
 
@@ -82,7 +82,7 @@ Indicates the id of app icon. This field can be sourced from BMS or customized a
 set appIconId(value: string)
 ```
 
-Indicates the id of app icon. This field can be sourced from BMS or customized as needed.
+Image ID of the icon.
 
 **Type:** string
 
@@ -102,7 +102,7 @@ Indicates the id of app icon. This field can be sourced from BMS or customized a
 get appId(): string
 ```
 
-Indicates the app id
+Application ID corresponding to the icon.
 
 **Type:** string
 
@@ -120,7 +120,7 @@ Indicates the app id
 set appId(value: string)
 ```
 
-Indicates the app id
+Application ID corresponding to the icon.
 
 **Type:** string
 
@@ -140,7 +140,7 @@ Indicates the app id
 get appLabelId(): string
 ```
 
-Indicates the id of app label. This field can be sourced from BMS or customized as needed.
+Label ID corresponding to the icon name.
 
 **Type:** string
 
@@ -158,7 +158,7 @@ Indicates the id of app label. This field can be sourced from BMS or customized 
 set appLabelId(value: string)
 ```
 
-Indicates the id of app label. This field can be sourced from BMS or customized as needed.
+Label ID corresponding to the icon name.
 
 **Type:** string
 
@@ -178,7 +178,7 @@ Indicates the id of app label. This field can be sourced from BMS or customized 
 get appName(): string
 ```
 
-Indicates the app name
+Application name corresponding to the icon.
 
 **Type:** string
 
@@ -196,7 +196,7 @@ Indicates the app name
 set appName(value: string)
 ```
 
-Indicates the app name
+Application name corresponding to the icon.
 
 **Type:** string
 
@@ -216,7 +216,7 @@ Indicates the app name
 get bundleName(): string
 ```
 
-Indicates the bundle name of app
+Bundle name of the application corresponding to the icon.
 
 **Type:** string
 
@@ -234,7 +234,7 @@ Indicates the bundle name of app
 set bundleName(value: string)
 ```
 
-Indicates the bundle name of app
+Bundle name of the application corresponding to the icon.
 
 **Type:** string
 

@@ -28,7 +28,7 @@ function queryPrintJobById(jobId: string, callback: AsyncCallback<PrintJob>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 表示打印任务ID。 |
+| jobId | string | 是 | 表示已创建的打印任务ID。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[PrintJob](arkts-basicservices-print-printjob-i.md)&gt; | 是 | 异步按打印任务ID查询打印任务之后的回调。 |
 
 **错误码：**
@@ -81,7 +81,7 @@ function queryPrintJobById(jobId: string): Promise<PrintJob>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 表示打印任务ID。 |
+| jobId | string | 是 | 表示已创建的打印任务ID。 |
 
 **返回值：**
 

@@ -4,7 +4,7 @@
 interface ScannerOptionValue
 ```
 
-定义扫描仪选项值的接口。
+定义扫描仪选项值的接口。当对应选项的约束类型为SCAN_CONSTRAINT_STRING_LIST时，选项取值应为optionConstraintString集合中的字符串。
 
 **起始版本：** 20
 
@@ -24,7 +24,7 @@ import { scan } from '@kit.BasicServicesKit';
 boolValue?: boolean
 ```
 
-布尔值。
+布尔值，仅在valueType为SCAN_TYPE_BOOL时有效。
 
 **类型：** boolean
 
@@ -40,7 +40,7 @@ boolValue?: boolean
 numValue?: number
 ```
 
-数值。
+数值，仅在valueType为SCAN_TYPE_INT或SCAN_TYPE_FIXED时有效。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ numValue?: number
 strValue?: string
 ```
 
-字符串值。
+字符串值，仅在valueType为SCAN_TYPE_STRING时有效。
 
 **类型：** string
 
@@ -72,7 +72,7 @@ strValue?: string
 valueType: OptionValueType
 ```
 
-值类型。
+值类型，决定应使用的值字段。
 
 **类型：** [OptionValueType](arkts-basicservices-scan-optionvaluetype-e.md)
 

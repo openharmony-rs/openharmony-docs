@@ -18,7 +18,7 @@ export declare enum AVCastPickerStyle
 STYLE_MENU = 1
 ```
 
-The picker shows in a menu style.
+菜单样式。
 
 **起始版本：** 12
 
@@ -34,7 +34,7 @@ The picker shows in a menu style.
 STYLE_PANEL = 0
 ```
 
-The picker shows in a panel style.
+面板样式。
 
 **起始版本：** 12
 

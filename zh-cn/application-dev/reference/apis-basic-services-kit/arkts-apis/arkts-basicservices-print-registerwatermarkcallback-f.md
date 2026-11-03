@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function registerWatermarkCallback(callback: WatermarkCallback): void
 ```
 
-注册强制水印处理的监听事件。
+注册强制水印处理的监听事件。强制水印是指由企业管控策略要求在打印文件上强制添加的水印内容。在企业管理场景中，当需要在打印文件上强制添加水印（如公司标识、机密等级标记）时，可通过此接口注册水印处理回调。
 
 **起始版本：** 24
 

@@ -56,7 +56,7 @@ minValue: number
 quantValue: number
 ```
 
-范围的量化值。
+范围的量化值，表示范围内有效值之间的步长。
 
 **类型：** number
 

@@ -1,0 +1,15 @@
+# SoundPool
+
+```TypeScript
+type SoundPool = _SoundPool
+```
+
+SoundPool, which provides APIs for loading, unloading, playing, and stopping playing system sounds, setting the volume, and setting the number of loops.
+
+**Type:** _SoundPool
+
+**Since:** 10
+
+<!--Device-media-type SoundPool = _SoundPool--><!--Device-media-type SoundPool = _SoundPool-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.SoundPool

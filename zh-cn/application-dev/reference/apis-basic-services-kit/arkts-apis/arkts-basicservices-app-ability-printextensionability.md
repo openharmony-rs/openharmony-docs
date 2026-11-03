@@ -1,7 +1,4 @@
-# @ohos.app.ability.PrintExtensionAbility
-
-打印扩展能力
-
+# @ohos.app.ability.PrintExtensionAbility(打印扩展能力)
 
 ## 导入模块
 

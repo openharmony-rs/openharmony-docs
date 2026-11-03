@@ -27,7 +27,7 @@ import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 assertComponentExist(on: On): Promise<void>
 ```
 
-断言API，用于断言当前界面是否存在满足给出的目标属性的控件。使用Promise异步回调。
+断言API，用于断言当前界面是否存在满足给出的目标属性的控件。断言失败时会抛出JS异常导致测试用例失败。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -291,7 +291,7 @@ createUIEventObserver(): UIEventObserver
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIEventObserver](arkts-test-uitest-uieventobserver-i.md) | 返回找到的目标窗口对象。 |
+| [UIEventObserver](arkts-test-uitest-uieventobserver-i.md) | 返回创建的UI事件监听器对象。 |
 
 **错误码：**
 
@@ -3061,7 +3061,7 @@ async function demo() {
 screenCapture(savePath: string, rect?: Rect): Promise<boolean>
 ```
 
-捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。与[screenCap](#screencap)的区别在于本接口支持通过rect参数指定截图区域，而非截取全屏。
 
 **起始版本：** 10
 

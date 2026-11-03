@@ -4,6 +4,8 @@
 type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'seek' | 'setVolume' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite' | 'toggleMute'
 ```
 
+投播控制器可传递的命令。
+
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -14,16 +16,16 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 
 | 类型 | 说明 |
 | --- | --- |
-| 'play' | Play the current media.<br>**起始版本：** 10 |
-| 'pause' | Pause the current media.<br>**起始版本：** 10 |
-| 'stop' | Stop the current media.<br>**起始版本：** 10 |
-| 'playNext' | Play the next media in the queue.<br>**起始版本：** 10 |
-| 'playPrevious' | Play the previous media in the queue.<br>**起始版本：** 10 |
-| 'fastForward' | Fast forward the current media.<br>**起始版本：** 10 |
-| 'rewind' | Rewind the current media.<br>**起始版本：** 10 |
-| 'seek' | Seek to a specific position in the media.<br>**起始版本：** 10 |
-| 'setVolume' | Adjust volume for the media.<br>**起始版本：** 10 |
-| 'setSpeed' | Set the playback speed..<br>**起始版本：** 10 |
-| 'setLoopMode' | Set the loop mode for the media.<br>**起始版本：** 10 |
-| 'toggleFavorite' | Toggle the favorite status of the current media.<br>**起始版本：** 10 |
-| 'toggleMute' | Toggle the mute status of the media.<br>**起始版本：** 10 |
+| 'play' | 播放。<br>**起始版本：** 10 |
+| 'pause' | 暂停。<br>**起始版本：** 10 |
+| 'stop' | 停止。<br>**起始版本：** 10 |
+| 'playNext' | 下一首。<br>**起始版本：** 10 |
+| 'playPrevious' | 上一首。<br>**起始版本：** 10 |
+| 'fastForward' | 快进。<br>**起始版本：** 10 |
+| 'rewind' | 快退。<br>**起始版本：** 10 |
+| 'seek' | 跳转到指定时间点。<br>**起始版本：** 10 |
+| 'setVolume' | 设置音量。<br>**起始版本：** 10 |
+| 'setSpeed' | 设置播放倍速。<br>**起始版本：** 10 |
+| 'setLoopMode' | 设置循环模式。<br>**起始版本：** 10 |
+| 'toggleFavorite' | 切换收藏状态。<br>**起始版本：** 10 |
+| 'toggleMute' | 切换静音状态。<br>**起始版本：** 10 |

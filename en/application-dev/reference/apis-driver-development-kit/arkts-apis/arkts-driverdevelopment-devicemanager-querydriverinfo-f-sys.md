@@ -28,7 +28,7 @@ Obtains the list of detailed information about peripheral drivers. If the device
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| driverUid | string | No | Driver UID, which can be obtained by using **queryDeviceInfo**. |
+| driverUid | string | No | Driver UID, which is obtained from the device information returned by [queryDeviceInfo](arkts-driverdevelopment-devicemanager-querydeviceinfo-f-sys.md). If no driver UID is passed, all driver information is obtained by default. If a UID is passed but the corresponding driver does not exist, an empty list is returned. |
 
 **Return value:**
 

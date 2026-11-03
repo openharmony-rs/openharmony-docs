@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function off(type: 'scanDeviceFound', callback?: Callback<ScannerDevice>): void
 ```
 
-取消注册扫描仪设备发现事件回调。使用callback异步回调。
+取消注册扫描仪设备发现事件回调。
 
 **起始版本：** 20
 
@@ -27,7 +27,7 @@ function off(type: 'scanDeviceFound', callback?: Callback<ScannerDevice>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | 否 | 回调函数，返回扫描仪设备发现信息。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | 否 | 需要取消注册的回调函数。若不传入，则取消调用方所有已注册的回调。 |
 
 **错误码：**
 
@@ -55,7 +55,7 @@ scan.off('scanDeviceFound', callback);
 function off(type: 'scanDeviceSync', callback?: Callback<ScannerSyncDevice>): void
 ```
 
-取消注册扫描仪设备同步事件回调。使用callback异步回调。
+取消注册扫描仪设备同步事件回调。
 
 **起始版本：** 20
 
@@ -70,7 +70,7 @@ function off(type: 'scanDeviceSync', callback?: Callback<ScannerSyncDevice>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scanDeviceSync' | 是 | 事件类型。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerSyncDevice](arkts-basicservices-scan-scannersyncdevice-i.md)&gt; | 否 | 回调函数，返回扫描仪设备同步信息。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerSyncDevice](arkts-basicservices-scan-scannersyncdevice-i.md)&gt; | 否 | 需要取消注册的回调函数。若不传入，则取消调用方所有已注册的回调。 |
 
 **错误码：**
 

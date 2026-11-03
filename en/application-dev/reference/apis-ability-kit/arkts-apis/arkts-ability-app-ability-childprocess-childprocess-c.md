@@ -38,7 +38,7 @@ Entrypoint method of the child process. This callback is triggered when the chil
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| args | [ChildProcessArgs](arkts-ability-app-ability-childprocessargs-childprocessargs-i.md) | No | Parameters transferred to the child process. |
+| args | [ChildProcessArgs](arkts-ability-app-ability-childprocessargs-childprocessargs-i.md) | No | Parameters passed to the child process. This parameter is optional. If it is not passed or null is passed, the default configuration is used for startup. |
 
 **Examples**
 

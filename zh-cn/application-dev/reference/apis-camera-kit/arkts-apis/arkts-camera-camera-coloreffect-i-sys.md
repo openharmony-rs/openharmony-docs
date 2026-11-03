@@ -4,7 +4,7 @@
 interface ColorEffect extends ColorEffectQuery
 ```
 
-ColorEffect 继承 [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md)提供获取和设置镜头色彩效果的接口。
+提供获取和设置镜头色彩效果的接口。
 
 **继承/实现关系：** ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md)
 

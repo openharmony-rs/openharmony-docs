@@ -4,7 +4,7 @@
 enum LightPaintingType
 ```
 
-Enumerates the types of light painting shutter modes.
+枚举，流光快门模式类型。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Enumerates the types of light painting shutter modes.
 LIGHT_GRAFFITI = 3
 ```
 
-Light graffiti.
+光绘涂鸦。
 
 **起始版本：** 12
 
@@ -36,7 +36,7 @@ Light graffiti.
 SILKY_WATER = 2
 ```
 
-Silky water.
+丝绢流水。
 
 **起始版本：** 12
 
@@ -52,7 +52,7 @@ Silky water.
 STAR_TRAILS = 1
 ```
 
-Star trails.
+绚丽星轨。
 
 **起始版本：** 12
 
@@ -68,7 +68,7 @@ Star trails.
 TRAFFIC_TRAILS = 0
 ```
 
-Traffic trails.
+车水马龙。
 
 **起始版本：** 12
 

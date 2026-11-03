@@ -1,4 +1,4 @@
-# @ohos.arkui.advanced.SelectionMenu
+# @ohos.arkui.advanced.SelectionMenu(文本选择菜单，适用于[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md)组件通过[bindSelectionMenu](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu)或)
 
 ## 导入模块
 

@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 colorMode?: PrintColorMode
 ```
 
-表示待打印文件的色彩模式。
+表示待打印文件的色彩模式。不传入时默认值为0。
 
 **类型：** [PrintColorMode](arkts-basicservices-print-printcolormode-e.md)
 
@@ -40,7 +40,7 @@ colorMode?: PrintColorMode
 copyNumber?: number
 ```
 
-表示文件打印份数。默认值为1。
+表示文件打印份数。取值应为正整数。不传入时默认值为0。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ copyNumber?: number
 directionMode?: PrintDirectionMode
 ```
 
-表示待打印文件的方向。
+表示待打印文件的方向。不传入时默认值为0。
 
 **类型：** [PrintDirectionMode](arkts-basicservices-print-printdirectionmode-e.md)
 
@@ -72,7 +72,7 @@ directionMode?: PrintDirectionMode
 duplexMode?: PrintDuplexMode
 ```
 
-表示待打印文件的单双面模式。
+表示待打印文件的单双面模式。不传入时默认值为0。
 
 **类型：** [PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)
 
@@ -88,7 +88,7 @@ duplexMode?: PrintDuplexMode
 pageRange?: PrintPageRange
 ```
 
-表示待打印文件的页面范围。
+表示待打印文件的页面范围。不传入时默认值为空范围对象。
 
 **类型：** [PrintPageRange](arkts-basicservices-print-printpagerange-i.md)
 
@@ -104,7 +104,7 @@ pageRange?: PrintPageRange
 pageSize?: PrintPageSize | PrintPageType
 ```
 
-表示待打印文件的纸张类型。
+表示待打印文件的纸张尺寸。不传入时默认值为空纸张尺寸对象。
 
 **类型：** [PrintPageSize](arkts-basicservices-print-printpagesize-i.md) &#124; [PrintPageType](arkts-basicservices-print-printpagetype-e.md)
 

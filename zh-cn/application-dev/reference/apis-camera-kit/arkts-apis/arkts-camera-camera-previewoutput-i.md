@@ -4,7 +4,7 @@
 interface PreviewOutput extends CameraOutput
 ```
 
-预览输出类。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
+预览输出类。
 
 **继承/实现关系：** PreviewOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 

@@ -8695,6 +8695,10 @@ scrollBy(deltaX: number, deltaY: number, duration?: number): void
 
 Scrolls the page by the specified amount within a specified period.
 
+> **NOTE:** 
+> 
+> Calling **scrollBy** does not trigger the nested scrolling of the parent component.
+
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
@@ -8785,6 +8789,13 @@ scrollByWithResult(deltaX: number, deltaY: number): boolean
 ```
 
 Scrolls the page by the specified amount and returns value to indicate whether the scrolling is successful.
+
+> **NOTE:** 
+> 
+> - If the web page is being touched, **false** is returned. Otherwise, **true** is returned.
+> - If the rendering area at the same layer of the web page is being touched, **true** is returned.
+> - Calling **scrollByWithResult** does not trigger the nested scrolling of the parent component.
+> - This API does not support the high frame rate of scrolling performance.
 
 **Since:** 12
 

@@ -1,4 +1,4 @@
-# text_common
+# text_common(The common APIs of text components provide basic text processing capabilities, including caret style settings,)
 
 ## Summary
 

@@ -4,8 +4,6 @@
 interface ControlCenter extends ControlCenterQuery
 ```
 
-ControlCenter继承自[ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md)。
-
 控制中心类，用于使能相机控制器。
 
 **继承/实现关系：** ControlCenter extends [ControlCenterQuery](arkts-camera-camera-controlcenterquery-i.md)

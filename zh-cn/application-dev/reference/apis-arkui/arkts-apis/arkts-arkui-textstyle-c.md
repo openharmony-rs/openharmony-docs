@@ -166,13 +166,24 @@ readonly fontVariations?: Array<FontVariation>
 readonly fontWeight?: number
 ```
 
-获取属性字符串的文本字体粗细。
+获取属性字符串的文本字体粗细。默认值：400 **说明：** 返回值为string类型，具体返回值和设置值关系参见下方表格。<br>|参数|返回值|
 
-默认值：400
-
-**说明：** 
-
-返回值为string类型，具体返回值和设置值关系参见下方表格。
+| ----------- | ----------- |  
+| 100 |'0'|  
+| 200 |'1'|  
+| 300 |'2'|  
+| 400 |'3'|  
+| 500 |'4'|  
+| 600 |'5'|  
+| 700 |'6'|  
+| 800 |'7'|  
+| 900 |'8'|  
+| FontWeight.Bold或'bold'|'9'|  
+| FontWeight.Normal或'normal'|'10'|  
+| FontWeight.Bolder或'bolder'|'11'|  
+| FontWeight.Lighter或'Lighter'|'12'|  
+| FontWeight.Medium或'media'|'13'|  
+|FontWeight.Regular 或'regular'|'14'|。
 
 **类型：** number
 

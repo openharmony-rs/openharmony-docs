@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 height: number
 ```
 
-Page height, in millimeters.
+Page height, in mils (1 mil = 1/1000 inch).
 
 **Type:** number
 
@@ -72,7 +72,7 @@ Paper size name.
 width: number
 ```
 
-Page width, in millimeters.
+Page width, in mils (1 mil = 1/1000 inch).
 
 **Type:** number
 

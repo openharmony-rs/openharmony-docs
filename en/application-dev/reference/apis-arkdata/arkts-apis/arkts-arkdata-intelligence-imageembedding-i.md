@@ -4,7 +4,7 @@
 interface ImageEmbedding
 ```
 
-Describes the image embedding functions of the multi-modal embedding model.
+Provides APIs for manipulating image embedding models. Before calling any of the following APIs, you must obtain an **ImageEmbedding** instance by using [getImageEmbeddingModel](arkts-arkdata-intelligence-getimageembeddingmodel-f.md)
 
 **Since:** 15
 
@@ -24,7 +24,11 @@ import { intelligence } from '@kit.ArkData';
 getEmbedding(image: Image): Promise<Array<number>>
 ```
 
-Obtains the embedding vector of the given image. The model can handle images below 20 MB in size in a single inference.
+Obtains the embedding vector of the given image. This API uses a promise to return the result.
+
+Before calling this API, ensure that an embedding model is successfully loaded by using loadModel
+
+**Device Behavior:** This API can be called normally on PC/2in1 devices, and returns error code 801 on other device types.
 
 **Since:** 15
 
@@ -36,20 +40,19 @@ Obtains the embedding vector of the given image. The model can handle images bel
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| image | [Image](arkts-arkdata-intelligence-image-t.md) | Yes | The input image of the embedding model. |
+| image | [Image](arkts-arkdata-intelligence-image-t.md) | Yes | URI of the input image for the embedding model. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | The promise used to return the embedding result. |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the vectorization result. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**
@@ -78,7 +81,16 @@ imageEmbedding.loadModel().then(() => {
 loadModel(): Promise<void>
 ```
 
-Loads this image embedding model. If the loading fails, an error code is returned.
+Loads this image embedding model. This API uses a promise to return the result.
+
+**Paired call**  
+- After calling **loadModel()**, you must call [releaseModel()](#releasemodel) to release the model resources  
+when they are no longer needed.  
+- Failure to call **releaseModel()** causes resource leakage and affects system performance.  
+- It is recommended that **releaseModel()** be placed in a **finally** block to ensure that resources are  
+released correctly.
+
+**Device Behavior:** This API can be called normally on PC/2in1 devices and returns error code 801 on other device types.
 
 **Since:** 15
 
@@ -90,13 +102,13 @@ Loads this image embedding model. If the loading fails, an error code is returne
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**
@@ -120,7 +132,9 @@ imageEmbedding.loadModel()
 releaseModel(): Promise<void>
 ```
 
-Releases this image embedding model. If the releasing fails, an error code is returned.
+Releases this image embedding model. This API uses a promise to return the result.
+
+**Device Behavior:** This API can be called normally on PC/2in1 devices and returns error code 801 on other device types.
 
 **Since:** 15
 
@@ -132,13 +146,13 @@ Releases this image embedding model. If the releasing fails, an error code is re
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**

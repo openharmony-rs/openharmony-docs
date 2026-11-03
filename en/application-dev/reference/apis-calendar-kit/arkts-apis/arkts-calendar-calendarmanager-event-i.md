@@ -168,7 +168,7 @@ Whether the event is an all-day event. The value **true** means that the event i
 isLunar?: boolean
 ```
 
-Unique ID of an event, with a maximum of 5,000 characters. If this parameter is not specified, the default value is null.
+Whether it is a lunar calendar event. The value true means that the event is a lunar calendar event, and false means the opposite. The default value is false.
 
 **Type:** boolean
 

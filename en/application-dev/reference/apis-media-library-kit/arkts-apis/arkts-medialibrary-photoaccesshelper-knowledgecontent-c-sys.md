@@ -71,7 +71,7 @@ static getSearchResult(query: SearchQuery): Promise<SearchResult>
 
 Searches media assets based on the provided query. This API uses a promise to return the result.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 

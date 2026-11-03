@@ -12,7 +12,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 function off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 ```
 
-Unregisters the callback used to listen for auto-startup status changes of an application component. Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned. For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
+Unregisters the callback used to listen for auto-startup status changes of an application component. Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050. Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned. For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
 **Since:** 11
 
@@ -31,7 +31,7 @@ Unregisters the callback used to listen for auto-startup status changes of an ap
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'systemAutoStartup' | Yes | Event type. The value is fixed at **systemAutoStartup**, which can be called only by system applications. |
-| callback | [AutoStartupCallback](arkts-ability-autostartupcallback-i-sys.md) | No | Callback used for unregistration. |
+| callback | [AutoStartupCallback](arkts-ability-autostartupcallback-i-sys.md) | No | Callback invoked when the auto-start status of an application component changes. If this parameter is not specified, all registered listeners are unregistered. |
 
 **Error codes:**
 

@@ -4,7 +4,7 @@
 enum ScannerDiscoveryMode
 ```
 
-定义扫描仪发现方式的枚举。
+定义扫描仪发现模式的枚举。
 
 **起始版本：** 20
 

@@ -40,7 +40,7 @@ ID of the peripheral device.
 remote: rpc.IRemoteObject
 ```
 
-Remote driver object.
+Remote driver communication object.
 
 **Type:** [rpc.IRemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md)
 

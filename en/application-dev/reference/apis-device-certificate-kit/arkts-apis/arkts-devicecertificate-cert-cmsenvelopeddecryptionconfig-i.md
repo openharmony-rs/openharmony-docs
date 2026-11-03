@@ -4,7 +4,7 @@
 interface CmsEnvelopedDecryptionConfig
 ```
 
-Configuration used for decrypting CMS enveloped data.
+Represents configuration for decapsulation with CMS.
 
 **Since:** 22
 
@@ -42,11 +42,9 @@ Public key certificate. This parameter is left empty by default.
 contentDataFormat?: CmsContentDataFormat
 ```
 
-Format of the content.
+Format of the content. The default value is **CmsContentDataFormat.BINARY**.
 
 **Type:** [CmsContentDataFormat](arkts-devicecertificate-cert-cmscontentdataformat-e.md)
-
-**Default:** CmsContentDataFormat.BINARY
 
 **Since:** 22
 
@@ -62,7 +60,7 @@ Format of the content.
 encryptedContentData?: Uint8Array
 ```
 
-Encrypted content data for detached CMS enveloped data, used when the CMS structure does not contain the encrypted content inline.
+Encrypted content data. If the CMS does not contain content data, you can specify the data. This parameter is left empty by default.
 
 **Type:** Uint8Array
 

@@ -6,7 +6,7 @@ declare interface ItemDragInfo
 
 拖拽点信息对象。
 
-**起始版本：** 11
+**起始版本：** 8
 
 <!--Device-unnamed-declare interface ItemDragInfo--><!--Device-unnamed-declare interface ItemDragInfo-End-->
 

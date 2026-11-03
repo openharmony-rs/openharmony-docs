@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function queryAllActivePrintJobs(): Promise<PrintJob[]>
 ```
 
-Queries all active print jobs. This API uses a promise to return the result.
+Queries all active print jobs. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
 

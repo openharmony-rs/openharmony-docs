@@ -24,7 +24,7 @@ import { scan } from '@kit.BasicServicesKit';
 discoveryMode: ScannerDiscoveryMode
 ```
 
-发现模式。
+扫描仪的发现模式，表示发现扫描仪的方式。
 
 **类型：** [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md)
 
@@ -40,7 +40,7 @@ discoveryMode: ScannerDiscoveryMode
 oldScannerId?: string
 ```
 
-旧的扫描仪ID，仅在syncMode为"update"时有效。
+旧的扫描仪ID，仅在syncMode为"update"时有效，默认值为空字符串。
 
 **类型：** string
 
@@ -56,7 +56,7 @@ oldScannerId?: string
 scannerId: string
 ```
 
-扫描仪ID。
+扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。
 
 **类型：** string
 
@@ -72,7 +72,7 @@ scannerId: string
 syncMode: ScannerSyncMode
 ```
 
-同步模式。
+同步模式，决定oldScannerId是否有效：当syncMode为"update"时oldScannerId有效，为"delete"时oldScannerId无效。
 
 **类型：** [ScannerSyncMode](arkts-basicservices-scan-scannersyncmode-e.md)
 
@@ -88,7 +88,7 @@ syncMode: ScannerSyncMode
 uniqueId: string
 ```
 
-唯一ID。
+扫描仪的唯一ID。
 
 **类型：** string
 

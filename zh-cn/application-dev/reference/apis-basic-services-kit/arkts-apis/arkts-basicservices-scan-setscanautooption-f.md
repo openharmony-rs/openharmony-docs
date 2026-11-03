@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function setScanAutoOption(scannerId: string, optionIndex: number): Promise<void>
 ```
 
-设置扫描选项为自动模式。使用Promise异步回调。
+设置扫描选项为自动模式，由扫描仪自动确定该选项的取值。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
 
 **起始版本：** 20
 
@@ -26,14 +26,14 @@ function setScanAutoOption(scannerId: string, optionIndex: number): Promise<void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要设置为自动的选项的索引。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| optionIndex | number | 是 | 要设置为自动的选项的索引，可通过getScannerParameter()获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，设置扫描选项为自动模式成功时resolve，失败时reject。 |
 
 **错误码：**
 

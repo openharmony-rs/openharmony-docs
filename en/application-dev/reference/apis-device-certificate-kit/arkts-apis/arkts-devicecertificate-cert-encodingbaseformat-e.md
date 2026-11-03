@@ -4,7 +4,7 @@
 enum EncodingBaseFormat
 ```
 
-Enumerates the encoding formats for certificate-related data.
+Enumerates the certificate data encoding formats.
 
 **Since:** 18
 
@@ -18,7 +18,7 @@ Enumerates the encoding formats for certificate-related data.
 DER = 1
 ```
 
-Distinguished Encoding Rules (DER) format.
+DER.
 
 **Since:** 18
 
@@ -34,7 +34,7 @@ Distinguished Encoding Rules (DER) format.
 PEM = 0
 ```
 
-Privacy-Enhanced Mail (PEM) format.
+PEM.
 
 **Since:** 18
 

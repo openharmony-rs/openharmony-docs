@@ -2,6 +2,13 @@
 
 本模块提供[通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)、取消订阅、通知移除等，一般情况下，只有系统应用具有这些操作权限。
 
+> **说明：** 
+> 
+> 本模块接口均为系统接口。
+> 
+> 在Worker线程中订阅时，需在线程退出前调用unsubscribe取消订阅：若线程环境已销毁而未取消订阅，系统会自动取消订阅，在取消订阅生效前服务端投递的事件将被丢弃，不会触发订阅者回调；调用unsubscribe后，尚未派发的
+> 在途事件也会被丢弃，不会触发订阅者回调。
+
 **起始版本：** 9
 
 <!--Device-unnamed-declare namespace notificationSubscribe--><!--Device-unnamed-declare namespace notificationSubscribe-End-->

@@ -4,7 +4,7 @@
 interface PrelaunchConfig
 ```
 
-Defines the camera prelaunch configuration. Currently, the configuration is used for sensor-level prelaunch. It will be used for stream-level prelaunch in a later version.
+相机预启动配置信息。目前该配置用于传感器级预启动，后续版本将用于流级预启动。
 
 **起始版本：** 10
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 activeTime?: number
 ```
 
-Activation time, in minutes.
+激活时间。单位：分钟。
 
 **类型：** number
 
@@ -44,7 +44,7 @@ Activation time, in minutes.
 cameraDevice: CameraDevice
 ```
 
-Camera device.
+相机设备。
 
 **类型：** [CameraDevice](arkts-camera-camera-cameradevice-i.md)
 
@@ -62,7 +62,7 @@ Camera device.
 restoreParamType?: RestoreParamType
 ```
 
-Type of the parameter used for prelaunch.
+预启动使用的参数类型。
 
 **类型：** [RestoreParamType](arkts-camera-camera-restoreparamtype-e-sys.md)
 
@@ -80,7 +80,7 @@ Type of the parameter used for prelaunch.
 settingParam?: SettingParam
 ```
 
-Setting parameter.
+设置参数。
 
 **类型：** [SettingParam](arkts-camera-camera-settingparam-i-sys.md)
 

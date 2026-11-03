@@ -25,9 +25,7 @@ This API does not work when the text is being dragged.
 `addText` only affects the UI performance within the application and does not affect the internal logic of the input method application. The preview text state is managed by the input method. Calling `addText`/`deleteText` at the application layer disrupts the state management of the input method. Therefore, avoid calling `addText` in the preview text state.
 
 > **NOTE:** 
-> 
-> When the controller is not bound to a component or the component bound to the controller is released, this API
-> does not take effect.
+> When the controller is not bound to a component or the component bound to the controller is released, this API does not take effect.
 
 **Since:** 15
 
@@ -84,6 +82,8 @@ deleteBackward(): void
 Deletes the character before the caret in the text input box bound to the base controller `controller`. If some text has been selected with the mouse or keyboard before this API is called, the selected text is deleted.
 
 This API is not effective in the state of dragged text.
+
+`deleteBackward` only affects the internal UI behavior of the application and does not affect the internal logic of the input method application. It is not supported in the preview text scenario.
 
 > **NOTE:** 
 > 
@@ -232,6 +232,12 @@ getTextContentRect() : RectResult
 ```
 
 Obtains the position of the edited text area relative to the component and its size. The unit of the return value is pixel.
+
+> **NOTE:** 
+> - If no text is entered, the return value contains the position information, but the size is 0.
+> - The position information is the offset of the first character relative to the editable area.
+> - For the **Search** component, the returned position information is the offset of the first character relative to the search icon in the component.
+> - If there is input, the width in the return value is the fixed width of the editable area.
 
 **Since:** 10
 

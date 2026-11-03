@@ -4,7 +4,7 @@
 interface CmsKeyAgreeRecipientInfo
 ```
 
-Represents KeyAgree recipient information for CMS enveloped data.
+Represents the recipient information for key agreement encapsulated using CMS.
 
 **Since:** 22
 

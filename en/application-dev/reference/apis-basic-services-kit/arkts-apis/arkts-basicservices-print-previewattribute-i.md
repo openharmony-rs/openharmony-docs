@@ -40,7 +40,7 @@ Preview page range.
 result?: number
 ```
 
-Print preview result. The default value is **-1**.
+Preview file generation result. The value is defined by the developer.
 
 **Type:** number
 

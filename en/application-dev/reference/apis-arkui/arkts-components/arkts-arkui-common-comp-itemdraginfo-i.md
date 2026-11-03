@@ -6,7 +6,7 @@ declare interface ItemDragInfo
 
 ItemDragInfo object description
 
-**Since:** 11
+**Since:** 8
 
 <!--Device-unnamed-declare interface ItemDragInfo--><!--Device-unnamed-declare interface ItemDragInfo-End-->
 

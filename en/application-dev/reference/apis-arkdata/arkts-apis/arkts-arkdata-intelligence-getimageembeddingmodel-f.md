@@ -12,7 +12,9 @@ import { intelligence } from '@kit.ArkData';
 function getImageEmbeddingModel(config: ModelConfig): Promise<ImageEmbedding>
 ```
 
-Obtains an image embedding model.
+Obtains an image embedding model. This API uses a promise to return the result.
+
+**Device behavior differences:** This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Since:** 15
 
@@ -24,20 +26,20 @@ Obtains an image embedding model.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ModelConfig](arkts-arkdata-intelligence-modelconfig-i.md) | Yes | The configuration of the embedding model. |
+| config | [ModelConfig](arkts-arkdata-intelligence-modelconfig-i.md) | Yes | Configuration of the embedded model to obtain. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ImageEmbedding](arkts-arkdata-intelligence-imageembedding-i.md)&gt; | The promise returned by the function. |
+| Promise&lt;[ImageEmbedding](arkts-arkdata-intelligence-imageembedding-i.md)&gt; | Promise used to return the image embedding model for image vectorization. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**

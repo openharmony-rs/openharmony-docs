@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 data: Uint8Array
 ```
 
-Indicates the content of the data blob.
+Data.
 
 **Type:** Uint8Array
 

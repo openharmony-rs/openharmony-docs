@@ -12,6 +12,14 @@ StyledString
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Rules of Use
+
+* If a styled string conflicts with the current style settings in a component, the style set in the styled string takes effect.  
+* If a styled string conflicts with the child components in [Text](../arkts-components/arkts-arkui-text-comp.md), the style set in the styled string is applied to the **Text** component, and style settings of the child components, including [Span](../arkts-components/arkts-arkui-span-comp.md), are ignored.  
+* The [@State](../../../ui/state-management/arkts-state.md) decorator is not supported.  
+* Define **StyledString** as a member variable to prevent it from being destroyed when the application moves to the background.  
+* Creation before [loadContent()](arkts-arkui-window-window-i.md#loadcontent-1) is not supported
+
 ## marshalling
 
 ```TypeScript

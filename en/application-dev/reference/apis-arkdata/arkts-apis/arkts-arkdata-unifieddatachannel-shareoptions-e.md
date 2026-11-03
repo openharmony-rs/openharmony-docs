@@ -4,7 +4,7 @@
 enum ShareOptions
 ```
 
-Enumerates the options for using **UnifiedData** in a device.
+Enumerates the usage scope types supported by UDMF within a device.
 
 **Since:** 12
 
@@ -18,7 +18,7 @@ Enumerates the options for using **UnifiedData** in a device.
 CROSS_APP = 1
 ```
 
-**UnifiedData** can be used across applications of a device.
+Indicates that the data can be used across applications on this device.
 
 **Since:** 12
 
@@ -36,7 +36,7 @@ CROSS_APP = 1
 IN_APP = 0
 ```
 
-**UnifiedData** can be used only in the same application of a device.
+Indicates that the data can be used within the same application on this device.
 
 **Since:** 12
 

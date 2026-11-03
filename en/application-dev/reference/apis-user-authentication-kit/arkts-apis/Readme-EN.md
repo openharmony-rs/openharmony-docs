@@ -55,6 +55,22 @@
   <!--Del-->
   - [FaceAuthManager(system api)](arkts-userauthentication-faceauth-faceauthmanager-c-sys.md)<!--DelEnd-->
 <!--Del-->
+- [@ohos.userIAM.pinAuth(PIN Authentication)](arkts-userauthentication-useriam-pinauth.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPinComplexityPolicy(system api)](arkts-userauthentication-pinauth-getpincomplexitypolicy-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPinDeletionDisabledState(system api)](arkts-userauthentication-pinauth-getpindeletiondisabledstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPinValidityPeriod(system api)](arkts-userauthentication-pinauth-getpinvalidityperiod-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPinComplexityPolicy(system api)](arkts-userauthentication-pinauth-setpincomplexitypolicy-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPinDeletionDisabledState(system api)](arkts-userauthentication-pinauth-setpindeletiondisabledstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPinValidityPeriod(system api)](arkts-userauthentication-pinauth-setpinvalidityperiod-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PinComplexityPolicy(system api)](arkts-userauthentication-pinauth-pincomplexitypolicy-i-sys.md)<!--DelEnd-->
+<!--Del-->
 - [@ohos.userIAM.userAccessCtrl(User Access Control)](arkts-userauthentication-useriam-useraccessctrl.md)<!--DelEnd-->
   <!--Del-->
   - [verifyAuthToken(system api)](arkts-userauthentication-useraccessctrl-verifyauthtoken-f-sys.md)<!--DelEnd-->

@@ -59,7 +59,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error, possible causes:         1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
@@ -121,8 +121,8 @@ getAlbums(options: photoAccessHelper.FetchOptions): Promise<FetchResult<Album>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 
@@ -193,7 +193,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: photoAccessHelper.Fe
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error, failed to create boolean value, possible causes:         1. Memory insufficient; 2. IPC timeout. Please retry; <br>2. System internal error, album query returned null, possible causes:         1. Database exception; 2. IPC timeout. Please retry; <br>3. System internal error, possible causes:         1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例**
@@ -261,7 +261,7 @@ getAssets(options: photoAccessHelper.FetchOptions): Promise<FetchResult<PhotoAss
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes:         1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, query or IPC returned null, please retry. |
 
 **示例**
@@ -328,7 +328,7 @@ getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promi
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes:         1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, query or IPC returned null, please retry. |
 
 **示例**
@@ -401,7 +401,7 @@ release(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 **示例**
 

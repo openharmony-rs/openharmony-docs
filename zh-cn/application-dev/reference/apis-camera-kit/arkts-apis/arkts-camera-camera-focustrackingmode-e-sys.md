@@ -4,7 +4,7 @@
 enum FocusTrackingMode
 ```
 
-Enumerates the focus tracking modes.
+枚举，对焦跟踪模式。
 
 **起始版本：** 15
 
@@ -20,7 +20,7 @@ Enumerates the focus tracking modes.
 AUTO = 0
 ```
 
-Automatic.
+自动。
 
 **起始版本：** 15
 

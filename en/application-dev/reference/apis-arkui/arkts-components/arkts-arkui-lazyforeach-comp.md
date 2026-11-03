@@ -68,6 +68,12 @@ Enter the value to obtain the LazyForEach.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [LazyForEachController](arkts-arkui-lazyforeach-comp-lazyforeachcontroller-c.md) | Defines a controller of the **LazyForEach** component. You can bind the controller to the **LazyForEach** component through the **controller** field in [LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md) and call [clearCache](arkts-arkui-lazyforeach-comp-lazyforeachcontroller-c.md#clearcache) to clear the child components prebuilt by the **LazyForEach** component as needed. |
+
 ### Interfaces
 
 | Name | Description |

@@ -53,7 +53,7 @@ Applies media changes. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The mediaChangeRequest parameter is not a valid MediaChangeRequest object; <br>2.Server returned an error during applyChanges, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>3.The resource change operation for the current request type is not supported. |
 
 **Examples**
@@ -153,7 +153,7 @@ If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 11 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.The number of arguments is invalid; <br>3.The argument list is empty; <br>4.The object is not a valid instance; <br>5.PhotoAccessHelper object is not a valid instance obtained through the proper API; <br>6.The callback parameter type does not match, expected AsyncCallback; <br>7.Failed to get the photoType parameter, please check the parameter type; <br>8.The photoType parameter is not a valid number type; <br>9.Invalid file type, must be IMAGE or VIDEO; <br>10.Failed to parse the extension parameter, please check if it is a valid string; <br>11.Failed to get the options parameter type, please check if it is an object; <br>12.Failed to parse CreateOptions, please check the options parameter; <br>13.Server returned an invalid argument error; <br>14.Failed to get the photoType parameter. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO; <br>2.The extension parameter is not a valid string, please check if it is a valid file extension; <br>3.The options parameter is invalid, please check if it is a valid CreateOptions object; <br>4.Failed to create the asset, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
@@ -214,7 +214,7 @@ If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 11 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs <br>2.The number of arguments is invalid; <br>3.The argument list is empty; <br>4.The object is not a valid instance; <br>5.PhotoAccessHelper object is not a valid instance obtained through the proper API; <br>6.The callback parameter type does not match, expected AsyncCallback; <br>7.Failed to get the photoType parameter, please check the parameter type; <br>8.The photoType parameter is not a valid number type; <br>9.Invalid file type, must be IMAGE or VIDEO; <br>10.Failed to parse the extension parameter, please check if it is a valid string; <br>11.Failed to get parameter type, please check the parameter; <br>12.Failed to get the photoType parameter; <br>13.Server returned an invalid argument error. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO; <br>2.The extension parameter is not a valid string, please check if it is a valid file extension; <br>3.Failed to create the asset, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
@@ -278,7 +278,7 @@ If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 11 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.System internal error, possible causes: (1)File system exception; (2)IPC timeout. Please retry and check logs <br>2.The number of arguments is invalid; <br>3.The argument list is empty; <br>4.The object is not a valid instance; <br>5.PhotoAccessHelper object is not a valid instance obtained through the proper API; <br>6.The callback parameter type does not match, expected AsyncCallback; <br>7.Failed to get the photoType parameter, please check the parameter type; <br>8.The photoType parameter is not a valid number type; <br>9.Invalid file type, must be IMAGE or VIDEO; <br>10.Failed to parse the extension parameter, please check if it is a valid string; <br>11.Failed to get the options parameter type, please check if it is an object; <br>12.Failed to parse CreateOptions, please check the options parameter; <br>13.Server returned an invalid argument error; <br>14.Failed to get the photoType parameter. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO; <br>2.The extension parameter is not a valid string, please check if it is a valid file extension; <br>3.The options parameter is invalid, please check if it is a valid CreateOptions object; <br>4.Failed to create the asset, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
@@ -340,7 +340,7 @@ Within 5 minutes after the user agrees to save the asset, if the same applicatio
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
 **Examples**
@@ -586,7 +586,7 @@ Before the operation, ensure that the albums to obtain exist.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 - 11 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters is invalid, expected 0 to 4 parameters; <br>2.The callback parameter must be of type AsyncCallback; <br>3.The type parameter must be a number; <br>4.The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE); <br>5.The subtype parameter must be a number; <br>6.The subtype must be a valid AlbumSubtype; <br>7.The fetchColumns contain invalid column names. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The type parameter is not a valid number, must be a valid AlbumType enum value; <br>2.The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value; <br>3.The FetchOptions parameter is invalid, the predicates contain invalid content or the fetchColumns contain unknown column names; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors). |
@@ -654,7 +654,7 @@ Before the operation, ensure that the albums to obtain exist.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 - 11 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters is invalid, expected 0 to 4 parameters; <br>2.The callback parameter must be of type AsyncCallback; <br>3.The type parameter must be a number; <br>4.The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE); <br>5.The subtype parameter must be a number; <br>6.The subtype must be a valid AlbumSubtype. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The type parameter is not a valid number, must be a valid AlbumType enum value; <br>2.The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value; <br>3.The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors); <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
@@ -720,7 +720,7 @@ Before the operation, ensure that the albums to obtain exist.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 - 11 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters is invalid, expected 0 to 4 parameters; <br>2.The callback parameter must be of type AsyncCallback; <br>3.The type parameter must be a number; <br>4.The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE); <br>5.The subtype parameter must be a number; <br>6.The subtype must be a valid AlbumSubtype; <br>7.The fetchColumns contain invalid column names. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The type parameter is not a valid number, must be a valid AlbumType enum value; <br>2.The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value; <br>3.The FetchOptions parameter is invalid, the predicates contain invalid content or the fetchColumns contain unknown column names; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors). |
@@ -784,7 +784,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 12 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 - 11 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.Invalid number of arguments; <br>2.The options parameter is null or undefined; <br>3.Parameter parsing failed, please check parameter count and types; <br>4.Object is not a valid object; <br>5.PhotoAccessHelper object is not a valid object. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The FetchOptions parameter is invalid, the predicates property is not a valid data predicates object; <br>2.The predicates in FetchOptions contain invalid content or operations, please check if the predicates are valid; <br>3.The fetchColumns in FetchOptions contain invalid column names, please refer to PhotoKeys for valid column names; <br>4.Database query failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs; <br>5.Query returned an empty result set. |
@@ -1087,7 +1087,7 @@ Obtains the list of image or video file name extensions supported by the media l
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.invalid photoType; <br>2.Failed to create string; <br>3.Failed to set element. |
 
 **Examples**
@@ -1855,7 +1855,7 @@ Registers listening for the specified URI. This API uses a callback to return th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters is invalid, expected 3 parameters; <br>2.The uri parameter must be a string; <br>3.The forChildUris parameter must be a boolean; <br>4.The callback parameter must be a function; <br>5.The uri string extraction failed; <br>6.The forChildUris boolean value extraction failed; <br>7.The callback is already registered for this uri, duplicate registration is not allowed; <br>8.The object is not a valid instance. |
 
@@ -1925,7 +1925,7 @@ Call this API when the APIs of the PhotoAccessHelper instance are no longer used
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters exceeds the maximum limit; <br>2.The current object is invalid; <br>3.The PhotoAccessHelper object is not a valid object. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.PhotoAccessHelper has been released, no need to release again; <br>2.System internal error, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
@@ -1972,7 +1972,7 @@ Call this API when the APIs of the PhotoAccessHelper instance are no longer used
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters exceeds the maximum limit; <br>2.The current object is invalid; <br>3.The PhotoAccessHelper object is not a valid object. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.PhotoAccessHelper has been released, no need to release again; <br>2.System internal error, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
@@ -2024,7 +2024,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array<string>): Promise<Array<string
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Internal error in dialog, please retry; <br>2.Dialog result missing required parameters, system internal error; <br>3.Dialog operation failed, please retry; <br>4.Callback processing failed, system internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **Examples**
@@ -2200,7 +2200,7 @@ The dialog box must display the application name, but this cannot be directly ob
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -2400,7 +2400,7 @@ Unregisters listening for the specified URI. Multiple callbacks can be registere
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters is invalid, expected 1 or 2 parameters; <br>2.The uri parameter must be a string; <br>3.The uri string extraction failed; <br>4.The callback parameter must be a function; <br>5.The object is not a valid instance. |
 
@@ -2442,6 +2442,40 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+## verifyPhotoAssetUris
+
+```TypeScript
+verifyPhotoAssetUris(uris: string[]): Map<string, boolean>
+```
+
+Check whether the uris are coming from MediaLibrary, return true if yes, and false otherwise.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhotoAccessHelper-verifyPhotoAssetUris(uris: string[]): Map<string, boolean>--><!--Device-PhotoAccessHelper-verifyPhotoAssetUris(uris: string[]): Map<string, boolean>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| uris | string[] | Yes | List of uris to be checked. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Map&lt;string, boolean&gt; | Returns a Map structure, where the key is the uri which was passed in, and the value is the result of the judgment. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: <br>1. The input uris list is empty. <br>2. The length of the input uris list exceeds 500. |
+
 ## createDeleteRequest
 
 ```TypeScript
@@ -2473,7 +2507,7 @@ Creates a dialog box for deleting media files. This API uses an asynchronous cal
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied. Possible causes: <br>1.Not have ohos.permission.WRITE_IMAGEVIDEO; <br>2.User deny. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The context parameter is invalid, failed to convert to AbilityContext; <br>2.Failed to create the dialog, system internal error, please retry. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The delete operation failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.The uriList parameter contains invalid URIs, please check if each URI is a valid file URI obtained from a valid query result; <br>3.The UI extension component reported an error, please retry. |
@@ -2552,7 +2586,7 @@ Creates a dialog box for deleting media files. This API uses a promise to return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied. Possible causes: <br>1.Not have ohos.permission.WRITE_IMAGEVIDEO; <br>2.User deny. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The context parameter is invalid, failed to convert to AbilityContext; <br>2.Failed to create the dialog, system internal error, please retry. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The delete operation failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.The uriList parameter contains invalid URIs, please check if each URI is a valid file URI obtained from a valid query result; <br>3.The UI extension component reported an error, please retry. |

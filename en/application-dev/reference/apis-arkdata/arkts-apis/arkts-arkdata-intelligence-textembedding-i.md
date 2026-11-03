@@ -4,7 +4,11 @@
 interface TextEmbedding
 ```
 
-Describes the text embedding functions of the multi-modal embedding model. Chinese and English are supported.
+Describes the text embedding function of the text embedding model.
+
+Before calling any of the following APIs, you must obtain a **TextEmbedding** instance by using [getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md)
+
+**Device behavior differences:** This API can be properly called on PC/2-in-1, Phone, and Tablet devices. If it is called on other device types, error code 801 is returned.
 
 **Since:** 15
 
@@ -24,7 +28,11 @@ import { intelligence } from '@kit.ArkData';
 getEmbedding(text: string): Promise<Array<number>>
 ```
 
-Obtains the embedding vector of the given text. The model can process up to 512 characters of text per inference, supporting both Chinese and English.
+Obtains the embedding vector of the given text. This API uses a promise to return the result.
+
+Before calling this API, ensure that an embedding model is successfully loaded by using loadModel.
+
+**Device Behavior:** Before API version 26.0.0, this API can be called normally on PC/2in1 devices and returns error code 801 on other device types. Starting from API version 26.0.0, this API can be called normally on PC/2in1, Phone, and Tablet devices and returns error code 801 on other device types.
 
 **Since:** 15
 
@@ -36,20 +44,19 @@ Obtains the embedding vector of the given text. The model can process up to 512 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| text | string | Yes | The input text of the embedding model. |
+| text | string | Yes | Text for the embedding model, which cannot exceed 512 characters. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | The promise used to return the embedding result. |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the array of vectorization results. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**
@@ -79,7 +86,11 @@ textEmbedding.loadModel()
 getEmbedding(batchTexts: Array<string>): Promise<Array<Array<number>>>
 ```
 
-Obtains the embedding vector of a given batch of text. The model can process up to 512 characters of text per inference, supporting both Chinese and English.
+Obtains the embedding vectors of a given batch of texts. Batch processing improves performance and is suitable for scenarios where multiple texts need to be processed simultaneously. This API uses a Promise to return the result asynchronously.
+
+Before calling this API, ensure that an embedding model is successfully loaded by using loadModel
+
+**Device Behavior:** Before API version 26.0.0, this API can be called normally on PC/2in1 devices and returns error code 801 on other device types. Starting from API version 26.0.0, this API can be called normally on PC/2in1, Phone, and Tablet devices and returns error code 801 on other device types.
 
 **Since:** 15
 
@@ -103,8 +114,7 @@ Obtains the embedding vector of a given batch of text. The model can process up 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**
@@ -134,7 +144,16 @@ textEmbedding.loadModel()
 loadModel(): Promise<void>
 ```
 
-Loads this text embedding model. If the loading fails, an error code is returned.
+Loads this text embedding model. This API uses a promise to return the result.
+
+**Paired call**  
+- After calling **loadModel()**, you must call [releaseModel()](#releasemodel) to release the model resources  
+when they are no longer needed.  
+- Failure to call **releaseModel()** causes resource leakage and affects system performance.  
+- It is recommended that **releaseModel()** be placed in a **finally** block to ensure that resources are  
+properly released.
+
+**Device Behavior:** Before API version 26.0.0, this API can be called normally on PC/2in1 devices and returns error code 801 on other device types. Starting from API version 26.0.0, this API can be called normally on PC/2in1, Phone, and Tablet devices and returns error code 801 on other device types.
 
 **Since:** 15
 
@@ -146,13 +165,13 @@ Loads this text embedding model. If the loading fails, an error code is returned
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**
@@ -176,7 +195,9 @@ textEmbedding.loadModel()
 releaseModel(): Promise<void>
 ```
 
-Releases this text embedding model. If the releasing fails, an error code is returned.
+Releases this text embedding model. This API uses a promise to return the result.
+
+**Device Behavior:** Before API version 26.0.0, this API can be called normally on PC/2in1 devices and returns error code 801 on other device types. Starting from API version 26.0.0, this API can be called normally on PC/2in1, Phone, and Tablet devices and returns error code 801 on other device types.
 
 **Since:** 15
 
@@ -188,13 +209,13 @@ Releases this text embedding model. If the releasing fails, an error code is ret
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
 **Examples**

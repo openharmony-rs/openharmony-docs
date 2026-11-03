@@ -4,8 +4,6 @@
 interface Flash extends FlashQuery
 ```
 
-Flash继承自[FlashQuery](arkts-camera-camera-flashquery-i.md)。
-
 闪光灯类，对设备闪光灯操作。
 
 **继承/实现关系：** Flash extends [FlashQuery](arkts-camera-camera-flashquery-i.md)

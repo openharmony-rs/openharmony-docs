@@ -32,7 +32,7 @@ PRINTER_ADDED = 0
 PRINTER_CAPABILITY_UPDATED = 2
 ```
 
-表示打印机更新。
+表示打印机能力更新。
 
 **起始版本：** 14
 

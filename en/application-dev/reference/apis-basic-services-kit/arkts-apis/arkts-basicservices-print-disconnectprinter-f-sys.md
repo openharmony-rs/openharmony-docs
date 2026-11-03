@@ -29,7 +29,7 @@ Disconnects from the specified printer. This API uses an asynchronous callback t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | printerId | string | Yes | Printer ID. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked after the connection to the specified printer is asynchronously disconnected. |
 
 **Error codes:**
 

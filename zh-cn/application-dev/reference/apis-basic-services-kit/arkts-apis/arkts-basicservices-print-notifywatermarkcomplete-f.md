@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void
 ```
 
-通知水印处理完成。
+通知水印处理完成，以便继续执行后续打印流程。
 
 **起始版本：** 24
 

@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function on(type: 'scanDeviceAdd', callback: Callback<ScannerDevice>): void
 ```
 
-Registers a callback used to listen for the scanner addition event. This API uses an asynchronous callback to return the result.
+Registers a callback used to listen for the scanner addition event. This is a system API. This callback is triggered when a scanner is successfully added and returns the information of the added scanner. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
 
@@ -29,7 +29,7 @@ Registers a callback used to listen for the scanner addition event. This API use
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'scanDeviceAdd' | Yes | Event type. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | Yes | Callback used to return the added scanner. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | Yes | Callback for the scanner device addition event. This callback is triggered when a scanner is added and returns the information of the added scanner. |
 
 **Error codes:**
 
@@ -58,7 +58,7 @@ scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
 function on(type: 'scanDeviceDel', callback: Callback<ScannerDevice>): void
 ```
 
-Registers a callback used to listen for the scanner deletion event. This API uses an asynchronous callback to return the result.
+Registers a callback used to listen for the scanner deletion event. This is a system API. This callback is triggered when a scanner is deleted and returns the information of the deleted scanner. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
 
@@ -75,7 +75,7 @@ Registers a callback used to listen for the scanner deletion event. This API use
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'scanDeviceDel' | Yes | Event type. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | Yes | Callback used to return the deleted scanner. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | Yes | Callback for the scanner device deletion event. This callback is triggered when a scanner is deleted and returns the information of the deleted scanner. |
 
 **Error codes:**
 

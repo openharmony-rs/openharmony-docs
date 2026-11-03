@@ -2,6 +2,8 @@
 
 This module provides the capability to manage web modules.
 
+## Required Permissions
+
 **ohos.permission.INTERNET**, required for accessing online web pages. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 **Since:** 9

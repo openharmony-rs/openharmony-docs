@@ -4,7 +4,7 @@
 interface Pkcs12ParsingConfig
 ```
 
-Represents the configuration for parsing P12.
+Represents the configuration for parsing PKCS #12 files.
 
 **Since:** 18
 
@@ -104,15 +104,9 @@ Password.
 privateKeyFormat?: EncodingBaseFormat
 ```
 
-Format of the private key to be obtained. Currently, the PEM and DER formats are supported. If this parameter is not specified, the PEM format is used by default.
-
-> **NOTE:** 
-> 
-> This parameter is valid only when **needsPrivateKey** is set to **true**.
+Format of the private key to be obtained. Currently, the PEM and DER formats are supported. If this parameter is not specified, the PEM format is used by default. Note: This parameter is valid only when **needsPrivateKey** is set to **true**.
 
 **Type:** [EncodingBaseFormat](arkts-devicecertificate-cert-encodingbaseformat-e.md)
-
-**Default:** EncodingBaseFormat.PEM
 
 **Since:** 18
 

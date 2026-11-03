@@ -2,11 +2,17 @@
 
 定义 Web 组件。
 
-访问在线网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
-
 <p><strong>接口说明</strong>:
 
 <strong>性能说明</strong>: <p>有关如何优化编译、资源加载和JSBridge性能的详细信息，请参见Web加载性能优化 <p>当由于复杂的网页解析导致白屏时间较长时，可以开启[optimizeParserBudget](arkts-arkweb-web-comp-attribute.md#optimizeparserbudget)以减少首帧渲染内容。</p> </p>
+
+## 需要权限
+
+访问在线网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
+
+## 子组件
+
+无
 
 ## Web
 
@@ -18,7 +24,9 @@ Sets Value.
 
 > **说明：** 
 > 
-> - 在HTML5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
+> - 不支持转场动画。
+> 
+> - 为了保证各Web组件间的独立性和性能隔离，同一页面内的多个Web组件应分别绑定不同的WebviewController实例。
 
 **起始版本：** 8
 

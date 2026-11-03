@@ -58,7 +58,7 @@ The id of page node. The value should be an integer
 isFocus: boolean
 ```
 
-Is the page node in the focus. The value **true** means the current node is focused; The value **false** means the current node is not focused.
+Whether the current node has focus. The value true indicates that the current node has focus, and false indicates the opposite.
 
 **Type:** boolean
 
@@ -78,7 +78,7 @@ Is the page node in the focus. The value **true** means the current node is focu
 placeholder?: string
 ```
 
-The placeholder of page node.
+Placeholder text of the page node, usually displayed in the input control to prompt the user for the expected input. It can help the auto-fill service identify the fill type.
 
 **Type:** string
 
@@ -118,7 +118,7 @@ The rect of page node.
 value: string
 ```
 
-The value of page node.
+Value currently displayed on the page node or entered by the user. This value is filled into the corresponding node during auto-fill.
 
 **Type:** string
 

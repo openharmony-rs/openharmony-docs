@@ -14,13 +14,20 @@ function startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, opt
 
 Starts a [native child process](../../../application-models/ability-terminology.md#native-child-process). This API uses a promise to return the result. This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned.
 
+**Usage scenarios**  
+- Requires high-performance C/C++ computing tasks.  
+- Requires integration with existing C/C++ code libraries or third-party libraries.  
+- Requires high-performance data processing, image processing, audio/video encoding and decoding, etc.
+
 > **NOTE:** 
 > 
 > The child process started by calling this API does not inherit the resources of the parent process. After the
 > child process is created, its PID is returned, the dynamic link library file specified in the parameters is
 > loaded, and the entry function of the child process is executed. Once the entry function is done, the child
-> process is automatically destroyed. After the process that calls this API is destroyed, the created child process
-> is also destroyed.
+> process is automatically destroyed. After the process that calls this API is destroyed, the created child
+> process is also destroyed.
+
+**Device Behavior Differences**: Starting from API version 13, this API can be called normally on PC/2in1 devices, and returns error code 801 on other device types. Starting from API version 14, this API can be called normally on PC/2in1 and Tablet devices, and returns error code 801 on other device types.
 
 **Since:** 13
 

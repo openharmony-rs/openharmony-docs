@@ -4,7 +4,7 @@
 interface SplitConfig
 ```
 
-Manages text chunk process configurations.
+Represents the configuration for text splitting.
 
 **Since:** 15
 
@@ -24,7 +24,7 @@ import { intelligence } from '@kit.ArkData';
 overlapRatio: number
 ```
 
-The ratio of overlap between adjacent chunks.
+Overlap ratio between adjacent chunks. The value ranges from 0 to 1, where **0** indicates the lowest overlap ratio and **1** indicates the highest overlap ratio. A higher overlap ratio is suitable for long-text scenarios that require semantic continuity, while a lower ratio is suitable for short-text scenarios that require reduced duplicate computation.
 
 **Type:** number
 
@@ -40,7 +40,7 @@ The ratio of overlap between adjacent chunks.
 size: number
 ```
 
-The maximun size of chunks.
+Maximum size of a chunk, which is a non-negative integer. A smaller size value is suitable for scenarios that require fine-grained chunking or have memory constraints, while a larger size value is suitable for reducing the number of chunks when processing large amounts of data.
 
 **Type:** number
 

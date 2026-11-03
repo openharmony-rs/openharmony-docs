@@ -1,4 +1,4 @@
-# @ohos.arkui.advanced.SelectionMenu
+# @ohos.arkui.advanced.SelectionMenu(The text selection menu is used for the [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md) component)
 
 ## Modules to Import
 

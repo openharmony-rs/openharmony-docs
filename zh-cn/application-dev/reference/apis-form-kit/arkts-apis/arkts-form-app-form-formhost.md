@@ -71,6 +71,7 @@ import { formHost } from '@kit.FormKit';
 | [off('getFormRect')](arkts-form-formhost-off-f-sys.md#offgetformrect) | 取消订阅卡片位置尺寸查询请求事件。使用callback异步回调。 |
 | [off('getLiveFormStatus')](arkts-form-formhost-off-f-sys.md#offgetliveformstatus) | Cancels Listening to the event of get live form status. |
 | [offDeleteFormsCallback](arkts-form-formhost-offdeleteformscallback-f-sys.md#offdeleteformscallback-1) | 取消订阅删除卡片事件。使用callback异步回调。 |
+| [offGetVisibleFormRect](arkts-form-formhost-offgetvisibleformrect-f-sys.md#offgetvisibleformrect-1) | 含义:注销获取可见卡片区域使用场景：卡片使用方向FMS反注册获取可见卡片的区域的回调使用后效果：FMS会清理记录的回调 |
 | [offGetWantParamsCallback](arkts-form-formhost-offgetwantparamscallback-f-sys.md#offgetwantparamscallback-1) | 取消订阅获取卡片参数事件。使用callback异步回调。 |
 | [offTemplateFormDetailInfoChange](arkts-form-formhost-offtemplateformdetailinfochange-f-sys.md#offtemplateformdetailinfochange-1) | 取消订阅模板卡片静态配置信息变化。使用callback异步回调。 |
 | [offUpdateFormsConfigCallback](arkts-form-formhost-offupdateformsconfigcallback-f-sys.md#offupdateformsconfigcallback-1) | 取消订阅更新卡片配置事件。使用callback异步回调。 |
@@ -80,6 +81,7 @@ import { formHost } from '@kit.FormKit';
 | [on('getFormRect')](arkts-form-formhost-on-f-sys.md#ongetformrect) | 订阅卡片位置尺寸查询请求事件。使用callback异步回调。 |
 | [on('getLiveFormStatus')](arkts-form-formhost-on-f-sys.md#ongetliveformstatus) | Listens to the event of get live form status. |
 | [onDeleteFormsCallback](arkts-form-formhost-ondeleteformscallback-f-sys.md#ondeleteformscallback-1) | 订阅删除卡片事件。使用callback异步回调。 |
+| [onGetVisibleFormRect](arkts-form-formhost-ongetvisibleformrect-f-sys.md#ongetvisibleformrect-1) | 订阅请求可见widget位置和尺寸事件。该接口使用异步回调返回结果。 |
 | [onGetWantParamsCallback](arkts-form-formhost-ongetwantparamscallback-f-sys.md#ongetwantparamscallback-1) | 订阅获取卡片参数事件。使用callback异步回调。 |
 | [onTemplateFormDetailInfoChange](arkts-form-formhost-ontemplateformdetailinfochange-f-sys.md#ontemplateformdetailinfochange-1) | 订阅模板卡片静态配置信息变化。使用callback异步回调。 |
 | [onUpdateFormsConfigCallback](arkts-form-formhost-onupdateformsconfigcallback-f-sys.md#onupdateformsconfigcallback-1) | 订阅更新卡片配置事件。使用callback异步回调。 |

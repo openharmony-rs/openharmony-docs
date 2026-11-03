@@ -612,6 +612,8 @@ function off(type: SensorId.BAROMETER, callback?: Callback<BarometerResponse>): 
 
 **起始版本：** 9
 
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-sensor-function off(type: SensorId.BAROMETER, callback?: Callback<BarometerResponse>): void--><!--Device-sensor-function off(type: SensorId.BAROMETER, callback?: Callback<BarometerResponse>): void-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -667,6 +669,8 @@ function off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callba
 取消订阅气压计传感器数据。当不再需要接收气压计传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
 **起始版本：** 19
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-sensor-function off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback<BarometerResponse>): void--><!--Device-sensor-function off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback<BarometerResponse>): void-End-->
 

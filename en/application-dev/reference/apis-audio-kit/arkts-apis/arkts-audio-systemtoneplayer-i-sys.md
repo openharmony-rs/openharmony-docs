@@ -368,7 +368,7 @@ Subscribes to error events that occur during ringtone playback. This API uses an
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'error' | Yes | Event type. The event **'error'** is triggered when an error occurs during ringtone playback. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return the error code and error information. For details about the error codes, see [on('error')](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md#onerror) of the AVPlayer. |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return the error code and error information. For details about the error codes, see [on('error')](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#onerror) of the AVPlayer. |
 
 **Error codes:**
 

@@ -45,5 +45,6 @@
 | 名称 | 说明 |
 | --- | --- |
 | [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i-sys.md) | 用于创建可在共享[RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md)的多个场景（[Scene](arkts-arkgraphics3d-scene-c.md)）中共享的渲染资源。 |
+| [RenderTargetParameters](arkts-arkgraphics3d-scene-rendertargetparameters-i-sys.md) | 渲染目标参数对象，继承自[SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md)，用于描述渲染目标。 |
 | [SceneLoadParams](arkts-arkgraphics3d-scene-sceneloadparams-i-sys.md) | 场景加载参数对象，用于指定加载3D模型资源时的额外配置选项。典型使用场景为从MP4容器文件中加载内嵌的glb模型。 |
 <!--DelEnd-->

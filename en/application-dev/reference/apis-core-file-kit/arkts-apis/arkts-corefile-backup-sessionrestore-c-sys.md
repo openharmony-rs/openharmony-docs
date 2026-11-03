@@ -1138,7 +1138,7 @@ Migrate file from source path to destination path.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pathInfo | [PathInfo](arkts-corefile-backup-pathinfo-i-sys.md) | Yes | Path information containing source and destination paths. |
-| fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | Yes | File metadata containing bundleName and optional fileName. |
+| fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | Yes | File metadata containing bundleName and uri. |
 
 **Return value:**
 

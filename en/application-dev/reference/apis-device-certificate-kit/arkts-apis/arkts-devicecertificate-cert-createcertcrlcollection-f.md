@@ -26,14 +26,14 @@ Creates an object for a collection of X.509 certificates and CRLs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| certs | Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Yes | X.509 certificates. |
-| crls | Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | No | Array of X509CRL. |
+| certs | Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Yes | X.509 certificate array. |
+| crls | Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | No | X.509 CRL array. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [CertCRLCollection](arkts-devicecertificate-cert-certcrlcollection-i.md) | **CertCRLCollection** object created. |
+| [CertCRLCollection](arkts-devicecertificate-cert-certcrlcollection-i.md) | Certificate and CRL collection. |
 
 **Error codes:**
 

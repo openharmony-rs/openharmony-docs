@@ -5,6 +5,8 @@
   <!--Del-->
   - [getAvailableFormHostServices(system api)](arkts-form-formagent-getavailableformhostservices-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [getVisibleFormRect(system api)](arkts-form-formagent-getvisibleformrect-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [requestPublishForm(system api)](arkts-form-formagent-requestpublishform-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [requestPublishFormCrossDevice(system api)](arkts-form-formagent-requestpublishformcrossdevice-f-sys.md)<!--DelEnd-->
@@ -68,6 +70,8 @@
   <!--Del-->
   - [offDeleteFormsCallback(system api)](arkts-form-formhost-offdeleteformscallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [offGetVisibleFormRect(system api)](arkts-form-formhost-offgetvisibleformrect-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [offGetWantParamsCallback(system api)](arkts-form-formhost-offgetwantparamscallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offTemplateFormDetailInfoChange(system api)](arkts-form-formhost-offtemplateformdetailinfochange-f-sys.md)<!--DelEnd-->
@@ -77,6 +81,8 @@
   - [on(system api)](arkts-form-formhost-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onDeleteFormsCallback(system api)](arkts-form-formhost-ondeleteformscallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onGetVisibleFormRect(system api)](arkts-form-formhost-ongetvisibleformrect-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onGetWantParamsCallback(system api)](arkts-form-formhost-ongetwantparamscallback-f-sys.md)<!--DelEnd-->
   <!--Del-->

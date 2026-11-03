@@ -4,8 +4,6 @@
 interface SecureSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom
 ```
 
-SecureSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)。
-
 安全模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦的操作。
 
 通过[createSession](arkts-camera-camera-cameramanager-i.md#createsession)接口传入[SceneMode](arkts-camera-camera-scenemode-e.md)为SECURE_PHOTO模式创建一个安全模式的会话。该模式开放给人脸识别、银行等有安全诉求的应用，需要结合<!--RP1-->安全TA<!--RP1End-->使用，支持同时输出普通预览流和安全流的业务场景。<!--RP2-->

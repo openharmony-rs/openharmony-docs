@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function analyzePrintEvents(printerId: string, eventType: string): Promise<string>
 ```
 
-分析打印事件。
+分析打印事件，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,14 +30,14 @@ function analyzePrintEvents(printerId: string, eventType: string): Promise<strin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。<br>要分析的打印机ID。 |
-| eventType | string | 是 | 前卫类型。<br>需要分析的事件类型。 |
+| printerId | string | 是 | 待分析的打印机ID。 |
+| eventType | string | 是 | 需要分析的事件类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | the promise returned by the function. |
+| Promise&lt;string&gt; | Promise对象，返回分析结果。 |
 
 **错误码：**
 

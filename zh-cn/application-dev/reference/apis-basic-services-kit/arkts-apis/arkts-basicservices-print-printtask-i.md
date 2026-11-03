@@ -4,7 +4,7 @@
 interface PrintTask
 ```
 
-打印任务完成后的事件监听回调接口类。
+打印任务状态变化的事件监听回调接口类，用于监听打印任务执行过程中的状态变化事件（如阻塞、成功、失败、取消等）。通过print.print接口获取PrintTask实例后，可注册监听打印任务的状态变化事件。
 
 **起始版本：** 10
 
@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 off(type: 'block', callback?: Callback<void>): void
 ```
 
-取消打印任务阻塞的监听，使用callback异步回调。
+取消打印任务阻塞的监听。
 
 **起始版本：** 10
 
@@ -39,7 +39,7 @@ off(type: 'block', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'block' | 是 | 取消监听，<br>监听字段：block，<br>表示打印任务阻塞。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定的打印任务阻塞事件订阅。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定的打印任务阻塞事件订阅。不传入时取消调用方所有已注册的回调。 |
 
 **错误码：**
 
@@ -89,7 +89,7 @@ struct Index {
 off(type: 'succeed', callback?: Callback<void>): void
 ```
 
-取消打印任务成功的监听，使用callback异步回调。
+取消打印任务成功的监听。
 
 **起始版本：** 10
 
@@ -104,7 +104,7 @@ off(type: 'succeed', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'succeed' | 是 | 取消监听，<br>监听字段：succeed，<br>表示打印任务成功。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定的打印任务成功事件订阅。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定的打印任务成功事件订阅。不传入时取消调用方所有已注册的回调。 |
 
 **错误码：**
 
@@ -154,7 +154,7 @@ struct Index {
 off(type: 'fail', callback?: Callback<void>): void
 ```
 
-取消打印任务失败的监听，使用callback异步回调。
+取消打印任务失败的监听。
 
 **起始版本：** 10
 
@@ -169,7 +169,7 @@ off(type: 'fail', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fail' | 是 | 取消监听，<br>监听字段：fail，<br>表示打印任务失败。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定的打印任务失败事件订阅。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定的打印任务失败事件订阅。不传入时取消调用方所有已注册的回调。 |
 
 **错误码：**
 
@@ -219,7 +219,7 @@ struct Index {
 off(type: 'cancel', callback?: Callback<void>): void
 ```
 
-取消打印任务被取消的监听，使用callback异步回调。
+取消打印任务被取消的监听。
 
 **起始版本：** 10
 
@@ -234,7 +234,7 @@ off(type: 'cancel', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cancel' | 是 | 取消监听，<br>监听字段：cancel，<br>表示打印任务被取消。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定的打印任务被取消事件订阅。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定的打印任务被取消事件订阅。不传入时取消调用方所有已注册的回调。 |
 
 **错误码：**
 

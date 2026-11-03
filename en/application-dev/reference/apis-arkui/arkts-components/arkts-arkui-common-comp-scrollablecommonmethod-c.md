@@ -8,7 +8,7 @@ CommonScrollableMethod
 
 **Inheritance/Implementation:** ScrollableCommonMethod extends CommonMethod&lt;T&gt;
 
-**Since:** 12
+**Since:** 11
 
 <!--Device-unnamed-declare class ScrollableCommonMethod<T> extends CommonMethod<T>--><!--Device-unnamed-declare class ScrollableCommonMethod<T> extends CommonMethod<T>-End-->
 

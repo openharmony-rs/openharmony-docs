@@ -5,7 +5,7 @@ interface MacroVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, C
       ManualFocus, ColorManagement
 ```
 
-实现微距录像会话，用于设置微距录像模式的参数，并保存运行相机所需的[CameraInput](arkts-camera-camera-camerainput-i.md)和[CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。继承自[Session](arkts-camera-camera-session-i.md)。
+实现微距录像会话，用于设置微距录像模式的参数，并保存运行相机所需的[CameraInput](arkts-camera-camera-camerainput-i.md)和[CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。
 
 **继承/实现关系：** MacroVideoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->, [ManualFocus](arkts-camera-camera-manualfocus-i.md), [ColorManagement](arkts-camera-camera-colormanagement-i.md)
 

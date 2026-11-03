@@ -24,7 +24,7 @@ import { window } from '@kit.ArkUI';
 animationParams?: StartAnimationParams
 ```
 
-The params of start animation
+启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。
 
 **类型：** [StartAnimationParams](arkts-arkui-window-startanimationparams-i.md)
 
@@ -100,9 +100,11 @@ minimizeOnStart?: boolean
 needAnimation?: boolean
 ```
 
-窗口拉起时是否需要动画
+是否启用窗口创建动效。
 
-默认跟随产品配置，例如PC设备上拉起主窗默认有动画，Phone上拉起子窗默认无动画。当产品支持配置，跟随开发者设置的值。
+传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../../windowmanager/window-terminology.md#freeform-window自由窗口)的情况下生效。
+
+此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** boolean
 

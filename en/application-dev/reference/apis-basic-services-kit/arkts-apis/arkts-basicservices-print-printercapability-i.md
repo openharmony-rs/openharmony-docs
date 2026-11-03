@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 colorMode: number
 ```
 
-Color mode.
+Color mode. For details, see [PrintColorMode](arkts-basicservices-print-printcolormode-e.md).
 
 **Type:** number
 
@@ -40,7 +40,7 @@ Color mode.
 duplexMode: number
 ```
 
-Simplex or duplex mode.
+Simplex or duplex mode. For details about the value, see [PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md).
 
 **Type:** number
 
@@ -72,7 +72,7 @@ Minimum margin of the printer.
 options?: Object
 ```
 
-Printer options. The value is a JSON object string.
+Printer capability information, in JSON format.
 
 **Type:** Object
 

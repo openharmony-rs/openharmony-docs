@@ -28,8 +28,8 @@ Requests print preview data. This API uses a callback to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Information about the print job. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;number&gt; | Yes | Callback used to return the result. |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Print job information, which is used to specify the detailed configuration of the print job to be previewed. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;number&gt; | Yes | Callback used to return the preview result, which is of the number type. The value **0** indicates that the request is successful, and a non-zero value is the error code of the failure cause. |
 
 **Error codes:**
 
@@ -93,13 +93,13 @@ Requests print preview data. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Information about the print job. |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Print job information, which is used to specify the detailed configuration of the print job to be previewed. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the preview result. |
+| Promise&lt;number&gt; | Promise used to return the preview result, which is of the number type. The value **0** indicates that the request is successful, and a non-zero value is the error code of the failure cause. |
 
 **Error codes:**
 

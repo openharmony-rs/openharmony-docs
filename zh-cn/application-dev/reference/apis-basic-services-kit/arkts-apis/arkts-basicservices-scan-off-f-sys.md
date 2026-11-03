@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function off(type: 'scanDeviceAdd', callback?: Callback<ScannerDevice>): void
 ```
 
-取消注册扫描仪设备添加事件回调（系统API）。使用callback异步回调。
+取消注册扫描仪设备添加事件回调（系统接口）。
 
 **起始版本：** 20
 
@@ -29,7 +29,7 @@ function off(type: 'scanDeviceAdd', callback?: Callback<ScannerDevice>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scanDeviceAdd' | 是 | 事件类型。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | 否 | 回调函数，返回扫描仪设备添加信息。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | 否 | 需要取消注册的回调函数。若不传入，则取消调用方所有已注册的回调。 |
 
 **错误码：**
 
@@ -61,7 +61,7 @@ scan.off('scanDeviceAdd', callback);
 function off(type: 'scanDeviceDel', callback?: Callback<ScannerDevice>): void
 ```
 
-取消注册扫描仪设备删除事件回调（系统API）。使用callback异步回调。
+取消注册扫描仪设备删除事件回调（系统接口）。
 
 **起始版本：** 20
 
@@ -78,7 +78,7 @@ function off(type: 'scanDeviceDel', callback?: Callback<ScannerDevice>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scanDeviceDel' | 是 | 事件类型。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | 否 | 回调函数，返回扫描仪设备删除信息。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)&gt; | 否 | 需要取消注册的回调函数。若不传入，则取消调用方所有已注册的回调。 |
 
 **错误码：**
 

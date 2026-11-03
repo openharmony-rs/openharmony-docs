@@ -4,7 +4,7 @@
 type PrinterInfoQueryCallback = (printerInfo: PrinterInformation, ppdInfo: PpdInfo[]) => void
 ```
 
-定义注册监听printInfoQuery事件的回调类型。printInfo的值表示打印机信息。ppdInfo的值表示所有打印机的ppd信息。
+定义注册监听printInfoQuery事件的回调类型。printInfo的值表示打印机信息，ppdInfo的值表示所有打印机的PPD信息。
 
 **起始版本：** 24
 
@@ -20,5 +20,5 @@ type PrinterInfoQueryCallback = (printerInfo: PrinterInformation, ppdInfo: PpdIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerInfo | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | 是 | 打印机信息<br>打印机信息。 |
-| ppdInfo | [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[] | 是 | 所有打印机ppd信息<br>所有打印机ppd信息。 |
+| printerInfo | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | 是 | 打印机信息。 |
+| ppdInfo | [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[] | 是 | 所有打印机PPD信息。 |

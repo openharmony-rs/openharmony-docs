@@ -50,7 +50,7 @@ Obtains the face identifier on the cover of a portrait album or group photo albu
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. |
 
 <!--Del-->
 **Examples**

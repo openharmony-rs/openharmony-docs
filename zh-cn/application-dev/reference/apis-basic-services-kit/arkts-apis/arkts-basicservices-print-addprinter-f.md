@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise<boolean>
 ```
 
-添加打印机到系统中，使用Promise异步回调。
+添加打印机到系统中，使用Promise异步回调。该接口面向打印驱动、打印管理软件、三方打印管理软件、云打印等需要管理打印机或扫描仪的场景。
 
 **起始版本：** 24
 
@@ -30,14 +30,14 @@ function addPrinter(printerName: string, uri: string, ppdName?: string, options?
 | --- | --- | --- | --- |
 | printerName | string | 是 | 表示打印机名称。 |
 | uri | string | 是 | 表示打印机的URI。 |
-| ppdName | string | 否 | 表示打印机的PPD文件名称。 |
-| options | string | 否 | JSON对象字符串，表示打印机选项参数。 |
+| ppdName | string | 否 | 表示打印机PPD驱动文件在文件系统中的名称。该名称由设备安装厂商驱动后生成，命名格式为“包名_模块名_文件名”，具体名称需向驱动厂商获取。当需要指定特定PPD驱动文件时传入此参数，不传入时系统自动匹配。 |
+| options | string | 否 | JSON对象字符串，表示打印机选项参数。预留字段，暂未启用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回添加打印机成功与否的结果。 |
+| Promise&lt;boolean&gt; | Promise对象，返回添加打印机成功与否的结果。true表示添加成功，false表示添加失败。 |
 
 **错误码：**
 

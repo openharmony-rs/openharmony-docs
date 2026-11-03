@@ -1,4 +1,4 @@
-# PrintExtensionContext
+# PrintExtensionContext(PrintExtensionContext)
 
 ## Summary
 
@@ -6,4 +6,4 @@
 
 | Name | Description |
 | --- | --- |
-| [PrintExtensionContext](arkts-basicservices-printextensioncontext-c.md) | The context of print extension. It allows access to serviceExtension-specific resources. |
+| [PrintExtensionContext](arkts-basicservices-printextensioncontext-c.md) | **PrintExtensionContext** represents the context of **PrintExtensionAbility** and is inherited from [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md). |

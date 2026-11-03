@@ -4,7 +4,7 @@
 interface SceneDetectionQuery
 ```
 
-Provides the scene detection and query capabilities.
+提供场景检测与查询能力。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 isSceneFeatureSupported(type: SceneFeatureType): boolean
 ```
 
-Checks whether a scene feature is supported.
+检查是否支持指定的场景特性。
 
 **起始版本：** 12
 
@@ -40,13 +40,13 @@ Checks whether a scene feature is supported.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md) | 是 | Scene feature. |
+| type | [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md) | 是 | 场景特性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of the scene feature. **true** if supported, **false** otherwise. |
+| boolean | 表示是否支持该场景特性。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 

@@ -1179,7 +1179,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getSignatureAlgName(): string
 ```
 
-Obtains the signing algorithm of the X.509 CRL.
+Obtains the signature algorithm of the X.509 CRL.
 
 > **NOTE:** 
 > 
@@ -1200,7 +1200,7 @@ Obtains the signing algorithm of the X.509 CRL.
 
 | Type | Description |
 | --- | --- |
-| string | Signing algorithm obtained. |
+| string | Signature algorithm name of the X.509 CRL obtained. |
 
 **Error codes:**
 
@@ -1308,7 +1308,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getSignatureAlgOid(): string
 ```
 
-Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
 > **NOTE:** 
 > 
@@ -1329,7 +1329,7 @@ Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the In
 
 | Type | Description |
 | --- | --- |
-| string | OID of the X.509 CRL signing algorithm obtained. |
+| string | OID of the X.509 CRL signature algorithm obtained. |
 
 **Error codes:**
 
@@ -1437,7 +1437,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 getSignatureAlgParams(): DataBlob
 ```
 
-Obtains the parameters of the X.509 CRL signing algorithm.
+Obtains the parameters of the X.509 CRL signature algorithm.
 
 > **NOTE:** 
 > 
@@ -1458,7 +1458,7 @@ Obtains the parameters of the X.509 CRL signing algorithm.
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Algorithm parameters obtained. |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | Parameters of the X.509 CRL signature algorithm obtained. |
 
 **Error codes:**
 

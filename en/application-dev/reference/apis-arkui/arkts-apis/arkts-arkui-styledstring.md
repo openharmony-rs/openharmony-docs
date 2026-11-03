@@ -1,4 +1,4 @@
-# styled_string
+# styled_string(A styled string is an object that associates text styles with text content. Styles specify text ranges through)
 
 ## Summary
 

@@ -4,7 +4,7 @@
 interface ColorControls extends ColorControlsQuery
 ```
 
-实现色彩控制功能。它继承自[ColorControlsQuery](arkts-camera-camera-colorcontrolsquery-i-sys.md).
+实现色彩控制功能。
 
 **继承/实现关系：** ColorControls extends [ColorControlsQuery](arkts-camera-camera-colorcontrolsquery-i-sys.md)
 

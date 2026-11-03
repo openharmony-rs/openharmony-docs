@@ -4,7 +4,10 @@
 export class MarqueeDynamicSyncScene extends DynamicSyncScene
 ```
 
-Represents a dynamic synchronization scene of Marquee.
+Provides the dynamic frame rate configuration capability for the Marquee component, supporting dynamic frame rate adjustment during Marquee animation to optimize performance and power consumption. It is applicable to scenarios where animation smoothness and system resource consumption need to be balanced in marquee contexts.
+
+> **NOTE:** 
+> - **MarqueeDynamicSyncScene** inherits from [DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md) and represents the dynamic sync scene of the [Marquee](../arkts-components/arkts-arkui-marquee-comp.md) component.
 
 **Inheritance/Implementation:** MarqueeDynamicSyncScene extends [DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)
 
@@ -17,10 +20,7 @@ Represents a dynamic synchronization scene of Marquee.
 ## Modules to Import
 
 ```TypeScript
-import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
-import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
-import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
-import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler, GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback, SwiperContentInfo, SwiperItemInfo, BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
 ## type
@@ -29,7 +29,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 readonly type: MarqueeDynamicSyncSceneType
 ```
 
-Type of the MarqueeDynamicSyncSceneType.
+Dynamic sync scene type of the Marquee component. It is used to specify the dynamic sync scene type mode of the Marquee component. Different scene types correspond to different frame rate adjustment strategies. For details, see MarqueeDynamicSyncSceneType.
 
 **Type:** [MarqueeDynamicSyncSceneType](arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md)
 

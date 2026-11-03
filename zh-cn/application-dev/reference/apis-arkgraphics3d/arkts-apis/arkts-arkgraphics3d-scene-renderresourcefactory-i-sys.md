@@ -18,7 +18,7 @@ export interface RenderResourceFactory
 createScene(uri: ResourceStr, param: SceneLoadParams): Promise<Scene>
 ```
 
-根据指定的资源路径和场景加载参数创建场景，使用Promise异步回调。
+根据指定的资源路径和场景加载参数创建场景，使用Promise异步回调。该接口为耗时操作。在异步任务执行期间，调用其他接口可能会被阻塞，直到该异步任务完成。
 
 **起始版本：** 26.0.0
 

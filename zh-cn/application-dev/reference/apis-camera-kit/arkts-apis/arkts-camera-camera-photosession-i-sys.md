@@ -29,7 +29,7 @@ import { camera } from '@kit.CameraKit';
 getSessionConflictFunctions(): Array<PhotoConflictFunctions>
 ```
 
-Gets session conflict functions.
+获取会话冲突功能。
 
 **起始版本：** 13
 
@@ -43,7 +43,7 @@ Gets session conflict functions.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[PhotoConflictFunctions](arkts-camera-camera-photoconflictfunctions-i-sys.md)&gt; | List of session conflict functions. |
+| Array&lt;[PhotoConflictFunctions](arkts-camera-camera-photoconflictfunctions-i-sys.md)&gt; | 会话冲突功能列表。 |
 
 **错误码：**
 
@@ -57,7 +57,7 @@ Gets session conflict functions.
 getSessionFunctions(outputCapability: CameraOutputCapability): Array<PhotoFunctions>
 ```
 
-Gets session functions.
+获取会话功能。
 
 **起始版本：** 13
 
@@ -71,13 +71,13 @@ Gets session functions.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outputCapability | [CameraOutputCapability](arkts-camera-camera-cameraoutputcapability-i.md) | 是 | CameraOutputCapability to set. |
+| outputCapability | [CameraOutputCapability](arkts-camera-camera-cameraoutputcapability-i.md) | 是 | 待设置的 CameraOutputCapability。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[PhotoFunctions](arkts-camera-camera-photofunctions-i-sys.md)&gt; | List of session functions. |
+| Array&lt;[PhotoFunctions](arkts-camera-camera-photofunctions-i-sys.md)&gt; | 会话功能列表。 |
 
 **错误码：**
 
@@ -92,7 +92,7 @@ Gets session functions.
 off(type: 'featureDetection', featureType: SceneFeatureType, callback?: AsyncCallback<SceneFeatureDetectionResult>): void
 ```
 
-Unsubscribe from camera feature detection status change events.
+取消订阅相机特性检测状态变化事件。
 
 **起始版本：** 12
 
@@ -106,9 +106,9 @@ Unsubscribe from camera feature detection status change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'featureDetection' | 是 | Event type. The value is fixed at **'featureDetection'**. The event can be listened for when a session is created. |
-| featureType | [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md) | 是 | Scene feature type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('featureDetection')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'featureDetection' | 是 | 事件类型。取值固定为**'featureDetection'**。该事件可在创建会话时监听。 |
+| featureType | [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md) | 是 | 场景特性类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件的**on('featureDetection')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -133,7 +133,7 @@ function unregisterFeatureDetectionStatus(photoSession: camera.PhotoSession, fea
 off(type: 'effectSuggestionChange', callback?: AsyncCallback<EffectSuggestionType>): void
 ```
 
-Unsubscribes from effect suggestion event callback.
+取消订阅效果建议事件回调。
 
 **起始版本：** 12
 
@@ -147,8 +147,8 @@ Unsubscribes from effect suggestion event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'effectSuggestionChange' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md)&gt; | 否 | Callback used to return the result. |
+| type | 'effectSuggestionChange' | 是 | 事件类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md)&gt; | 否 | 用于返回结果的回调。 |
 
 ## off('lcdFlashStatus')
 
@@ -156,7 +156,7 @@ Unsubscribes from effect suggestion event callback.
 off(type: 'lcdFlashStatus', callback?: AsyncCallback<LcdFlashStatus>): void
 ```
 
-Unsubscribes from LCD flash status change events.
+取消订阅 LCD 闪光灯状态变化事件。
 
 **起始版本：** 13
 
@@ -170,8 +170,8 @@ Unsubscribes from LCD flash status change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'lcdFlashStatus' | 是 | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LcdFlashStatus](arkts-camera-camera-lcdflashstatus-i-sys.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('lcdFlashStatus')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'lcdFlashStatus' | 是 | 事件类型。取值固定为**'lcdFlashStatus'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LcdFlashStatus](arkts-camera-camera-lcdflashstatus-i-sys.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件 **on('lcdFlashStatus')**中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -196,7 +196,7 @@ function unregisterLcdFlashStatus(photoSession: camera.PhotoSession): void {
 on(type: 'featureDetection', featureType: SceneFeatureType, callback: AsyncCallback<SceneFeatureDetectionResult>): void
 ```
 
-Subscribe to scene feature detection status change events. This API uses an asynchronous callback to return the result.
+订阅场景特性检测状态变化事件。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -210,9 +210,9 @@ Subscribe to scene feature detection status change events. This API uses an asyn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'featureDetection' | 是 | Event type. The value is fixed at **'featureDetection'**. The event can be listened for when a photo session is created. |
-| featureType | [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md) | 是 | Scene feature type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)&gt; | 是 | Callback used to return the status of the scene feature detection. |
+| type | 'featureDetection' | 是 | 事件类型。取值固定为**'featureDetection'**。该事件可在创建拍照会话时监听。 |
+| featureType | [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md) | 是 | 场景特性类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)&gt; | 是 | 用于返回场景特性检测状态的回调。 |
 
 **错误码：**
 
@@ -248,7 +248,7 @@ function registerFeatureDetectionStatus(photoSession: camera.PhotoSession, featu
 on(type: 'effectSuggestionChange', callback: AsyncCallback<EffectSuggestionType>): void
 ```
 
-Subscribes to effect suggestion event callback.
+订阅效果建议事件回调。
 
 **起始版本：** 12
 
@@ -262,8 +262,8 @@ Subscribes to effect suggestion event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'effectSuggestionChange' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md)&gt; | 是 | Callback used to return the result. |
+| type | 'effectSuggestionChange' | 是 | 事件类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md)&gt; | 是 | 用于返回结果的回调。 |
 
 ## on('lcdFlashStatus')
 
@@ -271,7 +271,7 @@ Subscribes to effect suggestion event callback.
 on(type: 'lcdFlashStatus', callback: AsyncCallback<LcdFlashStatus>): void
 ```
 
-Subscribes to LCD flash status change events. This API uses an asynchronous callback to return the result.
+订阅 LCD 闪光灯状态变化事件。该接口使用异步回调返回结果。
 
 **起始版本：** 13
 
@@ -285,8 +285,8 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'lcdFlashStatus' | 是 | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LcdFlashStatus](arkts-camera-camera-lcdflashstatus-i-sys.md)&gt; | 是 | Callback used to return the LCD flash status change. |
+| type | 'lcdFlashStatus' | 是 | 事件类型。取值固定为**'lcdFlashStatus'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LcdFlashStatus](arkts-camera-camera-lcdflashstatus-i-sys.md)&gt; | 是 | 用于返回 LCD 闪光灯状态变化的回调。 |
 
 **错误码：**
 

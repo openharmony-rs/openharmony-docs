@@ -26,7 +26,7 @@ Removes a printer from the printer discovery list. This API uses a promise to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerId | string | Yes | Printer to remove. |
+| printerId | string | Yes | ID of the printer to be removed. |
 
 **Return value:**
 

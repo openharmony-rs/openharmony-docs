@@ -72,7 +72,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 onCreate(want: Want): void
 ```
 
-Called to initialize the service logic.
+Called when the UIServiceExtension is created. This callback is used to execute the initialization logic.
 
 **Since:** 14
 

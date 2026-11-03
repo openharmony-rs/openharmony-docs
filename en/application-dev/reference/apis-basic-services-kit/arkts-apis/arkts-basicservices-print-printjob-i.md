@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 colorMode: number
 ```
 
-Color mode.
+Color mode. For details, see [PrintColorMode](arkts-basicservices-print-printcolormode-e.md).
 
 **Type:** number
 
@@ -40,7 +40,7 @@ Color mode.
 copyNumber: number
 ```
 
-Copy of the file list.
+Number of printed file copies. The value is a positive integer. The default value is **1**.
 
 **Type:** number
 
@@ -56,7 +56,7 @@ Copy of the file list.
 duplexMode: number
 ```
 
-Simplex or duplex mode.
+Simplex or duplex mode. For details about the value, see [PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md).
 
 **Type:** number
 
@@ -184,7 +184,7 @@ Current page margin.
 options?: Object
 ```
 
-Printer options. The value is a JSON object string.
+Detailed information about a print job, in JSON format.
 
 **Type:** Object
 
@@ -200,7 +200,7 @@ Printer options. The value is a JSON object string.
 pageRange: PrinterRange
 ```
 
-Print range.
+Print page range.
 
 **Type:** [PrinterRange](arkts-basicservices-print-printerrange-i.md)
 
@@ -264,7 +264,7 @@ ID of the printer used for printing.
 vendorOptions?: string
 ```
 
-Vendor-specific job options in JSON format.
+Vendor-specific print job attributes of the printer driver, in JSON format.
 
 **Type:** string
 

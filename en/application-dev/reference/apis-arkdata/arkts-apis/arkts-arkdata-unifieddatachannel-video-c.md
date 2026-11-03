@@ -4,7 +4,7 @@
 class Video extends File
 ```
 
-Represents video data. It is a child class of [File](arkts-arkdata-unifieddatachannel-file-c.md) and is used to describe a video file.
+Video data, a subclass of [File](arkts-arkdata-unifieddatachannel-file-c.md), used to describe a video file.
 
 **Inheritance/Implementation:** Video extends [File](arkts-arkdata-unifieddatachannel-file-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get videoUri(): string
 ```
 
-Indicates the uri of video
+URI of the local video data or network video. The URI of the local video data can be obtained by calling [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md).
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Indicates the uri of video
 set videoUri(value: string)
 ```
 
-Indicates the uri of video
+URI of the local video data or network video. The URI of the local video data can be obtained by calling [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md).
 
 **Type:** string
 

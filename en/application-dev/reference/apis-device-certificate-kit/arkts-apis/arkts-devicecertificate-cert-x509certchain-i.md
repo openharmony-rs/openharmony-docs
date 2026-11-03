@@ -4,7 +4,7 @@
 interface X509CertChain
 ```
 
-Provides APIs for managing the X.509 certificate chain.
+Describes an X.509 certificate chain object.
 
 **Since:** 11
 
@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 getCertList(): Array<X509Cert>
 ```
 
-Obtains the X.509 certificate list.
+Obtains a list of X.509 certificates.
 
 **Since:** 11
 
@@ -38,7 +38,7 @@ Obtains the X.509 certificate list.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | X.509 certificate list obtained. |
+| Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | X.509 certificates. |
 
 **Error codes:**
 
@@ -160,7 +160,7 @@ Obtains the hash value of the data in DER format.
 
 | Type | Description |
 | --- | --- |
-| Uint8Array | Hash value obtained. |
+| Uint8Array | Hash value in DER format obtained. |
 
 **Error codes:**
 
@@ -410,7 +410,7 @@ async function certChainToString() {
 validate(param: CertChainValidationParameters): Promise<CertChainValidationResult>
 ```
 
-Validates a certificate chain. This API uses a promise to return the result.
+Verifies the certificate chain. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -424,13 +424,13 @@ Validates a certificate chain. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [CertChainValidationParameters](arkts-devicecertificate-cert-certchainvalidationparameters-i.md) | Yes | Parameters for validating the X.509 certificate chain. |
+| param | [CertChainValidationParameters](arkts-devicecertificate-cert-certchainvalidationparameters-i.md) | Yes | Parameters for verifying the X.509 certificate chain. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[CertChainValidationResult](arkts-devicecertificate-cert-certchainvalidationresult-i.md)&gt; | Promise used to return the certificate chain validation result. |
+| Promise&lt;[CertChainValidationResult](arkts-devicecertificate-cert-certchainvalidationresult-i.md)&gt; | Promise used to return the certificate chain verification result. |
 
 **Error codes:**
 
@@ -569,7 +569,7 @@ validate();
 validate(param: CertChainValidationParameters, callback: AsyncCallback<CertChainValidationResult>): void
 ```
 
-Validates a certificate chain. This API uses an asynchronous callback to return the result.
+Verifies a certificate chain using verification parameters. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
 
@@ -583,8 +583,8 @@ Validates a certificate chain. This API uses an asynchronous callback to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [CertChainValidationParameters](arkts-devicecertificate-cert-certchainvalidationparameters-i.md) | Yes | Parameters for validating the X.509 certificate chain. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CertChainValidationResult](arkts-devicecertificate-cert-certchainvalidationresult-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the certificate chain validation result obtained. Otherwise, **err** is an error object. |
+| param | [CertChainValidationParameters](arkts-devicecertificate-cert-certchainvalidationparameters-i.md) | Yes | Parameters for verifying the X.509 certificate chain. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CertChainValidationResult](arkts-devicecertificate-cert-certchainvalidationresult-i.md)&gt; | Yes | Callback used to return the result. If the certificate chain is verified successfully, **err** is **undefined** and **data** is the obtained certificate chain verification result. Otherwise, **err** is an error object. |
 
 **Error codes:**
 

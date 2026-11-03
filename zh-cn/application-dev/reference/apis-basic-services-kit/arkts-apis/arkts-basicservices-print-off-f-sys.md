@@ -106,7 +106,7 @@ print.off('jobStateChange', (data: boolean) => {
 function off(type: 'extInfoChange', callback?: Callback<boolean>): void
 ```
 
-取消注册打印扩展信息变化事件回调，使用callback回调。
+取消注册打印机扩展信息变化事件回调，使用callback回调。
 
 **起始版本：** 10
 
@@ -122,8 +122,8 @@ function off(type: 'extInfoChange', callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'extInfoChange' | 是 | 表示打印扩展信息改变。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 表示取消注册打印扩展信息变化事件是否成功。true表示成功，false表示失败。 |
+| type | 'extInfoChange' | 是 | 表示打印机扩展信息改变。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 否 | 表示取消注册打印机扩展信息变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 

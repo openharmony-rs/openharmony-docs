@@ -28,7 +28,7 @@ function connectPrinter(printerId: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 |
+| printerId | string | 是 | 表示打印机ID。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 通过打印机ID异步连接打印机的回调。 |
 
 **错误码：**
@@ -77,7 +77,7 @@ function connectPrinter(printerId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID |
+| printerId | string | 是 | 表示打印机ID。 |
 
 **返回值：**
 

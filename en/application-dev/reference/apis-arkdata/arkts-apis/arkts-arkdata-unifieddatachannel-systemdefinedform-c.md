@@ -4,7 +4,7 @@
 class SystemDefinedForm extends SystemDefinedRecord
 ```
 
-Represents the service widget data defined by the system. It is a child class of [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md).
+Represents the system-defined widget data, which is a subclass of [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md).
 
 **Inheritance/Implementation:** SystemDefinedForm extends [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get abilityName(): string
 ```
 
-Indicates the ability name of form
+Name of the ability corresponding to the widget.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Indicates the ability name of form
 set abilityName(value: string)
 ```
 
-Indicates the ability name of form.
+Name of the ability corresponding to the widget.
 
 **Type:** string
 
@@ -64,7 +64,7 @@ Indicates the ability name of form.
 get bundleName(): string
 ```
 
-Indicates the bundle name of form
+Name of the bundle to which the widget belongs.
 
 **Type:** string
 
@@ -82,7 +82,7 @@ Indicates the bundle name of form
 set bundleName(value: string)
 ```
 
-Indicates the bundle name of form
+Name of the bundle to which the widget belongs.
 
 **Type:** string
 
@@ -102,7 +102,7 @@ Indicates the bundle name of form
 get formId(): number
 ```
 
-Indicates the id of form
+Widget ID.
 
 **Type:** number
 
@@ -120,7 +120,7 @@ Indicates the id of form
 set formId(value: number)
 ```
 
-Indicates the id of form
+Widget ID.
 
 **Type:** number
 
@@ -140,7 +140,7 @@ Indicates the id of form
 get formName(): string
 ```
 
-Indicates the name of form
+Widget name.
 
 **Type:** string
 
@@ -158,7 +158,7 @@ Indicates the name of form
 set formName(value: string)
 ```
 
-Indicates the name of form
+Widget name.
 
 **Type:** string
 
@@ -178,7 +178,7 @@ Indicates the name of form
 get module(): string
 ```
 
-Indicates the module of form
+Name of the module to which the widget belongs.
 
 **Type:** string
 
@@ -196,7 +196,7 @@ Indicates the module of form
 set module(value: string)
 ```
 
-Indicates the module of form
+Name of the module to which the widget belongs.
 
 **Type:** string
 

@@ -26,4 +26,4 @@ Defines a callback for unmarshalling an ArrayBuffer to obtain [StyledStringMarsh
 
 | Type | Description |
 | --- | --- |
-| [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) obtained after unmarshalling. |
+| [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) | Custom data fragment object obtained through deserialization, used to restore user-defined style data. |

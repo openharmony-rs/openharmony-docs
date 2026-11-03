@@ -4,7 +4,7 @@
 declare class PrintExtensionAbility
 ```
 
-class of print extension ability.
+This module provides the APIs for calling the print extension ability. **PrintExtensionAbility** runs based on the lifecycle callback mechanism. The system invokes the corresponding callback methods to connect to the print extension, discover printers, connect to or disconnect from printers, query printer capabilities, and start or cancel print jobs. You need to implement the print extension logic in each callback.
 
 **Since:** 14
 
@@ -24,7 +24,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 onRequestPreview(jobInfo: print.PrintJob): string
 ```
 
-Called once to request preview and send result to Print SA.
+Defines a method called when the system print service requests a preview. You need to inherit the **PrintExtensionAbility** class and implement this method to return the preview result to the system print service.
 
 **Since:** 10
 
@@ -40,13 +40,13 @@ Called once to request preview and send result to Print SA.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobInfo | [print.PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Indicates the information of job. |
+| jobInfo | [print.PrintJob](arkts-basicservices-print-printjob-i.md) | Yes | Information about the print job. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| string | preview result. |
+| string | Preview result. |
 
 **Error codes:**
 

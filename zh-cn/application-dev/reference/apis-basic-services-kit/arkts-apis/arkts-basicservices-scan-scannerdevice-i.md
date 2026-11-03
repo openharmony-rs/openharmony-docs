@@ -40,7 +40,7 @@ deviceName: string
 discoveryMode: ScannerDiscoveryMode
 ```
 
-扫描仪的发现模式。
+扫描仪的发现模式，表示发现扫描仪的方式。
 
 **类型：** [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md)
 
@@ -88,7 +88,7 @@ model: string
 scannerId: string
 ```
 
-扫描仪的唯一标识符。
+扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。
 
 **类型：** string
 

@@ -4,7 +4,7 @@
 interface VideoOutput extends CameraOutput
 ```
 
-录像会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
+录像会话中使用的输出信息。
 
 **继承/实现关系：** VideoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 

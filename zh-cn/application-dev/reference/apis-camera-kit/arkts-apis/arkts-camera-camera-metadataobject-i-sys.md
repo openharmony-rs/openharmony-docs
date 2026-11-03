@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 readonly confidence: number
 ```
 
-Confidence of the detection, with a value range of [0, 1].
+检测的置信度，取值范围为 [0, 1]。
 
 **类型：** number
 
@@ -42,7 +42,7 @@ Confidence of the detection, with a value range of [0, 1].
 readonly objectId: number
 ```
 
-Metadata object ID.
+元数据对象 ID。
 
 **类型：** number
 

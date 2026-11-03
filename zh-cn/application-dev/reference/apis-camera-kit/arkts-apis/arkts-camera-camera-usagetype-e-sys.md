@@ -4,7 +4,7 @@
 enum UsageType
 ```
 
-Enum for usage type used in capture session.
+枚举，捕获会话使用的类型。
 
 **起始版本：** 13
 
@@ -20,7 +20,7 @@ Enum for usage type used in capture session.
 BOKEH = 0
 ```
 
-Bokeh usage type.
+虚化使用类型。
 
 **起始版本：** 13
 

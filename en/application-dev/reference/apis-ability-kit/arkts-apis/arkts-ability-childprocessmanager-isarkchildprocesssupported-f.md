@@ -26,7 +26,7 @@ Checks whether the caller is allowed to create ark child processes on this devic
 
 | Type | Description |
 | --- | --- |
-| boolean | `true`: The caller is allowed to create ark child processes.           - `false`: The caller is not allowed to create ark child processes. |
+| boolean | Whether the caller is allowed to create an ArkTS child process.<br>true: The caller is allowed to create an ArkTS child process.<br>false: The caller is not allowed to create an ArkTS child process. <br>Default value: false. |
 
 **Examples**
 

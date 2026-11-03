@@ -4,7 +4,7 @@
 class SystemDefinedPixelMap extends SystemDefinedRecord
 ```
 
-Represents the image data type corresponding to [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) defined by the system. It is a child class of [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md) and holds only binary data of **PixelMap**.
+An image data type corresponding to the system-defined [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) data type. It is a subclass of [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md) and stores only the binary data of a PixelMap.
 
 **Inheritance/Implementation:** SystemDefinedPixelMap extends [SystemDefinedRecord](arkts-arkdata-unifieddatachannel-systemdefinedrecord-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 get rawData(): Uint8Array
 ```
 
-Indicates the raw data of pixel map
+Binary data of the PixelMap object.
 
 **Type:** Uint8Array
 
@@ -44,7 +44,7 @@ Indicates the raw data of pixel map
 set rawData(value: Uint8Array)
 ```
 
-Indicates the raw data of pixel map
+Binary data of the PixelMap object.
 
 **Type:** Uint8Array
 

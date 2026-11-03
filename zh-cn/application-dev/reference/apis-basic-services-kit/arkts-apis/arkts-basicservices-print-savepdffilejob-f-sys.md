@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function savePdfFileJob(jobId: string, fd: number): Promise<void>
 ```
 
-保存打印作业的pdf文件。
+保存打印作业的PDF文件，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,14 +30,14 @@ function savePdfFileJob(jobId: string, fd: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 打印作业ID。 |
-| fd | number | 是 | 文件描述符。 |
+| jobId | string | 是 | 待保存文件所属的打印作业ID。 |
+| fd | number | 是 | 待保存文件的文件描述符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

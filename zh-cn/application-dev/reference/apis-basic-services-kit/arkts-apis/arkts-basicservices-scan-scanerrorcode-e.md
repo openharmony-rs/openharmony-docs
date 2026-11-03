@@ -18,7 +18,7 @@ enum ScanErrorCode
 SCAN_ERROR_CANCELED = 13100005
 ```
 
-操作取消。
+操作取消，请检查是否调用了cancelScan或操作被系统中断。
 
 **起始版本：** 20
 
@@ -32,7 +32,7 @@ SCAN_ERROR_CANCELED = 13100005
 SCAN_ERROR_COVER_OPEN = 13100010
 ```
 
-盖子打开。
+盖子打开，请关闭扫描仪盖子后重试。
 
 **起始版本：** 20
 
@@ -46,7 +46,7 @@ SCAN_ERROR_COVER_OPEN = 13100010
 SCAN_ERROR_DEVICE_BUSY = 13100006
 ```
 
-设备忙。
+设备忙，请等待设备空闲后重试。
 
 **起始版本：** 20
 
@@ -60,7 +60,7 @@ SCAN_ERROR_DEVICE_BUSY = 13100006
 SCAN_ERROR_GENERIC_FAILURE = 13100001
 ```
 
-通用失败。
+通用失败，请检查扫描服务运行状态并重试。
 
 **起始版本：** 20
 
@@ -74,7 +74,7 @@ SCAN_ERROR_GENERIC_FAILURE = 13100001
 SCAN_ERROR_INVALID = 13100007
 ```
 
-无效操作。
+无效操作，请检查当前操作在扫描仪状态下是否有效。
 
 **起始版本：** 20
 
@@ -88,7 +88,7 @@ SCAN_ERROR_INVALID = 13100007
 SCAN_ERROR_INVALID_PARAMETER = 401
 ```
 
-无效参数。
+无效参数，请检查参数类型和取值范围。
 
 **起始版本：** 20
 
@@ -102,7 +102,7 @@ SCAN_ERROR_INVALID_PARAMETER = 401
 SCAN_ERROR_IO_ERROR = 13100011
 ```
 
-I/O错误。
+I/O错误，请检查设备I/O连接状态并重试。
 
 **起始版本：** 20
 
@@ -116,7 +116,7 @@ I/O错误。
 SCAN_ERROR_JAMMED = 13100008
 ```
 
-卡纸。
+卡纸，请清除扫描仪中的卡纸后重试。
 
 **起始版本：** 20
 
@@ -130,7 +130,7 @@ SCAN_ERROR_JAMMED = 13100008
 SCAN_ERROR_NO_DOCS = 13100009
 ```
 
-缺纸。
+缺纸，请在扫描仪中放入文档后重试。
 
 **起始版本：** 20
 
@@ -144,7 +144,7 @@ SCAN_ERROR_NO_DOCS = 13100009
 SCAN_ERROR_NO_MEMORY = 13100012
 ```
 
-内存不足。
+内存不足，请释放系统内存后重试。
 
 **起始版本：** 20
 
@@ -158,7 +158,7 @@ SCAN_ERROR_NO_MEMORY = 13100012
 SCAN_ERROR_NO_PERMISSION = 201
 ```
 
-无权限。
+无权限，请根据对应接口的权限要求申请所需权限，并在配置文件中声明。
 
 **起始版本：** 20
 
@@ -172,7 +172,7 @@ SCAN_ERROR_NO_PERMISSION = 201
 SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202
 ```
 
-非系统应用。
+非系统应用，请检查应用类型是否为系统应用。
 
 **起始版本：** 20
 
@@ -186,7 +186,7 @@ SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202
 SCAN_ERROR_RPC_FAILURE = 13100002
 ```
 
-RPC失败。
+RPC失败，请检查RPC通信状态并重试。
 
 **起始版本：** 20
 
@@ -200,7 +200,7 @@ RPC失败。
 SCAN_ERROR_SERVER_FAILURE = 13100003
 ```
 
-服务失败。
+服务失败，请检查扫描服务是否正常运行并重试。
 
 **起始版本：** 20
 
@@ -214,7 +214,7 @@ SCAN_ERROR_SERVER_FAILURE = 13100003
 SCAN_ERROR_UNSUPPORTED = 13100004
 ```
 
-不支持的操作。
+不支持的操作，请检查当前操作是否被扫描仪支持。
 
 **起始版本：** 20
 

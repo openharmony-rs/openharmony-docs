@@ -4,7 +4,7 @@
 interface ManualExposure extends ManualExposureQuery
 ```
 
-ManualExposure继承自[ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md)。提供了获取和设置曝光时长的方法。
+提供了获取和设置曝光时长的方法。
 
 **继承/实现关系：** ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md)
 

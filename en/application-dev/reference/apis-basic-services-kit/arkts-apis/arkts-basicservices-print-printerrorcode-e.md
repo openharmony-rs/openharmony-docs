@@ -18,7 +18,7 @@ Enumerates the print error codes.
 E_PRINT_EDM_POLICY_RESTRICTED = 13100015
 ```
 
-The print operation is restricted by EDM policy.
+The print operation is restricted by the EDM policy.
 
 **Since:** 26.0.1
 
@@ -34,7 +34,7 @@ The print operation is restricted by EDM policy.
 E_PRINT_FILE_IO = 13100007
 ```
 
-Incorrect file input/output.
+File input/output error. Check whether the file path, file status, and operation are correct.
 
 **Since:** 14
 
@@ -48,7 +48,7 @@ Incorrect file input/output.
 E_PRINT_GENERIC_FAILURE = 13100001
 ```
 
-Printing failure.
+Generic printing failure. Check the running status of the print service and try again.
 
 **Since:** 14
 
@@ -62,7 +62,7 @@ Printing failure.
 E_PRINT_INVALID_EXTENSION = 13100004
 ```
 
-Invalid printer extension.
+Invalid print extension. Check whether the extension capability is correctly implemented.
 
 **Since:** 14
 
@@ -76,7 +76,7 @@ Invalid printer extension.
 E_PRINT_INVALID_PARAMETER = 401
 ```
 
-Invalid parameters.
+Invalid parameter. Check the parameter type and value range.
 
 **Since:** 14
 
@@ -90,7 +90,7 @@ Invalid parameters.
 E_PRINT_INVALID_PRINT_JOB = 13100006
 ```
 
-Invalid print job.
+Invalid print job. Check whether the job ID and status are correct.
 
 **Since:** 14
 
@@ -104,7 +104,7 @@ Invalid print job.
 E_PRINT_INVALID_PRINTER = 13100005
 ```
 
-Invalid printer.
+Invalid printer. Check whether the printer ID and printer information are correct and try again.
 
 **Since:** 14
 
@@ -118,7 +118,7 @@ Invalid printer.
 E_PRINT_NO_PERMISSION = 201
 ```
 
-No permission.
+No permission. Request the required permission based on the permission requirements of the corresponding API and declare the permission in the configuration file.
 
 **Since:** 14
 
@@ -146,7 +146,7 @@ No error.
 E_PRINT_RPC_FAILURE = 13100002
 ```
 
-RPC failure.
+RPC failure. Check the RPC communication status and try again.
 
 **Since:** 14
 
@@ -160,7 +160,7 @@ RPC failure.
 E_PRINT_SERVER_FAILURE = 13100003
 ```
 
-Print service failure.
+Print service failure. Check whether the print service is running properly and try again.
 
 **Since:** 14
 
@@ -174,7 +174,7 @@ Print service failure.
 E_PRINT_SMB_CONNECTION_FAILURE = 13100013
 ```
 
-SMB Connection Failure (A network error occurs, the host is unreachable, or the port is blocked.)
+The SMB-based shared printer fails to be connected (due to a network error, unreachable host, or blocked port).
 
 **Since:** 24
 
@@ -190,7 +190,7 @@ SMB Connection Failure (A network error occurs, the host is unreachable, or the 
 E_PRINT_SMB_INVALID_CREDENTIALS = 13100014
 ```
 
-The login account or password is invalid.
+The SMB-based shared printer account or password is incorrect.
 
 **Since:** 24
 
@@ -206,7 +206,7 @@ The login account or password is invalid.
 E_PRINT_SMB_LOGIN_LOCKOUT = 13100012
 ```
 
-The SMB account is locked due to multiple failed login attempts.
+The SMB-based shared printer account is locked due to multiple failed login attempts. Try again after the account is unlocked, or contact the administrator.
 
 **Since:** 24
 

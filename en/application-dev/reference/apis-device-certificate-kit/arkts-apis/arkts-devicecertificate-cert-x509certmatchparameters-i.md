@@ -60,7 +60,7 @@ Certificate policy.
 extendedKeyUsage?: Array<string>
 ```
 
-Extended key usage.
+Usage of the extended key.
 
 **Type:** Array&lt;string&gt;
 
@@ -132,7 +132,7 @@ Whether to match all SANs of the certificate. **true**: yes; **false**: no.
 minPathLenConstraint?: number
 ```
 
-Minimum length of the certification path (chain of trust) that can be built from the certificate to a trusted root CA.
+Path length of the CA certificate.
 
 **Type:** number
 
@@ -150,7 +150,7 @@ Minimum length of the certification path (chain of trust) that can be built from
 nameConstraints?: Uint8Array
 ```
 
-Constraints on the subject names that can be included in certificates.
+Specifies the name constraint entry to be matched against the type and value of any name constraint entry in the certificate's nameConstraints extension.
 
 **Type:** Uint8Array
 
@@ -168,7 +168,7 @@ Constraints on the subject names that can be included in certificates.
 privateKey?: string | Uint8Array
 ```
 
-Specifies the certificate private key. string indicates a private key in PEM format, and Uint8Array indicates a private key in DER format.
+Private key of the certificate. The value can be a string (indicating a PEM-encoded private key) or a Uint8Array (indicating a DER-encoded private key).
 
 **Type:** string &#124; Uint8Array
 
@@ -278,7 +278,7 @@ Certificate subject name, in DER format.
 subjectAlternativeNames?: Array<GeneralName>
 ```
 
-Subject Alternative Names (SANs) of the certificate.
+Certificate subject alternative name (SAN).
 
 **Type:** Array&lt;[GeneralName](arkts-devicecertificate-cert-generalname-i.md)&gt;
 
@@ -296,7 +296,7 @@ Subject Alternative Names (SANs) of the certificate.
 subjectKeyIdentifier?: Uint8Array
 ```
 
-Identifier of the public key of the certificate's subject.
+Public key identifier (Subject Key Identifier extension) of the certificate subject.
 
 **Type:** Uint8Array
 
@@ -314,7 +314,7 @@ Identifier of the public key of the certificate's subject.
 validDate?: string
 ```
 
-Certificate validity period.
+Certificate validity period, for example, **20231121074700Z**.
 
 **Type:** string
 

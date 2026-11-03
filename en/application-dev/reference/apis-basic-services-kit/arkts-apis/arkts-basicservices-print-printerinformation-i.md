@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 alias?: string
 ```
 
-Printer alias.
+Printer alias. If no value is passed, the default value is an empty string.
 
 **Type:** string
 
@@ -56,7 +56,7 @@ Printer capabilities.
 description?: string
 ```
 
-Printer description.
+Printer description. If no value is passed, the default value is an empty string.
 
 **Type:** string
 
@@ -72,7 +72,7 @@ Printer description.
 options?: string
 ```
 
-Printer details.
+Printer details. If no value is passed, the default value is an empty string.
 
 **Type:** string
 
@@ -120,7 +120,7 @@ Printer ID.
 printerMake?: string
 ```
 
-Printer model.
+Printer model. If no value is passed, the default value is an empty string.
 
 **Type:** string
 
@@ -168,7 +168,7 @@ Printer state.
 selectedDriver?: PpdInfo
 ```
 
-Information about the selected driver when adding the printer.
+Information about the driver selected when a printer is added.
 
 **Type:** [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)
 
@@ -186,7 +186,7 @@ Information about the selected driver when adding the printer.
 selectedProtocol?: string
 ```
 
-Protocol used when adding the printer.
+Protocol used when a printer is added. If no value is passed, the default value is an empty string.
 
 **Type:** string
 
@@ -204,7 +204,7 @@ Protocol used when adding the printer.
 uri?: string
 ```
 
-Printer URI.
+Printer URI. If no value is passed, the default value is an empty string.
 
 **Type:** string
 

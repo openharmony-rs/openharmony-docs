@@ -4,8 +4,6 @@
 interface Macro extends MacroQuery
 ```
 
-Macro继承自[MacroQuery](arkts-camera-camera-macroquery-i.md)。
-
 提供使能微距能力的接口。
 
 **继承/实现关系：** Macro extends [MacroQuery](arkts-camera-camera-macroquery-i.md)

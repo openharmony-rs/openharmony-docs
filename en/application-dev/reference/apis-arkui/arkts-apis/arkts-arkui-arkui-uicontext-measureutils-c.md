@@ -26,10 +26,7 @@ Provides APIs for measuring text metrics, such as text height and width.
 ## Modules to Import
 
 ```TypeScript
-import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
-import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
-import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
-import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler, GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback, SwiperContentInfo, SwiperItemInfo, BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
 ## getParagraphs
@@ -53,13 +50,13 @@ Converts a styled string into an array of corresponding [Paragraph](../../apis-a
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | styledString | [StyledString](arkts-arkui-styledstring-c.md) | Yes | Styled string to be converted. |
-| options | [TextLayoutOptions](arkts-arkui-textlayoutoptions-i.md) | No | Text layout options. |
+| options | [TextLayoutOptions](arkts-arkui-textlayoutoptions-i.md) | No | Text layout options. If omitted, the default layout configuration is used. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[Paragraph](arkts-arkui-paragraph-t.md)&gt; | Array of [Paragraph](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-paragraph-c.md) objects. |
+| Array&lt;[Paragraph](arkts-arkui-paragraph-t.md)&gt; | Array of [Paragraph](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-paragraph-c.md) objects obtained after conversion based on the text layout options, used for subsequent text layout calculation. |
 
 **Examples**
 
@@ -275,10 +272,8 @@ measureText(options: MeasureOptions): number
 Measures the single-line display width of the specified text. For multi-line text (separated by newline characters **\n**), this API returns the width of the longest line.
 
 > **NOTE:** 
-> 
-> **measureText** always measures single-line text width. Layout constraints in **options** (**constraintWidth**,
-> **maxLines**, and more) do not affect results. For layout-constrained width measurement, use
-> [measureTextSize](#measuretextsize).
+> - When calling this API, avoid simultaneously using [ApplicationContext.setFontSizeScale](../../apis-ability-kit/arkts-apis/arkts-ability-applicationcontext-c.md#setfontsizescale)to set the app font size scale. To ensure correct timing, you are advised to listen for font scale changes on your own to guarantee the accuracy of measurement results.
+> - The calculation result of the measureText API is always the width of a single-line text. Layout constraints configured in the input parameter **options** (such as **constraintWidth** and **maxLines**) do not affect the result of **measureText**. If you need to calculate the width under layout constraints, use the [measureTextSize](#measuretextsize) method.
 
 **Since:** 12
 
@@ -294,13 +289,13 @@ Measures the single-line display width of the specified text. For multi-line tex
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [MeasureOptions](arkts-arkui-measure-measureoptions-i.md) | Yes | Options of the target text. |
+| options | [MeasureOptions](arkts-arkui-measure-measureoptions-i.md) | Yes | Text measurement configuration options, containing properties such as text content (**textContent**) and font size (**fontSize**). Layout constraint properties such as **constraintWidth** and **maxLines** do not affect the calculation result of **measureText**. To calculate the width under layout constraints, use the **measureTextSize** method. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| number | Text width. <br>**NOTE:** <br>Floating-point results are rounded up. <br>Unit: px. |
+| number | Text width. <br>**Note:** <br>Floating-point numbers are rounded up. <br>Unit: px <br>When a parameter is abnormal or the internal calculation fails, undefined is returned. |
 
 **Examples**
 
@@ -337,7 +332,7 @@ struct Index {
 measureTextSize(options: MeasureOptions): SizeOptions
 ```
 
-Measures the width and height of the given single-line text.
+Calculates the width and height of the specified text.
 
 > **NOTE:** 
 > 
@@ -359,10 +354,10 @@ Measures the width and height of the given single-line text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [MeasureOptions](arkts-arkui-measure-measureoptions-i.md) | Yes | Options of the target text. |
+| options | [MeasureOptions](arkts-arkui-measure-measureoptions-i.md) | Yes | Text measurement configuration options, including attributes such as text content (**textContent**), font size (**fontSize**), constraint width (**constraintWidth**), and maximum lines (**maxLines**). This parameter is used to configure the measurement parameters of the text to be calculated. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SizeOptions](arkts-arkui-sizeoptions-i.md) | Width and height of the text. <br>**NOTE:** <br>If **constraintWidth** is not specified, the floating-point value of the text width will be rounded up. <br>The return values for text width and height are both in px. |
+| [SizeOptions](arkts-arkui-sizeoptions-i.md) | Layout width and height occupied by the text. <br>**NOTE:** <br>If **constraintWidth** is not specified, the floating-point value of the text width will be rounded up. <br>The return values for text width and height are both in px. |

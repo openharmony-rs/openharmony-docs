@@ -93,3 +93,58 @@ try {
 ```
 
 <!--DelEnd-->
+
+
+## setValue
+
+```TypeScript
+function setValue(value: number, continuous: boolean, displayId: number): void
+```
+
+Sets the screen brightness. This API is used for continuous brightness adjustment. To achieve a better performance, set **continuous** to **true** when you start, and set it to **false** after you finish.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-brightness-function setValue(value: int, continuous: boolean, displayId: int): void--><!--Device-brightness-function setValue(value: int, continuous: boolean, displayId: int): void-End-->
+
+**System capability:** SystemCapability.PowerManager.DisplayPowerManager
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | number | Yes | Brightness value. <br>Value range: [0, 255]. |
+| continuous | boolean | Yes | Whether the brightness adjustment is continuous. The value **true** indicates that. <br>the brightness adjustment is continuous; **false** indicates the opposite. <br>Default value: false. |
+| displayId | number | Yes | ID of the display. <br>Value range: [0,10000]. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [4700101](../errorcode-brightness.md#4700101-service-connection-failure) | Failed to connect to the service. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+try {
+    brightness.setValue(128);
+} catch(err) {
+    console.error('set brightness failed, err: ' + err);
+}
+```
+
+```TypeScript
+try {
+    brightness.setValue(128, true);
+} catch(err) {
+    console.error('set brightness failed, err: ' + err);
+}
+```
+
+<!--DelEnd-->

@@ -6,6 +6,10 @@ declare type StyledStringMarshallingValue = UserDataSpan
 
 属性字符串自定义序列化对象类型，需要开发者定义序列化和反序列化的方式。
 
+|类型|说明|  
+| ------ | ---------- |  
+|[UserDataSpan](arkts-arkui-userdataspan-c.md)|UserDataSpan自定义数据跨度|
+
 **类型：** [UserDataSpan](arkts-arkui-userdataspan-c.md)
 
 **起始版本：** 19

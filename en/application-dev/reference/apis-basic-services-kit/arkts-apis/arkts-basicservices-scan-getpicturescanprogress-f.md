@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function getPictureScanProgress(scannerId: string): Promise<PictureScanProgress>
 ```
 
-Obtains the progress of scanning a picture. This API uses a promise to return the result.
+Obtains the progress of scanning a picture. This API uses a promise to return the result. This method can be called only after scanning starts.
 
 **Since:** 20
 

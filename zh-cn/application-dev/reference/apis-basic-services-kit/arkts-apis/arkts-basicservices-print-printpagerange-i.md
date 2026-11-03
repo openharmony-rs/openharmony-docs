@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 endPage?: number
 ```
 
-表示结束页。默认值为待打印文件的最大页数。
+表示结束页。取值应为正整数，默认值为待打印文件的最大页数。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ pages?: Array<number>
 startPage?: number
 ```
 
-表示起始页。默认值为1。
+表示起始页。取值应为正整数，默认值为1。
 
 **类型：** number
 

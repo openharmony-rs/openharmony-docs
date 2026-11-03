@@ -22,6 +22,10 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | --- | --- |
 | [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md#getinputmethodability-1) | Obtains an [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md) instance for the input method. This API can be called only by an input method. <br> <br>The input method can use the obtained instance to subscribe to a soft keyboard display/hide request event, create/ destroy an input method panel, and the like. |
 | [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md#getkeyboarddelegate-1) | Obtains a [KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md) instance for the input method. <br> <br>The input method can use the obtained instance to subscribe to a physical keyboard event, text selection change event, and more. |
+| [getProxyInputMethodAbility](arkts-ime-inputmethodengine-getproxyinputmethodability-f.md#getproxyinputmethodability-1) | Obtains a [ProxyInputMethodAbility](arkts-ime-inputmethodengine-proxyinputmethodability-i.md) instance. The caller must not be an input method extension; <br> <br>The caller as the proxy input method can use the obtained instance to subscribe to a input start event, and more. |
+| [getProxyKeyboardDelegate](arkts-ime-inputmethodengine-getproxykeyboarddelegate-f.md#getproxykeyboarddelegate-1) | Obtains a [ProxyKeyboardDelegate](arkts-ime-inputmethodengine-proxykeyboarddelegate-i.md) instance. The caller must not be an input method extension; <br> <br>The caller as the proxy input method can use the instance to subscribe to a physical keyboard event, text selection change event, and more. |
+| [registerInAppProxyIme](arkts-ime-inputmethodengine-registerinappproxyime-f.md#registerinappproxyime-1) | Registers a proxy input method. The proxy input method is activated when an edit box in the same process gains focus, triggers input method binding, and matches the options specified in **RegisterOptions**. |
+| [unregisterInAppProxyIme](arkts-ime-inputmethodengine-unregisterinappproxyime-f.md#unregisterinappproxyime-1) | Unregisters the proxy input method registered by [registerInAppProxyIme](arkts-ime-inputmethodengine-registerinappproxyime-f.md). This API is idempotent: it returns success even if no proxy is registered. |
 | [createKeyboardDelegate](arkts-ime-inputmethodengine-createkeyboarddelegate-f.md#createkeyboarddelegate-1) | Obtains a [KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md) instance for the input method. The input method can use the obtained instance to subscribe to a physical keyboard event, text selection change event, and more. |
 | [getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md#getinputmethodengine-1) | Obtains an [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md) instance for the input method. <br> <br>The input method can use the obtained instance to subscribe to a soft keyboard display/hide request event. |
 
@@ -45,7 +49,12 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [Panel](arkts-ime-inputmethodengine-panel-i.md) | In the following API examples, you must first use [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1) to obtain a **Panel** instance, and then call the APIs using the obtained instance. |
 | [PanelInfo](arkts-ime-inputmethodengine-panelinfo-i.md) | Describes the attributes of the input method panel. |
 | [PanelRect](arkts-ime-inputmethodengine-panelrect-i.md) | Represents the size of the input method panel. |
+| [ProxyInputMethodAbility](arkts-ime-inputmethodengine-proxyinputmethodability-i.md) | In the following API examples, you must first use [getProxyInputMethodAbility](arkts-ime-inputmethodengine-getproxyinputmethodability-f.md) to obtain a **ProxyInputMethodAbility** instance, and then call the APIs using the obtained instance. |
+| [ProxyKeyboardController](arkts-ime-inputmethodengine-proxykeyboardcontroller-i.md) | You must first use [onInputStart](arkts-ime-inputmethodengine-proxyinputmethodability-i.md#oninputstart) to obtain a **ProxyKeyboardController** instance, and then use this instance to call the following APIs. |
+| [ProxyKeyboardDelegate](arkts-ime-inputmethodengine-proxykeyboarddelegate-i.md) | In the following API examples, you must first use [getProxyKeyboardDelegate](arkts-ime-inputmethodengine-getproxykeyboarddelegate-f.md) to obtain a **ProxyKeyboardDelegate** instance, and then call the APIs using the obtained instance. |
+| [ProxyTextInputClient](arkts-ime-inputmethodengine-proxytextinputclient-i.md) | In the following API examples, you must first use [onInputStart](arkts-ime-inputmethodengine-proxyinputmethodability-i.md#oninputstart) to obtain a **ProxyTextInputClient** instance, and then call the APIs using the obtained instance. |
 | [Range](arkts-ime-inputmethodengine-range-i.md) | Describes the range of the selected text. |
+| [RegisterOptions](arkts-ime-inputmethodengine-registeroptions-i.md) | Defines the options for registering a proxy input method. |
 | [RichTextSpan](arkts-ime-inputmethodengine-richtextspan-i.md) | Defines a span in the rich text. |
 | [SystemPanelInsets](arkts-ime-inputmethodengine-systempanelinsets-i.md) | Defines the offset area between the input method soft keyboard and the system panel. |
 | [WindowInfo](arkts-ime-inputmethodengine-windowinfo-i.md) | Represents window information. |
@@ -67,6 +76,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | Name | Description |
 | --- | --- |
 | [CommandDataType](arkts-ime-inputmethodengine-commanddatatype-t.md) | Defines the private data type, which varies depending on its function. |
+| [ProxyInputStartCallback](arkts-ime-inputmethodengine-proxyinputstartcallback-t.md) | The callback of 'inputStart' event for the proxy input method provider. |
 | [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md) | Callback triggered when the size of the input method panel changes. |
 
 <!--Del-->
@@ -114,6 +124,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [ENTER_KEY_TYPE_GO](arkts-ime-inputmethodengine-con.md#enter_key_type_go) | Key that executes a command or navigates to a specific location. |
 | [ENTER_KEY_TYPE_NEWLINE](arkts-ime-inputmethodengine-con.md#enter_key_type_newline) | Key that inserts a new line. |
 | [ENTER_KEY_TYPE_NEXT](arkts-ime-inputmethodengine-con.md#enter_key_type_next) | Key that moves the focus to the next item in a sequence. |
+| [ENTER_KEY_TYPE_NONE](arkts-ime-inputmethodengine-con.md#enter_key_type_none) | The Enter key has no specific behavior. The value is fixed at 1. The value should be an integer. |
 | [ENTER_KEY_TYPE_PREVIOUS](arkts-ime-inputmethodengine-con.md#enter_key_type_previous) | Key that moves the focus to the previous item in a sequence. |
 | [ENTER_KEY_TYPE_SEARCH](arkts-ime-inputmethodengine-con.md#enter_key_type_search) | Key that initiates a search operation. |
 | [ENTER_KEY_TYPE_SEND](arkts-ime-inputmethodengine-con.md#enter_key_type_send) | Key that sends the text to its target. |
@@ -129,6 +140,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [OPTION_NONE](arkts-ime-inputmethodengine-con.md#option_none) | No input attribute is specified. |
 | [PATTERN_DATETIME](arkts-ime-inputmethodengine-con.md#pattern_datetime) | Date edit box. |
 | [PATTERN_EMAIL](arkts-ime-inputmethodengine-con.md#pattern_email) | Email edit box. |
+| [PATTERN_MULTILINE](arkts-ime-inputmethodengine-con.md#pattern_multiline) | The multi-line edit Box. The value is fixed at 1. The value should be an integer. |
 | [PATTERN_NEW_PASSWORD](arkts-ime-inputmethodengine-con.md#pattern_new_password) | New password edit box. |
 | [PATTERN_NULL](arkts-ime-inputmethodengine-con.md#pattern_null) | Any type of edit box. |
 | [PATTERN_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_number) | Number edit box. |

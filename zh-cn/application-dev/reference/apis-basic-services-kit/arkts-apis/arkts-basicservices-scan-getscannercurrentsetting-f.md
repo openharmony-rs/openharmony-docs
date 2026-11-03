@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise<ScannerOptionValue>
 ```
 
-获取当前扫描仪设置。使用Promise异步回调。
+获取当前扫描仪设置。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
 
 **起始版本：** 20
 
@@ -26,14 +26,14 @@ function getScannerCurrentSetting(scannerId: string, optionIndex: number): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要获取的选项的索引。 |
+| scannerId | string | 是 | 要获取当前设置的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| optionIndex | number | 是 | 要获取的选项的索引，可通过getScannerParameter()获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ScannerOptionValue](arkts-basicservices-scan-scanneroptionvalue-i.md)&gt; | Promise对象，返回扫描仪选项值。 |
+| Promise&lt;[ScannerOptionValue](arkts-basicservices-scan-scanneroptionvalue-i.md)&gt; | Promise对象，获取当前扫描仪设置成功时resolve并返回扫描仪选项值，失败时reject。 |
 
 **错误码：**
 

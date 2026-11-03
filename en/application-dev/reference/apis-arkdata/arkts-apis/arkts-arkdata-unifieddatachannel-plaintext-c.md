@@ -4,7 +4,7 @@
 class PlainText extends Text
 ```
 
-Represents the plain text data. It is a child class of [Text](arkts-arkdata-unifieddatachannel-text-c.md).
+A subclass of [Text](arkts-arkdata-unifieddatachannel-text-c.md) that describes plain text data.
 
 **Inheritance/Implementation:** PlainText extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)
 
@@ -26,7 +26,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 abstract?: string
 ```
 
-Indicates the abstract of text
+Plain text abstract. This is an optional field, and the default value is an empty string.
 
 **Type:** string
 
@@ -46,7 +46,7 @@ Indicates the abstract of text
 get textContent(): string
 ```
 
-Indicates the content of text
+Plain text content.
 
 **Type:** string
 
@@ -64,7 +64,7 @@ Indicates the content of text
 set textContent(value: string)
 ```
 
-Indicates the content of text
+Plain text content.
 
 **Type:** string
 

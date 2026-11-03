@@ -4,7 +4,7 @@
 interface PbesParams
 ```
 
-Represents PBES algorithm parameters. Currently, only PBES2 is supported.
+Enumerates PBES algorithm parameters. Currently, only PBES2 is supported.
 
 **Since:** 21
 
@@ -44,7 +44,7 @@ PBES algorithm type. The default value is **AES_256_CBC**.
 iterations?: number
 ```
 
-Number of iterations. The default value is **2048**. The value must be a positive integer.
+Number of iterations. The default value is **2048**.
 
 **Type:** number
 
@@ -64,7 +64,7 @@ Number of iterations. The default value is **2048**. The value must be a positiv
 saltLen?: number
 ```
 
-Length of the salt value. The default value is **16**, and the minimum value is **8**. The value must be an integer greater than or equal to 8.
+Salt length. The default value is **16**, and the minimum value is **8**.
 
 **Type:** number
 

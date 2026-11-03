@@ -4,7 +4,7 @@
 class UnifiedData
 ```
 
-Provides APIs for encapsulating a set of data records.
+Represents the Unified Data Object of UDMF, which provides methods to encapsulate a group of data records.
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { unifiedDataChannel } from '@kit.ArkData';
 addRecord(record: UnifiedRecord): void
 ```
 
-Adds a data record to this **UnifiedRecord** object.
+Adds a data record to the current unified data object. After the call is successful, the specified data record is added to the current unified data object.
 
 **Since:** 10
 
@@ -40,13 +40,7 @@ Adds a data record to this **UnifiedRecord** object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| record | [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) | Yes | Data record to add. It is a **UnifiedRecord** child class object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| record | [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) | Yes | Data record to add to the unified data object. The record is a UnifiedRecord object or an object of its subclass. |
 
 **Examples**
 
@@ -76,7 +70,7 @@ unifiedData.addRecord(link);
 constructor(record: UnifiedRecord)
 ```
 
-Defines a constructor used to create a **UnifiedData** object with a data record.
+Creates a unified data object that contains a data record. After the call is successful, a UnifiedData object containing the specified data record is returned.
 
 **Since:** 10
 
@@ -92,13 +86,7 @@ Defines a constructor used to create a **UnifiedData** object with a data record
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| record | [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) | Yes | Data record in the **UnifiedData** object. It is a **UnifiedRecord** object or its child class object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| record | [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md) | Yes | Data record to add to the unified data object. The record is a UnifiedRecord object or an object of its subclass. |
 
 **Examples**
 
@@ -119,7 +107,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 constructor()
 ```
 
-Defines a constructor used to create a **UnifiedData** object.
+Creates a unified data object.
 
 **Since:** 12
 
@@ -143,7 +131,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData();
 getRecords(): Array<UnifiedRecord>
 ```
 
-Obtains all data records from this **UnifiedData** object. The data obtained is of the **UnifiedRecord** type. Before using the data, you need to use [getType](#gettypes) to obtain the data type and convert the data type to a child class.
+Obtains all data records in the current unified data object. The data obtained through this API is of the UnifiedRecord type. You need to obtain the data type through [getType](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#gettype) and then convert it to a subclass before use.
 
 **Since:** 10
 
@@ -159,7 +147,7 @@ Obtains all data records from this **UnifiedData** object. The data obtained is 
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)&gt; | Records in the **UnifiedData** object obtained. |
+| Array&lt;[UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)&gt; | Array of all data records contained in the current unified data object. Each record can be converted to a specific subclass after its type is obtained through getType, for reading and processing various types of data in the unified data. |
 
 **Examples**
 
@@ -202,7 +190,7 @@ for (let i = 0; i < records.length; i++) {
 getTypes(): Array<string>
 ```
 
-Obtains the types of all data records in this **UnifiedData** object.
+Obtains the types of all data records in the current unified data object.
 
 **Since:** 12
 
@@ -218,7 +206,7 @@ Obtains the types of all data records in this **UnifiedData** object.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | Array of the [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md) types obtained. |
+| Array&lt;string&gt; | Array of [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md), which represents the set of data types of the current records. The element values include 'general.plain-text','general.hyperlink', 'openharmony.form', and so on. |
 
 **Examples**
 
@@ -250,9 +238,9 @@ let types = unifiedData.getTypes();
 hasType(type: string): boolean
 ```
 
-Checks whether this **UnifiedData** object contains the specified data type, including the data types added by using the [addEntry](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#addentry) function.
+Checks whether the current unified data object contains the specified data type. The check scope includes the data types added by using [addEntry](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#addentry) function.
 
-For file types, if the type set of **UnifiedData** includes **general.jpeg**, calling the **hasType** API to check for the **general.image** type will return **true**. This is because the **general.jpeg** type belongs to the **general.image** type.
+For file types, if the type set of the UnifiedData object contains "general.jpeg", the result is true when hasType is called to check whether the type "general.image" is included (the type "general.jpeg" belongs to the type "general.image").
 
 **Since:** 12
 
@@ -268,19 +256,13 @@ For file types, if the type set of **UnifiedData** includes **general.jpeg**, ca
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | string | Yes | Data type to check. For details, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md). |
+| type | string | Yes | Data type to query. For details, see [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if the specified data type exists; returns **false** otherwise. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| boolean | Returns true if the specified data type exists; returns false otherwise. |
 
 **Examples**
 
@@ -313,7 +295,7 @@ let hasLink = unifiedData.hasType(uniformTypeDescriptor.UniformDataType.HYPERLIN
 get properties(): UnifiedDataProperties
 ```
 
-UnifiedData properties.
+Properties of all data records in the current unified data object, including the timestamp, tag, paste scope, and some additional data.
 
 **Type:** [UnifiedDataProperties](arkts-arkdata-unifieddatachannel-unifieddataproperties-c.md)
 
@@ -331,7 +313,7 @@ UnifiedData properties.
 set properties(value: UnifiedDataProperties)
 ```
 
-UnifiedData properties.
+Properties of all data records in the current unified data object, including the timestamp, tag, paste scope, and some additional data.
 
 **Type:** [UnifiedDataProperties](arkts-arkdata-unifieddatachannel-unifieddataproperties-c.md)
 

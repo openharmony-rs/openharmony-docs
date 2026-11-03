@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function getAddedScanners(): Promise<ScannerDevice[]>
 ```
 
-获取已添加的扫描仪（系统API）。使用Promise异步回调。
+获取已添加的扫描仪（系统接口）。适用于需要查询当前可用扫描仪列表以供用户选择设备的场景。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -28,7 +28,7 @@ function getAddedScanners(): Promise<ScannerDevice[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)[]&gt; | Promise used to return the array of added scanners. |
+| Promise&lt;[ScannerDevice](arkts-basicservices-scan-scannerdevice-i.md)[]&gt; | Promise对象。resolve返回已添加的扫描仪设备数组，reject表示获取扫描仪设备失败。 |
 
 **错误码：**
 

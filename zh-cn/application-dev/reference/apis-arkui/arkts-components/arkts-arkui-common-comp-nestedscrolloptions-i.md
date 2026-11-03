@@ -6,7 +6,7 @@ declare interface NestedScrollOptions
 
 nestedScroll属性参数对象。
 
-**起始版本：** 23
+**起始版本：** 10
 
 <!--Device-unnamed-declare interface NestedScrollOptions--><!--Device-unnamed-declare interface NestedScrollOptions-End-->
 
@@ -22,7 +22,7 @@ scrollBackward: NestedScrollMode
 
 **类型：** [NestedScrollMode](../arkts-apis/arkts-arkui-nestedscrollmode-e.md)
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +42,7 @@ scrollForward: NestedScrollMode
 
 **类型：** [NestedScrollMode](../arkts-apis/arkts-arkui-nestedscrollmode-e.md)
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

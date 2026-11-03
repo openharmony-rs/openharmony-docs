@@ -35,12 +35,6 @@ function getUniformDataTypeByFilenameExtension(filenameExtension: string, belong
 | --- | --- |
 | string | 返回与给定文件后缀名以及归属类型ID（如果设置了belongsTo参数）匹配的标准化数据类型ID。如果要查询的标准化数据类型不存在，则返回根据入参按指定规则生成的动态类型（动态类型是系统动态生成的类型标识，以'flex.'为前缀，用于表示未预定义的数据类型）。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
-
 **示例**
 
 ```TypeScript

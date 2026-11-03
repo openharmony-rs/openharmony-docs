@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function connectPrinterByIpAndPpd(printerIp: string, protocol: string, ppdName: string): Promise<void>
 ```
 
-通过打印机IP和ppd连接打印机。
+通过打印机IP和PPD连接打印机，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -30,15 +30,15 @@ function connectPrinterByIpAndPpd(printerIp: string, protocol: string, ppdName: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerIp | string | 是 | 打印机IP。 |
-| protocol | string | 是 | 协议类型。 |
-| ppdName | string | 是 | ppd名称。 |
+| printerIp | string | 是 | 待连接的打印机IP。 |
+| protocol | string | 是 | 待连接的打印机的协议类型。 |
+| ppdName | string | 是 | 待连接的打印机的PPD名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

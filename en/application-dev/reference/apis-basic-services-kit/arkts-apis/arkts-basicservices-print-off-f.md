@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function off(type: 'printerChange', callback?: PrinterChangeCallback): void
 ```
 
-Unregisters the listener for printer state change events. This API uses a callback to return the result.
+Unregisters the callback for printer change events.
 
 **Since:** 18
 
@@ -27,7 +27,7 @@ Unregisters the listener for printer state change events. This API uses a callba
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'printerChange' | Yes | Printer change event. |
-| callback | [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md) | No | Callback to unregister. |
+| callback | [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md) | No | Callback for printer change events to be unregistered. If this parameter is not passed, all registered callbacks of the caller will be unregistered. |
 
 **Error codes:**
 

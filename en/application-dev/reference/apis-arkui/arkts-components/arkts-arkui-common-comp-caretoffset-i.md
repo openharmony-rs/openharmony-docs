@@ -18,7 +18,7 @@ Describes the position of the caret relative to the text box.
 index: number
 ```
 
-Index of the caret position.
+Index of the position where the caret is located. The value starts from 0 and ranges from 0 to the text length.
 
 **Type:** number
 

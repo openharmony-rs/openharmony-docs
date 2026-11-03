@@ -4,7 +4,13 @@
 export interface AgentExtensionConnectCallback
 ```
 
-Agent extension connect callback.
+Developers can use the callback APIs provided by AgentExtensionConnectCallback to receive data and security authentication requests sent by the server, and to detect the disconnection of the AgentExtensionAbility server.
+
+> **NOTE:** 
+> 
+> - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module are system APIs.
+> - The APIs of this module can be used only in the stage model.
 
 **Since:** 24
 
@@ -20,7 +26,7 @@ Agent extension connect callback.
 onAuth(handshakeData: string): void
 ```
 
-Called back when authentication is received.
+Receives the security authentication callback from the AgentExtensionAbility server.
 
 **Since:** 24
 
@@ -36,7 +42,7 @@ Called back when authentication is received.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| handshakeData | string | Yes | Indicates the received handshake data. |
+| handshakeData | string | Yes | Security authentication data received from the AgentExtensionAbility server side. |
 
 ## onData
 
@@ -44,7 +50,7 @@ Called back when authentication is received.
 onData(data: string): void
 ```
 
-Called back when data is received.
+Receives data from the AgentExtensionAbility server.
 
 **Since:** 24
 
@@ -60,7 +66,7 @@ Called back when data is received.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | string | Yes | Indicates the received data. |
+| data | string | Yes | Data received from the server-side AgentExtensionAbility. |
 
 ## onDisconnect
 
@@ -68,7 +74,7 @@ Called back when data is received.
 onDisconnect(): void
 ```
 
-The callback interface was disconnected successfully.
+Called when the connection to the AgentExtensionAbility server is disconnected.
 
 **Since:** 24
 

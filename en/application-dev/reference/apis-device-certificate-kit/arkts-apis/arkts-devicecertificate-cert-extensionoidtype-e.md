@@ -4,7 +4,7 @@
 enum ExtensionOidType
 ```
 
-Enumerates the OID types of the certificate extensions that can be obtained.
+Enumerates certificate extension OID types.
 
 **Since:** 10
 
@@ -18,7 +18,7 @@ Enumerates the OID types of the certificate extensions that can be obtained.
 EXTENSION_OID_TYPE_ALL = 0
 ```
 
-All object identifiers.
+All OIDs.
 
 **Since:** 10
 
@@ -34,7 +34,7 @@ All object identifiers.
 EXTENSION_OID_TYPE_CRITICAL = 1
 ```
 
-Object identifier whose **critical** is **true**.
+OIDs whose **critical** is **true**.
 
 **Since:** 10
 
@@ -50,7 +50,7 @@ Object identifier whose **critical** is **true**.
 EXTENSION_OID_TYPE_UNCRITICAL = 2
 ```
 
-Object identifier whose **critical** is **false**.
+OID whose **critical** is **false**.
 
 **Since:** 10
 

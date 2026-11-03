@@ -4,7 +4,7 @@
 enum FileConflictOptions
 ```
 
-Enumerates the options for resolving file copy conflicts.
+Enumerates the optional policies for file copy conflicts.
 
 **Since:** 15
 
@@ -18,7 +18,7 @@ Enumerates the options for resolving file copy conflicts.
 OVERWRITE = 0
 ```
 
-Overwrite the file with the same name in the destination directory.
+Overwrites the file when a file with the same name exists in the destination path.
 
 **Since:** 15
 
@@ -36,7 +36,7 @@ Overwrite the file with the same name in the destination directory.
 SKIP = 1
 ```
 
-Skip the file if there is a file with the same name in the destination directory.
+Skips the file when a file with the same name exists in the destination path.
 
 **Since:** 15
 

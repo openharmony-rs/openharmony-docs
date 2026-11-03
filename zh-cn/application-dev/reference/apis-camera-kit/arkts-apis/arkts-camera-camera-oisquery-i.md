@@ -4,7 +4,7 @@
 interface OISQuery
 ```
 
-OIS (Optical Image Stabilization) query interface.
+提供了与光学防抖（OIS）相关的查询能力。
 
 **起始版本：** 24
 
@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 getCurrentCustomOISBias(oisAxis: OISAxes): number
 ```
 
-Gets the current custom bias value for the specified OIS axis.
+获取指定光学防抖轴当前的自定义偏置值。
 
 **起始版本：** 24
 
@@ -40,13 +40,13 @@ Gets the current custom bias value for the specified OIS axis.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | The OIS axis |
+| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | 指定的光学防抖轴。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | The current bias value. |
+| number | 当前的自定义偏置值。 |
 
 **错误码：**
 
@@ -61,7 +61,7 @@ Gets the current custom bias value for the specified OIS axis.
 getCurrentOISMode(): OISMode
 ```
 
-Gets the current OIS mode.
+获取当前的光学防抖模式。
 
 **起始版本：** 24
 
@@ -77,7 +77,7 @@ Gets the current OIS mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| [OISMode](arkts-camera-camera-oismode-e.md) | The current OIS mode. |
+| [OISMode](arkts-camera-camera-oismode-e.md) | 当前的光学防抖模式。 |
 
 **错误码：**
 
@@ -92,7 +92,7 @@ Gets the current OIS mode.
 getSupportedOISBiasRange(oisAxis: OISAxes): Array<number>
 ```
 
-Gets the supported bias range for the specified OIS axis.
+获取指定光学防抖轴支持的偏置范围。
 
 **起始版本：** 24
 
@@ -108,13 +108,13 @@ Gets the supported bias range for the specified OIS axis.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | The OIS axis. |
+| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | 指定的光学防抖轴。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | The bias range. |
+| Array&lt;number&gt; | 支持的偏置范围。 |
 
 **错误码：**
 
@@ -129,7 +129,7 @@ Gets the supported bias range for the specified OIS axis.
 getSupportedOISBiasStep(oisAxis: OISAxes): number
 ```
 
-Gets the bias step for the specified OIS axis.
+获取指定光学防抖轴支持的偏置步长。
 
 **起始版本：** 24
 
@@ -145,13 +145,13 @@ Gets the bias step for the specified OIS axis.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | The OIS axis. |
+| oisAxis | [OISAxes](arkts-camera-camera-oisaxes-e.md) | 是 | 指定的光学防抖轴。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | The bias step value. |
+| number | 支持的偏置步长。 |
 
 **错误码：**
 
@@ -166,7 +166,7 @@ Gets the bias step for the specified OIS axis.
 isOISModeSupported(mode: OISMode): boolean
 ```
 
-Checks if the specified OIS mode is supported.
+检查是否支持指定的光学防抖模式。
 
 **起始版本：** 24
 
@@ -182,13 +182,13 @@ Checks if the specified OIS mode is supported.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [OISMode](arkts-camera-camera-oismode-e.md) | 是 | The OIS mode to check. |
+| mode | [OISMode](arkts-camera-camera-oismode-e.md) | 是 | 指定的光学防抖模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Whether the mode is supported. |
+| boolean | 表示是否支持指定的光学防抖模式。true表示支持，false表示不支持。 |
 
 **错误码：**
 

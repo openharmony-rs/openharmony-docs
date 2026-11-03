@@ -18,7 +18,7 @@ enum ExposureMeteringMode
 CENTER_HIGHLIGHT_WEIGHTED = 3
 ```
 
-Center-weighted and highlight metering mode. This mode focuses on the highlight area near the center of the screen.
+中央重点与高光测光模式。该模式重点关注屏幕中心附近的高光区域。
 
 **起始版本：** 23
 

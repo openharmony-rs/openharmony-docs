@@ -4,7 +4,7 @@
 interface Kdf
 ```
 
-Key derivation function (KDF) interface, defining methods for deriving keys based on key derivation parameters. Before use, you must create a **Kdf** instance by using [createKdf](arkts-cryptoarchitecture-cryptoframework-createkdf-f.md).
+Defines the key derivation function (KDF) API for deriving a key based on key derivation parameters. Before calling this API, you need to construct this instance using [createKdf](arkts-cryptoarchitecture-cryptoframework-createkdf-f.md).
 
 **Since:** 11
 
@@ -43,7 +43,7 @@ Generates a key based on the specified key derivation parameters. This API uses 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | params | [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md) | Yes | Parameters of the key derivation function. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the derived key obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Yes | Callback used to return the key generated. If key derivation is successful, **err** is **undefined** and **data** is the key generated. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -128,7 +128,7 @@ Generates a key based on the specified key derivation parameters. This API uses 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the derived key. |
+| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the key generated. |
 
 **Error codes:**
 
@@ -213,7 +213,7 @@ Generates a key based on the specified key derivation parameters. This API retur
 
 | Type | Description |
 | --- | --- |
-| [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | The derived key. |
+| [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Key derived. |
 
 **Error codes:**
 
@@ -267,7 +267,7 @@ console.info('[Sync]key derivation output = ' + secret.data);
 readonly algName: string
 ```
 
-Indicates the algorithm name of the key derivation function.
+Algorithm of the key derivation function.
 
 **Type:** string
 

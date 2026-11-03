@@ -12,7 +12,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 function createX509Cert(inStream: EncodingBlob, callback: AsyncCallback<X509Cert>): void
 ```
 
-Creates an **X509Cert** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 certificate object. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -27,7 +27,7 @@ Creates an **X509Cert** instance. This API uses an asynchronous callback to retu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Yes | X.509 certificate serialization data. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the **X509Cert** instance created. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Yes | Callback used to return the result. If the X.509 certificate object is successfully created, **err** is **undefined**, and **data** is the **X509Cert** instance obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -85,7 +85,7 @@ cert.createX509Cert(encodingBlob, (error, _x509Cert) => {
 function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>
 ```
 
-Creates an **X509Cert** instance. This API uses a promise to return the result.
+Creates an X.509 certificate object. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -105,7 +105,7 @@ Creates an **X509Cert** instance. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Promise used to return the **X509Cert** instance created. |
+| Promise&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | Promise that returns the **X509Cert** instance created. |
 
 **Error codes:**
 

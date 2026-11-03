@@ -160,6 +160,24 @@ Key that moves the focus to the next item in a sequence.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
+## ENTER_KEY_TYPE_NONE
+
+```TypeScript
+const ENTER_KEY_TYPE_NONE: number
+```
+
+The Enter key has no specific behavior. The value is fixed at 1. The value should be an integer.
+
+**Type:** number
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_NONE: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_NONE: int-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
 ## ENTER_KEY_TYPE_PREVIOUS
 
 ```TypeScript
@@ -397,6 +415,24 @@ Email edit box.
 **Since:** 8
 
 <!--Device-inputMethodEngine-const PATTERN_EMAIL: int--><!--Device-inputMethodEngine-const PATTERN_EMAIL: int-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## PATTERN_MULTILINE
+
+```TypeScript
+const PATTERN_MULTILINE: number
+```
+
+The multi-line edit Box. The value is fixed at 1. The value should be an integer.
+
+**Type:** number
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-inputMethodEngine-const PATTERN_MULTILINE: int--><!--Device-inputMethodEngine-const PATTERN_MULTILINE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

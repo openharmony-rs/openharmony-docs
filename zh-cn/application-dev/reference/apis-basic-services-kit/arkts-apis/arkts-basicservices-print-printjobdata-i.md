@@ -24,7 +24,7 @@ import { print } from '@kit.BasicServicesKit';
 binaryData?: Uint8Array
 ```
 
-表示待打印二进制数据。
+表示待打印二进制数据。当docFlavor设置为BYTES时，需传入此参数。
 
 **类型：** Uint8Array
 
@@ -60,7 +60,7 @@ colorMode: PrintColorMode
 copyNumber: number
 ```
 
-表示文件列表副本数。
+表示文件打印份数。取值应为正整数，默认为1。
 
 **类型：** number
 
@@ -78,7 +78,7 @@ copyNumber: number
 docFlavor: DocFlavor
 ```
 
-表示打印数据来源形式。
+表示打印数据来源形式。当取值为FILE_DESCRIPTOR时，需提供fdList参数；当取值为BYTES时，需提供binaryData参数。
 
 **类型：** [DocFlavor](arkts-basicservices-print-docflavor-e.md)
 
@@ -132,7 +132,7 @@ duplexMode: PrintDuplexMode
 fdList?: number[]
 ```
 
-表示待打印文件fd列表。
+表示待打印文件fd列表。当docFlavor设置为FILE_DESCRIPTOR时，需传入此参数。
 
 **类型：** number[]
 
@@ -168,7 +168,7 @@ isAutoRotate?: boolean
 isBorderless?: boolean
 ```
 
-表示是否无边框打印。true表示无边框打印，false表示有边框打印。默认值为true。
+表示是否无边距打印。true表示无边距打印，false表示有边距打印。默认值为true。
 
 **类型：** boolean
 
@@ -186,7 +186,7 @@ isBorderless?: boolean
 isCollate?: boolean
 ```
 
-表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。
+表示打印顺序方式。true表示逐份打印，false表示逐页打印。默认值为true。
 
 **类型：** boolean
 
@@ -312,7 +312,7 @@ mediaType?: string
 options?: string
 ```
 
-表示以JSON格式字符串化的对象。
+表示以JSON格式字符串化的打印任务附加信息。应包含printerUri、printerName、documentFormat三个字段，不传或格式不合法会导致CUPS任务创建失败。
 
 **类型：** string
 
@@ -375,5 +375,23 @@ printQuality?: PrintQuality
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PrintJobData-printQuality?: PrintQuality--><!--Device-PrintJobData-printQuality?: PrintQuality-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## vendorOptions
+
+```TypeScript
+vendorOptions?: string
+```
+
+表示以JSON格式字符串化的打印机驱动的厂商打印任务属性。
+
+**类型：** string
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-vendorOptions?: string--><!--Device-PrintJobData-vendorOptions?: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

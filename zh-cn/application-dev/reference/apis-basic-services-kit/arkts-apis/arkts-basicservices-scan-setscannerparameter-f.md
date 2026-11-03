@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise<void>
 ```
 
-设置扫描仪参数。使用Promise异步回调。
+设置扫描仪参数。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
 
 **起始版本：** 20
 
@@ -26,15 +26,15 @@ function setScannerParameter(scannerId: string, optionIndex: number, value: Scan
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要设置的选项的索引。 |
-| value | [ScannerOptionValue](arkts-basicservices-scan-scanneroptionvalue-i.md) | 是 | 要设置的值。 |
+| scannerId | string | 是 | 要设置参数的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| optionIndex | number | 是 | 要设置的选项的索引，可通过getScannerParameter()获取。 |
+| value | [ScannerOptionValue](arkts-basicservices-scan-scanneroptionvalue-i.md) | 是 | 要设置的扫描仪选项值，包含值类型（valueType）及对应的数值（numValue）、字符串值（strValue）或布尔值（boolValue）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，设置扫描仪参数成功时resolve，失败时reject。 |
 
 **错误码：**
 

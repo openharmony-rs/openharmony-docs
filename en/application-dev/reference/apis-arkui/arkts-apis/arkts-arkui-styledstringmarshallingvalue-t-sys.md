@@ -6,6 +6,10 @@ declare type StyledStringMarshallingValue = UserDataSpan
 
 Defines a custom marshalling object for styled strings, which you need to define marshalling and unmarshalling methods.
 
+| Type | Description |  
+| ------ | ---------- |  
+| [UserDataSpan](arkts-arkui-userdataspan-c.md) | Custom data span of UserDataSpan. |
+
 **Type:** [UserDataSpan](arkts-arkui-userdataspan-c.md)
 
 **Since:** 19

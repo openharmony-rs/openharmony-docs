@@ -28,7 +28,7 @@ Updates the information of a printer in the system. This API uses a promise to r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerInformation | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | Yes | Printer information to be updated. |
+| printerInformation | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | Yes | Printer information to be updated. Currently, only the **alias** and **options** fields can be updated. |
 
 **Return value:**
 

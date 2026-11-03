@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function authSmbDeviceAsRegisteredUser(host: SharedHost, username: string, password: string): Promise<PrinterInformation[]>
 ```
 
-以注册用户身份对SMB设备进行身份验证，并获取可用打印机。
+以注册用户身份对SMB设备进行身份验证，并获取可用打印机，使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -38,7 +38,7 @@ function authSmbDeviceAsRegisteredUser(host: SharedHost, username: string, passw
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)[]&gt; | Promise that resolves with the list of available printers. |
+| Promise&lt;[PrinterInformation](arkts-basicservices-print-printerinformation-i.md)[]&gt; | Promise对象，返回可用打印机列表。 |
 
 **错误码：**
 

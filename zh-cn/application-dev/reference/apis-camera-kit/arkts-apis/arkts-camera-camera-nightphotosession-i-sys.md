@@ -4,7 +4,7 @@
 interface NightPhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect, Beauty, ColorManagement, ManualExposure
 ```
 
-NightPhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect, ColorManagement, ManualExposure Implements a night photo session, which sets the parameters of the night photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md), [CameraOutput](arkts-camera-camera-cameraoutput-i.md), and [PhotoOutput](arkts-camera-camera-photooutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md). For night photo capture scenarios, you must listen for the [onCaptureEnd](arkts-camera-camera-photooutput-i.md#oncaptureend) event to mark the end of the photo capture session.
+夜间拍照会话类。用于设置夜间拍照模式的参数，并保存运行相机所需的 [CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md) 和[PhotoOutput](arkts-camera-camera-photooutput-i.md) 实例。夜间拍照场景下，必须监听[onCaptureEnd](arkts-camera-camera-photooutput-i.md#oncaptureend)事件，以标记拍照会话结束。
 
 **继承/实现关系：** NightPhotoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd--><!--Del-->, [Beauty](arkts-camera-camera-beauty-i-sys.md)<!--DelEnd-->, [ColorManagement](arkts-camera-camera-colormanagement-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from PortraitSession error events.
+取消订阅人像会话错误事件。
 
 **起始版本：** 11
 
@@ -42,8 +42,8 @@ Unsubscribes from PortraitSession error events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'error' | 是 | 事件类型。取值固定为**'error'**。该事件可在创建会话时监听。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件 **on('error')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 <!--Del-->
 **示例**
@@ -62,7 +62,7 @@ function unregisterSessionError(nightPhotoSession: camera.NightPhotoSession): vo
 off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 ```
 
-Unsubscribes from focus state change events.
+取消订阅对焦状态变化事件。
 
 **起始版本：** 11
 
@@ -76,8 +76,8 @@ Unsubscribes from focus state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'focusStateChange' | 是 | 事件类型。取值固定为**'focusStateChange'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件 **on('focusStateChange')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 <!--Del-->
 **示例**
@@ -96,7 +96,7 @@ function unregisterFocusStateChange(nightPhotoSession: camera.NightPhotoSession)
 off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void
 ```
 
-Unsubscribes from smooth zoom state change events.
+取消订阅平滑变焦状态变化事件。
 
 **起始版本：** 11
 
@@ -110,8 +110,8 @@ Unsubscribes from smooth zoom state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'smoothZoomInfoAvailable' | 是 | 事件类型。取值固定为**'smoothZoomInfoAvailable'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件**on('smoothZoomInfoAvailable')** 中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 <!--Del-->
 **示例**
@@ -130,7 +130,7 @@ function unregisterSmoothZoomInfo(nightPhotoSession: camera.NightPhotoSession): 
 off(type: 'lcdFlashStatus', callback?: AsyncCallback<LcdFlashStatus>): void
 ```
 
-Unsubscribes from LCD flash status change events.
+取消订阅 LCD 闪光灯状态变化事件。
 
 **起始版本：** 12
 
@@ -144,8 +144,8 @@ Unsubscribes from LCD flash status change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'lcdFlashStatus' | 是 | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LcdFlashStatus](arkts-camera-camera-lcdflashstatus-i-sys.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('lcdFlashStatus')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'lcdFlashStatus' | 是 | 事件类型。取值固定为**'lcdFlashStatus'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LcdFlashStatus](arkts-camera-camera-lcdflashstatus-i-sys.md)&gt; | 否 | 用于返回结果的回调。该参数为可选参数。若指定该参数，则取消对指定事件 **on('lcdFlashStatus')**中指定回调的订阅。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ Unsubscribes from LCD flash status change events.
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to PortraitSession error events. This API uses an asynchronous callback to return the result.
+订阅人像会话错误事件。该接口使用异步回调返回结果。
 
 **起始版本：** 11
 
@@ -173,8 +173,8 @@ Subscribes to PortraitSession error events. This API uses an asynchronous callba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
+| type | 'error' | 是 | 事件类型。取值固定为**'error'**。该事件可在创建会话时监听。当调用会话相关接口（例如[beginConfig](arkts-camera-camera-session-i.md#beginconfig)、[commitConfig](arkts-camera-camera-session-i.md#commitconfig) 和[addInput](arkts-camera-camera-session-i.md#addinput)）过程中发生错误时，会触发该事件并返回错误信息。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 用于返回错误码的回调，错误码定义见[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 <!--Del-->
 **示例**
@@ -199,7 +199,7 @@ function registerSessionError(nightPhotoSession: camera.NightPhotoSession): void
 on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 ```
 
-Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
+订阅对焦状态变化事件。该接口使用异步回调返回结果。
 
 **起始版本：** 11
 
@@ -213,8 +213,8 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | Callback used to return the focus state change. |
+| type | 'focusStateChange' | 是 | 事件类型。取值固定为**'focusStateChange'**。该事件可在创建会话时监听。该事件仅在自动对焦模式下相机对焦状态发生变化时触发。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | 用于返回对焦状态变化的回调。 |
 
 <!--Del-->
 **示例**
@@ -243,7 +243,7 @@ function registerFocusStateChange(nightPhotoSession: camera.NightPhotoSession): 
 on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void
 ```
 
-Subscribes to smooth zoom state change events. This API uses an asynchronous callback to return the result.
+订阅平滑变焦状态变化事件。该接口使用异步回调返回结果。
 
 **起始版本：** 11
 
@@ -257,8 +257,8 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | Callback used to return the smooth zoom state change. |
+| type | 'smoothZoomInfoAvailable' | 是 | 事件类型。取值固定为**'smoothZoomInfoAvailable'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | 用于返回平滑变焦状态变化的回调。 |
 
 <!--Del-->
 **示例**
@@ -287,7 +287,7 @@ function registerSmoothZoomInfo(nightPhotoSession: camera.NightPhotoSession): vo
 on(type: 'lcdFlashStatus', callback: AsyncCallback<LcdFlashStatus>): void
 ```
 
-Subscribes to LCD flash status change events. This API uses an asynchronous callback to return the result.
+订阅 LCD 闪光灯状态变化事件。该接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -301,8 +301,8 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'lcdFlashStatus' | 是 | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LcdFlashStatus](arkts-camera-camera-lcdflashstatus-i-sys.md)&gt; | 是 | Callback used to return the LCD flash status change. |
+| type | 'lcdFlashStatus' | 是 | 事件类型。取值固定为**'lcdFlashStatus'**。该事件可在创建会话时监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LcdFlashStatus](arkts-camera-camera-lcdflashstatus-i-sys.md)&gt; | 是 | 用于返回 LCD 闪光灯状态变化的回调。 |
 
 **错误码：**
 

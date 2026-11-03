@@ -12,7 +12,7 @@ import { scan } from '@kit.BasicServicesKit';
 function addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise<void>
 ```
 
-Adds a scanner. This API uses a promise to return the result.
+Adds a scanner. This is a system API. This method can be used to discover and add a scanner based on the specified discovery mode. After the scanner is added, the **scanDeviceAdd event** is triggered. You can use **on('scanDeviceAdd')** to listen for the device addition event. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -28,8 +28,8 @@ Adds a scanner. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uniqueId | string | Yes | Unique ID of the scanner. |
-| discoveryMode | [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md) | Yes | Discovery mode. |
+| uniqueId | string | Yes | Unique ID of a scanner, which is specified by the caller and is used to identify the scanner to be added. |
+| discoveryMode | [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md) | Yes | Discovery mode of the scanner. |
 
 **Return value:**
 

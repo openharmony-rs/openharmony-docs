@@ -8003,7 +8003,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| exclusivelyHighlighted | boolean | 是 | Whether the window can become highlight exclusively when it gain focus. The value true means that the window can cause the window outside the current window link to lose its highlight state, and false means the opposite. |
+| exclusivelyHighlighted | boolean | 是 | 窗口是否独占激活态。true表示独占激活态；false表示不独占激活态。 |
 
 **返回值：**
 
@@ -10452,7 +10452,7 @@ setWindowFocusable(isFocusable: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isFocusable | boolean | 是 | can be focus if true, or can not be focus if false. |
+| isFocusable | boolean | 是 | 窗口是否可获焦。true表示支持；false表示不支持。设置为false时，该窗口不支持绑定输入法和接收键盘事件，如需处理输入逻辑，建议参考[不可获焦窗口中输入框与输入法交互指南](../../../inputmethod/use-inputmethod-in-not-focusable-window.md)。 |
 
 **返回值：**
 
@@ -10509,8 +10509,8 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isFocusable | boolean | 是 | can be focus if true, or can not be focus if false. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
+| isFocusable | boolean | 是 | 窗口是否可获焦。true表示支持；false表示不支持。设置为false时，该窗口不支持绑定输入法和接收键盘事件，如需处理输入逻辑，建议参考[不可获焦窗口中输入框与输入法交互指南](../../../inputmethod/use-inputmethod-in-not-focusable-window.md)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置窗口可获焦属性成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

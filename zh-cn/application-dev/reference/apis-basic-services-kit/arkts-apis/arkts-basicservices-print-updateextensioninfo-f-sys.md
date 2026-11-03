@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function updateExtensionInfo(info: string, callback: AsyncCallback<void>): void
 ```
 
-更新打印扩展状态，使用callback异步回调。
+更新打印机扩展信息，使用callback异步回调。
 
 **起始版本：** 10
 
@@ -28,8 +28,8 @@ function updateExtensionInfo(info: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | string | 是 | 表示打印扩展变更信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步更新打印扩展状态之后的回调。 |
+| info | string | 是 | 表示打印机扩展变更信息。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步更新打印机扩展信息之后的回调。 |
 
 **错误码：**
 
@@ -65,7 +65,7 @@ print.updateExtensionInfo(info, (error: BusinessError) => {
 function updateExtensionInfo(info: string): Promise<void>
 ```
 
-更新打印扩展状态，使用Promise异步回调。
+更新打印机扩展信息，使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -81,7 +81,7 @@ function updateExtensionInfo(info: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | string | 是 | 表示打印扩展变更信息。 |
+| info | string | 是 | 表示打印机扩展变更信息。 |
 
 **返回值：**
 

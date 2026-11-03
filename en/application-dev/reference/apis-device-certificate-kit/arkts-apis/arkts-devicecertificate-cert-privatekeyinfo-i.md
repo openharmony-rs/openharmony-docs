@@ -4,7 +4,7 @@
 interface PrivateKeyInfo
 ```
 
-Represents the private key information.
+Represents information about the private key.
 
 **Since:** 18
 

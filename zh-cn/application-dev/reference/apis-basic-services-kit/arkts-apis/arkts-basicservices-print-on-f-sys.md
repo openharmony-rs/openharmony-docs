@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void): void
 ```
 
-注册打印机状态变化事件回调，使用callback回调。
+注册打印机状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('printerStateChange')](arkts-basicservices-print-off-f-sys.md#offprinterstatechange)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **起始版本：** 10
 
@@ -65,7 +65,7 @@ print.on('printerStateChange', (state: print.PrinterState, info: print.PrinterIn
 function on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void): void
 ```
 
-注册打印任务状态变化事件回调，使用callback回调。
+注册打印任务状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('jobStateChange')](arkts-basicservices-print-off-f-sys.md#offjobstatechange)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **起始版本：** 10
 
@@ -112,7 +112,7 @@ print.on('jobStateChange', (state: print.PrintJobState, job: print.PrintJob) => 
 function on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void): void
 ```
 
-注册打印扩展信息变化事件回调，使用callback回调。
+注册打印机扩展信息变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('extInfoChange')](arkts-basicservices-print-off-f-sys.md#offextinfochange)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **起始版本：** 10
 
@@ -128,8 +128,8 @@ function on(type: 'extInfoChange', callback: (extensionId: string, info: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'extInfoChange' | 是 | 表示打印扩展信息改变。 |
-| callback | (extensionId: string, info: string) =&gt; void | 是 | 打印扩展信息改变之后的回调。 |
+| type | 'extInfoChange' | 是 | 表示打印机扩展信息改变。 |
+| callback | (extensionId: string, info: string) =&gt; void | 是 | 打印机扩展信息改变之后的回调。extensionId表示打印机扩展ID，info表示扩展信息内容。 |
 
 **错误码：**
 

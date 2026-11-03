@@ -84,7 +84,7 @@ ringtoneType: RingtoneType
 ringtoneUri?: string
 ```
 
-铃声的URI。资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md)。
+铃声的URI。资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。
 
 大小不超过202字节，超出后返回401错误码。默认为空。
 

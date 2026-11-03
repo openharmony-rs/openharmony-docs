@@ -208,6 +208,30 @@ formVisibleNotify: boolean
 
 **系统能力：** SystemCapability.Ability.Form
 
+## isColorModeRefreshEnabled
+
+```TypeScript
+readonly isColorModeRefreshEnabled?: boolean
+```
+
+表示卡片是否使能深浅色模式切换触发刷新，默认值为false。
+
+- true：使能。
+
+- false：不使能。
+
+**类型：** boolean
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormInfo-readonly isColorModeRefreshEnabled?: boolean--><!--Device-FormInfo-readonly isColorModeRefreshEnabled?: boolean-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
 ## isDefault
 
 ```TypeScript

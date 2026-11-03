@@ -29,7 +29,7 @@ function setPrinterPreferences(printerId: string, printerPreferences: PrinterPre
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | printerId | string | 是 | 表示打印机ID。 |
-| printerPreferences | [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md) | 是 | 表示打印机首选项。 |
+| printerPreferences | [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md) | 是 | 表示打印机首选项，用于配置打印机的默认打印参数，如默认双面打印模式等。 |
 
 **返回值：**
 

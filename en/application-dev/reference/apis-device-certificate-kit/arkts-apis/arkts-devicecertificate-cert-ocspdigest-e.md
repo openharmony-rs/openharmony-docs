@@ -4,7 +4,7 @@
 enum OcspDigest
 ```
 
-Enumerates the OCSP digest algorithm.
+Enumerates OCSP digest algorithms.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Enumerates the OCSP digest algorithm.
 SHA1 = 0
 ```
 
-SHA1 digest algorithm.
+SHA-1.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ SHA1 digest algorithm.
 SHA224 = 1
 ```
 
-SHA224 digest algorithm.
+SHA-224.
 
 **Since:** 26.0.0
 
@@ -54,7 +54,7 @@ SHA224 digest algorithm.
 SHA256 = 2
 ```
 
-SHA256 digest algorithm.
+SHA-256.
 
 **Since:** 26.0.0
 
@@ -72,7 +72,7 @@ SHA256 digest algorithm.
 SHA384 = 3
 ```
 
-SHA384 digest algorithm.
+SHA-384.
 
 **Since:** 26.0.0
 
@@ -90,7 +90,7 @@ SHA384 digest algorithm.
 SHA512 = 4
 ```
 
-SHA512 digest algorithm.
+SHA-512.
 
 **Since:** 26.0.0
 

@@ -34,13 +34,13 @@ Creates an **Md** instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| algName | string | Yes | Message digest algorithm to use. For details about the supported algorithms, see [Supported Algorithms and Specifications](../../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications). |
+| algName | string | Yes | MD algorithm to use. For details about the supported algorithms, see [Supported Algorithms and Specifications](../../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Md](arkts-cryptoarchitecture-cryptoframework-md-i.md) | Returns the **Md** instance corresponding to the specified algorithm. |
+| [Md](arkts-cryptoarchitecture-cryptoframework-md-i.md) | **Md** instance of the corresponding algorithm. |
 
 **Error codes:**
 

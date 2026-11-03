@@ -511,7 +511,7 @@ indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicato
 
 > **说明：** 
 
-> 设置外部绑定的导航点组件控制器后，可以和外部导航点结合使用。外部导航点支持自定义设置显示位置和大小。详细介绍可参看Indicator。
+> 设置外部绑定的导航点组件控制器后，可以和外部导航点结合使用。外部导航点支持自定义设置显示位置和大小。详细介绍可参看[Indicator](arkts-arkui-indicatorcomponent-comp.md)。
 
 **起始版本：** 15
 

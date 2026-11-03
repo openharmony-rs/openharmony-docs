@@ -39,7 +39,7 @@ import { intelligence } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Image](arkts-arkdata-intelligence-image-t.md) | 表示图片的URI地址，为string类型。 |
+| [Image](arkts-arkdata-intelligence-image-t.md) | 表示图片的URI地址，为string类型。长度上限为512个字符。超出长度时抛出异常。 |
 
 ### 枚举
 

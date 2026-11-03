@@ -4,7 +4,7 @@
 interface USBDevice extends Device
 ```
 
-USB device information, which is inherited from [Device](arkts-driverdevelopment-devicemanager-querydevices-f.md).
+USB device information, which is inherited from [Device](arkts-driverdevelopment-devicemanager-device-i.md).
 
 **Inheritance/Implementation:** USBDevice extends [Device](arkts-driverdevelopment-devicemanager-device-i.md)
 

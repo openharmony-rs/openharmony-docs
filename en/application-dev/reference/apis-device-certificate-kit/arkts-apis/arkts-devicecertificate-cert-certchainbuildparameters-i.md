@@ -4,7 +4,7 @@
 interface CertChainBuildParameters
 ```
 
-Represents the parameters for building a certificate chain.
+Defines the parameters for building a certificate chain.
 
 **Since:** 12
 
@@ -42,7 +42,7 @@ Filter criteria.
 maxLength?: number
 ```
 
-Maximum number of CA certificates in the certificate chain.
+Maximum number of CA certificates.
 
 **Type:** number
 
@@ -60,7 +60,7 @@ Maximum number of CA certificates in the certificate chain.
 validationParameters: CertChainValidationParameters
 ```
 
-Parameters for certificate chain validation.
+Verification condition.
 
 **Type:** [CertChainValidationParameters](arkts-devicecertificate-cert-certchainvalidationparameters-i.md)
 

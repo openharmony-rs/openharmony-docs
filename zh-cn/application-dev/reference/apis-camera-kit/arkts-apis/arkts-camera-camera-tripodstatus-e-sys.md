@@ -4,7 +4,7 @@
 enum TripodStatus
 ```
 
-Enumerates the tripod statuses.
+枚举，三脚架状态。
 
 **起始版本：** 13
 
@@ -20,7 +20,7 @@ Enumerates the tripod statuses.
 ACTIVE = 1
 ```
 
-The tripod is active. This is a system API.
+三脚架处于激活状态。
 
 **起始版本：** 13
 
@@ -36,7 +36,7 @@ The tripod is active. This is a system API.
 ENTERING = 2
 ```
 
-The system is transitioning into a stable tripod mode. This is a system API.
+系统正在进入稳定的三脚架模式。
 
 **起始版本：** 13
 
@@ -52,7 +52,7 @@ The system is transitioning into a stable tripod mode. This is a system API.
 EXITING = 3
 ```
 
-The system is leaving the stable tripod mode. This is a system API.
+系统正在退出稳定的三脚架模式。
 
 **起始版本：** 13
 
@@ -68,7 +68,7 @@ The system is leaving the stable tripod mode. This is a system API.
 INVALID = 0
 ```
 
-Error status, or no tripod detected. This is a system API.
+错误状态，或未检测到三脚架。
 
 **起始版本：** 13
 

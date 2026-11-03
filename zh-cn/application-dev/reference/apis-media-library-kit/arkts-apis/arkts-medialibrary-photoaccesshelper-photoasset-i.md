@@ -51,7 +51,7 @@ clone(title: string): Promise<PhotoAsset>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs |
 
 **示例**
@@ -109,7 +109,7 @@ commitModify(callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 11+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters exceeds the maximum limit; <br>2.The member parameter must be a string. |
 | 14000001 | Display name invalid. Possible causes: <br>1.Title is invalid; <br>2.Cannot modify displayName for burst photos; <br>3.Invalid displayName. |
@@ -182,7 +182,7 @@ commitModify(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 11+ |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**适用版本：** 10 |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters exceeds the maximum limit; <br>2.The member parameter must be a string. |
 | 14000001 | Display name invalid. Possible causes: <br>1.Title is invalid; <br>2.Cannot modify displayName for burst photos; <br>3.Invalid displayName. |
@@ -311,7 +311,7 @@ getThumbnail(callback: AsyncCallback<image.PixelMap>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
 | 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The PhotoAsset object is not a valid PhotoAsset; <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>3.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
@@ -372,7 +372,7 @@ getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
 | 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
@@ -444,7 +444,7 @@ getThumbnail(size?: image.Size): Promise<image.PixelMap>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
 | 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
@@ -502,7 +502,7 @@ set(member: string, value: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters is invalid, expected 1 or 2 parameters; <br>2.The member parameter must be a string. |
 | 14000014 | member not exist. |
 
@@ -560,7 +560,7 @@ close(fd: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The member parameter is invalid, must be a valid member key. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
@@ -630,7 +630,7 @@ close(fd: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.The member parameter is invalid, must be a valid member key. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
@@ -694,7 +694,7 @@ getReadOnlyFd(callback: AsyncCallback<number>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit or invalid PhotoAsset object; <br>2.The PhotoAsset is not a valid PhotoAsset object. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
 
@@ -759,7 +759,7 @@ getReadOnlyFd(): Promise<number>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit or invalid PhotoAsset object; <br>2.The PhotoAsset is not a valid PhotoAsset object. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
 

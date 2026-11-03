@@ -4,7 +4,7 @@
 enum FocusDrivenType
 ```
 
-Enumerates the focus drive types.
+枚举，对焦驱动类型。
 
 **起始版本：** 15
 
@@ -20,7 +20,7 @@ Enumerates the focus drive types.
 AUTO = 0
 ```
 
-Automatic.
+自动。
 
 **起始版本：** 15
 
@@ -36,7 +36,7 @@ Automatic.
 FACE = 1
 ```
 
-Face-driven.
+人脸驱动。
 
 **起始版本：** 15
 

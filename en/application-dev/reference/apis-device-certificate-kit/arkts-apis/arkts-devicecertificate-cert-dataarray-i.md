@@ -24,7 +24,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 data: Array<Uint8Array>
 ```
 
-Indicates the content of the data array.
+Data list.
 
 **Type:** Array&lt;Uint8Array&gt;
 

@@ -214,6 +214,47 @@ getSuiteDownloadManager(): AudioSuiteDownloadManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+## reportPlaybackCaptureUserAllowed
+
+```TypeScript
+reportPlaybackCaptureUserAllowed(streamId: number, allowed: boolean): Promise<void>
+```
+
+Reports user allowed result for playback capture request to audio system from specific system application. The system will continue to start playback capture or return a failure based on result. This API uses a promise to return the result.
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.CAPTURE_PLAYBACK
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioManager-reportPlaybackCaptureUserAllowed(streamId: long, allowed: boolean): Promise<void>--><!--Device-AudioManager-reportPlaybackCaptureUserAllowed(streamId: long, allowed: boolean): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| streamId | number | 是 | Stream id of the capturer. |
+| allowed | boolean | 是 | User allowed result, true means user allows to start playback capture, otherwise false. |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, streamId does not exist. |
+
 ## setAudioScene
 
 ```TypeScript

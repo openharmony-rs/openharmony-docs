@@ -292,8 +292,8 @@ Obtains a Boolean value based on the specified resource ID. This API returns the
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -369,8 +369,8 @@ Obtains a Boolean value based on the specified resource object. This API returns
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -440,8 +440,8 @@ Obtains a Boolean value based on the specified resource name. This API returns t
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -506,8 +506,8 @@ Obtains the color value corresponding to the specified resource ID. This API use
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -614,8 +614,8 @@ Obtains the color value corresponding to the specified resource ID. This API use
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -685,8 +685,8 @@ Obtains the color value corresponding to the specified resource object. This API
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -761,8 +761,8 @@ Obtains the color value corresponding to the specified resource object. This API
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -826,8 +826,8 @@ Obtains the color value corresponding to the specified resource name. This API u
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -896,8 +896,8 @@ Obtains the color value corresponding to the specified resource name. This API u
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -966,8 +966,8 @@ Obtains a color value based on the specified resource name. This API returns the
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -1037,8 +1037,8 @@ Obtains a color value based on the specified resource ID. This API returns the r
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -1114,8 +1114,8 @@ Obtains a color value based on the specified resource object. This API returns t
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -1456,8 +1456,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 | Error Code ID | Error Message |
 | --- | --- |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-failed-to-format-the-resource-obtained-based-on-resname) | Failed to format the resource obtained based on the resource name. |
 
 **Examples**
@@ -1546,8 +1546,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 | Error Code ID | Error Message |
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
 
 **Examples**
@@ -1640,8 +1640,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 | Error Code ID | Error Message |
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
 
 **Examples**
@@ -1726,7 +1726,7 @@ Obtains the **DrawableDescriptor** object for icon display corresponding to the 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -1807,7 +1807,7 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -1880,7 +1880,7 @@ Obtains the **DrawableDescriptor** object for icon display corresponding to the 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -1960,8 +1960,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 | Error Code ID | Error Message |
 | --- | --- |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-failed-to-format-the-resource-obtained-based-on-resname) | Failed to format the resource obtained based on the resource name. |
 
 **Examples**
@@ -2050,8 +2050,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 | Error Code ID | Error Message |
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
 
 **Examples**
@@ -2144,8 +2144,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 | Error Code ID | Error Message |
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
 
 **Examples**
@@ -2293,7 +2293,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2351,7 +2351,7 @@ Obtains the Base64 encoding of the image resource for the specified screen densi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2413,7 +2413,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2474,7 +2474,7 @@ Obtains the Base64 encoding of the image resource for the specified screen densi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2535,7 +2535,7 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2595,7 +2595,7 @@ Obtains the content of the media file corresponding to the specified resource na
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2653,7 +2653,7 @@ Obtains the media file content for the specified screen density based on the spe
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2715,7 +2715,7 @@ Obtains the content of the media file corresponding to the specified resource na
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2776,7 +2776,7 @@ Obtains the media file content for the specified screen density based on the spe
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2837,7 +2837,7 @@ Obtains the media file content for the default or specified screen density based
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
 
 **Examples**
 
@@ -2897,7 +2897,7 @@ Obtains the content of the media file corresponding to the specified resource ID
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -2956,7 +2956,7 @@ Obtains the media file content for the specified screen density based on the spe
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3018,7 +3018,7 @@ Obtains the content of the media file corresponding to the specified resource ID
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3079,7 +3079,7 @@ Obtains the media file content for the specified screen density based on the spe
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3140,7 +3140,7 @@ Obtains the content of the media file corresponding to the specified resource ob
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3204,7 +3204,7 @@ Obtains the media file content for the specified screen density based on the spe
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3272,7 +3272,7 @@ Obtains the content of the media file corresponding to the specified resource ob
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3339,7 +3339,7 @@ Obtains the media file content for the specified screen density based on the spe
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3394,7 +3394,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3452,7 +3452,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3514,7 +3514,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3575,7 +3575,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3636,7 +3636,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3700,7 +3700,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3768,7 +3768,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3835,7 +3835,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3896,7 +3896,7 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -3968,7 +3968,7 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -4033,7 +4033,7 @@ Obtains the media file content for the default or specified screen density based
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -4105,7 +4105,7 @@ Obtains the media file content for the default or specified screen density based
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
 
 **Examples**
 
@@ -4169,8 +4169,8 @@ Obtains an integer or float number based on the specified resource ID. This API 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -4272,8 +4272,8 @@ Obtains an integer or float number based on the specified resource object. This 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -4344,8 +4344,8 @@ Obtains an integer or float number based on the specified resource name. This AP
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5158,8 +5158,8 @@ Obtains the string array corresponding to the specified resource name. This API 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5233,8 +5233,8 @@ Obtains the string array corresponding to the specified resource name. This API 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5307,8 +5307,8 @@ Obtains the string array corresponding to the specified resource name. This API 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5377,8 +5377,8 @@ Obtains the string array corresponding to the specified resource ID. This API us
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5452,8 +5452,8 @@ Obtains the string array corresponding to the specified resource ID. This API us
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5527,8 +5527,8 @@ Obtains the string array corresponding to the specified resource object. This AP
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5607,8 +5607,8 @@ Obtains the string array corresponding to the specified resource object. This AP
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5681,8 +5681,8 @@ Obtains the string array corresponding to the specified resource ID. This API re
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5762,8 +5762,8 @@ Obtains a string array based on the specified resource object. This API returns 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5832,8 +5832,8 @@ Obtains the string corresponding to the specified resource name. This API uses a
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5902,8 +5902,8 @@ Obtains the string corresponding to the specified resource name. This API uses a
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -5970,8 +5970,8 @@ Obtains the string corresponding to the specified resource name. This API return
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6042,8 +6042,8 @@ Obtains the string corresponding to the specified resource name, and replaces th
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-failed-to-format-the-resource-obtained-based-on-resname) | Failed to format the resource obtained based on the resource name. |
 
 **Examples**
@@ -6114,8 +6114,8 @@ Obtains the string corresponding to the specified resource ID. This API returns 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6186,8 +6186,8 @@ Obtains the string corresponding to the specified resource ID, and replaces the 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
 
 **Examples**
@@ -6264,8 +6264,8 @@ Obtains a string based on the specified resource object. This API returns the re
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6342,8 +6342,8 @@ Obtains the string corresponding to the specified resource object, and replaces 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 | [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
 
 **Examples**
@@ -6409,8 +6409,8 @@ Obtains the string corresponding to the specified resource ID. This API uses an 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6496,8 +6496,8 @@ Obtains the string corresponding to the specified resource ID. This API uses a p
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6565,8 +6565,8 @@ Obtains the string corresponding to the specified resource object. This API uses
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6641,8 +6641,8 @@ Obtains the string corresponding to the specified resource object. This API uses
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6699,8 +6699,8 @@ Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/desig
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6764,8 +6764,8 @@ Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/desig
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -6823,8 +6823,8 @@ Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/desig
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -7400,8 +7400,8 @@ Obtains the plural string based on the specified resource name and the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -7485,8 +7485,8 @@ Obtains the plural string based on the specified resource name and the specified
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -7570,8 +7570,8 @@ Obtains singular/plural strings based on the specified quantity and resource nam
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-specified-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -7653,8 +7653,8 @@ Obtains the plural string based on the specified resource information and the sp
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -7747,8 +7747,8 @@ Obtains the plural string based on the specified resource information and the sp
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -7833,8 +7833,8 @@ Obtains the plural string based on the specified resource ID and the specified r
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -7919,8 +7919,8 @@ Obtains the plural string based on the specified resource ID and the specified r
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -8004,8 +8004,8 @@ Obtains singular/plural strings based on the specified resource ID and quantity.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 
@@ -8092,8 +8092,8 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-specified-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-resource-referenced-cyclically) | The resource is referenced cyclically. |
 
 **Examples**
 

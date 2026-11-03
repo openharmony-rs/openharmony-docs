@@ -4,7 +4,7 @@
 interface ColorReservation extends ColorReservationQuery
 ```
 
-ColorReservation 继承 [ColorReservationQuery](arkts-camera-camera-colorreservationquery-i-sys.md)提供获取和设置色彩保留类型的接口。
+提供获取和设置色彩保留类型的接口。
 
 **继承/实现关系：** ColorReservation extends [ColorReservationQuery](arkts-camera-camera-colorreservationquery-i-sys.md)
 
