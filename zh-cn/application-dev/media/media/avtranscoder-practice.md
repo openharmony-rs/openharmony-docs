@@ -37,6 +37,7 @@ status: active
 1. 引入头文件，创建worker线程，并注册回调。
 
    <!-- @[includeHeaderFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS'
    import { SendableObject } from '../util/SendableObject';
