@@ -11912,7 +11912,7 @@ async function getRelationshipExample(context: Context) {
 }
 ```
 
-## MediaAssetManager
+## MediaAssetManager<sup>11+</sup>
 
 媒体资产管理类，管理媒体资源读取。
 
