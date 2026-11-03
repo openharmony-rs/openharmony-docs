@@ -249,7 +249,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | videoFrameWidth        | number | 否 |  是   | 输出视频帧的宽，单位为像素（px），下限为240P，上限受设备编码器能力限制。默认设置为源视频帧的宽。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | videoFrameHeight        | number | 否 |  是   | 输出视频帧的高，单位为像素（px），下限为240P，上限受设备编码器能力限制。默认设置为源视频帧的高。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | enableBFrame<sup>20+</sup> | boolean | 否 |  是   | 转码使能B帧编码。true表示开启B帧编码，默认为不开启B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| enableStableQualityMode            | boolean                        | 否   | 是   | 是否使能视频编码质量稳定模式，仅在视频编码格式为H.265且设备硬件支持的情况下生效。true表示使能，false表示不使能。<br>该参数为视频转码场景下的可选项，默认值为false。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。|
+| enableStableQualityMode            | boolean                        | 否   | 是   | 是否启用视频编码质量稳定模式，仅在视频编码格式为H.265且设备硬件支持的情况下生效。true表示启用，false表示不启用。<br>该参数为视频转码场景下的可选项，默认值为false。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。|
 | sqrFactor            | number                        | 否   | 是   | 设置SQR码控模式的质量参数。<br>取值为整数，取值范围为[0, 51]，值越小，编码输出码率越大，画质越高。<br>需要先设置enableStableQualityMode为true，SQR码控模式的质量参数设置才生效。<br>该参数为视频转码场景下的可选项，默认值为25。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。|
 
 
