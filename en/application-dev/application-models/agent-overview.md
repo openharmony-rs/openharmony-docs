@@ -51,5 +51,4 @@ The on-device agent framework adopts a client-server architecture and communicat
 
 **Figure 1** Agent architecture diagram
 
-![Agent architecture diagram](figures/agent-overview.png)
 

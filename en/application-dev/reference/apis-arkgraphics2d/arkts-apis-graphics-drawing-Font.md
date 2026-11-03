@@ -1108,7 +1108,7 @@ Converts text to glyph indexes, with font fallback support. If the typeface of t
 
 | Type | Description |
 | --- | --- |
-| Array\<[TypefaceFallbackInfo](arkts-apis-graphics-drawing-i.md#typefacefallbackinfo)> | Returns an array of font fallback information. Each element in the array contains an array of glyph indexes that use the same fallback font. |
+| Array\<[TypefaceFallbackInfo](arkts-apis-graphics-drawing-i.md)> | Returns an array of font fallback information. Each element in the array contains an array of glyph indexes that use the same fallback font. |
 
 **Error codes**
 

@@ -1,11 +1,11 @@
-# AgentExtensionAbility Configuration File
+# AgentExtensionAbility Configuration File Description
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=a7527b1bdb02bfea835e9bc50c20bb3d2f59d798 translatedAt=2026-11-02T13:37:24.854Z pushedAt=2026-11-03T03:22:38.419Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a7527b1bdb02bfea835e9bc50c20bb3d2f59d798 translatedAt=2026-11-02T13:37:24.854Z pushedAt=2026-11-03T06:53:00.482Z nl=1 -->
 
 [AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md) serves as the "business card" of an Agent and is mainly used to describe the Agent's capabilities. The detailed configuration of an AgentCard is carried by the agent_config.json configuration file.
 

@@ -20,7 +20,6 @@ Since API version 24, system apps can use the [connectAgentExtensionAbility()](.
 
 The following figure shows the interaction process between the client and the server:
 
-<img src="figures/agent-manager-procedure.png" width="600" height="450" alt="Demonstration diagram">
 
 1. Establishing a connection
 

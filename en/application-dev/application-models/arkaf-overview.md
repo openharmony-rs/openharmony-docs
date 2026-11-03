@@ -1,4 +1,4 @@
-# Ark Agentic Framework Overview
+# Ark Intelligent Development Framework Overview
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=302da1a5f5bd3cbf96725ea4b2173e4a7552abcd translatedAt=2026-11-02T13:51:14.955Z pushedAt=2026-11-03T04:23:54.987Z nl=1 -->
+<!-- md-trans-meta sourceCommit=302da1a5f5bd3cbf96725ea4b2173e4a7552abcd translatedAt=2026-11-02T13:51:14.955Z pushedAt=2026-11-03T06:58:05.602Z nl=1 -->
 
 As system agents gradually become the new entry point for users to interact with the operating system, the way users interact is shifting from "opening an app" to "directly expressing their needs." By exposing capabilities and integrating into the system agent ecosystem, apps provide users with a more natural and convenient service experience, while expanding their reach scenarios and usage frequency.
 

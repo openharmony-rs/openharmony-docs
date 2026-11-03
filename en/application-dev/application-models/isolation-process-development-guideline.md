@@ -1,11 +1,11 @@
-# Independent Process Development Guide
+# Isolation Process Development Guide
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=a6857466b4cd62b0200cae3b3603b10d83c02abb translatedAt=2026-11-02T13:58:15.063Z pushedAt=2026-11-03T04:24:10.870Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a6857466b4cd62b0200cae3b3603b10d83c02abb translatedAt=2026-11-02T13:58:15.063Z pushedAt=2026-11-03T07:05:33.115Z nl=1 -->
 
 ## Overview
 

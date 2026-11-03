@@ -44,7 +44,6 @@ Developers can determine whether an application is suitable for integrating the 
 
 The quick start technology completes the initialization of reusable parts in the startup process in advance. When the application starts, it can reuse the relevant initialization results, thereby skipping this part of the startup process and achieving the goal of faster startup. As shown in the following figure, compared with normal startup, quick start can skip some stages in the startup process, thereby reducing the startup latency:
 
-![image](./figures/hyperstartup-application-process.png)
 
 **The processes included in the quick start point are**: AbilityStage module loading, [AbilityStage.onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate), and UIAbility module loading. During [module loading](../arkts-utils/arkts-module-side-effects.md), some code is executed, including top-level code, so constructors, and class static variable initialization.
 

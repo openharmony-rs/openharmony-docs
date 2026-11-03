@@ -25,7 +25,6 @@ In development based on ModularObjectExtensionAbility, you can use the [Taihe](a
 2. The server returns a Proxy object: After the connection is established, the system loads the .so library of the corresponding Ability on the server and calls the OnNativeExtensionCreate entry function. Then the system triggers the OnCreateFunc and OnConnectFunc callbacks of the server in sequence. The developer returns a Stub object in the OnConnectFunc callback. The system converts the Stub into a Proxy object and returns it to the client.
 3. The client communicates with the server through the Proxy: After receiving the Proxy object returned by the server in the OnConnectCallback callback, the client communicates with the server through this object. When communication is no longer needed, the client can disconnect through the Disconnect API. After the connection is disconnected, the system triggers the OnDisconnectFunc and OnDestroyFunc callbacks of the server in sequence.
 
-![modular_object_extension_lifecycle](figures/modular_object_extension_lifecycle.png)
 
 The following table lists the mapping between the abbreviations and full API names involved in the preceding steps.
 

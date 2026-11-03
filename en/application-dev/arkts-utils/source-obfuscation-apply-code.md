@@ -5,7 +5,7 @@
 <!--Designer: @wangwenbo551-->
 <!--Tester: @yan_panda-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3b2bf93817a4046a2dbb7057984a8542e921123d translatedAt=2026-11-02T14:19:14.222Z pushedAt=2026-11-03T04:08:53.702Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3b2bf93817a4046a2dbb7057984a8542e921123d translatedAt=2026-11-02T14:19:14.222Z pushedAt=2026-11-03T06:51:07.975Z nl=1 -->
 
 ## Overview
 
@@ -42,9 +42,11 @@ After the conditions for enabling obfuscation are met, select the target module 
 The steps to build a HAR in Release mode are as follows:  
 **Figure 1**  Selecting the release build mode in DevEco Studio  
 
+![](figures/DevEco-Studio-selecting-release-build-mode.png)
 
 **Figure 2**  Building a specified module in DevEco Studio  
 
+![](figures/DevEco-Studio-building-specified-module.png)
 
 ## Obfuscation Configuration Capabilities
 
@@ -60,11 +62,13 @@ As shown in the following figure, you can configure whether to enable obfuscatio
 
 **Figure 3** Build configuration file  
 
+![](figures/build-configuration-file.png "Build configuration file")
 
 When creating a project, each module has an `obfuscation-rules.txt` file for configuring obfuscation.
 
 **Figure 4** Obfuscation configuration file  
 
+![](figures/obfuscation-configuration-file.png "Obfuscation configuration file")
 
 In the preceding figure, the `-enable-property-obfuscation` and `-enable-toplevel-obfuscation` switches are added to the `obfuscation-rules.txt` file, indicating that property obfuscation and top-level scope name obfuscation are enabled.
 
@@ -127,13 +131,14 @@ When building a module, the effective obfuscation rules are the merged result of
 
 Developers can find the cache files, name mapping table, and system API trustlist file generated during compilation and obfuscation in the build directory of the compiled module.
 
-* Source code compilation and obfuscation cache file directory: build/\[…\]/release/module name
-* Obfuscation name mapping table and system API trustlist directory: build/\[…\]/release/obfuscation
+* Source code compilation and obfuscation cache file directory: build/\[...\]/release/module name
+* Obfuscation name mapping table and system API trustlist directory: build/\[...\]/release/obfuscation
 
   * Name mapping table file: `nameCache.json`, which records the source code name mapping.
   * System API trustlist file: `systemApiCache.json`, which records the SDK interface and property names.
 
     **Figure 5**  DevEco Studio build artifacts and cache files  
+    ![](figures/DevEco-Studio-build-artifacts-and-cache-files.png "DevEco-Studio build artifacts and cache files")
 
 ## Debugging
 

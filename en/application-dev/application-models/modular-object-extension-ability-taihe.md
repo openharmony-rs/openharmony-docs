@@ -6,7 +6,7 @@
 <!--Designer: @yzkp-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=06279d23f6339ee3e0e9914bf707f253623fb810 translatedAt=2026-11-02T13:32:50.106Z pushedAt=2026-11-03T04:24:14.684Z nl=1 -->
+<!-- md-trans-meta sourceCommit=06279d23f6339ee3e0e9914bf707f253623fb810 translatedAt=2026-11-02T13:32:50.106Z pushedAt=2026-11-03T06:41:54.973Z nl=1 -->
 
 Starting from API version 26.0.0, [Taihe](ability-terminology.md#taihe) can automatically generate the Proxy/Stub code and type library files required by ModularObjectExtensionAbility (for the related C API definitions, see [modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)), shielding the underlying details of IPC communication (such as parameter serialization/deserialization and message code dispatching). This allows developers to focus on interface design and business logic, greatly simplifying the development process of ModularObjectExtensionAbility. For how to obtain and use the taihec tool, see [Command Line Usage](#command-line-usage).
 
@@ -16,7 +16,7 @@ Taihe provides the core compiler tool [taihec](ability-terminology.md#taihec), w
 
 **Obtaining the taihec tool:**
 
-The taihec tool is built into [DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio) of API version 26.0.0 or later as part of the SDK, so no additional download is required. By default, it is located in the DevEco Studio/sdk/default/openharmony/toolchains/taihe/bin directory (on macOS, it is located in the SDK path corresponding to DevEco Studio/Contents).
+The taihec tool is built into [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) of API version 26.0.0 or later as part of the SDK, so no additional download is required. By default, it is located in the DevEco Studio/sdk/default/openharmony/toolchains/taihe/bin directory (on macOS, it is located in the SDK path corresponding to DevEco Studio/Contents).
 
 **Basic command format:**
 

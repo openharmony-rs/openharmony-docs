@@ -1,4 +1,4 @@
-# Component Startup Rules Within a Device (Open to System Applications Only)
+# Intra-Device Component Startup Rules (System Applications Only)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +6,7 @@
 <!--Designer: @wendel-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=17d3b236d2c2a3bbfc7bc46d7fe0f1415b7b5049 translatedAt=2026-11-02T13:56:26.006Z pushedAt=2026-11-03T04:24:04.215Z nl=1 -->
+<!-- md-trans-meta sourceCommit=17d3b236d2c2a3bbfc7bc46d7fe0f1415b7b5049 translatedAt=2026-11-02T13:56:26.006Z pushedAt=2026-11-03T07:01:45.963Z nl=1 -->
 
 To ensure system security and user experience, the system restricts apps from displaying pop-up windows at will in the background state, waking each other up, and foreground applications from jumping at will. For details about the related behaviors, see [Component Startup Rules Within a Device](./component-startup-rules-inner-device.md). This document mainly describes the constraints on system applications starting [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) and [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) within a device.
 

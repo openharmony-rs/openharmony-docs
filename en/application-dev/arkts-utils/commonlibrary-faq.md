@@ -256,7 +256,7 @@ if (!hashSet.has(value)) {
 
 ## Parsing a JSON String Containing a Large Number of Numeric Keys
 
-When you need to convert a JSON string containing a large number of numeric keys into a Sendable object, you can use the [JSON.parseSendable](../reference/apis-arkts/js-apis-json.md#jsonparsesendable) API.
+When you need to convert a JSON string containing a large number of numeric keys into a Sendable object, you can use the [JSON.parseSendable](../reference/apis-arkts/js-apis-json.md) API.
 
 ```ts
 import { JSON, lang } from '@kit.ArkTS';

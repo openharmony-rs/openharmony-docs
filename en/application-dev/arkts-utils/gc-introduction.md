@@ -335,7 +335,7 @@ This thread pool is mainly used to execute concurrent tasks in the GC process. W
 
 ### SharedHeap Related Parameters
 
-The following parameters apply to large-memory devices such as phones. Developers can obtain Shared heap memory information through [getAllVMHeapMemoryInfo](../reference/apis-arkts/js-apis-util.md#getallvmheapmemoryinfo24).
+The following parameters apply to large-memory devices such as phones. Developers can obtain Shared heap memory information through [getAllVMHeapMemoryInfo](../reference/apis-arkts/js-apis-util.md).
 
 > **NOTE**
 >

@@ -20,7 +20,6 @@ Application startup refers to the process in which a user triggers the system to
 
 The relationship among the process, AbilityStage, and UIAbility lifecycles is shown in the following figure.
 
-![application-startup-process](figures/application-startup-process.png)
 
 | Phase | Trigger Timing | Main Responsibilities |
 | :--- | :--- | :--- |

@@ -6,7 +6,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=f7c29098b44cb73061ff88489a733c53b3a07980 translatedAt=2026-11-02T13:31:54.737Z pushedAt=2026-11-03T04:24:07.491Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f7c29098b44cb73061ff88489a733c53b3a07980 translatedAt=2026-11-02T13:31:54.737Z pushedAt=2026-11-03T06:38:34.827Z nl=1 -->
 
 In cross-device collaboration scenarios, applications often need to start [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) or [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) components on other devices to implement multi-device interaction. Cross-device startup involves multiple constraints such as device trust relationships, security level matching, and permission verification. Failure to meet these rules will cause startup to fail. This document sorts out the complete rules for cross-device component startup, covering collaboration interface selection, startup conditions, and verification processes. It is intended for developers to reference when implementing cross-device component startup and multi-device collaboration, so as to standardize interface calls and quickly locate startup exceptions.
 
@@ -14,7 +14,7 @@ In cross-device collaboration scenarios, applications often need to start [UIAbi
 
 - **Multi-round Interaction**: After the startup party and the target party components establish a connection, multiple rounds of data communication and business interaction can be performed.
 - **Single Interaction**: After the startup party starts the target party component, it only obtains the startup result or the result returned when the target party is destroyed, with no subsequent multi-round communication.
-- **Device Security Level**: A level divided based on device security capabilities (for example, TEE, secure storage chips, etc.). The higher the level, the stronger the security capability. For details, see [Device Security Level](../database/native-access-control-by-device-and-data-level.md#device-security-level).
+- **Device Security Level**: A level divided based on device security capabilities (for example, TEE, secure storage chips, etc.). The higher the level, the stronger the security capability. For details, see [Device Security Level](../database/native-access-control-by-device-and-data-level.md#device-security-levels).
 
 ## Collaborative Interfaces
 
@@ -33,7 +33,7 @@ To start a component across devices, the following three requirements must be me
 1. Trust relationship between devices
 
    - Both devices are logged in to the same account, satisfying the trust relationship requirement.
-   - If the two devices use different accounts, a trust relationship must be established in advance through [Device Discovery](../distributedservice/devicemanager-guidelines.md#device-discovery-development-guide) and [Device Binding](../distributedservice/devicemanager-guidelines.md#device-binding-development-guide).
+   - If the two devices use different accounts, a trust relationship must be established in advance through [Device Discovery](../distributedservice/devicemanager-guidelines.md#discovering-devices) and [Device Binding](../distributedservice/devicemanager-guidelines.md#binding-a-device).
 
 2. Distributed device security level requirement
 

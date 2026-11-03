@@ -6,7 +6,7 @@
 <!--Designer: @jayleehw-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=f513c81199f72302f41dc822fad2997ee23361fd translatedAt=2026-11-02T13:26:41.174Z pushedAt=2026-11-03T04:24:22.521Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f513c81199f72302f41dc822fad2997ee23361fd translatedAt=2026-11-02T13:26:41.174Z pushedAt=2026-11-03T07:08:57.702Z nl=1 -->
 
 
 - [About This Kit](abilitykit-overview.md)
@@ -25,7 +25,7 @@
       - [UIAbility Backup and Restore](ability-recover-guideline.md)
     - [ExtensionAbility Component](extensionability-overview.md)
       <!--Del-->
-      - [Agent Service Provided by the AgentExtensionAbility Component (System Applications Only)](agent-manager-sys.md)
+      - [Using the Agent Service Provided by the AgentExtensionAbility Component (System Applications Only)](agent-manager-sys.md)
       - [ServiceExtensionAbility (for System Applications Only)](serviceextensionability-sys.md)
       - [UIServiceExtensionAbility (for System Applications Only)](uiserviceextension-sys.md)
       - [UIExtensionAbility (for System Applications Only)](uiextensionability-sys.md)
@@ -50,17 +50,17 @@
       <!--Del-->
       - [Cross-Device Component Startup Rules (System Applications Only)](component-startup-rules-cross-device-sys.md)
       <!--DelEnd-->
-> ⚠️ [翻译失败]此段需用户自行翻译
+    - [Get/Set Environment Variables](subscribe-system-environment-variable-changes.md)
     <!--Del-->
     - Inter-Device Application Component Interaction (Hopping)<!--hop-->
       - [Hopping Overview](inter-device-interaction-hop-overview.md)
       - [Cross-Device Migration](hop-cross-device-migration.md)
       - [Multi-device Collaboration](hop-multi-device-collaboration.md)
     <!--DelEnd-->  
-> ⚠️ [翻译失败]此段需用户自行翻译
+  - Process Model<!--process-model-stage-->
     - [Process Model Overview](process-model-overview.md)
     - Extension process development guide<!--extended-process-development-->
-      - [Child process development guide (ArkTS)](arkts-child-process-development-guideline.md)
+      - [Child Process Development Guide (ArkTS)](arkts-child-process-development-guideline.md)
       - [Child Process Development Guide (C/C++)](capi-nativechildprocess-development-guideline.md)
     - [Isolation Process Development Guide](isolation-process-development-guideline.md)
   - [Thread Model](thread-model-stage.md)
@@ -73,13 +73,13 @@
   <!--DelEnd-->
   - [App Configuration File](config-file-stage.md)
 - App Lifecycle<!--app-lifecycle-->
-  - [App Lifecycle Overview](application-lifecycle.md)
+  - [Application Lifecycle Overview](application-lifecycle.md)
   - App Startup<!--app-start-->
-    - [App Startup Process](application-startup-process.md)
+    - [Application Startup Process](application-startup-process.md)
     - [App Startup Settings](application-startup-options.md)
     - [App Startup Framework AppStartup](app-startup.md)
     - [App Preloading](preload-application.md)
-    - [App Quick Startup](hyperstartup-application.md)
+    - [Application Quick Start](hyperstartup-application.md)
   - [App Exit](app-stop.md)<!--RP2--><!--RP2End-->
   - [App Restart](app-restart.md)
   - [Obtaining the Cause of Abnormal App Exit](ability-exit-info-record.md)
@@ -121,11 +121,11 @@
       - [Using the AgentExtensionAbility Component to Implement Agent Services](agent-extension-ability.md)
       - [AgentExtensionAbility Configuration File Description](agent-extension-configuration.md)
       <!--Del-->
-      - [Using Agent Services Provided by the AgentExtensionAbility Component (System-Only)](agent-manager-sys.md)
+      - [Using the Agent Service Provided by the AgentExtensionAbility Component (System Applications Only)](agent-manager-sys.md)
       <!--DelEnd-->
 - Modular Object Development Guide Based on ModularObjectExtensionAbility (C/C++)<!--modular-object-extension-ability-->
   - [Modular Object Model Overview (C/C++)](modular-object-extension-overview.md)
   - [Using ModularObjectExtensionAbility to Implement Modular Objects (C/C++)](modular-object-extension-development.md)
-  - [Using Taihe to Implement IPC Communication for ModularObjectExtensionAbility (C/C++)](modular-object-extension-ability-taihe.md)
-  - [Using ModularObjectDispatcher to Implement Dynamic Interface Invocation (C/C++)](modular-object-dispatcher-development.md)
+  - [Implementing IPC Communication for ModularObjectExtensionAbility with Taihe (C/C++)](modular-object-extension-ability-taihe.md)
+  - [Using ModularObjectDispatcher to Implement Dynamic API Invocation (C/C++)](modular-object-dispatcher-development.md)
 - [Ability Kit Terminology](ability-terminology.md)
