@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=42366db83b6a7061294c740bb3e867143a8c2550 translatedAt=2026-09-29T11:04:08.704Z pushedAt=2026-09-30T06:49:00.079Z -->
+<!-- md-trans-meta sourceCommit=0cdd97b443d3897adaad786ce4917a678c1868f0 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 - [About This Kit](connectivity-kit-intro.md)
 - Bluetooth<!--bluetooth-->
@@ -32,7 +32,7 @@
   - [P2P Development Guide](wlan/p2p-development-guide.md)
   - [STA Development](wlan/sta-development-guide.md)
   - [Wi-Fi Scanning Development](wlan/scan-development-guide.md)
-  - [Glossary](wlan-glossary.md)
+  - [Wi-Fi Glossary](wlan/wlan-glossary.md)
 - Converged Short-Range<!--fusion-connectivity-->
   - [Converged Short-Range Service Development](fusion-connectivity/fusion-connectivity-overview.md)
   - [Interconnection Between Partner Devices and OpenHarmony Devices](fusion-connectivity/partneragent-life-application-guide.md)

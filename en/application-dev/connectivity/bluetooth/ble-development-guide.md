@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1cdd305776bcaacdd45f57f863b06eb9c8b2cb12 translatedAt=2026-08-17T02:01:23.788Z pushedAt=2026-08-17T11:12:41.237Z -->
+<!-- md-trans-meta sourceCommit=a99b33c8ad0648a3849b2a4b8092cfac712c2100 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Introduction
 
@@ -446,8 +446,8 @@ export class BleScanManager {
     let localName: string = '';
     let serviceUuids: string[] = [];
     let serviceSolicitationUuids: string[] = [];
-    let manufactureSpecificDatas: Record<number, Uint8Array> = {};
-    let serviceDatas: Record<string, Uint8Array> = {};
+    let manufactureSpecificData: Record<number, Uint8Array> = {};
+    let serviceData: Record<string, Uint8Array> = {};
 
     let curPos = 0;
     while (curPos < advData.byteLength) {
@@ -497,16 +497,16 @@ export class BleScanManager {
             advData, serviceSolicitationUuids);
           break;
         case BLE_ADV_TYPE_16_BIT_SERVICE_DATA:
-          this.parseServiceData(BLUETOOTH_UUID_16_BIT_LENGTH, curPos, advDataLength, advData, serviceDatas);
+          this.parseServiceData(BLUETOOTH_UUID_16_BIT_LENGTH, curPos, advDataLength, advData, serviceData);
           break;
         case BLE_ADV_TYPE_32_BIT_SERVICE_DATA:
-          this.parseServiceData(BLUETOOTH_UUID_32_BIT_LENGTH, curPos, advDataLength, advData, serviceDatas);
+          this.parseServiceData(BLUETOOTH_UUID_32_BIT_LENGTH, curPos, advDataLength, advData, serviceData);
           break;
         case BLE_ADV_TYPE_128_BIT_SERVICE_DATA:
-          this.parseServiceData(BLUETOOTH_UUID_128_BIT_LENGTH, curPos, advDataLength, advData, serviceDatas);
+          this.parseServiceData(BLUETOOTH_UUID_128_BIT_LENGTH, curPos, advDataLength, advData, serviceData);
           break;
         case BLE_ADV_TYPE_MANUFACTURER_SPECIFIC_DATA:
-          this.parseManufactureData(curPos, advDataLength, advData, manufactureSpecificDatas);
+          this.parseManufactureData(curPos, advDataLength, advData, manufactureSpecificData);
           break;
         default:
           break;
@@ -518,8 +518,8 @@ export class BleScanManager {
     console.info(TAG, 'localName: ' + localName);
     console.info(TAG, 'serviceUuids: ' + JSON.stringify(serviceUuids));
     console.info(TAG, 'serviceSolicitationUuids: ' + JSON.stringify(serviceSolicitationUuids));
-    console.info(TAG, 'manufactureSpecificDatas: ' + JSON.stringify(manufactureSpecificDatas));
-    console.info(TAG, 'serviceDatas: ' + JSON.stringify(serviceDatas));
+    console.info(TAG, 'manufactureSpecificData: ' + JSON.stringify(manufactureSpecificData));
+    console.info(TAG, 'serviceData: ' + JSON.stringify(serviceData));
   }
 
   private parseServiceUuid(uuidLength: number, curPos: number, advDataLength: number,
@@ -565,17 +565,17 @@ export class BleScanManager {
   }
 
   private parseServiceData(uuidLength: number, curPos: number, advDataLength: number,
-    advData: Uint8Array, serviceDatas: Record<number, Uint8Array>) {
+    advData: Uint8Array, serviceData: Record<number, Uint8Array>) {
     let uuid: Uint8Array = advData.slice(curPos, curPos + uuidLength);
     let data: Uint8Array = advData.slice(curPos + uuidLength, curPos + advDataLength);
-    serviceDatas[this.getUuidFromUint8Array(uuidLength, uuid)] = data;
+    serviceData[this.getUuidFromUint8Array(uuidLength, uuid)] = data;
   }
 
   private parseManufactureData(curPos: number, advDataLength: number,
-    advData: Uint8Array, manufactureSpecificDatas: Record<number, Uint8Array>) {
+    advData: Uint8Array, manufactureSpecificData: Record<number, Uint8Array>) {
     let manufactureId: number = (advData[curPos + 1] << 8) + advData[curPos];
     let data: Uint8Array = advData.slice(curPos + BLUETOOTH_MANUFACTURE_ID_LENGTH, curPos + advDataLength);
-    manufactureSpecificDatas[manufactureId] = data;
+    manufactureSpecificData[manufactureId] = data;
   }
 
   // 2. Start a scan.
@@ -719,7 +719,7 @@ export class BleAdvertisingManager {
   public async enableAdvertising(enableDuration: number) {
     // 4.1 Construct an advertisingEnableParams instance for enabling BLE advertising.
     let advertisingEnableParams: ble.AdvertisingEnableParams = {
-      advertisingId: this.advHandle // Use the ID of the first BLE advertising.
+      advertisingId: this.advHandle, // Use the ID of the first BLE advertising.
       duration: enableDuration
     }
     try {

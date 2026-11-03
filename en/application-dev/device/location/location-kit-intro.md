@@ -1,4 +1,11 @@
 # Introduction to Location Kit
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=c9ba8f78b9508882630beebd38c66c0613ccfa4a translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z nl=1 -->
 
 ## Overview
 
@@ -10,9 +17,7 @@ Your application can call location-specific APIs to obtain the location informat
 
 ### About Location Kit
 
-Location awareness helps determine where a mobile device locates. Location Kit allows your system to identify the location of a mobile device with its coordinates, and uses location technologies such as Global Navigation Satellite System (GNSS) and network positioning (for example, base station positioning or WLAN/Bluetooth positioning) to provide diverse location-based services.
-
-These advanced location technologies make it possible to obtain the accurate location of the mobile device, regardless of whether it is indoors or outdoors.
+Location Kit uses multiple positioning technologies, including GNSS, base station positioning, and WLAN/Bluetooth positioning. The latter two are collectively referred to as network positioning. Together, these technologies determine a device's location accurately, whether the device is indoors or outdoors.
 
 - **Coordinate**<br>
   A coordinate describes a location on the earth using the longitude and latitude in reference to the World Geodetic Coordinate System 1984.
@@ -26,18 +31,24 @@ These advanced location technologies make it possible to obtain the accurate loc
 - **WLAN or Bluetooth positioning**<br>
   WLAN or Bluetooth positioning estimates the current location of a mobile device based on the locations of WLANs and Bluetooth devices that can be discovered by the device. The location accuracy of this technology depends on the distribution of fixed WLAN access points (APs) and Bluetooth devices around the device. A high density of WLAN APs and Bluetooth devices can produce a more accurate location result than base station positioning. This technology also requires access to the network.
 
-### How Location Kit Works
-
-Location awareness is offered by the system as a basic service for applications. Depending on the service scenario, an application needs to initiate a location request to the system and stop the location request when the service scenario ends. In this process, the system reports the location information to the application on a real-time basis.
+<!--RP1--><!--RP1End-->
 
 ### Constraints
+
+Location awareness is a basic system service for applications. Request location updates when your service scenario begins and stop the request when it ends. While the request is active, the system reports real-time location results to your application.
 
 Your application can use the location function only after the user has granted the required permission and turned on the location function. If the location function is off, the system will not provide the location service for any application.
 
 Since the location information is considered sensitive, your application still needs to obtain the location access permission from the user even if the user has turned on the location function. The system will provide the location service for your application only after it has been granted the permission to access the device location information.
 
+Location Kit provides different capabilities on different devices, and some capabilities depend on hardware support. For example, positioning chips such as GPS or BeiDou provide GNSS positioning. Devices without a positioning chip can still use WLAN or base station positioning if they have WLAN or cellular network access.
+
+<!--RP2--><!--RP2End-->
+
+<!--RP3--><!--RP3End-->
+
 ### Samples
 
 The following sample is provided to help you better understand how to use Location Kit:
 
-- [Location: Location Kit (ArkTS) (API9) ](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Location)
+- [Location: Location Kit (ArkTS) (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ConnectivityKit/Location)
