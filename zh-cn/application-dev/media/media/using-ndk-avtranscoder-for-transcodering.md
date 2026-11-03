@@ -68,129 +68,135 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
    应用使用OH_AVTranscoder_SetStateCallback()、OH_AVTranscoder_SetErrorCallback()和OH_AVTranscoder_SetProgressUpdateCallback()接口设置回调转码状态、转码错误事件和转码进度更新回调函数，可以获取更多信息，还可以通过设置userData自定义数据。
     
    <!-- @[setTranscoderCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
    ``` C++
    typedef struct NdkAVTransCoderUser {
-      using StateChangeFunc = std::function<void()>;
-      NdkAVTransCoderUser();
-      NdkAVTransCoderUser(const NdkAVTransCoderUser &other) = delete;
-      NdkAVTransCoderUser &operator=(const NdkAVTransCoderUser &other) = delete;
-      ~NdkAVTransCoderUser();
-
-      void OnStateChangeCb(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state);
-      void OnErrorCb(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg);
-      void OnProgressUpdateCb(OH_AVTranscoder *transcoder, int progress);
-      std::map<uint32_t, StateChangeFunc> stateChangeFuncs_;
-
-      OH_AVTranscoder *transcoder = nullptr;
-      int32_t errorCode = AV_ERR_OK;
-      int32_t transCoderState = -1;
-      int avTranscoderProgress = 0;
-      int inStartStateCount = 0;
+       using StateChangeFunc = std::function<void()>;
+       NdkAVTransCoderUser();
+       NdkAVTransCoderUser(const NdkAVTransCoderUser &other) = delete;
+       NdkAVTransCoderUser &operator=(const NdkAVTransCoderUser &other) = delete;
+       ~NdkAVTransCoderUser();
+   
+       void OnStateChangeCb(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state);
+       void OnErrorCb(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg);
+       void OnProgressUpdateCb(OH_AVTranscoder *transcoder, int progress);
+       std::map<uint32_t, StateChangeFunc> stateChangeFuncs_;
+   
+       OH_AVTranscoder *transcoder = nullptr;
+       int32_t errorCode = AV_ERR_OK;
+       int32_t transCoderState = -1;
+       int avTranscoderProgress = 0;
+       int inStartStateCount = 0;
    } NdkAVTransCoderUser;
-
+   // ...
    void NdkAVTransCoderUser::OnProgressUpdateCb(OH_AVTranscoder *transcoder, int progress)
    {
-      LOG("NdkAVTransCoderUser OnProgressUpdateCb progress: %{public}d", progress);
-      this->avTranscoderProgress = progress;
+       LOG("NdkAVTransCoderUser OnProgressUpdateCb progress: %{public}d", progress);
+       this->avTranscoderProgress = progress;
    }
-
+   // ...
+   
    void NdkAVTransCoderUser::OnErrorCb(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg)
    {
-      LOG("NdkAVTransCoderUser OnErrorCb errorCode: %{public}d ,errorMsg: %{public}s", errorCode,
-         errorMsg == nullptr ? "unknown" : errorMsg);
-      this->errorCode = errorCode;
-      AvTranscoderRelease(transcoder);
+       LOG("NdkAVTransCoderUser OnErrorCb errorCode: %{public}d ,errorMsg: %{public}s", errorCode,
+           errorMsg == nullptr ? "unknown" : errorMsg);
+       this->errorCode = errorCode;
+       AvTranscoderRelease(transcoder);
    }
-
+   
    void NdkAVTransCoderUser::OnStateChangeCb(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state)
    {
-      if (transcoder == nullptr) {
-         return;
-      }
-      int32_t ret = -1;
-      switch (state) {
-         case AVTRANSCODER_PREPARED: {
+       if (transcoder == nullptr) {
+           return;
+       }
+       int32_t ret = -1;
+       switch (state) {
+           case AVTRANSCODER_PREPARED: {
                this->transCoderState = TRANSCODER_PREPARED;
                if (this->stateChangeFuncs_.count(TRANSCODER_PREPARED) > 0) {
-                  this->stateChangeFuncs_[TRANSCODER_PREPARED]();
+                   this->stateChangeFuncs_[TRANSCODER_PREPARED]();
                }
                break;
-         }
-         case AVTRANSCODER_STARTED: {
+           }
+           case AVTRANSCODER_STARTED: {
                this->transCoderState = TRANSCODER_STARTED;
                if (this->stateChangeFuncs_.count(TRANSCODER_STARTED) > 0) {
-                  this->stateChangeFuncs_[TRANSCODER_STARTED]();
+                   this->stateChangeFuncs_[TRANSCODER_STARTED]();
                }
                break;
-         }
-         case AVTRANSCODER_PAUSED: {
+           }
+           case AVTRANSCODER_PAUSED: {
                this->transCoderState = TRANSCODER_PAUSED;
                if (this->stateChangeFuncs_.count(TRANSCODER_PAUSED) > 0) {
-                  this->stateChangeFuncs_[TRANSCODER_PAUSED]();
+                   this->stateChangeFuncs_[TRANSCODER_PAUSED]();
                }
                break;
-         }
-         case AVTRANSCODER_CANCELLED: {
+           }
+           case AVTRANSCODER_CANCELLED: {
                this->transCoderState = TRANSCODER_CANCELLED;
                if (this->stateChangeFuncs_.count(TRANSCODER_CANCELLED) > 0) {
-                  this->stateChangeFuncs_[TRANSCODER_CANCELLED]();
+                   this->stateChangeFuncs_[TRANSCODER_CANCELLED]();
                }
                break;
-         }
-         case AVTRANSCODER_COMPLETED: {
+           }
+           case AVTRANSCODER_COMPLETED: {
                this->transCoderState = TRANSCODER_COMPLETED;
                if (this->stateChangeFuncs_.count(TRANSCODER_COMPLETED) > 0) {
-                  this->stateChangeFuncs_[TRANSCODER_COMPLETED]();
+                   this->stateChangeFuncs_[TRANSCODER_COMPLETED]();
                }
                break;
-         }
-         default:
+           }
+           default:
                break;
-      }
+       }
    }
-
+   
    static void AvTranscoderStateChangeCbImpl(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state, void *userData)
    {
-      LOG("AvTranscoderStateChangeCbImpl state: %{public}d", state);
-      NdkAVTransCoderUser *ndkAVTransCoderUser = reinterpret_cast<NdkAVTransCoderUser *>(userData);
-      if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
-         LOGE("AvTranscoderStateChangeCbImpl ndkAVTransCoderUser or transcoder is nullptr");
-         return;
-      }
-      ndkAVTransCoderUser->OnStateChangeCb(transcoder, state);
+       LOG("AvTranscoderStateChangeCbImpl state: %{public}d", state);
+       NdkAVTransCoderUser *ndkAVTransCoderUser = reinterpret_cast<NdkAVTransCoderUser *>(userData);
+       if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
+           LOGE("AvTranscoderStateChangeCbImpl ndkAVTransCoderUser or transcoder is nullptr");
+           return;
+       }
+       ndkAVTransCoderUser->OnStateChangeCb(transcoder, state);
    }
-
+   
    static void AvTranscoderErrorCbImpl(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg,
                                        void *userData)
    {
-      LOG("AvTranscoderErrorCbImpl errorCode: %{public}d, errorMsg: %{public}s", errorCode,
-         errorMsg == nullptr ? "unknown" : errorMsg);
-      NdkAVTransCoderUser *ndkAVTransCoderUser = reinterpret_cast<NdkAVTransCoderUser *>(userData);
-      if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
-         LOGE("AvTranscoderErrorCbImpl ndkAVTransCoderUser or transcoder is nullptr");
-         return;
-      }
-      ndkAVTransCoderUser->OnErrorCb(transcoder, errorCode, errorMsg);
+       LOG("AvTranscoderErrorCbImpl errorCode: %{public}d, errorMsg: %{public}s", errorCode,
+           errorMsg == nullptr ? "unknown" : errorMsg);
+       NdkAVTransCoderUser *ndkAVTransCoderUser = reinterpret_cast<NdkAVTransCoderUser *>(userData);
+       if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
+           LOGE("AvTranscoderErrorCbImpl ndkAVTransCoderUser or transcoder is nullptr");
+           return;
+       }
+       ndkAVTransCoderUser->OnErrorCb(transcoder, errorCode, errorMsg);
    }
-
+   
    static void AvTranscoderProgressUpdateCbImpl(OH_AVTranscoder *transcoder, int progress, void *userData)
    {
-      LOG("AvTranscoderProgressUpdateCbImpl progress: %{public}d", progress);
-      NdkAVTransCoderUser *ndkAVTransCoderUser = reinterpret_cast<NdkAVTransCoderUser *>(userData);
-      if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
-         LOGE("AvTranscoderProgressUpdateCbImpl ndkAVTransCoderUser or transcoder is nullptr");
-         return;
-      }
-      ndkAVTransCoderUser->OnProgressUpdateCb(transcoder, progress);
+       LOG("AvTranscoderProgressUpdateCbImpl progress: %{public}d", progress);
+       NdkAVTransCoderUser *ndkAVTransCoderUser = reinterpret_cast<NdkAVTransCoderUser *>(userData);
+       if (ndkAVTransCoderUser == nullptr || transcoder == nullptr) {
+           LOGE("AvTranscoderProgressUpdateCbImpl ndkAVTransCoderUser or transcoder is nullptr");
+           return;
+       }
+       ndkAVTransCoderUser->OnProgressUpdateCb(transcoder, progress);
    }
+   // ...
    static napi_value OHAvTranscoderNdkPlay(napi_env env, napi_callback_info info)
    {
-      OH_AVTranscoder *transcoder = OH_AVTranscoder_Create();
-      NdkAVTransCoderUser *transcoderUser = nullptr;
-      OH_AVTranscoder_SetStateCallback(transcoder, AvTranscoderStateChangeCbImpl, transcoderUser); // 设置状态回调。
-      OH_AVTranscoder_SetErrorCallback(transcoder, AvTranscoderErrorCbImpl, transcoderUser); // 设置错误码回调。
-      OH_AVTranscoder_SetProgressUpdateCallback(transcoder, AvTranscoderProgressUpdateCbImpl, transcoderUser); // 设置进度值回调。
+       // ...
+   
+       OH_AVTranscoder *transcoder = OH_AVTranscoder_Create();
+       NdkAVTransCoderUser *transcoderUser = nullptr;
+       // ...
+       OH_AVTranscoder_SetStateCallback(transcoder, AvTranscoderStateChangeCbImpl, transcoderUser); // 设置状态回调
+       OH_AVTranscoder_SetErrorCallback(transcoder, AvTranscoderErrorCbImpl, transcoderUser); // 设置错误码回调
+       OH_AVTranscoder_SetProgressUpdateCallback(transcoder, AvTranscoderProgressUpdateCbImpl, transcoderUser); // 设置进度值回调
+       // ...
    }
    ```
 
