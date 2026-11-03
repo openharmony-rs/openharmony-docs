@@ -242,10 +242,10 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
                   const element = document.getElementById('text');
                   element.textContent = "load " + file + " success";
                 } else {
-                    // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
-                    const element = document.getElementById('text');
-                    element.textContent = "load " + file + " failed";
-                  }
+                  // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
+                  const element = document.getElementById('text');
+                  element.textContent = "load " + file + " failed";
+                }
               }
             }
             xmlHttpReq.open("GET", file);
