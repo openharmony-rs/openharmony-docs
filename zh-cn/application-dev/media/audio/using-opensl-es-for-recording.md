@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "为存量应用提供OpenSL ES录音与缓冲队列示例，新开发推荐使用OHAudio。"
-keywords: [OpenSL ES, OHAudio, Native API, PCM, BufferQueue, CreateAudioRecorder, SetRecordState, RegisterCallback]
+keywords: [OpenSL ES, OHAudio, Native API, BufferQueue, CreateAudioRecorder, SetRecordState, RegisterCallback]
 doctype: guide
 status: not recommended
 ---

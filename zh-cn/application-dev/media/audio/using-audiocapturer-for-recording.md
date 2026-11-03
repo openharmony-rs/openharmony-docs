@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "通过ArkTS配置PCM采集、权限与数据回调，管理录制状态，并处理过载、静音和回声消除。"
-keywords: [AudioCapturer, PCM, 麦克风权限, readData, 状态变化, 过载, 静音打断模式, 静音提示, 回声消除]
+keywords: [AudioCapturer, 麦克风权限, readData, 状态变化, 过载, 静音打断模式, 静音提示, 回声消除]
 doctype: guide
 status: active
 ---

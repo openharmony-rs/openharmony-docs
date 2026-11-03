@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "使用ArkTS或C/C++配置内录模式，处理异步授权与PCM回调，并设置播放流隐私保护。"
-keywords: [AudioCapturer, OH_AudioCapturer, playbackCaptureMode, PCM, 用户授权, 隐私保护, MODE_MEDIA, MODE_EXCLUDING_SELF]
+keywords: [录制系统音频, 内录模式, 音频采集器, 媒体模式, 排除自身模式, 用户授权, 异步回调, 内录策略]
 doctype: guide
 status: active
 ---
