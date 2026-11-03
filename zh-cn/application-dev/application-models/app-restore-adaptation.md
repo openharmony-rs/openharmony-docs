@@ -384,8 +384,8 @@ export function isRestoreLaunch(want: Want, launchParam: AbilityConstant.LaunchP
   const sysFlag = want?.parameters?.['ohos.ability.params.abilityRecoveryRestart'];
   const bySysKey: boolean = sysFlag === true || sysFlag === 'true';
   const byRestoreKey: boolean = restoreKeys.some(k => want?.parameters?.[k] !== undefined);
-  const byReason: boolean = launchParam?.launchReason === AbilityConstant.LaunchReason.APP_RECOVERY
-    && deviceInfo.sdkApiVersion >= 26;
+  const byReason: boolean = launchParam?.launchReason === AbilityConstant.LaunchReason.APP_RECOVERY &&
+    deviceInfo.sdkApiVersion >= 26;
   return bySysKey || byRestoreKey || byReason;
 }
 ```
