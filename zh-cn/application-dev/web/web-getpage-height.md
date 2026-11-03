@@ -152,7 +152,7 @@ struct Scene2JsBridge {
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is undefined");
+            console.error("jsbObj is undefined");
         }
     });
 </script>
