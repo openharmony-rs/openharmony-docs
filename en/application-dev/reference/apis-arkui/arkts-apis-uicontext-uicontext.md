@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=5a7da946d26bf00d2011e61a5e57cc9a02f4859a translatedAt=2026-11-02T12:54:30.011Z pushedAt=2026-11-03T08:28:13.631Z nl=1 -->
 
 The UIContext instance provides contextual capabilities associated with the current UI instance. It supports obtaining UI-related controllers, managing dialogs and animations, querying node and window information, and converting pixel units. This is suitable for scenarios where you need to manage pages, components, and interactions within a specified UI instance.
 
@@ -495,7 +496,7 @@ Obtains the **ComponentUtils** object.
 | --------------------------------- | --------------------- |
 | [ComponentUtils](arkts-apis-uicontext-componentutils.md) | **ComponentUtils** object.|
 
-**Example**
+**Example** 
 
 For the complete example, see [Example 1: Obtaining the ComponentUtils Object](js-apis-arkui-componentUtils.md#example-1-obtaining-the-componentutils-object).
 
@@ -583,6 +584,30 @@ struct Index {
 }
 ```
 
+## getPlaceholderRegister
+
+getPlaceholderRegister(): PlaceholderRegister
+
+Obtains the [PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister) object, through which you can register, unregister, and query scrolling placeholder templates for use by the [scrollPlaceholder](./arkui-ts/ts-container-list.md#scrollplaceholder) attribute of [List](./arkui-ts/ts-container-list.md). Each UI instance holds an independent registry.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type | Description |
+| ---- | ---- |
+| [PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister) | Scrolling placeholder registry of the current UI instance. |
+
+**Example**
+
+For details, see [Example 1: Registering a Scrolling Placeholder Template and Setting the Scrolling Placeholder](./arkts-apis-placeholderregister.md#example-1-registering-a-scrolling-placeholder-template-and-setting-the-scrolling-placeholder).
+
 ## getId<sup>22+</sup>
 
 getId(): number
@@ -632,7 +657,7 @@ Obtains a **MediaQuery** object.
 | ------------------------- | ----------------- |
 | [MediaQuery](arkts-apis-uicontext-mediaquery.md) | **MediaQuery** object.|
 
-**Example**
+**Example** 
 
 See the [mediaquery Example](js-apis-mediaquery.md#example).
 
@@ -682,7 +707,7 @@ getDialogPresenter(): DialogPresenter
 
 Obtains the DialogPresenter object, which can be used to manage the display, update, and close of dialog boxes.
 
-**Since:** 26.0.1
+**Since**: 26.0.1
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
@@ -734,7 +759,7 @@ Sets the parameters for [OverlayManager](arkts-apis-uicontext-overlaymanager.md)
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
 | options | [OverlayManagerOptions](arkts-apis-uicontext-i.md#overlaymanageroptions15) | Yes| Parameters for **OverlayManager**.|
 
-**Return value**
+**Return value** 
 
 | Type   | Description          |
 | ------- | -------------- |
@@ -1027,7 +1052,7 @@ Obtains the context of the ability where the current component is located.
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](arkts-apis-uicontext-t.md#context12)&nbsp;\|&nbsp;undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned.|
+| [Context](arkts-apis-uicontext-t.md#context)&nbsp;\|&nbsp;undefined | Context of the ability where the current component is located. The specific type of the context depends on the context object associated with the current ability. For example, when this API is called on a page within a UIAbility window, the return type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext). When this API is called on a page within an ExtensionAbility window, the return type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned. |
 
 **Example**
 
@@ -1360,7 +1385,7 @@ Shows an action sheet in the given settings.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                |
 | ------ | ------------------------------------------------------------ | ---- | -------------------- |
@@ -1437,7 +1462,7 @@ Shows a date picker dialog box in the given settings.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                          |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -1513,7 +1538,7 @@ Shows a time picker dialog box in the given settings.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                          |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -1580,7 +1605,7 @@ Shows a text picker dialog box in the given settings.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                          |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -1658,7 +1683,7 @@ Shows a text picker dialog box in the given settings. Compared to API version 11
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                          |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -2082,7 +2107,7 @@ Obtains the component tree and component attributes. This API has a long process
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | filters | Array\<string\> | No  | List of component attributes used for filtering. Currently, only the following filter fields are supported:<br>**"id"**: unique ID of the component.<br>**"src"**: source of the resource.<br>**"content"**: information or data contained in the element, component, or object.<br>**"editable"**: whether the component is editable.<br>**"scrollable"**: whether the component is scrollable.<br>**"selectable"**: whether the component is selectable.<br>**"focusable"**: whether the component is focusable.<br>**"focused"**: whether the component is currently focused.<br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out.<br>The following filter field is supported since API version 20:<br>**"isLayoutInspector"**: whether the component tree contains [custom components](../../ui/state-management/arkts-create-custom-components.md). If **filters** is omitted or does not contain **"isLayoutInspector"**, the returned component tree will not include custom component details.<br>Other filter fields are used only in testing scenarios.|
 
-**Return value**
+**Return value** 
 
 | Type  | Description                              |
 | ------ | ---------------------------------- |
@@ -2184,7 +2209,7 @@ Obtains the attributes of the specified component and its child components. This
 | depth   | number          | Yes  | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of the specified component are obtained. If the value is **2**, the attributes of the specified component and its level-1 child components are obtained. The rest can be deduced by analogy.|
 | filters | Array\<string\> | No  | List of component attributes used for filtering. Currently, only the following filter fields are supported:<br>**"id"**: unique ID of the component.<br>**"src"**: source of the resource.<br>**"content"**: information or data contained in the element, component, or object.<br>**"editable"**: whether the component is editable.<br>**"scrollable"**: whether the component is scrollable.<br>**"selectable"**: whether the component is selectable.<br>**"focusable"**: whether the component is focusable.<br>**"focused"**: whether the component is currently focused.<br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out.<br>Other filter fields are used only in testing scenarios.|
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2316,7 +2341,7 @@ Obtains a **MeasureUtils** object for text calculation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2698,7 +2723,7 @@ Obtains the name of the window where this instance is located.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2752,7 +2777,7 @@ Obtains the ID of the window to which the current application instance belongs.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2797,7 +2822,7 @@ Obtains the width breakpoint value of the window where this instance is located.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2846,7 +2871,7 @@ Obtains the height breakpoint value of the window where this instance is located
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2881,6 +2906,50 @@ struct Index {
       }
       .width('100%')
     }
+    .height('100%')
+  }
+}
+```
+
+## isWindowInfoInitialized
+
+isWindowInfoInitialized(): boolean
+
+Queries whether the window information of the current instance is initialized. It is usually used in the startup phase to check before obtaining the window layout breakpoint through the UI context. When the window information is not initialized, the value returned by the breakpoint API is unreliable.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type | Description |
+| ---- | ---- |
+| boolean | Whether the window information is initialized. Returns **true** if the width and height are valid; returns **false** otherwise. |
+
+**Example**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Button('Check window information')
+        .onClick(() => {
+          const initialized = this.uiContext.isWindowInfoInitialized();
+          console.info(`Window information initialized: ${initialized}`);
+        })
+    }
+    .width('100%')
     .height('100%')
   }
 }
@@ -2949,7 +3018,7 @@ Registers a callback to be executed on the next frame after a delay.
 | Name| Type  | Mandatory| Description                                   |
 | ------ | ------ | ---- | --------------------------------------- |
 | frameCallback | [FrameCallback](arkts-apis-uicontext-framecallback.md) | Yes  | Callback to be executed for the next frame.|
-| delayTime | number | Yes  | Delay time, in milliseconds. If a **null**, **undefined**, or value less than 0 is passed in, it will be treated as **0**.|
+| delayTime | number | Yes | Delay, in milliseconds. If **null**, **undefined**, or a value less than 0 is passed in, it will be treated as **0**. |
 
 **Example**
 
@@ -2999,7 +3068,7 @@ Requests the dynamic sync scene of a component for customizing related frame rat
 | ------ | ------ | ---- | --------------------------------------- |
 | id | string | Yes   | [Component ID](arkui-ts/ts-universal-attributes-component-id.md) of the target node.|
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -3059,7 +3128,7 @@ struct Frame {
 
 openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions?: SheetOptions, targetId?: number): Promise&lt;void&gt;
 
-Creates a sheet whose content is as defined in **bindSheetContent** and displays the sheet. This API uses a promise to return the result.  
+Creates a sheet whose content is as defined in **bindSheetContent** and displays the sheet. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -3232,7 +3301,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -3845,7 +3914,7 @@ Dispatches a key event to the specified component. To ensure predictable behavio
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                         | Mandatory| Description              |
 | ------ | ----------------------------- | ---- | ------------------ |
@@ -3989,7 +4058,7 @@ Sets the maximum number of cached HSP resource management objects.
 
 **Error codes**
 
-For details about the error codes, see UI Context Error Codes.
+For details about the error codes, see [UI Context Error Codes](errorcode-uicontext.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -4158,7 +4227,7 @@ When disabled, the customer keyboard will dismiss and re-launch during input fie
 
 ```ts
 // xxx.ets
-import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+import { CustomKeyboardContinueFeature } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -4228,7 +4297,7 @@ struct Index {
   build() {
     Scroll() {
       Column() {
-        Button ('Persist Input:' this.str).onClick(() => {
+        Button ('Persist Input: ' + this.str).onClick(() => {
           if (this.isValue == CustomKeyboardContinueFeature.ENABLED) {
             this.isValue = CustomKeyboardContinueFeature.DISABLED
             this.str = 'No'
@@ -4687,4 +4756,165 @@ struct Index {
   }
 }
 ```
-<!--no_check-->
+
+## applyDefaultImmersiveStrategy
+
+applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void
+
+Applies the immersive policy of the safe area in EntryAbility or on the application home page. It is suitable for scenarios such as full-screen or immersive applications. The immersive policy of the safe area can be configured uniformly before the first layout of the application. After the policy is applied, the way the page handles the safe area is adjusted according to the specified policy.
+
+> **NOTE**
+>
+> Dynamic update is not supported. This API takes effect only when called before the first layout process of the application starts. If it is called after the page enters the first layout process, the applied policy remains unchanged and this API does not take effect.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                                      | Mandatory | Description                                   |
+| ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
+| types | [ImmersiveStrategy\[\]](arkui-ts/ts-appendix-enums.md#immersivestrategy) | No   | Immersive policy to apply. An empty array clears all applied immersive policies.<br/>Abnormal values such as **undefined**, **null**, **NaN**, and **Infinity** are treated as an empty array. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.applyDefaultImmersiveStrategy(ImmersiveStrategy.AVOID_CUTOUT,
+        ImmersiveStrategy.AVOID_FLOAT_NAV);
+    });
+  }
+}
+
+// Index.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }.width(LayoutPolicy.matchParent)
+    .height(LayoutPolicy.matchParent)
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+![ImmersiveStrategy](./figures/ImmersiveStrategy.jpeg)
+
+## setTransPageEnabled
+
+setTransPageEnabled(enabled: boolean): void
+
+<!--RP3-->Enables or disables the **transPages** configuration of forced split-screen. After it is disabled, the transition pages configured in **transPages** participate in the right-to-left transition behavior instead of being fixed on the right. If this API is not called, the default value is **true**.<!--RP3End-->
+
+> **NOTE**
+>
+> - This API takes effect only in shopping mode. Calling it in navigation mode (which uses the pagePairs mechanism) has no side effect.
+> - This API takes effect on the next route transition and does not trigger re-layout or animation of the current page.
+> - Calling this API when the application does not configure forced split-screen produces no effect and does not affect application stability.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------- | ---- | ---- | ---- |
+| enabled | boolean | Yes | Whether to enable the **transPages** configuration. The value **true** indicates to enable the **transPages** behavior (default value), and **false** indicates the opposite. After it is disabled, the transition pages participate in the right-to-left transition behavior. |
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State transPageEnabled: boolean = true;
+
+  build() {
+    Column() {
+      Text(`${this.transPageEnabled ? 'transPages enabled' : 'transPages disabled'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Disable TransPage')
+        .onClick(() => {
+          this.getUIContext()?.setTransPageEnabled(false);
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+        .margin(10)
+      Button('Enable TransPage')
+        .onClick(() => {
+          this.getUIContext()?.setTransPageEnabled(true);
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## isTransPageEnabled
+
+isTransPageEnabled(): boolean
+
+<!--RP5-->Queries whether the **transPages** configuration is enabled for forced split-screen.<!--RP5End-->
+
+> **NOTE**
+>
+> - **true** is returned if [setTransPageEnabled](#settranspageenabled) is not called, indicating that the **transPages** configuration takes effect by default.
+> - **true** is returned if the application does not configure forced split-screen (consistent with the default behavior).
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type    | Description                                       |
+| ------- | ------------------------------------------ |
+| boolean | Whether the **transPages** configuration is enabled for forced split-screen of the current UI instance. The value **true** indicates that the **transPages** configuration is enabled, and **false** indicates the opposite. |
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State transPageEnabled: boolean = true;
+
+  build() {
+    Column() {
+      Text(`${this.transPageEnabled ? 'transPages enabled' : 'transPages disabled'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Check TransPageEnabled')
+        .onClick(() => {
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
