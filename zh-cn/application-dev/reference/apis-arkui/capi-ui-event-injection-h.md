@@ -139,9 +139,9 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 
 各命令特有的参数说明如下；除非特别标注为必填，否则action_info中的字段均为可选：
 
-- click：mode为可选参数，默认值为"auto"；action_info.coordinates 包含x1和y1（两者均为必填）。
+- click：mode为可选参数，默认值为"auto"；action_info.coordinates包含x1和y1（两者均为必填）。
 - content_switch：mode必须为"target"；action_info.count必须为正整数（可选，默认值为1）；action_info.direction取值为"forward"或"backward"（可选，默认值为"forward"）；action_info.coordinates.pos包含x和y（必填）。
-- scroll：mode为可选参数，默认值为"auto"；action_info.direction取值为 "forward"、"backward"、"left"、"right"、"up" 或 "down"，可选，默认"forward"；action_info.distance为非负的物理像素值（可选，默认值为窗口高度的三分之一）；action_info.coordinates包含x1和y1（必填），x2和y2（可选）。
+- scroll：mode为可选参数，默认值为"auto"；action_info.direction取值为"forward"、"backward"、"left"、"right"、"up"或"down"，可选，默认"forward"；action_info.distance为非负的物理像素值（可选，默认值为窗口高度的三分之一）；action_info.coordinates包含x1和y1（必填），x2和y2（可选）。
 - backpress：无参数。
 - key：不使用mode字段，传入时不影响执行；action_info.code表示虚拟按键代码，必须为有效的按键代码（必填）。
 
