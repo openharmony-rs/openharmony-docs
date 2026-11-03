@@ -509,6 +509,8 @@ export function func() {
     ``` TypeScript
     import('./1').then((ns:ESObject) => {
       console.info('import file 1 success');
+    }).catch((e: Error) => {
+      console.error('import file 1 failed: ' + e.message);
     });
     ```
 

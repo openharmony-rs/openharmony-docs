@@ -1571,7 +1571,7 @@ struct WebComponent {
                   try {
                     if (result.getErrorDescription()) {
                       // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                       return;
                     }
                     let type = result.getType();
@@ -1668,7 +1668,7 @@ struct WebComponent {
                   try {
                     if (result.getErrorDescription()) {
                       // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                       return;
                     }
                     let type = result.getType();
@@ -1798,7 +1798,7 @@ struct WebComponent {
               try {
                 if (result.getErrorDescription()) {
                   // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                  console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                  console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                   return;
                 }
                 let type = result.getType();
@@ -1884,7 +1884,7 @@ struct WebComponent {
                 try {
                   if (result.getErrorDescription()) {
                     // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                    console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                    console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                     return;
                   }
                   let type = result.getType();

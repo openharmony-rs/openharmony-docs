@@ -76,12 +76,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *SRC_CALL_NATIVE = R"JS(getVM())JS";
 ```
 
-样例测试JS
-
-```c++
-const char *srcCallNative = R"JS(getVM())JS";
-```
-
 预计的输出结果：
 ```txt
 JSVM OH_JSVM_GetVM: success
@@ -145,12 +139,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 const char *SRC_CALL_NATIVE = R"JS(getHeapStatistics())JS";
-```
-
-样例测试JS
-
-```c++
-const char *srcCallNative = R"JS(getHeapStatistics())JS";
 ```
 
 预计的输出结果（虚拟机堆的统计数据，会实时发生变化）：

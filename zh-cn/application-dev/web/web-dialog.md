@@ -18,7 +18,7 @@
 
 应用可以通过[onAlert](../reference/apis-arkweb/arkts-basic-components-web-events.md#onalert)事件监听网页`alert`方法，并创建合适的弹框。
 
-- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
+- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)方法创建弹框。
     <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) -->
     
     ``` TypeScript
@@ -90,7 +90,7 @@
   </html>
   ```
 
-- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)创建弹框。
+- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)组件创建弹框。
     <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
     
     ``` TypeScript
@@ -185,7 +185,7 @@
 
 应用可以通过[onConfirm](../reference/apis-arkweb/arkts-basic-components-web-events.md#onconfirm)事件监听网页`confirm`方法，并创建合适的弹框。
 
-- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
+- 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)方法创建弹框。
     <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) --> 
     
     ``` TypeScript
