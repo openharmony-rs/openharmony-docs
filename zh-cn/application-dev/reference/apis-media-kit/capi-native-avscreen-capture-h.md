@@ -1559,6 +1559,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreen
 > 该接口设置为true时：
 >
 > - 若[OH_DataType](capi-native-avscreen-capture-base-h.md#oh_datatype)取值为OH_CAPTURE_FILE，需要设置[OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md)的videoCodec为H265编码格式，否则会导致文件存储失败。
+> 
 > - 获取到的视频像素格式为RGBA1010102，需要使用[OH_AVCapability_GetVideoSupportedPixelFormats](../apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getvideosupportedpixelformats)查看设备是否支持该格式的数据。
 
 **起始版本：** 26.1.0
