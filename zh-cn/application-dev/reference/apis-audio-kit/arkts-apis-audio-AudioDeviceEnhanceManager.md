@@ -59,7 +59,7 @@ import { audio } from '@kit.AudioKit';
 | model | string | 是 | 否 | 声卡型号。最大长度为128字节。 |
 | busAddress | string | 是 | 否 | 声卡总线地址。最大长度为256字节。 |
 | driver | string | 是 | 否 | 声卡驱动信息。最大长度为128字节。 |
-| cardId | string | 是 | 是 | 声卡ID。最大长度为128字节。默认使用板载声卡的声卡ID。 |
+| cardId | string | 是 | 是 | 声卡ID。默认使用板载声卡的声卡ID。最大长度为128字节。 |
 | cardType | [SoundCardType](#soundcardtype) | 是 | 是 | 声卡类型。默认为板载声卡类型。 |
 
 ## isEnhancedRoutingSupported()
