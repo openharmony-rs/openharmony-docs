@@ -6,9 +6,13 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=289448f9e8c34d626462a3c44c66800818efaf3a translatedAt=2026-09-15T13:37:52.112Z pushedAt=2026-09-17T08:49:03.601Z -->
+<!-- md-trans-meta sourceCommit=1f52f7aac7b6f238f6e71771e1abacfe15a739f1 translatedAt=2026-11-03T03:34:21.643Z pushedAt=2026-11-03T07:36:03.239Z nl=1 -->
 
 This module provides the APIs for registering, canceling, and querying deferred tasks. You can use the APIs to register tasks that do not have high requirements on real-time performance as deferred tasks. The system schedules and executes the deferred tasks when the system is idle, based on performance, power consumption, temperature, and other conditions.
+
+> **NOTE**
+>
+> - This page contains only the system APIs of this module. For other public APIs, see [@ohos.resourceschedule.workScheduler (Deferred Task Scheduling)](js-apis-resourceschedule-workScheduler.md).
 
 **Since:** 26.0.0
 
@@ -61,8 +65,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9700003 | System service operation failed. |
 | 9700006 | Failed to check the execution frequency parameters. |
 
@@ -113,8 +117,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9700003 | System service operation failed. |
 | 9700006 | Failed to check the execution frequency parameters. |
 
@@ -138,10 +142,6 @@ try {
 Describes the specific information used to set the execution frequency based on the app activity group.
 
 When **FrequencyInfo** is used to set the execution frequency, **uid**, **workId**, and **interval** are mandatory.
-
-
-
-
 
 **Since:** 26.0.1
 
