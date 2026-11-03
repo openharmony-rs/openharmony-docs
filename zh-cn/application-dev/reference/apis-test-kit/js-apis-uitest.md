@@ -7832,7 +7832,7 @@ inputText(text: string): Promise\<void>
 向控件中输入文本，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 > **说明：**
-
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](#inputtext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
