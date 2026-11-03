@@ -564,9 +564,11 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ## Album
 
-实体相册
+实体相册。
 
 ### 属性
+
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -576,10 +578,10 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 | 名称         | 类型                          | 只读                         | 可选 | 说明             |
 | ------------ | ----------------------------- | ---------------------------- | ---- | ---------------- |
-| shareRiskType   | string                                        | 是  | 是   | 共享相册的风控类型。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
-| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 是  | 是   | 共享相册的风控状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
-| cloudId         | string                                        | 是  | 是   | 相册CloudId。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。         |
-| shareAlbumOwner | string                                        | 是  | 是   | 共享相册的所有者。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。     |
+| shareRiskType   | string                                        | 是  | 是   | 共享相册的风控类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 是  | 是   | 共享相册的风控状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| cloudId         | string                                        | 是  | 是   | 相册CloudId。<br>**模型约束：** 此接口仅可在Stage模型下使用。         |
+| shareAlbumOwner | string                                        | 是  | 是   | 共享相册的所有者。<br>**模型约束：** 此接口仅可在Stage模型下使用。     |
 
 ### getFaceId<sup>13+</sup>
 
@@ -684,6 +686,6 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 | 名称                  | 值   | 说明                                                       |
 | --------------------- | ---- | ---------------------------------------------------------- |
-| UNDER_REVIEW          | 0 | 表示正在审查中。  |
-| LOW_REVIEW_RISK       | 1 | 表示审核风险低。  |
-| HIGH_REVIEW_RISK      | 2 | 表示审核风险高。  |
+| UNDER_REVIEW          | 0 | 表示共享相册正在审查中。  |
+| LOW_REVIEW_RISK       | 1 | 表示共享相册审核风险低。  |
+| HIGH_REVIEW_RISK      | 2 | 表示共享相册审核风险高。  |

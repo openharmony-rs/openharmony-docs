@@ -5729,7 +5729,7 @@ class ShareAlbumExample {
 
 ### applyShareAlbumChanges
 
-applyShareAlbumChanges(mediaChangeRequest: [MediaShareAlbumChangeRequest](#mediasharealbumchangerequest)): Promise&lt;[Album](#album)|null&gt;
+applyShareAlbumChanges(mediaChangeRequest: MediaShareAlbumChangeRequest): Promise&lt;Album|null&gt;
 
 提交共享相册变更请求，返回变更后的目标共享相册。使用Promise异步回调。
 
@@ -5755,7 +5755,7 @@ applyShareAlbumChanges(mediaChangeRequest: [MediaShareAlbumChangeRequest](#media
 
 | 类型   | 说明   |
 | -------- | -------- |
-| Promise&lt;[Album](#album)|null&gt; | Promise对象，返回变更后的目标共享相册；返回null表示未返回相册信息。 |
+| Promise&lt;[Album](#album)\|null&gt; | Promise对象，返回变更后的目标共享相册；返回null表示未返回相册信息。 |
 
 **错误码：**
 
@@ -15383,7 +15383,7 @@ try {
 | size | number  | 否 | 是 | 媒体资产（图片/视频）的文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**系统接口**：此接口为系统接口。  |
 | albumChangeInfos | [AlbumChangeInfo](#albumchangeinfo20)[]  | 否 | 是 | 智慧相册的相册变更信息。<br>**系统接口**：此接口为系统接口。  |
 | shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 否 | 是 | 共享相册资产的风险状态。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
-| shareDateDay | number | 否 | 是 | 共享相册资产待共享的日期天。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| shareDateDay | number | 否 | 是 | 共享相册资产共享的日期。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
 | photoVisibility | number | 否 | 是 | 图片的可见性。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
 | shareGroup | number | 否 | 是 | 待共享的共享相册资产分组。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
 
@@ -15951,8 +15951,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| member    | string   | 否 | 否   | 成员身份信息。 |
-| status    | [ShareMemberStatus](#sharememberstatus)   | 否 | 否   | 成员状态。 |
+| member    | string   | 否 | 否   | 共享相册的成员身份信息。 |
+| status    | [ShareMemberStatus](#sharememberstatus)   | 否 | 否   | 共享相册的成员状态。 |
 
 ## ShareMemberStatus
 
@@ -15975,17 +15975,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## ShareAlbumRiskStatus
 
-枚举共享相册的风险状态。
+表示共享相册的风险状态的枚举。
 
 **起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| UNDER_REVIEW |  0 |  表示正在审查中。|
-| LOW_REVIEW_RISK |  1 |  表示审核风险低。  |
-| HIGH_REVIEW_RISK |  2 |  表示审核风险高。  |
+| UNDER_REVIEW |  0 |  表示共享相册正在审查中。|
+| LOW_REVIEW_RISK |  1 |  表示共享相册审核风险低。  |
+| HIGH_REVIEW_RISK |  2 |  表示共享相册审核风险高。  |
 
 ## ShareAlbumMemberInfo
 
@@ -16010,7 +16014,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **起始版本：** 26.0.1
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ### 属性
 
@@ -16028,7 +16032,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### constructor
 
-constructor(album: [Album](#album))
+constructor(album: Album)
 
 构造函数，用于创建共享相册变更请求对象。
 
@@ -16140,7 +16144,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### addShareMember
 
-addShareMember(owner: string, member: string, status: [ShareMemberStatus](#sharememberstatus)): void
+addShareMember(owner: string, member: string, status: ShareMemberStatus): void
 
 添加共享相册成员。
 
@@ -16200,7 +16204,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### updateShareMemberStatus
 
-updateShareMemberStatus(owner: string, member: string, status: [ShareMemberStatus](#sharememberstatus)): void
+updateShareMemberStatus(owner: string, member: string, status: ShareMemberStatus): void
 
 更新共享相册成员状态。
 
@@ -16320,7 +16324,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### deleteShareAlbum
 
-static deleteShareAlbum(context: [Context](../apis-ability-kit/js-apis-inner-application-context.md#context), owner: string, albums: [Album](#album)[]): Promise&lt;void&gt;
+static deleteShareAlbum(context: Context, owner: string, albums: Album[]): Promise&lt;void&gt;
 
 删除共享相册。删除后该共享相册及其成员关系不再生效。
 
@@ -16382,7 +16386,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### deleteMemberShareAlbum
 
-static deleteMemberShareAlbum(context: [Context](../apis-ability-kit/js-apis-inner-application-context.md#context), owner: string, albums: [Album](#album)[]): Promise&lt;void&gt;
+static deleteMemberShareAlbum(context: Context, owner: string, albums: Album[]): Promise&lt;void&gt;
 
 成员退出共享相册，仅删除本端的共享相册数据。
 
@@ -16444,13 +16448,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### deleteShareAssets
 
-static deleteShareAssets(context: [Context](../apis-ability-kit/js-apis-inner-application-context.md#context), owner: string, assets: string[]): Promise&lt;void&gt;
+static deleteShareAssets(context: Context, owner: string, assets: string[]): Promise&lt;void&gt;
 
 删除共享相册中的资产。
 
-- 删除资产说明：
-  - 需要删除的资产必须属于共享相册。
-  - 通过URI指定要删除的资产。当删除的资产属于共享相册时，只有共享相册的所有者或分享该资产的用户才能删除。
+> **说明：**
+>
+> - 需要删除的资产必须属于共享相册。
+>
+> - 通过URI指定要删除的资产。当删除的资产属于共享相册时，只有共享相册的所有者或分享该资产的用户才能删除。
 
 **起始版本：** 26.0.1
 
@@ -16510,14 +16516,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### createShareAlbum
 
-static createShareAlbum(context: [Context](../apis-ability-kit/js-apis-inner-application-context.md#context), owner: string, name: string, cloudId: string, albumConfig: [ValuesBucket](#valuesbucket22)): MediaShareAlbumChangeRequest | null
+static createShareAlbum(context: Context, owner: string, name: string, cloudId: string, albumConfig: ValuesBucket): MediaShareAlbumChangeRequest | null
 
 创建共享相册的MediaShareAlbumChangeRequest实例。
 
-- 待创建的共享相册名参数规格为：
-  - 相册名字符串长度为 1\~255。
-  - 不允许出现的非法英文字符，包括：. \\ / : * ? " ' ` < > | { } [ ]
-  - 相册名不区分大小写。
+> **说明：**
+>
+> 待创建的共享相册名参数规格为：
+>
+> - 相册名字符串长度为 1\~255。
+>
+> - 不允许出现的非法英文字符，包括：. \\ / : * ? " ' ` < > | { } [ ]
+>
+> - 相册名不区分大小写。
 
 **起始版本：** 26.0.1
 
@@ -16594,7 +16605,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### getShareAlbumMemberInfo
 
-static getShareAlbumMemberInfo(context: [Context](../apis-ability-kit/js-apis-inner-application-context.md#context), owner: string, album: [Album](#album)): Promise&lt;[ShareAlbumMemberInfo](#sharealbummemberinfo)&gt;
+static getShareAlbumMemberInfo(context: Context, owner: string, album: Album): Promise&lt;ShareAlbumMemberInfo&gt;
 
 获取共享相册的成员信息。
 
