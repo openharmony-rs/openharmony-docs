@@ -84,6 +84,7 @@
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 获取文本嵌入模型。
@@ -194,6 +195,10 @@
          if (info.length > 0) {
            modelInfo = info[0];
          }
+       })
+       .catch((err) => {
+         console.error('Failed to get supported model and code is ' + err.code);
+         // ...
        })
      ```
 
@@ -415,6 +420,7 @@
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 获取图像嵌入模型。
