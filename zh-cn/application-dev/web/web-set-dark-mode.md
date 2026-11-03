@@ -180,7 +180,7 @@ darkModePage.html页面在深色模式关闭、深色模式开启及强制深色
 
 ## Web组件背景色适配
 
-Web组件发生旋转或大小改变等事件时，Web网页尺寸改变，变化过程中可能会漏出Web组件的背景色。深色模式下，建议将Web组件背景色置为黑色，与网页背景保持一致，以提升用户体验。
+Web组件发生旋转或大小改变等事件时，Web网页尺寸改变，变化过程中可能会露出Web组件的背景色。深色模式下，建议将Web组件背景色置为黑色，与网页背景保持一致，以提升用户体验。
 
 Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)设置。未设置背景色时，Web组件默认背景色为白色。仅当强制深色模式下，默认背景色变为黑色。未开启强制深色模式时，可通过以下方法进行适配。
 
