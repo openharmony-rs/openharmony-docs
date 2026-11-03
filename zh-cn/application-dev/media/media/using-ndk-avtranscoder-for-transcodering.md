@@ -52,7 +52,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 1. 创建转码实例：调用OH_AVTranscoder_Create()。
 
    <!-- @[linkLibrary](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVTranscoder *transcoder = OH_AVTranscoder_Create();
    ```
@@ -197,7 +197,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 3. 使用OH_AVTranscoderConfig_Create()创建转码配置实例。
 
    <!-- @[createTranscoderConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVTranscoder_Config *config = OH_AVTranscoderConfig_Create();
    ```
@@ -205,7 +205,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 4. 设置转码源视频的文件描述符：调用OH_AVTranscoderConfig_SetSrcFD()设置源视频文件信息。
 
    <!-- @[setFdsrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVErrCode errCode = OH_AVTranscoderConfig_SetSrcFD(g_ctx.config, srcFd, srcOffset, length); // 设置转码源视频FD。
    ```
@@ -213,7 +213,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 5. 设置转码输出视频的文件描述符：调用OH_AVTranscoderConfig_SetDstFD()设置目标视频文件描述符。
 
    <!-- @[setFddst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVTranscoderConfig_SetDstFD(config, dstFd); // 设置转码的目标文件描述符dstFd。
    ```
@@ -229,7 +229,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 7. （可选）设置转码输出音频的编码格式：调用OH_AVTranscoderConfig_SetDstAudioType()设置输出音频的编码格式。
 
    <!-- @[setAudioType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVTranscoderConfig_SetDstAudioType(config, "audio/mp4a-latm"); // 音频编码格式，可选。
    ```
@@ -237,7 +237,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 8. 设置转码输出视频文件的封装格式：调用OH_AVTranscoderConfig_SetDstFileType()设置输出视频文件的封装格式。
 
    <!-- @[setFileType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVTranscoderConfig_SetDstFileType(config, AV_OUTPUT_FORMAT_MPEG_4); // 封装格式。
    ```
@@ -245,7 +245,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 9. （可选）设置转码输出音频的码率：调用OH_AVTranscoderConfig_SetDstAudioBitrate()设置输出音频的码率。
 
    <!-- @[setAudioBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // 参考avcodec音频编码器码率设置，具体根据实际需要设置。
    ```
@@ -253,7 +253,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 10. （可选）设置转码输出视频的码率：调用OH_AVTranscoderConfig_SetDstVideoBitrate()设置输出视频的码率。
 
     <!-- @[setVideoBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     OH_AVTranscoderConfig_SetDstVideoBitrate(config, VIDEO_BITRATE); // 视频比特率，可选。
     ```
@@ -261,7 +261,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 11. 准备转码：调用OH_AVTranscoder_Prepare()成功之后进入AVTRANSCODER_PREPARED状态。
 
     <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     errCode = OH_AVTranscoder_Prepare(transcoder, g_ctx.config); // 准备转码。
     ```
@@ -269,7 +269,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 12. 开始转码：调用OH_AVTranscoder_Start()成功之后进入AVTRANSCODER_STARTED状态。
 
     <!-- @[doStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     OH_AVErrCode errCode = OH_AVTranscoder_Start(transcoderUser->transcoder); // 开始转码。
     ```
@@ -277,7 +277,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 13. （可选）暂停转码：调用OH_AVTranscoder_Pause()成功之后进入AVTRANSCODER_PAUSED状态。
 
     <!-- @[doPause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     ret = OH_AVTranscoder_Pause(g_ctx.transcoder); // 暂停转码。
     ```
@@ -285,7 +285,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 14. （可选）恢复转码：调用OH_AVTranscoder_Resume()成功之后重新进入AVTRANSCODER_STARTED状态。
 
     <!-- @[doResume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     ret = OH_AVTranscoder_Resume(g_ctx.transcoder); // 恢复转码。
     ```
@@ -293,7 +293,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 15. （可选）取消转码：调用OH_AVTranscoder_Cancel()成功之后进入AVTRANSCODER_CANCELLED状态。
 
     <!-- @[doCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     ret = OH_AVTranscoder_Cancel(g_ctx.transcoder); // 取消转码。
     ```
@@ -301,7 +301,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 16. 释放转码配置参数：调用OH_AVTranscoderConfig_Release()销毁实例，释放资源。
 
     <!-- @[doReleaseConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     ret = OH_AVTranscoderConfig_Release(g_ctx.config); // 释放转码配置实例。
     ```
@@ -309,7 +309,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 17. 释放转码资源：调用OH_AVTranscoder_Release()销毁实例，释放资源。
 
     <!-- @[doReleaseTranscoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     ret = OH_AVTranscoder_Release(g_ctx.transcoder); // 释放转码实例。
     ```

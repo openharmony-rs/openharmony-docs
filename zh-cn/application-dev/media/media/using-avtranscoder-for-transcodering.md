@@ -58,7 +58,7 @@ export class AVTranscoderDemo {
 1. 创建[AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavtranscoder12)实例。
 
    <!-- @[createInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-
+   
    ``` TypeScript
    // 1.创建转码实例。
    this.avTranscoder = await media.createAVTranscoder();
@@ -71,7 +71,7 @@ export class AVTranscoderDemo {
    | complete | 必要事件，监听AVTranscoder的转码完成。 | 
    | error | 必要事件，监听AVTranscoder的错误信息。 |
    | progressUpdate | 监听AVTranscoder的进度。 |
-
+   
    <!-- @[createCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
 
    ``` TypeScript
@@ -118,7 +118,7 @@ export class AVTranscoderDemo {
    
    ``` TypeScript
    import {AVTranscoderDemo} from '../transcoder/AVTranscoderManager'
-
+   
    @Entry
    @Component
    struct Index {
@@ -126,7 +126,7 @@ export class AVTranscoderDemo {
      private context:Context | undefined = this.getUIContext().getHostContext();
      // 获取转码功能管理类。
      @State avTranscoder: AVTranscoderDemo = new AVTranscoderDemo(this.context);
-
+   
      build() {
        RelativeContainer() {
          Column() {
