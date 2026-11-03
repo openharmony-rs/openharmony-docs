@@ -8877,6 +8877,20 @@ Allows an application to configure the capability of unlocking devices via enter
 
 **Valid since**: 26.0.1
 
+## ohos.permission.MOUNT_BUNDLE_INFO
+ 
+Allows an application to mount the specified file directory to the sandbox directory of the SceneBoard application.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars| lite wearables
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
 
 Allows an application to access associated assistant service.
