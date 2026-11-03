@@ -29,9 +29,9 @@
   - [SE Access Development](nfc/nfc-se-access-guide.md)
 - WLAN<!--wlan-->
   - [WLAN Service Development Overview](wlan/wlan-overview.md)
-  - [P2P Development Guide](wlan/p2p-development-guide.md)
+  - [P2P Connection Development](wlan/p2p-development-guide.md)
   - [STA Development](wlan/sta-development-guide.md)
-  - [Wi-Fi Scanning Development](wlan/scan-development-guide.md)
+  - [Wi-Fi Scan Development](wlan/scan-development-guide.md)
   - [Wi-Fi Glossary](wlan/wlan-glossary.md)
 - Converged Short-Range<!--fusion-connectivity-->
   - [Converged Short-Range Service Development](fusion-connectivity/fusion-connectivity-overview.md)

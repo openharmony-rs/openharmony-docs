@@ -10,7 +10,7 @@
 
 - [About This Kit](driverdevelopment-overview.md)
 
-- [Environment Preparation](environmental-preparation.md)
+- [Setting Up the Environment](environmental-preparation.md)
 
 - Basic Peripheral Driver Development<!--development-of-basic-drivers--><!--RP1--><!--RP1End-->
 

@@ -183,3 +183,5 @@ const devices = await softbusBase.getPerceptionDeviceList(type);
 const type = softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE;
 await softbusBase.stopPerceptionScan(type);
 ```
+
+<!--no_check-->
