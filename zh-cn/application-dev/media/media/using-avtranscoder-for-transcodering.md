@@ -283,7 +283,6 @@ export class AVTranscoderDemo {
    ``` TypeScript
    let outputFilePath = this.context.filesDir + '/output.mp4';
    let file = fileIo.openSync(outputFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-   // 设置转码的目标文件属性fdDst。
    this.avTranscoder.fdDst = file.fd;
    ```
 
