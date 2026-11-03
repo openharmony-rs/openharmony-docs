@@ -483,3 +483,81 @@ function unlockMetadata(metadataOutput: camera.MetadataOutput): void {
   }
 }
 ```
+
+## setInFrameMetadataForEncoderEnabled
+
+setInFrameMetadataForEncoderEnabled(enable: boolean): void
+
+启用或关闭编码器传递帧内元数据。开启后，相机模块会将帧内元数据下发给编码器，供编码器在编码过程中使用。
+
+> **说明：**
+>
+> 调用此方法前，需先调用[isInFrameMetadataForEncoderSupported](#isinframemetadataforencodersupported)确认相机设备是否支持编码器帧内元数据下发能力。若设备不支持该能力，调用本接口会抛出801错误码。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enable | boolean | 是 | 启用或关闭编码器传递帧内元数据。true表示启用；false表示关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 801 | Capability not supported. Check if the camera device supports the required in frame metadata delivery for encoder by using capability query APIs. |
+| 7400201 | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setInFrameMetadataForEncoderEnabled(metadataOutput: camera.MetadataOutput, enable: boolean): void {
+  // 调用前需先通过isInFrameMetadataForEncoderSupported确认设备支持该能力。
+  try {
+    metadataOutput.setInFrameMetadataForEncoderEnabled(enable);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`setInFrameMetadataForEncoderEnabled error. error code: ${err.code}`);
+  }
+}
+```
+
+## isInFrameMetadataForEncoderSupported
+
+isInFrameMetadataForEncoderSupported(): boolean
+
+查询相机设备是否支持编码器帧内元数据。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 查询相机设备是否支持编码器帧内元数据。true表示支持该功能；false表示不支持该功能。 |
+
+**示例：**
+
+```ts
+function checkInFrameMetadataForEncoderSupported(metadataOutput: camera.MetadataOutput): void {
+  let isSupported: boolean = metadataOutput.isInFrameMetadataForEncoderSupported();
+  console.info(`In frame metadata for encoder supported: ${isSupported}`);
+}
+```
