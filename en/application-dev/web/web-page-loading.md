@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T02:25:50.577Z pushedAt=2026-09-21T13:45:28.496Z -->
+<!-- md-trans-meta sourceCommit=7da4542de05d8ad5daa6136bb16c8a4cf8247461 translatedAt=2026-11-03T03:10:27.073Z pushedAt=2026-11-03T03:23:53.456Z nl=1 -->
 
 Web page loading failures can be caused by various factors. This topic lists troubleshooting methods for common issues to help you quickly locate the cause.
 
@@ -15,7 +15,7 @@ If the app does not have network or file access permissions enabled, or if the d
 * Add the network permission: ensure that the app has declared the ohos.permission.INTERNET permission (required for online pages).
 
     <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     "requestPermissions":[
       {
@@ -34,7 +34,7 @@ If the app does not have network or file access permissions enabled, or if the d
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | Sets whether to allow execution of JavaScript scripts. |
 
     <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -63,16 +63,18 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
     Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes:   http, arkweb, data, chrome-extension, chrome, https, chrome-untrusted.
     ```
    If you confirm that the page resources are trusted, you can bypass the cross-origin check in either of the following two ways:
-
+  
     **Method 1:**
 
       You should use HTTP or HTTPS instead of the file or resource protocol to ensure that the Web component can successfully access cross-origin resources. The replacement URL domain name should be custom-built and used only by an individual or organization to prevent conflicts with actual domain names on the Internet. In addition, you need to use the [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) method of the Web component to intercept and replace local resources accordingly.
 
       The following example shows how to use protocols such as HTTP or HTTPS to resolve the failure to access local resources across origins. In this example, the index.html and js/script.js files are placed in the rawfile directory of the project. When index.html is accessed through the resource protocol, the js/script.js file is blocked due to cross-origin restrictions and cannot be loaded. In the example, the original resource protocol is replaced with the https:\//www\.example.com/ domain name, and the onInterceptRequest API is used to replace resources, ensuring that the js/script.js file can be loaded successfully and thereby resolving the cross-origin blocking issue.
-    ```ts
-    // main/ets/pages/Index.ets
-    import { webview } from '@kit.ArkWeb';
 
+    <!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    
     @Entry
     @Component
     struct Index {
@@ -80,27 +82,27 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
       webviewController: webview.WebviewController = new webview.WebviewController();
       // Construct the mapping between domain names and local files.
       schemeMap = new Map([
-        ["https://www.example.com/index.html", "index.html"],
-        ["https://www.example.com/js/script.js", "js/script.js"],
+        ['https://www.example.com/index.html', 'index.html'],
+        ['https://www.example.com/js/script.js', 'js/script.js'],
       ])
       // Construct the local file and the returned mimeType format.
       mimeTypeMap = new Map([
-        ["index.html", 'text/html'],
-        ["js/script.js", "text/javascript"]
+        ['index.html', 'text/html'],
+        ['js/script.js', 'text/javascript']
       ])
-
+    
       build() {
         Row() {
           Column() {
-            // For the local index.html, use HTTP or HTTPS instead of the file or resource protocol, and construct a domain name of your own.
+            // For the local index.html, use the http or https protocol instead of the file or resource protocol, and construct a domain name of your own.
             // In this example, www.example.com is constructed as an example.
-            Web({ src: "https://www.example.com/index.html", controller: this.webviewController })
+            Web({ src: 'https://www.example.com/index.html', controller: this.webviewController })
               .javaScriptAccess(true)
               .fileAccess(true)
               .domStorageAccess(true)
               .geolocationAccess(true)
-              .width("100%")
-              .height("100%")
+              .width('100%')
+              .height('100%')
               .onInterceptRequest((event) => {
                 if (!event) {
                   return;
@@ -144,8 +146,9 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
     </html>
     ```
 
-    ```js
-    // main/resources/rawfile/js/script.js
+    <!-- @[script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/resources/rawfile/js/script.js) -->
+    
+    ``` JavaScript
     const body = document.body;
     const element = document.createElement('div');
     element.textContent = 'success';
@@ -155,7 +158,7 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
     **Method 2 (resolving local resource cross-origin issues):**
 
     Use [setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12) to set a path list. When resources in the list are accessed through the file protocol, cross-origin access to local files is allowed. In addition, once the path list is set, the file protocol can access only the resources in the list (in this case, the behavior of [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) is overridden by this API).
-
+    
     Removing the cross-origin access restriction on directories through setPathAllowingUniversalAccess is a high-risk operation. Based on the principle of least privilege, the paths opened for el1 and el2 are fixed, and the paths in the path list must conform to one of the following path formats:
 
     1. The app file directory is obtained through [Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Examples of its subdirectories are as follows:
@@ -182,7 +185,7 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
     If a path is not any of the preceding paths, an error code 401 is reported and the path list fails to be set. If the path list is empty, the access scope of the file protocol complies with the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) rule. The following is an example:
 
     <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -262,8 +265,9 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
     </html>
     ```
 
-    ```javascript
-    // main/resources/resfile/js/script.js
+    <!-- @[script2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/resources/resfile/js/script.js) -->
+    
+    ``` JavaScript
     const body = document.body;
     const element = document.createElement('div');
     element.textContent = 'success';
@@ -291,7 +295,7 @@ If a web page fails to load, use DevTools to switch the User-Agent to Android or
 4. Modify [UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) and then check whether the page recovers.
 
  <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
-
+ 
  ``` TypeScript
  import { webview } from '@kit.ArkWeb';
  import { BusinessError } from '@kit.BasicServicesKit';
