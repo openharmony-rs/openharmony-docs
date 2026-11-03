@@ -5,7 +5,7 @@
 <!--Designer: @Terence_Super-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=18bb2762752391371dbb6bcebc6ee183e60acd25 translatedAt=2026-11-03T04:01:05.299Z pushedAt=2026-11-03T09:43:13.933Z nl=1 -->
+<!-- md-trans-meta sourceCommit=18bb2762752391371dbb6bcebc6ee183e60acd25 translatedAt=2026-11-03T04:01:05.299Z pushedAt=2026-11-03T11:09:12.999Z nl=1 -->
 
 The network search module provides some basic functions for managing network search, including obtaining the currently accessed CS domain and PS domain wireless access technologies, obtaining the network status, obtaining the current network selection mode, obtaining the ISO country code of the country where the registered network is located, obtaining the index number of the card slot where the primary card is located, obtaining the registered network signal strength information list corresponding to a specified SIM card slot, obtaining the operator name, determining whether the current device supports NR (New Radio), and determining whether the radio of the primary card is enabled. The CS domain is the circuit switched domain, and the PS domain is the packet switched domain.
 
