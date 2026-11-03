@@ -58,3 +58,5 @@ Based on the scheduled update information configured by the widget provider, the
 1. The widget provider is only allowed to update its own widgets.
 2. The widget host is only allowed to update the widgets added to it.
 3. If the widget refresh data is updated through shared memory, the total refresh data size must not exceed 10 MB. When [createFormBindingData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdatacreateformbindingdata) is used, the number of refreshed images must not exceed 20 (for API version 19 and earlier, the limit is 5 images, each limited to 2 MB). When [createFormBindingDataEx](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdatacreateformbindingdataex) is used, the number of refreshed images must not exceed 30. Images that exceed these limits are displayed incorrectly.
+
+<!--no_check-->
