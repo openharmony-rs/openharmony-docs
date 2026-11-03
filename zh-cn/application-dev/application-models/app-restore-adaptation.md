@@ -246,7 +246,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
   // 判断是否恢复启动（restoreKeys 传入本应用的全部恢复键）
   const restoreKeys: string[] = [KEY_RESTORE_READER, KEY_RESTORE_DRAFT,
     KEY_RESTORE_DRAFT_FILE, KEY_RESTORE_NAV_PATH];
-  if (isRestoreLaunch(want, launchParam, restoreKeys)) {
+  if (isRestoreLaunch(want, restoreKeys)) {
     // 系统在恢复启动时把上次保存的数据放入 want.parameters 带回（仅此一次）；
     // 页面尚未创建，先经 AppStorage 中转，页面挂载后取用
     const reader = want?.parameters?.[KEY_RESTORE_READER] as Record<string, Object> | undefined;
@@ -358,35 +358,32 @@ onSaveState按数据长度分流（短草稿直接放，超长走落盘，见上
 
 按应用复杂度按需选用以下能力。
 
-### 恢复启动判定（三信号合判）
+### 恢复启动判定
 
-恢复场景下[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)取值为`APP_RECOVERY`。但**部分低版本系统中，设备重启后的重拉也可能把launchReason误标为APP_RECOVERY**（API 26起系统不再误标），因此低版本不能单独依赖launchReason判定恢复，需要组合以下信号（按可靠性排序）：
+恢复场景下[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)取值为`APP_RECOVERY`。但**部分系统版本中存在误标场景，设备重启后的重拉也可能把launchReason标为APP_RECOVERY**，因此不建议单独依赖launchReason判定恢复，推荐使用以下信号（按可靠性排序）：
 
 | 信号 | 可靠性 | 说明 |
 | --- | --- | --- |
 | 系统键`ohos.ability.params.abilityRecoveryRestart`为`true` | 全版本可靠 | 恢复启动时由系统合并进want.parameters，恢复启动一定为true |
 | want.parameters中存在本应用保存的恢复键 | 高 | 恢复键只在恢复启动时由系统合并回来，低版本最可靠的信号 |
-| launchReason === APP_RECOVERY | API 26及以上可靠，旧版本可能误标 | 26+可单独成立；低版本只能作为辅助信号，与前两个信号联合判定 |
+| launchReason === APP_RECOVERY | 不可单独依赖 | 部分系统版本存在误标场景（如设备重启后的重拉）；仅可作辅助参考，不参与判定 |
 
-示例工程把三信号合判封装成一个普通函数`isRestoreLaunch`：
+示例工程把信号判定封装成一个普通函数`isRestoreLaunch`：
 
 <!-- @[restore_launch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/common/RestoreUtil.ets) -->
 
 ``` TypeScript
 /**
- * 三信号合判是否恢复启动：系统键为 true（全版本可靠）/ want.parameters 中存在
- * 恢复键（仅恢复启动时由系统带回）/ launchReason 为 APP_RECOVERY（仅 API 26+
- * 可信，低版本可能误标，不能单独采信）。
+ * 判定是否恢复启动：系统键为 true（全版本可靠），或 want.parameters 中存在
+ * 恢复键（仅恢复启动时由系统带回）。
+ * launchReason 为 APP_RECOVERY 在部分系统版本存在误标场景，不能单独采信，不参与判定。
  * restoreKeys：onSaveState 写入 want.parameters 的全部键名。
  */
-export function isRestoreLaunch(want: Want, launchParam: AbilityConstant.LaunchParam,
-  restoreKeys: string[]): boolean {
+export function isRestoreLaunch(want: Want, restoreKeys: string[]): boolean {
   const sysFlag = want?.parameters?.['ohos.ability.params.abilityRecoveryRestart'];
   const bySysKey: boolean = sysFlag === true || sysFlag === 'true';
   const byRestoreKey: boolean = restoreKeys.some(k => want?.parameters?.[k] !== undefined);
-  const byReason: boolean = launchParam?.launchReason === AbilityConstant.LaunchReason.APP_RECOVERY
-    && deviceInfo.sdkApiVersion >= 26;
-  return bySysKey || byRestoreKey || byReason;
+  return bySysKey || byRestoreKey;
 }
 ```
 
@@ -395,7 +392,7 @@ export function isRestoreLaunch(want: Want, launchParam: AbilityConstant.LaunchP
 ``` TypeScript
 onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
   this.context.setRestoreEnabled(true);
-  if (isRestoreLaunch(want, launchParam, restoreKeys)) {
+  if (isRestoreLaunch(want, restoreKeys)) {
     // 恢复启动：可跳过部分初始化、从 want.parameters 取临时状态
     this.restoreFromRecovery(want);
   } else {
@@ -593,7 +590,7 @@ private handleParam(ctx: NavDestinationContext): void {
 
 **恢复判定误判**
 
-低版本系统中设备重启后的重拉被误标`APP_RECOVERY`，应用误走恢复逻辑显示旧数据——使用三信号合判（见[恢复启动判定](#恢复启动判定三信号合判)），低版本不单独依赖launchReason。
+部分系统版本中设备重启后的重拉被误标`APP_RECOVERY`，应用误走恢复逻辑显示旧数据——使用系统键与恢复键判定（见[恢复启动判定](#恢复启动判定)），不单独依赖launchReason。
 
 **数据没保存上**
 
