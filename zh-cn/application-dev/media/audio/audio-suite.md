@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "介绍 OHAudioSuite 音频编创的整体架构，包括引擎、管线、节点三大核心概念，以及管线的两种工作模式（离线编辑与实时预览）、反向驱动机制、节点数量与编排规则，帮助开发者理解音频编创开发模型。"
-keywords: [OHAudioSuite, 音频编创, 引擎, 管线, 节点, 离线编辑, 实时预览, IsNodeTypeSupported, OH_AudioNode_Type]
+keywords: [OHAudioSuite, 音频编创, 离线编辑, 实时预览, IsNodeTypeSupported, OH_AudioNode_Type]
 doctype: guide
 status: active
 ---

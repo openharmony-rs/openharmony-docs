@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "使用 OHAudioSuite 实时预览管线，在 OH_AudioRenderer 播放回调中调用 RenderFrame，边播边处理、实时应用均衡器等音效。"
-keywords: [OHAudioSuite, 实时预览, 均衡器, 管线, 效果节点, 均衡器预置效果, AUDIOSUITE_PIPELINE_REALTIME_MODE]
+keywords: [OHAudioSuite, 实时预览, 均衡器, 效果节点, 均衡器预置效果, AUDIOSUITE_PIPELINE_REALTIME_MODE]
 doctype: guide
 status: active
 ---
