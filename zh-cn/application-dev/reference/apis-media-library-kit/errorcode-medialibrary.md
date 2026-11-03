@@ -42,7 +42,8 @@ The specified asset does not exist.
 
 **可能原因**
 
-1、图片或者视频已经被删除； 2、PhotoAsset对象来源不可信，非媒体库查询返回的结构体。
+1、图片或者视频已经被删除。
+2、PhotoAsset对象来源不可信，非媒体库查询返回的结构体。
 
 **处理步骤**
 
