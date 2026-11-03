@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @hanxuebing1-->
 <!--Designer: @chengyiyi-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-10T07:15:47.144Z pushedAt=2026-07-13T07:35:39.008Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:47:36.866Z pushedAt=2026-11-03T02:55:58.171Z nl=1 -->
 
 ## Freeform Window
 
@@ -32,7 +32,7 @@ Supported devices:
 
 ### Free Windows Mode
 
-Freeform multi-window mode is an interaction method that supports users in performing multitasking on mobile devices.
+This mode is an interaction method that supports users in performing multitasking on mobile devices.
 
 In free windows mode, users are allowed to display multiple app windows simultaneously on one screen, and these app windows are [freeform windows](#freeform-window).
 
