@@ -513,40 +513,7 @@ Want parameters的值只支持String/Number/Boolean/PlainObject，**函数、Map
 | Map / Set / Date | 拍平为PlainObject或Array |
 | 已持久化的数据（preferences/RDB/文件） | 不进快照（进程重建后仍在），只存定位键 |
 
-对于必须随页面栈恢复的复杂参数（回调函数、Proxy对象等），可实现`Serializable`接口，由系统在序列化/反序列化时调用：
-
-``` TypeScript
-// 核心接口定义
-interface Serializable<T> {
-  marshal(writer: SerializationWriter): void
-  static unmarshal(reader: SerializationReader): T
-}
-// Writer: writeNumber / writeString / writeValue / writeDate ...
-// Reader: 对应 read 方法，顺序必须与写入一致
-
-// Function 适配 — 保存回调标识，恢复时重新绑定
-class CallbackWrapper implements Serializable<CallbackWrapper> {
-  private callbackId: string = '';
-  private context: Record<string, string> = {};
-  marshal(writer: SerializationWriter): void {
-    writer.writeString(this.callbackId);
-    writer.writeString(JSON.stringify(this.context));
-  }
-  static unmarshal(reader: SerializationReader): CallbackWrapper {
-    const obj = new CallbackWrapper();
-    obj.callbackId = reader.readString();
-    obj.context = JSON.parse(reader.readString());
-    return obj;
-  }
-}
-```
-
-**序列化适配要点**：
-
-- marshal写入顺序必须与unmarshal读取顺序一致；
-- 处理对象引用关系（写入REFERENCE避免循环引用）；
-- 注册typeId确保反序列化定位正确的工厂方法；
-- Proxy适配有两种策略：保存Proxy包装前的原始对象数据，或实现Serializable接口。
+回调函数、Proxy对象等复杂对象没有随页面栈恢复的序列化机制，不能进入快照，必须按上表方式替换为定位键、注册表等可重建的数据，页面挂载后重新绑定。
 
 ## 通用注意事项
 
