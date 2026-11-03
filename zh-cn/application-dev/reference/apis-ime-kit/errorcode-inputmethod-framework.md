@@ -516,3 +516,21 @@ Input method system panel error. Possible causes:
 2. 开发者根据[IPC的约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)，需先调整传输数据量，控制为较小规模后再发起请求。需特别注意：一次接口调用在IPC层的总传输数据量=应用侧发送的数据量+系统层处理所需的必要数据量，因此应用调用接口时实际可发送的最大数据量，会小于IPC本身限制的最大数据量。
 3. 开发者确保调用者为系统面板。
 <!--DelEnd-->
+
+## 12800029 输入类型不支持
+
+**错误信息**
+
+The input type is not supported.
+
+**错误描述**
+
+请求的输入能力类型在当前输入法中未配置对应子类型。
+
+**可能原因**
+
+调用[requestSystemInputCapability](js-apis-inputmethod.md#requestsysteminputcapability261)请求翻译输入能力时，当前输入法未配置翻译子类型。
+
+**处理步骤**
+
+开发者需确认当前输入法已配置对应能力的子类型后再发起请求。
