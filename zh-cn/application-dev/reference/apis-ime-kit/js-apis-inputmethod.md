@@ -339,7 +339,7 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.switchInputMethod<sup>9+</sup>
 switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
@@ -404,7 +404,7 @@ inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.getCurrentInputMethod<sup>9+</sup>
 
@@ -494,7 +494,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.switchCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -561,7 +561,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.getCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -639,7 +639,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: Busi
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.switchCurrentInputMethodAndSubtype<sup>9+</sup>
 
@@ -698,7 +698,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((resu
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.getInputMethodController<sup>(deprecated)</sup>
 
@@ -962,6 +962,56 @@ Enter键的功能类型。
 | width  | number | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。                           |
 | height  | number | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。                           |
 | displayId  | number | 否 | 是 | 光标所在显示器的ID，该参数应为整数，最小值为0，默认值为0。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+
+## SetPreviewTextWithStyleCallback
+
+type SetPreviewTextWithStyleCallback = (text: string, range: Range, style: PreviewTextStyle) => void
+
+接收带样式预上屏文本的回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| text | string | 是 | 预上屏文本。接口未单独限制文本长度，文本传输受IPC数据大小限制。 |
+| range | [Range](#range10) | 是 | 预上屏文本的替换范围。{ start: -1, end: -1 }表示替换当前预上屏区域；无预上屏文本时在当前光标位置插入。其他情况下，start和end为非负整数，start不大于end。有预上屏文本时，范围不得超出当前预上屏区域；无预上屏文本时，范围不得超出编辑框文本范围。start等于end表示在该位置插入。 |
+| style | [PreviewTextStyle](#previewtextstyle) | 是 | 下划线样式及可选颜色。 |
+
+## UnderlineStyle
+
+枚举，预上屏文本的下划线样式。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -- | -- | -- |
+| NONE | 0 | 无下划线。 |
+| SOLID | 1 | 实线下划线。 |
+| WAVY | 2 | 波浪线下划线。 |
+| DASHED | 3 | 虚线下划线。 |
+
+## PreviewTextStyle
+
+描述编辑框接收到的预上屏文本样式。此接口定义在inputMethod命名空间下。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -- | -- | -- | -- | -- |
+| underlineStyle | [UnderlineStyle](#underlinestyle) | 否 | 否 | 下划线样式。 |
+| underlineColor | number | 否 | 是 | 颜色格式为0xRRGGBB。透明度通道无效，由编辑框忽略。未设置时默认跟随光标颜色，显式设置0时为黑色。 |
 
 ## Range<sup>10+</sup>
 
@@ -3422,6 +3472,76 @@ let getTextIndexAtCursorCallback: () => number = (): number => {
 let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.off('getTextIndexAtCursor', getTextIndexAtCursorCallback);
 inputMethodController.off('getTextIndexAtCursor');
+```
+
+### onSetPreviewTextWithStyle
+
+onSetPreviewTextWithStyle(callback: SetPreviewTextWithStyleCallback): void
+
+订阅输入法设置带样式预上屏文本的事件。需在调用[attach](#attach10)前订阅，并和[on('finishTextPreview')](#onfinishtextpreview17)一起订阅。收到回调后，自绘编辑框负责根据文本、范围和样式更新内容并绘制下划线；仅记录回调不会产生可见样式。如果同时订阅了[on('setPreviewText')](#onsetpreviewtext17)，两种回调都会触发，请注意不要重复处理预上屏文本内容。
+
+原有文本编辑及结束预上屏的处理仍须保留。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| callback | [SetPreviewTextWithStyleCallback](#setpreviewtextwithstylecallback) | 是 | 接收预上屏文本、范围及样式的回调。 |
+
+**示例：**
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+
+const controller: inputMethod.InputMethodController = inputMethod.getController();
+const onStyledPreview: inputMethod.SetPreviewTextWithStyleCallback =
+  (text: string, range: inputMethod.Range, style: inputMethod.PreviewTextStyle): void => {
+    // 在此更新编辑模型，并在UI线程按style绘制下划线。
+    console.info(`Preview text received, range=[${range.start},${range.end}], style=${style.underlineStyle}`);
+  };
+controller.onSetPreviewTextWithStyle(onStyledPreview);
+// 其余编辑回调注册完成后，再按自绘编辑框开发指导调用attach。
+```
+
+### offSetPreviewTextWithStyle
+
+offSetPreviewTextWithStyle(callback?: SetPreviewTextWithStyleCallback): void
+
+取消订阅设置带样式预上屏文本的事件。传入callback时，取消该回调；省略callback时，取消该事件的全部回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| callback | [SetPreviewTextWithStyleCallback](#setpreviewtextwithstylecallback) | 否 | 已注册的回调对象。传入时须使用注册时的同一对象；省略时取消订阅此事件的所有回调。 |
+
+**示例：**
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+
+const controller: inputMethod.InputMethodController = inputMethod.getController();
+const onStyledPreview: inputMethod.SetPreviewTextWithStyleCallback =
+  (text: string, range: inputMethod.Range, style: inputMethod.PreviewTextStyle): void => {
+    console.info(`Preview length=${text.length}, range=[${range.start},${range.end}], style=${style.underlineStyle}`);
+  };
+controller.onSetPreviewTextWithStyle(onStyledPreview);
+// 使用注册时的同一回调对象取消订阅。
+controller.offSetPreviewTextWithStyle(onStyledPreview);
+// 或取消该事件的所有回调。
+controller.offSetPreviewTextWithStyle();
 ```
 
 ### on('setPreviewText')<sup>17+</sup>
