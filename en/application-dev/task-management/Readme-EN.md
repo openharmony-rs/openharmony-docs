@@ -14,7 +14,7 @@
 - [Continuous Task (ArkTS)](continuous-task.md)
 - [Deferred Task (ArkTS)](work-scheduler.md)
 - [Background Loading Task (ArkTS)](background-loader.md)
-- [Agent-powered Reminder (ArkTS)](agent-powered-reminder.md)<!--Del-->
+- [Agent-Powered Reminder (ArkTS)](agent-powered-reminder.md)<!--Del-->
 - [Energy Efficiency Resource Request (ArkTS) (for Privileged System Applications Only)](efficiency-resource-request-sys.md)
 - [Device Usage Statistics (ArkTS) (for System Applications Only)](../device-usage-statistics/Readme-EN.md)<!--DelEnd--><!--RP1--><!--RP1End-->
 - [Glossary](background-tasks-glossary.md)

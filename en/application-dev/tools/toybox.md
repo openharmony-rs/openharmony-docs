@@ -1,4 +1,4 @@
-# toybox Tool
+# Toybox
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @yan-mingzhen-->
