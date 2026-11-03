@@ -221,7 +221,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
    <!-- @[setFddst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   OH_AVTranscoderConfig_SetDstFD(config, dstFd);                                  // 设置转码的目标文件描述符dstFd。
+   OH_AVTranscoderConfig_SetDstFD(config, dstFd); // 设置转码的目标文件描述符dstFd。
    ```
 
 6. （可选）设置转码输出视频的编码格式：调用OH_AVTranscoderConfig_SetDstVideoType()设置输出视频的编码格式。
