@@ -1,4 +1,4 @@
-# MAC Overview and Algorithm Specifications
+# Message Authentication Code Computation
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,14 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=c3c3aa3aaad4832d462b5cbd97f74e458e42b92c translatedAt=2026-08-07T03:24:33.350Z pushedAt=2026-08-07T08:37:24.715Z -->
+<!-- md-trans-meta sourceCommit=fd500ca82713c7732ea8f0441b20e4da66f10c9e translatedAt=2026-10-30T03:33:23.479Z pushedAt=2026-10-30T06:55:55.889Z nl=1 -->
 
 A Message Authentication Code (MAC) is used to verify message integrity. By using a key shared by both parties, it can detect message forgery, tampering, and other malicious behaviors.
 
 This topic describes the algorithms and specifications supported by the system.
 
 ## HMAC
-
 A hash-based message authentication code (HMAC) is a hash-based message authentication code algorithm.
 
 The HMAC uses a specified digest algorithm to generate a MAC based on the key and message shared by communicating parties. The MAC is used to check the integrity of transmitted packets. The HMAC adds key input on the basis of the message digest algorithm to ensure information correctness. The length of the generated MAC is fixed.

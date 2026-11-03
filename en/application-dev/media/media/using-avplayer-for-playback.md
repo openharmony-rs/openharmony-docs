@@ -1,10 +1,19 @@
+---
+kits: ["Media Kit"]
+description: "Describes end-to-end audio playback with AVPlayer in ArkTS, including creating a player, configuring event listeners and audio renderer information, playback controls (play, pause, seek, and stop), resetting, and releasing resources."
+keywords: [AVPlayer, audio playback, playback control, silent frames, background playback]
+doctype: guide
+status: active
+---
+
 # Using AVPlayer to Play Audio (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d14b2c7a45c50a915ec878b22f98f961a1264b59 translatedAt=2026-10-30T03:21:54.409Z pushedAt=2026-10-30T03:21:54.409Z nl=1 -->
 
 [AVPlayer](media-kit-intro.md#avplayer) is used for end-to-end playback of raw media assets. This topic demonstrates how to use AVPlayer to play a complete audio track. To play PCM audio data, call [AudioRenderer](../audio/using-audiorenderer-for-playback.md).
 
@@ -70,13 +79,13 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
     avPlayer.on('durationUpdate', (duration: number) => {
         // Add your service logic as required.
     });
-    avPlayer.on('timeUpdate', (time:number) => {
+    avPlayer.on('timeUpdate', (time: number) => {
         // Add your service logic as required.
     });
-    avPlayer.on('seekDone', (seekDoneTime:number) => {
+    avPlayer.on('seekDone', (seekDoneTime: number) => {
         // Add your service logic as required.
     });
-    avPlayer.on('speedDone', (speed:number) => {
+    avPlayer.on('speedDone', (speed: number) => {
         // Add your service logic as required.
     });
     avPlayer.on('volumeChange', (vol: number) => {
@@ -117,16 +126,16 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
 
    ```ts
    let fdPath = 'fd://'; // Example only. Replace with the actual resource URL.
-   let path : string = `${this.context.filesDir}/${this.fileName}`; // Example only. Replace with the actual resource URL.
+   let path : string = `${this.context.filesDir}/${this.fileName}`; // Replace this example path with an actual file path in the application sandbox.
    let file = await fs.open(path);
    fdPath = fdPath + file.fd;
    this.avPlayer = await media.createAVPlayer();
-   this.avPlayer.url = url;
+   this.avPlayer.url = fdPath;
    ```
 
 4. (Optional) Set the audio renderer information. The information must be set when the AVPlayer is in the initialized state, that is, before **prepare()** is called for the first time. If the media source contains videos, the default value of **usage** is **STREAM_USAGE_MOVIE**. Otherwise, the default value of **usage** is **STREAM_USAGE_MUSIC**. The default value of **rendererFlags** is 0.
 
-    To ensure that the audio behavior meets the expectation, you are advised to proactively configure [audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) and select a proper stream type (specified by [usage](../../media/audio/using-right-streamusage-and-sourcetype.md)) based on your service scenario and requirements.
+    To ensure that audio behavior meets expectations, proactively configure [audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) and [choose the right playback stream type](../../media/audio/using-right-streamusage-for-playback.md) based on your application scenario and requirements.
     
     ```ts
     import { audio } from '@kit.AudioKit';
@@ -191,16 +200,16 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    await avPlayer.reset((err: BusinessError) => {
+    avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
-            console.error('Failed to reset,error message is :' + err.message);
+            console.error('Failed to reset, error message is :' + err.message);
         } else {
             console.info('Succeeded in resetting');
         }
     });
     // Change the URL.
-    let url = 'https://xxx.xxx.xxx.mp3';
+    let url = 'https://example.com/audio.mp3'; // Example only. Replace with the actual resource URL.
     if (avPlayer == null) {
         return;
     }

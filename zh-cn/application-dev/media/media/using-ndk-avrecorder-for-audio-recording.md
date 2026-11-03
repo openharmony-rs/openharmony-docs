@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVRecorder的C/C++接口实现音频录制，涵盖创建实例、配置录制参数及录制控制等全流程，适用于Native层音频录制开发。"
+keywords: [AVRecorder, 音频录制, 录制状态机]
+doctype: guide
+status: active
+---
+
 # 使用AVRecorder录制音频(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

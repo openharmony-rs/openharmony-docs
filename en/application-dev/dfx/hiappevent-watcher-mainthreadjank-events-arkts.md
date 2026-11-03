@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T02:54:43.950Z pushedAt=2026-07-30T06:40:32.204Z -->
+<!-- md-trans-meta sourceCommit=10d653f7dbab0bb99e80334f55a14c60227169b9 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
@@ -66,13 +66,13 @@ The following walks you through on how to subscribe to the main thread jank even
             // Obtain the PID and UID of the application.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
-            // Obtain the begin time and end time on the main thread.
+            // Obtain the start and end time of main thread processing.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.begin_time=${eventInfo.params['begin_time']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.end_time=${eventInfo.params['end_time']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
-            // Obtain the start time of the task when the main thread jank event occurs. (Parameter of the main thread timeout event collection stack.)
+            // Obtain the task execution start time when the main thread jank event occurs. (Parameter of the main thread jank event collection stack.)
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_start_jiffies_time=${JSON.stringify(eventInfo.params['app_start_jiffies_time'])}`);
-            // Obtain the call stack that is printed most frequently in the generated log file. (Parameter of the main thread timeout event collection stack.)
+            // Obtain the call stack that is printed most frequently in the generated log file. (Parameter of the main thread jank event collection stack.)
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.heaviest_stack=${eventInfo.params['heaviest_stack']}`);
 
             // Obtain the error log file generated when the main thread jank event occurs.
@@ -86,7 +86,11 @@ The following walks you through on how to subscribe to the main thread jank even
             } else if (path.endsWith(".trace")) {
               targetPath= "/data/storage/el2/base/mainThreadJank.trace";
             }
-            fileIo.copyFileSync(path.toString(), targetPath.toString());
+            try {
+              fileIo.copyFileSync(path.toString(), targetPath.toString());
+            } catch (e) {
+              hilog.error(0x0000, 'testTag', `copy file failed: ${e}`);
+            }
           }
         }
       }
@@ -236,7 +240,7 @@ The following walks you through on how to subscribe to the main thread jank even
    > If you use the **setEventConfig** API to set sampling stack parameters, the system starts main thread jank event detection after the time specified by **ignore_startup_time**.
 
    The main thread jank event is triggered when two consecutive timeout events are detected within the interval of the detection task.
-
+  
    You can quickly click the timeout button for two or three times (for example, **timeOut350**, **timeOut150**, or **timeOut500**) to trigger the main thread jank event.
 
 ### Verifying the Subscription

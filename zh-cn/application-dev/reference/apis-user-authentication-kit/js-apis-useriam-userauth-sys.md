@@ -104,9 +104,9 @@ sendNotice(noticeType: NoticeType, eventData: string): void
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission denied.       |
-| 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 
 **示例：**
@@ -170,7 +170,7 @@ on(type: 'command', callback: IAuthWidgetCallback): void
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -218,7 +218,7 @@ off(type: 'command', callback?: IAuthWidgetCallback): void
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -277,9 +277,8 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission denied.       |
-| 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12500002 | General operation error.                |
 
 **示例：**
@@ -419,8 +418,8 @@ queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission denied.       |
-| 202      | Permission denied. Called by non-system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12500002 | General operation error.                |
 | 12500008 | The parameter is out of range.          |
 | 12500017 | Failed to reuse authentication result.       |
@@ -560,8 +559,8 @@ registerRemoteAuthCallback(callback: IRemoteAuthCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Permission denied. Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -615,8 +614,8 @@ unregisterRemoteAuthCallback(): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Permission denied. Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12500002 | General operation error. |
 
 **示例：**

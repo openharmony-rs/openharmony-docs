@@ -189,6 +189,9 @@
 | ERROR_TIMEOUT        | 6800105 | 处理超时。         |
 | ERROR_STREAM_LIMIT   | 6800201 | 音频流数量达到限制。|
 | ERROR_SYSTEM         | 6800301 | 系统处理异常。     |
+| ERROR_SERVICE_DIED   | 6800302 | 系统服务进程终止。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ERROR_NETWORK_CONDITION_NOT_MET | 6800501 | 网络条件不满足。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ERROR_STORAGE_NOT_ENOUGH        | 6800502 | 存储空间不足。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioChannel<sup>8+</sup>
 
@@ -402,11 +405,12 @@
 
 ## InterruptForceType<sup>9+</sup>
 
-表示音频打断类型的枚举。
+表示音频中断提示对应的操作是否由系统强制执行的枚举。
 
-当用户监听到音频中断（即收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)事件）时，获取此信息。
+当用户监听到音频中断事件（即收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)事件）时，获取此信息。
 
-此类型表示音频打断是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](#interrupthint)获取。关于音频打断策略的详细说明可参考文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
+
+此类型表示音频中断提示[InterruptHint](#interrupthint)对应的操作是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](#interrupthint)获取。其中，INTERRUPT_HINT_RESUME对应的[InterruptForceType](#interruptforcetype9)一定为INTERRUPT_SHARE，即恢复操作无法由系统强制执行，需应用自行触发。关于音频中断策略的详细说明可参考文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -414,8 +418,8 @@
 
 | 名称            |  值    | 说明                                 |
 | --------------- | ------ | ------------------------------------ |
-| INTERRUPT_FORCE | 0      | 强制打断类型，即具体操作已由系统强制执行。   |
-| INTERRUPT_SHARE | 1      | 共享打断类型，即系统不执行具体操作，通过[InterruptHint](#interrupthint)建议并提示应用操作，应用可自行决策下一步处理方式。 |
+| INTERRUPT_FORCE | 0      | 强制执行类型，即中断提示[InterruptHint](#interrupthint)对应的操作已由系统强制执行。   |
+| INTERRUPT_SHARE | 1      | 非强制执行类型，即系统不执行对应操作，仅通过[InterruptHint](#interrupthint)提示应用操作，应用可自行决策下一步处理方式。 |
 
 ## InterruptHint
 
@@ -624,6 +628,7 @@
 | AUDIO_SESSION_SCENE_MEDIA | 0 | 媒体音频会话场景。     |
 | AUDIO_SESSION_SCENE_GAME | 1 | 游戏音频会话场景。     |
 | AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP语音通话音频会话场景。 |
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE  | 3 | 语音消息音频会话场景。<br>**起始版本：** 26.0.1 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioSessionStateChangeHint<sup>20+</sup>
 

@@ -225,9 +225,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
 
   multiply(scale: number): PointVector {
     let result = new PointVector([]);
-    for (let i = 0; i < this.length; i++) {
-      result.push((this as Array<Point>)[i].multiply(scale));
-    }
+    this.forEach((point: Point) => result.push(point.multiply(scale)));
     return result;
   }
 
@@ -235,12 +233,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     if (this.length !== rhs.length) {
       return false;
     }
-    for (let i = 0; i < this.length; i++) {
-      if (!(this as Array<Point>)[i].equals((rhs as Array<Point>)[i])) {
-        return false;
-      }
-    }
-    return true;
+    return this.every((point: Point, index: number) => point.equals((rhs as Array<Point>)[index]));
   }
 
   get(): Array<Object[]> {

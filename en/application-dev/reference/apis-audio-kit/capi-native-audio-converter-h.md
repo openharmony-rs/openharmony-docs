@@ -5,6 +5,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=cdddcffca39623c2760d7e89d3d36783b0266157 translatedAt=2026-10-29T12:20:36.723Z pushedAt=2026-10-30T02:50:49.544Z nl=1 -->
 
 ## Overview
 
@@ -18,7 +19,7 @@ This file declares the underlying data structures for input and output audio for
 
 **Since**: 26.0.0
 
-**Related module**: [AudioConverter](capi-audioconverter.md)
+**Related module**:  [OHAudioSuite](capi-ohaudiosuite.md)
 
 ## Summary
 
@@ -27,7 +28,7 @@ This file declares the underlying data structures for input and output audio for
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md) | OH_AudioConverter_Format | Defines the data structure of the audio converter, which is used to describe the audio format.|
-| [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md) | OH_AudioConverter | Describes the audio converter.<br> The handle to the audio converter is used to perform functions related to the audio converter.|
+| [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md) | OH_AudioConverter | Declares an audio format converter.<br> The handle of the audio format converter is used to perform functions related to it. |
 
 ### Enums
 
@@ -42,7 +43,7 @@ This file declares the underlying data structures for input and output audio for
 | -- | -- | -- |
 | [OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format* inputFormat, const OH_AudioConverter_Format* outputFormat, OH_AudioConverter** converter)](#oh_audioconverter_create) | - | Creates an audio converter.|
 | [void OH_AudioConverter_Destroy(OH_AudioConverter* converter)](#oh_audioconverter_destroy) | - | Destroys an audio converter.|
-| [typedef int32_t (\*OH_AudioConverter_RequestDataCallback)(void* userData, const void** outInputData, OH_AudioConverter_InputStatus* outStatus)](#oh_audioconverter_requestdatacallback) | OH_AudioConverter_RequestDataCallback | Data request callback function. An audio converter calls this callback function to proactively request input audio data during the [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) call.<br> The caller must fill in the output parameters (**outInputData** and **outStatus**) and return the size of the data read through the callback function.<br> The maximum size of data returned by a single callback is 400 KB.<br> The memory to which **outInputData** points must remain valid until **OH_AudioConverter_Process** returns a message indicating that the processing is complete.|
+| [typedef int32_t (\*OH_AudioConverter_RequestDataCallback)(void* userData, const void** outInputData, OH_AudioConverter_InputStatus* outStatus)](#oh_audioconverter_requestdatacallback) | OH_AudioConverter_RequestDataCallback | Defines a data request callback function. An audio converter calls this callback function to proactively request input audio data during the [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) call.<br> The caller must fill in the output parameters (**outInputData** and **outStatus**) and return the size of the data read through the callback function.<br> The maximum data size returned by a single callback is 400 KB.<br> The memory to which **outInputData** points must remain valid until **OH_AudioConverter_Process** returns a message indicating that the processing is complete. |
 | [OH_AudioConverter_Result OH_AudioConverter_SetInputCallback(OH_AudioConverter* converter, OH_AudioConverter_RequestDataCallback callback, void* userData)](#oh_audioconverter_setinputcallback) | - | Sets the data request callback function for a converter. This function binds the audio converter's input data callback function. The callback function is called by [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) to obtain the input audio data for processing.|
 | [OH_AudioConverter_Result OH_AudioConverter_Process(OH_AudioConverter* converter, void* outputData, int32_t outputCapacity, int32_t* outputSize)](#oh_audioconverter_process) | - | Executes audio format conversion. This function converts the input audio to the target format. Note that this function must be called after [OH_AudioConverter_SetInputCallback](capi-native-audio-converter-h.md#oh_audioconverter_setinputcallback), and the output buffer to which the final conversion result is written must be allocated and managed by the caller.|
 
@@ -103,7 +104,7 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 
 Creates an audio converter.
 
-> **NOTE**
+> **NOTE** 
 >
 > - The converter instance created by this function must be explicitly destroyed using [OH_AudioConverter_Destroy](capi-native-audio-converter-h.md#oh_audioconverter_destroy).
 > - Supported audio formats (applicable to input/output):
@@ -164,7 +165,7 @@ typedef int32_t (*OH_AudioConverter_RequestDataCallback)(void* userData, const v
 
 **Description**
 
-Data request callback function. An audio converter calls this callback function to proactively request input audio data during the [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) call.<br> The caller must fill in the output parameters (**outInputData** and **outStatus**) and return the size of the data read through the callback function.<br> The maximum size of data returned by a single callback is 400 KB.<br> The memory to which **outInputData** points must remain valid until **OH_AudioConverter_Process** returns a message indicating that the processing is complete.
+Defines a data request callback function. An audio converter calls this callback function to proactively request input audio data during the [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) call.<br> The caller must fill in the output parameters (**outInputData** and **outStatus**) and return the size of the data read through the callback function.<br> The maximum data size returned by a single callback is 400 KB.<br> The memory to which **outInputData** points must remain valid until **OH_AudioConverter_Process** returns a message indicating that the processing is complete.
 
 **Since**: 26.0.0
 
@@ -173,7 +174,7 @@ Data request callback function. An audio converter calls this callback function 
 | Name| Description|
 | -- | -- |
 | void\* userData | Pointer to the user-defined data passed to the callback function.|
-| const void\*\* outInputData | Pointer to the input audio data buffer set by the callback function.|
+| const void\*\* outInputData | Pointer to the input audio data buffer set by the callback function. |
 | [OH_AudioConverter_InputStatus](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus)\* outStatus | Pointer to the input data status to be sent to the converter, which is set by the callback function.|
 
 **Returns**
@@ -200,8 +201,8 @@ Sets the data request callback function for a converter. This function binds the
 | Name| Description|
 | -- | -- |
 | [OH_AudioConverter](capi-audioconverter-oh-audioconverterstruct.md)* converter | Audio converter created by the [OH_AudioConverter_Create](capi-native-audio-converter-h.md#oh_audioconverter_create) function.|
-| [OH_AudioConverter_RequestDataCallback](capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback) callback | Callback function used to write audio data.|
-| userData | Pointer to the application data structure to be passed to the callback function.|
+| [OH_AudioConverter_RequestDataCallback](capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback) callback | Callback function used to write audio data. |
+| void* userData | Pointer to the application data structure that will be passed to the callback function. |
 
 **Returns**
 
@@ -228,8 +229,8 @@ Executes audio format conversion. This function converts the input audio to the 
 | -- | -- |
 | [OH_AudioConverter](capi-audioconverter-oh-audioconverterstruct.md)* converter | Audio converter created by the [OH_AudioConverter_Create](capi-native-audio-converter-h.md#oh_audioconverter_create) function.|
 | void* outputData | Pointer to the output buffer allocated by the caller.|
-| int32_t outputCapacity | Size of the output buffer specified by the caller.|
-| outputSize | Size of the data actually written to the output buffer.|
+| int32_t outputCapacity | Size of the output buffer specified by the caller. |
+| int32_t* outputSize | Size of the data actually written to the output buffer.  |
 
 **Returns**
 

@@ -1,43 +1,43 @@
 # Accessing Application Files (ArkTS)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=96b6842378a3034d6245f6b77a19ff25d0ceba9c translatedAt=2026-08-26T04:27:24.273Z pushedAt=2026-08-28T01:28:48.509Z -->
+<!-- md-trans-meta sourceCommit=983ba0100f5f5d011705e0e23088346963f80eee translatedAt=2026-10-29T10:30:53.693Z pushedAt=2026-10-29T10:30:53.697Z nl=1 -->
 
 This topic describes how to enable an application to view, create, read, write, delete, move, or copy an application file and obtain file information.
 
 ## Available APIs
 
-You can use [ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) to implement access to application files. The following table describes the commonly used APIs.
+You can use [ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) APIs to implement access to application files. The following table describes the commonly used APIs.
 
-Table 1 Functions of ohos.file.fs APIs
+**Table 1** Basic file operation APIs (A check mark (√) indicates support, and a hyphen (-) indicates that the synchronous/asynchronous distinction does not apply.)
 
-| API| Description| Category| Synchronous Programming| Asynchronous Programming|
+| Name | Description| Category| Synchronous Programming| Asynchronous Programming|
 | -------- | -------- | -------- | -------- | -------- |
-| access | Checks whether a file exists.| Method| Supported| Supported|
-| close | Closes a file.| Method| Supported| Supported|
-| copyFile | Copies a file.| Method| Supported| Supported|
-| createStream | Creates a stream based on a file path.| Method| Supported| Supported|
-| listFile | Lists all files in a directory.| Method| Supported| Supported|
-| mkdir | Creates a directory.| Method| Supported| Supported|
-| moveFile | Moves a file.| Method| Supported| Supported|
-| open | Opens a file.| Method| Supported| Supported|
-| read | Reads data from a file.| Method| Supported| Supported|
-| rename | Renames a file or folder.| Method| Supported| Supported|
-| rmdir | Removes a directory.| Method| Supported| Supported|
-| stat | Obtains detailed file information.| Method| Supported| Supported|
-| unlink | Deletes a single file.| Method| Supported| Supported|
-| write | Writes data to a file.| Method| Supported| Supported|
-| Stream.close | Closes a stream.| Method| Supported| Supported|
-| Stream.flush | Flushes all data from this stream.| Method| Supported| Supported|
-| Stream.write | Writes data to a stream.| Method| Supported| Supported|
-| Stream.read | Reads data from a stream.| Method| Supported| Supported|
-| File.fd | Defines a file descriptor.| Attribute| N/A| N/A|
-| OpenMode | Defines the mode for opening a file.| Attribute| N/A| N/A|
-| Filter | Defines the options for filtering files.| Type| N/A| N/A|
+| access | Checks whether a file exists.| Method| √ | √ |
+| close | Closes a file.| Method| √ | √ |
+| copyFile | Copies a file.| Method| √ | √ |
+| createStream | Creates a stream based on a file path.| Method| √ | √ |
+| listFile | Lists all files in a directory.| Method| √ | √ |
+| mkdir | Creates a directory.| Method| √ | √ |
+| moveFile | Moves a file.| Method| √ | √ |
+| open | Opens a file.| Method| √ | √ |
+| read | Reads data from a file.| Method| √ | √ |
+| rename | Renames a file or folder.| Method| √ | √ |
+| rmdir | Removes a directory.| Method| √ | √ |
+| stat | Obtains detailed file information.| Method| √ | √ |
+| unlink | Deletes a single file.| Method| √ | √ |
+| write | Writes data to a file.| Method| √ | √ |
+| Stream.close | Closes a stream.| Method| √ | √ |
+| Stream.flush | Flushes all data from this stream.| Method| √ | √ |
+| Stream.write | Writes data to a stream.| Method| √ | √ |
+| Stream.read | Reads data from a stream.| Method| √ | √ |
+| File.fd | Defines a file descriptor.| Attribute| - | - |
+| OpenMode | Defines the mode for opening a file.| Attribute| - | - |
+| Filter | Defines the options for filtering files.| Type| - | - |
 
 > **NOTE**
 >
@@ -174,7 +174,7 @@ function readWriteFile(context: common.UIAbilityContext): void {
 
 ### Reading and Writing Files in a Stream
 
-The following sample code shows how to use the **stream()** API to read the **test.txt** file content and write the content to the **destFile.txt** file.
+The following sample code shows how to use stream APIs to read the content of **test.txt** and write it to **destFile.txt**.
 
 ```ts
 // pages/xxx.ets

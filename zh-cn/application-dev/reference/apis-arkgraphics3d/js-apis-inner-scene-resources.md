@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供ArkGraphics 3D中常用的基本资源类型，包括着色器、材质、网格、动画、环境或图片等用于构建3D场景的各类资源。
@@ -236,7 +236,7 @@ function setinputs(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | image | [Image](#image) \| null | 否 | 否 | 基于物理渲染（PBR）属性纹理贴图，用于表达材质的纹理信息。|
 | factor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 基于物理渲染（PBR）属性因子，不同属性不同含义。|
-| sampler | [Sampler](#sampler20) | 否 | 是 | 纹理贴图采样器，默认使用放大、缩小和mipmap过滤模式为线性过滤（LINEAR），纹理贴图U、V、W方向的寻址模式为重复（REPEAT）。|
+| sampler | [Sampler](#sampler20) | 否 | 是 | 纹理贴图采样器，默认使用放大、缩小和mipmap过滤模式为线性过滤（LINEAR），纹理贴图U、V方向的寻址模式为重复（REPEAT）。|
 
 ## MetallicRoughnessMaterial<sup>20+</sup>
 

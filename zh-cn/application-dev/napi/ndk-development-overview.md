@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "导读OpenHarmony NDK（Native Development Kit）开发体系，介绍NDK的适用场景、前置知识要求、目录结构及常用模块（标准C/C++库、Node-API、FFRT、Rawfile等），帮助开发者快速了解NDK开发的基础概念和入门路径。"
+keywords: [NDK, Native Development Kit, Node-API, Native API, CMake, libuv, libc, FFRT, Rawfile]
+doctype: guide
+status: active
+---
+
 # NDK开发导读
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @liyiming13-->
-<!--Designer: @huang_huijin-->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

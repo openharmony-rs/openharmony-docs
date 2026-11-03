@@ -33,6 +33,10 @@
 
   当使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口配置zLevelAboveParentLoosened属性为true时，创建得到的子窗称为独立子窗。
 
+  > **说明：**
+  > 
+  > 独立子窗的独立特性仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下生效。在非自由窗口状态下，独立子窗与普通子窗表现一致。在自由窗口状态下，独立子窗不跟随主窗前后台的切换，仅跟随主窗一起销毁，独立子窗与主窗可通过点击调整层级。
+
 - 全局悬浮窗（即WindowType.TYPE_FLOAT），具体可见[全局悬浮窗开发指导](global-floating-window-guide.md)。
 
 - 模态窗口（即WindowType.TYPE_DIALOG），具体可见[模态窗口开发指导](dialog-window-guide.md)。

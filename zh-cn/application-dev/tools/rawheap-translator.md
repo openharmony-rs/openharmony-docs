@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "将 ArkTS 原始堆快照转换为 heapsnapshot，用于 OOM 后的离线内存分析与故障排查。"
+keywords: [rawheap_translator, ArkTS内存OOM, rawheap, heapsnapshot, 离线内存分析, 环境变量配置, 堆快照裁剪级别, 工具版本匹配, 文件写入权限]
+doctype: guide
+status: active
+---
+
 # rawheap-translator工具
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -8,7 +16,7 @@
 
 ## 使用场景
 
-为方便开发者定位问题，应用在ArkTS内存OOM（Out of Memory）时会自动进行HeapDump。此操作会将虚拟机当前堆上的所有对象信息保存在后缀为.rawheap的二进制文件中。此外，使用接口[hidebug.dumpJsRawHeapData](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-hidebug#hidebugdumpjsrawheapdata18)能获取当前线程的rawheap文件，或使用命令行[hidumper --mem-jsheap pid [-T tid] --raw](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hidumper#查询虚拟机堆内存)能主动获取指定进程或指定JS线程的rawheap文件。开发者可使用rawheap_translator工具解析.rawheap文件，生成.heapsnapshot文件。该文件可通过DevEco Studio的[Heap Snapshot离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)或Chrome浏览器的开发者工具中的内存工具导入并查看。
+为方便开发者定位问题，应用在ArkTS内存OOM（Out of Memory）时会自动进行HeapDump。此操作会将虚拟机当前堆上的所有对象信息保存在后缀为.rawheap的二进制文件中。此外，使用接口[hidebug.dumpJsRawHeapData](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-hidebug#hidebugdumpjsrawheapdata18)能获取当前线程的rawheap文件，或使用命令行[hidumper --mem-jsheap pid \[-T tid\] --raw](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hidumper#查询虚拟机堆内存)能主动获取指定进程或指定JS线程的rawheap文件。开发者可使用rawheap_translator工具解析.rawheap文件，生成.heapsnapshot文件。该文件可通过DevEco Studio的[Heap Snapshot离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)或Chrome浏览器的开发者工具中的内存工具导入并查看。
 
 ## 使用指导
 

@@ -87,11 +87,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 地理位置信息字段说明，具体字段说明和使用方式请参考Image Kit中的[PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
 
-| 名称  |  说明 |
-| ----- | ---- |
-| GPSLatitude | 图片纬度。 |
-| GPSLongitude | 图片经度。 |
-| GPSTimeStamp | GPS时间戳。 |
-| GPSDateStamp | GPS日期戳。 |
-| GPSAltitude | 基于GPSAltitudeRef的高度。 |
-| GPSVersionID | GPS信息版本号。 |
+|  名称  |  值   |  说明 |
+| ----- | ---- | ---- |
+| GPS_LATITUDE | GPSLatitude | 图片纬度。 |
+| GPS_LONGITUDE | GPSLongitude | 图片经度。 |
+| GPS_TIME_STAMP | GPSTimeStamp | GPS时间戳。 |
+| GPS_DATE_STAMP | GPSDateStamp | GPS日期戳。 |
+| GPS_ALTITUDE | GPSAltitude | 基于GPSAltitudeRef的高度。 |
+| GPS_VERSION_ID | GPSVersionID | GPS信息版本号。 |

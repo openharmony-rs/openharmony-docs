@@ -5,14 +5,15 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=620bf4182bcb799f841b76719b180bae2faedd52 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 ## Introduction
 
-The Network Connection Management module provides basic network management capabilities, including management of Wi-Fi/cellular/Ethernet connection priorities, network quality evaluation, subscription to network connection status changes, query of network connection information, and DNS resolution.
+The Network Connection Management module provides basic network management capabilities, including management of connection priorities among multiple networks such as Wi-Fi, cellular, and Ethernet, network quality evaluation, subscription to status changes of the default or specified network, query of network connection information, and DNS resolution.
 
 > **NOTE**
 >
-> To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-connection.md).
+> To ensure efficient application running, most API calls are asynchronous. For asynchronous APIs, both callback and Promise modes are available. The following examples use Promise mode. For details, see [@ohos.net.connection (Network Connection Management)](../reference/apis-network-kit/js-apis-net-connection.md).
 
 ## Basic Concepts
 
@@ -20,7 +21,8 @@ The Network Connection Management module provides basic network management capab
 - Consumer: a user of data networks, for example, an application or a system service.
 - Network probe: a mechanism used to detect the network availability to prevent the switch from an available network to an unavailable network. The probe type can be binding network detection, DNS detection, HTTP detection, or HTTPS detection.
 - Network selection: a mechanism used to select the optimal network when multiple networks coexist. It is triggered when the network status, network information, or network quality evaluation score changes.
-- Default network: network where the default route is located.
+- Default network: the network used by the system by default. It is determined by the system and is independent of whether an application specifies a network. It is usually one of Wi-Fi, cellular, Ethernet, or Bluetooth.
+- Network handle: the unique identifier of a network.
 
 ## When to Use
 
@@ -49,7 +51,7 @@ The following describes the development procedure specific to each application s
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-3. Call [createNetConnection](../reference/apis-network-kit/js-apis-net-connection.md#connectioncreatenetconnection) to create a **NetConnection** object. You can specify the network type, capability, and timeout interval. If you do not specify parameters, the default values will be used. 
+3. Call [createNetConnection](../reference/apis-network-kit/js-apis-net-connection.md#connectioncreatenetconnection) to create a **NetConnection** object. You can specify the network type, capability, and timeout interval. If you do not specify parameters, the default values will be used.
 
    <!-- @[notification_network_create_NetConnection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    
@@ -139,10 +141,10 @@ The following describes the development procedure specific to each application s
 Depending on the current network status and network quality, the default network may change, for example:
 1. Switching the default network to the cellular network when the Wi-Fi signal is weak
 2. Switching the default network to the Wi-Fi network when the cellular network signal is weak
-3. Switching the default network to the cellular network when the Wi-Fi network is disabled
-4. Switching the default network to the Wi-Fi network when the cellular network is disabled
+3. Switching the default network to the cellular network when Wi-Fi is turned off
+4. Switching the default network to the Wi-Fi network when the cellular network is turned off
 5. Switching the default network to another Wi-Fi network when the Wi-Fi signal is weak (cross-network scenario)
-6. Switching the default network to cellular Wi-Fi network when the cellular signal is weak (cross-network scenario)
+6. Switching the default network to another cellular network when the cellular signal is weak (cross-network scenario)
 
 The following describes how to monitor changes of the default network and migrate application packets to the new default network.
 ### Importing the Connection Namespace
@@ -154,7 +156,7 @@ import { connection, socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
-### Monitoring Changes of the Default Network 
+### Monitoring Changes of the Default Network
 
 <!-- @[monitor_default_network_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -286,69 +288,68 @@ Close the original socket and re-establish a socket connection when the default 
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    // ···
+    // ...
         let netHandleInfo:connection.NetHandle|null = null;
-        // Call **getDefaultNet** to obtain the default data network specified by **NetHandle**.
+        // Call getDefaultNet to obtain the default data network (NetHandle).
         connection.getDefaultNet().then((data: connection.NetHandle) => {
           if (data.netId == 0) {
-            hilog.info(0x0000, 'testTag', `don't have defaultNet`);
-            // If the obtained netid of netHandler is 0 when no default network is specified, an exception has occurred and extra processing is needed.
+            hilog.error(0x0000, 'testTag', `don't have defaultNet`);
+            // If no default network exists, the netid in the obtained netHandler is 0. Handle this exceptional case separately.
             return;
           }
           if (data) {
-            // ···
+            // ...
             hilog.info(0x0000, 'testTag', 'getDefaultNet get data: ' + JSON.stringify(data));
-            // Obtain the network capability information of the data network specified by **NetHandle**. The capability information includes information such as the network type and specific network capabilities.
+            // Obtain capabilities for the network identified by netHandle, including network types and specific capabilities.
             netHandleInfo = data;
             connection.getNetCapabilities(netHandleInfo).then(
               (data: connection.NetCapabilities) => {
                 hilog.info(0x0000, 'testTag', 'getNetCapabilities get data: ' + JSON.stringify(data));
-                // Obtain the network type via bearerTypes.
+                // Obtain the network types (bearerTypes).
                 let bearerTypes: Set<number> = new Set(data.bearerTypes);
                 let bearerTypesNum = Array.from(bearerTypes.values());
                 for (let item of bearerTypesNum) {
                   if (item == 0) {
-                    // Cellular network
+                    // Cellular network.
                     hilog.info(0x0000, 'testTag', JSON.stringify('BEARER_CELLULAR'));
                   } else if (item == 1) {
-                    // Wi-Fi network
+                    // Wi-Fi network.
                     hilog.info(0x0000, 'testTag', JSON.stringify('BEARER_WIFI'));
                   } else if (item == 3) {
-                    // Ethernet network
+                    // Ethernet network.
                     hilog.info(0x0000, 'testTag', JSON.stringify('BEARER_ETHERNET'));
                   }
                 }
     
-                // Obtain the specific network capabilities via networkCap.
+                // Obtain specific network capabilities (networkCap).
                 let itemNumber: Set<number> = new Set(data.networkCap);
                 let dataNumber = Array.from(itemNumber.values());
                 for (let item of dataNumber) {
                   if (item == 0) {
-                    // The network can connect to the carrier's Multimedia Messaging Service Center (MMSC) to send and receive multimedia messages.
+                    // The network can access the carrier's MMSC to send and receive multimedia messages.
                     hilog.info(0x0000, 'testTag', JSON.stringify('NET_CAPABILITY_MMS'));
                   } else if (item == 11) {
-                    // The network traffic is not metered.
+                    // Network traffic is not metered.
                     hilog.info(0x0000, 'testTag', JSON.stringify('NET_CAPABILITY_NOT_METERED'));
                   } else if (item == 12) {
-                    // The network has the Internet access capability, which is set by the network provider.
+                    // The network is expected to provide Internet access. This capability is set by the network provider.
                     hilog.info(0x0000, 'testTag', JSON.stringify('NET_CAPABILITY_INTERNET'));
                   } else if (item == 15) {
-                    // The network does not use a Virtual Private Network (VPN).
+                    // The network does not use a virtual private network (VPN).
                     hilog.info(0x0000, 'testTag', JSON.stringify('NET_CAPABILITY_NOT_VPN'));
                   } else if (item == 16) {
-                    // The Internet access capability of the network is successfully verified by the connection management module.
+                    // The network manager has validated Internet access. This capability is set by the network management module.
                     hilog.info(0x0000, 'testTag', JSON.stringify('NET_CAPABILITY_VALIDATED'));
                   }
                 }
               });
+            // Obtain connection information for netHandle. Call this after obtaining a valid netHandle.
+            connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
+              hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+            })
           }
         });
-    
-        // Obtain network connection information based on the specified netHandle.
-        connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
-          hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-        })
-    // ···
+      // ...
     ```
     
 3. Query the connection information of all connected networks.
@@ -394,7 +395,7 @@ If an application needs to check whether the current network supports Internet a
 
    This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-2. Check whether the default network supports Internet access.
+2. Use the default network to resolve the host name to obtain the list of all IP addresses.
    
    Call [getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9) to obtain **netHandle** of the default network. If **netHandle** is valid, call [getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10) to obtain the capability information of the corresponding network via **networkCap** and determine whether Internet access is supported.
    
@@ -455,7 +456,7 @@ If an application needs to check whether the current network supports Internet a
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ...
           // Use the default network to resolve the host name to obtain the list of all IP addresses.
-          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+          connection.getAddressesByName('www.example.com').then((data: connection.NetAddress[]) => {
             hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
             // ...
           })

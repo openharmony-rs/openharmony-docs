@@ -1,12 +1,11 @@
 # Data Protection Kit Glossary
-
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=084bf627297e60b1f406ce34f5b473174466f7b3 translatedAt=2026-07-15T02:43:41.942Z pushedAt=2026-07-15T08:58:53.423Z -->
+<!-- md-trans-meta sourceCommit=bbcc2e37e8129d97ee49fdfc327c495aa2406a09 translatedAt=2026-10-31T07:08:27.157Z pushedAt=2026-10-31T09:17:56.790Z nl=1 -->
 
 ## D
 

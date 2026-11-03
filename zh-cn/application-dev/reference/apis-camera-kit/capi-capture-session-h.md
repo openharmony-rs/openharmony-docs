@@ -163,8 +163,11 @@
 | [Camera_ErrorCode OH_CaptureSession_GetZoomPointInfos(const Camera_CaptureSession* session, uint32_t* size, OH_Camera_ZoomPointInfo** zoomPointInfo)](#oh_capturesession_getzoompointinfos) | - | 获取变焦点信息。<br> 需要通过调用[OH_CaptureSession_DeleteZoomPointInfos](capi-capture-session-h.md#oh_capturesession_deletezoompointinfos)来释放变焦点信息的内存。 |
 | [Camera_ErrorCode OH_CaptureSession_DeleteZoomPointInfos(const Camera_CaptureSession* session, OH_Camera_ZoomPointInfo* zoomPointInfo)](#oh_capturesession_deletezoompointinfos) | - | 删除变焦点信息。 |
 | [bool OH_CaptureSession_IsLockFocusTrackingSupported(const Camera_CaptureSession* session)](#oh_capturesession_islockfocustrackingsupported) | - |查询是否支持锁定焦点跟踪。 |
-| [Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* session, Camera_Point focusPoint)](#oh_capturesession_lockfocustracking) | - | 锁定焦点跟踪，可通过[OH_CaptureSession_UnlockFocusTracking](#oh_capturesession_unlockfocustracking)解锁。在使用焦点跟踪前可以通过[OH_CaptureSession_IsLockFocusTrackingSupported](#oh_capturesession_islockfocustrackingsupported)接口查询是否支持焦点跟踪。 |
+| [Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* session, Camera_Point focusPoint)](#oh_capturesession_lockfocustracking) | - | 锁定焦点跟踪，可通过[OH_CaptureSession_UnlockFocusTracking](#oh_capturesession_unlockfocustracking)解锁。 |
 | [Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* session)](#oh_capturesession_unlockfocustracking) | - | 解锁焦点跟踪。可以通过[OH_CaptureSession_IsLockFocusTrackingSupported](#oh_capturesession_islockfocustrackingsupported)接口查询是否支持焦点跟踪。 |
+| [typedef void (\*OH_CaptureSession_OnCameraDeviceSwitchRequest)(void *userContext, Camera_CaptureSession *userSession, Camera_Device *userDevice)](#oh_capturesession_oncameradeviceswitchrequest) | OH_CaptureSession_OnCameraDeviceSwitchRequest | 定义镜头切换请求发生时调用的回调函数。 |
+| [Camera_ErrorCode OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)](#oh_capturesession_registercameradeviceswitchrequestcallback) | - | 注册镜头切换请求的回调。注册此回调后，当捕获会话中发生镜头切换请求时，将调用该回调。 |
+| [Camera_ErrorCode OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)](#oh_capturesession_unregistercameradeviceswitchrequestcallback) | - | 注销镜头切换请求的回调。 |
 
 ## 函数说明
 
@@ -900,7 +903,7 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| [Camera_FlashMode](capi-camera-h.md#camera_flashmode) flashMode | 要设置的闪光灯模式。在设置闪光灯模式前需先使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯，再使用[@OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)接口检查设置的闪光灯模式是否支持。 |
+| [Camera_FlashMode](capi-camera-h.md#camera_flashmode) flashMode | 要设置的闪光灯模式。在设置闪光灯模式前需先使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯，再使用[OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)接口检查设置的闪光灯模式是否支持。 |
 
 **返回：**
 
@@ -3447,3 +3450,81 @@ Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* se
 | 类型 | 说明 |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>   CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br> CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_CaptureSession_OnCameraDeviceSwitchRequest()
+
+```c
+typedef void (*OH_CaptureSession_OnCameraDeviceSwitchRequest)(void *userContext, Camera_CaptureSession *userSession, Camera_Device *userDevice)
+```
+
+**描述**
+
+定义镜头切换请求发生时调用的回调函数。
+
+**起始版本：** 26.0.1
+
+**资源释放：** 调用[OH_CaptureSession_Release](#oh_capturesession_release)释放userSession、调用[OH_CameraManager_DeleteCameraDevices](capi-camera-manager-h.md#oh_cameramanager_deletecameradevices)释放userDevice。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* userContext | [出参]指向自定义上下文的指针。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* userSession | [出参]指向Camera_CaptureSession实例的指针。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* userDevice | [出参]指向Camera_Device实例的指针。 |
+
+### OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback()
+
+```c
+Camera_ErrorCode OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)
+```
+
+**描述**
+
+注册镜头切换请求的回调。注册此回调后，当捕获会话中发生镜头切换请求时，将调用该回调。
+
+**起始版本：** 26.0.1
+
+**参考：** [OH_CaptureSession_OnCameraDeviceSwitchRequest](#oh_capturesession_oncameradeviceswitchrequest)
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | [入参]Camera_CaptureSession实例。 |
+| void* context | [入参]指向自定义上下文的指针。 |
+| [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) callback | [入参]表示要注册的镜头切换请求回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数缺失或参数类型不正确。 |
+
+### OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback()
+
+```c
+Camera_ErrorCode OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)
+```
+
+**描述**
+
+注销镜头切换请求的回调。
+
+**起始版本：** 26.0.1
+
+**参考：** [OH_CaptureSession_OnCameraDeviceSwitchRequest](#oh_capturesession_oncameradeviceswitchrequest)
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | [入参]Camera_CaptureSession实例。 |
+| void* context | [入参]指向注册回调时调用方指定的自定义上下文的指针。 |
+| [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) callback | [入参]表示要注销的镜头切换请求回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数缺失或参数类型不正确。 |

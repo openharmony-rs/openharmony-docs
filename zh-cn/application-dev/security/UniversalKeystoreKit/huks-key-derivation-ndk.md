@@ -46,7 +46,9 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
     | 未指定TAG具体值 | OH_HUKS_STORAGE_KEY_EXPORT_ALLOWED | 密钥返回给调用方管理 |
     | 未指定TAG具体值 | 未指定TAG具体值 | 密钥返回给调用方管理 |
 
-    注：派生时指定的TAG值，不可与生成时指定的TAG值冲突。表格中仅列举有效的指定方式。
+    > **注意：**
+    >
+    > 派生时指定的TAG值，不可与生成时指定的TAG值冲突。表格中仅列举有效的指定方式。
 
 2. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 

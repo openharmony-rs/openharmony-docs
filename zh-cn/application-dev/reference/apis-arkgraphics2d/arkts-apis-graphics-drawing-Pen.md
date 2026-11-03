@@ -173,7 +173,7 @@ getColorFilter(): ColorFilter
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。 |
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。当前画笔未设置颜色滤波器时返回undefined。 |
 
 **示例：**
 

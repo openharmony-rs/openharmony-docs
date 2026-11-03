@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:01:21.285Z pushedAt=2026-09-03T09:04:52.946Z -->
+<!-- md-trans-meta sourceCommit=b1acb0dca4a3242b149eeb4c654cc6238b3e180e translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 When implementing audio and video features, media applications also need to integrate with AVSession Kit. Based on typical use cases, this document describes how to integrate with AVSession for media display and control, providing developers with adaptation guidance.
 
@@ -289,7 +289,7 @@ Certain special processing is required when setting the progress bar.
 1. Songs that can be previewed
 
    (1) The application sets the preview duration, rather than the total duration, for a song. In this case, when the user performs progress control in the Media Controller, the application receives the relative timestamp within the preview duration, rather than that within the total duration. The application needs to calculate the absolute timestamp from the very beginning of the song.
-
+    
    (2) If the application sets the total duration for a song but requires the system to provide preview, it can report the start position of the progress when the playback starts, and report the end position when the received seek instruction is not within the preview duration. In the latter case, the playback control progress of the system rebounds.
 
 2. Songs that do not support preview
@@ -512,18 +512,18 @@ The system supports three fast-forward/rewind durations, which the application c
   | Previous/Next and fast-forward/rewind events registered| **Fast-Forward**, **Rewind**|  If the Fast-forward event is registered, the **Fast-forward** button is available.<br>If the Rewind event is registered, the **Rewind** button is available.<br>A button is unavailable if its corresponding event is not registered.|
 
   <!-- @[settingFastForward](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingFastForward.ets) -->
-
+  
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
-
+  
   @Entry
   @Component
   struct Index {
     @State message: string = 'hello world';
     // ...
-
+  
     build() {
       Column() {
         // ...
@@ -534,7 +534,7 @@ The system supports three fast-forward/rewind durations, which the application c
             let type: AVSessionManager.AVSessionType = 'audio';
             let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
             // ...
-
+  
             // Set the supported fast-forward or rewind duration for AVSession.
             let metadata: AVSessionManager.AVMetadata = {
               assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
@@ -549,7 +549,7 @@ The system supports three fast-forward/rewind durations, which the application c
               console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
               // ...
             });
-
+  
             session.on('fastForward', (time?: number) => {
               console.info(`on fastForward , do fastForward task`);
               // ...
@@ -787,8 +787,8 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
   | fastForward    | Fast-forwards.|
   | rewind    | Rewinds.|
 
-  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->
-
+  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->  
+  
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -810,7 +810,7 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
               let type: AVSessionManager.AVSessionType = 'audio';
               let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
               // ...
-              // Set the required media information. This is mandatory; otherwise, control events cannot be received.
+              // Set the necessary media information. This must be set; otherwise, control events cannot be received.
               let metadata: AVSessionManager.AVMetadata = {
                 assetId: '0', // Specified by the application to identify the media in the application's media library.
                 title: 'TITLE',
@@ -824,19 +824,19 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
                 console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
                 // ...
               });
-              // Generally, the corresponding logic for the player is processed in the listener.
-              // After processing, synchronize the playback-related information through the set API. Refer to the example above.
+              // Generally, corresponding logic processing is performed on the player in the listener.
+              // After processing, synchronize the playback-related information through the set API. Refer to the use case above.
               session.on('play', () => {
                 console.info(`on play , do play task`);
                 // ...
-                // If this command is not supported yet, do not register it; or, if it is registered but not used for the time being, cancel the listener through session.off('play').
-                // After processing, use setAVPlayState to report the playback state.
+                // If this command is not supported yet, do not register it; or if it is registered but not used temporarily, cancel the listening through session.off('play').
+                // After processing, use setAVPlaybackState to report the playback state.
               });
               session.on('pause', () => {
                 console.info(`on pause , do pause task`);
                 // ...
-                // If this command is not supported yet, do not register it; or, if it is registered but not used for the time being, cancel the listener through session.off('pause').
-                // After processing, use setAVPlayState to report the playback state.
+                // If this command is not supported yet, do not register it; or if it is registered but not used temporarily, cancel the listening through session.off('pause').
+                // After processing, use setAVPlaybackState to report the playback state.
               });
               // ...
             } catch (err) {
@@ -844,13 +844,13 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
                 console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
                 // ...
               }
-              }
+            }
           })
       }
       .width('100%')
       .height('100%')
-      }
     }
+  }
   ```
 
 - Method 2
@@ -869,7 +869,7 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
   | KEYCODE_MEDIA_PAUSE   | Pause key.|
 
   <!-- @[adaptingToBluetoothMethodTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodTwo.ets) -->  
-
+  
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -914,8 +914,8 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
       }
       .width('100%')
       .height('100%')
-      }
     }
+  }
   ```
 
 > **NOTE**

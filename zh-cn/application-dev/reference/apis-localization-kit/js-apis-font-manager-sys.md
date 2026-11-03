@@ -24,7 +24,7 @@
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
-## installFont
+## fontManager.installFont
 
 installFont(path: string): Promise&lt;number&gt;
 
@@ -81,7 +81,7 @@ installFont(path: string): Promise&lt;number&gt;
   }
   ```
 
-## uninstallFont
+## fontManager.uninstallFont
 
 uninstallFont(fullName: string): Promise&lt;number&gt;
 
@@ -130,7 +130,7 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
   }
   ```
 
-## dataMigration<sup>23+</sup>
+## fontManager.dataMigration<sup>23+</sup>
 
 dataMigration(callback: DataMigrationCallback): number
 

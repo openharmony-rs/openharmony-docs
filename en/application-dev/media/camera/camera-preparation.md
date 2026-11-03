@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c363c4134c11bcec868cc8b279dc8af0b7551cf3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 The main process of camera application development includes development preparations, device input management, session management, preview, photo capture, and video recording.
 
@@ -19,6 +20,7 @@ All these permissions must be authorized by users through a dialog box. For deta
 - To read images or videos, you are advised to use the media library [Picker to access them](../medialibrary/photoAccessHelper-photoviewpicker.md).
 - To save images or videos, use the [security components to save them](../medialibrary/photoAccessHelper-savebutton.md).
   
-> **NOTE**
+> **NOTE** 
 > 
-> When the application needs to clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
+> - When the user denies authorization in the dialog box, you can call [isCameraMuted](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#iscameramuted) to check whether the camera is currently muted.
+> - Only when the app needs to clone, back up, or sync image and video files in the user's public directory, can you apply for the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions to read and write image/video files. For details about how to apply, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
