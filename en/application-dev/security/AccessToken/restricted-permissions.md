@@ -1792,3 +1792,19 @@ Allows an application to obtain the device hardware information.
 **Supported devices**: PCs/2-in-1 devices
  
 **Since**: 26.0.1
+
+## ohos.permission.CONTROL_COMPONENT
+
+Allows an application to manage whether specified components can be controlled via simulated control.
+
+With this permission, the application can mark specified components as restricted from simulated control, preventing other applications (such as AI agent applications) from operating these components via simulated control.
+
+<!--RP119--><!--RP119End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
