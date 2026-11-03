@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=3b4926e6f34dace532417e6a6198ccbed01b1edf translatedAt=2026-10-31T02:55:06.344Z pushedAt=2026-10-31T06:08:51.579Z nl=1 -->
 
 A user authentication is required before an application accesses a critical functionality or sensitive data. This topic walks you through the process.
 
@@ -31,29 +32,23 @@ The system provides a unified user authentication widget, which stands out with 
 The following figure shows the style of the user authentication widget, which can be set via the [WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10) parameter.
 
 <!--RP1-->
-
 ![unified-UI-component-authentication](figures/unified-UI-component-authentication.png)
-
 <!--RP1End-->
 
 - ①: Title (**WidgetParam.title**) of the user authentication page, which cannot be empty or exceed 500 characters. You are advised to set the title to the authentication purpose, for example, payment and application login.
-
 <!--RP2-->
-
 - ②: Text on the navigation button (**WidgetParam.navigationButtonText**), which cannot exceed 60 characters. It can be configured only in single fingerprint or facial authentication scenarios in API versions 10 to 17. Since API version 18, it can also be configured in the combined fingerprint and facial authentication.
 
   If biometric authentication fails, a button is displayed. The user can tap the button to switch to custom authentication.<!--RP2End-->
 
 <!--Del-->
-
 - The following shows the display modes (**WidgetParam.windowMode**) of the user authentication widget.
-
+  
   The user authentication widget provides two display modes: dialog box (default mode, as shown in figure on the left) and full screen (as shown in the figure on the right).
 
   Currently, the full screen mode is available only for system applications.
 
   ![popup-authentication](figures/popup-authentication.png)
-
 <!--DelEnd-->
 
 The user authentication widget supports the following types of authentication:
@@ -77,7 +72,6 @@ The user authentication widget supports the following types of authentication:
 - Starting from API version 18, facial + fingerprint + custom navigation button authentication is supported.
 
 <!--RP3--><!--RP3End-->
-
 
 ## How to Develop
 
@@ -139,6 +133,7 @@ initiatingUserAuthentication1() {
 }
 ```
 
+
 **Example 2**
 
 Initiate user authentication (trusted authentication level ≥ ATL3), using face recognition + authentication type-related validation + reuse of the maximum valid duration for device unlock, and then retrieve the authentication result.
@@ -193,6 +188,7 @@ initiatingUserAuthentication2() {
   }
 }
 ```
+
 
 **Example 3**
 
@@ -249,6 +245,7 @@ initiatingUserAuthentication3() {
 }
 ```
 
+
 **Example 4**
 
 Start the user authentication widget in application modal dialog mode.
@@ -302,6 +299,7 @@ initiatingUserAuthentication4() {
   }
 }
 ```
+
 
 ## Sample Code
 

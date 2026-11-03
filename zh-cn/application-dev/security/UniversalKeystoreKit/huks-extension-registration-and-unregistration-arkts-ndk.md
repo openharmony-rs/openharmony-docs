@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本22开始，huksExternalCrypto提供Provider注册和注销功能接口，包括ArkTS接口和C++接口。
+从API版本22开始，huksExternalCrypto提供Provider注册和注销功能接口，包括ArkTS接口和C++接口。开发者需先实现CryptoExtensionAbility，再通过注册接口接入HUKS后方可使用能力，使用完毕后注销即可断开连接。
 
 ## 注册CryptoExtensionAbility
 

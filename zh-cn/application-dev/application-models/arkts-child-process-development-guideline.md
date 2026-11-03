@@ -71,6 +71,7 @@
     
     ``` TypeScript
     import { childProcessManager } from '@kit.AbilityKit';
+    // ...
     import { BusinessError } from '@kit.BasicServicesKit';
     import DemoProcessNoArg from '../process/DemoProcessNoArg';
     // ...
@@ -117,6 +118,7 @@
     
     ``` TypeScript
     import { childProcessManager } from '@kit.AbilityKit';
+    // ...
     import { BusinessError } from '@kit.BasicServicesKit';
     import DemoProcessNoArg from '../process/DemoProcessNoArg';
     // ...
@@ -195,11 +197,11 @@
     
     ``` TypeScript
     import { childProcessManager } from '@kit.AbilityKit';
+    import { common, ChildProcessArgs, ChildProcessOptions } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     // ...
     import DemoProcessArg from  '../process/DemoProcessArg';
     import { fileIo } from '@kit.CoreFileKit';
-    import { common, ChildProcessArgs, ChildProcessOptions } from '@kit.AbilityKit';
     @Entry
     @Component
     struct Index {
@@ -230,7 +232,7 @@
                   let options: ChildProcessOptions = {
                     isolationMode: false
                   };
-                  childProcessManager.startArkChildProcess("module1/ets/process/DemoProcess.ets", args, options)
+                  childProcessManager.startArkChildProcess("module1/ets/process/DemoProcessArg.ets", args, options)
                     .then((pid) => {
                       console.info(`startArkChildProcess success, pid: ${pid}`);
                     })

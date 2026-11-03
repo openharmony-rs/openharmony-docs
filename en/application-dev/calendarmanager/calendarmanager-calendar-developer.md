@@ -6,7 +6,7 @@
 <!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d88cb3706725257c508905ecb0cc9fb863683388 translatedAt=2026-08-01T02:49:30.752Z pushedAt=2026-08-01T03:00:50.583Z -->
+<!-- md-trans-meta sourceCommit=473631a7b8b0e711377f954eb896291c00dfc0f9 translatedAt=2026-10-31T01:17:19.296Z pushedAt=2026-10-31T01:26:51.537Z nl=1 -->
 
 Calendar is used to store and manage personal or team events. Users can easily view, edit, and share event information on the calendar.
 
@@ -29,12 +29,13 @@ The table below lists the main APIs used for calendar management. For details ab
 | setConfig(config: CalendarConfig): Promise\<void>           | Sets the calendar configuration information. This API uses a promise to return the result.                     |
 | getAccount(): CalendarAccount                               | Obtains the calendar account information.                                          |
 
+
 ## How to Develop
 
 1. Import dependencies.
 
     <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+    
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -48,10 +49,10 @@ The table below lists the main APIs used for calendar management. For details ab
 3. Obtain the **calendarMgr** object based on the context to manage calendar accounts. You are advised to perform management operations in the **EntryAbility.ets** file.
 
     <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+    
     ``` TypeScript
     const DOMAIN = 0x0000;
-    
+        
     export let calendarMgr: calendarManager.CalendarManager | null = null;
     
     export let mContext: common.UIAbilityContext | null = null;
@@ -106,7 +107,7 @@ The table below lists the main APIs used for calendar management. For details ab
 4. Create a **Calendar** object based on the calendar account information.
 
     <!-- @[calendarData_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { calendarMgr } from '../entryability/EntryAbility';
@@ -123,9 +124,8 @@ The table below lists the main APIs used for calendar management. For details ab
       displayName: 'MyCalendar'
     };
     ```
-
     <!-- @[calendarData_createAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Create a calendar account.
     calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
@@ -141,15 +141,15 @@ The table below lists the main APIs used for calendar management. For details ab
 5. After a calendar account is created, its color is black by default. If no color is specified, the display effect of the calendar account in dark mode may be poor on some versions or devices. You need to call **setConfig()** to set calendar configuration information, including event reminder and calendar color.
 
     <!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
-    const calendarAccounts: calendarManager.CalendarAccount = {
+    const calendarAccount: calendarManager.CalendarAccount = {
       name: 'MyCalendar',
       type: calendarManager.CalendarType.LOCAL,
       displayName: 'MyCalendar'
     };
     // Calendar configuration information.
-    calendarMgr?.getCalendar(calendarAccounts, (err, data) => {
+    calendarMgr?.getCalendar(calendarAccount, (err, data) => {
       // Obtain the calendar account.
       if (err) {
         console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
@@ -170,10 +170,11 @@ The table below lists the main APIs used for calendar management. For details ab
     });
     ```
 
+
 6. Query a specified calendar.
 
     <!-- @[calendarData_getAccountByParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     calendarMgr?.getCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
       console.info('%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -185,7 +186,7 @@ The table below lists the main APIs used for calendar management. For details ab
 7. Query a default calendar account. The default calendar account is created when the calendar storage runs for the first time. If you do not care which account an event belongs to, you do not need to create a separate calendar account and can directly use the default one.
 
     <!-- @[calendarData_getDefaultAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
       console.info('%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -197,9 +198,9 @@ The table below lists the main APIs used for calendar management. For details ab
 8. Obtain the created and default **Calendar** objects of the current application.
 
    Due to data privacy and security concerns, applications with restricted permissions cannot obtain account information created by other applications.
-
+   
     <!-- @[calendarData_getAllCalendars](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
       console.info('%{public}s', `Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
@@ -215,7 +216,7 @@ The table below lists the main APIs used for calendar management. For details ab
 9. Delete the specified calendar, whose subordinate events are also deleted.
 
     <!-- @[calendarData_deleteCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     if (!calendar || calendar === null) {
       console.error('Failed to delete calendar. calendar is null');

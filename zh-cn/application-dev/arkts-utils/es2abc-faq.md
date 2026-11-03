@@ -35,7 +35,7 @@ The size of programs is expected to be 434, but is 432
 
 **解决措施**
 
-查看工程和HAR包的build-profile.json5文件中的“compatibleSdkVersionStage”字段，将工程中的“compatibleSdkVersionStage”字段调整至大于或者等于HAR包中的版本。参考[build-profile.json5配置文件说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5#section511142752919)中对compatibleSdkVersionStage字段的说明。
+查看工程和HAR包的build-profile.json5文件中的“compatibleSdkVersionStage”字段，将工程中的“compatibleSdkVersionStage”字段调整至大于或者等于HAR包中的版本。参考[工程级build-profile.json5配置文件说明](https://developer.huawei.com/consumer/cn/doc/doccenter-deveco-studio/ide-hvigor-build-profile-app#section45865492619)中对compatibleSdkVersionStage字段的说明。
 
 ## 编译时报Field 'xxx' has different value错误
 

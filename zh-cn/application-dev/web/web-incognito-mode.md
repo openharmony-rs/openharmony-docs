@@ -147,7 +147,7 @@
               // 以回调方式异步获取指定源的地理位置权限状态。
               webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                 if (error) {
-                  console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
+                  console.error(`getAccessibleGeolocationAsync error: Code: ${error.code}, message: ${error.message}`);
                   return;
                 }
                 console.info('getAccessibleGeolocationAsync result: ' + result);

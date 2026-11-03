@@ -135,7 +135,7 @@ edgeLight(params: EdgeLightParams | undefined): T
 | length   | [Length](ts-types.md#length)                              | 否   | 否   | 边缘流光沿流动方向延伸的长度。<br>该参数不支持百分比，传入百分比时不生效。<br>取值范围：[0, +∞)<br>单位：vp<br>**说明：**<br>length为0时，无边缘流光效果。<br>设置小于0的值时，按值为0处理。 |
 | intensity | number                                                   | 否   | 是   | 边缘流光效果的发光强度。<br>取值范围：[0, 1]<br>默认值：1<br>**说明：**<br>值为0时，流光效果完全不可见。<br>值为1时，流光效果达到最大亮度。<br>设置大于1的值时，按值为1处理。<br>设置小于0的值时，按值为0处理。 |
 | color    | [ResourceColor](ts-types.md#resourcecolor)                | 否   | 是   | 边缘流光颜色。<br>默认值：#FFFFFF，显示为白色。 |
-| thickness | [Length](ts-types.md#length)                             | 否   | 是   | 边缘流光线条粗细（不支持百分比，传入百分比时不生效）。<br>取值范围：[0, +∞)<br>单位：vp<br>默认值：0<br>**说明：**<br>thickness为0时，边缘流光线条不可见。<br>设置小于0的值时，按值为0处理。 |
+| thickness | [Length](ts-types.md#length)                             | 否   | 是   | 边缘流光的光晕宽度（不支持百分比，传入百分比时不生效）。<br>取值范围：[0, +∞)<br>单位：vp<br>默认值：0<br>**说明：**<br>thickness设置小于等于0时，不影响边缘流光线条的可见性，仅影响光晕效果。<br>设置小于0的值时，按值为0处理。 |
 
 ## markLayeredRender
    

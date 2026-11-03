@@ -5,7 +5,7 @@
 <!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:24:14.883Z pushedAt=2026-09-20T07:47:29.663Z -->
+<!-- md-trans-meta sourceCommit=3a8ebcba6a900b509399d00a3d863c3bab2a6c15 translatedAt=2026-10-31T01:30:30.878Z pushedAt=2026-10-31T03:43:30.552Z nl=1 -->
 
 ## When to Use
 
@@ -140,7 +140,7 @@ The JSON file contains three attributes in total.
      | Name     | Mandatory| Description                                                        |
      | --------- | ------ | ------------------------------------------------------------ |
      | Type      | Yes    | Type of the vibration event, which can be **transient** or **continuous**.                |
-     | StartTime | Yes    | Vibration start time. The value range is [0, 1800000], in ms.           |
+     | StartTime | Yes     | Vibration start time. The value range is [0, 1800000], in ms.            |
      | Duration  | Yes    | Vibration duration. This parameter is valid only when **Type** is set to **continuous**. The value range is [0, 5000], in ms.|
 
 3. **Parameters** provides the following parameters related to the vibration event and is mandatory.
@@ -168,7 +168,7 @@ The following requirements must be met:
 2. Declare the permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
    <!-- @[vibrator_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/module.json5) -->
-
+   
    ``` JSON5
    "requestPermissions": [
      {
@@ -180,7 +180,7 @@ The following requirements must be met:
 3. Import the related modules.
 
    <!-- @[vibrator_js_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    import { vibrator } from '@kit.SensorServiceKit';
    import { resourceManager } from '@kit.LocalizationKit';
@@ -191,7 +191,7 @@ The following requirements must be met:
 4. Define constants.
 
    <!-- @[vibrator_js_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    const fileName: string = 'vibrator.json';
    let TAG = 'vibrator:';
@@ -202,7 +202,7 @@ The following requirements must be met:
    Scenario 1: Query information about all vibrators.
 
    <!-- @[vibrator_js_get_vibrator_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    try {
      const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync();
@@ -217,7 +217,7 @@ The following requirements must be met:
    Scenario 2: Query information about one or more vibrators of the specified device.
 
    <!-- @[vibrator_js_get_vibrator_info_sync_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    try {
      const vibratorParam: vibrator.VibratorInfoParam = {
@@ -237,7 +237,7 @@ The following requirements must be met:
    Scenario 1: Trigger vibration with the specified duration.
 
    <!-- @[vibrator_js_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    try {
      // Start vibration.
@@ -263,7 +263,7 @@ The following requirements must be met:
    Scenario 2: Trigger vibration with a preset effect. You can check whether the preset effect is supported before calling **startVibration()**.
 
    <!-- @[vibrator_js_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    try {
      vibrator.isSupportEffect(this.realEffectId, (err: BusinessError, state: boolean) => {
@@ -304,7 +304,7 @@ The following requirements must be met:
    Scenario 3: Trigger vibration according to a custom vibration configuration file.
 
    <!-- @[vibrator_js_vibrator_by_type_file_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // Obtain the file descriptor of the vibration configuration file.
    let rawFd: resourceManager.RawFileDescriptor | undefined = this.uiContext.getHostContext()?.resourceManager.getRawFdSync(fileName);
@@ -339,7 +339,7 @@ The following requirements must be met:
    Add a short vibration event as a **VibratorPattern** object and trigger vibration.
 
    <!-- @[vibrator_js_vibrator_by_type_pattern_use_transient_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    let builder: vibrator.VibratorPatternBuilder = new vibrator.VibratorPatternBuilder();
    try {
@@ -380,7 +380,7 @@ The following requirements must be met:
    Add a long vibration event as a **VibratorPattern** object and trigger vibration.
 
    <!-- @[vibrator_js_vibrator_by_type_pattern_use_continuous_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    let builder: vibrator.VibratorPatternBuilder = new vibrator.VibratorPatternBuilder();
    try {
@@ -439,7 +439,7 @@ The following requirements must be met:
    ​Stop fixed-duration vibration.
 
    <!-- @[vibrator_js_stop_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    try {
      // Stop vibration in VIBRATOR_STOP_MODE_TIME mode.
@@ -459,7 +459,7 @@ The following requirements must be met:
    ​Stop preset vibration.
 
    <!-- @[vibrator_js_stop_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    try {
      // Stop vibration in VIBRATOR_STOP_MODE_PRESET mode.
@@ -479,7 +479,7 @@ The following requirements must be met:
    Method 2: Stop vibration in all modes, including custom vibration.
 
    <!-- @[vibrator_js_stop_vibrator_by_type_all_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    try {
      // Stop vibration in all modes.
@@ -499,7 +499,7 @@ The following requirements must be met:
    Method 3: Stop vibration of the specified device.
 
    <!-- @[vibrator_js_stop_vibrator_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    const vibratorInfoParam: vibrator.VibratorInfoParam = {
      deviceId: -1   // The deviceId must be an actual device obtained from a query.
@@ -516,12 +516,12 @@ The following requirements must be met:
    }
    ```
 
-8. Enable listening for vibrator status changes. 
+8. Enable listening for vibrator status changes.
 
    Enable listening.
 
    <!-- @[vibrator_js_vibrator_on_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // Callback
    vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
@@ -541,7 +541,7 @@ The following requirements must be met:
    Disable listening. The specified callback must be the same as that passed to the on API.
 
    <!-- @[vibrator_js_vibrator_off_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // Callback
    vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
@@ -563,7 +563,7 @@ The following requirements must be met:
 9. Obtain the preset vibration effect based on the specified device ID and vibrator ID.
 
    <!-- @[vibrator_js_vibrator_get_effect_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    try {
      const effectInfo: vibrator.EffectInfo = vibrator.getEffectInfoSync('haptic.clock.timer', { deviceId: -1, vibratorId: 1});
@@ -578,7 +578,7 @@ The following requirements must be met:
 10. Check whether HD vibration is supported.
 
     <!-- @[vibrator_js_vibrator_is_hd_haptic_supported_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     try {
       // Check whether HD vibration is supported.

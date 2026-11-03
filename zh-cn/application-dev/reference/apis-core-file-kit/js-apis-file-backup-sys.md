@@ -1661,7 +1661,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
@@ -2991,7 +2991,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
@@ -4357,7 +4357,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;

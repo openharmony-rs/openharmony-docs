@@ -6,7 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bb26c61ea8a340708fd981ae4e6341180afc9e5 translatedAt=2026-08-14T06:44:34.416Z pushedAt=2026-08-14T07:59:38.451Z -->
+<!-- md-trans-meta sourceCommit=9e9879519aaca72bf73e8013716a9c3ff0e0ad4a translatedAt=2026-10-31T02:53:53.116Z pushedAt=2026-10-31T06:05:09.833Z nl=1 -->
 
 The unified user authentication framework provides **cancel()** for terminating the authentication process.
 
@@ -75,6 +75,7 @@ cancelingUserAuthentication() {
   }
 }
 ```
+
 
 ## Sample Code
 

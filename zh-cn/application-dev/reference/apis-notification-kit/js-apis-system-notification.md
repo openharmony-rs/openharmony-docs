@@ -7,9 +7,9 @@
 <!--Adviser: @fang-jinxu-->
 
 > **说明：**
-> - 从API Version 7 开始，该接口不再维护，推荐使用新接口[@ohos.notification (Notification模块)](js-apis-notification.md)。
+> - 从API版本7开始，该接口不再维护，推荐使用新接口[@ohos.notification (Notification模块)](js-apis-notification.md)。
 > 
-> - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API版本3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -38,7 +38,7 @@ import notification from '@system.notification';
 | ------------- | ---------------------------------------------- | ---- | ------------------------- |
 | contentTitle  | string                                          | 否   | 通知标题。                  |
 | contentText   | string                                          | 否   | [通知内容](../../notification/notification-glossary.md#notification-content通知内容)。                  |
-| clickAction<sup>(deprecated)</sup>   | [ActionResult](#actionresult)                                    | 否   | 通知被点击后触发的行为。<br>从API version 7开始不再维护。     |
+| clickAction<sup>(deprecated)</sup>   | [ActionResult](#actionresult)                                    | 否   | 通知被点击后触发的行为。<br>从API版本7开始不再维护。     |
 
 
 ## notification.show

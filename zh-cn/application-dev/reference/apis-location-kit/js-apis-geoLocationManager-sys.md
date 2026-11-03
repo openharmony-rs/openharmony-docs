@@ -75,13 +75,6 @@ import { geoLocationManager } from '@kit.LocationKit';
 | GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | 该事件表示设备正在接近地理围栏区域，且持续徘徊超过15分钟。<br/>**系统接口**：此接口为系统接口。 |
 
 
-## Location
-
-位置信息。
-
-**系统能力**：SystemCapability.Location.Location.Core
-
-
 ## ReverseGeocodingMockInfo
 
 逆地理编码模拟功能的配置信息，包含一个位置信息和一个地名信息。
@@ -107,7 +100,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | timeInterval | number | 否 | 否 | 表示模拟位置上报的时间间隔，单位是秒。 <br>**系统接口**：此接口为系统接口。|
-| locations | Array&lt;[Location](#location)&gt; | 否 | 否 | 表示模拟位置数组。 <br>**系统接口**：此接口为系统接口。|
+| locations | Array&lt;[Location](js-apis-geoLocationManager.md#location)&gt; | 否 | 否 | 表示模拟位置数组。 <br>**系统接口**：此接口为系统接口。|
 
 ## LocatingRequiredDataConfig<sup>10+</sup>
 
@@ -141,8 +134,8 @@ import { geoLocationManager } from '@kit.LocationKit';
 | wifiData | [WifiScanInfo](#wifiscaninfo10) | 否 | 是 | 表示WiFi扫描结果。 <br>**系统接口**：此接口为系统接口。|
 | bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | 否 | 是 | 表示蓝牙扫描结果。 <br>**系统接口**：此接口为系统接口。|
 | slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示驻留小区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示邻区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| campedCellInfo<sup>23+</sup> |  [CellInfo](#cellinfo23)| 否 | 是 | 表示驻留小区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;[CellInfo](#cellinfo23)&gt; | 否 | 是 | 表示邻区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -849,7 +842,7 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
 isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
-查询用户是否同意定位服务隐私申明，是否同意启用定位服务。只有系统应用才能调用。
+查询用户是否同意定位服务隐私声明，是否同意启用定位服务。只有系统应用才能调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -859,13 +852,13 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type |  [LocationPrivacyType](#locationprivacytype)| 是 | 指定隐私申明场景，例如开机向导中的隐私申明、开启网络定位功能时弹出的隐私申明等。 |
+  | type |  [LocationPrivacyType](#locationprivacytype)| 是 | 指定隐私声明场景，例如开机向导中的隐私声明、开启网络定位功能时弹出的隐私声明等。 |
 
 **返回值**：
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：用户同意定位服务隐私申明。<br/>false：用户不同意定位服务隐私申明。 |
+  | boolean | true：用户同意定位服务隐私声明。<br/>false：用户不同意定位服务隐私声明。 |
 
 **错误码**：
 
@@ -895,7 +888,7 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
 setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean): void
 
-设置用户勾选定位服务隐私申明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。
+设置用户勾选定位服务隐私声明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -907,8 +900,8 @@ setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean)
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | [LocationPrivacyType](#locationprivacytype) | 是 | 指定隐私申明场景，例如开机向导中的隐私申明、开启网络定位功能时弹出的隐私申明等。 |
-  | isConfirmed | boolean | 是 | true：用户同意定位服务隐私申明。<br/>false：用户不同意定位服务隐私申明。 |
+  | type | [LocationPrivacyType](#locationprivacytype) | 是 | 指定隐私声明场景，例如开机向导中的隐私声明、开启网络定位功能时弹出的隐私声明等。 |
+  | isConfirmed | boolean | 是 | true：用户同意定位服务隐私声明。<br/>false：用户不同意定位服务隐私声明。 |
 
 **错误码**：
 
