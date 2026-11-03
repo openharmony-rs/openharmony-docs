@@ -5,10 +5,11 @@
 <!--Designer: @Terence_Super-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d00a3656364523786d467cdbd0a0566c53aa421b translatedAt=2026-11-03T03:43:52.086Z pushedAt=2026-11-03T08:21:02.252Z nl=1 -->
 
 ## Overview
 
-Declares the structs for the C APIs of the radio module.
+Defines the data structures required by the C APIs of the network search module, including network state information, network registration state, radio access technology (RAT) type, NSA network registration state, and error code type. These data structures are used in scenarios where an app needs to obtain the device network registration state and RAT information and perform service processing accordingly.
 
 **File to include**: <telephony/core_service/telephony_radio_type.h>
 
@@ -35,7 +36,7 @@ Declares the structs for the C APIs of the radio module.
 | [Telephony_RadioResult](#telephony_radioresult) | Telephony_RadioResult | Result codes.|
 | [Telephony_RegState](#telephony_regstate) | Telephony_RegState | Network registration status of the device.|
 | [Telephony_RadioTechnology](#telephony_radiotechnology) | Telephony_RadioTechnology | Radio access technology (RAT) type of the device.|
-| [Telephony_NsaState](#telephony_nsastate) | Telephony_NsaState | NSA network registration status of the device.|
+| [Telephony_NsaState](#telephony_nsastate) | Telephony_NsaState | Enumerates the Non-Standalone (NSA) network registration state types of the device. |
 
 ### Macros
 
@@ -105,13 +106,13 @@ RAT type of the device.
 | TEL_RADIO_TECHNOLOGY_1XRTT = 2 | Single-Carrier Radio Transmission Technology (1XRTT)|
 | TEL_RADIO_TECHNOLOGY_WCDMA = 3 | Wideband Code Division Multiple Access (WCDMA)|
 | TEL_RADIO_TECHNOLOGY_HSPA = 4 | High Speed Packet Access (HSPA)|
-| TEL_RADIO_TECHNOLOGY_HSPAP = 5 |  High Speed Packet Access Plus (HSPA+)|
+| TEL_RADIO_TECHNOLOGY_HSPAP = 5 | High Speed Packet Access PLUS (HSPAP). |
 | TEL_RADIO_TECHNOLOGY_TD_SCDMA = 6 | Time Division-Synchronous Code Division Multiple Access (TD-SCDMA)|
 | TEL_RADIO_TECHNOLOGY_EVDO = 7 | Evolution-Data Optimized (EVDO)|
-| TEL_RADIO_TECHNOLOGY_EHRPD = 8 | Evolved High Rate Package Data (EHRPD)|
+| TEL_RADIO_TECHNOLOGY_EHRPD = 8 | Evolved High Rate Packet Data (EHRPD). |
 | TEL_RADIO_TECHNOLOGY_LTE = 9 | Long Term Evolution (LTE)|
 | TEL_RADIO_TECHNOLOGY_LTE_CA = 10 | Long Term Evolution_Carrier Aggregation (LTE_CA)|
-| TEL_RADIO_TECHNOLOGY_IWLAN = 11 | Industrial Wireless LAN (IWLAN)|
+| TEL_RADIO_TECHNOLOGY_IWLAN = 11 | Interworking Wireless LAN (IWLAN). |
 | TEL_RADIO_TECHNOLOGY_NR = 12 | New Radio (NR)|
 
 ### Telephony_NsaState
@@ -122,7 +123,7 @@ enum Telephony_NsaState
 
 **Description**
 
-NSA network registration status of the device.
+Enumerates the Non-Standalone (NSA) network registration state types of the device.
 
 **Since**: 13
 
@@ -134,3 +135,5 @@ NSA network registration status of the device.
 | TEL_NSA_STATE_IDLE_DETECTED = 4 | The device is in the idle state in an LTE cell that supports NSA and NR coverage detection.|
 | TEL_NSA_STATE_DUAL_CONNECTED = 5 | The device is connected to the LTE/NR network in an LTE cell that supports NSA.|
 | TEL_NSA_STATE_SA_ATTACHED = 6 | The device is idle or connected to the NG-RAN cell when being attached to the 5G Core.|
+
+
