@@ -128,10 +128,10 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [入参] UI实例指针，不能为NULL。 |
-| const [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [入参] 已配置的JSON命令对象，由[OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)创建，不能为NULL，调用期间须保持有效。框架不保留该对象。 |
-| [OH_ArkUI_NativeModule_UIEventInjectionCallback](#oh_arkui_nativemodule_uieventinjectioncallback) callback | [入参] 完成回调，可以为NULL。非NULL时，在注入命令执行完成时调用一次。 |
-| void *userData | [入参] 传递给回调的自定义用户数据，可以为NULL。框架不接管数据的所有权，调用方须保持数据有效直至回调完成。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [入参] 指向UI实例的指针。不能为空。 |
+| const [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [入参] 配置的JSON命令。它不能为空，调用期间须保持有效。框架不保留该对象。 |
+| [OH_ArkUI_NativeModule_UIEventInjectionCallback](#oh_arkui_nativemodule_uieventinjectioncallback) callback | [入参] 可选回调，当注入的命令执行完成时调用一次。可以为空。 |
+| void *userData | [入参] 传递给回调的自定义用户数据，可以为NULL。框架不接管数据的所有权，调用者必须保持它有效，直到回调完成 |
 
 **返回值：**
 
