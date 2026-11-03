@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T05:30:32.240Z pushedAt=2026-11-03T12:08:25.556Z nl=1 -->
 
 The **usbManager** module provides APIs for USB management.
 

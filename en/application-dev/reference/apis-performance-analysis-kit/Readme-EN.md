@@ -6,7 +6,7 @@
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6e2c1b088ca07edf7cbf35ac673d064899b4ab51 translatedAt=2026-09-16T11:47:23.696Z pushedAt=2026-09-20T09:01:52.289Z -->
+<!-- md-trans-meta sourceCommit=943a12b2c500010cb5fc57add203b2130a10b4e7 translatedAt=2026-11-03T06:22:05.523Z pushedAt=2026-11-03T12:08:25.621Z nl=1 -->
 
 - ArkTS API<!--performance-analysis-arkts-->
   - [@ohos.hichecker (HiChecker)](js-apis-hichecker.md)
@@ -20,7 +20,7 @@
   - [@ohos.hiviewdfx.hiRetrieval (Application Grayscale)](js-apis-hiretrieval.md)
   - [@ohos.hiviewdfx.jsLeakWatcher (ArkTS Leak Watcher)](js-apis-jsleakwatcher.md)
   <!--Del-->
-  - [@ohos.hiSysEvent (HiSysEvent)(System API)](js-apis-hisysevent-sys.md)
+  - [@ohos.hiSysEvent (System Event Logging) (System API)](js-apis-hisysevent-sys.md)
   - [@ohos.logLibrary (Log Library) (System API)](js-apis-loglibrary-sys.md)
   <!--DelEnd-->
   - APIs No Longer Maintained<!--performance-analysis-arkts-dep-->
@@ -51,6 +51,7 @@
     - [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)
     - [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)
     - [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md)
+    - [OH_HiAppEvent_ExternalLog](capi-hiappevent-hiappevent-externallog.md)
     - [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md)
     - [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md)
     - [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md)
