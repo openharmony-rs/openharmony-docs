@@ -25,7 +25,6 @@ It is suitable for scenarios where the invocation target needs to be determined 
 
 ## Working Mechanism
 
-![modular_object_dispatcher_mechanism](figures/modular_object_dispatcher_mechanism.png)
 
 The invocation flow of ModularObjectDispatcher consists of the following stages:
 

@@ -1458,5 +1458,5 @@ Checks whether the font follows the theme font. By default, the theme font is no
 | Type| Description|
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> Returns **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **font** or **followed** is NULL.|
-
+<!--no_check-->
 

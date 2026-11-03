@@ -5,7 +5,7 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=b09766262e176d598c6af77970ff4840525700ad translatedAt=2026-11-02T13:33:32.152Z pushedAt=2026-11-03T04:24:02.434Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b09766262e176d598c6af77970ff4840525700ad translatedAt=2026-11-02T13:33:32.152Z pushedAt=2026-11-03T08:19:52.029Z nl=1 -->
 
 ## Overview
 
@@ -133,10 +133,10 @@ Asynchronously create a Native child process through the [OH_Ability_CreateNativ
 
     target_link_libraries(childprocesssample PUBLIC
         # Add the dependency of the dynamic link library of IPC Kit.
-    libipc_capi.so
+        libipc_capi.so
      
-    # Dependencies of other dynamic link libraries
-    # ...
+        # Dependencies of other dynamic link libraries
+        # ...
     )
     ```
 
@@ -218,11 +218,11 @@ Asynchronously create a Native child process through the [OH_Ability_CreateNativ
     ```txt
     target_link_libraries(mainprocesssample PUBLIC
         # Add dependencies of the dynamic link library of IPC Kit and Ability Kit.
-    libipc_capi.so
-    libchild_process.so
+        libipc_capi.so
+        libchild_process.so
      
-    # Dependencies of other dynamic link libraries
-    # ...
+        # Dependencies of other dynamic link libraries
+        # ...
     )
     ```
 
@@ -368,10 +368,10 @@ Synchronously create a Native child process through the [OH_Ability_StartNativeC
     ```txt
     target_link_libraries(mainprocesssample PUBLIC
         # Add the dependency of the dynamic link library of Ability Kit.
-    libchild_process.so
+        libchild_process.so
      
-    # Dependencies of other dynamic link libraries
-    # ...
+        # Dependencies of other dynamic link libraries
+        # ...
     )
     ```
 

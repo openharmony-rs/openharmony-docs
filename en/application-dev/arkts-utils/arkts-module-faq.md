@@ -109,15 +109,11 @@ The application did not upgrade its version number during the upgrade, or the ap
 
    If they are inconsistent, the update failed because the application version number was downgraded. The application needs to update its version number.
 
-   ![hapVersion](./figures/module_hapVersion.PNG)
-
-   ![crashVersion](./figures/module_crashVersion.PNG)
 
 3. Check whether the normalized feature is used but the application was not restarted.
 
    Check that the decompiled abc file is in the normalized ohmurl format. You can search for @normalized in the file:
 
-   ![normalized](./figures/module_normalized.PNG)
 
 4. Restart the application to ensure that the normalized feature takes effect.
 
@@ -149,13 +145,11 @@ Error reported at application runtime: cannot find record 'fileName', please che
 
    Case 1: The complete file name cannot be found, but a similar name can be found.
 
-      ![unComplete](./figures/module_unComplete.PNG)
 
       Solution: The complete name appears between the first and second semicolons on each line. The file name in the error message and the file name in the build output must be modified to be consistent.
 
    Case 2: The file cannot be found in filesInfo.txt, and no corresponding output file is generated in the build output area.
 
-      ![entry](./figures/module_entry.PNG)
 
       Solution: Every file packaged into an abc is generated in the build output, such as entry packages and har packages. If developers cannot find the file at the corresponding path, check whether it is a dynamically loaded file.
 

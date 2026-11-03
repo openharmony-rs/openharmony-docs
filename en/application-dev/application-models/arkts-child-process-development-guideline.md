@@ -5,7 +5,7 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=d8d5f4c1f966c7814e24a47d5d7dfb3a096abfae translatedAt=2026-11-02T13:26:41.964Z pushedAt=2026-11-03T04:23:56.971Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d8d5f4c1f966c7814e24a47d5d7dfb3a096abfae translatedAt=2026-11-02T13:26:41.964Z pushedAt=2026-11-03T08:04:20.446Z nl=1 -->
 
 ## Overview
 
@@ -290,7 +290,7 @@ Use the [startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-abil
 
 2. Compile the dynamic link library.
 
-    Modify the CMakeLists.txt file to compile it into a dynamic link library (assuming the library file name to be generated is libchildprocesssample.so), and add the ability framework dynamic library dependency.
+    Modify the CMakeLists.txt file to compile it into a dynamic link library (assuming the library file name to be generated is libchildprocesssample.so), and add the ability dynamic library dependency.
 
     ```txt
     add_library(childprocesssample SHARED

@@ -41,7 +41,6 @@ To ensure system security and user experience, the system restricts apps from di
 
 The following figure shows the specific verification process for starting a component:
 
-![component-startup-rules-inner-device](figures/component-startup-rules-inner-device.png)
 
 ## ExtensionAbility Component Startup Rules
 

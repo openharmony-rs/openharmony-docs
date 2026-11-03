@@ -50,7 +50,6 @@ To ensure system security and user experience, the system restricts apps from di
 
    The following figure shows the specific verification process for starting a component:
 
-   ![component-startup-rules-inner-device-sys](figures/component-startup-rules-inner-device-sys.png)
 
 
    When starting a UIAbility component across apps through the [startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) API, the following three conditions must be met: 1. Apply for the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission (hereinafter referred to as CALL). 2. The exported attribute of the target UIAbility component is true. If the INVISIBLE permission is applied for, this rule does not apply. 3. The caller's UIAbility is in the foreground; otherwise, the BACKGROUND permission must be applied for. For details about how to apply for permissions, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
@@ -64,7 +63,6 @@ To ensure system security and user experience, the system restricts apps from di
 
    The following figure shows the specific verification process for starting a component:
 
-   ![component-startup-rules-inner-device-call-sys](figures/component-startup-rules-inner-device-call-sys.png)
 
 ## ExtensionAbility Component Startup Rules
 
@@ -83,7 +81,6 @@ All types of [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-abilit
 
    The following figure shows the specific verification process for starting a component:
 
-   ![component-startup-rules-extension-inner-device-call-sys](figures/component-startup-rules-extension-inner-device-call-sys.png)
 
 - [DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md) component startup rules:
 

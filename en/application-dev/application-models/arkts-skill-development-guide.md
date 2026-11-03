@@ -6,7 +6,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=af64c779c59999967ab1c05fa09e8a4aba766c81 translatedAt=2026-11-02T13:52:41.457Z pushedAt=2026-11-03T04:23:58.431Z nl=1 -->
+<!-- md-trans-meta sourceCommit=af64c779c59999967ab1c05fa09e8a4aba766c81 translatedAt=2026-11-02T13:52:41.457Z pushedAt=2026-11-03T08:14:19.609Z nl=1 -->
 
 ## Overview
 
@@ -150,7 +150,7 @@ The following uses the "Music Assistant Skill (`example-org-music-assistant`)" a
    }
        // ...
    
-   // Example 2: The enum parameter of controlPlayback must be re-validated against a whitelist
+   // Example 2: The enum parameter of controlPlayback must be re-validated against a trustlist
    const action: string = argv.length > 0 ? argv[0].trim() : '';
    const validActions: string[] = ['pause', 'resume', 'next', 'previous'];
    if (!validActions.includes(action)) {
@@ -234,7 +234,7 @@ The following uses the "Music Assistant Skill (`example-org-music-assistant`)" a
 
 4. Write SKILL.md.
 
-   SKILL.md is the declarative contract file of a Skill and the sole basis for the system intelligence to perform "intent-capability" matching. It mainly consists of three sections: "metadata -> trigger scenarios -> capability contracts".
+   SKILL.md is the declarative contract file of a Skill and the sole basis for the system agent to perform "intent-capability" matching. It mainly consists of three sections: "metadata -> trigger scenarios -> capability contracts".
 
    4.1 Write the metadata (YAML Front Matter).
 

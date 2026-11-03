@@ -42,11 +42,9 @@ After the conditions for enabling obfuscation are met, select the target module 
 The steps to build a HAR in Release mode are as follows:  
 **Figure 1**  Selecting the release build mode in DevEco Studio  
 
-![](figures/DevEco-Studio-selecting-release-build-mode.png)
 
 **Figure 2**  Building a specified module in DevEco Studio  
 
-![](figures/DevEco-Studio-building-specified-module.png)
 
 ## Obfuscation Configuration Capabilities
 
@@ -62,13 +60,10 @@ As shown in the following figure, you can configure whether to enable obfuscatio
 
 **Figure 3** Build configuration file  
 
-![](figures/build-configuration-file.png "Build configuration file")
 
 When creating a project, each module has an `obfuscation-rules.txt` file for configuring obfuscation.
 
 **Figure 4** Obfuscation configuration file  
-
-![](figures/obfuscation-configuration-file.png "Obfuscation configuration file")
 
 In the preceding figure, the `-enable-property-obfuscation` and `-enable-toplevel-obfuscation` switches are added to the `obfuscation-rules.txt` file, indicating that property obfuscation and top-level scope name obfuscation are enabled.
 
@@ -138,7 +133,6 @@ Developers can find the cache files, name mapping table, and system API trustlis
   * System API trustlist file: `systemApiCache.json`, which records the SDK interface and property names.
 
     **Figure 5**  DevEco Studio build artifacts and cache files  
-    ![](figures/DevEco-Studio-build-artifacts-and-cache-files.png "DevEco-Studio build artifacts and cache files")
 
 ## Debugging
 
