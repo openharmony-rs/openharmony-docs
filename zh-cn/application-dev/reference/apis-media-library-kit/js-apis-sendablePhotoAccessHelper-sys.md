@@ -284,7 +284,7 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
     };
     albums.forEach((album) => {
       // 获取相册中的隐藏文件。
-      albums[i].getAssets(fetchOption).then((assetFetchResult) => {
+      album.getAssets(fetchOption).then((assetFetchResult) => {
         console.info('album get hidden assets successfully, getCount: ' + assetFetchResult.getCount());
       }).catch((err: BusinessError) => {
         console.error(`album get hidden assets failed with error: ${err.code}, ${err.message}`);
