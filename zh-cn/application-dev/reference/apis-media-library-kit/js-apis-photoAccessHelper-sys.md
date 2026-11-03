@@ -12373,7 +12373,7 @@ async function example(context: Context) {
 }
 ```
 
-## requestEnhancementImage
+### requestEnhancementImage
 
 static requestEnhancementImage(context: Context, asset: PhotoAsset, dataHandler: MediaAssetDataHandler&lt;image.ImageSource&gt;): Promise&lt;string&gt;
 
@@ -12382,8 +12382,6 @@ static requestEnhancementImage(context: Context, asset: PhotoAsset, dataHandler:
 本接口仅限于本地AI增强，区别于云端AI增强。
 
 **起始版本：** 26.0.1
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -12476,8 +12474,6 @@ queryLocalEnhancementTaskState(photoAsset: PhotoAsset): Promise&lt;LocalEnhancem
 查询本地AI增强任务状态。
 
 **起始版本：** 26.0.1
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -13976,8 +13972,8 @@ async function example(context: Context) {
 | FILE_HIDDEN | 'file_hidden' | 文件的隐藏状态。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | ATTACHMENT_SIZE | 'attachment_size' | 附件文件的大小。单位为字节（Byte）。<br>默认值为0，表示尚未识别的附件文件大小或附件文件大小为0。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | MUSIC_MASTER_MODE | 'music_master_mode' | 音乐大师模式。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
-| LOCAL_ENHANCEMENT_ABILITY | 'local_enhancement_ability' | 本地AI增强任务类型。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。**系统接口**：此接口为系统接口。 |
-| LOCAL_ENHANCEMENT_STATUS | 'local_enhancement_status' | 本地AI增强任务状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。**系统接口**：此接口为系统接口。 |
+| LOCAL_ENHANCEMENT_ABILITY | 'local_enhancement_ability' | 本地AI增强任务类型。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
+| LOCAL_ENHANCEMENT_STATUS | 'local_enhancement_status' | 本地AI增强任务状态。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -14677,8 +14673,6 @@ try {
 本地AI增强任务状态。应用调用本地AI增强任务状态查询接口的返回类型，包含本地AI增强任务的进度信息。
 
 **起始版本：** 26.0.1
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
