@@ -1631,6 +1631,20 @@ Allows an application on the rear display to call spatial gesture APIs to enable
  
 **Since**: 26.0.1
 
+## ohos.permission.LOCAL_DEBUG_OTHER_APPS
+ 
+Allows an application to use the aa tool to debug other applications locally in developer mode.
+ 
+<!--RP107--><!--RP107End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.ACCESS_SE_KEY
 
 Allows an application to generate, use, and delete secure element keys.
