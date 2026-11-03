@@ -42,7 +42,17 @@ export default class EntryAbility extends UIAbility {
 
 1. Navigation设置通用属性[id()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)（恢复按id匹配，不设则整座Navigation不恢复）；
 2. Navigation设置[recoverable(true)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#recoverable14)（默认false）；
-3. 参与恢复的NavDestination设置[recoverable(true)](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#recoverable14)。
+3. NavDestination的[recoverable](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#recoverable14)属性**默认值为true**（与Navigation相反）：Navigation开启recoverable(true)后，其下**所有未显式排除的NavDestination默认全部参与恢复**；只想恢复部分页面时，不参与恢复的页面必须显式设置`.recoverable(false)`。
+
+**三个开关的默认值**：
+
+| 开关 | 默认值 | 效果 |
+|---|---|---|
+| [setRestoreEnabled](#最小适配)（UIAbility级总开关） | false | 不开启则系统不保存/恢复任何数据 |
+| Navigation的recoverable（API 14+） | false | 不开启则整座Navigation页面栈不参与恢复 |
+| NavDestination的recoverable（API 14+） | **true** | Navigation开启后，未显式设置的子页面默认全部参与恢复 |
+
+> **注意**：NavDestination的recoverable默认值为true。这意味着Navigation一旦开启recoverable(true)，其下所有NavDestination（含广告页、登录页、活动页等）默认全部参与恢复。系统恢复时只还原组件壳与启动参数，无数据兜底的页面恢复后参数为空，表现为白屏。因此**选择性恢复的正确姿势是反向排除**：不参与恢复的页面必须逐个显式设置`.recoverable(false)`，"不写recoverable"不等于"不恢复"。
 
 <!-- @[nav_three_piece](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
@@ -105,9 +115,20 @@ NavDestination() {
 .recoverable(true)
 ```
 
+不参与恢复的页面（如广告页）必须显式排除，否则因默认值为true会被一并恢复：
+
+``` TypeScript
+NavDestination() {
+  // 广告页等无需恢复的页面内容
+}
+.title('广告页')
+// 默认值是 true，不写就会被恢复——不参与恢复必须显式排除
+.recoverable(false)
+```
+
 **三件套注意事项**：
 
-- 只有**参数可序列化且有空值兜底**的页面才加`recoverable(true)`；广告页、登录页等无需恢复的页面不加即可；
+- 只有**参数可序列化且有空值兜底**的页面才可参与恢复；广告页、登录页等无需恢复的页面因NavDestination默认值为true，**必须显式设置`.recoverable(false)`排除**——不设置不等于不恢复；
 - 若工程入口是广告页/闪屏页，恢复启动时应直接加载内容页绕过广告页，否则广告页会把恢复出的栈顶页顶掉；
 - 使用@ohos.router的应用不需要三件套——router页面的`recoverable`属性默认为**true**（API 14起），页面栈由系统惰性全栈恢复，无需任何页面栈改造。唯一要做的页面栈相关工作是排除不需要恢复的页面（广告页等），通过`recoverable: false`显式排除：
 
@@ -137,7 +158,7 @@ Button('跳转广告页（不参与恢复）')
 
 **Navigation的恢复重建流程**：
 
-- 备份时：ArkUI遍历所有`.recoverable(true)`的Navigation → 逐页记录NavDestination的name/param/mode/组件状态 → 序列化为JSON；
+- 备份时：ArkUI遍历所有`.recoverable(true)`的Navigation → 逐页记录参与恢复的NavDestination（默认true，仅显式`.recoverable(false)`的页面被跳过）的name/param/mode/组件状态 → 序列化为JSON；
 - 恢复时：ArkUI解析JSON → 重建NavDestination栈 → 栈顶页面被加载显示（生命周期正常触发） → 非栈顶页面仅记录栈位置（延迟实例化，用户返回时才创建）。
 
 > **关键约束**：Navigation页面栈恢复不保证覆盖全部层级，更深层级建议应用保存路径快照自行补推（见[第三层：NavPathStack主动管理](#navpathstack主动管理)）。
