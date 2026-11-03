@@ -24,6 +24,8 @@ import { dialog } from '@kit.ArkUI';
 
 在Dialog中定义文本样式属性，可作为消息内容的文字样式。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -37,6 +39,8 @@ import { dialog } from '@kit.ArkUI';
 ## DialogButton
 
 固定样式弹出框的按钮配置。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -58,6 +62,8 @@ import { dialog } from '@kit.ArkUI';
 
 弹出框列表配置项，用于ActionSheet样式的弹出框。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -73,6 +79,8 @@ import { dialog } from '@kit.ArkUI';
 ## DialogBaseOptions
 
 所有弹出框共享的基本选项，定义弹出框的背景、边框、对齐、蒙层、避让等通用属性。[DialogStyleOptions](#dialogstyleoptions)与[DialogCustomOptions](#dialogcustomoptions)均继承自本接口。
+
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -177,6 +185,8 @@ struct Index {
 
 弹出框的消息内容与文字样式，继承自[DialogTextStyleOptions](#dialogtextstyleoptions)。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -190,6 +200,8 @@ struct Index {
 ## DialogStyleOptions
 
 固定样式弹出框的选项，继承自[DialogBaseOptions](#dialogbaseoptions)。具体用法可参考DialogPresenter的[present](arkts-apis-uicontext-dialogpresenter.md#present)接口示例。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -213,6 +225,8 @@ struct Index {
 
 弹出框的内容由[DialogPresenter.present](arkts-apis-uicontext-dialogpresenter.md#present)方法的第一个参数提供，不在此选项对象中。具体用法可参考DialogPresenter的[present](arkts-apis-uicontext-dialogpresenter.md#present)接口示例。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -233,6 +247,8 @@ constructor()
 
 控制器的构造函数。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -245,6 +261,8 @@ close(): void
 
 关闭相应的弹出框。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -256,6 +274,8 @@ close(): void
 getState(): DialogState
 
 获取弹出框的状态。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -337,6 +357,8 @@ struct Index {
 
 对话的响应结果。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -350,6 +372,8 @@ struct Index {
 ## DialogDismissal
 
 提供关闭弹出框操作的信息与关闭接口。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -365,6 +389,8 @@ struct Index {
 ## DialogBaseAlignment
 
 弹出框的对齐方式。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -389,6 +415,8 @@ struct Index {
 
 弹出框中按钮的排列方式。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -404,6 +432,8 @@ struct Index {
 ## DialogState
 
 Dialog状态的枚举。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
