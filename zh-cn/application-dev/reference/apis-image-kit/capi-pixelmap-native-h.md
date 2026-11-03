@@ -1707,7 +1707,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelma
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_GET_IMAGE_DATA_FAILED：获取图像数据失败。可能的原因：内部数据损坏。详情请检查日志。<br>         IMAGE_PIXELMAP_RELEASED：任一Pixelmap已被释放。<br>         IMAGE_INVALID_PARAMETER：无效参数。可能的原因：1. 任一Pixelmap不符合要求。2. 任意入参为空。<br>         IMAGE_UNSUPPORTED_DATA_FORMAT：任一Pixelmap的像素格式不被支持。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_GET_IMAGE_DATA_FAILED：获取图像数据失败。可能的原因：内部数据损坏。详情请检查日志。<br>         IMAGE_PIXELMAP_RELEASED：任一Pixelmap已被释放。<br>         IMAGE_UNSUPPORTED_OPERATION：Pixelmap被锁定，不支持该操作。<br>         IMAGE_INVALID_PARAMETER：无效参数。可能的原因：1. 任一Pixelmap不符合要求。2. 任意入参为空。<br>         IMAGE_UNSUPPORTED_DATA_FORMAT：任一Pixelmap的像素格式不被支持。 |
 
 ### OH_PixelmapNative_ConvertAlphaFormat()
 
