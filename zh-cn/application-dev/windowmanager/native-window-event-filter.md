@@ -100,9 +100,9 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 ```
 
-## 将多模触摸事件注入给目标窗口
+## 将多模触屏输入事件注入给目标窗口
 
-使用WindowManager模块提供的能力为指定窗口注入触摸事件，仅支持同进程窗口。此操作不会触发窗口焦点、层级变化或拖拽，事件会直接发送给ArkUI。
+使用WindowManager模块提供的能力为指定窗口注入触屏输入事件，仅支持同进程窗口。此操作不会触发窗口焦点、层级变化或拖拽，事件会直接发送给ArkUI。
 
 
 ### 在CMake脚本中链接动态库
@@ -115,7 +115,7 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 
 | 接口名                                                       | 描述                       |
 | ------------------------------------------------------------ | -------------------------- |
-| [OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)](../reference/apis-arkui/capi-oh-window-h.md#oh_windowmanager_injecttouchevent) | 为指定的窗口注入触摸事件。 |
+| [OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)](../reference/apis-arkui/capi-oh-window-h.md#oh_windowmanager_injecttouchevent) | 为指定的窗口注入触屏输入事件。 |
 
 - 构造事件参数，向目标窗口ID注入事件。
 
@@ -123,16 +123,16 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 
 - 接口需要在指定窗口加载UI后调用。
 
-- 完成窗口和多模触摸事件校验，确保事件参数正确，再将事件发送给ArkUI。具体参数说明如下：
+- 完成窗口和多模触屏输入事件校验，确保事件参数正确，再将事件发送给ArkUI。具体参数说明如下：
 
   | 参数名     | 描述                                                         |
   | ---------- | ------------------------------------------------------------ |
   | windowId   | 目标窗口ID，仅支持同进程的窗口，否则返回错误码1300002。窗口需完成UI加载，否则返回错误码1300003。 |
-  | touchEvent | 多模触摸事件，具体可见[Input_TouchEvent](../reference/apis-input-kit/capi-input-input-touchevent.md)，事件定义在oh_input_manager.h中。调用[OH_Input_CreateTouchEvent](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_createtouchevent)接口创建touchEvent对象，使用完后调用[OH_Input_DestroyTouchEvent](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_destroytouchevent)接口销毁该对象。具体参数说明见下表。 |
+  | touchEvent | 多模触屏输入事件，具体可见[Input_TouchEvent](../reference/apis-input-kit/capi-input-input-touchevent.md)，事件定义在oh_input_manager.h中。调用[OH_Input_CreateTouchEvent](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_createtouchevent)接口创建touchEvent对象，使用完后调用[OH_Input_DestroyTouchEvent](../reference/apis-input-kit/capi-oh-input-manager-h.md#oh_input_destroytouchevent)接口销毁该对象。具体参数说明见下表。 |
   | windowX    | 注入事件相对于注入窗口的落点横坐标。参数应为大于等于0的整数，否则返回错误码1300003。 |
   | windowY    | 注入事件相对于注入窗口的落点纵坐标。参数应为大于等于0的整数，否则返回错误码1300003。 |
 
-  其中，touchEvent多模触摸事件具体参数说明如下：
+  其中，touchEvent多模触屏输入事件具体参数说明如下：
 
   | 参数名     | 方法                                                         | 描述                                                         |
   | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -146,7 +146,7 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 
 ### 示例代码
 
-以下示例代码介绍了如何将多模触摸事件注入目标窗口，以单次事件注入为例。
+以下示例代码介绍了如何将多模触屏输入事件注入目标窗口，以单次事件注入为例。
 
 <!-- @[injectTouchEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventDistribution/InjectTouchEvent/entry/src/main/cpp/napi_init.cpp) -->
 
