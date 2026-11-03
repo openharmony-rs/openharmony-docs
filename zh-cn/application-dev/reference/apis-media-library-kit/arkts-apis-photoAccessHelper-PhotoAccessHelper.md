@@ -1232,8 +1232,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 |   MediaLibrary inner fail. Possible causes: <br>1.Internal error in dialog, please retry;
-<br>2.Dialog result missing required parameters, system internal error;<br>3.Dialog operation failed, please retry;<br>4.Callback processing failed, system internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Internal error in dialog, please retry;<br>2.Dialog result missing required parameters, system internal error;<br>3.Dialog operation failed, please retry;<br>4.Callback processing failed, system internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 ## requestPhotoUrisReadPermission<sup>14+</sup>
 
