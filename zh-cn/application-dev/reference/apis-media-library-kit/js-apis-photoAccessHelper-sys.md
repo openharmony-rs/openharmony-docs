@@ -16554,7 +16554,7 @@ static createShareAlbum(context: Context, owner: string, name: string, cloudId: 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| MediaShareAlbumChangeRequest \| null | 返回一个MediaShareAlbumChangeRequest实例；如果操作失败，则返回null。 |
+| [MediaShareAlbumChangeRequest](#mediasharealbumchangerequest) \| null | 返回一个MediaShareAlbumChangeRequest实例；如果操作失败，则返回null。 |
 
 **错误码：**
 

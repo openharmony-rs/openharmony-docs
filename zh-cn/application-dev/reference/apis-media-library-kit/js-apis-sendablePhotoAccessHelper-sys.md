@@ -570,8 +570,6 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 **起始版本：** 26.0.1
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -678,9 +676,11 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ## ShareAlbumRiskStatus
 
-枚举共享相册的风险状态。
+表示共享相册的风险状态的枚举。
 
 **起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
