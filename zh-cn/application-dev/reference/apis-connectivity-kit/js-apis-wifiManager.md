@@ -1223,7 +1223,7 @@ disconnectFromCandidateConfig(networkId: number, blockDuration: number): void
     let networkId = 0; // 候选网络ID，在添加候选网络时生成
     let blockDuration = 60; // 阻断60秒，该候选网络在60秒内不会被重新关联
     wifiManager.disconnectFromCandidateConfig(networkId, blockDuration);
-  }catch(error){
+  } catch (error){
     console.error("failed:" + JSON.stringify(error));
   }
 ```
