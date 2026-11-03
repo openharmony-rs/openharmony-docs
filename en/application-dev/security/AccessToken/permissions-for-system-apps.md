@@ -8553,3 +8553,17 @@ Allows an application to install other applications of the debug type.
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.0.1
+
+## ohos.permission.vehicle.DEVICE_AUTH
+ 
+Allows an application on the rear armrest screen to connect to the head unit for device authentication.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
