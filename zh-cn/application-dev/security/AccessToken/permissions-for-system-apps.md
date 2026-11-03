@@ -8810,7 +8810,7 @@
 
 ## ohos.permission.CAMERA_DRIVER_MONITOR
 
-允许应用访问驾驶员监控相机。
+允许应用可以访问驾驶员监控相机。
 
 **权限级别**：system_basic
 
