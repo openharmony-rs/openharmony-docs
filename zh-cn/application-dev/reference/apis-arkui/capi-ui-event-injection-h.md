@@ -120,15 +120,15 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 
 **描述：**
 
-异步向UI注入宽松的交互命令。<br>该命令表达了一个高层级的交互意图（如点击、内容切换、滚动、返回按键或按键事件），但未针对特定组件；系统将依据当前模式决定如何执行该命令。<br>该命令通过由 OH_ArkUI_NativeModule_UIJsonWrapper_Create 创建的 OH_ArkUI_NativeModule_UIJsonWrapper 对象进行承载。命令参数的顶层结构如下：<br>
-```js
-{ 
-      "schemaVersion": 1, 
-      "cmd": { 
-      "type": "<命令类型>", 
-      "mode": "<执行模式>", 
-        "action_info": { ... } 
-      } 
+异步向UI注入宽松的交互命令。<br>该命令表达了一个高层级的交互意图（如点击、内容切换、滚动、返回按键或按键事件），但未针对特定组件；系统将依据当前模式决定如何执行该命令。<br>该命令通过由 OH_ArkUI_NativeModule_UIJsonWrapperCreate 创建的 OH_ArkUI_NativeModule_UIJsonWrapper 对象进行承载。命令参数的顶层结构如下：<br>
+```text
+{
+  "schemaVersion": 1,
+  "cmd": {
+    "type": "<命令类型>",
+    "mode": "<执行模式>",
+    "action_info": { ... }
+  }
 }
 ```
 各命令特有的参数说明如下；除非特别标注为必填，否则 action_info 中的字段均为可选：
@@ -136,7 +136,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 - content_switch：mode 必须为 "target"；action_info.count 必须为正整数（可选，默认值为 1）；action_info.direction 取值为 "forward" 或 "backward"（可选，默认值为 "forward"）；action_info.coordinates.pos 包含 x 和 y（必填）。
 - scroll：mode 为可选参数，默认值为 "auto"；action_info.direction 取值为 "forward"、"backward"、"left"、"right"、"up" 或 "down"，可选，默认"forward"；action_info.distance 为非负的物理像素值（可选，默认值为窗口高度的三分之一）；action_info.coordinates 包含 x1 和 y1（必填），x2和y2（可选）。
 - backpress：无参数。
-- key：action_info.code 表示虚拟按键代码，必须为有效的按键代码（必填）。
+- key：不使用 mode 字段，传入时不影响执行；action_info.code 表示虚拟按键代码，必须为有效的按键代码（必填）。
 
 所有位置坐标均相对于窗口，单位为物理像素（px）。如果缺少必填字段或数值超出有效范围，将返回 ARKUI_ERROR_CODE_PARAM_INVALID 错误码。<br>该函数是线程安全的，可从任意线程调用，不会阻塞调用者，且非异步信号安全。<br>
 **起始版本：** 26.1.0
