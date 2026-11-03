@@ -1167,7 +1167,7 @@ Defines the network status.
 | regState             | [RegState](#regstate)               |  No |  No | Network registration status of the device.                                        |
 | cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  No |  No | RAT of the device.                                        |
 | nsaState             | [NsaState](#nsastate)               |  No |  No | NSA network registration status of the device.                                     |
-| isCaActive           | boolean                             |  No  |  No  | Carrier Aggregation （CA） state.<br>- **true**: CA is activated.<br>- **false**: CA is not activated.                                                   |
+| isCaActive           | boolean                             |  No  |  No  | Carrier Aggregation (CA) state.<br>- **true**: CA is activated.<br>- **false**: CA is not activated.                                                   |
 | isEmergency          | boolean                             |  No |  No | Whether only emergency calls are allowed.                              |
 
 
