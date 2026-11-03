@@ -44,6 +44,7 @@ export class AVTranscoderDemo {
       this.context = context;
     }
   }
+  // ...
 }
 ```
 
