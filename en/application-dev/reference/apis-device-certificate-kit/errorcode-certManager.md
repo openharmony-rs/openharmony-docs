@@ -6,6 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=587b633869a6910a38891d8c4cb19fef317954f3 translatedAt=2026-10-30T06:37:20.087Z pushedAt=2026-11-03T02:54:37.350Z nl=1 -->
 
 > **NOTE**
 >
@@ -16,6 +17,10 @@
 **Error Message**
 
 Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.
+
+**Description**
+
+Internal error. Possible causes: 1. IPC failure. 2. Memory operation error. 3. File operation error.
 
 **Possible Causes**
 
@@ -28,6 +33,10 @@ Check for and rectify the internal error.
 ## 17500002 Certificate Not Exist
 
 **Error Message**
+
+The certificate does not exist.
+
+**Description**
 
 The certificate does not exist.
 
@@ -45,6 +54,10 @@ Check whether the certificate exists.
 
 The keystore is in an invalid format or the keystore password is incorrect.
 
+**Description**
+
+The keystore format is invalid or the keystore password is incorrect.
+
 **Possible Causes**
 
 The input certificate or credential is invalid.
@@ -58,6 +71,10 @@ Check that the certificate or credential is valid.
 **Error Message**
 
 The number of certificates or credentials reaches the maximum allowed.
+
+**Description**
+
+The number of certificates or credentials has reached the upper limit.
 
 **Possible Causes**
 
@@ -73,6 +90,10 @@ Clear expired certificates or credentials.
 
 The application is not authorized by the user.
 
+**Description**
+
+The app is not authorized by the user.
+
 **Possible Causes**
 
 The user has not authorized the application to use the specified credential.
@@ -86,6 +107,10 @@ Check that the credential is correct, and authorize the application to use the c
 **Error Message**
 
 The device enters advanced security mode.
+
+**Description**
+
+The device enters the advanced security mode.
 
 **Possible Causes**
 
@@ -102,6 +127,10 @@ Guide the user to disable the advanced security mode on the application UI.
 
 The input password is error.
 
+**Description**
+
+The entered password is incorrect.
+
 **Possible Causes**
 
 Incorrect password.
@@ -117,6 +146,10 @@ Check whether the password is correct. Use the correct password and try again.
 
 The device does not support the specified certificate store path.
 
+**Description**
+
+The device does not support the specified certificate storage path.
+
 **Possible Causes**
 
 The device does not support the specified certificate storage path.
@@ -131,6 +164,10 @@ Check whether the entered certificate type is correct.
 
 The USB key service access failed.
 
+**Description**
+
+Failed to access the USB key service.
+
 **Possible Causes**
 
 The USB hardware driver service is abnormal.
@@ -144,6 +181,10 @@ Check whether the USB is properly connected or the USB driver is working properl
 **Error Message**
 
 The input parameters validation failed.
+
+**Description**
+
+Input parameter verification failed.
 
 **Possible Causes**
 
