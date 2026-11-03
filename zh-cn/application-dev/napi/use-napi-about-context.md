@@ -214,6 +214,8 @@ status: active
 |napi_delete_strong_reference | 否 |
 |napi_get_strong_reference_value | 否 |
 |napi_get_global_handle_count | 否 |
+|napi_open_microtask_scope | 否 |
+|napi_close_microtask_scope | 否 |
 |napi_throw_business_error | 是 |
 
 ## 不支持多运行时上下文环境调用的NAPI接口
