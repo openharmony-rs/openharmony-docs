@@ -35,7 +35,7 @@
 | [InputMethod_ErrorCode OH_InputMethodController_Attach(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)](#oh_inputmethodcontroller_attach) | 将应用绑定到输入法服务。必须在创建TextEditorProxy和AttachOptions之后调用，绑定成功后返回InputMethodProxy用于后续交互。必须与OH_InputMethodController_Detach配对调用。 |
 | [InputMethod_ErrorCode OH_InputMethodController_AttachWithUIContext(ArkUI_ContextHandle context, InputMethod_TextEditorProxy *textEditorProxy, InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)](#oh_inputmethodcontroller_attachwithuicontext) | 将应用绑定到输入法服务，同时携带UI上下文信息。适用于需要将输入法与特定UI页面关联的场景（如多窗口场景下指定绑定到哪个页面）。必须在创建TextEditorProxy和AttachOptions之后调用，必须与OH_InputMethodController_Detach配对调用。 |
 | [InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodProxy *inputMethodProxy)](#oh_inputmethodcontroller_detach) | 将应用从输入法服务解除绑定。必须在OH_InputMethodController_Attach或AttachWithUIContext之后调用，解绑后inputMethodProxy不再有效，不可继续使用。 |
-| [InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod(char *name, size_t *nameLength, char *id, size_t *idLength)](#oh_inputmethod_getcurrentinputmethod) | 查询当前正在使用的输入法信息。 |
+| [InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod(char **bundleName, uint32_t *bundleNameLength, char **abilityName, uint32_t *abilityNameLength)](#oh_inputmethod_getcurrentinputmethod) | 查询当前正在使用的输入法信息。 |
 
 ## 函数说明
 
@@ -194,20 +194,20 @@ InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodPro
 ### OH_InputMethod_InputMethodController_GetCurrentInputMethod()
 
 ```c
-InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod(char *name, size_t *nameLength, char *id, size_t *idLength)
+InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod(char **bundleName, uint32_t *bundleNameLength, char **abilityName, uint32_t *abilityNameLength)
 ```
 
 **描述**
 
-查询当前正在使用的输入法信息。调用此函数后，系统将返回当前输入法的bundleName和extensionName。
+查询当前正在使用的输入法信息。调用此函数后，系统将返回当前输入法的bundleName和abilityName。
 
 使用场景：当应用需要获取当前输入法身份信息（如判断当前输入法是否为系统默认输入法）时调用此函数，适用于在请求翻译输入能力前判断当前输入法身份的场景。
 
-使用后效果：调用成功后，name缓冲区填充当前输入法的bundleName，id缓冲区填充当前输入法的extensionName，nameLength和idLength更新为实际所需长度（含终止符）。当缓冲区长度不足时，nameLength和idLength更新为所需长度，返回IME_ERR_IMMS错误码，应用可根据返回的所需长度重新分配缓冲区后再次调用。
+使用后效果：调用成功后，*bundleName指向系统分配的bundleName字符串，*abilityName指向系统分配的abilityName字符串，bundleNameLength和abilityNameLength更新为实际字符串长度。调用者需在使用完毕后通过free()释放*bundleName和*abilityName，避免内存泄漏。
 
 前置条件：无需绑定输入法，直接调用即可。
 
-约束限制：name和id缓冲区由调用者分配和管理。nameLength和idLength不可为NULL。当缓冲区长度不足时，函数不会写入缓冲区内容，仅更新所需长度。
+约束限制：bundleName、bundleNameLength、abilityName、abilityNameLength不可为NULL。
 
 线程安全：此函数非线程安全，不建议在多线程环境下同时调用。
 
@@ -217,13 +217,13 @@ InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod
 
 | 参数项 | 描述 |
 | -- | -- |
-| char *name | 输出参数，用于存储当前输入法bundleName的缓冲区。由调用者分配和管理。缓冲区长度由nameLength指定。若缓冲区长度不足，函数不会写入内容。 |
-| size_t *nameLength | 输入输出参数。作为输入时，表示name缓冲区的大小；作为输出时，表示bundleName的实际所需长度（含终止符）。不可为NULL，传入NULL将返回IME_ERR_NULL_POINTER错误码。 |
-| char *id | 输出参数，用于存储当前输入法extensionName的缓冲区。由调用者分配和管理。缓冲区长度由idLength指定。若缓冲区长度不足，函数不会写入内容。 |
-| size_t *idLength | 输入输出参数。作为输入时，表示id缓冲区的大小；作为输出时，表示extensionName的实际所需长度（含终止符）。不可为NULL，传入NULL将返回IME_ERR_NULL_POINTER错误码。 |
+| char **bundleName | 出参，表示指向获取到的bundleName字符串的二级指针。由系统分配内存，调用者需在使用完毕后通过free()释放，避免内存泄漏。不可为NULL。 |
+| uint32_t *bundleNameLength | 出参，表示获取到的bundleName字符串长度的指针。不可为NULL。 |
+| char **abilityName | 出参，表示指向获取到的abilityName字符串的二级指针。由系统分配内存，调用者需在使用完毕后通过free()释放，避免内存泄漏。不可为NULL。 |
+| uint32_t *abilityNameLength | 出参，表示获取到的abilityName字符串长度的指针。不可为NULL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功，name和id已填充当前输入法信息。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法管理服务异常，或缓冲区长度不足（nameLength和idLength已更新为所需长度，应用可据此重新分配缓冲区）。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，nameLength或idLength为NULL。<br>具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功，*bundleName和*abilityName已填充当前输入法信息。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法管理服务异常。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，bundleName、bundleNameLength、abilityName或abilityNameLength为NULL。<br>具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
