@@ -57144,6 +57144,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp",
 				"functions":[
 					{
 						"end_line":37,
@@ -57151,14 +57155,14 @@
 						"start_line":29
 					},
 					{
-						"end_line":668,
+						"end_line":631,
 						"name":"onUserSpeedChanged",
-						"start_line":633
+						"start_line":596
 					},
 					{
-						"end_line":690,
+						"end_line":653,
 						"name":"onThermalWarningReceived",
-						"start_line":670
+						"start_line":633
 					}
 				]
 			}
