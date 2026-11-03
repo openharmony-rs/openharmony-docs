@@ -61,9 +61,9 @@ export class AVTranscoderDemo {
    ArkTS-Dyn示例：
 
    <!-- @[createInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-
+   
    ``` TypeScript
-   // 创建转码实例。
+   // 1.创建转码实例。
    this.avTranscoder = await media.createAVTranscoder();
    ```
 
