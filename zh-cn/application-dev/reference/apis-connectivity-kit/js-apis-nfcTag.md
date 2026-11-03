@@ -687,7 +687,7 @@ on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bu
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>适用版本：12+ |
 | 3100202  | The element state is invalid. |
 
 **示例：**
