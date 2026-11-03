@@ -236,13 +236,11 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
     // 进入standby状态。仅在STATE_RUNNING状态下可调用。
-    audioRenderer.standby(true, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to enter standby. Code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('Succeeded in entering standby.');
-        // 数据回调已暂停，已写入的缓存继续播放。
-      }
+    audioRenderer.standby(true).then(() => {
+      console.info('Succeeded in entering standby.');
+      // 数据回调已暂停，已写入的缓存继续播放。
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to enter standby. Code: ${err.code}, message: ${err.message}`);
     });
 ```
 
@@ -254,13 +252,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
     // 退出standby状态。仅在standby状态下可调用。
-    audioRenderer.standby(false, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to exit standby. Code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('Succeeded in exiting standby.');
-        // 数据回调恢复。
-      }
+    audioRenderer.standby(false).then(() => {
+      console.info('Succeeded in exiting standby.');
+      // 数据回调恢复。
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to exit standby. Code: ${err.code}, message: ${err.message}`);
     });
 ```
 
