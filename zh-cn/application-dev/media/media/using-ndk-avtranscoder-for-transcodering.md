@@ -229,7 +229,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
    <!-- @[setVideoType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   OH_AVTranscoderConfig_SetDstVideoType(config, "video/avc");                     // 视频编码格式，可选。
+   OH_AVTranscoderConfig_SetDstVideoType(config, "video/avc"); // 视频编码格式，可选。
    ```
 
 7. （可选）设置转码输出音频的编码格式：调用OH_AVTranscoderConfig_SetDstAudioType()设置输出音频的编码格式。
