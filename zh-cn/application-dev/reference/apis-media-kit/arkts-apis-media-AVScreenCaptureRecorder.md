@@ -362,7 +362,7 @@ skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 >
 > 录屏时，应用仅能对本应用的隐私窗口做安全豁免。
 >
-> 例如，用户在本应用进行输入密码等操作，系统不会进行黑屏处理。
+> 例如，用户在本应用内输入密码等操作时，默认该隐私窗口会被黑屏遮挡；豁免后该窗口在录制画面中正常显示。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
