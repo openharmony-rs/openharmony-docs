@@ -431,6 +431,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
+| 203      | This function is prohibited by enterprise management policies.                     |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -488,6 +489,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
+| 203      | This function is prohibited by enterprise management policies.                     |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -5589,6 +5591,65 @@ notificationManager.getNotificationSwitch(switchName, userId).then((data: notifi
     console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationSwitchLimitedBundles
+
+getNotificationSwitchLimitedBundles(userId: number): Promise\<Map\<string, boolean\>\>
+
+获取通知开关受限的应用列表。使用Promise异步回调。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| userId | number | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|-----------------|-------------------------|
+| Promise\<Map\<string, boolean\>\> | Promise对象，返回应用通知开关状态的键值对集合。<br>**true**: 表示开启。<br>**false**: 表示关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600008 | The user does not exist. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+
+notificationManager.getNotificationSwitchLimitedBundles(userId).then((data: Map<string, boolean>) => {
+    console.info(`getNotificationSwitchLimitedBundles success`);
+    data.forEach((state: boolean, bundleName: string) => {
+        console.info(`bundle: ${bundleName}, state: ${state}`);
+    });  
+}).catch((err: BusinessError) => {
+    console.error(`getNotificationSwitchLimitedBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
