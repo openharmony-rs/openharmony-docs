@@ -12,7 +12,7 @@
 
 在信息浏览类应用（如新闻、贴吧、小说阅读等应用）的场景中，用户上滑首页内容区后，标题栏显示范围可随之缩小，同时通过沉浸光感提升标题栏的交互体验。
 
-1. 设置底部Tabs悬浮并为Tabs组件开启沉浸光感，同时使用[ExpandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)将显示内容延伸至状态栏区域，使应用整体体验更加一致。
+1. 设置底部Tabs悬浮并为Tabs组件开启沉浸光感，同时使用[ignoreLayoutSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)将显示内容延伸至底部状态栏区域，使应用整体体验更加一致。
    <!-- @[immersive_tabs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/BestPractice.ets) -->
    ```TypeScript
    @Entry
@@ -40,17 +40,15 @@
      @Builder
      tabExploreContent() {
        // 通过系统路由表的方式配置对应的页面跳转
-       Navigation(this.exploreStack, {name: 'explore'})
+       Navigation(this.exploreStack, { name: 'explore' })
          .hideTitleBar(true)
-         .expandSafeArea([SafeAreaType.SYSTEM])
      }
 
      @Builder
      tabGameContent() {
        // 通过系统路由表的方式配置对应的页面跳转
-       Navigation(this.gameStack, {name: 'game'})
+       Navigation(this.gameStack, { name: 'game' })
          .hideTitleBar(true)
-         .expandSafeArea([SafeAreaType.SYSTEM])
      }
 
      build() {
@@ -58,13 +56,10 @@
          TabContent() {
            this.tabExploreContent()
          }.tabBar(this.BottomTabBarItem('探索', $r('sys.symbol.compass'), 0))
-         // 内容区延伸到状态栏区域，形成整体的交互体验
-         .expandSafeArea([SafeAreaType.SYSTEM])
 
          TabContent() {
            this.tabGameContent()
          }.tabBar(this.BottomTabBarItem('游戏', $r('sys.symbol.gamecontroller'), 1))
-         .expandSafeArea([SafeAreaType.SYSTEM])
 
          TabContent() {
          }.tabBar(this.BottomTabBarItem('应用', $r('sys.symbol.grid'), 2))
@@ -75,10 +70,9 @@
        .barPosition(BarPosition.End)
        .barMode(BarMode.Fixed)
        .barOverlap(true)
-       .barHeight(56)
-       .barFloatingStyle({ barBottomMargin: 8, systemMaterial: new uiMaterial.ImmersiveMaterial({}) })
-       .scrollable(true)
-       .expandSafeArea([SafeAreaType.SYSTEM])
+       .barFloatingStyle({ systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.THIN }) })
+       .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.BOTTOM])
+       .height(LayoutPolicy.matchParent)
        .onChange((index: number) => {
          this.currentTab = index
        })
@@ -95,31 +89,33 @@
      @Local searchOpacity: number = 1
      @Local classifyType: Array<string> = []
      totalTitleHeight = 110
-     @Local titleHeight:number = this.totalTitleHeight
      @Local scrollOffset: number = 0
      @Local titleOffset: number = 0
+
      @Builder
      exploreTitleBar() {
        Column() {
          Row() {
-           Text('探索').fontSize(28).fontWeight(FontWeight.Bold).fontColor('#1A1A1A')
+           Text('探索')
+             .fontSize(28)
+             .fontWeight(FontWeight.Bold)
+             .fontColor('#1A1A1A')
            Blank()
            Search({ placeholder: '探索探索' })
              .searchButton('搜索')
              .height(40)
              .width(220)
              .systemMaterial(new uiMaterial.ImmersiveMaterial({}))
-         }.expandSafeArea([SafeAreaType.SYSTEM])
+         }
          .width('100%')
          .opacity(this.searchOpacity)
          .height(50)
 
          ClassifyComponent()
-       }.expandSafeArea([SafeAreaType.SYSTEM])
+       }
        .width('100%')
-       .height(this.titleHeight)
-       .padding({ left: 20, right: 20})
-       .position({x: 0, y: -this.titleOffset})
+       .padding({ left: 20, right: 20 })
+       .position({ x: 0, y: -this.titleOffset })
      }
 
      build() {
@@ -138,7 +134,7 @@
                    Row() {
                      SymbolGlyph(item.image).fontSize(36)
                        .fontColor(['#007dff'])
-                       .margin({ right: 16})
+                       .margin({ right: 16 })
                      Text(item.name).fontSize(16)
                        .fontColor('#333333')
                    }.width('100%')
@@ -157,15 +153,13 @@
          .height('100%')
          .onDidScroll((xOffset: number, yOffset: number, state: ScrollState) => {
            this.scrollOffset += yOffset
-           // 搜索框大小范围内
            if (this.scrollOffset <= 50) {
-             this.titleOffset = this.scrollOffset;
-             this.titleHeight = this.totalTitleHeight - this.titleOffset
+             this.titleOffset = this.scrollOffset
              this.searchOpacity = 1 - this.titleOffset / 50
            }
          })
        }.title(
-         { builder: this.exploreTitleBar, height: this.titleHeight },
+         { builder: this.exploreTitleBar, height: this.totalTitleHeight },
          { barStyle: BarStyle.STACK,
            // 设置标题栏模糊
            scrollEffectOptions: {
@@ -173,7 +167,6 @@
            }
          }
        ).hideBackButton(true)
-       .expandSafeArea([SafeAreaType.SYSTEM])
      }
    }
    ```
@@ -191,18 +184,21 @@
    export struct ClassifyComponent {
      @Local selectedIndexes: Array<number> = [0]
      info: Array<ChipGroupItemOptions> = []
-   
+
      aboutToAppear(): void {
        let classifyType: string[] = ['策略', '动作', '竞技', '射击', '卡牌', '体育', '休闲', '音乐']
-   
+
        for (let index: number = 0; index < classifyType.length; index++) {
-         this.info.push({label: {text: classifyType[index]}, prefixSymbol: {
-           activated: new SymbolGlyphModifier($r('sys.symbol.star_fill')).fontSize(20).fontColor(['#d3d3d3']),
-           normal: new SymbolGlyphModifier($r('sys.symbol.star_fill')).fontSize(20).fontColor([Color.Black])
-         }})
+         this.info.push({
+           label: { text: classifyType[index] },
+           prefixSymbol: {
+             activated: new SymbolGlyphModifier($r('sys.symbol.star_fill')).fontSize(20).fontColor(['#d3d3d3']),
+             normal: new SymbolGlyphModifier($r('sys.symbol.star_fill')).fontSize(20).fontColor([Color.Black])
+           }
+         })
        }
      }
-   
+
      build() {
        ChipGroup({
          items: this.info,
@@ -240,7 +236,7 @@
      titleEnd: number = 0
      titleStart: number = 0
      @Local listVisible: Visibility = Visibility.Visible
-   
+
      @Builder
      gameTitleBar() {
        Row() {
@@ -257,19 +253,21 @@
          }
          Button() {
            SymbolGlyph($r('sys.symbol.AI_search')).fontSize(20)
-         }.borderRadius(180).width(40).height(40)
+         }.borderRadius(180)
+         .width(40)
+         .height(40)
          .backgroundColor(Color.Transparent)
          .systemMaterial(new uiMaterial.ImmersiveMaterial({
-             lightEffect: { color: Color.White },
-             materialColor: '#d3d3d3'
-           }))
-       }.expandSafeArea([SafeAreaType.SYSTEM])
+           lightEffect: { color: Color.White },
+           materialColor: '#80d3d3d3'
+         }))
+       }
        .width('100%')
        .height('100%')
        .padding({ left: 20, right: 20 })
        .alignItems(VerticalAlign.Center)
      }
-   
+
      build() {
        NavDestination() {
          Scroll() {
@@ -280,22 +278,30 @@
                .borderRadius(12)
                .backgroundColor('#fff3e0')
                .objectFit(ImageFit.Cover)
-             ClassifyComponent().id('content').visibility(this.showTitle ? Visibility.Hidden : Visibility.Visible)
+             ClassifyComponent()
+               .id('content')
+               .visibility(this.showTitle ? Visibility.Hidden : Visibility.Visible)
              List() {
                ForEach(listItems, (item: ListItemData) => {
                  ListItem() {
                    Row() {
-                     SymbolGlyph(item.image).fontSize(36).fontColor(['#ff6d00']).margin({ right: 16 })
+                     SymbolGlyph(item.image)
+                       .fontSize(36)
+                       .fontColor(['#ff6d00'])
+                       .margin({ right: 16 })
                      Text(item.name).fontSize(16).fontColor('#333333')
                    }.width('100%')
                    .padding({ left: 20, right: 20, top: 14, bottom: 14 })
                  }
                }, (item: ListItemData) => item.id)
              }.width('100%')
-             .margin({top: 8})
-             .nestedScroll({scrollForward: NestedScrollMode.PARENT_FIRST, scrollBackward: NestedScrollMode.SELF_FIRST})
-             .divider({strokeWidth: 5, color: '#e0e0e0', startMargin: 72, endMargin: 20})
-           }.padding({left: 16, right: 16, top: 8, bottom: 16})
+             .margin({ top: 8 })
+             .nestedScroll({
+               scrollForward: NestedScrollMode.PARENT_FIRST,
+               scrollBackward: NestedScrollMode.SELF_FIRST
+             })
+             .divider({ strokeWidth: 5, color: '#e0e0e0', startMargin: 72, endMargin: 20 })
+           }.padding({ left: 16, right: 16, top: 8, bottom: 16 })
          }
          .contentStartOffset(this.titleHeight)
          .scrollable(ScrollDirection.Vertical)
@@ -307,24 +313,25 @@
            this.totalOffset += yOffset
            let curOffset = this.contentOffset - this.totalOffset
            if (curOffset > this.titleEnd) {
-             this.showTitle = false;
+             this.showTitle = false
              this.listVisible = Visibility.Hidden
              return
            }
            if (curOffset < this.titleEnd) {
-             this.showTitle = true;
+             this.showTitle = true
              this.listVisible = Visibility.Visible
              return
            }
            this.titleHeight = (curOffset - this.titleEnd) / (this.titleHeight - this.titleEnd)
          })
        }.onShown(() => {
-         let titleInfo = this.getUIContext().getComponentUtils().getRectangleById('text');
+         let titleInfo = this.getUIContext().getComponentUtils().getRectangleById('text')
          this.titleStart = this.getUIContext().px2vp(titleInfo.windowOffset.y)
          this.titleEnd = this.getUIContext().px2vp(titleInfo.size.height)
-         this.contentOffset = this.getUIContext().px2vp(this.getUIContext().getComponentUtils().getRectangleById('content').windowOffset.y)
+         this.contentOffset = this.getUIContext().px2vp(
+           this.getUIContext().getComponentUtils().getRectangleById('content').windowOffset.y
+         )
        })
-       .expandSafeArea([SafeAreaType.SYSTEM])
        .hideBackButton(true)
        .title({ builder: this.gameTitleBar, height: this.titleHeight }, {
          barStyle: BarStyle.STACK,

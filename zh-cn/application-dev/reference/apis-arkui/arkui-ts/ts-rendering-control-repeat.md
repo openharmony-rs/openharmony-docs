@@ -22,6 +22,8 @@ Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组�
 
 Repeat\<T\>(arr: Array\<T\>)
 
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -38,13 +40,17 @@ Repeat\<T\>(arr: Array\<T\>)
 Repeat<string>(this.arr)
 ```
 
-### Repeat
+### Repeat<sup>18+</sup>
 
-Repeat\<T\>(arr: RepeatArray\<T\>)
+Repeat\<T\>(arr: RepeatArray\<T\>, options?: RepeatOptions)
 
 > **说明：**
 >
 > 从API version 18开始，Repeat数据源支持RepeatArray类型。
+>
+> 从API版本26.1.0开始，Repeat支持传入[RepeatOptions](#repeatoptions)，用于绑定控制器[RepeatController](#repeatcontroller)，以及设置动效过程中的子组件复用策略[allowReuseInAnimation](#repeatoptions)。
+
+**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -55,6 +61,7 @@ Repeat\<T\>(arr: RepeatArray\<T\>)
 | 参数名 | 类型       | 必填 | 说明      |
 | ------ | ---------- | -------- | -------- |
 | arr    | [RepeatArray\<T\>](#repeatarrayt18) | 是 | 数据源，为`RepeatArray<T>`类型的数组，由开发者决定数据类型。 |
+| options    | [RepeatOptions](#repeatoptions) | 否 | 创建Repeat组件时的配置项，用于绑定控制器、设置动效过程中的子组件复用策略。不传入时使用默认配置（不绑定控制器）。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -245,6 +252,68 @@ Repeat数据源参数联合类型。
 | Array\<T\> | 常规数组类型。 |
 | ReadonlyArray\<T\> | 只读数组类型，不允许数组对象变更。 |
 | Readonly\<Array\<T\>> | 只读数组类型，不允许数组对象变更。 |
+
+## RepeatOptions
+
+创建Repeat组件时的配置项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| controller | [RepeatController](#repeatcontroller) | 否 | 是 | 绑定到Repeat组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理Repeat组件懒加载模式下缓存池中的组件。该控制器仅在创建Repeat时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。 |
+| allowReuseInAnimation | boolean | 否 | 是 | Repeat在[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)动效过程中更新时，是否允许复用子组件。仅在Repeat的父容器组件为[List](./ts-container-list.md)、[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)时生效。<br>Repeat与动效一起使用时，Repeat的复用能力会与动效产生冲突，导致动效异常。在涉及动效的场景下，需将该参数设置为false，Repeat在动效过程中更新时将不复用子组件，从而支持动效。<br>true：动效过程中复用能力仍保持开启。<br>false：动效过程中复用能力关闭。<br>默认值：Repeat的父容器组件为List时为false；父容器组件为Grid或WaterFlow时为true。 |
+
+## RepeatController
+
+Repeat组件的控制器。通过[RepeatOptions](#repeatoptions)中的controller字段将控制器绑定到Repeat组件上，需要清理缓存时调用[clearCache](#clearcache)清理Repeat组件懒加载模式下缓存池中的组件。
+
+> **说明：**
+>
+> 1. controller仅在Repeat创建时绑定，不支持动态修改。
+> 2. 一个控制器只能控制一个Repeat组件。若将控制器绑定到另一个Repeat，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### constructor
+
+constructor()
+
+RepeatController的构造函数。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### clearCache
+
+clearCache(): void
+
+清理该控制器绑定的Repeat组件懒加载模式下缓存池中的组件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RepeatItem\<T\>
 
@@ -489,3 +558,127 @@ struct MemoryOptimizeDemo {
   }
 }
 ```
+
+### 示例2（主动清理缓存池）
+
+以下示例中，通过[RepeatOptions](#repeatoptions)的controller属性绑定了[RepeatController](#repeatcontroller)。点击Scroll按钮，使列表跳转，旧组件进入缓存池。然后点击Clear按钮，主动清理Repeat缓存池中的组件。
+
+从API版本26.1.0开始，Repeat接口新增options参数。
+
+```ts
+@ComponentV2
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Local data: Array<number> = [];
+  // 创建RepeatController对象
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ scroller: this.scroller }) {
+        // 通过RepeatOptions的controller字段绑定控制器
+        Repeat<number>(this.data, { controller: this.controller })
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              ChildComponent()
+            }
+          })
+          .virtualScroll()
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Scroll')
+        .onClick(() => {
+          // 点击按钮触发列表跳转，旧组件进入缓存池
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理Repeat缓存池中的组件
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
+
+### 示例3（使用动效能力）
+
+以下示例中，通过[RepeatOptions](#repeatoptions)的allowReuseInAnimation属性适配了动效能力。
+
+从API版本26.1.0开始，Repeat接口新增options参数。
+
+```ts
+@Entry
+@ComponentV2
+struct RepeatAnimationDemo {
+  @Local dataArray: string[] = [];
+  private count: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.dataArray.push(`Item ${i}`);
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Row({ space: 5 }) {
+        Button('Update Repeat in Animation')
+          .onClick(() => { // 在动效过程中插入子组件
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 0, `New item ${this.count++}`)
+            })
+          })
+      }
+      Row({ space: 5 }) {
+        Grid() {
+          Repeat(this.dataArray, { allowReuseInAnimation: false }) // Repeat在动效过程中不复用子组件，从而适配动效
+            .each((repeatItem) => {
+              GridItem() {
+                Text(repeatItem.item)
+              }
+              .width(150)
+              .height(50)
+              .border({ width: 1 })
+              .transition(TransitionEffect.translate({ x: 300 })) // 设置子组件插入时的过渡效果
+            })
+            .key((item: string, index: number) => item)
+            .virtualScroll()
+        }
+        .columnsTemplate('1fr')
+        .columnsGap(5)
+        .rowsGap(5)
+        .width('80%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+运行效果：
+
+![Repeat-animate-grid](figures/repeat-animate-grid.gif)

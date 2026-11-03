@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArrayBuffer对象的跨线程传输方式：拷贝传输复制二进制数据后传递，转移传输转移内存所有权避免拷贝开销，适用于图片、音频等大段连续二进制数据的高效跨线程传递场景。"
+keywords: [ArrayBuffer, 二进制数据, 拷贝传输, 转移传输, 内存所有权, 跨线程传递, 连续内存数据]
+doctype: guide
+status: active
+---
+
 # ArrayBuffer对象
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -108,3 +116,47 @@ struct Index {
 ## ArrayBuffer转移传输方式
 
 在TaskPool中，传递ArrayBuffer数据时，默认使用转移方式，原线程将无法再使用已传输给子线程的ArrayBuffer。 在上文示例的基础上去除`task.setTransferList()`接口调用，即在createImageTask的第二个参数传入false，就可以实现转移方式的传输。
+
+## Worker场景下ArrayBuffer的传输方式
+
+与TaskPool默认采用转移方式不同，在Worker场景下通过[postMessage](../reference/apis-arkts/js-apis-worker.md#postmessage9-1)传递ArrayBuffer时，传递方式由是否传入转移列表决定：将ArrayBuffer传入转移列表时采用转移方式传递，不传时采用拷贝方式传递。
+
+传递大块二进制数据（如图片、音视频原始数据）给Worker处理时，若宿主线程在Worker处理期间不再需要访问原数据，建议将ArrayBuffer放入转移列表（`transfer`）以转移方式传递，避免深拷贝带来的双倍内存占用和拷贝耗时。示例如下：
+
+<!-- @[worker_send](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/WorkerSendArrayBuffer.ets) -->
+
+``` TypeScript
+import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+
+const workerInstance = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+
+const buffer: ArrayBuffer = new ArrayBuffer(1024 * 1024); // 1MB
+workerInstance.postMessage(buffer, [buffer]);
+// 转移后，buffer的所有权转移到Worker线程，宿主线程无法再访问buffer
+workerInstance.onmessage = (e: MessageEvents) => {
+  workerInstance.terminate();
+};
+workerInstance.onerror = (err: ErrorEvent) => {
+  console.error('worker err:' + err.message);
+};
+```
+
+如果宿主线程在Worker处理期间仍需访问该ArrayBuffer，则只能采用拷贝方式传递。
+
+<!-- @[worker_send_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/WorkerSendArrayBufferWithCopy.ets) -->
+
+``` TypeScript
+import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+
+const workerInstance = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+
+const buffer: ArrayBuffer = new ArrayBuffer(1024 * 1024); // 1MB
+workerInstance.postMessage(buffer);
+// 深拷贝，宿主线程与Worker线程各持有1MB数据，总内存占用翻倍
+workerInstance.onmessage = (e: MessageEvents) => {
+  workerInstance.terminate();
+};
+workerInstance.onerror = (err: ErrorEvent) => {
+  console.error('worker err:' + err.message);
+};
+```

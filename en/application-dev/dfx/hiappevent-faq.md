@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=4aed0c206d7dd9b4a03e9c1b9f67013974cc4fd6 translatedAt=2026-07-30T02:50:37.795Z pushedAt=2026-07-30T03:24:11.929Z -->
+<!-- md-trans-meta sourceCommit=1011168022575b6850fb8f6d2510cc88be09d120 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## What should I do if the subscribed events cannot be found?
 
@@ -19,6 +19,7 @@ In the development and debugging phase, when a fault such as crash or freeze occ
 The application exits after the crash or freeze event occurs.
 
 You can restart the application and view the event content.
+
 
 ## What should I do if the external_log file cannot be obtained?
 
@@ -84,6 +85,7 @@ For example, the system event C is subscribed to by modules A and B in an applic
 
 Check whether the **external_log** file is deleted by other modules.
 
+
 ## What should I do if the external_log file cannot be deleted
 
 **Symptom**
@@ -104,7 +106,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
   hiAppEvent.addWatcher({
-    // Set the watcher name. The system identifies different watchers based on their names.
+    // You can customize the watcher name, which the system uses to identify different watchers.
     name: "AppCrashWatcher",
     // Set the subscription filters. For example, subscribe to the crash event of the system event.
     appEventFilters: [
@@ -142,14 +144,14 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
               hilog.info(0x0000, 'testTag', `HiAppEvent file=${externalLog} fd=${file.fd}`);
               fileIo.closeSync(file);
               }).catch((err: BusinessError) => {
-                hilog.info(0x0000, 'testTag',
+                hilog.error(0x0000, 'testTag',
                 `HiAppEvent open file=${externalLog} failed with error message=${err.message}, error code=${err.code}`);
               });
               // Delete the external_log file.
               fileIo.unlink(externalLog).then(() => {
-                console.info("HiAppEvent remove file:" + externalLog + " succeed");
+                hilog.info(0x0000, 'testTag', "HiAppEvent remove file:" + externalLog + " succeed");
               }).catch((err: BusinessError) => {
-                console.error("HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
+                hilog.error(0x0000, 'testTag', "HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
                 ", error code: " + err.code);
               });
             }
@@ -169,9 +171,11 @@ HiAppEvent file=/data/storage/el2/log/hiappevent/APP_CRASH_1751081104816_35595.l
 HiAppEvent remove file:/data/storage/el2/log/hiappevent/APP_CRASH_1751081104816_35595.log succeed
 ```
 
+
 > **NOTE**
 >
 > The path of **external_log** is the application sandbox directory, not the actual physical path. The application has the permission to access its own sandbox directory. The **external_log** space is limited. After processing log files, delete them in a timely manner.
+
 
 ## Does a thread or process receive only its own event callbacks within the same application?
 

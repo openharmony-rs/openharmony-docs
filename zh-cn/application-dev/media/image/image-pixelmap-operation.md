@@ -1,9 +1,17 @@
+---
+kits: ["Image Kit / 图片处理服务"]
+description: "PixelMap提供位图操作能力，支持读写像素数据、获取位图信息、深拷贝并改变像素格式，以及多张位图纵向拼接，适用于像素级图像处理和自定义图像合成的开发场景。"
+keywords: [PixelMap, 位图操作, 像素数据读写, 区域像素读写, 深拷贝, 像素格式转换, 位图拼接, 像素密度, 像素字节数]
+doctype: guide
+status: active
+---
+
 # 使用PixelMap完成位图操作
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
 
 当需要对目标图片中的部分区域进行处理时，可以使用位图操作功能。此功能常用于图片美化等操作。
@@ -67,7 +75,7 @@
    
    ``` TypeScript
    // 场景二：读取并修改指定区域内的图像数据。
-   // 读取PixelMap指定区域内的像素数据，并按照RGBA_8888像素格式写入PositionArea.pixels缓冲区，该区域由PositionArea.region指定。
+   // 读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入PositionArea.pixels缓冲区，该区域由PositionArea.region指定。
    const regionWidth: number = 200;
    const regionHeight: number = 100;
    const area: image.PositionArea = {

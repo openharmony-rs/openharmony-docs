@@ -1,4 +1,4 @@
-# OH_AbilityRuntime_ChildProcessInfoHandle
+# OH_AbilityRuntime_ChildProcessInfo*
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -17,6 +17,6 @@ typedef struct OH_AbilityRuntime_ChildProcessInfo *OH_AbilityRuntime_ChildProces
 
 **起始版本：** 26.0.1
 
-**相关模块：** [ChildProcess](capi-childprocess.md)
+**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
 
 **所在头文件：** [child_process_info.h](capi-child-process-info-h.md)

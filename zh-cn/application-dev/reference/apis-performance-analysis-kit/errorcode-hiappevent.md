@@ -335,3 +335,21 @@ Invalid parameter value. Possible causes: 1. Incorrect parameter length; 2. Inco
 **处理步骤**
 
 传入符合规格的参数值。
+
+## 11106001 注册external_log日志管理者失败
+
+**错误信息**
+
+State error. Possible causes: 1. Log manager already registered.
+
+**错误描述**
+
+在注册external_log日志管理者之前，已被应用内其它业务注册过external_log日志管理者。
+
+**可能原因**
+
+external_log日志管理者已被注册。
+
+**处理步骤**
+
+先调用查询接口查看external_log日志管理者是否已被注册，若已注册则无需重复注册，未注册则尝试重新注册。

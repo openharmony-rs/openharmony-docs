@@ -1,14 +1,15 @@
 # Obtaining Specific Metadata Using ImageSource
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=02a76210ad9a480aced53e2ee2f43b01791ed8f2 translatedAt=2026-07-22T07:47:18.591Z pushedAt=2026-07-22T11:41:23.699Z -->
+<!-- md-trans-meta sourceCommit=478e32b69333330d8922a96b7f6414b45eb5ecb5 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 23, you can use `ImageSource` to obtain specific metadata from various image formats, including GIF, HEIFS, DNG, WebP, PNG, JFIF, TIFF, and AVIS.
+
+The following table lists the starting API version supported by each format.
 
 ## Supported Metadata Categories
 
@@ -41,7 +42,7 @@ For details about the APIs for obtaining image-specific metadata, see [ImageSour
 1. Import the `Image` module globally, and import the corresponding Kit modules as needed.
 
    <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
-
+   
    ``` TypeScript
    // Import the related modules.
    import { image } from '@kit.ImageKit';
@@ -57,8 +58,8 @@ For details about the APIs for obtaining image-specific metadata, see [ImageSour
 
    Use the [readImageMetadata](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23) API to read specific metadata of the corresponding format by specifying property keys (`propertyKeys`). The following example reads the frame delay time in GIF metadata:
 
-   <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+   <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
+   
    ``` TypeScript
    async readImageMetadata(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
      if (imageSource == undefined) {
@@ -72,10 +73,10 @@ For details about the APIs for obtaining image-specific metadata, see [ImageSour
        if (imageMetadata.gifMetadata != undefined) {
          console.info(`GIF_DELAY_TIME: ${JSON.stringify(imageMetadata.gifMetadata?.delayTime)}`);
        }
-       return imageMetadata
+       return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadata failed, error.code: ${error.code},
-                  error.message: ${error.message}`)
+                  error.message: ${error.message}`);
        return undefined;
      }
    }
@@ -83,8 +84,8 @@ For details about the APIs for obtaining image-specific metadata, see [ImageSour
 
    Use the [readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24) API to read specific metadata of the corresponding format by specifying a [MetadataType](../../reference/apis-image-kit/arkts-apis-image-e.md#metadatatype13) enum value. The following example reads GIF metadata:
 
-   <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+   <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
+   
    ``` TypeScript
    async readImageMetadataByType(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
      if (imageSource == undefined) {
@@ -101,7 +102,7 @@ For details about the APIs for obtaining image-specific metadata, see [ImageSour
        return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadataByType failed, error.code: ${error.code},
-                  error.message: ${error.message}`)
+                  error.message: ${error.message}`);
        return undefined;
      }
    }
@@ -111,18 +112,10 @@ For details about the APIs for obtaining image-specific metadata, see [ImageSour
 
    After confirming that the asynchronous method of `imageSource` has completed execution and the variable is no longer in use, you can manually call the following method to release it as needed.
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
-
-   ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
+   ``` TypeScript
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {
@@ -136,7 +129,5 @@ For details about the APIs for obtaining image-specific metadata, see [ImageSour
 ## Notes
 
 - If the image does not contain the target metadata, the returned field is `undefined`. Check whether the field is valid before using it.
-
 - Reading image files requires the read permission. Ensure that the app has declared and obtained the corresponding permission.
-
 - When reading multi-frame images (such as GIF images), `index` must not be less than `0` or exceed the valid frame range. Otherwise, the read operation fails.

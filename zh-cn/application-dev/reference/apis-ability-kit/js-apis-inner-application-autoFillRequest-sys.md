@@ -86,7 +86,7 @@ onSuccess(response: FillResponse): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Mandatory parameters are left unspecified. |
 | 16000050 | Internal error. |
 
@@ -183,7 +183,7 @@ onFailure(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -241,7 +241,7 @@ struct AutoFillPage {
 
       Button('onFailure')
         .onClick(() => {
-          hilog.info(0x0000, 'testTag', 'autofill failure');
+          hilog.error(0x0000, 'testTag', 'autofill failure');
           try {
             this.fillCallback?.onFailure();
           } catch (error) {
@@ -278,7 +278,7 @@ onCancel(fillContent?: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. The input parameter is not valid parameter;2. Mandatory parameters are left unspecified. <br>适用版本：12+|
 | 16000050 | Internal error. |
 
@@ -374,7 +374,7 @@ setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig ): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Mandatory parameters are left unspecified. |
 | 16000050 | Internal error. |
 
@@ -429,7 +429,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
       } catch (err) {
         let code = (err as BusinessError).code;
         let msg = (err as BusinessError).message;
-        hilog.info(0x0000, 'testTag', `autoFillPopupConfig failed, error code: ${code}, error msg: ${msg}.`);
+        hilog.error(0x0000, 'testTag', `autoFillPopupConfig failed, error code: ${code}, error msg: ${msg}.`);
       }
     }
   }
@@ -512,7 +512,7 @@ onSuccess(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -601,7 +601,7 @@ onFailure(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**

@@ -5,7 +5,7 @@
 <!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=e05a1b06fec52221356ba80177a700f127d64c46 translatedAt=2026-08-26T04:34:40.153Z pushedAt=2026-08-28T06:57:30.185Z -->
+<!-- md-trans-meta sourceCommit=e05a1b06fec52221356ba80177a700f127d64c46 translatedAt=2026-10-29T10:30:53.827Z pushedAt=2026-10-29T10:30:53.827Z nl=1 -->
 
 ## When to Use
 
@@ -13,13 +13,13 @@ If an application accesses a file by using Picker, the permission for accessing 
 
 ## Available APIs
 
-For details about the APIs, see [oh_file_uri.h](../reference/apis-core-file-kit/capi-oh-file-share-h.md).
+For details about the APIs, see [oh_file_share.h](../reference/apis-core-file-kit/capi-oh-file-share-h.md).
 
-| API| Description|
+| Name | Description|
 | -------- | -------- |
 | OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | Persists the permissions on files or directories.|
 | OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | Revokes the permissions from files or directories.|
-| OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | Enables multiple persistently authorized file or directory URIs. |
+| OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | Activates the persistent permissions on files or directories. |
 | OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | Deactivates the persistent permissions on files or directories.|
 | OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum) | Checks the persistent permissions on files or directories.|
 | OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum) | Releases the memory allocated for **FileShare_PolicyErrorResult**.|
@@ -48,9 +48,9 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 #include <filemanagement/fileshare/oh_file_share.h>
 #include <iostream>
 ```
-1. Create a **FileShare_PolicyInfo** instance, call the **OH_FileShare_PersistPermission** API, and set the persistence permission for the URI. The maximum limit of the input parameter **policyNum** is 500.
+1. Create a **FileShare_PolicyInfo** instance and call **OH_FileShare_PersistPermission** to persist the permission for the URI. The maximum value of **policyNum** is 500.
    <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    static const uint32_t policyNum = 2;
    char strTestPath1[] = "file://com.example.fileshare/data/storage/el2/base/files/test1.txt";
@@ -78,7 +78,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 
 2. Call **OH_FileShare_ActivatePermission** to activate the persistent permissions on files. The maximum value of **policyNum** is **500**.
    <!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    auto ret = OH_FileShare_ActivatePermission(policy, policyNum, &result, &resultNum);
    if (ret != ERR_OK) {
@@ -96,7 +96,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 
 3. Call **OH_FileShare_DeactivatePermission** to deactivate the persistent permissions on files. The maximum value of **policyNum** is **500**.
    <!-- @[deactivate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    auto ret = OH_FileShare_DeactivatePermission(policy, policyNum, &result, &resultNum);
    if (ret != ERR_OK) {
@@ -114,7 +114,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 
 4. Call **OH_FileShare_RevokePermission** to revoke the persistent permissions from files. The maximum value of **policyNum** is **500**.
    <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    auto ret = OH_FileShare_RevokePermission(policy, policyNum, &result, &resultNum);
    if (ret != ERR_OK) {
@@ -132,7 +132,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 
 5. Call **OH_FileShare_CheckPersistentPermission** to check the persistent permissions on files. The maximum value of **policyNum** is **500**.
    <!-- @[check_persistent_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    bool *result = nullptr;
    auto ret = OH_FileShare_CheckPersistentPermission(policy, policyNum, &result, &resultNum);

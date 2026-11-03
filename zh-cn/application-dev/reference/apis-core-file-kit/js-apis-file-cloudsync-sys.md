@@ -1,8 +1,8 @@
 # @ohos.file.cloudSync (端云同步能力)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
@@ -18,6 +18,22 @@
 ```ts
 import { cloudSync } from '@kit.CoreFileKit';
 ```
+
+## SyncType
+
+图库端云同步类型，为枚举类型。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| FORCE_THM | 0 | 强制缩略图同步。 |
 
 ## GallerySync
 
@@ -258,6 +274,120 @@ gallerySync.start((err: BusinessError) => {
     console.info("start sync successfully");
   }
 });
+```
+
+### startWithType
+
+startWithType(type: SyncType): Promise&lt;void&gt;
+
+按照指定类型启动图库媒体资源端云同步。使用Promise异步回调。
+
+> **说明：**
+>
+> Promise的then回调执行仅表示同步启动请求已受理，不表示整轮同步已完成。同步进度可通过[on('progress')](#onprogress)监听。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| type | [SyncType](#synctype) | 是 | 同步类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+
+gallerySync.startWithType(cloudSync.SyncType.FORCE_THM).then(() => {
+  console.info('start sync successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`start sync failed, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### startWithType
+
+startWithType(callback: Callback&lt;void&gt;, type: SyncType): void
+
+异步方法按照指定类型启动图库媒体资源端云同步。使用callback异步回调。
+
+> **说明：**
+>
+> 启动请求提交失败时，接口会立即抛出BusinessError，此时不会调用callback。请求提交成功后，callback会被异步调用，但这不表示整轮同步已完成。同步进度可通过[on('progress')](#onprogress)监听。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback&lt;void&gt; | 是 | 启动请求成功后的回调，无错误参数和返回数据。 |
+| type | [SyncType](#synctype) | 是 | 同步类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+
+try {
+  gallerySync.startWithType(() => {
+    console.info('start sync successfully.');
+  }, cloudSync.SyncType.FORCE_THM);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`start sync failed, code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### stop
@@ -872,7 +1002,7 @@ getUploadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;UploadProgress&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1084,7 +1214,7 @@ try {
 } catch (err) {
   let error: BusinessError = err as BusinessError;
   console.error(`clean cache failed with error message: ${error.message}, error code: ${error.code}`);
-} 
+}
 
 ```
 
@@ -1125,7 +1255,7 @@ getDownloadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1133,7 +1263,7 @@ getDownloadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 let path1 = "/data/storage/el2/cloud/1.txt";
 let path2 = "/data/storage/el2/cloud/2.txt";
 let uri1 = fileUri.getUriFromPath(path1);
@@ -1308,7 +1438,7 @@ try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
   let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
+  console.error("getFileSyncState failed with error: " + JSON.stringify(error));
 }
 ```
 
@@ -1419,7 +1549,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
     console.info("optimize space successfully");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
@@ -1464,7 +1594,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
     console.info("optimize space progress: " + data.progress);
   }

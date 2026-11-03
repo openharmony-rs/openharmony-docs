@@ -2052,8 +2052,13 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 **示例**：
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  await connection.disconnectAllowedProfiles('68:13:24:79:4C:8C');
+  connection.disconnectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
+      console.info('disconnectAllowedProfiles success');
+    }, (err: BusinessError) => {
+      console.error('disconnectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
+  });
 } catch (err) {
   console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -2362,6 +2367,7 @@ try {
 | rssi     | number      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
+| transport      | [BluetoothTransport](#bluetoothtransport)      | 否    | 是    | 扫描到的设备的传输类型。<br>默认为TRANSPORT_UNKNOWN<br>**起始版本**： 26.1.0 |
 
 ## HashAlgorithmType<sup>24+</sup>
 

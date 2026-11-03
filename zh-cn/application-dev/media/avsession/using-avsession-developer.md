@@ -93,7 +93,7 @@
 
    音视频应用设置的媒体会话信息，会被媒体会话控制方通过AVSessionController相关方法获取后进行显示或处理。
      
-   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) -->
+   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) --> 
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -123,7 +123,7 @@
                artist: 'ARTIST'
              };
              session.setAVMetadata(metadata).then(() => {
-               console.info(`SetAVMetadata successfully`);
+               console.info(`setAVMetadata successfully`);
                // ...
              }).catch((err: BusinessError) => {
                console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
@@ -139,7 +139,7 @@
                  console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
                  // ...
                } else {
-                 console.info(`SetAVPlaybackState successfully`);
+                 console.info(`setAVPlaybackState successfully`);
                  // ...
                }
              });
@@ -345,7 +345,7 @@
 
    控制场景包括：播控中心点击、播控中心通知栏移除、蓝牙耳机佩戴、蓝牙耳机/有线耳机按键、语音助手控制等。
      
-   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) -->
+   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) --> 
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -373,49 +373,49 @@
                console.info(`on play , do play task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('play')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态。
              });
              session.on('pause', () => {
                console.info(`on pause , do pause task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('pause')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态。
              });
              session.on('stop', () => {
                console.info(`on stop , do stop task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('stop')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态。
              });
              session.on('playNext', () => {
                console.info(`on playNext , do playNext task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('playNext')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态，使用SetAVMetadata上报媒体信息。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态，使用setAVMetadata上报媒体信息。
              });
              session.on('playPrevious', () => {
                console.info(`on playPrevious , do playPrevious task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('playPrevious')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态，使用SetAVMetadata上报媒体信息。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态，使用setAVMetadata上报媒体信息。
              });
              session.on('fastForward', () => {
                console.info(`on fastForward , do fastForward task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('fastForward')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态和播放position。
              });
              session.on('rewind', () => {
                console.info(`on rewind , do rewind task`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('rewind')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态和播放position。
              });
              session.on('seek', (time: number) => {
                console.info(`on seek , the time is ${time}`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('seek')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+               // 处理完毕后，请使用setAVPlaybackState上报播放状态和播放position。
              });
              session.on('setSpeed', (speed) => {
                console.info(`on setSpeed , the speed is ${speed}`);
@@ -426,13 +426,13 @@
                console.info(`on setLoopMode , the loop mode is ${mode}`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('setLoopMode')取消监听。
-               // 应用自定下一个模式，处理完毕后，请使用SetAVPlaybackState上报切换后的LoopMode。
+               // 应用自定义下一个模式，处理完毕后，请使用setAVPlaybackState上报切换后的LoopMode。
              });
              session.on('toggleFavorite', (assetId) => {
                console.info(`on toggleFavorite , the target asset Id is ${assetId}`);
                // ...
                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('toggleFavorite')取消监听。
-               // 处理完毕后，请使用SetAVPlaybackState上报收藏结果isFavorite。
+               // 处理完毕后，请使用setAVPlaybackState上报收藏结果isFavorite。
              });
              // ...
            })

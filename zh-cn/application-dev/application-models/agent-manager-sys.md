@@ -143,7 +143,7 @@
               .enabled(true)
               .onClick(() => {
                 try{
-                  // this.agentProxy是连接时保存的proxy对象
+                  // this.comProxy是连接时保存的proxy对象
                   agentManager.disconnectAgentExtensionAbility(this.comProxy).then(() => {
                     console.info(`disconnectAgentExtensionAbility success.`);
                   }).catch((error: BusinessError) => {

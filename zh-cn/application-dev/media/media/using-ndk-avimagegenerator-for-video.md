@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVImageGenerator的C/C++接口获取视频指定时间的帧图像，适用于需要底层视频帧提取和缩略图生成的场景。"
+keywords: [AVImageGenerator, C/C++, Native API, 视频帧提取, OH_AVImageGenerator, SetFDSource, PixelMap, NDK, 缩略图]
+doctype: guide
+status: active
+---
 # 使用AVImageGenerator获取视频帧(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -66,7 +73,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
 
    int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
    int32_t fileDescribe = -1; // 媒体文件描述符。
-   int32_t fileSize = 0; // 媒体文件大小。
+   int64_t fileSize = 0; // 媒体文件大小。
        
    // 设置视频资源的文件描述符。
    OH_AVErrCode avErrCode = OH_AVImageGenerator_SetFDSource(generator, fileDescribe, offset, fileSize);
@@ -143,7 +150,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
        int64_t timeUs = 0; // 指定的时间（单位us）。
        int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
        int32_t fileDescribe = -1; // 媒体文件描述符。
-       int32_t fileSize = 0; // 媒体文件大小。
+       int64_t fileSize = 0; // 媒体文件大小。
        int32_t options = OH_AVIMAGE_GENERATOR_QUERY_CLOSEST; // OH_AVIMAGE_GENERATOR_QUERY_CLOSEST表示选取离传入时间点最近的关键帧。
    };
 

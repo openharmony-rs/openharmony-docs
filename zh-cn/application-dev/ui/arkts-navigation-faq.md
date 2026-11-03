@@ -221,7 +221,7 @@ Navigation构建NavDestination的机制：
    └── IfElseNode3               ← IfElseNode3为false，无子节点
   ```
 
-  Navigation组件从IfElseNode1沿第一个子节点遍历，找到NavDestination(PageA)，页面正常。
+  Navigation组件从IfElseNode1开始，沿其第一个子节点遍历，找到NavDestination(PageA)，页面正常。
 
 - 当name === 'PageB'时，IfElseNode2为true，IfElseNode1和IfElseNode3为false，产生的组件树：
 
@@ -232,7 +232,7 @@ Navigation构建NavDestination的机制：
    └── IfElseNode3               ← IfElseNode3为false，无子节点
   ```
 
-  Navigation组件从IfElseNode1沿第一个子节点遍历：IfElseNode1 → IfElseNode2 → NavDestination(PageB)，页面正常。
+  Navigation组件从IfElseNode1开始，沿其第一个子节点遍历：IfElseNode1 → IfElseNode2 → NavDestination(PageB)，页面正常。
 
 - 当name === 'PageC'时，IfElseNode3为true，IfElseNode1和IfElseNode2为false，产生的组件树：
 
@@ -243,7 +243,7 @@ Navigation构建NavDestination的机制：
         └── NavDestination(PageC)
   ```
 
-  Navigation组件IfElseNode1沿第一个子节点遍历：IfElseNode1 → IfElseNode2（无子节点，遍历终止），无法找到NavDestination(PageC)，页面空白。
+  Navigation组件从IfElseNode1开始，沿其第一个子节点遍历：IfElseNode1 → IfElseNode2（无子节点，遍历终止），无法找到NavDestination(PageC)，页面空白。
 
 **解决措施**
 

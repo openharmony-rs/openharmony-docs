@@ -509,9 +509,9 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 >
 > 3. 设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
 >
-> 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
+> 4. 下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
 >
-> 5.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 5. 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -969,9 +969,9 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 >
 > 1. 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
 >
-> 2.水印图片会以平铺方式重复覆盖整个应用界面。
+> 2. 水印图片会以平铺方式重复覆盖整个应用界面。
 >
-> 3.在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 3. 在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1535,9 +1535,9 @@ setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
 >
 > 1. 屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
 >
-> 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
+> 2. 当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
 >
-> 3.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 3. 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -1657,9 +1657,9 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 >
 > 2. 单个用户下最多可以禁用200个权限。
 >
-> 3.权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
+> 3. 权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
 >
-> 4.在多个MDM应用场景下，针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+> 4. 在多个MDM应用场景下，针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **起始版本：** 26.0.0
 
@@ -1786,11 +1786,11 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 >
 > 3. 当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
 >
-> 4.所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
+> 4. 所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
 >
-> 5.系统应用和普通应用都可以添加。
+> 5. 系统应用和普通应用都可以添加。
 >
-> 6.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 6. 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -2209,6 +2209,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
 | 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2265,6 +2266,7 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 | -------- | -------- |
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -2600,6 +2602,7 @@ setUnlockPolicy(policy: UnlockPolicy, accountId: number): void
 | 9200001  | The application is not an administrator application of the device.             |
 | 9200002  | The administrator application does not have permission to manage the device.   |
 | 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2654,6 +2657,7 @@ getUnlockPolicy(accountId: number): UnlockPolicy
 | 9200001  | The application is not an administrator application of the device.             |
 | 9200002  | The administrator application does not have permission to manage the device.   |
 | 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2668,6 +2672,172 @@ try {
   console.info(`Succeeded in getting unlock policy: ${policy}`);
 } catch(err) {
   console.error(`Failed to get unlock policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.setWeakPinEnable
+ 
+setWeakPinEnable(isEnable: boolean, fd?: number): void
+ 
+设置锁屏弱密码校验的弱密码库。设置弱密码库后，用户设置锁屏密码时，系统会根据弱密码库中的弱密码列表对用户设置的密码进行校验，如果密码存在于弱密码列表中，将拒绝设置该密码，防止用户设置过于简单的密码。适用于企业安全合规场景，如防止员工使用常见弱密码（如123456、000000等），提升设备安全防护能力。取消弱密码库后，用户设置锁屏密码时将不再进行弱密码校验。弱密码校验是在已有密码校验逻辑基础上的补充，不会替代已有的校验规则（如密码长度、复杂度等），设置和取消弱密码库，都不会影响已有的密码校验逻辑。
+ 
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**参数：**
+ 
+| 参数名   | 类型    | 必填 | 说明                                                         |
+| -------- | ------- | ---- | ------------------------------------------------------------ |
+| isEnable | boolean | 是   | 是否设置弱密码库。true表示设置，false表示取消。            |
+| fd       | number  | 否   | 弱密码库文件的文件描述符。设置弱密码库时必填，取消弱密码库时忽略。<br>弱密码库文件需要放置于应用沙箱路径（应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）等应用有权限访问的路径下。<br>文件每行对应一个弱密码。<br>文件大小不能超过16MB。 |
+ 
+**错误码**：
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+ 
+**示例：**
+
+弱密码库文件示例（weak_pin.txt），每行对应一个弱密码：
+
+```txt
+123456
+000000
+111111
+888888
+666666
+```
+
+代码示例：
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { fileIo } from '@kit.CoreFileKit';
+ 
+// 需根据实际情况进行替换，弱密码文件需要放置在应用沙箱目录下
+// 弱密码文件格式：每行对应一个弱密码，如123456、000000等
+const filePath = '/data/storage/el1/base/weak_pin.txt';
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
+try {
+  securityManager.setWeakPinEnable(true, fd);
+  console.info(`Succeeded in setting weak pin enable.`);
+} catch (err) {
+  console.error(`Failed to set weak pin enable. Code: ${err.code}, message: ${err.message}`);
+} finally {
+  fileIo.closeSync(fd);
+}
+```
+ 
+## securityManager.isWeakPinEnabled
+ 
+isWeakPinEnabled(): boolean
+ 
+查询锁屏弱密码库是否已设置。企业可通过此接口查询当前弱密码库的状态，用于策略审计和合规性检查。
+ 
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**返回值：**
+ 
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 返回true表示弱密码库已设置，false表示未设置。              |
+ 
+**错误码**：
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+ 
+**示例：**
+ 
+```ts
+import { securityManager } from '@kit.MDMKit';
+ 
+try {
+  let result: boolean = securityManager.isWeakPinEnabled();
+  console.info(`Succeeded in checking weak pin enabled, result: ${result}`);
+} catch (err) {
+  console.error(`Failed to check weak pin enabled. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getPasswordLastChangedTime
+
+getPasswordLastChangedTime(accountId: number): number
+
+根据系统账号ID获取用户最近一次修改锁屏密码的时间，以同步方式返回。账号ID指系统账号ID（首用户为100，子用户依次递增），非三方应用账号；密码指设备锁屏密码（口令），不包含指纹、人脸等其他认证凭据。企业可以通过该接口查询最近一次修改密码的时间，用于密码策略审计和合规性检查。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                                         |
+| --------- | ------ | ---- | ------------------------------------------------------------ |
+| accountId | number | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型   | 说明                               |
+| ------ | ---------------------------------- |
+| number | 最近一次修改密码的时间戳，单位为毫秒 (ms) 。返回值为Unix时间戳（自1970-01-01 00:00:00 UTC起算的毫秒数），应用需结合时区设置将其转换为本地时间。如果用户从未设置锁屏密码或已关闭锁屏密码，接口返回错误码9200016。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let accountId: number = 100;
+try {
+  let result: number = securityManager.getPasswordLastChangedTime(accountId);
+  console.info(`Succeeded in getting password last changed time, result: ${result}`);
+  // result为Unix时间戳（毫秒），需结合时区设置转换为本地时间。
+  // 例如一个小时前修改的密码，当前UTC时间为2026-08-27 16:01:36，则返回值为1787842896000，表示UTC时间2026-08-27 15:01:36。
+  let date: Date = new Date(result);
+  console.info(`Password last changed time: ${date.toLocaleString()}`);
+} catch (err) {
+  console.error(`Failed to get password last changed time. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

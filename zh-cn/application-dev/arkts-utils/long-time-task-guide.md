@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供使用TaskPool开发长时任务的指导：以定期采集传感器数据为例，演示长时任务（LongTask）的创建、执行与结果获取，任务长时间运行也不会因超时被终止，避免阻塞UI主线程。"
+keywords: [长时任务, LongTask, TaskPool, 传感器数据采集, 定期采集, 任务监听, 后台执行]
+doctype: guide
+status: active
+---
+
 # 长时任务开发指导 (TaskPool)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

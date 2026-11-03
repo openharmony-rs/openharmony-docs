@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=85e783728a95eed12292a72918842dfb2bf0bbc4 translatedAt=2026-10-30T08:56:46.445Z pushedAt=2026-10-31T00:40:12.188Z nl=1 -->
 
 All the permissions in this topic are available to all applications and granted by the user.
 
@@ -226,11 +227,11 @@ With this permission, the application can perform operations such as taking scre
 
 **Authorization mode**: user_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets | phones
+**Supported devices**: PC/2in1 | Tablet | Phone | TV | Car | Wearable
 
 **Valid since**: 14
 
-**Changelog**: This permission is available only on tablets and PCs/2-in-1 devices from API versions 14 to 20. Since API version 21, this permission is also available on phones.
+**Changelog**: From API 14 to API 20, this permission can be applied for only on tablets and PC/2in1 devices. Since API 21, applying for it on phones is also supported. Since API 26.0.1, applying for it on TV, Car, and Wearable devices is also supported.
 
 ## ohos.permission.READ_MEDIA
 
@@ -268,7 +269,7 @@ See the [alternative solution of the **Files** permission group](app-permission-
 
 Allows an application to obtain the content of a specified window and capture screenshots of it.
 
-With this permission, the application can query the ID of a specified window and the package name of the application that owns it, and take screenshots of that window. 
+With this permission, the application can query the ID of a specified window and the package name of the application that owns it, and take screenshots of that window.
 
 This permission applies to window content awareness scenarios for agent applications, such as passing the window content to a large language model (LLM) for analysis.
 
@@ -279,3 +280,19 @@ This permission applies to window content awareness scenarios for agent applicat
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.2.0
+
+## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
+
+Allows an application to record content protected by screen privacy guard.
+
+With this permission, the application can record system UI elements (such as status notifications and input method editors) that are shielded by default under screen privacy protection during screen recording.
+
+**Prerequisites**: Before requesting this permission, the application must request the [ohos.permission.CUSTOM_SCREEN_RECORDING](restricted-permissions.md#ohospermissioncustom_screen_recording) permission (privacy warnings will no longer be displayed after user authorization is obtained.)
+
+**Permission level**: normal
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0

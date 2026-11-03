@@ -207,14 +207,14 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
       HiAppEvent eventInfo.domain=OS
       HiAppEvent eventInfo.name=APP_KILLED
       HiAppEvent eventInfo.eventType=2
-      HiAppEvent eventInfo.params.time=1717597063727
+      HiAppEvent eventInfo.params.time=1792739581978
       HiAppEvent eventInfo.params.reason="RssThresholdKiller"
       HiAppEvent eventInfo.params.foreground=true
-      HiAppEvent eventInfo.params.calling_pid="638"
-      HiAppEvent eventInfo.params.calling_process_name="appspawn"
-      HiAppEvent eventInfo.params.app_running_unique_id=207544
-      HiAppEvent eventInfo.params.bundle_version=1000000
-      HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"THREAD_BLOCK_6S","kill_reason":"ThreadBlock6S","pid":"52036","process_name":"com.example.apphicollietest0108","process_state":"2","pss":"0","rss":"0","timestamp":"1785753171368","uid":"20020205"}
+      HiAppEvent eventInfo.params.calling_pid="43"
+      HiAppEvent eventInfo.params.calling_process_name="wk:0/0/1/12"
+      HiAppEvent eventInfo.params.app_running_unique_id=8778602711597370439
+      HiAppEvent eventInfo.params.bundle_version=1.0.1
+      HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"","kill_reason":"RssThresholdKiller","pid":"17248","process_name":"com.example.dfx_test","process_state":"2","pss":"227764","rss":"227764","timestamp":"1792739581947","uid":"20020207"}
     ```
 
     > **说明：**

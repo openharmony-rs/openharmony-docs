@@ -1,7 +1,7 @@
 # 支持统一拖拽
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -467,8 +467,6 @@ export struct DefaultDrag {
                   event.setResult(DragResult.DROP_ENABLED);
                   event.dragBehavior = DragBehavior.COPY;
                 })
-                .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
-                  uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
                 .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
                 .onDrop((dragEvent?: DragEvent) => {
                   // 获取拖拽数据

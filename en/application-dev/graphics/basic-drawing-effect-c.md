@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=7439d3babf47266895594fc2897be69b794cd762 translatedAt=2026-10-19T01:15:17.087Z pushedAt=2026-10-19T03:09:57.290Z -->
 
 ## Overview
 
@@ -21,16 +22,16 @@ You can set the basic fill color using a brush and use the brush to implement mo
 
 ### Available APIs
 
-The following table lists the APIs for setting the drawing effect using a brush. For details, see [drawing_brush](../reference/apis-arkgraphics2d/capi-drawing-brush-h.md).
+The following table lists the common APIs for setting drawing effects with a brush. For details about the usage and parameters, see [drawing_brush](../reference/apis-arkgraphics2d/capi-drawing-brush-h.md) and [drawing_canvas](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
 
 | API| Description|
 | -------- | -------- |
-| OH_Drawing_Brush\* OH_Drawing_BrushCreate (void) | Creates a brush object.|
-| void OH_Drawing_CanvasAttachBrush (OH_Drawing_Canvas\*, const OH_Drawing_Brush\*) | Attaches a brush to a canvas so that the canvas can use the style and color of the brush to fill in a shape.|
-| void OH_Drawing_BrushSetColor (OH_Drawing_Brush\* , uint32_t color) | Sets the color for a brush. The color is used by the brush to fill in a shape.|
-| void OH_Drawing_BrushSetAntiAlias (OH_Drawing_Brush\* , bool) | Enables or disables anti-aliasing for a brush. Anti-aliasing makes the pixels around the shape edges semi-transparent, delivering a smoother effect.|
-| void OH_Drawing_CanvasDetachBrush (OH_Drawing_Canvas\*) | Removes the brush from the canvas. After the execution, the canvas does not use the previously set brush and restores to the default fill effect.|
-| void OH_Drawing_BrushDestroy (OH_Drawing_Brush\*) | Destroys a brush object and reclaims the memory occupied by the object.|
+| OH_Drawing_Brush\* OH_Drawing_BrushCreate(void) | Creates a brush object. |
+| void OH_Drawing_CanvasAttachBrush(OH_Drawing_Canvas\* canvas, const OH_Drawing_Brush\* brush) | Attaches a brush to a canvas so that the canvas can use the style and color of the brush to fill in a shape. |
+| void OH_Drawing_BrushSetColor(OH_Drawing_Brush\* brush, uint32_t color) | Sets the color for a brush. The color is used by the brush to fill in a shape and is represented by a 32-bit (ARGB) variable. |
+| void OH_Drawing_BrushSetAntiAlias(OH_Drawing_Brush\* brush, bool antiAlias) | Sets the anti-aliasing property for a brush. If set to true, the brush applies semi-transparent blurring to the edge pixels of a shape when drawing, making the shape edges smoother. |
+| void OH_Drawing_CanvasDetachBrush(OH_Drawing_Canvas\* canvas) | Removes the brush from the canvas. After the execution, the canvas does not use the previously set brush and is restored to the default fill effect. |
+| void OH_Drawing_BrushDestroy(OH_Drawing_Brush\* brush) | Destroys a brush object and reclaims the memory occupied by it. |
 
 
 ### How to Develop
@@ -104,7 +105,7 @@ You can set the basic stroke color using a pen and use the pen to implement more
 
 ### Available APIs
 
-The following table lists the APIs for setting the drawing effect using a pen. For details, see [drawing_pen](../reference/apis-arkgraphics2d/capi-drawing-pen-h.md).
+The following table lists the common APIs for setting drawing effects with a pen. For details about the usage and parameters, see [drawing_pen](../reference/apis-arkgraphics2d/capi-drawing-pen-h.md) and [drawing_canvas](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
 
 | API| Description|
 | -------- | -------- |
@@ -115,7 +116,7 @@ The following table lists the APIs for setting the drawing effect using a pen. F
 | void OH_Drawing_PenSetAntiAlias (OH_Drawing_Pen\* , bool ) | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent.|
 | void OH_Drawing_PenSetCap (OH_Drawing_Pen\* , OH_Drawing_PenLineCapStyle) | Sets the line cap style for a pen.|
 | void OH_Drawing_PenSetJoin (OH_Drawing_Pen\* , OH_Drawing_PenLineJoinStyle) | Sets the line join style for a pen.|
-| void OH_Drawing_CanvasDetachPen (OH_Drawing_Canvas\*) | Removes the brush from the canvas. After the execution, the canvas does not outline the shape and restores to the default fill effect.|
+| void OH_Drawing_CanvasDetachPen (OH_Drawing_Canvas\*) | Removes the pen from the canvas. After the execution, the canvas does not outline the shape and restores to the default fill effect.|
 | void OH_Drawing_PenDestroy (OH_Drawing_Pen\*) | Destroys a pen object and reclaims the memory occupied by the object.|
 
 
@@ -130,16 +131,7 @@ The following table lists the APIs for setting the drawing effect using a pen. F
    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
    ```
 
-2. Call **OH_Drawing_CanvasAttachPen()** to set a pen for the canvas. This API takes two parameters: (1) **Canvas** object, which must be created or obtained. For details, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md); (2) pen object to be set. The canvas uses the pen style and color to draw the outline.
-
-   <!-- @[ndk_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
-   
-   ``` C++
-   // Set the pen of the canvas.
-   OH_Drawing_CanvasAttachPen(canvas, pen);
-   ```
-
-3. (Optional) Use the pen to set the stroke effect. You can select one or more of the following effects:
+2. Use the pen to set specific stroke effects (you can choose one or more of the following effects).
 
    - You can call **OH_Drawing_PenSetColor()** to set the pen color, which is used to outline a shape.
   
@@ -180,7 +172,7 @@ The following table lists the APIs for setting the drawing effect using a pen. F
       
       ``` C++
       // Set the pen cap style.
-      OH_Drawing_PenSetCap(pen, OH_Drawing_PenLineCapStyle::LINE_ROUND_CAP);
+      OH_Drawing_PenSetCap(pen, LINE_ROUND_CAP);
       ```
 
       The options of **OH_Drawing_PenLineCapStyle** are as follows.
@@ -197,19 +189,28 @@ The following table lists the APIs for setting the drawing effect using a pen. F
       
       ``` C++
       // Set the pen join style.
-      OH_Drawing_PenSetJoin(pen, OH_Drawing_PenLineJoinStyle::LINE_BEVEL_JOIN);
+      OH_Drawing_PenSetJoin(pen, LINE_BEVEL_JOIN);
       ```
 
       The options of **OH_Drawing_PenLineJoinStyle** are as follows.
       | Line Join Style| Description| Effect|
       | -------- | -------- | -------- |
-      | LINE_MITER_JOIN | Miter join.| ![LINE-MITER-JOIN](figures/LINE-MITER-JOIN.png)|
-      | LINE_ROUND_JOIN | Round join.| ![LINE-ROUND-JOIN](figures/LINE-ROUND-JOIN.png)|
-      | LINE_BEVEL_JOIN | Beveled join.| ![LINE-BEVEL-JOIN](figures/LINE-BEVEL-JOIN.png)|
+      | LINE_MITER_JOIN | The line join style is a sharp corner. | ![LINE-MITER-JOIN](figures/LINE-MITER-JOIN.png) |
+      | LINE_ROUND_JOIN | The line join style is a round corner. | ![LINE-ROUND-JOIN](figures/LINE-ROUND-JOIN.png) |
+      | LINE_BEVEL_JOIN | The line join style is a flat corner. | ![LINE-BEVEL-JOIN](figures/LINE-BEVEL-JOIN.png) |
+
+3. Call **OH_Drawing_CanvasAttachPen()** to attach the pen to the canvas. This API accepts two parameters: one is the canvas object. Ensure that you have created or obtained the canvas. For details, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md). The other parameter is the pen object to be set. The canvas will use the configured pen style and color to draw graphics outlines.
+
+   <!-- @[ndk_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // Set the pen for the canvas.
+   OH_Drawing_CanvasAttachPen(canvas, pen);
+   ```
 
 4. Draw primitives as required. For details, see [Drawing Primitives](primitive-drawing-overview.md).
 
-5. If no stroke effect is required, you can use **OH_Drawing_CanvasDetachPen()** to remove the brush. The input parameter is the **Canvas** object. Ensure that the canvas has been created or obtained. For details, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md).
+5. If no stroke effect is required, you can use **OH_Drawing_CanvasDetachPen()** to remove the pen. The input parameter is the **Canvas** object. Ensure that the canvas has been created or obtained. For details, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md).
 
    <!-- @[ndk_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用XmlSerializer生成XML的方法：通过写入标签、属性与文本等内容构建规范的XML文档，涵盖开发步骤与注意事项，适用于配置文件、数据交换报文等XML内容生成场景。"
+keywords: [XML生成, XmlSerializer, 标签写入, 属性设置, 文档构建, 数据交换]
+doctype: guide
+status: active
+---
+
 # XML生成
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

@@ -990,7 +990,9 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 
 滑动到指定Index，支持设置滑动额外偏移量。
 
-开启smooth动画时，会对经过的所有item进行加载和布局计算。当大量加载item时会导致性能问题，开发者应先调用scrollToIndex不带动画跳转到目标附近位置，再调用scrollToIndex带动画滚动到目标位置，以优化性能。
+开启smooth动画且未启用快速滚动优化时，会对经过的所有item进行加载和布局计算。当大量加载item时会导致性能问题，开发者可先调用scrollToIndex不带动画跳转到目标附近位置，再调用scrollToIndex带动画滚动到目标位置，以优化性能。
+
+从API版本26.1.0开始，List组件支持通过options.fastScroll设置[快速滚动模式](#fastscrollmode)。当smooth为true且fastScroll设置为FastScrollMode.SKIP_MEASURE或FastScrollMode.SKIP_CREATE_AND_MEASURE时，长距离滚动动画可跳过部分滚动路径，并按所选模式减少这段路径上的子组件创建或测量开销。该选项不改变value、align和extraOffset的含义；smooth为false时不生效。Grid、WaterFlow和ArcList组件不支持此优化，仍按原有方式滚动。
 
 
 >  **说明：**
@@ -1019,7 +1021,7 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 | value | number   | 是   | 要滑动到的目标元素在当前容器中的索引值。      <br/>**说明：** <br/>value值设置成负值或者大于当前容器子组件的最大索引值，视为异常值，本次跳转不生效。                     |
 | smooth | boolean  | 否   | 设置滑动到列表项在列表中的索引值时是否有动画，true表示有动画，false表示没有动画。不传入时默认无动画。<br/>默认值：false。|
 | align | [ScrollAlign](#scrollalign10枚举说明)  | 否   | 指定滑动到的元素与当前容器的对齐方式，可根据期望item首部、尾部或居中显示选择对应对齐方式。<br/>默认值：List为ScrollAlign.START，Grid为ScrollAlign.AUTO，WaterFlow为ScrollAlign.START。<br/>**说明：** <br/>仅List、Grid、WaterFlow组件支持该参数。 |
-| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，包含extraOffset字段，用于指定滚动后的额外偏移量。<br/>不传入时无额外偏移量。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，包括额外偏移量extraOffset和快速滚动模式fastScroll。<br/>不传入时，无额外偏移量且不启用快速滚动优化。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### scrollBy<sup>9+</sup>
 
@@ -1215,6 +1217,38 @@ getFrameNode(): FrameNode | undefined
 | --- | --- |
 | [FrameNode](../js-apis-arkui-frameNode.md) \| undefined | 当Scroller已绑定到Scroll、List、Grid、WaterFlow等滚动类组件时，返回对应组件的FrameNode；如果Scroller未绑定组件，则返回undefined。 |
 
+### getScrollState
+
+getScrollState(): ScrollState
+
+获取滚动组件的当前滚动状态。
+
+> **说明：**
+>
+> 在[ArcList](ts-container-arclist.md)、设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List和设置了[scrollSnap](#scrollsnap10)的Scroll中通过鼠标滚轮滚动时，本接口均返回[Fling](ts-container-list.md#scrollstate枚举说明)。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [ScrollState](ts-container-list.md#scrollstate枚举说明) | 当前滚动状态。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[滚动类组件错误码](../errorcode-scroll.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100004   | Controller not bound to a component. |
+
 ## OffsetResult<sup>11+</sup>对象说明
 
 滑动偏移量对象。
@@ -1267,15 +1301,39 @@ getFrameNode(): FrameNode | undefined
 
 滑动到指定Index的参数选项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型  | 只读 | 可选 | 说明              |
 | ----- | ------ | ------ | -- | ----------------- |
-| extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。 |
+| extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fastScroll | [FastScrollMode](#fastscrollmode) | 否 | 是 | 滚动到指定Index时使用的快速滚动模式。设置为SKIP_MEASURE时，跳过中间子组件的测量；设置为SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。仅List组件支持，且仅当scrollToIndex的smooth参数为true时生效。<br/>默认值：FastScrollMode.NONE，与不设置此参数时的行为相同。<br/>取值范围：本枚举定义的0、1、2。传入其他值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+
+## FastScrollMode
+
+FastScrollMode表示滚动到指定Index时使用的快速滚动模式，配合[ScrollToIndexOptions](#scrolltoindexoptions12对象说明)的fastScroll字段使用。
+
+> **说明：**
+>
+> - 当滚动距离较大且触发跳跃时，通常先从起始位置连续滚动约2屏，再跳到距离最终停靠位置约2屏的位置，继续滚动至最终位置。一屏指List可视区域在滚动方向上的长度。
+> - 跳过创建或测量只针对上述被跳过的滚动路径；前后两段连续滚动中需要显示的子组件仍会按需创建和测量。实际创建和测量的范围还受对齐方式、额外偏移量和子组件大小等因素影响，并非固定为4屏。
+> - 快速滚动不保证遍历并显示滚动路径上的每一个子组件。
+> - fastScroll传入本枚举未定义的值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| -- | -- | -- |
+| NONE | 0 | 不启用快速滚动优化，与不设置fastScroll参数时的行为相同。开启动画时，会在动画开始前创建并测量滚动路径上的所有子组件。 |
+| SKIP_MEASURE | 1 | 跳过中间子组件的测量，仍可创建中间子组件以确认类型和目标所在行。适用于多列List中同时存在ListItem和ListItemGroup的场景：ListItem占一行中的一列，ListItemGroup占满一整行，需要根据子组件类型确定目标所在行。 |
+| SKIP_CREATE_AND_MEASURE | 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用SKIP_MEASURE。 |
 
 ## ScrollPageOptions<sup>14+</sup>对象说明
 
@@ -2226,3 +2284,93 @@ struct Index {
   }
 }
 ```
+
+### 示例14（获取滚动状态）
+
+该示例通过[getScrollState](#getscrollstate)接口，实现了获取滚动状态的功能。
+
+从API版本26.1.0开始，新增getScrollState接口。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/**
+ * 滚动状态查询示例
+ *
+ * 通过Scroller.getScrollState()获取当前滚动状态，并利用定时器每4ms自动查询一次，实时展示滚动过程中的状态变化。
+ */
+@Entry
+@Component
+struct ScrollExample {
+  // 当前滚动状态（Idle：空闲、Scroll：手指拖动、Fling：惯性滚动）
+  @State scrollStateStr: string = 'Idle';
+  // 滚动控制器，用于绑定Scroll组件并查询滚动状态
+  scroller: Scroller = new Scroller();
+  // 定时器ID，用于页面销毁时清除定时器
+  private timerId: number = -1;
+  // 列表数据
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  aboutToAppear() {
+    // 每4ms自动查询一次滚动状态，实现近乎实时的展示
+    this.timerId = setInterval(() => {
+      this.queryScrollState();
+    }, 4);
+  }
+
+  aboutToDisappear() {
+    // 页面销毁时清除定时器，避免资源泄漏
+    clearInterval(this.timerId);
+  }
+
+  // 获取当前滚动状态并更新展示文本
+  private queryScrollState(): void {
+    try {
+      // 通过调用getScrollState函数获取当前滚动状态
+      const state: ScrollState = this.scroller.getScrollState();
+      // 将滚动状态转换为可读文本
+      this.scrollStateStr = this.scrollStateToStr(state);
+    } catch (error) {
+      // Scroller未绑定组件时会抛异常，需要加上try catch保护
+      let err: BusinessError = error as BusinessError;
+      console.error(`Failed to get scrollState. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  // 将滚动状态枚举转换为可读文本
+  private scrollStateToStr(state: ScrollState): string {
+    return state === ScrollState.Idle ? 'Idle' :
+      state === ScrollState.Scroll ? 'Scroll' : 'Fling';
+  }
+
+  build() {
+    Column() {
+      // 实时展示getScrollState获取到的滚动状态，每4ms自动刷新
+      Text('ScrollState：' + this.scrollStateStr)
+        .fontColor(Color.Black)
+        .height(50)
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .border({ width: 1, color: 0xCCCCCC })
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 15 })
+            }, (item: number) => item.toString())
+          }.width('100%')
+        }
+        .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
+      }
+    }
+  }
+}
+```
+
+![scrollGetScrollState](figures/scrollGetScrollState.gif)

@@ -300,7 +300,7 @@ struct GoodItems {
 **反例**
 
 ```typescript
-// Web组件引擎没有初始化，且沒有使用预连接
+// Web组件引擎没有初始化，且没有使用预连接
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');

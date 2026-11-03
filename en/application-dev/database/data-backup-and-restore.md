@@ -1,12 +1,11 @@
 # Database Backup and Restore (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @widecode; @htt1997; @dboy190-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T01:13:49.787Z pushedAt=2026-07-07T01:25:20.753Z -->
+<!-- md-trans-meta sourceCommit=7cd5022ac58423b9f224604e9f7f30b3f2ecf58f translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 ## When to Use
 
@@ -292,7 +291,10 @@ import { common } from '@kit.AbilityKit';
 
 ``` TypeScript
 /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 let store: relationalStore.RdbStore | undefined = undefined;
 const STORE_CONFIG: relationalStore.StoreConfig = {
   name: 'RdbTest.db',
@@ -376,7 +378,10 @@ If **allowRebuild** in **StoreConfig** is not set or is set to **false**, set **
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
 /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -432,7 +437,7 @@ The following example contains only the code snippet for the restore process. Th
             if (err.code === 14800011) {
               // Perform step 2 (close result sets and then restore data).
             }
-            hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
+            hilog.error(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
           }
         })
     }
@@ -450,7 +455,7 @@ The following example contains only the code snippet for the restore process. Th
         resultSet.close();
       } catch (e) {
         if (e.code !== 14800014) {
-          hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+          hilog.error(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
         }
       }
     }
@@ -463,7 +468,10 @@ The following example contains only the code snippet for the restore process. Th
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
     /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-    const context = new UIContext().getHostContext() as common.UIAbilityContext;
+    const context = uiContext.getHostContext();
+    if (context === undefined) {
+      return;
+    }
     let STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       securityLevel: relationalStore.SecurityLevel.S3,
@@ -483,7 +491,7 @@ The following example contains only the code snippet for the restore process. Th
         return;
       }
     } catch (e) {
-      hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+      hilog.error(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
     }
     
     try {

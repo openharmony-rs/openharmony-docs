@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## Ability Kit
@@ -235,9 +235,12 @@
 
 > **说明：** 
 > 
-> 应用默认只能接收自身应用的skill变化事件。
+> - 应用默认只能接收自身的Skill变化事件。
 > 
-> 申请ohos.permission.MANAGE_SKILL权限后能接收自身应用和其他应用的skill变化事件。
+> - 应用申请ohos.permission.MANAGE_SKILL权限后，可接收自身及其他应用的Skill变化事件。<!--Del-->
+> 
+> - 对于系统应用，建议优先申请ohos.permission.MANAGE_SKILL_PRIVILEGE权限，接收自身及其他应用的Skill变化事件。
+<!--DelEnd-->
 
 **起始版本：** 26.0.0
 
@@ -259,7 +262,7 @@
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **取值：** "usual.event.MINORSMODE_ON"
 
@@ -275,7 +278,7 @@
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **取值：** "usual.event.MINORSMODE_OFF"
 
@@ -293,7 +296,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **取值：** "usual.event.DATA_SHARE_READY"
 
@@ -310,12 +313,12 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **取值：** "common.event.SPLIT_SCREEN"
 
 
-
+<!--Del-->
 ## Notification Kit
 
 ### COMMON_EVENT_SLOT_CHANGE
@@ -329,7 +332,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 **订阅者所需权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 **取值：** "usual.event.SLOT_CHANGE"
-
+<!--DelEnd-->
 
 ## Background Tasks Kit
 
@@ -482,7 +485,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **取值：** "common.event.DISTRIBUTED_ACCOUNT_LOGIN"
 
@@ -499,7 +502,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **取值：** "common.event.DISTRIBUTED_ACCOUNT_LOGOUT"
 
@@ -516,7 +519,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **取值：** "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
 
@@ -534,7 +537,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **取值：** "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
 
@@ -549,7 +552,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **取值：** "usual.event.SCREEN_LOCKED"
 
@@ -564,7 +567,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **取值：** "usual.event.SCREEN_UNLOCKED"
 
@@ -574,7 +577,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
   > 说明：
   >
-  > 从API version 9 开始支持，从API version 10 开始废弃，建议使用[COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked)代替。
+  > 从API版本9开始支持，从API版本10开始废弃，建议使用[COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked)代替。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1308,7 +1311,7 @@ Wi-Fi状态变化。
 
 **订阅者所需权限：** 无
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **取值：** "usual.event.CONNECTIVITY_CHANGE"
 
@@ -1757,7 +1760,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE](#common_event_bluetooth_handsfree_ag_connect_state_change20)替代。
+  > 从API版本9开始支持，从API版本20开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE](#common_event_bluetooth_handsfree_ag_connect_state_change20)替代。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1772,7 +1775,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1786,7 +1789,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1802,7 +1805,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_connect_state_change20)替代。
+  > 从API版本9开始支持，从API版本20开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_connect_state_change20)替代。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1818,7 +1821,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1833,7 +1836,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_avrcp_connect_state_change20)替代。
+  > 从API版本9开始支持，从API版本20开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_CHANGE](#common_event_bluetooth_a2dpsource_avrcp_connect_state_change20)替代。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1848,7 +1851,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1863,7 +1866,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE](#common_event_bluetooth_a2dpsource_codec_value_change20)替代。
+  > 从API版本9开始支持，从API版本20开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_CHANGE](#common_event_bluetooth_a2dpsource_codec_value_change20)替代。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1892,7 +1895,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1908,7 +1911,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1922,7 +1925,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20)替代。
+  > 从API版本9开始支持，从API版本20开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20)替代。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1936,7 +1939,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20)替代。
+  > 从API版本9开始支持，从API版本20开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE](#common_event_bluetooth_remotedevice_acl_state_change20)替代。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1951,7 +1954,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1965,7 +1968,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE](#common_event_bluetooth_remotedevice_pair_state_change20)替代。
+  > 从API版本9开始支持，从API版本20开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE_CHANGE](#common_event_bluetooth_remotedevice_pair_state_change20)替代。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1980,7 +1983,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1994,7 +1997,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2008,7 +2011,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2022,7 +2025,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2036,7 +2039,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2050,7 +2053,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2064,7 +2067,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2078,7 +2081,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2092,7 +2095,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2106,7 +2109,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2120,7 +2123,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2134,7 +2137,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2148,7 +2151,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2161,7 +2164,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 （预留事件，暂未支持）表示用户允许扫描蓝牙请求的公共事件的动作。
 
@@ -2177,7 +2180,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2192,7 +2195,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2206,7 +2209,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2222,7 +2225,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2236,7 +2239,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2250,7 +2253,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2264,7 +2267,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2279,7 +2282,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2293,7 +2296,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
   > **说明：**
   >
-  > 从API version 9 开始支持，从API version 20 开始废弃。
+  > 从API版本9开始支持，从API版本20开始废弃。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2309,7 +2312,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**取值：** "usual.event.ABILITY_ADDED"
+**取值：** "common.event.ABILITY_ADDED"
 
 
 ### COMMON_EVENT_ABILITY_REMOVED
@@ -2319,7 +2322,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**取值：** "usual.event.ABILITY_REMOVED"
+**取值：** "common.event.ABILITY_REMOVED"
 
 
 
@@ -2330,7 +2333,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**取值：** "usual.event.ABILITY_UPDATED"
+**取值：** "common.event.ABILITY_UPDATED"
 
 
 ### COMMON_EVENT_LOCATION_MODE_STATE_CHANGED
@@ -2487,7 +2490,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
-**取值：** "usual.event.data.FOUNDATION_READY"
+**取值：** "common.event.FOUNDATION_READY"
 
 
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API进行自定义异步操作开发，支持Promise和Callback两种异步模型，适用于IO密集型或计算密集型任务的非阻塞处理场景。"
+keywords: [Node-API, 自定义异步操作, Promise, Callback, 异步模型, IO密集型, 计算密集型, 非阻塞]
+doctype: guide
+status: active
+---
+
 # 使用Node-API进行自定义异步操作相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=19e3343652f995c9b4cdc1ec406ca573af69e6f3 translatedAt=2026-08-05T10:10:54.365Z pushedAt=2026-08-06T06:10:34.306Z -->
+<!-- md-trans-meta sourceCommit=36e7207cad20c4ef453cb5bda48f835acde97674 translatedAt=2026-10-29T09:00:26.774Z pushedAt=2026-10-30T02:55:03.181Z nl=1 -->
 
 DevEco Studio provides the UI preview function, which allows you to view the UI effect and adjust the page layout at any time. You can preview both pages and components. The icon ![ide_previewer_002](figures/ide_previewer_002.png) on the left in Figure 1 indicates page preview, while the icon ![ide_previewer_003](figures/ide_previewer_003.png) on the right indicates component preview.
 
@@ -50,9 +50,9 @@ Figure 2 shows the demonstration.
 
 ![ide_previewer_001](figures/ide_previewer_001.gif)
 
-### Inspector Bidirectional Preview
+### Inspector Two-way Preview
 
-Bidirectional synchronization between the .ets file and Previewer is supported. Click the Previewer icon ![ide_previewer_006](figures/ide_previewer_006.png) to enable this feature.
+Two-way preview between the .ets file and Previewer is supported. Click the Previewer icon ![ide_previewer_006](figures/ide_previewer_006.png) to enable this feature.
 
 When this feature is enabled, the code editor, UI preview, and component tree become interconnected:
 
@@ -66,16 +66,14 @@ When this feature is enabled, the code editor, UI preview, and component tree be
 
 Figure 3 shows the demonstration.
 
-**Figure 3** Inspector bidirectional preview demonstration
+**Figure 3** Inspector two-way preview demonstration
 
 ![ide_previewer_002](figures/ide_previewer_002.gif)
 
 ## Component Preview
 
 ArkTS apps/atomic services support the component preview feature. Component preview is implemented by adding the [@Preview decorator](../reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md#preview-decorator) before a custom component. In a single source file, you can use up to 10 `@Preview` decorators to decorate custom components. Launch method:
-
 - For components decorated with both \@Entry and \@Preview, clicking the Previewer button starts page preview. After loading, click ![ide_previewer_003](figures/ide_previewer_003.png) to switch to component preview.
-
 - For components decorated with only \@Preview, clicking the Previewer button directly starts component preview.
 
 During component preview, the default attributes of the @Preview decorator are used. For details, see [PreviewParams](../reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md#previewparams9). You can configure @Preview parameters to specify device attributes, including device type and screen shape.

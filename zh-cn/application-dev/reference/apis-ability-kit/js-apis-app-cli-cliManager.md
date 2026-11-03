@@ -101,11 +101,7 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
-
-> **说明：**
->
-> - 三方应用请申请ohos.permission.EXEC_PUBLIC_CLI_TOOL权限，ohos.permission.EXEC_CLI_TOOL权限仅系统应用可申请。
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（仅系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -130,8 +126,8 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: Failed to call the API due to limited device capabilities. |
 | 35600031 | Maximum number of processes has been reached. |
 | 35600050  | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
 
@@ -203,7 +199,7 @@ subscribeSession(sessionId: string, callback: ToolEventCallback): Promise\<void\
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 35600032 | The specified session does not exist.                                  |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
 
@@ -272,7 +268,7 @@ clearSession(sessionId: string): Promise\<void\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 35600032 | The specified session does not exist.                                  |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
 
@@ -311,11 +307,7 @@ querySession(sessionId: string): Promise\<CliSessionInfo\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
-
-> **说明：**
->
-> - 三方应用请申请ohos.permission.EXEC_PUBLIC_CLI_TOOL权限，ohos.permission.EXEC_CLI_TOOL权限仅系统应用可申请。
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（仅系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -337,7 +329,7 @@ querySession(sessionId: string): Promise\<CliSessionInfo\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 35600032 | The specified session does not exist.                                  |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
 
@@ -399,7 +391,7 @@ sendMessage(sessionId: string, message: string): Promise\<void\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 35600032 | The specified session does not exist.                                  |
 | 35600033 | Failed to write message to the tool process.                             |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |

@@ -1,9 +1,17 @@
+---
+kits: ["Image Kit / 图片处理服务"]
+description: "Image_NativeModule提供C/C++位图操作能力，支持创建释放PixelMap、读写像素、获取图像信息、图像变换、预乘格式转换及提取图片主色调，适用于Native层图像处理开发。"
+keywords: [Image_NativeModule, Native位图操作, 像素数据读写, 图像变换, 裁剪, 缩放, 平移, 旋转, 翻转, 透明度, 预乘模式转换, 提取平均颜色, Pixelmap]
+doctype: guide
+status: active
+---
+
 # 使用Image_NativeModule完成位图操作
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
 
 创建位图，获取位图的宽、高、pixelFormat、alphaType、rowStride信息、对位图进行操作以及释放位图实例。
@@ -127,7 +135,7 @@ static Image_ErrorCode PixelmapTest()
         return errCode;
     }
 
-    // 设置透明比率来让Pixelmap达到对应的透明效果。
+    // 设置不透明度来让Pixelmap达到对应的透明效果。
     errCode = OH_PixelmapNative_Opacity(pixelmap, OPACITY_VALUE);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Opacity failed, errCode: %{public}d.", errCode);
@@ -141,7 +149,7 @@ static Image_ErrorCode PixelmapTest()
         return errCode;
     }
 
-    // 对图片进行位置变换。
+    // 对图片进行平移。
     errCode = OH_PixelmapNative_Translate(pixelmap, TRANSLATE_X, TRANSLATE_Y);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Translate failed, errCode: %{public}d.", errCode);
@@ -179,7 +187,7 @@ static Image_ErrorCode PixelmapTest()
     return IMAGE_SUCCESS;
 }
 
-// PixelMap预乘/非预乘格式转换示例。
+// Pixelmap预乘/非预乘模式转换示例。
 static Image_ErrorCode PixelmapConvertAlphaTypeTest()
 {
     uint8_t data[DATA_SIZE];
@@ -196,14 +204,14 @@ static Image_ErrorCode PixelmapConvertAlphaTypeTest()
     OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED);
 
-    // 创建非预乘格式的位图实例。
+    // 创建非预乘模式的位图实例。
     OH_PixelmapNative *srcPixelmap = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, DATA_SIZE, createOpts, &srcPixelmap);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "Create srcPixelMap failed, errCode: %{public}d.", errCode);
     }
 
-    // 创建预乘格式的位图实例，该dstPixelmap实例将用于保存srcPixelmap转换AlphaType后的数据。
+    // 创建预乘模式的位图实例，该dstPixelmap实例将用于保存srcPixelmap转换AlphaType后的数据。
     OH_PixelmapNative *dstPixelmap = nullptr;
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_PREMULTIPLIED);
     errCode = OH_PixelmapNative_CreatePixelmap(data, DATA_SIZE, createOpts, &dstPixelmap);
@@ -211,7 +219,7 @@ static Image_ErrorCode PixelmapConvertAlphaTypeTest()
         OH_LOG_ERROR(LOG_APP, "Create dstPixelMap failed, errCode: %{public}d.", errCode);
     }
 
-    // 转换AlphaType，srcPixelmap的数据将被转换为预乘格式，并保存到dstPixelmap中。
+    // 转换AlphaType，srcPixelmap的数据将被转换为预乘模式，并保存到dstPixelmap中。
     errCode = OH_PixelmapNative_ConvertAlphaFormat(srcPixelmap, dstPixelmap, true);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_ConvertAlphaFormat failed, errCode: %{public}d.", errCode);

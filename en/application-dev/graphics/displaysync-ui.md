@@ -1,26 +1,36 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to use DisplaySync to request an independent frame rate for UI drawing, set an expected frame rate range, and register per-frame callbacks for differentiated UI updates."
+keywords: [DisplaySync, UI drawing frame rate, expected frame rate, per-frame callback, subscription function]
+doctype: guide
+status: active
+---
+
 # Requesting Frame Rates for UI Components
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=263f6d28c3a62b89d47845e6da97eea2212aedc9 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
 
-If you want to draw and update a UI component at an independent frame rate, you can call the APIs provided by the **DisplaySync** module. For details, see [@ohos.graphics.displaySync (Variable Frame Rate)](../reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md).
+
+If you need to draw and update UI content at an independent frame rate, you can use **DisplaySync**. The frame rate for drawing content in an app can be controlled by a **DisplaySync** instance. For details, see [@ohos.graphics.displaySync (Variable Frame Rate)](../reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md).
 
 ## How to Develop
 
-This section describes how to use different frame rates to change the font size of the **\<Text>** component. This operation simulates the effect of different frame rates on the UI components.
+The following example changes the font size of a text component at different frame rates to simulate the effect of different UI drawing frame rates.
 
 1. Import the **DisplaySync** module.
-   <!-- @[display_sync_by_ui_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_by_ui_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    import { displaySync } from '@kit.ArkGraphics2D';
    ```
 
 2. Define and create a **DisplaySync** instance.
-   <!-- @[display_sync_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    @Entry
@@ -35,7 +45,7 @@ This section describes how to use different frame rates to change the font size 
    ```
 
 3. Define two **\<Text>** components.
-   <!-- @[display_sync_create_text_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_create_text_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    @State drawFirstSize: number = 25;
@@ -61,7 +71,7 @@ This section describes how to use different frame rates to change the font size 
    > **NOTE**
    >
    > The subscription function runs in the UI main thread. To avoid adverse impact on the performance, time-consuming operations related to the UI thread should not run in the subscription function.
-   <!-- @[display_sync_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    CreateDisplaySyncSlow() {
@@ -92,7 +102,7 @@ This section describes how to use different frame rates to change the font size 
    ```
 
 5. Start callback for each frame.
-   <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    Button('Start')
@@ -123,7 +133,7 @@ This section describes how to use different frame rates to change the font size 
    > **NOTE**
    >
    > After **start()** is called, the **stop()** API must be performed and the **DisplaySync** instance must be set to null in the **aboutToDisappear** function to avoid memory leaks.
-   <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    aboutToDisappear() {
@@ -139,7 +149,7 @@ This section describes how to use different frame rates to change the font size 
    ```
 
 6. Stop callback for each frame.
-   <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    Button('Stop')

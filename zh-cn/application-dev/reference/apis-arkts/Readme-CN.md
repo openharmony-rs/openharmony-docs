@@ -32,6 +32,7 @@
     - [namespace (locks)](arkts-apis-arkts-utils-locks.md)
     - [namespace (ASON)](arkts-apis-arkts-utils-ASON.md)
     - [Class (SendableLruCache)](arkts-apis-arkts-utils-SendableLruCache.md)
+    - [Class (Atomics)](arkts-apis-arkts-utils-Atomics.md)
   - [@ohos.buffer (Buffer)](js-apis-buffer.md)
   - [@ohos.convertxml (XML转换JavaScript)](js-apis-convertxml.md)
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)

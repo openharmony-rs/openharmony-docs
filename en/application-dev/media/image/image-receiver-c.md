@@ -2,9 +2,10 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=9a5d11ace507ae2a5f05e1e571b2d135f70c7b30 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 You can use the **ImageReceiver** class to obtain the surface ID of a component, read the latest image or the next image, and release ImageReceiver instances. For details about the sample code of camera preview implemented with the use of the camera API, see [Secondary Processing of Preview Streams (C/C++)](../camera/native-camera-preview-imageReceiver.md).
 
@@ -52,6 +53,7 @@ The code below mainly shows how to initialize the receiver, create a camera prev
    #include "ohcamera/camera_manager.h"
    
    #include <mutex>
+   #include <shared_mutex> // Use with C++17 or later.
    #include <condition_variable>
    ```
 
@@ -79,6 +81,7 @@ The code below mainly shows how to initialize the receiver, create a camera prev
    static OH_ImageReceiverNative* g_receiver = nullptr;
    
    static std::mutex g_mutex;
+   static std::shared_mutex shared_receiver_mutex;
    static std::condition_variable g_condVar;
    static bool g_imageReady = false;
    static OH_ImageNative* g_imageInfoResult = nullptr;
@@ -197,6 +200,8 @@ The code below mainly shows how to initialize the receiver, create a camera prev
      {
          OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest buffer available.");
      
+         // Shared lock (read).
+         std::shared_lock<std::shared_mutex> lock(shared_receiver_mutex);
          OH_ImageNative* image = nullptr;
          Image_ErrorCode errCode = OH_ImageReceiverNative_ReadNextImage(receiver, &image);
          if (errCode != IMAGE_SUCCESS) {
@@ -396,8 +401,9 @@ The code below mainly shows how to initialize the receiver, create a camera prev
      <!-- @[start_captureSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
-     static Camera_ErrorCode StartCaptureSession(Camera_Manager* mgr, Camera_Input* input, Camera_PhotoOutput* photoOutput,
-         Camera_CaptureSession** sessionOut)
+     static Camera_ErrorCode StartCaptureSession(Camera_Manager* mgr, Camera_Input* input,
+                                                 Camera_PreviewOutput* previewOutput,
+                                                 Camera_CaptureSession** sessionOut)
      {
          *sessionOut = CreateAndStartSession(mgr, input, NORMAL_PHOTO);
          if (*sessionOut == nullptr) {
@@ -405,9 +411,9 @@ The code below mainly shows how to initialize the receiver, create a camera prev
              return CAMERA_INVALID_ARGUMENT;
          }
      
-         Camera_ErrorCode ret = OH_CaptureSession_AddPhotoOutput(*sessionOut, photoOutput);
+         Camera_ErrorCode ret = OH_CaptureSession_AddPreviewOutput(*sessionOut, previewOutput);
          if (ret != CAMERA_OK) {
-             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
+             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
              return ret;
          }
      
@@ -421,6 +427,7 @@ The code below mainly shows how to initialize the receiver, create a camera prev
          if (ret != CAMERA_OK) {
              OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_Start failed.");
          }
+         
          return ret;
      }
      ```
@@ -432,6 +439,7 @@ The code below mainly shows how to initialize the receiver, create a camera prev
      ``` C++
      Camera_ErrorCode StartTakePhoto(char* str)
      {
+         char* photoSurfaceId = str;
          Camera_Manager* cameraManager = nullptr;
          Camera_Device* cameras = nullptr;
          uint32_t size = 0;
@@ -442,11 +450,12 @@ The code below mainly shows how to initialize the receiver, create a camera prev
          Camera_OutputCapability* cameraOutputCapability = nullptr;
          ret = GetCameraOutputCapability(cameraManager, cameras, 0, cameraOutputCapability);
          if (ret != CAMERA_OK) return ret;
-         const Camera_Profile* photoProfile = cameraOutputCapability->photoProfiles[0];
-         Camera_PhotoOutput* photoOutput = nullptr;
-         ret = OH_CameraManager_CreatePhotoOutput(cameraManager, photoProfile, str, &photoOutput);
-         if (photoProfile == nullptr || photoOutput == nullptr || ret != CAMERA_OK) {
-             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePhotoOutput failed.");
+         
+         const Camera_Profile* photoProfile = cameraOutputCapability->previewProfiles[0];
+         Camera_PreviewOutput* previewOutput = nullptr;
+         ret = OH_CameraManager_CreatePreviewOutput(cameraManager, photoProfile, photoSurfaceId, &previewOutput);
+         if (photoProfile == nullptr || previewOutput == nullptr || ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePreviewOutput failed.");
              return ret;
          }
      
@@ -457,17 +466,12 @@ The code below mainly shows how to initialize the receiver, create a camera prev
          }
      
          Camera_CaptureSession* captureSession = nullptr;
-         ret = StartCaptureSession(cameraManager, cameraInput, photoOutput, &captureSession);
+         ret = StartCaptureSession(cameraManager, cameraInput, previewOutput, &captureSession);
          if (ret != CAMERA_OK) {
              OH_LOG_ERROR(LOG_APP, "StartCaptureSession failed.");
              return ret;
          }
-     
-         ret = OH_PhotoOutput_Capture(photoOutput);
-         if (ret != CAMERA_OK) {
-             OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_Capture failed.");
-             return ret;
-         }
+         
          return CAMERA_OK;
      }
      ```
@@ -700,16 +704,20 @@ The code below mainly shows how to initialize the receiver, create a camera prev
            OH_LOG_INFO(LOG_APP, "No image receiver to release.");
            return nullptr;
        }
+   
        Image_ErrorCode errCode = OH_ImageReceiverNative_Off(g_receiver);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest image receiver off failed, errCode: %{public}d.", errCode);
        }
+   
+       // Exclusive lock (write).
+       std::unique_lock<std::shared_mutex> lock(shared_receiver_mutex);
        errCode = OH_ImageReceiverNative_Release(g_receiver);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "Release image receiver failed, errCode: %{public}d.", errCode);
        }
+       
        g_receiver = nullptr;
-   
        return GetJsResultDemo(env, errCode);
    }
    ```

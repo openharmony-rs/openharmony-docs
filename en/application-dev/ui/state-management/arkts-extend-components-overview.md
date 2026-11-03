@@ -5,8 +5,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-10-28T03:57:33.349Z pushedAt=2026-10-28T07:37:43.175Z nl=1 -->
 
-ArkUI uses the @Builder decorator to provide developers with a code simplification solution. The decorator simplifies the UI development process through modular encapsulation, and derives the @BuilderParam, @LocalBuilder, and wrapBuilder mechanisms to form a reusable UI structure system.
+ArkUI uses the @Builder decorator to provide developers with a code simplification solution. This decorator simplifies the UI development process through modular encapsulation, and derives the @BuilderParam decorator, @LocalBuilder decorator, wrapBuilder mechanism, and mutableBuilder mechanism, forming a reusable UI structure system.
 
 > **NOTE**
 >
@@ -30,7 +31,7 @@ When multiple global @Builder functions with different UI structures exist on a 
 
 ## mutableBuilder Mechanism
 
-Currently, [wrapBuilder](./arkts-wrapBuilder.md) does not support secondary value assignment. That is, the UI does not change when \@Builder is dynamically switched. The framework provides [mutableBuilder](./arkts-mutableBuilder.md) to support dynamic \@Builder switching.
+Currently, [wrapBuilder](./arkts-wrapBuilder.md) does not support secondary assignment, that is, dynamically switching \@Builder does not cause the UI to change. The framework provides [mutableBuilder](./arkts-mutableBuilder.md) to support dynamic switching of \@Builder.
 
 ## @Styles Decorator
 
@@ -46,4 +47,4 @@ Currently, [wrapBuilder](./arkts-wrapBuilder.md) does not support secondary valu
 
 ## @AnimatableExtend Decorator
 
-The [@AnimatableExtend](./arkts-animatable-extend.md) decorator is used to customize the animated attribute method. In this attribute method, you can modify the attributes that cannot be animated. During animation execution, frame-by-frame callbacks are executed to change the values of non-animatable properties to allow them to achieve animation effects. Additionally, you can implement frame-by-frame layout effects by changing the values of animatable properties in the per-frame callback function.
+The [@AnimatableExtend](./arkts-animatable-extend.md) decorator is used to customize the animated attribute method. In this attribute method, you can modify the non-animatable properties. During animation execution, frame-by-frame callbacks are executed to change the values of non-animatable properties to allow them to achieve animation effects. Additionally, you can implement frame-by-frame layout effects by changing the values of animatable properties in the per-frame callback function.

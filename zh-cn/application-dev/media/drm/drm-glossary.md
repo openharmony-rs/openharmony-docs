@@ -1,3 +1,10 @@
+---
+kits: ["Drm Kit / 数字版权保护服务"]
+description: "DRM Kit数字版权保护服务的术语表，定义了CencInfo、内容保护级别、DRM证书、MediaKeySystem、MediaKeySession等核心概念。"
+keywords: [DRM, 术语, CencInfo, 内容保护级别, DRM证书, MediaKeySystem, MediaKeySession, 媒体密钥, PSSH]
+doctype: glossary
+status: active
+---
 # DRM Kit术语
 
 <!--Kit: Drm Kit-->
@@ -9,7 +16,7 @@
 
 ## C
 
-### Cencinfo；视音频数据帧加密信息
+### CencInfo；视音频数据帧加密信息
 
 视音频数据帧加密的描述信息，包括加密算法及模式、密钥标识（KeyId）、初始向量（IV）、子样本加密信息（subsample）等。在使用AVCodec Kit时，可将这些加密描述信息设置到AVBuffer的CencInfo中，在调用PushInputBuffer时，根据这些信息完成视音频数据帧的解密和解码。
 
