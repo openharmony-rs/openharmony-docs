@@ -34,7 +34,7 @@
 | -- | -- | -- |
 | [typedef void (\*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData)](#oh_arkui_nativemodule_uieventinjectioncallback) | OH_ArkUI_NativeModule_UIEventInjectionCallback | 注入完成回调。<br>用于通知命令的派发结果和组件对命令的即时处理结果，不等待组件延迟效果或渲染完成。每个已受理请求在注入函数返回后，在原UI线程恰好回调一次。不同UI线程上的回调不保证全局串行执行。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_ContextHandle uiContext, uint32_t uniqueId, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectcompositecommand) | - | 向目标UI节点异步注入控制命令。<br>本接口不提供取消操作或固定的完成超时，完成依赖UI线程的任务处理。调用方等待超时不会取消已受理请求。实例销毁不会取消已受理请求的完成回调。 |
-| `ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)` | - | 异步向UI注入宽松的交互命令。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | - | 异步向UI注入宽松的交互命令。 |
 
 ### 变量
 
@@ -111,3 +111,30 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_Contex
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回0表示请求已受理，执行结果通过callback报告；返回非零值表示请求被拒绝，不执行命令，也不触发回调。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)请求已受理。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) command或callback为NULL、命令数据无效，或命令提交失败。<br>[ARKUI_ERROR_CODE_NODE_NOT_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)在uiContext实例内未找到节点ID（uniqueId）对应的ArkUI节点。<br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) uiContext为NULL，或对应的UI实例正在销毁或已失效。<br>[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)当前进程中，前一命令对后续请求的限制尚未解除。命令受理后，同一进程内的其他有效请求均返回此错误码。<br>框架在调用完成回调前解除此限制。可在回调中再次提交命令，仍需满足参数和UI线程要求。被拒绝的请求可在限制解除后重试，能否受理仍取决于进程内的其他请求。 |
+
+### OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)
+```
+
+**描述：**
+
+异步向UI注入宽松的交互命令。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [入参] UI实例指针，不能为NULL。 |
+| const [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [入参] 已配置的JSON命令对象，由[OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)创建，不能为NULL，调用期间须保持有效。框架不保留该对象。 |
+| [OH_ArkUI_NativeModule_UIEventInjectionCallback](#oh_arkui_nativemodule_uieventinjectioncallback) callback | [入参] 完成回调，可以为NULL。非NULL时，在注入命令执行完成时调用一次。 |
+| void *userData | [入参] 传递给回调的自定义用户数据，可以为NULL。框架不接管数据的所有权，调用方须保持数据有效直至回调完成。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)：命令入队成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)：参数无效或缺少必填字段。<br>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)：UI上下文无效。 |
