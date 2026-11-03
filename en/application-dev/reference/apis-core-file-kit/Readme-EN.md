@@ -8,7 +8,7 @@
 <!--Adviser: @jinqiuheng-->
 
 - ArkTS APIs<!--core-file-arkts-->
-  - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability)](js-apis-application-backupExtensionAbility.md)
+  - [@ohos.application.BackupExtensionAbility (BackupExtensionAbility)](js-apis-application-backupExtensionAbility.md)
   - [@ohos.file.cloudSync (Device-Cloud Sync)](js-apis-file-cloudsync.md)
   - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management)](js-apis-file-cloudsyncmanager.md)
   - [@ohos.file.environment (Directory Environment Capability)](js-apis-file-environment.md)

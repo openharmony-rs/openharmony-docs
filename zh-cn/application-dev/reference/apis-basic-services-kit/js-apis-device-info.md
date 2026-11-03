@@ -33,7 +33,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。<br>示例：wearable |
 | manufacture | string | 是 | 设备厂家名称。 |
 | brand | string | 是 | 设备品牌名称。<br>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。 |
-| marketName | string | 是 | 外部产品系列。<br>示例：<!--RP2-->Mate XX<!--RP2End--> |
+| marketName | string | 是 | <!--RP17-->外部产品系列。<!--RP17End--><br>示例：<!--RP2-->Mate XX<!--RP2End--> |
 | productSeries | string | 是 | 产品系列。<br>示例：<!--RP3-->TAS<!--RP3End--> |
 | productModel | string | 是 | 认证型号。<br>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。<br>示例：<!--RP4-->TAS-AL00<!--RP4End--> |
 | productModelAlias<sup>14+</sup> | string | 是 | 认证型号别名。<br>**原子化服务API**：从API版本14开始，该接口支持在原子化服务中使用。<br>示例：TAS-AL00 |
@@ -74,7 +74,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号。<br>**使用场景**：用于根据芯片型号进行性能适配、设备特性识别、兼容性检查等场景，不同芯片型号可能具有不同的GPU性能、AI加速能力等特性。<br> 示例：xxxxx |
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1。<br> 示例：100 |
 | deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br>**模型约束**： 此接口仅可在Stage模型下使用。<br> **起始版本**：26.0.0<br> 示例：gold |
-| kernelVersion | string | 是 | 获取当前运行环境的内核版本字符串。<br> **起始版本**：26.0.1<br> 示例：HongMeng Kernel 1.0.0 |
+| kernelVersion | string | 是 | 获取当前运行环境的内核版本字符串。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br> **起始版本**：26.0.1<br> 示例：HongMeng Kernel 1.0.0 |
+| installTime | string | 是 | 获取系统安装UTC时间戳。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br> **起始版本**：26.1.0<br> 示例：1790784000000 |
 
 **错误码**：
 
@@ -264,6 +265,10 @@ console.info('the value of the deviceColor is :' + deviceColor);
 let kernelVersion: string = deviceInfo.kernelVersion;
 // 输出结果：the value of the kernelVersion is :HongMeng Kernel 1.0.0
 console.info('the value of the kernelVersion is :' + kernelVersion);
+ 
+let installTime: string = deviceInfo.installTime;
+// 输出结果：the value of the installTime is :1790784000000
+console.info('the value of the installTime is :' + installTime);
 ```
 
 ## PerformanceClassLevel<sup>19+</sup>

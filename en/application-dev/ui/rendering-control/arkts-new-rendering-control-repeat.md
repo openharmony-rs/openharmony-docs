@@ -395,7 +395,7 @@ Choose **UIViewer** from the utility options. This tool captures device snapshot
 
 ## Advanced Features
 
-In addition to the capabilities such as iterative rendering, lazy loading, and component reuse, **Repeat** also provides advanced features such as precise lazy loading, drag-and-drop sorting, and content position preservation. Use these features as required.
+In addition to the capabilities such as repeated content rendering, lazy loading, and component reuse, **Repeat** also provides advanced features such as precise lazy loading, drag-and-drop sorting, content position preservation, and proactive cache pool cleanup. Use these features as required.
 
 ### Precise Lazy Loading
 
@@ -706,7 +706,16 @@ The figure below shows the effect.
 
 ### animateTo Animation
 
-Since API version 24, when the parent container component is a [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), the **Repeat** component can use the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API to set transition animation effects for its child components within the display area.
+When **Repeat** is used together with animations, **Repeat**'s reuse capability conflicts with the animations, resulting in abnormal animation behavior.
+
+Since API version 24, when the parent container component is a [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), the **Repeat** component can disable the reuse capability during animation so it can use the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API to set transition animation effects for its child components within the display area.
+
+Since API version 26.1.0, when the parent container component is [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md) or [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), you can use the **allowReuseInAnimation** attribute of [RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions) to set the child component reuse policy during the animation of **Repeat**. This allows you to control whether **Repeat** supports setting the transition animation effect for its child components in the display area through the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API.
+
+allowReuseInAnimation description:
+- **true**: The reuse capability remains enabled during the animation.
+- **false**: The reuse capability is disabled during the animation to support the animation.
+- Default value: **false** when the parent container component of **Repeat** is **List**; **true** when the parent container component is **Grid** or **WaterFlow**.
 
 The rules for determining the transition animation of a **Repeat** child component are as follows:
 1. When a child component enters the visible area and preload area from outside, it is considered as an inserted component.
@@ -717,7 +726,7 @@ The rules for determining the transition animation of a **Repeat** child compone
 
 > **NOTE**
 >
-> - This attribute can only be used with the **List** component. When used with other container components, the animation effect is undefined.
+> - This attribute can only be used with the **List**, **Grid**, and **WaterFlow** component. When used with other container components, the animation effect is undefined.
 > - Only the animation effect of child components within the display area is supported. The animation effect of child components outside the display area is undefined.
 > - For details about how to set the transition animation and animation effect, see the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API.
 
@@ -812,6 +821,84 @@ class ItemInfo {
 The figure below shows the effect.
 
 ![Repeat-animation](figures/repeat-animation.gif)
+
+### Proactively Clearing the Reuse Pool
+
+**Repeat** has a reuse pool in lazy loading mode. Child components removed from the component tree are stored in the cache pool for reuse. For details, see [Node Update and Reuse Mechanism](#node-update-and-reuse-mechanism).
+
+Since API version 26.1.0, you can use the [RepeatController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatcontroller) controller to proactively release components in the reuse pool in lazy loading mode.
+
+Usage: Create a **RepeatController** object and bind it through the controller field of [RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions) when creating a **Repeat** component. To clear the cache, call the [clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#clearcache) method on the controller.
+
+> **NOTE**
+>
+> 1. The controller is bound only when the Repeat component is created and cannot be dynamically modified.
+> 2. A controller can control only one Repeat component. If the controller is bound to another Repeat component, the previous binding automatically becomes invalid, and the controller controls only the last bound component.
+
+**Example**
+
+In the following example, when you click the Scroll button, the list is scrolled, and the old nodes are added to the cache pool. Click the Clear button to proactively clear the components in the Repeat cache pool.
+
+<!-- @[repeat_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatClearCache.ets) -->
+
+``` TypeScript
+@ComponentV2
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Local data: Array<number> = [];
+  // Create a RepeatController object.
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ scroller: this.scroller }) {
+        // Bind the controller using the controller field in RepeatOptions.
+        Repeat<number>(this.data, { controller: this.controller })
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              ChildComponent()
+            }
+          })
+          .virtualScroll()
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Scroll')
+        .onClick(() => {
+          // Click the button to trigger the list redirection, and the old component is added to the cache pool.
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick(() => {
+          // Proactively clear idle nodes in the Repeat cache pool.
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
 
 ## Use Cases
 
@@ -1694,3 +1781,5 @@ In this example, parameters passed to @Builder include the following: **makeBind
 ### expandSafeArea Not Working in Earlier Versions
 
 In versions earlier than API version 18, if a **Repeat** child component has the **expandSafeArea** attribute declared, the child component cannot expand to full screen. Since API version 18, child components with the declared **expandSafeArea** attribute can expand to full screen.
+
+<!--no_check-->

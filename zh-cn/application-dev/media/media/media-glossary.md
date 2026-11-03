@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "Media Kit音视频开发术语表，收录AVPlayer、AVRecorder、HLS、DASH、HDR、流媒体、音频焦点、MPD、M3U8等核心术语的中英文对照及含义说明，帮助开发者理解播放、录制、转码相关概念。"
+keywords: [Media Kit, 术语表, AVPlayer, HLS, DASH, HDR, 流媒体, 音频焦点, 转码]
+doctype: glossary
+status: active
+---
+
 # Media Kit术语
 
 <!--Kit: Media Kit-->

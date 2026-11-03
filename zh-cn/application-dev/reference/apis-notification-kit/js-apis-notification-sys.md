@@ -10,8 +10,8 @@
 
 > **说明：**
 >
-> 从API version 9开始，该模块不再维护，建议使用[@ohos.notificationManager](js-apis-notificationManager-sys.md)替代。
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 从API版本9开始，该模块不再维护，建议使用[@ohos.notificationManager](js-apis-notificationManager-sys.md)替代。
+> 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[Notification](js-apis-notification.md)。
 
@@ -2286,7 +2286,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 **系统能力**：SystemCapability.Notification.Notification
 
 > **说明：**
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[notificationManager.DoNotDisturbDate](js-apis-notificationManager-sys.md#donotdisturbdate)替代
+> 从API版本8开始支持，从API版本9开始废弃。建议使用[notificationManager.DoNotDisturbDate](js-apis-notificationManager-sys.md#donotdisturbdate)替代
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
@@ -2301,7 +2301,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 **系统能力**：SystemCapability.Notification.Notification
 
 > **说明：**
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[notificationManager.DoNotDisturbType](js-apis-notificationManager-sys.md#donotdisturbtype)替代
+> 从API版本8开始支持，从API版本9开始废弃。建议使用[notificationManager.DoNotDisturbType](js-apis-notificationManager-sys.md#donotdisturbtype)替代
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
@@ -2319,7 +2319,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
 > **说明：**
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[notificationManager.DeviceRemindType](js-apis-notificationManager-sys.md#deviceremindtype)替代
+> 从API版本8开始支持，从API版本9开始废弃。建议使用[notificationManager.DeviceRemindType](js-apis-notificationManager-sys.md#deviceremindtype)替代
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
@@ -2336,7 +2336,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
 > **说明：**
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[notificationManager.SourceType](js-apis-notificationManager-sys.md#sourcetype)替代
+> 从API版本8开始支持，从API版本9开始废弃。建议使用[notificationManager.SourceType](js-apis-notificationManager-sys.md#sourcetype)替代
 
 | 名称                 | 值  | 说明                  |
 | -------------------- | --- | -------------------- |
@@ -2351,7 +2351,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
 > **说明：**
-> 从 API version 7开始支持，从API version 9开始废弃。建议使用[notificationManager.RemoveReason](js-apis-notificationSubscribe-sys.md#removereason)替代
+> 从API版本7开始支持，从API版本9开始废弃。建议使用[notificationManager.RemoveReason](js-apis-notificationSubscribe-sys.md#removereason)替代
 
 | 名称                 | 值  | 说明                  |
 | -------------------- | --- | -------------------- |

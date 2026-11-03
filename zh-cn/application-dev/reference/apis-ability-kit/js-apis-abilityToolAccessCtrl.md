@@ -11,7 +11,7 @@
 
 当需要获取CLI工具执行认证ticket时，使用本模块接口。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ## 导入模块
 
@@ -27,7 +27,7 @@ requestToolTicket(cliCmdInfos: CliCmdInfo[], ticketOpions: TicketOpions): Promis
 
 传入CLI命令列表，如果用户尚未授权CLI工具所需的权限，返回需要授权的权限列表及其状态；如果用户已授权所有所需权限，返回已认证的ticket。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
@@ -106,7 +106,7 @@ abilityToolAccessCtrl.requestToolTicket(cliCmdInfos, ticketOpions).then((data: a
 
 表示生成ticket的可选参数。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -118,7 +118,7 @@ abilityToolAccessCtrl.requestToolTicket(cliCmdInfos, ticketOpions).then((data: a
 
 表示ticket查询结果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.Asset
 

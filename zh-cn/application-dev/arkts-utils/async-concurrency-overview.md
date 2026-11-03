@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS异步并发能力：Promise通过链式调用管理异步结果，async/await以同步写法简化异步逻辑，适用于单次I/O任务等场景，避免耗时操作阻塞代码执行、提升应用响应速度。"
+keywords: [异步并发, Promise, async/await, 单次I/O任务, 异步编程, 链式调用, 异步函数]
+doctype: guide
+status: active
+---
+
 # 异步并发 (Promise和async/await)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

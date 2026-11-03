@@ -8996,6 +8996,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.CAMERA_DRIVER_MONITOR
+
+允许应用可以访问驾驶员监控相机。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
 ## ohos.permission.ACCESS_MEDIALIB_SANDBOX
 
 允许应用在appspawn挂载媒体库沙箱。
@@ -9106,7 +9120,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
@@ -9518,7 +9532,7 @@
  
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
  
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
 
@@ -9546,7 +9560,7 @@
 
 **支持设备**：PC/2in1
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.SET_DSL_MODE
 
@@ -9560,7 +9574,7 @@
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.INNER_NETWORK
 
@@ -9574,7 +9588,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.LOGIN_TSP
 
@@ -9812,4 +9826,64 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
+
+## ohos.permission.ALLOW_DIRECT_BOOT
+
+允许应用在设备冷启动或重启后，用户首次解锁前启动。
+
+> **说明：**
+>
+> 申请此权限的应用，在用户首次解锁前不要访问 EL2 及以上级别的存储路径。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.AALE_LIGHTRES_SERVICE
+
+允许应用绑定灯效资源管理服务（LightResManagerService）。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.AALE_AMBIENT_SERVICE
+
+允许应用绑定车载氛围灯引擎服务（AaleService）。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.PROMPT_INJECT_DETECTION
+
+允许应用检测提示词（prompt）间接注入攻击。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.0.1

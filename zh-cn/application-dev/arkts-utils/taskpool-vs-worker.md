@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "从实现特点和适用场景两个维度对比TaskPool与Worker：涵盖内存模型、参数传递机制、生命周期管理、线程数量上限与任务执行时长限制等差异，并分别给出建议使用Worker和TaskPool的场景。"
+keywords: [TaskPool与Worker对比, 实现特点, 适用场景, 并发选型, 内存模型, 参数传递, 生命周期管理, 线程数量上限, 多线程]
+doctype: guide
+status: active
+---
+
 # TaskPool和Worker的对比
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

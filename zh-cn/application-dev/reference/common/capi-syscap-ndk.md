@@ -1,4 +1,4 @@
-# syscapndk
+# SyscapNdk
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->

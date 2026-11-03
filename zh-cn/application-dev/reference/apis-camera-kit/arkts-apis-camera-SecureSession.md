@@ -62,7 +62,7 @@ function addSecureOutput(session: camera.SecureSession, previewOutput: camera.Pr
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The addOutput call failed. error code: ${err.code}`);
+    console.error(`The addSecureOutput call failed. error code: ${err.code}`);
   }
 }
 ```

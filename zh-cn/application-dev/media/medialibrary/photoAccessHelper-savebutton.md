@@ -57,7 +57,7 @@ export struct Scene1 {
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<string> {
   try {
     let outputText = 'Supported formats:\n';
-    // The value 1 means the supported image formats, and 2 means the supported video formats.
+    // 参数为1表示支持图片，2表示支持视频。
     let imageFormat = await phAccessHelper.getSupportedPhotoFormats(photoAccessHelper.PhotoType.IMAGE);
     let result = '';
     for (let i = 0; i < imageFormat.length; i++) {
@@ -108,7 +108,7 @@ export struct Scene2 {
     icon: SaveIconStyle.FULL_FILLED,
     text: SaveDescription.SAVE_IMAGE,
     buttonType: ButtonType.Capsule
-  }// Set properties of SaveButton.
+  }// 设置保存按钮的属性。
 
  // ...
 
@@ -143,7 +143,7 @@ export struct Scene2 {
       Column({ space: 20 }) {
         // ...
 
-        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
+        SaveButton(this.saveButtonOptions) // 创建一个带有“保存”按钮的按钮。
           .onClick(async (event, result: SaveButtonOnClickResult) => {
             if (result == SaveButtonOnClickResult.SUCCESS) {
               try {
@@ -223,7 +223,7 @@ async function example(
     // 设置要保存的图片的参数：文件扩展名、图片类型、标题和子类型（后两者为可选）。
     let photoCreationConfigs: photoAccessHelper.PhotoCreationConfig[] = [
       {
-        title: 'test', // This parameter is optional.
+        title: 'test', // 此参数是可选的。
         fileNameExtension: 'jpg',
         photoType: photoAccessHelper.PhotoType.IMAGE,
         subtype: photoAccessHelper.PhotoSubtype.DEFAULT,

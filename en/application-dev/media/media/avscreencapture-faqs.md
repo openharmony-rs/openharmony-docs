@@ -1,26 +1,45 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Summarizes common AVScreenCapture issues and solutions, including exceeding the instance limit and being unable to start screen capture during a call."
+keywords: [AVScreenCapture, screen capture during calls, state callbacks]
+doctype: faq
+status: active
+---
+
 # Screen Capture FAQs
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=c569c5cc1f327da4a0ad09bb8d59b653d244c83e translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Error Code AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT Is Reported When Starting Screen Capture
 
-This error occurs when the number of instances exceeds the system limit. The current specification allows a maximum of two instances per data format. You are advised to release any extra instances before creating new ones.
+### Symptom
 
-Possible cause: During screen capture, the resources are not released after you reject the screen capture, stop screen capture in the notification bar, or the recording is interrupted by a call.
+Screen capture parameter configuration or startup fails.
 
-Solution: If the screen capture stops due to status change, you need to asynchronously release the screen recording resources via [OH_AVScreenCapture_SetStateCallback()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback) (state callback).
+### Possible Causes
 
-Screen capture session limit policy:
+1. The number of instances exceeds the current limit of two instances per data format.
 
-1. A maximum of four client applications are allowed. Examples include simultaneous use of screen sharing in a meeting, screen casting, background music recognition, and system screen capture.
+2. Screen capture cannot start because the policy for keeping capture active during calls has not been set.
 
-2. Each application can create up to two instances per operational mode (saving to files or saving as streams). A typical use case is simultaneously recording meeting content while sharing the screen during an online meeting.
+3. Screen capture cannot start because its parameters exceed the supported limits.
 
-## Error Code AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT Is Reported When Starting Screen Capture During a Call
+### Solution
 
-Starting from API version 20, you can call [OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall) to keep screen capture during a cellular call.
+1. If screen capture stops due to a state change, release capture resources asynchronously in the [OH_AVScreenCapture_SetStateCallback()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback) state callback.
+
+   Screen capture session limits:
+
+   - Up to four client apps can run concurrently, for example, meeting screen sharing, meeting screen projection, background music recognition, and system screen recording.
+
+   - Each app can create up to two instances per mode (file output or bitstream output). A typical scenario is sharing the screen in an online meeting while recording the meeting.
+
+2. Starting from API version 20, use [OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall) to keep screen capture active during cellular calls.
+
+3. Video encoding parameters are validated when starting screen capture in file output mode. videoBitrate must be in the range [1, 30000000], in bits per second (bit/s). Values outside this range cause startup to fail. Check and adjust the capture configuration.

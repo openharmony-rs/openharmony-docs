@@ -1,14 +1,13 @@
 # \@LocalBuilder Decorator: Maintaining Component Relationships
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:25:08.455Z pushedAt=2026-07-24T01:33:18.405Z -->
+<!-- md-trans-meta sourceCommit=6731353e95ca92d0b8b50de9083fe2085729362a translatedAt=2026-10-28T03:59:39.044Z pushedAt=2026-10-28T07:41:23.610Z nl=1 -->
 
-When you use local @Builder for passing data by reference, you need to consider the parent-child relationship of components. However, after using **.bind(this)** to change the function call context, the parent-child relationship of components may become inconsistent with the parent-child relationship of state management. To address this issue, the [@LocalBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-localbuilder.md#localbuilder) decorator is introduced. @LocalBuilder has the same function as local @Builder, and can better determine the parent-child relationship of components and the parent-child relationship of state management than local @Builder.
+When developers use a local \@Builder to pass data by reference, they need to consider the parent-child relationship of components. However, after using .bind(this) to change the function call context, the parent-child relationship of components becomes inconsistent with that of state management. To solve this problem, the [\@LocalBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-localbuilder.md#localbuilder) decorator is introduced. \@LocalBuilder has the same functions as the local \@Builder, and can better determine the parent-child relationship of components and the parent-child relationship of state management than the local \@Builder.
 
 Before proceeding, you are advised to review [\@Builder](./arkts-builder.md).
 
@@ -25,7 +24,6 @@ Before proceeding, you are advised to review [\@Builder](./arkts-builder.md).
 ### Component-Level Builder Declaration
 
 Syntax:
-
 <!-- @[Custom_Component_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/CustomBuilderInComponent.ets) --> 
 
 ``` TypeScript
@@ -36,7 +34,6 @@ myBuilderFunction() {
 ```
 
 Usage:
-
 <!-- @[Custom_Component_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/CustomBuilderInComponent.ets) --> 
 
 ``` TypeScript
@@ -45,7 +42,7 @@ this.myBuilderFunction()
 
 - One or more \@LocalBuilder functions can be defined in a custom component. These functions are treated as private and special member functions of the owning component.
 
-- Each \@LocalBuilder function is accessible only within the owning component's scope and can be called from the component's **build** method or other local builder functions.
+- Each \@LocalBuilder function is accessible only within the owning component's scope and can be called from the component's **build** method or other custom builder functions.
 
 - Inside the custom builder function body, **this** refers to the owning component. Component state variables are accessible from within the custom builder function implementation. Using **this** to access the custom components' state variables is recommended over parameter passing.
 
@@ -59,8 +56,7 @@ When local @Builder functions are passed between components, it is common to use
 >
 > The **bind()** method creates a new bound function that sets the **this** value to the first parameter provided during creation.
 
-In the following example, when the function componentBuilder is modified by \@Builder, the display effect is Child. When the function componentBuilder is modified by \@LocalBuilder, the display effect is Parent.
-
+In the following example, when the function componentBuilder is decorated by \@Builder, the display effect is "Child"; when the function componentLocalBuilder is decorated by \@LocalBuilder, the display effect is "Parent".
 <!-- @[component_builder_modify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets) -->  
 
 ``` TypeScript
@@ -116,12 +112,9 @@ struct Parent {
 ## Constraints
 
 - @LocalBuilder declarations are component-bound. Global declarations are not allowed.
-
 - \@LocalBuilder cannot be used in conjunction with other decorators, whether built-in or custom.
-
 - \@LocalBuilder cannot be used to decorate static functions in custom components.
-
-- You are advised to pass the function itself or use the **() => { function call }** format, instead of directly passing the execution result of the function.
+- You are advised to pass the function itself or use the **() => { function call }** format, instead of directly passing the execution result of the function. 
 
 ## Parameter Passing Rules
 
@@ -137,8 +130,7 @@ Parameters for \@LocalBuilder functions can be passed [by callback](#passing-par
 
 ### Passing Parameters by Callback
 
-From API version 20, developers can use the `UIUtils.makeBinding()` function, the `Binding` class, and the `MutableBinding` class to refresh state variables in the @Builder function. For details, see [makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20).
-
+From API version 20, you can use the `UIUtils.makeBinding()` function, the `Binding` class, and the `MutableBinding` class to refresh state variables in the @LocalBuilder function. For details, see [makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20).
 <!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) -->  
 
 ``` TypeScript
@@ -185,7 +177,6 @@ In by-reference parameter passing, state variables can be passed, and the change
 > If the \@LocalBuilder function is used together with the `$$` operator, when a child component calls the \@LocalBuilder function of the parent component, parameter changes from the child component will not trigger UI re-rendering in the @LocalBuilder function. For details, see FAQs [UI Is Not Refreshed When the @LocalBuilder Function Is Used Together with the $$ Parameter](#ui-is-not-refreshed-when-the-localbuilder-function-is-used-together-with-the--parameter).
 
 In the example, the @LocalBuilder function in the **Parent** component is called in the **build** function using the key-value pair syntax for parameter passing. After **Click me** is clicked, the **Text** content in the @LocalBuilder changes with the state variable.
-
 <!-- @[pass_by_reference_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ReferencePassing.ets) -->  
 
 ``` TypeScript
@@ -205,7 +196,7 @@ struct Parent {
         .fontSize(20)
         .margin(10)
     }
-  };
+  }
 
   build() {
     Column() {
@@ -228,7 +219,6 @@ struct Parent {
 For passing parameters by reference in an \@LocalBuilder function that invokes custom components, ArkUI provides `$$` as the standard paradigm.
 
 In the following example, in the \@LocalBuilder function of the **Parent** component, a custom component is called with parameters passed by reference. When the value of the state variable in the **Parent** component changes, the **message** value of the custom component **HelloComponent** within the \@LocalBuilder function will also change.
-
 <!-- @[pass_by_reference_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ParentRefSync.ets) -->  
 
 ``` TypeScript
@@ -288,7 +278,6 @@ struct Parent {
 When a child component calls the @LocalBuilder function of its parent component with state variables, changes to the state variable do not trigger UI re-rendering within the @LocalBuilder function. This occurs because components created using the \@LocalBuilder function remain bound to the parent, and the state variable updates only affect the current component and its children, not the parent. In contrast, using \@Builder functions can trigger UI re-rendering. This is because \@Builder dynamically changes the function's **this** context to point to the calling child component, binding the created components to the child instead of the parent component.
 
 In the following example, the Child component transfers state variables to the \@Builder and \@LocalBuilder functions of the Parent component. Inside \@Builder, **this** points to **Child**, and parameter changes trigger UI re-rendering. Inside \@LocalBuilder, **this** points to **Parent**, and parameter changes do not trigger UI re-rendering. Only changes to the Parent component's own state variables will cause the UI to re-render.
-
 <!-- @[pass_by_reference_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderThisDiff.ets) -->  
 
 ``` TypeScript
@@ -363,7 +352,7 @@ struct Child {
 
   @Builder
   customBuilder() {
-  };
+  }
 
   @BuilderParam contentBuilder: ((data: Data) => void) = this.customBuilder;
   @BuilderParam contentLocalBuilder: ((data: Data) => void) = this.customBuilder;
@@ -394,7 +383,6 @@ struct Child {
 By default, parameters in the \@LocalBuilder functions are passed by value. In this case, when the passed parameter is a state variable, its change does not cause UI re-rendering in the \@LocalBuilder function. Therefore, when using state variables, you are advised to use [Passing Parameters By Callback](#passing-parameters-by-callback) or [Passing Parameters By Reference](#by-reference-parameter-passing).
 
 In the following example, the **Parent** component passes the \@State decorated **label** value to the @LocalBuilder function as a function parameter. In this case, the value obtained by the @LocalBuilder function is a regular variable value. As a result, when the **label** value changes, the value in the @LocalBuilder function remains unchanged.
-
 <!-- @[pass_by_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ValuePassing.ets) -->  
 
 ``` TypeScript
@@ -430,7 +418,7 @@ struct Parent {
 
 ### Using \@LocalBuilder in \@ComponentV2 Decorated Custom Components
 
-Use the local @LocalBuilder in the custom component decorated by [@ComponentV2](./arkts-create-custom-components.md#componentv2). When the variable is modified, the UI is refreshed.
+When a local @LocalBuilder is used in a custom component decorated by [@ComponentV2](./arkts-create-custom-components.md#componentv2), modifying a state variable triggers UI refresh.
 
 <!-- @[LocalBuilder_in_V2_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets) -->  
 
@@ -521,13 +509,11 @@ struct ParentPage {
 ![arkts-localBuilder-6](../state-management/figures/arkts-localBuilder-6.gif)
 
 ## FAQs
-
 ### UI Is Not Refreshed When the @LocalBuilder Function Is Used Together with the $$ Parameter
 
 If the \@LocalBuilder function is used together with the `$$` operator, when a child component calls the \@LocalBuilder function of the parent component, parameter changes from the child component will not trigger UI re-rendering in the @LocalBuilder function.
 
 **Incorrect Usage**
-
 <!-- @[problem_ui_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshOpposite.ets) --> 
 
 ``` TypeScript
@@ -568,7 +554,7 @@ struct Child {
       this.customBuilder({ size: this.layoutSize.size }) // The child component calls the @LocalBuilder function of the parent component.
       Button('add child size')
         .onClick(() => {
-          this.layoutSize.size += 1; // The parameter transferred by the subcomponent is changed, which does not cause the UI update in the @LocalBuilder function.
+          this.layoutSize.size += 1; // The parameter transferred by the child component is changed, which does not cause the UI update in the @LocalBuilder function.
         })
     }
   }
@@ -578,7 +564,6 @@ struct Child {
 **Correct Usage**
 
 Create a state variable under the component that declares @LocalBuilder and access the state variable in the @LocalBuilder function. The UI component in @LocalBuilder can be updated when the state variable changes.
-
 <!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) -->  
 
 ``` TypeScript
@@ -709,5 +694,3 @@ struct Page {
 ```
 
 ![localBuilder_parameter_transmission_in_correct_form.png](./figures/localBuilder_parameter_transmission_in_correct_form.png)
-
-<!--no_check-->

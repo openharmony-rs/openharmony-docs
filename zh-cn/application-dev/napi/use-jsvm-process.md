@@ -20,7 +20,7 @@ status: active
 
 - Native侧：.cpp文件，实现模块的注册。需要提供注册lib库的名称，并在注册回调方法中定义接口的映射关系，即Native方法及对应的JS/ArkTS接口名称等。
 
-此处以在ArkTS/JS侧和Native侧实现RunTest()接口实现跨语言交互为例，展示使用JSVM-API进行跨语言交互的流程。
+此处以在ArkTS/JS侧和Native侧实现runTest()接口实现跨语言交互为例，展示使用JSVM-API进行跨语言交互的流程。
 
 ## 创建Native C++工程
 
@@ -68,7 +68,7 @@ status: active
   target_link_libraries(entry PUBLIC libace_napi.z.so libjsvm.so libhilog_ndk.z.so)
   ```
 
-- 新建entry/src/main/cpp/hello.cpp，实现Native侧的runTest接口。具体代码如下：
+- 新建entry/src/main/cpp/hello.cpp，实现Native侧的RunTest()接口。具体代码如下：
 
   <!-- @[oh_jsvm_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/hello.cpp) -->
   

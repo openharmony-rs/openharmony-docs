@@ -150,7 +150,7 @@ static JSVM_Value AssertEqual(JSVM_Env env, JSVM_CallbackInfo info)
     if (isStrictEquals) {
         OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: PASS");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: FAILED");
+        OH_LOG_ERROR(LOG_APP, "JSVM API TEST RESULT: FAILED");
     }
     return nullptr;
 }

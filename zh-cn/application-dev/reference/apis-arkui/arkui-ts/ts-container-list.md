@@ -795,11 +795,11 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 > - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
 > - 真实列表项创建完成后，在[ListItem](ts-container-listitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2969,7 +2969,7 @@ struct ListExample {
 
 该示例通过[scrollPlaceholder](#scrollplaceholder)接口为List设置滚动占位：占位模板经wrapBuilder包装后，通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册（完整说明参考[PlaceholderRegister](../arkts-apis-placeholderregister.md#placeholderregister)）；快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
 
-从API版本26.2.0开始，List组件新增scrollPlaceholder接口。
+从API版本26.1.0开始，List组件新增scrollPlaceholder接口。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 

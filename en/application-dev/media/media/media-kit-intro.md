@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Provides an overview of Media Kit modules, including AVPlayer, SoundPool, AVRecorder, AVScreenCapture, AVMetadataExtractor, AVImageGenerator, and AVTranscoder, covering playback, recording, metadata extraction, thumbnails, transcoding, and supported formats and protocols."
+keywords: [Media Kit, Media Services, AVPlayer, SoundPool, AVRecorder, AVScreenCapture, AVTranscoder, lightweight media engine, HDR]
+doctype: guide
+status: active
+---
+
 # About This Kit
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -5,6 +13,7 @@
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=54832c55a10bd12f43b0e327d20ef90222e0156f translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Media Kit is used to develop audio and video playback or recording features. The Media Kit development guide provides comprehensive instructions on how to develop various audio and video modules, assisting you in utilizing the system's audio and video APIs to achieve desired functionalities. For example, you can use the SoundPool to implement simple prompt tones so that a drip sound is played upon the receipt of a new message; you can use the AVPlayer to develop a music player, which can loop a piece of music.
 
@@ -262,10 +271,10 @@ The following figure shows the interaction between the AVScreenCapture and exter
 
 The table below lists the supported audio sources.
 
-| Type| Description| 
+| Type| Description|
 | -------- | -------- |
-| MIC | The system microphone is used as the audio source input.| 
-| ALL_PLAYBACK | Internal recording is used as the audio source input.| 
+| MIC | System microphone as the audio source input.|
+| ALL_PLAYBACK | System internal recording audio as the audio source input. |
 
 The table below lists the supported video sources.
 
@@ -294,7 +303,7 @@ The table below lists the supported output file formats.
 
 ## AVMetadataExtractor
 
-The AVMetadataExtractor is used to obtain audio and video metadata. With the AVMetadataExtractor, you can extract rich metadata information from original media assets. For example, for an audio asset, you can obtain its details, such as the title, artist, album name, and duration. The process of obtaining the metadata of a video asset is similar. The only difference is that the process of obtaining the album cover is not required for a video asset, because no album cover is available in the video asset.
+AVMetadataExtractor obtains audio/video metadata from source media resources. For audio, this includes the title, artist, album name, and duration. Video metadata is obtained in a similar way, but album covers cannot be obtained from video resources because videos do not have album covers.
 
 The full process of obtaining the metadata of an audio asset includes creating an AVMetadataExtractor instance, setting resources, obtaining the metadata, obtaining the album cover (optional), and releasing the instance.
 
@@ -323,17 +332,30 @@ The encoding parameters (format and bit rate) and container format of the source
 <!--RP1--><!--RP1End-->
 - The following source video formats are supported:
 
-   The source video formats supported by transcoding depend on the formats supported by the system decoder and demuxer. For details, see [AVCodec Supported Formats](../avcodec/avcodec-support-formats.md#media-data-demultiplexing).
+   The source video formats supported for transcoding depend on the formats supported by the system decoder and demuxer. For details, see [AVCodec supported formats](../avcodec/avcodec-support-formats.md#media-data-demultiplexing).
 
 - The following target video formats are supported:
 
    | Container Format | Video Encoding Type  | Audio Encoding Type  |
    | -------- | :------------------| :---------------- |
-   | mp4      | AVC (H.264)<!--RP7--><!--RP7End--> | AAC |
+   | mp4      | AVC(H.264)<!--RP7--><!--RP7End--> | AAC, MPEG(MP3) |
+
+- Supported target audio formats:
+
+   | Container Format | Audio Encoding Type |
+   | -------- | :---------------- |
+   | mp4      | AAC, MPEG (MP3) |
+   | m4a      | AAC              |
+   | mp3      | MPEG (MP3)      |
+   | amr      | AMR (amrnb, amrwb) |
+   | wav      | raw (pcm) |
+   | aac      | AAC               |
 
 - The support for tracks is as follows:
   - Subtitle tracks are not supported. If the original video has subtitle tracks, they are discarded after transcoding.
   - Only one video track can be output. If the original video has multiple video tracks, the first one is selected for transcoding.
   - Only one audio track can be output. If the original video has multiple audio tracks, the first one is selected for transcoding.
+
+<!--RP3--><!--RP3End-->
 
 <!--RP2--><!--RP2End-->

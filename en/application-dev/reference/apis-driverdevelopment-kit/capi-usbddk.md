@@ -5,11 +5,11 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=4e4b18ce5c3346ee05b620e87051d886ec217a55 translatedAt=2026-10-14T05:04:17.378Z pushedAt=2026-10-22T05:58:48.331Z nl=2 -->
+<!-- md-trans-meta sourceCommit=4e4b18ce5c3346ee05b620e87051d886ec217a55 translatedAt=2026-10-14T05:04:17.378Z pushedAt=2026-10-26T07:10:16.637Z nl=2 -->
 
 ## Overview
 
-Provides USB DDK APIs to open and close USB interfaces, perform non-isochronous and isochronous data transfer over USB pipes, and implement control transfer and interrupt transfer. This method is applicable to scenarios where underlying interaction and data communication with USB devices are required, helping you efficiently develop USB device drivers.
+Provides USB DDK APIs to open and close USB interfaces, perform non-isochronous and isochronous data transfer over USB pipes, and implement control transfer and interrupt transfer. This module is applicable to scenarios where underlying interaction and data communication with USB devices are required, helping you efficiently develop USB device drivers.
 
 **System capability**: SystemCapability.Driver.USB.Extension
 

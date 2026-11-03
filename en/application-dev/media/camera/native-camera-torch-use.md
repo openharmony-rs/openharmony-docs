@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=272eb5714494d8ebc6ba67a073c7577a0ffae4b1 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 To use the flashlight mode, you manipulate your device to turn on the flashlight, which then stays on persistently.
 
@@ -16,7 +17,7 @@ When you use the flashlight mode with a camera application, the following situat
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API reference.
+For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md).
 
 1. Import the NDK.  
 
@@ -72,12 +73,12 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
        bool torchModeSupported = false;
        Camera_ErrorCode ret = OH_CameraManager_IsTorchSupportedByTorchMode(cameraManager, torchMode, &torchModeSupported);
        if (ret != CAMERA_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_IsTorchSupported failed.");
+            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_IsTorchSupportedByTorchMode failed.");
        }
        if (torchModeSupported) {
-            OH_LOG_INFO(LOG_APP, "isTorchModeSupported success.");
+            OH_LOG_INFO(LOG_APP, "IsTorchSupportedByTorchMode success.");
        } else {
-            OH_LOG_ERROR(LOG_APP, "isTorchModeSupported failed. %{public}d ", ret);
+            OH_LOG_ERROR(LOG_APP, "IsTorchSupportedByTorchMode failed. %{public}d ", ret);
        }
        return torchModeSupported;
    }
@@ -105,7 +106,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
 
 During camera application development, you can listen for changes of the flashlight status, including on, off, unavailable, and available, by using the callback function.
 
-Register the **torchStatus** event and return the listening result through a callback, which carries the **Camera_TorchStatusInfo** parameter. For details about the parameter, see [Camera_TorchStatusInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-torchstatusinfo.md).
+   Register the **torchStatus** event and return the listening result through a callback, which carries the **Camera_TorchStatusInfo** parameter. For details about the parameter, see [Camera_TorchStatusInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-torchstatusinfo.md).
 
    ```c++
    void TorchStatusCallback(Camera_Manager *cameraManager, Camera_TorchStatusInfo* torchStatus)

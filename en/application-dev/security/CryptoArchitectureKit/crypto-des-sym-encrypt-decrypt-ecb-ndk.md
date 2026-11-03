@@ -1,4 +1,4 @@
-# Encryption and Decryption with the DES Symmetric Key (C/C++)
+# Encryption and Decryption with a DES Symmetric Key (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

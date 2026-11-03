@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:03:38.049Z pushedAt=2026-09-03T09:04:52.957Z -->
+<!-- md-trans-meta sourceCommit=7b7ce24fb31cb3851ac22e30e3f9e338297f48bf translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Switching Call Output Devices
 
@@ -20,7 +20,7 @@ Currently, the system provides the default style and custom style for the **AVCa
 1. Create an AVSession of the **voice_call** type. The AVSession constructor provides **AVSessionType** to specify the session type, and **voice_call** indicates the call type. If no AVSession is created, an empty list is displayed.
 
    <!-- @[create_voiceCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->    
-
+   
    ``` TypeScript
    import { AVCastPicker, AVCastPickerState, AVInputCastPicker, avSession } from '@kit.AVSessionKit';
    
@@ -31,7 +31,7 @@ Currently, the system provides the default style and custom style for the **AVCa
      @State session: avSession.AVSession | undefined = undefined;
      @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
      // ...
-    
+   
      async init() {
        try {
          let context = this.getUIContext().getHostContext() as Context;
@@ -49,10 +49,10 @@ Currently, the system provides the default style and custom style for the **AVCa
 2. Create the **AVCastPicker** component on the call page that provides device switching.
 
    <!-- @[create_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchOutputDevice.ets) -->     
-
+   
    ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
-
+   
    @Entry
    @Component
    struct OutputCastPicker {
@@ -84,8 +84,8 @@ Currently, the system provides the default style and custom style for the **AVCa
 
    Alternatively, create the **AVCastPickerHelper** component.
 
-   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) -->   
-
+   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) --> 
+   
    ``` TypeScript
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -106,7 +106,7 @@ Currently, the system provides the default style and custom style for the **AVCa
        this.avCastPicker.select(avCastPickerOptions).then(() => {
          console.info('select successfully');
        }).catch((err: BusinessError) => {
-         console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
+         console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
        });
      }
    }
@@ -115,14 +115,14 @@ Currently, the system provides the default style and custom style for the **AVCa
 3. Create an AudioRenderer of the **VOICE_COMMUNICATION** type and start playing. For details about call audio playback, see [Developing Audio Call](../audio/audio-call-development.md).
 
    <!-- @[start_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->         
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    import { resourceManager } from '@kit.LocalizationKit';
    import { fileIo } from '@kit.CoreFileKit';
-
+   
    class Options {
      public offset: number = 0;
      public length: number = 0;
@@ -184,7 +184,7 @@ Currently, the system provides the default style and custom style for the **AVCa
        this.audioRenderer.on('writeData', writeDataCallback);
        await this.audioRenderer.start();
      }
-
+   
      async stopRenderer(): Promise<void> {
        if (this.audioRenderer) {
          await this.audioRenderer.release();
@@ -195,7 +195,7 @@ Currently, the system provides the default style and custom style for the **AVCa
          this.fileDescriptor = undefined;
        }
      }
-
+   
      async closeResource(fileName: string): Promise<void> {
        if (this.appContext) {
          let mgr = this.appContext.resourceManager;
@@ -208,11 +208,11 @@ Currently, the system provides the default style and custom style for the **AVCa
      }
    }
    ```
-
+  
 4. (Optional) Subscribe to audio output device change events if you want to know the device change status.
 
    <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->       
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    // ...
@@ -229,7 +229,7 @@ Currently, the system provides the default style and custom style for the **AVCa
        streamInfo: this.audioStreamInfo,
        rendererInfo: this.audioRendererInfo
      };
-
+   
      async observerDevices() {
        this.audioManager = audio.getAudioManager(); // Create the audio manager first.
        if (!this.audioManager) {
@@ -253,7 +253,7 @@ Currently, the system provides the default style and custom style for the **AVCa
 5. Destroy the AVSession when the call ends.
 
    <!-- @[destroy_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->     
-
+   
    ``` TypeScript
    // Destroy the AVSession created in step 1 when the call ends.
    this.session?.destroy((err) => {
@@ -276,11 +276,11 @@ The differences are as follows:
 1. Create a custom **AVCastPicker**. You need to add custom parameters (corresponding to step 2 of the default style implementation).
 
    <!-- @[self_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
-
+   
    ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
    // ...
-
+   
    @Entry
    @Component
    struct SelfCastPicker {
@@ -297,7 +297,7 @@ The differences are as follows:
          }
        }
      }
-
+   
      // Custom content.
      @Builder
      ImageBuilder() {
@@ -312,10 +312,10 @@ The differences are as follows:
 2. If the app needs to change the custom style based on output device changes, you must listen for device switching and refresh the custom style in real time (corresponding to step 4 of the default style implementation).
 
    <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
-
+   
    @Entry
    @Component
    struct SelfCastPicker {
@@ -323,10 +323,10 @@ The differences are as follows:
      async selfObserverDevices() {
        let audioManager = audio.getAudioManager();
        let audioRoutingManager = audioManager.getRoutingManager();
-
+   
        // Obtain the current device and refresh the display when AVCastPicker is first launched.
        this.changePickerShow(audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(this.audioRendererInfo));
-
+   
        // Listen for the current output device switching and display different styles based on the device type in time.
        audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
          this.changePickerShow(audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(this.audioRendererInfo));
@@ -365,10 +365,10 @@ Currently, the system provides the default style and custom style for the **AVCa
 1. Create the **AVInputCastPicker** component on the call page that provides device switching.
 
    <!-- @[default_InputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/DefaultAVInputCastPicker.ets) -->   
-
+   
    ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
-
+   
    // ...
      // Callback for the device list display state change (optional).
      private onStateChange(state: AVCastPickerState) {
@@ -378,7 +378,7 @@ Currently, the system provides the default style and custom style for the **AVCa
          console.info('The picker finishes presenting.');
        }
      }
-
+   
      // Create the component and set its size.
      build() {
        Row() {
@@ -402,16 +402,16 @@ You can customize a style by setting the **customPicker** parameter of the [AVIn
 1. When creating a custom **AVInputCastPicker** component, you must add a custom parameter.
 
    <!-- @[self_inputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchInputDevice.ets) -->   
-
+   
    ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
-
+   
    @Entry
    @Component
    struct InputCastPicker {
      @State pickerImage: ResourceStr = $r('app.media.sound'); // Custom resource.
      // ...
-
+   
      // (Optional) Callback for the device list state change.
      private onStateChange(state: AVCastPickerState) {
        if (state === AVCastPickerState.STATE_APPEARING) {
@@ -420,7 +420,7 @@ You can customize a style by setting the **customPicker** parameter of the [AVIn
          console.info('The picker finishes presenting.');
        }
      }
- 
+   
      build() {
        Row() {
          Column() {
@@ -441,7 +441,7 @@ You can customize a style by setting the **customPicker** parameter of the [AVIn
        .width('100%')
        .height('100%')
      }
-
+   
      // Custom content.
      @Builder
      ImageBuilder() {

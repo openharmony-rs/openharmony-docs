@@ -7,7 +7,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.2.0开始，提供SecureAccessFence（安全访问围栏服务）能力。当应用执行CLI工具操作（如查询电池信息、获取设备状态等）时，系统要求操作经用户授权后方可执行，以确保安全可控。
+从API版本26.1.0开始，提供SecureAccessFence（安全访问围栏服务）能力。当应用执行CLI工具操作（如查询电池信息、获取设备状态等）时，系统要求操作经用户授权后方可执行，以确保安全可控。
 
 SecureAccessFence提供CLI工具执行认证ticket的获取能力：应用通过`requestToolTicket`接口传入待执行的CLI命令列表，系统自动检查相应权限的授权状态——若所需权限均已授权，直接返回已认证的ticket；若存在未授权权限，则返回待授权权限列表，应用可引导用户完成授权后再次获取ticket。
 

@@ -30,8 +30,8 @@
 | [int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_getukeycertificate) | 获取USB证书凭据的详情信息列表。 |
 | [int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#oh_certmanager_getprivatecertificate) | 获取特定应用私有证书凭据详细信息。 |
 | [int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#oh_certmanager_getpubliccertificate) | 获取特定用户公共证书凭据详细信息。 |
-| [void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_freeukeycertificate) | 销毁证书详情信息列表。 |
-| [void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)](#oh_certmanager_freecredential) | 销毁证书详情。 |
+| [void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_freeukeycertificate) | 销毁证书凭据详情信息列表。 |
+| [void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)](#oh_certmanager_freecredential) | 销毁证书凭据详情。 |
 
 ## 函数说明
 
@@ -125,7 +125,7 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 
 **描述**
 
-销毁证书凭据详细信息列表。
+销毁证书凭据详情信息列表。
 
 **起始版本：** 22
 
