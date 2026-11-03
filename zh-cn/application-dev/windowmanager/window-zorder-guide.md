@@ -123,7 +123,7 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
 删除、支付或退出登录等关键操作通常需要用户二次确认，且确认完成前应阻断页面的其他操作。此时可创建模态子窗承载确认弹窗：模态子窗的层级高于所属主窗口及普通子窗，弹出后其遮蔽范围内的窗口不可交互，直至子窗关闭。
 
-1. 主窗口可通过调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口并设置isModal字段为true以创建模态子窗。模态子窗的默认层级高于普通子窗和文本菜单子窗，无需额外调用[setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)调整层级。
+1. 主窗口可通过调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口并设置isModal字段为true以创建模态子窗。模态子窗的默认层级高于普通子窗，无需额外调用[setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)调整层级。
    - 当设置modalityType为WINDOW_MODALITY时，仅遮蔽父窗口，适合单页面内的操作确认。
    - 当设置modalityType为APPLICATION_MODALITY时，遮蔽当前应用的所有窗口，适合全局性阻断。
    - 如需中途取消模态，可调用[setSubWindowModal()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowmodal12)传入false。
