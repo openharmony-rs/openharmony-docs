@@ -811,3 +811,22 @@ Allows an enterprise application to obtain audio sound card information.
 **Supported devices**: PCs/2-in-1 devices
 
 **Initial version**: 26.1.0
+
+## ohos.permission.ENTERPRISE_MANAGE_DISK
+
+Allows an enterprise application to query local disk hardware information.
+
+After obtaining this permission, the application can query the power-on cycle count (GetDiskPowerCycleCount) and power-on hours (GetDiskPowerOnHours) of local disks, helping enterprise administrators monitor disk health status.
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Whether certificate authorization is supported**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Initial version**: 26.1.0
