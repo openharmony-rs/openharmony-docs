@@ -203,7 +203,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 3. 使用OH_AVTranscoderConfig_Create()创建转码配置实例。
 
    <!-- @[createTranscoderConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVTranscoder_Config *config = OH_AVTranscoderConfig_Create();
    ```
