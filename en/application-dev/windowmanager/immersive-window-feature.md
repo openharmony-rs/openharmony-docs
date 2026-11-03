@@ -325,7 +325,7 @@ You can implement an immersive effect by hiding system UI elements, which is sui
 
    > **NOTE**
    >
-   > The avoid area can have a size of 0. When the obtained avoid area is 0, you need to pay attention to targeted adaptation of the page area and layout at this time to avoid issues such as edge-sticking and content clipping, ensuring that that the application UI displays normally and remains visually appealing.
+   > The avoid area can have a size of 0. When the obtained avoid area is 0, you need to pay attention to targeted adaptation of the page area and layout at this time to avoid issues such as edge-sticking and content clipping, ensuring that the application UI displays normally and remains visually appealing.
 
    You can avoid system UI elements by adding **padding** or placeholder components. Here, adding **padding** is used as an example (the specific value is the avoidance height + 10 vp to prevent layout content from sticking to the edge when system UI elements are hidden. You can change this based on actual requirements). Set **padding** on the top of the control to avoid the status bar; set **padding** on the bottom to avoid the bottom navigation area; set **padding** on the left and right sides to avoid the cutout area.
 

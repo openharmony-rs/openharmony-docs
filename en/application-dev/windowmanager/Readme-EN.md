@@ -12,7 +12,7 @@
 - Window Types<!--window-type-->
   - [Window Type Development Overview](window-type-overview.md)
   - [Subwindow Development](subwindow-guide.md)
-  - [Modal Window Development](dialog-window-guide.md)
+  - [Dialog Window Development](dialog-window-guide.md)
   - [Global Floating Window Development](global-floating-window-guide.md)<!--RP1--><!--RP1End-->
   <!--Del-->
   - [System Window Development (Stage Model Only) (for System Applications Only)](system-window-stage-sys.md)
@@ -21,7 +21,7 @@
   - [Window Mode Overview](window-mode-overview.md)<!--RP2--><!--RP2End-->
   - Freeform Window<!--freeform-window-->
     - [Freeform Window Overview](freeform-window-overview.md)
-    - [App Adaptation to Freeform Windows](application-adaptation-freeform-window.md)
+    - [App Adaptation for Freeform Windows](application-adaptation-freeform-window.md)
 - Basic Window Capabilities<!--window-basic-capabilities-->
   - [Window Lifecycle](window-lifecycle.md)
   - Window Rotation and Practical Cases<!--rotation-->

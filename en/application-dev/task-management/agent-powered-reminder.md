@@ -20,7 +20,7 @@ When an application is backgrounded or closed, the system can still send schedul
 - **Quantity limitations**:
   - For API version 26.0.0 and later versions, a maximum of 64 reminders can be set for a single common application.
   - API version 25 and earlier: A single common application supports up to 30 reminders.
-  - A system application supports a maximum of 10,000 valid reminders. and 12,000 total for the system.
+  - A system application supports a maximum of 10,000 valid reminders, and 12,000 total for the system.
 <!--RP2End-->
 
 > **NOTE**
