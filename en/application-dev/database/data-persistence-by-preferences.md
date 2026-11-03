@@ -1,11 +1,11 @@
 # Persisting User Preferences (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=59f526cf6042b8e444993f60b308ec6d1e4ab72c translatedAt=2026-11-03T04:37:58.362Z pushedAt=2026-11-03T04:37:58.362Z nl=1 -->
 
 ## When to Use
 
@@ -94,7 +94,7 @@ The following table lists the APIs related to user preference persistence. For m
    If **false** is returned, the platform does not support GSKV. In this case, use XML.
 
    <!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)--> 
-   
+
    ``` TypeScript
    let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
    Logger.info('Is gskv supported on this platform: ' + isGskvSupported);
@@ -106,7 +106,7 @@ The following table lists the APIs related to user preference persistence. For m
 
    The context is defined as follows:
    <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   
+
    ``` TypeScript
    const context = EntryAbility.getContext();
    ```
@@ -191,9 +191,9 @@ The following table lists the APIs related to user preference persistence. For m
    > If the key already exists, **putSync()** overwrites the value. You can use **hasSync()** to check whether the KV pair exists.
 
    Example:
-   
+
    <!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   
+
    ``` TypeScript
    if (dataPreferences.hasSync('startup')) {
      Logger.info('The key startup is contained.');
@@ -215,7 +215,7 @@ The following table lists the APIs related to user preference persistence. For m
 
    <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
    <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   
+
    ``` TypeScript
    let val = dataPreferences.getSync('startup', 'default');
    Logger.info('The startup value is ' + val);
@@ -230,7 +230,7 @@ The following table lists the APIs related to user preference persistence. For m
    Call **deleteSync()** to delete a KV pair. Example:
 
    <!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   
+
    ``` TypeScript
    dataPreferences.deleteSync('startup');
    ```
@@ -240,7 +240,7 @@ The following table lists the APIs related to user preference persistence. For m
    You can use **flush()** to persist the data held in a **Preferences** instance to a file. Example:
 
    <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   
+
    ``` TypeScript
    dataPreferences.flush((err: BusinessError) => {
      if (err) {
@@ -289,7 +289,7 @@ The following table lists the APIs related to user preference persistence. For m
 
    Example:
    <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   
+
    ``` TypeScript
    let observer = (key: string) => {
      Logger.info('The key ' + key + ' changed.');
@@ -306,7 +306,7 @@ The following table lists the APIs related to user preference persistence. For m
    ```
 9. Delete a **Preferences** instance from the memory.
 
-   Call **deletePreferences()** to delete a **Preferences** instance and its data from the memory. If the instance has a persistent file, the persistent file, backup file, and damaged file will also be deleted.
+   Call the `deletePreferences()` method to remove the **Preferences** instance corresponding to the specified file and its data from the memory. If the **Preferences** instance has a corresponding persistent file, delete it as well, including the specified file and its backup and corrupted files.
 
    > **NOTE**
    >
@@ -318,7 +318,7 @@ The following table lists the APIs related to user preference persistence. For m
 
    The context is defined as follows:
    <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   
+
    ``` TypeScript
    const context = EntryAbility.getContext();
    ```
@@ -326,7 +326,7 @@ The following table lists the APIs related to user preference persistence. For m
    Example:
 
    <!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   
+
    ``` TypeScript
    let options: preferences.Options = { name: 'myStore' };
    preferences.deletePreferences(context, options, (err: BusinessError) => {
@@ -337,5 +337,25 @@ The following table lists the APIs related to user preference persistence. For m
      Logger.info('Succeeded in deleting preferences.');
    })
    ```
+
+## Samples
+
+For preferences development, the following samples are available:
+
+- [Game 2048 (ArkTS) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
+
+- [PatternLock (ArkTS) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/PatternLock)
+
+- [Preferences (ArkTS) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences)
+
+- [Preferences (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/Data/Preferences)
+
+- [Preferences (JS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/Data/PreferenceJS)
+
+- [NotePad (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/Data/NotePadOpenHarmony)
+
+- [FirstStartDemo (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/Data/FirstStartDemo)
+
+- [SetAppFontSize (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/Data/SetAppFontSize)
 
 <!--RP1--><!--RP1End-->

@@ -1,12 +1,11 @@
 # Access Control by Device and Data Level (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @widecode; @htt1997-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ae2ed455b894c8b152459324388420bed24b2da8 translatedAt=2026-08-20T06:22:53.599Z pushedAt=2026-08-20T12:06:53.948Z -->
+<!-- md-trans-meta sourceCommit=8172efdc94c065e1de022814d66012668129fd88 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 ## Basic Concepts
 
@@ -185,21 +184,19 @@ For details about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
-import { UIContext } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 let store: relationalStore.RdbStore | undefined = undefined;
 
-export async function accessControlByDeviceAndDataLevel() {
+export async function accessControlByDeviceAndDataLevel(context: common.UIAbilityContext | undefined) {
   /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-  const context = new UIContext().getHostContext() as common.UIAbilityContext;
   try {
     const STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       // Set the security level of the RDB store to S3.
       securityLevel: relationalStore.SecurityLevel.S3
     };
-    store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+    store = await relationalStore.getRdbStore(context!, STORE_CONFIG);
     console.info('Succeeded in getting RdbStore.')
   } catch (err) {
     console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);

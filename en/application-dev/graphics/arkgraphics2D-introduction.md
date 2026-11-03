@@ -1,12 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Introduces the capabilities and use cases of ArkGraphics 2D, including image processing, color management, variable frame rate, self-drawing, HDR, and native graphics drawing."
+keywords: [ArkGraphics 2D, graphics drawing, image processing, color management, variable frame rate, self-drawing, HDR]
+doctype: guide
+status: active
+---
+
 # About This Kit
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @oh_wangxk; @hangmengxin-->
 <!--Designer: @KejiePeng; @wanyanglan-->
-<!--Tester: @LiTongguan2026; @nobuggers-->
+<!--Tester: @LiTongguan2026; @nobuggers; @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T01:15:03.559Z pushedAt=2026-10-19T02:39:41.197Z -->
+<!-- md-trans-meta sourceCommit=83d9df3cd8667c0bdc542f0afbe2f01d8c7e0906 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 ArkGraphics 2D provides APIs for drawing and displaying graphics. With this set of APIs, you'll find your application development easier and more efficient.
 
