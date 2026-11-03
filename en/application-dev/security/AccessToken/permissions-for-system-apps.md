@@ -8779,7 +8779,7 @@ With this permission, the application can add file event records, search for fil
 
 ## ohos.permission.CAMERA_DRIVER_MONITOR
 
-Allows an application to access the driver monitor camera.
+Allows an application to access the driver monitoring camera.
 
 **Permission level**: system_basic
 
