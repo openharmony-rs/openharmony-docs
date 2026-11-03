@@ -1,8 +1,8 @@
 # 使用WindowManager管理多模输入事件 (C/C++)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @fei_1007-->
-<!--Designer: @stupidb-->
+<!--Owner: @@JUGaaab-->
+<!--Designer: @CheryHome-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
