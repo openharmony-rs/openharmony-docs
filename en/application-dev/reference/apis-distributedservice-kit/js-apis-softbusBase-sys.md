@@ -154,7 +154,7 @@ Switches the active perception advertisement to high frequency for 10 seconds, a
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Required permissionss:** ohos.permission.ACCESS_SOFTBUS_SYS_HAP and ohos.permission.DISTRIBUTED_DATASYNC
+**Required permissions:** ohos.permission.ACCESS_SOFTBUS_SYS_HAP and ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
