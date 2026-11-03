@@ -235,10 +235,10 @@ enum InputMethod_ErrorCode
 | IME_ERR_SETTINGS = 12800007 | 输入法设置器异常。可能是输入法设置参数无效或权限不足，请检查设置参数和权限配置。该错误码在输入法设置服务无法正常处理配置变更时返回。 |
 | IME_ERR_IMMS = 12800008 | 输入法管理服务异常。可能是输入法管理服务未启动或异常终止，建议检查系统服务状态或重启输入法管理服务。该错误码在输入法管理服务（IMMS）无法正常工作时返回。 |
 | IME_ERR_DETACHED = 12800009 | 输入框未绑定。可能是输入框与输入法服务未建立连接，请调用绑定接口重新建立连接。该错误码在编辑框未通过OH_InputMethodController_Attach绑定输入法服务时调用需要绑定关系的接口时返回。 |
-| IME_ERR_NOT_DEFAULT_IME = 12800010 | 当前输入法非系统预置默认输入法。当调用[OH_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_requestsysteminputcapability)请求翻译输入能力时，若当前输入法不是系统预置默认输入法，将返回此错误码。 |
+| OH_INPUT_METHOD_ERR_NOT_DEFAULT_IME = 12800010 | 当前输入法非系统预置默认输入法。当调用[OH_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_requestsysteminputcapability)请求翻译输入能力时，若当前输入法不是系统预置默认输入法，将返回此错误码。 |
 | IME_ERR_NULL_POINTER = 12802000 | 空指针异常。可能是传入的参数为空指针，请检查输入参数是否正确初始化。该错误码在C API接口收到NULL指针参数时返回，属于C语言特有的参数错误类型。开发者应在调用接口前确保所有指针参数均为非NULL。 |
 | IME_ERR_QUERY_FAILED = 12802001 | 查询失败。可能是查询条件无效或目标数据不存在，请检查查询参数和数据状态。该错误码在Get类接口的查询条件与实际数据不匹配时返回，典型场景：OH_PrivateCommand_GetBoolValue在value实际类型为int32_t时调用，将返回此错误码表示类型不匹配——命令中没有布尔值。 |
-| OH_INPUT_METHOD_ERR_INPUT_TYPE_NOT_SUPPORTED = 12800027 | 输入类型不支持。当请求的输入能力类型在当前输入法中未配置对应子类型时返回此错误码。典型场景：调用[OH_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_requestsysteminputcapability)请求翻译输入能力时，当前输入法未配置翻译子类型。 |
+| OH_INPUT_METHOD_ERR_INPUT_TYPE_NOT_SUPPORTED = 12800029 | 输入类型不支持。当请求的输入能力类型在当前输入法中未配置对应子类型时返回此错误码。典型场景：调用[OH_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_requestsysteminputcapability)请求翻译输入能力时，当前输入法未配置翻译子类型。 |
 
 ### InputMethod_RequestKeyboardReason
 
@@ -275,12 +275,12 @@ enum InputMethod_InputCapabilityType
 
 系统输入能力类型枚举，定义了可请求的系统输入能力类型。用于[OH_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_requestsysteminputcapability)指定请求的系统输入能力类型。
 
-用途：标识请求的系统输入能力类型（默认输入能力或翻译输入能力），用于系统应用请求输入法切换到对应的输入模式。
+用途：标识请求的系统输入能力类型（翻译输入能力），用于应用请求输入法切换到对应的输入模式。
 
-取值建议：当需要请求输入法切换到翻译模式时使用IME_INPUT_CAPABILITY_TYPE_TRANSLATION；当需要退出翻译模式恢复默认输入时使用IME_INPUT_CAPABILITY_TYPE_DEFAULT。
+取值建议：当需要请求输入法切换到翻译模式时使用IME_INPUT_CAPABILITY_TYPE_TRANSLATION。
 
 **起始版本：** 26.1
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IME_INPUT_CAPABILITY_TYPE_TRANSLATION = 0 | 翻译输入能力。用于请求输入法切换到翻译模式。当前输入法须为系统预置默认输入法，否则请求将被拒绝并返回[IME_ERR_NOT_DEFAULT_IME](#inputmethod_errorcode)错误码。 |
+| IME_INPUT_CAPABILITY_TYPE_TRANSLATION = 0 | 翻译输入能力。用于请求输入法切换到翻译模式。当前输入法须为系统预置默认输入法，否则请求将被拒绝并返回[OH_INPUT_METHOD_ERR_NOT_DEFAULT_IME](#inputmethod_errorcode)错误码。 |
