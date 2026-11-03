@@ -76,9 +76,7 @@
    
    ``` TypeScript
    // 导入runningLock、commonEventManager、BusinessError模块
-   import { runningLock, commonEventManager } from '@kit.BasicServicesKit';
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { runningLock, commonEventManager, BusinessError} from '@kit.BasicServicesKit';
    ```
 
 3. 开发公共事件工具类（CommonEventHelper.ets）以及运行锁工具类（RunningLockUtil.ets）。
@@ -86,8 +84,7 @@
    <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/CommonEventHelper.ets) -->
    
    ``` TypeScript
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { commonEventManager, BusinessError} from '@kit.BasicServicesKit';
    
    type SubscriberInfo = commonEventManager.CommonEventSubscribeInfo;
    type Subscriber = commonEventManager.CommonEventSubscriber;
