@@ -64,14 +64,14 @@
 | [OH_Archive_StreamWrite_Ctx OH_Archive_StreamWrite_Create(OH_Archive_Stream_Config config)](#oh_archive_streamwrite_create) | - | 创建流式压缩的上下文结构体。 |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)](#oh_archive_streamwrite_start) | - | 启动压缩任务，初始化用户回调函数和用户数据。 |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrite_Ctx ctx, int32_t compressLevel)](#oh_archive_streamwrite_setcompresslevel) | - | 设置流式压缩的压缩级别。 |
-| [OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)](#oh_archive_streamwrite_cancel) | - | 强制取消当前压缩操作。 |
-| [OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamwrite_update) | - | 提交压缩数据。 |
+| [OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)](#oh_archive_streamwrite_cancel) | - | 强制取消当前阻塞的压缩操作，并唤醒所有等待中的线程。 |
+| [OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamwrite_update) | - | 提交压缩数据。该接口在内存池已满时会阻塞等待。 |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_StreamInfo *streamInfo)](#oh_archive_streamwrite_end) | - | 结束压缩，刷新所有剩余数据。 |
 | [void OH_Archive_StreamWrite_Destroy(OH_Archive_StreamWrite_Ctx ctx)](#oh_archive_streamwrite_destroy) | - | 销毁压缩实例并释放相关资源。 |
 | [OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config config)](#oh_archive_streamread_create) | - | 创建流式解压缩的上下文结构体。 |
 | [OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)](#oh_archive_streamread_start) | - | 启动解压缩任务，初始化用户回调函数和用户数据。 |
-| [OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_cancel) | - | 强制取消当前解压缩操作。 |
-| [OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamread_update) | - | 提交解压缩数据。 |
+| [OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_cancel) | - | 强制取消当前阻塞的解压缩操作，并唤醒所有等待中的线程。 |
+| [OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamread_update) | - | 提交解压缩数据。该接口在内存池已满时会阻塞等待。 |
 | [OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_Archive_StreamInfo *streamInfo)](#oh_archive_streamread_end) | - | 结束解压缩，刷新所有剩余数据并清理内存。 |
 | [void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_destroy) | - | 销毁解压缩实例并释放相关资源。 |
 
@@ -224,6 +224,10 @@ OH_Archive_Reader_Ctx OH_Archive_Reader_OpenFile(const char *infile)
 
 打开文件进行读取。
 
+> **说明：**
+>
+> 返回的上下文必须通过调用[OH_Archive_Reader_Close](#oh_archive_reader_close)()释放相关资源。
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -262,7 +266,7 @@ OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reade
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。<br>         OH_ARCHIVE_OK 0 - 操作成功。<br>         OH_ARCHIVE_PARAM_ERROR 401 - 无效入参。 |
 
 ### OH_Archive_Reader_ExtractAllFile()
 
@@ -323,6 +327,10 @@ OH_Archive_Writer_Ctx OH_Archive_Writer_OpenFile(const char *outfile, OH_Archive
 
 创建并打开压缩文件。
 
+> **说明：**
+>
+> 返回的上下文必须通过调用[OH_Archive_Writer_Close](#oh_archive_writer_close)()释放相关资源。
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -357,13 +365,13 @@ OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc
 | -- | -- |
 | [OH_Archive_Writer_Ctx](capi-archive-archivewritectx.md) arc | 文件压缩器的上下文句柄。 |
 | [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩算法。 |
-| int32_t compressLevel | 压缩等级。对于OH_ARCHIVE_COMPRESS_DEFLATE，压缩级别为0到9，默认等级为6。0表示不压缩，压缩等级越高，压缩率越高，速度越慢。 |
+| int32_t compressLevel | 压缩等级。-1表示默认压缩级别。对于OH_ARCHIVE_COMPRESS_DEFLATE，压缩级别为0到9，默认等级为6。0表示不压缩，1提供最快速度，9提供最高压缩率，压缩等级越高，压缩率越高，速度越慢。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。<br>         OH_ARCHIVE_OK 0 - 操作成功。<br>         OH_ARCHIVE_PARAM_ERROR 401 - 无效入参。 |
 
 ### OH_Archive_Writer_SetProgressHandlerWithData()
 
@@ -389,7 +397,7 @@ OH_Archive_ErrCode OH_Archive_Writer_SetProgressHandlerWithData(OH_Archive_Write
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。成功返回OH_ARCHIVE_OK，失败返回对应错误码。 |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | 返回接口执行的结果。<br>         OH_ARCHIVE_OK 0 - 操作成功。<br>         OH_ARCHIVE_PARAM_ERROR 401 - 无效入参。 |
 
 ### OH_Archive_Writer_Add()
 
@@ -487,7 +495,7 @@ OH_Archive_ErrCode OH_Archive_BufferWrite(uint8_t *dstBuffer, uint64_t *dstSize,
 | const uint8_t *srcBuffer | 指向包含待压缩数据的源缓冲区的指针。 |
 | uint64_t srcSize | 源缓冲区数据的大小，单位为bytes。 |
 | [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩算法类型。当前仅支持OH_ARCHIVE_COMPRESS_DEFLATE。 |
-| int32_t compressLevel | 压缩等级。对于OH_ARCHIVE_COMPRESS_DEFLATE，压缩级别为0到9，默认等级为6。0表示不压缩，压缩等级越高，压缩率越高，速度越慢。 |
+| int32_t compressLevel | 压缩等级。-1表示默认压缩级别。对于OH_ARCHIVE_COMPRESS_DEFLATE，压缩级别为0到9，默认等级为6。0表示不压缩，1提供最快速度，9提供最高压缩率，压缩等级越高，压缩率越高，速度越慢。 |
 
 **返回：**
 
@@ -606,7 +614,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)
 
 **描述**
 
-强制取消当前压缩操作。
+强制取消当前阻塞的压缩操作，并唤醒所有等待中的线程。
 
 **起始版本：** 26.0.0
 
@@ -630,7 +638,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx,
 
 **描述**
 
-提交压缩数据。
+提交压缩数据。该接口在内存池已满时会阻塞等待。
 
 **起始版本：** 26.0.0
 
@@ -749,7 +757,7 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)
 
 **描述**
 
-强制取消当前解压缩操作。
+强制取消当前阻塞的解压缩操作，并唤醒所有等待中的线程。
 
 **起始版本：** 26.0.0
 
@@ -773,7 +781,7 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, c
 
 **描述**
 
-提交解压缩数据。
+提交解压缩数据。该接口在内存池已满时会阻塞等待。
 
 **起始版本：** 26.0.0
 
