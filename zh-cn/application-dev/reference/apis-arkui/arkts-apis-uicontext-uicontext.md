@@ -777,7 +777,7 @@ getDialogPresenter(): DialogPresenter
 
 获取DialogPresenter对象，可通过该对象管理弹出框的展示、更新与关闭。
 
-> 本接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
