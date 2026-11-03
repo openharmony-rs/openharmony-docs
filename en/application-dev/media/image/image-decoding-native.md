@@ -2,9 +2,18 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=406573431f644885d96f704c64c6d6b49db88774 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
+
+Image files in supported formats can be decoded into PixelMaps for image display or [image processing](image-transformation.md) in an app or system.
+
+Currently supported image file formats include JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, HEIC, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, and TIFF<sup>23+</sup>.
+
+Starting from API version 26.0.0, AVIF and AVIS formats are also supported.
+
+The decoding capability for some formats depends on the specific device hardware. You are advised to call [image.getImageSourceSupportedFormats](../../reference/apis-image-kit/arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) before decoding to dynamically query the decoding capabilities of the current device.
 
 > **NOTE**
 >
@@ -14,11 +23,9 @@
 >
 > You are not advised to use both sets of C APIs in your code. It may cause compatibility issues in some scenarios.
 
-Image decoding refers to the process of decoding an image in a supported format into a PixelMap for image display or [processing](image-transformation.md). Currently, the following image formats are supported: JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, HEIC, and WBMP<sup>23+</sup>. (The supported formats may vary depending on the hardware.)
-
 ## How to Develop
 
-Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) for APIs related to image decoding.
+For details about image decoding APIs, see [image_source_mdk.h](../../reference/apis-image-kit/capi-image-source-mdk-h.md).
 
 ### Adding Dependencies
 
@@ -93,7 +100,7 @@ EXTERN_C_END
 
 ### Calling the Native APIs
 
-For details about the APIs, see [Image](../../reference/apis-image-kit/capi-image.md).
+For details about specific APIs, refer to [Image](../../reference/apis-image-kit/capi-image.md).
 
 Obtain the JS resource object from the **hello.cpp** file and convert it to a native resource object. Then you can call native APIs.
 
@@ -152,7 +159,7 @@ static napi_value getSyncPixelMap(napi_env env, napi_callback_info info)
       // Create a PixelMap.
       OH_ImageSource_CreatePixelMap(imageSourceNative_c, &decodingOps, &pixelMap);
 
-      // The following APIs are used for the GIF format.
+      // The following methods are provided for animated image formats such as GIF.
       // napi_value pixelMapList;
       // OH_ImageSource_CreatePixelMapList(imageSourceNative_c, &decodingOps, &pixelMapList);
       // OhosImageSourceDelayTimeList list{};

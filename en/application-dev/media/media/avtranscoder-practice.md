@@ -1,10 +1,18 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes running AVTranscoder video transcoding tasks asynchronously in a Worker thread for background transcoding to save storage space and improve device compatibility."
+keywords: [AVTranscoder, asynchronous thread, Worker, video transcoding, ArkTS, video compression, device compatibility, inter-thread communication, SendableObject]
+doctype: guide
+status: active
+---
 # Creating an Asynchronous Thread for AVTranscoder Video Transcoding (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c54ee3c703f5cc7ef1444d6932d400b405f9ea74 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 During development, applications often create asynchronous threads to perform video transcoding tasks to meet various requirements, including:
 
@@ -58,12 +66,12 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
 
    // Register the onErrors callback to capture global exceptions generated during the onmessage callback, timer callback, and file execution of the Worker thread. This callback is executed in the host thread.
    this.workerInstance.onerror = (err: ErrorEvent) => {
-       console.info("workerInstance onerror message is: " + err.message);
+       console.error("workerInstance onerror message is: " + err.message);
    }
 
    // Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the host thread.
    this.workerInstance.onmessageerror = () => {
-       console.info('workerInstance onmessageerror');
+       console.error('workerInstance onmessageerror');
    }
 
    // Register the onexit callback. When the Worker object is destroyed, this callback is invoked and executed in the host thread.
@@ -143,14 +151,24 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
        // Callback function for the completion of transcoding.
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
-         fileIo.closeSync(transcoder.fdDst); // Close fdDst.
          await transcoder?.release()
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
          workerPort.postMessage('complete');
        })
        // Callback function for transcoding errors.
        transcoder.on('error', async (err: BusinessError) => {
-         fileIo.closeSync(transcoder.fdDst);
          await transcoder?.release();
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
        })
        // Callback function for updating the transcoding progress.
        transcoder.on('progressUpdate', (progress: number) => {
@@ -186,7 +204,7 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
    }
    ```
 
-4. Listen for transcoding completion events and send a message to the main thread when transcoding is complete.
+4. Listen for the complete callback and send a message to the main thread when transcoding finishes.
 
    ```ts
    // Callback function for the completion of transcoding.
