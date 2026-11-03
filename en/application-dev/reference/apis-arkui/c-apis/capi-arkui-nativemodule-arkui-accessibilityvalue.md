@@ -12,7 +12,7 @@ Defines a component accessibility value, describing the accessibility state of t
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_type.h](capi-native-type-h.md)
 

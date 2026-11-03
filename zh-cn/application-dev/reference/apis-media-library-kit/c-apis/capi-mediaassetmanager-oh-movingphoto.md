@@ -12,7 +12,7 @@ typedef struct OH_MovingPhoto OH_MovingPhoto
 
 **起始版本：** 13
 
-**相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)
+**相关模块：** [MediaAssetManager](capi-others-mediaassetmanager.md)
 
 **所在头文件：** [media_asset_base_capi.h](capi-media-asset-base-capi-h.md)
 

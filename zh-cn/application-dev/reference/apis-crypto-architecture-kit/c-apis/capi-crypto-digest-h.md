@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [CryptoDigestApi](capi-cryptodigestapi.md)
+**相关模块：** [CryptoDigestApi](capi-crypto-architecture-kit-cryptodigestapi.md)
 
 ## 汇总
 
@@ -49,7 +49,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 **起始版本：** 12
 
-**资源释放：** crypto_digest/OH_DigestCrypto_Destroy {ctx}
+**资源释放：** [OH_DigestCrypto_Destroy](#oh_digestcrypto_destroy)
 
 **参数：**
 
@@ -115,7 +115,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *o
 
 **起始版本：** 12
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 

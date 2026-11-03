@@ -10,7 +10,7 @@ Provides APIs and structs for accessing the **Preferences** object.
 
 **Since**: 13
 
-**Related module**: [Preferences](capi-preferences.md)
+**Related module**: [Preferences](capi-arkdata-preferences.md)
 
 ## Summary
 
@@ -47,12 +47,6 @@ Provides APIs and structs for accessing the **Preferences** object.
 | [int OH_Preferences_ClearCache(OH_Preferences *preference)](#oh_preferences_clearcache) | - | Clears all values in the cache of the [OH_Preferences](capi-preferences-oh-preferences.md) object. |
 | [int OH_Preferences_RegisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)](#oh_preferences_registermultiprocessdataobserver) | - | Registers a multi-process data observer for the **Preferences** object. |
 | [int OH_Preferences_UnregisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)](#oh_preferences_unregistermultiprocessdataobserver) | - | Unregisters the multi-process data observer of the **Preferences** object. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPair *pairs, uint32_t count) | Defines a struct for the callback for data changes.<br>**Since**: 13<br>**System capability**: SystemCapability.DistributedDataManager.Preferences.Core * |
 
 ## Function description
 

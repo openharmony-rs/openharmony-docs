@@ -12,7 +12,7 @@ typedef struct OH_HiDebug_ProfilerOptions OH_HiDebug_ProfilerOptions
 
 **起始版本：** 26.0.1
 
-**相关模块：** [HiDebug](capi-hidebug.md)
+**相关模块：** [HiDebug](capi-others-hidebug.md)
 
 **所在头文件：** [hidebug.h](capi-hidebug-h.md)
 

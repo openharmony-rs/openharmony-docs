@@ -10,7 +10,7 @@ The file declares the functions of the media struct AVBuffer.
 
 **Since**: 11
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 ## Summary
 
@@ -33,7 +33,7 @@ The file declares the functions of the media struct AVBuffer.
 | [OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *format)](#oh_avbuffer_setparameter) | Sets parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance. |
 | [uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)](#oh_avbuffer_getaddr) | Obtains the virtual address of a data buffer. |
 | [int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)](#oh_avbuffer_getcapacity) | Obtains the capacity (in bytes) of a buffer. |
-| [OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)](#oh_avbuffer_getnativebuffer) | Obtains the pointer to an OH_NativeBuffer instance. You must call OH_NativeBuffer_Unreference to manually release the OH_NativeBuffer instance returned. |
+| [OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)](#oh_avbuffer_getnativebuffer) | Obtains the pointer to an OH_NativeBuffer instance. You must call [OH_NativeBuffer_Unreference](../../apis-arkgraphics2d/c-apis/capi-native-buffer-h.md#oh_nativebuffer_unreference) to manually release the OH_NativeBuffer instance returned. |
 
 ## Function description
 
@@ -256,7 +256,7 @@ OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)
 
 **Description**
 
-Obtains the pointer to an OH_NativeBuffer instance. You must call OH_NativeBuffer_Unreference to manually release the OH_NativeBuffer instance returned.
+Obtains the pointer to an OH_NativeBuffer instance. You must call [OH_NativeBuffer_Unreference](../../apis-arkgraphics2d/c-apis/capi-native-buffer-h.md#oh_nativebuffer_unreference) to manually release the OH_NativeBuffer instance returned.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

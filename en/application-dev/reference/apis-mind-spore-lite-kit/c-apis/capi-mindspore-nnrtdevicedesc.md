@@ -10,7 +10,7 @@ Defines the device descriptor of NNRT.
 
 **Since**: 10
 
-**Related module**: [MindSpore](capi-mindspore.md)
+**Related module**: [MindSpore](capi-others-mindspore.md)
 
 **Header file**: [types.h](capi-types-h.md)
 

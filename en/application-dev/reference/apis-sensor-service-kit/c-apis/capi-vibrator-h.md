@@ -10,7 +10,7 @@ Declares the APIs for starting or stopping vibration. Two vibration modes are su
 
 **Since**: 11
 
-**Related module**: [Vibrator](capi-vibrator.md)
+**Related module**: [Vibrator](capi-sensor-service-kit-vibrator.md)
 
 ## Summary
 

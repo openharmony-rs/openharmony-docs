@@ -10,7 +10,7 @@ The file declares the basic dependencies for OH_LowPowerAudioSink and OH_LowPowe
 
 **Since**: 20
 
-**Related module**: [AVSinkBase](capi-avsinkbase.md)
+**Related module**: [AVSinkBase](capi-media-kit-avsinkbase.md)
 
 ## Summary
 

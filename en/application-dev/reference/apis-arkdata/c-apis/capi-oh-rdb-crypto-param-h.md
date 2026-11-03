@@ -10,7 +10,7 @@ Provides functions and enumerations related to cryptographic parameters of the r
 
 **Since**: 20
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 ## Summary
 

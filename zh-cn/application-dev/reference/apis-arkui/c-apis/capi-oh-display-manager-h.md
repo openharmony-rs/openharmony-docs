@@ -10,7 +10,7 @@ The file declares the functions for basic display management. You can call the f
 
 **起始版本：** 12
 
-**相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)
+**相关模块：** [OH_DisplayManager](capi-arkui-oh-displaymanager.md)
 
 ## 汇总
 
@@ -58,16 +58,6 @@ The file declares the functions for basic display management. You can call the f
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterdisplayremovelistener) | - | 取消屏幕移除的监听。 |
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint64_t displayId, NativeDisplayManager_SourceMode *sourceMode)](#oh_nativedisplaymanager_getdisplaysourcemode) | - | 获取屏幕的显示模式，默认值为DisplaySourceMode.None。 |
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64_t displayId, int32_t *x, int32_t *y)](#oh_nativedisplaymanager_getdisplayposition) | - | 获取屏幕的位置信息，即相对于原点（主屏左上角）的x坐标和y坐标。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId) | 注册屏幕状态变化的回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)( NativeDisplayManager_FoldDisplayMode displayMode) | 注册屏幕展开、折叠状态变化的回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId) | 注册屏幕可用区域变化的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId) | 注册屏幕连接的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId) | 注册屏幕移除的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
 
 ## 函数说明
 

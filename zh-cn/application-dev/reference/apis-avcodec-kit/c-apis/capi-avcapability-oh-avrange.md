@@ -12,7 +12,7 @@ struct OH_AVRange {...}
 
 **起始版本：** 10
 
-**相关模块：** [AVCapability](capi-avcapability.md)
+**相关模块：** [AVCapability](capi-others-avcapability.md)
 
 **所在头文件：** [native_avcapability.h](capi-native-avcapability-h.md)
 

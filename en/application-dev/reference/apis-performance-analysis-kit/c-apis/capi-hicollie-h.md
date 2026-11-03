@@ -10,7 +10,7 @@ Defines the interface of the HiCollie module.
 
 **Since**: 12
 
-**Related module**: [HiCollie](capi-hicollie.md)
+**Related module**: [HiCollie](capi-performance-analysis-kit-hicollie.md)
 
 ## Summary
 
@@ -48,16 +48,6 @@ Defines the interface of the HiCollie module.
 | [void* OH_HiCollie_SetFreezeCallback(OH_HiCollie_FreezeCallback callback)](#oh_hicollie_setfreezecallback) | - | Sets the freeze event callback in the system. The system calls this function when a freeze event occurs. |
 | [HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)](#oh_hicollie_associateprocessreport) | - | Reports a freeze event of a process. In this case, a **HiAppEvent** event of the **APP_HICOLLIE** type is generated. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_HiCollie_Task)(void) | Checks whether a service thread is stuck. This function is called by HiCollie every 3 seconds in a service thread. For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.<br>**Since**: 12<br>**System capability**: SystemCapability.HiviewDFX.HiCollie |
-| void (*OH_HiCollie_BeginFunc)(const char* eventName) | In jank scenario, you need to insert two stub functions before and after each event processing of your business thread. By checking these two function executing timestamp, HiCollie will know consuming time for every event. If it exceeds the preset threshold, a jank event will be reported. This is the stub function inserted before each event processing.<br>**Since**: 12<br>**System capability**: SystemCapability.HiviewDFX.HiCollie |
-| void (*OH_HiCollie_EndFunc)(const char* eventName) | Records the end time when a service thread processes an event. This function is used in the jank event detection. HiCollie checks the execution time of the event. If the duration exceeds the preset threshold, a jank event is reported. This is the stub function inserted after each event processing.<br>**Since**: 12<br>**System capability**: SystemCapability.HiviewDFX.HiCollie |
-| void (*OH_HiCollie_Callback)(void*) | Triggered when [OH_HiCollie_CancelTimer](capi-hicollie-h.md#oh_hicollie_canceltimer) is not called within the custom task timeout period after [OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer) is called.<br>**Since**: 18<br>**System capability**: SystemCapability.HiviewDFX.HiCollie |
-| size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void* buffer, size_t size) | the freeze callback used in [OH_HiCollie_SetFreezeCallback](capi-hicollie-h.md#oh_hicollie_setfreezecallback)<br>**Since**: 24<br>**System capability**: SystemCapability.HiviewDFX.HiCollie |
-
 ## Enum type description
 
 ### HiCollie_ErrorCode
@@ -76,15 +66,15 @@ Enumerates the error codes used in the HiCollie module.
 
 | Enum item | Description |
 | -- | -- |
-| HICOLLIE_SUCCESS = 0 |  |
-| HICOLLIE_INVALID_ARGUMENT = 401 |  |
-| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 |  |
-| HICOLLIE_REMOTE_FAILED = 29800002 |  |
-| HICOLLIE_INVALID_TIMER_NAME = 29800003 |  |
-| HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 |  |
-| HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 |  |
-| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 |  |
-| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 |  |
+| HICOLLIE_SUCCESS = 0 | The operation is successful.<br>**Since**: 12 |
+| HICOLLIE_INVALID_ARGUMENT = 401 | The parameter is invalid.<br>**Since**: 12 |
+| HICOLLIE_WRONG_THREAD_CONTEXT = 29800001 | The called thread is incorrect.<br>**Since**: 12 |
+| HICOLLIE_REMOTE_FAILED = 29800002 | The remote call fails.<br>**Since**: 12 |
+| HICOLLIE_INVALID_TIMER_NAME = 29800003 | The timer name is invalid.<br>**Since**: 18 |
+| HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | The function execution timeout value is invalid.<br>**Since**: 18 |
+| HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | The process to be accessed is incorrect.<br>**Since**: 18 |
+| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | The pointer used to save the returned timer ID is null.<br>**Since**: 18 |
+| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | The reporting frequency exceeds the limit.<br>**Since**: 24 |
 
 ### HiCollie_Flag
 
@@ -102,10 +92,10 @@ Enumerates the actions to be performed when a function times out.
 
 | Enum item | Description |
 | -- | -- |
-| HICOLLIE_FLAG_DEFAULT = (~0) |  |
-| HICOLLIE_FLAG_NOOP = (0) |  |
-| HICOLLIE_FLAG_LOG = (1 << 0) |  |
-| HICOLLIE_FLAG_RECOVERY = (1 << 1) |  |
+| HICOLLIE_FLAG_DEFAULT = (~0) | Default action is generate log file and do recovery.<br>**Since**: 18 |
+| HICOLLIE_FLAG_NOOP = (0) | Do nothing except call the callback function<br>**Since**: 18 |
+| HICOLLIE_FLAG_LOG = (1 << 0) | Generate log file<br>**Since**: 18 |
+| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Do recovery by call the exit syscall<br>**Since**: 18 |
 
 ### OH_HiCollie_Freeze_Type
 

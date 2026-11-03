@@ -12,7 +12,7 @@ Defines the information about an image receiver.
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_receiver_mdk.h](capi-image-receiver-mdk-h.md)
 

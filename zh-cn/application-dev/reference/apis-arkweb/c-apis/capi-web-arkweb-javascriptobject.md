@@ -12,7 +12,7 @@ ArkWeb_JavaScriptObject结构体用于向Web页面注入JavaScript代码并获�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 

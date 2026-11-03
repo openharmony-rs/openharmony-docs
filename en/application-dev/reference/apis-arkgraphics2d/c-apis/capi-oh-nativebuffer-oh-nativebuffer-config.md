@@ -12,7 +12,7 @@ typedef struct OH_NativeBuffer_Config {...} OH_NativeBuffer_Config
 
 **Since**: 9
 
-**Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**Related module**: [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
 
 **Header file**: [native_buffer.h](capi-native-buffer-h.md)
 
@@ -26,6 +26,6 @@ typedef struct OH_NativeBuffer_Config {...} OH_NativeBuffer_Config
 | int32_t height | Height in pixels |
 | int32_t format | One of PixelFormat |
 | int32_t usage | Combination of buffer usage |
-| int32_t stride |  |
+| int32_t stride | the stride of memory in bytes<br>**Since**: 10 |
 
 

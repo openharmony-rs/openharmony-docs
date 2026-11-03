@@ -10,7 +10,7 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 
@@ -94,12 +94,12 @@ Defines an enum for the storage formats of bitmap pixels.
 
 | Enum item | Description |
 | -- | -- |
-| COLOR_FORMAT_UNKNOWN |  |
-| COLOR_FORMAT_ALPHA_8 |  |
-| COLOR_FORMAT_RGB_565 |  |
-| COLOR_FORMAT_ARGB_4444 |  |
-| COLOR_FORMAT_RGBA_8888 |  |
-| COLOR_FORMAT_BGRA_8888 |  |
+| COLOR_FORMAT_UNKNOWN | Unknown format.<br>**Since**: 8 |
+| COLOR_FORMAT_ALPHA_8 | Each pixel is represented by 8 bits, which together indicate alpha.<br>**Since**: 8 |
+| COLOR_FORMAT_RGB_565 | Each pixel is represented by 16 bits. From the most significant bit to the least significant bit, the first 5 bits indicate red, the subsequent 6 bits indicate green, and the last 5 bits indicate blue.<br>**Since**: 8 |
+| COLOR_FORMAT_ARGB_4444 | Each pixel is represented by 16 bits. From the most significant bit to the least significant bit, every 4 bits indicate alpha, red, green, and blue, respectively.<br>**Since**: 8 |
+| COLOR_FORMAT_RGBA_8888 | Each pixel is represented by 32 bits. From the most significant bit to the least significant bit, every 8 bits indicate alpha, red, green, and blue, respectively.<br>**Since**: 8 |
+| COLOR_FORMAT_BGRA_8888 | Each pixel is represented by 32 bits. From the most significant bit to the least significant bit, every 8 bits indicate blue, green, red, and alpha, respectively.<br>**Since**: 8 |
 
 ### OH_Drawing_AlphaFormat
 
@@ -117,10 +117,10 @@ Defines an enum for the alpha formats of bitmap pixels.
 
 | Enum item | Description |
 | -- | -- |
-| ALPHA_FORMAT_UNKNOWN |  |
-| ALPHA_FORMAT_OPAQUE |  |
-| ALPHA_FORMAT_PREMUL |  |
-| ALPHA_FORMAT_UNPREMUL |  |
+| ALPHA_FORMAT_UNKNOWN | Unknown format.<br>**Since**: 8 |
+| ALPHA_FORMAT_OPAQUE | The bitmap does not have the alpha component.<br>**Since**: 8 |
+| ALPHA_FORMAT_PREMUL | The color component of each pixel is premultiplied by the alpha component.<br>**Since**: 8 |
+| ALPHA_FORMAT_UNPREMUL | The color component of each pixel is not premultiplied by the alpha component.<br>**Since**: 8 |
 
 ### OH_Drawing_BlendMode
 
@@ -138,35 +138,35 @@ Defines an enum for blend modes. In blend mode, each operation generates a new c
 
 | Enum item | Description |
 | -- | -- |
-| BLEND_MODE_CLEAR |  |
-| BLEND_MODE_SRC |  |
-| BLEND_MODE_DST |  |
-| BLEND_MODE_SRC_OVER |  |
-| BLEND_MODE_DST_OVER |  |
-| BLEND_MODE_SRC_IN |  |
-| BLEND_MODE_DST_IN |  |
-| BLEND_MODE_SRC_OUT |  |
-| BLEND_MODE_DST_OUT |  |
-| BLEND_MODE_SRC_ATOP |  |
-| BLEND_MODE_DST_ATOP |  |
-| BLEND_MODE_XOR |  |
-| BLEND_MODE_PLUS |  |
-| BLEND_MODE_MODULATE |  |
-| BLEND_MODE_SCREEN |  |
-| BLEND_MODE_OVERLAY |  |
-| BLEND_MODE_DARKEN |  |
-| BLEND_MODE_LIGHTEN |  |
-| BLEND_MODE_COLOR_DODGE |  |
-| BLEND_MODE_COLOR_BURN |  |
-| BLEND_MODE_HARD_LIGHT |  |
-| BLEND_MODE_SOFT_LIGHT |  |
-| BLEND_MODE_DIFFERENCE |  |
-| BLEND_MODE_EXCLUSION |  |
-| BLEND_MODE_MULTIPLY |  |
-| BLEND_MODE_HUE |  |
-| BLEND_MODE_SATURATION |  |
-| BLEND_MODE_COLOR |  |
-| BLEND_MODE_LUMINOSITY |  |
+| BLEND_MODE_CLEAR | Clear mode. r = 0.<br>**Since**: 11 |
+| BLEND_MODE_SRC | r = s (The four channels of **result** are equal to the four channels of **source**, that is, the result is equal to the source.)<br>**Since**: 11 |
+| BLEND_MODE_DST | r = d (The four channels of **result** are equal to the four channels of **destination**, that is, the result is equal to the destination.)<br>**Since**: 11 |
+| BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d.<br>**Since**: 11 |
+| BLEND_MODE_DST_OVER | r = d + (1 - da) * s.<br>**Since**: 11 |
+| BLEND_MODE_SRC_IN | r = s * da.<br>**Since**: 11 |
+| BLEND_MODE_DST_IN | r = d * sa.<br>**Since**: 11 |
+| BLEND_MODE_SRC_OUT | r = s * (1 - da).<br>**Since**: 11 |
+| BLEND_MODE_DST_OUT | r = d * (1 - sa).<br>**Since**: 11 |
+| BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa).<br>**Since**: 11 |
+| BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da).<br>**Since**: 11 |
+| BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa).<br>**Since**: 11 |
+| BLEND_MODE_PLUS | r = min(s + d, 1).<br>**Since**: 11 |
+| BLEND_MODE_MODULATE | r = s * d.<br>**Since**: 11 |
+| BLEND_MODE_SCREEN | Screen mode. r = s + d - s * d.<br>**Since**: 11 |
+| BLEND_MODE_OVERLAY | Overlay mode.<br>**Since**: 11 |
+| BLEND_MODE_DARKEN | Darken mode. rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d.<br>**Since**: 11 |
+| BLEND_MODE_LIGHTEN | Lighten mode. rc = rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d.<br>**Since**: 11 |
+| BLEND_MODE_COLOR_DODGE | Color dodge mode.<br>**Since**: 11 |
+| BLEND_MODE_COLOR_BURN | Color burn mode.<br>**Since**: 11 |
+| BLEND_MODE_HARD_LIGHT | Hard light mode.<br>**Since**: 11 |
+| BLEND_MODE_SOFT_LIGHT | Soft light mode.<br>**Since**: 11 |
+| BLEND_MODE_DIFFERENCE | Difference mode. rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d.<br>**Since**: 11 |
+| BLEND_MODE_EXCLUSION | Exclusion mode. rc = s + d - two(s * d), ra = s + (1 - sa) * d.<br>**Since**: 11 |
+| BLEND_MODE_MULTIPLY | Multiply mode. r = s * (1 - da) + d * (1 - sa) + s * d.<br>**Since**: 11 |
+| BLEND_MODE_HUE | Hue mode.<br>**Since**: 11 |
+| BLEND_MODE_SATURATION | Saturation mode.<br>**Since**: 11 |
+| BLEND_MODE_COLOR | Color mode.<br>**Since**: 11 |
+| BLEND_MODE_LUMINOSITY | Luminosity mode.<br>**Since**: 11 |
 
 ### OH_Drawing_TextEncoding
 
@@ -184,9 +184,9 @@ Defines an enum for the text encoding types.
 
 | Enum item | Description |
 | -- | -- |
-| TEXT_ENCODING_UTF8 |  |
-| TEXT_ENCODING_UTF16 |  |
-| TEXT_ENCODING_UTF32 |  |
-| TEXT_ENCODING_GLYPH_ID |  |
+| TEXT_ENCODING_UTF8 | One byte used to indicate UTF-8 or ASCII characters.<br>**Since**: 12 |
+| TEXT_ENCODING_UTF16 | Two bytes used to indicate most Unicode characters.<br>**Since**: 12 |
+| TEXT_ENCODING_UTF32 | Four bytes used to indicate all Unicode characters.<br>**Since**: 12 |
+| TEXT_ENCODING_GLYPH_ID | Two bytes used to indicate the glyph index.<br>**Since**: 12 |
 
 

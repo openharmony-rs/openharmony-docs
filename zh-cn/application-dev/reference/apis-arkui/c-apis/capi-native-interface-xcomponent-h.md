@@ -12,7 +12,7 @@
 
 **起始版本：** 8
 
-**相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+**相关模块：** [OH_NativeXComponent Native XComponent](capi-arkui-oh-nativexcomponent-native-xcomponent.md)
 
 **相关示例：** [NativeXComponentSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)
 
@@ -34,7 +34,7 @@
 | [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md) | OH_NativeXComponent_ExtraMouseEventInfo | 提供扩展鼠标事件信息的封装类型，用于在鼠标事件回调中获取基础鼠标事件之外的额外鼠标事件属性，适用于需要处理更丰富鼠标交互信息的应用场景。 |
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) | OH_ArkUI_SurfaceHolder | OH_ArkUI_SurfaceHolder用于封装和管理Native XComponent的Surface，提供对底层渲染表面的访问与操作能力。 可通过OH_ArkUI_SurfaceHolder_Create接口创建实例，适用于在Native侧需要进行自定义渲染或与图形/媒体组件对接的场景。 |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) | OH_ArkUI_SurfaceCallback | 定义Surface生命周期回调结构体。 当XComponent的Surface创建、销毁、尺寸发生变化时，会触发对应的回调；当应用窗口前后台切换导致Surface显示、隐藏时，会触发对应的回调（该显示、隐藏回调能力自API version 20起支持）。 开发者可在回调中获取Surface指针并执行自定义渲染（如OpenGL ES渲染、Vulkan渲染或视频解码渲染等场景）。 |
-| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-ohnativewindow.md) | OHNativeWindow | 提供封装的NativeWindow实例。 |
+| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | 提供封装的NativeWindow实例。 |
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | 定义XComponent组件持有的Surface配置，用于设置XComponent组件持有的Surface在渲染时是否被视为不透明。 适用于对XComponent渲染性能有要求的场景，将Surface设置为不透明可以减少渲染合成开销，提升渲染性能。需要注意的是，仅当Surface实际渲染的内容全部为不透明时才应设置为不透明，否则可能导致渲染异常。 |
 
 ### 枚举
@@ -278,7 +278,7 @@ enum OH_NativeXComponent_MouseEventAction
 | OH_NATIVEXCOMPONENT_MOUSE_PRESS | 鼠标按键按下时触发鼠标事件。 |
 | OH_NATIVEXCOMPONENT_MOUSE_RELEASE | 鼠标按键松开时触发鼠标事件。 |
 | OH_NATIVEXCOMPONENT_MOUSE_MOVE | 鼠标在屏幕上移动时触发鼠标事件。 |
-| OH_NATIVEXCOMPONENT_MOUSE_CANCEL |  |
+| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | 鼠标操作被取消时触发鼠标事件。 <b>起始版本：</b> 18 <b>说明：</b> OH_NATIVEXCOMPONENT_MOUSE_CANCEL表示鼠标事件被取消，通常在以下场景被触发： 1.组件失去焦点：当前持有焦点的XComponent因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。 2.事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。 3.异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br>**起始版本：** 18 |
 
 ### OH_NativeXComponent_MouseEventButton
 
@@ -1247,7 +1247,10 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 
 **描述：**
 
-将通过ArkUI的Native接口创建出来的UI组件挂载到当前XComponent上。 > <b>说明：</b> > > 挂载的组件在不再需要时，必须调用OH_NativeXComponent_DetachNativeRootNode进行卸载，避免内存泄漏。
+将通过ArkUI的Native接口创建出来的UI组件挂载到当前XComponent上。
+> <b>说明：</b>
+>
+> 挂载的组件在不再需要时，必须调用OH_NativeXComponent_DetachNativeRootNode进行卸载，避免内存泄漏。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1553,7 +1556,10 @@ int32_t OH_ArkUI_XComponent_StartImageAnalyzer(ArkUI_NodeHandle node, void* user
 
 **描述：**
 
-为此XComponent组件实例开始图像AI分析，使用前需先使能图像AI分析能力（例如通过XComponent组件的enableAnalyzer属性开启）。 - <b>前置条件：</b> 调用此方法前，需先通过XComponent组件的enableAnalyzer属性使能图像AI分析能力（具体参见XComponent图像分析相关配置说明）。 - <b>配对调用：</b> 此方法与OH_ArkUI_XComponent_StopImageAnalyzer配对使用，开始分析后应在分析完成或不再需要时调用Stop停止分析。 - <b>状态说明：</b> 可通过回调函数返回的ArkUI_XComponent_ImageAnalyzerState获取分析状态（如ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED、 ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING等）。
+为此XComponent组件实例开始图像AI分析，使用前需先使能图像AI分析能力（例如通过XComponent组件的enableAnalyzer属性开启）。
+- <b>前置条件：</b> 调用此方法前，需先通过XComponent组件的enableAnalyzer属性使能图像AI分析能力（具体参见XComponent图像分析相关配置说明）。
+- <b>配对调用：</b> 此方法与OH_ArkUI_XComponent_StopImageAnalyzer配对使用，开始分析后应在分析完成或不再需要时调用Stop停止分析。
+- <b>状态说明：</b> 可通过回调函数返回的ArkUI_XComponent_ImageAnalyzerState获取分析状态（如ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED、 ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING等）。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1879,7 +1885,7 @@ OHNativeWindow* OH_ArkUI_XComponent_GetNativeWindow(OH_ArkUI_SurfaceHolder* surf
 
 | 类型 | 说明 |
 | -- | -- |
-| [OHNativeWindow*](capi-oh-nativexcomponent-native-xcomponent-ohnativewindow.md) | 返回[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例关联的OHNativeWindow。 |
+| [OHNativeWindow*](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | 返回[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例关联的OHNativeWindow。 |
 
 ### OH_ArkUI_XComponent_SetAutoInitialize()
 
@@ -1889,7 +1895,9 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 
 **描述：**
 
-设置XComponent组件是否需要自动初始化Surface的标志位。 配置依赖： - 当autoInitialize为true（默认值）时，Surface会在组件挂树/下树时自动初始化和销毁，无需手动调用OH_ArkUI_XComponent_Initialize和OH_ArkUI_XComponent_Final ize。 - 当autoInitialize设置为false时，开发者必须手动调用OH_ArkUI_XComponent_Initialize初始化Surface， 并在不再使用时调用OH_ArkUI_XComponent_Finalize销毁Surface。
+设置XComponent组件是否需要自动初始化Surface的标志位。 配置依赖：
+- 当autoInitialize为true（默认值）时，Surface会在组件挂树/下树时自动初始化和销毁，无需手动调用OH_ArkUI_XComponent_Initialize和OH_ArkUI_XComponent_Final ize。
+- 当autoInitialize设置为false时，开发者必须手动调用OH_ArkUI_XComponent_Initialize初始化Surface， 并在不再使用时调用OH_ArkUI_XComponent_Finalize销毁Surface。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1916,7 +1924,10 @@ int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)
 
 **描述：**
 
-初始化XComponent组件持有的Surface。 需在调用此接口前，先通过OH_ArkUI_XComponent_SetAutoInitialize()将autoInitialize设置为false，以避免Surface在组件挂树时被自动初始化。 配对调用： - 调用此接口初始化Surface后，必须在Surface不再使用时调用OH_ArkUI_XComponent_Finalize销毁Surface。 - 若Surface已经处于初始化状态，再次调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。 - 可通过OH_ArkUI_XComponent_IsInitialized查询当前初始化状态。
+初始化XComponent组件持有的Surface。 需在调用此接口前，先通过OH_ArkUI_XComponent_SetAutoInitialize()将autoInitialize设置为false，以避免Surface在组件挂树时被自动初始化。 配对调用：
+- 调用此接口初始化Surface后，必须在Surface不再使用时调用OH_ArkUI_XComponent_Finalize销毁Surface。
+- 若Surface已经处于初始化状态，再次调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。
+- 可通过OH_ArkUI_XComponent_IsInitialized查询当前初始化状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1942,7 +1953,9 @@ int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)
 
 **描述：**
 
-销毁XComponent组件持有的Surface。 配对调用： - 此接口用于销毁由OH_ArkUI_XComponent_Initialize初始化的Surface，必须在Initialize之后调用。 - 若Surface尚未初始化或已被销毁，调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。
+销毁XComponent组件持有的Surface。 配对调用：
+- 此接口用于销毁由OH_ArkUI_XComponent_Initialize初始化的Surface，必须在Initialize之后调用。
+- 若Surface尚未初始化或已被销毁，调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

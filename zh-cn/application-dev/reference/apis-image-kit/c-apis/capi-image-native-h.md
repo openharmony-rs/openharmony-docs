@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## 汇总
 

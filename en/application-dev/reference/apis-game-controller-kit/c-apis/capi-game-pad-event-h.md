@@ -10,7 +10,7 @@ Defines APIs for gamepad events.
 
 **Since**: 21
 
-**Related module**: [GameController](capi-gamecontroller.md)
+**Related module**: [GameController](capi-game-controller-kit-gamecontroller.md)
 
 ## Summary
 
@@ -57,13 +57,6 @@ Defines APIs for gamepad events.
 | [GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue(const struct GamePad_AxisEvent* axisEvent, double* axisValue)](#oh_gamepad_axisevent_getgasaxisvalue) | - | Obtains the Gas-axis value from an axis event. |
 | [GameController_ErrorCode OH_GamePad_AxisEvent_GetActionTime(const struct GamePad_AxisEvent* axisEvent, int64_t* actionTime)](#oh_gamepad_axisevent_getactiontime) | - | Obtains the action time from an axis event. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void(* GamePad_ButtonInputMonitorCallback)(const struct GamePad_ButtonEvent* buttonEvent) | Defines the callback function used by the button event listener registration API. The callback is triggered when a player presses a button.<br>**Since**: 21<br>**System capability**: SystemCapability.Game.GameController |
-| void(* GamePad_AxisInputMonitorCallback)(const struct GamePad_AxisEvent* axisEvent) | Defines the callback function used by the axis event listener registration API. The callback is triggered when a player operates a joystick.<br>**Since**: 21<br>**System capability**: SystemCapability.Game.GameController |
-
 ## Enum type description
 
 ### GamePad_AxisSourceType
@@ -82,11 +75,11 @@ Defines source types of gamepad axis events.
 
 | Enum item | Description |
 | -- | -- |
-| DPAD = 0 |  |
-| LEFT_THUMBSTICK = 1 |  |
-| RIGHT_THUMBSTICK = 2 |  |
-| LEFT_TRIGGER = 3 |  |
-| RIGHT_TRIGGER = 4 |  |
+| DPAD = 0 | The axis event comes from the directional pad (D-pad).<br>**Since**: 21 |
+| LEFT_THUMBSTICK = 1 | The axis event comes from the left thumbstick.<br>**Since**: 21 |
+| RIGHT_THUMBSTICK = 2 | The axis event comes from the right thumbstick.<br>**Since**: 21 |
+| LEFT_TRIGGER = 3 | The axis event comes from the left trigger.<br>**Since**: 21 |
+| RIGHT_TRIGGER = 4 | The axis event comes from the right trigger.<br>**Since**: 21 |
 
 ### GamePad_Button_ActionType
 
@@ -104,8 +97,8 @@ Defines action types of gamepad button events.
 
 | Enum item | Description |
 | -- | -- |
-| DOWN = 0 |  |
-| UP = 1 |  |
+| DOWN = 0 | The button is pressed.<br>**Since**: 21 |
+| UP = 1 | The button is released.<br>**Since**: 21 |
 
 
 ## Function description

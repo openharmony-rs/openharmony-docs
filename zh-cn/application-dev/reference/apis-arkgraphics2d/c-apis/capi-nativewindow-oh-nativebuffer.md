@@ -12,7 +12,7 @@ typedef struct OH_NativeBuffer OH_NativeBuffer
 
 **起始版本：** 9
 
-**相关模块：** [NativeWindow](capi-nativewindow.md)
+**相关模块：** [NativeWindow](capi-others-nativewindow.md)
 
 **所在头文件：** [external_window.h](capi-external-window-h.md)
 

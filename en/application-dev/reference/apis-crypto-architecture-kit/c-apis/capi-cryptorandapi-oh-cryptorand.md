@@ -12,7 +12,7 @@ Random number generator structure, representing a random number generator contex
 
 **Since**: 20
 
-**Related module**: [CryptoRandApi](capi-cryptorandapi.md)
+**Related module**: [CryptoRandApi](capi-others-cryptorandapi.md)
 
 **Header file**: [crypto_rand.h](capi-crypto-rand-h.md)
 

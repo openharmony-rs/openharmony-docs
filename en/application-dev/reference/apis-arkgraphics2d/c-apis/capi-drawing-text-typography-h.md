@@ -10,7 +10,7 @@ This file declares the functions related to typography in the drawing module.
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 
@@ -448,7 +448,7 @@ Enumerates the vertical alignment modes of placeholders.
 | ALIGNMENT_TOP_OF_ROW_BOX | Aligned to the top of the row box. |
 | ALIGNMENT_BOTTOM_OF_ROW_BOX | Aligned to the bottom of the row box. |
 | ALIGNMENT_CENTER_OF_ROW_BOX | Aligned to the center of the row box. |
-| ALIGNMENT_FOLLOW_PARAGRAPH |  |
+| ALIGNMENT_FOLLOW_PARAGRAPH | Follows the text vertical alignment.<br>**Since**: 20 |
 
 ### OH_Drawing_TextDecorationStyle
 
@@ -491,8 +491,8 @@ Enumerates the ellipsis styles.
 | ELLIPSIS_MODAL_HEAD = 0 | Header ellipsis mode, that is, the ellipsis appears at the beginning of a line. This enumerated value is valid only when the maximum number of text lines is set to **1** by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines). |
 | ELLIPSIS_MODAL_MIDDLE = 1 | Middle ellipsis mode, that is, the ellipsis appears in the middle of a line. This enumerated value is valid only when the maximum number of text lines is set to **1** by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines). |
 | ELLIPSIS_MODAL_TAIL = 2 | End ellipsis mode, that is, the ellipsis appears at the end of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines). |
-| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 |  |
-| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 |  |
+| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | Header ellipsis mode, that is, the ellipsis appears at the beginning of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br>**Since**: 24 |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | Middle ellipsis mode, that is, the ellipsis appears in the middle of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br>**Since**: 24 |
 
 ### OH_Drawing_BreakStrategy
 
@@ -533,7 +533,7 @@ Enumerates the word break types.
 | WORD_BREAK_TYPE_NORMAL = 0 | Normal mode. |
 | WORD_BREAK_TYPE_BREAK_ALL = 1 | Breaks the words at any character to prevent overflow. |
 | WORD_BREAK_TYPE_BREAK_WORD = 2 | Breaks the words at arbitrary points to prevent overflow. |
-| WORD_BREAK_TYPE_BREAK_HYPHEN = 3 |  |
+| WORD_BREAK_TYPE_BREAK_HYPHEN = 3 | Attempts to break words at the end of each line by inserting a hyphen ("-"). If a hyphen cannot be added, the behavior is the same as `WORD_BREAK_TYPE_BREAK_WORD`.<br>**Since**: 18 |
 
 ### OH_Drawing_RectHeightStyle
 
@@ -692,7 +692,7 @@ Enumerates the text style attributes.
 | TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | Minimum line height.<br>If line height scaling is enabled, the minimum line height takes effect only when **<br>FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the non-negative part of a single-precision floating point number. The default value is **0**. |
 | TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle). |
 | TEXT_STYLE_ATTR_I_FONT_WIDTH = 3 | Font width. |
-| TEXT_STYLE_ATTR_I_FONT_EDGING = 4 |  |
+| TEXT_STYLE_ATTR_I_FONT_EDGING = 4 | Font edge processing mode. Anti-aliasing is used by default. For details about how to process font edges, see [OH_Drawing_FontEdging](capi-drawing-font-h.md#oh_drawing_fontedging).<br>**Since**: 24 |
 
 ### OH_Drawing_LineHeightStyle
 
@@ -734,13 +734,13 @@ Enumerates the typography style attributes. <br>For the common attributes of the
 | TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | Interline spacing.<br>**lineSpacing** is not restricted by the maximum and minimum line heights.<br>By default, line spacing is added to the last line.<br>You can set **textHeightBehavior** to **DISABLE_LAST_ASCENT** in [OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior) to disable the line spacing of the last line.<br>The default value is **0**. |
 | TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle). |
 | TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | Font width. |
-| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 |  |
-| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 |  |
-| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 |  |
-| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 |  |
-| TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9 |  |
-| TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10 |  |
-| TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11 |  |
+| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | Whether to enable line-start punctuation compression during text typography.<br>**NOTE**<br>1. The font file must support the "ss08" feature in [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md); otherwise, compression cannot be applied.<br> 2. Only punctuation within the line-start punctuation compression range is affected by this feature.<br>**Since**: 23 |
+| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | Whether to enable the internal padding of the font during text typography.<br>**Since**: 23 |
+| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | Whether to enable the line spacing fallback mechanism during text typography.<br>**Since**: 23 |
+| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 | Ellipsis style. For details about the ellipsis style, see [OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal).<br>**Since**: 24 |
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9 | First-line indent array.<br>All values in the indent array must be greater than or equal to 0. Each element in the array represents the indentation value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines.<br>**Since**: 26.0.0 |
+| TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10 | First-line indent of a paragraph. The indent value must be greater than or equal to 0.<br>**Since**: 26.0.0 |
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11 | Last-line indent array.<br>All values in the indent array must be greater than or equal to 0. Each element in the array represents the indentation value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines.<br>**Since**: 26.0.0 |
 
 ### OH_Drawing_TypographyAttributeId
 
@@ -758,7 +758,7 @@ Enumerates the typography attributes.
 
 | Enum item | Description |
 | -- | -- |
-| TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 |  |
+| TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 | Whether to force reuse the rasterization result. True means to force reuse of the rasterization result. False means to allow updates to the rasterization result. The default value is false.<br>**Since**: 26.0.0 |
 
 ### OH_Drawing_TextBadgeType
 

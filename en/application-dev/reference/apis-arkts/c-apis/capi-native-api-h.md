@@ -10,7 +10,7 @@ Defines native api of ArkTS native module.
 
 **Since**: 10
 
-**Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)
+**Related module**: [ArkTS_Napi_NativeModule](capi-arkts-arkts-napi-nativemodule.md)
 
 ## Summary
 
@@ -18,11 +18,11 @@ Defines native api of ArkTS native module.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope.md) | napi_critical_scope | Native critical scope provides a scope within that an ArkTS string buffer cache can be obtained. |
-| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md) | napi_strong_ref | Native strong reference of an ArkTS object. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md) | napi_callsite_info | Callsite info handle for caching inline cache (IC) information of property access. |
-| [napi_microtask_scope](capi-arkts-napi-nativemodule-napi-microtask-scope.md) | napi_microtask_scope | Microtask scope provides a scope to pause the execution of microtasks in the runtime. |
-| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md) | napi_sendable_ref | Native strong sendable reference of an sendable ArkTS object. |
+| [napi_critical_scope\_\_*](capi-arkts-napi-nativemodule-napi-critical-scope--8h.md) | napi_critical_scope | Native critical scope provides a scope within that an ArkTS string buffer cache can be obtained. |
+| [napi_strong_ref\_\_*](capi-arkts-napi-nativemodule-napi-strong-ref--8h.md) | napi_strong_ref | Native strong reference of an ArkTS object. |
+| [napi_callsite_info\_\_*](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md) | napi_callsite_info | Callsite info handle for caching inline cache (IC) information of property access. |
+| [napi_microtask_scope\_\_*](capi-arkts-napi-nativemodule-napi-microtask-scope--8h.md) | napi_microtask_scope | Microtask scope provides a scope to pause the execution of microtasks in the runtime. |
+| [napi_sendable_ref\_\_*](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md) | napi_sendable_ref | Native strong sendable reference of an sendable ArkTS object. |
 
 ### Function
 
@@ -222,14 +222,6 @@ NAPI_EXTERN napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_
 | [NAPI_EXTERN napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)](#napi_open_microtask_scope) | - | Creates a microtask scope in the current ArkTS runtime. Within this scope, microtask execution is paused. |
 | [NAPI_EXTERN napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope)](#napi_close_microtask_scope) | - | To destroy the microtask scope in current ArkTS runtime. After the scope is destroyed, microtasks will be triggered to execute immediately. |
 | [NAPI_EXTERN void napi_shared_module_register(napi_module* mod)](#napi_shared_module_register) | - | To register a native sendable module which will be utilized in different threads of a process. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void* (*napi_native_binding_detach_callback)(napi_env env, void* native_object, void* hint) | Native detach callback of napi_coerce_to_native_binding_object that can be used to detach the ArkTS object and the native object.<br>**Since**: 11<br>**System capability**: SystemCapability.ArkUI.ArkUI.Napi |
-| napi_value (*napi_native_binding_attach_callback)(napi_env env, void* native_object, void* hint) | Native attach callback of napi_coerce_to_native_binding_object that can be used to bind the ArkTS object and the native object.<br>**Since**: 11<br>**System capability**: SystemCapability.ArkUI.ArkUI.Napi |
-| void (*napi_finalize_callback)(void* finalize_data, void* finalize_hint) | Native finalize callback is utilized to recycle native object resource.<br>**Since**: 22<br>**System capability**: SystemCapability.ArkUI.ArkUI.Napi |
 
 ## Function description
 
@@ -5020,7 +5012,7 @@ To open a critical scope.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope.md)* scope | A critical scope of type of napi_critical_scope is generated. |
+| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope--8h.md)* scope | A critical scope of type of napi_critical_scope is generated. |
 
 **Returns**:
 
@@ -5047,7 +5039,7 @@ To close a critical scope.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope.md) scope | A critical scope to be closed. |
+| [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope--8h.md) scope | A critical scope to be closed. |
 
 **Returns**:
 
@@ -5104,7 +5096,7 @@ Creates a strong reference for an ArkTS object to extend its lifespan. The calle
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
 | napi_value value | The napi_value that is being referenced. |
-| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md)* result | napi_strong_ref pointing to the new strong reference. |
+| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref--8h.md)* result | napi_strong_ref pointing to the new strong reference. |
 
 **Returns**:
 
@@ -5131,7 +5123,7 @@ Deletes the strong reference passed in.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md) ref | The napi_strong_ref to be deleted. |
+| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref--8h.md) ref | The napi_strong_ref to be deleted. |
 
 **Returns**:
 
@@ -5158,7 +5150,7 @@ Obtains the ArkTS Object associated with the strong reference.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md) ref | The napi_strong_ref of the value being requested. |
+| [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref--8h.md) ref | The napi_strong_ref of the value being requested. |
 | napi_value* result | The napi_value referenced by the napi_strong_ref. |
 
 **Returns**:
@@ -5249,7 +5241,7 @@ Creates a strong sendable reference for an ArkTS object to extend its lifespan. 
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
 | napi_value value | The sendable ArkTS object that is being referenced. |
-| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md)* result | The napi_sendable_ref pointing to the new strong sendable reference. |
+| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md)* result | The napi_sendable_ref pointing to the new strong sendable reference. |
 
 **Returns**:
 
@@ -5276,7 +5268,7 @@ Deletes the strong sendable reference passed in.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md) ref | The sendable reference to be deleted. |
+| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md) ref | The sendable reference to be deleted. |
 
 **Returns**:
 
@@ -5303,7 +5295,7 @@ Obtains the ArkTS Object associated with the strong reference.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md) ref | The sendable reference of the sendable object value being requested. |
+| [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md) ref | The sendable reference of the sendable object value being requested. |
 | napi_value* result | The sendable ArkTS object referenced by the sendable reference. |
 
 **Returns**:
@@ -5359,7 +5351,7 @@ Creates a callsite info handle for caching inline cache (IC) information of prop
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md)* result | Pointer to napi_callsite_info to receive the created callsite info handle. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md)* result | Pointer to napi_callsite_info to receive the created callsite info handle. |
 
 **Returns**:
 
@@ -5386,7 +5378,7 @@ Deletes a callsite info handle and releases associated cache resources.
 | Parameter | Description |
 | -- | -- |
 | napi_env env | Current running virtual machine context. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md) info | The callsite info handle to be deleted. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md) info | The callsite info handle to be deleted. |
 
 **Returns**:
 
@@ -5415,7 +5407,7 @@ Uses callsite info to quickly get an object property value. When the IC hits (th
 | napi_env env | Current running virtual machine context. |
 | napi_value object | The object to get the property from. |
 | napi_value key | The key name of the property to get. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md) info | Callsite info handle for IC caching. Can be NULL. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md) info | Callsite info handle for IC caching. Can be NULL. |
 | napi_value* result | Pointer to napi_value to receive the property value. |
 | bool* hit | Receives whether the IC cache was hit (true) or missed (false). |
 
@@ -5447,7 +5439,7 @@ Uses callsite info to quickly set an object property value. When the IC hits (th
 | napi_value object | The object to set the property on. |
 | napi_value key | The key name of the property to set. |
 | napi_value value | The property value to set. |
-| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md) info | Callsite info handle for IC caching. Can be NULL. |
+| [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info--8h.md) info | Callsite info handle for IC caching. Can be NULL. |
 | bool* hit | Receives whether the IC cache was hit (true) or missed (false). |
 
 **Returns**:
@@ -5506,7 +5498,7 @@ Creates a microtask scope in the current ArkTS runtime. Within this scope, micro
 | Parameter | Description |
 | -- | -- |
 | napi_env env | [in] Current running virtual machine context. |
-| [napi_microtask_scope](capi-arkts-napi-nativemodule-napi-microtask-scope.md)* scope | [out] The microtask scope generated. |
+| [napi_microtask_scope](capi-arkts-napi-nativemodule-napi-microtask-scope--8h.md)* scope | [out] The microtask scope generated. |
 
 **Returns**:
 
@@ -5537,7 +5529,7 @@ To destroy the microtask scope in current ArkTS runtime. After the scope is dest
 | Parameter | Description |
 | -- | -- |
 | napi_env env | [in] Current running virtual machine context. |
-| [napi_microtask_scope](capi-arkts-napi-nativemodule-napi-microtask-scope.md) scope | [in] The microtask scope needs to be recycled. |
+| [napi_microtask_scope](capi-arkts-napi-nativemodule-napi-microtask-scope--8h.md) scope | [in] The microtask scope needs to be recycled. |
 
 **Returns**:
 

@@ -10,7 +10,7 @@ The file declares the video output concepts.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## Summary
 
@@ -43,14 +43,6 @@ The file declares the video output concepts.
 | [Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)](#oh_videooutput_deleteframerates) | - | Deletes the frame rate list. |
 | [Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, int32_t minFps, int32_t maxFps)](#oh_videooutput_setframerate) | - | Sets the frame rates for a VideoOutput instance. |
 | [Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)](#oh_videooutput_getactiveframerate) | - | Obtains the active frame rates of a VideoOutput instance. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame start events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame end events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode) | Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output errors.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
 
 ## Function description
 

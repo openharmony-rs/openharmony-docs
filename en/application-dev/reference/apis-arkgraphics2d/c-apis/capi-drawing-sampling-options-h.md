@@ -10,7 +10,7 @@ This file declares the functions related to sampling in the drawing module. It i
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 

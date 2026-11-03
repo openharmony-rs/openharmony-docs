@@ -12,7 +12,7 @@
 
 **起始版本：** 8
 
-**相关模块：** [SyscapNdk](capi-syscapndk.md)
+**相关模块：** [SyscapNdk](capi-basic-services-kit-syscapndk.md)
 
 ## 汇总
 

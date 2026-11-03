@@ -12,7 +12,7 @@ ArkWeb_ControllerAPI is a native API struct related to the controller. This stru
 
 **Since**: 12
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-others-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -29,11 +29,11 @@ ArkWeb_ControllerAPI is a native API struct related to the controller. This stru
 
 | Name | Description |
 | -- | -- |
-| [void (\*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascriptObject)](#runjavascript) | - |  |
-| [void (\*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerjavascriptproxy) | - |  |
-| [void (\*deleteJavaScriptRegister)(const char* webTag, const char* objName)](#deletejavascriptregister) | - |  |
-| [void (\*refresh)(const char* webTag)](#refresh) | - |  |
-| [void (\*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerasyncjavascriptproxy) | - |  |
+| [void (\*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascriptObject)](#runjavascript) | - | Injects a JavaScript script. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method injects a JavaScript script into the execution context of the **Web** component and executes it after the page is loaded. |
+| [void (\*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerjavascriptproxy) | - | Injects a JavaScript object into the window object and calls the synchronous methods of this object in the window object. This method maps native objects to the JavaScript environment through a bridging mechanism to implement bidirectional communication. Use Cases: for example, JS calls native capabilities to obtain device information or execute native business logic. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Compared with registerAsyncJavaScriptProxy, this method is suitable for scenarios where a synchronous return value is required. If a synchronous return value is not needed or the operation is time-consuming, you are advised to use registerAsyncJavaScriptProxy to avoid blocking the UI thread. |
+| [void (\*deleteJavaScriptRegister)(const char* webTag, const char* objName)](#deletejavascriptregister) | - | Deletes the app-side JavaScript object with the specified name that is registered with the window through registerJavaScriptProxy. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method unbinds the JavaScript object from the native object and releases related resources. Use Cases: for example, cleaning up registered objects to avoid residue when a component is destroyed, a module is unloaded, or services are switched. |
+| [void (\*refresh)(const char* webTag)](#refresh) | - | Refreshes the current web page. The page stack is cleared during the refresh, as a result, the current page cannot be navigated forward or backward. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. |
+| [void (\*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerasyncjavascriptproxy) | - | Injects a JavaScript object into the window object and calls the asynchronous methods of this object in the window object. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method implements asynchronous calls through a message queue mechanism to avoid blocking the main thread. Compared with registerJavaScriptProxy, this method is suitable for time-consuming operations or scenarios where a synchronous return value is not needed. If a synchronous return value is needed, you are advised to use registerJavaScriptProxy. |
 | [ArkWeb_WebMessagePortPtr* (\*createWebMessagePorts)(const char* webTag, size_t* size)](#createwebmessageports) | - | Creates a Post Message port. The Post Message port provides a bidirectional communication mechanism, allowing the native layer and the web layer to securely exchange data messages. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, implementing cross-context message channels to support data transfer between iframes and the main page, and between Web and Worker. |
 | [void (\*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)](#destroywebmessageports) | - | Destroys a port. This method closes the port connection, releases related system resources, and stops message transmission. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, releasing port resources to avoid leaks when communication ends or the component lifecycle ends. |
 | [ArkWeb_ErrorCode (\*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)](#postwebmessage) | - | Sends ports to the HTML main page. This method passes Post Message ports to the specified HTML page through a message delivery mechanism to establish a cross-origin communication channel. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, establishing a bidirectional message channel between the main page and an iframe, or pushing messages across frames. |
@@ -51,6 +51,8 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 
 **Description**
 
+Injects a JavaScript script. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPImethod. This method injects a JavaScript script into the execution context of the **Web** component and executesit after the page is loaded.
+
 **Parameters**:
 
 | Parameter | Description |
@@ -65,6 +67,8 @@ void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* pr
 ```
 
 **Description**
+
+Injects a JavaScript object into the window object and calls the synchronous methods of this object in thewindow object. This method maps native objects to the JavaScript environment through a bridging mechanism toimplement bidirectional communication. Use Cases: for example, JS calls native capabilities to obtain deviceinformation or execute native business logic. This API must be called on the UI thread by calling theOH_ArkWeb_GetNativeAPI method. Compared with registerAsyncJavaScriptProxy, this method is suitable for scenarioswhere a synchronous return value is required. If a synchronous return value is not needed or the operation istime-consuming, you are advised to use registerAsyncJavaScriptProxy to avoid blocking the UI thread.
 
 **Parameters**:
 
@@ -81,6 +85,8 @@ void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 
 **Description**
 
+Deletes the app-side JavaScript object with the specified name that is registered with the window throughregisterJavaScriptProxy. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method.This method unbinds the JavaScript object from the native object and releases related resources. Use Cases: forexample, cleaning up registered objects to avoid residue when a component is destroyed, a module is unloaded, orservices are switched.
+
 **Parameters**:
 
 | Parameter | Description |
@@ -96,6 +102,8 @@ void (*refresh)(const char* webTag)
 
 **Description**
 
+Refreshes the current web page. The page stack is cleared during the refresh, as a result, the current pagecannot be navigated forward or backward. This API must be called on the UI thread by calling theOH_ArkWeb_GetNativeAPI method.
+
 **Parameters**:
 
 | Parameter | Description |
@@ -109,6 +117,8 @@ void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObjec
 ```
 
 **Description**
+
+Injects a JavaScript object into the window object and calls the asynchronous methods of this object in thewindow object. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Thismethod implements asynchronous calls through a message queue mechanism to avoid blocking the main thread.Compared with registerJavaScriptProxy, this method is suitable for time-consuming operations or scenarios wherea synchronous return value is not needed. If a synchronous return value is needed, you are advised to useregisterJavaScriptProxy.
 
 **Parameters**:
 
@@ -148,7 +158,7 @@ Destroys a port. This method closes the port connection, releases related system
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md)** ports | Array of pointers to the Post Message port struct. |
+| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)** ports | Array of pointers to the Post Message port struct. |
 |  size_t size | Number of ports. Must be equal to the number of ports in the ports array. |
 
 ### postWebMessage()

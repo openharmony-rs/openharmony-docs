@@ -12,7 +12,7 @@ ArkWeb_ProxyObjectWithResult是带返回值的JavaScript代理对象结构体，
 
 **起始版本：** 18
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 

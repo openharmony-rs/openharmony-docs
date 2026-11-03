@@ -12,7 +12,7 @@ Defines active child node information of the current node. You can query the num
 
 **Since**: 14
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_type.h](capi-native-type-h.md)
 

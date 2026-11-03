@@ -12,7 +12,7 @@ typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
 
 **起始版本：** 15
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [common_attributes.h](capi-common-attributes-h.md)
 

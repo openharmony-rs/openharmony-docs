@@ -10,7 +10,7 @@ The file declares the common enums and definitions of the window manager.
 
 **Since**: 12
 
-**Related module**: [WindowManager](capi-windowmanager.md)
+**Related module**: [WindowManager](capi-arkui-windowmanager.md)
 
 ## Summary
 
@@ -42,13 +42,6 @@ The file declares the common enums and definitions of the window manager.
 | [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | Frame metrics callback type. |
 | [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | Density info callback type. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_WindowManager_FrameMetricsMeasuredCallback)( int32_t windowId, const OH_WindowManager_FrameMetrics* metrics) | Frame metrics callback type.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Window.SessionManager |
-| void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info) | Density info callback type.<br>**Since**: 24<br>**System capability**: SystemCapability.Window.SessionManager |
-
 ## Enum type description
 
 ### WindowManager_ErrorCode
@@ -68,20 +61,20 @@ Enumerates the status codes returned by the window manager interface.
 | Enum item | Description |
 | -- | -- |
 | OK = 0 | Successful. |
-| WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201 |  |
-| WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 |  |
-| WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 |  |
+| WINDOW_MANAGER_ERRORCODE_NO_PERMISSION = 201 | No permission.<br>**Since**: 15 |
+| WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | Invalid parameter.<br>**Since**: 15 |
+| WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | Not supported by the device.<br>**Since**: 15 |
 | INVAILD_WINDOW_ID = 1000 | Invalid window ID. |
-| INVALID_WINDOW_ID = INVAILD_WINDOW_ID |  |
+| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | Invalid window ID.<br>**Since**: 26.0.0 |
 | SERVICE_ERROR = 2000 | Service error. |
-| WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 |  |
-| WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014 |  |
-| WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015 |  |
-| WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016 |  |
+| WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | Abnormal window status.<br>**Since**: 15 |
+| WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | Abnormal window manager service.<br>**Since**: 15 |
+| WINDOW_MANAGER_ERRORCODE_PIP_DESTROY_FAILED = 1300011 | Failed to destroy the PiP window.<br>**Since**: 20 |
+| WINDOW_MANAGER_ERRORCODE_PIP_STATE_ABNORMAL = 1300012 | Abnormal PiP status.<br>**Since**: 20 |
+| WINDOW_MANAGER_ERRORCODE_PIP_CREATE_FAILED = 1300013 | Failed to create the PiP window.<br>**Since**: 20 |
+| WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR = 1300014 | An internal error occurs in PiP. Possible causes:<br>1. The window on which the PiP feature depends is abnormal. For example, the window is empty. 2. The PiP controller is abnormal.<br>**Since**: 20 |
+| WINDOW_MANAGER_ERRORCODE_PIP_REPEATED_OPERATION = 1300015 | Repeated PiP operation.<br>**Since**: 20 |
+| WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM = 1300016 | Incorrect parameter. Possible causes:<br>1. The parameter value range is invalid. 2. The number of parameters is invalid. 3. The parameter type is invalid.<br>**Since**: 20 |
 
 ### WindowManager_AvoidAreaType
 
@@ -121,10 +114,10 @@ Enumerates the window types.
 
 | Enum item | Description |
 | -- | -- |
-| WINDOW_MANAGER_WINDOW_TYPE_APP = 0 |  |
-| WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 |  |
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 |  |
-| WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 |  |
+| WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | Child window.<br>**Since**: 15 |
+| WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | Main window.<br>**Since**: 15 |
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Global float window.<br>**Since**: 15 |
+| WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | Modal window.<br>**Since**: 15 |
 
 
 ## Function description

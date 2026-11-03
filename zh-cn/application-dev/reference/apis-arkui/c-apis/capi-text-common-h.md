@@ -4,13 +4,15 @@
 
 定义文本类组件通用的枚举和接口，涵盖文本对齐、装饰线样式、复制粘贴、溢出处理、断行策略、菜单定制等多种能力，适用于文本输入框、文本显示等场景，帮助开发者灵活控制文本样式与交互行为，降低开发复杂度。
 
+**引用文件：** <arkui/text_common.h>
+
 **库：** libace_ndk.z.so
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -76,14 +78,6 @@
 | [OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()](#oh_arkui_decorationstyleoptions_create) | - | 创建一个装饰线样式对象，用于设置文本装饰线的类型、样式和颜色。适用于需要为文本添加下划线、删除线等装饰效果的场景，如富文本编辑器、超链接文本、价格标记等。当该对象不再使用时，请调用 [OH_ArkUI_DecorationStyleOptions_Destroy](capi-text-common-h.md#oh_arkui_decorationstyleoptions_destroy)销毁。 |
 | [void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)](#oh_arkui_decorationstyleoptions_destroy) | - | 销毁由[OH_ArkUI_DecorationStyleOptions_Create](capi-text-common-h.md#oh_arkui_decorationstyleoptions_create)创建的装饰线样式对象。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*ArkUI_TextCreateMenuCallback)( ArkUI_TextMenuItemArray* items, void* userData ) | 文本菜单创建事件回调函数，在文本菜单创建时会触发此回调函数，开发者可在此函数中设置菜单数据。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| void (*ArkUI_TextPrepareMenuCallback)( ArkUI_TextMenuItemArray* items, void* userData ) | 文本菜单准备事件回调函数，当文本选择区域变化后显示菜单之前会触发此回调函数，开发者可在此函数中配置菜单数据。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| bool (*ArkUI_TextMenuItemClickCallback)( const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData ) | 文本菜单项点击事件回调函数，在菜单项被点击时触发此回调函数，开发者可在此函数中对系统默认处理行为进行拦截。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-
 ## 枚举类型说明
 
 ### ArkUI_TextAlignment
@@ -106,8 +100,8 @@ enum ArkUI_TextAlignment
 | ARKUI_TEXT_ALIGNMENT_CENTER | 水平居中对齐。 |
 | ARKUI_TEXT_ALIGNMENT_END | 水平对齐尾部。 |
 | ARKUI_TEXT_ALIGNMENT_JUSTIFY | 双端对齐。 |
-| ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 |  |
-| ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 |  |
+| ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 | 从左到右对齐。<br>**起始版本：** 23 |
+| ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 | 从右到左对齐。<br>**起始版本：** 23 |
 
 ### ArkUI_TextVerticalAlignment
 
@@ -359,10 +353,10 @@ enum ArkUI_KeyboardAppearance
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0 |  |
-| ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1 |  |
-| ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2 |  |
-| ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3 |  |
+| ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE = 0 | 默认模式，不使用沉浸式样式。<br>**起始版本：** 15 |
+| ARKUI_KEYBOARD_APPEARANCE_IMMERSIVE = 1 | 沉浸式模式，由系统决定采用的样式。<br>**起始版本：** 15 |
+| ARKUI_KEYBOARD_APPEARANCE_LIGHT_IMMERSIVE = 2 | 浅色沉浸式样式。<br>**起始版本：** 15 |
+| ARKUI_KEYBOARD_APPEARANCE_DARK_IMMERSIVE = 3 | 深色沉浸式样式。<br>**起始版本：** 15 |
 
 ### ArkUI_TextMenuItemId
 
@@ -396,8 +390,8 @@ enum ArkUI_TextMenuItemId
 | ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | 导航前往。对选中的地址提供跳转服务，拉起地图应用。 |
 | ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。 |
 | ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | 问问AI。对选中的文本提供AI问询能力。该菜单项依赖大模型能力才能生效。 |
-| ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 |  |
-| ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 |  |
+| ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | 自动填充。例如自动填充账号密码。<br>**起始版本：** 24 |
+| ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | 密码保险箱。<br>**起始版本：** 24 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | 应用自定义菜单项起始id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | 应用自定义菜单项结束id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
 
@@ -417,9 +411,9 @@ enum OH_ArkUI_LineBreakStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 |  |
-| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 |  |
-| OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 |  |
+| OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | 贪婪模式。<br>使每一行尽可能显示多的字符，直到这一行不能显示更多字符时进行折行。<br>**起始版本：** 24 |
+| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | 高质量模式。<br>在平衡模式的基础上，尽可能填满行，同时最后一行的权重较低，可能出现最后一行留白较多的情形。<br>**起始版本：** 24 |
+| OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | 平衡模式。<br>在不拆词的情况下，尽量使一个段落中每一行的宽度相同。<br>**起始版本：** 24 |
 
 ### OH_ArkUI_StrokeJoinStyle
 
@@ -504,7 +498,7 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | 指向ArkUI_TextMenuItemArray对象的指针，该数组对象由系统内部创建并释放，在回调函数中开发者可以调用OH_ArkUI_TextMenuItemArray_Insert， OH_ArkUI_TextMenuItemArray_Erase进行数组修改。 |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | 指向ArkUI_TextMenuItemArray对象的指针，该数组对象由系统内部创建并释放，在回调函数中开发者可以调用[OH_ArkUI_TextMenuItemArray_Insert](capi-native-type-h.md#oh_arkui_textmenuitemarray_insert)， [OH_ArkUI_TextMenuItemArray_Erase](capi-native-type-h.md#oh_arkui_textmenuitemarray_erase)进行数组修改。 |
 | void* userData | 用户自定义数据指针，由开发者在注册回调时传入，在回调触发时原样回传给开发者，用于在回调函数中获取上下文数据。传参为null表示不传递自定义数据。 |
 
 ### ArkUI_TextPrepareMenuCallback()
@@ -525,7 +519,7 @@ typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, vo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | 指向ArkUI_TextMenuItemArray对象的指针，该数组对象由系统内部创建并释放，在回调函数中开发者可以调用OH_ArkUI_TextMenuItemArray_Insert， OH_ArkUI_TextMenuItemArray_Erase进行数组修改。 |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | 指向ArkUI_TextMenuItemArray对象的指针，该数组对象由系统内部创建并释放，在回调函数中开发者可以调用[OH_ArkUI_TextMenuItemArray_Insert](capi-native-type-h.md#oh_arkui_textmenuitemarray_insert)， [OH_ArkUI_TextMenuItemArray_Erase](capi-native-type-h.md#oh_arkui_textmenuitemarray_erase)进行数组修改。 |
 | void* userData | 用户自定义数据指针，由开发者在注册回调时传入，在回调触发时原样回传给开发者，用于在回调函数中获取上下文数据。传参为null表示不传递自定义数据。 |
 
 ### ArkUI_TextMenuItemClickCallback()

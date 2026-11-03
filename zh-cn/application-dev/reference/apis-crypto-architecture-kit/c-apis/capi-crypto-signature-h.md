@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [CryptoSignatureApi](capi-cryptosignatureapi.md)
+**相关模块：** [CryptoSignatureApi](capi-crypto-architecture-kit-cryptosignatureapi.md)
 
 ## 汇总
 
@@ -99,7 +99,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 **起始版本：** 12
 
-**资源释放：** crypto_signature/OH_CryptoVerify_Destroy {verify}
+**资源释放：** [OH_CryptoVerify_Destroy](#oh_cryptoverify_destroy)
 
 **参数：**
 
@@ -227,7 +227,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 
 **起始版本：** 12
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {rawSignData}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -311,7 +311,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 **起始版本：** 12
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {value}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -361,7 +361,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 **起始版本：** 20
 
-**资源释放：** crypto_signature/OH_CryptoSign_Destroy {sign}
+**资源释放：** [OH_CryptoSign_Destroy](#oh_cryptosign_destroy)
 
 **参数：**
 
@@ -460,7 +460,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -544,7 +544,7 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {value}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -594,7 +594,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 
 **起始版本：** 20
 
-**资源释放：** crypto_signature/OH_CryptoEccSignatureSpec_Destroy {spec}
+**资源释放：** [OH_CryptoEccSignatureSpec_Destroy](#oh_cryptoeccsignaturespec_destroy)
 
 **参数：**
 
@@ -629,7 +629,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {r}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -692,7 +692,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 

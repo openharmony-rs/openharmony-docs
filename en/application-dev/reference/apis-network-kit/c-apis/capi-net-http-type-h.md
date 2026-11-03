@@ -10,7 +10,7 @@ Defines the data structures for the C APIs of the HTTP request module.
 
 **Since**: 20
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 ## Summary
 
@@ -67,16 +67,6 @@ Defines the data structures for the C APIs of the HTTP request module.
 | [typedef void (\*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize)](#http_onprogresscallback) | Http_OnProgressCallback | Callback function invoked during request/response data transmission. |
 | [typedef void (\*Http_OnHeaderReceiveCallback)(Http_Headers *headers)](#http_onheaderreceivecallback) | Http_OnHeaderReceiveCallback | Callback called when header are received. |
 | [typedef void (\*Http_OnVoidCallback)(void)](#http_onvoidcallback) | Http_OnVoidCallback | Empty callback function for requested DataEnd or Canceled event callback. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode) | Callback function that is invoked when response is received.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
-| void (*Http_OnDataReceiveCallback)(const char *data, size_t length) | Callback function that is invoked when a response body is received.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
-| void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize) | Callback function invoked during request/response data transmission.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
-| void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers) | Callback called when header are received.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
-| void (*Http_OnVoidCallback)(void) | Empty callback function for requested DataEnd or Canceled event callback.<br>**Since**: 20<br>**System capability**: SystemCapability.Communication.NetStack |
 
 ## Enum type description
 

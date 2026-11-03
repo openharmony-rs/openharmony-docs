@@ -4,7 +4,7 @@
 
 Defines the signing and verification interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_signature.h>
+**File to Include**: <CryptoArchitectureKit/crypto_signature.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the signing and verification interfaces.
 
 **Since**: 12
 
-**Related module**: [CryptoSignatureApi](capi-cryptosignatureapi.md)
+**Related module**: [CryptoSignatureApi](capi-crypto-architecture-kit-cryptosignatureapi.md)
 
 ## Summary
 
@@ -99,7 +99,7 @@ Creates a verification context based on the given algorithm name.
 
 **Since**: 12
 
-**Resource release**: crypto_signature/OH_CryptoVerify_Destroy {verify}
+**Resource release**: [OH_CryptoVerify_Destroy](#oh_cryptoverify_destroy)
 
 **Parameters**:
 
@@ -227,7 +227,7 @@ Recovers signature data. Only RSA algorithm is supported.
 
 **Since**: 12
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {rawSignData}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -311,7 +311,7 @@ Obtains the specified parameter of the verification context.
 
 **Since**: 12
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {value}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -361,7 +361,7 @@ Creates a signing context based on the given algorithm name.
 
 **Since**: 20
 
-**Resource release**: crypto_signature/OH_CryptoSign_Destroy {sign}
+**Resource release**: [OH_CryptoSign_Destroy](#oh_cryptosign_destroy)
 
 **Parameters**:
 
@@ -460,7 +460,7 @@ Finishes the signing operation.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -544,7 +544,7 @@ Obtains the specified parameter from the signing context.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {value}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -594,7 +594,7 @@ Creates an ECC signature specification. Also supports SM2 signatures.
 
 **Since**: 20
 
-**Resource release**: crypto_signature/OH_CryptoEccSignatureSpec_Destroy {spec}
+**Resource release**: [OH_CryptoEccSignatureSpec_Destroy](#oh_cryptoeccsignaturespec_destroy)
 
 **Parameters**:
 
@@ -629,7 +629,7 @@ Gets the r and s values from the ECC signature specification.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {r}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -692,7 +692,7 @@ Encodes the ECC signature specification into DER format signature data.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

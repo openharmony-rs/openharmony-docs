@@ -12,7 +12,7 @@ struct OH_Camera_Rect_Ext {...}
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 
@@ -22,9 +22,9 @@ struct OH_Camera_Rect_Ext {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| double topLeftX |  |
-| double topLeftY |  |
-| double width |  |
-| double height |  |
+| double topLeftX | 矩形左上角的X坐标，范围[0, 1]。<br>**起始版本：** 26.0.0 |
+| double topLeftY | 矩形左上角的Y坐标，范围[0, 1]。<br>**起始版本：** 26.0.0 |
+| double width | 矩形宽度，范围[0, 1]。<br>**起始版本：** 26.0.0 |
+| double height | 矩形高度，范围[0, 1]。<br>**起始版本：** 26.0.0 |
 
 

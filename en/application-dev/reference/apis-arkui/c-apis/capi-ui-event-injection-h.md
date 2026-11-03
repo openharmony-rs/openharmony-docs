@@ -4,7 +4,7 @@
 
 Declares the APIs used by in-app intelligent agents and UI automation to inject control commands into specified UI nodes.
 
-**Include**: <arkui/ui_event_injection.h>
+**File to Include**: <arkui/ui_event_injection.h>
 
 **Library**: libace_ndk.z.so
 
@@ -12,7 +12,7 @@ Declares the APIs used by in-app intelligent agents and UI automation to inject 
 
 **Since**: 26.1.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -27,13 +27,9 @@ Declares the APIs used by in-app intelligent agents and UI automation to inject 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [typedef void (\*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData)](#oh_arkui_nativemodule_uieventinjectioncallback) | OH_ArkUI_NativeModule_UIEventInjectionCallback | Callback for injection completion.<br> Reports the results of command dispatch and immediate component handling, without waiting for deferred effects or rendering. Each accepted request receives exactly one callback on the originating UI thread after the injection function returns. Callbacks on different UI threads are not globally serialized. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | - | Injects a relaxed interaction command into the UI asynchronously.<br> The command expresses a high-level interaction intent (click, content_switch, scroll, backpress, or key) without targeting a specific component; the system decides how to execute it based on the mode.<br> The command is carried by a [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object created with OH_ArkUI_NativeModule_UIJsonWrapper_Create. The command payload's top-level structure is:<br> { "schemaVersion": 1, "cmd": { "type": "<command type>", "mode": "<execution mode>", "action_info": { ... } } }<br> The command-specific parameters are as follows; unless marked required, the action_info fields are optional: - click: mode (optional, default "auto"); action_info.coordinates with x1 and y1 (both required). - content_switch: mode must be "target"; action_info.count must be a positive integer (optional, default 1); action_info.direction ("forward" \| "backward", optional, default "forward"); action_info.coordinates.pos with x and y (required). - scroll: mode (optional, default "auto"); action_info.direction ("forward" \| "backward" \| "left"
+\| "right" \| "up" \| "down", optional, default "forward"); action_info.distance, a non-negative physical-pixel value (optional, default one third of the window height); action_info.coordinates with x1 and y1 required, and x2 and y2 optional. - backpress: no parameters. - key: action_info.code, the virtual key code of the key, which must be a valid key code (required).<br> All positional coordinates are relative to the window, in physical pixels (px). If a required field is missing or a value is outside its valid range, ARKUI_ERROR_CODE_PARAM_INVALID is returned.<br> This function is thread-safe, can be called from any thread, does not block the caller, and is not async-signal-safe. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_ContextHandle uiContext, uint32_t uniqueId, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)](#oh_arkui_nativemodule_uieventinjectcompositecommand) | - | Injects a control command into a target UI node asynchronously.<br> This API provides no cancellation operation or fixed completion timeout. Completion depends on UI-thread task processing. A caller-side wait timeout does not cancel an accepted request. Instance destruction does not cancel completion callbacks for accepted requests. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)( OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData) | Callback for injection completion.<br> Reports the results of command dispatch and immediate component handling, without waiting for deferred effects or rendering. Each accepted request receives exactly one callback on the originating UI thread after the injection function returns. Callbacks on different UI threads are not globally serialized.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
 ## Enum type description
 
@@ -82,6 +78,40 @@ Callback for injection completion.<br> Reports the results of command dispatch a
 | [OH_ArkUI_NativeModule_UIEventInjection_ResultCode](capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode) result | [in] Result code of the injection execution. For details, see [OH_ArkUI_NativeModule_UIEventInjection_ResultCode](capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode). |
 | void *userData | [in] Custom user data pointer supplied during injection. NULL if NULL was supplied. The framework stores only the pointer value for delivery to this callback. It does not access the pointed-to data, copy or free that data, or take ownership of it. After the request is accepted, the caller must keep non-NULL data valid until the callback returns. |
 
+### OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)
+```
+
+**Description**
+
+Injects a relaxed interaction command into the UI asynchronously.<br> The command expresses a high-level interaction intent (click, content_switch, scroll, backpress, or key) without targeting a specific component; the system decides how to execute it based on the mode.<br> The command is carried by a [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object created with OH_ArkUI_NativeModule_UIJsonWrapper_Create. The command payload's top-level structure is:<br> { "schemaVersion": 1, "cmd": { "type": "<command type>", "mode": "<execution mode>", "action_info": { ... } } }<br> The command-specific parameters are as follows; unless marked required, the action_info fields are optional:
+- click: mode (optional, default "auto"); action_info.coordinates with x1 and y1 (both required).
+- content_switch: mode must be "target"; action_info.count must be a positive integer (optional, default 1); action_info.direction ("forward" \| "backward", optional, default "forward"); action_info.coordinates.pos with x and y (required).
+- scroll: mode (optional, default "auto"); action_info.direction ("forward" \| "backward" \| "left" \| "right" \| "up" \| "down", optional, default "forward"); action_info.distance, a non-negative physical-pixel value (optional, default one third of the window height); action_info.coordinates with x1 and y1 required, and x2 and y2 optional.
+- backpress: no parameters.
+- key: action_info.code, the virtual key code of the key, which must be a valid key code (required).<br> All positional coordinates are relative to the window, in physical pixels (px). If a required field is missing or a value is outside its valid range, ARKUI_ERROR_CODE_PARAM_INVALID is returned.<br> This function is thread-safe, can be called from any thread, does not block the caller, and is not async-signal-safe.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] Pointer to a UI instance. It must not be NULL. |
+| [const OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [in] Configured JSON command. It must not be NULL and must remain valid for the duration of the call. The callee does not retain it. |
+| [OH_ArkUI_NativeModule_UIEventInjectionCallback](capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback) callback | [in] Optional callback, invoked once when the injected command finishes executing. It can be NULL. |
+| void *userData | [in] Custom user data passed to the callback. It can be NULL. The framework does not take ownership of it; the caller must keep it valid until the callback completes. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR if the command is queued successfully.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter is invalid or a required field is missing.</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID if the UI context is invalid.</li> </ul> |
+
 ### OH_ArkUI_NativeModule_UIEventInjectCompositeCommand()
 
 ```c
@@ -100,7 +130,7 @@ Injects a control command into a target UI node asynchronously.<br> This API pro
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] Pointer to a UI instance. Must not be NULL. The caller must be on the UI thread of this instance; a detected thread violation triggers a fatal abort. The uniqueId must resolve to a node within this instance. The pointer must remain valid throughout this function call. |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] Pointer to a UI instance. Must not be NULL. The caller must be on the UI thread of this instance; a detected thread violation triggers a fatal abort. The uniqueId must resolve to a node within this instance. The pointer must remain valid throughout this function call. |
 | uint32_t uniqueId | [in] Unique ID of the target node. The framework resolves this ID to the corresponding node within the uiContext instance. |
 | [const OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *command | [in] Command data. Must not be NULL. The data is carried by an [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object created with [OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate). The payload's top-level structure is: {"schemaVersion": 1, "cmd": {"type": "<command type>", "action_info": { ... }}} For supported command types, action_info field constraints, and examples, see the API development guide. The JSON data is internally copied before the function returns; if the caller owns command, it may release it with [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) after this function returns. |
 | [OH_ArkUI_NativeModule_UIEventInjectionCallback](capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback) callback | [in] Completion callback. Must not be NULL. After the request is accepted, it must remain callable until it returns, even if the caller's wait times out. |

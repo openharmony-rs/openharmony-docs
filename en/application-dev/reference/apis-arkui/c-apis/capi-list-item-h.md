@@ -10,7 +10,7 @@ Provides shared list item-related type and function definitions for <b>NativeNod
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -179,7 +179,7 @@ Sets the layout content of the **ListItemSwipeActionItem**.
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Layout information. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Layout information. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance()
 
@@ -590,7 +590,7 @@ Expands the swipe action.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | List item node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | List item node. |
 | [ArkUI_ListItemSwipeActionDirection](capi-list-item-h.md#arkui_listitemswipeactiondirection) direction | Direction to expand the swipe action. |
 
 **Returns**:
@@ -617,7 +617,7 @@ Collapses the swipe action.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | List item node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | List item node. |
 
 **Returns**:
 

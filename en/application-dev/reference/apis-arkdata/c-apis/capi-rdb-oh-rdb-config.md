@@ -12,7 +12,7 @@ Manages relational database configurations.
 
 **Since**: 10
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 
@@ -29,6 +29,6 @@ Manages relational database configurations.
 | const char *moduleName | Indicates the module name of the application. |
 | bool isEncrypt | Indicates whether the database is encrypted. |
 | int securityLevel | Indicates the security level [OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel) of the database. |
-| int area |  |
+| int area | Indicates the security area [Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea) of the database.<br>**Since**: 11 |
 
 

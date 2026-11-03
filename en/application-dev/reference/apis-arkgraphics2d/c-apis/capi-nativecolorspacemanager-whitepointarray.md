@@ -12,7 +12,7 @@ Provides a white point array structure. The white point is the coordinate that r
 
 **Since**: 13
 
-**Related module**: [NativeColorSpaceManager](capi-nativecolorspacemanager.md)
+**Related module**: [NativeColorSpaceManager](capi-others-nativecolorspacemanager.md)
 
 **Header file**: [native_color_space_manager.h](capi-native-color-space-manager-h.md)
 

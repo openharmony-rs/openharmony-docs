@@ -10,7 +10,7 @@
 
 **起始版本：** 21
 
-**相关模块：** [CloudDisk](capi-clouddisk.md)
+**相关模块：** [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 ## 汇总
 

@@ -12,7 +12,7 @@ Concurrency capability infos.
 
 **Since**: 18
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

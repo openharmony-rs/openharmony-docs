@@ -9,6 +9,7 @@
 | Name | Description |
 | -- | -- |
 | Elf32_Sword d_tag |  |
+| d_un |  |
 | d_un.d_val |  |
 | d_un.d_ptr |  |
 

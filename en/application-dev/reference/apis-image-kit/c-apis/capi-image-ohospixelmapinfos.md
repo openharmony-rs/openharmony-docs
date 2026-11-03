@@ -12,7 +12,7 @@ Defines the pixel map information.
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_pixel_map_mdk.h](capi-image-pixel-map-mdk-h.md)
 

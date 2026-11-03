@@ -12,7 +12,7 @@ Define a Pixelmap struct type, used for pixelmap pointer controls.
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [pixelmap_native.h](capi-pixelmap-native-h.md)
 

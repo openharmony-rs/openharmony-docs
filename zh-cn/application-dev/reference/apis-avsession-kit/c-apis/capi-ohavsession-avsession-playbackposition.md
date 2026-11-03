@@ -12,7 +12,7 @@ struct AVSession_PlaybackPosition {...}
 
 **起始版本：** 13
 
-**相关模块：** [OHAVSession](capi-ohavsession.md)
+**相关模块：** [OHAVSession](capi-others-ohavsession.md)
 
 **所在头文件：** [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
 

@@ -12,7 +12,7 @@ typedef struct ContentEmbed_StorageElements ContentEmbed_StorageElements
 
 **起始版本：** 24
 
-**相关模块：** [ContentEmbed](capi-contentembed.md)
+**相关模块：** [ContentEmbed](capi-others-contentembed.md)
 
 **所在头文件：** [content_embed_document.h](capi-content-embed-document-h.md)
 

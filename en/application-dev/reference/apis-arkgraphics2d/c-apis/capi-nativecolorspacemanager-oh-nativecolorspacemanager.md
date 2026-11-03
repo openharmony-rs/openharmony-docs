@@ -12,7 +12,7 @@ Provides the declaration of an **OH_NativeColorSpaceManager** struct.
 
 **Since**: 13
 
-**Related module**: [NativeColorSpaceManager](capi-nativecolorspacemanager.md)
+**Related module**: [NativeColorSpaceManager](capi-others-nativecolorspacemanager.md)
 
 **Header file**: [native_color_space_manager.h](capi-native-color-space-manager-h.md)
 

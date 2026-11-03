@@ -10,7 +10,7 @@ Provides Checkbox node type definitions for <b>NativeNode</b> APIs.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -38,7 +38,7 @@ Enumerates the shapes of the check box.
 
 | Enum item | Description |
 | -- | -- |
-| ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 |  |
-| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE |  |
+| ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | Checkbox shape is circle.<br>**Since**: 12 |
+| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE | Checkbox shape is rounded square.<br>**Since**: 12 |
 
 

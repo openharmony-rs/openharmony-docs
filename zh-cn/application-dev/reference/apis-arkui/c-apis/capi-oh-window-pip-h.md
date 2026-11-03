@@ -10,7 +10,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [WindowManager](capi-windowmanager.md)
+**相关模块：** [WindowManager](capi-arkui-windowmanager.md)
 
 ## 汇总
 
@@ -74,10 +74,6 @@
 | 名称 | 描述 |
 | -- | -- |
 | void* PictureInPicture_PipConfig | Picture in picture config.<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
-| void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId) | 定义画中画窗口创建完成的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
-| void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode) | 定义画中画窗口的生命周期回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
-| void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status) | 定义画中画窗口的控件点击事件回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
-| void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale) | 定义画中画窗口的尺寸变化回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Window.SessionManager |
 
 ## 枚举类型说明
 
@@ -97,10 +93,10 @@ enum PictureInPicture_PipTemplateType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PLAY = 0 |  |
-| VIDEO_CALL = 1 |  |
-| VIDEO_MEETING = 2 |  |
-| VIDEO_LIVE = 3 |  |
+| VIDEO_PLAY = 0 | 表示将要切换为画中画播放的媒体类型是视频，系统依此加载视频播放模板。<br>**起始版本：** 20 |
+| VIDEO_CALL = 1 | 表示将要切换为画中画播放的媒体类型是视频通话，系统依此加载视频通话模板。<br>**起始版本：** 20 |
+| VIDEO_MEETING = 2 | 表示将要切换为画中画播放的媒体类型是视频会议，系统依此加载视频会议模板。<br>**起始版本：** 20 |
+| VIDEO_LIVE = 3 | 表示将要切换为画中画播放的媒体类型是直播，系统依此加载直播模板。<br>**起始版本：** 20 |
 
 ### PictureInPicture_PipControlGroup
 
@@ -118,18 +114,18 @@ enum PictureInPicture_PipControlGroup
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101 |  |
-| VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102 |  |
-| VIDEO_CALL_MICROPHONE_SWITCH = 201 |  |
-| VIDEO_CALL_HANG_UP_BUTTON = 202 |  |
-| VIDEO_CALL_CAMERA_SWITCH = 203 |  |
-| VIDEO_CALL_MUTE_SWITCH = 204 |  |
-| VIDEO_MEETING_HANG_UP_BUTTON = 301 |  |
-| VIDEO_MEETING_CAMERA_SWITCH = 302 |  |
-| VIDEO_MEETING_MUTE_SWITCH = 303 |  |
-| VIDEO_MEETING_MICROPHONE_SWITCH = 304 |  |
-| VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401 |  |
-| VIDEO_LIVE_MUTE_SWITCH = 402 |  |
+| VIDEO_PLAY_VIDEO_PREVIOUS_NEXT = 101 | 视频播放模板的视频上一个/下一个控件组。与视频快进/后退控件组为互斥控件组。如添加视频快进/后退控件组，则不可添加该控件组。<br>**起始版本：** 20 |
+| VIDEO_PLAY_FAST_FORWARD_BACKWARD = 102 | 视频播放模板的视频快进/后退控件组。与视频上一个/下一个控件组为互斥控件组。如添加视频上一个/下一个控件组，则不可添加该控件组。<br>**起始版本：** 20 |
+| VIDEO_CALL_MICROPHONE_SWITCH = 201 | 视频通话模板的打开/关闭麦克风控件组。<br>**起始版本：** 20 |
+| VIDEO_CALL_HANG_UP_BUTTON = 202 | 视频通话模板的挂断控件组。<br>**起始版本：** 20 |
+| VIDEO_CALL_CAMERA_SWITCH = 203 | 视频通话模板的打开/关闭摄像头控件组。<br>**起始版本：** 20 |
+| VIDEO_CALL_MUTE_SWITCH = 204 | 视频通话模板的静音控件组。<br>**起始版本：** 20 |
+| VIDEO_MEETING_HANG_UP_BUTTON = 301 | 视频会议模板的挂断控件组。<br>**起始版本：** 20 |
+| VIDEO_MEETING_CAMERA_SWITCH = 302 | 视频会议模板的打开/关闭摄像头控件组。<br>**起始版本：** 20 |
+| VIDEO_MEETING_MUTE_SWITCH = 303 | 视频会议模板的静音控件组。<br>**起始版本：** 20 |
+| VIDEO_MEETING_MICROPHONE_SWITCH = 304 | 视频会议模板的打开/关闭麦克风控件组。<br>**起始版本：** 20 |
+| VIDEO_LIVE_VIDEO_PLAY_PAUSE = 401 | 直播模板的播放/暂停直播控件组。<br>**起始版本：** 20 |
+| VIDEO_LIVE_MUTE_SWITCH = 402 | 直播模板的静音控件组。<br>**起始版本：** 20 |
 
 ### PictureInPicture_PipControlType
 
@@ -147,15 +143,15 @@ enum PictureInPicture_PipControlType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PLAY_PAUSE = 0 |  |
-| VIDEO_PREVIOUS = 1 |  |
-| VIDEO_NEXT = 2 |  |
-| FAST_FORWARD = 3 |  |
-| FAST_BACKWARD = 4 |  |
-| HANG_UP_BUTTON = 5 |  |
-| MICROPHONE_SWITCH = 6 |  |
-| CAMERA_SWITCH = 7 |  |
-| MUTE_SWITCH = 8 |  |
+| VIDEO_PLAY_PAUSE = 0 | 播放/暂停控件。<br>**起始版本：** 20 |
+| VIDEO_PREVIOUS = 1 | 视频上一个控件。<br>**起始版本：** 20 |
+| VIDEO_NEXT = 2 | 视频下一个控件。<br>**起始版本：** 20 |
+| FAST_FORWARD = 3 | 视频快进控件。<br>**起始版本：** 20 |
+| FAST_BACKWARD = 4 | 视频快退控件。<br>**起始版本：** 20 |
+| HANG_UP_BUTTON = 5 | 挂断控件。<br>**起始版本：** 20 |
+| MICROPHONE_SWITCH = 6 | 打开/关闭麦克风控件。<br>**起始版本：** 20 |
+| CAMERA_SWITCH = 7 | 打开/关闭摄像头控件。<br>**起始版本：** 20 |
+| MUTE_SWITCH = 8 | 打开/关闭静音控件。<br>**起始版本：** 20 |
 
 ### PictureInPicture_PipControlStatus
 
@@ -173,10 +169,10 @@ enum PictureInPicture_PipControlStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PLAY = 1 |  |
-| PAUSE = 0 |  |
-| OPEN = 1 |  |
-| CLOSE = 0 |  |
+| PLAY = 1 | 视频播放状态。<br>**起始版本：** 20 |
+| PAUSE = 0 | 视频暂停状态。<br>**起始版本：** 20 |
+| OPEN = 1 | 摄像头/麦克风/静音控件的打开状态。<br>**起始版本：** 20 |
+| CLOSE = 0 | 摄像头/麦克风/静音控件的关闭状态。<br>**起始版本：** 20 |
 
 ### PictureInPicture_PipState
 
@@ -194,12 +190,12 @@ enum PictureInPicture_PipState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ABOUT_TO_START = 1 |  |
-| STARTED = 2 |  |
-| ABOUT_TO_STOP = 3 |  |
-| STOPPED = 4 |  |
-| ABOUT_TO_RESTORE = 5 |  |
-| ERROR = 6 |  |
+| ABOUT_TO_START = 1 | 表示画中画将要启动。<br>**起始版本：** 20 |
+| STARTED = 2 | 表示画中画已经启动。<br>**起始版本：** 20 |
+| ABOUT_TO_STOP = 3 | 表示画中画将要停止。<br>**起始版本：** 20 |
+| STOPPED = 4 | 表示画中画已经停止。<br>**起始版本：** 20 |
+| ABOUT_TO_RESTORE = 5 | 表示画中画将从小窗播放恢复到原始播放界面。<br>**起始版本：** 20 |
+| ERROR = 6 | 表示画中画生命周期执行过程出现了异常。<br>**起始版本：** 20 |
 
 
 ## 函数说明

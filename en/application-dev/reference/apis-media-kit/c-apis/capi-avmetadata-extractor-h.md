@@ -8,7 +8,7 @@ The file declares the AVMetadataExtractor APIs. You can use the APIs to obtain m
 
 **Since**: 18
 
-**Related module**: [AVMetadataExtractor](capi-avmetadataextractor.md)
+**Related module**: [AVMetadataExtractor](capi-media-kit-avmetadataextractor.md)
 
 ## Summary
 
@@ -38,12 +38,6 @@ The file declares the AVMetadataExtractor APIs. You can use the APIs to obtain m
 | [void OH_AVMetadataExtractor_OutputParam_Destroy(OH_AVMetadataExtractor_OutputParam* outputParam)](#oh_avmetadataextractor_outputparam_destroy) | - | Releases the **OH_AVMetadataExtractor_OutputParam** instance. |
 | [bool OH_AVMetadataExtractor_OutputParam_SetSize(OH_AVMetadataExtractor_OutputParam* outputParam, int32_t width, int32_t height)](#oh_avmetadataextractor_outputparam_setsize) | - | Sets the expected output size of the **OH_AVMetadataExtractor_OutputParam** instance. If **width** or **<br>height** is less than 0, the original width or height is used. If **width** or **height** is 0, the aspect ratio is maintained and the image is scaled proportionally. If both **width** and **height** are greater than 0, they are used to scale the image. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_AVMetadataExtractor_OnFrameFetched)(OH_AVMetadataExtractor *extractor, const OH_AVMetadataExtractor_FrameInfo* frameInfo, OH_AVErrCode code, void *userData) | Defines a callback used to obtain the frames captured by **AVMetadataExtractor**. Note: **frameInfo** is automatically released after the callback. However, you need to use [OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) to release **<br>frameInfo.image** to avoid memory leaks.<br>**Since**: 23 |
-
 ## Function description
 
 ### OH_AVMetadataExtractor_GetTrackDescription()
@@ -69,7 +63,7 @@ Obtains the track description of a specified index from the media source. This f
 
 | Type | Description |
 | -- | -- |
-| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing track description for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or format is unsupported. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy) after use. |
+| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing track description for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or format is unsupported. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) after use. |
 
 ### OH_AVMetadataExtractor_GetCustomInfo()
 
@@ -93,7 +87,7 @@ Obtains custom metadata from the media source. This function must be used after 
 
 | Type | Description |
 | -- | -- |
-| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing custom metadata for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or custom info not found. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy) after use. |
+| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing custom metadata for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or custom info not found. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) after use. |
 
 ### OH_AVMetadataExtractor_SetMediaSource()
 
@@ -233,7 +227,7 @@ Extracts an image at a specified time point from the video source. This function
 | -- | -- |
 | [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance. |
 | int64_t timeUs | Time (in microseconds) at which an image is extracted from the video resource. |
-| [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode) seekMode | Seek mode that defines the relationship between the specified time and the key frame. For details, see [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode). |
+| OH_AVMedia_SeekMode seekMode | Seek mode that defines the relationship between the specified time and the key frame. For details, see OH_AVMedia_SeekMode. |
 | [const OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)* outputParam | Output parameter of the image, for example, the height or width of the image. For details, see [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md). If this parameter is a null pointer, the original size of the video is used. Note: You need to use [OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) to release the pixel map after using it. |
 | [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md)** pixelMap | Used to receive images extracted from the video source. For details, see [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md). |
 
@@ -274,7 +268,7 @@ Extracts images at multiple specified time points from the video source asynchro
 | [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance. |
 | int64_t timesUs[] | The times array expected to fetch picture from the video resource. The unit is microsecond(us). |
 | uint16_t timesUsSize | Length of the time point array. |
-| [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode) seekMode | Seek mode that defines the relationship between the specified time and the key frame. For details, see [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode). |
+| OH_AVMedia_SeekMode seekMode | Seek mode that defines the relationship between the specified time and the key frame. For details, see OH_AVMedia_SeekMode. |
 | [const OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)* outputParam | Output parameter of the image, for example, the height or width of the image. For details, see [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md). If this parameter is a null pointer, the original video size is used for the obtained frame. |
 | [OH_AVMetadataExtractor_OnFrameFetched](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_onframefetched) onFrameInfoCallback | Callback function invoked after each frame is extracted or fails to be extracted. |
 | void* userData | Pointer to the user-defined data passed to the callback function. |

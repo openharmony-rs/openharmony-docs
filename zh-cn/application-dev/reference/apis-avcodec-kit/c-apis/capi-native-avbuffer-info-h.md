@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [Core](capi-core.md)
+**相关模块：** [Core](capi-avcodec-kit-core.md)
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 

@@ -12,7 +12,7 @@ Defines a struct for the font manager, which is used for font management.
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

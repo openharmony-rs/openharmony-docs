@@ -10,7 +10,7 @@ Defines a struct for the output parameters of a frame extracted by **AVMetadataE
 
 **Since**: 23
 
-**Related module**: [AVMetadataExtractor](capi-avmetadataextractor.md)
+**Related module**: [AVMetadataExtractor](capi-others-avmetadataextractor.md)
 
 **Header file**: [avmetadata_extractor_base.h](capi-avmetadata-extractor-base-h.md)
 

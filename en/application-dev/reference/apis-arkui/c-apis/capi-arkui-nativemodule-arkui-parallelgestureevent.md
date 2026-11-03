@@ -12,7 +12,7 @@ Defines a parallel gesture event. This struct is passed as a parameter of the [s
 
 **Since**: 26.0.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
 

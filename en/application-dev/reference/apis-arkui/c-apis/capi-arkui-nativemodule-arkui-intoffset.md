@@ -12,7 +12,7 @@ Defines the offset of the current component relative to its parent component.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [common_type.h](capi-common-type-h.md)
 

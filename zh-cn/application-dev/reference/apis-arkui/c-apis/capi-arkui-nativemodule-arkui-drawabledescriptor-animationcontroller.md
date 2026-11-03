@@ -12,7 +12,7 @@ typedef struct ArkUI_DrawableDescriptor_AnimationController ArkUI_DrawableDescri
 
 **起始版本：** 22
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [drawable_descriptor.h](capi-drawable-descriptor-h.md)
 

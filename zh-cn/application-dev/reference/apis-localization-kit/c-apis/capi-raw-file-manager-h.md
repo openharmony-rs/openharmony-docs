@@ -10,7 +10,7 @@
 
 **起始版本：** 8
 
-**相关模块：** [rawfile](capi-rawfile.md)
+**相关模块：** [rawfile](capi-localization-kit-rawfile.md)
 
 ## 汇总
 

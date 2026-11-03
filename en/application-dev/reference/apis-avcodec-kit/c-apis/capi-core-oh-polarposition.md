@@ -12,7 +12,7 @@ Represents a position in polar (spherical) coordinates.<br> Polar coordinates us
 
 **Since**: 26.0.0
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-others-core.md)
 
 **Header file**: [native_audio_vivid.h](capi-native-audio-vivid-h.md)
 

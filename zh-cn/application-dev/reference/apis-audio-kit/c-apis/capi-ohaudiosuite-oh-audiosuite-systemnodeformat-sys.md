@@ -14,7 +14,7 @@ struct OH_AudioSuite_SystemNodeFormat {...}
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_suite_base.h（系统接口）](capi-native-audio-suite-base-h-sys.md)
 

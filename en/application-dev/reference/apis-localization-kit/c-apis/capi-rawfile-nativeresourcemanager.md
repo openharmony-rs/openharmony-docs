@@ -12,7 +12,7 @@ Represents a `ResourceManager` object at the Native layer. `NativeResourceManage
 
 **Since**: 8
 
-**Related module**: [rawfile](capi-rawfile.md)
+**Related module**: [rawfile](capi-others-rawfile.md)
 
 **Header file**: [raw_file_manager.h](capi-raw-file-manager-h.md)
 

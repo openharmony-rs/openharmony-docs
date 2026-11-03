@@ -2,9 +2,9 @@
 
 ## Overview
 
-The **background_process_manager.h** file declares the APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through OH_Ability_StartNativeChildProcess.
+The **background_process_manager.h** file declares the APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through [OH_Ability_StartNativeChildProcess](../../apis-ability-kit/c-apis/capi-native-child-process-h.md#oh_ability_startnativechildprocess).
 
-**Include**: <background_process_manager/background_process_manager.h>
+**File to Include**: <background_process_manager/background_process_manager.h>
 
 **Library**: libbackground_process_manager.z.so
 
@@ -12,7 +12,7 @@ The **background_process_manager.h** file declares the APIs for background child
 
 **Since**: 17
 
-**Related module**: [BackgroundProcessManager](capi-backgroundprocessmanager.md)
+**Related module**: [BackgroundProcessManager](capi-background-tasks-kit-backgroundprocessmanager.md)
 
 ## Summary
 
@@ -92,7 +92,7 @@ Sets the child process priority. After a child process is suppressed, the CPU re
 
 | Parameter | Description |
 | -- | -- |
-| int pid | ID of the child process to be suppressed, which is the value of the **pid** parameter after the child process is created through the OH_Ability_StartNativeChildProcess API. |
+| int pid | ID of the child process to be suppressed, which is the value of the **pid** parameter after the child process is created through the [OH_Ability_StartNativeChildProcess](../../apis-ability-kit/c-apis/capi-native-child-process-h.md#oh_ability_startnativechildprocess) API. |
 | [BackgroundProcessManager_ProcessPriority](capi-background-process-manager-h.md#backgroundprocessmanager_processpriority) priority | Suppression priority. |
 
 **Returns**:
@@ -119,7 +119,7 @@ Unsuppresses the child process. In this case, the child process follows the sche
 
 | Parameter | Description |
 | -- | -- |
-| int pid | ID of the child process, which is the value of the **pid** parameter of the OH_Ability_StartNativeChildProcess API. |
+| int pid | ID of the child process, which is the value of the **pid** parameter of the [OH_Ability_StartNativeChildProcess](../../apis-ability-kit/c-apis/capi-native-child-process-h.md#oh_ability_startnativechildprocess) API. |
 
 **Returns**:
 

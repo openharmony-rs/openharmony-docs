@@ -12,7 +12,7 @@ Defines a blur style.
 
 **Since**: 26.0.0
 
-**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
 
 **Header file**: [native_render.h](capi-native-render-h.md)
 

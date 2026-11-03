@@ -10,7 +10,7 @@ Defines the code of the HiDebug module.
 
 **Since**: 12
 
-**Related module**: [HiDebug](capi-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 ## Summary
 
@@ -31,7 +31,7 @@ Defines the code of the HiDebug module.
 | [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | - | Defines a struct for sampling configuration. |
 | [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | - | Defines a struct for encapsulating the result of a single resource collection. |
 | [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | - | Defines a struct for the resource collection configurations. |
-| [HiDebug_Backtrace_Object](capi-hidebug-hidebug-backtrace-object.md) | HiDebug_Backtrace_Object | Defines an object used for stack backtracing and stack parsing. |
+| [HiDebug_Backtrace_Object\_\_*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | Defines an object used for stack backtracing and stack parsing. |
 | [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage8h.md) | HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage. |
 
 ### Enum
@@ -95,8 +95,6 @@ Defines the code of the HiDebug module.
 | Name | Description |
 | -- | -- |
 | HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage.<br>**Since**: 12<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath) | Triggered for the trace collection request.<br>**Since**: 24<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result) | Triggered for the resource profiling.<br>**Since**: 24<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 
 ## Enum type description
 
@@ -252,9 +250,9 @@ Enumerates the memory listener callback types. You can process the related logic
 
 | Enum item | Description |
 | -- | -- |
-| OH_HIDEBUG_DO_NOTHING = 0 |  |
-| OH_HIDEBUG_RUNNING_GC = 1 |  |
-| OH_HIDEBUG_DUMP_SNAPSHOT = 2 |  |
+| OH_HIDEBUG_DO_NOTHING = 0 | Default value. No processing is required.<br>**Since**: 26.0.0 |
+| OH_HIDEBUG_RUNNING_GC = 1 | GC operation<br>**Since**: 26.0.0 |
+| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | Dump memory snapshot<br>**Since**: 26.0.0 |
 
 ### OH_HiDebug_ProfilerStackTraceMode
 

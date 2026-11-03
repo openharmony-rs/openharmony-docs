@@ -12,7 +12,7 @@ typedef struct MediaKeySession MediaKeySession
 
 **起始版本：** 11
 
-**相关模块：** [VideoDecoder](capi-videodecoder.md)
+**相关模块：** [VideoDecoder](capi-others-videodecoder.md)
 
 **所在头文件：** [native_avcodec_videodecoder.h](capi-native-avcodec-videodecoder-h.md)
 

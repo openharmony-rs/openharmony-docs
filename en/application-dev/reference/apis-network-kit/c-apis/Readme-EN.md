@@ -1,10 +1,10 @@
 # C API<!--c-networkkit-->
 
 - Module<!--networkkit-module-->
-    - [netstack](capi-netstack.md)
-    - [NetEthernet](capi-netethernet.md)
-    - [TrafficFilter](capi-trafficfilter.md)
-    - [NetConnection](capi-netconnection.md)
+    - [netstack](capi-network-kit-netstack.md)
+    - [NetEthernet](capi-network-kit-netethernet.md)
+    - [TrafficFilter](capi-network-kit-trafficfilter.md)
+    - [NetConnection](capi-network-kit-netconnection.md)
 - Header file<!--networkkit-headerfile-->
     - [net_http_type.h](capi-net-http-type-h.md)
     - [net_http.h](capi-net-http-h.md)

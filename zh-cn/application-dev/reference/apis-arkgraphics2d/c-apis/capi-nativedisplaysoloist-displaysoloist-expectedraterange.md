@@ -12,7 +12,7 @@ typedef struct DisplaySoloist_ExpectedRateRange {...} DisplaySoloist_ExpectedRat
 
 **起始版本：** 12
 
-**相关模块：** [NativeDisplaySoloist](capi-nativedisplaysoloist.md)
+**相关模块：** [NativeDisplaySoloist](capi-others-nativedisplaysoloist.md)
 
 **所在头文件：** [native_display_soloist.h](capi-native-display-soloist-h.md)
 

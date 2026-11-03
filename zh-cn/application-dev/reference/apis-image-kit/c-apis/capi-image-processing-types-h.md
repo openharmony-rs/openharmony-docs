@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [ImageProcessing](capi-imageprocessing.md)
+**相关模块：** [ImageProcessing](capi-image-kit-imageprocessing.md)
 
 ## 汇总
 
@@ -19,8 +19,8 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md) | - | 色彩空间信息，用于色彩空间转换能力查询。 |
-| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md) | OH_ImageProcessing | 提供OH_ImageProcessing结构体声明。<br>定义一个初始化为空的OH_ImageProcessing指针，并调用OH_ImageProcessing_Create来创建图片处理实例。 调用该接口前，应确保传入的指针为空。用户可根据不同的图片处理类型，分别创建多个图片处理实例。 |
-| [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md) | OH_PixelmapNative | OH_PixelmapNative是Native层封装的图像解码后无压缩的位图格式结构体，支持像素数据读写、不透明度设置、缩放、平移、旋转、翻转、裁剪等操作， 适用于需要在Native层对Pixelmap进行像素级处理与变换的场景。<br>创建OH_PixelmapNative需要使用OH_PixelmapNative_CreatePixelmap系列函数， 该函数在未指定源像素格式时，会默认按BGRA_8888格式解析源像素数据。使用完毕后，必须调用OH_PixelmapNative_Release函数释放资源，两者需配对使用，否则会导致内存泄漏。<br> OH_PixelmapNative结构体的部分相关函数和操作方式如下： |
+| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md) | OH_ImageProcessing | 提供OH_ImageProcessing结构体声明。<br>定义一个初始化为空的OH_ImageProcessing指针，并调用[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)来创建图片处理实例。 调用该接口前，应确保传入的指针为空。用户可根据不同的图片处理类型，分别创建多个图片处理实例。 |
+| [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md) | OH_PixelmapNative | OH_PixelmapNative是Native层封装的图像解码后无压缩的位图格式结构体，支持像素数据读写、不透明度设置、缩放、平移、旋转、翻转、裁剪等操作， 适用于需要在Native层对Pixelmap进行像素级处理与变换的场景。<br>创建OH_PixelmapNative需要使用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)系列函数， 该函数在未指定源像素格式时，会默认按BGRA_8888格式解析源像素数据。使用完毕后，必须调用[OH_PixelmapNative_Release](capi-pixelmap-native-h.md#oh_pixelmapnative_release)函数释放资源，两者需配对使用，否则会导致内存泄漏。<br> OH_PixelmapNative结构体的部分相关函数和操作方式如下： |
 | [OH_AVFormat](capi-imageprocessing-oh-avformat.md) | OH_AVFormat | 为OH_AVFormat接口定义native层对象。 |
 
 ### 枚举
@@ -34,12 +34,12 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 用于创建色彩空间转换的图片处理实例。 <br>色彩空间转换包括单层HDR图片转换SDR图片，SDR图片之间的转换，以及SDR图片转换单层HDR图片，部分能力由厂商支持。使用 OH_ImageProcessing_IsColorSpaceConversionSupported查询某种转换是否支持在单层图片之间进行。 <br>**参考：**OH_ImageProcessing_Create<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t IMAGE_PROCESSING_TYPE_COMPOSITION | 用于创建双层HDR图片转换单层HDR图片的图片处理实例。 <br>包括从双层HDR图片转换为单层HDR图片的能力。部分能力由厂商支持。 使用OH_ImageProcessing_IsCompositionSupported查询是否支持从双层HDR图片到单层HDR图片的转换。 <br>**参考：**OH_ImageProcessing_Create<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION | 用于创建单层HDR图片转换双层HDR图片的图片处理实例。 <br>包括从单层HDR图片转换为双层HDR图片的能力。部分能力由厂商支持。 使用OH_ImageProcessing_IsDecompositionSupported查询是否支持从单层HDR图片到双层HDR图片的转换。 <br>**参考：**OH_ImageProcessing_Create<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION | 用于创建元数据生成的图片处理实例。 <br>生成单层HDR图片的HDR Vivid元数据。该能力由厂商支持。如果不支持该能力，OH_ImageProcessing_Create将返回 [IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-image-processing-types-h.md#imageprocessing_errorcode)。 <br>**参考：**OH_ImageProcessing_Create<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const int32_t IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER | 用于创建细节增强的图片处理实例。 <br>按指定图像质量缩放或调整图片大小，或仅增强图像细节以在不更改分辨率的情况下渲染图片。 <br>**参考：**OH_ImageProcessing_Create<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
-| const char *IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 用于设定图像细节增强的质量级别。 <br>使用[ImageDetailEnhancer_QualityLevel](capi-image-processing-types-h.md#imagedetailenhancer_qualitylevel)获取其值。使用OH_ImageProcessing_SetParameter设置质量级别。使用 OH_ImageProcessing_GetParameter获取当前质量级别。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
+| const int32_t IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 用于创建色彩空间转换的图片处理实例。 <br>色彩空间转换包括单层HDR图片转换SDR图片，SDR图片之间的转换，以及SDR图片转换单层HDR图片，部分能力由厂商支持。使用 [OH_ImageProcessing_IsColorSpaceConversionSupported](capi-image-processing-h.md#oh_imageprocessing_iscolorspaceconversionsupported)查询某种转换是否支持在单层图片之间进行。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
+| const int32_t IMAGE_PROCESSING_TYPE_COMPOSITION | 用于创建双层HDR图片转换单层HDR图片的图片处理实例。 <br>包括从双层HDR图片转换为单层HDR图片的能力。部分能力由厂商支持。 使用[OH_ImageProcessing_IsCompositionSupported](capi-image-processing-h.md#oh_imageprocessing_iscompositionsupported)查询是否支持从双层HDR图片到单层HDR图片的转换。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
+| const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION | 用于创建单层HDR图片转换双层HDR图片的图片处理实例。 <br>包括从单层HDR图片转换为双层HDR图片的能力。部分能力由厂商支持。 使用[OH_ImageProcessing_IsDecompositionSupported](capi-image-processing-h.md#oh_imageprocessing_isdecompositionsupported)查询是否支持从单层HDR图片到双层HDR图片的转换。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
+| const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION | 用于创建元数据生成的图片处理实例。 <br>生成单层HDR图片的HDR Vivid元数据。该能力由厂商支持。如果不支持该能力，[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)将返回 [IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-image-processing-types-h.md#imageprocessing_errorcode)。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
+| const int32_t IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER | 用于创建细节增强的图片处理实例。 <br>按指定图像质量缩放或调整图片大小，或仅增强图像细节以在不更改分辨率的情况下渲染图片。 <br>**参考：**[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
+| const char *IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 用于设定图像细节增强的质量级别。 <br>使用[ImageDetailEnhancer_QualityLevel](capi-image-processing-types-h.md#imagedetailenhancer_qualitylevel)获取其值。使用[OH_ImageProcessing_SetParameter](capi-image-processing-h.md#oh_imageprocessing_setparameter)设置质量级别。使用 [OH_ImageProcessing_GetParameter](capi-image-processing-h.md#oh_imageprocessing_getparameter)获取当前质量级别。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine |
 
 ## 枚举类型说明
 

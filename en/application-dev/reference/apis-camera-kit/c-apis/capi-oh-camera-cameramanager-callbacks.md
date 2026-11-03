@@ -12,7 +12,7 @@ The struct describes the callbacks used to listen for camera status changes.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera_manager.h](capi-camera-manager-h.md)
 

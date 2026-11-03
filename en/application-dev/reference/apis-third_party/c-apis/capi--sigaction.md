@@ -8,6 +8,7 @@
 
 | Name | Description |
 | -- | -- |
+| \_\_sa_handler |  |
 | sigset_t sa_mask |  |
 | int sa_flags |  |
 
@@ -16,9 +17,9 @@
 
 | Name | Complete quotation | Description |
 | -- | -- | -- |
-| [void (\*sa_handler)(int)](#sa_handler) | \_\_sa_handler->sa_handler() |  |
-| [void (\*sa_sigaction)(int, siginfo_t *, void *)](#sa_sigaction) | \_\_sa_handler->sa_sigaction() |  |
-| [void (\*sa_restorer)(void)](#sa_restorer) | sa_restorer() |  |
+| [void (\*sa_handler)(int)](#sa_handler) | \_\_sa_handler->sa_handler |  |
+| [void (\*sa_sigaction)(int, siginfo_t *, void *)](#sa_sigaction) | \_\_sa_handler->sa_sigaction |  |
+| [void (\*sa_restorer)(void)](#sa_restorer) | sa_restorer |  |
 
 ## Member function description
 

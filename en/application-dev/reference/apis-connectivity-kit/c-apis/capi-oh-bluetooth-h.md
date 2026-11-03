@@ -10,7 +10,7 @@ Define interfaces for querying bluetooth switch status.
 
 **Since**: 13
 
-**Related module**: [Bluetooth](capi-bluetooth.md)
+**Related module**: [Bluetooth](capi-connectivity-kit-bluetooth.md)
 
 ## Summary
 

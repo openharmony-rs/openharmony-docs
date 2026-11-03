@@ -12,7 +12,7 @@ ArkUI提供的Native侧自定义弹窗接口集合。
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_dialog.h](capi-native-dialog-h.md)
 
@@ -61,7 +61,7 @@ ArkUI_NativeDialogHandle (*create)()
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) | 返回指向自定义弹窗的指针，如果创建失败，则返回空指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) | 返回指向自定义弹窗的指针，如果创建失败，则返回空指针。 |
 
 ### dispose()
 
@@ -77,7 +77,7 @@ void (*dispose)(ArkUI_NativeDialogHandle handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 
 ### setContent()
 
@@ -97,14 +97,14 @@ int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  ArkUI_NodeHandle content | 弹窗内容根节点指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### removeContent()
 
@@ -124,13 +124,13 @@ int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setContentAlignment()
 
@@ -150,7 +150,7 @@ int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignmen
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  int32_t alignment | 对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。 |
 |  float offsetX | 弹窗的水平偏移量，浮点型，单位：vp。 |
 |  float offsetY | 弹窗的垂直偏移量，浮点型，单位：vp。 |
@@ -159,7 +159,7 @@ int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignmen
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### resetContentAlignment()
 
@@ -179,13 +179,13 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setModalMode()
 
@@ -205,14 +205,14 @@ int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  bool isModal | 设置是否开启模态窗口，模态窗口有蒙层，非模态窗口无蒙层。为true时开启模态窗口，为false时不开启模态窗口。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setAutoCancel()
 
@@ -232,14 +232,14 @@ int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  bool autoCancel | 设置是否允许通过点击遮罩层退出，true表示关闭弹窗，false表示不关闭弹窗。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setMask()
 
@@ -259,7 +259,7 @@ int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const Ar
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  uint32_t maskColor | 设置遮罩颜色，0xargb格式。 |
 |  const ArkUI_Rect* maskRect | 遮蔽层区域范围的指针，遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。参数类型[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)。 |
 
@@ -267,7 +267,7 @@ int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setBackgroundColor()
 
@@ -287,14 +287,14 @@ int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgrou
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  uint32_t backgroundColor | 设置弹窗背景颜色，0xargb格式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setCornerRadius()
 
@@ -314,7 +314,7 @@ int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  float topLeft | 设置弹窗背板左上角圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。 |
 |  float topRight | 设置弹窗背板右上角圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。 |
 | float bottomLeft | 设置弹窗背板左下圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。 |
@@ -324,7 +324,7 @@ int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setGridColumnCount()
 
@@ -344,14 +344,14 @@ int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  int32_t gridCount | 默认为按照窗口大小自适应，最大栅格数为系统最大栅格数。 取值范围：大于等于0的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### enableCustomStyle()
 
@@ -371,14 +371,14 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  bool enableCustomStyle | 弹窗容器样式是否可以自定义。 默认值：false true：弹窗容器样式不能自定义，宽度自适应子节点，圆角为0，弹窗背景色透明；false：弹窗容器样式可以自定义，高度自适应子节点，宽度由栅格系统定义，圆角半径24vp，PC/2in1设备避让屏幕边缘以及窗口标题栏。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### enableCustomAnimation()
 
@@ -398,14 +398,14 @@ int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCus
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  bool enableCustomAnimation | true:使用自定义动画，关闭系统默认动画；false:使用系统默认动画。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### registerOnWillDismiss()
 
@@ -425,14 +425,14 @@ int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  [ArkUI_OnWillDismissEvent](capi-native-dialog-h.md#arkui_onwilldismissevent) eventHandler | 弹窗关闭的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### show()
 
@@ -448,14 +448,14 @@ int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 |  bool showInSubWindow | 是否在子窗口显示弹窗。true表示在子窗显示弹窗。false表示不在子窗显示弹窗。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### close()
 
@@ -471,13 +471,13 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。此时仅表示关闭指令下发成功，不代表弹窗完全关闭。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。此时仅表示关闭指令下发成功，不代表弹窗完全关闭。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### registerOnWillDismissWithUserData()
 
@@ -501,6 +501,6 @@ int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, vo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 

@@ -10,7 +10,7 @@ Defines the start options APIs.
 
 **Since**: 17
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 
@@ -63,9 +63,7 @@ Defines the start options APIs.
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowWidthValue(AbilityRuntime_StartOptions *startOptions, int32_t *minWindowWidth)](#oh_abilityruntime_getstartoptionsminwindowwidthvalue) | Get the minimum window width from start options. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowWidthValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowWidth)](#oh_abilityruntime_getstartoptionsmaxwindowwidthvalue) | Get the maximum window width from start options. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *minWindowHeight)](#oh_abilityruntime_getstartoptionsminwindowheightvalue) | Get the minimum window height from start options. |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowHeight)
-
-} // extern "C"](#oh_abilityruntime_getstartoptionsmaxwindowheightvalue) | Get the maximum window height from start options. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowHeight)](#oh_abilityruntime_getstartoptionsmaxwindowheightvalue) | Get the maximum window height from start options. |
 
 ## Function description
 
@@ -1299,8 +1297,6 @@ Get the minimum window height from start options.
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowHeight)
-
-} // extern "C"
 ```
 
 **Description**
@@ -1316,7 +1312,7 @@ Get the maximum window height from start options.
 | Parameter | Description |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | [in] The start options to read. |
-| maxWindowHeight | [out] The obtained maximum window height. It must not be NULL. |
+| int32_t *maxWindowHeight | [out] The obtained maximum window height. It must not be NULL. |
 
 **Returns**:
 

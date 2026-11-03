@@ -12,7 +12,7 @@ Define the InputMethod_TextEditorProxy structure type.<br> Provides methods for 
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-others-inputmethod.md)
 
 **Header file**: [inputmethod_text_editor_proxy_capi.h](capi-inputmethod-text-editor-proxy-capi-h.md)
 

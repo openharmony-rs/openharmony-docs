@@ -10,7 +10,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [NetEthernet](capi-netethernet.md)
+**相关模块：** [NetEthernet](capi-network-kit-netethernet.md)
 
 ## 汇总
 

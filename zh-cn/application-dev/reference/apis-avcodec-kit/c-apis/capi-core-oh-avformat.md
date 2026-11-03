@@ -12,7 +12,7 @@ typedef struct OH_AVFormat OH_AVFormat
 
 **起始版本：** 9
 
-**相关模块：** [Core](capi-core.md)
+**相关模块：** [Core](capi-others-core.md)
 
 **所在头文件：** [native_avformat.h](capi-native-avformat-h.md)
 

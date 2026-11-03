@@ -12,7 +12,7 @@ typedef struct OH_NativeVSync_ExpectedRateRange {...} OH_NativeVSync_ExpectedRat
 
 **起始版本：** 20
 
-**相关模块：** [NativeVsync](capi-nativevsync.md)
+**相关模块：** [NativeVsync](capi-others-nativevsync.md)
 
 **所在头文件：** [native_vsync.h](capi-native-vsync-h.md)
 

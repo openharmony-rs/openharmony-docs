@@ -12,7 +12,7 @@ Defines an animator animation option object, which is used to set animation attr
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_animate.h](capi-native-animate-h.md)
 

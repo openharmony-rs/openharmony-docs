@@ -12,7 +12,7 @@ Defines certificate pinning information.
 
 **Since**: 12
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-others-netstack.md)
 
 **Header file**: [net_ssl_c_type.h](capi-net-ssl-c-type-h.md)
 
@@ -22,8 +22,8 @@ Defines certificate pinning information.
 
 | Name | Description |
 | -- | -- |
-| NetStack_CertificatePinningKind kind | Certificate lock type |
-| NetStack_HashAlgorithm hashAlgorithm | Hash algorithm |
+| [NetStack_CertificatePinningKind](capi-net-ssl-c-type-h.md#netstack_certificatepinningkind) kind | Certificate lock type |
+| [NetStack_HashAlgorithm](capi-net-ssl-c-type-h.md#netstack_hashalgorithm) hashAlgorithm | Hash algorithm |
 | *publicKeyHash |  |
 
 

@@ -12,7 +12,7 @@ struct Vibrator_FileDescription {...}
 
 **起始版本：** 11
 
-**相关模块：** [Vibrator](capi-vibrator.md)
+**相关模块：** [Vibrator](capi-others-vibrator.md)
 
 **所在头文件：** [vibrator_type.h](capi-vibrator-type-h.md)
 

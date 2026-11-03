@@ -12,7 +12,7 @@ typedef struct ArkUI_CoastingAxisEvent ArkUI_CoastingAxisEvent
 
 **起始版本：** 22
 
-**相关模块：** [ArkUI_EventModule](capi-arkui-eventmodule.md)
+**相关模块：** [ArkUI_EventModule](capi-others-arkui-eventmodule.md)
 
 **所在头文件：** [ui_input_event.h](capi-ui-input-event-h.md)
 

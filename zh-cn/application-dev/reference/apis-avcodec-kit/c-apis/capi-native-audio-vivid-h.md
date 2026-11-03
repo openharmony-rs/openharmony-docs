@@ -12,7 +12,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [Core](capi-core.md)
+**相关模块：** [Core](capi-avcodec-kit-core.md)
 
 ## 汇总
 
@@ -23,7 +23,7 @@
 | [OH_CartesianPosition](capi-core-oh-cartesianposition.md) | - | 表示对象声源在笛卡尔坐标系（Cartesian coordinate system）中的位置。<br> 笛卡尔坐标系使用x、y、z轴定义三维空间中的位置。 |
 | [OH_PolarPosition](capi-core-oh-polarposition.md) | - | 表示极坐标系（polar coordinate system，也叫球坐标系）中的位置。<br> 极坐标系使用方位角、俯仰角和距离定义对象声源在三维空间中的位置。 |
 | [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) | - | 表示音频对象声源在三维空间中的位置。<br> 该位置可以用笛卡尔坐标或极坐标表示。 |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) | OH_AudioVividMetaBuilder | OH_AudioVividMetaBuilder的前向声明。 |
+| [OH_AudioVividMetaBuilderStruct](capi-core-oh-audiovividmetabuilderstruct.md) | OH_AudioVividMetaBuilder | OH_AudioVividMetaBuilder的前向声明。 |
 
 ### 枚举
 
@@ -67,7 +67,7 @@ Audio Vivid编码器信号格式枚举。
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MONO = 0 | Audio Vivid信号格式为单声道，编码器接收单声道数据，内部标记声道布局为[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_MONO。<br>**起始版本：** 26.0.0 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_STEREO = 1 | Audio Vivid信号格式为立体声，编码器接收双声道数据，内部标记声道布局为[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO。<br>**起始版本：** 26.0.0 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Audio Vivid信号格式为多声道，编码器支持声道布局[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_5POINT1POINT2、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_7POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2。<br>**起始版本：** 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | Audio Vivid编码HOA类型标识。 该编码模式编码要配置声道类型，支持的声道类型如下： [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D。 配置阶段生效 OH_AudioCodec_Configure。 如果配置不支持的声道类型，则返回[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)。<br>**起始版本：** 26.0.1 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | Audio Vivid编码HOA类型标识。 该编码模式编码要配置声道类型，支持的声道类型如下： [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D。 配置阶段生效 [OH_AudioCodec_Configure](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_configure)。 如果配置不支持的声道类型，则返回[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)。<br>**起始版本：** 26.0.1 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Audio Vivid信号格式为混合模式，包含声床（Bed）和对象（object）。声床的声道布局支持[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2。<br>**起始版本：** 26.0.0 |
 
 
@@ -95,7 +95,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Create(OH_AudioVividMetaBuilder **builder,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) **builder | 输出参数，用于获取OH_AudioVividMetaBuilder实例指针的指针。 |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) **builder | 输出参数，用于获取OH_AudioVividMetaBuilder实例指针的指针。 |
 | [const OH_AVFormat](capi-core-oh-avformat.md) *format | 指向包含音频格式信息的OH_AVFormat指针。 |
 
 **返回值：**
@@ -122,7 +122,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectPos(OH_AudioVividMetaBuilder *
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | int32_t objectIndex | 要更新的音频对象索引，从0开始，不超过在[OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create)创建builder时入参format 设置的[OH_MD_KEY_AUDIO_OBJECT_NUMBER](capi-native-avcodec-base-h.md#变量)对应的值。 |
 | [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) pos | 音频对象声源的新位置。 |
 
@@ -150,7 +150,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | int32_t objectIndex | 要更新的音频对象索引，从0开始，不超过在[OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create)创建builder时入参format 设置的[OH_MD_KEY_AUDIO_OBJECT_NUMBER](capi-native-avcodec-base-h.md#变量)对应的值。 |
 | float gain | 对象渲染时应用的线性增益值，范围为[0.0, 6.0]，线性增益0.0为静音，1.0为不变。此参数可选，如未设置则不应用增益。 |
 
@@ -178,7 +178,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | bool withStaticMeta | 设置输出的长度是否包含静态元数据。true表示输出长度包含静态元数据；false表示输出长度仅包含动态元数据。 |
 | int32_t *len | 用于接收元数据长度的指针。单位为字节。 |
 
@@ -206,7 +206,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *bu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | bool withStaticMeta | 设置输出的长度是否包含静态元数据。true表示输出缓冲区包含静态元数据；false表示输出缓冲区仅包含动态元数据。 |
 | uint8_t *buffer | 用于接收元数据内容的缓冲区指针。 |
 | int32_t len | 缓冲区长度。单位为字节。 |
@@ -235,7 +235,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | 指向待销毁的OH_AudioVividMetaBuilder的指针。 |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向待销毁的OH_AudioVividMetaBuilder的指针。 |
 
 **返回值：**
 
@@ -265,7 +265,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilde
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) **builder | 输出参数，用于获取OH_AudioVividMetaBuilder实例指针的指针。 |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) **builder | 输出参数，用于获取OH_AudioVividMetaBuilder实例指针的指针。 |
 
 **返回值：**
 
@@ -295,7 +295,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *b
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | const uint8_t *buffer | 指向包含基础元数据的指针。 |
 | int32_t len | 缓冲区长度。单位为字节（Byte）。 |
 
@@ -327,7 +327,7 @@ Audio Vivid元数据构造器内添加一个音频对象。<br> 添加音频对�
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | int32_t *objectIndex | 输出参数，用于输出新增对象的索引。 |
 
 **返回值：**
@@ -354,7 +354,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilder.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | int32_t objectIndex | 要移除的音频对象的索引。 |
 
 **返回值：**

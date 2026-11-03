@@ -12,7 +12,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_InputParams {...} OH_AbilityRu
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
 
 **所在头文件：** [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 

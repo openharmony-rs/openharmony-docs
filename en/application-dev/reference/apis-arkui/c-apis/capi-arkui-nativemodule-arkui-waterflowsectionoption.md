@@ -12,7 +12,7 @@ Defines the water flow section configuration.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [water_flow.h](capi-water-flow-h.md)
 

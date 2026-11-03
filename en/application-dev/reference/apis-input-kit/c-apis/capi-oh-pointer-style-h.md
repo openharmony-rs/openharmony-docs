@@ -4,7 +4,7 @@
 
 Defines the mouse cursor styles.
 
-**Include**: <multimodalinput/oh_pointer_style.h>
+**File to Include**: <multimodalinput/oh_pointer_style.h>
 
 **Library**: libohinput.so
 
@@ -12,7 +12,7 @@ Defines the mouse cursor styles.
 
 **Since**: 22
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-input-kit-input.md)
 
 ## Summary
 

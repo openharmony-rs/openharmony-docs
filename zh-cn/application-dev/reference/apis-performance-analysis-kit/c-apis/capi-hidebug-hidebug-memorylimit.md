@@ -12,7 +12,7 @@ struct HiDebug_MemoryLimit {...}
 
 **起始版本：** 12
 
-**相关模块：** [HiDebug](capi-hidebug.md)
+**相关模块：** [HiDebug](capi-others-hidebug.md)
 
 **所在头文件：** [hidebug_type.h](capi-hidebug-type-h.md)
 
@@ -22,7 +22,7 @@ struct HiDebug_MemoryLimit {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t rssLimit | 应用程序进程可用的物理内存限制，以KB为单位，实际当前系统未对进程可用物理内存做限制，但是进程的可用物理内存仍然不会超过设备的实际最大可用物理内存，当前设备的物理内存使用情况可通过 OH_HiDebug_GetSystemMemInfo获取。 |
+| uint64_t rssLimit | 应用程序进程可用的物理内存限制，以KB为单位，实际当前系统未对进程可用物理内存做限制，但是进程的可用物理内存仍然不会超过设备的实际最大可用物理内存，当前设备的物理内存使用情况可通过 [OH_HiDebug_GetSystemMemInfo](capi-hidebug-h.md#oh_hidebug_getsystemmeminfo)获取。 |
 | uint64_t vssLimit | 应用程序进程的虚拟内存限制，以KB为单位。 |
 
 

@@ -4,7 +4,7 @@
 
 Defines the asymmetric cipher interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_asym_cipher.h>
+**File to Include**: <CryptoArchitectureKit/crypto_asym_cipher.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the asymmetric cipher interfaces.
 
 **Since**: 20
 
-**Related module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
+**Related module**: [CryptoAsymCipherApi](capi-crypto-architecture-kit-cryptoasymcipherapi.md)
 
 ## Summary
 
@@ -83,7 +83,7 @@ Creates an asymmetric cipher context based on the given algorithm name.
 
 **Since**: 20
 
-**Resource release**: crypto_asym_cipher/OH_CryptoAsymCipher_Destroy {ctx}
+**Resource release**: [OH_CryptoAsymCipher_Destroy](#oh_cryptoasymcipher_destroy)
 
 **Parameters**:
 
@@ -150,7 +150,7 @@ Finishes the cipher operation.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -200,7 +200,7 @@ Creates an SM2 ciphertext specification.
 
 **Since**: 20
 
-**Resource release**: crypto_asym_cipher/OH_CryptoSm2CiphertextSpec_Destroy {spec}
+**Resource release**: [OH_CryptoSm2CiphertextSpec_Destroy](#oh_cryptosm2ciphertextspec_destroy)
 
 **Parameters**:
 
@@ -235,7 +235,7 @@ Obtains the specified item of the SM2 ciphertext.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -298,7 +298,7 @@ Encodes the SM2 ciphertext specification to DER format ciphertext.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

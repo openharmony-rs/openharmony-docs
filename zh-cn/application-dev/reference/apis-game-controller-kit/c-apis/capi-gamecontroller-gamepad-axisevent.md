@@ -12,7 +12,7 @@ typedef struct GamePad_AxisEvent GamePad_AxisEvent
 
 **起始版本：** 21
 
-**相关模块：** [GameController](capi-gamecontroller.md)
+**相关模块：** [GameController](capi-others-gamecontroller.md)
 
 **所在头文件：** [game_pad_event.h](capi-game-pad-event-h.md)
 

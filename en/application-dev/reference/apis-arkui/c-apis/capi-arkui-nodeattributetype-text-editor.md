@@ -6,7 +6,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
@@ -270,7 +270,7 @@ NODE_TEXT_EDITOR_CUSTOM_KEYBOARD
 
 **Description**
 
-Custom keyboard of the **TextEditor** component. Pass this attribute when the system default keyboard needs to be replaced (for example, special input layouts such as a numeric keyboard or an emoji keyboard). When not passed, the system default keyboard is used. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0]?.i32: Whether the custom keyboard supports content avoidance, that is, whether the page content automatically adjusts its position to avoid being covered by the keyboard when the keyboard is displayed. The value **0** indicates not supported, and **1** indicates supported. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0].i32: Whether the custom keyboard supports content avoidance, that is, whether the page content automatically adjusts its position to avoid being covered by the keyboard when the keyboard is displayed. The value **0** indicates not supported, and **1** indicates supported.</li> </ul>
+Custom keyboard of the **TextEditor** component. Pass this attribute when the system default keyboard needs to be replaced (for example, special input layouts such as a numeric keyboard or an emoji keyboard). When not passed, the system default keyboard is used. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0]?.i32: Whether the custom keyboard supports content avoidance, that is, whether the page content automatically adjusts its position to avoid being covered by the keyboard when the keyboard is displayed. The value **0** indicates not supported, and **1** indicates supported. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0].i32: Whether the custom keyboard supports content avoidance, that is, whether the page content automatically adjusts its position to avoid being covered by the keyboard when the keyboard is displayed. The value **0** indicates not supported, and **1** indicates supported.</li> </ul>
 
 **Since**: 24
 

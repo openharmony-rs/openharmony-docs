@@ -10,7 +10,7 @@ Provides the enumerated variables, structures, and macros used in USB DDK APIs.
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 ## Summary
 
@@ -28,9 +28,9 @@ Provides the enumerated variables, structures, and macros used in USB DDK APIs.
 | [UsbDdkInterface](capi-usbddk-usbddkinterface.md) | Defines a USB DDK API, which is a collection of alternate settings for a particular USB interface. |
 | [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | Defines configuration descriptors. |
 | [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | Defines a USB request pipe. |
-| [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | Device memory map created by calling OH_Usb_CreateDeviceMemMap. A buffer using the device memory map can improve data transmission performance. |
-| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Defines the device ID list, which is used to store the device IDs and device quantity obtained using OH_Usb_GetDevices. |
-| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | The list of non-root hubs, which is used to store the non-root hub IDs and quantity obtained using OH_Usb_GetNonRootHubs. |
+| [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | Device memory map created by calling [OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap). A buffer using the device memory map can improve data transmission performance. |
+| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Defines the device ID list, which is used to store the device IDs and device quantity obtained using [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices). |
+| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | The list of non-root hubs, which is used to store the non-root hub IDs and quantity obtained using [OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs). |
 
 ### Enum
 
@@ -57,14 +57,14 @@ USB DDK error code definitions.
 | Enum item | Description |
 | -- | -- |
 | USB_DDK_SUCCESS = 0 | Operation succeeded. |
-| USB_DDK_FAILED = -1 |  |
-| USB_DDK_NO_PERM = 201 |  |
+| USB_DDK_FAILED = -1 | The operation failed.<br>**Deprecated**: 16 |
+| USB_DDK_NO_PERM = 201 | No permission.<br>**Since**: 14 |
 | USB_DDK_INVALID_PARAMETER = 401 | Invalid parameter. The value is **-2** before API version 16. |
 | USB_DDK_MEMORY_ERROR = 27400001 | Memory errors, such as insufficient memory, memory data copy failure, or memory allocation failure. The value is **-3** before API version 16. |
-| USB_DDK_NULL_PTR = -5 |  |
-| USB_DDK_DEVICE_BUSY = -6 |  |
+| USB_DDK_NULL_PTR = -5 | Null pointer.<br>**Deprecated**: 16 |
+| USB_DDK_DEVICE_BUSY = -6 | Device busy.<br>**Deprecated**: 16 |
 | USB_DDK_INVALID_OPERATION = 27400002 | Invalid operation. The value is **-4** before API version 16. |
-| USB_DDK_IO_FAILED = 27400003 |  |
+| USB_DDK_IO_FAILED = 27400003 | Device I/O operation failure.<br>**Since**: 14 |
 | USB_DDK_TIMEOUT = 27400004 | Transmission timeout. The value is **-7** before API version 16. |
 
 

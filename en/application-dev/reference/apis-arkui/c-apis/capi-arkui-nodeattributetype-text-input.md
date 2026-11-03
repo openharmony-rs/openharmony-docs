@@ -6,7 +6,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
@@ -354,7 +354,7 @@ NODE_TEXT_INPUT_CUSTOM_KEYBOARD
 
 **Description**
 
-Custom keyboard.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0]?.i32: Whether the custom keyboard supports avoidance. The default value is **0**. **1** to support; **0** otherwise.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0].i32: Whether the custom keyboard supports avoidance. The value **1** indicates the custom keyboard supports avoidance, **0** indicates the opposite.</li> </ul>
+Custom keyboard.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0]?.i32: Whether the custom keyboard supports avoidance. The default value is **0**. **1** to support; **0** otherwise.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0].i32: Whether the custom keyboard supports avoidance. The value **1** indicates the custom keyboard supports avoidance, **0** indicates the opposite.</li> </ul>
 
 **Since**: 12
 
@@ -517,7 +517,7 @@ Text ellipsis mode of the single-line text box.<br> This attribute can be set, r
 ### NODE_TEXT_INPUT_ORPHAN_CHAR_OPTIMIZATION
 
 ```c
-	  NODE_TEXT_INPUT_ORPHAN_CHAR_OPTIMIZATION = 7043
+NODE_TEXT_INPUT_ORPHAN_CHAR_OPTIMIZATION = 7043
 ```
 
 **Description**
@@ -1074,7 +1074,7 @@ NODE_TEXT_AREA_CUSTOM_KEYBOARD = 8036
 
 **Description**
 
-Custom keyboard of the text box. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0]?.i32: Whether the custom keyboard supports the avoidance feature. <b>1</b> indicates support for avoidance, and <b>0</b> indicates the opposite. Default value: <b>0</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0].i32: Whether the custom keyboard supports the avoidance feature. <b>1</b> indicates support for avoidance, and <b>0</b> indicates the opposite.</li> </ul>
+Custom keyboard of the text box. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0]?.i32: Whether the custom keyboard supports the avoidance feature. <b>1</b> indicates support for avoidance, and <b>0</b> indicates the opposite. Default value: <b>0</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> <li>.value[0].i32: Whether the custom keyboard supports the avoidance feature. <b>1</b> indicates support for avoidance, and <b>0</b> indicates the opposite.</li> </ul>
 
 **Since**: 22
 

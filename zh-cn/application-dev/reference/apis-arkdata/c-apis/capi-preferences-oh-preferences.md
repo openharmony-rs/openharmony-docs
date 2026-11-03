@@ -12,7 +12,7 @@ typedef struct OH_Preferences OH_Preferences
 
 **起始版本：** 13
 
-**相关模块：** [Preferences](capi-preferences.md)
+**相关模块：** [Preferences](capi-others-preferences.md)
 
 **所在头文件：** [oh_preferences.h](capi-oh-preferences-h.md)
 

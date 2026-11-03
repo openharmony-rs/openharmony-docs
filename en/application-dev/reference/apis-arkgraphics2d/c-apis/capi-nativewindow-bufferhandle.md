@@ -12,7 +12,7 @@ Buffer handle used to transfer and obtain information about the buffer.
 
 **Since**: 8
 
-**Related module**: [NativeWindow](capi-nativewindow.md)
+**Related module**: [NativeWindow](capi-others-nativewindow.md)
 
 **Header file**: [buffer_handle.h](capi-buffer-handle-h.md)
 

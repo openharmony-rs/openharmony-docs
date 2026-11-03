@@ -10,7 +10,7 @@ Defines the common types for native buffer.
 
 **Since**: 12
 
-**Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**Related module**: [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 ## Summary
 
@@ -85,8 +85,8 @@ Indicates the color space of a native buffer. Move from native_buffer.h to nativ
 | OH_COLORSPACE_DISPLAY_BT2020_SRGB | COLORPRIMARIES_BT2020 \| (TRANSFUNC_SRGB << 8) \| (MATRIX_BT2020 << 16) \| (RANGE_FULL << 21) |
 | OH_COLORSPACE_DISPLAY_BT2020_HLG | equal to OH_COLORSPACE_BT2020_HLG_FULL |
 | OH_COLORSPACE_DISPLAY_BT2020_PQ | equal to OH_COLORSPACE_BT2020_PQ_FULL |
-| OH_COLORSPACE_BT2020_LOG_FULL |  |
-| OH_COLORSPACE_BT2020_LOG_LIMIT |  |
+| OH_COLORSPACE_BT2020_LOG_FULL | COLORPRIMARIES_BT2020 \\| (TRANSFUNC_PRIV_LOG << 8) \\| (MATRIX_BT2020 << 16) \\| (RANGE_FULL << 21)<br>**Since**: 26.0.0 |
+| OH_COLORSPACE_BT2020_LOG_LIMIT | COLORPRIMARIES_BT2020 \\| (TRANSFUNC_PRIV_LOG << 8) \\| (MATRIX_BT2020 << 16) \\| (RANGE_LIMITED << 21)<br>**Since**: 26.0.0 |
 
 ### OH_NativeBuffer_MetadataType
 
@@ -107,11 +107,11 @@ Indicates the HDR metadata type of a native buffer.
 | OH_VIDEO_HDR_HLG | HLG |
 | OH_VIDEO_HDR_HDR10 | HDR10 |
 | OH_VIDEO_HDR_VIVID | HDR VIVID |
-| OH_IMAGE_HDR_VIVID_DUAL |  |
-| OH_IMAGE_HDR_VIVID_SINGLE |  |
-| OH_IMAGE_HDR_ISO_DUAL |  |
-| OH_IMAGE_HDR_ISO_SINGLE |  |
-| OH_VIDEO_NONE = -1 |  |
+| OH_IMAGE_HDR_VIVID_DUAL | HDR IMAGE DUAL.<br>**Since**: 22 |
+| OH_IMAGE_HDR_VIVID_SINGLE | HDR IMAGE SINGLE.<br>**Since**: 22 |
+| OH_IMAGE_HDR_ISO_DUAL | HDR IMAGE ISO DUAL.<br>**Since**: 23 |
+| OH_IMAGE_HDR_ISO_SINGLE | HDR IMAGE ISO SINGLE.<br>**Since**: 23 |
+| OH_VIDEO_NONE = -1 | NONE Metadata<br>**Since**: 13 |
 
 ### OH_NativeBuffer_MetadataKey
 
@@ -132,7 +132,7 @@ Indicates the descriptive information of a native buffer, such as HDR metadata, 
 | OH_HDR_METADATA_TYPE | value: OH_NativeBuffer_MetadataType |
 | OH_HDR_STATIC_METADATA | value: OH_NativeBuffer_StaticMetadata |
 | OH_HDR_DYNAMIC_METADATA | byte stream of SEI in video stream |
-| OH_REGION_OF_INTEREST_METADATA |  |
+| OH_REGION_OF_INTEREST_METADATA | Region of interest(ROI) metadata is used to configure ROI feature in video encoding. Value type is string in the format "Top1,Left1-Bottom1,Right1[=Params1];Top2,Left2-Bottom2,Right2[=Params2];". Each "Top,Left-Bottom,Right" represents the coordinate information of one ROI. The "[=Params]" is optional. The format of "[=Params]" varies by version: 1. Prior to version 26.0.0: Only a single int32_t value representing the quantization parameter offset is supported (e.g., "=QpOffset"). 2. Since version 26.0.0: A Key-Value format is additionally supported and recommended. It uses comma-separated key-value pairs (e.g., "=dqp:-6,slb:1"). Supported keys: - "dqp": Quantization parameter offset. - "slb": Semantic label. The value must correspond to [OH_VideoMetadataRoiSemanticLabel](../../apis-avcodec-kit/c-apis/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel). If "=Params" is omitted entirely, like "Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2=dqp:-6;", the encoder will use the default parameters to perform the ROI encoding on the first ROI and use the specified parameters on the second ROI. Note that the number of ROIs that can be applied simultaneously does not exceed six, and the total area must not exceed one-fifth of the total image area.<br>**Since**: 22 |
 
 ### OH_NativeBuffer_Format
 
@@ -150,9 +150,9 @@ Indicates the format of a native buffer.
 
 | Enum item | Description |
 | -- | -- |
-| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 |  |
-| NATIVEBUFFER_PIXEL_FMT_CLUT1 |  |
-| NATIVEBUFFER_PIXEL_FMT_CLUT4 |  |
+| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 | CLUT8 format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_CLUT1 | CLUT1 format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_CLUT4 | CLUT4 format<br>**Since**: 12 |
 | NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3 | RGB565 format |
 | NATIVEBUFFER_PIXEL_FMT_RGBA_5658 | RGBA5658 format |
 | NATIVEBUFFER_PIXEL_FMT_RGBX_4444 | RGBX4444 format |
@@ -171,28 +171,28 @@ Indicates the format of a native buffer.
 | NATIVEBUFFER_PIXEL_FMT_BGRA_5551 | BGRA5551 format |
 | NATIVEBUFFER_PIXEL_FMT_BGRX_8888 | BGRX8888 format |
 | NATIVEBUFFER_PIXEL_FMT_BGRA_8888 | BGRA8888 format |
-| NATIVEBUFFER_PIXEL_FMT_YUV_422_I |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P |  |
-| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG |  |
-| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG |  |
-| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG |  |
-| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 |  |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 |  |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 |  |
-| NATIVEBUFFER_PIXEL_FMT_RAW10 |  |
-| NATIVEBUFFER_PIXEL_FMT_BLOB |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT |  |
-| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 |  |
-| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 |  |
-| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 |  |
+| NATIVEBUFFER_PIXEL_FMT_YUV_422_I | YUV422 interleaved format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP | YCBCR422 semi-plannar format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP | YCRCB422 semi-plannar format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP | YCBCR420 semi-plannar format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP | YCRCB420 semi-plannar format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P | YCBCR422 plannar format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P | YCRCB422 plannar format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P | YCBCR420 plannar format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P | YCRCB420 plannar format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG | YUYV422 packed format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10bit packed format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10bit packed format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10bit packed format<br>**Since**: 12 |
+| NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB format<br>**Since**: 15 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float format<br>**Since**: 15 |
+| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8 format<br>**Since**: 20 |
+| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16 format<br>**Since**: 20 |
+| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask format<br>**Since**: 12 |
 | NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF | Invalid pixel format |
 
 ### OH_NativeBuffer_TransformType

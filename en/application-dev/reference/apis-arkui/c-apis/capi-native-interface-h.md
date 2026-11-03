@@ -10,7 +10,7 @@ Provides a unified entry for the native module APIs.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -58,7 +58,7 @@ Enumerates the types of native API collections.
 | ARKUI_NATIVE_DIALOG | API related to dialog boxes. For details, see the struct definition in <arkui/native_dialog.h>. |
 | ARKUI_NATIVE_GESTURE | API related to gestures. For details, see the struct definition in <arkui/native_gesture.h>. |
 | ARKUI_NATIVE_ANIMATE | API related to animations. For details, see the struct definition in <arkui/native_animate.h>. |
-| ARKUI_MULTI_THREAD_NATIVE_NODE |  |
+| ARKUI_MULTI_THREAD_NATIVE_NODE | API related to multi-threaded UI components. For details, see the struct definition in [native_node.h](capi-native-node-h.md).<br>**Since**: 22 |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckType
 

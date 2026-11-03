@@ -12,7 +12,7 @@ InputMethod_CursorInfo是光标信息的不透明类型（opaque type），用�
 
 **起始版本：** 12
 
-**相关模块：** [InputMethod](capi-inputmethod.md)
+**相关模块：** [InputMethod](capi-others-inputmethod.md)
 
 **所在头文件：** [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)
 

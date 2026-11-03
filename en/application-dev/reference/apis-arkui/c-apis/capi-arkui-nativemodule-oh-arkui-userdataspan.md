@@ -12,7 +12,7 @@ Defines a user data span style, which is used to attach custom user data to a st
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
 

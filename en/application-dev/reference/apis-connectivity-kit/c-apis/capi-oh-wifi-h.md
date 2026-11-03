@@ -10,7 +10,7 @@ Define interfaces for querying wifi switch status.
 
 **Since**: 13
 
-**Related module**: [Wifi](capi-wifi.md)
+**Related module**: [Wifi](capi-connectivity-kit-wifi.md)
 
 ## Summary
 

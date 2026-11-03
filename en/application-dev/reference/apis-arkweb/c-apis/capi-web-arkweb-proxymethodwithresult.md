@@ -12,7 +12,7 @@ ArkWeb_ProxyMethodWithResult is a JavaScript proxy method struct with a return v
 
 **Since**: 18
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-others-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 

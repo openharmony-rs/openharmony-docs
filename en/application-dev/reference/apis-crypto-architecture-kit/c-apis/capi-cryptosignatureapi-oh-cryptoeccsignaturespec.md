@@ -12,7 +12,7 @@ ECC signature specification structure, representing an ECC signature specificati
 
 **Since**: 20
 
-**Related module**: [CryptoSignatureApi](capi-cryptosignatureapi.md)
+**Related module**: [CryptoSignatureApi](capi-others-cryptosignatureapi.md)
 
 **Header file**: [crypto_signature.h](capi-crypto-signature-h.md)
 

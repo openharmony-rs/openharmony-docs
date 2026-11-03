@@ -16,7 +16,7 @@ Declaring the callback struct for capturer stream.
 
 **Replaced by**: Use the callback type: OH_AudioCapturer_OnReadDataCallback, OH_AudioCapturer_OnDeviceChangeCallback, OH_AudioCapturer_OnInterruptCallback and OH_AudioCapturer_OnErrorCallback separately.
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audiostream_base.h](capi-native-audiostream-base-h.md)
 
@@ -26,10 +26,10 @@ Declaring the callback struct for capturer stream.
 
 | Name | Description |
 | -- | -- |
-| [int32_t (\*OH_AudioCapturer_OnReadData)(OH_AudioCapturer* capturer,void* userData,void* buffer,int32_t length)](#oh_audiocapturer_onreaddata) | - |  |
-| [int32_t (\*OH_AudioCapturer_OnStreamEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Event event)](#oh_audiocapturer_onstreamevent) | - |  |
-| [int32_t (\*OH_AudioCapturer_OnInterruptEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)](#oh_audiocapturer_oninterruptevent) | - |  |
-| [int32_t (\*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Result error)](#oh_audiocapturer_onerror) | - |  |
+| [int32_t (\*OH_AudioCapturer_OnReadData)(OH_AudioCapturer* capturer,void* userData,void* buffer,int32_t length)](#oh_audiocapturer_onreaddata) | - | This function pointer will point to the callback function that is used to read audio data. |
+| [int32_t (\*OH_AudioCapturer_OnStreamEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Event event)](#oh_audiocapturer_onstreamevent) | - | This function pointer will point to the callback function that is used to handle audio capturer stream events. |
+| [int32_t (\*OH_AudioCapturer_OnInterruptEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)](#oh_audiocapturer_oninterruptevent) | - | This function pointer will point to the callback function that is used to handle audio interrupt events. |
+| [int32_t (\*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Result error)](#oh_audiocapturer_onerror) | - | This function pointer will point to the callback function that is used to handle audio error result. |
 
 ## Member function description
 
@@ -40,6 +40,8 @@ int32_t (*OH_AudioCapturer_OnReadData)(OH_AudioCapturer* capturer,void* userData
 ```
 
 **Description**
+
+This function pointer will point to the callback function thatis used to read audio data.
 
 **Since**: 10
 
@@ -55,6 +57,8 @@ int32_t (*OH_AudioCapturer_OnStreamEvent)(OH_AudioCapturer* capturer,void* userD
 
 **Description**
 
+This function pointer will point to the callback function thatis used to handle audio capturer stream events.
+
 **Since**: 10
 
 **Deprecated**: 20
@@ -69,6 +73,8 @@ int32_t (*OH_AudioCapturer_OnInterruptEvent)(OH_AudioCapturer* capturer,void* us
 
 **Description**
 
+This function pointer will point to the callback function thatis used to handle audio interrupt events.
+
 **Since**: 10
 
 **Deprecated**: 20
@@ -82,6 +88,8 @@ int32_t (*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer,void* userData,OH
 ```
 
 **Description**
+
+This function pointer will point to the callback function thatis used to handle audio error result.
 
 **Since**: 10
 

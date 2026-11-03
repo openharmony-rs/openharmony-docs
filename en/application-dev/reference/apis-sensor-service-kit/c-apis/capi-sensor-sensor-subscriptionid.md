@@ -12,7 +12,7 @@ Defines a struct for the sensor subscription ID, which uniquely identifies a sen
 
 **Since**: 11
 
-**Related module**: [Sensor](capi-sensor.md)
+**Related module**: [Sensor](capi-others-sensor.md)
 
 **Header file**: [oh_sensor_type.h](capi-oh-sensor-type-h.md)
 

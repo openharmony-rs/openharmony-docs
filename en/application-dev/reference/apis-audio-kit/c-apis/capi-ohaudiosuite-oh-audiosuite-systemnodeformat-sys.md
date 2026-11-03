@@ -14,7 +14,7 @@ Define the audio format info structure, used to describe basic audio format for 
 
 **System API:** This is a system API.
 
-**Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_base.h(System API)](capi-native-audio-suite-base-h-sys.md)
 

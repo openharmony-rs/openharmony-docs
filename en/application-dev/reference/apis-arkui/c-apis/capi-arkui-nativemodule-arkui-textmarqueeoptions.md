@@ -12,7 +12,7 @@ Defines text marquee mode options, which are used to configure the display param
 
 **Since**: 23
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text.h](capi-text-h.md)
 

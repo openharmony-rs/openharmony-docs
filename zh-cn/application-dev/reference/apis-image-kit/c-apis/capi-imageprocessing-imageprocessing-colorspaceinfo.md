@@ -12,7 +12,7 @@ struct ImageProcessing_ColorSpaceInfo {...}
 
 **起始版本：** 13
 
-**相关模块：** [ImageProcessing](capi-imageprocessing.md)
+**相关模块：** [ImageProcessing](capi-others-imageprocessing.md)
 
 **所在头文件：** [image_processing_types.h](capi-image-processing-types-h.md)
 

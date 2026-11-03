@@ -14,7 +14,7 @@ Defines the pixel map information.
 
 **Deprecated**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_pixel_map_napi.h](capi-image-pixel-map-napi-h.md)
 

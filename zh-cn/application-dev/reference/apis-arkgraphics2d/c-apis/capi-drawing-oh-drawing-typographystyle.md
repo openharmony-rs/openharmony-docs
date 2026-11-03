@@ -12,7 +12,7 @@ typedef struct OH_Drawing_TypographyStyle OH_Drawing_TypographyStyle
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_text_declaration.h](capi-drawing-text-declaration-h.md)
 

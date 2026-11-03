@@ -14,7 +14,7 @@ OH_ImagePackerNative用于将ImageSource、PixelMap、Picture或PixelMap序列�
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [image_packer_native.h](capi-image-packer-native-h.md)
 

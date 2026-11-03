@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## 汇总
 
@@ -162,8 +162,8 @@ enum Image_CropAndScaleStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 |  |
-| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 |  |
+| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 | 先缩放，后裁剪。<br>**起始版本：** 18 |
+| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 | 先裁剪，后缩放。<br>**起始版本：** 18 |
 
 
 ## 函数说明
@@ -182,7 +182,7 @@ Image_ErrorCode OH_ImageSourceInfo_Create(OH_ImageSource_Info **info)
 
 **起始版本：** 12
 
-**资源释放：** image_source_native/OH_ImageSourceInfo_Release {info}
+**资源释放：** [OH_ImageSourceInfo_Release](#oh_imagesourceinfo_release)
 
 **参数：**
 
@@ -296,7 +296,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-oh-imagesource-info.md) *info | OH_ImageSource_Info指针。 |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md) *mimetype | Pointer to the MIME type of the image source. |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimetype | Pointer to the MIME type of the image source. |
 
 **返回值：**
 
@@ -344,7 +344,7 @@ Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)
 
 **起始版本：** 12
 
-**资源释放：** image_source_native/OH_DecodingOptions_Release {options}
+**资源释放：** [OH_DecodingOptions_Release](#oh_decodingoptions_release)
 
 **参数：**
 
@@ -1469,7 +1469,7 @@ Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType** suppor
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md)** supportedFormats | 支持解码的图片格式。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md)** supportedFormats | 支持解码的图片格式。 |
 | size_t* length | 数组长度。 |
 
 **返回值：**

@@ -10,7 +10,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [OH_NativeImage](capi-oh-nativeimage.md)
+**相关模块：** [OH_NativeImage](capi-arkgraphics2d-oh-nativeimage.md)
 
 ## 汇总
 
@@ -19,8 +19,8 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md) | - | 一个OH_NativeImage的监听者，通过OH_NativeImage_SetOnFrameAvailableListener接口注册该监听结构体，当有buffer可获取时，将触发回调给用户。 |
-| [OHNativeWindow](capi-oh-nativeimage-ohnativewindow.md) | OHNativeWindow | 定义结构体NativeWindow的新类型名OHNativeWindow。 |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-ohnativewindowbuffer.md) | OHNativeWindowBuffer | 定义结构体NativeWindowBuffer的新类型名OHNativeWindowBuffer。 |
+| [NativeWindow](capi-oh-nativeimage-nativewindow.md) | OHNativeWindow | 定义结构体NativeWindow的新类型名OHNativeWindow。 |
+| [NativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md) | OHNativeWindowBuffer | 定义结构体NativeWindowBuffer的新类型名OHNativeWindowBuffer。 |
 
 ### 函数
 
@@ -53,12 +53,6 @@
 | [int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)](#oh_nativeimage_acquirelatestnativewindowbuffer) | - | 通过消费端的OH_NativeImage获取一个生产者最近生产的OHNativeWindowBuffer，并将其余buffer丢弃。 消费端可以通过OH_OnFrameAvailableListener注册的回调，收到所有可用buffer（包括被丢弃的buffer）的回调。 本接口不能与OH_NativeImage_UpdateSurfaceImage接口同时使用。 本接口将会创建一个OHNativeWindowBuffer。 如果在调用OH_NativeImage_ReleaseNativeWindowBuffer之后还在使用OHNativeWindowBuffer的情况，需要注意以下两点。 1) 当使用OHNativeWindowBuffer时，用户需要通过OH_NativeWindow_NativeObjectReference接口将其引用计数加一。 2) 当OHNativeWindowBuffer使用完，用户需要通过OH_NativeWindow_NativeObjectUnreference接口将其引用计数减一。 本接口需要和OH_NativeImage_ReleaseNativeWindowBuffer接口配合使用，否则会存在内存泄露。 当fenceFd使用完，用户需要将其close。 |
 | [int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)](#oh_nativeimage_isreleased) | - | 查询与OH_NativeImage关联的纹理是否已释放。 本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeImage_Release(OH_NativeImage* image)](#oh_nativeimage_release) | - | 清除所有OHNativeWindow的OHNativeWindowBuffer缓存，并将OH_NativeImage从OpenGL ES上下文中分离。 本接口为非线程安全类型接口。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_OnFrameAvailable)(void *context) | 有buffer可获取时触发的回调函数。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage |
 
 ## 函数说明
 
@@ -133,7 +127,7 @@ OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OHNativeWindow*](capi-oh-nativeimage-ohnativewindow.md) | 成功则返回一个指向OHNativeWindow实例的指针，否则返回NULL。 |
+| [OHNativeWindow*](capi-oh-nativeimage-nativewindow.md) | 成功则返回一个指向OHNativeWindow实例的指针，否则返回NULL。 |
 
 ### OH_NativeImage_AttachContext()
 
@@ -444,7 +438,7 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image, OHNative
 | 参数项 | 描述 |
 | -- | -- |
 | OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-ohnativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer指针的指针。 |
+| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer指针的指针。 |
 | int* fenceFd | 指向文件描述符句柄的指针。 |
 
 **返回值：**
@@ -472,7 +466,7 @@ int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image, OHNative
 | 参数项 | 描述 |
 | -- | -- |
 | OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-ohnativewindowbuffer.md)* nativeWindowBuffer | 指向OHNativeWindowBuffer实例的指针。 |
+| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)* nativeWindowBuffer | 指向OHNativeWindowBuffer实例的指针。 |
 | int fenceFd | 指向文件描述符句柄，用于并发同步控制。 |
 
 **返回值：**
@@ -709,7 +703,7 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 | 参数项 | 描述 |
 | -- | -- |
 | OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-ohnativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer的二级指针。 |
+| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer的二级指针。 |
 | int* fenceFd | 指向文件描述符句柄的指针。 |
 
 **返回值：**

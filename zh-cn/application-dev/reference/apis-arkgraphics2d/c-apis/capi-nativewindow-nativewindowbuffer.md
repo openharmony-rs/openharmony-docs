@@ -1,18 +1,18 @@
 # NativeWindowBuffer
 
 ```c
-struct NativeWindowBuffer
+typedef struct NativeWindowBuffer OHNativeWindowBuffer
 ```
 
 ## 概述
 
-提供对OHNativeWindowBuffer的访问功能。
+定义结构体NativeWindowBuffer的新类型名OHNativeWindowBuffer。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 8
 
-**相关模块：** [NativeWindow](capi-nativewindow.md)
+**相关模块：** [NativeWindow](capi-others-nativewindow.md)
 
 **所在头文件：** [external_window.h](capi-external-window-h.md)
 

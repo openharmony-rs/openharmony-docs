@@ -10,7 +10,7 @@
 
 **起始版本：** 14
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -211,19 +211,19 @@ enum ArkUI_KeyCode
 | ARKUI_KEYCODE_NUMPAD_EQUALS = 2120 | 小键盘按键'='。 |
 | ARKUI_KEYCODE_NUMPAD_LEFT_PAREN = 2121 | 小键盘按键'('。 |
 | ARKUI_KEYCODE_NUMPAD_RIGHT_PAREN = 2122 | 小键盘按键')'。 |
-| ARKUI_KEYCODE_BUTTON_A = 2301 |  |
-| ARKUI_KEYCODE_BUTTON_B = 2302 |  |
-| ARKUI_KEYCODE_BUTTON_X = 2304 |  |
-| ARKUI_KEYCODE_BUTTON_Y = 2305 |  |
-| ARKUI_KEYCODE_BUTTON_L1 = 2307 |  |
-| ARKUI_KEYCODE_BUTTON_R1 = 2308 |  |
-| ARKUI_KEYCODE_BUTTON_L2 = 2309 |  |
-| ARKUI_KEYCODE_BUTTON_R2 = 2310 |  |
-| ARKUI_KEYCODE_BUTTON_SELECT = 2311 |  |
-| ARKUI_KEYCODE_BUTTON_START = 2312 |  |
-| ARKUI_KEYCODE_BUTTON_MODE = 2313 |  |
-| ARKUI_KEYCODE_BUTTON_THUMBL = 2314 |  |
-| ARKUI_KEYCODE_BUTTON_THUMBR = 2315 |  |
+| ARKUI_KEYCODE_BUTTON_A = 2301 | 游戏手柄按键'A'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_B = 2302 | 游戏手柄按键'B'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_X = 2304 | 游戏手柄按键'X'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_Y = 2305 | 游戏手柄按键'Y'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_L1 = 2307 | 游戏手柄按键'L1'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_R1 = 2308 | 游戏手柄按键'R1'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_L2 = 2309 | 游戏手柄按键'L2'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_R2 = 2310 | 游戏手柄按键'R2'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_SELECT = 2311 | 游戏手柄按键'Select'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_START = 2312 | 游戏手柄按键'Start'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_MODE = 2313 | 游戏手柄按键'Mode'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_THUMBL = 2314 | 游戏手柄按键'THUMBL'。<br>**起始版本：** 15 |
+| ARKUI_KEYCODE_BUTTON_THUMBR = 2315 | 游戏手柄按键'THUMBR'。<br>**起始版本：** 15 |
 
 ### ArkUI_KeyEventType
 
@@ -327,7 +327,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)
 
 **起始版本：** 26.1.0
 
-**资源释放：** arkui/OH_ArkUI_KeyEvent_Destroy {event}
+**资源释放：** [OH_ArkUI_KeyEvent_Destroy](#oh_arkui_keyevent_destroy)
 
 **参数：**
 
@@ -339,7 +339,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_Destroy()
 
@@ -365,7 +365,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或者输入事件不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或者输入事件不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetType()
 
@@ -392,7 +392,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEv
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetKeyCode()
 
@@ -419,7 +419,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetKeyText()
 
@@ -446,7 +446,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetKeySource()
 
@@ -473,7 +473,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetDeviceId()
 
@@ -500,7 +500,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetUnicode()
 
@@ -527,7 +527,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetEventTime()
 
@@ -554,7 +554,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetPressedKeys()
 
@@ -582,7 +582,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetKeyIntentionCode()
 
@@ -609,7 +609,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event,
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetNumLockOn()
 
@@ -636,7 +636,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool i
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetCapsLockOn()
 
@@ -663,7 +663,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_SetScrollLockOn()
 
@@ -690,7 +690,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, boo
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+| ArkUI_ErrorCode | 错误码。<ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_GetType()
 
@@ -936,7 +936,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, b
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_KeyEvent_IsCapsLockOn()
 
@@ -963,7 +963,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_KeyEvent_IsScrollLockOn()
 
@@ -990,6 +990,6 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 

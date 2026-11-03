@@ -10,7 +10,7 @@ Defines C APIs for cellular data module.
 
 **Since**: 13
 
-**Related module**: [Telephony](capi-telephony.md)
+**Related module**: [Telephony](capi-telephony-kit-telephony.md)
 
 ## Summary
 

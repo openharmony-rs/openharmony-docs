@@ -12,7 +12,7 @@ Private key encoding parameters structure, representing private key encoding par
 
 **Since**: 20
 
-**Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)
+**Related module**: [CryptoAsymKeyApi](capi-others-cryptoasymkeyapi.md)
 
 **Header file**: [crypto_asym_key.h](capi-crypto-asym-key-h.md)
 

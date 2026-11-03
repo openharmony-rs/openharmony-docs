@@ -4,7 +4,7 @@
 
 Defines the OpenHarmony Universal KeyStore (HUKS) APIs for external key management extensions.
 
-**Include**: <huks/native_huks_external_crypto_api.h>
+**File to Include**: <huks/native_huks_external_crypto_api.h>
 
 **Library**: libhuks_external_crypto.z.so
 
@@ -12,7 +12,7 @@ Defines the OpenHarmony Universal KeyStore (HUKS) APIs for external key manageme
 
 **Since**: 22
 
-**Related module**: [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
+**Related module**: [HuksExternalCryptoApi](capi-universal-keystore-kit-huksexternalcryptoapi.md)
 
 ## Summary
 

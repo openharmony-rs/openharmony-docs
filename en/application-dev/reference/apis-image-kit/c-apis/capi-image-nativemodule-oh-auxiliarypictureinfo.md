@@ -12,7 +12,7 @@ The struct describes the auxiliary picture information, which is used to perform
 
 **Since**: 13
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [picture_native.h](capi-picture-native-h.md)
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 21
 
-**相关模块：** [GameController](capi-gamecontroller.md)
+**相关模块：** [GameController](capi-game-controller-kit-gamecontroller.md)
 
 ## 汇总
 

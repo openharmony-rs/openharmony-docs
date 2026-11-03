@@ -12,7 +12,7 @@ typedef struct ArkUI_TextMarqueeOptions ArkUI_TextMarqueeOptions
 
 **起始版本：** 23
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [text.h](capi-text-h.md)
 

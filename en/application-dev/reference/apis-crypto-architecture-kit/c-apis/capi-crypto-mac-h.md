@@ -4,7 +4,7 @@
 
 Defines the message authentication code interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_mac.h>
+**File to Include**: <CryptoArchitectureKit/crypto_mac.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the message authentication code interfaces.
 
 **Since**: 20
 
-**Related module**: [CryptoMacApi](capi-cryptomacapi.md)
+**Related module**: [CryptoMacApi](capi-crypto-architecture-kit-cryptomacapi.md)
 
 ## Summary
 
@@ -78,7 +78,7 @@ Creates a MAC context based on the given algorithm name.
 
 **Since**: 20
 
-**Resource release**: crypto_mac/OH_CryptoMac_Destroy {ctx}
+**Resource release**: [OH_CryptoMac_Destroy](#oh_cryptomac_destroy)
 
 **Parameters**:
 
@@ -209,7 +209,7 @@ Finishes the MAC operation.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

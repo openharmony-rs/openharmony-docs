@@ -12,7 +12,7 @@ Defines a USB configuration. One [OH_UsbManager_UsbDevice](capi-usbmanager-oh-us
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-usbmanager.md)
+**Related module**: [UsbManager](capi-others-usbmanager.md)
 
 **Header file**: [ohusb_manager.h](capi-ohusb-manager-h.md)
 

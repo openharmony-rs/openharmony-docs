@@ -10,7 +10,7 @@ The file declares the APIs for parsing audio and video media data.
 
 **Since**: 10
 
-**Related module**: [AVSource](capi-avsource.md)
+**Related module**: [AVSource](capi-avcodec-kit-avsource.md)
 
 ## Summary
 

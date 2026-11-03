@@ -8,7 +8,9 @@
 
 | Name | Description |
 | -- | -- |
+| ifr_ifrn |  |
 | ifr_ifrn.ifrn_name |  |
+| ifr_ifru |  |
 | ifr_ifru.ifru_addr |  |
 | ifr_ifru.ifru_dstaddr |  |
 | ifr_ifru.ifru_broadaddr |  |
@@ -20,6 +22,6 @@
 | ifr_ifru.ifru_map |  |
 | ifr_ifru.ifru_slave |  |
 | ifr_ifru.ifru_newname |  |
-| ifr_ifru->ifru_data |  |
+| ifr_ifru.ifru_data |  |
 
 

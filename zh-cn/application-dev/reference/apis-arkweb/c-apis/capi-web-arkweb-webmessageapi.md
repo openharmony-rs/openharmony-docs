@@ -12,7 +12,7 @@ ArkWeb_WebMessageAPI是Web消息相关Native API结构体。该结构体提供�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -52,7 +52,7 @@ ArkWeb_WebMessagePtr (*createWebMessage)()
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) | 创建的消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) | 创建的消息结构体指针。 |
 
 ### destroyWebMessage()
 
@@ -68,7 +68,7 @@ void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md)* webMessage | 要销毁的消息的指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md)* webMessage | 要销毁的消息的指针。 |
 
 ### setType()
 
@@ -84,7 +84,7 @@ void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。 |
 | 消息的类型。 |  |
 
 ### getType()
@@ -101,7 +101,7 @@ ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。 |
 
 **返回值：**
 
@@ -123,7 +123,7 @@ void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。 |
 |  void* data | 数据指针。由调用方负责内存管理，函数内部不释放该内存，数据所有权不转移。 |
 |  size_t dataLength | 数据长度。 |
 
@@ -141,7 +141,7 @@ void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | 消息结构体指针。 |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。 |
 |  size_t* dataLength | 出参，数据长度。 |
 
 **返回值：**

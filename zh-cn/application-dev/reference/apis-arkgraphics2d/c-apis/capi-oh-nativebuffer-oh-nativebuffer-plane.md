@@ -12,7 +12,7 @@ typedef struct OH_NativeBuffer_Plane {...} OH_NativeBuffer_Plane
 
 **起始版本：** 12
 
-**相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**相关模块：** [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
 
 **所在头文件：** [native_buffer.h](capi-native-buffer-h.md)
 

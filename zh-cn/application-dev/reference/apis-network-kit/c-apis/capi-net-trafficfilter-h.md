@@ -10,7 +10,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [TrafficFilter](capi-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 ## 汇总
 
@@ -48,7 +48,7 @@ int32_t OH_TrafficFilter_CreateRedirector(uint32_t group_id, uint32_t priority, 
 
 **起始版本：** 26.0.0
 
-**资源释放：** TrafficFilter/OH_TrafficFilter_DestroyRedirector {redirector}
+**资源释放：** [OH_TrafficFilter_DestroyRedirector](#oh_trafficfilter_destroyredirector)
 
 **参数：**
 
@@ -255,7 +255,7 @@ int32_t OH_TrafficFilter_CreatePacketController(uint32_t groupId, uint32_t prior
 
 **起始版本：** 26.0.1
 
-**资源释放：** TrafficFilter/OH_TrafficFilter_DestroyPacketController {controller}
+**资源释放：** [OH_TrafficFilter_DestroyPacketController](#oh_trafficfilter_destroypacketcontroller)
 
 **参数：**
 

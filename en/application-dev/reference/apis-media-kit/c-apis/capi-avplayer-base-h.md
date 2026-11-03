@@ -8,7 +8,7 @@ The file declares the structs and enums of the AVPlayer.
 
 **Since**: 11
 
-**Related module**: [AVPlayer](capi-avplayer.md)
+**Related module**: [AVPlayer](capi-media-kit-avplayer.md)
 
 ## Summary
 
@@ -69,8 +69,8 @@ The file declares the structs and enums of the AVPlayer.
 | const char *OH_PLAYER_VIDEO_HEIGHT | Pointer to the key for obtaining the video height. The value is of the int32_t type.<br>**Since**: 12 |
 | const char *OH_PLAYER_MESSAGE_TYPE | Pointer to the key for obtaining the type of message received by the AVPlayer. The value is of the int32_t type. The value **1** means that the video frame starts to be rendered.<br>**Since**: 12 |
 | const char *OH_PLAYER_IS_LIVE_STREAM | Pointer to the key for checking whether a media asset is live streaming. The value is of the int32_t type. The value **1** means live streaming.<br>**Since**: 12 |
-| const char *OH_PLAYER_SEI_PAYLOAD_TYPE |  |
-| const char *OH_PLAYER_SEI_PAYLOAD_CONTENT |  |
+| const char *OH_PLAYER_SEI_PAYLOAD_TYPE | Sei message key for payload type.<br>**Since**: 23 |
+| const char *OH_PLAYER_SEI_PAYLOAD_CONTENT | Sei message key for payload content.<br>**Since**: 23 |
 | const char *OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE | Pointer to the key for indicating the enable state of the super resolution feature. The value type is int32_t. The value **1** indicates that the feature is enabled, and **0** indicates the opposite. It is used for information callback when the super resolution state changes.<br>**Since**: 23 |
 | const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX | Pointer to the key for indicating the track index in the track change information. The value type is int32_t.<br>**Since**: 23 |
 | const char *OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED | Pointer to the key for indicating whether the track is selected in the track change information. The value type is int32_t.<br>**Since**: 23 |
@@ -91,19 +91,11 @@ The file declares the structs and enums of the AVPlayer.
 | const char *OH_MEDIA_EVENT_INFO_DOWNLOAD_TOTAL_SIZE | Pointer to the key for obtaining the total size of loaded media resources in the statistic metric information. The value type is int64_t.<br>**Since**: 23 |
 | const char *OH_MEDIA_EVENT_INFO_STALLING_COUNT | Pointer to the key for obtaining the total number of stalling times in the statistic metric information. The value type is uint32_t.<br>**Since**: 23 |
 | const char *OH_MEDIA_EVENT_INFO_TOTAL_STALLING_TIME | Pointer to the key for obtaining the total stalling duration in the statistic metric information. The value type is uint32_t, and the unit is millisecond.<br>**Since**: 23 |
-| const char *OH_PLAYER_SERVER_IP_ADDRESS |  |
-| const char *OH_PLAYER_IS_DOWNLOADING |  |
-| const char *OH_PLAYER_BUFFER_DURATION |  |
-| const char *OH_PLAYER_DOWNLOAD_RATE |  |
-| const char *OH_PLAYER_AVG_DOWNLOAD_RATE |  |
-| void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra) | Called when the AVPlayer receives a message.<br>**Since**: 11<br>**Deprecated**: 12<br>**Replaced by**: [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) |
-| void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody, void *userData) | Called when the AVPlayer receives a message. If this callback is successfully set, the **OH_AVPlayerOnInfo**<br>function will not be invoked.<br>**Since**: 12 |
-| void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg) | Called when an error occurs in the AVPlayer. This callback is available in API version 9 or later.<br>**Since**: 11<br>**Deprecated**: 12<br>**Replaced by**: [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback) |
-| void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData) | Called when an error occurs in the AVPlayer. If this callback is successfully set, the **OH_AVPlayerOnError**<br>function will not be invoked.<br>**Since**: 12 |
-| void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData) | Called when the maximum audio amplitude is calculated.<br>**Since**: 23 |
-| void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData) | Called for obtaining SEI messages. This function is used to subscribe to SEI message events and returns detailed SEI information.<br>**Since**: 23 |
-| void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData) | Describes the handle used to obtain the decoded audio PCM data.<br>**Since**: 26.0.0 |
-| void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData) | This callback provides a PCM buffer for processing. AVPlayer needs to use the processed data for audio playback, and processing must be completed in a timely manner, otherwise it will block playback. Do not change sampling rate, channels, or sampling format.<br>**Since**: 26.0.0 |
+| const char *OH_PLAYER_SERVER_IP_ADDRESS | Playback info key for server ip address.<br>**Since**: 23 |
+| const char *OH_PLAYER_IS_DOWNLOADING | Playback info key for downloading state.<br>**Since**: 23 |
+| const char *OH_PLAYER_BUFFER_DURATION | Playback info key for buffer duration.<br>**Since**: 23 |
+| const char *OH_PLAYER_DOWNLOAD_RATE | Playback info key for download rate.<br>**Since**: 23 |
+| const char *OH_PLAYER_AVG_DOWNLOAD_RATE | Playback info key for average download rate.<br>**Since**: 23 |
 
 ## Enum type description
 
@@ -148,7 +140,7 @@ Enumerates the seek modes.
 | AV_SEEK_NEXT_SYNC = 0 | sync to keyframes after the time point. |
 | AV_SEEK_PREVIOUS_SYNC | sync to keyframes before the time point. |
 | AV_SEEK_CLOSEST = 2 | Seeks to the frame closest to the specified position.<br>**Since**: 12 |
-| AV_SEEK_CONTINUOUS = 3 |  |
+| AV_SEEK_CONTINUOUS = 3 | Seeks in continuous drag mode. This mode provides a smoother drag experience, but the device must support continuous seeking for the current stream. Before using this mode, check whether continuous seeking is supported. For details, see [OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported).<br>**Since**: 23 |
 
 ### AVPlaybackSpeed
 

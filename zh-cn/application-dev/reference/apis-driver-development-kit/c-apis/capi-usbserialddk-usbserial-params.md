@@ -12,7 +12,7 @@ struct UsbSerial_Params {...}
 
 **起始版本：** 18
 
-**相关模块：** [USBSerialDDK](capi-usbserialddk.md)
+**相关模块：** [USBSerialDDK](capi-others-usbserialddk.md)
 
 **所在头文件：** [usb_serial_types.h](capi-usb-serial-types-h.md)
 

@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [Core](capi-core.md)
+**相关模块：** [Core](capi-avcodec-kit-core.md)
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
@@ -77,11 +77,11 @@ enum OH_AVPixelFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_PIXEL_FORMAT_YUVI420 = 1 |  |
-| AV_PIXEL_FORMAT_NV12 = 2 |  |
-| AV_PIXEL_FORMAT_NV21 = 3 |  |
-| AV_PIXEL_FORMAT_SURFACE_FORMAT = 4 |  |
-| AV_PIXEL_FORMAT_RGBA = 5 |  |
+| AV_PIXEL_FORMAT_YUVI420 = 1 | yuv 420 planar。<br>**起始版本：** 9 |
+| AV_PIXEL_FORMAT_NV12 = 2 | NV12. yuv 420 semiplanar。<br>**起始版本：** 9 |
+| AV_PIXEL_FORMAT_NV21 = 3 | NV21. yvu 420 semiplanar。<br>**起始版本：** 9 |
+| AV_PIXEL_FORMAT_SURFACE_FORMAT = 4 | 像素格式从surface获取。只作用于Surface模式，Buffer模式不生效。<br>**起始版本：** 9 |
+| AV_PIXEL_FORMAT_RGBA = 5 | RGBA8888。<br>**起始版本：** 9 |
 | AV_PIXEL_FORMAT_RGBA1010102 = 6 | RGBA1010102。<br>**起始版本：** 20 |
 
 

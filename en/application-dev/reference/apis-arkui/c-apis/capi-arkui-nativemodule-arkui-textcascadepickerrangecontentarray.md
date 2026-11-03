@@ -12,7 +12,7 @@ Defines an option array of a multi-column text cascade picker. This struct is us
 
 **Since**: 19
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [picker.h](capi-picker-h.md)
 

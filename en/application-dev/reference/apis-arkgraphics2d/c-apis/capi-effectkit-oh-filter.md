@@ -12,7 +12,7 @@ Defines a filter struct used with EffectKit module APIs to implement filter effe
 
 **Since**: 12
 
-**Related module**: [effectKit](capi-effectkit.md)
+**Related module**: [effectKit](capi-others-effectkit.md)
 
 **Header file**: [effect_types.h](capi-effect-types-h.md)
 

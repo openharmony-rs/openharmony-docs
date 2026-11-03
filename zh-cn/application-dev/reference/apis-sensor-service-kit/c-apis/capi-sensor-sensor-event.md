@@ -12,7 +12,7 @@ typedef struct Sensor_Event Sensor_Event
 
 **起始版本：** 11
 
-**相关模块：** [Sensor](capi-sensor.md)
+**相关模块：** [Sensor](capi-others-sensor.md)
 
 **所在头文件：** [oh_sensor_type.h](capi-oh-sensor-type-h.md)
 

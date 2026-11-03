@@ -12,7 +12,7 @@ Defines the PixelRound policy of a component's four edges.
 
 **Since**: 21
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [layout.h](capi-layout-h.md)
 

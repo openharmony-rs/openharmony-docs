@@ -10,7 +10,7 @@ Declare audio debugging manager related interfaces.<br> This file interfaces are
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 
@@ -104,7 +104,7 @@ Prints full audio runtime snapshot for target audio renderer instance. The snaps
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) handle provided by [OH_AudioManager_GetAudioDebuggingManager](capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager). |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md) *renderer | Pointer to the target audio renderer instance to print snapshot. |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md) *renderer | Pointer to the target audio renderer instance to print snapshot. |
 | int32_t fd | is a file descriptor, indicates the location that the snapshot information will be written to. If the fd is less than 0 or no writable, the snapshot information will be printed into the running log, otherwise the snapshot will be written into the file. |
 
 **Returns**:
@@ -132,7 +132,7 @@ Prints full audio runtime snapshot for target audio capturer instance. The snaps
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) *manager | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) handle provided by [OH_AudioManager_GetAudioDebuggingManager](capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager). |
-| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md) *capturer | Pointer to the target audio capturer instance to print snapshot. |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md) *capturer | Pointer to the target audio capturer instance to print snapshot. |
 | int32_t fd | is a file descriptor, indicates the location that the snapshot information will be written to. If the fd is less than 0 or no writable, the snapshot information will be printed into the running log, otherwise the snapshot will be written into the file. |
 
 **Returns**:

@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ImageEffect](capi-imageeffect.md)
+**相关模块：** [ImageEffect](capi-image-kit-imageeffect.md)
 
 ## 汇总
 
@@ -402,7 +402,7 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputSurface(OH_ImageEffect *imageEffec
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | 效果器指针。 |
-| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) *nativeWindow | 指向OHNativeWindow实例的指针。 |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) *nativeWindow | 指向OHNativeWindow实例的指针。 |
 
 **返回值：**
 
@@ -429,7 +429,7 @@ ImageEffect_ErrorCode OH_ImageEffect_GetInputSurface(OH_ImageEffect *imageEffect
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | 效果器指针。 |
-| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) **nativeWindow | 指向OHNativeWindow实例的指针。 |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) **nativeWindow | 指向OHNativeWindow实例的指针。 |
 
 **返回值：**
 

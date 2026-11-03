@@ -12,7 +12,7 @@ The file declares the APIs for image encoding.
 
 **System API:** This is a system API.
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## Summary
 

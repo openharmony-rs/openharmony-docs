@@ -1,7 +1,7 @@
 # ImagePacker_Opts_
 
 ```c
-struct ImagePacker_Opts_ {...}
+typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts
 ```
 
 ## Overview
@@ -12,7 +12,7 @@ Defines the image packing options.
 
 **Since**: 11
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_packer_mdk.h](capi-image-packer-mdk-h.md)
 

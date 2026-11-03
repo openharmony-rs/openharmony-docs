@@ -12,7 +12,7 @@ Defines a gesture component object, which is used to represent a gesture recogni
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
 

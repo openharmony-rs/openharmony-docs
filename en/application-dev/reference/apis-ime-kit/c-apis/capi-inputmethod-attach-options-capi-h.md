@@ -4,7 +4,7 @@
 
 Provides methods for creating, destroying, reading, and writing the option object bound to the input method.
 
-**Include**: <inputmethod/inputmethod_attach_options_capi.h>
+**File to Include**: <inputmethod/inputmethod_attach_options_capi.h>
 
 **Library**: libohinputmethod.so
 
@@ -12,7 +12,7 @@ Provides methods for creating, destroying, reading, and writing the option objec
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-ime-kit-inputmethod.md)
 
 ## Summary
 

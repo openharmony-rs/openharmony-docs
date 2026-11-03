@@ -12,7 +12,7 @@ Declare the audio debugging manager. Audio debugging manager provides many funct
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_debugging_manager.h](capi-native-audio-debugging-manager-h.md)
 

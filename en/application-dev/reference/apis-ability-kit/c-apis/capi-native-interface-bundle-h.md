@@ -10,7 +10,7 @@ The file declares the APIs for obtaining the application information, including 
 
 **Since**: 9
 
-**Related module**: [Native_Bundle](capi-native-bundle.md)
+**Related module**: [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 ## Summary
 

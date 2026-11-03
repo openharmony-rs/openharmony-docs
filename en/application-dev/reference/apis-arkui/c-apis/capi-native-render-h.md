@@ -10,7 +10,7 @@ Declares the APIs of **NativeRender**. For details, see Building a Rendering Nod
 
 **Since**: 20
 
-**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 ## Summary
 
@@ -18,22 +18,22 @@ Declares the APIs of **NativeRender**. For details, see Building a Rendering Nod
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) | ArkUI_RenderNodeHandle | Defines a render node pointer, which is used to represent and pass render node objects in the APIs related to ArkUI_RenderNodeUtils. |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) | ArkUI_RenderContentModifierHandle | Defines the pointer to a render content modifier, which is used to reference a content modifier. A content modifier can be attached to a render node to add render attributes or set the onDraw callback. |
-| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatpropertyhandle.md) | ArkUI_FloatPropertyHandle | Defines the pointer to an ArkUI native float rendering property, which is used to create, pass, and manage the floating-point property on the target content modifier. |
-| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2propertyhandle.md) | ArkUI_Vector2PropertyHandle | Defines a pointer to a two-dimensional vector property, used to create, attach, set, obtain, and release two-dimensional vector properties in the ArkUI native rendering property API. |
-| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorpropertyhandle.md) | ArkUI_ColorPropertyHandle | Defines a color property pointer, which is used to represent a color property in ArkUI. |
-| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatablepropertyhandle.md) | ArkUI_FloatAnimatablePropertyHandle | Defines an animatable float property pointer. |
-| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatablepropertyhandle.md) | ArkUI_Vector2AnimatablePropertyHandle | Defines an animatable 2D vector property pointer. |
-| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatablepropertyhandle.md) | ArkUI_ColorAnimatablePropertyHandle | Defines an animatable color property pointer. |
-| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshapeoption.md) | ArkUI_RectShapeOption | Defines a rectangle shape option. It is used to describe the shape range of a rectangle or an ellipse in an ArkUI render node, and can be used as input for creating mask or clipping options. |
-| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyleoption.md) | ArkUI_NodeBorderStyleOption | Defines a border style configuration option, which is used to set the style type of a node border, including solid, dashed, dotted, and other styles. |
-| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidthoption.md) | ArkUI_NodeBorderWidthOption | Defines a border width configuration option, which is used to set the border width of each side of the render node. |
-| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercoloroption.md) | ArkUI_NodeBorderColorOption | Defines a node border color configuration option, used to set the border color of a render node by edge direction. |
-| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradiusoption.md) | ArkUI_NodeBorderRadiusOption | Defines a node border radius option. |
-| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshapeoption.md) | ArkUI_CircleShapeOption | Defines a circle shape option, which is used to create a circle shape in ArkUI_RenderNodeUtils and configure the center coordinates and radius, serving as a mask or clip shape for a RenderNode. |
-| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshapeoption.md) | ArkUI_RoundRectShapeOption | Defines a rounded rectangle shape option, which can be used to create a mask or clipping for a render node. |
-| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpathoption.md) | ArkUI_CommandPathOption | Defines a custom path option, used to create path-based mask or clip effects for render nodes. |
+| [ArkUI_RenderNode*](capi-arkui-rendernodeutils-arkui-rendernode8h.md) | ArkUI_RenderNodeHandle | Defines a render node pointer, which is used to represent and pass render node objects in the APIs related to ArkUI_RenderNodeUtils. |
+| [ArkUI_RenderContentModifier*](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) | ArkUI_RenderContentModifierHandle | Defines the pointer to a render content modifier, which is used to reference a content modifier. A content modifier can be attached to a render node to add render attributes or set the onDraw callback. |
+| [ArkUI_FloatProperty*](capi-arkui-rendernodeutils-arkui-floatproperty8h.md) | ArkUI_FloatPropertyHandle | Defines the pointer to an ArkUI native float rendering property, which is used to create, pass, and manage the floating-point property on the target content modifier. |
+| [ArkUI_Vector2Property*](capi-arkui-rendernodeutils-arkui-vector2property8h.md) | ArkUI_Vector2PropertyHandle | Defines a pointer to a two-dimensional vector property, used to create, attach, set, obtain, and release two-dimensional vector properties in the ArkUI native rendering property API. |
+| [ArkUI_ColorProperty*](capi-arkui-rendernodeutils-arkui-colorproperty8h.md) | ArkUI_ColorPropertyHandle | Defines a color property pointer, which is used to represent a color property in ArkUI. |
+| [ArkUI_FloatAnimatableProperty*](capi-arkui-rendernodeutils-arkui-floatanimatableproperty8h.md) | ArkUI_FloatAnimatablePropertyHandle | Defines an animatable float property pointer. |
+| [ArkUI_Vector2AnimatableProperty*](capi-arkui-rendernodeutils-arkui-vector2animatableproperty8h.md) | ArkUI_Vector2AnimatablePropertyHandle | Defines an animatable 2D vector property pointer. |
+| [ArkUI_ColorAnimatableProperty*](capi-arkui-rendernodeutils-arkui-coloranimatableproperty8h.md) | ArkUI_ColorAnimatablePropertyHandle | Defines an animatable color property pointer. |
+| [ArkUI_RectShape](capi-arkui-rendernodeutils-arkui-rectshape.md) | ArkUI_RectShapeOption | Defines a rectangle shape option. It is used to describe the shape range of a rectangle or an ellipse in an ArkUI render node, and can be used as input for creating mask or clipping options. |
+| [ArkUI_NodeBorderStyle](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md) | ArkUI_NodeBorderStyleOption | Defines a border style configuration option, which is used to set the style type of a node border, including solid, dashed, dotted, and other styles. |
+| [ArkUI_NodeBorderWidth](capi-arkui-rendernodeutils-arkui-nodeborderwidth.md) | ArkUI_NodeBorderWidthOption | Defines a border width configuration option, which is used to set the border width of each side of the render node. |
+| [ArkUI_NodeBorderColor](capi-arkui-rendernodeutils-arkui-nodebordercolor.md) | ArkUI_NodeBorderColorOption | Defines a node border color configuration option, used to set the border color of a render node by edge direction. |
+| [ArkUI_NodeBorderRadius](capi-arkui-rendernodeutils-arkui-nodeborderradius.md) | ArkUI_NodeBorderRadiusOption | Defines a node border radius option. |
+| [ArkUI_CircleShape](capi-arkui-rendernodeutils-arkui-circleshape.md) | ArkUI_CircleShapeOption | Defines a circle shape option, which is used to create a circle shape in ArkUI_RenderNodeUtils and configure the center coordinates and radius, serving as a mask or clip shape for a RenderNode. |
+| [ArkUI_RoundRectShape](capi-arkui-rendernodeutils-arkui-roundrectshape.md) | ArkUI_RoundRectShapeOption | Defines a rounded rectangle shape option, which can be used to create a mask or clipping for a render node. |
+| [ArkUI_CommandPath](capi-arkui-rendernodeutils-arkui-commandpath.md) | ArkUI_CommandPathOption | Defines a custom path option, used to create path-based mask or clip effects for render nodes. |
 | [ArkUI_RenderNodeMaskOption](capi-arkui-rendernodeutils-arkui-rendernodemaskoption.md) | ArkUI_RenderNodeMaskOption | Defines a render node mask option. It is used to describe the mask area of a render node through a rectangle, rounded rectangle, circle, ellipse, or custom path, and serves as the input parameter of [OH_ArkUI_RenderNodeUtils_SetMask](capi-native-render-h.md#oh_arkui_rendernodeutils_setmask) to apply a mask to the render node. |
 | [ArkUI_RenderNodeClipOption](capi-arkui-rendernodeutils-arkui-rendernodeclipoption.md) | ArkUI_RenderNodeClipOption | Defines a clipping option for a render node. It is used to describe the clipping area of a render node through a rectangle, rounded rectangle, circle, ellipse, or custom path, and serves as the input parameter of [OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip) to apply clipping to the render node. |
 | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md) | ArkUI_RenderBlurStyleOption | Defines a blur style. |
@@ -282,7 +282,7 @@ Sets a background blur style for a render node. This API is applicable to scenar
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be set. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be set. |
 | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md) pointer to the blur style to be set. |
 
 **Returns**:
@@ -309,7 +309,7 @@ Resets a background blur style for a render node.<br> After the reset, there is 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be reset. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be reset. |
 
 **Returns**:
 
@@ -335,7 +335,7 @@ Sets a foreground blur style for a render node. This API is applicable to scenar
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be set. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be set. |
 | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md) pointer to the blur style to be set. |
 
 **Returns**:
@@ -362,7 +362,7 @@ Resets a foreground blur style for a render node.<br> After the reset, there is 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be reset. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be reset. |
 
 **Returns**:
 
@@ -388,7 +388,7 @@ Sets a content blur style for a render node. This API is applicable to scenarios
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be set. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be set. |
 | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md) pointer to the blur style to be set. |
 
 **Returns**:
@@ -415,7 +415,7 @@ Resets a content blur style for a render node.<br> After the reset, there is no 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be reset. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be reset. |
 
 **Returns**:
 
@@ -442,7 +442,7 @@ Adds a child render node to the parent custom node.<br> The parent node supports
 | Parameter | Description |
 | -- | -- |
 | ArkUI_NodeHandle node | Target parent node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) child | Child render node to be added. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | Child render node to be added. |
 
 **Returns**:
 
@@ -469,7 +469,7 @@ Removes the specified child render node from the parent node.<br> The parent nod
 | Parameter | Description |
 | -- | -- |
 | ArkUI_NodeHandle node | Target parent node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) child | Child render node to be removed. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | Child render node to be removed. |
 
 **Returns**:
 
@@ -547,7 +547,7 @@ Creates a render node.<br> After using the render node, call [OH_ArkUI_RenderNod
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) | Target render node. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNode()
 
@@ -567,7 +567,7 @@ Destroys the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 
 **Returns**:
 
@@ -593,8 +593,8 @@ Adds a child node to the target parent render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target parent render node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) child | Child render node to be added. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | Child render node to be added. |
 
 **Returns**:
 
@@ -620,9 +620,9 @@ Adds a child node after the target child node of the parent node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target parent render node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) child | Child render node to be added. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) sibling | Target child node, which is used to determine the reference sibling render node of the insertion position. If the node is not in the current child node list of **node**, the node is appended to the end. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | Child render node to be added. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) sibling | Target child node, which is used to determine the reference sibling render node of the insertion position. If the node is not in the current child node list of **node**, the node is appended to the end. |
 
 **Returns**:
 
@@ -648,8 +648,8 @@ Removes a child node from the specified render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target parent render node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) child | Child render node to be removed. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | Child render node to be removed. |
 
 **Returns**:
 
@@ -675,7 +675,7 @@ Clears all child nodes of the specified render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 
 **Returns**:
 
@@ -701,9 +701,9 @@ Obtains the child node at the specified index.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target parent render node. |
 | int32_t index | Index of the child node. The value range is [0, Number of child nodes - 1]. If the index is less than 0, ARKUI_ERROR_CODE_PARAM_INVALID is returned. If the index is greater than or equal to the number of child nodes, ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST is returned. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md)* child | Render node pointer used to receive the child node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md)* child | Render node pointer used to receive the child node. |
 
 **Returns**:
 
@@ -729,8 +729,8 @@ Obtains the first child node of the specified render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md)* child | Render node pointer used to receive the first child node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md)* child | Render node pointer used to receive the first child node. |
 
 **Returns**:
 
@@ -756,8 +756,8 @@ Obtains the next sibling node of the specified node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Reference node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md)* sibling | Pointer to the render node, which is used to receive the next sibling node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Reference node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md)* sibling | Pointer to the render node, which is used to receive the next sibling node. |
 
 **Returns**:
 
@@ -783,8 +783,8 @@ Obtains the previous sibling node of the specified node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Reference node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md)* sibling | Pointer to the render node, which is used to receive the previous sibling node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Reference node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md)* sibling | Pointer to the render node, which is used to receive the previous sibling node. |
 
 **Returns**:
 
@@ -810,8 +810,8 @@ Obtains all child render nodes of the parent render node.<br> The caller is resp
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target parent render node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md)** children | Pointer array used to store all child render nodes. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md)** children | Pointer array used to store all child render nodes. |
 | int32_t* count | Pointer used to store the number of obtained child nodes. |
 
 **Returns**:
@@ -838,7 +838,7 @@ Obtains the number of child render nodes of the specified render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target parent render node. |
 | int32_t* count | Pointer used to store the number of child nodes. |
 
 **Returns**:
@@ -865,7 +865,7 @@ Sets the background color for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | uint32_t color | ARGB color value (32-bit unsigned integer). <br>Default value: **0x00000000**. <br>**Description of color byte layout**: <br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque). <br>- Bits 16-23: red channel. <br>- Bits 8-15: green channel. <br>- Bits 0-7: blue channel. |
 
 **Returns**:
@@ -892,7 +892,7 @@ Obtains the background color of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | uint32_t* color | Integer pointer used to store the obtained ARGB color value. <br>Default value: **0x00000000**. <br>**Description of color byte layout**: <br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque). <br>- Bits 16-23: red channel. <br>- Bits 8-15: green channel. <br>- Bits 0-7: blue channel. |
 
 **Returns**:
@@ -919,7 +919,7 @@ Sets whether to clip the render node based on the frame area.<br> The frame area
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t clipToFrame | Whether to clip the render node based on the frame area. <br>**1**: yes; **0**: no. <br>Default value: **0**. |
 
 **Returns**:
@@ -946,7 +946,7 @@ Obtains whether the render node is clipped based on the frame area.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t* clipToFrame | Pointer used to receive the state value indicating whether the render node is clipped based on the frame area. <br>**1**: The render node is clipped based on the frame area; **0**: The render node is not clipped based on the frame area. <br>Default value: **0**. |
 
 **Returns**:
@@ -973,7 +973,7 @@ Sets whether to clip the render node based on its bounds.<br> When rounded corne
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t clipToBounds | Whether to clip the render node based on its bounds. <br>**1**: yes; **0**: no. <br>Default value: **0**. |
 
 **Returns**:
@@ -1000,7 +1000,7 @@ Obtains whether the render node is clipped based on its bounds.<br> When rounded
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t* clipToBounds | Pointer used to receive the state value indicating whether the render node is clipped based on its bounds. <br>**1**: The render node is clipped based on its bounds; **0**: The render node is not clipped based on its bounds. <br>Default value: **0**. |
 
 **Returns**:
@@ -1027,7 +1027,7 @@ Sets the opacity value for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float opacity | Opacity value (0.0–1.0). <br>Default value: **1**. |
 
 **Returns**:
@@ -1054,7 +1054,7 @@ Obtains the opacity value of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* opacity | Pointer used to store the opacity value (0.0–1.0). <br>Default value: **1**. |
 
 **Returns**:
@@ -1081,7 +1081,7 @@ Sets the size for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t width | Width, in px. <br>Default value: **0**. The value must be greater than or equal to 0. If a negative value is passed, ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE is returned. |
 | int32_t height | Height, in px. <br>Default value: **0**. The value must be greater than or equal to 0. If a negative value is passed, ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE is returned. |
 
@@ -1109,7 +1109,7 @@ Obtains the size of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t* width | Pointer used to receive the width value, in px. The value range is [0, INT_MAX]. <br>Default value: **0**. |
 | int32_t* height | Pointer used to receive the height value, in px. The value range is [0, INT_MAX]. <br>Default value: **0**. |
 
@@ -1137,7 +1137,7 @@ Sets the position coordinates for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t x | X-coordinate (in px). <br>Default value: **0**, in px. |
 | int32_t y | Y-coordinate (in px). <br>Default value: **0**, in px. |
 
@@ -1165,7 +1165,7 @@ Obtains the position coordinates of the render node. The coordinates are the pos
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t* x | Pointer used to store the x-coordinate (in px). <br>Default value: **0**, in px. |
 | int32_t* y | Pointer used to store the y-coordinate (in px). <br>Default value: **0**, in px. |
 
@@ -1193,7 +1193,7 @@ Sets the pivot point for the transformation of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float x | Normalized X-coordinate of the pivot point. The value range is [0.0, 1.0]. The API does not verify this range. If the value is out of range, the input value is still used. <br>Default value: **0.5**. |
 | float y | Normalized Y-coordinate of the pivot point. The value range is [0.0, 1.0]. The API does not verify this range. If the value is out of range, the input value is still used. <br>Default value: **0.5**. |
 
@@ -1221,7 +1221,7 @@ Obtains the pivot point coordinates of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* x | Pointer used to store the x-coordinate of the pivot point. <br>Default value: **0.5**. |
 | float* y | Pointer used to store the y-coordinate of the pivot point. <br>Default value: **0.5**. |
 
@@ -1249,7 +1249,7 @@ Sets the scale factors for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float x | Scale factor on the x-axis. <br>Default value: **1**. |
 | float y | Scale factor on the y-axis. <br>Default value: **1**. |
 
@@ -1277,7 +1277,7 @@ Obtains the scale factors of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* x | Pointer used to store the scale factor on the x-axis. <br>Default value: **1**. |
 | float* y | Pointer used to store the scale factor on the y-axis. <br>Default value: **1**. |
 
@@ -1305,7 +1305,7 @@ Sets the translation offset for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float x | Horizontal translation offset (in pixels). <br>Default value: **0**. |
 | float y | Vertical translation offset (in pixels). <br>Default value: **0**. |
 
@@ -1333,7 +1333,7 @@ Obtains the translation offset of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* x | Pointer used to receive the horizontal translation offset, in px. <br>Default value: **0**. |
 | float* y | Pointer used to receive the vertical translation offset, in px. <br>Default value: **0**. |
 
@@ -1361,7 +1361,7 @@ Sets the rotation angles for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float x | Rotation angle around the x-axis (in degrees). <br>Default value: **0**. |
 | float y | Rotation angle around the y-axis (in degrees). <br>Default value: **0**. |
 | float z | Rotation angle around the z-axis (in degrees). <br>Default value: **0**. |
@@ -1390,7 +1390,7 @@ Obtains the rotation angles of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* x | Pointer used to store the rotation angle around the x-axis (in degrees). <br>Default value: **0**. |
 | float* y | Pointer used to store the rotation angle around the y-axis (in degrees). <br>Default value: **0**. |
 | float* z | Pointer used to store the rotation angle around the z-axis (in degrees). <br>Default value: **0**. |
@@ -1419,7 +1419,7 @@ Sets the transformation matrix for the render node.<br> This API is used to cont
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* matrix | Float array of 4x4 transformation matrix (16 consecutive values). The transformation matrix must be provided as 16 consecutive float values in row-major order: [m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33] The matrix is represented as follows: \| m00 m01 m02 m03 \| \| m10 m11 m12 m13 \| \| m20 m21 m22 m23 \| \| m30 m31 m32 m33 \| Matrix components: \| m00  \| Scale value for the x-axis. The default value is **1** in the identity matrix.        \| \| m01  \| Second value, affected by rotation or skewing around x, y, z axes.                    \| \| m02  \| Third value, affected by rotation around x, y, z axes.                                \| \| m03  \| Fourth value, affected by perspective projection.                                     \| \| m10  \| Fifth value, affected by rotation or skewing around x, y, z axes.                     \| \| m11  \| Scale value for the y-axis. The default value is **1** in the identity matrix.        \| \| m12  \| Seventh value, affected by rotation around x, y, z axes.                              \| \| m13  \| Eighth value, affected by perspective projection.                                     \| \| m20  \| Ninth value, affected by rotation around x, y, z axes.                                \| \| m21  \| Tenth value, affected by rotation around x, y, z axes.                                \| \| m22  \| Scale value for the z-axis. The default value is **1** in the identity matrix.        \| \| m23  \| Twelfth value, affected by perspective projection.                                    \| \| m30  \| Translation value for the x-axis (in px). The default value is **0** in the identity   \| \|      \| matrix.                                                                                \| \| m31  \| Translation value for the y-axis (in px). The default value is **0** in the identity   \| \|      \| matrix.                                                                                \| \| m32  \| Translation value for the z-axis (in px). The default value is **0** in the identity   \| \|      \| matrix.                                                                                \| \| m33  \| Valid in homogeneous coordinates, producing perspective projection effects.            \| |
 
 **Returns**:
@@ -1446,7 +1446,7 @@ Sets the shadow color for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | uint32_t color | ARGB color value (32-bit unsigned integer). <br>Default value: **0x00000000**. <br>**Description of color byte layout**: <br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque). <br>- Bits 16-23: red channel. <br>- Bits 8-15: green channel. <br>- Bits 0-7: blue channel. |
 
 **Returns**:
@@ -1473,7 +1473,7 @@ Obtains the shadow color of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | uint32_t* color | Integer pointer used to receive the ARGB color value. If the shadow color is not set, the received value is **0x00000000** (fully transparent). <br>**Description of color byte layout**: <br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque). <br>- Bits 16-23: red channel. <br>- Bits 8-15: green channel. <br>- Bits 0-7: blue channel. |
 
 **Returns**:
@@ -1500,7 +1500,7 @@ Sets the shadow offset for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t x | Horizontal offset (in pixels). <br>Default value: **0**. |
 | int32_t y | Vertical offset (in pixels). <br>Default value: **0**. |
 
@@ -1528,7 +1528,7 @@ Obtains the shadow offset of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t* x | Pointer used to store the horizontal offset. <br>Default value: **0**, in px. |
 | int32_t* y | Pointer used to store the vertical offset. <br>Default value: **0**, in px. |
 
@@ -1556,7 +1556,7 @@ Sets the shadow alpha (transparency) for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float alpha | Alpha channel of the shadow. The value range is [0.0, 1.0]. If a value beyond the range is passed, ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE is returned. |
 
 **Returns**:
@@ -1583,7 +1583,7 @@ Obtains the shadow alpha (transparency) of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* alpha | Pointer used to receive the alpha channel of the shadow. If no shadow-related attribute is set, the received value is **-1.0**, indicating that no attribute is configured. After a shadow-related attribute is set, the received value ranges from 0.0 to 1.0. |
 
 **Returns**:
@@ -1610,7 +1610,7 @@ Sets the shadow elevation for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float elevation | Shadow elevation, in px. The value range is [0, +∞). If a negative value is passed, ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE is returned. <br>Default value: **0**. |
 
 **Returns**:
@@ -1637,7 +1637,7 @@ Obtains the shadow elevation of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* elevation | Pointer used to receive the shadow elevation value, in px. The value range is [0, +∞). If the shadow elevation is not set, the received value is **0**. |
 
 **Returns**:
@@ -1664,7 +1664,7 @@ Sets the shadow radius for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float radius | Shadow radius, in px. The value range is [0, +∞). If a negative value is passed, ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE is returned. |
 
 **Returns**:
@@ -1691,7 +1691,7 @@ Obtains the shadow radius of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float* radius | Pointer used to receive the shadow radius, in px. After the shadow radius is set, the received value range is [0, +∞). If the shadow radius is not set, the received value is **0** in versions earlier than API 26.0.0 and **-1** since API 26.0.0. |
 
 **Returns**:
@@ -1718,8 +1718,8 @@ Sets the border style for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyleoption.md)* borderStyle | Pointer to the border style. <br>Default value in the struct pointer: [ARKUI_BORDER_STYLE_SOLID](capi-native-type-h.md#arkui_borderstyle). |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md)* borderStyle | Pointer to the border style. <br>Default value in the struct pointer: [ARKUI_BORDER_STYLE_SOLID](capi-native-type-h.md#arkui_borderstyle). |
 
 **Returns**:
 
@@ -1745,8 +1745,8 @@ Obtains the border style of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyleoption.md)** borderStyle | Pointer used to store the border style. <br>Default value in the struct pointer: [ARKUI_BORDER_STYLE_SOLID](capi-native-type-h.md#arkui_borderstyle). |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md)** borderStyle | Pointer used to store the border style. <br>Default value in the struct pointer: [ARKUI_BORDER_STYLE_SOLID](capi-native-type-h.md#arkui_borderstyle). |
 
 **Returns**:
 
@@ -1772,8 +1772,8 @@ Sets the border width for the render node.<br> The border width must be less tha
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidthoption.md)* borderWidth | Pointer to the border width. <br>Default value in the struct pointer: **0**. Unit: px. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidth.md)* borderWidth | Pointer to the border width. <br>Default value in the struct pointer: **0**. Unit: px. |
 
 **Returns**:
 
@@ -1799,8 +1799,8 @@ Obtains the border width of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidthoption.md)** borderWidth | Pointer used to store the border width. <br>Default value in the struct pointer: **0**. Unit: px. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidth.md)** borderWidth | Pointer used to store the border width. <br>Default value in the struct pointer: **0**. Unit: px. |
 
 **Returns**:
 
@@ -1826,8 +1826,8 @@ Sets the border color for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercoloroption.md)* borderColor | Pointer to the border color. <br>Default value in the struct pointer: **0x00000000**. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercolor.md)* borderColor | Pointer to the border color. <br>Default value in the struct pointer: **0x00000000**. |
 
 **Returns**:
 
@@ -1853,8 +1853,8 @@ Obtains the border color of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercoloroption.md)** borderColor | Pointer used to store the border color. <br>Default value in the struct pointer: **0x00000000**. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercolor.md)** borderColor | Pointer used to store the border color. <br>Default value in the struct pointer: **0x00000000**. |
 
 **Returns**:
 
@@ -1880,8 +1880,8 @@ Sets the border corner radius for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradiusoption.md)* borderRadius | Pointer to the border radius. <br>The default radius of each corner is 0, in px. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradius.md)* borderRadius | Pointer to the border radius. <br>The default radius of each corner is 0, in px. |
 
 **Returns**:
 
@@ -1907,8 +1907,8 @@ Obtains the border corner radius of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradiusoption.md)** borderRadius | Pointer used to store the border corner radius. <br>The default radius of each corner is 0, in px. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradius.md)** borderRadius | Pointer used to store the border corner radius. <br>The default radius of each corner is 0, in px. |
 
 **Returns**:
 
@@ -1924,7 +1924,10 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 
 **Description**
 
-Applies a mask to the render node using the mask configuration.<br> The mask layer range is determined by the node boundary. The part of the mask shape that exceeds the node boundary is not displayed. Calling [OH_ArkUI_RenderNodeUtils_SetDrawRegion](capi-native-render-h.md#oh_arkui_rendernodeutils_setdrawregion) will not expand the mask layer range.<br> The mask is created as follows: 1. Add brightness and a linear color filter to the mask layer. 2. Draw the mask graphic under this filter. 3. Use the original node image as the source color and the mask graphic as the target color, and blend them into a mask image using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API.
+Applies a mask to the render node using the mask configuration.<br> The mask layer range is determined by the node boundary. The part of the mask shape that exceeds the node boundary is not displayed. Calling [OH_ArkUI_RenderNodeUtils_SetDrawRegion](capi-native-render-h.md#oh_arkui_rendernodeutils_setdrawregion) will not expand the mask layer range.<br> The mask is created as follows:
+1. Add brightness and a linear color filter to the mask layer.
+2. Draw the mask graphic under this filter.
+3. Use the original node image as the source color and the mask graphic as the target color, and blend them into a mask image using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1934,7 +1937,7 @@ Applies a mask to the render node using the mask configuration.<br> The mask lay
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | [ArkUI_RenderNodeMaskOption](capi-arkui-rendernodeutils-arkui-rendernodemaskoption.md)* mask | Pointer to the mask configuration. |
 
 **Returns**:
@@ -1961,7 +1964,7 @@ Applies clipping to the render node using the clipping configuration.<br> The cl
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | [ArkUI_RenderNodeClipOption](capi-arkui-rendernodeutils-arkui-rendernodeclipoption.md)* clip | Pointer to the clipping configuration. |
 
 **Returns**:
@@ -1988,7 +1991,7 @@ Sets whether to form a render group with the target node and its subtree.<br> If
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | bool markNodeGroup | Whether to form a node group with the target node and its subtree. <br>**true**: form a node group and perform offscreen rendering; **false**: do not form a node group. |
 
 **Returns**:
@@ -2015,7 +2018,7 @@ Sets the bounds for the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t x | X-coordinate of the upper left corner of the bounds, in pixels. <br>Default value: **0**. |
 | int32_t y | Y-coordinate of the upper left corner of the bounds, in pixels. <br>Default value: **0**. |
 | int32_t width | Width of the bounds (in pixels). <br>Default value: **0**. The value must be greater than or equal to 0. If a negative value is passed, ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE is returned. |
@@ -2045,7 +2048,7 @@ Obtains the bounds of the render node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | int32_t* x | Pointer used to store the x-coordinate of the upper left corner of the bounds, in pixels. <br>Default value: **0**. |
 | int32_t* y | Pointer used to store the y-coordinate of the upper left corner of the bounds, in pixels. <br>Default value: **0**. |
 | int32_t* width | Pointer used to store the width of the bound, in pixels. The value range is [0, INT_MAX]. <br>Default value: **0**. |
@@ -2075,7 +2078,7 @@ Sets the drawing region for the render node.<br> The drawing area is defined by 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
 | float x | X-coordinate of the upper left corner of the drawing area relative to the origin of the local coordinate system of the node, in px. |
 | float y | Y-coordinate of the upper left corner of the drawing area relative to the origin of the local coordinate system of the node, in px. |
 | float w | Width of the drawing area, in px. |
@@ -2105,8 +2108,8 @@ Attaches a content modifier to the render node.<br> This API is used to extend t
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) node | Target render node. |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) modifier | Content modifier. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | Target render node. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) modifier | Content modifier. |
 
 **Returns**:
 
@@ -2132,7 +2135,7 @@ Creates a content modifier.<br> This API is used to save the drawing attributes,
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) | Content modifier. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) | Content modifier. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeContentModifier()
 
@@ -2152,7 +2155,7 @@ Disposes of the content modifier.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) modifier | Content modifier. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) modifier | Content modifier. |
 
 ### OH_ArkUI_RenderNodeUtils_AttachFloatProperty()
 
@@ -2172,8 +2175,8 @@ Attaches a float property to the target content modifier.<br> This API is used t
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier to which the property is to be attached. |
-| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatpropertyhandle.md) property | Float property. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) modifier | Target content modifier to which the property is to be attached. |
+| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatproperty8h.md) property | Float property. |
 
 **Returns**:
 
@@ -2199,8 +2202,8 @@ Attaches a 2D vector property to the target content modifier.<br> This API is us
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier to which the property is to be attached. |
-| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2propertyhandle.md) property | 2D vector property. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) modifier | Target content modifier to which the property is to be attached. |
+| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2property8h.md) property | 2D vector property. |
 
 **Returns**:
 
@@ -2226,8 +2229,8 @@ Attaches a color property to the target content modifier.<br> This API is used t
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier to which the property is to be attached. |
-| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorpropertyhandle.md) property | Color property. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) modifier | Target content modifier to which the property is to be attached. |
+| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorproperty8h.md) property | Color property. |
 
 **Returns**:
 
@@ -2253,8 +2256,8 @@ Attaches an animatable float property to the target content modifier.<br> This A
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier to which the property is to be attached. |
-| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatablepropertyhandle.md) property | Animatable float property. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) modifier | Target content modifier to which the property is to be attached. |
+| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatableproperty8h.md) property | Animatable float property. |
 
 **Returns**:
 
@@ -2280,8 +2283,8 @@ Attaches an animatable 2D vector property to the target content modifier.<br> Th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier to which the property is to be attached. |
-| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatablepropertyhandle.md) property | Animatable 2D vector property. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) modifier | Target content modifier to which the property is to be attached. |
+| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatableproperty8h.md) property | Animatable 2D vector property. |
 
 **Returns**:
 
@@ -2307,8 +2310,8 @@ Attaches an animatable color property to the target content modifier.<br> This A
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier to which the property is to be attached. |
-| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatablepropertyhandle.md) property | Animatable color property. |
+| [ArkUI_RenderContentModifierHandle](capi-arkui-rendernodeutils-arkui-rendercontentmodifier8h.md) modifier | Target content modifier to which the property is to be attached. |
+| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatableproperty8h.md) property | Animatable color property. |
 
 **Returns**:
 
@@ -2340,7 +2343,7 @@ Creates a float property.<br> After using the property, call [OH_ArkUI_RenderNod
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatpropertyhandle.md) | Float property. |
+| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatproperty8h.md) | Float property. |
 
 ### OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue()
 
@@ -2360,7 +2363,7 @@ Sets the value of the float property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatpropertyhandle.md) property | Float property. |
+| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatproperty8h.md) property | Float property. |
 | float value | Property value. |
 
 **Returns**:
@@ -2387,7 +2390,7 @@ Obtains the value of the float property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatpropertyhandle.md) property | Float property. |
+| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatproperty8h.md) property | Float property. |
 | float* value | Pointer used to store the property value. |
 
 **Returns**:
@@ -2414,7 +2417,7 @@ Disposes of the float property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatpropertyhandle.md) property | Float property. |
+| [ArkUI_FloatPropertyHandle](capi-arkui-rendernodeutils-arkui-floatproperty8h.md) property | Float property. |
 
 ### OH_ArkUI_RenderNodeUtils_CreateVector2Property()
 
@@ -2441,7 +2444,7 @@ Creates a 2D vector property.<br> After using the property, call [OH_ArkUI_Rende
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2propertyhandle.md) | 2D vector property. |
+| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2property8h.md) | 2D vector property. |
 
 ### OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue()
 
@@ -2461,7 +2464,7 @@ Sets the value of the 2D vector property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2propertyhandle.md) property | 2D vector property. |
+| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2property8h.md) property | 2D vector property. |
 | float x | X-coordinate of the property. |
 | float y | Y-coordinate of the property. |
 
@@ -2489,7 +2492,7 @@ Obtains the value of the 2D vector property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2propertyhandle.md) property | 2D vector property. |
+| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2property8h.md) property | 2D vector property. |
 | float* x | Pointer used to store the x-coordinate of the property. |
 | float* y | Pointer used to store the y-coordinate of the property. |
 
@@ -2517,7 +2520,7 @@ Disposes of the 2D vector property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2propertyhandle.md) property | 2D vector property. |
+| [ArkUI_Vector2PropertyHandle](capi-arkui-rendernodeutils-arkui-vector2property8h.md) property | 2D vector property. |
 
 ### OH_ArkUI_RenderNodeUtils_CreateColorProperty()
 
@@ -2543,7 +2546,7 @@ Creates a color property.<br> After using the property, call [OH_ArkUI_RenderNod
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorpropertyhandle.md) | Color property. |
+| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorproperty8h.md) | Color property. |
 
 ### OH_ArkUI_RenderNodeUtils_SetColorPropertyValue()
 
@@ -2563,7 +2566,7 @@ Sets the value of the color property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorpropertyhandle.md) property | Color property. |
+| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorproperty8h.md) property | Color property. |
 | uint32_t value | ARGB color value to be set. The value is in the format of 0xAARRGGBB, where A, R, G, and B indicate the alpha, red, green, and blue channels, respectively. |
 
 **Returns**:
@@ -2590,7 +2593,7 @@ Obtains the value of the color property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorpropertyhandle.md) property | Color property. |
+| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorproperty8h.md) property | Color property. |
 | uint32_t* value | Pointer used to receive the ARGB color value. The color value is in the format of 0xAARRGGBB, where A, R, G, and B indicate the alpha, red, green, and blue channels, respectively. |
 
 **Returns**:
@@ -2617,7 +2620,7 @@ Disposes of the color property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorpropertyhandle.md) property | Color property. |
+| [ArkUI_ColorPropertyHandle](capi-arkui-rendernodeutils-arkui-colorproperty8h.md) property | Color property. |
 
 ### OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty()
 
@@ -2643,7 +2646,7 @@ Creates an animatable float property.<br> This API is used to save the float dra
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatablepropertyhandle.md) | Animatable float property. |
+| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatableproperty8h.md) | Animatable float property. |
 
 ### OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue()
 
@@ -2663,7 +2666,7 @@ Sets the value of the animatable float property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatablepropertyhandle.md) property | Animatable float property. |
+| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatableproperty8h.md) property | Animatable float property. |
 | float value | Property value. |
 
 **Returns**:
@@ -2690,7 +2693,7 @@ Obtains the value of the animatable float property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatablepropertyhandle.md) property | Animatable float property. |
+| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatableproperty8h.md) property | Animatable float property. |
 | float* value | Pointer used to store the property value. |
 
 **Returns**:
@@ -2717,7 +2720,7 @@ Disposes of the animatable float property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatablepropertyhandle.md) property | Animatable float property. |
+| [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-floatanimatableproperty8h.md) property | Animatable float property. |
 
 ### OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty()
 
@@ -2744,7 +2747,7 @@ Creates an animatable 2D vector property.<br> This API is used to save the drawi
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatablepropertyhandle.md) | Animatable 2D vector property. |
+| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatableproperty8h.md) | Animatable 2D vector property. |
 
 ### OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue()
 
@@ -2764,7 +2767,7 @@ Sets the value of the animatable 2D vector property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatablepropertyhandle.md) property | Animatable 2D vector property. |
+| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatableproperty8h.md) property | Animatable 2D vector property. |
 | float x | X-coordinate of the property. |
 | float y | Y-coordinate of the property. |
 
@@ -2792,7 +2795,7 @@ Obtains the value of the animatable 2D vector property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatablepropertyhandle.md) property | Animatable 2D vector property. |
+| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatableproperty8h.md) property | Animatable 2D vector property. |
 | float* x | Pointer used to store the x-coordinate of the property. |
 | float* y | Pointer used to store the y-coordinate of the property. |
 
@@ -2820,7 +2823,7 @@ Disposes of the animatable 2D vector property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatablepropertyhandle.md) property | Animatable 2D vector property. |
+| [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-vector2animatableproperty8h.md) property | Animatable 2D vector property. |
 
 ### OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty()
 
@@ -2846,7 +2849,7 @@ Creates an animatable color property.<br> This API is used to save the color dra
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatablepropertyhandle.md) | Animatable color property. |
+| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatableproperty8h.md) | Animatable color property. |
 
 ### OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue()
 
@@ -2866,7 +2869,7 @@ Sets the value of the animatable color property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatablepropertyhandle.md) property | Animatable color property. |
+| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatableproperty8h.md) property | Animatable color property. |
 | uint32_t value | ARGB color value to be set. The value is in the format of 0xAARRGGBB, where A, R, G, and B indicate the alpha, red, green, and blue channels, respectively. |
 
 **Returns**:
@@ -2893,7 +2896,7 @@ Obtains the value of the animatable color property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatablepropertyhandle.md) property | Animatable color property. |
+| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatableproperty8h.md) property | Animatable color property. |
 | uint32_t* value | Pointer used to receive the ARGB color value. The color value is in the format of 0xAARRGGBB, where A, R, G, and B indicate the alpha, red, green, and blue channels, respectively. |
 
 **Returns**:
@@ -2920,7 +2923,7 @@ Disposes of the animatable color property.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatablepropertyhandle.md) property | Animatable color property. |
+| [ArkUI_ColorAnimatablePropertyHandle](capi-arkui-rendernodeutils-arkui-coloranimatableproperty8h.md) property | Animatable color property. |
 
 ### OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw()
 
@@ -2968,7 +2971,7 @@ Creates a rectangle shape option.<br> After using the option, call [OH_ArkUI_Ren
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_RectShapeOption*](capi-arkui-rendernodeutils-arkui-rectshapeoption.md) | Pointer to the rectangle shape option. |
+| [ArkUI_RectShapeOption*](capi-arkui-rendernodeutils-arkui-rectshape.md) | Pointer to the rectangle shape option. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption()
 
@@ -2988,7 +2991,7 @@ Disposes of the rectangle shape option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshapeoption.md)* option | Pointer to the rectangle shape option. |
+| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshape.md)* option | Pointer to the rectangle shape option. |
 
 ### OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue()
 
@@ -3008,7 +3011,7 @@ Sets the edge value for the rectangle shape option.<br> The left or top edge can
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshapeoption.md)* option | Pointer to the rectangle shape option. |
+| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshape.md)* option | Pointer to the rectangle shape option. |
 | float edgeValue | Edge value of the rectangle shape option, in px. |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | Edge direction to apply the value. |
 
@@ -3030,7 +3033,7 @@ Creates a node border style option.<br> After using the option, call [OH_ArkUI_R
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeBorderStyleOption*](capi-arkui-rendernodeutils-arkui-nodeborderstyleoption.md) | Pointer to the node border style option. |
+| [ArkUI_NodeBorderStyleOption*](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md) | Pointer to the node border style option. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption()
 
@@ -3050,7 +3053,7 @@ Disposes of the node border style option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyleoption.md)* option | Pointer to the node border style option. |
+| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md)* option | Pointer to the node border style option. |
 
 ### OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle()
 
@@ -3070,7 +3073,7 @@ Sets the edge style of the node border.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyleoption.md)* option | Pointer to the node border style option. |
+| [ArkUI_NodeBorderStyleOption](capi-arkui-rendernodeutils-arkui-nodeborderstyle.md)* option | Pointer to the node border style option. |
 | [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle) edgeStyle | Edge style of the node border. |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | Edge direction. |
 
@@ -3092,7 +3095,7 @@ Creates a node border width option.<br> After using the option, call [OH_ArkUI_R
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeBorderWidthOption*](capi-arkui-rendernodeutils-arkui-nodeborderwidthoption.md) | Pointer to the node border width option. |
+| [ArkUI_NodeBorderWidthOption*](capi-arkui-rendernodeutils-arkui-nodeborderwidth.md) | Pointer to the node border width option. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption()
 
@@ -3112,7 +3115,7 @@ Disposes of the node border width option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidthoption.md)* option | Pointer to the node border width option. |
+| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidth.md)* option | Pointer to the node border width option. |
 
 ### OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth()
 
@@ -3132,7 +3135,7 @@ Sets the edge width of the node border.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidthoption.md)* option | Pointer to the node border width option. |
+| [ArkUI_NodeBorderWidthOption](capi-arkui-rendernodeutils-arkui-nodeborderwidth.md)* option | Pointer to the node border width option. |
 | float edgeWidth | Edge width of the node border, in px. The value range is [0, +∞). If a negative value is passed, the width of the corresponding edge remains unchanged. |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | Edge direction. |
 
@@ -3154,7 +3157,7 @@ Creates a node border color option.<br> After using the option, call [OH_ArkUI_R
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeBorderColorOption*](capi-arkui-rendernodeutils-arkui-nodebordercoloroption.md) | Pointer to the node border color option. |
+| [ArkUI_NodeBorderColorOption*](capi-arkui-rendernodeutils-arkui-nodebordercolor.md) | Pointer to the node border color option. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption()
 
@@ -3174,7 +3177,7 @@ Disposes of the node border color option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercoloroption.md)* option | Pointer to the node border color option. |
+| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercolor.md)* option | Pointer to the node border color option. |
 
 ### OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor()
 
@@ -3194,7 +3197,7 @@ Sets the edge color of the node border.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercoloroption.md)* option | Pointer to the node border color option. |
+| [ArkUI_NodeBorderColorOption](capi-arkui-rendernodeutils-arkui-nodebordercolor.md)* option | Pointer to the node border color option. |
 | uint32_t edgeColor | Edge color of the node border, in 0xAARRGGBB format, where A, R, G, and B indicate the alpha, red, green, and blue channels, respectively. |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | Edge direction. |
 
@@ -3216,7 +3219,7 @@ Creates a node border radius option.<br> After using the option, call [OH_ArkUI_
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeBorderRadiusOption*](capi-arkui-rendernodeutils-arkui-nodeborderradiusoption.md) | Pointer to the node border radius option. |
+| [ArkUI_NodeBorderRadiusOption*](capi-arkui-rendernodeutils-arkui-nodeborderradius.md) | Pointer to the node border radius option. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption()
 
@@ -3236,7 +3239,7 @@ Disposes of the node border radius option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradiusoption.md)* option | Pointer to the node border radius option. |
+| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradius.md)* option | Pointer to the node border radius option. |
 
 ### OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius()
 
@@ -3256,7 +3259,7 @@ Sets the border radius of a specified corner of a node.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradiusoption.md)* option | Pointer to the node border radius option. |
+| [ArkUI_NodeBorderRadiusOption](capi-arkui-rendernodeutils-arkui-nodeborderradius.md)* option | Pointer to the node border radius option. |
 | uint32_t cornerRadius | Border radius of a specified corner of a node, in px. The value is a non-negative integer. |
 | [ArkUI_CornerDirection](capi-native-type-h.md#arkui_cornerdirection) direction | Direction of the target corner. |
 
@@ -3278,7 +3281,7 @@ Creates a circle shape option.<br> After using the option, call [OH_ArkUI_Render
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CircleShapeOption*](capi-arkui-rendernodeutils-arkui-circleshapeoption.md) | Pointer to the circle shape option. |
+| [ArkUI_CircleShapeOption*](capi-arkui-rendernodeutils-arkui-circleshape.md) | Pointer to the circle shape option. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption()
 
@@ -3298,7 +3301,7 @@ Disposes of the circle shape option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshapeoption.md)* option | Pointer to the circle shape option. |
+| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshape.md)* option | Pointer to the circle shape option. |
 
 ### OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX()
 
@@ -3318,7 +3321,7 @@ Sets the X-coordinate of the center for the circle shape option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshapeoption.md)* option | Pointer to the circle shape option. |
+| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshape.md)* option | Pointer to the circle shape option. |
 | float centerX | X-coordinate of the center, in px. |
 
 ### OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY()
@@ -3339,7 +3342,7 @@ Sets the Y-coordinate of the center for the circle shape option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshapeoption.md)* option | Pointer to the circle shape option. |
+| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshape.md)* option | Pointer to the circle shape option. |
 | float centerY | Y-coordinate of the center, in px. |
 
 ### OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius()
@@ -3360,7 +3363,7 @@ Sets the radius value for the circle shape option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshapeoption.md)* option | Pointer to the circle shape option. |
+| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshape.md)* option | Pointer to the circle shape option. |
 | float radius | Radius, in pixels. |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()
@@ -3381,7 +3384,7 @@ Creates a rounded rectangle shape option.<br> After using the option, call [OH_A
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption*](capi-arkui-rendernodeutils-arkui-roundrectshapeoption.md) | Pointer to the rounded rectangle shape option. |
+| [ArkUI_RoundRectShapeOption*](capi-arkui-rendernodeutils-arkui-roundrectshape.md) | Pointer to the rounded rectangle shape option. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption()
 
@@ -3401,7 +3404,7 @@ Disposes of the rounded rectangle shape option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshapeoption.md)* option | Pointer to the rounded rectangle shape option. |
+| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshape.md)* option | Pointer to the rounded rectangle shape option. |
 
 ### OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue()
 
@@ -3421,7 +3424,7 @@ Sets the edge value for the rounded rectangle shape option.<br> The left or top 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshapeoption.md)* option | Pointer to the rounded rectangle shape option. |
+| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshape.md)* option | Pointer to the rounded rectangle shape option. |
 | float edgeValue | Edge value of the rounded rectangle shape option, in px. |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | Edge direction to apply the value. |
 
@@ -3443,7 +3446,7 @@ Sets the corner radius for the X and Y axes of a specified corner.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshapeoption.md)* option | Pointer to the rounded rectangle shape option. |
+| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshape.md)* option | Pointer to the rounded rectangle shape option. |
 | float x | Corner radius of the X axis of the specified corner, in px. |
 | float y | Corner radius of the Y axis of the specified corner, in px. |
 | [ArkUI_CornerDirection](capi-native-type-h.md#arkui_cornerdirection) direction | Direction of the target corner. |
@@ -3466,7 +3469,7 @@ Creates a custom drawing path option.<br> After using the option, call [OH_ArkUI
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CommandPathOption*](capi-arkui-rendernodeutils-arkui-commandpathoption.md) | Pointer to the custom drawing path option. |
+| [ArkUI_CommandPathOption*](capi-arkui-rendernodeutils-arkui-commandpath.md) | Pointer to the custom drawing path option. |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption()
 
@@ -3486,7 +3489,7 @@ Disposes of the custom drawing path option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpathoption.md)* option | Pointer to the custom drawing path option. |
+| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpath.md)* option | Pointer to the custom drawing path option. |
 
 ### OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands()
 
@@ -3506,7 +3509,7 @@ Sets the command values for the custom drawing path option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpathoption.md)* option | Pointer to the custom drawing path option. |
+| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpath.md)* option | Pointer to the custom drawing path option. |
 | char* commands | Command values. The input parameter format is the \<path> shape label in Basic Shapes of SVG. |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape()
@@ -3527,7 +3530,7 @@ Creates a mask from a rectangle shape.<br> After using the option, call [OH_ArkU
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshapeoption.md)* shape | Pointer to the rectangle shape option. |
+| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshape.md)* shape | Pointer to the rectangle shape option. |
 
 **Returns**:
 
@@ -3553,7 +3556,7 @@ Creates a mask from a rounded rectangle shape.<br> After using the option, call 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshapeoption.md)* shape | Pointer to the rounded rectangle shape option. |
+| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshape.md)* shape | Pointer to the rounded rectangle shape option. |
 
 **Returns**:
 
@@ -3579,7 +3582,7 @@ Creates a mask from a circle shape.<br> After using the option, call [OH_ArkUI_R
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshapeoption.md)* shape | Pointer to the circle shape option. |
+| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshape.md)* shape | Pointer to the circle shape option. |
 
 **Returns**:
 
@@ -3605,7 +3608,7 @@ Creates a mask from an oval shape.<br> After using the option, call [OH_ArkUI_Re
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshapeoption.md)* shape | Pointer to the oval shape option. |
+| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshape.md)* shape | Pointer to the oval shape option. |
 
 **Returns**:
 
@@ -3631,7 +3634,7 @@ Creates a mask from a custom drawing path.<br> After using the option, call [OH_
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpathoption.md)* path | Pointer to the custom drawing path option. |
+| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpath.md)* path | Pointer to the custom drawing path option. |
 
 **Returns**:
 
@@ -3740,7 +3743,7 @@ Creates a render node clip option from a rectangle shape.<br> After using the op
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshapeoption.md)* shape | Pointer to the rectangle shape option. |
+| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshape.md)* shape | Pointer to the rectangle shape option. |
 
 **Returns**:
 
@@ -3766,7 +3769,7 @@ Creates a render node clip option from a rounded rectangle shape.<br> After usin
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshapeoption.md)* shape | Pointer to the rounded rectangle shape option. |
+| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshape.md)* shape | Pointer to the rounded rectangle shape option. |
 
 **Returns**:
 
@@ -3792,7 +3795,7 @@ Creates a render node clip option from a circle shape.<br> After using the optio
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshapeoption.md)* shape | Pointer to the circle shape option. |
+| [ArkUI_CircleShapeOption](capi-arkui-rendernodeutils-arkui-circleshape.md)* shape | Pointer to the circle shape option. |
 
 **Returns**:
 
@@ -3818,7 +3821,7 @@ Creates a render node clip option from an oval shape.<br> After using the option
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshapeoption.md)* shape | Pointer to the oval shape option. |
+| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshape.md)* shape | Pointer to the oval shape option. |
 
 **Returns**:
 
@@ -3844,7 +3847,7 @@ Creates a render node clip option from a custom drawing path.<br> After using th
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpathoption.md)* path | Pointer to the custom drawing path option. |
+| [ArkUI_CommandPathOption](capi-arkui-rendernodeutils-arkui-commandpath.md)* path | Pointer to the custom drawing path option. |
 
 **Returns**:
 
@@ -3891,7 +3894,7 @@ Obtains the RenderNode of the target node that has been accepted as a child node
 | Parameter | Description |
 | -- | -- |
 | ArkUI_NodeHandle node | Pointer to **ArkUI_NodeHandle**, which specifies the target node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md)* renderNode | Pointer to **ArkUI_RenderNodeHandle**, which specifies the RenderNode of the target node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md)* renderNode | Pointer to **ArkUI_RenderNodeHandle**, which specifies the RenderNode of the target node. |
 
 **Returns**:
 
@@ -3917,7 +3920,7 @@ Sets the border range for a rounded rectangle shape option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshapeoption.md)* option | Pointer to the rounded rectangle shape option to be configured. |
+| [ArkUI_RoundRectShapeOption](capi-arkui-rendernodeutils-arkui-roundrectshape.md)* option | Pointer to the rounded rectangle shape option to be configured. |
 | float x | X coordinate of the upper left corner of the rectangle, which is used to determine the position of the left boundary. |
 | float y | Y coordinate of the upper left corner of the rectangle, which is used to determine the position of the upper boundary. |
 | float width | Width of the rectangle, which indicates the horizontal span starting from the X coordinate and is used to determine the position of the right boundary. That is, the X coordinate of the lower right corner of the rectangle is equal to **x** + **width**. |
@@ -3941,7 +3944,7 @@ Sets the border range for a rectangle shape option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshapeoption.md)* option | Pointer to the rectangle shape option to be configured. |
+| [ArkUI_RectShapeOption](capi-arkui-rendernodeutils-arkui-rectshape.md)* option | Pointer to the rectangle shape option to be configured. |
 | float x | X coordinate of the upper left corner of the rectangle, which is used to determine the position of the left boundary. |
 | float y | Y coordinate of the upper left corner of the rectangle, which is used to determine the position of the upper boundary. |
 | float width | Width of the rectangle, which indicates the horizontal span starting from the X coordinate and is used to determine the position of the right boundary. That is, the X coordinate of the lower right corner of the rectangle is equal to **x** + **width**. |
@@ -3966,7 +3969,7 @@ Inserts a child render node at a specified position under a parent custom node.<
 | Parameter | Description |
 | -- | -- |
 | ArkUI_NodeHandle node | Target parent node. Only the **ARKUI_NODE_CUSTOM** type in [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) is supported. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md) child | Child render node to be inserted. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | Child render node to be inserted. |
 | int32_t position | Index of the child render node to be inserted. The value range is [0, Number of current child nodes]. If the value is equal to the number of current child nodes, the operation is equivalent to adding a child render node. |
 
 **Returns**:
@@ -4022,7 +4025,7 @@ Obtains the render node handle corresponding to the child node at a specified po
 | -- | -- |
 | ArkUI_NodeHandle node | Target parent node. |
 | int32_t position | Index of a child node. The value range is [0, Number of current child nodes - 1]. |
-| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernodehandle.md)* child | Pointer used to receive the render node handle corresponding to the child node at the specified position. The value cannot be null. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md)* child | Pointer used to receive the render node handle corresponding to the child node at the specified position. The value cannot be null. |
 
 **Returns**:
 

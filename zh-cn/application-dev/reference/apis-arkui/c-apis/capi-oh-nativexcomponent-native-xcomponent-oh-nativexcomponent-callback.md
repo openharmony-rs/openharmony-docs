@@ -12,7 +12,7 @@ OH_NativeXComponent_Callback用于注册XComponent的Surface生命周期（创�
 
 **起始版本：** 8
 
-**相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+**相关模块：** [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
 
 **所在头文件：** [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 

@@ -9,6 +9,7 @@
 | Name | Description |
 | -- | -- |
 | uint64_t a_type |  |
+| a_un |  |
 | a_un.a_val |  |
 
 

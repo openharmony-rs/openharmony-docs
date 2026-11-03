@@ -12,7 +12,7 @@ Opaque custom information associated with a placeholder.
 
 **Since**: 26.0.1
 
-**Related module**: [CloudDisk](capi-clouddisk.md)
+**Related module**: [CloudDisk](capi-others-clouddisk.md)
 
 **Header file**: [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

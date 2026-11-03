@@ -6,13 +6,13 @@ struct DDK_Ashmem {...}
 
 ## Overview
 
-Device memory map created by calling OH_DDK_CreateAshmem. A buffer using the device memory map can provide better performance.
+Device memory map created by calling [OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem). A buffer using the device memory map can provide better performance.
 
 **System capability**: SystemCapability.Driver.DDK.Extension
 
 **Since**: 12
 
-**Related module**: [Ddk](capi-ddk.md)
+**Related module**: [Ddk](capi-others-ddk.md)
 
 **Header file**: [ddk_types.h](capi-ddk-types-h.md)
 

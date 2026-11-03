@@ -10,7 +10,7 @@ Defines the functions for obtaining and using a native buffer.
 
 **Since**: 9
 
-**Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**Related module**: [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 ## Summary
 
@@ -75,11 +75,11 @@ Indicates the usage of a native buffer.
 | NATIVEBUFFER_USAGE_CPU_READ = (1ULL << 0) | CPU read buffer |
 | NATIVEBUFFER_USAGE_CPU_WRITE = (1ULL << 1) | CPU write memory |
 | NATIVEBUFFER_USAGE_MEM_DMA = (1ULL << 3) | Direct memory access (DMA) buffer |
-| NATIVEBUFFER_USAGE_MEM_MMZ_CACHE = (1ULL << 5) |  |
-| NATIVEBUFFER_USAGE_HW_RENDER = (1ULL << 8) |  |
-| NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9) |  |
-| NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16) |  |
-| NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18) |  |
+| NATIVEBUFFER_USAGE_MEM_MMZ_CACHE = (1ULL << 5) | MMZ with cache<br>**Since**: 20 |
+| NATIVEBUFFER_USAGE_HW_RENDER = (1ULL << 8) | For GPU write case<br>**Since**: 12 |
+| NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9) | For GPU read case<br>**Since**: 12 |
+| NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16) | Often be mapped for direct CPU reads<br>**Since**: 12 |
+| NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18) | 512 bytes alignment<br>**Since**: 12 |
 
 ### OH_NativeBuffer_ColorGamut
 

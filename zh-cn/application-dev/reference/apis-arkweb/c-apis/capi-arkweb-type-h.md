@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-arkweb-web.md)
 
 ## 汇总
 
@@ -30,9 +30,9 @@
 | [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md) | ArkWeb_WebMessageAPI | ArkWeb_WebMessageAPI是Web消息相关Native API结构体。该结构体提供了创建和销毁消息、设置和获取消息类型、管理消息数据缓冲区等函数。此API是postMessage桥接的一部分， 支持Native代码与HTML页面之间的双向通信。<br>Web消息相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义) 校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。 |
 | [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md) | ArkWeb_CookieManagerAPI | ArkWeb_CookieManagerAPI是Cookie管理相关Native API结构体。该结构体提供了Cookie的读取、设置、清除和同步等操作能力，适用于需要在WebView组件中管理用户会话、 跟踪用户首选项等场景，能够帮助开发者便捷地实现数据持久化和状态同步。<br>CookieManager相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过 [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。 |
 | [ArkWeb_JavaScriptValueAPI](capi-web-arkweb-javascriptvalueapi.md) | ArkWeb_JavaScriptValueAPI | ArkWeb_JavaScriptValueAPI是JavaScript相关Native API结构体。该结构体提供了创建JavaScript值的函数， 支持将Native数据转换为JavaScript可识别的格式并返回给HTML。该转换机制根据指定的JavaScript值类型对Native数据缓冲区进行解析和封装，生成对应的JavaScript值对象。 适用于需要从Native层向Web层传递数据的应用场景，能够实现Native与Web之间的双向数据交互，提升应用开发灵活性。<br>在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取JavaScript相关接口。 调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。 |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) | ArkWeb_WebMessagePtr | ArkWeb_WebMessage是用于跨上下文消息通信的Web消息结构体，定义了消息的基本格式和数据承载能力。该结构体是Web消息通信的基础数据单元，支持在Native代码和Web页面之间传递字符串和二进制数据。 |
-| [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalueptr.md) | ArkWeb_JavaScriptValuePtr | ArkWeb_JavaScriptValue是用于在Native代码中封装JavaScript值的结构体，提供了JavaScript值的基本创建和操作能力。 该结构体支持将Native数据转换为JavaScript可识别的格式，解决Native与JavaScript双向数据传递的类型安全与格式兼容问题，是JavaScript桥接通信中的数据传递基础类型，有助于减少手动转换成本、 提升桥接通信效率并增强可维护性。 |
-| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md) | ArkWeb_WebMessagePortPtr | ArkWeb_WebMessagePort是Web消息端口结构体，表示MessageChannel的两个端口之一，用于发送和接收消息。该结构体支持在Native代码和Web页面之间进行双向消息通信。 |
+| [ArkWeb_WebMessage*](capi-web-arkweb-webmessage8h.md) | ArkWeb_WebMessagePtr | ArkWeb_WebMessage是用于跨上下文消息通信的Web消息结构体，定义了消息的基本格式和数据承载能力。该结构体是Web消息通信的基础数据单元，支持在Native代码和Web页面之间传递字符串和二进制数据。 |
+| [ArkWeb_JavaScriptValue*](capi-web-arkweb-javascriptvalue8h.md) | ArkWeb_JavaScriptValuePtr | ArkWeb_JavaScriptValue是用于在Native代码中封装JavaScript值的结构体，提供了JavaScript值的基本创建和操作能力。 该结构体支持将Native数据转换为JavaScript可识别的格式，解决Native与JavaScript双向数据传递的类型安全与格式兼容问题，是JavaScript桥接通信中的数据传递基础类型，有助于减少手动转换成本、 提升桥接通信效率并增强可维护性。 |
+| [ArkWeb_WebMessagePort*](capi-web-arkweb-webmessageport8h.md) | ArkWeb_WebMessagePortPtr | ArkWeb_WebMessagePort是Web消息端口结构体，表示MessageChannel的两个端口之一，用于发送和接收消息。该结构体支持在Native代码和Web页面之间进行双向消息通信。 |
 
 ### 枚举
 
@@ -58,17 +58,6 @@
 | [typedef void (\*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)](#arkweb_oncomponentcallback) | ArkWeb_OnComponentCallback | 接收Web组件事件通知的回调。用于接收Web组件生命周期事件通知，例如页面加载完成、页面销毁、组件可见性变化等场景下的状态变更通知。 |
 | [typedef void (\*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)](#arkweb_onscrollcallback) | ArkWeb_OnScrollCallback | Web组件滚动时的回调函数。 |
 | [typedef void (\*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData)](#arkweb_onmessageeventhandler) | ArkWeb_OnMessageEventHandler | 处理HTML发送过来的Post Message数据。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*ArkWeb_OnJavaScriptCallback)( const char* webTag, const ArkWeb_JavaScriptBridgeData* data, void* userData) | 注入的JavaScript执行完成的回调。用于获取JavaScript代码在Web组件中的执行结果，例如在需要根据JavaScript返回的数据更新原生UI或执行后续逻辑的场景中使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_OnJavaScriptProxyCallback)( const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData) | Proxy方法被执行的回调。Proxy方法用于Native侧与JavaScript侧的对象交互和自定义操作。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| ArkWeb_JavaScriptValuePtr (*ArkWeb_OnJavaScriptProxyCallbackWithResult)( const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData) | Proxy方法被执行的回调（有返回值）。用于在JavaScript调用注入的Proxy方法时接收通知并返回执行结果，适用于实现JavaScript与原生代码的桥接通信场景，例如拦截JavaScript调用、执行原生逻辑、 计算结果并将结果返回给JavaScript。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData) | 接收Web组件事件通知的回调。用于接收Web组件生命周期事件通知，例如页面加载完成、页面销毁、组件可见性变化等场景下的状态变更通知。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y) | Web组件滚动时的回调函数。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*ArkWeb_OnMessageEventHandler)( const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData) | 处理HTML发送过来的Post Message数据。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
 
 ## 枚举类型说明
 
@@ -229,8 +218,8 @@ typedef void (*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_We
 | 参数项 | 描述 |
 | -- | -- |
 | const char* webTag | Web组件名称。 |
-| [const ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md) port | Post Message端口。 |
-| [const ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) message | Post Message数据。 |
+| [const ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) port | Post Message端口。 |
+| [const ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) message | Post Message数据。 |
 | void* userData | 用户自定义的数据。 |
 
 

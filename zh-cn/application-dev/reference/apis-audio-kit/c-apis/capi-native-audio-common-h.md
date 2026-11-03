@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -71,10 +71,10 @@ enum OH_AudioScene
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_SCENE_DEFAULT = 0 |  |
-| AUDIO_SCENE_RINGING = 1 |  |
-| AUDIO_SCENE_PHONE_CALL = 2 |  |
-| AUDIO_SCENE_VOICE_CHAT = 3 |  |
+| AUDIO_SCENE_DEFAULT = 0 | 默认音频场景。<br>**起始版本：** 12 |
+| AUDIO_SCENE_RINGING = 1 | 响铃场景。<br>**起始版本：** 12 |
+| AUDIO_SCENE_PHONE_CALL = 2 | 电话场景。<br>**起始版本：** 12 |
+| AUDIO_SCENE_VOICE_CHAT = 3 | 语音聊天场景。<br>**起始版本：** 12 |
 
 ### OH_AudioRingerMode
 
@@ -92,9 +92,9 @@ enum OH_AudioRingerMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIO_RINGER_MODE_SILENT = 0 |  |
-| AUDIO_RINGER_MODE_VIBRATE = 1 |  |
-| AUDIO_RINGER_MODE_NORMAL = 2 |  |
+| AUDIO_RINGER_MODE_SILENT = 0 | 静音模式。<br>**起始版本：** 20 |
+| AUDIO_RINGER_MODE_VIBRATE = 1 | 振动模式。<br>**起始版本：** 20 |
+| AUDIO_RINGER_MODE_NORMAL = 2 | 响铃模式。<br>**起始版本：** 20 |
 
 ### OH_AudioNoiseReductionMode
 

@@ -12,7 +12,7 @@ OH_AVCastController object<br> A pointer can be created using the [OH_AVSession_
 
 **Since**: 23
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-others-ohavsession.md)
 
 **Header file**: [native_avsession.h](capi-native-avsession-h.md)
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## 汇总
 
@@ -448,7 +448,7 @@ enum OH_Drawing_PlaceholderVerticalAlignment
 | ALIGNMENT_TOP_OF_ROW_BOX | 行框顶部对齐。 |
 | ALIGNMENT_BOTTOM_OF_ROW_BOX | 行框底部对齐。 |
 | ALIGNMENT_CENTER_OF_ROW_BOX | 行框中心对齐。 |
-| ALIGNMENT_FOLLOW_PARAGRAPH |  |
+| ALIGNMENT_FOLLOW_PARAGRAPH | 跟随文本垂直对齐方式。<br>**起始版本：** 20 |
 
 ### OH_Drawing_TextDecorationStyle
 
@@ -491,8 +491,8 @@ enum OH_Drawing_EllipsisModal
 | ELLIPSIS_MODAL_HEAD = 0 | 头部省略号模式，即省略号位置出现在行首。该枚举值仅在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为1时有效。 |
 | ELLIPSIS_MODAL_MIDDLE = 1 | 中部省略号模式，即省略号位置出现在行的中间。该枚举值仅在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为1时有效。 |
 | ELLIPSIS_MODAL_TAIL = 2 | 尾部省略号模式，即省略号位置出现在行的尾部。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。 |
-| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 |  |
-| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 |  |
+| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | 头部省略号模式，即省略号位置出现在行首。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。<br>**起始版本：** 24 |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | 中间省略号模式，即省略号位置出现在行的中间。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。<br>**起始版本：** 24 |
 
 ### OH_Drawing_BreakStrategy
 
@@ -533,7 +533,7 @@ enum OH_Drawing_WordBreakType
 | WORD_BREAK_TYPE_NORMAL = 0 | 常规方式。 |
 | WORD_BREAK_TYPE_BREAK_ALL = 1 | 全部中断方式。 |
 | WORD_BREAK_TYPE_BREAK_WORD = 2 | 单词中断方式。 |
-| WORD_BREAK_TYPE_BREAK_HYPHEN = 3 |  |
+| WORD_BREAK_TYPE_BREAK_HYPHEN = 3 | 每行末尾单词尝试通过连字符"-"进行断行，若无法添加连字符"-"，则跟`WORD_BREAK_TYPE_BREAK_WORD`保持一致。<br>**起始版本：** 18 |
 
 ### OH_Drawing_RectHeightStyle
 
@@ -692,7 +692,7 @@ enum OH_Drawing_TextStyleAttributeId
 | TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | 行高下限。<br>若同时开启行高缩放，当FontHeight（可由[OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)接口获取）大于0时行高下限才生效。<br>取值范围为单精度浮点数非负部分， 默认值为0。 |
 | TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2 | 行高缩放基数样式。具体行高缩放基数样式可见[OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle)。 |
 | TEXT_STYLE_ATTR_I_FONT_WIDTH = 3 | 字宽。 |
-| TEXT_STYLE_ATTR_I_FONT_EDGING = 4 |  |
+| TEXT_STYLE_ATTR_I_FONT_EDGING = 4 | 字体边缘处理方式。默认为抗锯齿，具体字体边缘处理方式可见[OH_Drawing_FontEdging](capi-drawing-font-h.md#oh_drawing_fontedging)。<br>**起始版本：** 24 |
 
 ### OH_Drawing_LineHeightStyle
 
@@ -734,13 +734,13 @@ enum OH_Drawing_TypographyStyleAttributeId
 | TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | 行间距。<br>lineSpacing不受行高上下限的限制。<br>尾行默认添加行间距。<br>可通过[OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior) 接口设置textHeightBehavior为DISABLE_LAST_ASCENT禁用尾行行间距。<br>默认值为0。 |
 | TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | 行高缩放基数样式。具体行高缩放基数样式可见[OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle)。 |
 | TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | 字宽。 |
-| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 |  |
-| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 |  |
-| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 |  |
-| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 |  |
-| TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9 |  |
-| TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10 |  |
-| TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11 |  |
+| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | 设置文本排版时是否启用行首标点压缩。<br>**说明：**<br>1. 需要字体文件支持[OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md)中的"ss08"特性，否则无法压缩。<br>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**起始版本：** 23 |
+| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | 设置文本排版时是否启用字体内部的padding。<br>**起始版本：** 23 |
+| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | 设置文本排版时是否启用行间距回退机制。<br>**起始版本：** 23 |
+| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 | 省略号样式。具体省略号样式可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)。<br>**起始版本：** 24 |
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9 | 行首缩进数组。<br>缩进数组值需全部大于等于0，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值。<br>**起始版本：** 26.0.0 |
+| TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10 | 段落首行缩进。缩进值需大于等于0。<br>**起始版本：** 26.0.0 |
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11 | 行尾缩进数组。<br>缩进数组值需全部大于等于0，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值。<br>**起始版本：** 26.0.0 |
 
 ### OH_Drawing_TypographyAttributeId
 
@@ -758,7 +758,7 @@ enum OH_Drawing_TypographyAttributeId
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 |  |
+| TYPOGRAPHY_ATTR_B_FORCE_REUSE_RASTER_RESULT = 0 | 是否强制复用光栅化结果。设置后，在下次调用[OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint)绘制时生效。<br>true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。<br>**起始版本：** 26.0.0 |
 
 ### OH_Drawing_TextBadgeType
 

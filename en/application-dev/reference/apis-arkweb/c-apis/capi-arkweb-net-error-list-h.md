@@ -10,7 +10,7 @@ Declares the ArkWeb network protocol stack error codes. This enumeration defines
 
 **Since**: 12
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 ## Summary
 

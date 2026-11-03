@@ -4,7 +4,7 @@
 
 Defines the asymmetric key interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_asym_key.h>
+**File to Include**: <CryptoArchitectureKit/crypto_asym_key.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the asymmetric key interfaces.
 
 **Since**: 12
 
-**Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)
+**Related module**: [CryptoAsymKeyApi](capi-crypto-architecture-kit-cryptoasymkeyapi.md)
 
 ## Summary
 
@@ -199,7 +199,7 @@ Creates an asymmetric key generator based on the given algorithm name.
 
 **Since**: 12
 
-**Resource release**: crypto_asym_key/OH_CryptoAsymKeyGenerator_Destroy {ctx}
+**Resource release**: [OH_CryptoAsymKeyGenerator_Destroy](#oh_cryptoasymkeygenerator_destroy)
 
 **Parameters**:
 
@@ -234,7 +234,7 @@ Generates an asymmetric key pair.
 
 **Since**: 12
 
-**Resource release**: crypto_asym_key/OH_CryptoKeyPair_Destroy {keyCtx}
+**Resource release**: [OH_CryptoKeyPair_Destroy](#oh_cryptokeypair_destroy)
 
 **Parameters**:
 
@@ -263,7 +263,7 @@ Converts asymmetric key data to a key pair.
 
 **Since**: 12
 
-**Resource release**: crypto_asym_key/OH_CryptoKeyPair_Destroy {keyCtx}
+**Resource release**: [OH_CryptoKeyPair_Destroy](#oh_cryptokeypair_destroy)
 
 **Parameters**:
 
@@ -413,7 +413,7 @@ Encodes the public key.
 
 **Since**: 12
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -444,7 +444,7 @@ Obtains the specified parameter of the public key.
 
 **Since**: 12
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {value}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -502,7 +502,7 @@ Creates private key encoding parameters.
 
 **Since**: 20
 
-**Resource release**: crypto_asym_key/OH_CryptoPrivKeyEncodingParams_Destroy {ctx}
+**Resource release**: [OH_CryptoPrivKeyEncodingParams_Destroy](#oh_cryptoprivkeyencodingparams_destroy)
 
 **Parameters**:
 
@@ -583,7 +583,7 @@ Encodes the private key.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -615,7 +615,7 @@ Obtains the specified parameter of the private key.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {value}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -645,7 +645,7 @@ Generates EC common parameter specification.
 
 **Since**: 20
 
-**Resource release**: crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
+**Resource release**: [OH_CryptoAsymKeySpec_Destroy](#oh_cryptoasymkeyspec_destroy)
 
 **Parameters**:
 
@@ -674,7 +674,7 @@ Generates DH common parameter specification.
 
 **Since**: 20
 
-**Resource release**: crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
+**Resource release**: [OH_CryptoAsymKeySpec_Destroy](#oh_cryptoasymkeyspec_destroy)
 
 **Parameters**:
 
@@ -704,7 +704,7 @@ Creates an asymmetric key specification based on the given algorithm name and sp
 
 **Since**: 20
 
-**Resource release**: crypto_asym_key/OH_CryptoAsymKeySpec_Destroy {spec}
+**Resource release**: [OH_CryptoAsymKeySpec_Destroy](#oh_cryptoasymkeyspec_destroy)
 
 **Parameters**:
 
@@ -789,7 +789,7 @@ Obtains the specified parameter of the asymmetric key specification.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {value}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -839,7 +839,7 @@ Creates a key generator based on the asymmetric key specification.
 
 **Since**: 20
 
-**Resource release**: crypto_asym_key/OH_CryptoAsymKeyGeneratorWithSpec_Destroy {generator}
+**Resource release**: [OH_CryptoAsymKeyGeneratorWithSpec_Destroy](#oh_cryptoasymkeygeneratorwithspec_destroy)
 
 **Parameters**:
 
@@ -873,7 +873,7 @@ Generates a key pair based on the asymmetric key specification.
 
 **Since**: 20
 
-**Resource release**: crypto_asym_key/OH_CryptoKeyPair_Destroy {keyPair}
+**Resource release**: [OH_CryptoKeyPair_Destroy](#oh_cryptokeypair_destroy)
 
 **Parameters**:
 
@@ -922,7 +922,7 @@ Creates an elliptic curve point.
 
 **Since**: 20
 
-**Resource release**: crypto_asym_key/OH_CryptoEcPoint_Destroy {point}
+**Resource release**: [OH_CryptoEcPoint_Destroy](#oh_cryptoecpoint_destroy)
 
 **Parameters**:
 
@@ -958,7 +958,7 @@ Obtains the x and y coordinates of the elliptic curve point.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {x}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 
@@ -1021,7 +1021,7 @@ Encodes the elliptic curve point to the specified format.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

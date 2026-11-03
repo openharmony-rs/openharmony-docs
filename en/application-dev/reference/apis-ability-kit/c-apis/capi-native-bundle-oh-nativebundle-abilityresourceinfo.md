@@ -12,7 +12,7 @@ Represents the ability resource information, which is used to store and pass the
 
 **Since**: 21
 
-**Related module**: [Native_Bundle](capi-native-bundle.md)
+**Related module**: [Native_Bundle](capi-others-native-bundle.md)
 
 **Header file**: [ability_resource_info.h](capi-ability-resource-info-h.md)
 

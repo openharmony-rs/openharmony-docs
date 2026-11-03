@@ -10,7 +10,7 @@ Defines the enumerations related to the **Scroll** component, such as the scroll
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -113,7 +113,7 @@ Enumerates the scrolling directions of the Scroll component.
 | ARKUI_SCROLL_DIRECTION_VERTICAL = 0 | Vertical scrolling only. |
 | ARKUI_SCROLL_DIRECTION_HORIZONTAL | Horizontal scrolling only. |
 | ARKUI_SCROLL_DIRECTION_NONE = 3 | Scrolling disabled. |
-| ARKUI_SCROLL_DIRECTION_FREE = 4 |  |
+| ARKUI_SCROLL_DIRECTION_FREE = 4 | Free scrolling. This value supports both vertical and horizontal scrolling, and is available only in the **Scroll** component.<br>**Since**: 20 |
 
 ### ArkUI_ScrollSnapAlign
 
@@ -319,8 +319,8 @@ Enumerates the fast scroll modes for scrolling to a specified index.
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 |  |
-| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 |  |
-| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 |  |
+| OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 | No fast scroll optimization. All intermediate items are created and measured before the animation starts.<br>**Since**: 26.1.0 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 | Fast scroll optimization with skipping intermediate item measurement. Intermediate items are created but not measured. This mode is suitable for scenarios where the list has multiple columns and both ListItem and ListItemGroup exist. In this case, ListItem occupies only one column in a row, but ListItemGroup occupies an entire row. Therefore, the List needs to create all intermediate items to obtain the types of these items and calculate the row position of the target index.<br>**Since**: 26.1.0 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 | Fast scroll optimization with skipping intermediate item creation and measurement. Intermediate items are neither created nor measured. This mode provides maximum performance optimization. However, this mode is not suitable for the scenarios where the list has multiple columns and both ListItem and ListItemGroup exist. In this scenario, use OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE.<br>**Since**: 26.1.0 |
 
 

@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -62,10 +62,10 @@ enum ArkUI_AnimationStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_STATUS_INITIAL = 0 |  |
-| ARKUI_ANIMATION_STATUS_RUNNING = 1 |  |
-| ARKUI_ANIMATION_STATUS_PAUSED = 2 |  |
-| ARKUI_ANIMATION_STATUS_STOPPED = 3 |  |
+| ARKUI_ANIMATION_STATUS_INITIAL = 0 | 动画初始状态。<br>**起始版本：** 12 |
+| ARKUI_ANIMATION_STATUS_RUNNING = 1 | 动画处于播放状态。<br>**起始版本：** 12 |
+| ARKUI_ANIMATION_STATUS_PAUSED = 2 | 动画处于暂停状态。<br>**起始版本：** 12 |
+| ARKUI_ANIMATION_STATUS_STOPPED = 3 | 动画处于停止状态。<br>**起始版本：** 12 |
 
 
 ## 函数说明

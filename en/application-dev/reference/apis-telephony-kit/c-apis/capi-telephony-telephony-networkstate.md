@@ -12,7 +12,7 @@ Defines network status information.
 
 **Since**: 13
 
-**Related module**: [Telephony](capi-telephony.md)
+**Related module**: [Telephony](capi-others-telephony.md)
 
 **Header file**: [telephony_radio_type.h](capi-telephony-radio-type-h.md)
 

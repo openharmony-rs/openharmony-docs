@@ -12,7 +12,7 @@ Define the audio converter format info structure, used to describe basic audio f
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **Header file**: [native_audio_converter.h](capi-native-audio-converter-h.md)
 

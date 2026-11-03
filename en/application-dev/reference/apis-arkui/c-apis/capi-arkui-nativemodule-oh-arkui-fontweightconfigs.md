@@ -12,7 +12,7 @@ Defines the font weight configurations of text. It is suitable for scenarios tha
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text.h](capi-text-h.md)
 

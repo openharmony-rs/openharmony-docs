@@ -12,7 +12,7 @@ typedef struct ArkUI_AttributeItem {...} ArkUI_AttributeItem
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [common_type.h](capi-common-type-h.md)
 
@@ -22,9 +22,9 @@ typedef struct ArkUI_AttributeItem {...} ArkUI_AttributeItem
 
 | 名称 | 描述 |
 | -- | -- |
-| [const ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value |  |
-| int32_t size |  |
-| const char* string |  |
-| void* object |  |
+| [const ArkUI_NumberValue*](capi-arkui-nativemodule-arkui-numbervalue.md) value | 数值数组。<br>**起始版本：** 12 |
+| int32_t size | 数值数组长度。<br>**起始版本：** 12 |
+| const char* string | 字符串参数。<br>**起始版本：** 12 |
+| void* object | 对象参数。<br>**起始版本：** 12 |
 
 

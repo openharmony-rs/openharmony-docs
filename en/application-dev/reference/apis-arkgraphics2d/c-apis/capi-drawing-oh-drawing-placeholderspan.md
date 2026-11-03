@@ -12,7 +12,7 @@ This struct describes the placeholder that acts as a span.
 
 **Since**: 11
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

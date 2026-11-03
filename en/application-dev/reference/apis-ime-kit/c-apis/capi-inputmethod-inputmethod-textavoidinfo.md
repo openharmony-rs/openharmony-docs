@@ -12,7 +12,7 @@ Represents the information used by the input box to avoid the keyboard.
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-others-inputmethod.md)
 
 **Header file**: [inputmethod_text_avoid_info_capi.h](capi-inputmethod-text-avoid-info-capi-h.md)
 

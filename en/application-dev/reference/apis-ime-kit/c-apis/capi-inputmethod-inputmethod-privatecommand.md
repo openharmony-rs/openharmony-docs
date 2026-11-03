@@ -12,7 +12,7 @@ Represents the private data exchanged between the text box and the input method 
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-others-inputmethod.md)
 
 **Header file**: [inputmethod_private_command_capi.h](capi-inputmethod-private-command-capi-h.md)
 

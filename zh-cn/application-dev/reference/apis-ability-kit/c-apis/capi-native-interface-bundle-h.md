@@ -10,7 +10,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [Native_Bundle](capi-native-bundle.md)
+**相关模块：** [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 ## 汇总
 

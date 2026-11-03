@@ -12,7 +12,7 @@ Defines an opaque, immutable JSON data object.<br> The object holds a JSON strin
 
 **Since**: 26.1.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [ui_json_wrapper.h](capi-ui-json-wrapper-h.md)
 

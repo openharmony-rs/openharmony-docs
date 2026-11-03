@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## 汇总
 
@@ -43,14 +43,6 @@
 | [Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)](#oh_videooutput_deleteframerates) | - | 删除帧率列表。 |
 | [Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, int32_t minFps, int32_t maxFps)](#oh_videooutput_setframerate) | - | 设置视频输出帧率。 |
 | [Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)](#oh_videooutput_getactiveframerate) | - | 获取当前视频输出帧率。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出帧开始回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出帧结束回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode) | 在[VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)中被调用的录像输出错误回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
 
 ## 函数说明
 

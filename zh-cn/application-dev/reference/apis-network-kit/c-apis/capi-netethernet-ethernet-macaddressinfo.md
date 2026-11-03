@@ -12,7 +12,7 @@ struct Ethernet_MacAddressInfo {...}
 
 **起始版本：** 26.0.0
 
-**相关模块：** [NetEthernet](capi-netethernet.md)
+**相关模块：** [NetEthernet](capi-others-netethernet.md)
 
 **所在头文件：** [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 
@@ -22,7 +22,7 @@ struct Ethernet_MacAddressInfo {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| char ifaceName[ETHERNET_MAX_STR_LEN] |  |
-| char macAddr[ETHERNET_MAX_STR_LEN] |  |
+| char ifaceName[ETHERNET_MAX_STR_LEN] | 以太网网卡名称。<br>**起始版本：** 26.0.0 |
+| char macAddr[ETHERNET_MAX_STR_LEN] | 以太网网卡MAC地址。<br>**起始版本：** 26.0.0 |
 
 

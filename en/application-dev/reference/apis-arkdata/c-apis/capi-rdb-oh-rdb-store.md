@@ -12,7 +12,7 @@ Define OH_Rdb_Store type.
 
 **Since**: 10
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

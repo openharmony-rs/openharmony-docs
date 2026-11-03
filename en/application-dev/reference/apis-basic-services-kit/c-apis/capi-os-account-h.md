@@ -10,7 +10,7 @@ Defines the APIs for accessing and managing OS account information.
 
 **Since**: 12
 
-**Related module**: [OsAccount](capi-osaccount.md)
+**Related module**: [OsAccount](capi-basic-services-kit-osaccount.md)
 
 ## Summary
 

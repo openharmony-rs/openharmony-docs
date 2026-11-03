@@ -12,7 +12,7 @@ The OH_ImageReceiverNative struct describes the image receiver, which is encapsu
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [image_receiver_native.h](capi-image-receiver-native-h.md)
 

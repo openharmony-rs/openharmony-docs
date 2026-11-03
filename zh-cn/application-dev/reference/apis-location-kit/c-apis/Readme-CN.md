@@ -1,7 +1,7 @@
 # C API<!--c-locationkit-->
 
 - 模块<!--locationkit-module-->
-    - [Location](capi-location.md)
+    - [Location](capi-location-kit-location.md)
 - 头文件<!--locationkit-headerfile-->
     - [oh_location_type.h](capi-oh-location-type-h.md)
     - [oh_location.h](capi-oh-location-h.md)

@@ -8,7 +8,7 @@ The file declares the native APIs provided by the AVTranscoder. You can use the 
 
 **Since**: 20
 
-**Related module**: [AVTranscoder](capi-avtranscoder.md)
+**Related module**: [AVTranscoder](capi-media-kit-avtranscoder.md)
 
 ## Summary
 

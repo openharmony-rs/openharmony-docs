@@ -10,7 +10,7 @@ Neural Network Runtime模块接口定义，AI推理框架使用Neural Network Ru
 
 **起始版本：** 9
 
-**相关模块：** [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
+**相关模块：** [NeuralNetworkRuntime](capi-neural-network-runtime-kit-neuralnetworkruntime.md)
 
 ## 汇总
 
@@ -480,7 +480,9 @@ OH_NN_ReturnCode OH_NNExecutor_SetInput(OH_NNExecutor *executor, uint32_t inputI
 
 **描述：**
 
-设置模型单个输入的数据。<br> 该接口将dataBuffer中，长度为length个字节的数据，拷贝到底层硬件的共享内存。inputIndex指定设置的输入，tensor用于设置输入 张量的形状、数据类型、量化参数等信息。<br> 由于Neural Network Runtime支持动态输入形状的模型，在固定形状输入和动态形状输入的场景下，该接口采取不同的处理策略：<br> - 固定形状输入的场景：tensor各属性必须和构图阶段调用[OH_NNModel_AddTensor](capi-neural-network-runtime-h.md#oh_nnmodel_addtensor)添加的张量保持一致； - 动态形状输入的场景：在构图阶段，由于动态输入的形状不确定，调用该接口时，要求tensor.dimensions中的每个值必须大于0， 以确定执行计算阶段输入的形状。设置形状时，只允许调整数值为-1的维度。 假设在构图阶段，输入A的维度为[-1, 224, 224, 3]，调用该接口时，只能调整第一个维度的尺寸，如：[3, 224, 224, 3]。 调整其他维度将返回[OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode)。
+设置模型单个输入的数据。<br> 该接口将dataBuffer中，长度为length个字节的数据，拷贝到底层硬件的共享内存。inputIndex指定设置的输入，tensor用于设置输入 张量的形状、数据类型、量化参数等信息。<br> 由于Neural Network Runtime支持动态输入形状的模型，在固定形状输入和动态形状输入的场景下，该接口采取不同的处理策略：<br>
+- 固定形状输入的场景：tensor各属性必须和构图阶段调用[OH_NNModel_AddTensor](capi-neural-network-runtime-h.md#oh_nnmodel_addtensor)添加的张量保持一致；<br>
+- 动态形状输入的场景：在构图阶段，由于动态输入的形状不确定，调用该接口时，要求tensor.dimensions中的每个值必须大于0， 以确定执行计算阶段输入的形状。设置形状时，只允许调整数值为-1的维度。 假设在构图阶段，输入A的维度为[-1, 224, 224, 3]，调用该接口时，只能调整第一个维度的尺寸，如：[3, 224, 224, 3]。 调整其他维度将返回[OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode)。
 
 **系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
@@ -514,7 +516,9 @@ OH_NN_ReturnCode OH_NNExecutor_SetOutput(OH_NNExecutor *executor, uint32_t outpu
 
 **描述：**
 
-设置模型单个输出的内存。<br> 该接口将dataBuffer指向的内存与outputIndex指定的输出绑定，内存的长度由length指定。<br> 调用[OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run)完成单次模型推理后，Neural Network Runtime将比对dataBuffer指向的内存与输出数据的长度， 根据不同情况，返回不同结果：<br> - 如果内存大小大于或等于数据长度：则推理后的结果将拷贝至内存，并返回[OH_NN_SUCCESS](capi-neural-network-runtime-type-h.md#oh_nn_returncode)， 可以通过访问dataBuffer读取推理结果。 - 如果内存大小小于数据长度：则[OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run)将返回[OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode)，并输出日志告知内存太小的信息。
+设置模型单个输出的内存。<br> 该接口将dataBuffer指向的内存与outputIndex指定的输出绑定，内存的长度由length指定。<br> 调用[OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run)完成单次模型推理后，Neural Network Runtime将比对dataBuffer指向的内存与输出数据的长度， 根据不同情况，返回不同结果：<br>
+- 如果内存大小大于或等于数据长度：则推理后的结果将拷贝至内存，并返回[OH_NN_SUCCESS](capi-neural-network-runtime-type-h.md#oh_nn_returncode)， 可以通过访问dataBuffer读取推理结果。<br>
+- 如果内存大小小于数据长度：则[OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run)将返回[OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode)，并输出日志告知内存太小的信息。
 
 **系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 

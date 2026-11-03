@@ -10,7 +10,7 @@ Defines the APIs for cross-device file access management, encrypted storage, and
 
 **Since**: 14
 
-**Related module**: [DlpPermissionApi](capi-dlppermissionapi.md)
+**Related module**: [DlpPermissionApi](capi-data-protection-kit-dlppermissionapi.md)
 
 ## Summary
 
@@ -51,7 +51,7 @@ Enumerates the DLP error codes.
 | Enum item | Description |
 | -- | -- |
 | ERR_OH_SUCCESS = 0 | The operation is successful. |
-| OH_DLP_NOT_SUPPORTED = 801 |  |
+| OH_DLP_NOT_SUPPORTED = 801 | This error code is reported when the function is not supported. Possible cause: The vehicle is not supported.<br>**Since**: 26.0.1 |
 | ERR_OH_INVALID_PARAMETER = 19100001 | Invalid parameters are specified. |
 | ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | The caller is not a DLP sandbox application. |
 | ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | The API is not available to a DLP sandbox application. |

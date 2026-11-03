@@ -8,6 +8,8 @@
 
 | Name | Description |
 | -- | -- |
+| ip6_ctlun |  |
+| ip6_un1 |  |
 | ip6_ctlun.ip6_un1.ip6_un1_flow |  |
 | ip6_ctlun.ip6_un1.ip6_un1_plen |  |
 | ip6_ctlun.ip6_un1.ip6_un1_nxt |  |

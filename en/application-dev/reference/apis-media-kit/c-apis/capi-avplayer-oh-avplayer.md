@@ -10,7 +10,7 @@ Defines a struct for the AVPlayer.
 
 **Since**: 11
 
-**Related module**: [AVPlayer](capi-avplayer.md)
+**Related module**: [AVPlayer](capi-others-avplayer.md)
 
 **Header file**: [avplayer_base.h](capi-avplayer-base-h.md)
 

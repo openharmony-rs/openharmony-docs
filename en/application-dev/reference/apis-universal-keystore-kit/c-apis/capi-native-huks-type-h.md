@@ -4,7 +4,7 @@
 
 Defines enums, structs, macros, and error codes in HUKS.
 
-**Include**: <huks/native_huks_type.h>
+**File to Include**: <huks/native_huks_type.h>
 
 **Library**: libhuks_ndk.z.so
 
@@ -12,7 +12,7 @@ Defines enums, structs, macros, and error codes in HUKS.
 
 **Since**: 9
 
-**Related module**: [HuksTypeApi](capi-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 ## Summary
 
@@ -494,7 +494,7 @@ Enumerates the rules for invalidating a key.
 | -- | -- |
 | OH_HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0 | The key becomes invalid after the password is cleared. |
 | OH_HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1 | The key becomes invalid after a new biometric feature is enrolled. |
-| OH_HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2 |  |
+| OH_HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2 | The key is always valid.<br>**Since**: 11 |
 
 ### OH_Huks_AuthStorageLevel
 

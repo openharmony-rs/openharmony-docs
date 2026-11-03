@@ -10,5 +10,5 @@ Declare audio download manager related interfaces.
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 

@@ -10,7 +10,7 @@ Provides C APIs for the Ethernet NIC module.
 
 **Since**: 26.0.0
 
-**Related module**: [NetEthernet](capi-netethernet.md)
+**Related module**: [NetEthernet](capi-network-kit-netethernet.md)
 
 ## Summary
 

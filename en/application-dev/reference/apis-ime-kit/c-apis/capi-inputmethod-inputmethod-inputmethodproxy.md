@@ -12,7 +12,7 @@ A struct that serves as the proxy between an application and the input method. T
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-others-inputmethod.md)
 
 **Header file**: [inputmethod_inputmethod_proxy_capi.h](capi-inputmethod-inputmethod-proxy-capi-h.md)
 

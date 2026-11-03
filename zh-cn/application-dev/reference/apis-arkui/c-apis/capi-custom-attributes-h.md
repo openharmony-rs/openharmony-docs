@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -38,12 +38,12 @@ enum ArkUI_NodeCustomEventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 |  |
-| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 |  |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 |  |
-| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 |  |
-| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 |  |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 |  |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 |  |
+| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 | 自定义测量类型。<br>**起始版本：** 12 |
+| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 | 自定义布局类型。<br>**起始版本：** 12 |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 | 自定义内容层绘制类型。<br>**起始版本：** 12 |
+| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 | 自定义前景绘制类型。<br>**起始版本：** 12 |
+| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 | 自定义浮层绘制类型。<br>**起始版本：** 12 |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 | 自定义内容层前景绘制类型。<br>**起始版本：** 20 |
+| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 | 自定义内容层背景绘制类型。<br>**起始版本：** 20 |
 
 

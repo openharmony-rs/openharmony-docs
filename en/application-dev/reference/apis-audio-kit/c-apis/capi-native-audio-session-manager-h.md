@@ -10,7 +10,7 @@ Declare audio session manager related interfaces.<br> This file interfaces are u
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 
@@ -69,16 +69,6 @@ Declare audio session manager related interfaces.<br> This file interfaces are u
 | [bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSessionManager)](#oh_audiosessionmanager_isothermediaplaying) | - | Returns if there is any other application playing audio in media usage, including media session activated. |
 | [OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)](#oh_audiosessionmanager_setcapturemutehint) | - | Sets recording mute state to audio system. This method is used as a hint for power optimization, it does not mute the recording stream, only affects internal processing strategy. Audio system may disable some recording effects when application notifies its muted state to system. Mute hint state can only be set when there is at least one running stream in current process. |
 | [OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager *audioSessionManager, uint32_t behavior)](#oh_audiosessionmanager_setbehavior) | - | Set audio session behavior parameters (supporting multiple flag combinations) This interface takes effect only after the interface [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) is called. Each time you call this interface to set parameters, you need to call the interface [OH_AudioSessionManager_ActivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) again for the settings to take effect. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_AudioSession_StateChangedCallback) ( OH_AudioSession_StateChangedEvent event) | This function pointer will point to the callback function that is used to return the audio session state change event.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioSession_AvailableDeviceChangedCallback) ( OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | This function pointer will point to the callback function that is used to return the changing audio device descriptors. There may be more than one audio device descriptor returned.<br>**Since**: 21<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioSession_CurrentInputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason) | This function pointer will point to the callback function that is used to return the audio session input device change event.<br>**Since**: 21<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioSession_CurrentOutputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason, OH_AudioSession_OutputDeviceChangeRecommendedAction recommendedAction) | This function pointer will point to the callback function that is used to return the audio session device change event.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioSession_DeactivatedCallback) ( OH_AudioSession_DeactivatedEvent event) | This function pointer will point to the callback function that is used to return the audio session deactivated event.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ## Enum type description
 

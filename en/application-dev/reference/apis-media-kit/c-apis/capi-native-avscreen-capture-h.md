@@ -10,7 +10,7 @@ The file declares the APIs used to create an OH_AVScreenCapture instance.
 
 **Since**: 10
 
-**Related module**: [AVScreenCapture](capi-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 ## Summary
 
@@ -73,6 +73,7 @@ The file declares the APIs used to create an OH_AVScreenCapture instance.
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | Resume screen capture |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyformicaec) | Specifies whether to enable the echo cancellation function when the microphone is enabled. |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyforhdrcapture) | Specifies whether to output images in HDR vivid format. |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)](#oh_avscreencapture_strategyforcontentautopausescenes) | Sets the set of scenarios in which the screen content capture is automatically paused. If the specified scenario is met, the system automatically pauses the screen content capture. You can call the OH_AVScreenCapture_ResumeScreenCapture() function to resume the screen content capture. |
 
 ## Function description
 
@@ -282,7 +283,7 @@ Obtains a video buffer. The application can call this function to obtain informa
 
 | Type | Description |
 | -- | -- |
-| [OH_NativeBuffer*](capi-avscreencapture-oh-nativebuffer.md) | OH_NativeBuffer object if the operation is successful. The application can call the APIs provided by the OH_NativeBuffer object to obtain information such as the video buffer and resolution. |
+| [OH_NativeBuffer*](../../apis-arkgraphics2d/c-apis/capi-nativewindow-oh-nativebuffer.md) | OH_NativeBuffer object if the operation is successful. The application can call the APIs provided by the OH_NativeBuffer object to obtain information such as the video buffer and resolution. |
 
 ### OH_AVScreenCapture_ReleaseAudioBuffer()
 
@@ -425,7 +426,9 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetStateCallback(struct OH_AVScre
 
 **Description**
 
-Sets a state change callback. This function must be called before screen capture starts. The callback is triggered when the state changes during the running of an OH_AVScreenCapture instance. A privacy dialog box is displayed to ask for user consent before screen capture starts. After a successful call to this function, the following scenarios are possible: 1. If the user agrees, the screen capture startup process starts. If screen capture starts successfully, the state change callback is triggered to report the [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_STARTED status to notify the application of the startup success, with a screen capture notification displayed. If screen capture fails to start, the state change callback is triggered to report the failure information (for example, [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode). OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE if the microphone is unavailable), or the error processing callback [OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror) is triggered to report the error information. 2. If the user disagrees, the screen capture startup process stops. The state change callback is triggered to report the [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_CANCELED status to notify the application of the startup failure due to user rejection.
+Sets a state change callback. This function must be called before screen capture starts. The callback is triggered when the state changes during the running of an OH_AVScreenCapture instance. A privacy dialog box is displayed to ask for user consent before screen capture starts. After a successful call to this function, the following scenarios are possible:
+1. If the user agrees, the screen capture startup process starts. If screen capture starts successfully, the state change callback is triggered to report the [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_STARTED status to notify the application of the startup success, with a screen capture notification displayed. If screen capture fails to start, the state change callback is triggered to report the failure information (for example, [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode). OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE if the microphone is unavailable), or the error processing callback [OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror) is triggered to report the error information.
+2. If the user disagrees, the screen capture startup process stops. The state change callback is triggered to report the [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_CANCELED status to notify the application of the startup failure due to user rejection.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -453,7 +456,9 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDataCallback(struct OH_AVScree
 
 **Description**
 
-Sets a data processing callback. This function must be called before screen capture starts. The callback is triggered when an audio buffer or a video buffer becomes available during the running of an OH_AVScreenCapture instance. The application needs to process microphone audio, internal audio, and video data based on the data type in the callback. After the callback is triggered, the buffer is no longer valid. A successful call to this function leads to the following scenarios: 1. The callbacks [OH_AVScreenCaptureOnAudioBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonaudiobufferavailable) and [OH_AVScreenCaptureOnVideoBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonvideobufferavailable) set by calling [OH_AVScreenCapture_SetCallback](capi-native-avscreen-capture-h.md#oh_avscreencapture_setcallback) will no longer be triggered, even when an audio buffer or a video buffer becomes available. 2. A failure message is returned for a call to any of the following functions: [OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer), [OH_AVScreenCapture_ReleaseAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releaseaudiobuffer), [OH_AVScreenCapture_AcquireVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer), and [OH_AVScreenCapture_ReleaseVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releasevideobuffer).
+Sets a data processing callback. This function must be called before screen capture starts. The callback is triggered when an audio buffer or a video buffer becomes available during the running of an OH_AVScreenCapture instance. The application needs to process microphone audio, internal audio, and video data based on the data type in the callback. After the callback is triggered, the buffer is no longer valid. A successful call to this function leads to the following scenarios:
+1. The callbacks [OH_AVScreenCaptureOnAudioBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonaudiobufferavailable) and [OH_AVScreenCaptureOnVideoBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonvideobufferavailable) set by calling [OH_AVScreenCapture_SetCallback](capi-native-avscreen-capture-h.md#oh_avscreencapture_setcallback) will no longer be triggered, even when an audio buffer or a video buffer becomes available.
+2. A failure message is returned for a call to any of the following functions: [OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer), [OH_AVScreenCapture_ReleaseAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releaseaudiobuffer), [OH_AVScreenCapture_AcquireVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer), and [OH_AVScreenCapture_ReleaseVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releasevideobuffer).
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -548,7 +553,7 @@ Starts screen capture in surface mode.
 | Parameter | Description |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to an OH_AVScreenCapture instance. |
-| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) *window | Pointer to an OHNativeWindow instance. |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) *window | Pointer to an OHNativeWindow instance. |
 
 **Returns**:
 
@@ -1520,5 +1525,32 @@ Specifies whether to output images in HDR vivid format.
 | Type | Description |
 | -- | -- |
 | [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | <ul><li>[AV_SCREEN_CAPTURE_ERR_OK](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) : indicates that the operation is successful.</li> <li>[AV_SCREEN_CAPTURE_ERR_INVALID_VAL](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode): The input parameter **strategy** is nullptr or the value of **enable** is invalid.</li></ul> |
+
+### OH_AVScreenCapture_StrategyForContentAutoPauseScenes()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)
+```
+
+**Description**
+
+Sets the set of scenarios in which the screen content capture is automatically paused. If the specified scenario is met, the system automatically pauses the screen content capture. You can call the OH_AVScreenCapture_ResumeScreenCapture() function to resume the screen content capture.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | [in] Pointer to an OH_AVScreenCapture_CaptureStrategy instance |
+| OH_AVScreenCapture_AutoPauseSceneSet scenes | [in] Set of scenes, which are bitwise or combined using OH_CaptureAutoPauseScene. If OH_CAPTURE_AUTO_PAUSE_SCENE_NONE is input, the system does not pause automatically. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | <ul><li>[AV_SCREEN_CAPTURE_ERR_OK](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) : indicates that the operation is successful.</li> <li>[AV_SCREEN_CAPTURE_ERR_INVALID_VAL](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode): The input parameter **strategy** is nullptr or the value of **scenes** is invalid.</li></ul> |
 
 

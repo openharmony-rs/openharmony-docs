@@ -12,7 +12,7 @@ typedef struct OH_CryptoRand OH_CryptoRand
 
 **起始版本：** 20
 
-**相关模块：** [CryptoRandApi](capi-cryptorandapi.md)
+**相关模块：** [CryptoRandApi](capi-others-cryptorandapi.md)
 
 **所在头文件：** [crypto_rand.h](capi-crypto-rand-h.md)
 

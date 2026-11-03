@@ -10,7 +10,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [NativeVsync](capi-nativevsync.md)
+**相关模块：** [NativeVsync](capi-arkgraphics2d-nativevsync.md)
 
 ## 汇总
 

@@ -12,7 +12,7 @@ struct ResourceManager_Configuration {...}
 
 **起始版本：** 12
 
-**相关模块：** [resourcemanager](capi-resourcemanager.md)
+**相关模块：** [resourcemanager](capi-others-resourcemanager.md)
 
 **所在头文件：** [resmgr_common.h](capi-resmgr-common-h.md)
 

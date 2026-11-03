@@ -12,7 +12,7 @@ Asymmetric cipher structure, representing an asymmetric cipher context.
 
 **Since**: 20
 
-**Related module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
+**Related module**: [CryptoAsymCipherApi](capi-others-cryptoasymcipherapi.md)
 
 **Header file**: [crypto_asym_cipher.h](capi-crypto-asym-cipher-h.md)
 

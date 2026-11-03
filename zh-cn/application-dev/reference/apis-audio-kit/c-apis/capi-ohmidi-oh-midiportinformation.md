@@ -12,7 +12,7 @@ typedef struct OH_MIDIPortInformation {...} OH_MIDIPortInformation
 
 **起始版本：** 24
 
-**相关模块：** [OHMIDI](capi-ohmidi.md)
+**相关模块：** [OHMIDI](capi-others-ohmidi.md)
 
 **所在头文件：** [native_midi_base.h](capi-native-midi-base-h.md)
 

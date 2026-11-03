@@ -12,7 +12,7 @@ Declare the audio workgroup. The handle of audio workgroup is used for workgroup
 
 **Since**: 20
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
 

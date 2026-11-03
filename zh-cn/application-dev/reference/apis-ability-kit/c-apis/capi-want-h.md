@@ -10,7 +10,7 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 
 **起始版本：** 15
 
-**相关模块：** [AbilityBase](capi-abilitybase.md)
+**相关模块：** [AbilityBase](capi-ability-kit-abilitybase.md)
 
 ## 汇总
 
@@ -40,9 +40,7 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, const char* key, bool value)](#oh_abilitybase_setwantboolparam) | 设置Want中bool类型的值。 |
 | [AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, const char* key, bool* value)](#oh_abilitybase_getwantboolparam) | 获取Want中bool类型的值。 |
 | [AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, const char* key, double value)](#oh_abilitybase_setwantdoubleparam) | 设置Want中double类型的值。 |
-| [AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)
-
-} // extern "C"](#oh_abilitybase_getwantdoubleparam) | 获取Want中double类型的值。 |
+| [AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)](#oh_abilitybase_getwantdoubleparam) | 获取Want中double类型的值。 |
 
 ## 函数说明
 
@@ -464,8 +462,6 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, 
 
 ```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)
-
-} // extern "C"
 ```
 
 **描述：**
@@ -482,7 +478,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, 
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Want指针。 |
 | const char* key | Want中double类型值的参数键名。 |
-| value | Want中double类型的值。 |
+| double* value | Want中double类型的值。 |
 
 **返回值：**
 

@@ -10,7 +10,7 @@ Defines the Neural Network Runtime APIs. The AI inference framework uses the Nat
 
 **Since**: 9
 
-**Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
+**Related module**: [NeuralNetworkRuntime](capi-neural-network-runtime-kit-neuralnetworkruntime.md)
 
 ## Summary
 
@@ -480,7 +480,9 @@ OH_NN_ReturnCode OH_NNExecutor_SetInput(OH_NNExecutor *executor, uint32_t inputI
 
 **Description**
 
-Sets the single input data for a model.<br> This method copies the data whose length is specified by <b>length</b> (in bytes) in <b>dataBuffer</b> to the shared memory of the underlying device. <b>inputIndex</b> specifies the input to be set and <b>tensor</b> sets information such as the input shape, type, and quantization parameters.<br> Neural Network Runtime supports models with dynamical shape input. For fixed shape input and dynamic shape input scenarios, this method uses different processing policies.<br> - Fixed shape input: The attributes of <b>tensor</b> must be the same as those of the tensor added by calling [OH_NNModel_AddTensor](capi-neural-network-runtime-h.md#oh_nnmodel_addtensor) in the composition phase. - Dynamic shape input: In the composition phase, because the shape is not fixed, each value in <b>tensor.dimensions</b> must be greater than <b>0</b> in the method calls to determine the shape input in the calculation phase. When setting the shape, you can modify only the dimension whose value is <b>-1</b>. Assume that <b>[-1, 224, 224, 3]</b> is input as the the dimension of A in the composition phase. When this method is called, only the size of the first dimension can be modified, e.g. to <b>[3, 224, 224, 3]</b>. If other dimensions are adjusted, [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode) is returned.
+Sets the single input data for a model.<br> This method copies the data whose length is specified by <b>length</b> (in bytes) in <b>dataBuffer</b> to the shared memory of the underlying device. <b>inputIndex</b> specifies the input to be set and <b>tensor</b> sets information such as the input shape, type, and quantization parameters.<br> Neural Network Runtime supports models with dynamical shape input. For fixed shape input and dynamic shape input scenarios, this method uses different processing policies.<br>
+- Fixed shape input: The attributes of <b>tensor</b> must be the same as those of the tensor added by calling [OH_NNModel_AddTensor](capi-neural-network-runtime-h.md#oh_nnmodel_addtensor) in the composition phase.
+- Dynamic shape input: In the composition phase, because the shape is not fixed, each value in <b>tensor.dimensions</b> must be greater than <b>0</b> in the method calls to determine the shape input in the calculation phase. When setting the shape, you can modify only the dimension whose value is <b>-1</b>. Assume that <b>[-1, 224, 224, 3]</b> is input as the the dimension of A in the composition phase. When this method is called, only the size of the first dimension can be modified, e.g. to <b>[3, 224, 224, 3]</b>. If other dimensions are adjusted, [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode) is returned.
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -514,7 +516,9 @@ OH_NN_ReturnCode OH_NNExecutor_SetOutput(OH_NNExecutor *executor, uint32_t outpu
 
 **Description**
 
-Sets the buffer for a single output of a model.<br> This method binds the buffer to which <b>dataBuffer</b> points to the output specified by <b>outputIndex</b>. The length of the buffer is specified by <b>length</b>.<br> After [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) is called to complete a single model inference, Neural Network Runtime compares the length of the buffer to which <b>dataBuffer</b> points with the length of the output data and returns different results based on the actual situation.<br> - If the buffer length is greater than or equal to the data length, the inference result is copied to the buffer and [OH_NN_SUCCESS](capi-neural-network-runtime-type-h.md#oh_nn_returncode) is returned. You can read the inference result from <b>dataBuffer</b>. - If the buffer length is smaller than the data length, [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) returns [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode) and generates a log indicating that the buffer is too small.
+Sets the buffer for a single output of a model.<br> This method binds the buffer to which <b>dataBuffer</b> points to the output specified by <b>outputIndex</b>. The length of the buffer is specified by <b>length</b>.<br> After [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) is called to complete a single model inference, Neural Network Runtime compares the length of the buffer to which <b>dataBuffer</b> points with the length of the output data and returns different results based on the actual situation.<br>
+- If the buffer length is greater than or equal to the data length, the inference result is copied to the buffer and [OH_NN_SUCCESS](capi-neural-network-runtime-type-h.md#oh_nn_returncode) is returned. You can read the inference result from <b>dataBuffer</b>.
+- If the buffer length is smaller than the data length, [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) returns [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode) and generates a log indicating that the buffer is too small.
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 

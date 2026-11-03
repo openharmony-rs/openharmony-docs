@@ -10,7 +10,7 @@ Provide environment APIS.
 
 **Since**: 12
 
-**Related module**: [Environment](capi-environment.md)
+**Related module**: [Environment](capi-core-file-kit-environment.md)
 
 ## Summary
 

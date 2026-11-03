@@ -10,7 +10,7 @@ Provide C interface for the data network connection module of network management
 
 **Since**: 11
 
-**Related module**: [NetConnection](capi-netconnection.md)
+**Related module**: [NetConnection](capi-network-kit-netconnection.md)
 
 ## Summary
 

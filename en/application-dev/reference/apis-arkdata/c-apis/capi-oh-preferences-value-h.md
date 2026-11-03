@@ -10,7 +10,7 @@ Provides APIs, enums, and structs for accessing the **PreferencesValue** object.
 
 **Since**: 13
 
-**Related module**: [Preferences](capi-preferences.md)
+**Related module**: [Preferences](capi-arkdata-preferences.md)
 
 ## Summary
 
@@ -299,7 +299,7 @@ Obtains a string from an [OH_PreferencesValue](capi-preferences-oh-preferencesva
 | Parameter | Description |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance. |
-| char **value | Double pointer to the string obtained. If the string is not required, you can use OH_Preferences_FreeString to free the string (release the memory occupied by the string). |
+| char **value | Double pointer to the string obtained. If the string is not required, you can use [OH_Preferences_FreeString](capi-oh-preferences-h.md#oh_preferences_freestring) to free the string (release the memory occupied by the string). |
 | uint32_t *valueLen | Pointer to the length of the string obtained. |
 
 **Returns**:

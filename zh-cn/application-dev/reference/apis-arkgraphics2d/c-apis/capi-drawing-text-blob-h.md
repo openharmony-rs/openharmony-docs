@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## 汇总
 
@@ -104,7 +104,7 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromTextWithFallback(const void *t
 
 **起始版本：** 26.0.1
 
-**资源释放：** drawing_text_blob/OH_Drawing_TextBlobsArrayDestroy {textBlobs}
+**资源释放：** [OH_Drawing_TextBlobsArrayDestroy](#oh_drawing_textblobsarraydestroy)
 
 **参数：**
 
@@ -167,7 +167,7 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromPosTextWithFallback(const void
 
 **起始版本：** 26.0.1
 
-**资源释放：** drawing_text_blob/OH_Drawing_TextBlobsArrayDestroy {textBlobs}
+**资源释放：** [OH_Drawing_TextBlobsArrayDestroy](#oh_drawing_textblobsarraydestroy)
 
 **参数：**
 
@@ -229,7 +229,7 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromStringWithFallback(const char 
 
 **起始版本：** 26.0.1
 
-**资源释放：** drawing_text_blob/OH_Drawing_TextBlobsArrayDestroy {textBlobs}
+**资源释放：** [OH_Drawing_TextBlobsArrayDestroy](#oh_drawing_textblobsarraydestroy)
 
 **参数：**
 

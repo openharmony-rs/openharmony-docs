@@ -12,7 +12,7 @@ Defines a struct for a bitmap, which is a memory area that contains the pixel da
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

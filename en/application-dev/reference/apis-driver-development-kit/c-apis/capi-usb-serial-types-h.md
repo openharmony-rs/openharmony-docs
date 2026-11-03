@@ -10,7 +10,7 @@ Provides the enum variables, structures, and macros used in USB Serial DDK APIs.
 
 **Since**: 18
 
-**Related module**: [USBSerialDDK](capi-usbserialddk.md)
+**Related module**: [USBSerialDDK](capi-driver-development-kit-usbserialddk.md)
 
 ## Summary
 

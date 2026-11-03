@@ -12,7 +12,7 @@ struct TransientTask_DelaySuspendInfo {...}
 
 **起始版本：** 13
 
-**相关模块：** [TransientTask](capi-transienttask.md)
+**相关模块：** [TransientTask](capi-others-transienttask.md)
 
 **所在头文件：** [transient_task_type.h](capi-transient-task-type-h.md)
 

@@ -10,7 +10,7 @@ This file defines the APIs for the cloud disk management module.
 
 **Since**: 21
 
-**Related module**: [CloudDisk](capi-clouddisk.md)
+**Related module**: [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@ KDF structure, representing a KDF context.
 
 **Since**: 20
 
-**Related module**: [CryptoKdfApi](capi-cryptokdfapi.md)
+**Related module**: [CryptoKdfApi](capi-others-cryptokdfapi.md)
 
 **Header file**: [crypto_kdf.h](capi-crypto-kdf-h.md)
 

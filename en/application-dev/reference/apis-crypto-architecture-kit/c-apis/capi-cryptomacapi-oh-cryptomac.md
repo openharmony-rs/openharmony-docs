@@ -12,7 +12,7 @@ MAC structure, representing a MAC context.
 
 **Since**: 20
 
-**Related module**: [CryptoMacApi](capi-cryptomacapi.md)
+**Related module**: [CryptoMacApi](capi-others-cryptomacapi.md)
 
 **Header file**: [crypto_mac.h](capi-crypto-mac-h.md)
 

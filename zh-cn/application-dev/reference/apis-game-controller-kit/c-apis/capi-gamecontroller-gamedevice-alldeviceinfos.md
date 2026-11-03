@@ -12,7 +12,7 @@ typedef struct GameDevice_AllDeviceInfos GameDevice_AllDeviceInfos
 
 **起始版本：** 21
 
-**相关模块：** [GameController](capi-gamecontroller.md)
+**相关模块：** [GameController](capi-others-gamecontroller.md)
 
 **所在头文件：** [game_device.h](capi-game-device-h.md)
 

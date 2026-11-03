@@ -12,7 +12,7 @@ Symmetric key structure, representing a symmetric key.
 
 **Since**: 12
 
-**Related module**: [CryptoSymKeyApi](capi-cryptosymkeyapi.md)
+**Related module**: [CryptoSymKeyApi](capi-others-cryptosymkeyapi.md)
 
 **Header file**: [crypto_sym_key.h](capi-crypto-sym-key-h.md)
 

@@ -12,7 +12,7 @@ elementName信息。
 
 **起始版本：** 13
 
-**相关模块：** [Native_Bundle](capi-native-bundle.md)
+**相关模块：** [Native_Bundle](capi-others-native-bundle.md)
 
 **所在头文件：** [native_interface_bundle.h](capi-native-interface-bundle-h.md)
 

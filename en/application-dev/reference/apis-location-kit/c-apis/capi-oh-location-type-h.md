@@ -10,7 +10,7 @@ Declares the common location attributes.
 
 **Since**: 13
 
-**Related module**: [Location](capi-location.md)
+**Related module**: [Location](capi-location-kit-location.md)
 
 ## Summary
 
@@ -45,12 +45,6 @@ Declares the common location attributes.
 | [void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene)](#oh_locationrequestconfig_setpowerconsumptionscene) | - | Set the power consumption scenario in the location request parameters. |
 | [void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval)](#oh_locationrequestconfig_setinterval) | - | Set the location reporting interval in the location request parameter. |
 | [void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData)](#oh_locationrequestconfig_setcallback) | - | Set up a callback function for receiving location information. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*Location_InfoCallback)(Location_Info* location, void* userData) | Defines the callback function used to report location data.<br>**Since**: 13<br>**System capability**: SystemCapability.Location.Location.Core |
 
 ## Enum type description
 

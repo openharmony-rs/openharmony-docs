@@ -12,7 +12,7 @@ MAC address match condition<br> Matches packets based on MAC address Only source
 
 **Since**: 26.0.1
 
-**Related module**: [TrafficFilter](capi-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-others-trafficfilter.md)
 
 **Header file**: [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

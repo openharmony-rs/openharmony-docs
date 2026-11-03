@@ -12,7 +12,7 @@ The struct describes all the color spaces supported by a display.
 
 **Since**: 14
 
-**Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)
+**Related module**: [OH_DisplayManager](capi-others-oh-displaymanager.md)
 
 **Header file**: [oh_display_info.h](capi-oh-display-info-h.md)
 

@@ -12,7 +12,7 @@ typedef struct Camera_PhotoOutput Camera_PhotoOutput
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [photo_output.h](capi-photo-output-h.md)
 

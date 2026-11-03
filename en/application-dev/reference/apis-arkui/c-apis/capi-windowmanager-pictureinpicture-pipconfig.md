@@ -12,7 +12,7 @@ Picture in picture config.
 
 **Since**: 20
 
-**Related module**: [WindowManager](capi-windowmanager.md)
+**Related module**: [WindowManager](capi-others-windowmanager.md)
 
 **Header file**: [oh_window_pip.h](capi-oh-window-pip-h.md)
 

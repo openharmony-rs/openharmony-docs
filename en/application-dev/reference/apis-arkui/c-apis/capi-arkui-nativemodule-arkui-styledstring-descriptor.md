@@ -12,7 +12,7 @@ Defines the styled string descriptor object supported by the text component, whi
 
 **Since**: 14
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text_common.h](capi-text-common-h.md)
 

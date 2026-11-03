@@ -12,7 +12,7 @@ typedef struct HiAppEvent_Processor HiAppEvent_Processor
 
 **起始版本：** 18
 
-**相关模块：** [HiAppEvent](capi-hiappevent.md)
+**相关模块：** [HiAppEvent](capi-others-hiappevent.md)
 
 **所在头文件：** [hiappevent.h](capi-hiappevent-h.md)
 

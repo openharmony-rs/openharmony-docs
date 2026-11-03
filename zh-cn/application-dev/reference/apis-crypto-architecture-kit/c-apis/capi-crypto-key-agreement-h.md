@@ -12,7 +12,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
+**相关模块：** [CryptoKeyAgreementApi](capi-crypto-architecture-kit-cryptokeyagreementapi.md)
 
 ## 汇总
 
@@ -46,7 +46,7 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 
 **起始版本：** 20
 
-**资源释放：** crypto_key_agreement/OH_CryptoKeyAgreement_Destroy {ctx}
+**资源释放：** [OH_CryptoKeyAgreement_Destroy](#oh_cryptokeyagreement_destroy)
 
 **参数：**
 
@@ -80,7 +80,7 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ct
 
 **起始版本：** 20
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {secret}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 

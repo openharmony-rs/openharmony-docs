@@ -6,7 +6,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_node.h](capi-native-node-h.md)
 
@@ -354,7 +354,10 @@ NODE_TEXT_CONTENT_WITH_STYLED_STRING
 
 **描述：**
 
-Text组件使用格式化字符串对象设置文本内容属性，支持属性设置、属性重置和属性获取接口。 配置自定义[OH_Drawing_Typography](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-typography.md)对象到Text组件，会跳过文本控件的布局测算阶段。注意事项： 1. 需要保证OH_ArkUI_StyledString对象、OH_Drawing_Typography对象的生命周期跟随Text组件生命周期， Text组件析构时重置OH_ArkUI_StyledString对象，否则会导致应用出现空指针崩溃。 2. 保证OH_Drawing_TypographyLayout方法调用时序在Text组件的布局测算之前。 3. 释放OH_ArkUI_StyledString对象、OH_Drawing_Typography对象时，需要同步调用Text组件的reset方法，否则会导致应用出现空指针崩溃。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：表示 ArkUI_StyledString 格式化字符串数据，参数类型为[ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：表示 ArkUI_StyledString 格式化字符串数据，参数类型为[ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)。</li> </ul>
+Text组件使用格式化字符串对象设置文本内容属性，支持属性设置、属性重置和属性获取接口。 配置自定义[OH_Drawing_Typography](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-typography.md)对象到Text组件，会跳过文本控件的布局测算阶段。注意事项：<br>
+1. 需要保证OH_ArkUI_StyledString对象、OH_Drawing_Typography对象的生命周期跟随Text组件生命周期， Text组件析构时重置OH_ArkUI_StyledString对象，否则会导致应用出现空指针崩溃。<br>
+2. 保证OH_Drawing_TypographyLayout方法调用时序在Text组件的布局测算之前。<br>
+3. 释放OH_ArkUI_StyledString对象、OH_Drawing_Typography对象时，需要同步调用Text组件的reset方法，否则会导致应用出现空指针崩溃。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：表示 ArkUI_StyledString 格式化字符串数据，参数类型为[ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：表示 ArkUI_StyledString 格式化字符串数据，参数类型为[ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)。</li> </ul>
 
 **起始版本：** 12
 
@@ -714,7 +717,7 @@ NODE_SPAN_TEXT_BACKGROUND_STYLE
 
 **描述：**
 
-文本背景色属性，支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：表示文本背景颜色，0xargb格式，形如0xFFFF0000表示红色。</li> <li>.value[1].f32：文本背景圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。支持两种设置方式： 1）仅设置.value[1].f32，未设置.value[2].f32~.value[4].f32时，表示四个方向的圆角半径统一设置； 2）设置了.value[2].f32~.value[4].f32中任意项时，.value[1].f32仅表示左上角圆角半径。</li> <li>.value[2].f32：设置右上角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。</li> <li>.value[3].f32：设置左下角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。</li> <li>.value[4].f32：设置右下角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：文本背景颜色，0xargb格式。</li> <li>.value[1].f32：左上角圆角半径，单位为vp。</li> <li>.value[2].f32：右上角圆角半径，单位为vp。</li> <li>.value[3].f32：左下角圆角半径，单位为vp。</li> <li>.value[4].f32：右下角圆角半径，单位为vp。</li> </ul>
+文本背景色属性，支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：表示文本背景颜色，0xargb格式，形如0xFFFF0000表示红色。</li> <li>.value[1].f32：文本背景圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。支持两种设置方式： 1）仅设置.value[1].f32，未设置.value[2].f32~.value[4].f32时，表示四个方向的圆角半径统一设置； 2）设置了.value[2].f32~.value[4].f32中任意项时，.value[1].f32仅表示左上角圆角半径。</li> <li>.value[2].f32：设置右上角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。</li> <li>.value[3].f32：设置左下角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。</li> <li>.value[4].f32：设置右下角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。</li> <li>.value[5]?.f32：文本背景的边框宽度，单位为vp。可选。默认值为<b>0</b>。 该参数从API version 26.1.0开始支持。</li> <li>.value[6]?.u32：文本背景的边框颜色，0xargb格式。可选。 默认值为<b>0x00000000</b>（透明）。该参数从API version 26.1.0开始支持。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：文本背景颜色，0xargb格式。</li> <li>.value[1].f32：左上角圆角半径，单位为vp。</li> <li>.value[2].f32：右上角圆角半径，单位为vp。</li> <li>.value[3].f32：左下角圆角半径，单位为vp。</li> <li>.value[4].f32：右下角圆角半径，单位为vp。</li> <li>.value[5].f32：文本背景的边框宽度，单位为vp。 该参数从API version 26.1.0开始支持。</li> <li>.value[6].u32：文本背景的边框颜色，0xargb格式。 该参数从API version 26.1.0开始支持。</li> </ul>
 
 **起始版本：** 12
 

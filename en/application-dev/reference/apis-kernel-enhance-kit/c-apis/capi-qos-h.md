@@ -10,7 +10,7 @@ This file declares the C APIs provided by Quality of Service (QoS) for setting, 
 
 **Since**: 12
 
-**Related module**: [QoS](capi-qos.md)
+**Related module**: [QoS](capi-kernel-enhance-kit-qos.md)
 
 ## Summary
 
@@ -54,7 +54,6 @@ This file declares the C APIs provided by Quality of Service (QoS) for setting, 
 | -- | -- |
 | unsigned int OH_QoS_GewuSession | Session handle.<br>**Since**: 20<br>**System capability**: SystemCapability.Resourceschedule.QoS.Core |
 | unsigned int OH_QoS_GewuRequest | Request handle.<br>**Since**: 20<br>**System capability**: SystemCapability.Resourceschedule.QoS.Core |
-| void (*OH_QoS_GewuOnResponse)(void* context, const char* response) | Callback for receiving responses from the Gewu service. The Gewu service calls this callback asynchronously upon completion of inference. For non-streaming inference, it is called once. For streaming inference, it is called multiple times during the generation process. For example, when using the Gewu service for conversational AI inference, you can receive the model-generated response content through this callback.<br>**Since**: 20<br>**System capability**: SystemCapability.Resourceschedule.QoS.Core |
 
 ## Enum type description
 

@@ -12,7 +12,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [DeviceManager](capi-devicemanager.md)
+**相关模块：** [DeviceManager](capi-distributed-service-kit-devicemanager.md)
 
 ## 汇总
 

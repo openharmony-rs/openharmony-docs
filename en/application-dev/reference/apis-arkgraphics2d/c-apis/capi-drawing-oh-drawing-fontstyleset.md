@@ -12,7 +12,7 @@ Defines a struct for a font style set, which is used for font style family match
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

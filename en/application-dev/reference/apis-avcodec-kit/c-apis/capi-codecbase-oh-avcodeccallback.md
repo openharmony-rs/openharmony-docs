@@ -12,7 +12,19 @@ The struct defines all the asynchronous callback function pointers of an OH_AVCo
 
 **Since**: 11
 
-**Related module**: [CodecBase](capi-codecbase.md)
+**Related module**: [CodecBase](capi-others-codecbase.md)
 
 **Header file**: [native_avcodec_base.h](capi-native-avcodec-base-h.md)
+
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| [OH_AVCodecOnError](capi-native-avcodec-base-h.md#oh_avcodeconerror) onError |  |
+| [OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged) onStreamChanged |  |
+| [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) onNeedInputBuffer |  |
+| [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer) onNewOutputBuffer |  |
+
 

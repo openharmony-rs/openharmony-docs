@@ -12,7 +12,7 @@ struct OH_AVDataSourceExt {...}
 
 **起始版本：** 20
 
-**相关模块：** [CodecBase](capi-codecbase.md)
+**相关模块：** [CodecBase](capi-others-codecbase.md)
 
 **所在头文件：** [native_avcodec_base.h](capi-native-avcodec-base-h.md)
 

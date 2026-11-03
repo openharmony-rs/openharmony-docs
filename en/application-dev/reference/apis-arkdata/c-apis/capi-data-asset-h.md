@@ -10,7 +10,7 @@ Provides the data type of asset.
 
 **Since**: 11
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 ## Summary
 

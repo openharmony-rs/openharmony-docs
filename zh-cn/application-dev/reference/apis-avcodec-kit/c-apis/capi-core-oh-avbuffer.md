@@ -12,7 +12,7 @@ typedef struct OH_AVBuffer OH_AVBuffer
 
 **起始版本：** 11
 
-**相关模块：** [Core](capi-core.md)
+**相关模块：** [Core](capi-others-core.md)
 
 **所在头文件：** [native_avbuffer.h](capi-native-avbuffer-h.md)
 

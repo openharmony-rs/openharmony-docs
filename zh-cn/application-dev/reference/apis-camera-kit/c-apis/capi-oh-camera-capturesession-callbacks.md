@@ -12,7 +12,7 @@ struct CaptureSession_Callbacks {...}
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [capture_session.h](capi-capture-session-h.md)
 

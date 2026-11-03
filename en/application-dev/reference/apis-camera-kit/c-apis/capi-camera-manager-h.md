@@ -10,7 +10,7 @@ The file declares the camera manager concepts.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## Summary
 
@@ -64,14 +64,6 @@ The file declares the camera manager concepts.
 | [Camera_ErrorCode OH_CameraManager_GetCameraDevices(Camera_Manager* cameraManager, Camera_DeviceQueryInfo* deviceQueryInfo, uint32_t* cameraSize, Camera_Device** cameras)](#oh_cameramanager_getcameradevices) | - | Obtains the list of cameras that meet the search criteria based on the camera position, camera types, and connection type. |
 | [Camera_ErrorCode OH_CameraManager_DeleteCameraDevices(Camera_Manager* cameraManager, Camera_Device* cameras)](#oh_cameramanager_deletecameradevices) | - | Deletes the specified camera. |
 | [Camera_ErrorCode OH_CameraManager_GetCameraConcurrentInfos(Camera_Manager* cameraManager, const Camera_Device* camera, uint32_t deviceSize, Camera_ConcurrentInfo** cameraConcurrentInfo, uint32_t* infoSize)](#oh_cameramanager_getcameraconcurrentinfos) | - | Obtains the concurrent information of specified cameras, the empty return means concurrency is not supported. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, Camera_StatusInfo* status) | Defines the callback defined in the [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) struct and used to report the camera manager status.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManager, Camera_TorchStatusInfo* status) | Defines the callback to listen for flashlight status changes.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraManager, Camera_FoldStatusInfo* foldStatusInfo) | Defines the callback to listen for fold status changes of the camera manager.<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
 
 ## Function description
 

@@ -12,7 +12,7 @@ Define a PictureMetadata struct type, used for picture metadata.
 
 **Since**: 13
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [image_common.h](capi-image-common-h.md)
 

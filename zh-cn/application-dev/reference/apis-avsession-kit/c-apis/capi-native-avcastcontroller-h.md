@@ -10,7 +10,7 @@
 
 **起始版本：** 23
 
-**相关模块：** [OHAVSession](capi-ohavsession.md)
+**相关模块：** [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 ## 汇总
 
@@ -55,18 +55,6 @@
 | [AVSession_ErrCode OH_AVCastController_SendVolumeCommand(OH_AVCastController* avcastcontroller, int32_t volume)](#oh_avcastcontroller_sendvolumecommand) | - | 请求向远程端发送音量控制命令。 |
 | [AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem *avqueueItem)](#oh_avcastcontroller_prepare) | - | 准备启动投播资源 |
 | [AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem *avqueueItem)](#oh_avcastcontroller_start) | - | 开始启动投播资源 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChanged)( OH_AVCastController* avcastcontroller, OH_AVSession_AVPlaybackState* playbackState, void* userData) | 播放状态改变的回调函数。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_MediaItemChange)(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avQueueItem, void* userData) | 媒体项目变更的回调函数。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayNext)(OH_AVCastController* avcastcontroller, void* userData) | 播放下一首的回调函数。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayPrevious)(OH_AVCastController* avcastcontroller, void* userData) | 播放上一首的回调函数。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_SeekDone)(OH_AVCastController* avcastcontroller, int32_t position, void* userData) | 跳转完成的回调函数。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_EndOfStream)(OH_AVCastController* avcastcontroller, void* userData) | 播放流结束的回调函数。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_Error)(OH_AVCastController* avcastcontroller, void* userData, AVSession_ErrCode error) | 播放错误的回调函数。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 
 ## 函数说明
 

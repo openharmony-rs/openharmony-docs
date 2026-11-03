@@ -12,7 +12,7 @@ typedef struct ArkUI_StyledString ArkUI_StyledString
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [styled_string.h](capi-styled-string-h.md)
 

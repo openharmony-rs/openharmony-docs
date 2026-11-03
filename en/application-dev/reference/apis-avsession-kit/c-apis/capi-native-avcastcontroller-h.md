@@ -10,7 +10,7 @@ Declare avcastcontroller interface.
 
 **Since**: 23
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 ## Summary
 
@@ -55,18 +55,6 @@ Declare avcastcontroller interface.
 | [AVSession_ErrCode OH_AVCastController_SendVolumeCommand(OH_AVCastController* avcastcontroller, int32_t volume)](#oh_avcastcontroller_sendvolumecommand) | - | Request to send volume command to Remote. |
 | [AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem *avqueueItem)](#oh_avcastcontroller_prepare) | - | Request to prepare the current player item, this is needed for sink media information displaying. |
 | [AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem *avqueueItem)](#oh_avcastcontroller_start) | - | Request to Play the current item, should contain media uri otherwise the playback will fail. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChanged)( OH_AVCastController* avcastcontroller, OH_AVSession_AVPlaybackState* playbackState, void* userData) | Declaring the callback struct for playback state change<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_MediaItemChange)(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avQueueItem, void* userData) | Declaring the callback struct for media item change<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayNext)(OH_AVCastController* avcastcontroller, void* userData) | Declaring the callback struct for Play Next<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayPrevious)(OH_AVCastController* avcastcontroller, void* userData) | Declaring the callback struct for Play Previous<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_SeekDone)(OH_AVCastController* avcastcontroller, int32_t position, void* userData) | Declaring the callback struct for seekDone<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_EndOfStream)(OH_AVCastController* avcastcontroller, void* userData) | Declaring the callback struct for EndOfStream<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
-| AVSessionCallback_Result(*OH_AVCastControllerCallback_Error)(OH_AVCastController* avcastcontroller, void* userData, AVSession_ErrCode error) | Declaring the callback struct for cast play error<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.AVSession.Core |
 
 ## Function description
 

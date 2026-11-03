@@ -12,7 +12,7 @@ typedef struct OH_ImageEffect OH_ImageEffect
 
 **起始版本：** 12
 
-**相关模块：** [ImageEffect](capi-imageeffect.md)
+**相关模块：** [ImageEffect](capi-others-imageeffect.md)
 
 **所在头文件：** [image_effect.h](capi-image-effect-h.md)
 

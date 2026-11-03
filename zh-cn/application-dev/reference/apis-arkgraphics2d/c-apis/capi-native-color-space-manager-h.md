@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [NativeColorSpaceManager](capi-nativecolorspacemanager.md)
+**相关模块：** [NativeColorSpaceManager](capi-arkgraphics2d-nativecolorspacemanager.md)
 
 ## 汇总
 
@@ -87,8 +87,8 @@ enum ColorSpaceName
 | DISPLAY_P3_SRGB = DISPLAY_P3 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为Full的色彩空间。 |
 | DISPLAY_P3_HLG = P3_HLG | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。 |
 | DISPLAY_P3_PQ = P3_PQ | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。 |
-| BT2020_LOG_FULL = 27 |  |
-| BT2020_LOG_LIMIT = 28 |  |
+| BT2020_LOG_FULL = 27 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为Full的色彩空间。<br>**起始版本：** 26.0.0 |
+| BT2020_LOG_LIMIT = 28 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为LIMIT的色彩空间。<br>**起始版本：** 26.0.0 |
 | CUSTOM = 5 | 表示自定义色彩空间。 |
 
 

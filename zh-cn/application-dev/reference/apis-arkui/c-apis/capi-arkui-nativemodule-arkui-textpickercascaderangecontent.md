@@ -12,7 +12,7 @@ typedef struct ARKUI_TextPickerCascadeRangeContent {...} ARKUI_TextPickerCascade
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [picker.h](capi-picker-h.md)
 
@@ -22,8 +22,8 @@ typedef struct ARKUI_TextPickerCascadeRangeContent {...} ARKUI_TextPickerCascade
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* text |  |
-| [const ARKUI_TextPickerRangeContent*](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) children |  |
-| int32_t size |  |
+| const char* text | 文本内容。以`\0`结尾的C字符串。可为NULL，默认为`nullptr`；通过[OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex](capi-picker-h.md#oh_arkui_textpickerrangecontentarray_settextatindex)传入`nullptr` 时不生效。空字符串`""`合法，表示不显示文本。具体文本内容用于显示提示信息（当需要文本说明时选择），空字符串用于明确不显示文本（当仅显示图标时选择），NULL为默认值（应通过Set方法设置为具体值或空字符串， 不建议保留NULL）。若未通过Set方法设置，则默认显示为空字符串，与ArkTS文档一致。<br>**起始版本：** 12 |
+| [const ARKUI_TextPickerRangeContent*](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) children | 子级联动数据数组指针，指向下一级联动数据数组。当前级别选中该选项时，children对应数组内容会作为下一级显示的选项；无子级数据时设置为NULL。传入的数组指针需要在选择器使用期间保持有效，调用者负责管理数组内存。<br>**起始版本：** 12 |
+| int32_t size | children数组的元素个数，即当前层级的选项数量。取值必须大于等于0，且需与实际传入的children数组元素个数一致；当children为NULL时应设置为0。传入负数或不一致时抛出参数错误异常。<br>**起始版本：** 12 |
 
 

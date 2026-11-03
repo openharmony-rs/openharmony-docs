@@ -1,7 +1,7 @@
 # C API<!--c-neuralnetworkruntimekit-->
 
 - 模块<!--neuralnetworkruntimekit-module-->
-    - [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
+    - [NeuralNetworkRuntime](capi-neural-network-runtime-kit-neuralnetworkruntime.md)
 - 头文件<!--neuralnetworkruntimekit-headerfile-->
     - [neural_network_runtime_type.h](capi-neural-network-runtime-type-h.md)
     - [neural_network_core.h](capi-neural-network-core-h.md)

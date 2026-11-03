@@ -12,7 +12,7 @@ Provides the rawfile file descriptor information, including the file descriptor,
 
 **Since**: 11
 
-**Related module**: [rawfile](capi-rawfile.md)
+**Related module**: [rawfile](capi-others-rawfile.md)
 
 **Header file**: [raw_file.h](capi-raw-file-h.md)
 

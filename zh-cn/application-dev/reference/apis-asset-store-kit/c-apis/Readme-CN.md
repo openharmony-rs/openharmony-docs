@@ -1,8 +1,8 @@
 # C API<!--c-assetstorekit-->
 
 - 模块<!--assetstorekit-module-->
-    - [AssetApi](capi-assetapi.md)
-    - [AssetType](capi-assettype.md)
+    - [AssetApi](capi-asset-store-kit-assetapi.md)
+    - [AssetType](capi-asset-store-kit-assettype.md)
 - 头文件<!--assetstorekit-headerfile-->
     - [asset_api.h](capi-asset-api-h.md)
     - [asset_type.h](capi-asset-type-h.md)

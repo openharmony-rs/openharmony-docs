@@ -4,7 +4,7 @@
 
 Defines the symmetric key interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_sym_key.h>
+**File to Include**: <CryptoArchitectureKit/crypto_sym_key.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the symmetric key interfaces.
 
 **Since**: 12
 
-**Related module**: [CryptoSymKeyApi](capi-cryptosymkeyapi.md)
+**Related module**: [CryptoSymKeyApi](capi-crypto-architecture-kit-cryptosymkeyapi.md)
 
 ## Summary
 
@@ -52,7 +52,7 @@ Creates a symmetric key generator based on the given algorithm name, e.g. AES256
 
 **Since**: 12
 
-**Resource release**: crypto_sym_key/OH_CryptoSymKeyGenerator_Destroy {ctx}
+**Resource release**: [OH_CryptoSymKeyGenerator_Destroy](#oh_cryptosymkeygenerator_destroy)
 
 **Parameters**:
 
@@ -87,7 +87,7 @@ Generates a symmetric key randomly.
 
 **Since**: 12
 
-**Resource release**: crypto_sym_key/OH_CryptoSymKey_Destroy {keyCtx}
+**Resource release**: [OH_CryptoSymKey_Destroy](#oh_cryptosymkey_destroy)
 
 **Parameters**:
 
@@ -116,7 +116,7 @@ Converts symmetric key data to a symmetric key.
 
 **Since**: 12
 
-**Resource release**: crypto_sym_key/OH_CryptoSymKey_Destroy {keyCtx}
+**Resource release**: [OH_CryptoSymKey_Destroy](#oh_cryptosymkey_destroy)
 
 **Parameters**:
 
@@ -218,7 +218,7 @@ Obtains the symmetric key data from the symmetric key.
 
 **Since**: 12
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

@@ -10,7 +10,7 @@ Defines the data structures for the C APIs of the global HTTP interceptor module
 
 **Since**: 24
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 ## Summary
 
@@ -36,12 +36,6 @@ Defines the data structures for the C APIs of the global HTTP interceptor module
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [typedef OH_Interceptor_Result (\*OH_Http_InterceptorHandler)(OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified)](#oh_http_interceptorhandler) | OH_Http_InterceptorHandler | Defines the HTTP interceptor handler function. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| OH_Interceptor_Result (*OH_Http_InterceptorHandler)( OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified) | Defines the HTTP interceptor handler function.<br>**Since**: 24<br>**System capability**: SystemCapability.Communication.NetStack |
 
 ## Enum type description
 

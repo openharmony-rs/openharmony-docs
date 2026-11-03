@@ -14,7 +14,7 @@ Define the audio meta data frame structure. This structure is used to pass audio
 
 **System API:** This is a system API.
 
-**Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_base.h(System API)](capi-native-audio-suite-base-h-sys.md)
 

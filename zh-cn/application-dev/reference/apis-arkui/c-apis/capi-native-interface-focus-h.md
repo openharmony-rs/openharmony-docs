@@ -10,7 +10,7 @@
 
 **起始版本：** 15
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -78,7 +78,7 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 请求成功。<br>ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE 节点无法获得焦点。<br>ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR 祖先节点无法获得焦点。<br>ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT 节点不存在。 |
+| ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 请求成功。<br>[ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE](capi-error-code-h.md#arkui_errorcode) 节点无法获得焦点。<br>[ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR](capi-error-code-h.md#arkui_errorcode) 祖先节点无法获得焦点。<br>[ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT](capi-error-code-h.md#arkui_errorcode) 节点不存在。 |
 
 ### OH_ArkUI_FocusClear()
 

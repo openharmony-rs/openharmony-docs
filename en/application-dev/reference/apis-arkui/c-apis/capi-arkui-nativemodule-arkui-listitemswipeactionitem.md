@@ -12,7 +12,7 @@ Defines the configuration information of an item in the **ListItemSwipeActionOpt
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [list_item.h](capi-list-item-h.md)
 

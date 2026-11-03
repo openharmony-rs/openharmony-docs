@@ -12,7 +12,7 @@ struct Rdb_KeyInfo {...}
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-others-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 
@@ -24,8 +24,9 @@ struct Rdb_KeyInfo {...}
 | -- | -- |
 | int count | 表示发生变化的主键或者行号的数量。 |
 | int type | 表示主键或行号的数据类型[OH_ColumnType](capi-oh-data-value-h.md#oh_columntype)。 |
+| data | 表示密钥信息的数据。<br>**起始版本：** 11 |
 | data.integer | 表示uint64_t类型的数据。 |
 | data.real | 表示double类型的数据。 |
-| data->text | 表示const char *类型的数据。 |
+| data.text | 表示const char *类型的数据。 |
 
 

@@ -6,7 +6,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
@@ -690,7 +690,7 @@ NODE_LIST_ITEM_GROUP_SET_HEADER = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LIST_ITEM_GROU
 
 **Description**
 
-Header component of **ListItemGroup**. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) object to be used as the header of the list item group.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) object to be used as the header of the list item group.</li> </ul>
+Header component of **ListItemGroup**. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object to be used as the header of the list item group.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object to be used as the header of the list item group.</li> </ul>
 
 **Since**: 12
 
@@ -702,7 +702,7 @@ NODE_LIST_ITEM_GROUP_SET_FOOTER
 
 **Description**
 
-Footer component of **ListItemGroup**. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) object used as the footer component of **ListItemGroup**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) object used as the footer component of **ListItemGroup**.</li> </ul>
+Footer component of **ListItemGroup**. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the footer component of **ListItemGroup**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the footer component of **ListItemGroup**.</li> </ul>
 
 **Since**: 12
 
@@ -762,7 +762,7 @@ NODE_REFRESH_CONTENT
 
 **Description**
 
-Custom content in the pull-down area. This attribute can be set and reset as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> </ul>
+Custom content in the pull-down area. This attribute can be set and reset as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> </ul>
 
 **Since**: 12
 
@@ -930,7 +930,7 @@ NODE_WATER_FLOW_FOOTER
 
 **Description**
 
-Custom footer for the **WaterFlow** component. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> </ul>
+Custom footer for the **WaterFlow** component. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).</li> </ul>
 
 **Since**: 12
 
@@ -1338,7 +1338,7 @@ NODE_ARC_LIST_SET_HEADER = 1019006
 
 **Description**
 
-Header component of **ArcList**. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) object used as the header component of <b>ArcList</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) object used as the header component of <b>ArcList</b>.</li> </ul>
+Header component of **ArcList**. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the header component of <b>ArcList</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the header component of <b>ArcList</b>.</li> </ul>
 
 **Since**: 26.0.0
 
@@ -1458,7 +1458,7 @@ NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SCROLL
 
 **Description**
 
-Scrollable component bound to **ArcScrollBar**. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: use [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) object as the scrollable component bound by the scroll bar.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: use [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) object as the scrollable component bound by the scroll bar.</li> </ul>
+Scrollable component bound to **ArcScrollBar**. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: use [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object as the scrollable component bound by the scroll bar.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: use [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object as the scrollable component bound by the scroll bar.</li> </ul>
 
 **Since**: 26.0.0
 

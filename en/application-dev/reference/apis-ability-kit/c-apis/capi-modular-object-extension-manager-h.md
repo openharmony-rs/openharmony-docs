@@ -10,7 +10,7 @@ Declares the APIs for managing ModularObjectExtensionAbility, including querying
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 
@@ -18,8 +18,8 @@ Declares the APIs for managing ModularObjectExtensionAbility, including querying
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) | OH_AbilityRuntime_ModObjExtensionInfoHandle | Represents the information handle of a single ModularObjectExtensionAbility. The handle points to the complete information of a ModularObjectExtensionAbility, including attributes such as the launch mode, process mode, thread mode, component name (AbilityBase_Element), and disabled state. |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) | OH_AbilityRuntime_AllModObjExtensionInfosHandle | Represents a handle to the collection of all ModularObjectExtensionAbility information in the current app. You can obtain this handle through [OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_acquireselfmodularobjectextensioninfos). This handle points to a collection containing multiple [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) objects. You can obtain the number of elements in the collection through [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos), and obtain the information of a single ModularObjectExtensionAbility by index through [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex). After use, release the collection through [OH_AbilityRuntime_ReleaseAllExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_releaseallextensioninfos). |
+| [OH_AbilityRuntime_ModularObjectExtensionInfo*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) | OH_AbilityRuntime_ModObjExtensionInfoHandle | Represents the information handle of a single ModularObjectExtensionAbility. The handle points to the complete information of a ModularObjectExtensionAbility, including attributes such as the launch mode, process mode, thread mode, component name (AbilityBase_Element), and disabled state. |
+| [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) | OH_AbilityRuntime_AllModObjExtensionInfosHandle | Represents a handle to the collection of all ModularObjectExtensionAbility information in the current app. You can obtain this handle through [OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_acquireselfmodularobjectextensioninfos). This handle points to a collection containing multiple [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) objects. You can obtain the number of elements in the collection through [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos), and obtain the information of a single ModularObjectExtensionAbility by index through [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex). After use, release the collection through [OH_AbilityRuntime_ReleaseAllExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_releaseallextensioninfos). |
 
 ### Enum
 
@@ -127,7 +127,7 @@ Obtains the startup mode from the specified ModularObjectExtensionAbility inform
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | The modular object extension info from which to get the launch mode. |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | The modular object extension info from which to get the launch mode. |
 | [OH_AbilityRuntime_LaunchMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode) *launchMode | The launch mode obtained from the extension info. |
 
 **Returns**:
@@ -154,7 +154,7 @@ Obtains the process mode from the specified ModularObjectExtensionAbility inform
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | The modular object extension info to get the process mode from. |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | The modular object extension info to get the process mode from. |
 | [OH_AbilityRuntime_ProcessMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_processmode) *processMode | The process mode obtained from the extension info. |
 
 **Returns**:
@@ -181,7 +181,7 @@ Obtains the thread mode from the specified ModularObjectExtensionAbility informa
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | The modular object extension info to get the thread mode from. |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | The modular object extension info to get the thread mode from. |
 | [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode) *threadMode | The thread mode obtained from the extension info. |
 
 **Returns**:
@@ -208,7 +208,7 @@ Gets the component name (AbilityBase_Element) from the specified ModularObjectEx
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | The modular object extension info to get the element name from. |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | The modular object extension info to get the element name from. |
 | [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) *element | The element name obtained from the extension info. |
 
 **Returns**:
@@ -235,7 +235,7 @@ Obtains the disabled state from the specified ModularObjectExtensionAbility info
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | The modular object extension info. |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | The modular object extension info. |
 | bool *isDisabled | Whether the extension is disabled. |
 
 **Returns**:
@@ -258,13 +258,13 @@ Gets the information about all registered ModularObjectExtensionAbility instance
 
 **Since**: 26.0.0
 
-**Resource release**: OH_AbilityRuntime_ReleaseAllExtensionInfos {outOwnedAllExtensionInfos}
+**Resource release**: [OH_AbilityRuntime_ReleaseAllExtensionInfos](#oh_abilityruntime_releaseallextensioninfos)
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) *outOwnedAllExtensionInfos | Information about all extensions within the self application. |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) *outOwnedAllExtensionInfos | Information about all extensions within the self application. |
 
 **Returns**:
 
@@ -290,7 +290,7 @@ Releases the ModularObjectExtensionAbility information collection obtained by [O
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) *allExtensionInfos | The all modular object extension infos to be released. |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) *allExtensionInfos | The all modular object extension infos to be released. |
 
 **Returns**:
 
@@ -321,7 +321,7 @@ Obtains the number of ModularObjectExtensionAbility information items contained 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) allExtensionInfos | The handle representing the collection of all modular object extension infos. |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) allExtensionInfos | The handle representing the collection of all modular object extension infos. |
 | size_t *count | Return value to receive the count of extensions in the collection. |
 
 **Returns**:
@@ -348,9 +348,9 @@ Obtains the specified ModularObjectExtensionAbility information from the Modular
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) allExtensionInfos | Information about all extensions within the self application. |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) allExtensionInfos | Information about all extensions within the self application. |
 | size_t index | The index of the extension to retrieve. Must be strictly less than the count. |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) *extensionInfo | The retrieved single modular object extension info handle for the specified index. |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) *extensionInfo | The retrieved single modular object extension info handle for the specified index. |
 
 **Returns**:
 

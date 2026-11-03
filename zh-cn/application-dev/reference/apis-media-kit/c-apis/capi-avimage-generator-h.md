@@ -11,7 +11,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [AVImageGenerator](capi-avimagegenerator.md)
+**相关模块：** [AVImageGenerator](capi-media-kit-avimagegenerator.md)
 
 ## 汇总
 

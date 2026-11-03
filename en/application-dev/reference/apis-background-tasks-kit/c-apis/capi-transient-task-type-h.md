@@ -10,7 +10,7 @@ Defines the data structures for the C APIs of transient task.
 
 **Since**: 11
 
-**Related module**: [TransientTask](capi-transienttask.md)
+**Related module**: [TransientTask](capi-background-tasks-kit-transienttask.md)
 
 ## Summary
 
@@ -39,12 +39,6 @@ Defines the data structures for the C APIs of transient task.
 | -- | -- | -- |
 | [typedef void (\*TransientTask_Callback)(void)](#transienttask_callback) | TransientTask_Callback | Defines a callback for transient task timeout. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*TransientTask_Callback)(void) | Defines a callback for transient task timeout.<br>**Since**: 13<br>**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask |
-
 ## Enum type description
 
 ### TransientTask_ErrorCode
@@ -71,7 +65,7 @@ Enumerates the error codes available for a transient task.
 | ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED = 9900001 | Failed to verify the client information of the transient task.<br>**Since**: 13 |
 | ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED = 9900002 | Failed to verify the server information of the transient task.<br>**Since**: 13 |
 | ERR_TRANSIENT_TASK_PARCELABLE_FAILED = 9900003 | Parcel read/write operation failed for the transient task. Possible causes: 1. The parameter is invalid. 2. Memory allocation fails.<br>**Since**: 13 |
-| ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004 |  |
+| ERR_TRANSIENT_TASK_SERVICE_NOT_READY = 9900004 | System service failed.<br>**Since**: 13 |
 
 
 ## Function description

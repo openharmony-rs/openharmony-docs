@@ -12,7 +12,7 @@ OH_PackingOptionsForSequence是native层封装的GIF序列编码选项结构体�
 
 **起始版本：** 18
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [image_packer_native.h](capi-image-packer-native-h.md)
 

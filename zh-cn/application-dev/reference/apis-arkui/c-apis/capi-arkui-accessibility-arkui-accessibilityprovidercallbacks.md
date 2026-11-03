@@ -6,13 +6,13 @@ struct ArkUI_AccessibilityProviderCallbacks {...}
 
 ## 概述
 
-第三方provider回调函数结构定义，需要第三方平台实现的相关函数，通过OH_ArkUI_AccessibilityProviderRegisterCallback注册到系统侧。 适用于读屏软件、语音控制、开关控制等无障碍辅助场景，第三方平台通过实现这些回调响应系统的无障碍查询和操作请求。
+第三方provider回调函数结构定义，需要第三方平台实现的相关函数，通过OH_ArkUI_AccessibilityProviderRegisterCallback注册到系统侧。 适用于读屏软件、语音控制、开关控制等无障碍辅助场景，第三方平台通过实现这些回调响应系统的无障碍查询和操作请求。所有的回调函数执行线程为IPC线程，非UI线程。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
 
-**相关模块：** [ArkUI_Accessibility](capi-arkui-accessibility.md)
+**相关模块：** [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
 
 **所在头文件：** [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 
@@ -46,7 +46,7 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 
 | 参数项 | 描述 |
 | -- | -- |
-| int64_t elementId | 无障碍元素的唯一编号。 |
+| int64_t elementId | 无障碍元素的唯一编号，取值应为系统已分配的有效元素ID。 |
 |  [ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md#arkui_accessibilitysearchmode) mode | 表示无障碍搜索模式。具体取值及含义参见ArkUI_AccessibilitySearchMode。 |
 | int32_t requestId | 表示请求ID，由系统侧生成，用于标识一次无障碍请求。 |
 |  [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList | 表示无障碍元素信息列表。 |
@@ -171,7 +171,7 @@ int32_t (*clearFocusedFocusAccessibilityNode)()
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，表示参数错误。 |
+| int32_t | ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL，表示操作成功。ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED，表示操作失败。 |
 
 ### getAccessibilityNodeCursorPosition()
 

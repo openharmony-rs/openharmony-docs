@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [InputMethod](capi-inputmethod.md)
+**相关模块：** [InputMethod](capi-ime-kit-inputmethod.md)
 
 ## 汇总
 

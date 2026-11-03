@@ -6,7 +6,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_node.h](capi-native-node-h.md)
 
@@ -42,7 +42,9 @@ NODE_PADDING
 
 **描述：**
 
-内间距属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**<br>1. 只传入一个参数，表示统一设置上下左右四个位置的内间距值。 <ul> <li>.value[0].f32：统一设置上下左右四个位置的内间距值，单位为vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> </ul> 2. 传入四个参数，表示分别设置上下左右四个位置的内间距值。 <ul> <li>.value[0].f32：设置上内间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[1].f32：设置右内间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[2].f32：设置下内间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[3].f32：设置左内间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：上内间距数值，单位为vp。</li> <li>.value[1].f32：右内间距数值，单位为vp。</li> <li>.value[2].f32：下内间距数值，单位为vp。</li> <li>.value[3].f32：左内间距数值，单位为vp。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
+内间距属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**
+1. 只传入一个参数，表示统一设置上下左右四个位置的内间距值。 <ul> <li>.value[0].f32：统一设置上下左右四个位置的内间距值，单位为vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> </ul>
+2. 传入四个参数，表示分别设置上下左右四个位置的内间距值。 <ul> <li>.value[0].f32：设置上内间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[1].f32：设置右内间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[2].f32：设置下内间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[3].f32：设置左内间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].f32：上内间距数值，单位为vp。</li> <li>.value[1].f32：右内间距数值，单位为vp。</li> <li>.value[2].f32：下内间距数值，单位为vp。</li> <li>.value[3].f32：左内间距数值，单位为vp。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
 
 **起始版本：** 12
 
@@ -54,7 +56,9 @@ NODE_MARGIN
 
 **描述：**
 
-外间距属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**<br>1. 只传入一个参数，表示统一设置上下左右四个位置的外间距值。 <ul> <li>.value[0].f32：统一设置上下左右四个位置的外间距值，单位为vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> </ul> 2. 传入四个参数，表示分别设置上下左右四个位置的外间距值。 <ul> <li>.value[0].f32：设置上外间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[1].f32：设置右外间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[2].f32：设置下外间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[3].f32：设置左外间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：上外间距数值，单位为vp。</li> <li>.value[1].f32：右外间距数值，单位为vp。</li> <li>.value[2].f32：下外间距数值，单位为vp。</li> <li>.value[3].f32：左外间距数值，单位为vp。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
+外间距属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**
+1. 只传入一个参数，表示统一设置上下左右四个位置的外间距值。 <ul> <li>.value[0].f32：统一设置上下左右四个位置的外间距值，单位为vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> </ul>
+2. 传入四个参数，表示分别设置上下左右四个位置的外间距值。 <ul> <li>.value[0].f32：设置上外间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[1].f32：设置右外间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[2].f32：设置下外间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> <li>.value[3].f32：设置左外间距数值，单位为vp，默认值为0vp。取值范围：[0, +∞)。设置异常值时，按默认值0vp显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].f32：上外间距数值，单位为vp。</li> <li>.value[1].f32：右外间距数值，单位为vp。</li> <li>.value[2].f32：下外间距数值，单位为vp。</li> <li>.value[3].f32：左外间距数值，单位为vp。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
 
 **起始版本：** 12
 
@@ -78,7 +82,9 @@ NODE_BORDER_WIDTH
 
 **描述：**
 
-边框宽度属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**<br>1. 只传入一个参数，表示统一设置四条边的边框宽度。 <ul> <li>.value[0].f32：统一设置四条边的边框宽度，单位为vp。取值范围：[0, +∞)。默认值为0vp。</li> </ul> 2. 传入四个参数，表示分别设置四条边的边框宽度。 <ul> <li>.value[0].f32：设置上边框的边框宽度，单位为vp，默认值为0vp。取值范围：[0, +∞)。</li> <li>.value[1].f32：设置右边框的边框宽度，单位为vp，默认值为0vp。取值范围：[0, +∞)。</li> <li>.value[2].f32：设置下边框的边框宽度，单位为vp，默认值为0vp。取值范围：[0, +∞)。</li> <li>.value[3].f32：设置左边框的边框宽度，单位为vp，默认值为0vp。取值范围：[0, +∞)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：上边框的边框宽度，单位为vp。</li> <li>.value[1].f32：右边框的边框宽度，单位为vp。</li> <li>.value[2].f32：下边框的边框宽度，单位为vp。</li> <li>.value[3].f32：左边框的边框宽度，单位为vp。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
+边框宽度属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**
+1. 只传入一个参数，表示统一设置四条边的边框宽度。 <ul> <li>.value[0].f32：统一设置四条边的边框宽度，单位为vp。取值范围：[0, +∞)。默认值为0vp。</li> </ul>
+2. 传入四个参数，表示分别设置四条边的边框宽度。 <ul> <li>.value[0].f32：设置上边框的边框宽度，单位为vp，默认值为0vp。取值范围：[0, +∞)。</li> <li>.value[1].f32：设置右边框的边框宽度，单位为vp，默认值为0vp。取值范围：[0, +∞)。</li> <li>.value[2].f32：设置下边框的边框宽度，单位为vp，默认值为0vp。取值范围：[0, +∞)。</li> <li>.value[3].f32：设置左边框的边框宽度，单位为vp，默认值为0vp。取值范围：[0, +∞)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].f32：上边框的边框宽度，单位为vp。</li> <li>.value[1].f32：右边框的边框宽度，单位为vp。</li> <li>.value[2].f32：下边框的边框宽度，单位为vp。</li> <li>.value[3].f32：左边框的边框宽度，单位为vp。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
 
 **起始版本：** 12
 
@@ -114,7 +120,9 @@ NODE_BORDER_STYLE
 
 **描述：**
 
-边框线条样式属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**<br>1. 只传入一个参数，表示统一设置四条边的边框线条样式。 <ul> <li>.value[0].i32：统一设置四条边的边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> </ul> 2. 传入四个参数，表示分别设置四条边的边框线条样式。 <ul> <li>.value[0].i32：设置上侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> <li>.value[1].i32：设置右侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> <li>.value[2].i32：设置下侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> <li>.value[3].i32：设置左侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：上侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)。</li> <li>.value[1].i32：右侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)。</li> <li>.value[2].i32：下侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)。</li> <li>.value[3].i32：左侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
+边框线条样式属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**
+1. 只传入一个参数，表示统一设置四条边的边框线条样式。 <ul> <li>.value[0].i32：统一设置四条边的边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> </ul>
+2. 传入四个参数，表示分别设置四条边的边框线条样式。 <ul> <li>.value[0].i32：设置上侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> <li>.value[1].i32：设置右侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> <li>.value[2].i32：设置下侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> <li>.value[3].i32：设置左侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32：上侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)。</li> <li>.value[1].i32：右侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)。</li> <li>.value[2].i32：下侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)。</li> <li>.value[3].i32：左侧边框线条样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
 
 **起始版本：** 12
 
@@ -306,7 +314,9 @@ NODE_PADDING_PERCENT
 
 **描述：**
 
-内间距属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**<br>1. 只传入一个参数，表示统一设置上下左右四个位置的内间距百分比数值。 <ul> <li>.value[0].f32：统一设置上下左右四个位置的内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> </ul> 2. 传入四个参数，表示分别设置上下左右四个位置的内间距百分比数值。 <ul> <li>.value[0].f32：设置上内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[1].f32：设置右内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[2].f32：设置下内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[3].f32：设置左内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：上内间距数值，单位为百分比。</li> <li>.value[1].f32：右内间距数值，单位为百分比。</li> <li>.value[2].f32：下内间距数值，单位为百分比。</li> <li>.value[3].f32：左内间距数值，单位为百分比。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
+内间距属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**
+1. 只传入一个参数，表示统一设置上下左右四个位置的内间距百分比数值。 <ul> <li>.value[0].f32：统一设置上下左右四个位置的内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> </ul>
+2. 传入四个参数，表示分别设置上下左右四个位置的内间距百分比数值。 <ul> <li>.value[0].f32：设置上内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[1].f32：设置右内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[2].f32：设置下内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[3].f32：设置左内间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].f32：上内间距数值，单位为百分比。</li> <li>.value[1].f32：右内间距数值，单位为百分比。</li> <li>.value[2].f32：下内间距数值，单位为百分比。</li> <li>.value[3].f32：左内间距数值，单位为百分比。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
 
 **起始版本：** 12
 
@@ -318,7 +328,9 @@ NODE_MARGIN_PERCENT
 
 **描述：**
 
-外间距属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**<br>1. 只传入一个参数，表示统一设置上下左右四个位置的外间距百分比数值。 <ul> <li>.value[0].f32：统一设置上下左右四个位置的外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> </ul> 2. 传入四个参数，表示分别设置上下左右四个位置的外间距百分比数值。 <ul> <li>.value[0].f32：设置上外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[1].f32：设置右外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[2].f32：设置下外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[3].f32：设置左外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：上外间距数值，单位为百分比。</li> <li>.value[1].f32：右外间距数值，单位为百分比。</li> <li>.value[2].f32：下外间距数值，单位为百分比。</li> <li>.value[3].f32：左外间距数值，单位为百分比。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
+外间距属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：**
+1. 只传入一个参数，表示统一设置上下左右四个位置的外间距百分比数值。 <ul> <li>.value[0].f32：统一设置上下左右四个位置的外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> </ul>
+2. 传入四个参数，表示分别设置上下左右四个位置的外间距百分比数值。 <ul> <li>.value[0].f32：设置上外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[1].f32：设置右外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[2].f32：设置下外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> <li>.value[3].f32：设置左外间距数值，单位为百分比。默认值为0。取值范围：[0, +∞)。设置异常值时，按默认值显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].f32：上外间距数值，单位为百分比。</li> <li>.value[1].f32：右外间距数值，单位为百分比。</li> <li>.value[2].f32：下外间距数值，单位为百分比。</li> <li>.value[3].f32：左外间距数值，单位为百分比。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。
 
 **起始版本：** 12
 

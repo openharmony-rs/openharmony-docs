@@ -12,7 +12,7 @@ The color space information is used for color space conversion capability query.
 
 **Since**: 13
 
-**Related module**: [ImageProcessing](capi-imageprocessing.md)
+**Related module**: [ImageProcessing](capi-others-imageprocessing.md)
 
 **Header file**: [image_processing_types.h](capi-image-processing-types-h.md)
 

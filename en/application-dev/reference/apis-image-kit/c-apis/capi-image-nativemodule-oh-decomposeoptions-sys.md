@@ -14,7 +14,7 @@ typedef struct OH_DecomposeOptions OH_DecomposeOptions
 
 **System API:** This is a system API.
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [picture_native.h(System API)](capi-picture-native-h-sys.md)
 

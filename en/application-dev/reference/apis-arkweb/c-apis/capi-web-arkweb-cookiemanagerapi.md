@@ -12,7 +12,7 @@ ArkWeb_CookieManagerAPI is a Native API struct for cookie management. This struc
 
 **Since**: 12
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-others-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 

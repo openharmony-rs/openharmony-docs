@@ -12,7 +12,7 @@ Defines an immersive material object on the native side, which provides adaptive
 
 **Since**: 26.0.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_material.h](capi-native-material-h.md)
 

@@ -19,7 +19,7 @@
 
 | Name | Complete quotation | Description |
 | -- | -- | -- |
-| [void (\*sigev_notify_function)(union sigval)](#sigev_notify_function) | sigev_notify_function() |  |
+| [void (\*sigev_notify_function)(union sigval)](#sigev_notify_function) | sigev_notify_function |  |
 
 ## Member function description
 

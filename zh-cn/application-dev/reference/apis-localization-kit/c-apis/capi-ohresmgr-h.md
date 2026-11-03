@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [resourcemanager](capi-resourcemanager.md)
+**相关模块：** [resourcemanager](capi-localization-kit-resourcemanager.md)
 
 ## 汇总
 
@@ -70,7 +70,9 @@
 ### OH_ResourceManager_GetMediaBase64()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0);
+#endif // __cplusplus
 ```
 
 **描述：**
@@ -130,7 +132,9 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 ### OH_ResourceManager_GetMediaBase64ByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0);
+#endif // __cplusplus
 ```
 
 **描述：**
@@ -190,7 +194,9 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 ### OH_ResourceManager_GetMedia()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0);
+#endif // __cplusplus
 ```
 
 **描述：**
@@ -250,7 +256,9 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 ### OH_ResourceManager_GetMediaByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0);
+#endif // __cplusplus
 ```
 
 **描述：**
@@ -310,7 +318,9 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 ### OH_ResourceManager_GetDrawableDescriptor()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0);
+#endif // __cplusplus
 ```
 
 **描述：**
@@ -370,7 +380,9 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 ### OH_ResourceManager_GetDrawableDescriptorByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0);
+#endif // __cplusplus
 ```
 
 **描述：**
@@ -486,7 +498,9 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 ### OH_ResourceManager_GetLocales()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false);
+#endif // __cplusplus
 ```
 
 **描述：**

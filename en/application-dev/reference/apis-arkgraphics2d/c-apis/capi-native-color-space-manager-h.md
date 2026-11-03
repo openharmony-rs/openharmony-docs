@@ -10,7 +10,7 @@ This file declares the functions for creating and using a color space.
 
 **Since**: 13
 
-**Related module**: [NativeColorSpaceManager](capi-nativecolorspacemanager.md)
+**Related module**: [NativeColorSpaceManager](capi-arkgraphics2d-nativecolorspacemanager.md)
 
 ## Summary
 
@@ -87,8 +87,8 @@ Defines an enum for the color space names.
 | DISPLAY_P3_SRGB = DISPLAY_P3 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of Full. |
 | DISPLAY_P3_HLG = P3_HLG | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of Full. |
 | DISPLAY_P3_PQ = P3_PQ | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of Full. |
-| BT2020_LOG_FULL = 27 |  |
-| BT2020_LOG_LIMIT = 28 |  |
+| BT2020_LOG_FULL = 27 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of Full.<br>**Since**: 26.0.0 |
+| BT2020_LOG_LIMIT = 28 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of LIMIT.<br>**Since**: 26.0.0 |
 | CUSTOM = 5 | Custom color space. |
 
 

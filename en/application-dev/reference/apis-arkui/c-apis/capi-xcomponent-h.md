@@ -10,7 +10,7 @@ Defines xcomponent attribute enum value.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -44,7 +44,7 @@ Enumerates the types of the **XComponent** component.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_XCOMPONENT_TYPE_SURFACE = 0 |  |
-| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 |  |
+| ARKUI_XCOMPONENT_TYPE_SURFACE = 0 | The custom content of EGL/OpenGL ES and media data is displayed individually on the screen.<br>**Since**: 12 |
+| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | The custom content of EGL/OpenGL ES and media data is grouped and displayed together with content of the component.<br>**Since**: 12 |
 
 

@@ -12,7 +12,7 @@ Describes the margins of a component, which is used to define the blank area bet
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [water_flow.h](capi-water-flow-h.md)
 

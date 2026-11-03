@@ -12,7 +12,7 @@ Defines the region of the image source to decode. It is used in [OhosImageDecodi
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_source_mdk.h](capi-image-source-mdk-h.md)
 

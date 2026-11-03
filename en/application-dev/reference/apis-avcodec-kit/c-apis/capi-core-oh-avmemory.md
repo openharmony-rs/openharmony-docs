@@ -12,7 +12,7 @@ Describes a native object for the audio and video memory interface.
 
 **Since**: 9
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-others-core.md)
 
 **Header file**: [native_avmemory.h](capi-native-avmemory-h.md)
 

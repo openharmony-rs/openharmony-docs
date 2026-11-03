@@ -4,7 +4,7 @@
 
 Provides functions such as input event injection, key state query, device hot swapping listener, event interception, hotkey management, mouse cursor management, input device information query, and injection permission management.
 
-**Include**: <multimodalinput/oh_input_manager.h>
+**File to Include**: <multimodalinput/oh_input_manager.h>
 
 **Library**: libohinput.so
 
@@ -12,7 +12,7 @@ Provides functions such as input event injection, key state query, device hot sw
 
 **Since**: 12
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-input-kit-input.md)
 
 ## Summary
 
@@ -240,19 +240,6 @@ Provides functions such as input event injection, key state query, device hot sw
 | [Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConfig, bool *followSystem)](#oh_input_cursorconfig_isfollowsystem) | - | Queries whether the custom mouse pointer configuration follows the system setting to adjust the pointer size. |
 | [Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* customCursor, Input_CursorConfig* cursorConfig)](#oh_input_setcustomcursor) | - | Sets the custom mouse pointer style. <br>The cursor may revert to the system style in the following scenarios: application window layout changes, hotspot switching, page navigation, the cursor leaving and re-entering the window, or the cursor moving between different areas of the window. In these cases, the developer needs to set the cursor style again. This API only supports setting the custom mouse cursor style for windows within the current application process. |
 | [Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)](#oh_input_bindinputdevicetodisplay) | - | Binds a specified input device to a specified screen. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*Input_HotkeyCallback)(Input_Hotkey* hotkey) | Defines the callback used to return hotkey events.<br>**Since**: 14<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent) | Defines a lifecycle callback for **keyEvent**. If the callback is triggered, **keyEvent** will be destroyed.<br>**Since**: 12<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent) | Defines a lifecycle callback for **mouseEvent**. The lifecycle of the mouseEvent is limited to the callback function.<br>**Since**: 12<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent) | Defines the lifecycle callback for **TouchEvent**. The lifecycle of the touchEvent is limited to the callback function.<br>**Since**: 12<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent) | Defines a lifecycle callback for **axisEvent**. The lifecycle of the axisEvent is limited to the callback function.<br>**Since**: 12<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_DeviceAddedCallback)(int32_t deviceId) | Callback used to receive input device hot-plug events.<br>**Since**: 13<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_DeviceRemovedCallback)(int32_t deviceId) | Callback used to receive input device hot-unplug events.<br>**Since**: 13<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
-| void (*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedStatus) | Defines a callback used to receive the injection permission authorization status.<br>**Since**: 20<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
 
 ## Enum type description
 
@@ -710,7 +697,7 @@ Creates a key state struct object. You can call [OH_Input_DestroyKeyState](capi-
 
 **Since**: 12
 
-**Resource release**: OH_Input_DestroyKeyState {return}
+**Resource release**: [OH_Input_DestroyKeyState](#oh_input_destroykeystate)
 
 **Returns**:
 
@@ -3938,7 +3925,7 @@ Creates an [Input_Hotkey](capi-input-input-hotkey.md) array. You can call [OH_In
 
 **Since**: 14
 
-**Resource release**: OH_Input_DestroyAllSystemHotkeys {return}
+**Resource release**: [OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)
 
 **Parameters**:
 
@@ -4056,7 +4043,11 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 **Description**
 
-Subscribes to hotkey events. <br> > **NOTE**<br>> > When subscribing to hotkey events, pay attention to the following restrictions on **preKeys** and **finalKey**: > 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing 1-4 keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys. > 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). For example, in **Ctrl+Shift+Esc**, **Esc** is the modified key.
+Subscribes to hotkey events. <br> > **NOTE**
+>
+> When subscribing to hotkey events, pay attention to the following restrictions on **preKeys** and **finalKey**:
+> 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing 1-4 keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.
+> 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). For example, in **Ctrl+Shift+Esc**, **Esc** is the modified key.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -4862,7 +4853,7 @@ Creates a custom mouse pointer resource object. You can call [OH_Input_CustomCur
 
 **Since**: 22
 
-**Resource release**: OH_Input_CustomCursor_Destroy {return}
+**Resource release**: [OH_Input_CustomCursor_Destroy](#oh_input_customcursor_destroy)
 
 **Parameters**:
 
@@ -4967,7 +4958,7 @@ Creates a custom mouse pointer configuration object. You can call [OH_Input_Curs
 
 **Since**: 22
 
-**Resource release**: OH_Input_CursorConfig_Destroy {return}
+**Resource release**: [OH_Input_CursorConfig_Destroy](#oh_input_cursorconfig_destroy)
 
 **Parameters**:
 

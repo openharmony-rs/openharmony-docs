@@ -1,7 +1,7 @@
 # ImageSourceNative_
 
 ```c
-struct ImageSourceNative_
+typedef struct ImageSourceNative_ ImageSourceNative
 ```
 
 ## 概述
@@ -12,7 +12,7 @@ struct ImageSourceNative_
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-others-image.md)
 
 **所在头文件：** [image_source_mdk.h](capi-image-source-mdk-h.md)
 

@@ -12,7 +12,7 @@ typedef struct BufferHandle {...} BufferHandle
 
 **起始版本：** 8
 
-**相关模块：** [NativeWindow](capi-nativewindow.md)
+**相关模块：** [NativeWindow](capi-others-nativewindow.md)
 
 **所在头文件：** [buffer_handle.h](capi-buffer-handle-h.md)
 

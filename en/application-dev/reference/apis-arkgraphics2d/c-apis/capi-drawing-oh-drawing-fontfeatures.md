@@ -12,7 +12,7 @@ Defines a struct for font features, which are typesetting rules within a font th
 
 **Since**: 20
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

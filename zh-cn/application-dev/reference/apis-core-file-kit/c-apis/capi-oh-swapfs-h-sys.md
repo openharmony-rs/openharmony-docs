@@ -14,7 +14,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Swapfs](capi-swapfs.md)
+**相关模块：** [Swapfs](capi-core-file-kit-swapfs.md)
 
 ## 汇总
 
@@ -116,7 +116,7 @@ OH_Swapfs_ErrCode OH_Swapfs_CreateManager(const OH_SwapfsConfig *config, OH_Swap
 
 **起始版本：** 26.0.0
 
-**资源释放：** swapfs/OH_Swapfs_DestroyManager {manager}
+**资源释放：** [OH_Swapfs_DestroyManager](#oh_swapfs_destroymanager)
 
 **系统接口：** 此接口为系统接口。
 

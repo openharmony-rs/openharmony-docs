@@ -12,7 +12,7 @@ Defines the optional parameters for data operations.
 
 **Since**: 20
 
-**Related module**: [UDMF](capi-udmf.md)
+**Related module**: [UDMF](capi-others-udmf.md)
 
 **Header file**: [udmf.h](capi-udmf-h.md)
 

@@ -12,7 +12,7 @@ Defines the time zone rule that takes effect annually.
 
 **Since**: 22
 
-**Related module**: [i18n](capi-i18n.md)
+**Related module**: [i18n](capi-others-i18n.md)
 
 **Header file**: [timezone.h](capi-timezone-h.md)
 

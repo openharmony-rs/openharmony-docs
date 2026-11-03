@@ -12,7 +12,7 @@ Describes the zoom point info.
 
 **Since**: 26.0.0
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 
@@ -22,7 +22,7 @@ Describes the zoom point info.
 
 | Name | Description |
 | -- | -- |
-| float zoomRatio |  |
-| uint32_t equivalentFocalLength |  |
+| float zoomRatio | Zoom ratio.<br>**Since**: 26.0.0 |
+| uint32_t equivalentFocalLength | Equivalent focal length.<br>**Since**: 26.0.0 |
 
 

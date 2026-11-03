@@ -10,7 +10,7 @@ Declares the common sensor attributes.
 
 **Since**: 11
 
-**Related module**: [Sensor](capi-sensor.md)
+**Related module**: [Sensor](capi-sensor-service-kit-sensor.md)
 
 ## Summary
 
@@ -78,12 +78,6 @@ Declares the common sensor attributes.
 | [int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sensor_EventCallback callback)](#oh_sensorsubscriber_setcallback) | - | Sets a callback function to report sensor data. After this API is called successfully, the subscriber will use the specified callback function to report sensor data. |
 | [int32_t OH_SensorSubscriber_GetCallback(Sensor_Subscriber* subscriber, Sensor_EventCallback *callback)](#oh_sensorsubscriber_getcallback) | - | Obtains the callback function used to report sensor data. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*Sensor_EventCallback)(Sensor_Event *event) | Defines the callback function used to report sensor data.<br>**Since**: 11<br>**System capability**: SystemCapability.Sensors.Sensor |
-
 ## Enum type description
 
 ### Sensor_Type
@@ -102,21 +96,21 @@ Enumerates the sensor types.
 
 | Enum item | Description |
 | -- | -- |
-| SENSOR_TYPE_ACCELEROMETER = 1 |  |
-| SENSOR_TYPE_GYROSCOPE = 2 |  |
-| SENSOR_TYPE_AMBIENT_LIGHT = 5 |  |
-| SENSOR_TYPE_MAGNETIC_FIELD = 6 |  |
-| SENSOR_TYPE_BAROMETER = 8 |  |
-| SENSOR_TYPE_HALL = 10 |  |
-| SENSOR_TYPE_PROXIMITY = 12 |  |
-| SENSOR_TYPE_ORIENTATION = 256 |  |
-| SENSOR_TYPE_GRAVITY = 257 |  |
-| SENSOR_TYPE_LINEAR_ACCELERATION = 258 |  |
-| SENSOR_TYPE_ROTATION_VECTOR = 259 |  |
-| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 |  |
-| SENSOR_TYPE_PEDOMETER_DETECTION = 265 |  |
-| SENSOR_TYPE_PEDOMETER = 266 |  |
-| SENSOR_TYPE_HEART_RATE = 278 |  |
+| SENSOR_TYPE_ACCELEROMETER = 1 | Acceleration sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_GYROSCOPE = 2 | Gyroscope sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_AMBIENT_LIGHT = 5 | Ambient light sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_MAGNETIC_FIELD = 6 | Magnetic field sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_BAROMETER = 8 | Barometer sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_HALL = 10 | Hall effect sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_PROXIMITY = 12 | Proximity sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_ORIENTATION = 256 | Orientation sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_GRAVITY = 257 | Gravity sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | Linear acceleration sensor.<br>**Since**: 13 |
+| SENSOR_TYPE_ROTATION_VECTOR = 259 | Rotation vector sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | Game rotation vector sensor.<br>**Since**: 13 |
+| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | Pedometer detection sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_PEDOMETER = 266 | Pedometer sensor.<br>**Since**: 11 |
+| SENSOR_TYPE_HEART_RATE = 278 | Heart rate sensor.<br>**Since**: 11 |
 
 ### Sensor_Result
 
@@ -134,10 +128,10 @@ Enumerates the sensor result codes.
 
 | Enum item | Description |
 | -- | -- |
-| SENSOR_SUCCESS = 0 |  |
-| SENSOR_PERMISSION_DENIED = 201 |  |
-| SENSOR_PARAMETER_ERROR = 401 |  |
-| SENSOR_SERVICE_EXCEPTION = 14500101 |  |
+| SENSOR_SUCCESS = 0 | Operation success.<br>**Since**: 11 |
+| SENSOR_PERMISSION_DENIED = 201 | Permission verification failed. Possible causes: The app does not have the required sensor permission, the permission request is rejected, or the permission level is insufficient. Solution: Check whether the required sensor permission has been requested in the app configuration file. Ensure that the permission is correctly requested and obtained during app running.<br>**Since**: 11 |
+| SENSOR_PARAMETER_ERROR = 401 | An error occurs during parameter verification. Possible causes: The parameter is empty, the parameter value is out of the valid range, the parameter type does not match, or a mandatory parameter is missing. Solution: Check whether the input parameters are complete, meet the type requirements, and are within the valid range based on the parameter description of the specific function, and modify the parameter values if necessary.<br>**Since**: 11 |
+| SENSOR_SERVICE_EXCEPTION = 14500101 | The sensor service is abnormal. Possible causes: The sensor service is not started or has crashed, the device does not support the specified sensor, or the system resources are insufficient. Solution: Check whether the device supports the required sensor and ensure that the system resources are sufficient. If necessary, restart the device or reinitialize the sensor service.<br>**Since**: 11 |
 
 ### Sensor_Accuracy
 
@@ -155,10 +149,10 @@ Enumerates the accuracy levels of data reported by a sensor.
 
 | Enum item | Description |
 | -- | -- |
-| SENSOR_ACCURACY_UNRELIABLE = 0 |  |
-| SENSOR_ACCURACY_LOW = 1 |  |
-| SENSOR_ACCURACY_MEDIUM = 2 |  |
-| SENSOR_ACCURACY_HIGH = 3 |  |
+| SENSOR_ACCURACY_UNRELIABLE = 0 | The sensor data is unreliable. It is possible that the sensor does not contact with the device to measure.<br>**Since**: 11 |
+| SENSOR_ACCURACY_LOW = 1 | The sensor data is at a low accuracy level. The data must be calibrated based on the environment before being used.<br>**Since**: 11 |
+| SENSOR_ACCURACY_MEDIUM = 2 | The sensor data is at a medium accuracy level. You are advised to calibrate the data based on the environment before using it.<br>**Since**: 11 |
+| SENSOR_ACCURACY_HIGH = 3 | The sensor data is at a high accuracy level. The data can be used directly.<br>**Since**: 11 |
 
 
 ## Function description

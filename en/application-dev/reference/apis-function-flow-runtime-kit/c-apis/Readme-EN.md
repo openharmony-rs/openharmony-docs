@@ -1,7 +1,7 @@
 # C API<!--c-functionflowruntimekit-->
 
 - Module<!--functionflowruntimekit-module-->
-    - [FFRT](capi-ffrt.md)
+    - [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 - Header file<!--functionflowruntimekit-headerfile-->
     - [condition_variable.h](capi-condition-variable-h.md)
     - [queue.h](capi-queue-h.md)

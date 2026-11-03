@@ -10,7 +10,7 @@ Declare the audio common base data structure.<br> Defines the types of public re
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 
@@ -71,10 +71,10 @@ Defines the audio scene.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_SCENE_DEFAULT = 0 |  |
-| AUDIO_SCENE_RINGING = 1 |  |
-| AUDIO_SCENE_PHONE_CALL = 2 |  |
-| AUDIO_SCENE_VOICE_CHAT = 3 |  |
+| AUDIO_SCENE_DEFAULT = 0 | Default audio scene.<br>**Since**: 12 |
+| AUDIO_SCENE_RINGING = 1 | Ringing scene.<br>**Since**: 12 |
+| AUDIO_SCENE_PHONE_CALL = 2 | Phone call scene.<br>**Since**: 12 |
+| AUDIO_SCENE_VOICE_CHAT = 3 | Voice chat scene.<br>**Since**: 12 |
 
 ### OH_AudioRingerMode
 
@@ -92,9 +92,9 @@ Defines the ringer mode.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_RINGER_MODE_SILENT = 0 |  |
-| AUDIO_RINGER_MODE_VIBRATE = 1 |  |
-| AUDIO_RINGER_MODE_NORMAL = 2 |  |
+| AUDIO_RINGER_MODE_SILENT = 0 | Silent ringer mode.<br>**Since**: 20 |
+| AUDIO_RINGER_MODE_VIBRATE = 1 | Vibrate ringer mode.<br>**Since**: 20 |
+| AUDIO_RINGER_MODE_NORMAL = 2 | Normal ringer mode.<br>**Since**: 20 |
 
 ### OH_AudioNoiseReductionMode
 

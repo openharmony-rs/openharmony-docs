@@ -14,7 +14,7 @@ Defines the input resource of the image source. It is obtained by calling [OH_Im
 
 **Deprecated**: 11
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_source_mdk.h](capi-image-source-mdk-h.md)
 
@@ -24,15 +24,15 @@ Defines the input resource of the image source. It is obtained by calling [OH_Im
 
 | Name | Description |
 | -- | -- |
-| char* uri = nullptr |  |
-| size_t uriSize = 0 |  |
-| int32_t fd = -1 |  |
-| uint8_t* buffer = nullptr |  |
-| size_t bufferSize = 0 |  |
-| char* uri |  |
-| size_t uriSize |  |
-| int32_t fd |  |
-| uint8_t* buffer |  |
-| size_t bufferSize |  |
+| char* uri = nullptr | Pointer to the image source URI. Only a file URI or Base64 URI is accepted.<br>**Since**: 10 |
+| size_t uriSize = 0 | Length of the image source URI.<br>**Since**: 10 |
+| int32_t fd = -1 | Descriptor of the image source.<br>**Since**: 10 |
+| uint8_t* buffer = nullptr | Pointer to the image source buffer. Only a formatted packet buffer or Base64 buffer is accepted.<br>**Since**: 10 |
+| size_t bufferSize = 0 | Size of the image source buffer.<br>**Since**: 10 |
+| char* uri | Pointer to the image source URI. Only a file URI or Base64 URI is accepted.<br>**Since**: 10 |
+| size_t uriSize | Length of the image source URI.<br>**Since**: 10 |
+| int32_t fd | Descriptor of the image source.<br>**Since**: 10 |
+| uint8_t* buffer | Pointer to the image source buffer. Only a formatted packet buffer or Base64 buffer is accepted.<br>**Since**: 10 |
+| size_t bufferSize | Size of the image source buffer.<br>**Since**: 10 |
 
 

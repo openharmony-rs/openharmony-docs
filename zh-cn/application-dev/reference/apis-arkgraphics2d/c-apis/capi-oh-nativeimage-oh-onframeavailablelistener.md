@@ -12,7 +12,7 @@ struct OH_OnFrameAvailableListener {...}
 
 **起始版本：** 11
 
-**相关模块：** [OH_NativeImage](capi-oh-nativeimage.md)
+**相关模块：** [OH_NativeImage](capi-others-oh-nativeimage.md)
 
 **所在头文件：** [native_image.h](capi-native-image-h.md)
 

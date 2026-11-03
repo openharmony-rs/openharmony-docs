@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## 汇总
 
@@ -39,13 +39,6 @@
 | [Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_registerocclusiondetectioncallback) | - | 注册相机镜头遮挡、脏污检测事件回调。 |
 | [Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_unregisterocclusiondetectioncallback) | - | 注销相机镜头遮挡、脏污检测事件回调。 |
 | [Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput, Camera_ConcurrentType type)](#oh_camerainput_openconcurrentcameras) | - | 根据指定并发类型打开相机。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode) | 在[CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)中被调用的相机输入错误回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult) | 相机镜头遮挡、脏污检测结果回调。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
 
 ## 函数说明
 

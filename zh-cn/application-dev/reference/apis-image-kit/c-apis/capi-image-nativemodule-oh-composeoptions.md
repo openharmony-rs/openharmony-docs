@@ -12,7 +12,7 @@ OH_ComposeOptions是native层封装的合成HDR选项参数结构体，用于设
 
 **起始版本：** 23
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [picture_native.h](capi-picture-native-h.md)
 

@@ -12,7 +12,7 @@ struct OH_NativeBundle_AbilityResourceInfo
 
 **起始版本：** 21
 
-**相关模块：** [Native_Bundle](capi-native-bundle.md)
+**相关模块：** [Native_Bundle](capi-others-native-bundle.md)
 
 **所在头文件：** [ability_resource_info.h](capi-ability-resource-info-h.md)
 

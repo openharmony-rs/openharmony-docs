@@ -6,13 +6,13 @@ struct Usb_DeviceArray {...}
 
 ## Overview
 
-Defines the device ID list, which is used to store the device IDs and device quantity obtained using OH_Usb_GetDevices.
+Defines the device ID list, which is used to store the device IDs and device quantity obtained using [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices).
 
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 18
 
-**Related module**: [UsbDdk](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-others-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

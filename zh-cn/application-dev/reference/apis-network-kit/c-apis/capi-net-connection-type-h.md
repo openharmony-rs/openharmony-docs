@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [NetConnection](capi-netconnection.md)
+**相关模块：** [NetConnection](capi-network-kit-netconnection.md)
 
 ## 汇总
 
@@ -67,20 +67,6 @@
 | [typedef void (\*OH_NetConn_NetUnavailable)(void)](#oh_netconn_netunavailable) | OH_NetConn_NetUnavailable | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。 |
 | [typedef void (\*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked)](#oh_netconn_netblockstatuschange) | OH_NetConn_NetBlockStatusChange | 网络阻塞状态变更回调。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res) | 指向自定义DNS解析器的指针。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-| void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy) | 应用的http代理信息变化回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-| void (*OH_NetConn_GlobalHttpProxyRefreshCallback)( int32_t result, const NetConn_HttpProxy *proxy, void *userContext) | 全局HTTP代理重新认证结果的回调。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-| void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle) | 网络可用回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-| void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities) | 网络能力集变更回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-| void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *connConnetionProperties) | 网络连接属性变更回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-| void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle) | 网络断开回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-| void (*OH_NetConn_NetUnavailable)(void) | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-| void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked) | 网络阻塞状态变更回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Communication.NetManager.Core |
-
 ## 枚举类型说明
 
 ### NetConn_NetCap
@@ -104,8 +90,8 @@ enum NetConn_NetCap
 | NETCONN_NET_CAPABILITY_INTERNET = 12 | Internet. |
 | NETCONN_NET_CAPABILITY_NOT_VPN = 15 | 非VPN |
 | NETCONN_NET_CAPABILITY_VALIDATED = 16 | 已验证 |
-| NETCONN_NET_CAPABILITY_PORTAL = 17 |  |
-| NETCONN_NET_CAPABILITY_CHECKING_CONNECTIVITY = 31 |  |
+| NETCONN_NET_CAPABILITY_PORTAL = 17 | Portal.<br>**起始版本：** 12 |
+| NETCONN_NET_CAPABILITY_CHECKING_CONNECTIVITY = 31 | 检测连通性中。<br>**起始版本：** 12 |
 
 ### NetConn_NetBearerType
 
@@ -125,9 +111,9 @@ enum NetConn_NetBearerType
 | -- | -- |
 | NETCONN_BEARER_CELLULAR = 0 | 蜂窝网络 |
 | NETCONN_BEARER_WIFI = 1 | Wi-Fi. |
-| NETCONN_BEARER_BLUETOOTH = 2 |  |
+| NETCONN_BEARER_BLUETOOTH = 2 | 蓝牙<br>**起始版本：** 12 |
 | NETCONN_BEARER_ETHERNET = 3 | Ethernet. |
-| NETCONN_BEARER_VPN = 4 |  |
+| NETCONN_BEARER_VPN = 4 | VPN.<br>**起始版本：** 12 |
 
 ### NetConn_ErrorCode
 

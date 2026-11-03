@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [Preferences](capi-preferences.md)
+**相关模块：** [Preferences](capi-arkdata-preferences.md)
 
 ## 汇总
 
@@ -299,7 +299,7 @@ int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **valu
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 对象[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)的指针。 |
-| char **value | 该参数作为出参使用，表示指向获取到的字符串的二级指针，使用完毕后需要调用释放函数OH_Preferences_FreeString释放内存。 |
+| char **value | 该参数作为出参使用，表示指向获取到的字符串的二级指针，使用完毕后需要调用释放函数[OH_Preferences_FreeString](capi-oh-preferences-h.md#oh_preferences_freestring)释放内存。 |
 | uint32_t *valueLen | 该参数作为出参使用，表示指向获取到的字符串长度的指针。 |
 
 **返回值：**

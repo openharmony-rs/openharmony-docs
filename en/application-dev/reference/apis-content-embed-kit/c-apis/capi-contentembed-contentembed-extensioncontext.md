@@ -12,7 +12,7 @@ Defines the structure type of the OE Extension context.
 
 **Since**: 24
 
-**Related module**: [ContentEmbed](capi-contentembed.md)
+**Related module**: [ContentEmbed](capi-others-contentembed.md)
 
 **Header file**: [content_embed_extension.h](capi-content-embed-extension-h.md)
 

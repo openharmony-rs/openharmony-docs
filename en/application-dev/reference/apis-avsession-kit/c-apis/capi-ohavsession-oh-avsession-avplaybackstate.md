@@ -12,7 +12,7 @@ AVSession playbackstate object.
 
 **Since**: 23
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-others-ohavsession.md)
 
 **Header file**: [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
 

@@ -12,7 +12,7 @@ Structure of the device status.
 
 **Since**: 12
 
-**Related module**: [resourcemanager](capi-resourcemanager.md)
+**Related module**: [resourcemanager](capi-others-resourcemanager.md)
 
 **Header file**: [resmgr_common.h](capi-resmgr-common-h.md)
 

@@ -10,7 +10,7 @@ Defines the basic APIs of the camera device.
 
 **Since**: 12
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@ Defines a struct for a pen, which is used to describe the style and color to out
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

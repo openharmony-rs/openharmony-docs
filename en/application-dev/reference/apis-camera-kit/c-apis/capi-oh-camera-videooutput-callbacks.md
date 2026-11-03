@@ -12,7 +12,7 @@ The struct describes the callbacks related to video output.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [video_output.h](capi-video-output-h.md)
 

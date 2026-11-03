@@ -10,7 +10,7 @@ The file declares the APIs for image decoding.
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## Summary
 
@@ -161,8 +161,8 @@ Enumerates the cropping and scaling strategies when **desiredSize** and **desire
 
 | Enum item | Description |
 | -- | -- |
-| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 |  |
-| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 |  |
+| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 | Scales and then crops the image.<br>**Since**: 18 |
+| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 | Crops and then scales the image.<br>**Since**: 18 |
 
 
 ## Function description
@@ -181,7 +181,7 @@ Creates the pointer to an OH_ImageSource_Info object.
 
 **Since**: 12
 
-**Resource release**: image_source_native/OH_ImageSourceInfo_Release {info}
+**Resource release**: [OH_ImageSourceInfo_Release](#oh_imagesourceinfo_release)
 
 **Parameters**:
 
@@ -295,7 +295,7 @@ Obtains the MIME type of an image source.
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-oh-imagesource-info.md) *info | Pointer to the OH_ImageSource_Info struct. |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md) *mimetype | Pointer to the MIME type of the image source. |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimetype | Pointer to the MIME type of the image source. |
 
 **Returns**:
 
@@ -343,7 +343,7 @@ Creates the pointer to an OH_DecodingOptions object.
 
 **Since**: 12
 
-**Resource release**: image_source_native/OH_DecodingOptions_Release {options}
+**Resource release**: [OH_DecodingOptions_Release](#oh_decodingoptions_release)
 
 **Parameters**:
 
@@ -1468,7 +1468,7 @@ Obtains the supported image formats that can be decoded.
 
 | Parameter | Description |
 | -- | -- |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md)** supportedFormats | Double pointer to the supported image formats. |
+| [Image_MimeType](capi-image-nativemodule-image-string.md)** supportedFormats | Double pointer to the supported image formats. |
 | size_t* length | Pointer to the size of the array. |
 
 **Returns**:

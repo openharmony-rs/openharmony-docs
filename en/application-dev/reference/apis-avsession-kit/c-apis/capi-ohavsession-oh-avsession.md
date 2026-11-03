@@ -12,7 +12,7 @@ AVSession object<br> A pointer can be created using [OH_AVSession_Create](capi-n
 
 **Since**: 13
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-others-ohavsession.md)
 
 **Header file**: [native_avsession.h](capi-native-avsession-h.md)
 

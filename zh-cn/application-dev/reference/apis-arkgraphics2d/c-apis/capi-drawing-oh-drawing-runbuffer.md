@@ -12,7 +12,7 @@ typedef struct OH_Drawing_RunBuffer {...} OH_Drawing_RunBuffer
 
 **起始版本：** 11
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_text_blob.h](capi-drawing-text-blob-h.md)
 

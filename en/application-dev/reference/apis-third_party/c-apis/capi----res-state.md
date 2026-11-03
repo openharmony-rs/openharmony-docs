@@ -21,6 +21,7 @@
 | unsigned nsort:4 |  |
 | unsigned ipv6_unavail:1 |  |
 | unsigned unused:23 |  |
+| sort_list |  |
 | sort_list.addr |  |
 | sort_list.mask |  |
 | void *qhook |  |
@@ -28,13 +29,15 @@
 | int res_h_errno |  |
 | int _vcsock |  |
 | unsigned _flags |  |
+| _u |  |
 | _u.pad |  |
+| res_state._ext |  |
 | _u._ext.uint16_t		nscount |  |
 | _u._ext.uint16_t		nsmap |  |
 | _u._ext.int			nssocks |  |
 | _u._ext.uint16_t		nscount6 |  |
 | _u._ext.uint16_t		nsinit |  |
-| _u._ext->sockaddr_in6	*nsaddrs |  |
+| _u._ext.sockaddr_in6	*nsaddrs |  |
 | _u._ext.int		_initstamp |  |
 
 

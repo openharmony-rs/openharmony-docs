@@ -1,7 +1,7 @@
 # C API<!--c-gamecontrollerkit-->
 
 - 模块<!--gamecontrollerkit-module-->
-    - [GameController](capi-gamecontroller.md)
+    - [GameController](capi-game-controller-kit-gamecontroller.md)
 - 头文件<!--gamecontrollerkit-headerfile-->
     - [game_pad_event.h](capi-game-pad-event-h.md)
     - [game_device_event.h](capi-game-device-event-h.md)

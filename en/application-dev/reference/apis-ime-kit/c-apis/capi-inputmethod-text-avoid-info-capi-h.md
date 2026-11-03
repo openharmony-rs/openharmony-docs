@@ -4,7 +4,7 @@
 
 Provides methods for creating, destroying, reading, and writing the text box avoidance information objects.
 
-**Include**: <inputmethod/inputmethod_text_avoid_info_capi.h>
+**File to Include**: <inputmethod/inputmethod_text_avoid_info_capi.h>
 
 **Library**: libohinputmethod.so
 
@@ -12,7 +12,7 @@ Provides methods for creating, destroying, reading, and writing the text box avo
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-ime-kit-inputmethod.md)
 
 ## Summary
 

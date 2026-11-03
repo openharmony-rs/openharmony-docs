@@ -12,7 +12,7 @@ typedef struct Camera_PreviewOutput Camera_PreviewOutput
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [preview_output.h](capi-preview-output-h.md)
 

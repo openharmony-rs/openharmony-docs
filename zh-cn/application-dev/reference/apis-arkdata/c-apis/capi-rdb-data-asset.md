@@ -12,7 +12,7 @@ typedef struct Data_Asset Data_Asset
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-rdb.md)
+**相关模块：** [RDB](capi-others-rdb.md)
 
 **所在头文件：** [data_asset.h](capi-data-asset-h.md)
 

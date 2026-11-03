@@ -10,7 +10,7 @@
 
 **起始版本：** 20
 
-**相关模块：** [NativeFence](capi-nativefence.md)
+**相关模块：** [NativeFence](capi-arkgraphics2d-nativefence.md)
 
 ## 汇总
 

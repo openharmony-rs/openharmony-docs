@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## 汇总
 
@@ -458,7 +458,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontTextToGlyphsWithFallback(const OH_Drawing_Fo
 
 **起始版本：** 26.0.1
 
-**资源释放：** drawing_font/OH_Drawing_FontTypefaceFallbackInfoDestroy {typefaceFallbackInfo}
+**资源释放：** [OH_Drawing_FontTypefaceFallbackInfoDestroy](#oh_drawing_fonttypefacefallbackinfodestroy)
 
 **参数：**
 

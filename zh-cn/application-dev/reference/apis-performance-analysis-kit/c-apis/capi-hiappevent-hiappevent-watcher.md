@@ -12,7 +12,7 @@ typedef struct HiAppEvent_Watcher HiAppEvent_Watcher
 
 **起始版本：** 12
 
-**相关模块：** [HiAppEvent](capi-hiappevent.md)
+**相关模块：** [HiAppEvent](capi-others-hiappevent.md)
 
 **所在头文件：** [hiappevent.h](capi-hiappevent-h.md)
 

@@ -12,7 +12,7 @@ Defines an array of text menu items, which carries data of multiple text menu it
 
 **Since**: 22
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text_common.h](capi-text-common-h.md)
 

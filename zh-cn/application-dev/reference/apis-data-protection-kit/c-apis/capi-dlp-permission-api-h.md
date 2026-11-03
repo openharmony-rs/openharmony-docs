@@ -10,7 +10,7 @@
 
 **起始版本：** 14
 
-**相关模块：** [DlpPermissionApi](capi-dlppermissionapi.md)
+**相关模块：** [DlpPermissionApi](capi-data-protection-kit-dlppermissionapi.md)
 
 ## 汇总
 
@@ -51,7 +51,7 @@ DLP错误码的枚举。
 | 枚举项 | 描述 |
 | -- | -- |
 | ERR_OH_SUCCESS = 0 | 表示操作成功。 |
-| OH_DLP_NOT_SUPPORTED = 801 |  |
+| OH_DLP_NOT_SUPPORTED = 801 | 功能不支持。可能原因：车不支持。<br>**起始版本：** 26.0.1 |
 | ERR_OH_INVALID_PARAMETER = 19100001 | 表示入参错误。 |
 | ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | 表示非DLP沙箱应用。 |
 | ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | 表示DLP沙箱应用不允许调用此接口。 |

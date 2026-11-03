@@ -10,7 +10,7 @@ Declares the error codes used in the UDMF.
 
 **Since**: 12
 
-**Related module**: [UDMF](capi-udmf.md)
+**Related module**: [UDMF](capi-arkdata-udmf.md)
 
 ## Summary
 

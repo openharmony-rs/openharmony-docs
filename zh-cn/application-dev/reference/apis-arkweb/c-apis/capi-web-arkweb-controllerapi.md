@@ -12,7 +12,7 @@ ArkWeb_ControllerAPI是Controller相关Native API结构体。该结构体提供�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -29,11 +29,11 @@ ArkWeb_ControllerAPI是Controller相关Native API结构体。该结构体提供�
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascriptObject)](#runjavascript) | - |  |
-| [void (\*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerjavascriptproxy) | - |  |
-| [void (\*deleteJavaScriptRegister)(const char* webTag, const char* objName)](#deletejavascriptregister) | - |  |
-| [void (\*refresh)(const char* webTag)](#refresh) | - |  |
-| [void (\*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerasyncjavascriptproxy) | - |  |
+| [void (\*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascriptObject)](#runjavascript) | - | 注入JavaScript脚本。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。该方法将JavaScript脚本注入到Web组件的执行上下文中，在页面加载完成后执行。 |
+| [void (\*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerjavascriptproxy) | - | 注入JavaScript对象到window对象中，并在window对象中调用该对象的同步方法。该方法通过桥接机制将Native对象映射到JavaScript环境，实现双向通信。使用场景： 例如JS调用Native能力以获取设备信息、执行 Native 业务逻辑等。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。与registerAsyncJavaScriptProxy相比， 此方法适用于需要同步获取返回值的场景。若不需要同步返回值或耗时操作，建议使用registerAsyncJavaScriptProxy以避免阻塞UI线程。 |
+| [void (\*deleteJavaScriptRegister)(const char* webTag, const char* objName)](#deletejavascriptregister) | - | 删除通过registerJavaScriptProxy注册到window上的指定name的应用侧JavaScript对象。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。 该方法会解除JavaScript对象与Native对象的绑定，并释放相关资源。使用场景：例如组件销毁、模块卸载或切换业务时清理注册对象以避免残留。 |
+| [void (\*refresh)(const char* webTag)](#refresh) | - | 刷新当前网页。刷新的同时会清理页面栈，导致当前页面无法前进后退。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。 |
+| [void (\*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerasyncjavascriptproxy) | - | 注入JavaScript对象到window对象中，并在window对象中调用该对象的异步方法。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。该方法通过消息队列机制实现异步调用，避免阻塞主线程。 与registerJavaScriptProxy相比，此方法适用于耗时操作或不需要同步获取返回值的场景，若需要同步获取返回值，建议使用registerJavaScriptProxy。 |
 | [ArkWeb_WebMessagePortPtr* (\*createWebMessagePorts)(const char* webTag, size_t* size)](#createwebmessageports) | - | 创建Post Message端口。Post Message端口提供双向通信机制，允许Native层与Web层安全地交换数据消息。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。 使用场景：例如实现跨上下文消息通道，支持iframe与主页面、Web与Worker之间的数据传递。 |
 | [void (\*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)](#destroywebmessageports) | - | 销毁端口。该方法会关闭端口连接，释放相关系统资源，停止消息传输。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。使用场景：例如通信结束、组件生命周期结束时释放端口资源以避免泄漏。 |
 | [ArkWeb_ErrorCode (\*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)](#postwebmessage) | - | 将端口发送到HTML主页面。该方法通过消息传递机制将Post Message端口传递给指定的HTML页面，建立跨域通信通道。需在UI线程中调用 OH_ArkWeb_GetNativeAPI方法获取该接口。使用场景：例如在主页面与iframe之间建立双向消息通道、跨框架推送消息等。 |
@@ -51,6 +51,8 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 
 **描述：**
 
+注入JavaScript脚本。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。该方法将JavaScript脚本注入到Web组件的执行上下文中，在页面加载完成后执行。
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -65,6 +67,8 @@ void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* pr
 ```
 
 **描述：**
+
+注入JavaScript对象到window对象中，并在window对象中调用该对象的同步方法。该方法通过桥接机制将Native对象映射到JavaScript环境，实现双向通信。使用场景：例如JS调用Native能力以获取设备信息、执行 Native 业务逻辑等。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。与registerAsyncJavaScriptProxy相比，此方法适用于需要同步获取返回值的场景。若不需要同步返回值或耗时操作，建议使用registerAsyncJavaScriptProxy以避免阻塞UI线程。
 
 **参数：**
 
@@ -81,6 +85,8 @@ void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 
 **描述：**
 
+删除通过registerJavaScriptProxy注册到window上的指定name的应用侧JavaScript对象。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。该方法会解除JavaScript对象与Native对象的绑定，并释放相关资源。使用场景：例如组件销毁、模块卸载或切换业务时清理注册对象以避免残留。
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -96,6 +102,8 @@ void (*refresh)(const char* webTag)
 
 **描述：**
 
+刷新当前网页。刷新的同时会清理页面栈，导致当前页面无法前进后退。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -109,6 +117,8 @@ void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObjec
 ```
 
 **描述：**
+
+注入JavaScript对象到window对象中，并在window对象中调用该对象的异步方法。需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取该接口。该方法通过消息队列机制实现异步调用，避免阻塞主线程。与registerJavaScriptProxy相比，此方法适用于耗时操作或不需要同步获取返回值的场景，若需要同步获取返回值，建议使用registerJavaScriptProxy。
 
 **参数：**
 
@@ -148,7 +158,7 @@ void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md)** ports | Post Message端口结构体指针数组。 |
+| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)** ports | Post Message端口结构体指针数组。 |
 |  size_t size | 端口数量，必须等于ports数组中的端口数量。 |
 
 ### postWebMessage()

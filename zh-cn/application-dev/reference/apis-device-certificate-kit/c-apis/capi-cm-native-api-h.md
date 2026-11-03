@@ -10,7 +10,7 @@ Declares the APIs used to obtain details of specific certificates.
 
 **起始版本：** 22
 
-**相关模块：** [CertManager](capi-certmanager.md)
+**相关模块：** [CertManager](capi-device-certificate-kit-certmanager.md)
 
 ## 汇总
 

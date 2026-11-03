@@ -8,7 +8,7 @@ The file declares the AVImageGenerator APIs. You can use the APIs to extract vid
 
 **Since**: 18
 
-**Related module**: [AVImageGenerator](capi-avimagegenerator.md)
+**Related module**: [AVImageGenerator](capi-media-kit-avimagegenerator.md)
 
 ## Summary
 

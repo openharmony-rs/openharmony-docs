@@ -12,7 +12,7 @@ struct Region {...}
 
 **起始版本：** 8
 
-**相关模块：** [NativeWindow](capi-nativewindow.md)
+**相关模块：** [NativeWindow](capi-others-nativewindow.md)
 
 **所在头文件：** [external_window.h](capi-external-window-h.md)
 
@@ -22,6 +22,7 @@ struct Region {...}
 
 | 名称 | 描述 |
 | -- | -- |
+| rects | 如果rects是空指针nullptr，默认Buffer大小为脏区 |
 | rects.x |  |
 | rects.y |  |
 | rects.w |  |

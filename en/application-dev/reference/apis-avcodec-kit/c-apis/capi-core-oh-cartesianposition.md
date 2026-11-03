@@ -12,7 +12,7 @@ Represents a position in Cartesian coordinates.<br> Cartesian coordinates use x,
 
 **Since**: 26.0.0
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-others-core.md)
 
 **Header file**: [native_audio_vivid.h](capi-native-audio-vivid-h.md)
 

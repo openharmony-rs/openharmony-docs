@@ -12,7 +12,7 @@ Represents the cursor information, including the coordinates, width, and height 
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-others-inputmethod.md)
 
 **Header file**: [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)
 

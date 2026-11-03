@@ -12,7 +12,7 @@ This struct describes a run, which provides storage for glyphs and positions.
 
 **Since**: 11
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_text_blob.h](capi-drawing-text-blob-h.md)
 

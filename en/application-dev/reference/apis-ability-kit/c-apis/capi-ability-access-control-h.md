@@ -4,7 +4,7 @@
 
 Declares the APIs for implementing application access control.
 
-**Include**: <accesstoken/ability_access_control.h>
+**File to Include**: <accesstoken/ability_access_control.h>
 
 **Library**: libability_access_control.so
 
@@ -12,7 +12,7 @@ Declares the APIs for implementing application access control.
 
 **Since**: 12
 
-**Related module**: [AbilityAccessControl](capi-abilityaccesscontrol.md)
+**Related module**: [AbilityAccessControl](capi-ability-kit-abilityaccesscontrol.md)
 
 ## Summary
 

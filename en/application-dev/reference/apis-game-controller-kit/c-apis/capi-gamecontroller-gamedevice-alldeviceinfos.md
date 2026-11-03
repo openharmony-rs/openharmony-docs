@@ -12,7 +12,7 @@ Defines the result returned by [OH_GameDevice_GetAllDeviceInfos](capi-game-devic
 
 **Since**: 21
 
-**Related module**: [GameController](capi-gamecontroller.md)
+**Related module**: [GameController](capi-others-gamecontroller.md)
 
 **Header file**: [game_device.h](capi-game-device-h.md)
 

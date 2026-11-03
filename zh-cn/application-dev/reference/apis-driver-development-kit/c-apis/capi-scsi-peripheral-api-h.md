@@ -12,7 +12,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 ## 汇总
 
@@ -102,7 +102,7 @@ int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPe
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t deviceId | 设备ID，代表要操作的设备，可通过OH_Usb_GetDevices查询获取。 |
+| uint64_t deviceId | 设备ID，代表要操作的设备，可通过[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)查询获取。 |
 | uint8_t interfaceIndex | 接口索引，为需要打开的SCSI设备对应USB接口的索引值。 |
 | [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md) **dev | 设备句柄，详情参见[ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)。 |
 

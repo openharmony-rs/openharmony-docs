@@ -12,7 +12,7 @@ typedef struct OH_AudioDeviceEnhanceManager OH_AudioDeviceEnhanceManager
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-others-ohaudio.md)
 
 **所在头文件：** [native_audio_device_enhance_manager.h](capi-native-audio-device-enhance-manager-h.md)
 

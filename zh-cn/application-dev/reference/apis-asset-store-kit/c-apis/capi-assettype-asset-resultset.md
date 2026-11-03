@@ -12,7 +12,7 @@ typedef struct Asset_ResultSet {...} Asset_ResultSet
 
 **起始版本：** 11
 
-**相关模块：** [AssetType](capi-assettype.md)
+**相关模块：** [AssetType](capi-others-assettype.md)
 
 **所在头文件：** [asset_type.h](capi-asset-type-h.md)
 

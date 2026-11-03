@@ -12,7 +12,7 @@ typedef struct ArkUI_PickerIndicatorStyle ArkUI_PickerIndicatorStyle
 
 **起始版本：** 23
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [picker.h](capi-picker-h.md)
 

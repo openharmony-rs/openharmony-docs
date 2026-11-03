@@ -10,7 +10,7 @@
 
 **起始版本：** 15
 
-**相关模块：** [AbilityBase](capi-abilitybase.md)
+**相关模块：** [AbilityBase](capi-ability-kit-abilitybase.md)
 
 ## 汇总
 

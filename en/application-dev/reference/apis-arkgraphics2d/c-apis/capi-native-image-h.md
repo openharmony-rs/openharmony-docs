@@ -10,7 +10,7 @@ Defines the functions for obtaining and using a native image.
 
 **Since**: 9
 
-**Related module**: [OH_NativeImage](capi-oh-nativeimage.md)
+**Related module**: [OH_NativeImage](capi-arkgraphics2d-oh-nativeimage.md)
 
 ## Summary
 
@@ -19,8 +19,8 @@ Defines the functions for obtaining and using a native image.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md) | - | A listener for native image, use <b>OH_NativeImage_SetOnFrameAvailableListener</b> to register the listener object to <b>OH_NativeImage</b>, the callback will be triggered when there is available frame |
-| [OHNativeWindow](capi-oh-nativeimage-ohnativewindow.md) | OHNativeWindow | Defines the native window. |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-ohnativewindowbuffer.md) | OHNativeWindowBuffer | define the new type name OHNativeWindowBuffer for struct NativeWindowBuffer. |
+| [NativeWindow](capi-oh-nativeimage-nativewindow.md) | OHNativeWindow | Defines the native window. |
+| [NativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md) | OHNativeWindowBuffer | define the new type name OHNativeWindowBuffer for struct NativeWindowBuffer. |
 
 ### Function
 
@@ -53,12 +53,6 @@ Defines the functions for obtaining and using a native image.
 | [int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)](#oh_nativeimage_acquirelatestnativewindowbuffer) | - | Acquire a latest <b>OHNativeWindowBuffer</b> through an <b>OH_NativeImage</b> instance for content consumer. This method can get the latest <b>OHNativeWindowBuffer</b> and drop other <b>OHNativeWindowBuffers</b>, but consumer can receive the callbacks of all available buffers. This method can not be used at the same time with <b>OH_NativeImage_UpdateSurfaceImage</b>. This method will create an <b>OHNativeWindowBuffer</b>. If there is a situation when <b>OHNativeWindowBuffer</b> is still used after calling <b>OH_NativeImage_ReleaseNativeWindowBuffer</b>, you must pay attention to the following two points. 1) When using <b>OHNativeWindowBuffer</b>, need to increase its reference count by <b>OH_NativeWindow_NativeObjectReference</b>. 2) When the <b>OHNativeWindowBuffer</b> is used up, its reference count needs to be decremented by <b>OH_NativeWindow_NativeObjectUnreference</b>. This interface needs to be used in conjunction with <b>OH_NativeImage_ReleaseNativeWindowBuffer</b>, otherwise memory leaks will occur. When the fenceFd is used up, you need to close it. |
 | [int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)](#oh_nativeimage_isreleased) | - | Check whether the texture releated to the <b>OH_NativeImage</b> has been released. This interface is a non-thread-safe type interface. |
 | [int32_t OH_NativeImage_Release(OH_NativeImage* image)](#oh_nativeimage_release) | - | Clean all <b>OHNativeWindowBuffer</b> caches of the <b>OHNativeWindow</b> for the <b>OH_NativeImage</b>, and detach the OH_NativeImage from the Opengl ES context. This interface is a non-thread-safe type interface. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_OnFrameAvailable)(void *context) | The callback function of frame available.<br>**Since**: 11<br>**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage |
 
 ## Function description
 
@@ -133,7 +127,7 @@ Acquire the OHNativeWindow for the OH_NativeImage. This interface is a non-threa
 
 | Type | Description |
 | -- | -- |
-| [OHNativeWindow*](capi-oh-nativeimage-ohnativewindow.md) | Returns the pointer to the OHNativeWindow if the operation is successful, returns <b>NULL</b> otherwise. |
+| [OHNativeWindow*](capi-oh-nativeimage-nativewindow.md) | Returns the pointer to the OHNativeWindow if the operation is successful, returns <b>NULL</b> otherwise. |
 
 ### OH_NativeImage_AttachContext()
 
@@ -444,7 +438,7 @@ Acquire an <b>OHNativeWindowBuffer</b> through an <b>OH_NativeImage</b> instance
 | Parameter | Description |
 | -- | -- |
 | OH_NativeImage* image | Indicates the pointer to a <b>OH_NativeImage</b> instance. |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-ohnativewindowbuffer.md)** nativeWindowBuffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> point. |
+| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> point. |
 | int* fenceFd | Indicates the pointer to a file descriptor handle. |
 
 **Returns**:
@@ -472,7 +466,7 @@ Release the <b>OHNativeWindowBuffer</b> to the buffer queue through an <b>OH_Nat
 | Parameter | Description |
 | -- | -- |
 | OH_NativeImage* image | Indicates the pointer to a <b>OH_NativeImage</b> instance. |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-ohnativewindowbuffer.md)* nativeWindowBuffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> instance. |
+| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)* nativeWindowBuffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> instance. |
 | int fenceFd | Indicates a file descriptor handle, which is used for timing synchronization. |
 
 **Returns**:
@@ -709,7 +703,7 @@ Acquire a latest <b>OHNativeWindowBuffer</b> through an <b>OH_NativeImage</b> in
 | Parameter | Description |
 | -- | -- |
 | OH_NativeImage* image | Indicates the pointer to a <b>OH_NativeImage</b> instance. |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-ohnativewindowbuffer.md)** nativeWindowBuffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> point. |
+| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | Indicates the pointer to an <b>OHNativeWindowBuffer</b> point. |
 | int* fenceFd | Indicates the pointer to a file descriptor handle. |
 
 **Returns**:

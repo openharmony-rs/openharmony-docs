@@ -12,7 +12,7 @@ The OH_AVScreenCapture_ContentFilter struct describes the filter used to filter 
 
 **Since**: 12
 
-**Related module**: [AVScreenCapture](capi-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-others-avscreencapture.md)
 
 **Header file**: [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

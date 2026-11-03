@@ -10,7 +10,7 @@ Provides the data structures and corresponding operation APIs related to the emb
 
 **Since**: 24
 
-**Related module**: [ContentEmbed](capi-contentembed.md)
+**Related module**: [ContentEmbed](capi-content-embed-kit-contentembed.md)
 
 ## Summary
 
@@ -87,7 +87,7 @@ Creates a new [ContentEmbed_Document](capi-contentembed-contentembed-document.md
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_DestroyDocument {document}
+**Resource release**: [OH_ContentEmbed_DestroyDocument](#oh_contentembed_destroydocument)
 
 **Parameters**:
 
@@ -116,7 +116,7 @@ Creates a new [ContentEmbed_Document](capi-contentembed-contentembed-document.md
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_DestroyDocument {document}
+**Resource release**: [OH_ContentEmbed_DestroyDocument](#oh_contentembed_destroydocument)
 
 **Parameters**:
 
@@ -147,7 +147,7 @@ Loads an [ContentEmbed_Document](capi-contentembed-contentembed-document.md) ins
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_DestroyDocument {document}
+**Resource release**: [OH_ContentEmbed_DestroyDocument](#oh_contentembed_destroydocument)
 
 **Parameters**:
 
@@ -288,7 +288,7 @@ Obtains the root [ContentEmbed_Storage](capi-contentembed-contentembed-storage.m
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_DestroyStorage {storage}
+**Resource release**: [OH_ContentEmbed_DestroyStorage](#oh_contentembed_destroystorage)
 
 **Parameters**:
 
@@ -343,7 +343,7 @@ Creates a child [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_DestroyStorage {childStorage}
+**Resource release**: [OH_ContentEmbed_DestroyStorage](#oh_contentembed_destroystorage)
 
 **Parameters**:
 
@@ -373,7 +373,7 @@ Obtains the child [ContentEmbed_Storage](capi-contentembed-contentembed-storage.
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_DestroyStorage {childStorage}
+**Resource release**: [OH_ContentEmbed_DestroyStorage](#oh_contentembed_destroystorage)
 
 **Parameters**:
 
@@ -403,7 +403,7 @@ Creates a [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) object
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_DestroyStream {childStream}
+**Resource release**: [OH_ContentEmbed_DestroyStream](#oh_contentembed_destroystream)
 
 **Parameters**:
 
@@ -433,7 +433,7 @@ Obtains the child [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_DestroyStream {childStream}
+**Resource release**: [OH_ContentEmbed_DestroyStream](#oh_contentembed_destroystream)
 
 **Parameters**:
 
@@ -789,7 +789,7 @@ Creates and initializes a [ContentEmbed_StorageElements](capi-contentembed-conte
 
 **Since**: 24
 
-**Resource release**: OH_ContentEmbed_StorageElements_Destroy {storageElements}
+**Resource release**: [OH_ContentEmbed_StorageElements_Destroy](#oh_contentembed_storageelements_destroy)
 
 **Parameters**:
 

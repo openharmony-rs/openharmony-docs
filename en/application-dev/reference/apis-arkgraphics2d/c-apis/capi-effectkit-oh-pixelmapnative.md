@@ -12,7 +12,7 @@ Declares a pixel map object defined by the image framework.
 
 **Since**: 12
 
-**Related module**: [effectKit](capi-effectkit.md)
+**Related module**: [effectKit](capi-others-effectkit.md)
 
 **Header file**: [effect_types.h](capi-effect-types-h.md)
 

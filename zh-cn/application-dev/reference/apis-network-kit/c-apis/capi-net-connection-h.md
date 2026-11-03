@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [NetConnection](capi-netconnection.md)
+**相关模块：** [NetConnection](capi-network-kit-netconnection.md)
 
 ## 汇总
 

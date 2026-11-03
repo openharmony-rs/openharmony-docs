@@ -12,7 +12,7 @@ Define the OH_RDB_ReturningContext structure type.
 
 **Since**: 23
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [oh_rdb_types.h](capi-oh-rdb-types-h.md)
 

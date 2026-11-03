@@ -12,7 +12,7 @@ OH_Pixelmap_InitializationOptions是Native层封装的初始化选项结构体�
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [pixelmap_native.h](capi-pixelmap-native-h.md)
 

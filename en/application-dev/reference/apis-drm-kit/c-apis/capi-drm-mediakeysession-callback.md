@@ -12,7 +12,7 @@ The MediaKeySession_Callback struct describes the callbacks for media key sessio
 
 **Since**: 11
 
-**Related module**: [Drm](capi-drm.md)
+**Related module**: [Drm](capi-others-drm.md)
 
 **Header file**: [native_mediakeysession.h](capi-native-mediakeysession-h.md)
 

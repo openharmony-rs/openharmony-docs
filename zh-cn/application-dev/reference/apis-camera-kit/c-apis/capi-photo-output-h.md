@@ -10,7 +10,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## 汇总
 
@@ -77,22 +77,6 @@
 | [bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOutput* photoOutput)](#oh_photooutput_isautoextendedgainmapdeliverysupported) | - | 检查是否支持自动扩展增益图（Gainmap）的输出。 |
 | [Camera_ErrorCode OH_PhotoOutput_IsAutoAuxiliaryPhotoDeliverySupported(const Camera_PhotoOutput* photoOutput, OH_Camera_AuxiliaryPhotoType auxPhotoType, bool* isSupported)](#oh_photooutput_isautoauxiliaryphotodeliverysupported) | - | 检查设备是否支持拍照自动输出辅助图。 |
 | [Camera_ErrorCode OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled(Camera_PhotoOutput* photoOutput, const OH_Camera_AuxiliaryPhotoType* auxPhotoTypes, uint32_t size, bool enable)](#oh_photooutput_setautoauxiliaryphotosdeliveryenabled) | - | 启用或禁用拍照自动回传指定类型的辅助图。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput) | 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧启动回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info) | 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧快门回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount) | 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧结束回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode) | 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出错误回调。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_CaptureEnd) (Camera_PhotoOutput* photoOutput, int32_t frameCount) | 拍照结束回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_CaptureStartWithInfo) (Camera_PhotoOutput* photoOutput, Camera_CaptureStartInfo* Info) | 拍照开始回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_OnFrameShutterEnd) (Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* Info) | 拍照曝光结束回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_CaptureReady) (Camera_PhotoOutput* photoOutput) | 拍照准备就绪回调。收到回调后，可以继续进行下一次拍照。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_EstimatedCaptureDuration) (Camera_PhotoOutput* photoOutput, int64_t duration) | 预计拍照时间回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo) | 照片输出可用高分辨率图像回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
-| void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset) | 输出照片资源可用回调。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Camera.Core |
 
 ## 函数说明
 

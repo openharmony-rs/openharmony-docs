@@ -10,7 +10,7 @@ Defines the types of common attributes and events of **NativeModule**, used to s
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -18,7 +18,7 @@ Defines the types of common attributes and events of **NativeModule**, used to s
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines snapshot options, used to configure the snapshot behavior when taking a snapshot of a component. It applies to scenarios where the snapshot output effect needs to be controlled based on service requirements.<br> To use this struct, first call [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions) to create a snapshot options object, and set the snapshot parameters through [OH_ArkUI_SnapshotOptions_SetScale](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setscale), [OH_ArkUI_SnapshotOptions_SetColorMode](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setcolormode), and [OH_ArkUI_SnapshotOptions_SetDynamicRangeMode](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setdynamicrangemode); then pass the object as the **snapshotOptions** parameter to OH_ArkUI_GetNodeSnapshot. When the object is no longer used, call [OH_ArkUI_DestroySnapshotOptions](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions) to release resources. |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines snapshot options, used to configure the snapshot behavior when taking a snapshot of a component. It applies to scenarios where the snapshot output effect needs to be controlled based on service requirements.<br> To use this struct, first call [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions) to create a snapshot options object, and set the snapshot parameters through [OH_ArkUI_SnapshotOptions_SetScale](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setscale), [OH_ArkUI_SnapshotOptions_SetColorMode](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setcolormode), and [OH_ArkUI_SnapshotOptions_SetDynamicRangeMode](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setdynamicrangemode); then pass the object as the **snapshotOptions** parameter to [OH_ArkUI_GetNodeSnapshot](capi-native-node-h.md#oh_arkui_getnodesnapshot). When the object is no longer used, call [OH_ArkUI_DestroySnapshotOptions](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions) to release resources. |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the options for visible area change listening, including the threshold array, expected update interval, and visible area calculation mode. This struct can be used to load or release resources based on the visible ratio of a component, and is suitable for scenarios where you need to listen for visible area changes of a component and trigger updates at specified thresholds.<br> When using this struct, you need to first call [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create) to create an **ArkUI_VisibleAreaEventOptions** parameter object. After the object is created, you can configure the listening behavior through the following APIs:<br> Use [OH_ArkUI_VisibleAreaEventOptions_SetRatios](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setratios) to set a threshold array, which defines the threshold conditions for triggering visible area changes.<br> Use [OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) to set an expected update interval, which defines the minimum time interval between two visible area change notifications.<br> Use [OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) to set a calculation mode of a visible area, which defines whether to calculate the visible ratio from the viewport area.<br> To obtain the parameter values that have been set, you can:<br> Use [OH_ArkUI_VisibleAreaEventOptions_GetRatios](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_getratios) to obtain the threshold array.<br> Use [OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) to obtain the expected update interval.<br> Use [OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) to obtain the visible area calculation mode.<br> When the **ArkUI_VisibleAreaEventOptions** object is no longer needed, call [OH_ArkUI_VisibleAreaEventOptions_Dispose](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_dispose) to release resources. |
 
 ### Enum
@@ -74,8 +74,8 @@ Enumerates the hit test modes.
 | ARKUI_HIT_TEST_MODE_BLOCK | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes. |
 | ARKUI_HIT_TEST_MODE_TRANSPARENT | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes. |
 | ARKUI_HIT_TEST_MODE_NONE | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes. |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY |  |
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS |  |
+| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.<br>**Since**: 20 |
+| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS | Neither the node itself nor any of its descendant nodes responds to the hit test. It does not affect the hit test of ancestor nodes.<br>**Since**: 20 |
 
 ### ArkUI_Visibility
 
@@ -159,7 +159,7 @@ Enumerates the UI states of a component, used for handling state-specific styles
 | UI_STATE_FOCUSED = 1 << 1 | Focused state. |
 | UI_STATE_DISABLED = 1 << 2 | Disabled state. |
 | UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**. |
-| UI_STATE_HOVERED = 1 << 4 |  |
+| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br>**Since**: 26.0.0 |
 
 ### ArkUI_FocusMove
 
@@ -221,8 +221,8 @@ Enumerates the types of raw input events.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 |  |
-| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 |  |
+| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 | Touch event.<br>**Since**: 26.0.0 |
+| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 | Mouse event.<br>**Since**: 26.0.0 |
 
 
 ## Function description

@@ -12,7 +12,7 @@ The struct describes the configuration such as the size, type, and timestamp of 
 
 **Since**: 10
 
-**Related module**: [AVScreenCapture](capi-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-others-avscreencapture.md)
 
 **Header file**: [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

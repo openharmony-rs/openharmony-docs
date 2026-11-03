@@ -10,7 +10,7 @@ Defines APIs for CAs to access TAs.<br> <p> Example: <p>1. Initialize a TEE: Cal
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-teeclient.md)
+**Related module**: [TeeClient](capi-tee-kit-teeclient.md)
 
 ## Summary
 

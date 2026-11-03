@@ -10,7 +10,7 @@ Declare avqueueitem related interfaces.
 
 **Since**: 23
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 ## Summary
 

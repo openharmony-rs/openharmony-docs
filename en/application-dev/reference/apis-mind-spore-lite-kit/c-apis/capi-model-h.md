@@ -8,7 +8,7 @@ Provides model-related APIs for model creation and inference.
 
 **Since**: 9
 
-**Related module**: [MindSpore](capi-mindspore.md)
+**Related module**: [MindSpore](capi-mind-spore-lite-kit-mindspore.md)
 
 ## Summary
 

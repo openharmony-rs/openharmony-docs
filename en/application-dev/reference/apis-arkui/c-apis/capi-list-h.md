@@ -4,7 +4,7 @@
 
 Defines enumerations and APIs related to **List**.
 
-**Include**: <arkui/node_attributes/list.h>
+**File to Include**: <arkui/node_attributes/list.h>
 
 **Library**: libace_ndk.z.so
 
@@ -12,7 +12,7 @@ Defines enumerations and APIs related to **List**.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 

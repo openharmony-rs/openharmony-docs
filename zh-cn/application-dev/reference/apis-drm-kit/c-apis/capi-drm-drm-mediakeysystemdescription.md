@@ -12,7 +12,7 @@ DRM解决方案名称及其UUID的列表。
 
 **起始版本：** 12
 
-**相关模块：** [Drm](capi-drm.md)
+**相关模块：** [Drm](capi-others-drm.md)
 
 **所在头文件：** [native_drm_common.h](capi-native-drm-common-h.md)
 

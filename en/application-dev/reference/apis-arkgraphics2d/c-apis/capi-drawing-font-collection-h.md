@@ -10,7 +10,7 @@ Defines functions related to font collections in the drawing module, which are u
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 
@@ -42,7 +42,7 @@ Creates an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md
 
 **Since**: 8
 
-**Resource release**: OH_Drawing_DestroyFontCollection {return}
+**Resource release**: [OH_Drawing_DestroyFontCollection](#oh_drawing_destroyfontcollection)
 
 **Deprecated**: 26.0.1
 
@@ -132,7 +132,7 @@ Creates a shareable [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcoll
 
 **Since**: 12
 
-**Resource release**: OH_Drawing_DestroyFontCollection {return}
+**Resource release**: [OH_Drawing_DestroyFontCollection](#oh_drawing_destroyfontcollection)
 
 **Returns**:
 

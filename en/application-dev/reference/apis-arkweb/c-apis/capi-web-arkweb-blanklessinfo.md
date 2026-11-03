@@ -12,7 +12,7 @@ Describes the first-screen loading prediction information, including the predict
 
 **Since**: 20
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-others-web.md)
 
 **Header file**: [native_interface_arkweb.h](capi-native-interface-arkweb-h.md)
 

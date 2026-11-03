@@ -10,7 +10,7 @@ Declares the functions for rendering image.
 
 **Since**: 12
 
-**Related module**: [ImageEffect](capi-imageeffect.md)
+**Related module**: [ImageEffect](capi-image-kit-imageeffect.md)
 
 ## Summary
 
@@ -402,7 +402,7 @@ Set the Surface to the image effect, this interface must be called before
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | Encapsulate OH_ImageEffect structure instance pointer |
-| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) *nativeWindow | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) *nativeWindow | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) |
 
 **Returns**:
 
@@ -429,7 +429,7 @@ Get the input Surface from the image effect, this interface must be called after
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | Encapsulate OH_ImageEffect structure instance pointer |
-| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) **nativeWindow | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-ohnativewindow.md) |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) **nativeWindow | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) |
 
 **Returns**:
 

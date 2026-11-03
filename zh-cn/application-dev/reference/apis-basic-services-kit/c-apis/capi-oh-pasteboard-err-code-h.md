@@ -12,7 +12,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [Pasteboard](capi-pasteboard.md)
+**相关模块：** [Pasteboard](capi-basic-services-kit-pasteboard.md)
 
 ## 汇总
 

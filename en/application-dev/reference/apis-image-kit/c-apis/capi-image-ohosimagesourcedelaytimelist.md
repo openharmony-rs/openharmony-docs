@@ -12,7 +12,7 @@ Defines the delay time list of the image source. It is obtained by calling [OH_I
 
 **Since**: 10
 
-**Related module**: [Image](capi-image.md)
+**Related module**: [Image](capi-others-image.md)
 
 **Header file**: [image_source_mdk.h](capi-image-source-mdk-h.md)
 
@@ -22,9 +22,9 @@ Defines the delay time list of the image source. It is obtained by calling [OH_I
 
 | Name | Description |
 | -- | -- |
-| int32_t* delayTimeList |  |
-| size_t size = 0 |  |
-| int32_t* delayTimeList |  |
-| size_t size |  |
+| int32_t* delayTimeList | Pointer to the head of the image source delay time list.<br>**Since**: 10 |
+| size_t size = 0 | Size of the image source delay time list.<br>**Since**: 10 |
+| int32_t* delayTimeList | Pointer to the head of the image source delay time list.<br>**Since**: 10 |
+| size_t size | Size of the image source delay time list.<br>**Since**: 10 |
 
 

@@ -12,7 +12,7 @@ typedef struct OH_Drawing_BitmapFormat {...} OH_Drawing_BitmapFormat
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_bitmap.h](capi-drawing-bitmap-h.md)
 

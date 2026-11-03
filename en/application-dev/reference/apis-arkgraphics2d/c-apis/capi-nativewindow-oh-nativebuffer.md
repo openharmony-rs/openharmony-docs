@@ -12,7 +12,7 @@ Provides native buffer capability.
 
 **Since**: 9
 
-**Related module**: [NativeWindow](capi-nativewindow.md)
+**Related module**: [NativeWindow](capi-others-nativewindow.md)
 
 **Header file**: [external_window.h](capi-external-window-h.md)
 

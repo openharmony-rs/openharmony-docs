@@ -10,7 +10,7 @@ Declare common types for external audio accessory device interfaces.
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 

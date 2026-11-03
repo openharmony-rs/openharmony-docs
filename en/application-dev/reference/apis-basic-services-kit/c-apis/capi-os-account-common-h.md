@@ -10,7 +10,7 @@ Defines common types used in **OsAccount** APIs.
 
 **Since**: 12
 
-**Related module**: [OsAccount](capi-osaccount.md)
+**Related module**: [OsAccount](capi-basic-services-kit-osaccount.md)
 
 ## Summary
 
@@ -38,10 +38,10 @@ Enumerates the error codes.
 
 | Enum item | Description |
 | -- | -- |
-| OS_ACCOUNT_ERR_OK = 0 |  |
+| OS_ACCOUNT_ERR_OK = 0 | Success.<br>**Since**: 12 |
 | OS_ACCOUNT_ERR_PERMISSION_DENIED = 201 | &nbsp;Permission denied.<br>**Since**: 26.0.0 |
-| OS_ACCOUNT_ERR_INTERNAL_ERROR = 12300001 |  |
-| OS_ACCOUNT_ERR_INVALID_PARAMETER = 12300002 |  |
+| OS_ACCOUNT_ERR_INTERNAL_ERROR = 12300001 | Internal error.<br>**Since**: 12 |
+| OS_ACCOUNT_ERR_INVALID_PARAMETER = 12300002 | Invalid parameter.<br>**Since**: 12 |
 | OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND = 12300003 | &nbsp;Account not found.<br>**Since**: 26.0.0 |
 | OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT = 12300008 | &nbsp;Restricted account.<br>**Since**: 26.0.0 |
 

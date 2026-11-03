@@ -8,7 +8,7 @@
 
 | Name | Description |
 | -- | -- |
-| struct msghdr msg_hdr |  |
+| [struct msghdr](capi--msghdr.md) msg_hdr |  |
 | unsigned int  msg_len |  |
 
 

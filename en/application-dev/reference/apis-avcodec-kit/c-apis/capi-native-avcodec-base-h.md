@@ -10,7 +10,7 @@ Declare the Native API used for audio and video muxer, demuxer and basic encodin
 
 **Since**: 9
 
-**Related module**: [CodecBase](capi-codecbase.md)
+**Related module**: [CodecBase](capi-avcodec-kit-codecbase.md)
 
 ## Summary
 
@@ -22,7 +22,7 @@ Declare the Native API used for audio and video muxer, demuxer and basic encodin
 | [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) | - | The struct defines all the asynchronous callback function pointers of an OH_AVCodec instance. To ensure the normal running of OH_AVCodec, you must register the instance of this struct with the OH_AVCodec instance and process the information reported by the callback function. |
 | [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) | - | The struct describes a user-defined data source. |
 | [OH_AVDataSourceExt](capi-codecbase-oh-avdatasourceext.md) | - | The struct describes a user-defined data source. User-defined data can be passed to its callback functions through the **userData** parameter. |
-| [OHNativeWindow](capi-codecbase-ohnativewindow.md) | OHNativeWindow | Describes a native object for the graphics interface. |
+| [NativeWindow](capi-codecbase-nativewindow.md) | OHNativeWindow | Describes a native object for the graphics interface. |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) | OH_AVCodec | Describes a native object for the audio and video codec interface. |
 
 ### Enum
@@ -139,6 +139,7 @@ Declare the Native API used for audio and video muxer, demuxer and basic encodin
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_MPEG1 | MIME type of the MPEG1 video codec.<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK | MIME type of the Cinepak video codec.<br>**Since**: 24<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | Pointer to the key that describes the MIME type of the Microsoft Video 1 (MSVIDEO1) video codec.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_AVCODEC_MIMETYPE_VIDEO_WMV1 | MIME type of the WMV1 video codec.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | Pointer to the key that describes the MIME type of the WMV3 video codec.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | Pointer to the key that describes the MIME type of the Motion JPEG (MJPEG) video codec.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_ED_KEY_TIME_STAMP | Pointer to the key that describes the surface buffer timestamp. The value is of the int64_t type.<br>**Since**: 9<br>**Deprecated**: 14<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
@@ -186,7 +187,7 @@ Declare the Native API used for audio and video muxer, demuxer and basic encodin
 | const char *OH_MD_KEY_COMPLIANCE_LEVEL | Pointer to the key that describes the FLAC compliance level. The value type is int32_t. This key is used only for audio encoding.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_IDENTIFICATION_HEADER | Pointer to the key that describes the vorbis identification header. The value type is uint8_t*. This key applies only to Vorbis decoders.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_SETUP_HEADER | Pointer to the key that describes the vorbis setup header. The value type is uint8_t*. This key applies only to Vorbis decoders.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_SCALING_MODE | Pointer to the key that describes the video scaling mode. The value type is int32_t. For details, see [OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode). You are advised to set the scaling mode by calling OH_NativeWindow_NativeWindowSetScalingModeV2. This key is optional and is used only for video decoding in surface mode.<br>**Since**: 10<br>**Deprecated**: 14<br>**Replaced by**: OH_NativeWindow_NativeWindowSetScalingModeV2<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_SCALING_MODE | Pointer to the key that describes the video scaling mode. The value type is int32_t. For details, see [OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode). You are advised to set the scaling mode by calling [OH_NativeWindow_NativeWindowSetScalingModeV2](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2). This key is optional and is used only for video decoding in surface mode.<br>**Since**: 10<br>**Deprecated**: 14<br>**Replaced by**: OH_NativeWindow_NativeWindowSetScalingModeV2<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_MAX_INPUT_BUFFER_COUNT | Pointer to the key that describes the maximum number of input buffers. The value type is int32_t.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_MAX_OUTPUT_BUFFER_COUNT | Pointer to the key that describes the maximum number of output buffers. The value type is int32_t.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_AUDIO_COMPRESSION_LEVEL | Pointer to the key that describes the audio codec compression level. The value type is int32_t type. This key is used only for audio encoding.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
@@ -242,7 +243,7 @@ Declare the Native API used for audio and video muxer, demuxer and basic encodin
 | const char *OH_MD_KEY_REFERENCE_TRACK_IDS | Pointer to the key that describes the reference relationship between media file tracks. The value type is int32_t*.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_TRACK_REFERENCE_TYPE | Pointer to the key that describes the auxiliary track type of a media file. The value type is char *.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_TRACK_DESCRIPTION | Pointer to the key that describes the auxiliary track description of a media file. The value type is char *.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL | Pointer to the key that describes the enabled status of the PTS-based bit rate control mode. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used.<br> This key is optional and is used only for video encoding.<br> If this feature is enabled, each video frame must contain PTS information and be sent to the encoder. In surface mode, the PTS is set by calling OH_NativeWindow_NativeWindowHandleOpt, in units of nanosecond (ns). In buffer mode, the PTS is set by calling [OH_AVBuffer_SetBufferAttr](capi-native-avbuffer-h.md#oh_avbuffer_setbufferattr), in units of microsecond (us).<br> It is used in the configuration phase.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL | Pointer to the key that describes the enabled status of the PTS-based bit rate control mode. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used.<br> This key is optional and is used only for video encoding.<br> If this feature is enabled, each video frame must contain PTS information and be sent to the encoder. In surface mode, the PTS is set by calling [OH_NativeWindow_NativeWindowHandleOpt](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt), in units of nanosecond (ns). In buffer mode, the PTS is set by calling [OH_AVBuffer_SetBufferAttr](capi-native-avbuffer-h.md#oh_avbuffer_setbufferattr), in units of microsecond (us).<br> It is used in the configuration phase.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_ENABLE_SYNC_MODE | Pointer to the key that describes the enabled status of audio/video codec synchronization. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional.<br> If this feature is enabled, pay attention to the following: 1. The codec cannot have a callback function. 2. You must use the buffer query API instead of the callback function. 3. The key can be used only in the configuration phase.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | Pointer to the key that specifies whether to output blank frames when the video decoder is disabled. The value type is int32_t. **1** to output, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional and is used only for video decoding in surface mode. After this function is enabled, the video decoder outputs a blank frame (usually black) when the [OH_VideoDecoder_Stop](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_stop) or [OH_VideoDecoder_Destroy](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_destroy) API is called. This mechanism prevents frozen frames caused by sudden termination of the decoder.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | Pointer to the key that is used to query the native buffer pixel format in video encoding and decoding. The value type is int32_t.<br> For details, see the pixel formats defined in [OH_NativeBuffer_Format](../../apis-arkgraphics2d/c-apis/capi-buffer-common-h.md#oh_nativebuffer_format). This key is used in the following scenarios:<br> 1. Video decoding: Call [OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription) or [OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged) to obtain the current output format from the returned OH_AVFormat object.<br> 2. Video encoding: Call [OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription) to obtain the current input format from the returned OH_AVFormat object.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
@@ -266,14 +267,6 @@ Declare the Native API used for audio and video muxer, demuxer and basic encodin
 | const char *OH_MD_KEY_AUDIO_ENCODER_PTS_MODE | Key for configuring the PTS output mode of the audio encoder.<br> Sets the PTS output behavior mode. The value type is int32_t from [OH_AudioEncoderPTSMode](capi-native-avcodec-base-h.md#oh_audioencoderptsmode). Optional. Defaults to [OH_AUDIO_ENCODER_PTS_MODE_DEFAULT](capi-native-avcodec-base-h.md#oh_audioencoderptsmode) if not set.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_AUDIO_ENCODER_ENABLE_SAMPLE_FORMAT_CONVERT | Key for enabling sample format conversion in the audio encoder. Optional. The value type is int32_t (0 or 1). 1 is enabled, 0 is disabled. Defaults to 0.<br> The audio encoder supports only a limited number of sample formats. After this configuration is enabled, if an unsupported sampling format is used, the audio encoder will convert the sample format to an supported one for encoding. The supported sample formats before conversion are as follows: [SAMPLE_U8](capi-native-avcodec-base-h.md#oh_bitspersample), [SAMPLE_S16LE](capi-native-avcodec-base-h.md#oh_bitspersample), [SAMPLE_S24LE](capi-native-avcodec-base-h.md#oh_bitspersample), [SAMPLE_S32LE](capi-native-avcodec-base-h.md#oh_bitspersample), [SAMPLE_F32LE](capi-native-avcodec-base-h.md#oh_bitspersample).<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_SET_DMABUF_NAME_SUFFIX | Defines the pointer to the key for setting the suffix of the video codec DMABUF name. The value is a string.<br> The suffix uses a colon (:) as the separator and is appended to the internal DMABUF name of the codec. The final DMABUF name format is: {System custom string}:{Suffix}. Note: The prefix is the current system custom string, which may vary with the system version.<br> Constraints on the suffix value: 1. Only printable ASCII characters are allowed. If the suffix contains any non-ASCII characters, spaces, line breaks, tab characters, or other invisible (control) characters, [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode) will be returned. 2. The suffix must contain at least one non-digit character. Otherwise, [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode) will be returned.<br> This key is optional. If it is not set, the DMABUF name remains unchanged. You can use [OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure) or [OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure) to configure it.<br>**Since**: 26.0.1<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData) | Defines the pointer to the function that is called to report error information when an error occurs during the running of an OH_AVCodec instance. \| Use Case\| Error Code\|\| -------- \| -------- \|\| Audio encoding/decoding\| **AV_ERR_DRM_DECRYPT_FAILED**: DRM decryption failed. \|\| Video encoding/decoding\| **AV_ERROR_NO_MEMORY**: System resources are insufficient.<br>**AV_ERROR_UNKNOWN**: An unknown error occurs. Analyze the error based on specific logs.<br>**AV_ERR_SERVICE_DIED**: The service is dead. \|\| Video decoding\| **AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION**: The current input does not support CSC. \| <!--RP1--><!--RP1End--><br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData) | Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> Starting from API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData) | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data.<br>**Since**: 9<br>**Deprecated**: 11<br>**Replaced by**: OH_AVCodecOnNeedInputBuffer<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData) | Defines the pointer to the function that is called when new output data is generated during the running of an OH_AVCodec instance. The function carries a buffer filled with new output data. Note that the lifecycle of the pointer to the OH_AVCodecBufferAttr instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.<br>**Since**: 9<br>**Deprecated**: 11<br>**Replaced by**: OH_AVCodecOnNewOutputBuffer<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData) | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData) | Defines the pointer to the function that is called when new output data is generated during the running of an OH_AVCodec instance. The function carries a buffer filled with new output data.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int64_t pos) | Defines a function pointer used to provide the capability of obtaining user-defined media data.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
-| int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, int64_t pos, void *userData) | Defines a function pointer used to provide the capability of obtaining user-defined media data.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 
 ## Enum type description
 
@@ -293,11 +286,11 @@ Enumerates the media types.
 
 | Enum item | Description |
 | -- | -- |
-| MEDIA_TYPE_AUD = 0 |  |
-| MEDIA_TYPE_VID = 1 |  |
-| MEDIA_TYPE_SUBTITLE = 2 |  |
-| MEDIA_TYPE_TIMED_METADATA = 5 |  |
-| MEDIA_TYPE_AUXILIARY = 6 |  |
+| MEDIA_TYPE_AUD = 0 | Audio track.<br>**Since**: 9 |
+| MEDIA_TYPE_VID = 1 | Video track.<br>**Since**: 9 |
+| MEDIA_TYPE_SUBTITLE = 2 | Subtitle track.<br>**Since**: 12 |
+| MEDIA_TYPE_TIMED_METADATA = 5 | Timed metadata track.<br>**Since**: 20 |
+| MEDIA_TYPE_AUXILIARY = 6 | Auxiliary track.<br>**Since**: 20 |
 
 ### OH_AACProfile
 
@@ -315,9 +308,9 @@ Enumerates the AAC profiles.
 
 | Enum item | Description |
 | -- | -- |
-| AAC_PROFILE_LC = 0 |  |
-| AAC_PROFILE_HE = 3 |  |
-| AAC_PROFILE_HE_V2 = 4 |  |
+| AAC_PROFILE_LC = 0 | AAC profile of the low complexity level.<br>**Since**: 9 |
+| AAC_PROFILE_HE = 3 | AAC profile of the high efficiency level. Audio object types AAC LC and SBR are included.<br>**Since**: 14 |
+| AAC_PROFILE_HE_V2 = 4 | AAC profile of the high efficiency V2 level. Audio object types AAC LC, SBR, and PS are included.<br>**Since**: 14 |
 
 ### OH_AVCProfile
 
@@ -335,9 +328,9 @@ Enumerates the AVC profiles.
 
 | Enum item | Description |
 | -- | -- |
-| AVC_PROFILE_BASELINE = 0 |  |
-| AVC_PROFILE_HIGH = 4 |  |
-| AVC_PROFILE_MAIN = 8 |  |
+| AVC_PROFILE_BASELINE = 0 | AVC baseline profile.<br>**Since**: 9 |
+| AVC_PROFILE_HIGH = 4 | AVC high profile.<br>**Since**: 9 |
+| AVC_PROFILE_MAIN = 8 | AVC main profile.<br>**Since**: 9 |
 
 ### OH_HEVCProfile
 
@@ -355,11 +348,11 @@ Enumerates the HEVC profiles.
 
 | Enum item | Description |
 | -- | -- |
-| HEVC_PROFILE_MAIN = 0 |  |
-| HEVC_PROFILE_MAIN_10 = 1 |  |
-| HEVC_PROFILE_MAIN_STILL = 2 |  |
-| HEVC_PROFILE_MAIN_10_HDR10 = 3 |  |
-| HEVC_PROFILE_MAIN_10_HDR10_PLUS = 4 |  |
+| HEVC_PROFILE_MAIN = 0 | HEVC profile of the main level.<br>**Since**: 10 |
+| HEVC_PROFILE_MAIN_10 = 1 | HEVC profile of the 10-bit main level.<br>**Since**: 10 |
+| HEVC_PROFILE_MAIN_STILL = 2 | HEVC profile of the main still picture level.<br>**Since**: 10 |
+| HEVC_PROFILE_MAIN_10_HDR10 = 3 | HEVC profile of the main 10 HDR10 level.<br>**Since**: 10<br>**Deprecated**: 14 |
+| HEVC_PROFILE_MAIN_10_HDR10_PLUS = 4 | HEVC profile of the main 10 HDR10+ level.<br>**Since**: 10<br>**Deprecated**: 14 |
 
 ### OH_VVCProfile
 
@@ -377,21 +370,21 @@ Enumerates the VVC profiles.
 
 | Enum item | Description |
 | -- | -- |
-| VVC_PROFILE_MAIN_10 = 1 |  |
-| VVC_PROFILE_MAIN_12 = 2 |  |
-| VVC_PROFILE_MAIN_12_INTRA = 10 |  |
-| VVC_PROFILE_MULTI_MAIN_10 = 17 |  |
-| VVC_PROFILE_MAIN_10_444 = 33 |  |
-| VVC_PROFILE_MAIN_12_444 = 34 |  |
-| VVC_PROFILE_MAIN_16_444 = 36 |  |
-| VVC_PROFILE_MAIN_12_444_INTRA = 42 |  |
-| VVC_PROFILE_MAIN_16_444_INTRA = 44 |  |
-| VVC_PROFILE_MULTI_MAIN_10_444 = 49 |  |
-| VVC_PROFILE_MAIN_10_STILL = 65 |  |
-| VVC_PROFILE_MAIN_12_STILL = 66 |  |
-| VVC_PROFILE_MAIN_10_444_STILL = 97 |  |
-| VVC_PROFILE_MAIN_12_444_STILL = 98 |  |
-| VVC_PROFILE_MAIN_16_444_STILL = 100 |  |
+| VVC_PROFILE_MAIN_10 = 1 | VVC profile of the 10-bit main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_12 = 2 | VVC profile of the 12-bit main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_12_INTRA = 10 | VVC profile of the 12-bit intra main level.<br>**Since**: 15 |
+| VVC_PROFILE_MULTI_MAIN_10 = 17 | VVC profile of the 10-bit main level for multi-layer encoding.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_10_444 = 33 | VVC profile of the 10-bit full-sample main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_12_444 = 34 | VVC profile of the 12-bit full-sample main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_16_444 = 36 | VVC profile of the 16-bit full-sample main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_12_444_INTRA = 42 | VVC profile of the 12-bit full-sample intra main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_16_444_INTRA = 44 | VVC profile of the 16-bit full-sample intra main level.<br>**Since**: 15 |
+| VVC_PROFILE_MULTI_MAIN_10_444 = 49 | VVC profile of the 10-bit full-sample main level for multi-layer encoding.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_10_STILL = 65 | VVC profile of the 10-bit still picture main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_12_STILL = 66 | VVC profile of the 12-bit still picture main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_10_444_STILL = 97 | VVC profile of the 10-bit full-sample still picture main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_12_444_STILL = 98 | VVC profile of the 12-bit full-sample still picture main level.<br>**Since**: 15 |
+| VVC_PROFILE_MAIN_16_444_STILL = 100 | VVC profile of the 16-bit full-sample still picture main level.<br>**Since**: 15 |
 
 ### OH_MPEG2Profile
 
@@ -409,12 +402,12 @@ Enumerates the MPEG2 profiles.
 
 | Enum item | Description |
 | -- | -- |
-| MPEG2_PROFILE_SIMPLE = 0 |  |
-| MPEG2_PROFILE_MAIN = 1 |  |
-| MPEG2_PROFILE_SNR_SCALABLE = 2 |  |
-| MPEG2_PROFILE_SPATIALLY_SCALABLE = 3 |  |
-| MPEG2_PROFILE_HIGH = 4 |  |
-| MPEG2_PROFILE_422 = 5 |  |
+| MPEG2_PROFILE_SIMPLE = 0 | Simple profile.<br>**Since**: 17 |
+| MPEG2_PROFILE_MAIN = 1 | Main profile.<br>**Since**: 17 |
+| MPEG2_PROFILE_SNR_SCALABLE = 2 | Signal-to-Noise Ratio (SNR) scalable profile.<br>**Since**: 17 |
+| MPEG2_PROFILE_SPATIALLY_SCALABLE = 3 | Spatial scalable profile.<br>**Since**: 17 |
+| MPEG2_PROFILE_HIGH = 4 | High profile.<br>**Since**: 17 |
+| MPEG2_PROFILE_422 = 5 | 4:2:2 profile.<br>**Since**: 17 |
 
 ### OH_MPEG4Profile
 
@@ -432,21 +425,21 @@ Enumerates the MPEG4 profiles.
 
 | Enum item | Description |
 | -- | -- |
-| MPEG4_PROFILE_SIMPLE = 0 |  |
-| MPEG4_PROFILE_SIMPLE_SCALABLE = 1 |  |
-| MPEG4_PROFILE_CORE = 2 |  |
-| MPEG4_PROFILE_MAIN = 3 |  |
-| MPEG4_PROFILE_N_BIT = 4 |  |
-| MPEG4_PROFILE_HYBRID = 5 |  |
-| MPEG4_PROFILE_BASIC_ANIMATED_TEXTURE = 6 |  |
-| MPEG4_PROFILE_SCALABLE_TEXTURE = 7 |  |
-| MPEG4_PROFILE_SIMPLE_FA = 8 |  |
-| MPEG4_PROFILE_ADVANCED_REAL_TIME_SIMPLE = 9 |  |
-| MPEG4_PROFILE_CORE_SCALABLE = 10 |  |
-| MPEG4_PROFILE_ADVANCED_CODING_EFFICIENCY = 11 |  |
-| MPEG4_PROFILE_ADVANCED_CORE = 12 |  |
-| MPEG4_PROFILE_ADVANCED_SCALABLE_TEXTURE = 13 |  |
-| MPEG4_PROFILE_ADVANCED_SIMPLE = 17 |  |
+| MPEG4_PROFILE_SIMPLE = 0 | Simple profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_SIMPLE_SCALABLE = 1 | Simple scalable profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_CORE = 2 | Core profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_MAIN = 3 | Main profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_N_BIT = 4 | N-bit profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_HYBRID = 5 | Hybrid profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_BASIC_ANIMATED_TEXTURE = 6 | Basic animated texture profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_SCALABLE_TEXTURE = 7 | Scalable texture profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_SIMPLE_FA = 8 | Simple FA profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_ADVANCED_REAL_TIME_SIMPLE = 9 | Advanced real-time simple profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_CORE_SCALABLE = 10 | Core scalable profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_ADVANCED_CODING_EFFICIENCY = 11 | Advanced coding efficiency profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_ADVANCED_CORE = 12 | Advanced core profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_ADVANCED_SCALABLE_TEXTURE = 13 | Advanced scalable texture profile.<br>**Since**: 17 |
+| MPEG4_PROFILE_ADVANCED_SIMPLE = 17 | Advanced simple profile.<br>**Since**: 17 |
 
 ### OH_H263Profile
 
@@ -464,8 +457,8 @@ Enumerates the H.263 profiles.
 
 | Enum item | Description |
 | -- | -- |
-| H263_PROFILE_BASELINE = 0 |  |
-| H263_PROFILE_VERSION_1_BACKWARD_COMPATIBILITY = 2 |  |
+| H263_PROFILE_BASELINE = 0 | Baseline profile.<br>**Since**: 17 |
+| H263_PROFILE_VERSION_1_BACKWARD_COMPATIBILITY = 2 | Version 1 backward compatibility.<br>**Since**: 17 |
 
 ### OH_VC1Profile
 
@@ -483,9 +476,9 @@ Enumerates the VC-1 profiles.
 
 | Enum item | Description |
 | -- | -- |
-| VC1_PROFILE_SIMPLE = 0 |  |
-| VC1_PROFILE_MAIN = 1 |  |
-| VC1_PROFILE_ADVANCED = 2 |  |
+| VC1_PROFILE_SIMPLE = 0 | Simple profile.<br>**Since**: 22 |
+| VC1_PROFILE_MAIN = 1 | Main profile.<br>**Since**: 22 |
+| VC1_PROFILE_ADVANCED = 2 | High profile.<br>**Since**: 22 |
 
 ### OH_AV1Profile
 
@@ -503,9 +496,9 @@ AV1 profile.
 
 | Enum item | Description |
 | -- | -- |
-| AV1_PROFILE_MAIN = 0 |  |
-| AV1_PROFILE_HIGH = 1 |  |
-| AV1_PROFILE_PROFESSIONAL = 2 |  |
+| AV1_PROFILE_MAIN = 0 | Main profile.<br>**Since**: 23 |
+| AV1_PROFILE_HIGH = 1 | High profile.<br>**Since**: 23 |
+| AV1_PROFILE_PROFESSIONAL = 2 | Professional profile.<br>**Since**: 23 |
 
 ### OH_VP9Profile
 
@@ -523,10 +516,10 @@ VP9 profile.
 
 | Enum item | Description |
 | -- | -- |
-| VP9_PROFILE_0 = 0 |  |
-| VP9_PROFILE_1 = 1 |  |
-| VP9_PROFILE_2 = 2 |  |
-| VP9_PROFILE_3 = 3 |  |
+| VP9_PROFILE_0 = 0 | Profile 0.<br>**Since**: 23 |
+| VP9_PROFILE_1 = 1 | Profile 1.<br>**Since**: 23 |
+| VP9_PROFILE_2 = 2 | Profile 2.<br>**Since**: 23 |
+| VP9_PROFILE_3 = 3 | Profile 3.<br>**Since**: 23 |
 
 ### OH_WVC1Profile
 
@@ -544,7 +537,7 @@ WVC1 profile.
 
 | Enum item | Description |
 | -- | -- |
-| WVC1_PROFILE_ADVANCED = 0 |  |
+| WVC1_PROFILE_ADVANCED = 0 | High profile.<br>**Since**: 23 |
 
 ### OH_WMV3Profile
 
@@ -562,8 +555,8 @@ Enumerates the WMV3 profiles.
 
 | Enum item | Description |
 | -- | -- |
-| WMV3_PROFILE_SIMPLE = 0 |  |
-| WMV3_PROFILE_MAIN = 1 |  |
+| WMV3_PROFILE_SIMPLE = 0 | Simple profile.<br>**Since**: 22 |
+| WMV3_PROFILE_MAIN = 1 | Main profile.<br>**Since**: 22 |
 
 ### OH_AVOutputFormat
 
@@ -651,17 +644,17 @@ Enumerates the number of audio bits for each coded sample.
 
 | Enum item | Description |
 | -- | -- |
-| SAMPLE_U8 = 0 |  |
-| SAMPLE_S16LE = 1 |  |
-| SAMPLE_S24LE = 2 |  |
-| SAMPLE_S32LE = 3 |  |
-| SAMPLE_F32LE = 4 |  |
-| SAMPLE_U8P = 5 |  |
-| SAMPLE_S16P = 6 |  |
-| SAMPLE_S24P = 7 |  |
-| SAMPLE_S32P = 8 |  |
-| SAMPLE_F32P = 9 |  |
-| INVALID_WIDTH = -1 |  |
+| SAMPLE_U8 = 0 | 8-bit unsigned integer sampling.<br>**Since**: 10 |
+| SAMPLE_S16LE = 1 | 16-bit signed integer sampling.<br>**Since**: 10 |
+| SAMPLE_S24LE = 2 | 24-bit signed integer sampling.<br>**Since**: 10 |
+| SAMPLE_S32LE = 3 | 32-bit signed integer sampling.<br>**Since**: 10 |
+| SAMPLE_F32LE = 4 | 32-bit floating-point sampling.<br>**Since**: 10 |
+| SAMPLE_U8P = 5 | 8-bit unsigned integer plane sampling.<br>**Since**: 10 |
+| SAMPLE_S16P = 6 | 16-bit signed integer plane sampling.<br>**Since**: 10 |
+| SAMPLE_S24P = 7 | 24-bit signed integer plane sampling.<br>**Since**: 10 |
+| SAMPLE_S32P = 8 | 32-bit signed integer plane sampling.<br>**Since**: 10 |
+| SAMPLE_F32P = 9 | 32-bit floating-point plane sampling.<br>**Since**: 10 |
+| INVALID_WIDTH = -1 | Invalid sampling format.<br>**Since**: 10 |
 
 ### OH_ColorPrimary
 
@@ -679,17 +672,17 @@ Enumerates the primary colors. This enum is used for both encoding and decoding.
 
 | Enum item | Description |
 | -- | -- |
-| COLOR_PRIMARY_BT709 = 1 |  |
-| COLOR_PRIMARY_UNSPECIFIED = 2 |  |
-| COLOR_PRIMARY_BT470_M = 4 |  |
-| COLOR_PRIMARY_BT601_625 = 5 |  |
-| COLOR_PRIMARY_BT601_525 = 6 |  |
-| COLOR_PRIMARY_SMPTE_ST240 = 7 |  |
-| COLOR_PRIMARY_GENERIC_FILM = 8 |  |
-| COLOR_PRIMARY_BT2020 = 9 |  |
-| COLOR_PRIMARY_SMPTE_ST428 = 10 |  |
-| COLOR_PRIMARY_P3DCI = 11 |  |
-| COLOR_PRIMARY_P3D65 = 12 |  |
+| COLOR_PRIMARY_BT709 = 1 | BT709 color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_UNSPECIFIED = 2 | Unspecified color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_BT470_M = 4 | BT470_M color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_BT601_625 = 5 | BT601_625 color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_BT601_525 = 6 | BT601_525 color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_SMPTE_ST240 = 7 | SMPTE_ST240 color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_GENERIC_FILM = 8 | GENERIC_FILM color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_BT2020 = 9 | BT2020 color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_SMPTE_ST428 = 10 | SMPTE_ST428 color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_P3DCI = 11 | P3DCI color gamut.<br>**Since**: 10 |
+| COLOR_PRIMARY_P3D65 = 12 | P3D65 color gamut.<br>**Since**: 10 |
 
 ### OH_TransferCharacteristic
 
@@ -707,23 +700,23 @@ Enumerates the transfer characteristics. This enum is used for both encoding and
 
 | Enum item | Description |
 | -- | -- |
-| TRANSFER_CHARACTERISTIC_BT709 = 1 |  |
-| TRANSFER_CHARACTERISTIC_UNSPECIFIED = 2 |  |
-| TRANSFER_CHARACTERISTIC_GAMMA_2_2 = 4 |  |
-| TRANSFER_CHARACTERISTIC_GAMMA_2_8 = 5 |  |
-| TRANSFER_CHARACTERISTIC_BT601 = 6 |  |
-| TRANSFER_CHARACTERISTIC_SMPTE_ST240 = 7 |  |
-| TRANSFER_CHARACTERISTIC_LINEAR = 8 |  |
-| TRANSFER_CHARACTERISTIC_LOG = 9 |  |
-| TRANSFER_CHARACTERISTIC_LOG_SQRT = 10 |  |
-| TRANSFER_CHARACTERISTIC_IEC_61966_2_4 = 11 |  |
-| TRANSFER_CHARACTERISTIC_BT1361 = 12 |  |
-| TRANSFER_CHARACTERISTIC_IEC_61966_2_1 = 13 |  |
-| TRANSFER_CHARACTERISTIC_BT2020_10BIT = 14 |  |
-| TRANSFER_CHARACTERISTIC_BT2020_12BIT = 15 |  |
-| TRANSFER_CHARACTERISTIC_PQ = 16 |  |
-| TRANSFER_CHARACTERISTIC_SMPTE_ST428 = 17 |  |
-| TRANSFER_CHARACTERISTIC_HLG = 18 |  |
+| TRANSFER_CHARACTERISTIC_BT709 = 1 | BT709 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_UNSPECIFIED = 2 | Unspecified transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_GAMMA_2_2 = 4 | GAMMA_2_2 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_GAMMA_2_8 = 5 | GAMMA_2_8 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_BT601 = 6 | BT601 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_SMPTE_ST240 = 7 | SMPTE_ST240 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_LINEAR = 8 | Linear transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_LOG = 9 | Log transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_LOG_SQRT = 10 | LOG_SQRT transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_IEC_61966_2_4 = 11 | IEC_61966_2_4 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_BT1361 = 12 | BT1361 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_IEC_61966_2_1 = 13 | IEC_61966_2_1 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_BT2020_10BIT = 14 | BT2020_10BIT transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_BT2020_12BIT = 15 | BT2020_12BIT transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_PQ = 16 | PQ transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_SMPTE_ST428 = 17 | SMPTE_ST428 transfer function.<br>**Since**: 10 |
+| TRANSFER_CHARACTERISTIC_HLG = 18 | HLG transfer function.<br>**Since**: 10 |
 
 ### OH_MatrixCoefficient
 
@@ -741,20 +734,20 @@ Enumerates the matrix coefficients. This enum is used for both encoding and deco
 
 | Enum item | Description |
 | -- | -- |
-| MATRIX_COEFFICIENT_IDENTITY = 0 |  |
-| MATRIX_COEFFICIENT_BT709 = 1 |  |
-| MATRIX_COEFFICIENT_UNSPECIFIED = 2 |  |
-| MATRIX_COEFFICIENT_FCC = 4 |  |
-| MATRIX_COEFFICIENT_BT601_625 = 5 |  |
-| MATRIX_COEFFICIENT_BT601_525 = 6 |  |
-| MATRIX_COEFFICIENT_SMPTE_ST240 = 7 |  |
-| MATRIX_COEFFICIENT_YCGCO = 8 |  |
-| MATRIX_COEFFICIENT_BT2020_NCL = 9 |  |
-| MATRIX_COEFFICIENT_BT2020_CL = 10 |  |
-| MATRIX_COEFFICIENT_SMPTE_ST2085 = 11 |  |
-| MATRIX_COEFFICIENT_CHROMATICITY_NCL = 12 |  |
-| MATRIX_COEFFICIENT_CHROMATICITY_CL = 13 |  |
-| MATRIX_COEFFICIENT_ICTCP = 14 |  |
+| MATRIX_COEFFICIENT_IDENTITY = 0 | Identity matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_BT709 = 1 | BT709 conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_UNSPECIFIED = 2 | Unspecified conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_FCC = 4 | FCC conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_BT601_625 = 5 | BT601_625 conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_BT601_525 = 6 | BT601_525 conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_SMPTE_ST240 = 7 | SMPTE_ST240 conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_YCGCO = 8 | YCGCO conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_BT2020_NCL = 9 | BT2020_NCL conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_BT2020_CL = 10 | BT2020_CL conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_SMPTE_ST2085 = 11 | SMPTE_ST2085 conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_CHROMATICITY_NCL = 12 | CHROMATICITY_NCL conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_CHROMATICITY_CL = 13 | CHROMATICITY_CL conversion matrix.<br>**Since**: 10 |
+| MATRIX_COEFFICIENT_ICTCP = 14 | ICTCP conversion matrix.<br>**Since**: 10 |
 
 ### OH_AVCLevel
 
@@ -772,26 +765,26 @@ Enumerates the AVC levels.
 
 | Enum item | Description |
 | -- | -- |
-| AVC_LEVEL_1 = 0 |  |
-| AVC_LEVEL_1b = 1 |  |
-| AVC_LEVEL_11 = 2 |  |
-| AVC_LEVEL_12 = 3 |  |
-| AVC_LEVEL_13 = 4 |  |
-| AVC_LEVEL_2 = 5 |  |
-| AVC_LEVEL_21 = 6 |  |
-| AVC_LEVEL_22 = 7 |  |
-| AVC_LEVEL_3 = 8 |  |
-| AVC_LEVEL_31 = 9 |  |
-| AVC_LEVEL_32 = 10 |  |
-| AVC_LEVEL_4 = 11 |  |
-| AVC_LEVEL_41 = 12 |  |
-| AVC_LEVEL_42 = 13 |  |
-| AVC_LEVEL_5 = 14 |  |
-| AVC_LEVEL_51 = 15 |  |
-| AVC_LEVEL_52 = 16 |  |
-| AVC_LEVEL_6 = 17 |  |
-| AVC_LEVEL_61 = 18 |  |
-| AVC_LEVEL_62 = 19 |  |
+| AVC_LEVEL_1 = 0 | Level 1.<br>**Since**: 12 |
+| AVC_LEVEL_1b = 1 | Level 1b.<br>**Since**: 12 |
+| AVC_LEVEL_11 = 2 | Level 1.1.<br>**Since**: 12 |
+| AVC_LEVEL_12 = 3 | Level 1.2.<br>**Since**: 12 |
+| AVC_LEVEL_13 = 4 | Level 1.3.<br>**Since**: 12 |
+| AVC_LEVEL_2 = 5 | Level 2.<br>**Since**: 12 |
+| AVC_LEVEL_21 = 6 | Level 2.1.<br>**Since**: 12 |
+| AVC_LEVEL_22 = 7 | Level 2.2.<br>**Since**: 12 |
+| AVC_LEVEL_3 = 8 | Level 3.<br>**Since**: 12 |
+| AVC_LEVEL_31 = 9 | Level 3.1.<br>**Since**: 12 |
+| AVC_LEVEL_32 = 10 | Level 3.2.<br>**Since**: 12 |
+| AVC_LEVEL_4 = 11 | Level 4.<br>**Since**: 12 |
+| AVC_LEVEL_41 = 12 | Level 4.1.<br>**Since**: 12 |
+| AVC_LEVEL_42 = 13 | Level 4.2.<br>**Since**: 12 |
+| AVC_LEVEL_5 = 14 | Level 5.<br>**Since**: 12 |
+| AVC_LEVEL_51 = 15 | Level 5.1.<br>**Since**: 12 |
+| AVC_LEVEL_52 = 16 | Level 5.2.<br>**Since**: 12 |
+| AVC_LEVEL_6 = 17 | Level 6.<br>**Since**: 12 |
+| AVC_LEVEL_61 = 18 | Level 6.1.<br>**Since**: 12 |
+| AVC_LEVEL_62 = 19 | Level 6.2.<br>**Since**: 12 |
 
 ### OH_HEVCLevel
 
@@ -809,19 +802,19 @@ Enumerates the HEVC levels.
 
 | Enum item | Description |
 | -- | -- |
-| HEVC_LEVEL_1 = 0 |  |
-| HEVC_LEVEL_2 = 1 |  |
-| HEVC_LEVEL_21 = 2 |  |
-| HEVC_LEVEL_3 = 3 |  |
-| HEVC_LEVEL_31 = 4 |  |
-| HEVC_LEVEL_4 = 5 |  |
-| HEVC_LEVEL_41 = 6 |  |
-| HEVC_LEVEL_5 = 7 |  |
-| HEVC_LEVEL_51 = 8 |  |
-| HEVC_LEVEL_52 = 9 |  |
-| HEVC_LEVEL_6 = 10 |  |
-| HEVC_LEVEL_61 = 11 |  |
-| HEVC_LEVEL_62 = 12 |  |
+| HEVC_LEVEL_1 = 0 | Level 1.<br>**Since**: 12 |
+| HEVC_LEVEL_2 = 1 | Level 2.<br>**Since**: 12 |
+| HEVC_LEVEL_21 = 2 | Level 2.1.<br>**Since**: 12 |
+| HEVC_LEVEL_3 = 3 | Level 3.<br>**Since**: 12 |
+| HEVC_LEVEL_31 = 4 | Level 3.1.<br>**Since**: 12 |
+| HEVC_LEVEL_4 = 5 | Level 4.<br>**Since**: 12 |
+| HEVC_LEVEL_41 = 6 | Level 4.1.<br>**Since**: 12 |
+| HEVC_LEVEL_5 = 7 | Level 5.<br>**Since**: 12 |
+| HEVC_LEVEL_51 = 8 | Level 5.1.<br>**Since**: 12 |
+| HEVC_LEVEL_52 = 9 | Level 5.2.<br>**Since**: 12 |
+| HEVC_LEVEL_6 = 10 | Level 6.<br>**Since**: 12 |
+| HEVC_LEVEL_61 = 11 | Level 6.1.<br>**Since**: 12 |
+| HEVC_LEVEL_62 = 12 | Level 6.2.<br>**Since**: 12 |
 
 ### OH_VVCLevel
 
@@ -839,21 +832,21 @@ Enumerates the VVC levels.
 
 | Enum item | Description |
 | -- | -- |
-| VVC_LEVEL_1 = 16 |  |
-| VVC_LEVEL_2 = 32 |  |
-| VVC_LEVEL_21 = 35 |  |
-| VVC_LEVEL_3 = 48 |  |
-| VVC_LEVEL_31 = 51 |  |
-| VVC_LEVEL_4 = 64 |  |
-| VVC_LEVEL_41 = 67 |  |
-| VVC_LEVEL_5 = 80 |  |
-| VVC_LEVEL_51 = 83 |  |
-| VVC_LEVEL_52 = 86 |  |
-| VVC_LEVEL_6 = 96 |  |
-| VVC_LEVEL_61 = 99 |  |
-| VVC_LEVEL_62 = 102 |  |
-| VVC_LEVEL_63 = 105 |  |
-| VVC_LEVEL_155 = 255 |  |
+| VVC_LEVEL_1 = 16 | Level 1.0.<br>**Since**: 15 |
+| VVC_LEVEL_2 = 32 | Level 2.0.<br>**Since**: 15 |
+| VVC_LEVEL_21 = 35 | Level 2.1.<br>**Since**: 15 |
+| VVC_LEVEL_3 = 48 | Level 3.0.<br>**Since**: 15 |
+| VVC_LEVEL_31 = 51 | Level 3.1.<br>**Since**: 15 |
+| VVC_LEVEL_4 = 64 | Level 4.0.<br>**Since**: 15 |
+| VVC_LEVEL_41 = 67 | Level 4.1.<br>**Since**: 15 |
+| VVC_LEVEL_5 = 80 | Level 5.0.<br>**Since**: 15 |
+| VVC_LEVEL_51 = 83 | Level 5.1.<br>**Since**: 15 |
+| VVC_LEVEL_52 = 86 | Level 5.2.<br>**Since**: 15 |
+| VVC_LEVEL_6 = 96 | Level 6.0.<br>**Since**: 15 |
+| VVC_LEVEL_61 = 99 | Level 6.1.<br>**Since**: 15 |
+| VVC_LEVEL_62 = 102 | Level 6.2.<br>**Since**: 15 |
+| VVC_LEVEL_63 = 105 | Level 6.3.<br>**Since**: 15 |
+| VVC_LEVEL_155 = 255 | Level 15.5.<br>**Since**: 15 |
 
 ### OH_MPEG2Level
 
@@ -871,10 +864,10 @@ Enumerates the MPEG2 levels.
 
 | Enum item | Description |
 | -- | -- |
-| MPEG2_LEVEL_LOW = 0 |  |
-| MPEG2_LEVEL_MAIN = 1 |  |
-| MPEG2_LEVEL_HIGH_1440 = 2 |  |
-| MPEG2_LEVEL_HIGH = 3 |  |
+| MPEG2_LEVEL_LOW = 0 | Low level.<br>**Since**: 17 |
+| MPEG2_LEVEL_MAIN = 1 | Main level.<br>**Since**: 17 |
+| MPEG2_LEVEL_HIGH_1440 = 2 | High 1440 level.<br>**Since**: 17 |
+| MPEG2_LEVEL_HIGH = 3 | High level.<br>**Since**: 17 |
 
 ### OH_MPEG4Level
 
@@ -892,16 +885,16 @@ Enumerates the MPEG4 levels.
 
 | Enum item | Description |
 | -- | -- |
-| MPEG4_LEVEL_0 = 0 |  |
-| MPEG4_LEVEL_0B = 1 |  |
-| MPEG4_LEVEL_1 = 2 |  |
-| MPEG4_LEVEL_2 = 3 |  |
-| MPEG4_LEVEL_3 = 4 |  |
-| MPEG4_LEVEL_3B = 5 |  |
-| MPEG4_LEVEL_4 = 6 |  |
-| MPEG4_LEVEL_4A = 7 |  |
-| MPEG4_LEVEL_5 = 8 |  |
-| MPEG4_LEVEL_6 = 9 |  |
+| MPEG4_LEVEL_0 = 0 | Level 0.<br>**Since**: 17 |
+| MPEG4_LEVEL_0B = 1 | Level 0B.<br>**Since**: 17 |
+| MPEG4_LEVEL_1 = 2 | Level 1.<br>**Since**: 17 |
+| MPEG4_LEVEL_2 = 3 | Level 2.<br>**Since**: 17 |
+| MPEG4_LEVEL_3 = 4 | Level 3.<br>**Since**: 17 |
+| MPEG4_LEVEL_3B = 5 | Level 3B.<br>**Since**: 17 |
+| MPEG4_LEVEL_4 = 6 | Level 4.<br>**Since**: 17 |
+| MPEG4_LEVEL_4A = 7 | Level 4A.<br>**Since**: 17 |
+| MPEG4_LEVEL_5 = 8 | Level 5.<br>**Since**: 17 |
+| MPEG4_LEVEL_6 = 9 | Level 6.<br>**Since**: 17 |
 
 ### OH_H263Level
 
@@ -919,14 +912,14 @@ Enumerates the H.263 levels.
 
 | Enum item | Description |
 | -- | -- |
-| H263_LEVEL_10 = 0 |  |
-| H263_LEVEL_20 = 1 |  |
-| H263_LEVEL_30 = 2 |  |
-| H263_LEVEL_40 = 3 |  |
-| H263_LEVEL_45 = 4 |  |
-| H263_LEVEL_50 = 5 |  |
-| H263_LEVEL_60 = 6 |  |
-| H263_LEVEL_70 = 7 |  |
+| H263_LEVEL_10 = 0 | Level 10.<br>**Since**: 17 |
+| H263_LEVEL_20 = 1 | Level 20.<br>**Since**: 17 |
+| H263_LEVEL_30 = 2 | Level 30.<br>**Since**: 17 |
+| H263_LEVEL_40 = 3 | Level 40.<br>**Since**: 17 |
+| H263_LEVEL_45 = 4 | Level 45.<br>**Since**: 17 |
+| H263_LEVEL_50 = 5 | Level 50.<br>**Since**: 17 |
+| H263_LEVEL_60 = 6 | Level 60.<br>**Since**: 17 |
+| H263_LEVEL_70 = 7 | Level 70.<br>**Since**: 17 |
 
 ### OH_VC1Level
 
@@ -944,14 +937,14 @@ Enumerates the VC-1 levels.
 
 | Enum item | Description |
 | -- | -- |
-| VC1_LEVEL_L0 = 0 |  |
-| VC1_LEVEL_L1 = 1 |  |
-| VC1_LEVEL_L2 = 2 |  |
-| VC1_LEVEL_L3 = 3 |  |
-| VC1_LEVEL_L4 = 4 |  |
-| VC1_LEVEL_LOW = 5 |  |
-| VC1_LEVEL_MEDIUM = 6 |  |
-| VC1_LEVEL_HIGH = 7 |  |
+| VC1_LEVEL_L0 = 0 | Level L0.<br>**Since**: 22 |
+| VC1_LEVEL_L1 = 1 | Level L1.<br>**Since**: 22 |
+| VC1_LEVEL_L2 = 2 | Level L2.<br>**Since**: 22 |
+| VC1_LEVEL_L3 = 3 | Level L3.<br>**Since**: 22 |
+| VC1_LEVEL_L4 = 4 | Level L4.<br>**Since**: 22 |
+| VC1_LEVEL_LOW = 5 | Low level.<br>**Since**: 22 |
+| VC1_LEVEL_MEDIUM = 6 | Medium level.<br>**Since**: 22 |
+| VC1_LEVEL_HIGH = 7 | High level.<br>**Since**: 22 |
 
 ### OH_AV1Level
 
@@ -969,30 +962,30 @@ AV1 level.
 
 | Enum item | Description |
 | -- | -- |
-| AV1_LEVEL_20 = 0 |  |
-| AV1_LEVEL_21 = 1 |  |
-| AV1_LEVEL_22 = 2 |  |
-| AV1_LEVEL_23 = 3 |  |
-| AV1_LEVEL_30 = 4 |  |
-| AV1_LEVEL_31 = 5 |  |
-| AV1_LEVEL_32 = 6 |  |
-| AV1_LEVEL_33 = 7 |  |
-| AV1_LEVEL_40 = 8 |  |
-| AV1_LEVEL_41 = 9 |  |
-| AV1_LEVEL_42 = 10 |  |
-| AV1_LEVEL_43 = 11 |  |
-| AV1_LEVEL_50 = 12 |  |
-| AV1_LEVEL_51 = 13 |  |
-| AV1_LEVEL_52 = 14 |  |
-| AV1_LEVEL_53 = 15 |  |
-| AV1_LEVEL_60 = 16 |  |
-| AV1_LEVEL_61 = 17 |  |
-| AV1_LEVEL_62 = 18 |  |
-| AV1_LEVEL_63 = 19 |  |
-| AV1_LEVEL_70 = 20 |  |
-| AV1_LEVEL_71 = 21 |  |
-| AV1_LEVEL_72 = 22 |  |
-| AV1_LEVEL_73 = 23 |  |
+| AV1_LEVEL_20 = 0 | Level 2.0.<br>**Since**: 23 |
+| AV1_LEVEL_21 = 1 | Level 2.1.<br>**Since**: 23 |
+| AV1_LEVEL_22 = 2 | Level 2.2.<br>**Since**: 23 |
+| AV1_LEVEL_23 = 3 | Level 2.3.<br>**Since**: 23 |
+| AV1_LEVEL_30 = 4 | Level 3.0.<br>**Since**: 23 |
+| AV1_LEVEL_31 = 5 | Level 3.1.<br>**Since**: 23 |
+| AV1_LEVEL_32 = 6 | Level 3.2.<br>**Since**: 23 |
+| AV1_LEVEL_33 = 7 | Level 3.3.<br>**Since**: 23 |
+| AV1_LEVEL_40 = 8 | Level 4.0.<br>**Since**: 23 |
+| AV1_LEVEL_41 = 9 | Level 4.1.<br>**Since**: 23 |
+| AV1_LEVEL_42 = 10 | Level 4.2.<br>**Since**: 23 |
+| AV1_LEVEL_43 = 11 | Level 4.3.<br>**Since**: 23 |
+| AV1_LEVEL_50 = 12 | Level 5.0.<br>**Since**: 23 |
+| AV1_LEVEL_51 = 13 | Level 5.1.<br>**Since**: 23 |
+| AV1_LEVEL_52 = 14 | Level 5.2.<br>**Since**: 23 |
+| AV1_LEVEL_53 = 15 | Level 5.3.<br>**Since**: 23 |
+| AV1_LEVEL_60 = 16 | Level 6.0.<br>**Since**: 23 |
+| AV1_LEVEL_61 = 17 | Level 6.1.<br>**Since**: 23 |
+| AV1_LEVEL_62 = 18 | Level 6.2.<br>**Since**: 23 |
+| AV1_LEVEL_63 = 19 | Level 6.3.<br>**Since**: 23 |
+| AV1_LEVEL_70 = 20 | Level 7.0.<br>**Since**: 23 |
+| AV1_LEVEL_71 = 21 | Level 7.1.<br>**Since**: 23 |
+| AV1_LEVEL_72 = 22 | Level 7.2.<br>**Since**: 23 |
+| AV1_LEVEL_73 = 23 | Level 7.3.<br>**Since**: 23 |
 
 ### OH_VP9Level
 
@@ -1010,20 +1003,20 @@ VP9 level.
 
 | Enum item | Description |
 | -- | -- |
-| VP9_LEVEL_1 = 0 |  |
-| VP9_LEVEL_11 = 1 |  |
-| VP9_LEVEL_2 = 2 |  |
-| VP9_LEVEL_21 = 3 |  |
-| VP9_LEVEL_3 = 4 |  |
-| VP9_LEVEL_31 = 5 |  |
-| VP9_LEVEL_4 = 6 |  |
-| VP9_LEVEL_41 = 7 |  |
-| VP9_LEVEL_5 = 8 |  |
-| VP9_LEVEL_51 = 9 |  |
-| VP9_LEVEL_52 = 10 |  |
-| VP9_LEVEL_6 = 11 |  |
-| VP9_LEVEL_61 = 12 |  |
-| VP9_LEVEL_62 = 13 |  |
+| VP9_LEVEL_1 = 0 | Level 1.<br>**Since**: 23 |
+| VP9_LEVEL_11 = 1 | Level 1.1.<br>**Since**: 23 |
+| VP9_LEVEL_2 = 2 | Level 2.<br>**Since**: 23 |
+| VP9_LEVEL_21 = 3 | Level 2.1.<br>**Since**: 23 |
+| VP9_LEVEL_3 = 4 | Level 3.<br>**Since**: 23 |
+| VP9_LEVEL_31 = 5 | Level 3.1.<br>**Since**: 23 |
+| VP9_LEVEL_4 = 6 | Level 4.<br>**Since**: 23 |
+| VP9_LEVEL_41 = 7 | Level 4.1.<br>**Since**: 23 |
+| VP9_LEVEL_5 = 8 | Level 5.<br>**Since**: 23 |
+| VP9_LEVEL_51 = 9 | Level 5.1.<br>**Since**: 23 |
+| VP9_LEVEL_52 = 10 | Level 5.2.<br>**Since**: 23 |
+| VP9_LEVEL_6 = 11 | Level 6.<br>**Since**: 23 |
+| VP9_LEVEL_61 = 12 | Level 6.1.<br>**Since**: 23 |
+| VP9_LEVEL_62 = 13 | Level 6.2.<br>**Since**: 23 |
 
 ### OH_WVC1Level
 
@@ -1041,11 +1034,11 @@ WVC1 level.
 
 | Enum item | Description |
 | -- | -- |
-| WVC1_LEVEL_L0 = 0 |  |
-| WVC1_LEVEL_L1 = 1 |  |
-| WVC1_LEVEL_L2 = 2 |  |
-| WVC1_LEVEL_L3 = 3 |  |
-| WVC1_LEVEL_L4 = 4 |  |
+| WVC1_LEVEL_L0 = 0 | Level L0.<br>**Since**: 23 |
+| WVC1_LEVEL_L1 = 1 | Level L1.<br>**Since**: 23 |
+| WVC1_LEVEL_L2 = 2 | Level L2.<br>**Since**: 23 |
+| WVC1_LEVEL_L3 = 3 | Level L3.<br>**Since**: 23 |
+| WVC1_LEVEL_L4 = 4 | Level L4.<br>**Since**: 23 |
 
 ### OH_WMV3Level
 
@@ -1063,9 +1056,9 @@ Enumerates the WMV3 levels.
 
 | Enum item | Description |
 | -- | -- |
-| WMV3_LEVEL_LOW = 0 |  |
-| WMV3_LEVEL_MEDIUM = 1 |  |
-| WMV3_LEVEL_HIGH = 2 |  |
+| WMV3_LEVEL_LOW = 0 | Low level.<br>**Since**: 22 |
+| WMV3_LEVEL_MEDIUM = 1 | Medium level.<br>**Since**: 22 |
+| WMV3_LEVEL_HIGH = 2 | High level.<br>**Since**: 22 |
 
 ### OH_TemporalGopReferenceMode
 
@@ -1083,9 +1076,9 @@ Enumerates the reference modes of temporal image groups.
 
 | Enum item | Description |
 | -- | -- |
-| ADJACENT_REFERENCE = 0 |  |
-| JUMP_REFERENCE = 1 |  |
-| UNIFORMLY_SCALED_REFERENCE = 2 |  |
+| ADJACENT_REFERENCE = 0 | Refers to the nearest short-term reference frame.<br>**Since**: 12 |
+| JUMP_REFERENCE = 1 | Refers to the latest LTR frame.<br>**Since**: 12 |
+| UNIFORMLY_SCALED_REFERENCE = 2 | Uniformly scaled reference structure, which has even distribution of video frames after drop the highest enhance layer. The temporal group of pictures must be power of 2.<br>**Since**: 12 |
 
 ### OH_BitrateMode
 
@@ -1103,10 +1096,10 @@ Enumerates the bit rate modes of an encoder.
 
 | Enum item | Description |
 | -- | -- |
-| BITRATE_MODE_CBR = 0 |  |
-| BITRATE_MODE_VBR = 1 |  |
-| BITRATE_MODE_CQ = 2 |  |
-| BITRATE_MODE_SQR = 3 |  |
+| BITRATE_MODE_CBR = 0 | Constant bit rate.<br>**Since**: 10 |
+| BITRATE_MODE_VBR = 1 | Variable bit rate.<br>**Since**: 10 |
+| BITRATE_MODE_CQ = 2 | Constant quality.<br>**Since**: 10 |
+| BITRATE_MODE_SQR = 3 | Stable Quality RateControl.<br>**Since**: 20 |
 | BITRATE_MODE_CBR_HIGH_QUALITY = 4 | CBR for High Quality.<br>**Since**: 26.0.0 |
 
 ### OH_FrameRetentionMode

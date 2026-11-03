@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OH_CommonEvent](capi-oh-commonevent.md)
+**相关模块：** [OH_CommonEvent](capi-basic-services-kit-oh-commonevent.md)
 
 ## 汇总
 
@@ -94,7 +94,6 @@
 | -- | -- |
 | void CommonEvent_Subscriber | 提供CommonEvent_Subscriber订阅者声明。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Notification.CommonEvent |
 | void CommonEvent_Parameters | 提供CommonEvent_Parameters公共事件附加信息声明。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Notification.CommonEvent |
-| void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data) | 提供CommonEvent_ReceiveCallback回调函数声明。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Notification.CommonEvent |
 | typedef void CommonEvent_Subscriber | 提供CommonEvent_Subscriber订阅者声明。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Notification.CommonEvent |
 | typedef void CommonEvent_Parameters | 提供CommonEvent_Parameters公共事件附加信息声明。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Notification.CommonEvent |
 
@@ -116,16 +115,16 @@ enum CommonEvent_ErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| COMMONEVENT_ERR_OK = 0 |  |
-| COMMONEVENT_ERR_PERMISSION_ERROR = 201 |  |
-| COMMONEVENT_ERR_INVALID_PARAMETER = 401 |  |
-| COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003 |  |
-| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 |  |
-| COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 |  |
-| COMMONEVENT_ERR_INIT_UNDONE = 1500008 |  |
-| COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 |  |
-| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 |  |
-| COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 |  |
+| COMMONEVENT_ERR_OK = 0 | 成功。<br>**起始版本：** 12 |
+| COMMONEVENT_ERR_PERMISSION_ERROR = 201 | 权限错误。<br>**起始版本：** 12 |
+| COMMONEVENT_ERR_INVALID_PARAMETER = 401 | 参数错误。参数不合法，请检查参数类型、取值范围或参数是否为空。<br>**起始版本：** 12 |
+| COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003 | 事件发送频率过高。请检查应用是否过于频繁地发送公共事件，如发送频率超过每5毫秒20个， 请降低公共事件发送频率或增加发送间隔后重新尝试。<br>**起始版本：** 20 |
+| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 | 三方应用无法发送系统公共事件。请检查当前应用是否为系统应用，或当前服务是否为系统服务。<br>**起始版本：** 12 |
+| COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 | IPC发送失败。请勿频繁建立连接，稍后重新尝试。<br>**起始版本：** 12 |
+| COMMONEVENT_ERR_INIT_UNDONE = 1500008 | 服务未初始化。请稍后重新尝试。<br>**起始版本：** 12 |
+| COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 | 系统错误。请稍后重新尝试。<br>**起始版本：** 12 |
+| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 | 进程内订阅者数量超过系统限制（200个）。请检查应用内是否存在订阅者未取消订阅，如存在则 取消订阅后重新尝试；不存在请稍后重新尝试。<br>**起始版本：** 12 |
+| COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 | 内存分配失败。请稍后重新尝试。<br>**起始版本：** 12 |
 
 
 ## 函数说明

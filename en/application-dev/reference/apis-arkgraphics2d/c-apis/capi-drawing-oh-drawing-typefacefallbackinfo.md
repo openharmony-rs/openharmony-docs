@@ -12,7 +12,7 @@ Defines the typeface fallback info structure for a run of glyphs that share the 
 
 **Since**: 26.0.1
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_font.h](capi-drawing-font-h.md)
 

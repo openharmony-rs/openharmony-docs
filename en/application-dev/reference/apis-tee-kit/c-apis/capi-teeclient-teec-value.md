@@ -12,7 +12,7 @@ Describes a parameter that carries small raw data passed by <b>value</b>.
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-teeclient.md)
+**Related module**: [TeeClient](capi-others-teeclient.md)
 
 **Header file**: [tee_client_type.h](capi-tee-client-type-h.md)
 

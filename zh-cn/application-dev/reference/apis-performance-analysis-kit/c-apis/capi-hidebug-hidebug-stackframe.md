@@ -12,7 +12,7 @@ struct HiDebug_StackFrame {...}
 
 **起始版本：** 20
 
-**相关模块：** [HiDebug](capi-hidebug.md)
+**相关模块：** [HiDebug](capi-others-hidebug.md)
 
 **所在头文件：** [hidebug_type.h](capi-hidebug-type-h.md)
 
@@ -22,7 +22,8 @@ struct HiDebug_StackFrame {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| HiDebug_StackFrameType type | 当前栈的类型。 |
+| [HiDebug_StackFrameType](capi-hidebug-type-h.md#hidebug_stackframetype) type | 当前栈的类型。 |
+| frame | frame content. |
 | frame.js | Js stack frame defined in [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) |
 | frame.native | Native frame defined in [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) |
 

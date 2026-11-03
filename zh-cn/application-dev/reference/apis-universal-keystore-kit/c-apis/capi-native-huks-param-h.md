@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [HuksParamSetApi](capi-huksparamsetapi.md)
+**相关模块：** [HuksParamSetApi](capi-universal-keystore-kit-huksparamsetapi.md)
 
 ## 汇总
 

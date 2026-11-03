@@ -12,7 +12,7 @@
 
 **起始版本：** 11
 
-**相关模块：** [AudioCodec](capi-audiocodec.md)
+**相关模块：** [AudioCodec](capi-avcodec-kit-audiocodec.md)
 
 ## 汇总
 

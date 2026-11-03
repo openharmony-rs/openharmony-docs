@@ -10,7 +10,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 
 **Since**: 15
 
-**Related module**: [WindowManager](capi-windowmanager.md)
+**Related module**: [WindowManager](capi-arkui-windowmanager.md)
 
 ## Summary
 
@@ -55,12 +55,6 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Listen for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. To unlisten for changes in the display size scaling factor information of the window, call OH_WindowManager_UnregisterDensityInfoChangeCallback. |
 | [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | Unlisten for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. To listen for changes in the display size scaling factor information of the window, call OH_WindowManager_RegisterDensityInfoChangeCallback. |
 | [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | Releases the memory occupied by DensityInfo. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize) | Defines the callback used for receiving the main window screenshot list.<br>**Since**: 21<br>**System capability**: SystemCapability.Window.SessionManager |
 
 ## Function description
 

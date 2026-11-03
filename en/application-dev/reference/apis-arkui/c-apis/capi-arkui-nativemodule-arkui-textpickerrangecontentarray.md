@@ -12,7 +12,7 @@ Defines the option content array of a text picker. This struct is used to config
 
 **Since**: 19
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [picker.h](capi-picker-h.md)
 

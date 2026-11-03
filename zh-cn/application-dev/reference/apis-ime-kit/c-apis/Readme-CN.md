@@ -1,7 +1,7 @@
 # C API<!--c-imekit-->
 
 - 模块<!--imekit-module-->
-    - [InputMethod](capi-inputmethod.md)
+    - [InputMethod](capi-ime-kit-inputmethod.md)
 - 头文件<!--imekit-headerfile-->
     - [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)
     - [inputmethod_attach_options_capi.h](capi-inputmethod-attach-options-capi-h.md)

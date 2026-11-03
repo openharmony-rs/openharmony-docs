@@ -10,7 +10,7 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -122,7 +122,6 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 | ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray | Defines a gesture recognizer handle array, which is used to represent or pass multiple gesture recognizer handles, for example, to obtain the collection of gesture recognizers in the response chain. For details about the mechanism and usage, see the gesture API description in native_gesture.h.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 | ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle | Defines a touch recognizer handle, which is used to represent a touch recognizer object and pass the object in APIs such as gesture interruption and gesture collection interception. For details about the APIs, see native_gesture.h.<br>**Since**: 15<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 | ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray | Defines a touch recognizer handle array, which is used when managing multiple touch recognizers in batches, for example, obtaining multiple touch recognizer handles from gesture interruption information.<br>**Since**: 15<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| void (*ArkUI_GestureRecognizerDisposeNotifyCallback)(ArkUI_GestureRecognizer* recognizer, void* userData) | Defines a callback function for notifying gesture recognizer destruction.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 | typedef uint32_t ArkUI_GestureEventActionTypeMask | Defines a set of gesture event types. Example: ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \\| GESTURE_EVENT_ACTION_UPDATE<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 | typedef uint32_t ArkUI_GestureDirectionMask | Defines a set of gesture directions. <br>Example: ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \\| GESTURE_DIRECTION_RIGHT <br>This example indicates that the leftward and rightward directions are supported.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
@@ -256,8 +255,8 @@ Enumerates gesture recognizer types.
 | ROTATION_GESTURE | Rotate. |
 | SWIPE_GESTURE | Swipe. |
 | GROUP_GESTURE | A group of gestures. |
-| CLICK_GESTURE |  |
-| DRAG_DROP |  |
+| CLICK_GESTURE | Click gesture registered with **onClick**.<br>**Since**: 20 |
+| DRAG_DROP | Drag-and-drop gesture.<br>**Since**: 20 |
 
 ### ArkUI_GestureInterruptResult
 

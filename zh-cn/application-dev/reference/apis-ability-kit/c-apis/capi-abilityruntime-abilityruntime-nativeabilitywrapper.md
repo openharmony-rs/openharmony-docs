@@ -12,7 +12,7 @@ typedef struct AbilityRuntime_NativeAbilityWrapper AbilityRuntime_NativeAbilityW
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
 
 **所在头文件：** [native_ability_wrapper.h](capi-native-ability-wrapper-h.md)
 

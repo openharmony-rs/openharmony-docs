@@ -4,7 +4,7 @@
 
 Provides C interface for the telephony radio.
 
-**Include**: <telephony/core_service/telephony_radio_type.h>
+**File to Include**: <telephony/core_service/telephony_radio_type.h>
 
 **Library**: libtelephony_radio.so
 
@@ -12,7 +12,7 @@ Provides C interface for the telephony radio.
 
 **Since**: 13
 
-**Related module**: [Telephony](capi-telephony.md)
+**Related module**: [Telephony](capi-telephony-kit-telephony.md)
 
 ## Summary
 

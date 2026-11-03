@@ -12,7 +12,7 @@ Defines a struct for the common event data. When a common event triggers a callb
 
 **Since**: 12
 
-**Related module**: [OH_CommonEvent](capi-oh-commonevent.md)
+**Related module**: [OH_CommonEvent](capi-others-oh-commonevent.md)
 
 **Header file**: [oh_commonevent.h](capi-oh-commonevent-h.md)
 

@@ -1,8 +1,8 @@
 # C API<!--c-teekit-->
 
 - Module<!--teekit-module-->
-    - [TeeTrusted](capi-teetrusted.md)
-    - [TeeClient](capi-teeclient.md)
+    - [TeeTrusted](capi-tee-kit-teetrusted.md)
+    - [TeeClient](capi-tee-kit-teeclient.md)
 - Header file<!--teekit-headerfile-->
     - [tee_sharemem_ops.h](capi-tee-sharemem-ops-h.md)
     - [tee_log.h](capi-tee-log-h.md)
@@ -33,21 +33,15 @@
     - [TEE_Identity](capi-teetrusted-tee-identity.md)
     - [TEE_Time](capi-teetrusted-tee-time.md)
     - [TEE_Date_Time](capi-teetrusted-tee-date-time.md)
-    - [*TEE_ObjectHandle](capi-teetrusted-8htee-objecthandle.md)
-    - [*TEE_ObjectEnumHandle](capi-teetrusted-8htee-objectenumhandle.md)
-    - [*TEE_OperationHandle](capi-teetrusted-8htee-operationhandle.md)
     - [__TEE_ObjectEnumHandle](capi-teetrusted---tee-objectenumhandle.md)
+    - [__TEE_OperationHandle](capi-teetrusted---tee-operationhandle.md)
     - [TEE_DH_OtherInfo](capi-teetrusted-tee-dh-otherinfo.md)
     - [__TEE_OperationInfo](capi-teetrusted---tee-operationinfo.md)
     - [TEE_OperationInfoKey](capi-teetrusted-tee-operationinfokey.md)
     - [TEE_OperationInfoMultiple](capi-teetrusted-tee-operationinfomultiple.md)
-    - [__TEE_OperationHandle](capi-teetrusted---tee-operationhandle.md)
     - [crypto_uint2uint](capi-teetrusted-crypto-uint2uint.md)
     - [peration_src_dest](capi-teetrusted-peration-src-dest.md)
     - [peration_ae_init](capi-teetrusted-peration-ae-init.md)
-    - [TEE_OperationInfo](capi-teetrusted-tee-operationinfo.md)
-    - [TEE_OperationHandleVar](capi-teetrusted-tee-operationhandlevar.md)
-    - [TEE_ObjectHandleVar](capi-teetrusted-tee-objecthandlevar.md)
     - [ta_caller_info](capi-teetrusted-ta-caller-info.md)
     - [ListNode](capi-teeclient-listnode.md)
     - [TEEC_UUID](capi-teeclient-teec-uuid.md)

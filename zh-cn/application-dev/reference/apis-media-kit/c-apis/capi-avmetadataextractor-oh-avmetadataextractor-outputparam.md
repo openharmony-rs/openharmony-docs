@@ -12,7 +12,7 @@ typedef struct OH_AVMetadataExtractor_OutputParam OH_AVMetadataExtractor_OutputP
 
 **起始版本：** 23
 
-**相关模块：** [AVMetadataExtractor](capi-avmetadataextractor.md)
+**相关模块：** [AVMetadataExtractor](capi-others-avmetadataextractor.md)
 
 **所在头文件：** [avmetadata_extractor_base.h](capi-avmetadata-extractor-base-h.md)
 

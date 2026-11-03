@@ -12,7 +12,7 @@ typedef struct OH_AVScreenCapture_UserSelectionInfo OH_AVScreenCapture_UserSelec
 
 **起始版本：** 20
 
-**相关模块：** [AVScreenCapture](capi-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

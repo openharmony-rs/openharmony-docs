@@ -12,7 +12,7 @@ typedef struct OH_Drawing_TypefaceFallbackInfo {...} OH_Drawing_TypefaceFallback
 
 **起始版本：** 26.0.1
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_font.h](capi-drawing-font-h.md)
 

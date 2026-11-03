@@ -12,7 +12,7 @@ Describes the unified data struct of file uri.
 
 **Since**: 13
 
-**Related module**: [UDMF](capi-udmf.md)
+**Related module**: [UDMF](capi-others-udmf.md)
 
 **Header file**: [uds.h](capi-uds-h.md)
 

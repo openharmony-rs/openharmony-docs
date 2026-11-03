@@ -1,7 +1,7 @@
 # C API<!--c-arkweb-->
 
 - 模块<!--arkweb-module-->
-    - [Web](capi-web.md)
+    - [Web](capi-arkweb-web.md)
 - 头文件<!--arkweb-headerfile-->
     - [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
     - [arkweb_interface.h](capi-arkweb-interface-h.md)
@@ -10,13 +10,13 @@
     - [native_interface_arkweb.h](capi-native-interface-arkweb-h.md)
     - [arkweb_type.h](capi-arkweb-type-h.md)
 - 结构体<!--arkweb-struct-->
-    - [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)
-    - [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)
-    - [ArkWeb_Response](capi-web-arkweb-response.md)
-    - [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest.md)
-    - [ArkWeb_RequestHeaderList](capi-web-arkweb-requestheaderlist.md)
-    - [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)
-    - [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo.md)
+    - [ArkWeb_SchemeHandler_](capi-web-arkweb-schemehandler-.md)
+    - [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler-.md)
+    - [ArkWeb_Response_](capi-web-arkweb-response-.md)
+    - [ArkWeb_ResourceRequest_](capi-web-arkweb-resourcerequest-.md)
+    - [ArkWeb_RequestHeaderList_](capi-web-arkweb-requestheaderlist-.md)
+    - [ArkWeb_HttpBodyStream_](capi-web-arkweb-httpbodystream-.md)
+    - [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo-.md)
     - [ArkWeb_AnyNativeAPI](capi-web-arkweb-anynativeapi.md)
     - [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md)
     - [ArkWeb_JavaScriptBridgeData](capi-web-arkweb-javascriptbridgedata.md)
@@ -31,6 +31,6 @@
     - [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md)
     - [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md)
     - [ArkWeb_JavaScriptValueAPI](capi-web-arkweb-javascriptvalueapi.md)
-    - [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md)
-    - [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalueptr.md)
-    - [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageportptr.md)
+    - [ArkWeb_WebMessage*](capi-web-arkweb-webmessage8h.md)
+    - [ArkWeb_JavaScriptValue*](capi-web-arkweb-javascriptvalue8h.md)
+    - [ArkWeb_WebMessagePort*](capi-web-arkweb-webmessageport8h.md)

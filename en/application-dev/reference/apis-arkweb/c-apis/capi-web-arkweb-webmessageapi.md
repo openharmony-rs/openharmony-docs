@@ -12,7 +12,7 @@ ArkWeb_WebMessageAPI is a native API struct for Web messages. This struct provid
 
 **Since**: 12
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-others-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -52,7 +52,7 @@ Creates a message. Used to create a message object to be sent before postMessage
 
 | Type | Description |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) | Pointer to the message struct. |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) | Pointer to the message struct. |
 
 ### destroyWebMessage()
 
@@ -68,7 +68,7 @@ Destroys a message and releases the memory occupied by the message object. Must 
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md)* webMessage | Pointer to the message to destroy. |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md)* webMessage | Pointer to the message to destroy. |
 
 ### setType()
 
@@ -84,8 +84,8 @@ Sets the message type. @param webMessage Pointer to the message struct. @param t
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | Pointer to the message struct. @param type Message type. |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | Pointer to the message struct. |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | Pointer to the message struct. @param type Message type. |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | Pointer to the message struct. |
 |  [ArkWeb_WebMessageType](capi-arkweb-type-h.md#arkweb_webmessagetype) type | Message type. |
 
 ### getType()
@@ -102,7 +102,7 @@ Obtains the message type. Used to distinguish different types of communication m
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | Pointer to the message struct. |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | Pointer to the message struct. |
 
 **Returns**:
 
@@ -124,7 +124,7 @@ Sets data. Used to set the specific content of the message, supporting the trans
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | Pointer to the message struct. |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | Pointer to the message struct. |
 |  void* data | Data pointer. The caller is responsible for memory management. The function does not release this memory internally, and data ownership is not transferred. |
 |  size_t dataLength | Data length. |
 
@@ -142,7 +142,7 @@ Obtains data. Used to obtain the specific content of the message, supporting the
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessageptr.md) webMessage | Pointer to the message struct. |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | Pointer to the message struct. |
 |  size_t* dataLength | Data length, which is an output parameter. |
 
 **Returns**:

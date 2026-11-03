@@ -12,7 +12,7 @@ Defines a render node mask option. It is used to describe the mask area of a ren
 
 **Since**: 20
 
-**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
 
 **Header file**: [native_render.h](capi-native-render-h.md)
 

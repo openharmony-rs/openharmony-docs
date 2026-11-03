@@ -12,7 +12,7 @@ struct AbilityRuntime_Context
 
 **起始版本：** 24
 
-**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
 
 **所在头文件：** [context.h](capi-context-h.md)
 

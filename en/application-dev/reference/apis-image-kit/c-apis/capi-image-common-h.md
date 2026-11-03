@@ -10,7 +10,7 @@ The file declares the common enums and structs used by the image interface.
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## Summary
 
@@ -22,7 +22,6 @@ The file declares the common enums and structs used by the image interface.
 | [Image_Region](capi-image-nativemodule-image-region.md) | Image_Region | Declaration the image region. |
 | [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | - | Define a PictureMetadata struct type, used for picture metadata. |
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String | Defines the property string (in key-value format) of the image source. |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md) | Image_MimeType | Defines the image encode format. |
 
 ### Enum
 
@@ -119,9 +118,9 @@ Enumerates the metadata types.
 
 | Enum item | Description |
 | -- | -- |
-| EXIF_METADATA = 1 |  |
-| FRAGMENT_METADATA = 2 |  |
-| GIF_METADATA = 5 |  |
+| EXIF_METADATA = 1 | Exif metadata.<br>**Since**: 13 |
+| FRAGMENT_METADATA = 2 | Fragment map metadata.<br>**Since**: 13 |
+| GIF_METADATA = 5 | GIF image metadata.<br>**Since**: 20 |
 
 ### IMAGE_ALLOCATOR_MODE
 
@@ -139,9 +138,9 @@ Type of allocator used to allocate memory of a PixelMap.
 
 | Enum item | Description |
 | -- | -- |
-| IMAGE_ALLOCATOR_MODE_AUTO = 0 |  |
-| IMAGE_ALLOCATOR_MODE_DMA = 1 |  |
-| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 |  |
+| IMAGE_ALLOCATOR_MODE_AUTO = 0 | The system determines which memory to use to create the PixelMap.<br>**Since**: 20 |
+| IMAGE_ALLOCATOR_MODE_DMA = 1 | Use DMA buffer to create the PixelMap.<br>**Since**: 20 |
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | Use share memory to create the PixelMap.<br>**Since**: 20 |
 
 
 ## Function description

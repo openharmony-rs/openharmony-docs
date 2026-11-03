@@ -12,7 +12,7 @@ Defines the USB endpoint from which data is sent or received. An endpoint <br>is
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-usbmanager.md)
+**Related module**: [UsbManager](capi-others-usbmanager.md)
 
 **Header file**: [ohusb_manager.h](capi-ohusb-manager-h.md)
 

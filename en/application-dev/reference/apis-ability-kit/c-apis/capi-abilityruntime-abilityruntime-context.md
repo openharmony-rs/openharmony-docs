@@ -12,7 +12,7 @@ Define the AbilityRuntime_Context structure type.
 
 **Since**: 24
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
 
 **Header file**: [context.h](capi-context-h.md)
 

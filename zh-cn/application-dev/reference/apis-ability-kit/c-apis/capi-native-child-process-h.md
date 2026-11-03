@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ChildProcess](capi-childprocess.md)
+**相关模块：** [ChildProcess](capi-ability-kit-childprocess.md)
 
 ## 汇总
 
@@ -51,16 +51,7 @@
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | 解注册子进程退出回调。 <br>参数必须实现[OH_Ability_OnNativeChildProcessExit](capi-native-child-process-h.md#oh_ability_onnativechildprocessexit)入口函数。详见解注册Native子进程退出回调。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)](#oh_ability_killchildprocess) | - | 终止当前进程创建的子进程。该接口通过发送终止信号强制结束子进程，子进程立即停止执行并退出。终止后子进程资源被系统回收，如已注册退出回调则会被触发。 |
 | [bool OH_Ability_IsNativeChildProcessSupported()](#oh_ability_isnativechildprocesssupported) | - | 查询是否允许调用者在此设备上创建Native子进程。 |
-| [Ability_NativeChildProcess_ErrCode OH_Ability_AcquireChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
-
-} // extern "C"](#oh_ability_acquirechildprocessinfos) | - | 获取当前应用的子进程信息。<br> 包括通过以下方式创建的子进程： - OH_Ability_CreateNativeChildProcess / OH_Ability_CreateNativeChildProcessWithConfigs - OH_Ability_StartNativeChildProcess / OH_Ability_StartNativeChildProcessWithConfigs - childProcessManager.startChildProcess（非Self_FORK模式） - childProcessManager.startArkChildProcess - childProcessManager.startNativeChildProcess |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteProxy *remoteProxy) | 定义通知子进程启动结果的回调函数。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Ability.AbilityRuntime.Core |
-| void (*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal) | 用于获取Native子进程退出信息的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Ability.AbilityRuntime.Core |
+| [Ability_NativeChildProcess_ErrCode OH_Ability_AcquireChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)](#oh_ability_acquirechildprocessinfos) | - | 获取当前应用的子进程信息。<br> 包括通过以下方式创建的子进程： - OH_Ability_CreateNativeChildProcess / OH_Ability_CreateNativeChildProcessWithConfigs - OH_Ability_StartNativeChildProcess / OH_Ability_StartNativeChildProcessWithConfigs - childProcessManager.startChildProcess（非Self_FORK模式） - childProcessManager.startArkChildProcess - childProcessManager.startNativeChildProcess |
 
 ## 枚举类型说明
 
@@ -92,8 +83,8 @@ enum Ability_NativeChildProcess_ErrCode
 | NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | 到达最大子进程数量限制，不能再创建子进程。请先终止不需要的子进程后再创建新的子进程。 |
 | NCP_ERR_LIB_LOADING_FAILED = 16010007 | 子进程加载动态库失败，文件不存在或者未实现对应的方法并导出。请检查动态库文件路径和名称是否正确，确保动态库实现并导出了对应的方法。 |
 | NCP_ERR_CONNECTION_FAILED = 16010008 | 子进程调用动态库的OnConnect方法失败，可能返回了无效的IPC对象指针。请检查NativeChildProcess_OnConnect函数的实现，确保返回有效的IPC对象指针。 |
-| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 |  |
-| NCP_ERR_INVALID_PID = 16010010 |  |
+| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | 父进程调用解注册Native子进程退出回调，未找到注册的回调函数。<br>**起始版本：** 20 |
+| NCP_ERR_INVALID_PID = 16010010 | 传入的进程pid不存在，或并非当前进程所创建的子进程pid，或属于childProcessManager.startChildProcess接口在SELF_FORK模式下启动的子进程。<br>**起始版本：** 22 |
 
 ### NativeChildProcess_IsolationMode
 
@@ -542,26 +533,29 @@ bool OH_Ability_IsNativeChildProcessSupported()
 
 ```c
 Ability_NativeChildProcess_ErrCode OH_Ability_AcquireChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
-
-} // extern "C"
 ```
 
 **描述：**
 
-获取当前应用的子进程信息。<br> 包括通过以下方式创建的子进程： - OH_Ability_CreateNativeChildProcess / OH_Ability_CreateNativeChildProcessWithConfigs - OH_Ability_StartNativeChildProcess / OH_Ability_StartNativeChildProcessWithConfigs - childProcessManager.startChildProcess（非Self_FORK模式） - childProcessManager.startArkChildProcess - childProcessManager.startNativeChildProcess
+获取当前应用的子进程信息。<br> 包括通过以下方式创建的子进程：
+- OH_Ability_CreateNativeChildProcess / OH_Ability_CreateNativeChildProcessWithConfigs
+- OH_Ability_StartNativeChildProcess / OH_Ability_StartNativeChildProcessWithConfigs
+- childProcessManager.startChildProcess（非Self_FORK模式）
+- childProcessManager.startArkChildProcess
+- childProcessManager.startNativeChildProcess
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.1
 
-**资源释放：** OH_AbilityRuntime_ReleaseChildProcessInfos {infos}
+**资源释放：** [OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos)
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AbilityRuntime_ChildProcessInfosHandle* infos | 输出参数，指向子进程信息集合的指针。不能为nullptr。 当不存在子进程时，将指针**infos**的解引用值设置为nullptr。 |
-| count | 输出参数，返回子进程的个数。不能是nullptr。 |
+| uint32_t* count | 输出参数，返回子进程的个数。不能是nullptr。 |
 
 **返回值：**
 

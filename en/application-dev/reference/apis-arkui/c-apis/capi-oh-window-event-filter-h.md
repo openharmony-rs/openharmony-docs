@@ -10,7 +10,7 @@ The file declares the APIs for a window to filter multimodal key events. When a 
 
 **Since**: 12
 
-**Related module**: [WindowManager](capi-windowmanager.md)
+**Related module**: [WindowManager](capi-arkui-windowmanager.md)
 
 ## Summary
 
@@ -30,14 +30,6 @@ The file declares the APIs for a window to filter multimodal key events. When a 
 | [WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter* outKeyEventFilter)](#oh_nativewindowmanager_getkeyeventfilter) | - | Gets the key event filter callback for the window. |
 | [WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter* outMouseEventFilter)](#oh_nativewindowmanager_getmouseeventfilter) | - | Gets the mouse event filter callback for the window. |
 | [WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter* outTouchEventFilter)](#oh_nativewindowmanager_gettoucheventfilter) | - | Gets the touch event filter callback for the window. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent) | Defines a function for filtering multimodal key events.<br>**Since**: 12<br>**System capability**: SystemCapability.Window.SessionManager |
-| bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent) | Defines a function for filtering multimodal mouse events.<br>**Since**: 15<br>**System capability**: SystemCapability.Window.SessionManager |
-| bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent) | Defines a function for filtering multimodal touch events.<br>**Since**: 15<br>**System capability**: SystemCapability.Window.SessionManager |
 
 ## Function description
 

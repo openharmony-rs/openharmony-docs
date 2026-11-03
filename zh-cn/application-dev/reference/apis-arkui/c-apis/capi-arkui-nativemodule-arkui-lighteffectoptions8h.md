@@ -10,7 +10,7 @@ typedef ArkUI_LightEffectOptions* ArkUI_LightEffectOptionsHandle
 
 **起始版本：** 26.0.0
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_material.h](capi-native-material-h.md)
 

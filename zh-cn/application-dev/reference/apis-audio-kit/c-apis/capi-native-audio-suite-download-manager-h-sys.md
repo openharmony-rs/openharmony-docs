@@ -12,7 +12,7 @@ Declare audio download manager related interfaces.
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 ## 汇总
 
@@ -23,7 +23,7 @@ Declare audio download manager related interfaces.
 | [OH_AudioSuite_DownloadStatusInfo（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | - | 定义下载状态信息结构体。<br>**系统接口：** 此接口为系统接口。 |
 | [OH_AudioSuite_DownloadStatusInfoArray（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | - | 定义下载状态信息数组结构体。<br>**系统接口：** 此接口为系统接口。 |
 | [OH_AudioSuite_FeatureVersionInfo（系统接口）](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) | - | 定义特性版本信息结构体。<br>**系统接口：** 此接口为系统接口。 |
-| [OH_AudioSuite_DownloadManager（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) | OH_AudioSuite_DownloadManager | 声明音频下载管理器。 音频下载管理器的句柄用于下载相关功能。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_AudioSuite_DownloadManagerStruct（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) | OH_AudioSuite_DownloadManager | 声明音频下载管理器。 音频下载管理器的句柄用于下载相关功能。<br>**系统接口：** 此接口为系统接口。 |
 
 ### 函数
 
@@ -42,12 +42,6 @@ Declare audio download manager related interfaces.
 | [int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, bool *installStatus, uint32_t installStatusSize)（系统接口）](#oh_audiosuite_isfeatureinstalled) | - | 批量获取特性的安装状态。 接口返回成功，installStatus有效数量为count。失败则installStatus有效数量为0。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_DownloadStatusInfo *statusInfos, uint32_t statusInfosSize)（系统接口）](#oh_audiosuite_getfeaturestatus) | - | 批量获取特性的当前状态。 接口返回成功，statusInfos有效数量为count。失败则statusInfos有效数量为0。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_FeatureVersionInfo *versionInfos, uint32_t versionInfosSize)（系统接口）](#oh_audiosuite_getnewversioninfo) | - | 批量获取特性的新版本信息。 接口返回成功，versionInfos有效数量为count。失败则versionInfos有效数量为0。<br>**系统接口：** 此接口为系统接口。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)（系统接口） | 更新下载状态的回调函数。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br>**系统接口：** 此接口为系统接口。 |
 
 ## 函数说明
 
@@ -93,7 +87,7 @@ int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) **downloadManager | 接收下载管理器句柄的指针。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) **downloadManager | 接收下载管理器句柄的指针。 |
 
 **返回值：**
 
@@ -121,7 +115,7 @@ int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *do
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | 下载管理器句柄。 |
 | [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | 接收下载状态更新的回调函数。 |
 
 **返回值：**
@@ -150,7 +144,7 @@ int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | 下载管理器句柄。 |
 | [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | 注销的回调函数。 |
 
 **返回值：**
@@ -179,7 +173,7 @@ int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | 下载管理器句柄。 |
 | const char *featureName | 要下载的特性的名称。 |
 
 **返回值：**
@@ -208,7 +202,7 @@ int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | 下载管理器句柄。 |
 | const char *featureName | 要暂停的功能的名称。 |
 
 **返回值：**
@@ -237,7 +231,7 @@ int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadMana
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | 下载管理器句柄。 |
 | const char *featureName | 要取消的特性名称。 |
 
 **返回值：**
@@ -266,7 +260,7 @@ int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *dow
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | 下载管理器句柄。 |
 | const char *featureName | 要下载的特性的名称。 |
 
 **返回值：**
@@ -295,7 +289,7 @@ int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadM
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | 下载管理器句柄。 |
 | const char *featureName | 特性的名称。 |
 | [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) *status | 接收下载状态信息的指针。 |
 
@@ -325,7 +319,7 @@ int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadM
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | 下载管理器句柄。 |
 | const char *featureName | 要卸载的特性名称。 |
 
 **返回值：**
@@ -354,7 +348,7 @@ int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *download
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
 | const char **featureNames | [入参] 特性名称的数组。 |
 | uint32_t count | [入参] featureNames数组中特性名称的个数，取值为[1, 5]。 |
 | bool *installStatus | [出参] 调用者分配的接收安装状态的布尔数组。元素值为true，表示featureNames对应索引的特性已安装。为false，表示未安装。 |
@@ -386,7 +380,7 @@ int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadMa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
 | const char **featureNames | [入参] 特性名称的数组。 |
 | uint32_t count | [入参] featureNames数组中特性名称的个数，取值为[1, 5]。 |
 | [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) *statusInfos | [出参] 调用者分配的接收特性状态的数组。 |
@@ -418,7 +412,7 @@ int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadM
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [入参] 下载管理器句柄。 |
 | const char **featureNames | [入参] 特性名称的数组。 |
 | uint32_t count | [入参] featureNames数组中特性名称的个数，取值为[1, 5]。 |
 | [OH_AudioSuite_FeatureVersionInfo](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) *versionInfos | [出参] 调用者分配的接收版本信息的数组。 |

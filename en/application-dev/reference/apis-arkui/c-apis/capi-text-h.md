@@ -4,13 +4,15 @@
 
 Defines enumerations and APIs related to **Text** for configuring text styles, controlling marquee effects, implementing text entity recognition, and managing text controllers. It is applicable to scenarios such as customizing text display effects, implementing dynamic text interaction, recognizing special entities in text (such as addresses and phone numbers), and precisely controlling text font weight. With these configuration APIs, you can flexibly control the display effects and interaction behaviors of text components to improve user experience.
 
+**File to Include**: <arkui/text.h>
+
 **Library**: libace_ndk.z.so
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -20,7 +22,7 @@ Defines enumerations and APIs related to **Text** for configuring text styles, c
 | -- | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | OH_ArkUI_TextDataDetectorConfig | Defines the configuration for text entity detection. By setting the entity types to be detected (such as phone numbers, URLs, emails, addresses, and dates), the corresponding entity detection feature is enabled in the text component, and the detected entities are presented in an interactive format. This applies to scenarios such as automatically recognizing contact information in chat messages and extracting links from documents. |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | ArkUI_TextMarqueeOptions | Defines text marquee mode options, which are used to configure the display parameters of the text marquee effect. It is suitable for scenarios where long text content needs to be displayed cyclically in limited space, such as scrolling notification messages and scrolling titles, effectively solving the display problem when text exceeds the display area. |
-| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | Defines a text component controller, which is used to control and interact with the text component on the native side. You can create a controller object through [OH_ArkUI_TextController_Create](capi-text-h.md#oh_arkui_textcontroller_create). When the object is created, you must call [OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy) to destroy it and release resources after use. The two must be used in pairs; otherwise, memory leaks will occur. After the controller is created, you can use APIs such as OH_ArkUI_TextController_SetStyledString to set the styled string of the text component, implementing dynamic management and style control of the text content. This is applicable to scenarios where the text component needs to be operated at the native layer. |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | Defines a text component controller, which is used to control and interact with the text component on the native side. You can create a controller object through [OH_ArkUI_TextController_Create](capi-text-h.md#oh_arkui_textcontroller_create). When the object is created, you must call [OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy) to destroy it and release resources after use. The two must be used in pairs; otherwise, memory leaks will occur. After the controller is created, you can use APIs such as [OH_ArkUI_TextController_SetStyledString](capi-native-type-h.md#oh_arkui_textcontroller_setstyledstring) to set the styled string of the text component, implementing dynamic management and style control of the text content. This is applicable to scenarios where the text component needs to be operated at the native layer. |
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | Defines the font weight configurations of text. It is suitable for scenarios that require precise control over text font weight or where the text font weight needs to follow device font setting changes. You can create a text font weight configuration object through [OH_ArkUI_FontWeightConfigs_Create](capi-text-h.md#oh_arkui_fontweightconfigs_create), and must call [OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy) to destroy the object and release resources after use to avoid memory leaks. After the configuration object is created, you can set and query the information through the following APIs: use [OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight](capi-text-h.md#oh_arkui_fontweightconfigs_setenablevariablefontweight) to set whether to enable variable font weight adjustment, use [OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight](capi-text-h.md#oh_arkui_fontweightconfigs_getenablevariablefontweight) to check whether variable font weight adjustment is enabled, use [OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory](capi-text-h.md#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) to set whether the text font weight is updated with the font weight level of the device, and use [OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory](capi-text-h.md#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) to check whether the text font weight is updated with the font weight level of the device. When this configuration object is used and is not a null pointer, if the user does not explicitly make the configuration through the APIs, each configuration item uses its default value (variable font weight adjustment is disabled by default, and text font weight is updated with the font weight level of the device by default). When this configuration object is a null pointer, the default values are not used, and the text font weight behavior is the same as that of the parent component. |
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | Defines the font configurations of text. Currently, it supports setting and obtaining the font weight configuration through related APIs, and is applicable to scenarios that require custom font weight display effects. You can create a font configuration object through the [OH_ArkUI_FontConfigs_Create](capi-text-h.md#oh_arkui_fontconfigs_create) API and destroy it through the [OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy) API. After the configurations are created, you can set and query them through the following APIs: set the font weight configuration through the [OH_ArkUI_FontConfigs_SetFontWeightConfigs](capi-text-h.md#oh_arkui_fontconfigs_setfontweightconfigs) API, and obtain the font weight configuration through the [OH_ArkUI_FontConfigs_GetFontWeightConfigs](capi-text-h.md#oh_arkui_fontconfigs_getfontweightconfigs) API. |
 | [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) | OH_ArkUI_NativeModule_LineSpacingOptions | Defines a text line spacing option object, which is used to set whether the text line spacing takes effect only between lines. You can create a line spacing option object by calling [OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create). After the object is used, you must call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it and release resources. The two APIs must be used in pairs; otherwise, a memory leak occurs. After the object is created, you can call [OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_setonlybetweenlines) to set whether the line spacing takes effect only between lines, and call [OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_getonlybetweenlines) to obtain the line spacing configuration. This struct is applicable to scenarios that require precise control over the display effect of text line spacing, such as text display where no line spacing is added to the first and last lines. |
@@ -148,9 +150,9 @@ Enumerates how the adaptive height is determined for the text.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | Prioritize the <b>maxLines</b> settings. |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | Prioritize the <b>minFontSize</b> settings. |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | Prioritize the layout constraint settings in terms of height. |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | Prioritize the <b>maxLines</b> settings.When the text content exceeds the display area, the <b>maxLines</b> settings are met first, and the excess may be truncated or handled in other ways. |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | Prioritize the <b>minFontSize</b> settings.When the text content exceeds the display area, the font size is reduced first to fit the height limit, ensuring the text is fully displayed. The font size is automatically adjusted within the allowed range. |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | Prioritize the layout constraint settings in terms of height for strictly following the height setting of the layout constraint. The text height or font size is not automatically adjusted, and the excess may be truncated or handled in other ways. |
 
 ### ArkUI_TextDataDetectorType
 
@@ -169,8 +171,8 @@ Enumerates the entity types of text recognition.
 | Enum item | Description |
 | -- | -- |
 | ARKUI_TEXT_DATA_DETECTOR_TYPE_PHONE_NUMBER = 0 | Phone Number. |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_URL | Link. |
-| ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL | Mailbox. |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_URL | URL. |
+| ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL | Email address. |
 | ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS | Address. |
 
 ### ArkUI_MarqueeStartPolicy
@@ -189,8 +191,8 @@ Enumerates marquee startup policies.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0 | Start marquee in any case. This is the default policy. |
-| ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | Start marquee only when get focus. |
+| ARKUI_MARQUEESTARTPOLICY_DEFAULT = 0 | The marquee scrolls continuously by default. |
+| ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | The marquee starts scrolling when it has focus or when the mouse hovers over it. |
 
 ### ArkUI_MarqueeUpdatePolicy
 
@@ -208,8 +210,8 @@ Enumerates marquee update policies.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0 | Reset scroll position and restart scroll. |
-| ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1 | Preserve scroll position, just change to new text. |
+| ARKUI_MARQUEEUPDATEPOLICY_DEFAULT = 0 | Restarts the marquee from the start position after the attributes of the marquee component are updated. |
+| ARKUI_MARQUEEUPDATEPOLICY_PRESERVEPOSITION = 1 | Resumes the marquee from the current position after the attributes of the marquee component are updated. |
 
 
 ## Function description
@@ -992,7 +994,7 @@ Creates a text line spacing option object. After use, call [OH_ArkUI_NativeModul
 
 **Since**: 26.0.1
 
-**Resource release**: OH_ArkUI_NativeModule_LineSpacingOptions_Destroy {return}
+**Resource release**: [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](#oh_arkui_nativemodule_linespacingoptions_destroy)
 
 **Returns**:
 

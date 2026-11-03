@@ -10,7 +10,7 @@ The file declares the APIs related to media asset change requests. You can use t
 
 **Since**: 12
 
-**Related module**: [MediaAssetManager](capi-mediaassetmanager.md)
+**Related module**: [MediaAssetManager](capi-media-library-kit-mediaassetmanager.md)
 
 ## Summary
 

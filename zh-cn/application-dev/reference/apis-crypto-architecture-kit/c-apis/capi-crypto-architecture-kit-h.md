@@ -12,5 +12,5 @@
 
 **起始版本：** 12
 
-**相关模块：** [CryptoArchitectureKit](capi-cryptoarchitecturekit.md)
+**相关模块：** [CryptoArchitectureKit](capi-crypto-architecture-kit-cryptoarchitecturekit.md)
 

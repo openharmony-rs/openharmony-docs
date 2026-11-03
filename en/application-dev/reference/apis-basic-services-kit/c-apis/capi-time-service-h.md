@@ -10,7 +10,7 @@ Declares the APIs for obtaining the time zone information.
 
 **Since**: 12
 
-**Related module**: [TimeService](capi-timeservice.md)
+**Related module**: [TimeService](capi-basic-services-kit-timeservice.md)
 
 ## Summary
 

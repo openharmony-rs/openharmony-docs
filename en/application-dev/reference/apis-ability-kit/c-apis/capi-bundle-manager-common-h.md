@@ -10,7 +10,7 @@ The file declares the error codes defined by BundleManager.
 
 **Since**: 21
 
-**Related module**: [Native_Bundle](capi-native-bundle.md)
+**Related module**: [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 ## Summary
 

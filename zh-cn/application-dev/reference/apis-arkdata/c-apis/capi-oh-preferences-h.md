@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [Preferences](capi-preferences.md)
+**相关模块：** [Preferences](capi-arkdata-preferences.md)
 
 ## 汇总
 
@@ -47,12 +47,6 @@
 | [int OH_Preferences_ClearCache(OH_Preferences *preference)](#oh_preferences_clearcache) | - | 清除[OH_Preferences](capi-preferences-oh-preferences.md)对象缓存中的所有值。 |
 | [int OH_Preferences_RegisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)](#oh_preferences_registermultiprocessdataobserver) | - | 为Preferences对象注册一个多进程数据观察者。 |
 | [int OH_Preferences_UnregisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)](#oh_preferences_unregistermultiprocessdataobserver) | - | 取消注册Preferences对象的多进程数据观察者。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPair *pairs, uint32_t count) | 定义数据变更触发的回调函数类型。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core * |
 
 ## 函数说明
 

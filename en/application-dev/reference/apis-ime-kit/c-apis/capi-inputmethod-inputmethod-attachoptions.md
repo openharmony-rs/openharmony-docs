@@ -12,7 +12,7 @@ Options for binding the input method.<br> The options when attaching input metho
 
 **Since**: 12
 
-**Related module**: [InputMethod](capi-inputmethod.md)
+**Related module**: [InputMethod](capi-others-inputmethod.md)
 
 **Header file**: [inputmethod_attach_options_capi.h](capi-inputmethod-attach-options-capi-h.md)
 

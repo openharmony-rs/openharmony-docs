@@ -12,7 +12,7 @@ The file declares the APIs for obtaining picture data and information.
 
 **System API:** This is a system API.
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## Summary
 
@@ -53,7 +53,7 @@ Creates an OH_AuxiliaryPictureNative object with a specified memory type. By def
 
 **Since**: 26.0.0
 
-**Resource release**: picture_native/OH_AuxiliaryPictureNative_Release {auxiliaryPicture}
+**Resource release**: [OH_AuxiliaryPictureNative_Release](#oh_auxiliarypicturenative_release)
 
 **System API:** This is a system API.
 
@@ -87,7 +87,7 @@ Creates an OH_DecomposeOptions object.
 
 **Since**: 26.0.0
 
-**Resource release**: picture_native/OH_DecomposeOptions_Release {outOwnedOptions}
+**Resource release**: [OH_DecomposeOptions_Release](#oh_decomposeoptions_release)
 
 **System API:** This is a system API.
 
@@ -261,7 +261,7 @@ Decomposes an HDR pixel map into a Picture object which contains an SDR pixel ma
 
 **Since**: 26.0.0
 
-**Resource release**: picture_native/OH_PictureNative_Release {outOwnedPicture}
+**Resource release**: [OH_PictureNative_Release](#oh_picturenative_release)
 
 **System API:** This is a system API.
 
@@ -323,7 +323,7 @@ Converts an ArkTS <b>Picture</b> object represented by a napi_value to an [OH_Pi
 
 **Since**: 26.0.1
 
-**Resource release**: picture_native/OH_PictureNative_Release {outOwnedPictureNative}
+**Resource release**: [OH_PictureNative_Release](#oh_picturenative_release)
 
 **System API:** This is a system API.
 

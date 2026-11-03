@@ -12,7 +12,7 @@ Defines a text line spacing option object, which is used to set whether the text
 
 **Since**: 26.0.1
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text.h](capi-text-h.md)
 

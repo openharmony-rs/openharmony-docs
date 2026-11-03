@@ -12,7 +12,7 @@ typedef struct NativeResourceManager NativeResourceManager
 
 **起始版本：** 8
 
-**相关模块：** [rawfile](capi-rawfile.md)
+**相关模块：** [rawfile](capi-others-rawfile.md)
 
 **所在头文件：** [raw_file_manager.h](capi-raw-file-manager-h.md)
 

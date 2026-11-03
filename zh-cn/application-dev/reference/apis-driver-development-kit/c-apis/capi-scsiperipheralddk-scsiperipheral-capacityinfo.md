@@ -12,7 +12,7 @@ SCSI READ CAPACITY结构体。用于在开发SCSI设备驱动时获取设备的�
 
 **起始版本：** 18
 
-**相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
 
 **所在头文件：** [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

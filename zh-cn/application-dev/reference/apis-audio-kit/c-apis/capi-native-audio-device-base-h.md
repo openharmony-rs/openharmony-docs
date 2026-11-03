@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -287,7 +287,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescr
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | [in] 音频设备描述符。可通过 [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) 的设备查询或监听接口获取。 |
-| char **name | [out] 获取设备名称字符串的指针。 <br>不要单独释放此指针指向的内存，而是调用 OH_AudioRoutingManager_ReleaseDevices 在不使用时释放所有内存。 |
+| char **name | [out] 获取设备名称字符串的指针。 <br>不要单独释放此指针指向的内存，而是调用 [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) 在不使用时释放所有内存。 |
 
 **返回值：**
 
@@ -314,7 +314,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | [in] 音频设备描述符。可通过 [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) 的设备查询或监听接口获取。 |
-| char **address | [out] 获取设备地址字符串的指针。 <br>不要单独释放此指针指向的内存，而是调用OH_AudioRoutingManager_ReleaseDevices，在不使用时释放所有内存。 |
+| char **address | [out] 获取设备地址字符串的指针。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 **返回值：**
 
@@ -341,7 +341,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDevi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | [in] 音频设备描述符。可通过 [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) 的设备查询或监听接口获取。 |
-| uint32_t **sampleRates | [out] 获取采样率数组的指针，单位为Hz。 <br>不要单独释放此指针指向的内存，而是调用OH_AudioRoutingManager_ReleaseDevices，在不使用时释放所有内存。 |
+| uint32_t **sampleRates | [out] 获取采样率数组的指针，单位为Hz。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 | uint32_t *size | [out] 获取采样率数组长度的指针。 |
 
 **返回值：**
@@ -369,7 +369,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | [in] 音频设备描述符。可通过 [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) 的设备查询或监听接口获取。 |
-| uint32_t **channelCounts | [out] 获取声道数数组的指针。 <br>不要单独释放此指针指向的内存，而是调用OH_AudioRoutingManager_ReleaseDevices 在不使用时释放所有内存。 |
+| uint32_t **channelCounts | [out] 获取声道数数组的指针。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) 在不使用时释放所有内存。 |
 | uint32_t *size | [out] 获取声道数数组长度的指针。 |
 
 **返回值：**
@@ -397,7 +397,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDevi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | [in] 音频设备描述符。可通过 [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) 的设备查询或监听接口获取。 |
-| char **displayName | [out] 获取显示名称值字符串的指针。 <br>不要单独释放此指针指向的内存，而是调用OH_AudioRoutingManager_ReleaseDevices，在不使用时释放所有内存。 |
+| char **displayName | [out] 获取显示名称值字符串的指针。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 **返回值：**
 
@@ -424,7 +424,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDe
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | [in] 音频设备描述符。可通过 [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) 的设备查询或监听接口获取。 |
-| [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) **encodingTypes | [out] 获取音频编码类型数组的指针。 <br>不要单独释放此指针指向的内存，而是调用OH_AudioRoutingManager_ReleaseDevices，在不使用时释放所有内存。 |
+| [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) **encodingTypes | [out] 获取音频编码类型数组的指针。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 | uint32_t *size | [out] 获取编码类型大小值的指针变量。 |
 
 **返回值：**

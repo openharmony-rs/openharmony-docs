@@ -12,7 +12,7 @@ Holds all image planes.
 
 **Since**: 12
 
-**Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**Related module**: [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
 
 **Header file**: [native_buffer.h](capi-native-buffer-h.md)
 

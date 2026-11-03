@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_NativeModule_UIContentChangeEvent OH_ArkUI_NativeModule_
 
 **起始版本：** 26.1.0
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [ui_info_collection.h](capi-ui-info-collection-h.md)
 

@@ -12,7 +12,7 @@ OH_AVScreenCaptureCallback是OH_AVScreenCapture中所有异步回调函数指针
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

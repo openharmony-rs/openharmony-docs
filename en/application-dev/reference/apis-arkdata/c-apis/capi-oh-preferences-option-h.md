@@ -10,7 +10,7 @@ Provides APIs and structs for accessing the **PreferencesOption** object.
 
 **Since**: 13
 
-**Related module**: [Preferences](capi-preferences.md)
+**Related module**: [Preferences](capi-arkdata-preferences.md)
 
 ## Summary
 
@@ -57,7 +57,7 @@ Enumerates the preferences storage types.
 
 | Enum item | Description |
 | -- | -- |
-| PREFERENCES_STORAGE_XML = 0 | XML. In this type is used, data operations are performed in the memory and data is persisted after OH_Preferences_Close is called. This type does not multi-processes operations. |
+| PREFERENCES_STORAGE_XML = 0 | XML. In this type is used, data operations are performed in the memory and data is persisted after [OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close) is called. This type does not multi-processes operations. |
 | PREFERENCES_STORAGE_GSKV | CLKV. If this type is used, data operations are flushed on a real-time basis. This type supports multi-process operations. |
 
 

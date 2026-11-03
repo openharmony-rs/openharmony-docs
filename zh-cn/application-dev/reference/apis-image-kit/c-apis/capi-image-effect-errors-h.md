@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ImageEffect](capi-imageeffect.md)
+**相关模块：** [ImageEffect](capi-image-kit-imageeffect.md)
 
 ## 汇总
 

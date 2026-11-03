@@ -10,7 +10,7 @@ Defines the child process info type and accessor functions.
 
 **起始版本：** 26.0.1
 
-**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## 汇总
 
@@ -18,8 +18,8 @@ Defines the child process info type and accessor functions.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [*OH_AbilityRuntime_ChildProcessInfosHandle](capi-abilityruntime-8hoh-abilityruntime-childprocessinfoshandle.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | 定义OH_AbilityRuntime_ChildProcessInfos指针。 |
-| [*OH_AbilityRuntime_ChildProcessInfoHandle](capi-abilityruntime-8hoh-abilityruntime-childprocessinfohandle.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | 定义OH_AbilityRuntime_ChildProcessInfo指针。 |
+| [OH_AbilityRuntime_ChildProcessInfos](capi-abilityruntime-oh-abilityruntime-childprocessinfos.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | 定义OH_AbilityRuntime_ChildProcessInfos指针。 |
+| [OH_AbilityRuntime_ChildProcessInfo](capi-abilityruntime-oh-abilityruntime-childprocessinfo.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | 定义OH_AbilityRuntime_ChildProcessInfo指针。 |
 
 ### 函数
 

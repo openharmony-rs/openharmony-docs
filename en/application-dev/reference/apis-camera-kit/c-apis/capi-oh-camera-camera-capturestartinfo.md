@@ -12,7 +12,7 @@ The struct describes the capture start information.
 
 **Since**: 12
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

@@ -10,7 +10,7 @@ Defines the APIs of the HTTP global interceptor module. With interceptors, you c
 
 **Since**: 24
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@ Declares the media source loader type, which is implemented by the application.
 
 **Since**: 23
 
-**Related module**: [AVMediaSource](capi-avmediasource.md)
+**Related module**: [AVMediaSource](capi-others-avmediasource.md)
 
 **Header file**: [avmedia_source.h](capi-avmedia-source-h.md)
 

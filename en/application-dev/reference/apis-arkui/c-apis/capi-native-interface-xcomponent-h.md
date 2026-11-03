@@ -10,7 +10,7 @@ Declares APIs for accessing a Native XComponent.
 
 **Since**: 8
 
-**Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+**Related module**: [OH_NativeXComponent Native XComponent](capi-arkui-oh-nativexcomponent-native-xcomponent.md)
 
 ## Summary
 
@@ -30,7 +30,7 @@ Declares APIs for accessing a Native XComponent.
 | [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md) | OH_NativeXComponent_ExtraMouseEventInfo | Provides an encapsulated <b>OH_NativeXComponent_ExtraMouseEventInfo</b> instance which has extra info compared to OH_NativeXComponent_MouseEvent. |
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) | OH_ArkUI_SurfaceHolder | Provides an encapsulated <b>OH_ArkUI_SurfaceHolder</b> instance. |
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) | OH_ArkUI_SurfaceCallback | Define the surface lifecycle callback. |
-| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-ohnativewindow.md) | OHNativeWindow | Forward declaration of OHNativeWindow. |
+| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | Forward declaration of OHNativeWindow. |
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | Declares the config for Surface held by XComponent. |
 
 ### Enum
@@ -263,7 +263,7 @@ Represents the mouse event action.
 
 | Enum item | Description |
 | -- | -- |
-| OH_NATIVEXCOMPONENT_MOUSE_CANCEL |  |
+| OH_NATIVEXCOMPONENT_MOUSE_CANCEL | Triggered when the mouse event is canceled.<br>**Since**: 18 |
 
 ### OH_NativeXComponent_MouseEventButton
 
@@ -1848,7 +1848,7 @@ Obtains the nativeWindow associated with a <b>OH_ArkUI_SurfaceHolder</b> instanc
 
 | Type | Description |
 | -- | -- |
-| [OHNativeWindow*](capi-oh-nativexcomponent-native-xcomponent-ohnativewindow.md) | Returns the nativeWindow associated with this <b>OH_ArkUI_SurfaceHolder</b> instance. |
+| [OHNativeWindow*](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | Returns the nativeWindow associated with this <b>OH_ArkUI_SurfaceHolder</b> instance. |
 
 ### OH_ArkUI_XComponent_SetAutoInitialize()
 

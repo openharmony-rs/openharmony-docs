@@ -12,7 +12,7 @@ The **ArkWeb_JavaScriptObject** struct is used to inject JavaScript code into a 
 
 **Since**: 12
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-others-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 

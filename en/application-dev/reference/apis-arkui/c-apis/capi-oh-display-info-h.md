@@ -10,7 +10,7 @@ The file declares the common enums and definitions of the display.
 
 **Since**: 12
 
-**Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)
+**Related module**: [OH_DisplayManager](capi-arkui-oh-displaymanager.md)
 
 ## Summary
 
@@ -112,7 +112,7 @@ Enumerates the status codes returned by the display manager interface.
 | DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001 | The display is invalid. |
 | DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002 | The current operation object does not have the operation permission. |
 | DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003 | The system service is abnormal. |
-| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 |  |
+| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 | Invalid parameter.<br>**Since**: 20 |
 
 ### NativeDisplayManager_FoldDisplayMode
 

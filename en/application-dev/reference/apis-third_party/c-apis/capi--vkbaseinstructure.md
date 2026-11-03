@@ -9,6 +9,6 @@
 | Name | Description |
 | -- | -- |
 | VkStructureType                    sType |  |
-| const struct VkBaseInStructure*    pNext |  |
+| [const struct VkBaseInStructure*](capi--vkbaseinstructure.md)    pNext |  |
 
 

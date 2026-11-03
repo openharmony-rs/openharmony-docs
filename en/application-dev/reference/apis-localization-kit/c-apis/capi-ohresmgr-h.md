@@ -10,7 +10,7 @@ Provides the capability of obtaining resources in the resource management native
 
 **Since**: 12
 
-**Related module**: [resourcemanager](capi-resourcemanager.md)
+**Related module**: [resourcemanager](capi-localization-kit-resourcemanager.md)
 
 ## Summary
 
@@ -70,7 +70,9 @@ Provides the capability of obtaining resources in the resource management native
 ### OH_ResourceManager_GetMediaBase64()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0);
+#endif // __cplusplus
 ```
 
 **Description**
@@ -130,7 +132,9 @@ Obtains the Base64-encoded string of the media resource by the specified resourc
 ### OH_ResourceManager_GetMediaBase64ByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0);
+#endif // __cplusplus
 ```
 
 **Description**
@@ -190,7 +194,9 @@ Obtains the Base64-encoded string of the media resource by the specified resourc
 ### OH_ResourceManager_GetMedia()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0);
+#endif // __cplusplus
 ```
 
 **Description**
@@ -250,7 +256,9 @@ Obtains the binary data of the media resource by the specified resource ID and s
 ### OH_ResourceManager_GetMediaByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0);
+#endif // __cplusplus
 ```
 
 **Description**
@@ -310,7 +318,9 @@ Obtains the binary data of the media resource by the specified resource name and
 ### OH_ResourceManager_GetDrawableDescriptor()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0);
+#endif // __cplusplus
 ```
 
 **Description**
@@ -370,7 +380,9 @@ Obtains the DrawableDescriptor object of the icon resource by the specified reso
 ### OH_ResourceManager_GetDrawableDescriptorByName()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0);
+#endif // __cplusplus
 ```
 
 **Description**
@@ -486,7 +498,9 @@ Obtains the Unicode encoding of the symbol icon corresponding to the specified r
 ### OH_ResourceManager_GetLocales()
 
 ```c
-ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)
+#ifdef __cplusplus
+ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false);
+#endif // __cplusplus
 ```
 
 **Description**

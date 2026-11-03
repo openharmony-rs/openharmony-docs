@@ -12,7 +12,7 @@ Defines a text font style, which is used to set attributes such as the font colo
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
 

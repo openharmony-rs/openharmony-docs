@@ -12,7 +12,7 @@ websocket客户端增加header的链表节点。
 
 **起始版本：** 11
 
-**相关模块：** [netstack](capi-netstack.md)
+**相关模块：** [netstack](capi-others-netstack.md)
 
 **所在头文件：** [net_websocket_type.h](capi-net-websocket-type-h.md)
 

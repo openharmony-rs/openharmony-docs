@@ -10,7 +10,7 @@
 
 **起始版本：** 24
 
-**相关模块：** [OHMIDI](capi-ohmidi.md)
+**相关模块：** [OHMIDI](capi-audio-kit-ohmidi.md)
 
 ## 汇总
 
@@ -59,7 +59,7 @@ OH_MIDIStatusCode OH_MIDIClient_Create(OH_MIDIClient **client, OH_MIDICallbacks 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIClient](capi-ohmidi-oh-midiclient.md) **client | 指向用于接收新客户端句柄的指针。 |
+| [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) **client | 指向用于接收新客户端句柄的指针。 |
 | [OH_MIDICallbacks](capi-ohmidi-oh-midicallbacks.md) callbacks | 用于系统事件的回调结构体。 |
 | void *userData | 传递给回调函数的用户自定义数据指针。 |
 
@@ -91,7 +91,7 @@ OH_MIDIStatusCode OH_MIDIClient_Destroy(OH_MIDIClient *client)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIClient](capi-ohmidi-oh-midiclient.md) *client | 目标客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | 目标客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 
 **返回值：**
 
@@ -117,7 +117,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclient.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | size_t *count | 输出参数，用于接收设备数量。 |
 
 **返回值：**
@@ -148,7 +148,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos(const OH_MIDIClient *client, OH_M
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclient.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) *infos | 用户分配的缓冲区，用于存储设备信息。 |
 | size_t capacity | 缓冲区可容纳的最大元素数量。 |
 | size_t *actualDeviceCount | 输出参数，用于接收实际写入的设备数量。 |
@@ -181,9 +181,9 @@ OH_MIDIStatusCode OH_MIDIClient_OpenDevice(OH_MIDIClient *client, int64_t device
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIClient](capi-ohmidi-oh-midiclient.md) *client | 目标客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | 目标客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | int64_t deviceId | 设备的唯一标识符，由[OH_MIDIClient_GetDeviceInfos](capi-native-midi-h.md#oh_midiclient_getdeviceinfos)获取。 |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) **device | 指向用于接收设备句柄的指针，由系统分配。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) **device | 指向用于接收设备句柄的指针，由系统分配。 |
 
 **返回值：**
 
@@ -215,7 +215,7 @@ OH_MIDIStatusCode OH_MIDIClient_OpenBLEDevice(OH_MIDIClient *client, const char 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIClient](capi-ohmidi-oh-midiclient.md) *client | 目标客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | 目标客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | const char *deviceAddr | BLE设备的MAC地址。 <br>格式："XX:XX:XX:XX:XX:XX"，X为十六进制字符0-9、A-F，例如："AA:BB:CC:DD:EE:FF"。 |
 | [OH_MIDIClient_OnDeviceOpened](capi-native-midi-base-h.md#oh_midiclient_ondeviceopened) callback | 连接过程完成时要调用的回调函数。 |
 | void *userData | 传递给回调的用户自定义数据指针。 |
@@ -248,8 +248,8 @@ OH_MIDIStatusCode OH_MIDIClient_CloseDevice(OH_MIDIClient *client, OH_MIDIDevice
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIClient](capi-ohmidi-oh-midiclient.md) *client | 目标客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | 目标设备句柄。传入的device指针必须为[OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
+| [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | 目标客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | 目标设备句柄。传入的device指针必须为[OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
 
 **返回值：**
 
@@ -275,7 +275,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclient.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | int64_t deviceId | 目标设备ID，由[OH_MIDIClient_GetDeviceInfos](capi-native-midi-h.md#oh_midiclient_getdeviceinfos)获取。 |
 | size_t *count | 输出参数，用于接收端口数量。 |
 
@@ -307,7 +307,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortInfos(const OH_MIDIClient *client, int64_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclient.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | int64_t deviceId | 目标设备ID，由[OH_MIDIClient_GetDeviceInfos](capi-native-midi-h.md#oh_midiclient_getdeviceinfos)获取。 |
 | [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md) *infos | 用户分配的缓冲区，用于存储端口信息。 |
 | size_t capacity | infos缓冲区可容纳的最大元素数量。 |
@@ -341,7 +341,7 @@ OH_MIDIStatusCode OH_MIDIDevice_OpenInputPort(OH_MIDIDevice *device, OH_MIDIPort
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
 | [OH_MIDIPortDescriptor](capi-ohmidi-oh-midiportdescriptor.md) descriptor | 端口索引和协议配置。 |
 | [OH_MIDIDevice_OnReceived](capi-native-midi-base-h.md#oh_mididevice_onreceived) callback | 有数据可用时调用的回调函数。 |
 | void *userData | 传递给回调的用户自定义数据指针。 |
@@ -374,7 +374,7 @@ OH_MIDIStatusCode OH_MIDIDevice_OpenOutputPort(OH_MIDIDevice *device, OH_MIDIPor
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
 | [OH_MIDIPortDescriptor](capi-ohmidi-oh-midiportdescriptor.md) descriptor | 端口索引和协议配置。 |
 
 **返回值：**
@@ -405,7 +405,7 @@ OH_MIDIStatusCode OH_MIDIDevice_CloseInputPort(OH_MIDIDevice *device, uint32_t p
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | 目标设备句柄。传入的device指针必须为[OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | 目标设备句柄。传入的device指针必须为[OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
 | uint32_t portIndex | 要关闭的输入端口索引，须为已通过[OH_MIDIDevice_OpenInputPort](capi-native-midi-h.md#oh_mididevice_openinputport)打开的输入端口索引。 |
 
 **返回值：**
@@ -436,7 +436,7 @@ OH_MIDIStatusCode OH_MIDIDevice_CloseOutputPort(OH_MIDIDevice *device, uint32_t 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
 | uint32_t portIndex | 要关闭的输出端口索引，须为已通过[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)打开的端口索引。 |
 
 **返回值：**
@@ -453,7 +453,9 @@ OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, 
 
 **描述：**
 
-批量发送MIDI消息（非阻塞模式，每条消息具有原子性）。 此函数需要通过[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)打开的输出端口发送数据，portIndex应为一个已打开的输出端口索引。 说明，将MIDI事件数组写入共享内存缓冲区。 - 单条消息原子性：每条事件作为不可分割的单元处理，不会出现消息被截断的情况。 - 批量操作非原子性：整个数组不一定全部写入成功。如果缓冲区空间不足，已成功写入的事件不会被回滚。 函数返回[OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode)，并通过eventsWritten参数返回已成功写入的事件数量， 开发者可据此从断点处继续发送剩余事件。
+批量发送MIDI消息（非阻塞模式，每条消息具有原子性）。 此函数需要通过[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)打开的输出端口发送数据，portIndex应为一个已打开的输出端口索引。 说明，将MIDI事件数组写入共享内存缓冲区。
+- 单条消息原子性：每条事件作为不可分割的单元处理，不会出现消息被截断的情况。
+- 批量操作非原子性：整个数组不一定全部写入成功。如果缓冲区空间不足，已成功写入的事件不会被回滚。 函数返回[OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode)，并通过eventsWritten参数返回已成功写入的事件数量， 开发者可据此从断点处继续发送剩余事件。
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -463,7 +465,7 @@ OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
 | uint32_t portIndex | 目标端口索引，须为已通过[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)打开的输出端口索引。 |
 | [const OH_MIDIEvent](capi-ohmidi-oh-midievent.md) *events | 指向要发送的事件数组的指针，内存空间需要由开发者分配。 |
 | uint32_t eventCount | 数组中的事件数量。 |
@@ -497,7 +499,7 @@ OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIn
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
 | uint32_t portIndex | 目标端口索引，须为已通过[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)打开的输出端口索引。 |
 | const uint8_t *data | 指向要发送的字节数据流的指针，内存空间需要由开发者分配。 |
 | uint32_t byteSize | 数据的字节大小。 |
@@ -530,7 +532,7 @@ OH_MIDIStatusCode OH_MIDIDevice_FlushOutputPort(OH_MIDIDevice *device, uint32_t 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIDevice](capi-ohmidi-oh-mididevice.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
+| [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) *device | 目标设备句柄。传入的device指针必须为 [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)返回的实例。 |
 | uint32_t portIndex | 目标端口索引，须为已通过[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)打开的输出端口索引。 |
 
 **返回值：**

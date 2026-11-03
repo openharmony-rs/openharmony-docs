@@ -14,7 +14,17 @@ The struct contains the set of the **OH_AVPlayerOnInfo** and **OH_AVPlayerOnErro
 
 **Replaced by**: [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)
 
-**Related module**: [AVPlayer](capi-avplayer.md)
+**Related module**: [AVPlayer](capi-others-avplayer.md)
 
 **Header file**: [avplayer_base.h](capi-avplayer-base-h.md)
+
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) onInfo |  |
+| [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) onError |  |
+
 

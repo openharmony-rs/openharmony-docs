@@ -12,7 +12,7 @@ ArkWeb_JavaScriptValueAPI is a JavaScript-related Native API struct. This struct
 
 **Since**: 18
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-others-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -55,6 +55,6 @@ Creates a JavaScript value to be returned to HTML. This function performs type c
 
 | Type | Description |
 | -- | -- |
-| [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalueptr.md) | Created JavaScript value. NULL is returned when the input parameter is invalid or memory allocation fails. |
+| [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalue8h.md) | Created JavaScript value. NULL is returned when the input parameter is invalid or memory allocation fails. |
 
 

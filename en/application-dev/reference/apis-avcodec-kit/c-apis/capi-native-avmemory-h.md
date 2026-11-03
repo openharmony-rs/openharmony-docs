@@ -10,7 +10,7 @@ The file declares the attribute definition of the media struct AVMemory.
 
 **Since**: 9
 
-**Related module**: [Core](capi-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@ The file declares the APIs for image decoding.
 
 **System API:** This is a system API.
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## Summary
 
@@ -56,10 +56,10 @@ Indicates the enumeration of SVG resource restriction levels. Higher levels allo
 
 | Enum item | Description |
 | -- | -- |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 |  |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 |  |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 |  |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 |  |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 | Use the default SVG resource limit. This level does not disable SVG resource protection.<br>**Since**: 26.0.1 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 | Use low-level restrictions to allow more SVG resource budgets to be used for complex SVG images.<br>**Since**: 26.0.1 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 | Allows a moderate SVG resource budget with a medium-level limit, which balances SVG compatibility and resource consumption for most SVG images.<br>**Since**: 26.0.1 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 | Allows a smaller SVG resource budget with a high level limit, which applies to simple SVG images, such as icons and basic UI resources.<br>**Since**: 26.0.1 |
 
 
 ## Function description
@@ -310,7 +310,7 @@ Read metadata of the image source, use metadatatype to specify metadata of inter
 
 **Since**: 26.0.0
 
-**Resource release**: image_common/OH_PictureMetadatas_Release {outMetadataArray}
+**Resource release**: [OH_PictureMetadatas_Release](capi-image-common-h-sys.md#oh_picturemetadatas_release)
 
 **System API:** This is a system API.
 

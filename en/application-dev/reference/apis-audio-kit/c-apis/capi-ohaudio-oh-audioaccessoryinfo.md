@@ -12,7 +12,7 @@ Defines the basic information of an audio accessory.<br> <b>Version Control:</b>
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_accessory_common.h](capi-native-audio-accessory-common-h.md)
 

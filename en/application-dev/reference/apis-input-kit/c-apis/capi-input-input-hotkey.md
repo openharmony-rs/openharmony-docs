@@ -12,7 +12,7 @@ Defines the hotkey struct, which describes the hotkey design logic such as the k
 
 **Since**: 14
 
-**Related module**: [input](capi-input.md)
+**Related module**: [input](capi-others-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

@@ -10,7 +10,7 @@ Defines APIs for notification services.
 
 **Since**: 13
 
-**Related module**: [NOTIFICATION](capi-notification.md)
+**Related module**: [NOTIFICATION](capi-notification-kit-notification.md)
 
 ## Summary
 

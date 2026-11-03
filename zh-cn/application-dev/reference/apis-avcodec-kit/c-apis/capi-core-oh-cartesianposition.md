@@ -12,7 +12,7 @@ struct OH_CartesianPosition {...}
 
 **起始版本：** 26.0.0
 
-**相关模块：** [Core](capi-core.md)
+**相关模块：** [Core](capi-others-core.md)
 
 **所在头文件：** [native_audio_vivid.h](capi-native-audio-vivid-h.md)
 

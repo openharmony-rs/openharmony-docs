@@ -12,7 +12,7 @@
 
 **起始版本：** 26.1.0
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -62,18 +62,9 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContext(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, ArkUI_ContextHandle* uiContext)](#oh_arkui_nativemodule_uicontentchangeeventgetcontext) | - | 获取与ArkUI状态变化事件快照关联的UI上下文。<br> 返回的句柄为借用句柄，调用方不拥有其所有权，不得释放该句柄，也不得在回调返回后使用该句柄。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContentChangeEventJson(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, const OH_ArkUI_NativeModule_UIJsonWrapper** json)](#oh_arkui_nativemodule_uicontentchangeeventgetcontentchangeeventjson) | - | 从ArkUI状态变化事件快照中获取内容变化事件详情，并以JSON封装对象返回。<br> JSON输出的顶层包含schemaVersion字段，并包含内容变化类型、触发节点、目标节点、浮层类型， 以及根据事件类别决定是否包含的子树转储信息。<br> 页面事件标识目标页面，滚动事件标识发生滚动的节点，浮层事件标识浮层节点并提供浮层类型，例如"dialog"。 触发节点是引起内容变化的节点，在浮层事件和一般的开始、结束场景中可用。 对于页面事件和滚动事件，如果无法提供触发节点，则该节点为NULL。 如果无法提供目标节点，操作仍然成功，返回的JSON中仍包含schemaVersion字段。 JSON封装对象中引用的句柄均为借用句柄，不得释放，也不得在回调返回后使用。 |
 | [typedef void (\*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData)](#oh_arkui_nativemodule_imagecollectioncallback) | OH_ArkUI_NativeModule_ImageCollectionCallback | 定义用于返回ArkUI节点图像采集结果的回调函数类型。<br> 对于每个被接受的请求，框架都会在UI线程上调用且仅调用一次此回调。每个非<b>NULL</b>的 <b>collection</b>都会转移给调用方。即使部分结果项失败，也会返回集合。 调用方必须调用<b>OH_ArkUI_NativeModule_ImageCollectionDestroy</b>释放每个非<b>NULL</b>集合。<br> 框架将<b>userData</b>原样传回，不会解引用该指针，也不会复制或释放其指向的对象。 调用方必须保证该对象在回调结束使用前一直有效。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle context, const int32_t* nodeIds, uint32_t count, OH_ArkUI_NativeModule_ImageCollectionCallback callback, void* userData)](#oh_arkui_nativemodule_getimagesbynodeidasync) | - | 异步采集指定ArkUI节点ID对应的图像。<br> 单次请求可包含<b>1</b>到<b>20</b>个互不重复的节点ID。 框架会在本函数返回前复制<b>nodeIds</b>数组。 如果<b>count</b>小于等于<b>0</b>或大于<b>20</b>，本函数返回 ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE。<br> 每个被接受的节点ID在结果集合中都有对应的结果项，即使未找到该节点或无法截取其图像。 对于<b>Image</b>节点，如果可以获取其源<b>PixelMap</b>，则返回完整的源<b>PixelMap</b>； 否则，对节点边界内的渲染内容进行截图。非<b>Image</b>节点同样对节点边界内的渲染内容进行截图。 节点无需处于可见状态。<br> 如果找不到请求的节点ID对应的ArkUI节点，对应结果项会报告 <b>ARKUI_ERROR_CODE_NODE_NOT_FOUND</b>，调用方应检查节点ID。 截图超时时，对应结果项报告<b>ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT</b>，调用方可以重试请求。 消费集合中的结果项时可以获取该结果项的错误码。 任一结果项失败时，回调会报告ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED，但仍会返回集合。<br> 调用方可以从任意线程调用本函数。对于每个被接受的请求， 框架都会在<b>context</b>关联的UI线程上调用且仅调用一次<b>callback</b>。 如果上一次请求尚未完成，本函数返回ARKUI_ERROR_CODE_COMMAND_UNFINISHED。 调用方必须等待该请求完成后再提交下一次请求。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle context, const int32_t* nodeIds, uint32_t count, OH_ArkUI_NativeModule_ImageCollectionCallback callback, void* userData)](#oh_arkui_nativemodule_getimagesbynodeidasync) | - | 异步采集指定ArkUI节点ID对应的图像。<br> 单次请求可包含<b>1</b>到<b>20</b>个互不重复的节点ID。 框架会在本函数返回前复制<b>nodeIds</b>数组。 如果<b>count</b>小于等于<b>0</b>或大于<b>20</b>，本函数返回 [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-error-code-h.md#arkui_errorcode)。<br> 每个被接受的节点ID在结果集合中都有对应的结果项，即使未找到该节点或无法截取其图像。 对于<b>Image</b>节点，如果可以获取其源<b>PixelMap</b>，则返回完整的源<b>PixelMap</b>； 否则，对节点边界内的渲染内容进行截图。非<b>Image</b>节点同样对节点边界内的渲染内容进行截图。 节点无需处于可见状态。<br> 如果找不到请求的节点ID对应的ArkUI节点，对应结果项会报告 <b>ARKUI_ERROR_CODE_NODE_NOT_FOUND</b>，调用方应检查节点ID。 截图超时时，对应结果项报告<b>ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT</b>，调用方可以重试请求。 消费集合中的结果项时可以获取该结果项的错误码。 任一结果项失败时，回调会报告[ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED](capi-error-code-h.md#arkui_errorcode)，但仍会返回集合。<br> 调用方可以从任意线程调用本函数。对于每个被接受的请求， 框架都会在<b>context</b>关联的UI线程上调用且仅调用一次<b>callback</b>。 如果上一次请求尚未完成，本函数返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-error-code-h.md#arkui_errorcode)。 调用方必须等待该请求完成后再提交下一次请求。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_NativeModule_ImageCollection* collection, int32_t nodeId, OH_PixelmapNative** outPixelmap, ArkUI_ErrorCode* outItemError)](#oh_arkui_nativemodule_imagecollectiontakeitembynodeid) | - | 取出指定节点ID对应的结果。<br> 对于图像采集成功的结果项，本函数将<b>PixelMap</b>的所有权转移给调用方。 调用方必须调用<b>OH_PixelmapNative_Destroy</b>释放该对象。 本函数也可取出图像采集失败的结果项，此时会将<b>*outPixelmap</b>设置为<b>NULL</b>， 并将该结果项的错误码写入<b>*outItemError</b>。集合中每个节点ID对应的结果仅可取出一次。<br> 销毁集合时，仅释放调用方尚未取出的<b>PixelMap</b>实例， 已转移给调用方的<b>PixelMap</b>不会因此失效。<br> 调用方不得针对同一个集合，将本函数与其他集合操作接口并发调用。 |
 | [void OH_ArkUI_NativeModule_ImageCollectionDestroy(OH_ArkUI_NativeModule_ImageCollection* collection)](#oh_arkui_nativemodule_imagecollectiondestroy) | - | 销毁图像集合，并释放尚未取出的<b>PixelMap</b>实例。<br> 调用方必须销毁回调返回的每个非<b>NULL</b>集合，即使其中的所有结果项均已取出。 本函数不会释放通过<b>OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId</b> 取得的<b>PixelMap</b>实例，也不会使这些实例失效。<br> 调用方不得针对同一个集合，将本函数与其他集合操作接口并发调用。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)( const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | 定义接收感知到的交互事件的回调类型。<br> 回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据， 不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。 事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。 事件数据顶层始终包含schemaVersion字段。 顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。<br> 各事件类型对应的字段见下方列表。 - 点击手势或点击事件：id、point、count、fingers。 - 长按手势：id、point、actualDuration（毫秒）、action（"end"）。 - 拖动手势：id、point、direction、action（"start" \| "end" \| "cancel"）。 - 捏合手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含scale字段。 - 旋转手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含angle字段，单位为度。 - 滑动手势：id、downPoint（由[x, y]组成的数组）、upPoint（由[x, y]组成的数组）、 direction、speed、actualSpeed。 - 拖拽事件：action（"start" \| "end"）；"start"时包含id、point、hostName、actualDuration； "end"时包含point、dropResult（"success" \| "fail"）、id（目标节点ID，仅在成功时包含）、hostName。 - 触摸事件：action（"down" \| "up"）、fingerId、point；"down"时还包含id（命中节点ID）。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | 定义异步JSON树采集请求完成时调用的回调函数类型。<br> 每个被接受的请求均在UI线程上触发且仅触发一次回调。 仅当errorCode为ARKUI_ERROR_CODE_NO_ERROR时，回调才会接收非NULL的JSON对象并取得其所有权。 调用方必须调用OH_ArkUI_NativeModule_UIJsonWrapperDestroy释放该对象。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)( const OH_ArkUI_NativeModule_UIContentChangeEvent* event, void* userData) | 定义已注册的ArkUI状态变化事件触发时调用的回调函数类型。<br> 回调在注册时指定的UI上下文所关联的UI线程上执行。 事件快照不可修改，且仅在本次回调返回前有效。 ArkUI仅借用userData，不取得其所有权，也不会访问或释放其指向的数据。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData) | 定义用于返回ArkUI节点图像采集结果的回调函数类型。<br> 对于每个被接受的请求，框架都会在UI线程上调用且仅调用一次此回调。每个非<b>NULL</b>的 <b>collection</b>都会转移给调用方。即使部分结果项失败，也会返回集合。 调用方必须调用<b>OH_ArkUI_NativeModule_ImageCollectionDestroy</b>释放每个非<b>NULL</b>集合。<br> 框架将<b>userData</b>原样传回，不会解引用该指针，也不会复制或释放其指向的对象。 调用方必须保证该对象在回调结束使用前一直有效。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 
 ## 枚举类型说明
 
@@ -204,7 +195,15 @@ typedef void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(co
 
 **描述：**
 
-定义接收感知到的交互事件的回调类型。<br> 回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据， 不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。 事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。 事件数据顶层始终包含schemaVersion字段。 顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。<br> 各事件类型对应的字段见下方列表。 - 点击手势或点击事件：id、point、count、fingers。 - 长按手势：id、point、actualDuration（毫秒）、action（"end"）。 - 拖动手势：id、point、direction、action（"start" \| "end" \| "cancel"）。 - 捏合手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含scale字段。 - 旋转手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含angle字段，单位为度。 - 滑动手势：id、downPoint（由[x, y]组成的数组）、upPoint（由[x, y]组成的数组）、 direction、speed、actualSpeed。 - 拖拽事件：action（"start" \| "end"）；"start"时包含id、point、hostName、actualDuration； "end"时包含point、dropResult（"success" \| "fail"）、id（目标节点ID，仅在成功时包含）、hostName。 - 触摸事件：action（"down" \| "up"）、fingerId、point；"down"时还包含id（命中节点ID）。
+定义接收感知到的交互事件的回调类型。<br> 回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据， 不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。 事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。 事件数据顶层始终包含schemaVersion字段。 顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。<br> 各事件类型对应的字段见下方列表。
+- 点击手势或点击事件：id、point、count、fingers。
+- 长按手势：id、point、actualDuration（毫秒）、action（"end"）。
+- 拖动手势：id、point、direction、action（"start" \| "end" \| "cancel"）。
+- 捏合手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含scale字段。
+- 旋转手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含angle字段，单位为度。
+- 滑动手势：id、downPoint（由[x, y]组成的数组）、upPoint（由[x, y]组成的数组）、 direction、speed、actualSpeed。
+- 拖拽事件：action（"start" \| "end"）；"start"时包含id、point、hostName、actualDuration； "end"时包含point、dropResult（"success" \| "fail"）、id（目标节点ID，仅在成功时包含）、hostName。
+- 触摸事件：action（"down" \| "up"）、fingerId、point；"down"时还包含id（命中节点ID）。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,8 +234,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserve
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] 指向UI实例的指针，不能为NULL。 |
-| uint32_t eventMask | [in] 要监听的事件类型位掩码，由 [OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollection_interactioneventtype)的枚举值按位或组合而成。 支持的标志位范围为OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP至 OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH，范围外的位会被忽略。 如果未设置任何受支持的标志位，则返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] 指向UI实例的指针，不能为NULL。 |
+| uint32_t eventMask | [in] 要监听的事件类型位掩码，由 [OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollection_interactioneventtype)的枚举值按位或组合而成。 支持的标志位范围为OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP至 OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH，范围外的位会被忽略。 如果未设置任何受支持的标志位，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
 | uint32_t *registerID | [out] 用于接收观察者注册ID的指针，不能为NULL。 其指向的值无需初始化；注册成功时写入注册ID，失败时设置为0。 |
 | [OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectioninteractionjsoncallback) callback | [in] 匹配事件发生时调用的回调函数，不能为NULL。 |
 | void *userData | [in] 传给回调的自定义用户数据，可以为NULL。框架不取得其所有权； 调用方必须保证该数据在观察者注销前一直有效。 |
@@ -245,7 +244,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserve
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID 必填指针参数为NULL，或eventMask未包含任何受支持的标志位。</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID UI上下文无效。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 必填指针参数为NULL，或eventMask未包含任何受支持的标志位。</li> <li>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) UI上下文无效。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver()
 
@@ -271,7 +270,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObser
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID 注册ID无效。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 注册ID无效。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentJsonCallback()
 
@@ -287,13 +286,13 @@ typedef void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle co
 
 **起始版本：** 26.1.0
 
-**资源释放：** ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}.
+**资源释放：** OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}.
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] 发起请求时使用的UI上下文。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] 发起请求时使用的UI上下文。 |
 | uint64_t requestId | [in] 分配给已接受请求的标识符。 |
 | [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) errorCode | [in] 请求的处理结果。 |
 | [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) *json | [in] 不可变的JSON结果。请求失败时为NULL，成功时包含以JSON结构表示的控件树。 JSON对象顶层包含schemaVersion字段。开发者必须在使用完毕后释放该对象。 |
@@ -313,7 +312,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeMo
 
 **起始版本：** 26.1.0
 
-**资源释放：** OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy {request}
+**资源释放：** [OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy](#oh_arkui_nativemodule_uiagenttreerequestdestroy)
 
 **参数：**
 
@@ -326,7 +325,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeMo
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 请求创建成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID 输入或输出参数无效。</li> <li>ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED 内存分配失败。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 请求创建成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 输入或输出参数无效。</li> <li>[ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED](capi-error-code-h.md#arkui_errorcode) 内存分配失败。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy()
 
@@ -373,7 +372,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterPureLayoutNodes
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 选项设置成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID request为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 选项设置成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) request为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes()
 
@@ -400,7 +399,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes(O
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 选项设置成功。对完整树采集请求设置false也会成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID request为NULL。</li> <li>ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED 对完整树采集请求将enabled设置为true。此时请求对象保持不变。若需启用此选项，请使用可见树采集请求。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 选项设置成功。对完整树采集请求设置false也会成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) request为NULL。</li> <li>[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 对完整树采集请求将enabled设置为true。此时请求对象保持不变。若需启用此选项，请使用可见树采集请求。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThreshold()
 
@@ -427,7 +426,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThres
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 阈值设置成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID request为NULL。</li> <li>ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE threshold超出有效范围。</li> <li>ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED 请求为完整树采集请求。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 阈值设置成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) request为NULL。</li> <li>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-error-code-h.md#arkui_errorcode) threshold超出有效范围。</li> <li>[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-error-code-h.md#arkui_errorcode) 请求为完整树采集请求。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo()
 
@@ -454,7 +453,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo(OH_Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 选项设置成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID request为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 选项设置成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) request为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeRequestSetAccessibilityInfo()
 
@@ -481,7 +480,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetAccessibilityInfo(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 选项设置成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID request为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 选项设置成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) request为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectVisualProperties()
 
@@ -508,7 +507,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectVisualProperti
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 选项设置成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID request为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 选项设置成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) request为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectFunctionalProperties()
 
@@ -535,7 +534,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectFunctionalProp
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 选项设置成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID request为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 选项设置成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) request为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentGetTreeJson()
 
@@ -551,13 +550,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJson(ArkUI_ContextHandle con
 
 **起始版本：** 26.1.0
 
-**资源释放：** ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}
+**资源释放：** [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] 待采集UI树所属的UI上下文。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] 待采集UI树所属的UI上下文。 |
 | [const OH_ArkUI_NativeModule_UIAgentTreeRequest](capi-arkui-nativemodule-oh-arkui-nativemodule-uiagenttreerequest.md) *request | [in] 采集请求。 |
 | [OH_ArkUI_NativeModule_UIJsonFormat](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonformat) format | [in] JSON输出格式。 |
 | [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) **json | [out] 用于接收不可变JSON结果对象的输出参数，不能为NULL， 且必须指向在整个调用期间有效的可写存储空间。调用方无需预先初始化*json。 成功时，*json为非NULL，结果对象顶层包含schemaVersion字段。调用方拥有结果对象的所有权， 必须调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放该对象。 任何失败时，只要json指向有效的可写存储空间，*json均置为NULL，调用方无需释放结果对象。 |
@@ -566,7 +565,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJson(ArkUI_ContextHandle con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 采集成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID 参数或输出格式无效。</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID UI上下文无效。</li> <li>ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD 在非UI线程上调用。</li> <li>ARKUI_ERROR_CODE_RESULT_TOO_LARGE 结果超出节点数量或大小限制。</li> <li>ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED 内存分配失败。</li> <li>ARKUI_ERROR_CODE_INTERNAL_ERROR 发生其他内部错误。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 采集成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数或输出格式无效。</li> <li>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) UI上下文无效。</li> <li>[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](capi-error-code-h.md#arkui_errorcode) 在非UI线程上调用。</li> <li>[ARKUI_ERROR_CODE_RESULT_TOO_LARGE](capi-error-code-h.md#arkui_errorcode) 结果超出节点数量或大小限制。</li> <li>[ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED](capi-error-code-h.md#arkui_errorcode) 内存分配失败。</li> <li>[ARKUI_ERROR_CODE_INTERNAL_ERROR](capi-error-code-h.md#arkui_errorcode) 发生其他内部错误。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync()
 
@@ -586,7 +585,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync(ArkUI_ContextHandl
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] 待采集UI树所属的UI上下文。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] 待采集UI树所属的UI上下文。 |
 | [const OH_ArkUI_NativeModule_UIAgentTreeRequest](capi-arkui-nativemodule-oh-arkui-nativemodule-uiagenttreerequest.md) *request | [in] 采集请求。 |
 | [OH_ArkUI_NativeModule_UIJsonFormat](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonformat) format | [in] JSON输出格式。 |
 | [OH_ArkUI_NativeModule_UIAgentJsonCallback](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagentjsoncallback) callback | [in] 请求完成时调用的回调函数。请求成功时，回调取得JSON对象的所有权， 必须调用OH_ArkUI_NativeModule_UIJsonWrapperDestroy释放该对象。 JSON对象顶层包含schemaVersion字段。 |
@@ -597,7 +596,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync(ArkUI_ContextHandl
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 请求已被接受。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID 参数或输出格式无效。</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID UI上下文无效。</li> <li>ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD 在非UI线程上调用。</li> <li>ARKUI_ERROR_CODE_COMMAND_UNFINISHED 上一次请求尚未完成。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 请求已被接受。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数或输出格式无效。</li> <li>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) UI上下文无效。</li> <li>[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](capi-error-code-h.md#arkui_errorcode) 在非UI线程上调用。</li> <li>[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-error-code-h.md#arkui_errorcode) 上一次请求尚未完成。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIAgentGetPageText()
 
@@ -613,20 +612,20 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetPageText(ArkUI_ContextHandle uiC
 
 **起始版本：** 26.1.0
 
-**资源释放：** ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {pageText}
+**资源释放：** [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] 要采集文本的目标UI实例的上下文。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] 要采集文本的目标UI实例的上下文。 |
 | [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)** pageText | [out] 用于接收结果对象的输出参数。调用方应将其指向的对象指针初始化为NULL。 调用成功时，调用方拥有返回对象的所有权，必须在不再使用时调用 [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放该对象。 调用失败时，若输出参数有效，则将其指向的对象指针设置为NULL。 调用成功时，返回的JSON对象顶层包含schemaVersion字段，即使页面为空也必须携带该字段。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID pageText为NULL。</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID uiContext为NULL或已失效。</li> <li>ARKUI_ERROR_CODE_CAPI_INIT_ERROR Native实现不可用。</li> <li>ARKUI_ERROR_CODE_INTERNAL_ERROR 当前页面不存在、JSON数据的大小无法用uint32_t表示，或采集、序列化失败。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) pageText为NULL。</li> <li>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) uiContext为NULL或已失效。</li> <li>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode) Native实现不可用。</li> <li>[ARKUI_ERROR_CODE_INTERNAL_ERROR](capi-error-code-h.md#arkui_errorcode) 当前页面不存在、JSON数据的大小无法用uint32_t表示，或采集、序列化失败。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventCallback()
 
@@ -667,7 +666,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_RegisterUIContentChangeEvent(ArkUI_Context
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] 要监听的UI上下文。该句柄必须在订阅存续期间保持有效。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] 要监听的UI上下文。该句柄必须在订阅存续期间保持有效。 |
 | bool withStart | [in] 是否上报开始事件。true表示上报开始事件，例如页面切换开始、滚动开始； false表示仅上报结束事件。 |
 | uint32_t eventMask | [in] 要订阅的事件类别，由 [OH_ArkUI_NativeModule_UIContentChangeEventCategory](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeeventcategory)的枚举值按位或组合而成，不能为0。 [OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeeventcategory)类别不区分滚动子类型。 如需忽略特定滚动事件，请在ignoreMask中设置 [OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeignoretype)或 [OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeignoretype)对应的标志位。 |
 | uint32_t ignoreMask | [in] 要忽略的事件类型，由 [OH_ArkUI_NativeModule_UIContentChangeIgnoreType](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uicontentchangeignoretype)的枚举值按位或组合而成。 |
@@ -679,7 +678,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_RegisterUIContentChangeEvent(ArkUI_Context
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID uiContext为NULL或不再处于活跃状态。</li> <li>ARKUI_ERROR_CODE_CALLBACK_INVALID callback为NULL。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID eventMask或subscriptionId无效。</li> <li>ARKUI_ERROR_CODE_CAPI_INIT_ERROR Native模块尚未初始化。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) uiContext为NULL或不再处于活跃状态。</li> <li>[ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-error-code-h.md#arkui_errorcode) callback为NULL。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) eventMask或subscriptionId无效。</li> <li>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode) Native模块尚未初始化。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UnRegisterUIContentChangeEvent()
 
@@ -699,14 +698,14 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UnRegisterUIContentChangeEvent(ArkUI_Conte
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) uiContext | [in] 订阅所属的UI上下文。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [in] 订阅所属的UI上下文。 |
 | uint64_t subscriptionId | [in] 属于uiContext且仍然有效的订阅ID，必须为非零值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID uiContext为NULL或不再处于活跃状态。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID subscriptionId为0、无法识别，或对应订阅已被移除。</li> <li>ARKUI_ERROR_CODE_CAPI_INIT_ERROR Native C接口尚未初始化。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) uiContext为NULL或不再处于活跃状态。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) subscriptionId为0、无法识别，或对应订阅已被移除。</li> <li>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-error-code-h.md#arkui_errorcode) Native C接口尚未初始化。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventGetType()
 
@@ -733,7 +732,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetType(const OH_ArkUI
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID event或type为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) event或type为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventGetTimestamp()
 
@@ -760,7 +759,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetTimestamp(const OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID event或nanoTimestamp为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) event或nanoTimestamp为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventGetContext()
 
@@ -781,13 +780,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContext(const OH_Ar
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_ArkUI_NativeModule_UIContentChangeEvent](capi-arkui-nativemodule-oh-arkui-nativemodule-uicontentchangeevent.md)* event | [in] 指向事件快照的指针，仅在回调执行期间有效。 |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md)* uiContext | [out] 用于接收借用的UI上下文句柄的指针，操作成功时写入。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)* uiContext | [out] 用于接收借用的UI上下文句柄的指针，操作成功时写入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID event或uiContext为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) event或uiContext为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventGetContentChangeEventJson()
 
@@ -814,7 +813,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContentChangeEventJ
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 操作成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID event或json为NULL。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 操作成功。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) event或json为NULL。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_ImageCollectionCallback()
 
@@ -830,13 +829,13 @@ typedef void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode er
 
 **起始版本：** 26.1.0
 
-**资源释放：** OH_ArkUI_NativeModule_ImageCollectionDestroy {collection}
+**资源释放：** [OH_ArkUI_NativeModule_ImageCollectionDestroy](#oh_arkui_nativemodule_imagecollectiondestroy)
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) errorCode | [in] 请求的整体处理结果。 <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 表示所有结果项均成功。</li> <li>ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED 表示部分结果项采集失败。</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID 表示请求被接受后，关联的UI上下文失效。</li> <li>ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED 表示集合分配失败。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) errorCode | [in] 请求的整体处理结果。 <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示所有结果项均成功。</li> <li>[ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED](capi-error-code-h.md#arkui_errorcode) 表示部分结果项采集失败。</li> <li>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) 表示请求被接受后，关联的UI上下文失效。</li> <li>[ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED](capi-error-code-h.md#arkui_errorcode) 表示集合分配失败。</li> </ul> |
 | [OH_ArkUI_NativeModule_ImageCollection](capi-arkui-nativemodule-oh-arkui-nativemodule-imagecollection.md)* collection | [in] 结果集合。所有结果项均成功或部分结果项失败时为非<b>NULL</b>值； UI上下文失效或集合分配失败时为<b>NULL</b>。 |
 | void* userData | [in] 调用方自定义的上下文指针，可以为<b>NULL</b>。 |
 
@@ -848,7 +847,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle
 
 **描述：**
 
-异步采集指定ArkUI节点ID对应的图像。<br> 单次请求可包含<b>1</b>到<b>20</b>个互不重复的节点ID。 框架会在本函数返回前复制<b>nodeIds</b>数组。 如果<b>count</b>小于等于<b>0</b>或大于<b>20</b>，本函数返回 ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE。<br> 每个被接受的节点ID在结果集合中都有对应的结果项，即使未找到该节点或无法截取其图像。 对于<b>Image</b>节点，如果可以获取其源<b>PixelMap</b>，则返回完整的源<b>PixelMap</b>； 否则，对节点边界内的渲染内容进行截图。非<b>Image</b>节点同样对节点边界内的渲染内容进行截图。 节点无需处于可见状态。<br> 如果找不到请求的节点ID对应的ArkUI节点，对应结果项会报告 <b>ARKUI_ERROR_CODE_NODE_NOT_FOUND</b>，调用方应检查节点ID。 截图超时时，对应结果项报告<b>ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT</b>，调用方可以重试请求。 消费集合中的结果项时可以获取该结果项的错误码。 任一结果项失败时，回调会报告ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED，但仍会返回集合。<br> 调用方可以从任意线程调用本函数。对于每个被接受的请求， 框架都会在<b>context</b>关联的UI线程上调用且仅调用一次<b>callback</b>。 如果上一次请求尚未完成，本函数返回ARKUI_ERROR_CODE_COMMAND_UNFINISHED。 调用方必须等待该请求完成后再提交下一次请求。
+异步采集指定ArkUI节点ID对应的图像。<br> 单次请求可包含<b>1</b>到<b>20</b>个互不重复的节点ID。 框架会在本函数返回前复制<b>nodeIds</b>数组。 如果<b>count</b>小于等于<b>0</b>或大于<b>20</b>，本函数返回 [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-error-code-h.md#arkui_errorcode)。<br> 每个被接受的节点ID在结果集合中都有对应的结果项，即使未找到该节点或无法截取其图像。 对于<b>Image</b>节点，如果可以获取其源<b>PixelMap</b>，则返回完整的源<b>PixelMap</b>； 否则，对节点边界内的渲染内容进行截图。非<b>Image</b>节点同样对节点边界内的渲染内容进行截图。 节点无需处于可见状态。<br> 如果找不到请求的节点ID对应的ArkUI节点，对应结果项会报告 <b>ARKUI_ERROR_CODE_NODE_NOT_FOUND</b>，调用方应检查节点ID。 截图超时时，对应结果项报告<b>ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT</b>，调用方可以重试请求。 消费集合中的结果项时可以获取该结果项的错误码。 任一结果项失败时，回调会报告[ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED](capi-error-code-h.md#arkui_errorcode)，但仍会返回集合。<br> 调用方可以从任意线程调用本函数。对于每个被接受的请求， 框架都会在<b>context</b>关联的UI线程上调用且仅调用一次<b>callback</b>。 如果上一次请求尚未完成，本函数返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-error-code-h.md#arkui_errorcode)。 调用方必须等待该请求完成后再提交下一次请求。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -858,7 +857,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-contexthandle.md) context | [in] 用于处理请求的ArkUI上下文，不能为<b>NULL</b>。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | [in] 用于处理请求的ArkUI上下文，不能为<b>NULL</b>。 |
 | const int32_t* nodeIds | [in] 指向节点ID数组首元素的指针。数组包含<b>count</b>个互不重复的ArkUI节点ID， 指针不能为NULL。 |
 | uint32_t count | [in] 节点ID的数量，有效范围为(0, 20]。 |
 | [OH_ArkUI_NativeModule_ImageCollectionCallback](capi-ui-info-collection-h.md#oh_arkui_nativemodule_imagecollectioncallback) callback | [in] 用于接收结果的回调函数，不能为<b>NULL</b>。 |
@@ -868,7 +867,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 框架已接受请求。</li> <li>ARKUI_ERROR_CODE_UI_CONTEXT_INVALID context为NULL或无效。</li> <li>ARKUI_ERROR_CODE_CALLBACK_INVALID callback为NULL。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID nodeIds为NULL。</li> <li>ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE count小于等于0或大于20。</li> <li>ARKUI_ERROR_CODE_DUPLICATE_NODE_ID 节点ID重复。</li> <li>ARKUI_ERROR_CODE_COMMAND_UNFINISHED 上一次请求尚未完成。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 框架已接受请求。</li> <li>[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-error-code-h.md#arkui_errorcode) context为NULL或无效。</li> <li>[ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-error-code-h.md#arkui_errorcode) callback为NULL。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) nodeIds为NULL。</li> <li>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-error-code-h.md#arkui_errorcode) count小于等于0或大于20。</li> <li>[ARKUI_ERROR_CODE_DUPLICATE_NODE_ID](capi-error-code-h.md#arkui_errorcode) 节点ID重复。</li> <li>[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-error-code-h.md#arkui_errorcode) 上一次请求尚未完成。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId()
 
@@ -884,7 +883,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_N
 
 **起始版本：** 26.1.0
 
-**资源释放：** multimedia/image_framework/image/OH_PixelmapNative_Destroy {outPixelmap}
+**资源释放：** [OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)
 
 **参数：**
 
@@ -893,13 +892,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_N
 | [OH_ArkUI_NativeModule_ImageCollection](capi-arkui-nativemodule-oh-arkui-nativemodule-imagecollection.md)* collection | [in] 要从中取出结果项的图像集合，不能为NULL。 |
 | int32_t nodeId | [in] 要取出的结果项对应的ArkUI节点ID。 |
 | [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md)** outPixelmap | [out] 用于接收所有权已转移的PixelMap的输出参数，不能为NULL。 对于失败的结果项，其指向的PixelMap指针会被设置为NULL。 |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode)* outItemError | [out] 用于接收该结果项错误码的输出参数，不能为NULL。 <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 表示结果项采集成功。</li> <li>ARKUI_ERROR_CODE_NODE_NOT_FOUND 表示采集图像时未找到请求的节点ID对应的ArkUI节点。</li> <li>ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED 表示生成图像结果所需的内存分配失败。</li> <li>ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT 表示截图超时。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode)* outItemError | [out] 用于接收该结果项错误码的输出参数，不能为NULL。 <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示结果项采集成功。</li> <li>[ARKUI_ERROR_CODE_NODE_NOT_FOUND](capi-error-code-h.md#arkui_errorcode) 表示采集图像时未找到请求的节点ID对应的ArkUI节点。</li> <li>[ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED](capi-error-code-h.md#arkui_errorcode) 表示生成图像结果所需的内存分配失败。</li> <li>[ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT](capi-error-code-h.md#arkui_errorcode) 表示截图超时。</li> </ul> |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功取出结果项，包括图像采集失败的结果项。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID 必填指针参数为NULL。</li> <li>ARKUI_ERROR_CODE_COLLECTION_ITEM_NOT_FOUND nodeId在collection中没有对应的结果项。</li> <li>ARKUI_ERROR_CODE_COLLECTION_ITEM_ALREADY_TAKEN 该结果项已被取出。</li> </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | <ul> <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功取出结果项，包括图像采集失败的结果项。</li> <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 必填指针参数为NULL。</li> <li>[ARKUI_ERROR_CODE_COLLECTION_ITEM_NOT_FOUND](capi-error-code-h.md#arkui_errorcode) nodeId在collection中没有对应的结果项。</li> <li>[ARKUI_ERROR_CODE_COLLECTION_ITEM_ALREADY_TAKEN](capi-error-code-h.md#arkui_errorcode) 该结果项已被取出。</li> </ul> |
 
 ### OH_ArkUI_NativeModule_ImageCollectionDestroy()
 

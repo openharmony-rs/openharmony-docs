@@ -12,7 +12,7 @@ struct OhosImageSourceOps {...}
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-image.md)
+**相关模块：** [Image](capi-others-image.md)
 
 **所在头文件：** [image_source_mdk.h](capi-image-source-mdk-h.md)
 
@@ -24,6 +24,6 @@ struct OhosImageSourceOps {...}
 | -- | -- |
 | int32_t density | 图像源像素密度。 |
 | int32_t pixelFormat | 图像源像素格式，通常用于描述YUV缓冲区。 |
-| struct OhosImageSize size | 图像源像素宽高的大小。 |
+| [struct OhosImageSize](capi-image-ohosimagesize.md) size | 图像源像素宽高的大小。 |
 
 

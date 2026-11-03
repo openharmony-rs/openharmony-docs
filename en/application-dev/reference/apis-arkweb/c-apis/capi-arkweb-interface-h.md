@@ -10,7 +10,7 @@
 
 **Since**: 12
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 ## Summary
 

@@ -12,7 +12,7 @@ struct CameraInput_Callbacks {...}
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [camera_input.h](capi-camera-input-h.md)
 

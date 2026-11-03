@@ -10,7 +10,7 @@ Declare audio device related interfaces for audio device descriptor.<br> Defines
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 
@@ -205,7 +205,7 @@ Query the device role of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
 | [OH_AudioDevice_Role](capi-native-audio-device-base-h.md#oh_audiodevice_role) *deviceRole | the pointer [OH_AudioDevice_Role](capi-native-audio-device-base-h.md#oh_audiodevice_role) variable that will be set the device role value. |
 
 **Returns**:
@@ -232,7 +232,7 @@ Query the device type of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
 | [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) *deviceType | the pointer [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) pointer variable that will be set the device type value. |
 
 **Returns**:
@@ -259,7 +259,7 @@ Query the device id of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
 | uint32_t *id | pointer variable that will be set the device id value. |
 
 **Returns**:
@@ -286,8 +286,8 @@ Query the device name of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
-| char **name | pointer variable that will be set the device name value. Do not release the name pointer separately instead call OH_AudioRoutingManager_ReleaseDevices to release the DeviceDescriptor array when it is no use anymore. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| char **name | pointer variable that will be set the device name value. Do not release the name pointer separately instead call [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
 
 **Returns**:
 
@@ -313,8 +313,8 @@ Query the device address of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
-| char **address | pointer variable that will be set the device address value. Do not release the address pointer separately instead call OH_AudioRoutingManager_ReleaseDevices to release the DeviceDescriptor array when it is no use anymore. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| char **address | pointer variable that will be set the device address value. Do not release the address pointer separately instead call [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
 
 **Returns**:
 
@@ -340,8 +340,8 @@ Query the sample rate array of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
-| uint32_t **sampleRates | array pointer variable that will be set the sample rate array value. Do not release the sampleRates pointer separately instead call OH_AudioRoutingManager_ReleaseDevices to release the DeviceDescriptor array when it is no use anymore. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| uint32_t **sampleRates | array pointer variable that will be set the sample rate array value. Do not release the sampleRates pointer separately instead call [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
 | uint32_t *size | pointer variable that will be set the sample rate size value. |
 
 **Returns**:
@@ -368,8 +368,8 @@ Query the device channel count array of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
-| uint32_t **channelCounts | array pointer variable that will be set the channel count array value. Do not release the channelCounts pointer separately instead call OH_AudioRoutingManager_ReleaseDevices to release the DeviceDescriptor array when it is no use anymore. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| uint32_t **channelCounts | array pointer variable that will be set the channel count array value. Do not release the channelCounts pointer separately instead call [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
 | uint32_t *size | pointer variable that will be set the channel count size value. |
 
 **Returns**:
@@ -396,8 +396,8 @@ Query the display name of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
-| char **displayName | pointer variable that will be set the display name value. Do not release the displayName pointer separately instead call OH_AudioRoutingManager_ReleaseDevices to release the DeviceDescriptor array when it is no use anymore. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| char **displayName | pointer variable that will be set the display name value. Do not release the displayName pointer separately instead call [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
 
 **Returns**:
 
@@ -423,8 +423,8 @@ Query the encoding type array of the target audio device descriptor.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by OH_AudioRoutingManager_GetDevices or OH_AudioRouterManager_OnDeviceChangedCallback. |
-| [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) **encodingTypes | the [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) Do not release the encodingTypes pointer separately instead call OH_AudioRoutingManager_ReleaseDevices to release the DeviceDescriptor array when it is no use anymore. |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | reference returned by [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or OH_AudioRouterManager_OnDeviceChangedCallback. |
+| [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) **encodingTypes | the [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) Do not release the encodingTypes pointer separately instead call [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array when it is no use anymore. |
 | uint32_t *size | pointer variable that will be set the encoding type size value. |
 
 **Returns**:

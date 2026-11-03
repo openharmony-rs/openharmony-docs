@@ -1,7 +1,7 @@
 # C API<!--c-inputkit-->
 
 - 模块<!--inputkit-module-->
-    - [input](capi-input.md)
+    - [input](capi-input-kit-input.md)
 - 头文件<!--inputkit-headerfile-->
     - [oh_pointer_style.h](capi-oh-pointer-style-h.md)
     - [oh_key_code.h](capi-oh-key-code-h.md)

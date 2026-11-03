@@ -32,7 +32,7 @@ typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
 
 **起始版本：** 12
 
-**相关模块：** [InputMethod](capi-inputmethod.md)
+**相关模块：** [InputMethod](capi-others-inputmethod.md)
 
 **所在头文件：** [inputmethod_private_command_capi.h](capi-inputmethod-private-command-capi-h.md)
 

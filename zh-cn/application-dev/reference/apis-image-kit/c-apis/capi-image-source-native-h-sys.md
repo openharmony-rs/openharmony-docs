@@ -12,7 +12,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## 汇总
 
@@ -56,10 +56,10 @@ SVG资源限制级别的枚举。 级别越高，解析和渲染SVG图片时允�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 |  |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 |  |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 |  |
-| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 |  |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 | 使用默认的SVG资源限制。该级别不会禁用SVG资源保护。<br>**起始版本：** 26.0.1 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 | 使用低级别限制，允许更多SVG资源预算用于复杂的SVG图片。<br>**起始版本：** 26.0.1 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 | 使用中级别限制，允许适中的SVG资源预算， 在SVG兼容性和资源消耗之间取得平衡，适用于大多数SVG图片。<br>**起始版本：** 26.0.1 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 | 使用高级别限制，允许较少的SVG资源预算，适用于简单的SVG图片， 例如图标和基础UI资源。<br>**起始版本：** 26.0.1 |
 
 
 ## 函数说明
@@ -310,7 +310,7 @@ Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNativ
 
 **起始版本：** 26.0.0
 
-**资源释放：** image_common/OH_PictureMetadatas_Release {outMetadataArray}
+**资源释放：** [OH_PictureMetadatas_Release](capi-image-common-h-sys.md#oh_picturemetadatas_release)
 
 **系统接口：** 此接口为系统接口。
 

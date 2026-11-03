@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [Location](capi-location.md)
+**相关模块：** [Location](capi-location-kit-location.md)
 
 ## 汇总
 

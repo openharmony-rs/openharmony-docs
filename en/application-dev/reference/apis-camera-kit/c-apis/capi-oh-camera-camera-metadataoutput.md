@@ -12,7 +12,7 @@ Defines a struct for the metadata output object.<br>You can use the [OH_CameraMa
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [metadata_output.h](capi-metadata-output-h.md)
 

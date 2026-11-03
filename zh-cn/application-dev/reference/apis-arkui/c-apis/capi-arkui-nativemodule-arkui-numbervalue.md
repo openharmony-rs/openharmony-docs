@@ -12,7 +12,7 @@ ArkUI 在 Native 侧使用的数字类型，用于通过统一类型承载浮点
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [common_type.h](capi-common-type-h.md)
 
@@ -22,8 +22,8 @@ ArkUI 在 Native 侧使用的数字类型，用于通过统一类型承载浮点
 
 | 名称 | 描述 |
 | -- | -- |
-| float f32 |  |
-| int32_t i32 |  |
-| uint32_t u32 |  |
+| float f32 | 浮点数。<br>**起始版本：** 12 |
+| int32_t i32 | 有符号整数。<br>**起始版本：** 12 |
+| uint32_t u32 | 无符号整数。<br>**起始版本：** 12 |
 
 

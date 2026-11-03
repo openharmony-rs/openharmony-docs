@@ -1,9 +1,9 @@
 # C API<!--c-arkdata-->
 
 - Module<!--arkdata-module-->
-    - [UDMF](capi-udmf.md)
-    - [Preferences](capi-preferences.md)
-    - [RDB](capi-rdb.md)
+    - [UDMF](capi-arkdata-udmf.md)
+    - [Preferences](capi-arkdata-preferences.md)
+    - [RDB](capi-arkdata-rdb.md)
 - Header file<!--arkdata-headerfile-->
     - [udmf_meta.h](capi-udmf-meta-h.md)
     - [udmf_err_code.h](capi-udmf-err-code-h.md)

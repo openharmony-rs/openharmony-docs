@@ -12,7 +12,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [CodecBase](capi-codecbase.md)
+**相关模块：** [CodecBase](capi-avcodec-kit-codecbase.md)
 
 ## 汇总
 
@@ -40,7 +40,7 @@
 | const char *OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT | 用于描述单个ROI矩形右侧坐标（x）的键，值类型为int32_t。<br> 坐标系的原点位于视频的左上角。 取值范围为([OH_MD_KEY_VIDEO_METADATA_ROI_LEFT](capi-native-avcodec-videobase-h.md#变量), OH_MD_KEY_VIDEO_WIDTH]。 这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_METADATA_ROI_DELTA_QP | 用于描述单个ROI的量化参数（QP）偏移量的键，值类型为int32_t。<br> 该变量取值范围为[-51, 51]。 这是配置ROI参数时的可选键。 如果未设置此键，编码器将对此区域使用其默认的量化参数策略。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_METADATA_ROI_SEM_LABEL | 用于描述单个ROI语义标签的键，值类型为int32_t。<br> 该变量值必须与[OH_VideoMetadataRoiSemanticLabel](capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)对应。 这是配置ROI参数时的可选键。 如果未设置此键，该区域将采用默认的语义处理策略。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_ENCODER_WITH_LOWPOWER_CAMERA | 定义采编联合低功耗优化的使能的KEY。<br> 该KEY是采编联合低功耗优化的配置开关。 使用[OH_AVFormat_SetIntValue](capi-native-avformat-h.md#oh_avformat_setintvalue)设置启用状态： -1：开启采编联合低功耗优化。 -0：关闭此能力（默认）。 使用约束： 该key仅对视频编码器有效。 这是一个可选参数。可在编码器中配置 通过[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)初始化，或 在运行时通过[OH_VideoEncoder_SetParameter](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter)启用。 启用后，采集侧会根据编码信息调整采集配置策略，以降低整体功耗<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_ENCODER_WITH_LOWPOWER_CAMERA | 采编联合降低功耗的使能键。<br> 该KEY用于启用/禁用采编联合低功耗优化策略。 使用[OH_AVFormat_SetIntValue](capi-native-avformat-h.md#oh_avformat_setintvalue)设置使能状态： -**1**:启用采编联合低功耗优化。 -**0**（默认值）：关闭此能力。 使用限制： 该key仅对视频编码器有效。 该key是编码的可选KEY。该key可以在编码器初始化阶段通过[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)配置是否使能，或者 在运行时通过[OH_VideoEncoder_SetParameter](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter)配置是否使能。 使能该功能后，相机采集模块会根据编码信息调节采集策略以降低功耗。<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 
 ## 枚举类型说明
 
@@ -144,7 +144,7 @@ OH_AVErrCode OH_VideoMetadata_ParseRoiString(const char *roiStr, OH_AVFormat **o
 
 **起始版本：** 26.0.0
 
-**资源释放：** media_foundation/OH_AVFormat_Destroy {outOwnedFormats}
+**资源释放：** [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)
 
 **参数：**
 

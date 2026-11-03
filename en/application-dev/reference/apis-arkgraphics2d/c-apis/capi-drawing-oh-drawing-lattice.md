@@ -12,7 +12,7 @@ This struct defines a rectangle grid, which is used to divide an image by rectan
 
 **Since**: 23
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-others-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

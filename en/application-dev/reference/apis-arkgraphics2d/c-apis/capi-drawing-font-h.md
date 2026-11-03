@@ -10,7 +10,7 @@ This file declares the functions related to the font in the drawing module.
 
 **Since**: 11
 
-**Related module**: [Drawing](capi-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 ## Summary
 
@@ -101,10 +101,10 @@ Defines an enum for the font hinting types.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_HINTING_NONE |  |
-| FONT_HINTING_SLIGHT |  |
-| FONT_HINTING_NORMAL |  |
-| FONT_HINTING_FULL |  |
+| FONT_HINTING_NONE | No font hinting is used.<br>**Since**: 12 |
+| FONT_HINTING_SLIGHT | Slight font hinting is used to improve contrast.<br>**Since**: 12 |
+| FONT_HINTING_NORMAL | Normal font hinting is used to improve contrast.<br>**Since**: 12 |
+| FONT_HINTING_FULL | Full font hinting is used to improve contrast.<br>**Since**: 12 |
 
 ### OH_Drawing_FontEdging
 
@@ -122,9 +122,9 @@ Enumerates the font edging types.
 
 | Enum item | Description |
 | -- | -- |
-| FONT_EDGING_ALIAS |  |
-| FONT_EDGING_ANTI_ALIAS |  |
-| FONT_EDGING_SUBPIXEL_ANTI_ALIAS |  |
+| FONT_EDGING_ALIAS | No anti-aliasing processing is used.<br>**Since**: 12 |
+| FONT_EDGING_ANTI_ALIAS | Uses anti-aliasing to smooth the jagged edges.<br>**Since**: 12 |
+| FONT_EDGING_SUBPIXEL_ANTI_ALIAS | Uses sub-pixel anti-aliasing to provide a smoother effect for jagged edges.<br>**Since**: 12 |
 
 
 ## Function description
@@ -458,7 +458,7 @@ Converts text into glyph indices with font fallback support. When the typeface o
 
 **Since**: 26.0.1
 
-**Resource release**: drawing_font/OH_Drawing_FontTypefaceFallbackInfoDestroy {typefaceFallbackInfo}
+**Resource release**: [OH_Drawing_FontTypefaceFallbackInfoDestroy](#oh_drawing_fonttypefacefallbackinfodestroy)
 
 **Parameters**:
 

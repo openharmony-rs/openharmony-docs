@@ -12,7 +12,7 @@ Defines the motion path configuration options of path animation, which are used 
 
 **Since**: 23
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_type_visual.h](capi-native-type-visual-h.md)
 

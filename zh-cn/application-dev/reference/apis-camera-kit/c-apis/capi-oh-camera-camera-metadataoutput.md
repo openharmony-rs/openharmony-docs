@@ -12,7 +12,7 @@ typedef struct Camera_MetadataOutput Camera_MetadataOutput
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-oh-camera.md)
+**相关模块：** [OH_Camera](capi-others-oh-camera.md)
 
 **所在头文件：** [metadata_output.h](capi-metadata-output-h.md)
 

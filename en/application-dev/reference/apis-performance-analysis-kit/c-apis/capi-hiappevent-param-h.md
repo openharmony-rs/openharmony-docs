@@ -10,7 +10,7 @@ Defines the param names of all predefined events.<br> In addition to custom even
 
 **Since**: 8
 
-**Related module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 ## Summary
 

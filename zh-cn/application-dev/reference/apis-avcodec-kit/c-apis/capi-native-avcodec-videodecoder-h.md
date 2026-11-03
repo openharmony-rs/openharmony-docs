@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [VideoDecoder](capi-videodecoder.md)
+**相关模块：** [VideoDecoder](capi-avcodec-kit-videodecoder.md)
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
@@ -222,7 +222,7 @@ OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *windo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
-| [OHNativeWindow](capi-codecbase-ohnativewindow.md) *window | 指向OHNativeWindow实例的指针，请参阅[OHNativeWindow](capi-codecbase-ohnativewindow.md)。 |
+| [OHNativeWindow](capi-codecbase-nativewindow.md) *window | 指向OHNativeWindow实例的指针，请参阅[OHNativeWindow](capi-codecbase-nativewindow.md)。 |
 
 **返回值：**
 
@@ -607,7 +607,11 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_
 
 **描述：**
 
-将index对应的输出缓冲返回给解码器，缓冲区中携带解码输出数据，并通知解码器在开发者指定的时间内完成在输出surface上渲染，输出缓冲包含解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器。<br> 开发者可以使用时间戳在特定时间（在VSYNC或者缓冲区时间戳之后）渲染缓冲区。若要在指定的时间戳显示，时间戳需要合理接近系统时间，有几点需要注意：<br> 1. 缓冲区是按照顺序处理的，因此可能会阻塞后续缓冲区在surface上的显示，如果想要对用户的一些行为做出反应，例如停止或者快进快退视频，这一点很重要。<br> 2. 如果多个缓冲区被发送到surface要在同一个VSYNC上渲染，那么最后一个将会被显示，其他的将被丢弃。<br> 3. 如果时间戳与当前的系统时间不是“合理接近”，surface将会忽略时间戳，并在可行的最早时间里显示buffer。在此模式下不会丢弃帧。<br> 4. 如果需要由系统根据显示刷新率来丢帧，则必须调用此接口，否则应用需自行实现丢帧逻辑。
+将index对应的输出缓冲返回给解码器，缓冲区中携带解码输出数据，并通知解码器在开发者指定的时间内完成在输出surface上渲染，输出缓冲包含解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器。<br> 开发者可以使用时间戳在特定时间（在VSYNC或者缓冲区时间戳之后）渲染缓冲区。若要在指定的时间戳显示，时间戳需要合理接近系统时间，有几点需要注意：<br>
+1. 缓冲区是按照顺序处理的，因此可能会阻塞后续缓冲区在surface上的显示，如果想要对用户的一些行为做出反应，例如停止或者快进快退视频，这一点很重要。<br>
+2. 如果多个缓冲区被发送到surface要在同一个VSYNC上渲染，那么最后一个将会被显示，其他的将被丢弃。<br>
+3. 如果时间戳与当前的系统时间不是“合理接近”，surface将会忽略时间戳，并在可行的最早时间里显示buffer。在此模式下不会丢弃帧。<br>
+4. 如果需要由系统根据显示刷新率来丢帧，则必须调用此接口，否则应用需自行实现丢帧逻辑。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -772,7 +776,10 @@ OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 
 **描述：**
 
-查询下一个可用输出缓冲区的索引。<br> 通过[OH_VideoDecoder_GetOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputbuffer)接口获取的缓冲区实例可以通过执行以下操作来显示或释放解码帧：<br> 1. 通过[OH_VideoDecoder_FreeOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_freeoutputbuffer)接口将处理后的输出缓冲区返回到解码器。<br> 2. 通过[OH_VideoDecoder_RenderOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)在输出surface上渲染。<br> 3. 通过[OH_VideoDecoder_RenderOutputBufferAtTime](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)在指定时间内完成输出surface上渲染。<br> 需要注意的是，上述操作仅在同步模式下支持。
+查询下一个可用输出缓冲区的索引。<br> 通过[OH_VideoDecoder_GetOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputbuffer)接口获取的缓冲区实例可以通过执行以下操作来显示或释放解码帧：<br>
+1. 通过[OH_VideoDecoder_FreeOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_freeoutputbuffer)接口将处理后的输出缓冲区返回到解码器。<br>
+2. 通过[OH_VideoDecoder_RenderOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)在输出surface上渲染。<br>
+3. 通过[OH_VideoDecoder_RenderOutputBufferAtTime](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)在指定时间内完成输出surface上渲染。<br> 需要注意的是，上述操作仅在同步模式下支持。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 

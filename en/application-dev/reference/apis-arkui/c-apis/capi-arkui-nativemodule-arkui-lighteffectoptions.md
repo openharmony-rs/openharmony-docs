@@ -12,7 +12,7 @@ Defines a light sensing interaction effect configuration object for immersive ma
 
 **Since**: 26.0.0
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_material.h](capi-native-material-h.md)
 

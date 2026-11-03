@@ -12,7 +12,7 @@ typedef struct ArkUI_Rect {...} ArkUI_Rect
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [common_type.h](capi-common-type-h.md)
 

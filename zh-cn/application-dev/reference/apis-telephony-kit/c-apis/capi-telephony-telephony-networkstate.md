@@ -12,7 +12,7 @@ typedef struct Telephony_NetworkState {...} Telephony_NetworkState
 
 **起始版本：** 13
 
-**相关模块：** [Telephony](capi-telephony.md)
+**相关模块：** [Telephony](capi-others-telephony.md)
 
 **所在头文件：** [telephony_radio_type.h](capi-telephony-radio-type-h.md)
 

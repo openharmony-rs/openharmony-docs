@@ -16,7 +16,17 @@ AVPlayerCallback（AVPlayer回调）是AVPlayer（音视频播放器）的回调
 
 **替代接口：** [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)或[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。
 
-**相关模块：** [AVPlayer](capi-avplayer.md)
+**相关模块：** [AVPlayer](capi-others-avplayer.md)
 
 **所在头文件：** [avplayer_base.h](capi-avplayer-base-h.md)
+
+## 汇总
+
+### 成员变量
+
+| 名称 | 描述 |
+| -- | -- |
+| [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) onInfo |  |
+| [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) onError |  |
+
 

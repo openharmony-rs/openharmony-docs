@@ -12,7 +12,7 @@ Defines a 4x5 matrix for creating a filter effect, with elements of floating-poi
 
 **Since**: 12
 
-**Related module**: [effectKit](capi-effectkit.md)
+**Related module**: [effectKit](capi-others-effectkit.md)
 
 **Header file**: [effect_types.h](capi-effect-types-h.md)
 

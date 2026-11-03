@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -119,9 +119,9 @@ Swiper导航点箭头枚举值。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_ARROW_HIDE = 0 |  |
-| ARKUI_SWIPER_ARROW_SHOW |  |
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER |  |
+| ARKUI_SWIPER_ARROW_HIDE = 0 | 不显示swiper中导航点箭头。<br>**起始版本：** 12 |
+| ARKUI_SWIPER_ARROW_SHOW | 显示swiper中导航点箭头。<br>**起始版本：** 12 |
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | 在hover状态下显示swiper中导航点箭头。<br>**起始版本：** 12 |
 
 ### ArkUI_SwiperNestedScrollMode
 
@@ -139,8 +139,8 @@ Swiper组件和父组件的嵌套滚动模式。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 |  |
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST |  |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | Swiper只自身滚动，不与父组件联动。<br>**起始版本：** 12 |
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。<br>**起始版本：** 12 |
 
 ### ArkUI_PageFlipMode
 
@@ -158,8 +158,8 @@ Swiper组件鼠标滚轮翻页模式。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 |  |
-| ARKUI_PAGE_FLIP_MODE_SINGLE |  |
+| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | 鼠标滚轮连续滚动时翻多页，根据鼠标事件上报次数确定。<br>**起始版本：** 15 |
+| ARKUI_PAGE_FLIP_MODE_SINGLE | 一次翻页动画结束前不响应其他鼠标滚轮事件。<br>**起始版本：** 15 |
 
 ### ArkUI_SwiperAnimationMode
 
@@ -177,9 +177,9 @@ Swiper组件跳转到目标index的动画模式。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_NO_ANIMATION = 0 |  |
-| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 |  |
-| ARKUI_SWIPER_FAST_ANIMATION = 2 |  |
+| ARKUI_SWIPER_NO_ANIMATION = 0 | 无动画跳转到目标index。<br>**起始版本：** 15 |
+| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | 做动画跳转到目标index。<br>**起始版本：** 15 |
+| ARKUI_SWIPER_FAST_ANIMATION = 2 | 先无动画跳转到目标附近再做动画跳转到目标index。<br>**起始版本：** 15 |
 
 ### ArkUI_SwiperIndicatorType
 
@@ -197,8 +197,8 @@ enum ArkUI_SwiperIndicatorType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SWIPER_INDICATOR_TYPE_DOT |  |
-| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT |  |
+| ARKUI_SWIPER_INDICATOR_TYPE_DOT | 圆点指示器类型。<br>**起始版本：** 12 |
+| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | 数字指示器类型。<br>**起始版本：** 12 |
 
 
 ## 函数说明
@@ -791,7 +791,7 @@ int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。ARKUI_ERROR_CODE_NO_ERROR 成功。ARKUI_ERROR_CODE_PARAM_INVALID 如果maxDisplayCount设置范围错误, 返回错误码。 |
+| int32_t | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 如果maxDisplayCount设置范围错误, 返回错误码。 |
 
 ### OH_ArkUI_SwiperIndicator_GetMaxDisplayCount()
 

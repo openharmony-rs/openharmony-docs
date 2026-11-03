@@ -10,7 +10,7 @@ Defines APIs and structs related to the Uniform Type Descriptors (UTDs). If the 
 
 **Since**: 12
 
-**Related module**: [UDMF](capi-udmf.md)
+**Related module**: [UDMF](capi-arkdata-udmf.md)
 
 ## Summary
 

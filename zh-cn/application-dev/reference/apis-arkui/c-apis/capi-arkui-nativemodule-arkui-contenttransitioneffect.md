@@ -12,7 +12,7 @@ typedef struct ArkUI_ContentTransitionEffect ArkUI_ContentTransitionEffect
 
 **起始版本：** 21
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_type.h](capi-native-type-h.md)
 

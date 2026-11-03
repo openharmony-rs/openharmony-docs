@@ -12,7 +12,7 @@ typedef struct OH_NativeXComponent_ExtraMouseEventInfo OH_NativeXComponent_Extra
 
 **起始版本：** 20
 
-**相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+**相关模块：** [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
 
 **所在头文件：** [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 

@@ -14,7 +14,7 @@ Defines the ExtData Handle
 
 **Deprecated**: 10
 
-**Related module**: [NativeWindow](capi-nativewindow.md)
+**Related module**: [NativeWindow](capi-others-nativewindow.md)
 
 **Header file**: [external_window.h](capi-external-window-h.md)
 

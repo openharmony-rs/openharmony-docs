@@ -12,7 +12,7 @@ Defines the text style of a text editor, which supports the setting of text attr
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [rich_editor.h](capi-rich-editor-h.md)
 

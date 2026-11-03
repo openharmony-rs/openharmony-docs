@@ -12,7 +12,7 @@ Defines the header linked list added to the WebSocket client.
 
 **Since**: 11
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-others-netstack.md)
 
 **Header file**: [net_websocket_type.h](capi-net-websocket-type-h.md)
 

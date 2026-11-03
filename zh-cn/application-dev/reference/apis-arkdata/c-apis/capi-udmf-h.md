@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [UDMF](capi-udmf.md)
+**相关模块：** [UDMF](capi-arkdata-udmf.md)
 
 ## 汇总
 
@@ -142,15 +142,6 @@
 | [void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)](#oh_udmfdataloadinfo_settype) | - | 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的数据类型。 |
 | [int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_getrecordcount) | - | 获取数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
 | [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data) | 定义获取进度信息和数据的监听回调函数。 <br>使用时需要判断数据是否返回空指针。只有当进度达到100%时，才会返回数据。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core * |
-| OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo) | 表示用于加载数据的回调函数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core * |
-| void (*UdmfData_Finalize)(void* context) | 定义用于释放上下文的回调函数，统一数据提供者对象销毁时触发。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core * |
-| void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type) | 定义用于按类型获取数据的回调函数。当从[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)中获取数据时，会触发此回调函数，得到的数据就是这个回调函数返回的数据。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core * |
 
 ## 枚举类型说明
 
@@ -2135,7 +2126,7 @@ OH_UDMF_Summary *OH_UDMF_CreateSummary(void)
 
 **起始版本：** 26.0.1
 
-**资源释放：** udmf/OH_UDMF_DestroySummary {return}
+**资源释放：** [OH_UDMF_DestroySummary](#oh_udmf_destroysummary)
 
 **返回值：**
 

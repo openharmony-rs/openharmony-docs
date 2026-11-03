@@ -12,7 +12,7 @@ Defines the navigation indicator style of the **Swiper** component, which is use
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [swiper.h](capi-swiper-h.md)
 

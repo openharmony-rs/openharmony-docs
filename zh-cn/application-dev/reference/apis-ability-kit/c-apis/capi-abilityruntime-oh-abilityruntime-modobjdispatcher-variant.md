@@ -12,7 +12,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntim
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
 
 **所在头文件：** [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 
@@ -22,11 +22,12 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntim
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_AbilityRuntime_ModObjDispatcher_ValueType vt | 变体类型标签，决定联合体中有效的成员。<br>**起始版本：** 26.0.0 |
+| [OH_AbilityRuntime_ModObjDispatcher_ValueType](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_valuetype) vt | 变体类型标签，决定联合体中有效的成员。<br>**起始版本：** 26.0.0 |
 | uint64_t reserved1 | 保留字段1。预留空间供后续版本扩展使用，调用方应将其初始化为0，且不应读取或修改。<br>**起始版本：** 26.0.0 |
 | uint64_t reserved2 | 保留字段2。预留空间供后续版本扩展使用，调用方应将其初始化为0，且不应读取或修改。<br>**起始版本：** 26.0.0 |
 | uint64_t reserved3 | 保留字段3。预留空间供后续版本扩展使用，调用方应将其初始化为0，且不应读取或修改。<br>**起始版本：** 26.0.0 |
-| u->pvoidVal | 空值句柄。<br>**起始版本：** 26.0.0 |
+| u | 变体值数据联合体。有效的成员由vt决定。<br>**起始版本：** 26.0.0 |
+| u.pvoidVal | 空值句柄。<br>**起始版本：** 26.0.0 |
 | u.boolVal | 布尔值。<br>**起始版本：** 26.0.0 |
 | u.i8Val | 8位有符号整数。<br>**起始版本：** 26.0.0 |
 | u.i16Val | 16位有符号整数。<br>**起始版本：** 26.0.0 |
@@ -45,7 +46,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntim
 | u.psetVal | 集合句柄。<br>**起始版本：** 26.0.0 |
 | u.pmapVal | 映射句柄。<br>**起始版本：** 26.0.0 |
 | u.pstructVal | 结构体句柄。<br>**起始版本：** 26.0.0 |
-| u->premoteProxyVal | 远端Proxy对象句柄。<br>**起始版本：** 26.0.0 |
-| u->premoteStubVal | 远端Stub对象句柄。<br>**起始版本：** 26.0.0 |
+| u.premoteProxyVal | 远端Proxy对象句柄。<br>**起始版本：** 26.0.0 |
+| u.premoteStubVal | 远端Stub对象句柄。<br>**起始版本：** 26.0.0 |
 
 

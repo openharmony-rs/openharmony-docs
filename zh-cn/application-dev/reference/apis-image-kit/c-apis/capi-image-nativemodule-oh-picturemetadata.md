@@ -12,7 +12,7 @@ OH_PictureMetadata用于承载Picture元数据。<br>有多种方式创建和获
 
 **起始版本：** 13
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **所在头文件：** [image_common.h](capi-image-common-h.md)
 

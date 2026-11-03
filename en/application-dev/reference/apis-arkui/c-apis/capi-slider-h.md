@@ -10,7 +10,7 @@ Provides Slider node type definitions for <b>NativeNode</b> APIs.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -40,9 +40,9 @@ Enumerates the styles of the slider in the block direction.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 |  |
-| ARKUI_SLIDER_BLOCK_STYLE_IMAGE |  |
-| ARKUI_SLIDER_BLOCK_STYLE_SHAPE |  |
+| ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | Round slider.<br>**Since**: 12 |
+| ARKUI_SLIDER_BLOCK_STYLE_IMAGE | Slider with an image background.<br>**Since**: 12 |
+| ARKUI_SLIDER_BLOCK_STYLE_SHAPE | Slider in a custom shape.<br>**Since**: 12 |
 
 ### ArkUI_SliderDirection
 
@@ -60,8 +60,8 @@ Enumerates the scroll directions of the slider.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SLIDER_DIRECTION_VERTICAL = 0 |  |
-| ARKUI_SLIDER_DIRECTION_HORIZONTAL |  |
+| ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | Vertical direction.<br>**Since**: 12 |
+| ARKUI_SLIDER_DIRECTION_HORIZONTAL | Horizontal direction.<br>**Since**: 12 |
 
 ### ArkUI_SliderStyle
 
@@ -79,8 +79,8 @@ Enumerates the slider styles.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SLIDER_STYLE_OUT_SET = 0 |  |
-| ARKUI_SLIDER_STYLE_IN_SET |  |
-| ARKUI_SLIDER_STYLE_NONE |  |
+| ARKUI_SLIDER_STYLE_OUT_SET = 0 | The slider is on the slider rail.<br>**Since**: 12 |
+| ARKUI_SLIDER_STYLE_IN_SET | The slider is in the slider rail.<br>**Since**: 12 |
+| ARKUI_SLIDER_STYLE_NONE | There is no thumb.<br>**Since**: 12 |
 
 

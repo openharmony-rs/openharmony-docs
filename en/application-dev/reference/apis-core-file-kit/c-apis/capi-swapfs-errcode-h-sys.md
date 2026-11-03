@@ -12,7 +12,7 @@ Declare the error codes of swapfs module.
 
 **System API:** This is a system API.
 
-**Related module**: [Swapfs](capi-swapfs.md)
+**Related module**: [Swapfs](capi-core-file-kit-swapfs.md)
 
 ## Summary
 

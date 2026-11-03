@@ -10,7 +10,7 @@ OH_AudioRenderer提供音频播放流功能，目前主要用于播放PCM（Puls
 
 **起始版本：** 10
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -60,15 +60,6 @@ OH_AudioRenderer提供音频播放流功能，目前主要用于播放PCM（Puls
 | [OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH_AudioStream_LatencyType type, int32_t* latencyMs)](#oh_audiorenderer_getlatency) | - | 获取当前音频路由的估算时延（单位：ms）。无线连接的音频设备，时延估算可能存在误差，结果仅供参考。 <br>由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。 <br>当音频数据输出到硬件后，建议使用[OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo)进行音视频同步。 |
 | [OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_AudioRenderer* renderer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)](#oh_audiorenderer_setindependentaudiosessionstrategy) | - | 设置音频播放流的独立音频会话策略和行为参数，这些参数主要用于扩展音频流的默认并发策略。 <br>建议在音频流处于运行状态前设置。当在音频流运行时调用此接口， 只会在下次调用接口[OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start)启动音频流后参数才会生效。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint) | 音频播放流中断事件回调函数的原型定义。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error) | 音频播放流错误事件回调函数的原型定义。 <br>系统内部故障时触发，如音频服务异常退出，非应用调用导致。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioRenderer_OnFastStatusChange)( OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status ) | 音频播放流低时延状态变化事件回调函数的原型定义。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize) | 音频播放流写入音频数据回调函数的原型定义。 <br>不同于OH_AudioRenderer_OnWriteDataCallback，此函数允许应用填充[0, audioDataSize]长度的数据。 <br>其中audioDataSize为回调buffer的长度。调用方通过返回值告知系统写入的数据长度。 <br>如果返回0，回调线程将会sleep一段时间。 <br>否则，系统可能会立刻进行下一次回调。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-
 ## 函数说明
 
 ### OH_AudioRenderer_Release()
@@ -89,7 +80,7 @@ OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 
 **返回值：**
 
@@ -115,7 +106,7 @@ OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 
 **返回值：**
 
@@ -141,7 +132,7 @@ OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 
 **返回值：**
 
@@ -167,7 +158,7 @@ OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 
 **返回值：**
 
@@ -193,7 +184,7 @@ OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 
 **返回值：**
 
@@ -219,7 +210,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_State](capi-native-audiostream-base-h.md#oh_audiostream_state)* state | [out] 用于接收获取的音频播放流状态。 |
 
 **返回值：**
@@ -246,7 +237,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | int32_t* rate | [out] 用于接收获取的音频播放流采样率，单位为Hz。 |
 
 **返回值：**
@@ -273,7 +264,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, u
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | uint32_t* streamId | [out] 用于接收获取的音频流ID。 |
 
 **返回值：**
@@ -300,7 +291,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | int32_t* channelCount | [out] 用于接收获取的音频播放流声道数。 |
 
 **返回值：**
@@ -327,7 +318,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_SampleFormat](capi-native-audiostream-base-h.md#oh_audiostream_sampleformat)* sampleFormat | [out] 用于接收获取的音频播放流采样格式。 |
 
 **返回值：**
@@ -354,7 +345,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode)* latencyMode | [out] 用于接收获取的音频播放流时延模式。 |
 
 **返回值：**
@@ -381,7 +372,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)* usage | [out] 用于接收获取的音频播放流使用场景类型。 |
 
 **返回值：**
@@ -408,7 +399,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype)* encodingType | [out] 用于接收获取的音频播放流编码类型。 |
 
 **返回值：**
@@ -435,7 +426,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | int64_t* frames | [out] 用于接收获取的已写入帧数。 |
 
 **返回值：**
@@ -462,7 +453,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | clockid_t clockId | [in] 时钟标识符，使用CLOCK_MONOTONIC。 |
 | int64_t* framePosition | [out] 用于接收获取的最近输出音频帧位置，单位为采样数。 |
 | int64_t* timestamp | [out] 用于接收获取的最近输出音频帧时间戳，与位置对应，单位为ns。 |
@@ -491,7 +482,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | int32_t* frameSize | [out] 用于接收获取的音频数据帧长，单位为采样点数。 |
 
 **返回值：**
@@ -518,7 +509,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, floa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | float* speed | [out] 用于接收获取的音频播放倍速。 |
 
 **返回值：**
@@ -545,7 +536,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, floa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | float speed | [in] 设置播放的倍速值（倍速范围：[0.25, 4.0]）。 |
 
 **返回值：**
@@ -572,7 +563,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, flo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | float volume | [in] 设置当前音频流音量，音量值范围[0.0, 1.0]。 |
 
 **返回值：**
@@ -599,7 +590,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* rende
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | float volume | [in] 目标音量值，取值范围[0.0, 1.0]。 |
 | int32_t durationMs | [in] 音量渐变的持续时间，以ms为单位。 |
 
@@ -627,7 +618,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | float* volume | [out] 用于接收获取的音频播放流音量值。音量值的范围是[0.0, 1.0]。 |
 
 **返回值：**
@@ -654,7 +645,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | uint32_t samplePos | [in] 设置目标标记位置，单位为帧数，即采样点数。 |
 | [OH_AudioRenderer_OnMarkReachedCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_onmarkreachedcallback) callback | [in] 当播放的音频帧数达到标记位置时，会触发此回调函数。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
@@ -683,7 +674,7 @@ OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 
 **返回值：**
 
@@ -709,7 +700,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* rende
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | uint32_t* count | [out] 用于接收获取的音频播放流欠载次数。 |
 
 **返回值：**
@@ -736,7 +727,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* render
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioChannelLayout](../../apis-avcodec-kit/c-apis/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)* channelLayout | [out] 用于接收获取的音频播放流声道布局。 |
 
 **返回值：**
@@ -763,7 +754,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_AudioEffectMode](capi-native-audiostream-base-h.md#oh_audiostream_audioeffectmode)* effectMode | [out] 用于接收获取的音频播放流音效模式。 |
 
 **返回值：**
@@ -790,7 +781,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_AudioEffectMode](capi-native-audiostream-base-h.md#oh_audiostream_audioeffectmode) effectMode | [in] 目标音效模式。 |
 
 **返回值：**
@@ -817,7 +808,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* rend
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_PrivacyType](capi-native-audiostream-base-h.md#oh_audiostream_privacytype)* privacy | [out] 用于接收获取的音频播放流隐私类型。 |
 
 **返回值：**
@@ -844,7 +835,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRen
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | bool on | [in] 设置当前音频流的静音并发播放模式。 <br>true：设置当前音频播放流为静音播放，其他音频流可以保持正常播放不被打断。 <br>false：取消当前音频播放流静音播放，音频流可根据系统焦点策略抢占焦点。 |
 
 **返回值：**
@@ -871,7 +862,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRen
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | bool* on | [out] 用于接收获取的音频流静音并发播放状态。返回true表示打开，返回false表示关闭。 |
 
 **返回值：**
@@ -898,7 +889,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) deviceType | [in] 目标发声设备类型。可设置的设备类型包括: <br>AUDIO_DEVICE_TYPE_EARPIECE：听筒 <br>AUDIO_DEVICE_TYPE_SPEAKER：扬声器 <br>AUDIO_DEVICE_TYPE_DEFAULT：系统默认设备 |
 
 **返回值：**
@@ -925,7 +916,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | int64_t* framePosition | [out] 用于接收获取的最近输出音频帧位置，单位为采样数。 |
 | int64_t* timestamp | [out] 用于接收获取的最近输出音频帧时间戳，与位置对应，单位为ns。 |
 
@@ -953,7 +944,7 @@ typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | 指向触发回调的音频播放流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向触发回调的音频播放流实例。 |
 | void* userData | 指向开发者在注册回调函数时传入的userData数据。 |
 | [OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype) type | 音频流中断类型。 |
 | [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint) hint | 音频流中断提示类型。 |
@@ -981,7 +972,7 @@ typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, voi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | 指向触发回调的音频播放流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向触发回调的音频播放流实例。 |
 | void* userData | 指向开发者在注册回调函数时传入的userData数据。 |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | 音频流播放错误结果。 |
 
@@ -1008,7 +999,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus)* status | [out] 用于接收获取的低时延运行状态。 |
 
 **返回值：**
@@ -1035,7 +1026,7 @@ typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | 指向触发回调的音频播放流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向触发回调的音频播放流实例。 |
 | void* userData | 指向开发者在注册回调函数时传入的userData数据。 |
 | [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | 当前低时延运行状态。 |
 
@@ -1057,7 +1048,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | float loudnessGain | [in] 设置播放的响度值（响度值范围为[-90.0, 24.0]，单位为dB）。 |
 
 **返回值：**
@@ -1084,7 +1075,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | float* loudnessGain | [out] 用于接收获取的播放响度值，单位为分贝。 |
 
 **返回值：**
@@ -1111,7 +1102,7 @@ typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | 指向触发回调的音频播放流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向触发回调的音频播放流实例。 |
 | void* userData | 指向开发者在注册回调函数时传入的userData数据。 |
 | void* audioData | 指向让应用写入的音频数据。 |
 | int32_t audioDataSize | 应用可写入音频数据的数据长度，单位为Byte。 |
@@ -1145,7 +1136,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [OH_AudioStream_LatencyType](capi-native-audiostream-base-h.md#oh_audiostream_latencytype) type | [in] 要获取的时延类型。 |
 | int32_t* latencyMs | [out] 用于接收获取的音频时延，单位为ms。 |
 
@@ -1173,7 +1164,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_Aud
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | [const OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md)* strategy | [in] 用于设置独立的音频会话策略。 |
 | uint32_t behavior | [in] 音频会话行为标志，可以是单个标志，也可以是多个标志的按位OR组合。 当前支持的音频会话行为详见[OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags)。 |
 

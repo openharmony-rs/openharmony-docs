@@ -4,7 +4,7 @@
 
 Audio AudioChannel Layout
 
-**Include**: <multimedia/player_framework/avcodec_audio_channel_layout.h>
+**File to Include**: <multimedia/player_framework/avcodec_audio_channel_layout.h>
 
 **Library**: libnative_media_codecbase.so
 
@@ -12,7 +12,7 @@ Audio AudioChannel Layout
 
 **Since**: 10
 
-**Related module**: [CodecBase](capi-codecbase.md)
+**Related module**: [CodecBase](capi-avcodec-kit-codecbase.md)
 
 ## Summary
 

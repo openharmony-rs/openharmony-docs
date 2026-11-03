@@ -12,7 +12,17 @@ Range contain min and max value
 
 **Since**: 10
 
-**Related module**: [AVCapability](capi-avcapability.md)
+**Related module**: [AVCapability](capi-others-avcapability.md)
 
 **Header file**: [native_avcapability.h](capi-native-avcapability-h.md)
+
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| int32_t minVal |  |
+| int32_t maxVal |  |
+
 

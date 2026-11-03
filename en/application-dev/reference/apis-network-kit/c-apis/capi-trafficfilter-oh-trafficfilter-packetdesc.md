@@ -12,7 +12,7 @@ Packet descriptor<br> Contains five-tuple information and packet data
 
 **Since**: 26.0.1
 
-**Related module**: [TrafficFilter](capi-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-others-trafficfilter.md)
 
 **Header file**: [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

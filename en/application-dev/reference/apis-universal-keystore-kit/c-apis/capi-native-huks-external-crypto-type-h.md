@@ -4,7 +4,7 @@
 
 Defines the structs, enums, and macros for external key management extensions.
 
-**Include**: <huks/native_huks_external_crypto_type.h>
+**File to Include**: <huks/native_huks_external_crypto_type.h>
 
 **Library**: libhuks_external_crypto.z.so
 
@@ -12,7 +12,7 @@ Defines the structs, enums, and macros for external key management extensions.
 
 **Since**: 22
 
-**Related module**: [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
+**Related module**: [HuksExternalCryptoTypeApi](capi-universal-keystore-kit-huksexternalcryptotypeapi.md)
 
 ## Summary
 

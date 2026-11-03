@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-arkweb-web.md)
 
 ## 汇总
 

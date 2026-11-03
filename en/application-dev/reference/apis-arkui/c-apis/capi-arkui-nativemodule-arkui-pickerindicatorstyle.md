@@ -12,7 +12,7 @@ Defines the style of the selected item indicator. It contains attribute configur
 
 **Since**: 23
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [picker.h](capi-picker-h.md)
 

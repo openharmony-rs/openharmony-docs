@@ -12,7 +12,7 @@ Defines a touch recognizer. A touch recognizer is used to represent the touch ev
 
 **Since**: 15
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
 

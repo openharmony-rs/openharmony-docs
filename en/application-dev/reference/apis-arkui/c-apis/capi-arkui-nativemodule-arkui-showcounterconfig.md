@@ -12,7 +12,7 @@ Defines the counter configuration of a text input box for managing character cou
 
 **Since**: 22
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text_common.h](capi-text-common-h.md)
 

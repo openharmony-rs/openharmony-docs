@@ -12,7 +12,7 @@ The struct describes the location where a photo is taken.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

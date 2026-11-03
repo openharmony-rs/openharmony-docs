@@ -10,7 +10,7 @@ Declares the APIs for implementing application access control.
 
 **起始版本：** 12
 
-**相关模块：** [AbilityAccessControl](capi-abilityaccesscontrol.md)
+**相关模块：** [AbilityAccessControl](capi-ability-kit-abilityaccesscontrol.md)
 
 ## 汇总
 

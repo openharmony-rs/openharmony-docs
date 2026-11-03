@@ -12,7 +12,7 @@ ArkWeb_ComponentAPI是ArkWeb在Native侧提供的用于监听Web组件生命周�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 

@@ -10,7 +10,7 @@ Defines the common property and method types for the native module.
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -74,8 +74,8 @@ enum ArkUI_HitTestMode
 | ARKUI_HIT_TEST_MODE_BLOCK | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
 | ARKUI_HIT_TEST_MODE_TRANSPARENT | 自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。 |
 | ARKUI_HIT_TEST_MODE_NONE | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY |  |
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS |  |
+| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br>**起始版本：** 20 |
+| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br>**起始版本：** 20 |
 
 ### ArkUI_Visibility
 
@@ -159,7 +159,7 @@ enum ArkUI_UIState
 | UI_STATE_FOCUSED = 1 << 1 | 获焦状态。 |
 | UI_STATE_DISABLED = 1 << 2 | 禁用状态。 |
 | UI_STATE_SELECTED = 1 << 3 | 选中状态，此状态仅由某些特定类型的组件支持，分别是Checkbox、Radio、Toggle、List、Grid和MenuItem。 |
-| UI_STATE_HOVERED = 1 << 4 |  |
+| UI_STATE_HOVERED = 1 << 4 | 悬浮状态。<br>**起始版本：** 26.0.0 |
 
 ### ArkUI_FocusMove
 
@@ -221,8 +221,8 @@ enum ArkUI_RawInputEventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 |  |
-| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 |  |
+| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 | 触摸事件类型。<br>**起始版本：** 26.0.0 |
+| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 | 鼠标事件类型。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
@@ -292,7 +292,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_SnapshotOptions_SetColorMode()
 
@@ -320,7 +320,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_SnapshotOptions_SetDynamicRangeMode()
 
@@ -348,7 +348,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
@@ -416,7 +416,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
 
@@ -443,7 +443,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常<br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
 
@@ -470,7 +470,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
 
@@ -498,7 +498,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。<br>ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR 数组大小不够。<br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-error-code-h.md#arkui_errorcode) 数组大小不够。<br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
 

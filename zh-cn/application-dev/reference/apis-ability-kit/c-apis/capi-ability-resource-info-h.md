@@ -10,7 +10,7 @@
 
 **起始版本：** 21
 
-**相关模块：** [Native_Bundle](capi-native-bundle.md)
+**相关模块：** [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 ## 汇总
 
@@ -32,8 +32,7 @@
 | [BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)](#oh_nativebundle_checkdefaultapp) | 查询组件所属的应用是否为默认应用。 |
 | [BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, size_t count)](#oh_abilityresourceinfo_destroy) | 释放组件资源信息的内存。 |
 | [int OH_NativeBundle_GetSize()](#oh_nativebundle_getsize) | 获取单个结构体[OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)的大小。 |
-| [BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)
-} // extern "C"](#oh_nativebundle_getdrawabledescriptor) | 获取组件图标资源对应的DrawableDescriptor对象。在使用该接口之后，为了防止内存泄漏，需要手动调用[OH_AbilityResourceInfo_Destroy](capi-ability-resource-info-h.md#oh_abilityresourceinfo_destroy) 释放接口返回的指针。 |
+| [BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)](#oh_nativebundle_getdrawabledescriptor) | 获取组件图标资源对应的DrawableDescriptor对象。在使用该接口之后，为了防止内存泄漏，需要手动调用[OH_AbilityResourceInfo_Destroy](capi-ability-resource-info-h.md#oh_abilityresourceinfo_destroy) 释放接口返回的指针。 |
 
 ## 函数说明
 
@@ -250,7 +249,6 @@ int OH_NativeBundle_GetSize()
 
 ```c
 BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)
-} // extern "C"
 ```
 
 **描述：**
@@ -266,7 +264,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_Ab
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] 指定组件资源信息。 |
-| drawableIcon | [in] 组件图标资源对应的DrawableDescriptor对象。 |
+| [ArkUI_DrawableDescriptor](../../apis-arkui/c-apis/capi-arkui-nativemodule-arkui-drawabledescriptor.md)** drawableIcon | [in] 组件图标资源对应的DrawableDescriptor对象。 |
 
 **返回值：**
 

@@ -12,7 +12,7 @@ ArkWeb_ProxyMethod是用于定义JavaScript代理方法的结构体，支持实�
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 

@@ -10,7 +10,7 @@ Declares enums for key event of Native XComponent.
 
 **Since**: 10
 
-**Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+**Related module**: [OH_NativeXComponent Native XComponent](capi-arkui-oh-nativexcomponent-native-xcomponent.md)
 
 ## Summary
 

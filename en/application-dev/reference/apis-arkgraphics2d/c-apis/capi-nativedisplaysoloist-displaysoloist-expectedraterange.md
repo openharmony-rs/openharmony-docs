@@ -12,7 +12,7 @@ This struct describes the expected frame rate range.
 
 **Since**: 12
 
-**Related module**: [NativeDisplaySoloist](capi-nativedisplaysoloist.md)
+**Related module**: [NativeDisplaySoloist](capi-others-nativedisplaysoloist.md)
 
 **Header file**: [native_display_soloist.h](capi-native-display-soloist-h.md)
 

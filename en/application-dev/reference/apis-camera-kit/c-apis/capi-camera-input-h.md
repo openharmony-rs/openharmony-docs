@@ -10,7 +10,7 @@ The file declares the camera input concepts.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 ## Summary
 
@@ -39,13 +39,6 @@ The file declares the camera input concepts.
 | [Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_registerocclusiondetectioncallback) | - | Registers a callback used to check whether a camera lens is blocked or dirty. |
 | [Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_unregisterocclusiondetectioncallback) | - | Unregisters the callback used to check whether a camera lens is blocked or dirty. |
 | [Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput, Camera_ConcurrentType type)](#oh_camerainput_openconcurrentcameras) | - | Opens the camera based on the specified concurrency type. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode) | Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) struct and used to report camera input errors.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
-| void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult) | Defines a callback used to return the check result for whether a camera lens is blocked or dirty.<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Camera.Core |
 
 ## Function description
 

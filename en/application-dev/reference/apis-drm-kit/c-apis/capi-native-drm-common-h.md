@@ -10,7 +10,7 @@ The file declares the DRM data types.
 
 **Since**: 11
 
-**Related module**: [Drm](capi-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 ## Summary
 
@@ -74,12 +74,6 @@ The file declares the DRM data types.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | Defines the callback used to obtain DRM information from a media source. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo) | Defines the callback used to obtain DRM information from a media source.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
 
 ## Enum type description
 

@@ -4,7 +4,7 @@
 
 Provides APIs for constructing, using, and destroying a parameter set.
 
-**Include**: <huks/native_huks_param.h>
+**File to Include**: <huks/native_huks_param.h>
 
 **Library**: libhuks_ndk.z.so
 
@@ -12,7 +12,7 @@ Provides APIs for constructing, using, and destroying a parameter set.
 
 **Since**: 9
 
-**Related module**: [HuksParamSetApi](capi-huksparamsetapi.md)
+**Related module**: [HuksParamSetApi](capi-universal-keystore-kit-huksparamsetapi.md)
 
 ## Summary
 

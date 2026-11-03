@@ -10,7 +10,7 @@ Declares the APIs used to obtain details of specific certificates.
 
 **Since**: 22
 
-**Related module**: [CertManager](capi-certmanager.md)
+**Related module**: [CertManager](capi-device-certificate-kit-certmanager.md)
 
 ## Summary
 

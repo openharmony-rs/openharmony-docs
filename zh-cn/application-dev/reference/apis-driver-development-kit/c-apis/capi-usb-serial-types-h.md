@@ -12,7 +12,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [USBSerialDDK](capi-usbserialddk.md)
+**相关模块：** [USBSerialDDK](capi-driver-development-kit-usbserialddk.md)
 
 ## 汇总
 
@@ -21,7 +21,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [UsbSerial_Params](capi-usbserialddk-usbserial-params.md) | - | 定义USB Serial DDK使用的USB串口参数，用于USB转串口设备的通信参数配置，需与目标通信设备的配置保持一致，否则可能无法正常通信。常见于工业控制设备、调试工具、 传感器数据采集等需要通过USB串口与设备通信的场景。 |
-| [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) | UsbSerial_Device | USB串口设备数据结构（不透明），用于表示USB串口设备。开发者应通过OH_UsbSerial_Open接口函数获取此结构体实例。 |
+| [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) | UsbSerial_Device | USB串口设备数据结构（不透明），用于表示USB串口设备。开发者应通过[OH_UsbSerial_Open](capi-usb-serial-api-h.md#oh_usbserial_open)接口函数获取此结构体实例。 |
 
 ### 枚举
 

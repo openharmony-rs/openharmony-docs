@@ -12,7 +12,7 @@ Defines a struct for the configuration information of the global HTTP intercepto
 
 **Since**: 24
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-others-netstack.md)
 
 **Header file**: [http_interceptor_type.h](capi-http-interceptor-type-h.md)
 

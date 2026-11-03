@@ -10,7 +10,7 @@ The file declares the MediaKeySession APIs for DRM operations. The APIs can be u
 
 **Since**: 11
 
-**Related module**: [Drm](capi-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 ## Summary
 
@@ -41,15 +41,6 @@ The file declares the MediaKeySession APIs for DRM operations. The APIs can be u
 | [Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *mediaKeySession, MediaKeySession_Callback *callback)](#oh_mediakeysession_setmediakeysessioncallback) | - | Set media key session event callback. |
 | [Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_MediaKeySession_Callback *callback)](#oh_mediakeysession_setcallback) | - | Set media key session event callback. |
 | [Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)](#oh_mediakeysession_destroy) | - | Release the resource before the session going to be unused. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Defines the callback used to listen for media key session events, for example, key expiration events.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
-| Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable) | Call back will be invoked when key changes.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
-| Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Defines the callback used to listen for media key session events.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
-| Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable) | Call back will be invoked when key changes.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
 
 ## Function description
 

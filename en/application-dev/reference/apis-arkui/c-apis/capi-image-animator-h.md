@@ -10,7 +10,7 @@ Defines **ImageAnimator** node types for **NativeNode** APIs.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -62,10 +62,10 @@ Enumerates the playback states of the frame-by-frame animation.
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ANIMATION_STATUS_INITIAL = 0 |  |
-| ARKUI_ANIMATION_STATUS_RUNNING = 1 |  |
-| ARKUI_ANIMATION_STATUS_PAUSED = 2 |  |
-| ARKUI_ANIMATION_STATUS_STOPPED = 3 |  |
+| ARKUI_ANIMATION_STATUS_INITIAL = 0 | The animation is in the initial state.<br>**Since**: 12 |
+| ARKUI_ANIMATION_STATUS_RUNNING = 1 | The animation is being played.<br>**Since**: 12 |
+| ARKUI_ANIMATION_STATUS_PAUSED = 2 | The animation is paused.<br>**Since**: 12 |
+| ARKUI_ANIMATION_STATUS_STOPPED = 3 | The animation is stopped.<br>**Since**: 12 |
 
 
 ## Function description

@@ -10,7 +10,7 @@
 
 **起始版本：** 13
 
-**相关模块：** [NOTIFICATION](capi-notification.md)
+**相关模块：** [NOTIFICATION](capi-notification-kit-notification.md)
 
 ## 汇总
 

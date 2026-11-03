@@ -10,7 +10,7 @@ Declares the mutex interfaces in C, which provide mutual exclusion between concu
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## Summary
 

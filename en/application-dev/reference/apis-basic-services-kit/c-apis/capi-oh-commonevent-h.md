@@ -10,7 +10,7 @@ Defines key operation functions for publishing, subscribing to, and unsubscribin
 
 **Since**: 12
 
-**Related module**: [OH_CommonEvent](capi-oh-commonevent.md)
+**Related module**: [OH_CommonEvent](capi-basic-services-kit-oh-commonevent.md)
 
 ## Summary
 
@@ -94,7 +94,6 @@ Defines key operation functions for publishing, subscribing to, and unsubscribin
 | -- | -- |
 | void CommonEvent_Subscriber | Defines a handle for the subscriber.<br>**Since**: 12<br>**System capability**: SystemCapability.Notification.CommonEvent |
 | void CommonEvent_Parameters | Defines a handler for the additional information of a common event.<br>**Since**: 12<br>**System capability**: SystemCapability.Notification.CommonEvent |
-| void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data) | Defines the callback function of a common event.<br>**Since**: 12<br>**System capability**: SystemCapability.Notification.CommonEvent |
 | typedef void CommonEvent_Subscriber | Defines a handle for the subscriber.<br>**Since**: 12<br>**System capability**: SystemCapability.Notification.CommonEvent |
 | typedef void CommonEvent_Parameters | Defines a handler for the additional information of a common event.<br>**Since**: 12<br>**System capability**: SystemCapability.Notification.CommonEvent |
 
@@ -116,16 +115,16 @@ Enumerates the error codes.
 
 | Enum item | Description |
 | -- | -- |
-| COMMONEVENT_ERR_OK = 0 |  |
-| COMMONEVENT_ERR_PERMISSION_ERROR = 201 |  |
-| COMMONEVENT_ERR_INVALID_PARAMETER = 401 |  |
-| COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003 |  |
-| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 |  |
-| COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 |  |
-| COMMONEVENT_ERR_INIT_UNDONE = 1500008 |  |
-| COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 |  |
-| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 |  |
-| COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 |  |
+| COMMONEVENT_ERR_OK = 0 | Operation successful.<br>**Since**: 12 |
+| COMMONEVENT_ERR_PERMISSION_ERROR = 201 | Permission denied.<br>**Since**: 12 |
+| COMMONEVENT_ERR_INVALID_PARAMETER = 401 | Invalid parameter. The parameter is invalid. Check the parameter type, value range, and whether the parameter is empty.<br>**Since**: 12 |
+| COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003 | Event sending frequency is too high. Check whether the application sends common events too frequently. If more than 20 common events are sent every 5 milliseconds, reduce the common event sending frequency or increase the sending interval and try again.<br>**Since**: 20 |
+| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 | The third-party application fails to send system common events. Check whether the current application is a system application or whether the current service is a system service.<br>**Since**: 12 |
+| COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 | Failed to send IPC requests. Do not set up connections frequently. Try again later.<br>**Since**: 12 |
+| COMMONEVENT_ERR_INIT_UNDONE = 1500008 | Services not initialized. Try again later.<br>**Since**: 12 |
+| COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 | System error. Try again later.<br>**Since**: 12 |
+| COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED = 1500010 | The number of subscribers in the process exceeds the system limit (200). Unregister the subscriber that is no longer used in the application. If the subscriber has been unregistered, try again later.<br>**Since**: 12 |
+| COMMONEVENT_ERR_ALLOC_MEMORY_FAILED = 1500011 | Failed to allocate memory. Try again later.<br>**Since**: 12 |
 
 
 ## Function description

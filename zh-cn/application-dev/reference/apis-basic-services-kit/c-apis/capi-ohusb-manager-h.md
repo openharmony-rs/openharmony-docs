@@ -12,7 +12,7 @@ Declares the C APIs for USB device management.
 
 **起始版本：** 26.0.1
 
-**相关模块：** [UsbManager](capi-usbmanager.md)
+**相关模块：** [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 ## 汇总
 
@@ -45,12 +45,6 @@ Declares the C APIs for USB device management.
 | [OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, OH_UsbManager_PermissionCallback callback, void *userContext)](#oh_usbmanager_requestpermission) | - | 异步请求访问指定USB设备的权限。这可能触发系统弹窗询问用户是否授权。 <br>函数立即返回，结果通过回调传递。 |
 | [OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe *pipe, int32_t *fd)](#oh_usbmanager_getfiledescriptor) | - | 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的 <br>底层USB传输。 |
 | [OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pipe)](#oh_usbmanager_closepipe) | - | 关闭USB设备管道并释放底层资源。该管道必须从[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice) <br>获取。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext) | 定义用于返回[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)结果的 <br>回调类型。<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.USB.USBManager |
 
 ## 枚举类型说明
 
@@ -114,7 +108,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 
 **起始版本：** 26.0.1
 
-**资源释放：** OH_UsbManager_FreeUsbDeviceList {devices}
+**资源释放：** [OH_UsbManager_FreeUsbDeviceList](#oh_usbmanager_freeusbdevicelist)
 
 **参数：**
 

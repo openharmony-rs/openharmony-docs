@@ -10,7 +10,7 @@
 
 **起始版本：** 21
 
-**相关模块：** [GameController](capi-gamecontroller.md)
+**相关模块：** [GameController](capi-game-controller-kit-gamecontroller.md)
 
 ## 汇总
 
@@ -44,12 +44,6 @@
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struct GameDevice_DeviceInfo* deviceInfo, char** physicalAddress)](#oh_gamedevice_deviceinfo_getphysicaladdress) | - | 从设备信息中获取物理地址。 |
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct GameDevice_DeviceInfo* deviceInfo, GameDevice_DeviceType* deviceType)](#oh_gamedevice_deviceinfo_getdevicetype) | - | 从设备信息中获取设备类型。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void(* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent) | 定义[OH_GameDevice_RegisterDeviceMonitor](capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)中使用的回调函数。当设备上线或下线时，该回调函数将被调用。<br>**起始版本：** 21<br>**系统能力：** SystemCapability.Game.GameController |
-
 ## 枚举类型说明
 
 ### GameDevice_StatusChangedType
@@ -68,8 +62,8 @@ enum GameDevice_StatusChangedType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFFLINE = 0 |  |
-| ONLINE = 1 |  |
+| OFFLINE = 0 | 设备下线。<br>**起始版本：** 21 |
+| ONLINE = 1 | 设备上线。<br>**起始版本：** 21 |
 
 ### GameDevice_DeviceType
 
@@ -87,8 +81,8 @@ enum GameDevice_DeviceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UNKNOWN = 0 |  |
-| GAME_PAD = 1 |  |
+| UNKNOWN = 0 | 未知。<br>**起始版本：** 21 |
+| GAME_PAD = 1 | 游戏手柄。<br>**起始版本：** 21 |
 
 
 ## 函数说明

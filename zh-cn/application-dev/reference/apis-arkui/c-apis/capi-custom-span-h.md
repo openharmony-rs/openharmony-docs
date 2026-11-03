@@ -4,13 +4,15 @@
 
 定义CustomSpan相关的结构体和接口，用于实现自定义绘制Span的精确尺寸测量、布局排版和绘制效果。支持开发者在富文本编辑器、聊天应用、文档应用等场景中实现图文混排、表情内嵌、自定义标记等功能， 提供灵活的自定义绘制Span能力，帮助开发者提升开发效率，实现更丰富的文本排版效果。
 
+**引用文件：** <arkui/custom_span.h>
+
 **库：** libace_ndk.z.so
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -26,19 +28,19 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)](#oh_arkui_customspanmeasureinfo_create) | 创建自定义绘制Span测量信息。 |
-| [void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)](#oh_arkui_customspanmeasureinfo_dispose) | 销毁自定义绘制Span测量信息。 |
-| [float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)](#oh_arkui_customspanmeasureinfo_getfontsize) | 获取自定义绘制Span的父节点Text的字体大小。在自定义绘制Span的测量回调中，可根据父节点Text的字体大小计算自定义组件的布局尺寸，用于实现图文混排、表情内嵌等场景的精确排版。 |
-| [ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)](#oh_arkui_customspanmetrics_create) | 创建自定义绘制Span度量信息。 |
-| [void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)](#oh_arkui_customspanmetrics_dispose) | 销毁自定义绘制Span度量信息。 |
-| [int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)](#oh_arkui_customspanmetrics_setwidth) | 设置自定义绘制Span的宽度。在图文混排场景中，需要为嵌入的图片或表情设置合适的宽度以匹配文本行高；在文档应用中，可能需要为自定义标记元素设置固定宽度。 |
-| [int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)](#oh_arkui_customspanmetrics_setheight) | 设置自定义绘制Span的高度。在表情内嵌场景中，需要根据表情大小设置合适的高度以保持与文本对齐；在图文混排场景中，需要为嵌入元素设置与文本行高匹配的高度。 |
-| [ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)](#oh_arkui_customspandrawinfo_create) | 创建自定义绘制Span绘制信息。 |
-| [void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_dispose) | 销毁自定义绘制Span绘制信息。 |
-| [float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getxoffset) | 获取自定义绘制Span相对于挂载组件的x轴偏移值。在自定义绘制回调中，需要根据偏移值确定绘制起始位置，用于实现表情内嵌、图文混排等场景的精确绘制。 |
-| [float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getlinetop) | 获取自定义绘制Span相对于挂载组件的上边距。在自定义绘制时，需要根据上边距确定绘制区域的垂直起始位置，用于富文本编辑器、文档应用等场景的精确排版。 |
-| [float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getlinebottom) | 获取自定义绘制Span相对于挂载组件的下边距。在自定义绘制时，需要结合上边距和下边距计算绘制区域的高度范围，用于图文混排、表情内嵌等场景的精确布局。 |
-| [float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getbaseline) | 获取自定义绘制Span相对于挂载组件的基线偏移量。在自定义绘制Span的绘制回调中，通过本接口获取基线偏移量用于文本对齐排版，实现富文本编辑器、图文混排等场景的精准绘制效果。 |
+| [ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)](#oh_arkui_customspanmeasureinfo_create) | 创建自定义绘制Span测量信息。> **说明：**<br>> > - 必须与OH_ArkUI_CustomSpanMeasureInfo_Dispose()配对使用。 > > - 调用流程：OH_ArkUI_CustomSpanMeasureInfo_Create()→使用info对象→OH_ArkUI_CustomSpanMeasureInfo_Dispose()释放资源。 > > - 使用完毕后必须调用OH_ArkUI_CustomSpanMeasureInfo_Dispose()释放内存，否则会导致资源泄漏。 |
+| [void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)](#oh_arkui_customspanmeasureinfo_dispose) | 销毁自定义绘制Span测量信息。> **说明：**<br>> > - 必须与OH_ArkUI_CustomSpanMeasureInfo_Create()配对使用。 > > - 仅用于销毁由OH_ArkUI_CustomSpanMeasureInfo_Create()方法创建的测量信息对象。 > > - 调用前确保已不再需要该对象，调用后该对象不可再使用。 |
+| [float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)](#oh_arkui_customspanmeasureinfo_getfontsize) | 获取自定义绘制Span的父节点Text的字体大小。在自定义绘制Span的测量回调中，可根据父节点Text的字体大小计算自定义组件的布局尺寸，用于实现图文混排、表情内嵌等场景的精确排版。> **说明：**<br>> > - 必须先调用OH_ArkUI_CustomSpanMeasureInfo_Create()创建测量信息对象。 > > - 参数info必须是通过OH_ArkUI_CustomSpanMeasureInfo_Create()方法返回的有效对象指针。 |
+| [ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)](#oh_arkui_customspanmetrics_create) | 创建自定义绘制Span度量信息。> **说明：**<br>> > - 必须与OH_ArkUI_CustomSpanMetrics_Create()配对使用。 > > - 仅用于销毁由OH_ArkUI_CustomSpanMetrics_Create()方法创建的度量信息对象。 > > - 调用前确保已不再需要该对象，调用后该对象不可再使用。 |
+| [void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)](#oh_arkui_customspanmetrics_dispose) | 销毁自定义绘制Span度量信息。> **说明：**<br>> > - 必须与OH_ArkUI_CustomSpanMetrics_Create()配对使用。 > > - 仅用于销毁由OH_ArkUI_CustomSpanMetrics_Create()方法创建的度量信息对象。 > > - 调用前确保已不再需要该对象，调用后该对象不可再使用。 |
+| [int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)](#oh_arkui_customspanmetrics_setwidth) | 设置自定义绘制Span的宽度。在图文混排场景中，需要为嵌入的图片或表情设置合适的宽度以匹配文本行高；在文档应用中，可能需要为自定义标记元素设置固定宽度。> **说明：**<br>> > - 必须先调用OH_ArkUI_CustomSpanMetrics_Create()创建度量信息对象。 > > - 参数metrics必须是通过OH_ArkUI_CustomSpanMetrics_Create()方法返回的有效对象指针。 |
+| [int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)](#oh_arkui_customspanmetrics_setheight) | 设置自定义绘制Span的高度。在表情内嵌场景中，需要根据表情大小设置合适的高度以保持与文本对齐；在图文混排场景中，需要为嵌入元素设置与文本行高匹配的高度。> **说明：**<br>> > - 必须先调用OH_ArkUI_CustomSpanMetrics_Create()创建度量信息对象。 > > - 参数metrics必须是通过OH_ArkUI_CustomSpanMetrics_Create()方法返回的有效对象指针。 |
+| [ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)](#oh_arkui_customspandrawinfo_create) | 创建自定义绘制Span绘制信息。> **说明：**<br>> > - 必须与OH_ArkUI_CustomSpanDrawInfo_Dispose()配对使用。 > > - 调用流程：OH_ArkUI_CustomSpanDrawInfo_Create()→使用info对象→OH_ArkUI_CustomSpanDrawInfo_Dispose()释放资源。 > > - 使用完毕后必须调用OH_ArkUI_CustomSpanDrawInfo_Dispose()释放内存，否则会导致资源泄漏。 |
+| [void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_dispose) | 销毁自定义绘制Span绘制信息。> **说明：**<br>> > - 必须与OH_ArkUI_CustomSpanDrawInfo_Create()配对使用。 > > - 仅用于销毁由OH_ArkUI_CustomSpanDrawInfo_Create()方法创建的绘制信息对象。 > > - 调用前确保已不再需要该对象，调用后该对象不可再使用。 |
+| [float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getxoffset) | 获取自定义绘制Span相对于挂载组件的x轴偏移值。在自定义绘制回调中，需要根据偏移值确定绘制起始位置，用于实现表情内嵌、图文混排等场景的精确绘制。> **说明：**<br>> > - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。 > > - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。 |
+| [float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getlinetop) | 获取自定义绘制Span相对于挂载组件的上边距。在自定义绘制时，需要根据上边距确定绘制区域的垂直起始位置，用于富文本编辑器、文档应用等场景的精确排版。> **说明：**<br>> > - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。 > > - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。 |
+| [float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getlinebottom) | 获取自定义绘制Span相对于挂载组件的下边距。在自定义绘制时，需要结合上边距和下边距计算绘制区域的高度范围，用于图文混排、表情内嵌等场景的精确布局。> **说明：**<br>> > - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。 > > - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。 |
+| [float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getbaseline) | 获取自定义绘制Span相对于挂载组件的基线偏移量。在自定义绘制Span的绘制回调中，通过本接口获取基线偏移量用于文本对齐排版，实现富文本编辑器、图文混排等场景的精准绘制效果。> **说明：**<br>> > - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。 > > - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。 |
 
 ## 函数说明
 
@@ -50,7 +52,13 @@ ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 
 **描述：**
 
-创建自定义绘制Span测量信息。
+创建自定义绘制Span测量信息。> **说明：**
+>
+> - 必须与OH_ArkUI_CustomSpanMeasureInfo_Dispose()配对使用。
+>
+> - 调用流程：OH_ArkUI_CustomSpanMeasureInfo_Create()→使用info对象→OH_ArkUI_CustomSpanMeasureInfo_Dispose()释放资源。
+>
+> - 使用完毕后必须调用OH_ArkUI_CustomSpanMeasureInfo_Dispose()释放内存，否则会导致资源泄漏。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +68,7 @@ ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CustomSpanMeasureInfo*](capi-arkui-nativemodule-arkui-customspanmeasureinfo.md) | ArkUI_CustomSpanMeasureInfo实例，用于在自定义绘制Span的测量回调中提供组件的测量数据。<br>如果返回空指针，可能是因为内存不足。 |
+| [ArkUI_CustomSpanMeasureInfo*](capi-arkui-nativemodule-arkui-customspanmeasureinfo.md) | ArkUI_CustomSpanMeasureInfo实例，用于在自定义绘制Span的测量回调中提供组件的测量数据。<br> 如果返回空指针，可能是因为内存不足。 |
 
 ### OH_ArkUI_CustomSpanMeasureInfo_Dispose()
 
@@ -70,7 +78,13 @@ void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 
 **描述：**
 
-销毁自定义绘制Span测量信息。
+销毁自定义绘制Span测量信息。> **说明：**
+>
+> - 必须与OH_ArkUI_CustomSpanMeasureInfo_Create()配对使用。
+>
+> - 仅用于销毁由OH_ArkUI_CustomSpanMeasureInfo_Create()方法创建的测量信息对象。
+>
+> - 调用前确保已不再需要该对象，调用后该对象不可再使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +104,11 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 
 **描述：**
 
-获取自定义绘制Span的父节点Text的字体大小。在自定义绘制Span的测量回调中，可根据父节点Text的字体大小计算自定义组件的布局尺寸，用于实现图文混排、表情内嵌等场景的精确排版。
+获取自定义绘制Span的父节点Text的字体大小。在自定义绘制Span的测量回调中，可根据父节点Text的字体大小计算自定义组件的布局尺寸，用于实现图文混排、表情内嵌等场景的精确排版。> **说明：**
+>
+> - 必须先调用OH_ArkUI_CustomSpanMeasureInfo_Create()创建测量信息对象。
+>
+> - 参数info必须是通过OH_ArkUI_CustomSpanMeasureInfo_Create()方法返回的有效对象指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,7 +134,13 @@ ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 
 **描述：**
 
-创建自定义绘制Span度量信息。
+创建自定义绘制Span度量信息。> **说明：**
+>
+> - 必须与OH_ArkUI_CustomSpanMetrics_Create()配对使用。
+>
+> - 仅用于销毁由OH_ArkUI_CustomSpanMetrics_Create()方法创建的度量信息对象。
+>
+> - 调用前确保已不再需要该对象，调用后该对象不可再使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,7 +160,13 @@ void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 
 **描述：**
 
-销毁自定义绘制Span度量信息。
+销毁自定义绘制Span度量信息。> **说明：**
+>
+> - 必须与OH_ArkUI_CustomSpanMetrics_Create()配对使用。
+>
+> - 仅用于销毁由OH_ArkUI_CustomSpanMetrics_Create()方法创建的度量信息对象。
+>
+> - 调用前确保已不再需要该对象，调用后该对象不可再使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,7 +186,11 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 
 **描述：**
 
-设置自定义绘制Span的宽度。在图文混排场景中，需要为嵌入的图片或表情设置合适的宽度以匹配文本行高；在文档应用中，可能需要为自定义标记元素设置固定宽度。
+设置自定义绘制Span的宽度。在图文混排场景中，需要为嵌入的图片或表情设置合适的宽度以匹配文本行高；在文档应用中，可能需要为自定义标记元素设置固定宽度。> **说明：**
+>
+> - 必须先调用OH_ArkUI_CustomSpanMetrics_Create()创建度量信息对象。
+>
+> - 参数metrics必须是通过OH_ArkUI_CustomSpanMetrics_Create()方法返回的有效对象指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,7 +207,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数验证失败。<br>可能原因：参数不能为空。<br>处理步骤：请确保传入的metrics参数不为空指针。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数验证失败。<br>可能原因：参数不能为空。<br>处理步骤：请确保传入的metrics参数不为空指针。 |
 
 ### OH_ArkUI_CustomSpanMetrics_SetHeight()
 
@@ -183,7 +217,11 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 
 **描述：**
 
-设置自定义绘制Span的高度。在表情内嵌场景中，需要根据表情大小设置合适的高度以保持与文本对齐；在图文混排场景中，需要为嵌入元素设置与文本行高匹配的高度。
+设置自定义绘制Span的高度。在表情内嵌场景中，需要根据表情大小设置合适的高度以保持与文本对齐；在图文混排场景中，需要为嵌入元素设置与文本行高匹配的高度。> **说明：**
+>
+> - 必须先调用OH_ArkUI_CustomSpanMetrics_Create()创建度量信息对象。
+>
+> - 参数metrics必须是通过OH_ArkUI_CustomSpanMetrics_Create()方法返回的有效对象指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,7 +238,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>ARKUI_ERROR_CODE_NO_ERROR 成功。<br>ARKUI_ERROR_CODE_PARAM_INVALID 参数验证失败。<br>可能原因：参数不能为空。<br>处理步骤：请确保传入的metrics参数不为空指针。 |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 参数验证失败。<br>可能原因：参数不能为空。<br>处理步骤：请确保传入的metrics参数不为空指针。 |
 
 ### OH_ArkUI_CustomSpanDrawInfo_Create()
 
@@ -210,7 +248,13 @@ ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 
 **描述：**
 
-创建自定义绘制Span绘制信息。
+创建自定义绘制Span绘制信息。> **说明：**
+>
+> - 必须与OH_ArkUI_CustomSpanDrawInfo_Dispose()配对使用。
+>
+> - 调用流程：OH_ArkUI_CustomSpanDrawInfo_Create()→使用info对象→OH_ArkUI_CustomSpanDrawInfo_Dispose()释放资源。
+>
+> - 使用完毕后必须调用OH_ArkUI_CustomSpanDrawInfo_Dispose()释放内存，否则会导致资源泄漏。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,7 +274,13 @@ void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 
 **描述：**
 
-销毁自定义绘制Span绘制信息。
+销毁自定义绘制Span绘制信息。> **说明：**
+>
+> - 必须与OH_ArkUI_CustomSpanDrawInfo_Create()配对使用。
+>
+> - 仅用于销毁由OH_ArkUI_CustomSpanDrawInfo_Create()方法创建的绘制信息对象。
+>
+> - 调用前确保已不再需要该对象，调用后该对象不可再使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,7 +300,11 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 
 **描述：**
 
-获取自定义绘制Span相对于挂载组件的x轴偏移值。在自定义绘制回调中，需要根据偏移值确定绘制起始位置，用于实现表情内嵌、图文混排等场景的精确绘制。
+获取自定义绘制Span相对于挂载组件的x轴偏移值。在自定义绘制回调中，需要根据偏移值确定绘制起始位置，用于实现表情内嵌、图文混排等场景的精确绘制。> **说明：**
+>
+> - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。
+>
+> - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,7 +330,11 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 
 **描述：**
 
-获取自定义绘制Span相对于挂载组件的上边距。在自定义绘制时，需要根据上边距确定绘制区域的垂直起始位置，用于富文本编辑器、文档应用等场景的精确排版。
+获取自定义绘制Span相对于挂载组件的上边距。在自定义绘制时，需要根据上边距确定绘制区域的垂直起始位置，用于富文本编辑器、文档应用等场景的精确排版。> **说明：**
+>
+> - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。
+>
+> - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -302,7 +360,11 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 
 **描述：**
 
-获取自定义绘制Span相对于挂载组件的下边距。在自定义绘制时，需要结合上边距和下边距计算绘制区域的高度范围，用于图文混排、表情内嵌等场景的精确布局。
+获取自定义绘制Span相对于挂载组件的下边距。在自定义绘制时，需要结合上边距和下边距计算绘制区域的高度范围，用于图文混排、表情内嵌等场景的精确布局。> **说明：**
+>
+> - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。
+>
+> - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,7 +390,11 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 
 **描述：**
 
-获取自定义绘制Span相对于挂载组件的基线偏移量。在自定义绘制Span的绘制回调中，通过本接口获取基线偏移量用于文本对齐排版，实现富文本编辑器、图文混排等场景的精准绘制效果。
+获取自定义绘制Span相对于挂载组件的基线偏移量。在自定义绘制Span的绘制回调中，通过本接口获取基线偏移量用于文本对齐排版，实现富文本编辑器、图文混排等场景的精准绘制效果。> **说明：**
+>
+> - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。
+>
+> - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

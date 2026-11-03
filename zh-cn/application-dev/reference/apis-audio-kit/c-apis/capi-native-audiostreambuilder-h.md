@@ -10,7 +10,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [OHAudio](capi-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## 汇总
 
@@ -50,7 +50,7 @@
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(OH_AudioStreamBuilder* builder, OH_AudioRenderer_OnFastStatusChange callback, void* userData)](#oh_audiostreambuilder_setrendererfaststatuschangecallback) | 设置音频播放过程中低时延状态变化事件的回调函数。 <br>当应用使用低时延音频播放功能，在多音频业务并发的场景下， 由于硬件能力限制，系统并不能确保音频流一直处于低时延运行状态下。 当存在高优先级业务时，系统可能会将音频流转换为普通运行状态。当高优先级业务结束， 系统也会在保障流畅性的前提下，将音频流恢复到低时延运行模式。每次状态切换，都会触发此接口设置的回调函数。 |
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(OH_AudioStreamBuilder* builder, OH_AudioCapturer_OnFastStatusChange callback, void* userData)](#oh_audiostreambuilder_setcapturerfaststatuschangecallback) | 设置音频录制过程中低时延状态变化事件的回调函数。 <br>当应用使用低时延音频录制功能，在多音频业务并发的场景下， 由于硬件能力限制，系统并不能确保音频流一直处于低时延运行状态下。 当存在高优先级业务时，系统可能会将音频流转换为普通运行状态。当高优先级业务结束， 系统也会在保障流畅性的前提下，将音频流恢复到低时延运行模式。每次状态切换，都会触发此接口设置的回调函数。 |
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled(OH_AudioStreamBuilder* builder, bool enabled)](#oh_audiostreambuilder_setcapturerloopbackeffectenabled) | 设置音频录制流是否采集带音频混响效果的音频数据。 <br>当开发者使用AudioLoopback接口实现音频硬件返听功能， 并通过setReverbPreset设置混响效果后，同时使用低时延模式的录制流实现录音功能， 通过此接口设置，可以获取到具备混响效果的录音数据。 |
-| [OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStreamBuilder* builder, uint32_t mode)](#oh_audiostreambuilder_setplaybackcapturemode) |  |
+| [OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStreamBuilder* builder, uint32_t mode)](#oh_audiostreambuilder_setplaybackcapturemode) | 设置内录（录制系统内部音频）的模式，该模式将决定要录制的音频播放流范围。 <br>此功能仅适用于[AUDIOSTREAM_TYPE_CAPTURER](capi-native-audiostream-base-h.md#oh_audiostream_type)类型。 <br>设置内录模式后，录音流的使用场景会被强制设为内录，使用 [OH_AudioStreamBuilder_SetCapturerInfo](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerinfo)设置的OH_AudioStream_SourceType会被忽略。<br>设置的内录模式，可以是单个 [OH_AudioStream_PlaybackCaptureMode](capi-native-audiostream-base-h.md#oh_audiostream_playbackcapturemode)，或多个枚举或运算的结果。 <br>该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。 |
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback(OH_AudioStreamBuilder* builder, OH_AudioCapturer_SensitiveRecordPermitCallback callback, void* userData)](#oh_audiostreambuilder_setsensitiverecordpermitcallback) | 设置蜂窝通话下行录音风险提示语播放结束事件的回调函数。 <br>仅在使用[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)为AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK录制时需要设置此函数。 <br>此回调必须成功设置，否则录制流无法创建。 <br>音频录制流创建后，风险提示语将自动添加到发送给通话对方的语音数据中。 应用应等待回调结果后再启动录制流，否则[OH_AudioCapturer_Start](capi-native-audiocapturer-h.md#oh_audiocapturer_start)将返回错误。 <br>请确保音频录制流在蜂窝通话开始后创建，否则[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)将返回错误。 |
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetCellularRecordSecurityParams(OH_AudioStreamBuilder* builder, const char* cellularRecordPhoneNum, const char* cellularRecordToken)](#oh_audiostreambuilder_setcellularrecordsecurityparams) | 设置蜂窝通话下行录音的电话号码和安全令牌。 <br>仅在使用[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)为AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK录制时需要设置此函数。 <br>电话号码和安全令牌将用于校验蜂窝通话下行录制流是否匹配对应的蜂窝通话，必须成功设置，否则录制流无法创建。 |
 
@@ -74,7 +74,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Create(OH_AudioStreamBuilder** build
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)** builder | [out] 用于接收创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)** builder | [out] 用于接收创建的构造器实例。 |
 | [OH_AudioStream_Type](capi-native-audiostream-base-h.md#oh_audiostream_type) type | [in] 需要构造的音频流类型。 设置AUDIOSTREAM_TYPE_RENDERER构造播放流，设置AUDIOSTREAM_TYPE_CAPTURER构造录制流。 |
 
 **返回值：**
@@ -101,7 +101,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Destroy(OH_AudioStreamBuilder* build
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 
 **返回值：**
 
@@ -127,7 +127,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSamplingRate(OH_AudioStreamBuilde
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | int32_t rate | [in] 音频流的采样率，单位为Hz。 |
 
 **返回值：**
@@ -154,7 +154,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelCount(OH_AudioStreamBuilde
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | int32_t channelCount | [in] 音频流的声道数。 |
 
 **返回值：**
@@ -181,7 +181,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSampleFormat(OH_AudioStreamBuilde
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioStream_SampleFormat](capi-native-audiostream-base-h.md#oh_audiostream_sampleformat) format | [in] 音频流的采样格式。 |
 
 **返回值：**
@@ -208,7 +208,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetEncodingType(OH_AudioStreamBuilde
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) encodingType | [in] 音频流编码类型。 |
 
 **返回值：**
@@ -235,7 +235,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetLatencyMode(OH_AudioStreamBuilder
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode) latencyMode | [in] 音频流的时延模式。 |
 
 **返回值：**
@@ -262,7 +262,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelLayout(OH_AudioStreamBuild
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | OH_AudioChannelLayout channelLayout | [in] 音频流的声道布局。 |
 
 **返回值：**
@@ -289,7 +289,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInfo(OH_AudioStreamBuilde
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | [in] 音频播放流的使用场景。 |
 
 **返回值：**
@@ -316,7 +316,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInfo(OH_AudioStreamBuilde
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) sourceType | [in] 音频录制流的使用场景。 |
 
 **返回值：**
@@ -347,7 +347,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | OH_AudioRenderer_Callbacks callbacks | [in] 将被用来处理音频播放流相关事件的回调函数集合。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -375,7 +375,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallbac
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback) callback | [in] 当播放流设备变化时，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -403,7 +403,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererPrivacy(OH_AudioStreamBui
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioStream_PrivacyType](capi-native-audiostream-base-h.md#oh_audiostream_privacytype) privacy | [in] 音频播放流的隐私类型，会影响播放流是否会被其他应用录制或进行屏幕投射。 |
 
 **返回值：**
@@ -434,7 +434,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerCallback(OH_AudioStreamBu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | OH_AudioCapturer_Callbacks callbacks | [in] 将被用来处理音频录制流相关事件的回调函数集合。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -462,8 +462,8 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateRenderer(OH_AudioStreamBuild
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorenderer.md)** audioRenderer | [out] 用来接收创建的音频播放流实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)** audioRenderer | [out] 用来接收创建的音频播放流实例。 |
 
 **返回值：**
 
@@ -489,8 +489,8 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateCapturer(OH_AudioStreamBuild
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturer.md)** audioCapturer | [out] 指向音频录制流实例的指针，将被用来接收函数创建的结果。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)** audioCapturer | [out] 指向音频录制流实例的指针，将被用来接收函数创建的结果。 |
 
 **返回值：**
 
@@ -516,7 +516,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetFrameSizeInCallback(OH_AudioStrea
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | int32_t frameSize |  [in] 音频数据回调的帧长，单位为采样点数。 |
 
 **返回值：**
@@ -543,7 +543,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioRenderer_WriteDataWithMetadataCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_writedatawithmetadatacallback) callback | [in] 当音频系统请求音频播放数据和元数据时，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -571,7 +571,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptMode(OH_AudioStr
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioInterrupt_Mode](capi-native-audiostream-base-h.md#oh_audiointerrupt_mode) mode | [in] 音频中断模式。 |
 
 **返回值：**
@@ -598,7 +598,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallback(OH_Audi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioRenderer_OnWriteDataCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback) callback | [in] 当音频系统请求音频播放数据时，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -626,7 +626,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiorenderer-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | [in] 当音频系统请求音频播放数据时，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -654,7 +654,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioStream_VolumeMode](capi-native-audiostream-base-h.md#oh_audiostream_volumemode) volumeMode | [in] 音频播放流的音量模式。 |
 
 **返回值：**
@@ -681,7 +681,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptCallback(OH_Audi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioRenderer_OnInterruptCallback](capi-native-audiorenderer-h.md#oh_audiorenderer_oninterruptcallback) callback | [in] 当音频播放流被其他音频业务打断，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -709,7 +709,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererErrorCallback(OH_AudioStr
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioRenderer_OnErrorCallback](capi-native-audiorenderer-h.md#oh_audiorenderer_onerrorcallback) callback | [in] 当音频播放出现错误，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -737,7 +737,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerReadDataCallback(OH_Audio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioCapturer_OnReadDataCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback) callback | [in] 当音频系统录制到数据时，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -765,7 +765,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback(OH_A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioCapturer_OnDeviceChangeCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_ondevicechangecallback) callback | [in] 当音频录制流设备变化时，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -793,7 +793,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInterruptCallback(OH_Audi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioCapturer_OnInterruptCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_oninterruptcallback) callback | [in] 当音频录制流被其他音频业务打断，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -821,7 +821,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerErrorCallback(OH_AudioStr
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioCapturer_OnErrorCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onerrorcallback) callback | [in] 当音频录制出现错误，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -849,7 +849,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(O
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | bool muteWhenInterrupted | [in] 设置当前录制音频流是否启用静音替代打断模式。 true表示启用；false表示不启用，默认为打断模式。 |
 
 **返回值：**
@@ -876,7 +876,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioRenderer_OnFastStatusChange](capi-native-audiorenderer-h.md#oh_audiorenderer_onfaststatuschange) callback | [in] 当音频播放流低时延状态变化，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -904,7 +904,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioCapturer_OnFastStatusChange](capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange) callback | [in] 当音频录制流低时延状态变化，此回调函数会触发。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -932,7 +932,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled(OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | bool enabled | [in] 设置录制流是否采集有混响效果的音频数据。true表示有混响效果，false表示没有。默认为没有混响效果。 |
 
 **返回值：**
@@ -949,6 +949,8 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStrea
 
 **描述：**
 
+设置内录（录制系统内部音频）的模式，该模式将决定要录制的音频播放流范围。<br>此功能仅适用于[AUDIOSTREAM_TYPE_CAPTURER](capi-native-audiostream-base-h.md#oh_audiostream_type)类型。<br>设置内录模式后，录音流的使用场景会被强制设为内录，使用[OH_AudioStreamBuilder_SetCapturerInfo](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerinfo)设置的OH_AudioStream_SourceType会被忽略。<br>设置的内录模式，可以是单个[OH_AudioStream_PlaybackCaptureMode](capi-native-audiostream-base-h.md#oh_audiostream_playbackcapturemode)，或多个枚举或运算的结果。<br>该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 23
@@ -957,7 +959,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStrea
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | uint32_t mode | [in] 要设置的内录模式，可以是单个[OH_AudioStream_PlaybackCaptureMode](capi-native-audiostream-base-h.md#oh_audiostream_playbackcapturemode)，或多个枚举或运算的结果。 |
 
 **返回值：**
@@ -984,7 +986,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback(OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | [OH_AudioCapturer_SensitiveRecordPermitCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_sensitiverecordpermitcallback) callback | [in] 当风险提示语播放结束，此回调函数会触发。不允许为空指针。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
@@ -1012,7 +1014,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCellularRecordSecurityParams(OH_A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilder.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
 | const char* cellularRecordPhoneNum | [in] 目标蜂窝通话的电话号码，用于makeCallWithToken()中，不允许为空指针。 |
 | const char* cellularRecordToken | [in] 目标蜂窝通话的安全令牌，可通过通话管理的makeCallWithToken()函数获取，不允许为空指针。 |
 

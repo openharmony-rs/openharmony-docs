@@ -12,7 +12,7 @@ Declare audio download manager related interfaces.
 
 **System API:** This is a system API.
 
-**Related module**: [OHAudioSuite](capi-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 ## Summary
 
@@ -23,7 +23,7 @@ Declare audio download manager related interfaces.
 | [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | - | Define download status information structure.<br>**System API:** This is a system API. |
 | [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | - | Define download status information array structure.<br>**System API:** This is a system API. |
 | [OH_AudioSuite_FeatureVersionInfo(System API)](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) | - | Define feature version information structure.<br>**System API:** This is a system API. |
-| [OH_AudioSuite_DownloadManager(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) | OH_AudioSuite_DownloadManager | Declare the audio download manager. The handle of audio download manager is used for download related functions.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadManagerStruct(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) | OH_AudioSuite_DownloadManager | Declare the audio download manager. The handle of audio download manager is used for download related functions.<br>**System API:** This is a system API. |
 
 ### Function
 
@@ -42,12 +42,6 @@ Declare audio download manager related interfaces.
 | [int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, bool *installStatus, uint32_t installStatusSize)(System API)](#oh_audiosuite_isfeatureinstalled) | - | Get install status of features in batch.<br>**System API:** This is a system API. |
 | [int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_DownloadStatusInfo *statusInfos, uint32_t statusInfosSize)(System API)](#oh_audiosuite_getfeaturestatus) | - | Get download status of features in batch.<br>**System API:** This is a system API. |
 | [int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_FeatureVersionInfo *versionInfos, uint32_t versionInfosSize)(System API)](#oh_audiosuite_getnewversioninfo) | - | Get new version information of features in batch.<br>**System API:** This is a system API. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)(System API) | Callback function for download status update.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine<br>**System API:** This is a system API. |
 
 ## Function description
 
@@ -93,7 +87,7 @@ Get the audio download manager handle.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) **downloadManager | Pointer to receive the download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) **downloadManager | Pointer to receive the download manager handle. |
 
 **Returns**:
 
@@ -121,7 +115,7 @@ Register download status callback.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | Callback function to receive download status updates. |
 
 **Returns**:
@@ -150,7 +144,7 @@ Unregister download status callback.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | Callback function to unregister. |
 
 **Returns**:
@@ -179,7 +173,7 @@ Start downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to download. |
 
 **Returns**:
@@ -208,7 +202,7 @@ Pause downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to pause. |
 
 **Returns**:
@@ -237,7 +231,7 @@ Cancel downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to cancel. |
 
 **Returns**:
@@ -266,7 +260,7 @@ Start background downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to download. |
 
 **Returns**:
@@ -295,7 +289,7 @@ Get download status of a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature. |
 | [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) *status | Pointer to receive download status information. |
 
@@ -325,7 +319,7 @@ Uninstall a downloaded feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to uninstall. |
 
 **Returns**:
@@ -354,7 +348,7 @@ Get install status of features in batch.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [in] Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [in] Download manager handle. |
 | const char **featureNames | [in] Array of feature names. |
 | uint32_t count | [in] Number of feature names in the input array. |
 | bool *installStatus | [out] Caller-allocated boolean array to receive install status. |
@@ -386,7 +380,7 @@ Get download status of features in batch.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [in] Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [in] Download manager handle. |
 | const char **featureNames | [in] Array of feature names. |
 | uint32_t count | [in] Number of feature names in the input array. |
 | [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) *statusInfos | [out] Caller-allocated array to receive download status. |
@@ -418,7 +412,7 @@ Get new version information of features in batch.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [in] Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | [in] Download manager handle. |
 | const char **featureNames | [in] Array of feature names. |
 | uint32_t count | [in] Number of feature names in the input array. |
 | [OH_AudioSuite_FeatureVersionInfo](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) *versionInfos | [out] Caller-allocated array to receive version info. |

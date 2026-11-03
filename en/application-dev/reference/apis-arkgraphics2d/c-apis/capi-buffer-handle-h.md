@@ -10,7 +10,7 @@ Defines the BufferHandle struct for native window.
 
 **Since**: 8
 
-**Related module**: [NativeWindow](capi-nativewindow.md)
+**Related module**: [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 ## Summary
 

@@ -10,7 +10,7 @@ The file declares the error codes generated during screen capture.
 
 **Since**: 10
 
-**Related module**: [AVScreenCapture](capi-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 ## Summary
 

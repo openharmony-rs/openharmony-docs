@@ -10,7 +10,7 @@ Declares the BASE DDK APIs used by the USB host to access USB devices.
 
 **Since**: 12
 
-**Related module**: [Ddk](capi-ddk.md)
+**Related module**: [Ddk](capi-driver-development-kit-ddk.md)
 
 ## Summary
 

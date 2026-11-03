@@ -12,7 +12,7 @@ struct OH_PrivacyProtectInfo {...}
 
 **起始版本：** 24
 
-**相关模块：** [AVScreenCapture](capi-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

@@ -12,7 +12,7 @@ Defines the translation options for component transition, used to set the transl
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [native_type_visual.h](capi-native-type-visual-h.md)
 

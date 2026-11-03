@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [CodecBase](capi-codecbase.md)
+**相关模块：** [CodecBase](capi-avcodec-kit-codecbase.md)
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
@@ -26,7 +26,7 @@
 | [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) | - | OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例注册到OH_AVCodec实例中， 并处理回调上报的信息，以保证OH_AVCodec的正常运行。 |
 | [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) | - | 用户自定义数据源。 |
 | [OH_AVDataSourceExt](capi-codecbase-oh-avdatasourceext.md) | - | 用户自定义数据源，回调支持通过userData传递用户自定义数据。 |
-| [OHNativeWindow](capi-codecbase-ohnativewindow.md) | OHNativeWindow | 为图形接口定义native层对象。 |
+| [NativeWindow](capi-codecbase-nativewindow.md) | OHNativeWindow | 为图形接口定义native层对象。 |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) | OH_AVCodec | 为音视频编解码接口定义native层对象。 |
 
 ### 枚举
@@ -112,6 +112,7 @@
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_MPEG1 | MPEG1视频编解码器的MIME类型。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK | Cinepak视频编解码器的MIME类型。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MSVIDEO1（Microsoft Video 1）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_AVCODEC_MIMETYPE_VIDEO_WMV1 | WMV1视频编解码器的MIME类型。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | WMV3视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MJPEG（Motion JPEG）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_IMAGE_JPG | JPG图片编码的MIME类型，仅用于封装JPG封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -190,7 +191,7 @@
 | const char *OH_MD_KEY_COMPLIANCE_LEVEL | flac兼容性等级的键，值类型为int32_t，仅在音频编码使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_IDENTIFICATION_HEADER | vorbis标识头的键，值类型为uint8_t*，仅vorbis解码器支持。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_SETUP_HEADER | vorbis设置头的键，值类型为uint8_t*，仅vorbis解码器支持。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_SCALING_MODE | 视频缩放模式，值类型为int32_t，请参见[OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode)。<br> 建议直接调用OH_NativeWindow_NativeWindowSetScalingModeV2接口进行设置。该键是可选的且只用于视频解码Surface模式。<br>**起始版本：** 10<br>**废弃版本：** 14<br>**替代接口：** {@link OH_NativeWindow_NativeWindowSetScalingModeV2}<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_SCALING_MODE | 视频缩放模式，值类型为int32_t，请参见[OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode)。<br> 建议直接调用[OH_NativeWindow_NativeWindowSetScalingModeV2](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2)接口进行设置。该键是可选的且只用于视频解码Surface模式。<br>**起始版本：** 10<br>**废弃版本：** 14<br>**替代接口：** {@link OH_NativeWindow_NativeWindowSetScalingModeV2}<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_MAX_INPUT_BUFFER_COUNT | 最大输入缓冲区个数的键，值类型为int32_t。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_MAX_OUTPUT_BUFFER_COUNT | 最大输出缓冲区个数的键，值类型int32_t。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_AUDIO_COMPRESSION_LEVEL | 音频编解码压缩水平的键，只在音频编码使用，值类型为int32_t。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -235,7 +236,7 @@
 | const char *OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS | 用于设置感兴趣区域（ROI）参数的键。 值类型为字符串，格式为"Top1,Left1-Bottom1,Right1[=Params1];Top2,Left2-Bottom2,Right2[=Params2];"。<br> 每个"Top,Left-Bottom,Right"代表一个ROI的坐标信息。 "[=Params]"是可选的。 "[=Params]"的格式随版本变化： - 在API版本26.0.0之前：仅支持单个代表量化参数偏移量的int32_t值（例如，"=Offset"）。 - 从API版本26.0.0开始：额外支持并推荐使用键值对（Key-Value）格式。 参数使用逗号分隔的键值对（例如，"=dqp:-6,slb:1"）。 支持的键包括： - "dqp"：量化参数偏移量。 - "slb"：语义标签。该值必须与[OH_VideoMetadataRoiSemanticLabel](capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)对应。<br> 如果完全省略"=Params"，例如 "Top1,Left1-Bottom1,Right1;Top2,Left2-Bottom2,Right2=dqp:-6;"， 编码器将使用默认参数对第一个ROI进行ROI编码，并使用指定的参数对第二个ROI进行编码。 请注意，可同时应用的ROI数量不得超过6个，且总面积不得超过图像面积的1/5。<br> 这是一个仅适用于视频编码器的可选键，在运行过程中按帧设置并生效。 在Surface模式下，它用于[OH_VideoEncoder_OnNeedInputParameter](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_onneedinputparameter)。 在Buffer模式下，通过[OH_AVBuffer_SetParameter](capi-native-avbuffer-h.md#oh_avbuffer_setparameter)进行配置。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_SQR_FACTOR | 指定SQR码控模式的质量参数，取值范围为[0, 51]（同编码量化参数QP），值越小，编码输出码率越大，质量越好。<br> 在Configure/SetParameter阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_MAX_BITRATE | 指定SQR码控模式的最大码率，使用[OH_AVCapability_GetEncoderBitrateRange](capi-native-avcapability-h.md#oh_avcapability_getencoderbitraterange)方法获取取值范围（同OH_MD_KEY_BITRATE）， 单位bps，值类型为int64_t。<br> 在Configure/SetParameter阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char *OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL | 使能基于显示时间戳(PTS)的码控模式的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。<br> 该键值是可选的且只用于视频编码。<br> 如果使能，则必须在每个视频帧中携带PTS信息，并发送到编码器。 Surface模式下，通过OH_NativeWindow_NativeWindowHandleOpt接口设置PTS，时间单位为纳秒(ns)； Buffer模式下，通过[OH_AVBuffer_SetBufferAttr](capi-native-avbuffer-h.md#oh_avbuffer_setbufferattr)接口设置PTS，时间单位为微秒(us)。<br> 在Configure阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL | 使能基于显示时间戳(PTS)的码控模式的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。<br> 该键值是可选的且只用于视频编码。<br> 如果使能，则必须在每个视频帧中携带PTS信息，并发送到编码器。 Surface模式下，通过[OH_NativeWindow_NativeWindowHandleOpt](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口设置PTS，时间单位为纳秒(ns)； Buffer模式下，通过[OH_AVBuffer_SetBufferAttr](capi-native-avbuffer-h.md#oh_avbuffer_setbufferattr)接口设置PTS，时间单位为微秒(us)。<br> 在Configure阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_REFERENCE_TRACK_IDS | 媒体文件轨道间参考、被参考关系，值类型为int32_t*。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_TRACK_REFERENCE_TYPE | 媒体文件辅助轨类型，值类型为char *。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_TRACK_DESCRIPTION | 媒体文件辅助轨描述信息，值类型为char *。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -269,14 +270,6 @@
 | const char *OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE | 设置视频解码帧保留模式的键。取值类型为int32_t。<br> 该值表示在[OH_FrameRetentionMode](capi-native-avcodec-base-h.md#oh_frameretentionmode)中定义的帧保留模式。 每种模式的详细说明及其行为请参考枚举定义OH_FrameRetentionMode。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO | 设置视频解码帧保留比例的键。取值类型为double。<br> 当[OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE](capi-native-avcodec-base-h.md#变量)设置为 [OH_FRAME_RETENTION_MODE_UNIFORM](capi-native-avcodec-base-h.md#oh_frameretentionmode)时， 或者未配置保留模式（隐式默认走到均匀逻辑）时，该参数生效。<br> 仅当保留模式显式设置为[OH_FRAME_RETENTION_MODE_ADAPTIVE](capi-native-avcodec-base-h.md#oh_frameretentionmode) 或[OH_FRAME_RETENTION_MODE_FULL](capi-native-avcodec-base-h.md#oh_frameretentionmode)时，此配置才会被忽略。<br> 有效范围是[0.01, 1.0]（其中1.0表示保留所有帧，0.01为最小限制）， 任何超出此范围的值都将被视为无效并被忽略。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_DECODER_SPEED | 配置视频解码器播放倍速的键。取值类型为double。<br> 该键用于指定视频的目标播放倍速。主要推荐与 [OH_FRAME_RETENTION_MODE_ADAPTIVE](capi-native-avcodec-base-h.md#oh_frameretentionmode)模式结合使用， 以辅助感知自适应算法准确评估丢帧对视觉感知的影响。<br> 取值必须严格大于0.0，推荐的标准值包括0.5、0.75、1.0（正常速度）、1.25、1.5、2.0 和 3.0， 任何小于或等于0.0的值都会被视为无效。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData) | 当OH_AVCodec实例运行出错时，会调用来上报具体的错误信息的函数指针。<br>\| 使用场景\| 错误码 \|\| -------- \| -------- \|\| 音频编解码 \| AV_ERR_DRM_DECRYPT_FAILED：DRM解密失败。 \|\| 视频编解码 \| AV_ERR_NO_MEMORY：系统资源不足。<br>AV_ERR_UNKNOWN：未知错误，请通过具体日志分析。<br>AV_ERR_SERVICE_DIED：服务状态已消亡。 \|\| 视频解码 \| AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION：当前输入不支持色彩空间转换功能。 \| <!--RP1--><!--RP1End--><br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData) | 当视频解码输入码流分辨率或者视频编码输出码流的分辨率发生变化时，调用此函数指针报告新的流描述信息。<br> 从API 15开始，支持音频解码时，码流采样率、声道数或者音频采样格式发生变化时，将调用此函数指针报告新的流描述信息， 支持检测此变化的解码格式有：<!--RP3--><!--RP3End-->AAC，FLAC，MP3，VORBIS。<br> 需要注意的是，OH_AVFormat指针的生命周期只有在函数指针被调用时才有效，调用结束后禁止继续访问。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData) | 当OH_AVCodec在运行过程中需要新的输入数据时，将调用此函数指针，并携带可用的缓冲区来填充新的输入数据。<br>**起始版本：** 9<br>**废弃版本：** 11<br>**替代接口：** [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData) | 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。 需要注意的是，OH_AVCodecBufferAttr指针的生命周期仅在调用函数指针时有效，这将禁止调用结束后继续访问。<br>**起始版本：** 9<br>**废弃版本：** 11<br>**替代接口：** [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer)<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData) | 当OH_AVCodec在运行过程中需要新的输入数据时，将调用此函数指针，并携带可用的缓冲区来填充新的输入数据。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData) | 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int64_t pos) | 函数指针定义，用于提供获取用户自定义媒体数据的能力。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, int64_t pos, void *userData) | 函数指针定义，用于提供获取用户自定义媒体数据的能力。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 
 ## 枚举类型说明
 
@@ -338,9 +331,9 @@ AVC档次。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVC_PROFILE_BASELINE = 0 |  |
-| AVC_PROFILE_HIGH = 4 |  |
-| AVC_PROFILE_MAIN = 8 |  |
+| AVC_PROFILE_BASELINE = 0 | AVC编码档次为基本档次。<br>**起始版本：** 9 |
+| AVC_PROFILE_HIGH = 4 | AVC编码档次为高档次。<br>**起始版本：** 9 |
+| AVC_PROFILE_MAIN = 8 | AVC编码档次为主档次。<br>**起始版本：** 9 |
 
 ### OH_HEVCProfile
 
@@ -358,9 +351,9 @@ HEVC档次。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| HEVC_PROFILE_MAIN = 0 |  |
-| HEVC_PROFILE_MAIN_10 = 1 |  |
-| HEVC_PROFILE_MAIN_STILL = 2 |  |
+| HEVC_PROFILE_MAIN = 0 | HEVC编码档次为主档次。<br>**起始版本：** 10 |
+| HEVC_PROFILE_MAIN_10 = 1 | HEVC编码档次为10bit主档次。<br>**起始版本：** 10 |
+| HEVC_PROFILE_MAIN_STILL = 2 | HEVC编码档次为静止图像主档次。<br>**起始版本：** 10 |
 | HEVC_PROFILE_MAIN_10_HDR10 = 3 | HEVC编码档次为HDR10主档次。<br>**废弃版本：** 14 |
 | HEVC_PROFILE_MAIN_10_HDR10_PLUS = 4 | HEVC编码档次为HDR10+主档次。<br>**废弃版本：** 14 |
 
@@ -636,7 +629,7 @@ enum OH_ScalingMode
 | 枚举项 | 描述 |
 | -- | -- |
 | SCALING_MODE_SCALE_TO_WINDOW = 1 | 根据窗口尺寸自适应调整图像大小。<br>**废弃版本：** 14<br>**替代接口：** [OH_SCALING_MODE_SCALE_TO_WINDOW_V2](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#ohscalingmodev2)  |
-| SCALING_MODE_SCALE_CROP = 2 |  |
+| SCALING_MODE_SCALE_CROP = 2 | 根据窗口尺寸裁剪图像大小。<br>**废弃版本：** 14<br>**替代接口：** [OH_SCALING_MODE_SCALE_CROP_V2](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#ohscalingmodev2)  |
 
 ### OH_BitsPerSample
 

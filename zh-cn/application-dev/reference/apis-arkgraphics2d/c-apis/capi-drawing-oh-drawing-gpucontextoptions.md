@@ -14,7 +14,7 @@ typedef struct OH_Drawing_GpuContextOptions {...} OH_Drawing_GpuContextOptions
 
 **废弃版本：** 18
 
-**相关模块：** [Drawing](capi-drawing.md)
+**相关模块：** [Drawing](capi-others-drawing.md)
 
 **所在头文件：** [drawing_gpu_context.h](capi-drawing-gpu-context-h.md)
 

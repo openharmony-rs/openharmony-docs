@@ -10,7 +10,7 @@ Provides functions related to `rawfile` directory operations, including director
 
 **Since**: 8
 
-**Related module**: [rawfile](capi-rawfile.md)
+**Related module**: [rawfile](capi-localization-kit-rawfile.md)
 
 ## Summary
 
@@ -18,7 +18,7 @@ Provides functions related to `rawfile` directory operations, including director
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) | RawDir | `RawDir` represents an opened rawfile directory object, which can be used to traverse the directory and files within it. It is obtained through OH_ResourceManager_OpenRawDir, and must be closed and released through [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) after use. |
+| [RawDir](capi-rawfile-rawdir.md) | RawDir | `RawDir` represents an opened rawfile directory object, which can be used to traverse the directory and files within it. It is obtained through [OH_ResourceManager_OpenRawDir](capi-raw-file-manager-h.md#oh_resourcemanager_openrawdir), and must be closed and released through [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) after use. |
 
 ### Macro
 
@@ -54,18 +54,18 @@ Obtains the file name in the `rawfile` directory by index. When you need to trav
 
 | Parameter | Description |
 | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) *rawDir | Input parameter. Pointer to a `RawDir` object, which is obtained through OH_ResourceManager_OpenRawDir. |
+| [RawDir](capi-rawfile-rawdir.md) *rawDir | Input parameter. Pointer to a `RawDir` object, which is obtained through [OH_ResourceManager_OpenRawDir](capi-raw-file-manager-h.md#oh_resourcemanager_openrawdir). |
 | int index | Input parameter. Index of the file in the `rawfile` directory, ranging from [0, total file count - 1]. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| const char * | Pointer to the file name string, which can be used as an input parameter of OH_ResourceManager_OpenRawFile. <br>`NULL` is returned upon failure. Possible causes include `rawDir` being `NULL`, `index` being out of the valid range, or the directory being empty. <br>After [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) is called, this pointer is also released. If the file name needs to be preserved, you must copy the string content in a timely manner. |
+| const char * | Pointer to the file name string, which can be used as an input parameter of [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile). <br>`NULL` is returned upon failure. Possible causes include `rawDir` being `NULL`, `index` being out of the valid range, or the directory being empty. <br>After [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) is called, this pointer is also released. If the file name needs to be preserved, you must copy the string content in a timely manner. |
 
 **Reference**:
 
-OH_ResourceManager_OpenRawFile
+[OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile)
 
 
 ### OH_ResourceManager_GetRawFileCount()
@@ -86,7 +86,7 @@ Obtains the number of subdirectories and files under `rawfile`. When traversal o
 
 | Parameter | Description |
 | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) *rawDir | Input parameter. Pointer to a `RawDir` object, which is obtained through OH_ResourceManager_OpenRawDir. |
+| [RawDir](capi-rawfile-rawdir.md) *rawDir | Input parameter. Pointer to a `RawDir` object, which is obtained through [OH_ResourceManager_OpenRawDir](capi-raw-file-manager-h.md#oh_resourcemanager_openrawdir). |
 
 **Returns**:
 
@@ -117,11 +117,11 @@ Closes an opened `RawDir` object and releases all associated resources. After tr
 
 | Parameter | Description |
 | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) *rawDir | Input parameter. Pointer to a `RawDir` object, which is obtained through OH_ResourceManager_OpenRawDir. After the release, the pointer becomes invalid and cannot be used for other operations. |
+| [RawDir](capi-rawfile-rawdir.md) *rawDir | Input parameter. Pointer to a `RawDir` object, which is obtained through [OH_ResourceManager_OpenRawDir](capi-raw-file-manager-h.md#oh_resourcemanager_openrawdir). After the release, the pointer becomes invalid and cannot be used for other operations. |
 
 **Reference**:
 
-OH_ResourceManager_OpenRawDir
+[OH_ResourceManager_OpenRawDir](capi-raw-file-manager-h.md#oh_resourcemanager_openrawdir)
 
 
 

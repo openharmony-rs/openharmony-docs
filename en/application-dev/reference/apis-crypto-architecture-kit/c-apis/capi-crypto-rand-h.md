@@ -4,7 +4,7 @@
 
 Defines the random number generator interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_rand.h>
+**File to Include**: <CryptoArchitectureKit/crypto_rand.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the random number generator interfaces.
 
 **Since**: 20
 
-**Related module**: [CryptoRandApi](capi-cryptorandapi.md)
+**Related module**: [CryptoRandApi](capi-crypto-architecture-kit-cryptorandapi.md)
 
 ## Summary
 
@@ -49,7 +49,7 @@ Creates a random number generator context.
 
 **Since**: 20
 
-**Resource release**: crypto_rand/OH_CryptoRand_Destroy {ctx}
+**Resource release**: [OH_CryptoRand_Destroy](#oh_cryptorand_destroy)
 
 **Parameters**:
 
@@ -77,7 +77,7 @@ Generates random numbers.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

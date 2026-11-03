@@ -10,7 +10,7 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 **Since**: 13
 
-**Related module**: [OH_BatteryInfo](capi-oh-batteryinfo.md)
+**Related module**: [OH_BatteryInfo](capi-basic-services-kit-oh-batteryinfo.md)
 
 ## Summary
 
@@ -53,11 +53,11 @@ Enumerates the battery plugged types.
 
 | Enum item | Description |
 | -- | -- |
-| PLUGGED_TYPE_NONE |  |
-| PLUGGED_TYPE_AC |  |
-| PLUGGED_TYPE_USB |  |
-| PLUGGED_TYPE_WIRELESS |  |
-| PLUGGED_TYPE_BUTT |  |
+| PLUGGED_TYPE_NONE | No power supply.<br>**Since**: 13 |
+| PLUGGED_TYPE_AC | AC charging.<br>**Since**: 13 |
+| PLUGGED_TYPE_USB | USB DC charging.<br>**Since**: 13 |
+| PLUGGED_TYPE_WIRELESS | Wireless charging.<br>**Since**: 13 |
+| PLUGGED_TYPE_BUTT | Unknown type.<br>**Since**: 13 |
 
 
 ## Function description

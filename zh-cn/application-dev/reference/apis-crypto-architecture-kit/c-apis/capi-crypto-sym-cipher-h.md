@@ -12,7 +12,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [CryptoSymCipherApi](capi-cryptosymcipherapi.md)
+**相关模块：** [CryptoSymCipherApi](capi-crypto-architecture-kit-cryptosymcipherapi.md)
 
 ## 汇总
 
@@ -82,7 +82,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **par
 
 **起始版本：** 12
 
-**资源释放：** crypto_sym_cipher/OH_CryptoSymCipherParams_Destroy {params}
+**资源释放：** [OH_CryptoSymCipherParams_Destroy](#oh_cryptosymcipherparams_destroy)
 
 **参数：**
 
@@ -163,7 +163,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCi
 
 **起始版本：** 12
 
-**资源释放：** crypto_sym_cipher/OH_CryptoSymCipher_Destroy {ctx}
+**资源释放：** [OH_CryptoSymCipher_Destroy](#oh_cryptosymcipher_destroy)
 
 **参数：**
 
@@ -232,7 +232,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_Data
 
 **起始版本：** 12
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 
@@ -267,7 +267,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataB
 
 **起始版本：** 12
 
-**资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
+**资源释放：** [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **参数：**
 

@@ -12,7 +12,7 @@ Defines the configuration for text entity detection. By setting the entity types
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [text.h](capi-text-h.md)
 

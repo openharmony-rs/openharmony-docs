@@ -10,7 +10,7 @@ Defines APIs for game device events.
 
 **Since**: 21
 
-**Related module**: [GameController](capi-gamecontroller.md)
+**Related module**: [GameController](capi-game-controller-kit-gamecontroller.md)
 
 ## Summary
 
@@ -44,12 +44,6 @@ Defines APIs for game device events.
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struct GameDevice_DeviceInfo* deviceInfo, char** physicalAddress)](#oh_gamedevice_deviceinfo_getphysicaladdress) | - | Obtains the physical address from the device information. |
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct GameDevice_DeviceInfo* deviceInfo, GameDevice_DeviceType* deviceType)](#oh_gamedevice_deviceinfo_getdevicetype) | - | Obtains the device type from the device information. |
 
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void(* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent) | Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](capi-game-device-h.md#oh_gamedevice_registerdevicemonitor). Called when the device goes online or offline.<br>**Since**: 21<br>**System capability**: SystemCapability.Game.GameController |
-
 ## Enum type description
 
 ### GameDevice_StatusChangedType
@@ -68,8 +62,8 @@ Defines status change types of devices.
 
 | Enum item | Description |
 | -- | -- |
-| OFFLINE = 0 |  |
-| ONLINE = 1 |  |
+| OFFLINE = 0 | The game device is offline.<br>**Since**: 21 |
+| ONLINE = 1 | The game device is online.<br>**Since**: 21 |
 
 ### GameDevice_DeviceType
 
@@ -87,8 +81,8 @@ Defines device types.
 
 | Enum item | Description |
 | -- | -- |
-| UNKNOWN = 0 |  |
-| GAME_PAD = 1 |  |
+| UNKNOWN = 0 | Unknown.<br>**Since**: 21 |
+| GAME_PAD = 1 | Gamepad.<br>**Since**: 21 |
 
 
 ## Function description

@@ -10,7 +10,7 @@ Declares the error codes of Archive module.
 
 **Since**: 26.0.0
 
-**Related module**: [Archive](capi-archive.md)
+**Related module**: [Archive](capi-core-file-kit-archive.md)
 
 ## Summary
 

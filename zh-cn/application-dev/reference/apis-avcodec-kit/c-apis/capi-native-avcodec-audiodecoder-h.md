@@ -12,7 +12,7 @@
 
 **起始版本：** 9
 
-**相关模块：** [AudioDecoder](capi-audiodecoder.md)
+**相关模块：** [AudioDecoder](capi-avcodec-kit-audiodecoder.md)
 
 ## 汇总
 

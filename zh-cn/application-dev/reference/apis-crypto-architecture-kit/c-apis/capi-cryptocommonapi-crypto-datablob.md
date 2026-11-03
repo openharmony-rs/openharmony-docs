@@ -12,7 +12,7 @@ struct Crypto_DataBlob {...}
 
 **起始版本：** 12
 
-**相关模块：** [CryptoCommonApi](capi-cryptocommonapi.md)
+**相关模块：** [CryptoCommonApi](capi-others-cryptocommonapi.md)
 
 **所在头文件：** [crypto_common.h](capi-crypto-common-h.md)
 

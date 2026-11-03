@@ -10,7 +10,7 @@ Declares the APIs for accessing assets.
 
 **Since**: 11
 
-**Related module**: [AssetApi](capi-assetapi.md)
+**Related module**: [AssetApi](capi-asset-store-kit-assetapi.md)
 
 ## Summary
 

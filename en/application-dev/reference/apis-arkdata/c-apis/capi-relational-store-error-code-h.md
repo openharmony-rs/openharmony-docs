@@ -10,7 +10,7 @@ Declaration error code information.
 
 **Since**: 10
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 ## Summary
 

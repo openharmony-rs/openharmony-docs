@@ -10,7 +10,7 @@ Declares the fiber interfaces in C.<br> A fiber is a lightweight user-mode threa
 
 **Since**: 20
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## Summary
 

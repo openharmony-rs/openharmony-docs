@@ -10,7 +10,7 @@ native_interface_arkweb.h是ArkWeb Native API的核心入口头文件，定义�
 
 **起始版本：** 11
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-arkweb-web.md)
 
 ## 汇总
 
@@ -57,17 +57,6 @@ native_interface_arkweb.h是ArkWeb Native API的核心入口头文件，定义�
 | [bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()](#oh_nativearkweb_isactivewebengineevergreen) | - | 判断应用所使用ArkWeb内核是否是常青内核，即系统的最新内核。 |
 | [ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, char** cookieValue)](#oh_arkwebcookiemanager_fetchcookiesync) | - | 获取指定URL对应的cookies。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。 |
 | [void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, OH_ArkWeb_OnCookieFetchCallback callback)](#oh_arkwebcookiemanager_fetchcookieasync) | - | 异步获取指定URL对应的cookies。在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*NativeArkWeb_OnJavaScriptCallback)(const char*) | 定义执行JavaScript代码后返回结果的回调函数的类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32_t argc) | 定义注入对象的回调函数的类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*NativeArkWeb_OnValidCallback)(const char*) | 定义Web组件可用时的回调函数的类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*NativeArkWeb_OnDestroyCallback)(const char*) | 定义Web组件销毁时的回调函数的类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode) | 定义保存cookie的回调函数的类型。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char* cookieValue) | 定义在获取cookie操作完成时调用的回调函数类型。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Web.Webview.Core |
 
 ## 枚举类型说明
 
@@ -416,7 +405,10 @@ ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char*
 
 **描述：**
 
-设置无白屏加载是否启用。本接口必须与OH_NativeArkWeb_GetBlanklessInfoWithKey接口配套使用。<br> 使用场景：根据页面首屏加载预测信息动态决定是否启用无白屏加载时使用，例如当相似度预测值较高时启用无白屏加载优化，当相似度较低时不启用以避免资源浪费。<br> **说明：**<br>- 需在触发页面加载的接口之后调用。其他约束同[OH_NativeArkWeb_GetBlanklessInfoWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_getblanklessinfowithkey)。 - 页面的加载必须在调用本套接口的组件中进行。 - 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。
+设置无白屏加载是否启用。本接口必须与OH_NativeArkWeb_GetBlanklessInfoWithKey接口配套使用。<br> 使用场景：根据页面首屏加载预测信息动态决定是否启用无白屏加载时使用，例如当相似度预测值较高时启用无白屏加载优化，当相似度较低时不启用以避免资源浪费。<br> **说明：**
+- 需在触发页面加载的接口之后调用。其他约束同[OH_NativeArkWeb_GetBlanklessInfoWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_getblanklessinfowithkey)。
+- 页面的加载必须在调用本套接口的组件中进行。
+- 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -446,7 +438,8 @@ void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size
 
 **描述：**
 
-清除指定key值页面无白屏优化缓存，本接口只清除缓存。 <br>在小程序或Web应用场景中，当页面加载时内容变化显著，可能会出现一次明显的跳变。若对此跳变有所顾虑，可使用该接口清除页面缓存。<br> **说明：**<br>- 清除之后的页面，需在第三次加载页面时才会产生优化效果。
+清除指定key值页面无白屏优化缓存，本接口只清除缓存。 <br>在小程序或Web应用场景中，当页面加载时内容变化显著，可能会出现一次明显的跳变。若对此跳变有所顾虑，可使用该接口清除页面缓存。<br> **说明：**
+- 清除之后的页面，需在第三次加载页面时才会产生优化效果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -467,7 +460,11 @@ ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag,
 
 **描述：**
 
-获取页面首屏加载预测信息（详细说明见[ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md)），并开始本次加载过渡帧生成，应用根据此信息确定是否需要启用无白屏加载。必须与 [OH_NativeArkWeb_SetBlanklessLoadingWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingwithkey)接口配套使用，并且必须在触发加载页面的接口之前调用。需在WebViewController与Web组件绑定后才能使用。<br> **说明：**<br>- 持久缓存容量：默认大小为30MB（约30页），可以通过接口[OH_NativeArkWeb_SetBlanklessLoadingWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingwithkey)设置缓存容量，具体见该接口说明。 超过容量时根据LRU（Least Recently Used，淘汰不常用缓存的策略）机制更新缓存。自动清理超过7天的持久缓存数据，缓存清除后第三次加载页面开始有优化效果。 - 如果发现相似度（即[ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md)中的similarity）极低，请检查key值是否正确传递。 - 调用本接口后，会启用页面加载快照检测及生成过渡帧计算，产生一定资源开销。 - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加量约为12*w*h B。 页面打开后，内存会被回收，不影响稳态内存。增加固态应用缓存的大小，每个页面增加的缓存约w*h/10 B，缓存位于应用缓存的位置。
+获取页面首屏加载预测信息（详细说明见[ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md)），并开始本次加载过渡帧生成，应用根据此信息确定是否需要启用无白屏加载。必须与 [OH_NativeArkWeb_SetBlanklessLoadingWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingwithkey)接口配套使用，并且必须在触发加载页面的接口之前调用。需在WebViewController与Web组件绑定后才能使用。<br> **说明：**
+- 持久缓存容量：默认大小为30MB（约30页），可以通过接口[OH_NativeArkWeb_SetBlanklessLoadingWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingwithkey)设置缓存容量，具体见该接口说明。 超过容量时根据LRU（Least Recently Used，淘汰不常用缓存的策略）机制更新缓存。自动清理超过7天的持久缓存数据，缓存清除后第三次加载页面开始有优化效果。
+- 如果发现相似度（即[ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md)中的similarity）极低，请检查key值是否正确传递。
+- 调用本接口后，会启用页面加载快照检测及生成过渡帧计算，产生一定资源开销。
+- 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加量约为12*w*h B。 页面打开后，内存会被回收，不影响稳态内存。增加固态应用缓存的大小，每个页面增加的缓存约w*h/10 B，缓存位于应用缓存的位置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

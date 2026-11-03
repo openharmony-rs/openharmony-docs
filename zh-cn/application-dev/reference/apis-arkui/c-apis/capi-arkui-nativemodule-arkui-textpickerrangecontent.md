@@ -12,7 +12,7 @@ typedef struct ARKUI_TextPickerRangeContent {...} ARKUI_TextPickerRangeContent
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [picker.h](capi-picker-h.md)
 
@@ -22,7 +22,7 @@ typedef struct ARKUI_TextPickerRangeContent {...} ARKUI_TextPickerRangeContent
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* icon |  |
-| const char* text |  |
+| const char* icon | 图标路径。以`\0`结尾的C字符串。可为NULL。未通过API设置时，字段保持默认值`nullptr`；通过 [OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex](capi-picker-h.md#oh_arkui_textpickerrangecontentarray_seticonatindex)设置为`nullptr`时不生效（API会忽略此设置）。空字符串`""`合法，表示不显示图标。 具体路径用于显示自定义图标（当需要图标提示时选择），空字符串用于明确不显示图标（当仅显示文本时选择），NULL为默认值（应通过Set方法设置为具体值或空字符串，不建议保留NULL）。路径格式为应用内资源路径，例如`"/ common/hello.png"`，与ArkTS TextPickerRangeContent一致；亦支持URI。图片格式未做专门限制，通过ImageSourceInfo加载，与Image 组件支持的格式一致（如png、jpg、webp等）。显示尺寸固定为24vp × 24vp，不可通过本结构体配置。源码中未规定文件大小上限。<br>**起始版本：** 12 |
+| const char* text | 文本内容。以`\0`结尾的C字符串。可为NULL，默认为`nullptr`；通过[OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex](capi-picker-h.md#oh_arkui_textpickerrangecontentarray_settextatindex)传入`nullptr` 时不生效。空字符串`""`合法，表示不显示文本。具体文本内容用于显示提示信息（当需要文本说明时选择），空字符串用于明确不显示文本（当仅显示图标时选择），NULL为默认值（应通过Set方法设置为具体值或空字符串， 不建议保留NULL）。若未通过Set方法设置，则默认显示为空字符串，与ArkTS文档一致。<br>**起始版本：** 12 |
 
 

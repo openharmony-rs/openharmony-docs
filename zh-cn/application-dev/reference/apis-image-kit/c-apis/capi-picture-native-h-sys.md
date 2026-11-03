@@ -12,7 +12,7 @@
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## 汇总
 
@@ -53,7 +53,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, ui
 
 **起始版本：** 26.0.0
 
-**资源释放：** picture_native/OH_AuxiliaryPictureNative_Release {auxiliaryPicture}
+**资源释放：** [OH_AuxiliaryPictureNative_Release](#oh_auxiliarypicturenative_release)
 
 **系统接口：** 此接口为系统接口。
 
@@ -87,7 +87,7 @@ Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions
 
 **起始版本：** 26.0.0
 
-**资源释放：** picture_native/OH_DecomposeOptions_Release {outOwnedOptions}
+**资源释放：** [OH_DecomposeOptions_Release](#oh_decomposeoptions_release)
 
 **系统接口：** 此接口为系统接口。
 
@@ -291,7 +291,7 @@ Image_ErrorCode OH_PictureNative_ConvertPictureNativeFromNapi(napi_env env, napi
 
 **起始版本：** 26.0.1
 
-**资源释放：** picture_native/OH_PictureNative_Release {outOwnedPictureNative}
+**资源释放：** [OH_PictureNative_Release](#oh_picturenative_release)
 
 **系统接口：** 此接口为系统接口。
 
@@ -323,7 +323,7 @@ Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelm
 
 **起始版本：** 26.0.0
 
-**资源释放：** picture_native/OH_PictureNative_Release {outOwnedPicture}
+**资源释放：** [OH_PictureNative_Release](#oh_picturenative_release)
 
 **系统接口：** 此接口为系统接口。
 

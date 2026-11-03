@@ -10,7 +10,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [FFRT](capi-ffrt.md)
+**相关模块：** [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## 汇总
 
@@ -59,10 +59,7 @@
 | -- | -- |
 | using qos = int | QoS类型。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
 | int ffrt_qos_t | QoS类型，用于设置任务的QoS等级。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
-| void (*ffrt_function_t)(void*) | 任务执行函数指针类型。<br> 函数指针定义了FFRT任务的入口点。FFRT在调度执行任务时调用该函数，并通过唯一的`void*`参数传入用户数据指针。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
 | void* ffrt_task_handle_t | 任务句柄，用于标识不同的任务。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
-| void (*ffrt_poller_cb)(void* data, uint32_t event) | poller回调函数类型。<br> 当poller检测到已注册事件时调用该回调。`data`指针携带注册时传入的用户数据，`event`值标识触发的事件类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
-| void (*ffrt_timer_cb)(void* data) | 定时器回调函数类型。<br> 当定时器到期时调用该回调。`data`指针携带定时器注册时传入的用户数据。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
 | int ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
 | typedef int ffrt_qos_t | QoS类型，用于设置任务的QoS等级。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |
 | typedef int ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core |

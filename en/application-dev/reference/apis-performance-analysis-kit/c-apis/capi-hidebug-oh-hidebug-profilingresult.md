@@ -12,7 +12,7 @@ Defines a struct for encapsulating the result of a single resource collection.
 
 **Since**: 24
 
-**Related module**: [HiDebug](capi-hidebug.md)
+**Related module**: [HiDebug](capi-others-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

@@ -10,7 +10,7 @@ Declares common types.
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## Summary
 
@@ -59,10 +59,7 @@ Declares common types.
 | -- | -- |
 | using qos = int | Defines the QoS type.<br>**Since**: 10<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
 | int ffrt_qos_t | Defines the QoS type used to set the QoS level of a task.<br>**Since**: 10<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
-| void (*ffrt_function_t)(void*) | Defines the task function pointer type.<br> The function pointer defines the entry point of an FFRT task. FFRT invokes this function when the task is scheduled for execution, passing the user data pointer through the single `void*` argument.<br>**Since**: 10<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
 | void* ffrt_task_handle_t | Defines the task handle, which identifies different tasks.<br>**Since**: 10<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
-| void (*ffrt_poller_cb)(void* data, uint32_t event) | Defines the poller callback function type.<br> The callback is invoked when the poller detects a registered event. The data pointer carries user data passed in at registration time, and the event value identifies the triggered event type.<br>**Since**: 12<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
-| void (*ffrt_timer_cb)(void* data) | Defines the timer callback function type.<br> The callback is invoked when the timer expires. The data pointer carries user data passed in at timer registration.<br>**Since**: 12<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
 | int ffrt_timer_t | Defines the timer handle used to identify a created timer.<br>**Since**: 12<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
 | typedef int ffrt_qos_t | Defines the QoS type used to set the QoS level of a task.<br>**Since**: 10<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |
 | typedef int ffrt_timer_t | Defines the timer handle used to identify a created timer.<br>**Since**: 12<br>**System capability**: SystemCapability.Resourceschedule.Ffrt.Core |

@@ -12,7 +12,7 @@ Defines the mutex attribute structure used to store mutex attribute information.
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-others-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 
@@ -22,6 +22,6 @@ Defines the mutex attribute structure used to store mutex attribute information.
 
 | Name | Description |
 | -- | -- |
-| long storage | Internal storage backing the mutex attribute. Do not access directly; use ffrt_mutexattr_init to initialize. |
+| long storage | Internal storage backing the mutex attribute. Do not access directly; use [ffrt_mutexattr_init](capi-mutex-h.md#ffrt_mutexattr_init) to initialize. |
 
 

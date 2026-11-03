@@ -4,7 +4,7 @@
 
 Defines the key derivation interfaces.
 
-**Include**: <CryptoArchitectureKit/crypto_kdf.h>
+**File to Include**: <CryptoArchitectureKit/crypto_kdf.h>
 
 **Library**: libohcrypto.so
 
@@ -12,7 +12,7 @@ Defines the key derivation interfaces.
 
 **Since**: 20
 
-**Related module**: [CryptoKdfApi](capi-cryptokdfapi.md)
+**Related module**: [CryptoKdfApi](capi-crypto-architecture-kit-cryptokdfapi.md)
 
 ## Summary
 
@@ -84,7 +84,7 @@ Creates KDF parameters.
 
 **Since**: 20
 
-**Resource release**: crypto_kdf/OH_CryptoKdfParams_Destroy {params}
+**Resource release**: [OH_CryptoKdfParams_Destroy](#oh_cryptokdfparams_destroy)
 
 **Parameters**:
 
@@ -166,7 +166,7 @@ Creates a KDF context based on the given algorithm name.
 
 **Since**: 20
 
-**Resource release**: crypto_kdf/OH_CryptoKdf_Destroy {ctx}
+**Resource release**: [OH_CryptoKdf_Destroy](#oh_cryptokdf_destroy)
 
 **Parameters**:
 
@@ -200,7 +200,7 @@ Derives a key.
 
 **Since**: 20
 
-**Resource release**: crypto_common/OH_Crypto_FreeDataBlob {key}
+**Resource release**: [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)
 
 **Parameters**:
 

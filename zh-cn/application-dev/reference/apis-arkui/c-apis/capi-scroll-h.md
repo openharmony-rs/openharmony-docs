@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -113,7 +113,7 @@ enum ArkUI_ScrollDirection
 | ARKUI_SCROLL_DIRECTION_VERTICAL = 0 | 仅支持竖直方向滚动。 |
 | ARKUI_SCROLL_DIRECTION_HORIZONTAL | 仅支持水平方向滚动。 |
 | ARKUI_SCROLL_DIRECTION_NONE = 3 | 禁止滚动。 |
-| ARKUI_SCROLL_DIRECTION_FREE = 4 |  |
+| ARKUI_SCROLL_DIRECTION_FREE = 4 | 自由滚动，支持竖直和水平方向滚动，仅在Scroll组件中可用。<br>**起始版本：** 20 |
 
 ### ArkUI_ScrollSnapAlign
 
@@ -319,8 +319,8 @@ enum OH_ArkUI_FastScrollMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 |  |
-| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 |  |
-| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 |  |
+| OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 | 不启用快速滚动优化。在动画开始前创建并测量所有中间子组件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 | 快速滚动优化，跳过中间子组件的测量。中间子组件会被创建但不会被测量。 该模式适用于List多列且ListItem和ListItemGroup同时存在的场景。 此时ListItem只占一行中的一列，但ListItemGroup会占满一整行，因此List需要创建所有中间子组件来获取这些子组件类型从而计算出目标索引的行位置。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 | 快速滚动优化，跳过中间子组件的创建和测量。中间子组件既不会被创建，也不会被测量。 该模式提供最大限度的优化性能。但该模式不适用于List多列且ListItem和ListItemGroup同时存在的场景。 在此场景下，请使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE。<br>**起始版本：** 26.1.0 |
 
 

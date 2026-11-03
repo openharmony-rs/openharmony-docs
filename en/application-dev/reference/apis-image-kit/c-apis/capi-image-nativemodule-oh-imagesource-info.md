@@ -12,7 +12,7 @@ The OH_ImageSource_Info struct describes the image source information encapsulat
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
 
 **Header file**: [image_source_native.h](capi-image-source-native-h.md)
 

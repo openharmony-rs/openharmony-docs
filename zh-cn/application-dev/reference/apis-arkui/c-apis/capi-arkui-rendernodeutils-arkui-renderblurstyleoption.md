@@ -12,7 +12,7 @@ typedef struct ArkUI_RenderBlurStyleOption ArkUI_RenderBlurStyleOption
 
 **起始版本：** 26.0.0
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

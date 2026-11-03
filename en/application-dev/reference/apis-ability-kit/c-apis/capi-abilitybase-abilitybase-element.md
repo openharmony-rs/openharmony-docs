@@ -12,7 +12,7 @@ The struct describes the Element in Want.
 
 **Since**: 15
 
-**Related module**: [AbilityBase](capi-abilitybase.md)
+**Related module**: [AbilityBase](capi-others-abilitybase.md)
 
 **Header file**: [want.h](capi-want-h.md)
 
@@ -22,8 +22,8 @@ The struct describes the Element in Want.
 
 | Name | Description |
 | -- | -- |
-| char* bundleName |  |
-| char* moduleName |  |
-| char* abilityName |  |
+| char* bundleName | Pointer to the bundle name of the application.<br>**Since**: 15 |
+| char* moduleName | Pointer to the module name.<br>**Since**: 15 |
+| char* abilityName | Pointer to the ability name.<br>**Since**: 15 |
 
 

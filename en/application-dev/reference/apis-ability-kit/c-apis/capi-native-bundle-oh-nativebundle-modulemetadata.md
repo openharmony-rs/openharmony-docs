@@ -12,7 +12,7 @@ The struct describes the metadata of a module.
 
 **Since**: 20
 
-**Related module**: [Native_Bundle](capi-native-bundle.md)
+**Related module**: [Native_Bundle](capi-others-native-bundle.md)
 
 **Header file**: [native_interface_bundle.h](capi-native-interface-bundle-h.md)
 

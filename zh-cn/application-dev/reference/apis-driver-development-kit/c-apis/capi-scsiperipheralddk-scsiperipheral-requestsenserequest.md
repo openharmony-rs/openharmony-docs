@@ -12,7 +12,7 @@ SCSI命令（REQUEST SENSE）的请求结构体，该命令通常用于获取设
 
 **起始版本：** 18
 
-**相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
 
 **所在头文件：** [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

@@ -12,7 +12,7 @@ Define the structure of location information.
 
 **Since**: 13
 
-**Related module**: [Location](capi-location.md)
+**Related module**: [Location](capi-others-location.md)
 
 **Header file**: [oh_location_type.h](capi-oh-location-type-h.md)
 

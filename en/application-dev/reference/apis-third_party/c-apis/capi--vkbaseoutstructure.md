@@ -9,6 +9,6 @@
 | Name | Description |
 | -- | -- |
 | VkStructureType               sType |  |
-| struct VkBaseOutStructure*    pNext |  |
+| [struct VkBaseOutStructure*](capi--vkbaseoutstructure.md)    pNext |  |
 
 

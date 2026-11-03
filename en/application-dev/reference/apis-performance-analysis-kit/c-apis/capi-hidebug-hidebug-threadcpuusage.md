@@ -12,7 +12,7 @@ Defines the struct for the CPU usage of all threads of an application.
 
 **Since**: 12
 
-**Related module**: [HiDebug](capi-hidebug.md)
+**Related module**: [HiDebug](capi-others-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

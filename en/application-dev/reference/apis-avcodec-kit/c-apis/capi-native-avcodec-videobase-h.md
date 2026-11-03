@@ -10,7 +10,7 @@ Declare the Native API used for basic video encoding and decoding functions, as 
 
 **Since**: 26.0.0
 
-**Related module**: [CodecBase](capi-codecbase.md)
+**Related module**: [CodecBase](capi-avcodec-kit-codecbase.md)
 
 ## Summary
 
@@ -142,7 +142,7 @@ Parses the ROI string and populates the caller-provided OH_AVFormat array.
 
 **Since**: 26.0.0
 
-**Resource release**: media_foundation/OH_AVFormat_Destroy {outOwnedFormats}
+**Resource release**: [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)
 
 **Parameters**:
 

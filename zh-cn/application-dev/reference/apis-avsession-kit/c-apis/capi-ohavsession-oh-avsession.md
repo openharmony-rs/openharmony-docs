@@ -12,7 +12,7 @@ typedef struct OH_AVSession OH_AVSession
 
 **起始版本：** 13
 
-**相关模块：** [OHAVSession](capi-ohavsession.md)
+**相关模块：** [OHAVSession](capi-others-ohavsession.md)
 
 **所在头文件：** [native_avsession.h](capi-native-avsession-h.md)
 

@@ -10,7 +10,7 @@ Defines the APIs of **DrawableDescriptor**.
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 ## Summary
 
@@ -19,8 +19,8 @@ Defines the APIs of **DrawableDescriptor**.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a struct for the **DrawableDescriptor** object. |
-| [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) | - | OH_PixelmapNative is an uncompressed pixel map format struct encapsulated at the native layer after image decoding. It supports operations such as pixel data read/write, opacity setting, scaling, translation, rotation, flipping, and cropping. It is suitable for scenarios where pixel-level processing and transformation of PixelMaps are required at the native layer.<br>To create an OH_PixelmapNative object, you need to use the OH_PixelmapNative_CreatePixelmap series of functions. If the source pixel format is not specified, these functions parse the source pixel data in the BGRA_8888 format by default. After use, you must call the OH_PixelmapNative_Release function to release the resources. These two operations must be paired; otherwise, memory leaks may occur.<br>The table below describes some functions and operation modes of the OH_PixelmapNative struct. |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnativehandle.md) | OH_PixelmapNativeHandle | Defines a struct for the pointer to an **OH_PixelmapNative** object. |
+| [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) | - | OH_PixelmapNative is an uncompressed pixel map format struct encapsulated at the native layer after image decoding. It supports operations such as pixel data read/write, opacity setting, scaling, translation, rotation, flipping, and cropping. It is suitable for scenarios where pixel-level processing and transformation of PixelMaps are required at the native layer.<br>To create an OH_PixelmapNative object, you need to use the [OH_PixelmapNative_CreatePixelmap](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap) series of functions. If the source pixel format is not specified, these functions parse the source pixel data in the BGRA_8888 format by default. After use, you must call the [OH_PixelmapNative_Release](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_release) function to release the resources. These two operations must be paired; otherwise, memory leaks may occur.<br>The table below describes some functions and operation modes of the OH_PixelmapNative struct. |
+| [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines a struct for the pointer to an **OH_PixelmapNative** object. |
 | [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptor-animationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | Defines the DrawableDescriptor animation controller object. |
 
 ### Enum
@@ -76,10 +76,10 @@ Enumerates the playback states of DrawableDescriptor animations.
 
 | Enum item | Description |
 | -- | -- |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0 |  |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1 |  |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2 |  |
-| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3 |  |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_INITIAL = 0 | The animation is in the initial state.<br>**Since**: 22 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1 | The animation is being played.<br>**Since**: 22 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2 | The animation is paused.<br>**Since**: 22 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3 | The animation is stopped.<br>**Since**: 22 |
 
 ### DrawableDescriptor_AnimationStopMode
 
@@ -97,8 +97,8 @@ Enumerates the stop modes of [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-
 
 | Enum item | Description |
 | -- | -- |
-| DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0 |  |
-| DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1 |  |
+| DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0 | The animation returns to the first frame when it stops.<br>**Since**: 24 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1 | The animation stays at the last frame when it stops.<br>**Since**: 24 |
 
 
 ## Function description
@@ -121,7 +121,7 @@ Creates a **DrawableDescriptor** object from a **PixelMap** object.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnativehandle.md) pixelMap | Pointer to the [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) object. |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | Pointer to the [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) object. |
 
 **Returns**:
 
@@ -147,7 +147,7 @@ Creates a **DrawableDescriptor** object from an array of **PixelMap** objects.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnativehandle.md)* array | Pointer to the array of **PixelMap** objects. |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md)* array | Pointer to the array of **PixelMap** objects. |
 | int32_t size | Size of the PixelMap image array, in number of elements. It must be a positive integer. **nullptr** is returned if a NULL array is passed or the value of **size** is less than or equal to **0**. |
 
 **Returns**:
@@ -200,7 +200,7 @@ Obtains the pointer to a **PixelMap** object.
 
 | Type | Description |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnativehandle.md) | Pointer to the [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) object. |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | Pointer to the [OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md) object. |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray()
 
@@ -226,7 +226,7 @@ Obtains an array of **PixelMap** objects for playing an animation.
 
 | Type | Description |
 | -- | -- |
-| [OH_PixelmapNativeHandle*](capi-arkui-nativemodule-oh-pixelmapnativehandle.md) | Pointer to the array of **PixelMap** objects. |
+| [OH_PixelmapNativeHandle*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | Pointer to the array of **PixelMap** objects. |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize()
 
@@ -531,7 +531,7 @@ Creates an animation controller. When you need to manually control the playback 
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) *drawableDescriptor | Pointer to a **DrawableDescriptor** object. The value must be an animation object created using [OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap](capi-drawable-descriptor-h.md#oh_arkui_drawabledescriptor_createfromanimatedpixelmap). |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Pointer to the component node. The value must be a valid ArkUI component node. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node. The value must be a valid ArkUI component node. |
 | [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptor-animationcontroller.md)** controller | Pointer to the **DrawableDescriptor** animation controller object. This is an output parameter, which returns the controller pointer when the call is successful. |
 
 **Returns**:

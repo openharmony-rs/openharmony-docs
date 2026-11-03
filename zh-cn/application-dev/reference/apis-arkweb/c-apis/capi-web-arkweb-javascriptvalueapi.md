@@ -12,7 +12,7 @@ ArkWeb_JavaScriptValueAPI是JavaScript相关Native API结构体。该结构体�
 
 **起始版本：** 18
 
-**相关模块：** [Web](capi-web.md)
+**相关模块：** [Web](capi-others-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -55,6 +55,6 @@ ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType ty
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalueptr.md) | 创建出来的JavaScript值。当输入参数无效或内存分配失败时，返回NULL。 |
+| [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalue8h.md) | 创建出来的JavaScript值。当输入参数无效或内存分配失败时，返回NULL。 |
 
 

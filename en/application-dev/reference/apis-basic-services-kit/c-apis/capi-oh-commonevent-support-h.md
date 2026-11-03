@@ -10,7 +10,7 @@ Provides common event constants defined by the system.
 
 **Since**: 12
 
-**Related module**: [OH_CommonEvent](capi-oh-commonevent.md)
+**Related module**: [OH_CommonEvent](capi-basic-services-kit-oh-commonevent.md)
 
 ## Summary
 

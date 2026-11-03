@@ -10,7 +10,7 @@ Declares the interfaces of a ModularObjectExtensionAbility instance, including t
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 
@@ -18,8 +18,7 @@ Declares the interfaces of a ModularObjectExtensionAbility instance, including t
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) | OH_AbilityRuntime_ModObjExtensionInstance | Defines the OH_AbilityRuntime_ModularObjectExtensionInstance struct, whose type alias is OH_AbilityRuntime_ModObjExtensionInstance, representing an instance of ModularObjectExtensionAbility. |
-| [OH_AbilityRuntime_ModObjExtensionInstance*](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance8h.md) | OH_AbilityRuntime_ModObjExtensionInstanceHandle | Defines the pointer to OH_AbilityRuntime_ModObjExtensionInstance. |
+| [OH_AbilityRuntime_ModularObjectExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) | OH_AbilityRuntime_ModObjExtensionInstance | Defines the OH_AbilityRuntime_ModularObjectExtensionInstance struct, whose type alias is OH_AbilityRuntime_ModObjExtensionInstance, representing an instance of ModularObjectExtensionAbility. |
 
 ### Function
 
@@ -29,10 +28,10 @@ Declares the interfaces of a ModularObjectExtensionAbility instance, including t
 | [typedef void (\*OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc)(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance)](#oh_abilityruntime_modobjextensionability_ondestroyfunc) | OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc | Callback invoked before a modular object extension is destroyed. |
 | [typedef OHIPCRemoteStub* (\*OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc)(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, AbilityBase_Want *want)](#oh_abilityruntime_modobjextensionability_onconnectfunc) | OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc | Callback function invoked when the ModularObjectExtensionAbility is connected. It must return an OHIPCRemoteStub object to provide cross-process communication services. |
 | [typedef void (\*OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc)(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance)](#oh_abilityruntime_modobjextensionability_ondisconnectfunc) | OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc | Callback invoked when all abilities connected to a modular object extension are disconnected. |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCreateFunc(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc onCreateFunc)](#oh_abilityruntime_modobjextensionability_registeroncreatefunc) | - | Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md). |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDestroyFunc(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc onDestroyFunc)](#oh_abilityruntime_modobjextensionability_registerondestroyfunc) | - | Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md). |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConnectFunc(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc onConnectFunc)](#oh_abilityruntime_modobjextensionability_registeronconnectfunc) | - | Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md). |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisconnectFunc(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc onDisconnectFunc)](#oh_abilityruntime_modobjextensionability_registerondisconnectfunc) | - | Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md). |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCreateFunc(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc onCreateFunc)](#oh_abilityruntime_modobjextensionability_registeroncreatefunc) | - | Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md). |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDestroyFunc(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc onDestroyFunc)](#oh_abilityruntime_modobjextensionability_registerondestroyfunc) | - | Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md). |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConnectFunc(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc onConnectFunc)](#oh_abilityruntime_modobjextensionability_registeronconnectfunc) | - | Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md). |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisconnectFunc(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc onDisconnectFunc)](#oh_abilityruntime_modobjextensionability_registerondisconnectfunc) | - | Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md). |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetContextFromInstance(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionContextHandle* context)](#oh_abilityruntime_modobjextensionability_getcontextfrominstance) | - | Gets the extension context from the modular object extension instance. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetInstanceFromBase(AbilityRuntime_ExtensionInstanceHandle baseExtensionInstance, OH_AbilityRuntime_ModObjExtensionInstanceHandle* modObjExtensionInstance)](#oh_abilityruntime_modobjextensionability_getinstancefrombase) | - | Gets the modular object extension instance from a base extension instance. |
 
@@ -41,10 +40,6 @@ Declares the interfaces of a ModularObjectExtensionAbility instance, including t
 | Name | Description |
 | -- | -- |
 | OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle | Defines the pointer to OH_AbilityRuntime_ModObjExtensionInstance.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
-| void (*OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc)( OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, AbilityBase_Want *want) | Callback invoked when a modular object extension is started for initialization.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
-| void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc)( OH_AbilityRuntime_ModObjExtensionInstanceHandle instance) | Callback invoked before a modular object extension is destroyed.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
-| OHIPCRemoteStub* (*OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc)( OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, AbilityBase_Want *want) | Callback function invoked when the ModularObjectExtensionAbility is connected. It must return an OHIPCRemoteStub object to provide cross-process communication services.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
-| void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc)( OH_AbilityRuntime_ModObjExtensionInstanceHandle instance) | Callback invoked when all abilities connected to a modular object extension are disconnected.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Ability.AbilityRuntime.Core |
 
 ## Function description
 
@@ -66,7 +61,7 @@ Callback invoked when a modular object extension is started for initialization.
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md) *want | Indicates the want of created modular object extension. For details, see [AbilityBase_Want](capi-abilitybase-abilitybase-want.md). |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc()
@@ -87,7 +82,7 @@ Callback invoked before a modular object extension is destroyed.
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc()
 
@@ -107,7 +102,7 @@ Callback function invoked when the ModularObjectExtensionAbility is connected. I
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md) *want | Indicates the want of created modular object extension. |
 
 **Returns**:
@@ -134,7 +129,7 @@ Callback invoked when all abilities connected to a modular object extension are 
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCreateFunc()
 
@@ -144,7 +139,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCrea
 
 **Description**
 
-Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md).
+Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -154,7 +149,7 @@ Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](c
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
 | [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc) onCreateFunc | Represents the onCreate callback function. |
 
 **Returns**:
@@ -171,7 +166,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDest
 
 **Description**
 
-Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md).
+Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -181,7 +176,7 @@ Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
 | [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc) onDestroyFunc | Represents the onDestroy callback function. |
 
 **Returns**:
@@ -198,7 +193,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConn
 
 **Description**
 
-Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md).
+Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -208,7 +203,7 @@ Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
 | [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc) onConnectFunc | Represents the onConnect callback function. |
 
 **Returns**:
@@ -225,7 +220,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisc
 
 **Description**
 
-Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md).
+Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -235,7 +230,7 @@ Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFun
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
 | [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc) onDisconnectFunc | Represents the onDisconnect callback function. |
 
 **Returns**:
@@ -262,8 +257,8 @@ Gets the extension context from the modular object extension instance.
 
 | Parameter | Description |
 | -- | -- |
-| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md) instance. |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md)* context | Represents a pointer to the modular object extension ability context. |
+| OH_AbilityRuntime_ModObjExtensionInstanceHandle instance | Points to an [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) instance. |
+| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md)* context | Represents a pointer to the modular object extension ability context. |
 
 **Returns**:
 
@@ -289,7 +284,7 @@ Gets the modular object extension instance from a base extension instance.
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ExtensionInstanceHandle](capi-abilityruntime-abilityruntime-extensioninstancehandle.md) baseExtensionInstance | Represents a pointer to a {@link AbilityRuntime_ExtensionInstance} base extension instance. |
+| [AbilityRuntime_ExtensionInstanceHandle](capi-abilityruntime-abilityruntime-extensioninstance8h.md) baseExtensionInstance | Represents a pointer to a {@link AbilityRuntime_ExtensionInstance} base extension instance. |
 | OH_AbilityRuntime_ModObjExtensionInstanceHandle* modObjExtensionInstance | Represents a pointer to an {@link OH_AbilityRuntime_ModObjExtensionInstanceHandle} instance that is an output parameter. |
 
 **Returns**:

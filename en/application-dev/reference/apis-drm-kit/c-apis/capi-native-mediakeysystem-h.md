@@ -10,7 +10,7 @@ The file declares the MediaKeySystem APIs for DRM operations. The APIs can be us
 
 **Since**: 11
 
-**Related module**: [Drm](capi-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 ## Summary
 
@@ -41,13 +41,6 @@ The file declares the MediaKeySystem APIs for DRM operations. The APIs can be us
 | [Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysystem_clearofflinemediakeys) | - | Clear an offline media key by id. |
 | [Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem, DRM_CertificateStatus *certStatus)](#oh_mediakeysystem_getcertificatestatus) | - | Get certificate status of media key system. |
 | [Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)](#oh_mediakeysystem_destroy) | - | Destroy a media key system instance. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Call back will be invoked when event triggers.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
-| Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra) | Call back will be invoked when event triggers.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Drm.Core |
 
 ## Function description
 

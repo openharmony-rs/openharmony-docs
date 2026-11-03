@@ -10,7 +10,7 @@ Declares the FFRT task C APIs, including task attribute initialization and destr
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 ## Summary
 

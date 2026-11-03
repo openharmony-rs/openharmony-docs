@@ -12,7 +12,7 @@ declare the audio session state change event
 
 **Since**: 20
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-others-ohaudio.md)
 
 **Header file**: [native_audio_session_manager.h](capi-native-audio-session-manager-h.md)
 

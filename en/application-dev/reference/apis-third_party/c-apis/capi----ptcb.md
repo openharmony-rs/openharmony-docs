@@ -16,7 +16,7 @@
 
 | Name | Complete quotation | Description |
 | -- | -- | -- |
-| [void (\*\_\_f)(void *)](#\_\_f) | \_\_f() |  |
+| [void (\*\_\_f)(void *)](#\_\_f) | \_\_f |  |
 
 ## Member function description
 

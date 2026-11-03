@@ -10,7 +10,7 @@
 
 **起始版本：** 8
 
-**相关模块：** [HiAppEvent](capi-hiappevent.md)
+**相关模块：** [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 ## 汇总
 

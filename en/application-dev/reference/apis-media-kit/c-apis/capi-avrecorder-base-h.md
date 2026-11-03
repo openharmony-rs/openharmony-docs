@@ -8,7 +8,7 @@ The file declares the struct and enums used by the AVRecorder.
 
 **Since**: 18
 
-**Related module**: [AVRecorder](capi-avrecorder.md)
+**Related module**: [AVRecorder](capi-media-kit-avrecorder.md)
 
 ## Summary
 
@@ -50,14 +50,6 @@ The file declares the struct and enums used by the AVRecorder.
 | [typedef void (\*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)](#oh_avrecorder_onstatechange) | OH_AVRecorder_OnStateChange | Called when the AVRecorder state changes. |
 | [typedef void (\*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avrecorder_onerror) | OH_AVRecorder_OnError | Called when an error occurs during recording. |
 | [typedef void (\*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)](#oh_avrecorder_onuri) | OH_AVRecorder_OnUri | Called when the recording is in [OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE mode. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData) | Called when the AVRecorder state changes.<br>**Since**: 18 |
-| void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData) | Called when an error occurs during recording.<br>**Since**: 18 |
-| void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData) | Called when the recording is in [OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE mode.<br>**Since**: 18 |
 
 ## Enum type description
 

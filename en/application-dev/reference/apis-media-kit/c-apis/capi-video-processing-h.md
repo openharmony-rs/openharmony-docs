@@ -10,7 +10,7 @@ Declare video processing functions.<br> Provides SDR content processing for vide
 
 **Since**: 12
 
-**Related module**: [VideoProcessing](capi-videoprocessing.md)
+**Related module**: [VideoProcessing](capi-media-kit-videoprocessing.md)
 
 ## Summary
 
@@ -26,7 +26,7 @@ Declare video processing functions.<br> Provides SDR content processing for vide
 | [VideoProcessing_ErrorCode OH_VideoProcessing_Destroy(OH_VideoProcessing* videoProcessor)](#oh_videoprocessing_destroy) | Destroy the video processing instance.<br> Stop the instance before destroying it. see [OH_VideoProcessing_Stop](capi-video-processing-h.md#oh_videoprocessing_stop). |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_RegisterCallback(OH_VideoProcessing* videoProcessor, const VideoProcessing_Callback* callback, void* userData)](#oh_videoprocessing_registercallback) | Register callback object.<br> Register the callback object before starting video processing. |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* videoProcessor, const OHNativeWindow* window)](#oh_videoprocessing_setsurface) | Set the output surface for video processing.<br> Set the output surface before starting video processing. |
-| [VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* videoProcessor, OHNativeWindow** window)](#oh_videoprocessing_getsurface) | Create an input surface.<br> Create the input surface before starting video processing. Call OH_NativeWindow_DestroyNativeWindow to destroy the input surface. |
+| [VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* videoProcessor, OHNativeWindow** window)](#oh_videoprocessing_getsurface) | Create an input surface.<br> Create the input surface before starting video processing. Call [OH_NativeWindow_DestroyNativeWindow](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#oh_nativewindow_destroynativewindow) to destroy the input surface. |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* videoProcessor, const OH_AVFormat* parameter)](#oh_videoprocessing_setparameter) | Set parameter for video processing.<br> Add parameter identified by the specified parameter key. |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* videoProcessor, OH_AVFormat* parameter)](#oh_videoprocessing_getparameter) | Get parameter of video processing.<br> Get parameter identified by the specified parameter key. |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProcessor)](#oh_videoprocessing_start) | Start video processing instance.<br> After successfully calling this function, the state [VIDEO_PROCESSING_STATE_RUNNING](capi-video-processing-types-h.md#videoprocessing_state) is reported by callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate). |
@@ -236,7 +236,7 @@ Set the output surface for video processing.<br> Set the output surface before s
 | Parameter | Description |
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | A video processing instance pointer. |
-| [const OHNativeWindow](capi-videoprocessing-ohnativewindow.md)* window | The output surface pointer. |
+| [const OHNativeWindow](capi-videoprocessing-nativewindow.md)* window | The output surface pointer. |
 
 **Returns**:
 
@@ -252,7 +252,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* vide
 
 **Description**
 
-Create an input surface.<br> Create the input surface before starting video processing. Call OH_NativeWindow_DestroyNativeWindow to destroy the input surface.
+Create an input surface.<br> Create the input surface before starting video processing. Call [OH_NativeWindow_DestroyNativeWindow](../../apis-arkgraphics2d/c-apis/capi-external-window-h.md#oh_nativewindow_destroynativewindow) to destroy the input surface.
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -263,7 +263,7 @@ Create an input surface.<br> Create the input surface before starting video proc
 | Parameter | Description |
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | A video processing instance pointer. |
-| [OHNativeWindow](capi-videoprocessing-ohnativewindow.md)** window | The input surface pointer. For example, it is the output surface of a video decoder. |
+| [OHNativeWindow](capi-videoprocessing-nativewindow.md)** window | The input surface pointer. For example, it is the output surface of a video decoder. |
 
 **Returns**:
 

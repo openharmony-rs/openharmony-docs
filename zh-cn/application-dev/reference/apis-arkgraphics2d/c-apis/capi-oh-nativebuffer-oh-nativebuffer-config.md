@@ -12,7 +12,7 @@ OH_NativeBuffer的属性配置，用于申请新的OH_NativeBuffer实例或查�
 
 **起始版本：** 9
 
-**相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)
+**相关模块：** [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
 
 **所在头文件：** [native_buffer.h](capi-native-buffer-h.md)
 
@@ -26,6 +26,6 @@ OH_NativeBuffer的属性配置，用于申请新的OH_NativeBuffer实例或查�
 | int32_t height | 高度（像素） |
 | int32_t format | PixelFormat之一 |
 | int32_t usage | buffer usage的组合 |
-| int32_t stride |  |
+| int32_t stride | 本地窗口缓冲区步幅，单位是Byte<br>**起始版本：** 10 |
 
 

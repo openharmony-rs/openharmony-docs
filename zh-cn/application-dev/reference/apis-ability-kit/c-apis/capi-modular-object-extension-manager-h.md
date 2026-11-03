@@ -10,7 +10,7 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AbilityRuntime](capi-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## 汇总
 
@@ -18,8 +18,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) | OH_AbilityRuntime_ModObjExtensionInfoHandle | 表示单个ModularObjectExtensionAbility的信息句柄。该句柄指向一个ModularObjectExtensionAbility的完整信息，包含启动模式、进程模式、线程模式、组件名称（ [AbilityBase_Element](capi-abilitybase-abilitybase-element.md)）以及禁用状态等属性。 |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) | OH_AbilityRuntime_AllModObjExtensionInfosHandle | 表示当前应用内所有ModularObjectExtensionAbility信息的集合句柄。该句柄指向一个包含多个[OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) 的集合，可通过[OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos) 获取集合中元素的数量，并通过 [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex) 按索引遍历获取单个ModularObjectExtensionAbility信息。使用完毕后需通过 [OH_AbilityRuntime_ReleaseAllExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_releaseallextensioninfos) 释放该集合。 |
+| [OH_AbilityRuntime_ModularObjectExtensionInfo*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) | OH_AbilityRuntime_ModObjExtensionInfoHandle | 表示单个ModularObjectExtensionAbility的信息句柄。该句柄指向一个ModularObjectExtensionAbility的完整信息，包含启动模式、进程模式、线程模式、组件名称（ [AbilityBase_Element](capi-abilitybase-abilitybase-element.md)）以及禁用状态等属性。 |
+| [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) | OH_AbilityRuntime_AllModObjExtensionInfosHandle | 表示当前应用内所有ModularObjectExtensionAbility信息的集合句柄。该句柄指向一个包含多个[OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) 的集合，可通过[OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos) 获取集合中元素的数量，并通过 [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex) 按索引遍历获取单个ModularObjectExtensionAbility信息。使用完毕后需通过 [OH_AbilityRuntime_ReleaseAllExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_releaseallextensioninfos) 释放该集合。 |
 
 ### 枚举
 
@@ -127,7 +127,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | [OH_AbilityRuntime_LaunchMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode) *launchMode | 指向[OH_AbilityRuntime_LaunchMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode)的指针，用于接收启动模式。 |
 
 **返回值：**
@@ -154,7 +154,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessM
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | [OH_AbilityRuntime_ProcessMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_processmode) *processMode | 指向[OH_AbilityRuntime_ProcessMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_processmode)的指针，用于接收进程模式。 |
 
 **返回值：**
@@ -181,7 +181,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode) *threadMode | 指向[OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode)的指针，用于接收线程模式。 |
 
 **返回值：**
@@ -208,7 +208,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) *element | 指向[AbilityBase_Element](capi-abilitybase-abilitybase-element.md)的指针，用于接收组件名称。 |
 
 **返回值：**
@@ -235,7 +235,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) extensionInfo | 目标ModularObjectExtensionAbility的信息句柄。 |
 | bool *isDisabled | 指向布尔值的指针，用于接收禁用状态。true表示已禁用，不允许其他应用连接；false表示未禁用，允许其他应用连接。 |
 
 **返回值：**
@@ -258,13 +258,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfo
 
 **起始版本：** 26.0.0
 
-**资源释放：** OH_AbilityRuntime_ReleaseAllExtensionInfos {outOwnedAllExtensionInfos}
+**资源释放：** [OH_AbilityRuntime_ReleaseAllExtensionInfos](#oh_abilityruntime_releaseallextensioninfos)
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) *outOwnedAllExtensionInfos | 指向[OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md)的指针， 用于接收ModularObjectExtensionAbility信息集合。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) *outOwnedAllExtensionInfos | 指向[OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md)的指针， 用于接收ModularObjectExtensionAbility信息集合。 |
 
 **返回值：**
 
@@ -290,7 +290,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) *allExtensionInfos | 指向需要释放的ModularObjectExtensionAbility信息集合句柄的指针。释放后该指针将被置空。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) *allExtensionInfos | 指向需要释放的ModularObjectExtensionAbility信息集合句柄的指针。释放后该指针将被置空。 |
 
 **返回值：**
 
@@ -321,7 +321,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(O
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) allExtensionInfos | ModularObjectExtensionAbility信息集合句柄。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) allExtensionInfos | ModularObjectExtensionAbility信息集合句柄。 |
 | size_t *count | 指向size_t的指针，用于接收ModularObjectExtensionAbility信息的数量。 |
 
 **返回值：**
@@ -348,9 +348,9 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_Abil
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodobjextensioninfoshandle.md) allExtensionInfos | ModularObjectExtensionAbility信息集合句柄。 |
+| [OH_AbilityRuntime_AllModObjExtensionInfosHandle](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md) allExtensionInfos | ModularObjectExtensionAbility信息集合句柄。 |
 | size_t index | 目标ModularObjectExtensionAbility信息在集合中的索引，必须小于集合包含的ModularObjectExtensionAbility信息数量。 |
-| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md) *extensionInfo | 指向[OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioninfohandle.md)的指针， 用于接收指定索引处的ModularObjectExtensionAbility信息句柄。 |
+| [OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md) *extensionInfo | 指向[OH_AbilityRuntime_ModObjExtensionInfoHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md)的指针， 用于接收指定索引处的ModularObjectExtensionAbility信息句柄。 |
 
 **返回值：**
 

@@ -12,7 +12,7 @@ typedef struct OH_Filter OH_Filter
 
 **起始版本：** 12
 
-**相关模块：** [effectKit](capi-effectkit.md)
+**相关模块：** [effectKit](capi-others-effectkit.md)
 
 **所在头文件：** [effect_types.h](capi-effect-types-h.md)
 

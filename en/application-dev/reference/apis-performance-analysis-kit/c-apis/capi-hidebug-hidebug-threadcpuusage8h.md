@@ -10,7 +10,7 @@ Defines pointer of HiDebug_ThreadCpuUsage.
 
 **Since**: 12
 
-**Related module**: [HiDebug](capi-hidebug.md)
+**Related module**: [HiDebug](capi-others-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

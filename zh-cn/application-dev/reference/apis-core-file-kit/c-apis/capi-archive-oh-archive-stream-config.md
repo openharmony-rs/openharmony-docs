@@ -12,7 +12,7 @@ typedef struct OH_Archive_Stream_Config {...} OH_Archive_Stream_Config
 
 **起始版本：** 26.0.0
 
-**相关模块：** [Archive](capi-archive.md)
+**相关模块：** [Archive](capi-others-archive.md)
 
 **所在头文件：** [oh_archive.h](capi-oh-archive-h.md)
 

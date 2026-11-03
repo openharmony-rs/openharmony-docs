@@ -12,7 +12,7 @@ Defines the watcher for application events.
 
 **Since**: 12
 
-**Related module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-others-hiappevent.md)
 
 **Header file**: [hiappevent.h](capi-hiappevent-h.md)
 

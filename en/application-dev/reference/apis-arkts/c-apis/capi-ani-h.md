@@ -10,7 +10,7 @@ Defines native api of ArkTS 1.2 native module.
 
 **Since**: 23
 
-**Related module**: [](capi-.md)
+**Related module**: [](capi-arkts-.md)
 
 ## Summary
 

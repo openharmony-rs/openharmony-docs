@@ -12,7 +12,7 @@ HiLog模块日志接口定义，通过这些接口实现日志打印相关功能
 
 **起始版本：** 8
 
-**相关模块：** [HiLog](capi-hilog.md)
+**相关模块：** [HiLog](capi-performance-analysis-kit-hilog.md)
 
 ## 汇总
 
@@ -47,12 +47,6 @@ HiLog模块日志接口定义，通过这些接口实现日志打印相关功能
 | [void OH_LOG_SetCallback(LogCallback callback)](#oh_log_setcallback) | - | 注册函数。调用此函数后，用户实现的回调函数可以接收当前进程的所有hilog日志。 <br>请注意，无论是否调用该接口，它都不会更改当前进程的hilog日志的默认行为。 |
 | [void OH_LOG_SetMinLogLevel(LogLevel level)](#oh_log_setminloglevel) | - | 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。 <br>注意： <br>1. 如果设置的日志级别低于全局日志级别，设置不生效。 <br>2. debug版本应用下，此函数不生效。 |
 | [void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)](#oh_log_setloglevel) | - | 设置当前应用程序进程的最低日志级别。 <br>可通过prefer参数配置不同的偏好策略。如果选择策略PREFER_CLOSE_LOG，等同于调用OH_LOG_SetMinLogLevel。 <br>注意：debug版本应用下，此函数不生效。 |
-
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg) | 函数指针，开发者自定义回调函数内容，在回调函数中，可自行对hilog日志进行处理。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.HiviewDFX.HiLog |
 
 ## 枚举类型说明
 

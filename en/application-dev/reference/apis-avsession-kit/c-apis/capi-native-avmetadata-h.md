@@ -10,7 +10,7 @@ Declare avmetadata builder related interfaces.
 
 **Since**: 13
 
-**Related module**: [OHAVSession](capi-ohavsession.md)
+**Related module**: [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 ## Summary
 
@@ -18,8 +18,8 @@ Declare avmetadata builder related interfaces.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md) | OH_AVMetadataBuilder | Declaring the avmetadata builder. The instance of builder is used for creating avmetadata. |
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadata.md) | OH_AVMetadata | Declaring the avmetadata. The instance of avmetadata set by application for current resource. |
+| [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md) | OH_AVMetadataBuilder | Declaring the avmetadata builder. The instance of builder is used for creating avmetadata. |
+| [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md) | OH_AVMetadata | Declaring the avmetadata. The instance of avmetadata set by application for current resource. |
 
 ### Function
 
@@ -65,7 +65,7 @@ Creates an AVMetadataBuilder instance.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)** builder | The builder reference to the created result. |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder | The builder reference to the created result. |
 
 **Returns**:
 
@@ -91,7 +91,7 @@ Destroy a builder.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 
 **Returns**:
 
@@ -117,7 +117,7 @@ Set current asset id of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* assetId | The current assetId of resource. |
 
 **Returns**:
@@ -144,7 +144,7 @@ Set the title of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* title | The title of resource. |
 
 **Returns**:
@@ -171,7 +171,7 @@ Set the artist of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* artist | The artist of resource. |
 
 **Returns**:
@@ -198,7 +198,7 @@ Set the author of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* author | The author of resource. |
 
 **Returns**:
@@ -225,7 +225,7 @@ Set the album information
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* album | The album name |
 
 **Returns**:
@@ -252,7 +252,7 @@ Set the writer of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* writer | The writer of resource. |
 
 **Returns**:
@@ -279,7 +279,7 @@ Set the composer of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* composer | The composer of resource. |
 
 **Returns**:
@@ -306,7 +306,7 @@ Set the duration of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | int64_t duration | The duration of resource, in miliseconds |
 
 **Returns**:
@@ -333,7 +333,7 @@ Set the media image uri of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* mediaImageUri | The mediaImageUri of resource. |
 
 **Returns**:
@@ -360,7 +360,7 @@ Set the subtitle of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* subtitle | The subtitle of resource. |
 
 **Returns**:
@@ -387,7 +387,7 @@ Set the media description of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* description | The description of resource. |
 
 **Returns**:
@@ -414,7 +414,7 @@ Set the media lyric content of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | const char* lyric | The lyric of resource. |
 
 **Returns**:
@@ -441,7 +441,7 @@ Set the skip intervals of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | [AVMetadata_SkipIntervals](capi-native-avsession-base-h.md#avmetadata_skipintervals) intervals | The intervals of resource, only can be set : 10, 15, 30 |
 
 **Returns**:
@@ -468,7 +468,7 @@ Set the display tags of the resource
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | int32_t tags | The display tags of resource which are supported by this app to be displayed on the media center |
 
 **Returns**:
@@ -495,7 +495,7 @@ Set the protocols supported
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
 | uint32_t filter | The protocols supported by this session,if not set, the default is [TYPE_CAST_PLUS_STREAM](capi-native-avsession-base-h.md#avsession_protocoltype) |
 
 **Returns**:
@@ -522,8 +522,8 @@ Create the avmetadata.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilder.md)* builder | The metadata builder instance pointer |
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadata.md)** avMetadata | Pointer to a variable to receive the avMetadata object. |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | The metadata builder instance pointer |
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)** avMetadata | Pointer to a variable to receive the avMetadata object. |
 
 **Returns**:
 
@@ -549,7 +549,7 @@ Request to release the avmetadata.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadata.md)* avMetadata | Pointer to a variable to receive the avMetadata object. |
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)* avMetadata | Pointer to a variable to receive the avMetadata object. |
 
 **Returns**:
 

@@ -10,7 +10,7 @@ Declares the exception error codes of ArkWeb NDK APIs, which are used to return 
 
 **Since**: 12
 
-**Related module**: [Web](capi-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 ## Summary
 

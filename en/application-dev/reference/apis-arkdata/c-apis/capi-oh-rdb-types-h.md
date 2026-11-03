@@ -10,7 +10,7 @@ Provides type define related to the data value.
 
 **Since**: 18
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 ## Summary
 

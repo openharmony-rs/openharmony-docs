@@ -12,7 +12,7 @@ The struct describes the callbacks related to photo output.
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-oh-camera.md)
+**Related module**: [OH_Camera](capi-others-oh-camera.md)
 
 **Header file**: [photo_output.h](capi-photo-output-h.md)
 

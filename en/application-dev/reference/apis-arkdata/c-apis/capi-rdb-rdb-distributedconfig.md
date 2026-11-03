@@ -12,7 +12,7 @@ Manages the distributed configuration of the table.
 
 **Since**: 11
 
-**Related module**: [RDB](capi-rdb.md)
+**Related module**: [RDB](capi-others-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

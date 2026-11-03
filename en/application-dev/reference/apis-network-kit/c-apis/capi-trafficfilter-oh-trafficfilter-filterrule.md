@@ -6,13 +6,21 @@ struct OH_TrafficFilter_FilterRule {...}
 
 ## Overview
 
-Packet filter rule<br> Defines conditions for matching packets. 1. **Initialization Contract (Caller Side)**: - The caller must **zero-initialize** the entire structure (e.g., via `memset`) before use. - The `size` field **must** be explicitly set to `sizeof(OH_TrafficFilter_FilterRule)`. - If `size` is less than `sizeof(OH_TrafficFilter_FilterRule)`, the implementation will only read the stable prefix fields up to `size`, ignoring subsequent bytes.<br> 2. **Read Contract (Implementation Side)**: - The implementation strictly determines the valid field range based on the `size` value. - If `size` < `sizeof(OH_TrafficFilter_FilterRule)`, the implementation treats it as an older version and reads only the prefix fields compatible with that size. - If `size` is 0 or the pointer is NULL, the implementation must return an error.
+Packet filter rule<br> Defines conditions for matching packets.
+1. **Initialization Contract (Caller Side)**:
+- The caller must **zero-initialize** the entire structure (e.g., via `memset`) before use.
+- The `size` field **must** be explicitly set to `sizeof(OH_TrafficFilter_FilterRule)`.
+- If `size` is less than `sizeof(OH_TrafficFilter_FilterRule)`, the implementation will only read the stable prefix fields up to `size`, ignoring subsequent bytes.<br>
+2. **Read Contract (Implementation Side)**:
+- The implementation strictly determines the valid field range based on the `size` value.
+- If `size` < `sizeof(OH_TrafficFilter_FilterRule)`, the implementation treats it as an older version and reads only the prefix fields compatible with that size.
+- If `size` is 0 or the pointer is NULL, the implementation must return an error.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.1
 
-**Related module**: [TrafficFilter](capi-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-others-trafficfilter.md)
 
 **Header file**: [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

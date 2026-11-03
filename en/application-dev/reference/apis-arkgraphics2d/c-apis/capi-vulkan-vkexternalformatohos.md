@@ -12,7 +12,7 @@ Defines an externally defined format.
 
 **Since**: 10
 
-**Related module**: [Vulkan](capi-vulkan.md)
+**Related module**: [Vulkan](capi-others-vulkan.md)
 
 **Header file**: [vulkan_ohos.h](capi-vulkan-ohos-h.md)
 

@@ -12,7 +12,7 @@ HTTP响应时间信息，会在[Http_Response](capi-netstack-http-response.md)�
 
 **起始版本：** 20
 
-**相关模块：** [netstack](capi-netstack.md)
+**相关模块：** [netstack](capi-others-netstack.md)
 
 **所在头文件：** [net_http_type.h](capi-net-http-type-h.md)
 

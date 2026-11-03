@@ -10,7 +10,7 @@ The file declares the APIs for image encoding.
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 ## Summary
 
@@ -103,7 +103,7 @@ Creates the pointer to an OH_PackingOptions struct.
 
 **Since**: 12
 
-**Resource release**: image_packer_native/OH_PackingOptions_Release {options}
+**Resource release**: [OH_PackingOptions_Release](#oh_packingoptions_release)
 
 **Parameters**:
 
@@ -136,7 +136,7 @@ Obtains the MIME type. **value.data** obtained through this API lacks the string
 | Parameter | Description |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct. |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md) *format | Pointer to the MIME type. You can pass in a null pointer with the size set to zero. In this case, the system will allocate memory, but you must release the memory after use. |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the MIME type. You can pass in a null pointer with the size set to zero. In this case, the system will allocate memory, but you must release the memory after use. |
 
 **Returns**:
 
@@ -163,7 +163,7 @@ Obtains the MIME type in the packing options. The output **format.data** ends wi
 | Parameter | Description |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct. |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md) *format | Pointer to the MIME type. |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the MIME type. |
 
 **Returns**:
 
@@ -190,7 +190,7 @@ Sets the MIME type.
 | Parameter | Description |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct. |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md) *format | Pointer to a MIME type string in the form "type/subtype". |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to a MIME type string in the form "type/subtype". |
 
 **Returns**:
 
@@ -672,7 +672,7 @@ Creates the pointer to an OH_ImagePackerNative struct.
 
 **Since**: 12
 
-**Resource release**: image_packer_native/OH_ImagePackerNative_Release {imagePacker}
+**Resource release**: [OH_ImagePackerNative_Release](#oh_imagepackernative_release)
 
 **Parameters**:
 
@@ -968,7 +968,7 @@ Obtains the supported image formats that can be encoded.
 
 | Parameter | Description |
 | -- | -- |
-| [Image_MimeType](capi-image-nativemodule-image-mimetype.md)** supportedFormats | Double pointer to the supported image formats. |
+| [Image_MimeType](capi-image-nativemodule-image-string.md)** supportedFormats | Double pointer to the supported image formats. |
 | size_t* length | Pointer to the size of the array. |
 
 **Returns**:

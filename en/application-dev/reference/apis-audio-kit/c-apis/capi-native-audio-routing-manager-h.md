@@ -10,7 +10,7 @@ Declare audio routing manager related interfaces.<br> This file interface is use
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 
@@ -42,15 +42,6 @@ Declare audio routing manager related interfaces.<br> This file interface is use
 | [typedef void (\*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData)](#oh_audioroutingmanager_ondeviceblockstatuscallback) | OH_AudioRoutingManager_OnDeviceBlockStatusCallback | This type defines the callback function that is used to receive the audio devices' block status. |
 | [OH_AudioCommon_Result OH_AudioRoutingManager_IsMicBlockDetectionSupported(OH_AudioRoutingManager *audioRoutingManager, bool *supported)](#oh_audioroutingmanager_ismicblockdetectionsupported) | - | Query whether microphone block detection is supported on current device. |
 | [OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnDeviceBlockStatusCallback callback, void *userData)](#oh_audioroutingmanager_setmicblockstatuscallback) | - | Set the microphone block status callback. Before using this function, users should query whether block detection is supported on current device. The caller will receive the callback only when it is recording and the used microphones' block status have changed. Currently, block detecting is only support for microphones located on the local device. |
-
-### Variable
-
-| Name | Description |
-| -- | -- |
-| int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback) ( OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray ) | This function pointer will point to the callback function that is used to return the changing audio device descriptors. There may be more than one audio device descriptor returned.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | This callback function pointer is used to return the preferred audio output device descriptors. Multiple audio device descriptors may be returned.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | This callback function pointer is used to return the preferred audio input device descriptors. Multiple audio device descriptors may be returned.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData) | This type defines the callback function that is used to receive the audio devices' block status.<br>**Since**: 13<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ## Function description
 

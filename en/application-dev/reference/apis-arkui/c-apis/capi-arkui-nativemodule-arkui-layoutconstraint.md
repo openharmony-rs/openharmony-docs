@@ -12,7 +12,7 @@ Defines the layout constraint for limiting the size range during component layou
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **Header file**: [common_type.h](capi-common-type-h.md)
 

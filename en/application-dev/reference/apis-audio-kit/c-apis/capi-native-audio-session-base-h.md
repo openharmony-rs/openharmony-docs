@@ -10,7 +10,7 @@ Declares the audio session base data structure.
 
 **Since**: 24
 
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 ## Summary
 

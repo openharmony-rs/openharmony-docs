@@ -12,7 +12,7 @@
 
 **起始版本：** 24
 
-**相关模块：** [ContentEmbed](capi-contentembed.md)
+**相关模块：** [ContentEmbed](capi-content-embed-kit-contentembed.md)
 
 ## 汇总
 
@@ -67,15 +67,6 @@
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_ExtensionProxy *proxy, uint32_t *bitmask)](#oh_contentembed_proxy_getcapability) | - | 获取服务端OE Extension实例拥有的能力，以位掩码形式返回，各位的含义参见[ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode)。用于在调用 [OH_ContentEmbed_Proxy_GetSnapshot](capi-content-embed-proxy-h.md#oh_contentembed_proxy_getsnapshot)、[OH_ContentEmbed_Proxy_DoEdit](capi-content-embed-proxy-h.md#oh_contentembed_proxy_doedit)接口前确认服务端是否支持相应能力。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetDocument(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_Document **ceDocument)](#oh_contentembed_proxy_getdocument) | - | 从客户端OE对象获取其关联的OE文档对象。 <br>该OE文档对象通过[OH_ContentEmbed_CreateDocumentByOEid](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyoeid)、[OH_ContentEmbed_CreateDocumentByFile](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyfile)或 [OH_ContentEmbed_LoadDocumentFromFile](capi-content-embed-document-h.md#oh_contentembed_loaddocumentfromfile)方式创建。 <br>该文档对象的生命周期由[ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md)对象管理，应通过[OH_ContentEmbed_DestroyExtensionProxy](capi-content-embed-proxy-h.md#oh_contentembed_destroyextensionproxy)统一销毁，请勿单独调用 [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁，否则会导致重复释放。 |
 
-### 变量
-
-| 名称 | 描述 |
-| -- | -- |
-| void (*OH_ContentEmbed_ClientCallbackOnUpdateFunc)( ContentEmbed_ExtensionProxy *proxy) | OE文档更新时通知客户端的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Proxy_RegisterOnUpdateFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronupdatefunc)将此函数注册到客户端OE对象。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.ContentEmbed.ObjectEditor |
-| void (*OH_ContentEmbed_ClientCallbackOnErrorFunc)( ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error) | OE文档错误时通知客户端的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Proxy_RegisterOnErrorFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronerrorfunc)将此函数注册到客户端OE对象。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.ContentEmbed.ObjectEditor |
-| void (*OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc)( ContentEmbed_ExtensionProxy *proxy, bool dataModified) | OE文档编辑完成时通知客户端的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeroneditingfinishedfunc)将此函数注册到客户端OE对象。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.ContentEmbed.ObjectEditor |
-| void (*OH_ContentEmbed_ClientCallbackOnExtensionStoppedFunc)( ContentEmbed_ExtensionProxy *proxy) | OE Extension停止时通知客户端的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronextensionstoppedfunc)将此函数注册到客户端OE对象。<br>**起始版本：** 24<br>**系统能力：** SystemCapability.ContentEmbed.ObjectEditor |
-
 ## 函数说明
 
 ### OH_ContentEmbed_CreateContentEmbedInfo()
@@ -92,7 +83,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedInfo(ContentEmbed_Info 
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyContentEmbedInfo {info}
+**资源释放：** [OH_ContentEmbed_DestroyContentEmbedInfo](#oh_contentembed_destroycontentembedinfo)
 
 **参数：**
 
@@ -230,7 +221,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedFormat(ContentEmbed_For
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyContentEmbedFormat {format}
+**资源释放：** [OH_ContentEmbed_DestroyContentEmbedFormat](#oh_contentembed_destroycontentembedformat)
 
 **参数：**
 
@@ -374,7 +365,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetIconFromFormat(const ContentEmbed_Form
 | 参数项 | 描述 |
 | -- | -- |
 | [const ContentEmbed_Format](capi-contentembed-contentembed-format.md) *format | 指向[ContentEmbed_Format](capi-contentembed-contentembed-format.md)对象指针。 |
-| OH_PixelmapNative **icon | 输出参数。用于存储图标的[OH_PixelmapNative](../../apis-arkui/c-apis/capi-arkui-nativemodule-oh-pixelmapnative.md)实例指针。 <br>开发者需要调用OH_PixelmapNative_Destroy销毁，以避免内存泄漏。 |
+| OH_PixelmapNative **icon | 输出参数。用于存储图标的[OH_PixelmapNative](../../apis-arkui/c-apis/capi-arkui-nativemodule-oh-pixelmapnative.md)实例指针。 <br>开发者需要调用[OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)销毁，以避免内存泄漏。 |
 
 **返回值：**
 
@@ -423,7 +414,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateExtensionProxy(ContentEmbed_Documen
 
 **起始版本：** 24
 
-**资源释放：** OH_ContentEmbed_DestroyExtensionProxy {proxy}
+**资源释放：** [OH_ContentEmbed_DestroyExtensionProxy](#oh_contentembed_destroyextensionproxy)
 
 **参数：**
 
@@ -725,14 +716,14 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetSnapshot(ContentEmbed_ExtensionP
 
 **起始版本：** 24
 
-**资源释放：** OH_PixelmapNative_Destroy {snapshot}
+**资源释放：** [OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) *proxy | 指向[ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md)对象的指针。 |
-| OH_PixelmapNative **snapshot | 输出参数。用于存储文档快照的[OH_PixelmapNative](../../apis-arkui/c-apis/capi-arkui-nativemodule-oh-pixelmapnative.md)实例指针。 <br>开发者需要调用OH_PixelmapNative_Destroy销毁，以避免内存泄漏。 |
+| OH_PixelmapNative **snapshot | 输出参数。用于存储文档快照的[OH_PixelmapNative](../../apis-arkui/c-apis/capi-arkui-nativemodule-oh-pixelmapnative.md)实例指针。 <br>开发者需要调用[OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)销毁，以避免内存泄漏。 |
 
 **返回值：**
 

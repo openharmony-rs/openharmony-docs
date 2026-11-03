@@ -10,7 +10,7 @@ Defines the APIs of the HTTP request module.
 
 **Since**: 20
 
-**Related module**: [netstack](capi-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 ## Summary
 

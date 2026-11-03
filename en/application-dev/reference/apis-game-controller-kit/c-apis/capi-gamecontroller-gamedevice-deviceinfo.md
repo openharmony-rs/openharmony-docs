@@ -12,7 +12,7 @@ Defines the device information.
 
 **Since**: 21
 
-**Related module**: [GameController](capi-gamecontroller.md)
+**Related module**: [GameController](capi-others-gamecontroller.md)
 
 **Header file**: [game_device_event.h](capi-game-device-event-h.md)
 

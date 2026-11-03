@@ -10,7 +10,7 @@ Provides the data structures for the C APIs of the the telephony radio.
 
 **Since**: 13
 
-**Related module**: [Telephony](capi-telephony.md)
+**Related module**: [Telephony](capi-telephony-kit-telephony.md)
 
 ## Summary
 

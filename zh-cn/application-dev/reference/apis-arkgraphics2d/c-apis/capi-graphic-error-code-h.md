@@ -10,7 +10,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [NativeWindow](capi-nativewindow.md)
+**相关模块：** [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 ## 汇总
 
@@ -39,11 +39,11 @@ enum OHNativeErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | NATIVE_ERROR_OK = 0 | 成功 |
-| NATIVE_ERROR_MEM_OPERATION_ERROR = 30001000 |  |
+| NATIVE_ERROR_MEM_OPERATION_ERROR = 30001000 | 内存操作错误<br>**起始版本：** 15 |
 | NATIVE_ERROR_INVALID_ARGUMENTS = 40001000 | 入参无效 |
 | NATIVE_ERROR_NO_PERMISSION = 40301000 | 无权限操作 |
 | NATIVE_ERROR_NO_BUFFER = 40601000 | 无空闲可用的buffer |
-| NATIVE_ERROR_INVALID_OPERATION = 41201000 |  |
+| NATIVE_ERROR_INVALID_OPERATION = 41201000 | 无效操作<br>**起始版本：** 26.0.0 |
 | NATIVE_ERROR_NO_CONSUMER = 41202000 | 消费端不存在 |
 | NATIVE_ERROR_NOT_INIT = 41203000 | 未初始化 |
 | NATIVE_ERROR_CONSUMER_CONNECTED = 41206000 | 消费端已经被连接 |

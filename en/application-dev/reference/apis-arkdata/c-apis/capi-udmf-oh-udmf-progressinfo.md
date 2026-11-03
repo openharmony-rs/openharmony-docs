@@ -12,7 +12,7 @@ Defines a struct for progress information.
 
 **Since**: 15
 
-**Related module**: [UDMF](capi-udmf.md)
+**Related module**: [UDMF](capi-others-udmf.md)
 
 **Header file**: [udmf.h](capi-udmf-h.md)
 

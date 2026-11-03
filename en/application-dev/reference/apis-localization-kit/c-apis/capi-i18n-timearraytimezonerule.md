@@ -12,7 +12,7 @@ Defines time zone rule defined by the start timestamp array.
 
 **Since**: 22
 
-**Related module**: [i18n](capi-i18n.md)
+**Related module**: [i18n](capi-others-i18n.md)
 
 **Header file**: [timezone.h](capi-timezone-h.md)
 

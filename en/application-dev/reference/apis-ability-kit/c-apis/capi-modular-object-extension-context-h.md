@@ -10,7 +10,7 @@ Declares the context APIs of ModularObjectExtensionAbility, including starting a
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 ## Summary
 
@@ -18,7 +18,7 @@ Declares the context APIs of ModularObjectExtensionAbility, including starting a
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) | OH_AbilityRuntime_ModObjExtensionContextHandle | Represents the handle to the ModularObjectExtensionAbility context. |
+| [OH_AbilityRuntime_ModularObjectExtensionContext*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) | OH_AbilityRuntime_ModObjExtensionContextHandle | Represents the handle to the ModularObjectExtensionAbility context. |
 
 ### Function
 
@@ -51,8 +51,8 @@ Gets the base context from the modular object extension context.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) modObjExtensionContext | Represents a pointer to a modular object extension ability context. |
-| AbilityRuntime_ContextHandle* baseContext | Represents a pointer to a [AbilityRuntime_ContextHandle](../../apis-mind-spore-lite-kit/c-apis/capi-abilityruntime-abilityruntime-contexthandle.md) base extension ability context. |
+| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) modObjExtensionContext | Represents a pointer to a modular object extension ability context. |
+| AbilityRuntime_ContextHandle* baseContext | Represents a pointer to a [AbilityRuntime_ContextHandle](../../apis-mind-spore-lite-kit/c-apis/capi-abilityruntime-abilityruntime-context8h.md) base extension ability context. |
 
 **Returns**:
 
@@ -80,7 +80,7 @@ Starts the self UIAbility.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) context | Represents a pointer to a modular object extension ability context. |
+| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) context | Represents a pointer to a modular object extension ability context. |
 | [const AbilityBase_Want](capi-abilitybase-abilitybase-want.md) *want | The arguments passed to start the self UIAbility. For details, see [AbilityBase_Want](capi-abilitybase-abilitybase-want.md). |
 
 **Returns**:
@@ -109,7 +109,7 @@ Starts the self UIAbility with start options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) context | Represents a pointer to a modular object extension ability context. |
+| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) context | Represents a pointer to a modular object extension ability context. |
 | [const AbilityBase_Want](capi-abilitybase-abilitybase-want.md) *want | The arguments passed to start the self UIAbility. For details, see [AbilityBase_Want](capi-abilitybase-abilitybase-want.md). |
 | const AbilityRuntime_StartOptions *options | The start options passed to start the self UIAbility. For details, see AbilityRuntime_StartOptions. |
 
@@ -137,7 +137,7 @@ Destroys the modular object extension.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) context | Represents a pointer to a modular object extension ability context. |
+| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) context | Represents a pointer to a modular object extension ability context. |
 
 **Returns**:
 
@@ -163,7 +163,7 @@ Creates an <b>OHIPCRemoteStub</b> object with callbacks running on the extension
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) context | Represents a pointer to a modular object extension ability context. |
+| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) context | Represents a pointer to a modular object extension ability context. |
 | const char *descriptor | Pointer to the descriptor of the <b>OHIPCRemoteStub</b> object to create. It cannot be NULL. The string is copied internally during creation, so the caller may release the descriptor after this function returns. |
 | [OH_OnRemoteRequestCallback](../../apis-ipc-kit/c-apis/capi-ipc-cremote-object-h.md#oh_onremoterequestcallback) requestCallback | Callback used to process the data request. It cannot be NULL. |
 | [OH_OnRemoteDestroyCallback](../../apis-ipc-kit/c-apis/capi-ipc-cremote-object-h.md#oh_onremotedestroycallback) destroyCallback | Callback to be invoked when the object is destroyed. It can be NULL. |
@@ -193,7 +193,7 @@ Destroys an <b>OHIPCRemoteStub</b> object.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) context | Represents a pointer to a modular object extension ability context. |
+| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) context | Represents a pointer to a modular object extension ability context. |
 | OHIPCRemoteStub *stub | Pointer to the <b>OHIPCRemoteStub</b> object to destroy. |
 
 

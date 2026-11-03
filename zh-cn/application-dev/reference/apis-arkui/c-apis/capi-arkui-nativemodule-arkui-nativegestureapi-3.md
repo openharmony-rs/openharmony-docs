@@ -12,7 +12,7 @@ typedef struct ArkUI_NativeGestureAPI_3 {...} ArkUI_NativeGestureAPI_3
 
 **起始版本：** 26.0.0
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
 
 **所在头文件：** [native_gesture.h](capi-native-gesture-h.md)
 
@@ -57,6 +57,6 @@ Sets the callback function for a parallel gesture event.
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| ArkUI_ErrorCode | [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) if the operation is successful. <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 
