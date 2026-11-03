@@ -12373,6 +12373,102 @@ async function example(context: Context) {
 }
 ```
 
+## requestEnhancementImage
+
+static requestEnhancementImage(context: Context, asset: PhotoAsset, dataHandler: MediaAssetDataHandler&lt;image.ImageSource&gt;): Promise&lt;string&gt;
+
+请求本地AI增强图片。若本地AI增强图片不存在，则立即生成本地AI增强图片。
+
+本接口仅限于本地AI增强，区别于云端AI增强。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名            | 类型                                                                                                        | 必填 | 说明                      |
+|----------------|-----------------------------------------------------------------------------------------------------------| ---- | ------------------------- |
+| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)                                                           | 是   | 传入Ability实例的上下文。 |
+| asset         | [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)                                                                                | 是   | 待请求的资产。 |
+| dataHandler    | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;[image.ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md)&gt; | 是   | 回调函数，image.ImageSource包含本地AI增强图片数据。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<string> | Promise对象，返回请求ID，可用于[cancelRequest](#cancelrequest12)取消请求。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800108      | The specified asset does not exist.        |
+| 23800151      | Scene parameters validate failed, possible causes: 1. The context is invalid. 2. The photoAsset does not support local AI enhancement.        |
+| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { image } from '@kit.ImageKit';
+
+class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.ImageSource> {
+  onDataPrepared(data: image.ImageSource) {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    console.info('Succeeded in preparing enhancement image data');
+  }
+}
+
+async function example(context: Context) {
+  console.info('requestEnhancementImage');
+  // 构造查询条件，获取媒体库中支持本地AI增强的照片资产。
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  // 创建数据处理器，用于接收本地AI增强图片数据。
+  const handler = new MediaHandler();
+  let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting assets');
+    // 获取查询结果中的第一个资产。
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    try {
+      // 请求本地AI增强图片，若不存在则立即生成。返回的requestId可用于cancelRequest接口取消该请求。
+      let requestId: string = await photoAccessHelper.MediaAssetManager.requestEnhancementImage(context, photoAsset, handler);
+      console.info('Succeeded in requesting enhancement image, requestId: ' + requestId);
+    } catch (err) {
+      console.error(`failed to requestEnhancementImage, error code is ${err.code}, message is ${err.message}`);
+    }
+  });
+}
+```
+
 ### queryLocalEnhancementTaskState
 
 queryLocalEnhancementTaskState(photoAsset: PhotoAsset): Promise&lt;LocalEnhancementTaskState&gt;
@@ -12422,8 +12518,8 @@ import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('queryLocalEnhancementTaskStateDemo');
+  // 构造查询条件，获取媒体库中支持本地AI增强的照片资产。
   let photoPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  // 查询本地AI增强任务。
   let photoFetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: [],
     predicates: photoPredicates
@@ -12431,9 +12527,12 @@ async function example(context: Context) {
   let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
   try {
     let fetchResult = await phAccessHelper.getAssets(photoFetchOptions);
+    // 获取查询结果中的最后一个资产。
     let asset = await fetchResult.getLastObject();
+    // 获取CloudEnhancement实例，用于查询本地AI增强任务状态。
     let localEnhancementInstance: photoAccessHelper.CloudEnhancement
       = photoAccessHelper.CloudEnhancement.getCloudEnhancementInstance(context);
+    // 查询本地AI增强任务状态，返回任务进度等信息。
     const localEnhancementTaskState: photoAccessHelper.LocalEnhancementTaskState
       = await localEnhancementInstance.queryLocalEnhancementTaskState(asset);
     let progress = localEnhancementTaskState.progress;
