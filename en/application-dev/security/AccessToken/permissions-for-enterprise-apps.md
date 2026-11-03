@@ -776,7 +776,6 @@ With this permission, the application can:
  
 Allows an application to use backup and restore capabilities.
  
-zengyawen
 With this permission, the application can back up and restore user data and application sandbox data.
  
 <!--RP2--><!--RP2End-->
