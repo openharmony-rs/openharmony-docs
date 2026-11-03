@@ -9,11 +9,13 @@
 技能（Skill）是系统为AI代理提供的能力封装单元。技能通过[module.json5配置文件](../../quick-start/module-configuration-file.md#skillprofiles标签)中的skillProfiles标签声明能力。应用可以通过[skillManager](js-apis-skillManager.md)中提供的接口查询已安装的技能信息，发现并调用设备上的AI代理能力。
 
 >
->**说明：**
+> **说明：**
 >
->本模块仅适用于ArkTS-Dyn。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 ## 导入模块
 
@@ -26,6 +28,8 @@ import { skillManager } from '@kit.AbilityKit';
 技能配置信息，用于定义AI代理的技能能力。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,6 +58,8 @@ import { skillManager } from '@kit.AbilityKit';
 技能类型的枚举。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
