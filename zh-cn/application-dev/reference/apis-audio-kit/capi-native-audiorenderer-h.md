@@ -186,7 +186,7 @@ standby状态用于音频播放过程中暂时无数据的场景（例如流媒�
 > - Pause、Stop、Release不会退出standby状态。如果应用在standby状态下Stop后重新Start，需要先调用OH_AudioRenderer_Standby(renderer, false)退出standby。
 > - 仅AUDIOSTREAM_USAGE_MUSIC、AUDIOSTREAM_USAGE_MOVIE、AUDIOSTREAM_USAGE_GAME、AUDIOSTREAM_USAGE_AUDIOBOOK类型的播放流支持standby，其他类型调用会返回AUDIOSTREAM_ERROR_ILLEGAL_STATE。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

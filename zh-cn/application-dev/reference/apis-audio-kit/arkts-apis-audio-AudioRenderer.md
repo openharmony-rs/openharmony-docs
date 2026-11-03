@@ -723,7 +723,7 @@ audioRenderer.release().then(() => {
 });
 ```
 
-## standby<sup>26.2.0+</sup>
+## standby<sup>26.1.0+</sup>
 
 standby(on: boolean): Promise\<void>
 
