@@ -417,7 +417,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 type PiPActionEventType = PiPVideoActionEvent | PiPCallActionEvent | PiPMeetingActionEvent | PiPLiveActionEvent
 
-画中画控制面板控件动作事件类型，支持以下四种。
+画中画控制面板控件动作事件类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
