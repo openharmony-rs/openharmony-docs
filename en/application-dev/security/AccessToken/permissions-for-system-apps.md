@@ -8306,7 +8306,7 @@ Allows an application to access the vehicle camera.
 
 **Supported devices**: cars
 
-**Valid since**: 26.0.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.SAMBA_CLIENT_ACCESS
 
