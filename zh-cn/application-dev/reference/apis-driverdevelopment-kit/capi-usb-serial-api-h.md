@@ -159,7 +159,7 @@ int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferS
 | -- | -- |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄，需调用[OH_UsbSerial_Open](#oh_usbserial_open)接口打开设备并获取。 |
 | uint8_t *buff | 从USB串口设备读取数据的缓冲区，需由调用方分配且容量不小于bufferSize。 |
-| uint32_t bufferSize | 缓冲区的大小。最大4096字节，超出内容被截断 |
+| uint32_t bufferSize | 缓冲区的大小。最大4096字节，超出内容被截断。 |
 | uint32_t *bytesRead | 实际读取的字节数，如果设置了阻塞模式，则实际读取到的数据等于bufferSize后才会返回；如果设置了超时，则返回值可能小于bufferSize。<br>                  详见[OH_UsbSerial_SetTimeout](#oh_usbserial_settimeout)。 |
 
 **返回：**
