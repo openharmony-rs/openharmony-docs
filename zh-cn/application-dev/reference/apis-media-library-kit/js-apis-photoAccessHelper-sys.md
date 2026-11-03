@@ -745,16 +745,16 @@ async function getHiddenAlbumsView(phAccessHelper: photoAccessHelper.PhotoAccess
       fetchColumns: [],
       predicates: predicates
     };
-    for (let i = 0; i < albums.length; i++) {
+    albums.forEach((album) => {
       // 获取相册中的隐藏文件。
-      albums[i].getAssets(fetchOption, (err, assetFetchResult) => {
+      album.getAssets(fetchOption, (err, assetFetchResult) => {
         if (assetFetchResult === undefined) {
           console.error('getHiddenAlbumsViewCallback assetFetchResult is undefined');
           return;
         }
         console.info('album get hidden assets successfully, getCount: ' + assetFetchResult.getCount());
       });
-    }
+    });
     fetchResult.close();
   });
 }
@@ -837,14 +837,14 @@ async function getHiddenAlbumsView(phAccessHelper: photoAccessHelper.PhotoAccess
       fetchColumns: [],
       predicates: predicates
     };
-    for (let i = 0; i < albums.length; i++) {
+    albums.forEach((album) => {
       // 获取相册中的隐藏文件。
-      albums[i].getAssets(fetchOption).then((assetFetchResult) => {
+      album.getAssets(fetchOption).then((assetFetchResult) => {
         console.info('album get hidden assets successfully, getCount: ' + assetFetchResult.getCount());
       }).catch((err: BusinessError) => {
         console.error(`album get hidden assets failed with error: ${err.code}, ${err.message}`);
       });
-    }
+    });
     fetchResult.close();
   }).catch((err: BusinessError) => {
     console.error(`getHiddenAlbumsViewPromise failed with err: ${err.code}, ${err.message}`);
@@ -1767,7 +1767,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The predicates invalid. |
-| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301     | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out.<br>4. This operation is not supported for assets in shared albums. |
 
 **示例：**
 
@@ -6291,7 +6291,7 @@ requestEditData(callback: AsyncCallback&lt;string&gt;): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011   | System inner fail.        |
+| 14000011   | System inner fail. Possible causes: <br>1. The database is corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out.        |
 
 **示例：**
 
@@ -11359,9 +11359,9 @@ async function example(context: Context) {
       await highlightAlbum.getAssets(fetchOption);
     let assets: photoAccessHelper.PhotoAsset[] = await fetchResult.getAllObjects();
     let indexes: number[] = [];
-    for (let i = 0; i < assets.length; i++) {
+    assets.forEach((_, i) => {
       indexes.push(i);
-    }
+    });
     let changeRequest: photoAccessHelper.MediaAnalysisAlbumChangeRequest =
       new photoAccessHelper.MediaAnalysisAlbumChangeRequest(highlightAlbum);
     changeRequest.setOrderPosition(assets, indexes);
@@ -12343,7 +12343,7 @@ async function example(context: Context) {
       = await cloudEnhancementInstance.queryCloudEnhancementTaskState(asset);
     let taskStage = cloudEnhancementTaskState.taskStage;
     if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_EXCEPTION) {
-      console.info("task has exception");
+      console.error("task has exception");
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_PREPARING) {
       console.info("task is preparing");
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_UPLOADING) {
