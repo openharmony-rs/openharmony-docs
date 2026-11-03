@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=574c47f98966a17f64bdb18e69ba799c69f45456 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 You can use **MediaAssetManager** to copy a media asset to a sandbox directory. This topic walks you through on how to use **MediaAssetManager** to copy an image to the specified sandbox directory.
 
@@ -19,7 +20,8 @@ target_link_libraries(sample PUBLIC libmedia_asset_manager.so)
 ```
 
 Include the [media_asset_manager_capi.h](../../reference/apis-media-library-kit/capi-media-asset-manager-capi-h.md) and [media_asset_base_capi.h](../../reference/apis-media-library-kit/capi-media-asset-base-capi-h.md) header files to use the APIs of MediaAssetManager.
-For details about the APIs, see [MediaAssetManager APIs](../../reference/apis-media-library-kit/capi-mediaassetmanager.md).
+
+For detailed API descriptions, refer to [MediaAssetManager API](../../reference/apis-media-library-kit/capi-mediaassetmanager.md).
 
 > **NOTE**<br>
 > The application must have the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Before You Start](photoAccessHelper-preparation.md).
@@ -31,7 +33,7 @@ For details about the APIs, see [MediaAssetManager APIs](../../reference/apis-me
 
 ## Example
 
-<!-- @[request_media_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/RequestMediaAssetsCppSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[request_media_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/RequestMediaAssetsCppSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 #include "napi/native_api.h"
@@ -66,6 +68,7 @@ static napi_value RequestMediaAssets(napi_env env, napi_callback_info info)
         MediaLibrary_RequestOptions options;
         options.deliveryMode = MEDIA_LIBRARY_HIGH_QUALITY_MODE;
 
+        // The URI format is: const char *srcUri = "file://media/Photo/[albumId]/[photoName].[ext]". In actual use, the URI must be obtained through the Media Library API.
         // Preset the URI of the image with the default high quality. The URI used is an example only. You need to create or obtain the URI based on actual requirements.
         const char *srcUri = "file://media/Photo/87/VID_1712195295_025/request_image_src.jpg";
 
@@ -77,7 +80,7 @@ static napi_value RequestMediaAssets(napi_env env, napi_callback_info info)
             options, destUri, callback);
         if (strcmp(requestIdStruct.requestId, ERROR_REQUEST_ID) == 0) {
             // Exception handling.
-            printf("Request image failed requestId: %s\n", requestIdStruct.requestId);
+            printf("Request image failed requestId:%s\n", requestIdStruct.requestId);
             // ...
         } else {
             // Print the request ID if the request is successful.

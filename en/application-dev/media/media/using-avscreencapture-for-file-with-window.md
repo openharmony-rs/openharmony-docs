@@ -1,29 +1,33 @@
-# Using AVScreenCapture to Capture Window-Level Screen (C/C++)
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes window-level screen capture using AVScreenCapture C APIs since API version 10, including window selection through the screen capture picker or a window ID, for demonstrations, online courses, and meeting recording."
+keywords: [AVScreenCapture, window-level screen capture, screen capture picker]
+doctype: guide
+status: active
+---
 
+# Using AVScreenCapture to Capture Window-Level Screen (C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yxc2-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=be1284f3fa5fa2a0aa17a86ac585ca0e13c05ae4 translatedAt=2026-07-23T01:17:09.835Z pushedAt=2026-07-23T03:39:21.942Z -->
+<!-- md-trans-meta sourceCommit=f0edcc5b8e452f430fea062e75d3790a76127758 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
+
 
 Starting from API version 10, you can use the C APIs provided by the `AVScreenCapture` module to implement window-level/screen capture and collect audio and video source data from microphones and devices.
 
 This guide uses specified-window capture as an example to describe how to use the `AVScreenCapture` C APIs to implement precise window capture. This solution focuses on capturing the content of a specific window, avoiding full-screen interference, and is suitable for scenarios such as teaching demonstrations, online courses, meeting recordings, and specific content capture.
 
 - Method 1 (recommended): Use the screen capture Picker dialog to select the window to be recorded. Use [OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup) to configure whether to display the screen capture Picker. Starting from API version 20, the screen capture Picker can be displayed on PCs/2-in-1 devices. Starting from API version 23, the screen capture Picker can be displayed on phones/tablets.
-
 - Method 2: To capture a specified window, set the window ID. In this scenario, a content sharing selection dialog box is displayed after screen capture starts. For detailed API declarations, see the `OH_CAPTURE_SPECIFIED_WINDOW` mode in [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).
 
 ## Required Permissions
 
 Before developing this feature, you must apply for the required permissions based on your actual needs:
-
 - If microphone audio capture is configured, you need to [request user authorization](../../security/AccessToken/request-user-authorization.md) for the **ohos.permission.MICROPHONE** permission and apply for a [continuous task (ArkTS)](../../task-management/continuous-task.md).
-
 - Starting from API version 22, when capturing the screen of an app on a PC/2-in-1 device, you can apply for the **ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK** permission to keep screen capture running when the screen turns off but remains unlocked. For configuration details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
-
 - Starting from API version 22, when capturing the screen of an app on a PC/2-in-1 device, you can apply for the **ohos.permission.CUSTOM_SCREEN_RECORDING** permission to suppress the privacy warning dialog during screen capture. For configuration details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md).
 
 ## How to Develop and Precautions
@@ -37,7 +41,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 1. Add header files.
 
    <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
-
+   
    ``` C
    #include "hilog/log.h"
    #include "napi/native_api.h"
@@ -55,7 +59,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 2. Call [OH_AVScreenCapture_Create](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_create) to create an `AVScreenCapture` instance `g_avCapture`.
 
    <!-- @[screenCapture_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    g_avCapture = OH_AVScreenCapture_Create();
    ```
@@ -65,7 +69,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    After creating the `AVScreenCapture` instance `capture`, you can set the parameters required for screen capture.
 
    <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->   
-
+   
    ``` C++
    void SetConfig02(OH_AVScreenCaptureConfig &config, OH_RecorderInfo &recorderInfo)
    {
@@ -127,11 +131,13 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        SetCallbackFile(g_avCapture);
    }
    ```
+   
+  
 
    Method 1 (recommended): Use the screen capture Picker dialog to select an opened app window for window-level screen recording.
 
    <!-- @[screenCapture_createCaptureStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
-
+   
    ``` C++
    // Use the screen capture Picker dialog to select an opened app window for window-level screen recording.
    OH_AVScreenCapture_CaptureStrategy *strategy = OH_AVScreenCapture_CreateCaptureStrategy();
@@ -141,9 +147,9 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    ```
 
    Method 2: Pass the ID of the window to be captured for screen capture.
-
+   
    <!-- @[screenCapture_withWindow_forID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
-
+   
    ``` C++
    // To record a single window, pass the ID of the window. To record multiple windows simultaneously, pass a list of window IDs.
    g_missionIds = {g_windowId}; // Specify the window ID to capture.
@@ -161,7 +167,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 4. Call [OH_AVScreenCapture_StartScreenRecording](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording) to start window-level screen capture.
 
    <!-- @[screenCapture_startScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
    ```
@@ -169,7 +175,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 5. Call [OH_AVScreenCapture_StopScreenRecording](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_stopscreenrecording) to stop screen capture.
 
    <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
    ```
@@ -177,7 +183,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 6. Call [OH_AVScreenCapture_Release](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_release) to destroy the instance and release resources.
 
    <!-- @[screenCapture_releaseScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVScreenCapture_Release(g_avCapture);
    g_avCapture = nullptr;
