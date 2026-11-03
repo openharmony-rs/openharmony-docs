@@ -1466,10 +1466,9 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
-| 12800010 | current ime is not the default ime. |
+| 12800010 | current ime application is not the system-configured default input method. |
 | 12800029 | the input type is not supported. |
 
 **示例：**
