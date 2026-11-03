@@ -57,8 +57,8 @@ get(member: string): MemberType
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000014     | The provided member must be a property name of PhotoKey.         |
+| 13900020     | Invalid parameter. Possible causes: <br>The member parameter is invalid, must be a valid member key of the asset data.         |
+| 14000014     | member not exist.         |
 
 **示例：**
 
@@ -369,8 +369,8 @@ close(fd: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit, maximum 2 parameters.<br>2. Invalid parameter type. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The PhotoAsset object is not a valid PhotoAsset.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>3. Failed to query the thumbnail, possible causes: <br>(1) Thumbnail does not exist; <br>(2) Database exception. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes:<br>The member parameter is invalid, must be a valid member key. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd().<br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -427,8 +427,8 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020     | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit, maximum 2 parameters.<br>2.Invalid parameter type.         |
+| 14000011       |  MediaLibrary inner fail. Possible causes: <br>1.The PhotoAsset object is not a valid PhotoAsset.<br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs.<br>3.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs.         |
 
 **示例：**
 
@@ -617,7 +617,7 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 | :------- | :-------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例：**
 

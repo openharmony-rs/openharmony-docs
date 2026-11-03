@@ -282,14 +282,14 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
       fetchColumns: [],
       predicates: predicates
     };
-    for (let i = 0; i < albums.length; i++) {
+    albums.forEach((album) => {
       // 获取相册中的隐藏文件。
       albums[i].getAssets(fetchOption).then((assetFetchResult) => {
         console.info('album get hidden assets successfully, getCount: ' + assetFetchResult.getCount());
       }).catch((err: BusinessError) => {
         console.error(`album get hidden assets failed with error: ${err.code}, ${err.message}`);
       });
-    }
+    });
     fetchResult.close();
   }).catch((err: BusinessError) => {
     console.error(`getHiddenAlbumsViewPromise failed with err: ${err.code}, ${err.message}`);
