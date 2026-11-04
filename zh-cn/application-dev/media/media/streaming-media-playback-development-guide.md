@@ -1,11 +1,3 @@
----
-kits: ["Media Kit / 媒体服务"]
-description: "介绍使用AVPlayer在ArkTS环境播放流媒体直播与点播资源，覆盖HLS、DASH、HTTP-FLV等协议格式，以及缓冲状态监听、HLS码率切换、DASH起播策略与音视频轨道切换等核心开发能力。"
-keywords: [AVPlayer, 流媒体, HLS, DASH, HTTP-FLV, 码率切换, 起播策略, 音视频轨道切换]
-doctype: guide
-status: active
----
-
 # 使用AVPlayer播放流媒体(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -168,7 +160,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
    ```
 
 3. 在音视频播放过程中调用[selectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#selecttrack12)选择对应的音视频轨道，或者调用[deselectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#deselecttrack12)取消选择的音视频轨道。
-
+   
    <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
