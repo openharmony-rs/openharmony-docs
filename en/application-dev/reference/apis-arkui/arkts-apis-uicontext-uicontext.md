@@ -1052,7 +1052,7 @@ Obtains the context of the ability where the current component is located.
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](arkts-apis-uicontext-t.md#context)&nbsp;\|&nbsp;undefined | Context of the ability where the current component is located. The specific type of the context depends on the context object associated with the current ability. For example, when this API is called on a page within a UIAbility window, the return type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext). When this API is called on a page within an ExtensionAbility window, the return type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned. |
+| [Context](arkts-apis-uicontext-t.md#context12)&nbsp;\|&nbsp;undefined | Context of the ability where the current component is located. The specific type of the context depends on the context object associated with the current ability. For example, when this API is called on a page within a UIAbility window, the return type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). When this API is called on a page within an ExtensionAbility window, the return type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned. |
 
 **Example**
 
@@ -4918,3 +4918,5 @@ struct Index {
   }
 }
 ```
+
+<!--no_check-->
