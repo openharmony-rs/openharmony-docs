@@ -45,42 +45,50 @@ status: active
    ```
 
    <!-- @[workerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
-   ``` TypeScript
-   // 创建Worker对象。
-   private workerInstance?: worker.ThreadWorker;
-   @State currentProgress: number = 0;
    
-   this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
-
-   // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，在宿主线程执行。
-   this.workerInstance.onmessage = (e: MessageEvents) => {
-      let data: string | number = e.data;
-      if (typeof data === 'string') { // complete事件。
-        console.info('workerInstance onmessage is: ', data);
-        if (data === 'complete') {
-          console.info('complete: ', data);
-          this.workerInstance?.terminate();
-        }
-      } else if (typeof data === 'number') {
-        this.currentProgress = data; // 当前进度。
-      }
-    }
-
-   // 注册onErrors回调，可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常，在宿主线程执行。
-   this.workerInstance.onerror = (err: ErrorEvent) => {
-       console.error("workerInstance onerror message is: " + err.message);
-   }
-
-   // 注册onmessageerror回调，当Worker对象接收到一条无法被序列化的消息时被调用，在宿主线程执行。
-   this.workerInstance.onmessageerror = () => {
-       console.error('workerInstance onmessageerror');
-   }
-
-   // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
-   this.workerInstance.onexit = (e: number) => {
-       // 当Worker正常退出时code为0，异常退出时code为1。
-       console.info("workerInstance onexit code is: ", e);
-   }
+   ``` TypeScript
+   // ...
+     private workerInstance?: worker.ThreadWorker;
+     // ...
+     @State currentProgress: number = 0;
+     // ...
+       this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
+   
+   
+       // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，
+       // 在宿主线程执行
+       this.workerInstance.onmessage = (e: MessageEvents) => {
+         let data: string | number = e.data;
+         if (typeof data === 'string') {
+           console.info('workerInstance onmessage is: ', data);
+           if (data === 'complete') {
+             console.info('complete: ', data);
+             this.workerInstance?.terminate();
+           }
+         } else if (typeof data === 'number') {
+           this.currentProgress = data;
+         }
+       }
+   
+   
+       // 注册onErrors回调，可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常，
+       // 在宿主线程执行
+       this.workerInstance.onerror = (err: ErrorEvent) => {
+         console.error('workerInstance onerror message is: ' + err.message);
+       }
+   
+   
+       // 注册onmessageerror回调，当Worker对象接收到一条无法被序列化的消息时被调用，在宿主线程执行
+       this.workerInstance.onmessageerror = () => {
+         console.error('workerInstance onmessageerror');
+       }
+   
+   
+       // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行
+       this.workerInstance.onexit = (e: number) => {
+         // 当Worker正常退出时code为0，异常退出时code为1
+         console.info('workerInstance onexit code is: ', e);
+       }
    ```
 
 2. 创建参数对象，向worker线程发送参数对象。
