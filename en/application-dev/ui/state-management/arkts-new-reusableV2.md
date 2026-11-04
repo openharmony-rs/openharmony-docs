@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-28T04:03:48.545Z pushedAt=2026-10-28T07:59:49.995Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1c4d60ddf8b2662424b5d2d9f219efe7cea68103 translatedAt=2026-11-03T06:34:00.071Z pushedAt=2026-11-03T07:54:31.181Z nl=1 -->
 
 To reduce the performance overhead caused by repeatedly creating and destroying custom components, you can use [\@ReusableV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusablev2.md#reusablev2) to decorate custom components decorated by [\@ComponentV2](./arkts-create-custom-components.md#componentv2), thereby achieving component reuse.
 
@@ -720,12 +720,12 @@ struct Index {
       Button('Clear All')
         .onClick(() => {
           // Clear all components in the default reuse pool.
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
         })
       Button('Clear A')
         .onClick(() => {
           // Clear only the components whose reuseId is 'A'.
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
         })
     }
   }
@@ -1193,5 +1193,3 @@ struct ChildComponent {
 ```
 
 ![lazyforeach](./figures/reusablev2-lazyforeach.gif)
-
-<!--no_check-->

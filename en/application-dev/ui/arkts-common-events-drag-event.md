@@ -1,11 +1,11 @@
 # Implementing Unified Drag and Drop
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=eaf85da45eddb1df11efb029194f9b8062dd25f3 translatedAt=2026-09-21T02:45:00.333Z pushedAt=2026-09-21T10:28:19.629Z -->
+<!-- md-trans-meta sourceCommit=e3d32a880304cbe5ac09746569f1a26dcacca8bf translatedAt=2026-11-03T07:53:05.928Z pushedAt=2026-11-03T07:58:40.031Z nl=1 -->
 
 Unified drag and drop refers to a data transfer interaction triggered by a mouse device or gesture. Users can drag data from one component (the drag source) and drop it into another (the drop target) to initiate a response. In this interaction, the drag source provides the data, while the drop target receives and processes it, thereby enabling users to easily move, copy, or delete data.
 
@@ -105,13 +105,13 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    Set the **draggable** attribute to **true** and set the **onDragStart** callback function. In the callback function, you can use UDMF to set the drag data and return the custom drag preview.
 
    <!-- @[module_draggable_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
    ```
 
    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    // Replace $r('app.media.app_icon') with the actual resource file.
    Image($r('app.media.app_icon'))
@@ -138,7 +138,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    The gesture-based drag operation is initiated by a long press gesture bound at the underlying layer. If a long press gesture is also bound to the dragged component, gesture conflict will occur, resulting in dragging to fail. To address this issue, you can use parallel gestures.
 
    <!-- @[bind_parallel_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    .parallelGesture(LongPressGesture().onAction(() => {
      this.getUIContext()
@@ -148,11 +148,11 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    ```
 
 2. Customize the drag preview.
-
+   
    Prepare a pixel map for the custom drag preview within the callback triggered by [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12) after a long press of 50 ms.
-
+   
    <!-- @[set_custom_drag_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    .onPreDrag((preDragStatus: PreDragStatus) => {
      if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
@@ -164,7 +164,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    Generate the specific pixel map by calling [this.getUIContext().getComponentSnapshot().createFromBuilder()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12).
 
    <!-- @[drag_hilog_const](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -173,7 +173,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    ```
 
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    @Builder
    pixelMapBuilder() {
@@ -205,7 +205,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
 3. To make sure the [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) event is triggered as expected, use the [setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12) API.
 
    <!-- @[entryAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+   
    ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { window, UIContext } from '@kit.ArkUI';
@@ -236,7 +236,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    You can set [allowDrop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) to define the allowed data types for dropping. This setting affects the badge display during dragging. A plus sign badge (+) appears when the drag data matches the allowed types. A drop-disallowed badge appears when the drag data does not match the allowed types. If **allowDrop** is not configured, no plus sign badge (+) is displayed. The following example allows only data of HYPERLINK and PLAIN\_TEXT types defined in UnifiedData.
 
    <!-- @[drag_allow_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
      uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
@@ -245,7 +245,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    If the **onDrop** callback is implemented, you can control the display of the plus‑sign badge (+) by setting [DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10) to **DROP_ENABLED** in **onDragMove** and setting [DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10) to **COPY** or **MOVE**. **COPY** shows a plus sign badge (+), while **MOVE** does not.
 
    <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
-
+   
    ``` TypeScript
    .onDragMove((event) => {
      event.setResult(DragResult.DROP_ENABLED);
@@ -258,7 +258,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    Set the **onDrop** callback to handle the drag data and determine the drag result.
 
    <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
-
+   
    ``` TypeScript
    .onDrop((dragEvent?: DragEvent) => {
      // Obtain the drag data.
@@ -278,7 +278,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    Data transfer is managed by UDMF, which may experience latency when dealing with large data volumes. Implement a retry mechanism with a 1500 ms delay if initial data acquisition fails.
 
    <!-- @[data_delayed_retry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
      try {
@@ -311,7 +311,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
 6. The drag initiator can detect the result of the drag operation by setting the **onDragEnd** callback.
 
    <!-- @[set_on_drag_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
-
+   
    ``` TypeScript
    .onDragEnd((event) => {
      // The result value obtained from onDragEnd is set in onDrop of the drop target.
@@ -468,8 +468,6 @@ export struct DefaultDrag {
                   event.setResult(DragResult.DROP_ENABLED);
                   event.dragBehavior = DragBehavior.COPY;
                 })
-                .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
-                  uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
                 .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
                 .onDrop((dragEvent?: DragEvent) => {
                   // Obtain the drag data.
@@ -509,7 +507,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    Create **GridItem** child components and bind the **onDragStart** callback to them. In addition, set the **GridItem** components to be selectable.
 
    <!-- @[grid_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
-
+   
    ``` TypeScript
    Grid() {
      ForEach(this.numbers, (idx: number) => {
@@ -533,7 +531,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    Multi-select drag and drop is disabled by default. To enable it, set **isMultiSelectionEnabled** to **true** in the **options** parameter of the [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11) API. **options** also has the **defaultAnimationBeforeLifting** parameter, which, when set to **true**, applies a default scaling down animation as the lift animation for the component.
 
    <!-- @[dragPreviewOptions_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
-
+   
    ``` TypeScript
    .dragPreviewOptions({ numberBadge: this.numberBadge },
      { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
@@ -542,7 +540,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    To ensure that the component is selected, set [selected](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selected10) of the **GridItem** child component to **true**. For example, you can use [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) to set a specific component to the selected state.
 
    <!-- @[grid_isSelected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
-
+   
    ``` TypeScript
    .selected(this.isSelectedGrid[idx])
    // ···
@@ -557,7 +555,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    In multi-select drag and drop scenarios, there is a clustering animation effect when multiple items are selected. This effect captures a snapshot of the selected components currently displayed on the screen, which can incur high performance costs if there are too many selected components. To optimize performance, the multi-select drag and drop function can obtain screenshots from the [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11) to implement the clustering animation effect, thereby effectively saving system resources.
 
    <!-- @[dragPreview_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
-
+   
    ``` TypeScript
    .dragPreview({
      pixelMap: this.pixmap
@@ -567,7 +565,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    To obtain a snapshot of a component, you can call the [this.getUIContext().getComponentSnapshot().get()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12) API when the component is selected. The following shows how to use the component ID to obtain the snapshot.
 
    <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
-
+   
    ``` TypeScript
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
@@ -617,7 +615,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
     Use [stateStyles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md#statestyles) to set display effects for selected and unselected states for easy distinction.
 
     <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
-
+    
     ``` TypeScript
     @Styles
     normalStyles(): void {
@@ -663,7 +661,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
     Currently, the number badge for multi-select drag and drop needs to be set by the application using the **numberBadge** parameter in [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11). You need to set the number badge based on the number of selected nodes.
 
     <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
-
+    
     ``` TypeScript
     @State numberBadge: number = 0;
     // ...
@@ -733,11 +731,11 @@ struct GridEts {
   onPageShow(): void {
     let i: number = 0;
     for(i = 0; i < 100; i++) {
-    this.numbers.push(i);
-    this.isSelectedGrid.push(false);
-    this.previewData.push({});
+      this.numbers.push(i);
+      this.isSelectedGrid.push(false);
+      this.previewData.push({});
+    }
   }
-}
 
 @Builder
 RandomBuilder(idx: number) {
@@ -810,7 +808,7 @@ When you need to create custom drop animations, you can disable the default syst
 
    Set **draggable** to **true** and configure callbacks such as **onDragStart** and **onDragEnd**.
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
-
+   
    ``` TypeScript
    // Replace $r('app.media.app_icon') with the actual resource file.
    Image($r('app.media.app_icon'))
@@ -831,7 +829,7 @@ When you need to create custom drop animations, you can disable the default syst
    Use the [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API to create a custom animation. For example, you can change the size of the component.
 
    <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
-
+   
    ``` TypeScript
    customDropAnimation =
      () => {
@@ -842,14 +840,14 @@ When you need to create custom drop animations, you can disable the default syst
        });
      };
    ```
-
+    
 
 3. Adapt the custom drop animation.
 
    Configure the **onDrop** callback to receive the drag data. Execute your custom drop animation using the [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18) API. Set [useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#attributes) to **true** to disable the default system animation.
 
    <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
-
+   
    ``` TypeScript
    Column() {
      Image(this.targetImage)
@@ -870,7 +868,7 @@ When you need to create custom drop animations, you can disable the default syst
      dragEvent.executeDropAnimation(this.customDropAnimation);
    })
    ```
-
+    
 
 **Sample Code**
 
@@ -918,7 +916,7 @@ export struct DropAnimationExample {
               if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
                 hilog.info(DOMAIN, TAG, '%{public}s', 'Drag Success');
               } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                hilog.info(DOMAIN, TAG, '%{public}s', 'Drag failed');
+                hilog.error(DOMAIN, TAG, '%{public}s', 'Drag failed');
               }
             })
 
@@ -974,7 +972,7 @@ When dealing with a large number of items or large data volumes during drag and 
    Create **GridItem** child components and set their state to be selectable. Enable multi-select drag and drop by setting **isMultiSelectionEnabled** to **true**. Use the selected state to distinguish whether an item is selected.
 
    <!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
-
+   
    ``` TypeScript
    Grid() {
      ForEach(this.numbers, (idx: number) => {
@@ -1005,7 +1003,7 @@ When dealing with a large number of items or large data volumes during drag and 
    To maintain performance, limit the maximum number of items for multi-select drag and drop to 500.
 
    <!-- @[gridExample_onPageShow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
-
+   
    ``` TypeScript
    onPageShow(): void {
      let i: number = 0;
@@ -1016,13 +1014,13 @@ When dealing with a large number of items or large data volumes during drag and 
      }
    }
    ```
-
+    
 2. Add data incrementally when items are selected.
 
    When dealing with large data volumes, you are advised to add data records incrementally using [addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord) as items are selected. This avoids significant performance overhead from processing all data at once during the drag operation.
 
    <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) --> 
-
+   
    ``` TypeScript
    .onClick(() => {
      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
@@ -1065,7 +1063,7 @@ When dealing with a large number of items or large data volumes during drag and 
    Use the **onPreDrag** callback to receive a signal that a drag operation is about to start. If the data volume is large, prepare the data in advance.
 
    <!-- @[gridExample_onPreDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
-
+   
    ``` TypeScript
    .onPreDrag((status: PreDragStatus) => {
      if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
@@ -1079,7 +1077,7 @@ When dealing with a large number of items or large data volumes during drag and 
    When initiating a drag operation, check whether the data is ready. If the data is not yet ready, send a [WAITING](../reference/apis-arkui/js-apis-arkui-dragController.md#dragstartrequeststatus18) signal to the system to block the drag operation. In this case, if the user performs a drag gesture, the drag preview will remain stationary until the application sends a READY signal or the maximum blocking time limit (5 seconds) is exceeded. If the data is ready, you can directly set it to [dragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7). Note that when using the blocking feature, you need to save the current **dragEvent** and set the data when preparation is complete. In non-blocking scenarios, saving the current **dragEvent** is not recommended.
 
    <!-- @[gridExample_onDragStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
-
+   
    ``` TypeScript
    .onDragStart((event: DragEvent) => {
      this.dragEvent = event;
@@ -1320,9 +1318,9 @@ You can customize spring loading detection parameters to dynamically determine w
 1. Trigger parameter customization.
 
    The [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20) API also provides an optional **configuration** parameter, which allows your app to customize settings such as the stationary detection duration, trigger interval, and trigger count. You can use this parameter to personalize the spring loading trigger conditions. In most cases, however, no modification is needed, and the system default configuration is sufficient.
-
+  
    The **configuration** parameter must be ready before detection begins. Once the system initiates the spring loading detection process, it will no longer read configuration from this parameter. However, you can dynamically update the configuration through the **updateConfiguration** method of the **context** object passed in the callback. This dynamic update takes effect only for the current trigger and does not affect the configuration set through the **configuration** parameter.
-
+  
    It is recommended that you use either the default configuration or fixed parameters through the **configuration** parameter in **onDragSpringLoading**. In most cases, dynamically modifying detection parameters during spring loading is unnecessary. However, this functionality can be useful if you need to provide different user feedback based on the type of dragged data.
 
    >**NOTE**
@@ -1363,11 +1361,11 @@ You can customize spring loading detection parameters to dynamically determine w
    If you no longer need a component to respond to spring loading, you can explicitly disable the feature by passing **null** to **onDragSpringLoading**:
 
    <!-- @[springLoading_onDragSpringLoading_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+   
    ``` TypeScript
    .onDragSpringLoading(null)
    ```
-
+  
 
 ### Example
 
@@ -1378,7 +1376,7 @@ The following example demonstrates how to implement the device search function u
    To simplify the example, prepare a component that supports dragging text out, so that users can drag out the text to be searched. Add a button control to respond to Spring Loading and further activate the view. The activated view is implemented via [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet), which internally contains an input field to receive the dragged text and a text component to display the search results.
 
    <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+   
    ``` TypeScript
    build() {
      Column() {
@@ -1389,7 +1387,7 @@ The following example demonstrates how to implement the device search function u
              .fontSize(30)
              .copyOption(CopyOptions.InApp) // After copyOption is enabled, the text component supports selecting content for drag
          }.padding({ bottom: 30 })
-  
+   
          // Replace $r('app.string.Search_Device') with the actual resource file. In this example, the value of the resource file is "Search device"
          Button($r('app.string.Search_Device'))
            .width('80%')
@@ -1412,7 +1410,7 @@ The following example demonstrates how to implement the device search function u
    Implement the UI for the sheet.
 
    <!-- @[springLoading_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+   
    ``` TypeScript
    @Builder
    SheetBuilder() {
@@ -1439,14 +1437,14 @@ The following example demonstrates how to implement the device search function u
      }.width('100%').height('100%')
    }
    ```
-
+  
 
 3. Add the enter and leave response to the button.
 
    To provide visual feedback, add `onDragEnter` and `onDragLeave` handlers to the target component. When text is dragged over the component, the background color changes to prompt the user.
 
    <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) --> 
-
+   
    ``` TypeScript
    .onDragEnter(() => {
      // When the user drags into the button range, remind the user that data can be processed here.
@@ -1457,14 +1455,14 @@ The following example demonstrates how to implement the device search function u
      this.buttonBackgroundColor = this.normalColor;
    })
    ```
-
+  
 
 4. Implement spring loading response.
 
    Implement a spring loading handler to process all states.
 
    <!-- @[springLoading_handleSpringLoading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+   
    ``` TypeScript
    handleSpringLoading(context: SpringLoadingContext) {
      // Check the drag data type in the BEGIN state.

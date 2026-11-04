@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2bacfee4422d681c1c12b53710941106e9561ff9 translatedAt=2026-11-03T05:41:44.777Z pushedAt=2026-11-03T07:40:17.575Z nl=1 -->
 
 This topic provides signing and signature verification development cases with the following algorithms:
 
@@ -150,8 +151,8 @@ async function generateEccKey(keyAlias: string) {
     properties: genProperties
   }
   await huks.generateKeyItem(keyAlias, options)
-    .then((data) => {
-      console.info(`promise: generate ECC Key success, data = ${JSON.stringify(data)}`);
+    .then(() => {
+      console.info(`promise: generate ECC Key success`);
     }).catch((err: Error) => {
       console.error(`promise: generate ECC Key failed, error: ` + JSON.stringify(err));
       throw (err as Error);
@@ -216,7 +217,7 @@ async function deleteEccKey(keyAlias: string) {
     properties: []
   }
   await huks.deleteKeyItem(keyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((err: Error) => {
       console.error(`promise: delete data failed`);
@@ -319,8 +320,8 @@ async function generateSm2Key(keyAlias: string) {
     properties: genProperties
   }
   await huks.generateKeyItem(keyAlias, options)
-    .then((data) => {
-      console.info(`promise: generate Sm2 Key success, data = ${JSON.stringify(data)}`);
+    .then(() => {
+      console.info(`promise: generate Sm2 Key success`);
     }).catch((err: Error) => {
       console.error(`promise: generate Sm2 Key failed, error: ` + JSON.stringify(err));
       throw (err as Error);
@@ -385,7 +386,7 @@ async function deleteSm2Key(keyAlias: string) {
     properties: []
   }
   await huks.deleteKeyItem(keyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((err: Error) => {
       console.error(`promise: delete data failed`);
@@ -557,7 +558,7 @@ async function deleteSm2Key(keyAlias: string) {
     properties: []
   };
   await huks.deleteKeyItem(keyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((error: Error) => {
       console.error(`promise: delete data failed`);
@@ -663,8 +664,8 @@ async function generateRsaKey(keyAlias: string) {
     properties: genProperties
   };
   await huks.generateKeyItem(keyAlias, options)
-    .then((data) => {
-      console.info(`promise: generate RSA Key success, data = ${JSON.stringify(data)}`);
+    .then(() => {
+      console.info(`promise: generate RSA Key success`);
     }).catch((err: Error) => {
       console.error(`promise: generate RSA Key failed, error: ` + JSON.stringify(err));
       throw (err as Error);
@@ -736,11 +737,8 @@ async function deleteRsaKey(keyAlias: string) {
     properties: []
   }
   await huks.deleteKeyItem(keyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
-    }).catch((err: Error) => {
-      console.error(`promise: delete data failed`);
-      throw (err as Error);
     });
 }
 
@@ -841,8 +839,8 @@ async function generateRsaKey(keyAlias: string) {
     properties: genProperties
   }
   await huks.generateKeyItem(keyAlias, options)
-    .then((data) => {
-      console.info(`promise: generate RSA Key success, data = ${JSON.stringify(data)}`);
+    .then(() => {
+      console.info(`promise: generate RSA Key success`);
     }).catch((err: Error) => {
       console.error(`promise: generate RSA Key failed, error: ` + JSON.stringify(err));
       throw (err as Error);
@@ -907,7 +905,7 @@ async function deleteRsaKey(keyAlias: string) {
     properties: []
   }
   await huks.deleteKeyItem(keyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((err: Error) => {
       console.error(`promise: delete data failed`);
@@ -1019,8 +1017,8 @@ async function generateRsaKey(keyAlias: string) {
     properties: genProperties
   }
   await huks.generateKeyItem(keyAlias, options)
-    .then((data) => {
-      console.info(`promise: generate RSA Key success, data = ${JSON.stringify(data)}`);
+    .then(() => {
+      console.info(`promise: generate RSA Key success`);
     }).catch((err: Error) => {
       console.error(`promise: generate RSA Key failed, error: ` + JSON.stringify(err));
       throw (err as Error);
@@ -1085,7 +1083,7 @@ async function deleteRsaKey(keyAlias: string) {
     properties: []
   };
   await huks.deleteKeyItem(keyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((err: Error) => {
       console.error(`promise: delete data failed`);

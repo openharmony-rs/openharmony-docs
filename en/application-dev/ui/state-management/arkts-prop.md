@@ -5,11 +5,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=85829ecc69be975331761318a4754507166212af translatedAt=2026-10-28T04:05:24.245Z pushedAt=2026-10-28T08:01:33.862Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ad6e19148a2e0fc0380b16e183aef2ad5ce1d4ae translatedAt=2026-11-03T06:35:11.780Z pushedAt=2026-11-03T07:54:48.814Z nl=1 -->
 
 A variable decorated by [@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md#prop) can establish a one-way synchronization relationship with its parent component.
 
-Before reading the @Prop documentation, you are advised to first understand the basic usage of [@State](./arkts-state.md). For best practices, see [State Management Best Practices](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management FAQs](./arkts-state-management-faq.md).
+Before reading this \@Prop document, developers are advised to first understand the basic usage of [\@State](./arkts-state.md). For common issues, refer to [State Management FAQ](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
