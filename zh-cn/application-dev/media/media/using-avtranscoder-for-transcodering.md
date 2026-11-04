@@ -167,7 +167,9 @@ export class AVTranscoderDemo {
    @Entry
    @Component
    struct Index {
+     // 获取当前组件所在Ability的Context，以通过Context获取应用文件路径。
      private context:Context | undefined = this.getUIContext().getHostContext();
+     // 获取转码功能管理类。
      @State avTranscoder: AVTranscoderDemo = new AVTranscoderDemo(this.context);
    
      build() {
