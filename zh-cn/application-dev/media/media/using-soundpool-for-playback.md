@@ -287,7 +287,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
     ArkTS-Sta示例：
 
      <!-- @[off_callback_load_completed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/SoundPool/SoundPoolStaArkTS/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      this.soundPool!.offLoadComplete();
      ```
