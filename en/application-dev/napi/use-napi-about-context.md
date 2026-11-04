@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=82b72d075adc31c15fba68dcf8f34e61b2521f6c translatedAt=2026-10-13T13:12:25.312Z pushedAt=2026-10-16T04:12:44.714Z -->
+<!-- md-trans-meta sourceCommit=464ed30863edb2324b15efd9041d3ea63cd10746 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 When an application is started, the main thread of the application is an ArkTS thread, which has a context managed by the system. When ArkTS interacts with C/C++, **napi_env** represents the context on the C/C++ side. Every context has an independent **globalThis** object.
 
@@ -249,13 +249,13 @@ If an API does not involve context switching, it is irrelevant to the runtime co
         napi_value plugin1 = nullptr;
         status = napi_load_module_with_info(env, "entry/src/main/ets/pages/plugin1", "com.example.myapplication/entry", &plugin1);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "load plugin1 failed");
+            OH_LOG_ERROR(LOG_APP, "load plugin1 failed");
         }
         // Obtain the GetLocation method in the plugin1 module.
         napi_value getLocation1 = nullptr;
         status = napi_get_named_property(env, plugin1, "GetLocation", &getLocation1);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "obtain GetLocation from plugin1 failed");
+            OH_LOG_ERROR(LOG_APP, "obtain GetLocation from plugin1 failed");
         }
         // Create a new context newEnv2.
         napi_env newEnv2 = nullptr;
@@ -266,20 +266,20 @@ If an API does not involve context switching, it is irrelevant to the runtime co
         // Proactively switch to the new context newEnv2.
         status = napi_switch_ark_context(newEnv2);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "switch to newEnv2 failed");
+            OH_LOG_ERROR(LOG_APP, "switch to newEnv2 failed");
         }
         napi_value plugin2 = nullptr;
         // Load the plugin2.ets module in the new context.
         status = napi_load_module_with_info(newEnv2, "entry/src/main/ets/pages/plugin2", "com.example.myapplication/entry",
                                             &plugin2);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "load plugin2 failed");
+            OH_LOG_ERROR(LOG_APP, "load plugin2 failed");
         }
 
         napi_value getLocation2 = nullptr;
         status = napi_get_named_property(newEnv2, plugin2, "GetLocation", &getLocation2);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "obtain GetLocation from plugin2 failed");
+            OH_LOG_ERROR(LOG_APP, "obtain GetLocation from plugin2 failed");
         }
     
         // Execute the getLocation method on the ArkTS side in the new context. The input parameter is the GetLocation method in the plugin2 module.
@@ -289,12 +289,12 @@ If an API does not involve context switching, it is irrelevant to the runtime co
 
         status = napi_call_function(newEnv2, nullptr, args[0], 1, args2, &result);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "call function of env failed");
+            OH_LOG_ERROR(LOG_APP, "call function of env failed");
         }
         int32_t ret = 0;
         status = napi_get_value_int32(newEnv2, result, &ret);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "napi_get_value_int32 of env failed");
+            OH_LOG_ERROR(LOG_APP, "napi_get_value_int32 of env failed");
         } else {
             // The value of globalThis.a in the context of plugin2 is 3000.
             OH_LOG_INFO(LOG_APP, "ret is %{public}d", ret); // 3000
@@ -302,7 +302,7 @@ If an API does not involve context switching, it is irrelevant to the runtime co
         // Proactively switch back to the original context env.
         status = napi_switch_ark_context(env);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "switch to env failed");
+            OH_LOG_ERROR(LOG_APP, "switch to env failed");
         }
         args2[0] = getLocation1;
         status = napi_call_function(env, nullptr, args[0], 1, args2, &result);
@@ -356,7 +356,7 @@ If an API does not involve context switching, it is irrelevant to the runtime co
 - API declaration
     ```ts
     // index.d.ts
-    export const callFunctionInContext: (func: (func:()=>number)=>{}) => number;
+    export const callFunctionInContext: (func: (func:()=>number)=>number) => number;
     ```
 
 - Compilation configuration
@@ -415,7 +415,7 @@ If an API does not involve context switching, it is irrelevant to the runtime co
     globalThis.a = 2000;
 
     export function GetLocation() : number {
-        return globalThis.a;
+            return globalThis.a;
     }
     ```
     ```ts

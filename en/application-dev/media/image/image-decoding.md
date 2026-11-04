@@ -5,7 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=99170cd098d394aca06fa01cb6bc53938313bd82 translatedAt=2026-10-13T13:20:26.724Z pushedAt=2026-10-16T03:03:09.734Z -->
+<!-- md-trans-meta sourceCommit=e431d4faf807f505f631a66882ef73a7109e5d2b translatedAt=2026-11-04T06:36:58.100Z pushedAt=2026-11-04T06:36:58.100Z nl=1 -->
 
 When an application needs to read image content, display an image, or process an image by scaling or cropping it, you can use [ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md) to decode the image. An application can create an ImageSource instance by using the image path in the application sandbox, a file descriptor, or a buffer, and decode the image into a PixelMap.
 
@@ -157,7 +157,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
    
 4. Create an ImageSource instance.
 
-   - Method 1: Create an ImageSource instance using the sandbox path. The sandbox path can be obtained by using method 1 in step 2.
+   - Method 1: Create an ImageSource instance using the sandbox path. The sandbox path can be obtained by using method 1 in step 3.
 
      <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -166,7 +166,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      const imageSource : image.ImageSource = image.createImageSource(filePath);
      ```
 
-   - Method 2: Create an ImageSource instance using the file descriptor. The file descriptor can be obtained by using method 2 in step 2.
+   - Method 2: Create an ImageSource instance using the file descriptor. The file descriptor can be obtained by using method 2 in step 3.
 
      <!-- @[createImageSource_fd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -175,7 +175,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      const imageSource: image.ImageSource = image.createImageSource(fd);
      ```
 
-   - Method 3: Create an ImageSource instance using an array buffer. The array buffer can be obtained by using method 3 in step 2.
+   - Method 3: Create an ImageSource instance using an array buffer. The array buffer can be obtained by using method 3 in step 3.
 
      <!-- @[createImageSource_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -183,7 +183,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      const imageSource: image.ImageSource = image.createImageSource(buffer);
      ```
 
-   - Method 4: Create an ImageSource instance using the raw file descriptor of the resource file. The raw file descriptor can be obtained by using method 4 in step 2.
+   - Method 4: Create an ImageSource instance using the raw file descriptor of the resource file. The raw file descriptor can be obtained by using method 4 in step 3.
 
      <!-- @[createImageSource_rawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -221,7 +221,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
          console.info(`Create PixelMap successfully with imageInfo.isHdr: ${imageInfo.isHdr}.`);
          return pixelMap;
        } else {
-         console.info('Create PixelMap failed.');
+         console.error('Create PixelMap failed.');
          return undefined;
        }
      } catch (error) {

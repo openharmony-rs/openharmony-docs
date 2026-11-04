@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=be269217f26d60860ab36c5c04ebfa42dad4f573 translatedAt=2026-11-04T06:36:58.107Z pushedAt=2026-11-04T06:36:58.107Z nl=1 -->
 
 An application needs to obtain a PhotoAccessHelper instance before accessing or modifying the media data in an album. User personal data is involved in the PhotoAccessHelper module. Therefore, the application must also apply for the read and write permissions from the user. Unless otherwise specified, the APIs of the PhotoAccessHelper module are used in **pages/index.ets** of the project or other customized .ets files.
 
@@ -25,7 +26,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 
 // The photoAccessHelper instance obtained here is a global object. Unless otherwise specified, the object obtained here is used in subsequent operations in this document. If an undefined error is reported, add the code snippet here.
-// Obtain the context from the component and ensure that the return value of this.getUiContext().getHostContext() is UIAbilityContext.
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 @Entry
 @Component
 struct Index {

@@ -5,7 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5deff1f81c6ebbb89799f64e7011acb34a641e30 translatedAt=2026-10-13T13:15:34.721Z pushedAt=2026-10-16T04:13:19.701Z -->
+<!-- md-trans-meta sourceCommit=55aca85856c67c25fb1016a96e8daa56b7da4d2a translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -349,11 +349,6 @@ Close the original socket and re-establish a socket connection when the default 
             })
           }
         });
-    
-        // Obtain network connection information based on the specified netHandle.
-        connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
-          hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-        })
       // ...
     ```
     

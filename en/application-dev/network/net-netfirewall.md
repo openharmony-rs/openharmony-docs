@@ -5,7 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4606664f710e584bd6ff3bf94fe143ad758cd129 translatedAt=2026-09-01T02:47:51.519Z pushedAt=2026-09-02T07:17:06.785Z -->
+<!-- md-trans-meta sourceCommit=88e2dfeae448878879de010b0280cb4692f1460d translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -206,15 +206,6 @@ The following describes the development procedure specific to each application s
        },{
          isWildcard: true,
          domain: '*.HarmonyOS.cn'
-       },{
-         isWildcard: true,
-         domain: '*w.HarmonyOS.cn' // Supported since API version 26.0.0.
-       },{
-         isWildcard: true,
-         domain: 'www.HarmonyOS.*' // Supported since API version 26.0.0.
-       },{
-         isWildcard: true,
-         domain: 'www.HarmonyOS.c*' // Supported since API version 26.0.0.
      }] as domain[],
      userId: 100,
      interface:'wlan0' // Supported since API version 26.0.0.
@@ -241,7 +232,7 @@ The following describes the development procedure specific to each application s
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
-3. Call **getInterceptRecords** to query firewall interception records in user mode.
+3. Call **getInterceptedRecords** to query firewall interception records in user mode.
 
     ```ts
     // Call getInterceptedRecords to perform pagination query on firewall interception records.

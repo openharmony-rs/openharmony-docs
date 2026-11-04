@@ -5,7 +5,7 @@
 <!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2d56846da3109c6542705ceefa4aed0cf271c3b1 translatedAt=2026-10-13T13:23:06.123Z pushedAt=2026-10-16T03:07:54.872Z -->
+<!-- md-trans-meta sourceCommit=bca6fcb397ced0564f4205e3107ba24efb01b55e translatedAt=2026-11-04T06:36:58.105Z pushedAt=2026-11-04T06:36:58.105Z nl=1 -->
 
 Currently, you can add external subtitles to a video only before it starts playing.
 
@@ -17,60 +17,73 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
 
 1. Call [addSubtitleFromFd](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#addsubtitlefromfd12) to set an external subtitle resource in the AVPlayer instance used for video playback.
 
-   ```ts
-    import { media } from '@kit.MediaKit';
-    import { common } from '@kit.AbilityKit';
-    // Define the class member avPlayer and context.
-    private avPlayer: media.AVPlayer | null = null;
-    private context: common.UIAbilityContext | undefined = undefined;
-    
-    // In the service function (named avSetupVideoAndSubtitle in the sample project):
-    // Create an AVPlayer instance.
-    this.avPlayer = await media.createAVPlayer();
-    this.context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    // Set the video source (omitted).
+   <!-- @[addSubtitleFromFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
 
-    // Set the subtitle.
-    let fileDescriptorSub = await this.context?.resourceManager.getRawFd('xxx.srt');
-    this.avPlayer.addSubtitleFromFd(fileDescriptorSub.fd, fileDescriptorSub.offset, fileDescriptorSub.length);
+   ``` TypeScript
+   // Call getRawFd of the resourceManager member of UIAbilityContext to obtain the media asset URL.
+   // The return type is {fd,offset,length}, where fd indicates the file descriptor address of the HAP file, offset indicates the media asset offset, and length indicates the duration of the media asset to play.
+   if (this.context == undefined) return;
+   let fileDescriptorVideo = await this.context.resourceManager.getRawFd(this.fileName);
+   let avFileDescriptor: media.AVFileDescriptor =
+     { fd: fileDescriptorVideo.fd, offset: fileDescriptorVideo.offset, length: fileDescriptorVideo.length };
+
+   if (this.avPlayer) {
+     console.info(`${this.tag}: init avPlayer release2createNew`);
+     this.avPlayer.release();
+     await this.msleepAsync(1500);
+   }
+   // Create an AVPlayer instance.
+   this.avPlayer = await media.createAVPlayer();
+
+   // Set a callback function for state changes.
+   await this.setAVPlayerCallback((avPlayer: media.AVPlayer) => {
+     this.percent = avPlayer.width / avPlayer.height;
+     this.setVideoWH();
+     this.durationTime = this.getDurationTime();
+     setInterval(() => { // Update the current time.
+       if (!this.isSwiping) {
+         this.currentTime = this.getCurrentTime();
+       }
+     }, SET_INTERVAL);
+   });
+
+   // Assign a value to fdSrc to trigger the reporting of the initialized state.
+   this.avPlayer.fdSrc = avFileDescriptor;
+
+   // Set the subtitle.
+   let fileDescriptorSub = await this.context.resourceManager.getRawFd('test1.srt');
+   this.avPlayer.addSubtitleFromFd(fileDescriptorSub.fd, fileDescriptorSub.offset, fileDescriptorSub.length);
    ```
 
 2. Call [on('subtitleUpdate')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onsubtitleupdate12) to register a subtitle callback function.
 
-   ```ts
-    import { media } from '@kit.MediaKit';
-    // Define the subtitle string to be displayed.
-    @State subtitle: string = 'subtitleUpdate info';
-    private avPlayer: media.AVPlayer | null = null;
-    private tag: string = '';
+   <!-- @[onSubtitleUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
 
-    // Create an AVPlayer instance.
-    this.avPlayer = await media.createAVPlayer();
-    // Callback function for subtitle updates.
-    this.avPlayer.on('subtitleUpdate', (info: media.SubtitleInfo) => {
-      if (!!info) {
-        let text = (!info.text) ? '' : info.text;
-        let startTime = (!info.startTime) ? 0 : info.startTime;
-        let duration = (!info.duration) ? 0 : info.duration;
-        console.info(`${this.tag}: text=${text} startTime=${startTime} duration=${duration}`);
-        this.subtitle = text;
-      } else {
-        console.info(`${this.tag}: subtitleUpdate info is null`);
-      }
-    });
+   ``` TypeScript
+   // Callback function for subtitle updates.
+   this.avPlayer.on('subtitleUpdate', (info: media.SubtitleInfo) => {
+     if (!!info) {
+       let text = (!info.text) ? '' : info.text;
+       let startTime = (!info.startTime) ? 0 : info.startTime;
+       let duration = (!info.duration) ? 0 : info.duration;
+       console.info(`${this.tag}: subtitleUpdate info: text=${text} startTime=${startTime} duration=${duration}`);
+       this.subtitle = text;
+     } else {
+       console.info(`${this.tag}: subtitleUpdate info is null`);
+     }
+   });
    ```
 
 3. (Optional) Unregister the subtitle callback function in the AVPlayer instance used for video playback when subtitles are not required.
 
-   ```ts
-    import { media } from '@kit.MediaKit';
-    // Define the class member avPlayer and context.
-    private avPlayer: media.AVPlayer | null = null;
-    // Create an AVPlayer instance.
-    this.avPlayer = await media.createAVPlayer();
-    this.avPlayer?.off('subtitleUpdate');
-   ```
+   <!-- @[offSubtitleUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
 
+   ``` TypeScript
+   // (Optional) Unregister the subtitle callback from the AVPlayer instance used for video playback when subtitles are not needed.
+   async avTurnOffSubtitle() {
+     this.avPlayer?.off('subtitleUpdate');
+   }
+   ```
 
 ## Running the Sample Project
 

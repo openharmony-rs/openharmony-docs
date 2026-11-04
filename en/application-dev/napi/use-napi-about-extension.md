@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:33:42.893Z pushedAt=2026-09-16T08:21:31.001Z -->
+<!-- md-trans-meta sourceCommit=56d94e81d5c69174cf7cfac3105a84c148d54f2c translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -172,6 +172,7 @@ static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info in
     if (valueType == napi_object) {
         return object;
     }
+    return nullptr;
 }
 ```
 
@@ -543,7 +544,7 @@ napi_value AttachCallback(napi_env env, void* value, void* hint)
     // Bind the ArkTS object named object to the lifecycle of the native object named value.
     napi_status status = napi_wrap(env, object, value, FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "Node-API attachCallback is failed.");
+        OH_LOG_ERROR(LOG_APP, "Node-API attachCallback is failed.");
     }
     // Enable the ArkTS object to carry native information.
     napi_coerce_to_native_binding_object(env, object, DetachCallback, AttachCallback, value, hint);
@@ -563,7 +564,7 @@ static napi_value Init(napi_env env, napi_value exports)
     auto object = Object::GetInstance();
     napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
+        OH_LOG_ERROR(LOG_APP, "Node-API napi_wrap is failed.");
     }
     napi_coerce_to_native_binding_object(env, exports, DetachCallback, AttachCallback, reinterpret_cast<void*>(object),
                                          nullptr);
@@ -1438,7 +1439,7 @@ static napi_value TestNapiWrapEnhance(napi_env env, napi_callback_info info)
     napi_new_instance(env, testClass, 0, nullptr, &obj);
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
-    napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr) + 1, &wrappedRef);
+    napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, strlen(testStr) + 1, &wrappedRef);
     return nullptr;
 }
 ```

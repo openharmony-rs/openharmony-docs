@@ -5,7 +5,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-09-16T02:44:34.877Z pushedAt=2026-09-16T06:29:14.412Z -->
+<!-- md-trans-meta sourceCommit=16f10e67674d46c8ca92fc114534375fdcc0b745 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 ## Overview
 
@@ -90,7 +90,7 @@ For details about how to use the APIs, see [@ohos.application.DistributedExtensi
 | -------------------------------------------------------------------- | -------------------------- |
 | onCreate(want: Want): void;                                          | Creates a distributed collaboration task.      |
 | onDestroy(): void;                                                   | Destroys a distributed collaboration task.          |
-| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested. |
+| onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested. |
 
 ### Development Procedure
 

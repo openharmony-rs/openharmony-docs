@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=fe6cafc35b7c2ea1e5b32d816e822fcfb388d90d translatedAt=2026-09-14T09:45:32.317Z pushedAt=2026-09-15T13:37:11.329Z -->
+<!-- md-trans-meta sourceCommit=b403339df4a3b918b243435b9f1e1945a31dedfb translatedAt=2026-11-04T06:31:06.077Z pushedAt=2026-11-04T06:31:06.077Z nl=1 -->
 
 OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform, free audio processing library. It provides standardized, high-performance, low-latency APIs for app developers on embedded mobile multimedia devices. The Native API of OpenHarmony is implemented based on the [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specification developed by the [Khronos Group](https://www.khronos.org/). Developers can use the relevant APIs on OpenHarmony through &lt;SLES/OpenSLES.h&gt; and &lt;SLES/OpenSLES_OpenHarmony.h&gt;.
 
@@ -86,7 +86,7 @@ Refer to the sample code below to play an audio file.
    #include "SLES/OpenSLES_Platform.h"
    ```
 
-2. Use the **slCreateEngine** API to obtain an engine instance.
+2. Use the **slCreateEngine** API to create and instantiate the engine object.
 
    ```cpp
    SLObjectItf engineObject = nullptr;
@@ -94,7 +94,7 @@ Refer to the sample code below to play an audio file.
    (*engineObject)->Realize(engineObject, SL_BOOLEAN_FALSE);
    ```
 
-3. Obtain the engineEngine instance of the **SL_IID_ENGINE** API.
+3. Obtain the engine interface handle corresponding to **SL_IID_ENGINE**.
 
    ```cpp
    SLEngineItf engineEngine = nullptr;
@@ -167,7 +167,7 @@ Refer to the sample code below to play an audio file.
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. Obtain the playItf instance of **SL_IID_PLAY** and start playback.
+7. Obtain the playback interface handle corresponding to **SL_IID_PLAY** and start playback.
 
    ```cpp
    SLPlayItf playItf = nullptr;

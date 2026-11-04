@@ -5,7 +5,7 @@
 <!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:23:36.895Z pushedAt=2026-09-20T07:47:15.994Z -->
+<!-- md-trans-meta sourceCommit=06c418ce0d53737d9accca064796f2537824187a translatedAt=2026-11-04T06:32:47.477Z pushedAt=2026-11-04T06:32:47.477Z nl=1 -->
 
 ## When to Use
 
@@ -116,7 +116,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
 
 7. Configure the vibrator to vibrate with the custom sequence.
 
-   <!-- @[vibrator_capi_vibrate_in_custom_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
+   <!-- @[vibrator_capi_vibrate_in_custom_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) -->
 
    ``` C++
    static napi_value PlayVibrationCustom(napi_env env, napi_callback_info info)
@@ -155,7 +155,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
        int32_t ret = OH_Vibrator_PlayVibrationCustom(fileDescription, vibrateAttribute);
        bool isSuccess = ((ret == 0) || (ret == UNSUPPORTED));
        if (!isSuccess) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom fail");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom fail");
        } else {
            OH_LOG_Print(LOG_APP, LOG_INFO, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom successful");
        }

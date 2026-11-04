@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d1178002fc643635e4d37f0a3a9a787e6461e6fa translatedAt=2026-10-13T13:12:38.095Z pushedAt=2026-10-16T04:12:47.793Z -->
+<!-- md-trans-meta sourceCommit=8bcea030e70c366a745bca7b4687c931f0d46d82 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 The maintenance and debugging measures mentioned in this topic rely on the Ark runtime multi-thread check. Therefore, you are advised to enable this feature before debugging. For details about how to enable Ark runtime multi-thread check, see [Analyzing CPP Crash](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-multi-thread-check).
 
@@ -89,7 +89,7 @@ public:
         if (argc_ > 0) {
             argv_ = new napi_value[argc_];
             CHECK_NOT_NULL(argv_);
-            memset(argv_, 0, sizeof(argv_));
+            memset(argv_, 0, sizeof(napi_value) * argc_);
             napi_get_cb_info(env, info, &argc_, argv_, nullptr, nullptr);
         }
     }
@@ -331,13 +331,13 @@ Sample code of **napi_call_threadsafe_function** and **napi_release_threadsafe_f
                 napi_create_string_utf8(localEnv, "Test", NAPI_AUTO_LENGTH, &taskName); \
                 // napi_create_threadsafe_function creates a thread-safe function.      \
                 // After the task is complete, call napi_release_threadsafe_function to release it.
-                napi_create_threadsafe_function(                                        \
+                napi_status status = napi_create_threadsafe_function(                   \
                     localEnv, nullptr, nullptr, taskName, 0, 1, nullptr,                \
                     [](napi_env, void *, void *) {}, nullptr,                           \
                     [](napi_env, napi_value, void *, void *) {}, &tsfn);                \
                 if (status != napi_ok) {                                                \
                     OH_LOG_ERROR(LOG_APP,"napi_create_threadsafe_function failed");     \
-                    return nullptr;                                                     \
+                    return;                                                             \
                 }                                                                       \
                 if (!localEnv.RecreateSame()) {                                         \
                     return;                                                             \

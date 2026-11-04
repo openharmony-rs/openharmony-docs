@@ -5,7 +5,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c4600a44573a6aee547e47f52cb983f9fbf70114 translatedAt=2026-08-26T02:54:15.208Z pushedAt=2026-08-26T03:23:22.144Z -->
+<!-- md-trans-meta sourceCommit=9ebdbc456a951ba58c74cec1b3d1c1f6136be8cf translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 You can use the APIs of the input method framework service to easily switch between input methods and input method subtypes.
 
@@ -64,13 +64,13 @@ In the input method application in use, call [switchInputMethod](../reference/ap
        this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // Obtain the list of enabled input methods.
        let currentInputMethod = inputMethod.getCurrentInputMethod(); // Obtain the current input method.
        for (let i = 0; i < this.inputMethods.length; i++) {
-         if (item != currentInputMethod.name) { // If the current input method is not the specified one, switch to the specified one. You can switch to a fixed input method as required.
+         if (this.inputMethods[i].name === item && item != currentInputMethod.name) { // Switch to the target input method if it is not the current input method.
            await inputMethod.switchInputMethod(this.inputMethods[i]);
          }
        }
      } catch (err) {
        let error = err as BusinessError;
-       Log.showError(TAG, `switchInputMethod catch error: ${error.code} ${error.message}`);
+       console.error(`switchInputMethod catch error: ${error.code} ${error.message}`);
      }
    }
    ```

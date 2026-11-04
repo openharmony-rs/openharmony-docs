@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=3fdb75dda2360c4f4f6ae710ea1030d053ea28b8 translatedAt=2026-07-29T10:48:47.056Z pushedAt=2026-07-29T12:32:34.133Z -->
+<!-- md-trans-meta sourceCommit=1ef29eece66a5eaca78463125342ca3f4e3b01b2 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 HiAppEvent provides APIs for subscribing to and receiving application events.
 
@@ -66,7 +66,9 @@ The source code of the jsoncpp library file in this sample project comes from th
 
 2. In the **CMakeLists.txt** file, add the required source files and dynamic libraries.
 
-   ```cmake
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+
+   ``` cmake
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # Check whether the entry/build directory exists.

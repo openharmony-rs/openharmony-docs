@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:46:21.902Z pushedAt=2026-09-16T08:26:48.378Z -->
+<!-- md-trans-meta sourceCommit=8bcea030e70c366a745bca7b4687c931f0d46d82 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## When to Use
 
@@ -24,7 +24,7 @@ You can call **napi_wrap_sendable** to bind an ArkTS [Sendable](../arkts-utils/a
       constructor(arg: number);
       plusOne(): number;
 
-      public get value();
+      public get value(): number;
       public set value(newVal: number);
     }
     ```

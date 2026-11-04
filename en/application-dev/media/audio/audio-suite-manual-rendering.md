@@ -5,7 +5,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=abae9fb17f8a477e88c05dcb88b779e1db63cdee translatedAt=2026-10-08T03:46:04.015Z pushedAt=2026-10-08T06:41:56.633Z -->
+<!-- md-trans-meta sourceCommit=dfb2b1f6e6b8b9eeb022960a419c4da1955da0f8 translatedAt=2026-11-04T06:31:05.953Z pushedAt=2026-11-04T06:31:05.953Z nl=1 -->
 
 Starting from API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides offline audio editing capability, allowing you to process audio data in non-real-time preview scenarios. You can combine multiple audio nodes to implement complex audio processing pipelines.
 
@@ -15,8 +15,10 @@ To use the offline editing capabilities provided by [OHAudioSuite](../../referen
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
 ### Adding Header Files
 To use APIs related to audio creation, include the <[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)> and <[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)> header files.

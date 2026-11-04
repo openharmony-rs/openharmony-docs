@@ -6,6 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=929b1621cca198b113925cbe081f239f51ad1fcc translatedAt=2026-11-04T06:32:39.833Z pushedAt=2026-11-04T06:32:39.833Z nl=1 -->
 
 ## Introduction
 Wi-Fi scan is the process where devices (such as smartphones, PCs, and routers) search for available Wi-Fi networks in their surrounding environment. Through this scan process, devices can gather fundamental information about nearby networks—such as network name, signal strength, and encryption type—thereby enabling connection to, management of, or analysis of these networks.
@@ -19,7 +20,7 @@ Wi-Fi scan is the process where devices (such as smartphones, PCs, and routers) 
 
 ## Available APIs
 
-For details about the JavaScript APIs and sample code, see the [SCAN API Reference](../../reference/apis-connectivity-kit/js-apis-wifiManager.md).
+For details about the JavaScript APIs and sample code, see [@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md).
 
 The following table describes the related APIs.
 
@@ -45,11 +46,11 @@ The following table describes the related APIs.
    ```ts
    import { wifiManager } from '@kit.ConnectivityKit';
 
-   try {
-     let recvWifiScanStateChangeFunc = (result:number) => {
-         console.info("Receive Wifi scan state change event: " + result);
-     }
+   let recvWifiScanStateChangeFunc = (result:number) => {
+       console.info("Receive Wifi scan state change event: " + result);
+   }
 
+   try {
      // Obtain the scan status. The value 1 indicates that the scan is successful, and the value 0 indicates the opposite.
      wifiManager.on("wifiScanStateChange", recvWifiScanStateChangeFunc);
 
@@ -78,11 +79,15 @@ The following table describes the related APIs.
          console.info("isHiLinkNetwork: " + scanInfoList[i].isHiLinkNetwork);
        }
      }
-
-     // Unsubscribe from Wi-Fi scan state changes.
-     wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
    } catch (error) {
      console.error(`WiFi scan fail. ${error.message}`);
+   } finally {
+     // Unsubscribe from Wi-Fi scan state changes in finally to ensure cleanup even if an exception occurs and prevent resource leaks.
+     try {
+       wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
+     } catch (e) {
+       console.error(`WiFi scan off failed. ${e.message}`);
+     }
    }
    ```
 

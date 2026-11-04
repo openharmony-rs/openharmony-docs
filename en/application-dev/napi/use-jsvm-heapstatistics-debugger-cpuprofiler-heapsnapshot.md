@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:35:40.688Z pushedAt=2026-08-12T11:03:08.320Z -->
+<!-- md-trans-meta sourceCommit=56db74dcf9cd541e58f29a407c4b413b830bc97b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -79,12 +79,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *SRC_CALL_NATIVE = R"JS(getVM())JS";
 ```
 
-JS example:
-
-```c++
-const char *srcCallNative = R"JS(getVM())JS";
-```
-
 Expected result:
 
 ```txt
@@ -149,12 +143,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 const char *SRC_CALL_NATIVE = R"JS(getHeapStatistics())JS";
-```
-
-JS example:
-
-```c++
-const char *srcCallNative = R"JS(getHeapStatistics())JS";
 ```
 
 Expected output (virtual machine heap statistics, which change in real time):

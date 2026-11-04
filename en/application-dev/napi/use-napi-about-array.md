@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2d4ccf619f49d6bb0f84f2d649430a5d81fe94fa translatedAt=2026-10-13T13:11:14.361Z pushedAt=2026-10-16T04:12:32.541Z -->
+<!-- md-trans-meta sourceCommit=64f61f6260e709198c58d28b8af2c20c64a9386d translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -26,20 +26,20 @@ Node-API can be used to create, access, modify, and traverse arrays. Before usin
 The following table describes the APIs for managing ArkTS arrays.
 | API| Description|
 | -------- | -------- |
-| [napi_create_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array) | Creates an ArkTS array.|
-| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | Creates an ArkTS array object of the specified length.|
-| [napi_get_array_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_array_length) | Obtains the length of an ArkTS array.|
-| [napi_is_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_array) | Checks whether the given **napi_value** is an array.|
-| [napi_set_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_set_element) | Sets an element at the specified index in the given ArkTS array.|
-| [napi_get_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_element) | Obtains the element at the specified index in the given ArkTS array.|
-| [napi_has_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_has_element) | Checks whether the element at the specified index exists.|
-| [napi_delete_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_delete_element) | Deletes the element at the specified index of the given ArkTS array.|
-| [napi_create_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_typedarray) | Creates an ArkTS **TypedArray** object of the specified type, such as **Uint8Array** or **Int32Array**. You can use this API to convert a native value into a **TypedArray** object for performant data processing.  |
-| [napi_is_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_typedarray) | Checks whether the given **napi_value** is a **TypedArray** object.|
-| [napi_get_typedarray_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_typedarray_info) | Obtains the properties of a **TypedArray** object.|
-| [napi_create_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_dataview) |  Creates a **DataView** object, which allows access to binary data.|
-| [napi_is_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_dataview) | Checks whether the given **napi_value** is a **DataView** object in ArkTS.|
-| [napi_get_dataview_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_dataview_info) | Obtains the properties of a **DataView** object.|
+| napi_create_array | Creates an ArkTS array.|
+| napi_create_array_with_length | Creates an ArkTS array object of the specified length.|
+| napi_get_array_length | Obtains the length of an ArkTS array.|
+| napi_is_array | Checks whether the given **napi_value** is an array.|
+| napi_set_element | Sets an element at the specified index in the given ArkTS array.|
+| napi_get_element | Obtains the element at the specified index in the given ArkTS array.|
+| napi_has_element | Checks whether the element at the specified index exists.|
+| napi_delete_element | Deletes the element at the specified index of the given ArkTS array.|
+| napi_create_typedarray | Creates an ArkTS **TypedArray** object of the specified type, such as **Uint8Array** or **Int32Array**. You can use this API to convert a native value into a **TypedArray** object for performant data processing.  |
+| napi_is_typedarray | Checks whether the given **napi_value** is a **TypedArray** object.|
+| napi_get_typedarray_info | Obtains the properties of a **TypedArray** object.|
+| napi_create_dataview |  Creates a **DataView** object, which allows access to binary data.|
+| napi_is_dataview | Checks whether the given **napi_value** is a **DataView** object in ArkTS.|
+| napi_get_dataview_info | Obtains the properties of a **DataView** object.|
 
 ## Example
 
@@ -782,7 +782,7 @@ static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
             result = int8_type;
             break;
         case INFO_LENGTH:
-            // Byte length of elements in TypedArray.
+            // Number of elements in the TypedArray.
             napi_value napiLength;
             napi_create_int32(env, length, &napiLength);
             result = napiLength;

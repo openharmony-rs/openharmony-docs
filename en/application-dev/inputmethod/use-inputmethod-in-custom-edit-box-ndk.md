@@ -5,7 +5,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=73d66c100e94b50c7ee14b20e494288d30baa6dc translatedAt=2026-10-13T13:02:22.911Z pushedAt=2026-10-16T02:45:22.341Z -->
+<!-- md-trans-meta sourceCommit=4d0c4fe124a429b89e6c66eb6b302d8501f24a1d translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## When to Use
 
@@ -21,6 +21,7 @@ Add the following library to **CMakeLists.txt**.
 
 ```txt
 libohinputmethod.so
+libhilog_ndk.z.so
 ```
 
 ## Including Header Files

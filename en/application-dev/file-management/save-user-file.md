@@ -6,7 +6,7 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=26db867956892783b25f638a74cb23fb0a676944 translatedAt=2026-08-01T07:28:27.106Z pushedAt=2026-08-01T11:09:43.815Z -->
+<!-- md-trans-meta sourceCommit=11f6c6c8fdc0ff9016199d784a1ea189bd95bfd5 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 When a user needs to download a file from the Internet or save a file to another directory, use **FilePicker** to save the file. Pay attention to the following key points:
 
@@ -48,8 +48,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -117,8 +116,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -192,8 +190,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```

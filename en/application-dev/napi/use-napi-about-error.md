@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:33:09.809Z pushedAt=2026-09-16T08:21:28.824Z -->
+<!-- md-trans-meta sourceCommit=6430f2ca09e38317de17872900d48c46ec0d6443 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -61,7 +61,7 @@ static napi_value GetLastErrorInfo(napi_env env, napi_callback_info info)
     napi_status status = napi_get_value_int32(env, args[0], &value);
     // The API is used incorrectly, so the return value is not napi_ok.
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "napi_get_value_int32 return status, status is not equal to napi_ok.");
+        OH_LOG_ERROR(LOG_APP, "napi_get_value_int32 return status, status is not equal to napi_ok.");
     }
     // Call napi_get_last_error_info to obtain the last error information.
     const napi_extended_error_info *errorInfo;
@@ -346,7 +346,7 @@ static napi_value NapiThrowBusinessError(napi_env env, napi_callback_info info)
 {
     napi_status status = napi_throw_business_error(env, INT_ARG_100, "error message");
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "napi_throw_business_error failed :: %{public}d", status);
+        OH_LOG_ERROR(LOG_APP, "napi_throw_business_error failed: %{public}d", status);
     }
     return nullptr;
 }

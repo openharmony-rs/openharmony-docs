@@ -6,6 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=51c5398cc61ebcfe5e01c4922e5a028e9e1c9f18 translatedAt=2026-11-04T06:32:36.818Z pushedAt=2026-11-04T06:32:36.818Z nl=1 -->
 
 This topic describes terms related to Content Embed Kit.
 

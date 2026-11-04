@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:06:36.290Z pushedAt=2026-10-16T04:10:20.738Z -->
+<!-- md-trans-meta sourceCommit=56db74dcf9cd541e58f29a407c4b413b830bc97b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -50,7 +50,7 @@ static JSVM_Value testExternalString(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetValueStringUtf8(env, jsStrLatin1, buf, 10, nullptr);
     OH_LOG_INFO(LOG_APP, "created latin1 string is : %{public}s\n", buf);
     // If the value of copied is true, the external string fails to be created. Otherwise, the external string is created successfully.
-    OH_LOG_INFO(LOG_APP, "create external string failed : %{public}d\n", copied);
+    OH_LOG_INFO(LOG_APP, "create external string result, copied : %{public}d\n", copied);
     copied = true;
     JSVM_Value jsStrUTF16 = nullptr;
     OH_JSVM_CreateExternalStringUtf16(env, stringUTF16, std::char_traits<char16_t>::length(stringUTF16),
@@ -58,7 +58,7 @@ static JSVM_Value testExternalString(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetValueStringUtf8(env, jsStrUTF16, buf, 10, nullptr);
     OH_LOG_INFO(LOG_APP, "created utf16 string is : %{public}s\n", buf);
     // If the value of copied is true, the external string fails to be created. Otherwise, the external string is created successfully.
-    OH_LOG_INFO(LOG_APP, "create external string failed : %{public}d\n", copied);
+    OH_LOG_INFO(LOG_APP, "create external string result, copied : %{public}d\n", copied);
     OH_JSVM_CloseHandleScope(env, handleScope);
 
     return nullptr;
@@ -83,7 +83,7 @@ const char *srcCallNative = R"JS(testExternalString();)JS";
 ## Expected Result
 ```txt
 created latin1 string is : hello
-create external string failed: 0
+create external string result, copied : 0
 created utf16 string is : world
-create external string failed: 0
+create external string result, copied : 0
 ```

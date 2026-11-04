@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=43d4933e255d44811a8dba2f5e6ee13aa8604419 translatedAt=2026-10-13T13:13:53.658Z pushedAt=2026-10-16T04:13:02.644Z -->
+<!-- md-trans-meta sourceCommit=3c420b677a53469d63d0dd6c8d2dd37c67d0c247 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -848,14 +848,14 @@ hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d
   testNapi.defineMethodProperties()
     .defineMethodPropertiesExample());
 // Define a property of the string type.
-hilog.info(0x0000, 'testTag', 'Test Node-API define_string_properties::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API define_string_properties:%{public}s ',
   testNapi.defineStringProperties()
     .defineStringPropertiesExample);
 // Getter and setter.
-hilog.info(0x0000, 'testTag', 'Test Node-API get::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API get:%{public}s ',
   testNapi.createStringWithGetterSetter()
     .getterCallback());
-hilog.info(0x0000, 'testTag', 'Test Node-API setter::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API setter:%{public}s ',
   testNapi.createStringWithGetterSetter()
     .setterCallback('set data'));
 ```

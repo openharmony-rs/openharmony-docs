@@ -6,7 +6,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=7916f8e417a52f266eb8609e7aa226ddb0132eda translatedAt=2026-08-15T01:56:21.661Z pushedAt=2026-08-15T09:00:04.358Z -->
+<!-- md-trans-meta sourceCommit=7895a02cab914100edba651fec20753f0238fcf7 translatedAt=2026-11-04T06:31:05.996Z pushedAt=2026-11-04T06:31:05.996Z nl=1 -->
 
 Starting from API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides the real-time preview capability for audio authoring (API version 22 supports only the equalizer effect, while API version 23 and later support other effects). For example, you can use the preset sound effects in the equalizer to change the style of music.
 
@@ -16,8 +16,11 @@ To use the real-time preview capability provided by [OHAudioSuite](../../referen
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
+<!-- @[CMake_lib_suite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudio.so)
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
 
 ### Adding Header Files

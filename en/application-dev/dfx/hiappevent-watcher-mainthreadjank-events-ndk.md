@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-31T01:27:35.896Z pushedAt=2026-07-31T03:59:41.550Z -->
+<!-- md-trans-meta sourceCommit=8d3fbd9cea938deab591400a098c0e0ae9d431c9 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 ## Overview
 
@@ -23,162 +23,197 @@ This section describes how to use the C/C++ APIs provided by HiAppEvent to subsc
 
 ### Adding an Event Watcher
 
-1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
+The following example shows how to trigger a main thread jank event when a user clicks a button:
 
-2. In DevEco Studio, create a Native C++ project and import the above files into the new project. The directory structure is as follows.
+1. Obtain the jsoncpp files required by the sample project. Open [HiAppEvent EventSub Sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub) and click **Download current directory** to download the EventSub project files.
+
+2. In DevEco Studio, create a project using the Native C++ template and import the downloaded files into the project. The directory structure is as follows.
 
    ```yml
    entry:
+     libs:    //  Directory for third-party libraries required by jsoncpp.
      src:
        main:
          cpp:
-           json:
-             - json.h
-             - json-forwards.h
-           types:
-             libentry:
-               - index.d.ts
+           - thirdparty:
+               jsoncpp:    //  Directory for third-party libraries required by jsoncpp.
+           - types:
+               libentry:
+                 - index.d.ts
            - CMakeLists.txt
-           - jsoncpp.cpp
            - napi_init.cpp
          ets:
-           entryability:
-             - EntryAbility.ets
-           pages:
-             - Index.ets
+           - entryability:
+               - EntryAbility.ets
+           - pages:
+               - Index.ets
    ```
+
+   The source code for the jsoncpp library in this sample project comes from [JsonCpp](https://codeload.github.com/open-source-parsers/jsoncpp/tar.gz/refs/tags/1.9.6).
 
 3. Edit the **entry > src > main > cpp > CMakeLists.txt** file in the project to add source files and dynamic libraries.
 
    ```cmake
-   # Add the jsoncpp.cpp source file (for parsing JSON strings in subscribed events).
-   add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
-   # Add dynamic library dependencies libhiappevent_ndk.z.so and libhilog_ndk.z.so (for log output).
+   add_library(entry SHARED napi_init.cpp)
+   # Add dependencies on libhiappevent_ndk.z.so and libhilog_ndk.z.so (for log output).
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # Ensure that the entry/build directory exists.
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # Extract jsoncpp-1.9.6.tar.gz to entry/build to obtain the jsoncpp header directory.
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   # Add the third-party library libjsoncpp.so to parse JSON strings in subscribed events.
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
 4. Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the project to import the required files and define `LOG_TAG`.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "json/json.h"
-   #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   ```
+    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
+    ``` C++
+    #include "napi/native_api.h"
+    // Adjust the path to json.h based on the location of the third-party jsoncpp library in the project.
+    #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
+    #include "hiappevent/hiappevent.h"
+    #include "hiappevent/hiappevent_param.h"
+    #include "hilog/log.h"
+
+    #undef LOG_TAG
+    #define LOG_TAG "testTag"
+    ```
 
 5. Subscribe to system events.
 
-   - Watcher of the **onReceive** type.
+    Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the project to define the methods related to the watcher of the **onReceive** type:
 
-      Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the project to define the methods related to the watcher of the **onReceive** type:
+    <!-- @[MainThreadJank_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
-      ```c++
-      // Define a variable to cache the pointer of the created watcher.
-      static HiAppEvent_Watcher *systemEventWatcher; 
-      
-      static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
-          for (int i = 0; i < groupLen; ++i) {
-              for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s",
-                              appEventGroups[i].appEventInfos[j].domain);
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s",
-                              appEventGroups[i].appEventInfos[j].name);
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d",
-                              appEventGroups[i].appEventInfos[j].type);
-                  if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) == 0 &&
-                      strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_MAIN_THREAD_JANK) == 0) {
-                      Json::Value params;
-                      Json::Reader reader(Json::Features::strictMode());
-                      Json::FastWriter writer;
-                      if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
-                          auto time = params["time"].asInt64();
-                          auto pid = params["pid"].asInt();
-                          auto uid = params["uid"].asInt();
-                          auto bundleName = params["bundle_name"].asString();
-                          auto bundleVersion = params["bundle_version"].asString();
-                          auto beginTime = params["begin_time"].asInt64();
-                          auto endTime = params["end_time"].asInt64();
-                          auto externalLog = writer.write(params["external_log"]);
-                          auto logOverLimit = params["logOverLimit"].asBool();
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s",
-                                      bundleName.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
-                                      bundleVersion.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.begin_time=%{public}lld", beginTime);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.end_time=%{public}lld", endTime);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d",
-                                      logOverLimit);
-                      }
-                  }
-              }
-          }
-      }
-      
-      static napi_value RegisterWatcher(napi_env env, napi_callback_info info) {
-          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent RegisterWatcher");
-          // Set the watcher name. The system identifies different watchers based on their names.
-          systemEventWatcher = OH_HiAppEvent_CreateWatcher("onReceiverWatcher");
-          // Set the event to subscribe to EVENT_MAIN_THREAD_JANK.
-          const char *names[] = {EVENT_MAIN_THREAD_JANK};
-          // Add the events to watch, for example, system events.
-          OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // Set the implemented callback. After receiving the event, the watcher immediately triggers the OnReceive callback.
-          OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
-          // Add a watcher to listen for the specified event.
-          OH_HiAppEvent_AddWatcher(systemEventWatcher);
-          return {};
-      }
-      ```
+    ``` C++
+    // Define a variable to cache the pointer of the created watcher.
+    static HiAppEvent_Watcher *systeMainThreadJankEventWatcher;
 
-6. Register **RegisterWatcher** as an ArkTS API.
+    static void HandleMainThreadJankEventInfo(const struct HiAppEvent_AppEventInfo &appEventInfos)
+    {
+        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", appEventInfos.domain);
+        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", appEventInfos.name);
+        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", appEventInfos.type);
+        if (strcmp(appEventInfos.domain, DOMAIN_OS) == 0 &&
+            strcmp(appEventInfos.name, EVENT_MAIN_THREAD_JANK) == 0) {
+            Json::Value params;
+            Json::Reader reader(Json::Features::strictMode());
+            Json::FastWriter writer;
+            if (reader.parse(appEventInfos.params, params)) {
+                auto time = params["time"].asInt64();
+                auto pid = params["pid"].asInt();
+                auto uid = params["uid"].asInt();
+                auto bundleName = params["bundle_name"].asString();
+                auto bundleVersion = params["bundle_version"].asString();
+                auto beginTime = params["begin_time"].asInt64();
+                auto endTime = params["end_time"].asInt64();
+                auto externalLog = writer.write(params["external_log"]);
+                auto logOverLimit = params["logOverLimit"].asBool();
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s",
+                            bundleName.c_str());
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
+                            bundleVersion.c_str());
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.begin_time=%{public}lld", beginTime);
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.end_time=%{public}lld", endTime);
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s",
+                            externalLog.c_str());
+                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d",
+                            logOverLimit);
+            }
+        }
+    }
 
-   Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the project to register `RegisterWatcher` as an ArkTS API:
+    static void OnMainThreadJankReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups,
+        uint32_t groupLen)
+    {
+        for (int i = 0; i < groupLen; ++i) {
+            for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
+                HandleMainThreadJankEventInfo(appEventGroups[i].appEventInfos[j]);
+            }
+        }
+    }
 
-   ```c++
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "registerWatcher", nullptr, RegisterWatcher, nullptr, nullptr, nullptr, napi_default, nullptr }
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
+    static napi_value RegisterMainThreadJankWatcher(napi_env env, napi_callback_info info)
+    {
+        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent MainThreadJank RegisterMainThreadJankWatcher");
+        // Set the watcher name. The system identifies different watchers based on their names.
+        systeMainThreadJankEventWatcher = OH_HiAppEvent_CreateWatcher("MainThreadJankReceiverWatcher");
+        // Set the event to subscribe to EVENT_MAIN_THREAD_JANK.
+        const char *names[] = {EVENT_MAIN_THREAD_JANK};
+        // Add the events to watch, for example, system events.
+        OH_HiAppEvent_SetAppEventFilter(systeMainThreadJankEventWatcher, DOMAIN_OS, 0, names, 1);
+        // Set the implemented callback. OnMainThreadJankReceive is triggered as soon as the watcher receives an event.
+        OH_HiAppEvent_SetWatcherOnReceive(systeMainThreadJankEventWatcher, OnMainThreadJankReceive);
+        // Add a watcher to listen for the specified event.
+        OH_HiAppEvent_AddWatcher(systeMainThreadJankEventWatcher);
+        return {};
+    }
+    ```
+
+6. Register **RegisterMainThreadJankWatcher** as an ArkTS API.
+
+   Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the project to register `RegisterMainThreadJankWatcher` as an ArkTS API:
+
+   <!-- @[MainThreadJank_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
+   { "RegisterMainThreadJankWatcher", nullptr, RegisterMainThreadJankWatcher, nullptr, nullptr, nullptr,
+       napi_default, nullptr },
    ```
 
-   Edit the **Index.ets** file under **entry > src > main > cpp > types > libentry** in the project to define the ArkTS APIs:
+   Edit the **Index.d.ts** file under **entry > src > main > cpp > types > libentry** in the project to define the ArkTS API:
 
-   ```typescript
-   export const registerWatcher: () => void;
+   <!-- @[MainThreadJank_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+   ``` TypeScript
+   export const RegisterMainThreadJankWatcher: () => void;
    ```
 
 7. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, add the following API call to **onCreate()**.
 
-   ```typescript
-   // Import the dependency modules.
+    Import the dependency module.
+   <!-- @[MainThreadJank_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+   ``` TypeScript
    import testNapi from 'libentry.so';
-   
-   // Add the API call in the onCreate() function.
-   // Register the system event watcher at startup.
-   testNapi.registerWatcher();
    ```
 
-8. Edit the **Index.ets** file under **entry > src > main > ets > pages** in the project, add a **Button**, and simulate a main thread timeout scenario in its `onClick` function. The sample code is as follows:
+   <!-- @[MainThreadJank_Event_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   // Add the API call in the onCreate() function.
+   // Register the system event watcher at startup.
+   testNapi.RegisterMainThreadJankWatcher();
+   ```
 
-   ```typescript
-      Button("timeOut350")
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-      .onClick(() => {
-          let t = Date.now();
-          while (Date.now() - t <= 350) {}
-      })
+8. Edit the **Index.ets** file under **entry > src > main > ets > pages** in the project to add a button. In its **onClick** callback, simulate a main thread timeout to trigger a main thread jank event. The sample code is as follows:
+
+   <!-- @[MainThreadJank_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // Add a click handler to trigger MAIN_THREAD_JANK.
+   Button('timeOut350')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       let t = Date.now();
+       while (Date.now() - t <= 350) {}
+     })
    ```
 
 9. In DevEco Studio, click the **Run** button to run the application project. Click the **timeOut350** button twice or three times consecutively to trigger a main thread jank event.
@@ -210,21 +245,29 @@ This section describes how to use the C/C++ APIs provided by HiAppEvent to subsc
 
 1. Remove the event watcher.
 
-   ```c++
-   static napi_value RemoveWatcher(napi_env env, napi_callback_info info) {
-       // Stop the watcher from listening for events.
-       OH_HiAppEvent_RemoveWatcher(systemEventWatcher);
-       return {};
-   }
-   ```
+    <!-- @[MainThreadJankEvent_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
+    ``` C++
+    static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
+    {
+        // Stop listening for events.
+        // ...
+        OH_HiAppEvent_RemoveWatcher(systeMainThreadJankEventWatcher);
+        return {};
+    }
+    ```
 
 2. Destroy the event watcher.
 
-   ```c++
-   static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
-       // Destroy the created watcher and set systemEventWatcher to nullptr.
-       OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
-       systemEventWatcher = nullptr;
-       return {};
-   }
-   ```
+    <!-- @[MainThreadJankEvent_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
+    ``` C++
+    static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
+    {
+        // Destroy the watcher and set the watcher pointer to nullptr.
+        // ...
+        OH_HiAppEvent_DestroyWatcher(systeMainThreadJankEventWatcher);
+        systeMainThreadJankEventWatcher = nullptr;
+        return {};
+    }
+    ```

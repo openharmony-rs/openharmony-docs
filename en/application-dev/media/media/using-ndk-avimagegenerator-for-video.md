@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d694898733aa289d462fcd6b2a4385c8f48aea45 translatedAt=2026-11-04T06:36:58.104Z pushedAt=2026-11-04T06:36:58.104Z nl=1 -->
 
 You can use the AVImageGenerator to obtain the video frame at the specified time from the raw media asset.
 
@@ -16,7 +17,7 @@ Link the dynamic libraries in the CMake script.
 target_link_libraries(entry PUBLIC libavimage_generator.so libace_napi.z.so)
 ```
 
-To use [OH_PixelmapNative_ConvertPixelmapNativeToNapi()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi) to convert a nativePixelMap object into a PixelMapnapi object and use [OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release) to release the OH_PixelmapNative object, include the following header file:
+To use [OH_PixelmapNative_ConvertPixelmapNativeToNapi()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi) to convert an OH_PixelmapNative object into a PixelMapnapi object and use [OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release) to release the OH_PixelmapNative object, include the following header file:
 ```c
 #include <multimedia/image_framework/image/pixelmap_native.h>
 ```
@@ -66,7 +67,7 @@ Read [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md)
 
    int64_t offset = 0; // Offset of the media source in the file descriptor.
    int32_t fileDescribe = -1; // File descriptor of the media file.
-   int32_t fileSize = 0; // Size of the media file.
+   int64_t fileSize = 0; // Size of the media file.
        
    // Set the file descriptor of the video resource.
    OH_AVErrCode avErrCode = OH_AVImageGenerator_SetFDSource(generator, fileDescribe, offset, fileSize);
@@ -130,7 +131,7 @@ Read [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md)
 
 4. Call [OH_AVImageGenerator_FetchFrameByTime()](../../reference/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_fetchframebytime) to obtain the video frame at a specified time, which is an OH_PixelmapNative object.
 
-   When the object is no longer required, call **OH_PixelmapNative_Release** to release the object. For details, see [Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release).
+   When the object is no longer required, call **OH_PixelmapNative_Release** to release the object. For details, see [OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release).
    ```c
    #include "napi/native_api.h"
    #include <multimedia/image_framework/image/pixelmap_native.h>
@@ -143,7 +144,7 @@ Read [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md)
        int64_t timeUs = 0; // Specified time (in us).
        int64_t offset = 0; // Offset of the media source in the file descriptor.
        int32_t fileDescribe = -1; // File descriptor of the media file.
-       int32_t fileSize = 0; // Size of the media file.
+       int64_t fileSize = 0; // Size of the media file.
        int32_t options = OH_AVIMAGE_GENERATOR_QUERY_CLOSEST; // OH_AVIMAGE_GENERATOR_QUERY_CLOSEST means that the key frame closest to the specified time is selected.
    };
 

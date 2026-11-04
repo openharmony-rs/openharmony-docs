@@ -6,7 +6,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
 <!--Adviser: @zzs911-->
-<!-- md-trans-meta sourceCommit=9debe03e456cd9546017cca228787eecf595247b translatedAt=2026-08-22T02:11:25.393Z pushedAt=2026-08-22T06:49:25.737Z -->
+<!-- md-trans-meta sourceCommit=076cac00cafef3afacf6bd6cf241d9e510d1ca03 translatedAt=2026-11-04T06:36:58.106Z pushedAt=2026-11-04T06:36:58.106Z nl=1 -->
 
 ## Basic Concepts
 
@@ -93,7 +93,7 @@ if (g_avCapture == nullptr) {
 }
 OpenFile("Demo");
 SetCallback(g_avCapture);
-// Initialize the screen capture parameters and pass in an OH_AVScreenRecorderConfig struct.
+// Initialize the screen capture parameters and pass in an OH_AVScreenCaptureConfig struct.
 OH_AVScreenCaptureConfig config;
 SetConfig05(config);
 OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_Init(g_avCapture, config);

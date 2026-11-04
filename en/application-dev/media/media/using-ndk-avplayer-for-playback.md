@@ -5,7 +5,7 @@
 <!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2d56846da3109c6542705ceefa4aed0cf271c3b1 translatedAt=2026-10-13T13:21:49.168Z pushedAt=2026-10-16T03:07:16.733Z -->
+<!-- md-trans-meta sourceCommit=62ac40cd48a18c694f32b1a577ce8aabaa82d82b translatedAt=2026-11-04T06:36:58.104Z pushedAt=2026-11-04T06:36:58.104Z nl=1 -->
 
 The [AVPlayer](media-kit-intro.md#avplayer) is used to play raw media assets in an end-to-end manner. In this topic, you will learn how to use the AVPlayer to play a complete piece of music.
 
@@ -31,25 +31,30 @@ This topic describes only how to implement the playback of a media asset. In pra
 - Use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information callback [OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback) and error callback [OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback), respectively. After [OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback) is set, the callback [OH_AVPlayerOnInfo](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfo) set through [OH_AVPlayer_SetPlayerCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplayercallback) is not executed. After [OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback) is set, the callback [OH_AVPlayerOnError](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerror) set through [OH_AVPlayer_SetPlayerCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplayercallback) is not executed.
 
 ## How to Develop
-Link the dynamic library in the CMake script.
-```C++
-target_link_libraries(sample PUBLIC libavplayer.so)
+
+Link the following dynamic libraries in the CMake script:
+
+<!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC
+    libavplayer.so
+    libnative_media_core.so
+    libhilog_ndk.z.so
+)
 ```
 
-To use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information callback and error callback, link the following dynamic libraries in the CMake script:
-```C++
-target_link_libraries(sample PUBLIC libnative_media_core.so)
-```
+To use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information callback and error callback, link the libnative_media_core.so dynamic library in the CMake script.
 
 To use system logging, include the following header file:
-```C++
+
+<!-- @[hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include <hilog/log.h>
 ```
 
-Link the following dynamic library in the CMake script:
-```C++
-target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
-```
+Link the libhilog_ndk.z.so dynamic library in the CMake script.
 
 You can use C/C++ APIs related to audio playback by including the header files [avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md), [avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md).
 

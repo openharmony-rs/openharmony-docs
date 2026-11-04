@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=41a8c060b42cd52d5dc8b729376ed075b1362170 translatedAt=2026-10-13T12:44:17.008Z pushedAt=2026-10-15T09:08:40.063Z -->
+<!-- md-trans-meta sourceCommit=0883a25604e1663e2faba770da0a4087f64708a0 translatedAt=2026-11-04T06:32:41.738Z pushedAt=2026-11-04T06:32:41.738Z nl=1 -->
 
 ## When to Use
 
@@ -353,10 +353,9 @@ When using the single-version table mode to perform data sync, you need to confi
 
 ### Requirements for Schema File Name and Path
 
-The schema file name and path cannot be customized. Otherwise, the corresponding file will not be read when the single-version table mode is used to perform data sync, and the distributed table setup will also fail. 
+The schema file name and path cannot be customized. Otherwise, the corresponding file cannot be read when the single-version table mode is used to perform data sync, and distributed table creation also fails.
 
--  File name: **sync_schema.json**
-
+- File name: `sync_schema.json`
 - File path: **../entry/src/main/resources/rawfile/arkdata/schema/sync_schema.json**
 
 ### Schema File Content Hierarchy and Directory Structure
@@ -1129,13 +1128,13 @@ The schema file is in JSON format. You can configure multiple databases in the *
     - Table creation statement: `'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - Write statement:
       ``` TypeScript
-      let valueBucket: ValueBucket = {};
+      let valueBucket: relationalStore.ValuesBucket = {};
       valueBucket["NAME"] = null;
       valueBucket["AGE"] = 25;
       valueBucket["SALARY"] = 23456.7;
       let value = new Uint8Array([1, 2, 3, 4, 5]);
       valueBucket["CODES"] = value;
-      await rdbstore.insert("EMPLOYEE", valueBucket);
+      await store.insert("EMPLOYEE", valueBucket);
       ```
     - Distributed table setup statement:
       ``` TypeScript

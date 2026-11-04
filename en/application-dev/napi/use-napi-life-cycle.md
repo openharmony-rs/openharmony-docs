@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=908d5c8cc497717aa25a0c85e864f0d8a9e36e28 translatedAt=2026-10-13T13:14:53.944Z pushedAt=2026-10-16T04:13:13.426Z -->
+<!-- md-trans-meta sourceCommit=8bcea030e70c366a745bca7b4687c931f0d46d82 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -59,7 +59,7 @@ import testNapi from 'libentry.so';
 
 ### napi_open_handle_scope<br>napi_close_handle_scope
 
-Use **napi_open_handle_scope** to create a context and use **napi_close_handle_scope** to close the context. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected.  
+Use **napi_open_handle_scope** to create a **napi_handle_scope** and use **napi_close_handle_scope** to close it. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected.
 
 Note that the API supports only the single-layer nested scope structure. There is only one active scope at any time, and all newly created handles will be associated with that scope. Scopes must be closed in the reverse order of opening. In addition, all scopes created in the native method must be closed before the method returns.
 

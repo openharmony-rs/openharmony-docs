@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:36:30.990Z pushedAt=2026-09-16T08:25:57.247Z -->
+<!-- md-trans-meta sourceCommit=464ed30863edb2324b15efd9041d3ea63cd10746 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -212,7 +212,7 @@ promiseSuccess.then((res) => {
   hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res);
   // ...
 }).catch((err: Error) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
+  hilog.error(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
   // ...
 })
 // When the Promise state is false, reject is set, and the return result is obtained in the catch function.
@@ -222,7 +222,7 @@ promiseFail.then((res) => {
   hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res);
   // ...
 }).catch((err: Error) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
+  hilog.error(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
   // ...
 })
 ```

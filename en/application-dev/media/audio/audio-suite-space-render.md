@@ -5,7 +5,7 @@
  <!--Designer: @jay-liusong-->
  <!--Tester: @Filger-->
  <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=e08619ef493b16df1a39cca6721a6fc41e76c0cf translatedAt=2026-09-28T02:36:03.359Z pushedAt=2026-09-29T06:52:42.739Z -->
+<!-- md-trans-meta sourceCommit=32ae5bbb92f73a2ee799c0d099c2dbf626b64fb3 translatedAt=2026-11-04T06:31:06.037Z pushedAt=2026-11-04T06:31:06.037Z nl=1 -->
 
 Starting from API version 23, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides a spatial rendering effect node [EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type), which is used to implement 3D spatial audio rendering capabilities. The node offers three [working modes](audio-suite-space-render.md#working-modes): fixed placement, rotation, and extension. It can position, rotate, and extend audio sources in three-dimensional space, helping you efficiently create immersive spatial audio experiences.
 
@@ -45,8 +45,11 @@ To use the spatial rendering effect node provided by [OHAudioSuite](../../refere
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
+<!-- @[CMake_lib_suite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudio.so)
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
 
 ### Including Header Files

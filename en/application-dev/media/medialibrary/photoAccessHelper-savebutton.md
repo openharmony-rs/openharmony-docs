@@ -6,7 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=00d7cb908705b920a9ee7ee48de288635f9580c9 translatedAt=2026-08-11T01:57:44.603Z pushedAt=2026-08-12T03:43:55.574Z -->
+<!-- md-trans-meta sourceCommit=be269217f26d60860ab36c5c04ebfa42dad4f573 translatedAt=2026-11-04T06:36:58.107Z pushedAt=2026-11-04T06:36:58.107Z nl=1 -->
 
 To save images, videos, or similar files to Gallery, it is not necessary for the application to request the ohos.permission.WRITE_IMAGEVIDEO permission. Instead, the application can use the [SaveButton](#creating-a-media-asset-using-savebutton) or [authorization pop-up](#saving-a-media-asset-using-an-authorization-pop-up) to save the media assets to Gallery.
 

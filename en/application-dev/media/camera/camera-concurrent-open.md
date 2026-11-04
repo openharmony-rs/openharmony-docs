@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=0621a1292f318505a386f6e1294f16ca68e36951 translatedAt=2026-08-10T09:12:48.800Z pushedAt=2026-08-10T10:40:52.659Z -->
+<!-- md-trans-meta sourceCommit=1d8457c0250cd21fe06d07e6bf5a1c763079e6aa translatedAt=2026-11-04T06:36:58.094Z pushedAt=2026-11-04T06:36:58.094Z nl=1 -->
 
 Starting from API version 18, multi-camera concurrent opening is supported, allowing an app to simultaneously open the front and rear cameras for preview and video recording. (Concurrent photo capture with both front and rear cameras is not yet available.)
 
@@ -47,7 +47,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
 
      // Exit if fewer than two cameras are available (multi-camera not supported).
      if (cameras.length < 2) {
-      return;
+       return;
      }
 
      // Obtain the logical rear and front cameras.
@@ -78,7 +78,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
      let concurrentInfo: Array<camera.CameraConcurrentInfo> = cameraManager.getCameraConcurrentInfos(deviceArray);
 
      if (concurrentInfo.length === 0) {
-      return;
+       return;
      }
 
      // Replace the original capability set with the concurrent capability set.
@@ -142,7 +142,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
      // Query whether the corresponding photoProfile exists. The corresponding photoProfile must be within the range of the concurrent capability information array obtained from getCameraConcurrentInfos.
      let photoProfiles = cameraOutputCapability.photoProfiles;
      if (photoProfiles.length < 1) {
-      return;
+       return;
      }
      let index = photoProfiles.findIndex((photoProfile: camera.Profile) => {
        return photoProfile.size.width === photoProfileObj.size.width &&
@@ -458,10 +458,10 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
     function hasExposureFn(ExposureMode: camera.ExposureMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
 
       // Check whether an exposure mode is supported.
-      let hasFlash = session?.isExposureModeSupported(ExposureMode);
+      let isExposureSupported = session?.isExposureModeSupported(ExposureMode);
 
       // Set the exposure mode.
-      if (hasFlash) {
+      if (isExposureSupported) {
         session?.setExposureMode(ExposureMode);
       }
     }

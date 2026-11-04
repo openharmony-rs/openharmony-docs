@@ -5,7 +5,7 @@
 <!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2d56846da3109c6542705ceefa4aed0cf271c3b1 translatedAt=2026-10-13T13:22:05.943Z pushedAt=2026-10-16T03:07:21.857Z -->
+<!-- md-trans-meta sourceCommit=1aefc974cd0990fae63a7bfc7cb99255ef32f355 translatedAt=2026-11-04T06:36:58.104Z pushedAt=2026-11-04T06:36:58.104Z nl=1 -->
 
 Starting from API version 11, [AVPlayer](../../reference/apis-media-kit/capi-avplayer.md) supports end-to-end playback of streaming media resources. This guide walks you through the complete playback of a streaming media example, covering AVPlayer streaming media playback features.
 
@@ -29,29 +29,29 @@ Avoid forced interruption of playback by the system. This feature is only availa
 
 ## How to Develop
 
-- Link the dynamic libraries in the CMake script.
+Link the following dynamic libraries in the CMake script:
 
-  ```C++
-  target_link_libraries(sample PUBLIC libavplayer.so)
-  ```
+<!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
 
-- When using [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information listener callback function and error listener callback function, link the following dynamic library in the CMake script.
+``` Text
+target_link_libraries(entry PUBLIC
+    libavplayer.so
+    libnative_media_core.so
+    libhilog_ndk.z.so
+)
+```
 
-  ```C++
-  target_link_libraries(sample PUBLIC libnative_media_core.so)
-  ```
+To use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information callback and error callback, link the libnative_media_core.so dynamic library in the CMake script.
 
-- When using the system log capability, include the following header file.
+To use system logging, include the following header file:
 
-  ```C++
-  #include <hilog/log.h>
-  ```
+<!-- @[hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
-  Link the following dynamic library in the CMake script.
+``` C++
+#include <hilog/log.h>
+```
 
-  ```C++
-  target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
-  ```
+Link the libhilog_ndk.z.so dynamic library in the CMake script.
 
 By including the [avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md), [avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md) header files, you can use the APIs related to streaming media playback.
 

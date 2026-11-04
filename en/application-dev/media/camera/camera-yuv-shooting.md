@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-09-28T02:43:37.198Z pushedAt=2026-09-29T10:30:41.731Z -->
+<!-- md-trans-meta sourceCommit=0ffc3641485b5ea37fe186a91a76a991790dbc26 translatedAt=2026-11-04T06:36:58.096Z pushedAt=2026-11-04T06:36:58.096Z nl=1 -->
 
 Starting from API version 23, the camera framework provides YUV image capture capability. Compared with standard photo capture, YUV capture obtains unencoded image data that fully retains the raw luminance and chrominance information captured by the sensor, making it suitable for video encoding or professional processing. However, the capture process incurs higher power consumption, and saving the data requires more storage space.
 
@@ -63,7 +63,7 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
        photoOutput = cameraManager.createPhotoOutput(photoProfile);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("Failed to createPhotoOutput. error: ${err}");
+       console.error(`Failed to createPhotoOutput. error: ${err}`);
      }
      return photoOutput;
    }

@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=281a5975cfb5f25896e63aa56d3d9f8deabd3462 translatedAt=2026-08-15T01:48:14.606Z pushedAt=2026-08-15T07:14:44.534Z -->
+<!-- md-trans-meta sourceCommit=81977b2ca59b47b8c24aa6e8048a712c2cc00126 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 ## Available APIs
 
@@ -321,7 +321,13 @@ The following example describes how to subscribe to the memory leak event.
 
 3. Click the **Run** button in DevEco Studio to run the project, click the **pss leak** button, and then a PSS memory leak event will be reported after 15 to 30 minutes.
 
-   For the same application, the resource leak event can be reported at most once within 24 hours. If the memory leak needs to be reported again within a shorter time, restart the device.
+   > **NOTE**
+   >
+   > 1. The [nolog version](performance-analysis-kit-terminology.md#nolog-version) does not collect memory call stack logs by default.
+   >
+   > 2. For the same application, a resource leak event can be reported at most once within 24 hours. To report it again within a shorter time, restart the device first. After triggering a memory leak, wait 15–30 minutes to receive the memory leak event.
+   >
+   > 3. If you enable **System resource leak logs** in **Developer options** (restart the device after changing the switch), memory call stack collection is enabled. Reporting a memory leak event usually takes at least an additional half hour. Other resource leak events involving call stack collection are also affected by this switch.
 
 4. After a PSS memory leak event is reported, the system calls **onReceive()**. You can view the following event information in the **Log** window.
 

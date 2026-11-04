@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=82b72d075adc31c15fba68dcf8f34e61b2521f6c translatedAt=2026-10-13T13:14:34.639Z pushedAt=2026-10-16T04:13:07.794Z -->
+<!-- md-trans-meta sourceCommit=464ed30863edb2324b15efd9041d3ea63cd10746 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## When to Use
 
@@ -123,7 +123,7 @@ A maximum of 64 runtime environments can be created for a process.
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objUtils);
       if (ret != napi_ok) {
-          OH_LOG_INFO(LOG_APP, "Failed to load module");
+          OH_LOG_ERROR(LOG_APP, "Failed to load module");
           napi_close_handle_scope(env, scope);
           napi_destroy_ark_runtime(&env);
           return nullptr;
@@ -149,7 +149,7 @@ A maximum of 64 runtime environments can be created for a process.
       // 4. Destroy the ArkTS runtime environment.
       ret = napi_destroy_ark_runtime(&env);
       if (ret != napi_ok) {
-          OH_LOG_INFO(LOG_APP, "Failed to destroy ark runtime");
+          OH_LOG_ERROR(LOG_APP, "Failed to destroy ark runtime");
       }
   
       return nullptr;

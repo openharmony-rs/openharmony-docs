@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=03da8d98875c99278437bdd28f12d4fdb3efd8f7 translatedAt=2026-08-10T09:16:43.538Z pushedAt=2026-08-10T12:54:20.995Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-04T06:36:58.096Z pushedAt=2026-11-04T06:36:58.096Z nl=1 -->
 
 To use the flashlight mode, you manipulate your device to turn on the flashlight, which then stays on persistently.
 
@@ -54,7 +54,7 @@ For detailed API descriptions, refer to [@ohos.multimedia.camera (Camera Managem
         isTorchModeSupport = cameraManager.isTorchModeSupported(torchMode);
       } catch (error) {
         let err = error as BusinessError;
-        console.error('Failed to set the torch mode. errorCode = ' + err.code);
+        console.error('Failed to check the torch mode. errorCode = ' + err.code);
       }
       return isTorchModeSupport;
     }

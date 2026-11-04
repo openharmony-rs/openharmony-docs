@@ -5,7 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-09-14T09:20:25.967Z pushedAt=2026-09-15T13:12:05.059Z -->
+<!-- md-trans-meta sourceCommit=334acd66186fa8cfa16121cfab922bad85986ea9 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 The security capabilities vary with devices. For example, small embedded devices provide fewer security capabilities than tablets. The security requirements also vary with data. For example, personal health information and bank card information are not expected to be accessed by devices of lower security levels. OpenHarmony provides a complete set of data and device classification standards and supports customization of data transfer policies for different devices. For details, see [Access Control by Device and Data Level](../database/access-control-by-device-and-data-level.md).
 
@@ -32,10 +32,9 @@ Obtain the sandbox path of a file and set the data security level. For details a
 
 
 ```ts
-import { securityLabel } from '@kit.CoreFileKit';
+import { fileIo, securityLabel } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { fileIo } from '@kit.CoreFileKit';
 
 ```
 <!--@[set_security_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    

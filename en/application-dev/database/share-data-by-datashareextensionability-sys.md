@@ -5,7 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=83627f931a3d4181bdf684edadfb6dd7d2e32c12 translatedAt=2026-09-14T08:39:41.512Z pushedAt=2026-09-15T08:12:53.932Z -->
+<!-- md-trans-meta sourceCommit=5adbce16f7f8ba7ae6e3588b47ce3939c6d015c3 translatedAt=2026-11-04T06:32:42.776Z pushedAt=2026-11-04T06:32:42.776Z nl=1 -->
 
 
 ## When to Use
@@ -208,8 +208,8 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    // The following uses settingsdata as an example.
    "extensionAbilities": [
      {
-       "srcEntry": "./ets/DataAbility/DataExtAbility.ets",
-       "name": "DataExtAbility",
+       "srcEntry": "./ets/DataShareExtAbility/DataShareExtAbility.ets",
+       "name": "DataShareExtAbility",
        "icon": "$media:icon",
        "description": "$string:description_datashareextability",
        "type": "dataShare",

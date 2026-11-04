@@ -5,7 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=a803887a9fc2f8daf89eae54ccb6f391feede9ff translatedAt=2026-10-13T13:16:16.651Z pushedAt=2026-10-16T04:13:26.161Z -->
+<!-- md-trans-meta sourceCommit=c8fdb136e8ac64dac5106d0e28ed71f4437895f2 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Overview
 
@@ -263,7 +263,10 @@ export class VpnTest extends VpnExtensionAbility {
     // ...
       this.vpnConnection = vpnExtension.createVpnConnection(this.context);
       hilog.info(0x0000, 'testTag', 'create success');
-      this.vpnConnection?.destroy(this.vpnId);
+      this.vpnConnection?.destroy(this.vpnId).catch(() => {
+        hilog.error(0x0000, 'testTag', 'destroy fail');
+        return false;
+      });
       // ...
   }
 };

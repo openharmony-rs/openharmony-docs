@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f34ddda28f1bcebae0ddfbd293a9ffe8cb2789f9 translatedAt=2026-08-12T06:25:54.564Z pushedAt=2026-08-12T08:55:47.659Z -->
+<!-- md-trans-meta sourceCommit=56db74dcf9cd541e58f29a407c4b413b830bc97b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Lifecycle Management
 
@@ -353,13 +353,13 @@ static JSVM_Value GetArgvDemo2(napi_env env, JSVM_CallbackInfo info) {
 
     // Bind NativeFunction to the JSVM. The process is omitted here.
     std::string sourcecodestr = R"JS(
-        // console.log requires user implementation.
+        // consoleinfo requires user implementation.
         try {
             // Call the native function.
             NativeFunction()
         } catch (e) {
             // Handle the exception in C/C++.
-            consolelog(e.message)
+            consoleinfo(e.message)
         }
     )JS";
     JSVM_Value sourcecodevalue = nullptr;
@@ -429,13 +429,13 @@ OH_JSVM_CreateStringLatin1(env, "FunctionNameInJSContext", JSVM_AUTO_LENGTH, &ke
 OH_JSVM_SetProperty(env, global, key, JSFunc);
 // Call the function from JS.
 std::string sourcecodestr = R"JS(
-    // console.log requires user implementation.
+    // consoleinfo requires user implementation.
     FunctionNameInJSContext() // The call is successful.
-    consolelog(FunctionNameInJSContext.name) // Print "NativeFunction."
+    consoleinfo(FunctionNameInJSContext.name) // Print "NativeFunction."
     try {
         NativeFunction() // If the function cannot be found, throw an exception.
     } catch (e) {
-        consolelog(e.message)
+        consoleinfo(e.message)
     }
 )JS";
 ```

@@ -6,7 +6,7 @@
 <!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-08-15T01:54:01.758Z pushedAt=2026-08-15T08:42:40.297Z -->
+<!-- md-trans-meta sourceCommit=fa7c7bb5a46e8dc51cfac1d0564173ce117342d3 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Use Cases
 
@@ -22,44 +22,56 @@ For the adaptation of text characters, images, audio, and video, you are advised
 
   To ensure that the interface return values are consistent with user settings, you usually need to pass the system locale ID or system locale object to the [@ohos.i18n (Internationalization-I18n)](../reference/apis-localization-kit/js-apis-i18n.md) and [@ohos.intl (Internationalization-Intl)](../reference/apis-localization-kit/js-apis-intl.md) interfaces. The following example shows how to pass the system locale ID and system locale object:
 
-  ``` TypeScript
-  import { i18n } from '@kit.LocalizationKit';
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
-  // Obtain the system locale object.
-  let locale = i18n.System.getSystemLocaleInstance();
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
 
-  // If the API input parameter is a locale ID (string type), obtain the system locale ID through toString().
-  let dateTimeFormat = new Intl.DateTimeFormat(locale.toString());
+   <!-- @[system_locale_datetimeformat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
-  // If the API input parameter is a locale object (Intl.Locale type), use the system locale object directly.
-  let simpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
-  ```
+   ``` TypeScript
+   // Obtain the system locale object.
+   let locale = i18n.System.getSystemLocaleInstance();
+
+   // If the API input parameter is a locale ID (string type), obtain the system locale ID through toString().
+   let dateTimeFormat = new Intl.DateTimeFormat(locale.toString());
+
+   // If the API input parameter is a locale object (Intl.Locale type), use the system locale object directly.
+   let simpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
+   ```
 
 - Identifying the system language
 
   If an app needs to identify the language, avoid directly comparing language codes through hardcoding. The following approach is recommended:
 
-  ``` TypeScript
-  import { i18n } from '@kit.LocalizationKit';
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
-  let systemLanguage = i18n.System.getSimplifiedLanguage();
-  // languagesList is configured based on actual app requirements. For example, when the app does not need to distinguish between different Traditional Chinese variants, 'zh-Hant-HK' and 'zh-Hant-TW' can be merged into 'zh-Hant'.
-  let languagesList = ['zh-Hans', 'zh-Hant-HK', 'zh-Hant-TW'];
-  let matchedLanguage = i18n.I18NUtil.getBestMatchLocale(systemLanguage, languagesList);
-  switch (matchedLanguage) {
-    case 'zh-Hans':
-      // The system language is Simplified Chinese.
-      break;
-    case 'zh-Hant-HK':
-      // The system language is Traditional Chinese (Hong Kong).
-      break;
-    case 'zh-Hant-TW':
-      // The system language is Traditional Chinese (Taiwan).
-      break;
-    default:
-      // The system language does not belong to any language in languagesList.
-  }
-  ```
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
+
+   <!-- @[best_match_locale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
+
+   ``` TypeScript
+   let systemLanguage = i18n.System.getSimplifiedLanguage();
+   // languagesList is configured based on actual app requirements. For example, when the app does not need to distinguish between different Traditional Chinese variants, 'zh-Hant-HK' and 'zh-Hant-TW' can be merged into 'zh-Hant'.
+   let languagesList = ['zh-Hans', 'zh-Hant-HK', 'zh-Hant-TW'];
+   let matchedLanguage = i18n.I18NUtil.getBestMatchLocale(systemLanguage, languagesList);
+   switch (matchedLanguage) {
+     case 'zh-Hans':
+       // The system language is Simplified Chinese.
+       break;
+     case 'zh-Hant-HK':
+       // The system language is Traditional Chinese (Hong Kong).
+       break;
+     case 'zh-Hant-TW':
+       // The system language is Traditional Chinese (Taiwan).
+       break;
+     default:
+       // The system language does not belong to any language in languagesList.
+   }
+   ```
 
 ## Multilingual Resource Configuration
 

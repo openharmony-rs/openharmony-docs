@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-10T09:20:13.418Z pushedAt=2026-08-10T12:53:45.423Z -->
+<!-- md-trans-meta sourceCommit=729b39953559b4b718e24e66cd4f05919621c1ce translatedAt=2026-11-04T06:36:58.095Z pushedAt=2026-11-04T06:36:58.095Z nl=1 -->
 
 ## Overview
 
@@ -72,7 +72,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
      photoOutput.on('photoAvailable', (errCode: BusinessError, photo: camera.Photo): void => {
        console.info('getPhoto start');
        if (errCode || photo === undefined) {
-         console.error('getPhoto failed, err: ${errCode}');
+         console.error(`getPhoto failed, err: ${errCode}`);
          return;
        }
          // To view saved images and videos in Gallery, use a security component to create media assets.

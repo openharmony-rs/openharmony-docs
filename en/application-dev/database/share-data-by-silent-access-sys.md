@@ -5,7 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=83627f931a3d4181bdf684edadfb6dd7d2e32c12 translatedAt=2026-09-14T08:40:43.373Z pushedAt=2026-09-15T08:13:10.203Z -->
+<!-- md-trans-meta sourceCommit=4d0c4fe124a429b89e6c66eb6b302d8501f24a1d translatedAt=2026-11-04T06:32:42.908Z pushedAt=2026-11-04T06:32:42.908Z nl=1 -->
 
 
 ## When to Use
@@ -296,6 +296,7 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
 > **NOTE**
 >
 > - The configuration of **proxyData** is optional.
+>
 > - If **proxyData** is not configured, the hosted data cannot be accessed by other applications.
 
 **Table 3** proxyData in module.json5
@@ -396,8 +397,11 @@ The data provider calls the **enableSilentProxy** API to dynamically enable sile
 > **NOTE**
 >
 > - The configuration of the **isSilentProxyEnable** field is optional. The default value is **true**, indicating that silent access is enabled.
+>
 > - To verify whether silent access is enabled, the system first checks the silent access status set by the **enableSilentProxy** or **disableSilentProxy** API called, and then checks the value of **isSilentProxyEnable** in the **data_share_config.json** file.
+>
 > - If **enableSilentProxy** or **disableSilentProxy** has not been called, the value of **isSilentProxyEnable** in the **data_share_config.json** file is preferentially checked.
+>
 > - Silent access is enabled by default if **enableSilentProxy** or **disableSilentProxy** has not been called and **isSilentProxyEnable** in the **data_share_config.json** file is not configured.
 
 1. Import dependencies.
