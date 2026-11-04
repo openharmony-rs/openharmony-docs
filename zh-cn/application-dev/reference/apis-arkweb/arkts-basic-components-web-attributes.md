@@ -4870,7 +4870,7 @@ flingSpeedLimit(speedLimit: number)
 >
 > - 通过本接口设置的值优先于通过前端viewport max-fling-speed-x/y接口设置的值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

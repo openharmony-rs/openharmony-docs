@@ -1,10 +1,11 @@
 # @ohos.statfs (statfs)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=983ba0100f5f5d011705e0e23088346963f80eee translatedAt=2026-11-03T04:56:25.344Z pushedAt=2026-11-04T03:11:33.553Z nl=1 -->
 
 
 This module provides ArkTS APIs for obtaining file system information, including the total size and free space of a file system, in bytes.
@@ -145,3 +146,4 @@ Obtains the total size of the specified file system, in bytes. This API uses an 
       }
   });
   ```
+

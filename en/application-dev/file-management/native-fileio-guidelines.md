@@ -1,11 +1,11 @@
 # Accessing Application Files (C/C++)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=30b4207463e7d1146adb9b0c78d921b87bac29e1 translatedAt=2026-08-26T04:33:54.144Z pushedAt=2026-08-28T06:53:37.352Z -->
+<!-- md-trans-meta sourceCommit=36751a8fb1b3914f9a180e1bf038d8da0174fbd0 translatedAt=2026-10-29T10:30:53.821Z pushedAt=2026-10-29T10:30:53.821Z nl=1 -->
 
 ## When to Use
 
@@ -19,11 +19,11 @@ Before performing file operations, ensure that the URI or path passed in is corr
 
 For details about the APIs, see [FileIO](../reference/apis-core-file-kit/capi-oh-fileio-h.md).
 
-| API| Description|
+| Name | Description|
 | -------- | -------- |
-| FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)| Obtains the location of a file.|
-| enum FileIO_FileLocation FileIO_FileLocation| Enumerates the file locations.|
-| enum FileManagement_ErrCode FileManagement_ErrCode| Enumerates the error codes used in the **FileIO** module.|
+| FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location) | Obtains the location of a file.|
+| enum FileIO_FileLocation FileIO_FileLocation | Enumerates the file locations.|
+| enum FileManagement_ErrCode FileManagement_ErrCode | Enumerates the error codes used in the **FileIO** module.|
 
 ## How to Develop
 
@@ -45,13 +45,14 @@ target_link_libraries(sample PUBLIC libohfileio.so)
 
 Call **OH_FileIO_GetFileLocation** to obtain the location of a file. <br>Example:
 
-<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->    
 
 ``` C++
 void GetFileLocationExample(char *uri)
 {
     FileIO_FileLocation location;
-    FileManagement_ErrCode ret = OH_FileIO_GetFileLocation(uri, strlen(uri), &location);
+    int uriLength = static_cast<int>(strlen(uri));
+    FileManagement_ErrCode ret = OH_FileIO_GetFileLocation(uri, uriLength, &location);
     if (ret == 0) {
         if (location == FileIO_FileLocation::LOCAL) {
             printf("Succeeded in getting file location, this file is on local.");

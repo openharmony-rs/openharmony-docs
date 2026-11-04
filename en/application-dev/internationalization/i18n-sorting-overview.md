@@ -3,10 +3,11 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=9da32f18d9f596600b1bcf7b3e4ed4f31b219c61 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
-The sorting rules for characters may vary according to languages and cultures. The sorting function allows your application to apply different sorting rules for users in different countries or regions and using different languages. Besides, it enables your application to output sorting results with semantic features, instead to facilitate query and search. The function is applicable in use cases such as language list, country/region list, and contact list.
+Languages and cultures may apply different sorting rules to the same characters. To accommodate users in different countries and regions and using different languages, applications need locale-specific sorting rules that produce meaningful results and make items easy to find. This feature applies to language lists, country/region lists, contact lists, and similar scenarios.
 
-Currently, sorting can be implemented by [local habits](i18n-sorting-local.md) or [indexes](i18n-sorting-index.md).
+Multilingual sorting can be implemented by [local habits](i18n-sorting-local.md) or [indexes](i18n-sorting-index.md). For the use cases and development steps, see the corresponding topic.

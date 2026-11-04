@@ -1,10 +1,11 @@
 # native_audio_suite_base.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=05ef0e05e7c6c525364728e8947c2209215cd7de translatedAt=2026-11-03T03:55:57.914Z pushedAt=2026-11-04T03:11:46.957Z nl=1 -->
 
 ## Overview
 
@@ -27,7 +28,9 @@ The file declares the basic data structs used in audio creation.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md) | OH_AudioFormat | Describes the audio stream information, which is used to describe the basic audio format, required for audio creation.|
-| [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md) | OH_AudioDataArray | Describes the input data for the multi-output rendering interface. It is used to obtain processed audio data when multiple output effect nodes are present in the pipeline.|
+|<!--DelRow--> [OH_AudioSuite_SystemNodeFormat](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md) | OH_AudioSuite_SystemNodeFormat | Defines the basic audio format of a system node. |
+| [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md) | OH_AudioDataArray | Defines the output data description of the multi-output rendering interface. When a pipeline contains a multi-output effect node, the processed audio data is obtained through the multi-output rendering interface. |
+|<!--DelRow--> [OH_AudioSuite_MetaFrame](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md) | OH_AudioSuite_MetaFrame | Defines a frame structure that contains audio data and metadata. |
 | [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) | OH_EqualizerFrequencyBandGains | Describes the configuration parameters for the equalizer effect node used in audio creation.|
 | [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md) | OH_AudioSuite_SpaceRenderPositionParams | Defines the configuration parameters of the 3D spatial rendering effect node in fixed placement mode. Left-handed coordinate system: Extend your left hand and form an "L" shape with your thumb and index finger.<br> The thumb points to the right, the index finger points upward, and the other fingers point forward.<br> This creates a 3D left-handed coordinate system. In this coordinate system, the thumb, index finger,<br> and other fingers represent the positive directions of the x-axis, y-axis, and z-axis, respectively.|
 | [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md) | OH_AudioSuite_SpaceRenderRotationParams | Defines the configuration parameters of the spatial rendering effect node in rotation mode.|
@@ -36,13 +39,14 @@ The file declares the basic data structs used in audio creation.
 | [OH_AudioSuiteEngineStruct](capi-ohaudiosuite-oh-audiosuiteenginestruct.md) | OH_AudioSuiteEngine | Describes the audio creation engine, which is used to manage audio creation pipelines.|
 | [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md) | OH_AudioSuitePipeline | Describes the audio creation pipeline, which is used to manage audio creation nodes.|
 | [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md) | OH_AudioNode | Describes a node for audio creation, which is used to represent instances of audio creation nodes.|
-| [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md) | OH_AudioNodeBuilder | Describes a builder for nodes used in audio creation. It allows you to create an [OH_AudioNode](../apis-audio-kit/capi-ohaudiosuite-oh-audionodestruct.md) object, define the data formats for input and output nodes, and configures the callback interface for input nodes.|
+| [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md) | OH_AudioNodeBuilder | Declares the constructor of an audio composition node. It is used to build [OH_AudioNode](../apis-audio-kit/capi-ohaudiosuite-oh-audionodestruct.md), configure the input/output node data format, and configure the input node callback interface. |
 
 ### Enums
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AudioNode_Type](#oh_audionode_type) | OH_AudioNode_Type | Enumerates the types of audio creation nodes.|
+|<!--DelRow--> [OH_AudioSuite_SystemNodeType](#oh_audiosuite_systemnodetype) | OH_AudioSuite_SystemNodeType | Defines the audio system node type. |
 | [OH_AudioSuite_PipelineWorkMode](#oh_audiosuite_pipelineworkmode) | OH_AudioSuite_PipelineWorkMode | Enumerates the working modes of the audio creation pipeline.|
 | [OH_AudioSuite_PipelineState](#oh_audiosuite_pipelinestate) | OH_AudioSuite_PipelineState | Enumerates the operational states of the audio creation pipeline.|
 | [OH_AudioSuite_Result](#oh_audiosuite_result) | OH_AudioSuite_Result | Enumerates the error codes for audio creation.|
@@ -94,19 +98,40 @@ Enumerates the types of audio creation nodes.
 
 | Value| Description|
 | -- | -- |
-| INPUT_NODE_TYPE_DEFAULT = 1 | Input node that supports obtaining audio data from applications.|
-| OUTPUT_NODE_TYPE_DEFAULT = 101 | Output node that supports providing audio data to applications.|
-| EFFECT_NODE_TYPE_EQUALIZER = 201 | Equalizer effect node. The output audio format of the equalizer effect node is as follows:<br> Sample rate: 48000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 2|
-| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | Noise reduction effect node. The output audio format of the noise reduction effect node is as follows:<br> Sample rate: 16000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 1|
-| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | Sound field effect node. The sound field effect node supports the sound field types enumerated in [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype).<br> The output audio format of the sound field effect node is as follows:<br> Sample rate: 48000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 2|
-| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | Source separation effect node. The source separation effect node can only be connected to an output node.<br> The output audio format of the source separation effect node is as follows:<br> Sample rate: 48000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE<br> Channel count: 4 (first 2 channels for vocals, last 2 for accompaniment)|
-| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | Voice beautification effect node. The voice beautification effect node supports the voice beautification types enumerated in [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype).<br> The output audio format of the voice beautification effect node is as follows:<br> Sample rate: 48000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 2|
-| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | Environment effect node. The output audio format of the environment effect node is as follows:<br> Sample rate: 48000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 2|
-| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | Audio mixer effect node. The output audio format of the audio mixer effect node is as follows:<br> Sample rate: [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate)<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE<br> Channel count: 2|
+| INPUT_NODE_TYPE_DEFAULT = 1 | Input node, which supports obtaining audio data from an application.<br>**Since:** 22 |
+| OUTPUT_NODE_TYPE_DEFAULT = 101 | Output node, which supports providing audio data to an application.<br>**Since:** 22 |
+| EFFECT_NODE_TYPE_EQUALIZER = 201 | Equalizer effect node. The audio format output by the equalizer effect node is as follows:<br> Sample rate: 48000Hz.<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE.<br> Channel count: 2.<br>**Since:** 22 |
+| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | Noise reduction effect node. The audio format output by the noise reduction effect node is as follows:<br> Sample rate: 16000Hz.<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE.<br> Channel count: 1.<br>**Since:** 22 |
+| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | Sound field effect node. The sound field types supported by the sound field effect node: [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype).<br> The audio format output by the sound field effect node is as follows:<br> Sample rate: 48000Hz.<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE.<br> Channel count: 2.<br>**Since:** 22 |
+| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | Source separation effect node. The source separation effect node can only be connected to an output node.<br> The audio format output by the source separation effect node is as follows:<br> Sample rate: 48000Hz.<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE.<br> Channel count: 4 (the first 2 channels are used for vocals, and the last 2 channels are used for accompaniment).<br>**Since:** 22 |
+| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | Voice beautification effect node. The voice beautification types supported by the voice beautification effect node: [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype).<br> The audio format output by the voice beautification effect node is as follows:<br> Sample rate: 48000Hz.<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE.<br> Channel count: 2.<br>**Since:** 22 |
+| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | Environment effect node. The audio format output by the environment effect node is as follows:<br> Sample rate: 48000Hz.<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE.<br> Channel count: 2.<br>**Since:** 22 |
+| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | Audio mixer effect node. The audio format output by the audio mixer effect node is as follows:<br> Sample rate: [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate).<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE.<br> Channel count: 2.<br>**Since:** 22 |
 | EFFECT_NODE_TYPE_SPACE_RENDER = 208 | Spatial rendering effect node. The output audio format of the spatial rendering effect node is as follows:<br> Sample rate: 48000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 2<br>**Since**: 23|
 | EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209 | Pure voice change effect node. The output audio format of the pure voice change effect node is as follows:<br> Sample rate: 16000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 1<br>**Since**: 23|
 | EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210 | General voice change effect node. The output audio format of the general voice change effect node is as follows:<br> Sample rate: 48000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 2<br>**Since**: 23|
 | EFFECT_NODE_TYPE_TEMPO_PITCH = 211 | Tempo and pitch effect node. The output audio format of the tempo and pitch effect node is as follows:<br> Sample rate: 48000 Hz<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE<br> Channel count: 1<br>**Since**: 23|
+| EFFECT_NODE_TYPE_HOA_SPACE_RENDER = 212 | HOA (High-Order Ambisonics) to binaural conversion audio node. The audio format input to the HOA to binaural conversion audio node is as follows:<br> Sample rate: [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate).SAMPLE_RATE_16000, [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate).SAMPLE_RATE_48000.<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).<br> Channel layout: first-order to third-order HOA, with the following values:<br> [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D, [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D, [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_FUMA, [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D, [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D, [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_FUMA, [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_N3D, [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_SN3D, [OH_AudioChannelLayout](../apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_FUMA. The audio format output by the HOA to binaural conversion audio node is as follows:<br> Sample rate: 48000Hz.<br> Sample format: [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S32LE.<br> Channel count: 2.<br> The preceding node of this node must be connected to an input node whose audio format is HOA. If it is not connected correctly, an error is reported when [OH_AudioSuiteEngine_StartPipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline) is called.<br>**Since:** 26.0.0 |
+<!--Del-->
+### OH_AudioSuite_SystemNodeType
+
+```c
+enum OH_AudioSuite_SystemNodeType
+```
+
+**Description**
+
+Defines the audio system node type.
+
+**Since:** 26.0.0
+
+**System API:** This API is a system API.
+
+| Value | Description |
+| -- | -- |
+| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_DIALOGUE_ENHANCE = 301 | System effect node used for dialogue enhancement. |
+| OH_AUDIOSUITE_EFFECT_NODE_SYSTEM_TYPE_VOICE_BEAUTIFIER = 302 | System effect node used for voice beautification. |
+<!--DelEnd-->
 
 ### OH_AudioSuite_PipelineWorkMode
 
@@ -123,7 +148,7 @@ Enumerates the working modes of the audio creation pipeline.
 | Value| Description|
 | -- | -- |
 | AUDIOSUITE_PIPELINE_EDIT_MODE = 1 | Edit mode. In this mode, the pipeline can create various effect nodes for audio processing.|
-| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | Real-time rendering mode. In this mode, processed audio is played in real time during audio processing.<br> Only equalizer effect processing is supported in this mode.|
+| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | Real-time preview mode, that is, previewing the processed audio in real time during audio processing.<br> Before API version 23, in real-time preview mode, the pipeline supports only the equalizer effect node;<br> In API version 23 and later, in real-time preview mode, the pipeline supports all effect nodes. |
 
 ### OH_AudioSuite_PipelineState
 
@@ -166,8 +191,8 @@ Enumerates the error codes for audio creation.
 | AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 | The node does not exist.|
 | AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | Nodes do not support connection.|
 | AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | Unsupported operation. For example, the audio format cannot be set for effect nodes.|
-| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | The number of pipelines or nodes created reaches the upper limit. Specifically:<br> An engine supports the creation of up to 10 pipelines, with a maximum of 1 dedicated to real-time rendering.<br> Each pipeline can have up to 5 input nodes, 1 output node, 3 mixer nodes, 1 audio separation node, and up to 5 other effect nodes.|
-| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | Mandatory parameters are missing. For example, the callback function is not set for the input node, or the audio format is not set for the output node.|
+| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | The number of created pipelines or nodes exceeds the maximum system limit. The details are as follows:<br> The engine supports creating up to 10 pipelines. Before API version 26.0.0, at most one real-time preview pipeline can be created; in API version 26.0.0 and later, the number of real-time preview pipelines is no longer limited separately, but the total number of pipelines must still not exceed 10.<br> In each pipeline, the number of output nodes does not exceed 1, the number of mixing nodes does not exceed 3, and the number of source separation nodes does not exceed 1.<br> Before API version 24, in each pipeline, the number of input nodes does not exceed 5, and the number of other effect nodes does not exceed 5; in API version 24 and later, in each pipeline, the number of input nodes does not exceed 15, and the number of other effect nodes does not exceed 15. |
+| AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | Required parameters are missing. For example, the input node does not have a callback function set, or the output node does not have an audio format set. |
 | AUDIOSUITE_ERROR_TIMEOUT = 12 | Operation timed out.|
 | AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | Memory allocation failed.|
 
@@ -186,9 +211,9 @@ Enumerates the bit depth of audio streams in an audio creation node.
 | Value| Description|
 | -- | -- |
 | AUDIO_SAMPLE_U8 = 0 | Unsigned 8-bit.|
-| AUDIO_SAMPLE_S16LE = 1 | Short 16-bit little-endian.|
-| AUDIO_SAMPLE_S24LE = 2 | Short 24-bit little-endian.|
-| AUDIO_SAMPLE_S32LE = 3 | Short 32-bit little-endian.|
+| AUDIO_SAMPLE_S16LE = 1 | Signed 16-bit little-endian. |
+| AUDIO_SAMPLE_S24LE = 2 | Signed 24-bit little-endian. |
+| AUDIO_SAMPLE_S32LE = 3 | Signed 32-bit little-endian. |
 | AUDIO_SAMPLE_F32LE = 4 | Float 32-bit little-endian.|
 
 ### OH_Audio_EncodingType
@@ -373,3 +398,5 @@ Defines the general voice change type for audio creation.
 | GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8 | Sets the general voice change type to synthesizer.|
 | GENERAL_VOICE_CHANGE_TYPE_TRILL = 9 | Sets the general voice change type to trill.|
 | GENERAL_VOICE_CHANGE_TYPE_WAR = 10 | Sets the general voice change type to war.|
+
+

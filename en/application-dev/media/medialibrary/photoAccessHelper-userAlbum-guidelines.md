@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b58dba3224bad72223acb52f1bfa49789af21175 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 **photoAccessHelper** provides APIs for managing user albums, including querying and renaming albums, as well as adding and deleting images and videos within albums.
 
@@ -68,7 +69,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 - A PhotoAccessHelper instance is obtained.
 - The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-The following example describes how to obtain the user album **albumName**.
+The following example obtains a user album named 'test'.
 
 **How to Develop**
 
@@ -128,7 +129,7 @@ The new user album names must meet the following requirements:
 - A PhotoAccessHelper instance is obtained.
 - The application has the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-The following example describes how to rename the user album **albumName**.
+The following example renames a user album named 'test'.
 
 **How to Develop**
 
@@ -185,16 +186,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 - A PhotoAccessHelper instance is obtained.
 - The application has the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-The following example describes how to add an image to the user album **albumName**.
+The following example adds an image to a user album named 'test'.
 
 **How to Develop**
 
 1. Set **albumFetchOptions** for obtaining the user album.
 2. Set **photoFetchOptions** for obtaining the image.
 3. Call **PhotoAccessHelper.getAlbums** to obtain user albums.
-4. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject) to obtain the first user album.
+4. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the first user album.
 5. Call [PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets) to obtain image assets.
-6. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject) to obtain the first image from the result set.
+6. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the first image from the result set.
 7. Call **MediaAlbumChangeRequest.addAssets** to add the image to the user album.
 8. Call **PhotoAccessHelper.applyChanges** to apply the changes.
 
@@ -254,7 +255,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 - A PhotoAccessHelper instance is obtained.
 - The application has the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-The following example describes how to obtain an image in the user album **albumName**.
+The following example obtains an image from a user album named 'test'.
 
 **How to Develop**
 
@@ -318,7 +319,7 @@ Select the assets to remove, and use [MediaAlbumChangeRequest.removeAssets](../.
 - A PhotoAccessHelper instance is obtained.
 - The application has the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-The following example describes how to remove an image from the user album **albumName**.
+The following example removes an image from a user album named 'test'.
 
 **How to Develop**
 

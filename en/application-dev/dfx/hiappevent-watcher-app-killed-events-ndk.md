@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=ec121c2784bcfdcd6bed31c59479fdb588154d76 translatedAt=2026-08-21T03:18:42.375Z pushedAt=2026-08-21T09:01:58.046Z -->
+<!-- md-trans-meta sourceCommit=bbac2265b5354ed331c839e017d611d73c2d5f39 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Event Specifications
 
@@ -99,6 +99,8 @@ For details about how to use the APIs (such as parameter usage restrictions and 
                           auto time = params["time"].asInt64();
                           auto reason = params["reason"].asString();
                           auto foreground = params["foreground"].asString();
+                          auto callingPid = params["calling_pid"].asString();
+                          auto callingProcessName = params["calling_process_name"].asString();
                           auto appRunningUniqueId = params["app_running_unique_id"].asString();
                           auto bundleVersion = params["bundle_version"].asString();
                           auto lastExitDetailInfo = writer.write(params["last_exit_detail_info"]);
@@ -107,6 +109,11 @@ For details about how to use the APIs (such as parameter usage restrictions and 
                                       reason.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}s",
                                       foreground.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.calling_pid=%{public}s",
+                                      callingPid.c_str()); 
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.calling_process_name=%{public}s",
+                                      callingProcessName.c_str()); 
+                                                                        
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s",
                                       appRunningUniqueId.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
@@ -127,7 +134,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
           const char *names[] = {EVENT_APP_KILLED};
           // Add the events to watch, for example, system events.
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // Set the implemented callback. The watcher triggers the OnReceive callback immediately after receiving an event.
+          // Set the implemented callback function. The watcher triggers the OnReceive callback immediately after receiving an event.
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // Add a watcher to listen for the specified event.
           OH_HiAppEvent_AddWatcher(systemEventWatcher);
@@ -171,14 +178,14 @@ For details about how to use the APIs (such as parameter usage restrictions and 
        return exports;
    }
    ```
-
+   
    In the **index.d.ts** file, define the ArkTS API.
 
    ```typescript
    export const registerWatcher: () => void;
    export const leak: () => void;
    ```
-
+   
 7. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, add the following interface invocation to **onCreate()**.
 
    ```typescript
@@ -201,12 +208,14 @@ For details about how to use the APIs (such as parameter usage restrictions and 
       HiAppEvent eventInfo.domain=OS
       HiAppEvent eventInfo.name=APP_KILLED
       HiAppEvent eventInfo.eventType=2
-      HiAppEvent eventInfo.params.time=1717597063727
+      HiAppEvent eventInfo.params.time=1792739581978
       HiAppEvent eventInfo.params.reason="RssThresholdKiller"
       HiAppEvent eventInfo.params.foreground=true
-      HiAppEvent eventInfo.params.app_running_unique_id=207544
-      HiAppEvent eventInfo.params.bundle_version=1000000
-      HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"THREAD_BLOCK_6S","kill_reason":"ThreadBlock6S","pid":"52036","process_name":"com.example.apphicollietest0108","process_state":"2","pss":"0","rss":"0","timestamp":"1785753171368","uid":"20020205"}
+      HiAppEvent eventInfo.params.calling_pid="43"
+      HiAppEvent eventInfo.params.calling_process_name="wk:0/0/1/12"
+      HiAppEvent eventInfo.params.app_running_unique_id=8778602711597370439
+      HiAppEvent eventInfo.params.bundle_version=1.0.1
+      HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"","kill_reason":"RssThresholdKiller","pid":"17248","process_name":"com.example.dfx_test","process_state":"2","pss":"227764","rss":"227764","timestamp":"1792739581947","uid":"20020207"}
     ```
 
     > **NOTE**
@@ -228,7 +237,9 @@ For details about how to use the APIs (such as parameter usage restrictions and 
      ```c++
      static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
          // Destroy the created watcher and set systemEventWatcher to nullptr.
-         OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+         if (systemEventWatcher != nullptr) {
+            OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+         }
          systemEventWatcher = nullptr;
          return {};
      }

@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes muxing encoded audio and video into media files such as mp4, m4a, and flv, including adding tracks, setting cover images and file-level metadata, for recording, export after editing, and saving transcoded media."
+keywords: [media data muxing, muxer, OH_AVMuxer, mp4, m4a, flv, audio/video tracks, cover image, file metadata]
+doctype: guide
+status: active
+---
+
 # Media Data Multiplexing
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=66c49c549588a50aa036f806393d8098f913c4aa translatedAt=2026-10-22T03:54:25.671Z pushedAt=2026-10-22T12:29:05.869Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 You can call native APIs to multiplex audio and video streams, that is, to store encoded audio and video data to a file in a certain format.
 
@@ -63,7 +71,7 @@ For details about the keys to be configured for different container formats, see
 
 2. Call **OH_AVMuxer_Create()** to create an OH_AVMuxer instance.
 
-   <!-- @[Muxer::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   <!-- @[Muxer::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
    
    ``` C++
    int32_t Muxer::Create(int32_t fd, int32_t outputFormat)
@@ -81,7 +89,7 @@ For details about the keys to be configured for different container formats, see
 
    Set this when a video image needs to be rotated. In the example, the rotation angle is set for the MP4 format. The FLV format does not support rotation metadata.
 
-   <!-- @[Muxer::SetRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   <!-- @[Muxer::SetRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
    
    ``` C++
    int32_t Muxer::SetRotation()
@@ -155,12 +163,12 @@ For details about the keys to be configured for different container formats, see
    if (ret != AV_ERR_OK || audioTrackId < 0) {
        // Failure to add the audio track.
    }
-   OH_AVFormat_Destroy (formatAudio); // Destroy the format.
+   OH_AVFormat_Destroy(formatAudio); // Destroy the format.
    ```
 
    **Method 2: Use OH_AVFormat_CreateAudioFormat to create the format.**
 
-   <!-- @[Muxer::AddAudioTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   <!-- @[Muxer::AddAudioTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
    
    ``` C++
    int32_t Muxer::AddAudioTrack(SampleInfo &sampleInfo)
@@ -212,7 +220,7 @@ For details about the keys to be configured for different container formats, see
 
    **Method 2: Use OH_AVFormat_CreateVideoFormat to create the format.**
 
-   <!-- @[Muxer::AddVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   <!-- @[Muxer::AddVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
    
    ``` C++
    int32_t Muxer::AddVideoTrack(SampleInfo &sampleInfo)
@@ -220,12 +228,22 @@ For details about the keys to be configured for different container formats, see
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
    
        // Add a video track: use OH_AVFormat_CreateVideoFormat to create the format.
+       int32_t encodedWidth = sampleInfo.video.videoWidth;
+       int32_t encodedHeight = sampleInfo.video.videoHeight;
+       if (sampleInfo.video.preprocMode == VIDEO_PREPROC_DOWNSAMPLING) {
+           encodedWidth = sampleInfo.video.downsamplingWidth;
+           encodedHeight = sampleInfo.video.downsamplingHeight;
+       } else if (sampleInfo.video.preprocMode == VIDEO_PREPROC_CROP) {
+           encodedWidth = sampleInfo.video.cropRight - sampleInfo.video.cropLeft + 1;
+           encodedHeight = sampleInfo.video.cropBottom - sampleInfo.video.cropTop + 1;
+       }
        OH_AVFormat *formatVideo = OH_AVFormat_CreateVideoFormat(sampleInfo.video.videoCodecMime.data(),
-           sampleInfo.video.videoWidth, sampleInfo.video.videoHeight);
-   
+           encodedWidth, encodedHeight);
+       CHECK_AND_RETURN_RET_LOG(formatVideo != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create video format failed");
+
        OH_AVFormat_SetDoubleValue(formatVideo, OH_MD_KEY_FRAME_RATE, sampleInfo.video.frameRate);
-       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, sampleInfo.video.videoWidth);
-       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, sampleInfo.video.videoHeight);
+       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, encodedWidth);
+       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, encodedHeight);
        OH_AVFormat_SetStringValue(formatVideo, OH_MD_KEY_CODEC_MIME, sampleInfo.video.videoCodecMime.data());
        // HDR Vivid video requires setting color information related keys. Optional.
        if (sampleInfo.video.isHDRVivid) {
@@ -327,7 +345,7 @@ For details about the keys to be configured for different container formats, see
 
 9. Call **OH_AVMuxer_Start()** to start multiplexing.
 
-   <!-- @[Muxer::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+   <!-- @[Muxer::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
    
    ``` C++
    int32_t Muxer::Start()
@@ -340,13 +358,13 @@ For details about the keys to be configured for different container formats, see
    }
    ```
 
-   After start is called to write the  file header, you cannot set media parameters or add audio/video tracks.
+   After calling start to write the file header, you cannot set media parameters or add audio/video tracks.
 
 10. Call **OH_AVMuxer_WriteSampleBuffer()** to write data.
 
     The multiplexed data includes video, audio, and cover data.
 
-    <!-- @[Muxer::WriteSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+    <!-- @[Muxer::WriteSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
     
     ``` C++
     int32_t Muxer::WriteSample(int32_t trackId, OH_AVBuffer *buffer, OH_AVCodecBufferAttr &attr)
@@ -355,7 +373,7 @@ For details about the keys to be configured for different container formats, see
         std::lock_guard<std::mutex> lock(writeMutex_);
     
         CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-        CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Get an empty buffer");
+        CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Get a empty buffer");
     
         int32_t ret = OH_AVBuffer_SetBufferAttr(buffer, &attr);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "SetBufferAttr failed");
@@ -369,29 +387,45 @@ For details about the keys to be configured for different container formats, see
 
     In the example, buffer comes from the AVBuffer output by the encoder. Before multiplexing, call OH_AVBuffer_SetBufferAttr() to set the pts, size, flags, and other attributes of the current data, and use GetAudioTrackId()/GetVideoTrackId() to select the audio/video track to write to. When multiplexing a cover, you must write an entire image at a time. The following shows how to write data:
 
-    <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+    <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
     
     ``` C++
     void Recorder::AudioEncOutputThread()
     {
         while (true) {
-            CHECK_AND_BREAK_LOG(!isEos_, "Work done, thread out");
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-    
+
             std::shared_ptr<CodecBufferInfo> bufferInfo = audioEncContext_->outputBufferQueue.Dequeue();
             std::shared_lock<std::shared_mutex> codecLock(audioEncContext_->codecMutex);
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
             CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr, "Buffer queue is empty, continue");
-    
+
             audioEncContext_->outputFrameCount++;
             AVCODEC_SAMPLE_LOGW(
                 "Audio Out buffer count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
                 audioEncContext_->outputFrameCount, bufferInfo->attr.size, bufferInfo->attr.flags, bufferInfo->attr.pts);
-            // Return the buffer by the same index after writing. When the output queue is exhausted, the audio encoder stops the callback.
-            muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer,
-                                bufferInfo->attr);
+            const bool isEosBuffer = (bufferInfo->attr.flags & AVCODEC_BUFFER_FLAGS_EOS) != 0;
+            int32_t writeRet = AVCODEC_SAMPLE_ERR_OK;
+            if (!isEosBuffer && bufferInfo->attr.size > 0) {
+                // Encode AAC only once. Write the same output buffer to both muxers in sequence, then return it using its original index.
+                writeRet = muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer, bufferInfo->attr);
+                if (writeRet == AVCODEC_SAMPLE_ERR_OK && secondaryMuxer_ != nullptr) {
+                    writeRet = secondaryMuxer_->WriteSample(secondaryMuxer_->GetAudioTrackId(), bufferInfo->buffer,
+                        bufferInfo->attr);
+                }
+            }
             int32_t ret = audioEncoder_->FreeOutputData(bufferInfo->bufferIndex);
             CHECK_AND_BREAK_LOG(ret == AVCODEC_SAMPLE_ERR_OK, "Encoder output thread out");
+            if (writeRet != AVCODEC_SAMPLE_ERR_OK) {
+                AbortRecording("Write encoded audio sample failed");
+                break;
+            }
+            if (isEosBuffer) {
+                AVCODEC_SAMPLE_LOGI("Audio EOS processed, exiting output thread");
+                isAudioEos_.store(true);
+                videoEosCond_.notify_all();
+                break;
+            }
         }
         AVCODEC_SAMPLE_LOGI("Exit, frame count: %{public}u", audioEncContext_->inputFrameCount);
     }
@@ -399,7 +433,7 @@ For details about the keys to be configured for different container formats, see
 
 11. Call **OH_AVMuxer_Stop()** to stop multiplexing.
 
-    <!-- @[Muxer::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+    <!-- @[Muxer::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
     
     ``` C++
     int32_t Muxer::Stop()
@@ -418,7 +452,7 @@ For details about the keys to be configured for different container formats, see
 
     Do not repeatedly destroy the instance. Otherwise, the program may crash.
 
-    <!-- @[Muxer::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
+    <!-- @[Muxer::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
     
     ``` C++
     int32_t Muxer::Release()
@@ -432,7 +466,7 @@ For details about the keys to be configured for different container formats, see
     }
     ```
 
-    In the example, when the file is closed after multiplexing is complete, you also need to call close(fd) to close the file descriptor.
+    In the example, when multiplexing is complete and the file is closed, you also need to call close(fd) to close the file descriptor.
 
 ### FLV Format Multiplexing
 

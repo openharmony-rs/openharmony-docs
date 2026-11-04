@@ -6,6 +6,7 @@
 <!--Designer: @skye_you-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=0f15572057cde5e246e5efac8fa50aaf3207c8bf translatedAt=2026-10-31T06:42:29.778Z pushedAt=2026-10-31T08:35:16.384Z nl=1 -->
 
 ## Available APIs
 
@@ -52,7 +53,7 @@ A maximum of 100 assets can be removed in batches.
 >
 > The following is an example of using the batch removal API.
 >
-> Before removing an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
+> Before deletion, ensure that assets already exist. You can refer to the [guide](asset-js-add.md) to add assets. Otherwise, a NOT_FOUND error (error code 24000002) will be thrown.
 
 Remove two assets whose aliases are demo_alias1 and demo_alias2 in batches.
 
@@ -93,4 +94,5 @@ Remove two assets whose aliases are demo_alias1 and demo_alias2 in batches.
      console.error(`Failed to batch remove Asset. Code is ${err.code}, message is ${err.message}`);
    }
    ```
-<!--no_check-->
+
+   <!--no_check-->

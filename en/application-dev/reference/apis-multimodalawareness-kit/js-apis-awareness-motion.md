@@ -5,7 +5,7 @@
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=06c751e035ad62c8d7f27ef01002e3d38739d6ba translatedAt=2026-09-14T02:06:42.016Z pushedAt=2026-09-14T10:03:33.579Z -->
+<!-- md-trans-meta sourceCommit=d74a28589d84d859c4ee1edc342dd405aba494a5 translatedAt=2026-11-03T06:03:08.216Z pushedAt=2026-11-03T12:08:25.585Z nl=1 -->
 
 This module provides awareness capabilities for user motions, supporting the recognition of user gestures and motion states. It is suitable for interactive scenarios where responses are required based on user gestures or motions, such as gesture recognition and motion triggering, helping applications deliver a more natural interactive experience and precise scenario awareness.
 
@@ -71,12 +71,12 @@ If the device does not support this function, error code 801 is returned.
 
 For details about the error codes, see [Motion Awareness Error Codes](errorcode-motion.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
-| 31500002 | Subscription failed. Possible causes: 1. Callback registration failure; 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
+| ID | Error Message                                            |
+| ------------- | ------------------------------------------------------------ |
+| 201           | Permission verification failed. The application does not have the permission required to call the API. |
+| 801           | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 31500001      | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
+| 31500002      | Subscription failed. Possible causes: 1. Callback registration failure; 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC request exception. |
 
 **Example**
 
@@ -120,12 +120,12 @@ Unsubscribes from operating hand awareness events. If **off()** is called withou
 
 For details about the error codes, see [Motion Awareness Error Codes](errorcode-motion.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
-| 31500003 | Unsubscription failed. Possible causes: 1. Callback failure; 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
+| ID | Error Message                                            |
+| ------------- | ------------------------------------------------------------ |
+| 201           | Permission verification failed. The application does not have the permission required to call the API. |
+| 801           | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 31500001      | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status. |
+| 31500003      | Unsubscription failed. Possible causes: 1. Callback failure; 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
 
 **Example**
 

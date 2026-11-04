@@ -1,3 +1,10 @@
+---
+kits: ["Drm Kit / 数字版权保护服务"]
+description: "指导DRM解决方案集成方开发HDI插件，涵盖模块添加、驱动入口实现、HDI接口实现、编译配置及SELinux权限配置，适用于DRM方案商集成接入场景。"
+keywords: [DRM, 解决方案集成, HDI插件, 驱动开发, HDF, 编译配置, SELinux, clearplay, vendor分区]
+doctype: guide
+status: active
+---
 # DRM解决方案开发指导
 
 <!--Kit: Drm Kit-->

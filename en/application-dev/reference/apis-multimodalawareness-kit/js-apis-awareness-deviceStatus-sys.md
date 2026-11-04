@@ -5,7 +5,7 @@
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=609b93af78bb4044c48524ed67f55f94adaac019 translatedAt=2026-09-14T01:52:41.357Z pushedAt=2026-09-14T10:03:33.571Z -->
+<!-- md-trans-meta sourceCommit=9f16ca7f99d3e5febd92bb4bfa5d189019262593 translatedAt=2026-11-03T05:58:00.018Z pushedAt=2026-11-03T12:08:25.577Z nl=1 -->
 
 This module provides the device status awareness capability. By listening for device sensor data, it provides applications with awareness capabilities such as device posture.
 
@@ -20,6 +20,20 @@ This module provides the device status awareness capability. By listening for de
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
    ```
 
+## DeviceRotationRadian
+
+Three-dimensional rotation status information of the device.
+
+**System capability**: SystemCapability.MultimodalAwareness.DeviceStatus
+
+**System API**: This is a system API.
+
+| Name | Type | Read-Only | Optional | Description |
+| ------ | ------- | ------- | ----- | -------------- |
+|  x  | number |  No  |  No  | Rotation radians of the device in the X-axis direction. |
+|  y  | number |  No  |  No  | Rotation radians of the device in the Y-axis direction. |
+|  z  | number |  No  |  No  | Rotation radians of the device in the Z-axis direction. |
+
 ## deviceStatus.getDeviceRotationRadian()
 
 getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
@@ -31,6 +45,12 @@ The posture data contains the rotation angles of the x, y, and z axes, that is, 
 **System capability**: SystemCapability.MultimodalAwareness.DeviceStatus
 
 **System API**: This is a system API.
+
+**Return value**
+
+| Type | Description |
+| ----------------------------------- | ------------------ |
+| Promise&lt;DeviceRotationRadian&gt; | Three-dimensional rotation status information of the device. |
 
 **Error codes**
 

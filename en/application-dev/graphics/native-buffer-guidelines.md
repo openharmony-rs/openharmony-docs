@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to allocate, map, query, and release NativeBuffer shared memory through C/C++ APIs for image processing, video encoding and decoding, and interprocess memory sharing."
+keywords: [NativeBuffer, shared memory, interprocess memory sharing, ION memory, memory mapping, image processing, video encoding and decoding]
+doctype: guide
+status: active
+---
+
 # NativeBuffer Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -5,7 +13,8 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=094ced2c1714888f81b48ee277d1e52615f35dc2 translatedAt=2026-10-19T01:26:48.194Z pushedAt=2026-10-19T09:56:42.751Z -->
+<!-- md-trans-meta sourceCommit=f6a29bb7b5e04ec485b4b13e6a2eda953b1edd57 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ## Overview
 

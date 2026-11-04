@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-30T08:56:36.285Z pushedAt=2026-10-30T11:54:50.468Z nl=1 -->
 
 The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to silently read data from the pasteboard.
 
@@ -15,7 +16,7 @@ For example, if a user needs to copy a verification code (received from the Mess
 
 The following figure shows the effect of **PasteButton** component.
 
-![](figures/PasteButton_effect.gif)
+![paste-control-effect](figures/paste-control-effect.gif)
 
 ## Constraints
 
@@ -80,3 +81,4 @@ The following procedure shows how to make entering a verification code easier: A
      }
    }
    ```
+

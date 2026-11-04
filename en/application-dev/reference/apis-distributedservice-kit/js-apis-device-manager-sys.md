@@ -5,6 +5,7 @@
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=d00ac50b0c771e8ff5fa4ba025ec01e164cd2458 translatedAt=2026-11-03T10:56:54.367Z pushedAt=2026-11-03T11:32:33.424Z nl=1 -->
 
 The APIs of this module are deprecated. You are advised to use [@ohos.distributedDeviceManager](js-apis-distributedDeviceManager.md).
 
@@ -141,7 +142,7 @@ Enumerates the device states.
 | Name     | Value | Description             |
 | ------- | ---- | --------------- |
 | ONLINE  | 0    | The device is physically online.          |
-| READY   | 1    | The information between devices has been synchronized in the Distributed Data Service (DDS) module, and the device is ready for running distributed services.|
+| READY   | 1    | Device availability, indicating that information between devices has been synchronized in distributed data and distributed services can be run. |
 | OFFLINE | 2    | The device is physically offline.          |
 | CHANGE  | 3    | The device information is changed.        |
 
@@ -177,7 +178,7 @@ Enumerates the device discovery modes.
 | DISCOVER_MODE_ACTIVE  | 0xAA | Active discovery.|
 
 
-## ExchangeMedium 
+## ExchangeMedium
 
 Enumerates the media used for device discovery.
 
@@ -192,7 +193,7 @@ Enumerates the media used for device discovery.
 | COAP | 2    | Wi-Fi.|
 | USB  | 3    | USB. |
 
-## ExchangeFreq 
+## ExchangeFreq
 
 Enumerates the device discovery frequencies.
 
@@ -208,7 +209,7 @@ Enumerates the device discovery frequencies.
 | SUPER_HIGH | 3    | Ultra-high frequency.|
 
 
-## SubscribeCap 
+## SubscribeCap
 
 Enumerates the discovery capabilities.
 
@@ -292,7 +293,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -334,7 +335,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -384,7 +385,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -426,7 +427,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -473,7 +474,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -515,7 +516,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -557,7 +558,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -605,7 +606,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -647,7 +648,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -703,7 +704,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -749,7 +750,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -815,7 +816,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -901,7 +902,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -947,7 +948,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1006,7 +1007,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1051,7 +1052,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1146,7 +1147,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1204,7 +1205,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1279,7 +1280,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1291,7 +1292,7 @@ For details about how to initialize `dmInstance` in the example, see [deviceMana
       operateAction = 3 - Cancel the display of the PIN box.
       operateAction = 4 - Cancel the display of the PIN input box.
       operateAction = 5 - Confirm the input in the PIN input box.
-    */
+     */
     let operation = 0;
     dmInstance.setUserOperation(operation, "extra");
   } catch (err) {
@@ -1330,7 +1331,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1392,7 +1393,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
 <!--code_no_check-->
   ```ts
   import { BusinessError } from '@ohos.base';
@@ -1487,7 +1488,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1552,7 +1553,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1607,7 +1608,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1649,7 +1650,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -1706,7 +1707,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -1763,7 +1764,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -1820,7 +1821,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -1877,7 +1878,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1926,7 +1927,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1975,7 +1976,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2023,7 +2024,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2071,7 +2072,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2120,7 +2121,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2169,7 +2170,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2213,7 +2214,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For the initialization of **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 

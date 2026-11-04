@@ -5,6 +5,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=5f92c707e151b4bcc9858654896dbd6bd68c88cb translatedAt=2026-11-03T03:26:41.833Z pushedAt=2026-11-03T06:03:49.413Z nl=1 -->
 
 This module provides APIs for collecting statistics on device usage.
 
@@ -319,7 +320,7 @@ Queries the priority group of this application. This API uses an asynchronous ca
 
 | Name     | Type                   | Mandatory  | Description                        |
 | -------- | --------------------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the priority group.|
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback used to return the queried application group. |
 
 **Example**
 

@@ -5,8 +5,9 @@
 <!--Designer: @renguang1116; @wang_zhangjun-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=3747fee2feacf1814d9ce4b2fefe3888fa93eb5b translatedAt=2026-11-03T04:40:52.532Z pushedAt=2026-11-04T06:00:16.314Z nl=1 -->
 
-The **storageStatistics** module provides APIs for obtaining storage space information, including the space of built-in and plug-in memory cards, space occupied by different types of data, and space of application data.
+This module provides common functions related to application space statistics, including querying the space of internal and external storage devices, querying application category data statistics, querying application data, querying the system data space size, reporting and querying the space usage of system applications or system services, and querying the space usage details of user device directories. It is applicable to scenarios in system applications where space usage details need to be displayed on the "Settings - Storage" screen or storage space management needs to be performed.
 
 > **NOTE**
 >
@@ -23,7 +24,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 
 getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
-Obtains the total space of a volume in an external storage device, in bytes. This API uses a promise to return the result.
+Asynchronously obtains the total size of the specified volume on the external storage device (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -35,7 +36,7 @@ Obtains the total space of a volume in an external storage device, in bytes. Thi
 
   | Name    | Type  | Mandatory| Description|
   | ---------- | ------ | ---- | ---- |
-  | volumeUuid | string | Yes  | UUID of the volume.|
+  | volumeUuid | string | Yes   | UUID of the volume device, which can be obtained through the [volumeManager.getAllVolumes()](js-apis-file-volumemanager-sys.md#volumemanagergetallvolumes) API. |
 
 **Return value**
 
@@ -45,7 +46,7 @@ Obtains the total space of a volume in an external storage device, in bytes. Thi
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -71,10 +72,10 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     storageStatistics.getTotalSizeOfVolume(uuid).then((number: number) => {
       console.info("getTotalSizeOfVolume successfully:" + number);
     }).catch((err: BusinessError) => {
-      console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(err));
+      console.error(`getTotalSizeOfVolume failed with err, code is: ${err.code}, message is: ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+    console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
 
@@ -94,12 +95,12 @@ Obtains the total space of a volume in an external storage device, in bytes. Thi
 
   | Name    | Type                                | Mandatory| Description                      |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | volumeUuid | string                               | Yes  | UUID of the volume.                      |
-  | callback   | AsyncCallback&lt;number&gt;          | Yes  | Callback used to return the total volume space obtained.|
+  | volumeUuid | string                               | Yes   | UUID of the volume device, which can be obtained through the [volumeManager.getAllVolumes()](js-apis-file-volumemanager-sys.md#volumemanagergetallvolumes) API.                       |
+  | callback   | AsyncCallback&lt;number&gt;          | Yes   | Callback function, invoked after the total space of the specified volume device is obtained.<br>The callback parameters include:<br>err: error message, which is undefined when the call succeeds.<br>totalSize: total space size of the specified volume device, in bytes. |
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -124,14 +125,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     let uuid: string = volumes[0].uuid;
     storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, number: number) => {
       if (error) {
-        console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(error));
+        console.error(`getTotalSizeOfVolume failed with err, code is: ${error.code}, message is: ${error.message}`);
       } else {
         // Do something.
         console.info("getTotalSizeOfVolume successfully:" + number);
       }
     });
   }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+    console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
 
@@ -139,7 +140,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
-Obtains the available space of a volume in an external storage device, in bytes. This API uses a promise to return the result.
+Asynchronously obtains the available size of the specified volume on the external storage device (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -151,17 +152,17 @@ Obtains the available space of a volume in an external storage device, in bytes.
 
   | Name    | Type  | Mandatory| Description|
   | ---------- | ------ | ---- | ---- |
-  | volumeUuid | string | Yes  | UUID of the volume.|
+  | volumeUuid | string | Yes   | UUID of the volume, which can be obtained through the [volumeManager.getAllVolumes()](js-apis-file-volumemanager-sys.md#volumemanagergetallvolumes) API. |
 
 **Return value**
 
   | Type                 | Description              |
   | --------------------- | ------------------ |
-  | Promise&lt;number&gt; | Promise used to return the available volume space (in bytes) obtained.|
+  | Promise&lt;number&gt; | Promise object, returns the available space size of the specified volume (in bytes). |
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -187,10 +188,10 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     storageStatistics.getFreeSizeOfVolume(uuid).then((number: number) => {
       console.info("getFreeSizeOfVolume successfully:" + number);
     }).catch((err: BusinessError) => {
-      console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(err));
+      console.error(`getFreeSizeOfVolume failed with err, code is: ${err.code}, message is: ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+    console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
 
@@ -210,12 +211,12 @@ Obtains the available space of a volume in an external storage device, in bytes.
 
   | Name    | Type                                | Mandatory| Description                        |
   | ---------- | ------------------------------------ | ---- | ---------------------------- |
-  | volumeUuid | string                               | Yes  | UUID of the volume.                        |
-  | callback   | AsyncCallback&lt;number&gt;          | Yes  | Callback used to return the available volume space obtained.|
+  | volumeUuid | string                               | Yes   | UUID of the volume device, which can be obtained through the [volumeManager.getAllVolumes()](js-apis-file-volumemanager-sys.md#volumemanagergetallvolumes) API.                         |
+  | callback   | AsyncCallback&lt;number&gt;          | Yes   | Callback function, invoked after the available space of the specified volume device is obtained.<br>The callback parameters include:<br>err: error message, which is undefined when the call succeeds.<br>freeSize: available space size of the specified volume device, in bytes. |
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -240,14 +241,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     let uuid: string = volumes[0].uuid;
     storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, number: number) => {
       if (error) {
-        console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(error));
+        console.error(`getFreeSizeOfVolume failed with err, code is: ${error.code}, message is: ${error.message}`);
       } else {
         // Do something.
         console.info("getFreeSizeOfVolume successfully: " + number);
       }
     });
   }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+    console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
 
@@ -255,7 +256,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
-Obtains the storage space of an application, in bytes. This API uses a promise to return the result.
+Asynchronously obtains the space size of application storage data (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -268,17 +269,17 @@ Obtains the storage space of an application, in bytes. This API uses a promise t
   | Name     | Type  | Mandatory| Description    |
   | ----------- | ------ | ---- | -------- |
   | packageName | string | Yes  | Package name of the application.|
-  | index<sup>12+</sup> | number | No  | Index of an application clone. The default value is **0**, which indicates the application itself. When an application clone is created, an index is assigned from 1 sequentially to **appIndex** of [BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo). The index can be obtained by [getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12).|
+  | index<sup>12+</sup> | number | No   | Index number of the clone application. The value must be an integer greater than or equal to 0, and the default value is 0 (indicating the non-cloned main application). If a value outside the range is passed in, error code 401 is returned. When a clone application is created, the clone application index number occupies the minimum index number starting from 1 that is not currently occupied by default, and is assigned to the appIndex attribute of the application's [BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo). It can be obtained later by calling [getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12). |
 
 **Return value**
 
   | Type                                      | Description                      |
   | ------------------------------------------ | -------------------------- |
-  | Promise&lt;[Bundlestats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise used to return the application storage space (in bytes) obtained.|
+  | Promise&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise object, returns the space size of the storage data of the specified application (in Byte). |
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -305,15 +306,15 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
     let packageName:string = bundleName;
     let index:number = resourceInfo.appIndex;
-    storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
-      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+    storageStatistics.getBundleStats(packageName, index).then((bundleStats: storageStatistics.BundleStats) => {
+      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
     }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+      console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
     });
   
   } catch (err) {
     let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
+    console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
   }
   ```
 
@@ -334,12 +335,12 @@ Obtains the storage space of an application, in bytes. This API uses an asynchro
   | Name  | Type                                                     | Mandatory| Description                                |
   | -------- | --------------------------------------------------------- | ---- | ------------------------------------ |
   | packageName | string | Yes  | Package name of the application.|
-  | callback | AsyncCallback&lt;[Bundlestats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Yes  | Callback used to return the application storage space obtained.|
-  | index<sup>12+</sup> | number | No  | Index of an application clone. The default value is **0**, which indicates the application itself. When an application clone is created, an index is assigned from 1 sequentially to **appIndex** of [BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo). The index can be obtained by [getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12).|
+  | callback | AsyncCallback&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Yes   | Callback function invoked after the space size of the storage data of the specified application is obtained. The callback parameters include: err (error message, undefined when the call succeeds) and bundleStats (space size of the storage data of the specified application, in bytes). |
+  | index<sup>12+</sup> | number | No   | Index number of the clone application. The value range is an integer greater than or equal to 0, and the default value is 0 (indicating the non-cloned main application). If a value outside the range is passed, error code 401 is returned. When a clone is created, the clone application index number occupies the smallest index number starting from 1 that is not currently occupied, and is assigned to the appIndex attribute of the application's [BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo). It can be obtained later by calling the [getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12) API.|
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -366,25 +367,94 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
     let packageName:string = bundleName;
     let index:number = resourceInfo.appIndex;
-    storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats) => {
+    storageStatistics.getBundleStats(packageName, (err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
       if (err) {
-        hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+        console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
       } else {
-        hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+        hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
       }
     }, index);
   
   } catch (err) {
     let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
+    console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
   }
   ```
+
+## storageStatistics.getBundleStats
+
+getBundleStats(packageName: string, option?: BundleStatsOptions): Promise&lt;BundleStats&gt;
+
+Asynchronously obtains the space size of application storage data (in bytes). This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.STORAGE_MANAGER
+
+**System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ----------- | ------ | ---- | -------- |
+| packageName | string | Yes | Pointer to the application bundle name. |
+| option | [BundleStatsOptions](#bundlestatsoptions) | No | Options for obtaining application storage space information. |
+
+**Return value**
+
+| Type | Description |
+| ------------------------------------------ | -------------------------- |
+| Promise&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise object that returns the space size of application storage data (in bytes). |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600008 | No such object. |
+
+**Example**
+
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+  let packageName:string = bundleName;
+  let option: storageStatistics.BundleStatsOptions = {
+    index: resourceInfo.appIndex,
+    statFlag: storageStatistics.GetBundleStatsFlag.GET_BUNDLE_WITH_ALL_SIZE
+  };
+  storageStatistics.getBundleStats(packageName, option).then((bundleStats: storageStatistics.BundleStats) => {
+    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
+  }).catch((err: BusinessError) => {
+    console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+
+} catch (err) {
+  let message = (err as BusinessError).message;
+  console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
+}
+```
 
 ## storageStatistics.getSystemSize<sup>9+</sup>
 
 getSystemSize(): Promise&lt;number&gt;
 
-Obtains the system data size, in bytes. This API uses a promise to return the result.
+Asynchronously obtains the space size of system data (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -400,7 +470,7 @@ Obtains the system data size, in bytes. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -417,7 +487,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   storageStatistics.getSystemSize().then((number: number) => {
     console.info("getSystemSize successfully:" + number);
   }).catch((err: BusinessError) => {
-    console.error("getSystemSize failed with error:" + JSON.stringify(err));
+    console.error(`getSystemSize failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
 
@@ -437,11 +507,11 @@ Obtains the system data size, in bytes. This API uses an asynchronous callback t
 
   | Name    | Type                                | Mandatory| Description                      |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | callback   |  AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the system data size obtained.|
+  | callback   |  AsyncCallback&lt;number&gt;         | Yes   | Callback used to obtain the space size of system data.<br>Callback parameters include:<br>**err**: error message, the value is **undefined** when the call succeeds.<br>**systemSize**: size of system data, in bytes.|
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -454,10 +524,11 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getSystemSize((error: BusinessError, number: number) => {
     if (error) {
-      console.error("getSystemSize failed with error:" + JSON.stringify(error));
+      console.error(`getSystemSize failed with err, code is: ${error.code}, message is: ${error.message}`);
     } else {
       // Do something.
       console.info("getSystemSize successfully:" + number);
@@ -469,7 +540,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getUserStorageStats(): Promise&lt;StorageStats&gt;
 
-Obtains the storage statistics of this user, in bytes. This API uses a promise to return the result.
+Asynchronously obtains the storage space size of each category for the current user (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -485,7 +556,7 @@ Obtains the storage statistics of this user, in bytes. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -502,7 +573,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.StorageStats) => {
     console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
   }).catch((err: BusinessError) => {
-    console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
+    console.error(`getUserStorageStats failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
 
@@ -522,11 +593,11 @@ Obtains the storage statistics of this user, in bytes. This API uses an asynchro
 
   | Name    | Type                                | Mandatory| Description                      |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | Yes  | Callback used to return the storage statistics obtained.|
+  | callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | Yes   | Callback function, invoked after the space size of each user category is obtained.<br>Callback parameters include:<br>err: error message, which is undefined when the call succeeds.<br>storageStats: space size of each user category, in bytes. |
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -542,7 +613,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
     if (error) {
-      console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+      console.error(`getUserStorageStats failed with err, code is: ${error.code}, message is: ${error.message}`);
     } else {
       // Do something.
       console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
@@ -554,7 +625,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
-Obtains the storage statistics (in bytes) of the specified user. This API uses a promise to return the result.
+Asynchronously obtains the storage space size of each category for the specified user (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -566,7 +637,7 @@ Obtains the storage statistics (in bytes) of the specified user. This API uses a
 
   | Name    | Type  | Mandatory| Description|
   | ---------- | ------ | ---- | ---- |
-  | userId | number | Yes  | User ID.|
+  | userId | number | Yes   | User ID, which must be a valid user ID that exists in the system. If a nonexistent user ID is passed in, error code 13600009 is returned.|
 
 **Return value**
 
@@ -576,7 +647,7 @@ Obtains the storage statistics (in bytes) of the specified user. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -595,7 +666,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
     console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
   }).catch((err: BusinessError) => {
-    console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
+    console.error(`getUserStorageStats failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
 
@@ -615,12 +686,12 @@ Obtains the storage statistics of the specified user, in bytes. This API uses an
 
   | Name    | Type                                | Mandatory| Description                      |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number                               | Yes  | User ID.|
-  | callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | Yes  | Callback used to return the storage statistics obtained.|
+  | userId | number                               | Yes   | User ID, which must be a valid user ID that exists in the system. If a nonexistent user ID is passed, error code 13600009 is returned. |
+  | callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | Yes   | Callback function, invoked after the storage space size of each category for the specified user is obtained.<br>The callback parameters include:<br>err: error message, which is undefined when the call succeeds.<br>storageStats: storage space size of each category for the specified user, in bytes. |
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -638,7 +709,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   let userId: number = 100;
   storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
     if (error) {
-      console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+      console.error(`getUserStorageStats failed with err, code is: ${error.code}, message is: ${error.message}`);
     } else {
       // Do something.
       console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
@@ -673,19 +744,19 @@ Details the space usage of system applications or system services.
 
 | Name     | Type  | Read-Only | Optional | Description          |
 | --------- | ------ | ---- | ----- | -------------- |
-| businessName   | string | No| No| System application bundle name or system service name.  |
-| size | number  |No| No| Space occupied by system applications or system services, in bytes. |
+| businessName   | string | No | No | System application package name or system service name. When flag is false, only the system application package name is supported.   |
+| size | number  | No | No | Space usage of the system application or system service, in bytes. The value must be a non-negative number. If a negative number is passed, error code 13600010 is returned.  |
 | flag  | boolean | No| No| Whether the space occupied by system applications or system services needs to be displayed separately on the **Settings** > **Storage** page. A value of **true** enables independent display; a value of **false** merges the usage data into the application specified by **businessName**.|
 
 ## storageStatistics.setExtBundleStats<sup>23+</sup>
 
 setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
-Reports the space usage of system applications or system services. This API uses a promise to return the result.<br>
+A system application or system service reports its own space usage information so that it can be displayed separately or merged into a specified application in the "Settings-Storage" screen. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> If the value of **flag** in **stats** is **false**, the value of **businessName** must be the bundle name of an application.
+> When the flag in the input parameter stats is false, businessName must be the package name of an application.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -699,7 +770,7 @@ Reports the space usage of system applications or system services. This API uses
 
   | Name    | Type                                | Mandatory| Description                      |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | Yes  | User ID.                     |
+  | userId | number | Yes   | User ID, which must be a valid user ID that exists in the system. Error code 13600010 is returned when a nonexistent user ID is passed.                      |
   | stats   | [ExtBundleStats](#extbundlestats23) | Yes  | Space usage of system applications or system services.|
 
 **Return value**
@@ -728,10 +799,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   let userId: number = 100;
   let extBundleStats: storageStatistics.ExtBundleStats = {
-    businessName: 'com.example.storagedemo',
+    businessName: "com.example.storagedemo",
     size: 10000,
     flag: true
-  }
+  };
   storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
     console.info("setExtBundleStats successfully");
   }).catch((err: BusinessError) => {
@@ -757,7 +828,7 @@ Obtains the space usage of a specified user, system application bundle name, or 
 
   | Name    | Type                                | Mandatory| Description                      |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | Yes  | User ID.|
+  | userId | number | Yes   | User ID, which must be a valid user ID that exists in the system. If a nonexistent user ID is passed in, error code 13600010 is returned. |
   | businessName | string | Yes  | System application bundle name or system service name.|
 
 **Return value**
@@ -785,7 +856,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userId: number = 100;
-  let businessName: string = 'com.example.storagedemo';
+  let businessName: string = "com.example.storagedemo";
   storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
     console.info("getExtBundleStats successfully.");
   }).catch((err: BusinessError) => {
@@ -811,7 +882,7 @@ Obtains the space usage of all system applications or system services of a speci
 
   | Name    | Type                                | Mandatory| Description                      |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | Yes  | User ID.                      |
+  | userId | number | Yes   | User ID, which must be a valid user ID that exists in the system. If a nonexistent user ID is passed in, error code 13600010 is returned.                       |
 
 **Return value**
 
@@ -845,9 +916,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
   
-  ## UserdataDirInfo<sup>23+</sup>
+## UserdataDirInfo<sup>23+</sup>
   
-  Details the space usage of the **/data** directory on the user device.
+Space usage details of the /data directory in the user device.
 
 **System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -857,9 +928,45 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Name     | Type  | Read-Only | Optional | Description          |
 | --------- | ------ | ---- | ----- | -------------- |
-| path   | string | No| No| Path name.   |
-| totalSize | number  |No| No| Total space occupied by the path, in bytes. |
+| path   | string | No | No | Path of the subdirectory under the /data directory, for example, '/data/app'.    |
+| totalSize | number  |No | No | Total space size occupied by the path, in bytes.  |
 | totalCnt  | number | No| No| Total number of directories and files in the path.|
+
+## BundleStatsOptions
+  
+Options for obtaining application storage space information.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**Model restriction:** This API can be used only in the stage model.  
+
+**System API**: This is a system API.
+
+| Name      | Type   | Read-Only  | Optional  | Description           |
+| --------- | ------ | ---- | ----- | -------------- |
+| index   | number | No | Yes | Index number of the clone application. The value is an integer greater than or equal to 0, and the default value is 0 (indicating the non-cloned main application).<br>If a value outside the range is passed in, error code 401 is returned.<br>When a clone is created, the clone application index number occupies the minimum index number starting from 1 that is not currently occupied, and is assigned to the appIndex attribute of the application's [BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo). It can be obtained later by calling [getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)().  |
+| statFlag | [GetBundleStatsFlag](#getbundlestatsflag)  |No | Yes | Flag of the application storage space statistics information, used to specify the statistics scope. The default value is GET_BUNDLE_WITH_ALL_SIZE.  |
+
+## GetBundleStatsFlag
+
+Enumerates the flags for application storage space statistics.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**System API**: This is a system API.
+
+| Name         | Value    | Description                 |
+| ----------- | ------- | -------------------- |
+| GET_BUNDLE_WITH_ALL_SIZE      | 0x00000000  | Obtains the total data size of the application. |
+| GET_BUNDLE_WITHOUT_INSTALL_SIZE    | 0x00000001  | Excludes the size of application installation files.     |
+| GET_BUNDLE_WITHOUT_DATA_SIZE    | 0x00000002  | Excludes the size of application file storage.    |
+| GET_BUNDLE_WITHOUT_CACHE_SIZE  | 0x00000004  | Excludes the size of application cache files.    |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
 
@@ -909,7 +1016,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getSystemDataSize(): Promise&lt;number&gt;
 
-Obtains the total system data size. This API uses a promise to return the result.
+Obtains the total space size of system data (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -923,7 +1030,7 @@ Obtains the total system data size. This API uses a promise to return the result
 
 | Type                  | Description   |
 | --------------------- | :---- |
-|  Promise&lt;number&gt; | Promise used to return the total system data size, in bytes.|
+|  Promise&lt;number&gt; | Promise object, which returns the total space size of system data (in bytes).|
 
 **Error codes**
 
@@ -943,7 +1050,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
 
   storageStatistics.getSystemDataSize().then((systemDataSize: number) => {
-    console.info("getSystemDataSize successfully: " + JSON.stringify(systemDataSize));
+    console.info("getSystemDataSize successfully: " + systemDataSize);
   }).catch((err: BusinessError) => {
     console.error(`getSystemDataSize failed with err, code is: ${err.code}, message is: ${err.message}`);
   });

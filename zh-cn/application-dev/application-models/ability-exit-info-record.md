@@ -11,11 +11,11 @@
 
 ## 约束限制
 
-仅[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)和[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)支持获取上次的退出原因。
+仅[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)和[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)支持获取上次的退出原因。
 
 ## 接口说明
 
-接口详情参见[API参考](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)。
+接口详情参见[LaunchParam](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)。
 
 | **接口名**  | **描述** |
 | -------- | -------- |

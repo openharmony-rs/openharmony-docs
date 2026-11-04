@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T02:54:43.950Z pushedAt=2026-07-30T06:40:32.204Z -->
+<!-- md-trans-meta sourceCommit=55475b8d201845bcd9989a5f64cef91cd4c2751f translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -27,171 +27,166 @@ The following walks you through on how to subscribe to the main thread jank even
 
 1. In DevEco Studio, create an ArkTS app project, edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and import the dependent modules. The sample code is as follows:
 
-   ```ts
-    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-    import { buffer, util } from '@kit.ArkTS'
-    import { fileIo } from '@kit.CoreFileKit';
+   <!-- @[MainThreadJank_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+   ``` TypeScript
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   // ...
+   import { buffer, util } from '@kit.ArkTS';
+   import { fileIo } from '@kit.CoreFileKit';
    ```
 
 2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in lifecycle APIs such as **onCreate()** and **onForeground()** at a proper position. The sample code is as follows:
 
-   ```ts
-    hiAppEvent.addWatcher({
-      // Set the watcher name. The system identifies different watchers based on their names.
-      name: "watcher",
-      // Add the system events to watch, for example, the main thread jank event.
-      appEventFilters: [
-        {
-          domain: hiAppEvent.domain.OS,
-          names: [hiAppEvent.event.MAIN_THREAD_JANK]
-        }
-      ],
-      // Implement a callback for the registered system event so that you can apply custom processing to the event data obtained.
-      onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-        hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
-        for (const eventGroup of appEventGroups) {
-          // The event name uniquely identifies a system event.
-          hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
-          for (const eventInfo of eventGroup.appEventInfos) {
-            // Apply custom processing to the event data obtained, for example, print the event data in the log.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
-            // Obtain the timestamp when the main thread jank event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
-            // Obtain the version information of the application.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
-            // Obtain the bundle name of the application.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
-            // Obtain the PID and UID of the application.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
-            // Obtain the begin time and end time on the main thread.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.begin_time=${eventInfo.params['begin_time']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.end_time=${eventInfo.params['end_time']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
-            // Obtain the start time of the task when the main thread jank event occurs. (Parameter of the main thread timeout event collection stack.)
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_start_jiffies_time=${JSON.stringify(eventInfo.params['app_start_jiffies_time'])}`);
-            // Obtain the call stack that is printed most frequently in the generated log file. (Parameter of the main thread timeout event collection stack.)
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.heaviest_stack=${eventInfo.params['heaviest_stack']}`);
+   <!-- @[MainThreadJank_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-            // Obtain the error log file generated when the main thread jank event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
-            // Move the file to a new directory.
-            let path: string = String(eventInfo.params['external_log']);
-            // Customize the new storage path.
-            let targetPath: string = "";
-            if (path.endsWith(".txt")) {
-              targetPath= "/data/storage/el2/base/mainThreadJank.txt";
-            } else if (path.endsWith(".trace")) {
-              targetPath= "/data/storage/el2/base/mainThreadJank.trace";
-            }
-            fileIo.copyFileSync(path.toString(), targetPath.toString());
-          }
-        }
-      }
-    });
+   ``` TypeScript
+   // Add a watcher for main thread jank events.
+   hiAppEvent.addWatcher({
+     // You can customize the watcher name. The system uses the name to identify different watchers.
+     name: "mainThreadWatcher",
+     // Subscribe to the system events of interest. Here, main thread jank events are subscribed to.
+     appEventFilters: [
+       {
+         domain: hiAppEvent.domain.OS,
+         names: [hiAppEvent.event.MAIN_THREAD_JANK]
+       }
+     ],
+     // Implement the real-time subscription callback to customize the processing of subscribed event data.
+     onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+       hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
+       for (const eventGroup of appEventGroups) {
+         // Use the event names in the event group to distinguish different system events.
+         hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
+         for (const eventInfo of eventGroup.appEventInfos) {
+           // Customize the processing of event data in the event group. Here, the event data is printed in logs.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
+           // Obtain the timestamp of the main thread jank event.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
+           // Obtain the version of the application in which the main thread jank event occurs.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
+           // Obtain the bundle name of the application in which the main thread jank event occurs.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
+           // Obtain the PID and UID of the application in which the main thread jank event occurs.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
+           // Obtain the start and end times of main thread processing.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.begin_time=${eventInfo.params['begin_time']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.end_time=${eventInfo.params['end_time']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+           // Obtain the task start time for the main thread jank event (a stack sampling parameter).
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_start_jiffies_time=${JSON.stringify(eventInfo.params['app_start_jiffies_time'])}`);
+           // Obtain the most frequently printed call stack in the generated main thread jank log file (a stack sampling parameter).
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.heaviest_stack=${eventInfo.params['heaviest_stack']}`);
+
+           // Obtain the fault log file for the main thread jank event.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+           // Move the file to a new directory as follows.
+           let path: string = String(eventInfo.params['external_log']);
+           // Specify a custom storage path.
+           let targetPath: string = "";
+           if (path.endsWith(".txt")) {
+             targetPath= "/data/storage/el2/base/mainThreadJank.txt";
+           } else if (path.endsWith(".trace")) {
+             targetPath= "/data/storage/el2/base/mainThreadJank.trace";
+           }
+           try {
+             fileIo.copyFileSync(path.toString(), targetPath.toString());
+           } catch (e) {
+             hilog.error(0x0000, 'testTag', `copy file failed: ${e}`);
+           }
+         }
+       }
+     }
+   });
    ```
 
 3. Simulate a main thread timeout stack sampling event.
 
-   Edit the **entry/src/main/ets/pages/Index.ets** file. The sample code is as follows:
+   Edit the **entry/src/main/ets/pages/Index.ets** file to add a button. In its **onClick** callback, simulate a main thread timeout to trigger a main thread jank event. The sample code is as follows:
 
-   ```ts
-     @Entry
-     @Component
-     struct Index {
-       build() {
-         RelativeContainer() {
-           Column() {
-             Button("timeOut350", { stateEffect:true, type: ButtonType.Capsule})
-               .width('75%')
-               .height(50)
-               .margin(15)
-               .fontSize(20)
-               .fontWeight(FontWeight.Bold)
-               .onClick(() => {
-                 let t = Date.now();
-                 while (Date.now() - t <= 350) {}
-               })
-           }.width('100%')
-         }
-         .height('100%')
-         .width('100%')
-       }
-     }
+   <!-- @[MainThreadJank_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // Add a click handler to trigger MAIN_THREAD_JANK.
+   Button('timeOut350')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       let t = Date.now();
+       while (Date.now() - t <= 350) {}
+     })
    ```
 
 4. (Optional) Simulate the customization of the main thread timeout parameter and trigger the main thread jank event.
 
    Edit the **entry > src > main > ets > pages> Index.ets** file in the project. In this example, a **customSample** button component is configured in **onClick()** to implement the custom sampling stack parameters. The sample code is as follows:
 
-   ```ts
-     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-     import { BusinessError } from '@kit.BasicServicesKit';
-   
-     // Define functions that simulate timeout events. Sample code:
-     function wait150ms() {
+   Import the required module.
+    <!-- @[MainThreadJankEvent_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+    ```
+
+   Customize the stack sampling parameters.
+
+    <!-- @[MainThreadJank_Set_Event_Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    Button("customSample", { stateEffect:true, type: ButtonType.Capsule})
+      .width('75%')
+      .height(50)
+      .margin(15)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+      .onClick(() => {
+        // Write an event in the button click handler to record the button click.
+        let params: Record<string, hiAppEvent.ParamType> = {
+          // Log type: 0 (default), 1 (stack sampling only), or 2 (trace collection only).
+          "log_type": "1",
+          // Timeout duration and sampling interval.
+          "sample_interval": "100",
+          // Startup period during which detection is skipped.
+          "ignore_startup_time": "11",
+          // Number of samples.
+          "sample_count": "21",
+          // Number of event reports.
+          "report_times_per_app": "3"
+        };
+        hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
+          hilog.info(0x0000, 'testTag', `HiAppEvent success to set event params.`)
+        }).catch((err: BusinessError) => {
+          hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`)
+        });
+      })
+    ```
+
+   Trigger a 150 ms timeout event.
+
+   <!-- @[MainThreadJank_Timeout_150_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // Add a click handler to trigger MAIN_THREAD_JANK.
+   Button('timeOut150')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
        let t = Date.now();
-       while (Date.now() - t <= 150){
-       }
-     }
-   
-     function wait500ms() {
-       let t = Date.now();
-       while (Date.now() - t <= 500){
-       }
-     }
-   
-     @Entry
-     @Component
-     struct Index {
-       build() {
-         RelativeContainer() {
-           Column() {
-             // Button for customizing sampling stack parameters
-             Button("customSample", { stateEffect:true, type: ButtonType.Capsule})
-               .width('75%')
-               .height(50)
-               .margin(15)
-               .fontSize(20)
-               .fontWeight(FontWeight.Bold)
-               .onClick(() => {
-                 // Log a button onclick event when the button is clicked.
-                 let params: Record<string, hiAppEvent.ParamType> = {
-                   // The log type. The value 0 indicates the default value. The value 1 indicates that only the stack is sampled. The value 2 indicates that only the trace is collected.
-                   "log_type": "1",
-                   // The sampling interval.
-                   "sample_interval": "100",
-                   // The startup time to be ignored.
-                   "ignore_startup_time": "11",
-                   // Sampling count.
-                   "sample_count": "21",
-                   // The number of event reporting times.
-                   "report_times_per_app": "3"
-                 };
-                 hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
-                   hilog.info(0x0000, 'testTag', `HiAppEvent success to set event params.`)
-                 }).catch((err: BusinessError) => {
-                   hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`)
-                 });
-               })
-             // Button for triggering a 150ms timeout event
-             Button("timeOut150", { stateEffect:true, type: ButtonType.Capsule})
-               .width('75%')
-               .height(50)
-               .margin(15)
-               .fontSize(20)
-               .fontWeight(FontWeight.Bold)
-               .onClick(() => {
-                 wait150ms();
-               })
-           }.width('100%')
-         }
-         .height('100%')
-         .width('100%')
-       }
-     }
+       while (Date.now() - t <= 150) {}
+     })
    ```
 
 5. Simulate a main thread timeout trace sampling event.
@@ -202,29 +197,22 @@ The following walks you through on how to subscribe to the main thread jank even
    >
    > Before starting the timeout trace capture of the main thread, ensure that you use the [nolog version](performance-analysis-kit-terminology.md#nolog-version) and disable **Developer options**.
 
-   ```ts
-     @Entry
-     @Component
-     struct Index {
-       build() {
-         RelativeContainer() {
-           Column() {
-             Button("timeOut500", { stateEffect:true, type: ButtonType.Capsule})
-               .width('75%')
-               .height(50)
-               .margin(15)
-               .fontSize(20)
-               .fontWeight(FontWeight.Bold)
-               .onClick(() => {
-                 let t = Date.now();
-                 while (Date.now() - t <= 500) {}
-               })
-           }.width('100%')
-         }
-         .height('100%')
-         .width('100%')
-       }
-     }
+   <!-- @[MainThreadJank_Timeout_500_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // Add a click handler to trigger MAIN_THREAD_JANK.
+   Button('timeOut500')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       let t = Date.now();
+       while (Date.now() - t <= 500) {}
+     })
    ```
 
 6. Click the **Run** button in DevEco Studio to run the project.
@@ -236,7 +224,7 @@ The following walks you through on how to subscribe to the main thread jank even
    > If you use the **setEventConfig** API to set sampling stack parameters, the system starts main thread jank event detection after the time specified by **ignore_startup_time**.
 
    The main thread jank event is triggered when two consecutive timeout events are detected within the interval of the detection task.
-
+  
    You can quickly click the timeout button for two or three times (for example, **timeOut350**, **timeOut150**, or **timeOut500**) to trigger the main thread jank event.
 
 ### Verifying the Subscription

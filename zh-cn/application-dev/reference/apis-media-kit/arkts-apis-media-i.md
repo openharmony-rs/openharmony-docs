@@ -444,6 +444,7 @@ async function setupPlayer() {
 | privacyMaskMode<sup>23+</sup> | number | 否 | 是 | 设置屏幕录制时对隐私窗口的屏蔽模式。<br> - 0：表示存在隐私窗口时，采用全屏屏蔽模式，默认是0。<br> - 1：表示存在隐私窗口时，采用隐私窗口屏蔽模式。<br> - 设置为其他值时返回错误。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | enablePause | boolean | 否 | 是 | 表示录屏过程中是否允许暂停录屏。<br>true表示允许，false表示不允许。默认是false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | enableAEC | boolean | 否 | 是 | 表示当麦克风采集开启时，是否开启回声检测与回声消除功能。<br>true表示开启回声消除功能，false表示关闭回声消除功能，默认值为false。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| enableHDR | boolean | 否 | 是 | 录屏指定是否以HDR格式输出图像。<br> true表示图像为HDR格式，false表示图像为SDR格式。<br> 默认值为false。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 
@@ -557,3 +558,20 @@ async function setupPlayer() {
 | start | number | 否   | 否   | 基于时间的元数据相对整个媒体起始时间的偏移值。<br>取值限定为整数。<br>单位：毫秒。 |
 | duration | number | 否   | 否   | 基于时间的元数据的持续时长。<br>取值限定为整数。<br>单位：毫秒。 |
 | contents | Record<string, object> | 否   | 否   | 基于时间的元数据对应的键值对集合。 |
+
+## RectangleRegion
+
+矩形区域的配置参数，用于在[setCaptureArea](arkts-apis-media-AVScreenCaptureRecorder.md#setcapturearea)接口中指定屏幕录制时实际录制的区域。区域位置以屏幕左上角为原点计算，区域大小由宽度和高度确定。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| top    | number | 否   | 否   | 矩形区域相对于屏幕顶部边缘的偏移量。<br>取值约束：该值必须为大于或等于0的整数。<br>单位为像素（px）。 |
+| left   | number | 否   | 否   | 矩形区域相对于屏幕左边缘的偏移量。<br>取值约束：该值必须为大于或等于0的整数。<br>单位为像素（px）。 |
+| width  | number | 否   | 否   | 矩形区域的宽度。<br>取值约束：该值必须为大于0的整数，且left与width之和不能大于屏幕宽度。<br>单位为像素（px）。 |
+| height | number | 否   | 否   | 矩形区域的高度。<br>取值约束：该值必须为大于0的整数，且top与height之和不能大于屏幕高度。<br>单位为像素（px）。 |

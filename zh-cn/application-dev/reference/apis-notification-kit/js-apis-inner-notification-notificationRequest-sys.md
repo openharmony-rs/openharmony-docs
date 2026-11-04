@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationRequest](js-apis-inner-notification-notificationRequest.md)。
 
@@ -31,7 +31,7 @@
 | representativeBundle<sup>12+</sup> | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 是 | 被代理的包信息。默认为空。<br>**系统接口**：此接口为系统接口。 |
 | notificationControlFlags<sup>12+</sup>       | number                                                   |   否  | 是  | [通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)管控。默认值为0。<br>可以通过此接口减少当前通知的提醒方式。与[NotificationControlFlagStatus](js-apis-notificationManager-sys.md#notificationcontrolflagstatus12)的枚举进行按位或运算得到该参数。<br>**系统接口**：此接口为系统接口。            |
 | unifiedGroupInfo<sup>12+</sup>       | [UnifiedGroupInfo](#unifiedgroupinfo12) |   否  | 是  |消息[智能聚合](../../notification/notification-glossary.md#notification-smart-aggregation智能聚合)信息字段。默认为空。 <br>**系统接口**：此接口为系统接口。|
-| creatorInstanceKey<sup>(deprecated)</sup>      | number |   是  | 是  | 创建者实例键值。<br>从API version 12开始支持，从API version 15开始废弃，建议使用appInstanceKey替代。<br>**系统接口**：此接口为系统接口。|
+| creatorInstanceKey<sup>(deprecated)</sup>      | number |   是  | 是  | 创建者实例键值。<br>从API版本12开始支持，从API版本15开始废弃，建议使用appInstanceKey替代。<br>**系统接口**：此接口为系统接口。|
 | agentBundle<sup>12+</sup>       | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) |   是  | 是  | 创建通知的代理包信息。默认为空。 <br>**系统接口**：此接口为系统接口。|
 | appInstanceKey<sup>15+</sup>       | string |   是  | 是  | 应用实例键值。默认为空。当需要区分同一应用的不同实例时，设置此字段。<br>**系统接口**：此接口为系统接口。|
 | notDistributed<sup>18+</sup> | boolean | 否 | 是 | 通知是否不进行全场景[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)显示，默认为false。<br/>**说明**:<br/>该字段与forceDistributed字段互斥，当两者同时为true时，仅notDistributed字段生效。<br/>-&nbsp;设置为true时：通知仅在本设备上显示。<br/>-&nbsp;设置为false时：通知将在所有协同设备上显示。<br>**系统接口**: 此接口为系统接口。 |

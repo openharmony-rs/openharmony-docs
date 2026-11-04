@@ -5,13 +5,14 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=ecaccbf249e6a7771624e675ca80e1f5142e1256 translatedAt=2026-11-03T06:53:19.542Z pushedAt=2026-11-04T03:11:19.935Z nl=1 -->
 
-The **formHost** module provides APIs related to the widget host, which is an application that displays the widget content and controls the position where the widget is displayed. You can use the APIs to delete, release, and update widgets installed by the same user, and obtain widget information and status.
+The formHost module provides the capabilities of form host related APIs, including deleting, releasing, requesting updates, obtaining card information, and querying status of forms installed under the same user of the form host.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are system APIs.
+> The APIs provided by this module are all system APIs.
 
 ## Modules to Import
 
@@ -23,24 +24,24 @@ import { formHost } from '@kit.FormKit';
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes a widget. After this API is called, the application can no longer use the widget, and the Widget Manager will not retain the widget information. This API uses an asynchronous callback to return the result.
+Deletes a specified form. After this method is called, the application will be unable to use the form, and the form management service will no longer retain information about the form. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is deleted, **error** is undefined; otherwise, **error** is an error object.|
+| formId | string | Yes   | Card ID. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked to return the result. If the specified form is deleted successfully, **error** is **undefined**; otherwise, **error** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -75,30 +76,30 @@ try {
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
-Deletes a widget. After this API is called, the application can no longer use the widget, and the Widget Manager will not retain the widget information. This API uses a promise to return the result.
+Deletes a specified form. After this method is called, the application will be unable to use the form, and the form management service will no longer retain information about the form. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
+| formId | string | Yes | Card ID. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -130,24 +131,24 @@ try {
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Releases a widget. After this API is called, the application can no longer use the widget, but the Widget Manager still retains the widget cache and storage information. This API uses an asynchronous callback to return the result.
+Releases the specified card. After this method is called, the application will be unable to use the card, but the card management service still retains the cached information and stored information about the card. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is released, **error** is undefined; otherwise, **error** is an error object.|
+| formId | string | Yes   | Card ID. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked to return the result. If the specified card is released successfully, **error** is **undefined**; otherwise, **error** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -180,25 +181,25 @@ try {
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Releases a widget. After this API is called, the application can no longer use the widget, but the Widget Manager retains the storage information about the widget and retains or releases the cache information based on the setting. This API uses an asynchronous callback to return the result.
+Releases the specified form. After this method is called, the application will be unable to use the form, and the card management service retains the storage information about the form. You can choose whether to retain the cache information. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name        | Type    | Mandatory| Description       |
+| Name | Type | Mandatory | Description |
 | -------------- | ------  | ---- | ----------- |
-| formId         | string  | Yes  | Widget ID.    |
-| isReleaseCache | boolean | Yes  | Whether to release the cache.<br>**true**: Release the cache.<br>**false**: Not release the cache.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is released, **error** is undefined; otherwise, **error** is an error object.|
+| formId         | string  | Yes   | Card ID.     |
+| isReleaseCache | boolean | Yes   | Whether to release the cache.<br>true: release the cache.<br>false: do not release the cache. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the specified form is released successfully, **error** is **undefined**; otherwise, **error** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -231,30 +232,30 @@ try {
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
-Releases a widget. After this API is called, the application can no longer use the widget, but the Widget Manager retains the storage information about the widget and retains or releases the cache information based on the setting. This API uses a promise to return the result.
+Releases the specified form. After this method is called, the application will be unable to use the form, and the card management service retains the storage information about the form. You can choose whether to retain the cache information. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name        | Type    | Mandatory| Description       |
+| Name | Type | Mandatory | Description |
 | -------------- | ------  | ---- | ----------- |
-| formId         | string  | Yes  | Widget ID.    |
-| isReleaseCache | boolean | No  | Whether to release the cache. The default value is **false**.<br>**true**: Release the cache.<br>**false**: Not release the cache. |
+| formId         | string  | Yes  | Card ID.     |
+| isReleaseCache | boolean | No  | Whether to release the cache. The default value is **false**.<br>**true**: release the cache.<br>**false**: do not release the cache.  |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -287,24 +288,24 @@ try {
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Requests a widget update. This API uses an asynchronous callback to return the result.
+Requests a card update. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is updated, **error** is undefined; otherwise, **error** is an error object.|
+| formId | string | Yes   | Card ID. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the card update request is successful, **error** is **undefined**. Otherwise, **error** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -337,29 +338,29 @@ try {
 
 requestForm(formId: string): Promise&lt;void&gt;
 
-Requests a widget update. This API uses a promise to return the result.
+Requests a card update. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
+| formId | string | Yes   | Card ID. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -392,30 +393,30 @@ try {
 
 requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Promise&lt;void&gt;
 
-Carries parameters to request a widget update. This API uses a promise to return the result.
+Requests a form update with parameters. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| wantParams | Record<string, Object> | No  | Parameters used for the update.|
+| formId | string | Yes   | Card ID. |
+| wantParams | Record<string, Object> | No   | Update parameters. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -451,24 +452,24 @@ try {
 
 castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Converts a temporary widget to a normal one. This API uses an asynchronous callback to return the result.
+Converts a specified temporary form into a normal form. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is converted to a normal one, **error** is undefined; otherwise, **error** is an error object.|
+| formId | string | Yes   | Card ID. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked to return the result. If the specified temporary form is converted into a normal form successfully, **error** is **undefined**; otherwise, **error** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -501,29 +502,29 @@ try {
 
 castToNormalForm(formId: string): Promise&lt;void&gt;
 
-Converts a temporary widget to a normal one. This API uses a promise to return the result.
+Converts the specified temporary form into a normal form. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
+| formId | string | Yes | Card ID. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -556,24 +557,24 @@ try {
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Instructs the widget framework to make a widget visible. After this API is called, **onVisibilityChange** is invoked to notify the widget provider. This API uses an asynchronous callback to return the result.
+Sends a notification to the card framework to make the specified cards visible. After this method is called successfully, onVisibilityChange is invoked to notify the card provider. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds  | Array&lt;string&gt;       | Yes  | List of widget IDs.        |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If a notification is sent to the widget framework to make the widget visible, **error** is undefined; otherwise, **error** is an error object.|
+| formIds  | Array&lt;string&gt;       | Yes   | List of card IDs.         |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the notification is sent to the card framework to make the specified cards visible successfully, error is undefined; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -604,29 +605,29 @@ try {
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Instructs the widget framework to make a widget visible. After this API is called, **onVisibilityChange** is invoked to notify the widget provider. This API uses a promise to return the result.
+Sends a notification to the card framework to make the specified cards visible. After this method is called successfully, onVisibilityChange is invoked to notify the form provider. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
+| formIds | Array&lt;string&gt; | Yes   | List of card IDs. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -657,24 +658,24 @@ try {
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Instructs the widget framework to make a widget invisible. After this API is called, **onVisibilityChange** is invoked to notify the widget provider. This API uses an asynchronous callback to return the result.
+Sends a notification to the card framework to make the specified cards invisible. After this method is called successfully, onVisibilityChange is invoked to notify the form provider. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds  | Array&lt;string&gt;       | Yes  | List of widget IDs.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If a notification is sent to the widget framework to make the widget invisible, **error** is undefined; otherwise, **error** is an error object.|
+| formIds  | Array&lt;string&gt;       | Yes   | List of card IDs.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the notification is sent to the card framework to make the specified cards invisible successfully, error is undefined; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Errors](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -705,29 +706,29 @@ try {
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Instructs the widget framework to make a widget invisible. After this API is called, **onVisibilityChange** is invoked to notify the widget provider. This API uses a promise to return the result.
+Sends a notification to the card framework to make the specified cards invisible. After this method is called successfully, onVisibilityChange is invoked to notify the card provider. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
+| formIds | Array&lt;string&gt; | Yes   | List of card IDs. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -758,24 +759,24 @@ try {
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Instructs the widget framework to make a widget updatable. After this API is called, the widget is in the enabled state and can receive updates from the widget provider. This API uses an asynchronous callback to return the result.
+Sends a notification to the card framework to make the specified cards updatable. After this method is called successfully, the card refresh status is set to enabled, and the cards can receive updates from the card provider. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | ------- |
-| formIds  | Array&lt;string&gt;       | Yes  | List of widget IDs.        |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If a notification is sent to the widget framework to make the widget updatable, **error** is undefined; otherwise, **error** is an error object.|
+| formIds  | Array&lt;string&gt;       | Yes   | List of card IDs.         |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the notification is sent to the card framework to make the specified cards updatable successfully, error is undefined; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -807,29 +808,29 @@ try {
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Instructs the widget framework to make a widget updatable. After this API is called, the widget is in the enabled state and can receive updates from the widget provider. This API uses a promise to return the result.
+Sends a notification to the card framework to enable the specified cards to be updated. After this API is called successfully, the card refresh status is set to enabled, and the cards can receive updates from the card provider. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
+| formIds | Array&lt;string&gt; | Yes   | List of card IDs. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Errors](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -861,24 +862,24 @@ try {
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Instructs the widget framework to make a widget not updatable. After this API is called, the widget cannot receive updates from the widget provider. This API uses an asynchronous callback to return the result.
+Sends a notification to the card framework to make the specified cards unable to be updated. After this method is called successfully, the card refresh status is set to disabled, and the cards cannot receive updates from the form provider. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds  | Array&lt;string&gt;       | Yes  | List of widget IDs.        |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If a notification is sent to the widget framework to make the widget not updatable, **error** is undefined; otherwise, **error** is an error object.|
+| formIds  | Array&lt;string&gt;       | Yes   | List of card IDs.         |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the notification is sent to the card framework to make the specified cards unable to be updated successfully, error is undefined; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -911,29 +912,29 @@ try {
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Instructs the widget framework to make a widget not updatable. After this API is called, the widget cannot receive updates from the widget provider. This API uses a promise to return the result.
+Sends a notification to the card framework to make the specified cards unable to be updated. After this method is called successfully, the card refresh status is set to disabled, and the cards cannot receive updates from the form provider. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
+| formIds | Array&lt;string&gt; | Yes   | List of card IDs. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -968,19 +969,19 @@ isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
 Checks whether the system is ready. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the check is successful, **error** is undefined; otherwise, **error** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked to return the result. If the system is ready, **error** is **undefined**; otherwise, **error** is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 202 | The application is not a system application.   |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
@@ -1008,19 +1009,19 @@ isSystemReady(): Promise&lt;void&gt;
 
 Checks whether the system is ready. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 202 | The application is not a system application.   |
 
@@ -1045,23 +1046,23 @@ try {
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-Obtains the widget information provided by all applications on the device (excluding template widgets). This API uses an asynchronous callback to return the result.
+Obtains the card information provided by all applications on the device (excluding template cards). This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type                                                                                          | Mandatory| Description   |
+| Name | Type                                                                                           | Mandatory | Description    |
 | ------ |----------------------------------------------------------------------------------------------| ---- | ------- |
-| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Yes| Callback used to return the result. If the widget information is obtained, **error** is undefined and **data** is the information obtained; otherwise, **error** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Yes | Callback used to return the result. If the card information provided by all applications on the device is obtained successfully, **error** is **undefined** and **data** is the retrieved card information; otherwise, **error** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1092,23 +1093,23 @@ try {
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the widget information provided by all applications on the device (excluding template widgets). This API uses a promise to return the result.
+Obtains the card information provided by all applications on the device (excluding template forms). This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Return value**
 
-| Type                                                                                    | Description                   |
+| Type                                                                                     | Description                    |
 |:---------------------------------------------------------------------------------------|:----------------------|
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the information obtained.|
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the card information. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1136,24 +1137,24 @@ try {
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-Obtains the widget information provided by a specified application on the device (excluding template widgets). This API uses an asynchronous callback to return the result.
+Obtains the card information provided by a specified application on the device (excluding template forms). This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type                                                                                          | Mandatory| Description   |
+| Name | Type                                                                                           | Mandatory | Description    |
 | ------ |----------------------------------------------------------------------------------------------| ---- | ------- |
-| bundleName | string                                                                                       | Yes| Bundle name of the application.|
-| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Yes| Callback used to return the result. If the widget information is obtained, **error** is undefined and **data** is the information obtained; otherwise, **error** is an error object.|
+| bundleName | string                                                                                       | Yes | Bundle name of the application to query. |
+| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Yes | Callback invoked to return the result. If the card information of the specified application on the device is obtained successfully, error is undefined and data is the retrieved card information; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1185,25 +1186,25 @@ try {
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-Obtains the widget information provided by a specified application on the device (excluding template widgets). This API uses an asynchronous callback to return the result.
+Obtains the card information provided by a specified application on the device (excluding template forms). This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type                                                                                          | Mandatory| Description   |
+| Name | Type                                                                                           | Mandatory | Description    |
 | ------ |----------------------------------------------------------------------------------------------| ---- | ------- |
-| bundleName | string                                                                                       | Yes| Bundle name of the application.|
-| moduleName | string                                                                                       | Yes|  Module name.|
-| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Yes| Callback used to return the result. If the widget information is obtained, **error** is undefined and **data** is the information obtained; otherwise, **error** is an error object.|
+| bundleName | string                                                                                       | Yes | Bundle name of the application to query. |
+| moduleName | string                                                                                       | Yes |  Name of the module to query. |
+| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Yes | Callback used to return the result. If the card information provided by the specified application on the device is obtained successfully, **error** is **undefined** and **data** is the retrieved card information; otherwise, **error** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1235,30 +1236,30 @@ try {
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the widget information provided by a specified application on the device (excluding template widgets). This API uses a promise to return the result.
+Obtains the card information provided by a specified application on the device (excluding template forms). This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| bundleName | string | Yes| Bundle name of the application.|
-| moduleName | string | No|  Module name. By default, no value is passed.|
+| bundleName | string | Yes | Bundle name of the application to query. |
+| moduleName | string | No |  Name of the module to query. The default value is an empty string. |
 
 **Return value**
 
-| Type                                                                                    | Description                               |
+| Type                                                                                     | Description                                |
 |:---------------------------------------------------------------------------------------| :---------------------------------- |
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the information obtained.|
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the card information obtained. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1288,29 +1289,29 @@ try {
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the widget information provided by a specified application on the device (excluding template widgets). This API uses a promise to return the result.
+Obtains the card information provided by a specified application on the device (excluding template forms). This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| filter | [formInfo.FormInfoFilter](js-apis-app-form-formInfo.md#forminfofilter) | Yes| Filter criterion.|
+| filter | [formInfo.FormInfoFilter](js-apis-app-form-formInfo.md#forminfofilter) | Yes | Card information filter. |
 
 **Return value**
 
-| Type         | Description                               |
+| Type          | Description                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md)&gt;&gt; | Promise used to return the information obtained.|
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md)&gt;&gt; | Promise object. Returns the card information that matches the filter. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application.  |
@@ -1345,24 +1346,24 @@ try {
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
-Deletes widgets that are not in the valid widget list. This API uses an asynchronous callback to return the result.
+Deletes the forms of the application that are not in the valid list based on the valid form list. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of valid widgets.|
-| callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the invalid widgets are deleted, **error** is undefined and **data** is the number of widgets deleted; otherwise, **error** is an error object.|
+| formIds | Array&lt;string&gt; | Yes   | List of valid card IDs. |
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback invoked to return the result. If the invalid forms of the application are deleted based on the list, **error** is **undefined** and **data** is the number of deleted forms; otherwise, **error** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1394,29 +1395,29 @@ try {
 
 deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
-Deletes invalid widgets from the list. This API uses a promise to return the result.
+Deletes the invalid forms of an application based on the list. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of valid widget IDs.|
+| formIds | Array&lt;string&gt; | Yes   | List of valid card IDs. |
 
 **Return value**
 
-| Type         | Description                               |
+| Type          | Description                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the number of widgets deleted.|
+| Promise&lt;number&gt; | Promise used to return the number of deleted forms. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1446,24 +1447,24 @@ try {
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
 
-Obtains the widget state. This API uses an asynchronous callback to return the result.
+Obtains the form state. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.REQUIRE_FORM and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | **Want** information carried to query the widget state. The information must contain the bundle name, ability name, module name, widget name, and widget dimensions.|
-| callback | AsyncCallback&lt;[formInfo.FormStateInfo](js-apis-app-form-formInfo.md#formstateinfo)&gt; | Yes| Callback used to return the result. If the widget state is obtained, **error** is undefined and **data** is the widget state obtained; otherwise, **error** is an error object.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Want information carried when querying the form state. It must contain the bundle name, ability name, module name, form name, form dimension, and so on. |
+| callback | AsyncCallback&lt;[formInfo.FormStateInfo](js-apis-app-form-formInfo.md#formstateinfo)&gt; | Yes | Callback invoked to return the result. If the form state is obtained successfully, **error** is **undefined** and **data** is the form state obtained; otherwise, **error** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1507,29 +1508,29 @@ try {
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
-Obtains the widget state. This API uses a promise to return the result.
+Obtains the form state. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.REQUIRE_FORM and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | **Want** information carried to query the widget state. The information must contain the bundle name, ability name, module name, widget name, and widget dimensions.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Want information carried when querying the form state. It must contain the bundle name, ability name, module name, form name, and form dimension. |
 
 **Return value**
 
-| Type         | Description                               |
+| Type          | Description                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[formInfo.FormStateInfo](js-apis-app-form-formInfo.md#formstateinfo)&gt; | Promise used to return the widget state obtained.|
+| Promise&lt;[formInfo.FormStateInfo](js-apis-app-form-formInfo.md#formstateinfo)&gt; | Promise used to return the form state. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1571,26 +1572,26 @@ try {
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
-Subscribes to widget uninstall events. This API uses an asynchronous callback to return the result.
+Subscribes to the form uninstall event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
-> Widget uninstall is different from widget removal. When an application is uninstalled, the corresponding widget is automatically uninstalled.
+> Form uninstall is different from form removal. When an application is uninstalled, the corresponding forms are uninstalled automatically.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| type | string | Yes  | Event type. The value **'formUninstall'** indicates a widget uninstall event.|
-| callback | Callback&lt;string&gt; | Yes| Callback used to return the widget ID.|
+| type | string | Yes   | Set this parameter to 'formUninstall', which indicates the form uninstall event. |
+| callback | Callback&lt;string&gt; | Yes | Callback invoked to return the card ID. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
@@ -1609,26 +1610,26 @@ formHost.on('formUninstall', (formId: string) => {
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
-Unsubscribes from widget uninstall events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the form uninstall event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
-> Widget uninstall is different from widget removal. When an application is uninstalled, the corresponding widget is automatically uninstalled.
+> Form uninstall is different from form removal. When an application is uninstalled, the corresponding forms are automatically uninstalled.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| type | string | Yes  | Event type. The value **'formUninstall'** indicates a widget uninstall event.|
-| callback | Callback&lt;string&gt; | No| Callback used to return the widget ID. If it is left unspecified, it indicates the callback for all the events that have been subscribed.<br> To cancel the subscription with a given callback, this parameter must be set to the same value as **callback** in **on('formUninstall')**.|
+| type | string | Yes   | Set this parameter to 'formUninstall', which indicates the form uninstall event. |
+| callback | Callback&lt;string&gt; | No | Callback for the form uninstall event, which returns the card ID. If this parameter is left unspecified, all registered event callbacks are unregistered.<br> This callback must be the same as the callback in the corresponding on('formUninstall'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
@@ -1647,25 +1648,25 @@ formHost.off('formUninstall', (formId: string) => {
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Instructs the widgets to make themselves visible. This API uses an asynchronous callback to return the result.
+Notifies whether a form is visible. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isVisible | boolean | Yes  | Whether the widget is visible.<br>**true**: The widget is visible.<br>**false**: The widget is invisible.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the notification is sent, **error** is undefined; otherwise, **error** is an error object.|
+| formIds | Array&lt;string&gt; | Yes   | List of card IDs. |
+| isVisible | boolean | Yes   | Whether the form is visible.<br>true: The form is visible.<br>false: The form is invisible. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked to return the result. If the notification of form visibility succeeds, error is undefined; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1697,30 +1698,30 @@ try {
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
 
-Instructs the widgets to make themselves visible. This API uses a promise to return the result.
+Notifies whether a form is visible. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isVisible | boolean | Yes  | Whether the widget is visible.<br>**true**: The widget is visible.<br>**false**: The widget is invisible.|
+| formIds | Array&lt;string&gt; | Yes   | List of card IDs. |
+| isVisible | boolean | Yes   | Whether the form is visible.<br>true: The form is visible.<br>false: The form is invisible. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1752,25 +1753,25 @@ try {
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Instructs the widgets to enable or disable updates. This API uses an asynchronous callback to return the result.
+Notifies whether to enable the update status of a form. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isEnableUpdate | boolean | Yes  | Indicates whether the widget update state is enabled.<br>**true**: yes **false**: no|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the notification is sent, **error** is undefined; otherwise, **error** is an error object.|
+| formIds | Array&lt;string&gt; | Yes   | List of card IDs. |
+| isEnableUpdate | boolean | Yes   | Whether to enable the update status of the form.<br>true: The update status of the form is enabled. false: The update status of the form is not enabled.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked to return the result. If the notification of whether to enable the update status of the form is successful, error is undefined; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1802,30 +1803,30 @@ try {
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
 
-Instructs the widgets to enable or disable updates. This API uses a promise to return the result.
+Notifies whether to enable the update status of a form. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isEnableUpdate | boolean | Yes  | Indicates whether the widget update state is enabled.<br>**true**: yes<br>**false**: no|
+| formIds | Array&lt;string&gt; | Yes   | List of card IDs. |
+| isEnableUpdate | boolean | Yes   | Whether to enable the update status of the form.<br>true: The update status of the form is enabled.<br>false: The update status of the form is not enabled. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1856,25 +1857,25 @@ try {
 
 shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Shares a specified widget with a remote device. This API uses an asynchronous callback to return the result.
+Shares a form with the specified form ID and remote device ID. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM and ohos.permission.DISTRIBUTED_DATASYNC
+**Required permissions:** ohos.permission.REQUIRE_FORM and ohos.permission.DISTRIBUTED_DATASYNC
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| deviceId | string | Yes  | Remote device ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the widget is shared, **error** is undefined; otherwise, **error** is an error object.|
+| formId | string | Yes   | Card ID. |
+| deviceId | string | Yes   | Remote device ID. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked to return the result. If the form is shared successfully with the specified form ID and remote device ID, error is undefined; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1907,30 +1908,30 @@ try {
 
 shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
-Shares a specified widget with a remote device. This API uses a promise to return the result.
+Shares a form with the specified form ID and remote device ID. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM and ohos.permission.DISTRIBUTED_DATASYNC
+**Required permissions:** ohos.permission.REQUIRE_FORM and ohos.permission.DISTRIBUTED_DATASYNC
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| deviceId | string | Yes  | Remote device ID.|
+| formId | string | Yes | Card ID. |
+| deviceId | string | Yes | Remote device ID. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -1963,25 +1964,25 @@ try {
 
 notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callback: AsyncCallback\<void>): void
 
-Notifies that the privacy protection status of the specified widgets changes. This API uses an asynchronous callback to return the result.
+Notifies the specified cards of the change in the privacy protection state. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formIds | Array\<string\> | Yes  | ID of the widgets.|
-| isProtected | boolean | Yes  | Whether a widget requires privacy protection.<br>**true**: The widget requires privacy protection.<br>**false**: The widget does not require privacy protection.|
-| callback | AsyncCallback\<void> | Yes| Callback used to return the result. If privacy protection is set successfully, **error** is undefined; otherwise, **error** is an error object.|
+| formIds | Array\<string\> | Yes   | List of card IDs whose privacy protection needs to be modified. |
+| isProtected | boolean | Yes   | Whether the card is in the privacy protection state.<br>true: The card is in the privacy protection state.<br>false: The card is not in the privacy protection state. |
+| callback | AsyncCallback\<void> | Yes | Callback invoked when the privacy protection attribute is set for the specified cards. If the operation is successful, error is undefined; otherwise, error is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -2012,30 +2013,30 @@ try {
 
 notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Promise\<void\>
 
-Notifies that the privacy protection status of the specified widgets changes. This API uses a promise to return the result.
+Notifies the specified cards of a privacy protection status change. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name     | Type           | Mandatory| Description                            |
+| Name        | Type            | Mandatory | Description                             |
 | ----------- | --------------- | ---- | -------------------------------- |
-| formIds     | Array\<string\> | Yes  | ID of the widgets.|
-| isProtected | boolean         | Yes  | Whether a widget requires privacy protection.<br>**true**: The widget requires privacy protection.<br>**false**: The widget does not require privacy protection.|
+| formIds     | Array\<string\> | Yes   | List of card IDs whose privacy protection status needs to be changed. |
+| isProtected | boolean         | Yes   | Whether the card is in the privacy protection state.<br>true: The card is in the privacy protection state.<br>false: The card is not in the privacy protection state. |
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -2064,26 +2065,26 @@ try {
 
 acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>>): void
 
-Requests data from the widget provider. This API uses an asynchronous callback to return the result.
+Requests the data of the form provider. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| callback | AsyncCallback\<Record\<string, Object>> | Yes  | Callback used to return the API call result and the widget provider data.|
+| formId | string | Yes   | Card ID. |
+| callback | AsyncCallback\<Record\<string, Object>> | Yes   | Callback used to return the API execution result and the data of the form provider. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Common Errors](../errorcode-universal.md) and [Card Errors](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -2116,31 +2117,31 @@ try {
 
 acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
-Requests data from the widget provider. This API uses a promise to return the result.
+Requests the data of the form provider. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name     | Type           | Mandatory| Description                            |
+| Name      | Type            | Mandatory | Description                             |
 | ----------- | --------------- | ---- | -------------------------------- |
-| formId | string | Yes  | Widget ID.|
+| formId | string | Yes   | Card ID. |
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise\<Record\<string, Object>> | Promise used to return the API call result and the widget provider data.|
+| Promise\<Record\<string, Object>> | Promise used to return the result and the data of the form provider. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -2172,34 +2173,33 @@ try {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses an asynchronous callback to return the result.
+Sets the router proxy of a form. This API uses an asynchronous callback to return the Want information required for the form jump.
 
 
 
 > **NOTE**
 >
->- Generally, for a widget added to the home screen, in the case of router-based redirection, the widget framework checks whether the destination is proper and whether the widget has the redirection permission, and then triggers redirection accordingly. For a widget that is added to a widget host and has a router proxy configured, in the case of router-based redirection, the widget framework does not trigger redirection for the widget. Instead, it returns the **want** parameter containing the destination to the widget host. Therefore, if the widget host wants to use the Want information for redirection, it must have the application redirection permission. For details, see
-[UIAbilityContext.startAbility()](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability).
+>- Generally, for a form added to the home screen, when the form triggers a router jump, the form framework checks whether the jump destination is valid and whether the jump permission is available, and then performs the application jump. If the form host adds a form and sets a router proxy for it, when the form triggers a router jump, the form framework no longer performs the jump. Instead, it returns the want parameter containing the jump destination to the form host. Therefore, if the form host wants to use the want information to perform an application jump, it must ensure that it has the application jump permission. For details, see [UIAbilityContext.startAbility()](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability).
 >
->- Only one router proxy can be set for a widget. If multiple proxies are set, only the last proxy takes effect.
+>- A formId can have only one router proxy. If the proxy is set multiple times, the last one takes effect.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                                                        |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;       | Yes  | Array of widget IDs.                                              |
-| proxy    | Callback&lt;Want&gt;      | Yes  | Callback used to return the Want information required for redirection.                        |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the router proxy is set, **error** is **undefined**; otherwise, an exception is thrown.|
+| Name     | Type                      | Mandatory | Description                                                         |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| formIds  | Array&lt;string&gt;       | Yes       | Array of card IDs.                                               |
+| proxy    | Callback&lt;Want&gt;      | Yes       | Callback function. Returns the Want information required for the jump.                         |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback function. If the router proxy is set for the specified card successfully, error is undefined; otherwise, an exception is thrown. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
 | 202      | The application is not a system application.                 |
@@ -2245,7 +2245,7 @@ struct CardExample {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
               console.info('formHost recv router event.');
-              // The widget host processes the redirection.
+              // The form host handles the jump by itself.
               this.context.startAbility(want, (err: BusinessError) => {
                 console.error(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
               });
@@ -2267,38 +2267,38 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result.
+Sets the card redirection proxy. This API uses a promise to return the Want information required for the card redirection.
 
 > **NOTE**
 >
->- Generally, for a widget added to the home screen, in the case of router-based redirection, the widget framework checks whether the destination is proper and whether the widget has the redirection permission, and then triggers redirection accordingly. For a widget that is added to a widget host and has a router proxy configured, in the case of router-based redirection, the widget framework does not trigger redirection for the widget. Instead, it returns the **want** parameter containing the destination to the widget host. Therefore, if the widget host wants to use the Want information for redirection, it must have the application redirection permission. For details, see [UIAbilityContext.startAbility()](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability).
+>- Generally, for a card added to the home screen, when the card triggers a router redirection, the card framework checks whether the redirection destination is valid and whether the redirection permission is available, and then performs the application redirection. If the form host adds a card and sets a card redirection proxy, when the card triggers a router redirection, the card framework no longer performs the redirection for it. Instead, it returns the Want parameter containing the redirection destination to the form host. Therefore, if the form host wants to use this Want information to perform the application redirection, it must ensure that it has the application redirection permission. For details, see [UIAbilityContext.startAbility()](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability).
 >
->- Only one router proxy can be set for a widget. If multiple proxies are set, only the last proxy takes effect.
+>- A formId can have at most one redirection proxy. If the proxy is set multiple times, the last one set takes effect.
 
 
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name | Type                | Mandatory| Description                                |
-| ------- | -------------------- | ---- | ------------------------------------ |
-| formIds | Array&lt;string&gt;  | Yes  | Array of widget IDs.                      |
-| proxy   | Callback&lt;Want&gt; | Yes  | Callback used to return the Want information required for redirection.|
+| Name    | Type                 | Mandatory | Description                                 |
+| ------- | -------------------- | --------- | ------------------------------------------- |
+| formIds | Array&lt;string&gt;  | Yes       | Array of card IDs.                          |
+| proxy   | Callback&lt;Want&gt; | Yes       | Callback function. Returns the Want information required for the redirection. |
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
 | 202      | The application is not a system application.                 |
@@ -2344,7 +2344,7 @@ struct CardExample {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
               console.info('formHost recv router event.');
-              // The widget host processes the redirection.
+              // Handle the redirection by the form host itself.
               this.context.startAbility(want, (err: BusinessError) => {
                 console.error(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
               });
@@ -2368,24 +2368,24 @@ struct CardExample {
 
 clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Clears the router proxy set for widgets. This API uses an asynchronous callback to return the result.
+Clears the router proxy of a card. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                                                        |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;      | Yes  | Array of widget IDs.                                              |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined**. Otherwise, an exception is thrown.|
+| Name     | Type                      | Mandatory | Description                                                         |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| formIds  | Array&lt;string&gt;      | Yes       | Array of card IDs.                                               |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback invoked when the router proxy of the specified card is cleared successfully. In this case, **error** is **undefined**; otherwise, an exception is thrown. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
 | 202      | The application is not a system application.                 |
@@ -2417,29 +2417,29 @@ try {
 
 clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Clears the router proxy set for widgets. This API uses a promise to return the result.
+Clears the router proxy of a card. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name | Type               | Mandatory| Description          |
+| Name    | Type              | Mandatory | Description          |
 | ------- | ------------------- | ---- | -------------- |
-| formIds | Array&lt;string&gt; | Yes  | Array of widget IDs.|
+| formIds | Array&lt;string&gt; | Yes  | Array of card IDs. |
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
 | 202      | The application is not a system application.                 |
@@ -2470,29 +2470,29 @@ try {
 
 setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Sets widgets to be recyclable. This API uses an asynchronous callback to return the result.
+Sets the forms to be recyclable. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                                                        |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;      | Yes  | Array of widget IDs.                                              |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the widgets are set to be recyclable, **error** is **undefined**; otherwise, an exception is thrown.|
+| Name     | Type                      | Mandatory | Description                                                         |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| formIds  | Array&lt;string&gt;      | Yes       | Array of card IDs.                                               |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback invoked to return the result. If the forms are set to be recyclable successfully, **error** is **undefined**; otherwise, an exception is thrown. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The caller is not a system app.                |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2520,34 +2520,34 @@ try {
 
 setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Sets widgets to be recyclable. This API uses a promise to return the result.
+Sets the forms to be recyclable. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name | Type               | Mandatory| Description          |
-| ------- | ------------------- | ---- | -------------- |
-| formIds | Array&lt;string&gt; | Yes  | Array of widget IDs.|
+| Name    | Type                | Mandatory | Description            |
+| ------- | ------------------- | --------- | ---------------------- |
+| formIds | Array&lt;string&gt; | Yes       | Array of card IDs. |
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The caller is not a system app.                |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2574,29 +2574,29 @@ try {
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Recovers the specified widgets that have been recycled and updates their state to non‑recyclable. If a widget has not been recycled, its state is still updated to non‑recyclable. This API uses an asynchronous callback to return the result.
+Recovers a recycled form and updates its status to non-recyclable. If the form has not been recycled, only its status is updated to non-recyclable. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                                                        |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;      | Yes  | Array of widget IDs.                                              |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the widgets are recovered, **error** is **undefined**; otherwise, an exception is thrown.|
+| Name     | Type                      | Mandatory | Description                                                         |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| formIds  | Array&lt;string&gt;      | Yes       | Array of card IDs.                                               |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback invoked when the form is recovered successfully. In this case, error is undefined; otherwise, an exception is thrown. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The caller is not a system app.                |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2623,35 +2623,35 @@ try {
 
 recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Recovers recycled widgets and updates their status to non-recyclable, or updates the status of widgets to non-recyclable if the widgets are not recycled. This API uses a promise to return the result.
+Recovers a recycled form and updates its state to non-recoverable. If the form has not been recycled, only its state is updated to non-recoverable. This API uses a promise to return the result asynchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name | Type               | Mandatory| Description          |
-| ------- | ------------------- | ---- | -------------- |
-| formIds | Array&lt;string&gt; | Yes  | Array of widget IDs.|
+| Name    | Type                | Mandatory | Description        |
+| ------- | ------------------- | --------- | ------------------ |
+| formIds | Array&lt;string&gt; | Yes       | Array of card IDs. |
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The caller is not a system app.                |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2678,32 +2678,32 @@ try {
 
 recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Recycles widgets, that is, reclaiming widget memory. This API uses a promise to return the result.
+Recycles the card memory immediately. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name | Type               | Mandatory| Description          |
-| ------- | ------------------- | ---- | -------------- |
-| formIds | Array&lt;string&gt; | Yes  | Array of widget IDs.|
+| Name    | Type                | Mandatory | Description          |
+| ------- | ------------------- | --------- | -------------------- |
+| formIds | Array&lt;string&gt; | Yes       | Array of card IDs. |
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
 | 202      | The application is not a system application.                 |
@@ -2733,29 +2733,29 @@ try {
 ## formHost.updateFormLocation<sup>12+</sup>
 updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 
-Updates the widget location.
+Updates the card location.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| location |[formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | Yes| Widget location.|
+| formId | string | Yes | Card ID. |
+| location |[formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | Yes | Card location. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The caller is not a system app.                                   |
+| 202      | caller is not system app.                                    |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2781,26 +2781,26 @@ try {
 
 setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
-Sets the result for the operation of adding a widget to the home screen.
+Sets the result of adding a form to the home screen.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type                                                        | Mandatory| Description              |
+| Name | Type                                                         | Mandatory | Description               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| formId | string                                                       | Yes  | Widget ID.        |
-| result | [formInfo.PublishFormResult](js-apis-app-form-formInfo-sys.md#publishformresult12) | Yes  | Result of the operation.|
+| formId | string                                                       | Yes  | Card ID.         |
+| result | [formInfo.PublishFormResult](js-apis-app-form-formInfo-sys.md#publishformresult12) | Yes  | Result of publishing the form to the home screen. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
 | 202      | The application is not a system application.                                    |
@@ -2829,34 +2829,34 @@ try {
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
-Notifies the update of the widget lock state. This API uses a promise to return the result.
+Notifies the card framework of a card control state update. This API uses a promise to return the result asynchronously.
 
-If an application is locked, its widget will also be locked and masked in a locked style. To use the widget, you need to enter the password set for the widget.
+The card control state means that when an application enables application lock control, the cards of the corresponding application also follow the application lock control. In this case, the card page is masked with a locked mask style. In the control state, a password set when the lock is enabled is required to operate and use the card.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 |-------|------|------|-----|
-| formId | string | Yes| Widget ID.|
-| isLocked | boolean | Yes| A Boolean value indicates whether a widget is in the locked state. The value **true** indicates that the widget is in the locked state, and the value **false** indicates the opposite.|
+| formId | string | Yes | Card ID. |
+| isLocked | boolean | Yes | Whether the card is in the control state. The value **true** indicates the control state, and **false** indicates the non-control state. |
 
 **Return value**
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The caller is not a system app.                |
+| 202      | caller is not a system app.                 |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred.                       |
@@ -2881,28 +2881,98 @@ try {
 }
 ```
 
-## formHost.on('formOverflow')<sup>20+</sup>
+## formHost.addForm<sup>12+</sup>
 
-on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
+addForm(want: Want): Promise&lt;formInfo.RunningFormInfo&gt;
 
-Subscribes to the interactive widget animation request event. This API uses an asynchronous callback to return the result.
+Adds a theme form. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Ability.Form
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions:** ohos.permission.REQUIRE_FORM
+
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type      | Mandatory| Description|
+| Name | Type    | Mandatory | Description    |
+| ------ | ------ | ---- | ------- |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Want information carried when querying the form status. It must contain the bundle name, ability name, module name, form name, form dimension, and so on. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo.md#runningforminfo20)&gt; | Promise object. Returns the form information that meets the conditions, including the form name, dimension, and so on. |
+
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let want: Want = {
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': {
+      'ohos.extra.param.key.form_dimension': 4,
+      'ohos.extra.param.key.form_is_theme': true,
+      'ohos.extra.param.key.form_location': 0,
+      'ohos.extra.param.key.module_name': 'entry',
+      'ohos.extra.param.key.form_name': 'widget',
+      'themeFormId': '0',
+      'themeId': '2181824853'
+    }
+  };
+  formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formHost addForm, formId: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.on('formOverflow')<sup>20+</sup>
+
+on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
+
+Subscribes to the interactive form animation request event. This API uses an asynchronous callback to return the result.
+
+**System capability:** SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type       | Mandatory | Description |
 |----------|--------|---|---------------------------------------|
-| type     | string | Yes| Event callback. The supported event is **'formOverflow'**, indicating the interactive widget animation request.|
-| callback | Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | Yes| Callback used by the widget host to process the animation request.|
+| type     | string | Yes | Event callback type. The supported event is 'formOverflow', which indicates an interactive form animation request. |
+| callback | Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | Yes | Callback invoked when the form host processes the animation request. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                 |
+| ID | Error Message                                                                                                  |
 |-------|-----------------------------------------------------------------------------------------------------------|
 | 202   | The application is not a system application.                                                              |
 
@@ -2925,24 +2995,24 @@ try {
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-Unsubscribes from the interactive widget animation request event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the interactive form animation effect request event. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description                                    |
+| Name | Type    | Mandatory | Description                                     |
 | ------ | ------ |----|----------------------------------------|
-| type | string | Yes | Event callback. The supported event is **'formOverflow'**, indicating the interactive widget animation request.|
-| callback |Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | No | Callback function, which corresponds to the subscribed interactive widget animation request. By default, all registered interactive widget animation request events are deregistered.|
+| type | string | Yes  | Event callback type. The supported event is 'formOverflow', which indicates an interactive form animation effect request. |
+| callback |Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | No  | Callback for the subscribed interactive form animation effect request event. If this parameter is left unspecified, all registered callbacks for the interactive form animation effect request event are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                               |
+| ID | Error Message                                                                                                |
 | --- |-----------------------------------------------------------------------------------------------------------|
 | 202 | The application is not a system application.                                                              |
 
@@ -2965,24 +3035,24 @@ try {
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
-Subscribes to the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations. This API uses an asynchronous callback to return the result.
+Subscribes to the state switch request event of an interactive form. The state of an interactive form is classified into the active state and the inactive state. In the inactive state, an interactive form behaves the same as a normal form. In the active state, an interactive form supports starting the LiveFormExtensionAbility process developed by the form provider to implement the dynamic effects of the interactive form. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description                                                  |
+| Name | Type    | Mandatory | Description                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
-| type | string | Yes  | Event type. The event **'changeSceneAnimationState'** is triggered when the interactive widget state is switched.|
-| callback |Callback&lt;[formInfo.ChangeSceneAnimationStateRequest](js-apis-app-form-formInfo-sys.md#changesceneanimationstaterequest20)&gt; | Yes| Callback function, which is used by the widget host to process the state switching request.|
+| type | string | Yes   | Event callback type. The supported event is 'changeSceneAnimationState', which indicates the state switch of an interactive form.|
+| callback |Callback&lt;[formInfo.ChangeSceneAnimationStateRequest](js-apis-app-form-formInfo-sys.md#changesceneanimationstaterequest20)&gt; | Yes | Callback invoked when the form host handles the state switch request.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                 |
+| ID | Error Message                                                                                                  |
 |-------|-----------------------------------------------------------------------------------------------------------|
 | 202   | The application is not a system application.                                                              |
 
@@ -3005,24 +3075,24 @@ try {
 
 off(type: 'changeSceneAnimationState', callback?: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
-Unsubscribes from the event of switching the interactive widget state. An interactive widget can be in the active or inactive state. In the inactive state, the interactive widget is the same as a common widget. In the active state, the interactive widget can start the **LiveFormExtensionAbility** process developed by the widget host to implement interactive widget animations. This API uses an asynchronous callback to return the result.
+Unsubscribes from the interactive form state switch request event. The interactive form state is divided into the active state and the inactive state. In the inactive state, the interactive form behaves the same as a normal form; in the active state, the interactive form supports starting the LiveFormExtensionAbility process developed by the form provider to implement interactive form animation effects. This API uses an asynchronous callback.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ |----| ------- |
-| type | string | Yes | Event type. The event **'changeSceneAnimationState'** is triggered when the interactive widget state is switched.|
-| callback |Callback&lt;[formInfo.ChangeSceneAnimationStateRequest](js-apis-app-form-formInfo-sys.md#changesceneanimationstaterequest20)&gt; | No | Callback function, which corresponds to the request for switching the state of a subscribed interactive widget. By default, all registered interactive widget state switching events are deregistered.|
+| type | string | Yes  | Event callback type. The supported event is 'changeSceneAnimationState', which indicates the interactive form state switch.|
+| callback |Callback&lt;[formInfo.ChangeSceneAnimationStateRequest](js-apis-app-form-formInfo-sys.md#changesceneanimationstaterequest20)&gt; | No  | Callback for the interactive form state switch request event. If this parameter is left unspecified, all registered callbacks for the interactive form state switch event are unregistered.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 202 | The application is not a system application. |
 
@@ -3045,24 +3115,24 @@ try {
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 
-Subscribes to the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result.
+Subscribes to the card position and size query request event. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description                                                  |
+| Name | Type    | Mandatory | Description                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
-| type | string | Yes  | Event callback type. The supported event is **'getFormRect'**, indicating requesting widget position and dimension.|
-| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | Yes| Callback function used by the widget host to process query requests and return the widget position relative to the upper-left corner of the screen and widget dimensions.|
+| type | string | Yes   | Event callback type. The supported event is 'getFormRect', which indicates a card position and size query.|
+| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | Yes | Callback function. The form host processes the query request and returns the position information of the card relative to the upper left corner of the screen and the card size information.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                 |
+| ID | Error Message                                                                                                  |
 |-------|-----------------------------------------------------------------------------------------------------------|
 | 202   | The application is not a system application.                                                              |
 
@@ -3074,7 +3144,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('getFormRect', (formId: string): Promise<formInfo.Rect> => {
-    // The widget host needs to process the request, and calculate and return the widget dimension and position information.
+    // The form host needs to process the query request, calculate and return the card size and position information.
     return new Promise<formInfo.Rect>((resolve: Function) => {
       console.info(`formHost on getFormRect, formId is ${formId}`);
       let formRect: formInfo.Rect = {
@@ -3095,24 +3165,24 @@ try {
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 
-Unsubscribes from the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result.
+Unsubscribes from the form position and size query request event. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ |----| ------- |
-| type | string | Yes | Event callback type. The supported event is **'getFormRect'**, indicating requesting widget position and dimension.|
-| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | No | Callback function, corresponding to the subscribed widget position and dimension request. By default, all registered widget position and dimension request event callbacks are deregistered.|
+| type | string | Yes  | Event callback type. The supported event is 'getFormRect', which indicates a form position and size query.|
+| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | No  | Callback for the subscribed form position and size query request. If this parameter is left unspecified, all registered callbacks for the form position and size query event are unregistered.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 202 | The application is not a system application. |
 
@@ -3133,30 +3203,30 @@ try {
 
 updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void
 
-Updates the size of the widget.
+Adjusts the form size.
 
-**Required permissions**: ohos.permission.REQUIRE_FORM
+**Required permissions:** ohos.permission.REQUIRE_FORM
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| formId | string | Yes  | Widget ID.|
-| newDimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | Yes| Widget dimension. For example, **Dimension_1_2** indicates a 1 x 2 widget.|
-| newRect | [formInfo.Rect](js-apis-app-form-formInfo.md#rect20) | Yes| Widget position information, including the X and Y coordinates of the widget's top-left corner, as well as its width and height.|
+| formId | string | Yes   | Card ID. |
+| newDimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | Yes | Form size, for example, Dimension_1_2, which indicates a 1 x 2 form. |
+| newRect | [formInfo.Rect](js-apis-app-form-formInfo.md#rect20) | Yes | Form position information, including the x and y coordinates of the upper-left vertex of the form and the width and height of the form. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | The caller is not a system app.|
+| 202 | caller is not system app. |
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501012 | The dimension parameter is incorrect. |
@@ -3182,29 +3252,111 @@ try {
 }
 ```
 
+## formHost.on('getLiveFormStatus')<sup>20+</sup>
+
+on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): void
+
+Subscribes to the running status query event of all live forms. This API uses an asynchronous callback to return the result.
+
+**System capability:** SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | Yes   | Event callback type. The supported event is 'getLiveFormStatus', which indicates the online form status query.|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getliveformstatuscallback20) | Yes | Callback function. The form host processes the query request and returns the running status of all live forms.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**Example**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('getLiveFormStatus', (): Record<string, string> => {
+    // The form host processes the query request, calculates, and returns the status information.
+    return { "status": "active" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.off('getLiveFormStatus')<sup>20+</sup>
+
+off(type: 'getLiveFormStatus', callback?: formInfo.GetLiveFormStatusCallback): void
+
+Unsubscribes from the running status query event of all live forms. This API uses an asynchronous callback.
+
+**System capability:** SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | Yes   | Type of the event callback. The supported event is 'getLiveFormStatus', which indicates the form position and size query.|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getliveformstatuscallback20) | Yes | Callback for the form position and size query event. If this parameter is left unspecified, all callbacks for the running status query event of live forms are unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**Example**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.off('getLiveFormStatus', (): Record<string, string> => {
+    // The form host needs to process the query request, calculate and return the status information.
+    return { "status": "inactive" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## formHost.getAllTemplateFormsInfo<sup>23+</sup>
 
 getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the template widget information provided by all applications on the device. This API uses a promise to return the result.
+Obtains the template form information provided by all applications on the device. This API uses a promise to return the result asynchronously.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Return value**
 
-| Type                                                                                    | Description                   |
+| Type                                                                                     | Description                    |
 |:---------------------------------------------------------------------------------------|:----------------------|
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the information obtained.|
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the retrieved form information. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3234,32 +3386,32 @@ try {
 
 getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the template widget information provided by a specified application on the device. This API uses a promise to return the result.
+Obtains the template form information provided by a specified application on the device. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| bundleName | string | Yes| Bundle name of the application.|
-| moduleName | string | No|  Module name. By default, no value is passed.|
+| bundleName | string | Yes | Bundle name of the application to query. |
+| moduleName | string | No |  Name of the module to query. If this parameter is left empty, the default value is used. |
 
 **Return value**
 
-| Type                                                                                    | Description                               |
+| Type                                                                                     | Description                                |
 |:---------------------------------------------------------------------------------------| :---------------------------------- |
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the information obtained.|
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the card information. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3288,27 +3440,27 @@ try {
 
 onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void
 
-Subscribes to changes in the static configuration information of template widgets. This API uses an asynchronous callback to return the result.
+Subscribes to changes in the static configuration information of template forms. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo-sys.md#templateformdetailinfocallback23) | Yes  | Callback function used to listen for changes in the static configuration information of template widgets.|
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo-sys.md#templateformdetailinfocallback23) | Yes   | Callback invoked when the static configuration information of a template form changes. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3338,27 +3490,27 @@ try {
 
 offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void
 
-Unsubscribes from changes in the static configuration information of template widgets. This API uses an asynchronous callback to return the result.
+Unsubscribes from changes to the static configuration information of a template form. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo-sys.md#templateformdetailinfocallback23) | No  | Callback function used to listen for changes in the static configuration information of template widgets.|
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo-sys.md#templateformdetailinfocallback23) | No   | Callback for the change event of the static configuration information of a template form. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3382,33 +3534,33 @@ try {
 
 getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the list of widget IDs at a specified location on the device. This API uses a promise to return the result.
+Obtains the list of card IDs at the specified card location on the device. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| location | [formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | Yes| Widget location.|
+| location | [formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | Yes | Card location. |
 
 **Return value**
 
-| Type                                                                                    | Description                               |
+| Type                                                                                     | Description                                |
 |:---------------------------------------------------------------------------------------| :---------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained widget ID list.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of card IDs retrieved. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3436,29 +3588,29 @@ try {
 
 onGetWantParamsCallback(callback: formInfo.GetWantParamsCallback): void
 
-Subscribes to widget parameter obtaining events. This API uses an asynchronous callback to return the result.
+Subscribes to the event of obtaining card parameters. This API uses an asynchronous callback to return the result.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.GetWantParamsCallback](js-apis-app-form-formInfo-sys.md#getwantparamscallback) | Yes  | Callback used to return the widget parameter information.|
+| callback | [formInfo.GetWantParamsCallback](js-apis-app-form-formInfo-sys.md#getwantparamscallback) | Yes   | Callback invoked to return the card parameter information. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3492,29 +3644,29 @@ try {
 
 offGetWantParamsCallback(callback?: formInfo.GetWantParamsCallback): void
 
-Unsubscribes from widget parameter obtaining events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the event of obtaining card parameters. This API uses an asynchronous callback to return the result.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.GetWantParamsCallback](js-apis-app-form-formInfo-sys.md#getwantparamscallback) | No  | Callback used to return the widget parameter information.|
+| callback | [formInfo.GetWantParamsCallback](js-apis-app-form-formInfo-sys.md#getwantparamscallback) | No   | Callback for the card parameter event. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3538,29 +3690,29 @@ try {
 
 onUpdateFormsConfigCallback(callback: formInfo.UpdateFormsConfigCallback): void
 
-Subscribes to widget configuration update events. This API uses an asynchronous callback to return the result.
+Subscribes to the form configuration update event. This API uses an asynchronous callback to return the result.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.UpdateFormsConfigCallback](js-apis-app-form-formInfo-sys.md#updateformsconfigcallback) | Yes  | Callback used to return the widget parameter update information.|
+| callback | [formInfo.UpdateFormsConfigCallback](js-apis-app-form-formInfo-sys.md#updateformsconfigcallback) | Yes   | Callback invoked to return the form configuration update information. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3590,29 +3742,29 @@ try {
 
 offUpdateFormsConfigCallback(callback?: formInfo.UpdateFormsConfigCallback): void
 
-Unsubscribes from widget configuration update events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the form configuration update event. This API uses an asynchronous callback to return the result.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.UpdateFormsConfigCallback](js-apis-app-form-formInfo-sys.md#updateformsconfigcallback) | No  | Callback used to return the widget parameter update information.|
+| callback | [formInfo.UpdateFormsConfigCallback](js-apis-app-form-formInfo-sys.md#updateformsconfigcallback) | No   | Callback for the form configuration update event.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3636,29 +3788,29 @@ try {
 
 onDeleteFormsCallback(callback: formInfo.DeleteFormsCallback): void
 
-Subscribes to widget deletion events. This API uses an asynchronous callback to return the result.
+Subscribes to the form deletion event. This API uses an asynchronous callback to return the result.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.DeleteFormsCallback](js-apis-app-form-formInfo-sys.md#deleteformscallback) | Yes  | Callback used to return the list of deleted widget IDs.|
+| callback | [formInfo.DeleteFormsCallback](js-apis-app-form-formInfo-sys.md#deleteformscallback) | Yes   | Callback invoked to return the list of IDs of the deleted forms. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3688,29 +3840,29 @@ try {
 
 offDeleteFormsCallback(callback?: formInfo.DeleteFormsCallback): void
 
-Unsubscribes from widget deletion events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the form deletion event. This API uses an asynchronous callback to return the result.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description   |
+| Name | Type    | Mandatory | Description    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.DeleteFormsCallback](js-apis-app-form-formInfo-sys.md#deleteformscallback) | No  | Callback used to return the list of deleted widget IDs.|
+| callback | [formInfo.DeleteFormsCallback](js-apis-app-form-formInfo-sys.md#deleteformscallback) | No   | Callback for the form deletion event, which returns the list of deleted card IDs.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3734,35 +3886,35 @@ try {
 
 registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;string&gt;
 
-Registers the service information of the widget host. After the registration is successful, the widget can be published across devices. This API uses a promise to return the result.
+Registers the form host service information. After successful registration, the information can be used for cross-device form publishing. This API uses a promise to return the result asynchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
-**Since**: 26.0.1
+**Since:** 26.0.1
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | -------|
-| service | [formInfo.FormHostServiceInfo](js-apis-app-form-formInfo-sys.md#formhostserviceinfo) | Yes| Service information of the widget host to be registered with the widget management service.|
+| service | [formInfo.FormHostServiceInfo](js-apis-app-form-formInfo-sys.md#formhostserviceinfo) | Yes | Form host service information to be registered with the card management service. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise used to return the ID of the widget host service that is successfully registered.|
+| Promise&lt;string&gt; | Promise used to return the service ID of the successfully registered form host service. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3795,35 +3947,35 @@ try {
 
 unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
 
-Deregisters the service information of the widget host. After the deregistration, the corresponding widget host service cannot be used for cross-device widget publishing. This API uses a promise to return the result.
+Unregisters the form host service information. After unregistration, the corresponding form host service cannot be used for cross-device form publishing. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
-**System capability**: SystemCapability.Ability.Form
+**System capability:** SystemCapability.Ability.Form
 
 **System API**: This is a system API.
 
-**Since**: 26.0.1
+**Since:** 26.0.1
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | -------|
-| serviceId | string | Yes| ID of the service to be deregistered.|
+| serviceId | string | Yes | Service ID of the form host service to be unregistered.|
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | -------- |
 | 201 | Permissions denied. |
 | 202 | The application is not a system application. |
@@ -3837,13 +3989,120 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let serviceId: string = 'serviceId'; // ID of the service to be deregistered. Replace it with the actual service ID.
+let serviceId: string = 'serviceId'; // Service ID of the form host service to be unregistered. Replace it with the actual service ID.
 try {
   formHost.unregisterFormHostService(serviceId).then(() => {
     console.info('formHost unregisterFormHostService success');
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.onGetVisibleFormRect
+
+onGetVisibleFormRect(callback: formInfo.GetFormRectInfoCallback): void
+
+Subscribes to the event of requesting the position and size of a visible form. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.Ability.Form
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | Yes   | Callback invoked to return the position of the form relative to the upper left corner of the screen and the size of the form, in vp. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback = (formId: string): Promise<formInfo.Rect> => {
+    // The form host processes the query request, calculates and returns the size and position of the form.
+    return new Promise<formInfo.Rect>((resolve: Function) => {
+      console.info(`formHost onGetVisibleFormRect, formId is ${formId}`);
+      let formRect: formInfo.Rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
+      resolve(formRect);
+    })
+  };
+  formHost.onGetVisibleFormRect(callback);
+  console.info(`formHost onGetVisibleFormRect success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.offGetVisibleFormRect
+
+offGetVisibleFormRect(callback?: formInfo.GetFormRectInfoCallback): void
+
+Unsubscribes from the event of requesting the position and size of a visible form. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.Ability.Form
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | No   | Callback for the subscribed event of requesting the position and size of a visible form. If this parameter is left unspecified, all registered callbacks for the event of requesting the position and size of a visible form are unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+
+**Example**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offGetVisibleFormRect();
+  console.info(`formHost offGetVisibleFormRect success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }

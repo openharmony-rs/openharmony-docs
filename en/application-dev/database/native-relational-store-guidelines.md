@@ -6,7 +6,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=921278e933660eca5e4da36690033209b5219631 translatedAt=2026-08-20T06:22:21.218Z pushedAt=2026-08-20T12:07:02.938Z -->
+<!-- md-trans-meta sourceCommit=3fdb5d59ccfc0067d0c7ca669f16002bdef865d2 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
 
 ## When to Use
 
@@ -28,75 +28,9 @@ The **RelationalStore** module provides a complete mechanism for local database 
 
 - Once an application is uninstalled, related database files and temporary files are automatically deleted from the device.
 
-## Available APIs
+## How to Develop
 
 For details about the APIs, see [RDB](../reference/apis-arkdata/capi-rdb.md).
-
-| API| Description|
-| -------- | -------- |
-| OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | Creates an **OH_Rdb_ConfigV2** instance. When the instance is no longer required, call **OH_Rdb_DestroyConfig** to destroy it.|
-| int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir) | Sets the database file path for an **OH_Rdb_ConfigV2** instance.|
-| int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName) | Sets the RDB store name for an **OH_Rdb_ConfigV2** instance.|
-| int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName) | Sets the application bundle name for an **OH_Rdb_ConfigV2** instance.|
-| int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName) | Sets the module name for an **OH_Rdb_ConfigV2** instance.|
-| int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel) | Sets the security level for an **OH_Rdb_ConfigV2** instance.|
-| int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted) | Sets whether to encrypt the database for an **OH_Rdb_ConfigV2** instance.|
-| int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area) | Sets the security area for an **OH_Rdb_ConfigV2** instance.|
-| OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode) | Returns an **OH_Rdb_Store** instance that corresponds to the specified **OH_Rdb_ConfigV2** database configuration.|
-| OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql) | Executes an SQL statement that contains specified arguments but returns no value.|
-| OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket) | Inserts a row of data into a table.|
-| int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, OH_VBucket *row, Rdb_ConflictResolution resolution, int64_t *rowId) | Inserts a row of data into a table with conflict resolutions.|
-| int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | Updates data in the database according to specified conditions, with support for configuring conflict resolution strategies. |
-| OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *predicates) | Updates data in an RDB store.|
-| OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates) | Deletes data from an RDB store.|
-| int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern) | Sets an **OH_Predicates** object to match a string that is not similar to the specified value.|
-| int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern) | Sets an **OH_Predicates** object to match a string containing a wildcard.|
-| int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern) | Sets an **OH_Predicates** object not to match a string containing a wildcard.|
-| OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length) | Queries data in an RDB store.|
-| OH_Rdb_DeleteStore(const OH_Rdb_Config *config) | Deletes an RDB store.|
-| OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Rdb_Asset *value) | Puts an RDB asset into an **OH_VBucket** object.|
-| OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Rdb_Asset *value, uint32_t count) | Puts RDB assets into an **OH_VBucket** object.|
-| OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, const char *columnName, OH_VObject *values) | Obtains the last modification time of the data in the specified column of a table.|
-| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | Creates an **OH_RDB_TransOptions** instance to configure the transaction object. When the instance is no longer required, call **OH_RdbTrans_DestroyOptions** to destroy it.|
-| OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[], int len) | Queries data in the database based on specified conditions.|
-| OH_Data_Values *OH_Values_Create(void) | Creates an **OH_Data_Values** instance. When the instance is no longer required, call **OH_Values_Destroy** to destroy it.|
-| int OH_Data_Asset_SetName(Data_Asset *asset, const char *name) | Sets the name for a data asset.|
-| int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri) | Sets the absolute path for a data asset.|
-| int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path) | Sets the relative path in the application sandbox directory for a data asset.|
-| int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime) | Sets the creation time for a data asset.|
-| int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime) | Sets the last modification time for a data asset.|
-| int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size) | Sets the size of a data asset.|
-| int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status) | Sets the status for a data asset.|
-| int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length) | Obtains the name of a data asset.|
-| int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length) | Obtains the absolute path of a data asset.|
-| int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length) | Obtains the relative path of a data asset.|
-| int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime) | Obtains the creation time of a data asset.|
-| int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime) | Obtains the last modification time of a data asset.|
-| int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size) | Obtains the size of a data asset.|
-| int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status) | Obtains the status of a data asset.|
-| Data_Asset *OH_Data_Asset_CreateOne() | Creates a data asset instance. When this data asset is no longer needed, call **OH_Data_Asset_DestroyOne** to destroy it.|
-| int OH_Data_Asset_DestroyOne(Data_Asset *asset) | Destroys a data asset instance to reclaim memory.|
-| Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count) | Creates the specified number of **Data_Asset** instances. When the instance is no longer required, call **OH_Data_Asset_DestroyMultiple** to destroy it. |
-| int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count) | Destroys multiple data assets to reclaim memory.|
-| int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *options, OH_Rdb_Transaction **trans) | Creates an **OH_Rdb_Transaction** instance to start a transaction.|
-| int OH_RdbTransOption_SetType(OH_RDB_TransOptions *options, OH_RDB_TransType type) | Sets the transaction object type.|
-| int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row, int64_t *rowId) | Inserts a row of data into a table.|
-| int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row, Rdb_ConflictResolution resolution, int64_t *rowId) | Inserts a row of data into a table with conflict resolutions.|
-| int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | Updates data with conflict resolutions in the database based on specified conditions.|
-| int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, int64_t *changes) | Deletes data from an RDB store.|
-| int OH_Value_Destroy(OH_Data_Value *value) | Destroys an **OH_Data_Value** object.|
-| int OH_Values_Destroy(OH_Data_Values *values) | Destroys an **OH_Data_Values** object. |
-| int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args, OH_Data_Value **result) | Executes an SQL statement that contains specified parameters.|
-| int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans) | Commits a transaction.|
-| int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans) | Rolls back a transaction.|
-| int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans) | Destroys an **OH_Rdb_Transaction** instance.|
-| int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char *attachName, int64_t waitTime, size_t *attachedNumber) | Attaches a database file to the database that is currently connected.|
-| int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime, size_t *attachedNumber) | Detaches a specified store from the current database.|
-| int OH_Rdb_SetCustomDir(OH_Rdb_ConfigV2 *config, const char *customDir) | Sets the custom directory of the database.|
-| int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale) | Sets the locale for language-specific collation rules.|
-| int OH_Rdb_SetPlugins(OH_Rdb_ConfigV2 *config, const char **plugins, int32_t length) | Sets the dynamic library with specific capabilities (such as full-text search).|
-
-## How to Develop
 
 **Adding the Dynamic Link Library**
 
@@ -162,7 +96,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     ```
 
-    To set a custom database path, call **OH_Rdb_SetCustomDir** where **// ...** appears in the preceding code. To open the database in read-only mode, call **OH_Rdb_SetReadOnly** at the same location. <br>Example:
+    To set a custom database path, call [OH_Rdb_SetCustomDir()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setcustomdir) where **// ...** appears in the preceding code. To open the database in read-only mode, call [OH_Rdb_SetReadOnly()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setreadonly) at the same location. <br>Example:
 
     <!--@[rdb_OH_Rdb_SetCustomDir_and_SetReadOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -174,7 +108,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_Rdb_SetReadOnly(config, true);
     ```
 
-2. Call **OH_Rdb_Execute** to create a table, and call **OH_Rdb_Insert** to insert data to the table. <br>Example:
+2. Call [OH_Rdb_Execute()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_execute) to create a table, and [OH_Rdb_Insert()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_insert) to insert data. <br>Example:
 
     <!--@[rdb_OH_Rdb_Execute_create_table](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -219,7 +153,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 3. Modify or delete data based on the conditions specified by **OH_Predicates**.
 
-   Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
+   Call [OH_Rdb_Update()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_update) to modify data, and [OH_Rdb_Delete()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_delete) to delete data. <br>Example:
 
     <!--@[rdb_OH_Rdb_Update_and_UpdateWithConflictResolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -293,7 +227,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 4. Query data based on the conditions specified by **OH_Predicates**.
 
-   Call **OH_Rdb_Query** to query data. The data obtained is returned in an **OH_Cursor** object. <br>Example:
+   Call [OH_Rdb_Query()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_query) to query data. An **OH_Cursor** result set is returned. <br>Example:
 
     <!--@[rdb_OH_Rdb_Query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -391,7 +325,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     notLikeQueryCursor->destroy(notLikeQueryCursor);
     ```
 
-Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example:
+   Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example:
 
     <!--@[rdb_OH_Rdb_Query_by_glob_and_notGlob](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -449,7 +383,7 @@ Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example
     notGlobPredicates->destroy(notGlobPredicates);
     ```
 
-   You can set the locale used for sorting. For example, **zh_CN** indicates Chinese, and **tr_TR** indicates Turkish. Call **OH_Rdb_SetLocale** to configure the rule.
+   To specify a locale for sorting, such as **zh_CN** for Chinese or **tr_TR** for Turkish, call [OH_Rdb_SetLocale()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setlocale).
 
     <!--@[rdb_OH_Rdb_SetLocale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -457,7 +391,7 @@ Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example
     OH_Rdb_SetLocale(store_, "zh_CN");
     ```
 
-    To configure the full-text search (FTS) dynamic library, use **OH_Rdb_SetPlugins**.
+    To configure the full-text search (FTS) dynamic library, call [OH_Rdb_SetPlugins()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setplugins).
 
     For details about the constraints, see the **pluginLibs** configuration item in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig).
 
@@ -474,9 +408,9 @@ Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example
 
 5. Insert, delete, or update data using a transaction object.
 
-   Call **OH_RdbTransOption_SetType** to configure the type of the transaction to be created. The supported transaction types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
+   Call [OH_RdbTransOption_SetType()](../reference/apis-arkdata/capi-oh-rdb-transaction-h.md#oh_rdbtransoption_settype) to configure the transaction type. The supported types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
 
-   Call **OH_Rdb_CreateTransaction** to create a transaction object and use this object to execute the corresponding transaction operation.
+   Call [OH_Rdb_CreateTransaction()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_createtransaction) to create a transaction object and use it to perform transaction operations.
 
     <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
 
@@ -658,7 +592,7 @@ Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example
 
 6. Attach a database.
 
-    Call **OH_Rdb_Attach** to attach an RDB store file to an RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement.
+    Call [OH_Rdb_Attach()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_attach) to attach a database file to the current database so that SQL statements can access its data directly.
 
     This API does not support encrypted databases.
 
@@ -666,7 +600,7 @@ Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example
 
     The **attach** API cannot be called concurrently. Concurrent calls may cause the system to become unresponsive and trigger 14800015. If this occurs, try to call **attach()** again later.
 
-    When the attached database is no longer used, call **OH_Rdb_Detach** to detach it.
+    When the attached database is no longer needed, call [OH_Rdb_Detach()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_detach) to detach it.
 
     <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
@@ -869,7 +803,7 @@ Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example
     }
     ```
 
-9. Obtain the last modification time of data. <br>Call **OH_Rdb_FindModifyTime** to obtain the last modification time of data in the specified column of a table. This API returns an **OH_Cursor** object with two columns of data. The first column is the input primary key or row ID, and the second column is the last modification time. <br>Example:
+9. Obtain the last modification time of data. Call [OH_Rdb_FindModifyTime()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_findmodifytime) to query the last modification time of data in the specified column of a table. This API returns an **OH_Cursor** object with two columns: the input primary key or row ID, and the last modification time. <br>Example:
 
     <!--@[rdb_OH_Rdb_FindModifyTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -894,7 +828,7 @@ Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example
     }
     ```
 
-10. Delete the database. Call the **OH_Rdb_DeleteStoreV2** method to delete the RDB store and related database files. <br>Example:
+10. Delete the database. Call [OH_Rdb_DeleteStoreV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_deletestorev2) to delete the RDB store and related files. <br>Example:
 
     <!--@[rdb_OH_Rdb_CloseStore_and_DeleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 

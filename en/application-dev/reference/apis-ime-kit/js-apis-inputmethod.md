@@ -5,7 +5,7 @@
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f602515d1344141b9b7ce1553b994bd8033ca55b translatedAt=2026-09-14T01:58:57.561Z pushedAt=2026-09-14T06:39:30.818Z -->
+<!-- md-trans-meta sourceCommit=6036c6e8fc50c26cc4c13106c23fcc7ac6fe9cc1 translatedAt=2026-11-03T04:29:49.418Z pushedAt=2026-11-03T12:08:25.489Z nl=1 -->
 
 The **@ohos.inputMethod** module is the input method client module for common foreground applications (such as Notes, Messaging, and Settings). It provides input method control and management capabilities.
 
@@ -285,6 +285,10 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 Switches the input method. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> When [Assessment Management](../apis-assessment-kit/js-apis-customization-assessment.md) is enabled, this API cannot switch to another input method application.
+
 Meaning/Function: Switches the current input method to the specified target input method.
 
 Usage scenarios: Used when the current input method application needs to switch to another input method (for example, when the user selects a new input method in the input method settings).
@@ -310,7 +314,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>Applicable versions: 9-10        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable version: 9-10        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -343,6 +347,10 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 Switches the input method. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> When [Assessment Management](../apis-assessment-kit/js-apis-customization-assessment.md) is enabled, this API cannot switch to another input method application.
+
 Meaning/Function: Switches the current input method to the specified target input method.
 
 Usage scenarios: Used when the current input method application needs to switch to another input method.
@@ -373,7 +381,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error message                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>Applicable versions: 9-10       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable version: 9-10       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -450,7 +458,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>Supported since: 9-10       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable version: 9-10       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -519,7 +527,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>Applicable versions: 9-10      |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable version: 9-10      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -602,9 +610,9 @@ Switches to a specified subtype of a specified input method. This API uses an as
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error code ID | Error message                             |
+| ID | Error message                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>Applicable versions: 9-10         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable version: 9-10         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -665,7 +673,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>Applicable versions: 9-10        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable version: 9-10        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -699,7 +707,7 @@ getInputMethodController(): InputMethodController
 
 Obtains an [InputMethodController](#inputmethodcontroller) instance.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [getController](#inputmethodgetcontroller9) instead.
 
@@ -2285,7 +2293,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2329,7 +2337,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2384,7 +2392,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2428,7 +2436,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2551,7 +2559,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 
 Ends this input session. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 > 
 > This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
 > 
@@ -2589,7 +2597,7 @@ stopInput(): Promise&lt;boolean&gt;
 
 Ends this input session. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 > 
 > This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
 > 
@@ -4124,7 +4132,7 @@ listInputMethod(callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt;)
 
 Obtains a list of installed input methods. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getInputMethods](#getinputmethods9) instead.
 
@@ -4276,3 +4284,4 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
   console.error(`Failed to getInputMethodState, code: ${err.code}, message: ${err.message}`);
 });
 ```
+<!--no_check-->

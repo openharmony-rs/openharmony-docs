@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=28af11ed79c46934da1ab57318c919f412319342 translatedAt=2026-10-31T07:00:25.319Z pushedAt=2026-10-31T08:05:58.233Z nl=1 -->
 
 ## How to Request
 
@@ -13,7 +14,7 @@
 
 Restricted permissions are permissions available to normal applications but must be requested via [access control list (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
-To change the APL of a normal application to system_basic or higher, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
+An application at the normal level must declare its own APL as system_basic or higher. When developing the application installation package, you need to modify the application's HarmonyAppProvision configuration file, that is, the "`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`" file in the SDK directory, and then re-sign the application.
 
 **Modification mode**:
 
@@ -94,7 +95,7 @@ Allows an application to modify the audio files in a user public directory.
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-Allows an application to read image or video files from users' local public directories. 
+Allows an application to read image or video files from users' local public directories.
 
 <!--RP27--><!--RP27End-->
 
@@ -210,7 +211,12 @@ Allows an application to support persistent access to file URIs.
 
 > **NOTE**
 >
-> In API 12 and later versions, the permission level is changed to normal, and applications can directly [declare permissions](declare-permissions.md). If compatibility with versions earlier than API 12 is required, the permission must still be used following the [request method for restricted permissions](declare-permissions-in-acl.md).
+> In API version 12, the permission level of this permission is changed to normal.
+> - If the application is only for local debugging:
+>   - For versions before API version 12, you still need to use this permission by following the [restricted permission application method](declare-permissions-in-acl.md).
+>   - For API version 12 and later only, you can directly [declare the permission](declare-permissions.md).
+> - If the application needs to be released to an application market:
+>   You still need to use this permission by following the [restricted permission application method](declare-permissions-in-acl.md).
 
 <!--RP18--><!--RP18End-->
 
@@ -340,15 +346,17 @@ For the application developed using the cross-platform framework, this permissio
 
 ## ohos.permission.kernel.ALLOW_WRITABLE_CODE_MEMORY
 
-Allows an application to apply for writable and executable anonymous memory.
-
-<!--RP10-->
-For the application developed using the cross-platform framework, this permission allows the application to apply for writable and executable anonymous memory. Currently, this permission is available only to applications running on tablets and 2-in-1 devices.
-<!--RP10End-->
+Allows an application to apply for writable and executable anonymous memory. This capability is mainly used to provide just-in-time (JIT) compilation for the engines bundled with the application (such as JS engines and game script engines) to improve code execution efficiency.
+ 
+<!--RP10--><!--RP10End-->
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+<!--RP108--><!--RP108End-->
 
 **Since**: 14
 
@@ -356,7 +364,7 @@ For the application developed using the cross-platform framework, this permissio
 
 Allows an application to have its system JS engine to apply for anonymous executable memory with the MAP_FORT identifier.
 
-After the application has this permission, the system JS engine can request anonymous executable memory with MAP_FORT for just-in-time (JIT) compilation, which increases the runtime execution efficiency.
+After the application obtains this permission, the system engine can apply for anonymous executable memory with the MAP_FORT identifier for just-in-time compilation, improving runtime execution efficiency.
 
 <!--RP13--><!--RP13End-->
 
@@ -564,7 +572,7 @@ Allows an application to obtain the current MAC address of the Ethernet.
 
 **Since**: 13
 
-**Changelog**: This permission is available only to MDM applications in API version 13. From API version 14, this permission is available to normal enterprise applications. From API version 16, this permission is available to normal applications on PCs/2-in-1 devices, and is available only to system applications on other devices.
+**Changelog**: In API 13, this permission is open only to MDM applications. Starting from API 14, the open scope is changed from MDM applications to normal enterprise applications. Starting from API 16, it is open to normal applications on PCs/2-in-1 devices, while on other devices it remains open only to system applications.
 
 ## ohos.permission.kernel.DISABLE_GOTPLT_RO_PROTECTION
 
@@ -592,12 +600,12 @@ Allows an application to use the fraud app Picker to obtain application informat
 
 ## ohos.permission.ACCESS_DDK_DRIVERS
 
-Allows a peripheral extension driver client to bind to the driver server.
+Allows an extended peripheral driver client to bind to the driver server.
 
 This permission can be requested successfully only when:
 
-1. The target extension driver server in the value field of the permission declaration for the peripheral extension driver client has been launched or both the server and client have been launched.
-2. The capabilities provided by the target extension driver server comply with the requirements of the peripheral extension driver client.
+1. The target extension driver server in the value field of the permission declaration for the extended peripheral driver client has been launched or both the server and client have been launched.
+2. The capabilities provided by the target extension driver server comply with the requirements of the extended peripheral driver client.
 
 <!--RP82--><!--RP82End-->
 
@@ -611,9 +619,9 @@ This permission can be requested successfully only when:
 
 ## ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
-Allows a peripheral extension driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
+Allows an extended peripheral driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
 
-The APIs can be used to develop the following types of peripheral extension drivers:
+The APIs can be used to develop the following types of extended peripheral drivers:
 
 Peripherals connected to the host via a USB bus and:
 
@@ -630,9 +638,9 @@ Peripherals connected to the host via a USB bus and:
 
 ## ohos.permission.ACCESS_DDK_USB_SERIAL
 
-Allows a peripheral extension driver to access the USB Serial DDK APIs.
+Allows an extended peripheral driver to access the USB Serial DDK APIs.
 
-The USB Serial DDK APIs can be used to develop the following types of peripheral extension drivers:
+The USB Serial DDK APIs can be used to develop the following types of extended peripheral drivers:
 
 Peripherals connected to the host via a USB bus and:
 
@@ -649,6 +657,7 @@ Peripherals connected to the host via a USB bus and:
 
 **Since**: 18
 
+<!--Del-->
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 Allows an application to install plugins.
@@ -660,6 +669,7 @@ Allows an application to install plugins.
 **Authorization mode**: system_grant
 
 **Since**: 19
+<!--DelEnd-->
 
 ## ohos.permission.CUSTOM_SANDBOX
 
@@ -809,20 +819,6 @@ With this permission, the application can obtain the device name on the **About*
 
 **Since**: 20
 
-<!--Del-->
-## ohos.permission.atomicService.MANAGE_STORAGE
-
-Allows an atomic service to request differentiated storage space.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
-
-**Since**: 20
-<!--DelEnd-->
-
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM
 
 Allows an application to request continuous tasks of special types, such as computing tasks.
@@ -897,7 +893,7 @@ Allows an application to add, remove, or change all calendar events.
 
 ## ohos.permission.vehicle.CAR_CONTROL
 
-Allows an application to query, set, and subscribe to the mating part status information via the head unit.
+Allows applications to query, set, and subscribe to the status information of the counterpart device through the vehicle head unit.
 
 <!--RP102--><!--RP102End-->
 
@@ -911,9 +907,9 @@ Allows an application to query, set, and subscribe to the mating part status inf
 
 ## ohos.permission.vehicle.STEERINGWHEEL_INFO
 
-Allows an application to subscribe to and obtain the status of the mating part (steering wheel).
+Allows an application to subscribe to and obtain the status information of the steering wheel counterpart.
 
-You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Before applying for this permission, you need to apply for ohos.permission.vehicle.CAR_CONTROL first.
 
 <!--RP102--><!--RP102End-->
 
@@ -927,9 +923,9 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 ## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
 
-Allows an application to subscribe to and obtain the status of the mating part (interior light).
+Allows an application to subscribe to and obtain the status information of the interior lighting counterpart component.
 
-You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Before applying for this permission, you must first apply for ohos.permission.vehicle.CAR_CONTROL.
 
 <!--RP102--><!--RP102End-->
 
@@ -943,9 +939,9 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
 
-Allows an application to set the status of the mating part (interior light).
+Allows an application to set the status of the interior light counterpart component.
 
-You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Before applying for this permission, you must first apply for `ohos.permission.vehicle.CAR_CONTROL`.
 
 <!--RP102--><!--RP102End-->
 
@@ -959,9 +955,9 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 ## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
 
-Allows an application to subscribe to and obtain the status of the mating part (driving information module).
+Allows an application to subscribe to and obtain the status information of the counterpart component of the driving information module.
 
-You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Before applying for this permission, apply for `ohos.permission.vehicle.CAR_CONTROL` first.
 
 <!--RP102--><!--RP102End-->
 
@@ -975,9 +971,9 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 ## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
 
-Allows an application to subscribe to and obtain the status of the mating part (accelerator pedal).
+Allows an application to subscribe to and obtain the status information of the accelerator pedal counterpart.
 
-You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Before applying for this permission, you must first apply for ohos.permission.vehicle.CAR_CONTROL.
 
 <!--RP102--><!--RP102End-->
 
@@ -991,9 +987,9 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 ## ohos.permission.vehicle.BRAKE_PEDAL_INFO
 
-Allows an application to subscribe to and obtain the status of the mating part (brake pedal).
+Allows an application to subscribe to and obtain the status information of the brake pedal counterpart.
 
-You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+Before applying for this permission, you need to apply for `ohos.permission.vehicle.CAR_CONTROL` first.
 
 <!--RP102--><!--RP102End-->
 
@@ -1151,7 +1147,7 @@ With this permission, the application can access the public directory without ha
 
 ## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
 
-Allows an application to load shared libraries that are signed with binary certificates, debug certificates, or self-signed certificates.
+Allows an application to load shared libraries signed with a binary certificate, a debug certificate, or a self-signed certificate.
 
 <!--RP61--><!--RP61End-->
 
@@ -1229,7 +1225,7 @@ With this permission, the application can set the background color of the main w
 
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
-Allows an application to manage call status, such as retrieving incoming call numbers, answering, rejecting, and ending calls.
+Allows an application to manage the call state, such as obtaining the incoming call number, answering, rejecting, and hanging up calls.
 
 <!--RP64--><!--RP64End-->
 
@@ -1389,7 +1385,7 @@ Allows an application to apply for a continuous task of the special type.
 
 ## ohos.permission.FLOAT_VIEW
 
-Allows an application to use floating windows. 
+Allows an application to use floating windows.
 
 <!--RP78--><!--RP78End-->
 
@@ -1416,7 +1412,7 @@ Allows an application to query the call forwarding status.
 **Since**: 26.0.0
 
 ## ohos.permission.MANAGE_SKILL
-    
+
 Allows an application to use Skills.
 
 With this permission, the application can:
@@ -1451,8 +1447,9 @@ Allows an application to install the PCIe driver.
 
 ## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
 
-Allows an application to access the game buddy service. 
-With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and obtaining the foreground and background states of games.
+Allows an application to access the game companion service.
+
+After obtaining this permission, the application can use the APIs provided by the game companion service, such as obtaining screenshots of running game applications and obtaining the foreground/background status of game applications.
 
 <!--RP93--><!--RP93End-->
 
@@ -1464,7 +1461,7 @@ With this permission, the application can utilize the APIs provided by the game 
 
 **Since**: 26.0.0
 
-**Changelog**: Since API version 26.0.0, this permission is also available on tablets, PCs/2-in-1 devices and TVs.
+**Change information:** Starting from API version 26.0.0, support is added for applying on tablets, PCs/2-in-1 devices, and TVs.
 
 ## ohos.permission.KNOCK_COLLABORATION
 
@@ -1610,7 +1607,7 @@ Allows an application to generate, use, and delete secure element keys.
 
 ## ohos.permission.DEFAULT_WEB_BROWSER
 
-Allows an application to be set as the user's default browser.
+Allows the application to be set as the user's default browser.
 
 <!--RP103--><!--RP103End-->
 
@@ -1621,52 +1618,52 @@ Allows an application to be set as the user's default browser.
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.1
- 
+
 ## ohos.permission.vehicle.MMA_ENERGYREFILL
- 
-Allows an in-vehicle application to obtain the current vehicle's energy replenishment status.
- 
+
+Allows in-vehicle applications to obtain the current energy refill status of the vehicle.
+
 <!--RP104--><!--RP104End-->
- 
+
 **Permission level**: system_basic
- 
+
 **Authorization mode**: system_grant
- 
+
 **Supported devices**: cars
- 
+
 **Since**: 26.0.1
- 
+
 ## ohos.permission.vehicle.MMA_WEATHER
- 
-Allows an in-vehicle application to obtain real-time weather information of the vehicle's surroundings.
- 
+
+Allows in-vehicle applications to obtain the real-time weather of the environment where the vehicle is located.
+
 <!--RP105--><!--RP105End-->
- 
+
 **Permission level**: system_basic
- 
+
 **Authorization mode**: system_grant
- 
+
 **Supported devices**: cars
- 
+
 **Since**: 26.0.1
- 
+
 ## ohos.permission.vehicle.MMA_SPATIALACTION
- 
-Allows an application on the rear display to call spatial gesture APIs to enable contactless interaction for passengers.
- 
+
+Allows an application on the in-vehicle rear-seat screen to call the spatial gesture APIs to complete air-gesture interaction between the passenger and the screen.
+
 <!--RP106--><!--RP106End-->
- 
+
 **Permission level**: system_basic
- 
+
 **Authorization mode**: system_grant
- 
+
 **Supported devices**: cars
- 
+
 **Since**: 26.0.1
 
 ## ohos.permission.LOCAL_DEBUG_OTHER_APPS
 
-Allows an application to use the aa tool to debug other applications locally in developer mode.
+Allows an application to use the aa tool to debug applications in developer mode during local debugging.
 
 <!--RP107--><!--RP107End-->
 
@@ -1680,7 +1677,7 @@ Allows an application to use the aa tool to debug other applications locally in 
 
 ## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY
  
-Allows an application to load shared libraries that are signed with either binary or debug certificates.
+Allows an application to load shared libraries signed with binary certificates and debug certificates.
  
 <!--RP109--><!--RP109End-->
  
@@ -1694,7 +1691,7 @@ Allows an application to load shared libraries that are signed with either binar
 
 ## ohos.permission.kernel.ALLOW_PTRACE_READ
 
-Allows an application to use PTRACE read capabilities to obtain register and memory information of application processes.
+Allows an application to obtain the register and memory information of processes within the application through the PTRACE read capability.
 
 <!--RP110--><!--RP110End-->
 
@@ -1703,7 +1700,7 @@ Allows an application to use PTRACE read capabilities to obtain register and mem
 **Authorization mode**: system_grant
 
 **Supported devices**: PCs/2-in-1 devices
-
+ 
 **Since**: 26.0.1
 
 ## ohos.permission.GET_ALL_BUNDLE_INFO
@@ -1722,7 +1719,7 @@ Allows an application to obtain the list of applications installed on the device
 
 ## ohos.permission.ASSESSMENT_CONFIGURATION
 
-Allows an application to enter exam mode. The system service will display a dialog to remind the user that system capabilities will be restricted once exam mode is enabled. This prevents cheating or information leakage during exams, ensuring exam fairness while protecting user rights.
+Allows an application to enter the exam scenario. The system service displays a dialog to remind the user that entering exam mode restricts system capabilities, preventing cheating or information leakage during exams and protecting user rights while ensuring exam fairness.
 
 <!--RP112--><!--RP112End-->
 
@@ -1736,9 +1733,9 @@ Allows an application to enter exam mode. The system service will display a dial
 
 ## ohos.permission.DIRECT_CALL
 
-Allows an application to make calls with one tap.
+Allows an application to make one-tap calls.
 
-With this permission, the application can make calls directly without opening the Contacts screen when the device has a single SIM card or a default SIM card has been specified on a multi-SIM device. 
+After this permission is obtained, the application can make direct calls without switching to the contacts screen, provided that the device has a single SIM card or a default calling card has been specified on a multi-SIM device.
 
 <!--RP114--><!--RP114End-->
 
@@ -1754,7 +1751,7 @@ With this permission, the application can make calls directly without opening th
 
 Allows an application to manage cloud drive sync folders.
 
-With this permission, the application can add sync root folders to the sidebar of the file manager and customize the icons of sync root folders.
+After obtaining this permission, the application can add sync root folders to the file manager sidebar and customize sync root folder icons.
 
 <!--RP115--><!--RP115End-->
 
@@ -1770,7 +1767,7 @@ With this permission, the application can add sync root folders to the sidebar o
 
 Allows an application to listen for input events.
 
-With this permission, an application can implement the recording and playback functions of input events.
+After obtaining this permission, the application can record and replay input events.
 
 <!--RP116--><!--RP116End-->
 
@@ -1782,10 +1779,24 @@ With this permission, an application can implement the recording and playback fu
 
 **Since**: 26.1.0
 
+## ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM
+ 
+Allows an application to create audio streams with a specified ultra‑low latency mode when creating audio playback or recording streams, so that the overall latency of the resulting audio stream is lower than that of the normal mode.
+ 
+<!--RP117--><!--RP117End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
+ 
+**Since**: 26.1.0
+
 ## ohos.permission.ACCESS_BOARD_INFO
  
 Allows an application to obtain the device hardware information.
- 
+
 <!--RP118--><!--RP118End-->
  
 **Permission level**: system_basic
@@ -1795,3 +1806,19 @@ Allows an application to obtain the device hardware information.
 **Supported devices**: PCs/2-in-1 devices
  
 **Since**: 26.0.1
+
+## ohos.permission.CONTROL_COMPONENT
+
+Allows an application to manage whether specified components can be controlled via simulated control.
+
+With this permission, the application can mark specified components as restricted from simulated control, preventing other applications (such as AI agent applications) from operating these components via simulated control.
+
+<!--RP119--><!--RP119End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0

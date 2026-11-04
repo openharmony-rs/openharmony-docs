@@ -1,11 +1,11 @@
 # (Recommended) Using OHAudio for Audio Recording (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=fddad89e05987dcca3a716df75048e2f1e3a656b translatedAt=2026-10-22T03:46:32.161Z pushedAt=2026-10-22T07:34:29.695Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fddad89e05987dcca3a716df75048e2f1e3a656b translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 OHAudio is a set of C APIs introduced in API version 10. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only. They are suitable for applications that implement audio input at the native layer.
 

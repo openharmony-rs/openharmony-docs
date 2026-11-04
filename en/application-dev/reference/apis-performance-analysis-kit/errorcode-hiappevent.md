@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a01666c456b1a316165fa9cf0813f377f536e857 translatedAt=2026-09-16T11:00:55.377Z pushedAt=2026-09-20T09:01:52.263Z -->
+<!-- md-trans-meta sourceCommit=5c6e03ec7cfff0172ce10c87fa36d9c242ac74fb translatedAt=2026-11-03T06:15:00.437Z pushedAt=2026-11-03T12:08:25.606Z nl=1 -->
 
 > **NOTE**
 >
@@ -336,3 +336,21 @@ When the **hiAppEvent** API is called to set the input parameter, the system ign
 **Solution**
 
 Input a parameter value that meets the specifications.
+
+## 11106001 Failed to Register the external_log Log Manager
+
+**Error Message**
+
+State error. Possible causes: 1. Log manager already registered.
+
+**Description**
+
+Before the external_log log manager is registered, it has already been registered by another service in the application.
+
+**Possible Causes**
+
+The external_log log manager has already been registered.
+
+**Solution**
+
+Call the query API to check whether the external_log log manager has already been registered. If it has, there is no need to register it again; if it has not, try to register it again.

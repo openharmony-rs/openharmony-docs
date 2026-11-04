@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-31T07:00:31.383Z pushedAt=2026-10-31T08:06:58.698Z nl=1 -->
 
 The **SaveButton** component comes with the privilege for saving data, which allows an application to temporarily save data without any authorization.
 
@@ -15,7 +16,7 @@ This component allows for simpler operations than Pickers, which have to start a
 
 The following figure shows the effect of the **SaveButton** component.
 
-![](figures/SaveButton_effect.png)
+![save-control-effect](figures/save-control-effect.png)
 
 ## Constraints
 
@@ -114,3 +115,4 @@ For example, to save the image in the dialog box shown above, the application on
      }
    }
    ```
+

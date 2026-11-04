@@ -1,4 +1,4 @@
-# Signing and Signature Verification Overview and Algorithm Specifications
+# Signing and Signature Verification
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,26 +6,26 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:33:26.856Z pushedAt=2026-08-10T09:51:59.802Z -->
+<!-- md-trans-meta sourceCommit=fd500ca82713c7732ea8f0441b20e4da66f10c9e translatedAt=2026-10-30T03:55:06.061Z pushedAt=2026-10-30T07:31:19.991Z nl=1 -->
 
 Signing and verification can be performed to determine whether the received data has been altered or whether it originates from a designated sender.
 
 This topic describes the supported algorithms and specifications for signing and signature verification.
 
-> **NOTE**
->
-> In C/C++, signature verification is supported since API version 12, and signing is supported since API version 20.
+ > **NOTE** 
+ > 
+ > In C/C++, signature verification is supported since API version 12, and signing is supported since API version 20.
 
 ## RSA
 
 The Crypto framework supports the following padding modes for RSA signing and signature verification:
 
 - [PKCS1](#pkcs1): RSAES-PKCS1-V1_5 mode in RFC3447, corresponding to RSA_PKCS1_PADDING in OpenSSL.
-
+  
   If this mode is used, you need to set the message digest (**md**). The length of the MD output must be less than the length of the RSA key. For example, the length of the RSA2048 key is 256 bytes.
 
 - [PSS](#pss): RSASSA-PSS mode in RFC 3447, corresponding to RSA_PKCS1_PSS_PADDING in OpenSSL.
-
+  
   If this mode is used, you need to set two digests (**md** and **mgf1_md**), and the total length of the **md** digest, **saltLen**, and **2** must be less than or equal to the length of the RSA key.
 
   You can also set the salt length **saltLen** to obtain PSS-related parameters. (unit: byte)
@@ -297,4 +297,6 @@ Create an ML-DSA signing or signature verification instance using a string param
 
 | Asymmetric Key Type | String Parameter | API Version |
 | -------- | -------- | -------- |
-| ML-DSA | ML-DSA | 26.0.0+ |
+| ML-DSA-44 | ML-DSA | 26.0.0+ |
+| ML-DSA-65 | ML-DSA | 26.0.0+ |
+| ML-DSA-87 | ML-DSA | 26.0.0+ |

@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Explains video encoding and decoding dimensions, including width/height, picWidth/picHeight, stride/sliceHeight, and Crop, and how to calculate the valid decoded region to read and write image data correctly."
+keywords: [video dimensions, stride, stride, sliceHeight, cropping, Crop, picWidth, memory alignment, decoder output]
+doctype: faq
+status: active
+---
+
 # Video Codec Width, Height, Stride, and Crop Information
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=304faff8a397ac34a55bc74807f59e83ee136957 translatedAt=2026-10-22T04:08:32.522Z pushedAt=2026-10-22T13:28:11.145Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2ad293edae36fdd9e0da20f8f6b6d2798fbf3d07 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Overview
 

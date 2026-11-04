@@ -3,10 +3,10 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=aafa18cca50e669e3fd5470a9d1248e0885402aa translatedAt=2026-08-20T06:25:29.808Z pushedAt=2026-08-20T13:25:29.402Z -->
+<!-- md-trans-meta sourceCommit=cc1ac1a8be74b658ceeb5fd670db6be81ba34f15 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
@@ -43,5 +43,7 @@ Sensor Service Kit enables applications to obtain raw data from sensors and prov
 - To use vibrators, you need to request the required permissions.
 
 - When there are multiple vibrators, your application needs to call **getVibratorInfoSync()** to query the list of available vibrators. When calling **startVibration** or **stopVibration**, you need to pass parameters such as **deviceId** and **vibratorId** to identify the target vibrator.
+
+<!--RP2--><!--RP2End-->
 
 <!--RP1--><!--RP1End-->
