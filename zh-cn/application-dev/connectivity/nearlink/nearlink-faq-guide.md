@@ -85,7 +85,7 @@
 广播参数、扫描参数和端口连接参数中的frameType字段用于指定帧类型，取值为nearlinkConstant.FrameType的枚举成员；扫描结果的frameType字段表示收到的广播包所用的帧类型。使用时需注意：
 
 - 广播与扫描需使用相同的帧类型才能互相发现。例如外围设备使用FRAME_TYPE_4广播时，中心设备的扫描参数也需配置为FRAME_TYPE_4。
-- 使用FRAME_TYPE_4前，先调用[isFrameType4Supported()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询设备是否支持；在不支持的设备上启动广播、扫描或发起连接将返回[801 API功能在部分设备不支持](../../reference/errorcode-universal.md#801-api功能在部分设备不支持)错误码。
+- 使用FRAME_TYPE_4前，先调用[isFrameType4Supported()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询设备是否支持；在不支持的设备上启动广播、扫描或发起连接将返回[801 该设备不支持此API](../../reference/errorcode-universal.md#801-该设备不支持此api)错误码。
 
 ## 星闪数据传输方式如何选择
 
