@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d12c2f2b0d48d342aa99b6f1600f9e06c14121e1 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
+<!-- md-trans-meta sourceCommit=380302020c3e797188855ad9895a83c0437ababa translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -27,14 +27,14 @@ The errorManager APIs are provided by [@ohos.app.ability.errorManager(Error Mana
 | off(type: "error", observerId: number): Promise&lt;void> | Unregisters an observer using a promise. The number is the SN of the registered observer.|
 | on(type: 'globalErrorOccurred', observer: GlobalObserver): void | Registers a process error observer. When the system detects an application exception, it calls back the observer. This API is synchronous, meaning that a single registration enables global listening.<br/>**Note:** This API is supported since API version 18. |
 | off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | Unregisters the observer using a callback.<br/>**Note:**<br/>- This API is supported since API version 18.<br/>- When unregistering the observer, you can listen for exceptions on all threads in the process. It is recommended that you call the off API during process reclamation; otherwise, the application may crash. |
-| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | Registers a process error observer. When the system detects an application promise exception, it calls back the observer. This API is synchronous, meaning that a single registration enables global listening.<br/>Note: This API is supported since API version 18. |
+| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | Registers a process error observer. When the system detects an application promise exception, it calls back the observer. This API is synchronous, meaning that a single registration enables global listening.<br/>**Note:** This API is supported since API version 18. |
 | off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | Unregisters the observer using a callback.<br/>**Note:**<br/>- This API is supported since API version 18.<br/>- When unregistering the observer, you can listen for exceptions on all threads in the process. It is recommended that you call the off API during process reclamation; otherwise, the application may crash. |
 | on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | Registers an observer for the message processing timeouts of the main thread.<br>This API can be called only in the main thread. A new observer will overwrite the previous one.|
 | off(type: 'loopObserver', observer?: LoopObserver): void | Unregisters an observer for the message processing timeouts of the main thread in LoopObserver mode.|
 | on(type: 'freeze', observer: FreezeObserver): void | Registers an observer for the main thread freeze event of the application. This API can be called only in the main thread. A new observer will overwrite the previous one.|
-| off(type: 'freeze', observer?: FreezeObserver): void | Unregisters an observer for the message processing timeouts of the main thread in FreezeObserver mode.<br>Note: This API is supported since API version 18.|
-| setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | Sets a default error handler. This API can be called only in the main thread. When the **JS_CRASH** exception occurs, chained callbacks are supported and the return value is the last registered handler.<br>Note: This API is supported since API version 21.|
-| setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver; | Called only in the main thread. When app resource usage exceeds the baseline, chained callbacks are supported. The return value is the previously registered resource usage observer. <br/>Note: This API is supported since API version 24. |
+| off(type: 'freeze', observer?: FreezeObserver): void | Unregisters an observer for the message processing timeouts of the main thread in FreezeObserver mode.<br>**Note:** This API is supported since API version 18.|
+| setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | Sets a default error handler. This API can be called only in the main thread. When the **JS_CRASH** exception occurs, chained callbacks are supported and the return value is the last registered handler.<br>**Note:** This API is supported since API version 21.|
+| setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver; | Called only in the main thread. When app resource usage exceeds the baseline, chained callbacks are supported. The return value is the previously registered resource usage observer. <br/>**Note:** This API is supported since API version 24. |
 | setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver | Called only in the main thread. When an APP_FREEZE exception occurs, chained callbacks are supported. The return value is the previously registered handler.<br/>**NOTE**<br/>This API is supported since API version 26.0.0.<br/>**Model restriction:** This API can be used only in the stage model. |
 
 When an asynchronous callback is used, the next step can be processed in the callback.

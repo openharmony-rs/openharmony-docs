@@ -3,46 +3,82 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=7058acdcfeb33326a602c42c61cad8dcf70b5b74 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
-## Use Cases
+## Function Description
 
-When an application is to be launched in multiple countries or regions, the application needs to be localized according to local language and culture requirements. This allows the application to load and display content in such a way that meets the usage habits of local users. The contents loaded on the UI include text, images, audios, and videos. Such contents are called resources. To ensure that the application properly loads the content specific to different countries, locales, and languages, you need to create multiple resource directories to store these resources. When a user runs an application, the system automatically selects and loads the resources that best match the device based on the locale. To better implement application localization, it is recommended that the localized content be separated from the core functions as much as possible and be stored in a resource directory.
+To make an application available to users in different countries and regions, localize it to meet their language and cultural requirements so that it loads and displays content in line with local conventions. Localization involves adapting language and country/region names, dates and times, numbers and units, text, images, audio, and video.
 
-The following introduces how to configure resource files and resource matching rules. You only need to focus on resource configuration. After resource files are configured, your application can then access resources based on service requirements. For details, see [Accessing Resources](../quick-start/resource-categories-and-access.md#accessing-resources).
+For language and country/region names, dates and times, numbers, and units, use internationalization APIs to obtain the content to display. Locale conventions may change, and the values returned by these APIs may change accordingly. Avoid further processing the returned values.
 
+For text, images, audio, and video, create separate resource directories and configure multilingual resources. When the application runs, the system automatically selects and loads the resources that best match the device's locale.
 
-## Resource File Configuration
+## Using Internationalization APIs
 
-1. Determine the target locale for localization. For details, see [Locale](i18n-locale-culture.md).
+- Calling localization APIs
 
-   Prepare resources for the target locale and translate the resources (including strings, media resources, files, images, and audios) into target language. This step takes up most of the workload of the localization process.
+  To ensure that API return values are consistent with user settings, you usually need to pass the system locale ID or system locale object to [@ohos.i18n (Internationalization-I18n)](../reference/apis-localization-kit/js-apis-i18n.md) and [@ohos.intl (Internationalization-Intl)](../reference/apis-localization-kit/js-apis-intl.md). The following examples show how to pass each type:
 
-2. Create resource directories.
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
-   Resource directories include a default directory (`base` directory) and one or more qualifier directories. The default directory is generated when a project is created. It can be used to store content such as strings, colors, animations, and layouts. Qualifier directories can be customized based on languages and scripts. They are used to store resources such as strings, images, and audios specific to the target locale. An example of a customized qualifier directory is `resources/en_GB-vertical-car-mdpi`.
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
 
-3. Create resource group directories. Create the corresponding resource group directory according to the resource type. For example, to store media resources, create the `media` directory. The directory structure is `resources/en_GB-vertical-car-mdpi/media`.
+   <!-- @[system_locale_datetimeformat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
-4. Create resource files. Place resources such as strings, images, and audios in the corresponding `.json` resource files.
+   ``` TypeScript
+   // Obtain the system locale object.
+   let locale = i18n.System.getSystemLocaleInstance();
 
-   > **NOTE**
-   >   
-   > - A best practice of application localization is to separate the localized content from the core functions as much as possible and store the content in a resource directory.
-   > 
-   > - For details about how to create resource directories, resource group directories, and resource files, see [Resource Categories and Access](../quick-start/resource-categories-and-access.md).
+   // If the API takes a locale ID (string), use toString() to obtain the system locale ID.
+   let dateTimeFormat = new Intl.DateTimeFormat(locale.toString());
 
+   // If the API takes an Intl.Locale object, pass the system locale object directly.
+   let simpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
+   ```
 
-## Resource Matching
+- Identifying the system language
 
-Resource matching means to match application resources with the application preferred language list to find a preferred language that best suits application resources. For example, displaying a string involves the following steps:
+  If your application needs to identify the language, avoid hard-coded comparisons of language codes. Use the following approach instead:
 
-1. Use the system language to match the resource qualifier directories configured for the application to find the matching qualifier directories.
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
-2. Sort the qualifier directories according to the relevance, search these directories in sequence for the target string resources, and use the qualifier directory where the resources are first found for display.
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
 
-3. If no string resources matching the preferred language are found, use the second preferred language to repeat the previous step.
+   <!-- @[best_match_locale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
 
-4. If no matching string resources are found based on the application preferred language list or system language list, use the default resource directory for display. To avoid build errors and resource loading errors, make sure that resources are configured in the default resource directory of each application.
+   ``` TypeScript
+   let systemLanguage = i18n.System.getSimplifiedLanguage();
+   // Configure languagesList for your application. For example, if variants of Traditional Chinese do not need to be distinguished, combine 'zh-Hant-HK' and 'zh-Hant-TW' into 'zh-Hant'.
+   let languagesList = ['zh-Hans', 'zh-Hant-HK', 'zh-Hant-TW'];
+   let matchedLanguage = i18n.I18NUtil.getBestMatchLocale(systemLanguage, languagesList);
+   switch (matchedLanguage) {
+     case 'zh-Hans':
+       // The system language is Simplified Chinese.
+       break;
+     case 'zh-Hant-HK':
+       // The system language is Traditional Chinese (Hong Kong).
+       break;
+     case 'zh-Hant-TW':
+       // The system language is Traditional Chinese (Taiwan).
+       break;
+     default:
+       // The system language does not match any entry in languagesList.
+   }
+   ```
+
+## Multilingual Resource Configuration
+
+To ensure that the application can load content for different countries, regions, and languages, create separate resource directories to store the resources. When the application runs, the system automatically selects and loads the resources that best match the device's locale. For better localization, keep localized content separate from core functionality as much as possible and store it in resource directories.
+
+You only need to configure the resource files and then access the resources according to your service requirements. For details about resource configuration and matching rules, see [Resource Categories and Access](../quick-start/resource-categories-and-access.md).
+
+> **NOTE**
+>
+> If an application preferred language is set, the application preferentially loads resources for that language.
