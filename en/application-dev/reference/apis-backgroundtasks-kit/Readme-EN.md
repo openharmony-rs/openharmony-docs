@@ -9,7 +9,7 @@
 <!-- md-trans-meta sourceCommit=298e4d5de4139f6963e24584b03fa18002046fd4 translatedAt=2026-09-22T01:19:22.629Z pushedAt=2026-09-22T08:29:46.698Z -->
 
 - ArkTS APIs<!--background-tasks-arkts-->
-  - [@ohos.reminderAgentManager (Background Agent Reminder)](js-apis-reminderAgentManager.md)
+  - [@ohos.reminderAgentManager (Agent-powered Reminder)](js-apis-reminderAgentManager.md)
   - [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](js-apis-resourceschedule-backgroundTaskManager.md) 
   - [@ohos.resourceschedule.workScheduler (Deferred Task Scheduling)](js-apis-resourceschedule-workScheduler.md)
   - [@ohos.WorkSchedulerExtensionAbility (Deferred Task Scheduling Callbacks)](js-apis-WorkSchedulerExtensionAbility.md)
@@ -31,7 +31,7 @@
   - APIs No Longer Maintained<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (Background Task Management)](js-apis-backgroundTaskManager.md)
     - [@ohos.bundleState (Device Usage Statistics)](js-apis-deviceUsageStatistics.md)
-    - [@ohos.reminderAgent (Background Agent Reminder)](js-apis-reminderAgent.md)
+    - [@ohos.reminderAgent ((Agent-powered Reminder)](js-apis-reminderAgent.md)
     <!--Del-->
     - [@ohos.backgroundTaskManager (Background Task Management) (System API)](js-apis-backgroundTaskManager-sys.md)
     - [@ohos.bundleState (Device Usage Statistics) (System API)](js-apis-deviceUsageStatistics-sys.md)

@@ -5,7 +5,7 @@
 <!--Designer: @gsxiaowen;@lee_jet520-->
 <!--Tester: @hanjiawei;@Ytt-test-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=60c2077deb58678c18b2a22fc603aa0b6cda0beb translatedAt=2026-11-03T11:10:38.101Z pushedAt=2026-11-03T12:26:40.380Z nl=1 -->
+<!-- md-trans-meta sourceCommit=60c2077deb58678c18b2a22fc603aa0b6cda0beb translatedAt=2026-11-03T11:10:38.101Z pushedAt=2026-11-04T01:12:34.761Z nl=1 -->
 
 - ArkTS APIs<!--distributed-service-arkts-->
   
@@ -21,7 +21,7 @@
   - [@ohos.distributedHardware.hardwareManager (Distributed Hardware Management) (System API)](js-apis-distributedHardwareManager-sys.md)
   - [@ohos.distributedDeviceManager (Device Management) (System API)](js-apis-distributedDeviceManager-sys.md)
   - [@ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management) (System API)](js-apis-distributed-abilityConnectionManager-sys.md)
-  - [@ohos.cooperate (Screen Hopping) (system API)](js-apis-devicestatus-cooperate-sys.md)
+  - [@ohos.cooperate (Screen Hopping) (System API)](js-apis-devicestatus-cooperate-sys.md)
   - [@ohos.distributedSoftBus.conversation (Cross-Device Wakeup and Message Transfer) (System API)](js-apis-conversation-sys.md)
   - [@ohos.distributed.softbusBase (Device Awareness) (System API)](js-apis-softbusBase-sys.md)
   - APIs No Longer Maintained<!--distributed-service-dep-->
@@ -41,6 +41,6 @@
   - [Cross-Device Wakeup and Message Transfer Error Codes](errorcode-conversation.md)
   - [Device Awareness Error Codes](errorcode-softbusBase.md)
   <!--DelEnd-->
-  - [Enhanced Connection Error Codes](errorcode-link-enhance.md)
+  - [Link Enhancement Error Codes](errorcode-link-enhance.md)
   - [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md)
 

@@ -1,11 +1,11 @@
-# @ohos.telephony.observer (Telephony Service Status Listening)
+# @ohos.telephony.observer (Telephony Status Observer)
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
 <!--Owner: @shao-yikai-->
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=28c751e3c051ae3710d8f965399ae98fa2c6ca64 translatedAt=2026-11-03T03:58:10.353Z pushedAt=2026-11-03T09:27:27.766Z nl=1 -->
+<!-- md-trans-meta sourceCommit=28c751e3c051ae3710d8f965399ae98fa2c6ca64 translatedAt=2026-11-03T03:58:10.353Z pushedAt=2026-11-04T01:13:29.126Z nl=1 -->
 
 This module provides subscription management. The events that can be subscribed to or unsubscribed from include network status changes, signal status changes, call status changes, cellular data link connection status, uplink and downlink data flow status of cellular data services, and SIM status changes.
 

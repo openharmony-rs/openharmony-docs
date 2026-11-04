@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-11-03T01:18:42.020Z pushedAt=2026-11-03T03:28:29.070Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-11-03T01:18:42.020Z pushedAt=2026-11-04T01:06:01.013Z nl=1 -->
 
 **AbilityDelegatorRegistry**, a module of the automatic test framework, is used to obtain [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) and [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md)objects. With this module, you can use the [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) object to add a [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md#abilitymonitor-1) object to monitor the lifecycle status changes of a specified ability. In addition, you can use the [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md) object to read the current test parameters. This module is applicable to automated testing scenarios, which can help you accurately capture lifecycle changes of abilities, improving testing efficiency and accuracy.
 
@@ -24,7 +24,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## AbilityLifecycleState
 
-Enumerates the lifecycle states of an Ability. It can be used with the [getAbilityState](js-apis-inner-application-abilityDelegator.md#getabilitystate9) method of [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) to return the lifecycle state of the corresponding Ability.
+Enumerates the lifecycle states of an Ability. It can be used with the [getAbilityState](js-apis-inner-application-abilityDelegator.md#getabilitystate) method of [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) to return the lifecycle state of the corresponding Ability.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -141,7 +141,7 @@ Provides the capability of obtaining an **AbilityDelegatorArgs** object during t
 
 type AbilityMonitor = _AbilityMonitor
 
-Serves as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) to listen for lifecycle changes of a UIAbility.
+Serves as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor) to listen for lifecycle changes of a UIAbility.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -169,7 +169,7 @@ Provides the shell command execution result. It can be used to execute shell com
 
 type AbilityStageMonitor = _AbilityStageMonitor
 
-Provides the capability of listening for a specified [AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md) object. You can use **AbilityStageMonitor** as an input parameter of [abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor9) to register a listener.
+Provides the capability of listening for a specified [AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md) object. You can use **AbilityStageMonitor** as an input parameter of [abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor) to register a listener.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 

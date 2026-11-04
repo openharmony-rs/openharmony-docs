@@ -1,4 +1,4 @@
-# Device Perception Error Codes
+# Device Awareness Error Codes
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @Lucky-M-->
@@ -84,3 +84,4 @@ An error occurs in a dependent underlying module (such as Bluetooth or transport
 **Procedure**
 
 Retry after an interval of 30 seconds. If the failure persists, check whether the underlying module (such as Bluetooth) is enabled properly, and capture the hilog log for feedback.
+<!--no_check-->
