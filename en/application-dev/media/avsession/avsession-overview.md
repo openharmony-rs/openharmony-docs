@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:01:44.440Z pushedAt=2026-09-03T09:04:52.944Z -->
+<!-- md-trans-meta sourceCommit=c8f75418f280921c44ee9948baeb1d805a923bd0 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z -->
 
 Audio and Video Session (AVSession) Kit provides the audio and video management service, which manages the playback behavior of all audio and video applications in the system in a unified manner. You can use the kit to quickly build unified audio and video display and control capabilities.
 
@@ -70,6 +70,8 @@ AVSessions are classified into local AVSessions and distributed AVSessions.
 ## Constraints
 
 All audio and video applications that need to play in the background must be connected to AVSession and background task management. Otherwise, the system forcibly pauses audio playback when such an application switches to the background.
+
+<!--RP2--><!--RP2End-->
 
 ## Relationship with Related Kits
 

@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=10d653f7dbab0bb99e80334f55a14c60227169b9 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
+<!-- md-trans-meta sourceCommit=380302020c3e797188855ad9895a83c0437ababa translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Introduction
 
@@ -69,7 +69,7 @@ The main thread jank stack sampling configuration parameters are defined as foll
 
    (1) **2500** means that, according to the system rule, the time from detection to reporting of a main thread jank event cannot exceed 2.5 seconds (2500 ms). Therefore, the configured **sample_count** cannot exceed the maximum value calculated using the formula.
 
-   (2) **4** means the first timeout interval detection time, the second timeout interval detection time (the system provides two chances to detect a repeated timeout event), and the time required to collect and report stack information.
+   (2) **4** represents four sampling intervals reserved by the system: one interval from the timeout to the first detection, two intervals for the waiting and checks between the two fault-tolerance detections, and one interval for stack collection and reporting.
 
    (3) Configure this parameter according to your scenario.
 
@@ -125,7 +125,7 @@ The main thread jank stack sampling configuration parameters are defined as foll
    hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
      hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
    }).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. code: ${err.code}, message: ${err.message}`);
+     hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 
@@ -203,7 +203,7 @@ You can use the HiAppEvent APIs described above to configure stack sampling para
   hiAppEvent.configEventPolicy(policy).then(() => {
     hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. code: ${err.code}, message: ${err.message}`);
+    hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 

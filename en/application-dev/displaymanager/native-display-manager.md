@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7562b6c0a5050c30facd711764ab207b08a86029 translatedAt=2026-08-24T11:34:15.338Z pushedAt=2026-08-25T03:17:18.376Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## When to Use
 
@@ -312,7 +312,7 @@ private callFoldableCallback(): void {
   this.promptAction.openToast({ message: 'Call register displayMode' }).catch((error: Error) => {
     console.error(`callFoldableCallback error ${JSON.stringify(error)}`);
   }).then(() => {
-    let registerIndex = displayNapi.registerFoldDisplayModeChange();
+    let registerIndex: number = displayNapi.registerFoldDisplayModeChange();
     console.info(`register foldable value is: ${registerIndex}`);
     console.info(`unregister foldable value is: ${displayNapi.unregisterFoldDisplayModeChange(registerIndex)}`);
   });
@@ -330,7 +330,7 @@ private callDealListenCallback(): void {
   this.promptAction.openToast({ message: 'Call register change' }).catch((error: Error) => {
     console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
   }).then(() => {
-    let registerIndex = displayNapi.registerDisplayChange();
+    let registerIndex: number = displayNapi.registerDisplayChange();
     console.info(`register display change value is: ${registerIndex}`);
     console.info(`unregister display change value is: ${displayNapi.unregisterDisplayChange(registerIndex)}`);
   });
