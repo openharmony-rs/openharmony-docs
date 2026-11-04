@@ -1,12 +1,11 @@
 # @ohos.app.form.formBindingData (formBindingData)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=63ea2217f398de4dc749a4e19504d46a64273860 translatedAt=2026-07-31T08:19:50.231Z pushedAt=2026-07-31T09:12:34.423Z -->
+<!-- md-trans-meta sourceCommit=01c11bd0ed8d410f6879cbb6403794eb83930561 translatedAt=2026-11-03T13:18:32.079Z pushedAt=2026-11-04T08:46:51.511Z nl=2 -->
 
 This module provides the widget data binding capability, supporting the creation of FormBindingData objects and the setting of widget display data. It is applicable to scenarios such as widget data update and image data transfer, helping you conveniently manage widget display content and improve the efficiency of widget data management.
 
@@ -19,6 +18,7 @@ This module provides the widget data binding capability, supporting the creation
 ```ts
 import { formBindingData } from '@kit.FormKit';
 ```
+
 
 ## ProxyData<sup>10+</sup>
 
@@ -64,6 +64,7 @@ Creates a **FormBindingData** object.
 | ------ | -------------- | ---- | ------------------------------------------------------------ |
 | obj    | Object \| string | No   | Data to be displayed on the widget, used to bind the content displayed on the form UI. This parameter is passed when data needs to be delivered to the widget. It can be an object containing several key-value pairs or a JSON string. If not passed, an empty FormBindingData object is created, and the widget displays the default content. Image data is identified by 'formImages', with the content being key-value pairs of image identifiers and image file descriptors `{'formImages': {'key1': fd1, 'key2': fd2}}`.<br>**Note:** During the [widget update](../../form/arkts-ui-widget-interaction-overview.md) process, when the widget UI receives widget data through [@LocalStorageProp](../../ui/state-management/arkts-localstorage.md#localstorageprop), the FormBindingData object is serialized, meaning the widget data is converted to the string type. Since API version 20, if the widget update data is updated through shared memory, the total update data size does not exceed 10 MB, and the number of update images does not exceed 20. For API version 19 and earlier, the maximum number of image files is 5, with each image limited to 2 MB of memory. Images exceeding the limit may display abnormally. |
 
+
 **Return value**
 
 | Type                               | Description                                   |
@@ -77,6 +78,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
 
 **Example**
 

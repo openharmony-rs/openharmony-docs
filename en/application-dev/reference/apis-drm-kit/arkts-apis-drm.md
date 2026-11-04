@@ -2,20 +2,16 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29f3919446ee01733553b9b39493ee11224dad86 translatedAt=2026-07-31T02:11:46.609Z pushedAt=2026-07-31T03:50:38.261Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=82dc1fd26a15c359a60162968b248e32427fed86 translatedAt=2026-11-03T13:09:46.169Z pushedAt=2026-11-04T08:45:20.712Z nl=1 -->
 
-The Digital Rights Management (DRM) framework enables you to develop digital rights management features for audio and video services. By calling the DRM plugins provided by the system, you can achieve the following:
-
-- DRM certificate management: Generate certificate requests and handle certificate responses to facilitate certificate provisioning (downloading).
-
+The DRM (Digital Rights Management) framework component adopts a plug-in architecture and connects to different DRM solutions through unified plug-in interfaces, supporting the development of digital rights management functions for audio and video media services. It applies to business scenarios that require copyright protection, such as online video playback, music applications, and e-books, effectively preventing content piracy and unauthorized access, protecting the rights of content providers, and ensuring the secure playback of audio and video content. Developers can call the DRM plug-ins provided by the system to implement the following functions:
+- DRM certificate management: Generate certificate requests and set certificate responses to implement certificate Provision (download and installation). Use cases: online video platforms, music applications, and other audio and video playback services that need to obtain licenses.
 - DRM media key management: Generate media key requests, manage media key responses, and handle offline media keys.
-
-- DRM content authorization: Allow DRM plugins to authorize content based on media key permissions.
-
+- DRM content authorization: Support DRM plug-ins in authorizing DRM content based on media keys.
 - DRM content decryption: Support media playback decryption calls to decrypt DRM content.
 
 > **NOTE**

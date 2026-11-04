@@ -1,12 +1,11 @@
 # FormExtensionContext (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6b0733adc9a538f18ea8143587feeecb737929d9 translatedAt=2026-07-31T08:25:57.089Z pushedAt=2026-08-01T00:12:11.473Z -->
+<!-- md-trans-meta sourceCommit=7684c21bdf740a9966befea3081bab050626adf0 translatedAt=2026-11-03T12:57:15.947Z pushedAt=2026-11-04T08:47:59.636Z nl=1 -->
 
 The **FormExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides the context environment for the [FormExtensionAbility](js-apis-app-form-formExtensionAbility.md).
 
@@ -309,7 +308,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to null. This API uses a promise to return the result. 
+Disconnects an Ability from the bound service-type Ability. After the disconnection, set the remote object returned upon successful connection to null. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 

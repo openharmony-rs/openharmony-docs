@@ -2,14 +2,15 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=a749fa1961414f54cb9e8b122157d968006b291c translatedAt=2026-11-03T13:19:14.469Z pushedAt=2026-11-04T08:46:32.818Z nl=1 -->
 
 ## Overview
 
-The file declares the MediaKeySystem APIs for DRM operations.  <br>The APIs can be used to check the support for a DRM solution, create a media key session, obtain and set configurations, obtain DRM metrics, obtain the content protection level, generate media key system requests, process responses to media key system requests, listen for events, and manage offline media keys.
+Defines the DRM MediaKeySystem APIs. The following functions are provided:<br>querying whether a specific DRM is supported, creating a media key session, getting and setting configurations, getting statistics, getting the content protection level, generating a provision request, processing a provision response, listening for events, getting the content protection level, and managing offline media keys.
 
 **File to include**: <multimedia/drm_framework/native_mediakeysystem.h>
 
@@ -32,7 +33,7 @@ The file declares the MediaKeySystem APIs for DRM operations.  <br>The APIs can 
 | [Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)](#oh_mediakeysystem_setcallback) | - | Sets a media key system event callback.|
 | [Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *descs, uint32_t *count)](#oh_mediakeysystem_getmediakeysystems) | - | Obtains the name and ID list of DRM solutions supported by the device.|
 | [bool OH_MediaKeySystem_IsSupported(const char *name)](#oh_mediakeysystem_issupported) | - | Checks whether the device supports the specified DRM solution.|
-| [bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)](#oh_mediakeysystem_issupported2) | - | Checks whether the device supports the specified DRM solution and MIME type. You can use the [OH_MediaKeySystem_IsSupported](#oh_mediakeysystem_issupported) API to check whether the device supports the DRM solution specified by **name**.|
+| [bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)](#oh_mediakeysystem_issupported2) | - | Queries whether the device supports the corresponding DRM solution name and media type. You can call [OH_MediaKeySystem_IsSupported](#oh_mediakeysystem_issupported) to check whether the DRM solution is supported by the device. |
 | [bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)](#oh_mediakeysystem_issupported3) | - | Checks whether the device supports the specified DRM solution, MIME type, and content protection level. You can use the [OH_MediaKeySystem_IsSupported2](#oh_mediakeysystem_issupported2) API to check whether the MIME type is supported.|
 | [Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)](#oh_mediakeysystem_create) | - | Creates a MediaKeySystem instance.|
 | [Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, const char *value)](#oh_mediakeysystem_setconfigurationstring) | - | Sets a configuration item in the form of a string.|
@@ -47,7 +48,7 @@ The file declares the MediaKeySystem APIs for DRM operations.  <br>The APIs can 
 | [Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem, uint8_t *response, int32_t responseLen)](#oh_mediakeysystem_processkeysystemresponse) | - | Processes the response to a previously generated device certificate request.|
 | [Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySystem, DRM_OfflineMediakeyIdArray *offlineMediaKeyIds)](#oh_mediakeysystem_getofflinemediakeyids) | - | Obtains the list of offline media key IDs, which are used to manage offline media keys.|
 | [Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, DRM_OfflineMediaKeyStatus *status)](#oh_mediakeysystem_getofflinemediakeystatus) | - | Obtains the status of an offline media key.|
-| [Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysystem_clearofflinemediakeys) | - | Clears offline media keys with the specified IDs.|
+| [Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysystem_clearofflinemediakeys) | - | Clears offline media keys by ID. |
 | [Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem, DRM_CertificateStatus *certStatus)](#oh_mediakeysystem_getcertificatestatus) | - | Obtains the status of a device certificate.|
 | [Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)](#oh_mediakeysystem_destroy) | - | Destroys a MediaKeySystem instance.|
 
@@ -160,7 +161,7 @@ Obtains the name and ID list of DRM solutions supported by the device.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **descs** or **count** is a null pointer.<br>                            2. The length of the input parameter **descs** is insufficient.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK: execution successful.<br>DRM_ERR_INVALID_VAL:<br>The input parameter descs is a null pointer.<br>The input parameter count is a null pointer.<br>The length of the input parameter descs is insufficient.<br>DRM_ERR_UNKNOWN: an internal error occurs. Check the log details. |
 
 ### OH_MediaKeySystem_IsSupported()
 
@@ -179,7 +180,7 @@ Checks whether the device supports the specified DRM solution.
 
 | Name| Description|
 | -- | -- |
-| const char *name | DRM solution name. This is an input parameter. You can obtain the DRM solution name supported by the device through the [OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems) API. Example: **com.clearplay.drm**|
+| const char *name | Name of the DRM solution. You can obtain the names of the DRM solutions supported by the device through [OH_MediaKeySystem_GetMediaKeySystems()](#oh_mediakeysystem_getmediakeysystems). Example: "com.clearplay.drm". |
 
 **Returns**
 
@@ -196,7 +197,7 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 
 **Description**
 
-Checks whether the device supports the specified DRM solution and MIME type. You can use the [OH_MediaKeySystem_IsSupported](#oh_mediakeysystem_issupported) API to check whether the device supports the DRM solution specified by **name**.
+Queries whether the device supports the corresponding DRM solution name and media type. You can call [OH_MediaKeySystem_IsSupported()](#oh_mediakeysystem_issupported) to check whether the DRM solution is supported by the device.
 
 **Since**: 11
 
@@ -205,7 +206,7 @@ Checks whether the device supports the specified DRM solution and MIME type. You
 
 | Name| Description|
 | -- | -- |
-| const char *name | DRM solution name. This is an input parameter. You can obtain the DRM solution name supported by the device through the [OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems) API.|
+| const char *name | DRM solution name. You can obtain the names of DRM solutions supported by the device through [OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems). |
 | const char *mimeType | MIME type, which is an input parameter. The supported MIME types depend on the DRM solution. For example, **video/avc** and **video/hevc**.|
 
 **Returns**
@@ -231,7 +232,7 @@ Checks whether the device supports the specified DRM solution, MIME type, and co
 
 | Name| Description|
 | -- | -- |
-| const char *name | DRM solution name. This is an input parameter. You can obtain the DRM solution name supported by the device through the [OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems) API.|
+| const char *name | Name of the DRM solution. You can obtain the names of the DRM solutions supported by the device through the [OH_MediaKeySystem_GetMediaKeySystems()](#oh_mediakeysystem_getmediakeysystems) API. |
 | const char *mimeType | MIME type, which is an input parameter. The supported MIME types depend on the DRM solution. For example, **video/avc** and **video/hevc**.|
 | [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) contentProtectionLevel | Content protection level. This is an input parameter.|
 
@@ -265,7 +266,7 @@ Creates a MediaKeySystem instance.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **name** is nullptr or its length is 0.<br>                            2. The input parameter **mediaKeySystem** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.<br>**DRM_ERR_SERVICE_DIED**: The service is dead.<br>**DRM_ERR_MAX_SYSTEM_NUM_REACHED**: The number of created MediaKeySystem instances has reached the upper limit (64).|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | Returns DRM_ERR_OK if the execution is successful.<br>Returns DRM_ERR_INVALID_VAL if:<br>the input parameter name is a null pointer.<br>the length of the input parameter name is 0.<br>the input parameter mediaKeySystem is a null pointer.<br>Returns DRM_ERR_UNKNOWN if an internal error occurs. Check the log details.<br>Returns DRM_ERR_SERVICE_DIED if the service is dead.<br>Returns DRM_ERR_MAX_SYSTEM_NUM_REACHED if the number of created MediaKeySystem instances reaches the maximum limit (64). |
 
 ### OH_MediaKeySystem_SetConfigurationString()
 
@@ -313,7 +314,7 @@ Obtains the value of a configuration item in the form of a string.
 | -- | -- |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Pointer to the MediaKeySystem instance.|
 | const char *configName | Pointer to the name of the configuration item.|
-| char *value | Pointer to the value of the configuration item.|
+| char *value | String-type configuration value used to store the obtained configuration attribute value. This parameter cannot be null, and the specific supported values are determined by the DRM solution on the device. |
 | int32_t valueLen | Length of the value.|
 
 **Returns**
@@ -340,7 +341,7 @@ Sets a configuration item in the form of an array.
 | Name| Description|
 | -- | -- |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Pointer to the MediaKeySystem instance.|
-| const char *configName | Pointer to the name of the configuration item in the form of a character array. It is determined by the DRM solution on the device and cannot be empty.|
+| const char *configName | Character array type configuration attribute name, which cannot be empty. The specific supported attribute names are determined by the DRM solution on the device. |
 | uint8_t *value | Pointer to the value of the configuration item in the form of a character array. It is determined by the DRM solution on the device and cannot be empty.|
 | int32_t valueLen | Length of the value.|
 
@@ -369,7 +370,7 @@ Obtains the value of a configuration item in the form of an array.
 | -- | -- |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Pointer to the MediaKeySystem instance.|
 | const char *configName | Pointer to the name of the configuration item in the form of a character array. It is determined by the DRM solution on the device and cannot be empty.|
-| uint8_t *value | Pointer to the value of the configuration item.|
+| uint8_t *value | Pointer to the character array type configuration attribute, used to store the obtained configuration attribute value. This parameter cannot be null, and the specific supported values are determined by the DRM solution on the device. |
 | int32_t *valueLen | Pointer to the length of the value.|
 
 **Returns**
@@ -474,7 +475,7 @@ Creates a MediaKeySession instance.
 | Name| Description|
 | -- | -- |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Pointer to the MediaKeySystem instance.|
-| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) *level | Pointer to the content protection level.|
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) *level | Content protection level. You can call [OH_MediaKeySystem_GetMaxContentProtectionLevel()](#oh_mediakeysystem_getmaxcontentprotectionlevel) to obtain the maximum content protection level supported by the device. |
 | [MediaKeySession](capi-drm-mediakeysession.md) **mediaKeySession | Double pointer to the MediaKeySession instance created.|
 
 **Returns**
@@ -670,3 +671,5 @@ Destroys a MediaKeySystem instance.
 | Type| Description|
 | -- | -- |
 | [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+
+

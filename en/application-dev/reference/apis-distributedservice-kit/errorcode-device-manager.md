@@ -5,6 +5,7 @@
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=7ebe5ca28e86a74fd7bfca7f2a0ba9f738fdd1c2 translatedAt=2026-11-03T12:57:56.539Z pushedAt=2026-11-04T08:47:59.638Z nl=1 -->
 
 > **NOTE**
 >
@@ -36,7 +37,7 @@ Failed to obtain the service.
 
 **Description**
 
-This error code is reported if the service fails to start, resulting in a service access failure.
+The service fails to start, and the service cannot be accessed.
 
 **Possible Causes**
 

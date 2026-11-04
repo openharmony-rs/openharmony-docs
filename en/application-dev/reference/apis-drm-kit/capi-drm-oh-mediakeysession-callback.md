@@ -1,10 +1,12 @@
 # OH_MediaKeySession_Callback
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=6dec6b14cb206fe02a5ddd5033caa3930c0dd80f translatedAt=2026-11-03T13:16:11.893Z pushedAt=2026-11-04T08:46:14.014Z nl=1 -->
 
 ```c
 typedef struct OH_MediaKeySession_Callback {...} OH_MediaKeySession_Callback
@@ -26,5 +28,7 @@ The OH_MediaKeySession_Callback struct describes the callbacks for media key ses
 
 | Name| Description|
 | -- | -- |
-| [OH_MediaKeySession_EventCallback](capi-native-mediakeysession-h.md#oh_mediakeysession_eventcallback) eventCallback | Callback for standard events, such as key expiration.|
-| [OH_MediaKeySession_KeyChangeCallback](capi-native-mediakeysession-h.md#oh_mediakeysession_keychangecallback) keyChangeCallback | Callback for media key change events.|
+| [OH_MediaKeySession_EventCallback](capi-native-mediakeysession-h.md#oh_mediakeysession_eventcallback) eventCallback | Pointer to the callback invoked for normal events, such as key expiration. When the MediaKeySession state changes normally, the system invokes this callback to notify the application. |
+| [OH_MediaKeySession_KeyChangeCallback](capi-native-mediakeysession-h.md#oh_mediakeysession_keychangecallback) keyChangeCallback | Pointer to the callback invoked for key change events, used to handle key state changes. When the key state changes (for example, the key becomes available or expires), the system invokes this callback to notify the application, and the callback parameters contain the information about the changed key. |
+
+

@@ -6,10 +6,11 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=d1ed4ce8d034cfba750330bf06dcd3a9995f70ce translatedAt=2026-11-03T13:31:36.425Z pushedAt=2026-11-04T08:47:59.723Z nl=1 -->
 
 ## Overview
 
-Provides native APIs for obtaining resources.
+Provides the capability of obtaining resources at the native layer of resource management.
 
 **File to include**: <resourcemanager/ohresmgr.h>
 
@@ -27,46 +28,46 @@ Provides native APIs for obtaining resources.
 
 | Name| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabase64) | Obtains the Base64 code of the media resource with the specified screen density based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediabase64data) | Obtains the Base64 code of the media resource with the specified screen density based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabase64byname) | Obtains the Base64 code of the media resource with the specified screen density based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediabase64databyname) | Obtains the Base64 code of the media resource with the specified screen density based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmedia) | Obtains the content of the media resource with the specified screen density based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediadata) | Obtains the content of the media resource with the specified screen density based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabyname) | Obtains the content of the media resource with the specified screen density based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediadatabyname) | Obtains the content of the media resource with the specified screen density based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)](#oh_resourcemanager_getdrawabledescriptor) | Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordata) | Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)](#oh_resourcemanager_getdrawabledescriptorbyname) | Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordatabyname) | Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)](#oh_resourcemanager_getsymbol) | Obtains a **symbol** resource based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)](#oh_resourcemanager_getsymbolbyname) | Obtains a **symbol** resource based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)](#oh_resourcemanager_getlocales) | Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **locales**.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem)](#oh_resourcemanager_getlocalesdata) | Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **locales**.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)](#oh_resourcemanager_getconfiguration) | Obtains the device configuration. After using this API, you need to call [OH_ResourceManager_ReleaseConfiguration](#oh_resourcemanager_releaseconfiguration) to release the memory. If the **ResourceManager_Configuration** object is created by using malloc, call **free()** to release the object. (It is deprecated in API version 20.)|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)](#oh_resourcemanager_getresourceconfiguration) | Obtains the device configuration. After using this API, you need to call [OH_ResourceManager_ReleaseConfiguration](#oh_resourcemanager_releaseconfiguration) to release the memory. If the **ResourceManager_Configuration** object is created by using malloc, call **free()** to release the object.|
-| [ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManager_Configuration *configuration)](#oh_resourcemanager_releaseconfiguration) | Releases the memory requested by using [OH_ResourceManager_GetConfiguration](#oh_resourcemanager_getconfiguration) or [OH_ResourceManager_GetResourceConfiguration](#oh_resourcemanager_getresourceconfiguration).|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, ...)](#oh_resourcemanager_getstring) | Obtains a **string** resource based on the specified resource ID. The obtain common string resources, use **OH_ResourceManager_GetString(mgr, resId, resultValue)**. The obtain formatted string resources with the **%d**, **%s**, and **%f** placeholders, use **OH_ResourceManager_GetString(mgr, resId, resultValue, 10, "format", 10.10)**. After using this API, you need to call **free()** to release the memory of the strings.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, ...)](#oh_resourcemanager_getstringbyname) | Obtains a **string** resource based on the specified resource name. The obtain common string resources, use **OH_ResourceManager_GetString(mgr, resName, resultValue)**. The obtain formatted string resources with the **%d**, **%s**, and **%f** placeholders, use **OH_ResourceManager_GetString(mgr, resName, resultValue, 10, "format", 10.10)**. After using this API, you need to call **free()** to release the memory of the strings.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarray) | Obtains a string array based on the specified resource ID. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of the string array.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr, const char *resName, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarraybyname) | Obtains a string array based on the specified resource name. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of the string array.|
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabase64) | Obtains the Base64-encoded string of the corresponding media resource by specifying the resource ID and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediabase64data) | Obtains the Base64-encoded string of the corresponding media resource by specifying the resource ID and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabase64byname) | Obtains the Base64-encoded string of the corresponding media resource by specifying the resource name and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediabase64databyname) | Obtains the Base64-encoded string of the corresponding media resource by specifying the resource name and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmedia) | Obtains the binary data of the corresponding media resource by specifying the resource ID and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediadata) | Obtains the binary data of the corresponding media resource by specifying the resource ID and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)](#oh_resourcemanager_getmediabyname) | Obtains the binary data of the corresponding media resource by specifying the resource name and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)](#oh_resourcemanager_getmediadatabyname) | Obtains the binary data of the corresponding media resource by specifying the resource name and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)](#oh_resourcemanager_getdrawabledescriptor) | Obtains the DrawableDescriptor object corresponding to the icon resource by specifying the resource ID, screen density, and icon type. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordata) | Obtains the DrawableDescriptor object corresponding to the icon resource by specifying the resource ID, screen density, and icon type. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)](#oh_resourcemanager_getdrawabledescriptorbyname) | Obtains the DrawableDescriptor object corresponding to the icon resource by specifying the resource name, screen density, and icon type. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordatabyname) | Obtains the DrawableDescriptor object of the corresponding icon resource by specifying the resource name and screen density. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)](#oh_resourcemanager_getsymbol) | Obtains the Unicode encoding of the Symbol icon corresponding to the specified resource ID. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)](#oh_resourcemanager_getsymbolbyname) | Obtains the Unicode encoding of the Symbol icon corresponding to the specified resource name. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)](#oh_resourcemanager_getlocales) | Obtains the list of languages supported by the application. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem)](#oh_resourcemanager_getlocalesdata) | Obtains the list of languages supported by the application. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)](#oh_resourcemanager_getconfiguration) | Obtains the device configuration information such as screen orientation, language region, device type, screen density, and color mode. (Deprecated since API 20) |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)](#oh_resourcemanager_getresourceconfiguration) | Obtains the device configuration information such as screen orientation, language region, device type, screen density, and color mode. |
+| [ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManager_Configuration *configuration)](#oh_resourcemanager_releaseconfiguration) | Releases the memory requested by the [OH_ResourceManager_GetConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getconfiguration) or [OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration) function. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, ...)](#oh_resourcemanager_getstring) | Obtains the plain string or format string corresponding to the specified resource ID. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, ...)](#oh_resourcemanager_getstringbyname) | Obtains the plain string or format string corresponding to the specified resource name. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarray) | Obtains the string array corresponding to the specified resource ID. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr, const char *resName, char ***resultValue, uint32_t *resultLen)](#oh_resourcemanager_getstringarraybyname) | Obtains the string array corresponding to the specified resource name. |
 | [ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue, uint32_t len)](#oh_resourcemanager_releasestringarray) | Releases the memory of the string array.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstring) | Obtains singular and plural strings based on the specified resource ID. After using this API, you need to call **free()** to release the memory of the strings. (It is deprecated in API version 18.)|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstringbyname) | Obtains singular and plural strings based on the specified resource name. After using this API, you need to call **free()** to release the memory of the strings. (It is deprecated in API version 18.)|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstring) | Obtains singular and plural strings based on the specified resource ID. After using this API, you need to call **free()** to release the memory of the strings.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstring) | Obtains singular and plural strings based on the specified resource ID. After using this API, you need to call **free()** to release the memory of the strings.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstringbyname) | Obtains singular and plural strings based on the specified resource name. After using this API, you need to call **free()** to release the memory of the strings.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr, const char *resName, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstringbyname) | Obtains singular and plural strings based on the specified resource name. After using this API, you need to call **free()** to release the memory of the strings.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)](#oh_resourcemanager_getcolor) | Obtains a color value based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)](#oh_resourcemanager_getcolorbyname) | Obtains a color value based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId, int *resultValue)](#oh_resourcemanager_getint) | Obtains an int value based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName, int *resultValue)](#oh_resourcemanager_getintbyname) | Obtains an int value based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId, float *resultValue)](#oh_resourcemanager_getfloat) | Obtains a float value based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName, float *resultValue)](#oh_resourcemanager_getfloatbyname) | Obtains a float value based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId, bool *resultValue)](#oh_resourcemanager_getbool) | Obtains a bool value based on the specified resource ID.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName, bool *resultValue)](#oh_resourcemanager_getboolbyname) | Obtains a bool value based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceManager *mgr, const char *path)](#oh_resourcemanager_addresource) | Adds overlay resources when an application is running.|
-| [ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResourceManager *mgr, const char *path)](#oh_resourcemanager_removeresource) | Removes overlay resources when an application is running.|
+| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstring) | Obtains the plural string corresponding to the specified resource ID.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language singular and plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German and other languages, plural types include cardinal (such as 1, 2, 3) and ordinal (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types. (Deprecated since API 16) |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue)](#oh_resourcemanager_getpluralstringbyname) | Obtains the plural string corresponding to the specified resource name.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language singular and plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German and other languages, plural types include cardinal (such as 1, 2, 3) and ordinal (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types. (Deprecated since API 16) |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstring) | Obtains the corresponding plural string and formats it by specifying the resource ID, integer quantity value, and variable parameters.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language singular and plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German and other languages, plural types include cardinal (such as 1, 2, 3) and ordinal (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue, ...)](#oh_resourcemanager_getintpluralstringbyname) | Obtains the corresponding plural string and formats it by specifying the resource name, integer quantity value, and variable parameters.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language singular and plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German and other languages, plural types include cardinal (such as 1, 2, 3) and ordinal (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstring) | Obtains the corresponding plural string and formats it by specifying the resource ID, floating-point number quantity value, and variable parameters.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language singular and plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German and other languages, plural types include cardinal (such as 1, 2, 3) and ordinal (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr, const char *resName, double num, char **resultValue, ...)](#oh_resourcemanager_getdoublepluralstringbyname) | Obtains the corresponding plural string and formats it by specifying the resource name, floating-point number quantity value, and variable parameters.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language singular and plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German and other languages, plural types include cardinal (such as 1, 2, 3) and ordinal (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)](#oh_resourcemanager_getcolor) | Obtains the color resource value corresponding to the specified resource ID. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)](#oh_resourcemanager_getcolorbyname) | Obtains the color resource value corresponding to the specified resource name. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId, int *resultValue)](#oh_resourcemanager_getint) | Obtains the integer resource value corresponding to the specified resource ID. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName, int *resultValue)](#oh_resourcemanager_getintbyname) | Obtains the integer resource value corresponding to the specified resource name. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId, float *resultValue)](#oh_resourcemanager_getfloat) | Obtains the floating-point resource value corresponding to the specified resource ID. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName, float *resultValue)](#oh_resourcemanager_getfloatbyname) | Obtains the floating-point resource value corresponding to the specified resource name. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId, bool *resultValue)](#oh_resourcemanager_getbool) | Obtains the boolean resource value corresponding to the specified resource ID. |
+| [ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName, bool *resultValue)](#oh_resourcemanager_getboolbyname) | Obtains the boolean resource value corresponding to the specified resource name. |
+| [ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceManager *mgr, const char *path)](#oh_resourcemanager_addresource) | Dynamically loads overlay resources at application runtime to implement theme switching or resource overriding. |
+| [ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResourceManager *mgr, const char *path)](#oh_resourcemanager_removeresource) | Removes the specified overlay resources at application runtime to restore the resources before being overridden. |
 
 ## Function Description
 
@@ -78,7 +79,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 
 **Description**
 
-Obtains the Base64 code of the media resource with the specified screen density based on the specified resource ID.
+Obtains the Base64-encoded string of the corresponding media resource by specifying the resource ID and screen density.
 
 **Since**: 12
 
@@ -86,17 +87,17 @@ Obtains the Base64 code of the media resource with the specified screen density 
 
 | Name| Description|
 | -- |--|
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, indicating that the current system screen density (in DPI) is used.|
-| char **resultValue | Result of writing **resultValue**.|
-| uint64_t *resultLen | Length of media written to **resultLen**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| char **resultValue | Output parameter. Pointer to the Base64-encoded string, which is allocated by malloc() and must be released by free() after use. |
+| uint64_t *resultLen | Output parameter. Length of the Base64 string, in bytes. |
+| density | Input parameter, optional. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, which indicates the current system screen density. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetMediaBase64Data()
 
@@ -106,7 +107,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 
 **Description**
 
-Obtains the Base64 code of the media resource with the specified screen density based on the specified resource ID.
+Obtains the Base64-encoded string of the corresponding media resource by specifying the resource ID and screen density.
 
 **Since**: 12
 
@@ -114,17 +115,17 @@ Obtains the Base64 code of the media resource with the specified screen density 
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| char **resultValue | Result of writing **resultValue**.|
-| uint64_t *resultLen | Length of media written to **resultLen**.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density (in DPI) is used. If this parameter is not required, set it to **0**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to a NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| char **resultValue | Output parameter. Pointer to the Base64-encoded string, which is allocated by malloc() and must be released by free() after use. |
+| uint64_t *resultLen | Output parameter. Length of the Base64 string, in bytes. |
+| uint32_t density | Input parameter. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value 0 indicates that the current system screen density is used. If no specific density is required, set this parameter to 0. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found based on the resource ID.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetMediaBase64ByName()
 
@@ -134,7 +135,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 
 **Description**
 
-Obtains the Base64 code of the media resource with the specified screen density based on the specified resource name.
+Obtains the Base64-encoded string of the corresponding media resource by specifying the resource name and screen density.
 
 **Since**: 12
 
@@ -142,17 +143,17 @@ Obtains the Base64 code of the media resource with the specified screen density 
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| char **resultValue | Result of writing **resultValue**.|
-| uint64_t *resultLen | Length of media written to **resultLen**.|
-| uint32_t density  | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, indicating that the current system screen density (in DPI) is used.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| char **resultValue | Output parameter. Pointer to the Base64-encoded string, which is allocated by malloc() and must be released by free() after use. |
+| uint64_t *resultLen | Output parameter. Length of the Base64 string, in bytes. |
+| density | Input parameter, optional. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, which indicates the current system screen density. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetMediaBase64DataByName()
 
@@ -162,7 +163,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 
 **Description**
 
-Obtains the Base64 code of the media resource with the specified screen density based on the specified resource name.
+Obtains the Base64-encoded string of the corresponding media resource by specifying the resource name and screen density.
 
 **Since**: 12
 
@@ -170,17 +171,17 @@ Obtains the Base64 code of the media resource with the specified screen density 
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| char **resultValue | Result of writing **resultValue**.|
-| uint64_t *resultLen | Length of media written to **resultLen**.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density (in DPI) is used. If this parameter is not required, set it to **0**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| char **resultValue | Output parameter. Pointer to the Base64-encoded string, which is allocated by malloc() and must be released by free() after use. |
+| uint64_t *resultLen | Output parameter. Length of the Base64 string, in bytes. |
+| uint32_t density | Input parameter. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value 0 indicates that the current system screen density is used. If no specific density is required, set this parameter to 0. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetMedia()
 
@@ -190,7 +191,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 
 **Description**
 
-Obtains the content of the media resource with the specified screen density based on the specified resource ID.
+Obtains the binary data of the corresponding media resource by specifying the resource ID and screen density.
 
 **Since**: 12
 
@@ -198,17 +199,17 @@ Obtains the content of the media resource with the specified screen density base
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, indicating that the current system screen density (in DPI) is used.|
-| uint8_t **resultValue | Result of writing **resultValue**.|
-| uint64_t *resultLen | Length of media written to **resultLen**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| uint8_t **resultValue | Output parameter. Pointer to the media data returned. The memory is allocated by malloc() and must be released by free() after use. |
+| uint64_t *resultLen | Output parameter. Length of the data returned, in bytes. |
+| density | Input parameter, optional. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, which indicates the screen density of the current system. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetMediaData()
 
@@ -218,7 +219,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 
 **Description**
 
-Obtains the content of the media resource with the specified screen density based on the specified resource ID.
+Obtains the binary data of the corresponding media resource by specifying the resource ID and screen density.
 
 **Since**: 12
 
@@ -226,17 +227,17 @@ Obtains the content of the media resource with the specified screen density base
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| uint8_t **resultValue | Result of writing **resultValue**.|
-| uint64_t *resultLen | Length of media written to **resultLen**.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density (in DPI) is used. If this parameter is not required, set it to **0**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to a NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| uint8_t **resultValue | Output parameter. Returns the pointer to the media data. The memory is allocated by malloc() and must be released by free() after use. |
+| uint64_t *resultLen | Output parameter. Returns the data length, in bytes. |
+| uint32_t density | Input parameter. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value 0 indicates that the current system screen density is used. If no specific density is required, set this parameter to 0. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetMediaByName()
 
@@ -246,7 +247,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 
 **Description**
 
-Obtains the content of the media resource with the specified screen density based on the specified resource name.
+Obtains the binary data of the corresponding media resource by specifying the resource name and screen density.
 
 **Since**: 12
 
@@ -254,17 +255,17 @@ Obtains the content of the media resource with the specified screen density base
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, indicating that the current system screen density (in DPI) is used.|
-| uint8_t **resultValue | Result of writing **resultValue**.|
-| uint64_t *resultLen | Length of media written to **resultLen**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| uint8_t **resultValue | Output parameter. Pointer to the media data returned. The memory is allocated by malloc() and must be released by free() after use. |
+| uint64_t *resultLen | Output parameter. Length of the data returned, in bytes. |
+| density | Input parameter, optional. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, which indicates the screen density of the current system. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetMediaDataByName()
 
@@ -274,7 +275,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 
 **Description**
 
-Obtains the content of the media resource with the specified screen density based on the specified resource name.
+Obtains the binary data of the corresponding media resource by specifying the resource name and screen density.
 
 **Since**: 12
 
@@ -282,17 +283,17 @@ Obtains the content of the media resource with the specified screen density base
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| uint8_t **resultValue | Result of writing **resultValue**.|
-| uint64_t *resultLen | Length of media written to **resultLen**.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density (in DPI) is used. If this parameter is not required, set it to **0**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| uint8_t **resultValue | Output parameter. Pointer to the media data returned. The memory is allocated by malloc() and must be released by free() after use. |
+| uint64_t *resultLen | Output parameter. Length of the data returned, in bytes. |
+| uint32_t density | Input parameter. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value 0 indicates that the current system screen density is used. If no specific density is required, set this parameter to 0. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetDrawableDescriptor()
 
@@ -302,7 +303,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 
 **Description**
 
-Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource ID.
+Obtains the DrawableDescriptor object corresponding to the icon resource by specifying the resource ID, screen density, and icon type.
 
 **Since**: 12
 
@@ -310,17 +311,17 @@ Obtains the **DrawableDescriptor** object of the icon resource with the specifie
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t | Resource ID.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, indicating that the current system screen density (in DPI) is used.|
-| uint32_t type | Icon type. The value **0** indicates an application icon, and the value **1** indicates a theme icon.|
-| [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | Result of writing **drawableDescriptor**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | Output parameter. Pointer to the DrawableDescriptor object. |
+| density | Input parameter, optional. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, which indicates that the current system screen density is used. |
+| type | Input parameter, optional. Icon type. The default value is 0.<br>     0: application icon.<br>     1: application theme icon. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS, indicating success.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER, indicating invalid input parameters. Possible causes: 1. Incorrect parameter type; 2. Parameter verification failed.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND, indicating an invalid resource ID.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID, indicating that no matching resource is found based on the resource ID. |
 
 ### OH_ResourceManager_GetDrawableDescriptorData()
 
@@ -330,7 +331,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 
 **Description**
 
-Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource ID.
+Obtains the DrawableDescriptor object corresponding to the icon resource by specifying the resource ID, screen density, and icon type.
 
 **Since**: 12
 
@@ -338,17 +339,17 @@ Obtains the **DrawableDescriptor** object of the icon resource with the specifie
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | Result of writing **drawableDescriptor**.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density (in DPI) is used. If this parameter is not required, set it to **0**.|
-| uint32_t type | Icon type. This parameter is optional. The value **0** indicates an application icon, and the value **1** indicates a theme icon. If this parameter is not required, set it to **0**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | Output parameter. Pointer to the DrawableDescriptor object. |
+| uint32_t density | Input parameter. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value 0 indicates that the current system screen density is used. If no specific density is required, set this parameter to 0. |
+| uint32_t type | Input parameter. Icon type. If no specific icon type is required, set this parameter to 0.<br>     0: the application's own icon.<br>     1: the application's theme icon. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found based on the resource ID. |
 
 ### OH_ResourceManager_GetDrawableDescriptorByName()
 
@@ -358,7 +359,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 
 **Description**
 
-Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource name.
+Obtains the DrawableDescriptor object corresponding to the icon resource by specifying the resource name, screen density, and icon type.
 
 **Since**: 12
 
@@ -366,17 +367,17 @@ Obtains the **DrawableDescriptor** object of the icon resource with the specifie
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, indicating that the current system screen density (in DPI) is used.|
-| uint32_t type | Icon type. This parameter is optional. The value **0** indicates an application icon, the value **1** indicates a theme icon, and the value **2** indicates a dynamic icon.|
-| [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | Result of writing **drawableDescriptor**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | Output parameter. Pointer to the DrawableDescriptor object. |
+| density | Input parameter, optional. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is 0, which indicates that the current system screen density is used. |
+| type | Input parameter, optional. Icon type. The default value is 0.<br>     0: application icon.<br>     1: application theme icon.<br>     2: application dynamic icon. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter validation fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name. |
 
 ### OH_ResourceManager_GetDrawableDescriptorDataByName()
 
@@ -386,7 +387,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 
 **Description**
 
-Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource name.
+Obtains the DrawableDescriptor object of the corresponding icon resource by specifying the resource name and screen density.
 
 **Since**: 12
 
@@ -394,17 +395,17 @@ Obtains the **DrawableDescriptor** object of the icon resource with the specifie
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | Result of writing **drawableDescriptor**.|
-| uint32_t density | Screen density. This parameter is optional. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density (in DPI) is used. If this parameter is not required, set it to **0**.|
-| uint32_t type | Icon type. This parameter is optional. The value **0** indicates an application icon, and the value **1** indicates a theme icon. If this parameter is not required, set it to **0**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| [ArkUI_DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md) **drawableDescriptor | Output parameter. Pointer to the DrawableDescriptor object. |
+| uint32_t density | Input parameter. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value 0 indicates that the current system screen density is used. If no specific density is required, set this parameter to 0. |
+| uint32_t type | Input parameter. Icon type. If no specific icon type is required, set this parameter to 0.<br>0: indicates the application's own icon.<br>1: indicates the theme icon.<br>2: indicates the dynamic icon. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name. |
 
 ### OH_ResourceManager_GetSymbol()
 
@@ -414,7 +415,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 
 **Description**
 
-Obtains a **symbol** resource based on the specified resource ID.
+Obtains the Unicode encoding of the Symbol icon corresponding to the specified resource ID.
 
 **Since**: 12
 
@@ -422,15 +423,15 @@ Obtains a **symbol** resource based on the specified resource ID.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| uint32_t *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| uint32_t *resultValue | Output parameter. Unicode encoding of the Symbol icon returned. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found based on the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference. |
 
 ### OH_ResourceManager_GetSymbolByName()
 
@@ -440,7 +441,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 
 **Description**
 
-Obtains a **symbol** resource based on the specified resource name.
+Obtains the Unicode encoding of the Symbol icon corresponding to the specified resource name.
 
 **Since**: 12
 
@@ -448,15 +449,15 @@ Obtains a **symbol** resource based on the specified resource name.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| uint32_t *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| uint32_t *resultValue | Output parameter. Pointer to the Unicode encoding of the Symbol icon. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. The parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference. |
 
 ### OH_ResourceManager_GetLocales()
 
@@ -466,7 +467,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 
 **Description**
 
-Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **locales**.
+Obtains the list of languages supported by the application.
 
 **Since**: 12
 
@@ -474,16 +475,16 @@ Obtains the language list. After using this API, you need to call **OH_ResourceM
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| char ***resultValue | Result of writing **resultValue**.|
-| uint32_t *resultLen | Length of locales written to **resultLen**.|
-| bool includeSystem | Whether system resources are included. The default value is **false**. This parameter does not take effect if only system resources are involved when you query the list of locales.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| char ***resultValue | Output parameter. Pointer to the language list array. The memory is allocated by this function and must be released through [OH_ResourceManager_ReleaseStringArray](capi-ohresmgr-h.md#oh_resourcemanager_releasestringarray) after use. |
+| uint32_t *resultLen | Output parameter. Length of the language list. |
+| includeSystem | Input parameter, optional. Whether to include system resources. true indicates that system resources are included, and false indicates the opposite. The default value is false.<br>     When the system resource manager object is used to obtain the language list, the system resource language list is always returned. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>         [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetLocalesData()
 
@@ -493,7 +494,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 **Description**
 
-Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **locales**.
+Obtains the list of languages supported by the application.
 
 **Since**: 12
 
@@ -501,16 +502,16 @@ Obtains the language list. After using this API, you need to call **OH_ResourceM
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| char ***resultValue | Result of writing **resultValue**.|
-| uint32_t *resultLen | Length of locales written to **resultLen**.|
-| bool includeSystem | Whether system resources are included. If this parameter is not required, set it to **false**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| char ***resultValue | Output parameter. Pointer to the language list array returned. The memory is allocated by this function and must be released through [OH_ResourceManager_ReleaseStringArray](capi-ohresmgr-h.md#oh_resourcemanager_releasestringarray) after use. |
+| uint32_t *resultLen | Output parameter. Length of the language list returned. |
+| bool includeSystem | Input parameter. Whether to include system resources. The value **true** means to include system resources, and **false** means not to include system resources.<br>     When the system resource management object is used to obtain the language list, the system resource language list is always returned. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>         [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetConfiguration()
 
@@ -520,26 +521,26 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 
 **Description**
 
-Obtains the device configuration. After this API is used, call [OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration) to release the memory. If the **ResourceManager_Configuration** object is created by using malloc, call **free()** to release the object.
+Obtains the configuration information of the device, such as screen orientation, language region, device type, screen density, and color mode.
 
 **Since**: 12
 
 **Deprecated from**: 20
 
-**Substitute**: [OH_ResourceManager_GetResourceConfiguration](#oh_resourcemanager_getresourceconfiguration)
+**Replacement API:** [OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration)
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | Device configuration. The return value of **configuration.screenDensity** is the rounded value of the device's DPI divided by 160.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | Output parameter. Returns the device configuration information, where screenDensity is the value obtained by dividing the device screen density (dpi) by 160 and rounding down.<br>     The locale string in configuration is allocated by this function. After use, release locale through [OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration). If the configuration pointer is allocated by malloc(), release it through free() after use. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001009 - The attempt to access system resources fails.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification failed.<br>     Returns ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED if accessing system resources fails.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetResourceConfiguration()
 
@@ -549,7 +550,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const Nati
 
 **Description**
 
-Obtains the device configuration. After this API is used, call [OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration) to release the memory. If the **ResourceManager_Configuration** object is created by using malloc, call **free()** to release the object.
+Obtains the configuration information of the device, such as screen orientation, language region, device type, screen density, and color mode.
 
 **Since**: 20
 
@@ -557,14 +558,14 @@ Obtains the device configuration. After this API is used, call [OH_ResourceManag
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | Device configuration. The return value of **configuration.screenDensity** is the device's DPI.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | Output parameter. Returns the device configuration information, where the value of screenDensity is the device screen density (dpi).<br>     The locale string in configuration is allocated by this function. After use, release locale through [OH_ResourceManager_ReleaseConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_releaseconfiguration). If the configuration pointer is allocated by malloc(), release it through free() after use. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>          [ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001009 - The attempt to access system resources fails.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_SYSTEM_RES_MANAGER_GET_FAILED if accessing system resources fails.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory is insufficient. |
 
 ### OH_ResourceManager_ReleaseConfiguration()
 
@@ -574,7 +575,7 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManage
 
 **Description**
 
-Releases the memory requested by using the [OH_ResourceManager_GetConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getconfiguration) and [OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration) methods.
+Releases the memory allocated by the [OH_ResourceManager_GetConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getconfiguration) or [OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration) function.
 
 **Since**: 12
 
@@ -582,13 +583,13 @@ Releases the memory requested by using the [OH_ResourceManager_GetConfiguration]
 
 | Name| Description|
 | -- | -- |
-| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | Configuration object whose memory needs to be released.|
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) *configuration | Input parameter. Pointer to the [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) object whose memory needs to be released. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification failed. |
 
 ### OH_ResourceManager_GetString()
 
@@ -598,7 +599,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 
 **Description**
 
-Obtains a **string** resource based on the specified resource ID. The obtain common string resources, use **OH_ResourceManager_GetString(mgr, resId, resultValue)**. The obtain formatted string resources with the **%d**, **%s**, and **%f** placeholders, use **OH_ResourceManager_GetString(mgr, resId, resultValue, 10, "format", 10.10)**. After using this API, you need to call **free()** to release the memory of the strings.
+Gets the plain string or format string corresponding to the specified resource ID.
 
 **Since**: 12
 
@@ -606,16 +607,16 @@ Obtains a **string** resource based on the specified resource ID. The obtain com
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| char **resultValue | Result of writing **resultValue**.|
-| ... | Variable representing formatted string resources. Supported types include const char*, int, and float.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| char **resultValue | Output parameter. Pointer to the returned string. The memory is allocated by malloc() and must be released by free() after use. |
+| ... | Input parameter, optional. Variable argument list used to format the string. It supports three types: const char*, int, and float.<br>     This parameter is not required when obtaining a plain string. It is required when obtaining a format string. The variable arguments of the corresponding types must be passed in the order of the placeholders in the string, and the number and types of the arguments must be consistent with the placeholders in the string. For example, if the string contains three placeholders %d, %s, and %f, call OH_ResourceManager_GetString(mgr, resId, resultValue, 10, "format", 10.10). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found based on the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetStringByName()
 
@@ -625,7 +626,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 
 **Description**
 
-Obtains a **string** resource based on the specified resource name. The obtain common string resources, use **OH_ResourceManager_GetString(mgr, resName, resultValue)**. The obtain formatted string resources with the **%d**, **%s**, and **%f** placeholders, use **OH_ResourceManager_GetString(mgr, resName, resultValue, 10, "format", 10.10)**. After using this API, you need to call **free()** to release the memory of the strings.
+Gets the plain string or format string corresponding to the specified resource name.
 
 **Since**: 12
 
@@ -633,16 +634,16 @@ Obtains a **string** resource based on the specified resource name. The obtain c
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| char **resultValue | Result of writing **resultValue**.|
-| ... | Variable representing formatted string resources. Supported types include const char*, int, and float.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| char **resultValue | Output parameter. Returns a string pointer. The memory is allocated by malloc() and must be released by free() after use. |
+| ... | Input parameter, optional. Indicates a variable argument list used to format the string. It supports three types: const char*, int, and float.<br>     When obtaining a plain string, this parameter is not required. When obtaining a formatted string, it is mandatory. The variable arguments of the corresponding types must be passed in the order of the placeholders in the string, and the number and types of the arguments must be consistent with the placeholders in the string. For example, if the string contains three placeholders %d, %s, and %f, the call is OH_ResourceManager_GetStringByName(mgr, resName, resultValue, 10, "format", 10.10). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if the memory is insufficient. |
 
 ### OH_ResourceManager_GetStringArray()
 
@@ -652,7 +653,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 
 **Description**
 
-Obtains a string array based on the specified resource ID. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of the string array.
+Gets the string array corresponding to the specified resource ID.
 
 **Since**: 12
 
@@ -660,16 +661,16 @@ Obtains a string array based on the specified resource ID. After using this API,
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| char ***resultValue | Result of writing **resultValue**.|
-| uint32_t *resultLen | Length of **StringArray** written to **resultLen**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| char ***resultValue | Output parameter. Pointer to the string array returned. The memory is allocated by this function and must be released through [OH_ResourceManager_ReleaseStringArray](capi-ohresmgr-h.md#oh_resourcemanager_releasestringarray) after use. |
+| uint32_t *resultLen | Output parameter. Pointer to the length of the string array returned. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetStringArrayByName()
 
@@ -679,7 +680,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeRe
 
 **Description**
 
-Obtains a string array based on the specified resource name. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of the string array.
+Gets the string array corresponding to the specified resource name.
 
 **Since**: 12
 
@@ -687,16 +688,16 @@ Obtains a string array based on the specified resource name. After using this AP
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| char ***resultValue | Result of writing **resultValue**.|
-| uint32_t *resultLen | Length of **StringArray** written to **resultLen**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| char ***resultValue | Output parameter. Returns the pointer to the string array. The memory is allocated by this function and must be released through [OH_ResourceManager_ReleaseStringArray](capi-ohresmgr-h.md#oh_resourcemanager_releasestringarray) after use. |
+| uint32_t *resultLen | Output parameter. Returns the length of the string array. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_ReleaseStringArray()
 
@@ -714,14 +715,14 @@ Releases the memory of the string array.
 
 | Name| Description|
 | -- | -- |
-| char ***resValue | String array whose memory needs to be released.|
-| uint32_t len | Length of the string array.|
+| char ***resValue | Input parameter. Pointer to the string array to be released. |
+| uint32_t len | Input parameter. Length of the string array. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails. |
 
 ### OH_ResourceManager_GetPluralString()
 
@@ -731,11 +732,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 
 **Description**
 
-Obtains singular and plural strings based on the specified resource ID. After using this API, you need to call **free()** to release the memory of the strings.
+Gets the plural string corresponding to the specified resource ID.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German, and other languages, plural types include cardinal numerals (such as 1, 2, 3) and ordinal numerals (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types.
 
 **Since**: 12
 
-**Deprecated from**: 18
+**Deprecated version**: 16
 
 **Substitute**: [OH_ResourceManager_GetIntPluralString](capi-ohresmgr-h.md#oh_resourcemanager_getintpluralstring)
 
@@ -743,16 +744,16 @@ Obtains singular and plural strings based on the specified resource ID. After us
 
 | Name| Description|
 |--| -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| uint32_t num |  Number.|
-| char **resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| uint32_t num | Input parameter. Quantity value, used to obtain the corresponding plural string based on the plural rules of the current language. |
+| char **resultValue | Output parameter. Returns the string pointer. The memory is allocated by malloc() and must be released by free() after use. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetPluralStringByName()
 
@@ -762,11 +763,11 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 **Description**
 
-Obtains singular and plural strings based on the specified resource name. After using this API, you need to call **free()** to release the memory of the strings.
+Gets the plural string corresponding to the specified resource name.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German, and other languages, plural types include cardinal numerals (such as 1, 2, 3) and ordinal numerals (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types.
 
 **Since**: 12
 
-**Deprecated from**: 18
+**Deprecated version**: 16
 
 **Substitute**: [OH_ResourceManager_GetIntPluralStringByName](capi-ohresmgr-h.md#oh_resourcemanager_getintpluralstringbyname)
 
@@ -774,16 +775,16 @@ Obtains singular and plural strings based on the specified resource name. After 
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| uint32_t num |  Number.|
-| char **resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| uint32_t num | Input parameter. Quantity value, used to get the corresponding plural string based on the plural rules of the current language. |
+| char **resultValue | Output parameter. Returns the string pointer. The memory is allocated by malloc() and must be released by free() after use. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if memory overflow occurs. |
 
 ### OH_ResourceManager_GetIntPluralString()
 
@@ -793,7 +794,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 **Description**
 
-Obtains singular and plural strings based on the specified resource ID. After using this API, you need to call **free()** to release the memory of the strings.
+Obtains the corresponding plural string and formats it by specifying the resource ID, integer quantity, and variable arguments.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German, and other languages, plural types include cardinal numerals (such as 1, 2, 3) and ordinal numerals (such as 1st, 2nd, 3rd). This function only supports cardinal numeral types.
 
 **Since**: 18
 
@@ -801,45 +802,17 @@ Obtains singular and plural strings based on the specified resource ID. After us
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| uint32_t num |  Quantity value (an integer number). Its string representation is obtained based on the current language's plural rules.|
-| char **resultValue | Result of writing **resultValue**.|
-| ... | Variable representing formatted string resources. Supported types include const char*, int, and float.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| uint32_t num | Input parameter. Quantity value (integer), used to obtain the corresponding plural string based on the plural rules of the current language. |
+| char **resultValue | Output parameter. Returns the string pointer. The memory is allocated by malloc() and must be released by free() after use. |
+| ... | Input parameter, optional. Indicates a variable argument list used to format the string, supporting three types: const char*, int, and float.<br>     When obtaining a formatted string, pass the variable arguments of the corresponding types in the order of the placeholders in the string. The number and types of arguments must be consistent with the placeholders in the string. For example, if the string contains three placeholders %d, %s, and %f, call it as OH_ResourceManager_GetIntPluralString(mgr, resId, 10, resultValue, 10, "format", 10.10). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
-
-### OH_ResourceManager_GetDoublePluralString()
-
-```c
-ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)
-```
-
-**Description**
-
-Obtains singular and plural strings based on the specified resource ID. After using this API, you need to call **free()** to release the memory of the strings.
-
-**Since**: 18
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| double num |  Quantity value (a floating point number). Its string representation is obtained based on the current language's plural rules.|
-| char **resultValue | Result of writing **resultValue**.|
-| ... | Variable representing formatted string resources. Supported types include const char*, int, and float.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS, indicating success.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER, indicating invalid input parameters. Possible causes: 1. Incorrect parameter type; 2. Parameter verification failed.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND, indicating an invalid resource ID.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID, indicating that no matching resource is found based on the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH, indicating that the resource has circular references.<br>     Returns ERROR_CODE_OUT_OF_MEMORY, indicating memory overflow. |
 
 ### OH_ResourceManager_GetIntPluralStringByName()
 
@@ -849,7 +822,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 
 **Description**
 
-Obtains singular and plural strings based on the specified resource name. After using this API, you need to call **free()** to release the memory of the strings.
+Obtains the corresponding plural string and formats it by specifying the resource name, integer quantity value, and variable parameters.<br> In the Chinese environment, the string does not distinguish singular and plural; in other language environments, the string distinguishes singular and plural. For specific rules, see [language plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German, and other languages, plural types include cardinal (for example, 1, 2, 3) and ordinal (for example, 1st, 2nd, 3rd). This function only supports cardinal numeral types.
 
 **Since**: 18
 
@@ -857,17 +830,45 @@ Obtains singular and plural strings based on the specified resource name. After 
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| uint32_t num |  Quantity value (an integer number). Its string representation is obtained based on the current language's plural rules.|
-| char **resultValue | Result of writing **resultValue**.|
-| ...| Variable representing formatted string resources. Supported types include const char*, int, and float.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| uint32_t num | Input parameter. Quantity value (integer), used to get the corresponding plural string based on the plural rules of the current language. |
+| char **resultValue | Output parameter. Returns the string pointer. The memory is allocated by malloc() and must be released by free() after use. |
+| ... | Input parameter, optional. Indicates the variable argument list, used to format the string. It supports three types: const char*, int, and float.<br>     When obtaining a formatted string, pass the variable arguments of the corresponding types in the order of the placeholders in the string. The number and types of the arguments must be consistent with the placeholders in the string. For example, if the string contains three placeholders %d, %s, and %f, call it as follows: OH_ResourceManager_GetIntPluralStringByName(mgr, resName, 10, resultValue, 10, "format", 10.10). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if the memory is insufficient. |
+
+### OH_ResourceManager_GetDoublePluralString()
+
+```c
+ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)
+```
+
+**Description**
+
+Obtains and formats the corresponding plural string by specifying the resource ID, a floating-point quantity value, and variable arguments.<br> In the Chinese environment, strings do not distinguish between singular and plural. In other language environments, strings distinguish between singular and plural. For details, see [language plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In languages such as English and German, plural types include cardinal (for example, 1, 2, 3) and ordinal (for example, 1st, 2nd, 3rd). This function supports only the cardinal type.
+
+**Since**: 18
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| double num | Input parameter. Quantity value (floating-point number), used to get the corresponding plural string based on the plural rules of the current language. |
+| char **resultValue | Output parameter. Pointer to the returned string. The memory is allocated by malloc() and must be released by free() after use. |
+| ... | Input parameter, optional. Indicates a variable argument list used to format the string, supporting three types: const char*, int, and float.<br>     When getting a formatted string, pass the variable arguments of the corresponding types in the order of the placeholders in the string. The number and types of the arguments must be consistent with the placeholders in the string. For example, if the string contains three placeholders %d, %s, and %f, call OH_ResourceManager_GetDoublePluralString(mgr, resId, 1.1, resultValue, 10, "format", 10.10). |
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if the memory is insufficient. |
 
 ### OH_ResourceManager_GetDoublePluralStringByName()
 
@@ -877,7 +878,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 
 **Description**
 
-Obtains singular and plural strings based on the specified resource name. After using this API, you need to call **free()** to release the memory of the strings.
+Obtains the corresponding plural string by specifying the resource name, floating-point number value, and variable parameters, and formats the string.<br> In the Chinese environment, the string does not distinguish singular and plural; in other languages, the string distinguishes singular and plural. For specific rules, see [language plural rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).<br> In English, German, and other languages, plural types include cardinal (for example, 1, 2, 3) and ordinal (for example, 1st, 2nd, 3rd). This function only supports cardinal numeral types.
 
 **Since**: 18
 
@@ -885,17 +886,17 @@ Obtains singular and plural strings based on the specified resource name. After 
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| double num |  Quantity value (a floating point number). Its string representation is obtained based on the current language's plural rules.|
-| char **resultValue | Result of writing **resultValue**.|
-| ... | Variable representing formatted string resources. Supported types include const char*, int, and float.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| double num | Input parameter. Quantity value (floating-point number), used to get the corresponding plural string based on the plural rules of the current language. |
+| char **resultValue | Output parameter. Returns the string pointer. The memory is allocated by malloc() and must be released by free() after use. |
+| ... | Input parameter, optional. Indicates a variable argument list used to format the string. It supports three types: const char*, int, and float.<br>     When obtaining a formatted string, pass the variable arguments of the corresponding types in the order of the placeholders in the string. The number and types of the arguments must be consistent with the placeholders in the string. For example, if the string contains three placeholders %d, %s, and %f, call OH_ResourceManager_GetDoublePluralStringByName(mgr, resName, 1.1, resultValue, 10, "format", 10.10). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.<br>          [ERROR_CODE_OUT_OF_MEMORY](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001100 - A memory overflow occurs.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference.<br>     Returns ERROR_CODE_OUT_OF_MEMORY if the memory is insufficient. |
 
 ### OH_ResourceManager_GetColor()
 
@@ -905,7 +906,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 
 **Description**
 
-Obtains a color value based on the specified resource ID.
+Gets the color resource value corresponding to the specified resource ID.
 
 **Since**: 12
 
@@ -913,15 +914,15 @@ Obtains a color value based on the specified resource ID.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| uint32_t *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| uint32_t *resultValue | Output parameter. Returns the color resource value. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference. |
 
 ### OH_ResourceManager_GetColorByName()
 
@@ -931,7 +932,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 
 **Description**
 
-Obtains a color value based on the specified resource ID.
+Gets the color resource value corresponding to the specified resource name.
 
 **Since**: 12
 
@@ -939,15 +940,15 @@ Obtains a color value based on the specified resource ID.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| uint32_t *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| uint32_t *resultValue | Output parameter. Returns the color resource value. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference. |
 
 ### OH_ResourceManager_GetInt()
 
@@ -957,7 +958,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 
 **Description**
 
-Obtains an int value based on the specified resource ID.
+Gets the integer resource value corresponding to the specified resource ID.
 
 **Since**: 12
 
@@ -965,15 +966,15 @@ Obtains an int value based on the specified resource ID.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| int *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| int *resultValue | Output parameter. Returns the integer resource value. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has circular references. |
 
 ### OH_ResourceManager_GetIntByName()
 
@@ -983,7 +984,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 
 **Description**
 
-Obtains an int value based on the specified resource name.
+Gets the integer resource value corresponding to the specified resource name.
 
 **Since**: 12
 
@@ -991,15 +992,15 @@ Obtains an int value based on the specified resource name.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| int *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| int *resultValue | Output parameter. Returns the integer resource value. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has circular references. |
 
 ### OH_ResourceManager_GetFloat()
 
@@ -1009,7 +1010,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 
 **Description**
 
-Obtains a float value based on the specified resource ID.
+Gets the floating-point resource value corresponding to the specified resource ID.
 
 **Since**: 12
 
@@ -1017,15 +1018,15 @@ Obtains a float value based on the specified resource ID.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| float *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| float *resultValue | Output parameter. Returns the floating-point resource value. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. The parameter validation fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference. |
 
 ### OH_ResourceManager_GetFloatByName()
 
@@ -1035,7 +1036,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 
 **Description**
 
-Obtains a float value based on the specified resource name.
+Gets the floating-point resource value corresponding to the specified resource name.
 
 **Since**: 12
 
@@ -1043,15 +1044,15 @@ Obtains a float value based on the specified resource name.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| float *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| float *resultValue | Output parameter. Floating-point resource value returned. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference. |
 
 ### OH_ResourceManager_GetBool()
 
@@ -1061,7 +1062,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 
 **Description**
 
-Obtains a bool value based on the specified resource ID.
+Gets the boolean resource value corresponding to the specified resource ID.
 
 **Since**: 12
 
@@ -1069,15 +1070,15 @@ Obtains a bool value based on the specified resource ID.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| uint32_t resId | Resource ID.|
-| bool *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| uint32_t resId | Input parameter. Resource ID. |
+| bool *resultValue | Output parameter. Returns the boolean resource value. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_ID_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001001 - The resource ID is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_ID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001002 - No matching resource is found based on the resource ID.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. The parameter verification fails.<br>     Returns ERROR_CODE_RES_ID_NOT_FOUND if the resource ID is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_ID if no matching resource is found by the resource ID.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference. |
 
 ### OH_ResourceManager_GetBoolByName()
 
@@ -1087,7 +1088,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceM
 
 **Description**
 
-Obtains a bool value based on the specified resource name.
+Gets the boolean resource value corresponding to the specified resource name.
 
 **Since**: 12
 
@@ -1095,15 +1096,15 @@ Obtains a bool value based on the specified resource name.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *resName | Resource name.|
-| bool *resultValue | Result of writing **resultValue**.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *resName | Input parameter. Resource name. |
+| bool *resultValue | Output parameter. Pointer to the boolean resource value. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_RES_NAME_NOT_FOUND](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001003 - The resource name is invalid.<br>          [ERROR_CODE_RES_NOT_FOUND_BY_NAME](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001004 - No matching resource is found based on the resource name.<br>          [ERROR_CODE_RES_REF_TOO_MUCH](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001006 - The resource is cyclically referenced.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_RES_NAME_NOT_FOUND if the resource name is invalid.<br>     Returns ERROR_CODE_RES_NOT_FOUND_BY_NAME if no matching resource is found by the resource name.<br>     Returns ERROR_CODE_RES_REF_TOO_MUCH if the resource has a circular reference. |
 
 ### OH_ResourceManager_AddResource()
 
@@ -1113,7 +1114,7 @@ ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceMan
 
 **Description**
 
-Adds overlay resources when an application is running.
+Dynamically loads overlay resources at application runtime to implement theme switching or resource overriding.
 
 **Since**: 12
 
@@ -1121,14 +1122,14 @@ Adds overlay resources when an application is running.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *path | Resource path.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *path | Input parameter. Absolute path of the HSP or HAP resource package to load. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_OVERLAY_RES_PATH_INVALID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001010 - The resource path is invalid.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification failed.<br>     Returns ERROR_CODE_OVERLAY_RES_PATH_INVALID if the overlay path is invalid. |
 
 ### OH_ResourceManager_RemoveResource()
 
@@ -1138,7 +1139,7 @@ ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResource
 
 **Description**
 
-Removes overlay resources when an application is running.
+Removes the specified overlay resources at application runtime to restore the resources before being overridden.
 
 **Since**: 12
 
@@ -1146,11 +1147,12 @@ Removes overlay resources when an application is running.
 
 | Name| Description|
 | -- | -- |
-| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Pointer to [NativeResourceManager](capi-rawfile-nativeresourcemanager.md). It is obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).|
-| const char *path | Resource path.|
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | Input parameter. Pointer to the NativeResourceManager object, which is obtained through the [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager) function. |
+| const char *path | Input parameter. Absolute path of the HSP or HAP resource package to be removed. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | [SUCCESS](capi-resmgr-common-h.md#resourcemanager_errorcode) 0 - The operation is successful.<br>         [ERROR_CODE_INVALID_INPUT_PARAMETER](capi-resmgr-common-h.md#resourcemanager_errorcode) 401 - The input parameter is invalid. Possible causes: 1. The parameter type is incorrect. 2. Parameter verification failed.<br>          [ERROR_CODE_OVERLAY_RES_PATH_INVALID](capi-resmgr-common-h.md#resourcemanager_errorcode) 9001010 - The resource path is invalid.|
+| [ResourceManager_ErrorCode](capi-resmgr-common-h.md#resourcemanager_errorcode) | Result code.<br>     Returns SUCCESS if the operation is successful.<br>     Returns ERROR_CODE_INVALID_INPUT_PARAMETER if the input parameter is invalid. Possible causes: 1. The parameter type is incorrect; 2. Parameter verification fails.<br>     Returns ERROR_CODE_OVERLAY_RES_PATH_INVALID if the overlay path is invalid. |
+

@@ -6,14 +6,15 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
+<!-- md-trans-meta sourceCommit=51de831321a369d9cbe1270d4bedae7db7b69cfd translatedAt=2026-11-03T13:55:41.376Z pushedAt=2026-11-04T08:47:59.779Z nl=1 -->
 
-The **AbilityDelegator** module can listen for and manage the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) through [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) instances. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
+**AbilityDelegator** is a proxy controller used to schedule and manage the UIAbility lifecycle. It listens for and manages the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) through **AbilityMonitor**. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
 
-You can obtain **AbilityDelegator** by calling [getAbilityDelegator](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetabilitydelegator).
+This module can be used to verify the correctness of lifecycle behaviors and simulate user operation sequences in UIAbility unit testing and integration testing scenarios. Note that the APIs of this module are for testing purposes only and should not be called in formal service code.
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
 > The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 
@@ -25,7 +26,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## AbilityDelegator
 
-### addAbilityMonitor<sup>9+</sup>
+### addAbilityMonitor
 
 addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
@@ -48,7 +49,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitor failed. |
 
 **Example**
@@ -58,23 +59,27 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Declare the AbilityDelegator object.
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+// Create an AbilityMonitor instance, and set the Ability name to monitor and the onAbilityCreate lifecycle callback.
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
-function onAbilityCreateCallback(data: UIAbility) {
+let onAbilityCreateCallback = (data: UIAbility) => {
   console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
 }
 
+// Obtain the AbilityDelegator instance.
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// Call the addAbilityMonitor method to add monitoring.
 abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
   console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
 });
 ```
 
-### addAbilityMonitor<sup>9+</sup>
+### addAbilityMonitor
 
 addAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
@@ -102,7 +107,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitor failed. |
 
 **Example**
@@ -148,7 +153,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityMonitorSync failed. |
 
 **Example**
@@ -172,11 +177,11 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityMonitorSync(monitor);
 ```
 
-### removeAbilityMonitor<sup>9+</sup>
+### removeAbilityMonitor
 
 removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
-Removes an **AbilityMonitor** instance. This API uses an asynchronous callback to return the result.
+Removes an **AbilityMonitor** instance. This API uses an asynchronous callback to return the result. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -195,7 +200,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitor failed. |
 
 **Example**
@@ -208,21 +213,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
 function onAbilityCreateCallback(data: UIAbility) {
-    console.info('onAbilityCreateCallback');
+  console.info('onAbilityCreateCallback');
 }
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-    abilityName: 'abilityName',
-    onAbilityCreate: onAbilityCreateCallback
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
 };
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
-    console.error(`removeAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  console.error(`removeAbilityMonitor fail, error: ${JSON.stringify(error)}`);
 });
 ```
 
-### removeAbilityMonitor<sup>9+</sup>
+### removeAbilityMonitor
 
 removeAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
@@ -250,10 +255,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitor failed. |
 
-- Example
+**Example**
 
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -297,7 +302,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityMonitorSync failed. |
 
 **Example**
@@ -320,7 +325,7 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitorSync(monitor);
 ```
 
-### waitAbilityMonitor<sup>9+</sup>
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<UIAbility>): void
 
@@ -343,7 +348,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **Example**
@@ -359,7 +364,7 @@ let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   onAbilityCreate: onAbilityCreateCallback
 };
 
-function onAbilityCreateCallback(data: UIAbility) {
+let onAbilityCreateCallback = (data: UIAbility) => {
   console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
 }
 
@@ -373,7 +378,7 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
 });
 ```
 
-### waitAbilityMonitor<sup>9+</sup>
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback\<UIAbility>): void
 
@@ -397,7 +402,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **Example**
@@ -407,8 +412,11 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Declare the AbilityDelegator object.
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+// Set the maximum wait time (in milliseconds).
 let timeout = 100;
+// Create an AbilityMonitor instance and set the name of the Ability to monitor.
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
@@ -418,7 +426,9 @@ function onAbilityCreateCallback(data: UIAbility) {
   console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}.`);
 }
 
+// Obtain the AbilityDelegator instance.
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// Call waitAbilityMonitor and pass the timeout parameter to wait for a matching Ability.
 abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, data: UIAbility) => {
   if (error && error.code !== 0) {
     console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
@@ -430,7 +440,7 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
 
 
 
-### waitAbilityMonitor<sup>9+</sup>
+### waitAbilityMonitor
 
 waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise\<UIAbility>
 
@@ -459,7 +469,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityMonitor failed. |
 
 **Example**
@@ -484,7 +494,7 @@ abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
 });
 ```
 
-### getAppContext<sup>9+</sup>
+### getAppContext
 
 getAppContext(): Context
 
@@ -512,11 +522,15 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let context = abilityDelegator.getAppContext();
 ```
 
-### getAbilityState<sup>9+</sup>
+### getAbilityState
 
 getAbilityState(ability: UIAbility): number
 
-Obtains the lifecycle state of an ability.
+Obtains the lifecycle state of a specified ability.
+
+> **NOTE**
+> 
+> When this API fails to be called, it returns undefined and does not include error code 401.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -540,7 +554,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -561,11 +575,11 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### getCurrentTopAbility<sup>9+</sup>
+### getCurrentTopAbility
 
 getCurrentTopAbility(callback: AsyncCallback\<UIAbility>): void
 
-Obtains the top ability of this application. This API uses an asynchronous callback to return the result. It cannot be called in the worker thread.
+Obtains the top ability of this app. This API uses an asynchronous callback to return the result. It cannot be called in the worker thread. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -583,7 +597,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling GetCurrentTopAbility failed. |
 
 **Example**
@@ -603,11 +617,11 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### getCurrentTopAbility<sup>9+</sup>
+### getCurrentTopAbility
 
 getCurrentTopAbility(): Promise\<UIAbility>
 
-Obtains the top ability of this application. This API uses a promise to return the result. It cannot be called in the worker thread.
+Obtains the top ability of this app. This API uses a promise to return the result. It cannot be called in the worker thread. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -617,7 +631,7 @@ Obtains the top ability of this application. This API uses a promise to return t
 
 | Type                                                       | Description                                  |
 | ----------------------------------------------------------- | -------------------------------------- |
-| Promise\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | Promise used to return the top ability.|
+| Promise\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | Promise used to return the top ability. |
 
 **Error codes**
 
@@ -643,11 +657,11 @@ abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
 });
 ```
 
-### startAbility<sup>9+</sup>
+### startAbility
 
 startAbility(want: Want, callback: AsyncCallback\<void>): void
 
-Starts an ability. This API uses an asynchronous callback to return the result.
+Starts an ability. This API uses an asynchronous callback to return the result. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -666,7 +680,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -676,8 +690,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The app is controlled. <br>Applicable versions: 10+ |
+| 16000013 | The app is controlled by EDM. <br>Applicable versions: 10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -690,23 +704,27 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Declare the AbilityDelegator object.
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+// Construct the Want parameter, and specify the bundleName and abilityName of the target ability.
 let want: Want = {
   bundleName: 'bundleName',
   abilityName: 'abilityName'
 };
 
+// Obtain the AbilityDelegator instance.
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// Call startAbility to start the specified ability.
 abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
   console.info('startAbility callback');
 });
 ```
 
-### startAbility<sup>9+</sup>
+### startAbility
 
 startAbility(want: Want): Promise\<void>
 
-Starts an ability. This API uses a promise to return the result.
+Starts an ability. This API uses a promise to return the result. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -730,7 +748,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -740,8 +758,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The app is controlled. <br>Applicable versions: 10+ |
+| 16000013 | The app is controlled by EDM. <br>Applicable versions: 10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -765,11 +783,11 @@ abilityDelegator.startAbility(want).then((data: void) => {
 });
 ```
 
-### doAbilityForeground<sup>9+</sup>
+### doAbilityForeground
 
 doAbilityForeground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
-Schedules the lifecycle state of an ability to **Foreground**. This API uses an asynchronous callback to return the result.
+Schedules the lifecycle state of an ability to **Foreground**. This API uses an asynchronous callback to return the result. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -788,7 +806,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityForeground failed. |
 
 **Example**
@@ -803,19 +821,27 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
-  abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
-    console.info("doAbilityForeground callback");
-  });
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
+      if (err) {
+        console.error(`doAbilityForeground fail. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('doAbilityForeground callback');
+      }
+    });
+  }
 });
 ```
 
-### doAbilityForeground<sup>9+</sup>
+### doAbilityForeground
 
 doAbilityForeground(ability: UIAbility): Promise\<void>
 
-Schedules the lifecycle state of an ability to **Foreground**. This API uses a promise to return the result.
+Schedules the lifecycle state of an ability to **Foreground**. This API uses a promise to return the result. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -839,7 +865,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityForeground failed. |
 
 **Example**
@@ -862,11 +888,11 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### doAbilityBackground<sup>9+</sup>
+### doAbilityBackground
 
 doAbilityBackground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
-Schedules the lifecycle state of an ability to **Background**. This API uses an asynchronous callback to return the result.
+Schedules the lifecycle state of a specified ability to **Background**. This API uses an asynchronous callback to return the result. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -885,7 +911,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityBackground failed. |
 
 **Example**
@@ -908,11 +934,11 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### doAbilityBackground<sup>9+</sup>
+### doAbilityBackground
 
 doAbilityBackground(ability: UIAbility): Promise\<void>
 
-Schedules the lifecycle state of an ability to **Background**. This API uses a promise to return the result.
+Schedules the lifecycle state of a specified ability to **Background**. This API uses a promise to return the result. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -936,7 +962,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling DoAbilityBackground failed. |
 
 **Example**
@@ -959,7 +985,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-### printSync<sup>9+</sup>
+### printSync
 
 printSync(msg: string): void
 
@@ -981,7 +1007,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -1067,9 +1093,9 @@ abilityDelegator.print(msg).then(() => {
 
 executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 
-Executes a shell command. This API uses an asynchronous callback to return the result.
+Executes a shell command. This API uses an asynchronous callback to return the result. Multi-thread concurrent calls are not supported.
 
-Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, and pidof.
+Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1088,9 +1114,12 @@ Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, 
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Declare the AbilityDelegator object.
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+// Set the shell command string to be executed.
 let cmd = 'cmd';
 
+// Obtain the AbilityDelegator instance and execute the shell command.
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
   console.info('executeShellCommand callback');
@@ -1101,9 +1130,9 @@ abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDele
 
 executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback\<ShellCmdResult>): void
 
-Executes a shell command with the timeout period specified. This API uses an asynchronous callback to return the result.
+Executes a shell command with the timeout period specified. This API uses an asynchronous callback to return the result. Multi-thread concurrent calls are not supported.
 
-Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, and pidof.
+Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1137,9 +1166,9 @@ abilityDelegator.executeShellCommand(cmd, timeout, (err: BusinessError, data: ab
 
 executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 
-Executes a shell command with the timeout period specified. This API uses a promise to return the result.
+Executes a shell command with the timeout period specified. This API uses a promise to return the result. Multi-thread concurrent calls are not supported.
 
-Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, and pidof.
+Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1173,7 +1202,7 @@ abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
 });
 ```
 
-### finishTest<sup>9+</sup>
+### finishTest
 
 finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
 
@@ -1197,7 +1226,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling FinishTest failed. |
 
 **Example**
@@ -1215,7 +1244,7 @@ abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
 });
 ```
 
-### finishTest<sup>9+</sup>
+### finishTest
 
 finishTest(msg: string, code: number): Promise\<void>
 
@@ -1244,7 +1273,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling FinishTest failed. |
 
 **Example**
@@ -1261,11 +1290,11 @@ abilityDelegator.finishTest(msg, 0).then(() => {
 });
 ```
 
-### addAbilityStageMonitor<sup>9+</sup>
+### addAbilityStageMonitor
 
 addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<void>): void
 
-Adds an **AbilityStageMonitor** instance to monitor the lifecycle state changes of an ability stage. This API uses an asynchronous callback to return the result.
+Adds an **AbilityStageMonitor** instance to monitor the lifecycle state changes of a specified ability stage. This API uses an asynchronous callback to return the result. Multi-thread concurrent calls are not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1284,7 +1313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitor failed. |
 
 **Example**
@@ -1304,7 +1333,7 @@ abilityDelegator.addAbilityStageMonitor({
 });
 ```
 
-### addAbilityStageMonitor<sup>9+</sup>
+### addAbilityStageMonitor
 
 addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
@@ -1332,7 +1361,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitor failed. |
 
 **Example**
@@ -1373,7 +1402,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling AddAbilityStageMonitorSync failed. |
 
 **Example**
@@ -1390,7 +1419,7 @@ abilityDelegator.addAbilityStageMonitorSync({
 });
 ```
 
-### removeAbilityStageMonitor<sup>9+</sup>
+### removeAbilityStageMonitor
 
 removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<void>): void
 
@@ -1413,7 +1442,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitor failed. |
 
 **Example**
@@ -1433,7 +1462,7 @@ abilityDelegator.removeAbilityStageMonitor({
 });
 ```
 
-### removeAbilityStageMonitor<sup>9+</sup>
+### removeAbilityStageMonitor
 
 removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
@@ -1461,7 +1490,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitor failed. |
 
 **Example**
@@ -1502,7 +1531,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling RemoveAbilityStageMonitorSync failed. |
 
 
@@ -1520,7 +1549,7 @@ abilityDelegator.removeAbilityStageMonitorSync({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<AbilityStage>): void
 
@@ -1543,7 +1572,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **Example**
@@ -1564,7 +1593,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise\<AbilityStage>
 
@@ -1593,7 +1622,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **Example**
@@ -1613,7 +1642,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-### waitAbilityStageMonitor<sup>9+</sup>
+### waitAbilityStageMonitor
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback\<AbilityStage>): void
 
@@ -1637,7 +1666,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000100 | Calling WaitAbilityStageMonitor failed. |
 
 **Example**
@@ -1681,7 +1710,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message       |
 | -------- | --------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
 **Example**
@@ -1689,12 +1718,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
+// Create a key-value object for the mock replacement relationship, where key is the target path to be replaced and value is the path of the mock implementation file.
 let mockList: Record<string, string> = {
   '@ohos.router': 'src/main/mock/ohos/router.mock',
   'common.time': 'src/main/mock/common/time.mock',
 };
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
+// Obtain the AbilityDelegator instance.
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// Call setMockList to set the mock replacement relationship.
 abilityDelegator.setMockList(mockList);
 ```

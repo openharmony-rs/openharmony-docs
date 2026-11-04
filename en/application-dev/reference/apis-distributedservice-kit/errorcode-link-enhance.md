@@ -5,7 +5,7 @@
 <!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T11:27:24.182Z pushedAt=2026-06-22T11:28:55.805Z -->
+<!-- md-trans-meta sourceCommit=abc070d087941bbce389e111810c120cfdf1eab7 translatedAt=2026-11-03T12:58:04.533Z pushedAt=2026-11-04T08:47:59.642Z nl=1 -->
 
 > **NOTE**
 >
@@ -41,7 +41,7 @@ This error code is reported if the corresponding service on the server is not st
 
 **Possible Causes**
 
-This error code is reported if the corresponding service on the server is not started.
+The server application failed to start the corresponding service.
 
 **Solution**
 
@@ -59,11 +59,11 @@ This error code is reported if the number of services exceeds the limit.
 
 **Possible Causes**
 
-The number of requested services exceeds 10.
+The number of requested service resources exceeds 10.
 
 **Solution**
 
-Call **close()** to release services that are no longer used.
+The number of Server resources requested by the application exceeds the maximum allowed number (10). Call the close() method to release these resources.
 
 ## 32390203 Duplicate Service Name
 
@@ -87,7 +87,7 @@ Check whether a service with the same name already exists. If yes, register the 
 
 **Error Message**
 
-The number of connection exceeds the limit.
+The number of connections exceeds the limit.
 
 **Description**
 
@@ -95,11 +95,11 @@ This error code is reported if the number of connections exceeds the limit.
 
 **Possible Causes**
 
-The number of requested connections exceeds 10.
+The number of requested connection resources exceeds 10.
 
 **Solution**
 
-Call **close()** to release connections that are no longer used.
+The number of Connection resources requested by the application exceeds the maximum allowed number (10). Call the close() method to release these resources.
 
 ## 32390205 Connection Unavailable
 
@@ -113,11 +113,11 @@ This error code is reported if a connection is unavailable.
 
 **Possible Causes**
 
-The client or server application is using a connection that has been disconnected. For example, the connection status changes due to an exception after the connection is established.
+The client or server application attempts to perform an operation using a disconnected connection, for example, a connection state change caused by an abnormal interruption after the connection is established.
 
 **Solution**
 
-Check whether the connection is available. If the connection is available, use the connection to perform operations.
+Check whether the connection is successfully established or disconnected, and perform the operation using a connection that is successfully established and not disconnected.
 
 ## 32390206 Invalid Parameter
 
@@ -127,7 +127,7 @@ Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified
 
 **Description**
 
-Parameter error.
+Invalid parameter.
 
 **Possible Causes**
 
@@ -141,7 +141,7 @@ Parameter error.
 
 **Solution**
 
-Check whether mandatory parameters are passed and whether their types are correct. If the parameter verification fails, rectify the fault based on the possible causes in the API reference.
+Check whether the required parameters are passed in and whether the types of the passed parameters are correct. If parameter validation fails, refer to the API reference and check the four possible causes above one by one.
 
 ## 32390300 Internal Error
 
@@ -168,7 +168,7 @@ An internal error occurs.
 
 View the error log to identify the error cause. Take appropriate based on the actual cause:
 
-1. If the device ID passed to the API is the same as that obtained from the Bluetooth system API, check whether the peer device is in the advertising state.
+1. Check whether the deviceId passed in is the same as that obtained from the Bluetooth system API, and check whether the peer device is broadcasting.
 
 2. If the name passed from the client to the server is the same as that passed from the server to the client, check whether the name is correct by referring to the API reference.
 

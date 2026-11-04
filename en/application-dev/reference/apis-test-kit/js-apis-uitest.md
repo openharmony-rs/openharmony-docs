@@ -5,7 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=0aac5c07a75bbca4e339d2ef1a5a592663ce2891 translatedAt=2026-11-03T13:54:11.587Z pushedAt=2026-11-04T08:47:59.773Z nl=1 -->
 
 
 The **UiTest** module provides UI automation test capabilities, such as component search and operation, coordinate clicking/sliding, key injections, screenshot, window management, multi-finger operations, and mouse/stylus/touchpad operations.
@@ -2618,7 +2619,7 @@ async function demo() {
 
 The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. Call [Driver.create()](#create9) to create an instance.
 
-All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.  
+All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.
 
 ### create<sup>9+</sup>
 

@@ -3,9 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=9f3bd323ac80798ca9eb5f6fd30dc77a41f63f11 translatedAt=2026-11-03T13:44:15.156Z pushedAt=2026-11-04T08:47:59.744Z nl=1 -->
 
 The **intl** module provides basic i18n capabilities, such as time and date formatting, number formatting, and string sorting, through the standard i18n APIs defined in ECMA 402.
 
@@ -1273,7 +1274,7 @@ Assume that the unit name is **hectare** and the value is **-12300**.
 
 | Value| Display Effect|
 | -------- | -------- |
-| long | -12,3000 hectares |
+| long | -12,300 hectares |
 | short | -12,300 ha |
 | narrow | -12,300ha |
 
@@ -1303,4 +1304,3 @@ The following uses the relative time **1 day ago** and locale IDs **fr-FR** and 
 | long   | Long relative time display  | il y a 1 jour  | 1 day ago       |
 | short  | Short relative time display  | il y a 1 j     | 1 day ago       |
 | narrow | Narrow relative time display| -1 j           | 1 day ago       |
-<!--no_check-->

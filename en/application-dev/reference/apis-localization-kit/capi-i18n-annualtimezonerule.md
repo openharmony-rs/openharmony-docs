@@ -3,10 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=635c96c73146bacf985d294d6e608687bbdae586 translatedAt=2026-07-30T09:54:39.243Z pushedAt=2026-07-31T01:23:18.297Z -->
+<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-11-03T13:16:09.395Z pushedAt=2026-11-04T08:47:59.682Z nl=1 -->
 
 ```c
 typedef struct AnnualTimeZoneRule {...} AnnualTimeZoneRule
@@ -34,3 +34,5 @@ Time zone rule that takes effect annually.
 | int32_t rawOffset | Raw offset of the time zone, in milliseconds. |
 | int32_t dstSavings | Daylight saving time offset, in milliseconds. |
 | [DateTimeRule](capi-i18n-datetimerule.md) dateTimeRule | Rule of time and date.|
+
+

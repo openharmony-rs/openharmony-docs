@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29f3919446ee01733553b9b39493ee11224dad86 translatedAt=2026-07-31T02:12:32.641Z pushedAt=2026-07-31T03:50:44.367Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=ad59843e50284b5e122a86c5f91046ab9ac62787 translatedAt=2026-11-03T13:09:37.226Z pushedAt=2026-11-04T08:45:13.766Z nl=1 -->
 
 MediaKeySession implements media key management. Before calling any API in MediaKeySession, you must use [createMediaKeySession](arkts-apis-drm-MediaKeySystem.md#createmediakeysession) to create a MediaKeySession instance.
 
@@ -26,7 +26,7 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 
 Generates a media key request. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -52,8 +52,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                | The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -75,7 +75,7 @@ processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 
 Processes a media key response. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -98,8 +98,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -121,7 +121,7 @@ mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint
 
 Checks the status of the media keys in use.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -137,8 +137,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -156,7 +156,7 @@ clearMediaKeys(): void
 
 Clears the media keys in use.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -166,8 +166,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -190,7 +190,7 @@ generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 
 Generates a request to release offline media keys. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -213,8 +213,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -238,7 +238,7 @@ Processes a response to a request for releasing offline media keys. This API use
 
 If the DRM solution on the device does not support the release of offline media keys, error code 24700101 will be reported.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -262,8 +262,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -290,7 +290,7 @@ restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 
 Restores offline media keys. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -313,8 +313,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -336,7 +336,7 @@ getContentProtectionLevel(): ContentProtectionLevel
 
 Obtains the content protection level of this media key session.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -352,8 +352,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -372,7 +372,7 @@ requireSecureDecoderModule(mimeType: string): boolean
 
 Checks whether secure decoding is required.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -395,8 +395,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.      |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -414,7 +414,7 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 
 Subscribes to events indicating that the application requests a media key. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -432,7 +432,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -454,7 +454,7 @@ Unsubscribes from events indicating that the application requests a media key. T
 
 This API is used to unregister listeners registered via **on('keyRequired')**, which are used to listen for events triggered when the media key is required during DRM program playback.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -472,7 +472,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -490,7 +490,7 @@ on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 
 Subscribes to events indicating that a media key expires. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -508,7 +508,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.          |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -528,7 +528,7 @@ off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 
 Unsubscribes from events indicating that a media key expires. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -546,7 +546,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -564,7 +564,7 @@ on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 
 Subscribes to vendor-defined events. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -582,7 +582,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -602,7 +602,7 @@ off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 
 Unsubscribes from vendor-defined events. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -620,7 +620,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.      |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -638,7 +638,7 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
 Subscribes to events indicating that a media key is updated upon expiry. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -656,7 +656,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.        |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -676,7 +676,7 @@ off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 
 Unsubscribes from events indicating that a media key is updated upon expiry. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -694,7 +694,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.       |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -712,7 +712,7 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 
 Subscribes to events indicating that a media key changes. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -730,7 +730,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -752,7 +752,7 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 
 Unsubscribes from events indicating that a media key changes. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -770,7 +770,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -788,7 +788,7 @@ destroy(): void
 
 Destroys this MediaKeySession instance.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -798,8 +798,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 

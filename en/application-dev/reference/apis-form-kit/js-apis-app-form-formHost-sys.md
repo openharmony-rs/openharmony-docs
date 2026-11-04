@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=ca70525a1677454924647cb159f071c08cb08bc5 translatedAt=2026-11-03T13:21:12.357Z pushedAt=2026-11-04T08:47:04.694Z nl=1 -->
 
 The **formHost** module provides APIs related to the widget host, which is an application that displays the widget content and controls the position where the widget is displayed. You can use the APIs to delete, release, and update widgets installed by the same user, and obtain widget information and status.
 
@@ -19,7 +20,7 @@ The **formHost** module provides APIs related to the widget host, which is an ap
 import { formHost } from '@kit.FormKit';
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -71,7 +72,7 @@ try {
 }
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
@@ -126,7 +127,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -176,7 +177,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -227,7 +228,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
@@ -283,7 +284,7 @@ try {
 }
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -333,7 +334,7 @@ try {
 }
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string): Promise&lt;void&gt;
 
@@ -388,7 +389,7 @@ try {
 }
 ```
 
-## requestFormWithParams<sup>12+</sup>
+## formHost.requestFormWithParams<sup>12+</sup>
 
 requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Promise&lt;void&gt;
 
@@ -447,7 +448,7 @@ try {
 }
 ```
 
-## castToNormalForm
+## formHost.castToNormalForm
 
 castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -497,7 +498,7 @@ try {
 }
 ```
 
-## castToNormalForm
+## formHost.castToNormalForm
 
 castToNormalForm(formId: string): Promise&lt;void&gt;
 
@@ -552,7 +553,7 @@ try {
 }
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -600,7 +601,7 @@ try {
 }
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -653,7 +654,7 @@ try {
 }
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -701,7 +702,7 @@ try {
 }
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -754,7 +755,7 @@ try {
 }
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -803,7 +804,7 @@ try {
 }
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -857,7 +858,7 @@ try {
 }
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -907,7 +908,7 @@ try {
 }
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -962,7 +963,7 @@ try {
 }
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
@@ -1002,7 +1003,7 @@ try {
 }
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(): Promise&lt;void&gt;
 
@@ -1041,7 +1042,7 @@ try {
 }
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1088,7 +1089,7 @@ try {
 }
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1132,7 +1133,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1181,7 +1182,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1231,7 +1232,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1284,7 +1285,7 @@ try {
 }
 ```
 
-## getFormsInfo<sup>12+</sup>
+## formHost.getFormsInfo<sup>12+</sup>
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1341,7 +1342,7 @@ try {
 }
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -1390,7 +1391,7 @@ try {
 }
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
@@ -1442,7 +1443,7 @@ try {
 }
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
 
@@ -1503,7 +1504,7 @@ try {
 }
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
@@ -1567,7 +1568,7 @@ try {
 }
 ```
 
-## on('formUninstall')
+## formHost.on('formUninstall')
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
@@ -1605,7 +1606,7 @@ formHost.on('formUninstall', (formId: string) => {
 });
 ```
 
-## off('formUninstall')
+## formHost.off('formUninstall')
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
@@ -1643,7 +1644,7 @@ formHost.off('formUninstall', (formId: string) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1693,7 +1694,7 @@ try {
 }
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
 
@@ -1748,7 +1749,7 @@ try {
 }
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1798,7 +1799,7 @@ try {
 }
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
 
@@ -1852,7 +1853,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## shareForm
+## formHost.shareForm
 
 shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1903,7 +1904,7 @@ try {
 }
 ```
 
-## shareForm
+## formHost.shareForm
 
 shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
@@ -1959,7 +1960,7 @@ try {
 }
 ```
 
-## notifyFormsPrivacyProtected
+## formHost.notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callback: AsyncCallback\<void>): void
 
@@ -2008,7 +2009,7 @@ try {
 }
 ```
 
-## notifyFormsPrivacyProtected
+## formHost.notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Promise\<void\>
 
@@ -2060,7 +2061,7 @@ try {
 }
 ```
 
-## acquireFormData<sup>10+</sup>
+## formHost.acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>>): void
 
@@ -2111,7 +2112,7 @@ try {
 }
 ```
 
-## acquireFormData<sup>10+</sup>
+## formHost.acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
@@ -2166,7 +2167,7 @@ try {
 }
 ```
 
-## setRouterProxy<sup>11+</sup>
+## formHost.setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2261,7 +2262,7 @@ struct CardExample {
 }
 ```
 
-## setRouterProxy<sup>11+</sup>
+## formHost.setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
@@ -2362,7 +2363,7 @@ struct CardExample {
 }
 ```
 
-## clearRouterProxy<sup>11+</sup>
+## formHost.clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2411,7 +2412,7 @@ try {
 }
 ```
 
-## clearRouterProxy<sup>11+</sup>
+## formHost.clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2464,7 +2465,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## setFormsRecyclable<sup>11+</sup>
+## formHost.setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2514,7 +2515,7 @@ try {
 }
 ```
 
-## setFormsRecyclable<sup>11+</sup>
+## formHost.setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2568,7 +2569,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## recoverForms<sup>11+</sup>
+## formHost.recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2617,7 +2618,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## recoverForms<sup>11+</sup>
+## formHost.recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2672,7 +2673,7 @@ try {
   console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
-## recycleForms<sup>12+</sup>
+## formHost.recycleForms<sup>12+</sup>
 
 recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2728,7 +2729,7 @@ try {
 }
 ```
 
-## updateFormLocation<sup>12+</sup>
+## formHost.updateFormLocation<sup>12+</sup>
 updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 
 Updates the widget location.
@@ -2775,7 +2776,7 @@ try {
 }
 ```
 
-## setPublishFormResult<sup>12+</sup>
+## formHost.setPublishFormResult<sup>12+</sup>
 
 setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
@@ -2823,13 +2824,13 @@ try {
 }
 ```
 
-## updateFormLockedState<sup>22+</sup>
+## formHost.updateFormLockedState<sup>22+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
 Notifies the update of the widget lock state. This API uses a promise to return the result.
 
-If an application is locked, its widget will also be locked and masked in a locked style. To use the widget, you need to enter the password set for the widget.
+The widget locked state means that when an application enables app lock control, the widgets of the corresponding application also enable app lock control accordingly. In this case, the widget page uses a locked mask style to cover the widget. In the locked state, operating and using the widget requires entering the password set when locking.
 
 **Required permissions**: ohos.permission.REQUIRE_FORM
 
@@ -3180,7 +3181,7 @@ try {
 }
 ```
 
-## getAllTemplateFormsInfo<sup>23+</sup>
+## formHost.getAllTemplateFormsInfo<sup>23+</sup>
 
 getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -3228,7 +3229,7 @@ try {
 ```
 
 
-## getTemplateFormsInfo<sup>23+</sup>
+## formHost.getTemplateFormsInfo<sup>23+</sup>
 
 getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -3309,7 +3310,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
 
 **Example**
@@ -3359,7 +3360,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
 
 **Example**

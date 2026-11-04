@@ -1,12 +1,11 @@
 # @ohos.app.form.formInfo (formInfo) (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=1dcd4d13de554846c05dd7dd453d91d2133171a1 translatedAt=2026-07-31T08:22:28.853Z pushedAt=2026-08-01T02:57:11.076Z -->
+<!-- md-trans-meta sourceCommit=32a3c0c8191fbf2c4f37a44d2468d1ed66d2d7e4 translatedAt=2026-11-03T13:22:59.976Z pushedAt=2026-11-04T08:47:11.587Z nl=1 -->
 
 The **formInfo** module provides types and enums related to the widget information and state.
 
@@ -34,6 +33,8 @@ Defines the widget information.
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|Yes|Yes|Widget rendering mode.|
 | resizable<sup>20+</sup> | boolean  | Yes   | Yes    | Whether the widget can be resized by dragging. The value must be in the **supportDimensions** configuration list of the widget or the widget with the same **groupId**.<br>- **true**: The widget can be resized.<br>- **false**: The widget cannot be resized.|
 | groupId<sup>20+</sup> | string     | Yes   | Yes    | Common ID of a group of widgets. If the values of **groupId** of multiple widgets are the same and the value of **resizable** is **true**, the **supportDimensions** configuration of multiple widgets is shared. For example, if the **groupId** values of widgets A and B are the same and the **resizable** values are **true**, widget A can be adjusted to any size specified by **supportDimensions**.<br>It is recommended that this field be set when multiple widgets with the same functionality need to be resized.|
+| funInteractionParams<sup>20+</sup> | [FunInteractionParams](#funinteractionparams20)     | Yes    | Yes     | Configuration parameters of the fun interaction widget. Mainly configures parameters such as the active state duration of the interactive widget. |
+| sceneAnimationParams<sup>20+</sup> | [SceneAnimationParams](#sceneanimationparams20)     | Yes    | Yes     | Configuration parameters of the scene animation widget. Mainly configures parameters such as the trigger mode and disabled gestures of the interactive widget. |
 | isTemplateForm<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is a template widget.<br>- **true**: The widget is a template widget.<br>- **false**: The widget is not a template widget.|
 | isStandbySupported<sup>23+</sup> | boolean  | Yes    | Yes     | Whether the widget supports live view display.<br/>-&nbsp;true: yes<br/>-&nbsp;false: no<br>**Model restriction:** This API can be used only in the stage model.|
 | isStandbyAdapted<sup>23+</sup> | boolean  | Yes    | Yes     | Whether the widget has been adapted to live view rules.<br/>-&nbsp;true: yes<br/>-&nbsp;false: no<br>**Model restriction:** This API can be used only in the stage model.|
@@ -49,7 +50,7 @@ Enumerates widget parameters.
 | Name       | Value  | Description        |
 | ----------- | ---- | ------------ |
 | DEVICE_ID_KEY    | 'ohos.extra.param.key.device_id'   | Device ID.<br>**System API**: This is a system API. |
-| THEME_KEY    | 'ohos.extra.param.key.form_is_theme'   | Theme ID.<br>**System API**: This is a system API. |
+| THEME_KEY<sup>12+</sup>    | 'ohos.extra.param.key.form_is_theme'   | Theme identifier. <br>**System API:** This API is a system API.  |
 | FORM_MANAGER_SHOW_SINGLE_FORM <sup>23+</sup>   | 'ohos.extra.param.key.form_manager_show_single_form'   | Whether to display only a specified widget on the widget management page.<br>- **true**: Only one specified widget is displayed.<br>- **false**: All widgets are displayed.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DETAIL_ID<sup>23+</sup>    | 'ohos.extra.param.key.template_form_detail_id'   | Template widget ID.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | Template widget data.<br>**System API**: This is a system API. |
@@ -87,7 +88,7 @@ Defines the information about an added widget, which can be either in use or not
 | formDescription<sup>11+</sup> | string         | Yes   | No    | Description in the widget configuration file of the provider.  |
 | extraData<sup>12+</sup> | Record<string, Object> | Yes   | Yes    | Extra widget data.  |
 
-## formProviderFilter<sup>10+</sup>
+## FormProviderFilter<sup>10+</sup>
 
 Defines the information about the widget provider.
 
@@ -105,6 +106,7 @@ Defines the information about the widget provider.
 | abilityName | string               | No   | Yes    | Name of the ability to which the widget belongs.       |
 | isUnusedIncluded<sup>11+</sup> | boolean               | No   | Yes    | Whether an unused widget is included.<br>- **true**: An unused widget is included.<br>- **false** (default): There is no unused widget.<br>   Default value: **false**     |
 
+
 ## FormInfoFilter
 
 Defines the widget information filter. Only the widget information that meets the filter is returned.
@@ -113,11 +115,11 @@ Defines the widget information filter. Only the widget information that meets th
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name       | Type  | Mandatory        |Description        |
-| ----------- | ---- | ------------ |------------ |
-| bundleName<sup>12+</sup>    | string    |No   | Optional. Only the widget information in which **bundleName** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **bundleName**.<br>**System API**: This is a system API. |
-| supportedDimensions<sup>12+</sup> | Array&lt;number&gt; | No    | Optional. Only the widget information in which **supportedDimensions** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedDimensions**.<br>**System API:** This is a system API.<br>**Note:** The value is an array containing a maximum of 9 integers. The value of each array element ranges from [1, 9], where the value **5** is supported since API version 9 and deprecated since API version 20.<br>For details, see [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension).  |
-| supportedShapes<sup>12+</sup>  | Array&lt;number&gt; | No    | Optional. Only the widget information in which **supportedShapes** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedShapes**.<br>**System API:** This is a system API.<br>**Note:** Only two values are available: **1** (indicating square) and **2** (indicating circular).   |
+| Name       | Type                | Read-Only   | Optional   | Description                                                        |
+| ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
+| bundleName<sup>12+</sup>    | string    | No    | Yes    | Optional. Only retain those containing widget information whose bundleName matches the provided value. When not filled in, the widget information is not filtered by bundleName.<br>**System API:** This API is a system API.  |
+| supportedDimensions<sup>12+</sup> | Array&lt;number&gt; | No    | Yes    | Optional. Only retain those containing widget information whose supportedDimensions matches the provided value. When not filled in, the widget information is not filtered by supportedDimensions.<br>**System API:** This API is a system API.<br>**Note:** An array of integers with a maximum length of 9 and values in the range [1, 9]. The value 5 is supported since API version 9 and deprecated since API version 20.<br>For details, see [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension).  |
+| supportedShapes<sup>12+</sup>  | Array&lt;number&gt; | No    | Yes    | Optional. Only retain those containing widget information whose supportedShapes matches the provided value. When not filled in, the widget information is not filtered by supportedShapes.<br>**System API:** This API is a system API.<br>**Note:** Only two values are available: 1 and 2. 1 indicates a square, and 2 indicates a circle.   |
 
 ## FormLocation<sup>12+</sup>
 
@@ -218,7 +220,7 @@ Defines the parameters for a fun-based widget.
 | abilityName | string | No | Yes  | ExtensionAbility name of the interaction scenario. This parameter is left empty by default.|
 | targetBundleName  | string | No | No  | [Main package name](https://developer.huawei.com/consumer/en/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729) in the fun interaction scenario.       |
 | subBundleName  | string | No  | No   | [Independent subpackage name](https://developer.huawei.com/consumer/en/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729) in the fun interaction scenario. |
-| keepStateDuration  | number | No  | Yes   | Duration for which the active state is maintained when there is no interaction in the fun interaction scenario. The default value is **10000**, in ms. The value is an integer in the range (0, 60000]. If the value exceeds the range, the maximum value **60000** is used.<br/>**Note:** Before API version 26.0.0, this parameter value is an integer in the range (0, 10000]. If the value exceeds the range, the default value **10000** is used. |
+| keepStateDuration  | number | No  | Yes   | Duration for which the active state is retained when there is no interaction in a Fun Interaction scenario. Default Value Is 10000, in ms. The value is an integer in the range [0,60000]. If the value exceeds the range, the maximum value 60000 is used.<br/>**Note:** Before API version 26.0.0, this field is an integer in the range (0,10000]. If the value exceeds the range, the default value 10000 is used. |
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -301,10 +303,10 @@ Describes the actual template widget information.
 | moduleName | string | No | No | Name of the module to which the widget belongs. |
 | abilityName | string | No| No | Name of the ability to which the widget belongs.|
 | formName | string | No| No | Widget name.|
-| dimension | string | No| No | Widget dimension.|
-| detailId | string | No| No | Widget information ID.|
-| displayName | string | No| No | Widget display name.|
-| description | string | No| No | Widget description.|
+| dimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | No | No | Widget dimension. |
+| detailId | string | No | No | Widget information ID. |
+| displayName | string | No | No | Display name of the widget. |
+| description | string | No | No | Description of the widget. |
 
 ## TemplateFormDetailInfoCallback<sup>23+</sup>
 
@@ -413,7 +415,7 @@ Enumerates the trigger types of scene dynamic effect widgets.
 
 ## GetWantParamsCallback
 
-type GetWantParamsCallback = (formInfo: Array&lt;FormInfo&gt;) => Array&lt;Record&lt;string, Object&gt;&gt;
+type GetWantParamsCallback = (formInfo: Array&lt;formInfo.FormInfo&gt;) => Array&lt;Record&lt;string, Object&gt;&gt;
 
 Callback for obtaining widget parameters.
 

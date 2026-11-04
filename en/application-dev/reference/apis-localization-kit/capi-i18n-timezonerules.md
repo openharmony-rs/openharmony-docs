@@ -3,10 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=635c96c73146bacf985d294d6e608687bbdae586 translatedAt=2026-07-30T09:53:23.504Z pushedAt=2026-07-31T01:23:03.402Z -->
+<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-11-03T13:16:49.837Z pushedAt=2026-11-04T08:47:59.691Z nl=1 -->
 
 ```c
 typedef struct TimeZoneRules {...} TimeZoneRules
@@ -33,3 +33,5 @@ A complete time zone rule includes the start time zone rule, time zone rule defi
 | [AnnualTimeZoneRule*](capi-i18n-annualtimezonerule.md) annualRules | Time zone rule array that takes effect annually.|
 | size_t numTimeArrayRules | Size of the time zone rule array defined by the start timestamp array.|
 | size_t numAnnualRules | Size of the time zone rule array that takes effect annually.|
+
+
