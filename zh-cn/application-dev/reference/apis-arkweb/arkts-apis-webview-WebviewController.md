@@ -11706,7 +11706,7 @@ setNavigationEntryUserData(key: string, value: string): void
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
 | key    | string | 是   | 用户数据的密钥。 |
-| value  | string | 是   | 用户数据的价值。 |
+| value  | string | 是   | 用户数据的值。 |
 
 **错误码：**
 
