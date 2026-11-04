@@ -796,7 +796,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        try {
          formProvider.updateForm(formId, obj, (error: BusinessError) => {
            if (error) {
-             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message})`);
+             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message}`);
              return;
            }
            console.info(TAG, `formProvider updateForm success`);
