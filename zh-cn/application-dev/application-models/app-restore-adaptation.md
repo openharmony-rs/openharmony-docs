@@ -13,13 +13,30 @@
 
 本文按适配层次组织，开发者可按层次递进接入：
 
-- **第一层：基础能力**——开启备份恢复总开关（唯一必做项）、了解系统保存/恢复链路；页面栈恢复开关（Navigation三件套等）按应用形态选配。
+- **第一层：基础能力**——开启备份恢复总开关（唯一必做项）；页面栈恢复开关（Navigation三件套等）按应用形态选配。
 - **第二层：业务数据恢复**——页面状态变量与自定义业务数据的保存恢复。系统只恢复页面栈结构和启动参数，运行时状态需要开发者自行保存恢复。
-- **第三层：开发者自定义操作**——恢复启动判定、NavPathStack主动管理、自定义路由自管、不可序列化参数处理。按应用复杂度按需选用。
+- **第三层：开发者自定义操作**——恢复启动判定、NavPathStack主动管理、自定义路由自管。按应用复杂度按需选用。
 
 > **说明：**
 >
 > 本指南面向的是[UIAbility备份恢复](ability-recover-guideline.md)（default recovery，仅在应用切后台时保存、被系统回收后重拉时恢复），与[应用故障恢复](../dfx/apprecovery-guidelines.md)（fault recovery，通过`appRecovery.enableAppRecovery()`开启，面向异常崩溃场景）是两条独立链路，本文不涉及后者。
+
+## 系统保存/恢复链路
+
+**Ability的恢复重建流程**：
+
+1. 应用进入后台，AMS自动触发备份，调用应用侧`onSaveState`，页面栈序列化为JSON，写入文件；
+2. 应用被系统回收（内存不足/性能管控）；
+3. 用户重新打开应用，AMS检测到备份文件，Want中标记`APP_RECOVERY`；
+4. `onCreate(want, launchParam)`系统读取文件，把保存的键值合并进本次启动Want的parameters字段（一次性，读取后即清除）；
+5. `onWindowStageCreate`，页面栈数据由系统注入恢复，用户看到被杀前的页面。
+
+**Navigation的恢复重建流程**：
+
+- 备份时：ArkUI遍历所有`.recoverable(true)`的Navigation → 逐页记录参与恢复的NavDestination（默认true，仅显式`.recoverable(false)`的页面被跳过）的name/param/mode/组件状态 → 序列化为JSON；
+- 恢复时：ArkUI解析JSON → 重建NavDestination栈 → 栈顶页面被加载显示（生命周期正常触发） → 非栈顶页面仅记录栈位置（延迟实例化，用户返回时才创建）。
+
+> **关键约束**：Navigation页面栈恢复不保证覆盖全部层级，更深层级建议应用保存路径快照自行补推（见[第三层：NavPathStack主动管理](#navpathstack主动管理)）。
 
 ## 第一层：基础能力
 
@@ -148,26 +165,9 @@ Button('跳转广告页（不参与恢复）')
   })
 ```
 
-### 系统保存/恢复链路
-
-**Ability的恢复重建流程**：
-
-1. 应用进入后台，AMS自动触发备份，调用应用侧`onSaveState`，页面栈序列化为JSON，写入文件；
-2. 应用被系统回收（内存不足/性能管控）；
-3. 用户重新打开应用，AMS检测到备份文件，Want中标记`APP_RECOVERY`；
-4. `onCreate(want, launchParam)`系统读取文件，把保存的键值合并进本次启动Want的parameters字段（一次性，读取后即清除）；
-5. `onWindowStageCreate`，页面栈数据由系统注入恢复，用户看到被杀前的页面。
-
-**Navigation的恢复重建流程**：
-
-- 备份时：ArkUI遍历所有`.recoverable(true)`的Navigation → 逐页记录参与恢复的NavDestination（默认true，仅显式`.recoverable(false)`的页面被跳过）的name/param/mode/组件状态 → 序列化为JSON；
-- 恢复时：ArkUI解析JSON → 重建NavDestination栈 → 栈顶页面被加载显示（生命周期正常触发） → 非栈顶页面仅记录栈位置（延迟实例化，用户返回时才创建）。
-
-> **关键约束**：Navigation页面栈恢复不保证覆盖全部层级，更深层级建议应用保存路径快照自行补推（见[第三层：NavPathStack主动管理](#navpathstack主动管理)）。
-
 ## 第二层：业务数据恢复
 
-系统只恢复页面栈结构和启动参数，应用运行时状态（全局变量、用户数据、自定义业务数据）需要开发者自行保存恢复。有以下两条路径，可互补使用。
+系统只恢复页面栈结构和启动参数，应用运行时状态（全局变量、用户数据、自定义业务数据）需要开发者自行保存恢复。有以下两条路径，可互补使用；数据超出快照大小限制时，结合[超大数据落盘引用](#超大数据落盘引用)分流。
 
 ### 路径一：持久化存储（不依赖恢复机制）
 
@@ -523,6 +523,10 @@ if (routes !== undefined) {
 - 重放期间应用若有"自动跳首页/重定向登录"等导航逻辑必须跳过（用一个布尔变量记录恢复流程未结束即可），重放完成后恢复正常，否则重放的路由会被自动跳转顶掉；
 - 本方案demo不随示例工程提供（依赖三方路由包）。HMRouter场景若愿意为其内部Navigation设置id+recoverable，也可选用第一层三件套方案，但HMRouter内部Navigation实例不易注入属性，默认推荐本方案。
 
+## 通用适配要点
+
+以下内容所有层次通用。
+
 ### 不可序列化参数处理
 
 Want parameters的值只支持String/Number/Boolean/PlainObject，**函数、Map/Set、Date、类实例不可传输**。进入快照（onSaveState数据与页面param）的参数需要按以下方式处理：
@@ -537,10 +541,6 @@ Want parameters的值只支持String/Number/Boolean/PlainObject，**函数、Map
 | 已持久化的数据（preferences/RDB/文件） | 不进快照（进程重建后仍在），只存定位键 |
 
 回调函数、Proxy对象等复杂对象没有随页面栈恢复的序列化机制，不能进入快照，必须按上表方式替换为定位键、注册表等可重建的数据，页面挂载后重新绑定。
-
-## 通用适配要点
-
-以下内容所有层次通用。
 
 ### 空值兜底
 
