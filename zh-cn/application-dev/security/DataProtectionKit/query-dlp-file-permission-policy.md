@@ -10,6 +10,8 @@
 
 Data Protection Kit为应用提供了获取DLP文件权限策略信息的能力，应用可查询某个DLP文件的具体策略，包括授权用户列表、授予权限、是否允许离线打开、企业自定义策略等。
 
+<!--RP1--><!--RP1End-->
+
 ## 开发步骤
 
 1. 导入模块。 
@@ -20,15 +22,13 @@ Data Protection Kit为应用提供了获取DLP文件权限策略信息的能力�
     import { dlpPermission } from '@kit.DataProtectionKit';
     ```
 
-<!--RP1--><!--RP1End-->
+2. 获取 DLP 文件的权限策略信息。
 
-3. 获取 DLP 文件的权限策略信息。
+    2.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    3.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
+    2.2 设置待查询策略的DLP文件的文件标识符ciphertextFd。
 
-    3.2 设置待查询策略的DLP文件的文件标识符ciphertextFd。
-
-    3.3 调用[dlpPermission.queryDlpPolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionquerydlppolicy21)获取DLP明文策略。
+    2.3 调用[dlpPermission.queryDlpPolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionquerydlppolicy21)获取DLP明文策略。
 
     <!-- @[dlp_queryDlpPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
