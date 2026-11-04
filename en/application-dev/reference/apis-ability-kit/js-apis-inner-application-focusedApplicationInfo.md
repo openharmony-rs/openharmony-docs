@@ -51,3 +51,4 @@ try {
   console.error(`[appManager] error: ${code}, ${message}`);
 }
 ```
+<!--no_check-->

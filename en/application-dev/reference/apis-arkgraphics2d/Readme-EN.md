@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan; @KejiePeng-->
 <!--Tester: @nobuggers; @yhl0101; @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-03T13:36:05.113Z pushedAt=2026-11-04T06:42:23.079Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-03T13:36:05.113Z pushedAt=2026-11-04T08:33:43.179Z nl=1 -->
 
 - ArkTS APIs<!--arkgraphics-arkts-->
   - [@ohos.effectKit (Image Effects)](js-apis-effectKit.md)
@@ -46,7 +46,7 @@
     - [Interfaces (Others)](arkts-apis-graphics-drawing-i.md)
     - [Enums](arkts-apis-graphics-drawing-e.md)
   <!--Del-->
-  - [@ohos.graphics.drawing (Drawing Module)(System API)](js-apis-graphics-drawing-sys.md)
+  - [@ohos.graphics.drawing (Drawing Module) (System API)](js-apis-graphics-drawing-sys.md)
   <!--DelEnd-->
   - [@ohos.graphics.hdrCapability (HDR Capability)](js-apis-hdrCapability.md)
   - [@ohos.graphics.text (Text)](js-apis-graphics-text.md)

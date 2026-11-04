@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6; @lihaitao-->
 <!--Tester: @kongjing2; @dsz2025-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=0be59b860fac0ddfb6db4bef47013496006d9a53 translatedAt=2026-11-03T13:30:36.953Z pushedAt=2026-11-04T06:27:31.854Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0be59b860fac0ddfb6db4bef47013496006d9a53 translatedAt=2026-11-03T13:30:36.953Z pushedAt=2026-11-04T08:29:48.490Z nl=1 -->
 
 - ArkTS APIs<!--ability-arkts-->
   - Stage Model<!--stage-model-->
@@ -207,7 +207,7 @@
       - [ProcessData](js-apis-inner-application-processData.md)
       - [PhotoEditorExtensionContext](js-apis-app-ability-photoEditorExtensionContext.md)
       - [SendableContext](js-apis-inner-application-sendableContext.md)
-      - [CliToolEvent](js-apis-inner-application-cliToolEvent.md)
+      - [CliToolEvent (CLI Tool Session Event)](js-apis-inner-application-cliToolEvent.md)
       - [ToolEventCallback (CLI Tool Event Callback)](js-apis-inner-application-toolEventCallback.md)
       - [ViewData (View Data)](js-apis-inner-application-viewData.md)
       <!--Del-->

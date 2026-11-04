@@ -140,3 +140,4 @@ Represents permission information.
 | -------- | -------- | -------- | -------- | -------- |
 | permission | string | No | No | Permission name. For valid permission names, see [Application Permission List](../../security/AccessToken/app-permissions.md). |
 | permissionStatus | abilityAccessCtrl.[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20) | No | No | Permission status. |
+<!--no_check-->

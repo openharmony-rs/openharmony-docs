@@ -172,3 +172,4 @@ recordCmdUtils.beginRecording(200, 100);
 let width = recordCmdUtils.getWidth();
 recordCmdUtils.finishRecording();
 ```
+<!--no_check-->
