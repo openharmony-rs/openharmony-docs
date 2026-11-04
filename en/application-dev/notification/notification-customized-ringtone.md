@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:48:12.113Z pushedAt=2026-10-08T06:47:01.537Z -->
+<!-- md-trans-meta sourceCommit=a6874e5fd618adc18c14d574c22e8d39934482d4 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 Starting from API version 12, applications can use custom notification ringtones when publishing notifications. The audio resources for these ringtones must be pre-included in the application. Starting from API version 24, the system has enhanced this field, allowing applications to use non-preloaded audio resources as notification ringtones, such as audio downloaded from the internet or user-generated audio files.
 

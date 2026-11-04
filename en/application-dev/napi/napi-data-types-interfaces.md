@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=908d5c8cc497717aa25a0c85e864f0d8a9e36e28 translatedAt=2026-10-13T13:04:51.863Z pushedAt=2026-10-16T03:43:05.761Z -->
+<!-- md-trans-meta sourceCommit=464ed30863edb2324b15efd9041d3ea63cd10746 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Data Types
 

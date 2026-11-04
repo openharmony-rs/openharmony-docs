@@ -6,7 +6,7 @@
 <!--Designer: @milkbread123-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=bdbc00fc6ec9fe9fee59a762012ca6578bd6f053 translatedAt=2026-08-22T01:24:25.109Z pushedAt=2026-08-22T02:27:51.156Z -->
+<!-- md-trans-meta sourceCommit=d2650f4baa888c2a217860b0deada82b8e7b1e2b translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 hidumper is a command line tool used to export system information. It can analyze the usage of system resources such as CPU, memory, and storage, query the running status of system services, and locate resource usage exceptions and communication problems.
 
@@ -315,8 +315,8 @@ Run the **hidumper --mem-smaps pid** command to obtain the detailed memory usage
 
 Example:
 
-```txt
-$ hidumper --mem-smaps 3456  # 3456 indicates the process ID of the target debuggable application.
+```shell
+$ hidumper --mem-smaps 3456  -> 3456 indicates the process ID of the target debuggable application.
 
 -------------------------------[memory]-------------------------------
 
@@ -341,8 +341,8 @@ Run the **hidumper --mem-smaps pid -v** command to obtain the detailed memory us
 
 Example:
 
-```txt
-$ hidumper --mem-smaps 3456 -v   # 3456 indicates the process ID of the target debuggable application.
+```shell
+$ hidumper --mem-smaps 3456 -v  -> 3456 indicates the process ID of the target debuggable application.
 
 -------------------------------[memory]-------------------------------
                                     Shared      Shared      Private     Private

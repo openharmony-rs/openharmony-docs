@@ -6,7 +6,7 @@
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1c2f03c0595e281e3205338c9b114ffd2dca1f4c translatedAt=2026-10-13T13:22:48.040Z pushedAt=2026-10-16T03:29:42.539Z -->
+<!-- md-trans-meta sourceCommit=d1df4b1689ab033d808f12ed0750f806adb4b07c translatedAt=2026-11-04T06:36:58.105Z pushedAt=2026-11-04T06:36:58.105Z nl=1 -->
 
 Starting from API version 20, the low power player (LPP) can be used to implement the video path capability from the media source to rendering with low power consumption. This guide walks you through playing a local video file using the LPP APIs.
 
@@ -105,7 +105,9 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
     
     ``` C++
     source_ = OH_AVSource_CreateWithFD(info.inputFd, info.inputFileOffset, info.inputFileSize);
+    // ...
     demuxer_ = OH_AVDemuxer_CreateWithSource(source_);
+    // ...
     int32_t ret = GetTrackInfo(sourceFormat, info);
     ```
 
@@ -133,8 +135,10 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
     lppAudioStreamerCallback_ = OH_LowPowerAudioSinkCallback_Create();
     OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_,
         LppCallback::OnDataNeeded, lppUserData);
+    // ...
     OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_,
         LppCallback::OnPositionUpdated, lppUserData);
+    // ...
     ret = OH_LowPowerAudioSink_RegisterCallback(lppAudioStreamer_, lppAudioStreamerCallback_);
     ```
 
@@ -146,13 +150,15 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
     
     ``` C++
     OH_AVFormat *format = OH_AVFormat_Create();
-     
+
+    // ...
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, sampleInfo.videoHeight);
     OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, sampleInfo.frameRate);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, sampleInfo.pixelFormat);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_ROTATION, sampleInfo.rotation);
-     
+
+    // ...
     int ret = OH_LowPowerVideoSink_Configure(lppVideoStreamer_, format);
     ```
 

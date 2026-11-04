@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3c322d4980db4ff806888b92ca96f9d6f31f2934 translatedAt=2026-10-13T13:04:31.306Z pushedAt=2026-10-16T03:42:41.197Z -->
+<!-- md-trans-meta sourceCommit=56db74dcf9cd541e58f29a407c4b413b830bc97b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Fault Location
 
@@ -80,7 +80,7 @@ Unexpected execution result issues: Locate the issue by checking the JSVM-API re
 4. Q: The app crashes when a JS data type instance is created (for example, `OH_JSVM_CreateDouble`) in a JSVM instance. The call stack is as follows:
 
    ```txt
-   #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::0S::Abort()+28)
+   #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::OS::Abort()+28)
    #01 pc 0000000001408480/system/lib64/ndk/libjsvm.so(v8::Utils::ReportApiFailure(char const*,char const*)+124)
    #02 pc 00000000015c99b8/system/lib64/ndk/libjsvm.so(v8::internal::HandleScope::Extend(v8::internal::Isolate*)+200)
    ```

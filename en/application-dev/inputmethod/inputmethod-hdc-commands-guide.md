@@ -6,7 +6,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3103aea9f27e22b8029f7224f57c27c4f91680cc translatedAt=2026-08-04T08:29:24.894Z pushedAt=2026-08-04T08:54:14.648Z -->
+<!-- md-trans-meta sourceCommit=95ea28c0bb6595a68fef9885cf96705c2696edfc translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 > **NOTE**
 >
@@ -21,7 +21,7 @@ hdc shell ime [option] [parameter]
 | Option| Parameter      | Description                                                        |
 | ---- | ---------- | ------------------------------------------------------------ |
 | -u | userId | Specifies the user ID for the operation (the default value is the foreground user ID of the home screen). Can be used with other options for input method management in multi-user environments. |
-| -e | bundle [-b /-f] | Enables a specified input method to a specified mode. When the -b/-f option is not set, -b is the default basic mode, and -f is the full access mode.<br/>**Note:** The system preset default input method does not support changing its enabled state through this command. |
+| -e | bundle [-b /-f] | Enables a specified input method to a specified mode. When the -b/-f option is not set, -b is the default basic access mode, and -f is the full access mode.<br/>**Note:** The system preset default input method does not support changing its enabled state through this command. |
 | -d | bundle | Disables a specified input method.<br>**Note**: The preset default input method cannot be disabled.|
 | -s   | bundle     | Switches to a specified input method.<br>**Note**: You are not allowed to switch to another input method when the screen is locked or the password is being entered.|
 | -g   | NA         | Obtains the current input method.|
@@ -30,13 +30,13 @@ hdc shell ime [option] [parameter]
 
 ## Managing Input Methods Using IME Tool
 
-1. Enabling an input method. You can enable a third-party input method as basic mode or full experience mode.
+1. Enabling an input method. You can enable a third-party input method as basic access mode or full experience mode.
 
    ```shell
     # Input: Use an hdc command to enable an input method.
     # Processing: Check if it is an hdc shell command, and call the corresponding system API for managing input methods.
     # Output: The effect is equivalent to a direct API call.
-    # Basic mode
+    # Basic access mode
     hdc shell ime -e com.xxx.yyy 
     # Full experience mode
     hdc shell ime -e com.xxx.yyy -f
@@ -113,7 +113,7 @@ Starting from API version 26.0.0, in a multi-user environment, you can use the -
 3. Enable an input method for a specified user.
 
    ```shell
-    # Input: Enable the specified input method for user 100 in basic mode.
+    # Input: Enable the specified input method for user 100 in basic access mode.
     # Processing: The system enables the specified input method for user 100.
     # Output: Display the enable result.
     hdc shell ime -u 100 -e com.example.ime

@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:55:46.892Z pushedAt=2026-08-26T03:34:26.413Z -->
+<!-- md-trans-meta sourceCommit=56db74dcf9cd541e58f29a407c4b413b830bc97b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -91,7 +91,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 static const char *STR_TASK = R"JS(jsonParseNumber();jsonParseObject();)JS";
 ```
 
-## Expected result:
+### Expected Result
 ``` C++
 Test JSVM jsonParseNumber: 10.555000
 

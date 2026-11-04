@@ -6,7 +6,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ccdf26d9d10c53eff04ea24e30d31cc6f6b71655 translatedAt=2026-08-11T01:48:26.525Z pushedAt=2026-08-11T09:49:38.827Z -->
+<!-- md-trans-meta sourceCommit=4a62ad187602319656af32fcbe0e8e2c7929610c translatedAt=2026-11-04T06:36:58.103Z pushedAt=2026-11-04T06:36:58.103Z nl=1 -->
 
 Image Kit provides the capabilities of reading and editing Exchangeable Image File Format (Exif) data.
 

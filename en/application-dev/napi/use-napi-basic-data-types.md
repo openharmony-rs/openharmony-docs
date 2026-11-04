@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=00169c2f8e4bd2c893e1df196e04a0ba69888b0e translatedAt=2026-10-13T13:14:59.420Z pushedAt=2026-10-16T06:35:06.513Z -->
+<!-- md-trans-meta sourceCommit=90b3b430300c5d01a3e4b0f521c1b42d8eb3d54b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -376,7 +376,7 @@ static napi_value CreateInt64(napi_env env, napi_callback_info info)
     // The integer value to represent.
     int64_t value = 2147483648;
     // Create an ArkTS number using the given value. Only integers in the range from -2^53 + 1 to 2^53 - 1 (inclusive) can be accurately represented.
-    // If the value to represent exceeds 2^53, use the napi_create_bigint64 API.
+    // If the value to represent exceeds 2^53, use the napi_create_bigint_int64 API.
     napi_value result = nullptr;
     napi_status status = napi_create_int64(env, value, &result);
     if (status != napi_ok) {

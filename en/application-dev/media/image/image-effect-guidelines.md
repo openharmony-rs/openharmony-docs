@@ -5,6 +5,7 @@
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=bfa2df81c7b7731f9b1b949afd732c0d43b2fbe6 translatedAt=2026-11-04T06:36:58.102Z pushedAt=2026-11-04T06:36:58.102Z nl=1 -->
 
 ## When to Use
 
@@ -40,8 +41,8 @@ Add the corresponding dynamic link library based on the processed image type: `P
 
 **Adding Header Files**
 
+<!-- @[image_effect_include_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
 ```c++
-#include <hilog/log.h>
 #include <multimedia/image_effect/image_effect.h>
 #include <multimedia/image_effect/image_effect_filter.h>
 #include <multimedia/image_effect/image_effect_errors.h>
@@ -51,23 +52,19 @@ Add the corresponding dynamic link library based on the processed image type: `P
 
 1. Create an **ImageEffect** instance.
 
-   ```c++
-   // Create an ImageEffect instance, with the alias set to ImageEdit.
-   OH_ImageEffect *imageEffect = OH_ImageEffect_Create("ImageEdit");
+   <!-- @[image_effect_instance_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
+   OH_ImageEffect *imageEffect = OH_ImageEffect_Create("imageEdit");
    ```
 
 2. Add an **EffectFilter** filter.
 
-   ```c++
-   // Add a filter to obtain an OH_EffectFilter instance. You can call this API multiple times to add multiple filters to form a filter chain.
-   OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
-   if (filter == nullptr) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_AddFilter fail!");
-       return;
-   }
-   // Set a filter parameter. For example, set the intensity to 50.
-   ImageEffect_Any value = { .dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT, .dataValue.floatValue = 50.f };
-   ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, OH_EFFECT_FILTER_INTENSITY_KEY, &value);
+   <!-- @[image_effect_add_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
+   OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, filterName);
+   CHECK_AND_RETURN_RET_LOG(filter != nullptr, filter, "OH_ImageEffect_AddFilter fail!");
    ```
 
 3. Set the data to be processed.
@@ -76,57 +73,48 @@ Add the corresponding dynamic link library based on the processed image type: `P
 
    For details about how to use `OH_PixelmapNative`, see [PixelMap Data Processing (C/C++)](image-pixelmap-operation-native.md).
 
+   <!-- @[image_effect_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   // Set an input pixel map.
-   errorCode = OH_ImageEffect_SetInputPixelmap(imageEffect, inputPixelmap);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputPixelmap fail!");
-       return;
-   }
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetInputPixelmap(imageEffectPtr.get(), pixelmapNativePtr.get());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetInputPixelMap fail! errorCode = %{public}d", errorCode);
 
    // Set an output pixel map (optional). If this API is not called, the filter effect directly takes effect on the input pixel map.
-   errorCode = OH_ImageEffect_SetOutputPixelmap(imageEffect, outputPixelmap);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputPixelmap fail!");
-       return;
-   }
+   errorCode = OH_ImageEffect_SetOutputPixelmap(imageEffectPtr.get(), pixelmapNativePtr.get());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetOutputPixelmap fail!");
    ```
 
    **Scenario 2: Set the `OH_NativeBuffer` input type.**
 
    For details about how to use `OH_NativeBuffer`, see [Native Buffer Development (C/C++)](../../graphics/native-buffer-guidelines.md).
 
+   <!-- @[image_effect_native_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // Set an input native buffer.
-   errorCode = OH_ImageEffect_SetInputNativeBuffer(imageEffect, inputNativeBuffer);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputNativeBuffer fail!");
-       return;
-   }
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetInputNativeBuffer(imageEffect, inputNativeBuffer);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetInputNativeBuffer fail!");
 
    // Set an output native buffer (optional). If this API is not called, the filter effect directly takes effect on the input native buffer.
    errorCode = OH_ImageEffect_SetOutputNativeBuffer(imageEffect, outputNativeBuffer);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputNativeBuffer fail!");
-       return;
-   }
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetOutputNativeBuffer fail!");
    ```
 
    **Scenario 3: Set the URI input type.**
 
+   <!-- @[image_effect_url](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // Set an input URI.
-   errorCode = OH_ImageEffect_SetInputUri(imageEffect, inputUri);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputUri fail!");
-       return;
-   }
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetInputUri(imageEffectPtr.get(), path.c_str());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetInputPixelMap fail! errorCode = %{public}d", errorCode);
+
    // Set an output URI (optional). If this API is not called, the filter effect directly takes effect on the input URI.
-   errorCode = OH_ImageEffect_SetOutputUri(imageEffect, outputUri);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputUri fail!");
-       return;
-   }
+   errorCode = OH_ImageEffect_SetOutputUri(imageEffect, path.c_str());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetOutputUri fail!");
    ```
 
    **Scenario 4: Set the texture input type.**
@@ -224,46 +212,39 @@ Add the corresponding dynamic link library based on the processed image type: `P
 
 4. Start the image effector.
 
+   <!-- @[image_effect_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   // Start the image effector.
-   errorCode = OH_ImageEffect_Start(imageEffect);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Start fail!");
-       return;
-   }
+   errorCode = OH_ImageEffect_Start(imageEffectPtr.get());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_Start fail! errorCode = %{public}d", errorCode);
    ```
 
 5. Stop the image effect (optional, available only in the input surface scenario).
 
+   <!-- @[image_effect_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // Stop the image effector.
-   errorCode = OH_ImageEffect_Stop(imageEffect);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Stop fail!");
-       return;
-   }
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_Stop(imageEffect);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result, "OH_ImageEffect_Stop fail!");
    ```
 
 6. Serialize the image effector (optional).
 
+   <!-- @[image_effect_save](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   char *info = nullptr;
-   errorCode = OH_ImageEffect_Save(imageEffect, &info);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Save fail!");
-       return;
-   }
+   // Serialize the image effect (optional).
+   char *imageinfo = nullptr;
+   errorCode = OH_ImageEffect_Save(imageEffect, &imageinfo);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result, "OH_ImageEffect_Save fail!");
    ```
 
 7. Destroy the image effector instance.
 
-   ```c++
-   // Release the ImageEffect instance.
-   errorCode = OH_ImageEffect_Release(imageEffect);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Release fail!");
-       return;
-   }
+   <!-- @[image_effect_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_Release(imageEffect);
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_ImageEffect_Release fail!");
    ```
 
 ### Customizing a Filter
@@ -272,6 +253,7 @@ The following steps describe how to implement and register a custom filter:
 
 1. Define `ImageEffect_FilterDelegate`.
 
+   <!-- @[image_effect_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // Image information struct.
    struct EffectBufferInfo {
@@ -281,61 +263,57 @@ The following steps describe how to implement and register a custom filter:
        int32_t rowSize = 0;
        ImageEffect_Format format = ImageEffect_Format::EFFECT_PIXEL_FORMAT_UNKNOWN;
    };
+   ```
 
+   <!-- @[image_effect_custom_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   ```c++
    // Implement a custom filter.
-   ImageEffect_FilterDelegate filterDelegate = {
-       .setValue = [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
-           // Verify the parameters. If the verification is successful, true is returned. Otherwise, false is returned.
-           // ...
-           return true;
-       },
-       .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) {
-           return Render(filter, info, pushData);
-       },
-       .save = [](OH_EffectFilter *filter, char **info) {
-           // Obtain the custom filter parameter. In this example, "Brightness" is the key of the custom filter and can be specified by the developer.
-           ImageEffect_Any value;
-           ImageEffect_ErrorCode errorCode = OH_EffectFilter_GetValue(filter, "Brightness", &value);
-           if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-               OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_GetValue fail!");
-               return false;
-           }
-
-           // Generate a key-value pair.
-           json values;
-           values["Brightness"] = value.dataValue.floatValue;
-           json root;
-           root["name"] = "CustomBrightness";
-           root["values"] = values;
-
-           // Convert the JSON object into the string infoStr.
-           // ...
-
-           // Assign the serialized string address to *info.
-           *info = infoStr;
-           return true;
-       },
-       .restore = [](const char *info) {
+   delegateBrightness = {
+       .setValue =
+           [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
+               // Verify the parameters. If the verification is successful, true is returned. Otherwise, false is returned.
+               if (value->dataValue.floatValue >= DATA_VALUE_MIN && value->dataValue.floatValue <= DATA_VALUE_MAX) {
+                   return true;
+               } else {
+                   return false;
+               }
+           },
+       .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info,
+                    OH_EffectFilterDelegate_PushData pushData) { return RenderBrightness(filter, info, pushData); },
+       .save = SaveFilterBrightness,
+       .restore = [](const char *info) -> OH_EffectFilter * {
            // Create an OH_EffectFilter instance. In this example, "CustomBrightness" is the name of the custom filter.
            OH_EffectFilter *filter = OH_EffectFilter_Create("CustomBrightness");
+           CHECK_AND_RETURN_RET_LOG(filter != nullptr, nullptr, "OH_EffectFilter_Create fail!");
            // Parse the JSON string info to obtain the key and value.
-           // ...
-
-           // Set a filter parameter. value is the parameter parsed from info as JSON.
-           ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, "Brightness", &value);
-
-           // ...
+           std::map<std::string, std::string> parsedJson = Json::Parse(info);
+           if (parsedJson.find("values") != parsedJson.end()) {
+               std::string valuesStr = parsedJson["values"];
+               std::map<std::string, std::string> valuesJson = Json::Parse(valuesStr);
+               if (valuesJson.find("brightness") != valuesJson.end()) {
+                   float brightness =
+                       std::stof(valuesJson["brightness"].substr(1, valuesJson["brightness"].size() - 2));
+                   ImageEffect_Any value;
+                   value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
+                   value.dataValue.floatValue = brightness;
+                   // Set a filter parameter. value is the parameter parsed from info as JSON.
+                   LOG_E("brightness value: %{public}f ", value.dataValue.floatValue);
+                   ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, "brightness", &value);
+                   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, nullptr,
+                                            "OH_EffectFilter_SetValue fail!");
+               }
+           }
            return filter;
-       }
-   };
+       }};
    ```
 
    The **Render** API can be implemented in the following two scenarios.
 
    **Scenario 1: The custom algorithm can directly modify the pixel data in `info` (for example, the brightness adjustment filter).**
 
+   <!-- @[image_effect_render_brightness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   bool Render(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
+   bool RenderBrightness(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
    {
        // Obtain image details.
        EffectBufferInfo inputBufferInfo;
@@ -346,7 +324,7 @@ The following steps describe how to implement and register a custom filter:
        OH_EffectBufferInfo_GetEffectFormat(info, &inputBufferInfo.format);
 
        // Call the custom filter algorithm.
-       ApplyCustomAlgo(inputBufferInfo);
+       ApplyCustomBrightnessAlgo(filter, inputBufferInfo);
 
        // After editing is complete, call pushData to directly pass the original image.
        pushData(filter, info);
@@ -356,8 +334,10 @@ The following steps describe how to implement and register a custom filter:
 
    **Scenario 2: The custom algorithm cannot directly modify the pixel data in `info` (for example, the crop filter).**
 
-   ```c++
-   bool Render(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
+   <!-- @[image_effect_render_crop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
+   bool RenderCrop(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
    {
        // Obtain image details.
        EffectBufferInfo inputBufferInfo;
@@ -368,10 +348,10 @@ The following steps describe how to implement and register a custom filter:
        OH_EffectBufferInfo_GetEffectFormat(info, &inputBufferInfo.format);
 
        // Create output pixel information.
-       EffectBufferInfo outputBufferInfo = CreateOutputBufferInfo(inputBufferInfo);
+       EffectBufferInfo outputBufferInfo;
 
        // Call the custom filter algorithm.
-       ApplyCustomAlgo(inputBufferInfo, outputBufferInfo);
+       ApplyCustomCropAlgo(filter, inputBufferInfo, outputBufferInfo);
 
        // Generate outputOhInfo.
        OH_EffectBufferInfo *outputOhInfo = OH_EffectBufferInfo_Create();
@@ -386,7 +366,6 @@ The following steps describe how to implement and register a custom filter:
 
        // Release resources.
        OH_EffectBufferInfo_Release(outputOhInfo);
-       ReleaseOutputBuffer(outputBufferInfo.addr);
 
        return true;
    }
@@ -394,117 +373,127 @@ The following steps describe how to implement and register a custom filter:
 
 2. Generate custom filter information.
 
-   ```c++
+   <!-- @[image_effect_create_custom_filter_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
    // Create an OH_EffectFilterInfo instance.
    OH_EffectFilterInfo *customFilterInfo = OH_EffectFilterInfo_Create();
-   if (customFilterInfo ==nullptr) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_GetValue fail!");
-       return;
-   }
-
+   CHECK_AND_RETURN_RET_LOG(customFilterInfo != nullptr, result, "OH_EffectFilterInfo_Create fail!");
    // Set the custom filter name.
    OH_EffectFilterInfo_SetFilterName(customFilterInfo, "CustomBrightness");
-
    // Set the memory types supported by the custom filter.
-   ImageEffect_BufferType bufferTypeArray[] = { ImageEffect_BufferType::EFFECT_BUFFER_TYPE_PIXEL };
-   OH_EffectFilterInfo_SetSupportedBufferTypes(customFilterInfo, sizeof(bufferTypeArray) / sizeof(ImageEffect_BufferType), bufferTypeArray);
-
+   ImageEffect_BufferType bufferTypeArray[] = {ImageEffect_BufferType::EFFECT_BUFFER_TYPE_PIXEL};
+   OH_EffectFilterInfo_SetSupportedBufferTypes(customFilterInfo,
+       sizeof(bufferTypeArray) / sizeof(ImageEffect_BufferType), bufferTypeArray);
    // Set the pixel formats supported by the custom filter.
-   ImageEffect_Format formatArray[] = { ImageEffect_Format::EFFECT_PIXEL_FORMAT_RGBA8888 };
-   OH_EffectFilterInfo_SetSupportedFormats(customFilterInfo, sizeof(formatArray) / sizeof(ImageEffect_Format), formatArray);
+   ImageEffect_Format formatArray[] = {ImageEffect_Format::EFFECT_PIXEL_FORMAT_RGBA8888};
+   OH_EffectFilterInfo_SetSupportedFormats(customFilterInfo,
+       sizeof(formatArray) / sizeof(ImageEffect_Format), formatArray);
    ```
 
 3. Register `ImageEffect_FilterDelegate` with the image effector.
 
-   ```c++
-   // Register the custom filter.
-   ImageEffect_ErrorCode errorCode = OH_EffectFilter_Register(customFilterInfo, &filterDelegate);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_Register fail!");
-       return;
-   }
+   <!-- @[image_effect_custom_filter_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
+   ImageEffect_ErrorCode errorCode = OH_EffectFilter_Register(customFilterInfo, &delegateBrightness);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_EffectFilter_Register fail! errorCode = %{public}d", errorCode);
    ```
 
 ### Using EffectFilter to Quickly Implement the Processing Effect of a Single Filter
 
 1. Create a filter.
 
-   ```c++
+   <!-- @[image_effect_create_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
    // Create a filter. For example, create a contrast effector.
-   OH_EffectFilter *filter = OH_EffectFilter_Create(OH_EFFECT_CONTRAST_FILTER);
+   OH_EffectFilter *filter = OH_EffectFilter_Create(filterName);
+   CHECK_AND_RETURN_LOG(filter != nullptr, "OH_EffectFilter_Create fail!");
    ```
 
 2. Set a filter parameter.
 
-   ```c++
-   // Set a filter parameter. For example, set the intensity to 50.
-   ImageEffect_Any value = {.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT, .dataValue.floatValue = 50.f};
+   <!-- @[image_effect_set_filter_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
+   // Set the filter parameters, using the input parameter as the filter intensity.
+   ImageEffect_Any value;
+   value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
+   value.dataValue.floatValue = static_cast<float>(filterValue);
    ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, OH_EFFECT_FILTER_INTENSITY_KEY, &value);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_SetValue fail!");
-       return;
-   }
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_EffectFilter_SetValue fail!");
    ```
 
 3. Make the filter take effect.
 
-   ```c++
+   <!-- @[image_effect_filter_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+
+   ``` C++
    // Make the filter take effect.
    errorCode = OH_EffectFilter_Render(filter, inputPixelmap, outputPixelmap);
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_EffectFilter_Render fail!");
    ```
 
 4. Destroy the filter instance.
 
+   <!-- @[image_effect_filter_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // Destroy the filter instance.
    errorCode = OH_EffectFilter_Release(filter);
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_EffectFilter_Release fail!");
    ```
 
 ### Querying Capabilities
 
 - Query filter information based on the filter name.
 
+  <!-- @[image_effect_lookup_filter_info_by_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
   ```c++
-  // Create an OH_EffectFilterInfo instance.
   OH_EffectFilterInfo *filterInfo = OH_EffectFilterInfo_Create();
-  if (filterInfo == nullptr) {
-      OH_LOG_ERROR(LOG_APP, "OH_EffectFilterInfo_Create fail!");
-      return;
-  }
+  // Sample code: pass nullptr for format to obtain the size of OH_Formats.
+  ImageEffect_ErrorCode errorCode = OH_EffectFilter_LookupFilterInfo(filterName.c_str(), filterInfo);
+  CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                           "OH_EffectFilter_LookupFilterInfo fail! errorCode = %{public}d", errorCode);
 
-  // Query filter capability information based on the filter name.
-  ImageEffect_ErrorCode errorCode = OH_EffectFilter_LookupFilterInfo(OH_EFFECT_BRIGHTNESS_FILTER, filterInfo);
-  if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-      OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_LookupFilterInfo fail!");
-      return;
-  }
-
-  // Obtain the filter name from the filter capability information.
   char *name = nullptr;
   OH_EffectFilterInfo_GetFilterName(filterInfo, &name);
 
-  // Obtain the supported memory types.
-  uint32_t supportedBufferTypesCnt = 0;
+  uint32_t supportedBufferTypesCount = 0;
   ImageEffect_BufferType *bufferTypeArray = nullptr;
-  OH_EffectFilterInfo_GetSupportedBufferTypes(filterInfo, &supportedBufferTypesCnt, &bufferTypeArray);
+  OH_EffectFilterInfo_GetSupportedBufferTypes(filterInfo, &supportedBufferTypesCount, &bufferTypeArray);
 
-  // Obtain the supported pixel format information.
-  uint32_t supportedFormatsCnt = 0;
+  uint32_t supportedFormatsCount = 0;
   ImageEffect_Format *formatArray = nullptr;
-  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, &supportedFormatsCnt, &formatArray);
+  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, &supportedFormatsCount, &formatArray);
 
-  // Destroy the OH_EffectFilterInfo instance.
+  LOG_I("LookupFilterInfo: name=%{public}s, bufferTypesCount=%{public}d, formatsCount=%{public}d", name,
+        supportedBufferTypesCount, supportedFormatsCount);
+
+  std::string infoStr = CommonUtils::EffectInfoToString(filterInfo);
+  LOG_I("LookupFilterInfo:%{public}s", infoStr.c_str());
+  status = napi_create_string_utf8(env, infoStr.c_str(), strlen(infoStr.c_str()), &result);
+  CHECK_AND_RETURN_RET_LOG(status == napi_ok, result, "napi_create_string_utf8 fail!");
+
   OH_EffectFilterInfo_Release(filterInfo);
   ```
 
 - Query filters that meet given conditions.
 
+  <!-- @[image_effect_lookup_filter_info_by_condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
   ```c++
-  // Query all filters. The resources need to be actively released.
-  ImageEffect_FilterNames *filterNames = OH_EffectFilter_LookupFilters("Default");
+  ImageEffect_FilterNames *filterNames = OH_EffectFilter_LookupFilters(key);
+  CHECK_AND_RETURN_RET_LOG(filterNames != nullptr, result, "OH_EffectFilter_LookupFilters fail!");
 
-  // ...
-
+  std::string res = "size: " + std::to_string(filterNames->size) + std::string(", name: ");
+  for (int i = 0; i < filterNames->size; i++) {
+      res += filterNames->nameList[i];
+      if (i < filterNames->size - 1) {
+          res += " | ";
+      }
+  }
+  status = napi_create_string_utf8(env, res.c_str(), res.size(), &result);
   // Release the virtual memory resources occupied by FilterNames.
   OH_EffectFilter_ReleaseFilterNames();
   ```

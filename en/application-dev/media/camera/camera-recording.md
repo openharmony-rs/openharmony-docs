@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=472b8a70c8f480fabd11928a604dcdb48eb0acbf translatedAt=2026-08-10T09:15:40.920Z pushedAt=2026-08-10T12:05:24.178Z -->
+<!-- md-trans-meta sourceCommit=064a95d3874a60aa9706ae2623a5694055daee66 translatedAt=2026-11-04T06:36:58.095Z pushedAt=2026-11-04T06:36:58.095Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 

@@ -2,10 +2,11 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=8bcea030e70c366a745bca7b4687c931f0d46d82 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Overview
 
@@ -53,11 +54,11 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_is_exception_pending | Checks whether an exception occurs.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_is_exception_pending | Checks whether an exception occurs.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_fatal_error | Raises a fatal error to terminate the process immediately.| N/A| N/A| N/A|
-| napi_open_handle_scope | Opens a scope.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_open_handle_scope | Opens a scope.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_close_handle_scope | Closes the scope passed in. After a scope is closed, all references declared in it are closed.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_close_handle_scope | Closes the scope passed in. After a scope is closed, all references declared in it are closed.| napi_invalid_arg | The input parameter **scope** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_close_handle_scope | Closes the scope passed in. After a scope is closed, all references declared in it are closed.| napi_handle_scope_mismatch | **napi_open_handle_scope** is called fewer times than **napi_close_handle_scope**.| Use **napi_open_handle_scope** and **napi_close_handle_scope** in pairs.|
+| napi_open_handle_scope | Creates a **napi_handle_scope**.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_open_handle_scope | Creates a **napi_handle_scope**.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_close_handle_scope | Closes the **napi_handle_scope** passed in. After it is closed, all references declared in it are closed.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_close_handle_scope | Closes the **napi_handle_scope** passed in. After it is closed, all references declared in it are closed.| napi_invalid_arg | The input parameter **scope** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_close_handle_scope | Closes the **napi_handle_scope** passed in. After it is closed, all references declared in it are closed.| napi_handle_scope_mismatch | **napi_open_handle_scope** is called fewer times than **napi_close_handle_scope**.| Use **napi_open_handle_scope** and **napi_close_handle_scope** in pairs.|
 | napi_open_escapable_handle_scope | Opens an escapable handle scope, from which the declared values can be returned to the parent scope.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_open_escapable_handle_scope | Opens an escapable handle scope, from which the declared values can be returned to the parent scope.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_close_escapable_handle_scope | Closes the escapable handle scope passed in.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|

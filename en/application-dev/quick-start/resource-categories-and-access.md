@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=df32c599bfb0371cdb52422d6644c23f1d9fd08e translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Function Description
 
@@ -108,7 +109,7 @@ Table 5 Requirements for qualifier values
 | Text         | Indicates the script type used by the device. The value starts with one uppercase letter followed by three lowercase letters. For example, **Hans** indicates simplified Chinese, and **Hant** indicates traditional Chinese.<br>For details about the value range, see [ISO 15924](https://www.iso.org/standard/81905.html) (codes for the representation of names of scripts).|
 | Country/Region      | Indicates the country or region where the user is located. The value consists of two or three uppercase letters or three digits. For example, **CN** indicates China, and **GB** indicates the United Kingdom.<br>For details about the value range, see [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) (codes for the representation of names of countries and their subdivisions).|
 | Screen orientation        | Indicates the screen orientation of the device. The value can be:<br>- **vertical**: portrait orientation<br>- **horizontal**: landscape orientation|
-| Device type       | <!--RP1-->Indicates the device type. The value can be:<br>- **car**: a telematics device<br>- **tablet**: tablet<br>- **tv**: smart TV<br>- **wearable**: smart wearable<!--RP1End--> |
+| Device type       | Indicates the device type. The value can be:<br>- **phone**: phone<br>- **tablet**: tablet<br>- **car**: a telematics device<br>- **tv**: smart TV<br>- **wearable**: smart wearable<br>- **2in1**: 2in1 |
 | Color mode       | Indicates the color mode of the device. The value can be:<br>- **dark**: dark mode<br>- **light**: light mode|
 | Screen density       | Indicates the screen density of the device, in dpi. The value can be:<br>- **sdpi**: small-scale DPI. This value is applicable to devices with a DPI range of (0, 120].<br>- **mdpi**: medium-scale DPI. This value is applicable to devices with a DPI range of (120, 160].<br>- **ldpi**: large-scale DPI. This value is applicable to devices with a DPI range of (160, 240].<br>- **xldpi**: extra-large-scale DPI. This value is applicable to devices with a DPI range of (240, 320].<br>- **xxldpi**: extra-extra-large-scale DPI. This value is applicable to devices with a DPI range of (320, 480].<br>- **xxxldpi**: extra-extra-extra-large-scale DPI. This value is applicable to devices with a DPI range of (480, 640].|
 

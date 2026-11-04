@@ -5,7 +5,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=97d2f203089a738b47ca775e9fe55d102c5f6fcd translatedAt=2026-09-20T06:33:09.267Z pushedAt=2026-09-20T07:50:23.468Z -->
+<!-- md-trans-meta sourceCommit=1ef29eece66a5eaca78463125342ca3f4e3b01b2 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 ## Overview
 
@@ -141,23 +141,29 @@ You can set crash log configuration parameters and enable page switch log collec
 
 The following is an example of parameter configuration:
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+<!-- @[CrashConfig_Policy_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+<!-- @[CrashConfig_Policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 let policy: hiAppEvent.EventPolicy = {
-    appCrashPolicy: {
-      pageSwitchLogEnable: true, // Enable page switching logging. Supported from API version 24.
-      extendPcLrPrinting: true, // Enable extended printing of memory values near the PC and LR registers. Supported from API version 26.0.0.
-      logFileCutoffSzBytes: 102400, // Truncate the crash log to 100 KB. Supported from API version 26.0.0.
-      simplifyVmaPrinting: true, // Enable simplified maps printing. Supported from API version 26.0.0.
-      collectMinidump: true // In native crash scenarios, enable minidump. Supported from API version 26.0.0.
-    }
+  appCrashPolicy: {
+    pageSwitchLogEnable: true, // Enable page switching logging. Supported from API version 24.
+    extendPcLrPrinting: true, // Enable extended printing of memory values near the PC and LR registers. Supported from API version 26.0.0.
+    logFileCutoffSzBytes: 102400, // Truncate the crash log to 100 KB. Supported from API version 26.0.0.
+    simplifyVmaPrinting: true, // Enable simplified maps printing. Supported from API version 26.0.0.
+    collectMinidump: true // In native crash scenarios, enable minidump. Supported from API version 26.0.0.
+  }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
-    hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
+  hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
 }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
 });
 ```
 

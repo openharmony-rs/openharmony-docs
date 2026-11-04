@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:55:21.657Z pushedAt=2026-08-26T03:31:53.917Z -->
+<!-- md-trans-meta sourceCommit=56db74dcf9cd541e58f29a407c4b413b830bc97b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Introduction
 
@@ -311,11 +311,6 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Status status = OH_JSVM_CreateDataview(env, byteLength, arrayBuffer, byteOffset, &result);
     // Obtain the pointer and length information of the DataView.
     uint8_t *data = nullptr;
-    size_t length = 0;
-    // Assign a value to the DataView.
-    for (size_t i = 0; i < length; i++) {
-        data[i] = static_cast<uint8_t>(i + 1);
-    }
     int32_t infoType = 0;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
     size_t returnLength = 0;

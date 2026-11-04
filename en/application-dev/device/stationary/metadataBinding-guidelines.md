@@ -5,7 +5,7 @@
 <!--Designer: @yuxiaoyang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=2fe43cf7ea77cdd21cfa7d17dc93a663c83e8548 translatedAt=2026-10-13T12:46:25.078Z pushedAt=2026-10-15T10:19:06.327Z -->
+<!-- md-trans-meta sourceCommit=a05ae60bd63366985be12e202a8e163c0151fa56 translatedAt=2026-11-04T06:32:47.883Z pushedAt=2026-11-04T06:32:47.883Z nl=1 -->
 
 ## Overview
 
@@ -44,8 +44,7 @@ A third-party application can use metadata binding to map an App Linking link to
    
    ``` TypeScript
    import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@kit.BasicServicesKit';
+   import { BusinessError, Callback } from '@kit.BasicServicesKit';
    ```
 
 2. Define the metadata binding service callback and the bundle name. The function receives the encoded content returned.   

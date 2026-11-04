@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e5521e4e68d4358f2c99dbebfb237c12bb0173c0 translatedAt=2026-10-13T13:00:07.402Z pushedAt=2026-10-16T02:42:09.761Z -->
+<!-- md-trans-meta sourceCommit=4375064fcc51ca5fe8cd54c3bbe3d428d8e43868 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 Materials are essential resources that define the visual appearance of an object's surface. They determine how an object interacts with light, thereby affecting its final rendering result, such as color, metallic appearance, and roughness.
 
@@ -306,6 +306,7 @@ In ArkGraphics 3D, Physically Based Rendering (PBR) materials allow you to preci
    import { Scene, Camera, Material, Node, Image, SceneResourceFactory, Geometry, EnvironmentBackgroundType,
      PostProcessSettings, ToneMappingType, MetallicRoughnessMaterial, Vec4 } from '@kit.ArkGraphics3D';
    import {lookAt, OrbitCameraHelper } from '../common/utils';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. Load scene resources.
@@ -326,6 +327,9 @@ In ArkGraphics 3D, Physically Based Rendering (PBR) materials allow you to preci
          let rf: SceneResourceFactory = scene.getResourceFactory();
    
          // ...
+       })
+       .catch((err: BusinessError): void => {
+         console.error('Failed to load scene, code is %{public}d, message is %{public}s', err.code, err.message);
        });
    }
    ```

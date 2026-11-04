@@ -5,7 +5,7 @@
 <!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:20:54.756Z pushedAt=2026-09-20T07:45:49.613Z -->
+<!-- md-trans-meta sourceCommit=06c418ce0d53737d9accca064796f2537824187a translatedAt=2026-11-04T06:32:47.027Z pushedAt=2026-11-04T06:32:47.027Z nl=1 -->
 
 ## C
 
@@ -15,7 +15,7 @@ One of the vibration event types in a custom vibration configuration file. It is
 
 ## D
 
-### Dynamic Motor
+### Dynamic Vibrator
 
 Multiple motors that are external to the device and support independent control. They can be flexibly managed based on information such as the device connection status and motor status, and are commonly used in external devices such as gamepads, remote controls, and external vibrators.
 
@@ -25,7 +25,7 @@ An external sensor that supports dynamic connection. Its module capabilities all
 
 ## L
 
-### Local Motor
+### Local Vibrator
 
 A motor built into the device, such as a rotor motor or linear motor.
 

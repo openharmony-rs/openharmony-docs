@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=fd5b365b9f7d0f74c459eaab63037ee38241ba69 translatedAt=2026-10-13T12:47:45.955Z pushedAt=2026-10-15T10:29:27.773Z -->
+<!-- md-trans-meta sourceCommit=8d3fbd9cea938deab591400a098c0e0ae9d431c9 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 ## Overview
 
@@ -189,7 +189,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
    static HiAppEvent_Watcher *appHicollieWatcherT;
    ```
 
-   <!-- @[App_Hicollie_Trigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @[App_Hicollie_Trigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // Implement the callback function used to return the listened events. The content pointed to by the events pointer is valid only in this function.
@@ -264,7 +264,10 @@ The following describes how to subscribe to the freeze event triggered by a butt
        // Set the conditions for triggering the subscription callback. For example, trigger this onTrigger callback when the number of new event logs is 1.
        OH_HiAppEvent_SetTriggerCondition(appHicollieWatcherT, 1, 0, 0);
        // Add a watcher to listen for the specified event.
-       OH_HiAppEvent_AddWatcher(appHicollieWatcherT);
+       int ret = OH_HiAppEvent_AddWatcher(appHicollieWatcherT);
+       if (ret != 0) {
+           OH_LOG_ERROR(LogType::LOG_APP, "HiAppEvent AddWatcher failed, ret=%{public}d", ret);
+       }
        return {};
    }
    ```
@@ -296,8 +299,10 @@ The following describes how to subscribe to the freeze event triggered by a butt
        HiCollie_ErrorCode errorCode = OH_HiCollie_SetTimer(param, &id);  // Register a HiCollieTimer function to execute a one-off timeout detection task.
        if (errorCode == HICOLLIE_SUCCESS) {  // The HiCollieTimer task is successfully registered.
            OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Print the task ID.
-           sleep (2); // Simulate a time-consuming function to block the thread for 2s.
+           sleep(2);  // Simulate a time-consuming function to block the thread for 2s.
            OH_HiCollie_CancelTimer (id); // Cancel the registered timer based on the ID.
+       } else {
+           OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_SetTimer failed, errorCode is %{public}d", errorCode);
        }
        return nullptr;
    }

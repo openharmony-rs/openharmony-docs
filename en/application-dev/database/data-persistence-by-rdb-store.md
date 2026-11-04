@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6879538b2b1a4844febd6a46491da3f73fa2dd07 translatedAt=2026-09-14T08:30:50.321Z pushedAt=2026-09-15T07:55:51.150Z -->
+<!-- md-trans-meta sourceCommit=e17cc2b76a8fd758b162cf159989bebfd498a22b translatedAt=2026-11-04T06:32:41.229Z pushedAt=2026-11-04T06:32:41.229Z nl=1 -->
 
 
 ## When to Use
@@ -251,9 +251,9 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 
    > **NOTE**
    >
-   > - The RDB store created by an application varies with the context. Multiple RDB stores are created for the same database name with different application contexts. For example, each UIAbility has its own context.
+   > - The RDB store created by an application varies with the [Context](../reference/apis-ability-kit/js-apis-inner-application-context.md). Multiple RDB stores are created for the same database name with different application contexts. For example, each UIAbility has its own context.
    > 
-   > - When an application calls **getRdbStore()** to obtain an RDB store instance for the first time, the corresponding database file is generated in the application sandbox. When the RDB store is used, temporary files ended with **-wal** and **-shm** may be generated in the same directory as the database file. If you want to move the database files to other places, you must also move these temporary files. After the application is uninstalled, the database files and temporary files generated on the device are also removed.
+   > - When an application calls [getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore) to obtain an RDB store instance for the first time, the corresponding database file is generated in the application sandbox. When the RDB store is used, temporary files ended with **-wal** and **-shm** may be generated in the same directory as the database file. If you want to move the database files to other places, you must also move these temporary files. After the application is uninstalled, the database files and temporary files generated on the device are also removed.
    > 
    > - For details about the error codes, see [Universal Error Codes](../reference/errorcode-universal.md) and [RDB Store Error Codes](../reference/apis-arkdata/errorcode-data-rdb.md).
 

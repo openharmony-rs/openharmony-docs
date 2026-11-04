@@ -5,7 +5,7 @@
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6879538b2b1a4844febd6a46491da3f73fa2dd07 translatedAt=2026-09-14T08:38:05.657Z pushedAt=2026-09-15T08:03:43.614Z -->
+<!-- md-trans-meta sourceCommit=ed6c81506c4d86432dfa4282b8fd50a63d69f672 translatedAt=2026-11-04T06:32:42.419Z pushedAt=2026-11-04T06:32:42.419Z nl=1 -->
 
 
 ## When to Use
@@ -72,14 +72,20 @@ libnative_rdb_ndk.z.so
 #include <database/rdb/relational_store_error_code.h>
 ```
 
-1. Check whether the system supports vector stores. The sample code is as follows:
+1. Call [OH_Rdb_GetSupportedDbType()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_getsupporteddbtype) to obtain all database types supported by the system, and iterate through them to check whether the target database type is supported. If the types include [RDB_SQLITE](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype), the system supports SQLite databases. If they include [RDB_CAYLEY](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype), the system supports vector stores. The sample code is as follows:
 
    <!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ``` C++
-   int numType = 0;
-   // If numType is 2, the system supports vector stores. If numType 1, the system does not support vector stores.
-   OH_Rdb_GetSupportedDbType(&numType);
+   int typeCount = 0;
+   const int *dbTypes = OH_Rdb_GetSupportedDbType(&typeCount);
+   bool isVectorStoreSupported = false;
+   for (int i = 0; i < typeCount; i++) {
+       if (dbTypes[i] == RDB_CAYLEY) {
+           isVectorStoreSupported = true;
+           break;
+       }
+   }
    ```
 
 2. If the system supports vector stores, obtain an **OH_Rdb_Store** instance. The sample code is as follows:
@@ -170,7 +176,7 @@ libnative_rdb_ndk.z.so
 
    > **NOTE**
    >
-   > Use **destroy()** to destroy the result set (**OH_Cursor**) that is no longer used in a timely manner so that the memory allocated can be released.
+   > Use [destroy()](../reference/apis-arkdata/capi-rdb-oh-cursor.md#destroy) to destroy the result set (**OH_Cursor**) that is no longer used in a timely manner so that the memory allocated can be released.
 
    The sample code is as follows:
 

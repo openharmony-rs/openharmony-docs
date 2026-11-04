@@ -5,7 +5,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:30:19.927Z pushedAt=2026-09-29T10:13:14.416Z -->
+<!-- md-trans-meta sourceCommit=76542f8d6d1f31f6e5fb4083439cd1b46fed5c5d translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 ## Overview
 
@@ -63,7 +63,7 @@ The following demonstrates how to add a button in the app and click the button t
            - napi_init.cpp
          ets:
            entryability:
-             - EntryAbility.ts
+             - EntryAbility.ets
            pages:
              - Index.ets
    ```
@@ -532,10 +532,10 @@ The following demonstrates how to add a button in the app and click the button t
    
    static napi_value TestHiCollieAssociateProcessReport(napi_env env, napi_callback_info info)
    {
-      // Report the BUSINESS_THREAD_BLOCK_3S event.
+      // Report the BUSSINESS_THREAD_BLOCK_3S event.
       OH_HiCollie_AssociateProcessReport(false);
       sleep(3);
-      // Report the BUSINESS_THREAD_BLOCK_6S event.
+      // Report the BUSSINESS_THREAD_BLOCK_6S event.
       OH_HiCollie_AssociateProcessReport(true);
       return 0;
    }

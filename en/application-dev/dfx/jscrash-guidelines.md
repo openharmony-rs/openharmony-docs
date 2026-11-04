@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=946ced8610d4a456a6fd95b0b91c3eb5f8a70593 translatedAt=2026-08-22T01:24:15.713Z pushedAt=2026-08-22T02:28:36.683Z -->
+<!-- md-trans-meta sourceCommit=f180460ae781645326a727726d66e22f096fff28 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 ## Overview
 

@@ -6,7 +6,7 @@
 <!--Designer: @hwzhangchuang; @yangwei_814916-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-08-01T07:22:58.997Z pushedAt=2026-08-01T08:22:29.987Z -->
+<!-- md-trans-meta sourceCommit=11f6c6c8fdc0ff9016199d784a1ea189bd95bfd5 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 In the system, there may be insufficient system space or directories such as **cacheDir** may be subject to system quota restrictions. Application developers need to pay attention to the remaining system space and control the space occupied by their applications.
 
@@ -23,8 +23,8 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
 | \@ohos.file.storageStatistics | getFreeSizeSync | Obtains the available space of the built-in storage, in bytes. This API returns the result synchronously.<br>**Note**: This API is supported since API version 15.|
 | \@ohos.file.storageStatistics | getTotalSize | Obtains the total space of the built-in storage, in bytes. This API returns the result asynchronously.<br>**Note**: This API is supported since API version 15.|
 | \@ohos.file.storageStatistics | getTotalSizeSync | Obtains the total space of the built-in storage, in bytes. This API returns the result synchronously.<br>**Note**: This API is supported since API version 15.|
-| \@ohos.file.statvfs | getFreeSize | Obtains the free space of a file system, in bytes.<br>**Note**: This API is supported since API version 20.|
-| \@ohos.file.statvfs | getTotalSize | Obtains the total space of a file system, in bytes.<br>**Note**: This API is supported since API version 20.|
+| \@ohos.file.statvfs | getFreeSize | Obtains the free space of a file system, in bytes.<br>**Note**: This API is supported since API version 9.|
+| \@ohos.file.statvfs | getTotalSize | Obtains the total space of a file system, in bytes.<br>**Note**: This API is supported since API version 9.|
 
 **Table 2** Attributes for application space statistics
 

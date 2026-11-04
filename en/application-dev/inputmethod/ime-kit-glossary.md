@@ -6,7 +6,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=8e856b06a34a819612cae112a81452d688b21bcf translatedAt=2026-08-15T01:52:26.489Z pushedAt=2026-08-15T08:36:45.072Z -->
+<!-- md-trans-meta sourceCommit=95ea28c0bb6595a68fef9885cf96705c2696edfc translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## B
 
@@ -40,11 +40,11 @@ The context of an Extension ability, which provides capabilities for starting, s
 
 ### FLAG_FIXED
 
-A state in which the input method panel is fixed at the bottom of the screen.
+A state in which the input method panel is fixed at the bottom of the screen. It corresponds to `FLAG_FIXED` in the `@ohos.inputMethod.Panel` module and `FLG_FIXED` in the `@ohos.inputMethodEngine` module.
 
 ### FLAG_FLOATING
 
-A state in which the input method panel can float and move.
+A state in which the input method panel can float and move. It corresponds to `FLAG_FLOATING` in the `@ohos.inputMethod.Panel` module and `FLG_FLOATING` in the `@ohos.inputMethodEngine` module.
 
 ### FLAG_CANDIDATE
 
@@ -108,7 +108,10 @@ A window component created by an input method app to display the soft keyboard o
 
 ### PanelFlag
 
-An enum for input method panel states, including fixed (`FLAG_FIXED`), floating (`FLAG_FLOATING`), and candidate (`FLAG_CANDIDATE`) states.
+An enum for input method panel states, including fixed, floating, and candidate states. The enum members have different names in different modules:
+
+- `@ohos.inputMethod.Panel`: `FLAG_FIXED`, `FLAG_FLOATING`, `FLAG_CANDIDATE`
+- `@ohos.inputMethodEngine`: `FLG_FIXED`, `FLG_FLOATING`, `FLAG_CANDIDATE`
 
 ### PanelInfo
 

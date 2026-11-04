@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:07:29.425Z pushedAt=2026-09-16T08:19:10.226Z -->
+<!-- md-trans-meta sourceCommit=0f33047295b29682979472dba58ab7a6b60683e1 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Obtaining Arguments Passed by JS
 
@@ -102,13 +102,13 @@ napi_create_string_utf8(env1, "bar", NAPI_AUTO_LENGTH, &string);
 // Create an object in env2 and set the string object to this object.
 napi_status status = napi_create_object(env2, &object);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 
 status = napi_set_named_property(env2, object, "foo", string);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 ```
@@ -520,7 +520,7 @@ If the semantics are violated in strict mode (default), an error will be thrown.
 
 ## Reference
 
-[Communication Between Native Child Threads and the UI Main Thread](https://developer.huawei.com/consumer/en/doc/best-practices-V5/bpta-native-sub-main-comm-V5)
+[Communication Between Native Child Threads and the UI Main Thread](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/native_subthread-to-uimain)
 
 [How do I directly call ArkTS APIs in a C++ subthread on the native side without triggering callbacks on the ArkTS side?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-8-V5)
 

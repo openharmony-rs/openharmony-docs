@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d475d826f8ab6e97b4b69944b8a9a6d84f792324 translatedAt=2026-08-12T06:37:44.093Z pushedAt=2026-08-12T11:03:40.860Z -->
+<!-- md-trans-meta sourceCommit=56db74dcf9cd541e58f29a407c4b413b830bc97b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 To implement cross-language interaction using JSVM-API, you need to register and load modules based on the JSVM-API mechanism first.
 
@@ -14,7 +14,7 @@ To implement cross-language interaction using JSVM-API, you need to register and
 
 - Native: Implement module registration via a .cpp file. You need to declare the name of the library to register and define the mappings between the native and JS/ArkTS APIs in the callback registered.
 
-This section demonstrates the cross-language interaction process with JSVM-API by using the `RunTest()` interface implemented on both the ArkTS/JS side and the native side as an example.
+This section demonstrates the cross-language interaction process with JSVM-API by using the `runTest()` interface implemented on both the ArkTS/JS side and the native side as an example.
 
 ## Creating a Native C++ Project
 
@@ -63,7 +63,7 @@ By referring to [Node-API Development Process](use-napi-process.md#implementing-
   target_link_libraries(entry PUBLIC libace_napi.z.so libjsvm.so libhilog_ndk.z.so)
   ```
 
-- Create **entry/src/main/cpp/hello.cpp** and implement **runTest()** on the native side. The code is as follows:
+- Create **entry/src/main/cpp/hello.cpp** and implement **RunTest()** on the native side. The code is as follows:
 
   <!-- @[oh_jsvm_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/hello.cpp) -->
 

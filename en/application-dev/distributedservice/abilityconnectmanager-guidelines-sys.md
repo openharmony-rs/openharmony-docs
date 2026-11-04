@@ -5,7 +5,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-09-16T02:42:21.340Z pushedAt=2026-09-16T06:28:52.611Z -->
+<!-- md-trans-meta sourceCommit=16f10e67674d46c8ca92fc114534375fdcc0b745 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 
 ## Introduction
@@ -153,7 +153,7 @@ function initDmClass(): void {
   try {
     dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
   } catch (err) {
-    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
+    hilog.error(0x0000, 'testTag', 'createDeviceManager err');
   }
 }
 
@@ -164,17 +164,17 @@ function getRemoteDeviceId(): string | undefined {
     hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
     let list = dmClass.getAvailableDeviceListSync();
     if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
       return;
     }
     if (list.length === 0) {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
       return;
     }
     // Select the target device in the dialog box.
     return list[0].networkId;
   } else {
-    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
     return;
   }
 }
@@ -209,7 +209,7 @@ function getRemoteDeviceId(): string | undefined {
       hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
       abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
         if (!connectResult.isConnected) {
-          hilog.info(0x0000, 'testTag', 'connect failed');
+          hilog.error(0x0000, 'testTag', 'connect failed');
           return;
         }
       }).catch(() => {
@@ -330,7 +330,7 @@ After the applications are successfully connected, you can call **sendData()** o
   abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
     hilog.info(0x0000, 'testTag', "sendData success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendData failed");
+    hilog.error(0x0000, 'testTag', "sendData failed");
   })
   ```
 

@@ -6,7 +6,7 @@
 <!--Designer: @zhanglu161-->
 <!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6898c19983123924e2ebcb1542bddb55d0f6c972 translatedAt=2026-08-15T01:48:44.324Z pushedAt=2026-08-15T07:43:16.832Z -->
+<!-- md-trans-meta sourceCommit=5d55f27e888c020349b0d84eabcba7ba537148db translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 ## Overview
 
@@ -61,7 +61,7 @@ ffrt_queue_t CreateBankSystem(const char *name, int concurrency)
     // Destroy the queue attributes after the queue is created.
     ffrt_queue_attr_destroy(&queue_attr);
     if (!queue) {
-        OH_LOG_INFO(LOG_APP, "create queue failed");
+        OH_LOG_ERROR(LOG_APP, "create queue failed");
         return NULL;
     }
 
@@ -114,7 +114,7 @@ int ConcurrentQueueCExec()
     ffrt_queue_t bank = CreateBankSystem("Bank", BANK_CONCURRENCY);
     if (!bank) {
         printf("create bank system failed\n");
-        OH_LOG_INFO(LOG_APP, "create bank system failed");
+        OH_LOG_ERROR(LOG_APP, "create bank system failed");
         return -1;
     }
 

@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:51:19.256Z pushedAt=2026-09-29T08:31:40.322Z -->
+<!-- md-trans-meta sourceCommit=718a780da92ceabe70c90fa79ec980e76416c429 translatedAt=2026-11-04T06:36:58.097Z pushedAt=2026-11-04T06:36:58.097Z nl=1 -->
 
 Starting from API version 23, the camera framework provides the capability to capture photos in YUV format. Compared with regular photo capture, YUV photo capture obtains unencoded image data, which fully preserves the raw luminance and chrominance information captured by the sensor. This makes it suitable for video encoding or professional processing. However, the capture process incurs higher power consumption, and saving the data occupies more storage space.
 
@@ -161,7 +161,7 @@ For detailed camera API descriptions, refer to the camera module description [OH
          OH_PixelmapNative* mainPixelmap;
          Image_ErrorCode imageErr = OH_PictureNative_GetMainPixelmap(picture, &mainPixelmap);
          if (imageErr != IMAGE_SUCCESS || mainPixelmap == nullptr) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
+             OH_LOG_ERROR(LOG_APP, "OH_PictureNative_GetMainPixelmap call failed, errorCode: %{public}d", imageErr);
              return;
          }
          pixelMap = nullptr;

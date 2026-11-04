@@ -6,6 +6,8 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
 <!--RP1-->
+<!-- md-trans-meta sourceCommit=4d0c4fe124a429b89e6c66eb6b302d8501f24a1d translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=2 -->
+
 OpenHarmony supports diverse device forms, instruction sets, and operating system kernels. To ensure application compatibility on different OpenHarmony devices, follow the basic OHOS Application Binary Interface (ABI) standards provided in this topic.
 <!--RP1End-->
 ## Byte Order and Word Width
@@ -84,7 +86,9 @@ In the C++ project of OpenHarmony, find the **buildOption/externalNativeOptions*
     }
 }
 ```
-Note: If the **abiFilters** field is not set in DevEco Studio, the default architecture is arm64-v8a.
+> **NOTE**
+>
+> If the **abiFilters** field is not set in DevEco Studio, the default architecture is arm64-v8a.
 ### Setting in .cmake
 
 When you develop native code using the SDK, some common environment variables for cross compilation of OpenHarmony are defined in **build/cmake/ohos.toolchain.cmake**. The **OHOS_ARCH** variable defines the target ABI for build, which can be **arm64-v8a**, **armeabi-v7a**, and **x86_64**.

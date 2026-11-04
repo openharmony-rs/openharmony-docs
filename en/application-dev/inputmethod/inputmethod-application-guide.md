@@ -5,7 +5,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=73d66c100e94b50c7ee14b20e494288d30baa6dc translatedAt=2026-10-13T13:01:24.298Z pushedAt=2026-10-16T02:45:06.069Z -->
+<!-- md-trans-meta sourceCommit=9ebdbc456a951ba58c74cec1b3d1c1f6136be8cf translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 [InputMethodExtensionAbility](../reference/apis-ime-kit/js-apis-inputmethod-extension-ability.md) provides the **onCreate()** and **onDestroy()** callbacks, as described below. Override them as required. InputMethodExtensionAbility lifecycle:
 
@@ -180,7 +180,7 @@ To implement an input method application, manually create an InputMethodExtensio
            Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
          });
        }).catch((err: BusinessError) => {
-         Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
+         Log.showError(TAG, `Failed to createPanel: ${err.code} ${err.message}`);
        });
      }
    

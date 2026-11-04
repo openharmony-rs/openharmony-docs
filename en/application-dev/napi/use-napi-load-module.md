@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:44:19.952Z pushedAt=2026-09-16T08:26:39.256Z -->
+<!-- md-trans-meta sourceCommit=8bcea030e70c366a745bca7b4687c931f0d46d82 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## **Scenario**
 
@@ -325,7 +325,7 @@ You are advised to use [napi_load_module_with_info](use-napi-load-module-with-in
     }
     ```
 
-2. Configure **build-profile.json5** for the module that uses the library.
+2. Configure **build-profile.json5** for the module that uses sharedlibrary.
 
     ```json
     {

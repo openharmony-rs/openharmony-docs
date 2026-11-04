@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4f0190cfb17bec534f61352c7bb08e8c60d6944b translatedAt=2026-09-16T03:46:51.912Z pushedAt=2026-09-16T08:36:50.293Z -->
+<!-- md-trans-meta sourceCommit=f82c6f1388ce7df4a14e80b27ae8c3eb6ceae124 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 - [About This Kit](net-mgmt-overview.md)
 

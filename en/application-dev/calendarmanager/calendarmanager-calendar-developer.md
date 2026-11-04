@@ -6,7 +6,7 @@
 <!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d88cb3706725257c508905ecb0cc9fb863683388 translatedAt=2026-08-01T02:49:30.752Z pushedAt=2026-08-01T03:00:50.583Z -->
+<!-- md-trans-meta sourceCommit=04a8ba9986e14ad2c82f37b8769950c14ae8e557 translatedAt=2026-11-04T06:32:36.082Z pushedAt=2026-11-04T06:32:36.082Z nl=1 -->
 
 Calendar is used to store and manage personal or team events. Users can easily view, edit, and share event information on the calendar.
 
@@ -143,13 +143,13 @@ The table below lists the main APIs used for calendar management. For details ab
     <!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
 
     ``` TypeScript
-    const calendarAccounts: calendarManager.CalendarAccount = {
+    const calendarAccount: calendarManager.CalendarAccount = {
       name: 'MyCalendar',
       type: calendarManager.CalendarType.LOCAL,
       displayName: 'MyCalendar'
     };
     // Calendar configuration information.
-    calendarMgr?.getCalendar(calendarAccounts, (err, data) => {
+    calendarMgr?.getCalendar(calendarAccount, (err, data) => {
       // Obtain the calendar account.
       if (err) {
         console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);

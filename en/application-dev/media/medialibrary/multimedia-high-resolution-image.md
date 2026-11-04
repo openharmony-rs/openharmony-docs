@@ -6,7 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b195649f86d4bb8f11886ed1f90fd8c9b8c6a6db translatedAt=2026-08-11T01:56:57.784Z pushedAt=2026-08-12T03:38:15.770Z -->
+<!-- md-trans-meta sourceCommit=c6ebb7d18f90c1f7d0de6f3bb0117f145d5cc6ba translatedAt=2026-11-04T06:36:58.106Z pushedAt=2026-11-04T06:36:58.106Z nl=1 -->
 
 ## Overview
 
@@ -203,8 +203,8 @@ target_link_libraries(entry PUBLIC libimage_source.so libimage_common.so)
 ```cpp
 #include <cstdlib>
 #include <cstring>
-#include <multimedia/image_framework/image_source_native.h>
-#include <multimedia/image_framework/image_common.h>
+#include <multimedia/image_framework/image/image_source_native.h>
+#include <multimedia/image_framework/image/image_common.h>
 
 /**
  * @brief Obtains the MIME type of an image through a file descriptor.
@@ -308,8 +308,8 @@ target_link_libraries(entry PUBLIC libimage_source.so)
 
 ```cpp
 #include <cstdint>
-#include <multimedia/image_framework/image_common.h>
-#include <multimedia/image_framework/image_source_native.h>
+#include <multimedia/image_framework/image/image_common.h>
+#include <multimedia/image_framework/image/image_source_native.h>
 
 static constexpr uint64_t HIGH_PIXEL_THRESHOLD = 100000000ULL;
 

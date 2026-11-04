@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1a8a5b4e7336401b1823c689884b3d262fdca43f translatedAt=2026-08-13T03:07:29.211Z pushedAt=2026-08-13T06:15:25.208Z -->
+<!-- md-trans-meta sourceCommit=55aca85856c67c25fb1016a96e8daa56b7da4d2a translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## When to Use
 
@@ -87,7 +87,7 @@ libnet_connection.so
        napi_get_value_int32(env, args[0], &param); // Obtain an integer from args[0] and store the integer in param.
        
        NetConn_NetHandle netHandle;
-       if (param == 0) { // If the parameter is 0
+       if (param == 0) { // If the parameter is 0, pass NULL to demonstrate an invalid parameter. The API returns 401.
            param = OH_NetConn_GetDefaultNet(NULL);
        } else {
            param = OH_NetConn_GetDefaultNet(&netHandle);

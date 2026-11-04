@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d475d826f8ab6e97b4b69944b8a9a6d84f792324 translatedAt=2026-08-12T06:37:24.009Z pushedAt=2026-08-12T11:03:53.589Z -->
+<!-- md-trans-meta sourceCommit=56db74dcf9cd541e58f29a407c4b413b830bc97b translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## When to Use
 
@@ -144,7 +144,7 @@ static JSVM_Value AssertEqual(JSVM_Env env, JSVM_CallbackInfo info)
     if (isStrictEquals) {
         OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: PASS");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: FAILED");
+        OH_LOG_ERROR(LOG_APP, "JSVM API TEST RESULT: FAILED");
     }
     return nullptr;
 }

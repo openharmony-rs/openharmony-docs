@@ -5,7 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-09-14T09:17:36.559Z pushedAt=2026-09-15T13:11:48.176Z -->
+<!-- md-trans-meta sourceCommit=334acd66186fa8cfa16121cfab922bad85986ea9 translatedAt=2026-11-04T06:35:05.446Z pushedAt=2026-11-04T06:35:05.446Z nl=1 -->
 
 This topic describes how to enable an application to view, create, read, write, delete, move, or copy an application file and obtain file information.
 
@@ -372,8 +372,7 @@ A hash stream is a data transmission and storage technology that can convert dat
 
 ```ts
 // pages/xxx.ets
-import { fileIo } from '@kit.CoreFileKit';
-import { hash } from '@kit.CoreFileKit';
+import { fileIo, hash } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 // Obtain the application file path. The context should be obtained in the component.

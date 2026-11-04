@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d230ba9393e388f33e721d7e30e2a29164277066 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Scenario Overview
 
@@ -15,7 +16,7 @@ The following features are supported:
 | Feature              | Description                                       | Available Since|
 | :--------------------- | :---------------------------------------------- | :------------- |
 | Conversion between Unicode and ASCII    | Conversion between Chinese domain names and ASCII codes.          | API version 23  |
-| Obtaining all IP addresses of a host name| Obtains all IP addresses of the default network by resolving the host name.         | API version 23  |
+| Obtaining all IP addresses of a host name| Obtains all IP addresses of the default network by resolving the host name. 0.0.0.0 is not returned as a valid address.         | API version 23  |
 | Resolving the host name by specifying the IP address type  | Resolves the host name by specifying the IP address type (IPv4/IPv6) using the default network.| API version 23  |
 | Resolving the host name by specifying the network connection| Resolves the host name by using a specific network connection [NetHandle](../reference/apis-network-kit/js-apis-net-connection.md#nethandle).        | API version 23  |
 

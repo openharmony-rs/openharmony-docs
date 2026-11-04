@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e5521e4e68d4358f2c99dbebfb237c12bb0173c0 translatedAt=2026-10-13T13:01:48.578Z pushedAt=2026-10-16T02:42:47.584Z -->
+<!-- md-trans-meta sourceCommit=ed2b8cfe735a115fab0bda093542d921482839db translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 A 3D scene consists of three essential parts: light, camera, and model.
 - Light provides illumination for a 3D scene so that the models in the 3D scene become visible. Without light, the rendering result is all black.
@@ -48,7 +48,7 @@ The texture images referenced in a glTF model support the following formats:
    
    ``` TypeScript
    if (this.scene == null) {
-     // Load the model and place the gltf file in the relevant path. Use the actual path when loading.
+     // Load the model and place the glTF file in the relevant path. Use the actual path when loading.
      // Switch from .gltf to .glb; the content is the same, but the format is different
      Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
        .then(async (result: Scene) => {

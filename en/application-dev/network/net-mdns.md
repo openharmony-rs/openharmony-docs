@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-08-13T03:08:21.096Z pushedAt=2026-08-13T06:35:57.538Z -->
+<!-- md-trans-meta sourceCommit=755acb8904847e0f43a81e9113f1f520b59dd5b1 translatedAt=2026-11-04T06:41:56.301Z pushedAt=2026-11-04T06:41:56.301Z nl=1 -->
 
 ## Overview
 
@@ -168,21 +168,11 @@ The following describes the development procedure specific to each application s
    <!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
-   // Unsubscribe from mDNS service discovery status changes.
-   discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-   });
-   discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-   });
-   discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-     // ...
-   });
-   discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-     // ...
-   });
+   // Unsubscribe from mDNS service discovery status changes. If no callback is passed, unsubscribe all callbacks for the event.
+   discoveryService.off('discoveryStart');
+   discoveryService.off('discoveryStop');
+   discoveryService.off('serviceFound');
+   discoveryService.off('serviceLost');
    ```
 
 ## Samples
