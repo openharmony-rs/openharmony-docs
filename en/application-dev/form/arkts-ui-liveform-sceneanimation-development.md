@@ -45,7 +45,7 @@ You can call the [formProvider.requestOverflow](../reference/apis-form-kit/js-ap
 
 ### Supported Scenarios
 1. Currently, the interactive widget animation takes effect only on a single widget with [FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20) set to **DESKTOP**.
-2. Due to the impact on performance and power consumption, only some models are supported. If a model is not supported, the error code [801](../reference/errorcode-universal.md#801-api-not-supported) is reported.
+2. Due to the impact on performance and power consumption, only some models are supported. If a model is not supported, error [801 API Not Supported](../reference/errorcode-universal.md#801-api-not-supported) is reported.
 
 ### Parameter Request
 1. The maximum valid animation duration that an interactive widget can request is 3500 ms. When the countdown ends, the widget switches back to the inactive state.<!--Del-->System applications additionally support long-time activated widgets, with no limit on the animation duration. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->
