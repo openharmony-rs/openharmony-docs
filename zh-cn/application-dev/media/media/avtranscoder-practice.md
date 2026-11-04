@@ -164,11 +164,13 @@ status: active
    执行转码逻辑：
 
    <!-- @[performingTranscoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   
    ``` TypeScript
    async function doSome(context: common.Context) {
      console.info(`doSome in`);
      try {
        let transcoder = await media.createAVTranscoder();
+       
        // 转码完成回调函数。
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
@@ -179,9 +181,11 @@ status: active
          if (transcoder.fdSrc != undefined) {
            fs.closeSync(transcoder.fdSrc.fd);
          }
+         // 向主线程发送转码结束的消息
          workerPort.postMessage('complete');
        })
-       // 转码错误回调函数。
+   
+       // 转码错误回调函数
        transcoder.on('error', async (err: BusinessError) => {
          await transcoder?.release();
          if (transcoder.fdDst != undefined) {
@@ -196,7 +200,7 @@ status: active
          console.info(`AVTranscoder progressUpdate = ${progress}`);
          workerPort.postMessage(progress);
        })
-
+   
        try {
          // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
          let fileDescriptor = await context.resourceManager.getRawFd('H264_AAC.mp4');
@@ -204,20 +208,19 @@ status: active
        } catch (error) {
          console.error('Failed to get the file descriptor, please check the resource and path.');
        }
-       // 设置输出文件路径，context.filesDir为应用的沙箱路径。
-       let fdPath = context.filesDir + "/" + "VID_" + Date.parse(new Date().toString()) + ".mp4";
-       let file = fileIo.openSync(fdPath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+       let fdPath = context.filesDir + '/' + 'VID_' + Date.parse(new Date().toString()) + '.mp4';
+       let file = fs.openSync(fdPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
        let fd = file.fd;
        console.info(`file fd ${fd}`);
        transcoder.fdDst = file.fd;
-
+   
        let config: media.AVTranscoderConfig = {
          fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 封装格式。
          audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
          videoCodec: media.CodecMimeType.VIDEO_AVC, // 视频编码格式。
          videoBitrate: 200000, // 视频比特率。
        }
-       await transcoder?.prepare(config); 
+       await transcoder?.prepare(config);
        await transcoder?.start();
      } catch (e) {
        console.error(`transcode error: code = ` + e.code.toString() + `, message = ${JSON.stringify(e.message)}`);
