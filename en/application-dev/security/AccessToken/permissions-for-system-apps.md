@@ -8701,3 +8701,31 @@ Allows an application on the rear armrest screen to connect to the head unit for
 **Supported devices**: cars
  
 **Since**: 26.0.1
+
+## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
+ 
+Allows an application to obtain configurations related to device unlocking via enterprise accounts.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
+ 
+Allows an application to configure the capability of unlocking devices via enterprise accounts.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Valid since**: 26.0.1
