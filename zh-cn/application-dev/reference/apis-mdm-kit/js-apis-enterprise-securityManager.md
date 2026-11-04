@@ -1079,11 +1079,17 @@ try {
 
 setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permissions: Array\<string>, managedState: PermissionManagedState): void
 
-设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
+设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
 
 > **说明：**
 >
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+>
 > 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+>
+> 从API版本26.1.0开始，支持管理[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限。
+>
+> 未设置管理策略（managedState为DEFAULT）时，权限由用户按默认方式管理：user_grant权限由用户在权限弹窗中授权，manual_settings权限由用户在系统设置应用中授权。策略设置后，对应权限的授权状态将被固定为策略指定的状态：设置为GRANTED表示权限被静默授予，设置为DENIED表示权限被静默拒绝。权限被管控期间，用户无法通过权限弹窗或系统设置界面修改该权限的授权状态，应用可通过权限校验接口（如[checkAccessTokenSync](../apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstokensync10)）感知权限的授权结果。将managedState设置为DEFAULT可取消管控，取消管控后权限恢复为用户可管理的状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1097,7 +1103,7 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | applicationInstance    | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，仅支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
+| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
 | managedState | [PermissionManagedState](#permissionmanagedstate20) | 是 | 应用权限的管理策略。 |
 
 **错误码**：
@@ -1143,7 +1149,15 @@ try {
 
 getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permission: string): PermissionManagedState
 
-获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。
+获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)的管理策略。
+
+> **说明：**
+>
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+>
+> 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+>
+> 从API版本26.1.0开始，支持获取[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限的管理策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1157,7 +1171,7 @@ getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | applicationInstance  | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permission | string | 是 | 需要获取管理策略的权限名称，仅支持user_grant权限。 |
+| permission | string | 是 | 需要获取管理策略的权限名称，支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。 |
 
 **返回值：**
 
