@@ -1,15 +1,17 @@
 #  HarmonyAppProvision Configuration File
+<!-- md-trans-meta sourceCommit=8aa79cb65a7095bb971dc0b556db7006504fdaf2 translatedAt=2026-11-04T01:54:22.445Z pushedAt=2026-11-04T02:20:00.941Z nl=2 -->
+
 The **HarmonyAppProvision** configuration file (also called profile) is a file where you declare permission and signature information for your application.
 
 ## Configuration File Structure
 The **HarmonyAppProvision** file consists of several parts, which are described in the table below.
 
-| Name    | Description                                                                                    | Data Type| Mandatory| Initial Value Allowed|
+| Name    | Description                                                                                    | Data Type| Mandatory| Optional |
 | ----------- | ---------------------------------------------------------------------------------------- | -------- | -------- | -------- |
 | version-code | Version number of the **HarmonyAppProvision** file format. The value is a positive integer containing 32 or less digits.| Number  | Yes| No                |
 | version-name     | Description of the version number. It is recommended that the value consist of three segments, for example, **A.B.C**.       | String  | Yes| No|
 | uuid    | Unique ID of the **HarmonyAppProvision** file.                      | String    | Yes| No|
-| type | Type of the **HarmonyAppProvision** file. The value can be **debug** (for application debugging) or **release** (for application release). The recommended value is **debug**.| String    | Yes| No|
+| type | Type of the HarmonyAppProvision file. The system predefined file types include debug (for application debugging scenarios) and release (for application release scenarios). In the open-source community version, the value of this attribute is recommended to be debug. | String     | Mandatory | No |
 | app-distribution-type | Distribution type of the application. The value can be any of the following:<br><li>app_gallery: application distributed by AppGallery.<br> <li> enterprise: enterprise application that can be installed on personal devices.<br> <li> enterprise_mdm: enterprise mobile device management (MDM) application, which can be installed only on enterprise devices.<br> The applications of this type must have device management privileges, such as remote locking devices and installing common enterprise applications on devices.<br> <li>enterprise_normal: common enterprise application, which can be installed on enterprise devices only through an enterprise MDM application. The applications of this type do not require device management privileges.<br> <li>os_integration: preset application in the system.<br> <li>crowdtesting: crowdtesting application.<br> <li>**internaltesting**: application under internal testing of AppGallery. <li>none: other applications.| String| Yes| No|
 | issuer | Issuer of the **HarmonyAppProvision** file.       | String    | Yes| No|
 | validity    | Validity period of the **HarmonyAppProvision** file. For details, see [validity](#validity). | Object    | Yes| No |
@@ -113,8 +115,8 @@ To enable the application to use system APIs, you need to change the **app-featu
 
 To modify the HarmonyAppProvision configuration file, perform the following steps:
 
-1. Open the directory where the OpenHarmony SDK is located. (You can choose **File** > **Settings** > **OpenHarmony SDK** on the menu bar of DevEco Studio to query the directory.)
-2. In the SDK directory, go to the **Toolchains** > {Version} > **lib** directory and open the **UnsignedReleasedProfileTemplate.json** file.
+1. Open the directory where the OpenHarmony SDK is located. (You can view it by clicking **File** > **Settings** > **OpenHarmony SDK** in the menu bar of DevEco Studio.)
+2. In the SDK directory, go to the `Toolchains` > `{Version}` > `lib` folder and open the `UnsgnedReleasedProfileTemplate.json` file.
 3. Modify the related fields as required.
 
 After modifying the configuration file, [sign the app](hapsigntool-guidelines.md).

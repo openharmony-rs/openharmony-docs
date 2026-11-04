@@ -1,4 +1,4 @@
-# Signature Tool Error Codes
+# Signing Tool Error Codes
 
 <!--Kit: Common-->
 <!--Subsystem: Security-->

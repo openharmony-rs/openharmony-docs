@@ -1,10 +1,11 @@
 # Interaction Response Overview
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1e593c98c8a2fdd17e3bb69683a63dbdeefcb9da translatedAt=2026-11-04T02:27:55.591Z pushedAt=2026-11-04T03:31:05.029Z nl=1 -->
 
 The ArkUI framework provides comprehensive interaction capabilities, supporting direct handling of basic input events, a gesture system built upon these events, and advanced interactions including drag-and-drop and focus management.
 
@@ -34,7 +35,7 @@ Basic events typically begin with a start marker and end with an end marker, wit
 
 Some basic events do not follow this pattern. For example, key events only have **Down** and **Up** states, with **Down** events reported continuously during sustained presses.
 
-For pointer events, the system ensures that components participating in the response receive the complete event sequence, facilitating proper start/end timing management. For non-pointer events, this guarantee is not provided and the start and end may be dispatched to different components due to potential focus changes during the event sequence.
+For pointer events, the system ensures as much as possible that the components involved in the response receive a complete sequence, which helps developers determine when processing begins and ends. However, for non-pointer events, the system provides no such guarantee: due to focus changes, the start and end may be dispatched to different components.
 
 ## Gesture System
 
@@ -54,3 +55,4 @@ For details, see [Implementing Unified Drag and Drop](arkts-common-events-drag-e
 ## Focus System
 
 For details, see [Focus Event](arkts-common-events-focus-event.md).
+

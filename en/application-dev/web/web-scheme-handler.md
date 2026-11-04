@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=92781ffc3b028932f548099b2ef0ba88371e83b0 translatedAt=2026-09-16T04:04:13.861Z pushedAt=2026-09-16T08:48:57.192Z -->
+<!-- md-trans-meta sourceCommit=47a4f62946a838a006159c1aa78fa3bb0c8bc27b translatedAt=2026-11-04T02:04:35.193Z pushedAt=2026-11-04T04:26:10.854Z nl=1 -->
 
 The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or the ArkTS and NDK APIs provided by **SchemeHandler** to intercept network requests initiated by **Web** components.
 
@@ -27,21 +27,21 @@ ArkWeb allows you to use SchemeHandler to intercept HTTP(s) and custom protocol 
 
 When the web kernel sends a scheme request, the callback of SchemeHandler set for the scheme is triggered. SchemeHandler contains two callbacks: one for the request start and the other for the request end. The application needs to notify the web kernel whether to intercept the request in the callback for the request start, and clear related resources after the request ends to avoid memory leaks.
 
-Callbacks for the request start: 
+Callbacks for the request start:  
 
-NDK: [ArkWeb_OnRequestStart](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart) 
+NDK: [ArkWeb_OnRequestStart](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart)  
 
-ArkTS: [onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12) 
+ArkTS: [onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)  
 
-Callbacks for the request end: 
+Callbacks for the request end:  
 
-NDK: [ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop) 
+NDK: [ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop)  
 
-ArkTS: [onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12) 
+ArkTS: [onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12)  
 
 > **NOTE**
 >
-> - You need to set SchemeHandler after the **Web** component is initialized. Otherwise, the setting will fail.
+> - You need to set SchemeHandler after the **Web** component is initialized. Otherwise, the setting will fail. 
 > - To intercept the first request sent by a **Web** component, you can use the [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) method to initialize the **Web** component in advance, and then set the SchemeHandler to intercept the request. For details, see [Sample Code](#sample-code).
 
 In C++, use the NDK APIs to set SchemeHandler for **Web** components.
@@ -95,7 +95,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Register the configuration of the third-party protocol.
     testNapi.registerCustomSchemes();
-    // Initialize the Web Engine, which will initialize the Browser process and create a BrowserContext. 
+    // Initialize the Web Engine, which will initialize the Browser process and create a BrowserContext.
     webview.WebviewController.initializeWebEngine();
     // Set SchemeHandler.
     testNapi.setSchemeHandler();
@@ -116,46 +116,47 @@ OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB
 OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
 // Register custom-csp-bypassing with the Web component and specify that this scheme should follow the standard scheme rules, allowing it to bypass CSP checks.
 OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
-// Register custom-isolated with the Web component and specify that requests for this scheme must be initiated from web pages loaded with the same scheme. 
+// Register custom-isolated with the Web component and specify that requests for this scheme must be initiated from web pages loaded with the same scheme.
 OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
 ```
 
 In ArkTS, you can register a custom scheme using **customizeSchemes**. The sample code is as follows:
 
-  ``` ts
-    // xxx.ets
-    import { webview } from '@kit.ArkWeb';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    @Entry
-    @Component
-    struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: WebResourceResponse = new WebResourceResponse();
-    scheme1: webview.WebCustomScheme = { schemeName: "name1", isSupportCORS: true, isSupportFetch: true };
-    scheme2: webview.WebCustomScheme = { schemeName: "name2", isSupportCORS: true, isSupportFetch: true };
-    scheme3: webview.WebCustomScheme = { schemeName: "name3", isSupportCORS: true, isSupportFetch: true };
-
-    aboutToAppear(): void {
-        try {
-        webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
-        } catch (error) {
-        console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-        }
-    }
-
-    build() {
-        Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-            .onInterceptRequest((event) => {
-            if (event) {
-                console.info('url:' + event.request.getRequestUrl());
-            }
-            return this.responseWeb;
-            })
-        }
+  <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  scheme1: webview.WebCustomScheme = { schemeName: 'name1', isSupportCORS: true, isSupportFetch: true };
+  scheme2: webview.WebCustomScheme = { schemeName: 'name2', isSupportCORS: true, isSupportFetch: true };
+  scheme3: webview.WebCustomScheme = { schemeName: 'name3', isSupportCORS: true, isSupportFetch: true };
+  
+  aboutToAppear(): void {
+      try {
+      webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
+      } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
       }
-    }
+  }
+  
+  build() {
+      Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+          .onInterceptRequest((event) => {
+          if (event) {
+              console.info('url:' + event.request.getRequestUrl());
+          }
+          return this.responseWeb;
+          })
+      }
+      }
+  }
   ```
 
 ### Obtaining Information About Intercepted Requests
@@ -183,35 +184,41 @@ In the NDK, obtain information about intercepted requests:
     OH_ArkWebResourceRequest_GetHttpBodyStream(resourceRequest(), &stream_);
     // Set the read callback used to read the uploaded data.
     OH_ArkWebHttpBodyStream_SetReadCallback(stream_, ReadCallback);
-    // Initialize ArkWeb_HttpBodyStream. Other OH_ArkWebHttpBodyStream* functions need to be called during initialization.
+    // Initialize ArkWeb_HttpBodyStream. Other OH_ArkWebHttpBodyStream* functions must be called after initialization.
     OH_ArkWebHttpBodyStream_Init(stream_, InitCallback);
   ```
 
 In ArkTS, obtain information about intercepted requests:
-  ```ts
-  this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+  <!-- @[Intercept_requested_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/SchemeHandlerArkts.ets) -->
+  
+  ``` TypeScript
+  this.schemeHandler.onRequestStart
+  ((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+    console.info('[schemeHandler] onRequestStart');
     try {
-      console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
-      console.info("[schemeHandler] onRequestStart method:" + request.getRequestMethod());
-      console.info("[schemeHandler] onRequestStart referrer:" + request.getReferrer());
-      console.info("[schemeHandler] onRequestStart isMainFrame:" + request.isMainFrame());
-      console.info("[schemeHandler] onRequestStart hasGesture:" + request.hasGesture());
-      console.info("[schemeHandler] onRequestStart header size:" + request.getHeader().length);
-      console.info("[schemeHandler] onRequestStart resource type:" + request.getRequestResourceType());
-      console.info("[schemeHandler] onRequestStart frame url:" + request.getFrameUrl());
+      console.info('[schemeHandler] onRequestStart url:' + request.getRequestUrl());
+      console.info('[schemeHandler] onRequestStart method:' + request.getRequestMethod());
+      console.info('[schemeHandler] onRequestStart referrer:' + request.getReferrer());
+      console.info('[schemeHandler] onRequestStart isMainFrame:' + request.isMainFrame());
+      console.info('[schemeHandler] onRequestStart hasGesture:' + request.hasGesture());
+      console.info('[schemeHandler] onRequestStart header size:' + request.getHeader().length);
+      console.info('[schemeHandler] onRequestStart resource type:' + request.getRequestResourceType());
+      console.info('[schemeHandler] onRequestStart frame url:' + request.getFrameUrl());
       let header = request.getHeader();
       for (let i = 0; i < header.length; i++) {
-        console.info("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
+        console.info('[schemeHandler] onRequestStart header:' + header[i].headerKey + ' ' + header[i].headerValue);
       }
       let stream = request.getHttpBodyStream();
       if (stream) {
-        console.info("[schemeHandler] onRequestStart has http body stream");
+        console.info('[schemeHandler] onRequestStart has http body stream');
       } else {
-        console.info("[schemeHandler] onRequestStart has no http body stream");
+        console.info('[schemeHandler] onRequestStart has no http body stream');
       }
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+  
+    // ...
     return true;
   })
   ```
@@ -220,11 +227,11 @@ In ArkTS, obtain information about intercepted requests:
 
 The network interception provides custom response information for intercepted requests in stream mode in the worker thread. You can also use a specific network error code to end the current intercepted request.
 
-Error codes: 
+Error codes:  
 
-NDK: [arkweb_net_error_list.h](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md).
+NDK: [arkweb_net_error_list.h](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md).  
 
-ArkTS: [@ohos.web.netErrorList (The List of ArkWeb Network Protocol Stack Errors)](../reference/apis-arkweb/arkts-apis-netErrorList.md).
+ArkTS: [@ohos.web.netErrorList (The List of ArkWeb Network Protocol Stack Errors)](../reference/apis-arkweb/arkts-apis-netErrorList.md).  
 
 > **NOTE**
 >

@@ -5,8 +5,8 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
-<!-- md-trans-meta sourceCommit=4bad8126d6f63924da12d96cf1b3dfae2cb11cb2 translatedAt=2026-10-10T03:56:04.028Z pushedAt=2026-10-10T06:30:32.501Z -->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2d1ee3540f93e2b791847cc87e93ce1682f126ea translatedAt=2026-11-04T02:07:06.921Z pushedAt=2026-11-04T02:22:04.835Z nl=1 -->
 
 Ability Assistant (aa) is a tool used to start applications and test cases. It provides basic application debugging and testing capabilities, for example, starting application components, forcibly stopping processes, and printing application component information.
 
@@ -169,7 +169,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u 
         ```
 
       The following is an example for the UIAbility to obtain input parameters:
-
+  
         ```ts
         import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
         import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -226,7 +226,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
   | 10105002 | Failed to obtain ability information. |
 
   **Example**
-
+  
   ```bash
   # Stop a ServiceAbility.
   aa stop-service -a EntryAbility -b com.example.myapplication -m entry
@@ -265,7 +265,7 @@ aa dump -a
   | 10105001 | Failed to connect to the ability service. |
 
   **Example**
-
+  
   ```bash
   # Print the application component information in all missions.
   aa dump -a
@@ -273,7 +273,7 @@ aa dump -a
 
   ![aa-dump-a](figures/aa-dump-a.png)
 
-
+  
   ```bash
   # Print all task chains.
   aa dump -l
@@ -281,7 +281,7 @@ aa dump -a
 
   ![aa-dump-l](figures/aa-dump-l.png)
 
-
+  
   ```bash
   # Print the detailed information about an application component.
   aa dump -i 105
@@ -632,7 +632,7 @@ Check whether the **exported** field of the ability in the **module.json5** file
 The specified ability does not exist.
 
 **Symptom**
-
+ 
 The specified ability name does not exist.
 
 **Possible Causes**
@@ -658,7 +658,7 @@ The specified ability is not installed.
 The specified pid does not exist.
 
 **Symptom**
-
+ 
 The specified PID does not exist.
 
 **Possible Causes**
@@ -676,7 +676,7 @@ Check whether the process ID specified by the **-p** parameter exists on the dev
 The specified level does not exist.
 
 **Symptom**
-
+ 
 The specified memory usage level does not exist.
 
 **Possible Causes**

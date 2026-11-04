@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f0d39c9f49ff01d5be7701bae5da65ca75bb0864 translatedAt=2026-10-12T09:13:59.824Z pushedAt=2026-10-12T11:02:11.668Z -->
+<!-- md-trans-meta sourceCommit=25bf442d9ed30ed1c060eb99f5b552317ed069a4 translatedAt=2026-11-04T02:25:27.458Z pushedAt=2026-11-04T03:25:02.425Z nl=1 -->
 
 More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. In such cases, the **Image** component is used, which supports multiple image formats (including PNG, JPG, and JPEG), excluding APNG and SVGA. For details about the supported formats and usage, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
@@ -764,10 +764,10 @@ Use `colorFilter` to adjust the pixel colors of an image and add a filter to it.
             .width('40%')
             // Use the colorFilter attribute to add a filter to an image.
             .colorFilter(
-               [1, 1, 0, 0, 0,
-                0, 1, 0, 0, 0,
-                0, 0, 1, 0, 0,
-                0, 0, 0, 1, 0])
+              [1, 1, 0, 0, 0,
+               0, 1, 0, 0, 0,
+               0, 0, 1, 0, 0,
+               0, 0, 0, 1, 0])
             .margin(10)
         }.width('100%')
         .justifyContent(FlexAlign.Center)
@@ -796,10 +796,10 @@ Generally, the image loading process is performed asynchronously to avoid blocki
 
 ## Calling Events
 
-By binding the **onComplete** event to the **Image** component, you can obtain necessary information about the image after it is successfully loaded. If the image fails to load, you can also obtain the result by binding the **onError** callback.
+By binding the **onComplete** event to the **Image** component, you can obtain necessary information about the image after it is successfully loaded. If the image fails to load, you can also obtain the result by binding the **onError()** callback.
 
 
-  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->   
+  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';

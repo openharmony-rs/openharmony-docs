@@ -5,6 +5,7 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=04e3df2ad65a014e1c7547b1c6e55fe4f7f23480 translatedAt=2026-11-04T02:06:39.813Z pushedAt=2026-11-04T02:20:28.353Z nl=1 -->
 
 Telephony Kit provides the following APIs that help you develop communication applications:
 
@@ -22,3 +23,7 @@ Telephony Kit provides the following APIs that help you develop communication ap
 ## Constraints
 
 Before calling telephony service APIs, ensure that the device is equipped with a modem and SIM card capable of independent cellular communication.
+
+<!--RP1-->
+ 
+<!--RP1End-->

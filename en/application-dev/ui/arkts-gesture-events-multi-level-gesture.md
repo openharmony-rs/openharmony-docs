@@ -1,11 +1,11 @@
 # Multi-level Gesture Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dde23f107beeb9fe1bac4336216c647e80ced3de translatedAt=2026-10-12T09:12:57.472Z pushedAt=2026-10-12T10:47:11.059Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-04T02:24:48.488Z pushedAt=2026-11-04T03:21:58.190Z nl=1 -->
 
 Multi-level gesture events refer to scenarios where both parent and child components in a nested structure are bound to gestures or events. In such scenarios, the response to gestures or events is affected by multiple factors, with mutual transmission and competition between them, which is likely to cause unexpected responses.
 

@@ -5,7 +5,7 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=1789476a32c4e34eb3827dd5f6d1e57c2f062f1c translatedAt=2026-10-10T03:58:38.605Z pushedAt=2026-10-12T02:50:10.348Z -->
+<!-- md-trans-meta sourceCommit=ec02f60ce17174b2a247c066a84f6ad809303333 translatedAt=2026-11-04T02:09:01.012Z pushedAt=2026-11-04T03:06:35.218Z nl=1 -->
 
 The packing tool packs compiled files for installation and release. You can use DevEco Studio or the JAR package of the packing tool to pack files. The JAR package is usually stored in the **toolchains** directory of the SDK.
 
@@ -90,7 +90,7 @@ Packing command example:
 | --ap-path        | No         | NA            | Path to the [ap file](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-arkts-52-V5).| Effective only for the Stage model. |
 | --dir-list       | No        | NA            | List of directories (folders) to be packed into the HAP file.                     | NA              |
 | --compress-level | No        | number        | Compression level of files in the **lib** directory. The default value is **1**. The value ranges from 1 to 9. This parameter is valid only when **compressNativeLibs** is set to **true**. A larger value indicates a higher compression rate and a slower compression speed.| NA  |
-| --pkg-context-path      | No        | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**.| This parameter is valid only in the stage model.             |
+| --pkg-context-path      | No         | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**.<!--Del--><!--DelEnd--> | This parameter is valid only in the stage model.              |
 | --hnp-path | No| NA | Path of the native software package to be packed into the HAP file.| NA |
 | --exist-src-path | No| NA | Path of the source HAP file for incremental packing, which must point to an existing and valid .hap file. When **--lib-path-retain** is set to **true**, the packing tool directly copies the **libs** directory in the source HAP file, and does not pack the **libs** directory specified by **--lib-path**. This feature is called incremental packing. When **--lib-path-retain** is set to **false**, the **libs** directory specified by **--lib-path** is packed properly, and this parameter is invalid. You can use incremental packing to speed up the compression of .so files in the **libs** directory.<br>This parameter is supported since API version 22.| This parameter is valid only in the stage model.|
 | --lib-path-retain | No| boolean | Whether to perform incremental packing on the **libs** directory. The value **true** means to perform incremental packing on the **libs** directory, that is, directly copy the **libs** directory in the source HAP to which **--exist-src-path** points, and do not pack the **libs** directory specified by **--lib-path**. The value **false** means the opposite. The default value is **false**. This parameter must be used together with **--exist-src-path**. Otherwise, it does not take effect.<br>This parameter is supported since API version 22.| This parameter is valid only in the stage model.|
@@ -127,7 +127,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | --out-path       | Yes        | NA            | Path of the target file. The file name extension must be .hsp.                      |
 | --force          | No        | boolean       | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
 | --compress-level | No        | number        | Compress level of files in the **lib** directory. The default value is **1**. The value ranges from 1 to 9. This parameter is valid only when **compressNativeLibs** is set to **true**. A larger value indicates a higher compression rate and a slower compression speed.|
-| --pkg-context-path      | No        | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**.|
+| --pkg-context-path      | No         | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. <!--Del-->This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**. <!--DelEnd--> |
 | --exist-src-path | No| NA | Path of the source HSP file for incremental packing, which must point to an existing and valid .hsp file. When **--lib-path-retain** is set to **true**, the packing tool directly copies the **libs** directory in the source HSP file, and does not pack the **libs** directory specified by **--lib-path**. This feature is called incremental packing. When **--lib-path-retain** is set to **false**, the **libs** directory specified by **--lib-path** is packed properly, and this parameter is invalid. You can use incremental packing to speed up the compression of .so files in the **libs** directory.<br>This parameter is supported since API version 22.|
 | --lib-path-retain | No| boolean | Whether to perform incremental packing on the **libs** directory. The value **true** means to perform incremental packing on the **libs** directory, that is, directly copy the **libs** directory in the source HSP to which **--exist-src-path** points, and do not pack the **libs** directory specified by **--lib-path**. The value **false** means the opposite. The default value is **false**. This parameter must be used together with **--exist-src-path**. Otherwise, it does not take effect.<br>This parameter is supported since API version 22.|
 | --pkg-sdk-info-path | No        | NA            | Path of the **pkgSdkInfo.json** file, which contains the basic information about the HARs on which the build product depends, including the module name and version. The file name must be **pkgSdkInfo.json**.<br>This parameter is supported since API version 23.    |
@@ -435,7 +435,7 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 
 ## Scanning for Duplicate .so Files
 
-When you use the [APP packing command](#app-packing-command), [FastApp packing command](#fastapp-packing-command), or [multi-project packing command](#multi-project-packing-command) to generate an APP file, set **--stat-duplicate** to **true** to enable the scanning for duplicate .so files. The system will generate a scanning report after the packing is successful. After duplicate .so files are identified, you can reduce the package size as required. The scanning report is stored in the **scan_report** directory in the directory where the generated APP file is stored. Table 16 describes the structure of the scanning report, and Table 17 describes the structure of the duplicate .so file feature information. The following is an example of the scanning report:
+When you use the [APP packing command](#app-packing-command), [fastApp packing command](#fastapp-packing-command), or [multi-project packing command](#multi-project-packing-command) to generate an APP file, set **--stat-duplicate** to **true** to enable the scanning for duplicate .so files. The system will generate a scanning report after the packing is successful. After duplicate .so files are identified, you can reduce the package size as required. The scanning report is stored in the **scan_report** directory in the directory where the generated APP file is stored. Table 16 describes the structure of the scanning report, and Table 17 describes the structure of the duplicate .so file feature information. The following is an example of the scanning report:
 
 JSON statistics result:
 ```json
@@ -472,7 +472,7 @@ JSON statistics result:
 
 ## SO Deduplication Report
 
-When you use the app packing command (#app-packing-command), fast app packing command (#fastapp-packing-command), or multi-project packing command (#multi-project-packing-command) to generate an app package, set **--deduplicate-so** to **true** to enable the .so file deduplication function. The system will deduplicate duplicate .so files during packaging and generate a deduplication report after the packaging is successful. The deduplication report is stored in the **so_dedup_report.json** file in the directory where the generated APP file is stored. The deduplication report records the timestamp of the deduplication operation, the total size of files saved, and the list of .so files retained and removed in each module.
+When you use the [app packing command](#app-packing-command), [fast app packing command](#fastapp-packing-command), or [multi-project packing command](#multi-project-packing-command) to generate an app package, set **--deduplicate-so** to **true** to enable the .so file deduplication function. The system will deduplicate duplicate .so files during packaging and generate a deduplication report after the packaging is successful. The deduplication report is stored in the **so_dedup_report.json** file in the directory where the generated APP file is stored. The deduplication report records the timestamp of the deduplication operation, the total size of files saved, and the list of .so files retained and removed in each module.
 
 The following is an example of the deduplication report:
 ```json
@@ -1635,8 +1635,8 @@ Failed to check the plugin properties during HSP packing.
 1. The **module.json** file specified by **--json-path** does not exist.
 2. The **module.json** file specified by **--json-path** does not contain the **module** tag.
 3. Failed to check the **--pkg-context-path** parameter.
-4. The **module.json** file specified by **--json-path** contains extensionAbilities of non-**embeddedUI** types.
-5. When **bundleType** in the **module.json** file specified by **--json-path** is **appPlugin**, the **module.json** file does not contain the [ohos.permission.kernel.SUPPORT_PLUGIN](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin) permission.
+4. The **module.json** file specified by **--json-path** contains extensionAbilities of non-**embeddedUI** types.<!--Del-->
+5. When **bundleType** in the **module.json** file specified by **--json-path** is **appPlugin**, the **module.json** file does not contain the [ohos.permission.kernel.SUPPORT_PLUGIN](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin) permission.<!--DelEnd-->
 
 **Solution**
 
@@ -1644,7 +1644,7 @@ Failed to check the plugin properties during HSP packing.
 2. Ensure that the **module.json** file specified by **--json-path** contains the **module** tag.
 3. Check the first error code in the error log to determine the error information.
 4. Ensure that the **module.json** file specified by **--json-path** does not contain extensionAbilities of non-**embeddedUI** types.
-5. Ensure that the **module.json** file specified by **--json-path** contains the **ohos.permission.kernel.SUPPORT_PLUGIN** permission when **bundleType** is **appPlugin**.
+<!--Del-->5. Ensure that the **module.json** file specified by **--json-path** contains the **ohos.permission.kernel.SUPPORT_PLUGIN** permission when **bundleType** is **appPlugin**.<!--DelEnd-->
 
 ### 10012054 Failed to Verify the HAR Deduplication Attribute
 **Error Message**

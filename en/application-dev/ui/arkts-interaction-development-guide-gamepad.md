@@ -1,10 +1,11 @@
 # Handling Gamepad Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-04T02:27:13.161Z pushedAt=2026-11-04T03:31:14.508Z nl=1 -->
 
 Since API version 15, ArkUI supports gamepads as input devices. When a user operates a gamepad, the system recognizes its input actions and reports them as key events or focus axis events. You can receive and handle these events by registering the corresponding callbacks, enabling gamepad interaction logic.
 
