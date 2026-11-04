@@ -1,12 +1,11 @@
 # @ohos.app.form.formProvider (formProvider) (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6b0733adc9a538f18ea8143587feeecb737929d9 translatedAt=2026-07-31T08:23:55.310Z pushedAt=2026-08-01T01:24:42.065Z -->
+<!-- md-trans-meta sourceCommit=0be005e42c3952f2a9c1304376f75100936eb9f4 translatedAt=2026-11-04T04:31:24.770Z pushedAt=2026-11-04T10:12:50.124Z nl=1 -->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, set the update time, and request a widget release.
 
@@ -21,7 +20,8 @@ The **formProvider** module provides APIs to obtain widget information, update w
 import { formProvider } from '@kit.FormKit';
 ```
 
-## requestPublishForm
+
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback\<string>): void
 
@@ -50,6 +50,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>Applicable Version: 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>Applicable Version: 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>Applicable Version: 26.0.1 |
 
 **Example**
 
@@ -84,7 +88,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
@@ -112,6 +116,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>Applicable Version: 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>Applicable Version: 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>Applicable Version: 26.0.1 |
 
 **Example**
 
@@ -141,7 +149,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;string&gt;
 
@@ -175,6 +183,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>Applicable Version: 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>Applicable Version: 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>Applicable Version: 26.0.1 |
 
 **Example**
 
@@ -202,7 +214,7 @@ try {
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -269,7 +281,7 @@ try {
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
@@ -331,7 +343,7 @@ try {
 }
 ```
 
-## activateSceneAnimation<sup>20+</sup>
+## formProvider.activateSceneAnimation<sup>20+</sup>
 
 activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -390,7 +402,7 @@ try {
 }
 ```
 
-## deactivateSceneAnimation<sup>20+</sup>
+## formProvider.deactivateSceneAnimation<sup>20+</sup>
 
 deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -449,7 +461,7 @@ try {
 }
 ```
 
-## updateTemplateFormDetailInfo<sup>23+</sup>
+## formProvider.updateTemplateFormDetailInfo<sup>23+</sup>
 
 updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDetailInfo&gt;): Promise&lt;void&gt;
 
@@ -510,7 +522,7 @@ try {
 }
 ```
 
-## onPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.onPublishFormCrossBundleControl<sup>23+</sup>
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
@@ -556,7 +568,8 @@ try {
 }
 ```
 
-## offPublishFormCrossBundleControl<sup>23+</sup>
+
+## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 

@@ -6,6 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fa944cf5e04ebbc5104589f3638c90a4cd41568f translatedAt=2026-11-04T04:58:20.823Z pushedAt=2026-11-04T10:12:33.519Z nl=1 -->
 
 ```c
 typedef struct {...} OH_CM_Credential
@@ -28,10 +29,12 @@ Defines a struct for the certificate credential details.
 | Name| Description|
 | -- | -- |
 | uint32_t isExist | Whether a certificate data exists. **0**: no; **1**: yes.|
-| char type[OH_CM_MAX_LEN_TYPE_NAME] | Type of a credential. The value contains up to 8 bytes, including the terminator **'\0'**.|
-| char alias[OH_CM_MAX_LEN_CERT_ALIAS] | Alias of a credential. The value contains up to 128 bytes, including the terminator **'\0'**.|
+| char type[OH_CM_MAX_LEN_TYPE_NAME] | Type of a credential. The value contains up to 1025 bytes, including the terminator **'\0'**. |
+| char alias[OH_CM_MAX_LEN_CERT_ALIAS] | Alias of a credential. The value contains up to 129 bytes, including the terminator **'\0'**. |
 | char keyUri[OH_CM_MAX_LEN_URI] | URI of a credential. The value contains up to 256 bytes, including the terminator **'\0'**.|
 | uint32_t certNum | Number of certificates contained in the credential.|
 | uint32_t keyNum | Number of keys contained in the credential.|
 | [OH_CM_Blob](capi-certmanagertype-oh-cm-blob.md) credData | Binary data of a credential. The value contains up to 20480 bytes.|
 | [OH_CM_CertificatePurpose](capi-cm-native-type-h.md#oh_cm_certificatepurpose) certPurpose | Purpose of a certificate credential.|
+
+

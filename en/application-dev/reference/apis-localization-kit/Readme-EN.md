@@ -3,15 +3,17 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=ac32f39f5215a74f29333535939dda1a945bba14 translatedAt=2026-11-04T04:25:45.185Z pushedAt=2026-11-04T10:13:14.946Z nl=1 -->
 
 - ArkTS APIs<!--localization-arkts-->
   - [@ohos.i18n (Internationalization)](js-apis-i18n.md)
   - [@ohos.intl (Internationalization)](js-apis-intl.md)
   - [@ohos.resourceManager (Resource Management)](js-apis-resource-manager.md)
   - [@ohos.sendableResourceManager (resource management)](js-apis-sendable-resource-manager.md)
+  - [@ohos.fontManager (Font Management)](js-apis-font-manager.md)
   <!--Del-->
   - [@ohos.fontManager (Font Management) (System API)](js-apis-font-manager-sys.md)
   - [@ohos.i18n (Internationalization) (System API)](js-apis-i18n-sys.md)
@@ -50,6 +52,4 @@
 - Error Codes<!--localization-arkts-errcode-->
   - [I18N Error Codes](errorcode-i18n.md)
   - [Resource Manager Error Codes](errorcode-resource-manager.md)
-  <!--Del-->
   - [Font Management Error Codes](errorcode-font-manager.md)
-  <!--DelEnd-->

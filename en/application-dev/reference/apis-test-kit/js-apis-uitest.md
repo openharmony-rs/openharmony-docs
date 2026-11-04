@@ -5,7 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=1670aa7c6ffd93a8c40f6034d4fc59b9a0af5be7 translatedAt=2026-11-04T04:32:23.917Z pushedAt=2026-11-04T10:13:14.962Z nl=1 -->
 
 
 The **UiTest** module provides UI automation test capabilities, such as component search and operation, coordinate clicking/sliding, key injections, screenshot, window management, multi-finger operations, and mouse/stylus/touchpad operations.
@@ -2618,7 +2619,7 @@ async function demo() {
 
 The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. Call [Driver.create()](#create9) to create an instance.
 
-All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.  
+All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.
 
 ### create<sup>9+</sup>
 
@@ -7832,7 +7833,7 @@ inputText(text: string): Promise\<void>
 Inputs text to a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 > **NOTE**
-
+>
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest

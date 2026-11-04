@@ -1,10 +1,11 @@
 # File Management Error Codes
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0cf3952bea39e2f62daf37b1a0995824a3f9d360 translatedAt=2026-11-04T03:53:41.576Z pushedAt=2026-11-04T10:12:33.446Z nl=1 -->
 
 > **NOTE**
 >
@@ -30,11 +31,11 @@ The caller does not have the permission to access the URI or path.
 
 **Solution**
 
-1. Check whether the caller cannot use the URI shared by another application. For details, see [access control mechanisms](../../security/AccessToken/access-token-overview.md) of the system.
+1. According to the current system's [access control mechanism](../../security/AccessToken/access-token-overview.md), an application cannot use a URI shared with other applications.
 
-2. Check whether the permission is obtained by Picker. The permission obtained by Picker is temporary. For details, see [System Pickers](../../application-models/system-app-startup.md#methods-of-starting-a-system-application).
+2. According to the running mechanism of [system Picker](../../application-models/system-app-startup.md#methods-of-starting-a-system-application), a URI obtained through Picker has only temporary permission. If continued access is required after the application exits or the device restarts, process it according to the [permission persistence](../../file-management/file-persistPermission.md) procedure.
 
-3. Check whether the URI is a concatenated path, which has no permission by default.
+3. URI path concatenation is not recommended. A concatenated URI is unauthorized by default.
 
 ### 13900002 File or Directory Not Exist
 
@@ -48,11 +49,27 @@ The file or directory does not exist.
 
 **Possible Causes**
 
-The file or directory does not exist.
+1. The passed-in path is not a sandbox path, or the file or directory does not exist in the application sandbox.
+
+2. A URI is passed in when the API supports only sandbox paths.
+
+3. When the API supports URIs, an incorrect URI that is self-concatenated or re-encoded/decoded is passed in.
+
+4. The API supports only file or directory names encoded in 'utf-8'. Using other encodings may cause the file to not be found.
+
+5. When creating a file, the directory where the target file is located in the path does not exist.
 
 **Solution**
 
-Check whether the file directory exists.
+1. Check whether the passed-in path is a sandbox path and whether it exists in the sandbox.
+
+2. Check whether the wrong parameter type is passed in.
+
+3. Check whether an incorrect URI that is manually concatenated or re-encoded/decoded is passed in.
+
+4. Check whether the encoding format of the file or directory name is 'utf-8'.
+
+5. When creating a file, check whether the parent directory of the file exists.
 
 ### 13900003 Process Not Exist
 
@@ -72,7 +89,7 @@ This error code is reported if a process does not exist.
 
 1. Check whether the process is killed unexpectedly.
 
-2. Check whether the service related to the process has started.
+2. Check whether the related service is started.
 
 ### 13900004 System Call Interrupted
 
@@ -90,9 +107,9 @@ The system call is interrupted by another thread.
 
 **Solution**
 
-1. Check the multi-thread code logic.
+1. Check the multithreading code logic.
 
-2. Invoke the system call again.
+2. Perform the system call again.
 
 ### 13900005 I/O Error
 
@@ -120,7 +137,7 @@ Underlying I/O error: It is usually related to hardware or driver device faults.
 
 2. Check whether the USB device is properly connected.
 
-3. Check and update the driver.
+3. Check and update the driver to ensure version compatibility.
 
 ### 13900006 Device or Address Not Exist
 
@@ -138,7 +155,7 @@ The device information or address is incorrect.
 
 **Solution**
 
-Check that the device information or address is correct.
+Check whether the device connection status and address configuration are correct.
 
 ### 13900007 Long Parameter List
 
@@ -170,15 +187,15 @@ The file descriptor is abnormal.
 
 **Possible Causes**
 
-1. This file descriptor is closed.
+1. The file descriptor has been closed.
 
-2. The read and write permissions on the file do not match the settings.
+2. The read/write permissions do not match.
 
 **Solution**
 
-1. Check whether the file descriptor is closed.
+1. Check whether the file descriptor has been closed.
 
-2. Check that the permissions on the file match the settings.
+2. Check whether the read/write permissions of the file match.
 
 ### 13900009 Child Process Not Exist
 
@@ -234,7 +251,7 @@ A memory overflow occurs.
 
 1. Check the memory overhead.
 
-2. Control the memory overhead.
+2. Manage the system memory overhead.
 
 ### 13900012 Permission Denied
 
@@ -248,17 +265,17 @@ The permission is denied.
 
 **Possible Causes**
 
-1. The operation is intercepted by DAC or SELinux.
+1. The file operation is blocked by DAC or SELinux.
 
-2. The file sandbox path is incorrect.
+2. The file sandbox path address is incorrect.
 
 **Solution**
 
-1. Check the UGO permission of the file.
+1. The access is blocked by DAC discretionary access control. Check the UGO permissions of the file.
 
-2. Check the kernel log for [AVC log information](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If yes, <!--RP1-->see [SELinux Development](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
+2. Check the kernel log for [avc interception logs](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If an avc interception alarm exists, <!--RP1-->for the analysis of the interception cause, see [SELinux Development Guide](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
 
-3. Check whether the file path is a sandbox path. The file management system does not allow operations on files outside the sandbox directory. For details, see [Application Sandbox Directory and Application Sandbox Path](../../file-management/app-sandbox-directory.md#application-sandbox-directory-and-application-sandbox-path).
+3. Confirm whether the file path is a sandbox path within the application ([App Sandbox Directory and App Sandbox Path](../../file-management/app-sandbox-directory.md#application-sandbox-directory-and-application-sandbox-path)). The file management system prohibits operations on documents outside the application sandbox.
 
 ### 13900013 Incorrect Address
 
@@ -618,9 +635,7 @@ The specified directory is not empty.
 
 **Solution**
 
-1. Check the directory.
-
-2. Ensure that the directory is empty.
+Confirm whether the directory is empty.
 
 ### 13900033 Too Many Symbol Links
 
@@ -712,7 +727,7 @@ The required data is not available.
 
 Request the data again.
 
-### 13900038 Value Mismatches the Data Type
+### 13900038 Value Too Large for Defined Data Type
 
 **Error Message**
 
@@ -800,7 +815,7 @@ Internal error
 
 **Solution**
 
-1. Call the API again.
+1. Retry the API.
 
 2. Restart the service.
 
@@ -816,7 +831,7 @@ No lock is available.
 
 **Possible Causes**
 
-System resources are insufficient.
+Lock resources are insufficient.
 
 **Solution**
 
@@ -856,9 +871,9 @@ The device is abnormal, or Wi-Fi or Bluetooth is unavailable.
 
 **Solution**
 
-1. Check that the device is in normal status.
+1. Check the device and confirm that it is in a normal state.
 
-2. Check that Wi-Fi and Bluetooth are available.
+2. Check Wi-Fi and Bluetooth and confirm that they are in a normal state.
 
 ### 13900046 Connection Interrupted by Software
 
@@ -876,9 +891,141 @@ The device goes offline, or the Wi-Fi or Bluetooth is disconnected.
 
 **Solution**
 
-1. Check that the device is in normal status.
+1. Check the device and confirm that it is in a normal state.
 
-2. Check that Wi-Fi and Bluetooth are available.
+2. Check Wi-Fi and Bluetooth and confirm that they are in a normal state.
+
+### 13900050 Internal Resource Error
+
+**Error Message**
+
+Internal resource error.
+
+**Description**
+
+Internal resource error.
+
+**Possible Causes**
+
+Failed to allocate internal system resources.
+
+**Solution**
+
+Run the current code again.
+
+### 13900051 Buffer Read/Write Out of Bounds
+
+**Error Message**
+
+Buffer read/write out of bounds.
+
+**Description**
+
+The mmap buffer is read or written out of bounds.
+
+**Possible Causes**
+
+The length of the data to be read or written exceeds the remaining available space of the mmap mapping area.
+
+**Solution**
+
+1. Call [remaining](js-apis-file-fs.md#remaining) to check the remaining available space of the mapping area.
+
+2. If a larger range needs to be operated, call [setLimit](js-apis-file-fs.md#setlimit) first to adjust the limit value.
+
+### 13900052 mmap Buffer Released
+
+**Error Message**
+
+Mmap buffer released.
+
+**Description**
+
+The mmap buffer has been released.
+
+**Possible Causes**
+
+1. An operation is performed on a buffer that has been released by calling [unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync).
+
+2. The internal state of the FileMapping object is invalid.
+
+**Solution**
+
+1. Check whether the mmap buffer has been released by calling [unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync).
+
+2. If the code has already called [unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync), call [mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync) again to establish a new mapping.
+
+### 13900053 Read-only mmap buffer
+
+**Error Message**
+
+Read-only mmap buffer.
+
+**Description**
+
+The mmap buffer is read-only.
+
+**Possible Causes**
+
+A write operation is attempted on a buffer mapped in read-only mode.
+
+**Solution**
+
+Call [mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync) again and set the mapping mode to read-write mode or private mode.
+
+### 13900054 mmap Buffer Inaccessible
+
+**Error Message**
+
+Mmap buffer is inaccessible.
+
+**Description**
+
+The mmap buffer is inaccessible.
+
+**Possible Causes**
+
+A system memory mapping exception causes the buffer pointer to become invalid.
+
+**Solution**
+
+Call [mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync) again to map the file.
+
+### 13900055 mmap Mapping Type Does Not Support This Operation
+
+**Error Message**
+
+Mmap operation not supported.
+
+**Description**
+
+The mmap mapping type does not support this operation.
+
+**Possible Causes**
+
+When [msync](js-apis-file-fs.md#msync) writes to the disk, the mapped area is in read-only mode or private mode.
+
+**Solution**
+
+Call [mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync) again and set the mapping mode to read-write mode.
+
+### 13900056 mmap Does Not Support Mapping This File
+
+**Error Message**
+
+Mmap does not support mapping this file.
+
+**Description**
+
+mmap does not support mapping this file.
+
+**Possible Causes**
+
+The target file is not a regular file, such as a pipe, socket, or device file.
+
+**Solution**
+
+Use file access APIs such as [read](js-apis-file-fs.md#fileioread), [write](js-apis-file-fs.md#fileiowrite), or [Stream](js-apis-file-fs.md#stream) instead of mmap.
 
 ## User Data Management Error Codes
 
@@ -887,6 +1034,10 @@ The device goes offline, or the Wi-Fi or Bluetooth is disconnected.
 **Error Message**
 
 Invalid file name
+
+**Description**
+
+Invalid file name.
 
 **Possible Causes**
 
@@ -902,6 +1053,10 @@ Modify the file name.
 
 Invalid URI
 
+**Description**
+
+Invalid URI.
+
 **Possible Causes**
 
 The URI is invalid.
@@ -915,6 +1070,10 @@ Use the obtained URI.
 **Error Message**
 
 Invalid file name extension
+
+**Description**
+
+Invalid file name extension.
 
 **Possible Causes**
 
@@ -930,6 +1089,10 @@ Modify the file name extension.
 
 File already in the recycle bin
 
+**Description**
+
+The file has been moved to the recycle bin.
+
 **Possible Causes**
 
 The file is moved to the Recycle Bin.
@@ -943,6 +1106,10 @@ Check whether the file is in the Recycle Bin.
 **Error Message**
 
 System inner fail
+
+**Description**
+
+This error code is reported if an internal system error occurs.
 
 **Possible Causes**
 
@@ -958,6 +1125,10 @@ Clear the background or restart the device.
 
 Member is not a valid PhotoKey
 
+**Description**
+
+Invalid member name.
+
 **Possible Causes**
 
 The input string is not a member name of a class or interface.
@@ -965,6 +1136,48 @@ The input string is not a member name of a class or interface.
 **Solution**
 
 Ensure that the input string is the member name of the class or interface.
+
+### 14000016 Operation Type Not Supported
+
+**Error Message**
+
+Operation Not Support
+
+**Description**
+
+The current operation type is not supported.
+
+**Possible Causes**
+
+1. A Moving Photo related operation is performed on a resource that is not of the Moving Photo type.
+
+2. The same URI is operated again on a resource that has already been added, moved, or removed.
+
+3. The resource is modified again before the previous resource creation/modification request is committed (including CREATE_FROM_URI/GET_WRITE_CACHE_HANDLER/ADD_RESOURCE operations).
+
+4. A video-specific operation such as video enhancement is performed on a resource that is not of the video type (MediaType.VIDEO).
+
+5. An operation that is not allowed is performed on a non-user album or a non-highlight album.
+
+**Solution**
+
+1. Confirm the resource type.
+
+   - When performing a Moving Photo related operation (such as setMovingPhotoEffectMode), ensure that the resource is of the Moving Photo type.
+   - When performing video enhancement operations (such as setVideoEnhancementAttr), ensure that MediaType is VIDEO.
+
+2. Avoid repeated operations.
+
+   - Before calling addAssets/removeAssets/moveAssets, check whether the operation has already been performed to avoid consecutive duplicate calls.
+
+3. Modify only after the commit is complete.
+
+   - After calling createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource, call [applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to commit and take effect.
+   - A new modification request can be initiated for the created asset only after the commit takes effect.
+
+4. Confirm the album type.
+   - addAssets/removeAssets support only user albums and highlight albums.
+   - System albums (such as the camera and screenshot albums) do not support these operations.
 
 ## Space Statistics Error Codes
 
@@ -1038,7 +1251,7 @@ The device does not respond.
 
 **Solution**
 
-Check whether the file is being used. If yes, kill the thread that uses the file.
+Check whether the external card file is occupied by a thread, and kill the occupying thread.
 
 ### 13600005 Incorrect Volume State
 
@@ -1106,15 +1319,15 @@ The operation object does not exist.
 
 **Possible Causes**
 
-1. The specified volume ID is incorrect.
+1. An incorrect volume ID is entered.
 
-2. The specified bundle name is incorrect.
+2. An incorrect package name is entered.
 
 **Solution**
 
-1. Check whether the specified volume exists.
+1. Check whether the entered volume exists.
 
-2. Check whether the specified bundle name exists.
+2. Check whether the entered application package name exists.
 
 ### 13600009 Invalid User ID
 
@@ -1225,7 +1438,7 @@ The underlying file system is abnormal.
 Restart the device and try again.
 
 ### 13600016 Failed to Obtain the Number of Inodes in the File System
- 	 
+
 **Error Message**
 
 Failed to query the inode information of the data partition.
@@ -1278,6 +1491,276 @@ The underlying file system is abnormal.
 
 Restart the device and try again.
 
+### 13600021 Failed to Obtain Partition Table
+
+**Error Message**
+
+Get partition table failed.
+
+**Description**
+
+Failed to obtain the partition table.
+
+**Possible Causes**
+
+1. The disk is in an inoperable state.
+
+2. An internal process failed to execute or an internal error occurred.
+
+**Solution**
+
+1. Reconnect the device and try again.
+
+2. <!--RP1-->Contact the OpenHarmony team for support.<!--RP1End-->
+
+### 13600022 Failed to Create a Partition
+
+**Error Message**
+
+Create partition failed.
+
+**Description**
+
+Failed to create a partition.
+
+**Possible Causes**
+
+1. The partition parameters are invalid.
+
+2. The unallocated space on the disk is insufficient.
+
+3. An internal process failed to execute or an internal error occurred.
+
+**Solution**
+
+1. Check whether the partition parameters (start sector and end sector) are within the valid range.
+
+2. Check whether the disk has sufficient unallocated space.
+
+3. <!--RP1-->Contact the OpenHarmony team for support.<!--RP1End-->
+
+### 13600023 Failed to Delete a Partition
+
+**Error Message**
+
+Delete partition failed.
+
+**Description**
+
+Failed to delete the partition.
+
+**Possible Causes**
+
+1. The disk is in an inoperable state.
+
+2. An internal process failed to execute or an internal error occurred.
+
+**Solution**
+
+1. Reconnect the device and try again.
+
+2. <!--RP1-->Contact the OpenHarmony team for support.<!--RP1End-->
+
+### 13600024 Empty Disc
+
+**Error Message**
+
+Empty disc.
+
+**Description**
+
+The disc is empty.
+
+**Possible Causes**
+
+The disc contains no data or is not correctly recognized.
+
+**Solution**
+
+1. Confirm that the disc is correctly inserted into the optical drive.
+
+2. Confirm that the disc contains valid data.
+
+### 13600025 Failed to Write the ISO File
+
+**Error Message**
+
+Failed to write the ISO file.
+
+**Description**
+
+Failed to write the ISO file.
+
+**Possible Causes**
+
+1. The ISO file is corrupted or in an incorrect format.
+
+2. An I/O error occurred during the write process.
+
+3. Insufficient permission to write to the disc.
+
+**Solution**
+
+1. Check the integrity of the ISO file.
+
+2. Confirm that the disc is in a normal state and writable.
+
+3. Retry the write operation.
+
+### 13600026 Erase Operation Failed
+
+**Error Message**
+
+Erase operation failed.
+
+**Description**
+
+The erase operation failed.
+
+**Possible Causes**
+
+The optical drive was unplugged by the user during the erase process.
+
+**Solution**
+
+Reinsert the optical drive and wait for the erase to complete.
+
+### 13600027 Source Data Not Found
+
+**Error Message**
+
+Source data not found.
+
+**Description**
+
+The source data is not found.
+
+**Possible Causes**
+
+1. The source file path is incorrect or the file does not exist.
+
+2. The source data has been deleted or moved.
+
+**Solution**
+
+1. Confirm that the source file path is correct.
+
+2. Confirm that the source file exists and is accessible.
+
+### 13600028 Burn Operation Failed
+
+**Error Message**
+
+Burn operation failed.
+
+**Description**
+
+The burn operation failed.
+
+**Possible Causes**
+
+1. The optical drive has a hardware fault or an abnormal connection.
+
+2. The burn process was interrupted or timed out.
+
+3. The disc is of poor quality or is damaged.
+
+**Solution**
+
+1. Check that the optical drive is connected and in a normally recognized idle state.
+
+2. Replace the disc with one of good quality.
+
+3. Reduce the burn speed and retry.
+
+### 13600029 No Ongoing Operation
+
+**Error Message**
+
+No ongoing operation.
+
+**Description**
+
+No ongoing operation.
+
+**Possible Causes**
+
+A burning task that does not exist or has not started is queried.
+
+**Solution**
+
+Check whether there is an ongoing burning operation.
+
+### 13600030 Verification Failed
+
+**Error Message**
+
+Verification failed.
+
+**Description**
+
+Verification failed.
+
+**Possible Causes**
+
+1. The burned data is inconsistent with the source data.
+
+2. A disc read error occurs.
+
+3. An error occurs during data transmission.
+
+**Solution**
+
+1. Perform the burning operation again.
+
+2. Check the disc quality and the optical drive status.
+
+3. Verify the integrity of the source data.
+
+### 13600031 Data Mismatch
+
+**Error Message**
+
+Data mismatch.
+
+**Description**
+
+Data mismatch.
+
+**Possible Causes**
+
+The burned data differs from the original source data.
+
+**Solution**
+
+1. Burn the data again and verify it.
+
+2. Check whether the source file was modified during the burning process.
+
+3. Replace the disc or the optical drive and try again.
+
+### 13600032 Failed to Format Partition
+
+**Error Message**
+
+Format partition failed.
+
+**Description**
+
+Failed to format the partition.
+
+**Possible Causes**
+
+1. The disk is in an inoperable state.
+
+2. An internal process failed to execute or an internal error occurred.
+
+**Solution**
+
+1. Reconnect the device and try again.
+
+2. <!--RP1-->Contact the OpenHarmony team for support.<!--RP1End-->
+
 ## User File Access Error Codes
 
 ### 14300001 IPC Failed
@@ -1292,7 +1775,7 @@ IPC fails.
 
 **Possible Causes**
 
-1. The server service does not exist.
+1. The server-side service is unavailable.
 
 2. The extension mechanism is abnormal.
 
@@ -1366,7 +1849,7 @@ Failed to register notify.
 
 **Possible Causes**
 
-1. The server service does not exist.
+1. The server-side service is unavailable.
 
 2. The extension mechanism is abnormal.
 
@@ -1386,7 +1869,7 @@ Failed to remove the notify.
 
 **Possible Causes**
 
-1. The server service does not exist.
+1. The server-side service is unavailable.
 
 2. The extension mechanism is abnormal.
 
@@ -1424,7 +1907,7 @@ The js-server fails to notify the agent.
 
 **Possible Causes**
 
-1. The service does not exist.
+1. The service is unavailable.
 
 2. The extension mechanism is abnormal.
 
@@ -1442,15 +1925,15 @@ Cloud status not ready
 
 **Possible Causes**
 
-1. The cloud is not enabled.
+1. Cloud is not enabled.
 
-2. The cloud synchronization switch is not enabled for the application.
+2. The cloud synchronization switch of the application is not turned on.
 
 **Solution**
 
-1. Check whether the user has logged in using an account.
+1. Check whether the account is logged in.
 
-2. Check whether the cloud synchronization switch is enabled.
+2. Check whether the cloud synchronization switch is turned on.
 
 ### 22400002 Network Unavailable
 
@@ -1502,13 +1985,13 @@ Inner error
 
 **Possible Causes**
 
-1. The internal database request fails or the SQL statement fails to be executed.
+1. The internal database request of the system fails or the SQL execution fails.
 
-2. An exception such as a null pointer occurs in the system.
+2. The system encounters exceptions such as a null pointer.
 
-3. The system memory is insufficient or abnormal.
+3. The system runs out of memory or encounters a memory exception.
 
-4. The JS framework is abnormal.
+4. A JS framework exception occurs.
 
 **Solution**
 

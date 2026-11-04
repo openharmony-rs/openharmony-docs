@@ -1,20 +1,17 @@
 # OHIPCErrorCode
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ceec5d18179ba29b1eca79fa9240e27795b5216c translatedAt=2026-07-28T02:18:50.148Z pushedAt=2026-07-29T07:09:35.326Z -->
+<!-- md-trans-meta sourceCommit=ee518410be777e8e38dd982268c837f0a42a60e8 translatedAt=2026-11-04T03:42:36.821Z pushedAt=2026-11-04T10:13:14.849Z nl=1 -->
 
 ## Overview
 
-Provides IPC error codes for identifying and handling various errors that occur during inter-process communication, helping you quickly locate and resolve IPC-related issues.
+Defines the IPC error codes, which are used to identify and handle various errors that may occur during IPC communication. You can quickly locate the cause of an error based on the returned error code, such as parameter error, serialization failure, memory allocation failure, and remote object death, and then take corresponding measures to rectify the error.
 
 **System capability**: SystemCapability.Communication.IPC.Core
-
-**Device type:** Supported on all device types.
 
 **Since**: 12
 

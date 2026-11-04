@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5cf68139a0fc486843bbda2e221b25c911b0661a translatedAt=2026-11-04T04:36:23.883Z pushedAt=2026-11-04T10:12:50.138Z nl=1 -->
 
 **FormEditExtensionContext**, which inherits from [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md), is the context of [FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md). It is used to manage the contextual environment for widget editing scenarios, supporting the launching of the widget provider's page and the associated application's UIAbility, and is suitable for scenarios where interaction with the widget provider is required during the widget editing process.
 
@@ -25,7 +26,7 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 
 ### startSecondPage
 
-startSecondPage(want: Want): Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;
+startSecondPage(want: Want): Promise&lt;AbilityResult&gt;
 
 Starts the widget provider page to be edited. This API uses a promise to return the result.
 
@@ -114,7 +115,7 @@ Starts UIAbility of the application to which a widget belongs. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

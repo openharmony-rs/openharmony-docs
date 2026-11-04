@@ -3,10 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=635c96c73146bacf985d294d6e608687bbdae586 translatedAt=2026-07-30T09:54:00.520Z pushedAt=2026-07-31T01:22:45.881Z -->
+<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-11-04T04:09:58.997Z pushedAt=2026-11-04T10:13:14.912Z nl=1 -->
 
 ## Overview
 
@@ -106,6 +106,7 @@ Enumerates the time rule types.
 | WALL_TIME = 0 | Local clock time (not subject to time zone offset).|
 | STANDARD_TIME = 1 | Local standard time (not subject to DST offset).|
 | UTC_TIME = 2 | World standard time (UTC time).|
+
 
 ## Function Description
 
@@ -407,3 +408,5 @@ Obtains the effective time of the time zone rule in a specified year based on An
 | Type| Description|
 | -- | -- |
 | [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | **0**: Success.<br>         **8900001**: Invalid input parameters.<br>         **8900050**: Unexpected error, for example, memory error.|
+
+
