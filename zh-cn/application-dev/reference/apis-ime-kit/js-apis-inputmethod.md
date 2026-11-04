@@ -1493,9 +1493,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 请求翻译输入能力
 inputMethod.getController().requestSystemInputCapability(
   inputMethod.InputCapabilityType.TRANSLATION
-).then(() => {
+).then((): void => {
   console.info('Succeeded requestSystemInputCapability.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to requestSystemInputCapability, code: ${err.code}, message: ${err.message}`);
 });
 ```
