@@ -1,10 +1,11 @@
 # oh_device_manager.h
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
-<!--Owner: @hobbycao;@huangkai71-->
-<!--Designer: @gsxiaowen;@lee_jet520-->
-<!--Tester: @hanjiawei;@Ytt-test-->
+<!--Owner: @liwei_hw-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=4439eda4ac1d25ec7653da252cc3d30bbfe19410 translatedAt=2026-11-04T05:20:07.447Z pushedAt=2026-11-04T10:12:33.548Z nl=1 -->
 
 ## Overview
 
@@ -27,6 +28,7 @@ Provides APIs to obtain information about trusted devices and local devices.
 | Name| Description|
 | -- | -- |
 | [int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int &len)](#oh_devicemanager_getlocaldevicename) | Obtains the display name of the local device.<br>The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name.|
+| [int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned int *len)](#oh_devicemanager_getlocaldevicenamec) | Obtains the local device display name.<br> The device display name involves the user's privacy data. The app is required to provide a privacy statement to declare the purpose of the device display name. |
 
 ## Function Description
 
@@ -38,58 +40,52 @@ int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int
 
 **Description**
 
-Obtains the display name of the local device.<br>The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name.
+Obtains the local device display name.<br> The device display name involves the user's privacy data. The app is required to provide a privacy statement to declare the purpose of the device display name.
 
 **Required permissions**: ohos.permission.READ_LOCAL_DEVICE_NAME
 
 **Since**: 20
 
+**Deprecated since:** 26.0.0
+
+**Substitute API:** [OH_DeviceManager_GetLocalDeviceNameC()](#oh_devicemanager_getlocaldevicenamec)
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| char **localDeviceName | Pointer to the display name of the local device. After using this API, you need to manually release resources to free up space. If the application has the **ohos.permission.READ_LOCAL_DEVICE_NAME** permission, the device display name is returned. Otherwise, the default device name is returned.|
-| unsigned int &len | Length of the display name of the local device.|
+| char **localDeviceName | Pointer to the name string of the local device display name. You need to manually release the space resources after use. If the app has the **ohos.permission.READ_LOCAL_DEVICE_NAME** permission, the device display name is returned; otherwise, the default device name is returned. |
+| unsigned int &len | Length of the name string of the local device display name, in bytes. |
 
 **Return value**
 
-| Type| Description                                                                                                                                                                                                                                                                                                                                                                          |
-| -- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int32_t | Error code. For details about the error code definitions, see [DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode).<br>         [ERR_OK](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the execution is successful.<br>         [DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the function fails to be executed.<br>         [DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the device management service fails to be obtained.<br>         [DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the bundle name fails to be obtained.<br>         [ERR_INVALID_PARAMETER](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) is returned if the parameter **localDeviceName** is a null pointer or ***localDeviceName** is not a null pointer.|
+| Type | Description |
+| -- | -- |
+| int32_t | Result code. For details about the error codes, see [DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode).<br>         Returns [ERR_OK](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if the operation is successful.<br>         Returns [DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if the function fails to execute.<br>         Returns [DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if the device management service fails to be obtained.<br>         Returns [DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if **bundleName** fails to be obtained.<br>         Returns [ERR_INVALID_PARAMETER](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if the parameter **localDeviceName** is a null pointer or *localDeviceName is a non-null pointer. |
 
-**Example**
+### OH_DeviceManager_GetLocalDeviceNameC()
 
-```c++
-#include "napi/native_api.h"
-#include "hilog/log.h"
-#include <distributedhardware/device_manager/oh_device_manager.h>
-#include <distributedhardware/device_manager/oh_device_manager_err_code.h>
-static napi_value GetDeviceName(napi_env env, napi_callback_info info) {
-    napi_value result = nullptr;
-    napi_create_object(env, &result);
-    char *localDeviceName = nullptr; // Declare an empty string. You do not need to allocate the address in advance. The address is allocated internally.
-    unsigned int len = 0;
-    // Pass the address of the empty string to the API.
-    int32_t ret = OH_DeviceManager_GetLocalDeviceName(&localDeviceName, len);
-    if (ret != ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "ret:%{public}d", ret);
-    }
-
-    napi_value code = nullptr;
-    napi_create_int32(env, ret, &code);
-    napi_set_named_property(env, result, "code", code);
-
-    if (ret == ERR_OK && localDeviceName != nullptr) {
-        napi_value deviceName = nullptr;
-        napi_create_string_utf8(env, localDeviceName, NAPI_AUTO_LENGTH, &deviceName);
-        napi_set_named_property(env, result, "deviceName", deviceName);
-        delete[] localDeviceName; // Free the memory.
-
-        napi_value deviceNameLen = nullptr;
-        napi_create_int32(env, len, &deviceNameLen);
-        napi_set_named_property(env, result, "deviceNameLen", deviceNameLen);
-    }
-    return result;
-}
+```c
+int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned int *len)
 ```
+
+**Description**
+
+Obtains the local device display name.<br> The device display name involves the user's privacy data. The app is required to provide a privacy statement to declare the purpose of the device display name.
+
+**Required permissions**: ohos.permission.READ_LOCAL_DEVICE_NAME
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Parameter | Description |
+| -- | -- |
+| char **localDeviceName | Pointer to the name string of the local device display name. You need to manually release the space resources after use. If the app has the **ohos.permission.READ_LOCAL_DEVICE_NAME** permission, the device display name is returned; otherwise, the default device name is returned. |
+| unsigned int *len | Pointer to the address of the length of the local device display name string. You need to manually release the space resources after use. Unit: byte. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code. For details about the error codes, see [DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode).<br>         Returns [ERR_OK](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if the operation is successful.<br>         Returns [DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if the function fails to execute.<br>         Returns [DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if obtaining the device management service fails.<br>         Returns [DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if **bundleName** fails to be obtained.<br>         Returns [ERR_INVALID_PARAMETER](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode) if the parameter **localDeviceName** is a null pointer, *localDeviceName is a non-null pointer, or **len** is a null pointer. |

@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=465fb4d57a1447327363d6485241bf8b06b62dc9 translatedAt=2026-11-04T04:24:40.272Z pushedAt=2026-11-04T10:12:50.110Z nl=1 -->
 
 > **NOTE**
 >
@@ -321,6 +322,98 @@ The specified widget location information is out of the system-defined range.
 **Solution**
 
 Ensure that the input widget location is in the [FormLocation](js-apis-app-form-formInfo.md#formlocation20) list.
+
+## 16501017 No Space to Publish the Card
+
+**Error Message**
+
+There is no space to publish the form.
+
+**Description**
+
+When publishing a card, the desktop has no space to accommodate the new card.
+
+**Possible Causes**
+
+1. The current page and the next page of the desktop have insufficient space, and the total number of desktop pages has reached the limit.
+2. The number of cards on the desktop has reached the upper limit, and no more cards can be added.
+
+**Solution**
+
+Delete unnecessary cards and retry publishing.
+
+## 16501018 Card Does Not Support Publishing
+
+**Error Message**
+
+This form does not support publishing.
+
+**Description**
+
+When publishing a card, the desktop does not allow the card to be published.
+
+**Possible Causes**
+
+The card does not support publishing on the desktop.
+
+**Solution**
+
+Check whether the card configuration meets the current scenario. For details, see the renderingMode field description in [Configuration File](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file) and the [relationship between supportdimensions fields and devices](../../form/arkts-ui-widget-configuration.md#supportdimensions-field-and-device-support-relationship-table).
+
+## 16501019 Unable to Unregister a Form Service Not Registered by the Current Application
+ 
+**Error Message**
+ 
+A form service not owned by you cannot be unregistered.
+ 
+**Description**
+ 
+When unregistering a form consumer service, the form service being operated is not registered by the current application.
+ 
+**Possible Causes**
+ 
+The current application attempts to unregister a form consumer service that it did not register.
+ 
+**Solution**
+ 
+Unregister only the form consumer service registered by the current application.
+ 
+## 16501020 Remote Card Service Unavailable
+ 
+**Error Message**
+ 
+Remote form service is unavailable.
+ 
+**Description**
+ 
+The remote form service is unavailable when distributing a card across devices.
+ 
+**Possible Causes**
+ 
+The remote device has not started the form service, or the form service is abnormal.
+ 
+**Solution**
+ 
+Check the form service status on the remote device. After confirming that the remote form service is available, re-initiate the cross-device card distribution request.
+ 
+## 16501021 Remote Card Application Not Installed or Version Too Old
+ 
+**Error Message**
+ 
+The peer form application is not installed or the version is too old.
+ 
+**Description**
+ 
+When distributing a card across devices, the target card application on the remote device is not installed or its version is too old.
+ 
+**Possible Causes**
+ 
+1. The target card application is not installed on the remote device.
+2. The version of the target card application on the remote device is too old and does not support cross-device card distribution.
+ 
+**Solution**
+ 
+Confirm that the target card application is installed on the remote device and that the application version supports cross-device distribution, and then initiate the cross-device card distribution request again.
 
 ## 2293761 Internal Service Error
 

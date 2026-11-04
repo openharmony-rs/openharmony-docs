@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=513fd869e44ef24f3af162d41b806a737d47d470 translatedAt=2026-08-31T01:12:22.293Z pushedAt=2026-08-31T11:14:14.807Z -->
+<!-- md-trans-meta sourceCommit=d938caad85fab39aefbd85a23f1ce9e5d4bb59e3 translatedAt=2026-11-04T04:50:18.868Z pushedAt=2026-11-04T10:12:33.506Z nl=1 -->
 
 > **NOTE**
 > 
@@ -24,21 +24,13 @@ Invalid parameters are specified.
 **Possible Causes**
 
 1. The account is empty or contains more than 1024 characters.
-
 2. The account type is incorrect.
-
 3. The **aesKey** or **iv** is invalid.
-
 4. The system time is later than the authorization expiration time.
-
 5. The file descriptor (FD) is less than 0.
-
 6. The value of **tokenId** is **0**.
-
 7. The bundle name is empty.
-
 8. The value of **appIndex** is less than **0**.
-
 9. The value of **userId** is less than **0**.
 
 **Solution**
@@ -58,7 +50,6 @@ The encryption and decryption service is busy.
 **Possible Causes**
 
 1. The number of active encryption and decryption tasks is greater than 100.
-
 2. Duplicate encryption/decryption tasks are performed.
 
 **Solution**
@@ -96,7 +87,6 @@ An internal error occurs in the DLP credential service, and the credential servi
 **Possible Causes**
 
 1. The DLP credential service does not exist.
-
 2. The DLP credential service is abnormal.
 
 **Solution**
@@ -116,7 +106,6 @@ An error occurs when communicating with the credential authentication server, an
 **Possible Causes**
 
 1. The credential authentication server cannot be connected.
-
 2. The credential authentication server does not exist.
 
 **Solution**
@@ -190,17 +179,13 @@ The operation on the DLP file fails.
 **Possible Causes**
 
 1. The user is not an authorized user.
-
 2. The sandbox application fails to be installed.
-
 3. The link file is not associated.
-
 4. More than 1000 DLP files are opened simultaneously.
 
 **Solution**
 
 1. Check the access permission.
-
 2. Wait for a while or restart the device and try again. Ensure that the number of DLP files opened simultaneously does not exceed 1000.
 
 <!--Del-->
@@ -217,7 +202,6 @@ The DLP file is set to read-only mode. Data cannot be written, and permissions c
 **Possible Causes**
 
 1. You cannot modify the permission on a DLP file, which is read-only.
-
 2. You cannot write a DLP file, which is read-only.
 
 **Solution**
@@ -238,13 +222,9 @@ DLP-related system services cannot run normally, causing related functions to be
 **Possible Causes**
 
 1. The DLP permission service fails to start.
-
 2. The remote procedure call (RPC) object of the DLP permission service cannot be obtained.
-
 3. The service, on which the DLP permission service depends, fails to start.
-
 4. The inter-process communication (IPC) data fails to be read or written.
-
 5. The service is not initialized.
 
 **Solution**
@@ -450,7 +430,6 @@ The parameter is invalid.
 **Possible Causes**
 
 1. The policy format is incorrect.
-
 2. The parameter range is incorrect.
 
 **Solution**
@@ -490,9 +469,7 @@ The passed-in file is not supported by the current operation. The path, type, or
 **Possible Causes**
 
 1. The file path does not exist.
-
 2. The file type is not supported.
-
 3. The file permission is not supported.
 
 **Solution**
@@ -515,11 +492,8 @@ The internal function module of the system is running abnormally, causing the op
 **Possible Causes**
 
 1. The service cannot be started.
-
 2. The service on which the service depends cannot be started properly.
-
 3. IPC data fails to be read or written.
-
 4. The service is not initialized.
 
 **Solution**
@@ -561,3 +535,24 @@ The user with the specified ID is a personal space user and cannot set controlle
 **Solution**
 
 Ensure that the passed user ID does not belong to a personal space user.
+
+## 19100025 Invalid File
+
+**Error Message**
+
+The file is invalid.
+
+**Description**
+
+The passed file is invalid. The path may not exist, or the process may lack read permission on the file, making it inaccessible.
+
+**Possible Causes**
+
+1. The file path does not exist or is misspelled.
+2. The process does not have read permission on the target file. Possible causes include: the process identity is denied access, or the file is occupied by another process.
+
+**Solution**
+
+Check the following:
+1. Ensure that the file path exists and is spelled correctly.
+2. Ensure that the process has read permission on the file and that the file is not occupied by another process.

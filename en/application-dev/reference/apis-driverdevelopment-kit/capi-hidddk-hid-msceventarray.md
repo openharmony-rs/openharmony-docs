@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:12.944Z pushedAt=2026-06-22T11:21:11.391Z -->
+<!-- md-trans-meta sourceCommit=5bd79eab01cf38af26bab98453bcb9f96f6c3f3c translatedAt=2026-11-04T03:44:10.611Z pushedAt=2026-11-04T10:12:49.984Z nl=1 -->
 
 ```c
 typedef struct Hid_MscEventArray {...} Hid_MscEventArray
@@ -13,7 +13,7 @@ typedef struct Hid_MscEventArray {...} Hid_MscEventArray
 
 ## Overview
 
-Defines an array of miscellaneous events.
+Array of other special event attributes, used to store the special event information supported by the HID device.
 
 **Since**: 11
 
@@ -27,5 +27,7 @@ Defines an array of miscellaneous events.
 
 | Name| Description|
 | -- | -- |
-| Hid_MscEvent* hidMscEvent | Miscellaneous event.|
-| uint16_t length | Valid length of an array.|
+| [Hid_MscEvent](capi-hid-ddk-types-h.md#hid_mscevent)* hidMscEvent | Pointer to the array of other special event attribute codes. The array is pre-allocated by the caller (must not be a null pointer), and its size is not less than length. |
+| uint16_t length | Valid length of the array, which does not exceed the actual length of the hidMscEvent array. |
+
+

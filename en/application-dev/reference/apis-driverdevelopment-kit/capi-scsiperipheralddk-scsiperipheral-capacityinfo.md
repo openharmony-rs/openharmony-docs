@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:27.845Z pushedAt=2026-06-22T11:21:11.395Z -->
+<!-- md-trans-meta sourceCommit=b5aa01b6af5d19922ff7e85249d00c2a9af91e2a translatedAt=2026-11-04T03:47:40.399Z pushedAt=2026-11-04T10:12:49.993Z nl=1 -->
 
 ```c
 typedef struct ScsiPeripheral_CapacityInfo {...} ScsiPeripheral_CapacityInfo
@@ -13,7 +13,7 @@ typedef struct ScsiPeripheral_CapacityInfo {...} ScsiPeripheral_CapacityInfo
 
 ## Overview
 
-Defines the SCSI read capacity.
+SCSI READ CAPACITY struct. It is used to obtain the storage capacity information of a device when developing SCSI device drivers, and supports operations such as partition management, available space check, and storage resource allocation.
 
 **Since**: 18
 
@@ -27,5 +27,7 @@ Defines the SCSI read capacity.
 
 | Name| Description|
 | -- | -- |
-| uint32_t lbAddress | Address of the logical unit.|
-| uint32_t lbLength | Length of a single logical unit, in bytes.|
+| uint32_t lbAddress | Returned logical block address, which indicates the number of the last addressable logical block. The total number of logical blocks is this value plus 1. |
+| uint32_t lbLength | Length of a single logical block (unit: Byte). Indicates the byte size of each logical block, which is usually a standard value such as 512, 2048, or 4096, depending on the device type and formatting method. |
+
+

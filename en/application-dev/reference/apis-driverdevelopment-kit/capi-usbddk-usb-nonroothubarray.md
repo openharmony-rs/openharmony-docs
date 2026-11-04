@@ -5,6 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=5bd79eab01cf38af26bab98453bcb9f96f6c3f3c translatedAt=2026-11-04T04:01:25.981Z pushedAt=2026-11-04T10:12:50.032Z nl=1 -->
 
 ```c
 typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
@@ -12,7 +13,7 @@ typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
 
 ## Overview
 
-Non-root hub list, which is used to store the non-root hub IDs and quantity obtained using **OH_Usb_GetNonRootHubs**.
+Defines the non-root hub array, which is used to store the non-root hub IDs and quantity obtained using [OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs). After using the structure, you must release the memory allocated for the non-root hub ID array. Otherwise, resource leaks may occur.
 
 **Since**: 26.0.0
 
@@ -26,5 +27,6 @@ Non-root hub list, which is used to store the non-root hub IDs and quantity obta
 
 | Name| Description|
 | -- | -- |
-| uint64_t* nonRootHubIds | Start address of the non-root hub ID array. It is recommended that the number of non-root hub IDs do not exceed 128 to prevent excessive memory usage. The device ID of a non-root USB hub is contructed by left-shifting its bus number by 32 bits and adding it to its device address.|
+| uint64_t* nonRootHubIds | Start address of the non-root hub ID array. It is recommended that the number of non-root hub IDs not exceed 128 to prevent excessive memory usage. The device ID of a non-root USB hub is constructed by left-shifting its bus number by 32 bits and adding it to its device address. |
 | uint32_t num | Number of returned non-root hubs. The system traverses **nonRootHubIds** to obtain the non-root hub ID based on the number. If the value is **0**, no non-root hub exists.|
+
