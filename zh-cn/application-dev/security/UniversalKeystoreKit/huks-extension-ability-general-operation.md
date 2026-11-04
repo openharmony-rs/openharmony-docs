@@ -217,7 +217,6 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
 let providerName: string = 'testProviderName';
