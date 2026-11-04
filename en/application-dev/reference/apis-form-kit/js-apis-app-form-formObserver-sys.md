@@ -276,7 +276,7 @@ formObserver.off('formRemove', bundleName, callback);
 
 Subscribes to events indicating that a widget becomes visible. This API uses an asynchronous callback to return the result.
 
-The scenario that triggers the notification of card visibility is: calling the [notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms) API to notify the corresponding card that its visibility changes to the visible state.
+The scenario that triggers the notification of card visibility is: calling the [notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms) API to notify the corresponding card that its visibility changes to the visible state.
 
 **Required permissions**: ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -318,7 +318,7 @@ formObserver.on('notifyVisible', callback);
 
 Subscribes to events indicating that a widget becomes visible. This API uses an asynchronous callback to return the result.
 
-The card visibility notification is triggered when the [notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms) API is called to notify that the visibility of the corresponding card changes to visible.
+The card visibility notification is triggered when the [notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms) API is called to notify that the visibility of the corresponding card changes to visible.
 
 **Required permissions**: ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -413,7 +413,7 @@ formObserver.off('notifyVisible', bundleName, callback);
 
 Subscribes to events indicating that a widget becomes invisible. This API uses an asynchronous callback to return the result.
 
-The scenario that triggers the notification of a card becoming invisible is as follows: the [notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms) API is called to notify that the visibility of the corresponding card changes to the invisible state.
+The scenario that triggers the notification of a card becoming invisible is as follows: the [notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms) API is called to notify that the visibility of the corresponding card changes to the invisible state.
 
 **Required permissions**: ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -456,7 +456,7 @@ formObserver.on('notifyInvisible', callback);
 
 Subscribes to events indicating that a widget becomes invisible. This API uses an asynchronous callback to return the result.
 
-The scenario that triggers the notification of a card becoming invisible is as follows: the [notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms) API is called to notify that the visibility of the corresponding card changes to the invisible state.
+The scenario that triggers the notification of a card becoming invisible is as follows: the [notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms) API is called to notify that the visibility of the corresponding card changes to the invisible state.
 
 **Required permissions**: ohos.permission.OBSERVE_FORM_RUNNING
 

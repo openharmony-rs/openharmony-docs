@@ -24,7 +24,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## AbilityLifecycleState
 
-Enumerates the lifecycle states of an Ability. It can be used with the [getAbilityState](js-apis-inner-application-abilityDelegator.md#getabilitystate9) method of [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) to return the lifecycle state of the corresponding Ability.
+Enumerates the lifecycle states of an Ability. It can be used with the [getAbilityState](js-apis-inner-application-abilityDelegator.md#getabilitystate) method of [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) to return the lifecycle state of the corresponding Ability.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -141,7 +141,7 @@ Provides the capability of obtaining an **AbilityDelegatorArgs** object during t
 
 type AbilityMonitor = _AbilityMonitor
 
-Serves as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) to listen for lifecycle changes of a UIAbility.
+Serves as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor) to listen for lifecycle changes of a UIAbility.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -169,7 +169,7 @@ Provides the shell command execution result. It can be used to execute shell com
 
 type AbilityStageMonitor = _AbilityStageMonitor
 
-Provides the capability of listening for a specified [AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md) object. You can use **AbilityStageMonitor** as an input parameter of [abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor9) to register a listener.
+Provides the capability of listening for a specified [AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md) object. You can use **AbilityStageMonitor** as an input parameter of [abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor) to register a listener.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
