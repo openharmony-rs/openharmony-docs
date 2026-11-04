@@ -50044,6 +50044,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
 						"end_line":18,
@@ -50056,104 +50060,104 @@
 						"start_line":19
 					},
 					{
-						"end_line":49,
+						"end_line":47,
 						"name":"arkts_getMediaKeySystems",
-						"start_line":47
+						"start_line":45
 					},
 					{
-						"end_line":82,
+						"end_line":80,
 						"name":"arkts_isMediaKeySystemSupported",
-						"start_line":68
+						"start_line":66
 					},
 					{
-						"end_line":100,
+						"end_line":98,
 						"name":"arkts_createMediaKeySystem",
-						"start_line":98
+						"start_line":96
 					},
 					{
-						"end_line":109,
+						"end_line":107,
 						"name":"arkts_onKeySystemRequired",
-						"start_line":104
+						"start_line":102
 					},
 					{
-						"end_line":115,
+						"end_line":113,
 						"name":"arkts_getCertificateStatus",
-						"start_line":113
+						"start_line":111
 					},
 					{
-						"end_line":123,
+						"end_line":121,
 						"name":"arkts_generateKeySystemRequest",
-						"start_line":121
+						"start_line":119
 					},
 					{
-						"end_line":129,
+						"end_line":127,
 						"name":"arkts_processKeySystemResponse",
-						"start_line":125
+						"start_line":123
 					},
 					{
-						"end_line":141,
+						"end_line":139,
 						"name":"arkts_createMediaKeySession",
-						"start_line":139
+						"start_line":137
 					},
 					{
-						"end_line":150,
+						"end_line":148,
 						"name":"arkts_onKeyRequired",
-						"start_line":145
+						"start_line":143
 					},
 					{
-						"end_line":155,
+						"end_line":153,
 						"name":"arkts_onKeyExpired",
-						"start_line":151
+						"start_line":149
 					},
 					{
-						"end_line":160,
+						"end_line":158,
 						"name":"arkts_onExpirationUpdate",
-						"start_line":156
+						"start_line":154
 					},
 					{
-						"end_line":167,
+						"end_line":165,
 						"name":"arkts_onKeysChange",
-						"start_line":161
+						"start_line":159
 					},
 					{
-						"end_line":174,
+						"end_line":172,
 						"name":"arkts_requireSecureDecoderModule",
-						"start_line":172
+						"start_line":170
 					},
 					{
-						"end_line":189,
+						"end_line":187,
 						"name":"arkts_generateMediaKeyRequest",
-						"start_line":179
+						"start_line":177
 					},
 					{
-						"end_line":197,
+						"end_line":195,
 						"name":"arkts_processMediaKeyResponse",
-						"start_line":193
+						"start_line":191
 					},
 					{
-						"end_line":202,
+						"end_line":200,
 						"name":"arkts_restoreOfflineMediaKeys",
-						"start_line":200
+						"start_line":198
 					},
 					{
-						"end_line":213,
+						"end_line":211,
 						"name":"arkts_checkMediaKeyStatus",
-						"start_line":211
+						"start_line":209
 					},
 					{
-						"end_line":224,
+						"end_line":222,
 						"name":"arkts_offlineMediaKeyManagement",
-						"start_line":218
+						"start_line":216
 					},
 					{
-						"end_line":240,
+						"end_line":238,
 						"name":"arkts_destroyMediaKeySession",
-						"start_line":238
+						"start_line":236
 					},
 					{
-						"end_line":246,
+						"end_line":244,
 						"name":"arkts_destroyMediaKeySystem",
-						"start_line":244
+						"start_line":242
 					}
 				]
 			}
@@ -50164,6 +50168,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp",
 				"functions":[
 					{
 						"end_line":26,
@@ -50219,6 +50227,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets",
 				"functions":[
 					{
 						"end_line":19,
@@ -50264,6 +50276,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp",
 				"functions":[
 					{
 						"end_line":26,
