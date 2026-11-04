@@ -66,6 +66,56 @@ try {
 }
 ```
 
+## manager.enableWithOptions
+
+enableWithOptions(options?: EnableOptions): void
+
+以指定选项打开星闪。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
+与[enable](#managerenable)的差异：enable()开启星闪后，系统自动回连之前配对过的设备；本接口允许调用方通过options.autoConnPolicy控制该行为。典型场景：耳机恢复出厂后重新配对——开启星闪时不回连音频设备，避免触发重新配对弹窗，由调用方自行完成后续连接。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：**  此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [EnableOptions](#enableoptions) | 否 | 打开星闪时使用的选项。缺省时自动回连策略为AUTO_CONN_EXCEPT_AUDIO_DEVICES，不回连音频设备（例如耳机）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 203 | This function is prohibited by enterprise management policies. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 36100099 | Operation failed. |
+
+**示例：**
+```typescript
+import { manager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  manager.enableWithOptions({ autoConnPolicy: manager.AutoConnectPolicy.AUTO_CONN_EXCEPT_AUDIO_DEVICES });
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## manager.disable
 
 disable(): void
@@ -223,6 +273,40 @@ try {
 | -------- | -------- | -------- |
 | SLE_MODE_UNCONNECTABLE | 0 | 表示该设备不可连接。 |
 | SLE_MODE_CONNECTABLE | 1 | 表示该设备可连接。 |
+
+## AutoConnectPolicy
+
+表示打开星闪时的自动连接策略，为枚举值。通过[enableWithOptions](#managerenablewithoptions)使用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| AUTO_CONN_GENERAL | 0 | 打开星闪后，自动回连所有已配对设备。 |
+| AUTO_CONN_EXCEPT_AUDIO_DEVICES | 1 | 打开星闪后，自动回连除音频设备外的所有已配对设备。 |
+| AUTO_CONN_EXCEPT_USER_DISCONNECTED_DEVICES | 2 | 打开星闪后，自动回连除用户主动断连设备外的所有已配对设备。 |
+
+## EnableOptions
+
+打开星闪时使用的选项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| autoConnPolicy | [AutoConnectPolicy](#autoconnectpolicy) | 否 | 打开星闪时使用的自动连接策略。默认值为**AUTO_CONN_EXCEPT_AUDIO_DEVICES**（不回连音频设备）。 |
 
 ## manager.setConnectionMode
 
