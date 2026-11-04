@@ -70,12 +70,12 @@ ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 | 名称                           | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
 | ---------------------------- | ----------------------------------------------- | -- | -- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | 否  | 否 | 工具栏子项的文本。<br />装饰器类型：@Trace                                                                                                                                                                                                           |
-| action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | 否  | 是  | 工具栏子项点击事件。 <br ></div>默认无点击事件。<br />装饰器类型：@Trace                                                                                                                                                                                      |
-| icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | 否  | 是 | 工具栏子项的图标。<br ></div>默认不显示图标。<br />装饰器类型：@Trace                                                                                                                                                                                        |
+| action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | 否  | 是  | 工具栏子项点击事件。<br />默认无点击事件。<br />装饰器类型：@Trace                                                                                                                                                                                      |
+| icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | 否  | 是 | 工具栏子项的图标。<br />默认不显示图标。<br />装饰器类型：@Trace                                                                                                                                                                                        |
 | state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | 否  | 是 | 工具栏子项的状态。<br />默认值：ToolBarV2ItemState.ENABLE。<br />装饰器类型：@Trace                                                                                                                                                                           |
-| accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是 | 工具栏子项的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br ></div>默认值为当前项content属性内容。<br />装饰器类型：@Trace                                           |
+| accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是 | 工具栏子项的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br />默认值为当前项content属性内容。<br />装饰器类型：@Trace                                           |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是 |  工具栏子项的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br />默认值：“单指双击即可执行”。<br />装饰器类型：@Trace                        |
-| accessibilityLevel  | string                                          | 否  | 是 | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br ></div>支持的值为：<br />"auto"：当前值转换为"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto"<br />装饰器类型：@Trace |
+| accessibilityLevel  | string                                          | 否  | 是 | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br />支持的值为：<br />"auto"：当前值转换为"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto"<br />装饰器类型：@Trace |
 
 ### constructor
 
@@ -110,10 +110,10 @@ ToolBarV2Item的构造函数。
 | content                  | [ToolBarV2ItemText](#toolbarv2itemtext)         | 否  | 否  | 工具栏子项的文本。                                                                                                                                                                                                           |
 | action                   | [ToolBarV2ItemAction](#toolbarv2itemaction)     | 否  | 是  | 工具栏子项点击事件。<br />默认无点击事件。                                                                                                                                                                                            |
 | icon                     | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | 否  | 是  | 工具栏子项的图标。<br />默认不显示图标。                                                                                                                                                                                             |
-| state                    | [ToolBarV2ItemState](#toolbarv2itemstate)       | 否  | 是  | 工具栏子项的状态。<br />默认为ToolBarV2ItemState.ENABLE。<br />                                                                                                                                                                  |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是  | 工具栏子项的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br />默认值为当前项content属性内容。<br />                                          |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是  | 工具栏子项的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br />默认值为“单指双击即可执行”。                        |
-| accessibilityLevel       | string                                          | 否  | 是  | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br ></div>支持的值为：<br />"auto"：当前值转换为"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto"<br /> |
+| state                    | [ToolBarV2ItemState](#toolbarv2itemstate)       | 否  | 是  | 工具栏子项的状态。<br />默认值：ToolBarV2ItemState.ENABLE。                                                                                                                                                                  |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是  | 工具栏子项的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br />默认值为当前项content属性内容。                                          |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是  | 工具栏子项的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br />默认值：“单指双击即可执行”。                        |
+| accessibilityLevel       | string                                          | 否  | 是  | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br />支持的值为：<br />"auto"：当前值转换为"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto" |
 
 ## ToolBarV2ItemAction
 
@@ -151,7 +151,7 @@ type ToolBarV2ItemAction = (index: number) => void
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | 否  | 否  | 工具栏子项的文本。<br/>装饰器类型：@Trace                                                |
 | color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项的文本的颜色。<br/>默认值：$r('sys.color.font_primary')<br/>装饰器类型：@Trace       |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br></div>默认值：$r('sys.color.font_emphasize')<br/>装饰器类型：@Trace |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br />默认值：$r('sys.color.font_emphasize')<br/>装饰器类型：@Trace |
 
 ### constructor
 
@@ -185,7 +185,7 @@ ToolBarV2ItemText的构造函数。
 | :------------------ |:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | 否  | 否  | 工具栏子项的文本。                                                |
 | color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项的文本的颜色。<br/>默认值：$r('sys.color.font_primary')       |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br/>默认值：$r('sys.color.font_emphasize') |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br />默认值：$r('sys.color.font_emphasize') |
 
 ## ToolBarV2ItemImage
 
@@ -309,7 +309,7 @@ padding(padding: LengthMetrics): ToolBarV2Modifier
 
 | 参数名     | 类型                                                            | 必填 | 说明                                                                  |
 | ------- |---------------------------------------------------------------| -- | ------------------------------------------------------------------- |
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏左右内边距，仅在子项数量小于5个时生效，超过则设置值无效。<br ></div>当子项数量少于5个时，工具栏默认左右内边距为24vp；当子项数量达到或超过5个时，工具栏默认左右内边距为0vp。 |
+| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏左右内边距，仅在子项数量小于5个时生效，超过则设置值无效。<br />当子项数量少于5个时，工具栏默认左右内边距为24vp；当子项数量达到或超过5个时，工具栏默认左右内边距为0vp。 |
 
 **返回值：**
 
@@ -478,11 +478,11 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 
 **起始版本：** 26.1.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -630,8 +630,8 @@ struct Index {
 | isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。true表示在该子项后显示分割线（工具栏最后一个子项后不显示）；false表示在该子项后不显示分割线。<br />默认值：false。                                                                                                            |
 | isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别，适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。                                                |
 | titleConfigs             | [ToolbarV2TitleConfigs](#toolbarv2titleconfigs) | 否   | 是   | 高级工具栏标题配置。设置后，该子项作为工具栏标题渲染，不再显示为普通子项，仅在水平布局时生效。<br />多个子项同时设置时，标题内容与样式以数组中第一个配置为准，建议仅在一个子项上设置。<br />默认值：undefined。<br />值为undefined时，该子项不渲染为标题。 |
-| isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否将该子项作为工具栏的溢出菜单按钮。true表示该子项作为工具栏的溢出菜单按钮，当存在被折叠的子项时显示；false表示不作为溢出菜单按钮。<br />该子项的icon为[ToolBarV2SymbolGlyph](#toolbarv2symbolglyph)时作为按钮图标，否则显示默认的更多图标。<br />建议仅在一个[ToolbarV2ItemPlacement](#toolbarv2itemplacement)为TRAILING的子项上设置。<br />默认值：false。 |
-| groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。                                                                                                                                   |
+| isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否将该子项作为工具栏的溢出菜单按钮。true表示该子项作为溢出菜单按钮，当存在被折叠的子项时显示，点击后弹出溢出菜单；false表示不作为溢出菜单按钮。<br />该子项的icon为[ToolBarV2SymbolGlyph](#toolbarv2symbolglyph)时作为按钮图标，否则显示默认的更多图标。作为溢出菜单按钮时，该子项的action不生效。<br />建议仅在一个[ToolbarV2ItemPlacement](#toolbarv2itemplacement)为TRAILING的子项上设置。<br />默认值：false。 |
+| groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。分组级别的配置从数组中携带该groupID的第一个子项读取。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。                                                                                                                                   |
 
 ## ToolbarV2TitleConfigs
 
@@ -655,17 +655,17 @@ struct Index {
 
 **起始版本：** 26.1.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称      | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                        |
 | :-------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 否   | 工具栏标题的文本内容。<br />默认值：空字符串。<br />装饰器类型：@Trace                                                                                                        |
+| content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 否   | 工具栏标题的文本内容。<br />装饰器类型：@Trace                                                                                                        |
 | placement | [ToolbarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。未设置时使用承载该配置的子项的placement，子项也未设置时为ToolbarV2ItemPlacement.LEADING。<br />默认值：ToolbarV2ItemPlacement.LEADING。<br />装饰器类型：@Trace |
 | visible   | boolean                                           | 否   | 是   | 是否显示标题。true表示显示；false表示不显示，且不占用布局空间。<br />默认值：true。<br />装饰器类型：@Trace                                                                    |
 | style     | [ToolbarV2TitleStyle](#toolbarv2titlestyle)       | 否   | 是   | 标题样式。<br />默认值：undefined。<br />值为undefined时，使用默认样式。<br />装饰器类型：@Trace                                                                              |
@@ -733,11 +733,11 @@ ToolbarV2TitleConfigs的构造函数。
 
 **起始版本：** 26.1.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -789,7 +789,7 @@ ToolbarV2TitleStyle的构造函数。
 | fontSize   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的字体大小。<br />单位：fp。<br />默认值：20fp。               |
 | fontColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | 否   | 是   | 标题的字体颜色。<br />默认值：$r('sys.color.font_primary')。 |
 | fontWeight | [FontWeight](ts-appendix-enums.md#fontweight)                 | 否   | 是   | 标题的字体粗细。<br />默认值：FontWeight.Bold。              |
-| minLength  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的最小宽度。<br />单位：vp。<br />默认值：48vp。               |
+| minLength  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 标题的最小宽度。<br />单位：vp。<br />工具栏空间不足时优先压缩标题宽度，最小压缩至该值。<br />默认值：48vp。               |
 
 ## ToolbarV2OverflowMenuStyle
 
