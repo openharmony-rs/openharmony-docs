@@ -1438,7 +1438,7 @@ inputMethod.getController().discardTypingText().then(() => {
 });
 ```
 
-### requestSystemInputCapability<sup>26.1+</sup>
+### requestSystemInputCapability
 
 requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
@@ -1448,11 +1448,13 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**起始版本：** 26.1
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type | [InputCapabilityType](#inputcapabilitytype261) | 是 | 系统输入能力类型。 |
+| type | [InputCapabilityType](#inputcapabilitytype) | 是 | 系统输入能力类型。 |
 
 **返回值：**
 
@@ -4332,11 +4334,13 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
 });
 ```
 
-## InputCapabilityType<sup>26.1+</sup>
+## InputCapabilityType
 
-系统输入能力类型。用于[requestSystemInputCapability](#requestsysteminputcapability261)指定请求的系统输入能力类型。
+系统输入能力类型。用于[requestSystemInputCapability](#requestsysteminputcapability)指定请求的系统输入能力类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**起始版本：** 26.1
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
