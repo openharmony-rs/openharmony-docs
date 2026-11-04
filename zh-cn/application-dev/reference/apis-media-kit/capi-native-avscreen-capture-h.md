@@ -1594,7 +1594,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | 指向OH_AVScreenCapture_CaptureStrategy实例的指针。 |
-| OH_AVScreenCapture_AutoPauseSceneSet scenes | 场景集合，使用[OH_AVScreenCapture_AutoPauseCaptureSceneEnum](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_autopausecapturesceneenum)中的枚举值按位或组合而成。<br> 若传入OH_CAPTURE_AUTO_PAUSE_SCENE_NONE，则系统不会自动暂停。 |
+| [OH_AVScreenCapture_AutoPauseSceneSet](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_autopausesceneset) scenes | 场景集合，使用[OH_AVScreenCapture_AutoPauseCaptureSceneEnum](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_autopausecapturesceneenum)中的枚举值按位或组合而成。<br> 若传入OH_CAPTURE_AUTO_PAUSE_SCENE_NONE，由于未设置任何自动暂停场景，系统不会自动暂停屏幕录制。 |
 
 **返回：**
 

@@ -511,7 +511,7 @@ Codec MIME类型枚举。
 
 ## AVScreenCaptureAutoPauseCaptureScene
 
-自动暂停屏幕录制的场景枚举定义。
+表示自动暂停屏幕录制场景的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -523,7 +523,7 @@ Codec MIME类型枚举。
 
 | 名称 | 值 | 说明 |
 | -------------------------- | ---- | -------------------------------------- |
-| SCENE_NONE | 0 | 不设置任何场景，在任何场景下都不会自动暂停屏幕录制。 |
+| SCENE_NONE | 0 | 未设置任何场景；在任何场景下都不会自动暂停屏幕录制。 |
 | SCENE_SCREEN_FOLD_STATE_CHANGE | 1 << 0 | 屏幕折叠状态发生变化的场景。 |
 
 ## AVMetricsEventType<sup>23+</sup>
