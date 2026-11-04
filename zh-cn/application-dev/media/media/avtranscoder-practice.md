@@ -128,16 +128,18 @@ status: active
    如下是发送参数的逻辑：
 
    <!-- @[logicSendingParameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    private context: Context | undefined;
-   // 向Worker线程发送消息。
-   this.context = this.getUIContext().getHostContext(); // 获取当前组件所在Ability的Context。
-   if (this.context != undefined) {
-     const sendableContext: sendableContextManager.SendableContext = sendableContextManager.convertFromContext(
-       this.context);
-     const sendableObject: SendableObject = new SendableObject(sendableContext, 'some information');
-     this.workerInstance.postMessageWithSharedSendable(sendableObject);
-   }
+   // ...
+     // 向Worker线程发送消息
+     this.context = this.getUIContext().getHostContext();
+     if (this.context != undefined) {
+       const sendableContext: sendableContextManager.SendableContext =sendableContextManager.convertFromContext(
+         this.context);
+       const sendableObject: SendableObject = new SendableObject(sendableContext, 'some information');
+       this.workerInstance.postMessageWithSharedSendable(sendableObject);
+     }
    ```
 
 3. worker线程接收参数，并且执行转码的逻辑。
