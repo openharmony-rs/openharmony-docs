@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=4517d8951650b6827c117dbc27949ea5827acec2 translatedAt=2026-11-04T04:52:59.856Z pushedAt=2026-11-04T06:10:35.240Z nl=1 -->
 
 ## Introduction
 
@@ -18,7 +19,7 @@ When an application is backgrounded or closed, the system can still send schedul
 <!--RP2-->
 - **Quantity limitations**:
   - For API version 26.0.0 and later versions, a maximum of 64 reminders can be set for a single common app.
-  - For API version 25 and earlier versions, a maximum of 30 reminders can be set for a single common app.
+  - API version 25 and earlier: A single common application supports up to 30 reminders.
   - A system app supports a maximum of 10,000 valid reminders. and 12,000 total for the system.
 <!--RP2End-->
 
@@ -35,7 +36,7 @@ When an application is backgrounded or closed, the system can still send schedul
 
 ## Emulator Support
 
-This capability is supported by the Emulator since API version 20.
+Starting from API version 20, this capability supports simulator development.
 
 ## Available APIs
 
