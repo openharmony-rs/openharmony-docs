@@ -123,7 +123,7 @@
   }
   ```
 
-- \@Extend的参数可以为[状态变量](arkts-state-management-overview.md)，当状态变量改变时，UI可以正常刷新渲染。
+- \@Extend的参数可以为状态变量，当状态变量改变时，UI可以正常刷新渲染。状态变量具体介绍参见[状态管理概述](arkts-state-management-overview.md)。
   <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) --> 
   
   ``` TypeScript
