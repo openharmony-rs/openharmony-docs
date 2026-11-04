@@ -96,25 +96,29 @@ status: active
    如下是参数对象模型：
 
    <!-- @[CreateParameterObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/util/SendableObject.ets) -->
+   
    ``` TypeScript
    import { sendableContextManager } from '@kit.AbilityKit';
-
-   // 发送的参数必须加上@Sendable标注。
+   
+   
+   //发送的参数必须加上@Sendable标注
    @Sendable
    export class SendableObject {
      constructor(sendableContext: sendableContextManager.SendableContext, data: string = '') {
        this.sendableContext = sendableContext;
        this.data = data;
      }
-
+   
+   
      private sendableContext: sendableContextManager.SendableContext;
      private data: string;
-
-
+   
+   
      public getSendableContext() {
        return this.sendableContext;
      }
-
+   
+   
      public getData() {
        return this.data;
      }
