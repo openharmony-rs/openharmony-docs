@@ -49,7 +49,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：12+  |
 | 13900012     | Permission denied. <br> 适用版本：10-11         |
-| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Invalid fetchColumns: contains unknown column name. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Invalid number of arguments.<br>2.The options parameter is null or undefined.<br>3.Parameter parsing failed, please check parameter count and types.<br>4.Object is not a valid object.<br>5.PhotoAccessHelper object is not a valid object. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The FetchOptions parameter is invalid, the predicates property is not a valid data predicates object.<br>2. The predicates in FetchOptions contain invalid content or operations, please check if the predicates are valid.<br>3. The fetchColumns in FetchOptions contain invalid column names, please refer to PhotoKeys for valid column names.<br>4. Database query failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs.<br>5. Query returned an empty result set. |
 
 **示例：**
@@ -121,8 +121,8 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.<br> 适用版本：20+   |
 | 13900012     | Permission denied. <br> 适用版本：10-19         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020     | Invalid parameter. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs.<br>2.The number of arguments is invalid.<br>3.The argument list is empty.<br>4.The object is not a valid instance.<br>5.PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6.The callback parameter type does not match, expected AsyncCallback.<br>7.Invalid fetchColumns: contains unknown column name.         |
+| 14000011       | MediaLibrary inner fail. Possible causes: <br>1.The FetchOptions parameter is invalid, the predicates property is not a valid data predicates object.<br>2.The predicates in FetchOptions contain invalid content or operations, please check if the predicates are valid.<br>3.The fetchColumns in FetchOptions contain invalid column names, please refer to PhotoKeys for valid column names.<br>4.Database query failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs.<br>5.Query returned an empty result set.         |
 
 **示例：**
 
@@ -374,7 +374,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+  |
 | 13900012     | Permission denied. <br> 适用版本：10         |
-| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error. Possible: (1) File system exception; (2) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get the options parameter type, please check if it is an object.<br>12. Failed to parse CreateOptions, please check the options parameter.<br>13. Server returned an invalid argument error.<br>14. Failed to get the photoType parameter. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error. Possible causes: (1) File system exception; (2) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get the options parameter type, please check if it is an object.<br>12. Failed to parse CreateOptions, please check the options parameter.<br>13. Server returned an invalid argument error.<br>14. Failed to get the photoType parameter. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO.<br>2. The extension parameter is not a valid string, please check if it is a valid file extension.<br>3. The options parameter is invalid, please check if it is a valid CreateOptions object.<br>4. Failed to create the asset, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
@@ -436,7 +436,7 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
+| 23800151 | Invalid parameter. Possible causes: <br>1.The number of parameters is invalid, expected 2 or 3 parameters;<br>2.The photoType parameter must be a number;<br>3.The photoType must be IMAGE(1) or VIDEO(2);<br>4.The extension parameter must be a string;<br>5.The extension does not match the photoType;<br>6.The title parameter must be a string (when provided);<br>7.The title contains invalid characters or exceeds the length limit;<br>8.The server returned an invalid argument error. |
 | 23800301 | MediaLibrary inner fail. Possible causes:<br>Server returned an invalid argument error. |
 
 **示例：**
@@ -1018,7 +1018,7 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------------- |
-| 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | MediaLibrary inner fail. Possible causes: <br>1.Internal error in dialog, please retry;<br>2.Dialog result missing required parameters, system internal error;<br>3.Callback processing failed, system internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -1232,6 +1232,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Dialog operation failed, please retry.<br>4. Callback processing failed, system internal error, possible causes: <br>(1) Database exception. <br>(2) File system exception. <br>(3) IPC timeout. Please retry and check logs. |
+
 
 ## requestPhotoUrisReadPermission<sup>14+</sup>
 
@@ -1488,7 +1489,7 @@ off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is unregistered repeatedly. |
+| 23800151 | Invalid parameter. |
 | 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
@@ -1607,7 +1608,7 @@ off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 23800151 | Invalid parameter. |
 | 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
