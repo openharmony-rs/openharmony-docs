@@ -106,9 +106,11 @@ setExposureMode(aeMode: ExposureMode): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setExposureMode(photoSession: camera.PhotoSession): void {
+function setExposureMode(photoSession: camera.PhotoSession, mode: camera.ExposureMode): void {
   try {
-    photoSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_LOCKED);
+    if (photoSession.isExposureModeSupported(mode)) {
+      photoSession.setExposureMode(mode);
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -465,7 +467,7 @@ function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+function registerExposureStateChange(captureSession: camera.PhotoSession): void {
   captureSession.onExposureStateChange(callback);
 }
 ```
@@ -499,11 +501,11 @@ function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+function unregisterExposureStateChange(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange(callback);
 }
 
-function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
+function unregisterExposureStateChangeWithoutParam(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange();
 }
 ```

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API支持的数据类型和接口，包括napi_status枚举、napi_value值类型、扩展能力接口等，为开发者提供完整的Node-API数据类型和接口参考。"
+keywords: [Node-API, 数据类型, napi_value, napi_status, 接口参考, 扩展能力, napi_env, 回调函数]
+doctype: guide
+status: active
+---
+
 # Node-API支持的数据类型和接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -159,6 +167,10 @@ napi_async_cleanup_hook_handle是Node-API中用于管理异步资源生命周期
 napi_critical_scope是Node-API中，用于创建临界接口执行环境的机制。它由napi_open_critical_scope接口创建，由napi_close_critical_scope接口关闭。
 
 临界接口：需要在临界区作用域内执行的接口，通常接口名中含有`critical`关键字。
+
+**napi_microtask_scope（扩展能力）**
+
+napi_microtask_scope是OpenHarmony Node-API组件扩展能力，用于限制微任务执行的机制。它由napi_open_microtask_scope接口创建，由napi_close_microtask_scope接口关闭。作用域打开期间，微任务（如Promise回调）不会被触发执行，而是被保留在微任务队列中，待作用域关闭时同步执行。
 
 **napi_strong_ref（扩展能力）**
 
@@ -375,7 +387,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_is_array | 判断给定ArkTS value是否为array。 |
 | napi_set_element | 在给定Object的指定索引处，设置属性值。 |
 | napi_get_element | 获取给定Object指定索引处的元素。 |
-| napi_has_element | 若给定Object的指定索引处拥有属性。 |
+| napi_has_element | 判断给定Object的指定索引处是否存在元素。 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 |
 | napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 |
 | napi_is_typedarray | 判断给定ArkTS value是否为TypedArray。|
@@ -578,6 +590,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 |
 | napi_throw_business_error | 抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。 |
 | napi_get_global_handle_count | 遍历并获取global handle数量。 |
+| napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 |
+| napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -596,7 +610,7 @@ napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-**注：**使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
+**注**：使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
 **napi_load_module**
 
 ```c
@@ -909,6 +923,18 @@ napi_status napi_throw_business_error(napi_env env,
 
 ```c
 napi_status napi_get_global_handle_count(napi_env env, size_t* count);
+```
+
+**napi_open_microtask_scope**
+
+```c
+napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope);
+```
+
+**napi_close_microtask_scope**
+
+```c
+napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope);
 ```
 
 ### 其他实用工具

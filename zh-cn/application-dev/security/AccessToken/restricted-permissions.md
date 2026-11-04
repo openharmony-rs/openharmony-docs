@@ -656,6 +656,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：18
 
+<!--Del-->
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 允许主体应用安装插件。
@@ -667,6 +668,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **授权方式**：系统授权（system_grant）
 
 **起始版本**：19
+<!--DelEnd-->
 
 ## ohos.permission.CUSTOM_SANDBOX
 
@@ -1654,4 +1656,18 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
+**起始版本**：26.0.1
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+允许应用获取设备硬件信息。
+
+<!--RP118--><!--RP118End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1
+ 
 **起始版本**：26.0.1

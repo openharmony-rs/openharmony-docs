@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-常驻任务是指需要跟随业务生命周期长期存在、持续接收消息或维护线程内状态的任务。ArkTS-Sta中推荐使用[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)实现常驻任务。
+常驻任务是指需要跟随业务生命周期长期存在、持续接收消息或维护线程内状态的任务。ArkTS-Sta中推荐使用[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)实现常驻任务。
 
 EAWorker对应独占工作线程，开发者需要显式调用start启动，并在不再需要时调用join或quit释放线程资源。与ArkTS-Dyn Worker不同，ArkTS-Sta不使用Worker线程文件，也不使用postMessage接口；常驻任务可通过run、MessageHandler和Message进行控制。
 

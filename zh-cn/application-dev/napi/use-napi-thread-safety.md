@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行线程安全开发，通过napi_create_threadsafe_function创建线程安全函数，支持多线程间安全调用ArkTS方法，避免竞争条件和死锁。"
+keywords: [Node-API, 线程安全, napi_create_threadsafe_function, 多线程, 竞争条件, 死锁, 线程间通信, 异步计算]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行线程安全开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

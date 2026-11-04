@@ -1352,7 +1352,7 @@ async function CreatePictures() {
     try {
       let pictureObj: image.Picture = await imageSourceObj.createPictureAtIndex(index);
       console.info('Succeeded in creating picture for frame: ' + index);
-    } catch (e) {
+    } catch (error) {
       console.error('Failed to create picture for frame: ' + index);
     }
   }
@@ -1369,7 +1369,7 @@ async function CreatePictures(imageSourceApi: image.ImageSource) {
       if (pictureObj) {
         console.info('Create picture succeeded for frame: ' + index);
       }
-    } catch (e) {
+    } catch (error) {
       console.error('Create picture failed for frame: ' + index);
     }
   }
@@ -2783,6 +2783,8 @@ release(callback: AsyncCallback\<void>): void
 
 释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 6
@@ -2840,6 +2842,8 @@ release(): Promise\<void>
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用该方法，及时释放内存。
 
 释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

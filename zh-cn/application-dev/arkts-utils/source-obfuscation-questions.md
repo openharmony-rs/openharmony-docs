@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkGuard源码混淆的常见问题，涵盖功能异常排查步骤、典型报错案例及解决方案，以及运行后无crash信息但功能异常时的定位方法。"
+keywords: [ArkGuard, 混淆, 源码混淆, 常见问题, 功能异常, 排查步骤, 典型报错, crash, 白名单]
+doctype: faq
+status: active
+---
+
 # ArkGuard混淆常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -148,7 +156,10 @@ import { NS } from './ExportNs';
 export namespace i {
   export function j() {}
 }
+```
 
+``` TypeScript
+// 混淆后
 // Index.ets
 import { i } from './ExportNs';
 
@@ -217,7 +228,10 @@ loadAndUseAdd();
 export function c1(d1: number, e1: number): number {
     return d1 + e1;
 }
+```
 
+``` TypeScript
+// 混淆后
 // Index.ets
 async function i() {
     let b1: number = 0;
@@ -336,7 +350,10 @@ addNum(1, 2);
 export function b(c: number, d: number): number {
   return c + d;
 }
+```
 
+``` TypeScript
+// 混淆后
 // entry模块
 import { n } from '@normalized:N&sharedlibrary&&sharedlibrary/Index&';
 
@@ -363,7 +380,9 @@ n(1, 2);
 // consumer-rules.txt
 -keep-global-name
 addNum
+```
 
+```text
 // obfuscation-rules.txt
 -keep-global-name
 addNum
@@ -472,7 +491,10 @@ export interface MyInfo {
     city1: string;
   }
 }
+```
 
+``` TypeScript
+// 混淆后
 // Index.ets
 import { MyInfo } from './FileInside';
 

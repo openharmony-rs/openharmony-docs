@@ -331,6 +331,14 @@ static makeFromStringWithFallback(text: string, font: Font): Array\<TextBlob>
 | --- | --- |
 | Array\<[TextBlob](arkts-apis-graphics-drawing-TextBlob.md)> | 返回创建的TextBlob对象数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
 **示例：**
 
 ```ts
@@ -472,7 +480,7 @@ ArkTS-Sta: bounds(): common2D.Rect | undefined
 
 | 类型                                               | 说明                   |
 | -------------------------------------------------- | ---------------------- |
-| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 文字边界框的矩形区域。创建失败时返回undefined。 |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 文字边界框的矩形区域。获取失败时返回undefined。 |
 
 **示例：**
 

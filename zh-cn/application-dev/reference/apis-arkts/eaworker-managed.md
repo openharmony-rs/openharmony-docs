@@ -311,7 +311,7 @@ static exclusiveScope\<T>(callback: () => T): T
 > **说明：**
 >
 > - 该方法只能在通过`needInterop`参数开启互操作能力的EAWorker中调用，不支持在主线程、TaskPool工作线程、其他非EAWorker执行上下文或未开启互操作能力的EAWorker中调用。
-> - 回调函数执行期间禁止发生异步操作。回调函数中不能调用`Job.Await`、`setTimeout`或`Promise`等可能触发线程等待的接口。
+> - 回调函数中仅支持同步操作，不支持使用ArkTS-Sta或ArkTS-Dyn的异步操作，例如`await`、`Promise.then`、`setTimeout`、`setInterval`、任务投递、执行Worker任务、锁等待等：使用ArkTS-Sta的异步操作时，由该异步操作抛出`InvalidJobOperationError`（表示当前执行上下文不允许该异步操作），可在回调函数内使用`try-catch`捕获，回调未捕获时本方法将该异常传递给调用方，下方异常表只列出本方法抛出的`RuntimeError`；使用ArkTS-Dyn的异步操作时，因回调中不能`await`，本次`exclusiveScope`调用无法等待其执行完成，故不会抛出`InvalidJobOperationError`。
 > - 不支持在回调函数中嵌套调用`exclusiveScope`。
 > - 该方法为同步调用。回调函数返回或抛出异常后，才会继续执行`exclusiveScope`之后的代码。
 > - 该方法通常与`run`组合使用。在`run`提交的任务中调用`exclusiveScope`时，需要先等待该任务被调度执行，再执行到`exclusiveScope`调用。因此，提交`run`任务并不意味着立即执行`exclusiveScope`回调，其实际开始执行的时机受`run`任务调度时机影响。

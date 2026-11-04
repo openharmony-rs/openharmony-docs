@@ -88,8 +88,8 @@ int32_t MyOnReadData_Legacy(
     OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
 ```
 
-- 为避免音频卡顿，禁止在回调方法OH_AudioCapturer_OnReadData中执行耗时操作。
-- 为保证OH_AudioCapturer_OnReadData与流状态控制逻辑独立正常运行，禁止在OH_AudioCapturer_OnReadData回调方法中调用音频流控制接口。
+- 为避免音频卡顿，禁止在回调方法OH_AudioCapturer_OnReadDataCallback中执行耗时操作。
+- 为保证OH_AudioCapturer_OnReadDataCallback与流状态控制逻辑独立正常运行，禁止在OH_AudioCapturer_OnReadDataCallback回调方法中调用音频流控制接口。
   
     | 音频流控制接口                                                    | 说明         |
     | ------------------------------------------------------------ | ------------ |

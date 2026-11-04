@@ -536,16 +536,14 @@ POI信息结构体。
 
 运动类型。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| RUNNING   | 1 |  表示跑步。 |
-| WALKING    | 2 | 表示步行。 |
-| CYCLING     | 3 | 表示骑行。 |
-| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0  <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
+| RUNNING   | 1 |  表示跑步。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| WALKING    | 2 | 表示步行。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| CYCLING     | 3 | 表示骑行。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0  <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 
 ## BeaconFenceInfoType<sup>20+</sup>
@@ -863,7 +861,6 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.  <br/> 适用版本：9-24|
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off. <br/> 适用版本：9-17                                                |
@@ -917,7 +914,6 @@ offLocationChange(callback?: Callback\<Location\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call ${geoLocationManager.offLocationChange} due to limited device capabilities. |
 | 3301000 | The location service is unavailable. |
 
@@ -3604,7 +3600,6 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.getCurrentDistrict} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.  |
@@ -3682,7 +3677,6 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.getPostProcessingTrack} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.  |
@@ -3759,7 +3753,6 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.              | 
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 | 
 |801 | Capability not supported. Failed to call ${geoLocationManager.startBluetoothSearch} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301800 | Failed to start Bluetooth scanning.                                        |
@@ -3818,7 +3811,6 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
    
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                               | 
 |801 | Capability not supported. Failed to call ${geoLocationManager.stopBluetoothSearch} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
    

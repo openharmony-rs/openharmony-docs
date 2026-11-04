@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[系统定义的公共事件](../common_event/commonEventManager-definitions.md)。
 
@@ -406,7 +406,7 @@
 
 **ArkTS-Sta起始版本**：23
 
-**订阅者所需权限：** 在API version 21之前，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS权限；从API version 21开始，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限
+**订阅者所需权限：** 在API版本21之前，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS权限；从API版本21开始，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限
 
 **取值：** "usual.event.USER_SWITCHED"
 
@@ -690,7 +690,7 @@
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
-**取值：** "usual.event.SMS_RECEIVED_COMPLETED"
+**取值：** "usual.event.SMS_RECEIVE_COMPLETED"
 
 
 ### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>
@@ -1038,6 +1038,19 @@
 
 **取值：** "usual.event.STK_ALPHA_IDENTIFIER"
 
+### COMMON_EVENT_DATA_VOLUME_STATUS_REPORT
+ 
+PC场景在有扩展数据磁盘场景下，表示特定卷是否为可使用的状态。在开机扩展磁盘挂载完成或者用户解锁后广播。
+ 
+此事件仅在PC/2in1设备上支持。
+ 
+**起始版本：** 26.0.0
+ 
+**系统能力：** SystemCapability.Notification.CommonEvent
+ 
+**订阅者所需权限：** 无
+ 
+**取值：** "usual.event.DATA_VOLUME_STATUS_REPORT"
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 

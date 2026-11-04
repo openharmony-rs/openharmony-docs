@@ -109,7 +109,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Web({ src: $rawfile("SetSKBModeIndex.html"), controller: this.controller})
+      Web({ src: $rawfile('SetSKBModeIndex.html'), controller: this.controller})
         .onPageEnd(() => {
           this.controller.runJavaScript(`document.getElementById('input_a').focus()`).then(() => {
             setTimeout(() => {
@@ -128,7 +128,6 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 // Index.ets
-'use static'
 import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
 import inputMethod from '@ohos.inputMethod'
@@ -139,7 +138,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Web({ src: $rawfile("SetSKBModeIndex.html"), controller: this.controller})
+      Web({ src: $rawfile('SetSKBModeIndex.html'), controller: this.controller})
         .onPageEnd(() => {
           this.controller.runJavaScript(`document.getElementById('input_a').focus()`).then(() => {
             setTimeout(() => {
@@ -158,274 +157,269 @@ struct WebComponent {
 
 1. 在应用代码中设置[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)的软键盘避让模式[setKeyboardAvoidMode](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setkeyboardavoidmode11)。ArkWeb组件支持Resize和Offset两种模式。
 
-- Resize模式下，应用窗口高度可缩小避开软键盘，ArkWeb组件跟随ArkUI重新布局。
-- Offset模式下（以及默认模式），应用窗口高度不变，ArkWeb组件根据自身的避让模式进行避让。
+   - Resize模式下，应用窗口高度可缩小避开软键盘，ArkWeb组件跟随ArkUI重新布局。
+   - Offset模式下（以及默认模式），应用窗口高度不变，ArkWeb组件根据自身的避让模式进行避让。
 
-（1）设置UIContext的软键盘避让模式。
+   （1）设置UIContext的软键盘避让模式。
 
-ArkTS-Dyn示例：
+   ArkTS-Dyn示例：
 
-<!-- @[soft_keyboard_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+   <!-- @[soft_keyboard_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+   
+   ``` TypeScript
+   import { KeyboardAvoidMode } from '@kit.ArkUI';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   // ...
+   onWindowStageCreate(windowStage: window.WindowStage) {
+     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+   
+     windowStage.loadContent('pages/Index', (err, data) => {
+       let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
+       // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
+     windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+       if (err.code) {
+         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+         return;
+       }
+       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+     });
+   }
+   ```
 
-``` TypeScript
-import { KeyboardAvoidMode } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+   ArkTS-Sta示例：
 
-// ···
-onWindowStageCreate(windowStage: window.WindowStage) {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+   <!-- @[soft_keyboard_entryability_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+   
+   ``` TypeScript
+   import { KeyboardAvoidMode } from '@ohos.arkui.UIContext';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   // ...
+   onWindowStageCreate(windowStage: window.WindowStage): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+       try {
+       windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+       let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
+       // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
+       windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+       if (err && err.code) {
+         hilog.error(0x0000, 'testTag', 'Failed to load the content. ');
+         return;
+       }
+       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. ');
+     });
+   } catch (e) {
+     hilog.info(0x0000, 'testTag', 'loadContent catch error：-----------' + e.message);
+   }
+   ```
 
-  windowStage.loadContent('pages/Index', (err, data) => {
-    let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
-    // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
-  windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-    if (err.code) {
-      hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-      return;
-    }
-    hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-  });
-}
-```
+   （2）在Web组件中调起软键盘。
 
-ArkTS-Sta示例：
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+     <head>
+       <title>测试网页</title>
+     </head>
+     <body>
+       <h1>DEMO</h1>
+       <input type="text" id="input_a">
+     </body>
+   </html>
+   ```
 
-<!-- @[soft_keyboard_entryability_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+   ArkTS-Dyn示例：
 
-``` TypeScript
-'use static'
-import { KeyboardAvoidMode } from '@ohos.arkui.UIContext';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+   <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Index.ets
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct KeyboardAvoidExample {
+     controller: webview.WebviewController = new webview.WebviewController();
+     build() {
+       Column() {
+         Row().height("50%").width("100%").backgroundColor(Color.Gray)
+         Web({ src: $rawfile("index.html"),controller: this.controller})
+         Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
+       }.width('100%').height("100%")
+     }
+   }
+   ```
 
-// ···
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    try {
-    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
-    let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
-    // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-    if (err && err.code) {
-      hilog.error(0x0000, 'testTag', 'Failed to load the content. ');
-      return;
-    }
-    hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. ');
-  });
-} catch (e) {
-  hilog.info(0x0000, 'testTag', 'loadContent catch error:-----------' + e.message);
-}
-```
+   ArkTS-Sta示例：
 
-（2）在Web组件中调起软键盘。
+   <!-- @[soft_keyboard_index_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Index.ets
+   import webview from '@ohos.web.webview';
+   import { $rawfile, TextAlign, Color, Web, Entry, Text, Row, Column, ColumnOptions, Component } from '@ohos.arkui.component'
+   
+   @Entry
+   @Component
+   struct KeyboardAvoidExample {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
+     build() {
+       Column() {
+         Row().height("50%").width("100%").backgroundColor(Color.Gray)
+         Web({ src: $rawfile("index.html"),controller: this.controller})
+         Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
+       }.width('100%').height("100%")
+     }
+   }
+   ```
 
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>测试网页</title>
-  </head>
-  <body>
-    <h1>DEMO</h1>
-    <input type="text" id="input_a">
-  </body>
-</html>
-```
+   ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
-ArkTS-Dyn示例：
+   **图1**  Web组件网页默认软键盘避让模式
 
-<!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+   ![default-keyboardavoid](figures/default-keyboardavoid.png)
 
-``` TypeScript
-// Index.ets
-import { webview } from '@kit.ArkWeb';
+   **图2**  Web组件网页跟随ArkUI软键盘避让模式
 
-@Entry
-@Component
-struct KeyboardAvoidExample {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Row().height("50%").width("100%").backgroundColor(Color.Gray)
-      Web({ src: $rawfile("index.html"),controller: this.controller})
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
-    }.width('100%').height("100%")
-  }
-}
-```
+   ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
 
-ArkTS-Sta示例：
+2. 在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
 
-<!-- @[soft_keyboard_index_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+   - RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
+   - RESIZE_CONTENT：调整可视视口和布局视口的大小。
+   - OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
 
-``` TypeScript
-// Index.ets
-'use static'
-import webview from '@ohos.web.webview';
-import { $rawfile, TextAlign, Color, Web, Entry, Text, Row, Column, ColumnOptions, Component } from '@ohos.arkui.component'
+   >**说明：** 
+   >
+   >可视视口指用户正在看到的网站的区域，该区域的宽度等于移动设备的浏览器窗口的宽度。
+   >
+   >布局视口指网页本身的宽度。
 
-@Entry
-@Component
-struct KeyboardAvoidExample {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  build() {
-    Column() {
-      Row().height("50%").width("100%").backgroundColor(Color.Gray)
-      Web({ src: $rawfile("index.html"),controller: this.controller})
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
-    }.width('100%').height("100%")
-  }
-}
-```
+   在应用代码中设置ArkWeb的软键盘避让模式。
 
-ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
+   ArkTS-Dyn示例：
 
-**图1**  Web组件网页默认软键盘避让模式
+   <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+   
+   ``` TypeScript
+   // Index.ets
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct KeyboardAvoidExample {
+     controller: webview.WebviewController = new webview.WebviewController();
+     build() {
+       Column() {
+         Row().height('50%').width('100%').backgroundColor(Color.Gray)
+         Web({ src: $rawfile('index.html'),controller: this.controller})
+           .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
+         Text('I can see the bottom of the page')    
+           .width('100%')
+           .textAlign(TextAlign.Center)
+           .backgroundColor(Color.Pink)
+           .layoutWeight(1)
+       }.width('100%').height('100%')
+     }
+   }
+   ```
 
-![default-keyboardavoid](figures/default-keyboardavoid.png)
+   ArkTS-Sta示例：
 
-**图2**  Web组件网页跟随ArkUI软键盘避让模式
-
-![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
-
-2.在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
-
-- RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
-- RESIZE_CONTENT：调整可视视口和布局视口的大小。
-- OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
-
->**说明：** 
->
->可视视口指用户正在看到的网站的区域，该区域的宽度等于移动设备的浏览器窗口的宽度。
->
->布局视口指网页本身的宽度。
-
-在应用代码中设置ArkWeb的软键盘避让模式。
-
-ArkTS-Dyn示例：
-
- <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
-
-``` TypeScript
-// Index.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct KeyboardAvoidExample {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Row().height('50%').width('100%').backgroundColor(Color.Gray)
-      Web({ src: $rawfile('index.html'),controller: this.controller})
-        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小
-      Text('I can see the bottom of the page')    
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor(Color.Pink)
-        .layoutWeight(1)
-    }.width('100%').height('100%')
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-<!-- @[soft_keyboard_setmode_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
-
-``` TypeScript
-// Index.ets
-'use static'
-import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
-import webview from '@ohos.web.webview';
-
-@Entry
-@Component
-struct KeyboardAvoidExample {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Row().height('50%').width('100%').backgroundColor(Color.Gray)
-      Web({ src: $rawfile('index.html'),controller: this.controller})
-        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小
-      Text('I can see the bottom of the page')    
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor(Color.Pink)
-        .layoutWeight(1)
-    }.width('100%').height('100%')
-  }
-}
-```
+   <!-- @[soft_keyboard_setmode_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+   
+   ``` TypeScript
+   // Index.ets
+   import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
+   import webview from '@ohos.web.webview';
+   
+   @Entry
+   @Component
+   struct KeyboardAvoidExample {
+     controller: webview.WebviewController = new webview.WebviewController();
+     build() {
+       Column() {
+         Row().height('50%').width('100%').backgroundColor(Color.Gray)
+         Web({ src: $rawfile('index.html'),controller: this.controller})
+           .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
+         Text('I can see the bottom of the page')    
+           .width('100%')
+           .textAlign(TextAlign.Center)
+           .backgroundColor(Color.Pink)
+           .layoutWeight(1)
+       }.width('100%').height('100%')
+     }
+   }
+   ```
 
 
-ArkWeb组件根据避让模式进行避让，效果见图3。
+   ArkWeb组件根据避让模式进行避让，效果见图3。
 
-**图3**  Web组件网页自身软键盘避让模式
+   **图3**  Web组件网页自身软键盘避让模式
 
-![web-keyboardavoid](figures/web-keyboardavoid.png)
+   ![web-keyboardavoid](figures/web-keyboardavoid.png)
 
-3.在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
+3. 在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
 
-ArkTS-Dyn示例：
+   ArkTS-Dyn示例：
 
-<!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
+   <!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
+   
+   ``` TypeScript
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
+   
+     build() {
+       Column() {
+         Web({ src: 'www.example.com', controller: this.controller })
+           .width('100%').height('100%')
+           // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+           .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+       }
+     }
+   }
+   ```
 
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
+   ArkTS-Sta示例：
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   <!-- @[expandsafearea](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSafeAreaInsets/entry/src/main/ets/pages/expandSafeArea.ets) -->
+   
+   ``` TypeScript
+   import { Entry, Component, Web, Column, SafeAreaType, SafeAreaEdge } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
+   
+     build() {
+       Column() {
+         Web({ src: 'www.example.com', controller: this.controller })
+           .width('100%').height('100%')
+           // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+           .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+       }
+     }
+   }
+   ```
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .width('100%').height('100%')
-        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
-        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-    }
-  }
-}
-```
+   与其他Web组件行为的交互场景：
 
-ArkTS-Sta示例：
-
-<!-- @[expandsafearea](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSafeAreaInsets/entry/src/main/ets/pages/expandSafeArea.ets) -->
-
-``` TypeScript
-'use static'
-
-import { Entry, Component, Web, Column, SafeAreaType, SafeAreaEdge } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .width('100%').height('100%')
-        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
-        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-    }
-  }
-}
-```
-
-与其他Web组件行为的交互场景：
-
-| 交叉场景         | 规格                                       |
-| ------------ | ---------------------------------------- |
-| 同层渲染         | 同层Web：软键盘避让方式与普通场景相同。<br>同层系统组件：由ArkUI负责软键盘避让模式。 |
-| 离屏创建组件       | 默认使用与非离屏创建一致的软键盘避让模式，在添加至组件树前设置其他避让模式即可生效。   |
-| customDialog | customDialog自身避让。                        |
-| 折叠屏          | 软键盘避让行为与普通场景行为一致。屏幕软键盘将根据屏幕开合状态进行调整。    |
-| 软键盘托管        | 软键盘避让行为与普通场景行为一致。                        |
-| Web嵌套滚动      | 在嵌套滚动场景下，建议不要使用Web软键盘避让，包括RESIZE_VISUAL和RESIZE_CONTENT。 |
+   | 交叉场景         | 规格                                       |
+   | ------------ | ---------------------------------------- |
+   | 同层渲染         | 同层Web：软键盘避让方式与普通场景相同。<br>同层系统组件：由ArkUI负责软键盘避让模式。 |
+   | 离屏创建组件       | 默认使用与非离屏创建一致的软键盘避让模式，在添加至组件树前设置其他避让模式即可生效。   |
+   | customDialog | customDialog自身避让。                        |
+   | 折叠屏          | 软键盘避让行为与普通场景行为一致。屏幕软键盘将根据屏幕开合状态进行调整。    |
+   | 软键盘托管        | 软键盘避让行为与普通场景行为一致。                        |
+   | Web嵌套滚动      | 在嵌套滚动场景下，建议不要使用Web软键盘避让，包括RESIZE_VISUAL和RESIZE_CONTENT。 |
 
 
 
@@ -442,112 +436,112 @@ ArkTS-Dyn示例:
 <!-- @[soft_keyboard_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/OnIntKbdAttachSysCustIn.ets) -->
 
 ``` TypeScript
-  // Index.ets
-  import { webview } from '@kit.ArkWeb';
-  import { inputMethodEngine } from '@kit.IMEKit';
+// Index.ets
+import { webview } from '@kit.ArkWeb';
+import { inputMethodEngine } from '@kit.IMEKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    webKeyboardController: WebKeyboardController = new WebKeyboardController();
-    inputAttributeMap: Map<string, number> = new Map([
-        ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
-        ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
-        ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
-        ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
-        ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
-        ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
-        ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
-      ])
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  webKeyboardController: WebKeyboardController = new WebKeyboardController();
+  inputAttributeMap: Map<string, number> = new Map([
+      ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
+      ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
+      ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
+      ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
+      ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
+      ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
+      ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
+    ])
 
-      /**
-       * 自定义键盘组件Builder
-       */
-      @Builder
-      customKeyboardBuilder() {
-          // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作
-        Row() {
-          Text("完成")
-            .fontSize(20)
-            .fontColor(Color.Blue)
-            .onClick(() => {
-              this.webKeyboardController.close();
-            })
-          // 插入字符
-          Button("insertText").onClick(() => {
-            this.webKeyboardController.insertText('insert ');
-          }).margin({
-            bottom: 200,
+    /**
+     * 自定义键盘组件Builder
+     */
+    @Builder
+    customKeyboardBuilder() {
+    // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
+      Row() {
+        Text($r('app.string.custom_keyboard_done'))
+          .fontSize(20)
+          .fontColor(Color.Blue)
+          .onClick(() => {
+            this.webKeyboardController.close();
           })
-          // 从后往前删除length参数指定长度的字符
-          Button("deleteForward").onClick(() => {
-            this.webKeyboardController.deleteForward(1);
-          }).margin({
-            bottom: 200,
-          })
-          // 从前往后删除length参数指定长度的字符
-          Button("deleteBackward").onClick(() => {
-            this.webKeyboardController.deleteBackward(1);
-          }).margin({
-            left: -220,
-          })
-          // 插入功能按键
-          Button("sendFunctionKey").onClick(() => {
-            this.webKeyboardController.sendFunctionKey(6);
-          })
-        }
-      }
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-        .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
-          // option初始化，默认使用系统默认键盘
-          let option: WebKeyboardOptions = {
-            useSystemKeyboard: true,
-          };
-          if (!KeyboardCallbackInfo) {
-            return option;
-          }
-
-          // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为
-          this.webKeyboardController = KeyboardCallbackInfo.controller;
-          let attributes: Record<string, string> = KeyboardCallbackInfo.attributes;
-          // 遍历attributes
-          let attributeKeys = Object.keys(attributes);
-          for (let i = 0; i < attributeKeys.length; i++) {
-            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
-          }
-
-          if (attributes) {
-            if (attributes['data-keyboard'] == 'customKeyboard') {
-              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘
-              console.info('WebCustomKeyboard use custom keyboard');
-              option.useSystemKeyboard = false;
-              // 设置自定义键盘builder
-              option.customKeyboard = () => {
-                this.customKeyboardBuilder()
-              }
-              return option;
-            }
-
-            if (attributes['keyboard-return'] != undefined) {
-              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型
-              option.useSystemKeyboard = true;
-              let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return']);
-              if (enterKeyType != undefined) {
-                option.enterKeyType = enterKeyType;
-              }
-              return option;
-            }
-          }
-
-          return option;
+        // 插入字符。
+        Button('insertText').onClick(() => {
+          this.webKeyboardController.insertText('insert ');
+        }).margin({
+          bottom: 200,
+        })
+        // 从后往前删除length参数指定长度的字符。
+        Button('deleteForward').onClick(() => {
+          this.webKeyboardController.deleteForward(1);
+        }).margin({
+          bottom: 200,
+        })
+        // 从前往后删除length参数指定长度的字符。
+        Button('deleteBackward').onClick(() => {
+          this.webKeyboardController.deleteBackward(1);
+        }).margin({
+          left: -220,
+        })
+        // 插入功能按键。
+        Button('sendFunctionKey').onClick(() => {
+          this.webKeyboardController.sendFunctionKey(6);
         })
       }
     }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+      .onInterceptKeyboardAttach((keyboardCallbackInfo) => {
+        // option初始化，默认使用系统默认键盘
+        let option: WebKeyboardOptions = {
+          useSystemKeyboard: true,
+        };
+        if (!keyboardCallbackInfo) {
+          return option;
+        }
+
+        // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为
+        this.webKeyboardController = keyboardCallbackInfo.controller;
+        let attributes: Record<string, string> = keyboardCallbackInfo.attributes;
+        // 遍历attributes
+        let attributeKeys = Object.keys(attributes);
+        for (let i = 0; i < attributeKeys.length; i++) {
+          console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
+        }
+
+        if (attributes) {
+          if (attributes['data-keyboard'] == 'customKeyboard') {
+            // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘
+            console.info('WebCustomKeyboard use custom keyboard');
+            option.useSystemKeyboard = false;
+            // 设置自定义键盘builder
+            option.customKeyboard = () => {
+              this.customKeyboardBuilder()
+            }
+            return option;
+          }
+
+          if (attributes['keyboard-return'] != undefined) {
+            // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型
+            option.useSystemKeyboard = true;
+            let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return']);
+            if (enterKeyType != undefined) {
+              option.enterKeyType = enterKeyType;
+            }
+            return option;
+          }
+        }
+
+        return option;
+      })
+    }
   }
+}
 ```
 
 ArkTS-Sta示例：
@@ -556,7 +550,6 @@ ArkTS-Sta示例：
 
 ``` TypeScript
   // Index.ets
-  'use static'
   import { WebKeyboardCallbackInfo, WebKeyboardOptions, WebKeyboardController, $rawfile, Color, Text, Column, Row, Web, ColumnOptions, Entry, Component, Map, Button } from '@ohos.arkui.component';
   import webview from '@ohos.web.webview';
   import { inputMethodEngine } from '@kit.IMEKit';

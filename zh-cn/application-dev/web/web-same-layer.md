@@ -72,9 +72,9 @@ ArkWeb同层渲染特性主要提供两种能力：同层标签生命周期和�
 
 **同层标签支持的css属性：** 
 
-display，position，z-index，visibility，opacity, background-color，background-image，width，height，padding，padding-left，padding-top，padding-right，padding-bottom，margin，margin-left，margin-top，margin-right，margin-bottom，border-width，border-style，border-color，border-left-width，border-left-style，border-left-color，border-top-width，border-top-style，border-top-color，border-right-width，border-right-style，border-right-color，border-bottom-width，border-bottom-style，border-bottom-color，border-left，border-right，border-top，border-bottom，border，border-top-left-radius，border-top-right-radius，border-bottom-left-radius，border-bottom-right-radius，border-radius，transition，transform（仅支持translate/scale，scale对应参数只支持大于等于0的值）
+display，position，z-index，visibility，opacity, background-color，background-image，width，height，padding，padding-left，padding-top，padding-right，padding-bottom，margin，margin-left，margin-top，margin-right，margin-bottom，border-width，border-style，border-color，border-left-width，border-left-style，border-left-color，border-top-width，border-top-style，border-top-color，border-right-width，border-right-style，border-right-color，border-bottom-width，border-bottom-style，border-bottom-color，border-left，border-right，border-top，border-bottom，border，border-top-left-radius，border-top-right-radius，border-bottom-left-radius，border-bottom-right-radius，border-radius，transition，transform（支持translate/scale，scale对应参数只支持大于等于0的值。从API版本26.1.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16)将[EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16)中的supportTransformRotateAndSkew设为true，支持transform中的rotate和skew属性）
 
- 除上面支持的css属性范围，其他的css属性均不保证符合预期，比如transform属性中的rotate，skew等。
+ 除上面支持的css属性范围，其他的css属性均不保证符合预期。
 
 **同层标签的生命周期管理：** 
 当同层标签生命周期变化时触发[onNativeEmbedLifecycleChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11)回调。
@@ -3030,28 +3030,46 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 ### 同层渲染组件被拉伸该如何解决？
 
 - 组件高度过大
-  
+
   受GPU限制，同层标签存在8000px的高度限制，如果H5中同层标签高度过高，会存在组件被拉伸的情况，这时需要将同层标签的高度设为8000px以下。
+
+- transform rotate/skew变换导致
+
+  同层标签应用CSS transform中的rotate/skew变换后，画面会出现拉伸变形，从API版本26.1.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16)将[EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16)中的supportTransformRotateAndSkew设为true解决。
 
 - 自定义组件宽高未指定为同层渲染标签的宽高
 
   自定义的同层渲染组件宽高需要与同层标签的宽高保持一致，示例如下：
-  ```ts
-    @Component
-    struct TextInputComponent {
-      @Prop params: Params
-      @State bkColor: Color = Color.White
-
-      build() {
-        Column() {
-          TextInput({text: '', placeholder: 'please input your word...'})
-            .fontColor(Color.Black)
-        }
-        // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
-        .width(this.params.width)
-        .height(this.params.height)
+  <!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct TextInputComponent {
+    @Prop params: Params;
+    @State bkColor: Color = Color.White;
+  
+    build() {
+      Column() {
+        TextInput({text: '', placeholder: 'please input your word...'})
+          .placeholderColor(Color.Gray)
+          .id(this.params?.elementId)
+          .placeholderFont({size: 13, weight: 400})
+          .caretColor(Color.Gray)
+          .fontSize(14)
+          .fontColor(Color.Black)
       }
+      // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
+      .width(this.params.width)
+      .height(this.params.height)
     }
+  }
+  
+  // @Builder中为动态组件的具体组件内容。
+  @Builder
+  function textInputBuilder(params:Params) {
+    TextInputComponent({params: params})
+      .backgroundColor(Color.White)
+  }
   ```
 
 ### 如何将同层渲染组件捕获到的事件透传到Web前端？
@@ -3062,8 +3080,11 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 - 同层渲染开关[enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11)未开启
 
   使用同层渲染技术需要显式开启同层渲染开关
-  ```ts
-  Web({ src: $rawfile("text.html"), controller: this.controller })
+  <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  
+  ``` TypeScript
+  Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+  // ...
     // 配置同层渲染开关开启。
     .enableNativeEmbedMode(true)
   ```
@@ -3074,7 +3095,9 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 
 ### 涉及界面交互的ArkUI组件（如TextInput等）光标与输入框错位该如何解决？
 首先，需使用Stack包裹同层组件容器和BuilderNode。其次，同层组件容器NodeContainer应与同层标签的位置绑定。示例如下：
-```ts
+<!-- @[same_layer_and_same_tag_bundle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+ 
+``` TypeScript
 ForEach(this.componentIdArr, (componentId: string) => {
   NodeContainer(this.nodeControllerMap.get(componentId))
     // 同层组件容器应与同层标签的宽高和位置绑定。

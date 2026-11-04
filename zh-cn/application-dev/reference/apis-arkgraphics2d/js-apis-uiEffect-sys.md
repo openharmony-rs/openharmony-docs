@@ -154,7 +154,7 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -480,8 +480,8 @@ ArkTS-Sta: radiusGradientBlur(radius: double, gradientParam: LinearGradientBlurO
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| gradientParam  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -1021,9 +1021,9 @@ struct DisplacementDistort {
 ```
 
 ### maskDispersion<sup>20+</sup>
-ArkTS-Dyn: maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
+ArkTS-Dyn: maskDispersion(dispersionMap: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
 
-ArkTS-Sta: maskDispersion(dispersionMask: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double], bFactor?: [double, double]): Filter
+ArkTS-Sta: maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double], bFactor?: [double, double]): Filter
 
 为组件内容添加由置换贴图控制的色散效果。
 
@@ -1038,7 +1038,7 @@ ArkTS-Sta: maskDispersion(dispersionMask: Mask, alpha: double, rFactor?: [double
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| dispersionMask  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图。|
+| dispersionMap  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图。|
 | alpha  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 色散整体透明度，透明度越小效果越透明。取值范围为[0, 1.0]。透明度设置为0时色散效果不生效；透明度设置小于0的值时，按值为0处理；设置大于1.0的值时，按值为1.0处理。|
 | rFactor  | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double]         | 否   | X/Y方向上R通道的色散基础偏移，偏移越大红色色散效果越明显。每个方向上的取值范围为[-1.0, 1.0]。偏移设置小于-1.0的值时，按值为-1.0处理；设置大于1.0的值时，按值为1.0处理。|
 | gFactor  | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double]         | 否   | X/Y方向上G通道的色散基础偏移，偏移越大绿色色散效果越明显。取值范围同rFactor。|
@@ -1691,6 +1691,112 @@ struct example {
             this.angle,
             this.samples
           ))
+      }
+    }
+  }
+}
+```
+
+### mapColorByBrightness
+ 
+ArkTS-Dyn: mapColorByBrightness(colors: Array\<Color\>, positions: Array\<number\>): Filter
+
+ArkTS-Sta: mapColorByBrightness(colors: Array\<Color\>, positions: Array\<double\>): Filter
+
+根据输入的颜色数组和对应的亮度锚点位置，将图片的亮度分布映射为指定的颜色渐变效果。颜色映射为循环方式，如输入5个颜色并按亮度锚点位置从小到大排序，则颜色映射顺序依次为第1个、第2个、第3个、第4个、第5个，然后循环回到第1个。
+ 
+> **说明：**
+>
+> 建议作为前景滤镜使用。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**参数：**
+ 
+| 参数名      | 类型                       | 必填 | 说明                                                                                                                          |
+| ----------- | -------------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
+| colors      | Array\<[Color](#color20)\>   | 是   | 应用的颜色数组。每个颜色的各分量值（包括alpha）均参与映射，且必须大于等于0.0，推荐使用范围为[0.0, 1.0]。小于0.0时无效果。大于1.0时按1.0处理。数组长度范围为1到5，数组长度小于1时无效果；数组长度为1时为纯色效果；数组长度大于5时，效果仅应用前5个颜色。 |
+| positions   | ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<double\>              | 是   | 每个颜色对应的亮度锚点位置。亮度值越小对应图片中越暗的区域，0.0对应最暗（黑色），1.0对应最亮（白色）。取值范围为[0.0, 1.0]，超出范围时按边界值处理。数组长度必须与colors数组的长度一致，不一致时无效果。           |
+ 
+**返回值：**
+ 
+| 类型              | 说明                               |
+| ----------------- | ---------------------------------- |
+| [Filter](#filter) | 返回挂载了颜色亮度映射效果的Filter。 |
+ 
+**示例：**
+ 
+ArkTS-Dyn示例：
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+ 
+@Entry
+@Component
+struct Index {
+  @State colors: Array<uiEffect.Color> = [
+    { red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 },
+    { red: 1.0, green: 0.1, blue: 0.1, alpha: 1.0 },
+    { red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 }
+  ];
+  @State positions: Array<number> = [0.0, 0.5, 1.0];
+ 
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Image($r("app.media.startIcon"))
+          .width(200)
+          .height(200)
+          // 根据图片的明暗程度进行颜色渐变映射
+          .foregroundFilter(uiEffect.createFilter().mapColorByBrightness(this.colors, this.positions))
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import {
+  Entry,
+  Component,
+  State,
+  RelativeContainer,
+  Stack,
+  Image,
+  $r,
+} from '@kit.ArkUI';
+
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct example {
+  @State colors: Array<uiEffect.Color> = [
+    { red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 } as uiEffect.Color,
+    { red: 1.0, green: 0.1, blue: 0.1, alpha: 1.0 } as uiEffect.Color,
+    { red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 } as uiEffect.Color
+  ];
+  @State positions: Array<double> = [0.0, 0.5, 1.0];
+
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Image($r("app.media.startIcon"))
+          .width(200)
+          .height(200)
+          // 根据图片的明暗程度进行颜色渐变映射
+          .foregroundFilter(uiEffect.createFilter().mapColorByBrightness(this.colors, this.positions))
       }
     }
   }
@@ -2421,7 +2527,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlen
 | ----------------------------- | ------------------------------------------------- |
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。<br>**ArkTS-Dyn起始版本**: 12<br>**ArkTS-Sta起始版本**: 23 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。<br>**ArkTS-Dyn起始版本**: 20<br>**ArkTS-Sta起始版本**: 23 |
-| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**: 26.2.0 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**: 26.1.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -2465,7 +2571,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlen
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3802,6 +3908,8 @@ struct AtlasFrameMaskDemoTaihe {
 ## BrightnessBlenderParam
 BrightnessBlender参数列表。
 
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本:** 12
@@ -3827,7 +3935,7 @@ BrightnessBlender参数列表。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

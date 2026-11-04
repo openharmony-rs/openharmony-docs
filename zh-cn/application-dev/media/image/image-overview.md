@@ -61,13 +61,15 @@ Image Kit还提供了读取和[编辑图片EXIF信息](../image/image-tool.md)�
 
 ## 约束与限制
 
-- **读写权限限制：**
+<!--RP2--><!--RP2End-->
 
-  在图片处理中，可能需要使用用户图片，应用需要向用户申请对应的读写操作权限才能保证功能的正常运行，申请方式请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+### 读写权限限制
 
-- **选择合适的C API接口：**
-  
-  Image Kit当前提供了两套C API接口，分别为依赖于JS对象的C API（[Image](../../reference/apis-image-kit/capi-image.md)）和不依赖于JS对象的C API（[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)）。
+在图片处理中，可能需要使用用户图片，应用需要向用户申请对应的读写操作权限才能保证功能的正常运行，申请方式请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
+### 选择合适的C API接口
+
+Image Kit当前提供了两套C API接口，分别为依赖于JS对象的C API（[Image](../../reference/apis-image-kit/capi-image.md)）和不依赖于JS对象的C API（[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)）。
   - 依赖于JS对象的C接口
   
     这类接口可以完成图片编解码，图片接收器，处理图像数据等功能，相关示例代码可以参考[图片开发指导(依赖JS对象)(C/C++)](image-decoding-native.md)节点下的内容。开发者可查看[Image](../../reference/apis-image-kit/capi-image.md)模块下的C API，确认API范围。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。

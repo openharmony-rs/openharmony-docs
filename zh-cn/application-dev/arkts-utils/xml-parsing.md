@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用XmlPullParser解析XML的方法：包括解析XML标签和标签值、解析XML属性和属性值、解析XML事件类型和元素信息，并提供调用所有解析选项的完整场景示例，适用于从XML中提取业务数据。"
+keywords: [XML解析, XmlPullParser, 标签解析, 属性解析, 事件类型, 元素信息, 解析选项]
+doctype: guide
+status: active
+---
+
 # XML解析
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -19,9 +27,9 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 | -------- | -------- | -------- | -------- |
 | supportDoctype | boolean | 否 | 是否解析文档类型，false表示不解析文档类型，true表示解析文档类型，默认false。 |
 | ignoreNameSpace | boolean | 否 | 是否忽略命名空间，忽略命名空间后，将不会对其进行解析。true表示忽略命名空间，false表示不忽略命名空间，默认false。|
-| tagValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 获取tagValue回调函数，打印XML标签及标签值。默认为undefined，表示不解析XML标签和标签值。 |
-| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 获取attributeValue回调函数，打印XML属性及属性值。默认为undefined，表示不解析XML属性和属性值。 |
-| tokenValueCallbackFunction | (eventType: EventType, value: ParseInfo) =&gt; boolean | 否 | 获取tokenValue回调函数，打印XML事件类型及parseInfo对应属性。默认为undefined，表示不解析XML事件类型。 |
+| tagValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 获取tagValue()回调函数，打印XML标签及标签值。默认为undefined，表示不解析XML标签和标签值。 |
+| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 获取attributeValue()回调函数，打印XML属性及属性值。默认为undefined，表示不解析XML属性和属性值。 |
+| tokenValueCallbackFunction | (eventType: EventType, value: ParseInfo) =&gt; boolean | 否 | 获取tokenValue()回调函数，打印XML事件类型及parseInfo对应属性。默认为undefined，表示不解析XML事件类型。 |
 
 
 ## 注意事项

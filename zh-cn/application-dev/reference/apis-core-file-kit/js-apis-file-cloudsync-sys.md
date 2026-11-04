@@ -1,8 +1,8 @@
 # @ohos.file.cloudSync (端云同步能力)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
@@ -19,6 +19,22 @@
 ```ts
 import { cloudSync } from '@kit.CoreFileKit';
 ```
+
+## SyncType
+
+图库端云同步类型，为枚举类型。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| FORCE_THM | 0 | 强制缩略图同步。 |
 
 ## GallerySync
 
@@ -465,6 +481,120 @@ gallerySync.start((err: BusinessError<void> | null): void => {
     console.info("start sync successfully");
   }
 });
+```
+
+### startWithType
+
+startWithType(type: SyncType): Promise&lt;void&gt;
+
+按照指定类型启动图库媒体资源端云同步。使用Promise异步回调。
+
+> **说明：**
+>
+> Promise的then回调执行仅表示同步启动请求已受理，不表示整轮同步已完成。同步进度可通过[on('progress')](#onprogress)监听。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| type | [SyncType](#synctype) | 是 | 同步类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+
+gallerySync.startWithType(cloudSync.SyncType.FORCE_THM).then(() => {
+  console.info('start sync successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`start sync failed, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### startWithType
+
+startWithType(callback: Callback&lt;void&gt;, type: SyncType): void
+
+异步方法按照指定类型启动图库媒体资源端云同步。使用callback异步回调。
+
+> **说明：**
+>
+> 启动请求提交失败时，接口会立即抛出BusinessError，此时不会调用callback。请求提交成功后，callback会被异步调用，但这不表示整轮同步已完成。同步进度可通过[on('progress')](#onprogress)监听。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback&lt;void&gt; | 是 | 启动请求成功后的回调，无错误参数和返回数据。 |
+| type | [SyncType](#synctype) | 是 | 同步类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+
+try {
+  gallerySync.startWithType(() => {
+    console.info('start sync successfully.');
+  }, cloudSync.SyncType.FORCE_THM);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`start sync failed, code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### stop
@@ -1417,7 +1547,7 @@ getUploadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;UploadProgress&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1429,11 +1559,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileSync = new cloudSync.FileSync("com.ohos.demo");
 let uris: string[] = ["file:///data/storage/el2/cloud/1.txt", "file:///data/storage/el2/cloud/2.jpg"];
 
-fileSync.getUploadList(uris).then((progressList: cloudSync.UploadProgress[]) => {
+fileSync.getUploadList(uris).then((progressList: Array<cloudSync.UploadProgress>) => {
   console.info("get upload list successfully, count: " + progressList.length);
-  for (let i = 0; i < progressList.length; i++) {
-    console.info("file uri: " + progressList[i].uri + ", state: " + progressList[i].state);
-  }
+  progressList.forEach((item) => {
+    console.info("file uri: " + item.uri + ", state: " + item.state);
+  })
 }).catch((error: BusinessError) => {
   console.error("get upload list failed with error message: " + error.message + ", error code: " + error.code);
 });
@@ -1449,9 +1579,9 @@ let uris: Array<string> = ["file:///data/storage/el2/cloud/1.txt", "file:///data
 
 fileSync.getUploadList(uris).then((progressList: Array<cloudSync.UploadProgress>): void => {
   console.info("get upload list successfully, count: " + progressList.length);
-  for (let i = 0; i < progressList.length; i++) {
-    console.info("file uri: " + progressList[i].uri + ", state: " + progressList[i].state);
-  }
+  progressList.forEach((item) => {
+    console.info("file uri: " + item.uri + ", state: " + item.state);
+  })
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error("get upload list failed with error message: " + error.message + ", error code: " + error.code);
@@ -1689,7 +1819,7 @@ cleanCache(uri: string): void
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002  | No such file or directory. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -1708,7 +1838,7 @@ try {
 } catch (err) {
   let error: BusinessError = err as BusinessError;
   console.error(`clean cache failed with error message: ${error.message}, error code: ${error.code}`);
-} 
+}
 
 ```
 
@@ -1718,7 +1848,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 let path: string = "/data/storage/el2/cloud/1.txt";
 let uri: string = fileUri.getUriFromPath(path);
 try {
@@ -1767,7 +1897,7 @@ getDownloadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1777,7 +1907,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 let path1 = "/data/storage/el2/cloud/1.txt";
 let path2 = "/data/storage/el2/cloud/2.txt";
 let uri1 = fileUri.getUriFromPath(path1);
@@ -1787,11 +1917,11 @@ let uriArray = [uri1, uri2];
 try {
   fileCache.getDownloadList(uriArray).then((downloadList: Array<cloudSync.DownloadProgress>) => {
     console.info("get download list successfully");
-    for (let i = 0; i < downloadList.length; i++) {
-      console.info("download progress - uri: ".concat(downloadList[i].uri, ", state: ").concat(downloadList[i].state.toString()));
-      console.info("processed: ".concat(downloadList[i].processed.toString(), ", size: ").concat(downloadList[i].size.toString()));
-      console.info("error: ".concat(downloadList[i].error.toString()));
-    }
+    downloadList.forEach((item) => {
+      console.info("download progress - uri: ".concat(item.uri, ", state: ").concat(item.state.toString()));
+      console.info("processed: ".concat(item.processed.toString(), ", size: ").concat(item.size.toString()));
+      console.info("error: ".concat(item.error.toString()));
+    })
   }).catch((error: BusinessError) => {
     console.error("get download list failed with error message: " + error.message + ", error code: " + error.code);
   });
@@ -1807,7 +1937,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let fileCache: cloudSync.CloudFileCache = new cloudSync.CloudFileCache();
+let fileCache: cloudSync.CloudFileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 let path1: string = "/data/storage/el2/cloud/1.txt";
 let path2: string = "/data/storage/el2/cloud/2.txt";
 let uri1: string = fileUri.getUriFromPath(path1);
@@ -1817,11 +1947,11 @@ let uriArray: Array<string> = [uri1, uri2];
 try {
   fileCache.getDownloadList(uriArray).then((downloadList: Array<cloudSync.DownloadProgress>): void => {
     console.info("get download list successfully");
-    for (let i = 0; i < downloadList.length; i++) {
-      console.info("download progress - uri: ".concat(downloadList[i].uri, ", state: ").concat(downloadList[i].state.toString()));
-      console.info("processed: ".concat(downloadList[i].processed.toString(), ", size: ").concat(downloadList[i].size.toString()));
-      console.info("error: ".concat(downloadList[i].error.toString()));
-    }
+    downloadList.forEach((item) => {
+      console.info("download progress - uri: ".concat(item.uri, ", state: ").concat(item.state.toString()));
+      console.info("processed: ".concat(item.processed.toString(), ", size: ").concat(item.size.toString()));
+      console.info("error: ".concat(item.error.toString()));
+    })
   }).catch((error: BusinessError): void => {
     console.error("get download list failed with error message: " + error.message + ", error code: " + error.code);
   });
@@ -1870,7 +2000,7 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002  | No such file or directory. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -1881,9 +2011,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let uris: Array<string> = ["file://uri"];
 cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState>) => {
-  for(let i = 0, len = syncStates.length; i < len; i++){
-    console.info("get file sync state successfully" + syncStates[i]);
-  }
+  syncStates.forEach((item) => {
+    console.info("get file sync state successfully" + item);
+  })
 }).catch((err: BusinessError) => {
   console.error(`get file sync state failed with error message: ${err.message}, error code: ${err.code}`);
 });
@@ -1897,9 +2027,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let uris: Array<string> = ["file://uri"];
 cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState>): void => {
-  for(let i = 0, len = syncStates.length; i < len; i++){
-    console.info("get file sync state successfully" + syncStates[i]);
-  }
+  syncStates.forEach((item) => {
+    console.info("get file sync state successfully" + item);
+  })
 }).catch((err: BusinessError<void>): void => {
   console.error("get file sync state failed with error message: " + err.message + ", error code: " + err.code);
 });
@@ -1939,7 +2069,7 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002  | No such file or directory. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -1953,9 +2083,9 @@ cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSyn
   if (err) {
     console.error(`get file sync state with error message: ${err.message}, error code: ${err.code}`);
   } else {
-    for(let i = 0, len = syncStates.length; i < len; i++){
-      console.info("get file sync state successfully" + syncStates[i]);
-  }
+    syncStates.forEach((item) => {
+      console.info("get file sync state successfully" + item);
+    })
   }
 });
 ```
@@ -1974,9 +2104,9 @@ cloudSync.getFileSyncState(uris, (err: BusinessError<void> | null, syncStates: A
       console.error("get file sync state successfully, but syncStates is undefined.");
       return;
     }
-    for(let i = 0, len = syncStates.length; i < len; i++){
-      console.info("get file sync state successfully" + syncStates[i]);
-    }
+    syncStates.forEach((item) => {
+      console.info("get file sync state successfully" + item);
+    })
   }
 });
 ```
@@ -2021,7 +2151,7 @@ getFileSyncState(uri: string): FileSyncState
 | 13900012  | Permission denied by the file system. |
 | 13900031  | Function not implemented. |
 | 13900042  | Unknown error. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -2037,7 +2167,7 @@ try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
   let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
+  console.error("getFileSyncState failed with error: " + JSON.stringify(error));
 }
 ```
 
@@ -2052,7 +2182,7 @@ let uri: string = fileUri.getUriFromPath(path);
 try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
-  console.error("getFileSyncStatefailed with error: " + JSON.stringify(err));
+  console.error("getFileSyncState failed with error: " + JSON.stringify(err));
 }
 ```
 
@@ -2187,7 +2317,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
     console.info("optimize space successfully");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
@@ -2209,7 +2339,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress): void => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
     console.info("optimize space successfully");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
@@ -2260,7 +2390,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
     console.info("optimize space progress: " + data.progress);
   }
@@ -2277,7 +2407,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress): void => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
     console.info("optimize space progress: " + data.progress);
   }

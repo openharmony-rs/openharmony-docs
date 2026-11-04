@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行错误处理开发，包括抛出异常、创建Error对象、类型错误和范围错误等，帮助开发者在Node-API模块中管理和响应ArkTS异常。"
+keywords: [Node-API, 错误处理, 异常, napi_throw, Error, TypeError, RangeError, napi_throw_error, 错误管理]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行错误处理开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -60,7 +68,7 @@ static napi_value GetLastErrorInfo(napi_env env, napi_callback_info info)
     napi_status status = napi_get_value_int32(env, args[0], &value);
     // 接口使用错误，故返回值不为napi_ok
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "napi_get_value_int32 return status, status is not equal to napi_ok.");
+        OH_LOG_ERROR(LOG_APP, "napi_get_value_int32 return status, status is not equal to napi_ok.");
     }
     // 调用接口napi_get_last_error_info获取最后一次错误信息
     const napi_extended_error_info *errorInfo;
@@ -345,7 +353,7 @@ static napi_value NapiThrowBusinessError(napi_env env, napi_callback_info info)
 {
     napi_status status = napi_throw_business_error(env, INT_ARG_100, "error message");
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "napi_throw_business_error failed :: %{public}d", status);
+        OH_LOG_ERROR(LOG_APP, "napi_throw_business_error failed: %{public}d", status);
     }
     return nullptr;
 }

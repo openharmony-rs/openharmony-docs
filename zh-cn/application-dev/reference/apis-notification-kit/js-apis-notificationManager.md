@@ -28,7 +28,7 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -1362,8 +1362,6 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int): Promise\<void\>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
-
 **ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：23
@@ -1431,8 +1429,6 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int, callback: AsyncCallback\<void\>): vo
 角标是应用桌面图标右上角显示的数字标识，用于提示用户有未处理的通知数量。设定后，桌面图标将显示对应角标数字。适用于需要在桌面图标上提示用户待处理消息数量的场景，如未读消息数、待办事项数等。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2292,7 +2288,7 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10)替代。
+> 从API版本9开始支持，从API版本12开始废弃，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2342,7 +2338,7 @@ requestEnableNotification(): Promise\<void\>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10-1)替代。
+> 从API版本9开始支持，从API版本12开始废弃，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10-1)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2388,7 +2384,7 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
+> 从API版本9开始支持，从API版本26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2455,7 +2451,7 @@ isDistributedEnabled(): Promise\<boolean>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
+> 从API版本9开始支持，从API版本26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2809,7 +2805,7 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 
 [通知内容类型](../../notification/notification-glossary.md#content-type通知内容类型)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2850,7 +2846,7 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 
 不同类型对应不同的[SlotLevel](#slotlevel)，决定通知的提醒行为。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Notification
 

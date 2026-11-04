@@ -11,7 +11,7 @@ NotificationCommonDef中定义了通知相关接口中使用的通用数据结�
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
-> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## BundleOption
 
@@ -41,7 +41,7 @@ NotificationCommonDef中定义了通知相关接口中使用的通用数据结�
 | 名称   | 类型   | 只读 | 可选 | 说明   |
 | ------ | ------ | ----| -- |  ------ |
 | bundleName | string | 否  | 否 | 应用的包名。 |
-| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是  | 否 | 应用的分身索引标识，仅在分身应用中生效。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中appIndex获取。 |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 否 | 应用的分身索引标识，仅在分身应用中生效。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中appIndex获取。 |
 | appName    | string | 是  | 是 | 应用的名称。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中label获取。 |
 
 ## UserGrantSetting

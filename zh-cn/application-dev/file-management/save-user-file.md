@@ -44,8 +44,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -147,22 +146,22 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Dyn示例：
 
-   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
    ArkTS-Sta示例：
 
-   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let writeLen: long = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
    // ...
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
 
 ## 保存音频类文件
@@ -172,8 +171,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -264,23 +262,23 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Dyn示例：
 
-   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
 
    ArkTS-Sta示例：
 
-   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)--> 
    
    ``` TypeScript
    let writeLen: long = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
    // ...
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
 
 ## DOWNLOAD模式保存文件
@@ -300,8 +298,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -309,8 +306,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Sta示例：
 
    ```ts
-   import { fileUri } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    import picker from '@ohos.file.picker';

@@ -45,7 +45,7 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->    
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -99,7 +99,7 @@ async function initArguments(context: common.UIAbilityContext) {
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。本示例采样格式为SAMPLE_FORMAT_S16LE，因此静音数据填充0。
           view.setUint8(i, 0);
         }
       }
@@ -135,7 +135,7 @@ async function init() {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
       // ...
     }
   });
@@ -168,7 +168,7 @@ async function pause() {
   if (audioRenderer !== undefined) {
     // 只有渲染器状态为running的时候才能暂停。
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING) {
-      console.info('Renderer is not running');
+      console.error('Renderer is not running');
       // ...
       return;
     }
@@ -191,7 +191,7 @@ async function stop() {
     // 只有渲染器状态为running或paused的时候才可以停止。
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Renderer is not running or paused.');
+      console.error('Renderer is not running or paused.');
       // ...
       return;
     }
@@ -213,7 +213,7 @@ async function release() {
   if (audioRenderer !== undefined) {
     // 渲染器状态不是released状态，才能release。
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
-      console.info('Renderer already released');
+      console.error('Renderer already released');
       // ...
       return;
     }
@@ -234,7 +234,7 @@ async function release() {
 
 ArkTS-Sta示例：
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->    
 
 ``` TypeScript
 import audio from '@ohos.multimedia.audio'; // 导入audio模块。
@@ -312,7 +312,7 @@ async function initArguments(context: common.UIAbilityContext) {
         let startIndex = bufferLength.toInt();
         let endIndex = buffer.byteLength.toInt();
         for (let i: int = startIndex; i < endIndex; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。本示例采样格式为SAMPLE_FORMAT_S16LE，因此静音数据填充0。
           view.setUint8(i, 0);
         }
       }
@@ -337,7 +337,7 @@ async function init() {
     let renderer = await audio.createAudioRenderer(createAudioRendererOptions()); // 创建AudioRenderer实例。
     if (renderer === null) {
       const errorMsg = `${TAG}: creating AudioRenderer failed, renderer is null`;
-      console.info(errorMsg);
+      console.error(errorMsg);
       if (globalLogUpdate) {
         globalLogUpdate(errorMsg, true);
       }
@@ -348,7 +348,7 @@ async function init() {
     audioRenderer = renderer;
     renderer.onWriteData(writeDataCallback);
   } catch (error) {
-    console.info(`${TAG}: creating AudioRenderer failed, error: ${error}`);
+    console.error(`${TAG}: creating AudioRenderer failed, error: ${error}`);
     // ...
   }
 }
@@ -386,7 +386,7 @@ async function pause() {
   }
   // 只有渲染器状态为running的时候才能暂停。
   if (renderer.state !== audio.AudioState.STATE_RUNNING) {
-    console.info('Renderer is not running');
+    console.error('Renderer is not running');
     // ...
     return;
   }
@@ -411,7 +411,7 @@ async function stop() {
   // 只有渲染器状态为running或paused时才可以停止。
   if (state !== audio.AudioState.STATE_RUNNING &&
     state !== audio.AudioState.STATE_PAUSED) {
-    console.info('Renderer is not running or paused.');
+    console.error('Renderer is not running or paused.');
     // ...
     return;
   }
@@ -439,7 +439,7 @@ async function release() {
   }
   // 渲染器状态不是released状态，才能release。
   if (renderer.state === audio.AudioState.STATE_RELEASED) {
-    console.info('Renderer already released');
+    console.error('Renderer already released');
     // ...
     return;
   }
@@ -464,7 +464,7 @@ async function release() {
 
 ArkTS-Dyn示例：
 
-<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -565,7 +565,7 @@ async function stop() {
     // 只有采集器状态为STATE_RUNNING或STATE_PAUSED的时候才可以停止。
     if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Capturer is not running or paused');
+      console.error('Capturer is not running or paused');
       // ...
       return;
     }
@@ -590,7 +590,7 @@ async function release() {
     // 采集器状态不是STATE_RELEASED或STATE_NEW状态，才能release。
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
-      console.info('Capturer already released');
+      console.error('Capturer already released');
       // ...
       return;
     }
@@ -611,7 +611,7 @@ async function release() {
 
 ArkTS-Sta示例：
 
-<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->  
 
 ``` TypeScript
 import audio from '@ohos.multimedia.audio'; // 导入audio模块。
@@ -744,7 +744,7 @@ async function stop() {
   // 只有采集器状态为STATE_RUNNING或STATE_PAUSED时才可以停止。
   if (state !== audio.AudioState.STATE_RUNNING &&
     state !== audio.AudioState.STATE_PAUSED) {
-    console.info('Capturer is not running or paused');
+    console.error('Capturer is not running or paused');
     // ...
     return;
   }
@@ -775,7 +775,7 @@ async function release() {
   // 采集器状态不是STATE_RELEASED或STATE_NEW状态，才能release。
   if (state === audio.AudioState.STATE_RELEASED ||
     state === audio.AudioState.STATE_NEW) {
-    console.info('Capturer already released');
+    console.error('Capturer already released');
     // ...
     return;
   }

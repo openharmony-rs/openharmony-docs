@@ -93,12 +93,14 @@ P3广色域与HDR高动态范围成像：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
-function setColorSpace(session: camera.PhotoSession, colorSpaces: Array<colorSpaceManager.ColorSpace>): void {
-  if (colorSpaces === undefined || colorSpaces.length <= 0) {
+function setColorSpace(session: camera.PhotoSession, colorSpace: colorSpaceManager.ColorSpace): void {
+  let colors = session.getSupportedColorSpaces();
+  if (!colors.includes(colorSpace)) {
+    console.error(`invalid colorSpaces.`);
     return;
   }
   try {
-    session.setColorSpace(colorSpaces[0]);
+    session.setColorSpace(colorSpace);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setColorSpace call failed, error code: ${err.code}`);

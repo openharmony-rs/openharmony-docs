@@ -137,6 +137,24 @@ No available certificate for authorization.
 
 安装有效证书凭据。
 
+## 29700008 密码不正确
+
+**错误信息**
+
+The keystore file password is incorrect.
+
+**错误描述**
+
+密码不正确。
+
+**可能原因**
+
+调用安装证书对话框接口时，传入的密码与实际密码不一致。
+
+**处理步骤**
+
+传入正确的密码。
+
 ## 29700009 证书管理对话框操作超时
 
 **错误信息**

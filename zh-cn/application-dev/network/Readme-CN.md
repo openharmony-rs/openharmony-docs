@@ -18,7 +18,7 @@
     - [使用DNS解析域名](net-dns.md)
     - [使用HTTP全局拦截器 (C/C++)](native-httpinterceptor-guidelines.md)
 
-- 连接网络<!--network-kit-network-connecttion-->
+- 连接网络<!--network-kit-network-connection-->
     - [管理网络连接](net-connection-manager.md)
     - [管理网络连接(C/C++)](native-netmanager-guidelines.md)
     - [连接VPN](net-vpnExtension.md)<!--RP1--><!--RP1End-->
@@ -26,6 +26,8 @@
 - 管理网络<!--network-kit-network-management-->
     - [统计网络流量消耗](net-statistics.md)
     - [使用网络防火墙](net-netfirewall.md)
+    - [重定向网络流量(C/C++)](net-trafficfilter-redirect.md)
+    - [过滤网络报文(C/C++)](net-trafficfilter-packet.md)
     - [扩展认证](net-eap.md)
   
     <!--Del-->
