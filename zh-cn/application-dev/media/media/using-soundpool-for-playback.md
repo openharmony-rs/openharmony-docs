@@ -163,7 +163,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 11. 调用unload方法卸载音频资源。
 
      <!-- @[SoundPool_Unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      // 卸载音频资源。
      await this.soundPool!.unload(this.soundId);
