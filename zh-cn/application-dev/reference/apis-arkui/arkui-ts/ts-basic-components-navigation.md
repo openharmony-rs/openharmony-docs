@@ -1756,7 +1756,7 @@ NavPathInfo参数信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|-----|-----|-----|------|
-| timeout | number | 否 | 是 | 动画超时结束时间。<br> 单位：ms。<br/>取值范围：[0, +∞)。<br> 默认值：可交互动画无默认值，不可交互动画默认超时时间为1000ms。|
+| timeout | number | 否 | 是 | 动画超时结束时间，超过该时间后系统自动结束本次转场。<br> 单位：ms。<br/>取值范围：[0, +∞)。<br> 默认值：可交互动画默认无超时限制，未设置timeout时，需由开发者调用[finishTransition](#finishtransition)结束本次转场；不可交互动画默认超时时间为1000ms。|
 | transition | (transitionProxy:[NavigationTransitionProxy](#navigationtransitionproxy-11)) =&gt; void | 否 | 否 | 自定义转场动画执行回调。<br> transitionProxy：自定义转场动画代理对象。|
 | onTransitionEnd | (success:boolean)&nbsp;=>&nbsp;void | 否 | 是 | 转场完成回调。<br> success：转场是否成功。 |
 | isInteractive<sup>12+</sup> | boolean | 否 | 是 | 本次转场动画是否为可交互转场。<br/>true：本次转场动画是可交互转场；false：本次转场动画不是可交互转场。<br> 默认值：false|
