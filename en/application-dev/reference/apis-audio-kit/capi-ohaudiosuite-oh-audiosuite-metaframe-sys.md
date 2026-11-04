@@ -1,4 +1,4 @@
-# OH_AudioSuite_MetaFrame (System Interface)
+# OH_AudioSuite_MetaFrame (System API)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xxngwang-->

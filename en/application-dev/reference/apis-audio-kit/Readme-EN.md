@@ -28,18 +28,18 @@
     - [Enums](arkts-apis-audio-e.md)
     - [Constants](arkts-apis-audio-c.md)
     - [Types](arkts-apis-audio-t.md)
-  - [@ohos.multimedia.audioHaptic (audio haptics)](js-apis-audioHaptic.md)
-  - [@ohos.multimedia.systemSoundManager (system sound management)](js-apis-systemSoundManager.md)
+  - [@ohos.multimedia.audioHaptic (Audio-Haptic)](js-apis-audioHaptic.md)
+  - [@ohos.multimedia.systemSoundManager (System Sound Management)](js-apis-systemSoundManager.md)
   <!--Del-->
-  - [@ohos.multimedia.audio (audio management)(System API)](js-apis-audio-sys.md)
-  - [@ohos.multimedia.audioHaptic (audio haptics)(System API)](js-apis-audioHaptic-sys.md)
-  - [@ohos.multimedia.systemSoundManager (system sound management)(System API)](js-apis-systemSoundManager-sys.md)
+  - [@ohos.multimedia.audio (Audio Management) (System API)](js-apis-audio-sys.md)
+  - [@ohos.multimedia.audioHaptic (Audio-Haptic) (System API)](js-apis-audioHaptic-sys.md)
+  - [@ohos.multimedia.systemSoundManager (System Sound Management) (System API)](js-apis-systemSoundManager-sys.md)
   <!--DelEnd-->
   - multimedia<!--audio-multimedia-->
-    - [SystemSoundPlayer (sound effect player)](js-apis-inner-multimedia-systemSoundPlayer.md)
+    - [SystemSoundPlayer (Sound Effect Player)](js-apis-inner-multimedia-systemSoundPlayer.md)
     <!--Del-->
-    - [ringtonePlayer (ringtone player)(System API)](js-apis-inner-multimedia-ringtonePlayer-sys.md)
-    - [systemTonePlayer (System Tone Player)(System API)](js-apis-inner-multimedia-systemTonePlayer-sys.md)
+    - [ringtonePlayer (Ringtone Player) (System API)](js-apis-inner-multimedia-ringtonePlayer-sys.md)
+    - [systemTonePlayer (System Tone Player) (System API)](js-apis-inner-multimedia-systemTonePlayer-sys.md)
     <!--DelEnd-->
 - ArkTS Components<!--audio-comp-->
   - [@ohos.multimedia.avVolumePanel (Volume Panel)](ohos-multimedia-avvolumepanel.md)
@@ -135,7 +135,7 @@
     - [OH_MIDIClientStruct](capi-ohmidi-oh-midiclientstruct.md)
     - [OH_MIDIDeviceStruct](capi-ohmidi-oh-mididevicestruct.md)
 - Error Code<!--audio-arkts-errcode-->
-  - [Audio Error Code](errorcode-audio.md)
+  - [Audio Error Codes](errorcode-audio.md)
   <!--Del-->
-  - [Ringtone Error Code](errorcode-audio-ringtone-sys.md)
+  - [Ringtone Error Codes](errorcode-audio-ringtone-sys.md)
   <!--DelEnd-->

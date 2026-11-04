@@ -1,4 +1,4 @@
-# @ohos.app.form.formHost (formHost)(System API)
+# @ohos.app.form.formHost (formHost) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
