@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=7b6d71e47f53b837e962f24216c2c4fe674910ce translatedAt=2026-09-15T01:33:48.862Z pushedAt=2026-09-15T06:24:45.259Z -->
+<!-- md-trans-meta sourceCommit=ecaccbf249e6a7771624e675ca80e1f5142e1256 translatedAt=2026-11-03T06:49:26.667Z pushedAt=2026-11-04T03:11:19.927Z nl=1 -->
 
 The FormAgent module provides APIs for widget agent-related capabilities, currently including only requesting to publish a widget. It is applicable to scenarios where a system application needs to publish a widget to the widget host (such as the home screen), helping system applications conveniently request widget publishing and simplifying the widget publishing process.
 
@@ -36,7 +36,7 @@ Requests to publish a widget to the widget host. This API uses an asynchronous c
 
 | Name  | Type                               | Mandatory| Description                                                        |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Publish request, which must contain the following fields.<br>**bundleName**: **bundleName** of the target widget's owner app.<br>**abilityName**: ability of the target widget's owner app.<br>**parameters**:<br>- **ohos.extra.param.key.form_dimension**: target widget dimension. Values: **1** for 2x2, **2** for 2x4, **3** for 4x4, and so on. For details, see the widget configuration.<br>- **ohos.extra.param.key.form_name**: target widget name.<br>- **ohos.extra.param.key.module_name**: **moduleName** of the target widget.|
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Publish request, which must contain the following fields.<br>**bundleName**: bundleName of the application that owns the target card.<br>**abilityName**: ability of the application that owns the target card.<br>**parameters**:<br>- **ohos.extra.param.key.form_dimension**: target card dimension. The value is determined by the following rules: 1-2x2, 2-2x4, 3-4x4, and so on. For details about the dimensions, see the card configuration.<br>- ohos.extra.param.key.form_name: target card name.<br>- ohos.extra.param.key.module_name: moduleName of the target card.|
 | callback | AsyncCallback&lt;string&gt; | Yes | Callback used to return the widget ID asynchronously. The callback parameters are as follows: **error** indicates the error object, which is null if the operation is successful; **data** indicates the widget ID, which is a string. |
 
 **Error codes**
@@ -50,10 +50,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>Applicable Version: 26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 12+|
-| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
-| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>Applicable Version: 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>Applicable Version: 26.0.1 |
 
 **Example**
 
@@ -100,7 +100,7 @@ Requests to publish a widget to the widget host. This API uses a promise to retu
 
 | Name         | Type                                                        | Mandatory| Description                                                        |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Publish request, which must contain the following fields:<br>**bundleName**: bundle name of the target widget.<br>**abilityName**: ability of the target widget.<br>**parameters**:<br>- **ohos.extra.param.key.form_dimension**: dimension of the target widget.<br>- **ohos.extra.param.key.form_name**: name of the target widget.<br>- **ohos.extra.param.key.module_name**: module name of the target widget.|
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Publish request, which must contain the following fields.<br>bundleName: bundleName of the application that owns the target card.<br>abilityName: ability of the application that owns the target card.<br>parameters:<br>- ohos.extra.param.key.form_dimension: target card specification.<br>- ohos.extra.param.key.form_name: target card name.<br>- ohos.extra.param.key.module_name: moduleName of the target card. |
 
 **Return value**
 
@@ -119,10 +119,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>Applicable Version: 26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out.<br/>Applicable version: 12+ |
-| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
-| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>Applicable Version: 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>Applicable Version: 26.0.1 |
 
 **Example**
 
@@ -290,7 +290,7 @@ Requests to publish a widget to the widget host service on a remote device. This
 | ------ | ------ | ---- | -------|
 | peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | Yes | Information about the widget host service on the remote device. |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | Publish request, which must contain the following fields.<br>bundleName: Bundle name of the application that owns the target widget.<br>abilityName: Ability of the application that owns the target widget.<br>parameters:<br>- ohos.extra.param.key.form_dimension: Specification of the target widget.<br>- ohos.extra.param.key.form_name: Name of the target widget.<br>- ohos.extra.param.key.module_name: Module name of the target widget. |
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | No | Widget data used for the update. |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | No | Form data used for the update. The default value is empty. |
 
 **Return value**
 
@@ -347,6 +347,65 @@ let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData
 try {
   formAgent.requestPublishFormCrossDevice(peerServiceInfo, want, obj).then((data: formInfo.PublishFormCrossDeviceResult) => {
     console.info(`formAgent requestPublishFormCrossDevice success, form ID is: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formAgent.getVisibleFormRect
+
+getVisibleFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
+
+Obtains the position and size of the visible form area. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability:** SystemCapability.Ability.Form
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | -------|
+| formId | string | Yes | Form ID. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the position and size of the form relative to the upper left corner of the screen, in vp. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Card Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16500100 | Failed to obtain the configuration information. |
+| 16501001 | The ID of the form to be operated does not exist. |
+| 16501003 | The form cannot be operated by the current application. |
+
+**Example**
+
+```ts
+import { formAgent, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '123456789'; // Form ID. Replace it with the actual form ID.
+try {
+  formAgent.getVisibleFormRect(formId).then((data: formInfo.Rect) => {
+    console.info(`formAgent getVisibleFormRect success, left: ${data.left}, top: ${data.top},` +
+      `width: ${data.width}, height: ${data.height}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });

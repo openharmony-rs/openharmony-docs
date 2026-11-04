@@ -6,7 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=a6d1ecf9e75b8b70f5a7c31d0a647870288e2f5c translatedAt=2026-10-30T06:35:56.764Z pushedAt=2026-11-02T10:13:29.210Z nl=1 -->
+<!-- md-trans-meta sourceCommit=aaa6335d8ea5457389eca6d8980e9573be997e97 translatedAt=2026-11-03T06:41:58.778Z pushedAt=2026-11-04T03:11:19.889Z nl=1 -->
 
 ## Overview
 
@@ -31,8 +31,8 @@ Declares the APIs used to obtain details of specific certificates.
 | [int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_getukeycertificate) | Obtains the detail list of USB certificate credentials.|
 | [int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#oh_certmanager_getprivatecertificate) | Obtains the details of a private certificate credential of a specific application.|
 | [int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#oh_certmanager_getpubliccertificate) | Obtains the details of a public certificate credential of a specific user.|
-| [void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_freeukeycertificate) | Destroys the certificate detail list.|
-| [void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)](#oh_certmanager_freecredential) | Destroys the certificate details.|
+| [void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_freeukeycertificate) | Destroys the certificate detail list. |
+| [void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)](#oh_certmanager_freecredential) | Destroys the certificate details. |
 
 ## Function Description
 
@@ -126,7 +126,7 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 
 **Description**
 
-Destroys the certificate credential detail list.
+Destroys the certificate detail list.
 
 **Since**: 22
 

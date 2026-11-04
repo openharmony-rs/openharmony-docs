@@ -6,6 +6,7 @@
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=7714e75928f3cb7dd2680055b10ed6834406a97c translatedAt=2026-11-03T07:01:52.477Z pushedAt=2026-11-04T03:11:19.950Z nl=1 -->
 
 > **NOTE**
 >
@@ -151,7 +152,7 @@ Represents the configuration options of the recent images or videos.
 
 | Name                   | Type                                                                                    | Read-Only| Optional | Description  |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | No   | Yes| Time range for displaying the recent images or videos, measured in seconds. After setting, the system shows images or videos taken within the specified time from the current moment. The longest duration you can set is 1 day (86400s).<br>If the value is less than or equal to 0, greater than 86400, or not set, the system uses the longest duration (1 day) by default. If there are no images or videos within the set time range, the component does not show anything.|
+| period                  | number                                                                                  | No    | Yes | Configures the time range, in seconds (s), for displaying the latest image or video. After configuration, the system displays the latest image or video sorted by creation time within the specified duration from the current time.<br>- Before API version 26.0.1, the maximum configurable duration is 1 day (86400 seconds). When the value is less than or equal to 0, greater than 86400, or not configured, the latest image or video is displayed by default within the maximum time range (1 day).<br>- Starting from API version 26.0.1, the maximum configurable duration (INT_MAX) is 2147483647 seconds. When the value is positive infinity (Number.POSITIVE_INFINITY), the system displays the latest image or video within the INT_MAX time range. When the value is less than or equal to 0, greater than INT_MAX, or not configured, it is processed as 1 day by default.<br>When no image or video matches within the configured time range, the component displays nothing.|
 | MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | No   | Yes| Types of the file displayed. The default value is **PhotoViewMIMETypes.IMAGE_VIDEO_TYPE**.                       |
 | photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | No   | Yes| Source of the recent image or video, for example, image or video taken by the camera or screenshot. By default, the source is not restricted.            |
 

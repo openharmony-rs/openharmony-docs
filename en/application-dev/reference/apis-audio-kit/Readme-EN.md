@@ -1,12 +1,13 @@
-# Audio Kit
+# Audio Kit (Audio Service)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=96c2f543d580d0d2b2dabb53953551af3ab0252e translatedAt=2026-11-03T04:52:13.124Z pushedAt=2026-11-04T03:11:47.078Z nl=1 -->
 
-- ArkTS APIs<!--audio-arkts-->
+- ArkTS API<!--audio-arkts-->
   - @ohos.multimedia.audio (Audio Management)<!--js-apis-audio-->
     - [Module Description](arkts-apis-audio.md)
     - [Functions](arkts-apis-audio-f.md)
@@ -27,22 +28,22 @@
     - [Enums](arkts-apis-audio-e.md)
     - [Constants](arkts-apis-audio-c.md)
     - [Types](arkts-apis-audio-t.md)
-  - [@ohos.multimedia.audioHaptic (Audio-Haptic)](js-apis-audioHaptic.md)
-  - [@ohos.multimedia.systemSoundManager (System Sound Management)](js-apis-systemSoundManager.md)
+  - [@ohos.multimedia.audioHaptic (audio haptics)](js-apis-audioHaptic.md)
+  - [@ohos.multimedia.systemSoundManager (system sound management)](js-apis-systemSoundManager.md)
   <!--Del-->
-  - [@ohos.multimedia.audio (Audio Management) (System API)](js-apis-audio-sys.md)
-  - [@ohos.multimedia.audioHaptic (Audio-Haptic) (System API)](js-apis-audioHaptic-sys.md)
-  - [@ohos.multimedia.systemSoundManager (System Sound Management) (System API)](js-apis-systemSoundManager-sys.md)
+  - [@ohos.multimedia.audio (audio management)(System API)](js-apis-audio-sys.md)
+  - [@ohos.multimedia.audioHaptic (audio haptics)(System API)](js-apis-audioHaptic-sys.md)
+  - [@ohos.multimedia.systemSoundManager (system sound management)(System API)](js-apis-systemSoundManager-sys.md)
   <!--DelEnd-->
   - multimedia<!--audio-multimedia-->
-    - [SystemSoundPlayer (Sound Effect Player)](js-apis-inner-multimedia-systemSoundPlayer.md)
+    - [SystemSoundPlayer (sound effect player)](js-apis-inner-multimedia-systemSoundPlayer.md)
     <!--Del-->
-    - [ringtonePlayer (Ringtone Player) (System API)](js-apis-inner-multimedia-ringtonePlayer-sys.md)
-    - [systemTonePlayer (System Tone Player) (System API)](js-apis-inner-multimedia-systemTonePlayer-sys.md)
+    - [ringtonePlayer (ringtone player)(System API)](js-apis-inner-multimedia-ringtonePlayer-sys.md)
+    - [systemTonePlayer (System Tone Player)(System API)](js-apis-inner-multimedia-systemTonePlayer-sys.md)
     <!--DelEnd-->
 - ArkTS Components<!--audio-comp-->
   - [@ohos.multimedia.avVolumePanel (Volume Panel)](ohos-multimedia-avvolumepanel.md)
-- C APIs<!--audio-c-->
+- C API<!--audio-c-->
   - Modules<!--audio-module-->
     - [OHAudio](capi-ohaudio.md)
     - [OHAudioSuite](capi-ohaudiosuite.md)
@@ -56,6 +57,9 @@
     - [native_audio_volume_manager.h](capi-native-audio-volume-manager-h.md)
     - [native_audiorenderer.h](capi-native-audiorenderer-h.md)
     - [native_audio_common.h](capi-native-audio-common-h.md)
+    - [native_audio_accessory_common.h](capi-native-audio-accessory-common-h.md)
+    - [native_audio_accessory_manager.h](capi-native-audio-accessory-manager-h.md)
+    - [native_audio_accessory_input_stream_manager.h](capi-native-audio-accessory-input-stream-manager-h.md)
     - [native_audio_converter.h](capi-native-audio-converter-h.md)
     - [native_audio_device_base.h](capi-native-audio-device-base-h.md)
     - [native_audio_debugging_manager.h](capi-native-audio-debugging-manager-h.md)
@@ -65,7 +69,7 @@
     - [native_audiostreambuilder.h](capi-native-audiostreambuilder-h.md)
     - [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
     <!--Del-->
-    - [native_audio_suite_download_manager.h](capi-native-audio-suite-download-manager-h.md)
+    - [native_audio_suite_download_manager.h (System API)](capi-native-audio-suite-download-manager-h-sys.md)
     <!--DelEnd-->
     - [native_audio_suite_engine.h](capi-native-audio-suite-engine-h.md)
     - [native_audio_session_base.h](capi-native-audio-session-base-h.md)
@@ -86,6 +90,12 @@
     - [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md)
     - [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md)
     - [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md)
+    - [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md)
+    - [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md)
+    - [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md)
+    - [OH_AudioAccessoryInfo](capi-ohaudio-oh-audioaccessoryinfo.md)
+    - [OH_AudioAccessoryNoiseReductionCapability](capi-ohaudio-oh-audioaccessorynoisereductioncapability.md)
+    - [OH_AudioAccessoryCapabilities](capi-ohaudio-oh-audioaccessorycapabilities.md)
     - [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md)
     - [OH_AudioRenderer_Callbacks_Struct](capi-ohaudio-oh-audiorenderer-callbacks-struct.md)
     - [OH_AudioCapturer_Callbacks_Struct](capi-ohaudio-oh-audiocapturer-callbacks-struct.md)
@@ -93,16 +103,23 @@
     - [OH_AudioRendererStruct](capi-ohaudio-oh-audiorendererstruct.md)
     - [OH_AudioCapturerStruct](capi-ohaudio-oh-audiocapturerstruct.md)
     - [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md)
+    <!--Del-->
+    - [OH_AudioSuite_SystemNodeFormat (System API)](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md)
+    <!--DelEnd-->
     - [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)
+    <!--Del-->
+    - [OH_AudioSuite_MetaFrame (System API)](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md)
+    <!--DelEnd-->
     - [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md)
     - [OH_AudioSuiteEngineStruct](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)
     - [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)
     - [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md)
     - [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md)
     <!--Del-->
-    - [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo.md)
-    - [OH_AudioSuite_DownloadStatusInfoArray](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray.md)
-    - [OH_AudioSuite_DownloadManagerStruct](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md)
+    - [OH_AudioSuite_DownloadStatusInfo (System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md)
+    - [OH_AudioSuite_DownloadStatusInfoArray (System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md)
+    - [OH_AudioSuite_DownloadManagerStruct (System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md)
+    - [OH_AudioSuite_FeatureVersionInfo (System API)](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md)
     <!--DelEnd-->
     - [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)
     - [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)
@@ -117,8 +134,8 @@
     - [OH_MIDICallbacks](capi-ohmidi-oh-midicallbacks.md)
     - [OH_MIDIClientStruct](capi-ohmidi-oh-midiclientstruct.md)
     - [OH_MIDIDeviceStruct](capi-ohmidi-oh-mididevicestruct.md)
-- Error Codes<!--audio-arkts-errcode-->
-  - [Audio Error Codes](errorcode-audio.md)
+- Error Code<!--audio-arkts-errcode-->
+  - [Audio Error Code](errorcode-audio.md)
   <!--Del-->
-  - [Ringtone Error Codes](errorcode-audio-ringtone-sys.md)
+  - [Ringtone Error Code](errorcode-audio-ringtone-sys.md)
   <!--DelEnd-->

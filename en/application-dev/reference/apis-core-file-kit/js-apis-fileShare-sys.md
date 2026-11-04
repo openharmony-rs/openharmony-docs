@@ -5,6 +5,7 @@
 <!--Designer: @rainlost-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=43cd69d89ed4f07acd685a4381dc8b048910320c translatedAt=2026-11-03T04:52:15.443Z pushedAt=2026-11-04T03:11:33.549Z nl=1 -->
 
 This module provides APIs for sharing files, which allows a system app to grant the access permissions on a file in the public directory to another app based on the file Uniform Resource Identifier (URI). It also provides APIs for verifying the authorization status, as well as managing temporary and persistent authorization. The authorized app can perform operations such as open, read, and write on the file by calling the [@ohos.file.fs](js-apis-file-fs.md) APIs, implementing file sharing between system apps and access control on files in the public directory.
 
@@ -27,7 +28,7 @@ Describes the directory shared by an app.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**System API:** This is a system API. 
+**System API:** This is a system API.  
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -43,9 +44,9 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
 
 Grants temporary permissions to access URIs of files in the public directory to an app. This API uses an asynchronous callback to return the result.
 
-**Required permissions:** ohos.permission.WRITE_MEDIA 
+**Required permissions:** ohos.permission.WRITE_MEDIA  
 
-**System API:** This is a system API. 
+**System API:** This is a system API.  
 
 **System capability:** SystemCapability.FileManagement.AppFileService
 
@@ -100,11 +101,11 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
 
 Grants temporary permissions to access URIs of files in the public directory to an app. This API uses a promise to return the result.
 
-**Required permissions:** ohos.permission.WRITE_MEDIA 
+**Required permissions:** ohos.permission.WRITE_MEDIA  
 
-**System API:** This is a system API. 
+**System API:** This is a system API.  
 
-**System capability:** SystemCapability.FileManagement.AppFileService 
+**System capability:** SystemCapability.FileManagement.AppFileService  
 
 **Parameters**
 
@@ -228,7 +229,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, appCloneIndex: number): Promise&lt;void&gt;
 
-Grants temporary permissions to access a file to an app. This API uses a promise to return the result. Temporary permissions can be revoked using **revokePermission** when they are no longer needed.
+Grants the target file temporary permission to an application, using a Promise for asynchronous callback.
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -399,7 +400,7 @@ async function grantSharedDirectoryPermission() {
 
 revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
-Revokes the temporary permissions to access the directory shared by an app. This API uses a promise to return the result. This API is used to revoke the temporary permissions to access the directory granted by **grantSharedDirectoryPermission**.
+Revokes the temporary access permission to the application's contribution directory. Uses a Promise for asynchronous callback.
 
 **Since:** 26.0.0
 
@@ -451,7 +452,7 @@ async function revokeSharedDirectoryPermission() {
 
 revokePermission(tokenID: number): Promise&lt;void&gt;
 
-Revokes all persistent permissions to access files for specified apps. This API uses a promise to return the result. To revoke persistent permissions to access a specified URI, use **revokePermission(tokenID, policies)**.
+Revokes all persistent file authorizations of the specified application, using a Promise for asynchronous callback.
 
 **Since:** 26.0.0
 
@@ -511,7 +512,7 @@ async function revokeAllPermissionExample() {
 
 revokePermission(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-Revokes persistent permissions to access URIs for specified apps. This API uses a promise to return the result. This method revokes permissions to access only the URIs specified by policies. To revoke all persistent permissions for a specified app, use **revokePermission(tokenID)**.
+Revokes the persistent authorization of the specified application to the URI, using a Promise for asynchronous callback. This overload revokes only the URI authorization specified by policies.
 
 **Since:** 26.0.0
 
@@ -546,7 +547,7 @@ If the permission to access some URIs fails to be revoked, error code 13900001 i
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | The caller is not a system application.|
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Invalid policy size.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid policy size. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
@@ -643,6 +644,238 @@ async function getPersistentPolicyExample() {
     });
   } catch (error) {
     console.error(`get persist policy failed with error, Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+## GrantStatus
+
+Enumerates the status of the URI permission granted to a user.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| DENIED | -1 | The URI permission is not granted. |
+| GRANTED | 0 | The URI permission is granted. |
+
+## PermissionStatusInfo
+
+URI permission status information of the application.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| tokenID | number | Yes | No | Access token identifier of the application. |
+| policyInfo | [PolicyInfo](js-apis-fileShare.md#policyinfo11) | Yes | No | Policy information of the URI permission. |
+| grantStatus | [GrantStatus](#grantstatus) | Yes | No | Authorization status of the URI permission. |
+
+## fileShare.grantPermissionByUser
+
+grantPermissionByUser(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
+
+Grants URI permissions to a user. This API uses an asynchronous callback to return the result. After successful authorization, the GRANTED status can be queried through [getStatusByPermission](#filesharegetstatusbypermission)().
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required Permission:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| tokenID | number | Yes | Access token identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md) in the application's [BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md). |
+| policies | Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)&gt; | Yes | Array of policy information for the URIs to be authorized. The upper limit of the policies array size is 500. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Code Description Document](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 13900001 | Operation not permitted. |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function grantPermissionByUserExample() {
+  try {
+    let tokenID = 537688848; // System applications can obtain it through bundleManager.getApplicationInfo.
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: 'file://docs/storage/Users/currentUser/Images',
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
+    fileShare.grantPermissionByUser(tokenID, policies).then(() => {
+      console.info('grantPermissionByUser success');
+    }).catch((err: BusinessError) => {
+      console.error(`grantPermissionByUser failed, Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    console.error(`grantPermissionByUser error, Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+## fileShare.getStatusByPermission
+
+getStatusByPermission(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
+
+Obtains the status of URI permissions. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required Permission:** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| tokenIDList | Array&lt;number&gt; | Yes | Array of access token identifiers of the target application. Each array element is an integer. The upper limit of the tokenIDList array size is 500. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;Array&lt;[PermissionStatusInfo](#permissionstatusinfo)&gt;&gt; | Promise object that returns the array of URI permission status information of the application. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Code Description Document](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 13900001 | Operation not permitted. |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function getStatusByPermissionExample() {
+  try {
+    let tokenIDList: Array<number> = [537688848, 537688849]; // System applications can obtain it through bundleManager.getApplicationInfo.
+    fileShare.getStatusByPermission(tokenIDList).then((result: Array<fileShare.PermissionStatusInfo>) => {
+      for (let info of result) {
+        console.info(`tokenID=${info.tokenID}, grantStatus=${info.grantStatus}, uri=${info.policyInfo.uri}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`getStatusByPermission failed, Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    console.error(`getStatusByPermission error, Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+## fileShare.revokePermissionByUser
+
+revokePermissionByUser(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
+
+Revokes URI permissions for a user. This API uses an asynchronous callback to return the result. After the revocation succeeds, the DENIED status can be queried through [getStatusByPermission](#filesharegetstatusbypermission)().
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required Permission:** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
+
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| tokenID | number | Yes | Access token identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md) in the application [BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md). |
+| policies | Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)&gt; | Yes | Policy information array of the URIs whose authorization is to be revoked. The upper limit of the policies array size is 500. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Code Description Document](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 13900001 | Operation not permitted. |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function revokePermissionByUserExample() {
+  try {
+    let tokenID = 537688848; // System applications can obtain it through bundleManager.getApplicationInfo.
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: 'file://docs/storage/Users/currentUser/Images',
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
+    fileShare.revokePermissionByUser(tokenID, policies).then(() => {
+      console.info('revokePermissionByUser success');
+    }).catch((err: BusinessError) => {
+      console.error(`revokePermissionByUser failed, Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    console.error(`revokePermissionByUser error, Code: ${error.code}, message: ${error.message}`);
   }
 }
 ```

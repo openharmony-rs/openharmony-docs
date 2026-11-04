@@ -5,6 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=fa9d8beb34c9c36d5c088263fe228c1ceec6f643 translatedAt=2026-11-03T04:32:03.125Z pushedAt=2026-11-04T03:11:33.522Z nl=1 -->
 
 This module is the core module of Core File Kit. It provides APIs for basic file operations, such as creating, opening, reading, writing, copying, moving, deleting, and querying files and directories in the application sandbox.
 
@@ -4405,6 +4406,8 @@ Creates a **RandomAccessFile** instance based on a file path or file object. Thi
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
+**Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5374,7 +5377,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isBLockDevice = fileIo.statSync(filePath).isBlockDevice();
+  let isBlockDevice = fileIo.statSync(filePath).isBlockDevice();
   ```
 
 ### isCharacterDevice
