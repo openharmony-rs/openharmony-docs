@@ -8743,4 +8743,3 @@ Allows an application to configure the capability of unlocking devices via enter
 **Supported devices**: PCs/2-in-1 devices
  
 **Valid since**: 26.0.1
-
