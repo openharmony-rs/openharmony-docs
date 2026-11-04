@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T05:11:17.871Z pushedAt=2026-11-04T08:04:44.752Z nl=1 -->
 
 The **browser** module provides browser management, including setting, canceling, and obtaining browser policies.
 
@@ -28,7 +29,7 @@ import { browser } from '@kit.MDMKit';
 
 setPolicies(admin: Want, appId: string, policies: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the browsing policy for a specified browser. This API uses an asynchronous callback to return the result.
+Sets browser policies for the specified browser. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 26.0.0
 
@@ -90,7 +91,7 @@ browser.setPolicies(wantTemp, appId, policies, (err) => {
 
 setPolicies(admin: Want, appId: string, policies: string): Promise&lt;void&gt;
 
-Sets the browsing policy for a specified browser. This API uses a promise to return the result.
+Sets browser policies for the specified browser. This API uses a promise to return the result.
 
 **Deprecated since:** 26.0.0
 

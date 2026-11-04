@@ -27,6 +27,8 @@ enableControlCenter(enabled: boolean): void
 
 使能相机控制器。
 
+使能前需先通过[isControlCenterSupported](arkts-apis-camera-ControlCenterQuery.md#iscontrolcentersupported20)查询当前会话是否支持相机控制器。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

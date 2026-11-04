@@ -1,10 +1,11 @@
 # @ohos.file.cloudSyncManager (Device-Cloud Sync Management) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=cc1b47676eee26de6dfb56618584b714fd3922f9 translatedAt=2026-11-04T04:12:07.570Z pushedAt=2026-11-04T10:12:33.464Z nl=1 -->
 
 The **cloudSyncManager** module provides APIs for managing device-cloud sync for applications. You can use the APIs to enable or disable device-cloud sync, change the device-cloud sync switch for an application, notify cloud data changes, clear or retain cloud files when a cloud account exits, and perform full download.
 
@@ -511,8 +512,6 @@ Enumerates the actions that can be taken to clear local cloud data.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
-**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
 | Name|  Value|  Description|
 | ----- |  ---- |  ---- |
 | RETAIN_DATA |  0 |  Clear the cloud identifier but retain the files cached locally.|
@@ -832,7 +831,121 @@ if (needStop) {
 }
 ```
 
-  ## LocalFilePresentStatus<sup>23+</sup>
+### startTransfer
+
+startTransfer(targetUri: string, callback: Callback&lt;TransferProgress&gt;): void
+
+Transfers files that have been downloaded locally in the cloud disk directory to the specified directory, and reports the transfer progress through a callback during the process. This API uses an asynchronous callback.
+
+Repeated triggering of a migration task will throw an error (22400006).
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
+| targetUri | string | Yes | URI of the path used to store the migrated files. It must be prefixed with "file://docs/storage/Users/currentUser/". |
+| callback | Callback&lt;[TransferProgress](js-apis-file-cloudsyncmanager-sys.md#transferprogress)&gt; | Yes | Callback used to return the transfer progress. |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                                                                                                                                          |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201      | Permission verification failed.                                                                                                                                                   |
+| 202      | The caller is not a system application.                                                                                                                                           |
+| 13900001 | Operation not permitted. Possible causes:<br>1.The DowngradeDownload task is running.<br>2.The full data synchronization task is running.                                         |
+| 13900002 | No such file or directory.                                                                                                                                                        |
+| 13900010 | Try again.                                                                                                                                                                        |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified.<br>2.The length of the input uri does not meet the value range requirement.<br>3.The input uri does not belong to a File Manager public directory. |
+| 22400006 | The same task is already in progress.                                                                                                                                             |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetPath: string = "file://docs/storage/Users/currentUser/Download/";
+try {
+    let downgradeMgr = new cloudSyncManager.DowngradeDownload("com.demo");
+    downgradeMgr.startTransfer(targetPath, (data: cloudSyncManager.TransferProgress) => {
+        console.info(`Transfer progress: successfulCount: ${data.successfulCount}, totalCount: ${data.totalCount}`);
+    });
+} catch (err) {
+    let e = err as BusinessError;
+    console.error("transfer files failed with error message: " + e.message + ", error code: " + e.code);
+}
+```
+
+## TransferProgress
+
+Progress information of the migration task.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| Name            | Type                                        | Read-Only | Optional | Description                                                                          |
+| --------------- | ------------------------------------------- | --------- | -------- | ------------------------------------------------------------------------------------ |
+| state           | [TransferState](#transferstate)             | No        | No       | State of the migration task.                                                                 |
+| successfulCount | number                                      | No        | No       | Number of migrated files. Value range: [0, INT32_MAX], unit: file. Returns -1 when the progress is abnormal. |
+| failedCount     | number                                      | No        | No       | Number of files that failed to migrate. Value range: [0, INT32_MAX], unit: file. Returns -1 when the progress is abnormal. |
+| totalCount      | number                                      | No        | No       | Total number of files to be migrated. Value range: [0, INT32_MAX], unit: file. Returns -1 when the progress is abnormal. |
+| transferredSize | number                                      | No        | No       | Size of migrated data. Value range: [0, INT64_MAX), unit: Byte. Returns INT64_MAX when the progress is abnormal. |
+| totalSize       | number                                      | No        | No       | Total size of files to be migrated. Value range: [0, INT64_MAX), unit: Byte. Returns INT64_MAX when the progress is abnormal. |
+| stopReason      | [TransferStopReason](#transferstopreason)   | No        | No       | Reason for the migration stop.                                                        |
+
+## TransferState
+
+Enumerates the states of a migration task.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| Name      | Value  | Description       |
+| --------- | --- | ---------- |
+| RUNNING   | 0   | Migration in progress.   |
+| COMPLETED | 1   | Migration completed. |
+| STOPPED   | 2   | Migration stopped. |
+
+## TransferStopReason
+
+Enumerates the reasons for migration stop.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| Name                | Value  | Description                                                   |
+| ------------------- | --- | ------------------------------------------------------ |
+| SWITCH_OFF          | 0   | The cloud service switch is turned off during the migration process.                                         |
+| ACCOUNT_LOGOUT      | 1   | The account is logged out during the migration process.               |
+| OTHER_REASON        | 2   | The migration stops due to other reasons during the migration process.                         |
+
+## LocalFilePresentStatus<sup>23+</sup>
 
   Specifies a result object that contains the application bundle name and the status information about whether there are files that have not been uploaded to the cloud in the cloud storage space.
 
@@ -846,7 +959,7 @@ if (needStop) {
   | bundleName | string | No| No| Bundle name.|
   | isLocalFilePresent | boolean | No| No| Whether there are local files that have not been synchronized to the cloud in the cloud storage space of the application. The value **true** indicates that such file exists, and the value **false** indicates the opposite.|
 
-  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>23+</sup>
+## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>23+</sup>
 
   getBundlesLocalFilePresentStatus(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt;
 
@@ -897,3 +1010,73 @@ cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<
   console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
 });
 ```
+## cloudSyncManager.getDowngradeDownloadTaskState
+
+getDowngradeDownloadTaskState(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress&gt;&gt;
+
+Queries the full download task state of applications connected to the cloud drive. This API uses a promise to return the result asynchronously.
+
+Because the returned DownloadProgress object does not contain the bundle name, the caller must record the application package name when querying multiple applications in batches.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| bundleNames | Array&lt;string&gt; | Yes | Array of application bundle names to query. Each element is the bundle name string of an application. The maximum size of the bundle name array is 20. |
+
+**Return value**
+
+| Type | Description |
+| ---- | ---- |
+| Promise&lt;Array&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt;&gt; | Promise object that returns the queried array of state information of the full download tasks. |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameter are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
+
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
+cloudSyncManager.getDowngradeDownloadTaskState(bundles).then((results: Array<cloudSyncManager.DownloadProgress>) => {
+  results.forEach((item) => {
+    console.info(`state: ${item.state}, downloadedSize: ${item.downloadedSize}, totalSize: ${item.totalSize}`);
+    console.info(`successfulCount: ${item.successfulCount}, failedCount: ${item.failedCount}, totalCount: ${item.totalCount}`);
+    if (item.state == cloudSyncManager.DownloadState.STOPPED) {
+      console.info(`stopReason: ${item.stopReason}`);
+    }
+  });
+}).catch((err: BusinessError) => {
+  console.error(`getDowngradeDownloadTaskState failed, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## DownloadState<sup>20+</sup>
+
+Enumerates the states of a full download task.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| Name      | Value  | Description                                    |
+| --------- | --- | -------------------------------------- |
+| MISSING   | 3   | The download task does not exist.<br>**Since Version**: 26.0.0<br>**Model Constraint**: This API can only be used under the Stage model.<br>**System API**: This API is a system API. |

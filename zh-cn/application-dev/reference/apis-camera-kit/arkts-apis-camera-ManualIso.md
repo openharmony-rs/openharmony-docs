@@ -98,6 +98,11 @@ setIso(iso: number): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function setIso(photoSession: camera.PhotoSession, iso: number): void {
+  let isoArray = photoSession.getSupportedIsoRange();
+  if (!isoArray.includes(iso)) {
+    console.error(`invalid iso.`);
+    return;
+  }
   try {
     photoSession.setIso(iso);
   } catch (error) {

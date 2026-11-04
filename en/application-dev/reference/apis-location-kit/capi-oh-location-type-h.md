@@ -1,12 +1,11 @@
 # oh_location_type.h
-
 <!--Kit: Location Kit-->
 <!--Subsystem: Location-->
 <!--Owner: @liu-binjun-->
 <!--Designer: @liu-binjun-->
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=0a518b37f78bdd259be3f4c562486aca296b2ff8 translatedAt=2026-07-31T06:40:51.513Z pushedAt=2026-07-31T07:55:06.921Z -->
+<!-- md-trans-meta sourceCommit=2c7620d54062997379c5f7d2a16c6e4e49a1ae66 translatedAt=2026-11-04T04:57:23.592Z pushedAt=2026-11-04T08:04:44.725Z nl=1 -->
 
 ## Overview
 
@@ -93,7 +92,7 @@ Enumerates use scenes in a location request.
 
 | Enum Item| Description|
 | -- | -- |
-| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | Navigation scenario.<br> This option is applicable when your application needs to obtain the real-time location of a mobile device outdoors, such as navigation for driving or walking.<br> This option mainly uses the GNSS positioning technology and therefore the power consumption is relatively high.|
+| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | Indicates the navigation scenario.<br> Applicable to scenarios where the real-time location of a device is obtained outdoors, such as in-vehicle and walking navigation.<br> Mainly uses GNSS positioning technology to provide positioning services, with high power consumption. |
 | LOCATION_USE_SCENE_SPORT = 0x0402 | Sport scenario.<br> Applicable when your application needs to record user trajectories, for example, the track recording function of sports applications.<br> This option mainly uses the GNSS positioning technology and therefore the power consumption is relatively high.|
 | LOCATION_USE_SCENE_TRANSPORT = 0x0403 | Travel scenario.<br> This option is applicable to user travel scenarios, such as taxi hailing and public transportation.<br> This option mainly uses the GNSS positioning technology and therefore the power consumption is relatively high.|
 | LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | Daily life services.<br> This option is applicable when your application only needs the approximate location in scenarios such as when the user is browsing news, shopping online, and ordering food.<br> It mainly uses the network positioning technology and therefore the power consumption is relatively low.|
@@ -134,6 +133,7 @@ Defines the source of location information.
 | LOCATION_SOURCE_TYPE_NETWORK = 2 | Network positioning technology.|
 | LOCATION_SOURCE_TYPE_INDOOR = 3 | Indoor high-precision positioning technology.|
 | LOCATION_SOURCE_TYPE_RTK = 4 | Outdoor high-precision positioning technology.|
+
 
 ## Function Description
 
@@ -342,3 +342,5 @@ Sets a callback for sign generation.
 | [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | Pointer to the [Location_RequestConfig](capi-location-location-requestconfig.md) instance,<br> which is created using [OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig).|
 | [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback) callback | Pointer to the callback function, which is used to receive location information changes.<br> For details, see [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback).|
 | void* userData | Pointer to the **userData** struct or object. This pointer is returned to the caller as an input parameter when the callback function is executed.|
+
+

@@ -1,12 +1,11 @@
 # Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=05e80b422c197d16c763041b53c92c6e9f303841 translatedAt=2026-08-18T15:26:16.884Z pushedAt=2026-08-19T02:34:43.132Z -->
+<!-- md-trans-meta sourceCommit=9aae428e021edf7910a064e3cd18adc866839c8b translatedAt=2026-11-04T04:20:35.321Z pushedAt=2026-11-04T08:04:44.655Z nl=1 -->
 
 ## Introduction
 
@@ -37,7 +36,7 @@ The Node-API component of OpenHarmony reimplements the Node-API interfaces and c
 The usage and behavior of the APIs exported from the Node-API native library are based on [Node.js](https://nodejs.org/docs/latest-v18.x/api/n-api.html). Some APIs differ. For details, see [Differences Between the Exported Symbols and the Symbols in the Native Library](#differences-between-the-exported-symbols-and-the-symbols-in-the-native-library).
 
 > **NOTE**
-> When using NAPI APIs, ensure that the environment, objects, and values are valid and comply with the specifications. Invalid use or use across lifecycles may cause failures, crashes, or undefined behavior. For common issues during development, see [Node-API FAQ](../../napi/use-napi-faqs.md).
+> When using NAPI APIs, ensure that the environment, objects, and values are valid and conform to the specifications. Invalid or cross-lifecycle usage may cause failures, crashes, or undefined behavior. For common issues during development, see [Node-API FAQs](../../napi/use-napi-faqs.md).
 
 |Symbol Type|Symbol|Description|Start API Version|
 | --- | --- | --- | --- |
@@ -140,7 +139,7 @@ The usage and behavior of the APIs exported from the Node-API native library are
 |FUNC|napi_queue_async_work|Adds an async work object to the queue so that it can be scheduled for execution.|10|
 |FUNC|napi_cancel_async_work|Cancels the queued async work if it has not been started.|10|
 |FUNC|napi_async_init|Creates an async context. The capabilities related to **async_hook** are not supported.|11|
-|FUNC|napi_make_callback|Allows a JS function to be called in the async context. The capabilities related to **async_hook** are not supported.|11|
+|FUNC|napi_make_callback|Calls back the JS function in the asynchronous resource context environment (does not support capabilities related to async_hook).|11|
 |FUNC|napi_async_destroy|Destroys an async context. The capabilities related to **async_hook** are not supported.|11|
 |FUNC|napi_open_callback_scope|Opens a callback scope. The capabilities related to **async_hook** are not supported.|11|
 |FUNC|napi_close_callback_scope|Closes a callback scope. The capabilities related to **async_hook** are not supported.|11|
@@ -213,6 +212,12 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - The exported symbol permits a failure in setting **code**.
 
+### napi_throw
+
+**Parameters**
+
+- error: OpenHarmony only supports the Error object. When a non-Error object is passed in, the exported API returns napi_invalid_arg.
+
 ### napi_create_error
 
 **Parameters**
@@ -253,6 +258,18 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - The error type created in OpenHarmony is Error, whereas that created in the standard library is RangeError.
 
+### napi_reference_ref
+
+**Returns**
+
+- When the object corresponding to the reference has been garbage collected (the weak reference has been collected), the standard library does not increment the reference count and returns 0, whereas OpenHarmony still increments the reference count and returns a non-zero value.
+
+### napi_reference_unref
+
+**Returns**
+
+- When the reference count is already 0, the standard library returns napi_generic_failure without modifying result, whereas OpenHarmony returns napi_ok and writes result as 0.
+
 ### napi_create_reference
 
 **Parameters**
@@ -264,6 +281,38 @@ The usage and behavior of the APIs exported from the Node-API native library are
 **NOTE**
 
 - In OpenHarmony, if the **napi_finalize** callback is registered when a strong reference is created, calling this API will trigger the **napi_finalize** callback.
+
+### napi_create_string_latin1
+
+**Parameters**
+
+- str: In OpenHarmony, this parameter is mandatory and must not be nullptr even if length is 0.
+
+**Returns**
+
+- In OpenHarmony, the exported API decodes the input data as UTF-8. When the input contains data in the range 0x80~0xFF, the two ends may produce different string results.
+
+- In OpenHarmony, no check is performed on whether the explicit length exceeds INT_MAX. In the standard library, napi_invalid_arg is returned when length is not NAPI_AUTO_LENGTH and exceeds INT_MAX.
+
+### napi_create_string_utf8
+
+**Parameters**
+
+- str: In OpenHarmony, this parameter is mandatory and must not be nullptr even if length is 0.
+
+**Returns**
+
+- In OpenHarmony, no check is performed on whether the explicit length exceeds INT_MAX. In the standard library, napi_invalid_arg is returned when length is not NAPI_AUTO_LENGTH and exceeds INT_MAX.
+
+### napi_create_string_utf16
+
+**Parameters**
+
+- str: In OpenHarmony, this parameter is mandatory and must not be nullptr even if length is 0.
+
+**Returns**
+
+- When an explicit length is passed in, OpenHarmony still calculates the string length by scanning for the NUL terminator, whereas in the standard library the explicit length is used directly and the input buffer is not required to end with NUL. If a buffer that contains exactly length UTF-16 units and has no trailing NUL is passed in, an out-of-bounds read may occur.
 
 ### napi_create_symbol
 
@@ -315,6 +364,18 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - **value**: The exported symbol also supports Sendable TypedArray ([Int8Array](../apis-arkts/arkts-apis-arkts-collections-Int8Array.md), [Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md), [Int16Array](../apis-arkts/arkts-apis-arkts-collections-Int16Array.md), [Uint16Array](../apis-arkts/arkts-apis-arkts-collections-Uint16Array.md), [Int32Array](../apis-arkts/arkts-apis-arkts-collections-Int32Array.md), [Uint32Array](../apis-arkts/arkts-apis-arkts-collections-Uint32Array.md), [Uint8ClampedArray](../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) and [Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md)).
 
+### napi_is_array
+
+**Parameters**
+
+- value: The exported API additionally supports the array type Sendable Array (SharedArray).
+
+### napi_get_array_length
+
+**Parameters**
+
+- value: The exported API additionally supports the array type Sendable Array (SharedArray).
+
 ### napi_get_property_names
 
 **Return value**
@@ -350,6 +411,10 @@ The usage and behavior of the APIs exported from the Node-API native library are
 **Return value**
 
 - If **object** is not an object or a function, the exported symbol returns **napi_object_expected**.
+
+**NOTE**
+
+- This API behaves the same as **napi_has_property**. It checks whether a specified property exists in an object, preventing exceptions caused by accessing a nonexistent property.
 
 ### napi_set_named_property
 
@@ -415,6 +480,22 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - If **js_object** is not an object or a function, the exported symbol returns **napi_object_expected**.
 
+### napi_create_function
+
+**Parameters**
+
+- utf8name: When this parameter is nullptr, OpenHarmony sets the function name to "defaultName", while the standard library does not set a function name.
+
+**Returns**
+
+- In OpenHarmony, the exported API completely ignores the length parameter and truncates utf8name using the NUL terminator. The standard library uses the explicit length, which can include a function name with embedded NUL. If a name that is not NUL-terminated is passed in, an out-of-bounds read may occur.
+
+### napi_get_cb_info
+
+**Returns**
+
+- When **argv** is not null but **argc** is null, OpenHarmony silently ignores it and returns **napi_ok**. In the standard library, when **argv** is not null, **argc** is required to be non-null as well; otherwise, **napi_invalid_arg** is returned.
+
 ### napi_call_function
 
 **Return value**
@@ -423,11 +504,19 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - If **func** is not a function, the export symbol returns **napi_function_expected**.
 
+**NOTE**
+
+- After this function is executed, microtask execution is triggered.
+
 ### napi_new_instance
 
 **Return value**
 
 - If **constructor** is not a function, the export symbol returns **napi_function_expected**.
+
+**NOTE**
+
+- After this function is executed, microtask execution is triggered.
 
 ### napi_define_class
 
@@ -435,17 +524,20 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - If **length** is not **NAPI_AUTO_LENGTH** and is greater than **INT_MAX**, the exported symbol returns **napi_object_expected**.
 
+- OpenHarmony uses min(length, strlen(utf8name)) to truncate the name, so embedded NUL characters within the explicit length cannot be preserved. The standard library uses the explicit length to create the string directly, which can preserve embedded NUL characters.
+
 ### napi_wrap
 
 **Parameters**
 
 - **finalize_cb**: It can be empty in the native symbol. If this parameter is empty, the exported symbol returns **napi_invalid_arg**.
-
 - **result**: The native symbol returns a weak reference, whereas the exported symbol returns a strong reference if **result** is not empty.
 
 **Return value**
 
 - If **js_object** is not an object or a function, the exported symbol returns **napi_object_expected**.
+
+- When **napi_wrap** is called repeatedly on the same **js_object**, in OpenHarmony the later call overwrites the previous wrapping, while the standard library returns **napi_invalid_arg**.
 
 ### napi_unwrap
 
@@ -473,6 +565,8 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - The exported symbol does not process the input parameter **async_resource** because it does not support **async_hooks**.
 
+- complete: In OpenHarmony, this parameter is mandatory; when it is **nullptr**, **napi_invalid_arg** is returned.
+
 ### napi_delete_async_work
 
 **Parameters**
@@ -484,6 +578,10 @@ The usage and behavior of the APIs exported from the Node-API native library are
 **Parameters**
 
 - The exported symbol does not support **async_hooks**.
+
+**Returns**
+
+- When the underlying task fails to be enqueued, OpenHarmony still returns **napi_ok** and prints a failure log, and the **execute** and **complete** callback functions are not executed. In the standard library, the process is terminated when enqueueing fails.
 
 ### napi_cancel_async_work
 
@@ -498,6 +596,10 @@ The usage and behavior of the APIs exported from the Node-API native library are
 - Currently, OpenHarmony does not support **async_hooks**. After the exported symbol is called, operations related to **async_hooks** will not be performed.
 
 ### napi_make_callback
+
+**Parameters**
+
+- recv: In OpenHarmony, this parameter must be an Object; otherwise, napi_object_expected is returned.
 
 **NOTE**
 
@@ -521,11 +623,21 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - When an exception occurs in the **resolve** or **reject** callback of the **then()** method of the promise, if the promise does not have a catch block, the code execution continues. If the promise has a catch block, the exception will be captured by the catch block.
 
+- After this function is executed, microtask execution is triggered.
+
 ### napi_reject_deferred
 
 **NOTE**
 
 - When an exception occurs in the **resolve** or **reject** callback of the **then()** method of the promise, if the promise does not have a catch block, the code execution continues. If the promise has a catch block, the exception will be captured by the catch block.
+
+- After this function is executed, microtask execution is triggered.
+
+### napi_acquire_threadsafe_function
+
+**Returns**
+
+- When the threadsafe function is in the closing state, the standard library returns **napi_closing**, whereas OpenHarmony uniformly returns **napi_generic_failure**.
 
 ### napi_create_threadsafe_function
 
@@ -615,6 +727,8 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - If **data** is **nullptr**, the exported symbol returns **napi_invalid_arg**.
 
+- In OpenHarmony, **result_data** is a mandatory parameter. If it is **nullptr**, **napi_invalid_arg** is returned.
+
 - If an exception occurs before the native symbol is called or exited, **napi_pending_exception** is returned. There is no such verification in OpenHarmony.
 
 ### napi_create_external_buffer
@@ -631,6 +745,10 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 ### napi_get_buffer_info
 
+**Parameters**
+
+- In OpenHarmony, neither the **data** nor the **length** parameter can be null. If either is **nullptr**, the process crashes.
+
 **Return value**
 
 - OpenHarmony checks whether the value belongs to **buffer**. If not, **napi_arraybuffer_expected** is returned.
@@ -640,6 +758,12 @@ The usage and behavior of the APIs exported from the Node-API native library are
 **Return value**
 
 - If **arraybuffer** is not an object, the exported symbol returns **napi_object_expected**. If **arraybuffer** is an object but not an ArrayBuffer object, it returns **napi_invalid_arg**.
+
+### napi_is_detached_arraybuffer
+
+**Returns**
+
+- If the input parameter **arraybuffer** is not an ArrayBuffer object, OpenHarmony returns **napi_invalid_arg** and does not write **result**. If the caller uses the uninitialized **result** value, abnormal subsequent behavior may occur.
 
 ### napi_add_env_cleanup_hook
 
@@ -661,6 +785,12 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 - OpenHarmony creates a strong reference when the result is non-empty, whereas the standard library opts for a weak reference in such cases.
 
+### napi_get_and_clear_last_exception
+
+**Returns**
+
+- When there is no pending exception, OpenHarmony returns napi_ok without modifying result. If the caller uses an uninitialized result value, subsequent behavior may be abnormal.
+
 ### napi_fatal_exception
 
 **Parameters**
@@ -681,9 +811,37 @@ The usage and behavior of the APIs exported from the Node-API native library are
 
 ### napi_create_arraybuffer
 
+**Parameters**
+
+- data: In OpenHarmony, this parameter is mandatory. When it is nullptr, napi_invalid_arg is returned.
+
 **Return value**
 
 - If **length** is too large, the native symbol throws an exception and interrupts the process. OpenHarmony attempts to allocate memory. If the memory allocation fails, an exception is thrown and **undefined** is returned.
+
+### napi_create_external_arraybuffer
+
+**Parameters**
+
+- external_data: In OpenHarmony, this parameter is mandatory. If it is a null pointer, napi_invalid_arg is returned.
+
+- finalize_cb: In OpenHarmony, this parameter is mandatory. If it is a null pointer, napi_invalid_arg is returned.
+
+### napi_get_arraybuffer_info
+
+**Parameters**
+
+- byte_length: In OpenHarmony, this parameter is mandatory. napi_invalid_arg is returned when it is a null pointer.
+
+- data: In OpenHarmony, this parameter is optional. The data address is not written when it is a null pointer.
+
+- arraybuffer: The exported API additionally recognizes SendableArrayBuffer.
+
+### napi_is_arraybuffer
+
+**Parameters**
+
+- value: The exported API additionally recognizes SendableArrayBuffer.
 
 ## Symbols Not Exported from the Node-API Library
 
@@ -818,7 +976,7 @@ napi_status napi_create_object_with_properties(napi_env env,
 
 Creates a JS object using the given **napi_property_descriptor**.<br>**napi_property_descriptor** defines a property, including the property attributes and the methods used to obtain and set the property. By passing **napi_property_descriptor**, you can define the properties when creating an object.
 
- The key in **napi_property_descriptor** must be a string that cannot be converted into a number.
+The key in **napi_property_descriptor** must be a string that cannot be converted into a number.
 
 **Since**: 11
 
@@ -1144,6 +1302,7 @@ Checks whether the given JS value is sendable.
 **Return value**
 
 **napi_ok** if the operation is successful.
+
 
 ### napi_define_sendable_class
 
@@ -1499,17 +1658,11 @@ napi_status napi_create_ark_context(napi_env env, napi_env* newEnv);
 
 Creates a new runtime context environment.
 Note the following when using this API:
-
 1. Only new context environments created through the initial context environment are supported. It is prohibited to create new context environments using the context environment created by this API.
-
 2. Currently, this API cannot be called on ArkTS threads that are not the main thread.
-
 3. Before calling this API, ensure that the current context environment is normal. Otherwise, the API call fails.
-
 4. The context environment created by this API can only load some native.so files of ArkUI. Loading application-specific native .so files and common basic library native so files is not supported.
-
 5. The multi-context runtime environment does not support the sendable feature.
-
 6. The runtime context environment created through **napi_create_ark_context** does not support module capabilities such as console and timer.
 
 **Since**: 20
@@ -1533,9 +1686,7 @@ napi_status napi_switch_ark_context(napi_env env)
 **Description**
 
 Switches to the specified runtime context environment. Note the following when using this API:
-
 1. Currently, this API cannot be called on ArkTS threads that are not the main thread.
-
 2. Before calling this API, ensure that the current context environment is normal. Otherwise, the API call fails.
 
 **Since**: 20
@@ -1557,11 +1708,8 @@ napi_status napi_destroy_ark_context(napi_env env)
 **Description**
 
 Destroys a context environment created by **napi_create_ark_context**. Note the following when using this API:
-
 1. Currently, this API cannot be called on ArkTS threads that are not the main thread.
-
 2. This API can only be used to destroy runtime context environments created by calling **napi_create_ark_context**.
-
 3. You cannot use this API to destroy a context environment that is currently in use.
 
 **Since**: 20
@@ -1583,9 +1731,7 @@ napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope);
 **Description**
 
 Opens a critical scope. Note the following when using this API:
-
 1. A critical scope cannot be opened repeatedly. It can be opened again only after the current scope is closed.
-
 2. In the critical scope, non-critical APIs cannot be called.
 
 **Since**: 21
@@ -1609,9 +1755,7 @@ napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope);
 **Description**
 
 Closes a critical scope. Note the following when using this API:
-
 1. A critical scope cannot be closed repeatedly. Ensure that the scope has been opened and is not closed.
-
 2. After the critical scope is closed, do not use the critical API or its return result. Otherwise, the program may crash or data may be damaged.
 
 **Since**: 21
@@ -1638,7 +1782,6 @@ napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
 **Description**
 
 Obtains the UTF-16 encoding memory buffer data of an ArkTS string. Note the following when using this API:
-
 1. To obtain the memory buffer of an ArkTS string stored in UTF-16-encoding format, use **napi_get_buffer_string_utf16_in_critical_scope**. Otherwise, an error will be returned.
 
 **Since**: 21
@@ -1690,7 +1833,6 @@ napi_status napi_delete_strong_reference(napi_env env, napi_value value, napi_st
 **Description**
 
 Deletes a strong reference. Note the following when using this API:
-
 1. A strong reference cannot be deleted repeatedly.
 
 **Since**: 21
@@ -1702,6 +1844,7 @@ Deletes a strong reference. Note the following when using this API:
 - **value**: ArkTS object.
 
 - **ref**: strong reference to be deleted.
+
 
 **Return value**
 
@@ -1716,8 +1859,7 @@ napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, n
 **Description**
 
 Obtains the ArkTS object value associated with a strong reference. Note the following when using this API:
-
-1. Do not use a deleted strong reference to obtain the ArkTS object value. Otherwise, unexpected errors may occur.
+1. Do not use a deleted strong reference to obtain the ArkTS object value; otherwise, unexpected errors may occur.
 
 **Since**: 21
 
@@ -1794,13 +1936,9 @@ napi_status napi_create_external_string_utf16(napi_env env,
 **Description**
 
 Creates an ArkTS string from an external UTF-16-encoded string. Note the following when using this API:
-
 1. The input string must be in UTF-16 encoding format. Otherwise, the string content may be abnormal.
-
 2. The input string must remain valid throughout the lifetime of the ArkTS string object. Otherwise, unexpected behavior may occur.
-
 3. If the **finalize_callback callback** function is provided, it will be called when the ArkTS string object is destroyed. The **finalize_hint** parameter can be used to pass context information to the callback function.
-
 4. If the input **length** parameter is set to **NAPI_AUTO_LENGTH**, the API automatically locates the '\0' terminator internally to calculate the actual string length.
 
 **Since**: 22
@@ -1833,19 +1971,13 @@ napi_status napi_create_external_string_ascii(napi_env env,
                                               void* finalize_hint,
                                               napi_value* result);
 ```
-
 **Description**
 
 Creates an ArkTS string from ASCII-encoded external string. Note the following when using this API:
-
 1. The input string must be in ASCII encoding format. Otherwise, the string content may be abnormal.
-
 2. The input string must remain valid throughout the lifetime of the ArkTS string object. Otherwise, unexpected behavior may occur.
-
 3. If the **finalize_callback callback** function is provided, it will be called when the ArkTS string object is destroyed. The **finalize_hint** parameter can be used to pass context information to the callback function.
-
 4. If the input **length** parameter is set to **NAPI_AUTO_LENGTH**, the API automatically locates the '\0' terminator internally to calculate the actual string length.
-
 5. The input string must not contain the null character '\0' within the specified length range. Otherwise, unexpected behavior may occur.
 
 **Since**: 22
@@ -1868,6 +2000,7 @@ Creates an ArkTS string from ASCII-encoded external string. Note the following w
 
 **napi_ok** if the operation is successful.
 
+
 ### napi_create_strong_sendable_reference
 
 ```cpp
@@ -1879,13 +2012,9 @@ napi_status napi_create_strong_sendable_reference(napi_env env,
 **Description**
 
 Creates a Sendable strong reference to a Sendable ArkTS object. Note the following when using this API:
-
 1. **napi_sendable_ref** can be created only for [Sendable objects](../../arkts-utils/arkts-sendable.md#sendable-data-types).
-
 2. **napi_sendable_ref** can be used across ArkTS threads. When performing multithreaded operations, the caller must manage the release timing to avoid issues related to using after release.
-
 3. Within the same process, a maximum of 51200 **napi_sendable_ref** instances can coexist.
-
 4. The caller should ensure that the input **env** parameter is the ArkTS thread environment object of the current API. Otherwise, [multithreading safety issues](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120) may occur.
 
 **Since**: 22
@@ -1911,9 +2040,7 @@ napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_re
 **Description**
 
 Deletes a Sendable strong reference. Note the following when using this API:
-
 1. Do not forcibly cast other reference types (such as **napi_ref** or **napi_strong_ref**) to **napi_sendable_ref** for use with this API. **napi_delete_strong_sendable_reference** accepts only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
-
 2. The caller should ensure that the input **env** parameter is the ArkTS thread environment object of the current API. Otherwise, [multithreading safety issues](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120) may occur.
 
 **Since**: 22
@@ -1939,9 +2066,7 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 **Description**
 
 Obtains the ArkTS object value associated with a Sendable strong reference. Note the following when using this API:
-
 1. Do not forcibly cast other reference types (such as **napi_ref** or **napi_strong_ref**) to **napi_sendable_ref** for use with this API. **napi_get_strong_sendable_reference_value** accepts only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
-
 2. The caller should ensure that the input **env** parameter is the ArkTS thread environment object of the current API. Otherwise, [multithreading safety issues](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120) may occur.
 
 **Since**: 22
@@ -1969,9 +2094,7 @@ napi_status napi_throw_business_error(napi_env env,
 **Description**
 
 Throws an ArkTS Error with text information, specifying the error code as int32_t and the error message as string. Note the following when using this API:
-
 1. The input parameters **env** and **msg** cannot be **nullptr**. Otherwise, **napi_invalid_arg** is returned.
-
 2. If an ArkTS error exists in the current context, **napi_pending_exception** is returned when the API is called.
 
 **Since**: 23
@@ -2101,5 +2224,4 @@ Quickly sets the property value of an object using the call site information. Th
 **Return value**
 
 **napi_ok** if the operation is successful.
-
 <!--no_check-->

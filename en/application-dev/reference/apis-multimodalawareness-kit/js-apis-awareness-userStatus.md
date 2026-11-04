@@ -1,18 +1,18 @@
 # @ohos.multimodalAwareness.userStatus (User Status Awareness)
-
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:30:17.391Z pushedAt=2026-06-25T01:35:11.434Z -->
+<!-- md-trans-meta sourceCommit=9fddba7cff4ec815ef39c869017e0dacba49e413 translatedAt=2026-11-04T06:23:10.828Z pushedAt=2026-11-04T08:04:44.830Z nl=1 -->
 
 The **UserStatus** module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 20. This API is deprecated since API version 24. No substitute API is provided.
+
 
 ## Modules to Import
 
@@ -41,6 +41,7 @@ Defines the user age group detection result.
 | ------------------- | ---- |----|----| ---------------------- |
 | ageGroup  | [UserAgeGroup](#useragegroupdeprecated)   |No|Yes| User age group, for example, child or adult.|
 | confidence  | float    |No|Yes| Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
+
 
 ## userStatus.on('userAgeGroupDetected')<sup>(deprecated)</sup>
 
@@ -90,6 +91,8 @@ try {
     console.error("Failed on and err code is " + error.code);
 }
 ```
+
+
 
 ## userStatus.off('userAgeGroupDetected')<sup>(deprecated)</sup>
 

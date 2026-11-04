@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d34329839e36a12b46e74a2e3f369d06ad63b6c7 translatedAt=2026-11-04T06:48:14.584Z pushedAt=2026-11-04T08:04:44.895Z nl=1 -->
 
 The **statistics** module provides APIs to query real-time or historical traffic statistics by the specified network interface card (NIC) or user ID (UID).
 
@@ -62,7 +63,7 @@ class IFace {
   uid?: number = 0
 }
 statistics.on('netStatsChange', (data: IFace) => {
-  console.info('on netStatsChange' + JSON.stringify(data));
+  console.error('on netStatsChange' + JSON.stringify(data));
 });
 ```
 
@@ -82,8 +83,8 @@ Unsubscribes from traffic change events. This API uses an asynchronous callback 
 
 | Name  | Type                                       | Mandatory| Description                                                              |
 | -------- | ------------------------------------------- | ---- | ----------------------------------------------------------------- |
-| type     | string                                      | Yes  | Event type. This field has a fixed value of **netStatsChange**.                            |
-| callback | Callback\<[NetStatsChangeInfo](#netstatschangeinfo11)\> | No  | Callback invoked when the traffic changes.|
+| type     | string                                      | Yes   | Unsubscribe event, fixed to 'netStatsChange'.                             |
+| callback | Callback\<[NetStatsChangeInfo](#netstatschangeinfo11)\> | No   | Callback for the netStatsChange event, which is registered through on('netStatsChange'). |
 
 **Error codes**
 
@@ -119,7 +120,7 @@ statistics.off('netStatsChange');
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtains the historical data traffic of the specified NIC. This API uses an asynchronous callback to return the result.
+Obtains the historical traffic information of a specified network card. This API uses an asynchronous callback to return the result. Based on the network card name and time range specified in ifaceInfo, the system reads the sent and received bytes and packets of the network card within the corresponding time period from the traffic statistics database and returns them through the callback. If the network card name is invalid or no statistics data exists within the time period, all-zero statistics information is returned.
 
 **System API**: This is a system API.
 
@@ -157,7 +158,10 @@ import { statistics } from '@kit.NetworkKit';
 let iFaceInfo: statistics.IfaceInfo | null = null;
 if (iFaceInfo) {
   statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo, (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    console.error(JSON.stringify(error));
+    if (error) {
+      console.error(JSON.stringify(error));
+      return;
+    };
     console.info(
       "getTrafficStatsByIface bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -182,7 +186,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
-Obtains the historical data traffic of the specified NIC. This API uses a promise to return the result.
+Obtains the historical traffic information of a specified network card. This API uses a promise to return the result. Based on the network card name and time range specified in ifaceInfo, the system reads the sent and received bytes and packets of the network card within the corresponding time period from the traffic statistics database and returns them in a promise. If the network card name is invalid or no statistics data exists within the time period, all-zero statistics information is returned.
 
 **System API**: This is a system API.
 
@@ -197,7 +201,7 @@ Obtains the historical data traffic of the specified NIC. This API uses a promis
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise used to return the result, which is the historical traffic statistics of the specified NIC.|
+| Promise\<[NetStatsInfo](#netstatsinfo)> | Returns the result in Promise form, which is the network card historical traffic information. |
 
 **Error codes**
 
@@ -245,7 +249,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtains the historical data traffic of the specified application. This API uses an asynchronous callback to return the result.
+Obtains the historical traffic information of a specified application. This API uses an asynchronous callback to return the result. Based on the application UID, network card, and time range specified in uidInfo, the system reads the sent and received bytes and packets of the application within the corresponding time period from the traffic statistics database and returns them through the callback. If the application has no traffic records within the specified time period, all-zero statistics information is returned.
 
 **System API**: This is a system API.
 
@@ -292,7 +296,10 @@ let uidInfo: statistics.UidInfo = {
 statistics.getTrafficStatsByUid(
   uidInfo,
   (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    console.error(JSON.stringify(error));
+    if (error) {
+      console.error(JSON.stringify(error));
+      return;
+    };
     console.info(
       "getTrafficStatsByUid bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -317,7 +324,7 @@ statistics.getTrafficStatsByUid(
 
 getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
-Obtains the historical data traffic of the specified application. This API uses a promise to return the result.
+Obtains the historical traffic information of a specified application. This API uses a promise to return the result. Based on the application UID, network card, and time range specified in uidInfo, the system reads the sent and received bytes and packets of the application within the corresponding time period from the traffic statistics database and returns them in a promise. If the application has no traffic records within the specified time period, all-zero statistics information is returned.
 
 **System API**: This is a system API.
 
@@ -335,7 +342,7 @@ Obtains the historical data traffic of the specified application. This API uses 
 
 | Type                                     | Description                                              |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise used to return the result, which is the historical traffic statistics of the specified NIC.|
+| Promise\<[NetStatsInfo](#netstatsinfo)> | Returns the result in promise mode, returning the application historical traffic information. |
 
 **Error codes**
 
@@ -377,7 +384,7 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
 
 getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
-Obtains the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
+Obtains the traffic usage details of all applications on a specified network within a specified time period. This API uses a promise to return the result. Based on the network type, time range, and simId in networkInfo, the system aggregates the historical traffic data of each application (by UID) on the network from the traffic statistics database and returns UidNetStatsInfo in a promise. The simId takes effect only when the network type is cellular (BEARER_CELLULAR).
 
 **System API**: This is a system API.
 
@@ -395,7 +402,7 @@ Obtains the traffic statistics of all applications on the specified network with
 
 | Type                                             | Description                              |
 |-------------------------------------------------|----------------------------------|
-| Promise\<[UidNetStatsInfo](#uidnetstatsinfo12)> | Promise used to return the result, which is the historical traffic statistics of all applications.|
+| Promise\<[UidNetStatsInfo](#uidnetstatsinfo12)> | Returns the result in Promise form. Returns the historical traffic information of all applications. |
 
 **Error codes**
 
@@ -435,7 +442,7 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
 
 getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<NetStatsInfoSequence>
 
-Obtains the traffic statistics of the specified application on the specified network within the specified period. This method uses a promise to return the result.
+Obtains the traffic usage details of an application on a specified network within a specified time period. This API uses a promise to return the result. Based on the UID and the network type, time range, and simId in networkInfo, the system reads the historical traffic data of the application on the specified network from the traffic statistics database, returns a NetStatsInfoSequence sequence by time period, and returns it in a promise. The simId takes effect only when the network type is cellular (BEARER_CELLULAR).
 
 **System API**: This is a system API.
 
@@ -454,7 +461,7 @@ Obtains the traffic statistics of the specified application on the specified net
 
 | Type                                                       | Description                              |
 |-----------------------------------------------------------|----------------------------------|
-| Promise\<[NetStatsInfoSequence](#netstatsinfosequence12)> | Promise used to return the result, which is the historical traffic statistics of the application.|
+| Promise\<[NetStatsInfoSequence](#netstatsinfosequence12)> | Returns the result in Promise form. Returns the application historical traffic statistics. |
 
 **Error codes**
 
@@ -484,19 +491,23 @@ let networkInfo: statistics.NetworkInfo = {
 }
 
 statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence: statistics.NetStatsInfoSequence) => {
-  for (let i = 0; i < statsInfoSequence.length; i--) {
+  for (let i = 0; i < statsInfoSequence.length; i++) {
     console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
   }
 })
 ```
 
-## statistics.setCalibrationTraffic<sup>26+</sup>
+## statistics.setCalibrationTraffic
 
 setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>;
 
-Sets traffic calibration data. You can use this API to set traffic data during traffic calibration. This API uses a promise to return the result.
+Sets traffic calibration data. When calibrating traffic, you can use this API to set the related traffic data. The API writes the remaining traffic (remainTraffic) and the total traffic of the plan (totalTraffic) corresponding to simId into the system traffic statistics database for subsequent traffic statistics and calibration calculation. The calibration result takes effect on the data returned by subsequent query APIs. This API uses a promise to return the result.
+
+**Since**: 26.0.0
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Required permissions**: ohos.permission.GET_NETWORK_STATS
 
@@ -524,8 +535,7 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
-| 401       | Parameter error.                             |
-| 801       | Capability not supportedr.                             |
+| 801       | Capability not supported.                             |
 | 2100001   | Invalid parameter value, such as simId error.                     |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error, such as nullptr.                       |
@@ -533,7 +543,8 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 **Example**
 
 ```js
-import { connection, statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
 
 let simId:number = 1;
 let remainData:number = 600*1024*1024;   // The remaining traffic is 600 MB.
@@ -569,7 +580,7 @@ Defines the parameters for querying historical traffic of an application.
 
 | Name     | Type                                 | Read-Only|Optional| Description                       |
 | --------- | ------------------------------------- | ---- |---| -------------------------- |
-| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo)> | No  |No|NIC information, including the NIC name and query time range.|
+| ifaceInfo | [IfaceInfo](#ifaceinfo) | No   |No |Network card and time parameter information to be queried. |
 | uid       | number                                | No  |No|Application UID.         |
 
 ## NetStatsInfo
@@ -589,7 +600,7 @@ Defines the historical traffic information.
 
 ## NetStatsChangeInfo<sup>11+</sup>
 
-Defines the NIC status and usage of an application.
+Defines the network card name and application UID reported in a traffic change event.
 
 **System API**: This is a system API.
 
@@ -625,7 +636,7 @@ Defines the historical traffic statistics of all applications.
 
 | Name       | Type                                           | Read-Only|Optional| Description          |
 |-----------|-----------------------------------------------|----|---|--------------|
-| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo) | No |No|Historical traffic statistics of all applications.|
+| [uid: number] | [NetStatsInfo](#netstatsinfo) | No  |No |Historical traffic information of all applications. |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 

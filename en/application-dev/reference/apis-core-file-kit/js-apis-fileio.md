@@ -1,10 +1,11 @@
 # @ohos.fileio (File Management)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-11-04T04:39:23.091Z pushedAt=2026-11-04T10:12:33.493Z nl=1 -->
 
 The **FileIO** module provides APIs for file storage and management, including basic file management, directory management, file information statistics, and stream read and write.
 
@@ -22,21 +23,7 @@ import fileio from '@ohos.fileio';
 
 ## How to Use
 
-Before using the APIs provided by this module to perform operations on a file or directory, obtain the application sandbox path of the file or directory as follows:
-
- ```ts
-  import UIAbility from '@ohos.app.ability.UIAbility';
-  import window from '@ohos.window';
-
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
-  }
-  ```
-
-For details about how to obtain the application sandbox path, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths).
+Before using this functional module to operate on files/directories, you need to obtain the application sandbox path pathDir. For details about how to obtain the sandbox path and the usage of the related APIs, see [Application Context - Obtaining the Application File Path](../../application-models/application-context-stage.md#obtaining-application-file-paths).
 
 
 ## fileio.stat
@@ -82,7 +69,7 @@ stat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 Obtains file information. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.stat](js-apis-file-fs.md#fileiostat-1) instead.
 
@@ -111,7 +98,7 @@ statSync(path: string): Stat
 
 Obtains file information. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.statSync](js-apis-file-fs.md#fileiostatsync) instead.
 
@@ -144,7 +131,7 @@ opendir(path: string): Promise&lt;Dir&gt;
 
 Opens a directory. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
@@ -181,7 +168,7 @@ opendir(path: string, callback: AsyncCallback&lt;Dir&gt;): void
 
 Opens a file directory. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1) instead.
 
@@ -211,7 +198,7 @@ opendirSync(path: string): Dir
 
 Opens a directory. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync) instead.
 
@@ -244,7 +231,7 @@ access(path: string, mode?: number): Promise&lt;void&gt;
 
 Checks whether this process can access a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.access](js-apis-file-fs.md#fileioaccess) instead.
 
@@ -282,7 +269,7 @@ access(path: string, mode?: number, callback: AsyncCallback&lt;void&gt;): void
 
 Checks whether this process can access a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.access](js-apis-file-fs.md#fileioaccess-1) instead.
 
@@ -313,7 +300,7 @@ accessSync(path: string, mode?: number): void
 
 Checks whether this process can access a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync) instead.
 
@@ -346,7 +333,7 @@ close(fd: number): Promise&lt;void&gt;
 
 Closes a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.close](js-apis-file-fs.md#fileioclose) instead.
 
@@ -384,7 +371,7 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 Closes a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.close](js-apis-file-fs.md#fileioclose-1) instead.
 
@@ -415,7 +402,7 @@ closeSync(fd: number): void
 
 Closes a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.closeSync](js-apis-file-fs.md#fileioclosesync) instead.
 
@@ -442,7 +429,7 @@ copyFile(src: string|number, dest: string|number, mode?: number): Promise&lt;voi
 
 Copies a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) instead.
 
@@ -482,7 +469,7 @@ copyFile(src: string|number, dest: string|number, mode: number, callback: AsyncC
 
 Copies a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile-1) instead.
 
@@ -515,7 +502,7 @@ copyFileSync(src: string|number, dest: string|number, mode?: number): void
 
 Copies a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.copyFileSync](js-apis-file-fs.md#fileiocopyfilesync) instead.
 
@@ -544,7 +531,7 @@ mkdir(path: string, mode?: number): Promise&lt;void&gt;
 
 Creates a directory. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.mkdir](js-apis-file-fs.md#fileiomkdir) instead.
 
@@ -582,7 +569,7 @@ mkdir(path: string, mode: number, callback: AsyncCallback&lt;void&gt;): void
 
 Creates a directory. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.mkdir](js-apis-file-fs.md#fileiomkdir-1) instead.
 
@@ -613,7 +600,7 @@ mkdirSync(path: string, mode?: number): void
 
 Creates a directory. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.mkdirSync](js-apis-file-fs.md#fileiomkdirsync) instead.
 
@@ -640,7 +627,7 @@ open(path: string, flags?: number, mode?: number): Promise&lt;number&gt;
 
 Opens a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.open](js-apis-file-fs.md#fileioopen) instead.
 
@@ -679,7 +666,7 @@ open(path: string, flags: number, mode: number, callback: AsyncCallback&lt;numbe
 
 Opens a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.open](js-apis-file-fs.md#fileioopen-1) instead.
 
@@ -711,7 +698,7 @@ openSync(path: string, flags?: number, mode?: number): number
 
 Opens a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.openSync](js-apis-file-fs.md#fileioopensync) instead.
 
@@ -738,7 +725,7 @@ read(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: numb
 
 Reads data from a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.read](js-apis-file-fs.md#fileioread) instead.
 
@@ -765,7 +752,7 @@ read(fd: number, buffer: ArrayBuffer, options: { offset?: number; length?: numbe
 
 Reads data from a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.read](js-apis-file-fs.md#fileioread-1) instead.
 
@@ -787,7 +774,7 @@ readSync(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: 
 
 Reads data from a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.readSync](js-apis-file-fs.md#fileioreadsync) instead.
 
@@ -823,7 +810,7 @@ rmdir(path: string): Promise&lt;void&gt;
 
 Removes a directory. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.rmdir](js-apis-file-fs.md#fileiormdir) instead.
 
@@ -860,7 +847,7 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 Removes a directory. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.rmdir](js-apis-file-fs.md#fileiormdir-1) instead.
 
@@ -891,7 +878,7 @@ rmdirSync(path: string): void
 
 Removes a directory. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.rmdirSync](js-apis-file-fs.md#fileiormdirsync) instead.
 
@@ -917,7 +904,7 @@ unlink(path: string): Promise&lt;void&gt;
 
 Removes a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.unlink](js-apis-file-fs.md#fileiounlink) instead.
 
@@ -954,7 +941,7 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 Removes a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.unlink](js-apis-file-fs.md#fileiounlink-1) instead.
 
@@ -984,7 +971,7 @@ unlinkSync(path: string): void
 
 Removes a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.unlinkSync](js-apis-file-fs.md#fileiounlinksync) instead.
 
@@ -1010,7 +997,7 @@ write(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; lengt
 
 Writes data into a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.write](js-apis-file-fs.md#fileiowrite) instead.
 
@@ -1050,7 +1037,7 @@ write(fd: number, buffer: ArrayBuffer|string, options: { offset?: number; length
 
 Writes data to a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.write](js-apis-file-fs.md#fileiowrite-1) instead.
 
@@ -1085,7 +1072,7 @@ writeSync(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; l
 
 Writes data to a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.writeSync](js-apis-file-fs.md#fileiowritesync) instead.
 
@@ -1120,9 +1107,9 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 
 Calculates the hash value of a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
-> This API is deprecated since API version 9. Use [hash.write](js-apis-file-hash.md#hashhash) instead.
+> This API is deprecated since API version 9. Use [hash.hash](js-apis-file-hash.md#hashhash) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1158,9 +1145,9 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 Calculates the hash value of a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
-> This API is deprecated since API version 9. Use [hash.write](js-apis-file-hash.md#hashhash-1) instead.
+> This API is deprecated since API version 9. Use [hash.hash](js-apis-file-hash.md#hashhash-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1191,7 +1178,7 @@ chmod(path: string, mode: number): Promise&lt;void&gt;
 
 Changes file permissions. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -1229,7 +1216,7 @@ chmod(path: string, mode: number, callback: AsyncCallback&lt;void&gt;): void
 
 Changes file permissions. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -1260,7 +1247,7 @@ chmodSync(path: string, mode: number): void
 
 Changes file permissions. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -1287,7 +1274,7 @@ fstat(fd: number): Promise&lt;Stat&gt;
 
 Obtains file status based on the file descriptor. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.stat](js-apis-file-fs.md#fileiostat) instead.
 
@@ -1325,7 +1312,7 @@ fstat(fd: number, callback: AsyncCallback&lt;Stat&gt;): void
 
 Obtains file status based on the file descriptor. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.stat](js-apis-file-fs.md#fileiostat-1) instead.
 
@@ -1356,7 +1343,7 @@ fstatSync(fd: number): Stat
 
 Obtains file status based on the file descriptor. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.statSync](js-apis-file-fs.md#fileiostatsync) instead.
 
@@ -1389,7 +1376,7 @@ ftruncate(fd: number, len?: number): Promise&lt;void&gt;
 
 Truncates a file based on the file descriptor. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.truncate](js-apis-file-fs.md#fileiotruncate) instead.
 
@@ -1428,7 +1415,7 @@ ftruncate(fd: number, len?: number, callback: AsyncCallback&lt;void&gt;): void
 
 Truncates a file based on the file descriptor. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.truncate](js-apis-file-fs.md#fileiotruncate-1) instead.
 
@@ -1461,7 +1448,7 @@ ftruncateSync(fd: number, len?: number): void
 
 Truncates a file based on the file descriptor. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.truncateSync](js-apis-file-fs.md#fileiotruncatesync) instead.
 
@@ -1490,7 +1477,7 @@ truncate(path: string, len?: number): Promise&lt;void&gt;
 
 Truncates a file based on the file path. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.truncate](js-apis-file-fs.md#fileiotruncate) instead.
 
@@ -1529,7 +1516,7 @@ truncate(path: string, len?: number, callback: AsyncCallback&lt;void&gt;): void
 
 Truncates a file based on the file path. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.truncate](js-apis-file-fs.md#fileiotruncate-1) instead.
 
@@ -1561,7 +1548,7 @@ truncateSync(path: string, len?: number): void
 
 Truncates a file based on the file path. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.truncateSync](js-apis-file-fs.md#fileiotruncatesync) instead.
 
@@ -1589,7 +1576,7 @@ readText(filePath: string, options?: { position?: number; length?: number; encod
 
 Reads the text content of a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.readText](js-apis-file-fs.md#fileioreadtext) instead.
 
@@ -1627,7 +1614,7 @@ readText(filePath: string, options: { position?: number; length?: number; encodi
 
 Reads the text content of a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.readText](js-apis-file-fs.md#fileioreadtext-1) instead.
 
@@ -1666,7 +1653,7 @@ readTextSync(filePath: string, options?: { position?: number; length?: number; e
 
 Reads the text content of a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.readTextSync](js-apis-file-fs.md#fileioreadtextsync) instead.
 
@@ -1707,7 +1694,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
 Obtains information about a symbolic link that is used to refer to a file or directory. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.lstat](js-apis-file-fs.md#fileiolstat) instead.
 
@@ -1723,7 +1710,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;[Stat](#stat)&gt; | Promise that returns the symbolic link information obtained. For details, see **stat**.|
+  | Promise&lt;[Stat](#stat)&gt; | Promise object, which returns the file object, indicating the detailed information about the file. For details, see stat. |
 
 **Example**
 
@@ -1744,7 +1731,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 Obtains information about a symbolic link that is used to refer to a file or directory. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.lstat](js-apis-file-fs.md#fileiolstat-1) instead.
 
@@ -1774,7 +1761,7 @@ lstatSync(path: string): Stat
 
 Obtains information about a symbolic link that is used to refer to a file or directory. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.lstatSync](js-apis-file-fs.md#fileiolstatsync) instead.
 
@@ -1806,7 +1793,7 @@ rename(oldPath: string, newPath: string): Promise&lt;void&gt;
 
 Renames a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.rename](js-apis-file-fs.md#fileiorename) instead.
 
@@ -1845,7 +1832,7 @@ rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 Renames a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.rename](js-apis-file-fs.md#fileiorename-1) instead.
 
@@ -1875,7 +1862,7 @@ renameSync(oldPath: string, newPath: string): void
 
 Renames a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.renameSync](js-apis-file-fs.md#fileiorenamesync) instead.
 
@@ -1903,7 +1890,7 @@ fsync(fd: number): Promise&lt;void&gt;
 
 Synchronizes a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fsync](js-apis-file-fs.md#fileiofsync) instead.
 
@@ -1941,7 +1928,7 @@ fsync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 Synchronizes a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fsync](js-apis-file-fs.md#fileiofsync-1) instead.
 
@@ -1972,7 +1959,7 @@ fsyncSync(fd: number): void
 
 Synchronizes a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fsyncSync](js-apis-file-fs.md#fileiofsyncsync) instead.
 
@@ -1999,7 +1986,7 @@ fdatasync(fd: number): Promise&lt;void&gt;
 
 Synchronizes the data of a file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fdatasync](js-apis-file-fs.md#fileiofdatasync) instead.
 
@@ -2037,7 +2024,7 @@ fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 Synchronizes the data of a file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fdatasync](js-apis-file-fs.md#fileiofdatasync-1) instead.
 
@@ -2068,7 +2055,7 @@ fdatasyncSync(fd: number): void
 
 Synchronizes the data of a file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fdatasyncSync](js-apis-file-fs.md#fileiofdatasyncsync) instead.
 
@@ -2095,7 +2082,7 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
 Creates a symbolic link based on the file path. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.symlink](js-apis-file-fs.md#fileiosymlink) instead.
 
@@ -2134,7 +2121,7 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 Creates a symbolic link based on the file path. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.symlink](js-apis-file-fs.md#fileiosymlink-1) instead.
 
@@ -2166,7 +2153,7 @@ symlinkSync(target: string, srcPath: string): void
 
 Creates a symbolic link based on the file path. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.symlinkSync](js-apis-file-fs.md#fileiosymlinksync) instead.
 
@@ -2194,7 +2181,7 @@ chown(path: string, uid: number, gid: number): Promise&lt;void&gt;
 
 Changes the file owner based on the file path. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2234,7 +2221,7 @@ chown(path: string, uid: number, gid: number, callback: AsyncCallback&lt;void&gt
 
 Changes the file owner based on the file path. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2266,7 +2253,7 @@ chownSync(path: string, uid: number, gid: number): void
 
 Changes the file owner based on its path. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2295,7 +2282,7 @@ mkdtemp(prefix: string): Promise&lt;string&gt;
 
 Creates a temporary directory. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.mkdtemp](js-apis-file-fs.md#fileiomkdtemp) instead.
 
@@ -2331,7 +2318,7 @@ mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
 
 Creates a temporary directory. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.mkdtemp](js-apis-file-fs.md#fileiomkdtemp-1) instead.
 
@@ -2360,7 +2347,7 @@ mkdtempSync(prefix: string): string
 
 Creates a temporary directory. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.mkdtempSync](js-apis-file-fs.md#fileiomkdtempsync) instead.
 
@@ -2391,7 +2378,7 @@ fchmod(fd: number, mode: number): Promise&lt;void&gt;
 
 Changes file permissions based on the file descriptor. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2431,7 +2418,7 @@ fchmod(fd: number, mode: number, callback: AsyncCallback&lt;void&gt;): void
 
 Changes file permissions based on the file descriptor. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2464,7 +2451,7 @@ fchmodSync(fd: number, mode: number): void
 
 Changes the file permissions based on the file descriptor. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2493,7 +2480,7 @@ createStream(path: string, mode: string): Promise&lt;Stream&gt;
 
 Creates a stream based on the file path. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.createStream](js-apis-file-fs.md#fileiocreatestream) instead.
 
@@ -2531,7 +2518,7 @@ createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;):
 
 Creates a stream based on the file path. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.createStream](js-apis-file-fs.md#fileiocreatestream-1) instead.
 
@@ -2562,7 +2549,7 @@ createStreamSync(path: string, mode: string): Stream
 
 Creates a stream based on the file path. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.createStreamSync](js-apis-file-fs.md#fileiocreatestreamsync) instead.
 
@@ -2595,7 +2582,7 @@ fdopenStream(fd: number, mode: string): Promise&lt;Stream&gt;
 
 Opens a stream based on the file descriptor. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fdopenStream](js-apis-file-fs.md#fileiofdopenstream) instead.
 
@@ -2634,7 +2621,7 @@ fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): v
 
 Opens a stream based on the file descriptor. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fdopenStream](js-apis-file-fs.md#fileiofdopenstream-1) instead.
 
@@ -2666,7 +2653,7 @@ fdopenStreamSync(fd: number, mode: string): Stream
 
 Opens a stream based on the file descriptor. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.fdopenStreamSync](js-apis-file-fs.md#fileiofdopenstreamsync) instead.
 
@@ -2700,7 +2687,7 @@ fchown(fd: number, uid: number, gid: number): Promise&lt;void&gt;
 
 Changes the file owner based on the file descriptor. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2741,7 +2728,7 @@ fchown(fd: number, uid: number, gid: number, callback: AsyncCallback&lt;void&gt;
 
 Changes the file owner based on the file descriptor. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2775,7 +2762,7 @@ fchownSync(fd: number, uid: number, gid: number): void
 
 Changes the file owner based on the file descriptor. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2805,7 +2792,7 @@ lchown(path: string, uid: number, gid: number): Promise&lt;void&gt;
 
 Changes the file owner (owner of the symbolic link, not the file referred to by the symbolic link) based on the file path. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2845,7 +2832,7 @@ lchown(path: string, uid: number, gid: number, callback: AsyncCallback&lt;void&g
 
 Changes the file owner (owner of the symbolic link, not the file referred to by the symbolic link) based on a file path. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2878,7 +2865,7 @@ lchownSync(path: string, uid: number, gid: number): void
 
 Changes the file owner based on a file path and changes the owner of the symbolic link (not the referenced file). This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2918,7 +2905,7 @@ Listens for file or directory changes. This API uses an asynchronous callback to
 | Name  | Type                             | Mandatory| Description                                                        |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | filename | string                            | Yes  | Application sandbox path of the file.                                  |
-| events   | number                            | Yes  | - **1**: The file or directory is renamed.<br>- **2**: The file or directory is modified.<br>- **3**: The file or directory is modified and renamed.|
+| events   | number                            | Yes   | - 1: Listen for whether the file or directory is renamed.<br/>- 2: Listen for whether the content of the file or directory is modified.<br/>- 3: Both. |
 | callback | AsyncCallback&lt;number&gt; | Yes  | Called each time a change is detected.                            |
 
 **Return value**
@@ -2941,7 +2928,7 @@ Listens for file or directory changes. This API uses an asynchronous callback to
 
 Obtains the file read result. This class applies only to the **read()** method.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -2958,7 +2945,7 @@ Obtains the file read result. This class applies only to the **read()** method.
 
 Provides detailed file information. Before calling a method of the **Stat** class, use the [stat()](#fileiostat) method synchronously or asynchronously to create a **Stat** instance.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stat](js-apis-file-fs.md#stat) instead.
 
@@ -2988,7 +2975,7 @@ isBlockDevice(): boolean
 
 Checks whether this file is a block special file. A block special file supports access by block only, and it is cached when accessed.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stat.isBlockDevice](js-apis-file-fs.md#isblockdevice) instead.
 
@@ -3014,7 +3001,7 @@ isCharacterDevice(): boolean
 
 Checks whether this file is a character special file. A character special file supports random access, and it is not cached when accessed.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stat.isCharacterDevice](js-apis-file-fs.md#ischaracterdevice) instead.
 
@@ -3040,7 +3027,7 @@ isDirectory(): boolean
 
 Checks whether this file is a directory.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stat.isDirectory](js-apis-file-fs.md#isdirectory) instead.
 
@@ -3066,7 +3053,7 @@ isFIFO(): boolean
 
 Checks whether this file is a named pipe (or FIFO). Named pipes are used for inter-process communication.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stat.isFIFO](js-apis-file-fs.md#isfifo) instead.
 
@@ -3092,7 +3079,7 @@ isFile(): boolean
 
 Checks whether this file is a regular file.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stat.isFile](js-apis-file-fs.md#isfile) instead.
 
@@ -3118,7 +3105,7 @@ isSocket(): boolean
 
 Checks whether this file is a socket.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stat.isSocket](js-apis-file-fs.md#issocket) instead.
 
@@ -3144,7 +3131,7 @@ isSymbolicLink(): boolean
 
 Checks whether this file is a symbolic link.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stat.isSymbolicLink](js-apis-file-fs.md#issymboliclink) instead.
 
@@ -3232,7 +3219,7 @@ Stops the **watcher** instance. This API uses an asynchronous callback to return
 
 Provides a stream for file operations. Before calling any API of the **Stream** class, use **createStream()** to create a **Stream** instance synchronously or asynchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream](js-apis-file-fs.md#stream) instead.
 
@@ -3242,7 +3229,7 @@ close(): Promise&lt;void&gt;
 
 Closes the file stream. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.close](js-apis-file-fs.md#close) instead.
 
@@ -3274,7 +3261,7 @@ close(callback: AsyncCallback&lt;void&gt;): void
 
 Closes the file stream. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.close](js-apis-file-fs.md#close-1) instead.
 
@@ -3304,7 +3291,7 @@ closeSync(): void
 
 Closes the file stream. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.closeSync](js-apis-file-fs.md#closesync) instead.
 
@@ -3325,7 +3312,7 @@ flush(): Promise&lt;void&gt;
 
 Flushes the file stream. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.flush](js-apis-file-fs.md#flush) instead.
 
@@ -3357,7 +3344,7 @@ flush(callback: AsyncCallback&lt;void&gt;): void
 
 Flushes the file stream. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.flush](js-apis-file-fs.md#flush-1) instead.
 
@@ -3387,7 +3374,7 @@ flushSync(): void
 
 Flushes the file stream. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.flushSync](js-apis-file-fs.md#flushsync) instead.
 
@@ -3408,7 +3395,7 @@ write(buffer: ArrayBuffer|string, options?: { offset?: number; length?: number; 
 
 Writes data to a stream file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.write](js-apis-file-fs.md#write) instead.
 
@@ -3457,7 +3444,7 @@ write(buffer: ArrayBuffer|string, options: { offset?: number; length?: number; p
 
 Writes data to a stream file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.write](js-apis-file-fs.md#write-1) instead.
 
@@ -3502,7 +3489,7 @@ writeSync(buffer: ArrayBuffer|string, options?: { offset?: number; length?: numb
 
 Writes data to a stream file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.writeSync](js-apis-file-fs.md#writesync) instead.
 
@@ -3546,7 +3533,7 @@ read(buffer: ArrayBuffer, options?: { position?: number; offset?: number; length
 
 Reads data from a stream file. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.read](js-apis-file-fs.md#read) instead.
 
@@ -3598,7 +3585,7 @@ read(buffer: ArrayBuffer, options: { position?: number; offset?: number; length?
 
 Reads data from a stream file. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.read](js-apis-file-fs.md#read-1) instead.
 
@@ -3645,7 +3632,7 @@ readSync(buffer: ArrayBuffer, options?: { position?: number; offset?: number; le
 
 Reads data from a stream file. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.Stream.readSync](js-apis-file-fs.md#readsync) instead.
 
@@ -3687,7 +3674,7 @@ Reads data from a stream file. This API returns the result synchronously.
 
 Manages directories. Before calling a method of the **Dir** class, use the **opendir()** method synchronously or asynchronously to create a **Dir** instance.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
@@ -3697,7 +3684,7 @@ read(): Promise&lt;Dirent&gt;
 
 Reads the next directory entry. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
@@ -3727,7 +3714,7 @@ read(callback: AsyncCallback&lt;Dirent&gt;): void
 
 Reads the next directory entry. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1) instead.
 
@@ -3758,7 +3745,7 @@ readSync(): Dirent
 
 Reads the next directory entry. This API returns the result synchronously.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync) instead.
 
@@ -3781,9 +3768,9 @@ Reads the next directory entry. This API returns the result synchronously.
 
 close(): Promise&lt;void&gt;
 
-Closes a directory. This API uses a promise to return the result. After a directory is closed, the file descriptor in **Dir** will be released and no directory entry can be read from **Dir**.
+Closes the directory asynchronously. This API uses a promise to return the result. After the directory is closed, the file descriptor held in Dir is released, and directory entries can no longer be read from Dir.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
@@ -3803,9 +3790,9 @@ Closes a directory. This API uses a promise to return the result. After a direct
 
 close(callback: AsyncCallback&lt;void&gt;): void
 
-Closes a directory. This API uses an asynchronous callback to return the result. After a directory is closed, the file descriptor in **Dir** will be released and no directory entry can be read from **Dir**.
+Closes the directory asynchronously. This API uses an asynchronous callback to return the result. After the directory is closed, the file descriptor held in Dir is released, and directory entries can no longer be read from Dir.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1) instead.
 
@@ -3825,9 +3812,9 @@ Closes a directory. This API uses an asynchronous callback to return the result.
 
 closeSync(): void
 
-Closes a directory. After a directory is closed, the file descriptor in **Dir** will be released and no directory entry can be read from **Dir**.
+Closes the directory. After the directory is closed, the file descriptor held in Dir is released, and directory entries can no longer be read from Dir.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync) instead.
 
@@ -3844,7 +3831,7 @@ Closes a directory. After a directory is closed, the file descriptor in **Dir** 
 
 Provides information about files and directories. Before calling an API of the **Dirent** class, use [dir.read()](#read) synchronously or asynchronously to create a **Dirent** instance.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
@@ -3863,7 +3850,7 @@ isBlockDevice(): boolean
 
 Checks whether this directory entry is a block special file. A block special file supports access by block only, and it is cached when accessed.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -3889,7 +3876,7 @@ isCharacterDevice(): boolean
 
 Checks whether this directory entry is a character special file. A character special file supports random access, and it is not cached when accessed.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -3915,7 +3902,7 @@ isDirectory(): boolean
 
 Checks whether this directory entry is a directory.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -3941,7 +3928,7 @@ isFIFO(): boolean
 
 Checks whether this directory entry is a named pipe (also called FIFO). Named pipes are used for inter-process communication.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -3967,7 +3954,7 @@ isFile(): boolean
 
 Checks whether this directory entry is a regular file.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -3994,7 +3981,7 @@ isSocket(): boolean
 
 Checks whether this directory entry is a socket.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
@@ -4020,7 +4007,7 @@ isSymbolicLink(): boolean
 
 Checks whether this directory entry is a symbolic link.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is deprecated since API version 9.
 
