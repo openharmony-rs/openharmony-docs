@@ -1,11 +1,11 @@
-# Lazy Import
+# Lazy Loading (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @shilei123-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=a3a2ca5bc4d88586dfb836a22fbed6fefbb6524f translatedAt=2026-11-04T09:05:05.976Z pushedAt=2026-11-04T09:32:25.735Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a3a2ca5bc4d88586dfb836a22fbed6fefbb6524f translatedAt=2026-11-04T09:05:05.976Z pushedAt=2026-11-04T12:44:37.253Z nl=1 -->
 
 As applications evolve with more features, the time required for cold start increases significantly. The main reason is that numerous modules that are not actually executed are loaded during the initial startup. This not only prolongs application initialization but also leads to invalid resource utilization. To address this, it is crucial to streamline the loading process by eliminating non-essential file executions to optimize cold start performance and ensure a smooth user experience.
 

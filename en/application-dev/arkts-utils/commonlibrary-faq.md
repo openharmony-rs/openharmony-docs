@@ -1,11 +1,11 @@
-# Basic Library FAQ
+# Common Library FAQ
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f6e02ee4492b9c2028bfe4857be2681942b3ff9e translatedAt=2026-11-04T09:11:26.760Z pushedAt=2026-11-04T09:42:27.255Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f6e02ee4492b9c2028bfe4857be2681942b3ff9e translatedAt=2026-11-04T09:11:26.760Z pushedAt=2026-11-04T12:41:24.823Z nl=1 -->
 
 
 ## Out of Memory When Parsing Large XML Files
@@ -262,3 +262,4 @@ let numericObj1021: lang.ISendable | null = JSON.parseSendable('{' + parts1021.j
 console.info(`result: ${(numericObj1021 as object)?.[0]}`); // result: 0
 console.info(`result: ${(numericObj1021 as object)?.[1020]}`); // result: 1020
 ```
+<!--no_check-->

@@ -1,11 +1,11 @@
-# Asynchronous Concurrency (Promise and Async/Await)
+# Asynchronous Concurrency (Promise and async/await)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=6a2160de7f946f511924c492fc7938582c7172e2 translatedAt=2026-11-04T09:08:47.579Z pushedAt=2026-11-04T09:35:53.196Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6a2160de7f946f511924c492fc7938582c7172e2 translatedAt=2026-11-04T09:08:47.579Z pushedAt=2026-11-04T12:45:27.836Z nl=1 -->
 
 
 Promise and async/await are standard JS asynchronous syntax that provide asynchronous concurrency capabilities. When asynchronous code is executed, it is suspended and resumes execution after the asynchronous operation is complete, ensuring that only one piece of code is running at a time. The following are typical asynchronous concurrency usage scenarios:

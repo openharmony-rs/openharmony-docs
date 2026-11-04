@@ -1,11 +1,11 @@
-# Using TaskPool for Independent Time-consuming Tasks
+# Using TaskPool for Independent Time-Consuming Tasks
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=5f2bc820d02c0fb06b1bd1ea2345bc0bf048c408 translatedAt=2026-11-04T09:18:43.885Z pushedAt=2026-11-04T09:36:20.731Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5f2bc820d02c0fb06b1bd1ea2345bc0bf048c408 translatedAt=2026-11-04T09:18:43.885Z pushedAt=2026-11-04T12:46:21.154Z nl=1 -->
 
 For a time-consuming task that runs independently, you only need to return the result to the host thread after the task is executed. You can use the approach described in this topic.
 

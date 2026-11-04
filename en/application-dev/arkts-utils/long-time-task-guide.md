@@ -1,11 +1,11 @@
-# Long-Time Task Development Guide (TaskPool)
+# Long-Running Task Development Guide (TaskPool)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=ef97b4f4e99b757e3a4cb9958ae751b6d982f951 translatedAt=2026-11-04T09:23:46.734Z pushedAt=2026-11-04T09:36:38.892Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ef97b4f4e99b757e3a4cb9958ae751b6d982f951 translatedAt=2026-11-04T09:23:46.734Z pushedAt=2026-11-04T12:47:07.706Z nl=1 -->
 
 This section provides a development guide for continuous tasks using TaskPool, with the example of periodically collecting sensor data.
 

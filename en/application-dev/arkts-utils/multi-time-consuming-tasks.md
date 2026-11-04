@@ -1,11 +1,11 @@
-# Using TaskPool for Multiple Time-consuming Tasks
+# Using TaskPool for Multiple Time-Consuming Tasks
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=5f2bc820d02c0fb06b1bd1ea2345bc0bf048c408 translatedAt=2026-11-04T09:25:17.889Z pushedAt=2026-11-04T09:36:43.283Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5f2bc820d02c0fb06b1bd1ea2345bc0bf048c408 translatedAt=2026-11-04T09:25:17.889Z pushedAt=2026-11-04T12:47:44.684Z nl=1 -->
 
 When multiple tasks are executed simultaneously, the execution time and the time to return data may vary due to differences in task complexity. If the host thread requires data from all tasks once they are completed, this can be achieved using [TaskGroup](../reference/apis-arkts/js-apis-taskpool.md#taskgroup10).
 
