@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=36d64ba64a7fd9b432c018f37b4ef3bcd5291f69 translatedAt=2026-11-04T05:17:25.181Z pushedAt=2026-11-04T08:04:44.761Z nl=1 -->
 
 The module provides pure type definitions for common capabilities within MDM Kit, including enum types and data structs. It exports type declarations only and does not include any implementation logic or executable code.
 
@@ -122,3 +123,128 @@ This API is used as a callback input parameter of [onAdminPolicyChanged](./js-ap
 | functionName        | string       | No  | No| API name. For example, if the [setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy) API is called, the value of this parameter is **setPasswordPolicy**.           |
 | parameters        | string       | No  | No| Input parameter value (excluding the **admin** parameter) when an API is called. The value is a JSON string. For example, if the [setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy) API is called, the return value of this parameter is **{"policy":{"complexityRegex":"^(?=.\*[a-zA-Z])(?=.\*\\\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"It must contain at least eight characters, including digits and letters.** **"}}**.           |
 | time        | number       | No  | No| Timestamp when an API is called, in milliseconds.          |
+
+## DiskType
+
+Enumerates the disk types of external storage devices.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name      | Value | Description            |
+| --------- | ----- | ---------------------- |
+| SD_CARD   | 1     | SD card type.          |
+| USB_FLASH | 2     | USB flash drive type.  |
+| CD_DVD_BD | 3     | Optical disc type.     |
+
+## ExternalStorageDeviceInfo
+
+Provides the information about an external storage device. This interface is currently used as the return value of [usbManager.getExternalStorageDeviceInfos](./js-apis-enterprise-usbManager.md#usbmanagergetexternalstoragedeviceinfos) and as the callback input parameter of [EnterpriseAdminExtensionAbility.onUnmountExternalStorageDevice](./js-apis-EnterpriseAdminExtensionAbility.md#onunmountexternalstoragedevice).
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name        | Type                  | Read-Only | Optional | Description                                                         |
+| ----------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| type        | [DiskType](#disktype) | No   | No   | Disk type.                                                   |
+| devicePath  | string                | No   | No   | Mount path.                                                   |
+| volumeId    | string                | No   | No   | Volume ID.                                                       |
+| mountStatus | boolean               | No   | No   | Mount status. The value true indicates that the device is mounted; the value false indicates that the device is not mounted.         |
+| vendorId    | number                | No   | No   | Vendor ID.                                                     |
+| productId   | number                | No   | No   | Product ID.                                                     |
+| serial      | string                | No   | No   | Serial number.                                                     |
+
+## QueryPolicy
+
+Enumerates the policies to obtain.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name         | Value | Description                            |
+| ----------- | -------- | ------------------------------- |
+| SELF | 0  | Policies set by the current admin. |
+| ALL | 1  | Policies set by all admins. |
+
+## ManagedFeature
+
+Enumerates the management control features.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name                    | Value | Description                              |
+| ----------------------- | -------- | --------------------------------- |
+| LOCAL_HOTA_DOMAIN       | 0  | Local HOTA (Huawei Over-the-Air) domain.    |
+| USER_EXTEND_CREDENTIAL  | 1  | Extended identity authentication credential.                |
+| DEVICE_SECURITY_LEVEL   | 2  | Device security level.              |
+| PRINTER_IP_ADDRESS_POLICY | 3 | Printer IP address policy.          |
+| OPTICAL_DISC_DRIVE_BURN | 4 | Optical disc drive burning.          |
+| EXACT_TIMER | 5 | Exact timer.          |
+| EXEMPTION_RESOURCE | 6 | Resource exemption.          |
+| X_KEY | 7 | X key.          |
+| SYSTEM_ROLLBACK | 8 | System rollback.          |
+| SUPER_PRIVACY | 9 | Super privacy mode.          |
+
+## common.isFeatureSupported
+
+isFeatureSupported(feature: ManagedFeature): boolean
+
+Queries whether a management control feature is supported. This API is intended for enterprise device management applications to check whether the current device supports a specific feature before invoking management control APIs related to the device form, so as to perform differentiated service processing and avoid invoking related APIs on unsupported devices.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                        | Mandatory | Description           |
+| ------- | ------------------------------------------- | ---- | -------------- |
+| feature | [ManagedFeature](#managedfeature)           | Yes   | Management control feature.     |
+
+**Return value**
+
+| Type    | Description                                       |
+| ------- | ------------------------------------------ |
+| boolean | true if the feature is supported; false otherwise. |
+
+**Example**
+
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace it based on the actual situation.
+let domain: string = "https://www.hotaExample.com";
+// Before calling the API, use this API to check whether the device supports the local HOTA domain name feature.
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
+if (isSupported) {
+  try {
+    systemManager.setLocalHotaDomain(wantTemp, domain);
+    console.info('Succeeded in setting local HOTA domain.');
+  } catch (err) {
+    console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The local HOTA domain feature is not supported.');
+}
+```

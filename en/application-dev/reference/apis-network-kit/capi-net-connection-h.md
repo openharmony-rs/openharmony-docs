@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=aa6a100132baa559b327ab746777c9d8dbc89f20 translatedAt=2026-09-28T01:03:57.833Z pushedAt=2026-10-09T01:39:32.697Z -->
+<!-- md-trans-meta sourceCommit=ede2473bcfdd173278c84f213a25b67a0910ea5b translatedAt=2026-11-04T06:24:59.627Z pushedAt=2026-11-04T08:04:44.835Z nl=1 -->
 
 ## Overview
 
@@ -642,8 +642,8 @@ Registers a callback for network status changes.
 
 | Name| Description|
 | -- | -- |
-| netSpecifier | Network feature set.|
-| callback | Registered callbacks.|
+| specifier | Network feature set. |
+| netConnCallback | Set of registered callbacks. |
 | uint32_t timeout | Timeout duration, in milliseconds. The value **0** indicates infinite waiting.|
 | uint32_t *callbackId | Callback IDs.|
 
@@ -720,7 +720,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 **Description**
 
-Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **http://127.0.0.1:21998/PacProxyScript.pac**. You can obtain the proxy information by parsing the URL.
+Sets the URL of the current PAC (Proxy Auto-Configuration) script, for example, `http://127.0.0.1:21998/PacProxyScript.pac`. Proxy information can be obtained by parsing the script address.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 

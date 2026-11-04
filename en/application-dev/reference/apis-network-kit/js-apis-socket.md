@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4ddfa6eaa6c55f20119f367d3f4f2aec018f8da8 translatedAt=2026-09-28T01:48:40.740Z pushedAt=2026-10-09T06:28:45.571Z -->
+<!-- md-trans-meta sourceCommit=ede2473bcfdd173278c84f213a25b67a0910ea5b translatedAt=2026-11-04T06:51:32.643Z pushedAt=2026-11-04T08:04:44.899Z nl=1 -->
 
 The **socket** module implements data transfer over TCP, UDP, Web, and TLS socket connections.
 
@@ -1354,7 +1354,7 @@ Drops a member from a multicast group. This API uses a promise to return the res
 
 | Type           | Description                                             |
 |  -------------- |  ----------------------------------------------- |
-| Promise\<void\> | Promise used to return the result.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -1712,7 +1712,7 @@ Obtains the loopback mode flag for multicast communication. This API uses a prom
 > This API is effective only after [addMembership](#addmembership11) is called.
 
 **System capability**: SystemCapability.Communication.NetStack
-
+                                                      
 **Return value**
 
 | Type               | Description                       |
@@ -4569,7 +4569,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -4628,7 +4628,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -4688,7 +4688,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -4777,7 +4777,7 @@ Obtains the local socket connection status. This API uses a promise to return th
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -4830,7 +4830,7 @@ Obtains the file descriptor of the **LocalSocket** object. This API uses a promi
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -4895,7 +4895,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -4958,7 +4958,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -5018,7 +5018,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -5426,7 +5426,7 @@ let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance
 
 ## LocalSocketServer<sup>11+</sup>
 
-Defines a local socket server connection. Before calling LocalSocketServer APIs, you need to call [socket.constructLocalSocketServerInstance](#socketconstructlocalsocketserverinstance11) to create a **LocalSocketServer** object. 
+Defines a local socket server connection. Before calling LocalSocketServer APIs, you need to call [socket.constructLocalSocketServerInstance](#socketconstructlocalsocketserverinstance11) to create a **LocalSocketServer** object.
 
 ### listen<sup>11+</sup>
 
@@ -5465,7 +5465,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -5506,7 +5506,7 @@ Obtains the status of a local socket server connection. This API uses a promise 
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -5568,7 +5568,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -5628,7 +5628,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -5684,7 +5684,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -5735,7 +5735,7 @@ Obtains the file descriptor bound to the LocalSocketServer listening port. This 
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -5944,7 +5944,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -6102,7 +6102,7 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -6159,7 +6159,7 @@ Obtains the file descriptor of a LocalSocketConnection connection. This API uses
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -6213,7 +6213,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -8346,7 +8346,7 @@ Defines a TLS socket server connection. Before calling TLSSocketServer APIs, you
 
 listen(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 
-Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
+Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified.
 
 >**NOTE**
 >
@@ -8416,7 +8416,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 
 listen(options: TLSConnectOptions): Promise\<void\>
 
-Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
+Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -9886,7 +9886,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result. It applies only to the scenario where the client sends a certificate to the server. 
+Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result. It applies only to the scenario where the client sends a certificate to the server.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9953,7 +9953,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses a promise to return the result. It applies only to the scenario where the client sends a certificate to the server. 
+Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses a promise to return the result. It applies only to the scenario where the client sends a certificate to the server.
 
 **System capability**: SystemCapability.Communication.NetStack
 

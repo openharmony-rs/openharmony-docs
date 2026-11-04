@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=62b299937cd79f8ff06d68b3d9b212a5474378bd translatedAt=2026-11-04T06:46:54.524Z pushedAt=2026-11-04T08:04:44.890Z nl=1 -->
 
 The **policy** module provides APIs for managing network policies, through which you can control and manage the data volume used.
 
@@ -784,7 +785,7 @@ Obtains whether the network of the specified iface can be accessed by the corres
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | uid      | number                  | Yes  | Unique app ID, which is a positive integer within the int32_t range.                                              |
-| iface    | string                  | Yes  | Name of the target network.                                             |
+| iface    | string                  | Yes   | Name of the corresponding network.                                              |
 | callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The value **true** means that the application is allowed to access the specified network, and the value **false** means the opposite.|
 
 **Error codes**
@@ -878,7 +879,7 @@ Adds applications specified by given UIDs to the device idle allowlist. This API
 | --------- | ------------------------------ | ---- | ---------------------------------------------- |
 | uids      | Array\<number>                 | Yes  | Unique ID of the application.                                |
 | isAllowed | boolean                        | Yes  | Whether to add the application to the allowlist. The value **true** means to add the application to the allowlist, and the value **false** means the opposite.                                |
-| callback  | callback: AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| callback  | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
 
 **Error codes**
 
@@ -1339,7 +1340,7 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 | --------- | ------------------------------ | ---- | ---------------------------------------------- |
 | uids      | Array\<number>                 | Yes  | Unique ID of the application.                               |
 | isAllowed | boolean                        | Yes  | Whether to add the application to the allowlist. The value **true** means to add the application to the allowlist, and the value **false** means the opposite.                                |
-| callback  | callback: AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| callback  | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
 
 **Error codes**
 
@@ -1500,7 +1501,7 @@ policy
 
 setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?: boolean): Promise\<void>
 
-Sets whether the application with the specified UID can access the network. This API uses a promise to return the result.
+Sets the policy on whether the application with the specified UID can access the network. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1661,7 +1662,7 @@ policy
   });
 ```
 
-## policy.on
+## policy
 
 Represents the handle to a network policy.
 
@@ -2181,8 +2182,8 @@ Enumerates the background network policies.
 | Name                           | Value | Description                                      |
 | ------------------------------- | --- | ------------------------------------------ |
 | NET_BACKGROUND_POLICY_NONE      | 0   | No background network policy is specified. This is the default value.                                  |
-| NET_BACKGROUND_POLICY_ENABLE    | 1   | Background applications are allowed to access a metered network.              |
-| NET_BACKGROUND_POLICY_DISABLE   | 2   | Applications running in the background are not allowed to access a metered network.            |
+| NET_BACKGROUND_POLICY_ENABLE    | 1   | The application can use the metered network in the background.               |
+| NET_BACKGROUND_POLICY_DISABLE   | 2   | The application cannot use the metered network in the background.             |
 | NET_BACKGROUND_POLICY_TRUSTLIST | 3   | Only applications on the allowlist are allowed to access metered networks when they are running in the background.|
 
 ## NetQuotaPolicy
@@ -2227,8 +2228,8 @@ Defines the network quota policy.
 | limitBytes        | number                        | No  |No|Data volume quota.                                           |
 | metered           | boolean                       | No  |No|Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite.                                        |
 | limitAction       | [LimitAction](#limitaction) | No  | No|Action to take when the data volume quota is reached.                                        |
-| lastWarningRemind | number                        | No  |Yes|Last time when an alarm was generated. Default value: **-1**.                                 |
-| lastLimitRemind   | number                        | No  |Yes|Last time when the quota was exhausted. Default value: **-1**.                                     |
+| lastWarningRemind | number                        | No   | Yes | Time when the latest warning was issued. If the value is greater than 0, it is a timestamp (in seconds); otherwise, it indicates that no warning has ever been issued. Default value: -1.                                  |
+| lastLimitRemind   | number                        | No   | Yes | Time when the quota was exhausted for the latest time. If the value is greater than 0, it is a timestamp (in seconds); otherwise, it indicates that the quota has never been exhausted. Default value: -1.                                      |
 
 ## LimitAction
 

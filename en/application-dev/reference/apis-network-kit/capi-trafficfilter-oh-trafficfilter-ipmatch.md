@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e4860fc95c8d8b95b77255afd3be962b586518ba translatedAt=2026-08-14T10:25:06.738Z pushedAt=2026-08-17T08:57:35.016Z -->
+<!-- md-trans-meta sourceCommit=7cd2f817688c245414ad83d771260e8515966ace translatedAt=2026-11-04T06:32:24.038Z pushedAt=2026-11-04T08:04:44.848Z nl=1 -->
 
 ```c
 typedef struct OH_TrafficFilter_IPMatch {...} OH_TrafficFilter_IPMatch
@@ -28,6 +28,8 @@ Defines the IP match condition.
 
 | Name | Description |
 | -- | -- |
-| [OH_TrafficFilter_IPMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_ipmatchtype) type | Match type.<br>**Since:** 26.0.0 |
-| bool invert | Whether to invert the match result.<br>**Since:** 26.0.0 |
-| union | Match rule.<br>**Since:** 26.0.0 |
+| [OH_TrafficFilter_IPMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_ipmatchtype) type | Match type. |
+| bool invert | Whether to invert the match result. |
+| union value| Match rule. ([OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) single, [OH_TrafficFilter_IPCidr](capi-trafficfilter-oh-trafficfilter-ipcidr.md) cidr, [OH_TrafficFilter_IPRange](capi-trafficfilter-oh-trafficfilter-iprange.md) range, [OH_TrafficFilter_IPMulti](capi-trafficfilter-oh-trafficfilter-ipmulti.md) multi) |
+
+
