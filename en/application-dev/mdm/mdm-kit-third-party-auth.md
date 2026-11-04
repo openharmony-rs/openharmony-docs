@@ -379,3 +379,5 @@ For details about errors returned by the third-party custom authentication APIs,
 The following sample is available for third-party custom authentication development:
 
 - [USB Key Authentication (ArkTS)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MDMKit/UsbKeyAuth)
+
+<!--no_check-->
