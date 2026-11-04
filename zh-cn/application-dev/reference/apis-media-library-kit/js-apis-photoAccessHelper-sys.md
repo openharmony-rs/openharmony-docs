@@ -11946,7 +11946,7 @@ static requestEnhancementImage(context: Context, asset: PhotoAsset, dataHandler:
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<string> | Promise对象，返回请求ID，可用于[cancelRequest](#cancelrequest12)取消请求。 |
+| Promise\<string> | Promise对象，返回请求ID，可用于[cancelRequest](arkts-apis-photoAccessHelper-MediaAssetManager.md#cancelrequest12)取消请求。 |
 
 **错误码：**
 
@@ -12496,7 +12496,7 @@ queryLocalEnhancementTaskState(photoAsset: PhotoAsset): Promise&lt;LocalEnhancem
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise<[LocalEnhancementTaskState](#localenhancementtaskstate26)> | Promise对象，返回本地AI增强任务状态。 |
+| Promise<[LocalEnhancementTaskState](#localenhancementtaskstate)> | Promise对象，返回本地AI增强任务状态。 |
 
 **错误码：**
 
