@@ -202,6 +202,7 @@ export class AVTranscoderDemo {
    try {
      // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
      let fileDescriptor = await this.context.resourceManager.getRawFd('H264_AAC.mp4');
+     // 设置转码的源文件属性fdSrc。
      this.avTranscoder.fdSrc = fileDescriptor;
    } catch (error) {
      console.error('Failed to get the file descriptor, please check the resource and path.');
