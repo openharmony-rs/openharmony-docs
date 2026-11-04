@@ -8702,6 +8702,20 @@ Allows an application on the rear armrest screen to connect to the head unit for
  
 **Since**: 26.0.1
 
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+Allows a system application to send the authorization results for model download requests to the model management service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
 ## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
  
 Allows an application to obtain configurations related to device unlocking via enterprise accounts.
