@@ -11923,7 +11923,7 @@ async function getRelationshipExample(context: Context) {
 
 static requestEnhancementImage(context: Context, asset: PhotoAsset, dataHandler: MediaAssetDataHandler&lt;image.ImageSource&gt;): Promise&lt;string&gt;
 
-请求本地AI增强图片。若本地AI增强图片不存在，则立即生成本地AI增强图片。
+请求本地AI增强图片。若本地的图片没有生成对应的AI增强图片，则立即生成本地AI增强图片。
 
 本接口仅限于本地AI增强，区别于云端AI增强。
 
