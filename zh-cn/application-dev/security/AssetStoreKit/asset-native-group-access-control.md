@@ -16,30 +16,35 @@
 
 ## 前置条件
 
-在应用配置文件app.json5中，配置群组ID，如：demo_group_id。群组支持配置多个群组ID。
+1. 在应用配置文件app.json5中，配置群组ID，如：demo_group_id。群组支持配置多个群组ID。
 
-```json5
-{
-  "app": {
-    // 其他配置项此处省略。
-    "assetAccessGroups": [
-      "demo_group_id",
-      // "another_group_id",
-      // ...
-    ]
-  }
-}
-```
+   ```json5
+   {
+     "app": {
+       // 其他配置项此处省略。
+       "assetAccessGroups": [
+         "demo_group_id",
+         // "another_group_id",
+         // ...
+       ]
+     }
+   }
+   ```
 
-引用头文件。
+2. 在CMake脚本中链接相关动态库。
+   ```txt
+   target_link_libraries(entry PUBLIC libasset_ndk.z.so)
+   ```
 
-<!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+3. 引用头文件。
 
-``` C++
-#include "napi/native_api.h"
-#include <string.h>
-#include "asset/asset_api.h"
-```
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include <string.h>
+   #include "asset/asset_api.h"
+   ```
 
 
 ## 新增群组关键资产

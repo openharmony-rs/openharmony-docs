@@ -11,7 +11,7 @@ In an NDK project, you can use the CMake syntax to import and use prebuilt libra
 
 ## Constraints for Using Prebuilt Libraries
 
-1. Ensure that the imported .so dynamic libraries are compiled using the [OpenHarmony NDK build toolchain](build-with-ndk-overview.md). For details about how to compile prebuilt libraries using the [OpenHarmony NDK build toolchain](build-with-ndk-overview.md), see [Using CMake to Configure the HarmonyOS Build Toolchain](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/toolchain-cmake-build-project#cmake-third-party-library-adaptation-process).
+1. Ensure that the imported .so dynamic libraries are compiled using the [OpenHarmony NDK build toolchain](build-with-ndk-overview.md). For details about how to compile prebuilt libraries using the [OpenHarmony NDK build toolchain](build-with-ndk-overview.md), see [Using CMake to Configure the HarmonyOS Build Toolchain](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/toolchain-cmake-build-project#adaptation-process-of-using-cmake-to-build-third-party-libraries).
 
 2. Ensure that dependencies of the imported .so dynamic libraries are also imported into the project and compiled using the [OpenHarmony NDK toolchain](build-with-ndk-overview.md).
 

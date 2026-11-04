@@ -29,6 +29,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateAsyKey() {
     // 创建一个AsyKeyGenerator实例
@@ -43,6 +44,8 @@
       let skBlob = priKey.getEncoded();
       console.info('pk bin data: ' + pkBlob.data);
       console.info('sk bin data: ' + skBlob.data);
+    }).catch((error: BusinessError) => {
+      console.error(`generateAsyKey failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
@@ -97,6 +100,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateSM2Key() {
     // 创建一个AsyKeyGenerator实例
@@ -111,6 +115,8 @@
       let skBlob = priKey.getEncoded();
       console.info('pk bin data: ' + pkBlob.data);
       console.info('sk bin data: ' + skBlob.data);
+    }).catch((error: BusinessError) => {
+      console.error(`generateSM2Key failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```

@@ -40,7 +40,7 @@ Repeat\<T\>(arr: Array\<T\>)
 Repeat<string>(this.arr)
 ```
 
-### Repeat
+### Repeat<sup>18+</sup>
 
 Repeat\<T\>(arr: RepeatArray\<T\>)
 

@@ -32,7 +32,7 @@ isActive(): boolean
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| boolean | 活动状态返回true，非活动状态返回false。 |
+| boolean | 活动状态返回true，非活动状态或获取设备活动状态失败时返回false。 |
 
 **示例：**
 
@@ -78,7 +78,7 @@ getPowerMode(): DevicePowerMode
 
 | 类型                                 | 说明       |
 | ------------------------------------ | ---------- |
-| [DevicePowerMode](#devicepowermode9) | 电源模式。 |
+| [DevicePowerMode](#devicepowermode9) | 当前设备的电源模式，取值包括标准模式、省电模式、性能模式、超级省电模式等。当获取当前设备的电源模式失败时返回0，该值不在[DevicePowerMode](#devicepowermode9)枚举定义范围内。开发者应检查返回值是否为有效枚举值（600及以上）。 |
 
 **示例：**
 

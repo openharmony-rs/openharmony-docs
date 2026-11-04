@@ -228,7 +228,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 
 grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, appCloneIndex: number): Promise&lt;void&gt;
 
-给应用授予目标文件临时权限，使用Promise异步回调。临时权限可在不需要时通过revokePermission撤销。
+给应用授予目标文件临时权限，使用Promise异步回调。
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -546,7 +546,7 @@ revokePermission(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | The caller is not a system application.|
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Invalid policy size.|
+| 401      | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Invalid policy size.|
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
