@@ -60,8 +60,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 1. 使用[OH_AVMetadataExtractor_Create()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_create)创建实例。
     
     <!-- @[OH_AVMetadataExtractor_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
-
-    ```c
+    
+    ``` C++
     #include <multimedia/player_framework/avmetadata_extractor.h>
     // 创建OH_AVMetadataExtractor实例。
     OH_AVMetadataExtractor* mainExtractor = OH_AVMetadataExtractor_Create();
@@ -73,18 +73,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     
     <!-- @[OH_AVMetadataExtractor_SetFDSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
     
-    ```c
+    ``` C++
     #include "napi/native_api.h"
     #include <multimedia/player_framework/avmetadata_extractor.h>
     int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
     int32_t fileDescribe = -1; // 媒体文件描述符。
-    int32_t fileSize = 0; // 媒体文件大小。
+    int64_t fileSize = 0; // 媒体文件大小。
     
     // GetInputParams为辅助函数，用于获取FetchAlbumCover、FetchMetadata的输入参数，实现见完整示例。
     if (!GetInputParams(env, info, offset, fileDescribe, fileSize)) {
         return nullptr;
     }
-     // 设置媒体资源的文件描述符。
+    // ...
+    // 设置媒体资源的文件描述符。
     OH_AVErrCode avErrCode = OH_AVMetadataExtractor_SetFDSource(mainExtractor, fileDescribe, offset, fileSize);
     // 异常处理。
     if (avErrCode != AV_ERR_OK) {
@@ -100,7 +101,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    
    <!-- @[OH_AVMetadataExtractor_FetchMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
    
-   ```c
+   ``` C++
    // 获取元数据。
    avErrCode = OH_AVMetadataExtractor_FetchMetadata(mainExtractor, avMetadata);
    ```
@@ -109,7 +110,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     
     <!-- @[OH_AVMetadataExtractor_AVFormat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
     
-    ```c
+    ``` C++
     // 从OH_AVFormat对象中解析出int32_t类型的视频资源宽高信息。
     int32_t width = 0;
     int32_t height = 0;
@@ -123,7 +124,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     
     <!-- @[OH_AVMetadataExtractor_FetchAlbumCover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
     
-    ```c
+    ``` C++
     #include <multimedia/image_framework/image/pixelmap_native.h>
     #include <multimedia/player_framework/avmetadata_extractor.h>
 
@@ -137,7 +138,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     
     <!-- @[OH_AVMetadataExtractor_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
     
-    ```c
+    ``` C++
     // 释放OH_AVMetadataExtractor资源。
     OH_AVMetadataExtractor_Release(mainExtractor);
     ```

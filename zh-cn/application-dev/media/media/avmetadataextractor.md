@@ -24,8 +24,8 @@ status: active
 1. 使用[createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1)创建实例。
 
    <!-- @[AVMetadataExtractor_CreateAVMetadataExtractor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import { media } from '@kit.MediaKit';
    // 创建AVMetadataExtractor对象。
    let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
@@ -38,8 +38,8 @@ status: active
    - 如果设置fdSrc，可以使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考ResourceManager API中的[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。也可以通过应用沙箱路径访问对应资源（必须确保资源可用），参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
 
      <!-- @[AVMetadataExtractor_SetFdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      import { common } from '@kit.AbilityKit';
      import { media } from '@kit.MediaKit';
 
@@ -55,8 +55,8 @@ status: active
    - 如果设置dataSrc，必须正确设置dataSrc中的callback属性，确保callback被调用时能正确读取到对应资源，使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
      
      <!-- @[AVMetadataExtractor_SetDataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      import { fileIo, ReadOptions } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
      import { media } from '@kit.MediaKit';
@@ -104,8 +104,8 @@ status: active
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
 
      <!-- @[AVMetadataExtractor_SetUrlSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      import { media } from '@kit.MediaKit';
 
      // 创建AVMetadataExtractor对象。
@@ -113,7 +113,7 @@ status: active
      // 调用setUrlSource设置网络点播媒体资源URL，用来获取在线音视频元数据和在线视频缩略图。
      let url: string = 'http://xx.mp4';
      let headers: Record<string, string> = {
-       "User-Agent" : "User-Agent-Value"
+       'User-Agent' : 'User-Agent-Value'
      };
      avMetadataExtractor.setUrlSource(url, headers);
      ```
@@ -121,8 +121,8 @@ status: active
    - 不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
 
     <!-- @[AVMetadataExtractor_SetOpenSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      import { common } from '@kit.AbilityKit';
      import { fileIo } from '@kit.CoreFileKit';
      import { media } from '@kit.MediaKit';
@@ -142,8 +142,8 @@ status: active
 3. 获取元数据：调用fetchMetadata()，可以获取到一个[AVMetadata](../../reference/apis-media-kit/arkts-apis-media-i.md#avmetadata11)对象，通过访问该对象的各个属性，可以获取到元数据。
 
    <!-- @[AVMetadataExtractor_FetchMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    // 获取元数据（callback模式）。
    avMetadataExtractor.fetchMetadata((error, metadata) => {
      if (error) {
@@ -154,8 +154,8 @@ status: active
    ```
 
    <!-- @[AVMetadataExtractor_FetchMetadataPromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    // 获取元数据（promise模式）。
    let metadata = await avMetadataExtractor.fetchMetadata();
    ```
@@ -163,8 +163,8 @@ status: active
 4. 对于视频资源：可以通过fetchMetadata获取的AVMetadata对象metadata拿到视频资源的宽、高等数据。
 
    <!-- @[AVMetadataExtractor_Width_Height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    // 获取视频资源的宽和高。
    let metadata = await avMetadataExtractor.fetchMetadata();
    let width = metadata.videoWidth;
@@ -174,8 +174,8 @@ status: active
 5. 对于音频资源而言，除了可以通过AVMetadata对象来获取音频资源的标题、时长等元数据外，还可以获取专辑封面（例如，调用fetchAlbumCover()，可以获取到专辑封面）。
 
    <!-- @[AVMetadataExtractor_fetchAlbumCover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
    @State pixelMap: image.PixelMap | undefined = undefined;
@@ -192,8 +192,8 @@ status: active
    ```
 
    <!-- @[AVMetadataExtractor_fetchAlbumCoverPromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    // 获取专辑封面（promise模式）。
    this.pixelMap = await avMetadataExtractor.fetchAlbumCover();
    ```
@@ -201,8 +201,8 @@ status: active
 6. （可选）获取视频缩略图：调用fetchFrameByTime，可以获取到视频缩略图。
 
    <!-- @[AVMetadataExtractor_FetchFrameByTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
    @State pixelMap: image.PixelMap | undefined = undefined;
@@ -220,8 +220,8 @@ status: active
 7. （可选）批量获取视频缩略图：调用fetchFramesByTimes，能够批量获取视频缩略图。
 
    <!-- @[AVMetadataExtractor_FetchFramesByTimes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
    @State pixelMap: image.PixelMap | undefined = undefined;
@@ -233,7 +233,8 @@ status: active
      height : 300
    }
    // 获取视频缩略图（callback模式）。
-   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
+   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo,
+     err: BusinessError) => {
      if (err) {
        console.error(TAG, `fetch frame failed, error code: ${err.code}, error message: ${err.message}`);
        return;
@@ -242,7 +243,7 @@ status: active
      if (frameInfo !== undefined && frameInfo.image !== undefined) {
        this.pixelMap = frameInfo.image;
      }
-   })
+   });
 
    // 批量获取缩略图任务耗时可能较长，可以调用cancelAllFetchFrames停止在当前extractor上所有缩略图获取任务（仅对批量获取接口生效）。
    avMetadataExtractor.cancelAllFetchFrames();
@@ -251,8 +252,8 @@ status: active
 8. 释放资源：调用release()销毁实例，释放资源。
 
    <!-- @[AVMetadataExtractor_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+  
+   ``` TypeScript
    // 释放资源（callback模式）。
    avMetadataExtractor.release((error) => {
      if (error) {
@@ -264,8 +265,8 @@ status: active
    ```
 
    <!-- @[AVMetadataExtractor_ReleasePromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    // 释放资源（promise模式）。
    avMetadataExtractor.release();
    ```
