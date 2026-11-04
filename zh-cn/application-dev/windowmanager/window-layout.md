@@ -58,6 +58,11 @@
 
 目前支持应用调用以下相关接口设置窗口内容区域的宽高比限制。
 
+  > **说明：**
+  > 
+  > - 调用setAspectRatio()限制主窗的宽高比，仅在2in1生效。
+  > 
+
 | 接口 | 功能描述 | 适用场景 | 生效范围 |
 | -------- | -------- | -------- | -------- |
 | [setAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10) | 设置窗口内容布局（不含边框和标题栏等装饰）的比例，该比例参数默认持久化保存。 | - 为同一应用下多个启动实例配置相同的内容宽高比。当同一应用的某个主窗口调用此接口设置宽高比生效后，后续打开的主窗口均会沿用该宽高比。 | [自由窗口](freeform-window-overview.md#自由窗口)状态下的主窗 |
@@ -164,11 +169,11 @@ const TAG = 'IndexPage';
   > 
   > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）外的其他窗口模式下使用以下接口。
   > 
-  > - 使用以下移动接口时，如果主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+  > - 使用以下移动接口时，如果主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。只在除2in1设备的自由悬浮窗口上生效。
 
   | 接口 | 坐标系原点 | 说明 |
   | -------- | -------- | -------- |
-  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
+  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非自由窗口状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
   | [moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12)传入参数x、y<br/>[moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15)传入参数x、y、moveConfiguration | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为主窗口左上顶点 | 移动窗口位置，调用生效后返回。 |
   | [moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y<br/>[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y、moveConfiguration | 目标屏幕左上顶点 | 基于屏幕坐标移动窗口位置，调用生效后返回。 |
   | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | 主屏幕左上顶点（全局坐标系） | 基于[全局坐标系](window-terminology.md#global-coordinate-system全局坐标系)移动窗口位置。 |
