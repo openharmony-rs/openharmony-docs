@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkTS与C++混合开发场景下使用ArkWeb Native接口实现JSBridge双向通信，避免ArkTS与C++环境的冗余切换。"
+keywords: [ArkWeb, NDK, JSBridge, registerJavaScriptProxyEx, 权限控制, runJavaScript]
+doctype: guide
+status: active
+---
+
 # 应用侧与前端页面的相互调用(C/C++)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

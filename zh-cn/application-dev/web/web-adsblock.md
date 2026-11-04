@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb广告过滤功能的使用方法，涵盖easylist规则语法、自定义规则设置、域名级过滤开关控制及拦截信息收集统计。"
+keywords: [广告过滤, easylist, AdsBlockManager, enableAdsBlock, setAdsBlockRules, onAdsBlocked, addAdsBlockDisallowedList, addAdsBlockAllowedList, 元素隐藏规则]
+doctype: guide
+status: active
+---
+
 # 使用Web组件的广告过滤功能
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

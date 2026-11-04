@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "梳理Web组件加载网页全流程中生命周期回调的触发时机与推荐用法，涵盖正常与异常加载场景、性能指标监听与页面卡死恢复方案。"
+keywords: [onPageBegin, onPageEnd, onControllerAttached, onLoadIntercept, onFirstContentfulPaint, onLargestContentfulPaint]
+doctype: guide
+status: active
+---
+
 # Web组件的生命周期
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

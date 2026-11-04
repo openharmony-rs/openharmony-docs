@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过SchemeHandler拦截Web组件HTTP(s)及自定义协议请求，涵盖ArkTS与NDK接口、scheme注册、请求信息获取与响应构造。"
+keywords: [SchemeHandler, 网络请求拦截, 自定义scheme, setWebSchemeHandler, customizeSchemes, onRequestStart, onRequestStop, WebResourceHandler, initializeWebEngine]
+doctype: guide
+status: active
+---
+
 # 拦截Web组件发起的网络请求
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

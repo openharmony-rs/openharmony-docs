@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过WebNativeMessagingExtensionAbility实现浏览器扩展与应用通信的方法，涵盖连接机制、生命周期回调与双端开发步骤。"
+keywords: [WebNativeMessagingExtensionAbility, 浏览器扩展, connectNative, onConnectNative, WebNativeMessagingExtensionManager]
+doctype: guide
+status: active
+---
+
 # 使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

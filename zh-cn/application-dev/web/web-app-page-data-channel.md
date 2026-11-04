@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过消息端口实现应用侧与前端页面双向收发消息的通信方法，涵盖端口创建与发送、回调注册、关闭时机及数据类型约束。"
+keywords: [ArkWeb, createWebMessagePorts, postMessage, WebMessagePort, 消息端口, 数据通道, onMessageEvent, 双向通信]
+doctype: guide
+status: active
+---
+
 # 建立应用侧与前端页面数据通道
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

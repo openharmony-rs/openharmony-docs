@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件历史记录的前进后退导航，以及通过onLoadIntercept拦截链接实现应用内页面跳转与跳转其他应用的方法。"
+keywords: [历史记录导航, ohos.permission.INTERNET, forward, backward, accessBackward, onLoadIntercept, 页面跳转, 跨应用跳转, router.pushUrl]
+doctype: guide
+status: active
+---
+
 # 管理页面跳转及浏览记录导航
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

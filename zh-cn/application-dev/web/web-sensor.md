@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件通过W3C标准接口访问加速度计、陀螺仪等运动和方向传感器数据，实现健身指导、体感游戏等场景，涵盖权限声明、授权处理及前端调用示例。"
+keywords: [ArkWeb, 传感器权限, 加速度计, 陀螺仪, Accelerometer, Gyroscope, DeviceMotionEvent, DeviceOrientationEvent, onPermissionRequest]
+doctype: guide
+status: active
+---
+
 # 使用运动和方向传感器监测设备状态
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

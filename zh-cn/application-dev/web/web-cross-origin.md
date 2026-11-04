@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件加载本地资源时file与resource协议跨域被拦截的解决方法，包括改用http/https协议配合请求拦截，及设置允许跨域的路径列表。"
+keywords: [Web组件, 跨域, CORS, 本地资源, file协议, resource协议, onInterceptRequest, setPathAllowingUniversalAccess, fileAccess]
+doctype: guide
+status: active
+---
+
 # 解决Web组件本地资源跨域问题
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

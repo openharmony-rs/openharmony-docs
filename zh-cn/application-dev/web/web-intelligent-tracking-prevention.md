@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件智能防跟踪功能的开启与查询方法，跟踪型网站作为第三方插入时其请求禁止携带cookie，并支持拦截结果回调与绕过域名列表配置。"
+keywords: [智能防跟踪, Web组件, cookie, enableIntelligentTrackingPrevention, isIntelligentTrackingPreventionEnabled, onIntelligentTrackingPreventionResult, addIntelligentTrackingPreventionBypassingList, 绕过域名列表]
+doctype: guide
+status: active
+---
+
 # 使用智能防跟踪功能
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
