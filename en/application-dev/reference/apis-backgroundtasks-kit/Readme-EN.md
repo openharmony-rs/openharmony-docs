@@ -31,7 +31,7 @@
   - APIs No Longer Maintained<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (Background Task Management)](js-apis-backgroundTaskManager.md)
     - [@ohos.bundleState (Device Usage Statistics)](js-apis-deviceUsageStatistics.md)
-    - [@ohos.reminderAgent ((Agent-powered Reminder)](js-apis-reminderAgent.md)
+    - [@ohos.reminderAgent (Agent-powered Reminder)](js-apis-reminderAgent.md)
     <!--Del-->
     - [@ohos.backgroundTaskManager (Background Task Management) (System API)](js-apis-backgroundTaskManager-sys.md)
     - [@ohos.bundleState (Device Usage Statistics) (System API)](js-apis-deviceUsageStatistics-sys.md)
