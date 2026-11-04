@@ -137,7 +137,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 }
 ```
 
-各命令特有的参数说明如下；除非特别标注为必填，否则action_info中的字段均为可选：
+type取如下值时，对应的参数说明如下；除非特别标注为必填，否则action_info中的字段均为可选。
 
 - click：mode为可选参数，默认值为"auto"；action_info.coordinates包含x1和y1（两者均为必填）。
 - content_switch：mode必须为"target"；action_info.count必须为正整数（可选，默认值为1）；action_info.direction取值为"forward"或"backward"（可选，默认值为"forward"）；action_info.coordinates.pos包含x和y（必填）。
