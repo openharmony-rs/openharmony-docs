@@ -1,10 +1,11 @@
 # OpenSL ES
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=231a0f852838e757ab03536e79d2ff209c5f5457 translatedAt=2026-11-04T03:06:23.107Z pushedAt=2026-11-04T03:24:28.650Z nl=1 -->
 
 > **NOTE**
 >
@@ -12,13 +13,13 @@
 
 ## Introduction
 
-Open Sound Library for Embedded Systems (OpenSL ES) is a set of audio acceleration standards for embedded systems. It provides objects and APIs for developers to implement high-performance, low-latency audio features. OpenHarmony implements some native APIs based on [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specifications. The table [Supported APIs](#supported-apis) list these APIs.
+OpenSL ES (Open Sound Library for Embedded Systems) is the embedded audio acceleration standard. It provides developers with standardized, high-performance, and low-latency objects and interfaces for developing audio functions. Compared with the open-source and free OpenSL ES, OpenHarmony implements some native APIs based on the [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specification. The supported APIs are listed in the table [Supported APIs](#supported-apis).
 
 ## Introducing OpenSL ES
 
 To use OpenSL ES capabilities, include the following header files:
 
-```
+```c++
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_OpenHarmony.h>
 #include <SLES/OpenSLES_Platform.h>
@@ -26,7 +27,7 @@ To use OpenSL ES capabilities, include the following header files:
 
 Add the following dynamic link library to **CMakeLists.txt**:
 
-```
+```c++
 libOpenSLES.so
 ```
 

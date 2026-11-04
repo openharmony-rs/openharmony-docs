@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T01:48:14.186Z pushedAt=2026-11-04T03:24:28.520Z nl=1 -->
 
 This module provides APIs for enterprise device information management, including obtaining device serial numbers, device names, and SIM card information. Enterprise administrators can use this module to query device details, enabling unified management and tracking of device assets.
 

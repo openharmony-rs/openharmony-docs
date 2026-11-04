@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:25.854Z pushedAt=2026-06-12T08:25:55.309Z -->
+<!-- md-trans-meta sourceCommit=1a59b01eb09cbde916aad8893b634e85d3707880 translatedAt=2026-11-04T01:15:17.981Z pushedAt=2026-11-04T03:24:28.455Z nl=1 -->
 
 The **keyEvent** module provides key events reported by a device. It is inherited from [InputEvent](js-apis-inputevent.md).
 
@@ -26,7 +26,7 @@ Key event type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name  | Value | Description    |
 | ------ | ------- | -------- |
@@ -40,7 +40,7 @@ Defines a key.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name       | Type| Read-Only| Optional| Description          |
 | ----------- | -------- | ---- | ---- | -------------- |
@@ -54,14 +54,14 @@ Key event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name       | Type| Read-Only| Optional| Description                          |
 | ----------- | -------- | ---- | ---- | ------------------------------ |
 | action      | [Action](#action)   | No  | No  | Key event type.                      |
 | key         | [Key](#key)      | No  | No  | Defines a key.            |
 | unicodeChar | number   | No  | No  | Unicode character corresponding to the key.         |
-| keys        | [Key](#key) []    | No  | No  | List of pressed keys.    |
+| keys        | [Key](#key)[]    | No   | No   | List of keys that are currently in the pressed state.     |
 | ctrlKey     | boolean  | No  | No  | Whether ctrlKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.|
 | altKey      | boolean  | No  | No  | Whether altKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.    |
 | shiftKey    | boolean  | No  | No  | Whether shiftKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.  |

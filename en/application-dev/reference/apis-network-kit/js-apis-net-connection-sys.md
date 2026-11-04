@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:35.595Z pushedAt=2026-06-26T03:00:41.289Z -->
+<!-- md-trans-meta sourceCommit=f82c6f1388ce7df4a14e80b27ae8c3eb6ceae124 translatedAt=2026-11-04T02:36:43.175Z pushedAt=2026-11-04T03:24:28.588Z nl=1 -->
 
 The network connection management module provides basic network capabilities. You can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
 
@@ -533,7 +533,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | ID| Error Message|
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
+| 202 | Non-system applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface name is incorrect. |
@@ -590,7 +590,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | ID| Error Message|
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
+| 202 | Non-system applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface name is incorrect. |
@@ -648,7 +648,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | ID| Error Message|
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
+| 202 | Non-system applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface name is incorrect. |
@@ -715,7 +715,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | ID| Error Message|
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
+| 202 | Non-system applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface name is incorrect. |

@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:26:12.015Z pushedAt=2026-06-12T08:22:39.248Z -->
+<!-- md-trans-meta sourceCommit=1a59b01eb09cbde916aad8893b634e85d3707880 translatedAt=2026-11-04T01:13:56.907Z pushedAt=2026-11-04T03:24:28.460Z nl=1 -->
 
 The **inputMonitor** module implements listening for events of input devices, including the touchscreen, mouse, and touchpad.
 
@@ -30,9 +30,9 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 
 Listens for global touchscreen input events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -48,14 +48,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable versions: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -85,11 +85,11 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
 Enables listening for global mouse events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**Parameters**
+**Parameters** 
 
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
@@ -103,14 +103,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable versions: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -140,11 +140,11 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 
 Enables listening for mouse events. When the mouse pointer moves to the specified rectangular area, a callback is triggered. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**Parameters**
+**Parameters** 
 
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
@@ -159,15 +159,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.  |
+| 202  | SystemAPI permit error.<br/>Applicable versions: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -220,9 +220,9 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 
 Cancels listening for global touchscreen input events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -238,14 +238,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.  |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable versions: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -275,8 +275,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -311,9 +311,9 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
 Disables listening for global mouse events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -329,14 +329,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>Applicable versions: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -366,8 +366,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -402,9 +402,7 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 Callback used to return the touch event.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
-
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -418,44 +416,15 @@ Callback used to return the touch event.
 | ------- | ---------------------------------------- |
 | boolean | If **true** is returned, subsequent events generated by this touchscreen interaction will no longer be dispatched to the window. If **false** is returned, subsequent events generated by this touchscreen interaction will still be dispatched to the window. |
 
-**Example**
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Subscribe to Touch Events
-            inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length === 3) { // Three fingers are pressed.
-                return true;
-              }
-              return false;
-            });
-          } catch (error) {
-            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
 on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
 Enables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -478,6 +447,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -507,9 +477,9 @@ off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 
 Disables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -531,8 +501,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -562,8 +532,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -598,9 +568,9 @@ on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 Enables listening for three-finger swipe events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -623,6 +593,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -652,9 +623,9 @@ off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): vo
 
 Disables listening for three-finger swipe events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -676,8 +647,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -695,7 +666,7 @@ struct Index {
             // Subscribe to Three-Finger Swipe Event
             inputMonitor.on('threeFingersSwipe', callback);
             // Unsubscribe from Three-Finger Swipe Event
-            inputMonitor.off("threeFingersSwipe", callback);
+            inputMonitor.off('threeFingersSwipe', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -707,8 +678,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -724,9 +695,9 @@ struct Index {
           };
           try {
             // Subscribe to Three-Finger Swipe Events
-            inputMonitor.on("threeFingersSwipe", callback);
+            inputMonitor.on('threeFingersSwipe', callback);
             // Unsubscribe from Three-Finger Swipe Events
-            inputMonitor.off("threeFingersSwipe");
+            inputMonitor.off('threeFingersSwipe');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -743,9 +714,9 @@ on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 Enables listening for four-finger swipe events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -768,6 +739,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -797,9 +769,9 @@ off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
 Disables listening for four-finger swipe events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -821,8 +793,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -852,8 +824,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -888,9 +860,9 @@ on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
 Enables listening for rotation events of the touchpad. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -913,8 +885,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -944,9 +916,9 @@ off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
 Disables listening for rotation events of the touchpad. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -969,8 +941,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1000,8 +972,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1036,9 +1008,9 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
 Enables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1061,8 +1033,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1092,9 +1064,9 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
 Disables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1117,8 +1089,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1148,8 +1120,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1184,9 +1156,9 @@ on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 Enables listening for three-finger tap events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1209,6 +1181,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1238,9 +1211,9 @@ off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
 Disables listening for three-finger tap events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1262,8 +1235,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1281,7 +1254,7 @@ struct Index {
             // Subscribe to three-finger tap event
             inputMonitor.on('threeFingersTap', callback);
             // Unsubscribe from three-finger tap event
-            inputMonitor.off("threeFingersTap", callback);
+            inputMonitor.off('threeFingersTap', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1293,8 +1266,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1312,7 +1285,7 @@ struct Index {
             // Subscribe to three-finger tap event
             inputMonitor.on('threeFingersTap', callback);
             // Unsubscribe from three-finger tap event
-            inputMonitor.off("threeFingersTap");
+            inputMonitor.off('threeFingersTap');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1329,16 +1302,16 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 
 Enables listening for touchscreen swipe events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenSwipe**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the swipe. The value range is [3, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the swipe gesture. Value range: [3, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | Mandatory | Callback used to return the touchscreen swipe event. |
 
 **Error codes**
@@ -1354,8 +1327,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1385,16 +1358,16 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 
 Disables listening for touchscreen swipe events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenSwipe**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the swipe. The value range is [3, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the swipe gesture. Value range: [3, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
@@ -1410,8 +1383,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1440,8 +1413,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1474,16 +1447,16 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 Enables listening for touchscreen pinch events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenPinch**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the pinch. The value range is [4, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers in the pinch gesture. Value range: [4, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | Mandatory | Callback used to return the touchscreen pinch event. |
 
 **Error codes**
@@ -1499,8 +1472,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1530,16 +1503,16 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 
 Disables listening for touchscreen pinch events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenPinch**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the pinch. The value range is [4, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the pinch gesture. Value range: [4, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
@@ -1555,8 +1528,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1574,7 +1547,7 @@ struct Index {
             // Subscribe to Touchscreen Pinch Event
             inputMonitor.on('touchscreenPinch', fingers, callback);
             // Unsubscribe from Touchscreen Pinch Event
-            inputMonitor.off("touchscreenPinch", fingers, callback);
+            inputMonitor.off('touchscreenPinch', fingers, callback);
           } catch (error) {
             console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1585,8 +1558,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1603,7 +1576,7 @@ struct Index {
               console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
             // Unsubscribe from Touchscreen Pinch Event
-            inputMonitor.off("touchscreenPinch", fingers);
+            inputMonitor.off('touchscreenPinch', fingers);
           } catch (error) {
             console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1619,9 +1592,9 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 Listens for the press and release events of the specified key, which can be the **META_LEFT**, **META_RIGHT**, power, or volume key. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1646,6 +1619,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1675,9 +1649,9 @@ off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
 Cancels listening for the press and release events of the specified key, which can be the **META_LEFT**, **META_RIGHT**, power, or volume key. This API must be used together with **inputMonitor.on ('keyPressed')**. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1700,6 +1674,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1717,7 +1692,7 @@ struct Index {
             // Subscribe to Key Press Event
             inputMonitor.on('keyPressed', keys, callback);
             // Unsubscribe from Key Press Event
-            inputMonitor.off("keyPressed", callback);
+            inputMonitor.off('keyPressed', callback);
           } catch (error) {
             console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1729,6 +1704,7 @@ struct Index {
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1745,7 +1721,7 @@ struct Index {
               console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
             // Unsubscribe from Key Press Events
-            inputMonitor.off("keyPressed");
+            inputMonitor.off('keyPressed');
           } catch (error) {
             console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1761,15 +1737,15 @@ queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 Queries recent touchscreen input events. A maximum of 100 events can be queried. Since API version 26.0.0, a maximum of 60 events can be queried. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
 | Name  | Type                                                     | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | number                                                    | Mandatory   | Number of touchscreen input events to query. The value range is an integer from 0 to 100. If the value is less than 0, the value **0** is used. If the value is greater than 100, the value **100** is used. Since API version 26.0.0, if the value is greater than 60, the value **60** is used. If there are only 30 actual touchscreen input events but this parameter is set to **50**, only 30 touchscreen input events can be queried. |
+| count     | number                                                    | Yes   | Number of touchscreen input events to query, which is an integer in the range [0, 100]. If the value is less than 0, it is set to 0; if it is greater than 100, it is set to 100. Since API version 26.0.0, if the value is greater than 60, it is set to 60. If there are only 30 actual touchscreen input events but this parameter is set to 50, only 30 touchscreen input events can be queried. |
 
 **Return value**
 
@@ -1789,7 +1765,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor, TouchEvent } from '@kit.InputKit'
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -1814,15 +1790,15 @@ on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
 
 Listens for inward swipe events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
 | Name  | Type                                                       | Mandatory| Description                                |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                      | Yes  | Input event type. The value is fixed at **SwipeInward**.|
+| type     | string                                                      | Yes   | Input event type, which takes the unique value 'swipeInward'. |
 | receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;    | Mandatory   | Callback used to return the inward swipe event.         |
 
 **Error codes**
@@ -1839,6 +1815,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1868,9 +1845,9 @@ off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
 
 Cancels listening for inward swipe events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1893,6 +1870,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1910,7 +1888,7 @@ build() {
           // Subscribe to Swipe Inward Event
           inputMonitor.on('swipeInward', callback);
           // Unsubscribe from Swipe Inward Event
-          inputMonitor.off("swipeInward", callback);
+          inputMonitor.off('swipeInward', callback);
           console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
           console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1923,6 +1901,7 @@ build() {
 
 ```js
 import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1940,7 +1919,7 @@ build() {
           // Subscribe to Swipe Inward Event
           inputMonitor.on('swipeInward', callback);
           // Unsubscribe from Swipe Inward Event
-          inputMonitor.off("swipeInward");
+          inputMonitor.off('swipeInward');
           console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
           console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1957,9 +1936,9 @@ on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
 
 Enables listening for fingerprint gesture input events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1982,6 +1961,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2011,9 +1991,9 @@ off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
 
 Disables listening for fingerprint gesture input events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
+**Required permissions:** ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -2035,8 +2015,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2054,7 +2034,7 @@ struct Index {
             // Subscribe to Fingerprint Events
             inputMonitor.on('fingerprint', callback);
             // Unsubscribe from Fingerprint Events
-            inputMonitor.off("fingerprint", callback);
+            inputMonitor.off('fingerprint', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2066,8 +2046,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2085,7 +2065,7 @@ struct Index {
             // Subscribe to Fingerprint Events
             inputMonitor.on('fingerprint', callback);
             // Unsubscribe from Fingerprint Events
-            inputMonitor.off("fingerprint");
+            inputMonitor.off('fingerprint');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);

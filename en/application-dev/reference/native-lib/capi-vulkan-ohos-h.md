@@ -2,10 +2,11 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @andrew1993-->
-<!--Designer: @ext4FAT1-->
+<!--Owner: @GaoPan_t-->
+<!--Designer: @vvan9cha0-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=740dcdea7b2e0f63c4b99baa0eb4f2e92e763430 translatedAt=2026-11-04T02:54:04.520Z pushedAt=2026-11-04T03:24:28.630Z nl=1 -->
 
 ## Overview
 
@@ -14,6 +15,8 @@ The file declares the Vulkan interfaces extended by OpenHarmony.
 **File to include**: <vulkan/vulkan_ohos.h>
 
 **Library**: libvulkan.so
+
+**System Capability**: SystemCapability.Graphic.Vulkan 
 
 **Since**: 10
 
@@ -45,6 +48,13 @@ The file declares the Vulkan interfaces extended by OpenHarmony.
 | -- | -- | -- |
 | [VkSwapchainImageUsageFlagBitsOHOS](#vkswapchainimageusageflagbitsohos) | VkSwapchainImageUsageFlagBitsOHOS | Enumerates the image usage flags.|
 
+### Variables
+
+| Name | typedef Keyword | Description |
+| -- | -- | -- |
+| VkFlags | VkSwapchainImageUsageFlagsOHOS | Bitmask type for setting masks.<br>**Since:** 10 |
+| VkFlags | VkSurfaceCreateFlagsOHOS | VkFlags bitmask reserved for use during Vulkan Surface creation.<br>**Since:** 10 |
+
 ### Macros
 
 | Name| Description|
@@ -69,14 +79,14 @@ The file declares the Vulkan interfaces extended by OpenHarmony.
 | [VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)](#pfn_vkgetmemorynativebufferohos)                             | PFN_vkGetMemoryNativeBufferOHOS             |  Defines a function pointer used to obtain an OH_NativeBuffer instance.|
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)](#vkgetnativebufferpropertiesohos)                   | -                       | Obtains the properties of an OH_NativeBuffer instance.|
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)](#vkgetmemorynativebufferohos)                            | -                       | Obtains an OH_NativeBuffer instance.|
-| [VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkgetswapchaingrallocusageohos)                               | -                       | Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag.|
-| [VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkacquireimageohos)                                                  | -                       | Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects.|
-| [VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkqueuesignalreleaseimageohos) | -                       | Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it.|
+| [VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkgetswapchaingrallocusageohos)                               | -                       | Returns appropriate Gralloc (memory allocator) usage flags according to the given Vulkan device, image format, and image usage flags. |
+| [VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkacquireimageohos)                                                  | -                       | Used to obtain ownership of all of the swapchain image and import the external signal Fence into the VkSemaphore object and VkFence object. |
+| [VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkqueuesignalreleaseimageohos) | -                       | After the current image is used, releases a signal to the system hardware buffer through this function so that other components can access the image. |
 | [VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vksetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkSetNativeFenceFdOpenHarmony | This API has been deprecated.|
 | [typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkgetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkGetNativeFenceFdOpenHarmony | This API has been deprecated.|
-| [VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkapi_ptr-pfn_vkgetswapchaingrallocusageohos) | VKAPI_PTR \*PFN_vkGetSwapchainGrallocUsageOHOS | Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. As an application developer, you do not need to use this function.|
-| [VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vkacquireimageohos) | VKAPI_PTR \*PFN_vkAcquireImageOHOS | Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. As an application developer, you do not need to use this function.|
-| [typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkqueuesignalreleaseimageohos) | VKAPI_PTR \*PFN_vkQueueSignalReleaseImageOHOS | Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. As an application developer, you do not need to use this function.|
+| [VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkapi_ptr-pfn_vkgetswapchaingrallocusageohos) | VKAPI_PTR \*PFN_vkGetSwapchainGrallocUsageOHOS | Returns appropriate Gralloc (memory allocator) usage flags according to the given Vulkan device, image format, and image usage flags. Application developers do not need to use this interface. |
+| [VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vkacquireimageohos) | VKAPI_PTR \*PFN_vkAcquireImageOHOS | Used to obtain ownership of all of the swapchain image and import the external signal Fence into the VkSemaphore object and VkFence object. Application developers do not need to use this interface.|
+| [typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkqueuesignalreleaseimageohos) | VKAPI_PTR \*PFN_vkQueueSignalReleaseImageOHOS | After the current image is used, releases a signal to the system hardware buffer through this function so that other components can access the image. Application developers do not need to use this interface. |
 | [VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vksetnativefencefdopenharmony) | - | This API has been deprecated.|
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkgetnativefencefdopenharmony) | - | This API has been deprecated.|
 
@@ -286,7 +296,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, V
 
 **Description**
 
-Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. As an application developer, you do not need to use this function.
+Returns appropriate Gralloc (memory allocator) usage flags according to the given Vulkan device, image format, and image usage. Application developers do not need to use this interface.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -302,7 +312,7 @@ Returns the appropriate gralloc usage flag based on the given Vulkan device, ima
 | VkDevice device | VkDevice object.|
 | VkFormat format | Image format.|
 | VkImageUsageFlags imageUsage | Image use flag.|
-| uint64_t* grallocUsage | Pointer to the gralloc usage flag.|
+| uint64_t* grallocUsage | Output parameter, returns the Gralloc (memory allocator) usage flags. |
 
 **Returns**
 
@@ -318,7 +328,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device
 
 **Description**
 
-Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. As an application developer, you do not need to use this function.
+Returns appropriate Gralloc (memory allocator) usage flags according to the given Vulkan device, image format, and image usage. Application developers do not need to use this interface.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -333,7 +343,7 @@ Returns the appropriate gralloc usage flag based on the given Vulkan device, ima
 | VkDevice device | VkDevice object.|
 | VkFormat format | Image format.|
 | VkImageUsageFlags imageUsage | Image use flag.|
-| uint64_t\* grallocUsage | Pointer to the gralloc usage flag.|
+| uint64_t\* grallocUsage | Output parameter, which returns the Gralloc (memory allocator) usage flags. |
 
 **Returns**
 
@@ -349,7 +359,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image
 
 **Description**
 
-Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. As an application developer, you do not need to use this function.
+Used to obtain ownership of all of the swapchain image and import the external signal Fence into the VkSemaphore object and VkFence object. Application developers do not need to use this interface.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -382,7 +392,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage im
 
 **Description**
 
-Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. As an application developer, you do not need to use this function.
+Used to obtain ownership of all of the swapchain image and import the external signal Fence into the VkSemaphore object and VkFence object. Application developers do not need to use this interface.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -414,7 +424,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint
 
 **Description**
 
-Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. As an application developer, you do not need to use this function.
+After the current image is used, this function sends a release signal to the system hardware buffer so that other components can access the image. Application developers do not need to use this interface.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -447,7 +457,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, u
 
 **Description**
 
-Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. As an application developer, you do not need to use this function.
+After the current image is used, this function sends a release signal to the system hardware buffer so that other components can access the image. Application developers do not need to use this interface.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 

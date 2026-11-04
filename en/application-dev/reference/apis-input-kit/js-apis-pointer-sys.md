@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1a59b01eb09cbde916aad8893b634e85d3707880 translatedAt=2026-11-04T01:19:32.752Z pushedAt=2026-11-04T03:24:28.465Z nl=1 -->
 
 The **pointer** module provides APIs to query and set pointer attributes.
 
@@ -173,20 +174,20 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let speed = pointer.setPointerSpeedSync(5);
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          let speed = pointer.setPointerSpeedSync(5);
             console.info(`Succeeded in setting pointer speed.`);
-          } catch (error) {
-            console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.getPointerSpeed
@@ -332,20 +333,20 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let speed = pointer.getPointerSpeedSync();
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          let speed = pointer.getPointerSpeedSync();
             console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
-          } catch (error) {
-            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.setHoverScrollState<sup>10+</sup>
@@ -1415,15 +1416,15 @@ struct Index {
             // Obtain the touchpad scroll direction.
             pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
               console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                });
+                } catch (error) {
+              console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            })
           }
-        })
-    }
-  }
-}
-```
+            }
+          }
+        ```
 
 ## pointer.getTouchpadScrollDirection<sup>10+</sup>
 
@@ -2318,15 +2319,15 @@ struct Index {
             // Obtain the touchpad multi-finger swipe switch state.
             pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
               console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                });
+                } catch (error) {
+              console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            })
           }
-        })
-    }
-  }
-}
-```
+            }
+          }
+        ```
 
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
@@ -2541,15 +2542,15 @@ struct Index {
             // Obtain the touchpad right-click menu type.
             pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
               console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                });
+                } catch (error) {
+              console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            })
           }
-        })
-    }
-  }
-}
-```
+            }
+          }
+        ```
 
 ## pointer.getTouchpadRightClickType<sup>10+</sup>
 
@@ -2755,21 +2756,21 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Set the mouse pointer size synchronously.
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          // Set the mouse pointer size synchronously.
             pointer.setPointerSizeSync(5);
             console.info(`Succeeded in setting pointer size sync.`);
-          } catch (error) {
-            console.error(`Failed to set pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to set pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.getPointerSize<sup>10+</sup>
@@ -2915,20 +2916,20 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let pointerSize = pointer.getPointerSizeSync();
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          let pointerSize = pointer.getPointerSizeSync();
             console.info(`Succeeded in getting pointer size sync, pointerSize: ${JSON.stringify(pointerSize)}.`);
-          } catch (error) {
-            console.error(`Failed to get pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to get pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.setPointerColor<sup>10+</sup>
@@ -3093,21 +3094,21 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Set the mouse pointer color synchronously.
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          // Set the mouse pointer color synchronously.
             pointer.setPointerColorSync(0xF6C800);
             console.info(`Succeeded in setting pointer color sync.`);
-          } catch (error) {
-            console.error(`Failed to set pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to set pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.getPointerColor<sup>10+</sup>
@@ -3253,20 +3254,20 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let pointerColor = pointer.getPointerColorSync();
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          let pointerColor = pointer.getPointerColorSync();
             console.info(`Succeeded in getting pointer color sync, pointerColor: ${JSON.stringify(pointerColor)}.`);
-          } catch (error) {
-            console.error(`Failed to get pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to get pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.setTouchpadDoubleTapAndDragState<sup>14+</sup>

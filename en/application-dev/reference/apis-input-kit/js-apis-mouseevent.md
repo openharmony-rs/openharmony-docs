@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1a59b01eb09cbde916aad8893b634e85d3707880 translatedAt=2026-11-04T01:15:30.459Z pushedAt=2026-11-04T03:24:28.456Z nl=1 -->
 
 The **mouseEvent** module provides mouse events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -23,7 +24,7 @@ import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from 
 
 Enumerates mouse event types.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name       | Value| Description                |
 | ----------- | -------- | -------------------- |
@@ -41,7 +42,7 @@ Enumerates mouse event types.
 
 Enumerates mouse buttons.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name     | Value | Description   |
 | ------- | ------| ----- |
@@ -58,7 +59,7 @@ Enumerates mouse buttons.
 
 Enumerates mouse axis types.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name               | Value    | Description   |
 | ----------------- | ------- | ----- |
@@ -71,7 +72,7 @@ Enumerates mouse axis types.
 
 Defines the mouse axis type and axis value.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name   | Type  | Read-Only  | Optional  | Description  |
 | ----- | ------ | ---- | ---- | ---- |
@@ -82,7 +83,7 @@ Defines the mouse axis type and axis value.
 
 Enumerates tool types.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name     | Value | Description   |
 | ------- | ------| ----- |
@@ -95,7 +96,7 @@ Enumerates tool types.
 
 Defines the mouse event.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |

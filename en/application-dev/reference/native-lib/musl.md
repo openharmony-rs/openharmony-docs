@@ -1,10 +1,12 @@
 # musl libc
-<!--Kit: NDK-->	 
+<!--Kit: ArkTS-->	 
 <!--Subsystem: arkcompiler-->	 
 <!--Owner: @da_wei_li11-->	 
 <!--Designer: @liyiming13-->	 
 <!--Tester: @zsw_zhushiwei-->	 
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=4b07e88550e0184fe83fe80e1f31b5c935b7680c translatedAt=2026-11-04T03:00:46.157Z pushedAt=2026-11-04T03:24:28.638Z nl=2 -->
+
 ## Overview
 The C standard library (libc) provides standard header files and common library implementations (such as input/output processing and string handling) in C language programming.
 
@@ -14,7 +16,7 @@ For details about the differences between musl and glibc, see [Functional differ
 
 ## libc Components
 
-C11 is implemented by [libc, libm, and libdl](https://en.cppreference.com/w/c/header). 
+C11 is implemented by [libc, libm, and libdl](https://en.cppreference.com/w/c/header).
 
 libc: provides thread-related interfaces and a majority of standard interfaces.
 
@@ -31,15 +33,16 @@ libdl: provides dynamic linker interfaces such as dlopen. Currently, OpenHarmony
 1.2.5 since OpenHarmony 5.0
 
 ## Supported Capabilities
-OpenHarmony provides header files and library interfaces that align with C99, C11, and POSIX standards, though not fully compliant. It supports Armv7-A, Arm64, and x86_64 architectures.
+Provides header files and library function APIs that are compatible with the C99, C11, and POSIX standards, but not fully compatible. Currently, it supports three architectures: armv7a, arm64, and x86_64.
 
-To better accommodate the basic features of OpenHarmony devices, such as high performance, low memory usage, high security, lightweight design, and multi-device adaptability, the musl library has been optimized and enhanced, with interfaces unsuitable for embedded devices removed according.
+To better adapt to the basic characteristics of OpenHarmony devices, including high performance, low memory usage, high security, lightweight design, and support for multiple device forms, the musl open-source library has been optimized and enhanced, and APIs that are not suitable for embedded devices have been trimmed.
 
 ### New Capabilities
-1. The dynamic loader supports isolation by namespace. The dynamic libraries that can be loaded by **dlopen()** are restricted by the system namespace. For example, the system dynamic libraries cannot be opened.
+1. The dynamic loader supports namespace isolation. Dynamic libraries loaded by an application through dlopen are restricted by the system namespace (for example, system-side dynamic libraries cannot be opened).
 2. **dlclose()** can be used to unload a dynamic library. This capability is not supported by musl.
 3. The symbol-versioning is supported.
 4. **dlopen()** can directly load uncompressed files in a .zip package.
+5. Supports C API compatibility version protection.
 <!--Del-->
 ### Debugging Capabilities
 The libc provides dynamic enabling of debug logging (enabled by default). The debug logs help you learn about exceptions of the libc. With this function, you only need to set **param**, which eliminates the need for rebuilding the libc. However, you are advised not to enable debug logging in official versions because it affects the running performance.
@@ -69,19 +72,30 @@ param set musl.log.ld.all true
 param set musl.log.ld.app.{app_name} false
 ```
 <!--DelEnd-->
+## APIAVAILABLE Compatibility Version Protection
+
+> **NOTE**
+>
+> To use the APIAVAILABLE feature, you must be thoroughly familiar with mechanisms such as strong symbols, weak symbols, and weak libraries, and strictly follow the steps in the guide. Otherwise, runtime crashes may occur.
+> The ease of use is being optimized. Before the optimization is complete, it is recommended that you use dlopen and dlsym to resolve compatibility issues.
+
+| Macro Definition Name | Description |
+|:--|:--|
+| APIAVAILABLE(maj, min, patch) | Used together with the compiler to ensure the compatibility and stability of applications across different system versions. Through compile-time and runtime condition checks, it prevents crashes caused by calling nonexistent APIs on lower system versions. When using an API higher than the target distribution version (compatibleSdkVersion), you must use this macro for compatibility protection and provide a reasonable fallback solution. The input parameter **maj** is the major version number (value range 0-99), **min** is the minor version number (value range 0-99), and **patch** is the patch version number (value range 0-99).<br/>**Since:** 22 |
+
 ## musl API Difference
 
 | API         | Description                                                                                        |
 |:--               |    :--                                                                                       |
-| epoll_create     | In OpenHarmony 5.0, this API uses the same logic as in musl 1.2.3. Specifically, the API does not verify input parameters or process them if the input parameter value is less than or equal to **0**. In the next version, this API will adopt the logic from musl 1.2.5, which includes input parameter verification. If the input parameter value is less than or equal to **0**, the error code EINVAL will be returned.|  
+| epoll_create     | In the current OpenHarmony musl repository, epoll_create does not validate the size input parameter and does not distinguish whether size is less than or equal to 0. The actual behavior is as follows: when size <= 0, the call may still create an epoll instance successfully. This behavior differs from musl community v1.2.5 and later versions. The musl community requires that size be greater than 0, and the API behaves as follows: when size <= 0, epoll_create should fail, return -1, and set errno to EINVAL. If developers need to be compatible with the musl community v1.2.5+ behavior, they are advised to ensure that size > 0 before calling epoll_create, or to use epoll_create1 instead. |
 
 ## Character Encoding Formats Supported by iconv
 
-The following lists the character encoding formats and aliases supported by musl.
+The character set encoding formats supported by musl, and the supported aliases.
 > **NOTE**
 >
-> The character conversion can be successful only when the source character encoding format is correct and the target character encoding format is supported.
-> musl does not support the following target encoding formats: gb18030, gbk, gb2312, big5, and euckr.
+> When performing character set encoding format conversion, use the correct source character set encoding format, and the target character set encoding format must support the characters to be converted. Otherwise, the conversion fails.
+> In musl, converting the source character set encoding format into the following two target character set encoding formats is not supported: big5 and euckr.
 
 | Encoding Format| Alias                  | Supported by musl|
 |:--      |    :--                   |  :--:  |
@@ -136,7 +150,7 @@ The following lists the character encoding formats and aliases supported by musl
 |cp866    |                          |  Yes  |
 |cp1047   |ibm1047                   |  Yes  |
 
-## musl APIs Not Supported
+## APIs Not Supported by musl
 
 [Native API Symbols Not Exported](musl-peculiar-symbol.md)
 

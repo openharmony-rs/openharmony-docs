@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=665fb1cdc433986b650f04e3483e40ef553c2bca translatedAt=2026-09-28T01:09:29.973Z pushedAt=2026-10-09T01:39:50.670Z -->
+<!-- md-trans-meta sourceCommit=f82c6f1388ce7df4a14e80b27ae8c3eb6ceae124 translatedAt=2026-11-04T02:32:01.626Z pushedAt=2026-11-04T03:24:28.579Z nl=1 -->
 
 ## Overview
 
@@ -202,7 +202,7 @@ Releases the WebSocket connection context and resources. Usage:
 
 >**NOTE**
 >
->Ensure that this API is called after the [WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback) callback is triggered. Otherwise, socket leaks may occur and the connection may not be closed after the system memory resources are released.
+>Ensure that the [WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback) callback is triggered before calling this API. Otherwise, after the system memory resources are released, socket leaks and unclosed connections may occur.
 
 **System capability**: SystemCapability.Communication.NetStack
 

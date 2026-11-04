@@ -6,13 +6,13 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:22:15.311Z pushedAt=2026-06-12T06:59:44.772Z -->
+<!-- md-trans-meta sourceCommit=4a0fbbb88b865741de63d83db61569d538d27d1c translatedAt=2026-11-04T01:05:17.452Z pushedAt=2026-11-04T03:24:28.437Z nl=1 -->
 
 The **infraredEmitter** module generates IR signals of the specified frequency and size, and queries the frequency range supported by the device.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 15. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 
 ## Modules to Import
@@ -21,11 +21,11 @@ The **infraredEmitter** module generates IR signals of the specified frequency a
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
-## infraredEmitter.transmitInfrared
+## infraredEmitter.transmitInfrared<sup>15+</sup>
 
 transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
-Generates IR signals at the specified frequency and level.
+Generates an infrared signal with a specific frequency and level. Before calling this API, call [hasIrEmitter](#infraredemitterhasiremitter23) to check whether the device has an infrared emitter. If the device does not have an infrared emitter, calling this API takes no effect.
 
 **Required permissions**: ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
@@ -36,7 +36,7 @@ Generates IR signals at the specified frequency and level.
 | Name      | Type                       | Mandatory  | Description                                      |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | infraredFrequency | number             | Yes   | IR frequency, in Hz.|
-| pattern | Array&lt;number&gt; | Yes    | Infrared level signal, in microseconds (μs). The number of infrared level signals ranges from 0 to 1024. The value of this parameter must be greater than 0. If this parameter is set to **0**, the API does not take effect. <br/>For example, in the level signal array [100,200,300,400], **100** indicates a high-level signal, **200** indicates a low-level signal, **300** is a high-level signal, and **400** is a low-level signal. |
+| pattern | Array&lt;number&gt; | Yes | Infrared level signal, in microseconds (μs). The number of level signals ranges from 0 to 1024. When the value is 0, the API call does not take effect. The value of each level signal must be greater than 0.<br/>For example, in the level signal array [100,200,300,400], 100 μs is a high level signal, 200 μs is a low level signal, 300 μs is a high level signal, and 400 μs is a low level signal. |
 
 **Error codes**
 
@@ -60,35 +60,44 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          try {
-            // Set the infrared carrier frequency and infrared level signal mode
-            infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
-          } catch (error) {
-            console.error(`Failed to set infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
+          // Query whether there is an infrared emitter.
+          infraredEmitter.hasIrEmitter().then((result: boolean) => {
+            if (result) {
+              try {
+                // Set the infrared frequency and infrared level signal mode.
+                infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
+              } catch (error) {
+                console.error(`Failed to transmit infrared signal, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            } else {
+              console.info('The current device does not support IR emitter.');
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to query infrared emitter, Code: ${error.code}, message: ${error.message}.`);
+          });
         })
     }
   }
 }
 ```
 
-## infraredEmitter.getInfraredFrequencies
+## infraredEmitter.getInfraredFrequencies<sup>15+</sup>
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
-Queries the frequency range of IR signals supported by the device.
+Queries the frequency range of infrared signals supported by the device. Before calling this API, call [hasIrEmitter](#infraredemitterhasiremitter23) to check whether the device has an infrared emitter.
 
 **Required permissions**: ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
 **System capability**: SystemCapability.MultimodalInput.Input.InfraredEmitter
 
-**Device behavior differences**: On phones and TVs that support IR emitters, this API returns the frequency range of IR signals. On devices that do not support IR emitters, this API returns one group of maximum and minimum frequencies, both of which are 0 Hz. You are advised to use the [hasIrEmitter](#infraredemitterhasiremitter23) API to check whether a device supports IR emitters.
+**Device behavior differences**: On Phone, Tablet, and TV devices that support an infrared emitter, this API returns the frequency range of infrared signals. On other devices that do not support an infrared emitter, this API returns a set of maximum and minimum frequencies, both of which are 0 Hz.
 
 **Return value**
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.<br>Since API version 23, one group of maximum and minimum frequencies, both of which are **0** Hz, are returned.|
+| Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | Frequency range of the infrared signal, including multiple groups of maximum and minimum frequencies.<br/>Since API version 23, when the device does not have an infrared emitter, a group of maximum and minimum frequencies is returned, both of which are 0 Hz. |
 
 **Error codes**
 
@@ -123,7 +132,7 @@ struct Index {
 }
 ```
 
-##  InfraredFrequency
+## InfraredFrequency<sup>15+</sup>
 
 Defines the frequency range of IR signals.
 
@@ -175,8 +184,8 @@ struct Index {
             // Query Whether There Is an Infrared Emitter
             infraredEmitter.hasIrEmitter().then((result: boolean) => {
               console.info(`Succeeded in querying infrared emitter: ${JSON.stringify(result)}.`);
-            }).catch((error: BusinessError)=> {
-              console.error(`Failed to query infrared emitter, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);})
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to query infrared emitter, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`)})
         })
     }
   }

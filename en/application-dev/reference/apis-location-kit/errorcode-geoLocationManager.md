@@ -1,12 +1,11 @@
 # Location Kit Error Codes
-
 <!--Kit: Location Kit-->
 <!--Subsystem: Location-->
 <!--Owner: @liu-binjun-->
 <!--Designer: @liu-binjun-->
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=7fbd01821d37ae3a6a262f102830b415945a5304 translatedAt=2026-07-31T06:39:04.622Z pushedAt=2026-07-31T07:55:08.849Z -->
+<!-- md-trans-meta sourceCommit=4119e06971884e7235d54ab2fca2f5a72671c099 translatedAt=2026-11-04T01:26:09.006Z pushedAt=2026-11-04T03:24:28.479Z nl=1 -->
 
 > **NOTE**
 >
@@ -24,7 +23,7 @@ This error code is reported if the location service is unavailable and relevant 
 
 **Possible Cause**
 
-1. The location service fails to be started, leading to a communication failure between the application and the location service.
+1. The location service fails to be started, leading to a communication failure between the application and the location service subsystem, which makes the location service unavailable.
 
 2. The GNSS chip fails to be initialized, leading to a GNSS positioning failure.
 
@@ -54,7 +53,9 @@ Display a prompt asking for enabling the location service.
 
 ## 3301200 Failed to Obtain the Positioning Result
 
-### Cause 1: Positioning Failure Due to Unavailable Network
+### Error Cause
+
+1. The network is unavailable, causing the positioning to fail.
 
 **Error Message**
 
@@ -152,6 +153,7 @@ This error code is reported if the location service fails, leading to a failure 
 
 - Enable automatic setting on the **Time & Date** page.
 
+
 ## 3301300 Query Failed During Reverse Geocoding
 
 **Error Message**
@@ -164,15 +166,15 @@ This error code is reported if the query during reverse geocoding has failed.
 
 **Possible Cause**
 
-- Network connection is poor, which makes the request fail to be sent from the device or the result fail to be returned from the cloud to the device.
+1. The data network is congested, causing the request to fail to be sent from the device or the result to fail to be returned from the cloud to the device.
 
-- The x86 emulator does not support the reverse geocoding function. A reverse geocoding query fails if the x86 emulator is used for debugging.
+2. The X86 emulator does not support reverse geocoding, so the reverse geocoding query fails when debugging on the X86 emulator.
 
 **Procedure**
 
-- For the network problem, try the reverse geocoding query again after the network is resumed.
+1. For network issues, retry the reverse geocoding query.
 
-- For the x86 emulator problem, try the reverse geocoding query again on a real device.
+2. For X86 emulator issues, verify on a real device.
 
 ## 3301400 Query Failed During Geocoding
 
@@ -186,9 +188,9 @@ This error code is reported if the query during geocoding has failed.
 
 **Possible Cause**
 
-- A certain request parameter is incorrect, or no result can be found based on the parameter.<br>
+1. A request parameter is incorrect, or no result can be found based on the parameter.</br>
 
-- Network connection is poor, which makes the request fail to be sent from the device or the result fail to be returned from the cloud to the device.
+2. The data network is congested, causing the request to fail to be sent from the device or the result to fail to be returned from the cloud to the device.
 
 **Procedure**
 
@@ -226,11 +228,11 @@ This error code is reported if a geofence operation, for example, adding, deleti
 
 1. The GNSS chip does not support the geofence function.
 
-2. The bottom-layer service logic is abnormal.
+2. An exception in the underlying service logic causes the geofence operation to fail.
 
 **Procedure**
 
-1. Add the SysCap verification mechanism.
+1. Add SysCap verification.
 
 2. Add a retry mechanism.
 
@@ -282,7 +284,7 @@ This error code is reported if no response is received for an asynchronous reque
 
 **Possible Cause**
 
-1. The user does not click a button as required for confirmation.
+1. The user does not tap the button to confirm.
 
 2. The GNSS chip does not respond.
 
@@ -304,11 +306,11 @@ This error code is reported if Wi-Fi or Bluetooth scanning fails to start.
 
 **Possible Cause**
 
-1. The Wi-Fi or Bluetooth service incurs an internal error.
+1. An internal error in the Wi-Fi or Bluetooth service causes the scanning to fail to start.
 
-2. Power consumption control is activated because of low battery level.
+2. In a low-battery scenario, power consumption control prevents scanning from being initiated.
 
-3. Wi-Fi or Bluetooth is disabled.
+3. The Wi-Fi or Bluetooth switch is not turned on.
 
 **Procedure**
 
@@ -326,15 +328,15 @@ This error code is reported if the attempt to obtain the MAC address of the Wi-F
 
 **Possible Cause**
 
-1. Wi-Fi is disabled.
+1. The Wi-Fi switch is not turned on.
 
-2. Wi-Fi is enabled, but the device is not connected to a Wi-Fi hotspot or router.
+2. The Wi-Fi switch is turned on, but the device is not connected to a hotspot or router.
 
 **Procedure**
 
-1. Enable Wi-Fi.
+1. Turn on the Wi-Fi switch.
 
-2. Connect to a router or Wi-Fi hotspot.
+2. Connect to a router or hotspot.
 
 ## 3501100 Failed to Add a Beacon Fence Because the Location Switch Is Turned Off
 

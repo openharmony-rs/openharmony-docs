@@ -1,10 +1,11 @@
 # NDK-Related musl libc Interface Usage Restrictions
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: commonlibrary-->
 <!--Owner: @liyiming13-->
-<!--Designer: @huang_huijin-->
+<!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=4d0c4fe124a429b89e6c66eb6b302d8501f24a1d translatedAt=2026-11-04T02:56:42.614Z pushedAt=2026-11-04T03:24:28.633Z nl=1 -->
 
 ## Overview
 
@@ -151,7 +152,7 @@ When developing an application using DevEco Studio or NDK, you may need to use t
 
 ### Common SELinux-Affected Interfaces
     
-| Header File        |  musl Interface  |
+| Header File        |  musl API  |
 | -------------- | -------------- |
 | net/if.h       | if_indextoname |
 | net/if.h       | if_nametoindex |
@@ -203,6 +204,9 @@ When developing an application using DevEco Studio or NDK, you may need to use t
 | unistd.h       | tcgetpgrp      |
 | unistd.h       | tcsetpgrp      |
 | utmp.h         | login_tty      |
+| wordexp.h      | wordexp        |
+
+Reference: [APIs in third_party_musl strongly related to SELinux](#apis-in-third_party_musl-strongly-related-to-selinux-categorized-by-implementation-path)
 
 
 ## Sandbox-Affected musl Interfaces
@@ -265,3 +269,86 @@ Common Capabilities-Affected Interfaces
 | unistd.h       | setdomainname     | CAP_SYS_ADMIN        |
 | unistd.h       | sethostname       | CAP_SYS_ADMIN        |
 | unistd.h       | chroot            | CAP_SYS_CHROOT       |
+
+
+## APIs in third_party_musl Strongly Related to SELinux (Categorized by Implementation Path)
+
+### pty/tty and Terminal Link
+
+| Header File | musl API Name | Fixed Access Path |
+| --- | --- | --- |
+| pty.h | forkpty | None; indirectly accesses `/dev/ptmx` and `/dev/pts/%d` through `openpty` |
+| pty.h | openpty | `/dev/ptmx`, `/dev/pts/%d` |
+| stdlib.h | ptsname | None; indirectly obtains `/dev/pts/%d` through `ptsname_r` |
+| stdlib.h | ptsname_r | `/dev/pts/%d` |
+| stdlib.h | posix_openpt | `/dev/ptmx` |
+| stdlib.h | unlockpt | None; executes `ioctl(TIOCSPTLCK)` on the passed fd |
+| unistd.h | ctermid | None; only returns the `/dev/tty` string |
+| unistd.h | ttyname_r | `/proc/self/fd/` |
+| unistd.h | getpass | `/dev/tty` |
+| utmp.h | login_tty | None; executes `ioctl(TIOCSCTTY)` on the passed fd |
+
+> **NOTE**
+>
+> These APIs are often associated with `dev_ptmx`, `devpts`, and `tty_device`, and are usually not "unconditionally opened to all subjects" in the policy.
+
+### Shared Memory and Named Semaphores
+
+| Header Files | musl API Name | Fixed Access Path |
+| --- | --- | --- |
+| sys/mman.h | shm_open / shm_unlink | `/dev/shm/` |
+| semaphore.h | sem_open | `/dev/shm/`, `/dev/shm/tmp-%d` |
+| semaphore.h | sem_unlink | `/dev/shm/` |
+
+> **NOTE**
+>
+> The `/dev/shm` path is controlled by the system-side SELinux.
+
+### Shell Execution and Log Console
+
+| Header File | musl API Name | Fixed Access Path |
+| --- | --- | --- |
+| stdio.h | popen | `/bin/sh` |
+| stdio.h | pclose | None; waits for and reaps the child process created by `popen` |
+| stdlib.h | system | `/bin/sh` |
+| wordexp.h | wordexp | `/bin/sh` |
+| syslog.h | syslog-related APIs | `/dev/log`, `/dev/console` |
+| fmtmsg.h | fmtmsg | `/dev/console` |
+
+> **NOTE**
+>
+> Access to `/dev/log` and `/dev/console` generally depends on subject domain authorization and is not allowed by default.
+
+### Accounts and Sensitive Files
+
+| Header Files | musl API Name | Fixed Access Path |
+| --- | --- | --- |
+| shadow.h | getspnam_r | `/etc/tcb/%s/shadow`, `/etc/shadow` |
+
+> **NOTE**
+>
+> The objects of these APIs are highly sensitive. It is recommended that they be audited separately based on the principle of least privilege.
+
+### APIs Without a Fixed Path but With SELinux Control Points
+
+| Header File | musl API name | Possible Cause of Impact |
+| --- | --- | --- |
+| net/if.h | if_indextoname | Via `socket` + `ioctl(SIOCGIFNAME)`, SELinux controls `udp_socket/unix_dgram_socket ioctl` |
+| net/if.h | if_nametoindex | Via `socket` + `ioctl(SIOCGIFINDEX)`, SELinux controls `udp_socket/unix_dgram_socket ioctl` |
+| sys/mount.h | mount / umount / umount2 | The path is passed in as a parameter. SELinux controls `filesystem { mount unmount remount }` and the mount point `dir/file mounton` |
+| sys/msg.h | msgctl / msgget / msgrcv / msgsnd | System V message queue object. SELinux controls `msg/msgq` |
+| sys/sem.h | semget / semctl / semop / semtimedop | System V semaphore object. SELinux controls `sem` |
+| sys/shm.h | shmget / shmat / shmdt / shmctl | System V shared memory object. SELinux controls `shm` |
+| sys/stat.h | mkfifo / mkfifoat | The path is passed in as a parameter. SELinux controls the parent directory `add_name/create` and the target `fifo_file` |
+| sys/stat.h | mknod / mknodat | The path is passed in as a parameter. SELinux controls the parent directory `add_name/create` and the target `chr_file/blk_file/fifo_file` |
+| sys/ioctl.h | ioctl | Accesses the target object through fd, typically controlled by `ioctl`/`allowxperm` |
+| termios.h | tcgetattr / tcsetattr | Executes `ioctl` through fd. The typical object is `tty_device/devpts:chr_file` |
+| termios.h | tcsendbreak / tcdrain / tcflush / tcflow / tcgetsid | Executes `ioctl` through fd. The typical object is `tty_device/devpts:chr_file` |
+| unistd.h | tcgetpgrp / tcsetpgrp | Executes `ioctl` through fd. The typical object is `tty_device/devpts:chr_file` |
+| unistd.h | link / linkat | The path is passed in as a parameter. SELinux controls `file link` and the parent directory `add_name` |
+| unistd.h | readlink / readlinkat | The path is passed in as a parameter. SELinux controls `lnk_file read/getattr` |
+| unistd.h | symlink / symlinkat | The path is passed in as a parameter. SELinux controls `lnk_file create` and the parent directory `add_name` |
+
+> **NOTE**
+>
+> The APIs above do not have a fixed access path inside musl. Whether SELinux interception is triggered depends on the calling subject, the passed-in path or fd, the kernel object label, and the corresponding policy.

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2dd7d31bbec973d3a80dde935a68266b4fcf6625 translatedAt=2026-09-28T01:35:18.056Z pushedAt=2026-10-09T03:35:50.295Z -->
+<!-- md-trans-meta sourceCommit=ef288f6cc5606fad1f5cc1b49154a931a0285c12 translatedAt=2026-11-04T02:39:57.134Z pushedAt=2026-11-04T03:24:28.601Z nl=1 -->
 
 The **netFirewall** module implements the firewall query functionality. It allows applications to query firewall interception records.
 
@@ -58,7 +58,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2100002  | Operation failed. Cannot connect to service.                                    |
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
-
+  
 **Example**
 
 ```ts

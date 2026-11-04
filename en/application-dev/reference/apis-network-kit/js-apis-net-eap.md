@@ -6,11 +6,11 @@
 <!--Designer: @gcw_3Lx1FoMT-->
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f9f6b37ec87d9c0bf979f62eb07082fa84f5f2fe translatedAt=2026-09-28T01:31:58.212Z pushedAt=2026-10-09T03:25:34.605Z -->
+<!-- md-trans-meta sourceCommit=f82c6f1388ce7df4a14e80b27ae8c3eb6ceae124 translatedAt=2026-11-04T02:37:26.490Z pushedAt=2026-11-04T03:24:28.596Z nl=1 -->
 
 The **eap** module provides the extensible authentication mechanism to enable third-party clients to access custom 802.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication.
 
-> **NOTE**
+> **NOTE** 
 >
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
@@ -64,7 +64,7 @@ let eapType = 25;
 let eapData = (eapData:eap.EapData):void => {
   console.info("rsp result", JSON.stringify(eapData));
 };
-    
+
 eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
 console.info('regCustomEapHandler success');
 ```
@@ -111,7 +111,7 @@ let eapType = 25;
 let eapData = (eapData:eap.EapData):void => {
   console.info("rsp result", JSON.stringify(eapData));
 };
-    
+
 eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
 console.info('unregCustomEapHandler success');
 ```
@@ -337,7 +337,7 @@ Represents the EAP profile information.
 
 | Name             | Type                         | Read-Only| Optional| Description                            |
 | ----------------- | ----------------------------- | ---- |----| -------------------------------- |
-| eapMethod         | [EapMethod](#eapmethod)      | No  | No| EAP authentication method.                    |
+| eapMethod         | [EapMethod](#eapmethod)      | No   | No | EAP authentication method.                     |
 | phase2Method      | [Phase2Method](#phase2method)| No  | No| Phase 2 authentication method.              |
 | identity          | string                        | No  | No| Identity information.                      |
 | anonymousIdentity | string                        | No  | No| Anonymous identity.                      |

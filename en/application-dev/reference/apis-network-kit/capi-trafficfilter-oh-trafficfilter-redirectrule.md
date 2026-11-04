@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e4860fc95c8d8b95b77255afd3be962b586518ba translatedAt=2026-08-14T10:25:50.907Z pushedAt=2026-08-17T08:57:35.026Z -->
+<!-- md-trans-meta sourceCommit=f82c6f1388ce7df4a14e80b27ae8c3eb6ceae124 translatedAt=2026-11-04T02:34:24.444Z pushedAt=2026-11-04T03:24:28.583Z nl=1 -->
 
 ```c
 typedef struct OH_TrafficFilter_RedirectRule {...} OH_TrafficFilter_RedirectRule
@@ -44,7 +44,9 @@ Failure rule: If [OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#
 | [OH_TrafficFilter_PortMatch](capi-trafficfilter-oh-trafficfilter-portmatch.md) dstPort | Destination port matching condition.<br>**Since:** 26.0.0 |
 | [OH_TrafficFilter_InterfaceMatch](capi-trafficfilter-oh-trafficfilter-interfacematch.md) inInterface | Inbound interface matching condition.<br>**Since:** 26.0.0 |
 | [OH_TrafficFilter_InterfaceMatch](capi-trafficfilter-oh-trafficfilter-interfacematch.md) outInterface | Outbound interface matching condition.<br>**Since:** 26.0.0 |
-| uint32_t uidStart | Start value of the app UID range. The value range is [0, UINT32_MAX], where **UINT32_MAX** indicates any UID.<br>**Since:** 26.0.0 |
-| uint32_t uidEnd | End value of the app UID range. The value range is [0, UINT32_MAX], where **UINT32_MAX** indicates any UID. Generally, this value must be greater than or equal to **uidStart** (the start value of the app UID range).<br>**Since:** 26.0.0 |
+| uint32_t uidStart | Start value of the application UID range. The value ranges from 0 to UINT32_MAX (UINT32_MAX indicates any UID).<br>**Since:** 26.0.0 |
+| uint32_t uidEnd | End value of the application UID range. The value ranges from 0 to UINT32_MAX (UINT32_MAX indicates any UID). It is usually greater than or equal to uidStart (the start value of the application UID range).<br>**Since:** 26.0.0 |
 | [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) proxyIp | IP address of the proxy server. Both IPv4 and IPv6 are supported.<br>**Since:** 26.0.0 |
 | uint16_t proxyPort | Port of the proxy server.<br>**Since:** 26.0.0 |
+
+

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e75dab7e271311a5103ef7c57cad620c8a400383 translatedAt=2026-09-28T01:18:31.805Z pushedAt=2026-10-09T02:23:05.177Z -->
+<!-- md-trans-meta sourceCommit=55aca85856c67c25fb1016a96e8daa56b7da4d2a translatedAt=2026-11-04T02:34:32.667Z pushedAt=2026-11-04T03:24:28.585Z nl=1 -->
 
 > **NOTE**
 >
@@ -618,6 +618,30 @@ The specified identity verification field does not match that on the server.
 **Solution**
 
 Check whether the specified identity verification field matches that on the server.
+
+## 2300996 Request Intercepted by the Global HTTP Interceptor
+
+**Error Message**
+
+The request was intercepted by the HTTP global interceptor.
+
+**Description**
+
+The request was intercepted by a registered global HTTP interceptor, so the current request was not executed further.
+
+**Possible Causes**
+
+The current request was intercepted by a registered global HTTP interceptor, usually because the interceptor determined during the request phase that the current request should not continue, or because the interceptor implementation contains a misjudgment, an abnormal return, or a forced interruption logic.
+
+**Solution**
+
+1. Check whether a global HTTP request interceptor is configured, and confirm whether the interceptor type, registration method, and execution order meet the business expectations.
+
+2. Check whether the interceptor callback contains misjudgment conditions, for example, uniformly rejecting certain requests, interrupting abnormal data in advance, or returning an incorrect abort status.
+
+3. Use the log keywords `GlobalRequestInterceptorCheck fail` and `GlobalRequestInterceptorCheck failed` to locate the position where the interceptor verification fails or is interrupted.
+
+4. If permitted by the business, adjust the interceptor policy to ensure that requests are intercepted only in necessary scenarios, and verify whether the request parameters and context are correct before interception.
 
 ## 2300997 Plaintext HTTP Access Intercepted
 

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2188f48fcd967ec2074a4390970c003bc388f9d7 translatedAt=2026-09-28T01:24:53.629Z pushedAt=2026-10-09T02:44:31.113Z -->
+<!-- md-trans-meta sourceCommit=1b0ea743df695f1382d4529d15ea9286b9c9ac07 translatedAt=2026-11-04T02:35:22.949Z pushedAt=2026-11-04T03:24:28.586Z nl=1 -->
 
 > **NOTE**
 >
@@ -40,7 +40,7 @@ WebSocket connection failed.
 
 3. Check whether the added headers are correct.
 
-4. If the issue persists, collect complete logs and contact technical support for assistance.
+4. If the issue persists, collect complete logs and contact technical support for assistance. 
 
 ## 2302001 WebSocket URL Error
 
@@ -60,7 +60,7 @@ The WebSocket URL is incorrect.
 
 1. Check whether the URL is empty or does not contain the correct protocol (ws:// or wss://).
 
-2. Check whether the WebSocket URL length exceeds 2048 characters.
+2. Check whether the URL length exceeds 2048 characters.
 
 ## 2302002 WebSocket Certificate Does Not Exist
 
@@ -80,7 +80,7 @@ The certificate path is incorrect or no certificate is configured.
 
 1. Check whether the CA certificate path is valid.
 
-2. If the **WebSocketRequestOptions.clientCert** is specified, check whether the certificate path and private key path are valid.
+2. If WebSocketRequestOptions.clientCert is specified, check whether the certificate path and the private key path are valid.
 
 
 ## 2302003 WebSocket Connection Already Exists
@@ -99,9 +99,9 @@ The WebSocket connection has been established.
 
 **Solution**
 
-The WebSocket connection has been established. You do not need to call the **WebSocket.connect** API again. No further action is required.
+A WebSocket connection has already been established. There is no need to call WebSocket.connect again to establish a connection, and no other processing steps are required.
 
-## 2302004 Listening Failed on the Specified NIC
+## 2302004 WebSocketServer Cannot Listen on the Specified NIC (Network Interface)
 
 **Error Message**
 
@@ -119,7 +119,7 @@ The IP address in the WebSocketServer server configuration file is invalid.
 
 Check whether the network connection is normal and whether the IP address is valid.
 
-## 2302005 Listening Failed on the Specified Port
+## 2302005 WebSocketServer Fails to Listen on the Specified Port
 
 **Error Message**
 
@@ -138,24 +138,24 @@ The port number in the WebSocketServer configuration file is invalid.
 Check whether the port number is valid.
 
 ## 2302006 WebSocketServer Connection Does Not Exist
-
+ 
 **Error Message**
-
+ 
 websocket connection does not exist.
-
+ 
 **Description**
-
+ 
 The WebSocketServer connection does not exist.
-
+ 
 **Possible Causes**
-
+ 
 The WebSocketServer connection to be operated (closed or sent a message) has been disconnected or does not exist.
-
+ 
 **Solution**
-
+ 
 Check whether the connection is still valid, and re-establish the connection before performing the operation if necessary.
 
-## 2302007 Listening Port Already Occupied
+## 2302007 The Currently Listened Port of WebSocketServer Is Occupied
 
 **Error Message**
 
@@ -163,7 +163,7 @@ Websocket port already occupied.
 
 **Description**
 
-This error code is reported if the port listened by the WebSocketServer is occupied.
+The port on which the WebSocketServer is currently listening is already occupied.
 
 **Possible Causes**
 

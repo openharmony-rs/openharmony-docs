@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=0d1b87cd0aa7ff9dd2269fd63293e888b317531a translatedAt=2026-11-04T01:27:37.486Z pushedAt=2026-11-04T03:24:28.484Z nl=1 -->
 
 > **NOTE**
 >
@@ -412,6 +413,7 @@ If the called API is [bundleManager.install](./js-apis-enterprise-bundleManager.
 2. The operation attempts to install multiple apps with different bundle names.
 3. The application to be installed already exists when the installation parameter flag is 0.
 4. The user ID is invalid.
+5. The application installation package does not contain a valid certificate.
 
 <!--RP3--><!--RP3End-->
 
@@ -779,7 +781,7 @@ Add the application to another location.
 
 **Error Message**
 
-set default data sim failed.
+Failed to set the default data SIM card. The airplane mode is enabled or no SIM card is inserted.
 
 **Description**
 
@@ -1204,6 +1206,24 @@ The system account of the current type does not support this operation.
 
 Check whether the system account of the current type supports this operation.
 
+## 9201042 Failed to Toggle the Switch State
+
+**Error Message**
+
+Failed to toggle the switch state.
+
+**Description**
+
+This error code is reported when the switch state fails to be toggled.
+
+**Possible Causes**
+
+The Bluetooth, Wi-Fi, NFC, or NearLink related services on the current device are in an abnormal state.
+
+**Solution**
+
+Check whether the device-related services are running properly.
+
 ## 9201043 Prerequisites for Calling the API Not Met
 
 **Error Message**
@@ -1212,7 +1232,7 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 
 **Description**
 
-This error code is reported when the prerequisites for calling the API are not met.
+This error code is reported when an application list that allows distributed bidirectional collaboration is added without disabling the one-way transmission capability between devices.
 
 **Possible Causes**
 
@@ -1248,7 +1268,7 @@ This permission cannot be disallowed.
 
 **Description**
 
-This error code is reported when an attempt is made to disable a specified permission.
+When a permission whose APL level is not normal or system_basic is disabled, this error code occurs.
 
 **Possible Causes**
 
@@ -1266,7 +1286,7 @@ The number of signed-in accounts reaches the upper limit.
 
 **Description**
 
-The number of signed-in system accounts on the current device has reached the upper limit.
+The number of system accounts that have been logged in on the current device reaches the upper limit.
 
 **Possible Causes**
 
@@ -1275,3 +1295,21 @@ The number of created and signed-in system accounts has reached the upper limit.
 **Solution**
 
 Try to sign out unnecessary system accounts and promptly remove system accounts that no longer need to be retained.
+
+## 9201048 Device Operation Failure
+
+**Error Message**
+
+Failed to operate the device.
+
+**Description**
+
+The current device operation failed.
+
+**Possible Causes**
+
+Disk erasure failed.
+
+**Solution**
+
+Erasure failed. Try again.
