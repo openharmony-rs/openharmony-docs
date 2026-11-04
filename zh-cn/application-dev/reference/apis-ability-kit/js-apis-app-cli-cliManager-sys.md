@@ -22,7 +22,7 @@ import { cliManager } from '@kit.AbilityKit';
 
 ## ExecOptions
 
-执行CLI工具的可选参数。可用于指定CLI工具后台运行、前台执行时长、超时时长。
+执行CLI工具的可选参数。可用于指定CLI工具后台运行、前台执行时长、超时时长、安全策略。
 
 **起始版本：** 26.0.0
 
@@ -39,6 +39,7 @@ import { cliManager } from '@kit.AbilityKit';
 | timeout    | number | 否 | 任务执行超时时长。取值范围：0 ~ 1800。默认值：1800。单位：s。 |
 | toolCallId | string | 否 | 表示工具调用的唯一标识符，由Agent分配。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
 | dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，用于唯一标识Agent会话。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
+| policy | string | 否 | 安全策略，参数格式为JSON字符串。该策略字符串由系统服务解析，用于对命令执行施加额外的安全约束。<br>**说明**：从API版本26.0.1开始支持。 |
 
 ## cliManager.queryToolSummaries
 
