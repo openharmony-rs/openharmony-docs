@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T01:47:30.601Z pushedAt=2026-11-04T03:24:28.517Z nl=1 -->
 
 This module provides device control capabilities for enterprise device management scenarios. Administrators can remotely control devices through this module, including operations such as device restart, shutdown, screen lock, and factory reset, helping enterprises achieve unified device management and security control.
 
@@ -107,6 +108,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200010 | A conflict policy has been configured. |
 | 9200012  | Parameter verification failed.|
+| 9201048  | Failed to operate the device.|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 

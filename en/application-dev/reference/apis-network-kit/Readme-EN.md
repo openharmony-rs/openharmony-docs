@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=f82c6f1388ce7df4a14e80b27ae8c3eb6ceae124 translatedAt=2026-11-04T02:45:51.835Z pushedAt=2026-11-04T03:24:28.616Z nl=1 -->
 
 - ArkTS APIs<!--network-api-arkts-->
   - [@ohos.net.connection (Network Connection Management)](js-apis-net-connection.md)

@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T01:41:14.292Z pushedAt=2026-11-04T03:24:28.511Z nl=1 -->
 
 The **dateTimeManager** module provides APIs for system time management.
 

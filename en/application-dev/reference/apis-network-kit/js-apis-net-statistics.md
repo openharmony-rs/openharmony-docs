@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-09-28T01:43:11.917Z pushedAt=2026-10-09T03:44:16.672Z -->
+<!-- md-trans-meta sourceCommit=f82c6f1388ce7df4a14e80b27ae8c3eb6ceae124 translatedAt=2026-11-04T02:44:22.287Z pushedAt=2026-11-04T03:24:28.609Z nl=1 -->
 
 The Traffic Management module provides the capability to obtain device network traffic data. This module supports querying packet traffic usage from multiple dimensions, for example:
 - Obtaining the uplink/downlink traffic data of a specified NIC.
@@ -758,7 +758,7 @@ Obtains the downlink traffic (in bytes) of the specified socket. This API uses a
 
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | Yes  | File description (FD) of the socket to query.                     |
+| sockfd   | number                 | Yes   | FD (file descriptor) of the socket for the specified query.                     |
 | callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the downlink traffic of the socket is obtained successfully, **error** is **undefined**; otherwise, it is an error object. |
 
 **Error codes**
@@ -804,7 +804,7 @@ Obtains the downlink traffic (in bytes) of the specified socket. This API uses a
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | number | Yes | FD of the socket to query. |
+| sockfd | number | Yes | File descriptor (FD) of the socket for the specified query. |
 
 **Return value**
 
@@ -853,7 +853,7 @@ Obtains the uplink traffic of the specified socket (in bytes). This API uses an 
 
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | Yes  | FD of the socket to query.                     |
+| sockfd   | number                 | Yes  | FD (file descriptor) of the socket for the specified query.                     |
 | callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the uplink traffic of the socket is obtained successfully, **error** is **undefined**; otherwise, it is an error object. |
 
 **Error codes**
@@ -899,7 +899,7 @@ Obtains the uplink traffic (in bytes) of the specified socket. This API uses a p
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | number | Yes | FD of the socket to query. |
+| sockfd | number | Yes | FD (file descriptor) of the socket for the specified query. |
 
 **Return value**
 
@@ -931,7 +931,7 @@ statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
   console.error(JSON.stringify(err));
 });
 ```
-
+            
 ## statistics.getSelfTrafficStats<sup>22+</sup>
 
 getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>

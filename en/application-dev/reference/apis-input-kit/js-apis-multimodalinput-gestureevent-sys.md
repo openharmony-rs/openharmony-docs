@@ -6,19 +6,20 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=29ec5e2798cba0f61c9ee386abf0db610c29644e translatedAt=2026-11-04T01:17:42.662Z pushedAt=2026-11-04T03:24:28.457Z nl=1 -->
 
 The **gestureEvent** module provides gesture events reported by devices.
 
->  **NOTE**
+> **NOTE**
 >
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this module are system APIs.
+> - The APIs of this module are system APIs.
 
 ## Modules to Import
 
 ```js
-import { Touch , SwipeInward } from '@kit.InputKit';
+import { Touch, SwipeInward } from '@kit.InputKit';
 ```
 
 ## TouchGestureEvent<sup>18+</sup>

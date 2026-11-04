@@ -5,7 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=05fb673381de9eb821e758638baf8a3d50245231 translatedAt=2026-09-09T01:39:32.064Z pushedAt=2026-09-09T03:29:42.657Z -->
+<!-- md-trans-meta sourceCommit=9585fb12fa8f977accfd9435d9f5537b14734473 translatedAt=2026-11-04T01:27:32.736Z pushedAt=2026-11-04T03:24:28.481Z nl=1 -->
 
 The **geoLocationManager** module provides basic location services such as Global Navigation Satellite System (GNSS)-based positioning, network positioning (for example, base station positioning or WLAN/Bluetooth positioning), geofencing, as well as geocoding and reverse geocoding.
 
@@ -129,12 +129,12 @@ Defines a continuous location request.
 
 **System capability**: SystemCapability.Location.Location.Core
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | interval | number | No | No | Indicates the time interval for reporting location information, in seconds. Default value is 1, and the value range is greater than or equal to 0. When the value is 0, there is no limit on the location reporting interval.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | No | No | Indicates the location scenario information. For the value range, see the definitions of [UserActivityScenario](#useractivityscenario12) and [PowerConsumptionScenario](#powerconsumptionscenario12). <br/>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | sportsType | [SportsType](#sportstype18) | No | Yes | Indicates the sports mode. For the value range, see the definition of [SportsType](#sportstype18). This parameter takes effect only when locationScenario is set to UserActivityScenario.SPORT. Default value is 0, indicating that this parameter does not take effect.<br/>**Since:** 26.0.0 <br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.|
-| needPoi<sup>19+ | boolean | No| Yes| Whether to obtain the Point of Interest (POI) near the current location. The value **true** means to obtain the POI near the current location, and the value false means the opposite. If this parameter is not set, the default value **false** is used.<br>This parameter is valid only when the precise location function is enabled (both the **ohos.permission.APPROXIMATELY\_LOCATION** and **ohos.permission.LOCATION** permissions are granted). It is invalid when the approximate location function is enabled (only the **ohos.permission.APPROXIMATELY\_LOCATION** permission is enabled).<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| needPoi<sup>19+ | boolean | No | Yes | Indicates whether to obtain POI information near the current location. The value false indicates that POI information near the current location is not required, and the value true indicates that POI information near the current location is required. If this parameter is not set, the default value is false. Currently, POI information can be obtained only within China (excluding the Hong Kong Special Administrative Region, the Macao Special Administrative Region, and Taiwan, China).<br/>This parameter takes effect only in the precise location function scenario (that is, when both the ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). In the fuzzy location function scenario (that is, when only the ohos.permission.APPROXIMATELY_LOCATION permission is granted), POI information is not returned.<br/>**Atomic service API:** Since API version 19, this API supports use in atomic services.|
 
 
 ## SingleLocationRequest<sup>12+</sup>
@@ -145,11 +145,11 @@ Defines a single location request.
 
 **System capability**: SystemCapability.Location.Location.Core
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | locatingPriority | [LocatingPriority](#locatingpriority12) | No| No| Priority of the location request. For details, see [LocatingPriority](#locatingpriority12).|
 | locatingTimeoutMs | number | No| No| Timeout duration, in milliseconds. The minimum value is **1000**. The specified value must be greater than or equal to **1000**.|
-| needPoi<sup>19+ | boolean | No| Yes| Whether to obtain the Point of Interest (POI) near the current location. The value **true** means to obtain the POI near the current location, and the value false means the opposite. If this parameter is not set, the default value **false** is used.<br>This parameter is valid only when the precise location function is enabled (both the **ohos.permission.APPROXIMATELY\_LOCATION** and **ohos.permission.LOCATION** permissions are granted). It is invalid when the approximate location function is enabled (only the **ohos.permission.APPROXIMATELY\_LOCATION** permission is enabled).<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| needPoi<sup>19+ | boolean | No | Yes | Indicates whether to obtain POI information near the current location. The value false indicates that POI information near the current location is not required, and the value true indicates that POI information near the current location is required. If this parameter is not set, the default value is false. Currently, POI information can be obtained only within China (excluding the Hong Kong Special Administrative Region, the Macao Special Administrative Region, and Taiwan, China).<br/>This parameter takes effect only in the precise location function scenario (that is, when both the ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). In the fuzzy location function scenario (that is, when only the ohos.permission.APPROXIMATELY_LOCATION permission is granted), POI information is not returned.<br/>**Atomic service API:** Since API version 19, this API supports use in atomic services.|
 
 
 ## SatelliteStatusInfo
@@ -622,8 +622,8 @@ Defines the matched WLAN information struct.
 | -------- | -------- | -------- | -------- | -------- |
 | index | number | No | No | Index of the matched WLAN in **wlanBssidArray**. |
 | ssid | string | No | No | SSID of the matched WLAN. |
-
-
+ 
+ 
 ## DistrictRequestParams
 
 Represents the request parameters for obtaining district information.
@@ -651,7 +651,7 @@ Represents the district information.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Location.Location.Geocoder
-
+  
 **Model restriction**: This API can be used only in the stage model.
 
 | Name | Type | Read-Only | Optional | Description |
@@ -681,7 +681,7 @@ Represents the Bluetooth scan request parameters.
 | -------- | -------- | -------- | -------- | -------- |
 | deviceIdArray | Array&lt;string&gt; | No | No | List of Bluetooth device addresses used to filter scan results. The length of a single string cannot exceed 64, and the length of the array cannot exceed 1000. A Bluetooth device is returned through the callback only when its address matches an element in this array. If an empty array (length 0) is passed in, no Bluetooth scan result is returned. The format of each element in the array is **XX:XX:XX:XX:XX:XX**. |
 | rssiThreshold | number | No | Yes | RSSI threshold. Only devices with an RSSI greater than this threshold are scanned. The value ranges from -128 to 127. |
-
+  
 ## Point
 
 Represents a location point.
@@ -1990,7 +1990,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback&lt;Array&lt;GeoAddress&gt;&gt;): void
 
-Converts coordinates into geographic descriptions through reverse geocoding. This API uses an asynchronous callback to return the result. 
+Converts coordinates into geographic descriptions through reverse geocoding. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -2041,7 +2041,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise&lt;Array&lt;GeoAddress&gt;&gt;
 
-Converts coordinates into geographic descriptions through reverse geocoding. This API uses a promise to return the result. 
+Converts coordinates into geographic descriptions through reverse geocoding. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -2096,7 +2096,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback&lt;Array&lt;GeoAddress&gt;&gt;): void
 
-Converts geographic descriptions into coordinates through geocoding. This API uses an asynchronous callback to return the result. 
+Converts geographic descriptions into coordinates through geocoding. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -2143,7 +2143,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 getAddressesFromLocationName(request: GeoCodeRequest): Promise&lt;Array&lt;GeoAddress&gt;&gt;
 
-Converts geographic descriptions into coordinates through geocoding. This API uses a promise to return the result. 
+Converts geographic descriptions into coordinates through geocoding. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -2722,7 +2722,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
     console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
   }
   ```
-
+  
 
 ## geoLocationManager.removeGnssGeofence<sup>12+</sup>
 
@@ -2733,7 +2733,7 @@ Removes a GNSS geofence and unsubscribes from geofence events. This API uses a p
 The GNSS geofence feature depends on the GNSS positioning chip (supported only by certain models). If the required chip model is not available, error code 801 (Capability not supported) is returned. Before calling this API, you are advised to call [geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported) to check whether the corresponding capability is supported.
 
 **System capability**: SystemCapability.Location.Location.Geofence
-
+  
 **Required permissions:**
 
 - API version 9-24: ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
@@ -2988,13 +2988,13 @@ Queries whether the system supports the POI service.
   let poiServiceState = geoLocationManager.isPoiServiceSupported();
   console.info("poiServiceState:" + poiServiceState);
   ```
-
+  
 
 ## geoLocationManager.getPoiInfo<sup>20+</sup>
 
 getPoiInfo(): Promise&lt;PoiInfo&gt;
 
-Obtains the POI near the current location. This API uses a promise to return the result.
+Obtains the POI information near the current location. This API uses a promise to return the result asynchronously. Currently, this API can be used only within China (excluding the Hong Kong Special Administrative Region, the Macao Special Administrative Region, and Taiwan, China).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3036,7 +3036,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
     console.error("getPoiInfo errCode:" + error.code + ", errMessage:" + error.message);
   }
   ```
-
+  
 
 ## geoLocationManager.getDistanceBetweenLocations<sup>20+</sup>
 
@@ -3097,8 +3097,8 @@ Obtains the linear distance between two locations.
     console.error("getDistanceBetweenLocations: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
-
-
+  
+  
 ## geoLocationManager.addBeaconFence<sup>20+</sup>
 
 addBeaconFence(fenceRequest: BeaconFenceRequest): Promise&lt;number&gt;
@@ -3577,7 +3577,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 Obtains the district information of the current device location. This API uses a promise to return the result.
 
 **Since**: 26.0.0
-
+  
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Permission required:** ohos.permission.APPROXIMATELY_LOCATION
@@ -3655,7 +3655,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
 Obtains the post-processing track for a specific sports mode based on the input [sportsType](#sportstype18). Before calling this API, you need to call [geoLocationManager.on('locationChange')](#geolocationmanageronlocationchange) and configure the correct sports mode in [SportsType](#sportstype18) in the [ContinuousLocationRequest](#continuouslocationrequest12) input parameter. Currently, only the skiing mode is supported. The recorded sports track is cleared after 24 hours.
 
 **Since**: 26.0.0
-
+  
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Permission required:** ohos.permission.LOCATION
@@ -3728,7 +3728,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
-
+   
 ## geoLocationManager.startBluetoothSearch
 
 startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&lt;BluetoothScanResult&gt;): void
@@ -3770,12 +3770,12 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   
-  private callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+  let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
     if (bluetoothScanResult) {
       console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
         try {
            // You need to consider calling stopBluetoothSearch at an appropriate time to stop Bluetooth scanning to save power. This code is for reference only.
-           geoLocationManager.stopBluetoothSearch(this.callback);
+           geoLocationManager.stopBluetoothSearch(callback);
         } catch (err) {
            console.error("errCode:" + err.code + ", message:" + err.message);
         }
@@ -3785,49 +3785,49 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
     'rssiThreshold': -100,
     'deviceIdArray': ['98:56:07:E6:AA:46','4E:E6:D2:02:27:F9']
   };
-  
+   
   try {
-    geoLocationManager.startBluetoothSearch(request, this.callback);
+    geoLocationManager.startBluetoothSearch(request, callback);
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
-
+   
 ## geoLocationManager.stopBluetoothSearch
-
+   
 stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
-
+   
 Stops the Bluetooth scan. The callback must be the same as the one passed in the **startBluetoothSearch** API. If this parameter is not specified, all subscriptions of the current type are canceled.
-
+   
 **Since**: 26.0.0
-
+   
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
+   
 **System capability:** SystemCapability.Location.Location.Core
-
+   
 **Model restriction**: This API can be used only in the stage model.
-
+   
 **Parameters**
-
+   
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | No | Callback to unregister. This callback must be the same as the one passed in the **on** API. If this parameter is not specified, all subscriptions of the current type are canceled. |
-
+   
 **Error codes**
-
+   
 For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
-
+   
 | ID | Error Message |
 | -------- | ---------------------------------------- |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                               | 
 |801 | Capability not supported. Failed to call ${geoLocationManager.stopBluetoothSearch} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
-
+   
 **Example**
-
+   
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  
+   
   let request: geoLocationManager.BluetoothSearchRequestParams = {
     'rssiThreshold': -100,
     'deviceIdArray': ['98:56:07:E6:AA:46','4E:E6:D2:02:27:F9']

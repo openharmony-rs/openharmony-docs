@@ -5,6 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3c322d4980db4ff806888b92ca96f9d6f31f2934 translatedAt=2026-11-04T02:52:41.980Z pushedAt=2026-11-04T03:24:28.640Z nl=1 -->
 
 ## Overview
 
@@ -115,7 +116,7 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_getprototype) | Obtains the prototype of an object.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env,JSVM_Value typedarray,JSVM_TypedarrayType* type,size_t* length,void** data,JSVM_Value* arraybuffer,size_t* byteOffset)](#oh_jsvm_gettypedarrayinfo) | Obtains the properties of a typed array. If any property is not required, its output parameter can be **NULL**.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env,JSVM_Value dataview,size_t* bytelength,void** data,JSVM_Value* arraybuffer,size_t* byteOffset)](#oh_jsvm_getdataviewinfo) | Obtains the proprieties of a **DataView**. If any property is not required, its output parameter can be **NULL**.|
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env,JSVM_Value value,double* result)](#oh_jsvm_getdatevalue) | Obtains the C double-precision primitive equivalent of a given JavaScript date. If this API call is successfully, **JSVM_OK** is returned. If a **JSVM_Value** of a non-JavaScript date type is passed in, **JSVM_DATA_EXPECTED** is returned.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env,JSVM_Value value,double* result)](#oh_jsvm_getdatevalue) | Returns the C double primitive value equivalent to the given JavaScript Date time value. If the call succeeds, JSVM_OK is returned. If a JSVM_Value that is not of the JavaScript Date type is passed in, JSVM_DATE_EXPECTED is returned. |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_getvaluebool) | Obtains the C Boolean primitive equivalent of a given JavaScript Boolean value.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env,JSVM_Value value,double* result)](#oh_jsvm_getvaluedouble) | Obtains the C double-precision primitive equivalent of a given JavaScript number.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env,JSVM_Value value,int64_t* result,bool* lossless)](#oh_jsvm_getvaluebigintint64) | Obtains the C int64_t primitive equivalent of a given JavaScript BigInt value. If necessary, it truncates the value and sets **lossless** to **false**.|
@@ -399,7 +400,7 @@ Creates a JavaScript proxy. This API is equivalent to calling **new Proxy(target
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): object expected. This code is returned if the target or handler is not a JavaScript object.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Result code.<br>         Returns [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the API is called successfully.<br>         Returns [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if the passed parameter is invalid.<br>         Returns [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) if a JS exception occurs during execution.<br>         Returns [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) if target or handler is not a JS object. |
 
 ### OH_JSVM_IsProxy()
 
@@ -694,7 +695,7 @@ Compiles a JavaScript code snippet and returns the compiled script.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status): JS execution failed.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Result code.<br>         Returns [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the execution is successful.<br>         Returns [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if the passed data is a null pointer.         Returns [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) if the passed parameter is not of the string type.<br>         Returns [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) if the execution fails due to an unknown reason. For details, see [FAQ](../../napi/jsvm-frequently-questions.md#jsvm-api-execution-failures).<br>         Returns [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status) if JS cannot be executed.<br>         Returns [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) if a JS exception occurs during execution. |
 
 ### OH_JSVM_CompileScriptWithOrigin()
 
@@ -1661,7 +1662,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env
 >
 > This API is an experimental API and can be used only after the **JSVM_EXPERIMENTAL** macro is defined.
 
-Creates an **ArrayBuffer** object from the external memory.  
+Creates an **ArrayBuffer** object from the external memory.
 
 
 **Since**: 26.0.0
@@ -2307,7 +2308,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env,JSVM_Value value,doubl
 
 **Description**
 
-Obtains the C double-precision primitive equivalent of a given JavaScript date. If this API call is successfully, **JSVM_OK** is returned. If a **JSVM_Value** of a non-JavaScript date type is passed in, **JSVM_DATA_EXPECTED** is returned.
+Returns the C double primitive value equivalent to the given JavaScript Date time value. If the call succeeds, JSVM_OK is returned. If a JSVM_Value that is not of the JavaScript Date type is passed in, JSVM_DATE_EXPECTED is returned.
 
 **Since**: 11
 
@@ -5064,7 +5065,7 @@ Creates a regular expression object corresponding to the input JavaScript string
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception. This code is returned if an exception is thrown during API running.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns the execution status code JSVM_Status.<br>         Returns [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the execution is successful.<br>         Returns [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if the input parameter is invalid.<br>         Returns [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) if the passed parameter is not of the string type.<br>         Returns [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) if the execution fails due to an unknown reason.        Returns [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) if the API throws an exception at runtime.|
 
 ### OH_JSVM_ObjectGetPrototypeOf()
 
@@ -5198,7 +5199,7 @@ Implements the abstract operation **ToBigInt()**.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input JavaScript value cannot be converted to a BigInt value.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Result code.<br>         Returns [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the execution is successful.<br>         Returns [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if the input parameter is invalid.<br>         Returns [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) if the passed JavaScript value cannot be converted to BigInt. |
 
 ### OH_JSVM_IsRegExp()
 
@@ -5225,7 +5226,7 @@ Checks whether the input value is a JavaScript RegExp object.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns the execution status code JSVM_Status.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) indicates successful execution.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) indicates invalid input parameters. |
 
 ### OH_JSVM_CreateFunctionWithScript()
 
@@ -5256,7 +5257,7 @@ Creates a function with the given JavaScript as the function body.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the input JavaScript cannot be compiled.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Result code.<br>         Returns [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the execution is successful.<br>         Returns [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if the input parameter is invalid.<br>Returns [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) if the input JavaScript fails to compile. |
 
 ### OH_JSVM_PumpMessageLoop()
 
@@ -5444,7 +5445,7 @@ Compiles the WebAssembly bytecode to obtain a WebAssembly module. If the WebAsse
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the **env** or **wasmBytecode** parameter is empty, or the input data length parameter is invalid.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the compilation fails.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Result code.<br>         Returns [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the execution is successful.<br>         Returns [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if env or wasmBytecode is null, or the passed data length parameter is invalid.<br>         Returns [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) if compilation fails.<br>         Returns [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) if an exception occurs.<br>         Returns [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) if there is no JIT permission. |
 
 ### OH_JSVM_CompileWasmFunction()
 
@@ -5472,7 +5473,7 @@ Compiles a WebAssembly function with the specified index at a specified optimiza
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the **env** or **wasmModule** parameter is empty, or **wasmModule** is not a real WebAssembly module.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the function index is out of range or the compilation fails.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Result code.<br>         Returns [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the operation is successful.<br>         Returns [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if env or wasmModule is null, or wasmModule is not a real WebAssembly module.<br>         Returns [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) if the function index is out of bounds, or compilation fails.<br>         Returns [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) if an exception occurs.<br>         Returns [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) if there is no JIT permission. |
 
 ### OH_JSVM_IsWasmModuleObject()
 
@@ -5527,7 +5528,7 @@ Creates a WebAssembly cache. If this API does not have the JIT permission, a log
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the cache fails to be generated.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns the execution status code JSVM_Status.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) indicates that the execution is successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) indicates that a null pointer parameter is passed in.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) indicates that cache generation fails.<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) indicates that there is no JIT permission. |
 
 ### OH_JSVM_ReleaseCache()
 
@@ -6425,7 +6426,7 @@ Creates a reference to a given **JSVM_Data** object. The initial reference count
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Result code.<br>         Returns [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the execution is successful.<br>         Returns [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if any input parameter is null or key is not a private key object. |
 
 ### OH_JSVM_GetReferenceData()
 

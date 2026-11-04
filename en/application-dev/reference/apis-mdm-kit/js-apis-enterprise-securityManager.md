@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=331fa2f45b5f4cc5aff245549373d7c8ec029044 translatedAt=2026-11-04T01:56:18.800Z pushedAt=2026-11-04T03:24:28.537Z nl=1 -->
 
 This module provides enterprise device security management capabilities, including certificate management, device security policy management, password policy management, clipboard policy management, watermark policy management, and permission management. Enterprises can use this module to monitor the device security status in real time, manage the lifecycle of enterprise certificates, configure device password policies in a unified manner, control the use of the app clipboard, set screen and app watermarks to prevent information leakage, and implement refined management of app permissions. This helps enterprises enhance device security protection capabilities and reduce data leakage risks.
 
@@ -142,7 +143,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
       console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 }).catch((err: BusinessError) => {
   console.error(`Failed to get raw file content. message: ${err.message}`);
   return;
@@ -332,13 +333,15 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 Sets the device screen lock password policy. After the policy is set, when a user sets a lock screen password, if the password does not meet the requirements, a security prompt will be displayed asking the user to reset the password. This policy is applicable to enterprise security compliance scenarios, such as requiring employees to use strong passwords and change passwords periodically, to reduce the risk of enterprise data leakage.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, following the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule, when any MDM application is deactivated, the device screen lock password policy set by that application will be cleared.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -375,21 +378,81 @@ let policy: securityManager.PasswordPolicy = {
   complexityRegex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[a-zA-Z\\d!@#$%^&*]{8,}$',
   validityPeriod: 1,
   additionalDescription: 'The password must contain at least eight characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character.',
-  passwordAlgs: securityManager.PasswordAlgs.SCRYPT_HKDF_SM4,
+  passwordAlgs: securityManager.PasswordAlgs.SCRYPT_HKDF_SM4
 };
 try {
   securityManager.setPasswordPolicy(wantTemp, policy);
   console.info(`Succeeded in setting password policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## securityManager.getPasswordPolicy
 
+getPasswordPolicy(admin: Want): PasswordPolicy
+
+Obtains the device screen lock password policy. Enterprises can use this API to query the current password policy for policy audit and compliance check, ensuring that the device password policy complies with enterprise security specifications.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [securityManager.getPasswordPolicy](#securitymanagergetpasswordpolicy-1) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                       | Mandatory   | Description                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type                   | Description                      |
+| --------------------- | ------------------------- |
+| [PasswordPolicy](#passwordpolicy) | Device screen lock password policy. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## securityManager.getPasswordPolicy
+
 getPasswordPolicy(admin: Want | null): PasswordPolicy
 
 Obtains the device screen lock password policy. Enterprises can use this API to query the current password policy for policy audit and compliance check, ensuring that the device password policy complies with enterprise security specifications.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -401,7 +464,7 @@ Obtains the device screen lock password policy. Enterprises can use this API to 
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect. |
 
 **Return value**
 
@@ -424,22 +487,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { securityManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 
 try {
-  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
+  // Replace the parameters based on the actual situation.
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(null);
   console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## securityManager.setScreenLockDisabledForAccount
 
 setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
@@ -448,13 +504,15 @@ Disables or enables swipe-to-unlock for the current user. When enabled, the user
 
 > **NOTE**
 >
-> 1. This API takes effect only when no lock screen password is set on the device.
+> 1. This API takes effect only when the device has no lock screen password.
 > 
 > 2. By default, swipe-to-unlock is enabled on the device.
 >
-> 3. If a lock screen password exists on the device, attempting to disable swipe-to-unlock will fail and return error code 9201021.
+> 3. When a password exists on the device, disabling swipe-to-unlock fails and error code 9201021 is thrown.
 >
-> 4. After a policy to disable swipe-to-unlock is applied, if the user subsequently sets a device password, the password will take effect and the device will require password verification before entering the home screen. In this case, the previously applied policy will no longer take effect.
+> 4. After the policy of disabling swipe-to-unlock is delivered, if the user enters a device password, the password takes effect, the device requires password verification before entering the home screen, and the previously delivered policy becomes invalid.
+>
+> 5. In a multi-MDM application scenario, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Since:** 26.0.0
 
@@ -465,8 +523,6 @@ Disables or enables swipe-to-unlock for the current user. When enabled, the user
 **Model restriction**: This API can be used only in the stage model.
 
 **Device behavior differences**: This API is supported on phones and tablets. On other device types, it returns error code 801.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -501,7 +557,7 @@ let wantTemp: Want = {
 try {
   securityManager.setScreenLockDisabledForAccount(wantTemp, true);
   console.info(`Succeeded in setting screen lock disabled for account.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -559,7 +615,7 @@ let wantTemp: Want = {
 try {
   let result: boolean = securityManager.isScreenLockDisabledForAccount(wantTemp);
   console.info(`Succeeded in checking screen lock disabled for account, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to check screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -570,13 +626,15 @@ setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): vo
 
 Sets the device clipboard policy. After the policy is set, applications will be restricted in their clipboard usage according to the configured policy. This API is applicable to enterprise data leakage prevention scenarios, such as restricting clipboard usage for sensitive applications (such as enterprise email and financial systems) to prevent sensitive data from being copied to unauthorized applications, thereby reducing the risk of data leakage. Enterprises can use this API to control application clipboard usage permissions, preventing sensitive data from being leaked to unauthorized applications via the clipboard, and enhancing enterprise data security protection capabilities.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, follow the [security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -613,16 +671,78 @@ let tokenId: number = 586874394;
 try {
   securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
   console.info(`Succeeded in setting clipboard policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## securityManager.getAppClipboardPolicy
 
+getAppClipboardPolicy(admin: Want, tokenId?: number): string
+
+Obtains the device clipboard policy. Enterprises can use this API to query the currently configured clipboard policy for policy auditing and compliance checks, ensuring that the clipboard control policy meets enterprise security requirements.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [securityManager.getAppClipboardPolicy](#securitymanagergetappclipboardpolicy-1) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                       | Mandatory   | Description                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| tokenId | number | No | Application token ID, which can be obtained using [bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md). |
+
+**Return value**
+
+| Type                   | Description                      |
+| --------------------- | ------------------------- |
+| string | JSON string of the device clipboard policy.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace it based on the actual situation.
+let tokenId: number = 586874394;
+try {
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## securityManager.getAppClipboardPolicy
+
 getAppClipboardPolicy(admin: Want | null, tokenId?: number): string
 
 Obtains the device clipboard policy. Enterprises can use this API to query the current clipboard policy for policy audit and compliance check, ensuring that the clipboard policy complies with enterprise security requirements.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -634,7 +754,7 @@ Obtains the device clipboard policy. Enterprises can use this API to query the c
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 | tokenId | number | No| Application token ID, which can be obtained using [bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md).|
 
 **Return value**
@@ -658,36 +778,32 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { securityManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 // Replace with actual values.
 let tokenId: number = 586874394;
 try {
-  let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
+  // Replace the parameters based on the actual situation.
+  let result: string = securityManager.getAppClipboardPolicy(null, tokenId);
   console.info(`Succeeded in getting clipboard policy, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## securityManager.setAppClipboardPolicy<sup>18+</sup>
 
 setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void
 
 Sets the device clipboard policy of a specified application for a specified user. After the policy is set, the clipboard of the specified application will be restricted in its usage scope according to the configured policy. Enterprises can configure differentiated clipboard usage permissions for different applications across different users, enabling fine-grained data access control and meeting the security management requirements in multi-user, multi-application scenarios.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, follow the [security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -725,16 +841,79 @@ let accountId: number = 100;
 try {
   securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
   console.info(`Succeeded in setting clipboard policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## securityManager.getAppClipboardPolicy<sup>18+</sup>
 
+getAppClipboardPolicy(admin: Want, bundleName: string, accountId: number): string
+
+Obtains the device clipboard policy of a specified application under a specified user. Enterprises can use this API to query the clipboard usage permission configuration of a specific application for policy auditing and compliance checking.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [securityManager.getAppClipboardPolicy](#securitymanagergetappclipboardpolicy-2) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type                                                      | Mandatory | Description                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
+| bundleName | string                                                  | Yes   | Bundle name of the application for which the device clipboard policy is set.                                                                                                                            |
+| accountId  | number                                                  | Yes   | User ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID. |
+
+**Return value**
+
+| Type                                  | Description       |
+| ----------------------------------- | -------- |
+| string | JSON string of the device clipboard policy. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID   | Error Message                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**Example**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace it based on the actual situation.
+let bundleName: string = 'com.example.myapplication';
+let accountId: number = 100;
+try {
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## securityManager.getAppClipboardPolicy
+
 getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId: number): string
 
 Obtains the device clipboard policy of a specified application for a specified user. Enterprises can use this API to query the clipboard usage permission configuration of a specific application for policy audit and compliance check.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -746,7 +925,7 @@ Obtains the device clipboard policy of a specified application for a specified u
 
 | Name    | Type                                                     | Mandatory | Description                                                                                                                                                       |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 | bundleName | string                                                  | Yes  | Bundle name of the application for which the device clipboard policy is set.                                                                                                                           |
 | accountId  | number                                                  | Yes  | User ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
 
@@ -770,42 +949,36 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { securityManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 // Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-  let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
+  // Replace the parameters based on the actual situation.
+  let result: string = securityManager.getAppClipboardPolicy(null, bundleName, accountId);
   console.info(`Succeeded in getting clipboard policy, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## securityManager.setWatermarkImage<sup>14+</sup>
 
 setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelMap, accountId: number): void
 
-Sets a watermark policy for a specified application of a specified user. Currently, a maximum of 100 policies can be saved.
+Sets the watermark policy for a specified application of a specified user. Currently, a maximum of 100 policies can be saved.
 > **NOTE**
 >
-> 1. This API is intended for setting watermarks on third-party applications in enterprise scenarios to reduce the risk of information leakage. You are not advised to set watermarks for system applications (such as the home screen application), as unknown exceptions may occur.
+> 1. This API is used to set a watermark for third-party applications in enterprise scenarios to reduce the risk of enterprise information leakage. It is not recommended to set a watermark for system applications (for example, the home screen application), as unknown exceptions may occur.
 >
-> 2. The watermark image will be tiled repeatedly to cover the entire application interface.
+> 2. The watermark image is tiled repeatedly to cover the entire application UI.
+>
+> 3. In a multi-MDM application scenario, the watermark of the same application under the same user follows the [exclusive](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity) rule. The watermarks of different applications under different users follow the [merged](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity). The watermark of the same app under the same user is exclusive. Watermarks of different users and different apps are [merged](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -845,7 +1018,7 @@ let accountId: number = 100;
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
   console.info(`Succeeded in setting watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -898,7 +1071,7 @@ let accountId: number = 100;
 try {
   securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
   console.info(`Succeeded in cancelling watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -909,13 +1082,15 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 
 Sets the management policy for the [user_grant permission](../../security/AccessToken/permissions-for-all-user.md) of a specified application. This is applicable to enterprise application batch deployment scenarios, such as granting permissions silently to reduce permission prompt interruptions, and unifying permission management policies for enterprise applications, thereby improving employee user experience and management efficiency.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the same permission of the same app instance is [exclusive](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity), and different permissions of different app instances are [merged](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: The same permission of the same app instance is [exclusive](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity), and different permissions of different app instances are [merged](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -957,9 +1132,10 @@ let appInstanceTemp: securityManager.ApplicationInstance = {
 };
 let permissionsTemp: Array<string> = ['ohos.permission.CAMERA', 'ohos.permission.LOCATION'];
 try {
-  securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
+  securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp,
+    securityManager.PermissionManagedState.GRANTED);
   console.info('Succeeded in setting permission managed state.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1020,9 +1196,10 @@ let appInstanceTemp: securityManager.ApplicationInstance = {
 };
 let permissionTemp: string = 'ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION';
 try {
-  let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
+  let result: securityManager.PermissionManagedState =
+    securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
   console.info(`Succeeded in getting permission managed state, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1045,6 +1222,10 @@ Sets the management policy for extensions from external sources. After the polic
 
   Policy that forcibly enables extensions from external sources to run. Users cannot disable **Run extensions from external sources**.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [exclusive](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -1052,8 +1233,6 @@ Sets the management policy for extensions from external sources. After the polic
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity).
 
 **Parameters**
 
@@ -1089,16 +1268,78 @@ let wantTemp: Want = {
 try {
   securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
   console.info(`Succeeded in setting managed policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## securityManager.getExternalSourceExtensionsPolicy<sup>22+</sup>
 
+getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
+
+Obtains the management policy of external source extensions.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [securityManager.getExternalSourceExtensionsPolicy](#securitymanagergetexternalsourceextensionspolicy) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences:** This interface can be called normally on PC/2-in-1 devices, and returns error code 801 on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                                      | Mandatory  | Description                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type                                  | Description       |
+| ----------------------------------- | -------- |
+|  [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy) | Returns the management policy of the ManagedPolicy enum type. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID   | Error Message                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
+  console.info(`Succeeded in getting managed policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## securityManager.getExternalSourceExtensionsPolicy
+
 getExternalSourceExtensionsPolicy(admin: Want | null): common.ManagedPolicy
 
 Obtains the management policy for extensions from external sources.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1112,7 +1353,7 @@ Obtains the management policy for extensions from external sources.
 
 | Name    | Type                                                     | Mandatory | Description                                                                                                                                                       |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 
 **Return value**
 
@@ -1135,22 +1376,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { common, securityManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 
 try {
-  let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
+  // Replace the parameters based on the actual situation.
+  let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(null);
   console.info(`Succeeded in getting managed policy, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## securityManager.installEnterpriseReSignatureCertificate<sup>24+</sup>
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
@@ -1167,13 +1401,15 @@ Process of using the enterprise application re-signing certificate:<!--RP3--><!-
 
 Specifications:<br>1. Apps signed with the old certificate will continue to run normally after a new re-signing certificate is installed.<br>2. After a new enterprise signing certificate is installed for an installed enterprise app, if the installed app needs to be updated, you can directly overwrite the original app without uninstalling it.<br>3. In enterprise scenarios (especially those involving information security), enterprises need to ensure that only designated internal software and tools are installed and run on employees' mobile devices. The enterprise application re-signing certificate, in conjunction with the system's application management and permission control mechanisms (via a unified application ID), supports silent installation of enterprise applications, controlled invocation of system capabilities, and restriction of application running scopes. This enables admission control and security governance for enterprise software on managed devices.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1202,7 +1438,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -1214,13 +1450,13 @@ let wantTemp: Want = {
 const filePath = '/test.cer';
 // Replace with actual values.
 let certificateAlias: string = 'test.cer';
-let fd: number = fs.openSync(filePath, fs.OpenMode.READ_ONLY).fd;
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
 // Replace with actual values.
 let accountId: number = 100;
 try {
   securityManager.installEnterpriseReSignatureCertificate(
     wantTemp, certificateAlias, fd, accountId);
-  console.info('Success to install enterprise re signature certificate.');
+  console.info('Success in installing enterprise re signature certificate.');
 } catch (err) {
   console.error(`Failed to install enterprise re signature certificate.
     Code: ${err.code}, message: ${err.message}`);
@@ -1283,7 +1519,7 @@ let accountId: number = 100;
 try {
   securityManager.uninstallEnterpriseReSignatureCertificate(
     wantTemp, certificateAlias, accountId);
-  console.info('Success to uninstall enterprise re signature certificate.');
+  console.info('Success in uninstalling enterprise re signature certificate.');
 } catch (err) {
   console.error(`Failed to uninstall enterprise re signature certificate.
     Code: ${err.code}, message: ${err.message}`);
@@ -1298,19 +1534,19 @@ Sets a screen watermark policy, which takes effect for all users.
 
 > **NOTE**
 >
-> 1. The screen watermark policy tiles the configured image across the entire screen. It is advised to use an image with transparency to ensure that the device screen content remains visible.
+> 1. The screen watermark policy tiles the configured image to cover the entire screen. It is recommended to use an image with transparency to ensure that the screen content remains visible.
 >
-> 2. If the watermark image size is smaller than the screen, the image will be stretched. If the watermark image size is larger than the screen, the image will be compressed. This implementation differs from the repeated tiling approach used for application-level watermarks.
+> 2. When the watermark image is smaller than the screen, the image is stretched; when the watermark image is larger than the screen, the image is compressed. This implementation differs from the repeated tiling method used for application-level watermarks.
+>
+> 3. In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1353,7 +1589,7 @@ imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
   try {
     securityManager.setScreenWatermarkImage(wantTemp, pixelMap);
     console.info(`Succeeded in setting screen watermark image.`);
-  } catch(err) {
+  } catch (err) {
     console.error(`Failed to set screen watermark image. Code: ${err.code}, message: ${err.message}`);
   }
 }).catch((err: Error) => {
@@ -1367,7 +1603,7 @@ cancelScreenWatermarkImage(admin: Want): void
 
 Cancels a screen watermark policy, which takes effect for all users. After the cancellation is successful, the watermark on the device screen disappears. When a device no longer requires screen watermark protection, enterprises can call this API to cancel the watermark policy. Only the user who sets the screen watermark can cancel it. For example, user 101 cannot cancel the screen mark set by user 100
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1405,7 +1641,7 @@ let wantTemp: Want = {
 try {
     securityManager.cancelScreenWatermarkImage(wantTemp);
     console.info(`Succeeded in canceling screen watermark image.`);
-} catch(err) {
+} catch (err) {
     console.error(`Failed to cancel screen watermark image. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1418,11 +1654,13 @@ Disables the specified permission of the specified user. After the permission is
 
 > **NOTE**
 >
-> 1. Only permissions with an [APL level](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) of normal or system_basic can be disabled. Otherwise, error code 9201045 is returned.
+> 1. Only permissions whose [permission APL](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) is normal or system_basic can be disabled. Otherwise, error code 9201045 is returned.
 >
-> 2. A maximum of 200 permissions can be disabled per user.
+> 2. A maximum of 200 permissions can be disabled for a single user.
 >
-> 3. After a permission is disabled, only applications (system and common applications) are affected. System SAs can still use the permission.
+> 3. After a permission is disabled, only the use of the corresponding permission by applications (system applications and common applications) is affected. The use of the corresponding permission by system SAs is not affected.
+>
+> 4. In multiple MDM application scenarios, for the same permission, follow the [strictest policy precedence](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule; for different permissions, follow the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Since:** 26.0.0
 
@@ -1431,8 +1669,6 @@ Disables the specified permission of the specified user. After the permission is
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule:** [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) applies for the same permission. For different permissions, policies are [merged](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1473,7 +1709,7 @@ let accountId: number = 100;
 try {
   securityManager.setDisallowedPermission(wantTemp, permission, disallow, accountId);
   console.info(`Succeeded in setting disallowed permission.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set disallowed permission. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1532,7 +1768,7 @@ let accountId: number = 100;
 try {
   let result: Array<string> = securityManager.getDisallowedPermissions(wantTemp, accountId);
   console.info(`Succeeded in getting disallowed permissions, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get disallowed permissions. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1545,15 +1781,17 @@ Adds an application to the permission usage exception list. Applications in the 
 
 > **NOTE**
 >
-> 1. The permission must first be disabled via the [setDisallowedPermission](#securitymanagersetdisallowedpermission) API before an application can be added to the permission usage exception list. Otherwise, error code 9201044 is returned.
+> 1. You must first disable a permission through [setDisallowedPermission](#securitymanagersetdisallowedpermission) before adding an application to the permission usage exception list. Otherwise, error code 9201044 is returned.
 >
-> 2. An application cannot be added to the permission usage exception list if it has not actually requested the specified permission. For example, if the camera permission is disabled and application A has not requested the camera permission, it cannot be added to the exception list for the camera permission, and error code 9200012 is returned. You can use the [bm dump](../../tools/bm-tool.md#dump) command to check whether an application has requested a specific permission.
+> 2. If an application does not actually request the specified permission, it cannot be added to the permission usage exception list. For example, when the camera permission is disabled and application A does not actually request the camera permission, application A cannot be added to the camera permission usage exception list, and error code 9200012 is returned. You can use the [bm dump](../../tools/bm-tool.md#dump) command to query whether an application requests a specified permission.
 >
-> 3. When a specified permission is enabled via the [setDisallowedPermission](#securitymanagersetdisallowedpermission) API, the corresponding permission usage exception list is cleared synchronously.
+> 3. After the specified permission is re-enabled through [setDisallowedPermission](#securitymanagersetdisallowedpermission), the permission usage exception list corresponding to the permission is cleared synchronously.
 >
-> 4. For any given permission, a maximum of 1024 applications can be added to the exception list across all users.
+> 4. A maximum of 1024 applications can be added to the permission usage exception list for a single permission across all users.
 >
-> 5. Both system applications and third-party applications can be added.
+> 5. Both system applications and common applications can be added.
+>
+> 6. In multiple MDM application scenarios, follow the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Since:** 26.0.0
 
@@ -1562,8 +1800,6 @@ Adds an application to the permission usage exception list. Applications in the 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule:** [Merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1613,7 +1849,7 @@ try {
   // Set a specified application to continue using the ohos.permission.CAMERA permission.
   securityManager.addAllowedPermissionBundle(wantTemp, permission, appInstance);
   console.info(`Succeeded in adding allowed permission bundle.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add allowed permission bundle. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1626,7 +1862,9 @@ Removes an application from the permission usage exception list. After the appli
 
 > **NOTE**
 >
-> The permission must first be disabled via the [setDisallowedPermission](#securitymanagersetdisallowedpermission) API before an application can be removed from the permission usage exception list. Otherwise, error code 9201044 is returned.
+> You must first disable a permission through [setDisallowedPermission](#securitymanagersetdisallowedpermission) before removing an application from the permission usage exception list. Otherwise, error code 9201044 is returned.
+>
+> In multiple MDM application scenarios, follow the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Since:** 26.0.0
 
@@ -1635,8 +1873,6 @@ Removes an application from the permission usage exception list. After the appli
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule:** [Merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1679,7 +1915,7 @@ let appInstance: common.ApplicationInstance = {
 try {
   securityManager.removeAllowedPermissionBundle(wantTemp, permission, appInstance);
   console.info(`Succeeded in removing allowed permission bundle.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove allowed permission bundle. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1738,9 +1974,10 @@ let wantTemp: Want = {
 let permission: string = 'ohos.permission.CAMERA';
 let accountId: number = 100;
 try {
-  let result: Array<common.ApplicationInstance> = securityManager.getAllowedPermissionBundles(wantTemp, permission, accountId);
+  let result: Array<common.ApplicationInstance> =
+    securityManager.getAllowedPermissionBundles(wantTemp, permission, accountId);
   console.info(`Succeeded in getting allowed permission bundles, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get allowed permission bundles. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1753,11 +1990,13 @@ Sets a watermark policy for a specified application of a specified user. Current
 
 > **NOTE**
 >
-> This API is intended for setting watermarks on third-party applications in enterprise scenarios to reduce the risk of information leakage. You are not advised to set watermarks for system applications (such as the home screen application), as unknown exceptions may occur.
+> This API is used to set a watermark for third-party applications in enterprise scenarios to reduce the risk of enterprise information leakage. It is not recommended to set a watermark for system applications (such as the home screen application), as unknown exceptions may occur.
 >
-> The row and column parameters in the watermark [properties](#watermarkproperties) must be integers in the range [1, 255]. If a value less than 1 or greater than 255 is passed, the API returns error code 9200012.
+> The row and column parameters of the watermark attribute [properties](#watermarkproperties) must be integers in the range [1, 255]. If a value less than 1 or greater than 255 is passed in, error code 9200012 is returned.
 >
-> When both the row count and column count are set to **1**, a single watermark image is displayed at the center of the screen. When the row count is set to **m** and the column count to **n**, m × n watermark images are displayed in an m-by-n grid layout. If the specified row and column counts are too large for the grid layout to fit within the window, the watermark will be repeatedly tiled across the entire application window, starting from the top-left corner. Any part of the watermark image that exceeds the right or bottom edges of the window will be clipped. (For example, for a screen size of 1260 × 2720 pixels and a watermark image of 100 × 100 pixels, if the row count exceeds 27 or the column count exceeds 12, the watermark will be repeatedly tiled to cover the entire application window.)
+> When both the number of rows and the number of columns of the watermark attribute are 1, a single watermark image is displayed in the center. When the number of rows is m and the number of columns is n, m\*n watermark images are displayed in an m-by-n grid layout. When the row and column parameters are too large, causing the grid layout to be unable to fit the window size, the watermark is tiled repeatedly to cover the entire application window, with the upper left corner of the window as the origin. The parts of the watermark image that exceed the right and bottom edges of the window are cropped. For example, if the screen width and height are 1260\*2720 and the watermark image width and height are 100\*100, and the number of rows set exceeds 27 or the number of columns set exceeds 12, the watermark is tiled repeatedly to cover the entire application window.
+>
+> In multiple MDM application scenarios, the watermark of the same application under the same user follows the [exclusive](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity) rule. Watermarks of different users and different applications follow the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Since:** 26.0.0
 
@@ -1766,8 +2005,6 @@ Sets a watermark policy for a specified application of a specified user. Current
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity). Watermarks are mutually exclusive for the same application under a single user. Watermarks of different users and different apps are [merged](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1809,11 +2046,11 @@ let accountId: number = 100;
 let properties: securityManager.WatermarkProperties = {
   intervalsRow: 1,
   intervalsCol: 1
-}
+};
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId, properties);
   console.info(`Succeeded in setting watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1835,11 +2072,11 @@ let accountId: number = 100;
 let properties: securityManager.WatermarkProperties = {
   intervalsRow: 27,
   intervalsCol: 12
-}
+};
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId, properties);
   console.info(`Succeeded in setting watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1861,11 +2098,11 @@ let accountId: number = 100;
 let properties: securityManager.WatermarkProperties = {
   intervalsRow: 28,
   intervalsCol: 12
-}
+};
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId, properties);
   console.info(`Succeeded in setting watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1924,7 +2161,7 @@ let accountId: number = 100;
 try {
   let result: Array<string> = securityManager.getWatermarkImageApps(wantTemp, accountId);
   console.info(`Succeeded in getting watermark image apps, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get watermark image apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1934,6 +2171,8 @@ try {
 Represents the certificate information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name  | Type      | Read-Only| Optional| Description              |
 | ------ | ---------- | ---- | ---- | ------------------ |
@@ -1945,6 +2184,8 @@ Represents the certificate information.
 Represents a device screen lock password policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name        | Type    | Read-Only| Optional| Description                           |
 | ----------- | --------| ---- | ---- | --------------------------- |
@@ -1958,6 +2199,8 @@ Represents a device screen lock password policy.
 Represents a device clipboard policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name        | Value| Description                           |
 | ----------- | -------- | ------------------------------- |

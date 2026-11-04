@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T01:56:10.919Z pushedAt=2026-11-04T03:24:28.534Z nl=1 -->
 
 This module provides system management capabilities, including NTP time server settings, OTA update policy management, system update management, key event handling policies, log collection, and device activation lock management. It is suitable for enterprise device management scenarios, helping enterprise administrators uniformly manage device system configurations, update policies, and security policies, thereby improving enterprise device management efficiency and security.
 
@@ -28,13 +29,15 @@ setNTPServer(admin: Want, server: string): void
 
 Sets the Network Time Protocol (NTP) time server. After successful configuration, the system will use the specified NTP server for time synchronization to calibrate the system time. This API is suitable for scenarios where enterprise devices require unified time synchronization, ensuring that device time remains consistent with standard time and avoiding business issues caused by inaccurate time, such as inconsistent log timestamps and certificate validation failures.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -122,8 +125,8 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  systemManager.getNTPServer(wantTemp);
-  console.info('Succeeded in getting NTP server.');
+  let result: string = systemManager.getNTPServer(wantTemp);
+  console.info(`Succeeded in getting NTP server. result: ${result}`);
 } catch (err) {
   console.error(`Failed to get ntp server. Code is ${err.code}, message is ${err.message}`);
 }
@@ -135,13 +138,15 @@ setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 
 Sets the update policy. After the setting is successful, the system performs OTA updates based on the specified policy type. Different policy types correspond to different update behaviors. In intranet updates, call [systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages) to notify the system of the update packages and then call this API to set the upgrade policy.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [exclusive](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity).
 
 **Parameters**
 
@@ -175,7 +180,7 @@ let wantTemp: Want = {
 // Default update policy.
 let otaUpdatePolicy1: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
-  "version": "version_1.0.0.0",
+  "version": "version_1.0.0.0"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy1);
@@ -186,7 +191,7 @@ try {
 // Prohibit update.
 let otaUpdatePolicy2: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.PROHIBIT,
-  "version": "version_1.0.0.1",
+  "version": "version_1.0.0.1"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy2);
@@ -194,11 +199,11 @@ try {
 } catch (err) {
   console.error(`Failed to set ota update policy. Code is ${err.code}, message is ${err.message}`);
 }
-// Enforce update. 
+// Enforce update.
 let otaUpdatePolicy3: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.UPDATE_TO_SPECIFIC_VERSION,
   "version": "version_1.0.0.2",
-  "latestUpdateTime": 1716343200, // Timestamp
+  "latestUpdateTime": 1716343200 // timestamp
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy3);
@@ -211,7 +216,7 @@ let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
   "installStartTime": 1716281049, // Timestamp.
-  "installEndTime": 1716343200, // Timestamp.
+  "installEndTime": 1716343200 // timestamp
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);
@@ -223,7 +228,7 @@ try {
 let otaUpdatePolicy5: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.POSTPONE,
   "version": "version_1.0.0.4",
-  "delayUpdateTime": 5, // Unit: hour
+  "delayUpdateTime": 5 // unit (hour)
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy5);
@@ -235,7 +240,7 @@ try {
 let otaUpdatePolicy6: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
   "version": "version_1.0.0.5",
-  "disableSystemOtaUpdate": true,
+  "disableSystemOtaUpdate": true
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy6);
@@ -292,7 +297,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  let policy: systemManager.OtaUpdatePolicy= systemManager.getOtaUpdatePolicy(wantTemp);
+  let policy: systemManager.OtaUpdatePolicy = systemManager.getOtaUpdatePolicy(wantTemp);
   console.info(`Succeeded in getting update policy: ${JSON.stringify(policy)}`);
 } catch (err) {
   console.error(`Failed to get update policy. Code is ${err.code}, message is ${err.message}`);
@@ -345,7 +350,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -367,9 +372,9 @@ let fileDir = "/xxxx/xxxx/";
 let path1: string = "update_sd_base.zip";
 let path2: string = "update_sd_cust_xxxxx_all_cn.zip";
 let path3: string = "update_sd_preload_xxxxx_all_cn_R1.zip";
-let fd1: number = fs.openSync(fileDir + path1, fs.OpenMode.READ_ONLY).fd;
-let fd2: number = fs.openSync(fileDir + "xxxxx/" + path2, fs.OpenMode.READ_ONLY).fd;
-let fd3: number = fs.openSync(fileDir + "xxxxx/" + path3, fs.OpenMode.READ_ONLY).fd;
+let fd1: number = fileIo.openSync(fileDir + path1, fileIo.OpenMode.READ_ONLY).fd;
+let fd2: number = fileIo.openSync(fileDir + "xxxxx/" + path2, fileIo.OpenMode.READ_ONLY).fd;
+let fd3: number = fileIo.openSync(fileDir + "xxxxx/" + path3, fileIo.OpenMode.READ_ONLY).fd;
 let package1: systemManager.Package = {
   // Replace with actual values.
   "type": systemManager.PackageType.FIRMWARE,
@@ -515,10 +520,12 @@ systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
 
 setOtaUpdateNonceEnable(admin: Want, isEnable: boolean): void
 
-Sets whether to enable nonce for OTA update (nonce is enabled by default). When nonce is enabled, the system verifies the validity of the nonce during the OTA update process to prevent replay attacks and enhance system security.
+Sets the enablement status of Nonce during OTA updates (enabled by default). After it is enabled, the system verifies the validity of Nonce during the OTA update process, thereby preventing replay attacks and improving system security.
 > **NOTE**
 > 
-> To ensure system security, it is not advised to disable nonce verification unless required by specific use cases such as intranet updates.
+> To ensure system security, it is not recommended to disable Nonce verification unless there are special service requirements such as intranet upgrades.
+>
+> In multi-MDM application scenarios, the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule is followed.
 
 **Since:** 26.0.0
 
@@ -529,8 +536,6 @@ Sets whether to enable nonce for OTA update (nonce is enabled by default). When 
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -580,15 +585,15 @@ Checks whether nonce is enabled for OTA update. This API is applicable to scenar
 
 **Since:** 26.0.0
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
-
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -612,7 +617,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
 
@@ -639,6 +643,10 @@ addDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol
 
 Adds a list of NearLink protocols that are not allowed to be used for a specified user. NearLink Kit provides a low-power, high-speed short-range communication service that supports connection and data interaction between NearLink devices. <!--RP3--><!--RP3End-->This API does not take effect for system services and system applications such as the keyboard and stylus.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -646,8 +654,6 @@ Adds a list of NearLink protocols that are not allowed to be used for a specifie
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -706,6 +712,10 @@ removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProto
 Removes the list of disallowed NearLink protocols for a specified user. After successful removal, the specified user can use the removed NearLink protocols for communication again, restoring the corresponding protocol connection capabilities. Use cases: In enterprise device management scenarios, administrators can use this API to remove previously set NearLink protocol disabling policies, allowing users to resume communication between devices via NearLink protocols. This is suitable for scenarios where there is a need to restore NearLink communication capabilities for specific users, helping enterprise administrators flexibly adjust NearLink protocol access permissions of user devices to meet communication requirements in different business scenarios.
 
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -713,8 +723,6 @@ Removes the list of disallowed NearLink protocols for a specified user. After su
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -829,6 +837,10 @@ setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
 Sets whether local installation of enterprise applications is supported. When local installation is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping their installation packages on enterprise PCs/2-in-1 devices with the local installation capability.<!--RP8--><!--RP8End-->
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [strictest control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule is followed. If any MDM application sets support for local installation of enterprise applications, the combined policy is to support local installation of enterprise applications.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -836,8 +848,6 @@ Sets whether local installation of enterprise applications is supported. When lo
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) If any MDM app supports local installation of enterprise apps, the comprehensive policy is to support local installation of enterprise apps.
 
 **Parameters**
 
@@ -883,7 +893,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabled(admin: Want | null): boolean
 
-Checks whether local installation of enterprise applications is supported. This API is applicable to scenarios where there is a need to verify whether the local installation of enterprise applications is enabled on the device, helping enterprise administrators confirm the policy configuration status to ensure that enterprise applications can be properly installed.<!--RP8--><!--RP8End-->
+Queries whether local installation of enterprise applications is supported. This API is applicable to scenarios where you need to verify whether the local installation of enterprise applications is enabled on a device, helping enterprise administrators confirm the policy configuration status and ensure that the device can install enterprise applications properly.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -942,6 +952,10 @@ setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 
 Sets automatic unlocking upon device reboot. This setting takes effect only on devices without a screen lock password. This API is applicable to enterprise unattended devices or scenarios where services need to be quickly restored through a restart, avoiding device downtime caused by manual unlocking, thereby improving device operation and maintenance efficiency and service continuity.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [strictest control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule is followed. If any MDM application sets automatic unlock after device restart, the combined policy is automatic unlock after device restart.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -949,8 +963,6 @@ Sets automatic unlocking upon device reboot. This setting takes effect only on d
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first). If any MDM app sets automatic unlocking upon device restart, the comprehensive policy is automatic unlocking upon device restart.
 
 **Parameters**
 
@@ -992,9 +1004,70 @@ try {
 
 ## systemManager.getAutoUnlockAfterReboot<sup>20+</sup>
 
+getAutoUnlockAfterReboot(admin: Want): boolean
+
+Obtains whether the device automatically unlocks after restart. This API is applicable to scenarios where you need to verify whether the device restart unlock policy is correctly configured, helping enterprise administrators confirm the device automatic unlock status.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [systemManager.getAutoUnlockAfterReboot](#systemmanagergetautounlockafterreboot) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences:** This API can be properly called only on PCs/2-in-1 devices. On other devices, it returns the error code 801.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                   |
+| --------- | ------------------------------------------------------- | --------- | ----------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes       | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| boolean | true indicates that the device is automatically unlocked after restart; false indicates the opposite. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let result: boolean = systemManager.getAutoUnlockAfterReboot(wantTemp);
+  console.info(`Succeeded in getting auto unlock after reboot. result: ${result}`);
+} catch (err) {
+  console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
+## systemManager.getAutoUnlockAfterReboot
+
 getAutoUnlockAfterReboot(admin: Want | null): boolean
 
 Checks whether the device is automatically unlocked upon reboot. This API is applicable to scenarios where there is a need to verify whether the device reboot unlock policy is correctly configured, helping enterprise administrators confirm the status of the automatic device unlock function.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1008,7 +1081,7 @@ Checks whether the device is automatically unlocked upon reboot. This API is app
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing a Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 
 **Return value**
 
@@ -1030,27 +1103,21 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
 import { systemManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  systemManager.getAutoUnlockAfterReboot(wantTemp);
+  // Replace the parameters based on the actual situation.
+  systemManager.getAutoUnlockAfterReboot(null);
   console.info('Succeeded in getting auto unlock after reboot.');
 } catch (err) {
   console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-
 ## systemManager.addKeyEventPolicies<sup>23+</sup>
 
 addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 
-Adds a key event handling policy. When the system triggers a key event, if the event matches the delivered key event policy, the MDM app will be notified via the [EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23) callback, with the key event information of the matched policy carried in the callback.
+Adds a key event handling policy. When the system triggers a key event, if the event matches the delivered key event policy, the MDM app will be notified via the [EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23) callback, with the key event information of the matched policy carried in the callback. 
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1157,7 +1224,7 @@ let wantTemp: Want = {
 };
 
 let keyCodes: Array<systemManager.KeyCode> = [
-  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP,
+  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP
 ];
 
 try {
@@ -1170,9 +1237,71 @@ try {
 
 ## systemManager.getKeyEventPolicies<sup>23+</sup>
 
+getKeyEventPolicies(admin: Want): Array&lt;KeyEventPolicy&gt;
+
+Obtains the key event handling policy. This API is applicable to scenarios where you need to query the current key event handling policy configuration. It helps enterprise administrators verify whether the policy is correctly delivered, or obtain the current configuration before making policy adjustments.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [systemManager.getKeyEventPolicies](#systemmanagergetkeyeventpolicies) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | List of currently configured key event policies. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let result: Array<systemManager.KeyEventPolicy> = [];
+try {
+  result = systemManager.getKeyEventPolicies(wantTemp);
+  console.info('Succeeded in getting key event policies.');
+} catch (err) {
+  console.error(`Failed to get key event policies. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
+## systemManager.getKeyEventPolicies
+
 getKeyEventPolicies(admin: Want | null): Array&lt;KeyEventPolicy&gt;
 
 Obtains the key event handling policy. This API is applicable to scenarios where you need to query the current key event handling policy configuration. It helps enterprise administrators verify whether the policy has been correctly applied or obtain the current configuration before making policy adjustments.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1186,7 +1315,7 @@ Obtains the key event handling policy. This API is applicable to scenarios where
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 
 **Return value**
 
@@ -1208,34 +1337,31 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
 import { systemManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 let result: Array<systemManager.KeyEventPolicy> = [];
 try {
-  result = systemManager.getKeyEventPolicies(wantTemp);
+  // Replace the parameters based on the actual situation.
+  result = systemManager.getKeyEventPolicies(null);
   console.info('Succeeded in getting key event policies.');
 } catch (err) {
   console.error(`Failed to get key event policies. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-
 ## systemManager.startCollectLog<sup>23+</sup>
 
 startCollectLog(admin: Want): Promise&lt;void&gt;
 
-Starts to collect the fault logs of the [FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) type that have been generated and stored on the device's hard disk. The fault logs, application service logs, and system runtime logs that are not stored on the hard disk cannot be collected.
+Starts to collect faultlog logs of the [FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) type that have been generated on the device and stored on the hard disk. It does not support collecting faultlog logs that are not stored on the hard disk, application service logs, or system running logs. This API uses a promise to return the result.
 
 - After the API is called, the system starts a log collection task. The API returns a response immediately after the task is started. The task may fail due to system performance constraints.
-- This API can be called by multiple MDM apps. Logs collected by different MDM apps under different users are saved separately and do not affect each other. Only one MDM app can start a log collection task at a time. If this API is called before the task is complete, the error code 9201009 is returned, and other MDM apps may call the API only after the task finishes.
 - Upon task completion, the MDM app is notified via the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback. The system mounts the collected log files to the MDM app sandbox path, enabling the MDM app to read the logs within the callback.
 - If the log collection task takes more than 5 minutes, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback returns a task execution failure message.
 - After the app obtains the logs, you are advised to call [systemManager.finishLogCollected](#systemmanagerfinishlogcollected23) to remove the collected logs.
+
+> **NOTE**
+>
+> In a multi-MDM application scenario, multiple MDM applications are allowed to call this API. Logs collected by different MDM applications under different users are stored separately and do not affect each other. Only one MDM application is allowed to start a log collection task at a time. If this API is called before the task is completed, error code 9201009 is returned. After the task is completed, other MDM applications are allowed to call this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_READ_LOG
 
@@ -1244,8 +1370,6 @@ Starts to collect the fault logs of the [FaultType](../apis-performance-analysis
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: This API can be called by multiple MDM apps. Logs collected by different MDM apps under different users are stored separately and do not affect each other. Only one MDM app can start a log collection task at a time. If this API is called before the task is complete, the error code 9201009 is returned, and other MDM apps may call the API only after the task finishes.
 
 **Parameters**
 
@@ -1299,9 +1423,9 @@ Deletes the device logs collected by the current MDM app under the current user.
 
 > **NOTE**
 > 
-> After the app calls [startCollectLog](#systemmanagerstartcollectlog23) to initiate log collection and receives the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback, you are advised to immediately copy or process the logs, and then call this API to delete the collected logs.
+> After an application calls [startCollectLog](#systemmanagerstartcollectlog23) to start collecting logs, when the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback is received, it is recommended to copy or process the logs immediately and call this API to delete the collected logs.
 > 
-> If this API is not called, device logs will occupy the system storage space, which does not affect the next call of [startCollectLog](#systemmanagerstartcollectlog23) to start a log collection task.
+> If this API is not called, the device logs occupy system storage space, but this does not affect the next call to [startCollectLog](#systemmanagerstartcollectlog23) to start a log collection task.
 
 **Required permissions**: ohos.permission.ENTERPRISE_READ_LOG
 
@@ -1352,7 +1476,11 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-Enables or disables the device activation lock. After the device activation lock is disabled, the Find Device function will no longer be available. This function is only available on certain devices.<!--RP5--><!--RP5End-->
+Disables or enables the device activation lock. This API uses a promise to return the result. After the device activation lock is disabled, the Find Device feature cannot be used. This feature is applicable only to specific devices<!--RP5--><!--RP5End-->
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1361,8 +1489,6 @@ Enables or disables the device activation lock. After the device activation lock
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1419,7 +1545,7 @@ systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then((
 
 isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
-Checks whether the device activation lock is disabled. This API is applicable to scenarios where you need to verify the device activation lock status. It helps enterprise administrators confirm the device's security configuration, especially when understanding the activation lock state is necessary for device transfer or recycling.
+Obtains the disabled state of the device activation lock. This API uses a promise to return the result. It is applicable to scenarios where the state of the device activation lock feature needs to be verified, helping enterprise administrators confirm the security configuration of the device, especially when the activation lock state needs to be known during device transfer or recycling.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1485,8 +1611,10 @@ Only enterprise applications signed with the **enterprise_normal** or **enterpri
 >
 > A PC/2-in-1 enterprise device supports local installation of enterprise applications for the current user if any of the following conditions is met:
 >
-> 1. The offline installer has been enabled by calling [setInstallLocalEnterpriseAppEnabled](#systemmanagersetinstalllocalenterpriseappenabled20).
-> 2. Local installation of enterprise applications is enabled for the current user by calling this API.
+> 1. The offline installer has been enabled through [setInstallLocalEnterpriseAppEnabled](#systemmanagersetinstalllocalenterpriseappenabled20).
+> 2. The current user has been set to support local installation of enterprise applications through this API.
+>
+> 3. In a multi-MDM application scenario, the [strictest control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule is followed. If any MDM application sets support for local installation of enterprise applications, the combined policy is to support local installation of enterprise applications.
 <!--RP7--><!--RP7End-->
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
@@ -1496,8 +1624,6 @@ Only enterprise applications signed with the **enterprise_normal** or **enterpri
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) If any MDM app supports local installation of enterprise apps, the comprehensive policy is to support local installation of enterprise apps.
 
 **Parameters**
 
@@ -1546,7 +1672,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean
 
-Checks whether local installation of enterprise applications is supported for a specified user. This API is applicable to scenarios where there is a need to verify whether local installation of enterprise applications is enabled for a specific user, helping enterprise administrators confirm the policy configuration status and ensure that users can normally install enterprise applications.<!--RP8--><!--RP8End-->
+Queries whether a specified user supports local installation of enterprise applications. It is applicable to scenarios where the state of the local installation of enterprise applications feature for a specific user needs to be verified, helping enterprise administrators confirm the policy configuration state and ensure that users can install enterprise applications normally.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1608,6 +1734,8 @@ Represents information about the system version to update.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | --- | --- |------------- |
 | versionName       | string | No  | No|System version to update.  |
@@ -1619,6 +1747,8 @@ Represents information about the system version to update.
 Represents an OTA update policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name        | Type    | Read-Only| Optional| Description                           |
 | ----------- | --------| ---- | -----| -------------------------- |
@@ -1636,12 +1766,14 @@ Enumerates the update policy types.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |
-| DEFAULT | 0 | Default update policy, which periodically notifies the user of the update and starts the update after user confirmation.|
+| DEFAULT | 0 | Default upgrade policy. Periodically reminds the user to upgrade through a dialog box. The period starts from 24 hours and gradually extends. |
 | PROHIBIT  | 1 | Prohibit updates.|
-| UPDATE_TO_SPECIFIC_VERSION | 2 | Enforce updates. In this case, **latestUpdateTime** must be specified.|
-| WINDOWS | 3 | Update at the specified time window. In this case, **installStartTime** and **installEndTime** must be specified.|
+| UPDATE_TO_SPECIFIC_VERSION | 2 | Forced upgrade policy. The latest update time (latestUpdateTime) parameter must be specified. 1. If the device is not upgraded when the time remaining before the latest update time is more than 48 hours, a reminder dialog box appears once every 24 hours. 2. If the device is not upgraded when the time remaining before the latest update time is less than 48 hours, a reminder to install the upgrade appears periodically every X hours. The message is displayed in the notification center and cannot be removed. 3. If the device is still not upgraded after the latest update time, a forced upgrade reminder appears during idle time.  |
+| WINDOWS | 3 | Upgrade policy within a specified time window. The time window parameters (installStartTime and installEndTime) must be specified. The time window must be longer than 5 minutes. 1. Configure the time window [A, B], obtain a random upgrade time C within the window, and automatically upgrade when the idle condition is met at time C. 2. Configure the time window [A, B], obtain a random upgrade time C within the window. If the idle condition is not met at time C and B - C is more than half an hour, refresh a random time D between C and B, and automatically upgrade when the idle condition is met at time D. 3. Configure the time window [A, B], obtain a random upgrade time C within the window. If the idle condition is not met at time C and B - C is more than half an hour, refresh a random time D between C and B. If the idle condition is not met at time D, check again after 24 hours, that is, postpone the window task to the next [A, B] window. 4. Configure the time window [A, B], obtain a random upgrade time C within the window. If the idle condition is not met at time C and B - C is less than or equal to half an hour, check again after 24 hours, that is, postpone the window task to the next [A, B] window. |
 | POSTPONE | 4 | Postpone updates. After the time specified by **delayUpdateTime** is over, the default update policy is used.|
 
 ## UpdatePackageInfo
@@ -1649,6 +1781,8 @@ Enumerates the update policy types.
 Represents information about the system update packages.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | --- | ---- |------------- |
@@ -1663,6 +1797,8 @@ Represents the details about a system update package.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | --- | --- | ------------- |
 | type       | [PackageType](#packagetype) | No  | No|  Type of the system update package.  |
@@ -1675,6 +1811,8 @@ Represents the description of a system update package.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | --- | --- | ------------- |
 | notify       | [NotifyDescription](#notifydescription) | No  | Yes| Update notification defined by an enterprise.  |
@@ -1684,6 +1822,8 @@ Represents the description of a system update package.
 Represents the update notification defined by an enterprise.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Type    | Read-Only |  Optional| Description           |
 | ----------------- | ------ | --- | ---- | ------------- |
@@ -1695,6 +1835,8 @@ Represents the update notification defined by an enterprise.
 Represents the update result information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Type  | Read-Only | Optional  | Description           |
 | ----------------- | ------ | ------ | ------ | ------------- |
@@ -1708,6 +1850,8 @@ Represents the update error information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | ------ | ------ | ------------- |
 | code       | number | No| No| Error code.  |
@@ -1719,6 +1863,8 @@ Enumerates the update package types.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |
 | FIRMWARE | 1 | Firmware.|
@@ -1728,6 +1874,8 @@ Enumerates the update package types.
 Enumerates the system update statuses.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name              | Value | Description   |
 | -----------------  | ---- | ----- |

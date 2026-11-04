@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=681375fe8e2ad6298fc081a819f69633a55a7ca2 translatedAt=2026-08-14T08:54:58.587Z pushedAt=2026-08-15T07:38:05.637Z -->
+<!-- md-trans-meta sourceCommit=0d568a0dd623c0e9ecc9f9f8ca9ad250ba44505b translatedAt=2026-11-04T02:45:00.395Z pushedAt=2026-11-04T03:24:28.615Z nl=1 -->
 
 This module implements virtual private network (VPN) management, such as starting and stopping a third-party VPN. Third-party VPNs refer to VPN services provided by third parties. They usually support more security and privacy functions and more comprehensive customization options. Currently, the VPN capabilities provided to third-party applications are primarily used for creating virtual NICs and configuring VPN routing information. The connection tunnel process and internal connection protocols need to be implemented by the applications themselves.
 
@@ -25,10 +25,9 @@ import { vpnExtension } from '@kit.NetworkKit';
 ```
 
 ## LinkAddress
-
 type LinkAddress = connection.LinkAddress
 
-Defines the network link address information.
+Obtains network link information.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -37,7 +36,6 @@ Defines the network link address information.
 | [connection.LinkAddress](./js-apis-net-connection.md#linkaddress) | Network link address information.|
 
 ## RouteInfo
-
 type RouteInfo = connection.RouteInfo
 
 Defines the network route information.
@@ -49,7 +47,6 @@ Defines the network route information.
 | [connection.RouteInfo](./js-apis-net-connection.md#routeinfo) | Network route information.|
 
 ## VpnExtensionContext
-
 type VpnExtensionContext = _VpnExtensionContext
 
 Defines the VPN extension context. It allows access to serviceExtension-specific resources.
@@ -151,7 +148,7 @@ Stops the VPN extension ability. This API uses a promise to return the result.
 
 | Name| Type                               | Mandatory| Description            |
 | ------ | ----------------------------------- | ---- | ---------------- |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Information indicating what to stop. |
 
 **Return value**
 
@@ -250,7 +247,7 @@ let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
 
 ## VpnObserver
 
-Defines a VPN observer object. It is used to listen for VPN-related events. Before calling **VpnObserver** APIs, you need to create a VPN connection object by calling [vpnExtension.createVpnObserver](#vpnextensioncreatevpnobserver).
+VPN observer object. It is used to listen for VPN-related events. Before calling the methods of VpnObserver, you need to create a VPN observer object through [vpnExtension.createVpnObserver](#vpnextensioncreatevpnobserver).
 
 ### onAuthorizationResult
 
@@ -383,7 +380,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 ## VpnConnection
 
-Defines a VPN connection object. Before calling **VpnConnection** APIs, you need to create a VPN connection object by calling **vpnExt.createVpnConnection**.
+VPN connection object. Before calling the methods of VpnConnection, you need to create a VPN connection object through vpnExtension.createVpnConnection.
 
 ### create
 
@@ -393,7 +390,8 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 
 > **NOTE**
 >
-> You are advised to call [destroy()](#destroy) or [destroy(vpnId: string)](#destroy20) to destroy the VPN and clear resources when the VPN is not needed.
+> 1. It is recommended that you call [destroy](#destroy) or [destroy(vpnId: string)](#destroy20) to destroy the started VPN network and perform resource cleanup when the VPN network is no longer needed.<br>
+> 2. If error code 2200003 is returned when this API is called, check whether the ohos.permission.INTERNET permission has been applied for.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
@@ -613,9 +611,9 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 ### destroy<sup>20+</sup>
 
 destroy(vpnId: string): Promise\<void\>
-
+  
 Destroys a VPN based on the specified VPN ID. This API uses a promise to return the result.
-
+  
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
 **Parameters**
@@ -708,7 +706,6 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
   }
 }
 ```
-
 ### protectProcessNet<sup>22+</sup>
 
 protectProcessNet(): Promise\<void\>
@@ -759,7 +756,6 @@ Defines the VPN configuration.
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
 <!--Table: 19%; 20%; 8%; 8%; 45%-->
-
 | Name            | Type                                     | Read-only| Optional| Description                                      |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs. Before API version 23, a maximum of 64 IP addresses are supported. Starting from API version 23, a maximum of 2000 IP addresses are supported.                                 |

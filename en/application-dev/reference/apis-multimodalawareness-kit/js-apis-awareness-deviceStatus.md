@@ -1,14 +1,13 @@
 # @ohos.multimodalAwareness.deviceStatus (Device Status Awareness)
-
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:42.988Z pushedAt=2026-06-25T01:35:11.428Z -->
+<!-- md-trans-meta sourceCommit=9fddba7cff4ec815ef39c869017e0dacba49e413 translatedAt=2026-11-04T02:19:18.587Z pushedAt=2026-11-04T03:24:28.558Z nl=1 -->
 
-The **deviceStatus** module provides the device status awareness functionality.
+This module provides the device status awareness capability. It senses the physical status of a device in real time through sensors, helping developers adjust application behavior based on the physical status of the device.
 
 > **NOTE**
 >
@@ -24,7 +23,7 @@ The **deviceStatus** module provides the device status awareness functionality.
 
 Defines the steady standing state (that is, stand mode).
 
-A device enters stand mode when it is stationary, and its screen is at an angle between 45 and 135 degrees relative to the horizontal plane. For foldable smartphones, the device must be in a folded state or fully unfolded state.
+A device enters the dock state when the device is stationary and the angle between the screen and the horizontal plane is 45 to 135 degrees. A foldable phone must be in the folded state or the fully unfolded state. The system detects the motion state and angle changes of the device through sensors to determine whether the device meets the dock state conditions.
 
 **System capability**: SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -37,7 +36,7 @@ A device enters stand mode when it is stationary, and its screen is at an angle 
 
  on(type: 'steadyStandingDetect', callback: Callback&lt;SteadyStandingStatus&gt;): void
 
-Subscribes to steady standing state events.
+Subscribes to the device steady standing detection (dock state) event. It is recommended that you call off() to unsubscribe and release resources when the event is no longer needed.
 
 **System capability**: SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -45,8 +44,8 @@ Subscribes to steady standing state events.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | Yes  | Event type. This field has a fixed value of **steadyStandingDetect**.|
-| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | Yes  | Callback used to return the steady standing state of the device.|
+| type     | string                           | Yes   | Event type. The value is fixed at 'steadyStandingDetect', indicating device steady standing (dock state) detection. |
+| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | Yes   | Callback invoked to return the device steady standing (dock state) status information.                         |
 
 **Error codes**
 
@@ -62,11 +61,11 @@ For details about the error codes, see [Device Status Awareness Error Codes](err
 
    ```ts
    try {
-      deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
-         console.info('succeed to get status, now status = ' + data);
+      deviceStatus.on('steadyStandingDetect', (data: deviceStatus.SteadyStandingStatus) => {
+         console.info(`succeeded to get status, now status = ${JSON.stringify(data)}`);
       });
    } catch (err) {
-      console.error('on failed, err = ' + err);
+      console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
@@ -74,7 +73,7 @@ For details about the error codes, see [Device Status Awareness Error Codes](err
 
 off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt;): void
 
-Unsubscribes from steady standing state events.
+Unsubscribes from the device steady standing detection (dock state) event. This API is used in scenarios where an application exits a page or no longer needs to listen for dock state changes. After the call, related resources are released.
 
 **System capability**: SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -82,8 +81,8 @@ Unsubscribes from steady standing state events.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | Yes  | Event type. This field has a fixed value of **steadyStandingDetect**.|
-| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | No   | Callback used to return the steady standing state information. The callback to unregister must be the same as the one passed in during subscription. If not specified, all callbacks currently listening for this event will be unregistered. |
+| type     | string                           | Yes   | Event type. The value is fixed to 'steadyStandingDetect', indicating device stationary posture (dock state) detection. |
+| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | No   | Callback for the steady standing detection event. The callback to be unsubscribed from must be the same as the one passed in during subscription. If this parameter is not specified, all callbacks currently listening for this event are unsubscribed from. |
 
 **Error codes**
 
@@ -103,27 +102,29 @@ Example 1: Unsubscribe from all callbacks of steady standing state change events
    try {
       deviceStatus.off('steadyStandingDetect');
    } catch (err) {
-      console.error('off failed, err = ' + err);
+      console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```
 
 Example 2: Unsubscribe from a specific callback of steady standing state change events.
 
    ```ts
+   import { Callback } from '@kit.BasicServicesKit';
+
    // Define the callback variable.
    let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus.SteadyStandingStatus) => {
-      console.info('succeed to get status, now status = ' + data);
+      console.info('succeeded to get status, now status = ' + JSON.stringify(data));
    };
    // Subscribe to a specific callback of steady standing state change events.
    try {
       deviceStatus.on('steadyStandingDetect', callback);
    } catch (err) {
-      console.error('on failed, err = ' + err);
+      console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
    }
    // Unsubscribe from the specific callback of steady standing state change events.
    try {
       deviceStatus.off('steadyStandingDetect', callback);
    } catch (err) {
-      console.error('off failed, err = ' + err);
+      console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```

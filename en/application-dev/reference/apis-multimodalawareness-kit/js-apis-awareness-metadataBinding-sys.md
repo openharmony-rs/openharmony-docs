@@ -5,9 +5,9 @@
 <!--Designer: @yuxiaoyang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:53.460Z pushedAt=2026-06-25T01:35:11.431Z -->
+<!-- md-trans-meta sourceCommit=2fe43cf7ea77cdd21cfa7d17dc93a663c83e8548 translatedAt=2026-11-04T02:20:14.816Z pushedAt=2026-11-04T03:24:28.560Z nl=1 -->
 
-The **metadataBinding** module provides the capability of adding metadata to images and parsing the metadata to complete information transfer.
+This module provides metadata binding capabilities for embedding metadata into images and parsing metadata from images to implement information transfer. It is applicable to scenarios where metadata needs to be stored in and transferred through images, such as anti-counterfeiting and copyright protection, providing developers with flexible information embedding and parsing mechanisms.
 
 > **NOTE**
 >
@@ -24,9 +24,9 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 ## metadataBinding.encodeImage
 encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelMap&gt;
 
-Encodes metadata into an image. This API uses a promise to return the result.
+Embeds information into an image. This API embeds metadata into the image using a specific encoding algorithm. The encoding process has minimal impact on the visual presentation of the image, and the embedded information can be parsed through the **decodeImage** API. It can be used in scenarios such as anti-counterfeiting and copyright protection. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.MultimodalAwareness.metadataBinding
+**System capability**: SystemCapability.MultimodalAwareness.MetadataBinding
 
 **System API**: This is a system API.
 
@@ -34,8 +34,8 @@ Encodes metadata into an image. This API uses a promise to return the result.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| srcImage     | [PixelMap](https://developer.huawei.com/consumer/en/doc/harmonyos-references/arkts-apis-image-pixelmap)                        | Yes  | Source image.|
-| metadata     | string                             | Yes  | Metadata to be encoded.|
+| srcImage     | [PixelMap](https://developer.huawei.com/consumer/en/doc/harmonyos-references/arkts-apis-image-pixelmap)                        | Yes   | Original image to be encoded, used to embed metadata.     |
+| metadata     | string | Yes | Information to be embedded. The string encoding format is recommended to be UTF-8, the length should not exceed 128 bytes, and non-printable characters should be avoided. |
 
 **Return value**
 
@@ -43,9 +43,9 @@ Encodes metadata into an image. This API uses a promise to return the result.
   | ---------------------------- | ---------- |
   | Promise&lt;image.PixelMap&gt; | Promise object, which is used to return the image with encoded metadata.|
 
-**Error codes** 
+**Error codes**
 
-For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Common Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -60,30 +60,31 @@ import { image } from '@kit.ImageKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let captureImage: image.PixelMap | undefined = undefined;
-let metadata: string = "";
+let encodedImage: image.PixelMap | undefined = undefined;
+let metadata: string = '';
+// Obtain a valid PixelMap object for srcImage through the API in image.
 let srcImage: image.PixelMap | undefined = undefined;
 metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) => {
-  captureImage = pixelMap;
+  encodedImage = pixelMap;
 }).catch((error: BusinessError) => {
-  console.error("encode image error" + error);
+  console.error(`Failed to encode image. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
 ## metadataBinding.decodeImage
 decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
-Decodes the information carried in the image. This API uses a promise to return the result.
+Parses the information carried in an image. This API extracts the embedded metadata from the image using the corresponding decoding algorithm. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.MultimodalAwareness.metadataBinding
+**System capability**: SystemCapability.MultimodalAwareness.MetadataBinding
 
 **System API**: This is a system API.
 
-**Parameters** 
+**Parameters**  
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| encodedImage     | [PixelMap](https://developer.huawei.com/consumer/en/doc/harmonyos-references/arkts-apis-image-pixelmap)                           | Yes  | Image with metadata encoded.|
+| encodedImage     | [PixelMap](https://developer.huawei.com/consumer/en/doc/harmonyos-references/arkts-apis-image-pixelmap)                           | Yes   | Image carrying information, which must be an encoded image processed by the **encodeImage** API. |
 
 **Return value**
 
@@ -91,9 +92,9 @@ Decodes the information carried in the image. This API uses a promise to return 
   | ---------------------------- | ---------- |
   | Promise&lt;string&gt; | Promise object, which is used to return the encoded metadata of the image.|
 
-**Error codes** 
+**Error codes**  
 
-For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Common Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -101,45 +102,47 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 | 32100001 | Internal handling failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
-**Example** 
+**Example**  
 ```ts
 import { image } from '@kit.ImageKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let encodeImage: image.PixelMap | undefined = undefined;
-let captureMetadata: string = "";
-metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
+// encodedImage must be obtained from an image processed by the encodeImage API.
+let encodedImage: image.PixelMap | undefined = undefined;
+let captureMetadata: string = '';
+metadataBinding.decodeImage(encodedImage).then((metadata: string) => {
+  // Save the metadata parsed from the image to the captureMetadata variable for later use.
   captureMetadata = metadata;
 }).catch((error: BusinessError) => {
-  console.error("decode image error" + error);
+  console.error(`Failed to decode image. Code: ${error.code}, message: ${error.message}`);
 }); 
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
 notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
-Transfers metadata to the application or service that calls the encoding API. This API uses a promise to return the result.
+Pushes the metadata to be embedded to the application or service that calls the encoding API. The system pushes the information to the application with the specified bundle name and returns the applink information of the current page for subsequent encoding. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.MultimodalAwareness.metadataBinding
+**System capability**: SystemCapability.MultimodalAwareness.MetadataBinding
 
 **System API**: This is a system API.
 
-**Parameters** 
+**Parameters**  
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-|bundleName|string|Yes|Bundle name used to obtain the application link.|
+|bundleName|string|Yes|Application bundle name, which must be the bundle name of an installed application.|
 
 **Return value**
 
 | Type                         | Description       |
 | ---------------------------- | ---------- |
-| Promise&lt;string&gt; | Promise used to return the application link information of the current page.|
+| Promise&lt;string&gt; | Promise used to return the appLink information of the current page.|
 
-**Error codes** 
+**Error codes**
 
-For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Common Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -152,10 +155,11 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// bundleName must be the package name of an installed application.
 let bundleName: string = '';
-metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string)=>{
-  console.info("notify metadata:" + appLink);
+metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string) => {
+  console.info('notify metadata:' + appLink);
 }).catch((error: BusinessError) => {
-  console.error("notify metadata error" + error);
+  console.error(`Failed to notify metadata. Code: ${error.code}, message: ${error.message}`);
 });
 ```

@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1a59b01eb09cbde916aad8893b634e85d3707880 translatedAt=2026-11-04T01:22:51.721Z pushedAt=2026-11-04T03:24:28.470Z nl=1 -->
 
 The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -16,14 +17,14 @@ The **touchEvent** module provides touch events reported by a device. It is inhe
 ## Modules to Import
 
 ```js
-import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
+import { KeyAction,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 ```
 
 ## Action
 
 Enumerates the touch event types.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name    | Value  | Description  |
 | ------ | ------ | ---- |
@@ -39,7 +40,7 @@ Enumerates the touch event types.
 
 Enumerates touch tool types.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name      | Value  | Description  |
 | -------- | ------ | ---- |
@@ -52,11 +53,11 @@ Enumerates touch tool types.
 | MOUSE    | 6 | Mouse.  |
 | LENS     | 7 | Lens.  |
 
-## SourceType 
+## SourceType
 
-Enumerates touch sources. Currently, only the touchscreen and touchpad are supported.
+Enumerates the device types of touch sources. Currently supports reporting of touchscreen, stylus, and touchpad types.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name          | Value | Description  |
 | ------------ | ------ | ---- |
@@ -68,7 +69,7 @@ Enumerates touch sources. Currently, only the touchscreen and touchpad are suppo
 
 Defines the touch point information.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name         | Type  | Read-Only  | Optional  | Description                                 |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
@@ -97,7 +98,7 @@ Defines the touch point information.
 
 Defines a touch event.
 
-**System capability**: SystemCapability.MultimodalInput.Input.Core
+**System capability:** SystemCapability.MultimodalInput.Input.Core
 
 | Name        | Type      | Read-Only  | Optional  | Description       |
 | ---------- | ---------- | ---- | ---- | --------- |

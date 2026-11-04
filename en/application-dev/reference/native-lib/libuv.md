@@ -1,10 +1,12 @@
 # libuv
 <!--Kit: NDK Development-->
 <!--Subsystem: Developtools-->
-<!--Owner: @fu-yongyong-->
-<!--Designer: @huangke11-->
+<!--Owner: @fileVerify-->
+<!--Designer: @StringChen-->
 <!--Tester: @liuhaonan2-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=4d0c4fe124a429b89e6c66eb6b302d8501f24a1d translatedAt=2026-11-04T03:01:36.670Z pushedAt=2026-11-04T03:24:28.644Z nl=2 -->
+
 ## Introduction
 
 [libuv](http://libuv.org/) is a cross-platform library that implements asynchronous I/O based on event loops. It applies to network programming and file system operations. It is one of the core libraries of Node.js and has been widely used by other software projects.
@@ -315,7 +317,7 @@ static napi_value TestClose(napi_env env, napi_callback_info info)
             int value = 10;
             int ret = eventfd_write(fd, value);
             if (ret == -1){
-                OH_LOG_INFO(LOG_APP, "write failed!");
+                OH_LOG_ERROR(LOG_APP, "write failed!");
                 continue;
             }
         }
@@ -443,7 +445,7 @@ static napi_value TestClose(napi_env env, napi_callback_info info)
             int value = 10;
             int ret = eventfd_write(fd, value);
             if (ret == -1){
-                OH_LOG_INFO(LOG_APP, "write failed!");
+                OH_LOG_ERROR(LOG_APP, "write failed!");
                 continue;
             }
         }
@@ -489,7 +491,7 @@ libhilog_ndk.z.so
 
 ## Using libuv
 
-In the libuv NDK, all the APIs that depend on **uv_run** do not work as expected in the application main loop of the current system, and may cause freezing or loss of frames. You are advised not to directly use libuv NDK APIs in the JS main thread. You can use Node-API to implement asynchronous task execution and communication with the main thread via thread-safe functions.
+**Important: In the libuv NDK, all APIs that depend on `uv_run` cannot take effect in a timely manner in the application main loop of the current system, and may cause frame freezing and dropping. Therefore, it is not recommended to use libuv NDK APIs directly on the JS main thread. For asynchronous task execution and communication with the main thread using thread-safe functions, developers can directly call Node-API APIs to implement the related functions.**
 
 ### Mappings Between libuv APIs and Node-APIs
 
@@ -551,7 +553,7 @@ the following functions:
 
 The equivalent Node-API interfaces are [napi_threadsafe_function](../../napi/use-napi-thread-safety.md) APIs.
 
- The related Node-API interfaces are as follows:
+The related Node-API interfaces are as follows:
 
 ```cpp
 /**
@@ -614,21 +616,21 @@ If you need to use other libuv APIs to implement service functions, read on to d
 
 |  API Type   |  API   |
 | ---- | ---- |
-|   [Loop](#event-loops-in-libuv)  |  uv_loop_init    |
-|   [Loop](#event-loops-in-libuv)  |   uv_loop_close   |
-|   [Loop](#event-loops-in-libuv)  |  uv_default_loop    |
-|   [Loop](#event-loops-in-libuv)  |   uv_run   |
-|   [Loop](#event-loops-in-libuv)  |    uv_loop_alive  |
-|   [Loop](#event-loops-in-libuv)  |  uv_stop    |
-|   [Handle](#handles-and-requests-in-libuv)  |  uv_poll\_\* |
-|   [Handle](#handles-and-requests-in-libuv)  |  uv_timer\_\* |
-|   [Handle](#handles-and-requests-in-libuv)  |  uv_async\_\* |
-|   [Handle](#handles-and-requests-in-libuv)  |   uv_signal\_\*   |
-|   [Handle](#handles-and-requests-in-libuv)  |   uv_fs\_\*  |
-|   [Request](#handles-and-requests-in-libuv)  |  uv_random    |
-|   [Request](#handles-and-requests-in-libuv)  |  uv_getaddrinfo    |
-|   [Request](#handles-and-requests-in-libuv)  |  uv_getnameinfo    |
-|   [Request](#handles-and-requests-in-libuv)  |  uv_queue_work    |
+|   [Event loop concepts and related APIs in libuv](#event-loops-in-libuv)   |  uv_loop_init    |
+|   [Event loop concepts and related APIs in libuv](#event-loops-in-libuv)   |   uv_loop_close   |
+|   [Event loop concepts and related APIs in libuv](#event-loops-in-libuv)   |  uv_default_loop    |
+|   [Event loop concepts and related APIs in libuv](#event-loops-in-libuv)   |   uv_run   |
+|   [Event loop concepts and related APIs in libuv](#event-loops-in-libuv)   |    uv_loop_alive  |
+|   [Event loop concepts and related APIs in libuv](#event-loops-in-libuv)   |  uv_stop    |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |  uv_poll\_\* |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |  uv_timer\_\* |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |  uv_async\_\* |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |   uv_signal\_\*   |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |   uv_fs\_\*  |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |  uv_random    |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |  uv_getaddrinfo    |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |  uv_getnameinfo    |
+|   [Handles and requests concepts and related APIs in libuv](#handles-and-requests-in-libuv)   |  uv_queue_work    |
 |   [Inter-Thread communication](#inter-thread-communication)  |  uv_async_init    |
 |   [Inter-Thread communication](#inter-thread-communication)  |  uv_async_send    |
 |   [Thread pool](#thread-pool)  |  uv_queue_work    |
@@ -639,7 +641,7 @@ When using libuv in OpenHarmony, observe to the following: The thread for callin
 
 **Creating a Loop**
 
-You can call **uv_loop_new** to create a loop or call **uv_loop_init** to initialize a loop. You need to manage the lifecycle of the loop. In this case, ensure that **uv_run** is executed on the loop thread, that is, the thread where the loop is created or initialized. In addition, non-thread-safe operations, such as operations related to the timer, must be performed on the loop thread.
+Developers can initialize a loop by calling `uv_loop_init`. The lifecycle of the loop is maintained by the developer. (If `uv_loop_new` is used to create a loop, only a null pointer is returned on failure, whereas `uv_loop_init` returns an error code when loop initialization fails. For details, see [libuv Error Codes](#libuv-error-codes), which prompt developers to obtain the cause of the error.) In this case, as described earlier, ensure that `uv_run` is executed on the same thread as the loop creation/initialization operation, that is, the loop thread. In addition, other non-thread-safe operations, such as timer-related operations, must be performed on the loop thread. 
 
 If tasks have to be thrown from other threads to the loop thread, use **uv_async_send**. Specifically, register a callback when the async handle is initialized, and implement the corresponding operation in the callback. When **uv_async_send** is called, execute the registered callback on the main thread.
 
@@ -839,7 +841,7 @@ Thread-safe functions:
 
 Tips: Even if the function like **uv_xxx_init** is implemented in a thread-safe manner, avoid calling it on multiple threads at the same time. Otherwise, resource contention may occur. The best way is to call the function in an event loop thread.
 
-Note: After **uv_async_send** is called, the callback is invoked asynchronously. libuv only ensures that at least one callback is executed if **uv_async_send** is called multiple times. As a result, if **uv_async_send** is called multiple times for the same handle, the callback processing in libuv may not align with your expectations. However, the native side can ensure that the number of callback execution times matches the number of times that **napi_call_threadsafe_function** is called.
+**Note: After `uv_async_send` is called, the callback is triggered asynchronously. If `uv_async_send` is called multiple times, libuv only guarantees that the callback is executed at least once. As a result, once `uv_async_send` is triggered multiple times on the same handle, libuv's handling of the callback may deviate from the developer's expectation. Sending to the same async handle multiple times may also cause other async_cb tasks submitted between any two send operations on the same handle to be lost.** On the native side, however, it can be guaranteed that the number of callback executions is consistent with the number of times the developer calls `napi_call_threadsafe_function`.
 
 Non-thread-safe functions:
 
@@ -1227,12 +1229,13 @@ int uv_async_send(uv_async_t* handle)
 
   Wakes up the event loop and calls the async handle's callback.<br>**handle**: pointer to the handle for inter-thread communication.
 
-  This API returns **0** if the operation is successful; returns an error code if the operation fails.
+  Return 0 if successful; otherwise, return an error code.
+
 > **NOTE**
 >
-> 1. **uv_async_t** remains active after **uv_async_init** is called till it is closed by **uv_close**.
+> 1. A uv_async_t remains active from the time `uv_async_init` is called until it is closed with `uv_close`.
 >
-> 2. **uv_async_t** is executed in the sequence defined by **uv_async_init** instead of **uv_async_send**. Therefore, it is necessary to manage the timing according to the initialization sequence.
+> 2. The execution order of uv_async_t strictly follows the order of `uv_async_init`, rather than the order of `uv_async_send`. Therefore, it is necessary to manage the timing properly according to the initialization order.
 
 ![Inter-thread communication principle](./figures/libuv-image-1.jpg)
 
@@ -1343,7 +1346,7 @@ In OpenHarmony, **uv_queue_work()** in a UI thread works as follows: Throw **wor
 
 **uv_queue_work()** can be called only on the loop thread. This prevents multi-threading issues. Do not use **uv_queue_work()** as a means for inter-thread communication. Specifically, do not use **uv_queue_work** to throw an asynchronous task from thread A to thread B, setting **execute()** to an empty task and executing the **complete()** callback on thread B. This approach is not only inefficient but increases the difficulty in locating faults. To avoid inefficient task submission, use [napi_threadsafe_function](../../napi/use-napi-thread-safety.md).
 
-### Use of libuv in OpenHarmony
+### Current Usage of libuv
 
 Currently, libuv threads are used in the main thread, JS Worker thread, TaskWorker thread in the Taskpool, and IPC thread of OpenHarmony. Except the main thread, which uses **eventhandler** as the main loop, other threads use the **UV_RUN_DEFAULT** mode in libuv as the event main loop of the calling thread to execute tasks. In the main thread, **eventhandler** triggers task execution by an FD event. **eventhandler** listens for **backend_fd** in **uv_loop**. Once an FD event is triggered in the loop, **eventhandler** calls **uv_run** to execute tasks in libuv.
 
@@ -1367,7 +1370,7 @@ The following types of requests can be processed as expected in the application 
  * @param req Pointer to the request.
  * @param buf Buffer for storing the random number.
  * @param buflen Length of the buffer.
- * @param flags Options for generating a random number. The value is an unsigned integer. 
+ * @param flags Options for generating a random number. The value is an unsigned integer.
  * @param cb Callback used to return the random number generated.
  *
  * @return Returns 0 if the operation is successful; returns an error code otherwise.
@@ -1561,3 +1564,22 @@ The following APIs do not work as expected in the application main thread:
 - **check** handle
 - signal-related functions
 - Functions related to TCP and UDP
+
+### libuv Error Codes
+
+**Error Codes of uv_loop_init**
+|    Return Value    |    Value    |    Description    |
+| ---- | ---- | ---- |
+| 0 | 0 | Success |
+| UV_ENOMEM | -4057 | not enough memory |
+| UV_EMFILE | -4066 | too many open files |
+| UV_ENFILE | -4061 | file table overflow |
+| UV_EINVAL | -4071 | invalid argument |
+| UV_EAGAIN | -4088 | resource temporarily unavailable |
+| UV_EBUSY | -4082 | resource busy or locked |
+
+
+The complete definitions of all error code macros are located in the errno.h header file of the SDK. You can view them in the local SDK directory, with a path similar to:
+```cpp
+{SDK path}/native/sysroot/usr/include/uv/errno.h
+```

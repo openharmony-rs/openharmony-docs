@@ -5,18 +5,19 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T02:06:41.790Z pushedAt=2026-11-04T03:24:28.549Z nl=1 -->
 
 The **usbManager** module provides APIs for USB management.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. New APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module are open only to device management applications. Before calling the APIs, you must activate a device management application. For details, see [MDM Kit Development Guide](../../mdm/mdm-kit-guide.md).
 >
-> The global restriction policy is provided by **restrictions**. To disable USB globally, see [@ohos.enterprise.restrictions (restriction policy)](js-apis-enterprise-restrictions.md).
+> Global universal restriction policies are provided by restrictions. To disable USB globally, see [@ohos.enterprise.restrictions (Restriction Policies)](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -42,13 +43,15 @@ A policy conflict is reported when this API is called in the following scenarios
 3. Disallowed USB device types have been added using the [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14) API.
 4. Disallowed USB device types have been added via [addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices).
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -104,13 +107,15 @@ Removes allowed USB devices.
 - Enable device administrators to dynamically adjust the list of allowed USB devices.
 - Remove USB devices from the trustlist when they are no longer needed or pose a security risk.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -123,7 +128,7 @@ Removes allowed USB devices.
 
 For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
@@ -137,7 +142,7 @@ import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  // Replace with actual values.
+  // Replace it based on the actual situation.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -155,13 +160,11 @@ try {
 
 ## usbManager.getAllowedUsbDevices
 
-getAllowedUsbDevices(admin: Want | null): Array\<UsbDeviceId>
+getAllowedUsbDevices(admin: Want): Array\<UsbDeviceId>
 
-Obtains allowed USB devices.
+Obtains the allowed USB device list. General use cases: before modifying a policy, retrieve the existing policy for evaluation; the management page needs to display the current USB storage device access control status.
 
-**Use cases:**
-- Retrieve the existing policy for evaluation before making any modifications.
-- Display the current USB storage device access control status on the management page.
+This API queries the policy set by the corresponding enterprise device management application by passing in Want. To query the policy that actually takes effect, use the [usbManager.getAllowedUsbDevices](#usbmanagergetallowedusbdevices-1) API.
 
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -172,15 +175,15 @@ Obtains allowed USB devices.
 
 **Parameters**
 
-| Name| Type                                                   | Mandatory| Description                                  |
+| Name | Type                                                    | Mandatory | Description                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
-| Type                              | Description                     |
+| Type                               | Description                      |
 | ---------------------------------- | ------------------------- |
-| Array<[UsbDeviceId](#usbdeviceid)> | Array of device IDs in the USB device trustlist.|
+| Array<[UsbDeviceId](#usbdeviceid)> | Array of device IDs in the allowed USB device list. |
 
 **Error codes**
 
@@ -212,6 +215,57 @@ try {
 }
 ```
 
+
+## usbManager.getAllowedUsbDevices
+
+getAllowedUsbDevices(admin: Want | null): Array\<UsbDeviceId>
+
+Obtains the allowed USB device list. General use cases: before modifying a policy, retrieve the existing policy for evaluation; the management page needs to display the current USB storage device access control status.
+
+**Since**: 26.0.0
+
+**Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                                  |
+| ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
+
+**Return value**
+
+| Type                              | Description                     |
+| ---------------------------------- | ------------------------- |
+| Array<[UsbDeviceId](#usbdeviceid)> | Array of device IDs in the USB device trustlist.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { usbManager } from '@kit.MDMKit';
+
+try {
+  // Replace the parameter based on the actual situation.
+  let result: Array<usbManager.UsbDeviceId> = usbManager.getAllowedUsbDevices(null);
+  console.info(`Succeeded in getting allowed USB devices. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed USB devices. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## usbManager.setUsbStorageDeviceAccessPolicy
 
 setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
@@ -219,7 +273,9 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 Sets the USB storage device (baseClass = 0x08) access policy.
 
 > **NOTE**
-> Before calling the API, read and write operations on the USB storage device should be suspended to ensure operational stability and data integrity. Otherwise, unexpected exceptions may occur.
+> Before calling the API, ensure that read and write operations on the USB storage device have been suspended to guarantee operational stability and data integrity. Otherwise, unexpected exceptions may occur.
+>
+> In scenarios with multiple MDM applications, the [strictest control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies. The strict priority is: disabled > read-only > read-write.
 
 A policy conflict occurs when you set the USB storage device access policy to read, write, or read-only in the following scenarios:
 
@@ -235,7 +291,7 @@ A policy conflict is reported if the USB storage device access policy is disable
 
 You can disable a USB storage device by calling this API or [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14). The latter is recommended.
 
-**Required permissions**:
+**Required permissions**: 
 
 - Before API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_USB
 - Since API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS (The application is activated as a built-in device administrator application via the [adminManager.startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) API.)
@@ -243,8 +299,6 @@ You can disable a USB storage device by calling this API or [addDisallowedUsbDev
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first). The strict priority is as follows: disabled > read-only > read and write.
 
 **Parameters**
 
@@ -288,14 +342,15 @@ try {
 
 ## usbManager.getUsbStorageDeviceAccessPolicy
 
-getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
+getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 Obtains the USB storage device (baseClass = 0x08) access policy.
 
-**Required permissions**:
+This API queries the policy set by the corresponding enterprise device management application by passing in Want. To query the policy that actually takes effect, use the [usbManager.getUsbStorageDeviceAccessPolicy](#usbmanagergetusbstoragedeviceaccesspolicy-1) API.
 
-- Before API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_USB
-- Since API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS (The application is activated as a built-in device administrator application via the [adminManager.startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) API.)
+**Required permissions**:
+ - Before API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_USB
+ - Since API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS (The application is activated as a built-in device administrator application via the [adminManager.startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) API.)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -306,7 +361,7 @@ Obtains the USB storage device (baseClass = 0x08) access policy.
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -344,21 +399,68 @@ try {
 }
 ```
 
+
+## usbManager.getUsbStorageDeviceAccessPolicy
+
+getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
+
+Obtains the USB storage device (baseClass = 0x08) access policy.
+
+**Since**: 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS (when the application calls [adminManager.startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) to become a self-provisioned device management application).
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                                   |
+| ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the application where it is located.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
+
+**Return value**
+
+| Type                    | Description                  |
+| ----------------------- | --------------------- |
+| [UsbPolicy](#usbpolicy) | Access policy of the USB storage device. The value **READ_WRITE** indicates that the USB storage device can be read and written. The value **READ_ONLY** indicates that the USB storage device can only be read. The value **DISABLED** indicates that access to the USB storage device cannot be accessed. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { usbManager } from '@kit.MDMKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(null);
+  console.info(`Succeeded in getting USB storage device access policy. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get USB storage device access policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## usbManager.addDisallowedUsbDevices<sup>14+</sup>
 
 addDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 
-Adds disallowed USB device types.
-
-**Use cases:**
-- Disable specific types of USB devices in enterprise security management scenarios.
-- Prevent data leaks by disabling USB storage device types.
-- Enable device administrators to prohibit the use of certain USB device types based on security policies.
-- Work with the [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) API to implement dynamic management of USB device types.
+Adds disallowed USB device types. General use cases: In enterprise security management scenarios, specific types of USB devices need to be disabled; preventing data leakage: disabling USB storage device types; device administrators need to prohibit the use of certain types of USB devices according to security policies; used together with [removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14) to implement dynamic management of USB device types.
 
 > **NOTE**
 >
-> The [addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices) API is recommended.
+> It is recommended to use the [addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices) API.
+>
+> In multi-MDM application scenarios, the [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 A policy conflict is reported when this API is called in the following scenarios:
 
@@ -372,8 +474,6 @@ A policy conflict is reported when this API is called in the following scenarios
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -430,13 +530,15 @@ Removes the disallowed USB device types.
 - Enable device administrators to dynamically adjust the list of disallowed USB device types.
 - Remove USB device types from the blocklist when they no longer pose a security risk.
 
+> **NOTE**
+>
+> In multi-MDM application scenarios, the [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -483,14 +585,11 @@ try {
 
 ## usbManager.getDisallowedUsbDevices<sup>14+</sup>
 
-getDisallowedUsbDevices(admin: Want | null): Array\<UsbDeviceType>
+getDisallowedUsbDevices(admin: Want): Array\<UsbDeviceType>
 
-Obtains the disallowed USB device types.
+Obtains the USB device types whose use is prohibited. General use cases: a device administrator needs to view the current list of USB device types whose use is prohibited; before modifying the prohibited list, the existing list must be obtained for comparison; the management API needs to display the current USB device type prohibition policy configuration.
 
-**Use cases:**
-- Retrieve the current list of disallowed USB device types for review by the device administrator.
-- Obtain the existing blocklist for comparison before making any modifications.
-- Display the current USB device type restriction policy configuration on the management page.
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use [usbManager.getDisallowedUsbDevices](#usbmanagergetdisallowedusbdevices).
 
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -501,9 +600,66 @@ Obtains the disallowed USB device types.
 
 **Parameters**
 
+| Name | Type                                                    | Mandatory | Description                                   |
+| ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type                                     | Description                    |
+| ---------------------------------------- | ----------------------- |
+| Array<[UsbDeviceType](#usbdevicetype14)> | USB device types whose use is prohibited. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { usbManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let result: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(wantTemp);
+  console.info(`Succeeded in getting disallowed USB devices. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed USB devices. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## usbManager.getDisallowedUsbDevices
+
+getDisallowedUsbDevices(admin: Want | null): Array\<UsbDeviceType>
+
+Obtains the USB device types whose use is prohibited. General use cases: a device administrator needs to view the current list of USB device types whose use is prohibited; before modifying the prohibited list, the existing list must be obtained for comparison; the management API needs to display the current USB device type prohibition policy configuration.
+
+**Since**: 26.0.0
+
+**Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the application where it is located.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 
 **Return value**
 
@@ -526,21 +682,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { usbManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  let result: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(wantTemp);
+  // Replace the parameters based on the actual situation.
+  let result: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(null);
   console.info(`Succeeded in getting disallowed USB devices. Result: ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get disallowed USB devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## usbManager.addDisallowedPermissiveUsbDevices
 
 addDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array\<PermissiveUsbDeviceType>): void
@@ -556,13 +706,15 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Since:** 26.0.0
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -632,13 +784,15 @@ Removes the USB device types that have been disallowed via [addDisallowedPermiss
 
 **Since:** 26.0.0
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -741,6 +895,8 @@ Represents the USB device identity information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name     | Type  | Read-Only| Optional| Description    |
 | --------- | ------ | ---- | ---- | -------- |
 | vendorId  | number | No  | No| Vendor ID.|
@@ -753,6 +909,8 @@ Represents the USB device type information.
 You can obtain the list of USB devices connected to the host device through the [getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices) API, and then find the type of the current device in the returned list.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name      | Type                       | Read-Only| Optional| Description                                                        |
 | ---------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -767,6 +925,8 @@ Enumerates the USB storage device access policies.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name      | Value  | Description      |
 | ---------- | ---- | ---------- |
 | READ_WRITE | 0    | Read and write.|
@@ -778,6 +938,8 @@ Enumerates the USB storage device access policies.
 Enumerates USB descriptors.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name     | Value  | Description        |
 | --------- | ---- | ------------ |
@@ -799,6 +961,8 @@ USB device type information. Partial field matching is supported.
 **Since:** 26.0.0
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name      | Type                       | Read-Only| Optional| Description                                                        |
 | ---------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |

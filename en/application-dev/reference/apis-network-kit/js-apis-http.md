@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14376f084983b7711c00d6daf21c12dd782300de translatedAt=2026-09-28T01:26:46.274Z pushedAt=2026-10-09T03:04:22.299Z -->
+<!-- md-trans-meta sourceCommit=c5aecf78ec96e9e11867784391713120edf5bcc8 translatedAt=2026-11-04T02:36:03.447Z pushedAt=2026-11-04T03:24:28.589Z nl=1 -->
 
 The **http** module provides APIs for implementing HTTP data request capabilities. An application can initiate a data request over HTTP. Common HTTP methods include **GET**, **POST**, **OPTIONS**, **HEAD**, **PUT**, **DELETE**, **PATCH**, **TRACE**, and **CONNECT**.
 
@@ -21,7 +21,7 @@ import { http } from '@kit.NetworkKit';
 
 ## Example
 
->**NOTE**
+>**NOTE** 
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -160,8 +160,8 @@ createHttp(): HttpRequest
 
 Creates an HTTP request. You can use this API to initiate or destroy an HTTP request, or enable or disable listening for HTTP Response Header events. To initiate multiple HTTP requests, you must create an **HttpRequest** object for each HTTP request. An **HttpRequest** object corresponds to an HTTP request.
 
-> **NOTE**
-> When the request is no longer needed, call destroy() to release resources. Otherwise, memory leaks may occur.
+> **NOTE:**
+> When the request is no longer used, you must call the destroy method to release resources. Otherwise, memory leaks may occur.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -189,7 +189,7 @@ Defines an HTTP request task. Before invoking APIs provided by **HttpRequest**, 
 
 request(url: string, callback: AsyncCallback\<HttpResponse\>): void
 
-Initiates an HTTP request to a given URL. This API uses an asynchronous callback to return the result. 
+Initiates an HTTP request to a given URL. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -207,7 +207,7 @@ Initiates an HTTP request to a given URL. This API uses an asynchronous callback
 
 | Name  | Type                                          | Mandatory| Description                   |
 | -------- | ---------------------------------------------- | ---- | ---------------------- |
-| url      | string                                         | Yes   | URL for initiating the network request. Example: https://www.test.com |
+| url      | string                                         | Yes   | URL address for initiating a network request. Example: `https://www.test.com` |
 | callback | AsyncCallback\<[HttpResponse](#httpresponse)\> | Yes  | Callback used to return the result.   |
 
 **Error codes**
@@ -388,7 +388,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 
 request(url: string, options? : HttpRequestOptions): Promise\<HttpResponse\>
 
-Initiates an HTTP request containing specified options to a given URL. This API uses a promise to return the result. 
+Initiates an HTTP request containing specified options to a given URL. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -792,7 +792,7 @@ Initiates an HTTP network request based on the URL and related configuration opt
  >(2) If you need to pass in cookies, add them to the **options** parameter.<br>
  >(3) If the URL contains non-English characters, call **encodeURL(url)** to encode the URL before initiating an HTTP request.<br>
  >(4) This API is synchronous and blocks the current thread until an HTTP response or error code is returned.
-
+ 
  **Since**: 26.0.0
 
 **Required permission**: ohos.permission.INTERNET

@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=640844a08f4b3b5dfd94a6a59bd058398ce32495 translatedAt=2026-11-04T02:38:45.102Z pushedAt=2026-11-04T03:24:28.598Z nl=1 -->
 
 The **ethernet** module provides wired network capabilities, which allow users to set the IP address, subnet mask, gateway, and Domain Name System (DNS) server, and HTTP proxy of a wired network.
 
@@ -47,7 +48,7 @@ Sets the network interface configuration information. This API uses an asynchron
 | 201     | Permission denied.                      |
 | 202     | Non-system applications use system APIs.                      |
 | 401     | Parameter error.                        |
-| 2200001 | Invalid parameter value.                |
+| 2100001 | Invalid parameter value.                |
 | 2200002 | Failed to connect to the service.       |
 | 2200003 | System internal error.                  |
 | 2201004 | Invalid Ethernet profile.  |
@@ -111,7 +112,7 @@ Sets the network interface configuration information. This API uses a promise to
 | 201     | Permission denied.                      |
 | 202     | Non-system applications use system APIs.                      |
 | 401     | Parameter error.                        |
-| 2200001 | Invalid parameter value.                |
+| 2100001 | Invalid parameter value.                |
 | 2200002 |Failed to connect to the service. |
 | 2200003 | System internal error.                  |
 | 2201004 | Invalid Ethernet profile.  |
