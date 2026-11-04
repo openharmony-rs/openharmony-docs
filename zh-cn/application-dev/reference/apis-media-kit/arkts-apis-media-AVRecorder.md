@@ -67,7 +67,7 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | ermission verification failed. The application does not have the permission required to call the API. Return by callback.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. Return by callback.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.    |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400105  | Service died. Return by callback.       |
