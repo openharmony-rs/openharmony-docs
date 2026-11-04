@@ -24129,7 +24129,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":45,
 						"name":"applink_ability",
 						"start_line":15
 					}
@@ -25239,7 +25239,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":79,
 						"name":"deep_ability",
 						"start_line":17
 					}
