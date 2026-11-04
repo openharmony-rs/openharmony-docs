@@ -25,6 +25,7 @@ Data Protection Kit为应用提供了设置动态防护策略的能力，在用�
 
 <!--RP1--><!--RP1End-->
 
+
 3. 设置防护策略。
 
     3.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
