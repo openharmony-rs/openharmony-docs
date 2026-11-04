@@ -147,16 +147,17 @@ status: active
    worker线程接收参数：
 
    <!-- @[ExecuteTranscodingLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   
    ``` TypeScript
-   //worker线程接收参数。
+   //worker线程接收参数
    const sendableObject: SendableObject = event.data;
    const sendableContext: sendableContextManager.SendableContext =
      sendableObject.getSendableContext() as sendableContextManager.SendableContext;
    const context: common.Context =
      sendableContextManager.convertToContext(sendableContext) as common.Context;
-   // 执行转码逻辑。
+   //执行转码逻辑
    await doSome(context);
-   // 向主线程发送消息。
+   // 向主线程发送消息
    workerPort.postMessage('start end');
    ```
 
