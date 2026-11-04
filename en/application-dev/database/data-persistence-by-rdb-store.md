@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6879538b2b1a4844febd6a46491da3f73fa2dd07 translatedAt=2026-09-14T08:30:50.321Z pushedAt=2026-09-15T07:55:51.150Z -->
+<!-- md-trans-meta sourceCommit=f08a2bc7585a47e3ee5a2e60edcdd8af21f269f1 translatedAt=2026-10-31T01:22:54.178Z pushedAt=2026-10-31T03:35:23.946Z nl=1 -->
 
 
 ## When to Use
@@ -30,7 +30,7 @@ Querying data from a large amount of data may take time or even cause applicatio
 **RelationalStore** provides APIs for applications to perform data operations. With SQLite as the underlying persistent storage engine, **RelationalStore** provides SQLite database features, including transactions, indexes, views, triggers, foreign keys, parameterized queries, prepared SQL statements, and more.
 
 **Figure 1** Working mechanism
-
+ 
 ![relationStore_local](figures/relationStore_local.jpg)
 
 
@@ -73,16 +73,15 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 1. Obtain an **RdbStore** instance, which includes operations of creating an RDB store and tables, and upgrading or downgrading the RDB store. You are advised to use transaction APIs to ensure the atomicity of the database upgrade process.
 
    Example:
-
+   
    Stage model:
-
+     
    <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->  
-
+   
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // Import a module.
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-   import { UIContext } from '@kit.ArkUI';
    import { common } from '@kit.AbilityKit';
    const DOMAIN = 0x0000;
    
@@ -100,9 +99,9 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
      securityLevel: relationalStore.SecurityLevel.S3,
      // (Optional) Whether to encrypt the database. By default, the database is not encrypted.
      encrypt: false,
-     // (Optional) custom path of the database. The RdbStore instance is created in the sandbox directory of the application by default.
+     // (Optional) Custom path of the database. The RdbStore instance is created in the sandbox directory of the application by default.
      customDir: 'customDir/subCustomDir',
-     // (Optional) Specify whether the RDB store is opened in read-only mode. The default value is false, which means the RDB store is readable and writable. If this parameter is true, data can only be read from the RDB store. If write operation is performed, error code 801 is returned.
+     // (Optional) Specify whether the RDB store is opened in read-only mode. The default value is false, which means the RDB store is readable and writable. If this parameter is true, data can only be read from the RDB store. If a write operation is performed, error code 801 is returned.
      isReadOnly: false,
      // (Optional) Type of the tokenizer used in full-text search (FTS) mode. Only English word segmentation is supported in FTS by default.
      tokenizer: tokenType,
@@ -115,8 +114,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
        'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, ADDRESS TEXT)';
      if (store === undefined) {
        try {
-         const context = new UIContext().getHostContext() as common.UIAbilityContext;
-         store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+         store = await relationalStore.getRdbStore(context!, STORE_CONFIG);
        } catch (e) {
          const err = e as BusinessError;
          hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
@@ -128,7 +126,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
        let transaction = await store.createTransaction({});
        let storeVersion = await transaction.execute('PRAGMA user_version');
        // When the RDB store is created, the default version is 0.
-       // The upgrade process of the sample application is short, so a single transaction is used. If there are many upgrade logics in the actual service, you are advised to split the upgrade logics into multiple independent transactions and execute them in serial mode.
+       // The upgrade process of the sample application is short, so a single transaction is used. If the actual service involves many upgrade operations, you are advised to split them into multiple independent transactions and execute them serially.
        if (storeVersion === 0) {
          try {
            await transaction.execute(SQL_CREATE_TABLE); // Create a data table so that the insert API can be invoked easily to insert data.
@@ -259,7 +257,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 
 2. After obtaining the RDB store and creating the data table, call **insert()** to insert data. <br>Example:
    <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
-
+   
    ``` TypeScript
    // Insert data
    let value1 = 'Lisa';
@@ -291,9 +289,9 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 
 3. Modify or delete data based on the specified **Predicates** instance.
 
-Call **update()** to modify data, and call **delete()** to delete data. The sample code is as follows:
+   Call **update()** to modify data, and call **delete()** to delete data. The sample code is as follows:
    <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
-
+   
    ``` TypeScript
    // Modify and delete data.
    let value6 = 'Rose';
@@ -338,9 +336,9 @@ Call **update()** to modify data, and call **delete()** to delete data. The samp
 
 4. Query data based on the conditions specified by **Predicates**.
 
-Call **query()** to query data, which returns a **ResultSet**. The sample code is as follows:
+   Call **query()** to query data, which returns a **ResultSet**. The sample code is as follows:
    <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
-
+   
    ``` TypeScript
    // Query data.
    let predicates2 = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -373,9 +371,9 @@ Call **query()** to query data, which returns a **ResultSet**. The sample code i
 
    The RDB store also supports full-text search (FTS) in Chinese or English. The ICU tokenizer is supported.
 
-The following example demonstrates how to perform FTS with Chinese keywords:
+   The following example demonstrates how to perform FTS with Chinese keywords:
    <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
-
+   
    ``` TypeScript
    // Query data using Chinese keywords.
    if (store !== undefined && tokenTypeSupported) {
@@ -405,14 +403,14 @@ The following example demonstrates how to perform FTS with Chinese keywords:
    ```
 
 5. Use the transaction object to insert, delete, and update data.
-
+   
    Call the **createTransaction** method to create a transaction object and execute the corresponding operation.
-
+   
    The supported transaction types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
 
    For details, see [createTransaction](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14).
    <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
-
+   
    ``` TypeScript
    // Use the transaction object to insert, delete, and update data.
    if (store !== undefined) {
@@ -474,7 +472,7 @@ The following example demonstrates how to perform FTS with Chinese keywords:
 
    Example: Perform manual backup of an RDB store.
    <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
-
+   
    ``` TypeScript
    // Back up the database in the same path.
    if (store !== undefined) {
@@ -493,7 +491,7 @@ The following example demonstrates how to perform FTS with Chinese keywords:
 
    Example: Call [restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore) to restore an RDB store from the data that is manually backed up.
    <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
-
+   
    ``` TypeScript
    // Restore data from the backup database.
    if (store !== undefined) {
@@ -513,11 +511,10 @@ The following example demonstrates how to perform FTS with Chinese keywords:
 
    Stage model:
    <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
-
+   
    ``` TypeScript
    // Delete the database.
-   const context = new UIContext().getHostContext() as common.UIAbilityContext;
-   relationalStore.deleteRdbStore(context, 'RdbTest.db', (err: BusinessError) => {
+   relationalStore.deleteRdbStore(context!, 'RdbTest.db', (err: BusinessError) => {
      if (err) {
        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
        return;

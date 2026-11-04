@@ -6,7 +6,7 @@
 <!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8852d3851a09566b1fcf279f3997e3c4a14b517f translatedAt=2026-07-25T11:27:30.872Z pushedAt=2026-07-25T11:32:24.912Z -->
+<!-- md-trans-meta sourceCommit=473631a7b8b0e711377f954eb896291c00dfc0f9 translatedAt=2026-10-31T01:17:31.103Z pushedAt=2026-10-31T01:28:18.919Z nl=1 -->
 
 An event refers to a specific event or activity arrangement. Event management is to arrange events or activities to effectively use related resources, improve productivity and efficiency, and enable users to better manage time and tasks.
 
@@ -33,7 +33,7 @@ The table below lists the main APIs used for event management. For details about
 1. Import dependencies.
 
     <!-- @[calendarEvent_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+    
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -47,7 +47,7 @@ The table below lists the main APIs used for event management. For details about
 3. Obtain the **calendarMgr** object based on the context to manage calendars. You are advised to perform management in the **EntryAbility.ets** file.
 
     <!-- @[calendarEvent_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+    
     ``` TypeScript
     
     export let calendarMgr: calendarManager.CalendarManager | null = null;
@@ -104,7 +104,7 @@ The table below lists the main APIs used for event management. For details about
 4. Create a **Calendar** object based on the calendar account information to manage events. Set the calendar configuration information, such as event reminder and calendar color, as required.
 
     <!-- @[calendarEvent_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { calendarMgr } from '../entryability/EntryAbility';
@@ -126,9 +126,8 @@ The table below lists the main APIs used for event management. For details about
       color: '#aabbcc'
     };
     ```
-
     <!-- @[calendarEvent_createCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Create a calendar account.
     calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
@@ -159,16 +158,15 @@ The table below lists the main APIs used for event management. For details about
    Method 1: Use **addEvent()** to create a single event or **addEvents()** to create events in batches. The following describes how to create a single event.
 
    Method 2: After obtaining the calendar manager object, you can use the **editEvent()** API to create a single calendar event. When you call this API to create an event, the system navigates to the event creation page, where you can perform relevant operations to complete the event creation. **editEvent()** does not support creating custom recurring events.
-
+   
    <!-- @[calendarEvent_eventParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    let eventId : number | undefined = undefined;
    const date = new Date();
    ```
-
    <!-- @[calendarEvent_addEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    const event: calendarManager.Event = {
      // Event title.
@@ -185,16 +183,16 @@ The table below lists the main APIs used for event management. For details about
      recurrenceRule: {
        // Event recurrence frequency, which can be daily, weekly, monthly, or yearly.
        recurrenceFrequency: calendarManager.RecurrenceFrequency.DAILY,
-       // Number of event recurrence times. Either count or expire needs to be set. If both attributes are set, the value of the count attribute is used.
+       // Number of event recurrences. When count, interval, and expire are set at the same time, the limit condition that is reached first takes effect.
        count: 100,
        // Interval for event recurrence, which is related to recurrenceFrequency. This example indicates that the event is repeated every two days.
        interval: 2,
-       // Event expiration time. Either count or expire needs to be set. If both attributes are set, the value of the count attribute is used.
+       // Event expiration time. When expire, count, and interval are set at the same time, the limit condition that is reached first takes effect.
        expire: date.getTime() + 60 * 60 * 1000 * 3,
        // Excluded date. If set, the specified date is excluded from the repeated event.
        excludedDates: [date.getTime() + 60 * 60 * 1000 * 2]
      },
-     // Event service (optional). Set this attribute for the event that requires the one-click service.
+     // Event service (optional). Set this attribute for the event that requires the one-tap service.
      service: {
        // Service type, for example, TRIP, MEETING, or WATCHING.
        type: calendarManager.ServiceType.TRIP,
@@ -202,7 +200,7 @@ The table below lists the main APIs used for event management. For details about
        // DeepLink includes scheme, host, path, and parameters (excluding values).
        uri: 'xxx://xxx.xxx.com/xxx',
        // Service auxiliary description (optional).
-       description: 'One-click service'
+       description: 'One-tap service'
      }
    
    };
@@ -234,7 +232,7 @@ The table below lists the main APIs used for event management. For details about
 6. Update information about a specified event based on the event ID.
 
     <!-- @[calendarEvent_updateEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     const updateEvent: calendarManager.Event = {
       title: 'updateTitle',
@@ -254,9 +252,8 @@ The table below lists the main APIs used for event management. For details about
 7. Query all events belonging to the current calendar. Due to data privacy and security concerns, applications with restricted permissions cannot obtain event information created by other applications. Query results vary with query conditions and fields.
 
    If no query condition or field is set, all events of the specified calendar can be queried.
-
    <!-- @[calendarEvent_getEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    calendar.getEvents().then((data: calendarManager.Event[]) => {
      console.info(`Succeeded in getting events, data -> ${JSON.stringify(data)}`);
@@ -266,9 +263,8 @@ The table below lists the main APIs used for event management. For details about
    ```
 
    You can also query events by the event ID, start time and end time of the event, or event title.
-
    <!-- @[calendarEvent_getEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // Query by the event ID.
    const filterId = calendarManager.EventFilter.filterById([eventId]);
@@ -298,7 +294,7 @@ The table below lists the main APIs used for event management. For details about
 8. Delete a specified event by event ID. You can use **deleteEvent()** to delete a single event or use **deleteEvents()** to delete events in batches. The following describes how to delete a single event.
 
     <!-- @[calendarEvent_deleteEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     calendar.deleteEvent(eventId).then(() => {
       console.info('Succeeded in deleting event');

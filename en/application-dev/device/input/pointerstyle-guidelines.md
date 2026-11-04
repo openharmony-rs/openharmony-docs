@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=7de74d10089ae65ef9185e98373eb2da78c06dde translatedAt=2026-09-28T02:26:45.878Z pushedAt=2026-09-30T04:27:23.845Z -->
+<!-- md-trans-meta sourceCommit=75a70e5a15b5ea0c24fc13bdbd45b0795fb27131 translatedAt=2026-10-31T01:28:29.217Z pushedAt=2026-10-31T03:41:21.747Z nl=1 -->
 
 ## When to Use
 
@@ -20,7 +20,7 @@ import { pointer } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists common APIs for mouse pointer management. For details, see [@ohos.multimodalInput.pointer (Mouse Pointer)](../../reference/apis-input-kit/js-apis-pointer.md).
+The following table lists common APIs for mouse cursor control. For details, see [@ohos.multimodalInput.pointer (Mouse Pointer)](../../reference/apis-input-kit/js-apis-pointer.md).
 
 | API                                                      | Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------- |
