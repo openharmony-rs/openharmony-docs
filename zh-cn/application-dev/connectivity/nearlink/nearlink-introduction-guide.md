@@ -19,7 +19,7 @@
 
 ### 支持的设备
 
-Phone、PC/2in1、Tablet、TV、Car、Wearable
+支持Phone、PC/2in1、Tablet、TV、Wearable设备；从API版本26.0.1开始，新增支持Car设备。
 
 ### 支持的国家/地区
 
