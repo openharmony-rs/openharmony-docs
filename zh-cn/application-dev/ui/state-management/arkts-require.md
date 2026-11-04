@@ -26,9 +26,9 @@
 
 \@Require装饰器仅用于装饰struct内的\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）。
 
-<!--PR1-->
+<!--RP1-->
 
-<!--PR1End-->
+<!--RP1End-->
 
 ## 使用场景
 
