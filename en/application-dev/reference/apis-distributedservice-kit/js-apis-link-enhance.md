@@ -1,12 +1,11 @@
 # @ohos.distributedsched.linkEnhance (Enhanced Connection)
-
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
 <!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=6b27dc46943fcde91cc17c2ef2548a6a4cb4fdaf translatedAt=2026-08-04T03:17:12.362Z pushedAt=2026-08-06T11:21:57.675Z -->
+<!-- md-trans-meta sourceCommit=58bc7c9509d2af1e1a6e840dc557f53129f1df51 translatedAt=2026-11-03T11:05:39.090Z pushedAt=2026-11-03T12:23:18.344Z nl=1 -->
 
 The **linkEnhance** module delivers highly efficient Bluetooth connectivity and data transmission capabilities, significantly enhancing the cross-device connection stability. By employing a multi-channel merging algorithm, it addresses issues such as unstable connections and limited number of connections of classic Bluetooth. This enhances cross-device data transmission capabilities and improves user experience.
 
@@ -54,7 +53,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because the linkEnhance function has been trimmed. <br>Applicable versions: 26.0.0+|
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
@@ -112,7 +111,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because the linkEnhance function has been trimmed. <br>Applicable versions: 26.0.0+|
 | 32390206 | Invalid parameter.  |
 
@@ -136,7 +135,6 @@ try {
   (err as BusinessError).message);
 }
 ```
-
 ## Server
 
 Represents a **Server** object, which provides methods for starting, stopping, and closing the server, and registering or unregistering event callbacks.
@@ -167,7 +165,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390202 | The number of servers exceeds the limit. |
 | 32390300 | Internal error. |
 
@@ -190,7 +188,6 @@ try {
   (err as BusinessError).message);
 }
 ```
-
 ### stop()
 
 stop():&nbsp;void
@@ -211,7 +208,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 **Example**
 
@@ -254,7 +251,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 **Example**
 
@@ -276,7 +273,6 @@ try {
   (err as BusinessError).message);
 }
 ```
-
 ### on('connectionAccepted')
 
 on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
@@ -292,7 +288,6 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
-
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **connectionAccepted**. This event is triggered when a connection from the peer end is received.  |
@@ -304,8 +299,8 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
-| 32390206 | Parameter invalid.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 32390206 | Invalid parameter.  |
 
 **Example**
 
@@ -333,7 +328,6 @@ try {
   (err as BusinessError).message);
 }
 ```
-
 ### off('connectionAccepted')
 
 off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
@@ -361,8 +355,8 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
-| 32390206 | Parameter invalid.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 32390206 | Invalid parameter.  |
 
 **Example**
 
@@ -418,8 +412,8 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
-| 32390206 | Parameter invalid.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 32390206 | Invalid parameter.  |
 
 **Example**
 
@@ -475,8 +469,8 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
-| 32390206 | Parameter invalid.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 32390206 | Invalid parameter.  |
 
 **Example**
 
@@ -504,7 +498,6 @@ try {
   (err as BusinessError).message);
 }
 ```
-
 ## ConnectResult
 
 Represents the connection result, which is returned after the client calls **connect()**.
@@ -549,7 +542,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390204 | The number of connection exceeds the limit. |
 | 32390300 | Internal error. |
 
@@ -600,7 +593,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 **Example**
 
@@ -648,7 +641,8 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+
 
 **Example**
 
@@ -675,7 +669,6 @@ try {
   (err as BusinessError).message);
 }
 ```
-
 ### getPeerDeviceId()
 
 getPeerDeviceId():&nbsp;string
@@ -696,13 +689,14 @@ Obtains the device ID of the peer device. This API is called when the connection
 | ------------------- | ---------------- |
 | string | Device ID of the peer device, that is, the BLE MAC address of the peer device. An empty string is returned if no device ID is obtained.|
 
+
 **Error codes**
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 **Example**
 
@@ -750,7 +744,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390205 | Connection is not ready. |
 | 32390206 | Invalid parameter.  |
 | 32390300 | Internal error. |
@@ -812,7 +806,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.|
 
 **Example**
@@ -868,7 +862,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter. |
 
 **Example**
@@ -924,7 +918,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.|
 
 **Example**
@@ -977,7 +971,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter. |
 
 **Example**
@@ -1033,7 +1027,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.  |
 
 **Example**
@@ -1060,7 +1054,6 @@ try {
   (err as BusinessError).message);
 }
 ```
-
 ### off('dataReceived')
 
 off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
@@ -1088,7 +1081,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.  |
 
 **Example**

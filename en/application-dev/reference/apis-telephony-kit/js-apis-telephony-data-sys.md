@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=cba2b8cd8057a73907c6bff1b0e4185bfd11b184 translatedAt=2026-11-03T04:08:10.524Z pushedAt=2026-11-03T10:39:33.950Z nl=1 -->
 
 The **data** module provides basic mobile data management functions. With the APIs provided by this module, you can set the default slot of the SIM card used for cellular data services and enable or disable cellular data services and data roaming.
 
