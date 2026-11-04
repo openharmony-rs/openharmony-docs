@@ -87,7 +87,7 @@ export class AVTranscoderDemo {
    ArkTS-Dyn示例：
 
    <!-- @[createCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-
+   
    ``` TypeScript
    // 注册avTranscoder回调函数。
    setAVTranscoderCallback() {
@@ -110,6 +110,7 @@ export class AVTranscoderDemo {
        }
      }
    }
+   // ...
    // 获取当前进度
    getCurrentProgress(): number {
      console.info(`getCurrentProgress = ${this.currentProgress}`);
