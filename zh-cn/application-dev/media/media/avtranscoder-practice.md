@@ -228,12 +228,19 @@ status: active
 4. 监听转码的complete回调，在转码结束的时候向主线程发送消息。
 
    <!-- @[transcoderCompleteCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   
    ``` TypeScript
    // 转码完成回调函数。
    transcoder.on('complete', async () => {
      console.info(`transcode complete`);
-     fileIo.closeSync(transcoder.fdDst); // 关闭fdDst。
      await transcoder?.release()
+     if (transcoder.fdDst != undefined) {
+       fs.closeSync(transcoder.fdDst);
+     }
+     if (transcoder.fdSrc != undefined) {
+       fs.closeSync(transcoder.fdSrc.fd);
+     }
+     // 向主线程发送转码结束的消息
      workerPort.postMessage('complete');
    })
    ```
