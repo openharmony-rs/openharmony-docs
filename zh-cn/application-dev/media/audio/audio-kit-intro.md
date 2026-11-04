@@ -124,7 +124,7 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
 ### 支持的设备
 
-Phone、PC/2in1、Tablet、TV、Car、Wearable、Lite Wearable
+Phone、PC/2in1、Tablet、TV、Car、Wearable
 
 ### 支持的国家/地区
 
