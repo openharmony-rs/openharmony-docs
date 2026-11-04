@@ -7688,20 +7688,6 @@ Allows an application to read vehicle hardware information.
 
 **Since**: 26.0.1
 
-## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
-
-Allows an application to write vehicle hardware information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.1
-
 ## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
 
 Allows an application to read vehicle and head unit configurations.
