@@ -11681,3 +11681,131 @@ isAutoReloadEnabled(): boolean
 **示例：**
 
 完整示例代码参考[enableAutoReload](#enableautoreload)。
+
+## setNavigationEntryUserData
+
+setNavigationEntryUserData(key: string, value: string): void
+
+在当前导航条目上设置用户数据的键值对。
+
+用户数据与导航入口生命周期相关联。当前导航条目指导航历史记录中的活动条目。当条目被销毁时（例如，通过历史导航或clearHistory）清除用户数据。如果一个具有相同的键已经存在，它将被覆盖。
+
+> **说明：**
+>
+> - 用户数据与导航入口生命周期相关联，导航条目销毁时用户数据将被清除。
+> - 如果相同键已存在，则原值会被覆盖。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| key    | string | 是   | 用户数据的密钥。 |
+| value  | string | 是   | 用户数据的价值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 在当前导航条目上设置用户数据
+          this.controller.setNavigationEntryUserData('key', 'value');
+          // 获取用户数据
+          let value: string = this.controller.getNavigationEntryUserData('key');
+          console.info("获取用户数据: " + value);
+          // 删除用户数据
+          this.controller.removeNavigationEntryUserData('key');
+        })
+    }
+  }
+}
+```
+
+## getNavigationEntryUserData
+
+getNavigationEntryUserData(key: string): string
+
+获取与当前导航条目上的指定键关联的用户数据值。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| key    | string | 是   | 用户数据的密钥。 |
+
+**返回值：**
+
+| 类型   | 说明                                       |
+| ------ | ------------------------------------------ |
+| string | 用户数据的值。如果键不存在，则为空字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+完整示例代码参考[setNavigationEntryUserData](#setnavigationentryuserdata)。
+
+## removeNavigationEntryUserData
+
+removeNavigationEntryUserData(key: string): void
+
+从当前导航条目中删除与指定键关联的用户数据。如果密钥不存在，则此API不执行任何操作。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| key    | string | 是   | 要删除的用户数据的密钥。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+完整示例代码参考[setNavigationEntryUserData](#setnavigationentryuserdata)。
