@@ -5,7 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=983ba0100f5f5d011705e0e23088346963f80eee translatedAt=2026-11-03T04:39:01.131Z pushedAt=2026-11-04T03:11:33.533Z nl=1 -->
+<!-- md-trans-meta sourceCommit=983ba0100f5f5d011705e0e23088346963f80eee translatedAt=2026-11-03T04:39:01.131Z pushedAt=2026-11-04T05:57:27.599Z nl=1 -->
 
 This module provides ArkTS APIs for applications to obtain the total bytes and free bytes of a file system. With this module, developers can monitor the storage status of the file system in real time, avoid application crashes caused by insufficient storage space, and improve user experience and system stability.
 
@@ -91,7 +91,7 @@ Obtains the free bytes of the file system where the specified file or directory 
   | Name  | Type                       | Mandatory| Description                        |
   | -------- | --------------------------- | ---- | ---------------------------- |
   | path     | string                      | Yes  | Application sandbox path of the file or directory. |
-  | callback | AsyncCallback&lt;number&gt; | Yes  | Callback function, which returns the free bytes in Byte. |
+  | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the free bytes in Byte. |
 
 **Error codes**
 
@@ -255,7 +255,7 @@ Obtains the total bytes of the file system where the specified file or directory
   | Name  | Type                       | Mandatory| Description                        |
   | -------- | --------------------------- | ---- | ---------------------------- |
   | path     | string                      | Yes   | Application sandbox path of the file or directory. |
-  | callback | AsyncCallback&lt;number&gt; | Yes   | Callback function, which returns the total bytes in Byte.   |
+  | callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the total bytes in Byte.   |
 
 **Error codes**
 
@@ -314,7 +314,7 @@ Obtains the total bytes of the file system where the specified file or directory
 
   | Type                 | Description        |
   | --------------------- | ------------ |
-  | number | Returns the total bytes, in Byte. |
+  | number | Total bytes. |
 
 **Error codes**
 

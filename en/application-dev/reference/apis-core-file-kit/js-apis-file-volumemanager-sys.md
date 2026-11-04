@@ -5,7 +5,7 @@
 <!--Designer: @renguang1116; @wang_zhangjun-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=de7c34b3699bee6c16896251d2b1bfcabf7c14fe translatedAt=2026-11-03T04:45:22.484Z pushedAt=2026-11-04T03:11:33.551Z nl=1 -->
+<!-- md-trans-meta sourceCommit=de7c34b3699bee6c16896251d2b1bfcabf7c14fe translatedAt=2026-11-03T04:45:22.484Z pushedAt=2026-11-04T06:04:30.504Z nl=1 -->
 
 This module provides functions for querying and managing volume devices and disk devices, including querying volume device information and disk device information, mounting, unmounting, and ejecting volume devices, erasing volume devices, creating, deleting, and formatting partitions on disk devices, querying partition tables, formatting volume devices, and burning optical discs (including creating ISO images, burning data, verifying burned data, and querying operation progress).
 
@@ -108,7 +108,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 mount(volumeId: string): Promise&lt;void&gt;
 
-Mount the specified volume device. Only when in the unmounted state can a volume device be mounted. This API uses a promise to return the result asynchronously.
+Mount the specified volume device. Only when in the unmounted state can a volume device be mounted. This API uses a promise to return the result.
 
 Currently only supports mounting volume devices with the following file systems:
 
@@ -625,7 +625,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
-Formats the specified volume device. This API uses a promise to return the result asynchronously.
+Formats the specified volume device. This API uses a promise to return the result.
 
 Currently, only the following file system types are supported for formatting:
 
@@ -847,7 +847,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 erase(volumeId: string): Promise&lt;void&gt;
 
-Erases data on the specified volume device. This API uses a promise to return the result asynchronously. It applies to scenarios where data on a volume device needs to be completely cleared, for example, erasing data before rewriting an optical disc. The erase operation clears all data on the volume device. Only a volume device in the unmounted state can be erased.
+Erases data on the specified volume device. This API uses a promise to return the result. It applies to scenarios where data on a volume device needs to be completely cleared, for example, erasing data before rewriting an optical disc. The erase operation clears all data on the volume device. Only a volume device in the unmounted state can be erased.
 
 **Since:** 26.0.0
 
@@ -956,7 +956,7 @@ volumeManager.eject(diskId).then(() => {
 
 createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 
-Creates an ISO image file from the specified volume device. This API uses a promise to return the result asynchronously.
+Creates an ISO image file from the specified volume device. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -1015,7 +1015,7 @@ volumeManager.createIsoImage(volumeId, filePath).then(() => {
 
 burn(volumeId: string, want: Want): Promise&lt;void&gt;
 
-Burns data to the specified volume device. This API uses a promise to return the result asynchronously.
+Burns data to the specified volume device. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -1179,7 +1179,7 @@ volumeManager.getAllDisks().then((disks: Array<volumeManager.Disk>) => {
 
 getDiskById(diskId: string): Promise&lt;Disk&gt;
 
-Obtains the specified disk device information by disk device ID. This API uses a promise to return the result asynchronously.
+Obtains the specified disk device information by disk device ID. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -1233,7 +1233,7 @@ volumeManager.getDiskById(diskId).then((disk: volumeManager.Disk) => {
 
 getPartitionTable(diskId: string): Promise&lt;PartitionTableInfo&gt;
 
-Obtains the partition table information of the specified disk device by disk device ID. This API uses a promise to return the result asynchronously.
+Obtains the partition table information of the specified disk device by disk device ID. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -1475,7 +1475,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
 
-Queries whether the specified volume is in use. This API uses a promise to return the result asynchronously.
+Queries whether the specified volume is in use. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 

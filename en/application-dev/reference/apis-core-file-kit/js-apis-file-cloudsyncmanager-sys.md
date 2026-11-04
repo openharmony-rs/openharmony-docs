@@ -5,9 +5,9 @@
 <!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b485e0a7070e3ab71efde69376bb2fde9696c0bc translatedAt=2026-11-03T04:18:45.300Z pushedAt=2026-11-04T03:11:33.516Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b485e0a7070e3ab71efde69376bb2fde9696c0bc translatedAt=2026-11-03T04:18:45.300Z pushedAt=2026-11-04T05:51:53.195Z nl=1 -->
 
-This module provides End-Cloud Synchronization Management Capability to cloud drive management applications, including enabling/disabling End-Cloud Collaboration Capability, modifying application synchronization switches, cloud data change notification, cleaning or retaining cloud-related files upon account logout, and Full Download. Developers can use this module in cloud drive management applications to manage application End-Cloud Collaboration switches, synchronize cloud data changes, handle local cloud data after account logout, and perform Full Download and migration of cloud files.
+This module provides End-Cloud Synchronization Management Capability to cloud drive management applications, including enabling/disabling end-cloud collaboration capability, modifying application synchronization switches, cloud data change notification, cleaning or retaining cloud-related files upon account logout, and Full Download. Developers can use this module in cloud drive management applications to manage application End-Cloud Collaboration switches, synchronize cloud data changes, handle local cloud data after account logout, and perform Full Download and migration of cloud files.
 
 > **NOTE**
 >
@@ -24,7 +24,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise&lt;void&gt;
 
-Asynchronous Method to modify the End-Cloud file synchronization switch of an application. It applies to the Scenario where the cloud synchronization capability needs to be turned on or off for a specified application. It uses a Promise asynchronous callback.
+Asynchronous Method to modify the End-Cloud file synchronization switch of an application. It applies to the scenario where the cloud synchronization capability needs to be turned on or off for a specified application. It uses a Promise asynchronous callback.
 
 **System API**: This is a system API.
 
@@ -72,7 +72,7 @@ cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Asynchronous Method to modify the End-Cloud file synchronization switch of an application. It applies to the Scenario where the cloud synchronization capability needs to be turned on or off for a specified application. It uses a callback asynchronous callback.
+Asynchronous Method to modify the End-Cloud file synchronization switch of an application. It applies to the scenario where the cloud synchronization capability needs to be turned on or off for a specified application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -117,7 +117,7 @@ cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: Busines
 
 notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
-Notifies the end-cloud service that the cloud data of a specific application under a specified account has changed. It applies to the Scenario where the end-cloud service needs to be actively notified to synchronize changes after the application's cloud data changes. It uses a Promise asynchronous callback.
+Notifies the end-cloud service that the cloud data of a specific application under a specified account has changed. It applies to the scenario where the end-cloud service needs to be actively notified to synchronize changes after the application's cloud data changes. It uses a Promise asynchronous callback.
 
 **System API**: This is a system API.
 
@@ -164,7 +164,7 @@ cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
 
 notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-Notifies the end-cloud service that the cloud data of a specific application under a specified account has changed. It applies to the Scenario where the end-cloud service needs to be actively notified to synchronize changes after the application's cloud data changes. It uses a callback asynchronous callback.
+Notifies the end-cloud service that the cloud data of a specific application under a specified account has changed. It applies to the scenario where the end-cloud service needs to be actively notified to synchronize changes after the application's cloud data changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -318,7 +318,7 @@ cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
 
 enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
-Asynchronous Method to enable End-Cloud Collaboration Capability. It applies to the Scenario where the End-Cloud Collaboration Capability of applications under a specified account needs to be enabled, and can be Used Together with [disableCloud](#cloudsyncmanagerdisablecloud). It uses a Promise asynchronous callback.
+Describes an asynchronous method to able the end-cloud collaboration capability. It applies to the scenario where the end-cloud collaboration capability of applications under a specified account needs to be enabled, and can be Used Together with [disableCloud](#cloudsyncmanagerdisablecloud). It uses a Promise asynchronous callback.
 
 **System API**: This is a system API.
 
@@ -370,7 +370,7 @@ cloudSyncManager.enableCloud(accountId, switches).then(() => {
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
 
-Asynchronous Method to enable End-Cloud Collaboration Capability. It applies to the Scenario where the End-Cloud Collaboration Capability of applications under a specified account needs to be enabled, and can be Used Together with [disableCloud](#cloudsyncmanagerdisablecloud). It uses a callback asynchronous callback.
+Describes an asynchronous method to able the end-cloud collaboration capability. It applies to the scenario where the end-cloud collaboration capability of applications under a specified account needs to be enabled, and can be Used Together with [disableCloud](#cloudsyncmanagerdisablecloud). This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -384,7 +384,7 @@ Asynchronous Method to enable End-Cloud Collaboration Capability. It applies to 
 | ---------- | ------ | ---- | ---- |
 | accountId | string | Yes | Account ID. |
 | switches | Record<string, boolean> | Yes  | Whether to enable the device-cloud sync feature. The application bundle name is a string. The switch status is a Boolean value. The value **true** means to enable this function; the value **false** means the opposite.|
-| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. Callback for the result of asynchronously enabling the End-Cloud Collaboration Capability. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result of asynchronously enabling the end-cloud collaboration capability. |
 
 **Error codes**
 
@@ -419,7 +419,7 @@ cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
 
 disableCloud(accountId: string): Promise&lt;void&gt;
 
-Asynchronous Method to disable End-Cloud Collaboration Capability. It applies to the Scenario where the End-Cloud Collaboration Capability of applications under a specified account needs to be disabled, and can be Used Together with [enableCloud](#cloudsyncmanagerenablecloud). It uses a Promise asynchronous callback.
+Describes an asynchronous method to disable the end-cloud collaboration capability.It applies to the scenario where the end-cloud collaboration capability of applications under a specified account needs to be disabled, and can be Used Together with [enableCloud](#cloudsyncmanagerenablecloud). It uses a Promise asynchronous callback.
 
 **System API**: This is a system API.
 
@@ -466,7 +466,7 @@ cloudSyncManager.disableCloud(accountId).then(() => {
 
 disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Asynchronous Method to disable End-Cloud Collaboration Capability. It applies to the Scenario where the End-Cloud Collaboration Capability of applications under a specified account needs to be disabled, and can be Used Together with [enableCloud](#cloudsyncmanagerenablecloud). It uses a callback asynchronous callback.
+Describes an asynchronous method to disable the end-cloud collaboration capability. It applies to the scenario where the end-cloud collaboration capability of applications under a specified account needs to be disabled, and can be Used Together with [enableCloud](#cloudsyncmanagerenablecloud). This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 

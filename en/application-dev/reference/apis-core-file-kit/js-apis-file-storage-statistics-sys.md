@@ -5,7 +5,7 @@
 <!--Designer: @renguang1116; @wang_zhangjun-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=3747fee2feacf1814d9ce4b2fefe3888fa93eb5b translatedAt=2026-11-03T04:40:52.532Z pushedAt=2026-11-04T03:11:33.541Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3747fee2feacf1814d9ce4b2fefe3888fa93eb5b translatedAt=2026-11-03T04:40:52.532Z pushedAt=2026-11-04T06:00:16.314Z nl=1 -->
 
 This module provides common functions related to application space statistics, including querying the space of internal and external storage devices, querying application category data statistics, querying application data, querying the system data space size, reporting and querying the space usage of system applications or system services, and querying the space usage details of user device directories. It is applicable to scenarios in system applications where space usage details need to be displayed on the "Settings - Storage" screen or storage space management needs to be performed.
 
@@ -24,7 +24,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 
 getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
-Asynchronously obtains the total size of the specified volume on the external storage device (in bytes). Uses a Promise asynchronously.
+Asynchronously obtains the total size of the specified volume on the external storage device (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -140,7 +140,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
-Asynchronously obtains the available size of the specified volume on the external storage device (in bytes). Uses a Promise asynchronously.
+Asynchronously obtains the available size of the specified volume on the external storage device (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -256,7 +256,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
-Asynchronously obtains the space size of application storage data (in bytes). Uses a Promise asynchronously.
+Asynchronously obtains the space size of application storage data (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -385,7 +385,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 getBundleStats(packageName: string, option?: BundleStatsOptions): Promise&lt;BundleStats&gt;
 
-Asynchronously obtains the space size of application storage data (in bytes). Uses a Promise asynchronously.
+Asynchronously obtains the space size of application storage data (in bytes). This API uses a promise to return the result.
 
 **Since:** 26.0.1
 
@@ -454,7 +454,7 @@ try {
 
 getSystemSize(): Promise&lt;number&gt;
 
-Asynchronously obtains the space size of system data (in bytes). Uses a Promise asynchronously.
+Asynchronously obtains the space size of system data (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -507,7 +507,7 @@ Obtains the system data size, in bytes. This API uses an asynchronous callback t
 
   | Name    | Type                                | Mandatory| Description                      |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | callback   |  AsyncCallback&lt;number&gt;         | Yes   | Callback Function, the callback after obtaining the space size of system data.<br>Callback parameters include:<br>err: Error Message, undefined when the call succeeds.<br>systemSize: Space Size of system data, in bytes.|
+  | callback   |  AsyncCallback&lt;number&gt;         | Yes   | Callback used to obtain the space size of system data.<br>Callback parameters include:<br>**err**: error message, the value is **undefined** when the call succeeds.<br>**systemSize**: size of system data, in bytes.|
 
 **Error codes**
 
@@ -540,7 +540,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 getUserStorageStats(): Promise&lt;StorageStats&gt;
 
-Asynchronously obtains the storage space size of each category for the current user (in bytes). Uses a Promise asynchronously.
+Asynchronously obtains the storage space size of each category for the current user (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -625,7 +625,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
-Asynchronously obtains the storage space size of each category for the specified user (in bytes). Uses a Promise asynchronously.
+Asynchronously obtains the storage space size of each category for the specified user (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -752,7 +752,7 @@ Details the space usage of system applications or system services.
 
 setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
-A system application or system service reports its own space usage information so that it can be displayed separately or merged into a specified application in the "Settings-Storage" screen. Uses a Promise asynchronously.
+A system application or system service reports its own space usage information so that it can be displayed separately or merged into a specified application in the "Settings-Storage" screen. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1016,7 +1016,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getSystemDataSize(): Promise&lt;number&gt;
 
-Obtains the total space size of system data (in bytes). Uses a Promise asynchronously.
+Obtains the total space size of system data (in bytes). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 

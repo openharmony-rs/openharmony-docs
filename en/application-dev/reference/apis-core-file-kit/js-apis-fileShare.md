@@ -5,7 +5,7 @@
 <!--Designer: @rainlost-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=94aeeb4fd323dcee3aa01f2d421cc5b99a2d2461 translatedAt=2026-11-03T04:55:40.018Z pushedAt=2026-11-04T03:11:33.555Z nl=1 -->
+<!-- md-trans-meta sourceCommit=94aeeb4fd323dcee3aa01f2d421cc5b99a2d2461 translatedAt=2026-11-03T04:55:40.018Z pushedAt=2026-11-04T06:10:18.196Z nl=1 -->
 
 This module provides APIs for sharing files, which allows a system app to grant the access permissions on a file in the public directory in the specified access mode to another app based on the file Uniform Resource Identifier (URI). It also provides APIs for managing persistent authorization, activating permissions, and querying the authorization status. The authorized app can perform operations such as open, read, and write on the file by calling the [@ohos.file.fs](js-apis-file-fs.md) APIs, implementing file sharing between apps, cross-app file editing, and document collaboration.
 
@@ -99,7 +99,7 @@ Enumerates the authorization modes corresponding to the queried policy informati
 
 persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Asynchronous method used to perform persistent authorization on the URIs of multiple selected files or directories, using a Promise asynchronous callback. Persistent authorization is used to save the obtained temporary permissions as long-term authorization. This interface is available only on devices with the corresponding system capability, and it does not support persistent authorization of remote URIs.
+Describes an asynchronous method used to perform persistent authorization on the URIs of multiple selected files or directories. This API uses a promise to return the result. Persistent authorization is used to save the obtained temporary permissions as long-term authorization. This interface is available only on devices with the corresponding system capability, and it does not support persistent authorization of remote URIs.
 > **NOTE**
 >
 > Starting from API version 22, persistent authorization of media-type URIs is supported.
@@ -180,7 +180,7 @@ If the permission persistence of some URIs fails, error code 13900001 will be re
 
 revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-Asynchronous method used to cancel persistent authorization on the URIs of multiple selected files or directories, using a Promise asynchronous callback. After persistent authorization is canceled, temporary permissions must be obtained again before persistent authorization can be performed again. This interface is available only on devices with the corresponding system capability, and it does not support persistent authorization of remote URIs.
+Describes an asynchronous method used to cancel persistent authorization on the URIs of multiple selected files or directories. This API uses a promise to return the result. After persistent authorization is canceled, temporary permissions must be obtained again before persistent authorization can be performed again. This interface is available only on devices with the corresponding system capability, and it does not support persistent authorization of remote URIs.
 > **NOTE**
 >
 > Starting from API version 22, persistent authorization of media-type URIs is supported.
@@ -261,7 +261,7 @@ If the permission revocation of some URIs fails, error code 13900001 will be ret
 
 activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Asynchronous method used to activate multiple files or directories that have been persistently authorized, using a Promise asynchronous callback. Persistent authorization is a prerequisite for activation. After activation, the permission can be deactivated through deactivatePermission. This interface is available only on devices with the corresponding system capability, and it does not support persistent authorization of remote URIs.
+Describes an asynchronous method used to activate multiple files or directories that have been persistently authorized. This API uses a promise to return the result. Persistent authorization is a prerequisite for activation. After activation, the permission can be deactivated through **deactivatePermission**. This interface is available only on devices with the corresponding system capability, and it does not support persistent authorization of remote URIs.
 > **NOTE**
 >
 > Starting from API version 22, persistent authorization of media-type URIs is supported.
@@ -338,7 +338,7 @@ If the permission activation of some URIs fails, error code 13900001 will be ret
 
 deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Asynchronous method used to deactivate multiple files or directories that have been authorized, using a Promise asynchronous callback. After deactivation, the persistent authorization is retained and can be activated again through activatePermission. This interface is available only on devices with the corresponding system capability, and it does not support persistent authorization of remote URIs.
+Describes an asynchronous method used to deactivate multiple files or directories that have been authorized. This API uses a promise to return the result. After deactivation, the persistent authorization is retained and can be activated again through activatePermission. This interface is available only on devices with the corresponding system capability, and it does not support persistent authorization of remote URIs.
 > **NOTE**
 >
 > Starting from API version 22, persistent authorization of media-type URIs is supported.

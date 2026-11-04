@@ -5,7 +5,7 @@
 <!--Designer: @rainlost-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=43cd69d89ed4f07acd685a4381dc8b048910320c translatedAt=2026-11-03T04:52:15.443Z pushedAt=2026-11-04T03:11:33.549Z nl=1 -->
+<!-- md-trans-meta sourceCommit=43cd69d89ed4f07acd685a4381dc8b048910320c translatedAt=2026-11-03T04:52:15.443Z pushedAt=2026-11-04T06:07:54.284Z nl=1 -->
 
 This module provides APIs for sharing files, which allows a system app to grant the access permissions on a file in the public directory to another app based on the file Uniform Resource Identifier (URI). It also provides APIs for verifying the authorization status, as well as managing temporary and persistent authorization. The authorized app can perform operations such as open, read, and write on the file by calling the [@ohos.file.fs](js-apis-file-fs.md) APIs, implementing file sharing between system apps and access control on files in the public directory.
 
@@ -400,7 +400,7 @@ async function grantSharedDirectoryPermission() {
 
 revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
-Revokes the temporary access permission to the application's contribution directory. Uses a Promise for asynchronous callback.
+Revokes the temporary access permission to the application's contribution directory. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -695,7 +695,7 @@ Grants URI permissions to a user. This API uses an asynchronous callback to retu
 
 **System API**: This is a system API.
 
-**Required Permission:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
+**Required permissions:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -762,7 +762,7 @@ Obtains the status of URI permissions. This API uses an asynchronous callback to
 
 **System API**: This is a system API.
 
-**Required Permission:** ohos.permission.GET_SENSITIVE_PERMISSIONS
+**Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -825,7 +825,7 @@ Revokes URI permissions for a user. This API uses an asynchronous callback to re
 
 **System API**: This is a system API.
 
-**Required Permission:** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
+**Required permissions:** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 

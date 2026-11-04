@@ -5,7 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6c0893247bd78c129e32a38e52ccc47805b1914a translatedAt=2026-11-03T04:38:32.848Z pushedAt=2026-11-04T03:11:33.531Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6c0893247bd78c129e32a38e52ccc47805b1914a translatedAt=2026-11-03T04:38:32.848Z pushedAt=2026-11-04T05:56:42.496Z nl=1 -->
 
 This module provides functions related to file data security levels: it provides ArkTS APIs for applications to query and set file data security levels. This function helps applications implement hierarchical management and access control for files of different security levels, addressing the need for data security control and improving the data security compliance of applications.
 
@@ -94,7 +94,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt;):void
 
-Sets the data security level of a file or directory to implement hierarchical management and access control of files. This API uses a callback asynchronous callback.
+Sets the data security level of a file or directory to implement hierarchical management and access control of files. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 

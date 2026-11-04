@@ -29,4 +29,4 @@ Defines pure voice change options for audio creation.
 | -- | -- |
 | [OH_AudioSuite_PureVoiceChangeGenderOption](capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangegenderoption) optionGender | Specifies the gender for the traditional voice change. |
 | [OH_AudioSuite_PureVoiceChangeType](capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangetype) optionType | Specifies the type of the traditional voice change. |
-| float pitch | Specifies the pitch of the traditional voice change. Set it to OH_PURE_VOICE_DEFAULT_PITCH in [Macro Definition](capi-native-audio-suite-base-h.md#macro-definition) to use the default pitch for the best effect.<br> The value range for a custom pitch is [0.3f, 3.0f]. |
+| float pitch | Specifies the pitch of the traditional voice change. Set it to OH_PURE_VOICE_DEFAULT_PITCH in [Macro Definition](capi-native-audio-suite-base-h.md#macros) to use the default pitch for the best effect.<br> The value range for a custom pitch is [0.3f, 3.0f]. |

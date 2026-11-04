@@ -5,7 +5,7 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=2400950d931776c7a3336af402c17c38aa9413a1 translatedAt=2026-11-03T04:47:25.847Z pushedAt=2026-11-04T03:11:33.543Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2400950d931776c7a3336af402c17c38aa9413a1 translatedAt=2026-11-03T04:47:25.847Z pushedAt=2026-11-04T06:05:57.135Z nl=1 -->
 
 The **fileAccess** module provides a framework for accessing and operating user files based on [extension](../../application-models/extensionability-overview.md). This module interacts with a variety of file management services, such as the storage management service, and provides a set of unified file access and management APIs for system applications. The storage management service manages both the directories of the built-in storage and resources on external devices, such as shared disks, USB flash drives, and SD cards.
 
@@ -42,7 +42,7 @@ Represents a URI used for observing the device online/offline status.
 
 getFileAccessAbilityInfo() : Promise&lt;Array&lt;Want&gt;&gt;
 
-Obtains information about all Wants with **extension** set to **fileAccess** in the system. A Want contains information for starting an ability. This API returns the result asynchronously through a promise.
+Obtains information about all Wants with **extension** set to **fileAccess** in the system. A Want contains information for starting an ability. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -616,7 +616,7 @@ Provides a **FileAccessHelper** object.
 
 getRoots() : Promise&lt;RootIterator&gt;
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API returns the result asynchronously through a promise.
+Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses a promise to return the result.
 
 This API uses a promise to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
@@ -727,7 +727,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 createFile(uri: string, displayName: string) : Promise&lt;string&gt;
 
-Creates a file in a directory. This API returns the result asynchronously through a promise.
+Creates a file in a directory. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -835,7 +835,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 mkDir(parentUri: string, displayName: string) : Promise&lt;string&gt;
 
-Creates a folder in a specified directory. This API returns the result asynchronously through a promise.
+Creates a folder in a specified directory. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -943,7 +943,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 openFile(uri: string, flags: OPENFLAGS) : Promise&lt;number&gt;
 
-Opens a file. This API returns the result asynchronously through a promise.
+Opens a file. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1043,7 +1043,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 delete(uri: string) : Promise&lt;number&gt;
 
-Deletes a file or directory. This API returns the result asynchronously through a promise.
+Deletes a file or directory. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1143,7 +1143,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 move(sourceFile: string, destFile: string) : Promise&lt;string&gt;
 
-Moves a file or folder. This API returns the result asynchronously through a promise. Currently, this API does not support moving files across devices.
+Moves a file or folder. This API uses a promise to return the result. Currently, this API does not support moving files across devices.
 
 **System API**: This is a system API.
 
@@ -1246,7 +1246,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 rename(uri: string, displayName: string) : Promise&lt;string&gt;
 
-Renames a file or folder. This API returns the result asynchronously through a promise.
+Renames a file or folder. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1347,7 +1347,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 access(sourceFileUri: string) : Promise&lt;boolean&gt;
 
-Checks whether a file or directory exists. This API returns the result asynchronously through a promise.
+Checks whether a file or directory exists. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -2360,7 +2360,7 @@ async function UnregisterObserver03() {
 
 moveItem(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array&lt;MoveResult&gt;&gt;
 
-Moves a file or folder. This API returns the result asynchronously through a promise.
+Moves a file or folder. This API uses a promise to return the result.
 
 You can forcibly overwrite the file with the same name in the destination directory.
 
@@ -2583,7 +2583,7 @@ try {
 
 moveFile(sourceUri: string, destUri: string, fileName: string) : Promise&lt;string&gt;
 
-Moves a file, and renames it if a file with the same name already exists in the destination directory. This API returns the result asynchronously through a promise.
+Moves a file, and renames it if a file with the same name already exists in the destination directory. This API uses a promise to return the result.
 
 If a file with the same name exists (that is, a file moving conflict occurs), you can rename the file to be moved and save it to the destination directory.
 

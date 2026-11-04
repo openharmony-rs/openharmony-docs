@@ -5,7 +5,7 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=ac1fea1e01aec7dd28178955df21c8195577e4e9 translatedAt=2026-11-03T04:07:35.210Z pushedAt=2026-11-04T03:11:33.506Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ac1fea1e01aec7dd28178955df21c8195577e4e9 translatedAt=2026-11-03T04:07:35.210Z pushedAt=2026-11-04T05:43:16.716Z nl=1 -->
 
 This module provides the system file management application with the capability to obtain sync root information (including path, package name, status, and so on) registered by third-party cloud disks, and is applicable to scenarios of displaying and managing third-party cloud disk sync root directories. A sync root refers to the root path of the local sync directory registered by a third-party cloud disk application in the system. The system file management application can identify and manage the sync status of different cloud disks through this information. This module also supports the system file management application in hydrating and dehydrating placeholder files of third-party cloud disks and subscribing to hydration progress, and is applicable to scenarios such as opening cloud disk files online and optimizing local storage space. A placeholder file is a file created by a third-party cloud disk application within a sync root. Only file metadata and placeholder data are retained locally, while the file content is stored on the cloud side. Hydration refers to downloading cloud-side content to the local device so that the file can be accessed normally. Dehydration refers to reverting a fully hydrated file to a placeholder, releasing local storage space while retaining the logical size of the file.
 
@@ -25,7 +25,7 @@ Sync folder accessor, which provides the system file management application with
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 ### constructor
 
@@ -148,7 +148,7 @@ The cloud disk system accessor provides the system file management application w
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 ### constructor
 
@@ -162,7 +162,7 @@ The constructor of CloudDiskSystemAccessor, used to create an instance of the Cl
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -209,7 +209,7 @@ Subscribes to the progress events of hydration and cancellation operations initi
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -271,7 +271,7 @@ Unsubscribes from the hydration progress events of this instance. This API uses 
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -335,7 +335,7 @@ Initiates or cancels hydration for a placeholder file. This API applies to the s
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -419,7 +419,7 @@ Dehydrates a file. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -512,7 +512,7 @@ Describes the progress information of a hydration task, obtained through the cal
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -550,7 +550,7 @@ Enumeration of callback types for cloud disk file data retrieval and dehydration
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -568,7 +568,7 @@ Enumerates the priorities of hydration tasks.
 
 **System API**: This is a system API.
 
-**System Capability**: SystemCapability.FileManagement.CloudDiskManager
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Model restriction:** This API can be used only in the stage model.
 

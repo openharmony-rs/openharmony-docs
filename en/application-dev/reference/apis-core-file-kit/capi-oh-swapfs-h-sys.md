@@ -5,7 +5,7 @@
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=e24188be42371510a5430ef99fce8749325dfd13 translatedAt=2026-11-03T03:53:16.738Z pushedAt=2026-11-04T03:11:33.486Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e24188be42371510a5430ef99fce8749325dfd13 translatedAt=2026-11-03T03:53:16.738Z pushedAt=2026-11-04T05:39:44.119Z nl=1 -->
 
 ## Overview
 
@@ -108,7 +108,7 @@ OH_Swapfs_ErrCode OH_Swapfs_CreateManager(const OH_SwapfsConfig *config, OH_Swap
 
 Creates a swapfs manager.
 
-**System Capability**: SystemCapability.FileManagement.File.Swapfs
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -140,7 +140,7 @@ OH_Swapfs_ErrCode OH_Swapfs_DestroyManager(OH_SwapfsManager *manager)
 
 Destroys the swapfs manager and releases all resources.<br> Waits up to 5s for the operation to complete. If all operations complete within the waiting time, all swap data owned by the manager is automatically deleted, and the manager is destroyed.<br> If the wait times out, this function cancels the closing state and returns [SWAPFS_E_BUSY](capi-swapfs-errcode-h-sys.md#oh_swapfs_errcode); the caller can retry later.<br> After the operation completes, this function enters the closing state and rejects new [OH_Swapfs_SwapOut](capi-oh-swapfs-h-sys.md#oh_swapfs_swapout), [OH_Swapfs_SwapIn](capi-oh-swapfs-h-sys.md#oh_swapfs_swapin), [OH_Swapfs_RemoveData](capi-oh-swapfs-h-sys.md#oh_swapfs_removedata), and [OH_Swapfs_RemoveAllData](capi-oh-swapfs-h-sys.md#oh_swapfs_removealldata) operations.
 
-**System Capability**: SystemCapability.FileManagement.File.Swapfs
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -204,7 +204,7 @@ OH_Swapfs_ErrCode OH_Swapfs_SwapIn(OH_SwapfsManager *manager, const OH_SwapfsSwa
 
 Swaps data from the disk into memory.<br> In Direct I/O mode, the buffer address and size must be aligned to SWAPFS_DIO_ALIGNMENT, and bufferSize must be greater than or equal to occupiedSize.<br> In buffered mode, bufferSize must be greater than or equal to dataSize.<br> On success, readSize receives the raw dataSize (not occupiedSize).
 
-**System Capability**: SystemCapability.FileManagement.File.Swapfs
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -302,7 +302,7 @@ OH_Swapfs_ErrCode OH_Swapfs_RemoveData(OH_SwapfsManager *manager, uint64_t keyId
 
 Logically deletes the specified swapfs key. After triggering, the key is immediately marked with the OH_SWAPFS_KEY_STATUS_REMOVING status.<br> If an [OH_Swapfs_SwapIn](capi-oh-swapfs-h-sys.md#oh_swapfs_swapin) operation already exists when triggered, the swapin can still be completed, and deletion starts after completion.<br> After deletion starts, new [OH_Swapfs_SwapIn](capi-oh-swapfs-h-sys.md#oh_swapfs_swapin) or [OH_Swapfs_QueryData](capi-oh-swapfs-h-sys.md#oh_swapfs_querydata) operations on this key will return [SWAPFS_E_KEY_STATE_INVALID](capi-swapfs-errcode-h-sys.md#oh_swapfs_errcode).
 
-**System Capability**: SystemCapability.FileManagement.File.Swapfs
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 

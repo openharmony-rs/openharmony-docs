@@ -5,7 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a3d797e3dcaab2d0e7e9fdb10bcde67cba76d2f6 translatedAt=2026-11-03T04:02:32.166Z pushedAt=2026-11-04T03:11:33.500Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a3d797e3dcaab2d0e7e9fdb10bcde67cba76d2f6 translatedAt=2026-11-03T04:02:32.166Z pushedAt=2026-11-04T04:53:17.723Z nl=1 -->
 
 > **NOTE**
 >
@@ -273,7 +273,7 @@ The permission is denied.
 
 1. The access is blocked by DAC discretionary access control. Check the UGO permissions of the file.
 
-2. Check the kernel log for [avc interception logs](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If an avc interception alarm exists, <!--RP1-->for the analysis of the interception cause, see [SELinux Development Guide](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
+2. Check the kernel log for [avc interception logs](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If an avc interception alarm exists, <!--RP1-->for the analysis of the interception cause, see [SELinux Development Guide](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
 
 3. Confirm whether the file path is a sandbox path within the application ([App Sandbox Directory and App Sandbox Path](../../file-management/app-sandbox-directory.md#application-sandbox-directory-and-application-sandbox-path)). The file management system prohibits operations on documents outside the application sandbox.
 
@@ -1869,7 +1869,7 @@ Failed to register notify.
 
 1. The server-side service is not available.
 
-> ⚠️ [翻译失败]此段需用户自行翻译
+2. The extension mechanism is abnormal.
 
 **Solution**
 
@@ -1887,7 +1887,7 @@ Failed to remove the notify.
 
 **Possible Causes**
 
-> ⚠️ [翻译失败]此段需用户自行翻译
+1. The server-side service is not available.
 
 2. The extension mechanism is abnormal.
 

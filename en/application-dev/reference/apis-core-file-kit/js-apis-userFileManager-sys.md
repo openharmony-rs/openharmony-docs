@@ -5,7 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a018da229228d9902574416b452a060191d4426a translatedAt=2026-11-03T05:11:52.030Z pushedAt=2026-11-04T03:11:33.559Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a018da229228d9902574416b452a060191d4426a translatedAt=2026-11-03T05:11:52.030Z pushedAt=2026-11-04T06:17:53.385Z nl=1 -->
 
 The **userFileManager** module provides user data management capabilities, including accessing and modifying user media data.
 
@@ -137,7 +137,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -153,7 +153,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Promise object, used to return the image and video data result set. |
+| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Promise used to return the image and video data result set. |
 
 **Error codes**
 
@@ -211,7 +211,7 @@ Creates an image or video asset with the specified file name and URI. This API u
 | -------- | ------------------------ | ---- | ------------------------- |
 | displayName  | string        | Yes  | File name of the image or video to create.             |
 | albumUri  | string        | Yes  | URI of the album where the image or video is located.             |
-| callback |  AsyncCallback&lt;[FileAsset](#fileassetdeprecated)&gt; | Yes   | callback returns the created image and video result. |
+| callback |  AsyncCallback&lt;[FileAsset](#fileassetdeprecated)&gt; | Yes   | Callback used to return the created image and video result. |
 
 **Error codes**
 
@@ -257,7 +257,7 @@ Creates an image or video asset with the specified file name. This API uses an a
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.createAsset](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createasset) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.createAsset](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createasset) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -323,7 +323,7 @@ Creates an image or video asset with the specified file name and album URI. This
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise object, used to return the created image and video result. |
+| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise used to return the created image and video result. |
 
 **Error codes**
 
@@ -429,7 +429,7 @@ Creates an image or video asset with the specified file name and options. This A
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise object, used to return the created image and video result. |
+| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise used to return the created image and video result. |
 
 **Error codes**
 
@@ -517,7 +517,7 @@ Creates an audio asset. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [picker.AudioViewPicker](js-apis-file-picker.md#audioviewpicker) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [picker.AudioViewPicker](js-apis-file-picker.md#audioviewpicker) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -533,7 +533,7 @@ Creates an audio asset. This API uses a promise to return the result.
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise object, returns the created audio asset result. |
+| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise used to return the created audio asset result. |
 
 **Error codes**
 
@@ -620,7 +620,7 @@ The album name must meet the following requirements:
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.MediaAlbumChangeRequest.createAlbumRequest](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createalbumrequest11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.MediaAlbumChangeRequest.createAlbumRequest](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createalbumrequest11) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -636,7 +636,7 @@ The album name must meet the following requirements:
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[Album](#albumdeprecated)&gt; | Promise object, returns the created album instance. |
+| Promise&lt;[Album](#albumdeprecated)&gt; | Promise used to return the created album instance. |
 
 **Example**
 
@@ -714,7 +714,7 @@ Deletes user albums. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.MediaAlbumChangeRequest.deleteAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deletealbums11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.MediaAlbumChangeRequest.deleteAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deletealbums11) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -840,7 +840,7 @@ Before the operation, ensure that the albums to obtain exist.
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -898,7 +898,7 @@ Before the operation, ensure that the albums to obtain exist.
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -916,7 +916,7 @@ Before the operation, ensure that the albums to obtain exist.
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#albumdeprecated)&gt;&gt; | Promise object, used to return the result set of getting albums. |
+| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#albumdeprecated)&gt;&gt; | Promise used to return the result set of getting albums. |
 
 **Error codes**
 
@@ -1029,7 +1029,7 @@ This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../apis-m
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1087,7 +1087,7 @@ Obtains the system album. This API uses an asynchronous callback to return the r
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1134,7 +1134,7 @@ Obtains the private album. This API uses a promise to return the result.
 
 > **Note:**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1473,7 +1473,7 @@ Obtains the information about online peer devices. This API uses a promise to re
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. There is no substitute API.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. There is no substitute API.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1514,7 +1514,7 @@ Obtains information about all peer devices. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. There is no substitute API currently.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. There is no substitute API currently.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1594,7 +1594,7 @@ Obtains the index of an image or video in an album. This API uses an asynchronou
 
 > **Note:**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to Use [photoAccessHelper.MediaAssetChangeRequest.getPhotoIndex](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getphotoindex) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.MediaAssetChangeRequest.getPhotoIndex](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getphotoindex) instead.
 
 **System API**: This is a system API.
 
@@ -1752,7 +1752,7 @@ Call this API when the APIs in the **UserFileManager** instance are no longer us
 
 > **Note:**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.release](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#release) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.release](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#release) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1789,7 +1789,7 @@ Call this API when the APIs in the **UserFileManager** instance are no longer us
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.release](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#release) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.release](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#release) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1823,7 +1823,7 @@ Registers a listener for the specified URI. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAccessHelper.registerChange](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAccessHelper.registerChange](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2014,7 +2014,7 @@ Unsubscribes from changes of the file management library. This API uses a callba
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAccessHelper.off](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#offphotochange20) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAccessHelper.off](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#offphotochange20) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2075,9 +2075,9 @@ Provides APIs for encapsulating file asset attributes.
 
 | Name                     | Type                    | Read-Only| Optional| Description                                                  |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
-| uri                       | string                   | Yes   | No   | Media file resource URI (for example, file://media/Photo/1/IMG_datetime_0001/displayName.jpg). For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri) in the introduction to user file URIs.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAsset.uri](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#properties) instead.         |
-| fileType   | [FileType](#filetypedeprecated) | Yes   | No   | Media file type.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAsset.PhotoType](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#properties) instead.                                               |
-| displayName               | string                   | No   | No   | Display file name, including the suffix.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAsset.displayName](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#properties) instead.                                 |
+| uri                       | string                   | Yes   | No   | Media file resource URI (for example, file://media/Photo/1/IMG_datetime_0001/displayName.jpg). For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri) in the introduction to user file URIs.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAsset.uri](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#properties) instead.         |
+| fileType   | [FileType](#filetypedeprecated) | Yes   | No   | Media file type.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAsset.PhotoType](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#properties) instead.                                               |
+| displayName               | string                   | No   | No   | Display file name, including the suffix.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAsset.displayName](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#properties) instead.                                 |
 
 ### get<sup>(deprecated)</sup>
 
@@ -2087,7 +2087,7 @@ Obtains the value of a **FileAsset** parameter.
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAsset.get](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#get) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAsset.get](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#get) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2137,7 +2137,7 @@ Sets a **FileAsset** parameter.
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAsset.set](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#set) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAsset.set](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#set) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2181,7 +2181,7 @@ Commits the modification on the file metadata to the database. This API uses an 
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAsset.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAsset.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) instead.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
 
@@ -2234,7 +2234,7 @@ Commits the modification on the file metadata to the database. This API uses a p
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAsset.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAsset.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) instead.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
 
@@ -2290,7 +2290,7 @@ Opens this file asset. This API uses an asynchronous callback to return the resu
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [fileIo.open](js-apis-file-fs.md#fileioopen-1) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [fileIo.open](js-apis-file-fs.md#fileioopen-1) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO, ohos.permission.READ_AUDIO, ohos.permission.WRITE_IMAGEVIDEO, or ohos.permission.WRITE_AUDIO
 
@@ -2335,7 +2335,7 @@ Opens this file asset. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [fileIo.open](js-apis-file-fs.md#fileioopen) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [fileIo.open](js-apis-file-fs.md#fileioopen) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO, ohos.permission.READ_AUDIO, ohos.permission.WRITE_IMAGEVIDEO, or ohos.permission.WRITE_AUDIO
 
@@ -2486,7 +2486,7 @@ Obtains the thumbnail of a file. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAsset.getThumbnail](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#getthumbnail) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAsset.getThumbnail](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#getthumbnail) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO or ohos.permission.READ_AUDIO
 
@@ -2737,7 +2737,7 @@ The private files set to hidden state are located in the private album (in hidde
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.MediaAssetChangeRequest.setHidden](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#sethidden11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.MediaAssetChangeRequest.setHidden](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#sethidden11) instead.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -2862,7 +2862,7 @@ Obtains the EXIF data from a JPG image and returns a JSON string. This API uses 
 
 > **Note:**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.PhotoAsset.getExif](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getexif) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.PhotoAsset.getExif](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getexif) instead.
 
 **System API**: This is a system API.
 
@@ -2968,7 +2968,7 @@ Obtains the EXIF data from a JPG image and returns a JSON string. This API uses 
 
 > **Note:**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAsset.getExif](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getexif) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.PhotoAsset.getExif](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getexif) instead.
 
 **System API**: This is a system API.
 
@@ -3084,7 +3084,7 @@ Sets user comment information of an image or video. This API uses a promise to r
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.MediaAssetChangeRequest.setUserComment](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setusercomment11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.MediaAssetChangeRequest.setUserComment](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setusercomment11) instead.
 
 **System API**: This is a system API.
 
@@ -3150,7 +3150,7 @@ Sets user comment information of an image or video. This API uses an asynchronou
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.MediaAssetChangeRequest.setUserComment](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setusercomment11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.MediaAssetChangeRequest.setUserComment](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setusercomment11) instead.
 
 **System API**: This is a system API.
 
@@ -3217,7 +3217,7 @@ Obtains the total number of files in the result set.
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.FetchResult.getCount](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getcount) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.FetchResult.getCount](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getcount) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3255,7 +3255,7 @@ Checks whether the cursor is in the last row of the result set.
 
 > **Note:**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.FetchResult.isAfterLast](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#isafterlast) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.FetchResult.isAfterLast](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#isafterlast) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3298,7 +3298,7 @@ Releases and invalidates the **FetchFileResult** instance. After this instance i
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.FetchResult.close](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#close) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.FetchResult.close](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#close) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3417,7 +3417,7 @@ Before calling this method, use [isAfterLast()](#isafterlastdeprecated) to check
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.FetchResult.getNextObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getnextobject) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.FetchResult.getNextObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getnextobject) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3465,7 +3465,7 @@ Before calling this method, use [isAfterLast()](#isafterlastdeprecated) to check
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.FetchResult.getNextObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getnextobject) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.FetchResult.getNextObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getnextobject) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3549,7 +3549,7 @@ Obtains the last file asset in the result set. This API uses a promise to return
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.FetchResult.getLastObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getlastobject) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.FetchResult.getLastObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getlastobject) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3695,7 +3695,7 @@ Obtains all the file assets in the result set. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.FetchResult.getAllObjects](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getallobjects) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.FetchResult.getAllObjects](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getallobjects) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3776,7 +3776,7 @@ Provides APIs to manage albums.
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.Album](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#album) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.Album](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#album) instead.
 
 ### Properties
 
@@ -3784,13 +3784,13 @@ Provides APIs to manage albums.
 
 | Name          | Type   | Read-Only  | Optional | Description  |
 | ------------ | ------ | ---- | ---- | ------- |
-| albumType | [AlbumType](#albumtypedeprecated) | Yes    | No    | Album type.<br/> **Note:** Supported since API version 10, deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.albumType](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.    |
-| albumSubType | [AlbumSubType](#albumsubtypedeprecated) | Yes    | No   | Album subtype.<br/> **Note:** Supported since API version 10, deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.albumSubType](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.    |
-| albumName | string | No    | No   | Album name.<br/>**Note:**<br/>User albums are writable, while preset albums are not writable.<br/>Supported since API version 9, deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.albumName](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.    |
-| albumUri | string | Yes    | No    | Album URI.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.albumUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.   |
-| dateModified  | number | Yes    | No    |  Modification time of the album.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0, recommended to use [photoAccessHelper.Album.dateModified](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#attributes-1) instead. |
-| count | number | Yes    | No    |  Number of files in the album.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.count](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead. |
-| coverUri | string | No    | No     | Cover file URI.<br>**Note:**<br/>User albums are writable, while preset albums are not writable.<br/>Supported since API version 9, deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.coverUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead. |
+| albumType | [AlbumType](#albumtypedeprecated) | Yes    | No    | Album type.<br/> **Note:** This API is supported since API version 10 and deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.albumType](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.    |
+| albumSubType | [AlbumSubType](#albumsubtypedeprecated) | Yes    | No   | Album subtype.<br/> **Note:** This API is supported since API version 10 and deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.albumSubType](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.    |
+| albumName | string | No    | No   | Album name.<br/>**Note:**<br/>User albums are writable, while preset albums are not writable.<br/>This API is supported since API version 9 and deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.albumName](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.    |
+| albumUri | string | Yes    | No    | Album URI.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.albumUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.   |
+| dateModified  | number | Yes    | No    |  Modification time of the album.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0, recommended to use [photoAccessHelper.Album.dateModified](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#attributes-1) instead. |
+| count | number | Yes    | No    |  Number of files in the album.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.count](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead. |
+| coverUri | string | No    | No     | Cover file URI.<br>**Note:**<br/>User albums are writable, while preset albums are not writable.<br/>This API is supported since API version 9 and deprecated since API version 26.0.0, recommended to use [photoAccessHelper.AbsAlbum.coverUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead. |
 
 ### getPhotoAssets<sup>(deprecated)</sup>
 
@@ -3800,7 +3800,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -3811,7 +3811,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | options | [FetchOptions](#fetchoptionsdeprecated) | Yes | Retrieval options. |
-| callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Yes | callback returns the image and video data result set. |
+| callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Yes | Callback used to return the image and video data result set. |
 
 **Error codes**
 
@@ -3968,7 +3968,7 @@ Commits the modification on the album attributes to the database. This API uses 
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.Album.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-Album.md#commitmodify) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.Album.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-Album.md#commitmodify) instead.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4078,7 +4078,7 @@ Adds image and video assets to an album. Before the operation, ensure that the i
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.MediaAlbumChangeRequest.addAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.MediaAlbumChangeRequest.addAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11) instead.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4204,7 +4204,7 @@ Removes image and video assets from an album. The album and file resources must 
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.MediaAlbumChangeRequest.removeAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.MediaAlbumChangeRequest.removeAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11) instead.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4399,7 +4399,7 @@ Deletes image or video assets from the recycle bin. Before the operation, ensure
 
 > **NOTE**
 >
-> Supported since API version 10 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.MediaAlbumChangeRequest.deleteAssets](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deleteassets11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.MediaAlbumChangeRequest.deleteAssets](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deleteassets11) instead.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4464,7 +4464,7 @@ Deletes image or video assets from the recycle bin. Before the operation, ensure
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.MediaAlbumChangeRequest.deleteAssets](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deleteassets11) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.MediaAlbumChangeRequest.deleteAssets](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deleteassets11) instead.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4535,11 +4535,11 @@ Provides APIs for managing the system albums.
 
 | Name          | Type   | Read-Only  | Optional  | Description     |
 | ------------ | ------ | ---- | ---- | ------- |
-| albumName | string | No    | No    | Album name.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.albumName](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.    |
-| albumUri | string | Yes    | No    | Album URI.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.albumUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.   |
-| dateModified | number | Yes    | No    | Modification date.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.Album.dateModified](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#property-1) instead.    |
-| count | number | Yes    | No    | Number of files in the album.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.count](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead. |
-| coverUri | string | No    | No    | Cover file URI.<br/> **Note:** Supported since API version 9, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.coverUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead. |
+| albumName | string | No    | No    | Album name.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.albumName](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.    |
+| albumUri | string | Yes    | No    | Album URI.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.albumUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead.   |
+| dateModified | number | Yes    | No    | Modification date.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.Album.dateModified](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#property-1) instead.    |
+| count | number | Yes    | No    | Number of files in the album.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.count](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead. |
+| coverUri | string | No    | No    | Cover file URI.<br/> **Note:** This API is supported since API version 9 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.AbsAlbum.coverUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#properties) instead. |
 
 ### getPhotoAssets<sup>(deprecated)</sup>
 
@@ -4549,7 +4549,7 @@ Obtains image and video assets from a system album. This API uses an asynchronou
 
 > **Note:**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.AbsAlbum.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.AbsAlbum.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -4560,7 +4560,7 @@ Obtains image and video assets from a system album. This API uses an asynchronou
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | options | [FetchOptions](#fetchoptionsdeprecated) | Yes | Retrieval options. |
-| callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Yes | callback returns the image and video data result set. |
+| callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Yes | Callback used to return the image and video data result set. |
 
 **Error codes**
 
@@ -4902,7 +4902,7 @@ Enumerates the type of changes to observe.
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.ChangeData](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#changedata) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.ChangeData](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#changedata) instead.
 
 **System API**: This is a system API.
 
@@ -4987,7 +4987,7 @@ Enumerates the album types.
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.AlbumType](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#albumtype) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.AlbumType](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#albumtype) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -5090,7 +5090,7 @@ Defines the key album information.
 
 > **NOTE**
 >
-> Supported since API version 9, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.AlbumKeys](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#albumkeys) instead.
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.AlbumKeys](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#albumkeys) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -5154,7 +5154,7 @@ Defines the return value of the listener callback.
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.ChangeData](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#changedata) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. It is recommended to use [photoAccessHelper.ChangeData](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#changedata) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -5188,7 +5188,7 @@ Enumerates the **DefaultChangeUri** subtypes.
 
 > **NOTE**
 >
-> Supported since API version 10, deprecated since API version 26.0.0. Recommended to use [photoAccessHelper.DefaultChangeUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri) instead.
+> This API is supported since API version 10 and deprecated since API version 26.0.0. You are advised to use [photoAccessHelper.DefaultChangeUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 

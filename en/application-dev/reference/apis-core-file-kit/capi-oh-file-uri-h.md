@@ -5,7 +5,7 @@
 <!--Designer: @rainlost-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=94aeeb4fd323dcee3aa01f2d421cc5b99a2d2461 translatedAt=2026-11-03T03:49:59.579Z pushedAt=2026-11-04T03:11:33.473Z nl=1 -->
+<!-- md-trans-meta sourceCommit=94aeeb4fd323dcee3aa01f2d421cc5b99a2d2461 translatedAt=2026-11-03T03:49:59.579Z pushedAt=2026-11-04T05:38:05.150Z nl=1 -->
 
 ## Overview
 
@@ -110,7 +110,7 @@ Obtains the URI of the path. If the URI points to a file, the URI of the path is
 | Name| Description|
 | -- | -- |
 | const char *uri | Indicates the original URI for which the directory is to be obtained. |
-| unsigned int length | Indicates the byte length of the original URI string, which must match the actual length of uri. |
+| unsigned int length | Length of the original URI string, in bytes, which must match the actual length of uri. |
 | char **result | Output parameter, indicating the obtained directory URI. The allocated resource must be released using the free() method of the standard library. |
 
 **Returns**

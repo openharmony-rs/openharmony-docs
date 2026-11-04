@@ -5,7 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=983ba0100f5f5d011705e0e23088346963f80eee translatedAt=2026-11-03T04:34:26.610Z pushedAt=2026-11-04T03:11:33.526Z nl=1 -->
+<!-- md-trans-meta sourceCommit=983ba0100f5f5d011705e0e23088346963f80eee translatedAt=2026-11-03T04:34:26.610Z pushedAt=2026-11-04T05:54:56.856Z nl=1 -->
 
 This module provides file hash processing capabilities, performing hash processing on file content. It is applicable to scenarios such as data integrity verification, version comparison, and content deduplication, ensuring the immutability and consistency of computation results, and supports streaming processing of large files.
 
@@ -41,7 +41,7 @@ Calculates the hash value of a file, performing hash digest computation on the c
 
 | Name   | Type  | Mandatory| Description                          |
 | --------- | ------ | ---- | ------------------------------|
-| path      | string | Yes   | Application sandbox path of the file whose Hash Value is to be calculated. The file must exist and be readable. |
+| path      | string | Yes   | Application sandbox path of the file whose hash value is to be calculated. The file must exist and be readable. |
 | algorithm | string | Yes  | Algorithm used to calculate the hash value. The value can be **md5**, **sha1**, or **sha256**. **sha256** is recommended for security purposes.|
 
 **Return value**
@@ -90,7 +90,7 @@ Calculates the hash value of a file, performing hash digest computation on the c
 
 | Name   | Type                       | Mandatory| Description                                                        |
 | --------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| path      | string                      | Yes   | Application sandbox path of the file whose Hash Value is to be calculated. The file must exist and be readable.                             |
+| path      | string                      | Yes   | Application sandbox path of the file whose hash value is to be calculated. The file must exist and be readable.                             |
 | algorithm | string                      | Yes  | Algorithm used to calculate the hash value. The value can be **md5**, **sha1**, or **sha256**. **sha256** is recommended for security purposes.|
 | callback  | AsyncCallback&lt;string&gt; | Yes   | Callback function that returns the Hash Value (the Hash Value is represented as a hexadecimal digit string, with all letters in uppercase). |
 

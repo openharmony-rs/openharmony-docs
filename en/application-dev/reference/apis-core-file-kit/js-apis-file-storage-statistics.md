@@ -5,7 +5,7 @@
 <!--Designer: @renguang1116; @wang_zhangjun-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=0337f83681fae89f7d0f02e7bd2f12719deed0c3 translatedAt=2026-11-03T04:40:46.589Z pushedAt=2026-11-04T03:11:33.537Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0337f83681fae89f7d0f02e7bd2f12719deed0c3 translatedAt=2026-11-03T04:40:46.589Z pushedAt=2026-11-04T06:03:04.056Z nl=1 -->
 
 This module provides common space query functions, including space queries for built-in storage and external storage cards, queries for application category data statistics, queries for application data, and queries for file system inode resources (total, remaining, and current application occupancy). It is applicable to scenarios such as storage space management, system monitoring, and application storage optimization, helping developers monitor device storage and inode resource usage in real time, plan storage strategies properly, and avoid application exceptions caused by insufficient storage space or inode resources.
 
@@ -70,7 +70,7 @@ For example, it can be used in the storage management or settings page of an app
 
   | Name   | Type                                                      | Mandatory | Description                                |
   | -------- | --------------------------------------------------------- | ---- | ------------------------------------ |
-  | callback | AsyncCallback&lt;[BundleStats](#bundlestats9)&gt;          | Yes   | Callback function invoked after obtaining the storage space size of the current application.<br>Callback parameters include:<br>err: error information, which is undefined when the call succeeds.<br>bundleStats: storage statistics of the current application. |
+  | callback | AsyncCallback&lt;[BundleStats](#bundlestats9)&gt;          | Yes   | Callback used to obtain the storage space size of the current application.<br>Callback parameters include:<br>err: error message, which is undefined when the call succeeds.<br>bundleStats: storage statistics of the current application. |
 
 **Error codes**
 
@@ -146,7 +146,7 @@ Compared with getTotalSizeSync, this method does not block the current thread an
 
 | Name  | Type                       | Mandatory| Description                              |
 | -------- | --------------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Required | Callback function invoked after obtaining the total space size of built-in storage.<br>Callback parameters include:<br>err: Error information, which is undefined when the call succeeds.<br>number: Total space size of built-in storage, in bytes. |
+| callback | AsyncCallback&lt;number&gt; | Required | Callback used to obtain the total space size of built-in storage.<br>Callback parameters include:<br>**err**: error message, which is **undefined** when the call succeeds.<br>**number**: total space size of built-in storage, in bytes. |
 
 **Error codes**
 
@@ -260,7 +260,7 @@ Compared with getFreeSizeSync, this method does not block the current thread and
 
 | Name  | Type                       | Mandatory| Description                                |
 | -------- | --------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback function, the callback after obtaining the available space size of built-in storage.<br>Callback parameters include:<br>err: error information, undefined when the call succeeds.<br>number: available space size of built-in storage, in Byte. |
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to obtain the available space size of built-in storage.<br>Callback parameters include:<br>**err**: error message, which is **undefined** when the call succeeds.<br>**number**: available space size of built-in storage, in bytes. |
 
 **Error codes**
 
