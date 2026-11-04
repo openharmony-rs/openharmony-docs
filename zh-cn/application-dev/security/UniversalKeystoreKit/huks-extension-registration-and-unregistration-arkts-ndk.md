@@ -110,7 +110,6 @@ async function testRegisterProvider(): Promise<void> {
 #include "huks/native_huks_param.h"
 #include "huks/native_huks_external_crypto_api.h"
 #include "huks/native_huks_external_crypto_type.h"
-#include <cstring>
 #include <string>
 
 // 初始化参数集
@@ -458,7 +457,6 @@ async function testUnregisterProvider(): Promise<void> {
 #include "huks/native_huks_param.h"
 #include "huks/native_huks_external_crypto_api.h"
 #include "huks/native_huks_external_crypto_type.h"
-#include <cstring>
 #include <string>
 
 // 初始化参数集

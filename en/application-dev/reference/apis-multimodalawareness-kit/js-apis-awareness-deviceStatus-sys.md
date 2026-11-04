@@ -2,12 +2,12 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:33.662Z pushedAt=2026-06-25T01:35:11.426Z -->
+<!-- md-trans-meta sourceCommit=5cb2d74feb72b8802a205dccd17c1ababe92b80f translatedAt=2026-11-04T06:12:57.334Z pushedAt=2026-11-04T08:04:44.816Z nl=1 -->
 
-The **deviceStatus** module provides the device status awareness functionality.
+This module provides the device status awareness capability. By listening for device sensor data, it provides applications with awareness capabilities such as device posture.
 
 > **NOTE**
 >
@@ -20,6 +20,20 @@ The **deviceStatus** module provides the device status awareness functionality.
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
    ```
 
+## DeviceRotationRadian
+ 
+Three-dimensional rotation status information of the device.
+ 
+**System capability**: SystemCapability.MultimodalAwareness.DeviceStatus
+ 
+**System API**: This is a system API.
+ 
+| Name | Type   | Read-Only | Optional | Description             |
+| ------ | ------- | ------- | ----- | -------------- |
+|  x  | number |  No  |  No  | Rotation radians of the device in the X-axis direction. |
+|  y  | number |  No  |  No  | Rotation radians of the device in the Y-axis direction. |
+|  z  | number |  No  |  No  | Rotation radians of the device in the Z-axis direction. |
+
 ## deviceStatus.getDeviceRotationRadian()
 
 getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
@@ -31,6 +45,12 @@ The posture data contains the rotation angles of the x, y, and z axes, that is, 
 **System capability**: SystemCapability.MultimodalAwareness.DeviceStatus
 
 **System API**: This is a system API.
+
+**Return value**
+ 
+| Type                                | Description               |
+| ----------------------------------- | ------------------ |
+| Promise&lt;DeviceRotationRadian&gt; | Three-dimensional rotation status information of the device. |
 
 **Error codes**
 
@@ -52,9 +72,9 @@ For details about the error codes, see [Device Status Awareness Error Codes](err
       deviceStatus.getDeviceRotationRadian().then((radian: deviceStatus.DeviceRotationRadian) => {
          console.info('x:' + radian.x + ' y:' + radian.y + ' z:' + radian.z);
       }).catch((err: BusinessError) => {
-         console.error('get device rotation radian failed, errmsg:' + err);
-      })
+         console.error(`Failed to get device rotation radians. Code: ${err.code}, message: ${err.message}`);
+      });
    } catch (err) {
-      console.error('invoke failed, errmsg:' + err)
+      console.error(`Failed to invoke. Code: ${err.code}, message: ${err.message}`);
    }
    ```

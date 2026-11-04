@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d66dabaefa46750629a5575433907e32496de2fb translatedAt=2026-11-04T04:28:29.199Z pushedAt=2026-11-04T10:12:50.117Z nl=1 -->
 
 The **FormExtensionAbility** module provides lifecycle callbacks invoked when a widget is created, destroyed, or updated. This module is applicable to scenarios where you need to implement widget functions in your application. It helps you quickly build a widget data update mechanism, improving user experience in interacting with your application.
 
@@ -99,7 +100,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onCastToNormalForm(formId: string): void
 
-Called to notify the widget provider that a temporary widget has been converted to a normal one. Temporary widgets and normal widgets are concepts of the widget host. Temporary widgets have a brief existence, appearing following particular events or user interactions and vanishing automatically upon task completion. Normal widgets are persistent and remain on the home screen until the user actively removes or changes them. The functional widgets used in daily development all fall into this category. Temporary widgets are not used by widget hosts in the current version.
+Notifies the widget provider that a temporary widget has been converted to a normal one. Temporary widgets and normal widgets are concepts defined by the widget host. The host requests the conversion of a temporary widget to a normal one when necessary. After receiving the notification, the provider should update the widget's local record from temporary to normal, so as to avoid mistakenly deleting the converted widget's information during subsequent cleanup of temporary widgets that have remained undeleted for a long time.
 
 **Model restriction**: This API can be used only in the stage model.
 

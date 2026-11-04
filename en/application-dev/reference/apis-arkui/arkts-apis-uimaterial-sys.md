@@ -1,12 +1,11 @@
 # @ohos.arkui.uiMaterial (System Material) (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4d06e6d604d64a9b64c2360f42cbd3fd13c9290b translatedAt=2026-08-24T00:37:13.427Z pushedAt=2026-08-24T03:11:35.317Z -->
+<!-- md-trans-meta sourceCommit=a306693f0f46e5633c549769b8338f6bd7c191f4 translatedAt=2026-10-29T09:16:41.828Z pushedAt=2026-10-30T08:21:31.580Z nl=1 -->
 
 This module provides APIs for system materials. Different system materials correspond to different UI effects, including the background color ([backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)), border color ([borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)), border width ([borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)), and shadow ([shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)).
 
@@ -33,7 +32,7 @@ Enumerates the system material types. This topic contains only the system APIs o
 | Name     | Value | Description              |
 | ------ | --- | --------------- |
 | NONE | 0 | No system material effect. The corresponding effects are: [backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor) is transparent, [borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor) is transparent, [borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth) is 0, and no [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow) is applied.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 23.<br>**System API:** This is a system API.|
-| SEMI_TRANSPARENT | 1 | Semi-transparent system material effect. The corresponding effects are:<br>[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor): "#f2f1f3f5" in light mode and "#f2303131" in dark mode.<br>[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor): [token](../../ui/theme_skinning.md#system-default-token-color-values) value of theme.colors.compForegroundPrimary blended with 10% opacity (alpha value).<br>[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth): 1vp.<br>[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow): ShadowStyle.OUTER_DEFAULT_SM.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 23.<br>**System API:** This is a system API.|
+| SEMI_TRANSPARENT | 1 | Semi-transparent system material effect. The corresponding effects are:<br>[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor): "#f2f1f3f5" in light mode and "#f2303131" in dark mode.<br>[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor): [token](../../ui/theme-skinning.md#system-default-token-color-values) value of **theme.colors.compForegroundPrimary** blended with 10% transparency (alpha value).<br>[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth): 1 vp.<br>[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow): **ShadowStyle.OUTER_DEFAULT_SM**.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 23.<br>**System API:** This is a system API.|
 
 ## ImmersiveStyle
 
@@ -152,17 +151,17 @@ A constructor used to create a **Material** object.
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name      | Type                                                      | Mandatory| Description                                                        |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  options      | [MaterialOptions](#materialoptions)                      | No   | System material configuration options, including the material type. Pass this parameter when a material type (for example, a transparency effect) needs to be specified. If this parameter is not passed, the default material configuration `{type:MaterialType.NONE}` is used, that is, no system material effect is applied.    |
+|  options      | [MaterialOptions](#materialoptions)                      | No   | System material configuration options, including the material type. Pass this parameter when a material type (for example, a semi-transparency effect) needs to be specified. If this parameter is not passed, the default material configuration `{type:MaterialType.NONE}` is used, that is, no system material effect is applied.    |
 
 ## Example
 
 ### Example 1: Setting the System Material
 
-This example shows how to apply the **Material** object of a semi-transparent material to a component using the [systemMaterial](arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23) attribute.
+This example shows how to apply the Material object of a semi-transparent material to a component using the [systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) attribute.
 
 ``` ts
 import { uiMaterial } from '@kit.ArkUI';

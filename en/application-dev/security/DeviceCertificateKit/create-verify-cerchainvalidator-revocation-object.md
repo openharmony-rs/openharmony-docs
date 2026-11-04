@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=586ca0df7c9e6070a6064e9c1b3f797ce18bcafe translatedAt=2026-08-11T02:01:32.954Z pushedAt=2026-08-11T07:47:32.056Z -->
+<!-- md-trans-meta sourceCommit=86bc5507aeaf04254ac6a538cf0dab8415e0abbe translatedAt=2026-11-04T04:51:59.405Z pushedAt=2026-11-04T06:09:09.378Z nl=1 -->
 
 ## Checking the Revocation Status of Local Certificate Chain with Only Leaf Certificate Checked
 
@@ -19,7 +19,6 @@ The revocation status check of the local certificate chain supports checking onl
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-
 2. Call [cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11) to create a certificate chain object.
 
 3. Call [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create an X.509 certificate object.
@@ -131,7 +130,6 @@ Starting from API version 22, you can check the revocation status of intermediat
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-
 2. Call [cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11) to create a certificate chain object.
 
 3. Call [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create an X.509 certificate object.
@@ -219,6 +217,7 @@ async function doTestCaCheck() {
 }
 ```
 
+
 ## Ignoring the Network Unreachable Exception During Online Certificate Revocation Check in Certificate Chain Validation
 
 Starting from API version 23, you can ignore the network unreachable exception during online certificate revocation check in certificate chain validation.
@@ -230,12 +229,13 @@ Starting from API version 23, you can ignore the network unreachable exception d
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-
 2. Call [cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11-2) to create a certificate chain object.
 
-3. Call [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create an X.509 certificate object. Construct the `cert.CertChainValidationParameters` certificate chain validation parameters, and set `revocationCheckParam` to `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR` to ignore the network unreachable scenario.
+3. Call [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create an X.509 certificate object.
 
-4. Call [cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11) and pass the certificate chain verification parameters to verify the certificate chain.
+4. Construct the `cert.CertChainValidationParameters` certificate chain validation parameters and set `revocationCheckParam` to `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR` to ignore the network unreachable case.
+
+5. Call [cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11) and pass the certificate chain verification parameters to verify the certificate chain.
 
 Example:
 

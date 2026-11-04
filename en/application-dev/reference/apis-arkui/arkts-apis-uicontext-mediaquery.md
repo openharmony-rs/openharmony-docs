@@ -1,10 +1,11 @@
 # Class (MediaQuery)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu; @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-10-29T09:09:58.247Z pushedAt=2026-10-30T03:17:48.652Z nl=1 -->
 
 Provides different styles for different media types.
 
@@ -24,13 +25,15 @@ Sets the media query criteria and returns the corresponding listening handle.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
-| condition | string | Yes   | Media query condition. For details, see [Syntax](../../ui/arkts-layout-development-media-query.md#syntax).|
+| condition | string | Yes | Media query condition. For details, see [Syntax](../../ui/arkts-layout-development-media-query.md#syntax). |
 
 **Return value**
 

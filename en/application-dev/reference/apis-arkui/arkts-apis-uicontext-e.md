@@ -6,24 +6,31 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3c7e08132e65366ecd46ed1cc4049fee722caf15 translatedAt=2026-10-29T09:04:12.364Z pushedAt=2026-10-30T01:27:28.480Z nl=1 -->
+
+Provides enumeration types related to UIContext, which are used to configure scenarios such as keyboard avoidance, dynamic frame rate scenes, node rendering states, gesture listening, custom keyboard continuation, and text selection clearing policies.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## KeyboardAvoidMode<sup>11+</sup>
 
 Enumerates the modes in which the layout responds when the keyboard is displayed.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Value  | Description      |
 | ------ | ---- | ---------- |
-| OFFSET | 0    | The layout moves up.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| RESIZE | 1    | The layout is resized.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| OFFSET_WITH_CARET<sup>14+</sup>  | 2 | The layout moves up, and this adjustment also occurs if the caret position in the text box changes.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| RESIZE_WITH_CARET<sup>14+</sup>  | 3 | The layout is resized, and this adjustment also occurs if the caret position in the text box changes.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| NONE<sup>14+</sup>  | 4 | The layout is not adjusted to avoid the keyboard.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| OFFSET | 0    | Offset mode.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| RESIZE | 1    | Resize mode.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| OFFSET_WITH_CARET<sup>14+</sup> | 2 | Offset mode that also triggers avoidance when the input box cursor position changes.<br>**Atomic service API**: This API can be used in atomic services since API version 14. |
+| RESIZE_WITH_CARET<sup>14+</sup> | 3 | Resize mode that also triggers avoidance when the input box cursor position changes.<br>**Atomic service API**: This API can be used in atomic services since API version 14. |
+| NONE<sup>14+</sup>  | 4 | No keyboard avoidance.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## SwiperDynamicSyncSceneType<sup>12+</sup>
 
@@ -52,7 +59,9 @@ Enumerates the dynamic sync scene types for the **Marquee** component.
 
 ## NodeRenderState<sup>20+</sup>
 
-Enumerates component rendering states.
+Enumerates node rendering states.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -60,12 +69,14 @@ Enumerates component rendering states.
 
 | Name| Value|Description|
 | -------- | ------- | -------- |
-| ABOUT_TO_RENDER_IN | 0 | The node has been attached to the render tree and will generally be rendered in the next frame. Under normal cases, it may be visible, but "being scheduled for rendering" does not equate to "guaranteed visibility".|
-| ABOUT_TO_RENDER_OUT | 1 | The node has been removed from the render tree and will generally not be rendered in the next frame. Users will no longer see this node.|
+| ABOUT_TO_RENDER_IN | 0 | The node has been mounted to the rendering tree and will typically be rendered in the next frame and become visible to the user. However, a node being rendered does not necessarily mean that it is visible. |
+| ABOUT_TO_RENDER_OUT | 1 | The node has been removed from the rendering tree and will generally not be rendered in the next frame. Users will no longer see this node.|
 
 ## GestureActionPhase<sup>20+</sup>
 
 Enumerates triggering phases of gesture callbacks, corresponding to the action callbacks defined in **gesture.d.ts**. However, different gesture types support different phases (for example, **SwipeGesture** only includes the **WILL_START** enumerated value).
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -73,12 +84,14 @@ Enumerates triggering phases of gesture callbacks, corresponding to the action c
 
 | Name  | Value  | Description      |
 | ------ | ---- | ---------- |
-| WILL_START | 0 | The gesture has been successfully recognized by the system, and the **onActionStart** or **onAction** callback will be triggered immediately. If the gesture is bound to **onActionStart**, the callback is triggered at **onActionStart**. If the gesture is bound to **onAction**, the callback is triggered at **onAction**. If both are bound, the callback is triggered at **onActionStart** with priority. If neither is bound, no callback will be triggered. Some containers (for example, scrollable containers) have built-in gestures bound to callbacks, which support the above callback triggering mechanism by default. For these containers, callbacks can be triggered without explicit binding.|
-|  WILL_END | 1 | The gesture has been determined to be in an ended state (typically occurring when the user lifts their finger to terminate the interaction). The **onActionEnd** callback will be triggered immediately, but the gesture must be explicitly bound to **onActionEnd**. Some containers (for example, scrollable containers) have built-in gestures bound to callbacks, which support this end-state determination by default. For these containers, the **onActionEnd** callback can be triggered without explicit binding.|
+| WILL_START | 0 | The gesture has been successfully recognized by the system, and the **onActionStart** or **onAction** callback will be triggered immediately. If the gesture is bound to **onActionStart**, the callback is triggered at **onActionStart**. If the gesture is bound to **onAction**, the callback is triggered at **onAction**. If both are bound, the callback is triggered at **onActionStart** with priority. If neither is bound, no callback is triggered. Containers with built-in gesture callbacks (such as scrolling containers) support the **onActionStart** or **onAction** callback triggering mechanism by default. For these containers, callbacks can be triggered without explicit binding. |
+| WILL_END | 1 | The gesture has been determined to be in an ended state (typically occurring when the user lifts their finger to terminate the interaction). The **onActionEnd** callback will be triggered immediately, but the gesture must be explicitly bound to **onActionEnd**. Containers with built-in gesture callbacks (such as scrolling containers) support gesture end status determination by default. The **onActionEnd** callback can be triggered without explicit binding. |
 
 ## GestureListenerType<sup>20+</sup>
 
 Enumerates the types of gestures to be listened for.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -97,6 +110,8 @@ Enumerates the types of gestures to be listened for.
 
 Enumerates resolution strategies for **UIContext** objects.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -114,9 +129,9 @@ Enumerates resolution strategies for **UIContext** objects.
 
 Sets whether the custom keyboard remains persistent during input field switches.
 
-When enabled, the customer keyboard will remain displayed without being dismissed and re-launched during input field switches.
+When enabled, the custom keyboard will remain displayed without being dismissed and re-launched during input field switches.
 
-When disabled, the customer keyboard will dismiss and re-launch during input field switches.
+When disabled, the custom keyboard will dismiss and re-launch during input field switches.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 

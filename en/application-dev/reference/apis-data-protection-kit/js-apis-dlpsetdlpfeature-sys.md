@@ -5,11 +5,11 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=15f78d252b2330577b0a0df9613155368a97fc44 translatedAt=2026-08-31T01:15:01.068Z pushedAt=2026-09-01T01:40:25.751Z -->
+<!-- md-trans-meta sourceCommit=59c3d4cb2a1fa94afc606906902fd7f0bcad78c2 translatedAt=2026-11-04T04:52:44.331Z pushedAt=2026-11-04T10:12:33.512Z nl=1 -->
 
 This module provides APIs for controlling the Data Loss Prevention (DLP) feature, including enabling or disabling the DLP feature and returning the DLP status. It helps enterprises meet data security compliance requirements and implement access control and encryption protection for confidential files.
 
-**Use scenarios**
+**Use scenarios** 
 - Data security compliance requirements must be met.
 - Access control and encryption protection are provided for confidential files.
 > **NOTE**
@@ -67,9 +67,10 @@ This API is used to enable or disable the DLP feature for enterprise policies.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -81,7 +82,7 @@ import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 async function exampleFunction() {
   let statusInfoResult: dlpSetDlpFeature.StatusInfoResult =
     await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE);
-  console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult));
+  console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult)); 
 } // Set the DLP status.
 
 exampleFunction();
@@ -103,7 +104,7 @@ Describes the DLP settings.
 | -------- | -------- | -------- | -------- | -------- |
 | isSuccess | boolean | No| No| Whether the DLP setting is successful. The value **true** indicates that the setting is successful, and the value **false** indicates that the setting fails.|
 
-## DlpFeatureInfo
+## DLPFeatureInfo
 
 Sets the DLP status.
 

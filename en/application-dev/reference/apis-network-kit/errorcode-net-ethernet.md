@@ -1,5 +1,6 @@
 # Ethernet Connection Error Codes
 
+<!-- md-trans-meta sourceCommit=ede2473bcfdd173278c84f213a25b67a0910ea5b translatedAt=2026-11-04T06:36:28.635Z pushedAt=2026-11-04T08:04:44.870Z nl=1 -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -58,17 +59,41 @@ System internal error.
 
 This error code is reported if a system internal error occurs.
 
+**Possible Causes**
+
+1. Memory exception.
+
+2. Null pointer.
+
+**Solution**
+
+1. Check whether the memory space is sufficient, and clear the memory and try again.
+
+2. The system is abnormal. Try again later or restart the device.
+
+<!--Del-->
+
+## 2201004 Invalid Ethernet Profile
+
+**Error Message**
+
+Invalid Ethernet profile.
+
+**Description**
+
+The Ethernet interface configuration passed in when calling the setIfaceConfig API is invalid.
+
 **Cause**
 
-1. The memory is abnormal.
+1. The InterfaceConfiguration passed in is invalid. For example, when mode is set to IPSetMode.STATIC (value 0), a static network configuration is used, which requires manually specifying the IP address (ipAddr), subnet mask (netMask), gateway, route, and DNS server addresses (dnsServers), instead of obtaining the network configuration automatically through DHCP. If the manually configured parameters are empty or in an incorrect format, the Ethernet configuration may become invalid.
 
-2. A null pointer is present.
+2. The value of mode does not match the passed configuration items. For example, a static IP configuration is passed in DHCP mode.
 
 **Procedure**
 
-1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+Check whether the value of each field in the InterfaceConfiguration passed in meets the requirements in the description of the setIfaceConfig API.
 
-2. Check whether the system is normal. If not, try again later or restart the device.
+<!--DelEnd-->
 
 ## 2201005 Device Information Not Exist
 
@@ -86,7 +111,7 @@ The device to set or obtain does not exist.
 
 **Procedure**
 
-```
+```shell
 > hdc shell ifconfig
 ```
 Check whether the device, for example, **eth0** or **eth1**, exists.

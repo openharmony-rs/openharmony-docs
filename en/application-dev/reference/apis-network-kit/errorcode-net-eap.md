@@ -1,6 +1,6 @@
 # Extensible Authentication Error Codes
 
-<!-- md-trans-meta sourceCommit=e75dab7e271311a5103ef7c57cad620c8a400383 translatedAt=2026-09-28T01:17:47.268Z pushedAt=2026-10-09T02:19:54.980Z -->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-04T06:36:00.776Z pushedAt=2026-11-04T08:04:44.867Z nl=1 -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -206,25 +206,25 @@ This error code is reported if a program fails to operate properly.
 
 **Possible causes**
 
-1. EAP packet processing exception, such as packet parsing failure or data format error. You can locate and analyze the issue by filtering log keywords **wpa_supplicant:EAP**.
+1. EAP packet processing exception, such as packet parsing failure or incorrect data format. Locate the issue by filtering logs with the keyword wpa_supplicant:EAP.
 
-2. Authentication process exception, such as state machine error or authentication timeout without response. You can locate and analyze the issue by filtering log keywords **entering state**.
+2. Authentication process exception, such as state machine error or authentication timeout without response. Locate the issue by filtering logs with the keyword entering state.
 
-3. Certificate processing failure, such as certificate loading failure, certificate parsing error, or key operation failure. You can locate and analyze the issue by filtering log keywords **wpa_supplicant:SSL**.
+3. Certificate processing failure, such as certificate loading failure, certificate parsing error, or key operation failure. Locate the issue by filtering logs with the keyword wpa_supplicant:SSL.
 
-4. Callback function exception, such as incorrect callback implementation or uncaught exception thrown. You can locate and analyze the issue by filtering log keywords **replyCustomEapData**.
+4. Callback function exception, such as the callback not being correctly implemented or throwing an uncaught exception. Locate the issue by filtering logs with the keyword replyCustomEapData.
 
 5. Communication failure, such as socket communication exception or connection disconnection. This cause is common for the [startEthEap](js-apis-net-eap.md#eapstartetheap) and [logOffEthEap](js-apis-net-eap.md#eaplogoffetheap) APIs. You can filter log keywords **startEap** or **stopEap** to check whether the command is delivered properly.
 
 **Solution**
 
-1. Check system logs to locate the specific exception cause. Filter log keywords **supplicant** to locate EAP packet processing exceptions, and filter log keywords **replyCustomEapData** to locate callback function exceptions. For communication exceptions triggered by the [startEthEap](js-apis-net-eap.md#eapstartetheap) and [logOffEthEap](js-apis-net-eap.md#eaplogoffetheap) APIs, filter log keywords **startEap** or **stopEap** to locate the issue.
+1. Check the system logs to locate the specific cause. Filter logs with the keyword supplicant to locate EAP packet processing exceptions, and filter logs with the keyword replyCustomEapData to locate callback function exceptions. For communication exceptions triggered by the [startEthEap](js-apis-net-eap.md#eapstartetheap) and [logOffEthEap](js-apis-net-eap.md#eaplogoffetheap) APIs, filter logs with the keyword startEap or stopEap to locate the issue.
 
-2. Ensure that the EAP authentication process call sequence is correct, and avoid proceeding to the next step before the previous step is complete.
+2. Ensure that the EAP authentication process is invoked in the correct order, and avoid proceeding to the next step before the previous step is completed.
 
-3. Check whether the certificate and key configurations are correct, and ensure that the certificate format meets the requirements.
+3. Check that the certificate and key configurations are correct and that the certificate format meets the requirements.
 
-4. Ensure that the callback is not unregistered repeatedly before unregistration, and is used normally after registration.
+4. Ensure that the callback function is not unregistered repeatedly before being unregistered, and that it is used normally after registration.
 
 5. If the problem persists, restart the device and try again.
 

@@ -6,6 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ed6951d950154c48e829490274dc18ed1375cbf4 translatedAt=2026-11-04T05:04:37.650Z pushedAt=2026-11-04T10:12:33.529Z nl=1 -->
 
 The **certManagerDialog** module provides APIs for opening the certificate management pages, on which the certificates are installed, uninstalled, and authorized.
 
@@ -76,12 +77,14 @@ Enumerates the error codes reported when the certificate management dialog box A
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
 | ERROR_GENERIC  | 29700001      | An internal error occurs when the API is called,<br>such as IPC failure, memory operation failure, and file operation failure.|
-| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | The user cancels the operation in the certificate management dialog box.|  
+| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | The user cancels the operation in the certificate management dialog box.|
 | ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | The user operation in the certificate management dialog box fails.<br>For example, the certificate fails to be installed.|
 | ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | This API is not supported on wearables.|
 | ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | The operation does not comply with the device security policy.<br>For example, the CA certificate of **GLOBAL_USER** is not allowed on the device.|
 | ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | The input parameter validation fails.<br>For example, the parameter format is incorrect or the value range is invalid.|
 | ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | No certificate is available.|
+| ERROR_OPERATION_TIMEOUT  | 29700009      | The certificate management dialog box operation times out.<br>**Since:** 26.0.1 |
+| ERROR_NOT_CONCURRENT_SUPPORT  | 29700010      | The API does not support concurrent calls.<br>**Since:** 26.0.1 |
 
 ## CertificateDialogProperty<sup>18+</sup>
 
@@ -119,6 +122,8 @@ Requests the USB Key PIN authentication.
 | Name             | Type   | Read-Only| Optional| Description                        |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | keyUri | string   | No  | No  | Unique identifier of the USB Key certificate credential. The value contains up to 256 bytes. The value can be obtained using [openAuthorizeDialog](#certificatemanagerdialogopenauthorizedialog22). The result contains **CertReference**.|
+| customData | Uint8Array   | No   | Yes   | Custom data passed to the Ukey authentication dialog box, with a maximum length of 2048 bytes. Generally, this field needs to be provided only when calling the [openAuthDialogForUkeyProvider](#certificatemanagerdialogopenauthdialogforukeyprovider) API.<br>**Since:** 26.0.1 |
+| timeoutDuration | number   | No   | Yes   | Operation timeout of the Ukey authentication dialog box, in seconds. The value is an integer in the range [180, 600], and the default value is **300**.<br>**Since:** 26.0.1 |
 
 ## AuthorizeRequest<sup>22+</sup>
 
@@ -135,6 +140,35 @@ Represents the authorization request information of the credential.
 | keyAlgIDs |  Array\<string>  | No  | Yes  | Public key algorithm type of a certificate, which is used to filter the certificate list in the credential authorization dialog box. Only the matched certificates are displayed. The value can be **RSA**, **EC**, or **ECDSA** and is case-sensitive. If this parameter is not passed, certificates are not filtered by algorithm type.<br>If **keyAlgIDs** contains unsupported algorithms, the filter is invalid.<br>The array can contain a maximum of 20 items.<br>**Since**: 26.0.0|
 | issuers |  Array\<Uint8Array>  | No  | Yes  | Certificate issuer in DER format, which is used to filter the certificate list in the credential authorization dialog box. Only the matched certificates are displayed.<br>If the issuers array contains an element whose length is 0, the issuers filter does not take effect.<br>The array can contain a maximum of 20 items.<br>**Since**: 26.0.0|
 | uri | string  | No  | Yes  | URI displayed in the authorization dialog box, which provides more context about the request for authorization to use the certificate credential.<br>**Since**: 26.0.0|
+
+## AbilityType
+
+Enumerates the ability types of the UKey authentication dialog box.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name       | Value |  Description      |
+| ---------- | ------ | --------- |
+| UKEY_AUTH_EXTENSION_ABILITY | 1      | Ability of the [UkeyAuthExtensionAbility](./js-apis-UkeyAuthExtensionAbility.md) type. |
+
+## UkeyAuthDialogInfo
+
+Indicates the information about the Ukey authentication dialog box to be opened.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name              | Type    | Read-Only | Optional | Description                         |
+| ----------------- | ------- | ---- | ---- | ---------------------------- |
+| abilityType | [AbilityType](#abilitytype)   | No   | No   | Enumerates the ability types of the UKey authentication dialog box. |
+| abilityName | string   | No   | No   | Ability name of the Ukey authentication dialog box. The maximum length is 256 bytes, and it cannot be empty. |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
@@ -572,10 +606,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 801      | Capability not supported.  |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
-| 29700002 | The user cancels the authentication operation.                                                                                                             |
-| 29700003 | The authentication operation failed, such as the USB key certificate does not exist, the USB key status is abnormal.                              |
+| 29700002 | The user cancels the authentication operation or operation timed out. |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 
 **Example**
@@ -642,5 +676,87 @@ try {
   let error = err as BusinessError;
   console.error(
     `Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManagerDialog.openAuthDialogForUkeyProvider
+
+openAuthDialogForUkeyProvider(dialogInfo: UkeyAuthDialogInfo, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
+
+Opens the UKey authentication dialog box for the USB key certificate credential to implement custom dialog functions in scenarios such as payment and certificate update. This API is only for use by UKey driver applications. The UKey authentication dialog box must be implemented by the UKey driver application through [UkeyAuthExtensionAbility](js-apis-UkeyAuthExtensionAbility.md). This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Device behavior differences**: This API is available on PCs/2-in-1 devices. For other devices, error code 29700005 is returned.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+|---------|--------------------------------------------------------------------|----|-------------|
+| dialogInfo | [UkeyAuthDialogInfo](#ukeyauthdialoginfo) | Yes | Indicates the information about the Ukey authentication dialog box to be opened. |
+| ukeyAuthRequest | [UkeyAuthRequest](#ukeyauthrequest22) | Yes | Authentication request information of the USB Key certificate credential. |
+
+**Return value**
+
+| Type | Description |
+|------------------|--------------------------------------|
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+
+| ID    | Error Message                                                                                                                                            |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
+| 29700001 | The certificate manager service processing failed. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 29700002 | The user cancels the authentication operation.                                                                                                   |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. |
+| 29700005 | The operation does not comply with the device security policy. Only the PC/2in1 device can open the dialog box of the UkeyAuthExtensionAbility type.  |
+| 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
+| 29700009 | The operation in the Ukey authentication dialog box timed out.                                                                                  |
+| 29700010 | The Ukey authentication dialog box cannot be opened concurrently. Please try again later.                                                        |
+
+**Example**
+```ts
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* abilityType is the Ability type of the Ukey authentication dialog. Assign UKEY_AUTH_EXTENSION_ABILITY here. */
+let abilityType: certificateManagerDialog.AbilityType =
+  certificateManagerDialog.AbilityType.UKEY_AUTH_EXTENSION_ABILITY;
+/* abilityName is the name of the UkeyAuthExtensionAbility implemented by the UKey driver application. This is only an example. */
+let abilityName: string = 'com.example.ukeydriver.UkeyAuthExtensionAbility';
+let dialogInfo: certificateManagerDialog.UkeyAuthDialogInfo = {
+  abilityType: abilityType,
+  abilityName: abilityName
+};
+/* keyUri is the unique identifier of the USB Key certificate credential. The caller obtains it. This is only an example. */
+let keyUri: string = 'test';
+/* Custom data passed to the Ukey authentication dialog. This is only an example. */
+let customData: Uint8Array = new Uint8Array([0x01, 0x02, 0x03]);
+let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = {
+  keyUri: keyUri,
+  customData: customData,
+  /* Operation timeout of the Ukey authentication dialog, in seconds. The value is an integer in the range [180, 600]. */
+  timeoutDuration: 300
+};
+try {
+  certificateManagerDialog.openAuthDialogForUkeyProvider(dialogInfo, ukeyAuthRequest).then(() => {
+    console.info(`Succeeded in opening ukey auth dialog`);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open ukey auth dialog. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to open ukey auth dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```

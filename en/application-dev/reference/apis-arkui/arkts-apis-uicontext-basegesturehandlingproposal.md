@@ -1,12 +1,11 @@
 # Class (BaseGestureHandlingProposal)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:47.083Z pushedAt=2026-08-11T06:04:50.152Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-29T09:00:03.033Z pushedAt=2026-10-29T11:53:37.706Z nl=1 -->
 
 Base class for smart gesture handling. When the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API is used to dynamically customize smart gesture behaviors, the callback parameter is an instance of a specific subclass type.
 
@@ -29,7 +28,7 @@ Base class for smart gesture handling. When the [registerMonitor](./arkts-apis-u
 
 **Example**
 
-This example demonstrates how to obtain smart gesture handling information from BaseGestureHandlingProposal in the smart gesture listening callback. For the complete example, see [Example 1 (Enabling Smart Gestures and Customizing Action Handling)](./arkts-apis-uicontext-smartgesturecontroller.md#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example demonstrates how to obtain smart gesture handling information from BaseGestureHandlingProposal in the smart gesture listening callback. For the complete example, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](./arkts-apis-uicontext-smartgesturecontroller.md#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {

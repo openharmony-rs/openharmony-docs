@@ -5,8 +5,8 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
-<!-- md-trans-meta sourceCommit=4bad8126d6f63924da12d96cf1b3dfae2cb11cb2 translatedAt=2026-10-10T03:56:04.028Z pushedAt=2026-10-10T06:30:32.501Z -->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=ac2510ed0a17760ffe2d2f1058a87d776bf7b353 translatedAt=2026-11-04T04:56:11.669Z pushedAt=2026-11-04T06:23:52.708Z nl=1 -->
 
 Ability Assistant (aa) is a tool used to start applications and test cases. It provides basic application debugging and testing capabilities, for example, starting application components, forcibly stopping processes, and printing application component information.
 
@@ -169,7 +169,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u 
         ```
 
       The following is an example for the UIAbility to obtain input parameters:
-
+  
         ```ts
         import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
         import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -226,7 +226,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
   | 10105002 | Failed to obtain ability information. |
 
   **Example**
-
+  
   ```bash
   # Stop a ServiceAbility.
   aa stop-service -a EntryAbility -b com.example.myapplication -m entry
@@ -265,7 +265,7 @@ aa dump -a
   | 10105001 | Failed to connect to the ability service. |
 
   **Example**
-
+  
   ```bash
   # Print the application component information in all missions.
   aa dump -a
@@ -273,7 +273,7 @@ aa dump -a
 
   ![aa-dump-a](figures/aa-dump-a.png)
 
-
+  
   ```bash
   # Print all task chains.
   aa dump -l
@@ -281,7 +281,7 @@ aa dump -a
 
   ![aa-dump-l](figures/aa-dump-l.png)
 
-
+  
   ```bash
   # Print the detailed information about an application component.
   aa dump -i 105
@@ -352,6 +352,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | -s \<any-key> | Any key-value pair. This parameter is optional.|
   | -w | Test running time, in ms. This parameter is optional.|
   | -D | Debug mode. This parameter is optional.|
+  | -u | Optional parameter, `userId`, indicating the user ID, which specifies the user where the test suite or test case to be executed resides.<br>**Note:** Starting from API version 26.0.0, this parameter is supported.|
 
   **Return value**
 
@@ -365,6 +366,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | 10105001 | Failed to connect to the ability service. |
   | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
   | 10108501 | An internal error occurs during the execution of the aa test command. |
+  | 10104005 | The userId specified by the aa test command is not currently a foreground user. |
 
   **Example**
 
@@ -375,6 +377,8 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   aa test -b com.example.myapplication -m entry_test -s unittest ActsAbilityTest
   # Start the test framework and specify the timeout interval.
   aa test -b com.example.myapplication -m entry_test -s timeout 10000 -s unittest ActsAbilityTest
+  # Start the test framework and specify the user
+  aa test -b com.example.myapplication -m entry_test -s timeout 10000 -s unittest ActsAbilityTest -u 100
   ```
 
 ## attach
@@ -632,7 +636,7 @@ Check whether the **exported** field of the ability in the **module.json5** file
 The specified ability does not exist.
 
 **Symptom**
-
+ 
 The specified ability name does not exist.
 
 **Possible Causes**
@@ -658,7 +662,7 @@ The specified ability is not installed.
 The specified pid does not exist.
 
 **Symptom**
-
+ 
 The specified PID does not exist.
 
 **Possible Causes**
@@ -676,7 +680,7 @@ Check whether the process ID specified by the **-p** parameter exists on the dev
 The specified level does not exist.
 
 **Symptom**
-
+ 
 The specified memory usage level does not exist.
 
 **Possible Causes**
@@ -1198,3 +1202,21 @@ The value of the **type** parameter in the signing tool is not **debug**.
 Use the signing certificate of the **debug** type and install the newly signed HAP. Then, run the command again.
 
 For details about the signing tool and certificate, see [Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
+
+### 10104005 The Specified userId Is Not a Foreground User
+
+**Error Message**
+
+The specified userId is not a foreground user.
+
+**Symptom**
+
+The specified userId is not a foreground user.
+
+**Possible Causes**
+
+The specified userId is not currently in the foreground.
+
+**Solution**
+
+Check whether the specified userId is in the foreground.
