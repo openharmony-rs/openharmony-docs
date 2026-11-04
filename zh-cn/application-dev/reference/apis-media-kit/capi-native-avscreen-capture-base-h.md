@@ -64,7 +64,7 @@
 | [OH_AVScreenCapture_FillMode](#oh_avscreencapture_fillmode) | OH_AVScreenCapture_FillMode | 枚举，图像填充模式。 |
 | [OH_ScreenCaptureHighlightMode](#oh_screencapturehighlightmode) | OH_ScreenCaptureHighlightMode | 枚举，表示屏幕录制高亮边框的模式。 |
 | [OH_CapturePickerMode](#oh_capturepickermode) | OH_CapturePickerMode | 枚举，表示Picker显示模式。 |
-| [OH_AVScreenCapture_AutoPauseCaptureSceneEnum](#oh_avscreencapture_autopausecapturesceneenum) | OH_AVScreenCapture_AutoPauseCaptureSceneEnum | 屏幕录制自动暂停场景枚举。 |
+| [OH_AVScreenCapture_AutoPauseCaptureSceneEnum](#oh_avscreencapture_autopausecapturesceneenum) | OH_AVScreenCapture_AutoPauseCaptureSceneEnum | 表示屏幕录制自动暂停场景的枚举。 |
 
 ### 函数
 
@@ -86,6 +86,12 @@
 | 名称 | 描述 |
 | -- | -- |
 | const char * OH_SCREEN_CAPTURE_CONTENT_RECT | 获取录屏图像帧中有效内容区域信息的key。<br>通过此key获取到的返回值是一个int32_t数组，单位为像素（px）。数组长度为4。数组元素定义为[top, left, width, height]，其中top表示矩形窗口左上角纵坐标，left表示矩形窗口左上角横坐标，width表示矩形窗口的宽度，height表示矩形窗口的高度。数组元素可以从[OH_AVFormat_GetIntBuffer](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_getintbuffer)中获取。<br>**起始版本：** 26.0.0 |
+
+### 类型定义
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_AVScreenCapture_AutoPauseSceneSet](#oh_avscreencapture_autopausesceneset) | OH_AVScreenCapture_AutoPauseSceneSet | 屏幕录制自动暂停场景条件集声明。 |
 
 ## 枚举类型说明
 
@@ -411,14 +417,28 @@ enum OH_AVScreenCapture_AutoPauseCaptureSceneEnum
 
 **描述**
 
-屏幕录制自动暂停场景枚举。
+表示屏幕录制自动暂停场景的枚举。
 
 **起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAPTURE_AUTO_PAUSE_SCENE_NONE = 0 | 默认值，表示在任何场景下都不进行自动暂停。 |
-| OH_CAPTURE_AUTO_PAUSE_SCENE_SCREEN_FOLD_STATE_CHANGE = 1 << 0 | 屏幕折叠状态发生变化的场景。 |
+| OH_CAPTURE_AUTO_PAUSE_SCENE_NONE = 0 | 默认值，表示在任何场景下屏幕录制都不进行自动暂停。 |
+| OH_CAPTURE_AUTO_PAUSE_SCENE_SCREEN_FOLD_STATE_CHANGE = 1 << 0 | 屏幕折叠状态发生变化的场景。当屏幕折叠状态发生变化时，系统将自动暂停屏幕录制。 |
+
+## 类型定义说明
+
+### OH_AVScreenCapture_AutoPauseSceneSet
+
+```c
+typedef uint32_t OH_AVScreenCapture_AutoPauseSceneSet
+```
+
+**描述**
+
+屏幕录制自动暂停场景条件集声明。用于通过按位或组合[OH_AVScreenCapture_AutoPauseCaptureSceneEnum](#oh_avscreencapture_autopausecapturesceneenum)中的枚举值，表示自动暂停屏幕录制的场景集合。
+
+**起始版本：** 26.1.0
 
 ## 函数说明
 
