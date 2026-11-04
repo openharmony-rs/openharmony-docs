@@ -51,16 +51,6 @@
 
 在低功耗蓝牙中，扫描其他设备并主动发起连接的设备称为中心设备，发送广播并接受其他设备连接请求的设备称为外围设备。
 
-## 约束与限制
-
-### 支持的设备
-
-支持Phone、PC/2in1、Tablet、TV、Wearable设备；从API版本26.0.1开始，新增支持Car设备。
-
-### 支持的国家/地区
-
-请参见版本说明中[各设备支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。
-
 <!--RP1-->
 
 <!--RP1End-->

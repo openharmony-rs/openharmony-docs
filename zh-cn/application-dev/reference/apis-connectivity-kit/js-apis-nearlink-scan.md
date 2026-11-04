@@ -259,7 +259,7 @@ try {
 | deviceName | string | 否 | 否 | 表示扫描到的设备名称。字符串长度范围[0, 30]。 |
 | isConnectable | boolean | 否 | 否 | 表示扫描到的广播是否可连接。true：可连接，false：不可连接 |
 | deviceClass | [nearlinkConstant.DeviceClass](js-apis-nearlink-constant.md#deviceclass) | 否 | 是 | 表示扫描到的设备类型。设备广播未携带设备类型信息时该字段不返回。 |
-| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 表示收到的广播包的无线帧类型。未返回该字段时，帧类型为FRAME_TYPE_1。 |
+| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 表示收到的广播包的无线帧类型。未返回该字段时，帧类型为FRAME_TYPE_1。<br>**起始版本：** 26.1.0 |
 
 
 ## ScanFilters
@@ -300,7 +300,7 @@ try {
 | -------- | -------- | -------- | -------- | -------- |
 | scanMode | [ScanMode](#scanmode) | 否 | 是 | 表示扫描模式。默认值为'SCAN_MODE_LOW_POWER'。 |
 | duration | number | 否 | 是 | 表示扫描持续时间。单位：秒，取值范围[10, 60]，默认值为全时段扫描。 |
-| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 表示扫描选项的无线帧类型。默认值为FRAME_TYPE_1。 |
+| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 表示扫描选项的无线帧类型。默认值为FRAME_TYPE_1。<br>**起始版本：** 26.1.0 |
 
 
 ## ScanMode
