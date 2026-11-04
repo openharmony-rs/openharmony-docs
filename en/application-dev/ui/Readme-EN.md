@@ -311,7 +311,7 @@
     - [Image Display (Image)](ndk-image-component.md)
     - [Using the Swiper Component](ndk-swiper.md)
   - [Building Form Components](ndk-build-form-components.md)
-  - [Building Dialog Boxes](ndk-build-pop-up-window.md)
+  - [Building a Dialog Box](ndk-build-pop-up-window.md)
   - Using Animation<!--arkts-use-animation-ndk-->
     - [Using Animations](ndk-use-animation.md)
     - [Animation Development](ndk-use-animation-scene.md)
@@ -327,9 +327,9 @@
     - [Implementing Custom Drawing](arkts-user-defined-draw.md)
   - [Integrating Accessibility Through XComponent](ndk-accessibility-xcomponent.md)
   - [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md)
-  - [Querying and Operating Custom Nodes](ndk-node-query-operate.md)
-  - [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md)
-  - [Parallelizing UI Page Building Using Multi-threaded NDK APIs](ndk-build-on-multi-thread.md)
+  - [Querying and Operating NDK Nodes](ndk-node-query-operate.md)
+  - [NDK Multi-Instance Scenario Development](ndk-scope-task.md)
+  - [NDK Multi-thread Component Creation](ndk-build-on-multi-thread.md)
   - [Building a Rendering Node](ndk-embed-render-components.md)
 - UI Development (JavaScript-compatible Web-like Development Paradigm)<!--ui-js-dev-->
   - [UI Development (JavaScript-compatible Web-like Development Paradigm) Overview](ui-js-overview.md)
