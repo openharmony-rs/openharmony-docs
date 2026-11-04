@@ -279,7 +279,7 @@ enum InputMethod_InputCapabilityType
 
 取值建议：当需要请求输入法切换到翻译模式时使用IME_INPUT_CAPABILITY_TYPE_TRANSLATION。
 
-**起始版本：** 26.1
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |

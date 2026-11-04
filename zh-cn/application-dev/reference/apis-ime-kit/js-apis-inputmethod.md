@@ -1448,7 +1448,7 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**起始版本：** 26.1
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -4340,7 +4340,7 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**起始版本：** 26.1
+**起始版本：** 26.1.0
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |

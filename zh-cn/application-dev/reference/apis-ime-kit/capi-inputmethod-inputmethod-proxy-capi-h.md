@@ -317,7 +317,7 @@ InputMethod_ErrorCode OH_InputMethod_InputMethodProxy_RequestSystemInputCapabili
 
 线程安全：此函数非线程安全，不建议在多线程环境下同时操作同一个inputMethodProxy对象。
 
-**起始版本：** 26.1
+**起始版本：** 26.1.0
 
 **参数：**
 
