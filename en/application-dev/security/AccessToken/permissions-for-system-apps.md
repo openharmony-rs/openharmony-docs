@@ -8758,6 +8758,20 @@ Allows an application to configure the capability of unlocking devices via enter
  
 **Valid since**: 26.0.1
 
+## ohos.permission.SET_DSL_MODE
+
+Allows an application to modify the device security level (DSL) configuration.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.vehicle.VEHICLE_POWER
 
 Allows a system application to subscribe to and query the vehicle cabin power status.
