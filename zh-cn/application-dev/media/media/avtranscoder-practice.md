@@ -239,8 +239,10 @@ status: active
 5. 主线程接收到worker线程转码结束的信息，销毁worker线程。
 
    <!-- @[DestroyWorkerThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
-   // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，在宿主线程执行。
+   // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，
+   // 在宿主线程执行
    this.workerInstance.onmessage = (e: MessageEvents) => {
      let data: string | number = e.data;
      if (typeof data === 'string') {
