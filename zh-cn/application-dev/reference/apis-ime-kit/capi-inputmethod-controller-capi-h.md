@@ -211,7 +211,7 @@ InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod
 
 线程安全：此函数非线程安全，不建议在多线程环境下同时调用。
 
-**起始版本：** 26.1
+**起始版本：** 26.1.0
 
 **参数：**
 
