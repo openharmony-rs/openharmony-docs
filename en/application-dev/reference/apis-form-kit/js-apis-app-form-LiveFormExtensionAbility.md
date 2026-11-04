@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5d7620d4e4922c61847803b4d9f05a3c89ee7cd9 translatedAt=2026-09-15T01:51:02.458Z pushedAt=2026-09-15T07:41:24.370Z -->
+<!-- md-trans-meta sourceCommit=043045e697ee3f1e0fe83acc76eced0a0c22dd28 translatedAt=2026-11-03T06:58:23.413Z pushedAt=2026-11-04T03:11:19.942Z nl=1 -->
 
 The **LiveFormExtensionAbility** module, which inherits from [ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md), provides interactive widget functions, including receiving notifications for creating and destroying interactive widgets.
 
@@ -105,7 +105,7 @@ const TAG: string = '[testTag] LiveFormExtAbility';
 
 export default class LiveFormExtAbility extends LiveFormExtensionAbility {
   onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
-    console.info(TAG, `onLiveFormDestroy, liveFormInfo: ${liveFormInfo.formId}`);
+    console.info(TAG, `onLiveFormDestroy, formId: ${liveFormInfo.formId}`);
   }
 }
 ```
@@ -137,7 +137,7 @@ LiveFormExtensionAbility does not support the reference to the following modules
 | ConnectivityKit | [@ohos.connectedTag (Active Tag)](../apis-connectivity-kit/js-apis-connectedTag.md)<br>[@ohos.nfc.cardEmulation (Standard NFC - Card Emulation)](../apis-connectivity-kit/js-apis-cardEmulation.md)<br>[@ohos.nfc.controller (Standard NFC)](../apis-connectivity-kit/js-apis-nfcController.md)<br>[@ohos.nfc.tag (Standard NFC - Tag)](../apis-connectivity-kit/js-apis-nfcTag.md)<br>[nfctech (Standard NFC - Tag Nfc Technology)](../apis-connectivity-kit/js-apis-nfctech.md)<br>[tagSession (Standard NFC - Tag TagSession)](../apis-connectivity-kit/js-apis-tagSession.md) |
 | ContactsKit | [@ohos.contact (Contacts)](../apis-contacts-kit/js-apis-contact.md) |
 | ArkData | [@ohos.data.distributedData (Distributed Data Management)](../apis-arkdata/js-apis-distributed-data.md)<br>[@ohos.data.distributedDataObject (Distributed Data Object)](../apis-arkdata/js-apis-data-distributedobject.md)<br>[@ohos.data.distributedKVStore (Distributed KV Store)](../apis-arkdata/js-apis-distributedKVStore.md) |
-| MDMKit | [@ohos.enterprise.adminManager (Admin Permission Management)](../apis-mdm-kit/js-apis-enterprise-adminManager.md)<br>[@ohos.enterprise.deviceInfo (Device Information Management)](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)<!--Del--><br>[@ohos.enterprise.dateTimeManager (System Time Management) (System API)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)<!--DelEnd--> |
+| MDMKit | [@ohos.enterprise.adminManager (admin permission management)](../apis-mdm-kit/js-apis-enterprise-adminManager.md)<br>[@ohos.enterprise.deviceInfo (device information management)](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)<!--Del--><br>[@ohos.enterprise.dateTimeManager (system time management)(system API)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)<!--DelEnd--> |
 | CoreFileKit | [@ohos.file.picker (Picker)](../apis-core-file-kit/js-apis-file-picker.md)<!--Del--><br>[@ohos.filemanagement.userFileManager (User File Management) (System API)](../apis-core-file-kit/js-apis-userFileManager-sys.md)<!--DelEnd--> |
 | MediaLibraryKit | [@ohos.file.sendablePhotoAccessHelper (Sendable-Based Album Management)](../apis-media-library-kit/js-apis-sendablePhotoAccessHelper.md)<br>[@ohos.file.AlbumPickerComponent (Album Picker Component)](../apis-media-library-kit/ohos-file-AlbumPickerComponent.md)<br>[@ohos.file.PhotoPickerComponent (PhotoPicker Component)](../apis-media-library-kit/ohos-file-PhotoPickerComponent.md)<br>[@ohos.file.RecentPhotoComponent (Recent Photo Component)](../apis-media-library-kit/ohos-file-RecentPhotoComponent.md)<br>[@ohos.multimedia.movingphotoview (Moving Photo)](../apis-media-library-kit/ohos-multimedia-movingphotoview.md) |
 | PerformanceAnalysisKit | [@ohos.hidebug (Debug)](../apis-performance-analysis-kit/js-apis-hidebug.md) |
@@ -146,7 +146,7 @@ LiveFormExtensionAbility does not support the reference to the following modules
 | AVSessionKit | [@ohos.multimedia.avCastPicker (Cast Picker Component)](../apis-avsession-kit/ohos-multimedia-avcastpicker.md)<br>[@ohos.multimedia.avsession (Media Session Management)](../apis-avsession-kit/arkts-apis-avsession.md) |
 | MediaKit | [@ohos.multimedia.media (Media Service)](../apis-media-kit/arkts-apis-media.md) |
 | NotificationKit | [@ohos.notification (Notification)](../apis-notification-kit/js-apis-notification.md)<br>[@ohos.notificationManager (NotificationManager)](../apis-notification-kit/js-apis-notificationManager.md)<!--Del--><br>[@ohos.notificationSubscribe (NotificationSubscribe) (System API)](../apis-notification-kit/js-apis-notificationSubscribe-sys.md)<!--DelEnd--> |
-| TelephonyKit | [@ohos.telephony.call (Call)](../apis-telephony-kit/js-apis-call.md)<br>[@ohos.telephony.data (Cellular Data)](../apis-telephony-kit/js-apis-telephony-data.md)<br>[@ohos.telephony.observer (Observer)](../apis-telephony-kit/js-apis-observer.md)<br>[@ohos.telephony.radio (Network Search)](../apis-telephony-kit/js-apis-radio.md)<br>[@ohos.telephony.sim (SIM Card Management)](../apis-telephony-kit/js-apis-sim.md)<br>[@ohos.telephony.sms (SMS)](../apis-telephony-kit/js-apis-sms.md) |
+| TelephonyKit | [@ohos.telephony.call (call)](../apis-telephony-kit/js-apis-call.md)<br>[@ohos.telephony.data (cellular data)](../apis-telephony-kit/js-apis-telephony-data.md)<br>[@ohos.telephony.observer (telephony service status listening)](../apis-telephony-kit/js-apis-observer.md)<br>[@ohos.telephony.radio (network search)](../apis-telephony-kit/js-apis-radio.md)<br>[@ohos.telephony.sim (SIM card management)](../apis-telephony-kit/js-apis-sim.md)<br>[@ohos.telephony.sms (SMS service)](../apis-telephony-kit/js-apis-sms.md) |
 | UserAuthenticationKit | [@ohos.userIAM.userAuth (User Authentication)](../apis-user-authentication-kit/js-apis-useriam-userauth.md)<!--Del--><br>[@ohos.userIAM.faceAuth (Face Authentication) (System API)](../apis-user-authentication-kit/js-apis-useriam-faceauth-sys.md)<!--DelEnd--> |
 | ArkUI | [@ohos.window (Window)](../apis-arkui/arkts-apis-window.md) |
 |<!--DelRow--> AccessibilityKit | [@ohos.accessibility.config (System Accessibility Configuration) (System API)](../apis-accessibility-kit/js-apis-accessibility-config-sys.md) |

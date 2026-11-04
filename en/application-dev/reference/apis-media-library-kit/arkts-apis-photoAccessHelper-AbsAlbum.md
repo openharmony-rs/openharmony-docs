@@ -5,7 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:05.559Z pushedAt=2026-06-23T09:25:46.738Z -->
+<!-- md-trans-meta sourceCommit=d036437fca9f1387f05ed5f1104d3980c50e5643 translatedAt=2026-11-03T07:00:15.601Z pushedAt=2026-11-04T03:11:19.946Z nl=1 -->
 
 > **NOTE**
 >
@@ -47,24 +47,23 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.|
-| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt;&gt; | Yes  | Callback function. If files from the album are obtained successfully, **err** is **undefined**, and **data** is the result set of the obtained image and video data ([FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)). Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt;&gt; | Yes | Callback invoked to return the result. If the files in the album are obtained successfully, err is undefined and data is the [FetchResult](arkts-apis-photoAccessHelper-FetchResult.md) object that contains the image and video data. If the operation fails, err is an error object and data is undefined. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-In API version 13 and earlier versions, if the caller does not have the required permission, error code 13900012 is returned. Starting from API version 14, the same situation raises error code 201.
-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  <br> Applicable versions: 12 and later  |
+| 13900012     | Permission denied. <br> Applicable versions: 10-11         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The predicate contains invalid statements, the key must be a valid PhotoKeys value.<br>2. The fetchColumns contain invalid column names, the column must be a valid PhotoKeys value.<br>3. The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>4. The album instance is invalid.<br>5. The album ID is invalid.<br>6. The album type or subtype is not a valid enum value.<br>7. The combination of album type and subtype is invalid. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Database query failed, possible causes: <br>(1) Database connection exception; <br>(2) Database operation error. Please retry and check logs.<br>2. IPC call failed, the server returned an error code.<br>3. Both sandbox query and IPC query failed to retrieve data.<br>4. Failed to create the query result, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry.<br>5. FetchOptions parsing failed, please check if the parameter is a valid FetchOptions type.<br>6. Parameter parsing failed, please check parameter types and count. |
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+Refer to the example in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper) to create phAccessHelper.
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -83,7 +82,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
   let album: photoAccessHelper.Album = await albumList.getFirstObject();
   album.getAssets(fetchOption, (err, albumFetchResult) => {
-    if (albumFetchResult !== undefined) {
+    if (!err) {
       console.info('album getAssets successfully, getCount: ' + albumFetchResult.getCount());
     } else {
       console.error(`album getAssets failed with error: ${err.code}, ${err.message}`);
@@ -120,18 +119,17 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-In API version 13 and earlier versions, if the caller does not have the required permission, error code 13900012 is returned. Starting from API version 14, the same situation raises error code 201.
-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> Applicable versions: 20 and later |
+| 13900012     | Permission denied. <br> Applicable versions: 10-19         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>2. The album instance is invalid.<br>3. The album type is invalid, must be a valid AlbumType enum value.<br>4. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. FetchOptions parsing failed, please check if the parameter is a valid FetchOptions type.<br>2. Parameter parsing failed, please check parameter types and count.<br>3. Database query failed, possible causes: <br>(1) Database connection exception; <br>(2) Database operation error. Please retry and check logs.<br>4. Failed to create the query result, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry.<br>5. Database query returned empty result set in async execution path. |
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+Refer to the example in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper) to create phAccessHelper.
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';

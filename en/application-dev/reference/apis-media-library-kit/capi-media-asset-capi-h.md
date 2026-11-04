@@ -6,7 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:33:03.024Z pushedAt=2026-06-23T09:25:46.753Z -->
+<!-- md-trans-meta sourceCommit=6a96f2b8f99f158608ec5045488b853b4cc6044f translatedAt=2026-11-03T07:11:40.744Z pushedAt=2026-11-04T03:11:19.973Z nl=1 -->
 
 ## Overview
 
@@ -60,6 +60,7 @@ Obtains the URI of a media asset.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -84,6 +85,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetMediaType(OH_MediaAsset* mediaAsset, Med
 Obtains the type of a media asset.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -110,6 +112,7 @@ Obtains the subtype of a media asset.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -134,6 +137,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDisplayName(OH_MediaAsset* mediaAsset, c
 Obtains the display name of a media asset.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -160,6 +164,7 @@ Obtains the size of a media asset file.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -185,12 +190,13 @@ Obtains the date when a media asset was added.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance.|
-| uint32_t* dateAdded | Pointer to the date obtained. The value is the number of seconds elapsed since the Unix Epoch time (00:00:00 UTC on January 1, 1970).|
+| uint32_t* dateAdded | Date when the asset was added. The value is the number of seconds from the time the file was added to January 1, 1970. Unit: second (s). |
 
 **Return value**
 
@@ -209,6 +215,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateModified(OH_MediaAsset* mediaAsset, 
 Obtains the date when a media asset (content not the media asset name) was last modified.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -235,6 +242,7 @@ Obtains the date when a media asset was taken.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -259,6 +267,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAddedMs(OH_MediaAsset* mediaAsset, u
 Obtains the date when a media asset was added, in ms.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -285,6 +294,7 @@ Obtains the date when a media asset (content not the media asset name) was last 
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -309,6 +319,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDuration(OH_MediaAsset* mediaAsset, uint
 Obtains the duration of a media asset, in ms.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -335,6 +346,7 @@ Obtains the image width (in pixels) of a media asset.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -359,6 +371,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetHeight(OH_MediaAsset* mediaAsset, uint32
 Obtains the image height (in pixels) of a media asset.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -385,6 +398,7 @@ Obtains the rotation angle of an image, in degrees (°).
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -409,6 +423,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_IsFavorite(OH_MediaAsset* mediaAsset, uint3
 Checks whether a media asset is favorited.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -435,6 +450,7 @@ Obtains the title of a media asset.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -460,6 +476,7 @@ Releases a media asset.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -471,3 +488,5 @@ Releases a media asset.
 | Type| Description|
 | -- | -- |
 | [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.|
+
+

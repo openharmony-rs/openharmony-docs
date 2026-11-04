@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=590496a6dfd5ba2f288b85dabaf3b3eb5845cddb translatedAt=2026-11-03T06:49:07.187Z pushedAt=2026-11-03T10:51:02.559Z nl=2 -->
+<!-- md-trans-meta sourceCommit=590496a6dfd5ba2f288b85dabaf3b3eb5845cddb translatedAt=2026-11-03T06:49:07.187Z pushedAt=2026-11-04T03:11:19.926Z nl=2 -->
 
 This module provides the widget data binding capability, supporting the creation of FormBindingData objects and the setting of widget display data. It is applicable to scenarios such as widget data update and image data transfer, helping you conveniently manage widget display content and improve the efficiency of widget data management.
 
