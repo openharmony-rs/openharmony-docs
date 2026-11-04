@@ -5328,7 +5328,7 @@ format(num: number): string
 
 getCurrency(locale: Intl.Locale): Currency
 
-创建并返回Currency对象。
+创建并返回货币对象。
 
 **起始版本：** 26.1.0
 
@@ -5348,7 +5348,7 @@ getCurrency(locale: Intl.Locale): Currency
 
 | 类型                       | 说明                    |
 | ------------------------ | --------------------- |
-| [Currency](#currency) | 根据区域对象创建的Currency对象。 |
+| [Currency](#currency) | 根据区域对象创建的货币对象。 |
 
 **示例：**
 
@@ -5360,7 +5360,7 @@ let currency: i18n.Currency = i18n.getCurrency(locale);
 
 ## Currency
 
-提供货币相关的能力，包括获取符合ISO 4217标准的货币代码。
+提供货币相关的能力，包括获取符合[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)标准的货币代码。
 
 **起始版本：** 26.1.0
 
@@ -5370,7 +5370,7 @@ let currency: i18n.Currency = i18n.getCurrency(locale);
 
 getISO4217Code(): string
 
-获取符合ISO 4217标准的货币代码。
+获取符合[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)标准的货币代码。
 
 **起始版本：** 26.1.0
 
@@ -5384,7 +5384,7 @@ getISO4217Code(): string
 
 | 类型                  | 说明                 |
 | ------------------- | ------------------ |
-| string | 符合ISO 4217标准的三字母货币代码。例如美国的默认货币是USD，中国的默认货币是CNY。 |
+| string | 符合[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)标准的三字母货币代码。例如美国的默认货币是USD，中国的默认货币是CNY。 |
 
 **示例：**
 
