@@ -99,7 +99,6 @@ status: active
      //...
      // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
      fileIo.closeSync(fd);
-     // ...
      ```
 
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
