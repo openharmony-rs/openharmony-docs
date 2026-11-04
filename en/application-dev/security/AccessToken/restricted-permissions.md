@@ -1779,6 +1779,20 @@ After obtaining this permission, the application can record and replay input eve
 
 **Since**: 26.1.0
 
+## ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM
+ 
+Allows an application to create audio streams with a specified ultra‑low latency mode when creating audio playback or recording streams, so that the overall latency of the resulting audio stream is lower than that of the normal mode.
+ 
+<!--RP117--><!--RP117End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
+ 
+**Since**: 26.1.0
+
 ## ohos.permission.ACCESS_BOARD_INFO
  
 Allows an application to obtain the device hardware information.
