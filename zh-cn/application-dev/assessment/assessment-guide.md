@@ -75,7 +75,7 @@
 
 <!-- @[assessment_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/module.json5) -->
 
-```json5
+``` JSON5
 {
   "module": {
     // ...
@@ -95,7 +95,7 @@
 
 <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 ```
 
@@ -107,7 +107,7 @@ import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 
 <!-- @[assessment_begin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/BeginAssessment.ets) -->
 
-```ts
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -178,7 +178,7 @@ struct Index {
 
 <!-- @[assessment_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/QueryAssessment.ets) -->
 
-```ts
+``` TypeScript
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -206,7 +206,7 @@ try {
 
 <!-- @[assessment_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/EndAssessment.ets) -->
 
-```ts
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -267,7 +267,7 @@ PC全屏通过maximize接口实现，需传入MaximizePresentation.ENTER_IMMERSI
 
 <!-- @[assessment_hardening](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/AssessmentHardening.ets) -->
 
-```ts
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -347,7 +347,7 @@ export class ExamHardeningUtil {
 
 <!-- @[assessment_page_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/ExamPageLifecycle.ets) -->
 
-```ts
+``` TypeScript
 aboutToAppear(): void {
   this.applyHardening();
 }
