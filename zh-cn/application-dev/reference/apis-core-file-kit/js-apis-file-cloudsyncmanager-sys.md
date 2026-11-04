@@ -734,8 +734,6 @@ cloudSyncManager.disableCloud(accountId, (err: BusinessError<void> | null): void
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
-**系统能力**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
 **ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：23
