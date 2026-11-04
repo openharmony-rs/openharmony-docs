@@ -100,7 +100,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setVideoStabilizationMode(videoSession: camera.VideoSession): void {
   try {
-    videoSession.setVideoStabilizationMode(camera.VideoStabilizationMode.OFF);
+    if (videoSession.isVideoStabilizationModeSupported(camera.VideoStabilizationMode.OFF)) {
+      videoSession.setVideoStabilizationMode(camera.VideoStabilizationMode.OFF);
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

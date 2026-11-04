@@ -547,7 +547,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过[getSupportedOutputCapability](./arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取。 |
 
 **错误码：**
 
@@ -564,9 +564,16 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, metadataObjectTypes: Array<camera.MetadataObjectType>): void {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataObjectTypes.every(type => types.includes(type))) {
+    console.error(`invalid metadataObjectTypes.`);
+    return;
+  }
   try {
-    metadataOutput.addMetadataObjectTypes(types);
+    metadataOutput.addMetadataObjectTypes(metadataObjectTypes);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -606,9 +613,16 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, metadataObjectTypes: Array<camera.MetadataObjectType>): void {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataObjectTypes.every(type => types.includes(type))) {
+    console.error(`invalid metadataObjectTypes.`);
+    return;
+  }
   try {
-    metadataOutput.removeMetadataObjectTypes(types);
+    metadataOutput.removeMetadataObjectTypes(metadataObjectTypes);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
