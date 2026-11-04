@@ -400,7 +400,7 @@ function socketTest() {
    
    NET_CAPABILITY_CHECKING_CONNECTIVITY：表示系统正在进行连通性校验，此时网络可用性尚不确定。
    
-   NET_CAPABILITY_VALIDATED：表示连通性校验通过，当networkCap数组中不包含NET_CAPABILITY_CHECKING_CONNECTIVITY（即未处于连接性校验过程中）、且包含NET_CAPABILITY_VALIDATED时，表示网络可用，可以访问互联网。
+   NET_CAPABILITY_VALIDATED：表示连通性校验通过，当networkCap数组中不包含NET_CAPABILITY_CHECKING_CONNECTIVITY（即未处于连通性校验过程中）、且包含NET_CAPABILITY_VALIDATED时，表示网络可用，可以访问互联网。
    
     <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
     
