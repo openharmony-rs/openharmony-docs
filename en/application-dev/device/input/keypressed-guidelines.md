@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=060731dc86ce43c3269dd7ff91aed611767ebd94 translatedAt=2026-08-20T06:24:51.984Z pushedAt=2026-08-20T13:09:39.990Z -->
+<!-- md-trans-meta sourceCommit=cf15a63f3c29e8855e41a812e05135acbae2775b translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
@@ -20,16 +20,20 @@ Each system function key has a system-defined default behavior. For example, the
 
 ## Available APIs
 
-The following table lists common APIs for key press events. For details, see [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](../../reference/apis-input-kit/js-apis-inputconsumer.md).
+The following table lists common APIs for key press events. For details, see [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](../../reference/apis-input-kit/js-apis-inputconsumer.md) and [@ohos.multimodalInput.inputDevice (Input Devices)](../../reference/apis-input-kit/js-apis-inputdevice.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
-| on(type: "keyPressed", options: KeyPressedConfig, callback: Callback\<KeyEvent>): void |Subscribes to press events of the specified key and intercepts the default system response. |
-| off(type: "keyPressed", callback?: Callback\<KeyEvent>): void |Unsubscribes from press events of the specified key and restores the default system response. |
+| getDeviceList(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void | Obtains the IDs of all input devices. |
+| supportKeysSync(deviceId: number, keys: Array&lt;KeyCode&gt;): Array&lt;boolean&gt; | Checks whether the specified input device supports the specified key codes. |
+| on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback\<KeyEvent>): void | Subscribes to key press events. |
+| off(type: 'keyPressed', callback?: Callback\<KeyEvent>): void | Unsubscribes from the 'keyPressed' event. |
 
 ## How to Develop
 
 When an application is started, call [on](../../reference/apis-input-kit/js-apis-inputconsumer.md#inputconsumeronkeypressed16) to subscribe to key press events. When the application is closed, call [off](../../reference/apis-input-kit/js-apis-inputconsumer.md#inputconsumeroffkeypressed16) to unsubscribe from key press events.
+
+If a system function key is not available on all devices, such as the smart control key's swipe-up or swipe-down gesture, check device support before subscribing. Call [inputDevice.getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9) to obtain all input device IDs, then call [inputDevice.supportKeysSync](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicesupportkeyssync10) for each device to check support for the target key code. If a device does not support the key, do not subscribe to it, and disable the corresponding feature entry. Common keys such as volume and media keys can be subscribed to without this check.
 
 ### Prioritizing System Function Key Events
 
@@ -152,7 +156,7 @@ struct TestDemo14 {
                 .showToast({ message: 'Successfully added monitoring for Volume Up key!' })
               this.text = "Monitoring for Volume Up key has been added."
             } catch (error) {
-              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+              hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
               this.getUIContext()
                 .getPromptAction()
@@ -198,7 +202,7 @@ struct TestDemo14 {
                 .showToast({ message: 'Successfully added monitoring for Volume Down key!' })
               this.text = "Monitoring for Volume Down key has been added."
             } catch (error) {
-              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+              hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
               this.getUIContext()
                 .getPromptAction()
@@ -248,7 +252,7 @@ struct TestDemo14 {
                   .showToast({ message: 'Successfully added monitoring for Slide Up key!' })
                 this.text = "Monitoring for Slide Up key has been added."
               } catch (error) {
-                hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+                hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
                   JSON.stringify(error, ["code", "message"]));
                 this.getUIContext()
                   .getPromptAction()
@@ -295,7 +299,7 @@ struct TestDemo14 {
                   .showToast({ message: 'Successfully added monitoring for Slide Down key!' })
                 this.text = "Monitoring for Slide Down key has been added."
               } catch (error) {
-                hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+                hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
                   JSON.stringify(error, ["code", "message"]));
                 this.getUIContext()
                   .getPromptAction()
