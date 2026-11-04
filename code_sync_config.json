@@ -8993,13 +8993,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/UITimer.h",
-				"functions":[
-					{
-						"end_line":90,
-						"name":"ui_timer",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/MixedRefreshExample.h",
@@ -9057,6 +9051,16 @@
 					{
 						"end_line":233,
 						"name":"arkui_mixed_refresh_cpp",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/UITimer.cpp",
+				"functions":[
+					{
+						"end_line":130,
+						"name":"ui_timer",
 						"start_line":15
 					}
 				]
