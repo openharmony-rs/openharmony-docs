@@ -1272,7 +1272,7 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 
 设置企业应用防护策略。调用成功后，企业应用的DLP防护将按照设置的策略执行。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 该接口可用于企业管理员配置DLP安全策略，以统一管理企业数据安全防护规则。
 
@@ -1448,7 +1448,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 将明文文件加密生成企业账号DLP文件，仅支持企业账号调用。使用Promise异步回调。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 用于将明文文件加密生成企业账号的DLP权限受控文件，实现企业级的文件权限管理。
 
@@ -1536,7 +1536,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 
 将DLP文件解密生成明文文件，仅支持企业账号调用。使用Promise异步回调。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 该接口用于将DLP加密文件解密为明文文件，适用于拥有者权限用户导出或迁移文件。
 > **说明：**
@@ -1610,7 +1610,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 在DLP文件中解析文件头，获取DLP明文策略。返回的策略JSON字符串包含[DLPProperty](#dlpproperty21)和[CustomProperty](#customproperty21)信息。使用Promise异步回调。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 该接口可用于在查看DLP文件权限配置等场景中，获取文件的策略信息以便进行分析。
 
@@ -1759,7 +1759,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 
 该函数提供给SA（System Ability）侧调用，处理完连接云端服务的请求后，通过callback将结果返回给SA（System Ability）。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 该接口可用于企业账号认证、云端权限验证等场景，实现SA与云服务器的通信能力，完成权限校验或账号验证流程。
 
@@ -1827,7 +1827,7 @@ constructor()
 
 [DlpConnManager](#dlpconnmanager21) 实例化时的构造函数。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
  
 **需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
  
@@ -1855,7 +1855,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
   
 该接口提供将回调注册到SA（System Ability）侧的功能。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 > **说明：**
 >
@@ -1920,7 +1920,7 @@ static unregisterPlugin(): void
   
 提供将回调从SA（System Ability）侧注销的能力。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 该接口可用于应用退出时注销回调以释放资源。
 
@@ -1957,7 +1957,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 表示企业DLP文件的查询选项。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 **起始版本：** 26.0.0
 
@@ -1975,7 +1975,7 @@ queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&l
 
 查询已打开且符合指定选项的企业DLP文件的URI列表。使用Promise异步回调。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 在需要管理或追踪当前应用已打开的企业DLP文件时调用该接口，可用于文件状态检查、资源管理等场景。
 
@@ -2038,7 +2038,7 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 
 关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 在需要批量关闭企业DLP文件、清理文件资源或应用退出前释放文件句柄时调用该接口。
 
@@ -2100,7 +2100,7 @@ setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&l
 
 设置受企业DLP控制的应用程序列表。使用Promise异步回调。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
   
 **起始版本：** 26.0.0
 
@@ -2159,7 +2159,7 @@ getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
 
 获取当前用户受企业DLP控制的应用程序列表。使用Promise异步回调。
 
-<!--RP1><!--RP1Ed-->
+<!--RP1--><!--RP1End-->
 
 >**说明：**
 >
