@@ -489,7 +489,7 @@ napi_value TestAesGcm(napi_env env, napi_callback_info info)
 
 static const uint32_t IV_SIZE = 16;
 static const uint32_t AEAD_TAG_LEN = 14;
-static char IV[IV_SIZE] = { 0 }; // this is a test value, for real use the iv should be different every time.
+static char IV[IV_SIZE] = { 0 }; // 这是一个测试值，真正使用时每次的IV都应该不同
 static char AEAD[AEAD_TAG_LEN] = { 0 };
 static char NONCE[OH_HUKS_AE_NONCE_LEN] = { 0 };
 static struct OH_Huks_Param g_genEncDecParams[] = {
@@ -530,7 +530,7 @@ static struct OH_Huks_Param g_encryptParams[] = {
         .tag = OH_HUKS_TAG_IV,
         .blob = {
             .size = IV_SIZE,
-            .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time.
+            .data = (uint8_t *)IV // 这是一个测试值，真正使用时每次的IV都应该不同
         }
     }, {
         .tag = OH_HUKS_TAG_NONCE,
@@ -563,7 +563,7 @@ static struct OH_Huks_Param g_decryptParams[] = {
         .tag = OH_HUKS_TAG_IV,
         .blob = {
             .size = IV_SIZE,
-            .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time. 
+            .data = (uint8_t *)IV // 这是一个测试值，真正使用时每次的IV都应该不同
         }
     }, {
         .tag = OH_HUKS_TAG_NONCE,
