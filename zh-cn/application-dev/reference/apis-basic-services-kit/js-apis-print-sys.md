@@ -27,8 +27,6 @@ import { print } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | extensionId | string | 否 | 否 | 表示打印机扩展ID。 |
@@ -67,8 +65,7 @@ queryAllPrinterExtensionInfos(callback: AsyncCallback&lt;Array&lt;PrinterExtensi
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllPrinterExtensionInfos((error: BusinessError, extensionInfos: print.PrinterExtensionInfo[]) => {
     if (error) {
@@ -109,8 +106,7 @@ queryAllPrinterExtensionInfos(): Promise&lt;Array&lt;PrinterExtensionInfo&gt;&gt
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllPrinterExtensionInfos().then((extensionInfos: print.PrinterExtensionInfo[]) => {
     console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
@@ -152,8 +148,7 @@ disconnectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.disconnectPrinter(printerId, (error: BusinessError) => {
@@ -187,7 +182,7 @@ disconnectPrinter(printerId: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。断开打印机连接成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -202,8 +197,7 @@ disconnectPrinter(printerId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.disconnectPrinter(printerId).then(() => {
@@ -217,7 +211,7 @@ print.disconnectPrinter(printerId).then(() => {
 
 queryPrinterCapability(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
-查询打印机能力，使用callback异步回调。能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
+查询打印机能力，使用callback异步回调。能力查询结果可通过监听[print.on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void)](#printon)事件回调中的PrinterInfo.capability获取。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -245,8 +239,7 @@ queryPrinterCapability(printerId: string, callback: AsyncCallback&lt;void&gt;): 
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.queryPrinterCapability(printerId, (error: BusinessError) => {
@@ -262,7 +255,7 @@ print.queryPrinterCapability(printerId, (error: BusinessError) => {
 
 queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 
-查询打印机能力，使用Promise异步回调。能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
+查询打印机能力，使用Promise异步回调。能力查询结果可通过监听[print.on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void)](#printon)事件回调中的PrinterInfo.capability获取。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -280,7 +273,7 @@ queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。查询打印机能力成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -295,8 +288,7 @@ queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.queryPrinterCapability(printerId).then(() => {
@@ -310,7 +302,7 @@ print.queryPrinterCapability(printerId).then(() => {
 
 startPrintJob(jobInfo: PrintJob, callback: AsyncCallback&lt;void&gt;): void
 
-开始打印任务，使用callback异步回调。可通过监听[on('jobStateChange')](#printon-1)事件获取打印任务状态变化。
+开始打印任务，使用callback异步回调。可通过监听[print.on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void)](#printon-1)事件获取打印任务状态变化。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -338,8 +330,7 @@ startPrintJob(jobInfo: PrintJob, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
     fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
@@ -371,7 +362,7 @@ print.startPrintJob(jobInfo, (error: BusinessError) => {
 
 startPrintJob(jobInfo: PrintJob): Promise&lt;void&gt;
 
-开始打印任务，使用Promise异步回调。可通过监听[on('jobStateChange')](#printon-1)事件获取打印任务状态变化。
+开始打印任务，使用Promise异步回调。可通过监听[print.on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void)](#printon-1)事件获取打印任务状态变化。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -389,7 +380,7 @@ startPrintJob(jobInfo: PrintJob): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。开始打印任务成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -404,8 +395,7 @@ startPrintJob(jobInfo: PrintJob): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
     fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
@@ -463,8 +453,7 @@ cancelPrintJob(jobId: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '121212';
 print.cancelPrintJob(jobId, (error: BusinessError) => {
@@ -498,7 +487,7 @@ cancelPrintJob(jobId: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。取消打印任务成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -513,8 +502,7 @@ cancelPrintJob(jobId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '121212';
 print.cancelPrintJob(jobId).then(() => {
@@ -546,7 +534,7 @@ restartPrintJob(jobId: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。重新打印任务成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -560,8 +548,7 @@ restartPrintJob(jobId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '121212';
 print.restartPrintJob(jobId).then(() => {
@@ -665,8 +652,7 @@ requestPrintPreview(jobInfo: PrintJob): Promise&lt;number&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
     fdList : [44, 45], // fdList中的fd可通过fs.open等文件操作获取文件描述符
@@ -696,7 +682,7 @@ print.requestPrintPreview(jobInfo).then((num: number) => {
 
 on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void): void
 
-注册打印机状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('printerStateChange')](#printoff)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
+注册打印机状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off(type: 'printerStateChange', callback?: Callback&lt;boolean&gt;)](#printoff)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -780,7 +766,7 @@ print.off('printerStateChange', (data: boolean) => {
 
 on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void): void
 
-注册打印任务状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('jobStateChange')](#printoff-1)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
+注册打印任务状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off(type: 'jobStateChange', callback?: Callback&lt;boolean&gt;)](#printoff-1)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -858,7 +844,7 @@ print.off('jobStateChange', (data: boolean) => {
 
 on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void): void
 
-注册打印机扩展信息变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('extInfoChange')](#printoff-2)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
+注册打印机扩展信息变化事件回调，使用callback回调。在不需要监听时，可调用[print.off(type: 'extInfoChange', callback?: Callback&lt;boolean&gt;)](#printoff-2)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -964,8 +950,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;void&
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1007,7 +992,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。添加打印机成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1022,8 +1007,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1073,8 +1057,7 @@ removePrinters(printerIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1212';
 print.removePrinters([printerId], (error: BusinessError) => {
@@ -1108,7 +1091,7 @@ removePrinters(printerIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。移除打印机成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1123,8 +1106,7 @@ removePrinters(printerIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1212';
 print.removePrinters([printerId]).then(() => {
@@ -1166,8 +1148,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;vo
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1209,7 +1190,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。更新打印机信息成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1224,8 +1205,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1276,8 +1256,7 @@ updatePrinterState(printerId: string, state: PrinterState, callback: AsyncCallba
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1212';
 let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
@@ -1313,7 +1292,7 @@ updatePrinterState(printerId: string, state: PrinterState): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。更新打印机状态成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1328,8 +1307,7 @@ updatePrinterState(printerId: string, state: PrinterState): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1212';
 let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
@@ -1372,8 +1350,7 @@ updateExtensionInfo(info: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let info : string = 'WIFI_INACTIVE';
 print.updateExtensionInfo(info, (error: BusinessError) => {
@@ -1407,7 +1384,7 @@ updateExtensionInfo(info: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。更新打印机扩展信息成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1422,8 +1399,7 @@ updateExtensionInfo(info: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let info : string = 'WIFI_INACTIVE';
 print.updateExtensionInfo(info).then(() => {
@@ -1465,8 +1441,7 @@ queryAllPrintJobs(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllPrintJobs((error: BusinessError) => {
     if (error) {
@@ -1495,7 +1470,7 @@ queryAllPrintJobs(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。查询所有打印任务成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1509,8 +1484,7 @@ queryAllPrintJobs(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllPrintJobs().then(() => {
     console.info('queryAllPrintJobs success');
@@ -1549,8 +1523,7 @@ queryAllActivePrintJobs(): Promise&lt;[PrintJob](js-apis-print.md#printjob24)[]&
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllActivePrintJobs().then((printJobs : print.PrintJob[]) => {
     console.info('queryAllActivePrintJobs success, data : ' + JSON.stringify(printJobs));
@@ -1589,8 +1562,7 @@ queryPrintJobList(callback: AsyncCallback&lt;Array&lt;PrintJob&gt;&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.queryPrintJobList((error: BusinessError, printJobs : print.PrintJob[]) => {
     if (error) {
@@ -1631,8 +1603,7 @@ queryPrintJobList(): Promise&lt;Array&lt;PrintJob&gt;&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
     console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
@@ -1673,8 +1644,7 @@ queryPrintJobById(jobId: string, callback: AsyncCallback&lt;PrintJob&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '1';
 print.queryPrintJobById(jobId, (error: BusinessError, printJob : print.PrintJob) => {
@@ -1723,8 +1693,7 @@ queryPrintJobById(jobId: string): Promise&lt;PrintJob&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '1';
 print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
@@ -1820,7 +1789,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示已创建的打印任务ID。 |
 | type | 'spooler_closed_for_cancelled' \| 'spooler_closed_for_started' | 是 | 表示打印预览界面关闭信息的类型。'spooler_closed_for_cancelled'表示因取消当前打印任务而关闭打印预览界面；'spooler_closed_for_started'表示因打印任务成功下发而关闭打印预览界面。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步将打印预览界面关闭信息通知打印服务之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当将打印预览界面关闭信息成功通知打印服务，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1828,15 +1797,14 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '1';
 print.notifyPrintService(jobId, 'spooler_closed_for_started', (error: BusinessError) => {
@@ -1871,7 +1839,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。将打印预览界面关闭信息通知打印服务成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1879,15 +1847,14 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '1';
 print.notifyPrintService(jobId, 'spooler_closed_for_started').then(() => {
@@ -1934,8 +1901,7 @@ getPrinterInfoById(printerId: string): Promise&lt;PrinterInfo&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1';
 print.getPrinterInfoById(printerId).then((printerInfo : print.PrinterInfo) => {
@@ -1967,7 +1933,7 @@ notifyPrintServiceEvent(event: ApplicationEvent): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。将打印应用相关事件通知打印服务成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1982,8 +1948,7 @@ notifyPrintServiceEvent(event: ApplicationEvent): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
 print.notifyPrintServiceEvent(event).then(() => {
@@ -2016,7 +1981,7 @@ setPrinterPreferences(printerId: string, printerPreferences: PrinterPreferences)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。设置打印机首选项成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2031,8 +1996,7 @@ setPrinterPreferences(printerId: string, printerPreferences: PrinterPreferences)
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = 'testPrinterId';
 let preferences : print.PrinterPreferences = {
@@ -2075,8 +2039,7 @@ discoverUsbPrinters(): Promise&lt;Array&lt;PrinterInformation&gt;&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.discoverUsbPrinters().then((printers : print.PrinterInformation[]) => {
     console.info('discoverUsbPrinters data : ' + JSON.stringify(printers));
@@ -2108,7 +2071,7 @@ setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise&lt;void&
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。设置默认打印机成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2123,8 +2086,7 @@ setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise&lt;void&
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1';
 let type : print.DefaultPrinterType = print.DefaultPrinterType.DEFAULT_PRINTER_TYPE_SET_BY_USER;
@@ -2158,7 +2120,7 @@ notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promise&lt;void
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。将打印应用相关事件通知打印服务成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2173,8 +2135,7 @@ notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promise&lt;void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
 let jobId : string = '1';
@@ -2225,8 +2186,7 @@ queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise&lt;[
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // printerUri可通过discoverUsbPrinters接口返回的PrinterInformation获取
 let printerUri : string = 'testPrinterUri';
@@ -2279,8 +2239,7 @@ addPrinterToCups(printerUri: string, printerName: string, printerMake: string): 
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // printerUri可通过discoverUsbPrinters接口返回的PrinterInformation获取
 let printerUri : string = 'testPrinterUri';
@@ -2318,7 +2277,7 @@ deletePrinterFromCups(printerName: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。从CUPS删除打印机成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2332,8 +2291,7 @@ deletePrinterFromCups(printerName: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerName : string = 'testPrinterName';
 
