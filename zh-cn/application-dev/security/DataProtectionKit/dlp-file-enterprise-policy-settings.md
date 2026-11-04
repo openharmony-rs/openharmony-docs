@@ -25,11 +25,13 @@ Data Protection Kit为应用提供了设置动态防护策略的能力，在用�
 
 2. 设置防护策略。
 
-    2.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
+    <!--RP1--><!--RP1End-->
 
-    2.2 设置企业应用防护策略[EnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#enterprisepolicy21)（包含属性信息、规则和策略等）。
+    2.2 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    2.3 调用[dlpPermission.setEnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetenterprisepolicy21)完成防护策略设置。
+    2.3 设置企业应用防护策略[EnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#enterprisepolicy21)（包含属性信息、规则和策略等）。
+
+    2.4 调用[dlpPermission.setEnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetenterprisepolicy21)完成防护策略设置。
 
     <!-- @[dlp_setEnterprisePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
 
