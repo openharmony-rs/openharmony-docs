@@ -19,13 +19,13 @@
 
 | 应用形态 | 适配方案 | 场景 |
 | --- | --- | --- |
-| 单页工具类应用，或可接受重拉后回到首页 | 开启总开关 + onSaveState()保存数据 | [场景一](#场景一仅恢复业务数据) |
+| 有未持久化的临时数据（草稿、进度等）需要恢复，且可接受重拉后回到首页 | 开启总开关 + onSaveState()保存数据 | [场景一](#场景一仅恢复业务数据) |
 | Navigation应用（系统可覆盖的栈深度） | 三件套 + 数据通道 + 空值兜底 | [场景二](#场景二恢复navigation页面栈) |
 | Navigation应用（更深层级） | 三件套 + 路径快照补推 | [场景二](#场景二恢复navigation页面栈) |
 | @ohos.router应用 | recoverable: false排除页面 | [场景三](#场景三router应用页面栈恢复) |
 | 三方路由框架（HMRouter等） | 路由凭证保存重放 | [场景四](#场景四自定义路由框架页面栈恢复) |
 
-以下情况无需或无法接入页面栈适配：单页应用或可接受重拉后回到首页的应用无需页面栈适配（仅需[场景一](#场景一仅恢复业务数据)的数据恢复）；[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复；PC/2in1等不支持任务保留的设备该机制不生效。
+以下情况无需或无法接入本机制：可接受重拉后回到首页且没有未持久化临时数据的应用，重拉后重新加载即可，无需适配；[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复；PC/2in1等不支持任务保留的设备该机制不生效。
 
 各场景通用的恢复启动判定、不可序列化参数处理等见[通用适配要点](#通用适配要点)。
 
@@ -48,11 +48,11 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**
 >
-> **最小适配**：只需要数据恢复、不需要页面栈恢复的应用（如单页工具类，或页面可接受重拉后回到首页），开启总开关并在[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)中保存数据（写法见[场景一](#场景一仅恢复业务数据)）即完成适配，无需任何页面栈改造。
+> **最小适配**：有未持久化的临时数据（如草稿）需要恢复、但不需要恢复页面栈（可接受重拉后回到首页）的应用，开启总开关并在[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)中保存数据（写法见[场景一](#场景一仅恢复业务数据)）即完成适配，无需任何页面栈改造。
 
 ## 场景一：仅恢复业务数据
 
-适用：单页工具类应用，或页面可接受重拉后回到首页的应用。系统只恢复页面栈结构和启动参数，应用运行时状态（全局变量、用户数据、自定义业务数据）需要开发者自行保存恢复。数据超出快照大小限制时，结合[超大数据落盘引用](#超大数据落盘引用)分流。
+适用：不需要恢复页面栈（可接受重拉后回到首页）、但有未持久化的临时数据（草稿、阅读进度、表单内容等）需要恢复的应用。系统不会恢复应用运行时状态（全局变量、用户数据、自定义业务数据），需要开发者通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)自行保存恢复。数据超出快照大小限制时，结合[超大数据落盘引用](#超大数据落盘引用)分流。
 
 ### 优先使用持久化存储
 
