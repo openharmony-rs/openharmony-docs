@@ -21,8 +21,8 @@
   - [@ohos.distributedHardware.hardwareManager (Distributed Hardware Management) (System API)](js-apis-distributedHardwareManager-sys.md)
   - [@ohos.distributedDeviceManager (Device Management) (System API)](js-apis-distributedDeviceManager-sys.md)
   - [@ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management) (System API)](js-apis-distributed-abilityConnectionManager-sys.md)
-  - [@ohos.cooperate (Screen Hopping) (system API)](js-apis-devicestatus-cooperate-sys.md)
-  - [@ohos.distributed.softbusBase (Device Awareness) (system API)](js-apis-softbusBase-sys.md)
+  - [@ohos.cooperate (Screen Hopping) (System API)](js-apis-devicestatus-cooperate-sys.md)
+  - [@ohos.distributed.softbusBase (Device Awareness) (System API)](js-apis-softbusBase-sys.md)
   - APIs No Longer Maintained<!--distributed-service-dep-->
     - [@ohos.distributedHardware.deviceManager (Device Management) (System API)](js-apis-device-manager-sys.md)
   
@@ -39,6 +39,6 @@
   - [Screen Hopping Error Codes](errorcode-devicestatus.md)
   - [Device Awareness Error Codes](errorcode-softbusBase.md)
   <!--DelEnd-->
-  - [Enhanced Connection Error Codes](errorcode-link-enhance.md)
+  - [Link Enhancement Error Codes](errorcode-link-enhance.md)
   - [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md)
 

@@ -20,5 +20,5 @@
   - APIs No Longer Maintained<!--test-arkts-dep-->
     - [@ohos.application.abilityDelegatorRegistry (AbilityDelegatorRegistry)](js-apis-application-abilityDelegatorRegistry.md)
 - Error Codes<!--test-arkts-errcode-->
-  - [UiTest error code](errorcode-uitest.md)
-  - [PerfTest error code](errorcode-perftest.md)
+  - [UiTest Error Codes](errorcode-uitest.md)
+  - [PerfTest Error Codes](errorcode-perftest.md)
