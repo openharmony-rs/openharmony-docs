@@ -116,7 +116,7 @@ app.json5配置文件包含以下标签。
 | 2in1 | 标识对PC/2in1设备做的特殊配置，可以配置的属性标签为minAPIVersion。<br/>如果使用该属性对PC/2in1设备做了特殊配置，则应用在PC/2in1设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时PC/2in1设备使用app.json5公共区域配置的属性值。 |
 | GWPAsanEnabled | 标识应用程序是否开启[GWP-asan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection#section2735718353)堆内存检测工具，用于对内存越界、内存释放后使用等内存破坏问题进行分析。<br/>-&nbsp;true：应用程序开启GWP-asan检测。<br/>-&nbsp;false：应用程序不开启GWP-asan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | [appEnvironments](#appenvironments标签) | 标识当前应用配置的应用环境变量。 | 对象数组 | 该标签可缺省，缺省值为空。 |
-| maxChildProcess | 标识当前应用自身可创建的子进程的最大个数，取值范围为0到512，0表示不限制，当应用有多个模块时，以entry模块的配置为准。 | 数值 | 该标签可缺省，缺省时使用系统配置的默认值<!--RP2-->1<!--RP2End-->。 |
+| maxChildProcess | 标识应用通过fork或clone创建的最大总进程数。若应用包含多个模块，以entry模块的配置为准。<br/>取值范围：[0，512]，0表示最大值512，其余数值以实际配置为准。 | 数值 | 该标签可缺省，缺省时使用系统配置的默认值<!--RP2-->1<!--RP2End-->。 |
 | [multiAppMode](#multiappmode标签) | 标识当前应用配置的多开模式。仅bundleType为app的应用的entry或feature模块配置有效，存在多个模块时，以entry模块的配置为准。 | 对象 | 该标签可缺省，缺省值为空。 |
 | hwasanEnabled | 标识应用程序是否开启[HWAsan检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hwasan)。HWAsan(HardWare-assisted AddressSanitizer)是利用Top-Byte-Ignore特性实现的增强版Asan，与Asan相比HWAsan的内存开销更低，检测到的内存错误范围更大。<br/>-&nbsp;true：当前工程开启HWAsan检测。<br/>-&nbsp;false：当前工程不开启HWAsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | tsanEnabled | 标识应用程序是否开启使用TSan检测线程错误。<br/>[TSan（ThreadSanitizer）](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-tsan-detection)是一个检测数据竞争的工具。<br/>-&nbsp;true：当前工程开启TSan检测。<br/>-&nbsp;false：当前工程不开启TSan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |
