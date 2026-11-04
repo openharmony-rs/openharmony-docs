@@ -6,6 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
+<!-- md-trans-meta sourceCommit=3eb7d58aa53b6fa741fb6f554967ffe195cc4992 translatedAt=2026-11-03T13:50:29.985Z pushedAt=2026-11-04T08:47:59.762Z nl=1 -->
 
 <!--deprecated_code_no_check-->
 

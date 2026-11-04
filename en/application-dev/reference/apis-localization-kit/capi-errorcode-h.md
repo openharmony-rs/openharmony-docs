@@ -3,9 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-11-03T13:15:24.599Z pushedAt=2026-11-04T08:47:59.680Z nl=1 -->
 
 ## Overview
 
@@ -50,3 +51,5 @@ Internationalization error code.
 | SUCCESS = 0 | Success.|
 | ERROR_INVALID_PARAMETER = 8900001 | Invalid input parameter.|
 | UNEXPECTED_ERROR = 8900050 | Unexpected error, for example, memory error.|
+
+

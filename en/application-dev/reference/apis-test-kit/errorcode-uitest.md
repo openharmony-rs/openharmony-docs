@@ -5,7 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=0aac5c07a75bbca4e339d2ef1a5a592663ce2891 translatedAt=2026-11-03T13:49:33.069Z pushedAt=2026-11-04T08:47:59.760Z nl=1 -->
 
 > **NOTE**
 >
@@ -29,7 +30,7 @@ The accessibility service cannot be accessed.
 
 Run the **param set persist.ace.testmode.enabled 1** command and restart the device.
 
-## 17000002 Unable to Call the API
+## 17000002 API Does Not Support Concurrent Calls
 **Error Message**
 
 The API does not support concurrent calls.
@@ -44,7 +45,7 @@ The async API does not use **await** to wait until the asynchronous execution is
 
 **Solution**
 
-Use **await** to wait until the asynchronous function execution is complete.
+Ensure that only one API call is executed at a time. The async API uses **await** to wait until the asynchronous execution is complete.
 
 ## 17000003 Assertion Failure
 **Error Message**
@@ -63,14 +64,14 @@ The component that the user asserts to exist does not exist.
 
 Check the existence of the component that is asserted to exist.
 
-## 17000004 Target Component/Window Lost
+## 17000004 Target Component/Window Invisible or Destroyed
 **Error Message**
 
 The window or component is invisible or destroyed.
 
 **Description**
 
-This error code is reported when the target component or window is lost and cannot be operated.
+The target component or window is invisible or has been destroyed, and no operation can be performed.
 
 **Possible Causes**
 

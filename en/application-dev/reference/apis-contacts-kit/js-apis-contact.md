@@ -6,6 +6,8 @@
 <!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6a2d9170abb39d78fdbdd06ac4b2a463b82f2032 translatedAt=2026-11-04T08:49:46.529Z pushedAt=2026-11-04T08:58:01.854Z nl=2 -->
+
 The **contact** module provides contact management functions, such as adding, deleting, and updating contacts.
 
 > **NOTE**
@@ -3561,7 +3563,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
       console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info(`Succeeded in querying Groups.. data->${JSON.stringify(data)}`);
+    console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
   });
   ```
 
@@ -4554,7 +4556,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 
 syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-Synchronizes multiple contacts to the contacts database in batches. A maximum of 400 contacts can be synchronized at a time. The caller must be running in the foreground.
+Synchronizes multiple contacts to the contact database in batches. A maximum of 400 contacts can be synchronized in each batch. The caller must be in the foreground. This API uses a promise to return the result.
 
 **Since**: 26.0.0
 
@@ -4637,13 +4639,12 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
       currentBatch: batch,
       totalBatches: totalBatches
     };
-    console.info(`Synchronizing batch ${batch}/${totalBatches}, number of contacts: ${currentBatchSize}`);
     let result = await contact.syncContacts(context, mode, progress, contacts);
-    console.info(`Batch ${batch} synchronized successfully, result: `  + JSON.stringify(result));
+    console.info(`Succeeded in syncContacts. result->${JSON.stringify(result)}`);
   }
   catch (err) {
     const e = err as BusinessError;
-    console.error(`syncContacts failed: code=${e.code}, message=${e.message}`);
+    console.error(`Failed to syncContacts. Code: ${e.code}, message: ${e.message}`);
   }
 }
 ```
@@ -4652,7 +4653,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
 
 queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&gt;
 
-Queries the contact information synchronization status of the application. If an empty value is returned, the application does not initiate synchronization or the synchronization is complete.
+Queries the contact information synchronization status of the current app. If the returned contact synchronization information is empty, the caller does not perform contact synchronization or the contact synchronization has been completed. This API uses a promise to return the result.
 
 **Since**: 26.0.0
 
@@ -4705,7 +4706,7 @@ console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList
 
 importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-Import multiple contacts in batches through UI interaction. A maximum of 100 contacts can be imported at a time. Contact portraits cannot be imported.
+Imports multiple contacts in batches through UI interaction. A maximum of 100 contacts can be imported each time. Importing contact avatars is not supported. This API uses a promise to return the result.
 
 **Since**: 26.0.0
 
@@ -4835,7 +4836,7 @@ Defines contact filter options.
 |                Name              |                  Type                |  Read-Only | Optional   |        Description     |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | filterCondition         | [FilterCondition](#filtercondition15) | No   |   No  | Filter criteria.    |
-| value        | string \| ValueType[] |  No   |   Yes  | Filter value. The default value is **undefined**.    |
+| value        | string \| [ValueType](../apis-arkdata/js-apis-data-valuesBucket.md#valuetype) [] |  No    |   Yes   | Filter value. The default value is undefined.     |
 
 ## FilterCondition<sup>15+</sup>
 
@@ -4934,7 +4935,7 @@ let myContact: contact.Contact = {
 
 ## ContactAttributes
 
-Provides a list of contact attributes, which are generally used as arguments. 
+Provides a list of contact attributes, which are generally used as arguments.
 
 If **null** is passed, all attributes are queried by default.
 
@@ -5333,7 +5334,7 @@ Defines a contact's portrait.
 >
 >  Since API version 22, contact portraits can be set in URI or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format. (Currently, contact avatars cannot be set through the [addContactViaUI](#contactaddcontactviaui15) or [saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15) API.)<br>
 URI indicates the address of the contact portrait file that can be accessed, and [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) indicates the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) object generated based on the contact portrait resource.<br>
->  Since API version 22, the profile picture resource can be read through URI. The resource can be opened only in **fileIo.open** mode and cannot be directly displayed in the **Image** component using a URI. You need to read the resource and display it in [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format.
+>  Since API version 22, the profile picture resource can be read through URI. The resource can be opened only in [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen) mode and cannot be directly displayed in the **Image** component using a URI. You need to read the resource and display it in [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -5585,3 +5586,4 @@ Describes the contacts synchronization information of the calling application.
 | completedBatches        | Array&lt;number&gt; |  No |  No   | Array of batch IDs of contacts that have been successfully synchronized. The value ranges from 1 to **totalBatches**.     |
 | totalBatches        | number |  No |  No   | Total batches of contacts to be synchronized.    |
 | lastSyncTime        | number |  No |  No   | Latest timestamp for contact synchronization, in milliseconds.|
+

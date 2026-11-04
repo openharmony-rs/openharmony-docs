@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=74b2f22774ba61d3b643e0cd26ff4cc1ff7851ec translatedAt=2026-11-03T13:25:39.047Z pushedAt=2026-11-04T08:47:27.915Z nl=1 -->
 
 This module provides capabilities such as retrieving widget information, updating widgets, and setting widget refresh intervals. This module acts as a bridge between the widget provider and the widget management service, communicating with **FormExtension** through the IPC mechanism to perform operations like widget updates and information retrieval. It is suitable for scenarios where the widget provider needs to proactively update widget content, manage the widget lifecycle, and obtain widget running status, helping you implement dynamic widget updates and state management.
 
@@ -422,7 +423,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID   | Error Message|
 |----------| -------- |
-| 801      | Capability not supported.function openFormEditAbility can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported.function openFormEditAbility cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
@@ -735,7 +736,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
+| 16501011 | The form cannot support this operation. |
 
 **Example**
 
@@ -808,7 +809,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
+| 16501011 | The form cannot support this operation. |
 
 **Example**
 
@@ -857,7 +858,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 801 |   Capability not supported.function getFormRect can not work correctly due to limited device capabilities. |
+| 801 |   Capability not supported.function getFormRect cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |

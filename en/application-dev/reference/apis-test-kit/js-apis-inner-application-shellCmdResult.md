@@ -6,8 +6,11 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
+<!-- md-trans-meta sourceCommit=fb8bde3b8b7e06e4c9ab14689a1f93bfffe101f4 translatedAt=2026-11-03T13:52:18.281Z pushedAt=2026-11-04T08:47:59.769Z nl=1 -->
 
-The **ShellCmdResult** module provides the shell command execution result.
+**ShellCmdResult** is a data object used to encapsulate the execution result of a shell command in the test framework. It contains two key attributes: **stdResult** (standard output content) and **exitCode** (exit code). This object provides a structured way for test scripts to access the command execution result.
+
+This module is applicable to test scenarios where the execution result of a shell command needs to be verified or the data returned by the command needs to be processed. It is obtained by calling [executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand) of **abilityDelegator**. Note that the APIs of this module can be used only in the test framework and should not be called in formal service code.
 
 > **NOTE**
 > 
@@ -23,7 +26,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## Usage
 
-The result is obtained by calling [executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand) in **abilityDelegator**.
+Call [executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand) in **abilityDelegator** to obtain a **ShellCmdResult** instance. After the call is successful, a **ShellCmdResult** object is returned, containing the standard result (**stdResult**) and exit code (**exitCode**) of the shell command.
 
 **Example**
 ```ts
@@ -33,7 +36,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let cmd = 'cmd';
 
+// Obtain the AbilityDelegator instance.
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// Execute the shell command and obtain the execution result through the callback.
 abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data) => {
   if (error) {
     console.error(`executeShellCommand fail, error: ${JSON.stringify(error)}`);
@@ -52,4 +57,4 @@ abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data) => {
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | stdResult | string | No  | No  | Standard output of the shell command.|
-| exitCode  | number | No  | No  | Result code of the shell command.|
+| exitCode  | number | No   | No   | Exit code of the Shell command. The value 0 indicates that the command execution succeeds, and a non-zero value indicates that the command execution fails. |

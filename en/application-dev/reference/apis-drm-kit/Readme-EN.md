@@ -1,5 +1,13 @@
 # DRM Kit
 
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=02e9aca3605e4ec7b5e4d8ae1ce5d1869202c749 translatedAt=2026-11-03T13:18:12.696Z pushedAt=2026-11-04T08:46:39.867Z nl=1 -->
+
 - ArkTS APIs<!--drm-arkts-->
   - @ohos.multimedia.drm (Digital Rights Management)<!--js-apis-drm-->
     - [Module Description](arkts-apis-drm.md)

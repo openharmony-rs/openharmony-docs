@@ -1,16 +1,15 @@
 # OHIPCRemoteObject
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ceec5d18179ba29b1eca79fa9240e27795b5216c translatedAt=2026-07-28T02:20:35.110Z pushedAt=2026-07-29T06:58:23.033Z -->
+<!-- md-trans-meta sourceCommit=98355c316452dae3a7c90b55e4a4861818921408 translatedAt=2026-11-03T13:14:02.142Z pushedAt=2026-11-04T08:47:59.677Z nl=1 -->
 
 ## Overview
 
-**OHIPCRemoteObject** is the core object for inter-process communication (IPC), used to implement cross-process remote method invocation and data transmission.
+This file provides C APIs for remote object creation, destruction, data sending, and remote object death status listening. These APIs are suitable for Inter-Process Communication (IPC) and Remote Procedure Call (RPC) communication scenarios.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 

@@ -1,12 +1,11 @@
 # @ohos.app.form.formAgent (FormAgent) (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=c85b75d8023cf23712791d9bbf1c3edc12e94276 translatedAt=2026-07-31T08:19:27.592Z pushedAt=2026-07-31T09:38:15.610Z -->
+<!-- md-trans-meta sourceCommit=ca70525a1677454924647cb159f071c08cb08bc5 translatedAt=2026-11-03T13:18:25.548Z pushedAt=2026-11-04T08:46:44.248Z nl=1 -->
 
 The FormAgent module provides APIs for widget agent-related capabilities, currently including only requesting to publish a widget. It is applicable to scenarios where a system app needs to publish a widget to the widget host (such as the home screen), helping system apps conveniently request form publishing and simplifying the widget publishing process.
 
@@ -21,7 +20,7 @@ The FormAgent module provides APIs for widget agent-related capabilities, curren
 import { formAgent } from '@kit.FormKit';
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
@@ -82,7 +81,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want): Promise&lt;string&gt;
 
@@ -146,7 +145,7 @@ try {
 }
 ```
 
-## updateFormCrossBundle
+## formAgent.updateFormCrossBundle
 
 updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 

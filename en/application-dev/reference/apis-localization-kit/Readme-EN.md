@@ -3,15 +3,16 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-11-03T13:48:26.856Z pushedAt=2026-11-04T08:47:59.750Z nl=1 -->
 
 - ArkTS APIs<!--localization-arkts-->
   - [@ohos.i18n (Internationalization)](js-apis-i18n.md)
   - [@ohos.intl (Internationalization)](js-apis-intl.md)
   - [@ohos.resourceManager (Resource Management)](js-apis-resource-manager.md)
-  - [@ohos.sendableResourceManager (resource management)](js-apis-sendable-resource-manager.md)
+  - [@ohos.sendableResourceManager (Resource Manager)](js-apis-sendable-resource-manager.md)
   <!--Del-->
   - [@ohos.fontManager (Font Management) (System API)](js-apis-font-manager-sys.md)
   - [@ohos.i18n (Internationalization) (System API)](js-apis-i18n-sys.md)

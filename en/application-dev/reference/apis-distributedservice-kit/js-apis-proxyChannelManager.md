@@ -5,6 +5,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=bd4017c5d2d8c9fd8ef5d8a927135ced17c2a3e4 translatedAt=2026-11-03T13:02:35.383Z pushedAt=2026-11-04T08:47:59.652Z nl=1 -->
 
 DSoftBus provides stable and reliable underlying channels for cross-device communication. This module is developed based on DSoftBus. It supports data exchange between phones and wearables, providing users with a seamless device interconnection experience. It also simplifies cross-device communication for developers, eliminating the need to handle underlying communication protocols and process wakeup logic. Use scenarios: During collaboration between the phone app and wearable app, if the phone app is not running in the foreground, its downlink messages are forwarded to the notification server and then sent to the wearable through the proxy module. When the wearable sends data to the phone, the proxy module can dynamically wake up the corresponding app process on the phone to receive and process the data. The core functions of this module include proxy channel management, data route management, application state awareness and wakeup, and link state monitoring.
 

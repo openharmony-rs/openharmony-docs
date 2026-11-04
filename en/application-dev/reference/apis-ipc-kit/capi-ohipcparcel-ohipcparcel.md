@@ -6,7 +6,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=6f4847d75b3f902aaed7dfe11fd309a2307ea051 translatedAt=2026-07-30T02:33:00.775Z pushedAt=2026-07-30T03:36:23.229Z -->
+<!-- md-trans-meta sourceCommit=98355c316452dae3a7c90b55e4a4861818921408 translatedAt=2026-11-03T13:13:01.348Z pushedAt=2026-11-04T08:47:59.670Z nl=1 -->
 
 ```c
 typedef struct OHIPCParcel OHIPCParcel
@@ -14,7 +14,7 @@ typedef struct OHIPCParcel OHIPCParcel
 
 ## Overview
 
-IPC serialization object used to serialize and deserialize data in cross-process communication.
+An IPC serialization object used to serialize and deserialize data in inter-process communication. This object must be created and destroyed through related functions. Developers must follow the lifecycle management specifications of the object to properly manage memory resources.
 
 **Since**: 12
 

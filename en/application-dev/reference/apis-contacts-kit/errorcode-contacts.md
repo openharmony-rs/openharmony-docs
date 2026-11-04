@@ -6,7 +6,7 @@
 <!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4c038a1d5da345aacbf8335a571bab67edf916cc translatedAt=2026-08-31T01:10:07.664Z pushedAt=2026-08-31T04:53:46.621Z -->
+<!-- md-trans-meta sourceCommit=449975949378e298f96a412431e9ba22479dcfe6 translatedAt=2026-11-03T12:48:29.488Z pushedAt=2026-11-04T08:44:49.442Z nl=2 -->
 
 > **NOTE**
 >
@@ -57,7 +57,7 @@ Please review the parameter specification constraints and perform troubleshootin
 
 
 ## 16700003 Background Service Calling Prohibited
-
+ 
 **Error Message**
 
 Background usage is prohibited.
@@ -156,27 +156,7 @@ The user cancels the operation. Try again later.
 
 
 
-## 401 Failed to Open the Contact Portrait File
-
-**Error Message**
-
-Failed to open contact portrait file.
-
-**Description**
-
-The contact portrait file fails to be opened.
-
-**Possible Causes**
-
-The portrait file path is incorrect, the file does not exist, or the disk is damaged.
-
-**Solution**
-
-Check whether the file exists.
-
-
-
-## 401 Internal System Error
+## Error Code 401 Returned Upon Contacts Call Failure
 
 ### Invalid Internal Associated Contact ID
 
@@ -267,3 +247,21 @@ The internal system processing is abnormal.
 **Solution**
 
 A system error has occurred. Try again later.
+
+### Failed to Open Contact Portrait File
+
+**Error Message**
+
+Failed to open contact portrait file.
+
+**Description**
+
+The contact portrait file fails to be opened.
+
+**Possible Causes**
+
+The portrait file path is incorrect, the file does not exist, or the disk is damaged.
+
+**Procedure**
+
+Check whether the file exists.

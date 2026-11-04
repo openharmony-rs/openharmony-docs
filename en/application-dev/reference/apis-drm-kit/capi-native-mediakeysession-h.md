@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29f3919446ee01733553b9b39493ee11224dad86 translatedAt=2026-07-31T02:14:18.113Z pushedAt=2026-07-31T06:23:14.008Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=6dec6b14cb206fe02a5ddd5033caa3930c0dd80f translatedAt=2026-11-03T13:18:22.038Z pushedAt=2026-11-04T08:46:29.030Z nl=1 -->
 
 ## Overview
 
@@ -66,6 +66,7 @@ Defines the callback function called when a MediaKeySession event is triggered, 
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -93,6 +94,7 @@ Defines the callback invoked when the key changes.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -117,6 +119,7 @@ typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKe
 Defines the callback function called when an event occurs. The event originates from DRM events during media playback and is triggered through the MediaKeySession instance.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -146,11 +149,12 @@ Defines the callback function called for key change events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Input parameter, which is a media key session instance. |
 | [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | Pointer to the media key information.|
 | bool newKeysAvailable | Whether the new keys are available. **true** if available, **false** otherwise.|
 
@@ -159,7 +163,6 @@ Defines the callback function called for key change events.
 | Type| Description|
 | -- | -- |
 | [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Parameter check fails.|
-
 ### OH_MediaKeySession_GenerateMediaKeyRequest()
 
 ```c
@@ -172,11 +175,12 @@ Generates a media key request.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Input parameter, MediaKeySession instance. |
 | [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) *info | Pointer to the information about the media key request.|
 | [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) *mediaKeyRequest | Pointer to the media key request.|
 
@@ -198,6 +202,7 @@ Processes the response to a media key request.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -212,7 +217,7 @@ Processes the response to a media key request.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK: Execution successful.<br>DRM_ERR_NO_MEMORY: Insufficient memory, memory allocation failed.<br>DRM_ERR_INVALID_VAL: The input parameter mediaKeySession is a null pointer or invalid, or other pointer-type input parameters are null pointers.<br>DRM_ERR_UNKNOWN: An internal error occurred. Check the log for details. |
 
 ### OH_MediaKeySession_CheckMediaKeyStatus()
 
@@ -225,6 +230,7 @@ Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySess
 Checks the status of a media key.
 
 **Since**: 11
+
 
 **Parameters**
 
@@ -251,6 +257,7 @@ Clears media keys of the current session.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -275,7 +282,9 @@ Generates a request to release offline media keys.
 
 **Since**: 11
 
+
 **Parameters**
+
 
 | Name| Description|
 | -- | -- |
@@ -289,7 +298,7 @@ Generates a request to release offline media keys.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs or the DRM solution on the device does not support the release of offline media keys. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK: Execution successful.<br>DRM_ERR_NO_MEMORY: Insufficient memory, memory allocation failed.<br>DRM_ERR_INVALID_VAL: The input parameter mediaKeySession is a null pointer or invalid, or other pointer-type input parameters are null pointers.<br>DRM_ERR_UNKNOWN: An internal error occurred, or the DRM solution on the device does not support offline media key release. Check the log for details. |
 
 ### OH_MediaKeySession_ProcessOfflineReleaseResponse()
 
@@ -302,6 +311,7 @@ Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *me
 Processes the response to a request for releasing offline media keys.
 
 **Since**: 11
+
 
 **Parameters**
 
@@ -317,7 +327,7 @@ Processes the response to a request for releasing offline media keys.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs or the DRM solution on the device does not support the release of offline media keys. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK: Execution successful.<br>DRM_ERR_INVALID_VAL: The input parameter mediaKeySession is a null pointer or invalid, or another pointer-type input parameter is a null pointer.<br>DRM_ERR_UNKNOWN: An internal error occurs, or the DRM solution on the device does not support offline media key release. Check the log for details. |
 
 ### OH_MediaKeySession_RestoreOfflineMediaKeys()
 
@@ -331,6 +341,7 @@ Restores offline media keys.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -343,7 +354,7 @@ Restores offline media keys.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK: Execution successful.<br>DRM_ERR_INVALID_VAL: The input parameter mediaKeySession is a null pointer or invalid, or other pointer-type input parameters are null pointers.<br>DRM_ERR_UNKNOWN: An internal error occurred. Check the logs for details. |
 
 ### OH_MediaKeySession_GetContentProtectionLevel()
 
@@ -356,6 +367,7 @@ Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaK
 Obtains the content protection level of a media key session.
 
 **Since**: 11
+
 
 **Parameters**
 
@@ -382,19 +394,20 @@ Checks whether secure decoding is required.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
-| const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev.|
+| const char *mimeType | Media type. The supported media types depend on the DRM solution, for example, video/avc and video/hevc. |
 | bool *status | Pointer to the result indicating whether secure decoding is required. The value **true** means that secure decoding is required, and the value **false** means the opposite.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | DRM_ERR_OK: Execution successful.<br>DRM_ERR_INVALID_VAL: The input parameter mediaKeySession is a null pointer or invalid, or other pointer-type input parameters are null pointers.<br>DRM_ERR_UNKNOWN: An internal error occurred. Check the log for details. |
 
 ### OH_MediaKeySession_SetMediaKeySessionCallback()
 
@@ -408,11 +421,12 @@ Sets a media key session event callback. This callback does not return a MediaKe
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance. This is an input parameter.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession instance. |
 | [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) *callback | Pointer to the callback structure of the MediaKeySession. This is an input parameter.|
 
 **Returns**
@@ -433,11 +447,12 @@ Sets a media key session event callback. This callback returns a MediaKeySession
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance. This is an input parameter.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance. |
 | [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) *callback | Pointer to the callback structure of the MediaKeySession. This is an input parameter.|
 
 **Returns**
@@ -458,6 +473,7 @@ Destroys a MediaKeySession instance.
 
 **Since**: 11
 
+
 **Parameters**
 
 | Name| Description|
@@ -469,3 +485,5 @@ Destroys a MediaKeySession instance.
 | Type| Description|
 | -- | -- |
 | [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+
+

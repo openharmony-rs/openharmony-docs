@@ -1,12 +1,11 @@
 # @ohos.app.form.FormExtensionAbility (FormExtensionAbility) (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=24198ca3b132fa62c2c07b17d69894ddc161c514 translatedAt=2026-07-31T08:18:25.408Z pushedAt=2026-08-01T00:48:40.444Z -->
+<!-- md-trans-meta sourceCommit=ca70525a1677454924647cb159f071c08cb08bc5 translatedAt=2026-11-03T13:19:13.998Z pushedAt=2026-11-04T08:46:53.354Z nl=1 -->
 
 The **FormExtensionAbility** module provides lifecycle callbacks invoked when a widget is created, destroyed, or updated.
 
@@ -22,7 +21,7 @@ The **FormExtensionAbility** module provides lifecycle callbacks invoked when a 
 import { FormExtensionAbility } from '@kit.FormKit';
 ```
 
-## onShareForm
+## FormExtensionAbility.onShareForm
 
 onShareForm?(formId: string): Record\<string, Object>
 
@@ -61,7 +60,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 }
 ```
 
-## onAcquireFormData<sup>10+</sup>
+## FormExtensionAbility.onAcquireFormData<sup>10+</sup>
 
 onAcquireFormData?(formId: string): Record\<string, Object>
 

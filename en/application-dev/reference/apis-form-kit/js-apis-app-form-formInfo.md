@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=32a3c0c8191fbf2c4f37a44d2468d1ed66d2d7e4 translatedAt=2026-11-03T13:23:04.075Z pushedAt=2026-11-04T08:47:14.914Z nl=1 -->
 
 The **formInfo** module provides types and enumerations related to widget information and status, which are used for obtaining widget configuration, status information, parameter enums and other information. This module is suitable for scenarios where you need to query widget attributes, manage widget states, or handle widget parameters, helping you quickly access and manipulate widget-related information.
 
@@ -154,7 +155,7 @@ Enumerates the widget dimensions.
 | DIMENSION_2_3<sup>18+</sup>      | 8   | 2 x 3.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**Device behavior differences**: This field takes effect only on wearables.|
 | DIMENSION_3_3<sup>18+</sup>      | 9   | 3 x 3.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**Device behavior differences**: This field takes effect only on wearables.|
 
-## FormShape<sup>12+</sup> 
+## FormShape<sup>12+</sup>
 
 Enumerates the widget shapes.
 
@@ -208,7 +209,7 @@ Enumerates the reasons for creating a widget.
 | FORM_SHARE   | 2   | The widget is created for sharing.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | FORM_SIZE_CHANGE<sup>20+</sup>    | 3   | The widget is created due to dimension changes.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
-## FormUpdateReason<sup>24+</sup> 
+## FormUpdateReason<sup>24+</sup>
 
 Enumerates widget update reasons.
 
@@ -234,7 +235,7 @@ Describes the widget animation information.
 | Name| Type| Read-Only| Optional | Description                             |
 |-----|-----|------|-----|---------------------------------|
 | area     | [Rect](#rect20) | No| No  | Interactive widget animation area. The upper-left corner of the widget is used as the origin.  |
-| duration | number | No| No  | Animation duration, in ms. The value is an integer greater than 0, and <!--Del-->for third-party applications, <!--DelEnd-->the value cannot exceed 3500. <!--Del-->This restriction does not apply to system applications.<!--DelEnd-->|
+| duration | number | No | No | Duration of the interactive card animation, in ms. The value is an integer greater than or equal to 0. <!--Del-->For third-party applications, <!--DelEnd-->the value must not be greater than 3500<!--Del-->, while system applications are not subject to this restriction<!--DelEnd-->. |
 | useDefaultAnimation | boolean | No| Yes  | Whether to enable the system-provided default animation when an interactive widget switches states. The default value is **true**.<br>- **true**: enable the system-provided default transition animation.<br>- **false**: disable the system-provided default transition animation. The widget state switches directly with no animation applied, which is applicable for scenarios where the widget UI is identical in both inactive and active states during switching.|
 
 ## Rect<sup>20+</sup>

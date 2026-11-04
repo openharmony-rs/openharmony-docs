@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=4a53d30dbb5fe01c770fce0e0097d14b7f8897b1 translatedAt=2026-11-03T12:57:13.500Z pushedAt=2026-11-04T08:47:59.634Z nl=1 -->
 
 - ArkTS APIs<!--form-arkts-->
   - [@ohos.app.form.formBindingData (formBindingData)](js-apis-app-form-formBindingData.md)
@@ -35,9 +36,9 @@
   - [@ohos.application.formInfo (formInfo)](js-apis-application-formInfo.md)
   - [@ohos.application.formProvider (formProvider)](js-apis-application-formProvider.md)
   <!--Del-->
-  - [@ohos.application.formError (FormError) (System API)](js-apis-application-formError-sys.md)
+  - [@ohos.application.formError (formError) (System API)](js-apis-application-formError-sys.md)
   - [@ohos.application.formHost (formHost) (System API)](js-apis-application-formHost-sys.md)
-  - [@ohos.application.formInfo (FormInfo) (System API)](js-apis-application-formInfo-sys.md)
+  - [@ohos.application.formInfo (formInfo) (System API)](js-apis-application-formInfo-sys.md)
   <!--DelEnd-->
 - Error Codes<!--form-arkts-errcode-->
   - [Widget Error Codes](errorcode-form.md)

@@ -1,12 +1,11 @@
 # @ohos.cooperate (Screen Hopping) (System API)
-
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @wuliangdong-->
 <!--Designer: @hanruofei-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=818d162e1e8707b8fcaca57800abc0fd70c16226 translatedAt=2026-08-17T09:43:53.586Z pushedAt=2026-08-18T08:14:15.400Z -->
+<!-- md-trans-meta sourceCommit=b861cc057f42c1e9d2f6fa6cbbd1db84b3c259eb translatedAt=2026-11-03T13:00:47.994Z pushedAt=2026-11-04T08:47:59.645Z nl=1 -->
 
 The **cooperate** module implements screen hopping for two or more networked devices to share the keyboard and mouse for collaborative operations.
 
@@ -112,6 +111,8 @@ try {
 }
 ```
 
+
+
 ## cooperate.unprepareCooperate<sup>11+</sup>
 
 unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
@@ -200,6 +201,8 @@ try {
     [`code`, `message`])}`);
 }
 ```
+
+
 
 ## cooperate.activateCooperate<sup>11+</sup>
 
@@ -302,6 +305,8 @@ try {
 }
 ```
 
+
+
 ## cooperate.deactivateCooperate<sup>11+</sup>
 
 deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
@@ -393,6 +398,8 @@ try {
   console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+
 
 ## cooperate.getCooperateSwitchState<sup>11+</sup>
 
@@ -489,6 +496,8 @@ try {
 }
 ```
 
+
+
 ## cooperate.on('cooperateMessage')<sup>11+</sup>
 
 on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void;
@@ -531,6 +540,8 @@ try {
 }
 ```
 
+
+
 ## cooperate.off('cooperateMessage')<sup>11+</sup>
 
 off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void;
@@ -556,7 +567,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes:1.Incorrect parameter types.2.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
@@ -595,6 +606,7 @@ try {
   console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
 
 ## cooperate.on('cooperateMouse')<sup>12+</sup>
 
@@ -639,6 +651,8 @@ try {
   console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+
 
 ## cooperate.off('cooperateMouse')<sup>12+</sup>
 
@@ -758,6 +772,7 @@ try {
 }
 ```
 
+
 ## CooperateMessage<sup>11+</sup>
 
 Defines a screen hopping status change event.
@@ -768,6 +783,7 @@ Defines a screen hopping status change event.
 | --------- | -------------- | ---- | ---- | ------------------------ |
 | networkId | string         | No  | No  | Descriptor of the target device for screen hopping.|
 | state     | CooperateState | No  | No  | Screen hopping status.        |
+
 
 ## MouseLocation<sup>12+</sup>
 
@@ -899,6 +915,8 @@ try {
 }
 ```
 
+
+
 ## cooperate.unprepare<sup>(deprecated)</sup>
 
 unprepare(callback: AsyncCallback&lt;void&gt;): void;
@@ -987,6 +1005,8 @@ try {
 }
 ```
 
+
+
 ## cooperate.activate<sup>(deprecated)</sup>
 
 activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback&lt;void&gt;): void;
@@ -1056,6 +1076,8 @@ Starts screen hopping. This API uses a promise to return the result.
 | targetNetworkId | string                       |  Yes  | Descriptor of the target device for screen hopping.|
 | inputDeviceId | number                       |  Yes  | Identifier of the input device for screen hopping.|
 
+
+
 **Return value**
 
 | Type                 | Description                            |
@@ -1089,6 +1111,8 @@ try {
   console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+
 
 ## cooperate.deactivate<sup>(deprecated)</sup>
 
@@ -1154,6 +1178,8 @@ Stops screen hopping. This API uses a promise to return the result.
 | ----------- | ------- | ---- | ------------------ |
 | isUnchained | boolean | Yes  | Whether to disable the cross-device link.<br> The value **true** means to disable the cross-device link, and the value **false** means the opposite.|
 
+
+
 **Return value**
 
 | Type               | Description                           |
@@ -1183,6 +1209,8 @@ try {
   console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+
 
 ## cooperate.getCrossingSwitchState<sup>(deprecated)</sup>
 
@@ -1264,6 +1292,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------------------        | ------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.|
 
+
+
 **Example**
 
 ```ts
@@ -1280,6 +1310,8 @@ try {
   console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+
 
 ## cooperate.on('cooperate')<sup>(deprecated)</sup>
 
@@ -1326,6 +1358,8 @@ try {
   console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+
 
 ## cooperate.off('cooperate')<sup>(deprecated)</sup>
 
@@ -1378,7 +1412,6 @@ try {
   console.error(`Register failed, error: ${JSON.stringify(error)}`);
 }
 ```
-
 ```ts
 // Unregister all callbacks.
 class Data {
@@ -1396,9 +1429,11 @@ try {
 }
 ```
 
+
+
 ##  CooperateMsg<sup>(deprecated)</sup>
 
-Represents a screen hopping message notification.
+Represents a screen hopping message notification. 
 
 > **NOTE**
 >

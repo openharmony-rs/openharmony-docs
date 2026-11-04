@@ -6,10 +6,9 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=a8446c9be4dbeea364560754c05cf5bc58bb15cf translatedAt=2026-11-03T13:48:16.740Z pushedAt=2026-11-04T08:47:59.748Z nl=1 -->
 
-The **sendableResourceManager** module provides the [resourceToSendableResource](#sendableresourcemanagerresourcetosendableresource) and [sendableResourceToResource](#sendableresourcemanagersendableresourcetoresource) APIs to implement conversion between [Resource](#resource) and [SendableResource](#sendableresource) objects.
-
-A **Resource** object can be held by the [Sendable](../../arkts-utils/arkts-sendable.md) class after being converted into a **SendableResource** object. After cross-thread transmission, the **Sendable** class converts the **SendableResource** object into a **Resource** object and uses it as an input parameter for the API used to obtain resources.
+This module provides the conversion between [Resource](#resource) objects and [SendableResource](#sendableresource) objects. SendableResource implements the [ISendable](../../arkts-utils/arkts-sendable.md#isendable) interface and supports cross-thread transfer. After cross-thread transfer, a SendableResource object can be converted back into a Resource object and passed as a parameter to the [resource management](./js-apis-resource-manager.md) APIs to obtain resources.
 
 > **NOTE**
 >
@@ -25,13 +24,13 @@ import { sendableResourceManager } from '@kit.LocalizationKit';
 
 resourceToSendableResource(resource: Resource): SendableResource
 
-Converts a **Resource** object to a **SendableResource** object.
+Converts a Resource object into a SendableResource object that can be used for cross-thread transfer.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description                           |
 | -------- | ---------------------------------------- | ---- | ----------------------------- |
@@ -49,7 +48,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **Example**
 ```json5
@@ -80,13 +79,13 @@ try {
 
 sendableResourceToResource(resource: SendableResource): Resource
 
-Converts a **SendableResource** object to a **Resource** object.
+Converts a SendableResource object transferred across threads into a Resource object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description                           |
 | -------- | ---------------------------------------- | ---- | ----------------------------- |
@@ -104,7 +103,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **Example**
 ```json5
@@ -135,6 +134,8 @@ try {
 
 type Resource = _Resource
 
+Represents resource-related information, including the bundle name, module name, resource ID, resource type, and other resource parameters.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.ResourceManager
@@ -146,6 +147,8 @@ type Resource = _Resource
 ## SendableResource
 
 type SendableResource = _SendableResource
+
+Represents Sendable resource-related information transferred across threads, including the bundle name, module name, resource ID, resource type, and other resource parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
