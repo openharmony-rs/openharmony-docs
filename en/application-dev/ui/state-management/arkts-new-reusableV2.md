@@ -1193,3 +1193,5 @@ struct ChildComponent {
 ```
 
 ![lazyforeach](./figures/reusablev2-lazyforeach.gif)
+
+<!--no_check-->

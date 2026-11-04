@@ -309,3 +309,5 @@ struct VersionConditionUseDemo {
 **On devices with a system version equal to or later than API Version 26.0.0, the behavior is as follows:**
 
 ![](figures/arkts-styles-versionCondition-high.png)
+
+<!--no_check-->

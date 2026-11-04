@@ -1,4 +1,4 @@
-# Drawing Custom Shapes on Canvas (Canvas)
+# Drawing Custom Graphics on the Canvas (Canvas)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->

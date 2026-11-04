@@ -20,7 +20,7 @@
       - [Key Import Overview and Algorithm Specifications](huks-key-import-overview.md)
       - [Importing a Key in Plaintext (ArkTS)](huks-import-key-in-plaintext-arkts.md)
       - [Importing a Key in Plaintext (C/C++)](huks-import-key-in-plaintext-ndk.md)
-      - [Importing Keys in Secure Mode (ArkTS)](huks-import-wrapped-key-arkts.md)
+      - [Importing a Key in Secure Mode (ArkTS)](huks-import-wrapped-key-arkts.md)
       - [Importing a Key in Secure Mode (C/C++)](huks-import-wrapped-key-ndk.md)
       - [Importing a Key Using a Digital Envelope (ArkTS)](huks-import-envelop-key-arkts.md)
       - [Importing a Key Using a Digital Envelope (C/C++)](huks-import-envelop-key-ndk.md)

@@ -1,4 +1,4 @@
-# Refined Key Access Control Development
+# Refined Access Control Development
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->

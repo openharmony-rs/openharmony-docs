@@ -794,7 +794,7 @@ Generally, the image loading process is performed asynchronously to avoid blocki
 
 <!--RP2--><!--RP2End-->
 
-# Event Calling
+## Event Calling
 
 By binding the **onComplete** event to the **Image** component, you can obtain necessary information about the image after it is successfully loaded. If the image fails to load, you can also obtain the result by binding the **onError()** callback.
 

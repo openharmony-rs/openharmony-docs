@@ -56,7 +56,7 @@ The following example uses a key with the RSA algorithm, SHA256 digest algorithm
 
 1. Obtain the resourceId through the [get resource ID](huks-extension-ability-general-operation.md#obtaining-resource-id) operation, and pass the resourceId to open the resource. For details, refer to [open/close resource](huks-extension-ability-general-operation.md#opening-and-closing-resources).
 
-2. Complete PIN authentication by referring to [PIN access control](huks-extension-ability-pin-authentication-management.md#pin-access-control).
+2. Complete PIN authentication by referring to [PIN access control](huks-extension-ability-pin-authentication-management.md).
 
 3. Set the property parameter [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions), and pass the algorithm parameter configuration in properties.
 
