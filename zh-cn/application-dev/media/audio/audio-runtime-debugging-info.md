@@ -593,6 +593,32 @@ import { fileIo } from '@kit.CoreFileKit';
 
 <!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+import { fileIo, ReadOptions } from '@kit.CoreFileKit';
+// ...
+  // 设置音频并发模式。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
+  // 激活音频会话。
+  await audioSessionManager.activateAudioSession(strategy);
+
+  // 创建音频调试管理器。
+  let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+
+  // 输出到hilog日志。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
+
+  // fd 文件描述符，实际使用时请根据具体情况获取
+  let filePath = context.filesDir + '/audio_session_info.txt';
+  let fd = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.TRUNC).fd;
+  // 输出到文件。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
+  fileIo.closeSync(fd);
+```
+
 **输出示例：**
 
 ```text
