@@ -84,7 +84,7 @@ FA模型是早期的应用模型，为应用程序提供必备的组件与运行
 
 当应用存在多个进程时，如果开发者需要将不同的Ability实例动态分配给指定进程，系统会在应用启动时自动指定一个进程来负责总体的协调分配工作，该进程即为主控进程。默认情况下，系统指定应用启动的第一个进程为主控进程。
 
-开发者可以设置[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)的返回值，让主控进程通过接收该接口的回调信息，决定新的Ability实例运行在哪个进程中。
+开发者可以设置[onNewProcessRequest()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)的返回值，让主控进程通过接收该接口的回调信息，决定新的Ability实例运行在哪个进程中。
 
 
 ## N
@@ -133,7 +133,7 @@ UIAbility生命周期是指一个UIAbility组件从创建到销毁的完整过�
 
 ### UIAbility冷启动
 
-当UIAbility实例处于完全关闭状态并被启动时，将发生冷启动。冷启动意味着系统需要完整地加载并初始化该UIAbility的所有代码和资源。随后，其生命周期回调将按顺序触发：依次是onCreate、onWindowStageCreate和onForeground。
+当UIAbility实例处于完全关闭状态并被启动时，将发生冷启动。冷启动意味着系统需要完整地加载并初始化该UIAbility的所有代码和资源。随后，其生命周期回调将按顺序触发：依次是onCreate()、onWindowStageCreate()和onForeground()。
 
 ### UIAbility热启动
 
