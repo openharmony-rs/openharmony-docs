@@ -6,11 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T01:40:54.298Z pushedAt=2026-10-10T02:10:37.042Z -->
+<!-- md-trans-meta sourceCommit=2d99b235700beb6fbf6e85916d19bb529b5ce6fc translatedAt=2026-11-04T08:15:43.130Z pushedAt=2026-11-04T08:23:51.552Z nl=1 -->
 
-Compressed or uncompressed point data can be converted into a `Point` object for key object generation. A `Point` object can also be converted into compressed or uncompressed point data.<br>
-For ECC algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).<br>
-The format of the point data to obtain can be specified by passing the string parameter `format`. To obtain the compressed format, set `format` to `"COMPRESSED"`; to obtain the uncompressed format, set `format` to `"UNCOMPRESSED"`.
+You can convert compressed or uncompressed point data into a **Point** object for generating a key object, or convert a **Point** object into compressed or uncompressed point data.
+
+For details about the ECC algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).
+
+You can pass in the string parameter **format** to specify the format of the point data to obtain. To obtain compressed point data, set **format** to **COMPRESSED**. To obtain uncompressed point data, set **format** to **UNCOMPRESSED**.
 
 ## Adding the Dynamic Library in the CMake Script
 ```txt

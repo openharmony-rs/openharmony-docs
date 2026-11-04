@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=b6d3b70ebe3ab6a9d1e542365f19b15b6cd43e3a translatedAt=2026-10-09T01:43:23.695Z pushedAt=2026-10-10T02:14:42.320Z -->
+<!-- md-trans-meta sourceCommit=2d99b235700beb6fbf6e85916d19bb529b5ce6fc translatedAt=2026-11-04T08:16:20.000Z pushedAt=2026-11-04T08:24:10.447Z nl=1 -->
 
 For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-verify-overview.md#ecdsa).
 

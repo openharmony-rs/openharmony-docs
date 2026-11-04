@@ -1,11 +1,11 @@
 # Using Crashpad to Collect Web Component Crash Information
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @qq_44167590-->
-<!--Designer: @hjoksky-->
+<!--Owner: @zwpless1-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=611613297346658615ea5abf8fcd2ee8cea6c633 translatedAt=2026-11-04T01:59:36.824Z pushedAt=2026-11-04T03:38:42.354Z nl=1 -->
+<!-- md-trans-meta sourceCommit=762e5d2e63d306bac17998a1d24307903f99e919 translatedAt=2026-11-04T07:56:00.461Z pushedAt=2026-11-04T08:16:13.415Z nl=1 -->
 
 The Web component supports using Crashpad to record process crash information. Crashpad is a process crash information processing tool provided by the Chromium kernel. After a process (Web rendering process) crash caused by the app using the Web component occurs, Crashpad writes a dmp file to the app main process sandbox directory. This file is in binary format with the dmp suffix, and records the cause of the process crash, thread information, register information, and so on. The app can use this file to analyze crash issues related to Web component processes. The Web component supports the [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9) and [onRenderProcessNotResponding](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderprocessnotresponding12) APIs starting from API version 9 and API version 12, respectively. You can use these Web APIs to detect rendering process exit and rendering process unresponsiveness, and add app processing logic in these APIs.
 
@@ -28,10 +28,10 @@ Procedure:
 
 2. Refer to <!--RP1-->Native Access to the App Sandbox<!--RP1End--> to access the dmp file in the app sandbox. You can also copy the file from the sandbox path where the dmp file is stored to a path that can be viewed. The example is as follows:
 
-   <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
-   import { fileIo as fs } from '@kit.CoreFileKit'
+   import { fileIo } from '@kit.CoreFileKit'
    import { BusinessError } from '@kit.BasicServicesKit'
    import { webview } from '@kit.ArkWeb'
 
@@ -47,7 +47,7 @@ Procedure:
            .onClick(() => {
              let pathDir = this.uiContext.getHostContext()?.filesDir;
              console.info("pathdir=" + pathDir);
-             fs.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
+             fileIo.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
                .then(()=>{
                  console.info("copy files success");
                })

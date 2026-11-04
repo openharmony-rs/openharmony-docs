@@ -5,7 +5,7 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=ec02f60ce17174b2a247c066a84f6ad809303333 translatedAt=2026-11-04T02:09:01.012Z pushedAt=2026-11-04T03:06:35.218Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3f38c1123a7477610a5a12d8ea2a78be28d77a16 translatedAt=2026-11-04T08:07:21.116Z pushedAt=2026-11-04T08:15:47.745Z nl=1 -->
 
 The packing tool packs compiled files for installation and release. You can use DevEco Studio or the JAR package of the packing tool to pack files. The JAR package is usually stored in the **toolchains** directory of the SDK.
 
@@ -86,8 +86,8 @@ Packing command example:
 | --ets-path       | No        | NA            | Path of the ETS file.                                       | This parameter is valid only in the stage model.|
 | --out-path       | Yes        | NA            | Path of the target file. The file name extension must be .hap.                      | NA              |
 | --force          | No        | boolean       | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.| NA              |
-| --an-path        | No         | NA            | Path to the [an file](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-arkts-52-V5).| Effective only for the Stage model. |
-| --ap-path        | No         | NA            | Path to the [ap file](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-arkts-52-V5).| Effective only for the Stage model. |
+| --an-path        | No         | NA            | Path to the [an file](https://developer.huawei.com/consumer/en/doc/doccenter-dev-faq/faqs-arkts-52).| This parameter is valid only in the stage model. |
+| --ap-path        | No         | NA            | Path to the [ap file](https://developer.huawei.com/consumer/en/doc/doccenter-dev-faq/faqs-arkts-52).| This parameter is valid only in the stage model. |
 | --dir-list       | No        | NA            | List of directories (folders) to be packed into the HAP file.                     | NA              |
 | --compress-level | No        | number        | Compression level of files in the **lib** directory. The default value is **1**. The value ranges from 1 to 9. This parameter is valid only when **compressNativeLibs** is set to **true**. A larger value indicates a higher compression rate and a slower compression speed.| NA  |
 | --pkg-context-path      | No         | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**.<!--Del--><!--DelEnd--> | This parameter is valid only in the stage model.              |

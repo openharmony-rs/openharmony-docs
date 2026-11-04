@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=084bf627297e60b1f406ce34f5b473174466f7b3 translatedAt=2026-07-15T02:43:17.521Z pushedAt=2026-07-15T09:44:33.395Z -->
+<!-- md-trans-meta sourceCommit=63422684701bae1c43d0e97b2425c0eff2f0a5ff translatedAt=2026-11-04T08:19:52.820Z pushedAt=2026-11-04T08:25:00.642Z nl=1 -->
 
 Starting from API version 26.0.0, key encapsulation and decapsulation using the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM) algorithm is supported. For the corresponding algorithm specifications, see [KEM Encapsulation and Decapsulation Algorithm Specifications](#algorithm-specifications).
 
@@ -38,16 +38,17 @@ ML-KEM is a lattice-based post-quantum key encapsulation mechanism used to secur
 
 2. Call [Kem.decapsulate](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#decapsulate) to perform key decapsulation based on the passed-in private key (**KeyPair.priKey**) and the encapsulated key (**wrappedKey**), which returns the shared secret.
 
-The shared secret obtained from decapsulation should be consistent with the shared secret generated during encapsulation.
+   The shared secret obtained from decapsulation should be consistent with the shared secret generated during encapsulation.
 
 ## Development Examples
 
 - Asynchronous method example:
 
   <!-- @[kem_encapsulate_decapsulate_await_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KemEncapsulateDecapsulate/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   namespace Kem {
     export async function kemDecapsulateAwait() {
@@ -69,12 +70,14 @@ The shared secret obtained from decapsulation should be consistent with the shar
   }
   ```
 
+
 - Synchronous method example:
 
   <!-- @[kem_encapsulate_decapsulate_sync_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KemEncapsulateDecapsulate/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   namespace Kem {
     export function kemDecapsulateSync() {
@@ -95,5 +98,3 @@ The shared secret obtained from decapsulation should be consistent with the shar
     }
   }
   ```
-
-  <!--no_check-->

@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @gcw_sPCsris4; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0db215da74052f413c7e510405ec74a1a5667839 translatedAt=2026-08-11T10:13:04.409Z pushedAt=2026-08-12T02:56:43.096Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:05:43.041Z pushedAt=2026-11-04T08:18:49.581Z nl=1 -->
 
 ## Overview
 
@@ -54,6 +54,7 @@ When a foreground application calls [setPreferredOrientation()](../reference/api
 
 Additionally, the application's display orientation is strongly related to the sensor. On devices without a sensor, setting the rotation strategy also does not take effect. For example, devices like TVs do not have sensors and can normally call [setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1), but the actual orientation does not change.
 
+
 ## Rotation Strategies and Device Differences
 
 An application can set the display orientation by configuring the **orientation** field in the [module.json5 configuration file](../quick-start/module-configuration-file.md) or by calling the [setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1) API at runtime to set the **orientation** field. Regardless of the method used, the [orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9) field has the same meaning, that is, the rotation display orientation type enumeration (also called the rotation policy). For details, see [Setting the Window Rotation Policy](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715).
@@ -98,15 +99,15 @@ There are some differences in these seven types depending on the usage scenario.
 - **AUTO_ROTATION_UNSPECIFIED** is a special type that supports auto-rotation and is controlled by the rotation lock switch in the control panel, similar to **AUTO_ROTATION_RESTRICTED**.
 
 > **NOTE**
->
+> 
 > The two rotation policies, **AUTO_ROTATION_RESTRICTED** and **AUTO_ROTATION_UNSPECIFIED**, are very similar in functionality: both support auto-rotation controlled by the rotation lock switch. However, there are some differences between them on different products.
->
+> 
 > - **When the system rotation lock switch is off**
->
+> 
 >   The **AUTO_ROTATION_RESTRICTED** policy allows rotation to all four orientations of the device. In contrast, the orientations to which **AUTO_ROTATION_UNSPECIFIED** can rotate depend on the product form factor of the device. On a bar phone or when the device is in a bar-phone-like form, apps with this orientation type can rotate to three orientations—portrait, landscape, and reverse landscape—but not to reverse portrait. On a tablet or when the device is in a tablet-like form, apps can rotate to all four orientations of the device.
->
+> 
 > - **When the system rotation lock switch is on**
->
+> 
 >   On a bar phone or when the device is in a bar-phone-like form, neither **AUTO_ROTATION_RESTRICTED** nor **AUTO_ROTATION_UNSPECIFIED** supports locking to landscape. When an application is set to either of these two rotation policies and rotates to landscape, if the user then pulls down the control panel and enables rotation lock, the application is forced to rotate to portrait and remains in the rotation-locked state. On a tablet or when the device is in a tablet-like form, both rotation policies support locking to landscape. If an application needs to support auto-rotation on a bar phone while also being able to lock to the current orientation, it is recommended to prioritize using the **USER_ROTATION** rotation policy.
 
 ### Temporary Orientation Types
@@ -121,11 +122,11 @@ There are some differences in these seven types depending on the usage scenario.
 These four orientation types are controlled by the rotation lock in the control center and also support automatic rotation based on the gravity sensor. For devices running OpenHarmony 7.0.0 or later, a new capability is added to support automatic rotation based on the smart sensor (on devices that support the smart sensor, you can enable the Smart Rotation switch via **Settings > System > Smart Rotation**). They differ from **AUTO_ROTATION_RESTRICTED** in that when these four orientation types are set by the app, the app is immediately and temporarily rotated to the specified orientation. For example, when a user holds the phone in portrait mode and the app is displayed in portrait, if the app sets the rotation policy to **USER_ROTATION_LANDSCAPE**, the app immediately rotates to landscape display. These four types are typically used when a video app transitions from small-window playback to full-screen playback.
 
 > **NOTE**
->
+> 
 > **USER_ROTATION_PORTRAIT_INVERTED** is a special temporary orientation type with differences across devices.
->
+> 
 > - On a bar phone or when the device is in a bar-phone-like form, an application set to the **USER_ROTATION_PORTRAIT_INVERTED** rotation policy cannot temporarily rotate to reverse portrait. Instead, it still displays in portrait orientation, and during auto-rotation, it can only rotate to three orientations—portrait, landscape, and reverse landscape—but not to reverse portrait.
->
+> 
 > - On a tablet or when the device is in a tablet-like form, when the rotation lock switch is off, the application can auto-rotate to all four orientations: portrait, reverse portrait, landscape, and reverse landscape.
 
 ### Other Orientation Types

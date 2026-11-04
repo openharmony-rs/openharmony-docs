@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @gcw_sPCsris4; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=50d1c0b25b69166867a5980e73fb2fa37223d98b translatedAt=2026-10-08T09:01:54.058Z pushedAt=2026-10-08T11:14:58.273Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:02:42.411Z pushedAt=2026-11-04T08:17:27.619Z nl=1 -->
 
 ## When to Use
 
@@ -26,7 +26,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
    In the [freeform window](freeform-window-overview.md#freeform-window) state, an independent subwindow does not follow the main window's foreground/background switching and is only destroyed together with the main window. The independent subwindow and the main window can adjust their z-order by clicking.
 
    <!-- @[create_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    let windowStage_: window.WindowStage | undefined = undefined;
    let subWindowClass: window.Window | undefined = undefined;
@@ -52,9 +52,9 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
            })
          }
    ```
-
+   
    <!-- @[create_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    let independentWindowClass: window.Window | undefined = undefined;
    // ...
@@ -90,11 +90,11 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
       - In the [freeform window](freeform-window-overview.md#freeform-window) state, the default subwindow size is the size of the current physical screen.
 
       - In the non-[freeform window](freeform-window-overview.md#freeform-window) state, the default subwindow size is the size of the main window.
-
+  
    Take setting the attributes of an independent subwindow as an example. The sample code is as follows:
 
    <!-- @[independent_subWindow_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    // 2. After the subwindow is created, set its position, size, and related attributes.
    independentWindowClass.moveWindowTo(100, 100, (err) => {
@@ -124,7 +124,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
    Take loading and displaying the specific content of an independent subwindow as an example. The sample code is as follows:
 
    <!-- @[independent_subWindow_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    // 3. Load the corresponding target page for the subwindow.
    independentWindowClass.setUIContent('pages/IndependentSubWindow', (err) => {
@@ -155,7 +155,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
    The following takes destroying an independent subwindow as an example. The sample code is as follows:
 
    <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    // 4. Destroy the subwindow. When the subwindow is no longer needed, you can destroy it using destroy based on the specific implementation logic.
    independentWindowClass.destroyWindow((err) => {

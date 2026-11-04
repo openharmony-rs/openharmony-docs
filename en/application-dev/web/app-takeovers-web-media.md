@@ -1,12 +1,11 @@
 # Taking Over the Media Playback on Web Pages
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=16323ca1d7f88c9bb8af541a7972663c80002af0 translatedAt=2026-08-14T03:41:43.410Z pushedAt=2026-08-14T06:57:56.399Z -->
+<!-- md-trans-meta sourceCommit=0f4fbf53e1fc150cc9447cf5f2ae6f75be2e616d translatedAt=2026-11-04T07:55:59.652Z pushedAt=2026-11-04T08:14:39.035Z nl=1 -->
 
 The **Web** component provides the capability for applications to take over media playback on web pages, which improves media playback qualities on the web page.
 
@@ -41,6 +40,7 @@ When web media playback takeover is enabled, the playback architecture of the Ar
   >
   > - In the preceding figure, step 1 indicates that the ArkWeb kernel creates a **WebMediaPlayer** to play media resources on web pages.
   > - Step 2 indicates that **WebMediaPlayer** uses **NativeMediaPlayer** provided by the application to render media data.
+
 
 ### Interactions Between the ArkWeb Kernel and Application
 
@@ -82,12 +82,11 @@ Use the [enableNativeMediaPlayer](../reference/apis-arkweb/arkts-basic-component
 
 After this feature is enabled, the ArkWeb kernel triggers the callback registered by [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12) when a media file needs to be played on the web page.
 
-The app needs to call onCreateNativeMediaPlayer to register a callback for creating a native media player.
+The application needs to call onCreateNativeMediaPlayer() to register a callback function for creating a local player.
 
 The callback function determines whether to create a native media player to take over the web page media resources based on the media information.
 
   * If the app does not take over the current web media resource, return null in the callback.
-
   * If the application takes over the web page media resource, a native media player instance is returned by the callback.
 
 The native media player needs to implement the [NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md) API so that the ArkWeb kernel can control the playback on the native media player.
@@ -148,14 +147,14 @@ The native media player needs to implement the [NativeMediaPlayerBridge](../refe
 
 ### Drawing Native Media Player Components
 
-When an application takes over the media playback on web pages, it needs to draw the native media player component and video images on the surface provided by the ArkWeb kernel. The ArkWeb kernel combines the surface and the web page and displays them.
+When an application takes over the media playback on web pages, it needs to draw the native media player component and video images onto the surface provided by the ArkWeb kernel. The ArkWeb kernel combines the surface and the web page and displays them.
 
 This process is the same as that of [same-layer rendering](web-same-layer.md)
 
 1. During app startup, save the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) so that it can be used in the subsequent same-layer rendering and drawing process.
 
    <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
-
+   
    ``` TypeScript
    import { window } from '@kit.ArkUI';
    
@@ -252,7 +251,7 @@ This process is the same as that of [same-layer rendering](web-same-layer.md)
    }
    ```
 
-For details about how to dynamically create components and draw them on the surface, see [Using Same-Layer Rendering](web-same-layer.md).
+For details about how to dynamically create components and draw them onto the surface, see [Using Same-Layer Rendering](web-same-layer.md).
 
 ### Executing Playback Control Commands Sent by the ArkWeb Kernel to the Native Media Player
 
@@ -321,7 +320,7 @@ To facilitate the control over native media player by the ArkWeb kernel, the app
 
 ### Notifying the Status Information of Native Media Player to the ArkWeb Kernel
 
-The ArkWeb kernel needs to update the status information (such as the video width and height, playback time, and cache time) of the native player to the web page. Therefore, the application needs to notify the ArkWeb kernel of the status information of the native player.
+The ArkWeb kernel needs to update the status information (such as the video width and height, playback time, and buffered time) of the native player to the web page. Therefore, the application needs to notify the ArkWeb kernel of the status information of the native player.
 
 In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12) API, the ArkWeb kernel passes a [NativeMediaPlayerHandler](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md) object to the application. The application needs to use this object to notify the ArkWeb kernel of the latest status information of the native media player.
 
@@ -370,14 +369,14 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
     }
     onBufferedChanged() {
       // The buffer is changed.
-      // Obtain the cache duration of the native media player.
+      // Obtain the buffered duration of the native media player.
       let bufferedEndTime: number = getCurrentBufferedTime();
       // Convert the time unit to second.
       let bufferedEndTimeInSeconds = convertToSeconds(bufferedEndTime);
       this.handler.handleBufferedEndTimeChanged(bufferedEndTimeInSeconds);
 
-      // Check the cache state.
-      // If the cache state changes, notify the ArkWeb engine of the cache state.
+      // Check the buffered state.
+      // If the buffered state changes, notify the ArkWeb engine of the buffered state.
       let lastReadyState: webview.ReadyState = getLastReadyState();
       let currentReadyState: webview.ReadyState = getCurrentReadyState();
       if (lastReadyState != currentReadyState) {
@@ -438,7 +437,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
               // Create a native media player instance.
               // let nativePlayer: NativeMediaPlayerImpl = new NativeMediaPlayerImpl(handler, mediaInfo);
 
-              // Create a listener for the native media player state. 
+              // Create a listener for the native media player state.
               let nativeMediaPlayerListener: ActualNativeMediaPlayerListener = new ActualNativeMediaPlayerListener(handler);
               // Listen for the native media player state.
               // nativePlayer.setListener(nativeMediaPlayerListener);
@@ -471,6 +470,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
     return webview.ReadyState.HAVE_NOTHING;
   }
   ```
+
 
 ## Sample Code
 
@@ -555,7 +555,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
 
     updateRect(x: number, y: number, width: number, height: number): void {
       // The position and size of the <video> tag changed.
-      // Make corresponding changes based on this information change.
+      // Make corresponding changes based on this change.
       let width_in_vp = this.uiContext!.px2vp(width);
       let height_in_vp = this.uiContext!.px2vp(height);
       console.info(`updateRect(${x}, ${y}, ${width}, ${height}), vp:{${width_in_vp}, ${height_in_vp}}`);
@@ -574,12 +574,12 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
       this.nativePlayer.pause();
     }
     seek(targetTime: number) {
-      // Seek the local player to the specified time point.
+      // Seek the local player to the specified time.
       console.info(`NativeMediaPlayerImpl.seek(${targetTime})`);
       this.nativePlayer.seek(targetTime);
     }
     setVolume(volume: number) {
-      // The ArkWeb kernel requests adjusting the local player volume.
+      // The ArkWeb kernel requests a volume adjustment for the local player.
       // Set the local player volume.
       console.info(`NativeMediaPlayerImpl.setVolume(${volume})`);
       this.nativePlayer.setVolume(volume);
@@ -632,7 +632,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
       this.handler.handleStatusChanged(webview.PlaybackStatus.PAUSED);
     }
     onDurationChanged(duration: number) {
-      // Notify the ArkWeb kernel that the local player has parsed a new media duration.
+      // Notify the ArkWeb kernel that the local player has obtained a new media duration.
       console.info(`AVPlayerListenerImpl.onDurationChanged(${duration})`);
       this.handler.handleDurationChanged(duration);
     }
@@ -652,7 +652,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
     }
     onError() {
       // Notify the ArkWeb kernel that the local player encounters an error.
-      console.info('AVPlayerListenerImpl.onError');
+      console.error('AVPlayerListenerImpl.onError');
       this.component.has_error = true;
       setTimeout(()=>{
         this.handler.handleError(1, "Oops!");
@@ -699,7 +699,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
     @State has_error: boolean = false;
 
     onSizeChanged(width: number, height: number) {
-      // Update the playback area ratio.
+      // Update the playback area aspect ratio.
       this.video_width = width;
       this.video_height = height;
       let scale: number = this.view_width / width;
@@ -773,7 +773,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
       .width('100%')
       .height('100%')
       .onAreaChange((oldValue: Area, newValue: Area) => {
-        // Triggered when the component area changes.
+        // Triggered when the component's area changes.
         console.info(`NativePlayerComponent.onAreaChange(${JSON.stringify(oldValue)}, ${JSON.stringify(newValue)})`);
         this.view_width = new Number(newValue.width).valueOf();
         this.view_height = new Number(newValue.height).valueOf();
@@ -791,7 +791,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
       .height('100%')
   }
 
-  // Use NodeController to dynamically create a custom player component and draw the component content on the surface.
+  // Use NodeController to dynamically create a custom player component and draw the component content onto the surface.
   class MyNodeController extends NodeController {
     private rootNode: BuilderNode<[ComponentParams]> | undefined;
     playerInfo: NativePlayerInfo;
@@ -993,7 +993,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
   }
   ```
 
-- Example of using video playback on the application side:
+- Application-side code, video playback example, ./PlayerDemo.ets. For the XComponent creation method, see [Custom Rendering (XComponent)](../ui/napi-xcomponent-guidelines.md).
 
   ```ts
   import { media } from '@kit.MediaKit';

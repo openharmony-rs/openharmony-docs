@@ -6,7 +6,7 @@
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d910972754a03f29eabea013ac43af463c14ec75 translatedAt=2026-10-09T01:22:19.973Z pushedAt=2026-10-09T11:32:31.293Z -->
+<!-- md-trans-meta sourceCommit=1e0936fecf4d8767f2a5fd462d48d0ed903b6d1b translatedAt=2026-11-04T08:08:59.911Z pushedAt=2026-11-04T08:23:16.348Z nl=1 -->
 
 Before managing assets in a group, ensure that you are familiar with the following operations:
 
@@ -17,30 +17,35 @@ Before managing assets in a group, ensure that you are familiar with the followi
 
 ## Prerequisites
 
-Set the group ID, such as **demo_group_id**, in the **app.json5** file. You can set multiple group IDs for a group.
+1. Set the group ID, such as **demo_group_id**, in the **app.json5** file. You can set multiple group IDs for a group.
 
-```json5
-{
-  "app": {
-    // Other configuration items are omitted here.
-    "assetAccessGroups": [
-      "demo_group_id",
-      // "another_group_id",
-      // ...
-    ]
-  }
-}
-```
+   ```json5
+   {
+     "app": {
+       // Other configuration items are omitted here.
+       "assetAccessGroups": [
+         "demo_group_id",
+         // "another_group_id",
+         // ...
+       ]
+     }
+   }
+   ```
 
-Include header files.
+2. Link the dynamic libraries in the CMake script.
+   ```txt
+   target_link_libraries(entry PUBLIC libasset_ndk.z.so)
+   ```
 
-<!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+3. Include header files.
 
-``` C++
-#include "napi/native_api.h"
-#include <string.h>
-#include "asset/asset_api.h"
-```
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include <string.h>
+   #include "asset/asset_api.h"
+   ```
 
 
 ## Adding an Asset to a Group

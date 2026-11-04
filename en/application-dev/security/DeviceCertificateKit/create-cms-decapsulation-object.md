@@ -6,11 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=cdfa46c08dbbfca7e797a254b21f1337ee1c8281 translatedAt=2026-08-11T01:59:16.093Z pushedAt=2026-08-11T07:35:21.711Z -->
+<!-- md-trans-meta sourceCommit=2009587c93deae5fb3649f6b4bb0c9b3a52287a4 translatedAt=2026-11-04T08:26:39.495Z pushedAt=2026-11-04T08:31:32.646Z nl=1 -->
 
 Certificate CMS decapsulation is supported since API version 22.
 
-PKCS #7 is a standard syntax for storing signed or encrypted data. As an extension of PKCS #7, CMS supports the following data types: data, signed data, encapsulated data, signed and encapsulated data, digested data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
+PKCS #7 is a standard syntax for storing signed or encrypted data. CMS (Cryptographic Message Syntax), as an extension of PKCS #7, supports the following data types: data, signed data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
 
 Currently, only CMS signature data and encapsulated data are supported.
 
@@ -21,7 +21,6 @@ Currently, only CMS signature data and encapsulated data are supported.
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-
 2. Call [Certificate Encapsulation with CMS](../../security/DeviceCertificateKit/create-cms-enveloped-object.md) to encapsulate CMS data.
 
 3. Call [cert.createCmsParser](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsparser22) to create a **CmsParser** object.
@@ -113,9 +112,9 @@ async function testCmsDecryptTest() {
     await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
     console.info('decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
-    console.info('decryptEnvelopedData result: success.');
   } catch (error) {
     console.error(`decryptEnvelopedData failed: errCode: ${error.code}, message: ${error.message}`);
   }
 }
 ```
+

@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=2abf667dbc2d51b70a89f4f659d06c8abfb5f4de translatedAt=2026-10-08T09:05:53.431Z pushedAt=2026-10-09T00:42:43.668Z -->
+<!-- md-trans-meta sourceCommit=2cd4b840ac6b5b8e0dbf3b67bdc75566d757506c translatedAt=2026-11-04T08:06:23.814Z pushedAt=2026-11-04T08:19:25.239Z nl=1 -->
 
 ## F
 
@@ -24,7 +24,7 @@ Floating windows are divided into multi-window floating windows, global floating
   Global floating windows can be used to continue displaying the UI in a small window after the app is moved to the background.
 
   Before creating a global floating window, the application needs to request the corresponding permission.
-
+  
   For details, see [Global Floating Window Development Guide](global-floating-window-guide.md).
 
 - A float view is a special type of app auxiliary window whose UI is managed and rendered by the system. It can remain displayed on the foreground even after the app's main window and corresponding UIAbility are moved to the background.
@@ -88,6 +88,12 @@ Usage scenarios:
 
 A state in which the app's layout area extends to the entire window display area. In immersive layout, the available layout area within the app extends to the full window size. The app UI layout content can overlap with the system UI, but system UI elements always remain above the app content in the layer hierarchy.
 
+## M
+
+### Multi-Window
+
+A practical paradigm that combines multiple window modes, allowing multiple app windows to run simultaneously on the same screen at the same time in the form of floating windows, split-screen mode, or panoramic multi-window, thereby enabling multi-tasking. Multi-Window includes various display modes such as multi-window floating windows, split-screen mode, and panoramic multi-window.
+
 ## P
 
 ### Desktop Mode
@@ -95,10 +101,6 @@ A state in which the app's layout area extends to the entire window display area
 An interaction method that supports multi-tasking on mobile devices. In Desktop Mode, multiple app windows can be displayed simultaneously on a single screen. In this mode, app windows are [freeform window](#freeform-window). On some tablets, you can enable Desktop Mode by pulling down Control Panel and tapping the **Desktop mode** button.
 
 ## S
-
-### Multi-Window
-
-A practical paradigm that combines multiple window modes, allowing multiple app windows to run simultaneously on the same screen at the same time in the form of floating windows, split-screen mode, or panoramic multi-window, thereby enabling multi-tasking. Multi-Window includes various display modes such as multi-window floating windows, split-screen mode, and panoramic multi-window.
 
 ### Starting Window
 

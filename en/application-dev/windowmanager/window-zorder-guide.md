@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-13T10:01:23.573Z pushedAt=2026-07-13T12:09:08.568Z -->
+<!-- md-trans-meta sourceCommit=8a38777871a027c4470c4028b01de47874604c51 translatedAt=2026-11-04T08:06:47.592Z pushedAt=2026-11-04T08:19:37.120Z nl=1 -->
 
 ## When to Use
 
@@ -66,9 +66,7 @@ This section systematically explains the window z-order management mechanism fro
 ### Z-Order Rules for Parent-Child Windows
 
 - When a parent window is raised, all its child windows are raised along with it; when a child window is raised, its parent window is also raised.
-
 - The z-order of a child window is always higher than that of its parent window.
-
 - A window can be raised by calling the [raiseToAppTop()](../reference/apis-arkui/arkts-apis-window-Window.md#raisetoapptop14) API or by tapping the window.
 
 ### Z-Order Rules for TopMost Windows
@@ -79,12 +77,13 @@ This section systematically explains the window z-order management mechanism fro
 
 ## Z-Order Control Mechanisms
 
+
 | Feature/Operation | Control Method | Effective Scope | Applicable Scenario |
 | -------- | -------- | -------- | -------- |
 | Z-order | System-managed | Effective across apps | Internal rendering order management |
 | zLevel | setSubWindowZLevel()/Set when creating a window | Effective only within the same app | z-order management for subwindows |
 | Window topmost | setWindowTopmost() | Effective across apps | Persistent windows such as video and navigation |
-| Raise on tap | setRaiseByClickEnabled() | Effective across apps | Preventing accidental touches, fixed layouts |
+| Raise by click | setRaiseByClickEnabled() | Between subwindows of the same type within the same application | Prevent accidental touches, fixed layout |
 
 ## Z-Order Related Development Scenarios
 

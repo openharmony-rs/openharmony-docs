@@ -1,4 +1,4 @@
-# Encryption and Decryption with an RSA Asymmetric Key (ArkTS)
+# Encryption and Decryption with an RSA Asymmetric Key Pair (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-09-03T11:13:24.577Z pushedAt=2026-09-03T11:31:09.945Z -->
+<!-- md-trans-meta sourceCommit=ae6edf9e57a4f160cca98ef88ced0cd8e0518bb0 translatedAt=2026-11-04T08:24:52.599Z pushedAt=2026-11-04T08:26:33.917Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Asymmetric Key Encryption and Decryption Algorithm Specifications: RSA](crypto-encryption-decryption.md#rsa).
 
@@ -44,7 +44,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-  
+
   // Encrypt the message.
   async function encryptMessagePromise(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -52,7 +52,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
-  
+
   // Decrypt the message.
   async function decryptMessagePromise(privateKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -60,7 +60,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-  
+
   // Generate an RSA key pair.
   async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -70,7 +70,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     console.info('convertKey result: success.');
     return keyPair;
   }
-  
+
   async function main() {
     let pkData =
       new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
@@ -111,13 +111,13 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     let message = 'This is a test';
-    // Decode the string into a Uint8Array in UTF-8.
+    // Encode the string into a Uint8Array using UTF-8.
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = await encryptMessagePromise(pubKey, plainText);
     let decryptText = await decryptMessagePromise(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
       console.info('decrypt ok.');
-      // Encode the Uint8Array into a string in UTF-8.
+      // Decode the Uint8Array into a string using UTF-8.
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string: ' + messageDecrypted);
     } else {
@@ -134,7 +134,8 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-  
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   // Encrypt the message.
   function encryptMessage(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -142,7 +143,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
-  
+
   // Decrypt the message.
   function decryptMessage(privateKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -150,7 +151,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-  
+
   // Generate an RSA key pair.
   function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -160,7 +161,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     console.info('convertKeySync result: success.');
     return keyPair;
   }
-  
+
   function main() {
     let pkData =
       new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
@@ -197,22 +198,28 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
         210, 195, 56, 250, 147, 195, 61, 205, 208, 189, 185, 40, 52, 50, 119, 137, 23, 246, 46, 220, 108, 52, 23, 152,
         154, 94, 32, 144, 195, 184, 249, 21, 168, 12, 57, 222, 18, 60, 117, 81, 157, 72, 30, 155, 190, 165, 242, 228, 139,
         240, 184, 145, 170, 103, 210, 160, 161, 135, 13]);
-    let keyPair = genKeyPairByData(pkData, skData);
-    let pubKey = keyPair.pubKey;
-    let priKey = keyPair.priKey;
-    let message = 'This is a test';
-    // Decode the string into a Uint8Array using UTF-8.
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = encryptMessage(pubKey, plainText);
-    let decryptText = decryptMessage(priKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      // Encode the Uint8Array into a string using UTF-8.
-      let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
-      console.info('decrypted result string: ' + messageDecrypted);
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let keyPair = genKeyPairByData(pkData, skData);
+      let pubKey = keyPair.pubKey;
+      let priKey = keyPair.priKey;
+      let message = 'This is a test';
+      // Encode the string into a Uint8Array using UTF-8.
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = encryptMessage(pubKey, plainText);
+      let decryptText = decryptMessage(priKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        // Decode the Uint8Array into a string using UTF-8.
+        let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
+        console.info('decrypted result string: ' + messageDecrypted);
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
+
   }
   ```
 
@@ -249,9 +256,10 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
 - Example (using asynchronous APIs):
 
   <!-- @[rsa_segmentation_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // Encrypt the message by segment.
@@ -295,24 +303,29 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
   }
   
   async function rsaEncryptLongMessage() {
-    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
-    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // Create an asymmetric key generator object.
-    let keyPair = await asyKeyGenerator.generateKeyPair(); // Randomly generate an RSA key pair.
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = await rsaEncryptBySegment(keyPair.pubKey, plainText);
-    let decryptText = await rsaDecryptBySegment(keyPair.priKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // Create an asymmetric key generator object.
+      let keyPair = await asyKeyGenerator.generateKeyPair(); // Randomly generate an RSA key pair.
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = await rsaEncryptBySegment(keyPair.pubKey, plainText);
+      let decryptText = await rsaDecryptBySegment(keyPair.priKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -321,9 +334,10 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
 - Example (using synchronous APIs):
 
   <!-- @[rsa_segmentation_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationSync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // Encrypt the message by segment.
@@ -367,24 +381,29 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
   }
   
   function main() {
-    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
-    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // Create an asymmetric key generator object.
-    let keyPair = asyKeyGenerator.generateKeyPairSync(); // Randomly generate an RSA key pair.
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = rsaEncryptBySegment(keyPair.pubKey, plainText);
-    let decryptText = rsaDecryptBySegment(keyPair.priKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // Create an asymmetric key generator object.
+      let keyPair = asyKeyGenerator.generateKeyPairSync(); // Randomly generate an RSA key pair.
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = rsaEncryptBySegment(keyPair.pubKey, plainText);
+      let decryptText = rsaDecryptBySegment(keyPair.priKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -394,13 +413,13 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
 **Encryption**
 
 1. Call [cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10) and [AsyKeyGeneratorBySpec.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair10), specify the key parameters, and generate an RSA asymmetric key pair (**KeyPair**).
-
+   
    To understand how to generate an RSA asymmetric key pair, refer to the following example, along with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa) and [Generating an Asymmetric Key Pair from Key Parameters](crypto-generate-asym-key-pair-from-key-spec.md). Note that the reference documents may differ from the current example in input parameters.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter 'RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1' to create a **Cipher** instance for an RSA key with the asymmetric key type RSA2048, the padding mode PKCS1_OAEP, the digest algorithm SHA256, and the mask digest MGF1_SHA1. This instance is used to complete encryption and decryption operations.
 
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption) and key to **KeyPair.PubKey** (the key used for encryption).
-
+   
    No encryption parameter is required for asymmetric key pairs. Therefore, pass in **null** in **params**.
 
 4. Before calling **Cipher.doFinal**, call [Cipher.setCipherSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setcipherspec10) to set the PKCS1_OAEP padding parameter **pSource**. Call [Cipher.getCipherSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getcipherspec10) to obtain the OAEP-related parameters.
@@ -420,9 +439,10 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
 - Example (using asynchronous APIs):
 
   <!-- @[pss_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1_oaep/RSAPKCS1OAEPAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // Construct the RSA asymmetric key pair parameters based on the key parameter properties.
@@ -453,61 +473,66 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
   }
   
   async function rsaUseSpecDecryptOAEPPromise() {
-    let plan = 'This is a test';
-    // Obtain the RSA key pair parameter object.
-    let rsaKeyPairSpec = genRsa2048KeyPairSpec();
-    // Generate an RSA key pair based on the RSA key pair parameters.
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
-    let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-    let decoder = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-    // Padding byte stream P for RSA encryption and decryption in PKCS1-OAEP mode.
-    let pSource = new Uint8Array([1, 2, 3, 4]);
-    let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(plan, 'utf-8').buffer) };
-    // Generate a key pair.
-    let keyPair = await rsaGeneratorSpec.generateKeyPair();
-    // Initialize the encryption operation.
-    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
-    // The get and set operations can be placed after the Cipher object init. Here, set and get operations are performed on cipher.
-    cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
-    let retP = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
-    // Compare whether the P byte stream obtained by get is consistent with the P byte stream set.
-    if (retP.toString() != pSource.toString()) {
-      console.error('error init pSource ' + retP);
-    } else {
-      console.info('pSource changed == ' + retP);
-    }
-    // Perform get operations on other OAEP parameters.
-    let md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-    console.info('md == ' + md);
-    let mgf = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
-    console.info('mgf == ' + mgf);
-    let mgf1Md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
-    console.info('mgf1Md == ' + mgf1Md);
-    let cipherDataBlob = await cipher.doFinal(input);
-    // The get and set operations can be placed before the Cipher object init and are equivalent to those after init. Here, set and get operations are performed on decoder.
-    decoder.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
-    retP = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
-    // Compare whether the P byte stream obtained by get is consistent with the P byte stream set.
-    if (retP.toString() != pSource.toString()) {
-      console.error('error init pSource ' + retP);
-    } else {
-      console.info('pSource changed == ' + retP);
-    }
-    // Perform the get operation for other OAEP parameters.
-    md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-    console.info('md == ' + md);
-    mgf = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
-    console.info('mgf == ' + mgf);
-    mgf1Md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
-    console.info('mgf1Md == ' + mgf1Md);
-    // Initialize the decryption operation.
-    await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
-    let decodeData = await decoder.doFinal(cipherDataBlob);
-    // Decryption succeeded.
-    if (decodeData.data.toString() === input.data.toString()) {
-      console.info('oaep decrypt result: success.');
-    } else {
-      console.error('oaep decrypt result: fail.');
+    try {
+      let plan = 'This is a test';
+      // Obtain the RSA key pair parameter object.
+      let rsaKeyPairSpec = genRsa2048KeyPairSpec();
+      // Generate an RSA key pair based on the RSA key pair parameters.
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
+      let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+      let decoder = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+      // Byte stream P for RSA PKCS1-OAEP padding.
+      let pSource = new Uint8Array([1, 2, 3, 4]);
+      let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(plan, 'utf-8').buffer) };
+      // Generate a key pair.
+      let keyPair = await rsaGeneratorSpec.generateKeyPair();
+      // Initialize the encryption operation.
+      await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
+      // The get and set operations can be placed after the Cipher object init. Here, set and get operations are performed on cipher.
+      cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+      let retP = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
+      // Compare whether the P byte stream obtained by get is consistent with the P byte stream set.
+      if (retP.toString() != pSource.toString()) {
+        console.error('error init pSource ' + retP);
+      } else {
+        console.info('pSource changed == ' + retP);
+      }
+      // Perform get operations on other OAEP parameters.
+      let md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+      console.info('md == ' + md);
+      let mgf = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
+      console.info('mgf == ' + mgf);
+      let mgf1Md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
+      console.info('mgf1Md == ' + mgf1Md);
+      let cipherDataBlob = await cipher.doFinal(input);
+      // The get and set operations can be placed before the Cipher object init and are equivalent to those after init. Here, set and get operations are performed on decoder.
+      decoder.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+      retP = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
+      // Compare whether the P byte stream obtained by get is consistent with the P byte stream set.
+      if (retP.toString() != pSource.toString()) {
+        console.error('error init pSource ' + retP);
+      } else {
+        console.info('pSource changed == ' + retP);
+      }
+      // Perform get operations on other OAEP parameters.
+      md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+      console.info('md == ' + md);
+      mgf = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
+      console.info('mgf == ' + mgf);
+      mgf1Md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
+      console.info('mgf1Md == ' + mgf1Md);
+      // Initialize the decryption operation.
+      await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
+      let decodeData = await decoder.doFinal(cipherDataBlob);
+      // Decryption succeeded.
+      if (decodeData.data.toString() === input.data.toString()) {
+        console.info('oaep decrypt result: success.');
+      } else {
+        console.error('oaep decrypt result: fail.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -515,9 +540,10 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
 - Example (using synchronous APIs):
 
   <!-- @[pss_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1_oaep/RSAPKCS1OAEPSync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   // Construct RSA asymmetric key pair parameters based on the key parameter attributes.
   function genRsaKeyPairSpec(nIn: bigint, eIn: bigint, dIn: bigint) {
@@ -543,61 +569,66 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     return genRsaKeyPairSpec(nIn, eIn, dIn);
   }
   function main() {
-    let plan = 'This is a test';
-    // Obtain the RSA key pair parameter object.
-    let rsaKeyPairSpec = genRsa2048KeyPairSpec();
-    // Generate an RSA key pair based on the RSA key pair parameters.
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
-    let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-    let decoder = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-    // Fill byte stream P in RSA PKCS1-OAEP mode for encryption and decryption.
-    let pSource = new Uint8Array([1, 2, 3, 4]);
-    let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(plan, 'utf-8').buffer) };
-    // Generate a key pair.
-    let keyPair = rsaGeneratorSpec.generateKeyPairSync();
-    // Initialize the encryption operation.
-    cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
-    // The get and set operations can be placed after the Cipher object is initialized. Here, set and get operations are performed on cipher.
-    cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
-    let retP = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
-    // Compare whether the P byte stream obtained by get is consistent with the P byte stream set.
-    if (retP.toString() != pSource.toString()) {
-      console.error('error init pSource ' + retP);
-    } else {
-      console.info('pSource changed == ' + retP);
-    }
-    // Perform get operations on other OAEP parameters.
-    let md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-    console.info('md == ' + md);
-    let mgf = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
-    console.info('mgf == ' + mgf);
-    let mgf1Md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
-    console.info('mgf1Md == ' + mgf1Md);
-    let cipherDataBlob = cipher.doFinalSync(input);
-    // The get and set operations can be placed before the Cipher object is initialized, and are equivalent to those after initialization. Here, set and get operations are performed on decoder.
-    decoder.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
-    retP = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
-    // Compare whether the P byte stream obtained by get is consistent with the P byte stream set.
-    if (retP.toString() != pSource.toString()) {
-      console.error('error init pSource ' + retP);
-    } else {
-      console.info('pSource changed == ' + retP);
-    }
-    // Perform get operations on other OAEP parameters.
-    md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-    console.info('md == ' + md);
-    mgf = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
-    console.info('mgf == ' + mgf);
-    mgf1Md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
-    console.info('mgf1Md == ' + mgf1Md);
-    // Initialize the decryption operation.
-    decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
-    let decodeData = decoder.doFinalSync(cipherDataBlob);
-    // Decryption succeeded.
-    if (decodeData.data.toString() === input.data.toString()) {
-      console.info('oaep decrypt result: success.');
-    } else {
-      console.error('oaep decrypt result: fail.');
+    try {
+      let plan = 'This is a test';
+      // Obtain the RSA key pair parameter object.
+      let rsaKeyPairSpec = genRsa2048KeyPairSpec();
+      // Generate an RSA key pair based on the RSA key pair parameters.
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
+      let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+      let decoder = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+      // Byte stream P for RSA PKCS1-OAEP padding.
+      let pSource = new Uint8Array([1, 2, 3, 4]);
+      let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(plan, 'utf-8').buffer) };
+      // Generate a key pair.
+      let keyPair = rsaGeneratorSpec.generateKeyPairSync();
+      // Initialize the encryption operation.
+      cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
+      // The get and set operations can be placed after the Cipher object init. Here, set and get operations are performed on cipher.
+      cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+      let retP = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
+      // Compare whether the P byte stream obtained by get is consistent with the P byte stream set.
+      if (retP.toString() != pSource.toString()) {
+        console.error('error init pSource ' + retP);
+      } else {
+        console.info('pSource changed == ' + retP);
+      }
+      // Perform get operations for other OAEP parameters.
+      let md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+      console.info('md == ' + md);
+      let mgf = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
+      console.info('mgf == ' + mgf);
+      let mgf1Md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
+      console.info('mgf1Md == ' + mgf1Md);
+      let cipherDataBlob = cipher.doFinalSync(input);
+      // The get and set operations can be placed before the Cipher object init and are equivalent to those after init. Here, set and get operations are performed on decoder.
+      decoder.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+      retP = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
+      // Compare whether the P byte stream obtained by get is consistent with the P byte stream set.
+      if (retP.toString() != pSource.toString()) {
+        console.error('error init pSource ' + retP);
+      } else {
+        console.info('pSource changed == ' + retP);
+      }
+      // Perform get operations for other OAEP parameters.
+      md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+      console.info('md == ' + md);
+      mgf = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
+      console.info('mgf == ' + mgf);
+      mgf1Md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
+      console.info('mgf1Md == ' + mgf1Md);
+      // Initialize the decryption operation.
+      decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
+      let decodeData = decoder.doFinalSync(cipherDataBlob);
+      // Decryption succeeded.
+      if (decodeData.data.toString() === input.data.toString()) {
+        console.info('oaep decrypt result: success.');
+      } else {
+        console.error('oaep decrypt result: fail.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0d88cc2609499932569930500f1a6723fd824448 translatedAt=2026-08-11T10:11:42.071Z pushedAt=2026-08-11T11:30:25.595Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:03:50.953Z pushedAt=2026-11-04T08:18:08.936Z nl=1 -->
 
 ## When to Use
 
@@ -39,7 +39,6 @@ A screen group is a set of logically associated display areas in the system, wit
 **Window Highlight State** indicates whether the current window is in a visual highlight state. Visual highlight is a UI feedback mechanism that communicates to the user that this window is currently active, interactive, or being emphasized by the system by changing the window's appearance (such as title bar color, border style, transparency, and shadow).
 
 - Window highlight state supports app windows (including main windows and subwindows), but does not support system windows.
-
 - A window being in the highlight state does not mean it has gained focus; however, a focus window is always in the highlight state.
 
 - There are two highlight modes: exclusive highlight and non-exclusive highlight.

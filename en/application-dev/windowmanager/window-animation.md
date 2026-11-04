@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @gcw_bkPrirku-->
 <!--Designer: @shinmy-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=84db341fabc3c99a34323529a216493875ffd8f8 translatedAt=2026-08-11T10:11:19.380Z pushedAt=2026-08-11T11:20:01.467Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:03:11.842Z pushedAt=2026-11-04T08:17:31.649Z nl=1 -->
 
 ## When to Use
 
@@ -15,9 +15,7 @@ Window animation effects refer to the transition animation effects during window
 The following are several typical scenarios that support custom window animation effects:
 
 <!--Del-->
-
 - [Setting Window Show/Hide Animation Effects](#setting-window-showhide-animation-effects)
-
 <!--DelEnd-->
 
 - [Setting the fade in/out animation effect for UIAbility component startup within the Settings app](#setting-the-fade-inout-animation-effect-for-uiability-component-startup-within-the-settings-app)
@@ -25,7 +23,6 @@ The following are several typical scenarios that support custom window animation
 - [Setting the Transition Animation When the Main Window Is Destroyed](#setting-the-transition-animation-when-the-main-window-is-destroyed)
 
 <!--Del-->
-
 ## Setting Window Show/Hide Animation Effects
 
 Window show/hide animation effects are supported. Currently supported window types are as follows:
@@ -43,7 +40,7 @@ Here, taking the creation of a "system window with configurable window level" as
    Obtain the controller through the [getTransitionController()](../reference/apis-arkui/js-apis-window-sys.md#gettransitioncontroller9) API. Subsequent animation operations are all completed by the property controller.
 
    <!-- @[window_animation_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
-
+   
    ``` TypeScript
    import { window } from '@kit.ArkUI';
    
@@ -75,7 +72,7 @@ Here, taking the creation of a "system window with configurable window level" as
    Configure specific property animations via the animation function [animateTo()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto). You can set the window opacity via [opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9), set scaling parameters via [scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9), set rotation parameters via [rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9), and set translation parameters via [translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9).
 
    <!-- @[window_animation_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
-
+   
    ``` TypeScript
    import { window } from '@kit.ArkUI';
    import { common } from '@kit.AbilityKit';
@@ -136,7 +133,7 @@ Here, taking the creation of a "system window with configurable window level" as
    Pass **true** to [completeTransition()](../reference/apis-arkui/js-apis-window-sys.md#completetransition9) to set the final completion state of the property transition. If **false** is passed, it means the transition is canceled.
 
    <!-- @[window_animation_complete_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
-
+   
    ``` TypeScript
    struct WindowAnimationDemo {
      // ...
@@ -173,7 +170,7 @@ Here, taking the creation of a "system window with configurable window level" as
    Call the [showWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#showwithanimation9) API to show the window and play the animation. Call the [hideWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#hidewithanimation9) API to hide the window and play the animation.
 
    <!-- @[window_animation_play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
-
+   
    ``` TypeScript
    import { window } from '@kit.ArkUI';
    
@@ -198,7 +195,6 @@ Here, taking the creation of a "system window with configurable window level" as
    ```
 
 ![showAndHideWindow](figures/showAndHideWindow.gif)
-
 <!--DelEnd-->
 
 ## Setting the fade in/out animation effect for UIAbility component startup within the Settings app

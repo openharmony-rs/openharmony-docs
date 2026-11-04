@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d3c31cf9e6f06887980e22a3ec4e000b45021185 translatedAt=2026-10-08T08:59:55.134Z pushedAt=2026-10-08T11:06:46.868Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:00:46.777Z pushedAt=2026-11-04T08:16:51.030Z nl=1 -->
 
 ## Basic Concepts
 
@@ -71,7 +71,7 @@ In the stage model, the main window is created and its lifecycle maintained by `
 3. Load the corresponding target page for the main window.
 
    Use the `loadContent` API to load the target page of the main window.
-
+   
 <!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateMainWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -134,7 +134,7 @@ You can create subwindows as needed, such as dialogs, and perform operations lik
 1. Create an app subwindow.
 
    Create an app subwindow through the `createSubWindow` API.
-
+   
    After being created, a subwindow uses the [immersive layout](../windowmanager/immersive-window-feature.md#immersive-layout) by default.
 
 2. Set subwindow properties.
@@ -461,7 +461,7 @@ In scenarios such as watching videos or playing games, users often prefer to hid
 3. Load and display the specific content of the immersive window.
 
    Use the `loadContent` API to load the specific content of the immersive window.
-
+   
 <!-- @[set_window_system_bar_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SetWindowSystemBarEnable/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript

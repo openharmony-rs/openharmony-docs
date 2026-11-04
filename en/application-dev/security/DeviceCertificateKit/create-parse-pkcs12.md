@@ -6,13 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-08-11T02:00:06.505Z pushedAt=2026-08-11T07:40:35.533Z -->
+<!-- md-trans-meta sourceCommit=2009587c93deae5fb3649f6b4bb0c9b3a52287a4 translatedAt=2026-11-04T08:27:13.604Z pushedAt=2026-11-04T08:31:37.579Z nl=1 -->
 
 Certificates with PKCS #12 can be parsed since API version 18.
 
 Certificates with PKCS #12 can be created since API version 21.
 
-PKCS #12 is a standard format used to store and transmit private keys, certificates, and their associated certificate chains. This format uses password protection to pack multiple cryptographic objects into an encrypted container file, supporting the storage of private keys, public key certificates, certificate authority certificates, and other related cryptographic data. PKCS #12 is widely used in scenarios such as secure storage of digital certificates, cross-platform transmission, and certificate backup, and is one of the important standards for certificate management and PKI applications.
+PKCS #12 is a standard format for storing and transmitting user private keys, certificates, and their associated certificate chains. Protected by a password, this format packages multiple cryptographic objects into an encrypted container file, supporting the storage of private keys, public key certificates, certificate authority certificates, and other related cryptographic data. PKCS #12 is widely used in scenarios such as secure storage of digital certificates, cross-platform transmission, and certificate backup, and is one of the important standards for implementing certificate management and PKI applications.
 
 ## How to Develop
 
@@ -21,7 +21,6 @@ PKCS #12 is a standard format used to store and transmit private keys, certifica
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-
 2. Call [cert.createPkcs12](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatepkcs1221) to create a PKCS #12 file.
 
 3. Call [cert.parsePkcs12](../../reference/apis-device-certificate-kit/js-apis-cert.md#certparsepkcs1218) to parse the PKCS #12 file.
@@ -169,7 +168,7 @@ async function doTestCreatePkcs12() {
     let p12 = await cert.createPkcs12(data, config);
     console.info(`createPkcs12 result: success, p12 = ` + p12);
     let out: cert.Pkcs12Data = await cert.parsePkcs12(p12, '123456');
-    console.info(`parsePKCS12 result: success.`);
+    console.info(`parsePkcs12 result: success.`);
     if (out.privateKey) {
       console.info(`privateKey:` + out.privateKey.toString());
     }
@@ -219,7 +218,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
   }
   return x509Cert;
 }
@@ -340,7 +339,7 @@ async function doTestCreatePkcs12Sync() {
       needsOtherCerts: true,
     };
     let out: cert.Pkcs12Data = cert.parsePkcs12(p12, conf);
-    console.info(`parsePKCS12 result: success.`);
+    console.info(`parsePkcs12 result: success.`);
     if (out.privateKey) {
       console.info(`privateKey:` + out.privateKey.toString());
     }
@@ -356,7 +355,7 @@ async function doTestCreatePkcs12Sync() {
       console.info(`otherCerts is empty or not an array.`);
     }
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`doTestCreatePkcs12Sync failed: errCode: ${err.code}, message: ${err.message}`);
   }
 }
 ```

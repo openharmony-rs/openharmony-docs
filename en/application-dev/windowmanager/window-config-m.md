@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=f14619685c436cadd8fb8a431033ff5892d30b9b translatedAt=2026-10-08T09:03:03.911Z pushedAt=2026-10-08T11:23:03.948Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:03:30.883Z pushedAt=2026-11-04T08:17:36.283Z nl=1 -->
 
 ## metadata
 

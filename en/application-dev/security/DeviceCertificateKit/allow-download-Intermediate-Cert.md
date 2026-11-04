@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-08-11T01:57:16.226Z pushedAt=2026-08-11T02:39:07.044Z -->
+<!-- md-trans-meta sourceCommit=2d99b235700beb6fbf6e85916d19bb529b5ce6fc translatedAt=2026-11-04T08:26:45.356Z pushedAt=2026-11-04T08:30:24.158Z nl=1 -->
 
 Since API version 23, the missing intermediate CA certificate can be downloaded during certificate chain validation.
 
@@ -26,7 +26,7 @@ This topic uses the creation of an X.509 certificate chain as an example to demo
 
 > **NOTE**
 >
-> The sample code provided in this development guide must be executed with the network configured. Declare the **ohos.permission.INTERNET** permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
+> The sample code provided in this development guide requires network access to run. You need to request the ohos.permission.INTERNET permission. For configuration details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
 <!-- @[allow-download-intermediate-cert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/AllowDownloadIntermediateCert.ets) -->
 
@@ -139,3 +139,5 @@ async function buildX509CertChain() {
   }
 }
 ```
+
+
