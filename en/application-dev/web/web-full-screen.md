@@ -1,17 +1,18 @@
 # Enabling Immersive Full-Screen Video Playback
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d9b718db7a0c36c9cb00e65f9d1793520c014bcb translatedAt=2026-11-04T02:01:06.085Z pushedAt=2026-11-04T04:20:38.627Z nl=1 -->
 
 ArkWeb provides events for entering and exiting the full-screen mode. An application can listen for these events to enter and exit the immersive full-screen mode.
 
 When a video loaded from a third-party H5 page in the **Web** component is played in full screen, the video expands only to the entire **Web** component area and cannot be displayed in system full screen (as shown in Figure 2). To achieve the immersive full-screen video playback effect at the system level (as shown in Figure 3), the app must listen for the event of entering the full-screen mode and adjust the attributes of other components on the UI.
 
-| Figure 1 Exiting the full-screen mode| Figure 2 Non-immersive full-screen mode| Figure 3 Immersive full-screen mode|
+
+| Figure 1 Exiting the Full-Screen Mode | Figure 2 Non-immersive Full-Screen Mode | Figure 3 Immersive Full-Screen Mode |
 | :--------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: |
 | ![web_fullscreen1](figures/web_fullscreen1.png)| ![web_fullscreen2](figures/web_fullscreen2.png) | ![web_fullscreen3](figures/web_fullscreen3.png) |
 
@@ -29,6 +30,7 @@ import { webview } from '@kit.ArkWeb';
 struct ShortWebPage {
   controller: webview.WebviewController = new webview.WebviewController();
   CONSTANT_HEIGHT = 100;
+  @State marginTop: number = this.CONSTANT_HEIGHT;
   @State isVisible: boolean = true; // Customize the isVisible flag to determine whether to display the component.
 
   build() {
@@ -125,7 +127,7 @@ When customizing the swipe operation, determine whether the current video is in 
       this.changeOrientation(false);
       return true;
     } else {
-      router.back();
+      this.getUIContext().getRouter().back();
       return true;
     }
   }
@@ -137,7 +139,7 @@ Complete Sample Code:
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { window, router } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -164,7 +166,7 @@ struct WebVideo {
       this.changeOrientation(false);
       return true;
     } else {
-      router.back();
+      this.getUIContext().getRouter().back();
       return true;
     }
   }

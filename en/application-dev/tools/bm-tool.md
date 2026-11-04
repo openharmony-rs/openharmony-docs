@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=887569e800d1542799b971140e0fb4e21989a448 translatedAt=2026-09-08T10:58:34.588Z pushedAt=2026-09-08T11:48:41.210Z -->
+<!-- md-trans-meta sourceCommit=ec02f60ce17174b2a247c066a84f6ad809303333 translatedAt=2026-11-04T02:08:13.852Z pushedAt=2026-11-04T02:34:04.034Z nl=1 -->
 
 Bundle Manager (bm) is a tool for installing, uninstalling, updating, and querying bundles. It provides basic capabilities for debugging application installation bundles.
 
@@ -440,7 +440,7 @@ bm dump-overlay [-h] [-b bundleName] [-m moduleName] [-t targetModuleName] [-u u
 | -b | Used to display all **OverlayModuleInfo** about a specified overlay bundle. This parameter is mandatory.|
 | -m | Used to query **OverlayModuleInfo** based on the name of the module with the overlay feature. By default, the name of the main module of the current overlay bundle is used. This parameter is optional.|
 | -t | Used to query **OverlayModuleInfo** information based on the name of the target module. By default, this parameter is left empty. This parameter is optional.|
-| -u | Used to query **OverlayModuleInfo** of a specified user(#userid). By default, the information is queried by the current active user. This parameter is optional. The bundle can be queried only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the **bm dump-overlay -b com.ohos.app -u 102** command can be used to query **OverlayModuleInfo** of user 100 only.|
+| -u | Used to query **OverlayModuleInfo** of a specified [user](#userid). By default, the information is queried by the current active user. This parameter is optional. The bundle can be queried only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the **bm dump-overlay -b com.ohos.app -u 102** command can be used to query **OverlayModuleInfo** of user 100 only.|
 
 Example
 
@@ -472,7 +472,7 @@ bm dump-target-overlay [-h] [-b bundleName] [-m moduleName] [-u userId]
 | -h | Used to display help information.|
 | -b | Used to display all **OverlayBundleInfo** about a specified bundle. This parameter is mandatory.|
 | -m | Used to display **OverlayModuleInfo** based on a specified bundle name and module name. By default, **OverlayModuleInfo** of the main module of the current bundle is displayed. This parameter is optional.|
-| -u | Used to query **OverlayModuleInfo** of a specified user(#userid). By default, the information is queried by the current active user. This parameter is optional. The bundle can be queried only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, when you run the **bm dump-target-overlay -b com.ohos.app -u 102** command to query all associated **OverlayBundleInfo** in the target bundle **com.ohos.app**, only the **OverlayModuleInfo** of the current active user 100 is returned.|
+| -u | Used to query **OverlayModuleInfo** of a specified [user](#userid). By default, the information is queried by the current active user. This parameter is optional. The bundle can be queried only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, when you run the **bm dump-target-overlay -b com.ohos.app -u 102** command to query all associated **OverlayBundleInfo** in the target bundle **com.ohos.app**, only the **OverlayModuleInfo** of the current active user 100 is returned.|
 
 Example
 
@@ -971,7 +971,7 @@ An internal service error occurs during the installation.
 **Solution**
 
 Restart the device and try again.
-
+ 
 
 ### 9568261 Failed to Construct the Installer Object
 **Error Message**
@@ -2921,6 +2921,8 @@ The modules being uninstalled are not currently installed.
 **Solution**
 
 Run the [bm dump -n](#dump) to check the bundle configuration and ensure that the module to be uninstalled has been installed.
+
+<!--Del-->
 ### 9568432 Installation Fails Because the pluginDistributionIDs Verification Between Plugin and Bundle Fails
 **Error Message**
 
@@ -2963,6 +2965,7 @@ The bundle does not have the **ohos.permission.kernel.SUPPORT_PLUGIN** permissio
 1. Request the [ohos.permission.kernel.SUPPORT_PLUGIN permission](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin) by referring to [Declaring Permissions](../security/AccessToken/declare-permissions.md).<!--Del-->
 
 2. The permission APL is system_basic. If the [bundle APL](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) is lower than system_basic, request the permission by referring to [Requesting Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md).<!--DelEnd-->
+<!--DelEnd-->
 
 
 ### 9568333 Empty Module Name
@@ -3266,6 +3269,7 @@ The HSPs of the plugin have different bundle information.
 
 Check whether the bundle information of HSPs is consistent, including the **bundleName**, **bundleType**, **versionCode**, and **apiReleaseType** fields in the [**app.json5** file](../quick-start/app-configuration-file.md).
 
+<!--Del-->
 ### 9568437 Plugin Installation Failure Because of Plugin ID Parsing Failure
 **Error Message**
 
@@ -3289,6 +3293,7 @@ Reconfigure the **app-services-capabilities** field in <!--RP5-->[the profile](.
     }
 }
 ```
+<!--DelEnd-->
 
 ### 9568438 Plugin Uninstall Failure Because of Nonexistent Plugin Bundle Name
 **Error Message**

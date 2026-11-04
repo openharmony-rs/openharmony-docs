@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:55:31.820Z pushedAt=2026-09-02T07:30:46.905Z -->
+<!-- md-trans-meta sourceCommit=ac865d1619615b6b4f1ef99400a745419948a433 translatedAt=2026-11-04T02:04:45.938Z pushedAt=2026-11-04T04:26:14.347Z nl=1 -->
 
 The **Web** component provides the function of enabling and configuring the back-forward cache (BFCache), which can significantly improve the speed of returning to the previous web page, especially for users with poor network conditions.
 
@@ -15,7 +15,9 @@ After BFCache is enabled, the **Web** component saves the snapshot of the curren
 
 Before calling [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the ArkWeb kernel, you need to call [enableBackForwardCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enablebackforwardcache12) to enable BFCache. The **enableBackForwardCache** function receives the [BackForwardCacheSupportedFeatures](../reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md) parameter, which is used to control whether to allow pages with the same-layer rendering feature and video takeover feature to enter the BFCache.
 
-```ts
+<!-- @[web_module_open_bf_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 // EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -23,14 +25,16 @@ import { window } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        let features = new webview.BackForwardCacheSupportedFeatures();
-        features.nativeEmbed = true;
-        features.mediaTakeOver = true;
-        webview.WebviewController.enableBackForwardCache(features);
-        webview.WebviewController.initializeWebEngine();
-        AppStorage.setOrCreate("abilityWant", want);
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let features = new webview.BackForwardCacheSupportedFeatures();
+    features.nativeEmbed = true;
+    features.mediaTakeOver = true;
+    webview.WebviewController.enableBackForwardCache(features);
+    webview.WebviewController.initializeWebEngine();
+    AppStorage.setOrCreate('abilityWant', want);
+  }
+
+// ...
 }
 ```
 

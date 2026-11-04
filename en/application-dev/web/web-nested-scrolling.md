@@ -5,7 +5,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=021a1def5f4f9a294e2a9e42fe57bc8bf26b4de7 translatedAt=2026-09-22T13:06:30.680Z pushedAt=2026-09-22T13:35:01.671Z -->
+<!-- md-trans-meta sourceCommit=fc0161c8b5f1a11ed5dde5d7e8fd1d41d858f23f translatedAt=2026-11-04T02:02:22.275Z pushedAt=2026-11-04T04:21:05.861Z nl=1 -->
 
 A typical use case for nested scrolling with the Web component is a page containing multiple independent scrollable areas. When users scroll the content in the Web area, other scrollable areas can be linked to it, providing a nested scrolling experience that supports scrolling the page in all directions. For **Web** components embedded in scrollable containers ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md), and [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)), you need to set the ArkUI [NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) attribute after receiving the scrolling gesture events to implement nested scrolling between the **Web** component and ArkUI scrollable containers.
 
@@ -138,7 +138,7 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
     ```
     (2) Then use the [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13) method to prevent the built-in scrolling gesture of the **Web** component from being triggered.
     ```ts
-    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, otherArray<GestureRecognizer>) => {
+    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => {
       if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
         return GestureJudgeResult.REJECT;
       }

@@ -5,6 +5,7 @@
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=aa7f3fd7c0ddfa85901c045e21945a7cc480c368 translatedAt=2026-11-04T02:11:10.846Z pushedAt=2026-11-04T03:17:24.896Z nl=1 -->
 
 ArkTS supports conditional rendering, allowing you to display different content based on the application state using **if**, **else**, and **else if** statements.
 
@@ -33,9 +34,9 @@ A conditional statement updates whenever a state variable used inside the **if**
 
 2. All previously constructed child components within the conditional branch are removed from the component tree.
 
-3. The build function of the new active branch is executed, and the generated child components are added to the **if** parent component. If no matching **else** branch exists when conditions change, no new build function executes.
+3. The builder function of the new branch is executed, and the generated child components are added to the **if** parent component. If no applicable **else** branch exists, nothing is created.
 
-Condition expressions can include TypeScript expressions. However, expressions within constructors must not modify application state.
+Conditions can contain TypeScript expressions. Expressions within builder functions must not modify application state.
 
 ## Use Cases
 
@@ -79,9 +80,9 @@ Each branch of the **if** statement includes a build function. Each of such buil
 
 1. Remove all previously rendered components from the previous branch.
 
-2. Execute the build function of the new active branch and add the generated components to the parent container.
+2. The builder function of the new branch is executed, and the generated child components are added to their parent component.
 
-In the preceding example, when the value of **count** increases from **0** to **1**, the condition **if (this.count > 0)** becomes **true**. The build function of this branch is executed, creating a [Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component and adding it to the parent container **Column**. If the value of **count** changes to **0**, the **Text** component will be removed from the [Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md) component. Since there is no **else** branch, no new build function will be executed.
+In the preceding example, when the value of **count** increases from **0** to **1**, the condition **if (this.count > 0)** becomes **true**. The builder function of this branch is executed, creating a [Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component and adding it to the parent **Column** component. If **count** subsequently changes to **0**, the **Text** component is removed from the [Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md) component. Because there is no **else** branch, no new builder function is executed.
 
 ### if/ else Statements and Child Component States
 

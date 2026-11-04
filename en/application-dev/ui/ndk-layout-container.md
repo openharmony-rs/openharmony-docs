@@ -6,7 +6,7 @@
 <!--Designer: @camlostshi-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=087470085268b4c7968360a1498b1da15f27d467 translatedAt=2026-07-06T13:07:18.465Z pushedAt=2026-07-09T11:31:54.115Z -->
+<!-- md-trans-meta sourceCommit=60dbcf21a7bd45e2804e5d19a8be0baa60fcdbd2 translatedAt=2026-11-04T02:34:33.951Z pushedAt=2026-11-04T03:37:16.623Z nl=1 -->
 
 Starting from API version 12, ArkUI provides node types and attribute setting APIs in the NDK for common layout components: [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), and [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md). **Flex** is used for flex layout, **Row** and **Column** for linear layout, and **Stack** for stacked layout. For the corresponding node types and attribute setting enums, refer to [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype).
 

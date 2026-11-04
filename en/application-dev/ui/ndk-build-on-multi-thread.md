@@ -1,10 +1,11 @@
-# Parallelizing UI Page Building Using Multi-threaded NDK APIs
+# NDK Multi-thread Component Creation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @liujiang077-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bf497737a3afef41b082e1d0e35ae5f483a70eab translatedAt=2026-11-04T02:31:16.082Z pushedAt=2026-11-04T03:36:42.207Z nl=1 -->
 
 ## Overview
 
@@ -44,9 +45,9 @@ For the complete list of NDK APIs supporting multi-threading, see [Multi-threade
 
 You can use the multi-thread NDK API to create a UI component and set its attributes in any thread. However, the UI component must be mounted to the main UI tree in the UI thread. The following APIs can be used to dispatch and execute multi-thread UI component creation tasks.
 
-- For tasks that can be executed in non-UI threads (such as component creation and attribute setting), use the [OH_ArkUI_PostAsyncUITask](https://../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postasyncuitask) API to schedule them to the system thread pool, and then submit the component mounting task to the UI thread for execution.
+- For tasks that can be executed in non-UI threads (such as component creation and attribute setting), use the [OH_ArkUI_PostAsyncUITask](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postasyncuitask) API to schedule them to the system thread pool, and then submit the component mounting task to the UI thread for execution.
 
-- When creating UI components in custom non-UI threads, use the [OH_ArkUI_PostUITask](https://../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postuitask) API to submit the component mounting task to the UI thread.
+- When creating UI components in custom non-UI threads, use the [OH_ArkUI_PostUITask](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postuitask) API to submit the component mounting task to the UI thread.
   
 - When executing UI-thread-only tasks during multi-threaded UI component creation, use the [OH_ArkUI_PostUITaskAndWait](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postuitaskandwait) API to submit the task to the UI thread. Note that this API may block the calling thread if the UI thread is heavily loaded, potentially affecting multi-threading performance gains. Use this API sparingly.
 
@@ -262,11 +263,12 @@ export const createNodeTreeOnMultiThread: (content1: Object, content2: Object) =
 export const disposeNodeTreeOnMultiThread: (content1: Object) => void;
 ```
 
-``` cpp
-# CMakeLists.txt
+<!-- @[cmake_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBuildOnMultiThread/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.5.0)
-project(ndk_build_on_multi_thread)
+project(myapp)
 
 set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -277,8 +279,12 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(entry SHARED napi_init.cpp NativeEntry.cpp NativeModule.h ArkUIBaseNode.h ArkUINode.h ArkUIListNode.h ArkUIListItemNode.h ArkUITextNode.h NormalTextListExample.h CreateNode.h CreateNode.cpp)
-target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
+add_library(entry SHARED
+    napi_init.cpp
+    node/NodeCreator.cpp
+    card/CardCreator.cpp
+    )
+target_link_libraries(entry PUBLIC libace_napi.z.so ace_ndk.z.so hilog_ndk.z.so)
 ```
 
 ``` cpp
@@ -390,7 +396,7 @@ struct AsyncData {
     std::string label = "";
 };
 
-// Save the mapping between the NodeContent pointer on the ArkTS side and the node tree root node on the native side.
+// Save the correspondence between the NodeContent pointer on the ArkTS side and the root node of the native-side node tree.
 std::map<ArkUI_NodeContentHandle, std::shared_ptr<ArkUIBaseNode>> g_nodeMap;
 ArkUI_ContextHandle g_contextHandle = nullptr;
 
@@ -403,7 +409,7 @@ void CreateNodeTree(void *asyncUITaskData) {
     // Create the root node of the component tree.
     auto rowNode = std::make_shared<ArkUIRowNode>();
     asyncData->child = rowNode;
-    
+
     // Create a button component.
     auto buttonNode1 = std::make_shared<ArkUIButtonNode>();
     ArkUI_AttributeItem label_item = { .string = asyncData->label.c_str() };
@@ -421,8 +427,8 @@ void CreateNodeTree(void *asyncUITaskData) {
     }
     // Set the width attribute of the button component.
     buttonNode1->SetWidth(150);
-   
-   // Create another button component.
+
+    // Create a button component.
     auto buttonNode2 = std::make_shared<ArkUIButtonNode>();
     ArkUI_AttributeItem label_item2 = { .string = asyncData->label.c_str() };
     // Set the label attribute of the button component.
@@ -522,14 +528,14 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
     napi_value args[2] = { nullptr, nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    // Obtain the mount point of the component on the ArkTS side.
+    // Obtain the component mounting point on the ArkTS side.
     ArkUI_NodeContentHandle contentHandle;
     int32_t result = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "OH_ArkUI_GetNodeContentFromNapiValue Failed %{public}d", result);
         return nullptr;
     }
-    
+
     // Obtain the context object pointer.
     if (!g_contextHandle) {
         result = OH_ArkUI_GetContextFromNapiValue(env, args[1], &g_contextHandle);
@@ -540,7 +546,7 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
             return nullptr;
         }
     }
-    
+
     // Create the root node of the component tree on the native side.
     auto scrollNode = std::make_shared<ArkUIScrollNode>();
     // Mount the root node of the component tree on the native side to the main UI tree.
@@ -551,7 +557,7 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
     }
     // Save the component tree on the native side.
     g_nodeMap[contentHandle] = scrollNode;
-    
+
     auto columnNode = std::make_shared<ArkUIColumnNode>();
     scrollNode->AddChild(columnNode);
     // Create a component using the framework-provided thread pool.
@@ -568,14 +574,14 @@ napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info)
     napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    // Obtain the mount point of the component on the ArkTS side.
+    // Obtain the component mounting point on the ArkTS side.
     ArkUI_NodeContentHandle contentHandle;
     int32_t result = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "OH_ArkUI_GetNodeContentFromNapiValue Failed %{public}d", result);
         return nullptr;
     }
-    
+
     auto it = g_nodeMap.find(contentHandle);
     if (it == g_nodeMap.end()) {
         return nullptr;
@@ -606,20 +612,20 @@ static napi_value Init(napi_env env, napi_value exports)
     // Bind the native creation and destruction of components.
     napi_property_descriptor desc[] = {
         {"createNativeRoot", nullptr,
-        NativeModule::CreateNativeRoot, nullptr, nullptr,
-        nullptr, napi_default, nullptr},
-        
+            NativeModule::CreateNativeRoot, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+
         {"destroyNativeRoot", nullptr,
-        NativeModule::DestroyNativeRoot, nullptr, nullptr,
-        nullptr, napi_default, nullptr},
-        
+            NativeModule::DestroyNativeRoot, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+
         {"createNodeTreeOnMultiThread", nullptr,
-        NativeModule::CreateNodeTreeOnMultiThread, nullptr, nullptr,
-        nullptr, napi_default, nullptr},
-        
+            NativeModule::CreateNodeTreeOnMultiThread, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+
         {"disposeNodeTreeOnMultiThread", nullptr,
-        NativeModule::DisposeNodeTreeOnMultiThread, nullptr, nullptr,
-        nullptr, napi_default, nullptr}
+            NativeModule::DisposeNodeTreeOnMultiThread, nullptr, nullptr,
+            nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -646,6 +652,3 @@ The following example demonstrates how to use multiâ€‘threaded NDK APIs in highâ
 <!--RP1-->
 [Building UI Components Using the Multi-threaded NDK APIs](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/NdkBuildOnMultiThread)
 <!--RP1End-->
-
-
-<!--no_check-->

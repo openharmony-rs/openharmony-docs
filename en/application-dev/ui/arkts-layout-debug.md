@@ -1,4 +1,11 @@
 # Debugging UI Display Exceptions
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @caoruihong-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f91aced2140630182df560d0e98df0c86b14aaf3 translatedAt=2026-11-04T02:29:42.738Z pushedAt=2026-11-04T03:34:46.366Z nl=1 -->
 
 This topic outlines effective methods for identifying and resolving UI display exceptions, illustrated with practical case studies.
 
@@ -101,9 +108,6 @@ struct Page {
       this.msg = `${this.componentId}: ` + this.getRectInfo(this.componentId) + `, pivot: {x: ${this.pivotX}, y: ${this.pivotY}}`;
       this.flag = true;
     }
-  }
-
-  onDidBuild(): void {
   }
 
   build() {

@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:53:50.925Z pushedAt=2026-09-02T07:30:09.915Z -->
+<!-- md-trans-meta sourceCommit=ed43d4a6c875a1bf7b07424891cb324334855b17 translatedAt=2026-11-04T02:01:33.449Z pushedAt=2026-11-04T04:21:01.597Z nl=1 -->
 
 You can use the Web component to register application-side code with the frontend page. After registration, the frontend page can call methods on the application side by using the registered object name.
 
@@ -85,7 +85,7 @@ struct WebComponent {
 - Example 1:
 
   <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->    
-
+  
   ``` TypeScript
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -144,11 +144,11 @@ struct WebComponent {
     }
   }
   ```
-
+ 
 - Example 2:
 
    <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->    
-
+   
    ``` TypeScript
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
@@ -295,30 +295,31 @@ struct WebComponent {
 ### Passing Arrays Between the Application and the Frontend Page
 
  Arrays can be used as parameters or return values of object registration methods and passed between applications and frontend pages.
-  ```ts
-  // xxx.ets
+  <!-- @[pass_an_array_between_the_application_side_and_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_one.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(): Array<number> {
-      return [1, 2, 3, 4]
+      return [1, 2, 3, 4];
     }
-
-    toString(param: string): void {
+  
+    toString(param: Array<number>): void {
       console.info('Web Component toString' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -326,33 +327,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index7.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index7.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -370,37 +374,38 @@ struct WebComponent {
 ### Using Complex Types Excluding Functions
 
   Sample code for passing complex types (excluding functions) as parameters or return values in object registration methods between the application and the frontend page:
-  ```ts
-  // xxx.ets
+  <!-- @[the_base_type_is_passed_between_the_app_side_and_front_end_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class Student {
-    name: string = '';
-    age: string = '';
+    public name: string = '';
+    public age: string = '';
   }
-
+  
   class TestClass {
     constructor() {
     }
-
-    // Data of primitive types to pass: name:"jeck", age:"12"
+  
+    // Pass the basic types name:'jeck', age:'12'.
     test(): Student {
-      let st: Student = { name: "jeck", age: "12" };
+      let st: Student = { name: 'jeck', age: '12' };
       return st;
     }
-
+  
     toString(param: ESObject): void {
-      console.info('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param['name']);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -408,33 +413,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index9.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index9.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -451,30 +459,31 @@ struct WebComponent {
 ### Invoking a Callback of the Frontend Page from the Application
 
   Callbacks can be used as parameters or return values of object registration methods and passed between applications and frontend pages.
-  ```ts
-  // xxx.ets
+  <!-- @[the_application_side_calls_the_callback_of_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_three.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(param: Function): void {
-      param("call callback");
+      param('call callback');
     }
-
-    toString(param: String): void {
+  
+    toString(param: string): void {
       console.info('Web Component toString' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -482,33 +491,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index8.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index8.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -525,30 +537,31 @@ struct WebComponent {
 ### Calling the Function in an Object of the Frontend Page from the Application Side
 
   The function in an object of the frontend page can be used as the parameter or return value of the registration object method and passed between the application side and the frontend page.
-  ```ts
-  // xxx.ets
+  <!-- @[call_the_function_in_the_object_of_the_front_end_page_on_the_application_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_four.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(param: ESObject): void {
-      param.hello("call obj func");
+      param.hello('call obj func');
     }
-
+  
     toString(param: string): void {
       console.info('Web Component toString' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -556,33 +569,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index6.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index6.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -624,45 +640,46 @@ struct WebComponent {
 ### Calling the Function in an Object of the Application Side from the Frontend Page
 
   The function in an object of the application side can be used as the parameter or return value of the registration object method and passed between the application side and the frontend page.
-  ```ts
-  // xxx.ets
+  <!-- @[the_front_end_page_calls_the_function_in_the_object_on_the_application_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_five.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class ObjOther {
-    methodNameListForJsProxy: string[]
-
+    public methodNameListForJsProxy: string[];
+  
     constructor(list: string[]) {
-      this.methodNameListForJsProxy = list
+      this.methodNameListForJsProxy = list;
     }
-
+  
     testOther(json: string): void {
-      console.info(json)
+      console.info(json);
     }
   }
-
+  
   class TestClass {
-    ObjReturn: ObjOther
-
+  public objReturn: ObjOther
+  
     constructor() {
-      this.ObjReturn = new ObjOther(["testOther"]);
+      this.objReturn = new ObjOther(['testOther']);
     }
-
+  
     test(): ESObject {
-      return this.ObjReturn
+      return this.objReturn
     }
-
+  
     toString(param: string): void {
       console.info('Web Component toString' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -670,33 +687,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index5.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index5.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -714,36 +734,37 @@ struct WebComponent {
 ### Using Promises
 
   Create a promise on the application side. Use the promise as the parameter or return value of the object method and pass it to the frontend page.
-  ```ts
-  // xxx.ets
+  <!-- @[on_the_application_side_of_new_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_one.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.info('Execution completed');
+          console.info('Execute Finished');
           reject('fail');
         }, 10000);
       });
       return p;
     }
-
+  
     toString(param: string): void {
-      console.info(" " + param);
+      console.info(' ' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -751,33 +772,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index2.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index2.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -792,30 +816,31 @@ struct WebComponent {
   </html>
   ```
   Create a promise on the frontend page. Use the promise as the parameter or return value of the object method and pass it to the application side.
-  ```ts
-  // xxx.ets
+  <!-- @[on_the_front_end_page_new_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(param:Function): void {
-      setTimeout( () => { param("suc") }, 10000)
+      setTimeout( () => { param('suc') }, 10000)
     }
-
+  
     toString(param:string): void {
-      console.info(" " + param);
+      console.info(' ' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -823,33 +848,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index3.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index3.html -->
   <!DOCTYPE html>
   <html>
   <body>

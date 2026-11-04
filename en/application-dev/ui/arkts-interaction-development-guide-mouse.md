@@ -1,21 +1,21 @@
 # Handling Mouse Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=98a49c777434ab983631836cbaa90097e1af2227 translatedAt=2026-10-12T09:20:27.337Z pushedAt=2026-10-13T07:57:40.437Z -->
+<!-- md-trans-meta sourceCommit=1e593c98c8a2fdd17e3bb69683a63dbdeefcb9da translatedAt=2026-11-04T02:28:38.302Z pushedAt=2026-11-04T03:33:39.785Z nl=1 -->
 
 ![mouse](figures/device_mouse.png)
 
 A mouse is an essential input device for PC/2in1 and tablet devices. It allows click and swipe operations through buttons, scrolling through the scroll wheel, and also provides additional buttons. These events are reported to the app through [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) and [AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent), respectively.
 
->**NOTE**
+> **NOTE**
 >
->All single-finger touch events and gesture events can be triggered and responded to using a left mouse click.
-> - For example, to implement a feature where clicking a [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) navigates to another page, supporting both finger tap and left mouse click, you can achieve this by simply binding a single [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) event.
-> - If you want to implement different effects for the finger touch and the left mouse click, use the **source** parameter in the **onClick** callback to determine whether the current event is triggered by a finger touch or a mouse device.
+> All touch events and gesture events that can be responded to with a single finger can also be operated and responded to with the left mouse button.
+> - For example, to develop a feature where clicking [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) navigates to another page, and to support both finger taps and left mouse button clicks, you only need to bind one click event ([onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)) to achieve this effect.
+> - To implement different effects for finger taps and left mouse button clicks, in the `onClick` callback, use the `source` field in the callback parameter to determine whether the current trigger event originates from a finger or the mouse.
 
 In addition, for apps on PC/2in1 and tablet devices that have not been adapted for mouse operations, the system provides a fallback mechanism that converts left mouse button clicks, swipes, and scroll wheel events into touch events. The system also allows you to control whether to convert events through a configuration file.
 

@@ -1,12 +1,11 @@
 # Implementing Gesture Responses
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-08-01T00:30:48.256Z pushedAt=2026-08-03T01:45:12.158Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-04T02:28:54.804Z pushedAt=2026-11-04T03:34:23.797Z nl=1 -->
 
 When a user action matches the predefined characteristics of a gesture, the system recognizes it as that gesture. This process is called gesture recognition. To respond to a gesture, you need to attach a gesture object to a component so the system can collect and process the gesture input.
 
@@ -21,20 +20,15 @@ When a user action matches the predefined characteristics of a gesture, the syst
 | [RotationGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-rotationgesture.md)   | Rotate two fingers around a central point.                                                                       | Rotate gesture using two fingers on a touchscreen.                                                                                                                  |
 | [SwipeGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-swipegesture.md)         | Speed-based directional swipe (triggered on release velocity). The key distinction between **PanGesture** and **SwipeGesture** lies in their recognition criteria: **PanGesture** is triggered based on movement distance while the pointer is still active; **SwipeGesture** is triggered based on release velocity after the pointer is lifted.| Quick swipe with one finger on a touchscreen; two-finger swipe on a touchpad; fast scroll with a mouse wheel.                                                                    |
 
+
 ## Gesture Response Rules
 
 Basic Rules
-
 - Gesture recognition is based on the component hit at a specific location and time.
-
 - If multiple components define the same gesture type, the gesture on the child component takes precedence over the parent.
-
 - For gestures with different recognition conditions, the gesture that meets its condition first is triggered.
-
 - If no parallel gestures are defined, once one gesture succeeds, others are excluded from recognition during that interaction.
-
 - When a gesture of the same type succeeds on a child component, the same gesture type on the parent component is also considered successful.
-
 - Built-in gestures (automatically bound by the framework) have higher priority than developer-defined gestures of the same type, unless you explicitly set a higher priority using the **priority** binding mode.
 
 The following scenarios illustrate these rules in practice:
@@ -59,6 +53,7 @@ The gesture that matches the actual user operation is triggered.
 
 Example: If the user lifts their finger before the pan gesture threshold is met, a tap gesture is recognized instead.
 
+
 ## Intervention in Gesture Processing
 
 While the ArkUI gesture framework handles gesture recognition based on predefined rules, applications often require dynamic control over gesture behavior. This allows you to intervene in the recognition process to achieve specific interaction outcomes, as long as the standard response rules are respected.
@@ -71,5 +66,6 @@ Gesture recognition is still initiated based on [hit testing](./arkts-interactio
 | Enhanced gesture judgment| Allows applications to conditionally approve or reject a gesture before the system finalizes recognition.| [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13)           | 1. Works similarly to **onGestureJudgeBegin**, but with higher priority.<br>2. If this API is bound, **onGestureJudgeBegin** becomes ineffective.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Gesture Parallel Dynamic Control | Controls the linkage between PAN gestures of parent and child (ancestor and descendant) components to implement nested scrolling. | [shouldBuiltInRecognizerParallelWith](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#shouldbuiltinrecognizerparallelwith) | 1. Triggered when the user presses down and the system starts collecting all gesture objects at the current position that need to participate in gesture processing.<br/>2. When the callback is triggered, it provides the built-in system gesture on the current component (currently only the pan gesture is supported), along with gesture objects of the same type (pan gestures) that the system has already collected before the current component. These gestures form an array and generally come from child components, so they have a higher response priority than the same-type gesture on the current component. Under normal circumstances, the gesture on the current component cannot compete with the gestures from child components.<br/>3. This callback method gives the app an opportunity to forcibly specify that its own lower-priority gesture of the same type (pan gesture) runs in parallel with the higher-priority gesture of the same type on the child component. That is, when the higher-priority gesture of the same type on the child component succeeds, the gesture on the current component can also be successfully triggered and thus respond.<br/>4. The returned gesture object provides an interface for controlling gesture response enablement. Therefore, after the gestures run in parallel, the app can independently control the response behavior of the two parallel gestures, thereby achieving a nested scrolling effect (one scrolls first, and when it reaches the bottom, the other is triggered to continue scrolling).<br/>**Note:**<br/>When using this method, ensure that the bound component has a built-in system gesture (such as List or Swiper). Otherwise, using this method has no effect and is meaningless. |
 | Gesture recognition prevention  | Prevents specific gestures from participating in recognition before they are processed. | [preventBegin](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#preventbegin20) | 1. Triggered during the [onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20) callback when the user presses the screen.<br>2. Returns all gesture recognizers eligible for processing at the current position.<br>3. You can selectively call **preventBegin** on recognizers to exclude them from recognition, helping avoid gesture conflicts.<br>This capability is supported since API version 20.|
+
 
 For details, see [Gesture Conflict Handling](arkts-gesture-events-gesture-judge.md).

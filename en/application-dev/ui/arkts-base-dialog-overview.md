@@ -5,12 +5,12 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=faa9c2922ab5a5f0e0bdeca23152568ef5a17f31 translatedAt=2026-10-10T06:05:43.030Z pushedAt=2026-10-12T07:37:30.622Z -->
+<!-- md-trans-meta sourceCommit=faa9c2922ab5a5f0e0bdeca23152568ef5a17f31 translatedAt=2026-10-10T06:05:43.030Z pushedAt=2026-10-12T07:37:30.622Z nl=1 -->
 
 A dialog is a modal window that temporarily displays information requiring user attention or pending operations while maintaining the current context. A dialog does not need to be bound to any component, and its content typically consists of multiple components such as text, lists, input boxes, and images to achieve the desired layout. ArkUI currently provides two categories of dialog components: **custom** and **fixed style**.
 
-* **Custom dialog:** allows you to pass in custom components to populate the dialog based on your use case, enabling customized dialog content. Key APIs include the basic custom dialog (**CustomDialog**) and the global custom dialog (**openCustomDialog**), which does not depend on any UI component.
-* Fixed-style dialog: offers a predefined structure for simple and standard interactions. Available APIs include **AlertDialog**, **ActionSheet**, **PickerDialog**, **showDialog**, and **showActionMenu**.
+* **Custom dialog**: allows you to pass in custom components to populate the dialog based on your use case, enabling customized dialog content. Key APIs include the basic custom dialog (**CustomDialog**) and the global custom dialog (**openCustomDialog**), which does not depend on any UI component.
+* **Fixed-style dialog**: offers a predefined structure for simple and standard interactions. Available APIs include **AlertDialog**, **ActionSheet**, **PickerDialog**, **showDialog**, and **showActionMenu**.
 
 ## Use Cases
 
@@ -34,5 +34,3 @@ A dialog is a modal window that temporarily displays information requiring user 
 * It is recommended that you use the dialog APIs provided by [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)<!--Del-->, except for UI-less scenarios such as [ServiceExtensionAbility](../../application-dev/application-models/serviceextensionability-sys.md)<!--DelEnd-->.
 * You can use the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API in **UIContext** to obtain the [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 * Due to system security policies, custom dialogs cannot be displayed while system permission dialogs are active.
-
-
