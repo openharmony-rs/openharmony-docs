@@ -5,7 +5,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=bcbbbedf2234f156fe3ad4387f2cc76834ae7941 translatedAt=2026-09-22T09:26:42.756Z pushedAt=2026-09-22T11:34:45.678Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T03:12:23.924Z pushedAt=2026-11-03T03:25:09.570Z nl=1 -->
 
 In the system, applications can use the **Web** component to load web pages. If the capability or performance of non-system UI components is inferior to that of system components, you can use the ArkUI component to render these components (same-layer components).
 
@@ -73,9 +73,9 @@ If an application needs to use same-layer rendering on a web page loaded by the 
 
 **Supported CSS Attributes**: 
 
-**display**, **position**, **z-index**, **visibility**, **opacity**, **background-color**, **background-image**, **width**, **height**, **padding**, **padding-left**, **padding-top**, **padding-right**, **padding-bottom**, **margin**, **margin-left**, **margin-top**, **margin-right**, **margin-bottom**, **border-width**, **border-style**, **border-color**, **border-left-width**, **border-left-style**, **border-left-color**, **border-top-width**, **border-top-style**, **border-top-color**, **border-right-width**, **border-right-style**, **border-right-color**, **border-bottom-width**, **border-bottom-style**, **border-bottom-color**, **border-left**, **border-right**, **border-top**, **border-bottom**, **border**, **border-top-left-radius**, **border-top-right-radius**, **border-bottom-left-radius**, **border-bottom-right-radius**, **border-radius**, **transition**, and **transform** (Only **translate** and **scale** are supported. The value of **scale** must be greater than or equal to 0.)
+display, position, z-index, visibility, opacity, background-color, background-image, width, height, padding, padding-left, padding-top, padding-right, padding-bottom, margin, margin-left, margin-top, margin-right, margin-bottom, border-width, border-style, border-color, border-left-width, border-left-style, border-left-color, border-top-width, border-top-style, border-top-color, border-right-width, border-right-style, border-right-color, border-bottom-width, border-bottom-style, border-bottom-color, border-left, border-right, border-top, border-bottom, border, border-top-left-radius, border-top-right-radius, border-bottom-left-radius, border-bottom-right-radius, border-radius, transition, transform (translate/scale are supported, and the scale parameter supports only values greater than or equal to 0. Starting from API version 26.1.0, you can set supportTransformRotateAndSkew in [EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16) to true through [nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16) to support the rotate and skew attributes in transform)
 
- Other CSS attributes, such as **rotate** and **skew** in the **transform** attribute, may not meet the expectation.
+ Except for the CSS attributes supported above, other CSS attributes are not guaranteed to behave as expected.
 
 **Lifecycle Management**: 
 When the lifecycle of a tag at the same layer changes, the [onNativeEmbedLifecycleChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11) callback is triggered.
@@ -171,7 +171,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
 
      Call **registerNativeEmbedRule** to register a **\<object>** tag.
      <!-- @[register_object_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
-
+     
      ``` TypeScript
      Web({src: $rawfile('test2.html'), controller: this.browserTabController})
        // Register the same-layer tag as 'object' with the 'test' prefix.
@@ -206,7 +206,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    The same-layer rendering feature is disabled by default. To enable this feature, set [enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11).
 
    <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
-
+   
    ``` TypeScript
    Web({src: $rawfile('test2.html'), controller: this.browserTabController})
    // ...
@@ -219,7 +219,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    The system component is displayed in the corresponding area after same-layer rendering is enabled.
 
    <!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
-
+   
    ``` TypeScript
    @Component
    struct TextInputComponent {
@@ -255,7 +255,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    The node controller is used to control and report node behaviors of the corresponding NodeContainer.
 
    <!-- @[create_nodecontainer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
-
+   
    ``` TypeScript
    // Used to control and feed back the behavior of the node on the corresponding NodeContainer. Must be used together with NodeContainer.
    class MyNodeController extends NodeController {
@@ -329,7 +329,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    Call [onNativeEmbedLifecycleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11) to listen for the lifecycle changes of the same-layer rendered tags.
 
    <!-- @[native_embed_lifecycle_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
-
+   
    ``` TypeScript
    // Obtain the lifecycle change data of the embed tag.
    .onNativeEmbedLifecycleChange((embed) => {
@@ -399,7 +399,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    Call [onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedgestureevent11) to listen for gesture events of the same-layer rendered region.
 
    <!-- @[native_embed_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
-
+   
    ``` TypeScript
    // Obtain the touch event information of the same-layer rendering component.
    .onNativeEmbedGestureEvent((touch) => {
@@ -433,7 +433,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    Call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for the mouse events in the same-layer rendering region.
 
    <!-- @[native_embed_mouse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
-
+   
    ``` TypeScript
    .onNativeEmbedMouseEvent((mouse) => {
      console.info('NativeEmbed onNativeEmbedMouseEvent' + JSON.stringify(mouse.mouseEvent));
@@ -472,11 +472,10 @@ To start with, add network permissions to **module.json5**. For details, see [De
 
 Code on the application side:
   <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-  import { UIContext } from '@kit.ArkUI';
-  import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+  import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
   
   @Observed
   declare class Params{
@@ -725,7 +724,7 @@ Code on the application side:
 
 - Example of using same-layer rendering on the application side:
   <!-- @[draw_x_component_av_player_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/DrawXCompAVPBtn.ets) -->
-
+  
   ``` TypeScript
   // Create a NodeController instance.
   import { webview } from '@kit.ArkWeb';
@@ -975,7 +974,7 @@ Code on the application side:
 
 - Code example of video playback on the application side. Replace the URL with the correct video URL in practice.
   <!-- @[mp4_player_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/PlayerDemo.ets) -->
-
+  
   ``` TypeScript
   import { media } from '@kit.MediaKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1107,8 +1106,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { UIContext } from '@kit.ArkUI';
-import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
 
 @Observed
 declare class Params{
@@ -1360,7 +1358,7 @@ struct Page{
   }
 }
 ```
-
+  
 - Example of a frontend page:
 
   The sample code uses the **\<embed>** tag. To use the **\<object>** tag, register it and **\<type>** on the eTS side.
@@ -1387,7 +1385,7 @@ struct Page{
   ```
 
 - Demo
-
+  
   The **display** attribute of **arkwebnativestyle** is not set.
 
   ![web-same-layer](figures/web-same-layer-nativeEmbedOverlay1.png)
@@ -1409,11 +1407,10 @@ The values of the attribute are listed in the following table.
 
 - Code on the application side:
   <!-- @[texture_map_alignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/TextureMapAlignment.ets) --> 
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-  import { UIContext } from '@kit.ArkUI';
-  import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+  import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
   @Observed
   declare class Params{
     elementId: string
@@ -1611,13 +1608,17 @@ The values of the attribute are listed in the following table.
     </body>
     </html>
   ```
-
+ 
 ## FAQs
 ### What should I do if the same-layer rendered components are stretched?
 
 - The component height is too high.
 
   Due to GPU limitations, same-layer tags have a height limit of 8000px. If the height of a same-layer tag in H5 is too large, the component may be stretched. In this case, set the height of the same-layer tag to below 8000px.
+
+- Caused by transform rotate/skew
+
+  After a same-layer tag applies the rotate/skew transformation in CSS transform, the image may be stretched and distorted. Starting from API version 26.1.0, you can set supportTransformRotateAndSkew in [EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16) to true through [nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16) to resolve this issue.
 
 - The width and height of the custom component do not match those of the same-layer rendered tag.
 

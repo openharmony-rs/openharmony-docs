@@ -20,6 +20,8 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 提供一个固定样式的弹出框，返回对话结果。使用Promise异步回调。适用于使用系统统一样式展示提示或确认信息的场景。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -108,6 +110,8 @@ struct Index {
 present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent&lt;Object&gt;, options?: dialog.DialogCustomOptions): Promise&lt;DialogResult&gt;
 
 提供一个自定义样式的弹出框，其中包含所提供的内容，返回对话结果，使用Promise异步回调。适用于需要自定义弹出框内容、布局和样式的场景。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -240,6 +244,8 @@ update(content: ComponentContent&lt;Object&gt;, options?: dialog.DialogBaseOptio
 
 更新已弹出的自定义弹出框，无返回结果。使用Promise异步回调。适用于弹出框已弹出后需要动态更新其样式或位置的交互场景。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -279,6 +285,8 @@ dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 关闭弹出框，无返回结果。使用Promise异步回调。适用于在用户完成交互后关闭弹出框的场景。
 
 接受弹出框ID（由[present](#present)返回的[DialogResult](js-apis-dialog.md#dialogresult)中的dialogId）或[ComponentContent](./js-apis-arkui-ComponentContent.md)引用作为target，关闭对应的弹出框。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 

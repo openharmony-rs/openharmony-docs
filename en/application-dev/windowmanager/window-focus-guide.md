@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0d88cc2609499932569930500f1a6723fd824448 translatedAt=2026-08-11T10:11:42.071Z pushedAt=2026-08-11T11:30:25.595Z -->
+<!-- md-trans-meta sourceCommit=39c39bc7d6f38e5435e335a13e8450290f36df13 translatedAt=2026-11-03T02:52:49.105Z pushedAt=2026-11-03T02:59:25.711Z nl=1 -->
 
 ## When to Use
 
@@ -39,7 +39,6 @@ A screen group is a set of logically associated display areas in the system, wit
 **Window Highlight State** indicates whether the current window is in a visual highlight state. Visual highlight is a UI feedback mechanism that communicates to the user that this window is currently active, interactive, or being emphasized by the system by changing the window's appearance (such as title bar color, border style, transparency, and shadow).
 
 - Window highlight state supports app windows (including main windows and subwindows), but does not support system windows.
-
 - A window being in the highlight state does not mean it has gained focus; however, a focus window is always in the highlight state.
 
 - There are two highlight modes: exclusive highlight and non-exclusive highlight.
@@ -67,12 +66,12 @@ A screen group is a set of logically associated display areas in the system, wit
 | Querying whether the window is in the highlight state | Determine whether the current window is visually highlighted, which can be used for scenarios such as UI state synchronization. | [isWindowHighlighted()](../reference/apis-arkui/arkts-apis-window-Window.md#iswindowhighlighted18) |
 | Showing the current window | Can be used to display the main window, child windows, global floating windows, and system windows.<br/>If `focusOnShow: false` is passed in, the window cannot gain focus when displayed. | [showWindow(options: ShowWindowOptions)](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow20) |
 
-> **NOTE**
+> **NOTE:**
 >
-> - For listener APIs: Use the corresponding **off()** API to remove the relevant listener when the page is destroyed to avoid memory leaks.
+> - For listening-type interfaces: use the corresponding off() interface to remove the relevant listener when the page is destroyed, to avoid memory leaks.
 >
-> - Page loading takes precedence over display: When calling APIs such as **showWindow()** to display a window, ensure that the page has been loaded using **loadContent()** or **setUIContent**.
+> - Page loading takes precedence over display: when calling interfaces such as [showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow20) to display a window, ensure that the page has been loaded using interfaces such as [loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1).
 >
-> - Use the exclusive window highlight mode appropriately: Avoid abusing [setExclusivelyHighlighted()](../reference/apis-arkui/arkts-apis-window-Window.md#setexclusivelyhighlighted15), which may lead to a fragmented user experience.
+> - Use the window exclusive activation mode appropriately: avoid abusing [setExclusivelyHighlighted()](../reference/apis-arkui/arkts-apis-window-Window.md#setexclusivelyhighlighted15), which may cause a fragmented user experience.
 >
-> - Combining state query and listening APIs: When entering a page for the first time, use **isWindowHighlighted()**/**isFocused()** to obtain the initial state, and then listen for subsequent changes through the corresponding **on('windowHighlightChange')**/**on('windowEvent')** APIs to implement relevant adaptations and operations.
+> - Combine state query and listening interfaces: when entering a page for the first time, use isWindowHighlighted()/isFocused() to obtain the initial state, and then use the corresponding on('windowHighlightChange')/on('windowEvent') interfaces to listen for subsequent changes to implement related adaptation and operations.
