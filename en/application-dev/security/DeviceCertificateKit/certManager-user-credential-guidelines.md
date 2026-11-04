@@ -6,7 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=9af33b6145f31b5067bdb178a2bf63f4a540b98f translatedAt=2026-08-11T01:58:55.775Z pushedAt=2026-08-11T07:53:32.611Z -->
+<!-- md-trans-meta sourceCommit=1520eb037fe72c44a5fe1b8c157a7f7d1c907e19 translatedAt=2026-11-04T04:50:52.669Z pushedAt=2026-11-04T05:56:48.908Z nl=1 -->
 
 When your app accesses an app server that requires user authentication using the device user's certificate credentials, you can use this feature to install and use user certificate credentials. For example, your app can log in to an enterprise internal app server through mutual TLS.
 
@@ -41,8 +41,7 @@ The installation, signing, and signature verification of user certificate creden
 2. Import the required modules.
 
    ```ts
-   import { certificateManager } from '@kit.DeviceCertificateKit';
-   import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+   import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    import { UIContext } from '@kit.ArkUI';
@@ -71,16 +70,16 @@ The installation, signing, and signature verification of user certificate creden
 
 5. Use the user certificate credential.
 
-After obtaining user authorization, your app can read the certificate chain of the authorized user certificate credential and use the corresponding private key for signing.
+   After obtaining user authorization, your app can read the certificate chain of the authorized user certificate credential and use the corresponding private key for signing.
 
 - Read the certificate chain of the user certificate credential.
 
-Call the `getPublicCertificate` API, passing in the `KeyUri` returned by the `openAuthorizeDialog` API, and obtain the certificate chain (a certificate file in PEM format) from the `CMResult.credential.credentialData` field in the response.
+  Call the `getPublicCertificate` API, passing in the `KeyUri` returned by the `openAuthorizeDialog` API, and obtain the certificate chain (a certificate file in PEM format) from the `CMResult.credential.credentialData` field in the response.
 
 - Use the private key of the user certificate credential to sign data.
-
+  
   1. Call the **init** API to initialize a signing session. Pass in the **KeyUri** returned by the installation API and the signature algorithm parameters (such as the padding mode and digest algorithm), and obtain the handle of the signing session.
-
+    
   2. Call the **update** API, passing in the handle of the signing session and the data to be signed. If the data to be signed is large, you can call the **update** API multiple times, passing in a portion of the data each time.
 
   3. Call the **finish** API to end the signing session and obtain the signature data.
@@ -94,8 +93,7 @@ Call the `getPublicCertificate` API, passing in the `KeyUri` returned by the `op
 <!-- @[certificate_management_user_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCredSample.ets) -->
 
 ``` TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
