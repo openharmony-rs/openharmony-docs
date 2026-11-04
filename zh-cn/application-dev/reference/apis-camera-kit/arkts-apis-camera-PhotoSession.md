@@ -12,6 +12,8 @@ PhotoSession继承自[Session](arkts-apis-camera-Session.md)、[Flash](arkts-api
 
 默认的拍照模式，用于拍摄标准照片。支持多种照片格式和分辨率，适合大多数日常拍摄场景。
 
+在创建拍照模式会话前，需要通过[getSupportedSceneModes](./arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取当前相机支持的模式来确定是否支持拍照模式的会话。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -307,6 +309,8 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback\<AutoDeviceSwit
 
 监听相机自动切换镜头状态变化，通过注册回调函数获取结果。使用callback异步回调。
 
+可以先通过[isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13)获取当前设备是否支持自动切换镜头。
+
 > **说明：**
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
@@ -336,7 +340,9 @@ function callback(err: BusinessError, autoDeviceSwitchStatus: camera.AutoDeviceS
 }
 
 function registerAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
-  photoSession.on('autoDeviceSwitchStatusChange', callback);
+  if (photoSession.isAutoDeviceSwitchSupported()) {
+    photoSession.on('autoDeviceSwitchStatusChange', callback);
+  }
 }
 ```
 
@@ -345,6 +351,8 @@ function registerAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void
 off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSwitchStatus\>): void
 
 注销监听相机自动切换镜头状态变化。
+
+可以先通过[isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13)获取当前设备是否支持自动切换镜头。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -360,8 +368,10 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSw
 **示例：**
 
 ```ts
-function unregisterSmoothZoomInfo(photoSession: camera.PhotoSession): void {
-  photoSession.off('autoDeviceSwitchStatusChange');
+function unregisterAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
+  if (photoSession.isAutoDeviceSwitchSupported()) {
+    photoSession.off('autoDeviceSwitchStatusChange');
+  }
 }
 ```
 
@@ -435,6 +445,8 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 监听相机微距状态变化，通过注册回调函数获取结果。使用callback异步回调。
 
+监听前可以通过[isMacroSupported](arkts-apis-camera-MacroQuery.md#ismacrosupported19)查询是否支持微距能力。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -460,7 +472,9 @@ function callback(err: BusinessError, macroStatus: boolean): void {
 }
 
 function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
-  photoSession.on('macroStatusChanged', callback);
+  if (photoSession.isMacroSupported()) {
+    photoSession.on('macroStatusChanged', callback);
+  }
 }
 ```
 
@@ -469,6 +483,8 @@ function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
 off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 
 注销相机微距状态变化的监听。
+
+可以通过[isMacroSupported](arkts-apis-camera-MacroQuery.md#ismacrosupported19)查询是否支持微距能力。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -485,7 +501,9 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 
 ```ts
 function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
-  photoSession.off('macroStatusChanged');
+  if (photoSession.isMacroSupported()) {
+    photoSession.off('macroStatusChanged');
+  }
 }
 ```
 
