@@ -22,3 +22,5 @@ The options include the blur radius, gradient blur segments, and gradient direct
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_type_visual.h](capi-native-type-visual-h.md)
+
+<!--no_check-->

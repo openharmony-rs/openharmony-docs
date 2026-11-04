@@ -125,3 +125,5 @@ When an animation group is registered through [OH_ArkUI_NativeModule_AddAnimatio
 **Solution**
 
 Ensure that the target render node set for the sub-animation through [OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_settargetnode), [OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_settargetnode), or [OH_ArkUI_NativeModule_PathAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_settargetnode), or the default target render node of the animation group set through [OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode) belongs to the same UIContext as the context passed when registering the animation group.
+
+<!--no_check-->

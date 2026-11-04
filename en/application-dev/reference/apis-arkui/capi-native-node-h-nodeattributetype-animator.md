@@ -1462,3 +1462,5 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type | Description |
 | -- | -- |
 | .object | Linear gradient blur option object. The parameter type is [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md)*. The **OH_ArkUI_LinearGradientBlurOptions** object in the return value is a pointer to a static member. Therefore, do not call [OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy](capi-native-type-visual-h.md#oh_arkui_nativemodule_lineargradientbluroptions_destroy) to release the returned object. When the attribute is not set or has been reset, the returned object contains the default values (**blurRadius** = **0**, **fractionStops** = **{0.0, 0.0, 0.0, 1.0}**, **direction** = [OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM](capi-native-type-visual-h.md#oh_arkui_lineargradientblurdirection)). |
+
+<!--no_check-->
