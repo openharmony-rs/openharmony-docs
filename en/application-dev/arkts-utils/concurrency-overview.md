@@ -2,9 +2,10 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
-<!--Designer: @weng-changcheng-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3a37573287464c09947311fe1d6b534d744d90c3 translatedAt=2026-11-04T09:12:43.649Z pushedAt=2026-11-04T09:36:03.912Z nl=1 -->
 
 Concurrency refers to the situation where multiple tasks are executed at the same time. On a multi-core device, tasks can be executed concurrently on different CPUs. On single-core devices, while multiple tasks are not executed at the same time, the CPU can switch between tasks when one is idle or performing I/O operations, thereby optimizing CPU resource utilization.
 
@@ -17,4 +18,4 @@ To improve the response speed and frame rate of applications and mitigate the im
 
 In multithreaded concurrency scenarios, data communication between different threads is necessary. Different types of objects may use different transfer methods, such as copy or memory sharing.
 
-Concurrency capabilities are used in various scenarios, including [asynchronous tasks](async-concurrency-overview.md), [time-consuming tasks](time-consuming-task-overview.md) ([CPU intensive tasks](cpu-intensive-task-development.md), [I/O intensive tasks](io-intensive-task-development.md), and [synchronous tasks](sync-task-development.md)), [continuous tasks](long-time-task-overview.md), and [resident tasks](resident-task-overview.md). You can select the appropriate concurrency strategy based on the specific task requirements and scenarios for optimization and development. You can also refer to [Multithreaded Development Practice Cases](batch-database-operations-guide.md).
+Concurrency capability is widely used in various scenarios, including [asynchronous concurrent tasks](async-concurrency-overview.md), [time-consuming tasks](time-consuming-task-overview.md) (such as [CPU-intensive tasks](cpu-intensive-task-development.md), [I/O-intensive tasks](io-intensive-task-development.md), and [synchronous tasks](sync-task-development.md)), [long-running tasks](long-time-task-overview.md), [resident tasks](resident-task-overview.md), and so on. Developers can select the appropriate concurrency strategy for optimization and development based on different task requirements and scenarios.

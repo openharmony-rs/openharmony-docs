@@ -6,6 +6,7 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=0853dd4fd5c2263a593c14f5c3c05e8d4a42ae68 translatedAt=2026-11-04T10:32:26.875Z pushedAt=2026-11-04T10:34:29.276Z nl=1 -->
 
 ## Overview
 
@@ -42,7 +43,7 @@ This file declares the data types of the image effect filter.
 
 ### EffectErrorCode
 
-```
+```c
 enum EffectErrorCode
 ```
 
@@ -61,7 +62,7 @@ Enumerates the status codes that may be used by the effect filter.
 
 ### EffectTileMode
 
-```
+```c
 enum EffectTileMode
 ```
 
@@ -77,3 +78,5 @@ Enumerates the tile modes of the shader effect.
 | REPEAT | Repeats the shader effect in both horizontal and vertical directions.|
 | MIRROR | Repeats the shader effect in both horizontal and vertical directions, alternating mirror images.|
 | DECAL | Renders the shader effect only within the original boundary.|
+
+

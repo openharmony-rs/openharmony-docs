@@ -5,6 +5,8 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-11-04T10:31:28.752Z pushedAt=2026-11-04T10:32:48.802Z nl=2 -->
+
 ```
 typedef struct {...} OH_Drawing_StrutStyle
 ```
@@ -26,7 +28,7 @@ This struct describes a strut style. The strut style determines the line spacing
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) weight | Font weight used for calculating the strut.                                  |
-| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) style | Font style used for calculating the strut.                                  |
+| [OH_Drawing_FontStyle](capi-drawing-text-typography-h.md#oh_drawing_fontstyle) style | Font style used when computing the strut.                                   |
 | double size                                                  | Size of the ascent plus descent in the logical pixels.                              |
 | double heightScale                                           | Scale factor of the line height.                                              |
 | bool heightOverride                                          | Whether to enable height override. **true**: enabled; **false**: disabled.           |
@@ -35,3 +37,4 @@ This struct describes a strut style. The strut style determines the line spacing
 | bool forceStrutHeight                                        | Whether to forcibly use the strut height for all rows. **true** means yes; **false** otherwise.|
 | size_t familiesSize                                          | Number of font families.                                            |
 | char** families                                              | Double pointer to the font families used for calculating the strut.                                  |
+

@@ -1,8 +1,15 @@
 # NativeDisplaySoloist
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=ccdbec13380fdf227c4a20f5bde9cc05c16badee translatedAt=2026-11-04T10:32:41.946Z pushedAt=2026-11-04T10:34:47.784Z nl=1 -->
 
 ## Overview
 
-This module provides the native service that control the frame rate in threads other than the UI thread.
+NativeDisplaySoloist is a native-side module used to implement frame rate control in an independent thread. This module allows developers to precisely control the frame generation cadence in an independent thread, making it suitable for scenarios that require high-performance graphics rendering. With this module, developers can implement custom frame scheduling logic to meet the requirements of different scenarios.
 
 **Since**: 12
 ## Files

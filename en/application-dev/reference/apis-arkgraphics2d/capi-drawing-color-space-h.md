@@ -2,14 +2,15 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=357665bbb6caa6d8123e7eb4a2cbf8a969d1a249 translatedAt=2026-11-04T10:26:43.020Z pushedAt=2026-11-04T10:29:30.025Z nl=1 -->
 
 ## Overview
 
-This file declares the functions related to the color space in the drawing module.
+This module defines the functions related to color space.<br>This module adopts a single-thread model. The caller must manage thread safety and context state switching.
 
 **File to include:** <native_drawing/drawing_color_space.h>
 
@@ -93,3 +94,5 @@ Destroys an **OH_Drawing_ColorSpace** object and reclaims the memory occupied by
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* colorSpace | Pointer to an [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md) object.|
+
+

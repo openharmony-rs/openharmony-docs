@@ -1,10 +1,11 @@
 # Functions
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cc99e5187aa152bc96569f8b87fca412b6552a60 translatedAt=2026-11-04T10:36:26.289Z pushedAt=2026-11-04T10:39:18.509Z nl=1 -->
 
 > **NOTE**
 >
@@ -15,7 +16,7 @@
 ## Modules to Import
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## ArkTSUtils.isSendable
@@ -26,13 +27,15 @@ Checks whether the passed-in value is of the sendable data type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | Object \| null \| undefined  | Yes| Object to check.|
+| value | Object \| null \| undefined  | Yes | Object to be checked for whether it is a Sendable data type. |
 
 **Return value**
 
@@ -55,5 +58,5 @@ if (ArkTSUtils.isSendable(sendableFunc)) {
 } else {
   console.info("sendableFunc is not Sendable");
 }
-// Expected output: 'SendableFunc is Sendable'
+// Expected output: 'sendableFunc is Sendable'
 ```

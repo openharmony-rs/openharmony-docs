@@ -6,7 +6,7 @@
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=8c92e73a9c5f77cd051558427dd3b1470296ac9f translatedAt=2026-08-18T15:28:13.026Z pushedAt=2026-08-19T01:52:36.003Z -->
+<!-- md-trans-meta sourceCommit=7a90c18253d5ccf68dc3df3fb786b7d222ea69e4 translatedAt=2026-11-04T12:07:02.234Z pushedAt=2026-11-04T12:09:15.286Z nl=1 -->
 
 The asset store service (ASSET) provides secure storage and management of sensitive data less than 1024 bytes in size, including passwords, app tokens, and other critical data (such as bank card numbers).
 
@@ -940,7 +940,7 @@ import { asset } from '@kit.AssetStoreKit';
 let handle: asset.AssetMap = new Map();
 // The new Uint8Array(32) is only an example. Pass in the challenge value returned by asset.preQuerySync.
 handle.set(asset.Tag.AUTH_CHALLENGE, new Uint8Array(32));
-asset.postQuerySync(handle)
+asset.postQuerySync(handle);
 ```
 
 ## asset.querySyncResult<sup>20+</sup>
@@ -1089,8 +1089,8 @@ Enumerates the types of access control based on the lock screen status.
 | Name                 | Value  | Description                                                        |
 | --------------------- | ---- | ------------------------------------------------------------ |
 | DEVICE_POWERED_ON     | 0    | The asset can be accessed after the device is powered on.                                  |
-| DEVICE_FIRST_UNLOCKED | 1    | The asset can be accessed only after the device is unlocked for the first time.<br>**Note**: If no lock screen password is set, this option is equivalent to **DEVICE_POWERED_ON**.|
-| DEVICE_UNLOCKED       | 2    | The asset can be accessed only when the device is unlocked.<br>**Note**: If no lock screen password is set, this option is equivalent to **DEVICE_POWERED_ON**.|
+| DEVICE_FIRST_UNLOCKED | 1    | Accessible after the first unlock.<br>**NOTE:** When no lock screen password is set, it is equivalent to being accessible after power-on. |
+| DEVICE_UNLOCKED       | 2    | Accessible when the device is unlocked.<br/>**NOTE:** When no lock screen password is set, it is equivalent to being accessible after power-on. |
 
 ## AuthType
 

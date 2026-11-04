@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b604c666043da7d4010df0a994db7ed1901c2f5a translatedAt=2026-11-04T10:22:44.358Z pushedAt=2026-11-04T10:29:08.132Z nl=1 -->
 
-During application development, you often need to draw different elements. Typically, you can use ArkUI components to draw the desired elements or effects. However, sometimes these components cannot meet the needs for custom graphics or effects. In such cases, you can turn to the Drawing module for flexible custom drawing. This module provides basic drawing capabilities, such as drawing rectangles, circles, points, straight lines, custom paths, and fonts.
+When drawing UI elements, if ArkUI components cannot meet the requirements for custom graphics, developers can use the Drawing module to implement flexible custom drawing effects. The Drawing module provides basic graphics drawing capabilities, including drawing rectangles, circles, points, lines, custom Path, and fonts.
 
 > **NOTE**
 >

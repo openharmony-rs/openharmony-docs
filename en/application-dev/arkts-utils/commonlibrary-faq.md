@@ -1,31 +1,26 @@
 # Basic Library FAQ
-
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-31T12:36:29.706Z pushedAt=2026-08-31T14:46:10.673Z -->
+<!-- md-trans-meta sourceCommit=f6e02ee4492b9c2028bfe4857be2681942b3ff9e translatedAt=2026-11-04T09:11:26.760Z pushedAt=2026-11-04T09:42:27.255Z nl=1 -->
+
 
 ## Out of Memory When Parsing Large XML Files
 
 Because the XML parsing APIs provided on the ArkTS side do not yet support streaming parsing, it is recommended that you call a third-party C/C++ library through a Native project. The **libxml2** library is recommended. It is mature, stable, and high-performance, and it supports streaming parsing methods such as SAX, effectively reducing memory usage.
 
 The specific implementation steps are as follows:
-
 1. **Create a Native project**: Create a C++ module in the OpenHarmony project.
-
 2. **Integrate libxml2**: Download and configure the libxml2 source code or a precompiled library, and reference it in `CMakeLists.txt`.
-
 3. **Write parsing code**: Use the APIs provided by libxml2 to implement the streaming parsing logic.
-
 4. **XML object processing**: When the XML file size exceeds 100 MB, it is recommended to process it on the Native side.
 
 For details about how to reference a compiled third-party .so library on the ArkTS side, see [How to Reference a Third-Party .so Library on the ArkTS Side](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-21).
 
 The main callback functions supported by the libxml2 library are as follows:
-
 | Callback Function Pointer | Trigger Timing | Purpose |
 | :--- | :--- | :--- |
 | `startDocument` | When the document starts | Initialize the environment and allocate resources. |
@@ -164,7 +159,6 @@ struct Index {
 Base64 encoding uses a specific set of 64 characters to represent binary data. These 64 characters include uppercase letters A-Z, lowercase letters a-z, digits 0-9, and the symbols "+" and "/". In some cases, "=" is also used as a padding character. Base64 encoding groups the raw data into 3-byte blocks, and each 3-byte block is converted into 4 Base64 characters.
 
 The Base64 encoding table is as follows:
-
 | Index | Character | Index | Character | Index | Character | Index | Character |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 0 | A | 16 | Q | 32 | g | 48 | w |
@@ -191,7 +185,6 @@ Its encoding implementation principle is as follows:
 Convert the string to be encoded into a binary sequence, then divide it into groups of 6 binary bits each. If the last group has fewer than 6 bits, pad the low-order bits with 0. Each 6-bit group forms a new byte with the high-order bits padded with 00, constituting a new binary sequence. Finally, find the corresponding character according to the value in the Base64 index table.
 
 For example, for the string "ABC", after Base64 encoding, the final result is QUJD:
-
 | Raw character | A |  B  |  C  | - |
 | :--- | :--- | :--- | :--- | :--- |
 | ASCII encoding | 65 | 66 | 67 |   -   |
@@ -203,7 +196,6 @@ For example, for the string "ABC", after Base64 encoding, the final result is QU
 If the length of the raw string is not a multiple of 3, the encoded result is padded with "=" at the end so that the final length of the Base64 string is a multiple of 4, satisfying the Base64 length requirement after conversion.
 
 For example, the string "AB" is converted to "QUI". To make up 4 bytes, "=" needs to be appended at the end:
-
 | Raw character | A |  B  | -  | - |
 | :--- | :--- | :--- | :--- | :--- |
 | ASCII encoding | 65 | 66 | - |   -   |
@@ -211,3 +203,62 @@ For example, the string "AB" is converted to "QUI". To make up 4 bytes, "=" need
 | Encoding conversion (pad with 0 if fewer than 6 bits) | 010000 | 010100 | 001000 | - |
 | Base64 index value | 16 | 20 | 8 | - |
 | Base64 character | Q | U | I | = |
+
+## Why does the add method of HashSet and TreeSet return true when adding an existing element
+
+The return value of the add method of [HashSet](../reference/apis-arkts/js-apis-hashset.md) and [TreeSet](../reference/apis-arkts/js-apis-treeset.md) is described in the API reference as follows: it returns true when a new element is successfully added to the container, and returns false when the element already exists. In the current code implementation, the return value is also true when adding an existing element, which differs from the return value description in the API reference.
+
+> **Note:**
+>
+> This difference is only reflected in the return value and does not affect the collection functionality. Existing elements are not added repeatedly, the length of the container remains unchanged, and the uniqueness of collection elements is not affected.
+
+Workaround: Do not determine whether an element already exists based on the return value of the add method. You can use the has method to check before calling the add method, or compare whether the length of the container changes before and after calling the add method.
+
+**Example**
+
+```ts
+import { HashSet, TreeSet } from '@kit.ArkTS';
+
+// Create a HashSet instance and add elements
+let hashSet = new HashSet<string>();
+hashSet.add('squirrel');
+// Add an existing element
+let result = hashSet.add('squirrel');
+console.info('result:', result);
+// Expected output: result: false
+// Actual output: result: true
+console.info('length:', hashSet.length); // length: 1, the element is not added again
+
+// Create a TreeSet instance and add elements
+let treeSet = new TreeSet<string>();
+treeSet.add('squirrel');
+// Add an existing element
+let treeResult = treeSet.add('squirrel');
+console.info('treeResult:', treeResult);
+// Expected output: treeResult: false
+// Actual output: treeResult: true
+console.info('length:', treeSet.length); // length: 1, the element is not added again
+
+// Recommended approach: check with the has method first to avoid relying on the return value of the add method
+let value = 'sparrow';
+if (!hashSet.has(value)) {
+  hashSet.add(value);
+}
+```
+
+## Parsing a JSON String Containing a Large Number of Numeric Keys
+
+When you need to convert a JSON string containing a large number of numeric keys into a Sendable object, you can use the [JSON.parseSendable](../reference/apis-arkts/js-apis-json.md#jsonparsesendable) API.
+
+```ts
+import { JSON, lang } from '@kit.ArkTS';
+
+// 1021 numeric keys
+let parts1021: string[] = [];
+for (let i = 0; i < 1021; i++) {
+  parts1021.push('"' + i + '": ' + i);
+}
+let numericObj1021: lang.ISendable | null = JSON.parseSendable('{' + parts1021.join(',') + '}');
+console.info(`result: ${(numericObj1021 as object)?.[0]}`); // result: 0
+console.info(`result: ${(numericObj1021 as object)?.[1020]}`); // result: 1020
+```
