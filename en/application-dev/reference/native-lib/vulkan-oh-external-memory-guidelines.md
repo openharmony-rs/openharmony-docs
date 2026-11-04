@@ -2,10 +2,11 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @andrew1993-->
-<!--Designer: @ext4FAT1-->
+<!--Owner: @GaoPan_t-->
+<!--Designer: @vvan9cha0-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=6e83bdb0f905ebe10c695870075bde61eaa6827b translatedAt=2026-11-04T04:24:13.335Z pushedAt=2026-11-04T08:04:44.653Z nl=1 -->
 
 ## When to Use
 
@@ -43,7 +44,7 @@ This guide introduces how to achieve zero-copy between video decoders and render
 
 The following steps illustrate how to import the OHNativeBuffer output by the video decoder as Vulkan memory and bind it to VkImage or VkBuffer.
 
-1. Launch the rendering child thread, initialize the Vulkan environment, dynamically load libvulkan.so, and load the pointers of the Vulkan base functions.
+1. Start the rendering child thread, initialize the Vulkan environment, dynamically load libvulkan.so, and load the pointers to the basic Vulkan functions.
     ```c++
     void VulkanRenderThread::ThreadMainLoop() {
         threadId_ = std::this_thread::get_id();
@@ -84,7 +85,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
     ```
     Dynamically load libvulkan.so, and load the pointers of the Vulkan base functions.
     ```c++
-    // Dynamically load Vulkan library and base function pointers.
+    // Dynamically load the Vulkan library and basic function pointers.
     bool LoadVulkanLibrary() {
         // Load the Vulkan library.
         constexpr char *path = "libvulkan.so";
@@ -95,7 +96,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
             return false;
         }
 
-        // Load the base function pointers.
+        // Load the basic function pointers.
         vkEnumerateInstanceExtensionProperties = reinterpret_cast<PFN_vkEnumerateInstanceExtensionProperties>(
             dlsym(g_libVulkan, "vkEnumerateInstanceExtensionProperties"));
         vkEnumerateInstanceLayerProperties = reinterpret_cast<PFN_vkEnumerateInstanceLayerProperties>(
@@ -113,7 +114,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
     bool VulkanRenderThread::CreateNativeImage() {
         nativeImage_ = OH_ConsumerSurface_Create();
         if (nativeImage_ == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderThread", "OH_NativeImage_Create failed.");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderThread", "OH_ConsumerSurface_Create failed.");
             return false;
         }
         int ret = 0;
@@ -163,7 +164,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
     }
     ```
 
-    Update the Vulkan initialization context, including the Vulkan instance, selecting the physical device, and creating the rendering pipeline.
+    Also update and initialize the Vulkan context, including the Vulkan instance, physical device selection, and render pipeline creation.
     ```c++
     void VulkanRender::SetupWindow(NativeWindow *nativeWindow) {
         nativeWindow_ = nativeWindow;
@@ -189,7 +190,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
         VkSurfaceCreateInfoOHOS surfaceCreateInfo{};
         surfaceCreateInfo.sType = VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS;
         if (nativeWindow_ == nullptr) {
-            OH_LOG_INFO(LOG_APP, "nativeWindow_ is nulptr.Failed to create surface !");
+            OH_LOG_ERROR(LOG_APP, "nativeWindow_ is nullptr.Failed to create surface !");
             return false;
         }
         surfaceCreateInfo.window = nativeWindow_;
@@ -278,7 +279,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
         while (true) {
             if (!isStarted_) {
                 OH_LOG_ERROR(LOG_APP, "Decoder input thread out");
-                break;;
+                break;
             }
             
             std::unique_lock<std::mutex> lock(videoDecContext_->inputMutex);
@@ -424,7 +425,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
         VkMemoryDedicatedAllocateInfo dedicatedAllocateInfo = {
             .sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO,
             .pNext = &importBufferInfo,
-            .image = VK_NULL_HANDLE, // It will be set later.
+            .image = VK_NULL_HANDLE, // Set later.
             .buffer = VK_NULL_HANDLE
         };
 
@@ -447,7 +448,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
             .sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,
             .pNext = &dedicatedAllocateInfo,
             .allocationSize = nbProps.allocationSize,
-            .memoryTypeIndex = 0 // The memory type is assigned in the next step.
+            .memoryTypeIndex = 0 // Memory type index to be assigned in the next step.
         };
 
         mapMemoryTypeToIndex(nbProps.memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, &allocInfo.memoryTypeIndex);
@@ -487,7 +488,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
             .sharingMode = VK_SHARING_MODE_EXCLUSIVE,
             .queueFamilyIndexCount = 1,
             .pQueueFamilyIndices = &queueFamilyIndex_,
-            // VK_IMAGE_LAYOUT_UNDEFINED is mandatory when external memory is used.
+            // VK_IMAGE_LAYOUT_UNDEFINED is required when using external memory.
             .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED
         };
 
@@ -539,7 +540,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
         };
         CheckResult(vkCreateImageView(device, &view, nullptr, &externalTextureInfo.view));
 
-        // Create a sampler.
+        // Create the sampler.
         const VkSamplerCreateInfo sampler = {
             .sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO,
             .pNext = &convInfoWrap,
@@ -595,7 +596,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
         vkUpdateDescriptorSets(device, 2, gfxPipelineInfo.descWrites, 0, nullptr);
 
         createGraphicsPipeline();
-        createOtherStaff();
+        createOtherStuff();
 
         recordCommandBuffer();
         OH_LOG_INFO(LOG_APP, "hwBufferToTexture end");
@@ -607,4 +608,4 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
 
 The following sample is provided to help you better understand how to use Vulkan External Memory:
 
-- [NdkVulkanExternalMemory (API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkVulkanExternalMemory)
+- [NdkVulkanExternalMemory(API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkVulkanExternalMemory)
