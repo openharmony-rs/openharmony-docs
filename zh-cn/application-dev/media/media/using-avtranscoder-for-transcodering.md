@@ -280,13 +280,14 @@ export class AVTranscoderDemo {
    >
    > 转码输出文件fd（即示例里fdDst），形式为number。需要调用基础文件操作接口（[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问(ArkTS)](../../file-management/app-file-access.md)。
 
-   ArkTS-Dyn示例：
-   
    <!-- @[createFddst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
    let outputFilePath = this.context.filesDir + '/output.mp4';
    let file = fileIo.openSync(outputFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+   // 设置转码的目标文件属性fdDst。
+   this.avTranscoder.fdDst = file.fd;
+   ```
    this.avTranscoder.fdDst = file.fd;
    ```
 
