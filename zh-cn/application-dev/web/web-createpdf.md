@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍使用Web组件将前端页面保存为PDF，涵盖callback与Promise两种调用方式及页面尺寸配置，适用于生成报告、发票等分享场景。"
+keywords: [PDF保存, createPdf, PdfConfiguration, pdfArrayBuffer, PdfData, fileIo, 前端页面转PDF, ohos.permission.INTERNET]
+doctype: guide
+status: active
+---
+
 # 使用Web组件保存前端页面为PDF
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

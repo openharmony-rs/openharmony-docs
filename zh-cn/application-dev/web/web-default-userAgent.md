@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "说明ArkWeb默认User-Agent的结构与字段含义，介绍获取与自定义UA的接口及优先级，适用于设备识别、前端调试与H5兼容性问题处理。"
+keywords: [User-Agent, UA, setCustomUserAgent, getUserAgent, getDefaultUserAgent, setAppCustomUserAgent, setUserAgentForHosts, 设备识别, H5兼容性]
+doctype: guide
+status: active
+---
+
 # User-Agent开发指导
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

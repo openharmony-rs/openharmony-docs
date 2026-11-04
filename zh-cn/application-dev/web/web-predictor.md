@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍加速Web页面访问的方法，包括域名级预解析预连接、页面预加载、POST请求预获取、JavaScript预编译生成缓存及离线资源注入。"
+keywords: [页面加载加速, 预连接, prepareForPageLoad, prefetchPage, prefetchResource, clearPrefetchedResource, precompileJavaScript, injectOfflineResources, 编译缓存]
+doctype: guide
+status: active
+---
+
 # 加速Web页面的访问
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

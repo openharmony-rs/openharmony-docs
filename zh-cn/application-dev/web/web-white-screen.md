@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "汇总Web页面白屏问题的定位与解决思路，从权限网络、DevTools报错、渲染布局、H5兼容性、内存与缓存等方面给出排查步骤与修复方案。"
+keywords: [白屏, 问题定位, ohos.permission.INTERNET, onInterceptRequest, setPathAllowingUniversalAccess, setCustomUserAgent, setRenderProcessMode, cacheMode, 跨域访问]
+doctype: guide
+status: active
+---
+
 # 定位与解决Web白屏问题
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

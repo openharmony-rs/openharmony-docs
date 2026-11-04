@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件的下载能力：监听页面触发的下载任务及进度回调，主动发起下载并指定保存路径，以及恢复进程退出时未完成的下载任务。"
+keywords: [文件下载, setDownloadDelegate, startDownload, WebDownloadDelegate, WebDownloadItem, resumeDownload, 下载进度, 下载任务恢复, getSuggestedFileName]
+doctype: guide
+status: active
+---
+
 # 使用Web组件的下载能力
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

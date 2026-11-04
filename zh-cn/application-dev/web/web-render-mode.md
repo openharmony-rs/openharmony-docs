@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件异步渲染与同步渲染两种模式的原理、适用场景及高度规格限制，帮助开发者根据Web是否作为页面主体或超长组件来选择合适的渲染模式。"
+keywords: [ArkWeb, Web组件, 渲染模式, renderMode, RenderMode.ASYNC_RENDER, RenderMode.SYNC_RENDER, 异步渲染, 同步渲染]
+doctype: guide
+status: active
+---
+
 # Web组件渲染模式
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

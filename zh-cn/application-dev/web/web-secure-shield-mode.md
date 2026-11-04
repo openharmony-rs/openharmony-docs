@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍坚盾守护模式开启后ArkWeb受限的HTML5特性，指导开发者排查相关能力被禁用对应用的影响并评估兼容性。"
+keywords: [坚盾守护模式, WebAssembly, WebGL, Service Worker, getUserMedia, WebRTC, JIT]
+doctype: guide
+status: active
+---
+
 # 坚盾守护模式
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

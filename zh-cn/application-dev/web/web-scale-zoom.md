@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件网页缩放的管理方法，包括启停网页手势、键盘鼠标缩放，监听页面缩放比例变化，以及控制网页缩放到固定或目标比例。"
+keywords: [网页缩放, zoomAccess, forceEnableZoom, zoomControlAccess, onScaleChange, initialScale, zoom, zoomIn, zoomOut]
+doctype: guide
+status: active
+---
+
 # 使用Web组件管理网页缩放
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍沉浸式效果下网页安全区域的计算与避让适配方法，涵盖开启Web组件沉浸式及使用CSS环境变量避让状态栏、挖孔区、导航条等非安全区域。"
+keywords: [安全区域, 沉浸式效果, viewport-fit, safe-area-inset, env(), expandSafeArea, setWindowLayoutFullScreen, 避让适配, 异形屏幕]
+doctype: guide
+status: active
+---
+
 # 网页中安全区域计算和避让适配
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
