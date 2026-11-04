@@ -9832,3 +9832,17 @@ Allows an application to detect indirect prompt injection attacks.
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.0.1
+
+## ohos.permission.MOUNT_SANDBOX_SETTINGSDATA
+
+Allows an application to mount the specified file directory to the sandbox directory of the SettingsData application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.0.1
