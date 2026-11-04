@@ -1,4 +1,4 @@
-# 设置DLP文件防护策略
+# 生成、还原DLP加密文件
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
@@ -8,60 +8,63 @@
 
 ## 场景介绍
 
-Data Protection Kit为应用提供了设置动态防护策略的能力，在用户打开DLP文件时，系统会校验设置好的防护策略，并在必要时进行阻断。
-
-目前支持的策略类型包括设备健康状态、网络状态、调试模式状态、高级安全模式状态和文件类型。
-
-使用该能力无需预先注册通信插件。
+Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和将DLP文件解密还原成原始明文文件的能力。应用无需自定义加密文件格式，只需使用OpenHarmony提供的DLP文件生成和解密能力来对敏感文件实现加密保护。
 
 ## 开发步骤
 
-1.  接口所需模块导入。
+1. 接口所需模块导入。 
     <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
     ```
 
-2. 设置防护策略。
+2. 加密文件。
 
-    <!--RP1--><!--RP1End-->
+    2.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    2.2 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
+    2.2 需要获取明文文件和加密文件的文件描述符。设置DLP文件通用策略[DLPProperty](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlpproperty21)和企业定制策略[CustomProperty](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#customproperty21)。
 
-    2.3 设置企业应用防护策略[EnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#enterprisepolicy21)（包含属性信息、规则和策略等）。
+    2.3 调用[dlpPermission.generateDlpFileForEnterprise](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongeneratedlpfileforenterprise21)将明文文件加密生成企业账号DLP文件。
 
-    2.4 调用[dlpPermission.setEnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetenterprisepolicy21)完成防护策略设置。
-
-    <!-- @[dlp_setEnterprisePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[dlp_generateDlpFileForEnterprise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
-    setEnterprisePolicy() {
+    async generateDlpFileForEnterprise() {
+      let fileName: string = 'test.txt';
       try {
         if (canIUse('SystemCapability.Security.DataLossPrevention')) {
-          let attributeValues: string[] = ['1'];
-          let attribute: Attribute = {
-            attributeId: 'DeviceHealthyStatus',
-            attributeValues: attributeValues,
-            valueType: 0,
-            opt: 2
-          }; // 属性信息。
-          let rule: Rule = {
-            ruleId: 'ruleId',
-            attributes: [attribute]
-          }; // 规则。
-          let policy: Policy = {
-            rules: [rule],
-            policyId: 'policyId',
-            ruleConflictAlg: 0
-          }; // 策略。
-          let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-            policyString: JSON.stringify(policy)
+          let property: dlpPermission.DLPProperty = {
+            ownerAccount: 'accountInfo.accountName',
+            ownerAccountType: dlpPermission.AccountType.ENTERPRISE_ACCOUNT,
+            authUserList: [{
+              authAccount: 'a012345678',
+              authAccountType: 1,
+              dlpFileAccess: 2,
+              permExpiryTime: 3,
+            }],
+    
+            contactAccount: 'b012345678',
+            offlineAccess: true,
+            ownerAccountID: 'accountInfo.ownerAccountID',
+            everyoneAccessList: [],
+            expireTime: 666666666666666,
+            actionUponExpiry: dlpPermission.ActionType.NOT_OPEN,
+            fileId: 'abc123456789123456789',
           };
-          dlpPermission.setEnterprisePolicy(enterprisePolicy);
-          console.info('set enterprise policy success');
-          this.result = 'set enterprise policy success';
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'set enterprise policy success');
+    
+          let customProperty: dlpPermission.CustomProperty = {
+            enterprise: 'testString'
+          };
+          let context = this.context as common.UIAbilityContext;
+          let fileDir = context.getApplicationContext().filesDir;
+          let plaintextFd = fileIo.openSync(fileDir + '/' + fileName, fileIo.OpenMode.READ_ONLY).fd;
+          let ciphertextFd =
+            fileIo.openSync(fileDir + '/' + fileName + '.dlp', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
+          await dlpPermission.generateDlpFileForEnterprise(plaintextFd, ciphertextFd, property, customProperty);
+          this.result = 'generate DLP file for enterprise successful'
+          console.info('generate DLP file for enterprise successful');
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'generate DLP file for enterprise successful');
         }
       } catch (err) {
         console.error('error message', err.message);
@@ -71,13 +74,38 @@ Data Protection Kit为应用提供了设置动态防护策略的能力，在用�
     }
     ```
 
-## 常见问题
+3. 恢复原始文件。
 
-### 企业策略格式错误
+    3.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-**问题描述**：调用setEnterprisePolicy时提示策略格式错误。
+    3.2 需要获取明文文件和加密文件的文件描述符。
 
-**解决方法**：
-- policyId和ruleId只允许字母、数字、下划线，长度不超过64字节。
-- 规则最多32条，属性最多32条，属性值最多32个。
-- 确保valueType与属性值类型匹配。
+    3.3 调用[dlpPermission.decryptDlpFile](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiondecryptdlpfile21)恢复原始文件。
+
+    <!-- @[dlp_decryptDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    async decryptDlpFile() {
+      let fileName = 'test.pptx.dlp';
+    
+      try {
+        if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+          let context = this.context as common.UIAbilityContext;
+          let fileDir = context.getApplicationContext().filesDir;
+          let oriFileName: string = fileName.split('.dlp')[0];
+          let plaintextFd =
+            fileIo.openSync(fileDir + '/' + oriFileName, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
+          let ciphertextFd = fileIo.openSync(fileDir + '/' + fileName, fileIo.OpenMode.READ_ONLY).fd;
+          await dlpPermission.decryptDlpFile(ciphertextFd, plaintextFd);
+        }
+        this.result = 'decrypt DLP file for enterprise successful'
+        console.info('decrypt DLP file for enterprise successful');
+        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'decrypt DLP file for enterprise successful');
+      } catch (err) {
+        console.error('error message', err.message);
+        this.result = 'error message' + err.message;
+        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
+      }
+    }
+    ```
+
