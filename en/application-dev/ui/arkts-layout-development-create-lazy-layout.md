@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=608175d8fd85ddfce5e6f9d9b165b9d12862adb2 translatedAt=2026-08-01T00:31:44.136Z pushedAt=2026-08-03T03:26:16.985Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-04T01:23:18.741Z pushedAt=2026-11-04T01:45:23.317Z nl=1 -->
 
 ArkUI provides four scrollable components: [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), and [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md). Among them, **Scroll** does not support lazy loading. Although **List**, **Grid**, and **WaterFlow** support lazy loading with [LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md), each supports only a specific layout mode. In actual service scenarios, a scrolling page often needs to mix multiple layout modes. For example, an e-commerce homepage may simultaneously contain multi-column grid category entries, waterfall product cards, and linear list recommendations; a social app feed may simultaneously contain text lists, nine-grid images, and video cards. In such cases, a single scrollable component cannot flexibly adapt and has certain limitations.
 
@@ -187,7 +187,7 @@ LazyVWaterFlowLayout() {
 
 **columnsTemplate** also supports automatic calculation of column count using the `repeat` keyword, with the format `'repeat(auto-fit/auto-fill/auto-stretch, track-size)'`, where `repeat`, `auto-fit`, `auto-fill`, and `auto-stretch` are keywords, and `track-size` is the column width, which supports units such as px, vp, and %. The default unit is vp, and unitless valid numbers are also supported. `track-size` must contain at least one valid column width.
 
-Unlike the **LazyVGridLayout** component, the **columnsTemplate** attribute of the **LazyVWaterFlowLayout** component also supports being set to an enumerated value of the [ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22) type, in which case the column count is automatically determined based on the [grid container breakpoint](./arkts-layout-development-grid-layout.md#breakpoints) type corresponding to the component width. For example, when set to **ItemFillPolicy.BREAKPOINT_DEFAULT**, **LazyVWaterFlowLayout** displays 2 columns when the component width falls within the sm or smaller breakpoint range, 3 columns within the md breakpoint range, and 5 columns within the lg or larger breakpoint range, with each column being 1fr.
+The **columnsTemplate** attribute of the **LazyVWaterFlowLayout** component also supports being set to an enumeration value of the [ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22) type. In this case, the column count is automatically determined based on the [grid container breakpoint](./arkts-layout-development-grid-layout.md#breakpoints) type corresponding to the content area width. For example, when it is set to ItemFillPolicy.BREAKPOINT_DEFAULT, **LazyVWaterFlowLayout** displays 2 columns when the content area width falls within the sm or smaller breakpoint range, 3 columns within the md breakpoint range, and 5 columns within the lg or larger breakpoint range, with each column being 1fr. Starting from API version 26.1.0, the [columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnstemplate-1) attribute of the **LazyVGridLayout** component also supports being set to the ItemFillPolicy type, and the mapping between breakpoints and column counts is consistent with that of **LazyVWaterFlowLayout**. The content area width used for breakpoint determination: content area width = component width − left and right padding ([padding](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)) − the width of the left and right borders ([border](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#border)) that occupy the layout.
 
 | Mode | Example | Description |
 |------|------|------|
@@ -881,9 +881,7 @@ build() {
 Through the [sticky](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#sticky) attribute, you can make the [header](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#header) or [footer](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#footer) stick to the top or bottom of the visible area during the scrolling process, helping users identify the current content area while scrolling. The sticky attribute supports the following modes.
 
 - StickyStyle.Header: Only the header sticks to the top of the visible area, commonly used for group title sticking.
-
 - StickyStyle.Footer: Only the footer sticks to the bottom of the visible area, commonly used for summary information or action entry points sticking to the bottom.
-
 - StickyStyle.BOTH: Supports both the header sticking to the top and the footer sticking to the bottom simultaneously.
 
 **Figure 5** Example diagram of the three StickyStyle effects

@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-11-03T05:10:50.090Z pushedAt=2026-11-03T06:48:31.304Z nl=1 -->
 
-This topic walks you through on how to create a certificate extension (**CertExtension**) object, obtain the certificate extension information based on an object identifier (OID), and check whether the certificate is a CA certificate.
+This example demonstrates how to create, parse, and verify a certificate extension object by obtaining a specified Object Identifier (OID) field from a certificate and determining whether it is a CA (Certificate Authority) certificate.
 
 ## How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```

@@ -5,13 +5,13 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T11:41:38.579Z pushedAt=2026-09-23T09:29:04.614Z -->
+<!-- md-trans-meta sourceCommit=ad6e19148a2e0fc0380b16e183aef2ad5ce1d4ae translatedAt=2026-11-03T06:37:46.710Z pushedAt=2026-11-03T07:56:32.623Z nl=1 -->
 
 A variable decorated with a state decorator is called a state variable, enabling regular variables to possess state attributes. When a state variable changes, the UI components bound to it re-render and update accordingly.
 
 Among the state variable decorators, [@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state.md#state) is the most basic decorator and the data source for most state variables.
 
-Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the state management framework. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
+Before reading this \@State document, developers are advised to have a basic understanding of the state management framework. It is recommended to read [State Management Overview](./arkts-state-management-overview.md) in advance. For common questions, see [State Management FAQs](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -65,10 +65,10 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
   ```
 
 - When the decorated variable is of the class or Object type, its value change and value changes of all its attributes, that is, the attributes that **Object.keys(observedObject)** returns, can be observed. The following is an example:
-
+  
   Declare the **Person** and **Model** classes.
   <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) --> 
-
+  
   ``` TypeScript
   // Declare the Person class.
   class Person {
@@ -93,7 +93,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 
   The type decorated by @State is Model.
     <!-- @[state_decorate_type_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
-
+  
     ``` TypeScript
     // Class type
     @State title: Model = new Model('Hello', new Person('World'));
@@ -101,7 +101,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 
   Assign a value to the \@State decorated variable.
     <!-- @[state_decorate_object_change_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
-
+  
     ``` TypeScript
     // Assign a value to the class object.
     this.title = new Model('Hi', new Person('ArkUI'));
@@ -109,7 +109,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 
   Assign a value to a property of the \@State decorated variable.
     <!-- @[state_decorate_object_change_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
-
+  
     ``` TypeScript
     // Assign a value to a property of the class object.
     this.title.value = 'Hi';
@@ -117,7 +117,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 
   The value assignment of a property of the nested object cannot be observed. Therefore, the UI is not refreshed.
     <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
-
+  
     ``` TypeScript
     // The value assignment of the nested property cannot be observed.
     this.title.name.value = 'ArkUI';
@@ -154,9 +154,9 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
    Starting from API version 23, relevant compile-time validation has been added. Decorating a **Function** type variable with \@State will result in an **ERROR** message. You should remove the \@State decorator from variables of the **Function** type in your code.
 
 3. When the parent component passes in **undefined**, the **@State** decorated variable is still initialized with its local default value.
-
+   
    <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) --> 
-
+   
    ``` TypeScript
    @Entry
    @Component
@@ -198,7 +198,7 @@ The following example shows a simple type decorated by @State. **count** is deco
 
 - The framework executes the update method of the **Button** component to implement on-demand updates.
     <!-- @[state_scene_simple_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneSimpleType.ets) -->
-
+    
     ``` TypeScript
     @Entry
     @Component
@@ -230,7 +230,7 @@ The following example shows a simple type decorated by @State. **count** is deco
 - The **EntryComponent** has multiple **MyComponent** instances. The internal state change of the first **MyComponent** instance does not affect the second **MyComponent** instance.
 
     <!-- @[state_scene_type_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
-
+    
     ``` TypeScript
     class Model {
       public value: string;

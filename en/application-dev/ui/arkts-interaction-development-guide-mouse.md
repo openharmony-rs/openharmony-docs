@@ -1,12 +1,11 @@
 # Handling Mouse Input Events
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-08-01T00:29:46.939Z pushedAt=2026-08-01T07:03:18.680Z -->
+<!-- md-trans-meta sourceCommit=1015569863d1e74da92cadf227d7b3da662317dd translatedAt=2026-11-03T08:24:14.305Z pushedAt=2026-11-03T09:14:24.625Z nl=1 -->
 
 ![mouse](figures/device_mouse.png)
 
@@ -14,11 +13,11 @@ A mouse is an essential input device for PC/2in1 and tablet devices. It allows c
 
 >**NOTE**
 >
->All single-finger touch events and gesture events can be triggered and responded to using a left mouse click.
-> - For example, to implement a feature where clicking a [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) navigates to another page, supporting both finger tap and left mouse click, you can achieve this by simply binding a single [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) event.
-> - If you want to implement different effects for the finger touch and the left mouse click, use the **source** parameter in the **onClick** callback to determine whether the current event is triggered by a finger touch or a mouse device.
+>All touch events and gesture events that can be responded to with a single finger can also be operated and responded to with the left mouse button.
+> - For example, if a developer needs to implement the function of clicking a [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) to navigate to a page, and needs to support both finger taps and left mouse button clicks, binding only one click event ([onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)) is sufficient to achieve this effect.
+> - If different effects need to be implemented for finger taps and left mouse button clicks, the developer can use the source field in the callback parameter of onClick to determine whether the current trigger event originates from a finger or a mouse.
 
-In addition, for apps on PC/2in1 and tablet devices that have not been adapted for mouse operations, the system provides a fallback mechanism that converts left mouse button clicks, swipes, and scroll wheel events into touch events. The system also allows you to control whether to convert events through a configuration file.
+In addition, for applications on PC/2-in-1 and tablet devices that have not been adapted for mouse operations, developers can use a configuration file to control whether to convert events, converting left mouse button clicks, swipes, and scroll wheel events into touch events, and converting right mouse button events into long-press events.
 
 ## Processing Mouse Movement
 
@@ -32,7 +31,8 @@ onMouse(event: (event?: MouseEvent) => void)
 
 Triggered when a mouse event occurs. If the mouse pointer performs an action (**MouseAction**) on a component bound to this API, the corresponding callback is triggered and receives a [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) object as its parameter. This event supports custom bubbling settings, with parent-child bubbling enabled by default. This API is typically used to implement custom mouse interaction logic.
 
-The **MouseEvent** object in the callback provides the following information: coordinates (displayX, displayY, windowX, windowY, x, y), button ([MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)), action ([MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)), timestamp ([timestamp](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#properties)), target area ([EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)), and event source ([SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype8)). The **stopPropagation** callback of **MouseEvent** can be used to prevent the event from bubbling up.
+
+The **MouseEvent** object in the callback provides the following information: coordinates (displayX, displayY, windowX, windowY, x, y), button ([MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)), action ([MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)), timestamp (the `timestamp` property of [BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8)), target area ([EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)), and event source ([SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype8)). The **stopPropagation** callback of **MouseEvent** can be used to prevent the event from bubbling up.
 
 > **NOTE**
 >
@@ -101,10 +101,10 @@ In the preceding example, the **onMouse** API is bound to the **Button** compone
 
    Right-click: button = 2 (enumerated value of **MouseButton.Right**); action = 1 (enumerated value of **MouseAction.Press**); action = 2 (enumerated value of **MouseAction.Release**)
 
+
 ![onMouse1](figures/onMouse_1.gif)
 
 To prevent the mouse event from bubbling, call the **stopPropagation** API.
-
 <!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
 
 ``` TypeScript
@@ -158,7 +158,6 @@ struct StopPropagation {
   }
 }
 ```
-
 ![onMouse2](figures/onMouse_2.gif)
 
 To prevent mouse events from bubbling up from a child component (**Button**) to its parent component (**Column**), call the **stopPropagation** API using the **event** parameter in the **onMouse** callback of **Button**, as shown in the example above.
@@ -172,6 +171,7 @@ onHover(event: (isHover: boolean) => void)
 ```
 
 It is triggered when the mouse pointer enters or leaves the component. The **isHover** parameter indicates whether the mouse pointer hovers over the component. This event supports custom bubbling settings, with parent-child bubbling enabled by default.
+
 
 If this API is bound to a component, it is triggered when the mouse pointer enters the component from outside and the value of **isHover** is **true**, or when the mouse pointer leaves the component and the value of **isHover** is **false**.
 
@@ -203,17 +203,18 @@ struct OnHover {
 }
 ```
 
-In this example, a **Button** component is created, with an initial gray background color and the content **Not Hover**. The component is bound to the **onHover** callback. In the callback, **this.isHovered** is set to the callback parameter **isHover**.
+This example creates a **Button** component with an initial gray background color and the content **Not Hover**. The component is bound to the **onHover** callback, which updates the background color and text content of the component based on the **isHover** parameter.
 
-When the mouse pointer moves from outside the **Button** component to inside, the callback is invoked. The **isHover** value becomes true, and the **isHovered** variable is set to true. As a result, the background color of the component changes to **Color.Green**, and the content is updated to **Hovered!**.
+When the mouse pointer moves from outside the **Button** component to inside, the callback is invoked. The **isHover** value becomes true, the background color of the component changes to **Color.Green**, and the content is updated to **Hovered!**.
 
 When the mouse pointer moves from inside the **Button** component to outside, the callback is invoked again, setting the value of **isHover** to **false**. The component then reverts to its initial style.
 
 ![onHover](figures/onHover.gif)
 
+
 ## Processing Mouse Buttons
 
-When a user presses a mouse button, a mouse down event is triggered. You can access key information about the event through [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent), such as the occurrence time and the mouse button (MouseButton: left button, right button, etc.). You can also use the [getModifierKeyState](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#getmodifierkeystate12) API to obtain the pressed state of the **Ctrl/Alt/Shift** modifier keys on the physical keyboard when the user is using the mouse. By combining and evaluating these states, you can implement convenient operations.
+When a user presses a mouse button, a mouse down event is triggered. You can access key information about the event through [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent), such as the occurrence time and the mouse button (MouseButton: left button, right button, etc.). You can also use the [getModifierKeyState](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#getmodifierkeystate12) API to obtain the pressed state of the **Ctrl/Alt/Shift** modifier keys on the physical keyboard when the user is using the mouse. By combining and evaluating these states, you can implement convenient operations.
 
 The following example demonstrates multi-selection functionality using mouse button processing:
 
@@ -355,16 +356,12 @@ struct ListExample {
 
 ## Processing Mouse Wheel Input
 
-The mouse wheel is primarily used for vertical scrolling. When a user scrolls the wheel, the system generates a vertical [axis event](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md) and dispatches it to the application. Components can handle this event using the [onAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#onaxisevent) API. The event includes the cursor position and the angle of wheel rotation, accessible using the **axisVertical** property of the [BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8) object.
+The mouse wheel is an input device that can generate vertical scrolling. When a user scrolls the wheel, the system generates a vertical [axis event](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md) and dispatches it to the application. Components can handle this event using the [onAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#onaxisevent) API. The event includes the cursor position and the angle of wheel rotation, accessible using the **axisVertical** property of the [BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8) object.
 
-Mouse wheel axis events follow a structured lifecycle: Each scroll interaction begins with an [AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN event. When scrolling ends, an [AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).End event is emitted. For slow or intermittent scrolling, multiple **BEGIN** and **END** events may be reported. The **axisVertical** value represents the angular change during a single scroll tick. Key characteristics include:
-
+Mouse wheel axis events follow a structured lifecycle: Each scroll interaction begins with an [AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN event. When scrolling ends, an [AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).END event is emitted. For slow or intermittent scrolling, multiple **BEGIN** and **END** events may be reported. When handling **axisVertical**, make sure you understand its value meaning and unit. Key characteristics include:
 - It reflects the delta of one scroll action, not the cumulative scroll distance.
-
 - The value is influenced by system-level wheel sensitivity settings.
-
 - The sensitivity is specified by the [AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent) parameter **scrollStep** in system settings.
-
 - A forward scroll (wheel up) yields a negative value. A backward scroll (wheel down) yields a positive value.
 
 Built-in scrollable components automatically handle wheel input. No additional configuration is required.
@@ -506,32 +503,19 @@ struct MouseWheel {
 
 ## Mouse Event Conversion
 
-If you only implement touch operation scenarios during app development without adapting to mouse operations on PC/2in1 and tablet devices, the app may behave unexpectedly or even become inoperable when a mouse is used. To address this scenario, the system provides a fallback mechanism that converts left mouse button events and axis events into touch events by default before sending them to the app, thereby delivering an operation experience similar to that on a phone.
+If a developer only considers touch operation scenarios when developing an application and does not adapt the application for mouse operation scenarios on PC/2-in-1 and tablet devices, the actual behavior of the application when operated with a mouse may be inconsistent with expectations, or the application may even become inoperable. To address this scenario, developers can add a configuration file to the application to control whether to convert left mouse button clicks, swipes, and scroll wheel events into touch events, or convert right mouse button events into long-press events, thereby resolving the above issue.
 
-In addition, if you want to control the conversion behavior described above, the system provides custom configuration capabilities. You can control whether mouse events are converted into touch events by adding a configuration file to the app.
-
-### How to Develop
-
-**1. Add a configuration file**
-
-Create a configuration file named easy_go.json (the file name is an example; you can name it as needed) in the entry/src/main/resources/base/profile directory of the app. Add the easyGo field in the [module.json5](../quick-start/module-configuration-file.md) configuration file and point it to the referenced easy_go.json configuration file.
+### Adding a Configuration File
+Create a configuration file named easy_go.json (an example file name; you can name it as needed) in the entry/src/main/resources/base/profile directory of the application. Add the easyGo field in the [module.json5](../quick-start/module-configuration-file.md) configuration file and point it to the referenced easy_go.json configuration file. easy_go.json is a standard Object-type JSON file with a two-level overall structure. The first level configures the [device types for which mouse event conversion takes effect](#configure-left-mouse-button-or-axis-event-to-touch); the second level allows you to configure, under the corresponding device type, the related parameters for [converting mouse left-button or axis events to touch events](#configure-left-mouse-button-or-axis-event-to-touch) and [converting mouse right-click to long-press](#configure-right-click-to-long-press).
 
 ![easy_go](figures/easy_go.png)
 
-**2. Add event conversion configuration**
+### Device Types for Configuration to Take Effect
 
-In the easy_go.json configuration file, configure the attributes related to event conversion.
-
-### Configuration Description
-
-easy_go.json is a standard Object-type JSON file with a two-layer structure. The first layer configures device types, and the second layer configures the mouse event conversion mode for the corresponding device type.
-
-**1. Device type**
-
-The first-layer configuration sets the behavior of mouse event conversion on different device types.
+Use the first-level configuration in easy_go.json to select the device types on which the mouse event conversion takes effect.
 
 ``` json
-{ 
+{
   "common": {},
   "phone": {},
   "2in1": {},
@@ -546,33 +530,81 @@ The first-layer configuration sets the behavior of mouse event conversion on dif
 | 2in1 | Configuration that takes effect on PC/2in1-type devices. After configuration, the common configuration no longer takes effect on PC/2in1-type devices. | Yes |
 | tablet | Configuration that takes effect on tablet-type devices. After configuration, the common configuration no longer takes effect on tablet-type devices. | Yes |
 
-**2. Multi-modal input options**
+### Configure Left Mouse Button or Axis Event-to-Touch
 
-The second-layer configuration uses the multiModalInputOptions field to set event input options. The internal fields are described as follows:
+By configuring the second-level multiModalInputOptions field in easy_go.json, you can convert the left-button events and axis events of the corresponding device type into touch events and send them to the application, thereby achieving effects similar to tapping and swiping on a phone.
 
-| Name | Description | Optional |
-| --- | --- | --- |
-| mouse2TouchEventMode | Configures the mode for converting mouse events to touch events. | Yes |
-
-Configurable fields of mouse2TouchEventMode:
-
-| Value | Description |
-| --- | --- |
-| all | All mouse events are converted into touch events. |
-| xcomponentAndWebOnly | Mouse events are converted into touch events only within XComponent and Web components. |
-| disabled | No mouse events are converted into touch events. |
-
-**3. Configuration example**
-
-The following example shows how to configure a PC/2in1 device so that mouse events are not converted into touch events:
+The following example shows how to configure a PC/2in1 device so that left-button events are not converted into touch events.
 
 ``` json
 {
   "common": {},
   "2in1": {
-    "multiModalInputOptions": {
-      "mouse2TouchEventMode": "disabled"
+      "multiModalInputOptions": {
+         "mouse2TouchEventMode": "disabled"
+      }
+  }
+}
+```
+
+The first-level 2in1 indicates that on a PC/2in1 device, left-button events or axis events can be converted into touch events. The second-level multiModalInputOptions field under 2in1 is used to set the event input options. The internal fields are described as follows.
+
+| Name          | Type | Description                         | Optional |
+| -------------------- | ---- | ----------------------------------- | -------- |
+| mouse2TouchEventMode | string | Configures the mode for converting left-button events to touch events. | Yes |
+
+Configurable fields of mouse2TouchEventMode.
+
+| Value | Description |
+| --- | --- |
+| "all"                  | All left-button events are converted into touch events.                      |
+| "xcomponentAndWebOnly" | Left-button events are converted into touch events only within XComponent and Web components. |
+| "disabled"             | No left-button events are converted into touch events.                    |
+
+### Configure Right-Click to Long-Press
+
+Starting from API version 26.0.1, the contextMenuOptions field is supported. By configuring the second-level contextMenuOptions field in easy_go.json, you can convert the right-click event of the corresponding device type into a long-press event and send it to the application, thereby achieving an effect similar to a finger long-press on a phone.
+
+On PC/2-in-1 devices, configure the right-click events of all ArkUI components to be converted into long-press events. The example is as follows.
+
+``` json
+{
+  "common": {},
+  "2in1": {
+    "contextMenuOptions": {
+      "rightMouse2LongPress": true,
+      "needTransferComponent": ["All"]
     }
   }
 }
 ```
+
+The first-level 2in1 indicates that on PC/2-in-1 devices, the right mouse button can be converted into a long-press event. The second-level contextMenuOptions field under 2in1 is used to configure the rules for the right-click to long-press event conversion. Because only PC/2-in-1 devices and Tablet devices support right-click to long-press, the second level of common and phone cannot be configured with the contextMenuOptions field. The internal fields of contextMenuOptions are described as follows.
+
+| Name              | Type | Description                         | Optional |
+| -------------------- | ---- | ---------------------------- | ---- |
+| rightMouse2LongPress | boolean | Whether to enable the right-click to long-press policy. Value range: true indicates that the right-click to long-press policy is enabled, and the right-click event will be converted into a long-press event; false indicates that it is not enabled, and the right-click event will be processed according to the system default behavior. When the value is false, the needTransferComponent configuration does not take effect. | No   |
+| needTransferComponent | string[] | List of components that take effect, determining which components' right-click events will be converted into long-press events. The array can be empty, and when it is empty, it indicates that no component's right-click event will be converted. Each array element must be one of the enum values below. When not configured, it defaults to an empty array. When needTransferComponent is an empty array, no component's right-click event will be converted even if rightMouse2LongPress is true. | Yes   |
+
+The optional enum types in the needTransferComponent array are described as follows.
+| Value            | Description           |
+| ----------------- | -------------- |
+| "TextInput"         | Text input box     |
+| "TextArea"          | Multi-line text input box |
+| "RichEditor"        | Rich text editor   |
+| "RichText"          | Rich Text         |
+| "Text"              | Text           |
+| "RenderNode"        | Render node       |
+| "XComponent"        | Self-drawn component     |
+| "Image"             | Image           |
+| "RelativeContainer" | Relative layout container   |
+| "All"               | All ArkUI components   |
+
+Additional description of the needTransferComponent field is as follows.
+| Rule               | Description                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| All take effect           | Setting `"needTransferComponent": ["All"]` indicates that all ArkUI components take effect.|
+| Case-sensitive         | Component names are case-sensitive and must be filled in strictly according to the list above; otherwise, a compilation error will be reported.|
+| No duplicates         | Duplicate component names are not allowed in the component list; otherwise, a compilation error will be reported.|
+| All coexisting with other components | When the list contains both specific component names and "All", the specific component names will be ignored, which is equivalent to configuring only "All". It is recommended to use only "All" to simplify the configuration.|
+| Valid values             | The values in the list can only be the 9 component names above plus "All" (10 in total). Filling in other values will cause a compilation error.|

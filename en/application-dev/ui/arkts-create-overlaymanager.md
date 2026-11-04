@@ -1,12 +1,11 @@
 # Managing Overlays (OverlayManager)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bc42b999a5b47ad91368192d1c5554d394ac1e97 translatedAt=2026-08-01T00:26:12.419Z pushedAt=2026-08-01T01:46:25.708Z -->
+<!-- md-trans-meta sourceCommit=7d4914058460d35be1cfc780ef561b4c177f8dd6 translatedAt=2026-11-03T07:53:20.716Z pushedAt=2026-11-03T08:17:39.939Z nl=1 -->
 
 Overlays, implemented using **OverlayManager**, are used to display custom UI content on top of a page, but below such components as created through **Dialog**, **Popup**, **Menu**, **BindSheet**, **BindContentCover**, and **Toast**. These overlays are confined to the safe area of the current window. They are applicable to scenarios such as persistent floating elements.
 
@@ -17,22 +16,17 @@ You can use the [getOverlayManager](../reference/apis-arkui/arkts-apis-uicontext
 ## Specifications Constraints
 
 * The nodes on **OverlayManager** are above the page level, but below such components such as **Dialog**, **Popup**, **Menu**, **BindSheet**, **BindContentCover**, and **Toast**.
-
 * There is no default animation when nodes on **OverlayManager** appear or disappear.
-
 * The drawing method inside and outside the safe area of nodes on **OverlayManager** is consistent with that of the page, and the keyboard avoidance method is also the same as that of the page.
-
 * You are advised to use AppStorage to store attributes related to **OverlayManager** to prevent service errors caused by attribute value changes during page switching.
-
 * For API versions earlier than 19, **OverlayManager** does not support swipe-to-close gestures (left or right). You must add the logic to close the **OverlayManager** in [onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress). In API version 19 or later, you can set the **enableBackPressedEvent** property in [OverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-i.md#overlaymanageroptions15) to control whether **OverlayManager** responds to the swipe-to-close gesture.
-
 * The event mechanism in **OverlayManager** gives priority to the component decorated with [WrappedBuilder](state-management/arkts-wrapBuilder.md). To enable the bottom layer of the overlay to receive events, set [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) to **HitTestMode.Transparent** to pass events through to the underlying layers.
 
 ## Managing Overlays
 
 On the OverlayManager, add a specified node ([addComponentContent](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontent12)), remove a specified node ([removeComponentContent](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#removecomponentcontent12)), show all nodes ([showAllComponentContents](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#showallcomponentcontents12)), and hide all nodes ([hideAllComponentContents](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#hideallcomponentcontents12)).
 
-<!-- @[OverlayManager_Demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets) -->
+<!-- @[OverlayManager_Demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets) -->  
 
 ``` TypeScript
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
@@ -105,7 +99,7 @@ export struct OverlayManagerComponent {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
               this.overlayNode.removeComponentContent(componentContent.pop());
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         Button('Show ComponentContent:' + this.arrayIndex)
@@ -114,7 +108,7 @@ export struct OverlayManagerComponent {
               let componentContent = this.contentArray[this.arrayIndex];
               this.overlayNode.showComponentContent(componentContent);
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         Button('Hide ComponentContent:' + this.arrayIndex)
@@ -123,7 +117,7 @@ export struct OverlayManagerComponent {
               let componentContent = this.contentArray[this.arrayIndex];
               this.overlayNode.hideComponentContent(componentContent);
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         Button('Show All ComponentContent')
@@ -148,7 +142,6 @@ export struct OverlayManagerComponent {
   }
 }
 ```
-
 ![overlayManager-demo1](figures/overlaymanager-demo_1.gif)
 
 The following example shows how to display a floating bubble that always stays on the left side of the screen, and clicking it displays an alert dialog box.
@@ -223,12 +216,11 @@ export struct OverlayManagerAlertDialog {
   }
 }
 ```
-
 ![overlayManager-demo2](figures/overlaymanager-demo_2.gif)
 
 Starting from API version 18, you can use the **OverlayManager** object to add a specified node at a specified level ([addComponentContentWithOrder](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontentwithorder18)). Overlays at higher levels cover those at lower levels.
 
-<!-- @[OverlayManager_Demo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets) -->
+<!-- @[OverlayManager_Demo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets) -->  
 
 ``` TypeScript
 import { ComponentContent, LevelOrder, OverlayManager } from '@kit.ArkUI';
@@ -316,7 +308,7 @@ export struct OverlayManagerWithOrder {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
               this.overlayManager.removeComponentContent(componentContent.pop());
             } else {
-              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+              hilog.error(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         }.width('100%')
@@ -325,7 +317,6 @@ export struct OverlayManagerWithOrder {
   }
 }
 ```
-
 ![overlayManager-demo3](figures/overlaymanager-demo_3.gif)
 
 Starting from API version 26.0.0, you can intercept the swipe-back event of an overlay by setting the onBackPress callback in [OverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-i.md#overlaymanageroptions15). When enableBackPressedEvent is set to **true** and the onBackPress callback is registered, the swipe-back event does not automatically close the overlay. Instead, the callback is invoked for you to decide whether to intercept the event: returning **true** indicates that the event is intercepted (the event is consumed and will not be passed to lower layers), and returning **false** indicates that the event is passed through to lower-layer components. This callback must be configured through [setOverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setoverlaymanageroptions15) before calling getOverlayManager.
@@ -500,5 +491,4 @@ export struct OverlayManagerOnBackPress {
   }
 }
 ```
-
-<!--Del-->![overlayManager-demo4] (figures/overlaymanager-demo-4.png)<!--DelEnd-->
+<!--Del--> <!--DelEnd-->
