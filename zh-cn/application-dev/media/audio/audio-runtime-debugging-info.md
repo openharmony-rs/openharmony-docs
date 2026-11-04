@@ -591,29 +591,7 @@ import { fileIo } from '@kit.CoreFileKit';
 
 **ArkTS-Sta示例：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// audioSessionManager为已创建并激活的audio.AudioSessionManager实例。
-// 设置音频并发模式。
-let strategy: audio.AudioSessionStrategy = {
-  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
-};
-// 激活音频会话。
-await audioSessionManager.activateAudioSession(strategy);
-
-// 创建音频调试管理器。
-let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
-
-// 输出到hilog日志。
-audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
-
-// 输出到文件。
-let filePath = this.context.filesDir + '/audio_session_info.txt';
-let fd = fileio.openSync(filePath, fileio.OpenMode.CREATE | fileio.OpenMode.WRITE_ONLY | fileio.OpenMode.TRUNC).fd;
-audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
-fileio.closeSync(fd);
-```
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) --> 
 
 **输出示例：**
 
