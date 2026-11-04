@@ -22,7 +22,7 @@ Data Protection Kit为应用提供了设置动态防护策略的能力，在用�
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
     ```
-    
+
 <!--RP1--><!--RP1End-->
 
 2. 设置防护策略。
