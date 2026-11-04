@@ -32,14 +32,14 @@ ArkWeb的网络协议栈错误列表
 |ERR_ABORTED | -3 | 操作已被中止。|
 |ERR_INVALID_ARGUMENT | -4 | 参数无效。 |
 |ERR_INVALID_HANDLE | -5 | 文件描述符的句柄是无效的。|
-|ERR_FILE_NOT_FOUND | -6 | 文件未找到。 |
+|ERR_FILE_NOT_FOUND | -6 | 文件或目录无法找到。 |
 |ERR_TIMED_OUT | -7 | 操作超时。|
 |ERR_FILE_TOO_LARGE | -8 | 文件过大。|
 |ERR_UNEXPECTED | -9 | 遇到了未被预期或未被特定处理的问题。 |
 |ERR_ACCESS_DENIED | -10 | 访问除了网络以外的资源被拒绝。 |
 |ERR_NOT_IMPLEMENTED | -11 | 功能未实现，导致操作失败。 |
 |ERR_INSUFFICIENT_RESOURCES | -12 | 系统或程序执行所需的资源不足。|
-|ERR_OUT_OF_MEMORY | -13 | 内存溢出。|
+|ERR_OUT_OF_MEMORY | -13 | 内存分配失败。|
 |ERR_UPLOAD_FILE_CHANGED | -14 | 上传文件失败，因为文件的修改时间不符合预期。 |
 |ERR_SOCKET_NOT_CONNECTED | -15 | 长连接断开。 |
 |ERR_FILE_EXISTS | -16 | 文件已存在。|
@@ -257,7 +257,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_CERT_VERIFIER_CHANGED | -716 | 证书验证配置已发生某种更改。|
 |ERR_DNS_MALFORMED_RESPONSE | -800 | DNS解析程序收到格式错误的响应。|
 |ERR_DNS_SERVER_REQUIRES_TCP | -801 | DNS服务器需要TCP。|
-|ERR_DNS_SERVER_FAILED | -802 | DNS服务器失败。对于以下所有错误情况，都会返回此错误。1-格式错误-名称服务器无法解释查询。2-服务器故障-名称服务器由于自身问题无法处理这个查询。3-未实现-名称服务器不支持请求的查询类型。4-拒绝-名称服务器出于策略原因拒绝执行指定的操作。|
+|ERR_DNS_SERVER_FAILED | -802 | DNS服务器失败。对于以下所有错误情况，都会返回此错误。1-格式错误-名称服务器无法解释查询。2-服务器故障-名称服务器由于自身问题无法处理这个查询。4-未实现-名称服务器不支持请求的查询类型。5-拒绝-名称服务器出于策略原因拒绝执行指定的操作。|
 |ERR_DNS_TIMED_OUT | -803 | DNS事务超时。|
 |ERR_DNS_CACHE_MISS | -804 | 对于只查询本地源的查找，在缓存或其他本地源中未找到该条目。|
 |ERR_DNS_SEARCH_EMPTY | -805 | 后缀搜索列表规则阻止了给定主机名的解析。|

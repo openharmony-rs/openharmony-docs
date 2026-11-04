@@ -41,6 +41,7 @@ libdl：dlopen等动态链接器接口，当前在OpenHarmony中是一个链接�
 3. 支持symbol-versioning功能。
 4. dlopen支持直接加载zip包中未压缩的文件。
 5. 支持C API兼容性版本保护。
+6. 从API version 26.2.0开始，支持按业务组标识符创建和访问共享内存及命名信号量，详见[group_ipc.h](capi-group-ipc-h.md)。
 <!--Del-->
 ### 调试能力
 libc提供了动态使能维测log功能（默认开启），供开发者需要的时候查看libc库异常。使用libc提供的动态使能维测log功能，不需要重新编译libc库，只需设置param属性即可。在正式发布版本中，不建议使能，会影响运行性能。

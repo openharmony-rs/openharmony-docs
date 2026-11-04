@@ -483,6 +483,45 @@ ProtectedResourceType枚举定义了Web组件需要访问的受保护资源类�
 | ----------- | -- | ------------------ |
 | DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | 以17点检测法进行页面检测。当检测点命中已经渲染了且有意义的节点，则认为有命中。有意义的节点指的是图片，视频和文字节点。<br>当无命中，或少于用户设置阈值命中时，则认为是白屏或者近似白屏。<br>其中，检测的17个点位包括：<br>中心点 (1个)： 位于页面的几何中心。<br>内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。         |
 
+## BlankScreenReason
+
+白屏的具体原因。从网络层、资源层、渲染与 JS 层、内核与进程层、容器层五个维度进行归因。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| DNS_RESOLVE_FAILED | 101 | DNS解析失败。 |
+| REQUEST_TIMED_OUT | 102 | 主文档加载超时。 |
+| CONNECTION_REFUSED | 103 | 连接被拒绝。 |
+| CONNECTION_RESET | 104 | 连接被重置。 |
+| SSL_ERROR | 105 | 发生SSL错误。 |
+| CERT_ERROR | 106 | 发生证书错误。 |
+| INTERNET_DISCONNECTED | 107 | 网络已断开。 |
+| REDIRECT_LOOP | 108 | 发生重定向循环。 |
+| PROXY_ERROR | 109 | 发生代理错误。 |
+| OTHER_NETWORK_ERROR | 199 | 其他网络错误。 |
+| MAIN_DOC_EMPTY | 201 | 主文档为空。 |
+| HTTP_4XX_ERROR | 202 | 发生HTTP 4xx错误。 |
+| HTTP_5XX_ERROR | 203 | 发生HTTP 5xx错误。 |
+| JS_GLOBAL_BUNDLE_LOAD_FAILED | 210 | JavaScript全局bundle加载失败。 |
+| CSS_LOAD_FAILED | 211 | CSS加载失败。 |
+| MULTI_RESOURCE_LOAD_FAILED | 212 | 多个资源加载失败。 |
+| CORS_BLOCKED | 213 | 请求被CORS拦截。 |
+| CSP_BLOCKED | 214 | 请求被CSP拦截。 |
+| MIXED_CONTENT_BLOCKED | 215 | 混合内容被拦截。 |
+| JS_RUNTIME_ERROR | 301 | 发生JavaScript运行时错误。 |
+| NO_FIRST_CONTENTFUL_PAINT | 312 | 未发生首次内容绘制。 |
+| RENDERER_CRASHED | 401 | 渲染进程崩溃。 |
+| RENDERER_KILLED | 402 | 渲染进程被终止。 |
+| GPU_PROCESS_CRASHED | 403 | GPU进程崩溃。 |
+| GPU_PROCESS_WATCHDOG_TIMEOUT | 404 | GPU进程看门狗超时。 |
+| WEB_VIEW_ZERO_SIZE | 501 | Web组件尺寸为0。 |
+
 ## CredentialType<sup>22+</sup>
 
 凭证类型，用于定义身份认证中使用的凭证种类。

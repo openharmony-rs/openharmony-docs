@@ -169,11 +169,10 @@
     
     ``` TypeScript
     import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { rpc } from '@kit.IPCKit'
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { wantAgent, WantAgent } from '@kit.AbilityKit';
+    import { AbilityConstant, UIAbility, Want, wantAgent, WantAgent } from '@kit.AbilityKit';
     // 在原子化服务中，请删除WantAgent导入
     ```
     <!--RP1End-->

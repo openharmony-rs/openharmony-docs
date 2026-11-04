@@ -591,7 +591,7 @@ struct BuilderIndex {
 
 **ViewModel层**
 
-> 注意：
+> **注意：**
 >
 > ViewModel层不只是存放数据，它同时需要提供数据的服务及处理。
 

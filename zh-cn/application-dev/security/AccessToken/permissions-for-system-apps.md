@@ -8542,6 +8542,20 @@
  
 **起始版本**：26.0.1
 
+## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
+ 
+允许应用安装自由分发的应用。
+ 
+**权限级别**：system_core
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
+
 ## ohos.permission.SOFTBUS_MANAGER_RESOURCE
 
 允许系统应用处理软总线资源。

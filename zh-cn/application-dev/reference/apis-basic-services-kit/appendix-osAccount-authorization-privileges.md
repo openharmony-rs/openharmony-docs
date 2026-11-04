@@ -16,3 +16,4 @@
 | 特权                                      | 特权值                                   | 说明                           |有效期                           |关联的权限                           |
 | ----------------------------------------- | ---------------------------------------- | ------------------------------ |------------------------------ |------------------------------ |
 | ohos.privilege.operate_raw_net_packets | PRIVILEGE_OPERATE_RAW_NET_PACKETS        | 操作原始网络包的特权。 |与被授权进程的生命周期相绑定| ohos.permission.kernel.NET_RAW|
+| ohos.privilege.monitor_raw_usb_packets | PRIVILEGE_MONITOR_RAW_USB_PACKETS        | 监听USB数据包的特权。 |与被授权进程的生命周期相绑定| ohos.permission.kernel.USB_CAPTURE|

@@ -6,6 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=10a823f5114708793f873c2259ddf0b8d1e5f84e translatedAt=2026-10-31T01:19:18.413Z pushedAt=2026-10-31T01:58:45.185Z nl=1 -->
 
 ## Introduction
 Wi-Fi scan is the process where devices (such as smartphones, PCs, and routers) search for available Wi-Fi networks in their surrounding environment. Through this scan process, devices can gather fundamental information about nearby networks—such as network name, signal strength, and encryption type—thereby enabling connection to, management of, or analysis of these networks.
@@ -19,7 +20,7 @@ Wi-Fi scan is the process where devices (such as smartphones, PCs, and routers) 
 
 ## Available APIs
 
-For details about the JavaScript APIs and sample code, see the [SCAN API Reference](../../reference/apis-connectivity-kit/js-apis-wifiManager.md).
+For the complete JS API reference and sample code, see [@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md).
 
 The following table describes the related APIs.
 
@@ -45,11 +46,11 @@ The following table describes the related APIs.
    ```ts
    import { wifiManager } from '@kit.ConnectivityKit';
 
-   try {
-     let recvWifiScanStateChangeFunc = (result:number) => {
-         console.info("Receive Wifi scan state change event: " + result);
-     }
+   let recvWifiScanStateChangeFunc = (result:number) => {
+       console.info("Receive Wifi scan state change event: " + result);
+   }
 
+   try {
      // Obtain the scan status. The value 1 indicates that the scan is successful, and the value 0 indicates the opposite.
      wifiManager.on("wifiScanStateChange", recvWifiScanStateChangeFunc);
 
@@ -78,22 +79,26 @@ The following table describes the related APIs.
          console.info("isHiLinkNetwork: " + scanInfoList[i].isHiLinkNetwork);
        }
      }
-
-     // Unsubscribe from Wi-Fi scan state changes.
-     wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
    } catch (error) {
      console.error(`WiFi scan fail. ${error.message}`);
+   } finally {
+     // Unregister and stop obtaining the scan status. Place this in the finally block to ensure unbinding even when an exception occurs, avoiding resource leaks.
+     try {
+       wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
+     } catch (e) {
+       console.error(`WiFi scan off failed. ${e.message}`);
+     }
    }
    ```
 
 6. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
 
- ### PNO Scan
+### PNO Scan
 
   Preferred Network Offload (PNO) scan is a Wi-Fi scan technology that reduces power consumption of mobile devices.<br>
   PNO scan is triggered when a device is not connected to any Wi-Fi network and the screen is off. The device then searches for and connects to the preferred Wi-Fi network in the background.
 
- ### Periodic Scan
+### Periodic Scan
 
   Periodic scan is the process where a wireless device (such as a smartphone, tablet, or laptop) automatically searches for available Wi-Fi networks at the specified interval.<br>
   This function can be used in the following scenarios:<br>

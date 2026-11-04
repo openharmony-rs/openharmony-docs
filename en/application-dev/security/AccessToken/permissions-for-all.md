@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b359cf9c5bc0da61c21bcdbb8a09eb4ca4b31ef4 translatedAt=2026-10-31T02:48:35.699Z pushedAt=2026-10-31T02:59:40.643Z nl=1 -->
 
 All the permissions in this topic are available to all applications and granted by the system.
 
@@ -807,6 +808,20 @@ With this permission, an application can call APIs to request local account auth
 
 **Since**: 26.0.1
 
+## ohos.permission.kernel.USB_CAPTURE
+
+Allows an application to capture USB data packets.
+
+With this permission, the application can capture USB packets only after being authenticated by the user.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
 ## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
 Allows an application to identify whether the current user is the device owner.
@@ -819,13 +834,13 @@ With this permission, the application can use the user passive recognition capab
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
-**Valid since**: 26.0.1
+**Since**: 26.0.1
 
 ## ohos.permission.UPDATE_SCOPE_FONT
 
-Allows an application to manage application-level and session-level fonts.
+Allows applications to manage application-level and session-level fonts.
 
-With this permission, the application can use font management APIs to install, uninstall, and query application-level and session-level fonts, and register font service status listener.
+After obtaining this permission, applications can use the font management APIs to install, uninstall, and query application-level and session-level fonts, and register a font service status listener.
 
 **Permission level**: normal
 

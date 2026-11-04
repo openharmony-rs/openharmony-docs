@@ -5,7 +5,7 @@
 <!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:23:36.895Z pushedAt=2026-09-20T07:47:15.994Z -->
+<!-- md-trans-meta sourceCommit=3a8ebcba6a900b509399d00a3d863c3bab2a6c15 translatedAt=2026-10-31T01:29:58.751Z pushedAt=2026-10-31T03:43:03.531Z nl=1 -->
 
 ## When to Use
 
@@ -44,7 +44,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
 2. Before using the vibrator on a device, you must declare the **ohos.permission.VIBRATE** permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
    <!-- @[vibrator_capi_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/module.json5) --> 
-
+   
    ``` JSON5
    "requestPermissions": [
      {
@@ -65,7 +65,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
 4. Import modules.
 
    <!-- @[vibrator_capi_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
-
+   
    ``` C++
    #include <sensors/vibrator.h>
    #include "napi/native_api.h"
@@ -80,7 +80,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
 5. Define constants.
 
    <!-- @[vibrator_capi_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
-
+   
    ``` C++
    const int VIBRATOR_LOG_DOMAIN = 0xD002701;
    const char *TAG = "[NativeVibratorTest]";
@@ -90,7 +90,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
 6. Configure the vibrator to vibrate continuously for a given duration.
 
    <!-- @[vibrator_capi_vibrate_in_duration_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
-
+   
    ``` C++
    static napi_value PlayVibrationInDuration(napi_env env, napi_callback_info info)
    {
@@ -116,8 +116,8 @@ Custom vibration enables you to design desired vibration effects by customizing 
 
 7. Configure the vibrator to vibrate with the custom sequence.
 
-   <!-- @[vibrator_capi_vibrate_in_custom_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
-
+   <!-- @[vibrator_capi_vibrate_in_custom_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) -->
+   
    ``` C++
    static napi_value PlayVibrationCustom(napi_env env, napi_callback_info info)
    {
@@ -126,7 +126,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
        // Obtain arguments of the native API.
        napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
    
-       // argv[0] is the first parameter of the function, which is a JS resource object. The  OH_ResourceManager_InitNativeResourceManager function converts this JS resource object into a native object.
+       // argv[0] is the first parameter of the function, which is a JS resource object. The OH_ResourceManager_InitNativeResourceManager function converts this JS resource object into a native object.
        NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
        if (mNativeResMgr == nullptr) {
            OH_LOG_Print(LOG_APP, LOG_ERROR, VIBRATOR_LOG_DOMAIN, TAG, "Get native resource manager failed");
@@ -155,7 +155,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
        int32_t ret = OH_Vibrator_PlayVibrationCustom(fileDescription, vibrateAttribute);
        bool isSuccess = ((ret == 0) || (ret == UNSUPPORTED));
        if (!isSuccess) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom fail");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom fail");
        } else {
            OH_LOG_Print(LOG_APP, LOG_INFO, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom successful");
        }
@@ -172,7 +172,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
 8. Add related APIs to the **Init** function.
 
    <!-- @[vibrator_capi_init_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
-
+   
    ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
@@ -190,7 +190,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
 9. Introduce the NAPI APIs to the **index.d.ts** file in **types/libentry**.
 
    <!-- @[vibrator_capi_dependency_napi_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
-
+   
    ``` TypeScript
    export const playVibrationInDuration: () => object;
    export const playVibrationCustom: (resmgr: object) => object;
@@ -199,7 +199,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
 10. Write the application entry call code.
 
     <!-- @[vibrator_capi_index_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/ets/pages/Index.ets) --> 
-
+    
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';

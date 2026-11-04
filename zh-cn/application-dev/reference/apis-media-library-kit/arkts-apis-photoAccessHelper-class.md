@@ -73,6 +73,7 @@ PhotoSelectOptions extends BaseSelectOptions
 | isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | 否   | 是 | 在单选模式下，拍完照是否能自动跳转到大图预览模式，true表示支持，false表示不支持，默认为false。<br>**注意：** 该参数配置为true时仅在[SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18)为BROWSER_MODE（大图预览模式）或者BROWSER_AND_SELECT_MODE（兼容模式）并且[BaseSelectOptions.isPreviewForSingleSelectionSupported](arkts-apis-photoAccessHelper-class.md#baseselectoptions)参数为true时生效。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 | isSelectionNumberVisible       | boolean | 否   | 是 | 是否支持选择序号。true表示支持，false表示不支持，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
 | isSelectionOrderAdjustable      | boolean | 否   | 是 | 是否支持调整选择顺序。true表示支持，false表示不支持，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
+| pickerColorMode        | [PickerColorMode](arkts-apis-photoAccessHelper-e.md#pickercolormode)  | 否   | 是 | 设置图片选择器的颜色模式，实现图片选择器拉起的界面内所有内容的深色/浅色显示效果。<br>默认值为AUTO：颜色跟随系统。<br>**起始版本：** 26.0.1 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。  |
 
 ## PhotoSelectResult
 
@@ -148,7 +149,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称                    | 类型                                                                                     | 只读 | 可选  | 说明   |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | 否    | 是 | 配置最近图片显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内的图片。最长可配置时长为1天（86400s）。<br/>当值小于等于0、大于86400或者未配置时，默认按最长时间段（1天）显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+| period                  | number                                                                                  | 否    | 是 | 配置最近图片或视频显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内按创建时间排序的最新一个图片或视频。<br>- 在API版本26.0.1之前，配置时长最长为1天（86400秒）。当值小于等于0、大于86400或者未配置时，默认按最长时间段（1天）显示最近图片或视频。<br>- 从API版本26.0.1开始，配置时长最长（INT_MAX）为2147483647秒。当值为正无穷大（Number.POSITIVE_INFINITY）时，系统显示INT_MAX时间范围内的最新一个图片或视频；当值小于等于0、大于INT_MAX或者未配置时，默认按1天处理。<br>当配置时间段内无符合的图片或视频时，组件不显示。|
 | MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型，默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                         |
 | photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | 否    | 是 | 配置最近图片视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                               |
 
