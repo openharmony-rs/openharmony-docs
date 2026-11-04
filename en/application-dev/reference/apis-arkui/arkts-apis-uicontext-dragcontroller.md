@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 <!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-29T09:03:04.100Z pushedAt=2026-10-29T12:32:04.852Z nl=1 -->
 
-Provides drag-and-drag control capabilities, supporting the proactive initiation of dragging with attached drag information when the application receives events such as touch or long press. It also supports creating drag actions, obtaining the drag preview, controlling drag event reporting and drag start requests, canceling drag data loading, and displaying the drop-disallowed badge when dropping onto a target area is not allowed.
+Provides drag-and-drop control capabilities, supporting the proactive initiation of dragging with attached drag information when the application receives events such as touch or long press. It also supports creating drag actions, obtaining the drag preview, controlling drag event reporting and drag start requests, canceling drag data loading, and displaying the drop-disallowed badge when dropping onto a target area is not allowed.
 
 > **NOTE**
 >

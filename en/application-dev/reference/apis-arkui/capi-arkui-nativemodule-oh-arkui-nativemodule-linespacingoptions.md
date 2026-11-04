@@ -20,3 +20,5 @@ Defines a text line spacing option object, which is used to set whether the text
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [text.h](capi-text-h.md)
+
+<!--no_check-->
