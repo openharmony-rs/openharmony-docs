@@ -188,7 +188,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 14. 调用off('error')方法注销错误类型监听。
 
      <!-- @[SoundPool_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      this.soundPool!.off('error');
      ```
