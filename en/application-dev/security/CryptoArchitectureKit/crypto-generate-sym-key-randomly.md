@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-09T01:51:37.349Z pushedAt=2026-10-10T02:37:17.557Z -->
+<!-- md-trans-meta sourceCommit=ae6edf9e57a4f160cca98ef88ced0cd8e0518bb0 translatedAt=2026-11-04T08:20:12.988Z pushedAt=2026-11-04T08:24:57.477Z nl=1 -->
 
 This topic uses AES and SM4 as an example to describe how to generate a symmetric key and obtain the binary data.
 
@@ -25,9 +25,10 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
 - Example: Randomly generate a 256-bit AES key (using promise-based APIs).
 
   <!-- @[generate_aes_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/aes/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function testGenerateAesKey() {
     // Create a SymKeyGenerator instance.
@@ -38,6 +39,8 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
       // Obtain the binary data of the symmetric key and output a 256-bit key, which is of 32 bytes.
       let encodedKey = key.getEncoded();
       console.info('key hex: ' + encodedKey.data);
+    }).catch((error: BusinessError) => {
+      console.error(`testGenerateAesKey failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
@@ -45,18 +48,24 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
 
 - Example using synchronous API [generateSymKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkeysync12):
   <!-- @[generate_aes_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/aes/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function testSyncGenerateAesKey() {
-    // Create a SymKeyGenerator instance.
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-    // Use SymKeyGenerator to randomly generate a symmetric key.
-    let symKey = symKeyGenerator.generateSymKeySync();
-    // Obtain the binary data of the symmetric key and output a 256-bit key, which is of 32 bytes.
-    let encodedKey = symKey.getEncoded();
-    console.info('key hex: ' + encodedKey.data);
+    try {
+      // Create a SymKeyGenerator instance.
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+      // Use the key generator to randomly generate a symmetric key.
+      let symKey = symKeyGenerator.generateSymKeySync();
+      // Obtain the binary data of the symmetric key and output a 256-bit key. The length is 32 bytes.
+      let encodedKey = symKey.getEncoded();
+      console.info('key hex: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testSyncGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -76,9 +85,10 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
 - Example: Randomly generate a 128-bit SM4 key (using promise-based APIs).
 
   <!-- @[generate_sm4_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/sm4/Promise.ets) --> 
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function testGenerateSM4Key() {
     // Create a SymKeyGenerator instance.
@@ -89,6 +99,8 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
       // Obtain the binary data of the symmetric key and output a 128-bit byte stream, which is of 16 bytes.
       let encodedKey = key.getEncoded();
       console.info('key hex: ' + encodedKey.data);
+    }).catch((error: BusinessError) => {
+      console.error(`testGenerateSM4Key failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
@@ -96,18 +108,24 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
 
 - Example using synchronous API [generateSymKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkeysync12):
   <!-- @[generate_sm4_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/sm4/Sync.ets) --> 
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function testSyncGenerateSm4Key() {
-    // Create a SymKeyGenerator instance.
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
-    // Use SymKeyGenerator to randomly generate a symmetric key.
-    let symKey = symKeyGenerator.generateSymKeySync();
-    // Obtain the binary data of the symmetric key and output a 128-bit byte stream, which is of 16 bytes.
-    let encodedKey = symKey.getEncoded();
-    console.info('key hex: ' + encodedKey.data);
+    try {
+      // Create a SymKeyGenerator instance.
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
+      // Randomly generate a symmetric key using the key generator.
+      let symKey = symKeyGenerator.generateSymKeySync();
+      // Obtain the binary data of the symmetric key and output a 128-bit byte stream. The length is 16 bytes.
+      let encodedKey = symKey.getEncoded();
+      console.info('key hex: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testSyncGenerateSm4Key failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 

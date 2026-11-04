@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e614d89ea989f36e0b13aa6a29dc8dc8d371310c translatedAt=2026-10-09T01:51:06.493Z pushedAt=2026-10-10T02:37:08.301Z -->
+<!-- md-trans-meta sourceCommit=ae6edf9e57a4f160cca98ef88ced0cd8e0518bb0 translatedAt=2026-11-04T08:19:25.145Z pushedAt=2026-11-04T08:24:45.268Z nl=1 -->
 
 > **NOTE**
 >
@@ -52,25 +52,31 @@ The random number generation algorithm uses the **RAND_priv_bytes** interface of
 
 - Return the result using **await**:
   <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function doRand() {
+    try {
       let rand = cryptoFramework.createRandom();
       let seed = new Uint8Array([1, 2, 3]);
       rand.setSeed({ data: seed });
       let len = 12;
       let randOutput = await rand.generateRandom(len);
       console.info('rand output: ' + randOutput.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
+  }
   ```
 
 
 - Return the result synchronously:
   <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

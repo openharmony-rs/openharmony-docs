@@ -5,7 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-10-10T03:59:10.028Z pushedAt=2026-10-12T03:12:02.847Z -->
+<!-- md-trans-meta sourceCommit=fbbb133cefc64acb17ebb3909ace166e8255ccfa translatedAt=2026-11-04T08:06:53.425Z pushedAt=2026-11-04T08:15:53.946Z nl=1 -->
 
 - [About This Kit](command-line-tools-overview.md)
 - [hdc](../dfx/hdc.md)
@@ -47,5 +47,6 @@
   - [devicedebug](devicedebug-tool.md)
   - [rawheap-translator](rawheap-translator.md)
   - [js-rawheap-translator](js-rawheap-translator.md)
+  - [SourceMap Splitter](sourcemap-splitter-tool.md)
   <!--RP1--><!--RP1End-->
 - [Binary Sign Tool](binary-sign-tool.md)

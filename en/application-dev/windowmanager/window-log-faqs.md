@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @liangryan-->
 <!--Designer: @liangryan-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d3892b2d07408e5d546efbe3172eb29f03f427d8 translatedAt=2026-10-08T09:04:43.040Z pushedAt=2026-10-09T00:29:43.099Z -->
+<!-- md-trans-meta sourceCommit=fae022753c95f326b11a3c843fe44fefdfc489ee translatedAt=2026-11-04T08:04:50.120Z pushedAt=2026-11-04T08:18:36.823Z nl=1 -->
 
 ## Using the hidumper Window Command to View Window Information for Troubleshooting
 
@@ -153,7 +153,7 @@ Field description:
 | Focusable | Whether the window can gain focus. | **true** indicates that the window can gain focus; **false** indicates that the window cannot gain focus. |
 | DecoStatus | Decoration status. | **true** indicates that window decoration is enabled (with a title bar, etc.); **false** indicates that the window has no decoration. |
 | IsPrivacyMode | Whether privacy mode is enabled. | **true** indicates a privacy window; **false** indicates a normal window. Privacy windows behave differently on different devices during screen capture. For details, see [Privacy Mode](./screenshot-and-privacy-mode.md#specification-and-behavior). |
-| isSnapshotSkip | Whether to show the window during screen capture. | **0** indicates that the window content is displayed during screen capture; **1** indicates that the window content is not displayed during screen capture. |
+| isSnapshotSkip | Whether to skip the window during screen capture. | Indicates whether to skip the window during screen capture. 0: The window is not skipped during screen capture; 1: The window is skipped during screen capture. |
 | WindowRect | Window rectangle area. | Window position and size, in the format [x, y, width, height], with coordinates originating from the upper‑left corner of the screen. For example, **[0, 0, 720, 1280]** indicates position **(0,0)** and size **720x1280**. |
 | TouchHotAreas | Touch hot area. | The value is in the format [x, y, width, height], with coordinates originating from the upper‑left corner of the window. |
 <!--RP1End-->
@@ -168,7 +168,7 @@ Failed to receive keyboard inputs
 <!--Del-->
 Window content not hidden during screenshot
 
-- Check whether the window is a non-privacy window with the setting to display window content during screenshot, that is, **IsPrivacyMode** is **false** and **isSnapshotSkip** is **0**. In this case, the content is not hidden during screenshot.
+- Check whether the window is a non-privacy window and is not skipped during screenshot, that is, `IsPrivacyMode` is false and `isSnapshotSkip` is 0, so that the window is not hidden during screenshot.
 - If you need to hide window content during screenshot, call [setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9) and pass in **true** to enable privacy mode.
 <!--DelEnd-->
 
@@ -204,7 +204,7 @@ Window touch area anomaly
    <!--Del-->
    - **VisibilityState**: Check whether the window is displayed.
    <!--DelEnd-->
-   - **ZOrder**: Check the hierarchical relationship.
+   - ZOrd: Check the hierarchical relationship.
    - **WindowRect**: Check the window size and position.
 
 > **NOTE**

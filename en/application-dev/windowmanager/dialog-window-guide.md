@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @gcw_sPCsris4; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=50d1c0b25b69166867a5980e73fb2fa37223d98b translatedAt=2026-10-08T09:00:21.194Z pushedAt=2026-10-08T11:07:24.044Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:00:58.301Z pushedAt=2026-11-04T08:16:58.841Z nl=1 -->
 
 A dialog window is used to temporarily display critical information or guide users to complete specific actions (such as saving information). It interrupts the user's current operation flow and requires a response before other operations can continue. It is typically used in scenarios where important information needs to be conveyed to the user.
 
@@ -17,7 +17,7 @@ A dialog window is used to temporarily display critical information or guide use
    Create a dialog window (**TYPE_DIALOG**) through the [window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1) API.
 
    <!-- @[dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    let dialogWindowClass: window.Window | undefined = undefined;
    // ...
@@ -44,7 +44,7 @@ A dialog window is used to temporarily display critical information or guide use
    - Before calling [showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9), it is recommended to set the size and position of the dialog window.
 
    <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    // 2. After the modal window is created, set its position, size, and related attributes.
    dialogWindowClass.moveWindowTo(100, 100, (err) => {
@@ -72,7 +72,7 @@ A dialog window is used to temporarily display critical information or guide use
    Use the [setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9) and [showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9) APIs to load and display the specific content of the dialog window.
 
    <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    // 3. Load the corresponding target page for the modal window.
    dialogWindowClass.setUIContent('pages/DialogWindow', (err) => {
@@ -97,7 +97,7 @@ A dialog window is used to temporarily display critical information or guide use
    When the dialog window is no longer needed, you can use the [destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9) API to destroy it based on your specific implementation logic.
 
    <!-- @[destroy_dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/DialogWindow.ets) -->  
-
+   
    ``` TypeScript
    // 4. Destroy the modal window. When the modal window is no longer needed, destroy it by calling destroy based on the specific implementation logic.
    dialogWindowClass.destroyWindow((err: BusinessError) => {

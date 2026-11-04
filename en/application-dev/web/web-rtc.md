@@ -5,7 +5,7 @@
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=e17d70f4858d48d83d53d0ecd9891482c429e2ec translatedAt=2026-11-04T02:03:42.187Z pushedAt=2026-11-04T04:24:38.593Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8546a7ae3e92ea6d95b1b3ed557f55902393fedb translatedAt=2026-11-04T07:59:19.288Z pushedAt=2026-11-04T08:16:27.590Z nl=1 -->
 
 WebRTC (Web Real-Time Communications) is a real-time communication technology that allows web applications or sites to establish peer-to-peer connections between browsers without an intermediary, enabling the transmission of video streams, audio streams, or any other data. The standards included in WebRTC allow users to create peer-to-peer data sharing and audio/video conferencing without installing any plug-ins or third-party software. WebRTC applies to all modern browsers and native clients on major platforms. The underlying technology is implemented as an open web standard and is provided as a regular JavaScript API in all major browsers.
 
@@ -59,7 +59,7 @@ The **Web** component can access the camera and microphone through W3C standard 
 Call the W3C standard protocol API **navigator.mediaDevices.getUserMedia()** in JavaScript to open the camera and microphone. The **constraints** parameter is a **MediaStreamConstraints** object that contains two members, **video** and **audio**, and specifies the requested media types.
 
 ### System-Side Authorization
-In the [Complete Example Code](../web/web-rtc.md#complete-example), **requestPermissionsFromUser** is called so that after the app is opened, a dialog box asking whether to allow the app to access the camera and microphone is displayed. Click **Always allow** or **Ask every time** to authorize the app to access the camera and microphone.
+In the [Complete Example Code](../web/web-rtc.md#complete-example), `requestPermissionsFromUser()` is called so that after the app is opened, a dialog box asking whether to allow the app to access the camera and microphone is displayed. Click **Always allow** or **Ask every time** to authorize the app to access the camera and microphone.
 
 ### App-Side Authorization
 In the [Complete Example](../web/web-rtc.md#complete-example), after you click the **Enable Camera** button on the frontend page, a permission request is triggered through **onPermissionRequest**. After you click the **onConfirm** button in the dialog box, the camera and microphone are opened.
@@ -157,7 +157,7 @@ In the [Complete Example](../web/web-rtc.md#complete-example), after you click t
         video.srcObject = MediaStream;
         video.play();
       }).catch(function(err) {
-          console.info(err.name + ": " + err.message);
+          console.error(err.name + ": " + err.message);
       });
     }
   </script>

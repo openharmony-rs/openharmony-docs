@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:59:37.451Z pushedAt=2026-10-10T02:42:39.979Z -->
+<!-- md-trans-meta sourceCommit=ae6edf9e57a4f160cca98ef88ced0cd8e0518bb0 translatedAt=2026-11-04T08:23:15.348Z pushedAt=2026-11-04T08:26:36.168Z nl=1 -->
 
 **Encoding**
 
@@ -30,21 +30,27 @@
 - Encoding example:
 
   <!-- @[prikey_encoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyEncoding.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function prikeyEncoding() {
-    let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-    let keyPair = rsaGenerator.generateKeyPairSync();
-    let options : cryptoFramework.KeyEncodingConfig = {
-        password: '123456',
-        cipherName: 'AES-128-CBC'
+    try {
+      let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+      let keyPair = rsaGenerator.generateKeyPairSync();
+      let options : cryptoFramework.KeyEncodingConfig = {
+          password: '123456',
+          cipherName: 'AES-128-CBC'
+      }
+      let priPemKey = keyPair.priKey;
+      let priString = priPemKey.getEncodedPem('PKCS1', options);
+      console.info('[sync]TestPriKeyPkcs1Encoded priString output: ' + priString);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`prikeyEncoding failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let priPemKey = keyPair.priKey;
-    let priString = priPemKey.getEncodedPem('PKCS1', options);
-    console.info('[sync]TestPriKeyPkcs1Encoded priString output: ' + priString);
   }
   ```
 
@@ -52,7 +58,7 @@
 - Decoding example:
 
   <!-- @[prikey_decoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyDecoding.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

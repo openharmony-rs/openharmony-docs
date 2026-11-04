@@ -6,7 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=0b15f1900aa7e2f9a2dc9ee950f5abe64e8a8f6c translatedAt=2026-10-09T01:11:09.651Z pushedAt=2026-10-09T08:22:54.367Z -->
+<!-- md-trans-meta sourceCommit=ec02f60ce17174b2a247c066a84f6ad809303333 translatedAt=2026-11-04T08:08:45.043Z pushedAt=2026-11-04T08:23:03.534Z nl=1 -->
 
 ## How to Request
 
@@ -347,7 +347,7 @@ For the application developed using the cross-platform framework, this permissio
 ## ohos.permission.kernel.ALLOW_WRITABLE_CODE_MEMORY
 
 Allows an application to apply for writable and executable anonymous memory. This capability is mainly used to provide just-in-time (JIT) compilation for the engines bundled with the application (such as JS engines and game script engines) to improve code execution efficiency.
-
+ 
 <!--RP10--><!--RP10End-->
 
 **Permission level**: system_basic
@@ -355,7 +355,7 @@ Allows an application to apply for writable and executable anonymous memory. Thi
 **Authorization mode**: system_grant
 
 **Supported devices**: PC/2in1 | Tablet
-
+ 
 <!--RP108--><!--RP108End-->
 
 **Since**: 14
@@ -657,6 +657,7 @@ Peripherals connected to the host via a USB bus and:
 
 **Since**: 18
 
+<!--Del-->
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 Allows an application to install plugins.
@@ -668,6 +669,7 @@ Allows an application to install plugins.
 **Authorization mode**: system_grant
 
 **Since**: 19
+<!--DelEnd-->
 
 ## ohos.permission.CUSTOM_SANDBOX
 

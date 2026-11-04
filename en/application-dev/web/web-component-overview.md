@@ -5,7 +5,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T03:51:15.085Z pushedAt=2026-09-16T08:44:41.280Z -->
+<!-- md-trans-meta sourceCommit=d24822893723d09fabba40e96d2ee4ea7b26a344 translatedAt=2026-11-04T07:55:58.712Z pushedAt=2026-11-04T08:16:10.643Z nl=1 -->
 
 ## When to Use
 
@@ -40,17 +40,19 @@ The **Web** component provides various capabilities for you to control web pages
 
 To access online web pages through the **Web** component, you must add the network permission ohos.permission.INTERNET. For details about how to request the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
-  ```ts
+  <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
+  
+  ``` JSON5
   "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
+    {
+      "name" : "ohos.permission.INTERNET"
+    }
+  ],
   ```
 
 ## Constraints
 
-- You can obtain the support for W3C standards based on the ArkWeb kernel version at related websites. For example, `https://developer.mozilla.org/en-US/` and `https://webassembly.org/features/`.
+- You can query the W3C standard support status on relevant websites based on the ArkWeb kernel version. For example: [https://developer.mozilla.org/en-US/](https://developer.mozilla.org/en-US/) and [https://webassembly.org/features/](https://webassembly.org/features/).
 
 - Web kernel version: ArkWeb is developed based on the Google Chromium kernel. The following table lists the mapping between the system version and the Chromium version.
 

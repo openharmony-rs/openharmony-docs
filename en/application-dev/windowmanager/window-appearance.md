@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @liu_hongxian-->
-<!--Designer: @shinmy; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @shinmy; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7f6d052803cbd907f6a8b345be71946d829a57f9 translatedAt=2026-10-08T09:01:58.058Z pushedAt=2026-10-08T11:18:57.984Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:04:09.929Z pushedAt=2026-11-04T08:17:33.801Z nl=1 -->
 
 ## When to Use
 
@@ -119,7 +119,7 @@ A window shadow is a projection effect displayed at the window edge, which enhan
   The following takes a subwindow as an example to call **setShadow()** to set the window shadow.
 
   <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
-
+  
   ``` TypeScript
   // Index.ets
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -171,7 +171,7 @@ A window shadow is a projection effect displayed at the window edge, which enhan
   Here, a global floating window is used as an example to set the blur radius of its window shadow.
 
   <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
-
+  
   ``` TypeScript
   // pages/page1.ets
   import { window } from '@kit.ArkUI';
@@ -202,7 +202,7 @@ A window shadow is a projection effect displayed at the window edge, which enhan
   Here, a global floating window is used as an example to set its window corner radius.
 
   <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
-
+  
   ``` TypeScript
   // pages/page1.ets
   import { window } from '@kit.ArkUI';

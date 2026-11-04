@@ -58,4 +58,4 @@
 
   - [System Certificate Credential Development](certManager-system-credential-guidelines.md)
 
-- [Device Certificate Kit Glossary](device-certificate-glossary.md)
+- [Glossary](device-certificate-glossary.md)

@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @gcw_sPCsris4; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ec7630a78aacf2433fa2a5ddf9c98995fe35f1df translatedAt=2026-10-08T09:06:59.931Z pushedAt=2026-10-09T00:53:19.349Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:06:23.644Z pushedAt=2026-11-04T08:19:28.306Z nl=1 -->
 
 Windows are divided into two types: system windows and app windows.
 

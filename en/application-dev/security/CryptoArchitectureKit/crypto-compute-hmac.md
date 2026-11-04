@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e614d89ea989f36e0b13aa6a29dc8dc8d371310c translatedAt=2026-10-09T01:38:36.744Z pushedAt=2026-10-10T02:05:54.000Z -->
+<!-- md-trans-meta sourceCommit=ae6edf9e57a4f160cca98ef88ced0cd8e0518bb0 translatedAt=2026-11-04T08:18:04.903Z pushedAt=2026-11-04T08:23:34.870Z nl=1 -->
 
 The hash-based message authentication code (HMAC) algorithm employs a designated digest algorithm and takes a shared key and message as inputs to generate a fixed-length message authentication code (MAC) to check the integrity of packets. The HMAC adds key input on the basis of the message digest algorithm to ensure information correctness.
 
@@ -34,9 +34,10 @@ The following provides examples of HMAC operations with different data passing m
 
 - Example: Pass in the full data to generate a MAC using **await**.
   <!-- @[message_authentication_code_calculated_as_fragmented_hmac_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function genSymKeyByData(symKeyData: Uint8Array) {
@@ -48,19 +49,24 @@ The following provides examples of HMAC operations with different data passing m
   }
   
   async function doHmac() {
-    // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = await genSymKeyByData(keyData);
-    let macAlgName = 'SHA256'; // MD algorithm.
-    let message = 'hmacTestMessage'; // Data to be processed by HMAC.
-    let mac = cryptoFramework.createMac(macAlgName);
-    await mac.init(key);
-    // When the data volume is small, you can call update only once to pass all the data. The API does not limit the input parameter length.
-    await mac.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let macResult = await mac.doFinal();
-    console.info('HMAC result: ' + macResult.data);
-    let macLen = mac.getMacLength();
-    console.info('HMAC len: ' + macLen);
+    try {
+      // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = await genSymKeyByData(keyData);
+      let macAlgName = 'SHA256'; // Digest algorithm name.
+      let message = 'hmacTestMessage'; // Data to be processed by HMAC.
+      let mac = cryptoFramework.createMac(macAlgName);
+      await mac.init(key);
+      // When the data volume is small, you can call update only once to pass all the data. The API does not limit the input parameter length.
+      await mac.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let macResult = await mac.doFinal();
+      console.info('HMAC result: ' + macResult.data);
+      let macLen = mac.getMacLength();
+      console.info('HMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -68,9 +74,10 @@ The following provides examples of HMAC operations with different data passing m
 - Example: Pass in the full data to generate a MAC using synchronous APIs.
 
   <!-- @[message_authentication_code_calculated_as_fragmented_hmac_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function genSymKeyByData(symKeyData: Uint8Array) {
@@ -82,19 +89,24 @@ The following provides examples of HMAC operations with different data passing m
   }
   
   function doHmacBySync() {
-    // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = genSymKeyByData(keyData);
-    let macAlgName = 'SHA256'; // MD algorithm.
-    let message = 'hmacTestMessage'; // Data to be processed by HMAC.
-    let mac = cryptoFramework.createMac(macAlgName);
-    mac.initSync(key);
-    // When the data volume is small, you can call update only once to pass all the data. The API does not limit the input parameter length.
-    mac.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let macResult = mac.doFinalSync();
-    console.info('[Sync]HMAC result: ' + macResult.data);
-    let macLen = mac.getMacLength();
-    console.info('HMAC len: ' + macLen);
+    try {
+      // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = genSymKeyByData(keyData);
+      let macAlgName = 'SHA256'; // Digest algorithm name
+      let message = 'hmacTestMessage'; // Data to be processed by HMAC
+      let mac = cryptoFramework.createMac(macAlgName);
+      mac.initSync(key);
+      // When the data volume is small, you can call update only once to pass all the data. The API does not limit the length of the input parameter.
+      mac.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let macResult = mac.doFinalSync();
+      console.info('[Sync]HMAC result: ' + macResult.data);
+      let macLen = mac.getMacLength();
+      console.info('HMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -118,10 +130,11 @@ The following provides examples of HMAC operations with different data passing m
 - Example: Pass in data by segment to generate a MAC using **await**.
 
   <!-- @[message_authentication_code_calculation_hmac_one_time_incoming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Async.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function genSymKeyByData(symKeyData: Uint8Array) {
@@ -133,25 +146,30 @@ The following provides examples of HMAC operations with different data passing m
   }
   
   async function doLoopHmac() {
-    // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = await genSymKeyByData(keyData);
-    let macAlgName = 'SHA256'; // MD algorithm.
-    let mac = cryptoFramework.createMac(macAlgName);
-    // Assume the message is 43 bytes in total, which is also 43 bytes after UTF-8 decoding.
-    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // Assume the update is segmented in units of 20 bytes; there is no actual requirement for this.
-    await mac.init(key);
-    for (let i = 0; i < messageData.length; i += updateLength) {
-      let updateMessage = messageData.subarray(i, i + updateLength);
-      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      await mac.update(updateMessageBlob);
+    try {
+      // Encode the string into a Uint8Array using UTF-8, and use a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = await genSymKeyByData(keyData);
+      let macAlgName = 'SHA256'; // Digest algorithm name.
+      let mac = cryptoFramework.createMac(macAlgName);
+      // Assume the message is 43 bytes in total, and it is also 43 bytes after UTF-8 decoding.
+      let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+      let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+      let updateLength = 20; // Assume the update is segmented in units of 20 bytes; there is no actual requirement for this.
+      await mac.init(key);
+      for (let i = 0; i < messageData.length; i += updateLength) {
+        let updateMessage = messageData.subarray(i, i + updateLength);
+        let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+        await mac.update(updateMessageBlob);
+      }
+      let macOutput = await mac.doFinal();
+      console.info('HMAC result: ' + macOutput.data);
+      let macLen = mac.getMacLength();
+      console.info('HMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let macOutput = await mac.doFinal();
-    console.info('HMAC result: ' + macOutput.data);
-    let macLen = mac.getMacLength();
-    console.info('HMAC len: ' + macLen);
   }
   ```
 
@@ -159,9 +177,10 @@ The following provides examples of HMAC operations with different data passing m
 - Example: Pass in data by segment to generate a MAC using synchronous APIs.
 
   <!-- @[message_authentication_code_calculation_sync_one_time_incoming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function genSymKeyByData(symKeyData: Uint8Array) {
@@ -173,25 +192,30 @@ The following provides examples of HMAC operations with different data passing m
   }
   
   function doLoopHmacBySync() {
-    // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = genSymKeyByData(keyData);
-    let macAlgName = 'SHA256'; // MD algorithm.
-    let mac = cryptoFramework.createMac(macAlgName);
-    // Assume the message is 43 bytes in total, and it is also 43 bytes after UTF-8 decoding.
-    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // Assume the update is segmented in units of 20 bytes; there is no actual requirement.
-    mac.initSync(key);
-    for (let i = 0; i < messageData.length; i += updateLength) {
-      let updateMessage = messageData.subarray(i, i + updateLength);
-      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      mac.updateSync(updateMessageBlob);
+    try {
+      // Encode the string into a Uint8Array using UTF-8, and use a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = genSymKeyByData(keyData);
+      let macAlgName = 'SHA256'; // Digest algorithm name.
+      let mac = cryptoFramework.createMac(macAlgName);
+      // Assume the message is 43 bytes in total, and it is also 43 bytes after UTF-8 decoding.
+      let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+      let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+      let updateLength = 20; // Assume the update is segmented in units of 20 bytes; there is no actual requirement for this.
+      mac.initSync(key);
+      for (let i = 0; i < messageData.length; i += updateLength) {
+        let updateMessage = messageData.subarray(i, i + updateLength);
+        let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+        mac.updateSync(updateMessageBlob);
+      }
+      let macOutput = mac.doFinalSync();
+      console.info('[Sync]HMAC result: ' + macOutput.data);
+      let macLen = mac.getMacLength();
+      console.info('HMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let macOutput = mac.doFinalSync();
-    console.info('[Sync]HMAC result: ' + macOutput.data);
-    let macLen = mac.getMacLength();
-    console.info('HMAC len: ' + macLen);
   }
   ```
 
@@ -214,9 +238,10 @@ The following provides examples of HMAC operations with different data passing m
 
 - Example: Pass in the full data to generate a MAC using **await**.
   <!-- @[hmac_spec_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Spec.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function genSymKeyByData(symKeyData: Uint8Array) {
@@ -227,21 +252,26 @@ The following provides examples of HMAC operations with different data passing m
     return symKey;
   }
   async function doHmac() {
-    // Encode the string into a Uint8Array in UTF-8, and use a fixed 128-bit key, that is, 16 bytes.
-    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-    let key = await genSymKeyByData(keyData);
-    let spec: cryptoFramework.HmacSpec = {
+    try {
+      // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
+      let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+      let key = await genSymKeyByData(keyData);
+      let spec: cryptoFramework.HmacSpec = {
         algName: 'HMAC',
         mdName: 'SHA256',
-    };
-    let message = 'hmacTestMessage'; // Message to be HMACed.
-    let mac = cryptoFramework.createMac(spec);
-    await mac.init(key);
-    // For a small amount of data, you can pass in full data in a single update. The API does not limit the length of the input parameter.
-    await mac.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let macResult = await mac.doFinal();
-    console.info('HMAC result: ' + macResult.data);
-    let macLen = mac.getMacLength();
-    console.info('HMAC len: ' + macLen);
+      };
+      let message = 'hmacTestMessage'; // Data to be processed by HMAC.
+      let mac = cryptoFramework.createMac(spec);
+      await mac.init(key);
+      // When the data volume is small, you can call update only once to pass all the data. The API does not limit the parameter length.
+      await mac.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let macResult = await mac.doFinal();
+      console.info('HMAC result: ' + macResult.data);
+      let macLen = mac.getMacLength();
+      console.info('HMAC len: ' + macLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```

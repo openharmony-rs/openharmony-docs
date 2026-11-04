@@ -6,8 +6,10 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=70a01e68bac01dc2aab2edf236851c3628965c76 translatedAt=2026-11-04T08:08:45.574Z pushedAt=2026-11-04T08:22:58.017Z nl=1 -->
 
-The following permissions are open to <!--Del-->system applications and <!--DelEnd-->enterprise applications.
+<!--RP1-->
+The following permissions are open to system applications and enterprise applications.
 
 Enterprise applications include normal enterprise applications and mobile device management (MDM) applications.
 
@@ -15,13 +17,13 @@ Enterprise applications have the following characteristics:
 
 - It runs only on enterprise-customized devices and does not run on common consumer devices.
 - The distribution types are enterprise_normal (normal enterprise applications) and enterprise_mdm (MDM applications).
-<!--RP1--><!--RP1End-->
+<!--RP1End-->
 
 For details about how to request the permissions for enterprise applications, see [declaring permissions](declare-permissions.md).
 
 > **NOTE**
 >
-> The following permissions do not support automatic code signing. You must [manually sign the code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual) during the debugging and release phases.
+> The following permissions do not support automatic signing. Therefore, during both the debugging and release phases, you must follow the steps in [Manual Signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual) to complete manual signing.
 
 ## ohos.permission.SET_FILE_GUARD_POLICY
 
@@ -160,7 +162,7 @@ With this permission, the application can register an application state observer
 
 Allows an application to obtain basic information and sensitive information about another application,
 
-such as the app bundle name and version.
+Examples are the application package name and version.
 
 <!--RP2--><!--RP2End-->
 
@@ -187,7 +189,7 @@ With this permission, the application can obtain Wi-Fi configurations, such as t
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
@@ -208,7 +210,7 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
@@ -420,7 +422,7 @@ Allows an application to obtain visible window information of the current screen
 
 Allows an enterprise security application to block security audit events.
 
-With this permission, the enterprise security application can block security audit events, including file creation, opening, and deletion.
+After an enterprise security application obtains this permission, it can block security audit events. These events include file creation, file opening, and file deletion.
 
 <!--RP2--><!--RP2End-->
 
@@ -659,24 +661,24 @@ With this permission, the application can update print status and printer inform
 
 ## ohos.permission.DLP_POLICY_MANAGER
 
-Allows common enterprise applications to manage transparent encryption/decryption policies through the data loss prevention capability.
+Allows an enterprise ordinary application to manage transparent encryption and decryption policies through the data loss prevention capability.
 
-With this permission, an application can manage transparent encryption/decryption policies, such as specifying files of other applications that require transparent encryption/decryption and specifying encryption/decryption algorithms.
+After obtaining this permission, the application can manage transparent encryption and decryption policies, such as specifying that file operations of other applications require transparent encryption and decryption and specifying the corresponding encryption and decryption algorithms.
 
 **Permission level**: system_basic
 
-**Authorization mode**: system_grant
+**Authorization method**: system authorization (system_grant)
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PC/2in1
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA
- 	 
-Allows an application to launch EmbeddedUIExtension on other applications.
+
+Allows an application to launch an EmbeddedUIExtension across applications.
 
 <!--RP3--><!--RP3End-->
 
@@ -684,18 +686,18 @@ Allows an application to launch EmbeddedUIExtension on other applications.
 
 **Permission level**: system_basic
 
-**Authorization mode**: system_grant
+**Authorization method**: system authorization (system_grant)
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PC/2in1
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.SUPPORT_NP_PLUGIN_FOR_WEB
- 	 
-Allows an application to release plugin libraries.
+
+Allows an application to release the plugin library.
 
 <!--RP4--><!--RP4End-->
 
@@ -703,17 +705,17 @@ Allows an application to release plugin libraries.
 
 **Permission level**: system_basic
 
-**Authorization mode**: system_grant
+**Authorization method**: system authorization (system_grant)
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PC/2in1
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY_FOR_WEB
- 	 
+
 Allows an application to load plugin libraries signed with binary certificates.
 
 <!--RP5--><!--RP5End-->
@@ -722,14 +724,14 @@ Allows an application to load plugin libraries signed with binary certificates.
 
 **Permission level**: system_basic
 
-**Authorization mode**: system_grant
+**Authorization method**: system authorization (system_grant)
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PC/2in1
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
@@ -739,23 +741,23 @@ Allows an enterprise common application to obtain the list of all installed appl
 
 **Permission level**: system_basic
 
-**Authorization mode**: system_grant
+**Authorization method**: system authorization (system_grant)
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PC/2in1
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.kernel.TRAFFIC_FILTER
 
-Allows an application to check data packets in the network traffic path and determine whether to permit their passage, and redirect traffic to local ports.
+Allows an application to inspect packets in the network traffic path and decide whether to forward them, as well as to redirect network traffic to a local port.
 
-With this permission, the application can:
+With this permission, the application can: 
 
-1. Inline-intercept the network traffic processing path to perform real-time inspection, analysis, and policy judgment on network packets passing through the device or system. Based on packet attributes such as source address, destination address, port, and protocol type, the application can decide whether to allow the traffic to proceed, block the connection, drop the packets, modify the packets, or execute security actions such as triggering alerts and logging events. 
-2. Redirect specific network traffic to designated local ports for further processing by local security agents, proxy services, detection engines, or policy execution components. For example, it can be used for malicious traffic detection, intrusion prevention, data loss prevention, access control, threat analysis, content filtering, and enterprise compliance auditing. 
+1. Connects to the network traffic processing path in an inline manner to perform real-time inspection, analysis, and policy decisions on network packets passing through the device or system. The application can decide, based on the source address, destination address, port, and protocol type of a packet, whether to allow the traffic to continue transmitting, block the connection, drop the packet, modify the packet, or perform security handling operations such as raising an alarm or recording a log. 
+2. Redirects specific network traffic to a designated local port for further processing by a local security agent, proxy service, detection engine, or policy enforcement component. For example, this can be used in scenarios such as malicious traffic detection, intrusion prevention, data loss prevention, access control, threat analysis, content filtering, and enterprise compliance auditing.
 
 <!--RP6--><!--RP6End-->
 

@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @lizihao_73-->
 <!--Designer: @zhoulin_-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1bdc82b052cd863f64c1f80ead9b6889711e044a translatedAt=2026-10-08T09:05:14.752Z pushedAt=2026-10-09T00:41:50.479Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:05:26.682Z pushedAt=2026-11-04T08:18:46.732Z nl=1 -->
 
 Window rotation provides a rich set of rotation policies, enabling apps to adapt their orientation in various scenarios.
 

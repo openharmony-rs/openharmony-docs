@@ -5,7 +5,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:11:49.862Z pushedAt=2026-09-15T13:41:26.222Z -->
+<!-- md-trans-meta sourceCommit=34a6b20e0b97a1f55ac32f00ed0e60469af32134 translatedAt=2026-11-04T07:57:18.134Z pushedAt=2026-11-04T08:16:15.975Z nl=1 -->
 
 The drag-and-drop feature of ArkWeb enables apps to drag and drop elements on web pages. You can press and hold a draggable element, drag it onto a droppable element, and then release it to complete the drop. The drag-and-drop feature of ArkWeb for web content complies with the H5 standard.
 
@@ -42,16 +42,16 @@ In most cases, the drag-and-drop functionality implemented on the H5 side meets 
 
 Because the `onDrop` method on the ArkTS side is executed earlier than the drop event handler in H5 (the `droppable.addEventListener('drop')` in the H5 example), performing operations such as page navigation in the `onDrop` method will prevent the `drop` method in H5 from executing correctly and produce unexpected results. Therefore, you should establish a bidirectional communication mechanism so that, after the `drop` method in H5 finishes executing, it notifies the ArkTS side to execute the corresponding business logic, ensuring that the business logic runs as expected.
 
-<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) --> 
+<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->  
 
 ``` TypeScript
-import { webview } from '@kit.ArkWeb'
+import { webview } from '@kit.ArkWeb';
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
 @Entry
 @Component
 struct DragDrop {
-  private controller: webview.WebviewController = new webview.WebviewController()
+  private controller: webview.WebviewController = new webview.WebviewController();
   @State ports: Array<webview.WebMessagePort> = []
   @State dragData: Array<unifiedDataChannel.UnifiedRecord> = []
 
@@ -73,7 +73,7 @@ struct DragDrop {
         this.controller.postMessage('__init_port__', [this.ports[0]], '*');
       })// onDrop can perform simple logic, for example, temporarily storing some key data.
         .onDrop((dragEvent: DragEvent) => {
-          console.info('ETS onDrop!')
+          console.info('ETS onDrop!');
           let data: UnifiedData = dragEvent.getData();
           if(!data) {
             return false;
@@ -91,7 +91,7 @@ struct DragDrop {
               }
             }
           }
-          return true
+          return true;
         })
     }
 
@@ -217,15 +217,15 @@ Log output:
 ### Why Are Drag Events Set in H5 Not Triggered
 Check whether the related CSS resources are configured correctly. Some web pages determine the User Agent (UA) and apply CSS styles only to specific device UAs. You can resolve this issue by setting a custom UA for the Web component, for example:
 
-<!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->
+<!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->  
 
 ``` TypeScript
-import { webview } from '@kit.ArkWeb'
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index {
-  private webController: webview.WebviewController = new webview.WebviewController()
+  private webController: webview.WebviewController = new webview.WebviewController();
   build(){
     Column() {
       Web({
@@ -233,8 +233,8 @@ struct Index {
         controller: this.webController,
       }).onControllerAttached(() => {
         // Specific UA
-        let customUA = 'android'
-        this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA)
+        let customUA = 'android';
+        this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA);
       })
     }
   }
@@ -354,7 +354,7 @@ HTML example 2:
 
 ArkTS example:
 
-<!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
+<!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -384,7 +384,7 @@ struct Index {
                 '});',
               (error, result) => {
                 if (error) {
-                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                   return;
                 }
               });

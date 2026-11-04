@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=c429c2340edd1d2f5ff202df8ce417025061402b translatedAt=2026-10-08T08:59:30.100Z pushedAt=2026-10-08T11:01:15.304Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:00:19.322Z pushedAt=2026-11-04T08:16:46.414Z nl=1 -->
 
 ## Basic Concepts
 
@@ -67,7 +67,7 @@ You can create app subwindows as needed, such as dialogs, and perform operations
      In the non-[freeform window](../windowmanager/window-terminology.md#freeform-window) state, a subwindow uses [immersive layout](../windowmanager/immersive-window-feature.md#immersive-layout) by default after creation.
 
      In the freeform window state, when the subwindow parameter [decorEnabled](../reference/apis-arkui/arkts-apis-window-i.md#configuration9) is set to **false**, the subwindow uses immersive layout after creation; when **decorEnabled** is set to **true**, the subwindow uses non-immersive layout after creation.
-
+     
    - You can also use the `window.findWindow` API to locate an already created window and obtain the subwindow.
 
    ```ts

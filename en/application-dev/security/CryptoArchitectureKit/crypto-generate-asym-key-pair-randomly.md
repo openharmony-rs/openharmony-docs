@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:46:11.434Z pushedAt=2026-10-10T02:30:35.572Z -->
+<!-- md-trans-meta sourceCommit=ae6edf9e57a4f160cca98ef88ced0cd8e0518bb0 translatedAt=2026-11-04T08:16:26.830Z pushedAt=2026-11-04T08:24:17.150Z nl=1 -->
 
 This topic uses RSA and SM2 as an example to describe how to generate an asymmetric key pair (**KeyPair**) and obtain the binary data.
 
@@ -19,7 +19,7 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) with the string parameter **'RSA1024|PRIMES_2'** to create an asymmetric key generator (**AsyKeyGenerator**) object for a 1024-bit RSA key with two primes.
 
 2. Call [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to randomly generate an asymmetric key pair (**KeyPair**).
-
+   
    The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
 3. Call [PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded) to obtain the binary data of the public key, and call [PriKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded) to obtain the binary data of the private key.
@@ -27,9 +27,10 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 - Example: Randomly generate an RSA key pair (using promise-based APIs).
 
   <!-- @[generate_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateAsyKey() {
     // Create an AsyKeyGenerator instance.
@@ -44,6 +45,8 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
       let skBlob = priKey.getEncoded();
       console.info('pk bin data: ' + pkBlob.data);
       console.info('sk bin data: ' + skBlob.data);
+    }).catch((error: BusinessError) => {
+      console.error(`generateAsyKey failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
@@ -52,7 +55,7 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 - Example: Randomly generate an RSA key pair (using the synchronous API [generateKeyPairSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypairsync12)).
 
   <!-- @[generate_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -87,7 +90,7 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) with the string parameter **'SM2_256'** to create an asymmetric key generator (**AsyKeyGenerator**) object for a 256-bit SM2 key pair.
 
 2. Call [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to randomly generate an asymmetric key pair (**KeyPair**).
-
+   
    The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
 3. Call [PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded) to obtain the binary data of the public key, and call [PriKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded) to obtain the binary data of the private key.
@@ -95,9 +98,10 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 - Example: Randomly generate an SM2 key pair (using promise-based APIs).
 
   <!-- @[generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateSM2Key() {
     // Create an AsyKeyGenerator instance.
@@ -112,6 +116,8 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
       let skBlob = priKey.getEncoded();
       console.info('pk bin data: ' + pkBlob.data);
       console.info('sk bin data: ' + skBlob.data);
+    }).catch((error: BusinessError) => {
+      console.error(`generateSM2Key failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
@@ -119,7 +125,7 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 
 - Example: Randomly generate an RSA key pair (using the synchronous API [generateKeyPairSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypairsync12)).
   <!-- @[generate_sm2_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
