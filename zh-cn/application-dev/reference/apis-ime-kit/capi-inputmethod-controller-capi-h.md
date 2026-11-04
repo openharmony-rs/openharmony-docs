@@ -201,7 +201,7 @@ InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod
 
 查询当前正在使用的输入法信息。调用此函数后，系统将返回当前输入法的bundleName和abilityName。
 
-使用场景：当应用需要获取当前输入法身份信息（如判断当前输入法是否为系统默认输入法）时调用此函数，适用于在请求翻译输入能力前判断当前输入法身份的场景。
+使用场景：当应用需要获取当前输入法身份信息（如判断当前输入法是否为系统预置默认输入法）时调用此函数，适用于在请求翻译输入能力前判断当前输入法身份的场景。
 
 使用后效果：调用成功后，*bundleName指向系统分配的bundleName字符串，*abilityName指向系统分配的abilityName字符串，bundleNameLength和abilityNameLength更新为实际字符串长度。调用者需在使用完毕后通过free()释放*bundleName和*abilityName，避免内存泄漏。
 

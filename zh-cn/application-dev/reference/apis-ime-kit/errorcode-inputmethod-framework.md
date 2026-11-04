@@ -529,7 +529,7 @@ The input type is not supported.
 
 **可能原因**
 
-调用[requestSystemInputCapability](js-apis-inputmethod.md#requestsysteminputcapability261)请求翻译输入能力时，当前输入法未配置翻译子类型。
+调用[requestSystemInputCapability](js-apis-inputmethod.md#requestsysteminputcapability)请求翻译输入能力时，当前输入法未配置翻译子类型。
 
 **处理步骤**
 
