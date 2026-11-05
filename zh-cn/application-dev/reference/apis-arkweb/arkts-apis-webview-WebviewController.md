@@ -11688,7 +11688,7 @@ setNavigationEntryUserData(key: string, value: string): void
 
 在当前导航条目上设置用户数据的键值对。
 
-用户数据与导航入口生命周期相关联。当前导航条目是指导航历史记录中的活动条目。当条目被销毁时（例如，通过历史导航或clearHistory）会清除用户数据。如果已存在相同键的用户数据，则原值会被覆盖。
+用户数据与导航条目生命周期相关联。当前导航条目是指导航历史记录中的活动条目。当条目被销毁时（例如，通过历史导航或clearHistory）会清除用户数据。如果已存在相同键的用户数据，则原值会被覆盖。
 
 **起始版本：** 26.1.0
 
@@ -11755,7 +11755,7 @@ getNavigationEntryUserData(key: string): string
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| key    | string | 是   | 用户数据的密钥。 |
+| key    | string | 是   | 用户数据的键。 |
 
 **返回值：**
 
@@ -11779,7 +11779,7 @@ getNavigationEntryUserData(key: string): string
 
 removeNavigationEntryUserData(key: string): void
 
-从当前导航条目中删除与指定键关联的用户数据。如果密钥不存在，则此API不执行任何操作。
+从当前导航条目中删除与指定键关联的用户数据。如果键不存在，则此API不执行任何操作。
 
 **起始版本：** 26.1.0
 
@@ -11791,7 +11791,7 @@ removeNavigationEntryUserData(key: string): void
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| key    | string | 是   | 要删除的用户数据的密钥。 |
+| key    | string | 是   | 要删除的用户数据的键。 |
 
 **错误码：**
 
