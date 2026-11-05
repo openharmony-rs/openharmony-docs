@@ -81,7 +81,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    }
    ```
 
-3. 开发者可以在`BackupExtension.ets`文件中自定义类继承的`BackupExtensionAbility`，通过重写其`onBackup/onBackupEx`和`onRestore/onRestoreEx`方法，使其达到在备份预加工应用数据或者在恢复阶段加工待恢复文件。
+3. 开发者可以在`BackupExtension.ets`文件中自定义类继承的`BackupExtensionAbility`，通过重写其`onBackup/onBackupEx`和`onRestore/onRestoreEx`方法，使其达到在备份阶段预加工应用数据或者在恢复阶段加工待恢复文件。
 
    如果没有特殊要求可以空实现，则备份恢复服务会按照统一的备份恢复数据规则进行备份恢复。
 
