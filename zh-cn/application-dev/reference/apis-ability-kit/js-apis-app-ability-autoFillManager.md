@@ -115,49 +115,10 @@ onFailure(): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-### onSuccess
-
-onSuccess: OnFillSuccessFn
-
-当填充请求成功时，该回调被调用。
-
-**起始版本：** 26.0.0
-
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型                                | 说明                            |
-| ----------------------------------- | ------------------------------- |
-| [OnFillSuccessFn](#onfillsuccessfn) | 当填充请求成功时，会触发该回调。 |
-
-**示例：**
-
-参见[autoFillManager.requestAutoFill](#autofillmanagerrequestautofill)。
-
-### onFailure
-
-onFailure: OnFillFailureFn
-
-当填充请求失败时，会触发该回调。
-
-**起始版本：** 26.0.0
-
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型                                | 说明                            |
-| ----------------------------------- | ------------------------------- |
-| [OnFillFailureFn](#onfillfailurefn) | 当填充请求失败时，会触发该回调。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| onSuccess | [OnFillSuccessFn](#onfillsuccessfn) | 否 | 否 | 当填充请求成功时，该回调被调用，返回的viewData包含可用于填充表单的数据，如用户名密码、收货地址等。 |
+| onFailure | [OnFillFailureFn](#onfillfailurefn) | 否 | 否 | 当填充请求失败时，会触发该回调。 |
 
 **示例：**
 
