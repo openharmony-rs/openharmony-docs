@@ -94,7 +94,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetPathFromUri input URI: %{public}s", uri);
        char *pathResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
        delete[] uri;
@@ -126,7 +126,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetFullDirectoryUri input URI: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
        delete[] uri;
@@ -160,7 +160,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_IsValidUri input URI: %{public}s", uri);
        bool flags = OH_FileUri_IsValidUri(uri, length);
        delete[] uri;
        // ...
@@ -182,7 +182,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetFileName input URI: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
        delete[] uri;
