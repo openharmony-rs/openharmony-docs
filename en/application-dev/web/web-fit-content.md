@@ -1,12 +1,11 @@
 # Fitting In the Page Content Layout
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @sinat_22543221-->
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ce650f41896ba25021ef970470a55cc36073495b translatedAt=2026-08-14T09:49:14.518Z pushedAt=2026-08-14T09:51:30.576Z -->
+<!-- md-trans-meta sourceCommit=c43e3b4d36f70925ee0be0c0a5b20e9ed5d7d494 translatedAt=2026-11-05T03:12:17.583Z pushedAt=2026-11-05T08:31:34.236Z nl=1 -->
 
 When using the adaptive page content layout mode of the **Web** component size, [layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT), the size of the **Web** component can adapt to the page content.
 
@@ -17,7 +16,6 @@ When using the adaptive page content layout mode of the **Web** component size, 
 This mode is applicable to the scenario where the **Web** component needs to be expanded based on the web page height and scrolls with other system components. The following are examples:
 
 - Long articles. In this scenario, there are other system components at the same layout level of the **Web** component, such as the comment area and toolbar.
-
 - Home page of a long page. In this scenario, there are other system components at the same layout level of the **Web** component, such as the grid menu.
 
 **System-adaptive web layout**
@@ -39,17 +37,11 @@ As shown in Figure 3, the height of the **Web** component automatically adapts t
 ## Specifications and Constraints
 
 1. You are advised to set the [rendering mode](web-render-mode.md) to [synchronous](web-render-mode.md#synchronous-rendering-mode) to avoid exceptions (white screen and layout errors) caused by the excessive component size.
-
-2. You are advised to disable [overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11). When the overscroll mode is enabled and a user scrolls to the edge of a web page, the **Web** component bounces back with an elastic animation, which conflicts with the rebound of the **Scroll** component and affects the experience.
-
+2. You are advised to set [overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11) (over-scroll mode) to disabled. When over-scroll mode is enabled and you slide to the edge of the Web page, the Web component bounces back with an elastic animation, which conflicts with the bounce-back of the Scroll component and affects the user experience.
 3. When [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12) is set to `RESIZE_CONTENT`, this avoidance mode does not take effect.
-
 4. Page gesture zooming is not supported.
-
 5. Using the **height** attribute of the **Web** component to change the component height is not supported.
-
 6. Only the component height can adapt to the page content. Adaptive width is not supported.
-
 7. The waterfall page is not supported.
 
 ## Sample Code
@@ -109,7 +101,7 @@ The code for the **fit_content.html** page is as follows:
         <p>ArkWeb provides Web components to display web page content in applications. The common application scenarios are as follows:</p>
         <ul>
             <li><p>
-                Web page integration: Applications can use Web components to embed web page content to reduce development costs and improve development and operation efficiency.</p> 
+                Web page integration: Applications can use Web components to embed web page content to reduce development costs and improve development and operation efficiency.</p>
             </li>
             <li><p>
                 Web browsing: Browser applications can use Web components to open third-party web pages, browse web pages in traceless mode, and set advertisement blocking.</p>
@@ -153,14 +145,13 @@ The code for the **fit_content.html** page is as follows:
 **Possible Causes**
 
 - The height of the internal HTML5 page exceeds 7680 px (physical pixel), but the rendering mode is not set to [synchronous rendering mode](web-render-mode.md#synchronous-rendering-mode).
-
 - The [metaviewport](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12) attribute is not configured.
 
 **Solution**
 
 - Change the rendering mode to [synchronous rendering mode](web-render-mode.md#synchronous-rendering-mode).
-
 - Configure `<meta name="viewport" content="width=device-width, initial-scale=1.0">` on the HTML5 page.
+
 
 ### What should I do if a white screen is displayed or the page disappears after FIT_CONTENT is set?
 
@@ -202,3 +193,5 @@ There is a calculation conflict between the CSS style `height: <number> vh` and 
     </div>
   </body>
   ```
+
+

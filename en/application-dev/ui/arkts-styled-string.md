@@ -1,16 +1,15 @@
 # Styled String (StyledString/MutableStyledString)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=16d5012cdda87180d94e0c1ee3584d2af7b86146 translatedAt=2026-08-04T06:40:03.321Z pushedAt=2026-08-04T08:31:30.848Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-11-05T03:34:05.751Z pushedAt=2026-11-05T08:31:34.375Z nl=1 -->
 
 Styled strings, implemented by **StyledString** or **MutableStyledString** (collectively referred to as **StyledString**, with **MutableStyledString** inheriting from **StyledString**), are powerful markup objects designed to set text styles at the character or paragraph level. By binding a **StyledString** object to a text component, you can modify the text in various ways, including changing the font size, adding font colors, making the text clickable, and customizing the drawing of text, among others. For details, see [Styled String](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md).
 
-Styled strings provide a variety of style objects that cover various common text formatting styles, such as text decorative lines, line height, and text shadows. You can also create a [CustomSpan](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#customspan) to apply custom styles.
+Styled strings provide a variety of style objects that cover various common text formatting styles, such as text decorative lines, line height, and text shadows. You can also create a [CustomSpan](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#customspan) to apply custom styles. 
 
 ## Creating and Applying a StyledString or MutableStyledString Object
 
@@ -22,7 +21,7 @@ Styled strings provide a variety of style objects that cover various common text
   > Since API version 15, styled string content can be displayed upon page load when **setStyledString** is called in **aboutToAppear**.
 
   <!-- @[createStyledString_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/CreateApply.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -65,7 +64,7 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
 - Creating and applying a **TextStyle** object
 
   <!-- @[styledStringTextStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextStyle.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   
@@ -121,7 +120,7 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
 - Creating and applying a **TextShadowStyle** object
 
   <!-- @[styledStringTextShadowStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextShadowStyle.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry
@@ -164,7 +163,7 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
 - Creating and applying a **Text DecorationStyle** object
 
   <!-- @[styledStringDecorationStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringDecorationStyle.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry
@@ -230,7 +229,7 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
 - Creating and applying a **Text BaselineOffsetStyle** object
 
   <!-- @[styledStringBaselineOffsetStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringBaselineOffsetStyle.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   
@@ -270,7 +269,7 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
 - Creating and applying a **LineHeightStyle** object
 
   <!-- @[styledStringLineHeightStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLineHeightStyle.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   
@@ -311,7 +310,7 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
 - Creating and applying a **LetterSpacingStyle** object
 
   <!-- @[styledStringLetterSpacingStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLetterSpacingStyle.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
   
@@ -349,14 +348,14 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
 
 ## Setting the Paragraph Style
 
-You can set the paragraph style using [ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle). The figure below shows how to divide paragraphs in the text, with each paragraph ending with a newline character \n.
+You can set the paragraph style layout through [ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle). The following figure shows how paragraphs in text are divided, with paragraphs separated by the newline character `\n`.
 
 ![paragraphs](figures/styledstringParagraphs.png)
 
 The following example shows how to create and apply a paragraph style. The style is applied to the start, end or any position within a paragraph; it does not apply to non-paragraph areas.
 
   <!-- @[styledStringParagraphStyleOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringParagraphStyleOne.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics} from '@kit.ArkUI';
   
@@ -422,11 +421,11 @@ The following example shows how to create and apply a paragraph style. The style
   ```
 
   ![styled_string_paragraph1](figures/styled_string_paragraph1.png)
-
+  
   In addition to presetting styles when creating a styled string, you can also clear the original styles and replace them with new ones later using the [replaceStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#replacestyle) API. After the replacement, you need to proactively trigger an update to the bound styled string on the attached text component's controller.
 
   <!-- @[styledStringReplaceParagraphStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringReplaceParagraphStyle.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   
@@ -517,10 +516,10 @@ The following example shows how to create and apply a paragraph style. The style
 
 You can use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to convert styled strings into corresponding [Paragraph](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) arrays based on text layout options.
 
-- The following example shows how to use the **getParagraphs** method of [MeasureUtils](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md) to calculate the text. When the content exceeds the maximum number of lines that can be displayed, the text is truncated and the full text is displayed as "...Expand".
+- The following example shows how the getParagraphs method converts a styled string into Paragraph objects, which are then used to implement the text measurement feature. When the content exceeds the maximum number of displayable lines, the text is truncated and "...Full Text" is displayed.
 
   <!-- @[styledStringConvertedToParagraph_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   import { drawing } from '@kit.ArkGraphics2D';
@@ -731,6 +730,7 @@ You can use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measure
 
   ![StyledString_GetParagraphs](figures/StyledString_GetParagraphs.png)
 
+
 ## Using Images
 
 You can add images using [ImageAttachment](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#imageattachment).
@@ -742,7 +742,7 @@ The example below demonstrates how to attach images and text to the same [Mutabl
 > In the [constructor](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#constructor) of styled strings, when input parameters are of ImageAttachment or CustomSpan type, the **styles** parameter does not take effect. To apply styles, use methods such as [setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle) and [insertStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#insertstyledstring).
 
   <!-- @[styledStringImageAttachment_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringImageAttachment.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   import { image } from '@kit.ImageKit';
@@ -921,12 +921,12 @@ The example below demonstrates how to attach images and text to the same [Mutabl
 
 ## Setting Events
 
-You can use [GestureStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#gesturestyle) to set up **onClick** and **onLongPress** events to enable text to respond to click and long-press actions.
+You can use [GestureStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#gesturestyle) to set the onClick and onLongPress events so that the text responds to tap and long-press events.
 
-In addition to initializing styled strings with initial style objects, you can also use the [setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle) API to overlay new styles or update existing ones. After making changes, you need to manually trigger an update of the bound styled string on the attached text component's controller. 
+In addition to initializing styled strings with initial style objects, you can also use the [setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle) API to overlay new styles or update existing ones. After making changes, you need to manually trigger an update of the bound styled string on the attached text component's controller.
 
   <!-- @[styledStringGestureStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringGestureStyle.ets) -->
-
+  
   ``` TypeScript
   import { drawing } from '@kit.ArkGraphics2D';
   
@@ -1082,7 +1082,7 @@ In addition to initializing styled strings with initial style objects, you can a
 
 ## Format Conversion
 
-You can use the [toHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#tohtml14) and [fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml) APIs to convert between styled strings and HTML-formatted strings. Currently supported HTML tags include: \<p>, \<span>, \<img>, \<br>, \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, and \<sub>.
+You can use the [toHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#tohtml14) and [fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml) APIs to convert between styled strings and HTML-format strings. Supported HTML tags include: \<p>, \<span>, \<img>, \<br>, \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, and \<sub>. For the complete scope, see the API description of [fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml).
 
 - The following example shows how to convert between styled strings and HTML-formatted strings.
 
@@ -1179,9 +1179,9 @@ struct StyledStringHtml {
 ![](figures/styled_string_html.gif)
 
 - Convert HTML tags including \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, and \<sub>, along with the **background-color** attribute in HTML style attributes, to styled strings and convert them back to HTML format.
-
+ 
   <!-- @[styledStringHtmlOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtmlOne.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry

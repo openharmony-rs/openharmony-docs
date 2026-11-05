@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-12T09:33:26.280Z pushedAt=2026-10-13T07:08:44.792Z -->
+<!-- md-trans-meta sourceCommit=60f493edae4433e65bb89c0ec1819f9960b71f65 translatedAt=2026-11-05T03:27:37.434Z pushedAt=2026-11-05T08:31:34.355Z nl=1 -->
 
 The soft keyboard serves as a critical user interaction channel for text input. This topic explains how to control soft keyboard display and hiding when using system input components ([TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), and [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)).
 

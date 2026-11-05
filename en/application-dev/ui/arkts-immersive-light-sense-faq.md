@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=30a0d7c059dff847820cd3847015731fe24ef1b1 translatedAt=2026-10-12T09:18:50.105Z pushedAt=2026-10-13T03:34:51.913Z -->
+<!-- md-trans-meta sourceCommit=f7c86b96e6c21f6bd57aeec6ebd05a51f91e13f9 translatedAt=2026-11-05T03:24:26.694Z pushedAt=2026-11-05T08:31:34.350Z nl=1 -->
 
 This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md).
 
@@ -90,6 +90,10 @@ struct MaterialScopeAdaptExample {
           Row() {
             // Replace $r('app.string.content_area') with the actual resource file. In this example, the value of the resource file is "Content Area".
             Text($r('app.string.content_area'))
+              .fontColor('#182431')
+              .fontSize(30)
+              .lineHeight(41)
+              .fontWeight(700)
 
             Blank()
 
@@ -110,7 +114,6 @@ struct MaterialScopeAdaptExample {
             }))
           }
           .width('100%')
-          .padding(16)
           .borderRadius(16)
         }
         .width('100%')

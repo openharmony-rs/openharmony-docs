@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:16.166Z pushedAt=2026-07-24T03:23:32.656Z -->
+<!-- md-trans-meta sourceCommit=8dc1d2a25449767e29d9725e7900948f6fdfeb39 translatedAt=2026-11-05T04:26:37.857Z pushedAt=2026-11-05T08:31:34.587Z nl=1 -->
 
 
 [@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch.md#watch) is used to listen for changes to state variables. If a developer needs to monitor whether the value of a state variable has changed, they can use @Watch to set a callback function for the state variable.
@@ -30,7 +30,7 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 
 | \@Watch Decorator| Description                                      |
 | -------------- | ---------------------------------------- |
-| Decorator parameters         | Mandatory. Constant string, which is quoted. It is a reference to a custom member function method of type (string)&nbsp;=&gt;&nbsp;void.|
+| Decorator Parameter          | Mandatory. Constant string, which is quoted. It is a reference to a custom member function method of type (string)&nbsp;=&gt;&nbsp;void. |
 | Custom component variables that can be decorated   | All decorated state variables. Regular variables cannot be watched.              |
 | Order of decorators        | The order of decorators does not affect the actual functions. You can determine it as required. It is recommended that the [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), and [\@Link](./arkts-link.md) decorators be placed before the \@Watch decorator, to keep the overall style consistent.|
 | Called when| When using @Watch to observe state variable changes, the callback is triggered at the moment when the variable actually changes and is assigned a new value. For details, see [Time for \@Watch to be Called](#time-for-watch-to-be-called).|
@@ -39,7 +39,7 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 
 | Type                                      | Description                                      |
 | ---------------------------------------- | ---------------------------------------- |
-| (changedPropertyName? : string) =&gt; void | This function is a member function of the custom component. **changedPropertyName** indicates the name of the watched attribute.<br>It is useful when you use the same function as a callback to several watched attributes.<br>It takes the attribute name as a string input parameter and returns nothing.|
+| (changedPropertyName?&nbsp;:&nbsp;string)&nbsp;=&gt;&nbsp;void | This function is a member function of the custom component, and changedPropertyName is the name of the observed property.<br/>When multiple state variables are bound to the same \@Watch callback method, you can perform different logic processing based on changedPropertyName.<br/>The property name is passed as a string input parameter, and nothing is returned. |
 
 
 ## Observed Changes and Behavior
@@ -59,7 +59,7 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 
 - Pay attention to performance. The attribute value update function delays component re-render (see the preceding behavior description). The callback should only perform quick computations.
 
-- Calling **async await** from an \@Watch function is not recommended, because @Watch is designed for quick computations; asynchronous behavior may cause performance issues with re‑rendering speed.
+- Calling async/await from a \@Watch function is not recommended, because \@Watch is designed for quick computations; asynchronous behavior may cause performance issues with re-rendering speed.
 
 - The \@Watch parameter is mandatory and must be of the string type. Otherwise, an error will be reported during compilation. You are not advised to pass undefined. If undefined is passed, no error is reported during compilation, which is equivalent to passing undefined.
 
@@ -250,7 +250,7 @@ The following figure shows the effect:
 
 ### Time for \@Watch to be Called
 
-To show that the triggering time of the \@Watch callback is based on the actual change time of the state variable, this example uses the \@Link and [\@ObjectLink](./arkts-observed-and-objectlink.md) decorators in the child component to observe different status objects. You can change the state variable in the parent component and observe the calling sequence of the \@Watch callback to learn the relationship between the time for calling, value assignment, and synchronization.
+To show that the triggering time of the \@Watch callback is based on the actual change time of the state variable, this example uses the \@Link and [\@ObjectLink](./arkts-observed-and-objectlink.md) decorators in the child component to observe different status objects. You can change the state variable in the parent component and observe the calling sequence of the \@Watch callback to learn the relationship between the time for calling, value assignment, and synchronization of \@Watch.
 
 <!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) --> 
 
@@ -451,5 +451,3 @@ The procedure is as follows:
 5. The state management framework calls the \@Watch function **countUpdated** and the value of state variable **cabbage** is changed; the **if** logic condition is not met, the value of **fruit** does not change.
 
 6. The **Text** components bound to **cabbage** are re-rendered.
-
-<!--no_check-->

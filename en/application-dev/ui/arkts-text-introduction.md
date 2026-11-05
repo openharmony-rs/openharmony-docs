@@ -1,12 +1,11 @@
 # Introduction to Text
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3891f3918e4fe99bc30886a91c02de3b3a7eeb64 translatedAt=2026-08-04T06:39:04.562Z pushedAt=2026-08-04T08:32:00.131Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-11-05T03:35:21.751Z pushedAt=2026-11-05T08:31:34.377Z nl=1 -->
 
 Text plays a vital role in the UI, encompassing both the information entered by users and the textual content or symbols displayed to them. The text elements collaborate to bridge the interaction between users and the system, enhancing ease of operation and providing clear information presentation.
 
@@ -20,7 +19,7 @@ To display static text, use the **Text** component for straightforward text disp
 
 Choose **TextInput** for single-line input and **TextArea** for multi-line input. For details, see [Text Input (TextInput/TextArea/Search)](arkts-common-components-text-input.md).
 
-## Rich Text
+## Rich Text Editing
 
 For rich text editing, including the insertion of images and custom icons, use the **RichEditor** component. For details, see [Rich Text Editing (RichEditor)](arkts-common-components-richeditor.md).
 

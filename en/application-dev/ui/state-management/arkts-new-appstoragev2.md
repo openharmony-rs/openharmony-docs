@@ -1,16 +1,15 @@
 # AppStorageV2: Storing Application-wide UI State
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:04:35.657Z pushedAt=2026-07-24T01:13:48.668Z -->
+<!-- md-trans-meta sourceCommit=8917fa9a06fba0322d5ee6f97bf1bc1616272188 translatedAt=2026-11-05T04:05:48.867Z pushedAt=2026-11-05T08:31:34.504Z nl=1 -->
 
 To enhance the state management framework's capability of sharing application‑wide UI state variables, you can use AppStorageV2 to store the data of global UI state variables for the application.
 
-AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across abilities.
+AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across UIAbility instances.
 
 Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [AppStorageV2-API](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
 
@@ -23,7 +22,7 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-creat
 
 AppStorageV2 is a singleton created when the application UI is started. It is used to provide a central storage of application status data that can be accessed at the application level and remains persistent throughout the application lifecycle. Properties in AppStorageV2 are accessed using unique key strings. It should be noted that data between AppStorage and AppStorageV2 is not shared.
 
-The **connect** API of AppStorageV2 enables synchronization with UI components.
+You can synchronize data with UI components by modifying the return value of the **connect** API of AppStorageV2.
 
 AppStorageV2 supports state sharing among multiple UIAbility instances in the [main thread](../../application-models/thread-model-stage.md) of the same application.
 
@@ -52,6 +51,7 @@ AppStorageV2 supports state sharing among multiple UIAbility instances in the [m
 - **keys**: returns all keys in AppStorageV2.
 
 For details about the preceding APIs, see [AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2) in the API reference.
+
 
 ## Constraints
 
@@ -111,7 +111,7 @@ struct Index {
           this.message.userName += 'suf';
         })
       // Clicking the button deletes the object with key Message from AppStorageV2.
-      // After removal, changes to the parent component's userId are still synchronized to the child component, because remove only deletes the object from AppStorageV2 and does not affect the existing component data.
+      // After remove, when the parent component's userID is modified, the child component changes synchronously, because remove only deletes the data from AppStorageV2 and does not affect the data already existing in the component.
       Button('remove key: Message')
         .width(300)
         .margin(10)
@@ -184,7 +184,6 @@ struct Child {
 ### Storing Data Between Two Pages
 
 Data page
-
 <!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->
 
 ``` TypeScript
@@ -198,7 +197,6 @@ export class Sample {
 ```
 
 Page 1
-
 <!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->
 
 ``` TypeScript
@@ -264,7 +262,6 @@ struct PageOne {
 ```
 
 Page 2
-
 <!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->
 
 ``` TypeScript

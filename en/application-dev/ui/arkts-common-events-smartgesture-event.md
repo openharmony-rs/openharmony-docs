@@ -1,12 +1,11 @@
 # Supporting Smart Gesture Input Events
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=23dbfaa5a83b2e2550b041c1c20e69b04e576935 translatedAt=2026-08-19T10:03:40.691Z pushedAt=2026-08-19T10:07:45.736Z -->
+<!-- md-trans-meta sourceCommit=1e593c98c8a2fdd17e3bb69683a63dbdeefcb9da translatedAt=2026-11-05T03:20:21.012Z pushedAt=2026-11-05T08:31:34.267Z nl=1 -->
 
 Starting from API version 26.0.0, smart gestures are supported. Smart gestures enable users to perform interactions such as selecting, clicking, scrolling, page turning, and returning on UI components via air gestures including "tap," "slide," and "wrist flip." The system automatically determines the target component and the execution action based on the user's operation intention. You can also receive the default action handling for the current gesture and customize it as needed.
 
@@ -27,17 +26,11 @@ Smart gesture interaction relies on the component's [id](../reference/apis-arkui
 * Execution action (SmartGestureAction): The final execution action inferred by the system based on the operation intent, that is, what the system intends to do. The value range includes **CLICK**, **SELECT**, **SCROLL_FORWARD**, **PAGE_FORWARD**, **BACK_PRESS**, and **NONE**. For details, see [SmartGestureAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#smartgestureaction). The same operation intent can correspond to different execution actions. For example, **TAP** only corresponds to **CLICK**, while **SLIDE_FORWARD** can correspond to **SELECT**, **SCROLL_FORWARD**, or **PAGE_FORWARD**. The system automatically infers the most appropriate execution action based on the current page structure and the target component.
 
 * Action proposal (ActionProposal): Specific operation scheme returned via a callback, used to override the system's default action. Each execution action corresponds to an action proposal class, as follows:
-
   - [ClickActionProposal](../reference/apis-arkui/arkts-apis-uicontext-clickactionproposal.md): Handles the click action, triggering the **onClick** event of the target component. It follows the "select first, then click" semantics: if the target component has not been selected yet, a knock gesture first establishes the selected state, and only the next knock gesture triggers the click.
-
   - [SelectActionProposal](../reference/apis-arkui/arkts-apis-uicontext-selectactionproposal.md): Handles the select action, putting the target component into the selected state. It applies to selectable components such as buttons, text, and list items.
-
   - [ScrollActionProposal](../reference/apis-arkui/arkts-apis-uicontext-scrollactionproposal.md): Handles the scroll action, scrolling a scrollable container (such as **Scroll**, **List**, and **Grid**) forward by a specified distance. The default directions include downward and rightward. The `distance` constructor parameter has a value range of [0, +∞); values less than 0 are treated as 0. The unit is vp.
-
   - [PageSwitchActionProposal](../reference/apis-arkui/arkts-apis-uicontext-pageswitchactionproposal.md): Handles the page switch action, turning a **Swiper** container forward. The default directions include rightward and downward. The `pageCount` constructor parameter has a value range of [0, +∞); values less than 0 are treated as 0. The unit is page.
-
   - [BackPressActionProposal](../reference/apis-arkui/arkts-apis-uicontext-backpressactionproposal.md): Handles the back action, simulating the Back key to trigger page return.
-
   - [NoneActionProposal](../reference/apis-arkui/arkts-apis-uicontext-noneactionproposal.md): Handles the null action, triggering no operation. This can be used to reject the current gesture.
 
 * Gesture handling result ([GestureHandlingResolution](../reference/apis-arkui/arkts-apis-uicontext-gesturehandlingresolution.md)): Return value of the listener callback, which declares whether to consume the current gesture and which action proposal to select. When `isConsumed` is `true`, the gesture is consumed; if `selectedProposal` is also set, the custom action proposal replaces the system default action. When `isConsumed` is `false`, the gesture is not consumed, and the system treats the gesture as unhandled, in which case the `selectedProposal` setting does not take effect.
@@ -75,7 +68,7 @@ The following steps demonstrate the most basic integration process for smart ges
    > [clearMonitors](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearmonitors) clears all registered Monitor callbacks. If you only need to cancel a specific callback while keeping others active, use [unregisterMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#unregistermonitor) to unregister the specified callback. The parameter passed to **unregisterMonitor** must reference the same callback instance that was registered with [registerMonitor](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#registermonitor).
 
    <!-- @[smartgesture_case1_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
-
+   
    ``` TypeScript
    // Get the Smart Gesture controller instance, used to start/stop gestures, register listeners, and control the selected state
    private controller = this.getUIContext().getSmartGestureController();
@@ -97,10 +90,10 @@ The following steps demonstrate the most basic integration process for smart ges
 
 2. Mark components that can respond to gestures.
 
-For each interactive component that needs to respond to smart gestures, set the **id** and **smartGestureShortcut** attributes. Set **action** to **GestureShortcut.PRIMARY** to designate the component as the preferred response target, and set **selectable** to **true** to indicate that the component can be selected.
+   For each interactive component that needs to respond to smart gestures, set the **id** and **smartGestureShortcut** attributes. Set **action** to **GestureShortcut.PRIMARY** to designate the component as the preferred response target, and set **selectable** to **true** to indicate that the component can be selected.
 
    <!-- @[smartgesture_case1_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
-
+   
    ``` TypeScript
    Button(`Button A / Clicked=${this.btn0Count}`)
      .id('btn_a')
@@ -123,7 +116,7 @@ For each interactive component that needs to respond to smart gestures, set the 
 > The callback return value must be a valid **GestureHandlingResolution** instance; otherwise, the override will not take effect.
 
    <!-- @[smartgesture_case1_proposal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets) -->
-
+   
    ``` TypeScript
    import {
      BaseGestureHandlingProposal,
@@ -165,12 +158,12 @@ For each interactive component that needs to respond to smart gestures, set the 
              resolution.selectedProposal = new SelectActionProposal(node);
            }
          }
-       // Slide gesture intent: needs to scroll the container content by 200px.
+       // Slide gesture intent: scroll the container content by 200vp.
        } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
          // The target node of ScrollActionProposal is the scroll container, not the button. Here, the Scroll's FrameNode is obtained via the container id
          const node = this.getUIContext().getFrameNodeById('long_scroll');
          if (node) {
-           // Construct a scroll action proposal, specifying the target container node and scroll distance (200px).
+           // Construct a scroll action proposal, specifying the target container node and scroll distance (200vp).
            resolution.selectedProposal = new ScrollActionProposal(node, 200);
          }
        }
@@ -182,11 +175,8 @@ For each interactive component that needs to respond to smart gestures, set the 
 **Complete example:**
 
 This example includes the following three steps.
-
 - Enable smart gestures and register a Monitor callback in **aboutToAppear**, and clear the Monitor callbacks and disable gestures in **aboutToDisappear**.
-
 - Set the **id** for the **Scroll** container, and set the **id** and **smartGestureShortcut** attributes for the four buttons at the bottom.
-
 - In the Monitor callback, when the action is **CLICK**, perform a click; when it is **SELECT**, perform a selection; and when it is **SCROLL_FORWARD**, scroll the current page downward by 200 vp.
 
 > **NOTE**
@@ -215,148 +205,148 @@ struct Demo1 {
   @State btn0Count: number = 0; // Button A click count
   @State btn1Count: number = 0; // Button B click count
   @State btn2Count: number = 0; // Button C click count
-  @State btn3Count: number = 0; // Button D click count
-
+@State btn3Count: number = 0; // Button D click count
+  
   // The Monitor callback receives the BaseGestureHandlingProposal parameter
   // and dynamically determines the handling strategy based on the gesture action type.
   // BaseGestureHandlingProposal is the base class, containing action (action type)
-  // and operateIntention (operation intent).
-  // TargetedGestureProposal is a subclass, additionally carrying a node property
-  // pointing to the target component node, which is required when constructing an ActionProposal.
-  private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // and operateIntention (operation intent).
+    // TargetedGestureProposal is a subclass, additionally carrying a node property
+    // pointing to the target component node, which is required when constructing an ActionProposal.
+    private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
     // Cast BaseGestureHandlingProposal to TargetedGestureProposal to obtain
     // the target component node information.
     let targetProposal = proposal as TargetedGestureProposal;
-    // Get the ID of the target component for subsequent FrameNode lookup by ID.
+// Get the ID of the target component for subsequent FrameNode lookup by ID.
     let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
     this.hint = `Intent=${proposal.operateIntention}, Action=${proposal.action}, Target=${nodeId}`;
-    // Construct the gesture handling result. The parameter 'true' indicates
-    // that this gesture is consumed, and subsequent callbacks will not be executed.
-    const resolution = new GestureHandlingResolution(true);
-
-    // Tap gesture intent: needs to perform a click operation.
-    if (proposal.action === SmartGestureAction.CLICK) {
-      if (nodeId) {
-        // Obtain the corresponding FrameNode by component ID to construct a click action proposal.
-        const node = this.getUIContext().getFrameNodeById(nodeId);
-        if (node) {
-          // Construct a click action proposal, specifying the target node to perform the click.
-          resolution.selectedProposal = new ClickActionProposal(node);
+      // Construct the gesture handling result. The parameter 'true' indicates
+        // that this gesture is consumed, and subsequent callbacks will not be executed.
+        const resolution = new GestureHandlingResolution(true);
+        
+          // Tap gesture intent: needs to perform a click operation.
+          if (proposal.action === SmartGestureAction.CLICK) {
+        if (nodeId) {
+      // Obtain the corresponding FrameNode by component ID to construct a click action proposal.
+    const node = this.getUIContext().getFrameNodeById(nodeId);
+    if (node) {
+      // Construct a click action proposal, specifying the target node to perform the click.
+        resolution.selectedProposal = new ClickActionProposal(node);
         }
-      }
-    // Slide gesture intent: needs to switch the selected component.
-    } else if (proposal.action === SmartGestureAction.SELECT) {
+          }
+          // Slide gesture intent: needs to switch the selected component.
+        } else if (proposal.action === SmartGestureAction.SELECT) {
       if (nodeId) {
-        const node = this.getUIContext().getFrameNodeById(nodeId);
-        if (node) {
-          // Construct a select action proposal, specifying the target node to toggle the selected state.
-          resolution.selectedProposal = new SelectActionProposal(node);
+    const node = this.getUIContext().getFrameNodeById(nodeId);
+    if (node) {
+      // Construct a select action proposal, specifying the target node to toggle the selected state.
+      resolution.selectedProposal = new SelectActionProposal(node);
+      }
         }
-      }
-    // Slide gesture intent: needs to scroll the container content by 200px.
-    } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
-      // The target node for ScrollActionProposal is the scroll container, not the button.
-      // Here, the Scroll's FrameNode is obtained via the container ID.
-      const node = this.getUIContext().getFrameNodeById('long_scroll');
-      if (node) {
-        // Construct a scroll action proposal, specifying the target container node
-        // and the scroll distance (200px).
-        resolution.selectedProposal = new ScrollActionProposal(node, 200);
-      }
+        // Slide gesture intent: needs to scroll the container content by 200px.
+      } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+    // The target node for ScrollActionProposal is the scroll container, not the button.
+// Here, the Scroll's FrameNode is obtained via the container ID.
+    const node = this.getUIContext().getFrameNodeById('long_scroll');
+  if (node) {
+// Construct a scroll action proposal, specifying the target container node
+  // and the scroll distance (200px).
+    resolution.selectedProposal = new ScrollActionProposal(node, 200);
     }
-
-    return resolution;
-  };
-
-  aboutToAppear(): void {
+    }
+    
+  return resolution;
+};
+  
+    aboutToAppear(): void {
     // Enable tap and slide recognition.
     this.controller.enableSmartTapAndSlideGestures(true);
     // Register a Monitor callback. Callbacks are triggered in last-registered-first-executed order.
-    this.controller.registerMonitor(this.callback);
-  }
-
-  aboutToDisappear(): void {
-    // Clear all registered Monitor callbacks.
-    this.controller.clearMonitors();
-    // Disable smart gesture recognition. The smartGestureShortcut configuration on the component is retained but does not respond.
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 16 }) {
-        Text('Demo1: Long Page with Scroll + Button')
+  this.controller.registerMonitor(this.callback);
+}
+  
+    aboutToDisappear(): void {
+      // Clear all registered Monitor callbacks.
+        this.controller.clearMonitors();
+          // Disable smart gesture recognition. The smartGestureShortcut configuration on the component is retained but does not respond.
+          this.controller.enableSmartTapAndSlideGestures(false);
+          }
+          
+build() {
+        Scroll() {
+          Column({ space: 16 }) {
+          Text('Demo1: Long Page with Scroll + Button')
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
           .width('100%')
           .textAlign(TextAlign.Center)
-
-        Text(this.hint)
-          .fontSize(13)
+          
+Text(this.hint)
+        .fontSize(13)
           .fontColor('#666')
-          .width('100%')
-          .textAlign(TextAlign.Center)
-          .padding(8)
-          .borderRadius(8)
-          .backgroundColor('#e8e8e8')
-
-        ForEach([0, 1, 2, 3, 4, 5, 6], (item: number) => {
-          Column() {
-            Text()
-              .fontSize(15)
-              .width('100%')
-              .padding(16)
+            .width('100%')
+              .textAlign(TextAlign.Center)
+              .padding(8)
               .borderRadius(8)
-              .backgroundColor('#f0f4f8')
+              .backgroundColor('#e8e8e8')
+              
+          ForEach([0, 1, 2, 3, 4, 5, 6], (item: number) => {
+        Column() {
+Text()
+        .fontSize(15)
+          .width('100%')
+          .padding(16)
+          .borderRadius(8)
+          .backgroundColor('#f0f4f8')
           }
-        })
-
-        Text('Button operation area (below)')
+})
+        
+          Text('Button operation area (below)')
           .fontSize(18)
           .fontWeight(FontWeight.Bold)
           .width('100%')
           .textAlign(TextAlign.Center)
-          .margin({ top: 8 })
-
-        Button(`Button A / Clicked=${this.btn0Count}`)
-          .id('btn_a')
-          .width('100%')
+            .margin({ top: 8 })
+            
+          Button(`Button A / Clicked=${this.btn0Count}`)
+.id('btn_a')
+        .width('100%')
           // Mark the component as a smart gesture target: action specifies the gesture action type, enabled controls whether to respond, selectable controls whether it can be selected.
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick(() => {
-            this.btn0Count += 1;
+          this.btn0Count += 1;
             this.hint = 'Button A onClick triggered';
-          })
-
-        Button(`Button B / Clicked=${this.btn1Count}`)
-          .id('btn_b')
+            })
+          
+Button(`Button B / Clicked=${this.btn1Count}`)
+        .id('btn_b')
           .width('100%')
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick(() => {
-            this.btn1Count += 1;
+          this.btn1Count += 1;
             this.hint = 'Button B onClick triggered';
-          })
-
-        Button(`Button C / Clicked=${this.btn2Count}`)
-          .id('btn_c')
+            })
+          
+Button(`Button C / Clicked=${this.btn2Count}`)
+        .id('btn_c')
           .width('100%')
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick(() => {
-            this.btn2Count += 1;
+          this.btn2Count += 1;
             this.hint = 'Button C onClick triggered';
-          })
-
-        Button(`Button D / Clicked=${this.btn3Count}`)
-          .id('btn_d')
-          .width('100%')
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-          .onClick(() => {
-            this.btn3Count += 1;
-            this.hint = 'Button D onClick triggered';
-          })
-      }
+            })
+          
+      Button(`Button D / Clicked=${this.btn3Count}`)
+      .id('btn_d')
       .width('100%')
-      .padding(16)
+    .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+    .onClick(() => {
+    this.btn3Count += 1;
+    this.hint = 'Button D onClick triggered';
+    })
+  }
+.width('100%')
+.padding(16)
     }
     .id('long_scroll')
     .width('100%')
@@ -396,78 +386,78 @@ struct Demo2 {
   private controller = this.getUIContext().getSmartGestureController();
   @State hint: string = 'Demo2: Long List\nSlide to switch selected ListItem → Tap to trigger click';
   @State clickCounts: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Click count for each ListItem
-  private items: string[] = ['Button A', 'Button B', 'Button C', 'Button D', 'Button E', 'Button F',
-    'Button G', 'Button H', 'Button I', 'Button J', 'Button K', 'Button L'];
-
+    private items: string[] = ['Button A', 'Button B', 'Button C', 'Button D', 'Button E', 'Button F',
+'Button G', 'Button H', 'Button I', 'Button J', 'Button K', 'Button L'];
+  
   // The Monitor callback receives the BaseGestureHandlingProposal parameter
   // and dynamically determines the handling strategy based on the gesture action type.
   // BaseGestureHandlingProposal is the base class, containing action (action type)
-  // and operateIntention (operation intent).
-  // TargetedGestureProposal is a subclass, additionally carrying a node property
-  // pointing to the target component node, which is required when constructing an ActionProposal.
-  private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // and operateIntention (operation intent).
+    // TargetedGestureProposal is a subclass, additionally carrying a node property
+    // pointing to the target component node, which is required when constructing an ActionProposal.
+    private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
     // Cast BaseGestureHandlingProposal to TargetedGestureProposal to obtain
     // the target component node information.
     let targetProposal = proposal as TargetedGestureProposal;
-    // Get the ID of the target component for subsequent FrameNode lookup by ID.
+// Get the ID of the target component for subsequent FrameNode lookup by ID.
     let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
     this.hint = `Intent=${proposal.operateIntention}, Action=${proposal.action}, Target=${nodeId}`;
-    // Construct the gesture handling result. The parameter 'true' indicates
-    // that this gesture is consumed, and subsequent callbacks will not be executed.
-    const resolution = new GestureHandlingResolution(true);
-
-    // Tap gesture intent: needs to perform a click operation.
-    if (proposal.action === SmartGestureAction.CLICK) {
-      if (nodeId) {
-        // Obtain the corresponding FrameNode by component ID to construct a click action proposal.
-        const node = this.getUIContext().getFrameNodeById(nodeId);
-        if (node) {
-          // Construct a click action proposal, specifying the target node to perform the click.
-          resolution.selectedProposal = new ClickActionProposal(node);
+      // Construct the gesture handling result. The parameter 'true' indicates
+        // that this gesture is consumed, and subsequent callbacks will not be executed.
+        const resolution = new GestureHandlingResolution(true);
+        
+          // Tap gesture intent: needs to perform a click operation.
+          if (proposal.action === SmartGestureAction.CLICK) {
+        if (nodeId) {
+      // Obtain the corresponding FrameNode by component ID to construct a click action proposal.
+    const node = this.getUIContext().getFrameNodeById(nodeId);
+    if (node) {
+      // Construct a click action proposal, specifying the target node to perform the click.
+        resolution.selectedProposal = new ClickActionProposal(node);
         }
-      }
-    // Slide gesture intent: needs to switch the selected component.
-    } else if (proposal.action === SmartGestureAction.SELECT) {
+          }
+          // Slide gesture intent: needs to switch the selected component.
+        } else if (proposal.action === SmartGestureAction.SELECT) {
       if (nodeId) {
-        const node = this.getUIContext().getFrameNodeById(nodeId);
-        if (node) {
-          // Construct a select action proposal, specifying the target node to toggle the selected state.
-          resolution.selectedProposal = new SelectActionProposal(node);
+    const node = this.getUIContext().getFrameNodeById(nodeId);
+    if (node) {
+      // Construct a select action proposal, specifying the target node to toggle the selected state.
+      resolution.selectedProposal = new SelectActionProposal(node);
+      }
         }
-      }
-    // Slide gesture intent: needs to scroll the container content by 100px.
-    } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
-      // The target node for ScrollActionProposal is the scroll container, not the list item.
-      // Here, the List's FrameNode is obtained via the container ID.
-      const node = this.getUIContext().getFrameNodeById('long_list');
-      if (node) {
-        // Construct a scroll action proposal, specifying the target container node
-        // and the scroll distance (100px).
-        resolution.selectedProposal = new ScrollActionProposal(node, 100);
-      }
+        // Slide gesture intent: needs to scroll the container content by 100px.
+      } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+    // The target node for ScrollActionProposal is the scroll container, not the list item.
+// Here, the List's FrameNode is obtained via the container ID.
+    const node = this.getUIContext().getFrameNodeById('long_list');
+  if (node) {
+// Construct a scroll action proposal, specifying the target container node
+  // and the scroll distance (100px).
+    resolution.selectedProposal = new ScrollActionProposal(node, 100);
     }
-
-    return resolution;
-  };
-
-  aboutToAppear(): void {
+    }
+    
+  return resolution;
+};
+  
+    aboutToAppear(): void {
     // Enable tap and slide smart gesture recognition.
     this.controller.enableSmartTapAndSlideGestures(true);
     // Register a Monitor listener callback. Callbacks are triggered in the order of last registered, first executed.
-    this.controller.registerMonitor(this.callback);
-  }
-
-  aboutToDisappear(): void {
-    // Clear all registered Monitor callbacks.
-    this.controller.clearMonitors();
-    // Disable smart gesture recognition. The smartGestureShortcut configuration
-    // on components is retained but will not respond.
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Column({ space: 12 }) {
-      Text('Demo2: Long List')
+  this.controller.registerMonitor(this.callback);
+}
+  
+    aboutToDisappear(): void {
+      // Clear all registered Monitor callbacks.
+        this.controller.clearMonitors();
+        // Disable smart gesture recognition. The smartGestureShortcut configuration
+        // on components is retained but will not respond.
+        this.controller.enableSmartTapAndSlideGestures(false);
+}
+      
+        build() {
+        Column({ space: 12 }) {
+        Text('Demo2: Long List')
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
         .width('100%')
@@ -475,44 +465,44 @@ struct Demo2 {
 
       Text(this.hint)
         .fontSize(13)
-        .fontColor('#666')
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .padding(8)
-        .borderRadius(8)
-        .backgroundColor('#e8e8e8')
-
-      List({ space: 8 }) {
-        ForEach(this.items, (item: string, index?: number) => {
-          ListItem() {
-            Row() {
-              Text(item)
-                .fontSize(16)
-                .layoutWeight(1)
-              Text(`clicked=${this.clickCounts[index ?? 0]}`)
-                .fontSize(14)
-                .fontColor('#4caf50')
-            }
+          .fontColor('#666')
             .width('100%')
-            .padding({ left: 16, right: 16, top: 14, bottom: 14 })
-            .borderRadius(10)
+              .textAlign(TextAlign.Center)
+                .padding(8)
+                .borderRadius(8)
+              .backgroundColor('#e8e8e8')
+                
+                List({ space: 8 }) {
+            ForEach(this.items, (item: string, index?: number) => {
+            ListItem() {
+            Row() {
+            Text(item)
+            .fontSize(16)
+            .layoutWeight(1)
+            Text(`clicked=${this.clickCounts[index ?? 0]}`)
+            .fontSize(14)
+            .fontColor('#4caf50')
+            }
+              .width('100%')
+              .padding({ left: 16, right: 16, top: 14, bottom: 14 })
+              .borderRadius(10)
             .borderWidth(1)
-            .backgroundColor(index! % 2 === 0 ? '#f6f8fa' : '#ffffff')
-            .id(`list_item_${index}`)
-            // // Mark the component as a smart gesture target: action specifies the gesture action type, enabled controls whether to respond, selectable controls whether it can be selected.
-            .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-            .onClick(() => {
-              const idx = index ?? 0;
-              this.clickCounts[idx] += 1;
-              this.hint = `${item} onClick triggered, click count=${this.clickCounts[idx]}`;
-            })
-          }
-        })
-      }
-      .id('long_list')
-      .width('100%')
-      .layoutWeight(1)
-      .borderRadius(12)
+          .backgroundColor(index! % 2 === 0 ? '#f6f8fa' : '#ffffff')
+        .id(`list_item_${index}`)
+      // // Mark the component as a smart gesture target: action specifies the gesture action type, enabled controls whether to respond, selectable controls whether it can be selected.
+      .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+      .onClick(() => {
+      const idx = index ?? 0;
+      this.clickCounts[idx] += 1;
+      this.hint = `${item} onClick triggered, click count=${this.clickCounts[idx]}`;
+    })
+    }
+    })
+    }
+    .id('long_list')
+  .width('100%')
+.layoutWeight(1)
+.borderRadius(12)
       .borderWidth(1)
     }
     .width('100%')
@@ -530,11 +520,8 @@ struct Demo2 {
 In a non-scrollable single page, there may be multiple types of interactive components such as [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md), and [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md). In this case, there is no need to handle scroll and page flip actions; only CLICK and SELECT need to be processed. You can use [requestSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#requestselected) to actively request a component to enter the selected state, and use [clearSelected](../reference/apis-arkui/arkts-apis-uicontext-smartgesturecontroller.md#clearselected) to clear the selected State.
 
 This example includes the following operations.
-
 - The slide gesture selects a **Text**, **Button**, or **Toggle** component, and the tap gesture triggers the [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) event of the selected component.
-
 - Use the "Select Button", "Select Text", and "Select Toggle" buttons to call **requestSelected** to manually request a component to enter the selected State.
-
 - Use the "Clear Selection" button to call **clearSelected** to clear the current selected state.
 
 > **NOTE**
@@ -562,155 +549,155 @@ struct Demo3 {
   @State btnCount: number = 0; // Button click count
   @State textClickCount: number = 0; // Text click count
   @State toggleOn: boolean = false; // Toggle state
-  @State sliderVal: number = 30; // Slider value
-
+@State sliderVal: number = 30; // Slider value
+  
   // The Monitor callback receives the BaseGestureHandlingProposal parameter
   // and dynamically determines the handling strategy based on the gesture action type.
   // BaseGestureHandlingProposal is the base class, containing action (action type)
-  // and operateIntention (operation intent).
-  // TargetedGestureProposal is a subclass, additionally carrying a node property
-  // pointing to the target component node, which is required when constructing an ActionProposal.
-  private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // and operateIntention (operation intent).
+    // TargetedGestureProposal is a subclass, additionally carrying a node property
+    // pointing to the target component node, which is required when constructing an ActionProposal.
+    private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
     // Cast BaseGestureHandlingProposal to TargetedGestureProposal to obtain
     // the target component node information.
     let targetProposal = proposal as TargetedGestureProposal;
-    // Get the ID of the target component for subsequent FrameNode lookup by ID.
+// Get the ID of the target component for subsequent FrameNode lookup by ID.
     let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
     this.hint = `Intent=${proposal.operateIntention}, Action=${proposal.action}, Target=${nodeId}`;
-    // Construct the gesture handling result. The parameter 'true' indicates
-    // that this gesture is consumed, and subsequent callbacks will not be executed.
-    const resolution = new GestureHandlingResolution(true);
-
-    // Tap gesture intent: needs to perform a click operation.
-    if (proposal.action === SmartGestureAction.CLICK) {
-      if (nodeId) {
-        // Obtain the corresponding FrameNode by component ID to construct a click action proposal.
-        const node = this.getUIContext().getFrameNodeById(nodeId);
-        if (node) {
-          // Construct a click action proposal, specifying the target node to perform the click.
-          resolution.selectedProposal = new ClickActionProposal(node);
+      // Construct the gesture handling result. The parameter 'true' indicates
+        // that this gesture is consumed, and subsequent callbacks will not be executed.
+        const resolution = new GestureHandlingResolution(true);
+        
+          // Tap gesture intent: needs to perform a click operation.
+          if (proposal.action === SmartGestureAction.CLICK) {
+        if (nodeId) {
+      // Obtain the corresponding FrameNode by component ID to construct a click action proposal.
+    const node = this.getUIContext().getFrameNodeById(nodeId);
+    if (node) {
+      // Construct a click action proposal, specifying the target node to perform the click.
+        resolution.selectedProposal = new ClickActionProposal(node);
         }
-      }
-    // Slide gesture intent: needs to switch the selected component.
-    } else if (proposal.action === SmartGestureAction.SELECT) {
+          }
+          // Slide gesture intent: needs to switch the selected component.
+        } else if (proposal.action === SmartGestureAction.SELECT) {
       if (nodeId) {
-        const node = this.getUIContext().getFrameNodeById(nodeId);
-        if (node) {
-          // Construct a select action proposal, specifying the target node to toggle the selected state.
-          resolution.selectedProposal = new SelectActionProposal(node);
-        }
-      }
+    const node = this.getUIContext().getFrameNodeById(nodeId);
+if (node) {
+    // Construct a select action proposal, specifying the target node to toggle the selected state.
+  resolution.selectedProposal = new SelectActionProposal(node);
+}
+  }
     }
-
+    
     return resolution;
-  };
-
-  aboutToAppear(): void {
-    // Enable tap and slide smart gesture recognition.
+    };
+  
+aboutToAppear(): void {
+  // Enable tap and slide smart gesture recognition.
     this.controller.enableSmartTapAndSlideGestures(true);
     // Register a Monitor listener callback. Callbacks are triggered in the order of last registered, first executed.
     this.controller.registerMonitor(this.callback);
-  }
-
-  aboutToDisappear(): void {
-    // Clear all registered Monitor callbacks.
+    }
+  
+aboutToDisappear(): void {
+  // Clear all registered Monitor callbacks.
     this.controller.clearMonitors();
-    // Disable smart gesture recognition. The smartGestureShortcut configuration on components is retained but will not respond.
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 16 }) {
+      // Disable smart gesture recognition. The smartGestureShortcut configuration on components is retained but will not respond.
+        this.controller.enableSmartTapAndSlideGestures(false);
+          }
+          
+          build() {
+          Scroll() {
+Column({ space: 16 }) {
         Text('Demo3: Single Page + Multiple Components')
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
           .width('100%')
           .textAlign(TextAlign.Center)
-
-        Text(this.hint)
+          
+          Text(this.hint)
           .fontSize(13)
-          .fontColor('#666')
-          .width('100%')
+.fontColor('#666')
+        .width('100%')
           .textAlign(TextAlign.Center)
           .padding(8)
           .borderRadius(8)
           .backgroundColor('#e8e8e8')
-
-        Text('Clickable Text')
+          
+          Text('Clickable Text')
           .id('comp_text')
           .fontSize(18)
           .width('100%')
           .padding(16)
           .borderRadius(10)
-          .borderWidth(1)
-          .textAlign(TextAlign.Center)
+            .borderWidth(1)
+            .textAlign(TextAlign.Center)
           .backgroundColor('#e3f2fd')
-          // Mark the component as a smart gesture target: action specifies the gesture action type, enabled controls whether to respond, selectable controls whether it can be selected
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+// Mark the component as a smart gesture target: action specifies the gesture action type, enabled controls whether to respond, selectable controls whether it can be selected
+        .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick(() => {
             this.textClickCount += 1;
             this.hint = `Text onClick triggered, clicked=${this.textClickCount}`;
-          })
+        })
 
         Row() {
           Text(`Text click count: ${this.textClickCount}`)
-            .fontSize(14)
-            .fontColor('#555')
-        }.width('100%').justifyContent(FlexAlign.Center)
-
-        Button(`Button / clicked=${this.btnCount}`)
-          .id('comp_button')
-          .width('100%')
+          .fontSize(14)
+          .fontColor('#555')
+          }.width('100%').justifyContent(FlexAlign.Center)
+          
+          Button(`Button / clicked=${this.btnCount}`)
+            .id('comp_button')
+            .width('100%')
           .backgroundColor('#1976d2')
-          // Mark the component as a smart gesture target
-          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+// Mark the component as a smart gesture target
+        .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
           .onClick(() => {
             this.btnCount += 1;
             this.hint = `Button onClick triggered, clicked=${this.btnCount}`;
-          })
-
-        Row() {
-          Toggle({ type: ToggleType.Switch, isOn: this.toggleOn })
-            .id('comp_toggle')
+            })
+            
+            Row() {
+              Toggle({ type: ToggleType.Switch, isOn: this.toggleOn })
+              .id('comp_toggle')
             .selectedColor('#4caf50')
-            // Mark Toggle as a smart gesture target; tapping toggles the switch via onChange.
+          // Mark Toggle as a smart gesture target; tapping toggles the switch via onChange.
             .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
             .onChange((isOn: boolean) => {
-              this.toggleOn = isOn;
-              this.hint = `Toggle onChange → ${isOn ? 'On' : 'Off'}`;
-            })
-          Text(`Switch status: ${this.toggleOn ? 'On' : 'Off'}`)
-            .fontSize(14)
-            .margin({ left: 12 })
-        }
+        this.toggleOn = isOn;
+        this.hint = `Toggle onChange → ${isOn ? 'On' : 'Off'}`;
+        })
+        Text(`Switch status: ${this.toggleOn ? 'On' : 'Off'}`)
+        .fontSize(14)
+        .margin({ left: 12 })
+}
         .width('100%')
         .padding(12)
-        .borderRadius(10)
-        .borderWidth(1)
-        .justifyContent(FlexAlign.Start)
-
-        // Manually request selection of a specified component via requestSelected. The component must meet three conditions: visible, responsive to smart gestures, and bound with onClick.
-        Row({ space: 8 }) {
-          Button('Select button').layoutWeight(1)
-            .onClick(() => this.controller.requestSelected('comp_button'))
-          Button('Select Text').layoutWeight(1)
-            .onClick(() => this.controller.requestSelected('comp_text'))
+          .borderRadius(10)
+            .borderWidth(1)
+          .justifyContent(FlexAlign.Start)
+            
+          // Manually request selection of a specified component via requestSelected. The component must meet three conditions: visible, responsive to smart gestures, and bound with onClick.
+            Row({ space: 8 }) {
+        Button('Select button').layoutWeight(1)
+.onClick(() => this.controller.requestSelected('comp_button'))
+        Button('Select Text').layoutWeight(1)
+        .onClick(() => this.controller.requestSelected('comp_text'))
           Button('Select Switch').layoutWeight(1)
-            .onClick(() => this.controller.requestSelected('comp_toggle'))
-        }.width('100%')
-
-        // Clear the current selected state via clearSelected
-        Button('Clear Selection')
-          .width('100%')
-          .onClick(() => {
-            this.controller.clearSelected();
-            this.hint = 'Selection cleared';
-          })
-      }
+          .onClick(() => this.controller.requestSelected('comp_toggle'))
+            }.width('100%')
+            
+          // Clear the current selected state via clearSelected
+      Button('Clear Selection')
       .width('100%')
-      .padding(16)
+      .onClick(() => {
+    this.controller.clearSelected();
+    this.hint = 'Selection cleared';
+    })
     }
+  .width('100%')
+.padding(16)
+}
     .width('100%')
     .height('100%')
     .backgroundColor('#f1f3f5')
@@ -725,11 +712,8 @@ struct Demo3 {
 When a page uses the [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) component to display multiple pages, the swipe gesture can switch between Swiper pages. In this case, use [PageSwitchActionProposal](../reference/apis-arkui/arkts-apis-uicontext-pageswitchactionproposal.md) to specify the target container and the number of pages to switch.
 
 This example includes the following operations.
-
 - The slide gesture turns pages to switch between **Swiper** pages, using **PageSwitchActionProposal** to specify a page‑turn count of 1.
-
 - The tap gesture clicks the button on the current page.
-
 - **loop** must be set to **false** for **Swiper** to avoid confusion in gesture intention caused by cyclic page turning.
 
 > **NOTE**
@@ -758,171 +742,171 @@ struct Demo4 {
   @State page0Btn: number = 0; // Click count for the first page button
   @State page1Btn: number = 0; // Click count for the settings page button
   @State page2Btn: number = 0; // Click count for the about page button
-  @State swiperIndex: number = 0; // Current Swiper page index
-
+@State swiperIndex: number = 0; // Current Swiper page index
+  
   // The Monitor callback receives the BaseGestureHandlingProposal parameter
   // and dynamically determines the handling strategy based on the gesture action type.
   // BaseGestureHandlingProposal is the base class, containing action (action type)
-  // and operateIntention (operation intent).
-  // TargetedGestureProposal is a subclass, additionally carrying a node property
-  // pointing to the target component node, which is required when constructing an ActionProposal.
-  private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // and operateIntention (operation intent).
+    // TargetedGestureProposal is a subclass, additionally carrying a node property
+    // pointing to the target component node, which is required when constructing an ActionProposal.
+    private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
     // Cast BaseGestureHandlingProposal to TargetedGestureProposal to obtain
     // the target component node information.
     let targetProposal = proposal as TargetedGestureProposal;
-    // Get the ID of the target component for subsequent FrameNode lookup by ID.
+// Get the ID of the target component for subsequent FrameNode lookup by ID.
     let nodeId = targetProposal.node ? targetProposal.node.getId() : '';
     this.hint = `Intent=${proposal.operateIntention}, Action=${proposal.action}, Target=${nodeId}`;
-    // Construct the gesture handling result. The parameter 'true' indicates
-    // that this gesture is consumed, and subsequent callbacks will not be executed.
-    const resolution = new GestureHandlingResolution(true);
-
-    // Tap gesture intent: needs to perform a click operation.
-    if (proposal.action === SmartGestureAction.CLICK) {
-      if (nodeId) {
-        // Obtain the corresponding FrameNode by component ID to construct a click action proposal.
-        const node = this.getUIContext().getFrameNodeById(nodeId);
-        if (node) {
-          // Construct a click action proposal, specifying the target node to perform the click.
-          resolution.selectedProposal = new ClickActionProposal(node);
+      // Construct the gesture handling result. The parameter 'true' indicates
+        // that this gesture is consumed, and subsequent callbacks will not be executed.
+        const resolution = new GestureHandlingResolution(true);
+        
+          // Tap gesture intent: needs to perform a click operation.
+          if (proposal.action === SmartGestureAction.CLICK) {
+        if (nodeId) {
+      // Obtain the corresponding FrameNode by component ID to construct a click action proposal.
+    const node = this.getUIContext().getFrameNodeById(nodeId);
+    if (node) {
+      // Construct a click action proposal, specifying the target node to perform the click.
+        resolution.selectedProposal = new ClickActionProposal(node);
         }
-      }
-    // Slide gesture intent: needs to switch the selected component.
-    } else if (proposal.action === SmartGestureAction.SELECT) {
+          }
+          // Slide gesture intent: needs to switch the selected component.
+        } else if (proposal.action === SmartGestureAction.SELECT) {
       if (nodeId) {
-        const node = this.getUIContext().getFrameNodeById(nodeId);
-        if (node) {
-          // Construct a select action proposal, specifying the target node to toggle the selected state.
-          resolution.selectedProposal = new SelectActionProposal(node);
+    const node = this.getUIContext().getFrameNodeById(nodeId);
+    if (node) {
+      // Construct a select action proposal, specifying the target node to toggle the selected state.
+      resolution.selectedProposal = new SelectActionProposal(node);
+      }
         }
-      }
-    // Slide gesture intent: needs to turn pages to switch the Swiper page, with a step of 1.
-    } else if (proposal.action === SmartGestureAction.PAGE_FORWARD) {
-      // The target node for PageSwitchActionProposal is the Swiper container, not the button.
-      // Here, the Swiper's FrameNode is obtained via the container ID.
-      const node = this.getUIContext().getFrameNodeById('demo_swiper');
-      if (node) {
-        // Construct a page switch action proposal, specifying the Swiper node and the page step
-        // (1 means turn forward by one page).
-        resolution.selectedProposal = new PageSwitchActionProposal(node, 1);
-      }
+        // Slide gesture intent: needs to turn pages to switch the Swiper page, with a step of 1.
+      } else if (proposal.action === SmartGestureAction.PAGE_FORWARD) {
+    // The target node for PageSwitchActionProposal is the Swiper container, not the button.
+// Here, the Swiper's FrameNode is obtained via the container ID.
+    const node = this.getUIContext().getFrameNodeById('demo_swiper');
+  if (node) {
+// Construct a page switch action proposal, specifying the Swiper node and the page step
+  // (1 means turn forward by one page).
+    resolution.selectedProposal = new PageSwitchActionProposal(node, 1);
     }
-
-    return resolution;
-  };
-
-  aboutToAppear(): void {
+    }
+    
+  return resolution;
+};
+  
+    aboutToAppear(): void {
     // Enable tap and slide smart gesture recognition.
     this.controller.enableSmartTapAndSlideGestures(true);
     // Register a Monitor listener callback. Callbacks are triggered in the order of last registered, first executed.
-    this.controller.registerMonitor(this.callback);
-  }
+  this.controller.registerMonitor(this.callback);
+}
+  
+    aboutToDisappear(): void {
+      // Clear all registered Monitor callbacks.
+        this.controller.clearMonitors();
+        // Disable smart gesture recognition. The smartGestureShortcut configuration on components is retained but will not respond.
+        this.controller.enableSmartTapAndSlideGestures(false);
+        }
 
-  aboutToDisappear(): void {
-    // Clear all registered Monitor callbacks.
-    this.controller.clearMonitors();
-    // Disable smart gesture recognition. The smartGestureShortcut configuration on components is retained but will not respond.
-    this.controller.enableSmartTapAndSlideGestures(false);
-  }
-
-  build() {
-    Column({ space: 12 }) {
-      Text('Demo4: Swiper + Button')
+      build() {
+        Column({ space: 12 }) {
+        Text('Demo4: Swiper + Button')
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
         .width('100%')
         .textAlign(TextAlign.Center)
-
-      Text(this.hint)
-        .fontSize(13)
+        
+Text(this.hint)
+      .fontSize(13)
         .fontColor('#666')
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .padding(8)
-        .borderRadius(8)
-        .backgroundColor('#e8e8e8')
-
-      Swiper() {
-        Column({ space: 16 }) {
-          Text('Page 0 - Home')
+          .width('100%')
+            .textAlign(TextAlign.Center)
+            .padding(8)
+          .borderRadius(8)
+            .backgroundColor('#e8e8e8')
+            
+            Swiper() {
+            Column({ space: 16 }) {
+            Text('Page 0 - Home')
             .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-          Button(`Home Button / Clicked=${this.page0Btn}`)
+              .fontWeight(FontWeight.Bold)
+              Button(`Home Button / Clicked=${this.page0Btn}`)
             .id('page0_btn')
-            .width('80%')
+          .width('80%')
             .backgroundColor('#4caf50')
             // Mark the component as a smart gesture target: action specifies the gesture action type,
-            // enabled controls whether it responds, and selectable controls whether it can be selected.
-            .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-            .onClick(() => {
-              this.page0Btn += 1;
-              this.hint = `Page 0 button onClick → clicked=${this.page0Btn}`;
-            })
-          Text('Swipe → flip to next page')
-            .fontSize(13)
+        // enabled controls whether it responds, and selectable controls whether it can be selected.
+        .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+        .onClick(() => {
+        this.page0Btn += 1;
+        this.hint = `Page 0 button onClick → clicked=${this.page0Btn}`;
+})
+        Text('Swipe → flip to next page')
+          .fontSize(13)
             .fontColor('#888')
-        }
-        .width('100%')
-        .height('100%')
-        .justifyContent(FlexAlign.Center)
-        .backgroundColor('#e3f2fd')
-
-        Column({ space: 16 }) {
-          Text('Page 1 - Settings')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-          Button(`Settings Button / clicked=${this.page1Btn}`)
-            .id('page1_btn')
+            }
+          .width('100%')
+            .height('100%')
+            .justifyContent(FlexAlign.Center)
+            .backgroundColor('#e3f2fd')
+            
+            Column({ space: 16 }) {
+            Text('Page 1 - Settings')
+              .fontSize(20)
+              .fontWeight(FontWeight.Bold)
+            Button(`Settings Button / clicked=${this.page1Btn}`)
+          .id('page1_btn')
             .width('80%')
             .backgroundColor('#ff9800')
-            // Mark the component as a Smart Gesture target
-            .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-            .onClick(() => {
-              this.page1Btn += 1;
-              this.hint = `Page 1 button onClick → clicked=${this.page1Btn}`;
-            })
-          Text('Slide → flip to next page')
-            .fontSize(13)
+        // Mark the component as a Smart Gesture target
+        .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+        .onClick(() => {
+        this.page1Btn += 1;
+        this.hint = `Page 1 button onClick → clicked=${this.page1Btn}`;
+})
+        Text('Slide → flip to next page')
+          .fontSize(13)
             .fontColor('#888')
-        }
-        .width('100%')
-        .height('100%')
-        .justifyContent(FlexAlign.Center)
-        .backgroundColor('#fce4ec')
-
-        Column({ space: 16 }) {
-          Text('Page 2 - About')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-          Button(`About Button / clicked=${this.page2Btn}`)
-            .id('page2_btn')
+            }
+          .width('100%')
+            .height('100%')
+            .justifyContent(FlexAlign.Center)
+            .backgroundColor('#fce4ec')
+            
+            Column({ space: 16 }) {
+            Text('Page 2 - About')
+              .fontSize(20)
+              .fontWeight(FontWeight.Bold)
+            Button(`About Button / clicked=${this.page2Btn}`)
+          .id('page2_btn')
             .width('80%')
             .backgroundColor('#2196f3')
-            // Mark the component as a Smart Gesture target
-            .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
-            .onClick(() => {
-              this.page2Btn += 1;
-              this.hint = `Page 2 Button onClick → clicked=${this.page2Btn}`;
-            })
-          Text('Swipe → flip to next page')
-            .fontSize(13)
-            .fontColor('#888')
-        }
-        .width('100%')
-        .height('100%')
+        // Mark the component as a Smart Gesture target
+        .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+        .onClick(() => {
+        this.page2Btn += 1;
+        this.hint = `Page 2 Button onClick → clicked=${this.page2Btn}`;
+      })
+      Text('Swipe → flip to next page')
+      .fontSize(13)
+      .fontColor('#888')
+      }
+      .width('100%')
+      .height('100%')
         .justifyContent(FlexAlign.Center)
         .backgroundColor('#e8f5e9')
       }
       .id('demo_swiper')
       .width('100%')
-      .layoutWeight(1)
-      .loop(false)
-      .index(0)
-      .onChange((index: number) => {
-        this.swiperIndex = index;
-        this.hint = `Swiper onChange → page ${index}`;
-      })
-      .borderRadius(12)
+    .layoutWeight(1)
+    .loop(false)
+    .index(0)
+    .onChange((index: number) => {
+    this.swiperIndex = index;
+  this.hint = `Swiper onChange → page ${index}`;
+})
+.borderRadius(12)
       .borderWidth(1)
     }
     .width('100%')

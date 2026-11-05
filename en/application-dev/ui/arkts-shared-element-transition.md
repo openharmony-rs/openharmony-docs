@@ -1,12 +1,11 @@
 # Shared Element Transition
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @ge-yafang; @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7fab30e14d973fa66ccdb0a1cd82a35dfc757e46 translatedAt=2026-08-04T06:39:55.113Z pushedAt=2026-08-04T08:28:14.532Z -->
+<!-- md-trans-meta sourceCommit=38e75ef2c90b7ab14c80e75b2532c867be42e0a9 translatedAt=2026-11-05T03:33:07.219Z pushedAt=2026-11-05T08:31:34.368Z nl=1 -->
 
 Shared element transition is a type of transition achieved by animating the size and position between styles of the same or similar elements during page switching.
 
@@ -950,7 +949,6 @@ export class CustomTransition {
 ```
 
 <!-- -->
-
 ```ts
 // Configure {"routerMap": "$profile:route_map"} in the project configuration file module.json5.
 // route_map.json
@@ -1939,11 +1937,17 @@ To use **geometryTransition**, assign the same ID to both components that requir
 
 This method is ideal for shared element transitions between two distinct objects.
 
+> **NOTE**
+>
+> 1. Components bound to the same ID through the `geometryTransition` API must not be nested within each other. That is, a component bound to an ID must not contain another component bound to the same ID; otherwise, the transition animation may behave abnormally.
+>
+> 2. It is recommended that you clear the bound ID in the animation completion callback ([onFinish](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam)) to prevent the shared element transition from being triggered unexpectedly in unintended scenarios (such as rapid consecutive taps on a page or state variable changes). Set the ID back to the required value before the next transition is triggered.
+
 ### Simple Use of geometryTransition
 
 Below is a simple example of using **geometryTransition** to implement shared element transition for two elements on the same page:
 
-<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) -->
+<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) --> 
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -1952,6 +1956,8 @@ import { curves } from '@kit.ArkUI';
 @Component
 struct IfElseGeometryTransition {
   @State isShow: boolean = false;
+  // Use a state variable to manage the geometryTransition ID, and clear it after the animation ends to prevent accidental triggering.
+  @State geometryId: string = 'picture';
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
@@ -1963,7 +1969,7 @@ struct IfElseGeometryTransition {
           .width(200)
           .height(200)
           .borderRadius(100)
-          .geometryTransition('picture')
+          .geometryTransition(this.geometryId)
           .transition(TransitionEffect.OPACITY)
           // If a new transition is triggered during the animation, ghosting occurs when id is not specified.
           // With id specified, the new spring image reuses the previous spring image node instead of creating a new node. Therefore, ghosting does not occur.
@@ -1986,7 +1992,7 @@ struct IfElseGeometryTransition {
         // In other words, corner radius settings of the container are synchronized, and those of the child components are not.
         .borderRadius(50)
         .clip(true)
-        .geometryTransition('picture')
+        .geometryTransition(this.geometryId)
         // transition ensures that the component is not destroyed immediately when it exits. You can customize the transition effect.
         .transition(TransitionEffect.OPACITY)
         .position({ x: 40, y: 40 })
@@ -1994,8 +2000,14 @@ struct IfElseGeometryTransition {
       }
     }
     .onClick(() => {
+      // Ensure the ID is set before the animation starts.
+      this.geometryId = 'picture';
       this.getUIContext()?.animateTo({
-        curve: curves.springMotion()
+        curve: curves.springMotion(),
+        onFinish: () => {
+          // Clear the ID after the animation ends to prevent accidental triggering.
+          this.geometryId = '';
+        }
       }, () => {
         this.isShow = !this.isShow;
       })
@@ -2030,6 +2042,8 @@ struct Index {
   @State isPersonalPageShow: boolean = false;
   @State selectedIndex: number = 0;
   @State alphaValue: number = 1;
+  // Use a state variable to manage the geometryTransition ID, and clear it after the animation ends to prevent accidental triggering.
+  @State geometryId: string = '';
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   // Customize the image resource paths in the array as needed.
@@ -2067,9 +2081,15 @@ struct Index {
 
   private onAvatarClicked(index: number): void {
     this.selectedIndex = index;
+    // Set the shared element transition ID before the animation starts.
+    this.geometryId = index.toString();
     this.getUIContext()?.animateTo({
       duration: 350,
-      curve: Curve.Friction
+      curve: Curve.Friction,
+      onFinish: () => {
+        // Clear the ID after the animation ends to prevent accidental triggering.
+        this.geometryId = '';
+      }
     }, () => {
       this.isPersonalPageShow = !this.isPersonalPageShow;
       this.alphaValue = 0;
@@ -2077,9 +2097,15 @@ struct Index {
   }
 
   private onPersonalPageBack(index: number): void {
+    // Set the shared element transition ID before the animation starts.
+    this.geometryId = index.toString();
     this.getUIContext()?.animateTo({
       duration: 350,
-      curve: Curve.Friction
+      curve: Curve.Friction,
+      onFinish: () => {
+        // Clear the ID after the animation ends to prevent accidental triggering.
+        this.geometryId = '';
+      }
     }, () => {
       this.isPersonalPageShow = !this.isPersonalPageShow;
       this.alphaValue = 1;
@@ -2093,7 +2119,7 @@ struct Index {
         .size({ width: 200, height: 200 })
         .borderRadius(100)
         // Apply a shared element transition to the profile picture by its ID.
-        .geometryTransition(index.toString())
+        .geometryTransition(this.geometryId)
         .clip(true)
         .transition(TransitionEffect.opacity(0.99))
 
@@ -2132,7 +2158,11 @@ struct Index {
       ForEach(this.allPostData, (postData: PostData, index: number) => {
         Column() {
           Post({
-            data: postData, index: index, onAvatarClicked: (index: number) => {
+            data: postData,
+            index: index,
+            geometryId: this.geometryId,
+            selectedIndex: this.selectedIndex,
+            onAvatarClicked: (index: number) => {
               this.onAvatarClicked(index);
             }
           })
@@ -2152,6 +2182,8 @@ struct Index {
 export default struct Post {
   @Prop data: PostData;
   @Prop index: number;
+  @Prop geometryId: string = '';
+  @Prop selectedIndex: number = -1;
   @State expandImageSize: number = 100;
   @State avatarSize: number = 50;
   private onAvatarClicked: (index: number) => void = (index: number) => { };
@@ -2167,7 +2199,10 @@ export default struct Post {
             this.onAvatarClicked(this.index);
           })
           // ID of the shared element transition bound to the profile picture.
-          .geometryTransition(this.index.toString(), { follow: true })
+          .geometryTransition(
+            (this.index === this.selectedIndex && this.geometryId !== '') ? this.geometryId : '',
+            { follow: true }
+          )
           .transition(TransitionEffect.OPACITY.animation({ duration: 350, curve: Curve.Friction }))
 
         Text(this.data.name)

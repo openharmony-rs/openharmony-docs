@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fea9145a485a564a4b5491fe0442142d2cac5a85 translatedAt=2026-11-05T03:42:49.449Z pushedAt=2026-11-05T08:31:34.408Z nl=1 -->
 
 This section describes how to resolve text display abnormalities caused by invalid [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md). Using an invalid UIContext object (typically resulting from destruction of the corresponding UI instance) may cause subsequent UI operations to fail. This issue is common in multi-window scenarios. Starting from API version 12, it can also occur when the process cache is enabled via [setSupportedProcessCache](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetsupportedprocesscache12) and the process is then rapidly restarted.
 
@@ -34,7 +35,7 @@ Invalid UIContext may occur in the following scenarios:
   |{bundleName}| String| com.example.helloworld| Bundle name of the application.|
   |{moduleName}| String| entry| Module name of the current module.|
   |{thisInstanceId}| Positive number| 100000 | Notified UI instance ID.|
-  |{status}| Status of the notified instance| focus | Available values:<br> - **focus**: focused<br> - **unfocus**: unfocused<br> - **foreground**: foreground<br> - **background**: background<br> - **destroy**: destroyed|
+  |{status}| Status notified to the instance | focus | The options are as follows:<br> - focus: focused<br> - unfocus: unfocused<br> - foreground: foreground<br> - background: background<br> - destroy: destroyed |
 
   Use this regular expression to match relevant logs:
 
@@ -48,7 +49,7 @@ Invalid UIContext may occur in the following scenarios:
 
   - Abnormal log:
 
-    `(100000:100000:scoped)] [com.example.helloworld][entry][100001]: window background`
+    `(100000:100000:scope)] [com.example.helloworld][entry][100001]: window background`
 
     This log indicates an error tracing the UI instance with ID 100000.
 

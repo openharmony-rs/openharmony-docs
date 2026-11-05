@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=baaf50aacc43029d67c451981fbb9284942a94f4 translatedAt=2026-11-04T02:36:42.423Z pushedAt=2026-11-04T03:37:38.266Z nl=1 -->
+<!-- md-trans-meta sourceCommit=4a95d8893e68a13b75398a2c53ab451c3ff89536 translatedAt=2026-11-05T03:47:04.069Z pushedAt=2026-11-05T08:31:34.425Z nl=1 -->
 
 All examples in this document only provide the calling methods of core APIs. For the complete sample project, refer to <!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->.
 
@@ -658,9 +658,9 @@ This example mainly demonstrates how to set up frame animation through [createAn
        createButton->RegisterNodeEventReceiver(onTouch);
        createButton->SetButtonLabel("create");
        // Create a container to hold the Button keys
-       auto buttoColumn = std::make_shared<ArkUIColumnNode>();
-       buttoColumn->SetPadding(NUM_30, false); // Set the layout format and adjust the component inner spacing: NUM_30 = 30
-       buttoColumn->SetWidth(NUM_300); // NUM_300 = 300
+       auto buttonColumn = std::make_shared<ArkUIColumnNode>();
+       buttonColumn->SetPadding(NUM_30, false); // Set the layout format and adjust the spacing within the component. NUM_30 = 30.
+       buttonColumn->SetWidth(NUM_300); // NUM_300 = 300
        // Create a container to hold the playButton key
        auto playButtonColumn = std::make_shared<ArkUIColumnNode>();
        playButtonColumn->SetPadding(NUM_10, false); // Set the layout format and adjust the component inner spacing: NUM_10 = 10
@@ -759,17 +759,17 @@ This example mainly demonstrates how to set up frame animation through [createAn
        column->AddChild(g_animator_text);
        column->AddChild(textNode);
        column->AddChild(button);
-       buttoColumn->AddChild(createButton);
+       buttonColumn->AddChild(createButton);
        playButtonColumn->AddChild(playButton);
-       buttoColumn->AddChild(playButtonColumn);
-       buttoColumn->AddChild(finishButton);
+       buttonColumn->AddChild(playButtonColumn);
+       buttonColumn->AddChild(finishButton);
        resetButtonColumn->AddChild(resetButton);
-       buttoColumn->AddChild(resetButtonColumn);
-       buttoColumn->AddChild(pauseButton);
+       buttonColumn->AddChild(resetButtonColumn);
+       buttonColumn->AddChild(pauseButton);
        cancelButtonColumn->AddChild(cancelButton);
-       buttoColumn->AddChild(cancelButtonColumn);
-       buttoColumn->AddChild(reverseButton);
-       column->AddChild(buttoColumn);
+       buttonColumn->AddChild(cancelButtonColumn);
+       buttonColumn->AddChild(reverseButton);
+       column->AddChild(buttonColumn);
        return column;
    }
    ```

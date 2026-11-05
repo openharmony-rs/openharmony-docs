@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=dde23f107beeb9fe1bac4336216c647e80ced3de translatedAt=2026-11-05T03:35:17.013Z pushedAt=2026-11-05T08:31:34.379Z nl=1 -->
 
 This topic addresses common issues related to text components.
 
@@ -140,25 +141,25 @@ If tags and the main text need to display on the same line, consider using [Span
 
 Implementation steps:
 
-1. Place tags and main text in a horizontally aligned **Row** container.
+1. Place the label and the long text in the same `Row` container laid out horizontally.
 
-2. Set the main text's **textOverflow** to **TextOverflow.Ellipsis** for truncation with ellipsis.
+2. Set the `textOverflow` attribute of the long text in the middle to `TextOverflow.Ellipsis` so that the text is truncated and an ellipsis is displayed when space is insufficient.
 
 For an implementation example, see [Implementing Hot Search Rankings](./arkts-common-components-text-display.md#implementing-hot-search-rankings) for a practical example where "1" and "Top Hit" serve as tags for "I am entry 1". This approach is suitable for single-line text with tags.
 
 **Solution 2**
 
-If tags need to be added before and after multi-line text (with the text not truncated), the previous solution may cause misalignment among the three Text components. This occurs because multi-line text wraps within the **Row** container's width. To resolve this, place the tags and multi-line text in a [Stack](./arkts-layout-development-stack-layout.md) container, and configure the following for the main multi-line text: Set the first-line indentation using [textIndent](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10); adjust the position of the suffix tag using [offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset). This implementation ensures horizontal alignment between the prefix tag, multi-line text, and suffix tag.  
+If tags need to be added before and after multi-line text (with the text not truncated), the previous solution may cause misalignment among the three Text components. This occurs because multi-line text wraps within the **Row** container's width. To resolve this, place the tags and multi-line text in a [Stack](./arkts-layout-development-stack-layout.md) container, and configure the following for the main multi-line text: Set the first-line indentation using [textIndent](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10); adjust the position of the suffix tag using [offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset). This implementation ensures horizontal alignment between the prefix tag, multi-line text, and suffix tag.
 
 Implementation steps:
 
-1. Place tags and multi-line text in a **Stack** container.
+1. Place the label and the long text in a `Stack`.
 
-2. In the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) callback, use [measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12) to calculate the prefix tag's width, which serves as the first-line indentation for the main text.
+2. In the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) callback that runs before the component is displayed, use [measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12) to calculate the width of the leading label, and use it as the first-line indent of the multiline text in the middle.
 
-3. In the **aboutToAppear** callback, use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to calculate the last line width and non-last line height of the main text for suffix tag offset.
+3. In the `aboutToAppear` callback that runs before the component is displayed, use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to calculate the width of the last line and the height excluding the last line of the multiline text in the middle, and use them as the offset of the trailing label.
 
-4. Set the offset of the suffix tag relative to the upper left corner of the **Stack** container.
+4. Set the offset of the trailing label relative to the top-left corner of the `Stack`.
 
 Example:
 
@@ -457,7 +458,7 @@ Solution 1 truncates content. To display all text, place the **Text** component 
   }
   ```
 
-<!--Del--> <!--DelEnd-->
+<!--Del-->![]  (figures/text_too_long_scroll.gif)<!--DelEnd-->
 
 ### How Do I Trigger a Custom Menu via selection and Set Its Font Size?
 
@@ -570,7 +571,7 @@ struct TextExample8 {
 
 This section describes FAQs about text input using the [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), and [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md) components.
 
-### Why Does the Operation Handle Not Disappear When the TextInput Component Is Covered
+### TextInput Handle Does Not Disappear When Obscured
 
 **Symptom**
 

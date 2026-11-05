@@ -1,19 +1,17 @@
 # Setting Dark Mode
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @ohxianzhi-->
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4248a04d1b026b87b7cace162036b2fac054f3a9 translatedAt=2026-08-14T03:51:19.474Z pushedAt=2026-08-14T09:46:30.916Z -->
+<!-- md-trans-meta sourceCommit=c43e3b4d36f70925ee0be0c0a5b20e9ed5d7d494 translatedAt=2026-11-05T03:15:52.788Z pushedAt=2026-11-05T08:31:34.246Z nl=1 -->
 
 The system provides the light and dark theme modes for users. Dark mode reduces the screen brightness and visual stimulus in low-light environments, improving reading experience. The **Web** component is rendered based on the web page style. If the web page is not adapted to dark mode, it will be separated from the system theme. To ensure a consistent user experience, you need to consider users' theme preferences and adapt the web page to dark mode.
 
 ArkWeb allows you to flexibly set dark mode for **Web** components without affecting the system. In addition, ArkWeb can enforce dark mode on different web pages to ensure compatibility with various system themes.
 
 ## Adapting Web Pages to Dark Mode
-
 You can adapt web pages to dark mode using the **color-scheme** and **prefers-color-scheme** attributes.
 
 - **color-scheme** is a CSS attribute that indicates the color scheme supported by a web page. It can affect the form, scroll bar, and CSS system color. The CSS system color refers to the built-in color of the **Web** component, which is the default color used when the style of some elements is not defined.
@@ -103,6 +101,7 @@ You can adapt web pages to dark mode using the **color-scheme** and **prefers-co
 
   ![web-prefers-color-scheme](figures/arkweb_prefers_color_scheme.png)
 
+
 ## Setting the Web Dark Mode
 
 You can use the [darkMode()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#darkmode9) API to configure the web dark mode, which is disabled by default. [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) can be set for applications to follow the system dark mode. You can also set [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) or [WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) to enable or disable dark mode.
@@ -182,14 +181,13 @@ The styles of the darkModePage.html page when dark mode is disabled, when dark m
 
 ## Adapting the Web Component Background Color to Dark Mode
 
-When the **Web** component is rotated or its size changes, the web page size changes and the background color of the **Web** component may be displayed. In dark mode, you are advised to set the background color of the **Web** component to black to ensure a consistent experience with the web page background.
+When the **Web** component is rotated or resized, the web page size changes, and the background color of the **Web** component may be exposed during the change. In dark mode, you are advised to set the background color of the **Web** component to black to keep it consistent with the web page background and improve user experience.
 
 You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) to set the background color of **Web** components. If no background color is set, the default background color white is used. In forcible dark mode, the default background color is black. If forcible dark mode is not enabled, you can use the following methods for adaptation.
 
 - When [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) and [WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) are set on the application side to control dark mode, the background color of **Web** components changes accordingly.
-
   <!-- @[set_web_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_three.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   
@@ -210,9 +208,8 @@ You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-at
   ```
 
 - When [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) is set on the application side to follow the system dark mode, the background color of **Web** components changes with the system.
-
   <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+  
   ``` TypeScript
   import { window } from '@kit.ArkUI';
   import { AbilityConstant, ConfigurationConstant, UIAbility, Want, Configuration } from '@kit.AbilityKit';
@@ -234,10 +231,9 @@ You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-at
     }
   }
   ```
-
   <!-- -->
   <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_Four.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { ConfigurationConstant } from '@kit.AbilityKit';

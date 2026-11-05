@@ -5,7 +5,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6560777a2eff7307b8838a55a77b5360a9daf9ba translatedAt=2026-11-04T02:04:21.015Z pushedAt=2026-11-04T04:26:06.074Z nl=1 -->
+<!-- md-trans-meta sourceCommit=c43e3b4d36f70925ee0be0c0a5b20e9ed5d7d494 translatedAt=2026-11-05T03:14:43.954Z pushedAt=2026-11-05T08:31:34.248Z nl=1 -->
 
 In the system, applications can use the **Web** component to load web pages. If the capability or performance of non-system UI components is inferior to that of system components, you can use the ArkUI component to render these components (same-layer components).
 
@@ -605,6 +605,7 @@ Code on the application side:
           Stack() {
             ForEach(this.componentIdArr, (componentId: string) => {
               NodeContainer(this.nodeControllerMap.get(componentId))
+                // The same-layer component container should be bound to the width, height, and position of the same-layer tag.
                 .position(this.positionMap.get(componentId))
                 .width(this.widthMap.get(componentId))
                 .height(this.heightMap.get(componentId))
@@ -1619,22 +1620,36 @@ The values of the attribute are listed in the following table.
 - The width and height of the custom component do not match those of the same-layer rendered tag.
 
   The width and height of the custom same-layer rendered component must be the same as those of the same-layer tag. The following is an example:
-  ```ts
-    @Component
-    struct TextInputComponent {
-      @Prop params: Params
-      @State bkColor: Color = Color.White
-
-      build() {
-        Column() {
-          TextInput({text: '', placeholder: 'please input your word...'})
-            .fontColor(Color.Black)
-        }
-        // The width and height of the outermost custom container component must be the same as those of the same-layer tag.
-        .width(this.params.width)
-        .height(this.params.height)
+  <!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct TextInputComponent {
+    @Prop params: Params;
+    @State bkColor: Color = Color.White;
+  
+    build() {
+      Column() {
+        TextInput({text: '', placeholder: 'please input your word...'})
+          .placeholderColor(Color.Gray)
+          .id(this.params?.elementId)
+          .placeholderFont({size: 13, weight: 400})
+          .caretColor(Color.Gray)
+          .fontSize(14)
+          .fontColor(Color.Black)
       }
+      // The width and height of the outermost container component in the custom component should be the same as those of the same-layer tag.
+      .width(this.params.width)
+      .height(this.params.height)
     }
+  }
+  
+  // The specific component content of the dynamic component is defined in @Builder.
+  @Builder
+  function textInputBuilder(params:Params) {
+    TextInputComponent({params: params})
+      .backgroundColor(Color.White)
+  }
   ```
 
 ### How to Pass Events Captured by Same-Layer Rendering Components to the Web Frontend?
@@ -1645,8 +1660,11 @@ For gesture events of the same-layer rendered tag, you can set the gesture event
 - The same-layer rendering [enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11) is not enabled.
 
   Explicitly enable same-layer rendering.
-  ```ts
-  Web({ src: $rawfile("text.html"), controller: this.controller })
+  <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  
+  ``` TypeScript
+  Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+  // ...
     // Enable same-layer rendering.
     .enableNativeEmbedMode(true)
   ```
@@ -1657,7 +1675,9 @@ For gesture events of the same-layer rendered tag, you can set the gesture event
 
 ### What should I do if the cursor and text box of the ArkUI component (such as TextInput) that involves UI interaction are misplaced?
 You need to use a **Stack** to wrap the same-layer component container and **BuilderNode**. Then you need to bind **NodeContainer** to the position of the same-layer tag. The following is an example:
-```ts
+<!-- @[same_layer_and_same_tag_bundle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+ 
+``` TypeScript
 ForEach(this.componentIdArr, (componentId: string) => {
   NodeContainer(this.nodeControllerMap.get(componentId))
     // The same-layer component container should be bound to the width, height, and position of the same-layer tag.

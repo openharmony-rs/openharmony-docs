@@ -1,11 +1,11 @@
 # Implementing Focus Support
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dde23f107beeb9fe1bac4336216c647e80ced3de translatedAt=2026-10-10T06:12:17.384Z pushedAt=2026-10-12T08:26:52.999Z -->
+<!-- md-trans-meta sourceCommit=0a2048f7391b67092866f64e69aa00708680147f translatedAt=2026-11-05T03:19:37.735Z pushedAt=2026-11-05T08:31:34.269Z nl=1 -->
 
 ## Basic Concepts and Specifications
 
@@ -337,7 +337,7 @@ The projection-based focus traversal algorithm determines the winner based on th
 - **Shift+Tab key navigation**: For **Shift+Tab** key presses, the algorithm mimics a leftward shift to locate the next focus. If no target is found, it simulates moving the currently focused child component upward by its own height, then calculates the projection as if the right arrow key were pressed. The child component that overlaps with this projection and has the shortest center-to-center distance is selected. If no child overlaps, the container cannot process the **Shift+Tab** key focus movement request.
 
  <!-- @[dynamic_focus_project_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectionBasedFocus.ets) -->
-
+ 
  ``` TypeScript
  @Entry
  @Component
@@ -498,9 +498,9 @@ export struct OnFocusBlur {
 
 The preceding example includes three steps:
 
-- When the application opens, pressing the **Tab** key activates focus traversal, **First Button** displays a focus activation state style – a blue bounding box around the component – and its **onFocus** callback is triggered, changing the background color to green.
-- When the **Tab** key is pressed again, **Second Button** gains focus, triggering its **onFocus** callback, and its background color turns green, while **First Button** loses focus, triggering its **onBlur** callback, and its background color reverts to gray.
-- A subsequent **Tab** key press causes **Third Button** to gain focus, triggering its **onFocus** callback, and its background color turns green. Concurrently, **Second Button** loses focus, triggering its **onBlur** callback, and its background color reverts to gray.
+- When the application opens, pressing the **Tab** key activates focus traversal, **First Button** displays a focus activation state style – a blue bounding box around the component – and its **onFocus()** callback is triggered, changing the background color to green.
+- When the **Tab** key is pressed again, **Second Button** gains focus, triggering its **onFocus()** callback, and its background color turns green, while **First Button** loses focus, triggering its **onBlur()** callback, and its background color reverts to gray.
+- A subsequent **Tab** key press causes **Third Button** to gain focus, triggering its **onFocus()** callback, and its background color turns green. Concurrently, **Second Button** loses focus, triggering its **onBlur()** callback, and its background color reverts to gray.
 
 When both parent and child nodes have focus acquisition and loss events simultaneously, the order of event responses is as follows:
 
@@ -625,7 +625,7 @@ Sets whether the component is focusable on touch.
 
 
  <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) --> 
-
+ 
  ``` TypeScript
  @Entry
  @Component
@@ -960,7 +960,7 @@ export struct FocusScopePriorityPrevious {
 
 **Overall Focus and Non-Overall Focus**
 
-- Overall focus: The entire [hierarchical page](#basic-concepts) or container gains focus first, and then the focus shifts to its child components. Examples include [hierarchical page](#basic-concepts) transitions, route switches within **Navigation** components, focus group traversal, and when a container component proactively calls **requestFocusById**.
+- Overall focus: The entire [hierarchical page](#basic-concepts) or container gains focus first as the leaf node of the focus chain, and then the focus chain leaf node shifts to its child components. Examples include [hierarchical page](#basic-concepts) transitions, route switches within **Navigation** components, focus group traversal, and when a container component proactively calls **requestFocusById()**.
 
 - Non-overall focus: A specific component gains focus, pulling its parent components into focus. Examples include a **TextInput** component proactively obtaining focus or using the **Tab** key for traversal in non-focus group.
 
@@ -1062,7 +1062,7 @@ The preceding example includes two steps:
   Moves focus to a specified component, with the change taking effect in the next frame.
 
   <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) --> 
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -1165,7 +1165,7 @@ When a component is configured with **nextFocus**, focus movement strictly follo
 >  - This capability is supported since API version 18.
 
   <!-- @[dynamic_focus_next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/NextFocus.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -1237,7 +1237,7 @@ When components with positive **tabIndex** values are present, only these compon
 > **tabIndex** only customizes Tab key navigation. For arrow key navigation customization, use [nextFocus](#setting-the-focus-navigation-order-with-nextfocus).
 
   <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -1566,7 +1566,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
 > - Since API version 18, the focused component responds to the **onClick** event only when the focus is active.
 
    <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @Component

@@ -1,12 +1,11 @@
 # Freezing a Custom Component (V2)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:55:35.455Z pushedAt=2026-07-25T09:19:15.852Z -->
+<!-- md-trans-meta sourceCommit=5c247b82ce85865eb0a403efc1424399c7afe7c1 translatedAt=2026-11-05T03:58:29.020Z pushedAt=2026-11-05T08:31:34.471Z nl=1 -->
 
 When a custom component decorated by @ComponentV2 is in the inactive state, its state variables will not respond to updates. That is, [@Monitor](./arkts-new-monitor.md) will not be invoked, and the nodes associated with the state variables will not be refreshed. This freeze mechanism significantly optimizes performance in complex UI scenarios by preventing inactive components from performing unnecessary refreshes due to state variable updates, thereby reducing resource consumption. The [freezeWhenInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions) attribute determines whether to enable the freeze feature. When no parameter is passed, the freeze feature is not used by default. Supported scenarios include [page routing](../../reference/apis-arkui/js-apis-router.md), [TabContent](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md), [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md), and [Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md).
 
@@ -85,6 +84,8 @@ export struct Page1 {
 }
 ```
 
+
+
 Page 2:
 
 <!-- @[freeze_template1_Page2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page2.ets) --> 
@@ -105,6 +106,7 @@ struct Page2 {
   }
 }
 ```
+
 
 In the preceding example:
 
@@ -183,15 +185,17 @@ struct FreezeChild {
 }
 ```
 
+
 In the preceding example:
 
 1. When **change message** is clicked, the value of **message** changes, triggering the @Monitor decorated **onMessageUpdated** callback of the **TabContent** component being displayed.
 
-2. When **tab1** in **TabBar** is clicked to navigate to another **TabContent** component, the component switches from inactive to active, triggering the corresponding **onMessageUpdated** callback registered via @Monitor.
+2. When **tab1** in **TabBar** is clicked to navigate to another **TabContent** component, the component switches from inactive to active, triggering the corresponding **onMessageUpdated** callback registered via @Monitor. 
 
 3. When **change message** is clicked again, the value of **message** changes, triggering only the **onMessageUpdated** callback registered via @Monitor of the **TabContent** component being displayed. Other inactive **TabContent** components do not trigger @Monitor decorated callbacks.
 
 ![TabContent.gif](figures/TabContent.gif)
+
 
 ### Navigation
 
@@ -360,6 +364,7 @@ struct NavigationContentMsgStack {
 }
 ```
 
+
 In the preceding example:
 
 1. When **change message** is clicked, the value of **message** changes, triggering the @Monitor decorated **info** callback of the **MyNavigationTestStack** component being displayed.
@@ -465,6 +470,7 @@ struct ChildComponent {
 }
 ```
 
+
 In the preceding example:
 
 After **Reduce length to 5** is clicked, the two removed components enter the cache pool of **Repeat**. Then, clicking **Change bgColor** changes the value of **bgColor**, triggering component re-rendering.
@@ -499,6 +505,8 @@ struct ChildComponent1 {
   }
 }
 ```
+
+
 
 When component freezing is disabled (**freezeWhenInactive: false** - the default setting when **freezeWhenInactive** is not specified), the @Monitor decorated **onBgColorChange** callback is triggered for both the remaining active components and components in the cache pool. This means all seven components are re-rendered, printing seven logs.
 
@@ -574,6 +582,7 @@ export struct Child {
 }
 ```
 
+
 <!-- @[freeze_template5_PageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageB.ets) --> 
 
 ``` TypeScript
@@ -605,6 +614,7 @@ struct PageB {
 }
 ```
 
+
 When using **Navigation**, create a **route_map.json** file as shown below in the **src/main/resources/base/profile** directory, replacing the value of **pageSourceFile** with the actual path to **PageB**. Then, add **"routerMap": "$profile: route_map"** to the **module.json5** file.
 
 ```json
@@ -623,11 +633,8 @@ When using **Navigation**, create a **route_map.json** file as shown below in th
 ```
 
 In the preceding example:
-
 - The child component **Child** in **PageA** has **freezeWhenInactive: true** configured.
-
 - During the test, click the **change BookName** button; within 3 seconds, click the **Go to next page** button. When **bookTest** is updated, **PageA** is already in the inactive state after navigation to **PageB**. Due to component freezing enabled for **Child**, the **@Local bookTest** state variable does not respond to updates. This means that the @Monitor decorated method will not be called, and any nodes associated with the state variable will not be re-rendered.
-
 - After the **Back** button is clicked to return to the previous page, the @Monitor decorated callback is triggered, and components associated with the state variable will be re-rendered.
 
 ### Mixed Use of Component Freezing
@@ -818,6 +825,7 @@ struct PageTwoStack2 {
   }
 }
 ```
+
 
 For API version 17 or earlier:
 

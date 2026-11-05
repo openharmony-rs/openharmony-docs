@@ -5,6 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=64dfe2a0d3c77231f8b80a235a1d7d4e2d29acd7 translatedAt=2026-11-05T03:44:51.321Z pushedAt=2026-11-05T08:31:34.413Z nl=1 -->
 
 ## Overview
 
@@ -79,7 +80,7 @@ For scenarios where development is performed using encapsulated APIs on the ArkT
 
 For complex interaction logic that requires cross-language development, for scenarios pursuing extreme rendering performance, or for business needs that require independent control over Surface creation and destruction, [OH_ArkUI_SurfaceHolder](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) is recommended on the native side to manage the Surface lifecycle. The lifecycle trigger conditions are as follows:
 
-- OnSurfaceCreated   
+- OnSurfaceCreated
 
   Triggered when the **XComponent** component is created, the surface is bound to a lifecycle callback, and any of the following conditions is met:
   1. The component is attached to the component tree with **autoInitialize = true**.
@@ -1356,7 +1357,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
             return PROGRAM_ERROR;
         }
     
-        // The gl function has no return value.
+        // This gl function has no return value.
         glShaderSource(shader, 1, &shaderSrc, nullptr);
         glCompileShader(shader);
     
@@ -1625,7 +1626,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
     <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/CMakeLists.txt) -->
 
     ```CMake
-    # the minimum version of CMake.
+    # Minimum CMake version requirement.
     cmake_minimum_required(VERSION 3.4.1)
     project(XComponent)
     
