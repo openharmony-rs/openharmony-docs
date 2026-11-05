@@ -324,7 +324,7 @@ Usage: hiperf report [option]
 |  | void SetBackTrackSec(int backTracesec) | 功能：设置回溯采集的时间。<br/>输入参数：<br/>-&nbsp;backTracesec：整型，单位为s，表示回溯的时长。<br/>输出参数：无。<br/>返回值：空。 | 
 |  | bool IsTimeSpecified() const | 功能：校验当前的RecordOption配置中，是否指定了采集时长。<br/>输入参数：无。<br/>输出参数：无。<br/>返回值：布尔类型，true表示已经设置采集时长，false表示尚未设置采集时长。 | 
 | Client | bool Start() | 功能：启动性能数据采集，采用默认参数。<br/>输入参数：无。<br/>输出参数：无。<br/>返回值：布尔类型，true表示成功；false表示失败。 | 
-|  | bool Start(const RecordOption &option) | 功能：根据RecordOption对象中配置的参数，启动性能数据采集。。<br/>输入参数：<br/>-&nbsp;option：RecordOption对象类型，包含了所有采集相关的配置（如采样事件、目标进程 PID、采样频率等）。<br/>输出参数：无。<br/>返回值：布尔类型，true表示成功；false表示失败。 | 
+|  | bool Start(const RecordOption &option) | 功能：根据RecordOption对象中配置的参数，启动性能数据采集。<br/>输入参数：<br/>-&nbsp;option：RecordOption对象类型，包含了所有采集相关的配置（如采样事件、目标进程 PID、采样频率等）。<br/>输出参数：无。<br/>返回值：布尔类型，true表示成功；false表示失败。 | 
 |  | bool Start(const std::vector\<std::string> &args, bool immediately = true) | 功能：使用命令行参数的形式启动性能数据采集。<br/>输入参数：<br/>-&nbsp;args：字符串数组，每个元素代表一个命令行参数（如 {"-a", "--call-graph", "dwarf"}）。<br/>-&nbsp;immediately：布尔类型，true表示是在启动后立即开始采集；false表示启动采集进程，但暂不开始采集，等待后续调用Resume() 方法。<br/>输出参数：无。<br/>返回值：布尔类型，true表示成功；false表示失败。 | 
 |  | bool Stop() | 功能：停止性能数据采集，结束监控并保存数据。<br/>输入参数：无。<br/>输出参数：无。<br/>返回值：布尔类型，true表示成功；false表示失败。 | 
 |  | bool Pause() | 功能：暂停当前的性能数据采集（可通过Resume恢复）。<br/>输入参数：无。<br/>输出参数：无。<br/>返回值：布尔类型，true表示成功；false表示失败。 | 
