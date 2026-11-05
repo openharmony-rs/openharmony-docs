@@ -9,14 +9,14 @@
 ## 场景介绍
 
 Data Protection Kit为应用提供了获取DLP文件权限策略信息的能力，应用可查询某个DLP文件的具体策略，包括授权用户列表、授予权限、是否允许离线打开、企业自定义策略等。
-
+ 
 <!--RP1--><!--RP1End-->
 
 ## 开发步骤
 
 1. 导入模块。 
 
-    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
@@ -30,7 +30,7 @@ Data Protection Kit为应用提供了获取DLP文件权限策略信息的能力�
 
     2.3 调用[dlpPermission.queryDlpPolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionquerydlppolicy21)获取DLP明文策略。
 
-    <!-- @[dlp_queryDlpPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_queryDlpPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     async queryDlpPolicy() {
