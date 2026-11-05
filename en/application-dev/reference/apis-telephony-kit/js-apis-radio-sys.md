@@ -2505,7 +2505,7 @@ Obtains the software version of the SIM card in the specified slot.
 
 | Type              | Description                                     |
 | ------------------ | ---------------------------------------- |
-| string | The software version of the SIM card in the specified slot.|
+| string | Software version of the SIM card in the specified slot.|
 
 **Error codes**
 
