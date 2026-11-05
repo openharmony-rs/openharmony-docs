@@ -18,9 +18,9 @@ A system event supports multiple subscribers. Each subscriber receives a differe
 
 Choose either the ArkTS or C/C++ APIs to register an external_log manager as needed.
 
-- [Cleaning Up external_log Logs (ArkTS)](external-log-arkts.md)
+- [Cleaning Up external_log Files (ArkTS)](external-log-arkts.md)
 
-- [Cleaning Up external_log Logs (C/C++)](external-log-ndk.md)
+- [Cleaning Up external_log Files (C/C++)](external-log-ndk.md)
 
 ## Working Principles
 An app subscribes to a system event to obtain the external_log fault log content when that event occurs. The following figure shows how this works:

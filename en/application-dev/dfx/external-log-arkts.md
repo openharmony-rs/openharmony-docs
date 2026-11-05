@@ -1,4 +1,4 @@
-# Cleaning Up external_log Logs (ArkTS)
+# Cleaning Up external_log Files (ArkTS)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
