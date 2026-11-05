@@ -1,6 +1,6 @@
 ---
 kits: ["Audio Kit / 音频服务"]
-description: "使用 OHAudioSuite 实时预览管线，在 OH_AudioRenderer 播放回调中调用 RenderFrame，边播边处理、实时应用均衡器等音效。"
+description: "使用OHAudioSuite实时预览管线，在OH_AudioRenderer播放回调中调用RenderFrame，边播边处理、实时应用均衡器等音效。"
 keywords: [OHAudioSuite, 实时预览, 均衡器, 效果节点, 均衡器预置效果, AUDIOSUITE_PIPELINE_REALTIME_MODE]
 doctype: guide
 status: active
@@ -262,9 +262,3 @@ target_link_libraries(entry PUBLIC libohaudiosuite.so)
 
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->
-
-## 相关主题推荐
-
-- [音频编创开发概述(C/C++)](audio-suite.md)
-- [离线编辑(C/C++)](audio-suite-manual-rendering.md)
-- [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)

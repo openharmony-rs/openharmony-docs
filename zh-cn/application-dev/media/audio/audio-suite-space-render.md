@@ -1,6 +1,6 @@
 ---
 kits: ["Audio Kit / 音频服务"]
-description: "从 API version 23 起提供空间渲染效果节点，支持固定摆位、旋转、扩展三种工作模式，基于左手坐标系在三维空间中对音频源进行定位、动态旋转和范围扩展，适用于构建沉浸式空间音频体验。"
+description: "从API版本23起提供空间渲染效果节点，支持固定摆位、旋转、扩展三种工作模式，基于左手坐标系在三维空间中对音频源进行定位、动态旋转和范围扩展，适用于构建沉浸式空间音频体验。"
 keywords: [OHAudioSuite, 空间音频渲染, EFFECT_NODE_TYPE_SPACE_RENDER, 固定摆位, 旋转模式, 扩展模式, 左手坐标系, 沉浸式音频, 3D音频]
 doctype: guide
 status: active
@@ -300,9 +300,3 @@ target_link_libraries(entry PUBLIC libohaudiosuite.so)
 
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->
-
-## 相关主题推荐
-
-- [音频编创开发概述(C/C++)](audio-suite.md)
-- [实时预览(C/C++)](audio-suite-real-time-rendering.md)
-- [音频效果(C/C++)](audio-suite-effects.md)
