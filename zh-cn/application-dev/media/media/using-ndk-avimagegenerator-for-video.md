@@ -153,7 +153,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
        int64_t fileSize = 0; // 媒体文件大小。
        int32_t options = OH_AVIMAGE_GENERATOR_QUERY_CLOSEST; // OH_AVIMAGE_GENERATOR_QUERY_CLOSEST表示选取离传入时间点最近的关键帧。
    };
-
+   // ...
    static napi_value OhAvImageGeneratorFetchFrameByTime(napi_env env, napi_callback_info info)
    {
        FetchFrameParams fetchFrameParams;
