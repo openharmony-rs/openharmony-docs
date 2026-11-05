@@ -2499,8 +2499,13 @@ getIMEISV\(slotId: number\): string
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
+**返回值：**
+
+| 类型               | 说明                                      |
+| ------------------ | ---------------------------------------- |
+| string | 返回指定卡槽的软件版本号。 |
 
 **错误码：**
 
@@ -2573,7 +2578,7 @@ radio.isManualNetworkScanning(0).then((state: boolean) => {
 
 ## radio.startManualNetworkScan<sup>23+</sup>
 
-startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRealTimeResult\>\): void
+startManualNetworkScan\(slotId: number, callback: Callback\<NetworkSearchRealTimeResult\>\): void
 
 开始手动搜网。使用callback异步回调。
 
@@ -2588,7 +2593,7 @@ startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRe
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| callback | AsyncCallback\<[NetworkSearchRealTimeResult](#networksearchrealtimeresult23)\> | 是   | 回调函数。返回搜网结果。     |
+| callback | Callback\<[NetworkSearchRealTimeResult](#networksearchrealtimeresult23)\> | 是   | 回调函数。返回搜网结果。     |
 
 **错误码：**
 
@@ -2606,11 +2611,8 @@ startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRe
 **示例：**
 
 ```ts
-radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
-    if (err) {
-        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
-        return;
-    }
+let slotId: number = 0;
+radio.startManualNetworkScan(slotId, (data: radio.NetworkSearchRealTimeResult) => {
     console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -2655,13 +2657,10 @@ stopManualNetworkScan\(slotId: number\): Promise\<void\>
 **示例：**
 
 ```ts
-radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
-    if (err) {
-        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
-        return;
-    }
+let slotId: number = 0;
+radio.startManualNetworkScan(slotId, (data: radio.NetworkSearchRealTimeResult) => {
     console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
-    radio.stopManualNetworkScan(0);
+    radio.stopManualNetworkScan(slotId);
 });
 ```
 
@@ -2867,10 +2866,10 @@ NR的选择模式。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称                   | 类型                                              | 必填 | 说明           |
-| ---------------------- | ------------------------------------------------- | ---- | -------------- |
-| isNetworkSearchSuccess | boolean                                           |  是  | 网络是否搜索成功。<br/>true表示网络搜索成功，false表示网络搜索失败。 |
-| networkSearchResult    | Array<[NetworkInformation](#networkinformation)\> |  是  | 网络搜索结果。 |
+| 名称                   | 类型                                              | 只读 | 可选 | 说明           |
+| ---------------------- | ------------------------------------------------- | ---- | ---- | -------------- |
+| isNetworkSearchSuccess | boolean                                           |  否  |  否  | 网络是否搜索成功。<br/>true表示网络搜索成功，false表示网络搜索失败。 |
+| networkSearchResult    | Array<[NetworkInformation](#networkinformation)\> |  否  |  否  | 网络搜索结果。 |
 
 ## NetworkInformation
 
@@ -2880,12 +2879,12 @@ NR的选择模式。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称            |                         类型                        | 必填 | 说明           |
-| --------------- | --------------------------------------------------- | ---- | -------------- |
-| operatorName    | string                                              |  是  | 运营商的名称。 |
-| operatorNumeric | string                                              |  是  | 运营商数字。   |
-| state           | [NetworkInformationState](#networkinformationstate) |  是  | 网络信息状态。 |
-| radioTech       | string                                              |  是  | 无线电技术。   |
+| 名称            |                         类型                        | 只读 | 可选 | 说明           |
+| --------------- | --------------------------------------------------- | ---- | ---- | -------------- |
+| operatorName    | string                                              |  否  |  否  | 运营商的名称。 |
+| operatorNumeric | string                                              |  否  |  否  | 运营商数字。   |
+| state           | [NetworkInformationState](#networkinformationstate) |  否  |  否  | 网络信息状态。 |
+| radioTech       | string                                              |  否  |  否  | 无线电技术。   |
 
 ## NetworkInformationState
 
@@ -2910,12 +2909,12 @@ NR的选择模式。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称               |                    类型                       | 必填 |                 说明                   |
-| ------------------ | --------------------------------------------- | ---- | -------------------------------------- |
-| slotId             | number                                        |  是  | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| selectMode         | [NetworkSelectionMode](js-apis-radio.md#networkselectionmode) |  是  | 网络选择模式。                         |
-| networkInformation | [NetworkInformation](#networkinformation)     |  是  | 网络信息。                             |
-| resumeSelection    | boolean                                       |  是  | 是否继续选择。<br/>true表示继续选择，false表示不继续选择。                              |
+| 名称               |                    类型                       | 只读 | 可选 |                 说明                   |
+| ------------------ | --------------------------------------------- | ---- | ---- | -------------------------------------- |
+| slotId             | number                                        |  否  |  否  | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| selectMode         | [NetworkSelectionMode](js-apis-radio.md#networkselectionmode) |  否  |  否  | 网络选择模式。                         |
+| networkInformation | [NetworkInformation](#networkinformation)     |  否  |  否  | 网络信息。                             |
+| resumeSelection    | boolean                                       |  否  |  否  | 是否继续选择。<br/>true表示继续选择，false表示不继续选择。                              |
 
 ## ImsRegState<sup>9+</sup>
 
@@ -2953,10 +2952,10 @@ IMS注册信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称        | 类型                         | 必填 | 说明          |
-| ----------- | ---------------------------- | ---- | ------------- |
-| imsRegState | [ImsRegState](#imsregstate9) |  是  | IMS注册状态。 |
-| imsRegTech  | [ImsRegTech](#imsregtech9)   |  是  | IMS注册技术。 |
+| 名称        | 类型                         | 只读 | 可选 | 说明          |
+| ----------- | ---------------------------- | ---- | ---- | ------------- |
+| imsRegState | [ImsRegState](#imsregstate9) |  否  | 否 | IMS注册状态。 |
+| imsRegTech  | [ImsRegTech](#imsregtech9)   |  否  | 否 | IMS注册技术。 |
 
 ## ImsServiceType<sup>9+</sup>
 
@@ -3007,7 +3006,7 @@ IMS服务类型。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称               |                    类型                       | 必填 |                 说明                   |
-| ------------------ | --------------------------------------------- | ---- | -------------------------------------- |
-| networkInfos    | Array<[NetworkInformation](#networkinformation)\> |  是  | 包含可用网络信息的搜索结果列表。 |
-| isFinish        | boolean     |  是  | 网络搜索是否已停止。<br/>true表示已完成，false表示未完成。                 |
+| 名称               |                    类型                       | 只读 | 可选 |                 说明                   |
+| ------------------ | --------------------------------------------- | ---- | ---- | -------------------------------------- |
+| networkInfos    | Array<[NetworkInformation](#networkinformation)\> |  否  |  否  | 包含可用网络信息的搜索结果列表。 |
+| isFinish        | boolean     |  否  |  否  | 网络搜索是否已停止。<br/>true表示已完成，false表示未完成。                 |
