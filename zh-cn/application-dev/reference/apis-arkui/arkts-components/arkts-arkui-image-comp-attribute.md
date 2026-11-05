@@ -14,13 +14,13 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 > 
 > - 使用快捷组合键对Image组件复制时，Image组件必须处于获焦状态，如何获焦请参考[设置组件是否可获焦](../../../ui/arkts-common-events-focus-event.md#设置组件是否可获焦)。Image组件默认不获焦，需将[focusable](arkts-arkui-common-comp-commonmethod-c.md#focusable)属性设置为true，即可使用Tab键将焦点切换到组件上，再将[focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch)属性设置为true，即可实现点击获焦。
 > 
-> - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](arkts-arkui-common-comp.md)。
+> - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](arkts-arkui-common-comp-commonmethod-c.md)。
 > 
 > - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange-1)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
 > 
 > - Image组件播放GIF动图时，帧时长取自GIF文件中各帧的delay time字段。当某帧的时长值小于等于0时，系统会将其修正为100ms；当某帧的时长值大于0时，系统直接使用该原始值，不做最小帧时长限制。 &gt;
 
-除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
 
 **继承/实现关系：** ImageAttribute extends CommonMethod&lt;ImageAttribute&gt;
 
@@ -420,7 +420,7 @@ fillColor(color: ResourceColor | ColorContent)
 fillColor(color: ResourceColor | ColorContent | ColorMetrics)
 ```
 
-设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter-1)。如果想重置填充颜色可以传入[ColorContent](arkts-arkui-image-comp-colorcontent-c.md)类型。支持通过传入[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型设置P3色域颜色值&lt;!- -Del--&gt;，从API version 24开始，支持BT2020色域颜色值<!--DelEnd-->，可在支持高色域的设备上获得更丰富的色彩表现。
+设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter-1)。如果想重置填充颜色可以传入[ColorContent](arkts-arkui-image-comp-colorcontent-c.md)类型。支持通过传入ColorMetrics类型设置P3色域颜色值&lt;!- -Del--&gt;，从API version 24开始，支持BT2020色域颜色值<!--DelEnd-->，可在支持高色域的设备上获得更丰富的色彩表现。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)时设置该属性不生效。
 
@@ -1150,7 +1150,7 @@ sourceSize(value: ImageSourceSize)
 supportSvg2(enable: boolean) : ImageAttribute
 ```
 
-开启或关闭[SVG标签解析能力增强功能](arkts-arkui-image-comp.md)，开启后相关SVG图片显示效果会有变化。
+开启或关闭SVG标签解析能力增强功能，开启后相关SVG图片显示效果会有变化。
 
 Image组件创建后，不支持动态修改该属性的值。
 

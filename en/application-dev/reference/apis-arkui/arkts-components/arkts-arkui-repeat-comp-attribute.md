@@ -4,7 +4,7 @@
 declare class RepeatAttribute<T> extends DynamicNode<RepeatAttribute<T>>
 ```
 
-In addition to the drag-and-drop sorting attribute, the following attributes are supported.
+In addition to the [drag-and-drop sorting](arkts-arkui-common-comp-commonmethod-c.md) attribute, the following attributes are supported.
 
 **Inheritance/Implementation:** RepeatAttribute extends DynamicNode&lt;RepeatAttribute&lt;T&gt;&gt;
 

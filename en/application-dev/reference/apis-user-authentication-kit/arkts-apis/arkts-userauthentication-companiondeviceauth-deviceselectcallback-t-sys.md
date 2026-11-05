@@ -20,10 +20,10 @@ Defines the callback triggered for the companion device selection. When the syst
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectPurpose | number | Yes | Selection purpose. It identifies the purpose of the current device selection. For details about the value, see [SelectPurpose](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md). **SELECT_ADD_DEVICE(1)** means to select the device for adding a template, and **SELECT_AUTH_DEVICE(2)** means to select the device for authentication. Vendors can customize the extended value (greater than or equal to 10000). The application should return the corresponding device list based on the selection purpose. |
+| selectPurpose | number | Yes | Selection purpose. Used to identify the intent of the current device selection. For the values, see [SelectPurpose](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md). **SELECT_ADD_DEVICE(1)** indicates selecting a device for adding a template, and **SELECT_AUTH_DEVICE(2)** indicates selecting an authentication device. Vendors can define extended values (greater than or equal to 10000). The application should return a **DeviceSelectResult** containing the corresponding device information based on **selectPurpose**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [DeviceSelectResult](arkts-userauthentication-companiondeviceauth-deviceselectresult-i-sys.md) | Device selection result. It contains the device information list (**deviceKeys**) selected by the user and the optional extended context (**selectionContext**). |
+| [DeviceSelectResult](arkts-userauthentication-companiondeviceauth-deviceselectresult-i-sys.md) | Used to return the device information selected by the user to the system, so that the system can perform subsequent template addition or authentication operations. Contains the list of device information selected by the user (**deviceKeys**) and the optional extended context (**selectionContext**). |

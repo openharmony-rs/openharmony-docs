@@ -251,7 +251,7 @@ Transfers focus to the corresponding entity node in the component tree by the co
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | [Component ID](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md) of the target node. |
+| key | string | Yes | [Component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) of the target node. |
 
 **Error codes:**
 
@@ -339,7 +339,7 @@ Sets whether the new page automatically obtains focus during page switching.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isAutoFocusTransfer | boolean | Yes | Whether the new page automatically obtains focus during page switching using navigation components or APIs, such as [Router](arkts-arkui-router.md), Navigation, Menu, [Dialog](arkts-arkui-arkui-advanced-dialog.md), and [Popup](arkts-arkui-arkui-advanced-popup.md). The value **true** means the new page automatically obtains focus, and **false** means the opposite. Default value: **true**. |
+| isAutoFocusTransfer | boolean | Yes | Whether the new page automatically obtains focus during page switching using navigation components or APIs, such as [Router](arkts-arkui-router.md), [Navigation](../arkts-components/arkts-arkui-navigation-comp.md), [Menu](../arkts-components/arkts-arkui-menu-comp.md), [Dialog](arkts-arkui-arkui-advanced-dialog.md), and [Popup](arkts-arkui-arkui-advanced-popup.md). The value **true** means the new page automatically obtains focus, and **false** means the opposite. Default value: **true**. |
 
 **Examples**
 

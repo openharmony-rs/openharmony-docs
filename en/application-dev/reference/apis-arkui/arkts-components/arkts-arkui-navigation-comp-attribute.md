@@ -4,7 +4,7 @@
 declare class NavigationAttribute extends CommonMethod<NavigationAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 **Inheritance/Implementation:** NavigationAttribute extends CommonMethod&lt;NavigationAttribute&gt;
 
@@ -24,7 +24,7 @@ Sets the icon of the back button in the title bar.
 
 > **NOTE:** 
 > 
-> The SymbolGlyphModifier object's
+> The [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) object's
 > [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize) attribute cannot be used to change the icon size,
 > [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) attribute cannot be used to change the animation
 > effect, and

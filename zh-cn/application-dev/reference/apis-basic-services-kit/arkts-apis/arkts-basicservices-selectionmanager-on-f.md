@@ -16,6 +16,8 @@ function on(type: 'selectionCompleted', callback: Callback<SelectionInfo>): void
 
 **起始版本：** 24
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-selectionManager-function on(type: 'selectionCompleted', callback: Callback<SelectionInfo>): void--><!--Device-selectionManager-function on(type: 'selectionCompleted', callback: Callback<SelectionInfo>): void-End-->
 
 **系统能力：** SystemCapability.SelectionInput.Selection

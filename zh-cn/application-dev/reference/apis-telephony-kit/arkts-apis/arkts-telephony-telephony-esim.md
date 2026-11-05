@@ -20,7 +20,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addProfile](arkts-telephony-esim-addprofile-f.md#addprofile-1) | 通过该接口拉起下载界面，允许用户添加单个配置文件。使用Promise异步回调。 |
+| [addProfile](arkts-telephony-esim-addprofile-f.md#addprofile-1) | 当用户需要激活新eSIM（如新开卡或换卡）时，调用此接口引导完成配置文件的下载与添加流程。使用Promise异步回调。 |
 | [isSupported](arkts-telephony-esim-issupported-f.md#issupported-1) | 获取指定卡槽是否支持eSIM功能。 |
 
 <!--Del-->
@@ -28,24 +28,24 @@ import { eSIM } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [cancelSession](arkts-telephony-esim-cancelsession-f-sys.md#cancelsession-1) | 取消会话。使用Promise异步回调。 |
-| [deleteProfile](arkts-telephony-esim-deleteprofile-f-sys.md#deleteprofile-1) | 删除配置文件。使用Promise异步回调。 |
+| [cancelSession](arkts-telephony-esim-cancelsession-f-sys.md#cancelsession-1) | 取消与SM-DP+服务器之间正在进行的eSIM业务会话（如配置文件下载会话）。通过传入业务ID和取消原因，终止当前进行中的会话操作。使用Promise异步回调。 |
+| [deleteProfile](arkts-telephony-esim-deleteprofile-f-sys.md#deleteprofile-1) | 删除配置文件。使用 Promise异步回调。 |
 | [downloadProfile](arkts-telephony-esim-downloadprofile-f-sys.md#downloadprofile-1) | 下载配置文件。使用Promise异步回调。 |
-| [getContractInfo](arkts-telephony-esim-getcontractinfo-f-sys.md#getcontractinfo-1) | 获取开通eSIM需要的，加密的esim id等信息。 |
+| [getContractInfo](arkts-telephony-esim-getcontractinfo-f-sys.md#getcontractinfo-1) | 获取开通eSIM需要的，加密的EID等信息。 |
 | [getDefaultSmdpAddress](arkts-telephony-esim-getdefaultsmdpaddress-f-sys.md#getdefaultsmdpaddress-1) | 获取存储在eUICC中的默认SM-DP+地址。使用Promise异步回调。 |
-| [getDownloadableProfileMetadata](arkts-telephony-esim-getdownloadableprofilemetadata-f-sys.md#getdownloadableprofilemetadata-1) | 填充可下载配置文件的元数据。使用Promise异步回调。 |
+| [getDownloadableProfileMetadata](arkts-telephony-esim-getdownloadableprofilemetadata-f-sys.md#getdownloadableprofilemetadata-1) | 根据传入的可下载配置文件信息（含激活码），向SM-DP+服务器请求并获取该配置文件的元数据（如服务提供商名称、配置文件类等）。使用Promise异步回调。 |
 | [getDownloadableProfiles](arkts-telephony-esim-getdownloadableprofiles-f-sys.md#getdownloadableprofiles-1) | 获取可用的可下载配置文件列表。使用Promise异步回调。 |
 | [getEid](arkts-telephony-esim-geteid-f-sys.md#geteid-1) | 获取指定卡槽标识eUICC硬件的EID(Equipment Identifier，Embedded SIM识别码)。 |
-| [getEsimFreeStorage](arkts-telephony-esim-getesimfreestorage-f-sys.md#getesimfreestorage-1) | 通过该接口获取eUICC硬件的剩余存储空间。使用Promise异步回调。 |
+| [getEsimFreeStorage](arkts-telephony-esim-getesimfreestorage-f-sys.md#getesimfreestorage-1) | 获取eUICC硬件的剩余存储空间。使用Promise异步回调。 |
 | [getEuiccInfo](arkts-telephony-esim-geteuiccinfo-f-sys.md#geteuiccinfo-1) | 获取eUICC信息。使用Promise异步回调。 |
 | [getEuiccProfileInfoList](arkts-telephony-esim-geteuiccprofileinfolist-f-sys.md#geteuiccprofileinfolist-1) | 获取配置文件信息列表。使用Promise异步回调。 |
 | [getOsuStatus](arkts-telephony-esim-getosustatus-f-sys.md#getosustatus-1) | 获取指定卡槽操作系统升级的状态。使用Promise异步回调。 |
-| [getSupportedPkids](arkts-telephony-esim-getsupportedpkids-f-sys.md#getsupportedpkids-1) | 获取手机支持的公钥ID信息。 |
-| [reserveProfilesForFactoryRestore](arkts-telephony-esim-reserveprofilesforfactoryrestore-f-sys.md#reserveprofilesforfactoryrestore-1) | 恢复出厂设置，并保留profiles。使用Promise异步回调。 |
-| [resetMemory](arkts-telephony-esim-resetmemory-f-sys.md#resetmemory-1) | 清除所有特定配置文件并重置eUICC。使用Promise异步回调。 |
+| [getSupportedPkids](arkts-telephony-esim-getsupportedpkids-f-sys.md#getsupportedpkids-1) | 获取手机支持的公钥ID信息，用于eSIM开通流程中的安全认证。在调用getContractInfo接口进行加密认证前，需先调用本接口获取可用的公钥ID。 |
+| [reserveProfilesForFactoryRestore](arkts-telephony-esim-reserveprofilesforfactoryrestore-f-sys.md#reserveprofilesforfactoryrestore-1) | 恢复出厂设置，并保留配置文件。使用Promise异步回调。 |
+| [resetMemory](arkts-telephony-esim-resetmemory-f-sys.md#resetmemory-1) | 清除所有特定配置文件并重置eUICC。与reserveProfilesForFactoryRestore不同，本接口会清除配置文件；若需恢复出厂设置并保留已有配置文件，请使用reserveProfilesForFactoryRestore。使用Promise异步回调。 |
 | [setDefaultSmdpAddress](arkts-telephony-esim-setdefaultsmdpaddress-f-sys.md#setdefaultsmdpaddress-1) | 设置或更新eUICC中存储的默认SM-DP+地址。使用Promise异步回调。 |
 | [setProfileNickname](arkts-telephony-esim-setprofilenickname-f-sys.md#setprofilenickname-1) | 设置给定配置文件的昵称。使用Promise异步回调。 |
-| [startOsu](arkts-telephony-esim-startosu-f-sys.md#startosu-1) | 如果指定卡槽的操作系统不是最新的，则执行操作系统升级。使用Promise异步回调。 |
+| [startOsu](arkts-telephony-esim-startosu-f-sys.md#startosu-1) | 如果指定卡槽的操作系统不是最新的，则执行操作系统升级。执行升级后，可通过getOsuStatus接口查询升级状态（如正在升级、升级成功、升级失败等）。使用Promise异步回调。 |
 | [switchToProfile](arkts-telephony-esim-switchtoprofile-f-sys.md#switchtoprofile-1) | 切换到(启用)给定的配置文件。使用Promise异步回调。 |
 <!--DelEnd-->
 
@@ -69,7 +69,7 @@ import { eSIM } from '@kit.TelephonyKit';
 | [GetDownloadableProfileMetadataResult](arkts-telephony-esim-getdownloadableprofilemetadataresult-i-sys.md) | 获取可下载配置文件的元数据。 |
 | [GetDownloadableProfilesResult](arkts-telephony-esim-getdownloadableprofilesresult-i-sys.md) | 获取默认可下载配置文件的列表。 |
 | [GetEuiccProfileInfoListResult](arkts-telephony-esim-geteuiccprofileinfolistresult-i-sys.md) | 获取配置文件信息列表。 |
-| [OperatorId](arkts-telephony-esim-operatorid-i-sys.md) | 获取eUICC芯片/设备的相关信息。 |
+| [OperatorId](arkts-telephony-esim-operatorid-i-sys.md) | 运营商标识信息。 |
 <!--DelEnd-->
 
 <!--Del-->

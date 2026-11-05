@@ -49,7 +49,7 @@ colorMode?: PickerColorMode
 
 Color mode of the placeholder.
 
-This setting is used when **isAutoRefreshSupported** is set to **true** and no recent image or video meets the requirements, showing a placeholder instead.
+This setting is used when **isAutoRefreshSupported** is set to **true** and no recent photo or video meets the requirements, showing a placeholder instead. The **colorMode** field takes effect.
 
 By default, it follows the system's dark/light color mode.
 
@@ -69,11 +69,17 @@ By default, it follows the system's dark/light color mode.
 isAutoRefreshSupported?: boolean
 ```
 
-Whether the **RecentPhotoComponent** automatically refreshes when there are changes (including additions, deletions, or modifications) to the recent images or videos that meet the requirements.
+Whether the **RecentPhotoComponent** automatically refreshes when there are changes (including additions, deletions, or modifications) to the recent photos or videos that meet the requirements.
 
-If the component's originally displayed image or video is deleted and there are no other images or videos that meet the requirements, a placeholder is displayed and the component does not automatically close.
+If the component's originally displayed photo or video is deleted and there are no other photos or videos that meet the requirements, a placeholder is displayed and the component does not automatically close. The placeholder color mode can be configured using **colorMode**.
 
-The default value is **false**, indicating that the component does not automatically refresh. If this parameter is set to **true**, all images are displayed, and the **period** parameter is invalid.
+The default value is **false**, indicating that automatic refresh is not supported.
+
+If this parameter is set to **true**, all photos or videos that meet the filter criteria are displayed. This parameters is still specified by **photoSource** and **MIMEType**, but not by **period**.
+
+The **period** field becomes invalid.
+
+**Note:** If automatic refresh is enabled, media library changes are listened for. It is recommended that this function be used in scenarios where real-time updates are required to avoid frequent refreshes that may affect performance.
 
 **Type:** boolean
 
@@ -131,7 +137,7 @@ Whether to show the badge on the displayed photo. true: show the badge info, suc
 MIMEType?: photoAccessHelper.PhotoViewMIMETypes
 ```
 
-Types of the file displayed. The default value is **PhotoViewMIMETypes.IMAGE_VIDEO_TYPE**.
+Types of the file displayed. The options include **IMAGE_TYPE** (only images are displayed), **VIDEO_TYPE** (only videos are displayed), and **IMAGE_VIDEO_TYPE** (both images and videos are displayed). The default value is **IMAGE_VIDEO_TYPE**.
 
 **Type:** [photoAccessHelper.PhotoViewMIMETypes](arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md)
 
@@ -149,9 +155,13 @@ Types of the file displayed. The default value is **PhotoViewMIMETypes.IMAGE_VID
 period?: number
 ```
 
-Time range for displaying the recent images or videos, measured in seconds. After setting, the system shows the latest image sorted by creation time taken within the specified time from the current moment. The longest duration you can set is 2147483647 (INT_MAX) seconds.
+Time period for displaying the latest photo or video sorted by creation time, in seconds. The value range is (0, 86400]. The longest duration you can set is 1 day (86400s).
 
-If the value is set to Number.POSITIVE_INFINITY, the system shows the latest one within the INT_MAX range. If the value is less than or equal to 0, greater than INT_MAX, or not set, the system uses 1 day by default. If there are no images or videos within the set time range, the component does not show anything.
+If the value is less than or equal to 0, greater than 86400, or not set, the latest photos or videos within one day are displayed by default. If there is no photo or video in the specified period, the component is not displayed.
+
+**Note:** 
+
+When **isAutoRefreshSupported** is set to **true**, the **period** field becomes invalid.
 
 **Type:** number
 
@@ -169,7 +179,9 @@ If the value is set to Number.POSITIVE_INFINITY, the system shows the latest one
 photoSource?: PhotoSource
 ```
 
-Source of the recent image or video, for example, image or video taken by the camera or screenshot. By default, the source is not restricted.
+Source of the recent photo or video, for example, image or video taken by the camera or screenshot. By default, the source is not restricted.
+
+**Note:** This field is still valid when **isAutoRefreshSupported** is set to **true**.
 
 **Type:** [PhotoSource](arkts-medialibrary-file-recentphotocomponent-photosource-e.md)
 

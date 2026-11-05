@@ -215,7 +215,7 @@ try {
 function on(type: 'getLiveFormStatus',  callback: formInfo.GetLiveFormStatusCallback): void
 ```
 
-Listens to the event of get live form status.
+订阅所有实时卡片的运行状态查询事件。使用callback异步回调。
 
 **起始版本：** 20
 
@@ -229,8 +229,8 @@ Listens to the event of get live form status.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'getLiveFormStatus' | 是 | Indicates event type. |
-| callback | [formInfo.GetLiveFormStatusCallback](arkts-form-forminfo-getliveformstatuscallback-t-sys.md) | 是 | The callback of get live form status. |
+| type | 'getLiveFormStatus' | 是 | 事件回调类型，支持的事件为'getLiveFormStatus'，表示在线卡片状态查询。 |
+| callback | [formInfo.GetLiveFormStatusCallback](arkts-form-forminfo-getliveformstatuscallback-t-sys.md) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回所有实时卡片的运行状态。 |
 
 **错误码：**
 

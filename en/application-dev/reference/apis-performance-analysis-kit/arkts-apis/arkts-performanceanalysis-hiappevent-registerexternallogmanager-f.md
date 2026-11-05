@@ -34,4 +34,4 @@ Register external log manager
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 11106001 | State error. Possible causes: 1. Log manager already registered; |
+| [11106001](../errorcode-hiappevent.md#11106001-failed-to-register-the-external_log-log-manager) | State error. Possible causes: 1. Log manager already registered; |

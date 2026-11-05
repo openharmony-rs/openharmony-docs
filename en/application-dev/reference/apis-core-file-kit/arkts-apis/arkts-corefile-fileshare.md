@@ -67,7 +67,14 @@ import { fileShare } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [GrantStatus](arkts-corefile-fileshare-grantstatus-e.md) | Enumerates the status of the URI permission granted by user. |
 | [OperationMode](arkts-corefile-fileshare-operationmode-e.md) | Enumerates the uri operate mode types. |
 | [PolicyErrorCode](arkts-corefile-fileshare-policyerrorcode-e.md) | Enumerates the error code of the permission policy for the URI operation. |
 | [PolicyType](arkts-corefile-fileshare-policytype-e.md) | Indicates the policy type of the path. |
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [GrantStatus](arkts-corefile-fileshare-grantstatus-e-sys.md) | Enumerates the status of the URI permission granted by user. |
+<!--DelEnd-->

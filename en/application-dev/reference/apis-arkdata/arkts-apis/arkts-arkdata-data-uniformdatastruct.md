@@ -30,3 +30,16 @@ import { uniformDataStruct } from '@kit.ArkData';
 | [OpenHarmonyAppItem](arkts-arkdata-uniformdatastruct-openharmonyappitem-i.md) | Represents the system-defined desktop icon typed data, which is used to share desktop icon information across applications. Typical usage scenarios include dragging icons on the home screen launcher, sharing application icons in the app store, or creating shortcuts. |
 | [PixelMap](arkts-arkdata-uniformdatastruct-pixelmap-i.md) | Represents the system-defined pixel map typed data, used to describe image pixel data. After a PixelMap object is created, it can be used in scenarios such as image drag-and-drop and image sharing to implement cross-application image data transfer. |
 | [PlainText](arkts-arkdata-uniformdatastruct-plaintext-i.md) | Represents data of the plain text type. |
+| [VirtualBaseItem](arkts-arkdata-uniformdatastruct-virtualbaseitem-i.md) | Describes the common metadata of a virtual file system item used for on-demand drag data. |
+| [VirtualDirItem](arkts-arkdata-uniformdatastruct-virtualdiritem-i.md) | Describes a virtual directory and its optional child items. |
+| [VirtualFileInfo](arkts-arkdata-uniformdatastruct-virtualfileinfo-i.md) | Defines a virtual root and the callbacks used by UDMF to serve it after a successful drag drop. Callback state remains in the source process and is never returned by a target-side get operation. |
+| [VirtualFileItem](arkts-arkdata-uniformdatastruct-virtualfileitem-i.md) | Describes a virtual file whose bytes are provided on demand. |
+
+### Types
+
+| Name | Description |
+| --- | --- |
+| [VirtualFileOnCancel](arkts-arkdata-uniformdatastruct-virtualfileoncancel-t.md) | Callback that cancels pending work for the specified virtual file identifiers. |
+| [VirtualFileOnRead](arkts-arkdata-uniformdatastruct-virtualfileonread-t.md) | Callback that reads at most **length** bytes from a virtual file. A single request is at most 5 MiB. |
+| [VirtualFileOnStat](arkts-arkdata-uniformdatastruct-virtualfileonstat-t.md) | Callback that obtains current metadata for a virtual file. |
+| [VirtualItemType](arkts-arkdata-uniformdatastruct-virtualitemtype-t.md) | Virtual file or directory metadata. |

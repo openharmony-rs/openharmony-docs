@@ -80,7 +80,7 @@ try {
 constructor(bundleName: string)
 ```
 
-A constructor used to create a CloudFileCache object.
+用于获取CloudFileCache类的实例。
 
 **起始版本：** 26.0.0
 

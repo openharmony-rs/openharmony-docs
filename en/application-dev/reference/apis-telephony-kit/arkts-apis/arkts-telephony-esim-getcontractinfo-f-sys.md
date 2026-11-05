@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function getContractInfo(slotId: number, requestData: ContractRequestData) : Promise<string>
 ```
 
-Obtains the encrypted eSIM ID and other information required for enabling eSIM.
+Obtain the encrypted EID required for enabling the eSIM.
 
 **Since:** 20
 
@@ -28,7 +28,7 @@ Obtains the encrypted eSIM ID and other information required for enabling eSIM.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | requestData | [ContractRequestData](arkts-telephony-esim-contractrequestdata-i-sys.md) | Yes | Information to be encrypted. |
 
 **Return value:**

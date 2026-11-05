@@ -34,7 +34,7 @@ View all images and videos.
 SELECTED_ONLY = 1
 ```
 
-View selected images and videos only.
+View selected images and videos only. You cannot switch to unselected content.
 
 **Since:** 12
 

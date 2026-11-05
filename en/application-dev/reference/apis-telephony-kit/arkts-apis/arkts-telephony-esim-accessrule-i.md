@@ -4,7 +4,7 @@
 export interface AccessRule
 ```
 
-Establishes a single UICC access rule pursuant to the GlobalPlatform Secure Element Access Control specification.
+Defines access rules.
 
 **Since:** 20
 
@@ -24,7 +24,7 @@ import { eSIM } from '@kit.TelephonyKit';
 accessType: number
 ```
 
-The type of access.
+Rule type.
 
 **Type:** number
 
@@ -40,7 +40,7 @@ The type of access.
 certificateHashHexStr: string
 ```
 
-Certificate hash hexadecimal string.
+Hexadecimal string of 40 or 64 characters containing only digits 0-9 and letters a-f (or A-F).
 
 **Type:** string
 
@@ -56,7 +56,7 @@ Certificate hash hexadecimal string.
 packageName: string
 ```
 
-The name of package.
+Package name.
 
 **Type:** string
 

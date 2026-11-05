@@ -10,7 +10,7 @@ export declare struct TabTitleBar
 > 
 > - This component can only be used in the stage model.
 > 
-> - When setting [universal attributes](../arkts-components/arkts-arkui-common-comp.md) or [universal events](../arkts-components/arkts-arkui-common-comp.md) of **TabTitleBar**, the compilation toolchain mounts them on the \_\_Common\_\_ node instead of directly applying them to the component itself, which may cause the settings to not take effect or not work as expected. Therefore, setting them is not recommended.
+> - When setting [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) of **TabTitleBar**, the compilation toolchain mounts them on the \_\_Common\_\_ node instead of directly applying them to the component itself, which may cause the settings to not take effect or not work as expected. Therefore, setting them is not recommended.
 
 **Since:** 10
 

@@ -16,7 +16,7 @@ function shareForm(formId: string, deviceId: string, callback: AsyncCallback<voi
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.REQUIRE_FORM and ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限：** ohos.permission.REQUIRE_FORM和ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-formHost-function shareForm(formId: string, deviceId: string, callback: AsyncCallback<void>): void--><!--Device-formHost-function shareForm(formId: string, deviceId: string, callback: AsyncCallback<void>): void-End-->
 
@@ -77,7 +77,7 @@ function shareForm(formId: string, deviceId: string): Promise<void>
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.REQUIRE_FORM and ohos.permission.DISTRIBUTED_DATASYNC
+**需要权限：** ohos.permission.REQUIRE_FORM和ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-formHost-function shareForm(formId: string, deviceId: string): Promise<void>--><!--Device-formHost-function shareForm(formId: string, deviceId: string): Promise<void>-End-->
 
@@ -96,7 +96,7 @@ function shareForm(formId: string, deviceId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

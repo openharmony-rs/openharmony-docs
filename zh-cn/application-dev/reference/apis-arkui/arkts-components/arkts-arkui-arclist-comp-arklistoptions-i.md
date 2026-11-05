@@ -70,7 +70,7 @@ scroller?: Scroller
 
 **说明：** 
 
-不允许和其他滚动类组件，如：[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)和[WaterFlow](arkts-arkui-waterflow-comp.md)绑定同一个滚动控制对象。
+不允许和其他滚动类组件，如：[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、Scroll和[WaterFlow](arkts-arkui-waterflow-comp.md)绑定同一个滚动控制对象。
 
 **类型：** [Scroller](arkts-arkui-scroll-comp-scroller-c.md)
 

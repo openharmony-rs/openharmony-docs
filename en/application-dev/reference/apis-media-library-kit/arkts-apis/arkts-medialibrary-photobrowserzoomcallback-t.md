@@ -4,7 +4,7 @@
 export type PhotoBrowserZoomCallback = (scale: number) => void
 ```
 
-Callback to be invoked when the large image is zoomed in or out after the large image is entered through the **PhotoPickerComponent**.
+Called when the user zooms in or out on a full image after entering the full image view through **PhotoPickerComponent**.
 
 **Since:** 26.0.0
 

@@ -42,7 +42,7 @@ Animation curve.
 duration?: number
 ```
 
-Animation duration, in ms.
+Animation effects duration, in milliseconds. The value range is [0, +∞).
 
 **Type:** number
 

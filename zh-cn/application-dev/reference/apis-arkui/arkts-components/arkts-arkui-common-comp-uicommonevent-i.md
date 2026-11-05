@@ -162,7 +162,7 @@ setOnHover(callback: HoverCallback | undefined): void
 setOnKeyEvent(callback: Callback<KeyEvent> | undefined): void
 ```
 
-设置按键事件的回调。
+设置[按键事件](arkts-arkui-common-comp-commonmethod-c.md)的回调。
 
 **起始版本：** 12
 

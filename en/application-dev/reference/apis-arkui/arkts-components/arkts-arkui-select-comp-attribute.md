@@ -4,7 +4,7 @@
 declare class SelectAttribute extends CommonMethod<SelectAttribute>
 ```
 
-In addition to the universal attributes, the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 **Inheritance/Implementation:** SelectAttribute extends CommonMethod&lt;SelectAttribute&gt;
 

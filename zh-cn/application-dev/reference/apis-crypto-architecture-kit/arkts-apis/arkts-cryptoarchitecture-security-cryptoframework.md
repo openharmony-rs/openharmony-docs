@@ -96,7 +96,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [Point](arkts-cryptoarchitecture-cryptoframework-point-i.md) | 指定椭圆曲线上的一个点。 |
 | [Poly1305ParamsSpec](arkts-cryptoarchitecture-cryptoframework-poly1305paramsspec-i.md) | 加解密参数[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，封装使用ChaCha20-Poly1305 AEAD模式进行加密或解密的参数，需要nonce、AAD和认证标签。它是[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，用于在对称加解密时作为[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法的参数。 |
 | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | 私钥，是[Key](arkts-cryptoarchitecture-cryptoframework-key-i.md)的子类，在非对称解密、签名、密钥协商时需要将其作为输入使用。 |
-| [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | 公钥，是[Key](arkts-cryptoarchitecture-cryptoframework-key-i.md)的子类，在非对称加密、签名验证、密钥协商时需要将其对象作为输入使用。 |
+| [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | 公钥，是[Key](arkts-cryptoarchitecture-cryptoframework-key-i.md)的子类，在非对称加密、验签、密钥协商时需要将其对象作为输入使用。 |
 | [Random](arkts-cryptoarchitecture-cryptoframework-random-i.md) | 随机数接口，定义随机数生成的方法。调用前，需通过[createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md)创建一个Random实例。 |
 | [RSACommonParamsSpec](arkts-cryptoarchitecture-cryptoframework-rsacommonparamsspec-i.md) | 密钥参数[AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-asykeyspec-i.md)的子类，用于指定RSA算法中公私钥包含的公共参数，随机生成公/私钥。 |
 | [RSAKeyPairSpec](arkts-cryptoarchitecture-cryptoframework-rsakeypairspec-i.md) | 密钥参数[AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-asykeyspec-i.md)的子类，用于指定RSA算法中公私钥包含的全量参数。 |

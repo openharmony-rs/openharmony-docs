@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp.md)进行处理。
+> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp-commonmethod-c.md)进行处理。
 
 ## 子组件
 
@@ -59,7 +59,7 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br>**说明：** <br>不允许和其他滚动类组件，如：[ArcList](arkts-arkui-arclist-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)和[WaterFlow](arkts-arkui-waterflow-comp.md)绑定同一个滚动控制对象。 |
+| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br>**说明：** <br>不允许和其他滚动类组件，如：[ArcList](arkts-arkui-arclist-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、Scroll和[WaterFlow](arkts-arkui-waterflow-comp.md)绑定同一个滚动控制对象。 |
 | layoutOptions | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | 否 | Grid布局选项，用于配置GridItem跨行跨列等布局信息。不传入时，Grid按照rowsTemplate、columnsTemplate等常规属性以及GridItem自身属性进行布局，不启用GridLayoutOptions提供的布局选项。<br> |
 
 ## 汇总
@@ -70,7 +70,7 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 | --- | --- |
 | [ComputedBarAttribute](arkts-arkui-grid-comp-computedbarattribute-i.md) | 滚动条位置和长度对象。 |
 | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用，可以指定一个index数组，并为其中的index对应的GridItem设置其占据的行数与列数，使用方法参见[示例3](arkts-arkui-grid-comp.md)；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用，为指定的index对应的GridItem设置位置和大小，使用方法参见[示例1](arkts-arkui-grid-comp.md)。 |
-| [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | frameNode中[getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-4)方法的返回值，可用于给Grid节点设置滚动事件。 |
+| [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | frameNode中getEvent('Grid')方法的返回值，可用于给Grid节点设置滚动事件。 |
 
 <!--Del-->
 ### 接口（系统接口）

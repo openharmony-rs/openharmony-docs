@@ -42,7 +42,7 @@ Badge type.
 uris?: Array<string>
 ```
 
-URIs of the assets for the badge.
+URIs for the badge.
 
 **Type:** Array&lt;string&gt;
 

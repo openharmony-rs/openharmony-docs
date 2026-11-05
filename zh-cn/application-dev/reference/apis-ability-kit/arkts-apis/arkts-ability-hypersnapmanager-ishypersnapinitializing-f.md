@@ -9,7 +9,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 ## isHyperSnapInitializing
 
 ```TypeScript
-function isHyperSnapInitializing(): Promise<boolean>
+function isHyperSnapInitializing(): boolean
 ```
 
 检查当前进程是否正在进行Hyper Snap初始化。
@@ -24,7 +24,7 @@ function isHyperSnapInitializing(): Promise<boolean>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-hyperSnapManager-function isHyperSnapInitializing(): Promise<boolean>--><!--Device-hyperSnapManager-function isHyperSnapInitializing(): Promise<boolean>-End-->
+<!--Device-hyperSnapManager-function isHyperSnapInitializing(): boolean--><!--Device-hyperSnapManager-function isHyperSnapInitializing(): boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -32,7 +32,7 @@ function isHyperSnapInitializing(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise用于返回结果。**true**表示当前进程正在进行Hyper Snap初始化。**false**表示当前进程未进行Hyper Snap初始化（快照已完成、失败或进程不是模板进程）。 |
+| boolean | 返回是否正在初始化的标志。**true**表示当前进程正在进行Hyper Snap初始化。**false**表示当前进程未进行Hyper Snap初始化（快照已完成、失败或进程不是模板进程）。 |
 
 **错误码：**
 

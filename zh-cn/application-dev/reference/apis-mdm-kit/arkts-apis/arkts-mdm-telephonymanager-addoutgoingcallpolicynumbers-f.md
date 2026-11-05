@@ -36,7 +36,7 @@ function addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, 
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](arkts-mdm-adminmanager-policy-e.md) | 是 | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。 |
-| numbers | Array&lt;string&gt; | 是 | 通话号码列表，当前仅支持全号码匹配。数组总长度不能超过1000。例如，若当前允许名单数组中已有100个号码，则最多支持通过该接口再添加900个。 |
+| numbers | Array&lt;string&gt; | 是 | 通话号码列表，当前仅支持全号码匹配。API 26.1.0之前数组总长度不能超过1000，例如，若当前允许名单数组中已有100个号码，则最多支持通过该接口再添加900个；API 26.1.0及以后数组总长度不能超过10000，例如，若当前允许名单数组中已有1000个号码，则最多支持通过该接口再添加9000个。 |
 
 **错误码：**
 

@@ -270,7 +270,7 @@ strokeWidth?: number
 
 Text stroke width.
 
-The unit is vp.
+The unit is [vp](arkts-arkui-common-comp-commonmethod-c.md).
 
 **Type:** number
 

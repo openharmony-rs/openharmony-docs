@@ -406,7 +406,7 @@ generateUniqueId(): Promise<string>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| 23800108 | The specified photoasset does not exist. |
+| [23800108](../errorcode-medialibrary.md#23800108-指定的资产不存在) | The specified photoasset does not exist. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 ## getAnalysisData

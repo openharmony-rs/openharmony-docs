@@ -14,6 +14,10 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+## ExtensionAbility使用限制
+
+为保障系统安全性和稳定性，防止AppServiceExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
+
 ## 导入模块
 
 ```TypeScript
@@ -251,3 +255,11 @@ AppServiceExtensionAbility的上下文环境，继承自[ExtensionContext](arkts
 <!--Device-AppServiceExtensionAbility-context: AppServiceExtensionContext--><!--Device-AppServiceExtensionAbility-context: AppServiceExtensionContext-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 附录
+
+AppServiceExtensionAbility不支持以下模块的引用。
+
+| Kit | 模块 |
+| --- | --- |
+| ArkUI | [@ohos.window](../../apis-arkui/arkts-apis/arkts-arkui-window.md) |

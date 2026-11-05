@@ -31,7 +31,7 @@ import { formHost } from '@kit.FormKit';
 | [acquireFormData](arkts-form-formhost-acquireformdata-f-sys.md#acquireformdata-2) | 请求卡片提供方数据。使用Promise异步回调。 |
 | [acquireFormState](arkts-form-formhost-acquireformstate-f-sys.md#acquireformstate-1) | 获取卡片状态。使用callback异步回调。 |
 | [acquireFormState](arkts-form-formhost-acquireformstate-f-sys.md#acquireformstate-2) | 获取卡片状态。使用Promise异步回调。 |
-| [addForm](arkts-form-formhost-addform-f-sys.md#addform-1) | Add a form. |
+| [addForm](arkts-form-formhost-addform-f-sys.md#addform-1) | 添加主题卡片。使用Promise异步回调。 |
 | [castToNormalForm](arkts-form-formhost-casttonormalform-f-sys.md#casttonormalform-1) | 将指定的临时卡片转换为普通卡片。使用callback异步回调。 |
 | [castToNormalForm](arkts-form-formhost-casttonormalform-f-sys.md#casttonormalform-2) | 将指定的临时卡片转换为普通卡片。使用Promise异步回调。 |
 | [clearRouterProxy](arkts-form-formhost-clearrouterproxy-f-sys.md#clearrouterproxy-1) | 清除卡片跳转代理。使用callback异步回调。 |
@@ -69,7 +69,7 @@ import { formHost } from '@kit.FormKit';
 | [off('formOverflow')](arkts-form-formhost-off-f-sys.md#offformoverflow) | 取消订阅互动卡片动效请求事件。使用callback异步回调。 |
 | [off('changeSceneAnimationState')](arkts-form-formhost-off-f-sys.md#offchangesceneanimationstate) | 取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。 |
 | [off('getFormRect')](arkts-form-formhost-off-f-sys.md#offgetformrect) | 取消订阅卡片位置尺寸查询请求事件。使用callback异步回调。 |
-| [off('getLiveFormStatus')](arkts-form-formhost-off-f-sys.md#offgetliveformstatus) | Cancels Listening to the event of get live form status. |
+| [off('getLiveFormStatus')](arkts-form-formhost-off-f-sys.md#offgetliveformstatus) | 取消订阅所有实时卡片的运行状态查询事件。使用callback异步回调。 |
 | [offDeleteFormsCallback](arkts-form-formhost-offdeleteformscallback-f-sys.md#offdeleteformscallback-1) | 取消订阅删除卡片事件。使用callback异步回调。 |
 | [offGetVisibleFormRect](arkts-form-formhost-offgetvisibleformrect-f-sys.md#offgetvisibleformrect-1) | 含义:注销获取可见卡片区域使用场景：卡片使用方向FMS反注册获取可见卡片的区域的回调使用后效果：FMS会清理记录的回调 |
 | [offGetWantParamsCallback](arkts-form-formhost-offgetwantparamscallback-f-sys.md#offgetwantparamscallback-1) | 取消订阅获取卡片参数事件。使用callback异步回调。 |
@@ -79,7 +79,7 @@ import { formHost } from '@kit.FormKit';
 | [on('formOverflow')](arkts-form-formhost-on-f-sys.md#onformoverflow) | 订阅互动卡片动效请求事件。使用callback异步回调。 |
 | [on('changeSceneAnimationState')](arkts-form-formhost-on-f-sys.md#onchangesceneanimationstate) | 订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。 |
 | [on('getFormRect')](arkts-form-formhost-on-f-sys.md#ongetformrect) | 订阅卡片位置尺寸查询请求事件。使用callback异步回调。 |
-| [on('getLiveFormStatus')](arkts-form-formhost-on-f-sys.md#ongetliveformstatus) | Listens to the event of get live form status. |
+| [on('getLiveFormStatus')](arkts-form-formhost-on-f-sys.md#ongetliveformstatus) | 订阅所有实时卡片的运行状态查询事件。使用callback异步回调。 |
 | [onDeleteFormsCallback](arkts-form-formhost-ondeleteformscallback-f-sys.md#ondeleteformscallback-1) | 订阅删除卡片事件。使用callback异步回调。 |
 | [onGetVisibleFormRect](arkts-form-formhost-ongetvisibleformrect-f-sys.md#ongetvisibleformrect-1) | 订阅请求可见widget位置和尺寸事件。该接口使用异步回调返回结果。 |
 | [onGetWantParamsCallback](arkts-form-formhost-ongetwantparamscallback-f-sys.md#ongetwantparamscallback-1) | 订阅获取卡片参数事件。使用callback异步回调。 |

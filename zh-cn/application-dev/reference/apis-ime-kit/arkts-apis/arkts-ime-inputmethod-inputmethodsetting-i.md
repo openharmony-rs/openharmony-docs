@@ -6,6 +6,8 @@ interface InputMethodSetting
 
 InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能：<br> <br>- 输入法变化订阅：通过[on('imeChange')](#onimechange)订阅输入法及子类型变化事件，当用户切换输入法时收到通知。<br>- 输入法列表查询：通过[getInputMethods](#getinputmethods-1)查询已激活/未激活输入法列表，通过[getAllInputMethods](#getallinputmethods-1)查询所有已安装输入法列表，通过[listInputMethodSubtype](#listinputmethodsubtype-1)查询指定输入法的子类型列表。<br>- 面板可见性查询：通过isPanelShown查询输入法面板是否显示。<br>- 输入法选择对话框：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。<br> <br>需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取InputMethodSetting实例后使用。<br> <br>下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取到InputMethodSetting实例后，通过实例调用。
 
+在ArkTS动态调用中，on/off及onImeChangeWithUserId/offImeChangeWithUserId传入无效的事件类型或回调函数时，将抛出BusinessError 401。注册监听时，callback必须为函数；取消监听时，不传callback或传入null、undefined将移除该事件的所有回调，传入其他值时必须为函数。
+
 **起始版本：** 8
 
 <!--Device-inputMethod-interface InputMethodSetting--><!--Device-inputMethod-interface InputMethodSetting-End-->
@@ -526,6 +528,8 @@ off(
 
 取消订阅输入法及子类型变化监听事件。使用callback异步回调。
 
+如果远端清理失败，本次调用已移除的本地回调不会恢复。
+
 **起始版本：** 9
 
 <!--Device-InputMethodSetting-off(      type: 'imeChange',      callback?: (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void    ): void--><!--Device-InputMethodSetting-off(      type: 'imeChange',      callback?: (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void    ): void-End-->
@@ -538,6 +542,12 @@ off(
 | --- | --- | --- | --- |
 | type | 'imeChange' | 是 | 设置监听类型，固定取值为'imeChange'。 |
 | callback | (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) =&gt; void | 否 | 回调函数，返回取消订阅的输入法属性对象及子类型对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
 
@@ -568,6 +578,12 @@ on(
 | --- | --- | --- | --- |
 | type | 'imeChange' | 是 | 设置监听类型，固定取值为'imeChange'。 |
 | callback | (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) =&gt; void | 是 | 回调函数，返回输入法属性对象及子类型对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
 

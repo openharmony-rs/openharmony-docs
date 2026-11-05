@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function getContractInfo(slotId: number, requestData: ContractRequestData) : Promise<string>
 ```
 
-获取开通eSIM需要的，加密的esim id等信息。
+获取开通eSIM需要的，加密的EID等信息。
 
 **起始版本：** 20
 
@@ -28,7 +28,7 @@ function getContractInfo(slotId: number, requestData: ContractRequestData) : Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
 | requestData | [ContractRequestData](arkts-telephony-esim-contractrequestdata-i-sys.md) | 是 | 用来加密的信息。 |
 
 **返回值：**

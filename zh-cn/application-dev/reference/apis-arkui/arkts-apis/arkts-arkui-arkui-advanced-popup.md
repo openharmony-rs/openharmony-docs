@@ -4,7 +4,7 @@ Popup是用于显示特定样式气泡的组件，支持图标、文本和按钮
 
 > **说明：**
  >
- > - 建议结合Popup控制中的自定义气泡功能。
+ > - 建议结合[Popup控制](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)中的自定义气泡功能。
 
 ## 子组件
 

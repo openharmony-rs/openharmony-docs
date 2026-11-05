@@ -48,7 +48,7 @@ Blocks the default event. This is applicable to scenarios where the default beha
 
 **NOTE:** 
 
-This API is only supported by the Hyperlink component. Using it with unsupported components throws an exception. Asynchronous calls and **Modifier** API integration are not yet supported.
+This API is only supported by the [Hyperlink](arkts-arkui-hyperlink-comp-attribute.md#hyperlinkattribute) component. Using it with unsupported components throws an exception. Asynchronous calls and **Modifier** API integration are not yet supported.
 
 **Since:** 12
 
@@ -108,11 +108,11 @@ eventHandleId?: number
 
 Unique identifier for event processing.
 
-Value range: [0, +∞)
+Value range: 0, +∞)
 
 **NOTE:** 
 
-This field is used when dispatching events using the [postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy) API. Each time an event is dispatched, this field is increased by 100000.
+This field is used when dispatching events using the [postInputEventWithStrategy API. Each time an event is dispatched, this field is increased by 100000.
 
 Using the same **eventHandleId** for multiple event dispatches will cause abnormal event responses. This field only needs to be assigned when constructing an event; developers do not need to handle it in other cases.
 

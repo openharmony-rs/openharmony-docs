@@ -51,7 +51,7 @@ import { formProvider } from '@kit.FormKit';
 | [isRequestPublishFormSupported](arkts-form-formprovider-isrequestpublishformsupported-f-sys.md#isrequestpublishformsupported-2) | 查询是否可以发布卡片到卡片使用方，使用Promise异步回调。 |
 | [offPublishFormCrossBundleControl](arkts-form-formprovider-offpublishformcrossbundlecontrol-f-sys.md#offpublishformcrossbundlecontrol-1) | 取消订阅跨应用加桌管控。 |
 | [onPublishFormCrossBundleControl](arkts-form-formprovider-onpublishformcrossbundlecontrol-f-sys.md#onpublishformcrossbundlecontrol-1) | 订阅跨应用加桌管控。 |
-| [openFormManagerCrossBundle](arkts-form-formprovider-openformmanagercrossbundle-f-sys.md#openformmanagercrossbundle-1) | Open the view of forms belonging to the specified bundle. Client to communication with FormManagerService. |
+| [openFormManagerCrossBundle](arkts-form-formprovider-openformmanagercrossbundle-f-sys.md#openformmanagercrossbundle-1) | 打开卡片管理页面。 |
 | [requestPublishForm](arkts-form-formprovider-requestpublishform-f-sys.md#requestpublishform-1) | 请求发布一张卡片到使用方。使用方通常为桌面，使用callback异步回调。 |
 | [requestPublishForm](arkts-form-formprovider-requestpublishform-f-sys.md#requestpublishform-2) | 请求发布一张卡片到使用方。使用方通常为桌面，使用callback异步回调。 |
 | [requestPublishForm](arkts-form-formprovider-requestpublishform-f-sys.md#requestpublishform-3) | 请求发布一张卡片到使用方。使用方通常为桌面，使用Promise异步回调。 |

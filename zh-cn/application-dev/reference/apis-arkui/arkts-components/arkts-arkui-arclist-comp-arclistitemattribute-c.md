@@ -4,7 +4,7 @@
 export declare class ArcListItemAttribute extends CommonMethod<ArcListItemAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
 **继承/实现关系：** ArcListItemAttribute extends CommonMethod&lt;ArcListItemAttribute&gt;
 

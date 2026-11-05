@@ -6,7 +6,7 @@ declare class XComponentAttribute extends CommonMethod<XComponentAttribute>
 
 In addition to universal attributes, the following attributes are supported.
 
-Since API version 12, the [universal events](arkts-arkui-common-comp.md) are supported when **type** is set to **SURFACE** or **TEXTURE**.
+Since API version 12, the [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported when **type** is set to **SURFACE** or **TEXTURE**.
 
 **Inheritance/Implementation:** XComponentAttribute extends CommonMethod&lt;XComponentAttribute&gt;
 

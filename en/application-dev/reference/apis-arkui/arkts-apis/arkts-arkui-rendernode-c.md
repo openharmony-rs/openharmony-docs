@@ -8,7 +8,7 @@ The **RenderNode** module provides APIs for creating a RenderNode in custom draw
 
 > **NOTE:** 
 > 
-> - Avoid modifying RenderNodes in [BuilderNode](arkts-arkui-buildernode-c.md). The [FrameNode](arkts-arkui-typenode-n.md) associated with BuilderNode is designed solely for mounting the BuilderNode as a child component. Modifying attributes or operations on the FrameNode's child nodes or their corresponding RenderNodes may lead to undefined behavior,including display, event handling, and stability issues.
+> - Avoid modifying RenderNodes in BuilderNode. The FrameNode associated with BuilderNode is designed solely for mounting the BuilderNode as a child component. Modifying attributes or operations on the FrameNode's child nodes or their corresponding RenderNodes may lead to undefined behavior,including display, event handling, and stability issues.
 > 
 > - RenderNode objects do not support JSON serialization.
 
@@ -311,7 +311,7 @@ draw(context: DrawContext): void
 
 Performs drawing. You need to implement this API. It is called when the RenderNode performs drawing.
 
-Note: The Canvas provided in the [DrawContext](arkts-arkui-graphics-drawcontext-c.md) parameter is a temporary command- recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-arktsNode-renderNode.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
+Note: The Canvas provided in the DrawContext parameter is a temporary command- recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-arktsNode-renderNode.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 > **NOTE:** 
 > 

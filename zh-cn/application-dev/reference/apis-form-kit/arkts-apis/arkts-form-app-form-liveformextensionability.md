@@ -1,5 +1,20 @@
 # @ohos.app.form.LiveFormExtensionAbility(互动卡片扩展能力-LiveFormExtensionAbility)
 
+LiveFormExtensionAbility（互动卡片扩展能力）模块提供互动卡片功能，包括接收
+ 创建和销毁互动卡片的通知等，继承自[ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md)。
+
+> **说明：**
+ >
+ > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+ >
+ > 本模块接口仅可在Stage模型下使用。
+
+## 约束限制
+
+为保障系统安全性和稳定性，防止LiveFormExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用。
+
+
+
 ## 导入模块
 
 ```TypeScript

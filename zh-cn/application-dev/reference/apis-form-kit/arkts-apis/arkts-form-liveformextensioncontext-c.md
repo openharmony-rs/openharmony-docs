@@ -4,7 +4,7 @@
 declare class LiveFormExtensionContext extends ExtensionContext
 ```
 
-LiveFormExtensionContext是[LiveFormExtensionAbility](arkts-form-app-form-liveformextensionability-liveformextensionability-c.md)的上下文，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。它提供访问特定于LiveFormExtensionAbility资源的能力，支持在互动卡片中拉起应用页面，适用于需要在互动卡片中响应用户点击并跳转到应用页面的场景，解决了互动卡片无法主动拉起应用页面的限制问题。
+LiveFormExtensionContext提供访问特定于LiveFormExtensionAbility资源的能力。
 
 **继承/实现关系：** LiveFormExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
@@ -26,6 +26,7 @@ startAbilityByLiveForm(want: Want): Promise<void>
 
 该接口仅限在点击事件回调中调用，且需要直接调用，不支持延时后调用，否则会抛出错误码16501011。
 
+**使用场景：**  
 - 互动卡片激活态中点击跳转到应用主页或详情页。
 
 **起始版本：** 20
@@ -48,7 +49,7 @@ startAbilityByLiveForm(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

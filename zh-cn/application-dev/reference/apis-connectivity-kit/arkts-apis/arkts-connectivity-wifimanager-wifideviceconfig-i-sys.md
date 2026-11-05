@@ -104,7 +104,7 @@ disableReason?: number
 family?: number
 ```
 
-Static IP family: 0 - IPv4, 1 - Ipv6.
+静态IP家族: 0 - IPv4, 1 - Ipv6.
 
 **类型：** number
 
@@ -262,7 +262,7 @@ staticIp?: IpConfig
 staticIpv6?: Ipv6Config
 ```
 
-IPv6 config of static
+静态IPv6配置
 
 **类型：** [Ipv6Config](arkts-connectivity-wifimanager-ipv6config-i-sys.md)
 

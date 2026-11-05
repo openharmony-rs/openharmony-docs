@@ -1,6 +1,6 @@
 # FolderStack
 
-A foldable screen hover layout container that extends [Stack](arkts-arkui-stack-comp.md). It implements the foldable screen hover capability through the **upperItems** configuration. When the device is in hover status, the specified child components automatically move to the upper screen, while other components are stacked on the lower screen.
+A foldable screen hover layout container that extends Stack. It implements the foldable screen hover capability through the **upperItems** configuration. When the device is in hover status, the specified child components automatically move to the upper screen, while other components are stacked on the lower screen.
 
 ## FolderStack
 
@@ -8,7 +8,7 @@ A foldable screen hover layout container that extends [Stack](arkts-arkui-stack-
 FolderStack(options?: FolderStackOptions)
 ```
 
-A foldable screen hover layout container that extends [Stack](arkts-arkui-stack-comp.md). It implements the foldable screen hover capability through the **upperItems** configuration. When the device is in hover status, the specified child components automatically move to the upper screen, while other components are stacked on the lower screen.
+A foldable screen hover layout container that extends Stack. It implements the foldable screen hover capability through the **upperItems** configuration. When the device is in hover status, the specified child components automatically move to the upper screen, while other components are stacked on the lower screen.
 
 **Since:** 11
 

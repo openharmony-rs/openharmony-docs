@@ -8,7 +8,7 @@
 
 ## 子组件
 
-包含MenuItem、MenuItemGroup子组件。
+包含[MenuItem](arkts-arkui-menuitem-comp.md)、[MenuItemGroup](arkts-arkui-menuitemgroup-comp.md)子组件。
 
 ## Menu
 
@@ -38,7 +38,7 @@ Menu()
 > 
 > - Menu支持设置的最小宽度为64vp。
 > 
-> - Menu不支持的通用属性：外描边设置下的属性、[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1)。
+> - Menu不支持的通用属性：[外描边设置](arkts-arkui-common-comp-commonmethod-c.md)下的属性、[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1)。
 
 **起始版本：** 9
 

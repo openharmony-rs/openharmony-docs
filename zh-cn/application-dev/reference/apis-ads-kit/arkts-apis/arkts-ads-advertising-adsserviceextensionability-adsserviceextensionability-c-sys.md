@@ -14,6 +14,10 @@ export default class AdsServiceExtensionAbility
 
 **系统接口：** 此接口为系统接口。
 
+## ExtensionAbility使用限制
+
+为保障系统安全性和稳定性，防止AdsServiceExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
+
 ## 导入模块
 
 ```TypeScript
@@ -105,3 +109,14 @@ export default class AdsExtensionAbility extends AdsServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
+
+## 附录
+
+AdsServiceExtensionAbility不支持以下模块的引用。
+
+| Kit | 模块 |
+| --- | --- |
+| Camera Kit | [@ohos.multimedia.camera](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md) |
+| Telephony Kit | [@ohos.telephony.sim](../../apis-telephony-kit/arkts-apis/arkts-telephony-telephony-sim.md) |
+| Telephony Kit | [@ohos.telephony.sms](../../apis-telephony-kit/arkts-apis/arkts-telephony-telephony-sms.md) |
+| Contacts Kit | [@ohos.contact](../../apis-contacts-kit/arkts-apis/arkts-contacts-contact.md) |

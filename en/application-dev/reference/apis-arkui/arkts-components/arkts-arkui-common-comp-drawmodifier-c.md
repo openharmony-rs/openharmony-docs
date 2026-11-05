@@ -24,7 +24,7 @@ DrawModifier can set the drawing methods of the mask layer (drawOverlay<sup>23+<
 drawBehind?(drawContext: DrawContext): void
 ```
 
-Draws the content background. Override this method to implement custom content background drawing. The background is located below the component content layer, and is suitable for scenarios where decorative background elements need to be added at the bottom layer of the component. The Canvas in the [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
+Draws the content background. Override this method to implement custom content background drawing. The background is located below the component content layer, and is suitable for scenarios where decorative background elements need to be added at the bottom layer of the component. The Canvas in the DrawContext of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 12
 
@@ -52,7 +52,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 drawContent?(drawContext: DrawContext): void
 ```
 
-Draws the content. Override this method to implement custom content drawing, which will replace the component's default content drawing function. It is suitable for scenarios where the component content drawing needs to be fully customized and the component's original content drawing logic is not used. The Canvas in the [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
+Draws the content. Override this method to implement custom content drawing, which will replace the component's default content drawing function. It is suitable for scenarios where the component content drawing needs to be fully customized and the component's original content drawing logic is not used. The Canvas in the DrawContext of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 12
 
@@ -80,7 +80,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 drawForeground(drawContext: DrawContext): void
 ```
 
-Draws the foreground. Override this method to implement custom foreground drawing. Compared with [drawFront](#drawfront) (content foreground), drawForeground is at a higher layer and is drawn above the content foreground and below the mask layer. drawFront is suitable for drawing the foreground effect of the component content itself, while drawForeground is suitable for scenarios where an additional foreground effect needs to be added above the content foreground. The Canvas in the [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
+Draws the foreground. Override this method to implement custom foreground drawing. Compared with [drawFront](#drawfront) (content foreground), drawForeground is at a higher layer and is drawn above the content foreground and below the mask layer. drawFront is suitable for drawing the foreground effect of the component content itself, while drawForeground is suitable for scenarios where an additional foreground effect needs to be added above the content foreground. The Canvas in the DrawContext of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 20
 
@@ -108,7 +108,7 @@ See [Example 2: Implementing Custom Foreground Drawing for a Container Through D
 drawFront?(drawContext: DrawContext): void
 ```
 
-Draws the content foreground. Override this method to implement custom content foreground drawing. The content foreground is located between the content and the foreground, and is suitable for scenarios where drawing content needs to be added above the component content and below the component foreground. The Canvas in the [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
+Draws the content foreground. Override this method to implement custom content foreground drawing. The content foreground is located between the content and the foreground, and is suitable for scenarios where drawing content needs to be added above the component content and below the component foreground. The Canvas in the DrawContext of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 12
 
@@ -136,7 +136,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 drawOverlay(drawContext: DrawContext): void
 ```
 
-Interface for custom drawing of the mask. If this method is overridden, custom drawing of the mask can be performed. The mask is the topmost drawing layer, suitable for scenarios where a mask effect (such as highlighting or masking) needs to be added to the topmost layer of a component. The Canvas in [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this interface is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
+Interface for custom drawing of the mask. If this method is overridden, custom drawing of the mask can be performed. The mask is the topmost drawing layer, suitable for scenarios where a mask effect (such as highlighting or masking) needs to be added to the topmost layer of a component. The Canvas in DrawContext of this interface is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 23
 

@@ -46,7 +46,7 @@ preventDefault: () => void
 
 阻止默认事件。
 
-**说明：** 该接口仅支持部分组件使用，当前支持组件：Hyperlink，不支持的组件在使用时会抛出异常。暂不支持异步调用和提供Modifier接口。
+**说明：** 该接口仅支持部分组件使用，当前支持组件：[Hyperlink](arkts-arkui-hyperlink-comp-attribute.md)，不支持的组件在使用时会抛出异常。暂不支持异步调用和提供Modifier接口。
 
 **起始版本：** 12
 
@@ -106,9 +106,9 @@ eventHandleId?: number
 
 用于事件处理的唯一标识。
 
-取值范围：[0, +∞)
+取值范围：0, +∞)
 
-**说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。
+**说明：** 在使用[postInputEventWithStrategy接口分发事件时会使用该字段，事件每分发一次字段会增加100000。
 
 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 

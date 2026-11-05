@@ -80,7 +80,7 @@ nickName: string
 operatorId: OperatorId
 ```
 
-配置文件的操作ID。
+配置文件的运营商ID。
 
 **类型：** [OperatorId](arkts-telephony-esim-operatorid-i-sys.md)
 

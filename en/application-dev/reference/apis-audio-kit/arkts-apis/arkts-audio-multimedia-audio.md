@@ -84,6 +84,7 @@ import { audio } from '@kit.AudioKit';
 | [DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md) | Describes the device connection status and device information. |
 | [InterruptEvent](arkts-audio-audio-interruptevent-i.md) | Describes the interruption event received by the application when the audio is interrupted. |
 | [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md) | Describes the event received by the application when the microphone mute status is changed. |
+| [NoiseReductionModeChangeInfo](arkts-audio-audio-noisereductionmodechangeinfo-i.md) | Indicates the change information about the noise reduction mode. This interface is used as the callback parameter of [onNoiseReductionModeChanged](arkts-audio-audio-audiocapturer-i.md#onnoisereductionmodechanged). Application scenario: When the NR mode of a recording stream changes, this data structure carries the latest NR mode and change reason. |
 | [SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md) | Describes sound card information. |
 | [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md) | Describes the event received by the application when the audio stream volume is changed. |
 | [SystemRecordControllerConfig](arkts-audio-audio-systemrecordcontrollerconfig-i.md) | Defines the configuration for the system recording controller panel. |
@@ -209,6 +210,7 @@ import { audio } from '@kit.AudioKit';
 | [InterruptMode](arkts-audio-audio-interruptmode-e.md) | Enumerates the audio interruption modes. |
 | [InterruptType](arkts-audio-audio-interrupttype-e.md) | Enumerates the audio interruption types. |
 | [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md) | Enumerates the noise reduction modes. |
+| [NoiseReductionModeChangeReason](arkts-audio-audio-noisereductionmodechangereason-e.md) | Enumerates the reasons for noise reduction mode change. |
 | [OutputDeviceChangeRecommendedAction](arkts-audio-audio-outputdevicechangerecommendedaction-e.md) | Enumerates the recommended actions to take after an output device changes. |
 | [PlaybackCaptureStartState](arkts-audio-audio-playbackcapturestartstate-e.md) | Defines the playback capture start state, which is returned asynchronously after calling [requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart) function. |
 | [SoundCardType](arkts-audio-audio-soundcardtype-e.md) | Enumerates sound card types. |

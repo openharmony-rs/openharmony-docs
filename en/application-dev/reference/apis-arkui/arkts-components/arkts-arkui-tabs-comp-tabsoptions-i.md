@@ -4,7 +4,7 @@
 declare interface TabsOptions
 ```
 
-Provides parameters for configuring the **Tabs** component, including tab positions, the current index of the displayed tab, the **Tabs** controller, and [universal attributes](arkts-arkui-common-comp.md) for the **TabBar**.
+Provides parameters for configuring the **Tabs** component, including tab positions, the current index of the displayed tab, the **Tabs** controller, and [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) for the **TabBar**.
 
 **Since:** 15
 
@@ -18,7 +18,7 @@ Provides parameters for configuring the **Tabs** component, including tab positi
 barModifier?: CommonModifier
 ```
 
-Used to set the [universal attributes](arkts-arkui-common-comp.md) of tab bar, used to uniformly manage the style, layout, and other universal attributes of tab bar through **CommonModifier**. Pass this parameter when you need to dynamically modify the universal attributes of **TabBar** or implement state management of attributes. When it is not passed, tab bar uses the default style and layout without additional universal attribute settings.
+Used to set the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) of tab bar, used to uniformly manage the style, layout, and other universal attributes of tab bar through **CommonModifier**. Pass this parameter when you need to dynamically modify the universal attributes of **TabBar** or implement state management of attributes. When it is not passed, tab bar uses the default style and layout without additional universal attribute settings.
 
 **NOTE:** 
 

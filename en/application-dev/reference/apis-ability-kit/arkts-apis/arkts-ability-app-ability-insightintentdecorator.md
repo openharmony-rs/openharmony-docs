@@ -78,6 +78,14 @@ import { InsightIntentLink, InsightIntentPage, InsightIntentFunctionMethod, Insi
 | [LinkIntentParamMapping](arkts-ability-app-ability-insightintentdecorator-linkintentparammapping-i.md) | LinkIntentParamMapping defines the mapping between intent parameters and URI information for the [@InsightIntentLink](arkts-ability-app-ability-insightintentdecorator-insightintentlink-d.md#insightintentlink) decorator. |
 | [PageIntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-pageintentdecoratorinfo-i.md) | PageIntentDecoratorInfo inherits from [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md) and describes the parameters supported by the [@InsightIntentPage](arkts-ability-app-ability-insightintentdecorator-insightintentpage-d.md#insightintentpage) decorator, such as the name of [NavDestination](../../apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#navdestination) of the target page. |
 
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
+| [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i-sys.md) | Common properties for intent decorators, used to define basic information about an intent (including the intent name and version number). It applies to all decorators provided by this module. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |

@@ -6,6 +6,8 @@ interface InputMethodSetting
 
 InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能：<br> <br>- 输入法变化订阅：通过[on('imeChange')](arkts-ime-inputmethod-inputmethodsetting-i.md#onimechange)订阅输入法及子类型变化事件，当用户切换输入法时收到通知。<br>- 输入法列表查询：通过[getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getinputmethods-1)查询已激活/未激活输入法列表，通过[getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getallinputmethods-1)查询所有已安装输入法列表，通过[listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listinputmethodsubtype-1)查询指定输入法的子类型列表。<br>- 面板可见性查询：通过isPanelShown查询输入法面板是否显示。<br>- 输入法选择对话框：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。<br> <br>需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取InputMethodSetting实例后使用。<br> <br>下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取到InputMethodSetting实例后，通过实例调用。
 
+在ArkTS动态调用中，on/off及onImeChangeWithUserId/offImeChangeWithUserId传入无效的事件类型或回调函数时，将抛出BusinessError 401。注册监听时，callback必须为函数；取消监听时，不传callback或传入null、undefined将移除该事件的所有回调，传入其他值时必须为函数。
+
 **起始版本：** 8
 
 <!--Device-inputMethod-interface InputMethodSetting--><!--Device-inputMethod-interface InputMethodSetting-End-->
@@ -390,7 +392,7 @@ try {
 getInputMethodSubtypes(bundleName: string, userId?: number): Array<InputMethodSubtype>
 ```
 
-获取指定用户指定输入法的子类型列表。同步接口。
+获取指定用户指定输入法的子类型列表。同步接口。返回空数组表示查询成功但没有子类型，查询失败时将抛出错误。
 
 **起始版本：** 26.0.0
 
@@ -570,6 +572,8 @@ off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void
 
 取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md)固定态软键盘显示事件。
 
+如果远端清理失败，本次调用已移除的本地回调不会恢复。
+
 **起始版本：** 10
 
 <!--Device-InputMethodSetting-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void-End-->
@@ -584,6 +588,13 @@ off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void
 | --- | --- | --- | --- |
 | type | 'imeShow' | 是 | 设置监听类型，固定取值'imeShow'。 |
 | callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 <!--Del-->
 **示例**
@@ -602,6 +613,8 @@ off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void
 
 取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md)固定态软键盘隐藏事件。
 
+如果远端清理失败，本次调用已移除的本地回调不会恢复。
+
 **起始版本：** 10
 
 <!--Device-InputMethodSetting-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void-End-->
@@ -616,6 +629,13 @@ off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void
 | --- | --- | --- | --- |
 | type | 'imeHide' | 是 | 设置监听类型，固定取值'imeHide'。 |
 | callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 <!--Del-->
 **示例**
@@ -633,6 +653,8 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 ```
 
 取消订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。使用callback异步回调。
+
+如果远端清理失败，本次调用已移除的本地回调不会恢复。
 
 **起始版本：** 26.0.0
 
@@ -655,6 +677,7 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 <!--Del-->
 **示例**
@@ -693,6 +716,7 @@ on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 <!--Del-->
 **示例**
@@ -733,6 +757,7 @@ on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 <!--Del-->
 **示例**
@@ -774,6 +799,7 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 <!--Del-->
 **示例**

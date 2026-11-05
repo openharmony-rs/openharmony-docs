@@ -4,7 +4,7 @@
 declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
 ```
 
-The [universal attributes](arkts-arkui-common-comp.md) are supported. For text attributes, only the following attributes are supported.
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are supported. For text attributes, only the following attributes are supported.
 
 **Inheritance/Implementation:** SymbolGlyphAttribute extends CommonMethod&lt;SymbolGlyphAttribute&gt;
 
@@ -84,7 +84,7 @@ Sets the font color of the **SymbolGlyph** component.
 fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 ```
 
-Sets the font color of the **SymbolGlyph** component. Compared with the [fontColor](#fontcolor-1) API, this API supports passing in a parameter of the [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) type.
+Sets the font color of the **SymbolGlyph** component. Compared with the [fontColor](#fontcolor-1) API, this API supports passing in a parameter of the ColorMetrics type.
 
 > **NOTE:** 
 > 

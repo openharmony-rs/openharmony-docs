@@ -4,7 +4,7 @@
 interface RunningFormInfo
 ```
 
-已经添加到桌面的卡片信息。
+已添加的卡片信息，包括使用中的以及未使用的卡片。
 
 **起始版本：** 20
 
@@ -28,8 +28,6 @@ readonly abilityName: string
 
 **类型：** string
 
-**默认值：** -
-
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
@@ -47,8 +45,6 @@ readonly bundleName: string
 卡片提供方所属包的Bundle名称，用于定位卡片提供方应用。
 
 **类型：** string
-
-**默认值：** -
 
 **起始版本：** 20
 
@@ -70,8 +66,6 @@ readonly dimension: number
 
 **类型：** number
 
-**默认值：** -
-
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
@@ -89,8 +83,6 @@ readonly formId: string
 卡片唯一标识，用于识别和管理已添加到桌面的卡片实例。
 
 **类型：** string
-
-**默认值：** -
 
 **起始版本：** 20
 
@@ -110,8 +102,6 @@ readonly formLocation: FormLocation
 
 **类型：** [FormLocation](arkts-form-forminfo-formlocation-e.md)
 
-**默认值：** -
-
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
@@ -129,8 +119,6 @@ readonly formName: string
 卡片名称，用于标识和区分同一模块中的不同卡片。
 
 **类型：** string
-
-**默认值：** -
 
 **起始版本：** 20
 
@@ -173,8 +161,6 @@ readonly moduleName: string
 卡片所属模块的名称，用于定位卡片提供方的具体模块。
 
 **类型：** string
-
-**默认值：** -
 
 **起始版本：** 20
 

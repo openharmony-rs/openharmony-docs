@@ -41,7 +41,7 @@ Disables specified system service menu items in the text selection menu. This is
 > 
 > - After this API is called, it affects the text component's API [editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions), and the input parameter list of its callback method [onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu) does not include the disabled menu options.
 > 
-> - Components involving the text selection menu include [Text](../arkts-components/arkts-arkui-text-comp.md),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md),[Search](../arkts-components/arkts-arkui-search-comp.md), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md).
+> - Components involving the text selection menu include [Text](../arkts-components/arkts-arkui-text-comp.md),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md),Search, [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md).
 > 
 > - System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](arkts-arkui-textmenuitemid-c.md).
 > 
@@ -141,7 +141,7 @@ Disables all system service menu items in the text selection menu. This is appli
 > 
 > - After this API is called, it affects the text component's API [editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions), and the input parameter list of its callback method [onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu) does not include the disabled menu options.
 > 
-> - Components involving the text selection menu include [Text](../arkts-components/arkts-arkui-text-comp.md),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md),[Search](../arkts-components/arkts-arkui-search-comp.md), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md).
+> - Components involving the text selection menu include [Text](../arkts-components/arkts-arkui-text-comp.md),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md),Search, [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md).
 > 
 > - System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](arkts-arkui-textmenuitemid-c.md).
 > 

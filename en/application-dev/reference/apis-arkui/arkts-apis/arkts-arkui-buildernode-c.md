@@ -10,7 +10,7 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 
 > **NOTE:** 
 > 
-> - If the root node of the provided Builder is a syntax node ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)...),[Span](../arkts-components/arkts-arkui-span-comp.md), [ContainerSpan](../arkts-components/arkts-arkui-containerspan-comp-attribute.md#containerspanattribute),[SymbolSpan](../arkts-components/arkts-arkui-symbolspan-comp-attribute.md#symbolspanattribute), or a custom component, an additional [FrameNode](arkts-arkui-typenode-n.md) will be generated and displayed as "BuilderProxyNode" in the node tree. This causes tree structure changes and affects testing processes such as event propagation. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
+> - If the root node of the provided Builder is a syntax node ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)...),[Span](../arkts-components/arkts-arkui-span-comp.md), [ContainerSpan](../arkts-components/arkts-arkui-containerspan-comp-attribute.md#containerspanattribute),[SymbolSpan](../arkts-components/arkts-arkui-symbolspan-comp-attribute.md#symbolspanattribute), or a custom component, an additional FrameNode will be generated and displayed as "BuilderProxyNode" in the node tree. This causes tree structure changes and affects testing processes such as event propagation. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
 > 
 > - If you encounter display issues when reusing a BuilderNode across pages, see [Cross-Page Reuse Considerations](../../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations).
 > 
@@ -54,7 +54,7 @@ Custom components are allowed.
 > 
 > - The build parameter uses the pass-by-value semantics. To implement state updates, you must use the [update](#update) API.
 > 
-> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected.When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](arkts-arkui-typenode-n.md) and [RenderNode](arkts-arkui-rendernode-c.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
+> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected.When a BuilderNode object is garbage collected by the virtual machine, the associated FrameNode and RenderNode objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
 > 
 > - The BuilderNode object maintains references to its entity nodes. When the BuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose) API to unbind the frontend and backend objects.
 
@@ -158,7 +158,7 @@ Custom components are allowed. Compared with the [build(builder: WrappedBuilder\
 > 
 > - The build parameter uses the pass-by-value semantics. To implement state updates, you must use the [update](#update) API.
 > 
-> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected.When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](arkts-arkui-typenode-n.md) and [RenderNode](arkts-arkui-rendernode-c.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
+> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected.When a BuilderNode object is garbage collected by the virtual machine, the associated FrameNode and RenderNode objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
 > 
 > - The BuilderNode object maintains references to its entity nodes. When the BuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose) API to unbind the frontend and backend objects.
 
@@ -300,7 +300,7 @@ Immediately releases the reference relationship between this BuilderNode object 
 getFrameNode(): FrameNode | null
 ```
 
-Obtains the [FrameNode](arkts-arkui-typenode-n.md) from the BuilderNode. The FrameNode is generated only after the BuilderNode executes the build operation.
+Obtains the FrameNode from the BuilderNode. The FrameNode is generated only after the BuilderNode executes the build operation.
 
 **Since:** 11
 
@@ -708,7 +708,7 @@ Posts the specified input event to the target node managed by the BuilderNode. T
 > 
 > - Mouse left-click events are automatically converted to touch events. When forwarding, avoid binding both touch events and mouse events at the outer layer, as this may cause coordinate offsets. This is because **SourceType**does not change during event conversion. For details, see [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch).
 > 
-> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) is injected, it cannot trigger [RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md), because the axis event does not include rotation axis information.
+> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) is injected, it cannot trigger [RotationGesture](../arkts-components/arkts-arkui-tapgesture-comp-con.md#rotationgesture), because the axis event does not include rotation axis information.
 > 
 > - A forwarded event undergoes touch testing in the target component's subtree and triggers corresponding gestures. The original event also triggers gestures in the source component tree. There is no guaranteed outcome for gesture competition between these two types of gestures.
 > 
@@ -764,7 +764,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 > 
 > - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because SourceType does not change during the event conversion.For details about the specifications, see [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch).
 > 
-> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) is injected, it cannot trigger [RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md), because the axis event does not include rotation axis information.
+> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) is injected, it cannot trigger [RotationGesture](../arkts-components/arkts-arkui-tapgesture-comp-con.md#rotationgesture), because the axis event does not include rotation axis information.
 > 
 > - The forwarded event is posted to the target component and its child components for processing, and triggers the corresponding gesture. You can use input parameters to control whether the gestures of the current component and the target component are in a competitive relationship.
 > 
@@ -814,7 +814,7 @@ Posts a raw touch event to the FrameNode created by this BuilderNode. This is su
 
 **postTouchEvent** posts the event from a middle node in the component tree downwards. To ensure the event is posted correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
 
-**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](arkts-arkui-framenode-c.md#getpositiontoparent) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the TouchEvent object. **OffsetC** is the sum of **offsetA** and **offsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
+**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling getPositionToParent in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the TouchEvent object. **OffsetC** is the sum of **offsetA** and **offsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
 
 ![postTouchEvent](../../../reference/apis-arkui/figures/postTouchEvent.PNG)
 

@@ -4,7 +4,7 @@
 interface FormProviderFilter
 ```
 
-Information about a running form.
+卡片提供方信息。
 
 **起始版本：** 10
 
@@ -26,7 +26,7 @@ import { formInfo } from '@kit.FormKit';
 abilityName ?: string
 ```
 
-Obtains the ability name of the provider application module.
+卡片所属的Ability名称。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ Obtains the ability name of the provider application module.
 bundleName: string
 ```
 
-Obtains the bundle name of the provider application.
+提供方卡片所属包的Bundle名称。
 
 **类型：** string
 
@@ -66,7 +66,7 @@ Obtains the bundle name of the provider application.
 formName ?: string
 ```
 
-Obtains the form name of the provider application form.
+卡片名称。
 
 **类型：** string
 
@@ -86,7 +86,13 @@ Obtains the form name of the provider application form.
 isUnusedIncluded?: boolean
 ```
 
-Indicates whether to include unused form.
+是否包含未使用的卡片。
+
+- true：包含未使用的卡片。
+
+- false：不包含未使用的卡片。
+
+默认值：false。
 
 **类型：** boolean
 
@@ -108,7 +114,7 @@ Indicates whether to include unused form.
 moduleName ?: string
 ```
 
-Obtains the module name of the provider application module.
+卡片所属模块的名称。
 
 **类型：** string
 

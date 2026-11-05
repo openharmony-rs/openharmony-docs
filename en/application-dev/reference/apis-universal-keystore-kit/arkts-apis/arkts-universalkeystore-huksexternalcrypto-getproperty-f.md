@@ -55,7 +55,7 @@ The **propertyId** indicates the ID of the property to be queried. Currently, on
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | If the memory is insufficient. |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | Input parameter is invalid. Possible causes:         1. The resourceId or propertyId length is invalid.         2. The params contains invalid tags or invalid value types. |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | If the provider operation failed. Possible causes:         1. The provider experienced an internal processing error. |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | The UKey PIN is locked. |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | The UKey PIN is locked. |
 | [12000023](../errorcode-huks.md#12000023-unauthenticated-ukey-pin) | The UKey PIN is not authenticated. |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | If the provider or UKey is busy. |
 

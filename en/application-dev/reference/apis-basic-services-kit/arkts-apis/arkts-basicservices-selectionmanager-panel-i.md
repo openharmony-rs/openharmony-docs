@@ -28,6 +28,8 @@ Hides the word selection panel. This API is used together with [show](#show). Th
 
 **Since:** 24
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-Panel-hide(): Promise<void>--><!--Device-Panel-hide(): Promise<void>-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
@@ -121,6 +123,8 @@ Unsubscribes from the word selection panel destruction event. This API is used t
 
 **Since:** 24
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-Panel-off(type: 'destroyed', callback?: Callback<void>): void--><!--Device-Panel-off(type: 'destroyed', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
@@ -153,6 +157,8 @@ Unsubscribes from the word selection panel hiding event. This API is used togeth
 
 **Since:** 24
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-Panel-off(type: 'hidden', callback?: Callback<void>): void--><!--Device-Panel-off(type: 'hidden', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
@@ -184,6 +190,8 @@ on(type: 'destroyed', callback: Callback<void>): void
 Subscribes to the word selection panel destruction event. This API is used together with [off('destroyed')](#offdestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md).
 
 **Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Panel-on(type: 'destroyed', callback: Callback<void>): void--><!--Device-Panel-on(type: 'destroyed', callback: Callback<void>): void-End-->
 
@@ -218,6 +226,8 @@ on(type: 'hidden', callback: Callback<void>): void
 Subscribes to the word selection panel hiding event. This API is used together with [off('hidden')](#offhidden). This event is triggered when the panel is hidden by calling [hide](#hide) or automatically hidden when it loses focus. This API can be called only after a **Panel** instance is obtained by calling [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md).
 
 **Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Panel-on(type: 'hidden', callback: Callback<void>): void--><!--Device-Panel-on(type: 'hidden', callback: Callback<void>): void-End-->
 

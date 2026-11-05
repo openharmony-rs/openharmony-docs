@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function getEsimFreeStorage(): Promise<number>
 ```
 
-通过该接口获取eUICC硬件的剩余存储空间。使用Promise异步回调。
+获取eUICC硬件的剩余存储空间。使用Promise异步回调。
 
 **起始版本：** 23
 

@@ -19,7 +19,7 @@ The **UIPickerComponent** container is a component used to implement user select
 ## Child Components
 
 - Multiple child components are supported.  
-- Supported child component types: [Text](arkts-arkui-text-comp.md), [Image](arkts-arkui-image-comp.md), [Row](arkts-arkui-row-comp.md), and [SymbolGlyph](arkts-arkui-symbolglyph-comp.md).  
+- Supported child component types: [Text](arkts-arkui-text-comp.md), Image, Row, and [SymbolGlyph](arkts-arkui-symbolglyph-comp.md).  
 - Supported rendering control types: [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) and [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md).
 
 > **NOTE:** 

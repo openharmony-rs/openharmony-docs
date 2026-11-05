@@ -4,7 +4,7 @@
 declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 > **NOTE:** 
 > 

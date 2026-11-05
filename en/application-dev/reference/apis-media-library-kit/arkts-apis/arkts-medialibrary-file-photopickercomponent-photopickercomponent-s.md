@@ -6,14 +6,13 @@ export declare struct PhotoPickerComponent
 
 PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =&gt; void, onDeselect?: (uri: string) =&gt; void, onItemClicked?: (itemInfo: ItemInfo, clickType: ClickType) =&gt; boolean, onItemClickedNotify?: ItemClickedNotifyCallback, onEnterPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) =&gt; boolean, onExitPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) =&gt; boolean, onPickerControllerReady?: () =&gt; void, onPhotoBrowserChanged?: (browserItemInfo: BaseItemInfo) =&gt; boolean, onSelectedItemsDeleted?: ItemsDeletedCallback, onExceedMaxSelected?: ExceedMaxSelectedCallback, onCurrentAlbumDeleted?: CurrentAlbumDeletedCallback, onVideoPlayStateChanged?: videoPlayStateChangedCallback, pickerController: PickerController })
 
-Allows the application to access images or videos in the user directory without any permission.
+The photo picker component embedded in the application UI allows the application to access images or videos in the user directory without any permission.
 
 > **NOTE:** 
 > 
-> If the **PhotoPickerComponent** is used with the **Tabs** component, the swipe gestures of the **Tabs** component
-> conflict with those of the photo browser page.
+> - If the photo picker component is used with the **Tabs** component, the swipe gestures of the **Tabs** component conflict with those of the photo browser page.
 > 
-> To prevent this problem, you can disable the swipe operation for the **Tabs** component in
+> -To prevent this problem, you can disable the swipe operation for the **Tabs** component in
 > **onEnterPhotoBrowser()** and enable it in **onExitPhotoBrowser()**. This conflict will be resolved in later
 > versions.
 
@@ -304,13 +303,31 @@ onPickerRecovery?: PickerRecoveryCallback
 
 Callback when the photo picker restores the previously grid state.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PhotoPickerComponent-onPickerRecovery?: PickerRecoveryCallback--><!--Device-PhotoPickerComponent-onPickerRecovery?: PickerRecoveryCallback-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## onPickerStateChanged
+
+```TypeScript
+onPickerStateChanged?: PickerStateChangedCallback
+```
+
+Called when the picker state changes between the default state and the search state. The initial state is PickerState.DEFAULT.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-PhotoPickerComponent-onPickerStateChanged?: PickerStateChangedCallback--><!--Device-PhotoPickerComponent-onPickerStateChanged?: PickerStateChangedCallback-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -329,6 +346,24 @@ Callback when the grid's level is switched via pinch gesture.
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-PhotoPickerComponent-onPinchGridSwitched?: PinchGridSwitchedCallback--><!--Device-PhotoPickerComponent-onPinchGridSwitched?: PinchGridSwitchedCallback-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## onRecommendedLabelClicked
+
+```TypeScript
+onRecommendedLabelClicked?: RecommendedLabelClickedCallback
+```
+
+Called when the user clicks a recommendation label on the search page. The label is either a pure text label or a smart entity label. The third-party app can use the callback payload to render its own search box.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-PhotoPickerComponent-onRecommendedLabelClicked?: RecommendedLabelClickedCallback--><!--Device-PhotoPickerComponent-onRecommendedLabelClicked?: RecommendedLabelClickedCallback-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -4,7 +4,7 @@
 declare class BadgeAttribute extends CommonMethod<BadgeAttribute>
 ```
 
-支持[通用属性](arkts-arkui-common-comp.md)。
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** BadgeAttribute extends CommonMethod&lt;BadgeAttribute&gt;
 

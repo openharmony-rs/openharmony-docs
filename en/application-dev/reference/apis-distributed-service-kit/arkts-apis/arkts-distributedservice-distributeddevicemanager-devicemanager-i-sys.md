@@ -392,7 +392,7 @@ Query the device operating system type by device network ID.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain service. |
-| 11600110 | Invalid network ID. |
+| [11600110](../errorcode-device-manager.md#11600110-invalid-network-id) | Invalid network ID. |
 
 ## off('replyResult')
 

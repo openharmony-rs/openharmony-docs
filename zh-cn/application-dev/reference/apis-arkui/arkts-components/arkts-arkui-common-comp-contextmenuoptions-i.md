@@ -425,7 +425,7 @@ enableHoverMode?: boolean
 gridStyle?: MenuGridStyleOptions
 ```
 
-设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1)、[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)、[bindContextMenuByResponseType](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenubyresponsetype)、[bindContextMenuByIsShow](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenubyisshow)、[bindContextMenuWithResponse](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse-1)中使用[MenuElement](arkts-arkui-common-comp-menuelement-i.md)或在MenuItem中使用MenuItemOptions。
+设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1)、[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)、[bindContextMenuByResponseType](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenubyresponsetype)、[bindContextMenuByIsShow](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenubyisshow)、[bindContextMenuWithResponse](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse-1)中使用[MenuElement](arkts-arkui-common-comp-menuelement-i.md)或在[MenuItem](arkts-arkui-menuitem-comp.md)中使用MenuItemOptions。
 
 **类型：** [MenuGridStyleOptions](arkts-arkui-common-comp-menugridstyleoptions-i.md)
 

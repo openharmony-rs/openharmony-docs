@@ -4,7 +4,7 @@
 declare class ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
 **继承/实现关系：** ListItemGroupAttribute extends CommonMethod&lt;ListItemGroupAttribute&gt;
 
@@ -54,7 +54,7 @@ divider(
 
 strokeWidth，startMargin和endMargin不支持设置百分比。
 
-ListItem设置多态样式时，被按压的子组件上下的分割线不绘制。
+ListItem设置[多态样式](arkts-arkui-common-comp-commonmethod-c.md)时，被按压的子组件上下的分割线不绘制。
 
 **起始版本：** 9
 

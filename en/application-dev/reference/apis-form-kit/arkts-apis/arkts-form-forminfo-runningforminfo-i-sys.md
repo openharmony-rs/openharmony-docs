@@ -28,8 +28,6 @@ Obtains the extra data of the this form.
 
 **Type:** Record&lt;string, Object&gt;
 
-**Default:** -
-
 **Since:** 12
 
 <!--Device-RunningFormInfo-readonly extraData?: Record<string, Object>--><!--Device-RunningFormInfo-readonly extraData?: Record<string, Object>-End-->
@@ -86,8 +84,6 @@ Obtains the bundle name of the form host application.
 
 **Type:** string
 
-**Default:** -
-
 **Since:** 10
 
 <!--Device-RunningFormInfo-readonly hostBundleName: string--><!--Device-RunningFormInfo-readonly hostBundleName: string-End-->
@@ -105,8 +101,6 @@ readonly visibilityType: VisibilityType
 Obtains the visibility of this form.
 
 **Type:** [VisibilityType](arkts-form-forminfo-visibilitytype-e.md)
-
-**Default:** -
 
 **Since:** 10
 

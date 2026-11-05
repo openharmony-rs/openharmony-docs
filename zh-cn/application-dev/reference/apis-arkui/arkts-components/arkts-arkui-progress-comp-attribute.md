@@ -5,7 +5,7 @@ declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof Prog
   Style extends ProgressStyleMap[Type] = ProgressStyleMap[Type]> extends CommonMethod<ProgressAttribute<Type>>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
 > **说明：** 
 > 
@@ -100,7 +100,7 @@ privacySensitive(isPrivacySensitiveMode: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br> 默认值：false <br>**说明：** <br>设置null表示不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用[FormComponent](arkts-arkui-formcomponent-comp-sys.md)组件设置[隐私遮罩](arkts-arkui-common-comp.md)属性，显示卡片时才有隐私遮罩效果。<!-- DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br> 默认值：false <br>**说明：** <br>设置null表示不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用[FormComponent](arkts-arkui-formcomponent-comp-sys.md)组件设置[隐私遮罩](arkts-arkui-common-comp-commonmethod-c.md)属性，显示卡片时才有隐私遮罩效果。<!-- DelEnd--> |
 
 ## style
 

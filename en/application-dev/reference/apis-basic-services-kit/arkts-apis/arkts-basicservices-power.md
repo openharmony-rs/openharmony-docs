@@ -20,7 +20,7 @@ import { power } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getPowerMode](arkts-basicservices-power-getpowermode-f.md#getpowermode-1) | Obtains the power mode of this device. |
+| [getPowerMode](arkts-basicservices-power-getpowermode-f.md#getpowermode-1) | Obtains the power mode of the current device. Different power modes correspond to different device behavior policies. Developers can adjust application behavior based on the returned mode value to adapt to the current mode. For the definition and description of each mode, see DevicePowerMode. |
 | [isActive](arkts-basicservices-power-isactive-f.md#isactive-1) | Checks whether the current device is active. |
 | [isStandby](arkts-basicservices-power-isstandby-f.md#isstandby-1) | Checks whether the device is in standby mode. |
 | [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isscreenon-1) | Checks the screen status of the current device. This API uses an asynchronous callback to return the result. |

@@ -118,7 +118,7 @@ Constructor parameters
 
 | Name | Description |
 | --- | --- |
-| [NativeXComponentParameters](arkts-arkui-xcomponent-comp-nativexcomponentparameters-i.md) | Defines the specific configuration parameters used by XComponent on the native side. An XComponent created with this constructor can pass its corresponding [FrameNode](../arkts-apis/arkts-arkui-typenode-n.md) object to the native side, where NDK APIs can be used to configure the surface lifecycle and [add event listeners] (../../../ui/ndk-listen-to-component-events.md). |
+| [NativeXComponentParameters](arkts-arkui-xcomponent-comp-nativexcomponentparameters-i.md) | Defines the specific configuration parameters used by XComponent on the native side. An XComponent created with this constructor can pass its corresponding FrameNode object to the native side, where NDK APIs can be used to configure the surface lifecycle and [add event listeners] (../../../ui/ndk-listen-to-component-events.md). |
 | [SurfaceConfig](arkts-arkui-xcomponent-comp-surfaceconfig-i.md) | Describes whether the surface held by the XComponent component is opaque during rendering. |
 | [SurfaceRect](arkts-arkui-xcomponent-comp-surfacerect-i.md) | Describes the rectangle of the surface held by the **XComponent**. |
 | [SurfaceRotationOptions](arkts-arkui-xcomponent-comp-surfacerotationoptions-i.md) | Defines whether the orientation of the surface held by the current **XComponent** is locked when the screen rotates. |

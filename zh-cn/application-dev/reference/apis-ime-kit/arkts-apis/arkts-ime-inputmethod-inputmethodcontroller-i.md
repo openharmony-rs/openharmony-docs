@@ -9,6 +9,8 @@ interface InputMethodController
 > <br>
 > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。
 
+在ArkTS动态调用中，on/off传入无效的事件类型或回调函数时，将抛出BusinessError 401。注册监听时，callback必须为函数；取消监听时，不传callback或传入null、undefined将移除该事件的所有回调，传入其他值时必须为函数。
+
 **起始版本：** 6
 
 <!--Device-inputMethod-interface InputMethodController--><!--Device-inputMethod-interface InputMethodController-End-->
@@ -37,6 +39,10 @@ attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback<vo
 > 设置为不可获焦窗口时，系统将无法保证自绘输入控件与输入法正常交互。若开发者希望在不可获焦窗口中绘制输入框，建议参考<br>
 > [不可获焦窗口中输入框与输入法交互指南](../../../inputmethod/use-inputmethod-in-not-focusable-window.md)。
 
+在ArkTS动态调用中，操作队列已满或排队等待超时时，将中止本次绑定，并通过callback的错误参数返回BusinessError 12800006。请等待操作完成后再发起其他请求。异步任务创建失败或框架报告的任务提交失败使用BusinessError 12800008；取消操作时，若没有该操作的专用错误码，也使用此错误码。如果无法准备异步输入或结果返回通道，且当前没有待处理的异常，则同步抛出BusinessError 12800008。
+
+原生层绑定或解绑操作无法按序执行时，将中止操作并返回BusinessError 12800003。原生任务无法进入队列或等待执行超时时，不会变更会话状态。
+
 **起始版本：** 10
 
 <!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback<void>): void--><!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback<void>): void-End-->
@@ -57,6 +63,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback<vo
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800006](../errorcode-inputmethod-framework.md#12800006-输入法控制器异常) | Input method controller error: the operation queue is full or the queue wait timed out (ArkTS dynamic only). |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
@@ -94,6 +101,10 @@ attach(showKeyboard: boolean, textConfig: TextConfig): Promise<void>
 > 设置为不可获焦窗口时，系统将无法保证自绘输入控件与输入法正常交互。若开发者希望在不可获焦窗口中绘制输入框，建议参考<br>
 > [不可获焦窗口中输入框与输入法交互指南](../../../inputmethod/use-inputmethod-in-not-focusable-window.md)。
 
+在ArkTS动态调用中，操作队列已满或排队等待超时时，将中止本次绑定，并通过Promise拒绝返回BusinessError 12800006。请等待操作完成后再发起其他请求。异步任务创建失败或框架报告的任务提交失败使用BusinessError 12800008；取消操作时，若没有该操作的专用错误码，也使用此错误码。如果无法准备异步输入或结果返回通道，且当前没有待处理的异常，则同步抛出BusinessError 12800008。
+
+原生层绑定或解绑操作无法按序执行时，将中止操作并返回BusinessError 12800003。原生任务无法进入队列或等待执行超时时，不会变更会话状态。
+
 **起始版本：** 10
 
 <!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig): Promise<void>--><!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig): Promise<void>-End-->
@@ -119,6 +130,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800006](../errorcode-inputmethod-framework.md#12800006-输入法控制器异常) | Input method controller error: the operation queue is full or the queue wait timed out (ArkTS dynamic only). |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
@@ -154,6 +166,10 @@ attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: Req
 > 设置为不可获焦窗口时，系统将无法保证自绘输入控件与输入法正常交互。若开发者希望在不可获焦窗口中绘制输入框，建议参考<br>
 > [不可获焦窗口中输入框与输入法交互指南](../../../inputmethod/use-inputmethod-in-not-focusable-window.md)。
 
+在ArkTS动态调用中，操作队列已满或排队等待超时时，将中止本次绑定，并通过Promise拒绝返回BusinessError 12800006。请等待操作完成后再发起其他请求。异步任务创建失败或框架报告的任务提交失败使用BusinessError 12800008；取消操作时，若没有该操作的专用错误码，也使用此错误码。如果无法准备异步输入或结果返回通道，且当前没有待处理的异常，则同步抛出BusinessError 12800008。
+
+原生层绑定或解绑操作无法按序执行时，将中止操作并返回BusinessError 12800003。原生任务无法进入队列或等待执行超时时，不会变更会话状态。
+
 **起始版本：** 15
 
 <!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: RequestKeyboardReason): Promise<void>--><!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: RequestKeyboardReason): Promise<void>-End-->
@@ -180,6 +196,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: Req
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800006](../errorcode-inputmethod-framework.md#12800006-输入法控制器异常) | Input method controller error: the operation queue is full or the queue wait timed out (ArkTS dynamic only). |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
@@ -212,6 +229,10 @@ attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?
 > <br>
 > 需要先调用此接口，完成自绘控件与输入法的绑定，才能使用以下功能：显示/隐藏键盘、更新光标信息、更改编辑框选中范围、保存配置信息、监听处理由输入法应用发送的信息或命令等。
 
+在ArkTS动态调用中，操作队列已满或排队等待超时时，将中止本次绑定，并通过Promise拒绝返回BusinessError 12800006。请等待操作完成后再发起其他请求。异步任务创建失败或框架报告的任务提交失败使用BusinessError 12800008；取消操作时，若没有该操作的专用错误码，也使用此错误码。如果无法准备异步输入或结果返回通道，且当前没有待处理的异常，则同步抛出BusinessError 12800008。
+
+原生层绑定或解绑操作无法按序执行时，将中止操作并返回BusinessError 12800003。原生任务无法进入队列或等待执行超时时，不会变更会话状态。
+
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -239,6 +260,7 @@ attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800006](../errorcode-inputmethod-framework.md#12800006-输入法控制器异常) | Input method controller error: the operation queue is full or the queue wait timed out (ArkTS dynamic only). |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例**
@@ -295,6 +317,7 @@ changeSelection(text: string, start: number, end: number, callback: AsyncCallbac
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
+| [12800016](../errorcode-inputmethod-framework.md#12800016-输入法客户端未处于编辑状态) | input method client is not editable. |
 
 **示例**
 
@@ -349,6 +372,7 @@ changeSelection(text: string, start: number, end: number): Promise<void>
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
+| [12800016](../errorcode-inputmethod-framework.md#12800016-输入法客户端未处于编辑状态) | input method client is not editable. |
 
 **示例**
 
@@ -369,6 +393,8 @@ detach(callback: AsyncCallback<void>): void
 ```
 
 自绘控件解除与输入法的绑定。使用callback异步回调。<br> <br>含义/功能：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。<br> <br>使用场景：自绘控件不再需要与输入法交互时调用（如页面切换、编辑框被销毁等）。<br> <br>使用后效果：解除绑定后，不能再调用showTextInput、hideTextInput、updateCursor等需要绑定状态的接口。输入法软键盘将被隐藏。<br> <br>相关接口间的配合/制约关系：detach必须与attach配对使用。建议在hideTextInput之后调用detach，完整流程为：attach → showTextInput → hideTextInput → detach。
+
+原生层绑定或解绑操作无法按序执行时，将中止操作并返回BusinessError 12800003。原生任务无法进入队列或等待执行超时时，不会变更会话状态。
 
 **起始版本：** 10
 
@@ -410,6 +436,8 @@ detach(): Promise<void>
 ```
 
 自绘控件解除与输入法的绑定。使用promise异步回调。<br> <br>含义/功能：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。<br> <br>使用场景：自绘控件不再需要与输入法交互时调用。<br> <br>使用后效果：解除绑定后，不能再调用需要绑定状态的接口。输入法软键盘将被隐藏。<br> <br>相关接口间的配合/制约关系：detach必须与attach配对使用。
+
+原生层绑定或解绑操作无法按序执行时，将中止操作并返回BusinessError 12800003。原生任务无法进入队列或等待执行超时时，不会变更会话状态。
 
 **起始版本：** 10
 
@@ -1814,6 +1842,8 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>
 > <br>
 > msgId最大限制256B，msgParam最大限制128KB。
 
+在ArkTS动态调用中，操作队列已满或排队等待超时时，将中止本次消息发送，并通过Promise拒绝返回BusinessError 12800003。请等待操作完成后再发起其他请求。异步任务创建失败或框架报告的任务提交失败使用BusinessError 12800008；取消操作时，若没有该操作的专用错误码，也使用此错误码。如果无法准备异步输入或结果返回通道，且当前没有待处理的异常，则同步抛出BusinessError 12800008。
+
 **起始版本：** 15
 
 <!--Device-InputMethodController-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>--><!--Device-InputMethodController-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>-End-->
@@ -1839,6 +1869,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types. 2. Incorrect parameter length. |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
 | [12800014](../errorcode-inputmethod-framework.md#12800014-输入法应用非完全访问模式) | the input method is in basic mode. |
 | [12800015](../errorcode-inputmethod-framework.md#12800015-消息接收端无法接收自定义通信数据) | the other side does not accept the request. |
@@ -1892,6 +1923,7 @@ setCallingWindow(windowId: number, callback: AsyncCallback<void>): void
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
+| [12800016](../errorcode-inputmethod-framework.md#12800016-输入法客户端未处于编辑状态) | input method client is not editable. |
 
 **示例**
 
@@ -1945,6 +1977,7 @@ setCallingWindow(windowId: number): Promise<void>
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
+| [12800016](../errorcode-inputmethod-framework.md#12800016-输入法客户端未处于编辑状态) | input method client is not editable. |
 
 **示例**
 
@@ -2313,6 +2346,7 @@ updateAttribute(attribute: InputAttribute, callback: AsyncCallback<void>): void
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
+| [12800016](../errorcode-inputmethod-framework.md#12800016-输入法客户端未处于编辑状态) | input method client is not editable. |
 
 **示例**
 
@@ -2366,6 +2400,7 @@ updateAttribute(attribute: InputAttribute): Promise<void>
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
+| [12800016](../errorcode-inputmethod-framework.md#12800016-输入法客户端未处于编辑状态) | input method client is not editable. |
 
 **示例**
 
@@ -2412,6 +2447,7 @@ updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback<void>): void
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
+| [12800016](../errorcode-inputmethod-framework.md#12800016-输入法客户端未处于编辑状态) | input method client is not editable. |
 
 **示例**
 
@@ -2470,6 +2506,7 @@ updateCursor(cursorInfo: CursorInfo): Promise<void>
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
+| [12800016](../errorcode-inputmethod-framework.md#12800016-输入法客户端未处于编辑状态) | input method client is not editable. |
 
 **示例**
 

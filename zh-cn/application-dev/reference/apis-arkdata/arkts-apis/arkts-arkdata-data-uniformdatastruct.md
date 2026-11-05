@@ -30,3 +30,16 @@ import { uniformDataStruct } from '@kit.ArkData';
 | [OpenHarmonyAppItem](arkts-arkdata-uniformdatastruct-openharmonyappitem-i.md) | 系统定义的桌面图标类型数据，用于跨应用共享桌面图标信息。典型使用场景包括：桌面启动器拖拽图标、应用商店分享应用图标或创建快捷方式等。 |
 | [PixelMap](arkts-arkdata-uniformdatastruct-pixelmap-i.md) | 系统定义的像素图类型数据，用于描述图像像素数据。创建PixelMap对象后，可用于图像拖拽、图像共享等场景，实现跨应用的图像数据传递。 |
 | [PlainText](arkts-arkdata-uniformdatastruct-plaintext-i.md) | 纯文本类型数据，用于描述和管理纯文本内容。创建PlainText对象后，可用于拖拽、复制粘贴等数据共享场景，实现跨应用的纯文本数据交互。 |
+| [VirtualBaseItem](arkts-arkdata-uniformdatastruct-virtualbaseitem-i.md) | 描述按需提供拖拽数据的虚拟文件或目录的公共元数据。 |
+| [VirtualDirItem](arkts-arkdata-uniformdatastruct-virtualdiritem-i.md) | 描述虚拟目录及其可选子节点。目录不要求提供文件大小。 |
+| [VirtualFileInfo](arkts-arkdata-uniformdatastruct-virtualfileinfo-i.md) | 定义虚拟文件系统的根节点，以及拖拽落入成功后 UDMF 用于提供数据的回调。回调状态仅保留在起拖方进程中，不会通过落入方的数据获取操作返回。 |
+| [VirtualFileItem](arkts-arkdata-uniformdatastruct-virtualfileitem-i.md) | 描述按需提供内容的虚拟文件。起拖时必须声明文件大小。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [VirtualFileOnCancel](arkts-arkdata-uniformdatastruct-virtualfileoncancel-t.md) | 取消指定虚拟文件待处理任务的回调。 |
+| [VirtualFileOnRead](arkts-arkdata-uniformdatastruct-virtualfileonread-t.md) | 从虚拟文件读取至多 length 字节的回调，单次请求最大为 5 MiB。 |
+| [VirtualFileOnStat](arkts-arkdata-uniformdatastruct-virtualfileonstat-t.md) | 获取虚拟文件元数据的回调，不能替代起拖前声明文件大小。 |
+| [VirtualItemType](arkts-arkdata-uniformdatastruct-virtualitemtype-t.md) | 虚拟文件或目录的元数据。 |

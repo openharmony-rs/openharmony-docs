@@ -47,4 +47,4 @@ Starts an exact timer. This API uses a promise to return the result.
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
-| 9201054 | The specified timer does not exist or does not belong to the current administrator. |
+| [9201054](../errorcode-enterpriseDeviceManager.md#9201054-the-specified-timer-does-not-exist-or-does-not-belong-to-the-current-device-management-application) | The specified timer does not exist or does not belong to the current administrator. |

@@ -126,7 +126,7 @@ Opens the Certificate Management Install Certificate dialog box. After the certi
 | [29700004](../errorcode-certManagerDialog.md#29700004-operation-not-supported-by-the-device) | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](arkts-devicecertificate-certificatemanagerdialog-supportscacertdialog-f.md) to determine whether the device supports opening the dialog box for installing a CA certificate with certType set to CA. |
 | [29700005](../errorcode-certManagerDialog.md#29700005-non-secure-operation) | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user. |
 | [29700006](../errorcode-certManagerDialog.md#29700006-failed-to-validate-the-input-parameter) | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
-| 29700008 | The keystore file password is incorrect. |
+| [29700008](../errorcode-certManagerDialog.md#29700008-incorrect-password) | The keystore file password is incorrect. |
 
 **Examples**
 

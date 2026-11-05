@@ -6,7 +6,7 @@ declare class GridAttribute extends ScrollableCommonMethod<GridAttribute>
 
 除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
 
 **继承/实现关系：** GridAttribute extends ScrollableCommonMethod&lt;GridAttribute&gt;
 
@@ -495,7 +495,7 @@ minCount(value: number)
 multiSelectable(value: boolean)
 ```
 
-设置是否开启鼠标框选。开启框选后，可以配合GridItem的selected属性和onSelect事件获取GridItem的选中状态，还可以通过[多态样式](arkts-arkui-common-comp.md)设置GridItem的选中态样式（GridItem默认无选中态样式）。
+设置是否开启鼠标框选。开启框选后，可以配合GridItem的selected属性和onSelect事件获取GridItem的选中状态，还可以通过[多态样式](arkts-arkui-common-comp-commonmethod-c.md)设置GridItem的选中态样式（GridItem默认无选中态样式）。
 
 **起始版本：** 8
 

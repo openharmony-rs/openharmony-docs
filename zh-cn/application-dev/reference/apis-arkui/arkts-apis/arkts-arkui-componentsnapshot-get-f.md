@@ -12,7 +12,7 @@ import { componentSnapshot } from '@kit.ArkUI';
 function get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptions): void
 ```
 
-获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过回调返回结果。
+获取已加载的组件的截图，传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图。通过回调返回结果。
 
 > **说明：** 
 > 
@@ -38,7 +38,7 @@ function get(id: string, callback: AsyncCallback<image.PixelMap>, options?: Snap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 目标组件的组件标识。 |
+| id | string | 是 | 目标组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | 截图返回结果的回调。 |
 | options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | 否 | 截图相关的自定义参数。<br>**适用版本：** 12 |
 
@@ -99,7 +99,7 @@ struct SnapshotExample {
 function get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 ```
 
-获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过Promise返回结果。
+获取已加载的组件的截图，传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图。通过Promise返回结果。
 
 > **说明：** 
 > 
@@ -125,7 +125,7 @@ function get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 目标组件的组件标识。 |
+| id | string | 是 | 目标组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。 |
 | options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | 否 | 截图相关的自定义参数。<br>**适用版本：** 12 |
 
 **返回值：**

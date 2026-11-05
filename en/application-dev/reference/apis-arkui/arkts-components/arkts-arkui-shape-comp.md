@@ -12,7 +12,7 @@ The **Shape** component is the parent component of the drawing components. The a
 
 ## Child Components
 
-The following child components are supported: Rect, Path, Circle, Ellipse, Polyline, [Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon), Image, Text, [Column](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md#column), Row, and **Shape**.
+The following child components are supported: [Rect](arkts-arkui-rect-comp.md), [Path](arkts-arkui-path-comp.md), Circle, [Ellipse](arkts-arkui-ellipse-comp.md), [Polyline](arkts-arkui-polyline-comp.md), [Polygon](arkts-arkui-polygon-comp.md), Image, [Text](arkts-arkui-text-comp.md), Column, Row, and **Shape**.
 
 ## Shape
 

@@ -14,8 +14,8 @@ declare interface SweepGradientOptions
 > 
 > metricsColors参数的约束：
 > 
-> [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)表示填充的颜色，可以使用
-> [colorWithSpace](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md#colorwithspace)方法构造指定色域属性的颜色。number表示指定颜色所处的位置，取值范围为
+> ColorMetrics表示填充的颜色，可以使用
+> colorWithSpace方法构造指定色域属性的颜色。number表示指定颜色所处的位置，取值范围为
 > [0, 1.0]，设置的值小于0时，按0处理，设置的值大于1.0时，按1.0处理。0表示当前组件渐变区域的开始处，1.0表示渐变区域的结束处。为了实现多个颜色渐变效果，多个数组中的number类型参数应递增设置。如果后一个数组中的
 > number类型参数小于前一个数组的number类型参数，将按照等于前一个数组number值处理。
 

@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function resetMemory(slotId: number, options?:ResetOption): Promise<ResultCode>
 ```
 
-Clears all specific profiles and resets the eUICC. This API uses a promise to return the result.
+Clear all specific profiles and reset the eUICC. Different from reserveProfilesForFactoryRestore, this interface clears configuration files. To restore factory settings and retain existing configuration files, use reserveProfilesForFactoryRestore. Use Promise asynchronous callbacks.
 
 **Since:** 18
 
@@ -28,8 +28,8 @@ Clears all specific profiles and resets the eUICC. This API uses a promise to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
-| options | [ResetOption](arkts-telephony-esim-resetoption-e-sys.md) | No | Reset options. |
+| slotId | number | Yes | Card slot ID. <br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| options | [ResetOption](arkts-telephony-esim-resetoption-e-sys.md) | No | Resets the status. If this parameter is not transferred, the default setting is used. You can transfer the corresponding enumerated value to specify the reset option. Multiple options can be bitwise or combined. |
 
 **Return value:**
 

@@ -454,7 +454,8 @@
   - [PolicyInfo](arkts-corefile-fileshare-policyinfo-i.md)
   <!--Del-->
   - [SharedDirectoryInfo(system api)](arkts-corefile-fileshare-shareddirectoryinfo-i-sys.md)<!--DelEnd-->
-  - [GrantStatus](arkts-corefile-fileshare-grantstatus-e.md)
+  <!--Del-->
+  - [GrantStatus(system api)](arkts-corefile-fileshare-grantstatus-e-sys.md)<!--DelEnd-->
   - [OperationMode](arkts-corefile-fileshare-operationmode-e.md)
   - [PolicyErrorCode](arkts-corefile-fileshare-policyerrorcode-e.md)
   - [PolicyType](arkts-corefile-fileshare-policytype-e.md)

@@ -20,8 +20,8 @@ import { runningLock } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-basicservices-runninglock-create-f.md#create-1) | 创建RunningLock锁对象。使用callback异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。 |
-| [create](arkts-basicservices-runninglock-create-f.md#create-2) | 创建RunningLock锁对象。使用Promise异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。 |
+| [create](arkts-basicservices-runninglock-create-f.md#create-1) | 创建RunningLock锁对象。使用callback异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。不建议在多个 Worker/TaskPool 中并发调用 create 创建锁对象。 |
+| [create](arkts-basicservices-runninglock-create-f.md#create-2) | 创建RunningLock锁对象。使用Promise异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。不建议在多个 Worker/TaskPool 中并发调用 create 创建锁对象。 |
 | [isSupported](arkts-basicservices-runninglock-issupported-f.md#issupported-1) | 查询系统是否支持该类型的锁。 |
 | [createRunningLock](arkts-basicservices-runninglock-createrunninglock-f.md#createrunninglock-1) | 创建RunningLock锁。使用callback异步回调。 |
 | [createRunningLock](arkts-basicservices-runninglock-createrunninglock-f.md#createrunninglock-2) | 创建RunningLock锁。使用Promise异步回调。 |
@@ -32,7 +32,7 @@ import { runningLock } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) | 阻止系统睡眠或使能接近光控制亮灭屏的锁，不同的锁类型具有不同的功能，详见[RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md)。需结合[create](arkts-basicservices-runninglock-create-f.md)创建锁、[hold](arkts-basicservices-runninglock-runninglock-c.md#hold)持锁、[unhold](arkts-basicservices-runninglock-runninglock-c.md#unhold)释放锁使用。具体使用方法见示例。 |
+| [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) | 阻止系统睡眠或使能接近光控制亮灭屏的锁，不同的锁类型具有不同的功能，详见[RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md)。需结合[create](arkts-basicservices-runninglock-create-f.md)创建锁、[hold](arkts-basicservices-runninglock-runninglock-c.md#hold)持锁、[unhold](arkts-basicservices-runninglock-runninglock-c.md#unhold)释放锁使用。具体使用方法见示例。RunningLock 对象不可在多个 Worker/TaskPool 线程间共享。同一 RunningLock 实例的 hold()、unhold()、isHolding() 方法必须在同一线程调用，跨线程共享可能导致锁状态不一致且不报错。当电源服务异常重启后，已创建的 RunningLock 对象仍然有效，但锁的持有状态可能丢失。建议在服务重启场景下通过 isHolding() 检查锁状态，必要时重新调用 hold()。当 RunningLock 的 JS 对象被垃圾回收时，底层持有的锁会被自动释放。如需长期持锁，请保持对 RunningLock 对象的引用。 |
 
 ### 枚举
 

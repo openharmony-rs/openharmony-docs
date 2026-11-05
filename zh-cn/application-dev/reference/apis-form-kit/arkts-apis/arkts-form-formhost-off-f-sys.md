@@ -204,7 +204,7 @@ function off(type: 'getLiveFormStatus',
     callback?: formInfo.GetLiveFormStatusCallback): void
 ```
 
-Cancels Listening to the event of get live form status.
+取消订阅所有实时卡片的运行状态查询事件。使用callback异步回调。
 
 **起始版本：** 20
 
@@ -218,8 +218,8 @@ Cancels Listening to the event of get live form status.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'getLiveFormStatus' | 是 | Indicates event type. |
-| callback | [formInfo.GetLiveFormStatusCallback](arkts-form-forminfo-getliveformstatuscallback-t-sys.md) | 否 | The callback of get live form status. |
+| type | 'getLiveFormStatus' | 是 | 事件回调类型，支持的事件为'getLiveFormStatus'，表示卡片位置尺寸查询。 |
+| callback | [formInfo.GetLiveFormStatusCallback](arkts-form-forminfo-getliveformstatuscallback-t-sys.md) | 否 | 回调函数，对应已订阅卡片位置尺寸查询请求。缺省时，表示注销所有实时卡片的运行状态查询事件回调。 |
 
 **错误码：**
 

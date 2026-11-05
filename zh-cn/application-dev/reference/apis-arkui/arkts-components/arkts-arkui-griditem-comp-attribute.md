@@ -140,7 +140,7 @@ selectable(value: boolean)
 
 设置当前GridItem元素是否可以被鼠标框选。外层Grid容器的鼠标框选开启时，GridItem的框选才生效。
 
-该属性需要在设置[多态样式](arkts-arkui-common-comp.md)前使用才能生效选中态样式。
+该属性需要在设置[多态样式](arkts-arkui-common-comp-commonmethod-c.md)前使用才能生效选中态样式。
 
 **起始版本：** 8
 
@@ -166,7 +166,7 @@ selected(value: boolean)
 
 设置当前GridItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
-该属性需要在设置[多态样式](arkts-arkui-common-comp.md)前使用才能生效选中态样式。
+该属性需要在设置[多态样式](arkts-arkui-common-comp-commonmethod-c.md)前使用才能生效选中态样式。
 
 **起始版本：** 10
 

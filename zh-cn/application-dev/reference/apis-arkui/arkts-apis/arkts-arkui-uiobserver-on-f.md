@@ -176,7 +176,7 @@ struct Index {
 export function on(type: 'scrollEvent', options: ObserverOptions, callback: Callback<ScrollEventInfo>): void
 ```
 
-监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md)、[Grid](../arkts-components/arkts-arkui-grid-comp.md)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md)。
+监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md)、[Grid](../arkts-components/arkts-arkui-grid-comp.md)、Scroll、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md)。
 
 **起始版本：** 12
 
@@ -203,7 +203,7 @@ export function on(type: 'scrollEvent', options: ObserverOptions, callback: Call
 export function on(type: 'scrollEvent', callback: Callback<ScrollEventInfo>): void
 ```
 
-监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md)、[Grid](../arkts-components/arkts-arkui-grid-comp.md)、[Scroll](../arkts-components/arkts-arkui-scroll-comp.md)、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md)。
+监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](../arkts-components/arkts-arkui-list-comp.md)、[Grid](../arkts-components/arkts-arkui-grid-comp.md)、Scroll、[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md)、[ArcList](../arkts-components/arkts-arkui-arclist-comp.md)。
 
 **起始版本：** 12
 

@@ -35,6 +35,7 @@ import { telephonyManager } from '@kit.MDMKit';
 | [addIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-addincomingcallpolicynumbers-f.md#addincomingcallpolicynumbers-1) | 添加通话呼入的允许或禁用名单，如果不添加名单，则任意号码都可以呼入，添加后仅名单内的号码允许或禁止呼入。例如，企业可限制员工只能接听客户来电，或禁止接听骚扰电话。 |
 | [addOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-addoutgoingcallpolicynumbers-f.md#addoutgoingcallpolicynumbers-1) | 添加通话呼出的允许或禁用名单，如果不添加名单，任意号码都可以呼出，添加后只有名单内的号码允许或禁止呼出。例如，企业可限制员工只能拨打客户服务热线，或禁止拨打特定号码。 |
 | [deactiveSim](arkts-mdm-telephonymanager-deactivesim-f.md#deactivesim-1) | 停用指定卡槽SIM卡。停用该SIM卡，无法使用该卡槽的SIM卡接打电话，收发短信，上网。例如，企业可在员工休假或设备维护期间，临时停用SIM卡。该接口需要插入SIM卡并关闭飞行模式才能成功调用。 |
+| [getCallLogs](arkts-mdm-telephonymanager-getcalllogs-f.md#getcalllogs-1) | 根据指定的时间范围和电话号码查询通话记录。企业MDM应用可通过此接口读取设备通话记录进行审计。支持按时间范围和号码进行筛选查询。查询时间范围不能超过31天，号码采用完全匹配。通话记录最多保存5000条，超过时自动删除最早的记录。该接口使用Promise方式异步返回结果。 |
 | [getDefaultData](arkts-mdm-telephonymanager-getdefaultdata-f.md#getdefaultdata-1) | 获取设备当前默认使用的数据流量卡卡槽ID。例如，企业设备管理员可在设备管理过程中查询当前配置的默认数据流量卡，以便进行流量管理或切换数据卡配置。未插卡或者飞行模式下会获取上一次使用的数据流量卡卡槽ID、设备从未设置过默认数据流量卡场景下，该接口返回默认卡槽1，值为0。 |
 | [getIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-getincomingcallpolicynumbers-f.md#getincomingcallpolicynumbers-1) | 获取通话呼入的允许或禁用名单。 |
 | [getIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-getincomingcallpolicynumbers-f.md#getincomingcallpolicynumbers-2) | 获取通话呼入的允许或禁用名单。 |
@@ -47,3 +48,10 @@ import { telephonyManager } from '@kit.MDMKit';
 | [setDefaultData](arkts-mdm-telephonymanager-setdefaultdata-f.md#setdefaultdata-1) | 设置指定卡槽的SIM卡为默认数据流量卡，设备将使用指定卡槽的SIM卡流量上网。例如，企业可在双卡设备管理场景中，为员工设备指定默认的数据流量卡以统一管理流量使用。该接口需要插入SIM卡并关闭飞行模式才能成功调用。 |
 | [setSimDisabled](arkts-mdm-telephonymanager-setsimdisabled-f.md#setsimdisabled-1) | 禁用指定卡槽的SIM卡。禁用后，无法使用该卡槽的SIM卡接打电话、收发短信、上网。例如，企业设备管理员可在员工离职或设备丢失时，禁用SIM卡防止未授权使用。适用于企业需要限制员工设备通话能力的场景，例如员工离职或设备遗失时防止SIM卡被滥用，保障企业通信安全和成本控制。 |
 | [setSimEnabled](arkts-mdm-telephonymanager-setsimenabled-f.md#setsimenabled-1) | 解除指定卡槽的SIM卡禁用。使用setSimDisabled禁用SIM卡后，再用setSimEnabled启用SIM卡，需要到设置-移动网络-SIM卡管理界面手动打开SIM卡开关。 |
+
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [CallLogInfo](arkts-mdm-telephonymanager-callloginfo-i.md) | 通话记录信息。提供通话记录的详细信息，包括通话时长、通话方向（呼入/呼出）、时间戳以及使用的SIM卡槽位。 |
+| [TelephonyQueryConfig](arkts-mdm-telephonymanager-telephonyqueryconfig-i.md) | 查询短信和通话记录的选项。提供电话相关查询的通用查询参数。 |

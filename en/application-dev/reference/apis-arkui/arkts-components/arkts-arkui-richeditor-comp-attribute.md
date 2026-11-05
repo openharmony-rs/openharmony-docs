@@ -4,9 +4,9 @@
 declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
-In addition to the [universal events](arkts-arkui-common-comp.md), [OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md), [StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md), [StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md), and the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), [OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md), [StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md), [StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md), and the following events are supported.
 
 **Inheritance/Implementation:** RichEditorAttribute extends CommonMethod&lt;RichEditorAttribute&gt;
 
@@ -107,7 +107,7 @@ bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, response
     options?: SelectionMenuOptions)
 ```
 
-Sets a custom selection menu. It supports custom menu styles and trigger conditions, and is suitable for scenarios that require deep menu customization. When the custom menu is too long, it is recommended to nest a [Scroll](arkts-arkui-scroll-comp.md) component inside to prevent the keyboard from being obscured.
+Sets a custom selection menu. It supports custom menu styles and trigger conditions, and is suitable for scenarios that require deep menu customization. When the custom menu is too long, it is recommended to nest a Scroll component inside to prevent the keyboard from being obscured.
 
 **Since:** 10
 

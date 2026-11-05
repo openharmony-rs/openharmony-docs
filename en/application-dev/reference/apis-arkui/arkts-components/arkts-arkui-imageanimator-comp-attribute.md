@@ -4,9 +4,9 @@
 declare class ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
-In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
 
 **Inheritance/Implementation:** ImageAnimatorAttribute extends CommonMethod&lt;ImageAnimatorAttribute&gt;
 

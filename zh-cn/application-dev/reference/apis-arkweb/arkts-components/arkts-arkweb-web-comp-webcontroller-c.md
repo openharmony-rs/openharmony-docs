@@ -461,7 +461,7 @@ baseUrl为空时，通过“data”协议加载指定的一段字符串。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string } | 是 | The options with the data or URL and other information. |
+| options | { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string } | 是 | 包含数据或URL及其他信息的选项。 |
 
 **示例**
 
@@ -514,7 +514,7 @@ loadUrl(options: { url: string | Resource, headers?: Array<Header> })
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | { url: string &#124; Resource, headers?: Array&lt;[Header](arkts-arkweb-web-comp-header-i.md)&gt; } | 是 | The options with the URL and other information. |
+| options | { url: string &#124; Resource, headers?: Array&lt;[Header](arkts-arkweb-web-comp-header-i.md)&gt; } | 是 | 包含URL及其他信息的选项。 |
 
 **示例**
 

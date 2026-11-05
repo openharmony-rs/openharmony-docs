@@ -48,7 +48,7 @@ The set-type operations of the external crypto extension support calling custom 
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | The memory is insufficient. |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | The input parameters are invalid. Possible causes:         1. The resourceId or propertyId length is invalid.         2. The parameters contain invalid tags or invalid value types. |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | The UKey PIN is locked. |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | The UKey PIN is locked. |
 | [12000023](../errorcode-huks.md#12000023-unauthenticated-ukey-pin) | The UKey PIN is not authenticated. |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | The provider or UKey is busy. |
 

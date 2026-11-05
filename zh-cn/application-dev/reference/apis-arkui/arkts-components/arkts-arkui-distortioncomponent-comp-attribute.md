@@ -6,7 +6,7 @@ declare class DistortionComponentAttribute extends CommonMethod<DistortionCompon
 
 Defines the DistortionComponent attribute functions
 
-支持通用事件。
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** DistortionComponentAttribute extends CommonMethod&lt;DistortionComponentAttribute&gt;
 

@@ -21,9 +21,9 @@ function createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image
 > 
 > - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟。
 > 
-> - builder中的组件不支持设置动画相关的属性，如transition。
+> - builder中的组件不支持设置动画相关的属性，如[transition](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
 > 
-> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)组件、Web组件。
+> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的Image组件、[Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md)组件。
 
 **起始版本：** 10
 
@@ -135,9 +135,9 @@ function createFromBuilder(builder: CustomBuilder, delay?: number,
 > 
 > - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟。
 > 
-> - builder中的组件不支持设置动画相关的属性，如transition。
+> - builder中的组件不支持设置动画相关的属性，如[transition](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
 > 
-> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)组件、Web组件。
+> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的Image组件、[Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md)组件。
 
 **起始版本：** 10
 

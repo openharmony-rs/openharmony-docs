@@ -23,7 +23,7 @@ declare enum SizeType
 ## Auto
 
 ```TypeScript
-Auto = 0
+Auto
 ```
 
 根据设备宽度自动匹配合适的尺寸类型。
@@ -34,7 +34,7 @@ Auto = 0
 
 **替代接口：** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
 
-<!--Device-SizeType-Auto = 0--><!--Device-SizeType-Auto = 0-End-->
+<!--Device-SizeType-Auto--><!--Device-SizeType-Auto-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

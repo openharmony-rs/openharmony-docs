@@ -46,4 +46,4 @@ Queries the serial number of the usb device.
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
-| 9201055 | Failed to obtain the USB serial number. |
+| [9201055](../errorcode-enterpriseDeviceManager.md#9201055-failed-to-obtain-the-usb-serial-number) | Failed to obtain the USB serial number. |

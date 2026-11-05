@@ -4,11 +4,11 @@
 
 > **说明：** 
 
-> - 从API version 8开始支持，从API version 22开始废弃，建议使用Swiper替代。详细示例请参考[示例2](arkts-arkui-stepper-comp-attribute.md)。
+> - 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](arkts-arkui-swiper-comp.md)替代。详细示例请参考[示例2](arkts-arkui-stepper-comp-attribute.md)。
 
 ## 子组件
 
-仅能包含子组件StepperItem。
+仅能包含子组件[StepperItem](arkts-arkui-stepperitem-comp.md)。
 
 ## Stepper
 

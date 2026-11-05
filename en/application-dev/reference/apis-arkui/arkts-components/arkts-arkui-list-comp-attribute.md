@@ -4,9 +4,9 @@
 declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>
 ```
 
-In addition to [universal attributes](arkts-arkui-common-comp.md) and [scrollable component common attributes](../../../reference/apis-arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
+In addition to [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [scrollable component common attributes](../../../reference/apis-arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
 
-In addition to [universal events](arkts-arkui-common-comp.md) and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
+In addition to [universal events](arkts-arkui-common-comp-commonmethod-c.md) and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
 
 **Inheritance/Implementation:** ListAttribute extends ScrollableCommonMethod&lt;ListAttribute&gt;
 
@@ -369,7 +369,7 @@ The divider of **List** is drawn between two child components along the main axi
 
 In multi-column mode, the value of **startMargin** is calculated from the start edge of the cross axis of each column. In single-column mode, it is calculated from the start edge of the cross axis of the list.
 
-When a list item has [polymorphic styles](arkts-arkui-common-comp.md) applied, the dividers above and below the pressed child component are not rendered.
+When a list item has [polymorphic styles](arkts-arkui-common-comp-commonmethod-c.md) applied, the dividers above and below the pressed child component are not rendered.
 
 **Since:** 7
 
@@ -1141,7 +1141,7 @@ including the semantics of **syncLoad**.
 2. The placeholder template must be a global, parameterless  
 **@Builder({ isPlaceholder: true })** function that performs read-only static rendering.
 3. After the real item has been created, it is re-laid out under the normal layout constraints of
-ListItem and replaces the placeholder, keeping the scroll anchor.
+[ListItem](arkts-arkui-listitem-comp.md) and replaces the placeholder, keeping the scroll anchor.
 
 **Since:** 26.1.0
 

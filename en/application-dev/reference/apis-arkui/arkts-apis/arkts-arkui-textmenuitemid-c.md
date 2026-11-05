@@ -138,7 +138,7 @@ static readonly askAI: TextMenuItemId
 static readonly autoFill: TextMenuItemId
 ```
 
-Auto fill, a first-level menu item. Tapping it expands the second-level menu item "Password vault". It is supported only by [Search](../arkts-components/arkts-arkui-search-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md), [TextArea](../arkts-components/arkts-arkui-textarea-comp.md), or [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md).
+Auto fill, a first-level menu item. Tapping it expands the second-level menu item "Password vault". It is supported only by Search, [TextInput](../arkts-components/arkts-arkui-textinput-comp.md), [TextArea](../arkts-components/arkts-arkui-textarea-comp.md), or [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md).
 
 **Type:** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 
@@ -278,7 +278,7 @@ New email, a first-level menu item. Provides a jump service for the selected ema
 static readonly passwordVault: TextMenuItemId
 ```
 
-Password vault, a second-level menu item. Tapping this menu item opens the password vault application, which provides the capability of auto-filling account and password. It is supported only by [Search](../arkts-components/arkts-arkui-search-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md), [TextArea](../arkts-components/arkts-arkui-textarea-comp.md), or [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md).
+Password vault, a second-level menu item. Tapping this menu item opens the password vault application, which provides the capability of auto-filling account and password. It is supported only by Search, [TextInput](../arkts-components/arkts-arkui-textinput-comp.md), [TextArea](../arkts-components/arkts-arkui-textarea-comp.md), or [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md).
 
 **Type:** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 

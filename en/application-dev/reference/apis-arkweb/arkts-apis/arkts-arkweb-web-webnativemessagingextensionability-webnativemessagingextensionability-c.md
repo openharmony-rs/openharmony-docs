@@ -14,6 +14,10 @@ Provides the web native messaging capability and is inherited from ExtensionAbil
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## ExtensionAbility Usage Restrictions
+
+To ensure system security and stability, WebNativeMessagingExtensionAbility is restricted from abusing system resources. The system controls its capabilities and does not support referencing some modules. For details, see [Appendix](#appendix).
+
 ## Modules to Import
 
 ```TypeScript
@@ -139,3 +143,11 @@ Context of the current web native message ExtensionAbility.
 <!--Device-WebNativeMessagingExtensionAbility-context: WebNativeMessagingExtensionContext--><!--Device-WebNativeMessagingExtensionAbility-context: WebNativeMessagingExtensionContext-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
+
+## Appendix
+
+WebNativeMessagingExtensionAbility does not support referencing the following modules.
+
+| Kit | Module |
+| --- | --- |
+| ArkUI | [@ohos.window](../../apis-arkui/arkts-apis/arkts-arkui-window.md) |

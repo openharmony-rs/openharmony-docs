@@ -18,7 +18,7 @@ export interface CommandPath
 commands: string
 ```
 
-路径绘制的指令字符串。像素单位的转换方法请参考[像素单位](../arkts-components/arkts-arkui-common-comp.md)。
+路径绘制的指令字符串。像素单位的转换方法请参考[像素单位](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
 
 单位：px
 

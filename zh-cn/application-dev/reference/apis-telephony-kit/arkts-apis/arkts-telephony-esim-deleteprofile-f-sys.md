@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function deleteProfile(slotId: number, iccid: string): Promise<ResultCode>
 ```
 
-删除配置文件。使用Promise异步回调。
+删除配置文件。使用 Promise异步回调。
 
 **起始版本：** 18
 
@@ -28,8 +28,8 @@ function deleteProfile(slotId: number, iccid: string): Promise<ResultCode>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
-| iccid | string | 是 | 配置文件的ID。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
+| iccid | string | 是 | 配置文件的ID，ICCID通常为19-20位数字。 |
 
 **返回值：**
 

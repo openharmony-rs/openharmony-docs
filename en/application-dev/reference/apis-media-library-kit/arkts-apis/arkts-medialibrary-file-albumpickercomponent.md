@@ -1,22 +1,30 @@
 # @ohos.file.AlbumPickerComponent(AlbumPickerComponent)
 
-The **AlbumPickerComponent** embedded in the UI of an application allows the application to access the albums in the
- user directory without any permission.
+The **AlbumPickerComponent** displays a list of albums in an app for users to select an album to browse images or
+ videos. For example, in a social media app, users can select an album to upload photos. With this component, apps can
+ access the album list in the public directory without requesting the album access permission. This simplifies the
+ permission request process, reduces development costs, and improves user experience.
 
-Note that **AlbumPickerComponent** does not support nesting. Additionally, prevent overlaying components with the
- **overlay** attribute or of higher levels on top it, as this will prevent it from receiving gesture events.
+The album picker component must be used together with the photo picker component. When a user selects an album, the
+ system triggers the **onAlbumClick** callback and passes **AlbumInfo** (including the album URI and name) to the app.
+ The app needs to pass the URI to the photo picker component through the **PickerController** to refresh the images
+ and videos in the selected album. For details about the collaboration mechanism, see
+ [@ohos.file.PhotoPickerComponent (PhotoPickerComponent)](arkts-medialibrary-file-photopickercomponent-photopickercomponent-s.md).
 
-This component must be used together with [PhotoPickerComponent](arkts-medialibrary-file-photopickercomponent-photopickercomponent-s.md). When a user
- selects an album by using the **AlbumPickerComponent**, the **PhotoPickerComponent** is instructed to update the
- images and videos in the album.
+Note that the album picker component does not support nesting. Additionally, prevent overlaying components with the
+ **overlay** attribute or of higher levels on top the component, as this will prevent it from receiving gesture
+ events.
 
 > **NOTE**
+ >
+ > - This component is supported since API version 12. Newly added APIs will be marked with a superscript to indicate
+ > their
  >
  > - This component does not support [same-layer rendering](../../../web/web-same-layer.md).
 
 ## Attributes
 
-The universal attributes are supported.
+The [universal attributes](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md) are supported.
 
 ## Modules to Import
 
@@ -38,7 +46,7 @@ import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, EmptyAreaClickCall
 
 | Name | Description |
 | --- | --- |
-| [AlbumPickerComponent](arkts-medialibrary-file-albumpickercomponent-albumpickercomponent-s.md) | AlbumPickerComponent( {albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) =&gt; boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController }) |
+| [AlbumPickerComponent](arkts-medialibrary-file-albumpickercomponent-albumpickercomponent-s.md) | AlbumPickerComponent({albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) =&gt; boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController }) |
 
 ### Types
 

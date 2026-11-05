@@ -12,7 +12,7 @@ import { sim } from '@kit.TelephonyKit';
 function isOperatorSimCard(slotId: number, operator: OperatorSimCard): boolean
 ```
 
-Indicates whether the SIM card in a specified slot is a specified operator.
+This API is used to check whether the SIM card in a specified card slot is a SIM card of a specified carrier. For example, a carrier-dedicated app can use this interface to determine whether the current SIM card is a carrier-dedicated app and determine whether to display carrier-dedicated services or functions.
 
 **Since:** 11
 
@@ -26,14 +26,14 @@ Indicates whether the SIM card in a specified slot is a specified operator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Indicates the card slot index number, ranging from 0 to the maximum card slot index number supported by the device. |
-| operator | [OperatorSimCard](arkts-telephony-sim-operatorsimcard-e-sys.md) | Yes | Indicates the operator of sim. |
+| slotId | number | Yes | Card slot ID. <br>- 0: card slot 1<br>- 1: card slot 2. <br>The value should be an integer. |
+| operator | [OperatorSimCard](arkts-telephony-sim-operatorsimcard-e-sys.md) | Yes | Carrier card name. (Currently, only China Telecom cards are supported.). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the SIM card is specified operator; return `false` otherwise. |
+| boolean | Returns whether the specified card slot is a specified carrier card. <br>- true: yes <br>- false: no |
 
 **Error codes:**
 

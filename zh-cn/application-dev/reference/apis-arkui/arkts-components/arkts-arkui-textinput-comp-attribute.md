@@ -4,7 +4,7 @@
 declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)，还支持以下属性：
 
 > **说明：** 
 > 
@@ -41,7 +41,7 @@ declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 > 当光标在文本框边缘显示异常时，请检查是否是padding、borderRadius属性影响造成。
 > 
 > 从API version 10开始，单行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考
-> [尺寸设置](arkts-arkui-common-comp.md)。
+> [尺寸设置](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** TextInputAttribute extends CommonMethod&lt;TextInputAttribute&gt;
 

@@ -56,6 +56,6 @@ Post-Quantum Cryptography key encapsulation operation, supporting key management
 | [12000013](../errorcode-huks.md#12000013-the-credential-does-not-exist) | Queried credential does not exist |
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | Memory is insufficient. |
 | [12000015](../errorcode-huks.md#12000015-failed-to-invoke-other-system-services) | Failed to obtain the security information via UserIAM. |
-| 12000016 | The screen lock password is not set. |
+| [12000016](../errorcode-huks.md#12000016-device-password-not-set) | The screen lock password is not set. |
 | [12000017](../errorcode-huks.md#12000017-duplicate-key-alias) | The key with the same alias already exists. |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | The input parameter is invalid. |

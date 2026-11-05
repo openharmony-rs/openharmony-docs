@@ -20,7 +20,7 @@ Enumerates device ID types. They are used to define the device service identifie
 UNIFIED_DEVICE_ID = 1
 ```
 
-Unified device ID. It is a system-defined device service ID type, used for unified device identification across devices.
+Unified device ID. It is a system-defined device business ID type, used for unified device identification across devices.
 
 **Since:** 23
 

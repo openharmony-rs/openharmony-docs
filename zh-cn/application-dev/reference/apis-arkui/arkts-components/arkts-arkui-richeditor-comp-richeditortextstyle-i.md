@@ -304,7 +304,7 @@ strokeJoinStyle?: StrokeJoinStyle
 strokeWidth?: LengthMetrics | number
 ```
 
-文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../arkts-apis/arkts-arkui-graphics-lengthunit-e.md)，当前设置不生效，作为0处理。
+文本描边宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，作为0处理。
 
 值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。
 

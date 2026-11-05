@@ -12,7 +12,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 function unregisterPasscodePromptCallback(): void
 ```
 
-取消注册用于提示输入辅助设备密码的回调。
+取消注册通行码请求回调。取消后，系统将不再调用应用注册的通行码请求回调。
 
 **起始版本：** 26.0.1
 

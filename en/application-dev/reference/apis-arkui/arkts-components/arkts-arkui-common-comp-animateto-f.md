@@ -18,7 +18,7 @@ Defines an explicit animation. When an animation is required, call this API expl
 > 
 > - During [aboutToDisappear](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear),the component is being destroyed, so animations should not be used.
 > 
-> - When a component appears or disappears, you can add animation effects through the transitionattribute.
+> - When a component appears or disappears, you can add animation effects through the [transition](arkts-arkui-common-comp-commonmethod-c.md)attribute.
 > 
 > - For attributes not supported by component transitions, see
 > 

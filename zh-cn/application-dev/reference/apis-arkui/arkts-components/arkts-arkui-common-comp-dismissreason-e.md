@@ -76,7 +76,7 @@ SLIDE_DOWN = 3
 
 **说明：** 
 
-该接口仅支持在半模态转场中使用。
+该接口仅支持在[半模态转场](arkts-arkui-common-comp-commonmethod-c.md)中使用。
 
 **起始版本：** 12
 

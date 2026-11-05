@@ -1,10 +1,10 @@
 # NavDestination
 
-作为子页面的根容器，用于显示Navigation的内容区。
+作为子页面的根容器，用于显示[Navigation](arkts-arkui-navigation-comp.md)的内容区。
 
 > **说明：** 
 
-> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM],[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合expandSafeArea属性实现安全区避让。
+> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM],[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](arkts-arkui-common-comp-commonmethod-c.md)属性实现安全区避让。
 > 
 > - NavDestination组件必须配合Navigation使用，作为Navigation目的页面的根节点，单独使用只能作为普通容器组件，不具备路由相关属性能力。
 > 
@@ -29,7 +29,7 @@
 NavDestination()
 ```
 
-创建Navigation子页面的根容器。
+创建[Navigation](arkts-arkui-navigation-comp.md)子页面的根容器。
 
 **起始版本：** 9
 

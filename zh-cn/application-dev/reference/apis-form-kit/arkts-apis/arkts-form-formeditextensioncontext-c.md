@@ -125,7 +125,11 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 startUIAbility(want: Want): Promise<void>
 ```
 
-拉起卡片所属应用的UIAbility。使用Promise异步回调。说明：需在卡片编辑页面处于前台时调用，页面不在前台时调用将返回错误码16501014。
+拉起卡片所属应用的UIAbility。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 需在卡片编辑页面处于前台时调用，页面不在前台时调用将返回错误码16501014。
 
 **起始版本：** 23
 

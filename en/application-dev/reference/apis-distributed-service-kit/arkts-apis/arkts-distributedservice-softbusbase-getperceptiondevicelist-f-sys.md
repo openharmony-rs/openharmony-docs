@@ -45,6 +45,6 @@ Obtains the list of devices discovered by perception scanning. Before calling th
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [2000001](../errorcode-conversation.md#2000001-internal-error) | Internal error. An unexpected system error occurred. |
-| 2000002 | Caller error. The caller did not call the API in the specified order. |
-| 2000003 | Temporary error. The request failed due to a temporary error and can be retried. |
-| 2006001 | Underlying module error. The request failed due to an error in another underlying module and can be retried after a period of time. |
+| [2000002](../errorcode-softbusBase.md#2000002-calling-sequence-error) | Caller error. The caller did not call the API in the specified order. |
+| [2000003](../errorcode-softbusBase.md#2000003-temporary-error) | Temporary error. The request failed due to a temporary error and can be retried. |
+| [2006001](../errorcode-softbusBase.md#2006001-underlying-module-error) | Underlying module error. The request failed due to an error in another underlying module and can be retried after a period of time. |

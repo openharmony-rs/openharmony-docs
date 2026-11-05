@@ -104,7 +104,7 @@ import { sim } from '@kit.TelephonyKit';
 | [getVoiceMailIdentifier](arkts-telephony-sim-getvoicemailidentifier-f-sys.md#getvoicemailidentifier-2) | Obtains the alpha identifier of the voice mailbox of the SIM card in a specified slot. |
 | [getVoiceMailNumber](arkts-telephony-sim-getvoicemailnumber-f-sys.md#getvoicemailnumber-1) | Obtains the voice mailbox number of the SIM card in a specified slot. |
 | [getVoiceMailNumber](arkts-telephony-sim-getvoicemailnumber-f-sys.md#getvoicemailnumber-2) | Obtains the voice mailbox number of the SIM card in a specified slot. |
-| [isOperatorSimCard](arkts-telephony-sim-isoperatorsimcard-f-sys.md#isoperatorsimcard-1) | Indicates whether the SIM card in a specified slot is a specified operator. |
+| [isOperatorSimCard](arkts-telephony-sim-isoperatorsimcard-f-sys.md#isoperatorsimcard-1) | This API is used to check whether the SIM card in a specified card slot is a SIM card of a specified carrier. For example, a carrier-dedicated app can use this interface to determine whether the current SIM card is a carrier-dedicated app and determine whether to display carrier-dedicated services or functions. |
 | [queryIccDiallingNumbers](arkts-telephony-sim-queryiccdiallingnumbers-f-sys.md#queryiccdiallingnumbers-1) | Query dialing number information on SIM card. |
 | [queryIccDiallingNumbers](arkts-telephony-sim-queryiccdiallingnumbers-f-sys.md#queryiccdiallingnumbers-2) | Query dialing number information on SIM card. |
 | [sendEnvelopeCmd](arkts-telephony-sim-sendenvelopecmd-f-sys.md#sendenvelopecmd-1) | Send envelope command to SIM card. |

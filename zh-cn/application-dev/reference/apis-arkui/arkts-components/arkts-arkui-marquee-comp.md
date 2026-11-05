@@ -10,7 +10,7 @@
 > 
 > 对于Marquee组件动态帧率的场景，可以使用[MarqueeDynamicSyncScene](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)接口实现。
 > 
-> 在文本宽度小于跑马灯组件宽度时，使用[属性动画](arkts-arkui-common-comp.md)实现滚动。
+> 在文本宽度小于跑马灯组件宽度时，使用[属性动画](arkts-arkui-common-comp-commonmethod-c.md)实现滚动。
 
 ## 子组件
 

@@ -12,6 +12,46 @@ declare interface TextBackgroundStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## borderColor
+
+```TypeScript
+borderColor?: ResourceColor
+```
+
+文本背景边框颜色。默认值：**Color.Transparent**。
+
+**类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextBackgroundStyle-borderColor?: ResourceColor--><!--Device-TextBackgroundStyle-borderColor?: ResourceColor-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## borderWidth
+
+```TypeScript
+borderWidth?: Dimension
+```
+
+文本背景边框宽度。默认值：**0**。
+
+**类型：** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextBackgroundStyle-borderWidth?: Dimension--><!--Device-TextBackgroundStyle-borderWidth?: Dimension-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## color
 
 ```TypeScript

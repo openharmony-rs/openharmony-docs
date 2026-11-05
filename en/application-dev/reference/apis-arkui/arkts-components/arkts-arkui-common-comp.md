@@ -304,6 +304,7 @@ Constructor
 | [FractionStop](arkts-arkui-common-comp-fractionstop-t.md) | Defines a gradient blur stop. |
 | [GestureCollectInterceptCallback](arkts-arkui-common-comp-gesturecollectinterceptcallback-t.md) | Defines the callback type used in [onGestureCollectIntercept](arkts-arkui-common-comp-commonmethod-c.md#ongesturecollectintercept). |
 | [GestureRecognizerJudgeBeginCallback](arkts-arkui-common-comp-gesturerecognizerjudgebegincallback-t.md) | Represents a custom gesture recognizer judgment callback type. |
+| [HandednessFollowMode](arkts-arkui-common-comp-handednessfollowmode-t.md) | Import the HandednessFollowMode type from a dialog. |
 | [HoverCallback](arkts-arkui-common-comp-hovercallback-t.md) | Defines the callback type for hover events. |
 | [ImageModifier](arkts-arkui-common-comp-imagemodifier-t.md) | ImageModifier |
 | [InputEventListener](arkts-arkui-common-comp-inputeventlistener-t.md) | Input event listener callback type. |

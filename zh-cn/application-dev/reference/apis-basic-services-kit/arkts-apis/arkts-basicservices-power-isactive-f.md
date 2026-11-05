@@ -27,7 +27,7 @@ function isActive(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 活动状态返回true，非活动状态返回false。 |
+| boolean | 活动状态返回true，非活动状态或获取设备活动状态失败时返回false。 |
 
 **示例**
 

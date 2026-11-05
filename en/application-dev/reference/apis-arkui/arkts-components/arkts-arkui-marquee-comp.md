@@ -11,7 +11,7 @@ The **Marquee** component is used to scroll and display a single line of text. I
 > For scenarios where the **Marquee** component requires dynamic frame rates, use the
 > [MarqueeDynamicSyncScene](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) API.
 > 
-> When the text width is smaller than the **Marquee** component's width, use the [property animation](arkts-arkui-common-comp.md)
+> When the text width is smaller than the **Marquee** component's width, use the [property animation](arkts-arkui-common-comp-commonmethod-c.md)
 > to implement scrolling.
 
 ## Child Components

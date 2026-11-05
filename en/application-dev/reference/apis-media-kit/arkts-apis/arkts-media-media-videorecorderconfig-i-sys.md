@@ -80,7 +80,7 @@ video recorder profile, can get by "getVideoRecorderProfile", details see @Video
 rotation?: number
 ```
 
-Sets the video rotation angle in output file, and for the file to playback, in degrees. mp4 support. the range of rotation angle should be {0, 90, 180, 270}, default is 0.
+Rotation angle of the video to record, in degrees. The value can only be **0°** (default), **90°**, **180°**, or **270°**.
 
 **Type:** number
 

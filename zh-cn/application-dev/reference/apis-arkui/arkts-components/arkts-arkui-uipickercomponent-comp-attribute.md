@@ -4,9 +4,9 @@
 declare class UIPickerComponentAttribute extends CommonMethod<UIPickerComponentAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
 
 **继承/实现关系：** UIPickerComponentAttribute extends CommonMethod&lt;UIPickerComponentAttribute&gt;
 
@@ -114,7 +114,7 @@ itemHeight(height: Optional<LengthMetrics>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | 是 | 选项高度。<br>单位：与[LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)一致。<br>取值范围：[40vp, 64vp] <br>设置小于40vp或大于64vp时，使用默认值40vp。<br>当height的值为undefined时，使用默认值40vp。<br>不支持“百分比”类型。 |
+| height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | 是 | 选项高度。<br>单位：与LengthMetrics一致。<br>取值范围：[40vp, 64vp] <br>设置小于40vp或大于64vp时，使用默认值40vp。<br>当height的值为undefined时，使用默认值40vp。<br>不支持“百分比”类型。 |
 
 ## onChange
 

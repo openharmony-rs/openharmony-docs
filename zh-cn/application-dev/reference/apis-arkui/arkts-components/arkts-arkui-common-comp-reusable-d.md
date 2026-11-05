@@ -10,7 +10,7 @@ declare const Reusable: ClassDecorator & ((options: ReusableOptions) => ClassDec
 
 开发指南参考：[@Reusable装饰器：组件复用](../../../ui/state-management/arkts-reusable.md)。
 
-options：可复用自定义组件的参数，用于配置内存优化策略，缺省时无内存优化策略。建议在组件频繁创建销毁的场景下配置该参数以获得内存优化效果。
+options：可复用自定义组件的参数，用于配置内存优化策略，缺省时无内存优化策略。建议在组件频繁创建销毁的场景下配置该参数以获得内存优化效果。**起始版本：** 26.0.0
 
 **起始版本：** 10
 

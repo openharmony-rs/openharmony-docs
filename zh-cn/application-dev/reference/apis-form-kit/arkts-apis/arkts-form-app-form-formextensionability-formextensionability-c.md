@@ -12,6 +12,10 @@ declare class FormExtensionAbility
 
 **系统能力：** SystemCapability.Ability.Form
 
+## ExtensionAbility使用限制
+
+为保障系统安全性和稳定性，防止FormExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
+
 ## 导入模块
 
 ```TypeScript
@@ -70,6 +74,7 @@ onAddForm(want: Want): formBindingData.FormBindingData
 
 卡片提供方接收创建卡片的通知接口。需要注意：FormExtensionAbility创建后10秒内无操作将会被清理，请避免在回调中执行耗时操作。
 
+**配合使用：**  
 - 必须调用[formBindingData.createFormBindingData()](arkts-form-formbindingdata-createformbindingdata-f.md)创建卡片数据对象。  
 - 调用顺序：先创建数据对象（如dataObj1），再调用formBindingData.createFormBindingData(dataObj1)创建FormBindingData对象。  
 - 返回要求：必须返回FormBindingData对象，卡片要显示的数据通过参数传入。
@@ -122,7 +127,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 onCastToNormalForm(formId: string): void
 ```
 
-卡片提供方收到卡片使用方将临时卡片转常态卡片的通知接口。临时卡片、常态卡片是卡片使用方的概念，其中：临时卡片是短期存在的，在特定事件或用户行为后显示，完成后自动消失。常态卡片具有持久性，在用户主动清除或更改前将一直保留；日常开发的功能卡片均归属此类。在当前版本，卡片使用方不使用临时卡片。
+卡片提供方收到卡片使用方将临时卡片转为常态卡片的通知接口。临时卡片、常态卡片是卡片使用方的概念，使用方会在需要时请求将临时卡片转换为常态卡片；提供方收到通知后，应将本地记录中该卡片由临时卡片数据更新为常态卡片数据，避免后续清理长时间未删除的临时卡片时误删已转换的卡片信息。
 
 **起始版本：** 9
 
@@ -503,3 +508,14 @@ FormExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-
 <!--Device-FormExtensionAbility-context: FormExtensionContext--><!--Device-FormExtensionAbility-context: FormExtensionContext-End-->
 
 **系统能力：** SystemCapability.Ability.Form
+
+## 附录
+
+FormExtensionAbility不支持以下模块的引用。
+
+| Kit | 模块 |
+| --- | --- |
+| Ability Kit | [@ohos.ability.particleAbility](../../apis-ability-kit/arkts-apis/arkts-ability-ability-particleability.md) |
+| Background Tasks Kit | [@ohos.resourceschedule.backgroundTaskManager](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundtaskmanager.md) |
+| Camera Kit | [@ohos.multimedia.camera](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md) |
+| Media Kit | [@ohos.multimedia.media](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md) |

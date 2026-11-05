@@ -4,9 +4,9 @@
 
 > **说明：** 
 
-> - Swiper组件通过内置的PanGesture拖动手势实现滑动轮播效果，将[disableSwipe](arkts-arkui-swiper-comp-attribute.md#disableswipe)属性设为true 时，会禁用该手势监听，从而阻止滑动操作。
+> - Swiper组件通过内置的[PanGesture](arkts-arkui-tapgesture-comp-con.md#pangesture)拖动手势实现滑动轮播效果，将[disableSwipe](arkts-arkui-swiper-comp-attribute.md#disableswipe)属性设为true 时，会禁用该手势监听，从而阻止滑动操作。
 > 
-> - Swiper中复用NodeContainer时，禁止递归流程中子节点更新父节点状态变量。
+> - Swiper中复用[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)时，禁止递归流程中子节点更新父节点状态变量。
 
 ## 子组件
 

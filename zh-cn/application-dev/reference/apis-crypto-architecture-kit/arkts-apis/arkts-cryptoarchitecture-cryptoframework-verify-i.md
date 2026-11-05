@@ -364,7 +364,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 设置验签参数。常用的验签参数直接通过[createVerify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md) 来指定，剩余参数通过本接口指定。
 
-<br>支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置签名验证参数。
+<br>支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
 
 <br>验签的参数应当与签名的参数保持一致。
 
@@ -422,9 +422,9 @@ function testSetVerifySpec() {
 setVerifySpec(itemType: SignSpecItem, itemValue: number | Uint8Array): void
 ```
 
-设置签名验证参数。
+设置验签参数。
 
-<br>当前仅支持RSA算法中的PSS_SALT_LEN和SM2签名验证中的USER_ID。
+<br>当前仅支持RSA算法中的PSS_SALT_LEN和SM2验签中的USER_ID。
 
 <br>验签的参数应当与签名的参数保持一致。
 
@@ -475,7 +475,7 @@ function testSetVerifySpec() {
 setVerifySpec(itemType: SignSpecItem, itemValue: number | Uint8Array | boolean): void
 ```
 
-设置签名验证参数。
+设置验签参数。
 
 <br>当前仅支持RSA算法中的PSS_SALT_LEN，SM2算法中的USER_ID以及ML-DSA算法中的ML_DSA_DETERMINISTIC、ML_DSA_MU和ML_DSA_CONTEXT。
 

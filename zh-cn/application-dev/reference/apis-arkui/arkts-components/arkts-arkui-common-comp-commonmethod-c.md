@@ -832,7 +832,7 @@ alignSelf(value: ItemAlign): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | 是 | 子组件在父容器交叉轴的对齐格式，会覆盖([Flex](arkts-arkui-flex-comp.md), [Column](arkts-arkui-column-comp.md), [Row](arkts-arkui-row-comp.md), or GridRow)布局容器中的alignItems设置。<br>GridCol可以绑定alignSelf属性来改变它自身在交叉轴方向上的布局。<br>默认值：ItemAlign.Auto |
+| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | 是 | 子组件在父容器交叉轴的对齐格式，会覆盖([Flex](arkts-arkui-flex-comp.md), Column, Row, or GridRow)布局容器中的alignItems设置。<br>GridCol可以绑定alignSelf属性来改变它自身在交叉轴方向上的布局。<br>默认值：ItemAlign.Auto |
 
 **返回值：**
 
@@ -1380,7 +1380,7 @@ backgroundColor(color: Optional<ResourceColor>): T
 backgroundColor(color: Optional<ResourceColor | ColorMetrics>): T
 ```
 
-设置组件背景色。与[backgroundColor](#backgroundcolor-2)相比，color参数新增了对[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型的支持。
+设置组件背景色。与[backgroundColor](#backgroundcolor-2)相比，color参数新增了对ColorMetrics类型的支持。
 
 > **说明：** 
 > 
@@ -2671,7 +2671,7 @@ clickEffect(value: ClickEffect | null): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) &#124; null | 是 | 设置当前组件点击回弹效果。<br>**说明：** <br>可通过null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能，可能导致回弹效果异常。<br>当组件无法触发通用事件（如[点击事件](arkts-arkui-common-comp.md)等事件）时，不支持该属性。<br>回弹触发缩放后可能造成触摸点不在组件上，组件上无法响应手势事件。 |
+| value | [ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) &#124; null | 是 | 设置当前组件点击回弹效果。<br>**说明：** <br>可通过null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能，可能导致回弹效果异常。<br>当组件无法触发通用事件（如[点击事件](arkts-arkui-common-comp-commonmethod-c.md)等事件）时，不支持该属性。<br>回弹触发缩放后可能造成触摸点不在组件上，组件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -2701,7 +2701,7 @@ clickEffect(effect: Optional<ClickEffect | null>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) &#124; null&gt; | 是 | 点击回弹效果的级别，用于控制回弹的强度程度。<br>**说明：** <br>可通过undefined或者null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能。<br>当组件无法触发通用事件（如[点击事件](arkts-arkui-common-comp.md)等事件）时，不支持该属性。具体包括：组件被设置为disabled状态、组件不可见、组件被其他组件遮挡等场景下，无法触发通用事件，此时clickEffect属性不生效。<br>回弹触发缩放后可能造成触摸点不在组件上，组件上无法响应手势事件。 |
+| effect | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) &#124; null&gt; | 是 | 点击回弹效果的级别，用于控制回弹的强度程度。<br>**说明：** <br>可通过undefined或者null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能。<br>当组件无法触发通用事件（如[点击事件](arkts-arkui-common-comp-commonmethod-c.md)等事件）时，不支持该属性。具体包括：组件被设置为disabled状态、组件不可见、组件被其他组件遮挡等场景下，无法触发通用事件，此时clickEffect属性不生效。<br>回弹触发缩放后可能造成触摸点不在组件上，组件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -3206,7 +3206,7 @@ displayPriority(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置当前组件在布局容器中显示的优先级，取值范围[0, +∞)。<br>默认值：1<br>**说明：** <br>仅在[Row](arkts-arkui-row-comp.md)/Column/Flex(单行)容器组件中生效。<br>当容器空间有限，需要控制组件显示顺序或隐藏低优先级组件时使用（如在Flex容器中根据空间大小动态显示内容）。建议根据组件重要性设置优先级，关键组件设置较大的值（如2-10），次要组件设置较小的值（如1）。<br> 小数点后的数字不影响优先级。不大于1的所有值优先级相同。大于1时，displayPriority的整数部分越大，优先级越高；同一整数区间内的值优先级相同。例如：0.5和1.0优先级相同（均不大于1）；1.5和1.9优先级相同（整数部分均为1）；2.0和2.9优先级相同（整数部分均为2），且高于1.x的优先级。<br>若父容器空间不足，隐藏低优先级子组件。若某一优先级级别的子组件被隐藏，则所有更低优先级的子组件也都会被隐藏。 |
+| value | number | 是 | 设置当前组件在布局容器中显示的优先级，取值范围0, +∞)。<br>默认值：1<br>**说明：** <br>仅在[Row/Column/Flex(单行)容器组件中生效。<br>当容器空间有限，需要控制组件显示顺序或隐藏低优先级组件时使用（如在Flex容器中根据空间大小动态显示内容）。建议根据组件重要性设置优先级，关键组件设置较大的值（如2-10），次要组件设置较小的值（如1）。<br> 小数点后的数字不影响优先级。不大于1的所有值优先级相同。大于1时，displayPriority的整数部分越大，优先级越高；同一整数区间内的值优先级相同。例如：0.5和1.0优先级相同（均不大于1）；1.5和1.9优先级相同（整数部分均为1）；2.0和2.9优先级相同（整数部分均为2），且高于1.x的优先级。<br>若父容器空间不足，隐藏低优先级子组件。若某一优先级级别的子组件被隐藏，则所有更低优先级的子组件也都会被隐藏。 |
 
 **返回值：**
 
@@ -3614,7 +3614,7 @@ flexShrink(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置父容器压缩尺寸分配给此属性所在组件的比例。<br>取值限定为整数，父容器为 [Column](arkts-arkui-column-comp.md) 、[Row](arkts-arkui-row-comp.md)时， 取值范围[0,+∞). <br>父容器为[Flex](arkts-arkui-flex-comp.md)时，默认值：1 <br>[constraintSize](#constraintsize)限制组件的尺寸范围. Column和Row即使设置了constraintSize，在未设置主轴尺寸width/height/size时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时flexShrink不生效.<br>设置异常值时，该属性为默认值。 |
+| value | number | 是 | 设置父容器压缩尺寸分配给此属性所在组件的比例。<br>取值限定为整数，父容器为 Column 、Row时， 取值范围[0,+∞). <br>父容器为[Flex](arkts-arkui-flex-comp.md)时，默认值：1 <br>[constraintSize](#constraintsize)限制组件的尺寸范围. Column和Row即使设置了constraintSize，在未设置主轴尺寸width/height/size时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时flexShrink不生效.<br>设置异常值时，该属性为默认值。 |
 
 **返回值：**
 
@@ -3642,7 +3642,7 @@ focusable(value: boolean): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 设置当前组件是否可以获焦，true表示组件可以获焦，false表示组件不可获焦。<br>**说明：** <br>存在默认交互逻辑的组件例如[Button](arkts-arkui-common-comp-mouseevent-i.md#button)、TextInput等，默认即为可获焦，Text、Image等组件则默认状态为不可获焦。不可获焦状态下，无法触发焦点事件。 |
+| value | boolean | 是 | 设置当前组件是否可以获焦，true表示组件可以获焦，false表示组件不可获焦。<br>**说明：** <br>存在默认交互逻辑的组件例如Button、[TextInput](arkts-arkui-textinput-comp.md)等，默认即为可获焦，[Text](arkts-arkui-text-comp.md)、Image等组件则默认状态为不可获焦。不可获焦状态下，无法触发[焦点事件](arkts-arkui-common-comp-commonmethod-c.md)。 |
 
 **返回值：**
 
@@ -3928,7 +3928,7 @@ foregroundColor(value: ResourceColor | ColoringStrategy): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md) | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor-1)。不支持[属性动画](arkts-arkui-common-comp.md)。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md) | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor-1)。不支持[属性动画](arkts-arkui-common-comp-commonmethod-c.md)。 |
 
 **返回值：**
 
@@ -3958,7 +3958,7 @@ foregroundColor(color: Optional<ResourceColor | ColoringStrategy>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)&gt; | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor-1)。不支持[属性动画](arkts-arkui-common-comp.md)。<br>当color的值为undefined时，若组件之前已设置前景色则维持之前的前景色取值，若组件之前未设置前景色则使用组件默认前景色取值。不同组件的默认前景色取值可能存在差异，建议开发者使用确定颜色或[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)。 |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)&gt; | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor-1)。不支持[属性动画](arkts-arkui-common-comp-commonmethod-c.md)。<br>当color的值为undefined时，若组件之前已设置前景色则维持之前的前景色取值，若组件之前未设置前景色则使用组件默认前景色取值。不同组件的默认前景色取值可能存在差异，建议开发者使用确定颜色或[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)。 |
 
 **返回值：**
 
@@ -4104,7 +4104,7 @@ freeze(freeze: Optional<boolean>): T
 geometryTransition(id: string): T
 ```
 
-组件内隐式共享元素转场。必须配合[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)使用才有动画效果，动效时长、曲线跟随[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)中的配置，不支持[animation](arkts-arkui-common-comp.md)动画。geometryTransition会同步圆角，但仅限于geometryTransition绑定处，不会操作容器内部子组件的borderRadius。
+组件内隐式共享元素转场。必须配合[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)使用才有动画效果，动效时长、曲线跟随[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)中的配置，不支持[animation](arkts-arkui-common-comp-commonmethod-c.md)动画。geometryTransition会同步圆角，但仅限于geometryTransition绑定处，不会操作容器内部子组件的borderRadius。
 
 **起始版本：** 7
 
@@ -4322,7 +4322,7 @@ height(value: Length): T
 
 > **说明：** 
 > 
-> - 在[Row](arkts-arkui-row-comp.md)、[Column](arkts-arkui-column-comp.md)、[RelativeContainer](arkts-arkui-relativecontainer-comp.md)组件中，height设置auto表示自适应子组件。
+> - 在Row、Column、[RelativeContainer](arkts-arkui-relativecontainer-comp.md)组件中，height设置auto表示自适应子组件。
 > 
 > - 从API version 10开始，该接口支持calc计算特性。
 
@@ -4723,8 +4723,8 @@ keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string &#124; [FunctionKey](../arkts-apis/arkts-arkui-functionkey-e.md) | 是 | 热键的单个字符（可以通过键盘输入的字符）或FunctionKey。<br>空字符串意为取消快捷键绑定。<br> |
-| keys | Array&lt;[ModifierKey](../arkts-apis/arkts-arkui-modifierkey-e.md)&gt; | 是 | 热键组合。<br>仅当value为FunctionKey的情况下keys的值可以为空。<br> |
+| value | string &#124; [FunctionKey](../arkts-apis/arkts-arkui-functionkey-e.md) | 是 | 热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](../arkts-apis/arkts-arkui-functionkey-e.md)。<br>空字符串意为取消快捷键绑定。<br> |
+| keys | Array&lt;[ModifierKey](../arkts-apis/arkts-arkui-modifierkey-e.md)&gt; | 是 | 热键组合。<br>仅当value为[FunctionKey](../arkts-apis/arkts-arkui-functionkey-e.md)的情况下keys的值可以为空。<br> |
 | action | () =&gt; void | 否 | 组合快捷键触发成功后的自定义事件回调。 |
 
 **返回值：**
@@ -4771,7 +4771,7 @@ layoutGravity(alignment: LocalizedAlignment): T
 layoutWeight(value: number | string): T
 ```
 
-设置组件的布局权重，使组件在父容器（[Row](arkts-arkui-row-comp.md)/[Column](arkts-arkui-column-comp.md)/[Flex](arkts-arkui-flex-comp.md)）的主轴方向按照权重分配尺寸。适用于父容器尺寸确定、需要多个子组件按比例分配剩余空间的场景。
+设置组件的布局权重，使组件在父容器（Row/Column/[Flex](arkts-arkui-flex-comp.md)）的主轴方向按照权重分配尺寸。适用于父容器尺寸确定、需要多个子组件按比例分配剩余空间的场景。
 
 **起始版本：** 7
 
@@ -4789,7 +4789,7 @@ layoutWeight(value: number | string): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string | 是 | 父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的子组件优先占位，这些子组件占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeight属性生效值大于0的子组件会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略子组件本身的width/height设置，但保留minWidth/ minHeight约束。<br>默认值：0 <br>取值范围：[0, +∞) <br>超出范围时：传入小于0的值时，按0处理。<br>**说明：** <br>仅在[Row](arkts-arkui-row-comp.md)/[Column](arkts-arkui-column-comp.md)/[Flex](arkts-arkui-flex-comp.md)布局中生效。<br>可选值为大于等于0的数字，或者可以转换为数字的字符串（支持整数、小数格式）。<br>如果容器中有子组件设置了layoutWeight属性，且设置的属性值大于0，则所有子组件不会再基于[flexShrink](#flexshrink)和[flexGrow](#flexgrow)布局。 |
+| value | number &#124; string | 是 | 父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的子组件优先占位，这些子组件占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeight属性生效值大于0的子组件会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略子组件本身的width/height设置，但保留minWidth/ minHeight约束。<br>默认值：0 <br>取值范围：0, +∞) <br>超出范围时：传入小于0的值时，按0处理。<br>**说明：** <br>仅在[Row/Column/[Flex](arkts-arkui-flex-comp.md)布局中生效。<br>可选值为大于等于0的数字，或者可以转换为数字的字符串（支持整数、小数格式）。<br>如果容器中有子组件设置了layoutWeight属性，且设置的属性值大于0，则所有子组件不会再基于[flexShrink](#flexshrink)和[flexGrow](#flexgrow)布局。 |
 
 **返回值：**
 
@@ -5005,7 +5005,7 @@ margin(value: Margin | Length | LocalizedMargin): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Margin](../arkts-apis/arkts-arkui-margin-t.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [LocalizedMargin](../arkts-apis/arkts-arkui-localizedmargin-t.md) | 是 | 设置组件的外边距。<br>参数为Length类型时，四个方向外边距同时生效。<br>默认值：0 <br>单位：vp <br>margin设置百分比时，上下左右外边距均以父容器的width作为基础值。在[Row](arkts-arkui-row-comp.md)、[Column](arkts-arkui-column-comp.md)、[Flex](arkts-arkui-flex-comp.md)交叉轴上布局时，子组件在交叉轴方向占用的空间包含子组件本身尺寸和margin值。<br>例如Column容器宽100，其中子组件宽50，margin left为10，right为20，子组件宽度与左右margin之和为50+10+20=80，小于容器宽度100，子组件在交叉轴方向居中对齐，此时水平方向左侧和右侧各有(100-80)/2=10的空白区域。<br>**适用版本：** 12 |
+| value | [Margin](../arkts-apis/arkts-arkui-margin-t.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [LocalizedMargin](../arkts-apis/arkts-arkui-localizedmargin-t.md) | 是 | 设置组件的外边距。<br>参数为Length类型时，四个方向外边距同时生效。<br>默认值：0 <br>单位：vp <br>margin设置百分比时，上下左右外边距均以父容器的width作为基础值。在Row、Column、[Flex](arkts-arkui-flex-comp.md)交叉轴上布局时，子组件在交叉轴方向占用的空间包含子组件本身尺寸和margin值。<br>例如Column容器宽100，其中子组件宽50，margin left为10，right为20，子组件宽度与左右margin之和为50+10+20=80，小于容器宽度100，子组件在交叉轴方向居中对齐，此时水平方向左侧和右侧各有(100-80)/2=10的空白区域。<br>**适用版本：** 12 |
 
 **返回值：**
 
@@ -5477,7 +5477,7 @@ obscured(reasons: Array<ObscuredReasons>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | 是 | 设置组件内容的遮罩类型，在屏幕录制或屏幕共享等场景下对组件内容进行隐私遮挡。取值原则：请参考[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)枚举定义，如PLACEHOLDER表示使用占位图遮罩。<br>默认值：[]，未设置遮罩原因时，不对组件内容进行隐私遮罩处理。<br>隐私遮罩效果仅在[Image](arkts-arkui-image-comp.md)组件、[Text](arkts-arkui-text-comp.md)组件<!--Del-->和[FormComponent](arkts-arkui-formcomponent-comp-sys.md)组件<sup>12+</sup><!--DelEnd-->上生效。<br>**说明：** <br>如需在图片加载过程中显示隐私遮罩，需要设置Image组件的宽度和高度；若未设置宽度和高度，图片加载过程中将不会显示隐私遮罩效果。<br>Text组件设置子组件或设置[属性字符串](../arkts-apis/arkts-arkui-styledstring.md#styled_string属性字符串是一种将文本样式与文本内容关联管理的对象样式通过start和length指定文本区间多种样式可叠加应用于同一区间)时，不支持隐私遮罩。 |
+| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | 是 | 设置组件内容的遮罩类型，在屏幕录制或屏幕共享等场景下对组件内容进行隐私遮挡。取值原则：请参考[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)枚举定义，如PLACEHOLDER表示使用占位图遮罩。<br>默认值：[]，未设置遮罩原因时，不对组件内容进行隐私遮罩处理。<br>隐私遮罩效果仅在Image组件、[Text](arkts-arkui-text-comp.md)组件<!--Del-->和[FormComponent](arkts-arkui-formcomponent-comp-sys.md)组件<sup>12+</sup><!--DelEnd-->上生效。<br>**说明：** <br>如需在图片加载过程中显示隐私遮罩，需要设置Image组件的宽度和高度；若未设置宽度和高度，图片加载过程中将不会显示隐私遮罩效果。<br>Text组件设置子组件或设置[属性字符串](../arkts-apis/arkts-arkui-styledstring-c.md)时，不支持隐私遮罩。 |
 
 **返回值：**
 
@@ -6212,7 +6212,7 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 - 如果开发者返回了自定义预览图，则不再使用系统默认的拖拽预览图；  
 - 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
 
-文本类组件Text、Search、TextInput、TextArea、RichEditor对选中的文本内容进行拖拽时，不支持自定义预览图。当onDragStart与菜单预览一起使用或使用了默认支持拖拽能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
+文本类组件[Text](arkts-arkui-text-comp.md)、Search、[TextInput](arkts-arkui-textinput-comp.md)、[TextArea](arkts-arkui-textarea-comp.md)、[RichEditor](arkts-arkui-richeditor-comp.md)对选中的文本内容进行拖拽时，不支持自定义预览图。当onDragStart与菜单预览一起使用或使用了默认支持拖拽能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
 
 > **说明：** 
 > 
@@ -7601,7 +7601,7 @@ position(value: Position | Edges | LocalizedEdges): T
 > **说明：** 
 > 
 > - position对位置的影响作用在组件的尺寸测量完成之后。
-> - 当父组件为[Row](arkts-arkui-row-comp.md)、[Column](arkts-arkui-column-comp.md)或Flex时，设置position的子组件不占位。在上述场景中，如果父组件包含的所有子组件均设置了position，此时父组件尺寸无法通过其他子组件确定，将基于尺寸(0, 0)进行布局测算。
+> - 当父组件为Row、Column或Flex时，设置position的子组件不占位。在上述场景中，如果父组件包含的所有子组件均设置了position，此时父组件尺寸无法通过其他子组件确定，将基于尺寸(0, 0)进行布局测算。
 > - Position类型基于父组件内容区左上角确定位置；Edges类型基于父组件内容区四边确定位置，top/left/right/bottom分别为组件各边距离父组件内容区相应边的边距，通过边距来确定组件相对于父组件内容区的位置；Lo calizedEdges类型基于父组件内容区四边确定位置，支持镜像模式。
 > - 本属性适用于置顶显示、悬浮按钮等组件在父组件中位置固定的场景。
 > - 本属性不支持在宽高为零的布局组件上设置。
@@ -7872,7 +7872,7 @@ renderGroup(isGroup: Optional<boolean>): T
 responseRegion(value: Array<Rectangle> | Rectangle): T
 ```
 
-设置一个或多个触摸热区。从API版本26.0.0开始，未主动设置时[Button](arkts-arkui-common-comp-mouseevent-i.md#button)、Button模式的Toggle、Select、[Chip](../arkts-apis/arkts-arkui-arkui-advanced-chip.md)和[ChipGroup](../arkts-apis/arkts-arkui-arkui-advanced-chipgroup-chipgroup-s.md)组件的触摸热区默认最小高度从28vp变更为32vp。该变更仅影响触摸命中范围，不影响组件实际显示高度。
+设置一个或多个触摸热区。从API版本26.0.0开始，未主动设置时Button、Button模式的Toggle、[Select](arkts-arkui-select-comp.md)、[Chip](../arkts-apis/arkts-arkui-arkui-advanced-chip.md)和[ChipGroup](../arkts-apis/arkts-arkui-arkui-advanced-chipgroup-chipgroup-s.md)组件的触摸热区默认最小高度从28vp变更为32vp。该变更仅影响触摸命中范围，不影响组件实际显示高度。
 
 **起始版本：** 8
 
@@ -9391,7 +9391,7 @@ width(value: Length): T
 > 
 > - 在[AlphabetIndexer](./ts-container-alphabet-indexer.md)组件中，width设置auto表示自适应宽度最大索引项的宽度。
 > 
-> - 在[Row](arkts-arkui-row-comp.md)、[Column](arkts-arkui-column-comp.md)、[RelativeContainer](arkts-arkui-relativecontainer-comp.md)组件中，width设置auto表示自适应子组件。
+> - 在Row、Column、[RelativeContainer](arkts-arkui-relativecontainer-comp.md)组件中，width设置auto表示自适应子组件。
 > 
 > - 从API version 10开始，该接口支持calc计算特性。
 

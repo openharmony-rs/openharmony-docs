@@ -4,7 +4,7 @@
 interface DeviceStatus
 ```
 
-Defines the device status information. It describes the current status of the companion device, including the device service ID, user name, model information, device name, online status, list of supported service IDs, and device sub-profile name.
+Defines the device status information. It is used to describe the current status of a companion device, including the device service identifier, user name, model information, device name, online status, list of supported business IDs, and device sub-identity credential name.
 
 **Since:** 23
 
@@ -26,7 +26,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 deviceKey: DeviceKey
 ```
 
-Key device information. It uniquely identifies a device, including the device ID type, device ID, and device user ID, and device sub-profile ID.
+Key information about the device. It contains the device ID type, device ID, device user ID, and device sub- identity credential ID, serving as the unique identifier of the device.
 
 **Type:** [DeviceKey](arkts-userauthentication-companiondeviceauth-devicekey-i-sys.md)
 
@@ -86,7 +86,7 @@ Device name. It is the name or alias of a device, and is displayed to the user i
 deviceSubProfileName?: string
 ```
 
-Device sub-profile name. It corresponds to the nickname of the distributed account, serving as the display name of the foreground sub-profile on the device, and is displayed on the device selection screen. Default value: The default value is "".
+Name of the device sub-identity credentials. It corresponds to the nickname of the distributed account, serving as the display name of the foreground sub-identity credentials on the device and used for display on the device selection screen.
 
 **Type:** string
 
@@ -148,7 +148,7 @@ Device online status. The value **true** indicates that the device is online and
 supportedBusinessIds: number[]
 ```
 
-List of service IDs supported by the device. It indicates the service scenarios supported by the device, such as unlocking the screen lock and unlocking the application lock. The service scenarios supported by a device vary depending on the authentication security.
+List of business IDs supported by the device. It indicates the business scenarios supported by the device, such as unlocking the screen lock and unlocking the application lock. The business scenarios supported by a device vary depending on the authentication security.
 
 **Type:** number[]
 

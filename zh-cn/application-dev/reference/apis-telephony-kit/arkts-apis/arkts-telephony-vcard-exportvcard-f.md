@@ -12,7 +12,7 @@ import { vcard } from '@kit.TelephonyKit';
 function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback<string>): void
 ```
 
-将联系人导出为 VCF(vcard file)文件。使用callback异步回调。
+将联系人导出为 VCF(VCard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用callback异步回调。
 
 **起始版本：** 23
 
@@ -27,9 +27,9 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文。 |
-| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 查询语句。 |
+| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 查询语句。用于筛选要导出的联系人数据。 |
 | options | [VCardBuilderOptions](arkts-telephony-vcard-vcardbuilderoptions-i.md) | 是 | VCard版本与编码类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。生成的 VCF(vcard file)文件地址。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。生成的VCF(VCard file)文件地址。 |
 
 **错误码：**
 
@@ -72,7 +72,7 @@ class EntryAbility extends UIAbility {
 function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions): Promise<string>
 ```
 
-将联系人导出为 VCF(vcard file)文件。使用Promise异步回调。
+将联系人导出为 VCF(VCard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用Promise异步回调。
 
 **起始版本：** 23
 
@@ -87,14 +87,14 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文。 |
-| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 查询语句。 |
+| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 查询语句。用于筛选要导出的联系人数据。 |
 | options | [VCardBuilderOptions](arkts-telephony-vcard-vcardbuilderoptions-i.md) | 否 | VCard版本与编码类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回重置的结果码。 |
+| Promise&lt;string&gt; | Promise对象，返回生成的VCF(VCard file)文件地址。 |
 
 **错误码：**
 
@@ -139,7 +139,7 @@ class EntryAbility extends UIAbility {
 function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<string>): void
 ```
 
-将联系人导出为 VCF(vcard file)文件。使用callback异步回调。
+将联系人导出为 VCF(VCard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用callback异步回调。
 
 **起始版本：** 23
 
@@ -154,8 +154,8 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文。 |
-| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 查询语句。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。生成的 VCF(vcard file)文件地址。 |
+| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 查询语句。用于筛选要导出的联系人数据。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。生成的 VCF(VCard file)文件地址。 |
 
 **错误码：**
 

@@ -4,7 +4,7 @@
 
 ## 子组件
 
-必须包含两个子组件，其中第二个子组件必须为NavDestination。
+必须包含两个子组件，其中第二个子组件必须为[NavDestination](arkts-arkui-navdestination-comp.md)。
 
 > **说明：** 
 > 

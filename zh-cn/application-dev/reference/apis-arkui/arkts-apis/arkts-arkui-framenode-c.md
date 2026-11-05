@@ -4,7 +4,7 @@
 export class FrameNode
 ```
 
-FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](arkts-arkui-nodecontroller-c.md)可通过[BuilderNode](arkts-arkui-buildernode-c.md)持有的FrameNode将其挂载到[NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md)上，也可通过FrameNode获取[RenderNode](arkts-arkui-rendernode-c.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。<!--RP2--><!--RP2End-->
+FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。NodeController可通过BuilderNode持有的FrameNode将其挂载到[NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md)上，也可通过FrameNode获取RenderNode，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。<!--RP2--><!--RP2End-->
 
 > **说明：** 
 > 
@@ -14,7 +14,7 @@ FrameNode表示组件树的实体节点，支持节点树操作、自定义绘�
 > 
 > - FrameNode对象不支持使用JSON序列化。
 > 
-> - 在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](arkts-arkui-framenode-c.md)对象的接口时，建议使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)的[runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask)接口明确UI 上下文，参考[执行绑定UI实例的闭包](../../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
+> - 在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用FrameNode对象的接口时，建议使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)的[runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask)接口明确UI 上下文，参考[执行绑定UI实例的闭包](../../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
 > 
 > - FrameNode的接口中，仅[Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)类型的必选参数支持传入null或undefined。
 
@@ -142,7 +142,7 @@ appendChild(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的FrameNode。<br> node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅[BuilderNode](arkts-arkui-buildernode-c.md)通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br> node节点不可以拥有父节点，否则抛出异常信息。 |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的FrameNode。<br> node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br> node节点不可以拥有父节点，否则抛出异常信息。 |
 
 **错误码：**
 
@@ -1405,7 +1405,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 查询的子节点id，为通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md)。 |
+| id | string | 是 | 查询的子节点id，为通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。 |
 
 **返回值：**
 
@@ -1588,7 +1588,7 @@ getGlobalPositionOnDisplay(): Position
 getId(): string
 ```
 
-获取用户设置的节点ID（通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md)）。
+获取用户设置的节点ID（通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)）。
 
 **起始版本：** 12
 
@@ -1604,7 +1604,7 @@ getId(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 用户设置的节点ID（通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md)）。 |
+| string | 用户设置的节点ID（通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)）。 |
 
 **示例**
 
@@ -1828,7 +1828,7 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 getNodeType(): string
 ```
 
-获取节点的类型。系统组件类型为组件名称，例如，按钮组件[Button](../arkts-components/arkts-arkui-button-comp.md)的类型为Button。而对于自定义组件，若其有渲染内容，则其类型为__Common__。
+获取节点的类型。系统组件类型为组件名称，例如，按钮组件Button的类型为Button。而对于自定义组件，若其有渲染内容，则其类型为__Common__。
 
 **起始版本：** 12
 
@@ -2466,7 +2466,7 @@ getPreviousSibling(): FrameNode | null
 getRenderNode(): RenderNode | null
 ```
 
-获取FrameNode中持有的[RenderNode](arkts-arkui-rendernode-c.md)。
+获取FrameNode中持有的RenderNode。
 
 **起始版本：** 11
 
@@ -2682,7 +2682,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的子节点。<br>child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅[BuilderNode](arkts-arkui-buildernode-c.md)通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br> child节点不可以拥有父节点，否则抛出异常信息。 |
+| child | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的子节点。<br>child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br> child节点不可以拥有父节点，否则抛出异常信息。 |
 | sibling | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
@@ -3719,8 +3719,8 @@ moveTo(targetParent: FrameNode, index?: number): void
 > 当前仅支持以下类型的[TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)进行移动操作：[Stack](arkts-arkui-typenode-stack-t.md)、
 > [XComponent](arkts-arkui-typenode-xcomponent-t.md)。对于其他类型的节点，移动操作不会生效。
 > 
-> 当前仅支持根节点为以下类型组件的[BuilderNode](arkts-arkui-buildernode-c.md)进行移动操作：
-> [Stack](../arkts-components/arkts-arkui-stack-comp.md)、[XComponent](../arkts-components/arkts-arkui-xcomponent-comp.md)、
+> 当前仅支持根节点为以下类型组件的BuilderNode进行移动操作：
+> Stack、[XComponent](../arkts-components/arkts-arkui-xcomponent-comp.md)、
 > [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md)。对于其他类型的组件，移动操作不会生效。
 
 **起始版本：** 18
@@ -3759,7 +3759,7 @@ onDraw?(context: DrawContext): void
 
 FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。
 
-该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
+该接口的DrawContext中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **起始版本：** 12
 
@@ -4110,13 +4110,13 @@ setNeedsLayout(): void
 get commonAttribute(): CommonAttribute
 ```
 
-获取FrameNode中持有的CommonAttribute接口，用于设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)。
+获取FrameNode中持有的CommonAttribute接口，用于设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)和[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
 
 仅可以修改自定义节点的属性。
 
 > **说明：** 
 > 
-> FrameNode的效果参考对齐方式为顶部起始端的[Stack](../arkts-components/arkts-arkui-stack-comp.md)容器组件。
+> FrameNode的效果参考对齐方式为顶部起始端的Stack容器组件。
 > 
 > FrameNode的属性支持情况参考
 > [属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
@@ -4169,7 +4169,7 @@ LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点
 get gestureEvent(): UIGestureEvent
 ```
 
-获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过[绑定手势事件](../arkts-components/arkts-arkui-common-comp.md)绑定的手势，两者同时设置了手势时，优先回调绑定手势事件设置的手势事件。
+获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过[绑定手势事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)绑定的手势，两者同时设置了手势时，优先回调绑定手势事件设置的手势事件。
 
 LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点需要重新设置手势事件回调才能保证监听事件正常响应。
 

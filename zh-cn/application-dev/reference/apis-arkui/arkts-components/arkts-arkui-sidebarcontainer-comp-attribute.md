@@ -4,9 +4,9 @@
 declare class SideBarContainerAttribute extends CommonMethod<SideBarContainerAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
 
 **继承/实现关系：** SideBarContainerAttribute extends CommonMethod&lt;SideBarContainerAttribute&gt;
 
@@ -116,7 +116,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 maxSideBarWidth(value: Length)
 ```
 
-设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[maxSideBarWidth](#maxsidebarwidth-1)相比，value参数新增了对百分比字符串和其他像素单位的支持。
+设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[maxSideBarWidth](#maxsidebarwidth-1)相比，value参数新增了对百分比字符串和其他[像素单位](arkts-arkui-common-comp-commonmethod-c.md)的支持。
 
 maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时默认值优先级高于侧边栏子组件maxWidth。
 
@@ -201,7 +201,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 minSideBarWidth(value: Length)
 ```
 
-设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[minSideBarWidth](#minsidebarwidth-1)相比，value参数新增了对百分比字符串和其他像素单位的支持。
+设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[minSideBarWidth](#minsidebarwidth-1)相比，value参数新增了对百分比字符串和其他[像素单位](arkts-arkui-common-comp-commonmethod-c.md)的支持。
 
 minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时默认值优先级高于侧边栏子组件minWidth。
 

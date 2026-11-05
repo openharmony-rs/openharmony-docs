@@ -6,7 +6,7 @@ The **Polyline** component is used to draw a polyline.
 > 
 > This component supports updating constructor parameters through the
 > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the
-> [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class since API version 20.
+> AttributeUpdater class since API version 20.
 
 ## Child Components
 

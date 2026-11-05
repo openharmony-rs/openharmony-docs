@@ -24,7 +24,7 @@ import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseIt
 duration?: number
 ```
 
-Video duration, in milliseconds. In versions earlier than API version 23, the value of **duration** is **0** for moving photos. In API version 23 and later versions, the value of **duration** is the duration of the video clip attached to moving photos. If an exception occurs, **-1** is returned.
+Duration of the video, in milliseconds. In versions earlier than API version 23, the value of **duration** is **0** for moving photos. In API version 23 and later versions, the value of **duration** is the duration of the video clip attached to moving photos. If an exception occurs, **-1** is returned.
 
 This parameter is supported only when [ItemType](arkts-medialibrary-file-photopickercomponent-itemtype-e.md) is set to **THUMBNAIL**. Otherwise, it is left empty.
 
@@ -64,7 +64,7 @@ For moving photos, this parameter specifies the dynamic range type of the cover 
 height?: number
 ```
 
-Height of the image or video, in px.
+Pointer to the image or video height, in pixels.
 
 This parameter is supported only when [ItemType](arkts-medialibrary-file-photopickercomponent-itemtype-e.md) is set to **THUMBNAIL**. Otherwise, it is left empty.
 
@@ -246,7 +246,7 @@ Log mode of a video file.
 width?: number
 ```
 
-Width of the image or video, in px.
+Pointer to the image or video width, in pixels.
 
 This parameter is supported only when [ItemType](arkts-medialibrary-file-photopickercomponent-itemtype-e.md) is set to **THUMBNAIL**. Otherwise, it is left empty.
 

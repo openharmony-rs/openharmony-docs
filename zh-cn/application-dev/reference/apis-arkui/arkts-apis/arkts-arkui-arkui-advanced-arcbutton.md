@@ -12,11 +12,11 @@
 
 ## 属性
 
-不支持通用属性
+不支持[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)
 
 ## 事件
 
-通用事件支持点击事件和触摸事件。
+通用事件支持[点击事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)和[触摸事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
 
 ## 导入模块
 

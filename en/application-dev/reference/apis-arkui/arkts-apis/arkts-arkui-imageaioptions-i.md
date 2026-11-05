@@ -14,7 +14,7 @@ Provides the image AI analysis options.
 > 
 > This API depends on device capabilities and must be used together with the
 > [enableAnalyzer](../arkts-components/arkts-arkui-image-comp-attribute.md#enableanalyzer) API of the corresponding component (for example, the
-> [Image](../arkts-components/arkts-arkui-image-comp.md) component).
+> Image component).
 
 **Since:** 12
 

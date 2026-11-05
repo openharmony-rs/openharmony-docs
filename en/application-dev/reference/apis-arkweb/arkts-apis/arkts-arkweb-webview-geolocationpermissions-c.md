@@ -52,7 +52,7 @@ Allows the specified origin to use the geolocation APIs. It is used to pre-autho
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
+| [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. The origin format must comply with the format defined in RFC 6454. |
 
 **Examples**
 
@@ -163,7 +163,7 @@ Clears the geolocation permission status of the specified origin. It is used to 
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
+| [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. The origin format must comply with the format defined in RFC 6454. |
 
 **Examples**
 
@@ -233,7 +233,7 @@ Obtains the geolocation permission status of the specified origin. This API uses
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
+| [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. The origin format must comply with the format defined in RFC 6454. |
 
 **Examples**
 
@@ -299,7 +299,7 @@ Obtains the geolocation permission status of the specified origin. This API uses
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
+| [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. The origin format must comply with the format defined in RFC 6454. |
 
 **Examples**
 

@@ -79,7 +79,7 @@ Determine whether the asset specified by the uri is a single file moving photo.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the asset specified by the uri is a single file moving photo, return true if yes, and false otherwise.. |
+| boolean | Whether the asset specified by the uri is a single file moving photo, return true if yes, and false otherwise. |
 
 **Error codes:**
 

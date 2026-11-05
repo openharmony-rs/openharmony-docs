@@ -1,10 +1,10 @@
 # ArcScrollBar
 
-弧形滚动条组件ArcScrollBar，适用于圆形屏幕等需要弧形滚动条的场景，用于配合可滚动组件使用，如[ArcList](arkts-arkui-arclist-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)、[WaterFlow](arkts-arkui-waterflow-comp.md)。
+弧形滚动条组件ArcScrollBar，适用于圆形屏幕等需要弧形滚动条的场景，用于配合可滚动组件使用，如[ArcList](arkts-arkui-arclist-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、Scroll、[WaterFlow](arkts-arkui-waterflow-comp.md)。
 
 > **说明：** 
 > 
-> - 未设置宽高时，ArcScrollBar采用父组件[LayoutConstraint](../arkts-apis/arkts-arkui-framenode-layoutconstraint-i.md)中的maxSize作为尺寸。若父组件存在可滚动组件，如[ArcList](arkts-arkui-arclist-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)、[WaterFlow](arkts-arkui-waterflow-comp.md)，建议设置ArcScrollBar宽高，否则尺寸可能为无穷大。
+> - 未设置宽高时，ArcScrollBar采用父组件LayoutConstraint中的maxSize作为尺寸。若父组件存在可滚动组件，如[ArcList](arkts-arkui-arclist-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、Scroll、[WaterFlow](arkts-arkui-waterflow-comp.md)，建议设置ArcScrollBar宽高，否则尺寸可能为无穷大。
 > 
 > - 该组件支持在Phone、PC/2in1、Tablet、TV、Wearable设备上使用。API version 22及以前版本，在Phone、PC/2in1、Tablet、TV上使用会编译告警，但可以正常运行。
 

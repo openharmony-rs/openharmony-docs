@@ -16,7 +16,7 @@ function acquireFormState(want: Want, callback: AsyncCallback<formInfo.FormState
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.REQUIRE_FORM and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.REQUIRE_FORM和ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 <!--Device-formHost-function acquireFormState(want: Want, callback: AsyncCallback<formInfo.FormStateInfo>): void--><!--Device-formHost-function acquireFormState(want: Want, callback: AsyncCallback<formInfo.FormStateInfo>): void-End-->
 
@@ -87,7 +87,7 @@ function acquireFormState(want: Want): Promise<formInfo.FormStateInfo>
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.REQUIRE_FORM and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.REQUIRE_FORM和ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 <!--Device-formHost-function acquireFormState(want: Want): Promise<formInfo.FormStateInfo>--><!--Device-formHost-function acquireFormState(want: Want): Promise<formInfo.FormStateInfo>-End-->
 

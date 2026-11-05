@@ -21,9 +21,9 @@ Renders a custom component in the application background and outputs its snapsho
 > 
 > - To account for the time spent in awaiting component building and rendering, the callback of offscreen snapshots has a delay of less than 500 ms.
 > 
-> - Components in the builder do not support the setting of animation-related attributes, such as transition.
+> - Components in the builder do not support the setting of animation-related attributes, such as [transition](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md).
 > 
-> - If a component is on a time-consuming task, for example, an [Image](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) or Web component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
+> - If a component is on a time-consuming task, for example, an Image or [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
 
 **Since:** 10
 
@@ -135,9 +135,9 @@ Renders a custom component in the application background and outputs its snapsho
 > 
 > - To account for the time spent in awaiting component building and rendering, the callback of offscreen snapshots has a delay of less than 500 ms.
 > 
-> - Components in the builder do not support the setting of animation-related attributes, such as transition.
+> - Components in the builder do not support the setting of animation-related attributes, such as [transition](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md).
 > 
-> - If a component is on a time-consuming task, for example, an [Image](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) or Web component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
+> - If a component is on a time-consuming task, for example, an Image or [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
 
 **Since:** 10
 

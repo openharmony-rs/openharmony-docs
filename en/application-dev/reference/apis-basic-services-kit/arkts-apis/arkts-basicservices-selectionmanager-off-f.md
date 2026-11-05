@@ -16,6 +16,8 @@ Unsubscribes from the word selection completion event. This API is used together
 
 **Since:** 24
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-selectionManager-function off(type: 'selectionCompleted', callback?: Callback<SelectionInfo>): void--><!--Device-selectionManager-function off(type: 'selectionCompleted', callback?: Callback<SelectionInfo>): void-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection

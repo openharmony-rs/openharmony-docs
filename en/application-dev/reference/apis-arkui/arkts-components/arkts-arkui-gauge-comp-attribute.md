@@ -4,7 +4,7 @@
 declare class GaugeAttribute extends CommonMethod<GaugeAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 **Inheritance/Implementation:** GaugeAttribute extends CommonMethod&lt;GaugeAttribute&gt;
 
@@ -176,7 +176,7 @@ Sets whether to enable privacy mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Sets privacy sensitivity. In privacy mode, the Gauge pointer points to the 0 position, the maximum and minimum value texts are masked, and the range is displayed in gray or the background color. The value **true** enables privacy sensitivity, and **false** disables it. <br>**Note:** <br>If this parameter is set to null, the content is not sensitive.<!--Del--> <br>To use Gauge in a card, set the [privacy mask](arkts-arkui-common-comp.md) attribute through the [FormComponent](arkts-arkui-formcomponent-comp-sys.md) component. The privacy mask takes effect only when the card is displayed.<!--DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Sets privacy sensitivity. In privacy mode, the Gauge pointer points to the 0 position, the maximum and minimum value texts are masked, and the range is displayed in gray or the background color. The value **true** enables privacy sensitivity, and **false** disables it. <br>**Note:** <br>If this parameter is set to null, the content is not sensitive.<!--Del--> <br>To use Gauge in a card, set the [privacy mask](arkts-arkui-common-comp-commonmethod-c.md) attribute through the [FormComponent](arkts-arkui-formcomponent-comp-sys.md) component. The privacy mask takes effect only when the card is displayed.<!--DelEnd--> |
 
 ## startAngle
 

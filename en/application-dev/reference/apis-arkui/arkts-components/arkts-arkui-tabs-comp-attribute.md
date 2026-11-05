@@ -4,9 +4,9 @@
 declare class TabsAttribute extends CommonMethod<TabsAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
-In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
 
 **Inheritance/Implementation:** TabsAttribute extends CommonMethod&lt;TabsAttribute&gt;
 
@@ -534,7 +534,7 @@ except **onGestureSwipe**.
 6. The triggering timing of the [onChange](#onchange) and
 [onAnimationEnd](#onanimationend) events requires special explanation: if a second custom animation is triggered while the first custom animation is still in progress, the **onChange** and **onAnimationEnd** events of the first custom animation are triggered when the second custom animation starts.
 7. When the custom animation is used, the layout mode of the pages participating in the animation is
-changed to [Stack](arkts-arkui-stack-comp.md) layout. If the developer does not proactively set the [zIndex](arkts-arkui-common-comp-commonmethod-c.md#zindex) attribute of the related pages, all pages have the same **zIndex** value, and the rendering hierarchy of the pages is determined by their order in the component tree (that is, the order of the page index values). Therefore, the developer needs to proactively modify the **zIndex** attribute of the pages to control the rendering hierarchy.
+changed to Stack layout. If the developer does not proactively set the [zIndex](arkts-arkui-common-comp-commonmethod-c.md#zindex) attribute of the related pages, all pages have the same **zIndex** value, and the rendering hierarchy of the pages is determined by their order in the component tree (that is, the order of the page index values). Therefore, the developer needs to proactively modify the **zIndex** attribute of the pages to control the rendering hierarchy.
 8. This attribute cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 > **NOTE:** 

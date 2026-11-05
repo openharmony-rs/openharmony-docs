@@ -4,7 +4,7 @@
 interface PasscodePromptParams
 ```
 
-提示输入辅助设备密码时框架携带的选项。
+通行码输入请求的参数，用于传递挑战值等上下文信息。
 
 **起始版本：** 26.0.1
 
@@ -26,7 +26,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 challenge: Uint8Array
 ```
 
-当提示输入辅助设备密码时，框架携带的挑战。
+请求通行码时由系统下发的挑战值。
 
 **类型：** Uint8Array
 

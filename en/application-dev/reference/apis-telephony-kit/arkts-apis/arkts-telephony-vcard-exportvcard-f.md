@@ -12,7 +12,7 @@ import { vcard } from '@kit.TelephonyKit';
 function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback<string>): void
 ```
 
-Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result.
+Export contacts to a VCF (VCard file) file. This mode is applicable to scenarios such as contact data backup, cross-device contact migration, and contact sharing through files. Use the callback asynchronous callback.
 
 **Since:** 23
 
@@ -27,9 +27,9 @@ Exports contacts as a vcard file (VCF). This API uses an asynchronous callback t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Application context. |
-| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Query statement. |
+| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Query statement. Used to filter the contact data to be exported. |
 | options | [VCardBuilderOptions](arkts-telephony-vcard-vcardbuilderoptions-i.md) | Yes | VCard version and encoding type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to Address of the generated vcard file (VCF). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback function. Indicates the path of the generated VCF (VCard file). |
 
 **Error codes:**
 
@@ -72,7 +72,7 @@ class EntryAbility extends UIAbility {
 function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions): Promise<string>
 ```
 
-Exports contacts as a vcard file (VCF). This API uses a promise to return the result.
+Export contacts to a VCF (VCard file) file. This mode is applicable to scenarios such as contact data backup, cross-device contact migration, and contact sharing through files. Use Promise asynchronous callbacks.
 
 **Since:** 23
 
@@ -87,14 +87,14 @@ Exports contacts as a vcard file (VCF). This API uses a promise to return the re
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Application context. |
-| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Query statement. |
+| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Query statement. Used to filter the contact data to be exported. |
 | options | [VCardBuilderOptions](arkts-telephony-vcard-vcardbuilderoptions-i.md) | No | VCard version and encoding type. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the operation result. |
+| Promise&lt;string&gt; | Promise used to return the address of the generated VCF (VCard file) file. |
 
 **Error codes:**
 
@@ -139,7 +139,7 @@ class EntryAbility extends UIAbility {
 function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<string>): void
 ```
 
-Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result.
+Export contacts to a VCF (VCard file) file. This mode is applicable to scenarios such as contact data backup, cross-device contact migration, and contact sharing through files. Use the callback asynchronous callback.
 
 **Since:** 23
 
@@ -154,8 +154,8 @@ Exports contacts as a vcard file (VCF). This API uses an asynchronous callback t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Application context. |
-| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Query statement. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to Address of the generated vcard file (VCF). |
+| predicates | [dataSharePredicates.DataSharePredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Query statement. Used to filter the contact data to be exported. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback function. Indicates the path of the generated VCF (VCard file). |
 
 **Error codes:**
 

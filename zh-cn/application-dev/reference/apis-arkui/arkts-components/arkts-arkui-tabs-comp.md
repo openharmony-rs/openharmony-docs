@@ -8,7 +8,7 @@
 
 ## 子组件
 
-仅支持子组件TabContent，以及渲染控制类型[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)，不建议自定义组件作为子组件。并且if/else和ForEach下也仅支持TabContent作为子组件，不建议自定义组件作为子组件。
+仅支持子组件[TabContent](arkts-arkui-tabcontent-comp.md)，以及渲染控制类型[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)，不建议自定义组件作为子组件。并且if/else和ForEach下也仅支持TabContent作为子组件，不建议自定义组件作为子组件。
 
 > **说明：** 
 > 
@@ -62,7 +62,7 @@ Tabs(options?: TabsOptions)
 | [TabContentAnimatedTransition](arkts-arkui-tabs-comp-tabcontentanimatedtransition-i.md) | Tabs自定义切换动画相关信息。 |
 | [TabContentTransitionProxy](arkts-arkui-tabs-comp-tabcontenttransitionproxy-i.md) | Tabs自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画的起始和目标页面信息，同时，也可以通过调用该对象的finishTransition接口通知Tabs组件自定义动画已结束。 |
 | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | Tabs组件动画相关信息集合。 |
-| [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md) | Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tabs控制器和页签栏（TabBar）的通用属性。 |
+| [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md) | Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tabs控制器和页签栏（TabBar）的[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。 |
 
 ### 类型
 

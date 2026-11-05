@@ -4,9 +4,9 @@
 declare class GridAttribute extends ScrollableCommonMethod<GridAttribute>
 ```
 
-In addition to [universal attributes](arkts-arkui-common-comp.md) and [scrollable component common attributes](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
+In addition to [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [scrollable component common attributes](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
 
-In addition to [universal events](arkts-arkui-common-comp.md) and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
+In addition to [universal events](arkts-arkui-common-comp-commonmethod-c.md) and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
 
 **Inheritance/Implementation:** GridAttribute extends ScrollableCommonMethod&lt;GridAttribute&gt;
 
@@ -500,7 +500,7 @@ If the value of **minCount** is greater than that of **maxCount**, both **minCou
 multiSelectable(value: boolean)
 ```
 
-Sets whether to enable multiselect. After multiselect is enabled, you can use **GridItem**'s **selected** attributeand **onSelect** event to obtain the selection state of **GridItem**. Additionally, you can set the selected state style of **GridItem** using [Polymorphic Style](arkts-arkui-common-comp.md) (by default, **GridItem** has no selected state style).
+Sets whether to enable multiselect. After multiselect is enabled, you can use **GridItem**'s **selected** attributeand **onSelect** event to obtain the selection state of **GridItem**. Additionally, you can set the selected state style of **GridItem** using [Polymorphic Style](arkts-arkui-common-comp-commonmethod-c.md) (by default, **GridItem** has no selected state style).
 
 **Since:** 8
 

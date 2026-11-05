@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function getOsuStatus(slotId: number): Promise<OsuStatus>
 ```
 
-Obtains the OS upgrade status for the eSIM in the specified slot. This API uses a promise to return the result.
+Obtains the OS upgrade status of a specified card slot. Using Promise Asynchronous Callbacks.
 
 **Since:** 18
 
@@ -28,7 +28,7 @@ Obtains the OS upgrade status for the eSIM in the specified slot. This API uses 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 

@@ -4,7 +4,7 @@
 interface PasscodePromptParams
 ```
 
-Params carried by the framework when prompting for a companion device passcode.
+Defines the parameters of a passcode input request, used to pass context information such as the challenge value.
 
 **Since:** 26.0.1
 
@@ -26,7 +26,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 challenge: Uint8Array
 ```
 
-Challenge carried by the framework when prompting for a companion device passcode.
+Challenge value issued by the system when a passcode is requested.
 
 **Type:** Uint8Array
 

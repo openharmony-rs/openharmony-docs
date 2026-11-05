@@ -55,7 +55,7 @@ Value range: Let x be the smaller of the width and height of the selected item. 
 **NOTE:** 
 
 1. This attribute takes effect when **type** is **PickerIndicatorType.BACKGROUND**.
-2. [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md): sets the size and unit of all four corner radii
+2. LengthMetrics: sets the size and unit of all four corner radii
 uniformly.
 3. [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md): sets the size of the four corner radii separately (in vp).
 4. [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md): sets the size and unit of the four corner radii

@@ -8,7 +8,7 @@ interface ScryptSpec extends KdfSpec
 
 > **说明：** 
 > 
-> passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型，同时需要确保该
+> passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、Base64等字符串类型，同时需要确保该
 > 字符串为utf-8编码，否则派生结果会有差异。
 
 **继承/实现关系：** ScryptSpec extends [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md)

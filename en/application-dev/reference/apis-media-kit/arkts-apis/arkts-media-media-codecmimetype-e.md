@@ -18,7 +18,7 @@ Enumerates the codec MIME types.
 AUDIO_AAC = 'audio/mp4a-latm'
 ```
 
-Audio in MP4A-LATM format.
+Audio in AAC format.
 
 **Since:** 8
 
@@ -104,7 +104,7 @@ Audio in MPEG format.
 AUDIO_RAW = 'audio/raw'
 ```
 
-Audio in raw streams format.
+Audio in RAW format.
 
 **Since:** 26.0.0
 
@@ -134,7 +134,7 @@ Audio in Vorbis format.
 VIDEO_AVC = 'video/avc'
 ```
 
-Video in AVC format.
+Video in H.264 format.
 
 **Since:** 8
 

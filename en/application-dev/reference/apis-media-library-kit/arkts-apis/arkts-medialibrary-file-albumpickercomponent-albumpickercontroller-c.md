@@ -26,7 +26,7 @@ import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, EmptyAreaClickCall
 setFontSize(fontSize: number | string): void
 ```
 
-Sets the font size of the album list.
+Sets the font size of the album list. The **albumPickerController** parameter needs to be passed when the album picker component is created.
 
 **Since:** 20
 

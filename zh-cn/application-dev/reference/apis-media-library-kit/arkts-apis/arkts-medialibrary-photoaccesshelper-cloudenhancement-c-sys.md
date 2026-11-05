@@ -486,7 +486,7 @@ queryLocalEnhancementTaskState(photoAsset: PhotoAsset): Promise<LocalEnhancement
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| 23800108 | The specified asset does not exist. |
+| [23800108](../errorcode-medialibrary.md#23800108-指定的资产不存在) | The specified asset does not exist. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: The photoAsset does not support local AI enhancement. |
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:         1. The database is corrupted;         2. The file system is abnormal;         3. The IPC request timed out. |
 

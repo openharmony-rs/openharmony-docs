@@ -4,7 +4,7 @@
 type GetLiveFormStatusCallback = () => Record<string, string>
 ```
 
-Get live form status info callback
+获取互动卡片状态的回调。
 
 **起始版本：** 20
 

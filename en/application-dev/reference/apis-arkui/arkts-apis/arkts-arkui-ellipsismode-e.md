@@ -26,6 +26,8 @@ An ellipsis is used at the center of the line of text. This applies to single-li
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+
 <!--Device-EllipsisMode-CENTER = 1--><!--Device-EllipsisMode-CENTER = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -43,6 +45,8 @@ An ellipsis is used at the end of the line of text. This applies to single-line 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-EllipsisMode-END = 2--><!--Device-EllipsisMode-END = 2-End-->
 
@@ -62,6 +66,8 @@ An ellipsis is used at the center of the line of text. This applies to single-li
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+
 <!--Device-EllipsisMode-MULTILINE_CENTER = 4--><!--Device-EllipsisMode-MULTILINE_CENTER = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -80,6 +86,8 @@ An ellipsis is used at the start of the line of text. This applies to single-lin
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+
 <!--Device-EllipsisMode-MULTILINE_START = 3--><!--Device-EllipsisMode-MULTILINE_START = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -97,6 +105,8 @@ An ellipsis is used at the start of the line of text. This applies to single-lin
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-EllipsisMode-START = 0--><!--Device-EllipsisMode-START = 0-End-->
 

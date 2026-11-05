@@ -26,7 +26,7 @@ Unit: vp by default. The unit can be specified through the LengthMetrics or Loca
 
 **NOTE:** 
 
-1. The value parameter of the [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) type applies to the
+1. The value parameter of the LengthMetrics type applies to the
 radius of all four corners, and the unit parameter is used to set the unit.
 2. The [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md) type can set four different corner radii, with all units fixed to vp.
 3. The [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md) type can set four different corner radii, and the

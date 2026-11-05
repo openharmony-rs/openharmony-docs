@@ -1,4 +1,4 @@
-# GrantStatus
+# GrantStatus (System API)
 
 ```TypeScript
 export enum GrantStatus
@@ -11,6 +11,8 @@ Enumerates the status of the URI permission granted by user.
 <!--Device-fileShare-export enum GrantStatus--><!--Device-fileShare-export enum GrantStatus-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**System API:** This is a system API.
 
 ## DENIED
 
@@ -28,6 +30,8 @@ The URI permission is not granted.
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+**System API:** This is a system API.
+
 ## GRANTED
 
 ```TypeScript
@@ -43,3 +47,5 @@ The URI permission is granted.
 <!--Device-GrantStatus-GRANTED = 0--><!--Device-GrantStatus-GRANTED = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**System API:** This is a system API.

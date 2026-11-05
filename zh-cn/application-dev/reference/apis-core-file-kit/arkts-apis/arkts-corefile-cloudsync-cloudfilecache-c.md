@@ -74,6 +74,8 @@ try {
 cleanFileCache(): Promise<void>
 ```
 
+清理所有已下载的文件，但尚未迁移到云端的文件或正在写入的文件除外。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -104,7 +106,7 @@ cleanFileCache(): Promise<void>
 constructor()
 ```
 
-A constructor used to create a **CloudFileCache** instance. Data is not shared between multiple instances.
+云盘文件缓存流程的构造函数，用于获取CloudFileCache类的实例。多个实例之间不互相共享数据。
 
 **起始版本：** 11
 
@@ -130,6 +132,8 @@ let fileCache = new cloudSync.CloudFileCache();
 getCachedTotalSize(): Promise<number>
 ```
 
+查询缓存文件的总大小。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -142,7 +146,7 @@ getCachedTotalSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Return the total size of cached files. |
+| Promise&lt;number&gt; | 返回缓存文件的总大小。 |
 
 **错误码：**
 
@@ -537,9 +541,9 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 stop(uri: string, needClean?: boolean): Promise<void>
 ```
 
-Stops downloading a file from the Drive Kit to the local device. This API uses a promise to return the result.
+异步方法停止云盘文件缓存。使用Promise异步回调。
 
-When **stop()** is called, the current file download process terminates, and downloaded files are retained by default. You can call **start()** to resume the download.
+调用stop接口，当前文件下载流程会终止，默认不删除缓存文件，再次调用start接口重新启动下载。
 
 **起始版本：** 12
 

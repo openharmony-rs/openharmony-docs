@@ -28,8 +28,6 @@ Obtains the class name of the ability to which this form belongs.
 
 **Type:** string
 
-**Default:** -
-
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
@@ -47,8 +45,6 @@ readonly bundleName: string
 Obtains the bundle name of the application to which this form belongs.
 
 **Type:** string
-
-**Default:** -
 
 **Since:** 20
 
@@ -68,8 +64,6 @@ Obtains the grid style of this form. The value must be a positive integer, refer
 
 **Type:** number
 
-**Default:** -
-
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
@@ -87,8 +81,6 @@ readonly formId: string
 Obtains the id of the this form.
 
 **Type:** string
-
-**Default:** -
 
 **Since:** 20
 
@@ -108,8 +100,6 @@ The location of this form.
 
 **Type:** [FormLocation](arkts-form-forminfo-formlocation-e.md)
 
-**Default:** -
-
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
@@ -127,8 +117,6 @@ readonly formName: string
 Obtains the name of this form.
 
 **Type:** string
-
-**Default:** -
 
 **Since:** 20
 
@@ -167,8 +155,6 @@ readonly moduleName: string
 Obtains the name of the application module to which this form belongs.
 
 **Type:** string
-
-**Default:** -
 
 **Since:** 20
 

@@ -38,7 +38,7 @@ color(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 分割线颜色。<br>默认值：'#33182431'<br>非法值：按默认值处理。<br>支持通过WithTheme设置通用分割线颜色。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 分割线颜色。<br>默认值：'#33182431'<br>非法值：按默认值处理。<br>支持通过[WithTheme](arkts-arkui-withtheme-comp.md)设置通用分割线颜色。 |
 
 ## lineCap
 

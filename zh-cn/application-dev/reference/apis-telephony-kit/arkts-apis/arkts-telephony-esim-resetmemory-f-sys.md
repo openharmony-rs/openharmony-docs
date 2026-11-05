@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function resetMemory(slotId: number, options?:ResetOption): Promise<ResultCode>
 ```
 
-清除所有特定配置文件并重置eUICC。使用Promise异步回调。
+清除所有特定配置文件并重置eUICC。与reserveProfilesForFactoryRestore不同，本接口会清除配置文件；若需恢复出厂设置并保留已有配置文件，请使用reserveProfilesForFactoryRestore。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -28,8 +28,8 @@ function resetMemory(slotId: number, options?:ResetOption): Promise<ResultCode>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
-| options | [ResetOption](arkts-telephony-esim-resetoption-e-sys.md) | 否 | 重置状态。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
+| options | [ResetOption](arkts-telephony-esim-resetoption-e-sys.md) | 否 | 重置状态。不传入该参数时使用缺省配置，传入对应枚举值可指定重置选项，支持按位或组合多个选项。 |
 
 **返回值：**
 

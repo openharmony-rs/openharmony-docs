@@ -6,6 +6,10 @@ class WebDataBase
 
 Web组件数据库管理对象。
 
+> **说明：** 
+> 
+> - 目前调用WebDataBase下的方法，都需要先加载Web组件。
+
 **起始版本：** 9
 
 <!--Device-webview-class WebDataBase--><!--Device-webview-class WebDataBase-End-->

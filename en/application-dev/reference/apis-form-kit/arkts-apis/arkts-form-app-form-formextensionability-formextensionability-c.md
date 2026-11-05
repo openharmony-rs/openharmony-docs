@@ -12,6 +12,10 @@ Widget extension class. It provides APIs to notify the widget provider that a wi
 
 **System capability:** SystemCapability.Ability.Form
 
+## ExtensionAbility Usage Restrictions
+
+To ensure system security and stability, FormExtensionAbility is restricted from abusing system resources. The system controls its capabilities and does not support referencing some modules. For details, see [Appendix](#appendix).
+
 ## Modules to Import
 
 ```TypeScript
@@ -501,3 +505,14 @@ This API can be used in atomic services since API version 11.
 <!--Device-FormExtensionAbility-context: FormExtensionContext--><!--Device-FormExtensionAbility-context: FormExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.Form
+
+## Appendix
+
+FormExtensionAbility does not support referencing the following modules.
+
+| Kit | Module |
+| --- | --- |
+| Ability Kit | [@ohos.ability.particleAbility](../../apis-ability-kit/arkts-apis/arkts-ability-ability-particleability.md) |
+| Background Tasks Kit | [@ohos.resourceschedule.backgroundTaskManager](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundtaskmanager.md) |
+| Camera Kit | [@ohos.multimedia.camera](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md) |
+| Media Kit | [@ohos.multimedia.media](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md) |

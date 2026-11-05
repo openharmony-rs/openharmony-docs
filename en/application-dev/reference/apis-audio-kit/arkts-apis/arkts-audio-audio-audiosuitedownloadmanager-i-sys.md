@@ -58,7 +58,7 @@ If the interface is invoked when the interface is not in the valid state, the in
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. The value of featureTypes is invalid. |
-| 6800302 | System service process terminated. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
 
 ## getFeatureStatus
 
@@ -98,7 +98,7 @@ This interface is used only to query the local installation status of a feature 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. The value of featureTypes is invalid. |
-| 6800302 | System service process terminated. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
 
 ## getNewVersionInfo
 
@@ -138,8 +138,8 @@ This interface queries information through the network.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. The value of featureTypes is invalid. |
-| 6800302 | System service process terminated. |
-| 6800501 | Required network conditions not met. The current network status is unavailable. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
+| [6800501](../errorcode-audio.md#6800501-network-conditions-not-met) | Required network conditions not met. The current network status is unavailable. |
 
 ## isFeatureInstalled
 
@@ -179,7 +179,7 @@ This interface is used only to query the local installation status of a feature 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. The value of featureTypes is invalid. |
-| 6800302 | System service process terminated. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
 
 ## offDownloadStatusChange
 
@@ -210,7 +210,7 @@ Unsubscribe from the download status change event. After you cancel the callback
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| 6800302 | System service process terminated. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
 
 ## onDownloadStatusChange
 
@@ -241,7 +241,7 @@ Subscribes to download status change event. When the download status of any feat
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| 6800302 | System service process terminated. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
 
 ## pauseDownload
 
@@ -281,7 +281,7 @@ If the interface is invoked when the interface is not in the valid state, the in
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. The value of featureTypes is invalid. |
-| 6800302 | System service process terminated. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
 
 ## startBackgroundDownload
 
@@ -321,7 +321,7 @@ The interface returns a message after sending a command. During the download, yo
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. The value of featureTypes is invalid. |
-| 6800302 | System service process terminated. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
 
 ## startDownload
 
@@ -362,9 +362,9 @@ The interface returns after the download starts. During the download, you can ob
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. The value of featureTypes is invalid. |
-| 6800302 | System service process terminated. |
-| 6800501 | Required network conditions not met. The current network conditions do not match the type specified by networkType. |
-| 6800502 | Insufficient storage space. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | System service process terminated. |
+| [6800501](../errorcode-audio.md#6800501-network-conditions-not-met) | Required network conditions not met. The current network conditions do not match the type specified by networkType. |
+| [6800502](../errorcode-audio.md#6800502-insufficient-storage-space) | Insufficient storage space. |
 
 ## uninstallFeature
 
@@ -404,4 +404,4 @@ If the interface is invoked when the interface is not in the valid state, the in
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. The value of featureTypes is invalid. |
-| 6800302 | Audio client call audio service error. |
+| [6800302](../errorcode-audio.md#6800302-system-service-process-terminated) | Audio client call audio service error. |

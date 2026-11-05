@@ -10,7 +10,7 @@ declare const ReusableV2: ClassDecorator & ((options: ReusableOptions) => ClassD
 
 组件复用的原理与适用场景参考：[组件复用最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse)。
 
-options：可复用自定义组件的配置参数，用于配置内存优化策略，在复用组件数量较多（例如同一页面中复用组件实例达到数十个以上）或设备内存有限、应用内存占用较高的场景下可配置此参数进行优化；缺省时无内存优化策略。ClassDecorator：类装饰器。开发者无需关注该返回值。
+options：可复用自定义组件的配置参数，用于配置内存优化策略，在复用组件数量较多（例如同一页面中复用组件实例达到数十个以上）或设备内存有限、应用内存占用较高的场景下可配置此参数进行优化；缺省时无内存优化策略。**起始版本：** 26.0.0 ClassDecorator：类装饰器。开发者无需关注该返回值。
 
 **起始版本：** 18
 

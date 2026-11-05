@@ -4,7 +4,7 @@
 interface DeviceKey
 ```
 
-Defines the device service ID. It uniquely identifies a device and its user, including the device ID type, device ID, user ID, and sub-profile ID.
+Defines the device identifier. It is used to uniquely identify a device and its user, and contains information such as the device ID type, device ID, device user ID, and device sub-identity credential ID.
 
 **Since:** 23
 
@@ -46,7 +46,7 @@ Device ID. It is a string that uniquely identifies a device. The format is deter
 deviceIdType: number
 ```
 
-Enumerates device ID types. They are used to specify the type of the device service ID and can be extended based on [DeviceIdType](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md). For example, you can use **UNIFIED_DEVICE_ID(1)** to indicate the unified device ID or use the vendor-defined value (≥ 10000).
+Device ID type. It is used to specify the type of the device business ID and can be extended based on [DeviceIdType](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md). For example, you can use **UNIFIED_DEVICE_ID(1)** to indicate the unified device ID or use the vendor-defined value (≥ 10000).
 
 **Type:** number
 
@@ -66,7 +66,7 @@ Enumerates device ID types. They are used to specify the type of the device serv
 deviceSubProfileId?: number
 ```
 
-Device sub-profile ID. It is an integer greater than or equal to 0 and is used to distinguish different sub-profile under the same user on the same device. The value should be an integer. Default value: The default value is -1.
+Device sub-identity credential ID. A non-negative integer that identifies a sub-identity credential on the device and distinguishes different sub-identity credentials under the same user on the same device.
 
 **Type:** number
 
@@ -88,7 +88,7 @@ Device sub-profile ID. It is an integer greater than or equal to 0 and is used t
 deviceUserId: number
 ```
 
-Device user ID. It is an integer greater than or equal to 0 and is used to distinguish different users on the device.
+Device user ID. A non-negative integer that identifies a user on the device and distinguishes different users on the device.
 
 **Type:** number
 

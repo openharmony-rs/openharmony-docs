@@ -12,7 +12,7 @@ When a network connection is required to redirect to the target web page, you ne
 
 ## Child Components
 
-This component can contain the [Image](arkts-arkui-image-comp.md) child component.
+This component can contain the Image child component.
 
 ## Hyperlink
 

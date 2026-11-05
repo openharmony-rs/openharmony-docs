@@ -60,7 +60,7 @@ Based on the principle that the key cannot be transferred out of [Trusted Execut
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>**Applicable version:** 26.0.0 and later |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | the provider operation failed<br>**Applicable version:** 26.0.0 and later |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | the UKey PIN is locked<br>**Applicable version:** 26.0.0 and later |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | the UKey PIN is locked<br>**Applicable version:** 26.0.0 and later |
 | [12000023](../errorcode-huks.md#12000023-unauthenticated-ukey-pin) | the UKey PIN not authenticated<br>**Applicable version:** 26.0.0 and later |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | the provider or UKey is busy<br>**Applicable version:** 26.0.0 and later |
 | [12000026](../errorcode-huks.md#12000026-secure-element-fault) | the secure element is not available<br>**Applicable version:** 26.0.0 and later |
@@ -249,7 +249,7 @@ Based on the principle that the key cannot be transferred out of [Trusted Execut
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>**Applicable version:** 26.0.0 and later |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | the provider operation failed<br>**Applicable version:** 26.0.0 and later |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | the UKey PIN is locked<br>**Applicable version:** 26.0.0 and later |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | the UKey PIN is locked<br>**Applicable version:** 26.0.0 and later |
 | [12000023](../errorcode-huks.md#12000023-unauthenticated-ukey-pin) | the UKey PIN not authenticated<br>**Applicable version:** 26.0.0 and later |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | the provider or UKey is busy<br>**Applicable version:** 26.0.0 and later |
 | [12000026](../errorcode-huks.md#12000026-secure-element-fault) | the secure element is not available<br>**Applicable version:** 26.0.0 and later |

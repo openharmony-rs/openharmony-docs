@@ -4,7 +4,7 @@
 export interface LiveFormInfo
 ```
 
-Provides information about a live form. @typedef { LiveFormInfo }
+Provides information about a live form.
 
 **Since:** 20
 

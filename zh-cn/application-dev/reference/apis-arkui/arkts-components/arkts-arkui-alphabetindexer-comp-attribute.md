@@ -10,9 +10,9 @@ declare class AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttri
 
 文本最大的字体缩放倍数[maxFontScale](arkts-arkui-text-comp-attribute.md#maxfontscale)和最小的字体缩放倍数[minFontScale](arkts-arkui-text-comp-attribute.md#minfontscale)皆为1，不跟随系统字体大小调节变化。
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
 
 **继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod&lt;AlphabetIndexerAttribute&gt;
 

@@ -4,7 +4,7 @@
 declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
 ```
 
-支持[通用属性](arkts-arkui-common-comp.md)，不支持文本通用属性，仅支持以下特有属性：
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)，不支持文本通用属性，仅支持以下特有属性：
 
 **继承/实现关系：** SymbolGlyphAttribute extends CommonMethod&lt;SymbolGlyphAttribute&gt;
 
@@ -84,7 +84,7 @@ fontColor(value: Array<ResourceColor>)
 fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 ```
 
-设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor-1)接口，本接口支持传入[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型参数。
+设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor-1)接口，本接口支持传入ColorMetrics类型参数。
 
 > **说明：** 
 > 

@@ -107,3 +107,21 @@ URI authorization policy used in drag-and-drop scenarios. The default value is *
 <!--Device-FileUri-uriAuthorizationPolicies?: Array<int>--><!--Device-FileUri-uriAuthorizationPolicies?: Array<int>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
+
+## virtualEntry
+
+```TypeScript
+virtualEntry?: VirtualFileInfo
+```
+
+Virtual file content supplied on demand. Every file must declare a non-negative size.
+
+**Type:** [VirtualFileInfo](arkts-arkdata-uniformdatastruct-virtualfileinfo-i.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileUri-virtualEntry?: VirtualFileInfo--><!--Device-FileUri-virtualEntry?: VirtualFileInfo-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.UDMF.Core

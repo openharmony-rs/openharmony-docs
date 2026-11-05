@@ -12,7 +12,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 function unregisterPasscodePromptCallback(): void
 ```
 
-Unregisters the callback used to prompt for a companion device passcode.
+Unregisters the passcode request callback. After unregistration, the system no longer invokes the passcode request callback registered by the application.
 
 **Since:** 26.0.1
 

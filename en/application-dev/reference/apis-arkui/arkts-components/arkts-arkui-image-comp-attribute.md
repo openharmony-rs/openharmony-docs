@@ -13,7 +13,7 @@ The **Image** component is usually used to display images in applications. It su
 > - When keyboard shortcuts are used to copy an **Image** component, the **Image** component must be in a focused state. For instructions on how to set focus, see [Setting Whether a Component Is Focusable](../../../ui/arkts-common-events-focus-event.md#setting-whether-a- component-is-focusable).By default, the **Image** component is not focusable. To enable it to gain focus, set both the [focusable](arkts-arkui-common-comp-commonmethod-c.md#focusable) and [focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch) attributes to
 > **true**.
 > 
-> - The **Image** component supports SVG image sources. For details about SVG tags, see [SVG Tags](arkts-arkui-common-comp.md).
+> - The **Image** component supports SVG image sources. For details about SVG tags, see [SVG Tags](arkts-arkui-common-comp-commonmethod-c.md).
 > 
 > - For animated images, animation playback is disabled by default and depends on the visibility of the **Image**component. When the component is visible, the animation is started through the callback. When the component is invisible, the animation is stopped. The visibility status of the **Image** component can be identified through the
 > 
@@ -419,7 +419,7 @@ This attribute does not take effect when the parameter type of the component is 
 fillColor(color: ResourceColor | ColorContent | ColorMetrics)
 ```
 
-Fill color to be superimposed on the image. This attribute applies only to SVG images. Once set, the fill color will replace the fill colors of all drawable elements within the SVG image. To set the fill color for a PNG image, use [colorFilter](#colorfilter-1). To reset the fill color, pass a value of the [ColorContent](arkts-arkui-image-comp-colorcontent-c.md) type. You can set P3 color gamut values by passing in the [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) type, which can achieve richer color performance on devices that support high color gamut.
+Fill color to be superimposed on the image. This attribute applies only to SVG images. Once set, the fill color will replace the fill colors of all drawable elements within the SVG image. To set the fill color for a PNG image, use [colorFilter](#colorfilter-1). To reset the fill color, pass a value of the [ColorContent](arkts-arkui-image-comp-colorcontent-c.md) type. You can set P3 color gamut values by passing in the ColorMetrics type, which can achieve richer color performance on devices that support high color gamut.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md).
 

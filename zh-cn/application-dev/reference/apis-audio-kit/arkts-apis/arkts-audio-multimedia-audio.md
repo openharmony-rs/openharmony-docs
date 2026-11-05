@@ -83,6 +83,7 @@ import { audio } from '@kit.AudioKit';
 | [DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md) | 描述设备连接状态变化和设备信息。 |
 | [InterruptEvent](arkts-audio-audio-interruptevent-i.md) | 音频中断时，应用接收的中断事件。 |
 | [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md) | 麦克风状态变化时，应用接收到的事件。 |
+| [NoiseReductionModeChangeInfo](arkts-audio-audio-noisereductionmodechangeinfo-i.md) | 降噪模式变更信息。该接口作为[onNoiseReductionModeChanged](arkts-audio-audio-audiocapturer-i.md#onnoisereductionmodechanged)的回调参数。使用场景：当录音流的降噪模式发生变更时，该结构体携带最新的降噪模式和变更原因。 |
 | [SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md) | 描述声卡信息。 |
 | [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md) | 音频流音量变化时，应用接收到的事件。 |
 | [SystemRecordControllerConfig](arkts-audio-audio-systemrecordcontrollerconfig-i.md) | 系统录音控制面板的配置信息。 |
@@ -208,6 +209,7 @@ import { audio } from '@kit.AudioKit';
 | [InterruptMode](arkts-audio-audio-interruptmode-e.md) | 表示焦点模型的枚举。 |
 | [InterruptType](arkts-audio-audio-interrupttype-e.md) | 表示中断类型的枚举。 |
 | [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md) | 表示录音降噪模式的枚举。 |
+| [NoiseReductionModeChangeReason](arkts-audio-audio-noisereductionmodechangereason-e.md) | 降噪模式变更原因枚举。 |
 | [OutputDeviceChangeRecommendedAction](arkts-audio-audio-outputdevicechangerecommendedaction-e.md) | 表示输出设备变更后推荐操作的枚举。常见场景示例：耳机设备和外放设备之间进行切换。当佩戴耳机时，从外放设备切换到耳机设备，系统会推荐继续播放，提示应用无需停止当前播放。当摘下耳机设备切换到外放设备时，系统会推荐停止播放。 |
 | [PlaybackCaptureStartState](arkts-audio-audio-playbackcapturestartstate-e.md) | 表示调用[requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。 |
 | [SoundCardType](arkts-audio-audio-soundcardtype-e.md) | 枚举声卡类型。 |

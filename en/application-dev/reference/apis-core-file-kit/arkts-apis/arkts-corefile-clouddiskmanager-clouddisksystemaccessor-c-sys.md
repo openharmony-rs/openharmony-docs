@@ -87,20 +87,20 @@ Dehydrates a file. This API uses a promise to return the result. The file can ha
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This feature is not supported on the device or file system. |
-| 34400001 | The input parameter is invalid. The service rejected the path or a file operation argument, the target is a directory, or the provider request could not be serialized. |
+| [34400001](../errorcode-clouddiskmanager-sys.md#34400001-invalid-input-parameter) | The input parameter is invalid. The service rejected the path or a file operation argument, the target is a directory, or the provider request could not be serialized. |
 | [34400003](../errorcode-clouddiskmanager-sys.md#34400003-ipc-failed) | IPC communication with the service or cloud disk provider failed. |
-| 34400008 | No sync root is registered, or the registered sync roots cannot be queried. |
-| 34400010 | The sync root path does not exist, or the target file or sync root mount path is missing during path resolution. |
+| [34400008](../errorcode-clouddiskmanager-sys.md#34400008-sync-root-path-not-registered) | No sync root is registered, or the registered sync roots cannot be queried. |
+| [34400010](../errorcode-clouddiskmanager-sys.md#34400010-sync-root-path-does-not-exist) | The sync root path does not exist, or the target file or sync root mount path is missing during path resolution. |
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-system-internal-error) | Temporary failure. Failed to resolve the user account, access the file, restore its logical size, schedule the request, or complete an internal operation. Please try again. |
-| 34400017 | The target path is not a placeholder file. |
-| 34400019 | A hydrate task for the target file is pending or in progress. |
-| 34400020 | The available disk space is insufficient, or the disk quota has been exhausted. |
-| 34400021 | The cloud disk provider's callback table is not registered, or no usable sync root matches the path. |
-| 34400023 | A path component that must be a directory is not a directory. |
-| 34400024 | A required file or directory does not exist while resolving or accessing the target path. |
-| 34400025 | The file name or path is too long. |
-| 34400029 | The cloud disk provider did not approve the dehydration request. |
-| 34400033 | The placeholder state or its stored attribute is invalid. |
+| [34400017](../errorcode-clouddiskmanager-sys.md#34400017-target-path-is-not-a-placeholder-file) | The target path is not a placeholder file. |
+| [34400019](../errorcode-clouddiskmanager-sys.md#34400019-hydration-task-already-in-progress) | A hydrate task for the target file is pending or in progress. |
+| [34400020](../errorcode-clouddiskmanager-sys.md#34400020-insufficient-available-disk-space) | The available disk space is insufficient, or the disk quota has been exhausted. |
+| [34400021](../errorcode-clouddiskmanager-sys.md#34400021-callback-table-not-registered) | The cloud disk provider's callback table is not registered, or no usable sync root matches the path. |
+| [34400023](../errorcode-clouddiskmanager-sys.md#34400023-path-parent-directory-is-not-a-directory) | A path component that must be a directory is not a directory. |
+| [34400024](../errorcode-clouddiskmanager-sys.md#34400024-target-path-does-not-exist) | A required file or directory does not exist while resolving or accessing the target path. |
+| [34400025](../errorcode-clouddiskmanager-sys.md#34400025-file-name-or-path-too-long) | The file name or path is too long. |
+| [34400029](../errorcode-clouddiskmanager-sys.md#34400029-cloud-drive-application-rejects-dehydration) | The cloud disk provider did not approve the dehydration request. |
+| [34400033](../errorcode-clouddiskmanager-sys.md#34400033-invalid-placeholder-state) | The placeholder state or its stored attribute is invalid. |
 
 ## hydratePlaceholder
 
@@ -143,21 +143,21 @@ Hydrates a placeholder file. This API uses a promise to return the result. Hydra
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This feature is not supported on the device or file system. |
-| 34400001 | The input parameter is invalid. The service rejected the path, callback type, or file metadata. CallbackType.DEHYDRATE is not supported by this operation. |
+| [34400001](../errorcode-clouddiskmanager-sys.md#34400001-invalid-input-parameter) | The input parameter is invalid. The service rejected the path, callback type, or file metadata. CallbackType.DEHYDRATE is not supported by this operation. |
 | [34400003](../errorcode-clouddiskmanager-sys.md#34400003-ipc-failed) | IPC communication failed. |
-| 34400008 | No sync root is registered, or the registered sync roots cannot be queried. |
-| 34400010 | The sync root path does not exist, or the target file or sync root mount path is missing during path resolution. |
+| [34400008](../errorcode-clouddiskmanager-sys.md#34400008-sync-root-path-not-registered) | No sync root is registered, or the registered sync roots cannot be queried. |
+| [34400010](../errorcode-clouddiskmanager-sys.md#34400010-sync-root-path-does-not-exist) | The sync root path does not exist, or the target file or sync root mount path is missing during path resolution. |
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-system-internal-error) | Temporary failure. Failed to resolve the user account, access the file, prepare a hydrate task, schedule the request, or complete an internal operation. Please try again. |
-| 34400017 | The target path is not a placeholder file. |
-| 34400019 | A hydrate task for the target file is already pending or in progress. |
-| 34400021 | The cloud disk provider's callback table is not registered, or no usable sync root matches the path. |
-| 34400023 | A path component that must be a directory is not a directory. |
-| 34400024 | A required file or directory does not exist while resolving or accessing the target path. |
-| 34400025 | The file name or path is too long. |
-| 34400031 | The placeholder is already fully hydrated. |
-| 34400032 | Cancellation was requested, but no hydrate task is pending or in progress. |
-| 34400033 | The placeholder state or its stored attribute is invalid. |
-| 34400034 | The limit on pending hydrate tasks has been reached. |
+| [34400017](../errorcode-clouddiskmanager-sys.md#34400017-target-path-is-not-a-placeholder-file) | The target path is not a placeholder file. |
+| [34400019](../errorcode-clouddiskmanager-sys.md#34400019-hydration-task-already-in-progress) | A hydrate task for the target file is already pending or in progress. |
+| [34400021](../errorcode-clouddiskmanager-sys.md#34400021-callback-table-not-registered) | The cloud disk provider's callback table is not registered, or no usable sync root matches the path. |
+| [34400023](../errorcode-clouddiskmanager-sys.md#34400023-path-parent-directory-is-not-a-directory) | A path component that must be a directory is not a directory. |
+| [34400024](../errorcode-clouddiskmanager-sys.md#34400024-target-path-does-not-exist) | A required file or directory does not exist while resolving or accessing the target path. |
+| [34400025](../errorcode-clouddiskmanager-sys.md#34400025-file-name-or-path-too-long) | The file name or path is too long. |
+| [34400031](../errorcode-clouddiskmanager-sys.md#34400031-placeholder-file-fully-hydrated) | The placeholder is already fully hydrated. |
+| [34400032](../errorcode-clouddiskmanager-sys.md#34400032-no-hydration-task-in-progress) | Cancellation was requested, but no hydrate task is pending or in progress. |
+| [34400033](../errorcode-clouddiskmanager-sys.md#34400033-invalid-placeholder-state) | The placeholder state or its stored attribute is invalid. |
+| [34400034](../errorcode-clouddiskmanager-sys.md#34400034-active-hydration-task-limit-reached) | The limit on pending hydrate tasks has been reached. |
 
 ## offHydrateProgress
 
@@ -193,7 +193,7 @@ Unsubscribes this instance from hydrate progress events without cancelling its h
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. This method does not accept arguments. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This feature is not supported on the device. |
 | [34400003](../errorcode-clouddiskmanager-sys.md#34400003-ipc-failed) | IPC communication failed. |
-| 34400008 | No sync root is registered, or the registered sync roots cannot be queried when unregistering this instance's callback from the service. |
+| [34400008](../errorcode-clouddiskmanager-sys.md#34400008-sync-root-path-not-registered) | No sync root is registered, or the registered sync roots cannot be queried when unregistering this instance's callback from the service. |
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-system-internal-error) | Temporary failure while unregistering the callback. Please try again. |
 
 ## onHydrateProgress
@@ -230,5 +230,5 @@ Subscribes to progress events for hydration and cancellation operations invoked 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This feature is not supported on the device. |
 | [34400003](../errorcode-clouddiskmanager-sys.md#34400003-ipc-failed) | IPC communication failed. |
-| 34400008 | No sync root is registered, or the registered sync roots cannot be queried. |
+| [34400008](../errorcode-clouddiskmanager-sys.md#34400008-sync-root-path-not-registered) | No sync root is registered, or the registered sync roots cannot be queried. |
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-system-internal-error) | Temporary failure. Failed to initialize the callback, resolve the user account, or complete an internal operation. Please try again. |

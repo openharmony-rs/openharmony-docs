@@ -937,7 +937,7 @@ Opens a menu with the specified content. This API uses a promise to return the r
 > 
 > - You must maintain the provided **content**, on which [updateMenu](#updatemenu) and [closeMenu](#closemenu) rely to identify the target menu.
 > 
-> - If your **wrapBuilder** includes other components (such as [Popup](arkts-arkui-arkui-advanced-popup.md) or [Chip](arkts-arkui-arkui-advanced-chip.md)), the [ComponentContent](arkts-arkui-componentcontent-c.md)constructor must include four parameters, and the **options** parameter must be
+> - If your **wrapBuilder** includes other components (such as [Popup](arkts-arkui-arkui-advanced-popup.md) or [Chip](arkts-arkui-arkui-advanced-chip.md)), the ComponentContentconstructor must include four parameters, and the **options** parameter must be
 > **{ nestingBuilderSupported: true }**.
 > 
 > - Nested subwindow dialog boxes are not supported. For example, when [openMenu](#openmenu) has
@@ -1044,7 +1044,7 @@ Creates and displays a popup with the specified content. This API uses a promise
 > 
 > - You must maintain the provided **content**, on which [updatePopup](#updatepopup) and [closePopup](#closepopup) rely to identify the target popup.
 > 
-> - If your **wrapBuilder** includes other components (such as [Popup](arkts-arkui-arkui-advanced-popup.md) or [Chip](arkts-arkui-arkui-advanced-chip.md)), the [ComponentContent](arkts-arkui-componentcontent-c.md)constructor must include four parameters, and the **options** parameter must be
+> - If your **wrapBuilder** includes other components (such as [Popup](arkts-arkui-arkui-advanced-popup.md) or [Chip](arkts-arkui-arkui-advanced-chip.md)), the ComponentContentconstructor must include four parameters, and the **options** parameter must be
 > **{ nestingBuilderSupported: true }**.
 
 **Since:** 18

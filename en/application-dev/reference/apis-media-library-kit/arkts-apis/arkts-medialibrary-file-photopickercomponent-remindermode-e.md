@@ -50,7 +50,7 @@ No reminder.
 TOAST = 1
 ```
 
-Toast message.
+Toast message. A toast message is displayed when the number of selected items reaches the maximum.
 
 **Since:** 12
 

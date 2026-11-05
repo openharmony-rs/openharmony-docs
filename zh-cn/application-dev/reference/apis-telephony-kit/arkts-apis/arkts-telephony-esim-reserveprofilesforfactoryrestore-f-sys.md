@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function reserveProfilesForFactoryRestore(slotId: number): Promise<ResultCode>
 ```
 
-恢复出厂设置，并保留profiles。使用Promise异步回调。
+恢复出厂设置，并保留配置文件。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -28,7 +28,7 @@ function reserveProfilesForFactoryRestore(slotId: number): Promise<ResultCode>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
 
 **返回值：**
 

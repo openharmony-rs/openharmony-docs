@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function getEsimFreeStorage(): Promise<number>
 ```
 
-This API is used to obtain the remaining storage space of the eUICC hardware. This API uses a promise to return the result.
+obtain remaining storage space of the eUICC hardware. Use Promise asynchronous callbacks.
 
 **Since:** 23
 

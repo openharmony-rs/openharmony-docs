@@ -44,7 +44,7 @@ excludeFromDock?: boolean
 
 **类型：** boolean
 
-**默认值：** false
+**默认值：** undefined
 
 **起始版本：** 26.0.1
 
@@ -64,7 +64,7 @@ excludeFromRecent?: boolean
 
 **类型：** boolean
 
-**默认值：** false
+**默认值：** undefined
 
 **起始版本：** 26.0.1
 

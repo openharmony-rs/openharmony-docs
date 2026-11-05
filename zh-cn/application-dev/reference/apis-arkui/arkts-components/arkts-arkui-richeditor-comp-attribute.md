@@ -4,9 +4,9 @@
 declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md)外，还支持[OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md)、[StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md)、[StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md)和以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持[OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md)、[StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md)、[StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md)和以下事件：
 
 **继承/实现关系：** RichEditorAttribute extends CommonMethod&lt;RichEditorAttribute&gt;
 
@@ -107,7 +107,7 @@ bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, response
     options?: SelectionMenuOptions)
 ```
 
-设置自定义选择菜单。支持自定义菜单风格和触发条件，适合需要深度自定义菜单的场景。自定义菜单超长时，建议内部嵌套[Scroll](arkts-arkui-scroll-comp.md)组件使用，避免键盘被遮挡。
+设置自定义选择菜单。支持自定义菜单风格和触发条件，适合需要深度自定义菜单的场景。自定义菜单超长时，建议内部嵌套Scroll组件使用，避免键盘被遮挡。
 
 **起始版本：** 10
 

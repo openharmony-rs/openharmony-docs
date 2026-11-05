@@ -4,9 +4,9 @@
 declare class SliderAttribute extends CommonMethod<SliderAttribute>
 ```
 
-支持除触摸热区以外的通用属性。
+支持除触摸热区以外的[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
 
 **继承/实现关系：** SliderAttribute extends CommonMethod&lt;SliderAttribute&gt;
 

@@ -66,7 +66,7 @@ scroller?: Scroller
 
 Controller of the scrollable component. After being bound to **ArcList**, it can be used to control the scrolling of **ArcList**. If not set, no scroll controller is bound.
 
-**Note:** It is not allowed to bind the same scroll control object with other scrollable components, such as [List](arkts-arkui-list-comp.md), [Grid](arkts-arkui-grid-comp.md), [Scroll](arkts-arkui-scroll-comp.md), and [WaterFlow](arkts-arkui-waterflow-comp.md).
+**Note:** It is not allowed to bind the same scroll control object with other scrollable components, such as [List](arkts-arkui-list-comp.md), [Grid](arkts-arkui-grid-comp.md), Scroll, and [WaterFlow](arkts-arkui-waterflow-comp.md).
 
 **Type:** [Scroller](arkts-arkui-scroll-comp-scroller-c.md)
 

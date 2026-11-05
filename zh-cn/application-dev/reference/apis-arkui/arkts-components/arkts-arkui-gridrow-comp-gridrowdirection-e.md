@@ -29,7 +29,7 @@ declare enum GridRowDirection
 ## Row
 
 ```TypeScript
-Row = 0
+Row
 ```
 
 栅格元素按照行方向排列。适用于常规LTR（从左到右）布局场景。
@@ -40,14 +40,14 @@ Row = 0
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-GridRowDirection-Row = 0--><!--Device-GridRowDirection-Row = 0-End-->
+<!--Device-GridRowDirection-Row--><!--Device-GridRowDirection-Row-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RowReverse
 
 ```TypeScript
-RowReverse = 1
+RowReverse
 ```
 
 栅格元素按照逆序行方向排列，适用于RTL（从右到左）语言布局或需要反向排列的场景。
@@ -58,6 +58,6 @@ RowReverse = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-GridRowDirection-RowReverse = 1--><!--Device-GridRowDirection-RowReverse = 1-End-->
+<!--Device-GridRowDirection-RowReverse--><!--Device-GridRowDirection-RowReverse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

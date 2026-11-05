@@ -258,8 +258,6 @@ Before calling this API, check whether C2PA signature is supported by calling [i
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 7400113 | An exception occurred in the session currently in use. |
-| 7400116 | The session does not have camerainput information. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
 ## enableAutoExtendedGainmapDelivery

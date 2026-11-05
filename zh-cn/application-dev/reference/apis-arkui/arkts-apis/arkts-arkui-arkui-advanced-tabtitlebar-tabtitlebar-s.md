@@ -10,7 +10,7 @@ TabTitleBar是页签型标题栏组件，支持页签列表与关联内容的联
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 设置TabTitleBar的[通用属性](../arkts-components/arkts-arkui-common-comp.md)或[通用事件](../arkts-components/arkts-arkui-common-comp.md)时，编译工具链会在__Common__节点上挂载而非直接应用到组件本身，可能导致设置不生效或不符合预期，因此不建议设置。
+> - 设置TabTitleBar的[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)时，编译工具链会在__Common__节点上挂载而非直接应用到组件本身，可能导致设置不生效或不符合预期，因此不建议设置。
 
 **起始版本：** 10
 
@@ -26,7 +26,7 @@ TabTitleBar是页签型标题栏组件，支持页签列表与关联内容的联
 
 ## TabTitleBarAttribute
 
-不支持通用事件。
+不支持[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
 
 ## 导入模块
 

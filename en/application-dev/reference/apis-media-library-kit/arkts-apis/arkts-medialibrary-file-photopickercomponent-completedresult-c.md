@@ -24,7 +24,7 @@ import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseIt
 contextRecoveryInfo: photoAccessHelper.ContextRecoveryInfo
 ```
 
-Context information of the PhotoPicker exit status.
+Context information of the photo picker component exit status.
 
 **Type:** [photoAccessHelper.ContextRecoveryInfo](arkts-medialibrary-photoaccesshelper-contextrecoveryinfo-c.md)
 

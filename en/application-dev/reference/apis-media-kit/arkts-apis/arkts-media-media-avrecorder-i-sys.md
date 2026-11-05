@@ -4,7 +4,7 @@
 interface AVRecorder
 ```
 
-AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md#createavrecorder-1) to create an AVRecorder instance.
+The **AVRecorder** class is used to manage the entire audio and video recording process, including audio recording, video recording, and audio-video recording. It can be used to flexibly configure encoding parameters, add watermarks, set metadata, and listen for the recording status and error events. It can be used to record audio and video and saved them to files, including scenarios where recording continuity needs to be maintained when the audio is interrupted and audio amplitude needs to be monitored in real time. Before calling the methods of the AVRecorder class, you need to call the [createAVRecorder](arkts-media-media-createavrecorder-f.md) API to create an **AVRecorder** instance. Typical recording process: [createAVRecorder](arkts-media-media-createavrecorder-f.md) → [prepare](arkts-media-media-avrecorder-i.md#prepare-2) → [getInputSurface](arkts-media-media-avrecorder-i.md#getinputsurface) (for video-only or audio and video recording) → [start](arkts-media-media-avrecorder-i.md#start) → [pause](arkts-media-media-avrecorder-i.md#pause)/[resume](arkts-media-media-avrecorder-i.md#resume) → [stop](arkts-media-media-avrecorder-i.md#stop) → [release](arkts-media-media-avrecorder-i.md#release).
 
 For details about the audio and video recording demo, see [Audio Recording](../../../media/media/using-avrecorder-for-recording.md) and [Video Recording](../../../media/media/video-recording.md).
 
@@ -58,7 +58,7 @@ Get input meta surface for specified meta source type. it must be called between
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called from Non-System applications. Return by promise. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
@@ -71,7 +71,7 @@ isWatermarkSupported(): Promise<boolean>
 
 Checks whether the device supports the hardware digital watermark. This API uses a promise to return the result.
 
-This API can be called after the prepare(), start(), or paused() event is triggered.
+This API can be called after the prepare(), start(), or pause() event is triggered.
 
 **Since:** 13
 
@@ -137,7 +137,7 @@ This API can be called only after the prepare() event is triggered and before th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 <!--Del-->

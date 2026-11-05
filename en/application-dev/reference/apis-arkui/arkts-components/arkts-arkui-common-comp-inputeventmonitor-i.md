@@ -12,7 +12,7 @@ This object is created and returned by the system, serving as the unique identif
 > 
 > - The object is empty and does not contain any accessible members.
 > 
-> - Developers cannot create this object on their own. It can only be obtained by registering through the addLocalInputEventMonitor API.
+> - Developers cannot create this object on their own. It can only be obtained by registering through the [addLocalInputEventMonitor](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#addlocalinputeventmonitor) API.
 > 
 > - It is used for identity verification when unregistering later.
 

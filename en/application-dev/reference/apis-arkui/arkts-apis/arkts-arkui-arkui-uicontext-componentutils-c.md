@@ -37,7 +37,7 @@ Obtains the size, position, translation, scaling, rotation, and affine matrix in
 > 
 > This API should be called after the target component layout is complete to obtain its area size information. It is recommended to use this API in the [layout callback](arkts-arkui-arkui-inspector.md). If a component is dynamically created but not yet attached to the component tree, its measurement and layout information cannot be accessed through this API since this component has not undergone measurement and layout by the UI framework. Ensure the component is attached to the component tree before attempting to retrieve component information.
 > 
-> The component position returned by this API is the layout position. Some property calculations are not supported, such as position-setting properties like **offset**, **markAnchor**, **Edges**, **position** of the **LocalizedEdges** type, and graphics transformation properties like **rotate**, **translate**, **scale**, and **transform**. For an alternative, you can use [getPositionToWindowWithTransform](arkts-arkui-framenode-c.md#getpositiontowindowwithtransform) to obtain the component's position offset relative to the window, including drawing attributes.
+> The component position returned by this API is the layout position. Some property calculations are not supported, such as position-setting properties like **offset**, **markAnchor**, **Edges**, **position** of the **LocalizedEdges** type, and graphics transformation properties like **rotate**, **translate**, **scale**, and **transform**. For an alternative, you can use getPositionToWindowWithTransform to obtain the component's position offset relative to the window, including drawing attributes.
 
 **Since:** 10
 
