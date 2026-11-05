@@ -22,7 +22,6 @@
     - [预览(ArkTS)](camera-preview.md)
     - [双路预览(ArkTS)](camera-dual-channel-preview.md)
     - [拍照(ArkTS)](camera-shooting.md)
-    - [拍照实践(ArkTS)](camera-shooting-case.md)
     - [分段式拍照(ArkTS)](camera-deferred-capture.md)
     - [分段式拍照实践(ArkTS)](camera-deferred-capture-case.md)
     - [YUV拍照(ArkTS)](camera-yuv-shooting.md)<!--RP1--><!--RP1End-->
@@ -35,7 +34,6 @@
     <!--DelEnd-->
   - 录像与创意拍摄(ArkTS)<!--camera-dev-arkts-recording-->
     - [录像(ArkTS)](camera-recording.md)
-    - [录像实践(ArkTS)](camera-recording-case.md)
     - [动态照片拍摄(ArkTS)](camera-moving-photo.md)<!--RP5--><!--RP5End-->
     - [相机控制器(ArkTS)](camera-control-center.md)
   - 相机参数设置(ArkTS)<!--camera-dev-arkts-params-->
@@ -59,13 +57,11 @@
     - [预览(C/C++)](native-camera-preview.md)
     - [预览流二次处理(C/C++)](native-camera-preview-imageReceiver.md)
     - [拍照(C/C++)](native-camera-shooting.md)
-    - [拍照实践(C/C++)](native-camera-shooting-case.md)
     - [分段式拍照(C/C++)](native-camera-deferred-capture.md)
     - [YUV拍照(C/C++)](native-camera-yuv-shooting.md)<!--RP7--><!--RP7End-->
     - [元数据(C/C++)](native-camera-metadata.md)
   - 录像(C/C++)<!--camera-dev-native-recording-->
     - [录像(C/C++)](native-camera-recording.md)
-    - [录像实践(C/C++)](native-camera-recording-case.md)
   - 相机参数设置(C/C++)<!--camera-dev-native-params-->
     - [手电筒使用(C/C++)](native-camera-torch-use.md)
     - [微距能力设置(C/C++)](native-camera-macro.md)<!--RP10--><!--RP10End-->
