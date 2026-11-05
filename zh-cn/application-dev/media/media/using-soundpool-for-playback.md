@@ -37,7 +37,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
    ArkTS-Dyn示例：
 
-   <!-- @[SoundPool_Creat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[SoundPool_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // audioRendererInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE。
@@ -46,7 +46,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
      usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
      rendererFlags: 1 // 音频渲染器标志。
    }
-   //创建soundPool实例。
+   // 创建soundPool实例。
    this.soundPool = await media.createSoundPool(14,audioRendererInfo);
    ```
    
@@ -99,7 +99,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
     
    ArkTS-Dyn示例：
 
-   <!-- @[SoundPool_onPlayFinshed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[SoundPool_onPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    this.soundPool!.on('playFinished', () => {
