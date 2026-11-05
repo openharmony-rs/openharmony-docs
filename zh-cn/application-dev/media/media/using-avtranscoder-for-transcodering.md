@@ -56,7 +56,7 @@ export class AVTranscoderDemo {
 
 ## 开发步骤及注意事项
 
-1. 创建[AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavtranscoder12)实例
+1. 创建[AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavtranscoder12)实例。
 
    ArkTS-Dyn示例：
 
@@ -77,7 +77,7 @@ export class AVTranscoderDemo {
    ```
 
 2. 设置业务需要的监听事件，监听状态变化及错误上报。
-
+   
    | 事件类型 | 说明 | 
    | -------- | -------- |
    | complete | 必要事件，监听AVTranscoder的转码完成。 | 
@@ -279,7 +279,7 @@ export class AVTranscoderDemo {
    > **说明：**
    >
    > 转码输出文件fd（即示例里fdDst），形式为number。需要调用基础文件操作接口（[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问(ArkTS)](../../file-management/app-file-access.md)。
-
+   
    <!-- @[createFddst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
