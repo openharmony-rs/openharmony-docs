@@ -60,9 +60,7 @@
 
   > **说明：**
   > 
-  > - 调用setAspectRatio()限制主窗的宽高比，仅在PC/2in1设备生效。
-  > 
-
+  > 调用setAspectRatio()限制主窗的宽高比，仅在PC/2in1设备生效。
 | 接口 | 功能描述 | 适用场景 | 生效范围 |
 | -------- | -------- | -------- | -------- |
 | [setAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10) | 设置窗口内容布局（不含边框和标题栏等装饰）的比例，该比例参数默认持久化保存。 | - 为同一应用下多个启动实例配置相同的内容宽高比。当同一应用的某个主窗口调用此接口设置宽高比生效后，后续打开的主窗口均会沿用该宽高比。 | [自由窗口](freeform-window-overview.md#自由窗口)状态下的主窗 |
