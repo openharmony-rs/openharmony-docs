@@ -47,7 +47,7 @@ status: active
    
    ``` TypeScript
    import { media } from '@kit.MediaKit';
-   
+   // ...
        // 创建avPlayer实例对象
        this.avPlayer = await media.createAVPlayer();
    ```
