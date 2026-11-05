@@ -9083,17 +9083,17 @@
 						"start_line":17
 					},
 					{
-						"end_line":32,
+						"end_line":34,
 						"name":"obtain_mediaquery_listener",
-						"start_line":29
+						"start_line":30
 					},
 					{
-						"end_line":63,
+						"end_line":66,
 						"name":"obtain_mediaquery_Portrait",
-						"start_line":35
+						"start_line":37
 					},
 					{
-						"end_line":95,
+						"end_line":105,
 						"name":"obtain_mediaquery_all",
 						"start_line":16
 					}
@@ -9103,7 +9103,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryFlex.ets",
 				"functions":[
 					{
-						"end_line":104,
+						"end_line":112,
 						"name":"obtain_mediaquery_flex",
 						"start_line":16
 					}
