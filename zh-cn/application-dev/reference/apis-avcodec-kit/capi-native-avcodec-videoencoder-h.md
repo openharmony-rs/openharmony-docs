@@ -406,15 +406,15 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 | OH_MD_KEY_I_FRAME_INTERVAL | AV_ERR_OK |  \\       | AV_ERR_OK | 
 
 | OH_MD_KEY_<br>BITRATE | OH_MD_KEY_<br>QUALITY | OH_MD_KEY_<br>VIDEO_ENCODER_BITRATE_MODE | 返回值 | 说明     |
-| :-------- | :---------| :---------- | ---- | ---------- |
+| -------- | ---------| ---------- | ---- | ---------- |
 | \\      | \\      | \\           |  AV_ERR_OK    | 使用编码器默认值 |
 | 超出范围    | 超出范围    | 不支持的模式       | AV_ERR_INVALID_VAL   | 异常值均报错   |
-| 正常值     | 正常值     | \\           | AV_ERR_INVALID_VAL   | Bitrate 与 Quality 冲突   |
+| 正常值     | 正常值     | \\           | AV_ERR_INVALID_VAL   | Bitrate与Quality冲突   |
 | 正常值     | \\      | \\           | AV_ERR_OK     | 使能默认码控模式 |
-| 正常值     | \\      | BITRATE_MODE_VBR、BITRATE_MODE_CBR      | AV_ERR_OK     |    -     |
+| 正常值     | \\      | BITRATE_MODE_VBR、BITRATE_MODE_CBR      | AV_ERR_OK     | \\       |
 | 正常值     | \\      | BITRATE_MODE_CQ           | AV_ERR_INVALID_VAL   | Bitrate 与 CQ 模式冲突      |
 | \\      | 正常值     | \\           | AV_ERR_OK     | 使能 CQ 模式 |
-| \\      | 正常值     | BITRATE_MODE_CQ           | AV_ERR_OK     |   -      |
+| \\      | 正常值     | BITRATE_MODE_CQ           | AV_ERR_OK     | \\       |
 | \\      | 正常值     | BITRATE_MODE_VBR、BITRATE_MODE_CBR      | AV_ERR_INVALID_VAL   | Quality 与 VBR、CBR 模式冲突 |
 | \\      | \\      | BITRATE_MODE_VBR、BITRATE_MODE_CBR      | AV_ERR_OK     | 使用编码器默认码率|
 | \\      | \\      | BITRATE_MODE_CQ           | AV_ERR_OK    | 使用默认quality  |
