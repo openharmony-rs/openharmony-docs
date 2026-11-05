@@ -44,10 +44,10 @@ status: active
 1. 创建实例createAVPlayer()，AVPlayer初始化idle状态。
 
    <!-- @[createAVPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { media } from '@kit.MediaKit';
-
+   
    // 创建avPlayer实例对象
    this.avPlayer = await media.createAVPlayer();
    ```
