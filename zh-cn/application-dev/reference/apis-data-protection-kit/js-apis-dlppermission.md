@@ -1297,10 +1297,7 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-<!--Del-->
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
-<!--DelEnd-->
-<!--RP2--><!--RP2End-->
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100021 | Failed to set the enterprise policy. |
@@ -1485,10 +1482,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-<!--Del-->
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
-<!--DelEnd-->
-<!--RP2--><!--RP2End-->
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1573,10 +1567,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-<!--Del-->
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
-<!--DelEnd-->
-<!--RP2--><!--RP2End-->
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1650,10 +1641,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-<!--Del-->
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
-<!--DelEnd-->
-<!--RP2--><!--RP2End-->
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1798,10 +1786,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-<!--Del-->
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
-<!--DelEnd-->
-<!--RP2--><!--RP2End-->
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100011 | The system ability works abnormally. |
   
 **示例：**
@@ -1855,10 +1840,7 @@ constructor()
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-<!--Del-->
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
-<!--DelEnd-->
-<!--RP2--><!--RP2End-->
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
   
 **示例：**
 
@@ -1902,10 +1884,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-<!--Del-->
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
-<!--DelEnd-->
-<!--RP2--><!--RP2End-->
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1960,10 +1939,7 @@ static unregisterPlugin(): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-<!--Del-->
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
-<!--DelEnd-->
-<!--RP2--><!--RP2End-->
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
