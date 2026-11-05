@@ -21,6 +21,7 @@
     - [Multimedia_Drm](capi-multimedia-drm.md)
   - 头文件<!--avcodec-headerfile-->
     - [native_avcapability.h](capi-native-avcapability-h.md)
+    - [native_avcodec_audiobase.h](capi-native-avcodec-audiobase-h.md)
     - [native_avcodec_audiocodec.h](capi-native-avcodec-audiocodec-h.md)
     - [native_avcodec_base.h](capi-native-avcodec-base-h.md)
     - [media_types.h](capi-media-types-h.md)
