@@ -60280,9 +60280,9 @@
 						"start_line":861
 					},
 					{
-						"end_line":1042,
+						"end_line":991,
 						"name":"operator_overloading_use_cases",
-						"start_line":937
+						"start_line":886
 					},
 					{
 						"end_line":1151,
@@ -60760,14 +60760,14 @@
 						"start_line":138
 					},
 					{
-						"end_line":184,
+						"end_line":177,
 						"name":"compound_assignment_operators",
 						"start_line":149
 					},
 					{
-						"end_line":211,
+						"end_line":210,
 						"name":"strict_equality_operator",
-						"start_line":187
+						"start_line":180
 					},
 					{
 						"end_line":222,
@@ -60795,9 +60795,9 @@
 						"start_line":260
 					},
 					{
-						"end_line":287,
+						"end_line":286,
 						"name":"tuple_comparison",
-						"start_line":271
+						"start_line":270
 					},
 					{
 						"end_line":312,
@@ -60805,9 +60805,9 @@
 						"start_line":290
 					},
 					{
-						"end_line":343,
+						"end_line":342,
 						"name":"nullish_coalescing_operator",
-						"start_line":315
+						"start_line":314
 					},
 					{
 						"end_line":353,
@@ -60845,9 +60845,9 @@
 						"start_line":439
 					},
 					{
-						"end_line":491,
+						"end_line":490,
 						"name":"short_circuit_evaluation",
-						"start_line":464
+						"start_line":463
 					},
 					{
 						"end_line":604,
@@ -60860,9 +60860,9 @@
 						"start_line":494
 					},
 					{
-						"end_line":547,
+						"end_line":531,
 						"name":"optional_chaining_operator",
-						"start_line":511
+						"start_line":510
 					},
 					{
 						"end_line":556,
@@ -60870,9 +60870,9 @@
 						"start_line":550
 					},
 					{
-						"end_line":620,
+						"end_line":611,
 						"name":"loose_equality_not_recommended",
-						"start_line":615
+						"start_line":599
 					}
 				]
 			},
@@ -61115,7 +61115,7 @@
 						"start_line":783
 					},
 					{
-						"end_line":814,
+						"end_line":813,
 						"name":"spread_syntax_alternative",
 						"start_line":797
 					}
@@ -61225,7 +61225,7 @@
 						"start_line":1329
 					},
 					{
-						"end_line":316,
+						"end_line":320,
 						"name":"optional_properties",
 						"start_line":275
 					},
@@ -61240,9 +61240,9 @@
 						"start_line":319
 					},
 					{
-						"end_line":419,
+						"end_line":423,
 						"name":"method_override",
-						"start_line":373
+						"start_line":377
 					},
 					{
 						"end_line":476,
@@ -61260,9 +61260,9 @@
 						"start_line":1388
 					},
 					{
-						"end_line":523,
+						"end_line":520,
 						"name":"object_reference_copy",
-						"start_line":479
+						"start_line":483
 					},
 					{
 						"end_line":565,
@@ -61315,14 +61315,14 @@
 						"start_line":1502
 					},
 					{
-						"end_line":1538,
+						"end_line":1582,
 						"name":"property_decorator_usage",
-						"start_line":1526
+						"start_line":1570
 					},
 					{
-						"end_line":1554,
+						"end_line":1598,
 						"name":"parameter_decorator_usage",
-						"start_line":1541
+						"start_line":1585
 					},
 					{
 						"end_line":716,
@@ -61380,9 +61380,9 @@
 						"start_line":1604
 					},
 					{
-						"end_line":1643,
+						"end_line":1687,
 						"name":"mixin_composition_alternative",
-						"start_line":1618
+						"start_line":1662
 					},
 					{
 						"end_line":1674,
@@ -61390,9 +61390,9 @@
 						"start_line":1646
 					},
 					{
-						"end_line":1693,
+						"end_line":1737,
 						"name":"string_builder_explicit_return",
-						"start_line":1676
+						"start_line":1720
 					}
 				]
 			},
@@ -61570,7 +61570,7 @@
 						"start_line":156
 					},
 					{
-						"end_line":201,
+						"end_line":196,
 						"name":"tuple_basics",
 						"start_line":192
 					},
@@ -61580,9 +61580,9 @@
 						"start_line":204
 					},
 					{
-						"end_line":239,
+						"end_line":226,
 						"name":"tuple_vs_array",
-						"start_line":225
+						"start_line":212
 					},
 					{
 						"end_line":253,
@@ -61640,14 +61640,14 @@
 						"start_line":402
 					},
 					{
-						"end_line":480,
+						"end_line":465,
 						"name":"map_vs_object",
-						"start_line":440
+						"start_line":425
 					},
 					{
-						"end_line":503,
+						"end_line":521,
 						"name":"readonly_map_set_interfaces",
-						"start_line":483
+						"start_line":508
 					},
 					{
 						"end_line":526,
@@ -61685,9 +61685,9 @@
 						"start_line":638
 					},
 					{
-						"end_line":698,
+						"end_line":716,
 						"name":"array_map",
-						"start_line":690
+						"start_line":708
 					},
 					{
 						"end_line":706,
@@ -61705,14 +61705,14 @@
 						"start_line":735
 					},
 					{
-						"end_line":769,
+						"end_line":782,
 						"name":"array_chain",
-						"start_line":749
+						"start_line":772
 					},
 					{
-						"end_line":724,
+						"end_line":744,
 						"name":"flat_flatmap_usage",
-						"start_line":707
+						"start_line":727
 					},
 					{
 						"end_line":686,
@@ -61745,14 +61745,14 @@
 						"start_line":19
 					},
 					{
-						"end_line":78,
+						"end_line":66,
 						"name":"if_else_if_chain",
 						"start_line":42
 					},
 					{
-						"end_line":100,
+						"end_line":86,
 						"name":"simple_condition_check",
-						"start_line":81
+						"start_line":69
 					},
 					{
 						"end_line":147,
@@ -61760,9 +61760,9 @@
 						"start_line":103
 					},
 					{
-						"end_line":187,
+						"end_line":153,
 						"name":"switch_case_fallthrough",
-						"start_line":150
+						"start_line":136
 					},
 					{
 						"end_line":226,
@@ -61800,14 +61800,14 @@
 						"start_line":329
 					},
 					{
-						"end_line":384,
+						"end_line":317,
 						"name":"traditional_for_loop",
-						"start_line":354
+						"start_line":288
 					},
 					{
-						"end_line":411,
+						"end_line":344,
 						"name":"iterate_range_numbers",
-						"start_line":387
+						"start_line":320
 					},
 					{
 						"end_line":449,
@@ -61820,9 +61820,9 @@
 						"start_line":452
 					},
 					{
-						"end_line":519,
+						"end_line":452,
 						"name":"break_statement",
-						"start_line":491
+						"start_line":424
 					},
 					{
 						"end_line":538,
@@ -61830,19 +61830,19 @@
 						"start_line":522
 					},
 					{
-						"end_line":551,
+						"end_line":484,
 						"name":"nested_loop_break",
-						"start_line":541
+						"start_line":474
 					},
 					{
-						"end_line":586,
+						"end_line":519,
 						"name":"continue_statement",
-						"start_line":554
+						"start_line":487
 					},
 					{
-						"end_line":599,
+						"end_line":532,
 						"name":"nested_loop_continue",
-						"start_line":589
+						"start_line":522
 					},
 					{
 						"end_line":649,
@@ -61890,7 +61890,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets",
 				"functions":[
 					{
-						"end_line":66,
+						"end_line":28,
 						"name":"basic_enum_declaration",
 						"start_line":19
 					},
@@ -61910,9 +61910,9 @@
 						"start_line":920
 					},
 					{
-						"end_line":985,
+						"end_line":930,
 						"name":"enum_bidirectional_mapping",
-						"start_line":947
+						"start_line":914
 					},
 					{
 						"end_line":411,
@@ -61975,9 +61975,9 @@
 						"start_line":562
 					},
 					{
-						"end_line":709,
+						"end_line":681,
 						"name":"replace_magic_strings_numbers",
-						"start_line":637
+						"start_line":622
 					},
 					{
 						"end_line":872,
@@ -62030,7 +62030,7 @@
 						"start_line":18
 					},
 					{
-						"end_line":73,
+						"end_line":66,
 						"name":"ts_enum_member_types",
 						"start_line":48
 					},
@@ -62200,9 +62200,9 @@
 						"start_line":622
 					},
 					{
-						"end_line":1000,
+						"end_line":998,
 						"name":"fallback_default_values",
-						"start_line":965
+						"start_line":963
 					},
 					{
 						"end_line":716,
@@ -62215,9 +62215,9 @@
 						"start_line":719
 					},
 					{
-						"end_line":1073,
+						"end_line":1071,
 						"name":"api_client_with_retry",
-						"start_line":1003
+						"start_line":1001
 					},
 					{
 						"end_line":867,
@@ -62285,34 +62285,34 @@
 						"start_line":52
 					},
 					{
-						"end_line":132,
+						"end_line":121,
 						"name":"function_invocation_methods",
 						"start_line":82
 					},
 					{
-						"end_line":199,
+						"end_line":188,
 						"name":"function_return_values",
-						"start_line":135
+						"start_line":124
 					},
 					{
-						"end_line":1479,
+						"end_line":1452,
 						"name":"parameters_formal_and_actual",
-						"start_line":1444
+						"start_line":1436
 					},
 					{
-						"end_line":248,
+						"end_line":223,
 						"name":"optional_parameters",
-						"start_line":202
+						"start_line":191
 					},
 					{
-						"end_line":306,
+						"end_line":281,
 						"name":"default_parameters",
-						"start_line":251
+						"start_line":226
 					},
 					{
-						"end_line":362,
+						"end_line":312,
 						"name":"rest_parameters",
-						"start_line":309
+						"start_line":284
 					},
 					{
 						"end_line":407,
@@ -62335,14 +62335,14 @@
 						"start_line":501
 					},
 					{
-						"end_line":630,
+						"end_line":580,
 						"name":"optional_return_values",
-						"start_line":564
+						"start_line":514
 					},
 					{
-						"end_line":688,
+						"end_line":649,
 						"name":"functions_as_parameters",
-						"start_line":633
+						"start_line":594
 					},
 					{
 						"end_line":733,
@@ -62350,9 +62350,9 @@
 						"start_line":691
 					},
 					{
-						"end_line":769,
+						"end_line":715,
 						"name":"function_type_aliases",
-						"start_line":736
+						"start_line":697
 					},
 					{
 						"end_line":817,
@@ -62375,9 +62375,9 @@
 						"start_line":845
 					},
 					{
-						"end_line":868,
+						"end_line":860,
 						"name":"arrow_function_this_binding",
-						"start_line":853
+						"start_line":844
 					},
 					{
 						"end_line":781,
@@ -62390,9 +62390,9 @@
 						"start_line":784
 					},
 					{
-						"end_line":917,
+						"end_line":909,
 						"name":"function_overloading",
-						"start_line":871
+						"start_line":863
 					},
 					{
 						"end_line":957,
@@ -62400,9 +62400,9 @@
 						"start_line":920
 					},
 					{
-						"end_line":1516,
+						"end_line":1489,
 						"name":"overload_type_constraints",
-						"start_line":1482
+						"start_line":1455
 					},
 					{
 						"end_line":997,
@@ -62410,9 +62410,9 @@
 						"start_line":960
 					},
 					{
-						"end_line":1044,
+						"end_line":1036,
 						"name":"array_higher_order_methods",
-						"start_line":1000
+						"start_line":992
 					},
 					{
 						"end_line":1097,
@@ -62510,24 +62510,24 @@
 						"start_line":120
 					},
 					{
-						"end_line":161,
+						"end_line":155,
 						"name":"multi_type_parameter_class",
 						"start_line":139
 					},
 					{
-						"end_line":187,
+						"end_line":185,
 						"name":"generic_type_inference",
-						"start_line":164
+						"start_line":158
 					},
 					{
-						"end_line":243,
+						"end_line":241,
 						"name":"multi_type_parameter_function",
-						"start_line":190
+						"start_line":188
 					},
 					{
 						"end_line":273,
 						"name":"generic_class_basic",
-						"start_line":246
+						"start_line":244
 					},
 					{
 						"end_line":301,
@@ -62565,7 +62565,7 @@
 						"start_line":567
 					},
 					{
-						"end_line":653,
+						"end_line":651,
 						"name":"generic_constraint_property",
 						"start_line":608
 					},
@@ -62635,9 +62635,9 @@
 						"start_line":1513
 					},
 					{
-						"end_line":1590,
+						"end_line":1473,
 						"name":"variance_annotations",
-						"start_line":1586
+						"start_line":1421
 					},
 					{
 						"end_line":1551,
@@ -62675,14 +62675,14 @@
 						"start_line":1618
 					},
 					{
-						"end_line":1055,
+						"end_line":890,
 						"name":"generic_data_structures",
-						"start_line":858
+						"start_line":856
 					},
 					{
-						"end_line":1121,
+						"end_line":956,
 						"name":"generic_array_utilities",
-						"start_line":1058
+						"start_line":893
 					},
 					{
 						"end_line":1218,
@@ -62690,9 +62690,9 @@
 						"start_line":1124
 					},
 					{
-						"end_line":1707,
+						"end_line":1590,
 						"name":"generic_api_client",
-						"start_line":1636
+						"start_line":1519
 					}
 				]
 			},
@@ -62930,14 +62930,14 @@
 						"start_line":163
 					},
 					{
-						"end_line":255,
+						"end_line":298,
 						"name":"ts_method_signature_match",
-						"start_line":214
+						"start_line":257
 					},
 					{
-						"end_line":306,
+						"end_line":349,
 						"name":"ts_super_usage_limitation",
-						"start_line":257
+						"start_line":300
 					},
 					{
 						"end_line":368,
@@ -62950,14 +62950,14 @@
 						"start_line":370
 					},
 					{
-						"end_line":468,
+						"end_line":511,
 						"name":"ts_abstract_class_usage",
-						"start_line":397
+						"start_line":440
 					},
 					{
-						"end_line":492,
+						"end_line":535,
 						"name":"ts_inherit_builtin_error",
-						"start_line":470
+						"start_line":513
 					},
 					{
 						"end_line":526,
@@ -63180,9 +63180,9 @@
 						"start_line":190
 					},
 					{
-						"end_line":279,
+						"end_line":270,
 						"name":"interface_multi_level_inheritance",
-						"start_line":243
+						"start_line":234
 					},
 					{
 						"end_line":301,
@@ -63190,14 +63190,14 @@
 						"start_line":282
 					},
 					{
-						"end_line":1261,
+						"end_line":1198,
 						"name":"interface_multiple_inheritance",
-						"start_line":1204
+						"start_line":1163
 					},
 					{
-						"end_line":512,
+						"end_line":495,
 						"name":"optional_properties_methods",
-						"start_line":473
+						"start_line":464
 					},
 					{
 						"end_line":587,
@@ -63215,9 +63215,9 @@
 						"start_line":624
 					},
 					{
-						"end_line":349,
+						"end_line":340,
 						"name":"generic_interface",
-						"start_line":304
+						"start_line":295
 					},
 					{
 						"end_line":380,
@@ -63245,9 +63245,9 @@
 						"start_line":703
 					},
 					{
-						"end_line":802,
+						"end_line":785,
 						"name":"class_inheritance_with_interface",
-						"start_line":746
+						"start_line":729
 					},
 					{
 						"end_line":857,
@@ -63260,19 +63260,19 @@
 						"start_line":860
 					},
 					{
-						"end_line":934,
+						"end_line":895,
 						"name":"interface_function_types",
-						"start_line":881
+						"start_line":864
+					},
+					{
+						"end_line":959,
+						"name":"interface_polymorphism",
+						"start_line":898
 					},
 					{
 						"end_line":998,
-						"name":"interface_polymorphism",
-						"start_line":937
-					},
-					{
-						"end_line":1060,
 						"name":"interface_type_casting",
-						"start_line":1001
+						"start_line":962
 					},
 					{
 						"end_line":1173,
@@ -63285,14 +63285,14 @@
 						"start_line":1063
 					},
 					{
-						"end_line":1199,
+						"end_line":1140,
 						"name":"implements_cautions",
-						"start_line":1175
+						"start_line":1113
 					},
 					{
-						"end_line":1305,
+						"end_line":1242,
 						"name":"bird_multiple_interface",
-						"start_line":1264
+						"start_line":1201
 					},
 					{
 						"end_line":1344,
@@ -63345,7 +63345,7 @@
 						"start_line":132
 					},
 					{
-						"end_line":81,
+						"end_line":71,
 						"name":"ts_interface_inheritance_rules",
 						"start_line":49
 					},
@@ -63702,7 +63702,7 @@
 					{
 						"end_line":30,
 						"name":"submodule_export_class",
-						"start_line":18
+						"start_line":16
 					}
 				]
 			},
@@ -64004,9 +64004,9 @@
 						"start_line":590
 					},
 					{
-						"end_line":641,
+						"end_line":590,
 						"name":"declare_field",
-						"start_line":612
+						"start_line":561
 					}
 				]
 			},
@@ -64109,34 +64109,34 @@
 						"start_line":92
 					},
 					{
-						"end_line":121,
+						"end_line":124,
 						"name":"string_concatenation",
 						"start_line":108
 					},
 					{
-						"end_line":133,
+						"end_line":136,
 						"name":"string_append",
-						"start_line":124
+						"start_line":127
 					},
 					{
-						"end_line":148,
+						"end_line":151,
 						"name":"compound_assignment_concat",
-						"start_line":136
+						"start_line":139
 					},
 					{
-						"end_line":171,
+						"end_line":174,
 						"name":"template_interpolation",
-						"start_line":151
+						"start_line":154
 					},
 					{
-						"end_line":191,
+						"end_line":194,
 						"name":"unicode_representation",
-						"start_line":174
+						"start_line":177
 					},
 					{
-						"end_line":218,
+						"end_line":221,
 						"name":"unicode_codepoint_conversion",
-						"start_line":194
+						"start_line":197
 					},
 					{
 						"end_line":235,
@@ -64144,9 +64144,9 @@
 						"start_line":221
 					},
 					{
-						"end_line":265,
+						"end_line":261,
 						"name":"multibyte_length",
-						"start_line":238
+						"start_line":241
 					},
 					{
 						"end_line":282,
@@ -64159,14 +64159,14 @@
 						"start_line":285
 					},
 					{
-						"end_line":323,
+						"end_line":319,
 						"name":"substring_extraction",
-						"start_line":305
+						"start_line":301
 					},
 					{
-						"end_line":342,
+						"end_line":339,
 						"name":"substring_operations",
-						"start_line":325
+						"start_line":322
 					},
 					{
 						"end_line":362,
@@ -64184,14 +64184,14 @@
 						"start_line":383
 					},
 					{
-						"end_line":418,
+						"end_line":415,
 						"name":"to_uppercase",
-						"start_line":400
+						"start_line":397
 					},
 					{
-						"end_line":436,
+						"end_line":433,
 						"name":"to_lowercase",
-						"start_line":421
+						"start_line":418
 					},
 					{
 						"end_line":455,
@@ -64199,34 +64199,34 @@
 						"start_line":440
 					},
 					{
-						"end_line":471,
+						"end_line":468,
 						"name":"string_slice_split",
-						"start_line":457
+						"start_line":454
 					},
 					{
-						"end_line":502,
+						"end_line":498,
 						"name":"string_common_methods",
-						"start_line":475
+						"start_line":471
+					},
+					{
+						"end_line":505,
+						"name":"string_utility_methods",
+						"start_line":501
 					},
 					{
 						"end_line":525,
-						"name":"string_utility_methods",
-						"start_line":504
-					},
-					{
-						"end_line":546,
 						"name":"string_regex",
-						"start_line":529
+						"start_line":508
 					},
 					{
-						"end_line":607,
+						"end_line":587,
 						"name":"unicode_handling",
-						"start_line":592
+						"start_line":572
 					},
 					{
-						"end_line":624,
+						"end_line":604,
 						"name":"string_pad_repeat",
-						"start_line":609
+						"start_line":589
 					},
 					{
 						"end_line":634,
