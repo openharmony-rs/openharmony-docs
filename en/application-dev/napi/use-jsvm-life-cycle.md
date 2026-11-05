@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:44:17.855Z pushedAt=2026-09-02T06:50:01.000Z -->
+<!-- md-trans-meta sourceCommit=0b50ff1c6d77ec00cd47e1216c043c17663c7283 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -61,14 +61,14 @@ CPP code:
 <!-- @[oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openhandlescope/src/main/cpp/hello.cpp) -->
 
 ``` C++
-// Three sample methods for OH_JSVM_OpenHandleScope and OH_JSVM_CloseHandleScope
+// Sample methods for OH_JSVM_OpenHandleScope and OH_JSVM_CloseHandleScope
 static JSVM_Value HandleScopeFor(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // When frequently calling JSVM APIs to create JS objects in a for loop, add a handle_scope to release resources that are no longer used in a timely manner.
     // In the following example, the lifecycle of the local variable res ends after each loop iteration, so a scope is added to release the JS objects it holds in a timely manner to prevent memory leaks.
-    constexpr uint32_t DIFF_VALUE_HUNDRED_THOUSAND = 10000;
+    constexpr uint32_t ITERATION_COUNT = 10000;
     JSVM_Value checked = nullptr;
-    for (int i = 0; i < DIFF_VALUE_HUNDRED_THOUSAND; i++) {
+    for (int i = 0; i < ITERATION_COUNT; i++) {
         JSVM_HandleScope scope = nullptr;
         JSVM_Status status = OH_JSVM_OpenHandleScope(env, &scope);
         if (status != JSVM_OK || scope == nullptr) {
@@ -244,12 +244,12 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     return object;
 }
 
-// Register callbacks for CreateReference, UseReference, and DeleteReference
+// Register callback for UseReference
 static JSVM_CallbackStruct param[] = {
     {.callback = UseReference, .data = nullptr},
 };
 static JSVM_CallbackStruct *method = param;
-// Aliases for the CreateReference, UseReference, and DeleteReference methods, for JS invocation
+// Alias for the UseReference method, for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
     {"useReference", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
@@ -306,7 +306,7 @@ static JSVM_Value RunDemo(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_VM vm;
     OH_JSVM_GetVM(env, &vm);
     if (AddFinalizer(vm, env) != 0) {
-        OH_LOG_INFO(LOG_APP, "Run AddFinalizer failed");
+        OH_LOG_ERROR(LOG_APP, "Run AddFinalizer failed");
     }
 
     return nullptr;

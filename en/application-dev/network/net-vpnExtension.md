@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=8d3dade79c7254af98ff73abd19b721fdb7a8535 translatedAt=2026-08-13T03:09:49.385Z pushedAt=2026-08-13T07:09:09.547Z -->
+<!-- md-trans-meta sourceCommit=a803887a9fc2f8daf89eae54ccb6f391feede9ff translatedAt=2026-11-05T00:50:31.272Z pushedAt=2026-08-13T07:09:09.547Z nl=2 -->
 
 ## Overview
 
@@ -46,10 +46,10 @@ To enable your application to support the VPN functionality, you need to create 
 ``` JSON5
 // Assume that the VNP application is named MyVpnExtAbility. Define it in module.json5.
 "extensionAbilities": [
-// ···
+  // ...
   {
     "name": "MyVpnExtAbility",
-    "srcEntry": "./ets/vpnability/VPNExtentionAbility.ets",
+    "srcEntry": "./ets/vpnability/VPNExtensionAbility.ets",
     "type": "vpn"
   }
 ],
@@ -314,7 +314,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // Configure the IP address of the vNIC.
   addresses: [{
     address: {
-      address:'192.x.x.5',
+      address:'192.xxx.xxx.5',
       family:1
     },
     prefixLength:24
@@ -325,14 +325,14 @@ let vpnConfig: vpnExtension.VpnConfig = {
     interface: 'vpn-tun',
     destination: {
       address: {
-        address:'10.x.x.8',
+        address:'10.xxx.xxx.8',
         family:1,
         port:8080
       },
       prefixLength:24
     },
     gateway: {
-      address:'10.x.x.5',
+      address:'10.xxx.xxx.5',
       family:1,
       port:8080
     },
@@ -342,7 +342,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // Configure the MTU.
   mtu: 1400,
   // Configure IP addresses of DNS serves.
-  dnsAddresses: ['223.x.x.5', '223.x.x.6'],
+  dnsAddresses: ['223.xxx.xxx.5', '223.xxx.xxx.6'],
   // Trusted app information list. When this item is configured, the blocked app information list must be empty.
   trustedApplications: ['com.test.browser'],
   // Blocked app information list. When this item is configured, the trusted app information list must be empty.

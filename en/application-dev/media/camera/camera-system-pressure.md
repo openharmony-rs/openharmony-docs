@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.951Z pushedAt=2026-11-05T06:16:33.951Z nl=1 -->
 
 Starting from API version 20, the camera framework supports monitoring of system pressure levels.
 
@@ -19,6 +20,7 @@ When the system pressure level changes, the callback returns the **SystemPressur
 For details about this parameter, see [SystemPressureLevel](../../reference/apis-camera-kit/arkts-apis-camera-e.md#systempressurelevel20).
 
 ```ts
+import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function callback(err: BusinessError, systemPressureLevel: camera.SystemPressureLevel): void {

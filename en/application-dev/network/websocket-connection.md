@@ -6,13 +6,13 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1a8a5b4e7336401b1823c689884b3d262fdca43f translatedAt=2026-08-13T03:10:24.509Z pushedAt=2026-08-13T07:22:47.619Z -->
+<!-- md-trans-meta sourceCommit=ede2473bcfdd173278c84f213a25b67a0910ea5b translatedAt=2026-11-05T01:04:41.315Z pushedAt=2026-08-13T07:22:47.619Z nl=2 -->
 
 ## When to Use
 
 WebSocket is a network communication protocol that allows a persistent connection to be established between a client and a server, over which full-duplex communication is performed. After the connection is established, both the client and the server can actively send data at the same time. This is the biggest difference between WebSocket and the traditional HTTP protocol. HTTP is primarily based on one-way communication: the client initiates a request, the server responds with data, and the connection is closed after a single transfer. In general, HTTP is suitable for one-time data retrieval (such as loading web page content), while WebSocket is suitable for scenarios with high real-time requirements (such as online chat and real-time games), so as to avoid frequently establishing connections and improve user experience.
 
-The **webSocket** module implements bidirectional connections between the WebSocket client and WebSocket server for third-party applications.
+The WebSocket module implements bidirectional connections between the WebSocket client and WebSocket server for third-party applications.
 
 On the WebSocket client: Use WebSocket to establish a bidirectional connection between the server and the client. Before doing this, you need to use [createWebSocket()](../reference/apis-network-kit/js-apis-webSocket.md#websocketcreatewebsocket) to create a [WebSocket](../reference/apis-network-kit/js-apis-webSocket.md#websocket) object and then use [connect()](../reference/apis-network-kit/js-apis-webSocket.md#connect) to connect to the server. If the connection is successful, the client will receive a callback of the [open](../reference/apis-network-kit/js-apis-webSocket.md#onopen) event. Then, the client can communicate with the server by using [send()](../reference/apis-network-kit/js-apis-webSocket.md#send). When the server sends a message to the client, the client will receive a callback of the [message](../reference/apis-network-kit/js-apis-webSocket.md#onmessage) event. If the connection is no longer needed, the client can call [close()](../reference/apis-network-kit/js-apis-webSocket.md#close) to close the connection. After successful disconnection, the client will receive a callback of the [close](../reference/apis-network-kit/js-apis-webSocket.md#onclose) event. If an error occurs in any of the preceding processes, the client will receive a callback of the [error](../reference/apis-network-kit/js-apis-webSocket.md#onerror) event.
 

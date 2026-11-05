@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:02:20.841Z pushedAt=2026-09-16T08:15:40.470Z -->
+<!-- md-trans-meta sourceCommit=8d95ce71a533e95ed95b7973acfeabe378d2316f translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Data Types
 
@@ -464,8 +464,8 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_throw_range_error | Throws an ArkTS range error with text information.|
 | napi_is_error | Checks whether **napi_value** indicates an error object.|
 | napi_create_error | Creates an ArkTS error object with text information.|
-| napi_create_type_error | Creates an ArkTS error object with text information.|
-| napi_create_range_error | Creates an ArkTS error object with text information.|
+| napi_create_type_error | Creates an ArkTS TypeError object with text information.|
+| napi_create_range_error | Creates an ArkTS RangeError object with text information.|
 | napi_get_and_clear_last_exception | Obtains and clears the latest exception.|
 | napi_is_exception_pending | Checks whether an exception occurs.|
 | napi_fatal_error | Raises a fatal error to terminate the process immediately.|
@@ -604,7 +604,7 @@ napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-**Note**: For details about the restrictions, see [What should I observe when using napi_run_script_path() to execute the abc files in a package](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-65).
+**Note:** For details about the restrictions, see [What should I observe when using napi_run_script_path() to execute the abc files in a package](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-65).
 **napi_load_module**
 
 ```c

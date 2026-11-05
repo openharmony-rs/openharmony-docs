@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=63e06d0a97101595637b8c367634436777df073e translatedAt=2026-09-28T02:45:43.542Z pushedAt=2026-09-29T08:29:31.305Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.952Z pushedAt=2026-09-29T08:29:31.305Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -60,7 +60,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 
     void CaptureSessionOnError(Camera_CaptureSession* session, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
     }
 
     CaptureSession_Callbacks* GetCaptureSessionRegister(void)
@@ -84,7 +84,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 
     void PreviewOutputOnError(Camera_PreviewOutput* previewOutput, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "PreviewOutputOnError = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "PreviewOutputOnError = %{public}d", errorCode);
     }
 
     PreviewOutput_Callbacks* GetPreviewOutputListener(void)

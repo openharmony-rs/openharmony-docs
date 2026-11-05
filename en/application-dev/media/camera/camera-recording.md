@@ -6,13 +6,13 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=472b8a70c8f480fabd11928a604dcdb48eb0acbf translatedAt=2026-08-10T09:15:40.920Z pushedAt=2026-08-10T12:05:24.178Z -->
+<!-- md-trans-meta sourceCommit=92d23587f57517bc67a056b91a04869f5b7e579b translatedAt=2026-11-05T06:16:33.950Z pushedAt=2026-08-10T12:05:24.178Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
 A camera application invokes and controls a camera device to perform basic operations such as preview, photo capture, and video recording.
 
-Video recording is also one of the most important features of a camera app. Recording is the capture of cyclic frames. For custom recording configurations, refer to step 4 in [Photo Capture](camera-shooting.md) to set parameters such as resolution, flash, focal length, photo quality, and rotation angle.
+Video recording is also one of the most important features of a camera app. Recording is the capture of cyclic frames. For custom recording configurations, refer to step 6 in [Photo Capture](camera-shooting.md) to set parameters such as resolution, flash, focal length, photo quality, and rotation angle.
 
 ## How to Develop
 
@@ -28,7 +28,25 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    import { media } from '@kit.MediaKit';
    ```
 
-2. Create a surface.
+2. Check whether the camera supports video recording mode.
+
+   Call [getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11) to obtain the modes supported by the specified camera and check whether video recording mode is supported.
+
+   ```ts
+   function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean
+   {
+     try {
+       let modeArray = cameraManager.getSupportedSceneModes(cameraDevice);
+       return modeArray.includes(camera.SceneMode.NORMAL_VIDEO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
+       return false;
+     }
+   }
+   ```
+
+3. Create a surface.
 
    Call createAVRecorder() of the media module to create an [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md) instance, and call [getInputSurface](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9) of the instance to obtain the surface ID, which is associated with the video output stream to process the stream data.
 
@@ -44,7 +62,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    let videoSurfaceId = await this.avRecorder.getInputSurface();
    ```
 
-3. Create a video output stream.
+4. Create a video output stream.
 
    Obtain the video output streams supported by the current device from **videoProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability). Then, define video recording parameters and use [createVideoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createvideooutput) to create a video output stream.
 
@@ -75,7 +93,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    }
    ```
 
-4. Start video recording.
+5. Start video recording.
 
    > **NOTE**
    >
@@ -106,7 +124,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    }
    ```
 
-5. Stop video recording.
+6. Stop video recording.
 
    Call [stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1) of the AVRecorder instance to stop recording, and then call [stop](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#stop-1) of the VideoOutput instance to stop the video output stream.
 

@@ -5,8 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:46:00.099Z pushedAt=2026-09-16T08:26:46.566Z -->
-
+<!-- md-trans-meta sourceCommit=8ebac65895475349562d5d673623f46e5ee4d2ca translatedAt=2026-11-05T00:56:15.859Z nl=1 -->
 
 ## When to Use
 
@@ -74,7 +73,7 @@
            auto result = future.get();
            OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
        } catch (const std::exception &e) {
-           OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", e.what());
+           OH_LOG_ERROR(LOG_APP, "XXX, Result from JS %{public}s", e.what());
        }
    }
    
@@ -443,7 +442,7 @@
 
    @Concurrent
    function nativeCall(input : string): void {
-     console.info('Taskpool thread received:%s', input);
+     console.info('Taskpool thread received:', input);
      nativeModule.startWithCallback('Taskpool', (result: string) => {
        console.info('[Taskpool] Got from native:', result);
      });

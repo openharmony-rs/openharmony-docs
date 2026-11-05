@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:42:33.961Z pushedAt=2026-09-16T08:26:18.271Z -->
+<!-- md-trans-meta sourceCommit=908d5c8cc497717aa25a0c85e864f0d8a9e36e28 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -122,7 +122,6 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
 
 API declaration:
 
-index.d.ts
 <!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -225,7 +224,6 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
 
 API declaration:
 
-index.d.ts
 <!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -335,8 +333,6 @@ static napi_value GetWeakReferenceValue(napi_env env, napi_callback_info info)
 
 API declaration:
 
-// index.d.ts
-
 ``` TypeScript
 export const createWeakReference: () => void;
 
@@ -350,7 +346,7 @@ try {
     testNapi.createWeakReference();
     hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getWeakReferenceValue());
 } catch (error) {
-    hilog.error(0x0000, 'testTag', `Call error: ${error.message}`);
+    hilog.error(0x0000, 'testTag', `call error: ${error.message}`);
 }
 ```
 
@@ -424,8 +420,6 @@ static napi_value CleanupStrongReference(napi_env env, napi_callback_info info) 
 ```
 
 API declaration:
-
-// index.d.ts
 
 ``` TypeScript
 export const createStrongReference: () => void;
@@ -592,7 +586,6 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
 
 API declaration:
 
-// index.d.ts
 <!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript

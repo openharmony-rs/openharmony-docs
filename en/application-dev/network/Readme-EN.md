@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4f0190cfb17bec534f61352c7bb08e8c60d6944b translatedAt=2026-09-16T03:46:51.912Z pushedAt=2026-09-16T08:36:50.293Z -->
+<!-- md-trans-meta sourceCommit=7cd2f817688c245414ad83d771260e8515966ace translatedAt=2026-11-05T06:16:33.964Z pushedAt=2026-09-16T08:36:50.293Z nl=1 -->
 
 - [About This Kit](net-mgmt-overview.md)
 
@@ -27,8 +27,10 @@
 - Network Management<!--network-kit-network-management-->
     - [Collecting Network Statistics](net-statistics.md)
     - [Using the Network Firewall](net-netfirewall.md)
+    - [Redirecting Network Traffic (C/C++)](net-trafficfilter-redirect.md)
+    - [Filtering Network Packets (C/C++)](net-trafficfilter-packet.md)
     - [Extensible Authentication](net-eap.md)
-
+  
     <!--Del-->
     - [Network Sharing (for System Applications Only)](net-sharing-sys.md)
     - [Ethernet Connection Management (for System Applications Only)](net-ethernet-sys.md)  

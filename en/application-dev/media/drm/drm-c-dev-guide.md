@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=804e49693463f2a26dff2f7a605cb4a15d07f377 translatedAt=2026-09-14T09:56:58.507Z pushedAt=2026-09-15T13:38:38.729Z -->
+<!-- md-trans-meta sourceCommit=75e4d415ae0aa5a64aaac872b79ad9c25b972c67 translatedAt=2026-11-05T06:16:33.953Z pushedAt=2026-09-15T13:38:38.729Z nl=1 -->
 
 ## When to Use
 
@@ -20,167 +20,146 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 1. Import the DRM Kit module.
 
-    ```c++
-    #include "multimedia/drm_framework/native_drm_common.h"
-    #include "multimedia/drm_framework/native_drm_err.h"
-    #include "multimedia/drm_framework/native_mediakeysession.h"
-    #include "multimedia/drm_framework/native_mediakeysystem.h"
-    ```
+   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   // ...
+   #include <cstring>
+   #include <multimedia/drm_framework/native_drm_common.h>
+   #include <multimedia/drm_framework/native_drm_err.h>
+   #include <multimedia/drm_framework/native_mediakeysession.h>
+   #include <multimedia/drm_framework/native_mediakeysystem.h>
+   ```
 
 2. Link the dynamic libraries in the CMake script.
 
-    ```txt
-    target_link_libraries(PUBLIC libnative_drm.so)
-    ```
+   ```txt
+   target_link_libraries(PUBLIC libnative_drm.so)
+   ```
 
 3. Obtain the name and ID list of the DRM solutions supported by the device.
 
-    ```c++
-    #include <cstring>
-    uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
-    DRM_MediaKeySystemDescription descriptions[3];
-    memset(descriptions, 0, sizeof(descriptions));
-    Drm_ErrCode ret = OH_MediaKeySystem_GetMediaKeySystems(descriptions, &count);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_GetMediaKeySystems failed.");
-    }
-    ```
+   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   uint32_t count = 3; // Set count to the actual number of DRM plugins supported by the current device.
+   DRM_MediaKeySystemDescription descriptions[3];
+   memset(descriptions, 0, sizeof(descriptions));
+   Drm_ErrCode ret = OH_MediaKeySystem_GetMediaKeySystems(descriptions, &count);
+   // ...
+   ```
 
 4. (Optional) Check whether the device supports a specific DRM solution based on the name, MIME type, and content protection level.
 
-    ```c++
-    bool isSupported = OH_MediaKeySystem_IsSupported3("com.clearplay.drm", "video/mp4", CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-    if (isSupported != true) {
-        printf("The device does not support the content protection level.");
-    }
-    ```
+   <!-- @[drm_isSupported3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   bool isSupported = OH_MediaKeySystem_IsSupported3(name, mimeType, CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+   // ...
+   ```
 
 5. Create a MediaKeySystem instance.
 
-    ```c++
-    MediaKeySystem *mediaKeySystem = nullptr;
-    ret = OH_MediaKeySystem_Create("com.clearplay.drm", &mediaKeySystem);
-    if (ret != DRM_ERR_OK || mediaKeySystem == nullptr) {
-        printf("OH_MediaKeySystem_Create failed.");
-    }
-    ```
+   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   Drm_ErrCode ret = OH_MediaKeySystem_Create(name, &mediaKeySystem);
+   if (ret != DRM_ERR_OK || mediaKeySystem == nullptr) {
+       // ...
+       return log;
+   }
+   // ...
+   ```
 
 6. (Optional) Set the MediaKeySystem event listener callback.
 
-    ```c++
-    static Drm_ErrCode SystemCallBackWithObj(MediaKeySystem *mediaKeySystem, DRM_EventType eventType,
-        uint8_t *info, int32_t infoLen, char *extra)
-    {
-        printf("SystemCallBackWithObj enter");
-        if (eventType == EVENT_PROVISION_REQUIRED) {
-            // Request and process the DRM certificate.
-        }
-        return DRM_ERR_OK;
-    }
-
-    ret = OH_MediaKeySystem_SetCallback(mediaKeySystem, SystemCallBackWithObj);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_SetCallback failed.");
-    }
-    ```
+   <!-- @[drm_bindMediaKeySystemCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   ret = OH_MediaKeySystem_SetCallback(mediaKeySystem, SystemCallBackWithObj);
+   // ...
+   ```
 
 7. (Optional) Obtain the status of the DRM certificate.
 
-    ```c++
-    DRM_CertificateStatus certStatus = CERT_STATUS_INVALID;
-    // Check the DRM certificate status of the device.
-    ret = OH_MediaKeySystem_GetCertificateStatus(mediaKeySystem, &certStatus);
-    if (ret == DRM_ERR_OK && certStatus != CERT_STATUS_PROVISIONED) {
-        // Request and process the DRM certificate.
-    }
-    ```
+   <!-- @[drm_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   DRM_CertificateStatus certStatus = CERT_STATUS_NOT_PROVISIONED;
+   ret = OH_MediaKeySystem_GetCertificateStatus(mediaKeySystem, &certStatus);
+   // ...
+   ```
 
 8. (Optional) Generate a DRM certificate request and process its response.
 
-    ```c++
-    #define MAX_DRM_PROVISION_BUF_SIZE 24576 // 24576: (2 * 12 * 1024)
-    unsigned char request[MAX_DRM_PROVISION_BUF_SIZE] = { 0x00 };  // MAX_DRM_PROVISION_BUF_SIZE specifies the maximum length of a DRM certificate request. Apply for memory based on the actual length.
-    int32_t requestLen = MAX_DRM_PROVISION_BUF_SIZE;
-    // The maximum length of the DRM service URL is 2048.
-    char defaultUrl[2048] = { 0x00 };
-    int32_t defaultUrlLen = 2048;
-    ret = OH_MediaKeySystem_GenerateKeySystemRequest(mediaKeySystem, request, &requestLen, defaultUrl,
-        defaultUrlLen);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_GenerateKeySystemRequest failed.");
-    }
-    /* 
-      The application sends a DRM certificate request to the DRM service through a network request, obtains a response,
-      and sets the response to the device. Pass in the actual data and length.
-     */
-    unsigned char keySystemResponse[MAX_DRM_PROVISION_BUF_SIZE] = {0x00};
-    ret = OH_MediaKeySystem_ProcessKeySystemResponse(mediaKeySystem, keySystemResponse, sizeof(keySystemResponse));
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_ProcessKeySystemResponse failed.");
-    }
-    ```
+   <!-- @[drm_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   unsigned char request[MAX_DRM_PROVISION_BUF_SIZE] = {0x00};
+   int32_t requestLen = MAX_DRM_PROVISION_BUF_SIZE;
+   char defaultUrl[2048] = {0x00};
+   int32_t defaultUrlLen = 2048;
+   ret = OH_MediaKeySystem_GenerateKeySystemRequest(mediaKeySystem, request, &requestLen, defaultUrl, defaultUrlLen);
+   // ...
+   ```
+
+   <!-- @[drm_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   // Send the device DRM certificate request to the DRM service over the network to obtain keySystemResponse. Pass in the actual response data.
+   unsigned char keySystemResponse[MAX_DRM_PROVISION_BUF_SIZE] = {0x00};
+   ret = OH_MediaKeySystem_ProcessKeySystemResponse(mediaKeySystem, keySystemResponse, sizeof(keySystemResponse));
+   // ...
+   ```
 
 9. (Optional) Obtain the maximum content protection level supported by the device.
 
-    ```c++
-    DRM_ContentProtectionLevel maxContentProtectionLevel = CONTENT_PROTECTION_LEVEL_UNKNOWN;
-    ret = OH_MediaKeySystem_GetMaxContentProtectionLevel(mediaKeySystem, &maxContentProtectionLevel);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_GetMaxContentProtectionLevel failed.");
-    }
-    ```
+   <!-- @[drm_getMaxContentProtectionLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
+   ``` C++
+   DRM_ContentProtectionLevel level = CONTENT_PROTECTION_LEVEL_UNKNOWN;
+   ret = OH_MediaKeySystem_GetMaxContentProtectionLevel(mediaKeySystem, &level);
+   // ...
+   ```
 
 10. Create a MediaKeySession instance.
 
-    ```c++
-    MediaKeySession *mediaKeySession = nullptr;
-    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO; // Set the content protection level supported by the device.
-    ret = OH_MediaKeySystem_CreateMediaKeySession(mediaKeySystem, &contentProtectionLevel, &mediaKeySession);
-    if (ret != DRM_ERR_OK || mediaKeySession == nullptr) {
-        printf("OH_MediaKeySystem_CreateMediaKeySession failed.");
-    }
+    <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
+    DRM_ContentProtectionLevel securityLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+    ret = OH_MediaKeySystem_CreateMediaKeySession(mediaKeySystem, &securityLevel, &mediaKeySession);
+    // ...
     ```
 
 11. (Optional) Set the MediaKeySession event listener callback.
 
-    ```c++
-    static Drm_ErrCode SessionEventCallBackWithObj(MediaKeySession *mediaKeySession, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)
-    {
-        if (eventType == EVENT_KEY_REQUIRED) {
-            // Request and process the media key.
-        }
-        return DRM_ERR_OK;
-    }
-
-    static Drm_ErrCode SessionKeyChangeCallBackWithObj(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool hasNewGoodKeys)
-    {
-        return DRM_ERR_OK;
-    }
-
+    <!-- @[drm_bindMediaKeySessionCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
     OH_MediaKeySession_Callback sessionCallback = { SessionEventCallBackWithObj, SessionKeyChangeCallBackWithObj };
     ret = OH_MediaKeySession_SetCallback(mediaKeySession, &sessionCallback);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySession_SetCallback failed.");
-    }
+    // ...
     ```
 
 12. (Optional) Check whether secure decoding is required.
 
-    ```c++
-    bool requireSecureDecoder;
-    ret = OH_MediaKeySession_RequireSecureDecoderModule(mediaKeySession, "video/avc", &requireSecureDecoder);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySession_RequireSecureDecoderModule failed.");
-    }
+    <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
+    bool requireSecureDecoder = false;
+    ret = OH_MediaKeySession_RequireSecureDecoderModule(mediaKeySession, mimeType, &requireSecureDecoder);
+    // ...
     ```
 
 13. Generate a media key request and process its response to request a license for content authorization.
 
-    ```c++
-    #define MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE 24576 // 24576: (2 * 12 * 1024)
+    <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
     DRM_MediaKeyRequest mediaKeyRequest;
     DRM_MediaKeyRequestInfo info;
-    // initData corresponds to PSSH data in the stream. Pass in the actual data.
+    // initData corresponds to the PSSH data in the media stream. Pass in the actual data.
     unsigned char initData[512] = {0x00};
     memset(&info, 0, sizeof(DRM_MediaKeyRequestInfo));
     info.initDataLen = sizeof(initData);
@@ -191,78 +170,74 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
     memcpy(info.optionData[0], (char *)"optionalDataValue", sizeof("optionalDataValue"));
     info.optionsCount = 1;
     ret = OH_MediaKeySession_GenerateMediaKeyRequest(mediaKeySession, &info, &mediaKeyRequest);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySession_GenerateMediaKeyRequest failed.");
-    }
-    /*
-      The application requests the DRM service through the network, obtains a media key response, and sends the response to OH_MediaKeySession_ProcessMediaKeyResponse.
-      If the response is an offline media key response, the offline media key ID is returned. Set mediaKeyId based on the actual data and length.
-     */
+    // ...
+    ```
+
+    <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
+    // Obtain mediaKeyResponse from the DRM service over the network. Pass in the actual response data.
     unsigned char mediaKeyId[128] = {0x00};
     int32_t mediaKeyIdLen = 128;
-    // MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE specifies the maximum length of a media key response. Pass in the actual length.
     unsigned char mediaKeyResponse[MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE] = {0x00};
     int32_t mediaKeyResponseLen = MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE;
     ret = OH_MediaKeySession_ProcessMediaKeyResponse(mediaKeySession, mediaKeyResponse,
         mediaKeyResponseLen, mediaKeyId, &mediaKeyIdLen);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySession_ProcessMediaKeyResponse failed.");
-    }
+    // ...
     ```
 
 14. (Optional) Restore offline media keys.
 
-    ```c++
-    // Load the media key with the specified media key ID to the current session.
+    <!-- @[drm_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
     ret = OH_MediaKeySession_RestoreOfflineMediaKeys(mediaKeySession, mediaKeyId, mediaKeyIdLen);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySession_RestoreOfflineMediaKeys failed.");
-    }
+    // ...
     ```
 
 15. (Optional) Check the status of media keys.
 
-    ```c++
-    DRM_MediaKeyStatus mediaKeyStatus;
+    <!-- @[drm_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
+    DRM_MediaKeyStatus mediaKeyStatus = {0};
     ret = OH_MediaKeySession_CheckMediaKeyStatus(mediaKeySession, &mediaKeyStatus);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySession_CheckMediaKeyStatus failed.");
-    }
+    // ...
     ```
 
 16. (Optional) Obtain the IDs of offline media keys, obtain their status, and clear them.
 
-    ```c++
+    <!-- @[drm_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
     DRM_OfflineMediakeyIdArray offlineMediaKeyIds;
     ret = OH_MediaKeySystem_GetOfflineMediaKeyIds(mediaKeySystem, &offlineMediaKeyIds);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_GetOfflineMediaKeyIds failed.");
-    }
-    DRM_OfflineMediaKeyStatus OfflineMediaKeyStatus = OFFLINE_MEDIA_KEY_STATUS_UNKNOWN;
-    ret = OH_MediaKeySystem_GetOfflineMediaKeyStatus(mediaKeySystem, offlineMediaKeyIds.ids[0], offlineMediaKeyIds.idsLen[0], &OfflineMediaKeyStatus);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_GetOfflineMediaKeyStatus failed.");
-    }
-    ret = OH_MediaKeySystem_ClearOfflineMediaKeys(mediaKeySystem, offlineMediaKeyIds.ids[0], offlineMediaKeyIds.idsLen[0]);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_ClearOfflineMediaKeys failed.");
+    // ...
+    if (ret == DRM_ERR_OK && offlineMediaKeyIds.idsCount > 0) {
+        DRM_OfflineMediaKeyStatus offlineStatus = OFFLINE_MEDIA_KEY_STATUS_UNKNOWN;
+        ret = OH_MediaKeySystem_GetOfflineMediaKeyStatus(mediaKeySystem, offlineMediaKeyIds.ids[0],
+            offlineMediaKeyIds.idsLen[0], &offlineStatus);
+        // ...
+        ret = OH_MediaKeySystem_ClearOfflineMediaKeys(mediaKeySystem, offlineMediaKeyIds.ids[0],
+            offlineMediaKeyIds.idsLen[0]);
+        // ...
     }
     ```
 
 17. Destroy the MediaKeySession instance.
 
-    ```c++
+    <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
     ret = OH_MediaKeySession_Destroy(mediaKeySession);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySession_Destroy failed.");
-    }
+    // ...
     ```
 
 18. Destroy the MediaKeySystem instance.
 
-    ```c++
+    <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
+    ``` C++
     ret = OH_MediaKeySystem_Destroy(mediaKeySystem);
-    if (ret != DRM_ERR_OK) {
-        printf("OH_MediaKeySystem_Destroy failed.");
-    }
+    // ...
     ```

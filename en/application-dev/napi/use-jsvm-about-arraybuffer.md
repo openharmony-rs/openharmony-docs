@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d475d826f8ab6e97b4b69944b8a9a6d84f792324 translatedAt=2026-08-12T06:30:16.357Z pushedAt=2026-08-12T10:52:32.947Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -150,6 +150,8 @@ JSVM IsArrayBuffer: 1
 
 Use **OH_JSVM_DetachArraybuffer** to call the **Detach()** operation of an **ArrayBuffer** object.
 
+The sample code is combined with that for OH_JSVM_IsDetachedArraybuffer. See the `DetachArraybuffer` method in [OH_JSVM_IsDetachedArraybuffer](#oh_jsvm_isdetachedarraybuffer) below.
+
 ### OH_JSVM_IsDetachedArraybuffer
 
 Use **OH_JSVM_IsDetachedArraybuffer** to check whether an **ArrayBuffer** object has been detached.
@@ -192,7 +194,7 @@ static JSVM_Value IsDetachedArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_ERROR(LOG_APP, "JSVM IsDetachedArraybuffer: failed");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: success");
-        OH_LOG_INFO(LOG_APP, "JSVM IsArrayBuffer: %{public}d", result);
+        OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: %{public}d", result);
     }
     JSVM_Value isDetached = nullptr;
     OH_JSVM_GetBoolean(env, result, &isDetached);
@@ -222,7 +224,7 @@ Expected result:
 ```txt
 JSVM DetachArraybuffer: success
 JSVM IsDetachedArraybuffer: success
-JSVM IsArrayBuffer: 1
+JSVM IsDetachedArraybuffer: 1
 ```
 
 ### OH_JSVM_CreateArraybuffer
