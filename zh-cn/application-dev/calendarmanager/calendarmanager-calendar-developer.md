@@ -49,7 +49,7 @@
 
     <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
-   ``` TypeScript
+   	``` TypeScript
     const DOMAIN = 0x0000;
         
     export let calendarMgr: calendarManager.CalendarManager | null = null;
