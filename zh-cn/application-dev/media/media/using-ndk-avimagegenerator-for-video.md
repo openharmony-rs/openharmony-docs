@@ -63,7 +63,6 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
    <!-- @[OH_AVImageGenerator_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   #include <multimedia/player_framework/avimage_generator.h>
    // 创建OH_AVImageGenerator实例。
    OH_AVImageGenerator* generator = OH_AVImageGenerator_Create();
    ```
@@ -73,10 +72,6 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
    <!-- @[OH_AVImageGenerator_SetFDSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   #include "napi/native_api.h"
-   #include <multimedia/player_framework/avimage_generator.h>
-   #include <multimedia/player_framework/native_averrors.h>
-
    int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
    int32_t fileDescribe = -1; // 媒体文件描述符。
    int64_t fileSize = 0; // 媒体文件大小。
@@ -96,9 +91,6 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
    <!-- @[OH_AVImageGenerator_GetDuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   #include "napi/native_api.h"
-   #include "multimedia/player_framework/avmetadata_extractor.h"
-   #include "multimedia/player_framework/avmetadata_extractor_base.h"
    static napi_value OhAVMetadataExtractorGetDuration(napi_env env, napi_callback_info info)
    {
        int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
@@ -153,12 +145,6 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
    <!-- @[OH_AVImageGenerator_FetchFrameByTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   #include "napi/native_api.h"
-   #include <multimedia/image_framework/image/pixelmap_native.h>
-   #include <multimedia/player_framework/avimage_generator.h>
-   #include <multimedia/player_framework/avimage_generator_base.h>
-   #include <multimedia/player_framework/native_averrors.h>
-
    // FetchFrameByTime的输入参数。
    struct FetchFrameParams {
        int64_t timeUs = 0; // 指定的时间（单位us）。

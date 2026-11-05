@@ -62,7 +62,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     <!-- @[OH_AVMetadataExtractor_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
-    #include <multimedia/player_framework/avmetadata_extractor.h>
     // 创建OH_AVMetadataExtractor实例。
     OH_AVMetadataExtractor* mainExtractor = OH_AVMetadataExtractor_Create();
     ```
@@ -74,8 +73,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     <!-- @[OH_AVMetadataExtractor_SetFDSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
-    #include "napi/native_api.h"
-    #include <multimedia/player_framework/avmetadata_extractor.h>
     int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
     int32_t fileDescribe = -1; // 媒体文件描述符。
     int64_t fileSize = 0; // 媒体文件大小。
@@ -125,10 +122,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     <!-- @[OH_AVMetadataExtractor_FetchAlbumCover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
-    #include <multimedia/image_framework/image/pixelmap_native.h>
-    #include <multimedia/player_framework/avmetadata_extractor.h>
-
-    #include <hilog/log.h>
     // 获取专辑封面。
     OH_PixelmapNative* pixelMap = nullptr;
     avErrCode = OH_AVMetadataExtractor_FetchAlbumCover(mainExtractor, &pixelMap);

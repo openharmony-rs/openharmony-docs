@@ -26,7 +26,6 @@ status: active
    <!-- @[AVMetadataExtractor_CreateAVMetadataExtractor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { media } from '@kit.MediaKit';
    // 创建AVMetadataExtractor对象。
    let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
    ```
@@ -40,9 +39,6 @@ status: active
      <!-- @[AVMetadataExtractor_SetFdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
-     import { common } from '@kit.AbilityKit';
-     import { media } from '@kit.MediaKit';
-
      // 创建AVMetadataExtractor对象。
      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
      // 获取rawfile目录下资源文件描述符，设置fdSrc属性。
@@ -57,48 +53,54 @@ status: active
      <!-- @[AVMetadataExtractor_SetDataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
-     import { fileIo, ReadOptions } from '@kit.CoreFileKit';
-     import { common } from '@kit.AbilityKit';
-     import { media } from '@kit.MediaKit';
-     const TAG = 'MetadataDemo';
-     
      let fd: number = -1;
-     // ...
-     // 创建AVMetadataExtractor对象。
-     let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-     let rootPath: string = context.filesDir; // 应用文件目录。
-     let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
-     // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
-     // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
-     fd = fileIo.openSync(rootPath + testFilename).fd;
-     let fileSize: number = fileIo.statSync(rootPath + testFilename).size;
-     // 设置dataSrc描述符，通过callback从文件中获取资源，写入buffer中。
-     let dataSrc: media.AVDataSrcDescriptor = {
-       fileSize: fileSize,
-       callback: (buffer, len, pos) => {
-         if (buffer == undefined || len == undefined || pos == undefined) {
-           console.error(TAG, `dataSrc callback param invalid`);
-           return -1;
-         }
-         let options: ReadOptions = {
-           offset: pos,
-           length: len
-         };
-         let num = fileIo.readSync(fd, buffer, options);
-         console.info(TAG, 'readAt end, num: ' + num);
-         if (num > 0 && fileSize >= pos) {
-           return num;
-         }
-         return -1;
-       }
-     };
-     // 设置dataSrc。
-     avMetadataExtractor.dataSrc = dataSrc;
+      try {
+        // 创建AVMetadataExtractor对象。
+        let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        let rootPath: string = context.filesDir; // 应用文件目录。
+        let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
+        // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
+        // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
+        fd = fileIo.openSync(rootPath + testFilename).fd;
+        let fileSize: number = fileIo.statSync(this.rootPath + this.testFilename).size;
+        // 设置dataSrc描述符，通过callback从文件中获取资源，写入buffer中。
+        let dataSrc: media.AVDataSrcDescriptor = {
+          fileSize: fileSize,
+          callback: (buffer, len: number, pos: number) => {
+            if (buffer == undefined || len == undefined || pos == undefined) {
+              console.error(TAG, `dataSrc callback param invalid`);
+              return -1;
+            }
+            let options: ReadOptions = {
+              offset: pos,
+              length: len
+            };
+            let num = fileIo.readSync(fd, buffer, options);
+            console.info(TAG, 'readAt end, num: ' + num);
+            if (num > 0 && fileSize >= pos) {
+              return num;
+            }
+            return -1;
+          }
+        };
+        // 设置dataSrc。
+        avMetadataExtractor.dataSrc = dataSrc;
 
-     //...
-     // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
-     fileIo.closeSync(fd);
+        // ...
+      } catch (e) {
+        console.error(TAG + `FetchMetadataFromDataSrc, code is ${e.code}, message is ${e.message}`);
+      } finally {
+        // 确保文件流关闭
+        if (fd >= 0) {
+          try {
+            // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
+            fileIo.closeSync(fd);
+          } catch (e) {
+            console.error(TAG + `closeSync failed, code is ${e.code}, message is ${e.message}`);
+          }
+        }
+      }
      ```
 
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
@@ -106,8 +108,6 @@ status: active
      <!-- @[AVMetadataExtractor_SetUrlSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
-     import { media } from '@kit.MediaKit';
-
      // 创建AVMetadataExtractor对象。
      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
      // 调用setUrlSource设置网络点播媒体资源URL，用来获取在线音视频元数据和在线视频缩略图。
@@ -123,12 +123,6 @@ status: active
     <!-- @[AVMetadataExtractor_SetOpenSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
-     import { common } from '@kit.AbilityKit';
-     import { fileIo } from '@kit.CoreFileKit';
-     import { media } from '@kit.MediaKit';
-
-     let file: fileIo.File | undefined = undefined;
-     // ...
      // 创建AVMetadataExtractor对象。
      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
      // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置fdSrc属性。
@@ -176,10 +170,6 @@ status: active
    <!-- @[AVMetadataExtractor_fetchAlbumCover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { image } from '@kit.ImageKit';
-   // pixelMap对象声明，用于图片显示。
-   @State pixelMap: image.PixelMap | undefined = undefined;
-
    // 获取专辑封面（callback模式）。
    avMetadataExtractor.fetchAlbumCover((err, pixelMap) => {
      if (err) {
@@ -203,9 +193,6 @@ status: active
    <!-- @[AVMetadataExtractor_FetchFrameByTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { image } from '@kit.ImageKit';
-   // pixelMap对象声明，用于图片显示。
-   @State pixelMap: image.PixelMap | undefined = undefined;
    // 接口入参声明。
    let timeUs: number = 0;
    let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
@@ -222,9 +209,6 @@ status: active
    <!-- @[AVMetadataExtractor_FetchFramesByTimes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { image } from '@kit.ImageKit';
-   // pixelMap对象声明，用于图片显示。
-   @State pixelMap: image.PixelMap | undefined = undefined;
    // 接口入参声明。
    let timesUs: number[] = [0];
    let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;

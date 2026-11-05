@@ -26,7 +26,6 @@ status: active
    <!-- @[AVImageGenerator_CreateAVImageGenerator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { media } from '@kit.MediaKit';
    // 创建AVImageGenerator对象。
    let avImageGenerator: media.AVImageGenerator = await media.createAVImageGenerator();
    ```
@@ -44,7 +43,6 @@ status: active
    <!-- @[AVImageGenerator_SetFdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { common } from '@kit.AbilityKit';
    // 获取当前组件所在Ability的Context，并通过Context获取应用文件路径。
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    // 设置fdSrc，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
@@ -56,11 +54,6 @@ status: active
    <!-- @[AVImageGenerator_fetchFrameByTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { image } from '@kit.ImageKit';
-
-   // pixelMap对象声明，用于图片显示。
-   @State pixelMap: image.PixelMap | undefined = undefined;
-
    // 初始化入参。
    let timeUs = 0; // 需要获取的缩略图在视频中的时间点。
    let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC; // AV_IMAGE_QUERY_NEXT_SYNC表示选取传入时间点或之后的关键帧。
