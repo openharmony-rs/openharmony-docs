@@ -679,13 +679,13 @@ C/C++示例：
 调用`setDefaultOutputDevice`设置扬声器或听筒后，实际播放设备未变化，常见原因如下：
 
 - **流类型不受支持**：
-  - **可能原因**：`setDefaultOutputDevice`仅对以下三种[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)生效：`STREAM_USAGE_VOICE_MESSAGE`、`STREAM_USAGE_VOICE_COMMUNICATION`、`STREAM_USAGE_VIDEO_COMMUNICATION`。媒体播放（如音乐、视频）等流类型调用本接口不会生效。
+  - **可能原因**：`setDefaultOutputDevice`仅对以下三种[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)生效：`STREAM_USAGE_VOICE_MESSAGE`、`STREAM_USAGE_VOICE_COMMUNICATION`、`STREAM_USAGE_VIDEO_COMMUNICATION`。普通媒体播放（如音乐、视频）等流类型调用本接口不会生效。
   - **解决措施**：改用上述三种受支持的流类型创建音频流后，再调用本接口。
 - **外设仍处于连接状态**：
   - **可能原因**：外设（如蓝牙耳机、有线耳机）接入时，系统优先从外设播放，设置的默认输出设备仅在无外设连接时生效。
   - **解决措施**：断开外设后系统会自动回落至设置的默认输出设备；如需在外设连接状态下强制切换到扬声器，可参考[连接外设时强制切换媒体输出设备](#连接外设时强制切换媒体输出设备)。
 - **应用级设置覆盖流级设置**：
-  - **可能原因**：如果同时通过`AudioSessionManager.setDefaultOutputDevice`和`AudioRenderer.setDefaultOutputDevice`设置了默认输出设备，应用级设置会覆盖流级设置，`AudioRenderer`的设置将不生效。
+  - **可能原因**：如果同时通过`AudioSessionManager.setDefaultOutputDevice`和`AudioRenderer.setDefaultOutputDevice`设置了默认输出设备，`AudioSessionManager`的应用级设置会覆盖流级设置，`AudioRenderer`的流级设置将不生效。
   - **解决措施**：检查是否同时设置了应用级与流级默认输出设备，确认[设置默认输出设备](#设置默认输出设备)中两种方式的优先级，按需移除其一。
 - **设备无听筒**：
   - **可能原因**：在无听筒（EARPIECE）的设备（如智慧屏、部分平板）上，将默认输出设备设置为听筒不会生效，系统将继续使用扬声器或其他可用设备播放。
