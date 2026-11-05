@@ -8869,3 +8869,31 @@ Allows a system application to request keeping the vehicle cabin awake.
 **Supported devices**: cars
 
 **Valid since**: 26.0.1
+
+## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
+ 
+Allows an application to use restricted networks, such as internal networks and specific vehicle networks.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.INNER_NETWORK
+ 
+Allows an application to access the vehicle's internal networks.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
