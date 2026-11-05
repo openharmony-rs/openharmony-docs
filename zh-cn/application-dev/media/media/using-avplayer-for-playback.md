@@ -48,8 +48,8 @@ status: active
    ``` TypeScript
    import { media } from '@kit.MediaKit';
    
-   // 创建avPlayer实例对象
-   this.avPlayer = await media.createAVPlayer();
+       // 创建avPlayer实例对象
+       this.avPlayer = await media.createAVPlayer();
    ```
 
 2. 设置业务需要的监听事件，搭配全流程场景使用。支持的监听事件包括：
