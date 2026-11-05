@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=e045b2c3e44ea3985eed61bc2f7a3828310d8c76 translatedAt=2026-07-31T01:25:56.948Z pushedAt=2026-07-31T02:43:51.981Z -->
+<!-- md-trans-meta sourceCommit=edafffcdf6320049a398177858b53d134cd13e79 translatedAt=2026-11-05T00:54:37.842Z pushedAt=2026-07-31T02:43:51.981Z nl=2 -->
 
 ## Overview
 
@@ -59,19 +59,21 @@ The following example describes how to subscribe to a crash event triggered by b
 
 3. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
 
-   ```cmake
-   add_library(entry SHARED napi_init.cpp)
-   # Add libhiappevent_ndk.z.so and libhilog_ndk.z.so (log output). 
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` cmake
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # Check whether the entry/build directory exists.
    execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
-   # Decompress jsoncpp-1.9.6.tar.gz to entry/build to obtain the directory of the jsoncpp header file.
+   # Extract jsoncpp-1.9.6.tar.gz to entry/build to obtain the jsoncpp header directory.
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
-
-   # Add the third-party library libjsoncpp.so (used to parse JSON strings in subscription events).
+   
+   add_library(entry SHARED napi_init.cpp)
+   # Add dependencies on libhiappevent_ndk.z.so and libhilog_ndk.z.so (log output).
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   # Add the third-party libjsoncpp.so dependency to parse JSON strings in subscribed events.
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```

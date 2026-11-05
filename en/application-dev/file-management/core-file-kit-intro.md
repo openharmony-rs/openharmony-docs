@@ -5,7 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-09-14T09:18:06.262Z pushedAt=2026-09-15T13:11:49.889Z -->
+<!-- md-trans-meta sourceCommit=5c324d8cebcd101e27f10fa7be68a44f484a4863 translatedAt=2026-11-05T00:54:18.360Z pushedAt=2026-09-15T13:11:49.889Z nl=2 -->
 
 Core File Kit provides capabilities for accessing and managing application files and user files. You can use the APIs provided by Core File Kit to manage, search for, and back up different types of files efficiently.
 
@@ -39,6 +39,8 @@ Core File Kit provides high-performance [compression and decompression capabilit
 
 - Buffer compression: Supports buffer data compression and decompression.
 
+Core File Kit also provides [Cloud Disk Foundation](clouddisk-overview.md) for cloud-synchronized folders. It maps cloud files to local placeholder files and supports sync root management, file change monitoring and synchronization state management, placeholder file lifecycle management, and on-demand hydration and dehydration.
+
 ## When to Use
 
 You can use Core File Kit in any of the following scenarios:
@@ -62,6 +64,7 @@ You can use Core File Kit in any of the following scenarios:
 - Accessing and copying files across devices.
 - File and directory archive compression and decompression, as well as streaming and buffer data compression and decompression.
 <!--RP3--><!--RP3End-->
+- Enabling cloud disk applications to create cloud-synchronized folders that map cloud files to local placeholder files, with sync root management, file change monitoring and synchronization state management, placeholder file lifecycle management, and on-demand hydration and dehydration.
 
 ## Features
 

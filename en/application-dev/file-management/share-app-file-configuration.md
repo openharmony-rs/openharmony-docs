@@ -5,7 +5,7 @@
 <!--Designer: @renzehua; @huangjieliang; @zhanganxiang-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=3bab2b5b5264b2a320ce362e13ec1f6589bae7b3 translatedAt=2026-09-14T09:21:26.595Z pushedAt=2026-09-15T13:12:15.406Z -->
+<!-- md-trans-meta sourceCommit=222882b330cde16b5fc088a9ddb28152a61535a2 translatedAt=2026-11-05T00:54:18.360Z pushedAt=2026-09-15T13:12:15.406Z nl=2 -->
 
 From API version 23, the system supports shared directory configuration. In the [app file sharing](share-app-file.md) scenario, you can [configure the shared directory](#configuring-the-shared-directory). After configuration, only files in the shared directory can be shared by users with other apps for viewing, preventing sensitive app data from being leaked. This configuration takes effect only on phones and tablets.
 
@@ -13,9 +13,7 @@ From API version 23, the system supports shared directory configuration. In the 
 >
 > Starting from API version 26.0.0, the configurable shared directory scope is expanded. Configure the shared directory based on the latest scope. The following configuration guide applies to version 26.0.0.
 
-Starting from API version 26.0.0, the system supports configuring app-donated sandbox directories. When a shared directory is configured, you can [configure the donated sandbox directory](#configuring-the-donated-sandbox-directory). The donated directory is a subdirectory of the shared directory. After the app configures the donated directory, system apps such as file manager can access and operate on the file data in it.
-
-Take the interaction experience on file manager as an example. After the app configures the donated directory, users can view and modify files in the donated directory through file manager on phones and tablets. This configuration takes effect only on phones and tablets.
+Starting from API version 26.0.0, the system supports configuring app-donated sandbox directories. When a shared directory is configured, you can [configure the donated sandbox directory](#configuring-the-donated-sandbox-directory). The donated directory is a subdirectory of the shared directory. After the app configures the donated directory, system apps such as file manager can access and operate on the file data in it. This configuration takes effect only on phones and tablets. This document only describes how to integrate this capability; the actual behavior depends on the system app implementation. System apps are gradually integrating the capability, and the specific interaction experience depends on their implementation.
 
 ## How to Develop
 

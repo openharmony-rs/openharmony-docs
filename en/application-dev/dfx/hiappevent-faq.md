@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9592faf19ea4c7cae04b17ae5443971c6b571565 translatedAt=2026-07-29T10:47:20.163Z pushedAt=2026-07-29T11:15:36.813Z -->
+<!-- md-trans-meta sourceCommit=aaf7af4dd979d5054e659df25bf4c8711a287b6f translatedAt=2026-11-05T00:54:37.710Z pushedAt=2026-07-29T11:15:36.813Z nl=2 -->
 
 ## What should I do if the subscribed events cannot be found?
 
@@ -142,14 +142,14 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
               hilog.info(0x0000, 'testTag', `HiAppEvent file=${externalLog} fd=${file.fd}`);
               fileIo.closeSync(file);
               }).catch((err: BusinessError) => {
-                hilog.info(0x0000, 'testTag',
+                hilog.error(0x0000, 'testTag',
                 `HiAppEvent open file=${externalLog} failed with error message=${err.message}, error code=${err.code}`);
               });
               // Delete the external_log file.
               fileIo.unlink(externalLog).then(() => {
-                console.info("HiAppEvent remove file:" + externalLog + " succeed");
+                hilog.info(0x0000, 'testTag', "HiAppEvent remove file:" + externalLog + " succeed");
               }).catch((err: BusinessError) => {
-                console.error("HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
+                hilog.error(0x0000, 'testTag', "HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
                 ", error code: " + err.code);
               });
             }

@@ -5,7 +5,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=6fbdd293999ab29001fc2cc3540bc00cdc7c6dc3 translatedAt=2026-09-14T09:17:01.024Z pushedAt=2026-09-15T13:11:43.430Z -->
+<!-- md-trans-meta sourceCommit=2b5ac825ad03bde9f51e17e5708c72522bbda8ce translatedAt=2026-11-05T00:49:58.890Z pushedAt=2026-11-05T00:49:58.891Z nl=1 -->
 
 - [About This Kit](distributedservice-kit-intro.md)
 - [Distributed Device Management Development](devicemanager-guidelines.md)
@@ -15,4 +15,12 @@
   - [Cross-Device UIAbility Connection Development (for System Applications Only)](abilityconnectmanager-guidelines-sys.md)
   - [DistributedExtensionAbility Development (for System Applications Only)](distributedextension-guidelines-sys.md)
   <!--DelEnd-->
-  - [Enhanced Connection Development](linkEnhance_development-guide.md)
+  - [Enhanced Connection Development](linkEnhance-development-guide.md)
+  <!--Del-->
+- Distributed Soft Bus<!--distributed-softbus-->
+  - [Cross-Device Agent Wake-Up and Message Transmission (for System Applications Only)](distributedSoftBus-conversation-guidelines-sys.md)
+  <!--DelEnd-->
+  <!--Del-->
+- Distributed Soft Bus<!--distributed-softbus-->
+  - [Device Perception Development Guide (for System Applications Only)](distributed-softbusBase-guide-sys.md)
+  <!--DelEnd-->

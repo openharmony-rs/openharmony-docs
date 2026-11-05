@@ -6,7 +6,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f4bb484b1d8ec0f6bcf2535184c19569a539d4ab translatedAt=2026-08-22T01:25:35.772Z pushedAt=2026-08-22T03:02:39.941Z -->
+<!-- md-trans-meta sourceCommit=14c25dcfa79d2f07b35a4a6bbbdc3d13f8f727f0 translatedAt=2026-11-05T00:54:18.360Z pushedAt=2026-08-22T03:02:39.941Z nl=2 -->
 
 Starting from API version 20, scene animation interaction type interactive widgets support triggering widget-specific effects in specific scenarios. For example, you can choose to extend the animation rendering area beyond the widget's own rendering area to create an "overflow" effect. This document provides development guidance for scene animation interaction type interactive widgets, including the concepts of scene animation interaction type interactive widgets, constraints and limitations, development of the widget inactive state and active state UI, and development of the widget configuration file.
 
@@ -76,7 +76,7 @@ Example: On a device, a 2×2 widget measures 158vp × 158vp. Referring to the fi
 
 (2) Points I and A are horizontally 39.5vp apart and vertically 39.5vp apart.
 
-Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 5 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.
+Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 6 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.
 
 The interactive widget can call the [formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20) API to obtain its dimensions and relative coordinate position in the window. The widget provider uses this information to calculate the animation request range. When calculating coordinates, use point A in the figure above as the origin (0, 0) and calculate the corresponding parameters for rectangle EFGH, in vp.
 
