@@ -95,7 +95,7 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
 - onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑，如重新创建客户端。
 
-通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
+通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据，接口会拉起MIDI服务较为耗时，建议放在非主线程中运行。
 
 <!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -878,10 +878,9 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 ```
 
 ## 完整示例
-
-完整的示例代码可以在示例项目中查看：
-- 示例项目路径：[https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi)。
-
+<!--PR1-->
+完整的示例代码请参考[MIDI示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi)。
+<!--PR1End-->
 示例项目展示了：
 - 创建和销毁MIDI客户端。
 - 设备枚举和设备变化回调。
